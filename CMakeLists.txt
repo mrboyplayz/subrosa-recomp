@@ -11,6 +11,7 @@ add_executable(sr_probe
     src/sr_sbc.c
     src/sr_sbl.c
     src/sr_sbv.c
+    src/sr_runtime.c
 )
 
 target_include_directories(sr_probe PRIVATE src)

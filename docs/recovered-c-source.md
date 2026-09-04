@@ -9,6 +9,7 @@ This is intentionally not a raw Hex-Rays export. The files are meant to be reada
 - `sr_sbl.c` - first-pass `.sbl` block header parser.
 - `sr_sbc.c` - first-pass `.sbc` city preview/parser skeleton.
 - `sr_sbv.c` - first-pass `.sbv` vehicle point parser.
+- `sr_runtime.c/.h` - first-pass runtime structs for input, camera, player profile, and UI state.
 - `main.c` - `sr_probe` command-line entry point.
 
 ## Build
