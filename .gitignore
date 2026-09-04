@@ -1,0 +1,33 @@
+# Keep proprietary game files and local analyzer databases out of this repo.
+*
+
+# Track the reverse-engineering project itself.
+!.gitignore
+!README.md
+!docs/
+!docs/**
+!scripts/
+!scripts/**
+!ida/
+!ida/**
+!notes/
+!notes/**
+!specs/
+!specs/**
+
+# Generated local reports are reproducible.
+reports/
+exports/
+work/
+
+# IDA/Ghidra/Binary Ninja project state can contain copied binary data.
+*.i64
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+*.idb
+*.rep
+*.gpr
+*.bndb
