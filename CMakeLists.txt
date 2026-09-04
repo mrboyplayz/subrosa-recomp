@@ -7,6 +7,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 add_executable(sr_probe
     src/main.c
     src/sr_binary.c
+    src/sr_geometry.c
     src/sr_sbb.c
     src/sr_sbc.c
     src/sr_sbl.c
@@ -24,10 +25,20 @@ add_executable(sr_ui WIN32
 
 target_include_directories(sr_ui PRIVATE src)
 
+add_executable(sr_3d WIN32
+    src/sr_3d_win.c
+    src/sr_binary.c
+    src/sr_geometry.c
+)
+
+target_include_directories(sr_3d PRIVATE src)
+
 if (MSVC)
     target_compile_options(sr_probe PRIVATE /W4)
     target_compile_options(sr_ui PRIVATE /W4)
+    target_compile_options(sr_3d PRIVATE /W4)
 else()
     target_compile_options(sr_probe PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(sr_ui PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(sr_3d PRIVATE -Wall -Wextra -Wpedantic)
 endif()

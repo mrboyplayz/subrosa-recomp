@@ -12,6 +12,8 @@ This is intentionally not a raw Hex-Rays export. The files are meant to be reada
 - `sr_runtime.c/.h` - first-pass runtime structs for input, camera, player profile, and UI state.
 - `sr_ui_original.c/.h` - recovered C reconstruction of the original immediate-mode UI widget table and options menu.
 - `sr_ui_win.c` - native Windows C renderer for trying the reconstructed HUD/menu/map/options UI visually.
+- `sr_geometry.c/.h` - recovered mesh loaders for `.cmo` vertex/face data and `.sbv` vehicle points.
+- `sr_3d_win.c` - native Windows C 3D wireframe viewer for recovered model/vehicle geometry.
 - `main.c` - `sr_probe` command-line entry point.
 
 ## Build
@@ -25,6 +27,7 @@ This produces:
 
 - `build/sr_probe.exe` for parsers/debug output.
 - `build/sr_ui.exe` for the visual UI window.
+- `build/sr_3d.exe` for the visual 3D geometry viewer.
 
 ## Probe Examples
 
@@ -33,8 +36,10 @@ This produces:
 ./build/sr_probe ../data/round/buildblock/house.sbl
 ./build/sr_probe ../data/rivercity/city2.sbc
 ./build/sr_probe ../data/beamer2.sbv
+./build/sr_probe ../data/model/9mm.cmo
 ./build/sr_probe --ui-options
 ./build/sr_ui
+./build/sr_3d
 ```
 
 ## Verification

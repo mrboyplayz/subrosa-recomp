@@ -23,6 +23,9 @@ static int sr_probe_one(const char *path) {
     if (strcmp(ext, ".sbv") == 0 || strcmp(ext, ".srv") == 0) {
         return sr_parse_sbv(path);
     }
+    if (strcmp(ext, ".cmo") == 0) {
+        return sr_parse_cmo(path);
+    }
     fprintf(stderr, "%s: unsupported extension %s\n", path, ext);
     return 1;
 }
