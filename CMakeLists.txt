@@ -17,8 +17,17 @@ add_executable(sr_probe
 
 target_include_directories(sr_probe PRIVATE src)
 
+add_executable(sr_ui WIN32
+    src/sr_ui_win.c
+    src/sr_ui_original.c
+)
+
+target_include_directories(sr_ui PRIVATE src)
+
 if (MSVC)
     target_compile_options(sr_probe PRIVATE /W4)
+    target_compile_options(sr_ui PRIVATE /W4)
 else()
     target_compile_options(sr_probe PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(sr_ui PRIVATE -Wall -Wextra -Wpedantic)
 endif()

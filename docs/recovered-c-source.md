@@ -11,6 +11,7 @@ This is intentionally not a raw Hex-Rays export. The files are meant to be reada
 - `sr_sbv.c` - first-pass `.sbv` vehicle point parser.
 - `sr_runtime.c/.h` - first-pass runtime structs for input, camera, player profile, and UI state.
 - `sr_ui_original.c/.h` - recovered C reconstruction of the original immediate-mode UI widget table and options menu.
+- `sr_ui_win.c` - native Windows C renderer for trying the reconstructed HUD/menu/map/options UI visually.
 - `main.c` - `sr_probe` command-line entry point.
 
 ## Build
@@ -20,6 +21,11 @@ cmake -S . -B build -G Ninja
 cmake --build build
 ```
 
+This produces:
+
+- `build/sr_probe.exe` for parsers/debug output.
+- `build/sr_ui.exe` for the visual UI window.
+
 ## Probe Examples
 
 ```sh
@@ -28,6 +34,7 @@ cmake --build build
 ./build/sr_probe ../data/rivercity/city2.sbc
 ./build/sr_probe ../data/beamer2.sbv
 ./build/sr_probe --ui-options
+./build/sr_ui
 ```
 
 ## Verification
