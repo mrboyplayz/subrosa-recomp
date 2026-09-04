@@ -1,0 +1,219 @@
+@font-face {
+  font-family: "SR VCR";
+  src: url("../../font/ProggyClean.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #111;
+  color: #f4f1e8;
+  font-family: "SR VCR", Consolas, monospace;
+}
+
+.screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.game-view {
+  position: relative;
+  width: min(100%, 1180px);
+  aspect-ratio: 16 / 9;
+  min-height: 560px;
+  overflow: hidden;
+  border: 1px solid #2d342f;
+  background:
+    linear-gradient(rgba(8, 12, 11, 0.2), rgba(8, 12, 11, 0.72)),
+    url("../../texture/backgroundimage_1920x1080.png") center / cover;
+}
+
+.topbar {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  font-size: 20px;
+  text-shadow: 0 2px 0 #000;
+}
+
+.brand {
+  color: #f1d36a;
+}
+
+.status {
+  display: flex;
+  gap: 20px;
+  color: #c7d6cf;
+}
+
+.center-stack {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  width: min(56vw, 540px);
+}
+
+.title {
+  width: 100%;
+  max-height: 190px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.45));
+}
+
+#hint {
+  margin: 0;
+  padding: 7px 12px;
+  background: rgba(0, 0, 0, 0.48);
+  font-size: 22px;
+}
+
+.inventory {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  display: flex;
+  gap: 8px;
+}
+
+.slot {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #303731;
+  background: rgba(5, 7, 6, 0.72);
+  cursor: pointer;
+}
+
+.slot.active {
+  border-color: #e0cb61;
+}
+
+.slot img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.menu {
+  position: absolute;
+  right: 18px;
+  top: 78px;
+  width: min(360px, calc(100% - 36px));
+  background: rgba(9, 11, 10, 0.86);
+  border: 1px solid #526055;
+  padding: 12px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+button,
+label {
+  font: inherit;
+  color: inherit;
+}
+
+.tab,
+.command,
+.player {
+  min-height: 36px;
+  border: 1px solid #495449;
+  background: #1c241f;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tab {
+  text-align: center;
+  font-size: 16px;
+}
+
+.tab.active,
+.command.primary,
+.player.selected {
+  color: #0d100e;
+  background: #e0cb61;
+  border-color: #f4e9a2;
+}
+
+.panel {
+  display: none;
+  gap: 8px;
+}
+
+.panel.active {
+  display: grid;
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 22px;
+  color: #f1d36a;
+}
+
+.command,
+.player {
+  padding: 8px 10px;
+}
+
+label {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.range {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+}
+
+.cursor {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .game-view {
+    min-height: 720px;
+    aspect-ratio: auto;
+  }
+
+  .center-stack {
+    top: 12%;
+    width: 72vw;
+  }
+
+  .menu {
+    left: 18px;
+    right: 18px;
+    top: 250px;
+    width: auto;
+  }
+
+  .topbar {
+    font-size: 16px;
+  }
+}

@@ -11,6 +11,8 @@
 !scripts/**
 !src/
 !src/**
+!ui/
+!ui/**
 !ida/
 !ida/**
 !notes/

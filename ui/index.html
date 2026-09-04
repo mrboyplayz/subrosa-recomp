@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sub Rosa Recovered UI Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="screen">
+    <section class="game-view" aria-label="Recovered in-game UI prototype">
+      <div class="topbar">
+        <div class="brand">Sub Rosa</div>
+        <div class="status">
+          <span id="status-mode">Game</span>
+          <span>Cash $1,250</span>
+        </div>
+      </div>
+
+      <div class="center-stack">
+        <img class="title" src="../../texture/title.png" alt="Sub Rosa title">
+        <p id="hint">Press Tab for Menu</p>
+      </div>
+
+      <aside class="inventory" aria-label="Inventory">
+        <button class="slot active" data-item="Disk">
+          <img src="../../texture/icon-disk-gold.png" alt="">
+        </button>
+        <button class="slot" data-item="Phone">
+          <img src="../../texture/icon-phone.png" alt="">
+        </button>
+        <button class="slot" data-item="Pistol">
+          <img src="../../texture/icon-pistol.png" alt="">
+        </button>
+        <button class="slot" data-item="Money">
+          <img src="../../texture/money.png" alt="">
+        </button>
+      </aside>
+
+      <nav class="menu" id="menu" aria-label="Recovered menu">
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-page="game">Game</button>
+          <button class="tab" data-page="players">Players</button>
+          <button class="tab" data-page="admin">Admin</button>
+          <button class="tab" data-page="options">Options</button>
+        </div>
+
+        <div class="panel active" data-panel="game">
+          <button class="command primary">Return to Game</button>
+          <button class="command">Invite</button>
+          <button class="command">Exit Game</button>
+        </div>
+
+        <div class="panel" data-panel="players">
+          <h2>The Players</h2>
+          <button class="player selected">Goldmen Agent 024-1930</button>
+          <button class="player">Monsota Agent 117-4412</button>
+          <button class="player">OXS Agent 303-8860</button>
+          <button class="command">Mute Player</button>
+        </div>
+
+        <div class="panel" data-panel="admin">
+          <h2>Admin</h2>
+          <button class="command">Max Players</button>
+          <button class="command">Withdrawl $20</button>
+          <button class="command">Withdrawl $100</button>
+          <button class="command">Withdrawl $1000</button>
+        </div>
+
+        <div class="panel" data-panel="options">
+          <h2>Options</h2>
+          <label><input type="checkbox" checked> Fullscreen</label>
+          <label><input type="checkbox" checked> V-Sync</label>
+          <label><input type="checkbox"> Frame Smoothing</label>
+          <label><input type="checkbox" checked> Sprite Models</label>
+          <label><input type="checkbox"> Invert Mouse</label>
+          <label><input type="checkbox"> Use advanced inventory</label>
+          <label class="range">Sound Volume <input type="range" min="0" max="100" value="80"></label>
+          <button class="command">Back</button>
+        </div>
+      </nav>
+
+      <img class="cursor" id="cursor" src="../../texture/mouse01.png" alt="">
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
