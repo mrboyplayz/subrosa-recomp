@@ -26,6 +26,7 @@ Companion binaries to track:
 
 - `docs/` - workflow, binary survey, subsystem maps, decisions.
 - `specs/` - reconstructed file formats for `.sbl`, `.sbb`, `.sbc`, `.cmo`, `.cmc`, `.sbv`, etc.
+- `src/` - clean-room recovered C source and probing tools.
 - `ida/` - IDA helper scripts and analysis recipes.
 - `scripts/` - repeatable local inventory/extraction scripts.
 - `notes/` - scratch notes that are safe to commit.

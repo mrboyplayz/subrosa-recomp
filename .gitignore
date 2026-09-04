@@ -4,10 +4,13 @@
 # Track the reverse-engineering project itself.
 !.gitignore
 !README.md
+!CMakeLists.txt
 !docs/
 !docs/**
 !scripts/
 !scripts/**
+!src/
+!src/**
 !ida/
 !ida/**
 !notes/
@@ -19,6 +22,7 @@
 reports/
 exports/
 work/
+build/
 
 # IDA/Ghidra/Binary Ninja project state can contain copied binary data.
 *.i64
