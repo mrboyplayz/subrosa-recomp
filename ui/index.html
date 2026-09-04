@@ -3,82 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sub Rosa Recovered UI Prototype</title>
+  <title>Sub Rosa UI Reconstruction</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="screen">
-    <section class="game-view" aria-label="Recovered in-game UI prototype">
-      <div class="topbar">
-        <div class="brand">Sub Rosa</div>
-        <div class="status">
-          <span id="status-mode">Game</span>
-          <span>Cash $1,250</span>
+  <main class="viewport">
+    <section class="world">
+      <div class="hud-text cash">$19,114</div>
+      <div class="hud-text wanted">Wanted Level 44</div>
+      <div class="hud-text time">8:58</div>
+      <div class="hud-text top-help" id="top-help">Press Tab for Menu</div>
+
+      <section class="phone" id="phone" hidden>
+        <div>Left-click to dial</div>
+        <div>Use Numpad or number keys</div>
+        <div class="phone-row">1111 - Goldmen</div>
+        <div class="phone-row">2222 - Monsota</div>
+        <div class="phone-row">3333 - OXS</div>
+        <div class="phone-row">4444 - Pentacom</div>
+        <div class="phone-row">5555 - Nexaco</div>
+        <div class="phone-row">6666 - Prodocon</div>
+      </section>
+
+      <section class="map-screen" id="map-screen" hidden>
+        <div class="city-map" aria-label="city map">
+          <div class="map-title">Press C to toggle map</div>
+          <div class="district green">OXS International</div>
+          <div class="district blue">Garriott Ave</div>
+          <div class="district red">Nexaco</div>
+          <div class="street a">Flinn Ave</div>
+          <div class="street b">Holland Ave</div>
         </div>
-      </div>
-
-      <div class="center-stack">
-        <img class="title" src="../../texture/title.png" alt="Sub Rosa title">
-        <p id="hint">Press Tab for Menu</p>
-      </div>
-
-      <aside class="inventory" aria-label="Inventory">
-        <button class="slot active" data-item="Disk">
-          <img src="../../texture/icon-disk-gold.png" alt="">
-        </button>
-        <button class="slot" data-item="Phone">
-          <img src="../../texture/icon-phone.png" alt="">
-        </button>
-        <button class="slot" data-item="Pistol">
-          <img src="../../texture/icon-pistol.png" alt="">
-        </button>
-        <button class="slot" data-item="Money">
-          <img src="../../texture/money.png" alt="">
-        </button>
-      </aside>
-
-      <nav class="menu" id="menu" aria-label="Recovered menu">
-        <div class="tabs" role="tablist">
-          <button class="tab active" data-page="game">Game</button>
-          <button class="tab" data-page="players">Players</button>
-          <button class="tab" data-page="admin">Admin</button>
-          <button class="tab" data-page="options">Options</button>
+        <div class="profile-panel">
+          <p>Cactus42</p>
+          <p>319-1101</p>
+          <p>Corporate rating: 1088475</p>
+          <br>
+          <p>OXS International</p>
+          <p>$0 <span>Budget: $600,861</span></p>
         </div>
+      </section>
 
-        <div class="panel active" data-panel="game">
-          <button class="command primary">Return to Game</button>
-          <button class="command">Invite</button>
-          <button class="command">Exit Game</button>
-        </div>
+      <section class="tab-menu" id="tab-menu" hidden>
+        <button class="menu-line active" data-menu="game">Return to Game</button>
+        <button class="menu-line" data-menu="players">The Players</button>
+        <button class="menu-line" data-menu="invite">Invite</button>
+        <button class="menu-line" data-menu="mute">Mute Player</button>
+        <button class="menu-line" data-menu="admin">Admin</button>
+        <button class="menu-line" data-menu="options">Options</button>
+        <button class="menu-line" data-menu="exit">Exit Game</button>
+      </section>
 
-        <div class="panel" data-panel="players">
-          <h2>The Players</h2>
-          <button class="player selected">Goldmen Agent 024-1930</button>
-          <button class="player">Monsota Agent 117-4412</button>
-          <button class="player">OXS Agent 303-8860</button>
-          <button class="command">Mute Player</button>
-        </div>
+      <section class="options-panel" id="options-panel" hidden>
+        <button class="menu-line active">Back</button>
+        <label class="option-line"><span>Fullscreen</span><input type="checkbox" checked></label>
+        <label class="option-line"><span>V-Sync</span><input type="checkbox" checked></label>
+        <label class="option-line"><span>Frame Smoothing</span><input type="checkbox"></label>
+        <label class="option-line"><span>Sprite Models</span><input type="checkbox" checked></label>
+        <label class="option-line"><span>Invert Mouse</span><input type="checkbox"></label>
+        <label class="option-line"><span>Use advanced inventory</span><input type="checkbox"></label>
+        <label class="option-line"><span>Sound Volume</span><input type="range" min="0" max="100" value="80"></label>
+        <div class="option-line text-only">Audio Output&nbsp;&nbsp;Default</div>
+        <div class="option-line text-only">Audio Input&nbsp;&nbsp;Default</div>
+      </section>
 
-        <div class="panel" data-panel="admin">
-          <h2>Admin</h2>
-          <button class="command">Max Players</button>
-          <button class="command">Withdrawl $20</button>
-          <button class="command">Withdrawl $100</button>
-          <button class="command">Withdrawl $1000</button>
-        </div>
+      <section class="spectator" id="spectator" hidden>
+        <div>Spectating</div>
+        <div class="name">Voracious Puma</div>
+        <div>Press Space to switch player</div>
+        <div>Press 1 for freecam</div>
+      </section>
 
-        <div class="panel" data-panel="options">
-          <h2>Options</h2>
-          <label><input type="checkbox" checked> Fullscreen</label>
-          <label><input type="checkbox" checked> V-Sync</label>
-          <label><input type="checkbox"> Frame Smoothing</label>
-          <label><input type="checkbox" checked> Sprite Models</label>
-          <label><input type="checkbox"> Invert Mouse</label>
-          <label><input type="checkbox"> Use advanced inventory</label>
-          <label class="range">Sound Volume <input type="range" min="0" max="100" value="80"></label>
-          <button class="command">Back</button>
-        </div>
-      </nav>
+      <section class="inventory">
+        <div class="person-outline"></div>
+        <button class="slot"><span>1</span><img src="../../texture/icon-phone.png" alt=""></button>
+        <button class="slot"><span>2</span><img src="../../texture/icon-disk-white.png" alt=""></button>
+        <button class="slot"><span>3</span><img src="../../texture/icon-pistol.png" alt=""></button>
+        <button class="slot"><span>4</span><img src="../../texture/icon-clip-pistol.png" alt=""></button>
+        <button class="slot"><span>5</span><img src="../../texture/icon-key.png" alt=""></button>
+      </section>
 
       <img class="cursor" id="cursor" src="../../texture/mouse01.png" alt="">
     </section>
