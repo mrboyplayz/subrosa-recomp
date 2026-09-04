@@ -96,6 +96,11 @@ Recovered behavior:
 
 Candidate functions:
 
+- `ui_button_candidate` at `0x14006F1F0`
+- `ui_checkbox_candidate` at `0x140071910`
+- `ui_int_slider_candidate` at `0x140071440`
+- `ui_combo_box_candidate` at `0x14006F8D0`
+- `ui_text_entry_candidate` at `0x140070060`
 - `ui_load_base_assets_candidate` at `0x140078610`
 - `ui_reload_mouse_texture_candidate` at `0x140079140`
 - `ui_draw_hud_menu_prompt_candidate` at `0x140086000`
@@ -103,6 +108,17 @@ Candidate functions:
 
 Recovered behavior:
 
+- The UI is immediate-mode: each control hashes its label with CRC32 and allocates/reuses one of 1,024 widget slots.
+- Widget records have a 488-byte stride in the original binary.
+- Visible labels are copied until a null byte or `##`, matching common hidden-ID label behavior.
+- The layout cursor advances by widget width/height plus `4.0` pixels after each control.
+- Recovered widget type codes include:
+  - button: `0`
+  - checkbox: `1`
+  - select/value setter: `2`
+  - text entry: `5`
+  - combo box: `10`
+  - integer slider: `11`
 - Base UI assets include `texture/mouse01.png`, `font/%s.ttf`, `font/%s.png`, and `font/%s.csv`.
 - HUD/menu text includes phone dialing instructions, `Press Tab for Menu`, player list/menu strings, and cash/transaction messages.
 - Options menu controls include:
@@ -126,5 +142,7 @@ Recovered behavior:
 - camera state
 - player profile settings
 - UI option state
+
+`src/sr_ui_original.h` and `src/sr_ui_original.c` contain a closer C reconstruction of the original immediate-mode UI widget system and the recovered options menu.
 
 These are scaffolding for reconstructed runtime code, not raw Hex-Rays output.

@@ -10,6 +10,7 @@ This is intentionally not a raw Hex-Rays export. The files are meant to be reada
 - `sr_sbc.c` - first-pass `.sbc` city preview/parser skeleton.
 - `sr_sbv.c` - first-pass `.sbv` vehicle point parser.
 - `sr_runtime.c/.h` - first-pass runtime structs for input, camera, player profile, and UI state.
+- `sr_ui_original.c/.h` - recovered C reconstruction of the original immediate-mode UI widget table and options menu.
 - `main.c` - `sr_probe` command-line entry point.
 
 ## Build
@@ -26,6 +27,7 @@ cmake --build build
 ./build/sr_probe ../data/round/buildblock/house.sbl
 ./build/sr_probe ../data/rivercity/city2.sbc
 ./build/sr_probe ../data/beamer2.sbv
+./build/sr_probe --ui-options
 ```
 
 ## Verification

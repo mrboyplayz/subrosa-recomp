@@ -1,4 +1,5 @@
 #include "sr_formats.h"
+#include "sr_ui_original.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -29,8 +30,12 @@ static int sr_probe_one(const char *path) {
 int main(int argc, char **argv) {
     int failures = 0;
     if (argc < 2) {
-        fprintf(stderr, "usage: sr_probe <file> [file...]\n");
+        fprintf(stderr, "usage: sr_probe <file> [file...] | --ui-options\n");
         return 2;
+    }
+    if (strcmp(argv[1], "--ui-options") == 0) {
+        sr_ui_print_options_menu(stdout);
+        return 0;
     }
     for (int i = 1; i < argc; i++) {
         failures += sr_probe_one(argv[i]) != 0;
