@@ -40,5 +40,13 @@ SR_DECLARE_VECTOR_BITS(512);
 #define SR_VEC_PTR_LANES(bits, pointer, member) \
     (SR_VEC_VIEW(bits, ((void)sizeof(char[sizeof(*(pointer)) == (bits) / 8 ? 1 : -1]), \
                        (pointer)))->member)
+/* Lane access on an rvalue (for example an intrinsic call result): the GNU
+   statement expression evaluates the operand exactly once into storage. */
+#define SR_VEC_READ_LANES(bits, expr, member) \
+    ({ __typeof__(expr) __sr_read_tmp = (expr); \
+       SR_VEC_LANES(bits, __sr_read_tmp, member); })
+#define SR_VEC_READ_PTR_LANES(bits, expr, member) \
+    ({ __typeof__(expr) __sr_read_tmp = (expr); \
+       SR_VEC_PTR_LANES(bits, __sr_read_tmp, member); })
 
 #endif

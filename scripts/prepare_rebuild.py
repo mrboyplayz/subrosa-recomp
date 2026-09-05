@@ -69,13 +69,33 @@ HEX_H_LITERAL = re.compile(rb"\b([0-9][0-9A-Fa-f]*)[hH]\b")
 INTEGER_LITERAL = re.compile(rb"(?<![\w.])(0[xX][0-9A-Fa-f]+|[0-9]+)([uUlL]*)")
 ASM_BLOCK = re.compile(rb"__asm\s*\{([^{}]*)\}")
 BACKTICK_NAME = re.compile(rb"`([^'\n]*)'")
-TEMPLATE_NAME = re.compile(rb"([A-Za-z_][A-Za-z_0-9]*)<([A-Za-z_0-9, *&]+)>(?=\s*[:=(])")
+TEMPLATE_NAME = re.compile(rb"([A-Za-z_][A-Za-z_0-9]*)<([A-Za-z_0-9, *& ]+?)>(?=\s*[:=(])")
 OPERATOR_CALL = re.compile(rb"([A-Za-z_0-9])__operator\s*\(\s*\)")
+CONST_KEYWORD = re.compile(rb"\bconst\b")
+EMPTY_INITIALIZER = re.compile(rb"=\s*;")
+VECTOR_CAST = re.compile(
+    rb"\(__m(128i|128d|128)\)\s*"
+    rb"(xmmword_[0-9A-Fa-f]+"
+    rb"|[a-z]+_[0-9A-Fa-f]+"
+    rb"|0[xX][0-9A-Fa-f]+[uUlL]*"
+    rb"|[0-9]+[uUlL]*"
+    rb"|(?:LODWORD|HIDWORD|COERCE_[A-Z_]+)\([^()\n]*\)"
+    rb"|[A-Za-z_][A-Za-z_0-9]*)")
 
 
 def sanitize_name(name):
-    """Return the C identifier used for a Hex-Rays name containing '::'."""
-    return name.replace("::", "__")
+    """Return the C identifier the source renames give a Hex-Rays function name.
+
+    Mirrors the preprocess identifier passes exactly so that inventory names
+    match their renamed definitions and call sites.
+    """
+    name = re.sub(r"`([^']*)'", lambda m: "_" + re.sub(r"[^A-Za-z_0-9]+", "_", m.group(1)) + "_", name)
+    name = re.sub(r"([A-Za-z_][A-Za-z_0-9]*)<([A-Za-z_0-9, *&]+)>",
+                  lambda m: m.group(1) + "__" + re.sub(r"[^A-Za-z_0-9]+", "__", m.group(2)), name)
+    name = name.replace("::", "__")
+    if name.endswith("__operator"):
+        name += "_call"
+    return name
 
 
 def mask_noncode(source):
@@ -106,16 +126,50 @@ def basic_asm(body):
             + b'\\n\\t.att_syntax prefix");')
 
 
+def vector_cast_replacement(cast_type, target):
+    """Rewrite int-sourced (__m128X) casts as the register moves they denote.
+
+    Hex-Rays writes casts like (__m128)dword_X for reinterpreting an integer
+    as vector register content (a movd: low lane set, upper lanes zeroed) and
+    (__m128)xmmword_X for 16-byte data loads. GCC rejects int-to-vector casts.
+    """
+    if cast_type == b"__m128i":
+        return b"_mm_load_si128((const __m128i *)&" + target + b")"
+    load = b"_mm_load_si128((const __m128i *)&" + target + b")"
+    return b"((" + cast_type + b")" + load + b")"
+
+
+def int_to_vector(cast_type, target, bits):
+    if bits == 64:
+        convert = b"_mm_cvtsi64_si128((long long)(" + target + b"))"
+    else:
+        convert = b"_mm_cvtsi32_si128((int)(" + target + b"))"
+    if cast_type == b"__m128i":
+        return convert
+    return b"((" + cast_type + b")" + convert + b")"
+
+
 def preprocess(source):
     """Byte-level rewrites that keep the export valid C without changing semantics."""
     report = {"asm_cpuid": 0, "asm_xgetbv": 0, "asm_wrapped": 0,
               "renamed_qualified": 0, "renamed_anonymous": 0,
               "renamed_backtick": 0, "renamed_template": 0,
               "renamed_operator_call": 0, "unknown_floats": 0,
+              "unknown_initializers": 0, "const_stripped": 0,
+              "vector_loads": 0, "vector_moves": 0,
               "split_constants": 0, "unsigned_constants": 0}
-    for direction in ("asm", "names", "qualified", "operator_call", "constants"):
+    for direction in ("const", "asm", "names", "qualified", "operator_call",
+                      "vectors", "constants"):
         edits = []
-        if direction == "asm":
+        if direction == "const":
+            # Hex-Rays infers const qualifications the original code did not
+            # have (it writes through these objects); restore the original
+            # permissiveness. Offsets are preserved for the passes below.
+            masked = mask_noncode(source)
+            for match in CONST_KEYWORD.finditer(masked):
+                edits.append((match.start(), match.end(), b"    "))
+                report["const_stripped"] += 1
+        elif direction == "asm":
             masked = mask_noncode(source)
             for match in ASM_BLOCK.finditer(masked):
                 inner = source[match.start(1):match.end(1)].strip()
@@ -136,8 +190,9 @@ def preprocess(source):
                 edits.append((match.start(), match.end(), b"_" + inner + b"_"))
                 report["renamed_backtick"] += 1
             for match in TEMPLATE_NAME.finditer(masked):
+                args = re.sub(rb"[^A-Za-z_0-9]+", b"__", match.group(2))
                 edits.append((match.start(), match.end(),
-                              match.group(1) + b"__" + match.group(2).replace(b" ", b"")))
+                              match.group(1) + b"__" + args))
                 report["renamed_template"] += 1
         elif direction == "qualified":
             masked = mask_noncode(source)
@@ -156,6 +211,28 @@ def preprocess(source):
                 edits.append((match.start(), match.end(),
                               match.group(1) + b"__operator_call"))
                 report["renamed_operator_call"] += 1
+        elif direction == "vectors":
+            masked = mask_noncode(source)
+            for match in VECTOR_CAST.finditer(masked):
+                cast_type = match.group(1)
+                prefix = b"__m" + cast_type if cast_type != b"128" else b"__m128"
+                target = match.group(2)
+                if target.startswith(b"_mm"):
+                    continue  # already a vector expression; the cast is legal
+                if re.fullmatch(rb"[A-Za-z_][A-Za-z_0-9]*", target) and not re.match(
+                        rb"(dword|qword|byte|word|flt|dbl|unk|xmmword)_", target):
+                    continue  # bare identifier: may already hold a vector value
+                if target.startswith(b"xmmword_"):
+                    edits.append((match.start(), match.end(),
+                                  vector_cast_replacement(prefix, target)))
+                    report["vector_loads"] += 1
+                    continue
+                bits = 64 if target.startswith(b"qword_") or target.startswith(b"dbl_") \
+                    or (target[:1].isdigit() and int(target.rstrip(b"uUlL"), 0) > 0xFFFFFFFF) \
+                    else 32
+                edits.append((match.start(), match.end(),
+                              int_to_vector(prefix, target, bits)))
+                report["vector_moves"] += 1
         else:
             masked = mask_noncode(source)
             for match in INTEGER_LITERAL.finditer(masked):
@@ -170,12 +247,20 @@ def preprocess(source):
                 elif value > (1 << 63) - 1 and b"u" not in suffix.lower():
                     edits.append((match.start(), match.end(), digits + b"ull"))
                     report["unsigned_constants"] += 1
-            # Hex-Rays writes ?flt where it could not recover a float constant.
-            # The zero is a marked placeholder, not recovered data.
+            # Hex-Rays writes ?flt where it could not recover a float constant
+            # and an empty initializer where it gave up on data entirely; both
+            # become marked placeholders, not recovered values.
             for match in re.finditer(rb"\?flt\b", masked):
                 edits.append((match.start(), match.end(),
                               b"0.0 /* sr_unknown_float */"))
                 report["unknown_floats"] += 1
+            for match in EMPTY_INITIALIZER.finditer(masked):
+                actual = source[match.start():match.end()]
+                if b'"' in actual or b"'" in actual:
+                    continue  # a masked string literal, not an empty initializer
+                edits.append((match.start(), match.end(),
+                              b"= { 0 } /* sr_unknown_data */;"))
+                report["unknown_initializers"] += 1
         for start, end, replacement in sorted(edits, reverse=True):
             source = source[:start] + replacement + source[end:]
     return source, report
@@ -202,19 +287,22 @@ def is_lvalue(node, source):
     return False
 
 
-def declarator_identifier(declarator, source):
-    # Typedef names parse as type_identifier; ordinary declarators as identifier.
+def declarator_identifier_node(declarator):
     node = declarator
     while node is not None and node.type not in ("identifier", "type_identifier"):
         nxt = node.child_by_field_name("declarator")
         if nxt is None:
-            # Parenthesized declarators such as (*name)(args) wrap the inner
-            # declarator without a declarator field; skip parameter lists.
             for child in node.named_children:
                 if child.type != "parameter_list":
                     nxt = child
                     break
         node = nxt
+    return node
+
+
+def declarator_identifier(declarator, source):
+    # Typedef names parse as type_identifier; ordinary declarators as identifier.
+    node = declarator_identifier_node(declarator)
     return None if node is None else source[node.start_byte:node.end_byte].decode()
 
 
@@ -235,9 +323,53 @@ def declaration_declarator(node):
     return declarator
 
 
+# Hex-Rays names an object after its address and encodes the recovered size
+# in the prefix. A referenced-but-never-declared symbol of this shape gets an
+# extern object of that prefix's width; the address is recovered, contents are
+# pending type recovery.
+DATA_SYMBOL = re.compile(r"^(byte|word|dword|qword|off|flt|dbl|unk)_[0-9A-Fa-f]+$")
+DATA_SYMBOL_WIDTH = {
+    "byte": "unsigned char", "word": "unsigned short",
+    "dword": "unsigned int", "flt": "float",
+    "qword": "unsigned __int64", "dbl": "double",
+    "off": "void *", "unk": "unsigned char",
+}
+
+
+def data_symbol_decl(name):
+    prefix = name.split("_", 1)[0]
+    kind = DATA_SYMBOL_WIDTH.get(prefix)
+    if kind is None:
+        return None
+    if prefix == "unk":
+        return "extern unsigned char %s[1];" % name
+    return "extern %s %s;" % (kind, name)
+
+
+def is_declarator_position(node):
+    """True if the identifier is reached from a declaration via declarator fields."""
+    current = node
+    parent = node.parent
+    while parent is not None:
+        field_node = parent.child_by_field_name("declarator")
+        if field_node is None or not (
+                field_node.start_byte <= current.start_byte
+                and current.end_byte <= field_node.end_byte):
+            return False
+        if parent.type in ("declaration", "function_definition",
+                           "parameter_declaration", "field_declaration"):
+            return True
+        current = parent
+        parent = parent.parent
+    return False
+
+
 def translate(source, functions=None, known_types=None, extra_names=None,
-              import_names=None):
-    source, prepass = preprocess(source)
+              import_names=None, prepass=None):
+    if prepass is None:
+        source, prepass = preprocess(source)
+    else:
+        source, prepass = source, prepass
     parser = Parser(Language(tree_sitter_c.language()))
     tree = parser.parse(source)
     line_ends = [index for index, value in enumerate(source) if value == 10]
@@ -245,6 +377,7 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                   if re.fullmatch(r"[A-Za-z_][A-Za-z_0-9]*", sanitize_name(item["name"]))}
     prototypes = {}
     definitions = {}
+    definition_counts = {}
     declared = set()
     function_names = set()
     pointer_variables = set()
@@ -334,7 +467,23 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                     if sub.type == "parameter_list":
                         params = source[sub.start_byte:sub.end_byte].decode()
                         break
+                if name in definitions and name != "MEMORY":
+                    # Hex-Rays emits repeated template instantiations under one
+                    # sanitized name; keep every body by suffixing the rest.
+                    # Address-named (MEMORY) definitions are unique by address.
+                    identifier_node = declarator_identifier_node(declarator)
+                    if identifier_node is not None:
+                        suffix = "_dup%d" % (definition_counts[name] + 1)
+                        declaration_edits.append({
+                            "kind": "duplicate_definition",
+                            "start": identifier_node.start_byte,
+                            "end": identifier_node.end_byte,
+                            "line": bisect_right(line_ends, identifier_node.start_byte) + 1,
+                            "replacement": name + suffix})
+                        definition_counts[name] += 1
+                    continue
                 definitions[name] = params
+                definition_counts[name] = 1
     addresses = set(function_names) | set(extra_names or ())
     # Drop the export's own prototypes for names system headers declare, for
     # names that are actually types (Hex-Rays mis-declares some as functions),
@@ -364,6 +513,8 @@ def translate(source, functions=None, known_types=None, extra_names=None,
     edits, skipped = declaration_edits, []
     data_objects = set()
     referenced_types = set()
+    declared_data_symbols = set()
+    used_data_symbols = set()
     seen_spans = set()
     for node in nodes(tree.root_node):
         if node.type == "call_expression":
@@ -390,6 +541,13 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                     and parent.child_by_field_name("name") is not None
                     and parent.child_by_field_name("name").id == node.id):
                 referenced_types.add(source[node.start_byte:node.end_byte].decode())
+        elif node.type == "identifier":
+            name = source[node.start_byte:node.end_byte].decode()
+            if DATA_SYMBOL.match(name):
+                if is_declarator_position(node):
+                    declared_data_symbols.add(name)
+                else:
+                    used_data_symbols.add(name)
         elif node.type == "subscript_expression":
             # MEMORY[addr][i] with no known function at addr reads a data object.
             argument = node.child_by_field_name("argument")
@@ -448,16 +606,30 @@ def translate(source, functions=None, known_types=None, extra_names=None,
         if spec is None:
             continue
         operator = source[argument.end_byte:field.start_byte].strip()
-        # Rvalues and damaged parse nodes need individual review, not address-taking.
-        valid = is_lvalue(argument, source)
-        if node.has_error or not valid or operator not in (b".", b"->"):
+        if node.has_error or operator not in (b".", b"->"):
             skipped.append({"line": bisect_right(line_ends, node.start_byte) + 1, "expression": source[node.start_byte:node.end_byte].decode()})
             continue
         width, member = spec
-        macro = b"SR_VEC_PTR_LANES" if operator == b"->" else b"SR_VEC_LANES"
+        if operator == b"->":
+            # Rvalue pointers read through a single-evaluation temporary too;
+            # writes are only valid on lvalues, which keep the pointer macros.
+            if not is_lvalue(argument, source):
+                macro = b"SR_VEC_READ_PTR_LANES"
+                replacement = (macro + b"(" + str(width).encode() + b", "
+                               + source[argument.start_byte:argument.end_byte] + b", " + member.encode() + b")")
+                edits.append({"kind": "simd_read", "start": node.start_byte, "end": node.end_byte, "line": bisect_right(line_ends, node.start_byte) + 1,
+                              "field": source[field.start_byte:field.end_byte].decode(), "replacement": replacement.decode()})
+                continue
+            macro = b"SR_VEC_PTR_LANES"
+        elif not is_lvalue(argument, source):
+            # Lane read on an rvalue such as an intrinsic call result.
+            macro = b"SR_VEC_READ_LANES"
+        else:
+            macro = b"SR_VEC_LANES"
         replacement = (macro + b"(" + str(width).encode() + b", "
                        + source[argument.start_byte:argument.end_byte] + b", " + member.encode() + b")")
-        edits.append({"kind": "simd", "start": node.start_byte, "end": node.end_byte, "line": bisect_right(line_ends, node.start_byte) + 1,
+        edits.append({"kind": "simd" if macro in (b"SR_VEC_LANES", b"SR_VEC_PTR_LANES") else "simd_read",
+                      "start": node.start_byte, "end": node.end_byte, "line": bisect_right(line_ends, node.start_byte) + 1,
                       "field": source[field.start_byte:field.end_byte].decode(), "replacement": replacement.decode()})
     # Nested vector field expressions are unusual; retain them for manual review.
     ordered = sorted(edits, key=lambda item: (item["start"], -item["end"]))
@@ -483,10 +655,15 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                 struct_tags.add(source[name.start_byte:name.end_byte].decode())
     excluded = known | (declared - struct_tags)
     forward_types = sorted(name for name in referenced_types - excluded)
+    extern_objects = {
+        name: decl for name in sorted(used_data_symbols - declared_data_symbols)
+        if (decl := data_symbol_decl(name)) is not None
+    }
     report = {"edits": accepted, "skipped": skipped,
               "forward_declarations": list(forward_declarations.values()),
               "data_objects": sorted(data_objects),
               "forward_types": forward_types,
+              "extern_objects": extern_objects,
               "input_has_parse_errors": tree.root_node.has_error}
     report.update(prepass)
     return b"".join(fragments), report
@@ -498,6 +675,10 @@ def build_forward_header(report):
     if report["forward_types"]:
         lines.append("/* Referenced but undeclared type names; layouts are recovered separately. */")
         lines += ["typedef struct %s %s;" % (name, name) for name in report["forward_types"]]
+    if report.get("extern_objects"):
+        lines.append("/* Referenced data symbols the export never declares; sized by")
+        lines.append("   the Hex-Rays name prefix. Contents are pending type recovery. */")
+        lines += list(report["extern_objects"].values())
     if report["data_objects"]:
         lines.append("/* Data objects named by their image addresses; contents are linked later. */")
         lines += ["extern unsigned char %s[];" % name for name in report["data_objects"]]
@@ -595,6 +776,39 @@ def parse_known_types(path):
     return known
 
 
+def append_missing_functions(original, source, manifest):
+    """Append per-function exports the combined file never included.
+
+    The combined export predates the final analysis pass: some decompiled
+    functions exist under exports/<target>/functions/ but appear nowhere in
+    the combined translation unit, leaving their MEMORY[address] call sites
+    unbound. Appending their definitions lets those calls resolve.
+    """
+    identifiers = set(re.findall(r"[A-Za-z_][A-Za-z_0-9]*", source.decode("utf-8", "replace")))
+    appended, missing_files = [], []
+    for item in manifest["functions"]:
+        name = sanitize_name(item.get("name", ""))
+        if not name or name in identifiers:
+            continue
+        relative = item.get("file")
+        if not relative:
+            continue
+        path = original / relative
+        if not path.exists():
+            missing_files.append(str(relative))
+            continue
+        body = path.read_bytes()
+        if len(body.strip()) < 8:
+            continue
+        # The combined file was already preprocessed, so the appended raw
+        # exports need the same treatment before they join the unit.
+        body, _ = preprocess(body)
+        appended.append(b"\n/* Recovered from the per-function export "
+                        + relative.encode() + b"; the combined file omitted it. */\n"
+                        + body)
+    return source + b"".join(appended), len(appended), missing_files
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--binary", choices=("client", "dedicated", "all"), default="all")
@@ -607,14 +821,20 @@ def main():
         if manifest["state"] != "complete":
             raise RuntimeError("Wait for the " + target + " export to complete")
         source = (original / (stem + ".c")).read_bytes()
+        source, prepass = preprocess(source)
+        source, appended, missing_files = append_missing_functions(original, source, manifest)
         known_types = parse_known_types(original / "defs.h")
         all_imports, undeclared_imports = collect_import_names(original / "imports.json")
         prepared, report = translate(source, manifest["functions"], known_types,
-                                     extra_names=all_imports, import_names=all_imports)
+                                     extra_names=all_imports, import_names=all_imports,
+                                     prepass=prepass)
+        report["appended_functions"] = appended
+        report["missing_per_function_exports"] = missing_files
         includes = []
         if undeclared_imports:
             includes.append('#include "recovered_imports.h"')
-        if any(report[key] for key in ("forward_declarations", "data_objects", "forward_types")):
+        if any(report[key] for key in ("forward_declarations", "data_objects",
+                                       "forward_types", "extern_objects")):
             includes.append('#include "recovered_forward.h"')
         if includes:
             prepared = ("\n".join(includes) + "\n").encode() + prepared

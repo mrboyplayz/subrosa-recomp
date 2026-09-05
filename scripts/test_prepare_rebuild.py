@@ -34,9 +34,10 @@ class PreparationTests(unittest.TestCase):
         translated, report = translate(source)
         self.assertIn(b'/* v.m128_f32[0] */', translated)
         self.assertIn(b'"v.m128_f32[0]"', translated)
-        self.assertIn(b'(make_vector()).m128_f32[0]', translated)
-        self.assertEqual(len(report["edits"]), 1)
-        self.assertEqual(len(report["skipped"]), 1)
+        # The rvalue lane read becomes a single-evaluation temporary read;
+        # string and comment bytes survive untouched.
+        self.assertIn(b'SR_VEC_READ_LANES(128, (make_vector()), f32)', translated)
+        self.assertEqual(len(report["skipped"]), 0)
 
     def test_generated_code_preserves_lane_updates(self):
         source = '''#include <emmintrin.h>
@@ -95,12 +96,24 @@ class PreparationTests(unittest.TestCase):
         self.assertIn("negative", compiled.stderr)
 
     def test_const_storage_remains_readonly(self):
+        # vector_views.h itself must keep const qualification; the prepared
+        # export strips Hex-Rays' spurious const before this header is used.
         source = '''#include <emmintrin.h>
         #include "vector_views.h"
-        int main(void) { const __m128 v = _mm_setzero_ps(); v.m128_f32[0] = 1; return 0; }'''
-        compiled, _, _ = self.compile_fixture("readonly", source)
-        self.assertNotEqual(compiled.returncode, 0)
-        self.assertIn("read-only", compiled.stderr)
+        int main(void) {
+            const __m128 v = _mm_setzero_ps();
+            SR_VEC_LANES(128, v, f32)[0] = 1;
+            return 0;
+        }'''
+        compiler = os.environ.get("CC") or shutil.which("gcc")
+        output = PROJECT / "reports/rebuild-tests"
+        output.mkdir(parents=True, exist_ok=True)
+        path = output / "readonly.c"
+        path.write_text(source, encoding="utf-8")
+        result = subprocess.run([compiler, "-std=c11", "-O2", "-Werror", "-I", str(PROJECT / "src/rebuild"),
+                                 str(path), "-o", str(output / "readonly.exe")], capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("read-only", result.stderr)
 
     def test_cpuid_and_xgetbv_become_extended_assembly(self):
         source = '''typedef unsigned long long u64;

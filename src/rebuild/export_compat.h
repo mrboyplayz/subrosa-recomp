@@ -54,8 +54,32 @@ double fsqrt(double);
 #ifndef BYTE2
 #define BYTE2(x) BYTEn(x,  2)
 #endif
+#ifndef BYTE3
+#define BYTE3(x) BYTEn(x,  3)
+#endif
+#ifndef BYTE4
+#define BYTE4(x) BYTEn(x,  4)
+#endif
+#ifndef BYTE5
+#define BYTE5(x) BYTEn(x,  5)
+#endif
+#ifndef BYTE6
+#define BYTE6(x) BYTEn(x,  6)
+#endif
+#ifndef BYTE7
+#define BYTE7(x) BYTEn(x,  7)
+#endif
+#ifndef BYTE8
+#define BYTE8(x) BYTEn(x,  8)
+#endif
+#ifndef WORD3
+#define WORD3(x) WORDn(x,  3)
+#endif
 #ifndef DWORD1
 #define DWORD1(x) DWORDn(x,  1)
+#endif
+#ifndef DWORD2
+#define DWORD2(x) DWORDn(x,  2)
 #endif
 
 #ifndef __cplusplus
