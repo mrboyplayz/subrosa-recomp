@@ -55,6 +55,16 @@ add_executable(sr_3d WIN32
 
 target_include_directories(sr_3d PRIVATE src)
 
+add_executable(sr_play WIN32 src/sr_play_win.c src/sr_play.c src/sr_geometry.c src/sr_binary.c)
+target_link_libraries(sr_play PRIVATE opengl32 gdi32 user32)
+add_executable(sr_play_test src/sr_play_test.c src/sr_play.c)
+if (NOT MSVC)
+    target_compile_options(sr_play PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(sr_play_test PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+enable_testing()
+add_test(NAME playable_logic COMMAND sr_play_test)
+
 if (MSVC)
     target_compile_options(sr_probe PRIVATE /W4)
     target_compile_options(sr_ui PRIVATE /W4)
