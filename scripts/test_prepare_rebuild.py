@@ -67,10 +67,13 @@ class PreparationTests(unittest.TestCase):
                      {"address": "0x2000", "name": "not_declared"}]
         translated, report = translate(source, functions)
         self.assertIn(b"known(1);", translated)
-        self.assertIn(b"MEMORY[0x2000](2)", translated)
-        self.assertIn(b"MEMORY[0x3000](3)", translated)
+        # Unresolved addresses are named honestly as extern functions.
+        self.assertIn(b"sr_func_2000(2);", translated)
+        self.assertIn(b"sr_func_3000(3);", translated)
+        self.assertIn("__int64 __fastcall sr_func_2000();", build_forward_header(report))
         self.assertIn(b'"MEMORY[0x1000](1)"', translated)
-        self.assertEqual(len(report["edits"]), 1)
+        self.assertEqual(sum(e["kind"] == "function_binding" for e in report["edits"]), 1)
+        self.assertEqual(sum(e["kind"] == "unknown_call_binding" for e in report["edits"]), 2)
 
     def test_address_named_definition_and_its_call_are_bound_together(self):
         source = b'''int MEMORY[0x1234](int value) { return value + 1; }

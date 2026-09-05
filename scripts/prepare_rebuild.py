@@ -69,8 +69,11 @@ HEX_H_LITERAL = re.compile(rb"\b([0-9][0-9A-Fa-f]*)[hH]\b")
 INTEGER_LITERAL = re.compile(rb"(?<![\w.])(0[xX][0-9A-Fa-f]+|[0-9]+)([uUlL]*)")
 ASM_BLOCK = re.compile(rb"__asm\s*\{([^{}]*)\}")
 BACKTICK_NAME = re.compile(rb"`([^'\n]*)'")
-TEMPLATE_NAME = re.compile(rb"([A-Za-z_][A-Za-z_0-9]*)<([A-Za-z_0-9, *& ]+?)>(?=\s*[:=(])")
+TEMPLATE_NAME = re.compile(rb"([A-Za-z_][A-Za-z_0-9]*)<((?:[^<>]|<[^<>]*>)+)>(?=\s*[:=(])")
 OPERATOR_CALL = re.compile(rb"([A-Za-z_0-9])__operator\s*\(\s*\)")
+OPERATOR_ASSIGN = re.compile(rb"([A-Za-z_0-9])__operator\s*=")
+AT_REGISTER = re.compile(rb"@<([a-z0-9]+)>")
+SPOILS = re.compile(rb"__spoils\s*<[^>\n]*>")
 CONST_KEYWORD = re.compile(rb"\bconst\b")
 EMPTY_INITIALIZER = re.compile(rb"=\s*;")
 VECTOR_CAST = re.compile(
@@ -154,7 +157,8 @@ def preprocess(source):
     report = {"asm_cpuid": 0, "asm_xgetbv": 0, "asm_wrapped": 0,
               "renamed_qualified": 0, "renamed_anonymous": 0,
               "renamed_backtick": 0, "renamed_template": 0,
-              "renamed_operator_call": 0, "unknown_floats": 0,
+              "renamed_operator_call": 0, "renamed_operator_assign": 0,
+              "register_annotations": 0, "unknown_floats": 0,
               "unknown_initializers": 0, "const_stripped": 0,
               "vector_loads": 0, "vector_moves": 0,
               "split_constants": 0, "unsigned_constants": 0}
@@ -200,6 +204,10 @@ def preprocess(source):
                 edits.append((match.start(), match.end(),
                               source[match.start():match.end()].replace(b"::", b"__")))
                 report["renamed_qualified"] += 1
+            for match in re.finditer(rb"\?\?\$[^\s(,;)]+", masked):
+                sane = b"sr_m_" + re.sub(rb"[^A-Za-z0-9_]", b"_", source[match.start():match.end()])
+                edits.append((match.start(), match.end(), sane))
+                report["renamed_anonymous"] += 1
             for match in re.finditer(rb"#(?=[0-9])", masked):
                 edits.append((match.start(), match.end(), b"sr_anon_"))
                 report["renamed_anonymous"] += 1
@@ -211,6 +219,17 @@ def preprocess(source):
                 edits.append((match.start(), match.end(),
                               match.group(1) + b"__operator_call"))
                 report["renamed_operator_call"] += 1
+            for match in OPERATOR_ASSIGN.finditer(masked):
+                edits.append((match.start(), match.end(),
+                              match.group(1) + b"__operator_assign"))
+                report["renamed_operator_assign"] += 1
+            for match in AT_REGISTER.finditer(masked):
+                edits.append((match.start(), match.end(),
+                              b"/* " + match.group(1) + b" */"))
+                report["register_annotations"] += 1
+            for match in SPOILS.finditer(masked):
+                edits.append((match.start(), match.end(), b""))
+                report["register_annotations"] += 1
         elif direction == "vectors":
             masked = mask_noncode(source)
             for match in VECTOR_CAST.finditer(masked):
@@ -338,12 +357,18 @@ DATA_SYMBOL_WIDTH = {
 
 def data_symbol_decl(name):
     prefix = name.split("_", 1)[0]
+    if name.startswith("__imp_"):
+        # MinGW import libraries expose __imp_<name> data slots for every
+        # imported function; the cast-called thunks in the export need them.
+        return "extern unsigned __int64 %s;" % name
     kind = DATA_SYMBOL_WIDTH.get(prefix)
-    if kind is None:
-        return None
-    if prefix == "unk":
-        return "extern unsigned char %s[1];" % name
-    return "extern %s %s;" % (kind, name)
+    if kind is not None:
+        if prefix == "unk":
+            return "extern unsigned char %s[1];" % name
+        return "extern %s %s;" % (kind, name)
+    if re.match(r"^a[A-Z][A-Za-z0-9_]*$", name):
+        return "extern char %s[];" % name
+    return None
 
 
 def is_declarator_position(node):
@@ -355,7 +380,17 @@ def is_declarator_position(node):
         if field_node is None or not (
                 field_node.start_byte <= current.start_byte
                 and current.end_byte <= field_node.end_byte):
-            return False
+            # Parenthesized declarators ((*name)(args)) lack a declarator
+            # field; any named child that spans the identifier continues the
+            # declarator chain.
+            field_node = None
+            for child in parent.named_children:
+                if child.id != current.id and child.start_byte <= current.start_byte \
+                        and current.end_byte <= child.end_byte:
+                    field_node = child
+                    break
+            if field_node is None:
+                return False
         if parent.type in ("declaration", "function_definition",
                            "parameter_declaration", "field_declaration"):
             return True
@@ -364,8 +399,17 @@ def is_declarator_position(node):
     return False
 
 
+def enclosing_function_start(node):
+    current = node
+    while current is not None:
+        if current.type == "function_definition":
+            return current.start_byte
+        current = current.parent
+    return 0  # translation-unit scope
+
+
 def translate(source, functions=None, known_types=None, extra_names=None,
-              import_names=None, prepass=None):
+              import_names=None, prepass=None, renamed_names=None):
     if prepass is None:
         source, prepass = preprocess(source)
     else:
@@ -373,15 +417,24 @@ def translate(source, functions=None, known_types=None, extra_names=None,
     parser = Parser(Language(tree_sitter_c.language()))
     tree = parser.parse(source)
     line_ends = [index for index, value in enumerate(source) if value == 10]
-    candidates = {int(item["address"], 16): sanitize_name(item["name"]) for item in (functions or [])
-                  if re.fullmatch(r"[A-Za-z_][A-Za-z_0-9]*", sanitize_name(item["name"]))}
+
+    def candidate_name(item):
+        name = sanitize_name(item.get("name", ""))
+        if name in (renamed_names or set()):
+            name += "_sr"
+        return name
+
+    candidates = {int(item["address"], 16): candidate_name(item) for item in (functions or [])
+                  if re.fullmatch(r"[A-Za-z_][A-Za-z_0-9]*", candidate_name(item))}
     prototypes = {}
     definitions = {}
+    definition_plists = {}
     definition_counts = {}
     declared = set()
     function_names = set()
     pointer_variables = set()
     pointer_typedefs = set()
+    vector_variables = set()
     declaration_edits = []
     forward_declarations = {}
     for node in nodes(tree.root_node):
@@ -433,6 +486,16 @@ def translate(source, functions=None, known_types=None, extra_names=None,
             # assignments; only integer storage gets the explicit address cast.
             type_node = node.child_by_field_name("type")
             declarators = declaration_declarator(node)
+            if type_node is not None and re.fullmatch(
+                    rb"__(m128i?|m128d|m64)", source[type_node.start_byte:type_node.end_byte]):
+                # Vector-typed storage: integer assignments to these names are
+                # Hex-Rays movd semantics, rewritten as the moves they denote.
+                if declarators is not None:
+                    fstart = enclosing_function_start(node)
+                    for sub in nodes(declarators):
+                        if sub.type == "identifier":
+                            vector_variables.add(
+                                (fstart, source[sub.start_byte:sub.end_byte].decode()))
             pointer_type = (type_node is not None
                             and source[type_node.start_byte:type_node.end_byte].decode() in pointer_typedefs)
             if declarators is not None and (
@@ -449,23 +512,28 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                     and b"=" not in source[declarators.start_byte:declarators.end_byte]):
                 name = declarator_identifier(declarators, source)
                 params = None
+                plist_span = None
                 for sub in nodes(declarators):
                     if sub.type == "function_declarator":
                         plist = sub.child_by_field_name("parameters")
                         if plist is not None:
                             params = source[plist.start_byte:plist.end_byte].decode()
+                            plist_span = (plist.start_byte, plist.end_byte)
                             break
                 if name is not None:
                     prototypes.setdefault(name, []).append(
-                        {"start": node.start_byte, "end": node.end_byte, "params": params})
+                        {"start": node.start_byte, "end": node.end_byte, "params": params,
+                         "plist": plist_span})
         elif node.type == "function_definition":
             declarator = node.child_by_field_name("declarator")
             name = declarator_identifier(declarator, source)
             if name is not None:
                 params = None
+                plist_span = None
                 for sub in nodes(declarator):
                     if sub.type == "parameter_list":
                         params = source[sub.start_byte:sub.end_byte].decode()
+                        plist_span = (sub.start_byte, sub.end_byte)
                         break
                 if name in definitions and name != "MEMORY":
                     # Hex-Rays emits repeated template instantiations under one
@@ -483,6 +551,7 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                         definition_counts[name] += 1
                     continue
                 definitions[name] = params
+                definition_plists[name] = plist_span
                 definition_counts[name] = 1
     addresses = set(function_names) | set(extra_names or ())
     # Drop the export's own prototypes for names system headers declare, for
@@ -491,6 +560,7 @@ def translate(source, functions=None, known_types=None, extra_names=None,
     system_owned = SYSTEM_DECLARED_NAMES | (import_names or set()) | \
         BUILTIN_TYPES | (known_types or set())
     dropped_prototypes = []
+    dropped_ids = set()
     for name, entries in prototypes.items():
         if name in system_owned:
             keep_params = None
@@ -504,6 +574,7 @@ def translate(source, functions=None, known_types=None, extra_names=None,
         for entry in entries:
             if keep_params is None or entry["params"] != keep_params:
                 dropped_prototypes.append(entry)
+                dropped_ids.add(id(entry))
     for entry in dropped_prototypes:
         declaration_edits.append(
             {"kind": "prototype_drop", "start": entry["start"], "end": entry["end"],
@@ -515,13 +586,22 @@ def translate(source, functions=None, known_types=None, extra_names=None,
     referenced_types = set()
     declared_data_symbols = set()
     used_data_symbols = set()
+    extern_functions = set()
+    call_arities = {}
     seen_spans = set()
     for node in nodes(tree.root_node):
         if node.type == "call_expression":
             function = node.child_by_field_name("function")
+            bound_subscript = None
+            if function is not None and function.type == "cast_expression":
+                cast_value = function.child_by_field_name("value")
+                if cast_value is not None and cast_value.type == "subscript_expression":
+                    bound_subscript = cast_value
             if function is not None and function.type == "subscript_expression":
-                base = function.child_by_field_name("argument")
-                index = function.child_by_field_name("index")
+                bound_subscript = function
+            if bound_subscript is not None:
+                base = bound_subscript.child_by_field_name("argument")
+                index = bound_subscript.child_by_field_name("index")
                 if (base is not None and index is not None and index.type == "number_literal"
                         and source[base.start_byte:base.end_byte] == b"MEMORY"):
                     literal = source[index.start_byte:index.end_byte]
@@ -529,9 +609,27 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                         address = int(literal, 16)
                         name = bindings.get(address)
                         if name is not None:
-                            edits.append({"kind": "function_binding", "start": function.start_byte,
-                                          "end": function.end_byte, "line": bisect_right(line_ends, function.start_byte) + 1,
+                            edits.append({"kind": "function_binding", "start": bound_subscript.start_byte,
+                                          "end": bound_subscript.end_byte, "line": bisect_right(line_ends, bound_subscript.start_byte) + 1,
                                           "address": hex(address), "replacement": name})
+                        elif (bound_subscript.start_byte, bound_subscript.end_byte) not in seen_spans:
+                            # A call to an address the inventory never resolved:
+                            # name it honestly as an extern function.
+                            seen_spans.add((bound_subscript.start_byte, bound_subscript.end_byte))
+                            fname = "sr_func_%x" % address
+                            extern_functions.add(fname)
+                            edits.append({"kind": "unknown_call_binding", "start": bound_subscript.start_byte,
+                                          "end": bound_subscript.end_byte, "line": bisect_right(line_ends, bound_subscript.start_byte) + 1,
+                                          "address": hex(address), "replacement": fname})
+            callee = node.child_by_field_name("function")
+            if callee is not None and callee.type == "identifier":
+                cname = source[callee.start_byte:callee.end_byte].decode()
+                arity = len(node.child_by_field_name("arguments").named_children) \
+                    if node.child_by_field_name("arguments") is not None else 0
+                if cname in call_arities:
+                    call_arities[cname] = max(call_arities[cname], arity)
+                else:
+                    call_arities[cname] = arity
         elif node.type == "type_identifier":
             # A struct/union/enum tag use is satisfied by the tag itself; only
             # bare type names need forward typedefs.
@@ -543,40 +641,73 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                 referenced_types.add(source[node.start_byte:node.end_byte].decode())
         elif node.type == "identifier":
             name = source[node.start_byte:node.end_byte].decode()
-            if DATA_SYMBOL.match(name):
+            if DATA_SYMBOL.match(name) or re.match(r"^a[A-Z][A-Za-z0-9_]*$", name) \
+                    or name.startswith("__imp_"):
                 if is_declarator_position(node):
                     declared_data_symbols.add(name)
                 else:
                     used_data_symbols.add(name)
         elif node.type == "subscript_expression":
-            # MEMORY[addr][i] with no known function at addr reads a data object.
             argument = node.child_by_field_name("argument")
-            if argument is None or argument.type != "subscript_expression":
+            if argument is not None and argument.type == "subscript_expression":
+                # MEMORY[addr][i] with no known function at addr: a data object.
+                base = argument.child_by_field_name("argument")
+                index = argument.child_by_field_name("index")
+                if (base is None or index is None or base.type != "identifier"
+                        or source[base.start_byte:base.end_byte] != b"MEMORY"
+                        or index.type != "number_literal"):
+                    continue
+                literal = source[index.start_byte:index.end_byte]
+                if not re.fullmatch(rb"0[xX][0-9a-fA-F]+", literal):
+                    continue
+                address = int(literal, 16)
+                if address in candidates:
+                    continue
+                if (argument.start_byte, argument.end_byte) in seen_spans:
+                    continue
+                seen_spans.add((argument.start_byte, argument.end_byte))
+                name = "sr_mem_%x" % address
+                data_objects.add(name)
+                edits.append({"kind": "data_object", "start": argument.start_byte,
+                              "end": argument.end_byte,
+                              "line": bisect_right(line_ends, argument.start_byte) + 1,
+                              "address": hex(address), "replacement": name})
                 continue
-            base = argument.child_by_field_name("argument")
-            index = argument.child_by_field_name("index")
+            # Bare scalar MEMORY[addr]: Hex-Rays' qword read of unknown data.
+            base = node.child_by_field_name("argument")
+            index = node.child_by_field_name("index")
+            parent = node.parent
+            cast_called = (parent is not None and parent.type == "cast_expression"
+                           and parent.parent is not None
+                           and parent.parent.type == "call_expression"
+                           and parent.parent.child_by_field_name("function") is not None
+                           and parent.parent.child_by_field_name("function").id == parent.id)
             if (base is None or index is None or base.type != "identifier"
                     or source[base.start_byte:base.end_byte] != b"MEMORY"
-                    or index.type != "number_literal"):
+                    or index.type != "number_literal"
+                    or parent is None or parent.type in ("subscript_expression", "call_expression")
+                    or cast_called):
                 continue
             literal = source[index.start_byte:index.end_byte]
             if not re.fullmatch(rb"0[xX][0-9a-fA-F]+", literal):
                 continue
+            if (node.start_byte, node.end_byte) in seen_spans:
+                continue
+            seen_spans.add((node.start_byte, node.end_byte))
             address = int(literal, 16)
-            if address in candidates:
-                continue
-            if (argument.start_byte, argument.end_byte) in seen_spans:
-                continue
-            seen_spans.add((argument.start_byte, argument.end_byte))
             name = "sr_mem_%x" % address
             data_objects.add(name)
-            edits.append({"kind": "data_object", "start": argument.start_byte,
-                          "end": argument.end_byte,
-                          "line": bisect_right(line_ends, argument.start_byte) + 1,
-                          "address": hex(address), "replacement": name})
+            edits.append({"kind": "data_object_scalar", "start": node.start_byte,
+                          "end": node.end_byte,
+                          "line": bisect_right(line_ends, node.start_byte) + 1,
+                          "address": hex(address),
+                          "replacement": "(*(unsigned __int64 *)&%s[0])" % name})
         elif node.type == "assignment_expression":
             # Hex-Rays stores function addresses through integer views; make the
             # representation explicit instead of relying on legacy conversions.
+            # PENDING: integer assignments to vector-typed locals (movd/movq
+            # semantics) need real type inference; a syntactic heuristic
+            # misfired on vector-returning calls and was removed.
             right = node.child_by_field_name("right")
             left = node.child_by_field_name("left")
             if (right is not None and right.type == "identifier" and left is not None
@@ -631,6 +762,30 @@ def translate(source, functions=None, known_types=None, extra_names=None,
         edits.append({"kind": "simd" if macro in (b"SR_VEC_LANES", b"SR_VEC_PTR_LANES") else "simd_read",
                       "start": node.start_byte, "end": node.end_byte, "line": bisect_right(line_ends, node.start_byte) + 1,
                       "field": source[field.start_byte:field.end_byte].decode(), "replacement": replacement.decode()})
+    # PENDING: callsites that pass more arguments than the definition declares
+    # could gain a variadic tail, but prototype bookkeeping for the edit is
+    # not yet reliable; the disagreements remain visible compiler errors.
+    for name, plist in [] if True else definition_plists.items():
+        if plist is None or name not in call_arities:
+            continue
+        params_text = definitions.get(name)
+        if not params_text or params_text == "(void)":
+            continue
+        if call_arities[name] <= params_text.count(",") + 1:
+            continue
+        declaration_edits.append({"kind": "variadic_fix", "start": plist[1] - 1,
+                                  "end": plist[1],
+                                  "line": bisect_right(line_ends, plist[0]) + 1,
+                                  "replacement": ", ...)"})
+        for entry in prototypes.get(name, []):
+            if id(entry) in dropped_ids:
+                continue
+            if entry.get("plist") and entry["params"] == params_text:
+                declaration_edits.append({"kind": "variadic_fix",
+                                          "start": entry["plist"][1] - 1,
+                                          "end": entry["plist"][1],
+                                          "line": bisect_right(line_ends, entry["plist"][0]) + 1,
+                                          "replacement": ", ...)"})
     # Nested vector field expressions are unusual; retain them for manual review.
     ordered = sorted(edits, key=lambda item: (item["start"], -item["end"]))
     accepted = []
@@ -638,7 +793,8 @@ def translate(source, functions=None, known_types=None, extra_names=None,
         overlap_previous = index > 0 and ordered[index - 1]["end"] > edit["start"]
         overlap_next = index + 1 < len(ordered) and ordered[index + 1]["start"] < edit["end"]
         if overlap_previous or overlap_next:
-            skipped.append({"line": edit["line"], "reason": "overlapping edits require review"})
+            skipped.append({"line": edit["line"], "kind": edit.get("kind"),
+                            "reason": "overlapping edits require review"})
         else:
             accepted.append(edit)
     fragments, previous = [], 0
@@ -648,11 +804,15 @@ def translate(source, functions=None, known_types=None, extra_names=None,
     fragments.append(source[previous:])
     known = BUILTIN_TYPES | (known_types or set())
     struct_tags = set()
+    tag_declarations = []
     for node in nodes(tree.root_node):
         if node.type in ("struct_specifier", "union_specifier", "enum_specifier"):
             name = node.child_by_field_name("name")
             if name is not None and name.type == "type_identifier":
-                struct_tags.add(source[name.start_byte:name.end_byte].decode())
+                tname = source[name.start_byte:name.end_byte].decode()
+                struct_tags.add(tname)
+                if node.type in ("struct_specifier", "union_specifier"):
+                    tag_declarations.append("%s %s;" % (node.type[:-10], tname))
     excluded = known | (declared - struct_tags)
     forward_types = sorted(name for name in referenced_types - excluded)
     extern_objects = {
@@ -663,6 +823,8 @@ def translate(source, functions=None, known_types=None, extra_names=None,
               "forward_declarations": list(forward_declarations.values()),
               "data_objects": sorted(data_objects),
               "forward_types": forward_types,
+              "tag_declarations": sorted(set(tag_declarations)),
+              "extern_functions": sorted(extern_functions),
               "extern_objects": extern_objects,
               "input_has_parse_errors": tree.root_node.has_error}
     report.update(prepass)
@@ -670,8 +832,13 @@ def translate(source, functions=None, known_types=None, extra_names=None,
 
 
 def build_forward_header(report):
-    # Types must be declared before the prototypes that reference them.
+    # File-scope tag declarations must precede the prototypes that reference
+    # them: a tag first seen inside a parameter list has prototype scope, and
+    # identical-looking prototypes then declare incompatible types.
     lines = []
+    if report.get("tag_declarations"):
+        lines.append("/* File-scope tag declarations; prototype-scope tags die with their list. */")
+        lines += sorted(set(report["tag_declarations"]))
     if report["forward_types"]:
         lines.append("/* Referenced but undeclared type names; layouts are recovered separately. */")
         lines += ["typedef struct %s %s;" % (name, name) for name in report["forward_types"]]
@@ -679,6 +846,9 @@ def build_forward_header(report):
         lines.append("/* Referenced data symbols the export never declares; sized by")
         lines.append("   the Hex-Rays name prefix. Contents are pending type recovery. */")
         lines += list(report["extern_objects"].values())
+    if report.get("extern_functions"):
+        lines.append("/* Call sites to addresses the inventory never resolved. */")
+        lines += ["__int64 __fastcall %s();" % name for name in report["extern_functions"]]
     if report["data_objects"]:
         lines.append("/* Data objects named by their image addresses; contents are linked later. */")
         lines += ["extern unsigned char %s[];" % name for name in report["data_objects"]]
@@ -750,6 +920,15 @@ SYSTEM_DECLARED_NAMES = {
     "strncat_s", "strncpy_s", "strnicmp", "strnicoll", "strnlen",
     "swprintf_0", "terminate", "ungetwc", "wcscmp", "wcsncmp", "wcspbrk",
     "wcsnicmp", "wctomb",
+    "fopen", "fopen_s", "fwrite", "memcmp", "memcpy", "memmove", "strcmp",
+    "swprintf", "vsnprintf", "gethostbyname", "getservbyname", "select",
+    "strpbrk", "strnicmp_l", "wcsnicoll_l", "wctomb_s_l", "ultoa",
+    "handle_error", "handle_errorf", "handle_qnan2", "initialize_lc_time",
+    "mbsdec", "sin_special", "tan_special", "j__realloc_base",
+    "_acrt_CompareStringA", "register_thread_local_exe_atexit_callback",
+    "replace_current_thread_locale_nolock", "update_thread_multibyte_data_internal",
+        "unknown_libname_671", "unknown_libname_673", "cos_special", "dtest",
+    "strcpy_s", "strncnt", "_errno",
 }
 
 
@@ -809,6 +988,26 @@ def append_missing_functions(original, source, manifest):
     return source + b"".join(appended), len(appended), missing_files
 
 
+def rename_system_definitions(source, names):
+    """Rename local definitions of system-owned symbols to <name>_sr.
+
+    Hex-Rays' decompiled CRT/imports re-define symbols like _errno and
+    closesocket with inferred signatures that conflict with the real header
+    declarations. Renaming every occurrence keeps the export's internal
+    consistency while the system symbol remains untouched.
+    """
+    if not names:
+        return source, 0
+    masked = mask_noncode(source)
+    pattern = re.compile(
+        rb"(" + b"|".join(re.escape(n.encode()) for n in sorted(names, key=len, reverse=True)) + rb")")
+    replacements = [(m.start(), m.end(), m.group(1) + b"_sr")
+                    for m in pattern.finditer(masked)]
+    for start, end, replacement in sorted(replacements, reverse=True):
+        source = source[:start] + replacement + source[end:]
+    return source, len(replacements)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--binary", choices=("client", "dedicated", "all"), default="all")
@@ -823,18 +1022,27 @@ def main():
         source = (original / (stem + ".c")).read_bytes()
         source, prepass = preprocess(source)
         source, appended, missing_files = append_missing_functions(original, source, manifest)
-        known_types = parse_known_types(original / "defs.h")
         all_imports, undeclared_imports = collect_import_names(original / "imports.json")
+        # NOTE: blanket renaming of system-owned names is disabled: generic
+        # words such as `select` also appear as struct field names, and a
+        # word-boundary rename corrupts member accesses. Field-aware renaming
+        # is pending.
+        rename_set = set()
+        renamed_count = 0
+        known_types = parse_known_types(original / "defs.h")
+        all_imports = all_imports  # already collected above
         prepared, report = translate(source, manifest["functions"], known_types,
                                      extra_names=all_imports, import_names=all_imports,
-                                     prepass=prepass)
+                                     prepass=prepass, renamed_names=rename_set)
+        report["renamed_system_symbols"] = renamed_count
         report["appended_functions"] = appended
         report["missing_per_function_exports"] = missing_files
         includes = []
         if undeclared_imports:
             includes.append('#include "recovered_imports.h"')
         if any(report[key] for key in ("forward_declarations", "data_objects",
-                                       "forward_types", "extern_objects")):
+                                       "forward_types", "extern_objects",
+                                       "tag_declarations", "extern_functions")):
             includes.append('#include "recovered_forward.h"')
         if includes:
             prepared = ("\n".join(includes) + "\n").encode() + prepared

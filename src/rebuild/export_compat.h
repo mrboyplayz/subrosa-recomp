@@ -32,6 +32,8 @@ struct __crt_locale_pointers;
    assembly as these globals; the cpuid/xgetbv rewrites bind them to the
    real registers. Providing their storage is part of the pending ABI work. */
 extern unsigned __int64 _RAX, _RBX, _RCX, _RDX;
+extern unsigned __int64 _R8, _R9, _R10, _R11, _R12, _R13, _R14, _R15;
+extern unsigned __int64 _RSI, _RDI, _RBP, _RSP;
 
 /* Hex-Rays points Control Flow Guard dispatch tables at these synthetic
    CRT-provided no-ops. The export declares guard_check_icall_nop itself;
@@ -39,6 +41,12 @@ extern unsigned __int64 _RAX, _RBX, _RCX, _RDX;
    signature of the pointer it initializes. The real implementations come
    from the CRT and are part of the pending ABI work. */
 __int64 __fastcall guard_dispatch_icall_nop(unsigned __int64);
+
+/* Hex-Rays calling-convention annotations for usercall functions. */
+#define __usercall
+#define __userpurge
+/* MSVC SAL-style parameter annotation used on some thunks. */
+#define __hidden
 
 /* Hex-Rays spells x87 square root through this helper; the export calls it
    where the original used the FPU instruction. Binding it to libm is part of

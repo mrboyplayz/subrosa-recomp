@@ -5,18 +5,19 @@ means the tool emitted pseudocode, not that the inferred source has a valid ABI,
 complete types, correct initialization, or equivalent behavior. No rebuilt game
 executable has been produced by this step.
 
-The latest complete diagnostic run, in strict mode, reports 4,841 client errors and
-1,141 dedicated server errors, compared with 13,468 and 3,571 for the unmodified
+The latest complete diagnostic run, in strict mode, reports 4,437 client errors and
+1,126 dedicated server errors, compared with 13,468 and 3,571 for the unmodified
 exports. In lenient mode (`--lenient`), Hex-Rays pointer/integer conversion
 artifacts are downgraded to warnings — every diagnostic remains in the SARIF —
-leaving 1,332 client and 325 dedicated errors. These counts include cascades and
+leaving 1,121 client and 398 dedicated errors. These counts include cascades and
 are not counts of independent defects. The prepared client has 4,078 SIMD edits,
-240 restored address-named function declarations, 2,287 bound calls, 79 named
+246 restored address-named function declarations, 2,426 bound calls, 112 named
 data objects, 190 verbatim-wrapped assembly dumps, 1,544 explicit function-address
 casts, 592 per-function exports appended because the combined file omitted them,
-and only 4 expressions retained for review. The prepared server has 1,094 SIMD
-edits. All 19 transformation tests, the SIMD lane test, and the playable-logic
-test pass. The full client object compilation still fails.
+file-scope tag declarations for every referenced struct, and only 4 expressions
+retained for review. The prepared server has 1,094 SIMD edits. All 19
+transformation tests, the SIMD lane test, and the playable-logic test pass. The
+full client object compilation still fails.
 
 The complete client export covers 4,269 recognized functions after analysis settled.
 This coverage figure does not measure recompilation or behavioral equivalence.
@@ -40,10 +41,12 @@ transforms and records every edit in `work/rebuild/<target>/preparation.json`:
   unbound `MEMORY` calls: resolved calls rose from 1,499 to 2,287.
 - Hex-Rays names that are not valid C are renamed consistently:
   `A::B` to `A__B`, backticked demangler segments to underscored identifiers,
-  `Template<Args>` instantiations to `Template__Args`, lambda `operator()`
-  names to `__operator_call`, and `#N` placeholders to `sr_anon_N`.
-  Repeated template instantiations that sanitize to one name are kept by
-  suffixing later definitions `_dup2`, `_dup3`, ...
+  `Template<Args>` instantiations (including nested and comma-separated
+  argument lists) to `Template__Args`, lambda `operator()` and `operator=`
+  names to `__operator_call`/`__operator_assign`, MSVC-mangled `??$...@`
+  names to `sr_m_*`, `@<reg>` annotations to comments, and `#N` placeholders
+  to `sr_anon_N`. Repeated template instantiations that sanitize to one name
+  are kept by suffixing later definitions `_dup2`, `_dup3`, ...
 - Hex-Rays' spurious `const` inference (it marks pointers the original code
   wrote through) is stripped from the export copy; system headers keep theirs.
 - 128-bit integer constants that exceed 64 bits are split into lo/hi halves;
@@ -54,8 +57,13 @@ transforms and records every edit in `work/rebuild/<target>/preparation.json`:
 - `?flt` unknown-float placeholders and empty `= ;` initializers become
   marked placeholders (`sr_unknown_float`, `sr_unknown_data`); the zeros are
   not recovered data.
-- Referenced-but-never-declared data symbols (`off_140301EB8` and friends)
-  gain extern objects sized by the Hex-Rays name prefix.
+- Referenced-but-never-declared data symbols (`off_140301EB8`, string
+  symbols like `aApiMsWinCoreSy`, and `__imp_*` import slots) gain extern
+  declarations sized by the Hex-Rays name prefix. Calls to addresses the
+  inventory never resolved become `sr_func_*` extern functions.
+- File-scope `struct X;` declarations are emitted for every referenced tag:
+  a tag first seen inside a parameter list has prototype scope, which made
+  identical-looking prototypes declare incompatible types.
 - MSVC inline assembly: `cpuid` and `xgetbv` become exact GCC extended asm
   bound to the `_RAX`-family register globals; all other MASM dumps are
   rewrapped verbatim as `.intel_syntax` basic-asm strings, so their contents
