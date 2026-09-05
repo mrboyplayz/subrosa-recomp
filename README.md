@@ -4,6 +4,24 @@ Local reverse-engineering workspace for the installed Sub Rosa build in the pare
 
 This repo is for notes, scripts, type recovery, file-format specs, symbols, and clean-room reimplementation work. It intentionally does not track proprietary binaries, assets, IDA databases, or generated decompiler output.
 
+The full game rebuild is unfinished. The `subrosa_recompiled` target currently fails
+compilation; the existing UI and 3D executables remain prototypes. See
+[recompilation status](docs/recompilation.md) for the build commands and blockers.
+
+## Full Local Decompiler Output
+
+The local `exports/` directory contains actual Hex-Rays C output from the installed
+Windows binaries. It is ignored by Git, but the files are available on this machine:
+
+- `exports/client/subrosa.c`: combined client decompilation with inferred declarations.
+- `exports/dedicated/subrosadedicated.c`: combined dedicated-server decompilation.
+- `exports/client/functions/` and `exports/dedicated/functions/`: individual C files.
+- Each export's `manifest.json`: function addresses, exact recovery counts, and errors.
+
+This output is C-like pseudocode, not the original source or a buildable replacement
+game. `src/` still contains the separate, partial C reconstructions and viewers.
+See [the export workflow](docs/full-decompilation.md) for reproduction and validation.
+
 ## Current Build
 
 Primary binary:
