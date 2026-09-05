@@ -66,9 +66,10 @@ transforms and records every edit in `work/rebuild/<target>/preparation.json`:
   identical-looking prototypes declare incompatible types.
 - MSVC inline assembly: `cpuid` and `xgetbv` become exact GCC extended asm
   bound to the `_RAX`-family register globals; all other MASM dumps are
-  rewrapped verbatim as `.intel_syntax` basic-asm strings, so their contents
-  (including any unresolved frame symbols) fail visibly at the assembler
-  instead of poisoning the C parse.
+  rewrapped as `.intel_syntax` basic-asm strings. Two Hex-Rays dump
+  notations are resolved (frame slots `var_XX` to `-0xXX`, and `cs:symbol`
+  to the RIP-relative `[rip+symbol]`); anything else fails visibly at the
+  assembler instead of poisoning the C parse.
 - Prototypes that conflict with the definition, with a later prototype, or
   with system headers (imports and CRT/Win32 names, evidenced by GCC
   diagnostics) are dropped; the export's mis-inferred import prototypes were

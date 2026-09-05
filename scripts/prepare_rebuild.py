@@ -68,6 +68,8 @@ QUALIFIED = re.compile(rb"[A-Za-z_][A-Za-z_0-9]*(?:::[A-Za-z_][A-Za-z_0-9]*)+")
 HEX_H_LITERAL = re.compile(rb"\b([0-9][0-9A-Fa-f]*)[hH]\b")
 INTEGER_LITERAL = re.compile(rb"(?<![\w.])(0[xX][0-9A-Fa-f]+|[0-9]+)([uUlL]*)")
 ASM_BLOCK = re.compile(rb"__asm\s*\{([^{}]*)\}")
+VAR_FRAME = re.compile(rb"var_([0-9A-Fa-f]+)")
+CS_RELATIVE = re.compile(rb"cs:([A-Za-z_][A-Za-z_0-9]*)")
 BACKTICK_NAME = re.compile(rb"`([^'\n]*)'")
 TEMPLATE_NAME = re.compile(rb"([A-Za-z_][A-Za-z_0-9]*)<((?:[^<>]|<[^<>]*>)+)>(?=\s*[:=(])")
 OPERATOR_CALL = re.compile(rb"([A-Za-z_0-9])__operator\s*\(\s*\)")
@@ -120,8 +122,16 @@ def xgetbv():
 
 
 def basic_asm(body):
-    """Wrap a MASM instruction dump verbatim in a GNU as .intel_syntax string."""
+    """Wrap a MASM instruction dump verbatim in a GNU as .intel_syntax string.
+
+    Two notations are resolved, both defined by Hex-Rays' own dump convention:
+    `var_XX` names the frame slot at [base - 0xXX], and `cs:symbol` is the
+    64-bit RIP-relative reference to that symbol. Everything else passes to
+    the assembler exactly as Hex-Rays wrote it.
+    """
     lines = [re.sub(HEX_H_LITERAL, rb"0x\1", line.strip()) for line in body.split(b"\n")]
+    lines = [re.sub(VAR_FRAME, rb"-0x\1", line) for line in lines]
+    lines = [re.sub(CS_RELATIVE, rb"[rip+\1]", line) for line in lines]
     lines = [line for line in lines if line]
     text = b"\\n\\t".join(lines)
     escaped = text.replace(b"\\", b"\\\\").replace(b'"', b'\\"')
