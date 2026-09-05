@@ -10,11 +10,25 @@ import subprocess
 import sys
 
 
-def check(compiler, source, header, destination):
+def check(compiler, source, header, destination, lenient=False):
     before = hashlib.sha256(source.read_bytes()).hexdigest()
     command = [compiler, "-x", "c", "-std=gnu11", "-fms-extensions", "-fsyntax-only",
                "-fno-strict-aliasing", "-fdiagnostics-format=sarif-stderr", "-fmax-errors=0",
                "-I", str(source.parent)]
+    # Hex-Rays type inference stores pointers through inferred-integer views;
+    # modern GCC promotes those conversions to errors by default. In lenient
+    # mode they are downgraded to warnings (still present in the SARIF) so the
+    # remaining structural errors stay visible. Nothing is silently dropped.
+    downgrades = []
+    if lenient:
+        downgrades = ["-Wno-error=int-conversion",
+                      "-Wno-error=incompatible-pointer-types",
+                      "-Wno-error=pointer-to-int-cast",
+                      "-Wno-error=int-to-pointer-cast",
+                      "-Wno-error=implicit-function-declaration",
+                      "-Wno-error=return-mismatch",
+                      "-Wno-error=implicit-int"]
+        command += downgrades
     if header:
         command += ["-include", str(header)]
     command.append(str(source))
@@ -48,6 +62,8 @@ def check(compiler, source, header, destination):
         "command": command, "exit_code": result.returncode,
         "error_limit": 0,
         "syntax_check_only": True,
+        "lenient": lenient,
+        "conversion_downgrades": downgrades,
         "diagnostic_counts": dict(Counter(item.get("kind", "unknown") for item in diagnostics)),
         "diagnostics": diagnostics,
     }
@@ -60,6 +76,8 @@ def main():
     parser.add_argument("--compiler", default=shutil.which("gcc"))
     parser.add_argument("--binary", choices=("client", "dedicated", "all"), default="all")
     parser.add_argument("--prepared", action="store_true")
+    parser.add_argument("--lenient", action="store_true",
+                        help="downgrade Hex-Rays pointer/integer conversion artifacts to warnings")
     parser.add_argument("--output", type=Path, default=Path("reports/rebuild"))
     args = parser.parse_args()
     if not args.compiler:
@@ -68,6 +86,9 @@ def main():
     destination = args.output.resolve()
     destination.mkdir(parents=True, exist_ok=True)
     summary = ["# Recompilation Check", "", "These are C syntax checks, not a successful game build.", ""]
+    if args.lenient:
+        summary += ["Lenient mode: Hex-Rays pointer/integer conversion artifacts are downgraded "
+                    "to warnings; every diagnostic is still present in the SARIF.", ""]
     failed = False
     for target, stem in (("client", "subrosa"), ("dedicated", "subrosadedicated")):
         if args.binary not in (target, "all"):
@@ -81,7 +102,8 @@ def main():
         modes = (("prepared", project / "src/rebuild/export_compat.h"),) if args.prepared else (
             ("raw", None), ("compat", project / "src/rebuild/export_compat.h"))
         for mode, header in modes:
-            report = check(args.compiler, source, header, destination / (target + "-" + mode))
+            report = check(args.compiler, source, header, destination / (target + "-" + mode),
+                           lenient=args.lenient)
             failed |= report["exit_code"] != 0
             summary += ["## " + target + " / " + mode, "",
                         "Compiler exit code: " + str(report["exit_code"]), "",

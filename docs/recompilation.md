@@ -5,15 +5,58 @@ means the tool emitted pseudocode, not that the inferred source has a valid ABI,
 complete types, correct initialization, or equivalent behavior. No rebuilt game
 executable has been produced by this step.
 
-The latest complete diagnostic run reports 7,198 client errors and 1,738 dedicated
-server errors, compared with 13,468 and 3,571 for the unmodified exports. These counts
-include cascades and are not counts of independent defects. The prepared client has
-3,902 SIMD edits, 118 restored address-named function declarations, and 1,483 bound
-calls. The prepared server has 1,066 SIMD edits. Seven transformation tests and the
-optimized SIMD lane test pass. The full client object compilation still fails.
+The latest complete diagnostic run, in strict mode, reports 5,409 client errors and
+1,601 dedicated server errors, compared with 13,468 and 3,571 for the unmodified
+exports. In lenient mode (`--lenient`), Hex-Rays pointer/integer conversion
+artifacts are downgraded to warnings — every diagnostic remains in the SARIF —
+leaving 2,227 client and 558 dedicated errors. These counts include cascades and
+are not counts of independent defects. The prepared client has 3,904 SIMD edits,
+120 restored address-named function declarations, 1,499 bound calls, 79 named
+data objects, 190 verbatim-wrapped assembly dumps, 1,438 explicit function-address
+casts, and 416 expressions retained for review. The prepared server has 1,066 SIMD
+edits. Seven transformation tests and the SIMD lane test pass, along with tests
+for each new pass. The full client object compilation still fails.
 
 The complete client export covers 4,269 recognized functions after analysis settled.
 This coverage figure does not measure recompilation or behavioral equivalence.
+
+## What The Build Copy Rewrites
+
+`scripts/prepare_rebuild.py` applies only mechanical, semantics-preserving
+transforms and records every edit in `work/rebuild/<target>/preparation.json`:
+
+- SIMD lane field accesses become checked storage views (`SR_VEC_LANES`).
+- `MEMORY[address]` calls whose address is a known function are rebound to its
+  name; array-indexed data reads become `extern unsigned char sr_mem_*[]`
+  objects named by address. Scalar reads and calls to unknown addresses are
+  left as visible errors for review.
+- Hex-Rays names that are not valid C are renamed consistently:
+  `A::B` to `A__B`, backticked demangler segments to underscored identifiers,
+  `Template<Args>` instantiations to `Template__Args`, lambda `operator()`
+  names to `__operator_call`, and `#N` placeholders to `sr_anon_N`.
+- 128-bit integer constants that exceed 64 bits are split into lo/hi halves;
+  constants that only overflow signed 64-bit get explicit `ull` suffixes.
+- `?flt` unknown-float placeholders become `0.0` with a `sr_unknown_float`
+  marker comment; the zero is a marked placeholder, not recovered data.
+- MSVC inline assembly: `cpuid` and `xgetbv` become exact GCC extended asm
+  bound to the `_RAX`-family register globals; all other MASM dumps are
+  rewrapped verbatim as `.intel_syntax` basic-asm strings, so their contents
+  (including any unresolved frame symbols) fail visibly at the assembler
+  instead of poisoning the C parse.
+- Prototypes that conflict with the definition, with a later prototype, or
+  with system headers (imports and CRT/Win32 names, evidenced by GCC
+  diagnostics) are dropped; the export's mis-inferred import prototypes were
+  the source of most "conflicting types" errors.
+- Assignments and initializations that store a function address through an
+  inferred-integer view gain an explicit `(uintptr_t)` cast; variables
+  declared as function pointers keep plain assignment.
+
+`src/rebuild/export_compat.h` additionally provides declarations the export
+assumes but MinGW headers do not: the SDL2, Steam, and `SHGetSpecialFolderPathA`
+entry points (as unspecified-argument prototypes in a generated
+`recovered_imports.h`), `fsqrt`, `guard_dispatch_icall_nop`, the `BYTE1`/`BYTE2`
+/`DWORD1` extraction helpers, and C versions of the `__ROL`/`__ROR` rotate
+intrinsics that defs.h only defines for C++.
 
 ## Build And Diagnose
 
@@ -26,6 +69,16 @@ cmake -S . -B build/recompile -G Ninja -DSR_ENABLE_RAW_REBUILD=ON
 cmake --build build/recompile --target subrosa_recompiled
 python scripts/check-rebuild.py --compiler C:/Users/junin/mingw64/bin/gcc.exe
 ```
+
+`scripts/check-rebuild.py` checks both binaries before and after this compatibility
+header, writes GCC's structured SARIF diagnostics and the exact compiler command under
+`reports/rebuild/`, and exits unsuccessfully if either source still fails. These are
+syntax checks only; even passing them would not establish a successful link or a
+working game. The diagnostic check is uncapped because this GCC build can exit
+without flushing SARIF when an error limit is reached. Counts can include cascades
+from earlier errors and should not be interpreted as independent defects. Pass
+`--lenient` to downgrade the promoted pointer/integer conversion artifacts to
+warnings; the diagnostics remain in the SARIF either way.
 
 `src/rebuild/export_compat.h` supplies standard library declarations and 128-bit
 storage for `_OWORD`, using Hex-Rays' local helper header. It does not erase custom

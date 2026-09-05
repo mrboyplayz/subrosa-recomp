@@ -15,7 +15,8 @@ if (SR_ENABLE_RAW_REBUILD)
         message(FATAL_ERROR "Export the Windows client before configuring the raw rebuild")
     endif()
     add_executable(subrosa_recompiled WIN32 EXCLUDE_FROM_ALL "${SR_REBUILD_CLIENT_SOURCE}")
-    target_include_directories(subrosa_recompiled PRIVATE exports/client)
+    target_include_directories(subrosa_recompiled PRIVATE exports/client
+        "${CMAKE_CURRENT_SOURCE_DIR}/work/rebuild/client")
     target_compile_options(subrosa_recompiled PRIVATE -fms-extensions -fno-strict-aliasing -fmax-errors=100
         -include "${CMAKE_CURRENT_SOURCE_DIR}/src/rebuild/export_compat.h")
     target_link_libraries(subrosa_recompiled PRIVATE user32 gdi32 shell32 ws2_32 winmm opengl32)
