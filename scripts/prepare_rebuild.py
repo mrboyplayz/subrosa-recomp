@@ -555,6 +555,18 @@ def translate(source, functions=None, known_types=None, extra_names=None,
 
     candidates = {int(item["address"], 16): candidate_name(item) for item in (functions or [])
                   if re.fullmatch(r"[A-Za-z_][A-Za-z_0-9]*", candidate_name(item))}
+    # Typedefs declared in the source body (not in defs.h or compiler
+    # headers); prototypes referencing them cannot be hoisted to file top.
+    early_known = BUILTIN_TYPES | (known_types or set()) | {
+        "void", "char", "short", "int", "long", "float", "double",
+        "signed", "unsigned", "bool", "_Bool",
+    }
+    late_typedefs = set()
+    for node in nodes(tree.root_node):
+        if node.type in ("type_definition", "typedef_declaration"):
+            identifier = declarator_identifier(node.child_by_field_name("declarator"), source)
+            if identifier is not None and identifier not in early_known:
+                late_typedefs.add(identifier.encode())
     prototypes = {}
     definitions = {}
     definition_plists = {}
@@ -664,7 +676,10 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                     if sub.type == "function_declarator":
                         plist = sub.child_by_field_name("parameters")
                         if plist is not None:
-                            params = source[plist.start_byte:plist.end_byte].decode()
+                            # Whitespace-normalized: Hex-Rays writes the same
+                            # signature with different spacing in prototypes
+                            # and multi-line definitions.
+                            params = " ".join(source[plist.start_byte:plist.end_byte].decode().split())
                             plist_span = (plist.start_byte, plist.end_byte)
                             break
                 if name is not None:
@@ -681,7 +696,7 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                 plist_span = None
                 for sub in nodes(declarator):
                     if sub.type == "parameter_list":
-                        params = source[sub.start_byte:sub.end_byte].decode()
+                        params = " ".join(source[sub.start_byte:sub.end_byte].decode().split())
                         plist_span = (sub.start_byte, sub.end_byte)
                         break
                 if name in definitions and name != "MEMORY":
@@ -706,6 +721,19 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                 if def_type is not None:
                     function_returns.setdefault(name,
                         source[def_type.start_byte:def_type.end_byte].decode())
+                # Hex-Rays omits prototypes for some functions, so calls above
+                # the definition create implicit declarations that conflict
+                # with non-int definitions. A prototype copied verbatim from
+                # the definition's own header is always type-correct — but
+                # only if every type it names is declared at file top, since
+                # the export defines typedefs mid-file.
+                body = node.child_by_field_name("body")
+                if name != "MEMORY" and body is not None and name not in prototypes:
+                    header_text = source[node.start_byte:body.start_byte].rstrip()
+                    header_ids = set(re.findall(rb"[A-Za-z_][A-Za-z_0-9]*", header_text))
+                    if (b"(" in header_text and header_text.endswith(b")")
+                            and not (header_ids & late_typedefs)):
+                        forward_declarations.setdefault(name, header_text.decode() + ";")
     addresses = set(function_names) | set(extra_names or ())
     # Drop the export's own prototypes for names system headers declare, for
     # names that are actually types (Hex-Rays mis-declares some as functions),
@@ -1144,7 +1172,7 @@ SYSTEM_DECLARED_NAMES = {
     "_acrt_CompareStringA", "register_thread_local_exe_atexit_callback",
     "replace_current_thread_locale_nolock", "update_thread_multibyte_data_internal",
         "unknown_libname_671", "unknown_libname_673", "cos_special", "dtest",
-    "strcpy_s", "strncnt", "_errno",
+    "strcpy_s", "strncnt", "_errno", "errno",
 }
 
 
