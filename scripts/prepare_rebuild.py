@@ -431,29 +431,35 @@ def data_symbol_decl(name):
     return None
 
 
+DECLARATOR_CHAIN = {
+    "pointer_declarator", "array_declarator", "function_declarator",
+    "parenthesized_declarator", "init_declarator", "attributed_declarator",
+    "ms_call_modifier",
+}
+
+
 def is_declarator_position(node):
-    """True if the identifier is reached from a declaration via declarator fields."""
+    """True if the identifier names something a declaration declares.
+
+    The chain from the identifier upward must consist solely of declarator
+    nodes, each hop inside the parent's declarator field, ending at a
+    declaring node. Initializer values and call arguments leave the chain.
+    """
     current = node
     parent = node.parent
     while parent is not None:
         field_node = parent.child_by_field_name("declarator")
-        if field_node is None or not (
-                field_node.start_byte <= current.start_byte
-                and current.end_byte <= field_node.end_byte):
-            # Parenthesized declarators ((*name)(args)) lack a declarator
-            # field; any named child that spans the identifier continues the
-            # declarator chain.
-            field_node = None
-            for child in parent.named_children:
-                if child.id != current.id and child.start_byte <= current.start_byte \
-                        and current.end_byte <= child.end_byte:
-                    field_node = child
-                    break
-            if field_node is None:
-                return False
         if parent.type in ("declaration", "function_definition",
                            "parameter_declaration", "field_declaration"):
-            return True
+            return (field_node is not None
+                    and field_node.start_byte <= current.start_byte
+                    and current.end_byte <= field_node.end_byte)
+        if parent.type not in DECLARATOR_CHAIN:
+            return False
+        if field_node is not None and not (
+                field_node.start_byte <= current.start_byte
+                and current.end_byte <= field_node.end_byte):
+            return False  # inside an initializer value, not the declarator
         current = parent
         parent = parent.parent
     return False
@@ -609,10 +615,11 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                     pointer_typedefs.add(identifier)
         elif node.type == "expression_statement" and node.parent is not None                 and node.parent.type == "translation_unit":
             # defs.h spells __int64 as a macro, so global function-pointer
-            # definitions parse here as call-assignments. GCC sees the
-            # declarations; treat their data symbols as declared.
+            # definitions parse here as call-assignments — valid C has no
+            # file-scope expression statements. GCC sees the declarations;
+            # treat their data symbols as declared.
             text = source[node.start_byte:node.end_byte]
-            if b"= &" in text and b"(" in text:
+            if b"(" in text:
                 for m in re.finditer(rb"[A-Za-z_][A-Za-z_0-9]*", text):
                     identifier = m.group(0).decode()
                     if DATA_SYMBOL.match(identifier):
@@ -1213,6 +1220,45 @@ def append_missing_functions(original, source, manifest):
     return source + b"".join(appended), len(appended), missing_files
 
 
+def find_defined_system_names(source, names):
+    """System-owned names the export itself defines (proof by shape).
+
+    A function definition is a line whose declarator ends in NAME(...) with
+    only type tokens before the name and `{` on the next non-empty line;
+    calls and prototypes never satisfy that. Renaming is only safe for
+    names with such a definition (or a data declaration), because renaming
+    a merely-called system function would leave name_sr undefined.
+    """
+    if not names:
+        return set()
+    masked = mask_noncode(source).split(b"\n")
+    name_set = {n.encode() for n in names}
+    defined = set()
+    for index, line in enumerate(masked):
+        stripped = line.strip()
+        if not stripped.endswith(b")"):
+            continue
+        head = stripped[:-1].rfind(b"(")
+        if head < 0:
+            continue
+        before = stripped[:head].rstrip()
+        name = before.rsplit(b" ", 1)[-1].lstrip(b"*")
+        if not name or name not in name_set:
+            continue
+        # Only type tokens may precede the name on the line; anything else
+        # (assignments, nested calls) marks an expression, not a definition.
+        prefix = before[: -len(name)] if before.endswith(name) else before
+        if re.search(rb"[^A-Za-z_0-9 \t\*]", prefix):
+            continue
+        for follow in masked[index + 1:index + 4]:
+            if not follow.strip():
+                continue
+            if follow.strip() == b"{":
+                defined.add(name.decode())
+            break
+    return defined
+
+
 def rename_system_definitions(source, names):
     """Rename local definitions of system-owned symbols to <name>_sr.
 
@@ -1263,6 +1309,10 @@ def main():
         manifest_names = {sanitize_name(item.get("name", "")) for item in manifest["functions"]}
         rename_set = {n for n in manifest_names
                       if n and (n in all_imports or n in SYSTEM_DECLARED_NAMES)}
+        # System-owned names the export defines under a different spelling
+        # than the manifest (e.g. errno vs _errno) still conflict with the
+        # header declarations; rename only with proof of a local definition.
+        rename_set |= find_defined_system_names(source, SYSTEM_DECLARED_NAMES)
         rename_set |= {slot for slot in iat_slots
                        if slot in source.decode("utf-8", "replace")}
         source, renamed_count = rename_system_definitions(source, rename_set)
