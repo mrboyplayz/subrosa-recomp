@@ -77,15 +77,20 @@ OPERATOR_ASSIGN = re.compile(rb"([A-Za-z_0-9])__operator\s*=")
 AT_REGISTER = re.compile(rb"@<([a-z0-9]+)>")
 SPOILS = re.compile(rb"__spoils\s*<[^>\n]*>")
 CONST_KEYWORD = re.compile(rb"\bconst\b")
+# MSVC call-modifier keywords: no-ops under the single x64 calling
+# convention, but tree-sitter cannot parse them after a pointer declarator.
+CALLMOD = re.compile(
+    rb"__vectorcall|__thiscall|__fastcall|__stdcall_dup\d|__stdcall|__cdecl_dup\d|__cdecl|__clrcall")
 EMPTY_INITIALIZER = re.compile(rb"=\s*;")
 VECTOR_CAST = re.compile(
     rb"\(__m(128i|128d|128)\)\s*"
-    rb"(xmmword_[0-9A-Fa-f]+"
+    rb"((?:\([^()\n]{1,24}\))?\s*"
+    rb"(?:xmmword_[0-9A-Fa-f]+"
     rb"|[a-z]+_[0-9A-Fa-f]+"
     rb"|0[xX][0-9A-Fa-f]+[uUlL]*"
     rb"|[0-9]+[uUlL]*"
     rb"|(?:LODWORD|HIDWORD|COERCE_[A-Z_]+)\([^()\n]*\)"
-    rb"|[A-Za-z_][A-Za-z_0-9]*)")
+    rb"|[A-Za-z_][A-Za-z_0-9]*))")
 
 
 def sanitize_name(name):
@@ -171,9 +176,11 @@ def preprocess(source):
               "register_annotations": 0, "unknown_floats": 0,
               "unknown_initializers": 0, "const_stripped": 0,
               "vector_loads": 0, "vector_moves": 0,
-              "split_constants": 0, "unsigned_constants": 0}
-    for direction in ("const", "asm", "names", "qualified", "operator_call",
-                      "vectors", "constants"):
+              "split_constants": 0, "unsigned_constants": 0, "callmods_stripped": 0, "vardecls_deduped": 0}
+    # PENDING: depth-0 weak-slot declaration dedup; the statement boundaries
+    # destabilized prototype handling and stay disabled.
+    for direction in ("callmods", "const", "asm", "names",
+                      "qualified", "operator_call", "vectors", "constants"):
         edits = []
         if direction == "const":
             # Hex-Rays infers const qualifications the original code did not
@@ -183,6 +190,49 @@ def preprocess(source):
             for match in CONST_KEYWORD.finditer(masked):
                 edits.append((match.start(), match.end(), b"    "))
                 report["const_stripped"] += 1
+        elif direction == "vardecls":
+            # Hex-Rays declares weak fn-pointer slots repeatedly with
+            # differing types; the first statement wins, later differing
+            # ones are blanked in place (length-preserving). Only
+            # brace-depth-0 statements are considered.
+            masked = mask_noncode(source)
+            pieces = re.split(rb"[{}]", masked)
+            offsets = [0]
+            for piece in pieces[:-1]:
+                offsets.append(offsets[-1] + len(piece) + 1)
+            statements = {}
+            for index in range(0, len(pieces), 2):
+                base = offsets[index]
+                piece = pieces[index]
+                for m in re.finditer(rb"[A-Za-z_][A-Za-z_0-9]*", piece):
+                    identifier = m.group(0).decode()
+                    if not DATA_SYMBOL.match(identifier):
+                        continue
+                    start = max(piece.rfind(b";", 0, m.start()),
+                                piece.rfind(b"}", 0, m.start())) + 1
+                    end = piece.find(b";", m.end())
+                    if end < 0:
+                        continue
+                    body = piece[start:end]
+                    if b"=" not in body or b"(" not in body:
+                        continue
+                    normalized = re.sub(rb"\s+", b" ", piece[start:end + 1])
+                    statements.setdefault(identifier, []).append(
+                        (base + start, base + end + 1, normalized.decode()))
+            for identifier, entries in statements.items():
+                if len(entries) < 2:
+                    continue
+                first_text = entries[0][2]
+                for entry in entries[1:]:
+                    if entry[2] != first_text:
+                        edits.append((entry[0], entry[1],
+                                      b" " * (entry[1] - entry[0])))
+                        report["vardecls_deduped"] += 1
+        elif direction == "callmods":
+            masked = mask_noncode(source)
+            for match in CALLMOD.finditer(masked):
+                edits.append((match.start(), match.end(), b" " * (match.end() - match.start())))
+                report["callmods_stripped"] += 1
         elif direction == "asm":
             masked = mask_noncode(source)
             for match in ASM_BLOCK.finditer(masked):
@@ -245,10 +295,10 @@ def preprocess(source):
             for match in VECTOR_CAST.finditer(masked):
                 cast_type = match.group(1)
                 prefix = b"__m" + cast_type if cast_type != b"128" else b"__m128"
-                target = match.group(2)
+                target = re.sub(rb"\([^()\n]{1,24}\)\s*", b"", match.group(2))
                 if target.startswith(b"_mm"):
                     continue  # already a vector expression; the cast is legal
-                if re.fullmatch(rb"[A-Za-z_][A-Za-z_0-9]*", target) and not re.match(
+                if re.fullmatch(rb"[A-Za-z_][A-Za-z_0-9]*", match.group(2)) and not re.match(
                         rb"(dword|qword|byte|word|flt|dbl|unk|xmmword)_", target):
                     continue  # bare identifier: may already hold a vector value
                 if target.startswith(b"xmmword_"):
@@ -409,6 +459,65 @@ def is_declarator_position(node):
     return False
 
 
+INTEGER_TYPE = re.compile(r"float|double|__m128|__m64|__OWORD")
+
+
+def classify_vector_rhs(node, right, rhs, source, var_types, function_returns,
+                        fstart, vector_variables):
+    """Return (source_kind, wrap_expr) or (None, None) when the RHS already
+    holds a vector or its type is unknown. source_kind is 'int' or 'float'."""
+    if right.type == "number_literal":
+        return "int", None
+    if right.type == "identifier":
+        vtype = var_types.get((fstart, rhs.decode()))
+        if vtype is None or "__m" in vtype:
+            return None, None
+        if re.search(r"(float|double)", vtype):
+            return "float", None
+        return "int", None
+    if right.type == "subscript_expression":
+        base = right.child_by_field_name("argument")
+        bname = source[base.start_byte:base.end_byte].decode()             if base is not None and base.type == "identifier" else ""
+        vtype = var_types.get((fstart, bname))
+        if vtype is None:
+            return "int", None
+        if re.search(r"flt_", vtype) or vtype == "float":
+            return "float", None
+        if re.search(r"dbl_", vtype) or vtype == "double":
+            return "float", None
+        return ("float", None) if re.search(r"float|double", vtype) else ("int", None)
+    if right.type == "cast_expression":
+        ctype = right.child_by_field_name("type")
+        ctext = source[ctype.start_byte:ctype.end_byte].decode()             if ctype is not None else ""
+        if "__m" in ctext or "float" in ctext or "double" in ctext:
+            return None, None
+        return "int", None
+    if right.type == "call_expression":
+        callee = right.child_by_field_name("function")
+        cname = source[callee.start_byte:callee.end_byte].decode()             if callee is not None and callee.type == "identifier" else ""
+        rtype = function_returns.get(cname)
+        if rtype is None:
+            return None, None
+        if "__m" in rtype:
+            return None, None
+        return ("float", None) if re.search(r"(float|double)", rtype) else ("int", None)
+    return None, None
+
+
+def vector_move_replacement(target_type, source_kind, wrap, rhs):
+    if source_kind == "float":
+        if target_type == "__m128d":
+            return "(_mm_set_pd(0.0, (double)(%s)))" % rhs
+        if target_type == "__m128i":
+            # float bits into an integer vector needs a bitcast; leave visible.
+            return None
+        return "(_mm_set_ss(%s))" % rhs
+    move = "_mm_cvtsi64_si128((long long)(%s))" % rhs
+    if target_type in ("__m128", "__m128d"):
+        return "((%s)%s)" % (target_type, move)
+    return move
+
+
 def enclosing_function_start(node):
     current = node
     while current is not None:
@@ -442,9 +551,12 @@ def translate(source, functions=None, known_types=None, extra_names=None,
     definition_counts = {}
     declared = set()
     function_names = set()
+    declared_data_symbols_pre = set()
     pointer_variables = set()
     pointer_typedefs = set()
-    vector_variables = set()
+    vector_variables = {}
+    var_types = {}
+    function_returns = {}
     declaration_edits = []
     forward_declarations = {}
     for node in nodes(tree.root_node):
@@ -491,21 +603,35 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                 declarator = node.child_by_field_name("declarator")
                 if declarator is not None and b"*" in source[declarator.start_byte:declarator.end_byte]:
                     pointer_typedefs.add(identifier)
+        elif node.type == "expression_statement" and node.parent is not None                 and node.parent.type == "translation_unit":
+            # defs.h spells __int64 as a macro, so global function-pointer
+            # definitions parse here as call-assignments. GCC sees the
+            # declarations; treat their data symbols as declared.
+            text = source[node.start_byte:node.end_byte]
+            if b"= &" in text and b"(" in text:
+                for m in re.finditer(rb"[A-Za-z_][A-Za-z_0-9]*", text):
+                    identifier = m.group(0).decode()
+                    if DATA_SYMBOL.match(identifier):
+                        declared_data_symbols_pre.add(identifier)
         elif node.type == "declaration":
             # Variables declared with a pointer declarator keep plain function
             # assignments; only integer storage gets the explicit address cast.
             type_node = node.child_by_field_name("type")
             declarators = declaration_declarator(node)
-            if type_node is not None and re.fullmatch(
-                    rb"__(m128i?|m128d|m64)", source[type_node.start_byte:type_node.end_byte]):
+            type_text = source[type_node.start_byte:type_node.end_byte].decode()                 if type_node is not None else None
+            fstart = enclosing_function_start(node)
+            if type_text is not None and re.fullmatch(
+                    r"__(m128i?|m128d|m64)", type_text):
                 # Vector-typed storage: integer assignments to these names are
                 # Hex-Rays movd semantics, rewritten as the moves they denote.
                 if declarators is not None:
-                    fstart = enclosing_function_start(node)
                     for sub in nodes(declarators):
                         if sub.type == "identifier":
-                            vector_variables.add(
-                                (fstart, source[sub.start_byte:sub.end_byte].decode()))
+                            vector_variables[(fstart, source[sub.start_byte:sub.end_byte].decode())] = type_text
+            if type_text is not None and declarators is not None:
+                for sub in nodes(declarators):
+                    if sub.type == "identifier":
+                        var_types[(fstart, source[sub.start_byte:sub.end_byte].decode())] = type_text
             pointer_type = (type_node is not None
                             and source[type_node.start_byte:type_node.end_byte].decode() in pointer_typedefs)
             if declarators is not None and (
@@ -531,6 +657,8 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                             plist_span = (plist.start_byte, plist.end_byte)
                             break
                 if name is not None:
+                    if type_node is not None:
+                        function_returns[name] = source[type_node.start_byte:type_node.end_byte].decode()
                     prototypes.setdefault(name, []).append(
                         {"start": node.start_byte, "end": node.end_byte, "params": params,
                          "plist": plist_span})
@@ -563,6 +691,10 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                 definitions[name] = params
                 definition_plists[name] = plist_span
                 definition_counts[name] = 1
+                def_type = node.child_by_field_name("type")
+                if def_type is not None:
+                    function_returns.setdefault(name,
+                        source[def_type.start_byte:def_type.end_byte].decode())
     addresses = set(function_names) | set(extra_names or ())
     # Drop the export's own prototypes for names system headers declare, for
     # names that are actually types (Hex-Rays mis-declares some as functions),
@@ -715,11 +847,26 @@ def translate(source, functions=None, known_types=None, extra_names=None,
         elif node.type == "assignment_expression":
             # Hex-Rays stores function addresses through integer views; make the
             # representation explicit instead of relying on legacy conversions.
-            # PENDING: integer assignments to vector-typed locals (movd/movq
-            # semantics) need real type inference; a syntactic heuristic
-            # misfired on vector-returning calls and was removed.
             right = node.child_by_field_name("right")
             left = node.child_by_field_name("left")
+            fstart = enclosing_function_start(node)
+            lname = source[left.start_byte:left.end_byte].decode()                 if left is not None and left.type == "identifier" else None
+            if lname is not None and (fstart, lname) in vector_variables                     and right is not None:
+                # Integer or float-bit assignment to a vector local: rewrite
+                # as the register move Hex-Rays denotes, typed by the target.
+                # Edits fully contained in the RHS (lane accesses, call
+                # bindings) are absorbed into the wrapped text afterwards.
+                rhs = source[right.start_byte:right.end_byte]
+                source_kind, wrap = classify_vector_rhs(
+                    node, right, rhs, source, var_types, function_returns, fstart,
+                    vector_variables)
+                if source_kind is not None:
+                    edits.append({"kind": "vector_move_assign", "start": right.start_byte,
+                                  "end": right.end_byte, "line": bisect_right(line_ends, right.start_byte) + 1,
+                                  "replacement": None,
+                                  "target_type": vector_variables[(fstart, lname)],
+                                  "source_kind": source_kind})
+                    continue
             if (right is not None and right.type == "identifier" and left is not None
                     and source[left.start_byte:left.end_byte].decode() not in pointer_variables):
                 name = source[right.start_byte:right.end_byte].decode()
@@ -796,6 +943,28 @@ def translate(source, functions=None, known_types=None, extra_names=None,
                                           "end": entry["plist"][1],
                                           "line": bisect_right(line_ends, entry["plist"][0]) + 1,
                                           "replacement": ", ...)"})
+    # Vector moves wrap their whole RHS; fold any smaller edits inside them
+    # into the wrapped text so nothing overlaps.
+    remaining = []
+    for edit in edits:
+        if edit["kind"] != "vector_move_assign":
+            remaining.append(edit)
+    moves = [e for e in edits if e["kind"] == "vector_move_assign"]
+    for move in moves:
+        contained = [e for e in remaining
+                     if e["start"] >= move["start"] and e["end"] <= move["end"]]
+        rhs = source[move["start"]:move["end"]]
+        for e in sorted(contained, key=lambda item: -item["start"]):
+            offset = e["start"] - move["start"]
+            rhs = rhs[:offset] + e["replacement"].encode() + rhs[e["end"] - move["start"]:]
+            remaining.remove(e)
+        wrapped = vector_move_replacement(
+            move["target_type"], move["source_kind"], None, rhs.decode())
+        if wrapped is not None:
+            remaining.append({
+                "kind": "vector_move_assign", "start": move["start"], "end": move["end"],
+                "line": move["line"], "replacement": wrapped})
+    edits = remaining
     # Nested vector field expressions are unusual; retain them for manual review.
     ordered = sorted(edits, key=lambda item: (item["start"], -item["end"]))
     accepted = []
@@ -826,7 +995,8 @@ def translate(source, functions=None, known_types=None, extra_names=None,
     excluded = known | (declared - struct_tags)
     forward_types = sorted(name for name in referenced_types - excluded)
     extern_objects = {
-        name: decl for name in sorted(used_data_symbols - declared_data_symbols)
+        name: decl for name in sorted(used_data_symbols - declared_data_symbols
+                                      - declared_data_symbols_pre)
         if (decl := data_symbol_decl(name)) is not None
     }
     report = {"edits": accepted, "skipped": skipped,
@@ -868,13 +1038,27 @@ def build_forward_header(report):
     return "".join(line + "\n" for line in lines)
 
 
-def build_import_header(names):
+def build_import_header(names, iat_pairs=()):
     lines = [
         "/* MinGW headers do not declare these imported entry points. Calls in the",
         "   export cast them to their documented signatures at each call site; the",
         "   unspecified-argument declarations here only make those casts valid C. */",
     ]
     lines += ["__int64 %s();" % name for name in names]
+    if iat_pairs:
+        lines.append("/* Renamed IAT slot objects; import_shim.c binds them to the imports. */")
+        lines += ["extern __int64 (__fastcall *%s)();" % slot for slot, _ in iat_pairs]
+    return "".join(line + "\n" for line in lines)
+
+
+def build_import_shim(iat_pairs):
+    lines = [
+        "/* Binds the export's renamed IAT slot objects to the real imports.",
+        "   Calling through the slot is the same indirect call the original",
+        "   binary made through its import address table. */",
+    ]
+    lines += ['__int64 (__fastcall *%s)() = (__int64 (__fastcall *)())%s;' % (slot, name)
+              for slot, name in iat_pairs if name]
     return "".join(line + "\n" for line in lines)
 
 
@@ -892,7 +1076,7 @@ def collect_import_names(path):
                   if any(item.get("module") in IMPORT_MODULES
                          or item.get("name") in IMPORT_EXTRA_NAMES
                          for item in entries if item.get("name") == name)}
-    return all_names, undeclared
+    return all_names, undeclared, entries
 
 
 # CRT, Winsock, and MFC entry points whose declarations come from the headers
@@ -1003,16 +1187,21 @@ def rename_system_definitions(source, names):
 
     Hex-Rays' decompiled CRT/imports re-define symbols like _errno and
     closesocket with inferred signatures that conflict with the real header
-    declarations. Renaming every occurrence keeps the export's internal
-    consistency while the system symbol remains untouched.
+    declarations. Renaming every free occurrence keeps the export's internal
+    consistency while the system symbol remains untouched. Occurrences that
+    are struct/union member accesses (x.name, p->name) are left alone.
     """
     if not names:
         return source, 0
     masked = mask_noncode(source)
-    pattern = re.compile(
-        rb"(" + b"|".join(re.escape(n.encode()) for n in sorted(names, key=len, reverse=True)) + rb")")
-    replacements = [(m.start(), m.end(), m.group(1) + b"_sr")
-                    for m in pattern.finditer(masked)]
+    alternation = b"|".join(re.escape(n.encode()) for n in sorted(names, key=len, reverse=True))
+    pattern = re.compile(b"\\b(" + alternation + b")\\b")
+    replacements = []
+    for m in pattern.finditer(masked):
+        before = masked[max(0, m.start() - 2):m.start()].rstrip()
+        if before.endswith(b".") or before.endswith(b">"):
+            continue  # member access, not a free symbol
+        replacements.append((m.start(), m.end(), m.group(1) + b"_sr"))
     for start, end, replacement in sorted(replacements, reverse=True):
         source = source[:start] + replacement + source[end:]
     return source, len(replacements)
@@ -1032,13 +1221,20 @@ def main():
         source = (original / (stem + ".c")).read_bytes()
         source, prepass = preprocess(source)
         source, appended, missing_files = append_missing_functions(original, source, manifest)
-        all_imports, undeclared_imports = collect_import_names(original / "imports.json")
-        # NOTE: blanket renaming of system-owned names is disabled: generic
-        # words such as `select` also appear as struct field names, and a
-        # word-boundary rename corrupts member accesses. Field-aware renaming
-        # is pending.
-        rename_set = set()
-        renamed_count = 0
+        all_imports, undeclared_imports, import_entries = collect_import_names(original / "imports.json")
+        # Field-aware renaming (member accesses skipped) of system-owned
+        # symbols the export also defines, plus IAT slot objects that Hex-Rays
+        # calls as functions.
+        iat_slots = {}
+        for item in import_entries:
+            address = int(item.get("address", "0x0"), 16)
+            iat_slots["off_%X" % address] = item.get("name", "")
+        manifest_names = {sanitize_name(item.get("name", "")) for item in manifest["functions"]}
+        rename_set = {n for n in manifest_names
+                      if n and (n in all_imports or n in SYSTEM_DECLARED_NAMES)}
+        rename_set |= {slot for slot in iat_slots
+                       if slot in source.decode("utf-8", "replace")}
+        source, renamed_count = rename_system_definitions(source, rename_set)
         known_types = parse_known_types(original / "defs.h")
         all_imports = all_imports  # already collected above
         prepared, report = translate(source, manifest["functions"], known_types,
@@ -1062,9 +1258,15 @@ def main():
         destination = PROJECT / "work/rebuild" / target
         destination.mkdir(parents=True, exist_ok=True)
         (destination / (stem + ".c")).write_bytes(prepared)
-        if undeclared_imports:
+        if undeclared_imports or iat_slots:
+            renamed_iat = sorted((slot + "_sr", real) for slot, real in iat_slots.items()
+                                 if slot in rename_set and real)
             (destination / "recovered_imports.h").write_text(
-                build_import_header(sorted(undeclared_imports)), encoding="utf-8")
+                build_import_header(sorted(undeclared_imports), renamed_iat), encoding="utf-8")
+        if any(slot in rename_set for slot in iat_slots):
+            renamed_iat = sorted((slot + "_sr", real) for slot, real in iat_slots.items()
+                                 if slot in rename_set and real)
+            (destination / "import_shim.c").write_text(build_import_shim(renamed_iat), encoding="utf-8")
         (destination / "recovered_forward.h").write_text(build_forward_header(report), encoding="utf-8")
         (destination / "preparation.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         shutil.copyfile(original / "defs.h", destination / "defs.h")

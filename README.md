@@ -8,6 +8,11 @@ The full game rebuild is unfinished. The `subrosa_recompiled` target currently f
 compilation; the existing UI and 3D executables remain prototypes. See
 [recompilation status](docs/recompilation.md) for the build commands and blockers.
 
+The [executable-comparison work](docs/fidelity.md) now contains two reconstructed C
+functions tested against the original machine code, plus byte-exact extraction and
+GPU compilation of 27 original shader stages. These are isolated verified pieces,
+not a completed replacement client. The playable blockout is not a 1:1 recreation.
+
 ## Full Local Decompiler Output
 
 The local `exports/` directory contains actual Hex-Rays C output from the installed
@@ -30,7 +35,7 @@ Primary binary:
 - SHA256: `e9500422582b7e550be25f6b31e8cdf00b728ae733d5444868c89982c1526c5e`
 - IDA image base: `0x140000000`
 - Architecture: x86-64 PE
-- IDA function count: 3,906
+- Final exported client function count: 4,269
 - IDA string count: 3,441
 
 Companion binaries to track:

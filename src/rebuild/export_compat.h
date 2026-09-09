@@ -34,6 +34,15 @@ struct __crt_locale_pointers;
 extern unsigned __int64 _RAX, _RBX, _RCX, _RDX;
 extern unsigned __int64 _R8, _R9, _R10, _R11, _R12, _R13, _R14, _R15;
 extern unsigned __int64 _RSI, _RDI, _RBP, _RSP;
+/* Hex-Rays names the 32-bit views of those registers; they alias the low
+   halves of the 64-bit globals (little-endian), which is exactly what the
+   original instructions read and wrote. */
+#define _EAX (*(unsigned int *)&_RAX)
+#define _EBX (*(unsigned int *)&_RBX)
+#define _ECX (*(unsigned int *)&_RCX)
+#define _EDX (*(unsigned int *)&_RDX)
+#define _ESI (*(unsigned int *)&_RSI)
+#define _EDI (*(unsigned int *)&_RDI)
 
 /* Hex-Rays points Control Flow Guard dispatch tables at these synthetic
    CRT-provided no-ops. The export declares guard_check_icall_nop itself;
@@ -52,6 +61,10 @@ __int64 __fastcall guard_dispatch_icall_nop(unsigned __int64);
    where the original used the FPU instruction. Binding it to libm is part of
    the pending external-library work. */
 double fsqrt(double);
+
+/* Hex-Rays uses this name where a 128-bit unsigned integer leaked into an
+   appended export; defs.h typedefs uint8..uint64 but not uint128. */
+typedef unsigned __int128 uint128;
 
 /* defs.h defines the bit-extraction helpers below only in parts this build
    lacks, and defines the rotate intrinsics under __cplusplus. These are the
