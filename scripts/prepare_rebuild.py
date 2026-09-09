@@ -518,6 +518,10 @@ def vector_move_replacement(target_type, source_kind, wrap, rhs):
     return move
 
 
+def rhs_text(source, node):
+    return source[node.start_byte:node.end_byte].decode()
+
+
 def enclosing_function_start(node):
     current = node
     while current is not None:
@@ -851,6 +855,17 @@ def translate(source, functions=None, known_types=None, extra_names=None,
             left = node.child_by_field_name("left")
             fstart = enclosing_function_start(node)
             lname = source[left.start_byte:left.end_byte].decode()                 if left is not None and left.type == "identifier" else None
+            if (lname is not None and (fstart, lname) in vector_variables
+                    and right is not None and right.type == "identifier"
+                    and (fstart, source[right.start_byte:right.end_byte].decode()) in vector_variables):
+                rtype = vector_variables[(fstart, source[right.start_byte:right.end_byte].decode())]
+                ttype = vector_variables[(fstart, lname)]
+                if rtype != ttype:
+                    # Same-size vector reinterpretation (m128d into m128 etc.).
+                    edits.append({"kind": "vector_reinterpret", "start": right.start_byte,
+                                  "end": right.end_byte, "line": bisect_right(line_ends, right.start_byte) + 1,
+                                  "replacement": "(%s)%s" % (ttype, rhs_text(source, right))})
+                    continue
             if lname is not None and (fstart, lname) in vector_variables                     and right is not None:
                 # Integer or float-bit assignment to a vector local: rewrite
                 # as the register move Hex-Rays denotes, typed by the target.
@@ -919,10 +934,10 @@ def translate(source, functions=None, known_types=None, extra_names=None,
         edits.append({"kind": "simd" if macro in (b"SR_VEC_LANES", b"SR_VEC_PTR_LANES") else "simd_read",
                       "start": node.start_byte, "end": node.end_byte, "line": bisect_right(line_ends, node.start_byte) + 1,
                       "field": source[field.start_byte:field.end_byte].decode(), "replacement": replacement.decode()})
-    # PENDING: callsites that pass more arguments than the definition declares
-    # could gain a variadic tail, but prototype bookkeeping for the edit is
-    # not yet reliable; the disagreements remain visible compiler errors.
-    for name, plist in [] if True else definition_plists.items():
+    # Callsites that pass more arguments than the definition declares get a
+    # variadic tail on the definition and its kept prototypes; the callee
+    # ignores the extras and the disagreement stays visible in preparation.json.
+    for name, plist in definition_plists.items():
         if plist is None or name not in call_arities:
             continue
         params_text = definitions.get(name)

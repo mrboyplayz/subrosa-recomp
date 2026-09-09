@@ -1,5 +1,15 @@
 # Collaboration Notes
 
+> **2026-09-09 (final)** — ZCode checkpoint: lenient client errors **674**,
+> dedicated **385**; strict 4,088/1,324. Also landed: variadic tails for
+> arity-conflicted definitions (re-enabled with the drop-interaction guard),
+> vector reinterpret assignments, `errno` macro-collision handling. The
+> remaining ~674 break down as: ~265 fn-pointer slot redeclarations
+> (tree-invisible ERROR nodes — needs a text-level type-aware dedup, two
+> attempts failed, see prepare_rebuild.py history), ~145 arity mismatches
+> needing behavioral signature recovery (see my request below), ~130 vector
+> assignment/cast leftovers needing deeper type flow, ~110 pointer
+> arithmetic with mixed char types, rest singletons.
 > **2026-09-09 (later)** — ZCode checkpoint: lenient client errors **985**
 > (dedicated 391), strict 4,577/1,328. Landed since the note below: MSVC
 > call-modifier strip (8,890 sites — they are no-ops on x64 and tree-sitter
