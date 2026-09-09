@@ -66,6 +66,9 @@ double fsqrt(double);
    appended export; defs.h typedefs uint8..uint64 but not uint128. */
 typedef unsigned __int128 uint128;
 
+/* Hex-Rays names SSE register locals in appended math exports. */
+extern unsigned __int128 _XMM0, _XMM1, _XMM2, _XMM3, _XMM4, _XMM5, _XMM6, _XMM7;
+
 /* defs.h defines the bit-extraction helpers below only in parts this build
    lacks, and defines the rotate intrinsics under __cplusplus. These are the
    same definitions expressed for C. */

@@ -295,7 +295,7 @@ def preprocess(source):
             for match in VECTOR_CAST.finditer(masked):
                 cast_type = match.group(1)
                 prefix = b"__m" + cast_type if cast_type != b"128" else b"__m128"
-                target = re.sub(rb"\([^()\n]{1,24}\)\s*", b"", match.group(2))
+                target = re.sub(rb"^\([^()\n]{1,24}\)\s*", b"", match.group(2))
                 if target.startswith(b"_mm"):
                     continue  # already a vector expression; the cast is legal
                 if re.fullmatch(rb"[A-Za-z_][A-Za-z_0-9]*", match.group(2)) and not re.match(
@@ -1163,6 +1163,18 @@ def append_missing_functions(original, source, manifest):
         name = sanitize_name(item.get("name", ""))
         if not name or name in identifiers:
             continue
+        # The combined file may define the function under its address form
+        # (MEMORY[0x...]), which only becomes the manifest name after the
+        # binding pass — treat that as present.
+        address = item.get("address")
+        if address:
+            try:
+                value = int(address, 16)
+            except ValueError:
+                value = None
+            if value is not None and (b"MEMORY[0x%x]" % value in source
+                                      or b"MEMORY[0x%X]" % value in source):
+                continue
         relative = item.get("file")
         if not relative:
             continue
@@ -1179,6 +1191,10 @@ def append_missing_functions(original, source, manifest):
         appended.append(b"\n/* Recovered from the per-function export "
                         + relative.encode() + b"; the combined file omitted it. */\n"
                         + body)
+        # Two manifest entries can carry the same name; a second definition
+        # would be a redefinition.
+        identifiers.update(re.findall(r"[A-Za-z_][A-Za-z_0-9]*",
+                                      body.decode("utf-8", "replace")))
     return source + b"".join(appended), len(appended), missing_files
 
 
