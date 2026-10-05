@@ -9,6 +9,54 @@ from repair_client_event_pump import PROJECT,MARKER,PREFIX,repair
 
 
 class EventPump(unittest.TestCase):
+    def test_native_mouse_and_keyboard_arguments(self):
+        from repair_client_menu_actions import pinned_pe,region
+        from test_client_collision_query import CollisionQuery
+        pe=pinned_pe();source=read_client_source()
+        code=r'''#include "export_compat.h"
+static unsigned char *image,*working;static unsigned *dword_140404A6C;
+static unsigned mask,calls;static int mouse_x,mouse_y;static unsigned char keys[512];
+static const unsigned char *sub_140198EF9(int *length){if(length)abort();calls++;return keys;}
+static unsigned sub_140198EFF(int *x,int *y){if(!x||!y||x==y)abort();*x=mouse_x;*y=mouse_y;calls++;return mask;}
+static unsigned sub_140198F05(int *x,int *y){return sub_140198EFF(x,y);}
+static void jump(unsigned char *p,void *fn){unsigned char bytes[]={0xff,0x25,0,0,0,0};memcpy(p,bytes,6);memcpy(p+6,&fn,8);}
+'''.encode()
+        for rva in (0x7ca90,0x7cb30,0x7cbc0):code+=region(source,rva)[2]
+        code+=b'int main(void){\n'+CollisionQuery.native_setup(self,pe,[(0x7ca90,0x1a0)],(0x198000,0x26e000))
+        for rva in (0x198ef9,0x198eff,0x198f05):
+            data=pe.get_data(rva,6)
+            self.assertEqual(data[:2],b'\xff\x25')
+            slot=rva+6+int.from_bytes(data[2:],'little',signed=True)
+            code+=f'*(void **)(image+{slot})=sub_140{rva:06X};\n'.encode()
+        code+=r'''
+ unsigned indices[]={137297755,137297756,438291414,438291415};
+ for(unsigned i=0;i<4;i++){unsigned page=(0x404a6c+indices[i]*4)&~4095u;if(!VirtualAlloc(image+page,4096,MEM_COMMIT,PAGE_READWRITE)||!VirtualAlloc(working+page,4096,MEM_COMMIT,PAGE_READWRITE))return 9;}
+ unsigned cases=0;unsigned char buffer[352],saved[352];
+ for(unsigned kind=0;kind<3;kind++)for(unsigned sample=0;sample<512;sample++){
+  mouse_x=sample==0?0:(int)sample*31-7942;mouse_y=sample==0?0:7928-(int)sample*19;mask=sample;
+  for(unsigned i=0;i<512;i++)keys[i]=(unsigned char)(i*sample+7);
+  for(unsigned native=0;native<2;native++){
+   dword_140404A6C=(unsigned*)((native?image:working)+0x404a6c);
+   dword_140404A6C[137297755]=1920;dword_140404A6C[137297756]=1080;
+   float logical[2]={1024,640};memcpy(dword_140404A6C+438291414,logical,8);
+   memset(buffer,0xa5,sizeof buffer);calls=0;
+   if(native)((void(*)(void*))(image+(kind==0?0x7ca90:kind==1?0x7cb30:0x7cbc0)))(buffer+8);
+   else if(kind==0)input_get_keyboard_state_candidate((intptr_t)(buffer+8));else if(kind==1)input_get_mouse_state_candidate((intptr_t)(buffer+8));else input_get_relative_mouse_state_candidate((float*)(buffer+8));
+   if(calls!=1)return 2;
+   if(!native)memcpy(saved,buffer,sizeof saved);
+   else if(memcmp(saved,buffer,sizeof saved)){printf("SDL input mismatch kind %u sample %u\n",kind,sample);return 1;}
+  }cases++;
+ }
+ printf("%u native input cases pass: keyboard snapshot, mouse coordinates, relative deltas, buttons and buffer guards; SDL callbacks controlled\n",cases);return 0;}
+'''.encode()
+        out=PROJECT/'reports/client-input-arguments-20261005';out.mkdir(parents=True,exist_ok=True)
+        path=out/'input.c';path.write_bytes(code);exe=path.with_suffix('.exe')
+        result=subprocess.run(['C:/Users/junin/mingw64/bin/gcc.exe','-O0','-std=gnu11','-fno-strict-aliasing','-I',str(PROJECT/'src/client'),'-I',str(PROJECT/'src/rebuild'),str(path),'-o',str(exe)],capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        result=subprocess.run([str(exe)],capture_output=True,text=True,timeout=30)
+        (out/'stdout.txt').write_text(result.stdout)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+
     def test_native_events(self):
         s=read_client_source()
         if b'sr_event_poll(sr_event)' not in s:s,_=repair(s)

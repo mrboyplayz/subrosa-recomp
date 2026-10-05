@@ -502,7 +502,7 @@ def main():
             raise ValueError('Exported WinMain definition is missing')
         command.append('-Wl,--defsym,WinMain=WinMain_sr')
     command += ['-o', str(output / 'client-link-probe.exe'), '-mwindows', '-static', '-static-libgcc', '-lkernel32',
-                '-luser32', '-lshell32', '-lws2_32', '-lwinmm', '-lopengl32', '-lm']
+                '-luser32', '-lshell32', '-lwsock32', '-lwinmm', '-lopengl32', '-lm']
     result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8', errors='replace')
     (output / 'link.stderr.txt').write_text(result.stderr, encoding='utf-8')
     unresolved = sorted(set(re.findall(r"undefined reference to [`']([^'\n]+)'", result.stderr)))

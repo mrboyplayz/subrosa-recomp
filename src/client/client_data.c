@@ -9921,287 +9921,429 @@ float flt_1402B2CF4[479] =
  // weak
 _UNKNOWN unk_1402B3470;
  // weak
-int dword_1402B34F0[] = { 0 };
- // weak
-int dword_1402B34F4[] = { 0 };
- // weak
-int dword_1402B34F8[] = { 0 };
- // weak
-int dword_1402B34FC = 1065353216;
- // weak
-int dword_1402B3500 = 0;
- // weak
-int dword_1402B3504 = 0;
- // weak
-int dword_1402B3508 = 1065353216;
- // weak
-int dword_1402B350C = 0;
- // weak
-int dword_1402B3510 = 1065353216;
- // weak
-int dword_1402B3514 = 0;
- // weak
-int dword_1402B3518 = 0;
- // weak
-int dword_1402B351C = 1065353216;
- // weak
-int dword_1402B3520 = 0;
- // weak
-int dword_1402B3524 = 1065353216;
- // weak
-int dword_1402B3528 = 0;
- // weak
-int dword_1402B352C = 1065353216;
- // weak
-int dword_1402B3530 = 1065353216;
- // weak
-int dword_1402B3534 = 0;
- // weak
-int dword_1402B3538 = 1065353216;
- // weak
-int dword_1402B353C = 1065353216;
- // weak
-int dword_1402B3540 = 1065353216;
- // weak
-int dword_1402B3544 = 0;
- // weak
-int dword_1402B3548 = 1065353216;
- // weak
-int dword_1402B354C = 1065353216;
- // weak
-int dword_1402B3550[] = { 0 };
- // weak
-int dword_1402B3554[] = { -1082130432 };
- // weak
-int dword_1402B3558[18] =
-{
-  0,
-  0,
-  0,
-  1065353216,
-  -1082130432,
-  0,
-  0,
-  0,
-  0,
-  -1082130432,
-  1065353216,
-  0,
-  0,
-  0,
-  1065353216,
-  0,
-  0,
-  0
+_Alignas(16) int sr_geometry_tables[212] = {
+  0, 0, 0, 1065353216, 0, 0, 1065353216, 0,
+  1065353216, 0, 0, 1065353216, 0, 1065353216, 0, 1065353216,
+  1065353216, 0, 1065353216, 1065353216, 1065353216, 0, 1065353216, 1065353216,
+  0, -1082130432, 0, 0, 0, 1065353216, -1082130432, 0,
+  0, 0, 0, -1082130432, 1065353216, 0, 0, 0,
+  1065353216, 0, 0, 0, -1082130432, 0, 0, 1065353216,
+  0, 0, 0, 0, 1065353216, -1082130432, 0, 0,
+  0, 0, -1082130432, 1065353216, 0, 0, 0, 0,
+  0, 0, -1082130432, 0, 1065353216, 0, 0, 1065353216,
+  0, 0, 1065353216, 0, 0, 1065353216, 0, 0,
+  0, 1065353216, 0, 1065353216, 1065353216, 1065353216, 1065353216, 0,
+  0, 0, 0, 0, 3, 2, 1, 0,
+  7, 6, 2, 3, 4, 7, 3, 0,
+  5, 4, 0, 1, 6, 5, 1, 2,
+  4, 5, 6, 7, 3, 2, 1, 3,
+  1, 0, 7, 6, 2, 7, 2, 3,
+  4, 7, 3, 4, 3, 0, 5, 4,
+  0, 5, 0, 1, 6, 5, 1, 6,
+  1, 2, 4, 5, 6, 4, 6, 7,
+  0, 1, 1, 2, 2, 3, 3, 0,
+  0, 4, 1, 5, 2, 6, 3, 7,
+  4, 5, 5, 6, 6, 7, 7, 4,
+  0, 3, 0, 4, 0, 1, 0, 2,
+  2, 3, 3, 4, 4, 1, 1, 2,
+  3, 5, 4, 5, 1, 5, 2, 5,
+  1, 5, 4, 0, 2, 6, 5, 1,
+  3, 7, 6, 2,
 };
+__asm__(
+  ".globl dword_1402B34F0\n.set dword_1402B34F0, sr_geometry_tables+0\n"
+  ".globl dword_1402B34F4\n.set dword_1402B34F4, sr_geometry_tables+4\n"
+  ".globl dword_1402B34F8\n.set dword_1402B34F8, sr_geometry_tables+8\n"
+  ".globl dword_1402B34FC\n.set dword_1402B34FC, sr_geometry_tables+12\n"
+  ".globl dword_1402B3500\n.set dword_1402B3500, sr_geometry_tables+16\n"
+  ".globl dword_1402B3504\n.set dword_1402B3504, sr_geometry_tables+20\n"
+  ".globl dword_1402B3508\n.set dword_1402B3508, sr_geometry_tables+24\n"
+  ".globl dword_1402B350C\n.set dword_1402B350C, sr_geometry_tables+28\n"
+  ".globl dword_1402B3510\n.set dword_1402B3510, sr_geometry_tables+32\n"
+  ".globl dword_1402B3514\n.set dword_1402B3514, sr_geometry_tables+36\n"
+  ".globl dword_1402B3518\n.set dword_1402B3518, sr_geometry_tables+40\n"
+  ".globl dword_1402B351C\n.set dword_1402B351C, sr_geometry_tables+44\n"
+  ".globl dword_1402B3520\n.set dword_1402B3520, sr_geometry_tables+48\n"
+  ".globl dword_1402B3524\n.set dword_1402B3524, sr_geometry_tables+52\n"
+  ".globl dword_1402B3528\n.set dword_1402B3528, sr_geometry_tables+56\n"
+  ".globl dword_1402B352C\n.set dword_1402B352C, sr_geometry_tables+60\n"
+  ".globl dword_1402B3530\n.set dword_1402B3530, sr_geometry_tables+64\n"
+  ".globl dword_1402B3534\n.set dword_1402B3534, sr_geometry_tables+68\n"
+  ".globl dword_1402B3538\n.set dword_1402B3538, sr_geometry_tables+72\n"
+  ".globl dword_1402B353C\n.set dword_1402B353C, sr_geometry_tables+76\n"
+  ".globl dword_1402B3540\n.set dword_1402B3540, sr_geometry_tables+80\n"
+  ".globl dword_1402B3544\n.set dword_1402B3544, sr_geometry_tables+84\n"
+  ".globl dword_1402B3548\n.set dword_1402B3548, sr_geometry_tables+88\n"
+  ".globl dword_1402B354C\n.set dword_1402B354C, sr_geometry_tables+92\n"
+  ".globl dword_1402B3550\n.set dword_1402B3550, sr_geometry_tables+96\n"
+  ".globl dword_1402B3554\n.set dword_1402B3554, sr_geometry_tables+100\n"
+  ".globl dword_1402B3558\n.set dword_1402B3558, sr_geometry_tables+104\n"
+  ".globl unk_1402B35A0\n.set unk_1402B35A0, sr_geometry_tables+176\n"
+  ".globl unk_1402B35A4\n.set unk_1402B35A4, sr_geometry_tables+180\n"
+  ".globl unk_1402B35A8\n.set unk_1402B35A8, sr_geometry_tables+184\n"
+  ".globl unk_1402B35F0\n.set unk_1402B35F0, sr_geometry_tables+256\n"
+  ".globl unk_1402B35F4\n.set unk_1402B35F4, sr_geometry_tables+260\n"
+  ".globl unk_1402B35F8\n.set unk_1402B35F8, sr_geometry_tables+264\n"
+  ".globl dword_1402B3638\n.set dword_1402B3638, sr_geometry_tables+328\n"
+  ".globl dword_1402B363C\n.set dword_1402B363C, sr_geometry_tables+332\n"
+  ".globl dword_1402B3640\n.set dword_1402B3640, sr_geometry_tables+336\n"
+  ".globl dword_1402B3644\n.set dword_1402B3644, sr_geometry_tables+340\n"
+  ".globl dword_1402B3648\n.set dword_1402B3648, sr_geometry_tables+344\n"
+  ".globl dword_1402B364C\n.set dword_1402B364C, sr_geometry_tables+348\n"
+  ".globl dword_1402B3650\n.set dword_1402B3650, sr_geometry_tables+352\n"
+  ".globl dword_1402B3654\n.set dword_1402B3654, sr_geometry_tables+356\n"
+  ".globl dword_1402B3660\n.set dword_1402B3660, sr_geometry_tables+368\n"
+  ".globl dword_1402B3664\n.set dword_1402B3664, sr_geometry_tables+372\n"
+  ".globl dword_1402B3668\n.set dword_1402B3668, sr_geometry_tables+376\n"
+  ".globl dword_1402B366C\n.set dword_1402B366C, sr_geometry_tables+380\n"
+  ".globl dword_1402B3670\n.set dword_1402B3670, sr_geometry_tables+384\n"
+  ".globl dword_1402B3674\n.set dword_1402B3674, sr_geometry_tables+388\n"
+  ".globl dword_1402B3678\n.set dword_1402B3678, sr_geometry_tables+392\n"
+  ".globl dword_1402B367C\n.set dword_1402B367C, sr_geometry_tables+396\n"
+  ".globl dword_1402B3680\n.set dword_1402B3680, sr_geometry_tables+400\n"
+  ".globl dword_1402B3684\n.set dword_1402B3684, sr_geometry_tables+404\n"
+  ".globl dword_1402B3688\n.set dword_1402B3688, sr_geometry_tables+408\n"
+  ".globl dword_1402B368C\n.set dword_1402B368C, sr_geometry_tables+412\n"
+  ".globl dword_1402B3690\n.set dword_1402B3690, sr_geometry_tables+416\n"
+  ".globl dword_1402B3694\n.set dword_1402B3694, sr_geometry_tables+420\n"
+  ".globl dword_1402B3698\n.set dword_1402B3698, sr_geometry_tables+424\n"
+  ".globl dword_1402B369C\n.set dword_1402B369C, sr_geometry_tables+428\n"
+  ".globl dword_1402B36A0\n.set dword_1402B36A0, sr_geometry_tables+432\n"
+  ".globl dword_1402B36A4\n.set dword_1402B36A4, sr_geometry_tables+436\n"
+  ".globl dword_1402B36A8\n.set dword_1402B36A8, sr_geometry_tables+440\n"
+  ".globl dword_1402B36AC\n.set dword_1402B36AC, sr_geometry_tables+444\n"
+  ".globl dword_1402B36B0\n.set dword_1402B36B0, sr_geometry_tables+448\n"
+  ".globl dword_1402B36B4\n.set dword_1402B36B4, sr_geometry_tables+452\n"
+  ".globl dword_1402B36B8\n.set dword_1402B36B8, sr_geometry_tables+456\n"
+  ".globl dword_1402B36BC\n.set dword_1402B36BC, sr_geometry_tables+460\n"
+  ".globl dword_1402B36C0\n.set dword_1402B36C0, sr_geometry_tables+464\n"
+  ".globl dword_1402B36C4\n.set dword_1402B36C4, sr_geometry_tables+468\n"
+  ".globl dword_1402B36C8\n.set dword_1402B36C8, sr_geometry_tables+472\n"
+  ".globl dword_1402B36CC\n.set dword_1402B36CC, sr_geometry_tables+476\n"
+  ".globl dword_1402B36D0\n.set dword_1402B36D0, sr_geometry_tables+480\n"
+  ".globl dword_1402B36D4\n.set dword_1402B36D4, sr_geometry_tables+484\n"
+  ".globl dword_1402B36D8\n.set dword_1402B36D8, sr_geometry_tables+488\n"
+  ".globl dword_1402B36DC\n.set dword_1402B36DC, sr_geometry_tables+492\n"
+  ".globl dword_1402B36E0\n.set dword_1402B36E0, sr_geometry_tables+496\n"
+  ".globl dword_1402B36E4\n.set dword_1402B36E4, sr_geometry_tables+500\n"
+  ".globl dword_1402B36E8\n.set dword_1402B36E8, sr_geometry_tables+504\n"
+  ".globl dword_1402B36EC\n.set dword_1402B36EC, sr_geometry_tables+508\n"
+  ".globl dword_1402B36F0\n.set dword_1402B36F0, sr_geometry_tables+512\n"
+  ".globl dword_1402B36F4\n.set dword_1402B36F4, sr_geometry_tables+516\n"
+  ".globl dword_1402B36F8\n.set dword_1402B36F8, sr_geometry_tables+520\n"
+  ".globl dword_1402B36FC\n.set dword_1402B36FC, sr_geometry_tables+524\n"
+  ".globl dword_1402B3700\n.set dword_1402B3700, sr_geometry_tables+528\n"
+  ".globl dword_1402B3704\n.set dword_1402B3704, sr_geometry_tables+532\n"
+  ".globl dword_1402B3708\n.set dword_1402B3708, sr_geometry_tables+536\n"
+  ".globl dword_1402B370C\n.set dword_1402B370C, sr_geometry_tables+540\n"
+  ".globl dword_1402B3710\n.set dword_1402B3710, sr_geometry_tables+544\n"
+  ".globl dword_1402B3714\n.set dword_1402B3714, sr_geometry_tables+548\n"
+  ".globl dword_1402B3718\n.set dword_1402B3718, sr_geometry_tables+552\n"
+  ".globl dword_1402B371C\n.set dword_1402B371C, sr_geometry_tables+556\n"
+  ".globl dword_1402B3720\n.set dword_1402B3720, sr_geometry_tables+560\n"
+  ".globl dword_1402B3724\n.set dword_1402B3724, sr_geometry_tables+564\n"
+  ".globl dword_1402B3728\n.set dword_1402B3728, sr_geometry_tables+568\n"
+  ".globl dword_1402B372C\n.set dword_1402B372C, sr_geometry_tables+572\n"
+  ".globl dword_1402B3730\n.set dword_1402B3730, sr_geometry_tables+576\n"
+  ".globl dword_1402B3734\n.set dword_1402B3734, sr_geometry_tables+580\n"
+  ".globl dword_1402B3738\n.set dword_1402B3738, sr_geometry_tables+584\n"
+  ".globl dword_1402B373C\n.set dword_1402B373C, sr_geometry_tables+588\n"
+  ".globl dword_1402B3740\n.set dword_1402B3740, sr_geometry_tables+592\n"
+  ".globl dword_1402B3744\n.set dword_1402B3744, sr_geometry_tables+596\n"
+  ".globl dword_1402B3748\n.set dword_1402B3748, sr_geometry_tables+600\n"
+  ".globl dword_1402B374C\n.set dword_1402B374C, sr_geometry_tables+604\n"
+  ".globl dword_1402B3750\n.set dword_1402B3750, sr_geometry_tables+608\n"
+  ".globl dword_1402B3754\n.set dword_1402B3754, sr_geometry_tables+612\n"
+  ".globl dword_1402B3758\n.set dword_1402B3758, sr_geometry_tables+616\n"
+  ".globl dword_1402B375C\n.set dword_1402B375C, sr_geometry_tables+620\n"
+  ".globl dword_1402B3760\n.set dword_1402B3760, sr_geometry_tables+624\n"
+  ".globl dword_1402B3764\n.set dword_1402B3764, sr_geometry_tables+628\n"
+  ".globl dword_1402B3768\n.set dword_1402B3768, sr_geometry_tables+632\n"
+  ".globl dword_1402B376C\n.set dword_1402B376C, sr_geometry_tables+636\n"
+  ".globl dword_1402B3770\n.set dword_1402B3770, sr_geometry_tables+640\n"
+  ".globl dword_1402B3774\n.set dword_1402B3774, sr_geometry_tables+644\n"
+  ".globl dword_1402B3778\n.set dword_1402B3778, sr_geometry_tables+648\n"
+  ".globl dword_1402B377C\n.set dword_1402B377C, sr_geometry_tables+652\n"
+  ".globl dword_1402B3780\n.set dword_1402B3780, sr_geometry_tables+656\n"
+  ".globl dword_1402B3784\n.set dword_1402B3784, sr_geometry_tables+660\n"
+  ".globl dword_1402B3788\n.set dword_1402B3788, sr_geometry_tables+664\n"
+  ".globl dword_1402B378C\n.set dword_1402B378C, sr_geometry_tables+668\n"
+  ".globl dword_1402B3790\n.set dword_1402B3790, sr_geometry_tables+672\n"
+  ".globl dword_1402B3794\n.set dword_1402B3794, sr_geometry_tables+676\n"
+  ".globl dword_1402B3798\n.set dword_1402B3798, sr_geometry_tables+680\n"
+  ".globl dword_1402B379C\n.set dword_1402B379C, sr_geometry_tables+684\n"
+  ".globl dword_1402B37A0\n.set dword_1402B37A0, sr_geometry_tables+688\n"
+  ".globl dword_1402B37A4\n.set dword_1402B37A4, sr_geometry_tables+692\n"
+  ".globl dword_1402B37A8\n.set dword_1402B37A8, sr_geometry_tables+696\n"
+  ".globl dword_1402B37AC\n.set dword_1402B37AC, sr_geometry_tables+700\n"
+  ".globl unk_1402B37B0\n.set unk_1402B37B0, sr_geometry_tables+704\n"
+  ".globl dword_1402B37B4\n.set dword_1402B37B4, sr_geometry_tables+708\n"
+  ".globl unk_1402B37B8\n.set unk_1402B37B8, sr_geometry_tables+712\n"
+  ".globl unk_1402B37BC\n.set unk_1402B37BC, sr_geometry_tables+716\n"
+  ".globl unk_1402B37C0\n.set unk_1402B37C0, sr_geometry_tables+720\n"
+  ".globl unk_1402B37C4\n.set unk_1402B37C4, sr_geometry_tables+724\n"
+);
+
  // weak
-_UNKNOWN unk_1402B35A0;
+
  // weak
-_UNKNOWN unk_1402B35A4;
+
  // weak
-_UNKNOWN unk_1402B35A8;
+
  // weak
-_UNKNOWN unk_1402B35F0;
+
  // weak
-_UNKNOWN unk_1402B35F4;
+
  // weak
-_UNKNOWN unk_1402B35F8;
+
  // weak
-int dword_1402B3638 = 0;
+
  // weak
-int dword_1402B363C = 1065353216;
+
  // weak
-int dword_1402B3640 = 1065353216;
+
  // weak
-int dword_1402B3644 = 1065353216;
+
  // weak
-int dword_1402B3648 = 1065353216;
+
  // weak
-int dword_1402B364C = 0;
+
  // weak
-int dword_1402B3650 = 0;
+
  // weak
-int dword_1402B3654 = 0;
+
  // weak
-int dword_1402B3660[] = { 3 };
+
  // weak
-int dword_1402B3664[] = { 2 };
+
  // weak
-int dword_1402B3668[] = { 1 };
+
  // weak
-int dword_1402B366C[] = { 0 };
+
  // weak
-int dword_1402B3670 = 7;
+
  // weak
-int dword_1402B3674 = 6;
+
  // weak
-int dword_1402B3678 = 2;
+
  // weak
-int dword_1402B367C = 3;
+
  // weak
-int dword_1402B3680 = 4;
+
  // weak
-int dword_1402B3684 = 7;
+
  // weak
-int dword_1402B3688 = 3;
+
  // weak
-int dword_1402B368C = 0;
+
  // weak
-int dword_1402B3690 = 5;
+
  // weak
-int dword_1402B3694 = 4;
+
  // weak
-int dword_1402B3698 = 0;
+
  // weak
-int dword_1402B369C = 1;
+
  // weak
-int dword_1402B36A0 = 6;
+
  // weak
-int dword_1402B36A4 = 5;
+
  // weak
-int dword_1402B36A8 = 1;
+
  // weak
-int dword_1402B36AC = 2;
+
  // weak
-int dword_1402B36B0 = 4;
+
  // weak
-int dword_1402B36B4 = 5;
+
  // weak
-int dword_1402B36B8 = 6;
+
  // weak
-int dword_1402B36BC = 7;
+
  // weak
-int dword_1402B36C0 = 3;
+
  // weak
-int dword_1402B36C4 = 2;
+
  // weak
-int dword_1402B36C8 = 1;
+
  // weak
-int dword_1402B36CC = 3;
+
  // weak
-int dword_1402B36D0 = 1;
+
  // weak
-int dword_1402B36D4 = 0;
+
  // weak
-int dword_1402B36D8 = 7;
+
  // weak
-int dword_1402B36DC = 6;
+
  // weak
-int dword_1402B36E0 = 2;
+
  // weak
-int dword_1402B36E4 = 7;
+
  // weak
-int dword_1402B36E8 = 2;
+
  // weak
-int dword_1402B36EC = 3;
+
  // weak
-int dword_1402B36F0 = 4;
+
  // weak
-int dword_1402B36F4 = 7;
+
  // weak
-int dword_1402B36F8 = 3;
+
  // weak
-int dword_1402B36FC = 4;
+
  // weak
-int dword_1402B3700 = 3;
+
  // weak
-int dword_1402B3704 = 0;
+
  // weak
-int dword_1402B3708 = 5;
+
  // weak
-int dword_1402B370C = 4;
+
  // weak
-int dword_1402B3710 = 0;
+
  // weak
-int dword_1402B3714 = 5;
+
  // weak
-int dword_1402B3718 = 0;
+
  // weak
-int dword_1402B371C = 1;
+
  // weak
-int dword_1402B3720 = 6;
+
  // weak
-int dword_1402B3724 = 5;
+
  // weak
-int dword_1402B3728 = 1;
+
  // weak
-int dword_1402B372C = 6;
+
  // weak
-int dword_1402B3730 = 1;
+
  // weak
-int dword_1402B3734 = 2;
+
  // weak
-int dword_1402B3738 = 4;
+
  // weak
-int dword_1402B373C = 5;
+
  // weak
-int dword_1402B3740 = 6;
+
  // weak
-int dword_1402B3744 = 4;
+
  // weak
-int dword_1402B3748 = 6;
+
  // weak
-int dword_1402B374C = 7;
+
  // weak
-int dword_1402B3750[] = { 0 };
+
  // weak
-int dword_1402B3754[] = { 1 };
+
  // weak
-int dword_1402B3758[] = { 1 };
+
  // weak
-int dword_1402B375C[] = { 2 };
+
  // weak
-int dword_1402B3760[] = { 2 };
+
  // weak
-int dword_1402B3764[] = { 3 };
+
  // weak
-int dword_1402B3768 = 3;
+
  // weak
-int dword_1402B376C = 0;
+
  // weak
-int dword_1402B3770 = 0;
+
  // weak
-int dword_1402B3774 = 4;
+
  // weak
-int dword_1402B3778 = 1;
+
  // weak
-int dword_1402B377C = 5;
+
  // weak
-int dword_1402B3780 = 2;
+
  // weak
-int dword_1402B3784 = 6;
+
  // weak
-int dword_1402B3788 = 3;
+
  // weak
-int dword_1402B378C = 7;
+
  // weak
-int dword_1402B3790 = 4;
+
  // weak
-int dword_1402B3794 = 5;
+
  // weak
-int dword_1402B3798 = 5;
+
  // weak
-int dword_1402B379C = 6;
+
  // weak
-int dword_1402B37A0 = 6;
+
  // weak
-int dword_1402B37A4 = 7;
+
  // weak
-int dword_1402B37A8 = 7;
+
  // weak
-int dword_1402B37AC = 4;
+
  // weak
-_UNKNOWN unk_1402B37B0;
+
  // weak
-int dword_1402B37B4[] = { 3 };
+
  // weak
-_UNKNOWN unk_1402B37B8;
+
  // weak
-_UNKNOWN unk_1402B37BC;
+
  // weak
-_UNKNOWN unk_1402B37C0;
+
  // weak
-_UNKNOWN unk_1402B37C4;
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
+ // weak
+
  // weak
 int dword_1402B3840[68174] =
 {
@@ -78381,35 +78523,41 @@ int dword_1402B3840[68174] =
   0
 };
  // weak
-int dword_1402F6178 = 1065353216;
- // weak
-int dword_1402F617C = 0;
- // weak
-int dword_1402F6180 = 0;
- // weak
-int dword_1402F6188 = 0;
- // weak
-int dword_1402F618C = 1065353216;
- // weak
-int dword_1402F6190 = 0;
- // weak
-int dword_1402F6198 = 0;
- // weak
-int dword_1402F619C = 0;
- // weak
-int dword_1402F61A0 = 1065353216;
+/* Native unit axes are three complete vectors, spaced by 16 bytes. Scalar
+   exports otherwise split their zero words into BSS and their ones into DATA. */
+_Alignas(8) int sr_math_axes[12] = {
+  1065353216, 0, 0, 0,
+  0, 1065353216, 0, 0,
+  0, 0, 1065353216, 0
+};
+__asm__(
+  ".globl dword_1402F6178\n.set dword_1402F6178, sr_math_axes\n"
+  ".globl dword_1402F617C\n.set dword_1402F617C, sr_math_axes+4\n"
+  ".globl dword_1402F6180\n.set dword_1402F6180, sr_math_axes+8\n"
+  ".globl dword_1402F6188\n.set dword_1402F6188, sr_math_axes+16\n"
+  ".globl dword_1402F618C\n.set dword_1402F618C, sr_math_axes+20\n"
+  ".globl dword_1402F6190\n.set dword_1402F6190, sr_math_axes+24\n"
+  ".globl dword_1402F6198\n.set dword_1402F6198, sr_math_axes+32\n"
+  ".globl dword_1402F619C\n.set dword_1402F619C, sr_math_axes+36\n"
+  ".globl dword_1402F61A0\n.set dword_1402F61A0, sr_math_axes+40\n"
+);
  // weak
 _UNKNOWN unk_1402F61A8;
  // weak
 int dword_1402F61B4 = 0;
  // weak
-_UNKNOWN unk_1402F61B8;
- // weak
-int dword_1402F61BC = 953267991;
- // weak
-int dword_1402F61C4 = 1142900326;
- // weak
-_UNKNOWN unk_1402F61C8;
+/* Native 0x14014BD03/0x14014BD21 upload a vec4 followed by a vec3.
+   Keep the scalar world-position aliases inside the same original block. */
+_Alignas(16) const uint32_t sr_atmosphere_parameters[8] = {
+  1028504435u, 953267991u, 1087163597u, 1142900326u,
+  1059061760u, 1061158912u, 1065353216u, 1065353216u
+};
+__asm__(
+  ".globl unk_1402F61B8\n.set unk_1402F61B8, sr_atmosphere_parameters\n"
+  ".globl dword_1402F61BC\n.set dword_1402F61BC, sr_atmosphere_parameters+4\n"
+  ".globl dword_1402F61C4\n.set dword_1402F61C4, sr_atmosphere_parameters+12\n"
+  ".globl unk_1402F61C8\n.set unk_1402F61C8, sr_atmosphere_parameters+16\n"
+);
  // weak
 __int64 (           *off_140301820)(_QWORD, _QWORD, _QWORD) = &sub_1400012A0;
  // weak

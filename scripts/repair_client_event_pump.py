@@ -12,6 +12,35 @@ extern void sr_event_set_size(void *, int, int) __asm__("SDL_SetWindowSize");
 '''
 
 
+def repair_mouse_arguments(source):
+    """Restore SDL output pointers and the keyboard's null length pointer."""
+    from repair_client_menu_actions import pinned_pe,check,region
+    pe=pinned_pe()
+    rows=[(0x7ca90,0x7ca99,'33c9e859c41100',b'(__int128 *)sub_140198EF9()',b'(__int128 *)((const unsigned char *(*)(int *))sub_140198EF9)(NULL)'),
+          (0x7cb30,0x7cb39,'488d542438488d4c2430e8b7c31100',b'sub_140198EFF()',b'((unsigned (*)(int *, int *))sub_140198EFF)(&v7, &v8)'),
+          (0x7cbc0,0x7cbc9,'488d542438488d4c2430e82dc31100',b'sub_140198F05()',b'((unsigned (*)(int *, int *))sub_140198F05)(&v5, &v6)')]
+    for fn,rva,data,old,new in rows:
+        check(pe,rva,data);a,b,body=region(source,fn)
+        if body.count(old)!=1:raise ValueError('SDL input argument inventory changed')
+        source=source[:a]+body.replace(old,new)+source[b:]
+    return source,{'recovered_sdl_input_arguments':3}
+
+
+def repair_live_mouse_arguments(source):
+    from repair_client_menu_actions import pinned_pe,check,region
+    pe=pinned_pe()
+    specs=[(0x9f050,[(0x9f0dd,'488d55c8'),(0x9f0e8,'488d4dc4')],['&v76, (int *)&v77']),
+           (0x9fe00,[(0xa0736,'488d542454'),(0xa0742,'488d4c2450'),(0xa0832,'488d542450488d4c2454')],['&v75, &v76','&v76, &v75']),
+           (0xfcff0,[(0xfd201,'488d542438488d4c2430')],['&v10, &v11'])]
+    for fn,pins,args in specs:
+        for rva,data in pins:check(pe,rva,data)
+        a,b,body=region(source,fn)
+        if body.count(b'sub_140198F05()')!=len(args):raise ValueError('Live relative mouse inventory changed')
+        for values in args:body=body.replace(b'sub_140198F05()',('sr_menu_relative_mouse('+values+')').encode(),1)
+        source=source[:a]+body+source[b:]
+    return source,{'recovered_live_mouse_arguments':4}
+
+
 def repair(source):
     binary=PROJECT.parent/'subrosa.exe'
     if hashlib.sha256(binary.read_bytes()).hexdigest()!=PIN:raise ValueError('Event pump requires pinned client')
@@ -52,4 +81,6 @@ def repair(source):
     source=source[:a]+PREFIX+body+source[b:]
     sig=b'__int64 input_poll_events_candidate()'
     if source.count(sig)!=2:raise ValueError('Event pump signature changed')
-    return source.replace(sig,b'void input_poll_events_candidate()'),{'recovered_sdl_event_object':1,'recovered_sdl_event_calls':7,'recovered_event_pump_void_return':1}
+    source,counts=repair_mouse_arguments(source.replace(sig,b'void input_poll_events_candidate()'))
+    source,live_counts=repair_live_mouse_arguments(source)
+    return source,{**counts,**live_counts,'recovered_sdl_event_object':1,'recovered_sdl_event_calls':7,'recovered_event_pump_void_return':1}

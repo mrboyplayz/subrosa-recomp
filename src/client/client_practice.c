@@ -1425,6 +1425,45 @@ LABEL_348:
     dword_140404A6C[284024391] = -1077342245;
   }
   v105 = dword_140404A6C[456202453];
+  /* Debugging extension: a single local human on the shared test arena.
+     Native city Practice spawners below populate distant items and trains. */
+  if (v105 && !dword_140404A6C[283831312] &&
+      !strcmp((char *)&dword_140404A6C[283831313], "debugtest"))
+  {
+    float sr_test_position[3] = {1024.0f, 25.25f, 1024.0f};
+    float sr_test_rotation[9] = {1,0,0, 0,1,0, 0,0,1};
+    dword_140404A6C[71856253] = 1;
+    dword_140404A6C[71856286] = 0;
+    int sr_test_human = sub_140053840(sr_test_position, sr_test_rotation, 0);
+    if (sr_test_human < 0 || sr_test_human >= 256)
+    {
+      dword_140404A6C[71856253] = 0;
+      SR_DEBUG_LOG("Test arena: player creation failed (%d)", sr_test_human);
+      return 0;
+    }
+    dword_140404A6C[71856292] = sr_test_human;
+    dword_140404A6C[71859821] = 1;
+    dword_140404A6C[71859822] = 1;
+    dword_140404A6C[71859823] = 1;
+    dword_140404A6C[7166 * sr_test_human + 280658445] = 1;
+    dword_140404A6C[7166 * sr_test_human + 280658446] = 1;
+    dword_140404A6C[7166 * sr_test_human + 280658447] = 1;
+    dword_140404A6C[7166 * sr_test_human + 280658449] = dword_140404A6C[71859826];
+    memcpy(&dword_140404A6C[179992855], sr_test_position, sizeof(sr_test_position));
+    /* Use the native Practice camera formula (spawn + 32 X, + 16 Y, spawn Z,
+       yaw -pi/2) instead of the earlier hardcoded eye height. The old 27.0 put
+       the eye 3 m above a 24 m floor and let physics drop it to 24.7, i.e. on
+       the floor plane, which is not a view the original ever produced. */
+    *(float *)&dword_140404A6C[284024388] = sr_test_position[0] + 32.0f;
+    *(float *)&dword_140404A6C[284024389] = sr_test_position[1] + 16.0f;
+    *(float *)&dword_140404A6C[284024390] = sr_test_position[2];
+    *(float *)&dword_140404A6C[284024391] = -1.5707964f;
+    *(float *)&dword_140404A6C[284024392] = 0.0f;
+    *(float *)&dword_140404A6C[284024514] = 1.0f;
+    v139 = v105;
+    SR_DEBUG_LOG("Test arena: one player at (1024, 25.25, 1024), solid floor y=24, camera (1056, 41.25, 1024)");
+    goto SR_TEST_ARENA_FINALIZE;
+  }
   if ( dword_140404A6C[456202453] )
   {
     v106 = dword_140404A6C[283831312];
@@ -1999,6 +2038,7 @@ LABEL_430:
       }
       dword_140404A6C[283843255] = 1;
     }
+SR_TEST_ARENA_FINALIZE:
     if ( v139 )
     {
       sub_14008C030();

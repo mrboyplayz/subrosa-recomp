@@ -16,6 +16,27 @@ def rotation(name, first, second, last):
         (last, f'{name}[8]')])
 
 
+def repair_train_route_vectors(source):
+    """Preserve the complete directions rotated while constructing the rail loop."""
+    pe = pinned_pe()
+    check(pe, 0x2adca, '488d4c2438')
+    check(pe, 0x2b46c, '488d442438')
+    check(pe, 0x2b477, '4c8d4c2450')
+    check(pe, 0x2b47c, '4c8d44246c')
+    check(pe, 0x2b486, '488d542460')
+    a, b, body = region(source, 0x2a9a0)
+    groups = []
+    for name, first, kind in (
+            ('sr_train_route_direction', 65, 'float'),
+            ('sr_train_route_previous_direction', 69, 'float'),
+            ('sr_train_route_segment_start', 72, 'int'),
+            ('sr_train_route_segment_end', 75, 'unsigned')):
+        groups.append((f'  {kind} {name}[3];',
+                       [(f'v{i}', f'{name}[{i-first}]') for i in range(first, first+3)]))
+    body = objects(body, groups)
+    return source[:a]+body+source[b:]
+
+
 def repair(source):
     pe = pinned_pe()
     check(pe, 0x12a075, 'f20f11442460')
@@ -50,5 +71,7 @@ def repair(source):
         raise ValueError('Train spawn axis changed')
     body = body.replace(b'  v0 = 0;', b'  const float sr_train_spawn_axis[3] = {0.0f, 1.0f, 0.0f};\n  v0 = 0;', 1)
     body = body.replace(axis, b'(float *)sr_train_spawn_axis')
-    return source[:a]+body+source[b:], {'recovered_practice_spawn_objects': 7,
-                                      'recovered_train_spawn_axis': 1}
+    source = repair_train_route_vectors(source[:a]+body+source[b:])
+    return source, {'recovered_practice_spawn_objects': 7,
+                    'recovered_train_spawn_axis': 1,
+                    'recovered_train_route_vectors': 4}

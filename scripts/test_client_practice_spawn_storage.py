@@ -2,6 +2,7 @@
 import subprocess
 from client_sources import read_client_source
 import unittest
+import re
 from repair_client_menu_actions import PROJECT, pinned_pe, region
 from repair_client_practice_spawn_storage import repair
 import test_client_collision_query as collision
@@ -23,6 +24,57 @@ class PracticeSpawnStorage(unittest.TestCase):
         result = subprocess.run([str(exe)], capture_output=True, text=True, timeout=30)
         (out/(name+'-stdout.txt')).write_bytes(result.stdout.encode())
         self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
+
+    def test_native_train_route(self):
+        """Compare the entire 104-segment rail loop and all four vector arguments."""
+        source = self.source(); pe = pinned_pe()
+        code = r'''#include <math.h>
+#include "export_compat.h"
+static unsigned char *image,*working;static unsigned *dword_140404A6C;
+static unsigned trace[104][15],calls,finish_calls;
+static char sr_mem_140274da0[6];
+static void jump(unsigned char *at,void *fn){at[0]=0xff;at[1]=0x25;memset(at+2,0,4);memcpy(at+6,&fn,8);}
+static __m128 sub_1401F8AC0(double a,int64_t b,double c){float angle;memcpy(&angle,&a,4);(void)b;(void)c;return _mm_setr_ps(sinf(angle),cosf(angle),0,0);}
+static unsigned sub_1400603A0(int map,float *start,float *end,float *before,float *after,float width){
+ unsigned n=calls++;if(n>=104)abort();trace[n][0]=map;memcpy(trace[n]+1,start,12);memcpy(trace[n]+4,end,12);memcpy(trace[n]+7,before,12);memcpy(trace[n]+10,after,12);memcpy(trace[n]+13,&width,4);
+ unsigned slot=dword_140404A6C[421506973]++;
+ float speed=1.0f+(slot%7)*.125f;memcpy(dword_140404A6C+15432*slot+358312932,&speed,4);return slot;
+}
+static unsigned sub_14002A680(void){finish_calls++;return 23;}
+'''.encode()
+        code += re.search(rb'_Alignas\(8\) int sr_math_axes\[12\].*?\n\);', source, re.S)[0]+b'\n'
+        for rva in (0x2f6178,0x2f617c,0x2f6180,0x2f6188,0x2f618c,0x2f6190):
+            code += f'extern int dword_140{rva:06X};\n'.encode()
+        code += region(source,0x7b4d0)[2]+region(source,0x2a9a0)[2]+b'\nint main(void){\n'
+        code += collision.CollisionQuery.native_setup(self,pe,[(0x2a9a0,0x1020),(0x7b4d0,0x1d0)],(0x60000,0x1f8000))
+        for rva,name in ((0x603a0,'sub_1400603A0'),(0x1f8ac0,'sub_1401F8AC0'),(0x2a680,'sub_14002A680')):
+            code += f'jump(image+{rva},{name});\n'.encode()
+        for index,size in ((254352099,0x26000),(112631653,0x2000),(421506973,0x1000),(358312924,0x630000),(283831313,0x1000)):
+            page=(0x404a6c+index*4)&~4095
+            code += f'if(!VirtualAlloc(image+{page},{size},MEM_COMMIT,PAGE_READWRITE)||!VirtualAlloc(working+{page},{size},MEM_COMMIT,PAGE_READWRITE))return 9;\n'.encode()
+        code += r'''
+ memcpy(sr_mem_140274da0,image+0x274da0,6);
+ unsigned saved_trace[104][15],saved_route[40],saved_links[104][3],saved_finish,saved_result;
+ for(unsigned sample=0;sample<16;sample++)for(unsigned nat=0;nat<2;nat++){
+  dword_140404A6C=(void*)((nat?image:working)+0x404a6c);calls=finish_calls=0;memset(trace,0,sizeof trace);
+  memset(dword_140404A6C+112631653,0xa5,sizeof saved_route);
+  memset(dword_140404A6C+358312924,0,0x620000);
+  memset(dword_140404A6C+283831313,0,8);if(sample&1)memcpy(dword_140404A6C+283831313,sr_mem_140274da0,6);
+  unsigned result=nat?((unsigned(*)(void))(image+0x2a9a0))():sub_14002A9A0();
+  if(calls!=104){printf("route call count %u\n",calls);return 2;}
+  if(!nat){saved_result=result;saved_finish=finish_calls;memcpy(saved_trace,trace,sizeof trace);memcpy(saved_route,dword_140404A6C+112631653,sizeof saved_route);for(unsigned i=0;i<104;i++)for(unsigned j=0;j<3;j++)saved_links[i][j]=dword_140404A6C[15432*i+358312924+(j==2?8:j)];}
+  else{
+   if(memcmp(saved_trace,trace,sizeof trace)||memcmp(saved_route,dword_140404A6C+112631653,sizeof saved_route)||saved_finish!=finish_calls||saved_result!=result){
+    printf("rail loop mismatch sample=%u finish=%u/%u result=%u/%u\n",sample,saved_finish,finish_calls,saved_result,result);
+    for(unsigned i=0;i<104;i++)for(unsigned j=0;j<15;j++)if(saved_trace[i][j]!=trace[i][j])printf("segment %u word %u %08x/%08x\n",i,j,saved_trace[i][j],trace[i][j]);return 1;
+   }
+   for(unsigned i=0;i<104;i++)for(unsigned j=0;j<3;j++)if(saved_links[i][j]!=dword_140404A6C[15432*i+358312924+(j==2?8:j)])return 3;
+  }
+ }
+ printf("16 complete native rail-loop comparisons pass: 104 segment calls, train positions, links, speed limits and finalization; shared sin/cos and controlled segment construction\n");return 0;
+}
+'''.encode()
+        self.run_fixture('train-route',code)
 
     def test_native_reset_spawn_block(self):
         body = region(self.source(), 0x127910)[2]

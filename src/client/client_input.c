@@ -9,7 +9,7 @@ __int128 *           input_get_keyboard_state_candidate(__int64 a1)
   __int64 v3; // rcx
   __int128 v4; // xmm0
 
-  result = (__int128 *)sub_140198EF9();
+  result = (__int128 *)((const unsigned char *(*)(int *))sub_140198EF9)(NULL);
   v3 = 2;
   do
   {
@@ -48,7 +48,7 @@ __int64            input_get_mouse_state_candidate(__int64 a1)
   int v7; // [rsp+30h] [rbp+8h]
   int v8; // [rsp+38h] [rbp+10h]
 
-  v2 = sub_140198EFF();
+  v2 = ((unsigned (*)(int *, int *))sub_140198EFF)(&v7, &v8);
   v3 = v2 & 1;
   *(float *)a1 = (float)((float)v7 * *(float *)&dword_140404A6C[438291414]) / (float)(int)dword_140404A6C[137297755];
   v4 = _mm_cvtsi32_si128(dword_140404A6C[137297756]);
@@ -72,7 +72,7 @@ __int64            input_get_relative_mouse_state_candidate(float *a1)
   int v5; // [rsp+30h] [rbp+8h]
   int v6; // [rsp+38h] [rbp+10h]
 
-  v2 = sub_140198F05();
+  v2 = ((unsigned (*)(int *, int *))sub_140198F05)(&v5, &v6);
   v3 = v2 & 1;
   *((_DWORD *)a1 + 38) = v2;
   *a1 = 512.0;

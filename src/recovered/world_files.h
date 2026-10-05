@@ -8,9 +8,10 @@ typedef struct { size_t offset; char message[128]; } SrWorldError;
 typedef struct { uint32_t count; unsigned char (*names)[64]; } SrNameTable;
 typedef struct { float position[3], uv[2]; } SrBlockPoint;
 typedef struct {
-    uint32_t prefix[4];
+    /* Native loader reads six words before any control point: degrees,
+       subdivision counts, material slot and patch flags, in disk order. */
+    uint32_t prefix[6];
     SrBlockPoint control[16];
-    uint32_t suffix[2];
 } SrBlockPatch;
 typedef struct { float corners[8][3]; uint32_t faces[6], flags; } SrBlockSolid;
 typedef struct {

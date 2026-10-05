@@ -2082,6 +2082,12 @@ def main():
             from repair_client_practice_spawn_storage import repair as repair_practice_spawn_storage
             prepared, spawn_storage_counts = repair_practice_spawn_storage(prepared)
             report.update(spawn_storage_counts)
+            from repair_client_item_collision_storage import repair as repair_item_collision_storage
+            prepared, item_collision_counts = repair_item_collision_storage(prepared)
+            report.update(item_collision_counts)
+            from repair_client_geometry_tables import repair as repair_geometry_tables
+            prepared, geometry_table_counts = repair_geometry_tables(prepared)
+            report.update(geometry_table_counts)
             from repair_client_static_sphere_query import repair as repair_static_sphere_query
             prepared, static_sphere_counts = repair_static_sphere_query(prepared)
             report.update(static_sphere_counts)

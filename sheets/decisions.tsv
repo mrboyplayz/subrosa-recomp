@@ -3,7 +3,7 @@
 # generator: client_c_recovery
 # owned_by: root
 id:string*	section:string	decision:string	reason:string
-c_first	mdd-034,mdd-048	Keep the authorized C recovery and current native ABI	User deferred Rust; a new Bevy runtime would change the current target
+c_first	mdd-034,mdd-048	Maintain C recovery and authorized Rust rewrite; C Vulkan backend requested	User explicitly requested both clients and Vulkan for the C recomp
 incremental_adoption	D1,D4,D5	Book owns module routing and recognized-function plan; existing repair kernels and manifests retain code/data evidence	Adopt without resetting prior tested recovery; expand data/type/asset sheets separately
 cli_requested	mdd-043	Use ghidra-cli for recovery and checked bulk exports; MCP remains available	User explicitly requested CLI; ghidra-cli 0.2.2 and its Rust build toolchain are installed
 evidence_wins	D1,mdd-039	A sheet disagreement with pinned machine code is a divergence to resolve	TSV cannot override actual binary behavior; bit and MXCSR comparisons remain exact where established

@@ -33,4 +33,25 @@ def repair(source):
     old=b'(*(void (           **)(__int64, __int64, __int64, __int64))&dword_140404A6C[18215089])(v2, v1, v3, v4);'
     if body.count(old)!=1:raise ValueError('Cubemap clear-color call changed')
     body=body.replace(old,b'(*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(1.0f,1.0f,1.0f,0.0f);')
-    return source[:a]+body+source[b:],{'recovered_view_storage_objects':4,'recovered_cubemap_clear_color':1}
+    source=repair_scene_draw_storage(source[:a]+body+source[b:])
+    return source,{'recovered_view_storage_objects':7,'recovered_cubemap_clear_color':1}
+
+
+def repair_scene_draw_storage(source):
+    """Preserve the position and rotation passed to the world draw queue."""
+    pe=pinned_pe()
+    check(pe,0x213f3,'4c8d4c2440')
+    check(pe,0x21d67,'e8c49f1000')
+    check(pe,0x21da0,'4c8d4c2440')
+    a,b,body=region(source,0x212e0)
+    body=objects(body,[
+        ('  _Alignas(8) unsigned sr_scene_draw_position[3];',[
+            ('v208','(*(uint64_t *)(void *)sr_scene_draw_position)'),
+            ('v209','(*(float *)&sr_scene_draw_position[2])')]),
+        ('  _Alignas(16) unsigned sr_scene_draw_rotation[12];',[
+            ('v216','(*(__int128 *)(void *)sr_scene_draw_rotation)'),
+            ('v217','(*(__int128 *)(void *)(sr_scene_draw_rotation+4))'),
+            ('v218','(*(float *)&sr_scene_draw_rotation[8])')]),
+        ('  unsigned sr_scene_draw_textures[4];',[
+            ('v206','sr_scene_draw_textures[0]'),('v207','sr_scene_draw_textures[1]')])])
+    return source[:a]+body+source[b:]

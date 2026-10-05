@@ -12962,7 +12962,10 @@ __int64            sub_140194590(__int64 a1, __int64 a2, __int64 a3)
 }
 
 
-//----- (00000001401945F0) ----------------------------------------------------
+//----- (00000001401945F0)
+
+
+
 __int64 sub_1401945F0()
 {
   float *v0; // rax
@@ -12978,13 +12981,9 @@ __int64 sub_1401945F0()
   __int64 v10; // r8
   _DWORD v12[10]; // [rsp-20h] [rbp-11E0h] BYREF
   __int64 v13; // [rsp+8h] [rbp-11B8h]
-  __m256i v14; // [rsp+10h] [rbp-11B0h] BYREF
-  __int128 v15; // [rsp+30h] [rbp-1190h]
-  __int128 v16; // [rsp+40h] [rbp-1180h]
+  _Alignas(16) unsigned sr_screen_sample_matrix[16];
   _DWORD v17[1048]; // [rsp+50h] [rbp-1170h] BYREF
-  __m256i v18; // [rsp+1140h] [rbp-80h] BYREF
-  __int128 v19; // [rsp+1160h] [rbp-60h]
-  __int128 v20; // [rsp+1170h] [rbp-50h]
+  _Alignas(16) unsigned sr_screen_sample_result[16];
   _DWORD v21[1024]; // [rsp+1180h] [rbp-40h] BYREF
   __int64 v22; // [rsp+2180h] [rbp+FC0h]
 
@@ -12995,19 +12994,19 @@ __int64 sub_1401945F0()
   qword_140404378(dword_140404A6C[71738442], 1, 0, &dword_140404A6C[431564565]);
   qword_140404338(dword_140404A6C[71738464], 1, v17);
   qword_140404308(dword_140404A6C[71738446], BYTE2(dword_140404A6C[284024767]) != 0);
-  HIDWORD(v16) = 1065353216;
-  v0 = (float *)&v18;
-  v15 = xmmword_140278E20;
+  HIDWORD((*(__int128 *)(void *)(sr_screen_sample_matrix+12))) = 1065353216;
+  v0 = (float *)&(*(__m256i *)(void *)sr_screen_sample_result);
+  (*(__int128 *)(void *)(sr_screen_sample_matrix+8)) = xmmword_140278E20;
   v1 = (float *)&dword_140404A6C[431564566];
-  v2 = (char *)&SR_VEC_LANES(256, v14, u64)[2] - (char *)&v18;
-  *(__int64 *)((char *)SR_VEC_LANES(256, v14, i64) + 4) = 0;
-  *(__int64 *)((char *)&SR_VEC_LANES(256, v14, i64)[1] + 4) = 0;
+  v2 = (char *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_screen_sample_matrix), u64)[2] - (char *)&(*(__m256i *)(void *)sr_screen_sample_result);
+  *(__int64 *)((char *)SR_VEC_LANES(256, (*(__m256i *)(void *)sr_screen_sample_matrix), i64) + 4) = 0;
+  *(__int64 *)((char *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_screen_sample_matrix), i64)[1] + 4) = 0;
   v3 = 4;
-  SR_VEC_LANES(256, v14, i64)[3] = 0;
-  *(_QWORD *)((char *)&v16 + 4) = 1056964608;
-  SR_VEC_LANES(256, v14, i32)[0] = 1056964608;
-  SR_VEC_LANES(256, v14, i32)[5] = 1056964608;
-  LODWORD(v16) = 1056964608;
+  SR_VEC_LANES(256, (*(__m256i *)(void *)sr_screen_sample_matrix), i64)[3] = 0;
+  *(_QWORD *)((char *)&(*(__int128 *)(void *)(sr_screen_sample_matrix+12)) + 4) = 1056964608;
+  SR_VEC_LANES(256, (*(__m256i *)(void *)sr_screen_sample_matrix), i32)[0] = 1056964608;
+  SR_VEC_LANES(256, (*(__m256i *)(void *)sr_screen_sample_matrix), i32)[5] = 1056964608;
+  LODWORD((*(__int128 *)(void *)(sr_screen_sample_matrix+12))) = 1056964608;
   do
   {
     v4 = *(v1 - 1);
@@ -13029,10 +13028,10 @@ __int64 sub_1401945F0()
     --v3;
   }
   while ( v3 );
-  v14 = v18;
-  v15 = v19;
-  v16 = v20;
-  qword_140404378(dword_140404A6C[71738463], 1, 0, &v14);
+  (*(__m256i *)(void *)sr_screen_sample_matrix) = (*(__m256i *)(void *)sr_screen_sample_result);
+  (*(__int128 *)(void *)(sr_screen_sample_matrix+8)) = (*(__int128 *)(void *)(sr_screen_sample_result+8));
+  (*(__int128 *)(void *)(sr_screen_sample_matrix+12)) = (*(__int128 *)(void *)(sr_screen_sample_result+12));
+  qword_140404378(dword_140404A6C[71738463], 1, 0, &(*(__m256i *)(void *)sr_screen_sample_matrix));
   qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283829871] + 284024944]);
   v21[0] = dword_140404A6C[188872557];
   v21[2] = dword_140404A6C[188872559];
@@ -13057,25 +13056,6 @@ __int64 sub_1401945F0()
   qword_140404230(0);
   return 0; /* compatibility result discarded by all reviewed callers */
 }
-
-// 140194849: variable 'v10' is possibly undefined
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404308: using guessed type __int64 (__fastcall *qword_140404308)(_QWORD, _QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 16D482820: using guessed type unsigned int;
-// 16D482828: using guessed type unsigned int;
-// 18402CCA0: using guessed type unsigned int;
-
 //----- (00000001401948E0) ----------------------------------------------------
 __int64            sub_1401948E0(int a1, char *a2, unsigned int a3)
 {

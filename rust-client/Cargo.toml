@@ -13,6 +13,7 @@ default = ["std"]
 std = []
 bevy-client = ["std", "dep:bevy"]
 desktop-test = ["bevy-client", "bevy/default_app", "bevy/bevy_winit", "bevy/bevy_pbr", "bevy/bevy_render", "bevy/bevy_core_pipeline", "bevy/bevy_light", "bevy/bevy_mesh", "bevy/bevy_camera", "bevy/bevy_color", "bevy/png", "bevy/multi_threaded", "bevy/keyboard", "bevy/mouse", "bevy/bevy_ui", "bevy/bevy_ui_render", "bevy/bevy_text", "bevy/default_font", "bevy/tonemapping_luts", "bevy/ktx2", "bevy/zstd_rust"]
+desktop-client = ["desktop-test"]
 
 [dependencies]
 bevy = { version = "0.19", optional = true, default-features = false, features = ["std", "bevy_asset", "async_executor"] }
@@ -20,6 +21,11 @@ bevy = { version = "0.19", optional = true, default-features = false, features =
 [[example]]
 name = "bevy_model_load"
 required-features = ["bevy-client"]
+
+[[bin]]
+name = "subrosa-rust"
+path = "src/bin/client.rs"
+required-features = ["desktop-client"]
 
 [[bin]]
 name = "subrosa-player-test"

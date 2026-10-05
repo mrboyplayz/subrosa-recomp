@@ -73,6 +73,21 @@ pub fn advance_linear_bodies(bodies: &mut [RigidBodyRecord]) {
     }
 }
 
+/// Original body's linear and angular integration, before collision/controller
+/// callbacks. Angular momentum, inverse inertia and derived velocity retain
+/// their native per-update units.
+pub fn advance_bodies(bodies:&mut [RigidBodyRecord]) {
+    advance_linear_bodies(bodies);
+    for body in bodies.iter_mut().filter(|b|b.words[0]!=0&&b.words[2]==0) {
+        let mut orientation=core::array::from_fn(|i|f32::from_bits(body.words[15+i]));
+        let momentum=core::array::from_fn(|i|f32::from_bits(body.words[24+i]));
+        let inertia=core::array::from_fn(|i|f32::from_bits(body.words[36+i]));
+        let angular=crate::limb::integrate_rotation(&mut orientation,momentum,inertia);
+        body.words[15..24].copy_from_slice(&orientation.map(f32::to_bits));
+        body.words[27..30].copy_from_slice(&angular.map(f32::to_bits));
+    }
+}
+
 /// # Safety
 /// Bodies holds count aligned writable records.
 #[no_mangle]

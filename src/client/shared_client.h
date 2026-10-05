@@ -881,7 +881,7 @@ __int64            sub_14007D230(__int64 a1, __int64 a2, __int64 a3);
 
 __int64            sub_14007D320(unsigned int *a1, __int64 a2, __int64 a3);
 
-__int64            sub_14007D420(__int64 a1, __int64 a2, __int64 a3);
+__int64            sub_14007D420(float a1, float a2, float a3);
 
 __int64            sub_14007D520(unsigned int *a1, __int64 a2, __int64 a3);
 
@@ -16284,7 +16284,7 @@ __int64            sub_14007D320(unsigned int *a1, __int64 a2, __int64 a3)
 // 1AD299464: using guessed type unsigned int;
 
 //----- (000000014007D420) ----------------------------------------------------
-__int64            sub_14007D420(__int64 a1, __int64 a2, __int64 a3)
+__int64            sub_14007D420(float a1, float a2, float a3)
 ;
 
 // 14007D477: variable 'v3' is possibly undefined

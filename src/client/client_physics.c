@@ -361,7 +361,7 @@ __int64            sub_1400B1450(
   v80 = (float *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + v78 + 1126819164);
   sub_14007AE70((float *)&(*(__int128 *)(void *)sr_joint_rotation), v80, v26);
   sub_14010E370(SR_VEC_LANES(128, v143, f32), (float *)&(*(__int128 *)(void *)sr_joint_rotation));
-  v82 = sub_1401F8AC0(COERCE_DOUBLE((unsigned __int64)COERCE_UNSIGNED_INT(*(float *)&v23 * 0.5)), v81, v74);
+  v82 = sub_1401F8AC0(sr_export_float_lane_container(COERCE_UNSIGNED_INT(*(float *)&v23 * 0.5f)), v81, v74);
   v83 = SR_VEC_LANES(128, v143, f32)[3];
   v84 = SR_VEC_LANES(128, v143, f32)[0];
   v85 = SR_VEC_LANES(128, v82, f32)[0];

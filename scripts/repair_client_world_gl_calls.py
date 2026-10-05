@@ -1,6 +1,29 @@
 """Recover missing GL arguments in the first world rendering pass."""
 import struct
+import json
+from collections import Counter
+from repair_client_menu_actions import PROJECT
 from repair_client_menu_actions import pinned_pe,region,check
+
+BLEND_MANIFEST=PROJECT/'src/rebuild/client_blend_calls.json'
+
+
+def repair_blend_calls(source):
+    """Restore both factors in native call order, including repeated calls."""
+    pe=pinned_pe()
+    rows=json.loads(BLEND_MANIFEST.read_text(encoding='utf-8'))['calls']
+    functions=dict.fromkeys(row['function'] for row in rows)
+    for function in functions:
+        a,b,body=region(source,int(function,16)-0x140000000)
+        calls=[row for row in rows if row['function']==function]
+        for old,count in Counter(row['old'] for row in calls).items():
+            if body.count(old.encode())!=count:
+                raise ValueError('Blend call inventory changed: '+function)
+        for row in calls:
+            check(pe,int(row['native_start'],16),row['native_bytes'])
+            body=body.replace(row['old'].encode(),row['new'].encode(),1)
+        source=source[:a]+body+source[b:]
+    return source,{'recovered_blend_call_arguments':len(rows)}
 
 
 def repair(source):
@@ -43,4 +66,5 @@ def repair(source):
         ('(*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215097])(1, v56, 0);','1,1,0,0'),
         ('(*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215097])(1, 1, v97);','1,1,1,0')]:replace(old,mask+'('+values+');')
     replace('(*(void (           **)(__int64))&dword_140404A6C[18215099])(v98);','(*(void (**)(unsigned char))&dword_140404A6C[18215099])(1);')
-    return source[:a]+body+source[b:],{'recovered_world_gl_float_clears':2,'recovered_world_gl_depth_clears':2,'recovered_world_gl_vertex_attributes':3,'recovered_world_gl_color_masks':3,'recovered_world_gl_depth_mask':1}
+    source,counts=repair_blend_calls(source[:a]+body+source[b:])
+    return source,{**counts,'recovered_world_gl_float_clears':2,'recovered_world_gl_depth_clears':2,'recovered_world_gl_vertex_attributes':3,'recovered_world_gl_color_masks':3,'recovered_world_gl_depth_mask':1}

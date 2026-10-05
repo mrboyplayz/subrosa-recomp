@@ -1341,6 +1341,12 @@ void sub_1400FE1B0()
     dword_140404A6C[456202722] = 1;
     dword_140404A6C[456202453] = 1;
     *(_QWORD *)&dword_140404A6C[73991608] = 0;
+    /* User-requested debug arena. Set only on the local Practice action. */
+    {
+      const char *sr_practice_map = getenv("SUBROSA_PRACTICE_MAP");
+      snprintf((char *)&dword_140404A6C[283831313], 64, "%s",
+          sr_practice_map && *sr_practice_map ? sr_practice_map : "debugtest");
+    }
     sub_140095B00();
   }
   dword_140404A6C[70087074] = 22;

@@ -2082,6 +2082,22 @@ void            sub_14014D3E0(int a1, int a2)
     }
     while ( v5 < v4 );
   }
+  /* Rendering recovery: a single-level texture with a mipmap min filter is
+     incomplete and samples black (driver id 131204, units 0/2). Downgrade to
+     LINEAR so Practice terrain/city stays lit even when mip generation was
+     skipped. Matches the standalone render-test's complete-texture behavior. */
+  if ( (int)dword_140404A6C[v2 + 284024935] <= 1 )
+  {
+    unsigned int sr_min = dword_140404A6C[v2 + 284024941];
+    if ( sr_min == 9984u || sr_min == 9985u || sr_min == 9986u || sr_min == 9987u )
+    {
+      dword_140404A6C[v2 + 284024941] = 9729u;
+      (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
+        3553,
+        10241,
+        9729u);
+    }
+  }
   if ( a2 )
   {
     v7 = 0;

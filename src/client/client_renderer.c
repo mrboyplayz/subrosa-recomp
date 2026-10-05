@@ -416,14 +416,14 @@ __int64 sub_140094A90()
   v51 = dword_140404A6C[44 * dword_140404A6C[283829871] + 284024944];
   *(_OWORD *)&dword_140404A6C[431564577] = sr_visibility_matrix[3];
   unk_140404718(36160, 36064, 3553, v51, 0);
-  (*(void (           **)(__int64, __int64, __int64, __int64))&dword_140404A6C[18215089])(v53, v52, v54, v55);
+  (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0x1.8000000000000p-2f,0x1.8000000000000p-2f,0x1.8000000000000p-2f,0.0f);
   (*(void (           **)(__int64))&dword_140404A6C[18215095])(0xFFFFFFFFLL);
   (*(void (           **)(_QWORD))&dword_140404A6C[18215091])(0);
   if ( dword_140404A6C[73991626] )
-    (*(void (**)(void))&dword_140404A6C[18215093])();
+    (*(void (**)(double))&dword_140404A6C[18215093])(0.0);
   (*(void (           **)(__int64))&dword_140404A6C[18215087])(17664);
   if ( dword_140404A6C[73991626] )
-    (*(void (**)(void))&dword_140404A6C[18215093])();
+    (*(void (**)(double))&dword_140404A6C[18215093])(0x1.0000000000000p+0);
   (*(void (           **)(_QWORD))&dword_140404A6C[18215095])(0);
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
   dword_140404A6C[456217211] = dword_140404A6C[188872559];
@@ -453,7 +453,7 @@ __int64 sub_140094A90()
   unk_140404098(33985);
   qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
   unk_140404098(33984);
-  unk_1404043C8(1);
+  ((void (*)(unsigned,float,float))unk_1404043C8)(1,0.5f,0.5f);
   qword_140404238(0);
   qword_140404238(2);
   ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[456217208]),(const void *)(intptr_t)(0));
@@ -616,6 +616,9 @@ __int64            sub_14011DDB0(int a1, int a2)
       ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(1, 3, 5126,0,(int)(uint32_t)(64),(const void *)(intptr_t)(36));
       ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(2, 3, 5126,0,(int)(uint32_t)(64),(const void *)(intptr_t)(12));
     }
+    /* Native sub_14011DDB0 inherits program/lights from its caller
+       (sub_14011FD00 binds 71737685 once before the loop); no per-draw
+       uniform upload here. */
     result = (__int64)&dword_140404A6C[83200503];
     v5 = 4;
     v6 = &dword_140404A6C[6930 * v4 + 83200503];
@@ -1102,22 +1105,158 @@ __int64 sub_14011FD00()
   unk_140404718(36160, 36064, 3553, dword_140404A6C[44 * v3 + 284024944], v265);
   if ( dword_140404A6C[179668285] )
   {
-    (*(void (           **)(__int64, __int64, __int64, __int64))&dword_140404A6C[18215089])(v5, v4, v6, v7);
+    (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(1.0f,1.0f,1.0f,0.0f);
     (*(void (           **)(__int64))&dword_140404A6C[18215095])(0xFFFFFFFFLL);
     (*(void (           **)(_QWORD))&dword_140404A6C[18215091])(0);
     (*(void (           **)(__int64))&dword_140404A6C[18215087])(17664);
     (*(void (           **)(_QWORD))&dword_140404A6C[18215095])(0);
   }
-  (*(void (           **)(__int64, __int64, __int64, __int64))&dword_140404A6C[18215089])(v5, v4, v6, v7);
-  (*(void (           **)(__int64))&dword_140404A6C[18215087])(0x4000);
+  (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.0f,0.0f,0.0f,0.0f);
+  (*(void (           **)(__int64))&dword_140404A6C[18215087])(16384);
   sub_1400A5D30();
   sub_1400A5890((float *)&dword_140404A6C[284545213]);
+  /* Observe-only recovery diagnostics: log the main-frame state once so the
+     black-frame cause is decidable from the debug log. No state is changed. */
+  {
+    static int sr_frame_logged;
+    if (!sr_frame_logged && dword_140404A6C[70074733] != 0)
+    {
+      unsigned int sr_main = dword_140404A6C[2 * dword_140404A6C[283790134] + 283791765];
+      unsigned int sr_refl = dword_140404A6C[2 * dword_140404A6C[283790155] + 283791765];
+      __int64 sr_st = unk_140404708 ? unk_140404708(36160) : -1;
+      SR_DEBUG_LOG("RENDER fbo main=%u refl=%u status=0x%llx size=%ux%u win=%ux%u",
+          sr_main, sr_refl, (unsigned long long)sr_st,
+          dword_140404A6C[278520508], dword_140404A6C[278520509],
+          dword_140404A6C[137297755], dword_140404A6C[137297756]);
+      SR_DEBUG_LOG("RENDER cam=(%.2f,%.2f,%.2f) mvp[0,5,10,15]=%.3f,%.3f,%.3f,%.3f draws=%u",
+          *(float *)&dword_140404A6C[284024502], *(float *)&dword_140404A6C[284024503],
+          *(float *)&dword_140404A6C[284024504],
+          *(float *)&dword_140404A6C[431564565], *(float *)&dword_140404A6C[431564570],
+          *(float *)&dword_140404A6C[431564575], *(float *)&dword_140404A6C[431564580],
+          dword_140404A6C[70074733]);
+      SR_DEBUG_LOG("RENDER light dir=(%.3f,%.3f,%.3f) amb=(%.3f,%.3f,%.3f) dif=(%.3f,%.3f,%.3f)",
+          *(float *)&dword_140404A6C[284550403], *(float *)&dword_140404A6C[284550404],
+          *(float *)&dword_140404A6C[284550405],
+          *(float *)&dword_140404A6C[284545205], *(float *)&dword_140404A6C[284545206],
+          *(float *)&dword_140404A6C[284545207],
+          *(float *)&dword_140404A6C[284545209], *(float *)&dword_140404A6C[284545210],
+          *(float *)&dword_140404A6C[284545211]);
+      SR_DEBUG_LOG("RENDER tex normal=%u detail=%u color=%u mask=%u shadow=%u cubemap=%u "
+          "prog08=%u loc(dir/amb/dif/view/mvp/mask)=%d,%d,%d,%d,%d,%d",
+          dword_140404A6C[44 * dword_140404A6C[283830714] + 284024944],
+          dword_140404A6C[44 * dword_140404A6C[283830715] + 284024944],
+          dword_140404A6C[44 * dword_140404A6C[283830716] + 284024944],
+          dword_140404A6C[44 * dword_140404A6C[283830718] + 284024944],
+          dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944],
+          dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944],
+          dword_140404A6C[71738165],
+          (int)dword_140404A6C[71738170], (int)dword_140404A6C[71738171],
+          (int)dword_140404A6C[71738172], (int)dword_140404A6C[71738173],
+          (int)dword_140404A6C[71738174], (int)dword_140404A6C[71738205]);
+      {
+        float *sr_p = (float *)&dword_140404A6C[431564485];
+        float *sr_v = (float *)&dword_140404A6C[431564501];
+        float *sr_m = (float *)&dword_140404A6C[431564565];
+        SR_DEBUG_LOG("RENDER near=%.4f far=%.1f zoom=%.4f rt=%ux%u",
+            *(float *)&dword_140404A6C[284545216], *(float *)&dword_140404A6C[284545217],
+            *(float *)&dword_140404A6C[284545218],
+            dword_140404A6C[278520508], dword_140404A6C[278520509]);
+        SR_DEBUG_LOG("RENDER proj =%.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f",
+            sr_p[0],sr_p[1],sr_p[2],sr_p[3], sr_p[4],sr_p[5],sr_p[6],sr_p[7],
+            sr_p[8],sr_p[9],sr_p[10],sr_p[11], sr_p[12],sr_p[13],sr_p[14],sr_p[15]);
+        SR_DEBUG_LOG("RENDER view =%.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f",
+            sr_v[0],sr_v[1],sr_v[2],sr_v[3], sr_v[4],sr_v[5],sr_v[6],sr_v[7],
+            sr_v[8],sr_v[9],sr_v[10],sr_v[11], sr_v[12],sr_v[13],sr_v[14],sr_v[15]);
+        SR_DEBUG_LOG("RENDER mvp  =%.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f | %.3f,%.3f,%.3f,%.3f",
+            sr_m[0],sr_m[1],sr_m[2],sr_m[3], sr_m[4],sr_m[5],sr_m[6],sr_m[7],
+            sr_m[8],sr_m[9],sr_m[10],sr_m[11], sr_m[12],sr_m[13],sr_m[14],sr_m[15]);
+      }
+      {
+        /* Terrain visibility, using the exact index math of sub_1400D22E0:
+           enabled flag dword[271166189 + slot*257], sub-cell pointer
+           dword[271166190 + slot*257 + j], and the -1 cull lookup
+           dword[cell + 272034690 + slot*3336 + j*13]. */
+        int sr_slot, sr_j, sr_cell, sr_live = 0, sr_enabled = 0;
+        unsigned int sr_count = 0, sr_stride = 0, sr_first_cell = 0;
+        int sr_first_slot = -1, sr_first_j = -1, sr_lod = -1;
+        for (sr_slot = 0; sr_slot < 64; ++sr_slot)
+        {
+          if (!dword_140404A6C[271166189 + sr_slot * 257]) continue;
+          ++sr_enabled;
+          for (sr_j = 0; sr_j < 256; ++sr_j)
+          {
+            sr_cell = (int)dword_140404A6C[271166190 + sr_slot * 257 + sr_j];
+            if (dword_140404A6C[sr_cell + 272034690 + sr_slot * 3336 + sr_j * 13] != -1)
+            {
+              if (!sr_live)
+              {
+                sr_first_cell = (unsigned int)sr_cell;
+                sr_first_slot = sr_slot;
+                sr_first_j = sr_j;
+                sr_stride = dword_140404A6C[24582 * sr_cell + 271838021];
+                sr_count = dword_140404A6C[24582 * sr_cell + 271838022];
+                sr_lod = (int)dword_140404A6C[sr_cell + 272034690 + sr_slot * 3336 + sr_j * 13];
+              }
+              ++sr_live;
+            }
+          }
+        }
+        SR_DEBUG_LOG("RENDER terrain enabled-slots=%d live-subcells=%d first(cell=%u count=%u stride=%u)",
+            sr_enabled, sr_live, sr_first_cell, sr_count, sr_stride);
+        /* Geometry dump: chunk origins, LOD descriptor and the VBO staging
+           vertex. Pointer values only (no dereference) so a bad pointer cannot
+           fault the diagnostic. sub_1400D0C10 builds
+           pos = origin + (cell<<7) + sample, y = heightGrid[...] + originY. */
+        if (sr_first_slot >= 0)
+        {
+          unsigned int sr_cellu = sr_first_cell;
+          float *sr_stage = (float *)&dword_140404A6C[271182637];
+          unsigned long long sr_grid_by_tile =
+              *(unsigned long long *)&dword_140404A6C[272034683 + 3336 * (int)sr_cellu];
+          unsigned long long sr_grid_by_slot =
+              *(unsigned long long *)&dword_140404A6C[272034683 + 3336 * sr_first_slot];
+          SR_DEBUG_LOG("RENDER geo slot=%d j=%d cell=%u lod=%d ring=%d",
+              sr_first_slot, sr_first_j, sr_cellu, sr_lod,
+              (int)dword_140404A6C[sr_cell + 272034690 + sr_first_slot * 3336 + sr_first_j * 13]);
+          SR_DEBUG_LOG("RENDER geo origin-by-tile=(%d,%d,%d) cellZ=%d cellX=%d",
+              (int)dword_140404A6C[272034677 + 3336 * (int)sr_cellu],
+              (int)dword_140404A6C[272034678 + 3336 * (int)sr_cellu],
+              (int)dword_140404A6C[272034679 + 3336 * (int)sr_cellu],
+              (int)dword_140404A6C[272034680 + 3336 * (int)sr_cellu],
+              (int)dword_140404A6C[272034681 + 3336 * (int)sr_cellu]);
+          SR_DEBUG_LOG("RENDER geo origin-by-slot=(%d,%d,%d) cellZ=%d cellX=%d",
+              (int)dword_140404A6C[272034677 + 3336 * sr_first_slot],
+              (int)dword_140404A6C[272034678 + 3336 * sr_first_slot],
+              (int)dword_140404A6C[272034679 + 3336 * sr_first_slot],
+              (int)dword_140404A6C[272034680 + 3336 * sr_first_slot],
+              (int)dword_140404A6C[272034681 + 3336 * sr_first_slot]);
+          SR_DEBUG_LOG("RENDER geo heightgrid ptr tile=0x%llx slot=0x%llx (0=unalloc, ffff..=unset)",
+              sr_grid_by_tile, sr_grid_by_slot);
+          SR_DEBUG_LOG("RENDER geo loddesc verts-per-patch=%u bytes-per-patch=%u ringhead=%u",
+              dword_140404A6C[24582 * sr_cellu + 271838023],
+              dword_140404A6C[24582 * sr_cellu + 271838025],
+              dword_140404A6C[24582 * sr_cellu + 271838026]);
+          SR_DEBUG_LOG("RENDER geo staging pos=(%.2f,%.2f,%.2f) nrm=(%.2f,%.2f,%.2f)",
+              sr_stage[0], sr_stage[1], sr_stage[2],
+              sr_stage[3], sr_stage[4], sr_stage[5]);
+          SR_DEBUG_LOG("RENDER geo vbo-ids tile: ibo=%u vbo=%u  slot: ibo=%u vbo=%u",
+              dword_140404A6C[2 * dword_140404A6C[sr_cellu + 283791480] + 283793814],
+              dword_140404A6C[2 * dword_140404A6C[sr_cellu + 283791752] + 283793813],
+              dword_140404A6C[2 * dword_140404A6C[sr_first_slot + 283791480] + 283793814],
+              dword_140404A6C[2 * dword_140404A6C[sr_first_slot + 283791752] + 283793813]);
+        }
+      }
+      sr_frame_logged = 1;
+    }
+  }
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(3042);
   if ( dword_140404A6C[179668285] )
   {
     (*(void (           **)(__int64, __int64))&dword_140404A6C[18215069])(1032, 6913);
     (*(void (           **)(__int64))&dword_140404A6C[18215101])(2929);
   }
+  /* Native 0x140120173/0x14012017E: GL_CULL_FACE on with glFrontFace(GL_CW)
+     for the whole terrain pass. Verified against original disassembly. */
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(2884);
   (*(void (           **)(__int64))&dword_140404A6C[18215061])(2304);
   v9 = 256;
@@ -1477,16 +1616,16 @@ __int64 sub_14011FD00()
   *(_OWORD *)&dword_140404A6C[431564573] = (*(__int128 *)(sr_world_matrix_backing+48));
   *(_OWORD *)&dword_140404A6C[431564577] = (*(__int128 *)(sr_world_matrix_backing+64));
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  (*(void (           **)(__int64))&dword_140404A6C[18215109])(1);
+  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(1,1);
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(3553);
   *(float *)&sr_world_direction[0] = (float)(*(float *)&dword_140404A6C[284550403] * 16368.0) + *(float *)&dword_140404A6C[284024502];
   *(float *)&sr_world_direction[2] = (float)(*(float *)&dword_140404A6C[284550405] * 16368.0) + *(float *)&dword_140404A6C[284024504];
   (*(float *)&sr_world_direction[1]) = (float)(*(float *)&dword_140404A6C[284550404] * 16368.0) + *(float *)&dword_140404A6C[284024503];
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3553);
-  (*(void (           **)(__int64))&dword_140404A6C[18215109])(770);
+  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  (*(void (           **)(__int64))&dword_140404A6C[18215109])(1);
+  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(1,771);
   sub_1401945F0();
   qword_1404042E0(dword_140404A6C[71737805]);
   qword_140404338(dword_140404A6C[71737811], 1, &dword_140404A6C[284024502]);
@@ -1576,7 +1715,7 @@ __int64 sub_14011FD00()
   }
   qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791479] + 283793813], v97);
   qword_140404198(34962, 0, 4 * dword_140404A6C[456217207] * dword_140404A6C[456217208], &dword_140404A6C[456217209]);
-  unk_1404043C8(1);
+  ((void (*)(unsigned,float,float))unk_1404043C8)(1,0.5f,0.5f);
   qword_140404238(0);
   qword_140404238(2);
   ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[456217208]),(const void *)(intptr_t)(0));
@@ -1592,7 +1731,7 @@ __int64 sub_14011FD00()
   unk_140404098(33984);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(2884);
   qword_1404042E0(0);
-  (*(void (           **)(__int64))&dword_140404A6C[18215109])(770);
+  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
   sub_140125DB0(
     0,
     v114,
@@ -1627,10 +1766,10 @@ __int64 sub_14011FD00()
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(2884);
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  (*(void (           **)(__int64))&dword_140404A6C[18215109])(770);
+  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
   qword_140404050(3553, dword_140404A6C[451221642]);
-  (*(void (           **)(__int64))&dword_140404A6C[18215109])(1);
-  (*(void (           **)(__int64))&dword_140404A6C[18215109])(770);
+  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(1,771);
+  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(2884);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3553);
   qword_1404042E0(dword_140404A6C[451221605]);
@@ -1739,8 +1878,8 @@ __int64 sub_14011FD00()
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(2884);
   (*(void (           **)(__int64, __int64))&dword_140404A6C[18215069])(1032, 6914);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215065])(v142, v141);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215065])(v144, v143);
+  (*(void (**)(float))&dword_140404A6C[18215065])(0x1.8000000000000p+1f);
+  (*(void (**)(float))&dword_140404A6C[18215065])(1.0f);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3553);
   if ( dword_140404A6C[309078285] )
     sub_14008D800();

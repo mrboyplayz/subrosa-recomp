@@ -8725,9 +8725,7 @@ __int64 sub_1400CE370()
   unsigned __int64 v86; // [rsp+60h] [rbp-A8h]
   float v87[4]; // [rsp+68h] [rbp-A0h] BYREF
   float v88[4]; // [rsp+78h] [rbp-90h] BYREF
-  float v89; // [rsp+88h] [rbp-80h] BYREF
-  float v90; // [rsp+8Ch] [rbp-7Ch]
-  float v91; // [rsp+90h] [rbp-78h]
+  float sr_item_collision_endpoint[3];
   __int64 v92; // [rsp+98h] [rbp-70h]
 
   v0 = 0;
@@ -8882,13 +8880,13 @@ __int64 sub_1400CE370()
                 v29 = *(float *)&dword_140404A6C[73006982] - *(float *)&dword_140404A6C[v21 + 18215716];
                 v81 = 1023410176;
                 LODWORD(v80) = 1015021568;
-                v89 = *(float *)&v28;
+                sr_item_collision_endpoint[0] = *(float *)&v28;
                 v30 = *(float *)&dword_140404A6C[73006983] - *(float *)&dword_140404A6C[v21 + 18215717];
-                v90 = v29;
-                v91 = v30;
+                sr_item_collision_endpoint[1] = v29;
+                sr_item_collision_endpoint[2] = v30;
                 sub_140005160(
                   v19,
-                  (unsigned int *)&v89,
+                  (unsigned int *)&sr_item_collision_endpoint[0],
                   &dword_140404A6C[73006984],
                   0.11 - v24,
                   0x3F19999Au,
@@ -8918,24 +8916,24 @@ __int64 sub_1400CE370()
                   v39 = *(float *)(v0 + v36 + 8) * *(float *)&dword_140404A6C[v21 + 18215732];
                   v40 = (float)((float)(*(float *)(v0 + v36) * *(float *)&dword_140404A6C[v21 + 18215726]) + v35[2])
                       + (float)(*(float *)(v0 + v36 + 4) * *(float *)&dword_140404A6C[v21 + 18215729]);
-                  v89 = (float)((float)((float)(*(float *)(v0 + v36) * *(float *)&dword_140404A6C[v21 + 18215724]) + *v35)
+                  sr_item_collision_endpoint[0] = (float)((float)((float)(*(float *)(v0 + v36) * *(float *)&dword_140404A6C[v21 + 18215724]) + *v35)
                               + (float)(*(float *)(v0 + v36 + 4) * *(float *)&dword_140404A6C[v21 + 18215727]))
                       + (float)(*(float *)(v0 + v36 + 8) * *(float *)&dword_140404A6C[v21 + 18215730]);
-                  v90 = v38 + v37;
-                  v91 = v40 + v39;
-                  if ( (unsigned int)sub_1400DC050(v35, &v89, 1) )
+                  sr_item_collision_endpoint[1] = v38 + v37;
+                  sr_item_collision_endpoint[2] = v40 + v39;
+                  if ( (unsigned int)sub_1400DC050(v35, &sr_item_collision_endpoint[0], 1) )
                   {
-                    v41 = *(float *)&dword_140404A6C[73006983] - v91;
+                    v41 = *(float *)&dword_140404A6C[73006983] - sr_item_collision_endpoint[2];
                     v42 = *(float *)&dword_140404A6C[73006982] - v35[1];
-                    v91 = *(float *)&dword_140404A6C[73006983] - v35[2];
+                    sr_item_collision_endpoint[2] = *(float *)&dword_140404A6C[73006983] - v35[2];
                     *(float *)&v43 = *(float *)&dword_140404A6C[73006981] - *v35;
-                    v44 = *(float *)&dword_140404A6C[73006985] * (float)(*(float *)&dword_140404A6C[73006982] - v90);
-                    v90 = v42;
-                    v45 = *(float *)&dword_140404A6C[73006984] * (float)(*(float *)&dword_140404A6C[73006981] - v89);
-                    v89 = *(float *)&v43;
+                    v44 = *(float *)&dword_140404A6C[73006985] * (float)(*(float *)&dword_140404A6C[73006982] - sr_item_collision_endpoint[1]);
+                    sr_item_collision_endpoint[1] = v42;
+                    v45 = *(float *)&dword_140404A6C[73006984] * (float)(*(float *)&dword_140404A6C[73006981] - sr_item_collision_endpoint[0]);
+                    sr_item_collision_endpoint[0] = *(float *)&v43;
                     sub_140005160(
                       v34,
-                      (unsigned int *)&v89,
+                      (unsigned int *)&sr_item_collision_endpoint[0],
                       &dword_140404A6C[73006984],
                       (float)(v44 + v45) + (float)(*(float *)&dword_140404A6C[73006986] * v41),
                       0x3F19999Au,
@@ -9004,22 +9002,22 @@ __int64 sub_1400CE370()
                     v61 = -v61;
                   v64 = v61 * *(float *)&dword_140404A6C[v21 + 18215731];
                   v65 = v60 + (float)(v61 * *(float *)&dword_140404A6C[v21 + 18215732]);
-                  v89 = v63 + (float)(v61 * *(float *)&dword_140404A6C[v21 + 18215730]);
-                  v90 = v62 + v64;
-                  v91 = v65;
-                  if ( (unsigned int)sub_1400DC050(v51, &v89, 1) )
+                  sr_item_collision_endpoint[0] = v63 + (float)(v61 * *(float *)&dword_140404A6C[v21 + 18215730]);
+                  sr_item_collision_endpoint[1] = v62 + v64;
+                  sr_item_collision_endpoint[2] = v65;
+                  if ( (unsigned int)sub_1400DC050(v51, &sr_item_collision_endpoint[0], 1) )
                   {
-                    v66 = *(float *)&dword_140404A6C[73006983] - v91;
+                    v66 = *(float *)&dword_140404A6C[73006983] - sr_item_collision_endpoint[2];
                     v67 = *(float *)&dword_140404A6C[73006982] - v51[1];
-                    v91 = *(float *)&dword_140404A6C[73006983] - v51[2];
+                    sr_item_collision_endpoint[2] = *(float *)&dword_140404A6C[73006983] - v51[2];
                     *(float *)&v68 = *(float *)&dword_140404A6C[73006981] - *v51;
-                    v69 = *(float *)&dword_140404A6C[73006985] * (float)(*(float *)&dword_140404A6C[73006982] - v90);
-                    v90 = v67;
-                    v70 = *(float *)&dword_140404A6C[73006984] * (float)(*(float *)&dword_140404A6C[73006981] - v89);
-                    v89 = *(float *)&v68;
+                    v69 = *(float *)&dword_140404A6C[73006985] * (float)(*(float *)&dword_140404A6C[73006982] - sr_item_collision_endpoint[1]);
+                    sr_item_collision_endpoint[1] = v67;
+                    v70 = *(float *)&dword_140404A6C[73006984] * (float)(*(float *)&dword_140404A6C[73006981] - sr_item_collision_endpoint[0]);
+                    sr_item_collision_endpoint[0] = *(float *)&v68;
                     sub_140005160(
                       v19,
-                      (unsigned int *)&v89,
+                      (unsigned int *)&sr_item_collision_endpoint[0],
                       &dword_140404A6C[73006984],
                       (float)(v69 + v70) + (float)(*(float *)&dword_140404A6C[73006986] * v66),
                       0x3F19999Au,

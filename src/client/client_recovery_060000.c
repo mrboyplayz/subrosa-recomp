@@ -14177,8 +14177,20 @@ __int64            sub_14007D320(unsigned int *a1, __int64 a2, __int64 a3)
 // 1AD299460: using guessed type unsigned int;
 // 1AD299464: using guessed type unsigned int;
 
-//----- (000000014007D420) ----------------------------------------------------
-__int64            sub_14007D420(__int64 a1, __int64 a2, __int64 a3)
+//----- (000000014007D420)
+
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 1AD059448: using guessed type unsigned int;
+// 1AD05944C: using guessed type unsigned int;
+// 1AD299450: using guessed type unsigned int;
+// 1AD299454: using guessed type unsigned int;
+// 1AD299458: using guessed type unsigned int;
+// 1AD29945C: using guessed type unsigned int;
+// 1AD299460: using guessed type unsigned int;
+// 1AD299464: using guessed type unsigned int;
+
+__int64            sub_14007D420(float a1, float a2, float a3)
 {
   unsigned int v3; // xmm0_4
   unsigned int v4; // xmm1_4
@@ -14189,6 +14201,9 @@ __int64            sub_14007D420(__int64 a1, __int64 a2, __int64 a3)
   __int64 v9; // rcx
   __int64 result; // rax
 
+  memcpy(&v3, &a1, 4);
+  memcpy(&v4, &a2, 4);
+  memcpy(&v5, &a3, 4);
   v6 = dword_140404A6C[456217207];
   if ( (int)dword_140404A6C[456217207] < 0x10000 )
   {
@@ -14196,7 +14211,7 @@ __int64            sub_14007D420(__int64 a1, __int64 a2, __int64 a3)
   }
   else
   {
-    sub_14006E0D0(a1, a2, a3);
+    sub_14006E0D0(0, 0, 0);
     v6 = 0;
     v7 = 9;
     dword_140404A6C[456217207] = 0;
@@ -14217,20 +14232,6 @@ __int64            sub_14007D420(__int64 a1, __int64 a2, __int64 a3)
   ++dword_140404A6C[456217207];
   return result;
 }
-
-// 14007D477: variable 'v3' is possibly undefined
-// 14007D484: variable 'v4' is possibly undefined
-// 14007D48F: variable 'v5' is possibly undefined
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-
 //----- (000000014007D520) ----------------------------------------------------
 __int64            sub_14007D520(unsigned int *a1, __int64 a2, __int64 a3)
 {

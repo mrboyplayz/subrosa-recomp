@@ -5334,8 +5334,7 @@ __int64            sub_14010C110(int a1)
   char *v63; // [rsp+48h] [rbp-18460h]
   float v64[4]; // [rsp+50h] [rbp-18458h] BYREF
   unsigned int v65[4]; // [rsp+60h] [rbp-18448h] BYREF
-  float v66[3]; // [rsp+70h] [rbp-18438h] BYREF
-  unsigned int v67[9]; // [rsp+7Ch] [rbp-1842Ch] BYREF
+  float sr_train_track_hit[12];
   int v68[12356]; // [rsp+A0h] [rbp-18408h] BYREF
   __int64 v69; // [rsp+C1B0h] [rbp-C2F8h]
 
@@ -5478,7 +5477,7 @@ __int64            sub_14010C110(int a1)
             v51 = v45 - v49;
             v64[2] = v50;
             v64[1] = v51;
-            if ( sub_1400DA300((__int64)v66, v68, (float *)&dword_140404A6C[47 * v39 + 18215715], v64) )
+            if ( sub_1400DA300((__int64)sr_train_track_hit, v68, (float *)&dword_140404A6C[47 * v39 + 18215715], v64) )
             {
               v57[12] = 1040187392;
               v57[10] = 1040187392;
@@ -5492,10 +5491,10 @@ __int64            sub_14010C110(int a1)
               sub_140005160(
                 v39,
                 v65,
-                v67,
-                (float)((float)((float)(v66[0] - v46) * *(float *)v67)
-                      + (float)((float)(v66[1] - v51) * *(float *)&v67[1]))
-              + (float)((float)(v66[2] - v50) * *(float *)&v67[2]),
+                ((unsigned *)(void *)(sr_train_track_hit+3)),
+                (float)((float)((float)(sr_train_track_hit[0] - v46) * *(float *)((unsigned *)(void *)(sr_train_track_hit+3)))
+                      + (float)((float)(sr_train_track_hit[1] - v51) * *(float *)&((unsigned *)(void *)(sr_train_track_hit+3))[1]))
+              + (float)((float)(sr_train_track_hit[2] - v50) * *(float *)&((unsigned *)(void *)(sr_train_track_hit+3))[2]),
                 0,
                 0.125,
                 0x3E000000u);

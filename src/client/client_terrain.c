@@ -740,6 +740,8 @@ double            sub_1400D22E0(int a1)
     qword_140404338(dword_140404A6C[71738172], 1, &dword_140404A6C[284545209]);
     qword_140404338(dword_140404A6C[71738173], 1, &dword_140404A6C[284024502]);
     qword_140404378(dword_140404A6C[71738174], 1, 0, &dword_140404A6C[431564565]);
+    /* DIAG: native sets 1. The mask writer only clears bits into a 0xFFFF-prefilled
+       buffer, so wrong bit math keeps MORE, not less; not the black-frame cause. */
     qword_140404308(dword_140404A6C[71738205], 1);
     qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830714] + 284024944]);
     unk_140404098(33985);

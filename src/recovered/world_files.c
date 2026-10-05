@@ -108,10 +108,9 @@ static int block_codec(Stream *s, SrBlockFile *f) {
     ARRAY(s, f->patches, f->patch_count, 344);
     for (uint32_t i = 0; i < f->patch_count; ++i) {
         SrBlockPatch *p = &f->patches[i];
-        if (!words(s, p->prefix, 4)) return 0;
+        if (!words(s, p->prefix, 6)) return 0;
         for (unsigned j = 0; j < 16; ++j)
             if (!floats(s, p->control[j].position, 3) || !floats(s, p->control[j].uv, 2)) return 0;
-        if (!words(s, p->suffix, 2)) return 0;
     }
     if (f->version == 2) {
         if (!word(s, &f->solid_count)) return 0;

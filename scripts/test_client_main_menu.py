@@ -90,6 +90,7 @@ printf("%u native mouse output-pointer, signed coordinate scaling and button-mas
 #include <string.h>
 #include <emmintrin.h>
 #include "defs.h"
+#define SR_DEBUG_STAGE(message) ((void)0)
 static unsigned *dword_140404A6C;static unsigned char *image;
 static unsigned mask,button_at,dns_case,address_count,mouse_flags,ticks;
 static int mouse_x,mouse_y;
@@ -107,6 +108,7 @@ static unsigned ntohl_sr(unsigned ip){trace_at+=sprintf(trace+trace_at,"ntohl;")
 '''.encode()+PREFIX+body+r'''
 static void thunk(unsigned char *p,void *f){p[0]=0x48;p[1]=0xb8;memcpy(p+2,&f,8);p[10]=0xff;p[11]=0xe0;}
 int main(void){image=VirtualAlloc(0,0x74794000,MEM_RESERVE,PAGE_NOACCESS);unsigned char *working=VirtualAlloc(0,0x74794000,MEM_RESERVE,PAGE_NOACCESS);if(!image||!working)return 9;
+_putenv("SUBROSA_PRACTICE_MAP=");
 '''.encode()
         for page in sorted(pages):
             c+=f'if(!VirtualAlloc(image+{page},4096,MEM_COMMIT,PAGE_EXECUTE_READWRITE)||!VirtualAlloc(working+{page},4096,MEM_COMMIT,PAGE_READWRITE))abort();\n'.encode()
@@ -141,6 +143,15 @@ for(mask=0;mask<128;mask++)for(unsigned depth=0;depth<4;depth++){
  if(!native){saved_trace=trace_at;memcpy(saved,trace,sizeof trace);}
  else if(button_at!=7||trace_at!=saved_trace||memcmp(trace,saved,sizeof trace)){printf("dispatch mismatch mask=%u depth=%u\nC %s\nN %s\n",mask,depth,saved,trace);return 1;}
  }
+'''.encode()
+        # The user-requested map default is a deliberate extension. Check its
+        # value, then restore only this seeded field for original-state parity.
+        c+=r'''
+if(mask&1){
+ const unsigned map_at=0x404a6c+4*283831313;
+ if(strcmp((char*)(working+map_at),"debugtest")){puts("Practice did not select the debug arena");return 4;}
+ memset(working+map_at,0xa5,64);
+}
 '''.encode()
         for page in data_pages:c+=f'if(memcmp(image+{page},working+{page},4096)){{printf("state mismatch page={page:x} mask=%u depth=%u\\n",mask,depth);return 2;}}\n'.encode()
         c+=f'if(memcmp(image+{clear_page},working+{clear_page},{clear_size})){{puts("join reset/guard mismatch");return 3;}}\n'.encode()

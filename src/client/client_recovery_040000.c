@@ -13759,6 +13759,31 @@ LABEL_104:
     v169 += 6930;
   }
   while ( v168 < 4096 );
+  /* Rendering recovery: land mask 283830718 with all-zero R16UI discards every
+     terrain fragment (prog08:66-67). Fall back to 0xFFFF (keep all), mirroring
+     the standalone render-test. */
+  {
+    unsigned short *sr_m = (unsigned short *)(uintptr_t)*(_QWORD *)&dword_140404A6C[272248185];
+    int sr_zero = 1;
+    if (!sr_m)
+    {
+      sr_m = (unsigned short *)(uintptr_t)sr_path_malloc(0x200000);
+      *(_QWORD *)&dword_140404A6C[272248185] = (unsigned long long)(uintptr_t)sr_m;
+    }
+    if (sr_m)
+    {
+      unsigned int sr_i;
+      for (sr_i = 0; sr_i < 1024u*1024u; ++sr_i)
+      {
+        if (sr_m[sr_i]) { sr_zero = 0; break; }
+      }
+      if (sr_zero)
+      {
+        for (sr_i = 0; sr_i < 1024u*1024u; ++sr_i) sr_m[sr_i] = 0xFFFFu;
+        SR_DEBUG_LOG("land mask 283830718 missing/zero -> 0xFFFF R16UI fallback");
+      }
+    }
+  }
   qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830718] + 284024944]);
   (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(3553, 10242, 33071);
   (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(3553, 10243, 33071);

@@ -1252,23 +1252,20 @@ __int64            sub_1400AD2B0(int a1, __int64 a2, double a3)
   __m128 v464; // [rsp+88h] [rbp-80h] BYREF
   int v465; // [rsp+A0h] [rbp-68h]
   float v466; // [rsp+A4h] [rbp-64h]
-  __int64 v467; // [rsp+A8h] [rbp-60h] BYREF
-  float v468; // [rsp+B0h] [rbp-58h]
+  _Alignas(8) float sr_limb_rotation_axis[3];
   float v469; // [rsp+B8h] [rbp-50h]
   float v470; // [rsp+BCh] [rbp-4Ch]
   float v471; // [rsp+C0h] [rbp-48h]
   unsigned int v472; // [rsp+C4h] [rbp-44h]
   float sr_limb_velocity[3];
   float v476; // [rsp+D4h] [rbp-34h]
-  __int64 v477; // [rsp+D8h] [rbp-30h] BYREF
-  int v478; // [rsp+E0h] [rbp-28h]
+  _Alignas(8) unsigned sr_limb_angular_limit[3];
   float v479; // [rsp+E8h] [rbp-20h]
   int v480; // [rsp+ECh] [rbp-1Ch]
   int sr_limb_cell[3];
   __int64 v484; // [rsp+100h] [rbp-8h]
   unsigned sr_limb_contact[3];
-  float v488; // [rsp+118h] [rbp+10h]
-  float v489; // [rsp+11Ch] [rbp+14h]
+  float sr_limb_health[2];
   float v490; // [rsp+120h] [rbp+18h]
   float v491; // [rsp+124h] [rbp+1Ch]
   float v492; // [rsp+128h] [rbp+20h]
@@ -1279,8 +1276,7 @@ __int64            sub_1400AD2B0(int a1, __int64 a2, double a3)
   _BOOL8 v498; // [rsp+170h] [rbp+68h]
   _Alignas(16) unsigned sr_limb_rotation[12];
   float sr_limb_offset[3];
-  __int64 v505; // [rsp+1B0h] [rbp+A8h] BYREF
-  float v506; // [rsp+1B8h] [rbp+B0h]
+  _Alignas(8) float sr_limb_drive_velocity[3];
   _Alignas(16) unsigned sr_limb_matrix_b[12];
   __int64 v509; // [rsp+1E8h] [rbp+E0h]
 
@@ -1289,13 +1285,13 @@ __int64            sub_1400AD2B0(int a1, __int64 a2, double a3)
   if ( dword_140404A6C[v3 + 280658335] && (dword_140404A6C[v3 + 280651436] & 0x20) != 0 )
     *(float *)&dword_140404A6C[v3 + 280651331] = *(float *)&dword_140404A6C[v3 + 280651384] * 8.0;
   v4 = dword_140404A6C[v3 + 280658306];
-  v488 = 1.0;
-  v489 = 1.0;
+  sr_limb_health[0] = 1.0;
+  sr_limb_health[1] = 1.0;
   if ( v4 < 100 )
-    v488 = (float)v4 * 0.0099999998;
+    sr_limb_health[0] = (float)v4 * 0.0099999998;
   v5 = dword_140404A6C[v3 + 280658308];
   if ( v5 < 100 )
-    v489 = (float)v5 * 0.0099999998;
+    sr_limb_health[1] = (float)v5 * 0.0099999998;
   if ( dword_140404A6C[v3 + 280651325] == 1 && *(float *)&dword_140404A6C[v3 + 280657931] < 0.0 )
     dword_140404A6C[v3 + 280657979] = 0;
   v6 = dword_140404A6C[v3 + 280658139];
@@ -1503,11 +1499,11 @@ __int64            sub_1400AD2B0(int a1, __int64 a2, double a3)
   v76 = (float)(v70 * *(float *)&dword_140404A6C[v3 + 280651459])
       + (float)(v69 * *(float *)&dword_140404A6C[v3 + 280651458]);
   v77 = v71 * *(float *)&dword_140404A6C[v3 + 280651460];
-  *(float *)&v467 = v74;
-  v468 = v76 + v77;
-  *((float *)&v467 + 1) = (float)(v72 + v73) + v75;
+  *(float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) = v74;
+  sr_limb_rotation_axis[2] = v76 + v77;
+  *((float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) + 1) = (float)(v72 + v73) + v75;
   sub_14007AE70((float *)v17, v14, v15);
-  sub_14007B2A0((__int64)v17, (float *)&v467, v68);
+  sub_14007B2A0((__int64)v17, (float *)&(*(int64_t *)(void *)sr_limb_rotation_axis), v68);
   dword_140404A6C[61 * v52 + 486149287] = 0;
   v78 = (int)dword_140404A6C[v3 + 280651667];
   v79 = (float *)&dword_140404A6C[v3 + 280651608];
@@ -1675,12 +1671,12 @@ __int64            sub_1400AD2B0(int a1, __int64 a2, double a3)
   v147 = (float)(v141 * *(float *)&dword_140404A6C[v3 + 280651537])
        + (float)(v140 * *(float *)&dword_140404A6C[v3 + 280651536]);
   v148 = v142 * *(float *)&dword_140404A6C[v3 + 280651538];
-  *(float *)&v467 = v145;
-  v468 = v147 + v148;
-  *((float *)&v467 + 1) = (float)(v143 + v144) + v146;
+  *(float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) = v145;
+  sr_limb_rotation_axis[2] = v147 + v148;
+  *((float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) + 1) = (float)(v143 + v144) + v146;
   sub_14007AE70((float *)&dword_140404A6C[v3 + 280657960], v15, (float *)&dword_140404A6C[v3 + 280651608]);
   v149 = v139;
-  sub_14007B2A0((__int64)&dword_140404A6C[v3 + 280657960], (float *)&v467, v139);
+  sub_14007B2A0((__int64)&dword_140404A6C[v3 + 280657960], (float *)&(*(int64_t *)(void *)sr_limb_rotation_axis), v139);
   v150 = (int)v472;
   dword_140404A6C[61 * v472 + 486149287] = 0;
   if ( v7 && dword_140404A6C[v3 + 280651313] == -1 )
@@ -1981,15 +1977,15 @@ __int64            sub_1400AD2B0(int a1, __int64 a2, double a3)
   }
   v265 = v262 * *(float *)&dword_140404A6C[v3 + 280651611];
   v266 = v264 * *(float *)&dword_140404A6C[v3 + 280651613];
-  *(float *)&v467 = (float)((float)(v263 * v79[1]) + (float)(v262 * *v79)) + (float)(v264 * v79[2]);
+  *(float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) = (float)((float)(v263 * v79[1]) + (float)(v262 * *v79)) + (float)(v264 * v79[2]);
   v267 = (float)((float)(v263 * *(float *)&dword_140404A6C[v3 + 280651612]) + v265) + v266;
   v268 = (float)((float)(v263 * *(float *)&dword_140404A6C[v3 + 280651615])
                + (float)(v262 * *(float *)&dword_140404A6C[v3 + 280651614]))
        + (float)(v264 * *(float *)&dword_140404A6C[v3 + 280651616]);
-  *((float *)&v467 + 1) = v267;
-  v468 = v268;
+  *((float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) + 1) = v267;
+  sr_limb_rotation_axis[2] = v268;
   sub_14007AE70((float *)v203, (float *)&dword_140404A6C[v3 + 280651608], v201);
-  sub_14007B2A0((__int64)v203, (float *)&v467, v261);
+  sub_14007B2A0((__int64)v203, (float *)&(*(int64_t *)(void *)sr_limb_rotation_axis), v261);
   v269 = 0;
   v270 = LODWORD(v466) ^ 0x80000000LL;
   v271 = 0;
@@ -2375,11 +2371,11 @@ LABEL_233:
     v336 = v332 * *(float *)&dword_140404A6C[v3 + 280651616];
     v337 = (float)(*(float *)&v325 * *(float *)&dword_140404A6C[v3 + 280651615])
          + (float)(v331 * *(float *)&dword_140404A6C[v3 + 280651614]);
-    LODWORD(v467) = LODWORD(v299);
+    LODWORD((*(int64_t *)(void *)sr_limb_rotation_axis)) = LODWORD(v299);
     v338 = (float)(v333 + v334) + v335;
     *(float *)&v325 = v337 + v336;
-    *((float *)&v467 + 1) = v338;
-    v468 = *(float *)&v325;
+    *((float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) + 1) = v338;
+    sr_limb_rotation_axis[2] = *(float *)&v325;
     if ( v9 && (_DWORD)v278 )
     {
       *(float *)&v299 = *(float *)&v299 * -0.75;
@@ -2423,22 +2419,22 @@ LABEL_233:
       v342 = *(float *)&dword_140404A6C[1268 * v340 + 278521329 + 4 * v484];
       v343 = *(float *)&dword_140404A6C[1268 * v340 + 278521330 + 4 * v484];
       v344 = *(float *)&dword_140404A6C[1268 * v340 + 278521331 + 4 * v484];
-      *(float *)&v467 = (float)((float)(*((float *)&(*(__int128 *)(void *)sr_limb_rotation) + 3) * v343) + (float)(*(float *)&(*(__int128 *)(void *)sr_limb_rotation) * v342))
+      *(float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) = (float)((float)(*((float *)&(*(__int128 *)(void *)sr_limb_rotation) + 3) * v343) + (float)(*(float *)&(*(__int128 *)(void *)sr_limb_rotation) * v342))
                       + (float)(*((float *)&(*(__int128 *)(void *)(sr_limb_rotation+4)) + 2) * v344);
       *(_QWORD *)&v299 = v341 ^ 0x80000000LL;
-      *((float *)&v467 + 1) = (float)((float)(*(float *)&(*(__int128 *)(void *)(sr_limb_rotation+4)) * v343) + (float)(*((float *)&(*(__int128 *)(void *)sr_limb_rotation) + 1) * v342))
+      *((float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) + 1) = (float)((float)(*(float *)&(*(__int128 *)(void *)(sr_limb_rotation+4)) * v343) + (float)(*((float *)&(*(__int128 *)(void *)sr_limb_rotation) + 1) * v342))
                             + (float)(*((float *)&(*(__int128 *)(void *)(sr_limb_rotation+4)) + 3) * v344);
-      v468 = (float)((float)(*((float *)&(*(__int128 *)(void *)(sr_limb_rotation+4)) + 1) * v343) + (float)(*((float *)&(*(__int128 *)(void *)sr_limb_rotation) + 2) * v342))
+      sr_limb_rotation_axis[2] = (float)((float)(*((float *)&(*(__int128 *)(void *)(sr_limb_rotation+4)) + 1) * v343) + (float)(*((float *)&(*(__int128 *)(void *)sr_limb_rotation) + 2) * v342))
            + (float)((*(float *)&sr_limb_rotation[8]) * v344);
-      sub_14007B2A0((__int64)&(*(__int128 *)(void *)sr_limb_rotation), (float *)&v467, sr_export_float_lane_container(v341 ^ 0x80000000LL));
+      sub_14007B2A0((__int64)&(*(__int128 *)(void *)sr_limb_rotation), (float *)&(*(int64_t *)(void *)sr_limb_rotation_axis), sr_export_float_lane_container(v341 ^ 0x80000000LL));
     }
 LABEL_224:
     if ( !v271 )
     {
-      sub_1400A56B0((float *)&v467, 0.0078125, 0.0);
-      *(float *)&v308 = *(float *)&v467 + *(float *)&dword_140404A6C[v3 + 280651412];
-      v309 = *((float *)&v467 + 1);
-      *(_QWORD *)&v299 = LODWORD(v468);
+      sub_1400A56B0((float *)&(*(int64_t *)(void *)sr_limb_rotation_axis), 0.0078125, 0.0);
+      *(float *)&v308 = *(float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) + *(float *)&dword_140404A6C[v3 + 280651412];
+      v309 = *((float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) + 1);
+      *(_QWORD *)&v299 = LODWORD(sr_limb_rotation_axis[2]);
       dword_140404A6C[v3 + 280651412] = v308;
       *(float *)&v310 = v309 + *(float *)&dword_140404A6C[v3 + 280651413];
       dword_140404A6C[v3 + 280651413] = v310;
@@ -2600,7 +2596,7 @@ LABEL_224:
       v366 = fsqrt((float)((float)(v364 * v364) + (float)(v363 * v363)) + (float)(v365 * v365));
       if ( v366 == 0.0 )
       {
-        v467 = 0;
+        (*(int64_t *)(void *)sr_limb_rotation_axis) = 0;
         v367 = 0.0;
         v368 = 0.0;
         v369 = 0.0;
@@ -2609,9 +2605,9 @@ LABEL_224:
       {
         v367 = (float)(1.0 / v366) * v363;
         v368 = (float)(1.0 / v366) * v364;
-        *(float *)&v467 = v367;
+        *(float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) = v367;
         v369 = (float)(1.0 / v366) * v365;
-        *((float *)&v467 + 1) = v368;
+        *((float *)&(*(int64_t *)(void *)sr_limb_rotation_axis) + 1) = v368;
       }
       v370 = *(float *)&dword_140404A6C[v346 + 282486149];
       v371 = *(float *)&dword_140404A6C[v346 + 282486150];
@@ -2623,15 +2619,15 @@ LABEL_224:
       *(_QWORD *)&v299 = LODWORD(v491);
       *(float *)&v299 = v491 * v371;
       v377 = (float)(v375 + *(float *)&dword_140404A6C[v3 + 280651598]) + (float)(v491 * v371);
-      v468 = v369;
-      *(float *)&v505 = (float)(v374 + (float)(v362 * v371)) + (float)(*(float *)&v480 * v372);
-      sr_limb_offset[0] = *(float *)&v505 - *(float *)&dword_1402F6188;
-      v506 = v377 + (float)(v492 * v372);
-      *((float *)&v505 + 1) = (float)(v376 + (float)(v479 * v371)) + (float)(v490 * v372);
-      sr_limb_offset[2] = v506 - *(float *)&dword_1402F6190;
-      sr_limb_offset[1] = *((float *)&v505 + 1) - *(float *)&dword_1402F618C;
-      if ( (unsigned int)sub_1400DC050((float *)&v505, &sr_limb_offset[0], 0) )
-        v373 = (float)(*((float *)&v505 + 1) - *(float *)&dword_140404A6C[73006982]) + 0.00390625;
+      sr_limb_rotation_axis[2] = v369;
+      *(float *)&(*(int64_t *)(void *)sr_limb_drive_velocity) = (float)(v374 + (float)(v362 * v371)) + (float)(*(float *)&v480 * v372);
+      sr_limb_offset[0] = *(float *)&(*(int64_t *)(void *)sr_limb_drive_velocity) - *(float *)&dword_1402F6188;
+      sr_limb_drive_velocity[2] = v377 + (float)(v492 * v372);
+      *((float *)&(*(int64_t *)(void *)sr_limb_drive_velocity) + 1) = (float)(v376 + (float)(v479 * v371)) + (float)(v490 * v372);
+      sr_limb_offset[2] = sr_limb_drive_velocity[2] - *(float *)&dword_1402F6190;
+      sr_limb_offset[1] = *((float *)&(*(int64_t *)(void *)sr_limb_drive_velocity) + 1) - *(float *)&dword_1402F618C;
+      if ( (unsigned int)sub_1400DC050((float *)&(*(int64_t *)(void *)sr_limb_drive_velocity), &sr_limb_offset[0], 0) )
+        v373 = (float)(*((float *)&(*(int64_t *)(void *)sr_limb_drive_velocity) + 1) - *(float *)&dword_140404A6C[73006982]) + 0.00390625;
       v378 = -fminf(v373, 0.65625);
       sr_limb_target[0] = v367 * v378;
       sr_limb_target[1] = v368 * v378;
@@ -2643,11 +2639,11 @@ LABEL_311:
     if ( v272 == -1 )
       v380 = 4;
     sr_limb_matrix_a[8] = 1065353216;
-    v505 = 0;
+    (*(int64_t *)(void *)sr_limb_drive_velocity) = 0;
     v381 = v380 | 1;
-    v506 = 0.0;
+    sr_limb_drive_velocity[2] = 0.0;
     sr_limb_cell[0] = 1050069988;
-    v382 = *(&v488 + v345);
+    v382 = sr_limb_health[v345];
     sr_limb_contact[0] = 1063256064;
     sr_limb_cell[1] = 1041681380;
     sr_limb_contact[1] = 1063256064;
@@ -2682,8 +2678,8 @@ LABEL_325:
           sr_limb_contact[0] = 1061158912;
           sr_limb_contact[1] = 1061158912;
           sr_limb_contact[2] = 1061158912;
-          v477 = 0x3D8000003D800000LL;
-          v478 = 1031798784;
+          (*(int64_t *)(void *)sr_limb_angular_limit) = 0x3D8000003D800000LL;
+          sr_limb_angular_limit[2] = 1031798784;
           goto LABEL_342;
         }
 LABEL_326:
@@ -2730,12 +2726,12 @@ LABEL_331:
       v387 = 0.0;
       v469 = 0.0;
     }
-    v477 = 0;
-    v478 = 0;
+    (*(int64_t *)(void *)sr_limb_angular_limit) = 0;
+    sr_limb_angular_limit[2] = 0;
     if ( v382 < 1.0 )
     {
-      *(float *)&v477 = (float)(v382 * 0.015625) + 0.00390625;
-      *((float *)&v477 + 1) = *(float *)&v477;
+      *(float *)&(*(int64_t *)(void *)sr_limb_angular_limit) = (float)(v382 * 0.015625) + 0.00390625;
+      *((float *)&(*(int64_t *)(void *)sr_limb_angular_limit) + 1) = *(float *)&(*(int64_t *)(void *)sr_limb_angular_limit);
     }
     v381 |= 0x10u;
     v385 = LODWORD(v387);
@@ -2748,13 +2744,13 @@ LABEL_342:
       3 * v271 + 4,
       &sr_limb_target[0],
       (float *)((_OWORD *)(void *)sr_limb_matrix_a),
-      (float *)&v505,
+      (float *)&(*(int64_t *)(void *)sr_limb_drive_velocity),
       0.65625,
       v385,
       &v464,
       (float *)&sr_limb_cell[0],
       &sr_limb_contact[0],
-      (unsigned int *)&v477,
+      (unsigned int *)&(*(int64_t *)(void *)sr_limb_angular_limit),
       v471,
       v381);
     if ( v272 == -1 )
@@ -2795,21 +2791,21 @@ LABEL_342:
           v469 = v433;
         }
         v391 = v465;
-        v477 = 0x3D8000003D800000LL;
-        v478 = 1031798784;
+        (*(int64_t *)(void *)sr_limb_angular_limit) = 0x3D8000003D800000LL;
+        sr_limb_angular_limit[2] = 1031798784;
         sub_1400B1450(
           v465,
           2,
           v389 + 4,
           &sr_limb_target[0],
           (float *)((_OWORD *)(void *)sr_limb_matrix_a),
-          (float *)&v505,
+          (float *)&(*(int64_t *)(void *)sr_limb_drive_velocity),
           0.65625,
           SLODWORD(v433),
           &v464,
           (float *)&sr_limb_cell[0],
           &sr_limb_contact[0],
-          (unsigned int *)&v477,
+          (unsigned int *)&(*(int64_t *)(void *)sr_limb_angular_limit),
           v388,
           v381);
       }
@@ -2822,8 +2818,8 @@ LABEL_342:
     {
       v390 = 1760 * v296;
       v391 = v465;
-      v467 = 0;
-      v468 = 0.0;
+      (*(int64_t *)(void *)sr_limb_rotation_axis) = 0;
+      sr_limb_rotation_axis[2] = 0.0;
       v392 = (int)dword_140404A6C[v390 + 278845898];
       v393 = 5072 * v392 + 12 * v484;
       v394 = *(unsigned int *)((char *)&dword_140404A6C[278521318] + v393);
@@ -2835,7 +2831,7 @@ LABEL_342:
         v465,
         v389 + 6,
         v272,
-        (unsigned int *)&v467,
+        (unsigned int *)&(*(int64_t *)(void *)sr_limb_rotation_axis),
         v497,
         (float *)&dword_140404A6C[1268 * v392 + 278521329 + 4 * v472]);
       if ( (dword_140404A6C[v3 + 280651436] & 0x20) == 0

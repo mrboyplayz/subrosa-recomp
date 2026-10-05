@@ -9,6 +9,37 @@ from repair_client_menu_actions import PROJECT,pinned_pe,region
 
 
 class WorldGLCalls(unittest.TestCase):
+    def test_native_blend_factors(self):
+        from repair_client_world_gl_calls import BLEND_MANIFEST
+        from repair_client_menu_actions import check
+        pe=pinned_pe();source=read_client_source()
+        rows=json.loads(BLEND_MANIFEST.read_text())['calls']
+        code=r'''#include "export_compat.h"
+static unsigned *dword_140404A6C;static unsigned factors[2],calls;
+static void blend(unsigned src,unsigned dst){factors[0]=src;factors[1]=dst;calls++;}
+'''.encode()
+        for k,row in enumerate(rows):
+            check(pe,int(row['native_start'],16),row['native_bytes'])
+            self.assertIn(row['new'].encode(),region(source,int(row['function'],16)-0x140000000)[2])
+            code+=('static void recovered_'+str(k)+'(void){'+row['new']+';}\n').encode()
+        code+=r'''int main(void){unsigned char *native=VirtualAlloc(0,4096,MEM_COMMIT|MEM_RESERVE,PAGE_EXECUTE_READWRITE);if(!native)return 9;
+ unsigned slots[18215111]={0};dword_140404A6C=slots;*(void **)(slots+18215109)=blend;unsigned checked=0;
+'''.encode().replace(b'unsigned slots[18215111]={0};',b'unsigned *slots=calloc(18215111,4);if(!slots)return 9;')
+        for k,row in enumerate(rows):
+            # Original MOV/LEA argument stores followed by a controlled driver
+            # callback. Reserve the Windows x64 shadow space around the call.
+            data=b'\x48\x83\xec\x28'+bytes.fromhex(row['native_bytes'])+b'\x48\xb8'
+            code+=('{unsigned char bytes[]={'+','.join(map(str,data))+'};memcpy(native,bytes,sizeof bytes);void *fn=blend;memcpy(native+sizeof bytes,&fn,8);unsigned char tail[]={0xff,0xd0,0x48,0x83,0xc4,0x28,0xc3};memcpy(native+sizeof bytes+8,tail,sizeof tail);\n').encode()
+            code+=('unsigned saved[2];calls=0;recovered_'+str(k)+'();memcpy(saved,factors,8);if(calls!=1)return 2;calls=0;memset(factors,0xcc,8);((void(*)(void))native)();if(calls!=1||memcmp(saved,factors,8)){printf("Blend argument mismatch at block '+str(k)+'\\n");return 1;}checked++;}\n').encode()
+        code+=b'printf("%u native blend argument blocks match both factors; driver callback controlled\\n",checked);return 0;}\n'
+        out=PROJECT/'reports/client-blend-calls-20261005';out.mkdir(parents=True,exist_ok=True)
+        path=out/'blend.c';path.write_bytes(code);exe=path.with_suffix('.exe')
+        result=subprocess.run(['C:/Users/junin/mingw64/bin/gcc.exe','-O0','-std=gnu11','-fno-strict-aliasing','-I',str(PROJECT/'src/client'),'-I',str(PROJECT/'src/rebuild'),str(path),'-o',str(exe)],capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        result=subprocess.run([str(exe)],capture_output=True,text=True,timeout=30)
+        (out/'stdout.txt').write_text(result.stdout)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+
     def test_visibility_matrices_and_clip_plane(self):
         pe=pinned_pe();body=region(read_client_source(),0x94a90)[2]
         cs=capstone.Cs(capstone.CS_ARCH_X86,capstone.CS_MODE_64);cs.detail=True
@@ -216,24 +247,31 @@ static float *flt_140384000;
 static uint64_t trace[7];static unsigned calls;
 static void clear(float r,float g,float b,float a){float f[]={r,g,b,a};for(unsigned i=0;i<4;i++){uint32_t u;memcpy(&u,f+i,4);trace[i]=u;}calls++;}
 static void depth(double x){memcpy(trace,&x,8);calls++;}
+static void line(float x){uint32_t bits;memcpy(&bits,&x,4);trace[0]=bits;calls++;}
+static void uniform1f(int location,float x){uint32_t bits;memcpy(&bits,&x,4);trace[0]=(unsigned)location;trace[1]=bits;calls++;}
+unsigned sr_gl_scalar_loop_case;
+static void (*unk_1404042E8)(int,float);
 static void attrib(unsigned a,int b,unsigned c,unsigned char d,int e,const void *f){trace[0]=a;trace[1]=(unsigned)b;trace[2]=c;trace[3]=d;trace[4]=(unsigned)e;trace[5]=(uintptr_t)f;calls++;}
 static void mask(unsigned char a,unsigned char b,unsigned char c,unsigned char d){trace[0]=a;trace[1]=b;trace[2]=c;trace[3]=d;calls++;}
 static void depthmask(unsigned char x){trace[0]=x;calls++;}
 static void draw(unsigned a,int b,unsigned c,const void *d){trace[0]=a;trace[1]=(unsigned)b;trace[2]=c;trace[3]=(uintptr_t)d;calls++;}
 static void attrib4f(unsigned a,float b,float c,float d,float e){float values[]={b,c,d,e};trace[0]=a;for(unsigned i=0;i<4;i++){uint32_t u;memcpy(&u,values+i,4);trace[i+1]=u;}calls++;}
 static void (*unk_140404468)(unsigned,float,float,float,float);
+static void attrib2f(unsigned a,float b,float c){float values[]={b,c};trace[0]=a;for(unsigned i=0;i<2;i++){uint32_t u;memcpy(&u,values+i,4);trace[i+1]=u;}calls++;}
+static void (*unk_1404043C8)(unsigned,float,float);
 extern void block(void *image,void *code,uint64_t index,const uint32_t *register_values);
 extern void block_return(void);
 __asm__(".text\n.global block\nblock:\npush %rbp\npush %rbx\npush %rsi\npush %rdi\npush %r12\npush %r13\npush %r14\npush %r15\nsub $0xc8,%rsp\nmovaps %xmm6,0x60(%rsp)\nmovaps %xmm7,0x70(%rsp)\nmovaps %xmm8,0x80(%rsp)\nmovaps %xmm9,0x90(%rsp)\nmovaps %xmm10,0xa0(%rsp)\nmovaps %xmm11,0xb0(%rsp)\nmovss 0(%r9),%xmm6\nmovss 4(%r9),%xmm7\nmovss 8(%r9),%xmm8\nmovss 12(%r9),%xmm9\nmovss 16(%r9),%xmm10\nmovss 20(%r9),%xmm11\nmov %rcx,%r15\nmov %rcx,%rsi\nmov %r8,%rbx\nxor %r12d,%r12d\nmov 24(%r9),%rdi\njmp *%rdx\n.global block_return\nblock_return:\nmovaps 0x60(%rsp),%xmm6\nmovaps 0x70(%rsp),%xmm7\nmovaps 0x80(%rsp),%xmm8\nmovaps 0x90(%rsp),%xmm9\nmovaps 0xa0(%rsp),%xmm10\nmovaps 0xb0(%rsp),%xmm11\nadd $0xc8,%rsp\npop %r15\npop %r14\npop %r13\npop %r12\npop %rdi\npop %rsi\npop %rbx\npop %rbp\nret\n");
 '''.encode()
-        for k,(_,_,_,call,_) in enumerate(rows):code+=('static void recovered_'+str(k)+'(uint32_t stride){uint64_t v101=stride;int64_t v4=0;'+call+'}\n').encode()
+        code=code.replace(b'mov 24(%r9),%rdi\\njmp *%rdx',b'mov 24(%r9),%rdi\\ncmpb $0,sr_gl_scalar_loop_case(%rip)\\nje 1f\\nmov %r8,%rsi\\n1:\\njmp *%rdx')
+        for k,(_,_,_,call,_) in enumerate(rows):code+=('static void recovered_'+str(k)+'(uint32_t stride){uint64_t v101=stride;int64_t v4=0;int i=(int)stride;'+call+'}\n').encode()
         code+=b'int main(void){unsigned char *image=VirtualAlloc(0,0x74794000,MEM_RESERVE,PAGE_NOACCESS);if(!image)return 8;\n'
-        pages={0x278000,0x279000,0x404000,0x4980000}|{(0x404a6c+4*idx)&~4095 for idx in (456217207,271911768,178527475,159842283)}|{start&~4095 for start,_,_,_,_ in rows}|{end&~4095 for _,end,_,_,_ in rows}
+        pages={0x278000,0x279000,0x404000,0x4980000}|{(0x404a6c+4*idx)&~4095 for idx in (456217207,271911768,178527475,159842283,71738233,71738298)}|{start&~4095 for start,_,_,_,_ in rows}|{p&~4095 for _,end,_,_,_ in rows for p in (end,end+13)}
         for page in sorted(pages):
             code+=f'if(!VirtualAlloc(image+{page},4096,MEM_COMMIT,PAGE_EXECUTE_READWRITE))return 9;\n'.encode()
             data=pe.get_data(page,4096)
             if data:code+=('{unsigned char b[]={'+','.join(map(str,data))+f'}};memcpy(image+{page},b,sizeof b);}}\n').encode()
-        slots={'clear':0x4980d30,'depth':0x4980d40,'attrib':0x4044a8,'mask':0x4980d50,'depthmask':0x4980d58,'attrib4f':0x404468,'draw':0x404010}
+        slots={'clear':0x4980d30,'depth':0x4980d40,'attrib':0x4044a8,'mask':0x4980d50,'depthmask':0x4980d58,'attrib4f':0x404468,'attrib2f':0x4043c8,'draw':0x404010,'line':0x4980cd0,'uniform1f':0x4042e8}
         for kind,slot in slots.items():code+=f'*(void **)(image+{slot})={kind};\n'.encode()
         code+=r'''
  uint32_t strides[]={0,1,3,4,12,16,64,128,1024,65536,0x1fffffff,0x7fffffff,0x80000000,0xffffffff};
@@ -249,7 +287,7 @@ __asm__(".text\n.global block\nblock:\npush %rbp\npush %rbx\npush %rsi\npush %rd
    uintptr_t offset=model*3632+0x2ad0be04;
    if(!VirtualAlloc(image+(offset&~4095),4096,MEM_COMMIT,PAGE_READWRITE))return 10;
    *(uint32_t *)(image+offset)=strides[s];
-   dword_140404A6C=(void*)(image+0x404a6c);flt_140384000=(void *)(image+0x384000);qword_1404044A8=attrib;unk_140404468=attrib4f;
+   dword_140404A6C=(void*)(image+0x404a6c);flt_140384000=(void *)(image+0x384000);qword_1404044A8=attrib;unk_140404468=attrib4f;unk_1404043C8=attrib2f;unk_1404042E8=uniform1f;
    dword_140404A6C[456217207]=strides[s];
    dword_140404A6C[271911768]=dword_140404A6C[178527475]=dword_140404A6C[159842283]=strides[s];
    /* Nonvolatile scalar words come from the original constant loads,
@@ -261,9 +299,12 @@ __asm__(".text\n.global block\nblock:\npush %rbp\npush %rbx\npush %rsi\npush %rd
             code+=f'case {k}:{{unsigned char original[]={{'.encode()+','.join(map(str,pe.get_data(start,end-start))).encode()+f'}};memcpy(image+{start},original,sizeof original);unsigned char jump[]={{0xff,0x25,0,0,0,0}};memcpy(image+{end},jump,6);*(void **)(image+{end+6})=block_return;'.encode()
             if key=='0x14008d800':code+=b'regs[3]=0x3fc00000;regs[5]=0;'
             if key=='0x140124320':code+=b'regs[1]=0x3f800000;'
+            if key=='0x140093e60':code+=b'regs[1]=0x3ec00000;'
             if key=='0x140124fe0':code+=b'regs[6]=regs[7]=0;'
             if key in ('0x140125670','0x140125860'):code+=b'{uintptr_t base=(uintptr_t)(dword_140404A6C+159842277);memcpy(regs+6,&base,8);}'
             entity='0' if key in ('0x140124fe0','0x140125670','0x140125860') else 'model'
+            if start==0x1b8b9:entity='strides[s]*4u'
+            code+=('sr_gl_scalar_loop_case='+str(int(start==0x1b8b9))+';').encode()
             code+=f'block(image,image+{start},{entity},regs);break;}}\n'.encode()
         code+=b'}}else{switch(k){\n'
         for k in range(len(rows)):code+=f'case {k}:recovered_{k}(strides[s]*4u);break;\n'.encode()

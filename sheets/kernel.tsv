@@ -442,3 +442,33 @@ kernel_adbfbbfea382	scripts/test_client_sources.py	test	partial		scripts/test_cl
 debug_console_c	src/rebuild/client_debug_console.c	glue	partial	scripts/test_client_debug_console.py	docs/client-debug-console.md
 debug_console_h	src/rebuild/client_debug_console.h	glue	partial	scripts/test_client_debug_console.py	docs/client-debug-console.md
 debug_console_test	scripts/test_client_debug_console.py	test	partial		docs/client-debug-console.md
+layout_client_blend_calls	src/rebuild/client_blend_calls.json	layout	partial	scripts/test_client_world_gl_calls.py	Pinned original call argument blocks; both blend factors verified at a controlled driver boundary. Live rendering still requires validation.
+item_collision_storage_tool	scripts/repair_client_item_collision_storage.py	tool	partial	scripts/test_client_item_collision_storage.py	reports/client-collision-query-20261004
+item_collision_storage_test	scripts/test_client_item_collision_storage.py	test	partial	scripts/test_client_item_collision_storage.py	reports/client-collision-query-20261004
+geometry_tables_tool	scripts/repair_client_geometry_tables.py	tool	partial	scripts/test_client_item_collision_storage.py	Native cube vertices, normals and topology; runtime rendering validation required.
+kernel_94cbca4f18aa	rust-client/src/bin/client.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_6572f6ff1e2b	rust-client/src/human_controller.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_b15412ab2f7e	rust-client/src/human_limits.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_8ced23f67f0a	rust-client/src/human_render.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_2342a75ed5b8	rust-client/src/leg_targets.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_68a5329c0614	rust-client/src/limb.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_0f4eb7f2ccc4	rust-client/src/native_ui.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_2fd066e91a06	rust-client/src/pose_targets.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_fa149eb4bd2d	rust-client/src/practice.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_49f02ff4c791	rust-client/src/ragdoll.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_f24d85d7e7cc	rust-client/src/world_files.rs	algorithm	partial		Native/reference scope documented in file; full game parity pending
+kernel_a774b194c18c	rust-client/tests/world_assets.rs	test	partial	rust-client/tests/world_assets.rs	Native/reference scope documented in file; full game parity pending
+kernel_d051fd3d848f	scripts/test_rust_human_render.py	test	partial	scripts/test_rust_human_render.py	Native/reference scope documented in file; full game parity pending
+kernel_a3e9640eebd9	scripts/test_rust_leg_parameters.py	test	partial	scripts/test_rust_leg_parameters.py	Native/reference scope documented in file; full game parity pending
+kernel_4fa6e0b5ad8e	scripts/test_rust_leg_targets.py	test	partial	scripts/test_rust_leg_targets.py	Native/reference scope documented in file; full game parity pending
+kernel_4853cce84115	scripts/test_rust_limb_drive.py	test	partial	scripts/test_rust_limb_drive.py	Native/reference scope documented in file; full game parity pending
+kernel_426babe08ca9	scripts/test_rust_pose_targets.py	test	partial	scripts/test_rust_pose_targets.py	Native/reference scope documented in file; full game parity pending
+kernel_c5b953710004	scripts/test_rust_rotation_step.py	test	partial	scripts/test_rust_rotation_step.py	Native/reference scope documented in file; full game parity pending
+kernel_c3d299bed845	scripts/trace_client_gl.py	tool	partial		Native/reference scope documented in file; full game parity pending
+rust_client_city_chunks	rust-client/src/city_chunks.rs	algorithm	partial	scripts/test_rust_city_chunks.py	992 native D4FC0 material requests and 8192 coordinates match; procedural generation parity remains pending
+tool_create_test_map	scripts/create_test_map.py	tool	partial	rust-client/tests/world_assets.rs	User-requested shared native SBC/CSX debug arena, not original map recovery; docs/test-map.md
+repair_client_frame_storage	scripts/repair_client_frame_storage.py	algorithm	partial	scripts/test_client_frame_storage.py	reports/client-frame-storage-20261005
+tool_test_rust_city_chunks	scripts/test_rust_city_chunks.py	test	partial	scripts/test_rust_city_chunks.py	992 native D4FC0 material requests and 8192 native 020000 coordinates; geometry insertion and height writes intercepted
+repair_client_swept_cell_storage	scripts/repair_client_swept_cell_storage.py	algorithm	partial	scripts/test_client_swept_cell_storage.py	reports/client-swept-cell-storage-20261005
+test_client_swept_cell_storage	scripts/test_client_swept_cell_storage.py	test	partial	scripts/test_client_swept_cell_storage.py	reports/client-swept-cell-storage-20261005
+test_client_frame_storage	scripts/test_client_frame_storage.py	test	partial	scripts/test_client_frame_storage.py	reports/client-frame-storage-20261005

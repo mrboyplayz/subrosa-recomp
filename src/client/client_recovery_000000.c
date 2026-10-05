@@ -14577,29 +14577,8 @@ __int64 sub_14001B6A0()
   __int64 v8; // rcx
   _DWORD v10[10]; // [rsp+8h] [rbp-100h] BYREF
   __int64 v11; // [rsp+30h] [rbp-D8h]
-  __m256i v12; // [rsp+38h] [rbp-D0h] BYREF
-  float v13; // [rsp+58h] [rbp-B0h]
-  _QWORD v14[2]; // [rsp+64h] [rbp-A4h] BYREF
-  float v15; // [rsp+74h] [rbp-94h]
-  float v16; // [rsp+78h] [rbp-90h]
-  float v17; // [rsp+7Ch] [rbp-8Ch]
-  int v18; // [rsp+80h] [rbp-88h]
-  __int64 v19; // [rsp+84h] [rbp-84h]
-  float v20; // [rsp+8Ch] [rbp-7Ch]
-  float v21; // [rsp+90h] [rbp-78h]
-  float v22; // [rsp+94h] [rbp-74h]
-  __int64 v23; // [rsp+98h] [rbp-70h]
-  int v24; // [rsp+A0h] [rbp-68h]
-  float v25; // [rsp+A4h] [rbp-64h]
-  float v26; // [rsp+A8h] [rbp-60h]
-  float v27; // [rsp+ACh] [rbp-5Ch]
-  __int64 v28; // [rsp+B0h] [rbp-58h]
-  int v29; // [rsp+B8h] [rbp-50h]
-  float v30; // [rsp+BCh] [rbp-4Ch]
-  float v31; // [rsp+C0h] [rbp-48h]
-  float v32; // [rsp+C4h] [rbp-44h]
-  __int64 v33; // [rsp+C8h] [rbp-40h]
-  __int32 v34; // [rsp+D0h] [rbp-38h]
+  _Alignas(16) unsigned sr_cube_filter_rotation[12];
+  _Alignas(16) unsigned sr_cube_filter_vertices[28];
   __int64 v35; // [rsp+268h] [rbp+160h]
 
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(2929);
@@ -14638,26 +14617,26 @@ __int64 sub_14001B6A0()
         dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944],
         i);
       qword_140302FE8(0, 0, (unsigned int)v1, (unsigned int)v1);
-      v13 = 1.0;
-      *(_OWORD *)SR_VEC_LANES(256, v12, i8) = xmmword_140278D30;
-      *(_OWORD *)&SR_VEC_LANES(256, v12, u64)[2] = xmmword_140278D30;
+      (*(float *)(void *)(sr_cube_filter_rotation+8)) = 1.0;
+      *(_OWORD *)SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i8) = xmmword_140278D30;
+      *(_OWORD *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), u64)[2] = xmmword_140278D30;
       switch ( j )
       {
         case 0:
           v5 = 1070141403;
 LABEL_13:
-          v6 = (float *)&SR_VEC_LANES(256, v12, i32)[3];
+          v6 = (float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[3];
           break;
         case 1:
           v5 = 3217625051LL;
           goto LABEL_13;
         case 2:
           v5 = 1070141403;
-          v6 = (float *)&v12;
+          v6 = (float *)&(*(__m256i *)(void *)sr_cube_filter_rotation);
           break;
         case 3:
           v5 = 3217625051LL;
-          v6 = (float *)&v12;
+          v6 = (float *)&(*(__m256i *)(void *)sr_cube_filter_rotation);
           break;
         case 5:
           v5 = 1078530011;
@@ -14665,35 +14644,35 @@ LABEL_13:
         default:
           goto LABEL_15;
       }
-      sub_14007B2A0((__int64)&v12, v6, *(double *)&v5);
+      sub_14007B2A0((__int64)&(*(__m256i *)(void *)sr_cube_filter_rotation), v6, *(double *)&v5);
 LABEL_15:
-      HIDWORD(v14[0]) = 0;
+      HIDWORD(((uint64_t *)(void *)sr_cube_filter_vertices)[0]) = 0;
       v7 = dword_140404A6C[2 * dword_140404A6C[283791478] + 283793813];
-      v14[1] = 1065353216;
-      v33 = *(__int64 *)((char *)&SR_VEC_LANES(256, v12, i64)[1] + 4);
-      v34 = SR_VEC_LANES(256, v12, i32)[5];
-      v18 = 1065353216;
-      v19 = 1065353216;
-      v23 = 1065353216;
-      v24 = 0;
-      v28 = 0;
-      v15 = (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[3] + (float)(*(float *)SR_VEC_LANES(256, v12, i32) * -1.0)) - *(float *)&SR_VEC_LANES(256, v12, i32)[6];
-      v30 = (float)((float)(*(float *)SR_VEC_LANES(256, v12, i32) * -1.0) - *(float *)&SR_VEC_LANES(256, v12, i32)[3]) - *(float *)&SR_VEC_LANES(256, v12, i32)[6];
-      v16 = (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[4] + (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[1] * -1.0))
-          - *(float *)&SR_VEC_LANES(256, v12, i32)[7];
-      v29 = 0;
-      v17 = (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[5] + (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[2] * -1.0)) - v13;
-      v31 = (float)((float)(*(float *)&SR_VEC_LANES(256, v12, i32)[1] * -1.0) - *(float *)&SR_VEC_LANES(256, v12, i32)[4])
-          - *(float *)&SR_VEC_LANES(256, v12, i32)[7];
-      v20 = (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[3] + *(float *)SR_VEC_LANES(256, v12, i32)) - *(float *)&SR_VEC_LANES(256, v12, i32)[6];
-      v32 = (float)((float)(*(float *)&SR_VEC_LANES(256, v12, i32)[2] * -1.0) - *(float *)&SR_VEC_LANES(256, v12, i32)[5]) - v13;
-      v21 = (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[4] + *(float *)&SR_VEC_LANES(256, v12, i32)[1]) - *(float *)&SR_VEC_LANES(256, v12, i32)[7];
-      v22 = (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[5] + *(float *)&SR_VEC_LANES(256, v12, i32)[2]) - v13;
-      v25 = (float)(*(float *)SR_VEC_LANES(256, v12, i32) - *(float *)&SR_VEC_LANES(256, v12, i32)[3]) - *(float *)&SR_VEC_LANES(256, v12, i32)[6];
-      v26 = (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[1] - *(float *)&SR_VEC_LANES(256, v12, i32)[4]) - *(float *)&SR_VEC_LANES(256, v12, i32)[7];
-      v27 = (float)(*(float *)&SR_VEC_LANES(256, v12, i32)[2] - *(float *)&SR_VEC_LANES(256, v12, i32)[5]) - v13;
+      ((uint64_t *)(void *)sr_cube_filter_vertices)[1] = 1065353216;
+      (*(uint64_t *)(void *)(sr_cube_filter_vertices+25)) = *(__int64 *)((char *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i64)[1] + 4);
+      (*(unsigned *)(void *)(sr_cube_filter_vertices+27)) = SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[5];
+      (*(unsigned *)(void *)(sr_cube_filter_vertices+7)) = 1065353216;
+      (*(uint64_t *)(void *)(sr_cube_filter_vertices+8)) = 1065353216;
+      (*(uint64_t *)(void *)(sr_cube_filter_vertices+13)) = 1065353216;
+      (*(unsigned *)(void *)(sr_cube_filter_vertices+15)) = 0;
+      (*(uint64_t *)(void *)(sr_cube_filter_vertices+19)) = 0;
+      (*(float *)(void *)(sr_cube_filter_vertices+4)) = (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[3] + (float)(*(float *)SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32) * -1.0)) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[6];
+      (*(float *)(void *)(sr_cube_filter_vertices+22)) = (float)((float)(*(float *)SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32) * -1.0) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[3]) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[6];
+      (*(float *)(void *)(sr_cube_filter_vertices+5)) = (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[4] + (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[1] * -1.0))
+          - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[7];
+      (*(unsigned *)(void *)(sr_cube_filter_vertices+21)) = 0;
+      (*(float *)(void *)(sr_cube_filter_vertices+6)) = (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[5] + (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[2] * -1.0)) - (*(float *)(void *)(sr_cube_filter_rotation+8));
+      (*(float *)(void *)(sr_cube_filter_vertices+23)) = (float)((float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[1] * -1.0) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[4])
+          - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[7];
+      (*(float *)(void *)(sr_cube_filter_vertices+10)) = (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[3] + *(float *)SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[6];
+      (*(float *)(void *)(sr_cube_filter_vertices+24)) = (float)((float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[2] * -1.0) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[5]) - (*(float *)(void *)(sr_cube_filter_rotation+8));
+      (*(float *)(void *)(sr_cube_filter_vertices+11)) = (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[4] + *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[1]) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[7];
+      (*(float *)(void *)(sr_cube_filter_vertices+12)) = (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[5] + *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[2]) - (*(float *)(void *)(sr_cube_filter_rotation+8));
+      (*(float *)(void *)(sr_cube_filter_vertices+16)) = (float)(*(float *)SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[3]) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[6];
+      (*(float *)(void *)(sr_cube_filter_vertices+17)) = (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[1] - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[4]) - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[7];
+      (*(float *)(void *)(sr_cube_filter_vertices+18)) = (float)(*(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[2] - *(float *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[5]) - (*(float *)(void *)(sr_cube_filter_rotation+8));
       qword_140404170(34962, v7, v4);
-      qword_140404198(34962, 0, 96, (char *)v14 + 4);
+      qword_140404198(34962, 0, 96, (char *)((uint64_t *)(void *)sr_cube_filter_vertices) + 4);
       qword_140404238(0);
       qword_140404238(1);
       qword_140404238(2);
