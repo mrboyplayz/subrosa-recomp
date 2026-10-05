@@ -45,6 +45,7 @@ def main():
     p.add_argument('--capture-frame',action='store_true',help='read each recorded back buffer into a BMP before its swap')
     p.add_argument('--inspect-resources',action='store_true',help='read texture sizes and bounded image data at world entry without changing bindings')
     p.add_argument('--inspect-errors',action='store_true',help='attribute driver errors to each forwarded GL call')
+    p.add_argument('--capture-passes',action='store_true',help='capture outgoing framebuffer attachments at pass boundaries')
     args=p.parse_args();out=args.output.resolve();out.mkdir(parents=True,exist_ok=True)
     original=pinned_pe();rebuilt=pefile.PE(str(args.recomp.resolve()),fast_load=False)
     header=PROJECT/'third_party/suitium/Modules/glad/include/glad/glad.h';h=header.read_text()
@@ -107,7 +108,7 @@ static void inspect_pass(void);
             c+=f'payload(v,{attribute[1]}*sizeof(*v));\n'
         c+='end();\n'
         if args.inspect_resources and name=='glBindFramebuffer':c+='if(target==0x8d40)inspect_pass();\n'
-        if args.inspect_resources and name=='glFramebufferTexture2D':c+='inspect_pass();\n'
+        if (args.inspect_resources or args.capture_passes) and name=='glFramebufferTexture2D':c+='inspect_pass();\n'
         c+=(('return ' if ret!='void' else '')+f'fn_{i}('+','.join(names)+');')
         if args.inspect_errors or (args.inspect_resources and (name.startswith('glDraw') or name=='glMultiDrawElementsBaseVertex')):
             c+='inspect_draw();'
