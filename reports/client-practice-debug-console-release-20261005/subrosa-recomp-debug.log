@@ -1,0 +1,74 @@
+[     0.062] [thread 15500] Sub Rosa Recomp diagnostics started. Times are seconds since launch.
+[     0.062] [thread 15500] Executable: D:\SteamLibrary\steamapps\common\Sub Rosa\subrosa-recomp.exe
+[     0.062] [thread 15500] Log file: D:\SteamLibrary\steamapps\common\Sub Rosa\subrosa-recomp-debug.log (replaced each launch)
+[     0.062] [thread 15500] Startup: initialize shared client state and runtime
+[     2.812] [thread 15500] Startup: load world assets, entity types and audio (0x139E90)
+[     4.062] [thread 15500] Initial asset loading returned
+[     4.062] [thread 15500] Startup: prepare client world (0x13CDF0)
+[     4.062] [thread 15500] Startup: connect to master server
+[     4.641] [thread 15500] Startup complete: menu ready
+[     4.687] [thread 15500] Practice selected: start local game setup
+[     4.937] [thread 15500] ResetGame: clear previous game state and prepare generation
+[     4.937] [thread 15500] Game mode=0, local simulation=1, map=test2
+[     4.937] [thread 15500] Generating level: prepare map geometry
+[     4.953] [thread 15500] Generating level: load/build world data (0x056980)
+[     6.000] [thread 59200] STATUS: Generating level: load/build world data (0x056980) | in this step 1.0s | physics ticks 0 started, 0 completed
+[    11.000] [thread 59200] STATUS: Generating level: load/build world data (0x056980) | in this step 6.0s | physics ticks 0 started, 0 completed
+[    15.281] [thread 15500] World data generation returned
+[    15.281] [thread 15500] Generating level: prepare world render resources (0x124320)
+[    15.344] [thread 15500] World render resource setup returned
+[    15.344] [thread 15500] Generating level: finalize render state (0x14C390)
+[    15.344] [thread 15500] Generating game: spawn humans, vehicles, items and joints
+[    15.359] [thread 15500] Body check: 93 active bodies have finite transforms/velocities, after game spawning
+[    15.359] [thread 15500] Generating game finished: returning to the client loop
+[    15.453] [thread 15500] Simulation tick 1 beginning (0 completed)
+[    15.453] [thread 15500] Physics: integrate body positions and rotations (0x116210)
+[    15.453] [thread 15500] Body check: 93 active bodies have finite transforms/velocities, before body integration
+[    15.453] [thread 15500] Body check: 93 active bodies have finite transforms/velocities, after body integration
+[    15.453] [thread 15500] Physics: update vehicle spatial bounds (0x1069C0)
+[    15.453] [thread 15500] Physics: update human spatial bounds (0x0B95E0)
+[    15.453] [thread 15500] Physics: update item spatial bounds (0x0C9D20)
+[    15.453] [thread 15500] Physics: prepare collision and contact work (0x1154D0)
+[    15.453] [thread 15500] Physics: update humans and their pose targets (0x0BE010)
+[    15.453] [thread 15500] Body check: 93 active bodies have finite transforms/velocities, after human update
+[    15.469] [thread 15500] Physics: solve body/joint constraints (0x01D080)
+[    15.469] [thread 15500] INVALID PHYSICS: body 77, velocity word 9 = 0x7fffffff (NaN/infinity), after constraint solving, tick 1
+[    15.469] [thread 15500] This value was only observed; simulation state was not changed.
+[    15.469] [thread 15500] Physics: process broadphase/contact work (0x10BE50, 0x115830)
+[    15.469] [thread 15500] Physics: clean up expired joints (0x01FB90)
+[    15.469] [thread 15500] Physics tick 1 completed
+[    15.469] [thread 15500] Simulation: remaining tick work / world rendering
+[    15.469] [thread 15500] Simulation tick 2 beginning (1 completed)
+[    15.469] [thread 15500] Physics: integrate body positions and rotations (0x116210)
+[    15.469] [thread 15500] Physics: update vehicle spatial bounds (0x1069C0)
+[    15.469] [thread 15500] Physics: update human spatial bounds (0x0B95E0)
+[    16.000] [thread 59200] STATUS: Physics: update human spatial bounds (0x0B95E0) | in this step 0.5s | physics ticks 2 started, 1 completed
+[    21.000] [thread 59200] STATUS: Physics: update human spatial bounds (0x0B95E0) | in this step 5.5s | physics ticks 2 started, 1 completed
+[    26.000] [thread 59200] STATUS: Physics: update human spatial bounds (0x0B95E0) | in this step 10.5s | physics ticks 2 started, 1 completed
+[    29.984] [thread 15500] Physics: update item spatial bounds (0x0C9D20)
+[    29.984] [thread 15500] Physics: prepare collision and contact work (0x1154D0)
+[    29.984] [thread 15500] Physics: update humans and their pose targets (0x0BE010)
+[    30.000] [thread 15500] Physics: solve body/joint constraints (0x01D080)
+[    30.000] [thread 15500] Physics: process broadphase/contact work (0x10BE50, 0x115830)
+[    30.000] [thread 15500] Physics: clean up expired joints (0x01FB90)
+[    30.000] [thread 15500] Physics tick 2 completed
+[    30.000] [thread 15500] Simulation: remaining tick work / world rendering
+[    30.016] [thread 15500] Simulation tick 3 beginning (2 completed)
+[    30.016] [thread 15500] Physics: integrate body positions and rotations (0x116210)
+[    30.016] [thread 15500] Physics: update vehicle spatial bounds (0x1069C0)
+[    30.016] [thread 15500] Physics: update human spatial bounds (0x0B95E0)
+[    31.000] [thread 59200] STATUS: Physics: update human spatial bounds (0x0B95E0) | in this step 1.0s | physics ticks 3 started, 2 completed
+[    36.000] [thread 59200] STATUS: Physics: update human spatial bounds (0x0B95E0) | in this step 6.0s | physics ticks 3 started, 2 completed
+[    41.000] [thread 59200] STATUS: Physics: update human spatial bounds (0x0B95E0) | in this step 11.0s | physics ticks 3 started, 2 completed
+[    44.437] [thread 15500] Physics: update item spatial bounds (0x0C9D20)
+[    44.437] [thread 15500] Physics: prepare collision and contact work (0x1154D0)
+[    44.437] [thread 15500] Physics: update humans and their pose targets (0x0BE010)
+[    44.453] [thread 15500] Physics: solve body/joint constraints (0x01D080)
+[    44.453] [thread 15500] Physics: process broadphase/contact work (0x10BE50, 0x115830)
+[    44.453] [thread 15500] Physics: clean up expired joints (0x01FB90)
+[    44.453] [thread 15500] Physics tick 3 completed
+[    44.453] [thread 15500] Simulation: remaining tick work / world rendering
+[    44.453] [thread 15500] Simulation tick 4 beginning (3 completed)
+[    44.453] [thread 15500] Physics: integrate body positions and rotations (0x116210)
+[    44.453] [thread 15500] Physics: update vehicle spatial bounds (0x1069C0)
+[    44.453] [thread 15500] Physics: update human spatial bounds (0x0B95E0)

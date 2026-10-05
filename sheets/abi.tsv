@@ -1,0 +1,14 @@
+# sheet: abi
+# version: 1
+# generator: client_c_recovery
+# owned_by: root
+id:string*	target:string	ref_addr:string	prototype:string	status:enum	ref_conf:enum	evidence:string
+scene_raycast_signature	fn_1400dc050	0x1400dc050	int FUN_1400dc050(float *start, float *end, int include_transients)	partial	certain	reports/ghidra-vanilla-scene-disassembly-20261003.txt
+spatial_audio_signature	fn_14014fcf0	0x14014fcf0	void FUN_14014fcf0(float *listener, unsigned int *rotation, unsigned int *velocity)	partial	certain	reports/ghidra-cli-vanilla-20261003/blocker-disassembly.txt
+audio_buffer_signature	fn_1401e0cc0	0x1401e0cc0	int FUN_1401e0cc0(int *context, short *input, int rate, void *output, int capacity)	partial	certain	reports/ghidra-cli-audio-buffer-disassembly-20261003.json
+audio_resample_signature	fn_1401ed000	0x1401ed000	float FUN_1401ed000(void *callback, long long source, void *output, float *state, int count, unsigned int position, int stride, int mode, int channels, int rate)	partial	certain	reports/ghidra-cli-audio-analysis-decompile-20261003.json
+audio_window_signature	fn_1401ed2d0	0x1401ed2d0	void FUN_1401ed2d0(long long state, long long config, long long source, int count, int position, int stride, int mode, int channels, int format, void *callback)	partial	certain	reports/ghidra-cli-audio-resample-caller-20261003.json
+biquad_signature	fn_1401f3f90	0x1401f3f90	void FUN_1401f3f90(float *input, int *numerator, int *denominator, float *state, float *output, int count, int stride)	partial	certain	reports/ghidra-cli-biquad-abi-20261003.json
+audio_filter_signature	fn_1401f41e0	0x1401f41e0	void FUN_1401f41e0(float * input, short cutoff, float * output, float * state, int count, int channels, int rate)	partial	certain	reports/ghidra-cli-filter-abi-20261003.json
+codec_result_signature	fn_1401e5400	0x1401e5400	int FUN_1401e5400(int *param_1,undefined8 param_2,int param_3,byte *param_4,int param_5,int param_6, undefined8 param_7,undefined4 param_8,undefined4 param_9,int param_10, undefined4 param_11,undefined8 param_12,int param_13)	partial	certain	reports/ghidra-cli-audio-dispatch-decompile-20261003.json
+simulation_tick_signature	fn_14003b920	0x14003b920	int sub_14003B920(int process_input)	partial	certain	scripts/repair_client_tick_calls.py

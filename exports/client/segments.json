@@ -1,0 +1,32 @@
+[
+  {
+    "name": ".text",
+    "start": "0x140001000",
+    "end": "0x14026e000"
+  },
+  {
+    "name": ".idata",
+    "start": "0x14026e000",
+    "end": "0x14026e688"
+  },
+  {
+    "name": ".rdata",
+    "start": "0x14026e688",
+    "end": "0x1402b2000"
+  },
+  {
+    "name": ".data",
+    "start": "0x1402b2000",
+    "end": "0x1b475d000"
+  },
+  {
+    "name": ".pdata",
+    "start": "0x1b475d000",
+    "end": "0x1b476e000"
+  },
+  {
+    "name": "_RDATA",
+    "start": "0x1b476e000",
+    "end": "0x1b4793000"
+  }
+]

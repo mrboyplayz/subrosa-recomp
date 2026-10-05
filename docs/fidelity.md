@@ -20,6 +20,7 @@ replacement client yet. Names describe observed operations, not original symbols
 | --- | --- | --- |
 | `0x14000B5F0` | Scalar angle difference with single-turn adjustment | 202,500 cases |
 | `0x1400A3770` | Spectator subject selection and enable toggle | 24,348 cases |
+| `0x14005CF80` | Rigid-body slot allocation and initialization | 2,048 cases |
 
 All comparisons passed with the optimized MinGW GCC build. This is evidence for
 the tested input/output contracts, not proof for every possible machine state.
@@ -44,9 +45,11 @@ indices 0 through 255, and deterministic randomized states.
 ### Original-Code Test Fixture
 
 `original_fixture.c` checks the entire executable's SHA256 BEFORE executing any
-copied code. It reserves a sparse address range, copies only the two reviewed leaf
-functions and their two constants, and commits the data pages those functions
-access. Both leaf functions have no calls or external dependencies. Their
+copied code. It reserves a sparse address range, copies three reviewed functions
+and their constants, and commits the data pages those functions access. The two
+camera functions have no calls or external dependencies. The rigid-body allocator's
+only external call is bound to the host CRT's real `memset` through a test-only
+bridge. The copied function instructions are unchanged. Their
 RIP-relative/base-relative addresses remain intact; code is changed from writable
 to executable/read-only after copying. The loader does not start the original
 entry point, resolve imports, run Steam, patch the installed EXE, or load the
@@ -55,6 +58,13 @@ also passed.
 
 This fixture is validation infrastructure, not a way to label original machine
 code as a C recompilation. The separate reconstructed library contains only C.
+
+`src/recovered/rigid_body.c` reconstructs the allocator called by item creation.
+Tests compare its return value and all 8,192 188-byte records byte-for-byte against
+the original, covering full pools, free-slot selection, optional velocity, unusual
+scale values and four rounding modes. This is allocation, not a recovered physics
+solver or a complete item-spawning pipeline. See `suitium-reference.md` for the
+GLM/Suitium type integration and its limits.
 
 ## Embedded Shaders
 
@@ -88,7 +98,7 @@ From `decompilation/` with Python, CMake and the existing x64 MinGW toolchain:
 python scripts/extract_shaders.py
 python scripts/test_extract_shaders.py
 cmake -S . -B build -DSR_ENABLE_SHADER_VALIDATION=ON -DSR_ORIGINAL_CLIENT="D:/SteamLibrary/steamapps/common/Sub Rosa/subrosa.exe"
-cmake --build build --target sr_camera_diff_test sr_shader_compile_test sr_play_test
+cmake --build build --target sr_camera_diff_test sr_rigid_body_diff_test sr_shader_compile_test sr_play_test
 ctest --test-dir build --output-on-failure
 ```
 

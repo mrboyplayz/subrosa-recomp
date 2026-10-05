@@ -1,0 +1,151 @@
+===== perTypeColor table @ 0x183ebf580 =====
+xrefs: 4
+  from 0x140022496 in sub_1400212E0 type 3
+  from 0x1400229a3 in sub_1400212E0 type 3
+  from 0x1400e7f25 in sub_1400E7C40 type 3
+  from 0x14013e268 in sub_14013DCD0 type 1
+===== colorA @ 0x183ebf0f4 =====
+xrefs: 8
+  from 0x140021743 in sub_1400212E0 type 3
+  from 0x140022448 in sub_1400212E0 type 3
+  from 0x140022742 in sub_1400212E0 type 3
+  from 0x140022b90 in sub_1400212E0 type 3
+  from 0x14009a8bb in sub_14009A5F0 type 3
+  from 0x14009afac in sub_14009A5F0 type 3
+  from 0x14013b32b in sub_140139E90 type 3
+  from 0x14013e259 in sub_14013DCD0 type 2
+===== colorB @ 0x183ebf10c =====
+xrefs: 5
+  from 0x1400226cf in sub_1400212E0 type 3
+  from 0x14002299d in sub_1400212E0 type 3
+  from 0x14009aa98 in sub_14009A5F0 type 3
+  from 0x14013b36c in sub_140139E90 type 3
+  from 0x14013e297 in sub_14013DCD0 type 2
+===== table134 (8 entries) @ 0x183ebf134 =====
+xrefs: 3
+  from 0x140022598 in sub_1400212E0 type 3
+  from 0x14013b669 in sub_140139E90 type 3
+  from 0x14013e1ef in sub_14013DCD0 type 2
+===== colorC @ 0x183ebf178 =====
+xrefs: 5
+  from 0x1400223ef in sub_1400212E0 type 3
+  from 0x140022840 in sub_1400212E0 type 3
+  from 0x1400228d0 in sub_1400212E0 type 3
+  from 0x14013b829 in sub_140139E90 type 3
+  from 0x14013e32f in sub_14013DCD0 type 2
+===== table180 @ 0x183ebf180 =====
+xrefs: 4
+  from 0x14002271a in sub_1400212E0 type 3
+  from 0x1400227da in sub_1400212E0 type 3
+  from 0x140096e0e in sub_140096440 type 1
+  from 0x14013e25f in sub_14013DCD0 type 1
+===== colorD @ 0x183ebf110 =====
+xrefs: 3
+  from 0x140022790 in sub_1400212E0 type 3
+  from 0x14013b3a4 in sub_140139E90 type 3
+  from 0x14013e29f in sub_14013DCD0 type 2
+===== colorE @ 0x183ebf148 =====
+xrefs: 3
+  from 0x140022737 in sub_1400212E0 type 3
+  from 0x14013b78e in sub_140139E90 type 3
+  from 0x14013e217 in sub_14013DCD0 type 2
+===== colorF @ 0x183ebf168 =====
+xrefs: 2
+  from 0x1400227e4 in sub_1400212E0 type 3
+  from 0x14013e30f in sub_14013DCD0 type 2
+===== colorG @ 0x183ebf16c =====
+xrefs: 3
+  from 0x140022771 in sub_1400212E0 type 3
+  from 0x14013b402 in sub_140139E90 type 3
+  from 0x14013e317 in sub_14013DCD0 type 2
+===== write contexts =====
+--- context around 0x140022496 ---
+  0x140022456: mov     [rsp+170h+var_13C], eax
+  0x14002245a: lea     eax, [rcx-1]
+  0x14002245d: cmp     eax, 0Bh
+  0x140022460: ja      short loc_14002246A
+  0x140022462: mov     [rsp+170h+var_140], edx
+  0x140022466: mov     [rsp+170h+var_13C], edx
+  0x14002246a: test    ecx, ecx
+  0x14002246c: jnz     short loc_14002247B
+  0x14002246e: mov     [rsp+170h+var_140], edx
+  0x140022472: mov     [rsp+170h+var_13C], edx
+  0x140022476: jmp     loc_1400227F2
+  0x14002247b: cmp     ecx, 6
+  0x14002247e: jnz     short loc_14002248B
+  0x140022480: mov     eax, cs:dword_183EBF118
+  0x140022486: jmp     loc_1400227EA
+  0x14002248b: cmp     ecx, 2Dh ; '-'
+  0x14002248e: ja      short loc_1400224A6
+  0x140022490: bt      r8, rcx
+  0x140022494: jnb     short loc_1400224A6
+  0x140022496: mov     eax, rva dword_183EBF580[r12+rcx*4]
+--- context around 0x1400229a3 ---
+  0x140022963: movsxd  rax, dword ptr [rsi-18h]
+  0x140022964: mov     r14d, r13d
+  0x140022967: imul    r15, rax, 0ED0h
+  0x14002296e: cmp     dword ptr [r15+r10+412C20CCh], 0
+  0x140022977: jle     loc_140022B4B
+  0x14002297d: lea     rbx, rva unk_1812C2128[r10]
+  0x140022984: mov     edi, 1
+  0x140022989: add     rbx, r15
+  0x14002298c: nop     dword ptr [rax+00h]
+  0x140022990: test    [rsi-10h], edi
+  0x140022993: jnz     loc_140022B30
+  0x140022999: movsxd  rcx, dword ptr [rbx-18h]
+  0x14002299d: mov     edx, cs:dword_183EBF10C
+  0x1400229a3: mov     eax, rva dword_183EBF580[r10+rcx*4]
+  0x1400229ab: mov     [rsp+170h+var_140], eax
+  0x1400229af: mov     [rsp+170h+var_13C], eax
+  0x1400229b3: lea     eax, [rcx-25h]
+  0x1400229b6: cmp     eax, 1
+  0x1400229b9: jbe     short loc_1400229C0
+  0x1400229bb: cmp     ecx, 2Ch ; ','
+--- context around 0x1400e7f25 ---
+  0x1400e7ee5: lea     rcx, asc_140273864; ".."
+  0x1400e7eea: call    _chdir
+  0x1400e7eef: test    r12d, r12d
+  0x1400e7ef2: jnz     short loc_1400E7F00
+  0x1400e7ef4: lea     rcx, asc_140273864; ".."
+  0x1400e7efb: call    _chdir
+  0x1400e7f00: lea     rax, unk_1812900A0
+  0x1400e7f07: movsxd  rbx, edi
+  0x1400e7f0a: imul    r8, rbx, 0C8h
+  0x1400e7f11: lea     rdx, aDataItemS; "data/item/%s"
+  0x1400e7f18: add     r8, rax
+  0x1400e7f1b: lea     rcx, [rsp+288h+FileName]; int
+  0x1400e7f20: call    sub_140158AB0
+  0x1400e7f25: mov     ecx, ss:rva dword_183EBF580[rbp+rbx*4]
+  0x1400e7f2c: lea     rdx, [rsp+288h+FileName]
+  0x1400e7f31: mov     [rsp+288h+var_250], 0
+  0x1400e7f39: mov     r9d, 812Fh
+  0x1400e7f3f: mov     [rsp+288h+var_258], 2601h
+  0x1400e7f47: xor     r8d, r8d
+  0x1400e7f4a: mov     [rsp+288h+var_260], 2601h
+--- context around 0x14013e268 ---
+  0x14013e228: mov     cs:dword_183EBF150, eax
+  0x14013e22d: inc     eax
+  0x14013e22f: mov     cs:dword_183EBC400, eax
+  0x14013e235: nop     word ptr [rax+rax+00000000h]
+  0x14013e240: mov     [rcx], eax
+  0x14013e242: add     rcx, 4
+  0x14013e246: mov     eax, cs:dword_183EBC400
+  0x14013e24c: inc     eax
+  0x14013e24e: mov     cs:dword_183EBC400, eax
+  0x14013e254: cmp     rcx, rdx
+  0x14013e257: jl      short loc_14013E240
+  0x14013e259: mov     cs:dword_183EBF0F4, eax
+  0x14013e25f: lea     rdx, dword_183EBF180
+  0x14013e266: inc     eax
+  0x14013e268: lea     rcx, dword_183EBF580
+  0x14013e26f: mov     cs:dword_183EBF0F8, eax
+  0x14013e275: inc     eax
+  0x14013e277: mov     cs:dword_183EBF0FC, eax
+  0x14013e27d: inc     eax
+  0x14013e27f: mov     cs:dword_183EBF100, eax
+===== callers of sub_14013DCD0 =====
+  call from 0x14007f0c0 (sub_14007EEB0)
+  call from 0x14013a536 (sub_140139E90)
+  call from 0x14029da28 ()
+  call from 0x14029da38 ()
+  call from 0x1b4763ec4 ()

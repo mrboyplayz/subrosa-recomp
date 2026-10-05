@@ -1,44 +1,47 @@
-# `.sbl` Block Format
+# Current `.sbl` Block Format
 
-Status: first-pass skeleton from `asset_load_block_sbl_candidate` at `0x1400E6E50`.
+Status: structurally recovered from the current `block/%s.sbl` loader at
+`0x1400E6E50`; checked against installed version-2 files with both patches and
+solids. This is distinct from the legacy `buildblock/%s.sbl` loader path.
 
-Sample: `../data/round/buildblock/house.sbl`
+## Header
 
-## Known Header
+All fields observed so far are little-endian 32-bit values. The first word is
+the version (`1` or `2`); the next nine words are block-level values. The
+loader reads the patch count at offset `0x28`.
 
-All observed scalar fields are little-endian.
+| Offset | Type | Meaning |
+| ---: | --- | --- |
+| `0x00` | `u32` | version; current loader accepts 1 and 2 |
+| `0x04`–`0x24` | 9 × `u32` | block-level dimensions/parameters; semantic meanings still being mapped |
+| `0x28` | `u32` | patch count |
 
-| Offset | Type | Sample Value | Meaning |
-| ---: | --- | ---: | --- |
-| `0x00` | `u32` | `1` | version; loader accepts `1` and `2` |
-| `0x04` | `u32` | `0` | global block field 0 |
-| `0x08` | `u32/f32` | `0.0625` | global block field 1 |
-| `0x0c` | `u32/f32` | `0.875` | global block field 2 |
-| `0x10` | `u32/f32` | `0.25` | global block field 3 |
-| `0x14` | `u32/f32` | `0.5` | global block field 4 |
-| `0x18` | `u32/f32` | `0` | global block field 5 |
-| `0x1c` | `u32` | `3` | entry count candidate |
+## Patch records
 
-The loader reads ten 32-bit header fields after the version into globals, then iterates `entry_count`.
+Each on-disk patch record is 344 bytes:
 
-## Entry Shape
+1. Four prefix `u32` values (16 bytes).
+2. A 4×4 control grid of 16 records (320 bytes). Each record is five `f32`
+   values: three position-like components followed by two UV-like components.
+3. Two suffix `u32` values (8 bytes).
 
-Each main entry has a stride of `348` bytes in the destination table. The loader reads:
+The destination table in the executable uses a 348-byte stride, which includes
+four bytes not present in each serialized record. Do not serialize the
+destination stride as the disk record size.
 
-- four 32-bit values near the start of the entry.
-- two additional 32-bit values near entry offsets around `0x150`.
-- a nested `4 x 4` loop:
-  - reads three `u32/f32` values into a 12-byte vector-like area.
-  - reads two `u32/f32` values into an 8-byte UV-like area.
+After all patches, version 2 has a `u32` solid count followed by 124-byte
+records. Each record contains eight 3D points (96 bytes) plus seven `u32`
+values (28 bytes). The precise solid flags/material semantics are not fully
+identified yet.
 
-For version >= 2, the loader reads an extra count and then `count` extra records with a stride of `124` bytes:
+## Validation and caveats
 
-- eight 3-component vector-like records.
-- six 32-bit scalar fields.
-- one trailing 32-bit scalar.
+`sr_maptool roundtrip` is byte-identical on installed patch-bearing examples
+such as `data/test2/block/ramp.sbl` and `data/test2/block/garagerampcircular.sbl`,
+and on the generated Smallotown shell. It also round-trips solid-bearing
+current blocks. This validates the serialized structure, not rendering,
+collision, material interpretation, or city integration.
 
-## Next Work
-
-- Confirm whether the vector-like fields are vertices/normals and whether the 2-component fields are UVs.
-- Compare `block/%s.sbl` and `buildblock/%s.sbl` call paths.
-- Find renderer upload code that consumes the destination globals.
+The same extension appears under `buildblock/`, but that is a different legacy
+resource/loader family. A legacy file failing this current-block decoder is
+expected; it does not imply the current `block/` decoder is invalid.

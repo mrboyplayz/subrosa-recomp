@@ -7,7 +7,11 @@
 typedef struct { size_t offset; char message[128]; } SrWorldError;
 typedef struct { uint32_t count; unsigned char (*names)[64]; } SrNameTable;
 typedef struct { float position[3], uv[2]; } SrBlockPoint;
-typedef struct { uint32_t fields[6]; SrBlockPoint control[16]; } SrBlockPatch;
+typedef struct {
+    uint32_t prefix[4];
+    SrBlockPoint control[16];
+    uint32_t suffix[2];
+} SrBlockPatch;
 typedef struct { float corners[8][3]; uint32_t faces[6], flags; } SrBlockSolid;
 typedef struct {
     uint32_t version, header[9], patch_count, solid_count;

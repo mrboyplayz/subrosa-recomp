@@ -10,7 +10,7 @@ Observed extensions under `../data`:
 | `.cmo` | 43 | Character/item model |
 | `.cmc` | 12 | Character clothing/material config |
 | `.sbv` | 7 | Vehicle definition |
-| `.csx` | 3 | Scene/map script or config |
+| `.csx` | 3 | Archive of map resources (SBB/SBL/texture entries) |
 | `.it3` | 3 | Item/object definition |
 | `.itm` | 3 | Item definition |
 | `.sbc` | 3 | City/building collection |

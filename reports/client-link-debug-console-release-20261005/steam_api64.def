@@ -1,0 +1,12 @@
+LIBRARY steam_api64.dll
+EXPORTS
+SteamAPI_GetHSteamUser
+SteamAPI_Init
+SteamAPI_RegisterCallResult
+SteamAPI_RegisterCallback
+SteamAPI_RunCallbacks
+SteamAPI_Shutdown
+SteamAPI_UnregisterCallResult
+SteamAPI_UnregisterCallback
+SteamInternal_ContextInit
+SteamInternal_FindOrCreateUserInterface

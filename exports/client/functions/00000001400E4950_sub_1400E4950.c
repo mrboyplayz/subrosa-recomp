@@ -1,0 +1,92 @@
+/* Address: 0x1400e4950 | Name: sub_1400E4950 | Size: 1372 bytes */
+void __fastcall sub_1400E4950(__int64 (__fastcall *a1)(const char *))
+{
+  if ( unk_1404044B4 )
+  {
+    unk_1404044E8 = a1("glColorMaski");
+    unk_1404044F0 = a1("glGetBooleani_v");
+    unk_1404044F8 = a1("glGetIntegeri_v");
+    unk_140404500 = a1("glEnablei");
+    unk_140404508 = a1("glDisablei");
+    unk_140404510 = a1("glIsEnabledi");
+    unk_140404518 = a1("glBeginTransformFeedback");
+    unk_140404520 = a1("glEndTransformFeedback");
+    unk_140404528 = (__int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))a1("glBindBufferRange");
+    unk_140404530 = (__int64 (__fastcall *)(_QWORD, _QWORD, _QWORD))a1("glBindBufferBase");
+    unk_140404538 = (__int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glTransformFeedbackVaryings");
+    unk_140404540 = a1("glGetTransformFeedbackVarying");
+    unk_140404548 = a1("glClampColor");
+    unk_140404550 = a1("glBeginConditionalRender");
+    unk_140404558 = a1("glEndConditionalRender");
+    unk_140404560 = a1("glVertexAttribIPointer");
+    unk_140404568 = a1("glGetVertexAttribIiv");
+    unk_140404570 = a1("glGetVertexAttribIuiv");
+    unk_140404578 = a1("glVertexAttribI1i");
+    unk_140404580 = a1("glVertexAttribI2i");
+    unk_140404588 = a1("glVertexAttribI3i");
+    unk_140404590 = a1("glVertexAttribI4i");
+    unk_140404598 = a1("glVertexAttribI1ui");
+    unk_1404045A0 = a1("glVertexAttribI2ui");
+    unk_1404045A8 = a1("glVertexAttribI3ui");
+    unk_1404045B0 = a1("glVertexAttribI4ui");
+    unk_1404045B8 = a1("glVertexAttribI1iv");
+    unk_1404045C0 = a1("glVertexAttribI2iv");
+    unk_1404045C8 = a1("glVertexAttribI3iv");
+    unk_1404045D0 = a1("glVertexAttribI4iv");
+    unk_1404045D8 = a1("glVertexAttribI1uiv");
+    unk_1404045E0 = a1("glVertexAttribI2uiv");
+    unk_1404045E8 = a1("glVertexAttribI3uiv");
+    unk_1404045F0 = a1("glVertexAttribI4uiv");
+    unk_1404045F8 = a1("glVertexAttribI4bv");
+    unk_140404600 = a1("glVertexAttribI4sv");
+    unk_140404608 = a1("glVertexAttribI4ubv");
+    unk_140404610 = a1("glVertexAttribI4usv");
+    unk_140404618 = a1("glGetUniformuiv");
+    unk_140404620 = a1("glBindFragDataLocation");
+    unk_140404628 = a1("glGetFragDataLocation");
+    unk_140404630 = a1("glUniform1ui");
+    unk_140404638 = a1("glUniform2ui");
+    unk_140404640 = a1("glUniform3ui");
+    unk_140404648 = a1("glUniform4ui");
+    unk_140404650 = a1("glUniform1uiv");
+    unk_140404658 = a1("glUniform2uiv");
+    unk_140404660 = a1("glUniform3uiv");
+    unk_140404668 = a1("glUniform4uiv");
+    unk_140404670 = a1("glTexParameterIiv");
+    unk_140404678 = a1("glTexParameterIuiv");
+    unk_140404680 = a1("glGetTexParameterIiv");
+    unk_140404688 = a1("glGetTexParameterIuiv");
+    unk_140404690 = a1("glClearBufferiv");
+    unk_140404698 = a1("glClearBufferuiv");
+    unk_1404046A0 = a1("glClearBufferfv");
+    unk_1404046A8 = a1("glClearBufferfi");
+    unk_1404046B0 = (__int64 (__fastcall *)(_QWORD, _QWORD))a1("glGetStringi");
+    unk_1404046B8 = a1("glIsRenderbuffer");
+    unk_1404046C0 = a1("glBindRenderbuffer");
+    unk_1404046C8 = a1("glDeleteRenderbuffers");
+    unk_1404046D0 = a1("glGenRenderbuffers");
+    unk_1404046D8 = a1("glRenderbufferStorage");
+    unk_1404046E0 = a1("glGetRenderbufferParameteriv");
+    unk_1404046E8 = a1("glIsFramebuffer");
+    unk_1404046F0 = (double (__fastcall *)(_QWORD, _QWORD))a1("glBindFramebuffer");
+    unk_1404046F8 = a1("glDeleteFramebuffers");
+    unk_140404700 = a1("glGenFramebuffers");
+    unk_140404708 = a1("glCheckFramebufferStatus");
+    unk_140404710 = a1("glFramebufferTexture1D");
+    unk_140404718 = (__int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD))a1("glFramebufferTexture2D");
+    unk_140404720 = a1("glFramebufferTexture3D");
+    unk_140404728 = a1("glFramebufferRenderbuffer");
+    unk_140404730 = a1("glGetFramebufferAttachmentParameteriv");
+    unk_140404738 = (double (__fastcall *)(_QWORD))a1("glGenerateMipmap");
+    unk_140404740 = (__int64 (__fastcall *)(_QWORD, _QWORD))a1("glBlitFramebuffer");
+    unk_140404748 = a1("glRenderbufferStorageMultisample");
+    unk_140404750 = (__int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD))a1("glFramebufferTextureLayer");
+    unk_140404758 = a1("glMapBufferRange");
+    unk_140404760 = a1("glFlushMappedBufferRange");
+    unk_140404768 = (__int64 (__fastcall *)(_QWORD))a1("glBindVertexArray");
+    unk_140404770 = a1("glDeleteVertexArrays");
+    unk_140404778 = (__int64 (__fastcall *)(_QWORD, _QWORD))a1("glGenVertexArrays");
+    unk_140404780 = a1("glIsVertexArray");
+  }
+}
+

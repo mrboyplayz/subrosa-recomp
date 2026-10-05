@@ -1,0 +1,76 @@
+0x14003de80-0x14003e0f6 sub_14003DE80
+
+__int64 __fastcall sub_14003DE80(float *a1, _DWORD *a2, float a3)
+{
+  unsigned int v4; // esi
+  float v6; // xmm4_4
+  float v8; // xmm3_4
+  float v9; // xmm2_4
+  float v10; // xmm0_4
+  int v11; // ebx
+  _DWORD *v12; // rdi
+  float v14; // [rsp+40h] [rbp-C0h] BYREF
+  float v15; // [rsp+44h] [rbp-BCh]
+  float v16; // [rsp+48h] [rbp-B8h]
+  __int64 v17; // [rsp+50h] [rbp-B0h] BYREF
+  float v18; // [rsp+58h] [rbp-A8h]
+  float v19; // [rsp+60h] [rbp-A0h] BYREF
+  __int128 v20; // [rsp+68h] [rbp-98h] BYREF
+  int v21; // [rsp+78h] [rbp-88h]
+  int v22; // [rsp+7Ch] [rbp-84h]
+  float v23; // [rsp+84h] [rbp-7Ch]
+  _DWORD v24[18436]; // [rsp+90h] [rbp-70h] BYREF
+
+  dword_151A84898 = 1065353216;
+  dword_151A8489C = 1199570944;
+  v4 = 0;
+  dword_151A848FC = -1;
+  dword_151A84908 = -1;
+  v6 = *a1;
+  v8 = a1[1];
+  v9 = a1[2];
+  v10 = *a1 - a3;
+  v24[0] = 0;
+  v24[8193] = 0;
+  v24[16386] = 0;
+  *(float *)&v17 = v10;
+  *((float *)&v17 + 1) = v8 - a3;
+  v14 = v6 + a3;
+  v15 = v8 + a3;
+  v16 = v9 + a3;
+  v18 = v9 - a3;
+  sub_1400D05B0(v24, &v17, &v14);
+  if ( (unsigned int)sub_14003DAE0((unsigned int)&v20, (unsigned int)v24, (_DWORD)a1, (_DWORD)a2, LODWORD(a3))
+    && *(float *)&dword_151A8489C > v23 )
+  {
+    dword_151A84898 = 0;
+    xmmword_151A84880 = v20;
+    dword_151A848E4 = 0;
+    dword_151A84890 = v21;
+    dword_151A84894 = v22;
+    dword_151A8489C = LODWORD(v23);
+    dword_151A848D4 = 0;
+  }
+  v11 = 0;
+  v12 = &unk_15ADA9240;
+  do
+  {
+    if ( *v12 && sub_14003C760((float *)&v17, &v14, &v19, v11, a1, a2, a3) && *(float *)&dword_151A8489C > v19 )
+    {
+      *(_QWORD *)&xmmword_151A84880 = v17;
+      *((float *)&xmmword_151A84880 + 2) = v18;
+      *((float *)&xmmword_151A84880 + 3) = v14;
+      dword_151A84890 = LODWORD(v15);
+      dword_151A84894 = LODWORD(v16);
+      dword_151A8489C = LODWORD(v19);
+      dword_151A84898 = 0;
+      dword_151A848E4 = dword_151A848E8;
+      dword_151A848D4 = v11;
+    }
+    ++v11;
+    v12 += 263004;
+  }
+  while ( v11 < 4 );
+  LOBYTE(v4) = *(float *)&dword_151A8489C < 65536.0;
+  return v4;
+}

@@ -110,3 +110,68 @@ python scripts/prepare_rebuild.py               # regenerate work/rebuild/
 python scripts/check-rebuild.py --prepared --lenient --output reports/rebuild-prepared-lenient
 python work/bucket_errors.py client 20          # error bucketing helper
 ```
+
+## 2026-09-16 — message to ASTRA from ZCode (Suitium side)
+
+Finished the Lua image layer work you started (you got usage-cut mid-edit):
+
+- Your two-pass design (`FlushImageLayer(false)` before the game's UI draw,
+  `(true)` after, per pass in `DrawHUD.hpp` / `DrawMenu.hpp`) compiles clean
+  and works. Negative layers render behind the game's UI; 0+ render on top.
+- Change of note: your example had `logo.layer = -100`, which puts the logo
+  behind the main menu's opaque background — invisible at the menu. Set the
+  example to `layer = 0` in both `Suitium/examples/image_api_example/` and the
+  deployed `Suitium/addons/image_api_example/`; verified on screen.
+- Documented `image.layer` in `Suitium/LUA_IMAGES.md` (was missing).
+- Build deployed to game root `Suitium.dll`; log + screenshot verified.
+
+Open question for later: negative layers land before the game's own pass, so
+"visible but under the mouse cursor" is not reachable at the main menu (the
+menu background covers it). Needs a mid-pass hook point if we want that.
+
+## 2026-09-16 (later) — Suitium image/video API update
+
+Continuing the Lua media API work in `Suitium/Suitium/api/`:
+
+- `Image` gained `rotation` (degrees clockwise, drawn with a private GLSL
+  shader — Sub Rosa's UI is shader-based, so fixed-function matrix tricks are
+  no-ops on it) and read-only `sizeX`/`sizeY` aliases for width/height.
+- New `api/Video.cpp`: MP4/etc. playback via Media Foundation Source Reader
+  (RGB32 frames + audio track), WASAPI shared-mode audio on a background
+  thread. Gotchas hit, for future reference:
+  - moonjit's `luaconf.h` pins `WINVER 0x0501`, which hides the Source Reader
+    (Win8 API); `api/Video.cpp` must override WINVER before any Lua header.
+  - The reader needs `MF_SOURCE_READER_ENABLE_VIDEO_PROCESSING` to convert
+    H.264 NV12 → RGB32.
+  - The audio stream must be explicitly `SetStreamSelection`'d before
+    `ReadSample(audio)` yields anything — it fails silently otherwise.
+- Verified on screen: rotated logo + playing video on the main menu;
+  `suitium_audio.txt` shows the WASAPI queue filling (~1s buffered).
+- Docs in `Suitium/LUA_IMAGES.md`; working example loops the video.
+
+## 2026-09-16 (evening) — item billboard prompts (Suitium)
+
+New: `Suitium/Suitium/api/GLUniforms.{hpp,cpp}` + `api/ItemBillboard.{hpp,cpp}`.
+When the player is within 4.5 units of an item and looking at it, a "grab me"
+text prompt is drawn above it in the HUD pass.
+
+How camera capture works (harder than expected):
+- Sub Rosa's UI/world is shader-based (fixed-function matrices are ignored),
+  and it resolves + stores GL entry points BEFORE Suitium.dll is injected, so
+  proc-address hooking never sees them. Hooking SDL_GL_GetProcAddress early
+  was stable, but useless for the same reason.
+- Working approach (`glcap::Prepare` + scan thread): resolve the real driver
+  pointers ourselves, then periodically scan process memory (MEM_PRIVATE +
+  main exe image only, PAGE_READWRITE/WRITECOPY data pages only — executable
+  JIT pages MUST be skipped, that crashed the game) and swap every stored copy
+  of glUniformMatrix4fv/glGetUniformLocation/glUniform3f(fv) for wrappers.
+  Wrappers record (program,location)→semantic for the uniforms named
+  "modelviewprojectionmatrix" and "viewposition" (names per
+  `decompilation/docs/runtime-systems.md`).
+- `ItemBillboard` projects item positions with the captured MVP and draws text
+  via `api::DrawText` in the 1024x576 UI space.
+
+UNVERIFIED: in-game visual test still pending (needs someone in Practice
+mode). Watch for: prompt appearing above items, z-up vs y-up offset
+(`+1.0f` on position.z), distance threshold, and whether the MVP column/row
+convention is right. Diagnostics: `suitium_glcap.txt`.

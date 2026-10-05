@@ -1,0 +1,3290 @@
+[
+  {
+    "address": "0x140001020",
+    "name": "_vfprintf_l"
+  },
+  {
+    "address": "0x140001160",
+    "name": "vsnprintf"
+  },
+  {
+    "address": "0x1400199ef",
+    "name": "?raw_length@charNode@@UEBAHXZ_0"
+  },
+  {
+    "address": "0x140028e56",
+    "name": "?raw_length@charNode@@UEBAHXZ_1"
+  },
+  {
+    "address": "0x140028e60",
+    "name": "nullsub_4"
+  },
+  {
+    "address": "0x140028eb0",
+    "name": "?raw_length@charNode@@UEBAHXZ_2"
+  },
+  {
+    "address": "0x14002cbb0",
+    "name": "nullsub_5"
+  },
+  {
+    "address": "0x14002cc60",
+    "name": "nullsub_6"
+  },
+  {
+    "address": "0x140037560",
+    "name": "CompareFunction"
+  },
+  {
+    "address": "0x14003c510",
+    "name": "nullsub_7"
+  },
+  {
+    "address": "0x140043c90",
+    "name": "nullsub_8"
+  },
+  {
+    "address": "0x140047160",
+    "name": "?raw_length@charNode@@UEBAHXZ_3"
+  },
+  {
+    "address": "0x1400474b0",
+    "name": "_sleep"
+  },
+  {
+    "address": "0x140047a35",
+    "name": "def_140047665"
+  },
+  {
+    "address": "0x140047ba8",
+    "name": "jpt_140047665"
+  },
+  {
+    "address": "0x14004a080",
+    "name": "_sleep_0"
+  },
+  {
+    "address": "0x14004ae70",
+    "name": "nullsub_9"
+  },
+  {
+    "address": "0x14004ae80",
+    "name": "nullsub_10"
+  },
+  {
+    "address": "0x14004ae90",
+    "name": "nullsub_11"
+  },
+  {
+    "address": "0x14004aea0",
+    "name": "nullsub_12"
+  },
+  {
+    "address": "0x14004aeb0",
+    "name": "nullsub_13"
+  },
+  {
+    "address": "0x14004aec0",
+    "name": "nullsub_14"
+  },
+  {
+    "address": "0x14004aed0",
+    "name": "nullsub_15"
+  },
+  {
+    "address": "0x14004aee0",
+    "name": "nullsub_1"
+  },
+  {
+    "address": "0x14004aef0",
+    "name": "nullsub_16"
+  },
+  {
+    "address": "0x14004e320",
+    "name": "nullsub_17"
+  },
+  {
+    "address": "0x14004f620",
+    "name": "nullsub_18"
+  },
+  {
+    "address": "0x14004f900",
+    "name": "QueryPerformanceCounter"
+  },
+  {
+    "address": "0x14006cdc9",
+    "name": "?raw_length@charNode@@UEBAHXZ_4"
+  },
+  {
+    "address": "0x14008e020",
+    "name": "nullsub_19"
+  },
+  {
+    "address": "0x14009d4b0",
+    "name": "nullsub_20"
+  },
+  {
+    "address": "0x14009d4c0",
+    "name": "main"
+  },
+  {
+    "address": "0x1400a2250",
+    "name": "nullsub_21"
+  },
+  {
+    "address": "0x1400b3ee0",
+    "name": "nullsub_22"
+  },
+  {
+    "address": "0x1400b4050",
+    "name": "nullsub_23"
+  },
+  {
+    "address": "0x1400b7820",
+    "name": "nullsub_24"
+  },
+  {
+    "address": "0x1400bc4f3",
+    "name": "?raw_length@charNode@@UEBAHXZ_7"
+  },
+  {
+    "address": "0x1400c7a50",
+    "name": "nullsub_25"
+  },
+  {
+    "address": "0x1400c7a60",
+    "name": "nullsub_26"
+  },
+  {
+    "address": "0x1400dbcf0",
+    "name": "swprintf"
+  },
+  {
+    "address": "0x1400dc010",
+    "name": "nullsub_27"
+  },
+  {
+    "address": "0x1400dc030",
+    "name": "unknown_libname_1"
+  },
+  {
+    "address": "0x1400e019a",
+    "name": "def_1400E0163"
+  },
+  {
+    "address": "0x1400e0359",
+    "name": "def_1400E01C1"
+  },
+  {
+    "address": "0x1400e0380",
+    "name": "jpt_1400E0163"
+  },
+  {
+    "address": "0x1400e0398",
+    "name": "jpt_1400E01C1"
+  },
+  {
+    "address": "0x1400e1f50",
+    "name": "nullsub_28"
+  },
+  {
+    "address": "0x1400e29d0",
+    "name": "_time64"
+  },
+  {
+    "address": "0x1400e54b0",
+    "name": "nullsub_29"
+  },
+  {
+    "address": "0x1400ed720",
+    "name": "nullsub_30"
+  },
+  {
+    "address": "0x1400ef3e5",
+    "name": "__WSAFDIsSet"
+  },
+  {
+    "address": "0x1400ef3eb",
+    "name": "bind"
+  },
+  {
+    "address": "0x1400ef3f1",
+    "name": "closesocket"
+  },
+  {
+    "address": "0x1400ef3f7",
+    "name": "connect"
+  },
+  {
+    "address": "0x1400ef3fd",
+    "name": "ioctlsocket"
+  },
+  {
+    "address": "0x1400ef403",
+    "name": "getsockopt"
+  },
+  {
+    "address": "0x1400ef409",
+    "name": "htonl"
+  },
+  {
+    "address": "0x1400ef40f",
+    "name": "htons"
+  },
+  {
+    "address": "0x1400ef415",
+    "name": "inet_addr"
+  },
+  {
+    "address": "0x1400ef41b",
+    "name": "ntohl"
+  },
+  {
+    "address": "0x1400ef421",
+    "name": "ntohs"
+  },
+  {
+    "address": "0x1400ef427",
+    "name": "recv"
+  },
+  {
+    "address": "0x1400ef42d",
+    "name": "recvfrom"
+  },
+  {
+    "address": "0x1400ef433",
+    "name": "select"
+  },
+  {
+    "address": "0x1400ef439",
+    "name": "send"
+  },
+  {
+    "address": "0x1400ef43f",
+    "name": "sendto"
+  },
+  {
+    "address": "0x1400ef445",
+    "name": "socket"
+  },
+  {
+    "address": "0x1400ef44b",
+    "name": "gethostbyname"
+  },
+  {
+    "address": "0x1400ef451",
+    "name": "gethostname"
+  },
+  {
+    "address": "0x1400ef457",
+    "name": "getservbyname"
+  },
+  {
+    "address": "0x1400ef45d",
+    "name": "WSAStartup"
+  },
+  {
+    "address": "0x1400ef463",
+    "name": "WSACleanup"
+  },
+  {
+    "address": "0x1400ef46c",
+    "name": "__raise_securityfailure"
+  },
+  {
+    "address": "0x1400ef4a0",
+    "name": "__report_gsfailure"
+  },
+  {
+    "address": "0x1400ef574",
+    "name": "__report_rangecheckfailure"
+  },
+  {
+    "address": "0x1400ef588",
+    "name": "__report_securityfailure"
+  },
+  {
+    "address": "0x1400ef624",
+    "name": "__report_securityfailureEx"
+  },
+  {
+    "address": "0x1400ef734",
+    "name": "capture_current_context"
+  },
+  {
+    "address": "0x1400ef7a4",
+    "name": "capture_previous_context"
+  },
+  {
+    "address": "0x1400ef818",
+    "name": "__GSHandlerCheck"
+  },
+  {
+    "address": "0x1400ef838",
+    "name": "__GSHandlerCheckCommon"
+  },
+  {
+    "address": "0x1400ef8b0",
+    "name": "_alloca_probe"
+  },
+  {
+    "address": "0x1400ef8e1",
+    "name": "cs10"
+  },
+  {
+    "address": "0x1400ef8f2",
+    "name": "cs20"
+  },
+  {
+    "address": "0x1400ef910",
+    "name": "__vdecl_sin2"
+  },
+  {
+    "address": "0x1400ef930",
+    "name": "__libm_sse2_sincos_"
+  },
+  {
+    "address": "0x1400ef95c",
+    "name": "smallvalue"
+  },
+  {
+    "address": "0x1400ef980",
+    "name": "__vdecl_sinf4"
+  },
+  {
+    "address": "0x1400ef9a0",
+    "name": "__libm_sse2_sincosf_"
+  },
+  {
+    "address": "0x1400ef9ca",
+    "name": "smallvalue_0"
+  },
+  {
+    "address": "0x1400ef9e3",
+    "name": "__libm_sse2_sincosf4_"
+  },
+  {
+    "address": "0x1400efa00",
+    "name": "__security_check_cookie"
+  },
+  {
+    "address": "0x1400efa18",
+    "name": "RestoreRcx"
+  },
+  {
+    "address": "0x1400efa1c",
+    "name": "ReportFailure"
+  },
+  {
+    "address": "0x1400efa24",
+    "name": "__isa_available_init"
+  },
+  {
+    "address": "0x1400efbc8",
+    "name": "?pre_c_initialization@@YAHXZ"
+  },
+  {
+    "address": "0x1400efc80",
+    "name": "?post_pgo_initialization@@YAHXZ"
+  },
+  {
+    "address": "0x1400efc90",
+    "name": "?pre_cpp_initialization@@YAXXZ"
+  },
+  {
+    "address": "0x1400efcac",
+    "name": "__acrt_uninitialize_tmpfile"
+  },
+  {
+    "address": "0x1400efcc0",
+    "name": "?__scrt_common_main_seh@@YAHXZ"
+  },
+  {
+    "address": "0x1400efdee",
+    "name": "$LN18"
+  },
+  {
+    "address": "0x1400efe3c",
+    "name": "?configure_argv@__scrt_narrow_argv_policy@@SAHXZ"
+  },
+  {
+    "address": "0x1400efe50",
+    "name": "j__initialize_narrow_environment"
+  },
+  {
+    "address": "0x1400efe58",
+    "name": "?invoke_main@@YAHXZ"
+  },
+  {
+    "address": "0x1400efe9c",
+    "name": "?set_commode@__scrt_file_policy@@SAXXZ"
+  },
+  {
+    "address": "0x1400efeb8",
+    "name": "?set_fmode@__scrt_file_policy@@SAXXZ"
+  },
+  {
+    "address": "0x1400efecc",
+    "name": "start"
+  },
+  {
+    "address": "0x1400efee0",
+    "name": "__sse2_sin2@@16"
+  },
+  {
+    "address": "0x1400f0560",
+    "name": "__sse4_sin2@@16"
+  },
+  {
+    "address": "0x1400f0be0",
+    "name": "__sse2_sinf4@@16"
+  },
+  {
+    "address": "0x1400f1520",
+    "name": "__sse4_sinf4@@16"
+  },
+  {
+    "address": "0x1400f1c94",
+    "name": "?find_pe_section@@YAPEAU_IMAGE_SECTION_HEADER@@QEAE_K@Z"
+  },
+  {
+    "address": "0x1400f1ce0",
+    "name": "?is_potentially_valid_image_base@@YA_NQEAX@Z"
+  },
+  {
+    "address": "0x1400f1d10",
+    "name": "NtCurrentTeb"
+  },
+  {
+    "address": "0x1400f1d1c",
+    "name": "__scrt_acquire_startup_lock"
+  },
+  {
+    "address": "0x1400f1d58",
+    "name": "__scrt_dllmain_after_initialize_c"
+  },
+  {
+    "address": "0x1400f1d8c",
+    "name": "__scrt_dllmain_before_initialize_c"
+  },
+  {
+    "address": "0x1400f1dcc",
+    "name": "__scrt_dllmain_crt_thread_detach"
+  },
+  {
+    "address": "0x1400f1de4",
+    "name": "__scrt_dllmain_exception_filter"
+  },
+  {
+    "address": "0x1400f1e44",
+    "name": "__scrt_dllmain_uninitialize_c"
+  },
+  {
+    "address": "0x1400f1e74",
+    "name": "__scrt_dllmain_uninitialize_critical"
+  },
+  {
+    "address": "0x1400f1e88",
+    "name": "__scrt_initialize_crt"
+  },
+  {
+    "address": "0x1400f1ed4",
+    "name": "__scrt_initialize_onexit_tables"
+  },
+  {
+    "address": "0x1400f1f60",
+    "name": "__scrt_is_nonwritable_in_current_image"
+  },
+  {
+    "address": "0x1400f1ff8",
+    "name": "__scrt_release_startup_lock"
+  },
+  {
+    "address": "0x1400f201c",
+    "name": "__scrt_uninitialize_crt"
+  },
+  {
+    "address": "0x1400f2048",
+    "name": "_onexit"
+  },
+  {
+    "address": "0x1400f2084",
+    "name": "at_quick_exit"
+  },
+  {
+    "address": "0x1400f20a4",
+    "name": "atexit"
+  },
+  {
+    "address": "0x1400f20bc",
+    "name": "__get_entropy"
+  },
+  {
+    "address": "0x1400f2128",
+    "name": "__security_init_cookie"
+  },
+  {
+    "address": "0x1400f21d4",
+    "name": "UserMathErrorFunction"
+  },
+  {
+    "address": "0x1400f21d8",
+    "name": "?raw_length@charNode@@UEBAHXZ_8"
+  },
+  {
+    "address": "0x1400f21e4",
+    "name": "_get_startup_file_mode"
+  },
+  {
+    "address": "0x1400f2214",
+    "name": "nullsub_2"
+  },
+  {
+    "address": "0x1400f2218",
+    "name": "nullsub_3"
+  },
+  {
+    "address": "0x1400f221c",
+    "name": "__scrt_initialize_default_local_stdio_options"
+  },
+  {
+    "address": "0x1400f2238",
+    "name": "__scrt_is_user_matherr_present"
+  },
+  {
+    "address": "0x1400f225c",
+    "name": "__scrt_fastfail"
+  },
+  {
+    "address": "0x1400f23a8",
+    "name": "__scrt_get_show_window_mode"
+  },
+  {
+    "address": "0x1400f23f0",
+    "name": "__scrt_is_managed_app"
+  },
+  {
+    "address": "0x1400f2444",
+    "name": "__scrt_set_unhandled_exception_filter"
+  },
+  {
+    "address": "0x1400f2458",
+    "name": "__scrt_unhandled_exception_filter"
+  },
+  {
+    "address": "0x1400f252c",
+    "name": "_guard_check_icall_nop"
+  },
+  {
+    "address": "0x1400f2538",
+    "name": "_guard_icall_checks_enforced"
+  },
+  {
+    "address": "0x1400f25d0",
+    "name": "__common_ssin_cout_rare"
+  },
+  {
+    "address": "0x1400f2640",
+    "name": "__scrt_is_ucrt_dll_in_use"
+  },
+  {
+    "address": "0x1400f2650",
+    "name": "QueryPerformanceCounter_0"
+  },
+  {
+    "address": "0x1400f2656",
+    "name": "QueryPerformanceFrequency"
+  },
+  {
+    "address": "0x1400f265c",
+    "name": "GetCurrentProcess"
+  },
+  {
+    "address": "0x1400f2662",
+    "name": "GetSystemTimeAsFileTime"
+  },
+  {
+    "address": "0x1400f2668",
+    "name": "GetProcessAffinityMask"
+  },
+  {
+    "address": "0x1400f266e",
+    "name": "SetProcessAffinityMask"
+  },
+  {
+    "address": "0x1400f2674",
+    "name": "RtlCaptureContext"
+  },
+  {
+    "address": "0x1400f267a",
+    "name": "RtlLookupFunctionEntry"
+  },
+  {
+    "address": "0x1400f2680",
+    "name": "RtlVirtualUnwind"
+  },
+  {
+    "address": "0x1400f2686",
+    "name": "UnhandledExceptionFilter"
+  },
+  {
+    "address": "0x1400f268c",
+    "name": "SetUnhandledExceptionFilter"
+  },
+  {
+    "address": "0x1400f2692",
+    "name": "TerminateProcess"
+  },
+  {
+    "address": "0x1400f2698",
+    "name": "IsProcessorFeaturePresent"
+  },
+  {
+    "address": "0x1400f269e",
+    "name": "GetCurrentProcessId"
+  },
+  {
+    "address": "0x1400f26a4",
+    "name": "GetCurrentThreadId"
+  },
+  {
+    "address": "0x1400f26aa",
+    "name": "InitializeSListHead"
+  },
+  {
+    "address": "0x1400f26b0",
+    "name": "IsDebuggerPresent"
+  },
+  {
+    "address": "0x1400f26b6",
+    "name": "GetStartupInfoW"
+  },
+  {
+    "address": "0x1400f26bc",
+    "name": "GetModuleHandleW"
+  },
+  {
+    "address": "0x1400f26c2",
+    "name": "memcmp"
+  },
+  {
+    "address": "0x1400f26c8",
+    "name": "memcpy"
+  },
+  {
+    "address": "0x1400f26ce",
+    "name": "memmove"
+  },
+  {
+    "address": "0x1400f26d4",
+    "name": "memset"
+  },
+  {
+    "address": "0x1400f26da",
+    "name": "__C_specific_handler"
+  },
+  {
+    "address": "0x1400f26e6",
+    "name": "__current_exception"
+  },
+  {
+    "address": "0x1400f26ec",
+    "name": "__current_exception_context"
+  },
+  {
+    "address": "0x1400f26f2",
+    "name": "frexp"
+  },
+  {
+    "address": "0x1400f26f8",
+    "name": "__acrt_iob_func"
+  },
+  {
+    "address": "0x1400f26fe",
+    "name": "fopen_s"
+  },
+  {
+    "address": "0x1400f2704",
+    "name": "fclose"
+  },
+  {
+    "address": "0x1400f270a",
+    "name": "fgetc"
+  },
+  {
+    "address": "0x1400f2710",
+    "name": "fopen"
+  },
+  {
+    "address": "0x1400f2716",
+    "name": "fputc"
+  },
+  {
+    "address": "0x1400f271c",
+    "name": "fread"
+  },
+  {
+    "address": "0x1400f2722",
+    "name": "fseek"
+  },
+  {
+    "address": "0x1400f2728",
+    "name": "ftell"
+  },
+  {
+    "address": "0x1400f272e",
+    "name": "fwrite"
+  },
+  {
+    "address": "0x1400f2734",
+    "name": "__stdio_common_vfprintf"
+  },
+  {
+    "address": "0x1400f273a",
+    "name": "__stdio_common_vsprintf"
+  },
+  {
+    "address": "0x1400f2740",
+    "name": "__stdio_common_vsprintf_s"
+  },
+  {
+    "address": "0x1400f2746",
+    "name": "__stdio_common_vsscanf"
+  },
+  {
+    "address": "0x1400f274c",
+    "name": "strncmp"
+  },
+  {
+    "address": "0x1400f2752",
+    "name": "__daylight"
+  },
+  {
+    "address": "0x1400f2758",
+    "name": "__timezone"
+  },
+  {
+    "address": "0x1400f275e",
+    "name": "_time64_0"
+  },
+  {
+    "address": "0x1400f2764",
+    "name": "_tzset"
+  },
+  {
+    "address": "0x1400f276a",
+    "name": "_findclose"
+  },
+  {
+    "address": "0x1400f2770",
+    "name": "_findfirst64i32"
+  },
+  {
+    "address": "0x1400f2776",
+    "name": "_findnext64i32"
+  },
+  {
+    "address": "0x1400f277c",
+    "name": "toupper"
+  },
+  {
+    "address": "0x1400f2782",
+    "name": "tolower"
+  },
+  {
+    "address": "0x1400f2788",
+    "name": "free"
+  },
+  {
+    "address": "0x1400f278e",
+    "name": "malloc"
+  },
+  {
+    "address": "0x1400f2794",
+    "name": "realloc"
+  },
+  {
+    "address": "0x1400f279a",
+    "name": "qsort"
+  },
+  {
+    "address": "0x1400f27a0",
+    "name": "srand"
+  },
+  {
+    "address": "0x1400f27a6",
+    "name": "rand"
+  },
+  {
+    "address": "0x1400f27ac",
+    "name": "_sleep_1"
+  },
+  {
+    "address": "0x1400f27b2",
+    "name": "_wassert"
+  },
+  {
+    "address": "0x1400f27b8",
+    "name": "acos"
+  },
+  {
+    "address": "0x1400f27be",
+    "name": "asinf"
+  },
+  {
+    "address": "0x1400f27c4",
+    "name": "atan2"
+  },
+  {
+    "address": "0x1400f27ca",
+    "name": "atan2f"
+  },
+  {
+    "address": "0x1400f27d0",
+    "name": "cos"
+  },
+  {
+    "address": "0x1400f27d6",
+    "name": "cosf"
+  },
+  {
+    "address": "0x1400f27dc",
+    "name": "pow"
+  },
+  {
+    "address": "0x1400f27e2",
+    "name": "sin"
+  },
+  {
+    "address": "0x1400f27e8",
+    "name": "strcmp"
+  },
+  {
+    "address": "0x1400f27ee",
+    "name": "tan"
+  },
+  {
+    "address": "0x1400f27f4",
+    "name": "_seh_filter_exe"
+  },
+  {
+    "address": "0x1400f27fa",
+    "name": "_set_app_type"
+  },
+  {
+    "address": "0x1400f2800",
+    "name": "__setusermatherr"
+  },
+  {
+    "address": "0x1400f2806",
+    "name": "_configure_narrow_argv"
+  },
+  {
+    "address": "0x1400f280c",
+    "name": "_initialize_narrow_environment"
+  },
+  {
+    "address": "0x1400f2812",
+    "name": "_get_initial_narrow_environment"
+  },
+  {
+    "address": "0x1400f2818",
+    "name": "_initterm"
+  },
+  {
+    "address": "0x1400f281e",
+    "name": "_initterm_e"
+  },
+  {
+    "address": "0x1400f2824",
+    "name": "exit"
+  },
+  {
+    "address": "0x1400f282a",
+    "name": "_exit"
+  },
+  {
+    "address": "0x1400f2830",
+    "name": "_set_fmode"
+  },
+  {
+    "address": "0x1400f2836",
+    "name": "__p___argc"
+  },
+  {
+    "address": "0x1400f283c",
+    "name": "__p___argv"
+  },
+  {
+    "address": "0x1400f2842",
+    "name": "_cexit"
+  },
+  {
+    "address": "0x1400f2848",
+    "name": "_c_exit"
+  },
+  {
+    "address": "0x1400f284e",
+    "name": "_register_thread_local_exe_atexit_callback"
+  },
+  {
+    "address": "0x1400f2854",
+    "name": "_configthreadlocale"
+  },
+  {
+    "address": "0x1400f285a",
+    "name": "_set_new_mode"
+  },
+  {
+    "address": "0x1400f2860",
+    "name": "__p__commode"
+  },
+  {
+    "address": "0x1400f2866",
+    "name": "_seh_filter_dll"
+  },
+  {
+    "address": "0x1400f286c",
+    "name": "_initialize_onexit_table"
+  },
+  {
+    "address": "0x1400f2872",
+    "name": "_register_onexit_function"
+  },
+  {
+    "address": "0x1400f2878",
+    "name": "_execute_onexit_table"
+  },
+  {
+    "address": "0x1400f287e",
+    "name": "_crt_atexit"
+  },
+  {
+    "address": "0x1400f288a",
+    "name": "terminate"
+  },
+  {
+    "address": "0x1400f2890",
+    "name": "_getcwd"
+  },
+  {
+    "address": "0x1400f2896",
+    "name": "_chdir"
+  },
+  {
+    "address": "0x1400f28d0",
+    "name": "_guard_dispatch_icall_nop"
+  },
+  {
+    "address": "0x1400f28f0",
+    "name": "_guard_xfg_dispatch_icall_nop"
+  },
+  {
+    "address": "0x1400f28f6",
+    "name": "?filt$0@?0??__scrt_common_main_seh@@YAHXZ@4HA"
+  },
+  {
+    "address": "0x1400f2914",
+    "name": "__scrt_is_nonwritable_in_current_image$filt$0"
+  },
+  {
+    "address": "0x1400f3000",
+    "name": "__imp_RtlVirtualUnwind"
+  },
+  {
+    "address": "0x1400f3008",
+    "name": "__imp_GetModuleHandleW"
+  },
+  {
+    "address": "0x1400f3010",
+    "name": "__imp_GetStartupInfoW"
+  },
+  {
+    "address": "0x1400f3018",
+    "name": "__imp_IsDebuggerPresent"
+  },
+  {
+    "address": "0x1400f3020",
+    "name": "__imp_InitializeSListHead"
+  },
+  {
+    "address": "0x1400f3028",
+    "name": "__imp_GetCurrentThreadId"
+  },
+  {
+    "address": "0x1400f3030",
+    "name": "__imp_GetCurrentProcessId"
+  },
+  {
+    "address": "0x1400f3038",
+    "name": "__imp_IsProcessorFeaturePresent"
+  },
+  {
+    "address": "0x1400f3040",
+    "name": "__imp_TerminateProcess"
+  },
+  {
+    "address": "0x1400f3048",
+    "name": "__imp_SetUnhandledExceptionFilter"
+  },
+  {
+    "address": "0x1400f3050",
+    "name": "__imp_UnhandledExceptionFilter"
+  },
+  {
+    "address": "0x1400f3058",
+    "name": "__imp_RtlLookupFunctionEntry"
+  },
+  {
+    "address": "0x1400f3060",
+    "name": "__imp_RtlCaptureContext"
+  },
+  {
+    "address": "0x1400f3068",
+    "name": "__imp_SetProcessAffinityMask"
+  },
+  {
+    "address": "0x1400f3070",
+    "name": "__imp_GetProcessAffinityMask"
+  },
+  {
+    "address": "0x1400f3078",
+    "name": "__imp_GetSystemTimeAsFileTime"
+  },
+  {
+    "address": "0x1400f3080",
+    "name": "__imp_GetCurrentProcess"
+  },
+  {
+    "address": "0x1400f3088",
+    "name": "__imp_QueryPerformanceFrequency"
+  },
+  {
+    "address": "0x1400f3090",
+    "name": "__imp_QueryPerformanceCounter"
+  },
+  {
+    "address": "0x1400f30a0",
+    "name": "__imp___C_specific_handler"
+  },
+  {
+    "address": "0x1400f30a8",
+    "name": "__imp_memset"
+  },
+  {
+    "address": "0x1400f30b0",
+    "name": "__imp_memmove"
+  },
+  {
+    "address": "0x1400f30b8",
+    "name": "__imp_memcpy"
+  },
+  {
+    "address": "0x1400f30c0",
+    "name": "__imp_memcmp"
+  },
+  {
+    "address": "0x1400f30c8",
+    "name": "__std_type_info_destroy_list"
+  },
+  {
+    "address": "0x1400f30d0",
+    "name": "__imp___current_exception_context"
+  },
+  {
+    "address": "0x1400f30d8",
+    "name": "__imp___current_exception"
+  },
+  {
+    "address": "0x1400f30e8",
+    "name": "__imp_recvfrom"
+  },
+  {
+    "address": "0x1400f30f0",
+    "name": "__imp_recv"
+  },
+  {
+    "address": "0x1400f30f8",
+    "name": "__imp___WSAFDIsSet"
+  },
+  {
+    "address": "0x1400f3100",
+    "name": "__imp_ntohs"
+  },
+  {
+    "address": "0x1400f3108",
+    "name": "__imp_ntohl"
+  },
+  {
+    "address": "0x1400f3110",
+    "name": "__imp_send"
+  },
+  {
+    "address": "0x1400f3118",
+    "name": "__imp_htons"
+  },
+  {
+    "address": "0x1400f3120",
+    "name": "__imp_htonl"
+  },
+  {
+    "address": "0x1400f3128",
+    "name": "__imp_getsockopt"
+  },
+  {
+    "address": "0x1400f3130",
+    "name": "__imp_ioctlsocket"
+  },
+  {
+    "address": "0x1400f3138",
+    "name": "__imp_connect"
+  },
+  {
+    "address": "0x1400f3140",
+    "name": "__imp_closesocket"
+  },
+  {
+    "address": "0x1400f3148",
+    "name": "__imp_bind"
+  },
+  {
+    "address": "0x1400f3150",
+    "name": "__imp_sendto"
+  },
+  {
+    "address": "0x1400f3158",
+    "name": "__imp_socket"
+  },
+  {
+    "address": "0x1400f3160",
+    "name": "__imp_gethostbyname"
+  },
+  {
+    "address": "0x1400f3168",
+    "name": "__imp_gethostname"
+  },
+  {
+    "address": "0x1400f3170",
+    "name": "__imp_select"
+  },
+  {
+    "address": "0x1400f3178",
+    "name": "__imp_WSACleanup"
+  },
+  {
+    "address": "0x1400f3180",
+    "name": "__imp_WSAStartup"
+  },
+  {
+    "address": "0x1400f3188",
+    "name": "__imp_inet_addr"
+  },
+  {
+    "address": "0x1400f3190",
+    "name": "__imp_getservbyname"
+  },
+  {
+    "address": "0x1400f31a0",
+    "name": "__imp__findfirst64i32"
+  },
+  {
+    "address": "0x1400f31a8",
+    "name": "__imp__findnext64i32"
+  },
+  {
+    "address": "0x1400f31b0",
+    "name": "__imp__chdir"
+  },
+  {
+    "address": "0x1400f31b8",
+    "name": "__imp__findclose"
+  },
+  {
+    "address": "0x1400f31c8",
+    "name": "__imp_malloc"
+  },
+  {
+    "address": "0x1400f31d0",
+    "name": "__imp_free"
+  },
+  {
+    "address": "0x1400f31d8",
+    "name": "__imp__set_new_mode"
+  },
+  {
+    "address": "0x1400f31e0",
+    "name": "__imp_realloc"
+  },
+  {
+    "address": "0x1400f31f0",
+    "name": "__imp__configthreadlocale"
+  },
+  {
+    "address": "0x1400f3200",
+    "name": "__imp_cosf"
+  },
+  {
+    "address": "0x1400f3208",
+    "name": "__imp_tan"
+  },
+  {
+    "address": "0x1400f3210",
+    "name": "__imp_sin"
+  },
+  {
+    "address": "0x1400f3218",
+    "name": "__imp_pow"
+  },
+  {
+    "address": "0x1400f3220",
+    "name": "__imp_frexp"
+  },
+  {
+    "address": "0x1400f3228",
+    "name": "__imp_cos"
+  },
+  {
+    "address": "0x1400f3230",
+    "name": "__imp_atan2f"
+  },
+  {
+    "address": "0x1400f3238",
+    "name": "__imp_atan2"
+  },
+  {
+    "address": "0x1400f3240",
+    "name": "__imp_asinf"
+  },
+  {
+    "address": "0x1400f3248",
+    "name": "__imp_acos"
+  },
+  {
+    "address": "0x1400f3250",
+    "name": "__imp___setusermatherr"
+  },
+  {
+    "address": "0x1400f3260",
+    "name": "__imp_terminate"
+  },
+  {
+    "address": "0x1400f3268",
+    "name": "__imp__initterm"
+  },
+  {
+    "address": "0x1400f3270",
+    "name": "__imp__get_initial_narrow_environment"
+  },
+  {
+    "address": "0x1400f3278",
+    "name": "__imp__initialize_narrow_environment"
+  },
+  {
+    "address": "0x1400f3280",
+    "name": "_crt_at_quick_exit"
+  },
+  {
+    "address": "0x1400f3288",
+    "name": "__imp_exit"
+  },
+  {
+    "address": "0x1400f3290",
+    "name": "__imp__execute_onexit_table"
+  },
+  {
+    "address": "0x1400f3298",
+    "name": "__imp__sleep"
+  },
+  {
+    "address": "0x1400f32a0",
+    "name": "__imp__wassert"
+  },
+  {
+    "address": "0x1400f32a8",
+    "name": "__imp__exit"
+  },
+  {
+    "address": "0x1400f32b0",
+    "name": "__imp___p___argc"
+  },
+  {
+    "address": "0x1400f32b8",
+    "name": "__imp___p___argv"
+  },
+  {
+    "address": "0x1400f32c0",
+    "name": "__imp__initterm_e"
+  },
+  {
+    "address": "0x1400f32c8",
+    "name": "__imp__cexit"
+  },
+  {
+    "address": "0x1400f32d0",
+    "name": "__imp__configure_narrow_argv"
+  },
+  {
+    "address": "0x1400f32d8",
+    "name": "__imp__c_exit"
+  },
+  {
+    "address": "0x1400f32e0",
+    "name": "__imp__register_thread_local_exe_atexit_callback"
+  },
+  {
+    "address": "0x1400f32e8",
+    "name": "__imp__register_onexit_function"
+  },
+  {
+    "address": "0x1400f32f0",
+    "name": "__imp__seh_filter_dll"
+  },
+  {
+    "address": "0x1400f32f8",
+    "name": "__imp__seh_filter_exe"
+  },
+  {
+    "address": "0x1400f3300",
+    "name": "__imp__set_app_type"
+  },
+  {
+    "address": "0x1400f3308",
+    "name": "__imp__crt_atexit"
+  },
+  {
+    "address": "0x1400f3310",
+    "name": "__imp__initialize_onexit_table"
+  },
+  {
+    "address": "0x1400f3320",
+    "name": "__imp_fputc"
+  },
+  {
+    "address": "0x1400f3328",
+    "name": "__imp_fread"
+  },
+  {
+    "address": "0x1400f3330",
+    "name": "__imp__getcwd"
+  },
+  {
+    "address": "0x1400f3338",
+    "name": "__imp_fseek"
+  },
+  {
+    "address": "0x1400f3340",
+    "name": "__imp_fopen"
+  },
+  {
+    "address": "0x1400f3348",
+    "name": "__imp__set_fmode"
+  },
+  {
+    "address": "0x1400f3350",
+    "name": "__imp_fwrite"
+  },
+  {
+    "address": "0x1400f3358",
+    "name": "__imp_fopen_s"
+  },
+  {
+    "address": "0x1400f3360",
+    "name": "__imp___acrt_iob_func"
+  },
+  {
+    "address": "0x1400f3368",
+    "name": "__imp_ftell"
+  },
+  {
+    "address": "0x1400f3370",
+    "name": "__imp___stdio_common_vfprintf"
+  },
+  {
+    "address": "0x1400f3378",
+    "name": "__imp_fgetc"
+  },
+  {
+    "address": "0x1400f3380",
+    "name": "__imp_fclose"
+  },
+  {
+    "address": "0x1400f3388",
+    "name": "__imp___p__commode"
+  },
+  {
+    "address": "0x1400f3390",
+    "name": "__imp___stdio_common_vsprintf_s"
+  },
+  {
+    "address": "0x1400f3398",
+    "name": "__imp___stdio_common_vsprintf"
+  },
+  {
+    "address": "0x1400f33a0",
+    "name": "__imp___stdio_common_vsscanf"
+  },
+  {
+    "address": "0x1400f33b0",
+    "name": "__imp_strncmp"
+  },
+  {
+    "address": "0x1400f33b8",
+    "name": "__imp_tolower"
+  },
+  {
+    "address": "0x1400f33c0",
+    "name": "__imp_toupper"
+  },
+  {
+    "address": "0x1400f33c8",
+    "name": "__imp_strcmp"
+  },
+  {
+    "address": "0x1400f33d8",
+    "name": "__imp__time64"
+  },
+  {
+    "address": "0x1400f33e0",
+    "name": "__imp___daylight"
+  },
+  {
+    "address": "0x1400f33e8",
+    "name": "__imp__tzset"
+  },
+  {
+    "address": "0x1400f33f0",
+    "name": "__imp___timezone"
+  },
+  {
+    "address": "0x1400f3400",
+    "name": "__imp_srand"
+  },
+  {
+    "address": "0x1400f3408",
+    "name": "__imp_qsort"
+  },
+  {
+    "address": "0x1400f3410",
+    "name": "__imp_rand"
+  },
+  {
+    "address": "0x1400f3420",
+    "name": "__guard_check_icall_fptr"
+  },
+  {
+    "address": "0x1400f3428",
+    "name": "__guard_xfg_check_icall_fptr"
+  },
+  {
+    "address": "0x1400f3430",
+    "name": "__guard_dispatch_icall_fptr"
+  },
+  {
+    "address": "0x1400f3438",
+    "name": "__guard_xfg_dispatch_icall_fptr"
+  },
+  {
+    "address": "0x1400f3440",
+    "name": "__guard_xfg_table_dispatch_icall_fptr"
+  },
+  {
+    "address": "0x1400f3460",
+    "name": "First"
+  },
+  {
+    "address": "0x1400f3478",
+    "name": "Last"
+  },
+  {
+    "address": "0x1400f34a8",
+    "name": "aGoldmenInc"
+  },
+  {
+    "address": "0x1400f34b8",
+    "name": "aMonsota"
+  },
+  {
+    "address": "0x1400f34c0",
+    "name": "aOxsInternation"
+  },
+  {
+    "address": "0x1400f34d4",
+    "name": "aNexaco"
+  },
+  {
+    "address": "0x1400f34e0",
+    "name": "aPentacom"
+  },
+  {
+    "address": "0x1400f34f0",
+    "name": "aProdocon"
+  },
+  {
+    "address": "0x1400f34fc",
+    "name": "aTeam7"
+  },
+  {
+    "address": "0x1400f3504",
+    "name": "aTeam8"
+  },
+  {
+    "address": "0x1400f350c",
+    "name": "aTeam9"
+  },
+  {
+    "address": "0x1400f3518",
+    "name": "aTeam10"
+  },
+  {
+    "address": "0x1400f3520",
+    "name": "aTeam11"
+  },
+  {
+    "address": "0x1400f3528",
+    "name": "aTeam12"
+  },
+  {
+    "address": "0x1400f3530",
+    "name": "aTeam13"
+  },
+  {
+    "address": "0x1400f3538",
+    "name": "aTeam14"
+  },
+  {
+    "address": "0x1400f3540",
+    "name": "aTeam15"
+  },
+  {
+    "address": "0x1400f3548",
+    "name": "aTeam16"
+  },
+  {
+    "address": "0x1400f3550",
+    "name": "aCivilian"
+  },
+  {
+    "address": "0x1400f355c",
+    "name": "aSunday"
+  },
+  {
+    "address": "0x1400f3564",
+    "name": "aMonday"
+  },
+  {
+    "address": "0x1400f3570",
+    "name": "aTuesday"
+  },
+  {
+    "address": "0x1400f3578",
+    "name": "aWednesday"
+  },
+  {
+    "address": "0x1400f3588",
+    "name": "aThursday"
+  },
+  {
+    "address": "0x1400f3594",
+    "name": "aFriday"
+  },
+  {
+    "address": "0x1400f35a0",
+    "name": "aSaturday"
+  },
+  {
+    "address": "0x1400f35ac",
+    "name": "aDrop"
+  },
+  {
+    "address": "0x1400f35b4",
+    "name": "aLook"
+  },
+  {
+    "address": "0x1400f35c0",
+    "name": "aShownames"
+  },
+  {
+    "address": "0x1400f36dc",
+    "name": "aCsmo"
+  },
+  {
+    "address": "0x1400f36e4",
+    "name": "aCmod"
+  },
+  {
+    "address": "0x1400f4b5c",
+    "name": "aActor"
+  },
+  {
+    "address": "0x1400f4b64",
+    "name": "aGold"
+  },
+  {
+    "address": "0x1400f4b6c",
+    "name": "aRiver"
+  },
+  {
+    "address": "0x1400f4b74",
+    "name": "aPiano"
+  },
+  {
+    "address": "0x1400f4b7c",
+    "name": "aPillow"
+  },
+  {
+    "address": "0x1400f4b84",
+    "name": "aAnimal"
+  },
+  {
+    "address": "0x1400f4b8c",
+    "name": "aHorse"
+  },
+  {
+    "address": "0x1400f4b94",
+    "name": "aHoney"
+  },
+  {
+    "address": "0x1400f4b9c",
+    "name": "aBranch"
+  },
+  {
+    "address": "0x1400f4ba4",
+    "name": "aLamp"
+  },
+  {
+    "address": "0x1400f4bac",
+    "name": "aLion"
+  },
+  {
+    "address": "0x1400f4bb4",
+    "name": "aTent"
+  },
+  {
+    "address": "0x1400f4bbc",
+    "name": "aLondon"
+  },
+  {
+    "address": "0x1400f4bc4",
+    "name": "aNight"
+  },
+  {
+    "address": "0x1400f4bcc",
+    "name": "aFish"
+  },
+  {
+    "address": "0x1400f4bd4",
+    "name": "aFlower"
+  },
+  {
+    "address": "0x1400f4bdc",
+    "name": "aTruck"
+  },
+  {
+    "address": "0x1400f4be4",
+    "name": "aGlass"
+  },
+  {
+    "address": "0x1400f4bec",
+    "name": "aGhost"
+  },
+  {
+    "address": "0x1400f4bf4",
+    "name": "aKnife"
+  },
+  {
+    "address": "0x1400f4bfc",
+    "name": "aSpoon"
+  },
+  {
+    "address": "0x1400f4c08",
+    "name": "aTraffic_0"
+  },
+  {
+    "address": "0x1400f4c10",
+    "name": "aVase"
+  },
+  {
+    "address": "0x1400f4c18",
+    "name": "aSugar"
+  },
+  {
+    "address": "0x1400f4c20",
+    "name": "aKitchen"
+  },
+  {
+    "address": "0x1400f4c28",
+    "name": "aScooter"
+  },
+  {
+    "address": "0x1400f4c30",
+    "name": "aKing"
+  },
+  {
+    "address": "0x1400f4c38",
+    "name": "aQueen"
+  },
+  {
+    "address": "0x1400f4c40",
+    "name": "aLizard"
+  },
+  {
+    "address": "0x1400f4c48",
+    "name": "aCaravan"
+  },
+  {
+    "address": "0x1400f4c50",
+    "name": "aDream"
+  },
+  {
+    "address": "0x1400f4c58",
+    "name": "aDress"
+  },
+  {
+    "address": "0x1400f4c60",
+    "name": "aAtomic"
+  },
+  {
+    "address": "0x1400f4c68",
+    "name": "aBrazil"
+  },
+  {
+    "address": "0x1400f4c70",
+    "name": "aCrown"
+  },
+  {
+    "address": "0x1400f4c78",
+    "name": "aDenver"
+  },
+  {
+    "address": "0x1400f4c80",
+    "name": "aEagle"
+  },
+  {
+    "address": "0x1400f4c88",
+    "name": "aFalcon"
+  },
+  {
+    "address": "0x1400f4c90",
+    "name": "aGuild"
+  },
+  {
+    "address": "0x1400f4c98",
+    "name": "aHound"
+  },
+  {
+    "address": "0x1400f4ca0",
+    "name": "aBlack"
+  },
+  {
+    "address": "0x1400f4ca8",
+    "name": "aRed"
+  },
+  {
+    "address": "0x1400f4cac",
+    "name": "aBlue"
+  },
+  {
+    "address": "0x1400f4cb4",
+    "name": "aSilver"
+  },
+  {
+    "address": "0x1400f4cbc",
+    "name": "aWhite"
+  },
+  {
+    "address": "0x1400f4cc4",
+    "name": "aGold_0"
+  },
+  {
+    "address": "0x1400f4ccc",
+    "name": "Mode"
+  },
+  {
+    "address": "0x1400f4cd0",
+    "name": "aD_0"
+  },
+  {
+    "address": "0x1400f4cd8",
+    "name": "aI64d"
+  },
+  {
+    "address": "0x1400f4ce0",
+    "name": "aI64u"
+  },
+  {
+    "address": "0x1400f4ce8",
+    "name": "a3d"
+  },
+  {
+    "address": "0x1400f4cf0",
+    "name": "aU"
+  },
+  {
+    "address": "0x1400f4cf4",
+    "name": "a3f"
+  },
+  {
+    "address": "0x1400f4cfc",
+    "name": "a7f"
+  },
+  {
+    "address": "0x1400f4d04",
+    "name": "aS"
+  },
+  {
+    "address": "0x1400f4d0c",
+    "name": "aWb"
+  },
+  {
+    "address": "0x1400f4d10",
+    "name": "aCVisualc2010Co"
+  },
+  {
+    "address": "0x1400f4d78",
+    "name": "a0"
+  },
+  {
+    "address": "0x1400f4d80",
+    "name": "a11422444422444"
+  },
+  {
+    "address": "0x1400f4d98",
+    "name": "a111221222211"
+  },
+  {
+    "address": "0x1400f4da8",
+    "name": "aLength128255"
+  },
+  {
+    "address": "0x1400f4dd0",
+    "name": "aLength128"
+  },
+  {
+    "address": "0x1400f4e38",
+    "name": "Format"
+  },
+  {
+    "address": "0x1400f4e6c",
+    "name": "aP"
+  },
+  {
+    "address": "0x1400f4e70",
+    "name": "aD32767Best258"
+  },
+  {
+    "address": "0x1400f4ea8",
+    "name": "aOOutOutLen"
+  },
+  {
+    "address": "0x1400f4ed0",
+    "name": "aD"
+  },
+  {
+    "address": "0x1400f4ed8",
+    "name": "aServerSrk"
+  },
+  {
+    "address": "0x1400f4ee8",
+    "name": "aClient2Csk"
+  },
+  {
+    "address": "0x1400f4ef4",
+    "name": "aW"
+  },
+  {
+    "address": "0x1400f4ef8",
+    "name": "aStatsTxt"
+  },
+  {
+    "address": "0x1400f4f08",
+    "name": "aNumofmissionsD"
+  },
+  {
+    "address": "0x1400f4f20",
+    "name": "aNumofbulletsD"
+  },
+  {
+    "address": "0x1400f4f38",
+    "name": "aUsersD"
+  },
+  {
+    "address": "0x1400f4f48",
+    "name": "aTotaltimeD"
+  },
+  {
+    "address": "0x1400f4f58",
+    "name": "aAveragetimeD"
+  },
+  {
+    "address": "0x1400f4f70",
+    "name": "aDSDD"
+  },
+  {
+    "address": "0x1400f4f80",
+    "name": "aDSDDBannedD"
+  },
+  {
+    "address": "0x1400f4fa0",
+    "name": "aServeradminTxt"
+  },
+  {
+    "address": "0x1400f4fb0",
+    "name": "aAdminphone"
+  },
+  {
+    "address": "0x1400f4fc0",
+    "name": "aServersteamban"
+  },
+  {
+    "address": "0x1400f4fd8",
+    "name": "aSteamban"
+  },
+  {
+    "address": "0x1400f4fe4",
+    "name": "FileName"
+  },
+  {
+    "address": "0x1400f4ff0",
+    "name": "Str2"
+  },
+  {
+    "address": "0x1400f5000",
+    "name": "aBcRoof4x4"
+  },
+  {
+    "address": "0x1400f5010",
+    "name": "aBcRoof5x4"
+  },
+  {
+    "address": "0x1400f5020",
+    "name": "aBcRoof2x4"
+  },
+  {
+    "address": "0x1400f5030",
+    "name": "aBasetable"
+  },
+  {
+    "address": "0x1400f5040",
+    "name": "aGaragedoor"
+  },
+  {
+    "address": "0x1400f5050",
+    "name": "aBlockSSbl"
+  },
+  {
+    "address": "0x1400f5060",
+    "name": "aBurger"
+  },
+  {
+    "address": "0x1400f5068",
+    "name": "aBuildingSSbb"
+  },
+  {
+    "address": "0x1400f5078",
+    "name": "aBuildblockSSbl"
+  },
+  {
+    "address": "0x1400f5090",
+    "name": "Path"
+  },
+  {
+    "address": "0x1400f509c",
+    "name": "aRb"
+  },
+  {
+    "address": "0x1400f50a0",
+    "name": "aConnectionSucc"
+  },
+  {
+    "address": "0x1400f50b8",
+    "name": "aConnectionFail"
+  },
+  {
+    "address": "0x1400f50d0",
+    "name": "aPortD"
+  },
+  {
+    "address": "0x1400f50e0",
+    "name": "aSocketenabledD"
+  },
+  {
+    "address": "0x1400f5108",
+    "name": "aAdmin"
+  },
+  {
+    "address": "0x1400f5110",
+    "name": "aSAdmin"
+  },
+  {
+    "address": "0x1400f511c",
+    "name": "aHlist"
+  },
+  {
+    "address": "0x1400f5124",
+    "name": "aDD"
+  },
+  {
+    "address": "0x1400f5130",
+    "name": "aDDS"
+  },
+  {
+    "address": "0x1400f513c",
+    "name": "aList1"
+  },
+  {
+    "address": "0x1400f5144",
+    "name": "aSD_0"
+  },
+  {
+    "address": "0x1400f514c",
+    "name": "aList2"
+  },
+  {
+    "address": "0x1400f5154",
+    "name": "aList3"
+  },
+  {
+    "address": "0x1400f515c",
+    "name": "aList4"
+  },
+  {
+    "address": "0x1400f5168",
+    "name": "aTraffic"
+  },
+  {
+    "address": "0x1400f5178",
+    "name": "aSavereplay"
+  },
+  {
+    "address": "0x1400f5188",
+    "name": "aSavereplayD"
+  },
+  {
+    "address": "0x1400f5198",
+    "name": "aGodmode"
+  },
+  {
+    "address": "0x1400f51c4",
+    "name": "aHeli"
+  },
+  {
+    "address": "0x1400f51cc",
+    "name": "aCar"
+  },
+  {
+    "address": "0x1400f51d8",
+    "name": "aBeamer"
+  },
+  {
+    "address": "0x1400f51e0",
+    "name": "aPickup"
+  },
+  {
+    "address": "0x1400f51e8",
+    "name": "aTurbo"
+  },
+  {
+    "address": "0x1400f51f0",
+    "name": "aVan"
+  },
+  {
+    "address": "0x1400f51f8",
+    "name": "aPhone"
+  },
+  {
+    "address": "0x1400f5200",
+    "name": "aArm"
+  },
+  {
+    "address": "0x1400f5208",
+    "name": "aCash"
+  },
+  {
+    "address": "0x1400f5210",
+    "name": "aKill"
+  },
+  {
+    "address": "0x1400f5218",
+    "name": "aSetmap"
+  },
+  {
+    "address": "0x1400f5220",
+    "name": "aMapnumD"
+  },
+  {
+    "address": "0x1400f5230",
+    "name": "aResetgame"
+  },
+  {
+    "address": "0x1400f523c",
+    "name": "aBan"
+  },
+  {
+    "address": "0x1400f5248",
+    "name": "aSDBan"
+  },
+  {
+    "address": "0x1400f5254",
+    "name": "aGive"
+  },
+  {
+    "address": "0x1400f5260",
+    "name": "aSDDCash"
+  },
+  {
+    "address": "0x1400f5270",
+    "name": "aSetrating"
+  },
+  {
+    "address": "0x1400f5280",
+    "name": "aSDDRating"
+  },
+  {
+    "address": "0x1400f5294",
+    "name": "aBany"
+  },
+  {
+    "address": "0x1400f52a0",
+    "name": "aSDBannedD_0"
+  },
+  {
+    "address": "0x1400f52b4",
+    "name": "aBann"
+  },
+  {
+    "address": "0x1400f52d0",
+    "name": "aKick"
+  },
+  {
+    "address": "0x1400f52d8",
+    "name": "aMessage"
+  },
+  {
+    "address": "0x1400f52e8",
+    "name": "aClearkick"
+  },
+  {
+    "address": "0x1400f52f8",
+    "name": "aServerlogTxt"
+  },
+  {
+    "address": "0x1400f5308",
+    "name": "aServerLog"
+  },
+  {
+    "address": "0x1400f5314",
+    "name": "aS_1"
+  },
+  {
+    "address": "0x1400f5318",
+    "name": "aSDTeamDamageD"
+  },
+  {
+    "address": "0x1400f5330",
+    "name": "aReadmeTxt"
+  },
+  {
+    "address": "0x1400f5350",
+    "name": "aDS"
+  },
+  {
+    "address": "0x1400f535c",
+    "name": "aTest2"
+  },
+  {
+    "address": "0x1400f537c",
+    "name": "aTest"
+  },
+  {
+    "address": "0x1400f538c",
+    "name": "aData"
+  },
+  {
+    "address": "0x1400f5398",
+    "name": "aSnakeExe"
+  },
+  {
+    "address": "0x1400f53c0",
+    "name": "aExtLineLotsOfS"
+  },
+  {
+    "address": "0x1400f5480",
+    "name": "name"
+  },
+  {
+    "address": "0x1400f5494",
+    "name": "proto"
+  },
+  {
+    "address": "0x1400f5498",
+    "name": "aHttp"
+  },
+  {
+    "address": "0x1400f54a0",
+    "name": "aGetAnewzeroSer"
+  },
+  {
+    "address": "0x1400f54e8",
+    "name": "aDataUziItm"
+  },
+  {
+    "address": "0x1400f5540",
+    "name": "aDataUziMagazin"
+  },
+  {
+    "address": "0x1400f5690",
+    "name": "aDataWatermelon"
+  },
+  {
+    "address": "0x1400f5708",
+    "name": "aDataItemComput"
+  },
+  {
+    "address": "0x1400f5720",
+    "name": "aDataItemTablet"
+  },
+  {
+    "address": "0x1400f5740",
+    "name": "aDataItemCubewa"
+  },
+  {
+    "address": "0x1400f5758",
+    "name": "aC"
+  },
+  {
+    "address": "0x1400f5780",
+    "name": "a1FileSCopied"
+  },
+  {
+    "address": "0x1400f5798",
+    "name": "aDiskError"
+  },
+  {
+    "address": "0x1400f57a8",
+    "name": "aS_0"
+  },
+  {
+    "address": "0x1400f57e8",
+    "name": "aDirectoryOfS"
+  },
+  {
+    "address": "0x1400f57f8",
+    "name": "aCopy"
+  },
+  {
+    "address": "0x1400f5890",
+    "name": "aMission_0"
+  },
+  {
+    "address": "0x1400f5898",
+    "name": "aMissionExe"
+  },
+  {
+    "address": "0x1400f58c8",
+    "name": "aDecrypt"
+  },
+  {
+    "address": "0x1400f58d0",
+    "name": "aDecryptExe"
+  },
+  {
+    "address": "0x1400f5914",
+    "name": "aSnake"
+  },
+  {
+    "address": "0x1400f5920",
+    "name": "aDecrypterCtrlR"
+  },
+  {
+    "address": "0x1400f5988",
+    "name": "aBack"
+  },
+  {
+    "address": "0x1400f5990",
+    "name": "aUpload"
+  },
+  {
+    "address": "0x1400f5998",
+    "name": "aUnknown"
+  },
+  {
+    "address": "0x1400f59b8",
+    "name": "aProjectS"
+  },
+  {
+    "address": "0x1400f59c4",
+    "name": "aStatus"
+  },
+  {
+    "address": "0x1400f59d0",
+    "name": "aUploading"
+  },
+  {
+    "address": "0x1400f59e0",
+    "name": "aUploadFile"
+  },
+  {
+    "address": "0x1400f59ec",
+    "name": "aS_2"
+  },
+  {
+    "address": "0x1400f59f0",
+    "name": "aCancel"
+  },
+  {
+    "address": "0x1400f59f8",
+    "name": "aRequestIntel"
+  },
+  {
+    "address": "0x1400f5a08",
+    "name": "aIntelRequested"
+  },
+  {
+    "address": "0x1400f5a18",
+    "name": "aIntelFaxed"
+  },
+  {
+    "address": "0x1400f5a28",
+    "name": "aNoIntelAvailab"
+  },
+  {
+    "address": "0x1400f5a40",
+    "name": "aDUnknown"
+  },
+  {
+    "address": "0x1400f5a60",
+    "name": "aDProjectS"
+  },
+  {
+    "address": "0x1400f5a80",
+    "name": "aExit"
+  },
+  {
+    "address": "0x1400f5a88",
+    "name": "aSnakeScore05dL"
+  },
+  {
+    "address": "0x1400f5ac0",
+    "name": "aGameOver"
+  },
+  {
+    "address": "0x1400f5ae8",
+    "name": "aItem"
+  },
+  {
+    "address": "0x1400f5af0",
+    "name": "aItemset"
+  },
+  {
+    "address": "0x1400f5af8",
+    "name": "aSis"
+  },
+  {
+    "address": "0x1400f5b08",
+    "name": "aCornerstore"
+  },
+  {
+    "address": "0x1400f5b18",
+    "name": "aBcBase01"
+  },
+  {
+    "address": "0x1400f5b28",
+    "name": "aBcBase02"
+  },
+  {
+    "address": "0x1400f5b38",
+    "name": "aBcBase03"
+  },
+  {
+    "address": "0x1400f5b44",
+    "name": "aBase01"
+  },
+  {
+    "address": "0x1400f5b4c",
+    "name": "aBase02"
+  },
+  {
+    "address": "0x1400f5b54",
+    "name": "aBase03"
+  },
+  {
+    "address": "0x1400f5b5c",
+    "name": "aBase04"
+  },
+  {
+    "address": "0x1400f5b64",
+    "name": "aBase05"
+  },
+  {
+    "address": "0x1400f5b6c",
+    "name": "aBase06"
+  },
+  {
+    "address": "0x1400f5b78",
+    "name": "aCardealer"
+  },
+  {
+    "address": "0x1400f5b88",
+    "name": "aGunstore"
+  },
+  {
+    "address": "0x1400f5b94",
+    "name": "aBank"
+  },
+  {
+    "address": "0x1400f5b9c",
+    "name": "aSuits"
+  },
+  {
+    "address": "0x1400f5ba8",
+    "name": "aLabtest"
+  },
+  {
+    "address": "0x1400f5bb0",
+    "name": "aDataSCity2Sbc"
+  },
+  {
+    "address": "0x1400f5bc8",
+    "name": "aCity2Sbc"
+  },
+  {
+    "address": "0x1400f5bd8",
+    "name": "aD03d03d03d"
+  },
+  {
+    "address": "0x1400f5bf0",
+    "name": "aD03d03d"
+  },
+  {
+    "address": "0x1400f5c00",
+    "name": "aD03d"
+  },
+  {
+    "address": "0x1400f5c08",
+    "name": "aSIsNowManagerO"
+  },
+  {
+    "address": "0x1400f5c80",
+    "name": "aAcquisitionD"
+  },
+  {
+    "address": "0x1400f5c90",
+    "name": "aTransactionD"
+  },
+  {
+    "address": "0x1400f5ca0",
+    "name": "aSCompleteRatin"
+  },
+  {
+    "address": "0x1400f5cc0",
+    "name": "aSExpiredRating"
+  },
+  {
+    "address": "0x1400f5d20",
+    "name": "aHireS"
+  },
+  {
+    "address": "0x1400f5d28",
+    "name": "aFireS"
+  },
+  {
+    "address": "0x1400f5d30",
+    "name": "aBuyDisk"
+  },
+  {
+    "address": "0x1400f5d40",
+    "name": "aBuyBriefcase"
+  },
+  {
+    "address": "0x1400f5d50",
+    "name": "aBuyWalkieTalki"
+  },
+  {
+    "address": "0x1400f5d68",
+    "name": "aBuy9mm"
+  },
+  {
+    "address": "0x1400f5d70",
+    "name": "aBuy9mmMagazine"
+  },
+  {
+    "address": "0x1400f5d88",
+    "name": "aBuyMp5"
+  },
+  {
+    "address": "0x1400f5d90",
+    "name": "aBuyMp5Magazine"
+  },
+  {
+    "address": "0x1400f5da8",
+    "name": "aBuyBandage"
+  },
+  {
+    "address": "0x1400f5db8",
+    "name": "aDeposit"
+  },
+  {
+    "address": "0x1400f5dc0",
+    "name": "aWithdrawl20"
+  },
+  {
+    "address": "0x1400f5dd0",
+    "name": "aWithdrawl100"
+  },
+  {
+    "address": "0x1400f5de0",
+    "name": "aWithdrawl1000"
+  },
+  {
+    "address": "0x1400f5df0",
+    "name": "aReplacePhone"
+  },
+  {
+    "address": "0x1400f5e18",
+    "name": "aSDBannedD"
+  },
+  {
+    "address": "0x1400f5e28",
+    "name": "aSDRatingD"
+  },
+  {
+    "address": "0x1400f5e38",
+    "name": "aSHasBeenFiredF"
+  },
+  {
+    "address": "0x1400f5e58",
+    "name": "aSManagerS"
+  },
+  {
+    "address": "0x1400f5e68",
+    "name": "aSHasDied"
+  },
+  {
+    "address": "0x1400f5e90",
+    "name": "aDataModelSCmc"
+  },
+  {
+    "address": "0x1400f5ea8",
+    "name": "a08x08x08x08x08"
+  },
+  {
+    "address": "0x1400f5ed8",
+    "name": "aAgentD"
+  },
+  {
+    "address": "0x1400f5ef8",
+    "name": "aConfigTxt"
+  },
+  {
+    "address": "0x1400f5f08",
+    "name": "aScreenwidth"
+  },
+  {
+    "address": "0x1400f5f18",
+    "name": "aScreenheight"
+  },
+  {
+    "address": "0x1400f5f28",
+    "name": "aColordepth"
+  },
+  {
+    "address": "0x1400f5f38",
+    "name": "aDepthbits"
+  },
+  {
+    "address": "0x1400f5f48",
+    "name": "aStencilbits"
+  },
+  {
+    "address": "0x1400f5f58",
+    "name": "aFullscreen"
+  },
+  {
+    "address": "0x1400f5f68",
+    "name": "aJoystick"
+  },
+  {
+    "address": "0x1400f5f74",
+    "name": "aSound"
+  },
+  {
+    "address": "0x1400f5f80",
+    "name": "aSoundvolume"
+  },
+  {
+    "address": "0x1400f5f90",
+    "name": "aMusicvolume"
+  },
+  {
+    "address": "0x1400f5fa0",
+    "name": "aPort"
+  },
+  {
+    "address": "0x1400f5fa8",
+    "name": "aServermaxbytes"
+  },
+  {
+    "address": "0x1400f5fc4",
+    "name": "aName"
+  },
+  {
+    "address": "0x1400f5fd0",
+    "name": "aServername"
+  },
+  {
+    "address": "0x1400f5fe0",
+    "name": "aAdminpassword"
+  },
+  {
+    "address": "0x1400f5ff0",
+    "name": "aServerpassword"
+  },
+  {
+    "address": "0x1400f6000",
+    "name": "aGametype"
+  },
+  {
+    "address": "0x1400f6010",
+    "name": "aInvertmouse"
+  },
+  {
+    "address": "0x1400f6020",
+    "name": "aMaxnumofplayer"
+  },
+  {
+    "address": "0x1400f6038",
+    "name": "aRoundtime"
+  },
+  {
+    "address": "0x1400f6048",
+    "name": "aSetcpuaffinity"
+  },
+  {
+    "address": "0x1400f6058",
+    "name": "aVoicechat"
+  },
+  {
+    "address": "0x1400f6068",
+    "name": "aVoiceholdtotal"
+  },
+  {
+    "address": "0x1400f6080",
+    "name": "aVoicekey"
+  },
+  {
+    "address": "0x1400f6090",
+    "name": "aVoicemb"
+  },
+  {
+    "address": "0x1400f60a0",
+    "name": "aVoicemin"
+  },
+  {
+    "address": "0x1400f60b0",
+    "name": "aVoiceboost"
+  },
+  {
+    "address": "0x1400f60bc",
+    "name": "aHelp"
+  },
+  {
+    "address": "0x1400f60c8",
+    "name": "aOcclusion"
+  },
+  {
+    "address": "0x1400f60d8",
+    "name": "aVerticalsync"
+  },
+  {
+    "address": "0x1400f60e8",
+    "name": "aPlayergender"
+  },
+  {
+    "address": "0x1400f60f8",
+    "name": "aPlayerhead"
+  },
+  {
+    "address": "0x1400f6108",
+    "name": "aPlayerskincolo"
+  },
+  {
+    "address": "0x1400f6120",
+    "name": "aPlayerhaircolo"
+  },
+  {
+    "address": "0x1400f6138",
+    "name": "aPlayerhairstyl"
+  },
+  {
+    "address": "0x1400f6150",
+    "name": "aPlayereyecolor"
+  },
+  {
+    "address": "0x1400f6160",
+    "name": "aManualhands"
+  },
+  {
+    "address": "0x1400f6170",
+    "name": "aFloatdepthbuff"
+  },
+  {
+    "address": "0x1400f6188",
+    "name": "aFramesmoothing"
+  },
+  {
+    "address": "0x1400f6198",
+    "name": "aSpritemodels"
+  },
+  {
+    "address": "0x1400f61a8",
+    "name": "aSD"
+  },
+  {
+    "address": "0x1400f61b0",
+    "name": "aSS"
+  },
+  {
+    "address": "0x1400f61b8",
+    "name": "aConfigWorldTxt"
+  },
+  {
+    "address": "0x1400f61d0",
+    "name": "aTraffic_1"
+  },
+  {
+    "address": "0x1400f61e0",
+    "name": "aCrimecivciv"
+  },
+  {
+    "address": "0x1400f61f0",
+    "name": "aCrimecivteam"
+  },
+  {
+    "address": "0x1400f6200",
+    "name": "aCrimeteamciv"
+  },
+  {
+    "address": "0x1400f6210",
+    "name": "aCrimeteamteam"
+  },
+  {
+    "address": "0x1400f6220",
+    "name": "aCrimeteamteami"
+  },
+  {
+    "address": "0x1400f6238",
+    "name": "aCrimevscrimina"
+  },
+  {
+    "address": "0x1400f6250",
+    "name": "aCrimenobuy"
+  },
+  {
+    "address": "0x1400f6260",
+    "name": "aCrimenospawn"
+  },
+  {
+    "address": "0x1400f6270",
+    "name": "aCrimekick"
+  },
+  {
+    "address": "0x1400f6280",
+    "name": "aStartcash"
+  },
+  {
+    "address": "0x1400f6290",
+    "name": "aMincash"
+  },
+  {
+    "address": "0x1400f62a0",
+    "name": "aShowjoinexit"
+  },
+  {
+    "address": "0x1400f62b0",
+    "name": "aRespawnteam"
+  },
+  {
+    "address": "0x1400f62c0",
+    "name": "aConfigRoundTxt"
+  },
+  {
+    "address": "0x1400f62d8",
+    "name": "aWeekly"
+  },
+  {
+    "address": "0x1400f62e0",
+    "name": "aBonusratio"
+  },
+  {
+    "address": "0x1400f62f0",
+    "name": "aTeamdamage"
+  },
+  {
+    "address": "0x1400f6300",
+    "name": "aConfigVersusTx"
+  },
+  {
+    "address": "0x1400f6318",
+    "name": "aAllowrespawn"
+  },
+  {
+    "address": "0x1400f6328",
+    "name": "aMovedelay"
+  },
+  {
+    "address": "0x1400f6334",
+    "name": "aMap01"
+  },
+  {
+    "address": "0x1400f633c",
+    "name": "aMap02"
+  },
+  {
+    "address": "0x1400f6344",
+    "name": "aMap03"
+  },
+  {
+    "address": "0x1400f634c",
+    "name": "aMap04"
+  },
+  {
+    "address": "0x1400f6354",
+    "name": "aMap05"
+  },
+  {
+    "address": "0x1400f635c",
+    "name": "aMap06"
+  },
+  {
+    "address": "0x1400f6364",
+    "name": "aMap07"
+  },
+  {
+    "address": "0x1400f636c",
+    "name": "aMap08"
+  },
+  {
+    "address": "0x1400f6380",
+    "name": "aReplay03dSrp"
+  },
+  {
+    "address": "0x1400f6428",
+    "name": "aGunner"
+  },
+  {
+    "address": "0x1400f6430",
+    "name": "aTestSrm"
+  },
+  {
+    "address": "0x1400f6440",
+    "name": "aMission"
+  },
+  {
+    "address": "0x1400f6480",
+    "name": "aTheLaboratoryA_0"
+  },
+  {
+    "address": "0x1400f64a0",
+    "name": "aTheLabAtSAndS"
+  },
+  {
+    "address": "0x1400f64b8",
+    "name": "aSAndSLaborator"
+  },
+  {
+    "address": "0x1400f6510",
+    "name": "aTheFilenameIsS"
+  },
+  {
+    "address": "0x1400f6528",
+    "name": "aProjectSIsHigh"
+  },
+  {
+    "address": "0x1400f6548",
+    "name": "aProjectSIsNorm"
+  },
+  {
+    "address": "0x1400f6568",
+    "name": "aWeAreNowAdding"
+  },
+  {
+    "address": "0x1400f6598",
+    "name": "aTheCompanyPicn"
+  },
+  {
+    "address": "0x1400f65c0",
+    "name": "aNextFridayIsHa"
+  },
+  {
+    "address": "0x1400f65e8",
+    "name": "aWeNeedToCreate"
+  },
+  {
+    "address": "0x1400f6610",
+    "name": "aThisProjectIsE"
+  },
+  {
+    "address": "0x1400f6638",
+    "name": "aThisIsAHighPri"
+  },
+  {
+    "address": "0x1400f6660",
+    "name": "aTheLaboratoryA"
+  },
+  {
+    "address": "0x1400f6690",
+    "name": "aTheLabAtSAndSH"
+  },
+  {
+    "address": "0x1400f66c0",
+    "name": "aWeAreIncreasin"
+  },
+  {
+    "address": "0x1400f6700",
+    "name": "aProjectSHasMad"
+  },
+  {
+    "address": "0x1400f6730",
+    "name": "aThereAreNewDev"
+  },
+  {
+    "address": "0x1400f6760",
+    "name": "aTheSProjectWil"
+  },
+  {
+    "address": "0x1400f6798",
+    "name": "aTheDataIsStore"
+  },
+  {
+    "address": "0x1400f67c0",
+    "name": "aTheFileNamedSC"
+  },
+  {
+    "address": "0x1400f67e8",
+    "name": "aTheSecretInfoI"
+  },
+  {
+    "address": "0x1400f6810",
+    "name": "aIntel02dCde"
+  },
+  {
+    "address": "0x1400f6820",
+    "name": "aThereIsInATown"
+  },
+  {
+    "address": "0x1400f6890",
+    "name": "aSAndS"
+  },
+  {
+    "address": "0x1400f68a0",
+    "name": "aSAndS_0"
+  },
+  {
+    "address": "0x1400f68b0",
+    "name": "aThisMissionExp_1"
+  },
+  {
+    "address": "0x1400f68d8",
+    "name": "aThisMissionExp_0"
+  },
+  {
+    "address": "0x1400f6900",
+    "name": "aWeHaveIntercep"
+  },
+  {
+    "address": "0x1400f6970",
+    "name": "aSecret02dTxt"
+  },
+  {
+    "address": "0x1400f6980",
+    "name": "aAcquisitionDWe"
+  },
+  {
+    "address": "0x1400f6a60",
+    "name": "aThisMissionExp"
+  },
+  {
+    "address": "0x1400f6a90",
+    "name": "aTransactionDWe"
+  },
+  {
+    "address": "0x1400f6b60",
+    "name": "aTransactionDWe_0"
+  },
+  {
+    "address": "0x1400f6c70",
+    "name": "aTransactionDWe_1"
+  },
+  {
+    "address": "0x1400f6d50",
+    "name": "aSDoc"
+  },
+  {
+    "address": "0x1400f6d58",
+    "name": "aOpen"
+  },
+  {
+    "address": "0x1400f6d60",
+    "name": "aSInternalMemoD"
+  },
+  {
+    "address": "0x1400f6d80",
+    "name": "aSInternalMemoD_0"
+  },
+  {
+    "address": "0x1400f6da0",
+    "name": "aMissionSuccess"
+  },
+  {
+    "address": "0x1400f6db0",
+    "name": "aValueD"
+  },
+  {
+    "address": "0x1400f6dc0",
+    "name": "aSuccess"
+  },
+  {
+    "address": "0x1400f6dc8",
+    "name": "aMissionClosed"
+  },
+  {
+    "address": "0x1400f6dd8",
+    "name": "aClosed"
+  },
+  {
+    "address": "0x1400f6de0",
+    "name": "aTrade"
+  },
+  {
+    "address": "0x1400f6de8",
+    "name": "aTrade_0"
+  },
+  {
+    "address": "0x1400f6df0",
+    "name": "aSHasTheFileVal"
+  },
+  {
+    "address": "0x1400f6e10",
+    "name": "aSHasObtainedTh"
+  },
+  {
+    "address": "0x1400f6e40",
+    "name": "aSWantsTheFile"
+  },
+  {
+    "address": "0x1400f6e60",
+    "name": "aSDExited"
+  },
+  {
+    "address": "0x1400f6e70",
+    "name": "aIncompatibleVe"
+  },
+  {
+    "address": "0x1400f6e88",
+    "name": "aIncorrectPassw"
+  },
+  {
+    "address": "0x1400f6ea0",
+    "name": "aConnectionFail_0"
+  },
+  {
+    "address": "0x1400f6eb8",
+    "name": "aYouAreBannedFr"
+  },
+  {
+    "address": "0x1400f6ed8",
+    "name": "aServerIsFull"
+  },
+  {
+    "address": "0x1400f6ef0",
+    "name": "aSDJoined"
+  },
+  {
+    "address": "0x1400f6f0c",
+    "name": "aPark5"
+  },
+  {
+    "address": "0x1400f6f3c",
+    "name": "aTurbo5"
+  },
+  {
+    "address": "0x1400f6f54",
+    "name": "aGolf5"
+  },
+  {
+    "address": "0x1400f6f64",
+    "name": "aVan4"
+  },
+  {
+    "address": "0x1400f6f78",
+    "name": "aDataVanTst"
+  },
+  {
+    "address": "0x1400f6f88",
+    "name": "aMinivan2"
+  },
+  {
+    "address": "0x1400f6fa0",
+    "name": "aBeamer2"
+  },
+  {
+    "address": "0x1400f6fc0",
+    "name": "aDataHelitestTs"
+  },
+  {
+    "address": "0x1400f6fe0",
+    "name": "aTrain04"
+  },
+  {
+    "address": "0x1400f6fe8",
+    "name": "aDataSSbv"
+  },
+  {
+    "address": "0x1400f7004",
+    "name": "aTest1"
+  },
+  {
+    "address": "0x1400f700c",
+    "name": "aTest2_0"
+  },
+  {
+    "address": "0x1400f7408",
+    "name": "Y"
+  },
+  {
+    "address": "0x1400f8030",
+    "name": "ExceptionInfo"
+  },
+  {
+    "address": "0x1400f8110",
+    "name": "_load_config_used"
+  },
+  {
+    "address": "0x140102c0c",
+    "name": "__IMPORT_DESCRIPTOR_WSOCK32"
+  },
+  {
+    "address": "0x140102c20",
+    "name": "__IMPORT_DESCRIPTOR_KERNEL32"
+  },
+  {
+    "address": "0x140102c34",
+    "name": "__IMPORT_DESCRIPTOR_VCRUNTIME140"
+  },
+  {
+    "address": "0x140103130",
+    "name": "aWsock32Dll"
+  },
+  {
+    "address": "0x1401032fc",
+    "name": "aKernel32Dll"
+  },
+  {
+    "address": "0x14010339e",
+    "name": "aVcruntime140Dl"
+  },
+  {
+    "address": "0x14010379e",
+    "name": "aApiMsWinCrtMat"
+  },
+  {
+    "address": "0x1401037be",
+    "name": "aApiMsWinCrtStd"
+  },
+  {
+    "address": "0x1401037de",
+    "name": "aApiMsWinCrtStr"
+  },
+  {
+    "address": "0x140103800",
+    "name": "aApiMsWinCrtTim"
+  },
+  {
+    "address": "0x140103820",
+    "name": "aApiMsWinCrtFil"
+  },
+  {
+    "address": "0x140103846",
+    "name": "aApiMsWinCrtHea"
+  },
+  {
+    "address": "0x140103866",
+    "name": "aApiMsWinCrtUti"
+  },
+  {
+    "address": "0x140103888",
+    "name": "aApiMsWinCrtRun"
+  },
+  {
+    "address": "0x1401038aa",
+    "name": "aApiMsWinCrtLoc"
+  },
+  {
+    "address": "0x140104010",
+    "name": "aSubRosa"
+  },
+  {
+    "address": "0x1401481a0",
+    "name": "__security_cookie"
+  },
+  {
+    "address": "0x1405855f0",
+    "name": "ContextRecord"
+  },
+  {
+    "address": "0x140585ae0",
+    "name": "Table"
+  },
+  {
+    "address": "0x1407a92a0",
+    "name": "Stream"
+  },
+  {
+    "address": "0x163d75f74",
+    "name": "hostlong"
+  },
+  {
+    "address": "0x16d1ed478",
+    "name": "Buffer"
+  },
+  {
+    "address": "0x1958993a0",
+    "name": "WSAData"
+  },
+  {
+    "address": "0x19633cd40",
+    "name": "len"
+  },
+  {
+    "address": "0x19633cd4c",
+    "name": "buf"
+  },
+  {
+    "address": "0x196abd370",
+    "name": "Frequency"
+  },
+  {
+    "address": "0x196abd378",
+    "name": "PerformanceCount"
+  },
+  {
+    "address": "0x196abd4c0",
+    "name": "DstBuf"
+  },
+  {
+    "address": "0x197bc7244",
+    "name": "to"
+  },
+  {
+    "address": "0x197bc7254",
+    "name": "tolen"
+  },
+  {
+    "address": "0x197bd7284",
+    "name": "Src"
+  },
+  {
+    "address": "0x19aad9000",
+    "name": "ExceptionDir"
+  }
+]

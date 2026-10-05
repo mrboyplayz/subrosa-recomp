@@ -1,0 +1,444 @@
+# sheet: kernel
+# version: 1
+# generator: client_c_recovery
+# owned_by: root
+id:string*	path:string	kind:enum	status:enum	tests:string?	evidence:string
+kernel_d73a0ab1cef3	rust-client/examples/bevy_model_load.rs	tool	partial		reports/rust-model-assets-20261003/result.json
+kernel_a59c185cbeac	rust-client/examples/model_inventory.rs	tool	partial		reports/rust-model-assets-20261003/result.json
+kernel_8528b7a402d5	rust-client/src/bevy_models.rs	glue	partial		reports/rust-model-assets-20261003/result.json
+kernel_b2ff52e8ea2b	rust-client/src/bevy_runtime.rs	glue	partial		docs/game-understanding-and-rust.md
+kernel_300971c9624e	rust-client/src/bin/player_test.rs	glue	partial	scripts/test_player_test.py	docs/player-test.md
+kernel_37f351ec6a92	rust-client/src/collision.rs	algorithm	partial	scripts/test_rust_mesh_collision.py	reports/rust-mesh-collision-20261003/result.json
+kernel_42ae9a3640bb	rust-client/src/contacts.rs	algorithm	partial	scripts/test_rust_all_constraint_kinds.py	reports/rust-all-constraint-kinds-20261003/result.json
+kernel_3a14564b1ed4	rust-client/src/geometry.rs	algorithm	partial	scripts/test_rust_mesh_geometry.py	reports/rust-mesh-geometry-20261003/result.json
+kernel_human_construction	rust-client/src/human.rs	algorithm	partial	scripts/test_rust_human_bodies.py	docs/human-pose-trace.md
+kernel_human_templates	rust-client/src/human_templates.rs	layout	partial	scripts/test_rust_human_bodies.py	reports/human-templates-20261003/result.json
+kernel_03a57a3344a7	rust-client/src/joints.rs	algorithm	partial		reports/rust-joint-creation-20261003/result.json
+kernel_cde3278894dc	rust-client/src/models.rs	algorithm	partial		reports/rust-model-assets-20261003/result.json
+kernel_20f0ae97195d	rust-client/src/network_bits.rs	algorithm	partial		reports/rust-network-bits-20261003/result.json
+kernel_8acc901a6f7e	rust-client/src/physics.rs	algorithm	partial		reports/rust-anchor-constraint-20261003/result.json
+kernel_2d36eaa35dcd	rust-client/src/point_state.rs	algorithm	partial		reports/rust-point-state-20261003/result.json
+kernel_0edc372f2612	rust-client/src/pose.rs	algorithm	partial		reports/rust-pose-interpolation-20261003/result.json
+kernel_7a5f81d1df14	scripts/append_smallotown_csx.py	tool	partial		scripts/append_smallotown_csx.py
+kernel_f7c55b050114	scripts/audit_client_imports.py	tool	partial		scripts/audit_client_imports.py
+kernel_e84c7c230c46	scripts/audit_client_preparation.py	tool	partial		scripts/audit_client_preparation.py
+kernel_e66cc15ffd51	scripts/audit_client_sqrt.py	tool	partial		scripts/audit_client_sqrt.py
+kernel_1303705e24a8	scripts/build-player-test.ps1	tool	partial	scripts/test_player_test.py	docs/player-test.md
+kernel_594d0f4ae086	scripts/capture_reference_environment.ps1	tool	partial		scripts/capture_reference_environment.ps1
+kernel_68fc2a17412e	scripts/check-rebuild.py	tool	partial		scripts/check-rebuild.py
+kernel_331d0f9675db	scripts/client_gl_debug.c	tool	partial		docs/client-practice-recovery-20261004.md
+kernel_34fba433c215	scripts/client_sheet_book.py	tool	partial	scripts/test_client_sheet_book.py	scripts/client_sheet_book.py
+kernel_3ed496f463d1	scripts/collect-inventory.ps1	tool	partial		scripts/collect-inventory.ps1
+kernel_6db4c8ad7049	scripts/collect_sandium_references.py	tool	partial		docs/sandium-recomp-reference-20261004.md
+kernel_598c8adc812e	scripts/debug_client_launch.py	tool	partial		scripts/debug_client_launch.py
+kernel_6b41cb794022	scripts/export-decompilation.ps1	tool	partial		scripts/export-decompilation.ps1
+kernel_c6dd35c0d05f	scripts/extract_shaders.py	tool	partial	scripts/test_extract_shaders.py	scripts/extract_shaders.py
+kernel_d9738ca8100b	scripts/freeze_client_reference.py	tool	partial		scripts/freeze_client_reference.py
+kernel_b1129258c223	scripts/ghidra/ExportHumanPoseTrace.java	tool	partial		reports/human-pose-trace-20261003/native-byte-validation.json
+kernel_c163223cc876	scripts/ghidra/ExportRecoveryEvidence.java	tool	partial		reports/ghidra-cli-export-20261003.txt
+kernel_5efdaf47834c	scripts/inspect_client_character_assets.py	tool	partial		reports/human-pose-trace-20261003/character-assets.json
+kernel_6d419a047df1	scripts/inventory_client_code.py	tool	partial		scripts/inventory_client_code.py
+kernel_352d3cc3bd45	scripts/inventory_client_warnings.py	tool	partial		scripts/inventory_client_warnings.py
+kernel_f39f533d0e10	scripts/link_client.py	tool	partial	scripts/test_link_client.py	scripts/link_client.py
+kernel_b1e0af730c45	scripts/link_server.py	tool	partial		scripts/link_server.py
+kernel_a6fce8621f12	scripts/peek-format.ps1	tool	partial		scripts/peek-format.ps1
+kernel_be466eb0d76e	scripts/prepare_rebuild.py	tool	partial	scripts/test_prepare_rebuild.py	scripts/prepare_rebuild.py
+kernel_ea1cf90e570e	scripts/prepare_server.py	tool	partial	scripts/test_prepare_server.py	scripts/prepare_server.py
+kernel_a3642ece2e28	scripts/recover_client_native_gaps.py	tool	partial		scripts/recover_client_native_gaps.py
+kernel_0ec4eec81926	scripts/recover_client_opaque.py	tool	partial		scripts/recover_client_opaque.py
+kernel_4a60c4969cf5	scripts/recover_client_time_vtable.py	tool	partial		scripts/recover_client_time_vtable.py
+kernel_human_templates_tool	scripts/recover_human_templates.py	tool	partial	scripts/test_rust_human_bodies.py	reports/human-templates-20261003/result.json
+kernel_54c0fac5fcba	scripts/repair_client_abi_storage.py	tool	partial		scripts/repair_client_abi_storage.py
+kernel_7ecefe370a94	scripts/repair_client_api_cache.py	tool	partial		scripts/repair_client_api_cache.py
+kernel_61e6e0a78c74	scripts/repair_client_api_ranges.py	tool	partial		scripts/repair_client_api_ranges.py
+kernel_audio_bands_tool	scripts/repair_client_audio_bands.py	tool	partial	scripts/test_client_audio_bands.py	reports/client-audio-bands-fixture-20261003/result.json
+kernel_b72d00a3cd80	scripts/repair_client_audio_buffer.py	tool	partial	scripts/test_client_audio_buffer.py	scripts/repair_client_audio_buffer.py
+kernel_audio_correlation_tool	scripts/repair_client_audio_correlation.py	tool	partial	scripts/test_client_audio_correlation.py	reports/client-audio-correlation-fixture-20261003/result.json
+kernel_26f0cd1f593b	scripts/repair_client_audio_filter.py	tool	partial	scripts/test_client_audio_filter.py	scripts/repair_client_audio_filter.py
+kernel_c9424240b5f2	scripts/repair_client_audio_resample.py	tool	partial	scripts/test_client_audio_resample.py	scripts/repair_client_audio_resample.py
+kernel_d964e1648197	scripts/repair_client_audio_startup.py	tool	partial		scripts/repair_client_audio_startup.py
+kernel_1bcb23c67254	scripts/repair_client_audio_window.py	tool	partial	scripts/test_client_audio_window.py	scripts/repair_client_audio_window.py
+kernel_d1cdef50a150	scripts/repair_client_body_indices.py	tool	partial		scripts/repair_client_body_indices.py
+kernel_be3a736f80ab	scripts/repair_client_branch_shape.py	tool	partial		scripts/repair_client_branch_shape.py
+kernel_4aaae117c973	scripts/repair_client_building_catalog.py	tool	partial		scripts/repair_client_building_catalog.py
+kernel_255636a65425	scripts/repair_client_building_return.py	tool	partial		scripts/repair_client_building_return.py
+kernel_f169ff8773cd	scripts/repair_client_camera_shader_cache.py	tool	partial		scripts/repair_client_camera_shader_cache.py
+kernel_857105e34e64	scripts/repair_client_celt_scratch.py	tool	partial	scripts/test_client_celt_scratch.py	scripts/repair_client_celt_scratch.py
+kernel_a6608506ad2e	scripts/repair_client_character_loader.py	tool	partial		scripts/repair_client_character_loader.py
+kernel_3cf69de3b637	scripts/repair_client_chdir.py	tool	partial		scripts/repair_client_chdir.py
+kernel_6e306be663db	scripts/repair_client_codec_options.py	tool	partial		scripts/repair_client_codec_options.py
+kernel_feae227d6383	scripts/repair_client_codec_returns.py	tool	partial	scripts/test_client_codec_returns.py	scripts/repair_client_codec_returns.py
+kernel_84945f898c6b	scripts/repair_client_codec_scratch.py	tool	partial	scripts/test_client_codec_scratch.py	scripts/repair_client_codec_scratch.py
+kernel_ad3fc66e15fa	scripts/repair_client_collision_query.py	glue	partial	scripts/test_client_collision_query.py	reports/client-collision-query-20261004; reports/client-collision-query-native-20261004
+kernel_a47628557fcd	scripts/repair_client_control_flow.py	tool	partial		scripts/repair_client_control_flow.py
+kernel_015cb861fbcb	scripts/repair_client_copy.py	tool	partial		scripts/repair_client_copy.py
+kernel_9ff877242a86	scripts/repair_client_directory.py	tool	partial		scripts/repair_client_directory.py
+kernel_e26784c4cf63	scripts/repair_client_dynamic_huffman.py	tool	partial		scripts/repair_client_dynamic_huffman.py
+kernel_4f7f9635c04e	scripts/repair_client_dynamic_image_addresses.py	layout	partial		Native instructions and exact expression manifest: src/rebuild/client_dynamic_image_addresses.json
+kernel_f08d4005843c	scripts/repair_client_event_pump.py	tool	partial		scripts/repair_client_event_pump.py
+kernel_e05e829d131b	scripts/repair_client_expressions.py	tool	partial		scripts/repair_client_expressions.py
+kernel_064723f8ae7f	scripts/repair_client_file_abi.py	tool	partial		scripts/repair_client_file_abi.py
+kernel_708828098c75	scripts/repair_client_file_formatter.py	tool	partial		scripts/repair_client_file_formatter.py
+kernel_8d628d861120	scripts/repair_client_file_open.py	tool	partial		scripts/repair_client_file_open.py
+kernel_ef3dcb4aa8fb	scripts/repair_client_find_files.py	tool	partial		scripts/repair_client_find_files.py
+kernel_ffee6a55c438	scripts/repair_client_find_next.py	tool	partial		scripts/repair_client_find_next.py
+kernel_20bcfd9937e7	scripts/repair_client_font_startup.py	layout	partial	scripts/test_client_font_startup.py	scripts/repair_client_font_startup.py
+kernel_484a1a01689e	scripts/repair_client_format_emission.py	tool	partial		scripts/repair_client_format_emission.py
+kernel_790e3febc85e	scripts/repair_client_formatter.py	tool	partial		scripts/repair_client_formatter.py
+kernel_b5e5f73cb384	scripts/repair_client_frame_presentation.py	tool	partial		scripts/repair_client_frame_presentation.py
+kernel_694149bd5826	scripts/repair_client_full_path.py	tool	partial		scripts/repair_client_full_path.py
+kernel_b08fd8e14d70	scripts/repair_client_generation_stores.py	tool	partial		scripts/repair_client_generation_stores.py
+kernel_70de611391bc	scripts/repair_client_geometry_vectors.py	tool	partial		scripts/repair_client_geometry_vectors.py
+kernel_c7c962f32b8b	scripts/repair_client_gl_attribute_layout.py	tool	partial		scripts/repair_client_gl_attribute_layout.py
+kernel_1e4ec42f654f	scripts/repair_client_gl_version.py	tool	partial		scripts/repair_client_gl_version.py
+kernel_2aa3007fd44c	scripts/repair_client_huffman.py	tool	partial		scripts/repair_client_huffman.py
+kernel_d912a2e17326	scripts/repair_client_human_orientation.py	glue	partial	scripts/test_client_human_orientation.py	reports/client-human-orientation-20261004/stdout.txt; reports/client-human-orientation-native-20261004/disassembly.txt
+kernel_11a4a845c2e4	scripts/repair_client_ignored_cookie_exits.py	algorithm	partial		src/rebuild/client_ignored_cookie_exits.json
+kernel_aaa6d3c3143e	scripts/repair_client_image_reader.py	tool	partial		scripts/repair_client_image_reader.py
+kernel_4311ef8a438e	scripts/repair_client_image_tls.py	layout	partial	scripts/test_client_image_tls.py	scripts/repair_client_image_tls.py
+kernel_a87d152b1999	scripts/repair_client_indexed_gl_calls.py	algorithm	partial	scripts/test_client_world_gl_calls.py	src/rebuild/client_indexed_gl_calls.json
+kernel_2a40e7654179	scripts/repair_client_inflate_context.py	tool	partial		scripts/repair_client_inflate_context.py
+kernel_b3870424b3b1	scripts/repair_client_integer_locale.py	tool	partial		scripts/repair_client_integer_locale.py
+kernel_4da0f1d1fcfa	scripts/repair_client_item_header.py	tool	partial		scripts/repair_client_item_header.py
+kernel_8a5a8bb2cfcd	scripts/repair_client_item_stores.py	tool	partial		scripts/repair_client_item_stores.py
+kernel_6c4b8ad0c8d4	scripts/repair_client_itemset_loader.py	tool	partial		scripts/repair_client_itemset_loader.py
+kernel_f60085075a29	scripts/repair_client_itemset_storage.py	tool	partial		scripts/repair_client_itemset_storage.py
+kernel_b178b84fe737	scripts/repair_client_joystick_startup.py	tool	partial		scripts/repair_client_joystick_startup.py
+kernel_170f56c5b652	scripts/repair_client_layered_shape.py	tool	partial		scripts/repair_client_layered_shape.py
+kernel_00eccbd15624	scripts/repair_client_local_time.py	tool	partial		scripts/repair_client_local_time.py
+kernel_9ecc8446991e	scripts/repair_client_locale.py	tool	partial		scripts/repair_client_locale.py
+kernel_2c177ecf42d2	scripts/repair_client_main_menu.py	tool	partial		scripts/repair_client_main_menu.py
+kernel_407412fcbb87	scripts/repair_client_malloc_calls.py	tool	partial		scripts/repair_client_malloc_calls.py
+kernel_c1d9bf627fb3	scripts/repair_client_master_auth.py	tool	partial		scripts/repair_client_master_auth.py
+kernel_7296510e30f6	scripts/repair_client_master_connect.py	tool	partial		scripts/repair_client_master_connect.py
+kernel_c54c2680301b	scripts/repair_client_matrix_multiply.py	tool	partial		scripts/repair_client_matrix_multiply.py
+kernel_1e612aaeca72	scripts/repair_client_memory_abi.py	tool	partial		scripts/repair_client_memory_abi.py
+kernel_b4633488fb1b	scripts/repair_client_menu_actions.py	layout	partial	scripts/test_client_options_controls.py	docs/client-menu-startup.md
+kernel_ef7860bd9d06	scripts/repair_client_mesh_query.py	glue	partial	scripts/test_client_mesh_query.py	reports/client-mesh-query-20261004/stdout.txt; reports/client-mesh-query-native-20261004/disassembly.txt
+kernel_6345c3a851df	scripts/repair_client_mesh_storage.py	tool	partial		scripts/repair_client_mesh_storage.py
+kernel_d7aaad4a9b79	scripts/repair_client_model_loader.py	tool	partial		scripts/repair_client_model_loader.py
+kernel_967c8f74c363	scripts/repair_client_options_menu.py	layout	partial	scripts/test_client_options_controls.py	docs/client-menu-startup.md
+kernel_f9e7d43606f2	scripts/repair_client_orientation_blend.py	algorithm	partial	scripts/test_client_orientation_blend.py	Original scalar lane and packed CVTPS2PD/CVTPD2PS instructions at 0x1400c2f90
+kernel_dd278c15f225	scripts/repair_client_png_store_alignment.py	tool	partial		scripts/repair_client_png_store_alignment.py
+kernel_fde17aac317f	scripts/repair_client_pointer_storage.py	tool	partial		scripts/repair_client_pointer_storage.py
+kernel_5daa6a4b5014	scripts/repair_client_procedural_shape.py	tool	partial		scripts/repair_client_procedural_shape.py
+kernel_7ca07641b1cf	scripts/repair_client_profile_stores.py	tool	partial		scripts/repair_client_profile_stores.py
+kernel_40034be490d0	scripts/repair_client_quad_extrusion.py	tool	partial		scripts/repair_client_quad_extrusion.py
+kernel_d10cf01d8097	scripts/repair_client_quad_shape.py	tool	partial		scripts/repair_client_quad_shape.py
+kernel_2ac4f694fa6b	scripts/repair_client_register_helpers.py	tool	partial		scripts/repair_client_register_helpers.py
+kernel_4bd24fbfbdad	scripts/repair_client_render_cookie.py	tool	partial		scripts/repair_client_render_cookie.py
+kernel_5804ad31341e	scripts/repair_client_render_float_calls.py	algorithm	partial	scripts/test_client_world_gl_calls.py	src/rebuild/client_render_float_calls.json
+kernel_811cf877c348	scripts/repair_client_render_workspaces.py	layout	partial	scripts/test_client_world_gl_calls.py	scripts/repair_client_render_workspaces.py,reports/client-render-workspaces-20261004/stdout.txt
+kernel_5a1100c767e7	scripts/repair_client_rotation_step.py	glue	partial	scripts/test_client_rotation_step.py	reports/client-rotation-step-20261004/stdout.txt; reports/client-rotation-native-20261004/disassembly.txt
+kernel_cf512e0a82e4	scripts/repair_client_scan_input.py	tool	partial		scripts/repair_client_scan_input.py
+kernel_a743e2d2c24a	scripts/repair_client_scene_raycast.py	tool	partial	scripts/test_client_scene_raycast.py	scripts/repair_client_scene_raycast.py
+kernel_61b04a38b8f5	scripts/repair_client_sdl_window.py	tool	partial		scripts/repair_client_sdl_window.py
+kernel_2d10e5552060	scripts/repair_client_shader_source.py	tool	partial		scripts/repair_client_shader_source.py
+kernel_bdd8824968f0	scripts/repair_client_shader_status.py	tool	partial		scripts/repair_client_shader_status.py
+kernel_45d5b977ae7d	scripts/repair_client_shadow_uniform.py	tool	partial	scripts/test_client_shadow_uniform.py	docs/client-shadow-uniform.md
+kernel_890d5ba46933	scripts/repair_client_sorter.py	tool	partial		scripts/repair_client_sorter.py
+kernel_53873f9066af	scripts/repair_client_sound_gain_alignment.py	tool	partial		scripts/repair_client_sound_gain_alignment.py
+kernel_abcdf9f27a58	scripts/repair_client_sound_load.py	tool	partial		scripts/repair_client_sound_load.py
+kernel_5947d202922c	scripts/repair_client_spatial_audio.py	tool	partial	scripts/test_client_spatial_audio.py	scripts/repair_client_spatial_audio.py
+kernel_ef27a2df0a1a	scripts/repair_client_startup_arguments.py	tool	partial		scripts/repair_client_startup_arguments.py
+kernel_950912faf406	scripts/repair_client_stdio.py	tool	partial		scripts/repair_client_stdio.py
+kernel_3b9623491588	scripts/repair_client_steam_context.py	tool	partial		scripts/repair_client_steam_context.py
+kernel_bb695965acf9	scripts/repair_client_steam_friend_storage.py	tool	partial		scripts/repair_client_steam_friend_storage.py
+kernel_c2a68ec5afb2	scripts/repair_client_swap_window.py	tool	partial		scripts/repair_client_swap_window.py
+kernel_4823b36d780d	scripts/repair_client_terrain_raycast.py	tool	partial		scripts/repair_client_terrain_raycast.py
+kernel_2d384aa7d497	scripts/repair_client_text_startup.py	tool	partial		scripts/repair_client_text_startup.py
+kernel_ca9530f88768	scripts/repair_client_texture_slot.py	tool	partial		scripts/repair_client_texture_slot.py
+kernel_3d448109e058	scripts/repair_client_thread_startup.py	tool	partial		scripts/repair_client_thread_startup.py
+kernel_f0808f490ea6	scripts/repair_client_timezone_startup.py	tool	partial		scripts/repair_client_timezone_startup.py
+kernel_7f46ebc94b6e	scripts/repair_client_ui_return.py	tool	partial		scripts/repair_client_ui_return.py
+kernel_cf9ea703f1bb	scripts/repair_client_vehicle_storage.py	tool	partial		scripts/repair_client_vehicle_storage.py
+kernel_8b4511d38225	scripts/repair_client_vertex_layouts.py	glue	partial		70 native vertex attribute call sites across 24 functions; three computed offset sites pending
+kernel_a8ba0d4b8388	scripts/repair_client_world_default_stores.py	tool	partial		scripts/repair_client_world_default_stores.py
+kernel_cc442c814804	scripts/repair_client_world_gl_calls.py	glue	partial		Pinned native GL call sites in 0x140123190; float clear, depth clear, vertex layout and write masks; live integration pending
+kernel_d12d8dab6ed9	scripts/rust-client.ps1	tool	partial		scripts/rust-client.ps1
+kernel_edcd40e102c2	scripts/scan_elf_itemtype_refs.py	tool	partial		scripts/scan_elf_itemtype_refs.py
+kernel_0933c0d1c962	scripts/setup_ghidra_mcp.py	tool	partial		scripts/setup_ghidra_mcp.py
+kernel_840939cf3b53	scripts/split_client_sources.py	tool	partial	scripts/test_split_client_sources.py	scripts/split_client_sources.py
+kernel_3acb302761e7	scripts/test_check_rebuild.py	test	partial		scripts/test_check_rebuild.py
+kernel_7ec1a0311dc4	scripts/test_client_api_cache.py	test	partial		scripts/test_client_api_cache.py
+kernel_72813518efb2	scripts/test_client_api_ranges.py	test	partial		scripts/test_client_api_ranges.py
+kernel_audio_bands_test	scripts/test_client_audio_bands.py	test	partial	scripts/test_client_audio_bands.py	reports/client-audio-bands-fixture-20261003/result.json
+kernel_69255616b6a0	scripts/test_client_audio_buffer.py	test	partial	scripts/test_client_audio_buffer.py	scripts/test_client_audio_buffer.py
+kernel_audio_correlation_test	scripts/test_client_audio_correlation.py	test	partial	scripts/test_client_audio_correlation.py	reports/client-audio-correlation-fixture-20261003/result.json
+kernel_f98c058fc1e2	scripts/test_client_audio_filter.py	test	partial	scripts/test_client_audio_filter.py	scripts/test_client_audio_filter.py
+kernel_9c7f763083e8	scripts/test_client_audio_resample.py	test	partial	scripts/test_client_audio_resample.py	scripts/test_client_audio_resample.py
+kernel_70715ab913d7	scripts/test_client_audio_startup.py	test	partial		scripts/test_client_audio_startup.py
+kernel_71c7ee63c296	scripts/test_client_audio_window.py	test	partial	scripts/test_client_audio_window.py	scripts/test_client_audio_window.py
+kernel_60a66001cf36	scripts/test_client_block_raycast.py	test	partial	scripts/test_client_block_raycast.py	reports/client-block-raycast-fixture-20261004/stdout.txt
+kernel_c200cce6a9f7	scripts/test_client_body_indices.py	test	partial		scripts/test_client_body_indices.py
+kernel_aafe88ada1fc	scripts/test_client_building_catalog.py	test	partial		scripts/test_client_building_catalog.py
+kernel_ac34842def26	scripts/test_client_building_return.py	test	partial		scripts/test_client_building_return.py
+kernel_13de3df82e04	scripts/test_client_camera_shader_cache.py	test	partial		scripts/test_client_camera_shader_cache.py
+kernel_039a5b9fcd6e	scripts/test_client_celt_scratch.py	test	partial	scripts/test_client_celt_scratch.py	scripts/test_client_celt_scratch.py
+kernel_c50ad6b2ae03	scripts/test_client_character_loader.py	test	partial		scripts/test_client_character_loader.py
+kernel_f1cd1fb4a5ef	scripts/test_client_chdir.py	test	partial		scripts/test_client_chdir.py
+kernel_a5f16723c957	scripts/test_client_codec_options.py	test	partial		scripts/test_client_codec_options.py
+kernel_4642b1981a87	scripts/test_client_codec_returns.py	test	partial	scripts/test_client_codec_returns.py	scripts/test_client_codec_returns.py
+kernel_96386e251a22	scripts/test_client_codec_scratch.py	test	partial	scripts/test_client_codec_scratch.py	scripts/test_client_codec_scratch.py
+kernel_836f2ed5c584	scripts/test_client_collision_query.py	test	partial	scripts/test_client_collision_query.py	reports/client-collision-query-20261004; reports/client-collision-query-native-20261004
+kernel_c11d1019837f	scripts/test_client_copy.py	test	partial		scripts/test_client_copy.py
+kernel_27001d421b98	scripts/test_client_create_vehicle_addresses.py	test	partial	scripts/test_client_create_vehicle_addresses.py	reports/client-create-vehicle-addresses-20261004/stdout.txt
+kernel_d51dec149c1d	scripts/test_client_directory.py	test	partial		scripts/test_client_directory.py
+kernel_a5cd4e7ab437	scripts/test_client_dname.py	test	partial		scripts/test_client_dname.py
+kernel_01df108da32a	scripts/test_client_dynamic_huffman.py	test	partial		scripts/test_client_dynamic_huffman.py
+kernel_27cfcd620831	scripts/test_client_event_pump.py	test	partial		scripts/test_client_event_pump.py
+kernel_61c9d7f640b7	scripts/test_client_file_abi.py	test	partial		scripts/test_client_file_abi.py
+kernel_b7ddc0b1ac7e	scripts/test_client_file_formatter.py	test	partial		scripts/test_client_file_formatter.py
+kernel_6e3de2203e15	scripts/test_client_file_open.py	test	partial		scripts/test_client_file_open.py
+kernel_19b870655120	scripts/test_client_find_files.py	test	partial		scripts/test_client_find_files.py
+kernel_9a8ae94dba8a	scripts/test_client_find_metadata.py	test	partial		scripts/test_client_find_metadata.py
+kernel_c8c9216aa40d	scripts/test_client_find_narrow.py	test	partial		scripts/test_client_find_narrow.py
+kernel_58d9ee6d94ff	scripts/test_client_find_next.py	test	partial		scripts/test_client_find_next.py
+kernel_ee2ad3b312a3	scripts/test_client_font_startup.py	test	partial		scripts/test_client_font_startup.py
+kernel_cc8d1dee118a	scripts/test_client_format_emission.py	test	partial		scripts/test_client_format_emission.py
+kernel_bd091753e737	scripts/test_client_formatter.py	test	partial		scripts/test_client_formatter.py
+kernel_3cfdc170b380	scripts/test_client_frame_presentation.py	test	partial		scripts/test_client_frame_presentation.py
+kernel_a744521444a3	scripts/test_client_full_path.py	test	partial		scripts/test_client_full_path.py
+kernel_1fdaefcf2cdf	scripts/test_client_generation_stores.py	test	partial		scripts/test_client_generation_stores.py
+kernel_b286276264ef	scripts/test_client_geometry_vectors.py	test	partial		scripts/test_client_geometry_vectors.py
+kernel_56459fb5ec64	scripts/test_client_gl_version.py	test	partial		scripts/test_client_gl_version.py
+kernel_b7849842fc9f	scripts/test_client_helpers.py	test	partial		scripts/test_client_helpers.py
+kernel_155f301a69d5	scripts/test_client_huffman.py	test	partial		scripts/test_client_huffman.py
+kernel_463cec5fcb0f	scripts/test_client_human_orientation.py	test	partial	scripts/test_client_human_orientation.py	reports/client-human-orientation-20261004/stdout.txt; reports/client-human-orientation-native-20261004/disassembly.txt
+kernel_23922dcdaf90	scripts/test_client_image_reader.py	test	partial		scripts/test_client_image_reader.py
+kernel_3e1a1848e84c	scripts/test_client_image_tls.py	test	partial	scripts/test_client_image_tls.py	scripts/test_client_image_tls.py
+kernel_a15c6c0e0b8e	scripts/test_client_inflate_context.py	test	partial		scripts/test_client_inflate_context.py
+kernel_484705897bc9	scripts/test_client_integer_locale.py	test	partial		scripts/test_client_integer_locale.py
+kernel_3c30c82112fa	scripts/test_client_item_header.py	test	partial		scripts/test_client_item_header.py
+kernel_e3f3d1328058	scripts/test_client_item_inertia.py	test	partial		scripts/test_client_item_inertia.py
+kernel_8326816e03b3	scripts/test_client_item_ring.py	test	partial	scripts/test_client_item_ring.py	reports/client-item-ring-20261004/stdout.txt
+kernel_6c466c6fec7b	scripts/test_client_item_stores.py	test	partial		scripts/test_client_item_stores.py
+kernel_c1e8b6facce3	scripts/test_client_itemset_loader.py	test	partial		scripts/test_client_itemset_loader.py
+kernel_22eb2b8095ab	scripts/test_client_itemset_storage.py	test	partial		scripts/test_client_itemset_storage.py
+kernel_26263399f231	scripts/test_client_joystick_startup.py	test	partial		scripts/test_client_joystick_startup.py
+kernel_c79e55d7dd73	scripts/test_client_local_time.py	test	partial		scripts/test_client_local_time.py
+kernel_934a411c173e	scripts/test_client_locale.py	test	partial		scripts/test_client_locale.py
+kernel_4b84183b6b60	scripts/test_client_main_menu.py	test	partial		scripts/test_client_main_menu.py
+kernel_0ada60167138	scripts/test_client_malloc_calls.py	test	partial		scripts/test_client_malloc_calls.py
+kernel_e26f38682789	scripts/test_client_master_auth.py	test	partial		scripts/test_client_master_auth.py
+kernel_befdb9440420	scripts/test_client_master_connect.py	test	partial		scripts/test_client_master_connect.py
+kernel_a91bec705dba	scripts/test_client_matrix_multiply.py	test	partial		scripts/test_client_matrix_multiply.py
+kernel_7db7ab77b2e5	scripts/test_client_memory_abi.py	test	partial		scripts/test_client_memory_abi.py
+kernel_933c49293d23	scripts/test_client_mesh_query.py	test	partial	scripts/test_client_mesh_query.py	reports/client-mesh-query-20261004/stdout.txt; reports/client-mesh-query-native-20261004/disassembly.txt
+kernel_1f74d83133c7	scripts/test_client_mesh_storage.py	test	partial		scripts/test_client_mesh_storage.py
+kernel_3e9772154354	scripts/test_client_model_loader.py	test	partial		scripts/test_client_model_loader.py
+kernel_6e24902565b5	scripts/test_client_native_gaps.py	test	partial		scripts/test_client_native_gaps.py
+kernel_9f8fe78f8ca8	scripts/test_client_options_controls.py	test	partial	scripts/test_client_options_controls.py	reports/client-options-controls-fixture-20261003/stdout.txt
+kernel_57240c54dc48	scripts/test_client_orientation_blend.py	test	partial	scripts/test_client_orientation_blend.py	reports/client-orientation-blend-20261004/stdout.txt
+kernel_3720220e45de	scripts/test_client_png_filter_return.py	test	partial		scripts/test_client_png_filter_return.py
+kernel_e2412b6db4b9	scripts/test_client_png_signature.py	test	partial		scripts/test_client_png_signature.py
+kernel_2c00b1af3e88	scripts/test_client_png_store_alignment.py	test	partial		scripts/test_client_png_store_alignment.py
+kernel_4541f726531c	scripts/test_client_pose_interpolation.py	tool	partial	scripts/test_client_pose_interpolation.py	reports/human-pose-trace-20261003/orientation-fixture/result.json
+kernel_5c0ee02878b0	scripts/test_client_practice_csx.py	test	partial	scripts/test_client_practice_csx.py	docs/client-menu-startup.md
+kernel_efa5fb9d5b33	scripts/test_client_practice_spawn_index.py	test	partial	scripts/test_client_practice_spawn_index.py	reports/client-practice-spawn-index-20261004/stdout.txt
+kernel_0d8dbb520e27	scripts/test_client_procedural_shape.py	test	partial		scripts/test_client_procedural_shape.py
+kernel_bb989ea71b41	scripts/test_client_profile_stores.py	test	partial		scripts/test_client_profile_stores.py
+kernel_1a5aa6248cd6	scripts/test_client_putc.py	test	partial		scripts/test_client_putc.py
+kernel_3788ffe23eba	scripts/test_client_quad_extrusion.py	test	partial		scripts/test_client_quad_extrusion.py
+kernel_230f3cf038d7	scripts/test_client_rotation_step.py	test	partial	scripts/test_client_rotation_step.py	reports/client-rotation-step-20261004/stdout.txt; reports/client-rotation-native-20261004/disassembly.txt
+kernel_3f729de0ae35	scripts/test_client_scan_input.py	test	partial		scripts/test_client_scan_input.py
+kernel_0b4c73757968	scripts/test_client_scene_raycast.py	test	partial		scripts/test_client_scene_raycast.py
+kernel_b3eee3a9a19e	scripts/test_client_sdl_window.py	test	partial		scripts/test_client_sdl_window.py
+kernel_ae401d3546e2	scripts/test_client_shader_source.py	test	partial		scripts/test_client_shader_source.py
+kernel_1c815dc41555	scripts/test_client_shader_status.py	test	partial		scripts/test_client_shader_status.py
+kernel_8e1db83794b4	scripts/test_client_shadow_uniform.py	test	partial		docs/client-shadow-uniform.md
+kernel_a373155ad4e4	scripts/test_client_sheet_book.py	test	partial		scripts/test_client_sheet_book.py
+kernel_8eb4b5fe6273	scripts/test_client_sorter.py	test	partial		scripts/test_client_sorter.py
+kernel_4cf4c428e913	scripts/test_client_sound_gain_alignment.py	test	partial		scripts/test_client_sound_gain_alignment.py
+kernel_5bbac662e8e1	scripts/test_client_sound_load.py	test	partial		scripts/test_client_sound_load.py
+kernel_39966b7a8964	scripts/test_client_spatial_audio.py	test	partial	scripts/test_client_spatial_audio.py	scripts/test_client_spatial_audio.py
+kernel_07c7d4608254	scripts/test_client_startup_arguments.py	test	partial		scripts/test_client_startup_arguments.py
+kernel_aa76db34c8ae	scripts/test_client_stdio.py	test	partial		scripts/test_client_stdio.py
+kernel_365754a617e8	scripts/test_client_steam_context.py	test	partial		scripts/test_client_steam_context.py
+kernel_42cc0c77ced8	scripts/test_client_steam_friend_storage.py	test	partial		scripts/test_client_steam_friend_storage.py
+kernel_b67d8f379ad3	scripts/test_client_stream_buffer.py	test	partial		scripts/test_client_stream_buffer.py
+kernel_4ff88ec016fc	scripts/test_client_swap_window.py	test	partial		scripts/test_client_swap_window.py
+kernel_608f957e6b4a	scripts/test_client_terrain_raycast.py	test	partial		scripts/test_client_terrain_raycast.py
+kernel_6bdfa902de3a	scripts/test_client_text_formatter.py	test	partial		scripts/test_client_text_formatter.py
+kernel_5f6b0e71e59e	scripts/test_client_text_startup.py	test	partial		scripts/test_client_text_startup.py
+kernel_7747e9d1d254	scripts/test_client_texture_slot.py	test	partial		scripts/test_client_texture_slot.py
+kernel_35f5d16abc88	scripts/test_client_thread_startup.py	test	partial		scripts/test_client_thread_startup.py
+kernel_ac43ca28ce07	scripts/test_client_timezone_setup.py	test	partial		scripts/test_client_timezone_setup.py
+kernel_286e609c816b	scripts/test_client_train_storage.py	test	partial		scripts/test_client_train_storage.py
+kernel_f62aaaf62e7c	scripts/test_client_ui_return.py	test	partial		scripts/test_client_ui_return.py
+kernel_a78fd40a7d5f	scripts/test_client_vehicle_storage.py	test	partial		scripts/test_client_vehicle_storage.py
+kernel_c057da6bc5e0	scripts/test_client_world_default_stores.py	test	partial		scripts/test_client_world_default_stores.py
+kernel_938ffbc58e16	scripts/test_client_world_gl_calls.py	test	partial		Native bounded GL argument capture comparisons; fixture in reports/client-world-gl-calls-20261004
+kernel_5010b471c93d	scripts/test_extract_shaders.py	test	partial		scripts/test_extract_shaders.py
+kernel_60aa3e341b55	scripts/test_link_client.py	test	partial		scripts/test_link_client.py
+kernel_4cf95eac8d60	scripts/test_player_test.py	test	partial	scripts/test_player_test.py	docs/player-test.md
+kernel_fe44d60401c4	scripts/test_prepare_rebuild.py	test	partial		scripts/test_prepare_rebuild.py
+kernel_fbdd0d6a85c7	scripts/test_prepare_server.py	test	partial		scripts/test_prepare_server.py
+kernel_26c87df1d1d3	scripts/test_rust_all_constraint_kinds.py	test	partial	scripts/test_rust_all_constraint_kinds.py	reports/rust-all-constraint-kinds-20261003/result.json
+kernel_c78a0a94c9e3	scripts/test_rust_anchor_constraint.py	test	partial	scripts/test_rust_anchor_constraint.py	reports/rust-anchor-constraint-20261003/result.json
+kernel_f35de4cd6fef	scripts/test_rust_anchor_preparation.py	test	partial	scripts/test_rust_anchor_preparation.py	reports/rust-anchor-preparation-20261003/result.json
+kernel_5cdfc51b64dd	scripts/test_rust_angular_constraints.py	test	partial	scripts/test_rust_angular_constraints.py	reports/rust-angular-constraints-20261003/result.json
+kernel_71ca97221e27	scripts/test_rust_body_accumulation.py	test	partial	scripts/test_rust_body_accumulation.py	reports/rust-body-accumulation-20261003/result.json
+kernel_body_creation	scripts/test_rust_body_creation.py	test	partial	scripts/test_rust_body_creation.py	reports/rust-body-creation-20261003/result.json
+kernel_9c260161374a	scripts/test_rust_contact_creation.py	test	partial	scripts/test_rust_contact_creation.py	reports/rust-contact-creation-20261003/result.json
+kernel_10cac0bd9885	scripts/test_rust_edge_geometry.py	test	partial	scripts/test_rust_edge_geometry.py	reports/rust-edge-geometry-20261003/result.json
+kernel_human_bodies	scripts/test_rust_human_bodies.py	test	partial	scripts/test_rust_human_bodies.py	reports/rust-human-bodies-20261003/result.json
+kernel_human_joints	scripts/test_rust_human_joints.py	test	partial	scripts/test_rust_human_joints.py	reports/rust-human-joints-20261003/result.json
+kernel_344171bf2021	scripts/test_rust_item_box.py	test	partial	scripts/test_rust_item_box.py	reports/rust-item-box-20261003/result.json
+kernel_aefc2b361882	scripts/test_rust_joint_creation.py	test	partial	scripts/test_rust_joint_creation.py	reports/rust-joint-creation-20261003/result.json
+kernel_6b27d65f9eae	scripts/test_rust_kind10_step.py	test	partial	scripts/test_rust_kind10_step.py	reports/rust-kind10-step-20261003/result.json
+kernel_linear_body_step	scripts/test_rust_linear_body_step.py	test	partial	scripts/test_rust_linear_body_step.py	reports/rust-linear-body-step-20261003/result.json
+kernel_0461648a6d7d	scripts/test_rust_mesh_collision.py	test	partial	scripts/test_rust_mesh_collision.py	reports/rust-mesh-collision-20261003/result.json
+kernel_7b794cfc0c45	scripts/test_rust_mesh_geometry.py	test	partial	scripts/test_rust_mesh_geometry.py	reports/rust-mesh-geometry-20261003/result.json
+kernel_f1601ff71b54	scripts/test_rust_network_bits.py	test	partial	scripts/test_rust_network_bits.py	reports/rust-network-bits-20261003/result.json
+kernel_6a63a173a4dd	scripts/test_rust_point_constraints.py	test	partial	scripts/test_rust_point_constraints.py	reports/rust-point-constraints-20261003/result.json
+kernel_c8a0b1981aa4	scripts/test_rust_point_contacts.py	test	partial	scripts/test_rust_point_contacts.py	reports/rust-point-contacts-20261003/result.json
+kernel_e94f52ca72d9	scripts/test_rust_point_links.py	test	partial	scripts/test_rust_point_links.py	reports/rust-point-links-20261003/result.json
+kernel_7626cd4d656c	scripts/test_rust_point_state.py	test	partial	scripts/test_rust_point_state.py	reports/rust-point-state-20261003/result.json
+kernel_33b533f5fca7	scripts/test_rust_pose_interpolation.py	test	partial	scripts/test_rust_pose_interpolation.py	reports/rust-pose-interpolation-20261003/result.json
+kernel_485483f1dd72	scripts/test_rust_rigid_constraints.py	test	partial	scripts/test_rust_rigid_constraints.py	reports/rust-rigid-constraints-20261003/result.json
+kernel_9616bec0b30b	scripts/test_rust_segment_geometry.py	test	partial	scripts/test_rust_segment_geometry.py	reports/rust-segment-geometry-20261003/result.json
+kernel_26d849f2e0d8	scripts/test_rust_single_anchor.py	test	partial	scripts/test_rust_single_anchor.py	reports/rust-single-anchor-20261003/result.json
+kernel_f4ecc53e688a	scripts/test_rust_surface_contacts.py	test	partial	scripts/test_rust_surface_contacts.py	reports/rust-surface-contacts-20261003/result.json
+kernel_f9a9f3b473ff	scripts/test_split_client_sources.py	test	partial		scripts/test_split_client_sources.py
+kernel_e805fb906d8b	scripts/test_suitium_identities.py	test	partial		scripts/test_suitium_identities.py
+kernel_b0dd351efe22	scripts/verify-export.ps1	tool	partial		scripts/verify-export.ps1
+kernel_2c08f1d6c1dc	scripts/verify_client_dependencies.py	tool	partial		scripts/verify_client_dependencies.py
+kernel_9c0b242fd50b	scripts/verify_client_native_link.py	tool	partial		scripts/verify_client_native_link.py
+kernel_2b060caf0118	scripts/verify_client_pointer_storage.py	tool	partial		scripts/verify_client_pointer_storage.py
+kernel_3656f0c54abb	scripts/verify_rust_client.py	tool	partial		scripts/verify_rust_client.py
+kernel_c60b3779ce36	scripts/verify_rust_model_assets.py	test	partial	scripts/verify_rust_model_assets.py	reports/rust-model-assets-20261003/result.json
+kernel_39a392d106b9	src/rebuild/client_export_helpers.h	glue	partial		src/rebuild/client_export_helpers.h
+kernel_126a0a11b773	src/rebuild/client_leaf_adapter.inc	glue	partial		src/rebuild/client_leaf_adapter.inc
+kernel_74c2450d9d60	src/rebuild/client_leaf_shim.h	glue	partial		src/rebuild/client_leaf_shim.h
+kernel_0c16479fb984	src/rebuild/client_math_helpers.h	glue	partial		src/rebuild/client_math_helpers.h
+kernel_b8143ce96cfe	src/rebuild/client_x64_semantics.h	glue	partial		src/rebuild/client_x64_semantics.h
+kernel_e9d525e9b028	src/rebuild/export_compat.h	glue	partial		src/rebuild/export_compat.h
+kernel_4eb5b69c5781	src/rebuild/layout_test_deps/fmt/format.h	glue	partial		src/rebuild/layout_test_deps/fmt/format.h
+kernel_894cdd2149ab	src/rebuild/rosaserver_layout_test.cpp	test	partial		src/rebuild/rosaserver_layout_test.cpp
+kernel_afbcef3f75e3	src/rebuild/server_bits.h	glue	partial		src/rebuild/server_bits.h
+kernel_5692a692a642	src/rebuild/server_bits_test.c	test	partial		src/rebuild/server_bits_test.c
+kernel_f2b37a974c0c	src/rebuild/server_compat.h	glue	partial		src/rebuild/server_compat.h
+kernel_a85733ded16e	src/rebuild/server_image.h	glue	partial		src/rebuild/server_image.h
+kernel_a2ab291c607a	src/rebuild/server_image_test.c	test	partial		src/rebuild/server_image_test.c
+kernel_c042736f8261	src/rebuild/suitium_layout_test.cpp	test	partial		src/rebuild/suitium_layout_test.cpp
+kernel_d537e087f12b	src/rebuild/suitium_types.h	glue	partial		src/rebuild/suitium_types.h
+kernel_091c59a4ada5	src/rebuild/vector_views.h	glue	partial		src/rebuild/vector_views.h
+kernel_d20b212d71c4	src/rebuild/vector_views_test.c	test	partial		src/rebuild/vector_views_test.c
+kernel_dbd35d566554	src/recovered/camera.c	algorithm	partial		src/recovered/camera.c
+kernel_12c22b4d8e8b	src/recovered/camera.h	algorithm	partial		src/recovered/camera.h
+kernel_106871a1d886	src/recovered/camera_diff_test.c	test	partial		src/recovered/camera_diff_test.c
+kernel_825be51ce524	src/recovered/client_dname.c	algorithm	partial	scripts/test_client_dname.py	src/recovered/client_dname.c
+kernel_f0a2d714b998	src/recovered/client_leaf.c	algorithm	partial		src/recovered/client_leaf.c
+kernel_f1f4b6b0cea9	src/recovered/client_leaf.h	algorithm	partial		src/recovered/client_leaf.h
+kernel_e31905dcdad6	src/recovered/client_leaf_diff_test.c	test	partial		src/recovered/client_leaf_diff_test.c
+kernel_02772f51d14d	src/recovered/client_leaf_test.c	test	partial		src/recovered/client_leaf_test.c
+kernel_8605f4463582	src/recovered/client_resource_layout.h	algorithm	partial		src/recovered/client_resource_layout.h
+kernel_2e9745d74560	src/recovered/original_fixture.c	algorithm	partial		src/recovered/original_fixture.c
+kernel_20b7ce5dec97	src/recovered/original_fixture.h	algorithm	partial		src/recovered/original_fixture.h
+kernel_fd7bf97d4026	src/recovered/rigid_body.c	algorithm	partial		src/recovered/rigid_body.c
+kernel_eb5ccac1a725	src/recovered/rigid_body.h	algorithm	partial		src/recovered/rigid_body.h
+kernel_ff683dc1775e	src/recovered/rigid_body_diff_test.c	test	partial		src/recovered/rigid_body_diff_test.c
+kernel_b2bc565e09ec	src/recovered/server_entities.c	algorithm	partial		src/recovered/server_entities.c
+kernel_0660a49a8bbe	src/recovered/server_entities.h	algorithm	partial		src/recovered/server_entities.h
+kernel_68a9d911529c	src/recovered/server_entities_test.c	test	partial		src/recovered/server_entities_test.c
+kernel_9d8599899f58	src/recovered/shader_compile_test.c	test	partial		src/recovered/shader_compile_test.c
+kernel_6fac07dd54f9	src/recovered/world_files.c	algorithm	partial		src/recovered/world_files.c
+kernel_2b100816ef63	src/recovered/world_files.h	algorithm	partial		src/recovered/world_files.h
+kernel_8b062e052dd8	scripts/repair_client_stored_deflate.py	tool	partial	scripts/test_client_inflate_context.py	scripts/repair_client_stored_deflate.py
+kernel_200105cc8680	scripts/repair_client_swept_collision.py	tool	partial	scripts/test_client_swept_collision.py	scripts/repair_client_swept_collision.py
+kernel_f077982f0071	scripts/test_client_swept_collision.py	test	partial		scripts/test_client_swept_collision.py
+kernel_60488b46aff4	scripts/repair_client_view_storage.py	tool	partial	scripts/test_client_view_storage.py	scripts/repair_client_view_storage.py
+kernel_fb66981c72e7	scripts/test_client_view_storage.py	test	partial		scripts/test_client_view_storage.py
+kernel_579491bc21a0	scripts/repair_client_c_primitives.py	tool	partial	scripts/test_client_c_primitives.py	scripts/repair_client_c_primitives.py
+kernel_9d9f7d1a1bc0	scripts/test_client_c_primitives.py	test	partial		scripts/test_client_c_primitives.py
+kernel_cadaf0fa405b	scripts/build_render_test.py	tool	partial		scripts/build_render_test.py
+kernel_8c1eaadf4595	src/recovered/render_test.c	test	partial		src/recovered/render_test.c
+kernel_53bbaff470bd	scripts/repair_client_color_masks.py	tool	partial		scripts/repair_client_color_masks.py
+kernel_4f65176f224c	scripts/repair_client_joint_storage.py	tool	partial	scripts/test_client_joint_storage.py	scripts/repair_client_joint_storage.py
+kernel_5ae7b02904b3	scripts/test_client_joint_storage.py	test	partial		scripts/test_client_joint_storage.py
+kernel_7e9d313fe2f3	scripts/ghidra/RecoverTickBody.java	tool	partial		scripts/ghidra/RecoverTickBody.java
+kernel_d775ce493c07	scripts/repair_client_tick_calls.py	tool	partial	scripts/test_client_tick_calls.py	reports/client-tick-calls-20261004
+kernel_ba634ea0992d	scripts/test_client_tick_calls.py	test	partial	scripts/test_client_tick_calls.py	reports/client-tick-calls-20261004
+kernel_f05e72cf74db	scripts/test_client_joint_collision_storage.py	test	partial	scripts/test_client_joint_collision_storage.py	reports/client-joint-collision-storage-20261004
+kernel_26a3ba2989a1	scripts/test_client_joystick_frame.py	test	partial	scripts/test_client_joystick_frame.py	reports/client-joystick-frame-20261004
+kernel_c12d7ee1feef	scripts/repair_client_character_preview.py	tool	partial	scripts/test_client_character_preview.py	reports/client-character-preview-20261004
+kernel_35537392f949	scripts/test_client_character_preview.py	test	partial	scripts/test_client_character_preview.py	reports/client-character-preview-20261004
+kernel_3806fd32f286	scripts/repair_client_base_vertex_draws.py	tool	partial	scripts/test_client_base_vertex_draws.py	reports/client-base-vertex-20261004
+kernel_fe5362f6ebc7	scripts/test_client_base_vertex_draws.py	test	partial	scripts/test_client_base_vertex_draws.py	reports/client-base-vertex-20261004
+kernel_1a092997aeeb	scripts/repair_client_shape_contacts.py	tool	partial	scripts/test_client_shape_contacts.py	reports/client-shape-contacts-20261004
+kernel_89a7a177638b	scripts/test_client_shape_contacts.py	test	partial	scripts/test_client_shape_contacts.py	reports/client-shape-contacts-20261004
+kernel_f95db971a7eb	scripts/repair_client_human_tick_storage.py	tool	partial	scripts/test_client_human_tick_storage.py	reports/client-human-tick-storage-20261004
+kernel_4f758312db78	scripts/test_client_human_tick_storage.py	test	partial	scripts/test_client_human_tick_storage.py	reports/client-human-tick-storage-20261004
+kernel_27618fff8f5d	scripts/repair_client_practice_spawn_storage.py	tool	partial	scripts/test_client_practice_spawn_storage.py	reports/client-practice-spawn-storage-20261004
+kernel_be4e00d782e9	scripts/test_client_practice_spawn_storage.py	test	partial	scripts/test_client_practice_spawn_storage.py	reports/client-practice-spawn-storage-20261004
+kernel_f1f217cb172d	scripts/repair_client_static_sphere_query.py	tool	partial	scripts/test_client_static_sphere_query.py	reports/client-static-sphere-query-20261004
+kernel_055fdce207c9	scripts/test_client_static_sphere_query.py	test	partial	scripts/test_client_static_sphere_query.py	reports/client-static-sphere-query-20261004
+kernel_c1f5e56e7881	scripts/repair_client_tick_effect_storage.py	tool	partial	scripts/test_client_tick_effect_storage.py	reports/client-tick-effect-storage-20261004
+kernel_f63e1e3ecb1a	scripts/test_client_tick_effect_storage.py	test	partial	scripts/test_client_tick_effect_storage.py	reports/client-tick-effect-storage-20261004
+kernel_a30143a06662	scripts/repair_client_sphere_geometry_storage.py	tool	partial	scripts/test_client_sphere_geometry_storage.py	reports/client-sphere-geometry-storage-20261004
+kernel_b8dbd858b558	scripts/test_client_sphere_geometry_storage.py	test	partial	scripts/test_client_sphere_geometry_storage.py	reports/client-sphere-geometry-storage-20261004
+kernel_2a3558f0df93	scripts/repair_client_snapshot_storage.py	tool	partial	scripts/test_client_snapshot_storage.py	reports/client-snapshot-storage-20261004
+kernel_0b6ff545b178	scripts/test_client_snapshot_storage.py	test	partial	scripts/test_client_snapshot_storage.py	reports/client-snapshot-storage-20261004
+kernel_06151f383555	scripts/repair_client_pose_targets.py	tool	partial	scripts/test_client_pose_targets.py	reports/client-pose-targets-20261005
+kernel_7be3b9b54e0c	scripts/test_client_pose_targets.py	test	partial	scripts/test_client_pose_targets.py	reports/client-pose-targets-20261005
+kernel_1ee429c266e0	src/rebuild/client_window_mode.h	glue	partial	scripts/test_client_borderless.py	Recomp desktop window mode extension; separate from native recovery
+kernel_3d5349c90902	src/rebuild/client_window_mode.c	glue	partial	scripts/test_client_borderless.py	Recomp desktop window mode extension; separate from native recovery
+kernel_7a88d6d97ebf	scripts/extend_client_borderless.py	tool	partial	scripts/test_client_borderless.py	Recomp desktop window mode extension; separate from native recovery
+kernel_27f5d057171f	scripts/test_client_borderless.py	test	partial	scripts/test_client_borderless.py	Recomp desktop window mode extension; separate from native recovery
+kernel_d727b5236fc6	scripts/repair_client_health_pose.py	tool	partial	scripts/test_client_health_pose.py	reports/client-health-pose-20261005
+kernel_42f8909942d0	scripts/test_client_health_pose.py	test	partial	scripts/test_client_health_pose.py	reports/client-health-pose-20261005
+kernel_cf1166e2df68	src/client/client_audio.c	glue	partial		src/client/client_audio.c
+kernel_214ed56f474e	src/client/client_character.c	glue	partial		src/client/client_character.c
+kernel_867d8e2f621b	src/client/client_collision.c	glue	partial		src/client/client_collision.c
+kernel_d8b4202d3d05	src/client/client_data.c	glue	partial		src/client/client_data.c
+kernel_4f3c4e9993f4	src/client/client_effects.c	glue	partial		src/client/client_effects.c
+kernel_d265e5c247c9	src/client/client_hud.c	glue	partial		src/client/client_hud.c
+kernel_55e9049003ee	src/client/client_humans.c	glue	partial		src/client/client_humans.c
+kernel_5eef343b5ae7	src/client/client_input.c	glue	partial		src/client/client_input.c
+kernel_add2a63216f4	src/client/client_items.c	glue	partial		src/client/client_items.c
+kernel_c79d4b629415	src/client/client_leaf_shim.h	glue	partial		src/client/client_leaf_shim.h
+kernel_490b6c443c8c	src/client/client_leaf.h	glue	partial		src/client/client_leaf.h
+kernel_cf25561744ac	src/client/client_main.c	glue	partial		src/client/client_main.c
+kernel_ca354ecd5c82	src/client/client_master_network.c	glue	partial		src/client/client_master_network.c
+kernel_3ca0573a6047	src/client/client_math.c	glue	partial		src/client/client_math.c
+kernel_967815282996	src/client/client_physics.c	glue	partial		src/client/client_physics.c
+kernel_e9a7f4c87d2f	src/client/client_practice.c	glue	partial		src/client/client_practice.c
+kernel_88a4088d1ef0	src/client/client_recovery_000000.c	glue	partial		src/client/client_recovery_000000.c
+kernel_69162641fd6b	src/client/client_recovery_020000.c	glue	partial		src/client/client_recovery_020000.c
+kernel_8bc636c70c5a	src/client/client_recovery_040000.c	glue	partial		src/client/client_recovery_040000.c
+kernel_f03c26f5dabf	src/client/client_recovery_060000.c	glue	partial		src/client/client_recovery_060000.c
+kernel_39aa61e448a4	src/client/client_recovery_080000.c	glue	partial		src/client/client_recovery_080000.c
+kernel_5af38bbfcec2	src/client/client_recovery_0a0000.c	glue	partial		src/client/client_recovery_0a0000.c
+kernel_fd44c03a58b2	src/client/client_recovery_0c0000.c	glue	partial		src/client/client_recovery_0c0000.c
+kernel_2e53b993473b	src/client/client_recovery_0e0000.c	glue	partial		src/client/client_recovery_0e0000.c
+kernel_ae7c82e86f4f	src/client/client_recovery_100000.c	glue	partial		src/client/client_recovery_100000.c
+kernel_8c1c9ff83d5f	src/client/client_recovery_120000.c	glue	partial		src/client/client_recovery_120000.c
+kernel_60e576559603	src/client/client_recovery_140000.c	glue	partial		src/client/client_recovery_140000.c
+kernel_8ad05b8768d4	src/client/client_recovery_160000.c	glue	partial		src/client/client_recovery_160000.c
+kernel_c874b0d848d9	src/client/client_recovery_180000.c	glue	partial		src/client/client_recovery_180000.c
+kernel_0056480ee8d5	src/client/client_renderer.c	glue	partial		src/client/client_renderer.c
+kernel_2ed31bd59f5b	src/client/client_runtime_180000.c	glue	partial		src/client/client_runtime_180000.c
+kernel_681d97725484	src/client/client_runtime_1a0000.c	glue	partial		src/client/client_runtime_1a0000.c
+kernel_8eab7e2dd407	src/client/client_runtime_1c0000.c	glue	partial		src/client/client_runtime_1c0000.c
+kernel_c3040cab4387	src/client/client_runtime_1e0000.c	glue	partial		src/client/client_runtime_1e0000.c
+kernel_81737e42b7c3	src/client/client_runtime_200000.c	glue	partial		src/client/client_runtime_200000.c
+kernel_06742e4e5faa	src/client/client_runtime_220000.c	glue	partial		src/client/client_runtime_220000.c
+kernel_e85b87035b0c	src/client/client_runtime_240000.c	glue	partial		src/client/client_runtime_240000.c
+kernel_4d7270c9b8d2	src/client/client_runtime_260000.c	glue	partial		src/client/client_runtime_260000.c
+kernel_b6675b052e3c	src/client/client_startup.c	glue	partial		src/client/client_startup.c
+kernel_f993b5e87608	src/client/client_terrain.c	glue	partial		src/client/client_terrain.c
+kernel_07169c5beb9c	src/client/client_ui.c	glue	partial		src/client/client_ui.c
+kernel_4ae190a00302	src/client/client_vehicles.c	glue	partial		src/client/client_vehicles.c
+kernel_8815caad3eec	src/client/client_world_assets.c	glue	partial		src/client/client_world_assets.c
+kernel_b2cd3ee60506	src/client/client_world_generation.c	glue	partial		src/client/client_world_generation.c
+kernel_e525fb1ec620	src/client/defs.h	glue	partial		src/client/defs.h
+kernel_a764cb0f5c1a	src/client/import_shim.c	glue	partial		src/client/import_shim.c
+kernel_02adba64fe66	src/client/recovered_forward.h	glue	partial		src/client/recovered_forward.h
+kernel_4444470d9f0a	src/client/recovered_imports.h	glue	partial		src/client/recovered_imports.h
+kernel_70a2263541f6	src/client/shared_client.h	glue	partial		src/client/shared_client.h
+kernel_7d70d292cf93	scripts/client_sources.py	tool	partial	scripts/test_client_sources.py	scripts/client_sources.py
+kernel_adbfbbfea382	scripts/test_client_sources.py	test	partial		scripts/test_client_sources.py
+debug_console_c	src/rebuild/client_debug_console.c	glue	partial	scripts/test_client_debug_console.py	docs/client-debug-console.md
+debug_console_h	src/rebuild/client_debug_console.h	glue	partial	scripts/test_client_debug_console.py	docs/client-debug-console.md
+debug_console_test	scripts/test_client_debug_console.py	test	partial		docs/client-debug-console.md

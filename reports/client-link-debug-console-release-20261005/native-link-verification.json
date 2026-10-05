@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "executable_sha256": "b3b621747896af5403d1cb9b324118069d15d345dec58633ae29932323c4419a",
+  "original_sha256": "e9500422582b7e550be25f6b31e8cdf00b728ae733d5444868c89982c1526c5e",
+  "instructions": 7913,
+  "relative_fixups": 1346,
+  "readonly_windows": 68,
+  "unwind_entries": 45,
+  "executed_client": false
+}

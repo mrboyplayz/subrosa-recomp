@@ -1,0 +1,9 @@
+
+D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\pointer_storage.obj:     file format pe-x86-64
+
+RELOCATION RECORDS FOR [.data$sr_pointer_alias]:
+OFFSET           TYPE              VALUE
+0000000000000000 IMAGE_REL_AMD64_ADDR64  wctype
+0000000000000010 IMAGE_REL_AMD64_ADDR64  off_140283488
+
+

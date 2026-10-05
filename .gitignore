@@ -1,8 +1,9 @@
-# Keep proprietary game files and local analyzer databases out of this repo.
+# Private recomp source repository. Keep installed game files and caches local.
 *
 
 # Track the reverse-engineering project itself.
 !.gitignore
+!.gitattributes
 !README.md
 !CMakeLists.txt
 !docs/
@@ -19,14 +20,52 @@
 !notes/**
 !specs/
 !specs/**
+!sheets/
+!sheets/**
+!rust-client/
+!rust-client/**
+!exports/
+!exports/client/
+!exports/client/**
+!exports/dedicated/
+!exports/dedicated/**
+!third_party/
+!third_party/**
+!RosaServer-cmo-port/
+!RosaServer-cmo-port/**
+!handoff/
+!handoff/**
+!ghidra/
+!ghidra/*.java
+!ghidra/*.txt
+!re/
+!re/ghidra_scripts/
+!re/ghidra_scripts/**
+!work/
+!work/rebuild/
+!work/rebuild/dedicated/
+!work/rebuild/dedicated/**
 
 # Generated local reports are reproducible.
 reports/
-exports/
-work/
 build/
 __pycache__/
 *.pyc
+rust-client/target/
+**/.git/
+**/.vs/
+**/.vscode/
+**/CMakeFiles/
+*.o
+*.obj
+*.pdb
+*.exe
+*.dll
+*.so
+*.x64
+*.a
+*.lib
+*.zip
 
 # IDA/Ghidra/Binary Ninja project state can contain copied binary data.
 *.i64

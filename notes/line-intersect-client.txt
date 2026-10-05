@@ -1,0 +1,239 @@
+0x1400dc050-0x1400dc644 sub_1400DC050
+
+__int64 __fastcall sub_1400DC050(__int64 a1, __int64 a2, int a3)
+{
+  __int64 v4; // r13
+  __int64 v5; // r15
+  unsigned int v6; // r14d
+  _DWORD *v7; // rdi
+  int i; // ebx
+  int v9; // edi
+  int *v10; // rbx
+  int v11; // xmm0_4
+  int v12; // xmm0_4
+  int v13; // xmm1_4
+  float v14; // xmm7_4
+  float v15; // xmm0_4
+  float v16; // xmm6_4
+  float v17; // xmm7_4
+  float v18; // xmm9_4
+  float v19; // xmm10_4
+  float v20; // xmm8_4
+  int v21; // r11d
+  float v22; // xmm11_4
+  float v23; // xmm9_4
+  int v24; // r12d
+  int v25; // edx
+  int v26; // ecx
+  int v27; // eax
+  unsigned __int64 v28; // r15
+  __int64 v29; // r8
+  __int64 v30; // rsi
+  __int64 v31; // r13
+  unsigned __int64 v32; // rbx
+  __int64 v33; // rdi
+  __int64 v34; // rdx
+  __int64 v35; // r10
+  __int64 v36; // rdi
+  __int64 v37; // rbx
+  __int64 v38; // r9
+  __int64 v39; // rcx
+  int v40; // eax
+  float v41; // xmm0_4
+  float v43; // [rsp+30h] [rbp-D0h] BYREF
+  int v44; // [rsp+34h] [rbp-CCh]
+  __int128 v45; // [rsp+38h] [rbp-C8h] BYREF
+  int v46; // [rsp+48h] [rbp-B8h]
+  int v47; // [rsp+4Ch] [rbp-B4h]
+  float v48; // [rsp+50h] [rbp-B0h]
+  __int64 v49; // [rsp+60h] [rbp-A0h]
+  __int64 v50; // [rsp+68h] [rbp-98h]
+  _DWORD v51[12292]; // [rsp+70h] [rbp-90h] BYREF
+  float v52; // [rsp+C080h] [rbp+BF80h] BYREF
+  int v53; // [rsp+C084h] [rbp+BF84h]
+  int v54; // [rsp+C088h] [rbp+BF88h]
+  _QWORD v55[34]; // [rsp+C090h] [rbp+BF90h] BYREF
+
+  v50 = a2;
+  v49 = a1;
+  v4 = a2;
+  dword_151A84898 = 1065353216;
+  dword_151A848FC = -1;
+  v5 = a1;
+  dword_151A84908 = -1;
+  dword_151A848D4 = -1;
+  if ( (unsigned int)sub_1400D1830(&v45, a1, a2) && *(float *)&dword_151A84898 > v48 )
+  {
+    qword_151A848A0 = 0;
+    xmmword_151A84880 = v45;
+    dword_151A848A8 = 0;
+    dword_151A84890 = v46;
+    dword_151A84894 = v47;
+    dword_151A84898 = LODWORD(v48);
+    dword_151A848D4 = -1;
+  }
+  v6 = 0;
+  v7 = &unk_15ADA9240;
+  for ( i = 0; i < 4; ++i )
+  {
+    if ( *v7
+      && (unsigned int)sub_1400D6B60((unsigned int)v55, (unsigned int)&v52, (unsigned int)&v43, i, v5, v4)
+      && v43 < *(float *)&dword_151A84898 )
+    {
+      *(_QWORD *)&xmmword_151A84880 = v55[0];
+      DWORD2(xmmword_151A84880) = v55[1];
+      *((float *)&xmmword_151A84880 + 3) = v52;
+      dword_151A84890 = v53;
+      dword_151A84894 = v54;
+      dword_151A84898 = LODWORD(v43);
+      qword_151A848A0 = 0;
+      dword_151A848A8 = 0;
+      dword_151A848D4 = i;
+    }
+    v7 += 263004;
+  }
+  if ( a3 )
+  {
+    v9 = 0;
+    v10 = (int *)&unk_1A796F39C;
+    do
+    {
+      if ( *(v10 - 7)
+        && (unsigned int)sub_1400D8B70((unsigned int)v55, (unsigned int)&v52, (unsigned int)&v43, v9, v5, v4)
+        && v43 < *(float *)&dword_151A84898 )
+      {
+        LODWORD(xmmword_151A84880) = v55[0];
+        *(_QWORD *)((char *)&xmmword_151A84880 + 4) = *(_QWORD *)((char *)v55 + 4);
+        dword_151A84890 = v53;
+        v11 = *(v10 - 2);
+        *((float *)&xmmword_151A84880 + 3) = v52;
+        LODWORD(qword_151A848A0) = v11;
+        v12 = *v10;
+        dword_151A84894 = v54;
+        v13 = *(v10 - 1);
+        dword_151A848A8 = v12;
+        HIDWORD(qword_151A848A0) = v13;
+        dword_151A84898 = LODWORD(v43);
+        dword_151A848D4 = -1;
+      }
+      ++v9;
+      v10 += 21;
+    }
+    while ( v9 < 128 );
+  }
+  v14 = *(float *)v5;
+  v15 = *(float *)v4;
+  if ( *(float *)v5 >= *(float *)v4 )
+  {
+    v52 = *(float *)v5;
+    v16 = v14;
+  }
+  else
+  {
+    v52 = *(float *)v4;
+    v16 = v15;
+  }
+  v17 = fminf(v14, v15);
+  v18 = *(float *)(v4 + 4);
+  v19 = fmaxf(*(float *)(v4 + 8), *(float *)(v5 + 8));
+  v20 = fminf(*(float *)(v4 + 8), *(float *)(v5 + 8));
+  *(float *)v55 = v17;
+  v51[0] = 0;
+  v21 = 0;
+  v22 = fminf(v18, *(float *)(v5 + 4));
+  v23 = fmaxf(v18, *(float *)(v5 + 4));
+  v24 = (int)(float)(v17 * 0.015625);
+  v51[12289] = 0;
+  *(float *)&v55[1] = v20;
+  v43 = *(float *)&v24;
+  v25 = (int)(float)(v16 * 0.015625);
+  *((float *)v55 + 1) = v22;
+  v44 = v25;
+  v26 = (int)(float)(v20 * 0.015625);
+  v27 = (int)(float)(v19 * 0.015625);
+  v53 = LODWORD(v23);
+  v54 = LODWORD(v19);
+  if ( v26 <= v27 )
+  {
+    v28 = v26;
+    v29 = 0;
+    v30 = (__int64)v26 << 6;
+    v31 = (unsigned int)(v27 - v26 + 1);
+    do
+    {
+      if ( v28 <= 0x3F && v24 <= v25 )
+      {
+        v32 = v24;
+        v33 = (unsigned int)(v25 - v24 + 1);
+        do
+        {
+          if ( v32 <= 0x3F )
+          {
+            v34 = 0;
+            v35 = dword_17CE4B5F8[9 * v30 + 9 * v32];
+            if ( v35 > 0 )
+            {
+              do
+              {
+                if ( v29 < 64 )
+                {
+                  ++v21;
+                  *((_DWORD *)&v55[2] + v29++) = dword_17CE4B5FC[8 * v30 + 8 * v32 + v30 + v32 + v34];
+                }
+                ++v34;
+              }
+              while ( v34 < v35 );
+            }
+          }
+          ++v32;
+          --v33;
+        }
+        while ( v33 );
+        *(float *)&v24 = v43;
+        v25 = v44;
+      }
+      ++v28;
+      v30 += 64;
+      --v31;
+    }
+    while ( v31 );
+    v5 = v49;
+    v4 = v50;
+  }
+  v36 = v21;
+  if ( v21 > 0 )
+  {
+    v37 = 0;
+    do
+    {
+      v38 = *((int *)&v55[2] + v37);
+      v39 = 15432 * v38;
+      if ( v16 >= *(float *)&dword_195ADF9E4[15432 * v38]
+        && v23 >= *(float *)&dword_195ADF9E8[v39]
+        && v19 >= *(float *)&dword_195ADF9EC[v39]
+        && v17 <= *(float *)&dword_195ADF9F0[v39]
+        && v22 <= *(float *)&dword_195ADF9F4[v39]
+        && v20 <= *(float *)&dword_195ADF9F8[v39] )
+      {
+        sub_140188720((unsigned int)v51, (unsigned int)v55, (unsigned int)&v52, v38, 2);
+      }
+      ++v37;
+    }
+    while ( v37 < v36 );
+  }
+  v40 = sub_1400DA300(&v45, v51, v5, v4);
+  v41 = *(float *)&dword_151A84898;
+  if ( v40 && *(float *)&dword_151A84898 > v48 )
+  {
+    qword_151A848A0 = 0;
+    xmmword_151A84880 = v45;
+    dword_151A848A8 = 0;
+    dword_151A84890 = v46;
+    v41 = v48;
+    dword_151A84894 = v47;
+    dword_151A84898 = LODWORD(v48);
+    dword_151A848D4 = -1;
+  }
+  LOBYTE(v6) = v41 < 1.0;
+  return v6;
+}

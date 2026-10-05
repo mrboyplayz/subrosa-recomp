@@ -1,0 +1,50 @@
+[
+  {
+    "address": "0x1401f89d0",
+    "name": "__chkstk"
+  },
+  {
+    "address": "0x1401fd478",
+    "name": "j_free_3"
+  },
+  {
+    "address": "0x14020bac8",
+    "name": "_getc_nolock_0"
+  },
+  {
+    "address": "0x14020c598",
+    "name": "_ftelli64_nolock_0"
+  },
+  {
+    "address": "0x1402462e4",
+    "name": "_initialize_narrow_environment_0"
+  },
+  {
+    "address": "0x1402515f4",
+    "name": "__acrt_stdio_refill_and_read_wide_nolock_0"
+  },
+  {
+    "address": "0x140252cb0",
+    "name": "_lseeki64"
+  },
+  {
+    "address": "0x140252e94",
+    "name": "_lseeki64_nolock"
+  },
+  {
+    "address": "0x14025844c",
+    "name": "getenv_s_0"
+  },
+  {
+    "address": "0x140259560",
+    "name": "__loctotime32_t_0"
+  },
+  {
+    "address": "0x140259770",
+    "name": "__loctotime64_t_0"
+  },
+  {
+    "address": "0x14025ff68",
+    "name": "__dcrt_set_variable_in_narrow_environment_nolock_0"
+  }
+]

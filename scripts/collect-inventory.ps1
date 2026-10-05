@@ -11,10 +11,8 @@ $hashTargets = @(
     "subrosadedicated.exe",
     "subrosa.x64",
     "subrosadedicated.x64",
-    "Suitium.dll",
     "SDL2.dll",
-    "steam_api64.dll",
-    "lua51.dll"
+    "steam_api64.dll"
 ) | ForEach-Object { Join-Path $Root $_ } | Where-Object { Test-Path -LiteralPath $_ }
 
 $hashes = $hashTargets | ForEach-Object {

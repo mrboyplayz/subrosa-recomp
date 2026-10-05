@@ -9,9 +9,12 @@
 #include <wchar.h>
 #include <locale.h>
 #include <time.h>
+#include <fenv.h>
 #include <intrin.h>
 #include <corecrt_startup.h>
 #include "vector_views.h"
+#include "client_x64_semantics.h"
+#include "client_debug_console.h"
 
 /* Hex-Rays uses assignable byte/word views rather than Win32's value macros. */
 #undef LOBYTE
@@ -19,6 +22,7 @@
 #undef LOWORD
 #undef HIWORD
 #include <defs.h>
+#include "client_export_helpers.h"
 
 #if defined(__SIZEOF_INT128__)
 typedef unsigned __int128 _OWORD;
@@ -57,10 +61,8 @@ __int64 __fastcall guard_dispatch_icall_nop(unsigned __int64);
 /* MSVC SAL-style parameter annotation used on some thunks. */
 #define __hidden
 
-/* Hex-Rays spells x87 square root through this helper; the export calls it
-   where the original used the FPU instruction. Binding it to libm is part of
-   the pending external-library work. */
-double fsqrt(double);
+/* Scalar fsqrt is defined by client_export_helpers.h from reviewed SQRTSS
+   sites; its result and exception state retain single precision. */
 
 /* Hex-Rays uses this name where a 128-bit unsigned integer leaked into an
    appended export; defs.h typedefs uint8..uint64 but not uint128. */

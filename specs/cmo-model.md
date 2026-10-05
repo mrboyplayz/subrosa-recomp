@@ -2,6 +2,13 @@
 
 Status: first-pass skeleton from file observation plus recovered GLSL attribute layout.
 
+2026-10-03 update: the native loader's recovered read sequence consumes all
+48 installed CMO samples exactly. They include versions 1..3 and triangle
+and quad faces. The fixed 24-byte face description below applies to the
+observed triangle sample; it is not a universal record stride. See
+`../notes/model-and-ragdoll-investigation-20261003.md` for the new evidence
+and outstanding semantic checks.
+
 Sample: `../data/model/9mm.cmo`
 
 ## Header

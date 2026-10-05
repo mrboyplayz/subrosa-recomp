@@ -1,0 +1,3 @@
+D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\storage_aliases.s: Assembler messages:
+D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\storage_aliases.s:2586: Warning: .space repeat count is zero, ignored
+D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\storage_aliases.s:5560: Warning: .space repeat count is zero, ignored

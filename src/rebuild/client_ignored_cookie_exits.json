@@ -1,0 +1,1671 @@
+{
+  "target_sha256": "e9500422582b7e550be25f6b31e8cdf00b728ae733d5444868c89982c1526c5e",
+  "result_scope": "Compatibility result discarded by every recognized C call; complete behavior remains unverified",
+  "functions": [
+    {
+      "function": "0x140007c90",
+      "name": "sub_140007C90",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v19 ^ v22);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x7e7e",
+          "bytes": "e89d0c1f00"
+        }
+      ]
+    },
+    {
+      "function": "0x140013120",
+      "name": "sub_140013120",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v314 ^ v336[1]);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x150a3",
+          "bytes": "e8783a1e00"
+        }
+      ]
+    },
+    {
+      "function": "0x14001b6a0",
+      "name": "sub_14001B6A0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v10 ^ v35);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1bc21",
+          "bytes": "e8face1d00"
+        }
+      ]
+    },
+    {
+      "function": "0x1400212e0",
+      "name": "sub_1400212E0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v204 ^ v219);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x22d85",
+          "bytes": "e8965d1d00"
+        }
+      ]
+    },
+    {
+      "function": "0x1400299c0",
+      "name": "sub_1400299C0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v117 ^ v126);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x2a62a",
+          "bytes": "e8f1e41c00"
+        }
+      ]
+    },
+    {
+      "function": "0x14002b9c0",
+      "name": "sub_14002B9C0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v126 ^ v145);",
+        "return sub_1401F8B20((unsigned __int64)&v126 ^ v145);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x2ce3d",
+          "bytes": "e8debc1c00"
+        }
+      ]
+    },
+    {
+      "function": "0x14002db60",
+      "name": "sub_14002DB60",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v72 ^ v79);",
+        "return sub_1401F8B20((unsigned __int64)&v72 ^ v79);"
+      ],
+      "ignored_calls": 2,
+      "native_cookie_calls": [
+        {
+          "rva": "0x2e719",
+          "bytes": "e802a41c00"
+        }
+      ]
+    },
+    {
+      "function": "0x140035e50",
+      "name": "sub_140035E50",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v188 ^ v223);",
+        "return sub_1401F8B20((unsigned __int64)&v188 ^ v223);",
+        "return sub_1401F8B20((unsigned __int64)&v188 ^ v223);",
+        "return sub_1401F8B20((unsigned __int64)&v188 ^ v223);",
+        "return sub_1401F8B20((unsigned __int64)&v188 ^ v223);",
+        "return sub_1401F8B20((unsigned __int64)&v188 ^ v223);",
+        "return sub_1401F8B20((unsigned __int64)&v188 ^ v223);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x37205",
+          "bytes": "e816191c00"
+        }
+      ]
+    },
+    {
+      "function": "0x1400387e0",
+      "name": "sub_1400387E0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v118 ^ v136);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x3a049",
+          "bytes": "e8d2ea1b00"
+        }
+      ]
+    },
+    {
+      "function": "0x1400589a0",
+      "name": "sub_1400589A0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v55 ^ v67);",
+        "return sub_1401F8B20((unsigned __int64)&v55 ^ v67);",
+        "return sub_1401F8B20((unsigned __int64)&v55 ^ v67);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x5908b",
+          "bytes": "e890fa1900"
+        }
+      ]
+    },
+    {
+      "function": "0x140059920",
+      "name": "sub_140059920",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v49 ^ v59);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x5a0c1",
+          "bytes": "e85aea1900"
+        }
+      ]
+    },
+    {
+      "function": "0x14005a0e0",
+      "name": "sub_14005A0E0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v55 ^ v65);",
+        "return sub_1401F8B20((unsigned __int64)&v55 ^ v65);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x5a97e",
+          "bytes": "e89de11900"
+        }
+      ]
+    },
+    {
+      "function": "0x14005e520",
+      "name": "sub_14005E520",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v24 ^ v26);",
+        "return sub_1401F8B20((unsigned __int64)&v24 ^ v26);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x5e844",
+          "bytes": "e8d7a21900"
+        }
+      ]
+    },
+    {
+      "function": "0x1400689a0",
+      "name": "sub_1400689A0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v38 ^ v41);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x68f60",
+          "bytes": "e8bbfb1800"
+        }
+      ]
+    },
+    {
+      "function": "0x14006d300",
+      "name": "sr_CSDrawAtlasEntry",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v24 ^ v29);"
+      ],
+      "ignored_calls": 7,
+      "native_cookie_calls": [
+        {
+          "rva": "0x6d62d",
+          "bytes": "e8eeb41800"
+        }
+      ]
+    },
+    {
+      "function": "0x14007a010",
+      "name": "sub_14007A010",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v14 ^ v16);"
+      ],
+      "ignored_calls": 5,
+      "native_cookie_calls": [
+        {
+          "rva": "0x7a0ca",
+          "bytes": "e851ea1700"
+        }
+      ]
+    },
+    {
+      "function": "0x14007b6f0",
+      "name": "sub_14007B6F0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v4 ^ v14);"
+      ],
+      "ignored_calls": 4,
+      "native_cookie_calls": [
+        {
+          "rva": "0x7b7a1",
+          "bytes": "e87ad31700"
+        }
+      ]
+    },
+    {
+      "function": "0x14007b990",
+      "name": "sub_14007B990",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v11 ^ v14);"
+      ],
+      "ignored_calls": 13,
+      "native_cookie_calls": [
+        {
+          "rva": "0x7bae9",
+          "bytes": "e832d01700"
+        }
+      ]
+    },
+    {
+      "function": "0x14007e2a0",
+      "name": "sub_14007E2A0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v94 ^ v107);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x7e966",
+          "bytes": "e8b5a11700"
+        }
+      ]
+    },
+    {
+      "function": "0x14007e9d0",
+      "name": "sub_14007E9D0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v62 ^ v69);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x7ee03",
+          "bytes": "e8189d1700"
+        }
+      ]
+    },
+    {
+      "function": "0x140082420",
+      "name": "sub_140082420",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v73 ^ v85);",
+        "return sub_1401F8B20((unsigned __int64)&v73 ^ v85);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x84942",
+          "bytes": "e8d9411700"
+        }
+      ]
+    },
+    {
+      "function": "0x140084eb0",
+      "name": "sub_140084EB0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v38 ^ v47);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x85a3f",
+          "bytes": "e8dc301700"
+        }
+      ]
+    },
+    {
+      "function": "0x140085aa0",
+      "name": "sub_140085AA0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v12 ^ v19);",
+        "return sub_1401F8B20((unsigned __int64)&v12 ^ v19);",
+        "return sub_1401F8B20((unsigned __int64)&v12 ^ v19);",
+        "return sub_1401F8B20((unsigned __int64)&v12 ^ v19);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x85fee",
+          "bytes": "e82d2b1700"
+        }
+      ]
+    },
+    {
+      "function": "0x140087810",
+      "name": "sub_140087810",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v58 ^ v74);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x87f9c",
+          "bytes": "e87f0b1700"
+        }
+      ]
+    },
+    {
+      "function": "0x14008a110",
+      "name": "sub_14008A110",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v60 ^ v72);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x8afe5",
+          "bytes": "e836db1600"
+        }
+      ]
+    },
+    {
+      "function": "0x14008b050",
+      "name": "sub_14008B050",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v56 ^ v68);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x8be0a",
+          "bytes": "e811cd1600"
+        }
+      ]
+    },
+    {
+      "function": "0x14008d800",
+      "name": "sub_14008D800",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v126 ^ v147);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x8ea7f",
+          "bytes": "e89ca01600"
+        }
+      ]
+    },
+    {
+      "function": "0x140092d70",
+      "name": "sub_140092D70",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v33 ^ v37);"
+      ],
+      "ignored_calls": 2,
+      "native_cookie_calls": [
+        {
+          "rva": "0x93275",
+          "bytes": "e8a6581600"
+        }
+      ]
+    },
+    {
+      "function": "0x140093e60",
+      "name": "sub_140093E60",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v20 ^ v33);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x94633",
+          "bytes": "e8e8441600"
+        }
+      ]
+    },
+    {
+      "function": "0x140094a90",
+      "name": "sub_140094A90",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v90 ^ v104);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x957d6",
+          "bytes": "e845331600"
+        }
+      ]
+    },
+    {
+      "function": "0x14009cd10",
+      "name": "sub_14009CD10",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v22 ^ v24);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x9d1c9",
+          "bytes": "e852b91500"
+        }
+      ]
+    },
+    {
+      "function": "0x14009d210",
+      "name": "sub_14009D210",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v23 ^ v30);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x9d748",
+          "bytes": "e8d3b31500"
+        }
+      ]
+    },
+    {
+      "function": "0x14009fe00",
+      "name": "gameplay_mouse_camera_state_candidate",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v74 ^ v80);",
+        "return sub_1401F8B20((unsigned __int64)&v74 ^ v80);",
+        "return sub_1401F8B20((unsigned __int64)&v74 ^ v80);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xa0e92",
+          "bytes": "e8897c1500"
+        }
+      ]
+    },
+    {
+      "function": "0x1400a1ae0",
+      "name": "sub_1400A1AE0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v15 ^ v19);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xa1cfb",
+          "bytes": "e8206e1500"
+        }
+      ]
+    },
+    {
+      "function": "0x1400a3970",
+      "name": "sub_1400A3970",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v18 ^ v22);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xa3d50",
+          "bytes": "e8cb4d1500"
+        }
+      ]
+    },
+    {
+      "function": "0x1400a7c70",
+      "name": "sub_1400A7C70",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v83 ^ v101);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xa8350",
+          "bytes": "e8cb071500"
+        }
+      ]
+    },
+    {
+      "function": "0x1400a9940",
+      "name": "sub_1400A9940",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v51 ^ v54);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xa9e89",
+          "bytes": "e892ec1400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400ac530",
+      "name": "sub_1400AC530",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v30 ^ v34);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xac84e",
+          "bytes": "e8cdc21400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400ac890",
+      "name": "sub_1400AC890",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v35 ^ v46);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xacd31",
+          "bytes": "e8eabd1400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400ad2b0",
+      "name": "sub_1400AD2B0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v458 ^ v509);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb12dd",
+          "bytes": "e83e781400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b1450",
+      "name": "sub_1400B1450",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v141 ^ v157);"
+      ],
+      "ignored_calls": 6,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb23e8",
+          "bytes": "e833671400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b2440",
+      "name": "sub_1400B2440",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v44 ^ v54);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb2956",
+          "bytes": "e8c5611400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b2e70",
+      "name": "sub_1400B2E70",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v99 ^ v138);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb3a2f",
+          "bytes": "e8ec501400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b40b0",
+      "name": "sub_1400B40B0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v97 ^ v105);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb4d56",
+          "bytes": "e8c53d1400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b4da0",
+      "name": "sub_1400B4DA0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v73 ^ v78);",
+        "return sub_1401F8B20((unsigned __int64)&v73 ^ v78);",
+        "return sub_1401F8B20((unsigned __int64)&v73 ^ v78);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb53e4",
+          "bytes": "e837371400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b5460",
+      "name": "sub_1400B5460",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v76 ^ v83);",
+        "return sub_1401F8B20((unsigned __int64)&v76 ^ v83);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb5e23",
+          "bytes": "e8f82c1400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b62e0",
+      "name": "sub_1400B62E0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v161 ^ v179);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb78da",
+          "bytes": "e841121400"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b78f0",
+      "name": "sub_1400B78F0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v200 ^ v253);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xb9181",
+          "bytes": "e89af91300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400b9d90",
+      "name": "sub_1400B9D90",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v45 ^ v66);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xba1c6",
+          "bytes": "e855e91300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400ba210",
+      "name": "sub_1400BA210",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v60 ^ v76);"
+      ],
+      "ignored_calls": 2,
+      "native_cookie_calls": [
+        {
+          "rva": "0xba9d3",
+          "bytes": "e848e11300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400baa40",
+      "name": "sub_1400BAA40",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v66 ^ v73);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xbb68b",
+          "bytes": "e890d41300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400bb6b0",
+      "name": "sub_1400BB6B0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v64 ^ v72);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xbbedb",
+          "bytes": "e840cc1300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400bca30",
+      "name": "sub_1400BCA30",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v132 ^ v174[3]);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xbde1f",
+          "bytes": "e8fcac1300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400be010",
+      "name": "sub_1400BE010",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v408 ^ v462);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xc21a9",
+          "bytes": "e872691300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400c5c00",
+      "name": "sub_1400C5C00",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v64 ^ v74);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xc6552",
+          "bytes": "e8c9251300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400c6580",
+      "name": "sub_1400C6580",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v25 ^ v29);",
+        "return sub_1401F8B20((unsigned __int64)v25 ^ v29);",
+        "return sub_1401F8B20((unsigned __int64)v25 ^ v29);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xc6963",
+          "bytes": "e8b8211300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400c7890",
+      "name": "sub_1400C7890",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v54 ^ v57);",
+        "return sub_1401F8B20((unsigned __int64)v54 ^ v57);"
+      ],
+      "ignored_calls": 4,
+      "native_cookie_calls": [
+        {
+          "rva": "0xc7fa6",
+          "bytes": "e8750b1300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400c7fc0",
+      "name": "sub_1400C7FC0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v42 ^ v47);",
+        "return sub_1401F8B20((unsigned __int64)v42 ^ v47);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0xc84e7",
+          "bytes": "e834061300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400c86d0",
+      "name": "sub_1400C86D0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v40 ^ v42);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0xc8abc",
+          "bytes": "e85f001300"
+        }
+      ]
+    },
+    {
+      "function": "0x1400ca1c0",
+      "name": "sub_1400CA1C0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v8 ^ v11);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xca413",
+          "bytes": "e808e71200"
+        }
+      ]
+    },
+    {
+      "function": "0x1400cdff0",
+      "name": "sub_1400CDFF0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v29 ^ v34);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xce30e",
+          "bytes": "e80da81200"
+        }
+      ]
+    },
+    {
+      "function": "0x1400ce370",
+      "name": "sub_1400CE370",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v79 ^ v92);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xcf0fa",
+          "bytes": "e8219a1200"
+        }
+      ]
+    },
+    {
+      "function": "0x1400d2b90",
+      "name": "sub_1400D2B90",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v5 ^ v8);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0xd2c73",
+          "bytes": "e8a85e1200"
+        }
+      ]
+    },
+    {
+      "function": "0x1400d62a0",
+      "name": "asset_save_city_sbc_candidate",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v23 ^ v26);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xd6882",
+          "bytes": "e899221200"
+        }
+      ]
+    },
+    {
+      "function": "0x1400ee780",
+      "name": "sub_1400EE780",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v48 ^ v58);",
+        "return sub_1401F8B20((unsigned __int64)&v48 ^ v58);",
+        "return sub_1401F8B20((unsigned __int64)&v48 ^ v58);",
+        "return sub_1401F8B20((unsigned __int64)&v48 ^ v58);",
+        "return sub_1401F8B20((unsigned __int64)&v48 ^ v58);",
+        "return sub_1401F8B20((unsigned __int64)&v48 ^ v58);",
+        "return sub_1401F8B20((unsigned __int64)&v48 ^ v58);",
+        "return sub_1401F8B20((unsigned __int64)&v48 ^ v58);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xef0af",
+          "bytes": "e86c9a1000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400efd20",
+      "name": "sub_1400EFD20",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v25 ^ v29);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xeffdc",
+          "bytes": "e83f8b1000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400f0160",
+      "name": "sub_1400F0160",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v32 ^ v35);"
+      ],
+      "ignored_calls": 11,
+      "native_cookie_calls": [
+        {
+          "rva": "0xf0429",
+          "bytes": "e8f2861000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400f0640",
+      "name": "sub_1400F0640",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v123 ^ v130);",
+        "return sub_1401F8B20((unsigned __int64)&v123 ^ v130);",
+        "return sub_1401F8B20((unsigned __int64)&v123 ^ v130);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xf1927",
+          "bytes": "e8f4711000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400f1950",
+      "name": "sub_1400F1950",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v164 ^ v188);",
+        "return sub_1401F8B20((unsigned __int64)&v164 ^ v188);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xf397e",
+          "bytes": "e89d511000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400f3e60",
+      "name": "sub_1400F3E60",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v74 ^ v81);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xf4555",
+          "bytes": "e8c6451000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400f45a0",
+      "name": "sub_1400F45A0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v30 ^ v35);"
+      ],
+      "ignored_calls": 2,
+      "native_cookie_calls": [
+        {
+          "rva": "0xf4b00",
+          "bytes": "e81b401000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400f50d0",
+      "name": "sub_1400F50D0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v16 ^ v18);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xf527c",
+          "bytes": "e89f381000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400f5480",
+      "name": "sub_1400F5480",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v32 ^ v37);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xf57fc",
+          "bytes": "e81f331000"
+        }
+      ]
+    },
+    {
+      "function": "0x1400fba50",
+      "name": "sub_1400FBA50",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v19 ^ v40);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0xfc44d",
+          "bytes": "e8cec60f00"
+        }
+      ]
+    },
+    {
+      "function": "0x1400ffce0",
+      "name": "sub_1400FFCE0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v85 ^ v99);"
+      ],
+      "ignored_calls": 2,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1011c6",
+          "bytes": "e855790f00"
+        }
+      ]
+    },
+    {
+      "function": "0x140105840",
+      "name": "sub_140105840",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v15 ^ v16);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0x105917",
+          "bytes": "e804320f00"
+        }
+      ]
+    },
+    {
+      "function": "0x140108930",
+      "name": "sub_140108930",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v276 ^ v296);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x10aa07",
+          "bytes": "e814e10e00"
+        }
+      ]
+    },
+    {
+      "function": "0x14010c110",
+      "name": "sub_14010C110",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v57 ^ v69);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x10c802",
+          "bytes": "e819c30e00"
+        }
+      ]
+    },
+    {
+      "function": "0x14010d0d0",
+      "name": "sub_14010D0D0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v49 ^ v61);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x10d5d1",
+          "bytes": "e84ab50e00"
+        }
+      ]
+    },
+    {
+      "function": "0x14010eff0",
+      "name": "sub_14010EFF0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);",
+        "return sub_1401F8B20((unsigned __int64)&v104 ^ v118);"
+      ],
+      "ignored_calls": 2,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1107d5",
+          "bytes": "e846830e00"
+        }
+      ]
+    },
+    {
+      "function": "0x140114d40",
+      "name": "sub_140114D40",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v16 ^ v18);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0x114e83",
+          "bytes": "e8983c0e00"
+        }
+      ]
+    },
+    {
+      "function": "0x1401166b0",
+      "name": "sub_1401166B0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v13 ^ v20);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x11693c",
+          "bytes": "e8df210e00"
+        }
+      ]
+    },
+    {
+      "function": "0x1401178f0",
+      "name": "sub_1401178F0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v83 ^ v90);",
+        "return sub_1401F8B20((unsigned __int64)&v83 ^ v90);",
+        "return sub_1401F8B20((unsigned __int64)&v83 ^ v90);",
+        "return sub_1401F8B20((unsigned __int64)&v83 ^ v90);",
+        "return sub_1401F8B20((unsigned __int64)&v83 ^ v90);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1189cf",
+          "bytes": "e84c010e00"
+        }
+      ]
+    },
+    {
+      "function": "0x140119220",
+      "name": "sub_140119220",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v23 ^ v26);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x119f5c",
+          "bytes": "e8bfeb0d00"
+        }
+      ]
+    },
+    {
+      "function": "0x140119f70",
+      "name": "sub_140119F70",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v22 ^ v24);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x11a317",
+          "bytes": "e804e80d00"
+        }
+      ]
+    },
+    {
+      "function": "0x14011b7f0",
+      "name": "sub_14011B7F0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v7 ^ v9);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0x11b8d2",
+          "bytes": "e849d20d00"
+        }
+      ]
+    },
+    {
+      "function": "0x14011e9b0",
+      "name": "sub_14011E9B0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v219 ^ v234);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x11fc98",
+          "bytes": "e8838e0d00"
+        }
+      ]
+    },
+    {
+      "function": "0x14011fd00",
+      "name": "sub_14011FD00",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v264 ^ v286);",
+        "return sub_1401F8B20((unsigned __int64)&v264 ^ v286);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x122651",
+          "bytes": "e8ca640d00"
+        }
+      ]
+    },
+    {
+      "function": "0x140123190",
+      "name": "sub_140123190",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v100 ^ v107);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x123f5b",
+          "bytes": "e8c04b0d00"
+        }
+      ]
+    },
+    {
+      "function": "0x140124fe0",
+      "name": "sub_140124FE0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v14 ^ v17);"
+      ],
+      "ignored_calls": 2,
+      "native_cookie_calls": [
+        {
+          "rva": "0x125259",
+          "bytes": "e8c2380d00"
+        }
+      ]
+    },
+    {
+      "function": "0x14012eb50",
+      "name": "sub_14012EB50",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v105 ^ v118);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x12f869",
+          "bytes": "e8b2920c00"
+        }
+      ]
+    },
+    {
+      "function": "0x14012f890",
+      "name": "sub_14012F890",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v24 ^ v26);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x12fb4b",
+          "bytes": "e8d08f0c00"
+        }
+      ]
+    },
+    {
+      "function": "0x140133090",
+      "name": "sub_140133090",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v316 ^ v349);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1340e8",
+          "bytes": "e8334a0c00"
+        }
+      ]
+    },
+    {
+      "function": "0x140163e70",
+      "name": "sub_140163E70",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v36 ^ v47);"
+      ],
+      "ignored_calls": 4,
+      "native_cookie_calls": [
+        {
+          "rva": "0x16438a",
+          "bytes": "e891470900"
+        }
+      ]
+    },
+    {
+      "function": "0x140181080",
+      "name": "sub_140181080",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v37 ^ v40[1]);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0x18133a",
+          "bytes": "e8e1770700"
+        }
+      ]
+    },
+    {
+      "function": "0x140181cf0",
+      "name": "sub_140181CF0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v100 ^ v108);",
+        "return sub_1401F8B20((unsigned __int64)v100 ^ v108);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1822f0",
+          "bytes": "e82b680700"
+        }
+      ]
+    },
+    {
+      "function": "0x140182310",
+      "name": "sub_140182310",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v43 ^ v49);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1827d1",
+          "bytes": "e84a630700"
+        }
+      ]
+    },
+    {
+      "function": "0x1401843e0",
+      "name": "sub_1401843E0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v35 ^ v39[1]);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0x18469f",
+          "bytes": "e87c440700"
+        }
+      ]
+    },
+    {
+      "function": "0x140188900",
+      "name": "sub_140188900",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v28 ^ v34);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x188b59",
+          "bytes": "e8c2ff0600"
+        }
+      ]
+    },
+    {
+      "function": "0x14018a3e0",
+      "name": "sub_14018A3E0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v156 ^ v164);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x18b648",
+          "bytes": "e8d3d40600"
+        }
+      ]
+    },
+    {
+      "function": "0x140191f90",
+      "name": "sub_140191F90",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v17 ^ v19);"
+      ],
+      "ignored_calls": 3,
+      "native_cookie_calls": [
+        {
+          "rva": "0x192154",
+          "bytes": "e8c7690600"
+        }
+      ]
+    },
+    {
+      "function": "0x140192160",
+      "name": "sub_140192160",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v21 ^ v23);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x192354",
+          "bytes": "e8c7670600"
+        }
+      ]
+    },
+    {
+      "function": "0x140192790",
+      "name": "sub_140192790",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v58 ^ v98);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x192e9e",
+          "bytes": "e87d5c0600"
+        }
+      ]
+    },
+    {
+      "function": "0x1401945f0",
+      "name": "sub_1401945F0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v12 ^ v22);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1948b3",
+          "bytes": "e868420600"
+        }
+      ]
+    },
+    {
+      "function": "0x140194d40",
+      "name": "sub_140194D40",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v63 ^ v68);",
+        "return sub_1401F8B20((unsigned __int64)&v63 ^ v68);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x19546f",
+          "bytes": "e8ac360600"
+        }
+      ]
+    },
+    {
+      "function": "0x140195480",
+      "name": "sub_140195480",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v46 ^ v62);",
+        "return sub_1401F8B20((unsigned __int64)&v46 ^ v62);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x195943",
+          "bytes": "e8d8310600"
+        }
+      ]
+    },
+    {
+      "function": "0x140195970",
+      "name": "sub_140195970",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v35 ^ v38);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x195cf8",
+          "bytes": "e8232e0600"
+        }
+      ]
+    },
+    {
+      "function": "0x140195d20",
+      "name": "sub_140195D20",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)v15 ^ v21);"
+      ],
+      "ignored_calls": 2,
+      "native_cookie_calls": [
+        {
+          "rva": "0x195f18",
+          "bytes": "e8032c0600"
+        }
+      ]
+    },
+    {
+      "function": "0x140195fb0",
+      "name": "sub_140195FB0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v22 ^ v26);"
+      ],
+      "ignored_calls": 1,
+      "native_cookie_calls": [
+        {
+          "rva": "0x1962e5",
+          "bytes": "e836280600"
+        }
+      ]
+    },
+    {
+      "function": "0x1401597f0",
+      "name": "sub_1401597F0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v187 ^ v200);"
+      ],
+      "ignored_calls": 0,
+      "native_cookie_calls": [
+        {
+          "rva": "0x15acf8",
+          "bytes": "e823de0900"
+        }
+      ],
+      "native_ignored_callers": [
+        {
+          "rva": "0x3be56",
+          "bytes": "e895d91100e870ce1100e8eb0fffff",
+          "scope": "Recovered native tick; EAX is discarded at this call"
+        }
+      ]
+    },
+    {
+      "function": "0x140158cd0",
+      "name": "sub_140158CD0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v99 ^ v103);"
+      ],
+      "ignored_calls": 0,
+      "native_cookie_calls": [
+        {
+          "rva": "0x159718",
+          "bytes": "e803f40900"
+        }
+      ],
+      "native_ignored_callers": [
+        {
+          "rva": "0x3be5b",
+          "bytes": "e870ce1100e8eb0fffff448b05145f",
+          "scope": "Recovered native tick; EAX is discarded at this call"
+        }
+      ]
+    },
+    {
+      "function": "0x1400e65f0",
+      "name": "sub_1400E65F0",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v20 ^ v22);",
+        "return sub_1401F8B20((unsigned __int64)&v20 ^ v22);"
+      ],
+      "ignored_calls": 0,
+      "native_cookie_calls": [
+        {
+          "rva": "0xe6943",
+          "bytes": "e8d8211100"
+        }
+      ],
+      "native_ignored_callers": [
+        {
+          "rva": "0x3bb5d",
+          "bytes": "e88eaa0a004533c0488d1534f1d06b",
+          "scope": "Recovered native tick; EAX is discarded at this call"
+        }
+      ]
+    },
+    {
+      "function": "0x140042930",
+      "name": "sub_140042930",
+      "return_sites": [
+        "return sub_1401F8B20((unsigned __int64)&v177 ^ v200);",
+        "return sub_1401F8B20((unsigned __int64)&v177 ^ v200);",
+        "return sub_1401F8B20((unsigned __int64)&v177 ^ v200);"
+      ],
+      "ignored_calls": 0,
+      "native_cookie_calls": [
+        {
+          "rva": "0x447ae",
+          "bytes": "e86d431b00"
+        }
+      ],
+      "native_ignored_callers": [
+        {
+          "rva": "0x3bd9d",
+          "bytes": "e88e6b0000833d233fe843027506ff",
+          "scope": "Recovered native tick; EAX is discarded at this call"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+[package]
+name = "subrosa-client"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "subrosa_client"
+crate-type = ["rlib", "staticlib"]
+
+[features]
+default = ["std"]
+std = []
+bevy-client = ["std", "dep:bevy"]
+desktop-test = ["bevy-client", "bevy/default_app", "bevy/bevy_winit", "bevy/bevy_pbr", "bevy/bevy_render", "bevy/bevy_core_pipeline", "bevy/bevy_light", "bevy/bevy_mesh", "bevy/bevy_camera", "bevy/bevy_color", "bevy/png", "bevy/multi_threaded", "bevy/keyboard", "bevy/mouse", "bevy/bevy_ui", "bevy/bevy_ui_render", "bevy/bevy_text", "bevy/default_font", "bevy/tonemapping_luts", "bevy/ktx2", "bevy/zstd_rust"]
+
+[dependencies]
+bevy = { version = "0.19", optional = true, default-features = false, features = ["std", "bevy_asset", "async_executor"] }
+
+[[example]]
+name = "bevy_model_load"
+required-features = ["bevy-client"]
+
+[[bin]]
+name = "subrosa-player-test"
+path = "src/bin/player_test.rs"
+required-features = ["desktop-test"]
+
+[profile.client-test]
+inherits = "dev"
+opt-level = 1
+debug = 0
+codegen-units = 16
+
+[profile.client-test.package."*"]
+opt-level = 2
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+

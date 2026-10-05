@@ -1,0 +1,7 @@
+.vs
+.vscode
+/out
+/release
+/debug
+/*.sh
+!/build.sh
