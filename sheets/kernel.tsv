@@ -472,3 +472,6 @@ tool_test_rust_city_chunks	scripts/test_rust_city_chunks.py	test	partial	scripts
 repair_client_swept_cell_storage	scripts/repair_client_swept_cell_storage.py	algorithm	partial	scripts/test_client_swept_cell_storage.py	reports/client-swept-cell-storage-20261005
 test_client_swept_cell_storage	scripts/test_client_swept_cell_storage.py	test	partial	scripts/test_client_swept_cell_storage.py	reports/client-swept-cell-storage-20261005
 test_client_frame_storage	scripts/test_client_frame_storage.py	test	partial	scripts/test_client_frame_storage.py	reports/client-frame-storage-20261005
+kernel_724f85711c1c	scripts/test_client_atmosphere_storage.py	test	partial	scripts/test_client_atmosphere_storage.py	reports/renderer-recovery-20261005
+kernel_e47794bd509e	scripts/test_client_leg_controller.py	test	partial	scripts/test_client_leg_controller.py	reports/player-hud-recovery-20261005
+kernel_0617ddbb3706	scripts/test_client_hud_recovery.py	test	partial	scripts/test_client_hud_recovery.py	reports/player-hud-recovery-20261005

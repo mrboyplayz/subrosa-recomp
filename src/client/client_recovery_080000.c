@@ -2990,11 +2990,7 @@ __int64 sub_140085AA0()
   v15 = 1065353216;
   v14 = 1065353216;
   v13 = 32;
-  sr_CSDrawText(
-    "Press F1 to toggle help",
-    4.0,
-    (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42C00000u))),
-    20.0);
+  sr_text_draw_recovered("Press F1 to toggle help", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42C00000u))))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
   v2 = _mm_cvtsi32_si128((int)(0x43080000u));
   if ( (_DWORD)v1 == -1 )
     return 0; /* compatibility result discarded by all reviewed callers */
@@ -3007,11 +3003,7 @@ __int64 sub_140085AA0()
     v15 = 1065353216;
     v14 = 1065353216;
     v13 = 32;
-    sr_CSDrawText(
-      "Press F to swap your weapon to your right hand",
-      4.0,
-      (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43080000u))),
-      20.0);
+    sr_text_draw_recovered("Press F to swap your weapon to your right hand", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43080000u))))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
     v2 = _mm_cvtsi32_si128((int)(0x431C0000u));
   }
   if ( (int)dword_140404A6C[v3 + 280658139] > 0 )
@@ -3019,18 +3011,14 @@ __int64 sub_140085AA0()
     v4 = 1760LL * (int)dword_140404A6C[v3 + 280658140];
     if ( dword_140404A6C[v4 + 278845898] == 13 )
     {
-      sr_CSDrawText("Press R to arm grenade", 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2), 20.0);
+      sr_text_draw_recovered("Press R to arm grenade", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       v17 = 1065353216;
       *(float *)SR_VEC_LANES(128, v2, i32) = *(float *)SR_VEC_LANES(128, v2, i32) + 20.0;
       v16 = 1065353216;
       v15 = 1065353216;
       v14 = 1065353216;
       v13 = 32;
-      sr_CSDrawText(
-        "Hold Q, move mouse up and release Q to throw",
-        4.0,
-        (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2),
-        20.0);
+      sr_text_draw_recovered("Hold Q, move mouse up and release Q to throw", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       *(float *)SR_VEC_LANES(128, v2, i32) = *(float *)SR_VEC_LANES(128, v2, i32) + 20.0;
     }
     if ( dword_140404A6C[1268 * dword_140404A6C[v4 + 278845898] + 278521289] )
@@ -3045,11 +3033,7 @@ __int64 sub_140085AA0()
           v15 = 1065353216;
           v14 = 1065353216;
           v13 = 32;
-          sr_CSDrawText(
-            "Press 2-5 to put a magazine in your left hand",
-            4.0,
-            (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2),
-            20.0);
+          sr_text_draw_recovered("Press 2-5 to put a magazine in your left hand", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
           *(float *)SR_VEC_LANES(128, v2, i32) = *(float *)SR_VEC_LANES(128, v2, i32) + 20.0;
         }
       }
@@ -3064,9 +3048,9 @@ __int64 sub_140085AA0()
         v13 = 32;
         v7 = (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2);
         if ( v5 )
-          sr_CSDrawText("Press Q to drop empty magazine", 4.0, v7, 20.0);
+          sr_text_draw_recovered("Press Q to drop empty magazine", 4.0, sr_text_bits_float((unsigned)(uintptr_t)(v7)), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
         else
-          sr_CSDrawText("Press R to load magazine", 4.0, v7, 20.0);
+          sr_text_draw_recovered("Press R to load magazine", 4.0, sr_text_bits_float((unsigned)(uintptr_t)(v7)), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
         *(float *)SR_VEC_LANES(128, v6, i32) = *(float *)SR_VEC_LANES(128, v2, i32) + 20.0;
         v2 = v6;
       }
@@ -3080,7 +3064,7 @@ __int64 sub_140085AA0()
       v15 = 1065353216;
       v14 = 1065353216;
       v13 = 32;
-      sr_CSDrawText(v18, 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2), 20.0);
+      sr_text_draw_recovered(v18, 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       v9 = dword_140404A6C[v4 + 278845898];
       *(float *)SR_VEC_LANES(128, v2, i32) = *(float *)SR_VEC_LANES(128, v2, i32) + 20.0;
     }
@@ -3092,7 +3076,7 @@ __int64 sub_140085AA0()
       v15 = 1065353216;
       v14 = 1065353216;
       v13 = 32;
-      sr_CSDrawText(v18, 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2), 20.0);
+      sr_text_draw_recovered(v18, 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       *(float *)SR_VEC_LANES(128, v2, i32) = *(float *)SR_VEC_LANES(128, v2, i32) + 20.0;
       if ( (int)dword_140404A6C[v3 + 280658149] <= 0 )
       {
@@ -3109,7 +3093,7 @@ __int64 sub_140085AA0()
       v15 = 1065353216;
       v14 = 1065353216;
       v13 = 32;
-      sr_CSDrawText(v10, 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2), 20.0);
+      sr_text_draw_recovered(v10, 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       *(float *)SR_VEC_LANES(128, v2, i32) = *(float *)SR_VEC_LANES(128, v2, i32) + 20.0;
     }
   }
@@ -3121,7 +3105,7 @@ LABEL_28:
     v15 = 1065353216;
     v14 = 1065353216;
     v13 = 32;
-    sr_CSDrawText("Hold CTRL to stand up", 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2), 20.0);
+    sr_text_draw_recovered("Hold CTRL to stand up", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v2))), 20.0, 32, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
@@ -3307,9 +3291,7 @@ __int64            sub_140087810(int a1, int a2)
   __int64 v68; // [rsp+70h] [rbp-148h]
   __int64 v69; // [rsp+78h] [rbp-140h]
   __int64 v70; // [rsp+80h] [rbp-138h]
-  int v71; // [rsp+90h] [rbp-128h]
-  _QWORD v72[2]; // [rsp+94h] [rbp-124h] BYREF
-  char v73; // [rsp+A4h] [rbp-114h] BYREF
+  float sr_hud_slot_positions[14];
   __int64 v74; // [rsp+D0h] [rbp-E8h]
 
   v2 = 7166LL * a2;
@@ -3342,9 +3324,9 @@ __int64            sub_140087810(int a1, int a2)
         v9 = 416.0;
       v10 = 1140195328;
     }
-    *((float *)&v71 + 2 * v7) = v9;
+    *((float *)&(*(int *)(void *)sr_hud_slot_positions) + 2 * v7) = v9;
     ++v8;
-    LODWORD(v72[v7++]) = v10;
+    LODWORD(((uint64_t *)(void *)(sr_hud_slot_positions+1))[v7++]) = v10;
   }
   while ( v7 < 7 );
   v11 = dword_140404A6C[v2 + 280658335];
@@ -3368,8 +3350,8 @@ __int64            sub_140087810(int a1, int a2)
       LOBYTE(v12) = v12 ^ 1;
     }
     v15 = v14 & 7;
-    v16 = *((float *)&v71 + 2 * v15);
-    v17 = *(float *)&v72[v15];
+    v16 = *((float *)&(*(int *)(void *)sr_hud_slot_positions) + 2 * v15);
+    v17 = *(float *)&((uint64_t *)(void *)(sr_hud_slot_positions+1))[v15];
     v18 = 14388 * v3 + 36 * v15;
     if ( *(int *)((char *)&dword_140404A6C[71857714] + v18) > 0 )
     {
@@ -3378,10 +3360,10 @@ __int64            sub_140087810(int a1, int a2)
         sr_CSDrawAtlasEntry(
           0,
           v19,
-          (float)((float)(*((float *)&v71 + 2 * (v12 & 7)) - v16)
+          (float)((float)(*((float *)&(*(int *)(void *)sr_hud_slot_positions) + 2 * (v12 & 7)) - v16)
                 * (float)((float)(int)dword_140404A6C[v2 + 280658337] * 0.0099999998))
         + v16,
-          (float)((float)(*(float *)&v72[v12 & 7] - v17)
+          (float)((float)(*(float *)&((uint64_t *)(void *)(sr_hud_slot_positions+1))[v12 & 7] - v17)
                 * (float)((float)(int)dword_140404A6C[v2 + 280658337] * 0.0099999998))
         + v17,
           (float)(int)dword_140404A6C[12 * v19 + 433435868] * 0.5,
@@ -3393,7 +3375,7 @@ __int64            sub_140087810(int a1, int a2)
           1065353216);
     }
   }
-  v20 = (unsigned int *)v72;
+  v20 = (unsigned int *)((uint64_t *)(void *)(sr_hud_slot_positions+1));
   v21 = 2;
   v70 = v3;
   v67 = 14388 * v3;
@@ -3405,7 +3387,7 @@ __int64            sub_140087810(int a1, int a2)
     qword_140404050(3553, dword_140404A6C[451221642]);
     HIDWORD(v25) = HIDWORD(v23);
     *(float *)&v25 = *(float *)&v23 + 8.0;
-    sub_14006CFF0(v25, *(double *)SR_VEC_LANES(128, v24, i64), v26, 32.0, 9, 0, 0, 0, 1048576000);
+    sub_14006CFF0(v25, *(double *)SR_VEC_LANES(128, v24, i64), 1124073472, 32.0, 9, 0, 0, 0, 1048576000);
     v27 = 0;
     if ( (int)*v22 > 0 )
     {
@@ -3446,7 +3428,7 @@ __int64            sub_140087810(int a1, int a2)
             v35 = (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v24);
             if ( v33 != 1 )
               v34 = "+empty magazine";
-            sr_CSDrawText(v34, *(float *)&v25, v35, 8.0);
+            sr_text_draw_recovered(v34, *(float *)&v25, sr_text_bits_float((unsigned)(uintptr_t)(v35)), 8.0, 8, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
           }
         }
         else
@@ -3457,7 +3439,7 @@ __int64            sub_140087810(int a1, int a2)
           v61 = 1065353216;
           v60 = 1065353216;
           v59 = 8;
-          sr_CSDrawText("/i", *(float *)&v23 + 16.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v24), 8.0);
+          sr_text_draw_recovered("/i", *(float *)&v23 + 16.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v24))), 8.0, 8, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){(unsigned)v64});
         }
         ++v27;
         ++v28;
@@ -3473,7 +3455,7 @@ __int64            sub_140087810(int a1, int a2)
   v37 = 18;
   v38 = (char *)&dword_140404A6C[284024772] + 2;
   v39 = 5;
-  v40 = (float *)&v73;
+  v40 = (float *)&(*(char *)(void *)(sr_hud_slot_positions+5));
   v69 = 5;
   v41 = 1;
   v42 = &dword_140404A6C[v67 / 4 + 71857732];
@@ -3488,7 +3470,7 @@ __int64            sub_140087810(int a1, int a2)
     do
     {
       qword_140404050(3553, dword_140404A6C[451221642]);
-      sub_14006CFF0(v46, v45, v48, 32.0, 9, 0, 0, 0, 1048576000);
+      sub_14006CFF0(v46, v45, 1124073472, 32.0, 9, 0, 0, 0, 1048576000);
       *(float *)&v45 = *(float *)&v45 + 32.0;
       --v44;
     }
@@ -3505,7 +3487,7 @@ __int64            sub_140087810(int a1, int a2)
     v60 = 1065353216;
     v59 = 8;
     *(float *)SR_VEC_LANES(128, v49, i32) = *(float *)SR_VEC_LANES(128, v47, i32) - 32.0;
-    sr_CSDrawText("/i", v43, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v49), v50);
+    sr_text_draw_recovered("/i", v43, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v49))), v50, 8, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){(unsigned)v41});
     v51 = 0;
     v52 = 0;
     if ( (int)*v42 > 0 )
@@ -3732,7 +3714,7 @@ double            sub_140088130(int a1)
   if ( !dword_140404A6C[284024893] )
     v8 = 0.125;
   qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830700] + 284024944]);
-  sub_14006CFF0(0.0, 0.0, v9, 256.0, 0, 1065353216, 1065353216, 1065353216, 1061158912);
+  sub_14006CFF0(0.0, 0.0, 1132462080, 256.0, 0, 1065353216, 1065353216, 1065353216, 1061158912);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(2848);
   (*(void (           **)(__int64, __int64))&dword_140404A6C[18215065])(v11, v10);
   v13 = dword_140404A6C[283831312];
@@ -3878,11 +3860,11 @@ LABEL_60:
                                 * v8;
         if ( v45 == 1 )
         {
-          sr_CSDrawText(off_1402B2890[v44[103]], v46, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v47), 6.0);
+          sr_text_draw_recovered(off_1402B2890[v44[103]], v46, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v47))), 6.0, 5, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
           v45 = *(v44 - 19);
         }
         if ( v45 == 6 )
-          sr_CSDrawText("$", v46, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v47), 9.0);
+          sr_text_draw_recovered("$", v46, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v47))), 9.0, 5, 0.875f, 0.875f, 0.875f, 1.0f, NULL);
         ++v2;
         v44 += 14019;
       }
@@ -3917,11 +3899,7 @@ LABEL_60:
       *(float *)SR_VEC_LANES(128, v43, i32) = (float)(*(float *)SR_VEC_LANES(128, v43, i32) * 16.0) + *(float *)SR_VEC_LANES(128, v42, i32);
       v42 = v43;
     }
-    sr_CSDrawText(
-      (char *)&dword_140404A6C[396 * v35 + 225426047],
-      v41,
-      (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v42),
-      6.0);
+    sr_text_draw_recovered((char *)&dword_140404A6C[396 * v35 + 225426047], v41, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v42))), 6.0, 5, 0.25f, 0.75f, 0.25f, 1.0f, NULL);
     v34 = dword_140404A6C[225426046];
 LABEL_58:
     ++v35;
@@ -3943,7 +3921,7 @@ LABEL_67:
       *(float *)&dword_140404A6C[7166 * v1 + 280651341]);
   result = sub_14007BB00();
   if ( dword_140404A6C[284021985] )
-    sr_CSDrawText("Press C to toggle map", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0LL))), 20.0);
+    sr_text_draw_recovered("Press C to toggle map", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0LL))))), 20.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
   return result;
 }
 

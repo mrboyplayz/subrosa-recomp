@@ -1259,7 +1259,7 @@ __int64            sub_1400BA210(int a1);
 
 __int64            sub_1400BAA40(int a1, __int64 a2, __int64 a3);
 
-__int64            sub_1400BB6B0(int a1, int a2, __int64 a3, float *a4, int a5, float *a6);
+__int64            sub_1400BB6B0(int a1, int a2, __int64 a3, float *a4, intptr_t a5, float *a6);
 
 __int64            sub_1400BBF30(int a1, int a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8, float a9);
 
@@ -19611,7 +19611,7 @@ __int64            sub_1400BAA40(int a1, __int64 a2, __int64 a3)
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400BB6B0) ----------------------------------------------------
-__int64            sub_1400BB6B0(int a1, int a2, __int64 a3, float *a4, int a5, float *a6)
+__int64            sub_1400BB6B0(int a1, int a2, __int64 a3, float *a4, intptr_t a5, float *a6)
 ;
 
 // 1402F6188: using guessed type int dword_1402F6188;

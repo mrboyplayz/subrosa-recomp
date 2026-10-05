@@ -451,15 +451,7 @@ _UNKNOWN **           sub_1400ABB10(int a1)
   double v76; // xmm3_8
   float v78; // [rsp+20h] [rbp-108h]
   __m128 v79; // [rsp+28h] [rbp-100h] BYREF
-  float v80; // [rsp+40h] [rbp-E8h]
-  float v81; // [rsp+44h] [rbp-E4h]
-  float v82; // [rsp+48h] [rbp-E0h]
-  float v83; // [rsp+4Ch] [rbp-DCh]
-  float v84; // [rsp+50h] [rbp-D8h]
-  float v85; // [rsp+54h] [rbp-D4h]
-  float v86; // [rsp+58h] [rbp-D0h]
-  float v87; // [rsp+5Ch] [rbp-CCh]
-  float v88; // [rsp+60h] [rbp-C8h]
+  float sr_human_mean_basis[9];
   float v89; // [rsp+64h] [rbp-C4h]
 
   v1 = 0;
@@ -549,10 +541,10 @@ _UNKNOWN **           sub_1400ABB10(int a1)
   *(float *)&dword_140404A6C[v3 + 280657937] = *(float *)&dword_140404A6C[v3 + 280657937] * 0.5;
   *(float *)&dword_140404A6C[v3 + 280657938] = *(float *)&dword_140404A6C[v3 + 280657938] * 0.5;
   v35 = v31 + *(float *)&dword_140404A6C[v3 + 280657936];
-  v82 = 0.0;
+  sr_human_mean_basis[2] = 0.0;
   v78 = 0.0;
-  v80 = 0.0;
-  v81 = 0.0;
+  sr_human_mean_basis[0] = 0.0;
+  sr_human_mean_basis[1] = 0.0;
   *(float *)&dword_140404A6C[v3 + 280657936] = v35 * 0.5;
   *(float *)&dword_140404A6C[v3 + 280657937] = (float)(v32 * 0.5) + *(float *)&dword_140404A6C[v3 + 280657937];
   *(float *)&dword_140404A6C[v3 + 280657938] = (float)(v29 * 0.5) + *(float *)&dword_140404A6C[v3 + 280657938];
@@ -563,20 +555,20 @@ _UNKNOWN **           sub_1400ABB10(int a1)
     v38 = v36 * *(v33 - 2);
     v39 = v37 * v33[467];
     v40 = v33[555];
-    v83 = v36 * *(v33 - 1);
+    sr_human_mean_basis[3] = v36 * *(v33 - 1);
     v41 = v36 * *v33;
     v42 = v33[87];
     v43 = v42 * v33[76];
-    v86 = v41;
-    v84 = v42 * v33[77];
-    v87 = v42 * v33[78];
+    sr_human_mean_basis[6] = v41;
+    sr_human_mean_basis[4] = v42 * v33[77];
+    sr_human_mean_basis[7] = v42 * v33[78];
     v44 = v33[165];
     v45 = v44 * v33[156];
     v46 = v44 * v33[155];
     v47 = v44 * v33[154];
-    v88 = v45;
+    sr_human_mean_basis[8] = v45;
     v48 = v33[243];
-    v85 = v46;
+    sr_human_mean_basis[5] = v46;
     v49 = v48;
     v50 = v48 * v33[234];
     v51 = v48 * v33[232];
@@ -594,20 +586,20 @@ _UNKNOWN **           sub_1400ABB10(int a1)
                 + v56)
         + (float)(v40 * v33[544]);
     v78 = v59;
-    v60 = (float)((float)((float)((float)((float)((float)((float)(v80 + v83) + v84) + v46) + v52) + v54)
+    v60 = (float)((float)((float)((float)((float)((float)((float)(sr_human_mean_basis[0] + sr_human_mean_basis[3]) + sr_human_mean_basis[4]) + v46) + v52) + v54)
                         + (float)(v33[399] * v33[389]))
                 + v39)
         + (float)(v40 * v33[545]);
-    v80 = v60;
-    v61 = (float)((float)((float)((float)((float)((float)((float)(v81 + v86) + v87) + v88) + v89) + v55) + v57) + v58)
+    sr_human_mean_basis[0] = v60;
+    v61 = (float)((float)((float)((float)((float)((float)((float)(sr_human_mean_basis[1] + sr_human_mean_basis[6]) + sr_human_mean_basis[7]) + sr_human_mean_basis[8]) + v89) + v55) + v57) + v58)
         + (float)(v40 * v33[546]);
-    v62 = v33[9] + v82;
-    v81 = v61;
+    v62 = v33[9] + sr_human_mean_basis[2];
+    sr_human_mean_basis[1] = v61;
     v63 = (float)((float)((float)((float)((float)(v62 + v33[87]) + v33[165]) + v33[243]) + v33[321]) + v33[399])
         + v33[477];
     v33 += 624;
     v64 = v63 + v40;
-    v82 = v64;
+    sr_human_mean_basis[2] = v64;
     --v34;
   }
   while ( v34 );

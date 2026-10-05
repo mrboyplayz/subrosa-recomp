@@ -138,9 +138,7 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
   __int64 v130; // rcx
   __int64 v131; // r8
   __int64 v132; // r8
-  float v133; // [rsp+50h] [rbp-D8h] BYREF
-  float v134; // [rsp+54h] [rbp-D4h]
-  int v135; // [rsp+58h] [rbp-D0h]
+  unsigned sr_hud_line_point[3];
   float v136; // [rsp+130h] [rbp+8h]
 
   if ( a1 == -1 )
@@ -159,11 +157,7 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
       v6 = 131LL * v5;
       if ( (int)dword_140404A6C[v6 + 282487107] > 0 )
       {
-        sr_CSDrawText(
-          (char *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + v6 * 4 + 1134161792),
-          512.0,
-          (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v4),
-          24.0);
+        sr_text_draw_recovered((char *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + v6 * 4 + 1134161792), 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v4))), 24.0, 97, 1.0f, 1.0f, 1.0f, ((float)(int)dword_140404A6C[v6+282487107]*0.005f), NULL);
         v3 = dword_140404A6C[282487105];
         *(float *)SR_VEC_LANES(128, v4, i32) = *(float *)SR_VEC_LANES(128, v4, i32) + 24.0;
       }
@@ -181,26 +175,8 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
   if ( (int)dword_140404A6C[7166 * v2 + 280658334] > 0 )
   {
     qword_140404050(3553, dword_140404A6C[451221642]);
-    sub_14006CFF0(
-      sr_export_float_lane_container(1136656384),
-      sr_export_float_lane_container(1133510656),
-      v10,
-      32.0,
-      0,
-      1065353216,
-      1065353216,
-      1065353216,
-      1040187392);
-    sub_14006CFF0(
-      sr_export_float_lane_container(1136656384),
-      sr_export_float_lane_container(1133510656),
-      v11,
-      32.0,
-      0,
-      1065353216,
-      1065353216,
-      1065353216,
-      1063256064);
+    sub_14006CFF0(sr_export_float_lane_container(1136656384), sr_export_float_lane_container(1133510656), 1132462080, 32.0, 0, 1065353216, 1065353216, 1065353216, 1040187392);
+    sub_14006CFF0(sr_export_float_lane_container(1136656384), sr_export_float_lane_container(1133510656), sr_text_float_bits((float)(int)dword_140404A6C[v9+280658334]), 32.0, 0, 1065353216, 1065353216, 1065353216, 1063256064);
   }
   if ( dword_140404A6C[280649843]
     && ((int)dword_140404A6C[v9 + 280658139] > 0 || (int)dword_140404A6C[v9 + 280658149] > 0) )
@@ -237,36 +213,28 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
   {
     if ( !dword_140404A6C[1760 * v49 + 278846052] )
     {
-      sr_CSDrawText("Left-click to dial", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v8), 16.0);
+      sr_text_draw_recovered("Left-click to dial", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v8))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       LODWORD(v49) = dword_140404A6C[v9 + 280658140];
     }
     if ( dword_140404A6C[1760 * (int)v49 + 278846052] == 1 )
     {
-      sr_CSDrawText("Use Numpad or number keys", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v8), 16.0);
-      sr_CSDrawText(
-        "1111 - Goldmen",
-        512.0,
-        (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43C80000u))),
-        16.0);
-      sr_CSDrawText(
-        "2222 - Monsota",
-        512.0,
-        (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D00000u))),
-        16.0);
-      sr_CSDrawText("3333 - OXS", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D80000u))), 16.0);
+      sr_text_draw_recovered("Use Numpad or number keys", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v8))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
+      sr_text_draw_recovered("1111 - Goldmen", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43C80000u))))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
+      sr_text_draw_recovered("2222 - Monsota", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D00000u))))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
+      sr_text_draw_recovered("3333 - OXS", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D80000u))))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       v48 = _mm_cvtsi32_si128((int)(0x43E00000u));
       if ( dword_140404A6C[283831312] == 4 )
       {
-        sr_CSDrawText("4444 - /s", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43E00000u))), 16.0);
-        sr_CSDrawText("5555 - /s", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43E80000u))), 16.0);
-        sr_CSDrawText("6666 - /s", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43F00000u))), 16.0);
+        sr_text_draw_recovered("4444 - /s", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43E00000u))))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){(uintptr_t)off_1402B2890[3]});
+        sr_text_draw_recovered("5555 - /s", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43E80000u))))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){(uintptr_t)off_1402B2890[4]});
+        sr_text_draw_recovered("6666 - /s", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43F00000u))))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){(uintptr_t)off_1402B2890[5]});
         v48 = _mm_cvtsi32_si128((int)(0x43F80000u));
       }
     }
     v50 = (int)dword_140404A6C[v9 + 280658140];
     if ( dword_140404A6C[1760 * v50 + 278846052] == 4 )
     {
-      sr_CSDrawText("Busy", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43C80000u))), 16.0);
+      sr_text_draw_recovered("Busy", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43C80000u))))), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       LODWORD(v50) = dword_140404A6C[v9 + 280658140];
     }
     v51 = 1760LL * (int)v50;
@@ -277,18 +245,18 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
       v54 = (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43C80000u)));
       if ( v52 )
         v53 = "Left-click to hang up";
-      sr_CSDrawText(v53, 512.0, v54, 16.0);
+      sr_text_draw_recovered(v53, 512.0, sr_text_bits_float((unsigned)(uintptr_t)(v54)), 16.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
     }
     v55 = (int)dword_140404A6C[v9 + 280658140];
     if ( dword_140404A6C[1760 * v55 + 278846052] == 3 )
     {
-      sr_CSDrawText("In Use", 640.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v48), 24.0);
+      sr_text_draw_recovered("In Use", 640.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v48))), 24.0, 1, 0.0f, 1.0f, 0.0f, 1.0f, NULL);
       LODWORD(v55) = dword_140404A6C[v9 + 280658140];
     }
     *(float *)SR_VEC_LANES(128, v48, i32) = *(float *)SR_VEC_LANES(128, v48, i32) + 24.0;
     v56 = 1760LL * (int)v55;
     if ( dword_140404A6C[v56 + 278846052] - 1 <= 1 && (int)dword_140404A6C[v56 + 278845983] > 0 )
-      sr_CSDrawText("Number:/i", 640.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v48), 24.0);
+      sr_text_draw_recovered("Number:/i", 640.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v48))), 24.0, 1, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){dword_140404A6C[v56 + 278845983]});
   }
   if ( (int)dword_140404A6C[v9 + 280658139] <= 0
     || (v57 = (int)dword_140404A6C[v9 + 280658140], (_DWORD)v57 == -1)
@@ -299,34 +267,16 @@ LABEL_41:
   }
   qword_140404050(3553, dword_140404A6C[451221642]);
   HIDWORD(v58) = 0;
-  sub_14006CFF0(
-    sr_export_float_lane_container(1103101952),
-    sr_export_float_lane_container(1141309440),
-    v59,
-    127.0,
-    8,
-    1065353216,
-    1065353216,
-    1065353216,
-    1040187392);
+  sub_14006CFF0(sr_export_float_lane_container(1103101952), sr_export_float_lane_container(1141309440), 1103101952, 127.0, 8, 1065353216, 1065353216, 1065353216, 1040187392);
   qword_140404050(3553, dword_140404A6C[451221642]);
-  sub_14006CFF0(
-    sr_export_float_lane_container(1103101952),
-    sr_export_float_lane_container(1141309440),
-    v60,
-    (float)(int)dword_140404A6C[v9 + 280651310],
-    8,
-    1065353216,
-    1065353216,
-    1065353216,
-    1056964608);
+  sub_14006CFF0(sr_export_float_lane_container(1103101952), sr_export_float_lane_container(1141309440), 1103101952, (float)(int)dword_140404A6C[v9 + 280651310], 8, 1065353216, 1065353216, 1065353216, 1056964608);
   v61 = dword_140404A6C[v9 + 280651311];
   if ( v61 > 127 )
     v61 = 127;
   qword_140404050(3553, dword_140404A6C[451221642]);
   v62 = 1103101952;
   *(float *)&v58 = 540.0 - (float)v61;
-  sub_14006CFF0(sr_export_float_lane_container(1103101952), v58, v63, 8.0, 4, 1065353216, 1065353216, 1065353216, 1063256064);
+  sub_14006CFF0(sr_export_float_lane_container(1103101952), v58, 1103101952, 8.0, 4, 1065353216, 1065353216, 1065353216, 1063256064);
   if ( dword_140404A6C[v9 + 280651313] == -1 )
   {
     v66 = dword_140404A6C[v1 + 71856330];
@@ -348,7 +298,7 @@ LABEL_41:
       v67 = "Run";
     }
     v62 = 1141833728;
-    sr_CSDrawText(v67, 64.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x440F0000u))), 24.0);
+    sr_text_draw_recovered(v67, 64.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x440F0000u))))), 24.0, 8, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
   }
 LABEL_52:
   v68 = dword_140404A6C[283785910];
@@ -356,14 +306,14 @@ LABEL_52:
   if ( !dword_140404A6C[283785910] )
   {
     v62 = 1141047296;
-    sr_CSDrawText("Whisper", 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x44030000u))), 18.0);
+    sr_text_draw_recovered("Whisper", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x44030000u))))), 18.0, 8, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
     v68 = dword_140404A6C[283785910];
     v69 = _mm_cvtsi32_si128((int)(0x44030000u));
   }
   if ( v68 == 2 )
   {
     v62 = SR_VEC_LANES(128, v69, i64)[0];
-    sr_CSDrawText("Yell", 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v69), 18.0);
+    sr_text_draw_recovered("Yell", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v69))), 18.0, 8, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
   }
   if ( !dword_140404A6C[v1 + 71856342] )
     goto LABEL_67;
@@ -372,21 +322,17 @@ LABEL_52:
     if ( dword_140404A6C[283831312] == 4 )
       goto LABEL_63;
     v62 = 1082130432;
-    sr_CSDrawText("$/I", 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x40800000u))), 24.0);
+    sr_text_draw_recovered("$/I", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x40800000u))))), 24.0, 0, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){dword_140404A6C[3597LL*(int)dword_140404A6C[284024501]+71856272]});
     if ( dword_140404A6C[3597 * dword_140404A6C[284024501] + 71856286] <= 5 )
     {
       v62 = 1082130432;
-      sr_CSDrawText("$/I", 192.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x40800000u))), 24.0);
+      sr_text_draw_recovered("$/I", 192.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x40800000u))))), 24.0, 0, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){dword_140404A6C[3597LL*(int)dword_140404A6C[284024501]+71856288]});
     }
   }
   else
   {
     v62 = 1103101952;
-    sr_CSDrawText(
-      "Press Tab for Menu",
-      4.0,
-      (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x41C00000u))),
-      24.0);
+    sr_text_draw_recovered("Press Tab for Menu", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x41C00000u))))), 24.0, 0, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
   }
   if ( dword_140404A6C[283831312] == 4 )
   {
@@ -394,9 +340,9 @@ LABEL_63:
     if ( dword_140404A6C[v1 + 71856342] - 14 <= 0xC )
     {
       if ( dword_140404A6C[v1 + 71856286] != -1 )
-        sr_CSDrawText("$/I", 196.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x40800000u))), 24.0);
+        sr_text_draw_recovered("$/I", 196.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x40800000u))))), 24.0, 0, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){dword_140404A6C[v1+71856273]});
       v62 = 1082130432;
-      sr_CSDrawText("Budget: $/I", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x40800000u))), 24.0);
+      sr_text_draw_recovered("Budget: $/I", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x40800000u))))), 24.0, 0, 1.0f, 1.0f, 1.0f, 1.0f, (const uint64[]){dword_140404A6C[v1+71856274]});
     }
   }
 LABEL_67:
@@ -405,21 +351,12 @@ LABEL_67:
   {
     if ( dword_140404A6C[v1 + 71856339] != 3
       || (qword_140404050(3553, dword_140404A6C[451221642]),
-          sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container(1138753536), v71, 80.0, 5, 0, 0, 0, 1056964608),
+          sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container(1138753536), 1098907648, 80.0, 5, 0, 0, 0, 1056964608),
           v62 = 1098907648,
-          sub_14006CFF0(
-            sr_export_float_lane_container(1145864192),
-            sr_export_float_lane_container((unsigned __int64)COERCE_UNSIGNED_INT(
+          sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container((unsigned __int64)COERCE_UNSIGNED_INT(
                                               448.0
                                             - (float)((float)(*(float *)&dword_140404A6C[v1 + 71856296] * 16.0)
-                                                    + (float)(*(float *)&dword_140404A6C[v1 + 71856296] * 16.0)))),
-            v72,
-            16.0,
-            5,
-            1065353216,
-            1065353216,
-            1065353216,
-            1056964608),
+                                                    + (float)(*(float *)&dword_140404A6C[v1 + 71856296] * 16.0)))), 1098907648, 16.0, 5, 1065353216, 1065353216, 1065353216, 1056964608),
           !dword_140404A6C[v9 + 280651314]) )
     {
       if ( dword_140404A6C[v1 + 71856339] == 2 )
@@ -445,16 +382,16 @@ LABEL_67:
           (float)((float)((float)(int)dword_140404A6C[5210 * v70 + 129720369] * 0.00019999999) * 3.14159265359)
         - 2.3561944901925);
         qword_140404050(3553, dword_140404A6C[451221642]);
-        sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container(1138753536), v75, 68.0, 5, 0, 0, 0, 1061158912);
-        sub_14006CFF0(sr_export_float_lane_container(1146388480), sr_export_float_lane_container(1138753536), v76, 68.0, 5, 0, 0, 0, 1061158912);
-        sub_14006CFF0(sr_export_float_lane_container(1146912768), sr_export_float_lane_container(1138753536), v77, 68.0, 5, 0, 0, 0, 1061158912);
-        sub_14006CFF0(sr_export_float_lane_container(1146388480), sr_export_float_lane_container(1138753536), v78, 8.0, 5, 0, 0, 0, 1061158912);
-        sr_CSDrawText("1", 818.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D20000u))), 16.0);
-        sr_CSDrawText("2", 818.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43EE0000u))), 16.0);
-        sr_CSDrawText("3", 850.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D20000u))), 16.0);
-        sr_CSDrawText("4", 850.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43EE0000u))), 16.0);
-        sr_CSDrawText("A", 882.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D20000u))), 16.0);
-        sr_CSDrawText("R", 882.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43EE0000u))), 16.0);
+        sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container(1138753536), 1090519040, 68.0, 5, 0, 0, 0, 1061158912);
+        sub_14006CFF0(sr_export_float_lane_container(1146388480), sr_export_float_lane_container(1138753536), 1090519040, 68.0, 5, 0, 0, 0, 1061158912);
+        sub_14006CFF0(sr_export_float_lane_container(1146912768), sr_export_float_lane_container(1138753536), 1090519040, 68.0, 5, 0, 0, 0, 1061158912);
+        sub_14006CFF0(sr_export_float_lane_container(1146388480), sr_export_float_lane_container(1138753536), 1116733440, 8.0, 5, 0, 0, 0, 1061158912);
+        sr_text_draw_recovered("1", 818.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D20000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
+        sr_text_draw_recovered("2", 818.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43EE0000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
+        sr_text_draw_recovered("3", 850.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D20000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
+        sr_text_draw_recovered("4", 850.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43EE0000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
+        sr_text_draw_recovered("A", 882.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D20000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
+        sr_text_draw_recovered("R", 882.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43EE0000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
         qword_140404050(3553, dword_140404A6C[451221642]);
         v79 = (float)((float)(*(float *)&dword_140404A6C[v1 + 71856293] * 16.0)
                     + (float)(*(float *)&dword_140404A6C[v1 + 71856293] * 16.0))
@@ -469,7 +406,7 @@ LABEL_67:
         dword_140404A6C[456217205] = 0;
         dword_140404A6C[456217207] = 0;
         dword_140404A6C[456217208] = 9;
-        v135 = 0;
+        sr_hud_line_point[2] = 0;
         v85 = _mm_castpd_ps(sub_1401F8A50(0.0, v82, 0.0 /* unused native input */));
         *(double *)&v62 = v79;
         v86 = 64;
@@ -477,19 +414,19 @@ LABEL_67:
         v88 = v80 - SR_VEC_READ_LANES(128, _mm_shuffle_pd((__m128d)v85, (__m128d)v85, 1), f64)[0] * 12.0;
         do
         {
-          v133 = v136;
-          v134 = v80;
-          sub_14007D520((unsigned int *)&v133, v83, v84);
-          v133 = v87;
-          v134 = v88;
-          sub_14007D520((unsigned int *)&v133, v89, v90);
+          (*(float *)&sr_hud_line_point[0]) = v136;
+          (*(float *)&sr_hud_line_point[1]) = v80;
+          sub_14007D520((unsigned int *)&(*(float *)&sr_hud_line_point[0]), v83, v84);
+          (*(float *)&sr_hud_line_point[0]) = v87;
+          (*(float *)&sr_hud_line_point[1]) = v88;
+          sub_14007D520((unsigned int *)&(*(float *)&sr_hud_line_point[0]), v89, v90);
           v81 = v81 + 0.098174773;
           v92 = _mm_castpd_ps(sub_1401F8A50(v81, v91, *(double *)&v62));
           v87 = *(double *)SR_VEC_LANES(128, v92, u64) * 12.0 + *(double *)&v62;
-          v133 = v87;
+          (*(float *)&sr_hud_line_point[0]) = v87;
           v88 = v80 - SR_VEC_READ_LANES(128, _mm_shuffle_pd((__m128d)v92, (__m128d)v92, 1), f64)[0] * 12.0;
-          v134 = v88;
-          sub_14007D520((unsigned int *)&v133, v93, v94);
+          (*(float *)&sr_hud_line_point[1]) = v88;
+          sub_14007D520((unsigned int *)&(*(float *)&sr_hud_line_point[0]), v93, v94);
           --v86;
         }
         while ( v86 );
@@ -520,16 +457,7 @@ LABEL_67:
 LABEL_84:
       qword_140404050(3553, dword_140404A6C[451221642]);
       if ( (_DWORD)v70 == -1 )
-        sub_14006CFF0(
-          sr_export_float_lane_container(1140850688),
-          *(double *)SR_VEC_LANES(128, v7, i64),
-          v132,
-          4.0,
-          5,
-          1065353216,
-          1065353216,
-          1065353216,
-          1056964608);
+        sub_14006CFF0(sr_export_float_lane_container(1140850688), *(double *)SR_VEC_LANES(128, v7, i64), 1082130432, 4.0, 5, 1065353216, 1065353216, 1065353216, 1056964608);
       return;
     }
     if ( dword_140404A6C[1268 * LOBYTE(dword_140404A6C[v1 + 71857715]) + 278521289] )
