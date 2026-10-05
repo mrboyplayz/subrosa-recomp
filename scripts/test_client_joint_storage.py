@@ -128,11 +128,11 @@ static void sub_140105930(float *out,float *a,float *b){((void(*)(float*,float*,
   for(unsigned native=0;native<2;native++){
    dword_140404A6C=(void*)((native?image:working)+0x404a6c);
    memset(dword_140404A6C+485543000,0,16384);memset(dword_140404A6C+486149280,0,16384);memset(dword_140404A6C+280651452,0,16384);
-   for(unsigned bone=0;bone<16;bone++){float *rotation=(float*)(dword_140404A6C+280651452+78*bone);for(unsigned j=0;j<9;j++)rotation[j]=(j%4)==0;dword_140404A6C[280651511+78*bone]=bone;}
+   for(unsigned bone=0;bone<16;bone++){float *rotation=(float*)(dword_140404A6C+280651452+78*bone);float a=((int)((sample+bone)%17)-8)*.03125f;for(unsigned j=0;j<9;j++)rotation[j]=0;rotation[0]=1;rotation[4]=rotation[8]=cosf(a);rotation[5]=sinf(a);rotation[7]=-sinf(a);dword_140404A6C[280651511+78*bone]=bone;}
    float target[3]={.125f,-.25f,.125f},rotation[9]={1,0,0,0,1,0,0,0,1},velocity[3]={.125f,.25f,-.5f},limit[3]={.1f,.2f,.3f};
    __m128 quaternion=_mm_setr_ps(0,0,0,1);unsigned bounds[3]={0x3e800000,0x3e000000,0x3d800000};
-   if(native)((void(*)(int,int,int,float*,float*,float*,float,int,__m128*,float*,unsigned*,unsigned*,float,char))(image+0xb1450))(0,0,joint,target,rotation,velocity,.65625f,0,&quaternion,limit,bounds,bounds,.19634955f,(sample&1)?4:12);
-   else sub_1400B1450(0,0,joint,target,rotation,velocity,.65625f,0,&quaternion,limit,bounds,bounds,.19634955f,(sample&1)?4:12);
+   unsigned flags=sample%32;if(native)((void(*)(int,int,int,float*,float*,float*,float,int,__m128*,float*,unsigned*,unsigned*,float,char))(image+0xb1450))(0,0,joint,target,rotation,velocity,.65625f,0,&quaternion,limit,bounds,bounds,.19634955f,flags);
+   else sub_1400B1450(0,0,joint,target,rotation,velocity,.65625f,0,&quaternion,limit,bounds,bounds,.19634955f,flags);
    if(!native){memcpy(saved_motion,dword_140404A6C+485543000,sizeof saved_motion);memcpy(saved_joints,dword_140404A6C+486149280,sizeof saved_joints);}
    else if(memcmp(saved_motion,dword_140404A6C+485543000,sizeof saved_motion)||memcmp(saved_joints,dword_140404A6C+486149280,sizeof saved_joints)){
     printf("joint mismatch sample %u joint %u\n",sample,joint);

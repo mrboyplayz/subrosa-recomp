@@ -475,3 +475,5 @@ test_client_frame_storage	scripts/test_client_frame_storage.py	test	partial	scri
 kernel_724f85711c1c	scripts/test_client_atmosphere_storage.py	test	partial	scripts/test_client_atmosphere_storage.py	reports/renderer-recovery-20261005
 kernel_e47794bd509e	scripts/test_client_leg_controller.py	test	partial	scripts/test_client_leg_controller.py	reports/player-hud-recovery-20261005
 kernel_0617ddbb3706	scripts/test_client_hud_recovery.py	test	partial	scripts/test_client_hud_recovery.py	reports/player-hud-recovery-20261005
+kernel_5feabf039794	scripts/test_client_upperbody_recovery.py	test	partial	scripts/test_client_upperbody_recovery.py	reports/player-hud-recovery-20261005
+kernel_71d0c3861897	scripts/test_client_grid_raycast_storage.py	test	partial	scripts/test_client_grid_raycast_storage.py	reports/player-hud-recovery-20261005

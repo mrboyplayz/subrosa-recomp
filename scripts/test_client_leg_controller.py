@@ -26,7 +26,7 @@ static void sub_14007B2A0(int64_t matrix,float *axis,double angle){((void(*)(int
 static void sub_14010E370(float *out,float *matrix){memcpy(qtrace[qcalls],matrix,36);memcpy(image+0x10e370,qhead,14);((void(*)(float*,float*))(image+0x10e370))(out,matrix);jump(image+0x10e370,sub_14010E370);memcpy(qtrace[qcalls++]+9,out,16);}
 static __m128 sub_1401F8AC0(double a,int64_t b,double c){float angle;memcpy(&angle,&a,4);return _mm_setr_ps(sinf(angle),cosf(angle),0,0);}
 static void sub_1400B40B0(int a){(void)a;}
-static unsigned sub_1400B91E0(int a,float *p,float *q){unsigned n=calls++;trace[n][0]=1;memcpy(trace[n]+1,p,12);memcpy(trace[n]+4,q,12);return 0;}
+static unsigned sub_1400B91E0(int a,float *p,float *q){unsigned n=calls++;trace[n][0]=1;memcpy(trace[n]+1,p,12);memcpy(trace[n]+4,q,12);if(sample&32){float dy=q[1]-p[1];if(dy<0&&p[1]>=24&&q[1]<24){float t=(24-p[1])/dy;float *hit=(float*)(dword_140404A6C+73006981);hit[0]=p[0]+(q[0]-p[0])*t;hit[1]=24;hit[2]=p[2]+(q[2]-p[2])*t;hit[3]=0;hit[4]=1;hit[5]=0;hit[6]=t;dword_140404A6C[73007011]=-1;return 1;}}return 0;}
 static void sub_1400BAA40(int a,int64_t p,int64_t q){unsigned n=calls++;trace[n][0]=2;memcpy(trace[n]+1,(void*)p,24);memcpy(trace[n]+7,(void*)q,24);}
 static void sub_1400BBF30(int a,int b,float *p,float *v,float *t,float *f,float *q,float *r,float w){unsigned n=calls++;trace[n][0]=3;trace[n][1]=b;memcpy(trace[n]+2,p,12);memcpy(trace[n]+5,t,12);memcpy(trace[n]+8,f,12);memcpy(trace[n]+11,q,12);memcpy(trace[n]+14,r,36);memcpy(trace[n]+23,&w,4);for(unsigned i=0;i<3;i++){v[i]=.01f*(i+1)*(b+1);p[i]+=.125f*(b+1);}}
 static void sub_1400BB6B0(int a,int b,int64_t v,float *t,intptr_t q,float *r){unsigned n=calls++;trace[n][0]=4;trace[n][1]=b;memcpy(trace[n]+2,t,12);memcpy(trace[n]+5,(void*)q,12);memcpy(trace[n]+8,r,36);for(unsigned i=0;i<3;i++)((float*)v)[i]=.25f*(i+1);}
@@ -46,7 +46,7 @@ static void sub_1400B1450(int a,int b,int c,float *p,float *r,float *v,float w,i
         code+=collision_query.CollisionQuery.native_setup(self,pe,[(0xbca30,0x15de),(0x7b2a0,0x470),(0x10e370,0x2a0)]+helpers,(0xb4000,0xb9000,0xba000,0xbb000,0xb1000,0xb2000,0x23e000,0x23f000,0x243000,0x240000))
         code+=b'memcpy(qhead,image+0x10e370,14);jump(image+0x10e370,sub_14010E370);\n'
         leaves=[(0xb91e0,'sub_1400B91E0'),(0xb1450,'sub_1400B1450'),(0x1f8ac0,'sub_1401F8AC0'),(0x23e7d4,'acos'),(0x23f704,'atan2f'),(0x2431f0,'sin')]
-        leaves+= [(0x2406f0,'cos')] if actual_helpers else [(0xb40b0,'sub_1400B40B0'),(0xbaa40,'sub_1400BAA40'),(0xbbf30,'sub_1400BBF30'),(0xbb6b0,'sub_1400BB6B0')]
+        leaves+= [(0x23fc70,'cos')] if actual_helpers else [(0xb40b0,'sub_1400B40B0'),(0xbaa40,'sub_1400BAA40'),(0xbbf30,'sub_1400BBF30'),(0xbb6b0,'sub_1400BB6B0')]
         for rva,name in leaves:code+=f'jump(image+{rva},{name});\n'.encode()
         for rva in (0x278d30,0x279490,0x279870):code+=f'memcpy(&xmmword_140{rva:06X},image+{rva},16);\n'.encode()
         for index,size in ((280651293,32768),(282486045,8192),(486149253,8192)):
@@ -61,7 +61,7 @@ static void sub_1400B1450(int a,int b,int c,float *p,float *r,float *v,float w,i
   for(unsigned native=0;native<2;native++){
    dword_140404A6C=(void*)((native?image:working)+0x404a6c);memset(dword_140404A6C+280651293,0,28664);memset(dword_140404A6C+486149253,0,4096);
    memcpy(dword_140404A6C+282486045,image+0x404a6c+282486045u*4,3000);
-   unsigned *h=dword_140404A6C;h[280651325]=sample&1;h[280651324]=(sample>>1)&1;h[280658310]=sample%3?100:50;h[280658312]=sample%5?100:25;
+   unsigned *h=dword_140404A6C;h[280651325]=(sample%3)==2?5:sample%3;h[280651324]=(sample>>1)&1;h[280658310]=sample%3?100:50;h[280658312]=sample%5?100:25;
    for(unsigned bone=0;bone<16;bone++){float *r=(float*)(h+280651452+78*bone);r[0]=r[4]=r[8]=1;float *p=(float*)(h+280651440+78*bone);p[0]=bone*.02f;p[1]=25+bone*.01f;p[2]=bone*.03f;}
    for(unsigned leg=0;leg<2;leg++){unsigned at=55*leg;h[280658023+at]=-1;h[280658026+at]=(sample>>(2+leg))&1?1:3;float val=.25f;memcpy(h+280658053+at,&val,4);val=.3f;memcpy(h+280658055+at,&val,4);}
    float angle=(sample%17-8.0f)*.125f,vel=.01f*(sample%11),up=.25f+.125f*(sample%7),strength=.25f+(sample%6)*.125f;

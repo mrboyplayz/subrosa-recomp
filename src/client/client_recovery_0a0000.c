@@ -5724,20 +5724,17 @@ void            sub_1400ACD90(float *a1, float *a2, float *a3)
   float v21; // xmm2_4
   float v22; // xmm1_4
   float v23; // xmm2_4
-  float v24; // [rsp+20h] [rbp-C8h] BYREF
-  float v25; // [rsp+24h] [rbp-C4h]
-  float v26; // [rsp+28h] [rbp-C0h]
-  float v27; // [rsp+2Ch] [rbp-BCh]
+  float sr_relative_quaternion[4];
   __m128 v28; // [rsp+30h] [rbp-B8h] BYREF
 
-  sub_14010E370(&v24, a3);
+  sub_14010E370(&sr_relative_quaternion[0], a3);
   sub_14010E370(SR_VEC_LANES(128, v28, f32), a2);
   v5 = SR_VEC_LANES(128, v28, f32)[3];
   v6 = SR_VEC_LANES(128, v28, f32)[2];
   v7 = SR_VEC_LANES(128, v28, f32)[0];
   v8 = SR_VEC_LANES(128, v28, f32)[1];
-  if ( (float)((float)((float)(v27 * SR_VEC_LANES(128, v28, f32)[3]) + (float)(v26 * SR_VEC_LANES(128, v28, f32)[2]))
-             + (float)((float)(v24 * SR_VEC_LANES(128, v28, f32)[0]) + (float)(v25 * SR_VEC_LANES(128, v28, f32)[1]))) < 0.0 )
+  if ( (float)((float)((float)(sr_relative_quaternion[3] * SR_VEC_LANES(128, v28, f32)[3]) + (float)(sr_relative_quaternion[2] * SR_VEC_LANES(128, v28, f32)[2]))
+             + (float)((float)(sr_relative_quaternion[0] * SR_VEC_LANES(128, v28, f32)[0]) + (float)(sr_relative_quaternion[1] * SR_VEC_LANES(128, v28, f32)[1]))) < 0.0 )
   {
     v28 = _mm_xor_ps(v28, ((__m128)_mm_load_si128((const __m128i *)&xmmword_140279870)));
     v6 = SR_VEC_LANES(128, v28, f32)[2];
@@ -5748,10 +5745,10 @@ void            sub_1400ACD90(float *a1, float *a2, float *a3)
   v9 = -v8;
   v10 = -v7;
   v11 = -v6;
-  v12 = (float)((float)((float)(v10 * v27) + (float)(v5 * v24)) + (float)(v9 * v26)) - (float)(v11 * v25);
-  v13 = (float)((float)((float)(v5 * v25) - (float)(v10 * v26)) + (float)(v9 * v27)) + (float)(v11 * v24);
-  v14 = (float)((float)((float)(v10 * v25) + (float)(v5 * v26)) - (float)(v9 * v24)) + (float)(v11 * v27);
-  v15 = (float)((float)((float)(v27 * v5) - (float)(v10 * v24)) - (float)(v9 * v25)) - (float)(v11 * v26);
+  v12 = (float)((float)((float)(v10 * sr_relative_quaternion[3]) + (float)(v5 * sr_relative_quaternion[0])) + (float)(v9 * sr_relative_quaternion[2])) - (float)(v11 * sr_relative_quaternion[1]);
+  v13 = (float)((float)((float)(v5 * sr_relative_quaternion[1]) - (float)(v10 * sr_relative_quaternion[2])) + (float)(v9 * sr_relative_quaternion[3])) + (float)(v11 * sr_relative_quaternion[0]);
+  v14 = (float)((float)((float)(v10 * sr_relative_quaternion[1]) + (float)(v5 * sr_relative_quaternion[2])) - (float)(v9 * sr_relative_quaternion[0])) + (float)(v11 * sr_relative_quaternion[3]);
+  v15 = (float)((float)((float)(sr_relative_quaternion[3] * v5) - (float)(v10 * sr_relative_quaternion[0])) - (float)(v9 * sr_relative_quaternion[1])) - (float)(v11 * sr_relative_quaternion[2]);
   v16 = fsqrt((float)((float)(v13 * v13) + (float)(v12 * v12)) + (float)(v14 * v14));
   if ( v16 == 0.0 )
   {
