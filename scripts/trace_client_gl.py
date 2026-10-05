@@ -107,12 +107,12 @@ static void inspect_pass(void);
         if attribute:
             c+=f'payload(v,{attribute[1]}*sizeof(*v));\n'
         c+='end();\n'
-        if args.inspect_resources and name=='glBindFramebuffer':c+='if(target==0x8d40)inspect_pass();\n'
+        if (args.inspect_resources or args.capture_passes) and name=='glBindFramebuffer':c+='if(target==0x8d40)inspect_pass();\n'
         if (args.inspect_resources or args.capture_passes) and name=='glFramebufferTexture2D':c+='inspect_pass();\n'
         c+=(('return ' if ret!='void' else '')+f'fn_{i}('+','.join(names)+');')
         if args.inspect_errors or (args.inspect_resources and (name.startswith('glDraw') or name=='glMultiDrawElementsBaseVertex')):
             c+='inspect_draw();'
-        if args.inspect_resources and name=='glUseProgram':c+='if(program==0)inspect_pass();'
+        if (args.inspect_resources or args.capture_passes) and name=='glUseProgram':c+='if(program==0)inspect_pass();'
         c+='}\n'
         wrappers.append('wrap_'+str(i))
     c+=r'''

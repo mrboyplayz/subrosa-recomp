@@ -18,8 +18,8 @@ extern int SDL_SetHintWithPriority(const char *, const char *, int);
 enum { SDL_WINDOW_FULLSCREEN = 0x1u, SDL_WINDOW_FULLSCREEN_DESKTOP = 0x1001u };
 enum { SDL_HINT_OVERRIDE = 2 };
 
-unsigned sr_recomp_window_mode = 1;
-unsigned sr_borderless_selected = 1, sr_fullscreen_selected;
+unsigned sr_recomp_window_mode = 0;
+unsigned sr_borderless_selected, sr_fullscreen_selected;
 static unsigned sr_preferred_full_mode = 1;
 static wchar_t sr_settings_path[MAX_PATH];
 static void *sr_tracked_window;
@@ -37,8 +37,8 @@ void sr_recomp_window_load(void)
         sr_settings_path[0] = 0; return;
     }
     wcscpy(slash + 1, L"recomp-window.ini");
-    unsigned mode = GetPrivateProfileIntW(L"Window", L"Mode", 1, sr_settings_path);
-    sr_recomp_window_mode = mode <= 2 ? mode : 1;
+    unsigned mode = GetPrivateProfileIntW(L"Window", L"Mode", 0, sr_settings_path);
+    sr_recomp_window_mode = mode <= 2 ? mode : 0;
     unsigned preferred = GetPrivateProfileIntW(L"Window", L"FullscreenMode", 1, sr_settings_path);
     sr_preferred_full_mode = preferred == 2 ? 2 : 1;
     if (sr_recomp_window_mode) sr_preferred_full_mode = sr_recomp_window_mode;

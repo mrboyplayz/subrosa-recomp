@@ -7604,26 +7604,13 @@ __int64            sub_1400EDED0(
   v8 = a1;
   v11 = a2;
   if ( !(unsigned int)sub_1400E7590(a2) )
-  {
-    /* Rendering recovery: missing PNG left the GL object without storage,
-       which samples black (driver id 131204). Build a 4x4 magenta/black
-       checker so the surface stays visible and the failure is obvious. */
-    dword_140404A6C[468765293] = 4;
-    dword_140404A6C[468765294] = 4;
-    for ( int sr_fy = 0; sr_fy < 4; ++sr_fy )
-    {
-      for ( int sr_fx = 0; sr_fx < 4; ++sr_fx )
-      {
-        unsigned int sr_mag = ((sr_fx + sr_fy) & 1) ? 0xFF00FFFFu : 0xFFFF00FFu;
-        dword_140404A6C[sr_fy * 4 + sr_fx + 468765295] = sr_mag;
-      }
-    }
-  }
+    return 0;
   v12 = dword_140404A6C[468765293];
-  /* GL 3.3 core supports NPOT textures with mipmaps; the original POT gate
-     would leave modern UI/city textures without a base level (black). Keep
-     the dimensions and rely on sub_14014D3E0's min-filter downgrade. */
+  if ( (v12 & (v12 - 1)) != 0 )
+    return 0;
   v13 = dword_140404A6C[468765294];
+  if ( (v13 & (v13 - 1)) != 0 )
+    return 0;
   v14 = (char *)&dword_140404A6C[284205165] - v11;
   do
   {
