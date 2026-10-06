@@ -16,10 +16,12 @@ void               sub_14006BED0()
   __int64 v8; // rax
   unsigned int v9; // r8d
   __int64 v10; // rax
-  __int64 v12; // [rsp+0h] [rbp-38h] BYREF
-  char v13; // [rsp+20h] [rbp-18h]
-  int v14; // [rsp+24h] [rbp-14h]
-  __int64 v15; // [rsp+28h] [rbp-10h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14006BED0[48];
+#define v12 (*(__int64 (*))(void *)(sr_frame_14006BED0 + 0)) /* [rsp+0h] */
+#define v13 (*(char (*))(void *)(sr_frame_14006BED0 + 32)) /* [rsp+20h] */
+#define v14 (*(int (*))(void *)(sr_frame_14006BED0 + 36)) /* [rsp+24h] */
+#define v15 (*(__int64 (*))(void *)(sr_frame_14006BED0 + 40)) /* [rsp+28h] */
 
   if ( dword_140404A6C[179668277] > 1 )
     return; /* native master auth updates state and returns void */
@@ -206,6 +208,10 @@ LABEL_38:
   }
   return; /* native master auth updates state and returns void */
 }
+#undef v12
+#undef v13
+#undef v14
+#undef v15
 
 // 140199001: using guessed type __int64 __fastcall ntohl(_QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -253,17 +259,19 @@ __int64 sr_ConnectMasterServer()
   char v34; // r8
   __int64 v35; // rax
   __int64 v36; // rcx
-  __int64 v37; // [rsp+0h] [rbp-100h] BYREF
-  int v38; // [rsp+30h] [rbp-D0h] BYREF
-  int argp; // [rsp+34h] [rbp-CCh] BYREF
-  int optlen; // [rsp+38h] [rbp-C8h] BYREF
-  char optval[4]; // [rsp+3Ch] [rbp-C4h] BYREF
-  __int128 timeout; // [rsp+40h] [rbp-C0h] BYREF
-  _QWORD readfds[66]; // [rsp+50h] [rbp-B0h] BYREF
   _Alignas(4) _WORD name[8]; // [rsp+260h] [rbp+160h] BYREF
-  char writefds[528]; // [rsp+270h] [rbp+170h] BYREF
-  char cp[32]; // [rsp+480h] [rbp+380h] BYREF
-  __int64 v48; // [rsp+4A0h] [rbp+3A0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400A3F30[1200];
+#define v37 (*(__int64 (*))(void *)(sr_frame_1400A3F30 + 0)) /* [rsp+0h] */
+#define v38 (*(int (*))(void *)(sr_frame_1400A3F30 + 48)) /* [rsp+30h] */
+#define argp (*(int (*))(void *)(sr_frame_1400A3F30 + 52)) /* [rsp+34h] */
+#define optlen (*(int (*))(void *)(sr_frame_1400A3F30 + 56)) /* [rsp+38h] */
+#define optval (*(char (*)[4])(void *)(sr_frame_1400A3F30 + 60)) /* [rsp+3Ch] */
+#define timeout (*(__int128 (*))(void *)(sr_frame_1400A3F30 + 64)) /* [rsp+40h] */
+#define readfds (*(_QWORD (*)[66])(void *)(sr_frame_1400A3F30 + 80)) /* [rsp+50h] */
+#define writefds (*(char (*)[528])(void *)(sr_frame_1400A3F30 + 624)) /* [rsp+270h] */
+#define cp (*(char (*)[32])(void *)(sr_frame_1400A3F30 + 1152)) /* [rsp+480h] */
+#define v48 (*(__int64 (*))(void *)(sr_frame_1400A3F30 + 1184)) /* [rsp+4A0h] */
 
   dword_140404A6C[280649181] = 0;
   v0 = socket_sr(2, 1, 6);
@@ -457,6 +465,16 @@ LABEL_27:
   }
   return sr_connected;
 }
+#undef v37
+#undef v38
+#undef argp
+#undef optlen
+#undef optval
+#undef timeout
+#undef readfds
+#undef writefds
+#undef cp
+#undef v48
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 

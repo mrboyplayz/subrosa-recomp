@@ -1945,31 +1945,33 @@ __int64            sub_14003C760(float *a1, float *a2, float *a3, signed int a4,
   float v170; // xmm3_4
   float *v171; // rax
   float v172; // xmm0_4
-  __int64 v174; // [rsp+8h] [rbp-100h] BYREF
-  __int64 v175; // [rsp+30h] [rbp-D8h]
-  __int64 v176; // [rsp+40h] [rbp-C8h]
-  __int64 v177; // [rsp+48h] [rbp-C0h]
-  signed int v178; // [rsp+58h] [rbp-B0h]
-  int v179; // [rsp+5Ch] [rbp-ACh]
-  float v180; // [rsp+60h] [rbp-A8h] BYREF
   float sr_collision_position[3];
   float sr_collision_normal[3];
-  float v187; // [rsp+88h] [rbp-80h]
-  float v188; // [rsp+8Ch] [rbp-7Ch]
-  float *v189; // [rsp+90h] [rbp-78h]
-  float v190; // [rsp+98h] [rbp-70h]
-  float v191; // [rsp+9Ch] [rbp-6Ch]
   int sr_collision_cell[3];
-  float *v195; // [rsp+B0h] [rbp-58h]
   unsigned sr_collision_displaced_cell[3];
-  float v199[4]; // [rsp+C8h] [rbp-40h] BYREF
-  int v200; // [rsp+D8h] [rbp-30h]
-  int v201; // [rsp+DCh] [rbp-2Ch]
-  int v202; // [rsp+E0h] [rbp-28h]
-  int v203; // [rsp+E4h] [rbp-24h]
-  __int64 v204; // [rsp+E8h] [rbp-20h]
-  float v205[4]; // [rsp+F0h] [rbp-18h] BYREF
-  __int128 v206; // [rsp+100h] [rbp-8h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14003C760[272];
+#define v174 (*(__int64 (*))(void *)(sr_frame_14003C760 + 8)) /* [rsp+8h] */
+#define v175 (*(__int64 (*))(void *)(sr_frame_14003C760 + 48)) /* [rsp+30h] */
+#define v176 (*(__int64 (*))(void *)(sr_frame_14003C760 + 64)) /* [rsp+40h] */
+#define v177 (*(__int64 (*))(void *)(sr_frame_14003C760 + 72)) /* [rsp+48h] */
+#define v178 (*(signed int (*))(void *)(sr_frame_14003C760 + 88)) /* [rsp+58h] */
+#define v179 (*(int (*))(void *)(sr_frame_14003C760 + 92)) /* [rsp+5Ch] */
+#define v180 (*(float (*))(void *)(sr_frame_14003C760 + 96)) /* [rsp+60h] */
+#define v187 (*(float (*))(void *)(sr_frame_14003C760 + 136)) /* [rsp+88h] */
+#define v188 (*(float (*))(void *)(sr_frame_14003C760 + 140)) /* [rsp+8Ch] */
+#define v189 (*(float * (*))(void *)(sr_frame_14003C760 + 144)) /* [rsp+90h] */
+#define v190 (*(float (*))(void *)(sr_frame_14003C760 + 152)) /* [rsp+98h] */
+#define v191 (*(float (*))(void *)(sr_frame_14003C760 + 156)) /* [rsp+9Ch] */
+#define v195 (*(float * (*))(void *)(sr_frame_14003C760 + 176)) /* [rsp+B0h] */
+#define v199 (*(float (*)[4])(void *)(sr_frame_14003C760 + 200)) /* [rsp+C8h] */
+#define v200 (*(int (*))(void *)(sr_frame_14003C760 + 216)) /* [rsp+D8h] */
+#define v201 (*(int (*))(void *)(sr_frame_14003C760 + 220)) /* [rsp+DCh] */
+#define v202 (*(int (*))(void *)(sr_frame_14003C760 + 224)) /* [rsp+E0h] */
+#define v203 (*(int (*))(void *)(sr_frame_14003C760 + 228)) /* [rsp+E4h] */
+#define v204 (*(__int64 (*))(void *)(sr_frame_14003C760 + 232)) /* [rsp+E8h] */
+#define v205 (*(float (*)[4])(void *)(sr_frame_14003C760 + 240)) /* [rsp+F0h] */
+#define v206 (*(__int128 (*))(void *)(sr_frame_14003C760 + 256)) /* [rsp+100h] */
 
   v7 = *(float *)&a7;
   v9 = a4;
@@ -2429,6 +2431,27 @@ LABEL_48:
                    : "x"(_mm_set_ss(65536.0f)), "x"(_mm_set_ss(*a3)) : "cc");
   return sr_collision_hit;
 }
+#undef v174
+#undef v175
+#undef v176
+#undef v177
+#undef v178
+#undef v179
+#undef v180
+#undef v187
+#undef v188
+#undef v189
+#undef v190
+#undef v191
+#undef v195
+#undef v199
+#undef v200
+#undef v201
+#undef v202
+#undef v203
+#undef v204
+#undef v205
+#undef v206
 
 
 //----- (000000014003DE80) ----------------------------------------------------
@@ -2441,13 +2464,15 @@ __int64            sub_14003DE80(float *a1, float *a2, float a3)
   signed int v10; // ebx
   unsigned int *v11; // rdi
   __int64 v13; // [rsp-20h] [rbp-121C0h] BYREF
-  __int64 v14; // [rsp+10h] [rbp-12190h]
   float sr_collision_upper[3];
   uint32_t sr_collision_lower[3];
-  float v21; // [rsp+40h] [rbp-12160h] BYREF
   _Alignas(16) uint32_t sr_collision_result[8];
-  int v26[18436]; // [rsp+12130h] [rbp-70h] BYREF
-  __int64 v27; // [rsp+24140h] [rbp+11FA0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14003DE80[147776];
+#define v14 (*(__int64 (*))(void *)(sr_frame_14003DE80 + 0)) /* [rsp+10h] */
+#define v21 (*(float (*))(void *)(sr_frame_14003DE80 + 48)) /* [rsp+40h] */
+#define v26 (*(int (*)[18436])(void *)(sr_frame_14003DE80 + 74016)) /* [rsp+12130h] */
+#define v27 (*(__int64 (*))(void *)(sr_frame_14003DE80 + 147760)) /* [rsp+24140h] */
 
   dword_140404A6C[73006987] = 1065353216;
   dword_140404A6C[73006988] = 1199570944;
@@ -2511,6 +2536,10 @@ __int64            sub_14003DE80(float *a1, float *a2, float a3)
                      "x"(_mm_set_ss(65536.0f)) : "cc");
   return sr_collision_hit;
 }
+#undef v14
+#undef v21
+#undef v26
+#undef v27
 
 // 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -2820,42 +2849,44 @@ __int64            sub_14004A7A0(int a1, int a2, int *a3, int *a4, float *a5, fl
   float v303; // xmm1_4
   float v304; // xmm9_4
   __int64 v306; // [rsp-20h] [rbp-3BB0h] BYREF
-  __int64 v307; // [rsp+10h] [rbp-3B80h]
-  int v308; // [rsp+18h] [rbp-3B78h]
-  int v309; // [rsp+20h] [rbp-3B70h]
   _Alignas(8) unsigned sr_shape_offset_b[3];
   float sr_shape_offset_a[3];
-  int v315; // [rsp+50h] [rbp-3B40h]
-  int v316; // [rsp+54h] [rbp-3B3Ch]
-  float v317; // [rsp+58h] [rbp-3B38h] BYREF
-  int v318; // [rsp+5Ch] [rbp-3B34h]
-  int v319; // [rsp+3B10h] [rbp-80h]
   float sr_shape_center_a[3];
   _Alignas(8) unsigned sr_shape_edge_normal[3];
-  int v325; // [rsp+3B38h] [rbp-58h]
-  int v326; // [rsp+3B3Ch] [rbp-54h]
-  float *v327; // [rsp+3B40h] [rbp-50h]
-  int *v328; // [rsp+3B48h] [rbp-48h]
-  __int64 v329; // [rsp+3B50h] [rbp-40h]
-  float *v330; // [rsp+3B58h] [rbp-38h]
-  int *v331; // [rsp+3B60h] [rbp-30h]
-  float v332; // [rsp+3B68h] [rbp-28h]
-  float v333; // [rsp+3B6Ch] [rbp-24h]
-  float v334; // [rsp+3B70h] [rbp-20h]
-  float v335; // [rsp+3B74h] [rbp-1Ch]
-  float v336; // [rsp+3B78h] [rbp-18h]
-  float v337; // [rsp+3B7Ch] [rbp-14h]
-  float v338[4]; // [rsp+3B80h] [rbp-10h] BYREF
-  float v339[4]; // [rsp+3B90h] [rbp+0h] BYREF
   _Alignas(8) unsigned sr_shape_edge_a[3];
   _Alignas(8) unsigned sr_shape_edge_b[3];
   float sr_shape_contact[7];
-  float v350[6]; // [rsp+3BE8h] [rbp+58h] BYREF
-  _QWORD v351[8]; // [rsp+3C00h] [rbp+70h]
-  _QWORD v352[8]; // [rsp+3C40h] [rbp+B0h]
   _Alignas(8) unsigned sr_shape_vertices_a[1536];
   _Alignas(8) unsigned sr_shape_vertices_b[2048];
-  __int64 v357; // [rsp+7480h] [rbp+38F0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14004A7A0[29824];
+#define v307 (*(__int64 (*))(void *)(sr_frame_14004A7A0 + 0)) /* [rsp+10h] */
+#define v308 (*(int (*))(void *)(sr_frame_14004A7A0 + 8)) /* [rsp+18h] */
+#define v309 (*(int (*))(void *)(sr_frame_14004A7A0 + 16)) /* [rsp+20h] */
+#define v315 (*(int (*))(void *)(sr_frame_14004A7A0 + 64)) /* [rsp+50h] */
+#define v316 (*(int (*))(void *)(sr_frame_14004A7A0 + 68)) /* [rsp+54h] */
+#define v317 (*(float (*))(void *)(sr_frame_14004A7A0 + 72)) /* [rsp+58h] */
+#define v318 (*(int (*))(void *)(sr_frame_14004A7A0 + 76)) /* [rsp+5Ch] */
+#define v319 (*(int (*))(void *)(sr_frame_14004A7A0 + 15104)) /* [rsp+3B10h] */
+#define v325 (*(int (*))(void *)(sr_frame_14004A7A0 + 15144)) /* [rsp+3B38h] */
+#define v326 (*(int (*))(void *)(sr_frame_14004A7A0 + 15148)) /* [rsp+3B3Ch] */
+#define v327 (*(float * (*))(void *)(sr_frame_14004A7A0 + 15152)) /* [rsp+3B40h] */
+#define v328 (*(int * (*))(void *)(sr_frame_14004A7A0 + 15160)) /* [rsp+3B48h] */
+#define v329 (*(__int64 (*))(void *)(sr_frame_14004A7A0 + 15168)) /* [rsp+3B50h] */
+#define v330 (*(float * (*))(void *)(sr_frame_14004A7A0 + 15176)) /* [rsp+3B58h] */
+#define v331 (*(int * (*))(void *)(sr_frame_14004A7A0 + 15184)) /* [rsp+3B60h] */
+#define v332 (*(float (*))(void *)(sr_frame_14004A7A0 + 15192)) /* [rsp+3B68h] */
+#define v333 (*(float (*))(void *)(sr_frame_14004A7A0 + 15196)) /* [rsp+3B6Ch] */
+#define v334 (*(float (*))(void *)(sr_frame_14004A7A0 + 15200)) /* [rsp+3B70h] */
+#define v335 (*(float (*))(void *)(sr_frame_14004A7A0 + 15204)) /* [rsp+3B74h] */
+#define v336 (*(float (*))(void *)(sr_frame_14004A7A0 + 15208)) /* [rsp+3B78h] */
+#define v337 (*(float (*))(void *)(sr_frame_14004A7A0 + 15212)) /* [rsp+3B7Ch] */
+#define v338 (*(float (*)[4])(void *)(sr_frame_14004A7A0 + 15216)) /* [rsp+3B80h] */
+#define v339 (*(float (*)[4])(void *)(sr_frame_14004A7A0 + 15232)) /* [rsp+3B90h] */
+#define v350 (*(float (*)[6])(void *)(sr_frame_14004A7A0 + 15320)) /* [rsp+3BE8h] */
+#define v351 (*(_QWORD (*)[8])(void *)(sr_frame_14004A7A0 + 15344)) /* [rsp+3C00h] */
+#define v352 (*(_QWORD (*)[8])(void *)(sr_frame_14004A7A0 + 15408)) /* [rsp+3C40h] */
+#define v357 (*(__int64 (*))(void *)(sr_frame_14004A7A0 + 29808)) /* [rsp+7480h] */
 
   v8 = a8;
   v9 = 0;
@@ -3650,6 +3681,33 @@ LABEL_98:
   while ( v137 < *(_DWORD *)(v78 + 16) );
   return (uint32_t)v316;
 }
+#undef v307
+#undef v308
+#undef v309
+#undef v315
+#undef v316
+#undef v317
+#undef v318
+#undef v319
+#undef v325
+#undef v326
+#undef v327
+#undef v328
+#undef v329
+#undef v330
+#undef v331
+#undef v332
+#undef v333
+#undef v334
+#undef v335
+#undef v336
+#undef v337
+#undef v338
+#undef v339
+#undef v350
+#undef v351
+#undef v352
+#undef v357
 
 
 //----- (0000000140077FA0) ----------------------------------------------------
@@ -3759,15 +3817,17 @@ _BOOL8            sub_1400DAD20(__int64 a1, __int64 a2, __int64 a3, __int64 a4, 
   int v39; // xmm1_4
   float v40; // xmm2_4
   int v41; // xmm1_4
-  int v43; // [rsp+48h] [rbp-91h]
   int sr_shape_triangle_point[3];
-  float v47[4]; // [rsp+60h] [rbp-79h] BYREF
-  float v48[4]; // [rsp+70h] [rbp-69h] BYREF
-  float v49[4]; // [rsp+80h] [rbp-59h] BYREF
-  float v50[4]; // [rsp+90h] [rbp-49h] BYREF
-  float v51[4]; // [rsp+A0h] [rbp-39h] BYREF
-  float v52; // [rsp+128h] [rbp+4Fh] BYREF
-  __int64 v53; // [rsp+130h] [rbp+57h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400DAD20[240];
+#define v43 (*(int (*))(void *)(sr_frame_1400DAD20 + 0)) /* [rsp+48h] */
+#define v47 (*(float (*)[4])(void *)(sr_frame_1400DAD20 + 24)) /* [rsp+60h] */
+#define v48 (*(float (*)[4])(void *)(sr_frame_1400DAD20 + 40)) /* [rsp+70h] */
+#define v49 (*(float (*)[4])(void *)(sr_frame_1400DAD20 + 56)) /* [rsp+80h] */
+#define v50 (*(float (*)[4])(void *)(sr_frame_1400DAD20 + 72)) /* [rsp+90h] */
+#define v51 (*(float (*)[4])(void *)(sr_frame_1400DAD20 + 88)) /* [rsp+A0h] */
+#define v52 (*(float (*))(void *)(sr_frame_1400DAD20 + 224)) /* [rsp+128h] */
+#define v53 (*(__int64 (*))(void *)(sr_frame_1400DAD20 + 232)) /* [rsp+130h] */
 
   v53 = a2;
   v7 = 0;
@@ -3874,6 +3934,14 @@ _BOOL8            sub_1400DAD20(__int64 a1, __int64 a2, __int64 a3, __int64 a4, 
   while ( v7 < *(_DWORD *)(a2 + 16) );
   return *(float *)(a1 + 24) < 1.0;
 }
+#undef v43
+#undef v47
+#undef v48
+#undef v49
+#undef v50
+#undef v51
+#undef v52
+#undef v53
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 151A848A0: using guessed type unsigned int;
@@ -4254,23 +4322,25 @@ __int64            sub_1400E21F0(int a1, float *a2, float *a3)
   float v130; // xmm8_4
   float v131; // xmm9_4
   float v132; // xmm6_4
-  __int64 v134; // [rsp+8h] [rbp-100h] BYREF
   _Alignas(8) unsigned char sr_mesh_normal[16];
   _Alignas(8) unsigned char sr_mesh_third[16];
   _Alignas(8) unsigned char sr_mesh_hit[16];
-  signed __int64 v141; // [rsp+78h] [rbp-90h] BYREF
   _Alignas(8) unsigned char sr_mesh_second[16];
   _Alignas(8) unsigned char sr_mesh_first[16];
-  signed __int64 v146; // [rsp+A0h] [rbp-68h]
-  signed __int64 v147; // [rsp+A8h] [rbp-60h]
-  signed __int64 v148; // [rsp+B0h] [rbp-58h]
-  signed __int64 v149; // [rsp+B8h] [rbp-50h]
-  signed __int64 v150; // [rsp+C0h] [rbp-48h]
-  signed __int64 v151; // [rsp+C8h] [rbp-40h]
-  signed __int64 v152; // [rsp+D0h] [rbp-38h]
-  __int64 v153; // [rsp+D8h] [rbp-30h]
   _Alignas(16) unsigned char sr_mesh_vertices[3072];
-  __int64 v166; // [rsp+CE8h] [rbp+BE0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E21F0[3312];
+#define v134 (*(__int64 (*))(void *)(sr_frame_1400E21F0 + 0)) /* [rsp+8h] */
+#define v141 (*(signed __int64 (*))(void *)(sr_frame_1400E21F0 + 112)) /* [rsp+78h] */
+#define v146 (*(signed __int64 (*))(void *)(sr_frame_1400E21F0 + 152)) /* [rsp+A0h] */
+#define v147 (*(signed __int64 (*))(void *)(sr_frame_1400E21F0 + 160)) /* [rsp+A8h] */
+#define v148 (*(signed __int64 (*))(void *)(sr_frame_1400E21F0 + 168)) /* [rsp+B0h] */
+#define v149 (*(signed __int64 (*))(void *)(sr_frame_1400E21F0 + 176)) /* [rsp+B8h] */
+#define v150 (*(signed __int64 (*))(void *)(sr_frame_1400E21F0 + 184)) /* [rsp+C0h] */
+#define v151 (*(signed __int64 (*))(void *)(sr_frame_1400E21F0 + 192)) /* [rsp+C8h] */
+#define v152 (*(signed __int64 (*))(void *)(sr_frame_1400E21F0 + 200)) /* [rsp+D0h] */
+#define v153 (*(__int64 (*))(void *)(sr_frame_1400E21F0 + 208)) /* [rsp+D8h] */
+#define v166 (*(__int64 (*))(void *)(sr_frame_1400E21F0 + 3296)) /* [rsp+CE8h] */
 
   v3 = *a2;
   v4 = a3;
@@ -4578,6 +4648,17 @@ LABEL_19:
                    : "x"(_mm_set_ss(*(float *)&dword_140404A6C[73006987])), "x"(_mm_set_ss(1.0f)) : "cc");
   return sr_mesh_found;
 }
+#undef v134
+#undef v141
+#undef v146
+#undef v147
+#undef v148
+#undef v149
+#undef v150
+#undef v151
+#undef v152
+#undef v153
+#undef v166
 
 // 140279850: using guessed type __int128 xmmword_140279850;
 // 140279870: using guessed type __int128 xmmword_140279870;
@@ -5876,13 +5957,15 @@ __int64            sub_14010D0D0(int a1, int a2)
   __int64 v49; // [rsp-20h] [rbp-C330h] BYREF
   _Alignas(8) uint32_t sr_actor_contact_point[3];
   _Alignas(8) uint32_t sr_actor_contact_offset[3];
-  int v54; // [rsp+40h] [rbp-C2D0h]
-  int v55; // [rsp+44h] [rbp-C2CCh]
   float sr_actor_contact_result[8];
-  int v58[12292]; // [rsp+C2A0h] [rbp-70h] BYREF
-  float v59[4]; // [rsp+182B0h] [rbp+BFA0h] BYREF
-  float v60[68]; // [rsp+182C0h] [rbp+BFB0h] BYREF
-  __int64 v61; // [rsp+183D0h] [rbp+C0C0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14010D0D0[99232];
+#define v54 (*(int (*))(void *)(sr_frame_14010D0D0 + 0)) /* [rsp+40h] */
+#define v55 (*(int (*))(void *)(sr_frame_14010D0D0 + 4)) /* [rsp+44h] */
+#define v58 (*(int (*)[12292])(void *)(sr_frame_14010D0D0 + 49760)) /* [rsp+C2A0h] */
+#define v59 (*(float (*)[4])(void *)(sr_frame_14010D0D0 + 98928)) /* [rsp+182B0h] */
+#define v60 (*(float (*)[68])(void *)(sr_frame_14010D0D0 + 98944)) /* [rsp+182C0h] */
+#define v61 (*(__int64 (*))(void *)(sr_frame_14010D0D0 + 99216)) /* [rsp+183D0h] */
 
   v2 = 0;
   v58[0] = 0;
@@ -6043,6 +6126,12 @@ LABEL_31:
   dword_140404A6C[179992845] = 0;
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v54
+#undef v55
+#undef v58
+#undef v59
+#undef v60
+#undef v61
 
 // 14015003A: conditional instruction was optimized away because edx.4>=8
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -6304,31 +6393,33 @@ __int64            sub_140151190(float *a1, float *a2, float *a3, signed int a4,
   float v226; // xmm0_4
   float v227; // xmm1_4
   float v228; // xmm0_4
-  __int64 v229; // [rsp+8h] [rbp-100h] BYREF
-  float v230; // [rsp+48h] [rbp-C0h] BYREF
   float sr_static_sphere_point[3];
   float sr_static_sphere_normal[3];
-  float v237; // [rsp+70h] [rbp-98h]
-  int v238; // [rsp+74h] [rbp-94h]
-  __int64 v239; // [rsp+78h] [rbp-90h]
-  __int64 v240; // [rsp+80h] [rbp-88h]
   float sr_static_sphere_origin[3];
-  float *v244; // [rsp+98h] [rbp-70h]
-  __int64 v245; // [rsp+A0h] [rbp-68h]
-  float *v246; // [rsp+A8h] [rbp-60h]
-  float *v247; // [rsp+B0h] [rbp-58h]
   int sr_static_sphere_cell[3];
-  unsigned int v251; // [rsp+C8h] [rbp-40h]
   _Alignas(8) unsigned sr_static_sphere_displaced_cell[4];
-  int v255; // [rsp+E0h] [rbp-28h]
-  int v256; // [rsp+E4h] [rbp-24h]
-  int v257; // [rsp+E8h] [rbp-20h]
-  int v258; // [rsp+ECh] [rbp-1Ch]
-  float *v259; // [rsp+F0h] [rbp-18h]
-  float v260[4]; // [rsp+F8h] [rbp-10h] BYREF
   _Alignas(8) unsigned sr_static_sphere_center[4];
   _Alignas(16) unsigned sr_static_sphere_rotation[12];
-  __int64 v266; // [rsp+140h] [rbp+38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140151190[320];
+#define v229 (*(__int64 (*))(void *)(sr_frame_140151190 + 0)) /* [rsp+8h] */
+#define v230 (*(float (*))(void *)(sr_frame_140151190 + 64)) /* [rsp+48h] */
+#define v237 (*(float (*))(void *)(sr_frame_140151190 + 104)) /* [rsp+70h] */
+#define v238 (*(int (*))(void *)(sr_frame_140151190 + 108)) /* [rsp+74h] */
+#define v239 (*(__int64 (*))(void *)(sr_frame_140151190 + 112)) /* [rsp+78h] */
+#define v240 (*(__int64 (*))(void *)(sr_frame_140151190 + 120)) /* [rsp+80h] */
+#define v244 (*(float * (*))(void *)(sr_frame_140151190 + 144)) /* [rsp+98h] */
+#define v245 (*(__int64 (*))(void *)(sr_frame_140151190 + 152)) /* [rsp+A0h] */
+#define v246 (*(float * (*))(void *)(sr_frame_140151190 + 160)) /* [rsp+A8h] */
+#define v247 (*(float * (*))(void *)(sr_frame_140151190 + 168)) /* [rsp+B0h] */
+#define v251 (*(unsigned int (*))(void *)(sr_frame_140151190 + 192)) /* [rsp+C8h] */
+#define v255 (*(int (*))(void *)(sr_frame_140151190 + 216)) /* [rsp+E0h] */
+#define v256 (*(int (*))(void *)(sr_frame_140151190 + 220)) /* [rsp+E4h] */
+#define v257 (*(int (*))(void *)(sr_frame_140151190 + 224)) /* [rsp+E8h] */
+#define v258 (*(int (*))(void *)(sr_frame_140151190 + 228)) /* [rsp+ECh] */
+#define v259 (*(float * (*))(void *)(sr_frame_140151190 + 232)) /* [rsp+F0h] */
+#define v260 (*(float (*)[4])(void *)(sr_frame_140151190 + 240)) /* [rsp+F8h] */
+#define v266 (*(__int64 (*))(void *)(sr_frame_140151190 + 312)) /* [rsp+140h] */
 
   const float sr_static_sphere_axis[3] = {0.0f, 1.0f, 0.0f};
   v6 = *(float *)&a6;
@@ -6956,6 +7047,24 @@ LABEL_70:
   dword_140404A6C[73007003] = -1;
   return 1;
 }
+#undef v229
+#undef v230
+#undef v237
+#undef v238
+#undef v239
+#undef v240
+#undef v244
+#undef v245
+#undef v246
+#undef v247
+#undef v251
+#undef v255
+#undef v256
+#undef v257
+#undef v258
+#undef v259
+#undef v260
+#undef v266
 
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 1402F6188: using guessed type int dword_1402F6188;
@@ -7032,21 +7141,23 @@ _BOOL8            sub_140152750(float *a1, float *a2, float *a3, int a4, float *
   float sr_sphere_152750_vector_81[3];
   float sr_sphere_152750_vector_84[3];
   float sr_sphere_152750_vector_87[3];
-  float v90; // [rsp+88h] [rbp-80h]
-  float v91; // [rsp+8Ch] [rbp-7Ch]
-  float v92; // [rsp+90h] [rbp-78h]
-  float v93[4]; // [rsp+98h] [rbp-70h] BYREF
-  float v94[4]; // [rsp+A8h] [rbp-60h] BYREF
-  float v95[4]; // [rsp+B8h] [rbp-50h] BYREF
-  float v96[4]; // [rsp+C8h] [rbp-40h] BYREF
-  float v97; // [rsp+D8h] [rbp-30h] BYREF
-  float v98; // [rsp+DCh] [rbp-2Ch] BYREF
-  __int64 v99; // [rsp+E0h] [rbp-28h]
-  __int64 v100; // [rsp+E8h] [rbp-20h]
-  float v101; // [rsp+1E0h] [rbp+D8h]
-  float v102; // [rsp+1E8h] [rbp+E0h]
-  float v103; // [rsp+1F8h] [rbp+F0h]
-  float v104; // [rsp+200h] [rbp+F8h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140152750[384];
+#define v90 (*(float (*))(void *)(sr_frame_140152750 + 0)) /* [rsp+88h] */
+#define v91 (*(float (*))(void *)(sr_frame_140152750 + 4)) /* [rsp+8Ch] */
+#define v92 (*(float (*))(void *)(sr_frame_140152750 + 8)) /* [rsp+90h] */
+#define v93 (*(float (*)[4])(void *)(sr_frame_140152750 + 16)) /* [rsp+98h] */
+#define v94 (*(float (*)[4])(void *)(sr_frame_140152750 + 32)) /* [rsp+A8h] */
+#define v95 (*(float (*)[4])(void *)(sr_frame_140152750 + 48)) /* [rsp+B8h] */
+#define v96 (*(float (*)[4])(void *)(sr_frame_140152750 + 64)) /* [rsp+C8h] */
+#define v97 (*(float (*))(void *)(sr_frame_140152750 + 80)) /* [rsp+D8h] */
+#define v98 (*(float (*))(void *)(sr_frame_140152750 + 84)) /* [rsp+DCh] */
+#define v99 (*(__int64 (*))(void *)(sr_frame_140152750 + 88)) /* [rsp+E0h] */
+#define v100 (*(__int64 (*))(void *)(sr_frame_140152750 + 96)) /* [rsp+E8h] */
+#define v101 (*(float (*))(void *)(sr_frame_140152750 + 344)) /* [rsp+1E0h] */
+#define v102 (*(float (*))(void *)(sr_frame_140152750 + 352)) /* [rsp+1E8h] */
+#define v103 (*(float (*))(void *)(sr_frame_140152750 + 368)) /* [rsp+1F8h] */
+#define v104 (*(float (*))(void *)(sr_frame_140152750 + 376)) /* [rsp+200h] */
 
   v13 = *a7;
   v14 = 2310LL * a4;
@@ -7230,6 +7341,21 @@ _BOOL8            sub_140152750(float *a1, float *a2, float *a3, int a4, float *
   while ( v20 < *(int *)((char *)&dword_140404A6C[432532039] + v99) );
   return *a3 < 65536.0;
 }
+#undef v90
+#undef v91
+#undef v92
+#undef v93
+#undef v94
+#undef v95
+#undef v96
+#undef v97
+#undef v98
+#undef v99
+#undef v100
+#undef v101
+#undef v102
+#undef v103
+#undef v104
 
 // 140279870: using guessed type __int128 xmmword_140279870;
 
@@ -7323,18 +7449,20 @@ _BOOL8            sub_140153850(float *a1, float *a2, float *a3, int a4, float *
   float sr_sphere_153850_vector_98[3];
   float sr_sphere_153850_vector_101[3];
   float sr_sphere_153850_vector_104[3];
-  float v107; // [rsp+88h] [rbp-80h]
-  float v108; // [rsp+8Ch] [rbp-7Ch]
-  float v109; // [rsp+90h] [rbp-78h]
-  float v110; // [rsp+94h] [rbp-74h]
-  float v111; // [rsp+98h] [rbp-70h]
-  float v112[4]; // [rsp+A0h] [rbp-68h] BYREF
-  float v113[4]; // [rsp+B0h] [rbp-58h] BYREF
-  float v114[4]; // [rsp+C0h] [rbp-48h] BYREF
-  float v115[4]; // [rsp+D0h] [rbp-38h] BYREF
-  __int128 v116; // [rsp+E0h] [rbp-28h] BYREF
-  float v117; // [rsp+1D8h] [rbp+D0h]
-  float v118; // [rsp+1E0h] [rbp+D8h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140153850[368];
+#define v107 (*(float (*))(void *)(sr_frame_140153850 + 8)) /* [rsp+88h] */
+#define v108 (*(float (*))(void *)(sr_frame_140153850 + 12)) /* [rsp+8Ch] */
+#define v109 (*(float (*))(void *)(sr_frame_140153850 + 16)) /* [rsp+90h] */
+#define v110 (*(float (*))(void *)(sr_frame_140153850 + 20)) /* [rsp+94h] */
+#define v111 (*(float (*))(void *)(sr_frame_140153850 + 24)) /* [rsp+98h] */
+#define v112 (*(float (*)[4])(void *)(sr_frame_140153850 + 32)) /* [rsp+A0h] */
+#define v113 (*(float (*)[4])(void *)(sr_frame_140153850 + 48)) /* [rsp+B0h] */
+#define v114 (*(float (*)[4])(void *)(sr_frame_140153850 + 64)) /* [rsp+C0h] */
+#define v115 (*(float (*)[4])(void *)(sr_frame_140153850 + 80)) /* [rsp+D0h] */
+#define v116 (*(__int128 (*))(void *)(sr_frame_140153850 + 96)) /* [rsp+E0h] */
+#define v117 (*(float (*))(void *)(sr_frame_140153850 + 344)) /* [rsp+1D8h] */
+#define v118 (*(float (*))(void *)(sr_frame_140153850 + 352)) /* [rsp+1E0h] */
 
   v8 = 0;
   v9 = 5072LL * a4;
@@ -7523,6 +7651,18 @@ _BOOL8            sub_140153850(float *a1, float *a2, float *a3, int a4, float *
   while ( v8 < (int)dword_140404A6C[v9 / 4 + 278521861] );
   return *a3 < 65536.0;
 }
+#undef v107
+#undef v108
+#undef v109
+#undef v110
+#undef v111
+#undef v112
+#undef v113
+#undef v114
+#undef v115
+#undef v116
+#undef v117
+#undef v118
 
 
 //----- (00000001401543C0) ----------------------------------------------------
@@ -7647,29 +7787,31 @@ _BOOL8            sub_1401543C0(float *a1, float *a2, float *a3, float *a4, floa
   float v128; // xmm3_4
   float v129; // xmm2_4
   float v130; // xmm5_4
-  float v132; // [rsp+48h] [rbp-C0h]
-  float v133; // [rsp+50h] [rbp-B8h]
-  float v134; // [rsp+54h] [rbp-B4h]
-  float v135; // [rsp+58h] [rbp-B0h]
-  float v136; // [rsp+5Ch] [rbp-ACh]
-  float v137; // [rsp+60h] [rbp-A8h]
-  float v138; // [rsp+64h] [rbp-A4h]
-  float v139; // [rsp+68h] [rbp-A0h]
-  float v140; // [rsp+6Ch] [rbp-9Ch]
-  float v141; // [rsp+70h] [rbp-98h]
   float sr_sphere_1543c0_vector_142[3];
   float sr_sphere_1543c0_vector_145[3];
   float sr_sphere_1543c0_vector_148[3];
-  float v151; // [rsp+A8h] [rbp-60h]
-  float v152; // [rsp+ACh] [rbp-5Ch]
-  float v153[4]; // [rsp+B0h] [rbp-58h] BYREF
-  float v154[4]; // [rsp+C0h] [rbp-48h] BYREF
-  float v155[4]; // [rsp+D0h] [rbp-38h] BYREF
-  float v156[4]; // [rsp+E0h] [rbp-28h] BYREF
-  float v157[4]; // [rsp+F0h] [rbp-18h] BYREF
-  __int128 v158; // [rsp+100h] [rbp-8h] BYREF
-  float v159; // [rsp+1E8h] [rbp+E0h]
-  float v160; // [rsp+200h] [rbp+F8h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1401543C0[464];
+#define v132 (*(float (*))(void *)(sr_frame_1401543C0 + 8)) /* [rsp+48h] */
+#define v133 (*(float (*))(void *)(sr_frame_1401543C0 + 16)) /* [rsp+50h] */
+#define v134 (*(float (*))(void *)(sr_frame_1401543C0 + 20)) /* [rsp+54h] */
+#define v135 (*(float (*))(void *)(sr_frame_1401543C0 + 24)) /* [rsp+58h] */
+#define v136 (*(float (*))(void *)(sr_frame_1401543C0 + 28)) /* [rsp+5Ch] */
+#define v137 (*(float (*))(void *)(sr_frame_1401543C0 + 32)) /* [rsp+60h] */
+#define v138 (*(float (*))(void *)(sr_frame_1401543C0 + 36)) /* [rsp+64h] */
+#define v139 (*(float (*))(void *)(sr_frame_1401543C0 + 40)) /* [rsp+68h] */
+#define v140 (*(float (*))(void *)(sr_frame_1401543C0 + 44)) /* [rsp+6Ch] */
+#define v141 (*(float (*))(void *)(sr_frame_1401543C0 + 48)) /* [rsp+70h] */
+#define v151 (*(float (*))(void *)(sr_frame_1401543C0 + 104)) /* [rsp+A8h] */
+#define v152 (*(float (*))(void *)(sr_frame_1401543C0 + 108)) /* [rsp+ACh] */
+#define v153 (*(float (*)[4])(void *)(sr_frame_1401543C0 + 112)) /* [rsp+B0h] */
+#define v154 (*(float (*)[4])(void *)(sr_frame_1401543C0 + 128)) /* [rsp+C0h] */
+#define v155 (*(float (*)[4])(void *)(sr_frame_1401543C0 + 144)) /* [rsp+D0h] */
+#define v156 (*(float (*)[4])(void *)(sr_frame_1401543C0 + 160)) /* [rsp+E0h] */
+#define v157 (*(float (*)[4])(void *)(sr_frame_1401543C0 + 176)) /* [rsp+F0h] */
+#define v158 (*(__int128 (*))(void *)(sr_frame_1401543C0 + 192)) /* [rsp+100h] */
+#define v159 (*(float (*))(void *)(sr_frame_1401543C0 + 424)) /* [rsp+1E8h] */
+#define v160 (*(float (*))(void *)(sr_frame_1401543C0 + 448)) /* [rsp+200h] */
 
   static const unsigned sr_static_voxel_vertices[24] = {0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x00000000u,0x00000000u,0x3f800000u,0x00000000u,0x3f800000u,0x00000000u,0x00000000u,0x3f800000u,0x00000000u,0x3f800000u,0x00000000u,0x3f800000u,0x3f800000u,0x00000000u,0x3f800000u,0x3f800000u,0x3f800000u,0x00000000u,0x3f800000u,0x3f800000u};
   static const unsigned sr_static_voxel_normals[18] = {0x00000000u,0xbf800000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0xbf800000u,0x00000000u,0x00000000u,0x00000000u,0x00000000u,0xbf800000u,0x3f800000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x00000000u};
@@ -8067,6 +8209,26 @@ LABEL_63:
   while ( v17 < 6 );
   return *a3 < 65536.0;
 }
+#undef v132
+#undef v133
+#undef v134
+#undef v135
+#undef v136
+#undef v137
+#undef v138
+#undef v139
+#undef v140
+#undef v141
+#undef v151
+#undef v152
+#undef v153
+#undef v154
+#undef v155
+#undef v156
+#undef v157
+#undef v158
+#undef v159
+#undef v160
 
 
 //----- (00000001401564A0) ----------------------------------------------------
@@ -8383,45 +8545,47 @@ _BOOL8            sub_1401564A0(float *a1, float *a2, float *a3, float *a4, floa
   float v320; // xmm1_4
   float v321; // xmm0_4
   float sr_sphere_1564a0_vector_323[3];
-  float v326; // [rsp+58h] [rbp-B0h]
   float sr_sphere_1564a0_vector_327[3];
-  float v330; // [rsp+70h] [rbp-98h]
-  float v331; // [rsp+74h] [rbp-94h]
-  float v332; // [rsp+78h] [rbp-90h]
-  float v333; // [rsp+7Ch] [rbp-8Ch]
-  float v334; // [rsp+80h] [rbp-88h]
-  float v335; // [rsp+84h] [rbp-84h]
-  float v336; // [rsp+88h] [rbp-80h]
-  float v337; // [rsp+8Ch] [rbp-7Ch]
-  float v338; // [rsp+90h] [rbp-78h]
-  float v339; // [rsp+94h] [rbp-74h]
-  float v340; // [rsp+98h] [rbp-70h]
-  float v341; // [rsp+9Ch] [rbp-6Ch]
-  float v342; // [rsp+A0h] [rbp-68h]
   _Alignas(8) unsigned sr_sphere_mesh_offset[3];
   float sr_sphere_1564a0_vector_345[3];
   float sr_sphere_1564a0_vector_348[3];
-  float v351; // [rsp+D8h] [rbp-30h]
   float sr_sphere_1564a0_vector_352[3];
   float sr_sphere_1564a0_vector_355[3];
   float sr_sphere_1564a0_vector_358[3];
-  int v361; // [rsp+110h] [rbp+8h]
-  __int64 v362; // [rsp+118h] [rbp+10h]
   float sr_sphere_1564a0_vector_363[3];
   float sr_sphere_1564a0_vector_366[3];
   float sr_sphere_1564a0_vector_369[3];
-  float v372; // [rsp+150h] [rbp+48h] BYREF
-  float v373; // [rsp+154h] [rbp+4Ch] BYREF
-  float v374; // [rsp+158h] [rbp+50h] BYREF
-  float v375[43]; // [rsp+15Ch] [rbp+54h] BYREF
-  float v376; // [rsp+248h] [rbp+140h]
-  float v377; // [rsp+248h] [rbp+140h]
-  float v378; // [rsp+248h] [rbp+140h]
-  float v379; // [rsp+248h] [rbp+140h]
-  float v380; // [rsp+248h] [rbp+140h]
-  float v381; // [rsp+248h] [rbp+140h]
-  float v382; // [rsp+248h] [rbp+140h]
-  float v383; // [rsp+260h] [rbp+158h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1401564A0[528];
+#define v326 (*(float (*))(void *)(sr_frame_1401564A0 + 0)) /* [rsp+58h] */
+#define v330 (*(float (*))(void *)(sr_frame_1401564A0 + 24)) /* [rsp+70h] */
+#define v331 (*(float (*))(void *)(sr_frame_1401564A0 + 28)) /* [rsp+74h] */
+#define v332 (*(float (*))(void *)(sr_frame_1401564A0 + 32)) /* [rsp+78h] */
+#define v333 (*(float (*))(void *)(sr_frame_1401564A0 + 36)) /* [rsp+7Ch] */
+#define v334 (*(float (*))(void *)(sr_frame_1401564A0 + 40)) /* [rsp+80h] */
+#define v335 (*(float (*))(void *)(sr_frame_1401564A0 + 44)) /* [rsp+84h] */
+#define v336 (*(float (*))(void *)(sr_frame_1401564A0 + 48)) /* [rsp+88h] */
+#define v337 (*(float (*))(void *)(sr_frame_1401564A0 + 52)) /* [rsp+8Ch] */
+#define v338 (*(float (*))(void *)(sr_frame_1401564A0 + 56)) /* [rsp+90h] */
+#define v339 (*(float (*))(void *)(sr_frame_1401564A0 + 60)) /* [rsp+94h] */
+#define v340 (*(float (*))(void *)(sr_frame_1401564A0 + 64)) /* [rsp+98h] */
+#define v341 (*(float (*))(void *)(sr_frame_1401564A0 + 68)) /* [rsp+9Ch] */
+#define v342 (*(float (*))(void *)(sr_frame_1401564A0 + 72)) /* [rsp+A0h] */
+#define v351 (*(float (*))(void *)(sr_frame_1401564A0 + 128)) /* [rsp+D8h] */
+#define v361 (*(int (*))(void *)(sr_frame_1401564A0 + 184)) /* [rsp+110h] */
+#define v362 (*(__int64 (*))(void *)(sr_frame_1401564A0 + 192)) /* [rsp+118h] */
+#define v372 (*(float (*))(void *)(sr_frame_1401564A0 + 248)) /* [rsp+150h] */
+#define v373 (*(float (*))(void *)(sr_frame_1401564A0 + 252)) /* [rsp+154h] */
+#define v374 (*(float (*))(void *)(sr_frame_1401564A0 + 256)) /* [rsp+158h] */
+#define v375 (*(float (*)[43])(void *)(sr_frame_1401564A0 + 260)) /* [rsp+15Ch] */
+#define v376 (*(float (*))(void *)(sr_frame_1401564A0 + 496)) /* [rsp+248h] */
+#define v377 (*(float (*))(void *)(sr_frame_1401564A0 + 496)) /* [rsp+248h] */
+#define v378 (*(float (*))(void *)(sr_frame_1401564A0 + 496)) /* [rsp+248h] */
+#define v379 (*(float (*))(void *)(sr_frame_1401564A0 + 496)) /* [rsp+248h] */
+#define v380 (*(float (*))(void *)(sr_frame_1401564A0 + 496)) /* [rsp+248h] */
+#define v381 (*(float (*))(void *)(sr_frame_1401564A0 + 496)) /* [rsp+248h] */
+#define v382 (*(float (*))(void *)(sr_frame_1401564A0 + 496)) /* [rsp+248h] */
+#define v383 (*(float (*))(void *)(sr_frame_1401564A0 + 520)) /* [rsp+260h] */
 
   v8 = LOWORD(a7);
   v10 = a8;
@@ -9491,3 +9655,32 @@ _BOOL8            sub_1401564A0(float *a1, float *a2, float *a3, float *a4, floa
   }
   return *a3 < 65536.0;
 }
+#undef v326
+#undef v330
+#undef v331
+#undef v332
+#undef v333
+#undef v334
+#undef v335
+#undef v336
+#undef v337
+#undef v338
+#undef v339
+#undef v340
+#undef v341
+#undef v342
+#undef v351
+#undef v361
+#undef v362
+#undef v372
+#undef v373
+#undef v374
+#undef v375
+#undef v376
+#undef v377
+#undef v378
+#undef v379
+#undef v380
+#undef v381
+#undef v382
+#undef v383

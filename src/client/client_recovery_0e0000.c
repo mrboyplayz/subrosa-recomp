@@ -162,40 +162,42 @@ __int64            sub_1400E15A0(__int64 a1, int a2, float *a3, float *a4, int a
   int v145; // xmm0_4
   float v146; // xmm1_4
   __int64 v148; // [rsp-20h] [rbp-1AB8h] BYREF
-  unsigned __int64 v149; // [rsp+20h] [rbp-1A78h] BYREF
-  float v150; // [rsp+28h] [rbp-1A70h]
-  float *v151; // [rsp+30h] [rbp-1A68h] BYREF
-  int v152; // [rsp+38h] [rbp-1A60h]
-  __int64 v153; // [rsp+40h] [rbp-1A58h] BYREF
-  float *v154; // [rsp+48h] [rbp-1A50h] BYREF
-  float v155; // [rsp+50h] [rbp-1A48h]
-  _QWORD v156[785]; // [rsp+58h] [rbp-1A40h] BYREF
-  float v157; // [rsp+1A18h] [rbp-80h]
-  __int64 v158; // [rsp+1A20h] [rbp-78h] BYREF
-  float v159; // [rsp+1A28h] [rbp-70h]
-  signed __int64 v160; // [rsp+1A30h] [rbp-68h]
-  signed __int64 v161; // [rsp+1A38h] [rbp-60h]
-  signed __int64 v162; // [rsp+1A40h] [rbp-58h]
-  signed __int64 v163; // [rsp+1A48h] [rbp-50h]
-  signed __int64 v164; // [rsp+1A50h] [rbp-48h]
-  signed __int64 v165; // [rsp+1A58h] [rbp-40h]
-  signed __int64 v166; // [rsp+1A60h] [rbp-38h]
-  signed __int64 v167; // [rsp+1A68h] [rbp-30h]
-  signed __int64 v168; // [rsp+1A70h] [rbp-28h]
-  __int64 v169; // [rsp+1A78h] [rbp-20h]
-  __int64 v170; // [rsp+1A80h] [rbp-18h]
-  int v171; // [rsp+1A88h] [rbp-10h] BYREF
-  int v172; // [rsp+1A8Ch] [rbp-Ch] BYREF
-  _BYTE v174[4]; // [rsp+1A94h] [rbp-4h] BYREF
-  char v175; // [rsp+1A98h] [rbp+0h] BYREF
-  _BYTE v176[4]; // [rsp+1A9Ch] [rbp+4h] BYREF
-  char v177; // [rsp+1AA0h] [rbp+8h] BYREF
-  _BYTE v178[4]; // [rsp+1AA4h] [rbp+Ch] BYREF
-  _BYTE v179[4]; // [rsp+1AA8h] [rbp+10h] BYREF
-  char v180; // [rsp+1AACh] [rbp+14h] BYREF
-  _BYTE v181[4]; // [rsp+1AB0h] [rbp+18h] BYREF
-  _BYTE v182[6100]; // [rsp+1AB4h] [rbp+1Ch] BYREF
-  __int64 v183; // [rsp+3288h] [rbp+17F0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E15A0[12912];
+#define v149 (*(unsigned __int64 (*))(void *)(sr_frame_1400E15A0 + 0)) /* [rsp+20h] */
+#define v150 (*(float (*))(void *)(sr_frame_1400E15A0 + 8)) /* [rsp+28h] */
+#define v151 (*(float * (*))(void *)(sr_frame_1400E15A0 + 16)) /* [rsp+30h] */
+#define v152 (*(int (*))(void *)(sr_frame_1400E15A0 + 24)) /* [rsp+38h] */
+#define v153 (*(__int64 (*))(void *)(sr_frame_1400E15A0 + 32)) /* [rsp+40h] */
+#define v154 (*(float * (*))(void *)(sr_frame_1400E15A0 + 40)) /* [rsp+48h] */
+#define v155 (*(float (*))(void *)(sr_frame_1400E15A0 + 48)) /* [rsp+50h] */
+#define v156 (*(_QWORD (*)[785])(void *)(sr_frame_1400E15A0 + 56)) /* [rsp+58h] */
+#define v157 (*(float (*))(void *)(sr_frame_1400E15A0 + 6648)) /* [rsp+1A18h] */
+#define v158 (*(__int64 (*))(void *)(sr_frame_1400E15A0 + 6656)) /* [rsp+1A20h] */
+#define v159 (*(float (*))(void *)(sr_frame_1400E15A0 + 6664)) /* [rsp+1A28h] */
+#define v160 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6672)) /* [rsp+1A30h] */
+#define v161 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6680)) /* [rsp+1A38h] */
+#define v162 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6688)) /* [rsp+1A40h] */
+#define v163 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6696)) /* [rsp+1A48h] */
+#define v164 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6704)) /* [rsp+1A50h] */
+#define v165 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6712)) /* [rsp+1A58h] */
+#define v166 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6720)) /* [rsp+1A60h] */
+#define v167 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6728)) /* [rsp+1A68h] */
+#define v168 (*(signed __int64 (*))(void *)(sr_frame_1400E15A0 + 6736)) /* [rsp+1A70h] */
+#define v169 (*(__int64 (*))(void *)(sr_frame_1400E15A0 + 6744)) /* [rsp+1A78h] */
+#define v170 (*(__int64 (*))(void *)(sr_frame_1400E15A0 + 6752)) /* [rsp+1A80h] */
+#define v171 (*(int (*))(void *)(sr_frame_1400E15A0 + 6760)) /* [rsp+1A88h] */
+#define v172 (*(int (*))(void *)(sr_frame_1400E15A0 + 6764)) /* [rsp+1A8Ch] */
+#define v174 (*(_BYTE (*)[4])(void *)(sr_frame_1400E15A0 + 6772)) /* [rsp+1A94h] */
+#define v175 (*(char (*))(void *)(sr_frame_1400E15A0 + 6776)) /* [rsp+1A98h] */
+#define v176 (*(_BYTE (*)[4])(void *)(sr_frame_1400E15A0 + 6780)) /* [rsp+1A9Ch] */
+#define v177 (*(char (*))(void *)(sr_frame_1400E15A0 + 6784)) /* [rsp+1AA0h] */
+#define v178 (*(_BYTE (*)[4])(void *)(sr_frame_1400E15A0 + 6788)) /* [rsp+1AA4h] */
+#define v179 (*(_BYTE (*)[4])(void *)(sr_frame_1400E15A0 + 6792)) /* [rsp+1AA8h] */
+#define v180 (*(char (*))(void *)(sr_frame_1400E15A0 + 6796)) /* [rsp+1AACh] */
+#define v181 (*(_BYTE (*)[4])(void *)(sr_frame_1400E15A0 + 6800)) /* [rsp+1AB0h] */
+#define v182 (*(_BYTE (*)[6100])(void *)(sr_frame_1400E15A0 + 6804)) /* [rsp+1AB4h] */
+#define v183 (*(__int64 (*))(void *)(sr_frame_1400E15A0 + 12904)) /* [rsp+3288h] */
 
   v5 = *a3;
   v6 = a4;
@@ -553,6 +555,40 @@ LABEL_19:
   }
   return sub_1401F8B20((unsigned __int64)&v148 ^ v183);
 }
+#undef v149
+#undef v150
+#undef v151
+#undef v152
+#undef v153
+#undef v154
+#undef v155
+#undef v156
+#undef v157
+#undef v158
+#undef v159
+#undef v160
+#undef v161
+#undef v162
+#undef v163
+#undef v164
+#undef v165
+#undef v166
+#undef v167
+#undef v168
+#undef v169
+#undef v170
+#undef v171
+#undef v172
+#undef v174
+#undef v175
+#undef v176
+#undef v177
+#undef v178
+#undef v179
+#undef v180
+#undef v181
+#undef v182
+#undef v183
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 151A84880: using guessed type unsigned int;
@@ -633,19 +669,21 @@ _BOOL8            sub_1400E2D40(int a1, float *a2, float *a3)
   float v69; // xmm1_4
   float v70; // xmm4_4
   float v71; // xmm3_4
-  float v73; // [rsp+40h] [rbp-C0h] BYREF
-  float v74; // [rsp+44h] [rbp-BCh]
-  float v75; // [rsp+48h] [rbp-B8h]
-  __int64 v76; // [rsp+50h] [rbp-B0h] BYREF
-  float v77; // [rsp+58h] [rbp-A8h]
-  __int64 v78; // [rsp+60h] [rbp-A0h] BYREF
-  float v79; // [rsp+68h] [rbp-98h]
-  unsigned int v80; // [rsp+70h] [rbp-90h] BYREF
-  unsigned int v81; // [rsp+74h] [rbp-8Ch]
-  unsigned int v82; // [rsp+78h] [rbp-88h]
-  float v83[4]; // [rsp+80h] [rbp-80h] BYREF
-  float v84; // [rsp+170h] [rbp+70h] BYREF
-  float v85; // [rsp+178h] [rbp+78h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E2D40[320];
+#define v73 (*(float (*))(void *)(sr_frame_1400E2D40 + 0)) /* [rsp+40h] */
+#define v74 (*(float (*))(void *)(sr_frame_1400E2D40 + 4)) /* [rsp+44h] */
+#define v75 (*(float (*))(void *)(sr_frame_1400E2D40 + 8)) /* [rsp+48h] */
+#define v76 (*(__int64 (*))(void *)(sr_frame_1400E2D40 + 16)) /* [rsp+50h] */
+#define v77 (*(float (*))(void *)(sr_frame_1400E2D40 + 24)) /* [rsp+58h] */
+#define v78 (*(__int64 (*))(void *)(sr_frame_1400E2D40 + 32)) /* [rsp+60h] */
+#define v79 (*(float (*))(void *)(sr_frame_1400E2D40 + 40)) /* [rsp+68h] */
+#define v80 (*(unsigned int (*))(void *)(sr_frame_1400E2D40 + 48)) /* [rsp+70h] */
+#define v81 (*(unsigned int (*))(void *)(sr_frame_1400E2D40 + 52)) /* [rsp+74h] */
+#define v82 (*(unsigned int (*))(void *)(sr_frame_1400E2D40 + 56)) /* [rsp+78h] */
+#define v83 (*(float (*)[4])(void *)(sr_frame_1400E2D40 + 64)) /* [rsp+80h] */
+#define v84 (*(float (*))(void *)(sr_frame_1400E2D40 + 304)) /* [rsp+170h] */
+#define v85 (*(float (*))(void *)(sr_frame_1400E2D40 + 312)) /* [rsp+178h] */
 
   v4 = 5210LL * a1;
   v6 = *(float *)&dword_140404A6C[v4 + 129716753];
@@ -847,6 +885,19 @@ _BOOL8            sub_1400E2D40(int a1, float *a2, float *a3)
   while ( v14 < (int)dword_140404A6C[v15 + 335164539] );
   return *(float *)&dword_140404A6C[73006987] < 1.0;
 }
+#undef v73
+#undef v74
+#undef v75
+#undef v76
+#undef v77
+#undef v78
+#undef v79
+#undef v80
+#undef v81
+#undef v82
+#undef v83
+#undef v84
+#undef v85
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 151A84880: using guessed type unsigned int;
@@ -1048,10 +1099,12 @@ __int64            sub_1400E3960(_BYTE *a1, int a2, int a3)
   char *v10; // rdx
   unsigned int *v11; // rax
   char v12; // cl
-  __int64 v14; // [rsp+0h] [rbp-178h] BYREF
-  _BYTE v15[36]; // [rsp+20h] [rbp-158h] BYREF
-  _BYTE v16[268]; // [rsp+44h] [rbp-134h] BYREF
-  __int64 v17; // [rsp+150h] [rbp-28h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E3960[352];
+#define v14 (*(__int64 (*))(void *)(sr_frame_1400E3960 + 0)) /* [rsp+0h] */
+#define v15 (*(_BYTE (*)[36])(void *)(sr_frame_1400E3960 + 32)) /* [rsp+20h] */
+#define v16 (*(_BYTE (*)[268])(void *)(sr_frame_1400E3960 + 68)) /* [rsp+44h] */
+#define v17 (*(__int64 (*))(void *)(sr_frame_1400E3960 + 336)) /* [rsp+150h] */
 
   v4 = 16385LL * a2;
   v5 = sub_14023A198(a1, (__int64)v15);
@@ -1106,6 +1159,10 @@ LABEL_14:
     (int (           *)(unsigned __int64, _BYTE *))sub_14004C4C0);
   return sub_1401F8B20((unsigned __int64)&v14 ^ v17);
 }
+#undef v14
+#undef v15
+#undef v16
+#undef v17
 
 // 140239CCC: using guessed type __int64 __fastcall sub_140239CCC(_QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -1121,8 +1178,10 @@ __int64 sub_1400E3AB0()
   __int64 v5; // rcx
   __int64 v6; // rcx
   unsigned int v7; // edx
-  unsigned int v8; // [rsp+24h] [rbp-24h]
-  unsigned int v9; // [rsp+28h] [rbp-20h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E3AB0[16];
+#define v8 (*(unsigned int (*))(void *)(sr_frame_1400E3AB0 + 0)) /* [rsp+24h] */
+#define v9 (*(unsigned int (*))(void *)(sr_frame_1400E3AB0 + 4)) /* [rsp+28h] */
 
   v0 = 0;
   result = sub_140198EB7();
@@ -1175,6 +1234,8 @@ LABEL_8:
   dword_140404A6C[285097137] = v7;
   return result;
 }
+#undef v8
+#undef v9
 
 // 1400E3B14: variable 'v8' is possibly undefined
 // 1400E3B16: variable 'v9' is possibly undefined
@@ -1902,22 +1963,24 @@ __int64            sub_1400E54D0(_QWORD *a1, int *a2, _DWORD *a3, int *a4, unsig
   void **v95; // rsi
   void *v96; // rcx
   void *v97; // rcx
-  __int64 v98; // [rsp+0h] [rbp-1A8h] BYREF
-  int v99; // [rsp+20h] [rbp-188h]
-  int v100; // [rsp+28h] [rbp-180h]
-  int v101; // [rsp+30h] [rbp-178h]
-  unsigned int v102; // [rsp+34h] [rbp-174h]
-  __int64 v103; // [rsp+38h] [rbp-170h]
-  __int64 v104; // [rsp+40h] [rbp-168h]
-  _QWORD *v105; // [rsp+48h] [rbp-160h]
-  int *v106; // [rsp+50h] [rbp-158h]
-  _DWORD *v107; // [rsp+58h] [rbp-150h]
-  int *v108; // [rsp+60h] [rbp-148h]
-  __int128 v109; // [rsp+68h] [rbp-140h]
-  __int128 v110; // [rsp+78h] [rbp-130h]
-  char v111; // [rsp+A8h] [rbp-100h] BYREF
-  char v112; // [rsp+B4h] [rbp-F4h] BYREF
-  __int64 v113; // [rsp+150h] [rbp-58h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E54D0[352];
+#define v98 (*(__int64 (*))(void *)(sr_frame_1400E54D0 + 8)) /* [rsp+0h] */
+#define v99 (*(int (*))(void *)(sr_frame_1400E54D0 + 40)) /* [rsp+20h] */
+#define v100 (*(int (*))(void *)(sr_frame_1400E54D0 + 48)) /* [rsp+28h] */
+#define v101 (*(int (*))(void *)(sr_frame_1400E54D0 + 56)) /* [rsp+30h] */
+#define v102 (*(unsigned int (*))(void *)(sr_frame_1400E54D0 + 60)) /* [rsp+34h] */
+#define v103 (*(__int64 (*))(void *)(sr_frame_1400E54D0 + 64)) /* [rsp+38h] */
+#define v104 (*(__int64 (*))(void *)(sr_frame_1400E54D0 + 72)) /* [rsp+40h] */
+#define v105 (*(_QWORD * (*))(void *)(sr_frame_1400E54D0 + 80)) /* [rsp+48h] */
+#define v106 (*(int * (*))(void *)(sr_frame_1400E54D0 + 88)) /* [rsp+50h] */
+#define v107 (*(_DWORD * (*))(void *)(sr_frame_1400E54D0 + 96)) /* [rsp+58h] */
+#define v108 (*(int * (*))(void *)(sr_frame_1400E54D0 + 104)) /* [rsp+60h] */
+#define v109 (*(__int128 (*))(void *)(sr_frame_1400E54D0 + 112)) /* [rsp+68h] */
+#define v110 (*(__int128 (*))(void *)(sr_frame_1400E54D0 + 128)) /* [rsp+78h] */
+#define v111 (*(char (*))(void *)(sr_frame_1400E54D0 + 176)) /* [rsp+A8h] */
+#define v112 (*(char (*))(void *)(sr_frame_1400E54D0 + 188)) /* [rsp+B4h] */
+#define v113 (*(__int64 (*))(void *)(sr_frame_1400E54D0 + 344)) /* [rsp+150h] */
 
   LODWORD(v5) = a5;
   v6 = *a1;
@@ -2486,6 +2549,22 @@ LABEL_119:
   }
   return sub_1401F8B20((unsigned __int64)&v98 ^ v113);
 }
+#undef v98
+#undef v99
+#undef v100
+#undef v101
+#undef v102
+#undef v103
+#undef v104
+#undef v105
+#undef v106
+#undef v107
+#undef v108
+#undef v109
+#undef v110
+#undef v111
+#undef v112
+#undef v113
 
 // 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -2493,9 +2572,11 @@ LABEL_119:
 //----- (00000001400E5EB0) ----------------------------------------------------
 __int64 sub_1400E5EB0()
 {
-  __int64 v1; // [rsp+0h] [rbp-78h] BYREF
-  _BYTE v2[64]; // [rsp+20h] [rbp-58h] BYREF
-  __int64 v3; // [rsp+60h] [rbp-18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E5EB0[112];
+#define v1 (*(__int64 (*))(void *)(sr_frame_1400E5EB0 + 0)) /* [rsp+0h] */
+#define v2 (*(_BYTE (*)[64])(void *)(sr_frame_1400E5EB0 + 32)) /* [rsp+20h] */
+#define v3 (*(__int64 (*))(void *)(sr_frame_1400E5EB0 + 96)) /* [rsp+60h] */
 
   dword_140404A6C[133919261] = 0;
   sub_14024C22C(&dword_140404A6C[278520373]);
@@ -2503,6 +2584,9 @@ __int64 sub_1400E5EB0()
   sub_14024C22C(&dword_140404A6C[278520245]);
   return sub_1401F8B20((unsigned __int64)&v1 ^ v3);
 }
+#undef v1
+#undef v2
+#undef v3
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 1602E12E0: using guessed type unsigned int;
@@ -2536,8 +2620,10 @@ void sub_1400E5F10()
   char v23; // dl
   __int64 v24; // rdx
   char v25; // cl
-  int v26; // [rsp+40h] [rbp+8h] BYREF
-  __int64 v27; // [rsp+48h] [rbp+10h] BYREF
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E5F10[16];
+#define v26 (*(int (*))(void *)(sr_frame_1400E5F10 + 0)) /* [rsp+40h] */
+#define v27 (*(__int64 (*))(void *)(sr_frame_1400E5F10 + 8)) /* [rsp+48h] */
 
   dword_140404A6C[134050357] = sub_14009DE80();
   dword_140404A6C[134050358] = 0;
@@ -2784,6 +2870,8 @@ LABEL_30:
     *(_QWORD *)&dword_140404A6C[2 * dword_140404A6C[134967863] + 134967865] = v27;
   }
 }
+#undef v26
+#undef v27
 
 // 14020BB2C: using guessed type __int64 __fastcall sub_14020BB2C(FILE *Stream);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -2886,9 +2974,11 @@ __int64 sub_1400E65F0()
   __int64 v16; // r8
   int v17; // edx
   int v18; // ecx
-  __int64 v20; // [rsp+0h] [rbp-298h] BYREF
-  char v21[512]; // [rsp+50h] [rbp-248h] BYREF
-  __int64 v22; // [rsp+250h] [rbp-48h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E65F0[608];
+#define v20 (*(__int64 (*))(void *)(sr_frame_1400E65F0 + 0)) /* [rsp+0h] */
+#define v21 (*(char (*)[512])(void *)(sr_frame_1400E65F0 + 80)) /* [rsp+50h] */
+#define v22 (*(__int64 (*))(void *)(sr_frame_1400E65F0 + 592)) /* [rsp+250h] */
 
   v0 = 0;
   if ( (int)dword_140404A6C[421784474] > 0 )
@@ -2956,6 +3046,9 @@ LABEL_13:
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v20
+#undef v21
+#undef v22
 
 // 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
 // 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
@@ -3021,8 +3114,10 @@ __int64 sub_1400E6960()
   unsigned int *v53; // rax
   int v54; // ecx
   int v55; // edx
-  int v56; // [rsp+40h] [rbp+8h]
-  __int64 v57; // [rsp+48h] [rbp+10h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E6960[16];
+#define v56 (*(int (*))(void *)(sr_frame_1400E6960 + 0)) /* [rsp+40h] */
+#define v57 (*(__int64 (*))(void *)(sr_frame_1400E6960 + 8)) /* [rsp+48h] */
 
   result = 0;
   v56 = 0;
@@ -3279,6 +3374,8 @@ __int64 sub_1400E6960()
   }
   return result;
 }
+#undef v56
+#undef v57
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 144FEB3C8: using guessed type unsigned int;
@@ -3298,10 +3395,12 @@ __int64            sub_1400E7270(int a1, char *a2)
   unsigned int *v11; // rbp
   signed int i; // esi
   __int64 v13; // rbx
-  __int64 v15; // [rsp+0h] [rbp-268h] BYREF
-  _DWORD Buffer[4]; // [rsp+20h] [rbp-248h] BYREF
-  char v17[512]; // [rsp+30h] [rbp-238h] BYREF
-  __int64 v18; // [rsp+230h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E7270[576];
+#define v15 (*(__int64 (*))(void *)(sr_frame_1400E7270 + 0)) /* [rsp+0h] */
+#define Buffer (*(_DWORD (*)[4])(void *)(sr_frame_1400E7270 + 32)) /* [rsp+20h] */
+#define v17 (*(char (*)[512])(void *)(sr_frame_1400E7270 + 48)) /* [rsp+30h] */
+#define v18 (*(__int64 (*))(void *)(sr_frame_1400E7270 + 560)) /* [rsp+230h] */
 
   v2 = a1;
   v4 = sub_14024C22C("data");
@@ -3341,6 +3440,10 @@ __int64            sub_1400E7270(int a1, char *a2)
     sub_14024C22C("..");
   return sub_1401F8B20((unsigned __int64)&v15 ^ v18);
 }
+#undef v15
+#undef Buffer
+#undef v17
+#undef v18
 
 // 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -3477,17 +3580,19 @@ __int64            sub_1400E7720(int a1, __int64 a2)
   int v15; // r10d
   int v16; // ecx
   int v17; // edx
-  _BYTE v19[32]; // [rsp+0h] [rbp-158h] BYREF
-  unsigned int v20[4]; // [rsp+30h] [rbp-128h] BYREF
-  _BYTE v21[16]; // [rsp+40h] [rbp-118h] BYREF
-  __int64 v22; // [rsp+50h] [rbp-108h]
-  int v23; // [rsp+70h] [rbp-E8h]
-  int v24; // [rsp+F8h] [rbp-60h]
-  __int64 v25; // [rsp+100h] [rbp-58h]
-  __int64 v26; // [rsp+108h] [rbp-50h]
-  __int64 v27; // [rsp+110h] [rbp-48h]
-  __int64 v28; // [rsp+118h] [rbp-40h]
-  __int64 v29; // [rsp+120h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E7720[304];
+#define v19 (*(_BYTE (*)[32])(void *)(sr_frame_1400E7720 + 0)) /* [rsp+0h] */
+#define v20 (*(unsigned int (*)[4])(void *)(sr_frame_1400E7720 + 48)) /* [rsp+30h] */
+#define v21 (*(_BYTE (*)[16])(void *)(sr_frame_1400E7720 + 64)) /* [rsp+40h] */
+#define v22 (*(__int64 (*))(void *)(sr_frame_1400E7720 + 80)) /* [rsp+50h] */
+#define v23 (*(int (*))(void *)(sr_frame_1400E7720 + 112)) /* [rsp+70h] */
+#define v24 (*(int (*))(void *)(sr_frame_1400E7720 + 248)) /* [rsp+F8h] */
+#define v25 (*(__int64 (*))(void *)(sr_frame_1400E7720 + 256)) /* [rsp+100h] */
+#define v26 (*(__int64 (*))(void *)(sr_frame_1400E7720 + 264)) /* [rsp+108h] */
+#define v27 (*(__int64 (*))(void *)(sr_frame_1400E7720 + 272)) /* [rsp+110h] */
+#define v28 (*(__int64 (*))(void *)(sr_frame_1400E7720 + 280)) /* [rsp+118h] */
+#define v29 (*(__int64 (*))(void *)(sr_frame_1400E7720 + 288)) /* [rsp+120h] */
 
   if ( !a1 )
     return sub_1401F8B20((unsigned __int64)v19 ^ v29);
@@ -3549,6 +3654,17 @@ __int64            sub_1400E7720(int a1, __int64 a2)
   free(v2);
   return sub_1401F8B20((unsigned __int64)v19 ^ v29);
 }
+#undef v19
+#undef v20
+#undef v21
+#undef v22
+#undef v23
+#undef v24
+#undef v25
+#undef v26
+#undef v27
+#undef v28
+#undef v29
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 1862AE010: using guessed type unsigned int;
@@ -3577,11 +3693,13 @@ void            sub_1400E7960(int a1, char *a2)
   unsigned int *v19; // rax
   int v20; // ecx
   int v21; // edx
-  __int64 v23; // [rsp+0h] [rbp-268h] BYREF
-  int Buffer; // [rsp+20h] [rbp-248h] BYREF
-  int v25; // [rsp+24h] [rbp-244h]
-  char v26[512]; // [rsp+30h] [rbp-238h] BYREF
-  __int64 v27; // [rsp+230h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E7960[576];
+#define v23 (*(__int64 (*))(void *)(sr_frame_1400E7960 + 0)) /* [rsp+0h] */
+#define Buffer (*(int (*))(void *)(sr_frame_1400E7960 + 32)) /* [rsp+20h] */
+#define v25 (*(int (*))(void *)(sr_frame_1400E7960 + 36)) /* [rsp+24h] */
+#define v26 (*(char (*)[512])(void *)(sr_frame_1400E7960 + 48)) /* [rsp+30h] */
+#define v27 (*(__int64 (*))(void *)(sr_frame_1400E7960 + 560)) /* [rsp+230h] */
 
   v2 = a1;
   v25 = sub_14024C22C("data");
@@ -3662,6 +3780,11 @@ void            sub_1400E7960(int a1, char *a2)
   }
   return;
 }
+#undef v23
+#undef Buffer
+#undef v25
+#undef v26
+#undef v27
 
 // 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -3685,12 +3808,14 @@ __int64            sub_1400E7C40(int a1, char *a2)
   int v16; // esi
   signed int v17; // esi
   int v18; // edi
-  __int64 v20; // [rsp+0h] [rbp-288h] BYREF
-  int Buffer; // [rsp+40h] [rbp-248h] BYREF
-  int v22; // [rsp+44h] [rbp-244h]
-  int v23; // [rsp+48h] [rbp-240h]
-  char FileName[512]; // [rsp+50h] [rbp-238h] BYREF
-  __int64 v25; // [rsp+250h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E7C40[608];
+#define v20 (*(__int64 (*))(void *)(sr_frame_1400E7C40 + 0)) /* [rsp+0h] */
+#define Buffer (*(int (*))(void *)(sr_frame_1400E7C40 + 64)) /* [rsp+40h] */
+#define v22 (*(int (*))(void *)(sr_frame_1400E7C40 + 68)) /* [rsp+44h] */
+#define v23 (*(int (*))(void *)(sr_frame_1400E7C40 + 72)) /* [rsp+48h] */
+#define FileName (*(char (*)[512])(void *)(sr_frame_1400E7C40 + 80)) /* [rsp+50h] */
+#define v25 (*(__int64 (*))(void *)(sr_frame_1400E7C40 + 592)) /* [rsp+250h] */
 
   v2 = a1;
   v23 = a1;
@@ -3771,6 +3896,12 @@ __int64            sub_1400E7C40(int a1, char *a2)
   sub_1400EDED0(dword_140404A6C[(int)v2 + 283830981], FileName, 0, 0x812Fu, 0x812Fu, 0x2601u, 0x2601u, 0);
   return sub_1401F8B20((unsigned __int64)&v20 ^ v25);
 }
+#undef v20
+#undef Buffer
+#undef v22
+#undef v23
+#undef FileName
+#undef v25
 
 // 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
 // 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
@@ -4118,17 +4249,19 @@ void            sub_1400E9A60(int a1, int a2,      char *a3)
   unsigned int *v68; // r8
   __int64 v69; // r10
   __int64 v70; // rdx
-  _BYTE v72[32]; // [rsp+0h] [rbp-138h] BYREF
-  __int64 v73; // [rsp+20h] [rbp-118h]
-  int v74; // [rsp+28h] [rbp-110h] BYREF
-  int v75; // [rsp+2Ch] [rbp-10Ch]
-  int v76; // [rsp+30h] [rbp-108h]
-  int v77; // [rsp+34h] [rbp-104h]
-  __int64 v78; // [rsp+38h] [rbp-100h]
-  __int64 v79; // [rsp+40h] [rbp-F8h]
-  char v80[8]; // [rsp+48h] [rbp-F0h] BYREF
-  char v81[64]; // [rsp+50h] [rbp-E8h] BYREF
-  __int64 v82; // [rsp+90h] [rbp-A8h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E9A60[160];
+#define v72 (*(_BYTE (*)[32])(void *)(sr_frame_1400E9A60 + 0)) /* [rsp+0h] */
+#define v73 (*(__int64 (*))(void *)(sr_frame_1400E9A60 + 32)) /* [rsp+20h] */
+#define v74 (*(int (*))(void *)(sr_frame_1400E9A60 + 40)) /* [rsp+28h] */
+#define v75 (*(int (*))(void *)(sr_frame_1400E9A60 + 44)) /* [rsp+2Ch] */
+#define v76 (*(int (*))(void *)(sr_frame_1400E9A60 + 48)) /* [rsp+30h] */
+#define v77 (*(int (*))(void *)(sr_frame_1400E9A60 + 52)) /* [rsp+34h] */
+#define v78 (*(__int64 (*))(void *)(sr_frame_1400E9A60 + 56)) /* [rsp+38h] */
+#define v79 (*(__int64 (*))(void *)(sr_frame_1400E9A60 + 64)) /* [rsp+40h] */
+#define v80 (*(char (*)[8])(void *)(sr_frame_1400E9A60 + 72)) /* [rsp+48h] */
+#define v81 (*(char (*)[64])(void *)(sr_frame_1400E9A60 + 80)) /* [rsp+50h] */
+#define v82 (*(__int64 (*))(void *)(sr_frame_1400E9A60 + 144)) /* [rsp+90h] */
 
   v3 = a1;
   v4 = a2;
@@ -4529,6 +4662,17 @@ LABEL_68:
   sub_1401449C0(v3, 1);
   return;
 }
+#undef v72
+#undef v73
+#undef v74
+#undef v75
+#undef v76
+#undef v77
+#undef v78
+#undef v79
+#undef v80
+#undef v81
+#undef v82
 
 // 140279870: using guessed type __int128 xmmword_140279870;
 // 1402B2C88: using guessed type char *off_1402B2C88;
@@ -7199,9 +7343,11 @@ __int64            sub_1400ED690(char *a1)
   unsigned int *v8; // rbx
   unsigned __int64 v9; // rbx
   __m128i *v10; // rdi
-  __int64 v12; // [rsp+0h] [rbp-238h] BYREF
-  char v13[512]; // [rsp+20h] [rbp-218h] BYREF
-  __int64 v14; // [rsp+220h] [rbp-18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400ED690[560];
+#define v12 (*(__int64 (*))(void *)(sr_frame_1400ED690 + 0)) /* [rsp+0h] */
+#define v13 (*(char (*)[512])(void *)(sr_frame_1400ED690 + 32)) /* [rsp+20h] */
+#define v14 (*(__int64 (*))(void *)(sr_frame_1400ED690 + 544)) /* [rsp+220h] */
 
   sub_140158AB0(v13, "%s\r\n", a1);
   v2 = (char *)&dword_140404A6C[71741524] + 3;
@@ -7235,6 +7381,9 @@ __int64            sub_1400ED690(char *a1)
   }
   return sub_1401F8B20((unsigned __int64)&v12 ^ v14);
 }
+#undef v12
+#undef v13
+#undef v14
 
 // 14020BB2C: using guessed type __int64 __fastcall sub_14020BB2C(FILE *Stream);
 // 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
@@ -7704,12 +7853,14 @@ __int64            sub_1400EE0A0(
   unsigned int v31; // ecx
   signed int i; // edx
   signed int v33; // eax
-  __int64 v35; // [rsp+0h] [rbp-158h] BYREF
-  unsigned int v36; // [rsp+30h] [rbp-128h] BYREF
-  int v37; // [rsp+34h] [rbp-124h]
-  int v38; // [rsp+38h] [rbp-120h]
   _Alignas(8) unsigned char v39[224];
-  __int64 v47; // [rsp+120h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400EE0A0[304];
+#define v35 (*(__int64 (*))(void *)(sr_frame_1400EE0A0 + 0)) /* [rsp+0h] */
+#define v36 (*(unsigned int (*))(void *)(sr_frame_1400EE0A0 + 48)) /* [rsp+30h] */
+#define v37 (*(int (*))(void *)(sr_frame_1400EE0A0 + 52)) /* [rsp+34h] */
+#define v38 (*(int (*))(void *)(sr_frame_1400EE0A0 + 56)) /* [rsp+38h] */
+#define v47 (*(__int64 (*))(void *)(sr_frame_1400EE0A0 + 288)) /* [rsp+120h] */
 
   v37 = a4;
   v9 = a4;
@@ -7831,6 +7982,11 @@ __int64            sub_1400EE0A0(
   }
   return 0; /* native EAX=0 on the shared epilogue */
 }
+#undef v35
+#undef v36
+#undef v37
+#undef v38
+#undef v47
 
 // 1400EE49E: variable 'sr_spec.channels' is possibly undefined
 // 1400EE4A4: variable 'sr_spec.freq' is possibly undefined
@@ -7943,17 +8099,19 @@ __int64            sub_1400EE780(signed int a1, int a2)
   unsigned int v44; // esi
   unsigned int v45; // eax
   __int64 v46; // rdi
-  __int64 v48; // [rsp+0h] [rbp-2B8h] BYREF
-  int v49; // [rsp+20h] [rbp-298h]
-  unsigned int v50; // [rsp+28h] [rbp-290h] BYREF
-  unsigned int v51; // [rsp+2Ch] [rbp-28Ch]
-  unsigned int v52; // [rsp+30h] [rbp-288h]
-  __int64 v53; // [rsp+38h] [rbp-280h]
-  __int128 v54; // [rsp+40h] [rbp-278h] BYREF
-  __int128 v55; // [rsp+50h] [rbp-268h]
-  int v56; // [rsp+60h] [rbp-258h]
-  __m128i Src[32]; // [rsp+70h] [rbp-248h] BYREF
-  __int64 v58; // [rsp+270h] [rbp-48h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400EE780[640];
+#define v48 (*(__int64 (*))(void *)(sr_frame_1400EE780 + 0)) /* [rsp+0h] */
+#define v49 (*(int (*))(void *)(sr_frame_1400EE780 + 32)) /* [rsp+20h] */
+#define v50 (*(unsigned int (*))(void *)(sr_frame_1400EE780 + 40)) /* [rsp+28h] */
+#define v51 (*(unsigned int (*))(void *)(sr_frame_1400EE780 + 44)) /* [rsp+2Ch] */
+#define v52 (*(unsigned int (*))(void *)(sr_frame_1400EE780 + 48)) /* [rsp+30h] */
+#define v53 (*(__int64 (*))(void *)(sr_frame_1400EE780 + 56)) /* [rsp+38h] */
+#define v54 (*(__int128 (*))(void *)(sr_frame_1400EE780 + 64)) /* [rsp+40h] */
+#define v55 (*(__int128 (*))(void *)(sr_frame_1400EE780 + 80)) /* [rsp+50h] */
+#define v56 (*(int (*))(void *)(sr_frame_1400EE780 + 96)) /* [rsp+60h] */
+#define Src (*(__m128i (*)[32])(void *)(sr_frame_1400EE780 + 112)) /* [rsp+70h] */
+#define v58 (*(__int64 (*))(void *)(sr_frame_1400EE780 + 624)) /* [rsp+270h] */
 
   v3 = 3597LL * a1;
   v4 = (unsigned __int8)a2;
@@ -8338,6 +8496,17 @@ LABEL_116:
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v48
+#undef v49
+#undef v50
+#undef v51
+#undef v52
+#undef v53
+#undef v54
+#undef v55
+#undef v56
+#undef Src
+#undef v58
 
 // 1400EE8C9: conditional instruction was optimized away because eax.4==10
 // 1400EE912: conditional instruction was optimized away because eax.4==10
@@ -8405,15 +8574,17 @@ void            sub_1400EF0D0(int a1, int a2, int a3)
   __int64 v56; // r8
   __int64 v57; // rdx
   unsigned int *v58; // rax
-  __int64 v59; // [rsp+20h] [rbp-88h]
-  __int64 v60; // [rsp+28h] [rbp-80h]
-  unsigned int v61; // [rsp+30h] [rbp-78h] BYREF
-  unsigned int v62; // [rsp+34h] [rbp-74h]
-  unsigned int v63; // [rsp+38h] [rbp-70h]
-  __int128 v64; // [rsp+40h] [rbp-68h] BYREF
-  __int128 v65; // [rsp+50h] [rbp-58h]
-  int v66; // [rsp+60h] [rbp-48h]
-  int v68; // [rsp+C8h] [rbp+20h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400EF0D0[176];
+#define v59 (*(__int64 (*))(void *)(sr_frame_1400EF0D0 + 0)) /* [rsp+20h] */
+#define v60 (*(__int64 (*))(void *)(sr_frame_1400EF0D0 + 8)) /* [rsp+28h] */
+#define v61 (*(unsigned int (*))(void *)(sr_frame_1400EF0D0 + 16)) /* [rsp+30h] */
+#define v62 (*(unsigned int (*))(void *)(sr_frame_1400EF0D0 + 20)) /* [rsp+34h] */
+#define v63 (*(unsigned int (*))(void *)(sr_frame_1400EF0D0 + 24)) /* [rsp+38h] */
+#define v64 (*(__int128 (*))(void *)(sr_frame_1400EF0D0 + 32)) /* [rsp+40h] */
+#define v65 (*(__int128 (*))(void *)(sr_frame_1400EF0D0 + 48)) /* [rsp+50h] */
+#define v66 (*(int (*))(void *)(sr_frame_1400EF0D0 + 64)) /* [rsp+60h] */
+#define v68 (*(int (*))(void *)(sr_frame_1400EF0D0 + 168)) /* [rsp+C8h] */
 
   v3 = a1;
   v4 = 3597LL * a1;
@@ -8763,6 +8934,15 @@ LABEL_143:
     }
   }
 }
+#undef v59
+#undef v60
+#undef v61
+#undef v62
+#undef v63
+#undef v64
+#undef v65
+#undef v66
+#undef v68
 
 // 1400EF48A: conditional instruction was optimized away because esi.4 is in (7..C)
 // 1400EF496: conditional instruction was optimized away because esi.4 is in (7..C)
@@ -8785,9 +8965,11 @@ __int64            sub_1400EF980(int a1, int a2)
   float v10; // xmm1_4
   signed int v11; // esi
   int i; // ebx
-  float v13[4]; // [rsp+20h] [rbp-48h] BYREF
-  _OWORD v14[2]; // [rsp+30h] [rbp-38h] BYREF
-  int v15; // [rsp+50h] [rbp-18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400EF980[64];
+#define v13 (*(float (*)[4])(void *)(sr_frame_1400EF980 + 0)) /* [rsp+20h] */
+#define v14 (*(_OWORD (*)[2])(void *)(sr_frame_1400EF980 + 16)) /* [rsp+30h] */
+#define v15 (*(int (*))(void *)(sr_frame_1400EF980 + 48)) /* [rsp+50h] */
 
   result = a1;
   v3 = 3597LL * a1;
@@ -8826,6 +9008,9 @@ __int64            sub_1400EF980(int a1, int a2)
   }
   return result;
 }
+#undef v13
+#undef v14
+#undef v15
 
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -8849,8 +9034,10 @@ __int64            sub_1400EFAD0(int a1, int a2)
   unsigned int v15; // ecx
   int v16; // ecx
   __int64 result; // rax
-  __int64 v18; // [rsp+80h] [rbp+18h]
-  __int64 v19; // [rsp+88h] [rbp+20h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400EFAD0[16];
+#define v18 (*(__int64 (*))(void *)(sr_frame_1400EFAD0 + 0)) /* [rsp+80h] */
+#define v19 (*(__int64 (*))(void *)(sr_frame_1400EFAD0 + 8)) /* [rsp+88h] */
 
   v2 = 0;
   v3 = 0;
@@ -8938,6 +9125,8 @@ LABEL_17:
     return v15;
   return result;
 }
+#undef v18
+#undef v19
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -8965,11 +9154,13 @@ __int64            sub_1400EFD20(int a1, int a2)
   __int64 v21; // rcx
   __int64 v22; // rdx
   __int64 v23; // rcx
-  __int64 v25; // [rsp+0h] [rbp-98h] BYREF
-  float v26[4]; // [rsp+30h] [rbp-68h] BYREF
-  _OWORD v27[2]; // [rsp+40h] [rbp-58h] BYREF
-  unsigned int v28; // [rsp+60h] [rbp-38h]
-  __int64 v29; // [rsp+68h] [rbp-30h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400EFD20[112];
+#define v25 (*(__int64 (*))(void *)(sr_frame_1400EFD20 + 0)) /* [rsp+0h] */
+#define v26 (*(float (*)[4])(void *)(sr_frame_1400EFD20 + 48)) /* [rsp+30h] */
+#define v27 (*(_OWORD (*)[2])(void *)(sr_frame_1400EFD20 + 64)) /* [rsp+40h] */
+#define v28 (*(unsigned int (*))(void *)(sr_frame_1400EFD20 + 96)) /* [rsp+60h] */
+#define v29 (*(__int64 (*))(void *)(sr_frame_1400EFD20 + 104)) /* [rsp+68h] */
 
   v3 = 3597LL * a1;
   v4 = dword_140404A6C[v3 + 71856292];
@@ -9031,6 +9222,11 @@ __int64            sub_1400EFD20(int a1, int a2)
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v25
+#undef v26
+#undef v27
+#undef v28
+#undef v29
 
 // 1402F6188: using guessed type int dword_1402F6188;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -9100,10 +9296,12 @@ __int64            sub_1400F0160(int a1)
   __int64 v28; // rdi
   unsigned int v30; // eax
   __int64 v31; // rcx
-  _BYTE v32[32]; // [rsp+0h] [rbp-148h] BYREF
-  __m128i Src[8]; // [rsp+20h] [rbp-128h] BYREF
-  char v34[128]; // [rsp+A0h] [rbp-A8h] BYREF
-  __int64 v35; // [rsp+120h] [rbp-28h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F0160[304];
+#define v32 (*(_BYTE (*)[32])(void *)(sr_frame_1400F0160 + 0)) /* [rsp+0h] */
+#define Src (*(__m128i (*)[8])(void *)(sr_frame_1400F0160 + 32)) /* [rsp+20h] */
+#define v34 (*(char (*)[128])(void *)(sr_frame_1400F0160 + 160)) /* [rsp+A0h] */
+#define v35 (*(__int64 (*))(void *)(sr_frame_1400F0160 + 288)) /* [rsp+120h] */
 
   v1 = a1;
   if ( a1 < 0 )
@@ -9213,6 +9411,10 @@ __int64            sub_1400F0160(int a1)
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v32
+#undef Src
+#undef v34
+#undef v35
 
 // 1400F01D4: conditional instruction was optimized away because r8d.4>=8
 // 1400F01CE: mask 0x80000007 is shortened because r8d.4 <= 0x7FFFFFFF
@@ -9235,9 +9437,11 @@ void            sub_1400F04F0(int a1, int a2)
   float v9; // xmm1_4
   signed int v10; // ebp
   int i; // ebx
-  float v12[4]; // [rsp+20h] [rbp-58h] BYREF
-  _OWORD v13[2]; // [rsp+30h] [rbp-48h] BYREF
-  int v14; // [rsp+50h] [rbp-28h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F04F0[64];
+#define v12 (*(float (*)[4])(void *)(sr_frame_1400F04F0 + 0)) /* [rsp+20h] */
+#define v13 (*(_OWORD (*)[2])(void *)(sr_frame_1400F04F0 + 16)) /* [rsp+30h] */
+#define v14 (*(int (*))(void *)(sr_frame_1400F04F0 + 48)) /* [rsp+50h] */
 
   v3 = 3597LL * a1;
   if ( (int)dword_140404A6C[v3 + 71856279] < 20 )
@@ -9268,6 +9472,9 @@ void            sub_1400F04F0(int a1, int a2)
     }
   }
 }
+#undef v12
+#undef v13
+#undef v14
 
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -9396,14 +9603,16 @@ __int64            sub_1400F0640(int a1)
   char *v119; // r8
   unsigned int *v120; // rdx
   char v121; // al
-  __int64 v123; // [rsp+8h] [rbp-100h] BYREF
-  int v124; // [rsp+28h] [rbp-E0h]
-  unsigned int v125; // [rsp+2Ch] [rbp-DCh]
-  __int64 v126; // [rsp+30h] [rbp-D8h]
-  unsigned int *v127; // [rsp+38h] [rbp-D0h]
-  __int64 v128; // [rsp+40h] [rbp-C8h] BYREF
-  char v129[512]; // [rsp+48h] [rbp-C0h] BYREF
-  __int64 v130; // [rsp+248h] [rbp+140h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F0640[592];
+#define v123 (*(__int64 (*))(void *)(sr_frame_1400F0640 + 0)) /* [rsp+8h] */
+#define v124 (*(int (*))(void *)(sr_frame_1400F0640 + 32)) /* [rsp+28h] */
+#define v125 (*(unsigned int (*))(void *)(sr_frame_1400F0640 + 36)) /* [rsp+2Ch] */
+#define v126 (*(__int64 (*))(void *)(sr_frame_1400F0640 + 40)) /* [rsp+30h] */
+#define v127 (*(unsigned int * (*))(void *)(sr_frame_1400F0640 + 48)) /* [rsp+38h] */
+#define v128 (*(__int64 (*))(void *)(sr_frame_1400F0640 + 56)) /* [rsp+40h] */
+#define v129 (*(char (*)[512])(void *)(sr_frame_1400F0640 + 64)) /* [rsp+48h] */
+#define v130 (*(__int64 (*))(void *)(sr_frame_1400F0640 + 576)) /* [rsp+248h] */
 
   v1 = a1;
   v2 = 3597LL * a1;
@@ -10042,6 +10251,14 @@ LABEL_140:
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v123
+#undef v124
+#undef v125
+#undef v126
+#undef v127
+#undef v128
+#undef v129
+#undef v130
 
 // 1402B23E0: using guessed type char *off_1402B23E0[6];
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -10049,6 +10266,14 @@ LABEL_140:
 // 183EBFAAC: using guessed type unsigned int;
 
 //----- (00000001400F1950) ----------------------------------------------------
+#ifndef SR_FRAME_TYPES
+#define SR_FRAME_TYPES
+typedef __m128 sr_frame_m128 __attribute__((aligned(4)));
+typedef __m128i sr_frame_m128i __attribute__((aligned(4)));
+typedef __m128d sr_frame_m128d __attribute__((aligned(4)));
+typedef __int128 sr_frame_i128 __attribute__((aligned(4)));
+typedef unsigned __int128 sr_frame_u128 __attribute__((aligned(4)));
+#endif
 __int64            sub_1400F1950(int a1)
 {
   int v1; // r13d
@@ -10213,31 +10438,33 @@ __int64            sub_1400F1950(int a1)
   unsigned __int64 v160; // r8
   unsigned int v161; // esi
   __int64 v162; // rdi
-  __int64 v164; // [rsp+0h] [rbp-100h] BYREF
-  int v165; // [rsp+20h] [rbp-E0h]
-  int v166; // [rsp+30h] [rbp-D0h]
-  int v167; // [rsp+34h] [rbp-CCh]
-  unsigned __int64 v168; // [rsp+38h] [rbp-C8h]
-  int v169; // [rsp+40h] [rbp-C0h]
-  unsigned int v170; // [rsp+48h] [rbp-B8h] BYREF
-  float v171; // [rsp+4Ch] [rbp-B4h]
-  float v172; // [rsp+50h] [rbp-B0h]
-  int v173; // [rsp+58h] [rbp-A8h]
-  int v174; // [rsp+5Ch] [rbp-A4h]
-  unsigned int v175; // [rsp+60h] [rbp-A0h]
-  unsigned __int64 v176; // [rsp+68h] [rbp-98h]
-  __int128 v177; // [rsp+70h] [rbp-90h] BYREF
-  __int128 v178; // [rsp+80h] [rbp-80h]
-  int v179; // [rsp+90h] [rbp-70h]
-  __int64 v180; // [rsp+98h] [rbp-68h]
-  float v181[4]; // [rsp+A0h] [rbp-60h] BYREF
-  float v182[4]; // [rsp+B0h] [rbp-50h] BYREF
-  unsigned __int64 v183; // [rsp+C0h] [rbp-40h]
-  __int128 v184; // [rsp+C8h] [rbp-38h] BYREF
-  __int128 v185; // [rsp+D8h] [rbp-28h]
-  __int64 v186; // [rsp+E8h] [rbp-18h]
-  __m128i Src[128]; // [rsp+F0h] [rbp-10h] BYREF
-  __int64 v188; // [rsp+8F0h] [rbp+7F0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F1950[2304];
+#define v164 (*(__int64 (*))(void *)(sr_frame_1400F1950 + 0)) /* [rsp+0h] */
+#define v165 (*(int (*))(void *)(sr_frame_1400F1950 + 32)) /* [rsp+20h] */
+#define v166 (*(int (*))(void *)(sr_frame_1400F1950 + 48)) /* [rsp+30h] */
+#define v167 (*(int (*))(void *)(sr_frame_1400F1950 + 52)) /* [rsp+34h] */
+#define v168 (*(unsigned __int64 (*))(void *)(sr_frame_1400F1950 + 56)) /* [rsp+38h] */
+#define v169 (*(int (*))(void *)(sr_frame_1400F1950 + 64)) /* [rsp+40h] */
+#define v170 (*(unsigned int (*))(void *)(sr_frame_1400F1950 + 72)) /* [rsp+48h] */
+#define v171 (*(float (*))(void *)(sr_frame_1400F1950 + 76)) /* [rsp+4Ch] */
+#define v172 (*(float (*))(void *)(sr_frame_1400F1950 + 80)) /* [rsp+50h] */
+#define v173 (*(int (*))(void *)(sr_frame_1400F1950 + 88)) /* [rsp+58h] */
+#define v174 (*(int (*))(void *)(sr_frame_1400F1950 + 92)) /* [rsp+5Ch] */
+#define v175 (*(unsigned int (*))(void *)(sr_frame_1400F1950 + 96)) /* [rsp+60h] */
+#define v176 (*(unsigned __int64 (*))(void *)(sr_frame_1400F1950 + 104)) /* [rsp+68h] */
+#define v177 (*(__int128 (*))(void *)(sr_frame_1400F1950 + 112)) /* [rsp+70h] */
+#define v178 (*(__int128 (*))(void *)(sr_frame_1400F1950 + 128)) /* [rsp+80h] */
+#define v179 (*(int (*))(void *)(sr_frame_1400F1950 + 144)) /* [rsp+90h] */
+#define v180 (*(__int64 (*))(void *)(sr_frame_1400F1950 + 152)) /* [rsp+98h] */
+#define v181 (*(float (*)[4])(void *)(sr_frame_1400F1950 + 160)) /* [rsp+A0h] */
+#define v182 (*(float (*)[4])(void *)(sr_frame_1400F1950 + 176)) /* [rsp+B0h] */
+#define v183 (*(unsigned __int64 (*))(void *)(sr_frame_1400F1950 + 192)) /* [rsp+C0h] */
+#define v184 (*(sr_frame_i128 (*))(void *)(sr_frame_1400F1950 + 200)) /* [rsp+C8h] */
+#define v185 (*(sr_frame_i128 (*))(void *)(sr_frame_1400F1950 + 216)) /* [rsp+D8h] */
+#define v186 (*(__int64 (*))(void *)(sr_frame_1400F1950 + 232)) /* [rsp+E8h] */
+#define Src (*(__m128i (*)[128])(void *)(sr_frame_1400F1950 + 240)) /* [rsp+F0h] */
+#define v188 (*(__int64 (*))(void *)(sr_frame_1400F1950 + 2288)) /* [rsp+8F0h] */
 
   v1 = a1;
   v2 = 14388LL * a1;
@@ -11361,6 +11588,31 @@ LABEL_9:
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v164
+#undef v165
+#undef v166
+#undef v167
+#undef v168
+#undef v169
+#undef v170
+#undef v171
+#undef v172
+#undef v173
+#undef v174
+#undef v175
+#undef v176
+#undef v177
+#undef v178
+#undef v179
+#undef v180
+#undef v181
+#undef v182
+#undef v183
+#undef v184
+#undef v185
+#undef v186
+#undef Src
+#undef v188
 
 // 1400F23AD: conditional instruction was optimized away because ebx.4==5
 // 140278D30: using guessed type __int128 xmmword_140278D30;
@@ -11676,14 +11928,16 @@ __int64 sub_1400F3E60()
   float v70; // xmm0_4
   unsigned int *v71; // rdx
   unsigned int *v72; // rbx
-  __int64 v74; // [rsp+0h] [rbp-E8h] BYREF
-  int v75; // [rsp+20h] [rbp-C8h]
-  int v76; // [rsp+24h] [rbp-C4h]
-  int v77; // [rsp+28h] [rbp-C0h]
-  int v78; // [rsp+40h] [rbp-A8h] BYREF
-  int v79; // [rsp+44h] [rbp-A4h]
-  int v80; // [rsp+48h] [rbp-A0h]
-  __int64 v81; // [rsp+60h] [rbp-88h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F3E60[112];
+#define v74 (*(__int64 (*))(void *)(sr_frame_1400F3E60 + 0)) /* [rsp+0h] */
+#define v75 (*(int (*))(void *)(sr_frame_1400F3E60 + 32)) /* [rsp+20h] */
+#define v76 (*(int (*))(void *)(sr_frame_1400F3E60 + 36)) /* [rsp+24h] */
+#define v77 (*(int (*))(void *)(sr_frame_1400F3E60 + 40)) /* [rsp+28h] */
+#define v78 (*(int (*))(void *)(sr_frame_1400F3E60 + 64)) /* [rsp+40h] */
+#define v79 (*(int (*))(void *)(sr_frame_1400F3E60 + 68)) /* [rsp+44h] */
+#define v80 (*(int (*))(void *)(sr_frame_1400F3E60 + 72)) /* [rsp+48h] */
+#define v81 (*(__int64 (*))(void *)(sr_frame_1400F3E60 + 96)) /* [rsp+60h] */
 
   v0 = 0;
   if ( dword_140404A6C[284022483] )
@@ -12003,6 +12257,14 @@ __int64 sub_1400F3E60()
   while ( v0 < 256 );
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v74
+#undef v75
+#undef v76
+#undef v77
+#undef v78
+#undef v79
+#undef v80
+#undef v81
 
 // 1400F3F3B: conditional instruction was optimized away because r10d.4>=1
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -12038,12 +12300,14 @@ __int64            sub_1400F45A0(signed int a1, int a2)
   unsigned int v26; // esi
   unsigned int v27; // eax
   __int64 v28; // rdi
-  __int64 v30; // [rsp+0h] [rbp-498h] BYREF
-  float v31[4]; // [rsp+20h] [rbp-478h] BYREF
-  _OWORD v32[2]; // [rsp+30h] [rbp-468h] BYREF
-  int v33; // [rsp+50h] [rbp-448h]
-  __m128i Src[64]; // [rsp+60h] [rbp-438h] BYREF
-  __int64 v35; // [rsp+460h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F45A0[1136];
+#define v30 (*(__int64 (*))(void *)(sr_frame_1400F45A0 + 0)) /* [rsp+0h] */
+#define v31 (*(float (*)[4])(void *)(sr_frame_1400F45A0 + 32)) /* [rsp+20h] */
+#define v32 (*(_OWORD (*)[2])(void *)(sr_frame_1400F45A0 + 48)) /* [rsp+30h] */
+#define v33 (*(int (*))(void *)(sr_frame_1400F45A0 + 80)) /* [rsp+50h] */
+#define Src (*(__m128i (*)[64])(void *)(sr_frame_1400F45A0 + 96)) /* [rsp+60h] */
+#define v35 (*(__int64 (*))(void *)(sr_frame_1400F45A0 + 1120)) /* [rsp+460h] */
 
   v2 = a1;
   v3 = a2;
@@ -12195,6 +12459,12 @@ __int64            sub_1400F45A0(signed int a1, int a2)
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v30
+#undef v31
+#undef v32
+#undef v33
+#undef Src
+#undef v35
 
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 1402B2890: using guessed type char *off_1402B2890[17];
@@ -12283,10 +12553,12 @@ __int64            sub_1400F4D00(int a1, int a2)
   signed int v23; // edi
   unsigned int *v24; // rbx
   unsigned int v25; // ecx
-  __int64 v27; // [rsp+20h] [rbp-A8h]
-  unsigned int v29; // [rsp+D8h] [rbp+10h]
-  unsigned int *v30; // [rsp+E0h] [rbp+18h]
-  __int64 v31; // [rsp+E8h] [rbp+20h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F4D00[208];
+#define v27 (*(__int64 (*))(void *)(sr_frame_1400F4D00 + 0)) /* [rsp+20h] */
+#define v29 (*(unsigned int (*))(void *)(sr_frame_1400F4D00 + 184)) /* [rsp+D8h] */
+#define v30 (*(unsigned int * (*))(void *)(sr_frame_1400F4D00 + 192)) /* [rsp+E0h] */
+#define v31 (*(__int64 (*))(void *)(sr_frame_1400F4D00 + 200)) /* [rsp+E8h] */
 
   v2 = 0;
   v3 = &dword_140404A6C[335047062];
@@ -12437,6 +12709,10 @@ LABEL_37:
   while ( v20 < 6 );
   return sub_140052090();
 }
+#undef v27
+#undef v29
+#undef v30
+#undef v31
 
 // 1402763F0: using guessed type __int128 xmmword_1402763F0;
 // 140276408: using guessed type __int128 xmmword_140276408;
@@ -12453,9 +12729,11 @@ __int64            sub_1400F50D0(int a1, int a2, int a3, int a4)
   __int64 v12; // kr00_8
   unsigned int *v13; // rax
        char *v14; // rdx
-  __int64 v16; // [rsp+0h] [rbp-258h] BYREF
-  _BYTE v17[512]; // [rsp+20h] [rbp-238h] BYREF
-  __int64 v18; // [rsp+220h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F50D0[560];
+#define v16 (*(__int64 (*))(void *)(sr_frame_1400F50D0 + 0)) /* [rsp+0h] */
+#define v17 (*(_BYTE (*)[512])(void *)(sr_frame_1400F50D0 + 32)) /* [rsp+20h] */
+#define v18 (*(__int64 (*))(void *)(sr_frame_1400F50D0 + 544)) /* [rsp+220h] */
 
   v8 = a2 + 1;
   v9 = 1116LL * a2 + 23492LL * a1;
@@ -12512,6 +12790,9 @@ LABEL_16:
   sub_140051BD0(a1, a2);
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v16
+#undef v17
+#undef v18
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -12525,9 +12806,11 @@ __int64            sub_1400F52D0(unsigned int a1)
   __int64 v5; // rsi
   signed int v6; // ecx
   __int64 result; // rax
-  __int64 v8; // [rsp+0h] [rbp-148h] BYREF
-  __m128i Src[16]; // [rsp+20h] [rbp-128h] BYREF
-  __int64 v10; // [rsp+120h] [rbp-28h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F52D0[304];
+#define v8 (*(__int64 (*))(void *)(sr_frame_1400F52D0 + 0)) /* [rsp+0h] */
+#define Src (*(__m128i (*)[16])(void *)(sr_frame_1400F52D0 + 32)) /* [rsp+20h] */
+#define v10 (*(__int64 (*))(void *)(sr_frame_1400F52D0 + 288)) /* [rsp+120h] */
 
   if ( a1 <= 0xFF )
   {
@@ -12568,6 +12851,9 @@ __int64            sub_1400F52D0(unsigned int a1)
   }
   return result;
 }
+#undef v8
+#undef Src
+#undef v10
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 183EBFCD4: using guessed type unsigned int;
@@ -12608,12 +12894,14 @@ __int64 sub_1400F5480()
   int v28; // eax
   __int64 v29; // rcx
   unsigned int *v30; // rbx
-  __int64 v32; // [rsp+0h] [rbp-88h] BYREF
-  int v33; // [rsp+20h] [rbp-68h] BYREF
-  int v34; // [rsp+24h] [rbp-64h]
-  int v35; // [rsp+40h] [rbp-48h]
-  int v36; // [rsp+44h] [rbp-44h]
-  __int64 v37; // [rsp+60h] [rbp-28h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F5480[112];
+#define v32 (*(__int64 (*))(void *)(sr_frame_1400F5480 + 0)) /* [rsp+0h] */
+#define v33 (*(int (*))(void *)(sr_frame_1400F5480 + 32)) /* [rsp+20h] */
+#define v34 (*(int (*))(void *)(sr_frame_1400F5480 + 36)) /* [rsp+24h] */
+#define v35 (*(int (*))(void *)(sr_frame_1400F5480 + 64)) /* [rsp+40h] */
+#define v36 (*(int (*))(void *)(sr_frame_1400F5480 + 68)) /* [rsp+44h] */
+#define v37 (*(__int64 (*))(void *)(sr_frame_1400F5480 + 96)) /* [rsp+60h] */
 
   v0 = 0;
   v1 = &v33;
@@ -12769,6 +13057,12 @@ LABEL_17:
   while ( v0 < 256 );
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v32
+#undef v33
+#undef v34
+#undef v35
+#undef v36
+#undef v37
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -13476,11 +13770,13 @@ __int64            sub_1400F6170(__int64 a1, __int64 a2, __int64 a3)
   __int64 v114; // rcx
   __int128 v115; // xmm0
   __int128 v116; // xmm1
-  __int64 v118; // [rsp+0h] [rbp-B8h] BYREF
-  float v119[4]; // [rsp+30h] [rbp-88h] BYREF
-  _OWORD v120[2]; // [rsp+40h] [rbp-78h] BYREF
-  int v121; // [rsp+60h] [rbp-58h]
-  __int64 v122; // [rsp+68h] [rbp-50h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F6170[112];
+#define v118 (*(__int64 (*))(void *)(sr_frame_1400F6170 + 0)) /* [rsp+0h] */
+#define v119 (*(float (*)[4])(void *)(sr_frame_1400F6170 + 48)) /* [rsp+30h] */
+#define v120 (*(_OWORD (*)[2])(void *)(sr_frame_1400F6170 + 64)) /* [rsp+40h] */
+#define v121 (*(int (*))(void *)(sr_frame_1400F6170 + 96)) /* [rsp+60h] */
+#define v122 (*(__int64 (*))(void *)(sr_frame_1400F6170 + 104)) /* [rsp+68h] */
 
   if ( dword_140404A6C[283831448] == 1 )
   {
@@ -13923,6 +14219,11 @@ LABEL_102:
   }
   return sub_1401F8B20((unsigned __int64)&v118 ^ v122);
 }
+#undef v118
+#undef v119
+#undef v120
+#undef v121
+#undef v122
 
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -14108,18 +14409,20 @@ __int64 sub_1400F6C50()
   int v138; // eax
   float v139; // xmm1_4
   unsigned int *v140; // rbx
-  __int64 v142; // [rsp+0h] [rbp-100h] BYREF
-  unsigned int v143; // [rsp+20h] [rbp-E0h]
-  float v144; // [rsp+30h] [rbp-D0h] BYREF
-  float v145; // [rsp+34h] [rbp-CCh]
-  float v146; // [rsp+38h] [rbp-C8h]
-  __int64 v147; // [rsp+40h] [rbp-C0h]
-  unsigned int *v148; // [rsp+48h] [rbp-B8h]
-  __int128 v149; // [rsp+50h] [rbp-B0h] BYREF
-  __int128 v150; // [rsp+60h] [rbp-A0h]
-  float v151; // [rsp+70h] [rbp-90h]
-  __m128i v152[6]; // [rsp+80h] [rbp-80h] BYREF
-  __int64 v153; // [rsp+280h] [rbp+180h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F6C50[656];
+#define v142 (*(__int64 (*))(void *)(sr_frame_1400F6C50 + 0)) /* [rsp+0h] */
+#define v143 (*(unsigned int (*))(void *)(sr_frame_1400F6C50 + 32)) /* [rsp+20h] */
+#define v144 (*(float (*))(void *)(sr_frame_1400F6C50 + 48)) /* [rsp+30h] */
+#define v145 (*(float (*))(void *)(sr_frame_1400F6C50 + 52)) /* [rsp+34h] */
+#define v146 (*(float (*))(void *)(sr_frame_1400F6C50 + 56)) /* [rsp+38h] */
+#define v147 (*(__int64 (*))(void *)(sr_frame_1400F6C50 + 64)) /* [rsp+40h] */
+#define v148 (*(unsigned int * (*))(void *)(sr_frame_1400F6C50 + 72)) /* [rsp+48h] */
+#define v149 (*(__int128 (*))(void *)(sr_frame_1400F6C50 + 80)) /* [rsp+50h] */
+#define v150 (*(__int128 (*))(void *)(sr_frame_1400F6C50 + 96)) /* [rsp+60h] */
+#define v151 (*(float (*))(void *)(sr_frame_1400F6C50 + 112)) /* [rsp+70h] */
+#define v152 (*(__m128i (*)[6])(void *)(sr_frame_1400F6C50 + 128)) /* [rsp+80h] */
+#define v153 (*(__int64 (*))(void *)(sr_frame_1400F6C50 + 640)) /* [rsp+280h] */
 
   v0 = &dword_140404A6C[71856287];
   v1 = 256;
@@ -14987,6 +15290,18 @@ LABEL_92:
   }
   return sub_1401F8B20((unsigned __int64)&v142 ^ v153);
 }
+#undef v142
+#undef v143
+#undef v144
+#undef v145
+#undef v146
+#undef v147
+#undef v148
+#undef v149
+#undef v150
+#undef v151
+#undef v152
+#undef v153
 
 // 1400F7FF9: variable 'v117' is possibly undefined
 // 1400F7FF9: variable 'v127' is possibly undefined
@@ -15194,17 +15509,19 @@ __int64            sub_1400F80A0(__int64 a1, __int64 a2, __int64 a3)
   __int64 v185; // rcx
   int v186; // eax
   __int64 v188; // [rsp-20h] [rbp-1610h] BYREF
-  unsigned int v189; // [rsp+0h] [rbp-15F0h]
-  float v190; // [rsp+10h] [rbp-15E0h] BYREF
-  float v191; // [rsp+14h] [rbp-15DCh]
-  float v192; // [rsp+18h] [rbp-15D8h]
-  int v193; // [rsp+20h] [rbp-15D0h]
-  __int128 v194; // [rsp+28h] [rbp-15C8h] BYREF
-  __int128 v195; // [rsp+38h] [rbp-15B8h]
-  int v196; // [rsp+48h] [rbp-15A8h]
-  _BYTE v197[5136]; // [rsp+50h] [rbp-15A0h] BYREF
-  _DWORD v198[1024]; // [rsp+1960h] [rbp+370h] BYREF
-  __int64 v199; // [rsp+2960h] [rbp+1370h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F80A0[10608];
+#define v189 (*(unsigned int (*))(void *)(sr_frame_1400F80A0 + 8)) /* [rsp+0h] */
+#define v190 (*(float (*))(void *)(sr_frame_1400F80A0 + 24)) /* [rsp+10h] */
+#define v191 (*(float (*))(void *)(sr_frame_1400F80A0 + 28)) /* [rsp+14h] */
+#define v192 (*(float (*))(void *)(sr_frame_1400F80A0 + 32)) /* [rsp+18h] */
+#define v193 (*(int (*))(void *)(sr_frame_1400F80A0 + 40)) /* [rsp+20h] */
+#define v194 (*(__int128 (*))(void *)(sr_frame_1400F80A0 + 48)) /* [rsp+28h] */
+#define v195 (*(__int128 (*))(void *)(sr_frame_1400F80A0 + 64)) /* [rsp+38h] */
+#define v196 (*(int (*))(void *)(sr_frame_1400F80A0 + 80)) /* [rsp+48h] */
+#define v197 (*(_BYTE (*)[5136])(void *)(sr_frame_1400F80A0 + 88)) /* [rsp+50h] */
+#define v198 (*(_DWORD (*)[1024])(void *)(sr_frame_1400F80A0 + 6504)) /* [rsp+1960h] */
+#define v199 (*(__int64 (*))(void *)(sr_frame_1400F80A0 + 10600)) /* [rsp+2960h] */
 
   if ( dword_140404A6C[283831448] != 1 )
   {
@@ -16117,6 +16434,17 @@ LABEL_91:
   *(_QWORD *)&dword_140404A6C[283831450] = 54000;
   return sub_1401F8B20((unsigned __int64)&v188 ^ v199);
 }
+#undef v189
+#undef v190
+#undef v191
+#undef v192
+#undef v193
+#undef v194
+#undef v195
+#undef v196
+#undef v197
+#undef v198
+#undef v199
 
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -16210,14 +16538,16 @@ __int64 sub_1400F99A0()
   __int64 v66; // rax
   signed int v67; // eax
   unsigned int *v68; // rbx
-  __int64 v70; // [rsp+0h] [rbp-89h] BYREF
-  float v71; // [rsp+20h] [rbp-69h] BYREF
-  float v72; // [rsp+24h] [rbp-65h]
-  float v73; // [rsp+28h] [rbp-61h]
-  __int128 v74; // [rsp+30h] [rbp-59h] BYREF
-  __int128 v75; // [rsp+40h] [rbp-49h]
-  int v76; // [rsp+50h] [rbp-39h]
-  __int64 v77; // [rsp+58h] [rbp-31h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400F99A0[96];
+#define v70 (*(__int64 (*))(void *)(sr_frame_1400F99A0 + 0)) /* [rsp+0h] */
+#define v71 (*(float (*))(void *)(sr_frame_1400F99A0 + 32)) /* [rsp+20h] */
+#define v72 (*(float (*))(void *)(sr_frame_1400F99A0 + 36)) /* [rsp+24h] */
+#define v73 (*(float (*))(void *)(sr_frame_1400F99A0 + 40)) /* [rsp+28h] */
+#define v74 (*(__int128 (*))(void *)(sr_frame_1400F99A0 + 48)) /* [rsp+30h] */
+#define v75 (*(__int128 (*))(void *)(sr_frame_1400F99A0 + 64)) /* [rsp+40h] */
+#define v76 (*(int (*))(void *)(sr_frame_1400F99A0 + 80)) /* [rsp+50h] */
+#define v77 (*(__int64 (*))(void *)(sr_frame_1400F99A0 + 88)) /* [rsp+58h] */
 
   v0 = &dword_140404A6C[71856287];
   v1 = 256;
@@ -16593,6 +16923,14 @@ LABEL_105:
   }
   return sub_1401F8B20((unsigned __int64)&v70 ^ v77);
 }
+#undef v70
+#undef v71
+#undef v72
+#undef v73
+#undef v74
+#undef v75
+#undef v76
+#undef v77
 
 // 1400FA31A: variable 'v57' is possibly undefined
 // 1400FA31A: variable 'v61' is possibly undefined
@@ -16669,12 +17007,14 @@ __int64 sub_1400FA3A0()
   int v59; // eax
   int v60; // eax
   unsigned int *v61; // rcx
-  float v62[2]; // [rsp+20h] [rbp-98h] BYREF
-  float v63; // [rsp+28h] [rbp-90h]
-  _OWORD v64[2]; // [rsp+30h] [rbp-88h] BYREF
-  int v65; // [rsp+50h] [rbp-68h]
-  unsigned int v66; // [rsp+C0h] [rbp+8h]
-  __int64 v67; // [rsp+C8h] [rbp+10h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FA3A0[176];
+#define v62 (*(float (*)[2])(void *)(sr_frame_1400FA3A0 + 0)) /* [rsp+20h] */
+#define v63 (*(float (*))(void *)(sr_frame_1400FA3A0 + 8)) /* [rsp+28h] */
+#define v64 (*(_OWORD (*)[2])(void *)(sr_frame_1400FA3A0 + 16)) /* [rsp+30h] */
+#define v65 (*(int (*))(void *)(sr_frame_1400FA3A0 + 48)) /* [rsp+50h] */
+#define v66 (*(unsigned int (*))(void *)(sr_frame_1400FA3A0 + 160)) /* [rsp+C0h] */
+#define v67 (*(__int64 (*))(void *)(sr_frame_1400FA3A0 + 168)) /* [rsp+C8h] */
 
   v0 = dword_140404A6C[179992853];
   v1 = &dword_140404A6C[71856253];
@@ -17218,6 +17558,12 @@ __int64 sub_1400FA3A0()
   }
   return result;
 }
+#undef v62
+#undef v63
+#undef v64
+#undef v65
+#undef v66
+#undef v67
 
 // 1400FA7F0: variable 'v29' is possibly undefined
 // 1400FA7F0: variable 'v28' is possibly undefined
@@ -17335,10 +17681,12 @@ __int64 sub_1400FB0A0()
   __int64 v16; // rcx
   char v17; // al
   void **v18; // rbx
-  _DWORD v20[20]; // [rsp+0h] [rbp-2C8h] BYREF
-  _DWORD v21[16]; // [rsp+60h] [rbp-268h] BYREF
-  _BYTE v22[512]; // [rsp+A0h] [rbp-228h] BYREF
-  __int64 v23; // [rsp+2A0h] [rbp-28h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FB0A0[688];
+#define v20 (*(_DWORD (*)[20])(void *)(sr_frame_1400FB0A0 + 0)) /* [rsp+0h] */
+#define v21 (*(_DWORD (*)[16])(void *)(sr_frame_1400FB0A0 + 96)) /* [rsp+60h] */
+#define v22 (*(_BYTE (*)[512])(void *)(sr_frame_1400FB0A0 + 160)) /* [rsp+A0h] */
+#define v23 (*(__int64 (*))(void *)(sr_frame_1400FB0A0 + 672)) /* [rsp+2A0h] */
 
   sub_140198FA7();
   dword_140404A6C[179457306] = 39;
@@ -17432,6 +17780,10 @@ __int64 sub_1400FB0A0()
   while ( (__int64)v18 < (__int64)&dword_140404A6C[299853581] );
   return sub_1401F8B20((unsigned __int64)v20 ^ v23);
 }
+#undef v20
+#undef v21
+#undef v22
+#undef v23
 
 // 1400FB114: variable 'v2' is possibly undefined
 // 1400FB114: variable 'v1' is possibly undefined
@@ -17484,13 +17836,15 @@ __int64 sub_1400FB4D0()
   __int64 v3; // r15
   __int64 v4; // r14
   unsigned int v5; // edi
-  __int64 v7; // [rsp+0h] [rbp-60h] BYREF
-  _BYTE v8[4]; // [rsp+40h] [rbp-20h] BYREF
-  _WORD v9[2]; // [rsp+44h] [rbp-1Ch] BYREF
-  char FileName[13]; // [rsp+48h] [rbp-18h] BYREF
-  __int16 v11; // [rsp+55h] [rbp-Bh]
-  char v12; // [rsp+57h] [rbp-9h]
-  __int64 v13; // [rsp+58h] [rbp-8h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FB4D0[96];
+#define v7 (*(__int64 (*))(void *)(sr_frame_1400FB4D0 + 0)) /* [rsp+0h] */
+#define v8 (*(_BYTE (*)[4])(void *)(sr_frame_1400FB4D0 + 64)) /* [rsp+40h] */
+#define v9 (*(_WORD (*)[2])(void *)(sr_frame_1400FB4D0 + 68)) /* [rsp+44h] */
+#define FileName (*(char (*)[13])(void *)(sr_frame_1400FB4D0 + 72)) /* [rsp+48h] */
+#define v11 (*(__int16 (*))(void *)(sr_frame_1400FB4D0 + 85)) /* [rsp+55h] */
+#define v12 (*(char (*))(void *)(sr_frame_1400FB4D0 + 87)) /* [rsp+57h] */
+#define v13 (*(__int64 (*))(void *)(sr_frame_1400FB4D0 + 88)) /* [rsp+58h] */
 
   v11 = 0;
   v12 = 0;
@@ -17547,6 +17901,13 @@ __int64 sub_1400FB4D0()
   }
   return sub_1401F8B20((unsigned __int64)&v7 ^ v13);
 }
+#undef v7
+#undef v8
+#undef v9
+#undef FileName
+#undef v11
+#undef v12
+#undef v13
 
 // 140302F70: using guessed type __int64 (__fastcall *qword_140302F70)(_QWORD);
 // 140302F78: using guessed type __int64 (__fastcall *qword_140302F78)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _QWORD);
@@ -18055,8 +18416,10 @@ __int64 sub_1400FCFF0()
   __int64 v7; // r8
   __int64 v8; // rcx
   char v9; // al
-  int v10; // [rsp+30h] [rbp+8h]
-  int v11; // [rsp+38h] [rbp+10h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FCFF0[16];
+#define v10 (*(int (*))(void *)(sr_frame_1400FCFF0 + 0)) /* [rsp+30h] */
+#define v11 (*(int (*))(void *)(sr_frame_1400FCFF0 + 8)) /* [rsp+38h] */
 
   dword_140404A6C[70087069] = 1126170624;
   dword_140404A6C[70087070] = 1101004800;
@@ -18138,6 +18501,8 @@ __int64 sub_1400FCFF0()
   }
   return result;
 }
+#undef v10
+#undef v11
 
 // 1400FD1FC: variable 'v6' is possibly undefined
 // 1400FD1FC: variable 'v7' is possibly undefined
@@ -18220,11 +18585,13 @@ void sub_1400FD300()
   unsigned int *v48; // r9
   __int64 v49; // rax
   __int64 v50; // rax
-  __int64 v52; // [rsp+0h] [rbp-278h] BYREF
-  char v53; // [rsp+20h] [rbp-258h]
-  int v54; // [rsp+24h] [rbp-254h]
-  unsigned __int8 v55[512]; // [rsp+30h] [rbp-248h] BYREF
-  __int64 v56; // [rsp+230h] [rbp-48h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FD300[576];
+#define v52 (*(__int64 (*))(void *)(sr_frame_1400FD300 + 0)) /* [rsp+0h] */
+#define v53 (*(char (*))(void *)(sr_frame_1400FD300 + 32)) /* [rsp+20h] */
+#define v54 (*(int (*))(void *)(sr_frame_1400FD300 + 36)) /* [rsp+24h] */
+#define v55 (*(unsigned __int8 (*)[512])(void *)(sr_frame_1400FD300 + 48)) /* [rsp+30h] */
+#define v56 (*(__int64 (*))(void *)(sr_frame_1400FD300 + 560)) /* [rsp+230h] */
 
   dword_140404A6C[70087069] = 1126170624;
   dword_140404A6C[70087070] = 1101004800;
@@ -18628,6 +18995,11 @@ LABEL_53:
   }
   return;
 }
+#undef v52
+#undef v53
+#undef v54
+#undef v55
+#undef v56
 
 // 140199001: using guessed type __int64 __fastcall ntohl(_QWORD);
 // 140199007: using guessed type __int64 __fastcall ntohs(_QWORD);
@@ -18686,9 +19058,11 @@ __int64 sub_1400FE050()
   __int64 v4; // rbx
   int v5; // eax
   __int64 v6; // rdx
-  __int64 v8; // [rsp+0h] [rbp-238h] BYREF
-  char name[512]; // [rsp+20h] [rbp-218h] BYREF
-  __int64 v10; // [rsp+220h] [rbp-18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FE050[560];
+#define v8 (*(__int64 (*))(void *)(sr_frame_1400FE050 + 0)) /* [rsp+0h] */
+#define name (*(char (*)[512])(void *)(sr_frame_1400FE050 + 32)) /* [rsp+20h] */
+#define v10 (*(__int64 (*))(void *)(sr_frame_1400FE050 + 544)) /* [rsp+220h] */
 
   dword_140404A6C[456202453] = 0;
   sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[421831837]), 0, 0x2270864u);
@@ -18732,6 +19106,9 @@ __int64 sub_1400FE050()
   dword_140404A6C[179662127] = 0;
   return sub_1401F8B20((unsigned __int64)&v8 ^ v10);
 }
+#undef v8
+#undef name
+#undef v10
 
 // 1400FE239: variable 'v0' is possibly undefined
 // 1400FE239: variable 'v1' is possibly undefined
@@ -18844,14 +19221,16 @@ __int64            sub_1400FE870(__int64 a1, int a2, __int64 a3, double a4, floa
   float v15; // xmm9_4
   unsigned int v16; // r9d
   __m128i v17; // xmm2
-  __int64 v19; // [rsp+0h] [rbp-2C8h] BYREF
-  int v20; // [rsp+20h] [rbp-2A8h]
-  int v21; // [rsp+28h] [rbp-2A0h]
-  int v22; // [rsp+30h] [rbp-298h]
-  int v23; // [rsp+38h] [rbp-290h]
-  int v24; // [rsp+40h] [rbp-288h]
-  char v25[512]; // [rsp+50h] [rbp-278h] BYREF
-  __int64 v26; // [rsp+250h] [rbp-78h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FE870[608];
+#define v19 (*(__int64 (*))(void *)(sr_frame_1400FE870 + 0)) /* [rsp+0h] */
+#define v20 (*(int (*))(void *)(sr_frame_1400FE870 + 32)) /* [rsp+20h] */
+#define v21 (*(int (*))(void *)(sr_frame_1400FE870 + 40)) /* [rsp+28h] */
+#define v22 (*(int (*))(void *)(sr_frame_1400FE870 + 48)) /* [rsp+30h] */
+#define v23 (*(int (*))(void *)(sr_frame_1400FE870 + 56)) /* [rsp+38h] */
+#define v24 (*(int (*))(void *)(sr_frame_1400FE870 + 64)) /* [rsp+40h] */
+#define v25 (*(char (*)[512])(void *)(sr_frame_1400FE870 + 80)) /* [rsp+50h] */
+#define v26 (*(__int64 (*))(void *)(sr_frame_1400FE870 + 592)) /* [rsp+250h] */
 
   v8 = *(__m128i *)&a4;
   v9 = a2;
@@ -18900,6 +19279,14 @@ __int64            sub_1400FE870(__int64 a1, int a2, __int64 a3, double a4, floa
   }
   return sub_1401F8B20((unsigned __int64)&v19 ^ v26);
 }
+#undef v19
+#undef v20
+#undef v21
+#undef v22
+#undef v23
+#undef v24
+#undef v25
+#undef v26
 
 
 // 140198E51: using guessed type __int64(void);
@@ -19022,11 +19409,13 @@ double            sub_1400FF660(__int64 a1, int a2)
   unsigned int v24; // r10d
   unsigned int v25; // edx
   bool v26; // zf
-  signed __int64 v28; // [rsp+30h] [rbp-68h]
-  __int64 v29; // [rsp+40h] [rbp-58h]
-  __int64 v30; // [rsp+48h] [rbp-50h]
-  __int64 v31; // [rsp+50h] [rbp-48h]
-  __int64 v32; // [rsp+58h] [rbp-40h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FF660[48];
+#define v28 (*(signed __int64 (*))(void *)(sr_frame_1400FF660 + 0)) /* [rsp+30h] */
+#define v29 (*(__int64 (*))(void *)(sr_frame_1400FF660 + 16)) /* [rsp+40h] */
+#define v30 (*(__int64 (*))(void *)(sr_frame_1400FF660 + 24)) /* [rsp+48h] */
+#define v31 (*(__int64 (*))(void *)(sr_frame_1400FF660 + 32)) /* [rsp+50h] */
+#define v32 (*(__int64 (*))(void *)(sr_frame_1400FF660 + 40)) /* [rsp+58h] */
 
   a1 = (int)a1;
   v2 = 180288LL * (int)a1;
@@ -19134,6 +19523,11 @@ double            sub_1400FF660(__int64 a1, int a2)
   }
   return sub_1401449C0(v3, 1);
 }
+#undef v28
+#undef v29
+#undef v30
+#undef v31
+#undef v32
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 16A7DBDA0: using guessed type unsigned int;
@@ -19144,8 +19538,10 @@ double            sub_1400FFAE0(int a1, float a2, float a3, float a4)
 {
   int v5; // ecx
   unsigned int *v6; // rax
-  __int64 v8; // [rsp+20h] [rbp-18h] BYREF
-  int v9; // [rsp+28h] [rbp-10h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FFAE0[16];
+#define v8 (*(__int64 (*))(void *)(sr_frame_1400FFAE0 + 0)) /* [rsp+20h] */
+#define v9 (*(int (*))(void *)(sr_frame_1400FFAE0 + 8)) /* [rsp+28h] */
 
   dword_140404A6C[177167565] = 0;
   dword_140404A6C[177495247] = 0;
@@ -19182,6 +19578,8 @@ double            sub_1400FFAE0(int a1, float a2, float a3, float a4)
   }
   return sub_1401449C0(a1, 0);
 }
+#undef v8
+#undef v9
 
 // 140278D70: using guessed type __int128 xmmword_140278D70;
 // 140278D90: using guessed type __int128 xmmword_140278D90;
@@ -19291,21 +19689,23 @@ __int64            sub_1400FFCE0(int a1, int a2, double a3)
   unsigned int v81; // eax
   __int64 v82; // rdx
   __int64 v83; // rcx
-  __int64 v85; // [rsp+8h] [rbp-C9h] BYREF
-  __int64 v86; // [rsp+28h] [rbp-A9h]
-  unsigned __int64 v87; // [rsp+30h] [rbp-A1h]
-  unsigned int v88; // [rsp+38h] [rbp-99h]
-  unsigned int v89; // [rsp+3Ch] [rbp-95h]
-  unsigned int v90; // [rsp+40h] [rbp-91h]
-  unsigned int v91; // [rsp+44h] [rbp-8Dh]
-  unsigned int v92; // [rsp+48h] [rbp-89h]
-  unsigned int v93; // [rsp+4Ch] [rbp-85h] BYREF
-  unsigned int v94; // [rsp+50h] [rbp-81h]
-  _DWORD v95[3]; // [rsp+54h] [rbp-7Dh]
-  unsigned int v96; // [rsp+60h] [rbp-71h]
-  unsigned int v97; // [rsp+64h] [rbp-6Dh]
-  unsigned int v98; // [rsp+68h] [rbp-69h]
-  __int64 v99; // [rsp+78h] [rbp-59h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FFCE0[128];
+#define v85 (*(__int64 (*))(void *)(sr_frame_1400FFCE0 + 0)) /* [rsp+8h] */
+#define v86 (*(__int64 (*))(void *)(sr_frame_1400FFCE0 + 32)) /* [rsp+28h] */
+#define v87 (*(unsigned __int64 (*))(void *)(sr_frame_1400FFCE0 + 40)) /* [rsp+30h] */
+#define v88 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 48)) /* [rsp+38h] */
+#define v89 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 52)) /* [rsp+3Ch] */
+#define v90 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 56)) /* [rsp+40h] */
+#define v91 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 60)) /* [rsp+44h] */
+#define v92 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 64)) /* [rsp+48h] */
+#define v93 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 68)) /* [rsp+4Ch] */
+#define v94 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 72)) /* [rsp+50h] */
+#define v95 (*(_DWORD (*)[3])(void *)(sr_frame_1400FFCE0 + 76)) /* [rsp+54h] */
+#define v96 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 88)) /* [rsp+60h] */
+#define v97 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 92)) /* [rsp+64h] */
+#define v98 (*(unsigned int (*))(void *)(sr_frame_1400FFCE0 + 96)) /* [rsp+68h] */
+#define v99 (*(__int64 (*))(void *)(sr_frame_1400FFCE0 + 112)) /* [rsp+78h] */
 
   v3 = &v93;
   v4 = 0;
@@ -19694,3 +20094,18 @@ __int64            sub_1400FFCE0(int a1, int a2, double a3)
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v85
+#undef v86
+#undef v87
+#undef v88
+#undef v89
+#undef v90
+#undef v91
+#undef v92
+#undef v93
+#undef v94
+#undef v95
+#undef v96
+#undef v97
+#undef v98
+#undef v99

@@ -214,12 +214,14 @@ __int64            app_main_utf8_candidate(int a1, __int64 a2)
   unsigned int *v36; // rdx
   unsigned int *v37; // rcx
   unsigned int v38; // eax
-  __int64 v40; // [rsp+0h] [rbp-258h] BYREF
-  unsigned int v41; // [rsp+20h] [rbp-238h]
-  int v42; // [rsp+28h] [rbp-230h]
-  __m128 Frequency; // [rsp+30h] [rbp-228h] BYREF
-  _BYTE v44[512]; // [rsp+40h] [rbp-218h] BYREF
-  __int64 v45; // [rsp+240h] [rbp-18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140001330[592];
+#define v40 (*(__int64 (*))(void *)(sr_frame_140001330 + 0)) /* [rsp+0h] */
+#define v41 (*(unsigned int (*))(void *)(sr_frame_140001330 + 32)) /* [rsp+20h] */
+#define v42 (*(int (*))(void *)(sr_frame_140001330 + 40)) /* [rsp+28h] */
+#define Frequency (*(__m128 (*))(void *)(sr_frame_140001330 + 48)) /* [rsp+30h] */
+#define v44 (*(_BYTE (*)[512])(void *)(sr_frame_140001330 + 64)) /* [rsp+40h] */
+#define v45 (*(__int64 (*))(void *)(sr_frame_140001330 + 576)) /* [rsp+240h] */
 
   v2 = a1;
   if ( a1 > 1LL )
@@ -274,10 +276,10 @@ __int64            app_main_utf8_candidate(int a1, __int64 a2)
   {
     if ( v13 < 0 )
       v14 = 1000.0
-          / ((double)(int)(v13 & 1 | ((unsigned __int64)v13 >> 1))
-           + (double)(int)(v13 & 1 | ((unsigned __int64)v13 >> 1)));
+          / ((double)(long long)(v13 & 1 | ((unsigned __int64)v13 >> 1))
+           + (double)(long long)(v13 & 1 | ((unsigned __int64)v13 >> 1)));
     else
-      v14 = 1000.0 / (double)(int)v13;
+      v14 = 1000.0 / (double)(long long)v13;
   }
   else
   {
@@ -484,6 +486,12 @@ LABEL_59:
   sub_140198E20();
   return sub_1401F8B20((unsigned __int64)&v40 ^ v45);
 }
+#undef v40
+#undef v41
+#undef v42
+#undef Frequency
+#undef v44
+#undef v45
 
 // 14026E550: invalid function type 'BOOL (__stdcall *SHGetSpecialFolderPathA)(HWND hwnd, LPSTR pszPath, int csidl, BOOL fCreate)' has been ignored
 // 14026E2F8: invalid function type 'HMODULE (__stdcall *LoadLibraryW)(LPCWSTR lpLibFileName)' has been ignored
@@ -770,44 +778,46 @@ unsigned __int64            sub_140001F20(__int64 a1, __int64 a2, int a3, int a4
   __int64 v75; // rcx
   __int64 v76; // rcx
   __int64 v77; // rcx
-  float v78; // [rsp+30h] [rbp-188h]
-  float v79; // [rsp+34h] [rbp-184h]
-  float v80; // [rsp+38h] [rbp-180h]
-  float v81; // [rsp+3Ch] [rbp-17Ch]
-  float v82; // [rsp+40h] [rbp-178h]
-  float v83; // [rsp+44h] [rbp-174h]
-  unsigned int v84; // [rsp+48h] [rbp-170h]
-  float v87; // [rsp+54h] [rbp-164h]
-  float v88; // [rsp+58h] [rbp-160h]
-  float v89; // [rsp+5Ch] [rbp-15Ch]
-  float v90; // [rsp+60h] [rbp-158h]
-  float v91; // [rsp+64h] [rbp-154h]
-  float v92; // [rsp+68h] [rbp-150h]
-  float v93; // [rsp+6Ch] [rbp-14Ch]
-  float v94; // [rsp+70h] [rbp-148h]
-  float v95; // [rsp+74h] [rbp-144h]
-  float v96; // [rsp+78h] [rbp-140h]
-  float v97; // [rsp+7Ch] [rbp-13Ch]
-  float v98; // [rsp+80h] [rbp-138h]
-  float v99; // [rsp+84h] [rbp-134h]
-  float v100; // [rsp+88h] [rbp-130h]
-  float v101; // [rsp+8Ch] [rbp-12Ch]
-  float v102; // [rsp+90h] [rbp-128h]
-  unsigned int v103; // [rsp+94h] [rbp-124h]
-  unsigned int v104; // [rsp+98h] [rbp-120h]
-  unsigned int v105; // [rsp+9Ch] [rbp-11Ch]
-  unsigned int v106; // [rsp+A0h] [rbp-118h]
-  unsigned int v107; // [rsp+A4h] [rbp-114h]
-  __int64 v108; // [rsp+B0h] [rbp-108h]
-  char *v109; // [rsp+B8h] [rbp-100h]
-  char *v110; // [rsp+C0h] [rbp-F8h]
-  char *v111; // [rsp+C8h] [rbp-F0h]
-  char *v112; // [rsp+D0h] [rbp-E8h]
-  char *v113; // [rsp+D8h] [rbp-E0h]
-  float *v114; // [rsp+E0h] [rbp-D8h]
-  float *v115; // [rsp+E8h] [rbp-D0h]
-  _UNKNOWN *retaddr; // [rsp+1B8h] [rbp+0h] BYREF
-  float v117; // [rsp+1D0h] [rbp+18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140001F20[432];
+#define v78 (*(float (*))(void *)(sr_frame_140001F20 + 0)) /* [rsp+30h] */
+#define v79 (*(float (*))(void *)(sr_frame_140001F20 + 4)) /* [rsp+34h] */
+#define v80 (*(float (*))(void *)(sr_frame_140001F20 + 8)) /* [rsp+38h] */
+#define v81 (*(float (*))(void *)(sr_frame_140001F20 + 12)) /* [rsp+3Ch] */
+#define v82 (*(float (*))(void *)(sr_frame_140001F20 + 16)) /* [rsp+40h] */
+#define v83 (*(float (*))(void *)(sr_frame_140001F20 + 20)) /* [rsp+44h] */
+#define v84 (*(unsigned int (*))(void *)(sr_frame_140001F20 + 24)) /* [rsp+48h] */
+#define v87 (*(float (*))(void *)(sr_frame_140001F20 + 36)) /* [rsp+54h] */
+#define v88 (*(float (*))(void *)(sr_frame_140001F20 + 40)) /* [rsp+58h] */
+#define v89 (*(float (*))(void *)(sr_frame_140001F20 + 44)) /* [rsp+5Ch] */
+#define v90 (*(float (*))(void *)(sr_frame_140001F20 + 48)) /* [rsp+60h] */
+#define v91 (*(float (*))(void *)(sr_frame_140001F20 + 52)) /* [rsp+64h] */
+#define v92 (*(float (*))(void *)(sr_frame_140001F20 + 56)) /* [rsp+68h] */
+#define v93 (*(float (*))(void *)(sr_frame_140001F20 + 60)) /* [rsp+6Ch] */
+#define v94 (*(float (*))(void *)(sr_frame_140001F20 + 64)) /* [rsp+70h] */
+#define v95 (*(float (*))(void *)(sr_frame_140001F20 + 68)) /* [rsp+74h] */
+#define v96 (*(float (*))(void *)(sr_frame_140001F20 + 72)) /* [rsp+78h] */
+#define v97 (*(float (*))(void *)(sr_frame_140001F20 + 76)) /* [rsp+7Ch] */
+#define v98 (*(float (*))(void *)(sr_frame_140001F20 + 80)) /* [rsp+80h] */
+#define v99 (*(float (*))(void *)(sr_frame_140001F20 + 84)) /* [rsp+84h] */
+#define v100 (*(float (*))(void *)(sr_frame_140001F20 + 88)) /* [rsp+88h] */
+#define v101 (*(float (*))(void *)(sr_frame_140001F20 + 92)) /* [rsp+8Ch] */
+#define v102 (*(float (*))(void *)(sr_frame_140001F20 + 96)) /* [rsp+90h] */
+#define v103 (*(unsigned int (*))(void *)(sr_frame_140001F20 + 100)) /* [rsp+94h] */
+#define v104 (*(unsigned int (*))(void *)(sr_frame_140001F20 + 104)) /* [rsp+98h] */
+#define v105 (*(unsigned int (*))(void *)(sr_frame_140001F20 + 108)) /* [rsp+9Ch] */
+#define v106 (*(unsigned int (*))(void *)(sr_frame_140001F20 + 112)) /* [rsp+A0h] */
+#define v107 (*(unsigned int (*))(void *)(sr_frame_140001F20 + 116)) /* [rsp+A4h] */
+#define v108 (*(__int64 (*))(void *)(sr_frame_140001F20 + 128)) /* [rsp+B0h] */
+#define v109 (*(char * (*))(void *)(sr_frame_140001F20 + 136)) /* [rsp+B8h] */
+#define v110 (*(char * (*))(void *)(sr_frame_140001F20 + 144)) /* [rsp+C0h] */
+#define v111 (*(char * (*))(void *)(sr_frame_140001F20 + 152)) /* [rsp+C8h] */
+#define v112 (*(char * (*))(void *)(sr_frame_140001F20 + 160)) /* [rsp+D0h] */
+#define v113 (*(char * (*))(void *)(sr_frame_140001F20 + 168)) /* [rsp+D8h] */
+#define v114 (*(float * (*))(void *)(sr_frame_140001F20 + 176)) /* [rsp+E0h] */
+#define v115 (*(float * (*))(void *)(sr_frame_140001F20 + 184)) /* [rsp+E8h] */
+#define retaddr (*(_UNKNOWN * (*))(void *)(sr_frame_140001F20 + 392)) /* [rsp+1B8h] */
+#define v117 (*(float (*))(void *)(sr_frame_140001F20 + 416)) /* [rsp+1D0h] */
 
   result = (unsigned __int64)&retaddr;
   v8 = a5;
@@ -1093,3 +1103,41 @@ LABEL_32:
   while ( v56 < (int)result );
   return result;
 }
+#undef v78
+#undef v79
+#undef v80
+#undef v81
+#undef v82
+#undef v83
+#undef v84
+#undef v87
+#undef v88
+#undef v89
+#undef v90
+#undef v91
+#undef v92
+#undef v93
+#undef v94
+#undef v95
+#undef v96
+#undef v97
+#undef v98
+#undef v99
+#undef v100
+#undef v101
+#undef v102
+#undef v103
+#undef v104
+#undef v105
+#undef v106
+#undef v107
+#undef v108
+#undef v109
+#undef v110
+#undef v111
+#undef v112
+#undef v113
+#undef v114
+#undef v115
+#undef retaddr
+#undef v117

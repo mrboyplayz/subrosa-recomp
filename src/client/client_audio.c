@@ -12,8 +12,10 @@ __int64            sub_1400EE400(int a1, __int64 a2, float a3)
   float v9; // xmm1_4
   __int64 v10; // rdx
   sr_wave_spec sr_spec;
-  unsigned int v13; // [rsp+80h] [rbp+8h]
-  __int64 v14; // [rsp+98h] [rbp+20h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400EE400[32];
+#define v13 (*(unsigned int (*))(void *)(sr_frame_1400EE400 + 0)) /* [rsp+80h] */
+#define v14 (*(__int64 (*))(void *)(sr_frame_1400EE400 + 24)) /* [rsp+98h] */
 
   v3 = a1;
   result = sub_14024C22C("sound");
@@ -61,3 +63,5 @@ __int64            sub_1400EE400(int a1, __int64 a2, float a3)
     return sub_14024C22C("..");
   return result;
 }
+#undef v13
+#undef v14

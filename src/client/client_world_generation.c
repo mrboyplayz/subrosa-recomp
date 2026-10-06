@@ -138,11 +138,13 @@ void            sub_140139E90(__int64 a1, __int64 a2, double a3)
   signed int *v132; // rbx
   __int64 v133; // rdx
   __int64 v134; // rcx
-  __int64 v136; // [rsp+8h] [rbp-100h] BYREF
-  _QWORD v137[2]; // [rsp+58h] [rbp-B0h] BYREF
-  _DWORD v138[4]; // [rsp+68h] [rbp-A0h] BYREF
-  _DWORD v139[30]; // [rsp+78h] [rbp-90h] BYREF
-  __int64 v140; // [rsp+178h] [rbp+70h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140139E90[384];
+#define v136 (*(__int64 (*))(void *)(sr_frame_140139E90 + 0)) /* [rsp+8h] */
+#define v137 (*(_QWORD (*)[2])(void *)(sr_frame_140139E90 + 80)) /* [rsp+58h] */
+#define v138 (*(_DWORD (*)[4])(void *)(sr_frame_140139E90 + 96)) /* [rsp+68h] */
+#define v139 (*(_DWORD (*)[30])(void *)(sr_frame_140139E90 + 112)) /* [rsp+78h] */
+#define v140 (*(__int64 (*))(void *)(sr_frame_140139E90 + 368)) /* [rsp+178h] */
 
   v3 = 1;
   v4 = &dword_140404A6C[71737686];
@@ -1026,6 +1028,11 @@ LABEL_40:
   dword_140404A6C[83176989] = 7103812;
   return;
 }
+#undef v136
+#undef v137
+#undef v138
+#undef v139
+#undef v140
 
 // 140278F50: using guessed type __int128 xmmword_140278F50;
 // 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);

@@ -43,11 +43,13 @@ void               asset_load_building_sbb_candidate(char *Buffer,      char *a2
   __int64 v19; // r15
   int ii; // esi
   __int64 v21; // rdi
-  __int64 v23; // [rsp+0h] [rbp-278h] BYREF
-  int Buffera; // [rsp+20h] [rbp-258h] BYREF
-  int v25[3]; // [rsp+24h] [rbp-254h] BYREF
-  char FileName[512]; // [rsp+30h] [rbp-248h] BYREF
-  __int64 v27; // [rsp+230h] [rbp-48h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140026830[576];
+#define v23 (*(__int64 (*))(void *)(sr_frame_140026830 + 0)) /* [rsp+0h] */
+#define Buffera (*(int (*))(void *)(sr_frame_140026830 + 32)) /* [rsp+20h] */
+#define v25 (*(int (*)[3])(void *)(sr_frame_140026830 + 36)) /* [rsp+24h] */
+#define FileName (*(char (*)[512])(void *)(sr_frame_140026830 + 48)) /* [rsp+30h] */
+#define v27 (*(__int64 (*))(void *)(sr_frame_140026830 + 560)) /* [rsp+230h] */
 
   v3 = Buffer + 68;
   *((_DWORD *)Buffer + 16) = 24;
@@ -172,6 +174,11 @@ LABEL_32:
   sub_140027690();
   return; /* native compiler cookie is not a recovered result */
 }
+#undef v23
+#undef Buffera
+#undef v25
+#undef FileName
+#undef v27
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -213,10 +220,12 @@ __int64 asset_load_city_sbc_candidate()
   __int64 v31; // rbp
   int n; // ebx
   unsigned int *v33; // rbx
-  __int64 v35; // [rsp+0h] [rbp-168h] BYREF
-  int Buffer[4]; // [rsp+20h] [rbp-148h] BYREF
-  char FileName[256]; // [rsp+30h] [rbp-138h] BYREF
-  __int64 v38; // [rsp+130h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400D5A50[320];
+#define v35 (*(__int64 (*))(void *)(sr_frame_1400D5A50 + 0)) /* [rsp+0h] */
+#define Buffer (*(int (*)[4])(void *)(sr_frame_1400D5A50 + 32)) /* [rsp+20h] */
+#define FileName (*(char (*)[256])(void *)(sr_frame_1400D5A50 + 48)) /* [rsp+30h] */
+#define v38 (*(__int64 (*))(void *)(sr_frame_1400D5A50 + 304)) /* [rsp+130h] */
 
   sub_140158AB0(FileName, "city2.sbc");
   v0 = sub_14020B8D8(FileName, "rb");
@@ -426,6 +435,10 @@ LABEL_37:
   }
   return 0; /* legacy result ignored; native returns void */
 }
+#undef v35
+#undef Buffer
+#undef FileName
+#undef v38
 
 // 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -457,10 +470,12 @@ __int64 asset_save_city_sbc_candidate()
   unsigned int *v19; // rbx
   __int64 v20; // rsi
   unsigned int *v21; // rbx
-  __int64 v23; // [rsp+0h] [rbp-168h] BYREF
-  int Buffer; // [rsp+20h] [rbp-148h] BYREF
-  char FileName[256]; // [rsp+30h] [rbp-138h] BYREF
-  __int64 v26; // [rsp+130h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400D62A0[320];
+#define v23 (*(__int64 (*))(void *)(sr_frame_1400D62A0 + 0)) /* [rsp+0h] */
+#define Buffer (*(int (*))(void *)(sr_frame_1400D62A0 + 32)) /* [rsp+20h] */
+#define FileName (*(char (*)[256])(void *)(sr_frame_1400D62A0 + 48)) /* [rsp+30h] */
+#define v26 (*(__int64 (*))(void *)(sr_frame_1400D62A0 + 304)) /* [rsp+130h] */
 
   sub_140158AB0(FileName, "data/%s/city2.sbc", (     char *)&dword_140404A6C[283831313]);
   v0 = sub_14020B8D8(FileName, "wb");
@@ -575,6 +590,10 @@ __int64 asset_save_city_sbc_candidate()
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v23
+#undef Buffer
+#undef FileName
+#undef v26
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 14500A700: using guessed type unsigned int;
@@ -598,10 +617,12 @@ __int64            asset_load_block_sbl_candidate(     char *a1)
   unsigned int *v12; // rbx
   __int64 v13; // rdi
   unsigned int *v14; // rbx
-  __int64 v16; // [rsp+0h] [rbp-268h] BYREF
-  int v17[4]; // [rsp+20h] [rbp-248h] BYREF
-  char v18[512]; // [rsp+30h] [rbp-238h] BYREF
-  __int64 v19; // [rsp+230h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E6E50[576];
+#define v16 (*(__int64 (*))(void *)(sr_frame_1400E6E50 + 0)) /* [rsp+0h] */
+#define v17 (*(int (*)[4])(void *)(sr_frame_1400E6E50 + 32)) /* [rsp+20h] */
+#define v18 (*(char (*)[512])(void *)(sr_frame_1400E6E50 + 48)) /* [rsp+30h] */
+#define v19 (*(__int64 (*))(void *)(sr_frame_1400E6E50 + 560)) /* [rsp+230h] */
 
   sub_140158AB0(v18, "block/%s.sbl", a1);
   v1 = sub_14020B8D8(v18, "rb");
@@ -775,3 +796,7 @@ __int64            asset_load_block_sbl_candidate(     char *a1)
   }
   return sub_1401F8B20((unsigned __int64)&v16 ^ v19);
 }
+#undef v16
+#undef v17
+#undef v18
+#undef v19

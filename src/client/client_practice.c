@@ -206,19 +206,21 @@ __int64            sr_ResetGame(__int64 a1, __int64 a2, __int64 a3)
   __int64 v202; // rax
   __int64 v203; // rax
   __int64 v204; // rax
-  __int64 v206; // [rsp+8h] [rbp-100h] BYREF
-  int v207; // [rsp+28h] [rbp-E0h]
-  int v208; // [rsp+30h] [rbp-D8h]
-  int v209; // [rsp+38h] [rbp-D0h]
-  int v210; // [rsp+40h] [rbp-C8h]
-  int v211; // [rsp+48h] [rbp-C0h]
   _Alignas(8) unsigned sr_reset_spawn_position[4];
   _Alignas(8) unsigned sr_reset_player_position[3];
-  int v216; // [rsp+78h] [rbp-90h] BYREF
-  int v217[3]; // [rsp+7Ch] [rbp-8Ch] BYREF
-  char v218[1024]; // [rsp+88h] [rbp-80h] BYREF
   _Alignas(16) unsigned sr_reset_spawn_rotation[12];
-  __int64 v222; // [rsp+4C8h] [rbp+3C0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140127910[1232];
+#define v206 (*(__int64 (*))(void *)(sr_frame_140127910 + 0)) /* [rsp+8h] */
+#define v207 (*(int (*))(void *)(sr_frame_140127910 + 32)) /* [rsp+28h] */
+#define v208 (*(int (*))(void *)(sr_frame_140127910 + 40)) /* [rsp+30h] */
+#define v209 (*(int (*))(void *)(sr_frame_140127910 + 48)) /* [rsp+38h] */
+#define v210 (*(int (*))(void *)(sr_frame_140127910 + 56)) /* [rsp+40h] */
+#define v211 (*(int (*))(void *)(sr_frame_140127910 + 64)) /* [rsp+48h] */
+#define v216 (*(int (*))(void *)(sr_frame_140127910 + 112)) /* [rsp+78h] */
+#define v217 (*(int (*)[3])(void *)(sr_frame_140127910 + 116)) /* [rsp+7Ch] */
+#define v218 (*(char (*)[1024])(void *)(sr_frame_140127910 + 128)) /* [rsp+88h] */
+#define v222 (*(__int64 (*))(void *)(sr_frame_140127910 + 1216)) /* [rsp+4C8h] */
 
   SR_DEBUG_STAGE("ResetGame: clear previous game state and prepare generation");
   SR_DEBUG_LOG("Game mode=%u, local simulation=%u, map=%.31s",
@@ -2061,6 +2063,16 @@ SR_TEST_ARENA_FINALIZE:
   SR_DEBUG_STAGE("Generating game finished: returning to the client loop");
   return 0; /* legacy result ignored; native returns void */
 }
+#undef v206
+#undef v207
+#undef v208
+#undef v209
+#undef v210
+#undef v211
+#undef v216
+#undef v217
+#undef v218
+#undef v222
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -2100,12 +2112,14 @@ __int64            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4,
   char v39; // al
   unsigned int *v40; // rcx
   unsigned int v41; // ecx
-  __int64 v43; // [rsp+0h] [rbp-C8h] BYREF
-  unsigned int v44; // [rsp+30h] [rbp-98h] BYREF
-  float v45; // [rsp+34h] [rbp-94h]
-  float v46; // [rsp+38h] [rbp-90h]
-  float v47[4]; // [rsp+40h] [rbp-88h] BYREF
-  __int64 v48; // [rsp+50h] [rbp-78h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14012CEB0[96];
+#define v43 (*(__int64 (*))(void *)(sr_frame_14012CEB0 + 0)) /* [rsp+0h] */
+#define v44 (*(unsigned int (*))(void *)(sr_frame_14012CEB0 + 48)) /* [rsp+30h] */
+#define v45 (*(float (*))(void *)(sr_frame_14012CEB0 + 52)) /* [rsp+34h] */
+#define v46 (*(float (*))(void *)(sr_frame_14012CEB0 + 56)) /* [rsp+38h] */
+#define v47 (*(float (*)[4])(void *)(sr_frame_14012CEB0 + 64)) /* [rsp+40h] */
+#define v48 (*(__int64 (*))(void *)(sr_frame_14012CEB0 + 80)) /* [rsp+50h] */
 
   v6 = a1;
   v9 = 396LL * a3;
@@ -2210,3 +2224,9 @@ __int64            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4,
   dword_140404A6C[132792829] = v41 + 1;
   return (unsigned int)v41; /* native pre-increment spawn index */
 }
+#undef v43
+#undef v44
+#undef v45
+#undef v46
+#undef v47
+#undef v48

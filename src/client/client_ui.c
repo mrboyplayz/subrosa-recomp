@@ -534,8 +534,10 @@ void               sr_DrawMenu(char a1)
   __int64 j; // rbx
   __int64 v25; // rcx
   __int64 v26; // r8
-  _DWORD v28[276]; // [rsp+0h] [rbp-478h] BYREF
-  __int64 v29; // [rsp+450h] [rbp-28h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140072450[1120];
+#define v28 (*(_DWORD (*)[276])(void *)(sr_frame_140072450 + 0)) /* [rsp+0h] */
+#define v29 (*(__int64 (*))(void *)(sr_frame_140072450 + 1104)) /* [rsp+450h] */
 
   v1 = 0;
   v3 = &dword_140404A6C[70290893];
@@ -644,6 +646,8 @@ void               sr_DrawMenu(char a1)
   dword_140404A6C[70212041] = 0;
   return; /* original void menu presentation */
 }
+#undef v28
+#undef v29
 
 // 140239CCC: using guessed type __int64 __fastcall sub_140239CCC(_QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -713,12 +717,14 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
   unsigned int v63; // eax
   __int64 v64; // rdx
   _DWORD *v65; // rcx
-  __int64 v67; // [rsp+0h] [rbp-4C8h] BYREF
-  int v68; // [rsp+50h] [rbp-478h]
-  unsigned __int64 v69; // [rsp+58h] [rbp-470h]
-  _BYTE v70[512]; // [rsp+60h] [rbp-468h] BYREF
-  char v71[512]; // [rsp+260h] [rbp-268h] BYREF
-  __int64 v72; // [rsp+460h] [rbp-68h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140078610[1136];
+#define v67 (*(__int64 (*))(void *)(sr_frame_140078610 + 0)) /* [rsp+0h] */
+#define v68 (*(int (*))(void *)(sr_frame_140078610 + 80)) /* [rsp+50h] */
+#define v69 (*(unsigned __int64 (*))(void *)(sr_frame_140078610 + 88)) /* [rsp+58h] */
+#define v70 (*(_BYTE (*)[512])(void *)(sr_frame_140078610 + 96)) /* [rsp+60h] */
+#define v71 (*(char (*)[512])(void *)(sr_frame_140078610 + 608)) /* [rsp+260h] */
+#define v72 (*(__int64 (*))(void *)(sr_frame_140078610 + 1120)) /* [rsp+460h] */
 
   unsigned int sr_loaded = 0;
   v3 = (int)a1;
@@ -1022,6 +1028,12 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
   }
   return sr_loaded;
 }
+#undef v67
+#undef v68
+#undef v69
+#undef v70
+#undef v71
+#undef v72
 
 // 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
 // 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
@@ -1086,11 +1098,13 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
   float v47; // xmm2_4
   float v48; // xmm1_4
   float v49; // xmm1_4
-  __int64 v51; // [rsp+0h] [rbp-A08h] BYREF
-  _BYTE v52[2]; // [rsp+50h] [rbp-9B8h] BYREF
-  char v53; // [rsp+52h] [rbp-9B6h] BYREF
-  char v54[512]; // [rsp+7D0h] [rbp-238h] BYREF
-  __int64 v55; // [rsp+9D0h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140079140[2528];
+#define v51 (*(__int64 (*))(void *)(sr_frame_140079140 + 0)) /* [rsp+0h] */
+#define v52 (*(_BYTE (*)[2])(void *)(sr_frame_140079140 + 80)) /* [rsp+50h] */
+#define v53 (*(char (*))(void *)(sr_frame_140079140 + 82)) /* [rsp+52h] */
+#define v54 (*(char (*)[512])(void *)(sr_frame_140079140 + 2000)) /* [rsp+7D0h] */
+#define v55 (*(__int64 (*))(void *)(sr_frame_140079140 + 2512)) /* [rsp+9D0h] */
 
   v2 = (int)a1;
   if ( a1 <= 0x3F )
@@ -1282,6 +1296,11 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
   }
   return sub_1401F8B20((unsigned __int64)&v51 ^ v55);
 }
+#undef v51
+#undef v52
+#undef v53
+#undef v54
+#undef v55
 
 //----- (00000001400FE1B0) ----------------------------------------------------
 void sub_1400FE1B0()
@@ -1309,9 +1328,11 @@ void sub_1400FE1B0()
   unsigned int v20; // ecx
   bool v21; // zf
   unsigned int v22; // eax
-  _DWORD v24[12]; // [rsp+0h] [rbp-248h] BYREF
-  char name[512]; // [rsp+30h] [rbp-218h] BYREF
-  __int64 v26; // [rsp+230h] [rbp-18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FE1B0[576];
+#define v24 (*(_DWORD (*)[12])(void *)(sr_frame_1400FE1B0 + 0)) /* [rsp+0h] */
+#define name (*(char (*)[512])(void *)(sr_frame_1400FE1B0 + 48)) /* [rsp+30h] */
+#define v26 (*(__int64 (*))(void *)(sr_frame_1400FE1B0 + 560)) /* [rsp+230h] */
 
   dword_140404A6C[70087070] = 1107296256;
   dword_140404A6C[70087068] = 1135083520;
@@ -1444,6 +1465,9 @@ void sub_1400FE1B0()
   }
   return;
 }
+#undef v24
+#undef name
+#undef v26
 
 //----- (00000001400FEB50) ----------------------------------------------------
 // Candidate options menu builder: Back, Fullscreen, V-Sync, Frame Smoothing, Sprite Models, Invert Mouse, advanced inventory, audio selectors.
@@ -1475,15 +1499,17 @@ void ui_build_options_menu_candidate()
   char *v23; // rcx
   char *v24; // rdx
   __int64 v26; // [rsp-20h] [rbp-15C0h] BYREF
-  __int64 v27; // [rsp+0h] [rbp-15A0h]
-  int v28; // [rsp+30h] [rbp-1570h]
-  __int16 v29; // [rsp+34h] [rbp-156Ch]
-  char v30; // [rsp+36h] [rbp-156Ah]
-  __int16 v31; // [rsp+38h] [rbp-1568h]
-  void *v32; // [rsp+40h] [rbp-1560h]
-  char v33[1024]; // [rsp+1530h] [rbp-70h] BYREF
-  char v34[4096]; // [rsp+1930h] [rbp+390h] BYREF
-  __int64 v35; // [rsp+2930h] [rbp+1390h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FEB50[10560];
+#define v27 (*(__int64 (*))(void *)(sr_frame_1400FEB50 + 0)) /* [rsp+0h] */
+#define v28 (*(int (*))(void *)(sr_frame_1400FEB50 + 48)) /* [rsp+30h] */
+#define v29 (*(__int16 (*))(void *)(sr_frame_1400FEB50 + 52)) /* [rsp+34h] */
+#define v30 (*(char (*))(void *)(sr_frame_1400FEB50 + 54)) /* [rsp+36h] */
+#define v31 (*(__int16 (*))(void *)(sr_frame_1400FEB50 + 56)) /* [rsp+38h] */
+#define v32 (*(void * (*))(void *)(sr_frame_1400FEB50 + 64)) /* [rsp+40h] */
+#define v33 (*(char (*)[1024])(void *)(sr_frame_1400FEB50 + 5424)) /* [rsp+1530h] */
+#define v34 (*(char (*)[4096])(void *)(sr_frame_1400FEB50 + 6448)) /* [rsp+1930h] */
+#define v35 (*(__int64 (*))(void *)(sr_frame_1400FEB50 + 10544)) /* [rsp+2930h] */
 
   v0 = dword_140404A6C[70087074];
   if ( !dword_140404A6C[18215638] )
@@ -1739,3 +1765,12 @@ LABEL_47:
   }
   return;
 }
+#undef v27
+#undef v28
+#undef v29
+#undef v30
+#undef v31
+#undef v32
+#undef v33
+#undef v34
+#undef v35

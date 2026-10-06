@@ -740,9 +740,11 @@ double            sub_1400D22E0(int a1)
   __int64 v9; // r14
   __int64 v10; // r15
   __int64 v11; // r8
-  int v14; // [rsp+88h] [rbp+10h]
-  __int64 v15; // [rsp+90h] [rbp+18h]
-  unsigned int *v16; // [rsp+98h] [rbp+20h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400D22E0[32];
+#define v14 (*(int (*))(void *)(sr_frame_1400D22E0 + 0)) /* [rsp+88h] */
+#define v15 (*(__int64 (*))(void *)(sr_frame_1400D22E0 + 8)) /* [rsp+90h] */
+#define v16 (*(unsigned int * (*))(void *)(sr_frame_1400D22E0 + 16)) /* [rsp+98h] */
 
   if ( !a1 )
   {
@@ -832,6 +834,9 @@ double            sub_1400D22E0(int a1)
     return qword_1404042E0(0);
   }
 }
+#undef v14
+#undef v15
+#undef v16
 
 // 1400D2BE2: variable 'v2' is possibly undefined
 // 1400D2BFC: variable 'v3' is possibly undefined

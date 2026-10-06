@@ -45,8 +45,10 @@ __int64            input_get_mouse_state_candidate(__int64 a1)
   __m128i v4; // xmm0
   float v5; // xmm2_4
   __int64 result; // rax
-  int v7; // [rsp+30h] [rbp+8h]
-  int v8; // [rsp+38h] [rbp+10h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14007CB30[16];
+#define v7 (*(int (*))(void *)(sr_frame_14007CB30 + 0)) /* [rsp+30h] */
+#define v8 (*(int (*))(void *)(sr_frame_14007CB30 + 8)) /* [rsp+38h] */
 
   v2 = ((unsigned (*)(int *, int *))sub_140198EFF)(&v7, &v8);
   v3 = v2 & 1;
@@ -60,6 +62,8 @@ __int64            input_get_mouse_state_candidate(__int64 a1)
   *(_DWORD *)(a1 + 148) = result;
   return result;
 }
+#undef v7
+#undef v8
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -69,8 +73,10 @@ __int64            input_get_relative_mouse_state_candidate(float *a1)
   unsigned int v2; // eax
   int v3; // edx
   __int64 result; // rax
-  int v5; // [rsp+30h] [rbp+8h]
-  int v6; // [rsp+38h] [rbp+10h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14007CBC0[16];
+#define v5 (*(int (*))(void *)(sr_frame_14007CBC0 + 0)) /* [rsp+30h] */
+#define v6 (*(int (*))(void *)(sr_frame_14007CBC0 + 8)) /* [rsp+38h] */
 
   v2 = ((unsigned (*)(int *, int *))sub_140198F05)(&v5, &v6);
   v3 = v2 & 1;
@@ -84,6 +90,8 @@ __int64            input_get_relative_mouse_state_candidate(float *a1)
   *((_DWORD *)a1 + 37) = result;
   return result;
 }
+#undef v5
+#undef v6
 
 //----- (000000014007CC30) ----------------------------------------------------
 // Candidate SDL event pump: tracks wheel delta, key events, Alt+Enter fullscreen toggle, resize/viewport state.
@@ -96,15 +104,17 @@ void input_poll_events_candidate()
   int v4; // ecx
   int v5; // r10d
   unsigned int v6; // eax
-  __int64 v8; // [rsp+0h] [rbp-78h] BYREF
-  int v9; // [rsp+20h] [rbp-58h]
-  int v10; // [rsp+24h] [rbp-54h]
-  int v11; // [rsp+28h] [rbp-50h]
-  char v12; // [rsp+34h] [rbp-44h]
-  unsigned int v13; // [rsp+38h] [rbp-40h]
-  unsigned int v14; // [rsp+3Ch] [rbp-3Ch]
-  unsigned __int16 v15; // [rsp+40h] [rbp-38h]
-  __int64 v16; // [rsp+60h] [rbp-18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14007CC30[112];
+#define v8 (*(__int64 (*))(void *)(sr_frame_14007CC30 + 0)) /* [rsp+0h] */
+#define v9 (*(int (*))(void *)(sr_frame_14007CC30 + 32)) /* [rsp+20h] */
+#define v10 (*(int (*))(void *)(sr_frame_14007CC30 + 36)) /* [rsp+24h] */
+#define v11 (*(int (*))(void *)(sr_frame_14007CC30 + 40)) /* [rsp+28h] */
+#define v12 (*(char (*))(void *)(sr_frame_14007CC30 + 52)) /* [rsp+34h] */
+#define v13 (*(unsigned int (*))(void *)(sr_frame_14007CC30 + 56)) /* [rsp+38h] */
+#define v14 (*(unsigned int (*))(void *)(sr_frame_14007CC30 + 60)) /* [rsp+3Ch] */
+#define v15 (*(unsigned __int16 (*))(void *)(sr_frame_14007CC30 + 64)) /* [rsp+40h] */
+#define v16 (*(__int64 (*))(void *)(sr_frame_14007CC30 + 96)) /* [rsp+60h] */
 
   _Alignas(8) unsigned char sr_event[56];
   void *sr_event_window;
@@ -201,3 +211,12 @@ LABEL_28:
   }
   return;
 }
+#undef v8
+#undef v9
+#undef v10
+#undef v11
+#undef v12
+#undef v13
+#undef v14
+#undef v15
+#undef v16

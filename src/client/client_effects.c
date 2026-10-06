@@ -102,9 +102,11 @@ __int64 sub_140158CD0()
   float v95; // xmm5_4
   unsigned int v96; // eax
   float v97; // xmm1_4
-  __int64 v99; // [rsp+0h] [rbp-108h] BYREF
   float sr_particle_direction[3];
-  __int64 v103; // [rsp+40h] [rbp-C8h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140158CD0[80];
+#define v99 (*(__int64 (*))(void *)(sr_frame_140158CD0 + 0)) /* [rsp+0h] */
+#define v103 (*(__int64 (*))(void *)(sr_frame_140158CD0 + 64)) /* [rsp+40h] */
 
   v0 = 0;
   if ( (int)dword_140404A6C[431564581] > 0 )
@@ -360,6 +362,8 @@ __int64 sub_140158CD0()
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v99
+#undef v103
 
 // 140279870: using guessed type __int128 xmmword_140279870;
 // 1402F6188: using guessed type int dword_1402F6188;
@@ -561,17 +565,19 @@ __int64 sub_1401597F0()
   float v183; // xmm15_4
   __int64 v184; // rcx
   __int64 v185; // rcx
-  __int64 v187; // [rsp+0h] [rbp-148h] BYREF
-  float v188; // [rsp+20h] [rbp-128h]
-  unsigned int v189; // [rsp+24h] [rbp-124h]
-  float v190; // [rsp+28h] [rbp-120h]
-  float v191; // [rsp+2Ch] [rbp-11Ch]
-  float v192; // [rsp+30h] [rbp-118h]
-  float v193; // [rsp+34h] [rbp-114h]
-  float v194; // [rsp+38h] [rbp-110h]
   float sr_effect_previous_position[3];
   _Alignas(16) unsigned sr_effect_rotation[12];
-  __int64 v200; // [rsp+78h] [rbp-D0h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1401597F0[128];
+#define v187 (*(__int64 (*))(void *)(sr_frame_1401597F0 + 0)) /* [rsp+0h] */
+#define v188 (*(float (*))(void *)(sr_frame_1401597F0 + 32)) /* [rsp+20h] */
+#define v189 (*(unsigned int (*))(void *)(sr_frame_1401597F0 + 36)) /* [rsp+24h] */
+#define v190 (*(float (*))(void *)(sr_frame_1401597F0 + 40)) /* [rsp+28h] */
+#define v191 (*(float (*))(void *)(sr_frame_1401597F0 + 44)) /* [rsp+2Ch] */
+#define v192 (*(float (*))(void *)(sr_frame_1401597F0 + 48)) /* [rsp+30h] */
+#define v193 (*(float (*))(void *)(sr_frame_1401597F0 + 52)) /* [rsp+34h] */
+#define v194 (*(float (*))(void *)(sr_frame_1401597F0 + 56)) /* [rsp+38h] */
+#define v200 (*(__int64 (*))(void *)(sr_frame_1401597F0 + 120)) /* [rsp+78h] */
 
   v0 = 0;
   if ( (int)dword_140404A6C[433435845] > 0 )
@@ -1074,3 +1080,12 @@ __int64 sub_1401597F0()
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v187
+#undef v188
+#undef v189
+#undef v190
+#undef v191
+#undef v192
+#undef v193
+#undef v194
+#undef v200

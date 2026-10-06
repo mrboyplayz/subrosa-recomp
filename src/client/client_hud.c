@@ -686,18 +686,20 @@ __int64            sub_1400A7C70(int a1, float a2, float a3)
   __int64 v79; // rdx
   __int64 v80; // r8
   float v81; // xmm0_4
-  __int64 v83; // [rsp+8h] [rbp-100h] BYREF
-  float v84; // [rsp+38h] [rbp-D0h]
   float sr_health_vertex[3];
-  __int64 v88; // [rsp+50h] [rbp-B8h]
-  float v89; // [rsp+58h] [rbp-B0h]
-  float v90; // [rsp+5Ch] [rbp-ACh]
-  __int64 v91; // [rsp+60h] [rbp-A8h]
-  unsigned __int64 v92; // [rsp+68h] [rbp-A0h]
   _Alignas(16) unsigned sr_health_basis[9];
   float sr_health_positions[16 * 3];
   float sr_health_rotations[16 * 9];
-  __int64 v101; // [rsp+398h] [rbp+290h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400A7C70[928];
+#define v83 (*(__int64 (*))(void *)(sr_frame_1400A7C70 + 0)) /* [rsp+8h] */
+#define v84 (*(float (*))(void *)(sr_frame_1400A7C70 + 48)) /* [rsp+38h] */
+#define v88 (*(__int64 (*))(void *)(sr_frame_1400A7C70 + 72)) /* [rsp+50h] */
+#define v89 (*(float (*))(void *)(sr_frame_1400A7C70 + 80)) /* [rsp+58h] */
+#define v90 (*(float (*))(void *)(sr_frame_1400A7C70 + 84)) /* [rsp+5Ch] */
+#define v91 (*(__int64 (*))(void *)(sr_frame_1400A7C70 + 88)) /* [rsp+60h] */
+#define v92 (*(unsigned __int64 (*))(void *)(sr_frame_1400A7C70 + 96)) /* [rsp+68h] */
+#define v101 (*(__int64 (*))(void *)(sr_frame_1400A7C70 + 912)) /* [rsp+398h] */
 
   v3 = a1;
   *(float *)&v91 = a3;
@@ -920,3 +922,11 @@ LABEL_36:
   while ( v40 < 16 );
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v83
+#undef v84
+#undef v88
+#undef v89
+#undef v90
+#undef v91
+#undef v92
+#undef v101

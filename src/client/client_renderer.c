@@ -203,13 +203,15 @@ __int64 sub_140094A90()
   float v86; // xmm6_4
   __int64 v87; // rdx
   __int64 v88; // r8
-  __int64 v90; // [rsp+8h] [rbp-100h] BYREF
-  __int64 v91; // [rsp+28h] [rbp-E0h]
-  __int64 v92; // [rsp+30h] [rbp-D8h]
   _Alignas(16) __int128 sr_visibility_matrix[4];
   _Alignas(16) unsigned char sr_visibility_clip[16];
   _Alignas(16) __int128 sr_visibility_basis[4];
-  __int64 v104; // [rsp+D8h] [rbp-30h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140094A90[224];
+#define v90 (*(__int64 (*))(void *)(sr_frame_140094A90 + 0)) /* [rsp+8h] */
+#define v91 (*(__int64 (*))(void *)(sr_frame_140094A90 + 32)) /* [rsp+28h] */
+#define v92 (*(__int64 (*))(void *)(sr_frame_140094A90 + 40)) /* [rsp+30h] */
+#define v104 (*(__int64 (*))(void *)(sr_frame_140094A90 + 208)) /* [rsp+D8h] */
 
   sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[40714349]), 0, 0x400u);
   if ( !dword_140404A6C[284024893] )
@@ -581,7 +583,11 @@ __int64 sub_140094A90()
   sub_14011E210(0, v87, v88);
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(12288);
   return 0; /* compatibility result discarded by all reviewed callers */
-}
+}
+#undef v90
+#undef v91
+#undef v92
+#undef v104
 
 // 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -2406,9 +2412,11 @@ __int64 render_cache_camera_uniforms_candidate()
   __int64 v0; // rax
   __int64 v1; // rax
   __int64 v2; // rbx
-  __int64 v4; // [rsp+0h] [rbp-58h] BYREF
   float resolution[2]; /* original contiguous vec2 uniform */
-  __int64 v7; // [rsp+30h] [rbp-28h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14014B2A0[64];
+#define v4 (*(__int64 (*))(void *)(sr_frame_14014B2A0 + 0)) /* [rsp+0h] */
+#define v7 (*(__int64 (*))(void *)(sr_frame_14014B2A0 + 48)) /* [rsp+30h] */
 
   LOBYTE(dword_140404A6C[71741525]) = 0;
   if ( (unsigned int)sub_14004C4E0(0, (__int64)(uintptr_t)sr_mem_1402f61e0, (__int64)(uintptr_t)sr_mem_1402f6460, 0) )
@@ -2648,4 +2656,6 @@ __int64 render_cache_camera_uniforms_candidate()
     }
   }
   return v0; /* native strlen, fopen-failure or fclose RAX */
-}
+}
+#undef v4
+#undef v7
