@@ -16001,7 +16001,9 @@ unsigned int *           sub_14007F590(signed int a1)
   __int64 v30; // rax
   __int64 v31; // rcx
   bool v32; // zf
-  _UNKNOWN *retaddr; // [rsp+48h] [rbp+0h] BYREF
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14007F590[16];
+#define retaddr (*(_UNKNOWN * (*))(void *)(sr_frame_14007F590 + 0)) /* [rsp+48h] */
 
   result = (unsigned int *)&retaddr;
   v2 = a1;
@@ -16119,6 +16121,7 @@ unsigned int *           sub_14007F590(signed int a1)
   }
   return result;
 }
+#undef retaddr
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 

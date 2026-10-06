@@ -358,16 +358,18 @@ int                sub_1400D1830(unsigned __int64 a1, float *a2, float *a3)
   int v117; // xmm2_4
   float v118; // xmm1_4
   _BOOL8 v119; // rcx
-  __int64 v121; // [rsp+8h] [rbp-100h] BYREF
-  __int64 v122; // [rsp+48h] [rbp-C0h] BYREF
-  signed __int64 v125; // [rsp+60h] [rbp-A8h]
-  signed __int64 v133; // [rsp+98h] [rbp-70h]
-  signed __int64 v134; // [rsp+A0h] [rbp-68h]
-  signed __int64 v135; // [rsp+A8h] [rbp-60h]
-  signed __int64 v136; // [rsp+B0h] [rbp-58h]
-  float v137; // [rsp+B8h] [rbp-50h]
-  float *v138; // [rsp+C0h] [rbp-48h]
-  __int128 v157; // [rsp+120h] [rbp+18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400D1830[304];
+#define v121 (*(__int64 (*))(void *)(sr_frame_1400D1830 + 8)) /* [rsp+8h] */
+#define v122 (*(__int64 (*))(void *)(sr_frame_1400D1830 + 72)) /* [rsp+48h] */
+#define v125 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 96)) /* [rsp+60h] */
+#define v133 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 152)) /* [rsp+98h] */
+#define v134 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 160)) /* [rsp+A0h] */
+#define v135 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 168)) /* [rsp+A8h] */
+#define v136 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 176)) /* [rsp+B0h] */
+#define v137 (*(float (*))(void *)(sr_frame_1400D1830 + 184)) /* [rsp+B8h] */
+#define v138 (*(float * (*))(void *)(sr_frame_1400D1830 + 192)) /* [rsp+C0h] */
+#define v157 (*(__int128 (*))(void *)(sr_frame_1400D1830 + 288)) /* [rsp+120h] */
 
   v3 = a2 + 1;
   sr_triangle_c.saved = a2;
@@ -706,6 +708,16 @@ LABEL_50:
   }
   return 0;
 }
+#undef v121
+#undef v122
+#undef v125
+#undef v133
+#undef v134
+#undef v135
+#undef v136
+#undef v137
+#undef v138
+#undef v157
 
 // 1400D1AB0: conditional instruction was optimized away because rcx.8<100000000u
 // 1400D1B49: conditional instruction was optimized away because rcx.8<100000000u

@@ -1341,11 +1341,13 @@ void sub_1400FE1B0()
     dword_140404A6C[456202722] = 1;
     dword_140404A6C[456202453] = 1;
     *(_QWORD *)&dword_140404A6C[73991608] = 0;
-    /* User-requested debug arena. Set only on the local Practice action. */
+    /* Native Practice leaves the map name alone: it is "test2", the World-mode city,
+       set at startup by 0x14013DCD0. Set SUBROSA_PRACTICE_MAP to a data folder name
+       (for example debugtest, the single-player test arena) to pick another map. */
     {
       const char *sr_practice_map = getenv("SUBROSA_PRACTICE_MAP");
-      snprintf((char *)&dword_140404A6C[283831313], 64, "%s",
-          sr_practice_map && *sr_practice_map ? sr_practice_map : "debugtest");
+      if (sr_practice_map && *sr_practice_map)
+        snprintf((char *)&dword_140404A6C[283831313], 64, "%s", sr_practice_map);
     }
     sub_140095B00();
   }

@@ -14795,8 +14795,10 @@ __int64            sub_14001BF70(int a1)
   float v54; // xmm4_4
   float v55; // xmm5_4
   float v56; // xmm2_4
-  float v57; // [rsp+B0h] [rbp+8h]
-  float v58; // [rsp+C0h] [rbp+18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14001BF70[32];
+#define v57 (*(float (*))(void *)(sr_frame_14001BF70 + 0)) /* [rsp+B0h] */
+#define v58 (*(float (*))(void *)(sr_frame_14001BF70 + 16)) /* [rsp+C0h] */
 
   v1 = a1;
   v2 = 18LL * a1;
@@ -14953,6 +14955,8 @@ __int64            sub_14001BF70(int a1)
   *(float *)&dword_140404A6C[v9 + 18215741] = (float)((float)-v17 * v56) + *(float *)&dword_140404A6C[v9 + 18215741];
   return result;
 }
+#undef v57
+#undef v58
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -15597,8 +15601,10 @@ unsigned int *sub_14001D080()
   __int64 v394; // rdx
   unsigned int v395; // eax
   unsigned int *result; // rax
-  float v397; // [rsp+108h] [rbp+10h]
-  float v398; // [rsp+110h] [rbp+18h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14001D080[16];
+#define v397 (*(float (*))(void *)(sr_frame_14001D080 + 0)) /* [rsp+108h] */
+#define v398 (*(float (*))(void *)(sr_frame_14001D080 + 8)) /* [rsp+110h] */
 
   v0 = &dword_140404A6C[485543039];
   v1 = &dword_140404A6C[486149266];
@@ -16809,6 +16815,8 @@ LABEL_194:
   while ( (__int64)result < (__int64)&dword_140404A6C[487148677] );
   return result;
 }
+#undef v397
+#undef v398
 
 // 140384000: using guessed type float flt_140384000[131092];
 // 140404000: using guessed type float;

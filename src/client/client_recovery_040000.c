@@ -5735,26 +5735,28 @@ __int64            sub_140048110(int *a1)
   int *v109; // r9
   __int64 v110; // rcx
   int *v111; // rax
-  float v113; // [rsp+0h] [rbp-428h] BYREF
-  float v114; // [rsp+4h] [rbp-424h]
-  float v115; // [rsp+8h] [rbp-420h]
-  float v116; // [rsp+Ch] [rbp-41Ch]
-  float v117; // [rsp+10h] [rbp-418h]
-  float v118; // [rsp+14h] [rbp-414h]
-  float v119; // [rsp+18h] [rbp-410h]
-  float v120; // [rsp+1Ch] [rbp-40Ch]
-  float v121; // [rsp+20h] [rbp-408h]
-  float v122; // [rsp+24h] [rbp-404h]
-  float v123; // [rsp+28h] [rbp-400h]
-  float v124; // [rsp+2Ch] [rbp-3FCh]
-  float v125; // [rsp+30h] [rbp-3F8h]
-  float v126; // [rsp+34h] [rbp-3F4h]
-  float v127; // [rsp+38h] [rbp-3F0h]
-  float v128; // [rsp+3Ch] [rbp-3ECh]
-  float v129; // [rsp+40h] [rbp-3E8h]
-  float v130; // [rsp+44h] [rbp-3E4h]
-  char v131; // [rsp+58h] [rbp-3D0h] BYREF
-  __int64 v132; // [rsp+350h] [rbp-D8h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140048110[864];
+#define v113 (*(float (*))(void *)(sr_frame_140048110 + 0)) /* [rsp+0h] */
+#define v114 (*(float (*))(void *)(sr_frame_140048110 + 4)) /* [rsp+4h] */
+#define v115 (*(float (*))(void *)(sr_frame_140048110 + 8)) /* [rsp+8h] */
+#define v116 (*(float (*))(void *)(sr_frame_140048110 + 12)) /* [rsp+Ch] */
+#define v117 (*(float (*))(void *)(sr_frame_140048110 + 16)) /* [rsp+10h] */
+#define v118 (*(float (*))(void *)(sr_frame_140048110 + 20)) /* [rsp+14h] */
+#define v119 (*(float (*))(void *)(sr_frame_140048110 + 24)) /* [rsp+18h] */
+#define v120 (*(float (*))(void *)(sr_frame_140048110 + 28)) /* [rsp+1Ch] */
+#define v121 (*(float (*))(void *)(sr_frame_140048110 + 32)) /* [rsp+20h] */
+#define v122 (*(float (*))(void *)(sr_frame_140048110 + 36)) /* [rsp+24h] */
+#define v123 (*(float (*))(void *)(sr_frame_140048110 + 40)) /* [rsp+28h] */
+#define v124 (*(float (*))(void *)(sr_frame_140048110 + 44)) /* [rsp+2Ch] */
+#define v125 (*(float (*))(void *)(sr_frame_140048110 + 48)) /* [rsp+30h] */
+#define v126 (*(float (*))(void *)(sr_frame_140048110 + 52)) /* [rsp+34h] */
+#define v127 (*(float (*))(void *)(sr_frame_140048110 + 56)) /* [rsp+38h] */
+#define v128 (*(float (*))(void *)(sr_frame_140048110 + 60)) /* [rsp+3Ch] */
+#define v129 (*(float (*))(void *)(sr_frame_140048110 + 64)) /* [rsp+40h] */
+#define v130 (*(float (*))(void *)(sr_frame_140048110 + 68)) /* [rsp+44h] */
+#define v131 (*(char (*))(void *)(sr_frame_140048110 + 88)) /* [rsp+58h] */
+#define v132 (*(__int64 (*))(void *)(sr_frame_140048110 + 848)) /* [rsp+350h] */
 
   v2 = 0;
   if ( *a1 > 0 )
@@ -6045,6 +6047,26 @@ __int64            sub_140048110(int *a1)
   }
   return 0; /* reset callers ignore the native result */
 }
+#undef v113
+#undef v114
+#undef v115
+#undef v116
+#undef v117
+#undef v118
+#undef v119
+#undef v120
+#undef v121
+#undef v122
+#undef v123
+#undef v124
+#undef v125
+#undef v126
+#undef v127
+#undef v128
+#undef v129
+#undef v130
+#undef v131
+#undef v132
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -7824,10 +7846,12 @@ __int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5)
   _BYTE *v28; // r9
   int v29; // ecx
   int v30; // edx
-  __int64 v32; // [rsp+0h] [rbp-278h] BYREF
-  int *v33; // [rsp+20h] [rbp-258h]
-  _BYTE v34[512]; // [rsp+30h] [rbp-248h] BYREF
-  __int64 v35; // [rsp+230h] [rbp-48h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14004C9C0[576];
+#define v32 (*(__int64 (*))(void *)(sr_frame_14004C9C0 + 0)) /* [rsp+0h] */
+#define v33 (*(int * (*))(void *)(sr_frame_14004C9C0 + 32)) /* [rsp+20h] */
+#define v34 (*(_BYTE (*)[512])(void *)(sr_frame_14004C9C0 + 48)) /* [rsp+30h] */
+#define v35 (*(__int64 (*))(void *)(sr_frame_14004C9C0 + 560)) /* [rsp+230h] */
 
   v33 = a5;
   v8 = a1;
@@ -7960,6 +7984,10 @@ __int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5)
   }
   return sub_1401F8B20((unsigned __int64)&v32 ^ v35);
 }
+#undef v32
+#undef v33
+#undef v34
+#undef v35
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 

@@ -5795,13 +5795,15 @@ __int64            sub_140188900(int *a1, float *a2, float *a3, int a4)
   __int64 v24; // rbx
   __int64 v25; // rdi
   __int64 v26; // rcx
-  __int64 v28; // [rsp+0h] [rbp-188h] BYREF
-  int v29; // [rsp+30h] [rbp-158h]
-  int v30; // [rsp+34h] [rbp-154h]
-  float *v31; // [rsp+38h] [rbp-150h]
-  int *v32; // [rsp+40h] [rbp-148h]
-  _DWORD v33[64]; // [rsp+50h] [rbp-138h]
-  __int64 v34; // [rsp+150h] [rbp-38h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140188900[352];
+#define v28 (*(__int64 (*))(void *)(sr_frame_140188900 + 0)) /* [rsp+0h] */
+#define v29 (*(int (*))(void *)(sr_frame_140188900 + 48)) /* [rsp+30h] */
+#define v30 (*(int (*))(void *)(sr_frame_140188900 + 52)) /* [rsp+34h] */
+#define v31 (*(float * (*))(void *)(sr_frame_140188900 + 56)) /* [rsp+38h] */
+#define v32 (*(int * (*))(void *)(sr_frame_140188900 + 64)) /* [rsp+40h] */
+#define v33 (*(_DWORD (*)[64])(void *)(sr_frame_140188900 + 80)) /* [rsp+50h] */
+#define v34 (*(__int64 (*))(void *)(sr_frame_140188900 + 336)) /* [rsp+150h] */
 
   v4 = a2;
   v5 = *a2;
@@ -5892,6 +5894,13 @@ __int64            sub_140188900(int *a1, float *a2, float *a3, int a4)
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
+#undef v28
+#undef v29
+#undef v30
+#undef v31
+#undef v32
+#undef v33
+#undef v34
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 

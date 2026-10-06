@@ -15,7 +15,9 @@ __int64            sub_14007A010(__int64 a1, __int64 a2, __int64 a3)
   float v11; // xmm4_4
   float v12; // xmm5_4
   _Alignas(16) unsigned sr_pose_product[9];
-  __int64 v16; // [rsp+28h] [rbp-10h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14007A010[16];
+#define v16 (*(__int64 (*))(void *)(sr_frame_14007A010 + 0)) /* [rsp+28h] */
 
   v4 = (float *)((__int128 *)(void *)sr_pose_product);
   v5 = 3;
@@ -67,6 +69,7 @@ __int64 sub_14007A0E0(_OWORD *a1,__int64 a2,__int64 a3)
   /* Native scalar loop leaves RAX at right+48; cookie checker preserves it. */
   return a3+48;
 }
+#undef v16
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 1853AD41C: using guessed type unsigned int;
@@ -88,13 +91,15 @@ _UNKNOWN **           sub_14007AE70(float *a1, float *a2, float *a3)
   float v14; // xmm10_4
   float v15; // xmm15_4
   float v16; // xmm6_4
-  float v17; // [rsp+0h] [rbp-B8h]
-  float v18; // [rsp+4h] [rbp-B4h]
-  _UNKNOWN *retaddr; // [rsp+B8h] [rbp+0h] BYREF
-  float v20; // [rsp+C0h] [rbp+8h]
-  float v21; // [rsp+C8h] [rbp+10h]
-  float v22; // [rsp+D0h] [rbp+18h]
-  float v23; // [rsp+D8h] [rbp+20h]
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14007AE70[224];
+#define v17 (*(float (*))(void *)(sr_frame_14007AE70 + 0)) /* [rsp+0h] */
+#define v18 (*(float (*))(void *)(sr_frame_14007AE70 + 4)) /* [rsp+4h] */
+#define retaddr (*(_UNKNOWN * (*))(void *)(sr_frame_14007AE70 + 184)) /* [rsp+B8h] */
+#define v20 (*(float (*))(void *)(sr_frame_14007AE70 + 192)) /* [rsp+C0h] */
+#define v21 (*(float (*))(void *)(sr_frame_14007AE70 + 200)) /* [rsp+C8h] */
+#define v22 (*(float (*))(void *)(sr_frame_14007AE70 + 208)) /* [rsp+D0h] */
+#define v23 (*(float (*))(void *)(sr_frame_14007AE70 + 216)) /* [rsp+D8h] */
 
   v4 = a3[1];
   v5 = a3[2];
@@ -126,6 +131,13 @@ _UNKNOWN **           sub_14007AE70(float *a1, float *a2, float *a3)
   a1[7] = (float)((float)(v17 * v14) + (float)(v15 * v13)) + (float)(v18 * v21);
   return &retaddr;
 }
+#undef v17
+#undef v18
+#undef retaddr
+#undef v20
+#undef v21
+#undef v22
+#undef v23
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 18539D400: using guessed type unsigned int;
