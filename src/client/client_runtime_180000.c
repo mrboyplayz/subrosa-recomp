@@ -652,7 +652,7 @@ __int64            sub_140198B50(__int64 a1)
     *(_DWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 32LL) = v5[1];
     *(_DWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 36LL) = v5[2];
   }
-  return sub_1401F8B20((unsigned __int64)&v4 ^ v6);
+  return 0; /* the function has no caller */
 }
 
 // 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
@@ -3969,13 +3969,14 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
     if ( *(_DWORD *)(v35 + 48) << i == v112 )
       break;
   }
-  if ( i <= *(_DWORD *)(v35 + 40) )
+  if ( i > *(_DWORD *)(v35 + 40) )
+    return (unsigned int)-1; /* 0x14019F3AB: mov eax, 0xffffffff */
   {
     v87 = 1;
     v55 = 1 << i;
-    if ( (unsigned int)a3 < 0x4FC )
+    if ( (unsigned int)a3 >= 0x4FC || !a4 )
+      return (unsigned int)-1; /* 0x14019F3F3: mov eax, 0xffffffff */
     {
-      if ( a4 )
       {
         v38 = *(_DWORD *)(v35 + 48) * v55;
         k = 0;
@@ -4350,7 +4351,9 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
           *((_DWORD *)a1 + 11) = a6[8];
           sub_1401B3BD0(v95, a4, v38, v40, *((_DWORD *)a1 + 5), (float *)(v35 + 16), (float *)a1 + 22, a7);
           *((_DWORD *)a1 + 14) = 0;
-          if ( (int)sub_14019A0A0((__int64)a6) <= 8 * a3 && (unsigned int)unknown_libname_997((__int64)a6) )
+          if ( (int)sub_14019A0A0((__int64)a6) > 8 * a3 )
+            return (unsigned int)-3; /* 0x1401A07ED: mov eax, 0xfffffffd */
+          if ( (unsigned int)unknown_libname_997((__int64)a6) )
             *((_DWORD *)a1 + 12) = 1;
         }
         else
@@ -4361,5 +4364,5 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&j ^ v108);
+  return (unsigned int)(a5 / (int)*((_DWORD *)a1 + 5)); /* 0x1401A0820: idiv dword ptr [rcx + 0x14] with eax = [rbp + 0x220] */
 }

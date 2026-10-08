@@ -54,7 +54,7 @@ __int64            sub_1401E0010(__int64 a1, __int64 a2, int a3, signed int a4, 
     }
     v18 += a4;
   }
-  return sub_1401F8B20((unsigned __int64)v8 ^ v23);
+  return 0; /* no caller reads the result */
 }
 
 
@@ -122,7 +122,7 @@ __int64            sub_1401E0340(__int64 a1, __int64 a2, int a3, int a4, int a5,
     }
     v22 += 4LL * a4;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v25);
+  return 0; /* no caller reads the result */
 }
 
 
@@ -873,13 +873,14 @@ __int64            sub_1401E25C0(int *a1, char *a2, int a3, __int64 a4, int a5, 
   int *v14; // [rsp+60h] [rbp+10h]
   __int64 v15; // [rsp+68h] [rbp+18h]
 
-  if ( a5 > 0 )
+  if ( a5 <= 0 )
+    return (unsigned int)-1; /* 0x1401E25F2: mov eax, 0xffffffff */
   {
     if ( a2 && a3 > 0 && !a6 )
     {
       v11 = sub_1401E3000((__int64)a1, a2, a3);
       if ( v11 <= 0 )
-        return sub_1401F8B20((unsigned __int64)&i ^ v15);
+        return (unsigned int)-4; /* 0x1401E2647: mov eax, 0xfffffffc */
       if ( a5 >= v11 )
         v13 = v11;
       else
@@ -901,7 +902,7 @@ __int64            sub_1401E25C0(int *a1, char *a2, int a3, __int64 a4, int a5, 
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&i ^ v15);
+  return (unsigned int)v12; /* 0x1401E271A: mov eax, dword ptr [rbp + 8] */
 }
 
 
@@ -1316,15 +1317,23 @@ __int64            sub_1401E3980(__m128i *a1, int a2, int a3)
   int v7; // [rsp+54h] [rbp-204h]
   __int64 v8; // [rsp+240h] [rbp-18h]
 
-  if ( a2 >= 1 && a2 != a3 && a2 <= a3 )
+  if ( a2 < 1 )
+    return (unsigned int)-1; /* 0x1401E39B1: mov eax, 0xffffffff */
+  if ( a2 == a3 )
+    return 0; /* 0x1401E39CB: xor eax, eax */
+  if ( a2 > a3 )
+    return (unsigned int)-1; /* 0x1401E39E4: mov eax, 0xffffffff */
   {
     sub_1401E37F0((__int64)v6);
     sub_1401FC920((__m128i *)((char *)a1 + a3 - a2), a1, a2);
     v5 = sub_1401E3870((__int64)v6, &SR_VEC_PTR_LANES(128, a1, i8)[a3 - a2], a2);
-    if ( !v5 )
-      v5 = sub_1401EA090((__int64)v6, 0, v7, a1, a3, 0, 1);
+    if ( v5 )
+      return (unsigned int)v5; /* 0x1401E3AA2: mov eax, dword ptr [rsp + 0x40] */
+    v5 = sub_1401EA090((__int64)v6, 0, v7, a1, a3, 0, 1);
+    if ( v5 > 0 )
+      return 0; /* 0x1401E3AE7: xor eax, eax */
   }
-  return sub_1401F8B20((unsigned __int64)&v4 ^ v8);
+  return (unsigned int)v5; /* 0x1401E3AED: mov eax, dword ptr [rsp + 0x40] */
 }
 
 
@@ -1344,7 +1353,7 @@ __int64            sub_1401E3B10(char *a1, int a2)
     if ( v4 >= 0 )
       v4 = sub_1401EA090((__int64)v5, 0, v6, a1, a2, 0, 0);
   }
-  return sub_1401F8B20((unsigned __int64)&v3 ^ v7);
+  return 0; /* the function has no caller */
 }
 
 
@@ -1368,16 +1377,16 @@ __int64            sub_1401E3BE0(__m128i *a1, int a2, int a3, int a4)
     for ( i = 0; i < a4 - 1; ++i )
     {
       if ( v14 <= 0 )
-        return sub_1401F8B20((unsigned __int64)&v5 ^ v12);
+        return 0; /* the function has no caller */
       v8 = sub_1401E99E0(SR_VEC_PTR_LANES(128, a1, i8), v14, 1, v6, 0, (__int16 *)v11, nullptr, &v9);
       if ( v8 < 0 )
-        return sub_1401F8B20((unsigned __int64)&v5 ^ v12);
+        return 0; /* the function has no caller */
       a1 = (__m128i *)((char *)a1 + v9);
       v14 -= v9;
     }
     sub_1401E3980(a1, v14, v10 + v14);
   }
-  return sub_1401F8B20((unsigned __int64)&v5 ^ v12);
+  return 0; /* the function has no caller */
 }
 
 
@@ -1428,7 +1437,7 @@ __int64            sub_1401E3D80(char *a1, int a2, int a3)
       v18 -= v9;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v4 ^ v16);
+  return 0; /* the function has no caller */
 }
 
 
@@ -3282,7 +3291,7 @@ __int64            sub_1401E9360(
             {
               if ( a5 < v11 || v19 == 1002 || a1[14] == 1002 )
               {
-                sub_1401E9360(a1, nullptr, 0, a4, a5, 0, 0, nullptr, a9);
+                return sub_1401E9360(a1, nullptr, 0, a4, a5, 0, 0, nullptr, a9); /* 0x1401E9635: the call's result stays in rax */
               }
               else
               {
@@ -3298,11 +3307,14 @@ __int64            sub_1401E9360(
                   {
                     sub_1401A2600();
                     a1[18] = a5;
+                    return (unsigned int)a5; /* 0x1401E97B7: mov eax, dword ptr [rsp + 0x130] */
                   }
+                  return (unsigned int)v14; /* 0x1401E978B: mov eax, dword ptr [rsp + 0x5c] */
                 }
                 else
                 {
                   a1[18] = v25;
+                  return (unsigned int)v14; /* 0x1401E96D2: mov eax, dword ptr [rsp + 0x5c] */
                 }
               }
             }
@@ -3317,7 +3329,7 @@ __int64            sub_1401E9360(
               {
                 v20 = sub_1401F2AA0(a1, (__int64)v30, v26[i], a4 + 4LL * a1[2] * v13, a5 - v13, 0);
                 if ( v20 < 0 )
-                  return sub_1401F8B20((unsigned __int64)&v10 ^ v27);
+                  return (unsigned int)v20; /* 0x1401E98B4: mov eax, dword ptr [rsp + 0x74] */
                 v30 += v26[i];
                 v13 += v20;
               }
@@ -3332,9 +3344,13 @@ __int64            sub_1401E9360(
                 a1[20] = 0;
                 a1[19] = 0;
               }
+              return (unsigned int)v13; /* 0x1401E9980: mov eax, dword ptr [rsp + 0x58] */
             }
+            return (unsigned int)-2; /* 0x1401E97D5: mov eax, 0xfffffffe */
           }
+          return (unsigned int)v16; /* 0x1401E9594: mov eax, dword ptr [rsp + 0x64] */
         }
+        return (unsigned int)-1; /* 0x1401E94DF: mov eax, 0xffffffff */
       }
       else
       {
@@ -3343,19 +3359,19 @@ __int64            sub_1401E9360(
         {
           v18 = sub_1401F2AA0(a1, 0, 0, a4 + 4LL * a1[2] * v12, a5 - v12, 0);
           if ( v18 < 0 )
-            break;
+            return (unsigned int)v18; /* 0x1401E9482: mov eax, dword ptr [rsp + 0x6c] */
           v12 += v18;
           if ( v12 >= a5 )
           {
             sub_1401A2600();
             a1[18] = v12;
-            return sub_1401F8B20((unsigned __int64)&v10 ^ v27);
+            return (unsigned int)v12; /* 0x1401E94CA: mov eax, dword ptr [rsp + 0x54] */
           }
         }
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v10 ^ v27);
+  return (unsigned int)-1; /* 0x1401E93A1 / 0x1401E93FB: mov eax, 0xffffffff */
 }
 
 
@@ -3755,12 +3771,14 @@ __int64            sub_1401EA7F0(
   sub_1401E0F40(v23, 4007, &v27);
   sub_1401E0F40(v23, 10015, &v63);
   v18 = sub_1401E52C0(a4, a1[70], v19);
-  if ( v18 > 0 )
+  if ( v18 <= 0 )
+    return (unsigned int)-1; /* 0x1401EA92E: mov eax, 0xffffffff */
   {
     v21 = 2 * a1[1] - 1;
     if ( v19 / v18 == 10 )
       v21 += a1[1];
-    if ( a6 >= v21 )
+    if ( a6 < v21 )
+      return (unsigned int)-2; /* 0x1401EA974: mov eax, 0xfffffffe */
     {
       v10 = 8LL * v18 + 15;
       if ( v10 <= 8LL * v18 )
@@ -3960,9 +3978,9 @@ __int64            sub_1401EA7F0(
           sub_1401E0F40(v64, 4002, (unsigned int)(8 * v19 / v18 * v20));
         v24 = sub_1401E5400(v64, (__int64)v48, v18, v70, v20, a7, a3, a4, v42, v41, *a1, a8, a9);
         if ( v24 < 0 )
-          break;
+          return (unsigned int)v24; /* 0x1401EB2B8: mov eax, dword ptr [rbp + 0x20] */
         if ( (unsigned int)sub_1401E3870((__int64)v67, SR_VEC_LANES(128, v70[0], i8), v24) )
-          break;
+          return (unsigned int)-3; /* 0x1401EB2E6: mov eax, 0xfffffffd */
         v43 = !v27 && i == a1[1] - 1;
         v44 = i != a1[1] - 1;
         v60 = a6 - v28;
@@ -3973,7 +3991,7 @@ __int64            sub_1401EA7F0(
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&i ^ v71);
+  return (unsigned int)v28; /* 0x1401EB3B4: mov eax, dword ptr [rbp + 0x30] */
 }
 
 
@@ -4014,7 +4032,10 @@ __int64            sub_1401EB3E0(
   int v36; // [rsp+E8h] [rbp+98h]
 
   v17 = 0;
-  if ( a6 > 0 && !(unsigned int)sub_1401F1160((__int64)a1, 4029, &v14) )
+  if ( a6 <= 0 )
+    return (unsigned int)-1; /* 0x1401EB41F: mov eax, 0xffffffff */
+  if ( (unsigned int)sub_1401F1160((__int64)a1, 4029, &v14) )
+    return (unsigned int)-3; /* 0x1401EB452: mov eax, 0xfffffffd */
   {
     if ( a6 >= 3 * (v14 / 25) )
       v22 = 3 * (v14 / 25);
@@ -4031,9 +4052,19 @@ __int64            sub_1401EB3E0(
     v28 = sub_1401E2280(1);
     if ( !a3 )
       v17 = 1;
-    if ( a3 >= 0 && (v17 || a3 >= 2 * a1[1] - 1) )
+    if ( a3 < 0 )
+      return (unsigned int)-1; /* 0x1401EB526: mov eax, 0xffffffff */
+    if ( !v17 && a3 < 2 * a1[1] - 1 )
+      return (unsigned int)-4; /* 0x1401EB549: mov eax, 0xfffffffc */
     {
-      if ( v17 || (v18 = sub_1401F5F20(a2, a3, a1[1], v14), v18 >= 0) && v18 <= v36 )
+      if ( !v17 )
+      {
+        v18 = sub_1401F5F20(a2, a3, a1[1], v14);
+        if ( v18 < 0 )
+          return (unsigned int)v18; /* 0x1401EB57D: mov eax, dword ptr [rbp + 0x18] */
+        if ( v18 > v36 )
+          return (unsigned int)-2; /* 0x1401EB592: mov eax, 0xfffffffe */
+      }
       {
         for ( i = 0; i < a1[1]; ++i )
         {
@@ -4044,14 +4075,14 @@ __int64            sub_1401EB3E0(
             v23 = sub_1401E99B0(v27);
           v29 = (int *)((char *)v29 + v23);
           if ( !v17 && a3 <= 0 )
-            return sub_1401F8B20((unsigned __int64)&i ^ v31);
+            return (unsigned int)-3; /* 0x1401EB60A: mov eax, 0xfffffffd */
           v19 = 0;
           v24 = i != a1[1] - 1;
           v20 = sub_1401E9360(v30, a2, a3, (__int64)v26, v36, a7, v24, &v19, a8);
           a2 += v19;
           a3 -= v19;
           if ( v20 <= 0 )
-            return sub_1401F8B20((unsigned __int64)&i ^ v31);
+            return (unsigned int)v20; /* 0x1401EB6AD: mov eax, dword ptr [rbp + 0x20] */
           v36 = v20;
           if ( i >= a1[2] )
           {
@@ -4089,7 +4120,7 @@ __int64            sub_1401EB3E0(
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&i ^ v31);
+  return (unsigned int)v36; /* 0x1401EB872: mov eax, dword ptr [rbp + 0x98] */
 }
 
 
@@ -4180,7 +4211,7 @@ __int64            sub_1401EBA20(__int64 a1, __int64 a2, __int64 a3)
   }
   for ( i = 0; i < v6; ++i )
     *(float *)(a2 + 4LL * i) = v13[i];
-  return sub_1401F8B20((unsigned __int64)&v4 ^ v15);
+  return (unsigned int)v6; /* 0x1401EBE6E: mov eax, dword ptr [rsp + 0x34] */
 }
 
 
@@ -5887,7 +5918,12 @@ __int64            sub_1401F1430(_DWORD *a1, unsigned int a2, int a3, int a4, in
   _BYTE v16[256]; // [rsp+70h] [rbp-118h] BYREF
   __int64 v17; // [rsp+170h] [rbp-18h]
 
-  if ( a5 && a6 && !(unsigned int)sub_1401F81E0(a3, a4, a5, a6, &v10) && a4 == 3 )
+  if ( !a5 || !a6 )
+    return (unsigned int)-1; /* 0x1401F1472: mov eax, 0xffffffff */
+  if ( (unsigned int)sub_1401F81E0(a3, a4, a5, a6, &v10) )
+    return (unsigned int)-1; /* 0x1401F14AD: mov eax, 0xffffffff */
+  if ( a4 != 3 )
+    return (unsigned int)-5; /* 0x1401F14BF -> 0x1401F16D3: mov eax, 0xfffffffb */
   {
     v12 = (int *)sub_1401F8260((__int64)a1);
     switch ( v10 )
@@ -5905,10 +5941,11 @@ __int64            sub_1401F1430(_DWORD *a1, unsigned int a2, int a3, int a4, in
         sub_1401F21E0(v12, 18, 18, 0, (__int64)&unk_140279E20);
         break;
       default:
-        return sub_1401F8B20((unsigned __int64)&v8 ^ v17);
+        return (unsigned int)-1; /* 0x1401F158B: mov eax, 0xffffffff */
     }
     *a1 = sub_1401F2140(*v12, v12[1]);
-    if ( *a1 )
+    if ( !*a1 )
+      return (unsigned int)-1; /* 0x1401F15C0: mov eax, 0xffffffff */
     {
       v13 = (int *)sub_1401F8290(a1);
       switch ( v10 )
@@ -5926,10 +5963,11 @@ __int64            sub_1401F1430(_DWORD *a1, unsigned int a2, int a3, int a4, in
           sub_1401F21E0(v13, 18, 18, 0, (__int64)&unk_14027A230);
           break;
         default:
-          return sub_1401F8B20((unsigned __int64)&v8 ^ v17);
+          return (unsigned int)-1; /* 0x1401F1690: mov eax, 0xffffffff */
       }
       a1[1] = sub_1401F2140(*v13, v13[1]);
-      if ( a1[1] && *a6 + *a5 <= *v12 && a3 <= v12[1] && a3 <= *v13 && *a6 + *a5 <= v13[1] )
+      if ( !(a1[1] && *a6 + *a5 <= *v12 && a3 <= v12[1] && a3 <= *v13 && *a6 + *a5 <= v13[1]) )
+        return (unsigned int)-1; /* 0x1401F16C7 / 0x1401F1739: mov eax, 0xffffffff */
       {
         for ( i = 0; i < a3; ++i )
           v16[i] = i;
@@ -5938,7 +5976,7 @@ __int64            sub_1401F1430(_DWORD *a1, unsigned int a2, int a3, int a4, in
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v17);
+  return (unsigned int)v14; /* 0x1401F17D1: mov eax, dword ptr [rsp + 0x58] */
 }
 
 
@@ -6141,7 +6179,8 @@ __int64            sub_1401F1D90(_DWORD *a1, int a2, int a3, int a4, int a5, __i
 
   v13 = a5 + a4;
   v15 = 2 * a3 * (a5 + a4);
-  if ( v15 == a7 )
+  if ( v15 != a7 )
+    return (unsigned int)-1; /* 0x1401F1DF1: mov eax, 0xffffffff */
   {
     v7 = 2LL * a3 * v13 + 15;
     if ( v7 <= 2LL * a3 * v13 )
@@ -6155,7 +6194,8 @@ __int64            sub_1401F1D90(_DWORD *a1, int a2, int a3, int a4, int a5, __i
       *((_WORD *)v17 + i) = v14;
     }
     *a1 = sub_1401F2140(a3, v13);
-    if ( *a1 )
+    if ( !*a1 )
+      return (unsigned int)-1; /* 0x1401F1ED0: mov eax, 0xffffffff */
     {
       v9 = (_DWORD *)sub_1401F8020((__int64)a1);
       sub_1401F21E0(v9, a3, v13, 0, (__int64)v17);
@@ -6165,7 +6205,7 @@ __int64            sub_1401F1D90(_DWORD *a1, int a2, int a3, int a4, int a5, __i
       v16 = sub_1401F0EA0(v10, a2, a3, a4, a5, (__int64)v18);
     }
   }
-  return sub_1401F8B20((unsigned __int64)&i ^ v19);
+  return (unsigned int)v16; /* 0x1401F1F76: mov eax, dword ptr [rbp + 0x10] */
 }
 
 
@@ -6583,7 +6623,7 @@ __int64            sub_1401F2AA0(int *a1, __int64 a2, int a3, __int64 a4, int a5
   v27 = v30 >> 2;
   v26 = v30 >> 3;
   if ( a5 < v30 >> 3 )
-    return sub_1401F8B20((unsigned __int64)&i ^ v90);
+    return (unsigned int)-2; /* 0x1401F2B80: mov eax, 0xfffffffe */
   if ( a5 >= 3 * (a1[3] / 25) )
     v66 = 3 * (a1[3] / 25);
   else
@@ -6614,7 +6654,7 @@ __int64            sub_1401F2AA0(int *a1, __int64 a2, int a3, __int64 a4, int a5
     {
       for ( i = 0; i < a1[2] * v24; ++i )
         *(_DWORD *)(a4 + 4LL * i) = 0;
-      return sub_1401F8B20((unsigned __int64)&i ^ v90);
+      return (unsigned int)v24; /* 0x1401F2CDA: mov eax, dword ptr [rbp + 4] */
     }
     if ( v24 > v30 )
     {
@@ -6626,12 +6666,12 @@ __int64            sub_1401F2AA0(int *a1, __int64 a2, int a3, __int64 a4, int a5
           v48 = v24;
         v42 = sub_1401F2AA0(a1, 0, 0, v94, v48, 0);
         if ( v42 < 0 )
-          break;
+          return (unsigned int)v42; /* 0x1401F2D34: mov eax, dword ptr [rbp + 0x50] */
         v94 += 4LL * a1[2] * v42;
         v24 -= v42;
       }
       while ( v24 > 0 );
-      return sub_1401F8B20((unsigned __int64)&i ^ v90);
+      return (unsigned int)a5; /* 0x1401F2D77: mov eax, dword ptr [rbp + 0x1b0] */
     }
     if ( v24 < v30 )
     {
@@ -6671,7 +6711,8 @@ __int64            sub_1401F2AA0(int *a1, __int64 a2, int a3, __int64 a4, int a5
       v50 = v27;
     sub_1401F2AA0(a1, 0, 0, (__int64)v47, v50, 0);
   }
-  if ( v24 <= v95 )
+  if ( v24 > v95 )
+    return (unsigned int)-1; /* 0x1401F2EFA: mov eax, 0xffffffff */
   {
     v96 = v24;
     if ( v25 == 1002 || v39 )
@@ -6739,7 +6780,7 @@ __int64            sub_1401F2AA0(int *a1, __int64 a2, int a3, __int64 a4, int a5
         if ( v56 )
         {
           if ( !v57 )
-            return sub_1401F8B20((unsigned __int64)&i ^ v90);
+            return (unsigned int)-3; /* 0x1401F31CE: mov eax, 0xfffffffd */
           v45 = v96;
           for ( i = 0; i < a1[2] * v96; ++i )
             SR_VEC_PTR_LANES(128, v69, i16)[i] = 0;
@@ -6860,7 +6901,7 @@ LABEL_203:
               if ( a1[15] == 1001 && (!v28 || !v35 || !a1[17]) )
               {
                 if ( (unsigned int)sub_140199AA0(v31, 10010, nullptr) )
-                  return sub_1401F8B20((unsigned __int64)&i ^ v90);
+                  return (unsigned int)-3; /* mov eax, 0xfffffffd after a failed control call */
                 sub_14019F210(v31, (__int64)v36, 2, v94, v26, nullptr, v39);
               }
             }
@@ -6872,7 +6913,7 @@ LABEL_203:
                 v63 = v30;
               v72 = v63;
               if ( v25 != a1[15] && a1[15] > 0 && !a1[17] && (unsigned int)sub_140199AA0(v31, 4028, v16) )
-                return sub_1401F8B20((unsigned __int64)&i ^ v90);
+                return (unsigned int)-3; /* mov eax, 0xfffffffd after a failed control call */
               if ( a6 )
                 v80 = 0;
               else
@@ -6891,12 +6932,12 @@ LABEL_203:
               if ( v28 && !v35 )
               {
                 if ( (unsigned int)sub_140199AA0(v31, 4028, v17) )
-                  return sub_1401F8B20((unsigned __int64)&i ^ v90);
+                  return (unsigned int)-3; /* mov eax, 0xfffffffd after a failed control call */
                 if ( (unsigned int)sub_140199AA0(v31, 10010, nullptr) )
-                  return sub_1401F8B20((unsigned __int64)&i ^ v90);
+                  return (unsigned int)-3; /* mov eax, 0xfffffffd after a failed control call */
                 sub_14019F210(v31, v93 + a2, v34, (__int64)v68, v27, nullptr, 0);
                 if ( (unsigned int)sub_140199AA0(v31, 4031, &v29) )
-                  return sub_1401F8B20((unsigned __int64)&i ^ v90);
+                  return (unsigned int)-3; /* mov eax, 0xfffffffd after a failed control call */
                 v18 = (__int64)&v68[v26 * a1[2]];
                 v84 = v94 + 4LL * (v96 - v26) * a1[2];
                 sub_1401F2910(v84, v18, v84, v26, a1[2], v70, a1[3]);
@@ -6950,13 +6991,14 @@ LABEL_203:
                 v65 = v24;
               else
                 v65 = v44;
+              return (unsigned int)v65; /* 0x1401F3E38: mov eax, dword ptr [rbp + 0xb4] */
             }
           }
         }
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&i ^ v90);
+  return (unsigned int)-3; /* the nested control calls that failed: each mov eax, 0xfffffffd (0x1401F34CA ... 0x1401F39AB) */
 }
 
 // 1401F36C2: variable 'v16' is possibly undefined
@@ -7600,10 +7642,10 @@ __int64            sub_1401F59A0(int *a1, __int64 a2, int a3, int a4, _BYTE *a5,
             nullptr,
             a9);
     if ( v25 < 0 )
-      return sub_1401F8B20((unsigned __int64)&i ^ v36);
+      return (unsigned int)-3; /* 0x1401F5D06: mov eax, 0xfffffffd */
     v16 = sub_1401E3870((__int64)v34, &v35[v17 * i], v25);
     if ( v16 < 0 )
-      return sub_1401F8B20((unsigned __int64)&i ^ v36);
+      return (unsigned int)-3; /* 0x1401F5D3C: mov eax, 0xfffffffd */
   }
   v26 = a1[37] == 0;
   v16 = sub_1401EA090((__int64)v34, 0, a3, a5, v18, 0, v26);
@@ -7614,7 +7656,7 @@ __int64            sub_1401F59A0(int *a1, __int64 a2, int a3, int a4, _BYTE *a5,
     a1[30] = v33;
     a1[17] = v27;
   }
-  return sub_1401F8B20((unsigned __int64)&i ^ v36);
+  return (unsigned int)(v16 < 0 ? -3 : v16); /* 0x1401F5DA3: mov eax, 0xfffffffd when [rbp + 4] < 0, else 0x1401F5DE4: mov eax, dword ptr [rbp + 4] */
 }
 
 
@@ -7663,22 +7705,22 @@ __int64            sub_1401F5F20(char *a1, int a2, int a3, int a4)
   for ( i = 0; i < a3; ++i )
   {
     if ( a2 <= 0 )
-      break;
+      return (unsigned int)-4; /* 0x1401F5F83: mov eax, 0xfffffffc */
     v10 = i != a3 - 1;
     v11 = sub_1401E99E0(a1, a2, v10, v7, 0, v13, nullptr, &v8);
     if ( v11 < 0 )
-      break;
+      return (unsigned int)v11; /* 0x1401F5FFD: mov eax, dword ptr [rsp + 0x54] */
     v12 = sub_1401E2F80(a1, v8, a4);
     if ( i )
     {
       if ( v9 != v12 )
-        break;
+        return (unsigned int)-4; /* 0x1401F6031: mov eax, 0xfffffffc */
     }
     v9 = v12;
     a1 += v8;
     a2 -= v8;
   }
-  return sub_1401F8B20((unsigned __int64)&v5 ^ v14);
+  return (unsigned int)v9; /* 0x1401F6076: mov eax, dword ptr [rsp + 0x4c] */
 }
 
 
@@ -8107,7 +8149,7 @@ __int64            sub_1401F68D0(
         *(_DWORD *)(a3 + 4LL * (k + 21 * j)) = 0;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&k ^ v51);
+  return 0; /* no caller reads the result */
 }
 
 // 1401F6B5E: variable 'v24' is possibly undefined
@@ -14068,7 +14110,7 @@ __int64            sub_1401FE364(DName *this, __int64 a2)
   if ( a2 < 0 )
     *--v2 = 45;
   sub_1401FE028((__int64)this, v2, v4 + 53 - (_DWORD)v2);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return (__int64)this; /* mov rax, rbx (rbx = this) */
 }
 
 // 1401FE3E1: variable 'v4' is possibly undefined
@@ -14093,7 +14135,7 @@ __int64            sub_1401FE40C(DName *this, unsigned __int64 a2)
   }
   while ( a2 );
   sub_1401FE028((__int64)this, v2, v4 + 52 - (_DWORD)v2);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return (__int64)this; /* mov rax, rbx (rbx = this) */
 }
 
 // 1401FE46B: variable 'v4' is possibly undefined

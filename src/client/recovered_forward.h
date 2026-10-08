@@ -436,7 +436,7 @@ __int64            sub_14024D0E0(double a1);
 __int64            sub_14024D104(int a1);
 __int64            errcode(char a1);
 double            handle_qnan2_sr(double a1, double a2);
-void            decomp_sr(double a1, int *a2);
+double            decomp_sr(double a1, int *a2);
 double            set_exp_sr(double a1, __int16 a2);
 __int64            sptype_sr(double a1);
 double         copysign(double Number, double Sign);
@@ -528,7 +528,7 @@ __int64            fp_format_f_internal(
         struct _strflt *     a4,
         bool a5,
         struct __crt_locale_pointers *     a6);
-__int64            handle_error(
+double            handle_error(
         __int64 a1,
         __int16 a2,
         __int64 a3,
@@ -538,7 +538,7 @@ __int64            handle_error(
         double a7,
         __int64 a8,
         int a9);
-__int64            handle_errorf(
+float            handle_errorf(
         __int64 a1,
         __int16 a2,
         int a3,

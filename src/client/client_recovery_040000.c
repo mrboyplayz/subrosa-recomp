@@ -1,9 +1,6 @@
 #include "shared_client.h"
- /* recovered in client_native_gaps.s */
-// 14004040A: control flows out of bounds to 14003B9E9
-// 1400403F7: control flows out of bounds to 14003B9F7
-// 1400403F7: variable 'v0' is possibly undefined
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+/* 0x1400403F0 is not a routine of its own: it is a patch block that 0x14003B920 jumps to and back from,
+   written over the start of a small routine nothing calls. src/engine/frame.c has it as part of game_frame. */
 
 //----- (0000000140040490) ----------------------------------------------------
 __int64 sub_140040490()
@@ -1372,7 +1369,7 @@ __int64 sub_140041B80()
     --v118;
   }
   while ( v118 );
-  return sub_1401F8B20((unsigned __int64)&v116 ^ v125);
+  return 0; /* no result: rax is residue at 0x1400428EE */
 }
 #undef v116
 #undef v117
@@ -4269,7 +4266,7 @@ LABEL_71:
     }
     while ( v62 < v5[1473] );
   }
-  return sub_1401F8B20((unsigned __int64)v93 ^ v124);
+  return 0; /* the function has no caller */
 }
 #undef v93
 #undef v94
@@ -5680,7 +5677,7 @@ LABEL_49:
     }
     while ( (int)v349 < v133[1473] );
   }
-  return sub_1401F8B20((unsigned __int64)&v332 ^ v396);
+  return 0; /* the function has no caller */
 }
 #undef v333
 #undef v334
@@ -7239,7 +7236,7 @@ LABEL_28:
     }
     while ( v209 < *(_DWORD *)(v14 + 32) );
   }
-  return sub_1401F8B20((unsigned __int64)&v240 ^ v305);
+  return (unsigned int)v244; /* 0x14004A0C5: mov eax, dword ptr [rsp + 0x50] */
 }
 #undef v241
 #undef v242
@@ -7320,8 +7317,7 @@ __int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4)
   v4 = v13;
   v6 = v14;
   sub_14004A480((__int64)v11, (__int64)v10, a2, a3, a4);
-  sub_14004A1D0(a1, a2, (__int64)v11, (__int64)v10, v4, v6);
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v12);
+  return sub_14004A1D0(a1, a2, (__int64)v11, (__int64)v10, v4, v6); /* 0x14004A1A4: the result of this call is still in rax at the exit */
 }
 #undef v10
 #undef v11
@@ -7741,7 +7737,7 @@ __int64            sub_14004BFC0(__int16 a1, __int64 a2, float *a3, float *a4, f
     }
     while ( v10 < *(_DWORD *)(v8 + 64) );
   }
-  return sub_1401F8B20((unsigned __int64)&v53 ^ v70);
+  return 0; /* the function has no caller */
 }
 #undef v54
 #undef v55
@@ -8136,11 +8132,11 @@ __int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5)
   else
   {
     if ( (_DWORD)v13 )
-      return sub_1401F8B20((unsigned __int64)&v32 ^ v35);
+      return (unsigned int)-1; /* 0x14004CA7E: jne -> mov eax, 0xffffffff */
     v14 = 1760 * v8;
     v15 = v8;
     if ( (int)dword_140404A6C[1760 * v8 + 278845906] <= 0 )
-      return sub_1401F8B20((unsigned __int64)&v32 ^ v35);
+      return (unsigned int)-1; /* 0x14004CA9D: jle -> mov eax, 0xffffffff */
     v16 = dword_140404A6C[1760 * dword_140404A6C[v14 + 278845907] + 278846098];
   }
   if ( v16 != -1 )
@@ -8166,7 +8162,7 @@ __int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5)
         {
           v20 = *(_BYTE *)((int)v9 + a4 + 2);
           if ( v20 != 92 && v20 )
-            return sub_1401F8B20((unsigned __int64)&v32 ^ v35);
+            return (unsigned int)-1; /* 0x14004CB3A: jne -> mov eax, 0xffffffff */
           ++v17;
           *a3 = dword_140404A6C[2570 * v18 + 275753051 + 4 * *a3];
         }
@@ -8189,7 +8185,7 @@ __int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5)
           if ( v22 == 92 || v22 == 32 || !v22 )
             break;
           if ( v21 >= 12 )
-            return sub_1401F8B20((unsigned __int64)&v32 ^ v35);
+            return (unsigned int)-1; /* 0x14004CB9A: jge -> mov eax, 0xffffffff */
           v34[v21] = v22;
           LODWORD(v9) = v9 + 1;
           ++v21;
@@ -8201,12 +8197,12 @@ __int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5)
       }
       v34[v21] = 0;
       if ( v21 <= 0 )
-        break;
+        return 1; /* 0x14004CBC7: jle -> mov eax, 1 */
       v23 = 1;
       v24 = 2570 * v18;
       v25 = dword_140404A6C[2570 * v18 + 275753047];
       if ( v25 <= 1 )
-        break;
+        return 0; /* 0x14004CBE9: jle -> xor eax, eax */
       for ( j = (_DWORD *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + v24 * 4 + 1107225576); ; j += 4 )
       {
         if ( *j == *a3 )
@@ -8226,19 +8222,19 @@ __int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5)
             break;
         }
         if ( ++v23 >= v25 )
-          return sub_1401F8B20((unsigned __int64)&v32 ^ v35);
+          return 0; /* 0x14004CC31: jge -> xor eax, eax */
       }
       if ( v23 == -1 )
-        break;
+        return 0; /* 0x14004CC40: je -> xor eax, eax */
       *a3 = v23;
       if ( *(_BYTE *)(v17 + a4) != 92 )
-        break;
+        return 1; /* 0x14004CC4B: jne -> mov eax, 1 */
       v12 = v33;
       LODWORD(v9) = v9 + 1;
       ++v17;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v32 ^ v35);
+  return (unsigned int)-1; /* 0x14004CABE: je -> mov eax, 0xffffffff */
 }
 #undef v32
 #undef v33
@@ -8277,11 +8273,11 @@ __int64            sub_14004CCB0(int a1, int a2, __int64 a3)
   else
   {
     if ( a2 )
-      return sub_1401F8B20((unsigned __int64)&v16 ^ v17);
+      return 0; /* the function has no caller */
     v4 = a1;
     v5 = 1760LL * a1;
     if ( (int)dword_140404A6C[v5 + 278845906] <= 0 )
-      return sub_1401F8B20((unsigned __int64)&v16 ^ v17);
+      return 0; /* the function has no caller */
     v6 = dword_140404A6C[1760 * dword_140404A6C[v5 + 278845907] + 278846098];
   }
   if ( v6 != -1 )
@@ -8326,7 +8322,7 @@ __int64            sub_14004CCB0(int a1, int a2, __int64 a3)
       *(_QWORD *)&dword_140404A6C[18 * a2 + 278847172 + v5] = a3;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v16 ^ v17);
+  return 0; /* the function has no caller */
 }
 #undef v16
 #undef v17
@@ -8652,11 +8648,11 @@ __int64            sub_14004D390(int a1)
         *(_OWORD *)&dword_140404A6C[v6 + 134050369] = v8;
       }
     }
-    return sub_1401F8B20((unsigned __int64)v24 ^ v26);
+    return 0; /* the function has no caller */
   }
 LABEL_5:
   if ( (int)dword_140404A6C[134050358] >= 0x7FFF )
-    return sub_1401F8B20((unsigned __int64)v24 ^ v26);
+    return 0; /* the function has no caller */
   v10 = &dword_140404A6C[28 * dword_140404A6C[134050358] + 134050359];
   v11 = 3597 * v2;
   *(_OWORD *)v10 = 0;
@@ -8723,7 +8719,7 @@ LABEL_29:
   dword_140404A6C[28 * dword_140404A6C[134050358] + 134050380] = rand() % 3;
   dword_140404A6C[28 * dword_140404A6C[134050358] + 134050381] = rand() & 7;
   dword_140404A6C[28 * dword_140404A6C[134050358]++ + 134050382] = rand() & 3;
-  return sub_1401F8B20((unsigned __int64)v24 ^ v26);
+  return 0; /* the function has no caller */
 }
 #undef v24
 #undef v25
@@ -13179,14 +13175,14 @@ __int64 sub_140056980()
   sub_140026E70();
   sub_140010110();
   srand(0);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   sub_1400EDED0(dword_140404A6C[283827814], "concrete2.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   sub_1400EDED0(dword_140404A6C[283827815], "concrete2_material.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   v0 = 0;
   sub_1400EDED0(dword_140404A6C[283827818], "asphalt2.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   sub_1400EDED0(dword_140404A6C[283827819], "asphalt2_material.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
   v1 = dword_140404A6C[293512634];
   v2 = dword_140404A6C[421784473];
@@ -13219,14 +13215,14 @@ __int64 sub_140056980()
           sub_140138590(v11, 0, 0x2901u, 0x2901u, 0x2601u, 0x2601u, 255, 64, 128, 0);
         else
           sub_1400EE0A0(v11, v10, *(_QWORD *)&dword_140404A6C[v8 + 421784757], 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-        (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+        (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
         v12 = dword_140404A6C[v8 + 421784759];
         v13 = dword_140404A6C[2 * v9 + 283827815];
         if ( v12 <= 0 )
           sub_140138590(v13, 0, 0x2901u, 0x2901u, 0x2601u, 0x2601u, 32, 192, 0, 0);
         else
           sub_1400EE0A0(v13, v12, *(_QWORD *)&dword_140404A6C[v8 + 421784761], 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-        (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+        (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
         dword_140404A6C[dword_140404A6C[421784474] + 421784475] = dword_140404A6C[421784253];
         v1 = dword_140404A6C[293512634];
         v2 = dword_140404A6C[421784253] + 1;
@@ -14938,7 +14934,6 @@ LABEL_45:
       if ( (int)++v7 >= v43 )
       {
         dword_140404A6C[487148677] = v15 + 1;
-        sub_1401F8B20((unsigned __int64)&v38 ^ v48);
         return;
       }
     }
@@ -15953,7 +15948,7 @@ __int64            sub_14005A990(__int64 a1, int a2, __int64 a3)
       while ( v18 < v45 );
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v40 ^ v51);
+  return 0; /* the function has no caller */
 }
 #undef v40
 #undef v41
@@ -16410,7 +16405,6 @@ LABEL_59:
   }
   while ( v37 < v69 );
   ++dword_140404A6C[487148677];
-  sub_1401F8B20((unsigned __int64)&v63 ^ v79);
 }
 #undef v63
 #undef v64
@@ -17087,7 +17081,7 @@ LABEL_14:
     }
     while ( v3 < (int)dword_140404A6C[v11 + 486132853] );
   }
-  return sub_1401F8B20((unsigned __int64)&v25 ^ v32);
+  return 0; /* the function has no caller */
 }
 #undef v25
 #undef v26
@@ -17974,7 +17968,7 @@ LABEL_20:
     }
     while ( v3 > 0 );
   }
-  return sub_1401F8B20((unsigned __int64)&v29 ^ v31);
+  return 0; /* the function has no caller */
 }
 #undef v29
 #undef v30

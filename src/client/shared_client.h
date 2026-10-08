@@ -731,7 +731,7 @@ double            sub_140072760(int a1, double a2, double a3);
 
 double            sub_1400729D0(int a1, double a2, float a3);
 
-double            sub_140072A90(int a1, double a2, __int64 a3);
+double            sub_140072A90(int a1, double a2, double a3);
 
 double            sub_140072CA0(int a1, double a2, double a3);
 
@@ -741,7 +741,7 @@ double            sub_140073430(int a1, double a2, double a3);
 
 double            sub_140073860(int a1, double a2, double a3);
 
-__int64            sub_140073C40(int a1, double a2, __int64 a3);
+__int64            sub_140073C40(int a1, double a2, double a3);
 
 double            sub_140073D90(int a1, double a2, double a3);
 
@@ -753,7 +753,7 @@ __int64            sub_1400745F0(unsigned int a1);
 
 __int64            sub_140074C50(int a1, float a2);
 
-double            sub_140074CE0(int a1, int a2);
+float            sub_140074CE0(int a1, int a2);
 
 void sub_140074E50();
 
@@ -877,7 +877,7 @@ void input_poll_events_candidate();
 
 __int64            sub_14007D0B0(int *a1, unsigned __int16 a2);
 
-__int64            sub_14007D230(__int64 a1, __int64 a2, __int64 a3);
+__int64            sub_14007D230(float a1, float a2);
 
 __int64            sub_14007D320(unsigned int *a1, __int64 a2, __int64 a3);
 
@@ -893,7 +893,7 @@ __int64 sub_14007D710();
 
 __int64 sub_14007D930();
 
-void            sub_14007DDF0(__int64 a1, __int64 a2, __int64 a3);
+void            sub_14007DDF0(float *a1, float *a2);
 
 __int64            sub_14007E010(unsigned int *a1, _DWORD *a2, float a3, float a4, float a5, unsigned int a6, unsigned int a7, unsigned int a8);
 
@@ -937,7 +937,7 @@ void            sub_140081DA0(float a1, float a2, double a3, float a4, unsigned 
 
 void            sub_140081F20(float a1, float a2, double a3, float a4, unsigned int a5, unsigned int a6, unsigned int a7);
 
-__int64            sub_140082110(__int64 a1, __int64 a2, double a3, float a4);
+__int64            sub_140082110(float a1, float a2, float a3, float a4);
 
 __int64 sub_140082420();
 
@@ -951,7 +951,7 @@ void            ui_draw_hud_menu_prompt_candidate(int a1);
 
 __int64            sub_140087810(int a1, int a2);
 
-void            sub_140088000(float a1, __int64 a2, __int64 a3, float a4, unsigned int a5, unsigned int a6, unsigned int a7, unsigned int a8);
+void            sub_140088000(float a1, float a2, float a3, float a4, unsigned int a5, unsigned int a6, unsigned int a7, unsigned int a8);
 
 double            sub_140088130(int a1);
 
@@ -981,9 +981,9 @@ __int64            sub_14008CEB0(float *a1, float *a2, float *a3, float *a4, flo
 
 __int64            sub_14008D150(int a1, float *a2, float *a3);
 
-void            sub_14008D280(__int64 a1, __int64 a2, __int64 a3, __int64 a4, unsigned int a5, unsigned int a6, unsigned int a7);
+void            sub_14008D280(float *a1, float a2, float a3, float a4, float a5, float a6, float a7);
 
-void            sub_14008D560(__int64 a1, __int64 a2, __int64 a3, float a4, unsigned int a5);
+void            sub_14008D560(float *a1, float a2, float a3, float a4, float a5);
 
 __int64 sub_14008D800();
 
@@ -1185,7 +1185,7 @@ __int64            sub_1400A7620(     __m128i *a1);
 
 void sub_1400A77C0(float a1, float a2, float a3, float a4, float a5);
 
-void            sub_1400A7A40(float a1, __int64 a2, __int64 a3, float a4, float a5);
+void            sub_1400A7A40(float a1, float a2, float a3, float a4, float a5);
 
 __int64            sub_1400A7C70(int a1, float a2, float a3);
 
@@ -1675,7 +1675,7 @@ void sub_1400FE5D0();
 
 void sub_1400FE760();
 
-__int64            sub_1400FE870(__int64 a1, int a2, __int64 a3, double a4, float a5, float a6, char a7);
+__int64            sub_1400FE870(__int64 a1, int a2, double a3, double a4, float a5, float a6, char a7);
 
 void ui_build_options_menu_candidate();
 
@@ -2776,9 +2776,9 @@ __int64            sub_140183B30(__int64 a1, int a2);
 
 void            sub_140183BF0(float *a1, int a2);
 
-__int64            sub_140183DC0(__int64 a1, int *a2, int a3, int a4, float a5, float a6, float a7, float a8, float a9, float a10, float a11, int a12);
+__int64            sub_140183DC0(__int64 a1, int *a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, float a10, float a11, int a12);
 
-__int64            sub_140184190(__int64 a1, int *a2, int a3, int a4, float a5, float a6, float a7, float a8, float a9, int a10);
+__int64            sub_140184190(__int64 a1, int *a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, int a10);
 
 __int64            sub_1401843E0(__int64 a1, int a2, int a3, int a4, unsigned int a5);
 
@@ -2800,11 +2800,11 @@ float            sub_1401872F0(int a1, float a2, float a3, float a4, float a5, f
 
 _BOOL8            sub_140187410(float *a1, float *a2, float *a3, float *a4, float *a5);
 
-void            sub_140187860(int a1, __int64 a2, __int64 a3, float a4);
+void            sub_140187860(int a1, float a2, float a3, float a4);
 
-void            sub_140187A40(_BYTE *a1, __int64 a2, __int64 a3, float a4, float a5);
+void            sub_140187A40(_BYTE *a1, __int64 a2, float a3, float a4, float a5);
 
-void            sub_140187C70(__int64 a1, __int64 a2, __int64 a3, float a4, float a5);
+void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float a5);
 
 __m128i *           sub_1401880C0(     __m128i *a1, unsigned int a2);
 
@@ -3147,7 +3147,7 @@ __int64            sub_1401A5C90(float a1, __int64 a2, __int64 a3, signed int a4
 
 __int64            sub_1401A5D70(__int64 a1, signed int a2, int a3, signed int a4, int a5, int a6);
 
-__int64            sub_1401A6000(float *a1, _DWORD *a2, int a3, int a4);
+float            sub_1401A6000(float *a1, _DWORD *a2, int a3, int a4);
 
 __int64            sub_1401A65D0(float *a1, unsigned int a2, int a3, int a4, int a5, _DWORD *a6, float a7, int a8);
 
@@ -3511,7 +3511,7 @@ __int64            sub_1401CDE70(__int64 a1, int a2, float a3);
 
 __int64            sub_1401CDF20(     __m128i *a1, int a2);
 
-__int64            sub_1401CE180(__int64 a1, __int64 a2, int a3);
+float            sub_1401CE180(__int64 a1, __int64 a2, int a3);
 
 __int64            sub_1401CE410(__int64 a1, __int64 a2, unsigned int a3);
 
@@ -3521,7 +3521,7 @@ __int64 sub_1401CE5E0();
 
 __int64            sub_1401CFF30(__int64 a1, __int64 a2, int a3, int a4);
 
-__int64            sub_1401D0150(__int64 a1, __int64 a2, float a3, int a4, int a5, int a6);
+float            sub_1401D0150(__int64 a1, __int64 a2, float a3, int a4, int a5, int a6);
 
 __int64            sub_1401D0C90(__int64 a1, float a2, int a3);
 
@@ -4601,7 +4601,7 @@ void           __attribute__((noreturn)) sub_14020B0A4(void *pExceptionObject, _
 
 double            sub_14020B144(double result, int *a2);
 
-__int64            sub_14020B23C(double a1, int a2);
+double            sub_14020B23C(double a1, int a2);
 
 void            unknown_libname_1010(void **a1);
 
@@ -6238,19 +6238,19 @@ __int64            sub_14023E6F8(__m128i *a1, unsigned __int64 a2,      __m128i 
  // weak
 double         acos(double X);
 
-void            unknown_libname_734(__int64 a1, char a2);
+double            unknown_libname_734(double a1, char a2);
 
-double            sub_14023EB20(double result);
+float            sub_14023EB20(float a1);
 
-void            unknown_libname_735(__int64 a1, char a2);
+double            unknown_libname_735(double a1, char a2);
 
 double            sub_14023EDE4(double result, double a2);
 
-void            unknown_libname_736(__int64 a1, char a2);
+double            unknown_libname_736(double a1, char a2);
 
 float            sub_14023F704(float result, float a2);
 
-void            unknown_libname_737(__int64 a1, char a2);
+double            unknown_libname_737(double a1, char a2);
 
 double         cos(double X);
 
@@ -6774,9 +6774,9 @@ __int64            set_doserrno(int a1);
 __int64            set_errno(int a1);
 
 // __int64 __fastcall errcode(char a1);
-__int64            except1(unsigned int a1, int a2, double a3, double a4, __int64 a5);
+double            except1(unsigned int a1, int a2, double a3, double a4, __int64 a5);
 
-__int64            except2(unsigned int a1, int a2, double a3, double a4, double a5, __int64 a6);
+double            except2(unsigned int a1, int a2, double a3, double a4, double a5, __int64 a6);
 
 __int64            handle_exc(unsigned int a1, double *a2, __int16 a3);
 
@@ -7458,9 +7458,9 @@ _BOOL8            exception_enabled(char a1, __int16 a2);
 // float __fastcall handle_nanf(int a1);
 __int64 sub_14025C460();
 
-__int64            sub_14025C4F0(double a1);
+double            sub_14025C4F0(double a1);
 
-__int64            sub_14025C840(double _XMM0_8);
+double            sub_14025C840(double _XMM0_8);
 
 // double __fastcall cos_special(double a1);
 // float __fastcall cosf_special(float a1);
@@ -7476,7 +7476,7 @@ float            expf_special(float a1, float a2, int a3);
 
 __m128            pow_special(double a1, double a2, double a3, unsigned int a4);
 
-double            powf_special(double result, float a2, double a3, unsigned int a4);
+float            powf_special(float a1, float a2, float a3, unsigned int a4);
 
 double            log10_special(double a1, double a2, int a3);
 
@@ -8430,7 +8430,7 @@ extern _UNKNOWN unk_14026E8C0;
  // weak
 extern _UNKNOWN unk_14026E8D1;
  // weak
-extern _UNKNOWN unk_14026E8E8;
+extern unsigned char unk_14026E8E8[40];
  // weak
 extern _UNKNOWN unk_14026E910;
  // weak
@@ -8474,7 +8474,7 @@ extern unsigned __int8 byte_140270010[40];
  // weak
 extern char Parameters[7];
  // weak
-extern _UNKNOWN unk_140272D00;
+extern unsigned char unk_140272D00[2324];
  // weak
 extern int dword_140273614;
  // weak
@@ -9266,7 +9266,7 @@ extern __int64 (           *off_140284790)(pairNode *         this);
  // weak
 extern _BYTE byte_1402847B0[256];
  // weak
-extern _UNKNOWN off_1402848C0;
+extern _UNKNOWN **off_1402848C0[2];
  // weak
 extern _UNKNOWN **off_1402848D0;
  // weak
@@ -9274,21 +9274,21 @@ extern _UNKNOWN **off_1402848F0;
  // weak
 extern __int16 *off_140284900[3];
  // weak
-extern _UNKNOWN unk_1402849C0;
+extern unsigned char unk_1402849C0[24];
  // weak
-extern _UNKNOWN unk_1402849D8;
+extern unsigned char unk_1402849D8[16];
  // weak
-extern _UNKNOWN unk_1402849E8;
+extern unsigned char unk_1402849E8[24];
  // weak
-extern _UNKNOWN unk_140284A00;
+extern unsigned char unk_140284A00[24];
  // weak
-extern _UNKNOWN unk_140284A18;
+extern unsigned char unk_140284A18[40];
  // weak
 extern char byte_140284A40[32];
  // weak
-extern _UNKNOWN unk_140284A60;
+extern __int128 unk_140284A60;
  // weak
-extern _UNKNOWN unk_140284A70;
+extern __int128 unk_140284A70;
  // weak
 extern _UNKNOWN unk_140284A88;
  // weak
@@ -9296,11 +9296,11 @@ extern _UNKNOWN unk_140284AA8;
  // weak
 extern _UNKNOWN unk_140284AB0;
  // weak
-extern _UNKNOWN unk_140284B00;
+extern __int128 unk_140284B00;
  // weak
-extern _UNKNOWN unk_140284B10;
+extern __int128 unk_140284B10;
  // weak
-extern _UNKNOWN unk_140284B20;
+extern __int128 unk_140284B20;
  // weak
 extern void *(           *off_140284BA0)(CMenuHash *         this, unsigned int);
  // weak
@@ -9310,7 +9310,7 @@ extern unsigned __int8 byte_140284C00[96];
  // weak
 extern unsigned __int8 byte_140284C60[96];
  // weak
-extern _UNKNOWN unk_140284CE0;
+extern unsigned char unk_140284CE0[2320];
  // weak
 extern __int16 word_1402855F0[1];
  // weak
@@ -9322,17 +9322,17 @@ extern int dword_140285688[10];
  // weak
 extern _BYTE byte_140285820[120];
  // weak
-extern _UNKNOWN unk_140285898;
+extern unsigned char unk_140285898[8];
  // weak
-extern _UNKNOWN unk_1402858A0;
+extern unsigned char unk_1402858A0[8];
  // weak
-extern _UNKNOWN unk_1402858A8;
+extern unsigned char unk_1402858A8[16];
  // weak
-extern _UNKNOWN unk_1402858B8;
+extern unsigned char unk_1402858B8[12];
  // weak
-extern _UNKNOWN unk_1402858C4;
+extern unsigned char unk_1402858C4[8];
  // weak
-extern _UNKNOWN unk_1402858CC;
+extern unsigned char unk_1402858CC[8];
  // weak
 extern _BYTE byte_1402858D4[96];
  // weak
@@ -9340,7 +9340,7 @@ extern _BYTE byte_140285934[244];
  // weak
 extern __int16 asc_140285E10[2];
  // weak
-extern _UNKNOWN unk_140285E18;
+extern unsigned char unk_140285E18[280];
  // weak
 extern double qword_140285F30[242];
  // weak
@@ -9382,7 +9382,7 @@ extern __int128 xmmword_140288E60;
  // weak
 extern double dbl_140288E70[258];
  // weak
-extern _UNKNOWN unk_1402899C0;
+extern unsigned char unk_1402899C0[128];
  // weak
 extern __int128 xmmword_140289A40;
  // weak
@@ -9410,7 +9410,7 @@ extern __m128i xmmword_140289E60[12];
  // weak
 extern _UNKNOWN *off_140289FB0;
  // weak
-extern _UNKNOWN unk_14028A0F0;
+extern unsigned char unk_14028A0F0[128];
  // weak
 extern _UNKNOWN *off_14028A180;
  // weak
@@ -9424,9 +9424,9 @@ extern _UNKNOWN unk_14028A430;
  // weak
 extern _DWORD dword_14028A600;
  // weak
-extern _UNKNOWN unk_14028A604;
+extern unsigned char unk_14028A604[4];
  // weak
-extern _UNKNOWN unk_14028A608;
+extern unsigned char unk_14028A608[232];
  // weak
 extern __int16 sr_api_module_name_0[32];
 
@@ -9474,41 +9474,41 @@ extern unsigned int dword_14028ABF8;
  // weak
 extern unsigned int dword_14028ABFC;
  // weak
-extern _UNKNOWN unk_14028AC10;
+extern unsigned char unk_14028AC10[24];
  // weak
-extern _UNKNOWN unk_14028AC28;
+extern unsigned char unk_14028AC28[32];
  // weak
-extern _UNKNOWN unk_14028AC48;
+extern unsigned char unk_14028AC48[8];
  // weak
-extern _UNKNOWN unk_14028AC50;
+extern unsigned char unk_14028AC50[8];
  // weak
-extern _UNKNOWN unk_14028AC58;
+extern unsigned char unk_14028AC58[8];
  // weak
-extern _UNKNOWN unk_14028AC60;
+extern unsigned char unk_14028AC60[8];
  // weak
-extern _UNKNOWN unk_14028AC68;
+extern unsigned char unk_14028AC68[24];
  // weak
-extern _UNKNOWN unk_14028AC80;
+extern unsigned char unk_14028AC80[96];
  // weak
-extern _UNKNOWN unk_14028ACE0;
+extern unsigned char unk_14028ACE0[24];
  // weak
-extern _UNKNOWN unk_14028ACF8;
+extern unsigned char unk_14028ACF8[36];
  // weak
 extern unsigned int dword_14028AD1C;
  // weak
-extern _UNKNOWN unk_14028AD40;
+extern unsigned char unk_14028AD40[24];
  // weak
-extern _UNKNOWN unk_14028AD58;
+extern unsigned char unk_14028AD58[40];
  // weak
-extern _UNKNOWN unk_14028AD80;
+extern unsigned char unk_14028AD80[80];
  // weak
-extern _UNKNOWN unk_14028ADD0;
+extern unsigned char unk_14028ADD0[32];
  // weak
-extern _UNKNOWN unk_14028ADF0;
+extern unsigned char unk_14028ADF0[24];
  // weak
-extern _UNKNOWN unk_14028AE08;
+extern unsigned char unk_14028AE08[32];
  // weak
-extern _UNKNOWN unk_14028AE28;
+extern unsigned char unk_14028AE28[132];
  // weak
 extern unsigned int dword_14028AEAC;
  // weak
@@ -9526,7 +9526,7 @@ extern unsigned int dword_14028AF24;
  // weak
 extern unsigned int dword_14028AF4C;
  // weak
-extern _UNKNOWN unk_14028AF70;
+extern unsigned char unk_14028AF70[32];
  // weak
 extern _UNKNOWN unk_14028AF90;
  // weak
@@ -9557,7 +9557,7 @@ extern int dword_14028BF4C[1];
  // weak
 extern int dword_14028BF50[16];
  // weak
-extern _UNKNOWN unk_14028C170;
+extern unsigned char unk_14028C170[640];
  // weak
 extern double dbl_14028C3F0[64];
  // weak
@@ -9575,7 +9575,7 @@ extern double dbl_14028E250[258];
  // weak
 extern double dbl_14028EA60[257];
  // weak
-extern _UNKNOWN off_14028F270;
+extern __int16 *off_14028F270;
  // weak
 extern __int16 *off_14028F2D0;
  // weak
@@ -9595,7 +9595,7 @@ extern char byte_140293702[1];
  // weak
 extern char byte_140293703[149];
  // weak
-extern _UNKNOWN unk_140293798;
+extern unsigned char unk_140293798[40];
  // weak
 extern _UNKNOWN unk_1402937C0;
  // weak
@@ -9623,7 +9623,7 @@ extern int dword_1402B23DC;
  // weak
 extern char *off_1402B23E0[6];
  // weak
-extern _UNKNOWN unk_1402B2410;
+extern unsigned char unk_1402B2410[320];
  // weak
 extern int dword_1402B2550[1];
  // weak
@@ -9647,7 +9647,7 @@ extern int dword_1402B2664[1];
  // weak
 extern int dword_1402B2668[22];
  // weak
-extern _UNKNOWN unk_1402B26C0;
+extern int unk_1402B26C0;
  // weak
 extern char byte_1402B26C3;
  // weak
@@ -9727,11 +9727,11 @@ extern char *off_1402B2C88;
  // weak
 extern float flt_1402B2C90[13];
  // weak
-extern _UNKNOWN unk_1402B2CC4;
+extern unsigned char unk_1402B2CC4[48];
  // weak
 extern float flt_1402B2CF4[479];
  // weak
-extern _UNKNOWN unk_1402B3470;
+extern unsigned char unk_1402B3470[976];
  // weak
 extern int dword_1402B34F0[1];
  // weak
@@ -10015,7 +10015,7 @@ extern int dword_1402F619C;
  // weak
 extern int dword_1402F61A0;
  // weak
-extern _UNKNOWN unk_1402F61A8;
+extern unsigned char unk_1402F61A8[12];
  // weak
 extern int dword_1402F61B4;
  // weak
@@ -10260,7 +10260,7 @@ extern _UNKNOWN unk_1403029E0;
  // weak
 extern _UNKNOWN unk_1403029F0;
  // weak
-extern _UNKNOWN unk_140302A00;
+extern unsigned char unk_140302A00[224];
  // weak
 extern _UNKNOWN *off_140302AE0;
  // weak
@@ -10276,7 +10276,7 @@ extern _UNKNOWN *off_140302B08;
  // weak
 extern _UNKNOWN *off_140302B10;
  // weak
-extern _UNKNOWN off_140302B18;
+extern _UNKNOWN *off_140302B18;
  // weak
 extern _UNKNOWN *off_140302B20;
  // weak
@@ -11168,9 +11168,9 @@ extern __int128 xmmword_1B476E800;
  // weak
 extern __int128 xmmword_1B476E810;
  // weak
-extern _UNKNOWN unk_1B476E900;
+extern unsigned char unk_1B476E900[49664];
  // weak
-extern _UNKNOWN unk_1B477AB00;
+extern unsigned char unk_1B477AB00[16512];
  // weak
 extern __int128 xmmword_1B477EB80;
  // weak
@@ -11214,9 +11214,9 @@ extern __int128 xmmword_1B477F300;
  // weak
 extern __int128 xmmword_1B477F340;
  // weak
-extern _UNKNOWN unk_1B477F500;
+extern unsigned char unk_1B477F500[3072];
  // weak
-extern _UNKNOWN unk_1B4780100;
+extern unsigned char unk_1B4780100[4096];
  // weak
 extern __int128 xmmword_1B4781100;
  // weak
@@ -11252,9 +11252,9 @@ extern __int128 xmmword_1B4781580;
  // weak
 extern __int128 xmmword_1B47815C0;
  // weak
-extern _UNKNOWN unk_1B4781700;
+extern unsigned char unk_1B4781700[49664];
  // weak
-extern _UNKNOWN unk_1B478D900;
+extern unsigned char unk_1B478D900[16512];
  // weak
 extern __int128 xmmword_1B4791980;
  // weak
@@ -13344,7 +13344,6 @@ void sub_14003A0F0()
 //----- (000000014003B920) ----------------------------------------------------
 int sub_14003B920(int process_input)
 ;
- /* recovered in client_native_gaps.s */
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (000000014003C6F0) ----------------------------------------------------
@@ -13524,7 +13523,6 @@ __int64            sub_14003FB90(int a1, float a2, float a3, float a4, float a5,
 //----- (00000001400403F0) ----------------------------------------------------
 void            sub_1400403F0()
 ;
- /* recovered in client_native_gaps.s */
 // 14004040A: control flows out of bounds to 14003B9E9
 // 1400403F7: control flows out of bounds to 14003B9F7
 // 1400403F7: variable 'v0' is possibly undefined
@@ -15465,7 +15463,7 @@ double            sub_1400729D0(int a1, double a2, float a3)
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140072A90) ----------------------------------------------------
-double            sub_140072A90(int a1, double a2, __int64 a3)
+double            sub_140072A90(int a1, double a2, double a3)
 ;
 
 // 140072ACD: variable 'v3' is possibly undefined
@@ -15492,7 +15490,7 @@ double sub_140073860(int a1,double a2,double a3)
 
 
 //----- (0000000140073C40) ----------------------------------------------------
-__int64            sub_140073C40(int a1, double a2, __int64 a3)
+__int64            sub_140073C40(int a1, double a2, double a3)
 ;
 
 // 140073CDF: variable 'v3' is possibly undefined
@@ -15542,7 +15540,7 @@ __int64            sub_140074C50(int a1, float a2)
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140074CE0) ----------------------------------------------------
-double            sub_140074CE0(int a1, int a2)
+float            sub_140074CE0(int a1, int a2)
 ;
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -16254,7 +16252,7 @@ __int64            sub_14007D0B0(int *a1, unsigned __int16 a2)
 // 1402B3840: using guessed type int dword_1402B3840[68174];
 
 //----- (000000014007D230) ----------------------------------------------------
-__int64            sub_14007D230(__int64 a1, __int64 a2, __int64 a3)
+__int64            sub_14007D230(float a1, float a2)
 ;
 
 // 14007D27D: variable 'v3' is possibly undefined
@@ -16357,7 +16355,7 @@ __int64 sub_14007D930()
 // 1AD04ADD0: using guessed type unsigned int;
 
 //----- (000000014007DDF0) ----------------------------------------------------
-void            sub_14007DDF0(__int64 a1, __int64 a2, __int64 a3)
+void            sub_14007DDF0(float *a1, float *a2)
 ;
 
 // 14007DE4D: variable 'v4' is possibly undefined
@@ -16809,7 +16807,7 @@ void            sub_140081F20(
 // 1AD29945C: using guessed type unsigned int;
 
 //----- (0000000140082110) ----------------------------------------------------
-__int64            sub_140082110(__int64 a1, __int64 a2, double a3, float a4)
+__int64            sub_140082110(float a1, float a2, float a3, float a4)
 ;
 
 // 1400821B2: variable 'v5' is possibly undefined
@@ -17022,8 +17020,8 @@ __int64            sub_140087810(int a1, int a2)
 //----- (0000000140088000) ----------------------------------------------------
 void            sub_140088000(
         float a1,
-        __int64 a2,
-        __int64 a3,
+        float a2,
+        float a3,
         float a4,
         unsigned int a5,
         unsigned int a6,
@@ -17246,14 +17244,7 @@ __int64            sub_14008D150(int a1, float *a2, float *a3)
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (000000014008D280) ----------------------------------------------------
-void            sub_14008D280(
-        __int64 a1,
-        __int64 a2,
-        __int64 a3,
-        __int64 a4,
-        unsigned int a5,
-        unsigned int a6,
-        unsigned int a7)
+void            sub_14008D280(float *a1, float a2, float a3, float a4, float a5, float a6, float a7)
 ;
 
 // 14008D328: variable 'v8' is possibly undefined
@@ -17338,7 +17329,7 @@ void            sub_14008D280(
 // 1AD29945C: using guessed type unsigned int;
 
 //----- (000000014008D560) ----------------------------------------------------
-void            sub_14008D560(__int64 a1, __int64 a2, __int64 a3, float a4, unsigned int a5)
+void            sub_14008D560(float *a1, float a2, float a3, float a4, float a5)
 ;
 
 // 14008D56F: variable 'v5' is possibly undefined
@@ -19217,7 +19208,7 @@ void sub_1400A77C0(float a1, float a2, float a3, float a4, float a5)
 // 1AD05944C: using guessed type unsigned int;
 
 //----- (00000001400A7A40) ----------------------------------------------------
-void            sub_1400A7A40(float a1, __int64 a2, __int64 a3, float a4, float a5)
+void            sub_1400A7A40(float a1, float a2, float a3, float a4, float a5)
 ;
 
 // 1400A7A73: variable 'v6' is possibly undefined
@@ -22257,7 +22248,7 @@ void sub_1400FE760()
 
 //----- (00000001400FE870) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
-__int64            sub_1400FE870(__int64 a1, int a2, __int64 a3, double a4, float a5, float a6, char a7)
+__int64            sub_1400FE870(__int64 a1, int a2, double a3, double a4, float a5, float a6, char a7)
 ;
 
 // 1400FE870: inconsistent variable size for 'xmm3_8.8'
@@ -29214,8 +29205,8 @@ void            sub_140183BF0(float *a1, int a2)
 __int64            sub_140183DC0(
         __int64 a1,
         int *a2,
-        int a3,
-        int a4,
+        float a3,
+        float a4,
         float a5,
         float a6,
         float a7,
@@ -29235,8 +29226,8 @@ __int64            sub_140183DC0(
 __int64            sub_140184190(
         __int64 a1,
         int *a2,
-        int a3,
-        int a4,
+        float a3,
+        float a4,
         float a5,
         float a6,
         float a7,
@@ -29312,7 +29303,7 @@ _BOOL8            sub_140187410(float *a1, float *a2, float *a3, float *a4, floa
 
 
 //----- (0000000140187860) ----------------------------------------------------
-void            sub_140187860(int a1, __int64 a2, __int64 a3, float a4)
+void            sub_140187860(int a1, float a2, float a3, float a4)
 ;
 
 // 14018788A: variable 'v4' is possibly undefined
@@ -29336,7 +29327,7 @@ void            sub_140187860(int a1, __int64 a2, __int64 a3, float a4)
 // 1AD299464: using guessed type unsigned int;
 
 //----- (0000000140187A40) ----------------------------------------------------
-void            sub_140187A40(_BYTE *a1, __int64 a2, __int64 a3, float a4, float a5)
+void            sub_140187A40(_BYTE *a1, __int64 a2, float a3, float a4, float a5)
 ;
 
 // 140187B3F: variable 'v5' is possibly undefined
@@ -29359,7 +29350,7 @@ void            sub_140187A40(_BYTE *a1, __int64 a2, __int64 a3, float a4, float
 // 1AD299464: using guessed type unsigned int;
 
 //----- (0000000140187C70) ----------------------------------------------------
-void            sub_140187C70(__int64 a1, __int64 a2, __int64 a3, float a4, float a5)
+void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float a5)
 ;
 
 // 140187DA5: variable 'v5' is possibly undefined
@@ -31226,7 +31217,7 @@ __int64            sub_1401A5D70(__int64 a1, signed int a2, int a3, signed int a
 // 1402821F0: using guessed type _DWORD dword_1402821F0[3];
 
 //----- (00000001401A6000) ----------------------------------------------------
-__int64            sub_1401A6000(float *a1, _DWORD *a2, int a3, int a4)
+float            sub_1401A6000(float *a1, _DWORD *a2, int a3, int a4)
 ;
 
 
@@ -32500,7 +32491,7 @@ __int64            sub_1401CDF20(     __m128i *a1, int a2)
 // 140279870: using guessed type __int128 xmmword_140279870;
 
 //----- (00000001401CE180) ----------------------------------------------------
-__int64            sub_1401CE180(__int64 a1, __int64 a2, int a3)
+float            sub_1401CE180(__int64 a1, __int64 a2, int a3)
 ;
 
 
@@ -32526,7 +32517,7 @@ __int64            sub_1401CFF30(__int64 a1, __int64 a2, int a3, int a4)
 
 
 //----- (00000001401D0150) ----------------------------------------------------
-__int64            sub_1401D0150(__int64 a1, __int64 a2, float a3, int a4, int a5, int a6)
+float            sub_1401D0150(__int64 a1, __int64 a2, float a3, int a4, int a5, int a6)
 ;
 
 
@@ -36579,7 +36570,7 @@ double            sub_14020B144(double result, int *a2)
 
 
 //----- (000000014020B23C) ----------------------------------------------------
-__int64            sub_14020B23C(double a1, int a2)
+double            sub_14020B23C(double a1, int a2)
 ;
 
 
@@ -40163,7 +40154,6 @@ __int64            sub_140230010(_DWORD *a1, unsigned int a2, unsigned __int8 a3
 //----- (000000014023023C) ----------------------------------------------------
 __int64            sub_14023023C(_DWORD *a1, __crt_strtox__floating_point_value *a2)
 ;
- /* recovered in client_native_gaps.s */
 // 140231940: control flows out of bounds to 140231947
 // 140231BF3: conditional instruction was optimized away because r9d.4<73u
 // 140231DDA: conditional instruction was optimized away because ebx.4<73u
@@ -42140,12 +42130,12 @@ double         acos(double X)
 //----- (000000014023EAC0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
-void            unknown_libname_734(__int64 a1, char a2)
+double            unknown_libname_734(double a1, char a2)
 ;
 
 
 //----- (000000014023EB20) ----------------------------------------------------
-double            sub_14023EB20(double result)
+float            sub_14023EB20(float a1)
 ;
 
 // 140279870: using guessed type __int128 xmmword_140279870;
@@ -42153,7 +42143,7 @@ double            sub_14023EB20(double result)
 //----- (000000014023ED84) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
-void            unknown_libname_735(__int64 a1, char a2)
+double            unknown_libname_735(double a1, char a2)
 ;
 
 
@@ -42167,7 +42157,7 @@ double            sub_14023EDE4(double result, double a2)
 //----- (000000014023F6A4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
-void            unknown_libname_736(__int64 a1, char a2)
+double            unknown_libname_736(double a1, char a2)
 ;
 
 
@@ -42180,7 +42170,7 @@ float            sub_14023F704(float result, float a2)
 //----- (000000014023FC08) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
-void            unknown_libname_737(__int64 a1, char a2)
+double            unknown_libname_737(double a1, char a2)
 ;
 
 
@@ -44187,12 +44177,12 @@ __int64            errcode(char a1)
 
 
 //----- (000000014024D310) ----------------------------------------------------
-__int64            except1(unsigned int a1, int a2, double a3, double a4, __int64 a5)
+double            except1(unsigned int a1, int a2, double a3, double a4, __int64 a5)
 ;
 
 
 //----- (000000014024D404) ----------------------------------------------------
-__int64            except2(unsigned int a1, int a2, double a3, double a4, double a5, __int64 a6)
+double            except2(unsigned int a1, int a2, double a3, double a4, double a5, __int64 a6)
 ;
 
 
@@ -44234,7 +44224,7 @@ double            umatherr(int a1, int a2, double a3, double a4, double a5, __in
 // 14028A600: using guessed type _DWORD dword_14028A600;
 
 //----- (000000014024DC68) ----------------------------------------------------
-void            decomp_sr(double a1, int *a2)
+double            decomp_sr(double a1, int *a2)
 ;
 
 
@@ -46612,7 +46602,7 @@ _BOOL8            exception_enabled(char a1, __int16 a2)
 
 
 //----- (000000014025C1D0) ----------------------------------------------------
-__int64            handle_error(
+double            handle_error(
         __int64 a1,
         __int16 a2,
         __int64 a3,
@@ -46626,7 +46616,7 @@ __int64            handle_error(
 
 
 //----- (000000014025C2F8) ----------------------------------------------------
-__int64            handle_errorf(
+float            handle_errorf(
         __int64 a1,
         __int16 a2,
         int a3,
@@ -46654,13 +46644,13 @@ __int64 sub_14025C460(void) ;
 
 
 //----- (000000014025C4F0) ----------------------------------------------------
-__int64            sub_14025C4F0(double a1)
+double            sub_14025C4F0(double a1)
 ;
  /* recovered in client_native_gaps.s */
 
 //----- (000000014025C840) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
-__int64            sub_14025C840(double _XMM0_8)
+double            sub_14025C840(double _XMM0_8)
 ;
  /* recovered in client_native_gaps.s */
 // 14025C840: inconsistent variable size for 'xmm0_8.8(_XMM0_8)'
@@ -46727,7 +46717,7 @@ __m128            pow_special(double a1, double a2, double a3, unsigned int a4)
 // 14025CEE0: inconsistent variable size for 'xmm2_8.8'
 
 //----- (000000014025D004) ----------------------------------------------------
-double            powf_special(double result, float a2, double a3, unsigned int a4)
+float            powf_special(float a1, float a2, float a3, unsigned int a4)
 ;
  /* recovered in client_native_gaps.s */
 

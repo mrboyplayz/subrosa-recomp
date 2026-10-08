@@ -739,6 +739,7 @@ __int64            sub_140160E00(__int64 a1, _DWORD *a2, int *a3, _DWORD *a4)
   v10 = (char *)v9;
   if ( v9 == a1 || !v9 )
   {
+    v10 = nullptr; /* 0x140160E70: xor ebx, ebx */
     if ( Block )
       free(Block);
   }
@@ -749,11 +750,11 @@ __int64            sub_140160E00(__int64 a1, _DWORD *a2, int *a3, _DWORD *a4)
     *a2 = v15[0];
     *a3 = v13;
     if ( (v4 & 0xFFFFFFFB) != 0 )
-      sub_14015D7E0(v10, 4, v4, v12, v13);
+      v10 = (char *)sub_14015D7E0(v10, 4, v4, v12, v13); /* 0x140160EE7: mov rbx, rax */
   }
   free(v18);
   free(v17);
-  return sub_1401F8B20((unsigned __int64)&v14 ^ v19);
+  return (__int64)v10; /* 0x140160E95: mov rax, rbx */
 }
 #undef v15
 #undef Block
@@ -1871,8 +1872,7 @@ __int64            sub_140161F00(__int64 a1, unsigned __int8 *a2, int a3)
   result = a2[3];
   if ( (_BYTE)result )
   {
-    sub_14020B23C(1.0, result - 136);
-    v7 = 1.0;
+    v7 = sub_14020B23C(1.0, result - 136); /* 0x140161F3A: cvtsd2ss xmm2, xmm0 */
     if ( a3 > 2 )
     {
       *(float *)a1 = (float)*a2 * v7;
@@ -2114,7 +2114,7 @@ LABEL_19:
     a1[24] = a1[26];
     a1[25] = a1[27];
   }
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v17);
+  return 0; /* the function has no caller */
 }
 #undef v13
 #undef v14
@@ -2210,7 +2210,7 @@ LABEL_5:
     {
 LABEL_111:
       *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("unsupported format");
-      return sub_1401F8B20((unsigned __int64)&v61 ^ v68);
+      return 0; /* 0x140162503: xor eax, eax */
     }
     v63 = (_BYTE *)sub_140162030(a1, (__int64)v67);
     if ( (unsigned int)strncmp_sr((const char *)(uintptr_t)(v63), (const char *)(uintptr_t)("-Y "), 3) )
@@ -2225,7 +2225,7 @@ LABEL_111:
     {
 LABEL_11:
       *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("unsupported data layout");
-      return sub_1401F8B20((unsigned __int64)&v61 ^ v68);
+      return 0; /* 0x14016252D: xor eax, eax */
     }
     v63 += 3;
     v17 = (unsigned int)sub_14023CCCC((__int64)v63, nullptr, 0xAu);
@@ -2251,7 +2251,7 @@ LABEL_110:
       v55 = "too large";
 LABEL_94:
       *(_QWORD *)(v54 + 16) = (uint64)(uintptr_t)(v55);
-      return sub_1401F8B20((unsigned __int64)&v61 ^ v68);
+      return 0; /* 0x1401629F8: xor eax, eax */
     }
     Block = (void *)sub_140167010(v17, v16, v18, 4, 0);
     if ( !Block )
@@ -2269,7 +2269,7 @@ LABEL_93:
     v19 = nullptr;
     SR_VEC_LANES(128, v65, i32)[1] = 0;
     if ( v16 <= 0 )
-      return sub_1401F8B20((unsigned __int64)&v61 ^ v68);
+      return (__int64)Block; /* 0x1401629C4: mov rax, qword ptr [rsp + 0x40] */
     v62 = 0;
 LABEL_34:
     v20 = *(char **)(a1 + 192);
@@ -2343,7 +2343,7 @@ LABEL_48:
                 ++v59;
 LABEL_105:
                 if ( v59 >= v16 )
-                  return sub_1401F8B20((unsigned __int64)&v61 ^ v68);
+                  return (__int64)Block; /* 0x1401629C4: mov rax, qword ptr [rsp + 0x40] */
                 v60 = 0;
               }
             }
@@ -2514,7 +2514,7 @@ LABEL_85:
               if ( ++SR_VEC_LANES(128, v65, i32)[1] >= SR_VEC_LANES(128, v65, i32)[2] )
               {
                 free(v19);
-                return sub_1401F8B20((unsigned __int64)&v61 ^ v68);
+                return (__int64)Block; /* 0x1401629C4: mov rax, qword ptr [rsp + 0x40] */
               }
               goto LABEL_34;
             }
@@ -2556,7 +2556,7 @@ LABEL_45:
       goto LABEL_5;
   }
   *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("not HDR");
-  return sub_1401F8B20((unsigned __int64)&v61 ^ v68);
+  return 0; /* 0x140162BA8: xor eax, eax */
 }
 #undef v61
 #undef v62
@@ -3193,7 +3193,7 @@ __int64            sub_140163020(__int64 a1, int a2, __int64 a3)
     v113 = (__int64)v73;
   }
   while ( !v110 );
-  return sub_1401F8B20((unsigned __int64)&v112 ^ v117[28]);
+  return 0; /* no result: rax is residue at 0x140163608 */
 }
 #undef v112
 #undef v113
@@ -5430,7 +5430,7 @@ __int64            sub_1401663E0(     __m128i *a1, __int64 *a2, _DWORD *a3, int 
   if ( !v8 )
   {
     *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("not GIF");
-    return sub_1401F8B20((unsigned __int64)&v21 ^ v33);
+    return 0; /* 0x14016669A: xor eax, eax */
   }
   v10 = 0;
   v11 = 0;
@@ -5466,7 +5466,7 @@ __int64            sub_1401663E0(     __m128i *a1, __int64 *a2, _DWORD *a3, int 
       free(v31);
       free(v30);
       *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("outofmem");
-      return sub_1401F8B20((unsigned __int64)&v21 ^ v33);
+      return 0; /* 0x1401665DE: xor eax, eax */
     }
     if ( a2 )
     {
@@ -5487,9 +5487,9 @@ LABEL_13:
   free(v31);
   free(v30);
   if ( (v7 & 0xFFFFFFFB) != 0 )
-    sub_14015D7E0(v12, 4, v7, v10 * v27, v28);
+    v12 = (char *)sub_14015D7E0(v12, 4, v7, v10 * v27, v28); /* 0x140166665: mov rbp, rax */
   *v26 = v10;
-  return sub_1401F8B20((unsigned __int64)&v21 ^ v33);
+  return (__int64)v12; /* 0x14016666F: mov rax, rbp */
 }
 #undef v22
 #undef v23
@@ -6049,7 +6049,7 @@ __int64            sub_140167230(__int64 a1)
             break;
 LABEL_17:
           if ( ++v7 >= v10 )
-            return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+            return 1; /* 0x140167480: mov eax, 1 */
         }
         v12 = 0;
         while ( (unsigned int)sub_140164500(
@@ -6070,7 +6070,7 @@ LABEL_17:
             if ( *(int *)(a1 + 18468) < 24 )
               sub_140161D20((_QWORD *)a1);
             if ( (unsigned __int8)(*(_BYTE *)(a1 + 18472) + 48) > 7u )
-              return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+              return 1; /* 0x140167480: mov eax, 1 */
             *(_DWORD *)(a1 + 18392) = 0;
             v13 = 0x7FFFFFFF;
             *(_DWORD *)(a1 + 18296) = 0;
@@ -6090,6 +6090,7 @@ LABEL_17:
           if ( v11 >= v9 )
             goto LABEL_17;
         }
+        return 0; /* 0x1401673A1: block decoder failed -> xor eax, eax */
       }
     }
     else
@@ -6106,7 +6107,7 @@ LABEL_17:
 LABEL_38:
           v50 = ++v16;
           if ( v16 >= *(_DWORD *)(a1 + 18068) )
-            return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+            return 1; /* 0x140167480: mov eax, 1 */
         }
         while ( 1 )
         {
@@ -6120,7 +6121,7 @@ LABEL_30:
             if ( *(int *)(a1 + 18468) < 24 )
               sub_140161D20((_QWORD *)a1);
             if ( (unsigned __int8)(*(_BYTE *)(a1 + 18472) + 48) > 7u )
-              return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+              return 1; /* 0x140167480: mov eax, 1 */
             *(_DWORD *)(a1 + 18392) = 0;
             v26 = 0x7FFFFFFF;
             *(_DWORD *)(a1 + 18296) = 0;
@@ -6180,7 +6181,7 @@ LABEL_27:
                                 ((__int64)*(int *)(v22 + 18100) << 10) + a1 + 13960,
                                 v20,
                                 (_WORD *)(((__int64)*(int *)(v22 + 18092) << 7) + a1 + 13448)) )
-            break;
+            return 0; /* 0x1401675AE: block decoder failed -> xor eax, eax */
           (*(void (           **)(__int64, _QWORD, _OWORD *))(a1 + 18544))(
             *(_QWORD *)(v22 + 18128) + 8 * *(_DWORD *)(v22 + 18116) * v25 + (__int64)(8 * (v24 + v17 * v23)),
             *(unsigned int *)(v22 + 18116),
@@ -6210,7 +6211,7 @@ LABEL_27:
           break;
 LABEL_55:
         if ( ++v29 >= v32 )
-          return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+          return 1; /* 0x140167480: mov eax, 1 */
       }
       while ( 1 )
       {
@@ -6222,13 +6223,13 @@ LABEL_55:
                  1680LL * *(int *)(a1 + v30 + 18100) + a1 + 6728,
                  ((__int64)*(int *)(a1 + v30 + 18100) << 10) + a1 + 13960)
              : (unsigned int)sub_140165200(a1, v34, 1680LL * *(int *)(a1 + v30 + 18096) + a1 + 8, v28)) )
-          break;
+          return 0; /* 0x1401677CF: block decoder failed -> xor eax, eax */
         if ( (int)--*(_DWORD *)(a1 + 18540) <= 0 )
         {
           if ( *(int *)(a1 + 18468) < 24 )
             sub_140161D20((_QWORD *)a1);
           if ( (unsigned __int8)(*(_BYTE *)(a1 + 18472) + 48) > 7u )
-            return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+            return 1; /* 0x140167480: mov eax, 1 */
           *(_DWORD *)(a1 + 18392) = 0;
           v36 = 0x7FFFFFFF;
           *(_DWORD *)(a1 + 18296) = 0;
@@ -6260,7 +6261,7 @@ LABEL_55:
           break;
 LABEL_75:
         if ( ++v38 >= *(_DWORD *)(a1 + 18068) )
-          return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+          return 1; /* 0x140167480: mov eax, 1 */
       }
       while ( 1 )
       {
@@ -6273,7 +6274,7 @@ LABEL_67:
           if ( *(int *)(a1 + 18468) < 24 )
             sub_140161D20((_QWORD *)a1);
           if ( (unsigned __int8)(*(_BYTE *)(a1 + 18472) + 48) > 7u )
-            return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+            return 1; /* 0x140167480: mov eax, 1 */
           *(_DWORD *)(a1 + 18392) = 0;
           v47 = 0x7FFFFFFF;
           *(_DWORD *)(a1 + 18296) = 0;
@@ -6329,9 +6330,10 @@ LABEL_65:
         if ( ++v46 >= v45 )
           goto LABEL_65;
       }
+      return 0; /* 0x14016794E: block decoder failed -> xor eax, eax */
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v49 ^ v54);
+  return 1; /* 0x140167480: mov eax, 1 */
 }
 #undef v49
 #undef v50
@@ -7807,7 +7809,7 @@ LABEL_17:
     while ( 1 )
     {
       if ( v4 == 10 )
-        return sub_1401F8B20((unsigned __int64)&v24 ^ v28);
+        return 0; /* 0x1401692F4: -> xor eax, eax */
       v14 = (char *)*v9;
       v15 = v13;
       v16 = *(_QWORD *)(a1 + 200);
@@ -7898,19 +7900,19 @@ LABEL_49:
 LABEL_52:
         *v9 = *(_QWORD *)(a1 + 208);
         *(_QWORD *)(a1 + 200) = *(_QWORD *)(a1 + 216);
-        return sub_1401F8B20((unsigned __int64)&v24 ^ v28);
+        return 0; /* 0x14016943D: xor eax, eax */
       }
       if ( !v17 )
       {
         *(_DWORD *)v26 = ((v10 & 0x10) != 0) + 3;
-        return sub_1401F8B20((unsigned __int64)&v24 ^ v28);
+        return 1; /* 0x14016941E: mov eax, 1 */
       }
     }
   }
 LABEL_8:
   *v9 = *(_QWORD *)(a1 + 208);
   *(_QWORD *)(a1 + 200) = *(_QWORD *)(a1 + 216);
-  return sub_1401F8B20((unsigned __int64)&v24 ^ v28);
+  return 0; /* 0x14016921E: xor eax, eax */
 }
 #undef v24
 #undef v25
@@ -8324,7 +8326,7 @@ LABEL_38:
   v104 = 0;
   *a4 = ((v6 & 0x10) != 0) + 3;
   if ( v102 <= 0 )
-    return sub_1401F8B20((unsigned __int64)&v98 ^ v111[4]);
+    return v108; /* 0x14016A145: mov rax, qword ptr [rsp + 0x50] */
   v26 = v102;
   uint64 sr_local_image_tls=sr_client_static_tls();
   v105 = (__int64 *)&sr_local_image_tls;
@@ -8338,7 +8340,7 @@ LABEL_38:
 LABEL_184:
     v104 = ++v25;
     if ( v25 >= v26 )
-      return sub_1401F8B20((unsigned __int64)&v98 ^ v111[4]);
+      return v108; /* 0x14016A145: mov rax, qword ptr [rsp + 0x50] */
   }
   v28 = v99;
   v29 = (_BYTE *)(v108 + 4 * v25 * v99);
@@ -8376,7 +8378,7 @@ LABEL_188:
             v96 = *v105;
 LABEL_191:
             *(_QWORD *)(v96 + 16) = (uint64)(uintptr_t)(v95);
-            return sub_1401F8B20((unsigned __int64)&v98 ^ v111[4]);
+            return 0; /* 0x14016A1D0: xor eax, eax */
           }
           goto LABEL_168;
         }
@@ -8422,7 +8424,7 @@ LABEL_177:
         v88 >>= 1;
       }
       if ( !v31 )
-        return sub_1401F8B20((unsigned __int64)&v98 ^ v111[4]);
+        return 0; /* 0x14016A1D0: xor eax, eax */
       ++v86;
       v31 += 4;
       if ( v86 >= v28 )
@@ -8818,7 +8820,7 @@ LABEL_107:
         goto LABEL_116;
       continue;
     }
-    return sub_1401F8B20((unsigned __int64)&v98 ^ v111[4]);
+    return 0; /* 0x14016A1D0: xor eax, eax */
   }
 }
 #undef v98
@@ -10334,13 +10336,13 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
           if ( v48 )
           {
             if ( !(unsigned int)sub_14015CCB0((_WORD *)v56 + 3364, v76) )
-              return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+              return 0; /* 0x14016C13B: -> xor eax, eax */
             v57 = 969;
           }
           else
           {
             if ( !(unsigned int)sub_14015CCB0((_WORD *)v56 + 4, v76) )
-              return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+              return 0; /* 0x14016C157: -> xor eax, eax */
             v57 = 129;
           }
           v58 = v74;
@@ -10399,11 +10401,12 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
           }
           v41 = v75 - v74;
           if ( v75 - v74 <= 0 )
-            return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+            return v41 == 0; /* 0x14016C2BE: test r12d, r12d; sete r13b; mov eax, r13d */
         }
         *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("bad DHT header");
+        return 0; /* 0x14016C319: xor eax, eax */
       }
-      break;
+      return v41 == 0; /* 0x14016C02D -> 0x14016C2BE: test r12d, r12d; sete r13b */
     case 219:
       v27 = sub_1401604F0(*a1) - 2;
       if ( v27 > 0 )
@@ -10437,7 +10440,7 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
           if ( (v30 & 0xFu) > 3 )
           {
             *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("bad DQT table");
-            return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+            return 0; /* 0x14016C015: xor eax, eax */
           }
           v33 = 0;
           v34 = (unsigned __int64)(v30 & 0xF) << 6;
@@ -10481,25 +10484,28 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
             v40 = 129;
           v27 -= v40;
           if ( v27 <= 0 )
-            return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+            return v27 == 0; /* 0x14016C2C1: sete r13b; mov eax, r13d */
         }
         *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("bad DQT type");
+        return 0; /* 0x14016BE79: xor eax, eax */
       }
-      break;
+      return v27 == 0; /* 0x14016BEAA -> 0x14016C2C1: sete r13b */
     case 221:
       if ( (unsigned int)sub_1401604F0(*a1) == 4 )
+      {
         *((_DWORD *)a1 + 4634) = sub_1401604F0(*a1);
-      else
-        *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("bad DRI len");
-      break;
+        return 1; /* 0x14016BE8E: mov eax, 1 */
+      }
+      *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("bad DRI len");
+      return 0; /* 0x14016BE42: xor eax, eax */
     case 255:
       *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("expected marker");
-      return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+      return 0; /* 0x14016BBD2: xor eax, eax */
     default:
       if ( (unsigned int)(a2 - 224) > 0xF && a2 != 254 )
       {
         *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("unknown marker");
-        return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+        return 0; /* 0x14016BC26: xor eax, eax */
       }
       v4 = sub_1401604F0(*a1);
       if ( v4 < 2 )
@@ -10509,7 +10515,7 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
           *(_QWORD *)(v5 + 16) = (uint64)(uintptr_t)("bad COM len");
         else
           *(_QWORD *)(v5 + 16) = (uint64)(uintptr_t)("bad APP len");
-        return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+        return 0; /* 0x14016BC14: xor eax, eax */
       }
       v6 = v4 - 2;
       if ( a2 == 224 )
@@ -10554,12 +10560,12 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
             v14 = *a1;
             *((_DWORD *)a1 + 4626) = 1;
             sub_14016E0F0(v14, v6);
-            return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+            return 1; /* 0x14016BCE2: mov eax, 1 */
           }
         }
 LABEL_47:
         sub_14016E0F0(*a1, v6);
-        return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+        return 1; /* 0x14016BE15: mov eax, 1 */
       }
       if ( a2 != 238 || v6 < 12 )
         goto LABEL_47;
@@ -10633,7 +10639,7 @@ LABEL_46:
       *((_DWORD *)a1 + 4627) = v26;
       goto LABEL_47;
   }
-  return sub_1401F8B20((unsigned __int64)&v73 ^ v77);
+  return 0; /* not reached: every case returns */
 }
 #undef v73
 #undef v74
@@ -13583,7 +13589,6 @@ void            sub_14016F590(__m128i *a1, int a2, int a3, int a4, int a5)
       v22 = v7;
     }
     while ( v7 );
-    sub_1401F8B20((unsigned __int64)&v17 ^ v24);
   }
 }
 #undef v17
@@ -13910,7 +13915,7 @@ __int64            sub_14016FD50(char *a1, char *a2, char *a3, unsigned int *a4)
   {
     *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("can't fopen");
   }
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v28);
+  return 0; /* the function has no caller */
 }
 #undef v13
 #undef Stream
@@ -13983,8 +13988,7 @@ __int64            sub_14016FED0(__int128 *a1, __int64 a2, char *a3, char *a4, u
   }
   v23 = v10;
   v25 = v10;
-  sub_140163E70((__int64)v13, a3, a4, a5);
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v26);
+  return sub_140163E70((__int64)v13, a3, a4, a5); /* 0x14016FFA1: the result of this call is still in rax at the exit */
 }
 #undef v12
 #undef v13
@@ -14054,7 +14058,7 @@ __int64            sub_14016FFD0(FILE *a1, char *a2, char *a3, unsigned int *a4)
   v25 = v10;
   sub_140163E70((__int64)v13, a2, a3, a4);
   sub_14020C4A8((__int64)a1, v8, 0);
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v26);
+  return 0; /* the function has no caller */
 }
 #undef v12
 #undef v13
@@ -14097,8 +14101,7 @@ __int64            sub_1401700F0(__int64 a1, int a2, char *a3, char *a4, unsigne
   v10 = 0;
   v14 = a2 + a1;
   v12 = v14;
-  sub_140163E70((__int64)v7, a3, a4, a5);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+  return sub_140163E70((__int64)v7, a3, a4, a5); /* 0x14017015A: the result of this call is still in rax at the exit */
 }
 #undef v6
 #undef v7
@@ -14179,7 +14182,7 @@ __int64            sub_140170180(char *a1)
   {
     *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("can't fopen");
   }
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v22);
+  return 0; /* the function has no caller */
 }
 #undef v7
 #undef Stream
@@ -14252,8 +14255,7 @@ __int64            sub_1401702F0(__int128 *a1, __int64 a2)
   }
   v18 = v5;
   v20 = v5;
-  sub_1401643B0((__int64)v8);
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v21);
+  return sub_1401643B0((__int64)v8); /* 0x1401703A8: the result of this call is still in rax at the exit */
 }
 #undef v7
 #undef v8
@@ -14323,7 +14325,7 @@ __int64            sub_1401703D0(FILE *a1)
   v19 = v4;
   sub_1401643B0((__int64)v7);
   sub_14020C4A8((__int64)a1, v2, 0);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v20);
+  return 0; /* the function has no caller */
 }
 #undef v6
 #undef v7
@@ -14366,8 +14368,7 @@ __int64            sub_1401704E0(__int64 a1, int a2)
   v7 = 0;
   v11 = a2 + a1;
   v9 = v11;
-  sub_1401643B0((__int64)v4);
-  return sub_1401F8B20((unsigned __int64)&v3 ^ v12);
+  return sub_1401643B0((__int64)v4); /* 0x140170526: the result of this call is still in rax at the exit */
 }
 #undef v3
 #undef v4
@@ -14499,7 +14500,7 @@ __int64            sub_1401705B0(__int128 *a1, __int64 a2)
     if ( (unsigned __int8)v8 != *v7 )
       break;
     if ( !*++v7 )
-      return sub_1401F8B20((unsigned __int64)&v14 ^ v27);
+      return 0; /* the function has no caller */
   }
   v9 = v25;
   v10 = "#?RGBE\n";
@@ -14547,7 +14548,7 @@ __int64            sub_1401705B0(__int128 *a1, __int64 a2)
     ++v10;
   }
   while ( *v10 );
-  return sub_1401F8B20((unsigned __int64)&v14 ^ v27);
+  return 0; /* the function has no caller */
 }
 #undef v14
 #undef v15
@@ -14581,6 +14582,7 @@ __int64            sub_1401707E0(FILE *a1)
   __int64 (           *v15)(); // [rsp+40h] [rbp-C0h]
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401707E0[272];
+  int sr_matched = 1; /* edi: 0x140170836 mov edi, 1 */
 #define v13 (*(__int64 (*))(void *)(sr_frame_1401707E0 + 0)) /* [rsp+0h] */
 #define v14 (*(__int128 (*))(void *)(sr_frame_1401707E0 + 48)) /* [rsp+30h] */
 #define v16 (*(FILE * (*))(void *)(sr_frame_1401707E0 + 72)) /* [rsp+48h] */
@@ -14708,7 +14710,10 @@ __int64            sub_1401707E0(FILE *a1)
       v22 = v8;
     }
     if ( (unsigned __int8)v11 != *v9 )
+    {
+      sr_matched = 0; /* 0x1401709FE: mov edi, r15d */
       break;
+    }
     ++v9;
   }
   while ( *v9 );
@@ -14716,7 +14721,7 @@ __int64            sub_1401707E0(FILE *a1)
   v23 = v25;
 LABEL_26:
   sub_14020C4A8((__int64)a1, v2, 0);
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v26);
+  return sr_matched; /* 0x140170A1F: mov eax, edi */
 }
 #undef v13
 #undef v14
@@ -14780,7 +14785,7 @@ __int64            sub_140170A50(unsigned __int8 *a1, int a2)
     if ( v5 != *v3 )
       break;
     if ( !*++v3 )
-      return sub_1401F8B20((unsigned __int64)v10 ^ v17);
+      return 0; /* the function has no caller */
   }
   v6 = v15;
   v7 = "#?RGBE\n";
@@ -14802,7 +14807,7 @@ __int64            sub_140170A50(unsigned __int8 *a1, int a2)
     ++v7;
   }
   while ( *v7 );
-  return sub_1401F8B20((unsigned __int64)v10 ^ v17);
+  return 0; /* the function has no caller */
 }
 #undef v10
 #undef v11
@@ -14913,7 +14918,7 @@ __int64            sub_140170DC0(char *a1, int *a2, int *a3, int *a4, unsigned i
   {
     *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("can't fopen");
   }
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v28);
+  return 0; /* the function has no caller */
 }
 #undef v13
 #undef v14
@@ -14986,8 +14991,7 @@ __int64            sub_140170F50(__int128 *a1, __int64 a2, int *a3, int *a4, int
   }
   v24 = v11;
   v26 = v11;
-  sub_140165FD0((__int64)v14, a3, a4, a5, a6);
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v27);
+  return sub_140165FD0((__int64)v14, a3, a4, a5, a6); /* 0x140171030: the result of this call is still in rax at the exit */
 }
 #undef v13
 #undef v14
@@ -15029,8 +15033,7 @@ __int64            sub_140171060(__int64 a1, int a2, int *a3, int *a4, int *a5, 
   v11 = 0;
   v15 = a2 + a1;
   v13 = v15;
-  sub_140165FD0((__int64)v8, a3, a4, a5, a6);
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v16);
+  return sub_140165FD0((__int64)v8, a3, a4, a5, a6); /* 0x1401710D9: the result of this call is still in rax at the exit */
 }
 #undef v7
 #undef v8
@@ -15095,8 +15098,7 @@ __int64            sub_140171100(__int128 *a1, __int64 a2, int *a3, int *a4, uns
   }
   v24 = v11;
   v26 = v11;
-  sub_140166160((__int64)v14, a3, a4, a5, a6);
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v27);
+  return sub_140166160((__int64)v14, a3, a4, a5, a6); /* 0x1401711E0: the result of this call is still in rax at the exit */
 }
 #undef v13
 #undef v14
@@ -15164,7 +15166,7 @@ __int64            sub_140171210(__int64 a1, int *a2, int *a3, unsigned int *a4,
   v25 = v10;
   if ( sub_140166160((__int64)v13, a2, a3, a4, a5) )
     sub_14020C4A8(a1, (_DWORD)v22 - (_DWORD)v23, 1u);
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v26);
+  return 0; /* the function has no caller */
 }
 #undef v12
 #undef v13
@@ -15233,7 +15235,7 @@ __int64            sub_140171340(__int64 a1, int *a2, int *a3, int *a4, unsigned
   v25 = v10;
   if ( sub_140165FD0((__int64)v13, a2, a3, a4, a5) )
     sub_14020C4A8(a1, (_DWORD)v22 - (_DWORD)v23, 1u);
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v26);
+  return 0; /* the function has no caller */
 }
 #undef v12
 #undef v13
@@ -15276,8 +15278,7 @@ __int64            sub_140171470(__int64 a1, int a2, int *a3, int *a4, unsigned 
   v11 = 0;
   v15 = a2 + a1;
   v13 = v15;
-  sub_140166160((__int64)v8, a3, a4, a5, a6);
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v16);
+  return sub_140166160((__int64)v8, a3, a4, a5, a6); /* 0x1401714E9: the result of this call is still in rax at the exit */
 }
 #undef v7
 #undef v8
@@ -15364,7 +15365,7 @@ __int64            sub_140171510(
       while ( v18 );
     }
   }
-  return sub_1401F8B20((unsigned __int64)v21 ^ v31);
+  return 0; /* the function has no caller */
 }
 #undef v21
 #undef v22
@@ -15439,7 +15440,7 @@ __int64            sub_140171670(char *a1, int *a2, int *a3, unsigned int *a4, u
     sub_140166D20((__int64)v14, a2, a3, a4, a5);
     sub_14020B9E8(v8);
   }
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v27);
+  return 0; /* the function has no caller */
 }
 #undef v12
 #undef v13
@@ -15512,8 +15513,7 @@ __int64            sub_1401717D0(__int128 *a1, __int64 a2, int *a3, int *a4, uns
   }
   v24 = v11;
   v26 = v11;
-  sub_140166D20((__int64)v14, a3, a4, a5, a6);
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v27);
+  return sub_140166D20((__int64)v14, a3, a4, a5, a6); /* 0x1401718B0: the result of this call is still in rax at the exit */
 }
 #undef v13
 #undef v14
@@ -15579,8 +15579,7 @@ __int64            sub_1401718E0(__int64 a1, int *a2, int *a3, unsigned int *a4,
   }
   v22 = v9;
   v24 = v9;
-  sub_140166D20((__int64)v12, a2, a3, a4, a5);
-  return sub_1401F8B20((unsigned __int64)&v11 ^ v25);
+  return sub_140166D20((__int64)v12, a2, a3, a4, a5); /* 0x1401719B9: the result of this call is still in rax at the exit */
 }
 #undef v11
 #undef v12
@@ -15623,8 +15622,7 @@ __int64            sub_1401719E0(__int64 a1, int a2, int *a3, int *a4, unsigned 
   v11 = 0;
   v15 = a2 + a1;
   v13 = v15;
-  sub_140166D20((__int64)v8, a3, a4, a5, a6);
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v16);
+  return sub_140166D20((__int64)v8, a3, a4, a5, a6); /* 0x140171A59: the result of this call is still in rax at the exit */
 }
 #undef v7
 #undef v8
@@ -15672,7 +15670,7 @@ __int64            sub_140171AD0(char *a1, int a2, int a3, int a4, __int64 a5)
     sub_140171BB0((__int64)&v13, a2, a3, a4, a5);
     sub_14020B9E8(v14);
   }
-  return sub_1401F8B20((unsigned __int64)&v11 ^ v20);
+  return 0; /* the function has no caller */
 }
 #undef v11
 #undef v12
@@ -15765,8 +15763,7 @@ __int64            sub_140171C80(__int64 a1, __int64 a2, int a3, int a4, int a5,
   v10 = 0;
   v11 = 0;
   v12 = 0;
-  sub_140171BB0((__int64)v8, a3, a4, a5, a6);
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v14);
+  return sub_140171BB0((__int64)v8, a3, a4, a5, a6); /* 0x140171CEB: the result of this call is still in rax at the exit */
 }
 #undef v7
 #undef v8
@@ -15836,7 +15833,8 @@ __int64            sub_140171DD0(__int64 a1, int a2, int a3, int a4, __int64 a5)
 #define v17 (*(_DWORD (*)[24])(void *)(sr_frame_140171DD0 + 128)) /* [rsp+80h] */
 #define v18 (*(__int64 (*))(void *)(sr_frame_140171DD0 + 256)) /* [rsp+100h] */
 
-  if ( a3 > 0 && a2 > 0 && a5 )
+  if ( !(a3 > 0 && a2 > 0 && a5) )
+    return 0; /* 0x140171F2D: xor eax, eax */
   {
     v9 = (_BYTE *)sr_path_malloc(4 * a2);
     strcpy(v16, "#?RADIANCE\n# Written by stb_image_write.h\nFORMAT=32-bit_rle_rgbe\n");
@@ -15857,7 +15855,7 @@ __int64            sub_140171DD0(__int64 a1, int a2, int a3, int a4, __int64 a5)
     while ( v11 < a3 );
     free(v9);
   }
-  return sub_1401F8B20((unsigned __int64)&v15 ^ v18);
+  return 1; /* 0x140171F16: mov eax, 1 */
 }
 #undef v15
 #undef v16
@@ -16163,7 +16161,8 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
   v192 = a3;
   v7 = a3;
   v202 = a1;
-  if ( a5 && a2 && a3 && (unsigned int)(a4 - 1) <= 3 )
+  if ( !(a5 && a2 && a3 && (unsigned int)(a4 - 1) <= 3) )
+    return 0; /* 0x1401737CD: xor eax, eax */
   {
     v10 = 90;
     if ( a6 )
@@ -16799,7 +16798,7 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
     v191[0] = -39;
     (*(void (           **)(__int64, char *, __int64))v182)(v188, v191, 1);
   }
-  return sub_1401F8B20((unsigned __int64)&v190 ^ v224);
+  return 1; /* 0x1401737C6: mov eax, 1 */
 }
 #undef v191
 #undef v192
@@ -17018,6 +17017,7 @@ __int64            sub_140173990(__int64 a1, int a2, int a3, int a4, int a5, __i
 #define v83 (*(__int64 (*))(void *)(sr_frame_140173990 + 152)) /* [rsp+98h] */
 #define v84 (*(__int64 (*))(void *)(sr_frame_140173990 + 160)) /* [rsp+A0h] */
 
+  v39 = 0; /* failure paths: 0x140173A83 xor eax, eax */
   v6 = a5;
   v7 = a3;
   v8 = a2;
@@ -17244,7 +17244,7 @@ LABEL_23:
       free(Block);
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v69 ^ v84);
+  return v39; /* 0x140174096: mov rax, r14 */
 }
 #undef v69
 #undef v70
@@ -17308,7 +17308,7 @@ __int64            sub_1401740A0(char *a1, int a2, int a3, int a4, __int64 a5)
     sub_140174170((__int64)&v13, a2, a3, a4, a5);
     sub_14020B9E8((__int64)v14);
   }
-  return sub_1401F8B20((unsigned __int64)&v11 ^ v20);
+  return 0; /* the function has no caller */
 }
 #undef v11
 #undef Stream
@@ -17589,8 +17589,7 @@ __int64            sub_1401745F0(__int64 a1, __int64 a2, int a3, int a4, int a5,
   v10 = 0;
   v11 = 0;
   v12 = 0;
-  sub_140174170((__int64)v8, a3, a4, a5, a6);
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v14);
+  return sub_140174170((__int64)v8, a3, a4, a5, a6); /* 0x14017465B: the result of this call is still in rax at the exit */
 }
 #undef v7
 #undef v8
@@ -18933,7 +18932,7 @@ __int64            sub_140175A20(__int64 a1, int a2, __int64 a3, int a4)
   v6[0] = a3;
   v7 = 0;
   sub_140168E00((__int64)v6, 1);
-  return sub_1401F8B20((unsigned __int64)&v5 ^ v8);
+  return 0; /* the function has no caller */
 }
 #undef v6
 #undef v7
@@ -18975,7 +18974,7 @@ __int64            sub_140175AC0(__int64 a1, int a2, _DWORD *a3)
       free(Block);
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v14);
+  return 0; /* the function has no caller */
 }
 #undef v9
 #undef v10
@@ -19023,7 +19022,7 @@ __int64            sub_140175B80(__int64 a1, int a2, int a3, _DWORD *a4)
       free(Block);
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v10 ^ v16);
+  return 0; /* the function has no caller */
 }
 #undef v11
 #undef v12
@@ -19072,7 +19071,7 @@ __int64            sub_140175C40(__int64 a1, int a2, int a3, _DWORD *a4)
       free(Block);
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v10 ^ v16);
+  return 0; /* the function has no caller */
 }
 #undef v11
 #undef v12
@@ -19101,7 +19100,7 @@ __int64            sub_140175D00(__int64 a1, int a2, __int64 a3, int a4)
   v6[0] = a3;
   v7 = 0;
   sub_140168E00((__int64)v6, 0);
-  return sub_1401F8B20((unsigned __int64)&v5 ^ v8);
+  return 0; /* the function has no caller */
 }
 #undef v6
 #undef v7
@@ -19143,7 +19142,7 @@ __int64            sub_140175DA0(__int64 a1, int a2, _DWORD *a3)
       free(Block);
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v14);
+  return 0; /* the function has no caller */
 }
 #undef v9
 #undef v10
@@ -19947,7 +19946,7 @@ LABEL_53:
     *v48 = v63;
     *v47 = v62;
   }
-  return sub_1401F8B20((unsigned __int64)&v101 ^ v119);
+  return (unsigned int)v117[0]; /* 0x140176C51: mov eax, dword ptr [rbp - 0x50] */
 }
 #undef v101
 #undef v102
@@ -21505,6 +21504,7 @@ __int64            sub_140178A70(__int64 a1, int a2, float a3, void **a4, _DWORD
   __m128i v29; // xmm9
   float v30; // xmm9_4
   int v31; // [rsp+E8h] [rbp+10h] BYREF
+  float sr_x0, sr_y0; /* the current point: xmm8, xmm9 */
 
   v31 = 0;
   v5 = a3 * a3;
@@ -21555,6 +21555,8 @@ __int64            sub_140178A70(__int64 a1, int a2, float a3, void **a4, _DWORD
     }
     v31 = 0;
     v21 = -1;
+    sr_x0 = 0.0f; /* 0x140178B31, 0x140178B35 */
+    sr_y0 = 0.0f;
     if ( v7 > 0 )
     {
       v22 = (__int16 *)(a1 + 10);
@@ -21571,6 +21573,8 @@ __int64            sub_140178A70(__int64 a1, int a2, float a3, void **a4, _DWORD
           v29 = _mm_cvtsi32_si128(*(v22 - 4));
           ++v31;
           v30 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v29), f32)[0];
+          sr_x0 = v28; /* 0x140178D41, 0x140178D54 */
+          sr_y0 = v30;
           if ( v9 )
           {
             *(float *)(v9 + 8 * v11) = v28;
@@ -21585,6 +21589,8 @@ __int64            sub_140178A70(__int64 a1, int a2, float a3, void **a4, _DWORD
           v26 = _mm_cvtsi32_si128(*(v22 - 4));
           ++v31;
           v27 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v26), f32)[0];
+          sr_x0 = v25; /* 0x140178CE7, 0x140178CFA */
+          sr_y0 = v27;
           if ( v9 )
           {
             *(float *)(v9 + 8 * v24) = v25;
@@ -21596,32 +21602,38 @@ __int64            sub_140178A70(__int64 a1, int a2, float a3, void **a4, _DWORD
           break;
         if ( *((_BYTE *)v22 + 2) == 4 )
         {
+          /* 0x140178C36: x0, y0 = xmm8, xmm9 (0x140178BC9, 0x140178BBE); the control points and end point are
+             converted shorts stored as floats ([rsp+20h]..[rsp+48h]); the C had passed an int and a pointer for
+             x0, y0 and the bits of three floats as numbers */
           sub_140183DC0(
             v9,
             &v31,
-            v18,
-            (int)v22,
+            sr_x0,
+            sr_y0,
             (float)*(v22 - 3),
-            COERCE_UNSIGNED_INT((float)*(v22 - 2)),
+            (float)*(v22 - 2),
             (float)*(v22 - 1),
-            COERCE_UNSIGNED_INT((float)*v22),
+            (float)*v22,
             (float)*(v22 - 5),
-            COERCE_UNSIGNED_INT((float)*(v22 - 4)),
+            (float)*(v22 - 4),
             v5,
             0);
 LABEL_20:
           v18 = *(v22 - 5);
+          sr_x0 = (float)*(v22 - 5); /* 0x140178C4F, 0x140178C53 */
+          sr_y0 = (float)*(v22 - 4);
         }
 LABEL_28:
         v22 += 7;
         if ( !--v23 )
           goto LABEL_29;
       }
+      /* 0x140178CC6: x0, y0 = xmm8, xmm9 (0x140178CAC, 0x140178C96) */
       sub_140184190(
         v9,
         &v31,
-        v18,
-        (int)v22,
+        sr_x0,
+        sr_y0,
         (float)*(v22 - 3),
         (float)*(v22 - 2),
         (float)*(v22 - 5),
@@ -22855,7 +22867,7 @@ __int64            sub_14017A640(
     {
       v19 = sub_14017DA60(a1, a3);
       if ( v19 < 0 )
-        return sub_1401F8B20((unsigned __int64)&v133 ^ v160);
+        return 0; /* 0x14017A719: js -> xor eax, eax */
       v20 = *(_QWORD *)(a1 + 8);
       v16 = (__int16)((*(unsigned __int8 *)(v20 + v19 + 8) << 8) + *(unsigned __int8 *)(v20 + v19 + 9));
       v14 = (__int16)(*(unsigned __int8 *)(v20 + v19 + 3) + (*(unsigned __int8 *)(v20 + v19 + 2) << 8));
@@ -23081,7 +23093,7 @@ LABEL_98:
 LABEL_99:
               free(v45);
               free(v44);
-              return sub_1401F8B20((unsigned __int64)&v133 ^ v160);
+              return (__int64)v151; /* 0x14017B319: mov rax, rbx */
             }
             goto LABEL_42;
           }
@@ -23207,7 +23219,7 @@ LABEL_72:
       goto LABEL_72;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v133 ^ v160);
+  return 0; /* 0x14017B326: xor eax, eax */
 }
 #undef v133
 #undef v134

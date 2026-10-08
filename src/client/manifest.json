@@ -1907,6 +1907,16 @@
       "static_promoted": false
     },
     {
+      "name": "sub_14003B920",
+      "module": "client_recovery_020000.c",
+      "original_rva": "0x3b920",
+      "source_line": 119840,
+      "source_end_line": 119840,
+      "original_sha256": "3088d1ce5afac61065ff9e8adf4679c9fe2bc524d4ed4b0ad93c60533ccb307a",
+      "emitted_sha256": "3088d1ce5afac61065ff9e8adf4679c9fe2bc524d4ed4b0ad93c60533ccb307a",
+      "static_promoted": false
+    },
+    {
       "name": "sub_14003C6F0",
       "module": "client_recovery_020000.c",
       "original_rva": "0x3c6f0",
@@ -29917,6 +29927,16 @@
       "static_promoted": false
     },
     {
+      "name": "sub_14023023C",
+      "module": "client_runtime_220000.c",
+      "original_rva": "0x23023c",
+      "source_line": 426402,
+      "source_end_line": 426402,
+      "original_sha256": "5837b7df78223718e6518df89cee02acf3f84ccc4572ff795743089e8ad9145b",
+      "emitted_sha256": "5837b7df78223718e6518df89cee02acf3f84ccc4572ff795743089e8ad9145b",
+      "static_promoted": false
+    },
+    {
       "name": "sub_140231FC0",
       "module": "client_runtime_220000.c",
       "original_rva": "0x231fc0",
@@ -42857,13 +42877,13 @@
       "static_promoted": false
     }
   ],
-  "function_count": 4260,
+  "function_count": 4262,
   "storage_definition_count": 1286,
   "static_linkage_promotions": 39,
   "top_level_items": {
     "directive": 10,
     "declaration": 5599,
-    "function": 4260
+    "function": 4262
   },
   "layout": "maintained_c_modules",
   "origin": {

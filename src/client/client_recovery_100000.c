@@ -273,7 +273,7 @@ __int64            sub_1401014E0(int a1)
     v51 = ++dword_140404A6C[178322641];
   }
   while ( (__int64)v50 < (__int64)&dword_1402B36B4 );
-  return sub_1401F8B20((unsigned __int64)&v58 ^ v65);
+  return 0; /* the function has no caller */
 }
 #undef v58
 #undef v59
@@ -772,8 +772,7 @@ LABEL_27:
     while ( v81 < (int)dword_140404A6C[178322641] );
   }
   sub_1400FFCE0(dword_140404A6C[160292942], 0, *(double *)&v30);
-  sub_1400FFCE0(dword_140404A6C[160292943], 1, *(double *)&v30);
-  return sub_1401F8B20((unsigned __int64)&v84 ^ v97);
+  return sub_1400FFCE0(dword_140404A6C[160292943], 1, *(double *)&v30); /* 0x140102A36: the result of this call is still in rax at the exit */
 }
 #undef v84
 #undef v85
@@ -931,7 +930,7 @@ __int64            sub_140102AA0(int a1, float *a2, float a3, float a4, float a5
     v38 = ++dword_140404A6C[178322641];
   }
   while ( (__int64)v39 < (__int64)&dword_1402B36B4 );
-  return sub_1401F8B20((unsigned __int64)v46 ^ v47);
+  return 0; /* the function has no caller */
 }
 #undef v46
 #undef v47
@@ -2509,7 +2508,7 @@ __int64            sub_140105770(__int64 a1, __int64 a2, __int64 a3)
   *(_OWORD *)a1 = v14[0];
   *(_OWORD *)(a1 + 16) = v14[1];
   *(_DWORD *)(a1 + 32) = v15;
-  return sub_1401F8B20((unsigned __int64)v14 ^ v16);
+  return 0; /* the function has no caller */
 }
 #undef v14
 #undef v15
@@ -2573,37 +2572,13 @@ __int64            sub_140105840(_OWORD *a1, __int64 a2, __int64 a3)
 //----- (0000000140105930) ----------------------------------------------------
 _UNKNOWN **           sub_140105930(float *a1, float *a2, float *a3)
 {
-  float v4; // xmm5_4
-  float v5; // xmm4_4
-  float v6; // xmm6_4
-  float v7; // xmm7_4
-  float v8; // xmm8_4
-  float v9; // xmm9_4
-  float v10; // xmm11_4
-  float v11; // xmm12_4
-  float v12; // xmm3_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_140105930[16];
-#define retaddr (*(_UNKNOWN * (*))(void *)(sr_frame_140105930 + 0)) /* [rsp+78h] */
-
-  v4 = *a2;
-  v5 = a3[3];
-  v6 = *a3;
-  v7 = a3[1];
-  v8 = a2[1];
-  v9 = a3[2];
-  v10 = a2[2];
-  v11 = a2[3];
-  v12 = (float)(v7 * v11) - (float)(v9 * *a2);
-  *a1 = (float)((float)((float)(*a3 * v11) + (float)(*a2 * v5)) + (float)(v9 * v8)) - (float)(v7 * v10);
-  a1[1] = (float)(v12 + (float)(v8 * v5)) + (float)(v10 * v6);
-  a1[2] = (float)((float)((float)(v9 * v11) + (float)(v7 * v4)) - (float)(v8 * v6)) + (float)(v10 * v5);
-  a1[3] = (float)((float)((float)(v11 * v5) - (float)(v6 * v4)) - (float)(v7 * v8)) - (float)(v10 * v9);
-  return &retaddr;
+  /* Clean implementation: src/engine/math3d.c, checked against the original executable
+     (tools/native-compare suite ragdoll). No caller uses the result. */
+  extern void math_quat_multiply(float out[4], const float a[4], const float b[4]);
+  math_quat_multiply(a1, a2, a3);
+  return (_UNKNOWN **)a1;
 }
-#undef retaddr
 
-// 140105930: returning address of temporary local variable '%__return_address'
 
 //----- (0000000140105AB0) ----------------------------------------------------
 unsigned int *           sub_140105AB0(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
@@ -3185,259 +3160,11 @@ unsigned int *sub_1401063E0()
 //----- (00000001401069C0) ----------------------------------------------------
 __int64 sub_1401069C0()
 {
-  __int64 result; // rax
-  unsigned int *v1; // r9
-  unsigned int *v2; // r13
-  __int64 v3; // rdx
-  __int64 v4; // r8
-  float v5; // xmm9_4
-  float v6; // xmm7_4
-  float v7; // xmm10_4
-  float v8; // xmm5_4
-  float v9; // xmm11_4
-  float v10; // xmm4_4
-  float v11; // xmm12_4
-  float v12; // xmm8_4
-  float v13; // xmm6_4
-  float v14; // xmm13_4
-  float v15; // xmm14_4
-  float v16; // xmm15_4
-  unsigned int v17; // eax
-  float v18; // xmm3_4
-  float v19; // xmm2_4
-  float v20; // xmm7_4
-  float v21; // xmm4_4
-  __int64 v22; // rdx
-  __int64 v23; // rcx
-  float v24; // xmm13_4
-  float *v25; // rax
-  float v26; // xmm12_4
-  float v27; // xmm11_4
-  float v28; // xmm10_4
-  float v29; // xmm8_4
-  float v30; // xmm9_4
-  float v31; // xmm5_4
-  float v32; // xmm1_4
-  float v33; // xmm6_4
-  float v34; // xmm0_4
-  float v35; // xmm1_4
-  int v36; // eax
-  float v37; // xmm0_4
-  int v38; // eax
-  float v39; // xmm1_4
-  signed int v40; // r14d
-  signed int i; // ebp
-  signed int j; // edi
-  unsigned int v43; // esi
-  signed int v44; // ebx
-  __int64 v45; // r15
-  int v46; // r12d
-  __int64 v47; // rcx
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1401069C0[16];
-#define retaddr (*(_UNKNOWN * (*))(void *)(sr_frame_1401069C0 + 0)) /* [rsp+F8h] */
-#define v49 (*(unsigned int * (*))(void *)(sr_frame_1401069C0 + 8)) /* [rsp+100h] */
-
-  result = (__int64)&retaddr;
-  v1 = &dword_140404A6C[129716753];
-  v2 = &dword_140404A6C[129716739];
-  v49 = &dword_140404A6C[129716753];
-  do
-  {
-    if ( *(v2 - 30) )
-    {
-      v3 = (int)*(v2 - 29);
-      *(v2 - 16) = *(v2 - 19);
-      *(v2 - 15) = *(v2 - 18);
-      *(v2 - 14) = *(v2 - 17);
-      *(v2 - 4) = *(v2 - 13);
-      *(v2 - 3) = *(v2 - 12);
-      *(v2 - 2) = *(v2 - 11);
-      *(v2 - 1) = *(v2 - 10);
-      *v2 = *(v2 - 9);
-      v2[1] = *(v2 - 8);
-      v2[2] = *(v2 - 7);
-      v2[3] = *(v2 - 6);
-      v2[4] = *(v2 - 5);
-      v4 = 47LL * (int)*(v2 - 20);
-      v3 *= 99776;
-      v5 = *(float *)&dword_140404A6C[v4 + 18215727];
-      v6 = *(float *)&dword_140404A6C[v4 + 18215730];
-      v7 = *(float *)&dword_140404A6C[v4 + 18215728];
-      v8 = *(float *)&dword_140404A6C[v4 + 18215731];
-      v9 = *(float *)&dword_140404A6C[v4 + 18215729];
-      v10 = *(float *)&dword_140404A6C[v4 + 18215732];
-      v11 = *(float *)((char *)&dword_140404A6C[346732626] + v3);
-      v12 = *(float *)((char *)&dword_140404A6C[346732627] + v3);
-      v13 = *(float *)((char *)&dword_140404A6C[346732628] + v3);
-      v14 = *(float *)&dword_140404A6C[v4 + 18215724];
-      v15 = *(float *)&dword_140404A6C[v4 + 18215725];
-      v16 = *(float *)&dword_140404A6C[v4 + 18215726];
-      v17 = dword_140404A6C[v4 + 18215718];
-      v18 = (float)((float)(v15 * v11) + *(float *)&dword_140404A6C[v4 + 18215716]) + (float)(v7 * v12);
-      *((float *)v2 - 19) = (float)((float)((float)(v14 * v11) + *(float *)&dword_140404A6C[v4 + 18215715])
-                                  + (float)(v5 * v12))
-                          + (float)(v6 * v13);
-      v19 = (float)(v16 * v11) + *(float *)&dword_140404A6C[v4 + 18215717];
-      *((float *)v2 - 18) = v18 + (float)(v8 * v13);
-      *((float *)v2 - 17) = (float)(v19 + (float)(v9 * v12)) + (float)(v10 * v13);
-      *((float *)v2 - 13) = v14;
-      *((float *)v2 - 12) = v15;
-      *((float *)v2 - 11) = v16;
-      *((float *)v2 - 10) = v5;
-      *((float *)v2 - 9) = v7;
-      *((float *)v2 - 8) = v9;
-      *((float *)v2 - 7) = v6;
-      *((float *)v2 - 6) = v8;
-      *((float *)v2 - 5) = v10;
-      v20 = 65536.0;
-      v2[5] = v17;
-      v21 = -65536.0;
-      v2[6] = dword_140404A6C[v4 + 18215719];
-      v2[7] = dword_140404A6C[v4 + 18215720];
-      v2[11] = dword_140404A6C[v4 + 18215736];
-      v2[12] = dword_140404A6C[v4 + 18215737];
-      v2[13] = dword_140404A6C[v4 + 18215738];
-      *v1 = 1199570944;
-      v1[3] = -947912704;
-      v1[1] = 1199570944;
-      v1[4] = -947912704;
-      v1[2] = 1199570944;
-      v1[5] = -947912704;
-      v22 = 45072LL * (int)*(v2 - 29);
-      v23 = (int)dword_140404A6C[v22 + 335170684];
-      if ( v23 > 0 )
-      {
-        v24 = 65536.0;
-        v25 = (float *)&dword_140404A6C[v22 + 335170686];
-        v26 = -65536.0;
-        v27 = 65536.0;
-        v28 = -65536.0;
-        v29 = 65536.0;
-        v30 = -65536.0;
-        do
-        {
-          v31 = (float)((float)((float)(*(v25 - 1) * *((float *)v2 - 13)) + *((float *)v2 - 19))
-                      + (float)(*v25 * *((float *)v2 - 10)))
-              + (float)(v25[1] * *((float *)v2 - 7));
-          v32 = v25[1];
-          v20 = v31;
-          v21 = (float)((float)((float)(*(v25 - 1) * *((float *)v2 - 11)) + *((float *)v2 - 17))
-                      + (float)(*v25 * *((float *)v2 - 8)))
-              + (float)(v32 * *((float *)v2 - 5));
-          v33 = (float)((float)((float)(*(v25 - 1) * *((float *)v2 - 12)) + *((float *)v2 - 18))
-                      + (float)(*v25 * *((float *)v2 - 9)))
-              + (float)(v32 * *((float *)v2 - 6));
-          if ( v24 <= v31 )
-          {
-            v20 = *(float *)v1;
-          }
-          else
-          {
-            *(float *)v1 = v31;
-            v24 = v31;
-          }
-          if ( v26 < v31 )
-          {
-            *((float *)v1 + 3) = v31;
-            v26 = v31;
-          }
-          if ( v27 > v33 )
-          {
-            *((float *)v1 + 1) = v33;
-            v27 = v33;
-          }
-          if ( v28 < v33 )
-          {
-            *((float *)v1 + 4) = v33;
-            v28 = v33;
-          }
-          if ( v29 > v21 )
-          {
-            *((float *)v1 + 2) = v21;
-            v29 = v21;
-          }
-          if ( v30 >= v21 )
-          {
-            v21 = *((float *)v1 + 5);
-          }
-          else
-          {
-            *((float *)v1 + 5) = v21;
-            v30 = v21;
-          }
-          v25 += 3;
-          --v23;
-        }
-        while ( v23 );
-      }
-      v34 = *((float *)v1 + 3) * 0.25;
-      v35 = *((float *)v1 + 1) * 0.25;
-      v1[6] = (int)(float)(v20 * 0.25);
-      v36 = (int)v34;
-      v37 = *((float *)v1 + 4);
-      v1[9] = v36;
-      v38 = (int)v35;
-      v39 = *((float *)v1 + 2);
-      v1[7] = v38;
-      v1[10] = (int)(float)(v37 * 0.25);
-      v1[8] = (int)(float)(v39 * 0.25);
-      result = (unsigned int)(int)(float)(v21 * 0.25);
-      v1[11] = result;
-      v40 = v2[21];
-      if ( v40 <= (int)v2[24] )
-      {
-        do
-        {
-          for ( i = v2[22]; i <= (int)v2[25]; ++i )
-          {
-            for ( j = v2[20]; j <= (int)v2[23]; ++j )
-            {
-              result = sub_140016870(0, j, v40, i);
-              v43 = result;
-              if ( (_DWORD)result )
-              {
-                result = sub_1400169B0(0, j, v40, i);
-                v44 = 0;
-                v45 = 948LL * (v43 & 0x3FF);
-                v46 = result;
-                if ( (int)dword_140404A6C[v45 + 272299416] > 0 )
-                {
-                  do
-                  {
-                    if ( !_bittest(&v46, v44) )
-                    {
-                      result = sub_1400CDBD0(v43, v44, 0, j, v40, i);
-                      if ( (_DWORD)result != -1 )
-                      {
-                        result = (int)result;
-                        v47 = 1760LL * (int)result;
-                        dword_140404A6C[v47 + 278845895] = 1;
-                        dword_140404A6C[v47 + 278845894] = 1;
-                      }
-                    }
-                    ++v44;
-                  }
-                  while ( v44 < (int)dword_140404A6C[v45 + 272299416] );
-                }
-              }
-            }
-          }
-          ++v40;
-        }
-        while ( v40 <= (int)v2[24] );
-        v1 = v49;
-      }
-    }
-    v1 += 5210;
-    v2 += 5210;
-    v49 = v1;
-  }
-  while ( (__int64)v2 < (__int64)&dword_140404A6C[132384259] );
-  return result;
+  extern void world_update_vehicle_bounds(void);
+  /* src/engine/world_vehicles.c; the original's return value is a leftover, no caller reads it. */
+  world_update_vehicle_bounds();
+  return 0;
 }
-#undef retaddr
-#undef v49
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -6388,112 +6115,11 @@ void sub_14010E330()
 //----- (000000014010E370) ----------------------------------------------------
 void            sub_14010E370(float *a1, float *a2)
 {
-  __m128 v2; // xmm1
-  __m128 v3; // xmm2
-  __m128 v4; // xmm3
-  __m128 v5; // xmm4
-  double v6; // xmm1_8
-  float v7; // xmm0_4
-  double v8; // xmm3_8
-  float v9; // xmm0_4
-  float v10; // xmm0_4
-  double v11; // xmm1_8
-  float v12; // xmm4_4
-  double v13; // xmm3_8
-  double v14; // xmm1_8
-  float v15; // xmm0_4
-  float v16; // xmm0_4
-  double v17; // xmm1_8
-  float v18; // xmm5_4
-  double v19; // xmm4_8
-  float v20; // xmm0_4
-  float v21; // xmm2_4
-  float v22; // xmm0_4
-  double v23; // xmm1_8
-  float v24; // xmm4_4
-  double v25; // xmm3_8
-  float v26; // xmm0_4
-  float v27; // xmm0_4
-
-  v2 = _mm_castsi128_ps(_mm_cvtsi32_si128((int)(*(unsigned int *)a2)));
-  v3 = _mm_castsi128_ps(_mm_cvtsi32_si128((int)(*((unsigned int *)a2 + 4))));
-  v5 = v2;
-  v4 = _mm_castsi128_ps(_mm_cvtsi32_si128((int)(*((unsigned int *)a2 + 8))));
-  SR_VEC_LANES(128, v5, f32)[0] = (float)(SR_VEC_LANES(128, v2, f32)[0] + SR_VEC_LANES(128, v3, f32)[0]) + SR_VEC_LANES(128, v4, f32)[0];
-  if ( SR_VEC_LANES(128, v5, f32)[0] < 0.0 )
-  {
-    if ( SR_VEC_LANES(128, v2, f32)[0] <= SR_VEC_LANES(128, v3, f32)[0] || SR_VEC_LANES(128, v2, f32)[0] <= SR_VEC_LANES(128, v4, f32)[0] )
-    {
-      if ( SR_VEC_LANES(128, v3, f32)[0] <= SR_VEC_LANES(128, v4, f32)[0] )
-      {
-        SR_VEC_LANES(128, v4, f32)[0] = fmaxf((float)(SR_VEC_LANES(128, v4, f32)[0] - SR_VEC_LANES(128, v2, f32)[0]) - SR_VEC_LANES(128, v3, f32)[0], -1.0) + 1.0;
-        v23 = SR_VEC_READ_LANES(128, _mm_sqrt_pd(_mm_cvtps_pd(v4)), f64)[0];
-        v24 = v23 + v23;
-        if ( v24 <= 0.000015258789 )
-          v25 = 0.0;
-        else
-          v25 = (float)(1.0 / v24);
-        v26 = (float)(a2[3] - a2[1]) * v25;
-        a1[3] = v26;
-        v27 = (float)(a2[6] + a2[2]) * v25;
-        *a1 = v27;
-        a1[1] = (float)(a2[7] + a2[5]) * v25;
-        a1[2] = v24 * 0.25;
-      }
-      else
-      {
-        SR_VEC_LANES(128, v3, f32)[0] = fmaxf((float)(SR_VEC_LANES(128, v3, f32)[0] - SR_VEC_LANES(128, v2, f32)[0]) - SR_VEC_LANES(128, v4, f32)[0], -1.0) + 1.0;
-        v17 = SR_VEC_READ_LANES(128, _mm_sqrt_pd(_mm_cvtps_pd(v3)), f64)[0];
-        v18 = v17 + v17;
-        if ( v18 <= 0.000015258789 )
-          v19 = 0.0;
-        else
-          v19 = (float)(1.0 / v18);
-        v20 = (float)(a2[2] - a2[6]) * v19;
-        a1[3] = v20;
-        v21 = a2[3] + a2[1];
-        a1[1] = v18 * 0.25;
-        v22 = v21 * v19;
-        *a1 = v22;
-        a1[2] = (float)(a2[7] + a2[5]) * v19;
-      }
-    }
-    else
-    {
-      SR_VEC_LANES(128, v2, f32)[0] = fmaxf((float)(SR_VEC_LANES(128, v2, f32)[0] - SR_VEC_LANES(128, v3, f32)[0]) - SR_VEC_LANES(128, v4, f32)[0], -1.0) + 1.0;
-      v11 = SR_VEC_READ_LANES(128, _mm_sqrt_pd(_mm_cvtps_pd(v2)), f64)[0];
-      v12 = v11 + v11;
-      if ( v12 <= 0.000015258789 )
-        v13 = 0.0;
-      else
-        v13 = (float)(1.0 / v12);
-      v14 = (float)(a2[7] - a2[5]);
-      *a1 = v12 * 0.25;
-      v15 = v14 * v13;
-      a1[3] = v15;
-      v16 = (float)(a2[3] + a2[1]) * v13;
-      a1[1] = v16;
-      a1[2] = (float)(a2[6] + a2[2]) * v13;
-    }
-  }
-  else
-  {
-    SR_VEC_LANES(128, v5, f32)[0] = SR_VEC_LANES(128, v5, f32)[0] + 1.0;
-    v6 = SR_VEC_READ_LANES(128, _mm_sqrt_pd(_mm_cvtps_pd(v5)), f64)[0];
-    v7 = v6 + v6;
-    if ( v7 <= 0.000015258789 )
-      v8 = 0.0;
-    else
-      v8 = (float)(1.0 / v7);
-    a1[3] = v7 * 0.25;
-    v9 = (float)(a2[7] - a2[5]) * v8;
-    *a1 = v9;
-    v10 = (float)(a2[2] - a2[6]) * v8;
-    a1[1] = v10;
-    a1[2] = (float)(a2[3] - a2[1]) * v8;
-  }
+  /* Clean implementation: src/engine/math3d.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void math_quat_from_mat3(float *, const float *);
+  math_quat_from_mat3(a1, a2);
 }
-
 
 //----- (000000014010E610) ----------------------------------------------------
 __int64            sub_14010E610(float *a1, char a2)
@@ -11012,7 +10638,7 @@ LABEL_22:
     ++v17;
   }
   while ( v7 < 4 );
-  return sub_1401F8B20((unsigned __int64)&v19 ^ v21);
+  return 0; /* the function has no caller */
 }
 #undef v19
 #undef v20
@@ -11143,7 +10769,7 @@ __int64            sub_140114E90(_DWORD *a1, float *a2, char a3)
     a1[v4++] = (int)(SR_VEC_LANES(128, v19, f32)[dword_140301DF0] * 0.7071067811865476 * v5);
   if ( dword_140301DF4 != (_DWORD)v13 )
     a1[v4] = (int)(SR_VEC_LANES(128, v19, f32)[dword_140301DF4] * 0.7071067811865476 * v5);
-  return sub_1401F8B20((unsigned __int64)&v18 ^ v20);
+  return 0; /* the function has no caller */
 }
 #undef v18
 #undef v19
@@ -11990,150 +11616,12 @@ __int64            sub_140115FF0(int a1)
 //----- (0000000140116210) ----------------------------------------------------
 void sub_140116210()
 {
+  extern void physics_tick(void);
+  /* src/engine/physics_tick.c; the debug console's tick markers stay here. */
   SR_DEBUG_TICK_BEGIN();
-  SR_DEBUG_CHECK_BODIES(&dword_140404A6C[18215709], 8192, "before body integration");
-  unsigned int *v0; // rax
-  int v1; // r12d
-  float *v2; // rdi
-  float *v3; // rbx
-  __int64 v4; // rsi
-  float v5; // xmm1_4
-  signed int v6; // edx
-  signed int v7; // r9d
-  int v8; // eax
-  int v9; // ecx
-  int v10; // r8d
-  int v11; // edx
-  int v12; // eax
-  unsigned int *v13; // rdi
-  int i; // r15d
-  signed int j; // r14d
-  signed int k; // esi
-  int m; // ebx
-  unsigned int *v18; // rbx
-  int v19; // ecx
-
-  v0 = &dword_140404A6C[280658334];
-  v1 = 0;
-  do
-  {
-    *v0 = 0;
-    v0 += 7166;
-  }
-  while ( (__int64)v0 < (__int64)&dword_140404A6C[282492830] );
-  v2 = (float *)&dword_140404A6C[18215736];
-  v3 = (float *)&dword_140404A6C[18215716];
-  v4 = 0x2000;
-  do
-  {
-    if ( *((_DWORD *)v3 - 7) && !*((_DWORD *)v3 - 5) )
-    {
-      v5 = v3[3] - 0.0027222224;
-      v3[3] = v5;
-      *(v3 - 1) = v3[2] + *(v3 - 1);
-      *v3 = v5 + *v3;
-      v3[1] = v3[4] + v3[1];
-      sub_14012B2D0((unsigned int *)v2 - 12, v2 - 3, v2, v2 + 9);
-    }
-    v2 += 47;
-    v3 += 47;
-    --v4;
-  }
-  while ( v4 );
-  SR_DEBUG_CHECK_BODIES(&dword_140404A6C[18215709], 8192, "after body integration");
-  SR_DEBUG_TICK_STAGE("Physics: update vehicle spatial bounds (0x1069C0)");
-  sub_1401069C0();
-  SR_DEBUG_TICK_STAGE("Physics: update human spatial bounds (0x0B95E0)");
-  sub_1400B95E0();
-  SR_DEBUG_TICK_STAGE("Physics: update item spatial bounds (0x0C9D20)");
-  sub_1400C9D20();
-  v6 = dword_140404A6C[111579651];
-  v7 = 0;
-  dword_140404A6C[421506989] = 0;
-  if ( (int)dword_140404A6C[111579651] > 0 )
-  {
-    v8 = dword_140404A6C[111579652];
-    v9 = dword_140404A6C[111579650];
-    do
-    {
-      v10 = 0;
-      if ( v8 > 0 )
-      {
-        do
-        {
-          v11 = 0;
-          if ( v9 > 0 )
-          {
-            do
-            {
-              v12 = v11 + v9 * (v10 + v7 * v8);
-              ++v11;
-              *(_DWORD *)(*(_QWORD *)&dword_140404A6C[421506981] + 4LL * v12) = -1;
-              v9 = dword_140404A6C[111579650];
-              v8 = dword_140404A6C[111579652];
-            }
-            while ( v11 < (int)dword_140404A6C[111579650] );
-          }
-          ++v10;
-        }
-        while ( v10 < v8 );
-        v6 = dword_140404A6C[111579651];
-      }
-      ++v7;
-    }
-    while ( v7 < v6 );
-  }
-  dword_140404A6C[421769134] = 0;
-  v13 = &dword_140404A6C[278845967];
-  for ( i = 0; i < 1024; ++i )
-  {
-    if ( *(v13 - 74) )
-    {
-      if ( dword_140404A6C[1268 * *(v13 - 69) + 278521288] )
-      {
-        for ( j = *(v13 - 2); j <= (int)v13[1]; ++j )
-        {
-          for ( k = *(v13 - 1); k <= (int)v13[2]; ++k )
-          {
-            for ( m = *(v13 - 3); m <= (int)*v13; ++m )
-              sub_140037DE0(0, m, j, k, i | 0x8000);
-          }
-        }
-      }
-    }
-    v13 += 1760;
-  }
-  SR_DEBUG_TICK_STAGE("Physics: prepare collision and contact work (0x1154D0)");
-  sub_1401154D0();
-  sub_140108930();
-  SR_DEBUG_TICK_STAGE("Physics: update humans and their pose targets (0x0BE010)");
-  sub_1400BE010();
-  SR_DEBUG_CHECK_BODIES(&dword_140404A6C[18215709], 8192, "after human update");
-  sub_1400CE370();
-  sub_1400CC610();
-  SR_DEBUG_TICK_STAGE("Physics: solve body/joint constraints (0x01D080)");
-  sub_14001D080();
-  SR_DEBUG_CHECK_BODIES(&dword_140404A6C[18215709], 8192, "after constraint solving");
-  v18 = &dword_140404A6C[278845900];
-  do
-  {
-    if ( *(v18 - 7) )
-    {
-      v19 = *v18;
-      if ( (int)*v18 < 0xFFFF )
-        *v18 = --v19;
-      if ( v19 <= 0 )
-        sub_14007F970(v1);
-    }
-    ++v1;
-    v18 += 1760;
-  }
-  while ( v1 < 1024 );
-  SR_DEBUG_TICK_STAGE("Physics: process broadphase/contact work (0x10BE50, 0x115830)");
-  sub_14010BE50();
-  sub_140115830();
-  SR_DEBUG_TICK_STAGE("Physics: clean up expired joints (0x01FB90)");
-  sub_14001FB90();
+  SR_DEBUG_CHECK_BODIES(&dword_140404A6C[18215709], 8192, "before physics tick");
+  physics_tick();
+  SR_DEBUG_CHECK_BODIES(&dword_140404A6C[18215709], 8192, "after physics tick");
   SR_DEBUG_TICK_END();
 }
 
@@ -14583,7 +14071,6 @@ LABEL_57:
         dword_140404A6C[70087070] = dword_140404A6C[2 * (v30 - 1) + 70317964];
       }
     }
-    sub_1401F8B20((unsigned __int64)&v31 ^ v36);
   }
 }
 #undef v31
@@ -15569,68 +15056,12 @@ __int64            sub_14011BF40(__int64 a1, __int64 a2, float *a3, float *a4)
 //----- (000000014011C080) ----------------------------------------------------
 _UNKNOWN **           sub_14011C080(float *a1, float *a2, float *a3)
 {
-  float v4; // xmm4_4
-  float v5; // xmm5_4
-  float v6; // xmm3_4
-  float v7; // xmm7_4
-  float v8; // xmm9_4
-  float v9; // xmm8_4
-  float v10; // xmm11_4
-  float v11; // xmm14_4
-  float v12; // xmm12_4
-  float v13; // xmm13_4
-  float v14; // xmm10_4
-  float v15; // xmm15_4
-  float v16; // xmm6_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14011C080[224];
-#define v17 (*(float (*))(void *)(sr_frame_14011C080 + 0)) /* [rsp+0h] */
-#define v18 (*(float (*))(void *)(sr_frame_14011C080 + 4)) /* [rsp+4h] */
-#define retaddr (*(_UNKNOWN * (*))(void *)(sr_frame_14011C080 + 184)) /* [rsp+B8h] */
-#define v20 (*(float (*))(void *)(sr_frame_14011C080 + 192)) /* [rsp+C0h] */
-#define v21 (*(float (*))(void *)(sr_frame_14011C080 + 200)) /* [rsp+C8h] */
-#define v22 (*(float (*))(void *)(sr_frame_14011C080 + 208)) /* [rsp+D0h] */
-#define v23 (*(float (*))(void *)(sr_frame_14011C080 + 216)) /* [rsp+D8h] */
-
-  v4 = a3[1];
-  v5 = a3[2];
-  v21 = a2[5];
-  v20 = a2[7];
-  v22 = a2[6];
-  v23 = a2[8];
-  v6 = *a3;
-  v7 = a3[4];
-  v8 = a3[3];
-  v9 = a3[5];
-  v10 = a2[1];
-  v11 = *a2;
-  v12 = a2[2];
-  v13 = a2[4];
-  v14 = a2[3];
-  v15 = a3[7];
-  v17 = a3[6];
-  v18 = a3[8];
-  v16 = (float)(*a3 * v22) + (float)(v4 * v20);
-  *a1 = (float)((float)(v4 * v10) + (float)(*a3 * *a2)) + (float)(v5 * v12);
-  a1[2] = v16 + (float)(v5 * v23);
-  a1[1] = (float)((float)(v6 * v14) + (float)(v4 * v13)) + (float)(v5 * v21);
-  a1[3] = (float)((float)(v11 * v8) + (float)(v10 * v7)) + (float)(v12 * v9);
-  a1[4] = (float)((float)(v8 * v14) + (float)(v7 * v13)) + (float)(v9 * v21);
-  a1[5] = (float)((float)(v8 * v22) + (float)(v7 * v20)) + (float)(v9 * v23);
-  a1[6] = (float)((float)(v11 * v17) + (float)(v10 * v15)) + (float)(v12 * v18);
-  a1[8] = (float)((float)(v17 * v22) + (float)(v15 * v20)) + (float)(v18 * v23);
-  a1[7] = (float)((float)(v17 * v14) + (float)(v15 * v13)) + (float)(v18 * v21);
-  return &retaddr;
+  /* Clean implementation: src/engine/math3d.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void math_mat3_multiply_transposed(float *, const float *, const float *);
+  math_mat3_multiply_transposed(a1, a2, a3);
+  return (_UNKNOWN **)a1;
 }
-#undef v17
-#undef v18
-#undef retaddr
-#undef v20
-#undef v21
-#undef v22
-#undef v23
-
-// 14011C080: returning address of temporary local variable '%__return_address'
 
 //----- (000000014011C300) ----------------------------------------------------
 float            sub_14011C300(__int64 a1, float *a2)
@@ -15646,46 +15077,12 @@ float            sub_14011C300(__int64 a1, float *a2)
 //----- (000000014011C340) ----------------------------------------------------
 _UNKNOWN **           sub_14011C340(float *a1, float *a2)
 {
-  float v3; // xmm2_4
-  float v4; // xmm0_4
-  float v5; // xmm5_4
-  float v6; // xmm9_4
-  float v7; // xmm4_4
-  float v8; // xmm11_4
-  float v9; // xmm10_4
-  float v10; // xmm7_4
-  float v11; // xmm8_4
-  float v12; // xmm6_4
-  float v13; // xmm3_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14011C340[16];
-#define retaddr (*(_UNKNOWN * (*))(void *)(sr_frame_14011C340 + 0)) /* [rsp+68h] */
-
-  v3 = a2[1];
-  v4 = a2[3];
-  v5 = (float)(a2[2] * *a2) + (float)(a2[2] * *a2);
-  v6 = (float)(*a2 * *a2) + (float)(*a2 * *a2);
-  v7 = (float)(v3 * *a2) + (float)(v3 * *a2);
-  v8 = (float)(*a2 * v4) + (float)(*a2 * v4);
-  v9 = (float)(v3 * v4) + (float)(v3 * v4);
-  v10 = (float)(a2[2] * v4) + (float)(a2[2] * v4);
-  v11 = a2[2] * a2[2];
-  v12 = (float)(v3 * v3) + (float)(v3 * v3);
-  v13 = (float)(a2[2] * v3) + (float)(a2[2] * v3);
-  *a1 = 1.0 - (float)((float)(v11 + v11) + v12);
-  a1[1] = v7 - v10;
-  a1[3] = v7 + v10;
-  a1[2] = v5 + v9;
-  a1[5] = v13 - v8;
-  a1[6] = v5 - v9;
-  a1[7] = v13 + v8;
-  a1[4] = 1.0 - (float)((float)(v11 + v11) + v6);
-  a1[8] = 1.0 - (float)(v12 + v6);
-  return &retaddr;
+  /* Clean implementation: src/engine/math3d.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void math_mat3_from_quat(float *, const float *);
+  math_mat3_from_quat(a1, a2);
+  return (_UNKNOWN **)a1;
 }
-#undef retaddr
-
-// 14011C340: returning address of temporary local variable '%__return_address'
 
 //----- (000000014011C490) ----------------------------------------------------
 void            sub_14011C490(float *a1, float *a2)
@@ -17115,12 +16512,12 @@ __int64 sub_14011E9B0()
   v1 = 0;
   for ( i = 0; i < (int)dword_140404A6C[179930436]; ++i )
   {
-    unk_1404043F8(2);
+    ((void (*)(unsigned,float,float,float))unk_1404043F8)(2, 1.0f, 0.0f, 0.5f); /* native XMM1-3 */
     sub_140125670((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 12LL * i + 723935104), 4.0, 2);
   }
   if ( dword_140404A6C[179668287] )
   {
-    unk_1404043F8(2);
+    ((void (*)(unsigned,float,float,float))unk_1404043F8)(2, 1.0f, 1.0f, 0.0f); /* native XMM1-3 */
     for ( j = 0; j < (int)dword_140404A6C[112631653]; ++j )
       sub_140125670((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 20LL * j + 454739976), 1.0, 1);
   }
@@ -17221,8 +16618,8 @@ __int64 sub_14011E9B0()
   v26 = 6;
   do
   {
-    sub_14007DDF0((__int64)v25, (__int64)(v25 + 3), v0);
-    sub_14007DDF0((__int64)(v25 + 6), (__int64)(v25 + 9), v27);
+    sub_14007DDF0((float *)v25, (float *)(v25 + 3));
+    sub_14007DDF0((float *)(v25 + 6), (float *)(v25 + 9));
     v25 += 5873;
     --v26;
   }

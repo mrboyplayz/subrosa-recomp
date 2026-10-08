@@ -1139,7 +1139,8 @@ __int64            sub_1401A3A00(
   v26 = *(_QWORD *)(a1 + 32);
   v13 = 0;
   v27 = *(_DWORD *)(a1 + 48) * a10;
-  if ( (*(__int16 *)(v26 + 2LL * a8) - *(__int16 *)(v26 + 2LL * (a8 - 1))) * a10 > 8 )
+  if ( (*(__int16 *)(v26 + 2LL * a8) - *(__int16 *)(v26 + 2LL * (a8 - 1))) * a10 <= 8 )
+    return 0; /* 0x1401A3AA8: xor eax, eax */
   {
     v18 = 0;
     do
@@ -1211,7 +1212,7 @@ __int64            sub_1401A3A00(
       v19 = 3;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v32);
+  return (unsigned int)v19; /* 0x1401A3EFB: mov eax, dword ptr [rsp + 0x38] */
 }
 
 
@@ -1950,7 +1951,7 @@ __int64            sub_1401A5D70(__int64 a1, signed int a2, int a3, signed int a
 // 1402821F0: using guessed type _DWORD dword_1402821F0[3];
 
 //----- (00000001401A6000) ----------------------------------------------------
-__int64            sub_1401A6000(float *a1, _DWORD *a2, int a3, int a4)
+float            sub_1401A6000(float *a1, _DWORD *a2, int a3, int a4)
 {
   unsigned __int64 v4; // rcx
   void *v5; // rsp
@@ -2074,7 +2075,7 @@ __int64            sub_1401A6000(float *a1, _DWORD *a2, int a3, int a4)
     ++v11;
   }
   while ( v11 < a4 );
-  return sub_1401F8B20((unsigned __int64)&v11 ^ v27);
+  return v12; /* 0x1401A65AE: movss xmm0, dword ptr [rbp + 4] */
 }
 
 
@@ -2095,8 +2096,7 @@ __int64            sub_1401A65D0(float *a1, unsigned int a2, int a3, int a4, int
   v10 = alloca(v9 & 0xFFFFFFFFFFFFFFF0uLL);
   v12 = &v12;
   sub_1401A5D70((__int64)a1, a2, 1, a5, a3, a4);
-  sub_1401A6000(a1, v12, a3, a2);
-  v13 = v8;
+  v13 = sub_1401A6000(a1, v12, a3, a2); /* 0x1401A6675: movss dword ptr [rbp + 8], xmm0 */
   sub_1401A2610((__int64)v12, a2, a3, a6);
   if ( a8 )
   {
@@ -2104,7 +2104,7 @@ __int64            sub_1401A65D0(float *a1, unsigned int a2, int a3, int a4, int
     sub_1401A5D70((__int64)a1, a2, -1, a5, a3, a4);
   }
   v14 = sub_1401BA3A0((__int64)v12, a2, a5);
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v15);
+  return (unsigned int)v14; /* 0x1401A66EC: mov eax, dword ptr [rbp + 0xc] */
 }
 
 // 1401A6675: variable 'v8' is possibly undefined
@@ -2127,7 +2127,7 @@ __int64            sub_1401A6710(__int64 a1, signed int a2, int a3, int a4, int 
   sub_1401BA2F0((__int64)v11, a1, a2, v10[0], a7);
   sub_1401A5D70(a1, a2, -1, a5, a3, a4);
   LODWORD(v10[1]) = sub_1401BA3A0((__int64)v11, a2, a5);
-  return sub_1401F8B20((unsigned __int64)v10 ^ v12);
+  return (unsigned int)LODWORD(v10[1]); /* 0x1401A67E2: mov eax, dword ptr [rbp + 4] */
 }
 
 
@@ -3366,8 +3366,7 @@ __int64            sub_1401AA340(__m128i *a1, int a2, int a3, int a4)
         SR_VEC_PTR_LANES(128, v10, i32)[j + a2 * i] = SR_VEC_PTR_LANES(128, a1, i32)[i + a3 * j];
     }
   }
-  sub_1401FC920(a1, v10, 4LL * v9);
-  return sub_1401F8B20((unsigned __int64)&i ^ v12);
+  return sub_1401FC920(a1, v10, 4LL * v9); /* 0x1401AA4C0: the result of this call is still in rax at the exit */
 }
 
 
@@ -3406,8 +3405,7 @@ __int64            sub_1401AA4E0(__m128i *a1, int a2, int a3, int a4)
         SR_VEC_PTR_LANES(128, v10, i32)[i + a3 * j] = SR_VEC_PTR_LANES(128, a1, i32)[j + a2 * i];
     }
   }
-  sub_1401FC920(a1, v10, 4LL * v9);
-  return sub_1401F8B20((unsigned __int64)&j ^ v12);
+  return sub_1401FC920(a1, v10, 4LL * v9); /* 0x1401AA660: the result of this call is still in rax at the exit */
 }
 
 
@@ -4119,7 +4117,7 @@ __int64            CGlobalUtils__CheckAlignment(
   v40 = *(_DWORD **)(a1 + 32);
   if ( a4 == 1 )
   {
-    sub_1401AB360((int *)a1, a2, a3, a5, a9);
+    return sub_1401AB360((int *)a1, a2, a3, a5, a9); /* 0x1401AC777: the call's result stays in rax */
   }
   else
   {
@@ -4238,7 +4236,7 @@ __int64            CGlobalUtils__CheckAlignment(
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)v12 ^ v47);
+  return (unsigned int)v16; /* 0x1401AD1EE: mov eax, dword ptr [rsp + 0x6c] */
 }
 
 // 140279870: using guessed type __int128 xmmword_140279870;
@@ -4369,7 +4367,7 @@ __int64            sub_1401AD6F0(__int64 a1, __int64 a2, __int64 a3, signed int 
       v10 = v10 + (float)(v11[j] * *(float *)(a1 + 4LL * (j + i - a5)));
     *(float *)(a3 + 4LL * i++) = v10;
   }
-  return sub_1401F8B20((unsigned __int64)&i ^ v16);
+  return 0; /* no caller reads the result */
 }
 
 
@@ -4439,7 +4437,7 @@ __int64            sub_1401AD990(__int64 a1, float *a2, __int64 a3, signed int a
   }
   for ( i = 0; i < a5; ++i )
     *(_DWORD *)(a6 + 4LL * i) = *(_DWORD *)(a3 + 4LL * (a4 - i - 1));
-  return sub_1401F8B20((unsigned __int64)&i ^ v20);
+  return 0; /* no caller reads the result */
 }
 
 // 140279870: using guessed type __int128 xmmword_140279870;
@@ -4834,7 +4832,7 @@ __int64            sub_1401AEB90(__int64 a1, __int64 a2, int a3, int a4, int a5,
   else
     v22 = 2;
   v23 = (float)(v9 / (float)((a5 - 1 - v22) * a6)) > 1.0;
-  return sub_1401F8B20((unsigned __int64)&i ^ v25);
+  return (unsigned int)v23; /* 0x1401AF0C8: mov eax, dword ptr [rsp + 0x40] */
 }
 
 
@@ -6525,7 +6523,7 @@ __int64            sub_1401B3BD0(__int64 *a1, __int64 a2, int a3, int a4, int a5
     }
     while ( v12 < a4 );
   }
-  return sub_1401F8B20((unsigned __int64)&i ^ v22);
+  return 0; /* no caller reads the result */
 }
 
 
@@ -6656,7 +6654,7 @@ __int64            sub_1401B3E40(
     ++v21;
   }
   while ( v21 < a8 );
-  return sub_1401F8B20((unsigned __int64)&i ^ v41);
+  return 0; /* no caller reads the result */
 }
 
 
@@ -6731,7 +6729,7 @@ __int64            sub_1401B4770(_QWORD *a1, int a2, int a3)
   sub_1401A8190(a1, v5, 2048, a2, a3);
   sub_1401A8740((__int64)(v7 + 360), (__int64)v7, 1328, 620, &v6);
   v6 = 720 - v6;
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return (unsigned int)v6; /* 0x1401B4807: mov eax, dword ptr [rbp] */
 }
 
 
@@ -7043,7 +7041,7 @@ __int64            sub_1401B4830(__int64 a1, int a2, int a3)
     while ( j < v19 );
   }
   *(_DWORD *)(a1 + 56) = v33 + 1;
-  return sub_1401F8B20((unsigned __int64)&i ^ v78);
+  return 0; /* no caller reads the result */
 }
 
 // 140279870: using guessed type __int128 xmmword_140279870;
@@ -8750,8 +8748,7 @@ __int64            sub_1401BAEE0(__m128i *a1, _WORD *a2, __int64 a3, int a4)
       break;
     sub_1401FC920(v11, (__m128i *)((char *)v11 + 4 * v8), 0x10u);
   }
-  sub_1401FC920(a1, (__m128i *)((char *)v11 + 4 * v8), 0x10u);
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v17);
+  return sub_1401FC920(a1, (__m128i *)((char *)v11 + 4 * v8), 0x10u); /* 0x1401BB2A1: the result of this call is still in rax at the exit */
 }
 
 // 140282160: using guessed type __int16 word_140282160[2];
@@ -8970,8 +8967,8 @@ __int64            sub_1401BBF70(__int64 a1, int a2)
     v6[i] = *(__int16 *)(a1 + 2LL * i) << 12;
   }
   if ( v5 < 4096 )
-    sub_1401DC4C0(v6, a2);
-  return sub_1401F8B20((unsigned __int64)&v3 ^ v7);
+    return sub_1401DC4C0(v6, a2); /* 0x1401BC011: the call's result stays in rax */
+  return 0; /* 0x1401BC001: xor eax, eax */
 }
 
 
@@ -9307,7 +9304,7 @@ __int64            sub_1401BC940(_WORD *a1, __int64 a2, int a3)
         }
         a1[v8++] = sub_1401BE360(v10 + (j << 8), 0x7FFFu);
         if ( v8 >= a3 )
-          return sub_1401F8B20((unsigned __int64)&v4 ^ v29);
+          return (unsigned int)a3; /* no result: rax still holds the loop bound from 0x1401BCC74 / 0x1401BCD56 */
         v14 = (_DWORD *)v26[v8 & 1];
         v7 = word_140282900[j - 1];
         v5 = (1 - (v8 & 2)) << 12;
@@ -9343,7 +9340,7 @@ __int64            sub_1401BC940(_WORD *a1, __int64 a2, int a3)
   *a1 = 0x8000 / (a3 + 1);
   for ( j = 1; j < a3; ++j )
     a1[j] = *a1 + a1[j - 1];
-  return sub_1401F8B20((unsigned __int64)&v4 ^ v29);
+  return (unsigned int)a3; /* no result: rax still holds the loop bound from 0x1401BCC74 / 0x1401BCD56 */
 }
 
 // 140282900: using guessed type __int16 word_140282900[136];
@@ -9402,7 +9399,7 @@ __int64            CWinApp__ShowAppMessageBox(struct CWinApp *a1,      char *a2,
     for ( i = 0; i < a3; ++i )
       *((_WORD *)a1 + i) = (((int)v19[i] >> 4) + 1) >> 1;
   }
-  return sub_1401F8B20((unsigned __int64)&v4 ^ v22);
+  return 0; /* no result: rax is residue of the call at 0x1401BD117 */
 }
 
 // 140282900: using guessed type __int16 word_140282900[136];
@@ -10382,7 +10379,7 @@ __int64            sub_1401BEE10(
   *a1 = v24;
   a1[1] = v25;
   a1[15] = v26;
-  return sub_1401F8B20((unsigned __int64)&i ^ v60);
+  return 0; /* no caller reads the result */
 }
 
 

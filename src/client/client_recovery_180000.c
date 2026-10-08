@@ -2442,13 +2442,13 @@ __int64            sub_140182AD0(__int64 a1, int a2, __int64 a3)
       case 4:
         v83 = 0;
         if ( v5 < 1 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         sub_140180120(a3, 0.0, *((float *)&v90 + v5 + 3));
         v5 = 0;
         continue;
       case 5:
         if ( v5 < 2 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         v24 = &v91;
         do
         {
@@ -2461,10 +2461,10 @@ __int64            sub_140182AD0(__int64 a1, int a2, __int64 a3)
       case 6:
         if ( v5 >= 1 )
           goto LABEL_27;
-        return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+        return 0; /* 0x140182DEF: xor eax, eax */
       case 7:
         if ( v5 < 1 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         while ( v17 < v5 )
         {
           sub_140180060(a3, 0.0, *(&v91 + v17++));
@@ -2476,7 +2476,7 @@ LABEL_27:
         goto LABEL_68;
       case 8:
         if ( v5 < 6 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         v30 = 5;
         v31 = &v95;
         do
@@ -2499,7 +2499,7 @@ LABEL_27:
         goto LABEL_74;
       case 0xB:
         if ( v4 <= 0 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         LODWORD(v84) = --v4;
         v81 = v103[v4];
         v16 = SR_VEC_LANES(128, v81, i32)[2];
@@ -2518,14 +2518,14 @@ LABEL_27:
         {
           case '"':
             if ( v5 < 7 )
-              return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+              return 0; /* 0x140182DEF: xor eax, eax */
             sub_14017FFC0(a3, v14, 0.0, v13, v12, v11, 0.0);
             sub_14017FFC0(a3, v10, 0.0, v9, -v12, v8, 0.0);
             v5 = 0;
             break;
           case '#':
             if ( v5 < 13 )
-              return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+              return 0; /* 0x140182DEF: xor eax, eax */
             sub_14017FFC0(a3, v14, v13, v12, v11, v10, v9);
             v79 = v102;
             v78 = v101;
@@ -2537,14 +2537,14 @@ LABEL_115:
             continue;
           case '$':
             if ( v5 < 9 )
-              return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+              return 0; /* 0x140182DEF: xor eax, eax */
             sub_14017FFC0(a3, v14, v13, v12, v11, v10, 0.0);
             sub_14017FFC0(a3, v9, 0.0, v8, v98, v15, -(float)((float)(v11 + v13) + v98));
             v5 = 0;
             break;
           default:
             if ( v57 != 37 || v5 < 11 )
-              return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+              return 0; /* 0x140182DEF: xor eax, eax */
             v58 = v101;
             v59 = v101;
             v60 = (float)((float)((float)(v12 + v14) + v10) + v8) + v99;
@@ -2561,7 +2561,7 @@ LABEL_115:
         break;
       case 0xE:
         sub_14017FF00(a3);
-        return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+        return 1; /* 0x14018378E: mov eax, 1 */
       case 0x13:
       case 0x14:
         v22 = v82;
@@ -2593,20 +2593,20 @@ LABEL_115:
       case 0x15:
         v83 = 0;
         if ( v5 < 2 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         sub_140180120(a3, *((float *)&v90 + v5 + 2), *((float *)&v90 + v5 + 3));
         v5 = 0;
         continue;
       case 0x16:
         v83 = 0;
         if ( v5 < 1 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         sub_140180120(a3, *((float *)&v90 + v5 + 3), 0.0);
         v5 = 0;
         continue;
       case 0x18:
         if ( v5 < 8 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         v32 = 5;
         v33 = &v95;
         do
@@ -2618,14 +2618,14 @@ LABEL_115:
         }
         while ( v32 < v5 - 2 );
         if ( v17 + 1 >= v5 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         sub_140180060(a3, *(&v91 + v17), *(&v92 + v17));
         v4 = v84;
         v5 = 0;
         continue;
       case 0x19:
         if ( v5 < 8 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         v34 = &v91;
         do
         {
@@ -2635,14 +2635,14 @@ LABEL_115:
         }
         while ( v36 + 2 < v5 - 6 );
         if ( v17 + 5 >= v5 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         sub_14017FFC0(a3, *(&v91 + v17), *(&v92 + v17), *(&v93 + v17), *(&v94 + v17), *(&v95 + v17), *(&v96 + v17));
         v5 = 0;
         continue;
       case 0x1A:
       case 0x1B:
         if ( v5 < 4 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         v37 = 0.0;
         v38 = v5 & 1;
         if ( (v5 & 1) != 0 )
@@ -2678,10 +2678,10 @@ LABEL_115:
         v44 = v87;
 LABEL_74:
         if ( v5 < 1 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         v45 = (int)*(&v91 + --v5);
         if ( v4 >= 10 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         v46 = v4++;
         LODWORD(v84) = v4;
         v103[v46] = v81;
@@ -2740,17 +2740,17 @@ LABEL_74:
         }
         v81 = v56;
         if ( !SR_VEC_READ_LANES(128, _mm_srli_si128(v56, 8), u32)[1] )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         SR_VEC_LANES(128, v81, i32)[2] = 0;
         v16 = 0;
         continue;
       case 0x1E:
         if ( v5 >= 4 )
           goto LABEL_34;
-        return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+        return 0; /* 0x140182DEF: xor eax, eax */
       case 0x1F:
         if ( v5 < 4 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         while ( v17 + 3 < v5 )
         {
           v29 = v5 - v17 == 5 ? *(&v91 + v17 + 4) : 0.0;
@@ -2819,7 +2819,7 @@ LABEL_68:
         else
         {
           if ( v20 != 28 && (unsigned int)(v20 - 32) > 0xDE )
-            return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+            return 0; /* 0x140182DEF: xor eax, eax */
           v63 = SR_VEC_LANES(128, v81, i32)[3];
           v64 = v16 - 1;
           if ( v16 - 1 > SR_VEC_LANES(128, v81, i32)[3] || v64 < 0 )
@@ -2834,7 +2834,7 @@ LABEL_68:
           v66 = (float)v65;
         }
         if ( v5 >= 48 )
-          return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+          return 0; /* 0x140182DEF: xor eax, eax */
         *(&v91 + v5) = v66;
         v8 = v97;
         v9 = v96;
@@ -2848,7 +2848,7 @@ LABEL_68:
         continue;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v77 ^ v104);
+  return 0; /* 0x140182DEF: xor eax, eax */
 }
 #undef v77
 #undef v78
@@ -3033,7 +3033,7 @@ __int64            sub_140183A70(float *a1, int a2)
     }
     while ( v4 < v2 );
   }
-  return sub_1401F8B20((unsigned __int64)&v14 ^ v16);
+  return 0; /* the function has no caller */
 }
 #undef v14
 #undef v15
@@ -3097,7 +3097,7 @@ __int64            sub_140183B30(__int64 a1, int a2)
       --v5;
     }
     while ( v5 );
-    return sub_1401F8B20((unsigned __int64)&v14 ^ v15);
+    return 0; /* the function has no caller */
   }
   return result;
 }
@@ -3242,8 +3242,8 @@ void            sub_140183BF0(float *a1, int a2)
 __int64            sub_140183DC0(
         __int64 a1,
         int *a2,
-        int a3,
-        int a4,
+        float a3,
+        float a4,
         float a5,
         float a6,
         float a7,
@@ -3253,8 +3253,8 @@ __int64            sub_140183DC0(
         float a11,
         int a12)
 {
-  float v12; // xmm2_4
-  float v13; // xmm3_4
+  float v12 = a3; // xmm2_4: x0 (0x140183DC0 keeps it in its home slot [rsp+120h]); Hex-Rays had lost it
+  float v13 = a4; // xmm3_4: y0 ([rsp+128h])
   __int64 result; // rax
   int v15; // esi
   __m128 v18; // xmm0
@@ -3339,7 +3339,8 @@ __int64            sub_140183DC0(
       SR_VEC_LANES(128, v22, f32)[0] = SR_VEC_LANES(128, v22, f32)[0] * 0.5;
       v35 = (float)(v21 + v34) * 0.5;
       *(float *)&v36 = (float)(SR_VEC_LANES(128, v22, f32)[0] + SR_VEC_LANES(128, v31, f32)[0]) * 0.5;
-      result = sub_140183DC0(a1, a2, a3, a4, v30, v32, v34, SR_VEC_LANES(128, v31, u32)[0], v35, v36, a11, v15);
+      /* 0x140184044: x0, y0 from [rsp+120h] / [rsp+128h] (0x140183F37, 0x140183F2A), the current start point */
+      result = sub_140183DC0(a1, a2, v48, v49, v30, *(float *)&v32, v34, SR_VEC_LANES(128, v31, f32)[0], v35, *(float *)&v36, a11, v15);
       v37 = ((__m128)_mm_cvtsi32_si128((int)(LODWORD(a8))));
       v48 = v35;
       v49 = *(float *)&v36;
@@ -3388,8 +3389,8 @@ __int64            sub_140183DC0(
 __int64            sub_140184190(
         __int64 a1,
         int *a2,
-        int a3,
-        int a4,
+        float a3,
+        float a4,
         float a5,
         float a6,
         float a7,
@@ -3397,8 +3398,8 @@ __int64            sub_140184190(
         float a9,
         int a10)
 {
-  float v10; // xmm2_4
-  float v11; // xmm3_4
+  float v10 = a3; // xmm2_4: x0; Hex-Rays had lost it
+  float v11 = a4; // xmm3_4: y0
   float v12; // xmm4_4
   float v15; // xmm11_4
   float v16; // xmm2_4
@@ -3437,7 +3438,19 @@ __int64            sub_140184190(
         (float)((float)(a6 + a6) + (float)(v11 + a8)) * 0.25,
         a9,
         a10 + 1);
-      sub_140184190(a1, a2, v18, v19, (float)(a5 + a7) * 0.5, (float)(a6 + a8) * 0.5, a7, a8, a9, a10 + 1);
+      /* 0x14018431E: the second half starts at the midpoint (xmm2 = xmm11 from 0x140184237, xmm3 = xmm12 from
+         0x140184252); the C had passed undefined locals */
+      sub_140184190(
+        a1,
+        a2,
+        v15,
+        (float)((float)((float)(a6 + a6) + (float)(v11 + a8)) * 0.25),
+        (float)(a5 + a7) * 0.5,
+        (float)(a6 + a8) * 0.5,
+        a7,
+        a8,
+        a9,
+        a10 + 1);
     }
   }
   return 1;
@@ -5220,10 +5233,8 @@ _BOOL8            sub_140187410(float *a1, float *a2, float *a3, float *a4, floa
 
 
 //----- (0000000140187860) ----------------------------------------------------
-void            sub_140187860(int a1, __int64 a2, __int64 a3, float a4)
+void            sub_140187860(int a1, float a2, float a3, float a4)
 {
-  __int128 v4; // xmm1
-  __int128 v5; // xmm2
   int v6; // ebx
   __int128 v8; // xmm10
   __int128 v9; // xmm14
@@ -5244,8 +5255,12 @@ void            sub_140187860(int a1, __int64 a2, __int64 a3, float a4)
 #define v22 (*(float (*))(void *)(sr_frame_140187860 + 4)) /* [rsp+24h] */
 
   v6 = 0;
-  v8 = v4;
-  v9 = v5;
+  /* x arrives in xmm1 (0x14018788A movaps xmm10, xmm1), y in xmm2 (0x1401878A8 movaps xmm14, xmm2); Hex-Rays had
+     lost both (v4, v5) and typed the parameters as integers */
+  v8 = 0;
+  v9 = 0;
+  *(float *)&v8 = a2;
+  *(float *)&v9 = a3;
   dword_140404A6C[456217205] = 1;
   dword_140404A6C[456217207] = 0;
   dword_140404A6C[456217208] = 9;
@@ -5313,9 +5328,9 @@ void            sub_140187860(int a1, __int64 a2, __int64 a3, float a4)
 // 1AD299464: using guessed type unsigned int;
 
 //----- (0000000140187A40) ----------------------------------------------------
-void            sub_140187A40(_BYTE *a1, __int64 a2, __int64 a3, float a4, float a5)
+void            sub_140187A40(_BYTE *a1, __int64 a2, float a3, float a4, float a5)
 {
-  float v5; // xmm2_4
+  float v5 = a3; // xmm2_4: x arrives in xmm2 (0x140187A89 movaps xmm15, xmm2); Hex-Rays had lost it
   float v7; // xmm13_4
   _BYTE *v8; // rbx
   float v9; // xmm12_4
@@ -5400,9 +5415,9 @@ void            sub_140187A40(_BYTE *a1, __int64 a2, __int64 a3, float a4, float
 // 1AD299464: using guessed type unsigned int;
 
 //----- (0000000140187C70) ----------------------------------------------------
-void            sub_140187C70(__int64 a1, __int64 a2, __int64 a3, float a4, float a5)
+void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float a5)
 {
-  float v5; // xmm2_4
+  float v5 = a3; // xmm2_4: x arrives in xmm2 (0x140187CBB movaps xmm11, xmm2); Hex-Rays had lost it
   __int64 v6; // rbx
   float v7; // xmm10_4
   __int64 v8; // rsi
@@ -5754,7 +5769,7 @@ __int64 sub_140188120()
     v0 += 5210;
   }
   while ( (__int64)v0 < (__int64)&dword_140404A6C[132387893] );
-  return sub_1401F8B20((unsigned __int64)&v48 ^ v52);
+  return 0; /* the function has no caller */
 }
 #undef v48
 #undef v49
@@ -12241,8 +12256,7 @@ LABEL_55:
     }
     while ( v2 < 4 );
   }
-  sub_14011C340(a1, (float *)&v28);
-  return sub_1401F8B20((unsigned __int64)&v26 ^ v29);
+  return sub_14011C340(a1, (float *)&v28); /* 0x140191F69: the result of this call is still in rax at the exit */
 }
 #undef v26
 #undef v27

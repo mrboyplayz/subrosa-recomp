@@ -1800,7 +1800,7 @@ __int64 sub_1400A3E30()
       dword_140404A6C[179473693] = v3;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v10);
+  return 0; /* the function has no caller */
 }
 #undef v8
 #undef name
@@ -2290,7 +2290,7 @@ __int64            sub_1400A4DD0(__int64 a1, int a2)
   *(float *)a1 = (float)(v47 * *(float *)&dword_140404A6C[5210 * v3 + 129716732]) + v52;
   *(float *)(a1 + 4) = (float)(v47 * *(float *)&dword_140404A6C[5210 * v3 + 129716733]) + v53;
   *(float *)(a1 + 8) = (float)(v47 * *(float *)&dword_140404A6C[5210 * v3 + 129716734]) + v54;
-  return sub_1401F8B20((unsigned __int64)&v56 ^ v60);
+  return 0; /* the function has no caller */
 }
 #undef v56
 #undef v57
@@ -2368,7 +2368,7 @@ __int64            sub_1400A5400(__int64 a1)
     sub_1401F8694();
   v8[v1] = 0;
   sub_14015B070((__int64)v8, "%u", &v7);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v9);
+  return (unsigned int)v7; /* 0x1400A546E: mov eax, dword ptr [rsp + 0x20] */
 }
 #undef v6
 #undef v7
@@ -2443,52 +2443,12 @@ __int64            sub_1400A5510(float *a1, float a2, float a3)
 //----- (00000001400A56B0) ----------------------------------------------------
 __int64            sub_1400A56B0(float *a1, float a2, float a3)
 {
-  unsigned int v4; // edx
-  unsigned int v5; // ecx
-  unsigned int v6; // ecx
-  unsigned int v7; // ecx
-  __int64 result; // rax
-  float v9; // xmm2_4
-  float v10; // xmm0_4
-  float v11; // xmm1_4
-  float v12; // xmm2_4
-
-  v4 = (dword_140404A6C[133919253] << 13) ^ dword_140404A6C[133919253];
-  ++dword_140404A6C[133919253];
-  *a1 = 1.0
-      - (float)((float)(((15731 * v4 * v4 + 789221) * (15731 * v4 * v4 + 789221) - 771171059) & 0x7FFFFFFF)
-              * 9.3132257e-10);
-  v5 = ((dword_140404A6C[133919253] << 13) ^ dword_140404A6C[133919253])
-     * ((dword_140404A6C[133919253] << 13) ^ dword_140404A6C[133919253]);
-  ++dword_140404A6C[133919253];
-  a1[1] = 1.0
-        - (float)((float)(((15731 * v5 + 789221) * (15731 * v5 + 789221) - 771171059) & 0x7FFFFFFF) * 9.3132257e-10);
-  v6 = ((dword_140404A6C[133919253] << 13) ^ dword_140404A6C[133919253])
-     * ((dword_140404A6C[133919253] << 13) ^ dword_140404A6C[133919253]);
-  ++dword_140404A6C[133919253];
-  a1[2] = 1.0
-        - (float)((float)(((15731 * v6 + 789221) * (15731 * v6 + 789221) - 771171059) & 0x7FFFFFFF) * 9.3132257e-10);
-  sub_14007A240((__int64)a1, a1);
-  v7 = ((dword_140404A6C[133919253] << 13) ^ dword_140404A6C[133919253])
-     * ((dword_140404A6C[133919253] << 13) ^ dword_140404A6C[133919253]);
-  result = ++dword_140404A6C[133919253];
-  v9 = (float)((float)((float)((float)(1.0
-                                     - (float)((float)(((15731 * v7 + 789221) * (15731 * v7 + 789221) - 771171059)
-                                                     & 0x7FFFFFFF)
-                                             * 9.3132257e-10))
-                             + 1.0)
-                     * a2)
-             * 0.5)
-     + a3;
-  v10 = v9 * *a1;
-  v11 = v9 * a1[1];
-  v12 = v9 * a1[2];
-  *a1 = v10;
-  a1[1] = v11;
-  a1[2] = v12;
-  return result;
+  /* Clean implementation: src/engine/human_ragdoll.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void human_random_direction(float *, float, float);
+  human_random_direction(a1, a2, a3);
+  return 0;
 }
-
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 1602E12C0: using guessed type unsigned int;
 
@@ -2858,8 +2818,7 @@ __int64 sub_1400A63E0()
     while ( !v2 );
     strcpy(v12, "SSE2\n");
   }
-  sub_140198EA5();
-  return sub_1401F8B20((unsigned __int64)&v14 ^ v16);
+  return sub_140198EA5(); /* 0x1400A6580: the result of this call is still in rax at the exit */
 }
 #undef v15
 #undef v16
@@ -3533,10 +3492,10 @@ __int64            sub_1400A7620(     __m128i *a1)
 // 1AD05944C: using guessed type unsigned int;
 
 //----- (00000001400A7A40) ----------------------------------------------------
-void            sub_1400A7A40(float a1, __int64 a2, __int64 a3, float a4, float a5)
+void            sub_1400A7A40(float a1, float a2, float a3, float a4, float a5)
 {
-  float v5; // xmm1_4
-  float v6; // xmm2_4
+  float v5 = a2; // xmm1_4: y0 (0x1400A7A7C); Hex-Rays had lost it
+  float v6 = a3; // xmm2_4: x1 (0x1400A7A62)
   float v8; // xmm9_4
   float v9; // xmm10_4
   float v10; // xmm6_4
@@ -4573,522 +4532,36 @@ __int64            sub_1400A9760(int a1, unsigned int a2, __int64 a3, int a4)
 //----- (00000001400A9940) ----------------------------------------------------
 __int64            sub_1400A9940(int a1, int a2, int a3, float *a4)
 {
-  __int64 v4; // r10
-  __int64 v7; // rbp
-  __int64 v8; // rbx
-  float v9; // xmm13_4
-  float v10; // xmm6_4
-  __int64 v11; // rcx
-  float v12; // xmm8_4
-  float v13; // xmm15_4
-  float v14; // xmm7_4
-  float v15; // xmm3_4
-  float v16; // xmm14_4
-  float v17; // xmm11_4
-  float v18; // xmm10_4
-  float v19; // xmm12_4
-  float v20; // xmm5_4
-  float v21; // xmm4_4
-  float v22; // xmm9_4
-  float v23; // xmm2_4
-  float v24; // xmm1_4
-  float v25; // xmm6_4
-  float v26; // xmm2_4
-  float v27; // xmm13_4
-  float v28; // xmm0_4
-  float v29; // xmm7_4
-  float v30; // xmm6_4
-  float v31; // xmm8_4
-  float v32; // xmm11_4
-  float v33; // xmm0_4
-  float v34; // xmm9_4
-  float v35; // xmm4_4
-  float v36; // xmm5_4
-  float v37; // xmm1_4
-  float v38; // xmm3_4
-  float v39; // xmm2_4
-  __int64 v40; // rax
-  float v41; // xmm0_4
-  float v42; // xmm10_4
-  float v43; // xmm1_4
-  float v44; // xmm0_4
-  float v45; // xmm6_4
-  float v46; // xmm3_4
-  float v47; // xmm0_4
-  float v48; // xmm3_4
-  float v49; // xmm2_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400A9940[112];
-#define v51 (*(__int64 (*))(void *)(sr_frame_1400A9940 + 8)) /* [rsp+0h] */
-#define v52 (*(float (*)[10])(void *)(sr_frame_1400A9940 + 40)) /* [rsp+20h] */
-#define v53 (*(__m128 (*))(void *)(sr_frame_1400A9940 + 80)) /* [rsp+48h] */
-#define v54 (*(__int64 (*))(void *)(sr_frame_1400A9940 + 104)) /* [rsp+60h] */
-
-  v4 = 28664LL * a1;
-  v7 = a3;
-  v8 = v4 + 312LL * a2;
-  v9 = *(float *)((char *)&dword_140404A6C[280651452] + v8);
-  v10 = *(float *)((char *)&dword_140404A6C[280651454] + v8);
-  v11 = v4 + 312LL * a3;
-  v12 = *(float *)((char *)&dword_140404A6C[280651453] + v8);
-  v13 = *(float *)((char *)&dword_140404A6C[280651456] + v8);
-  v14 = *(float *)((char *)&dword_140404A6C[280651453] + v11);
-  v15 = *(float *)((char *)&dword_140404A6C[280651454] + v11);
-  v16 = *(float *)((char *)&dword_140404A6C[280651452] + v11);
-  v17 = *(float *)((char *)&dword_140404A6C[280651456] + v11);
-  v18 = *(float *)((char *)&dword_140404A6C[280651455] + v11);
-  v19 = *(float *)((char *)&dword_140404A6C[280651457] + v11);
-  v20 = *(float *)((char *)&dword_140404A6C[280651459] + v11);
-  v21 = *(float *)((char *)&dword_140404A6C[280651458] + v11);
-  v22 = *(float *)((char *)&dword_140404A6C[280651460] + v11);
-  v52[0] = (float)((float)(v16 * v9) + (float)(v12 * v14)) + (float)(v10 * v15);
-  v23 = (float)((float)(v18 * v9) + (float)(v17 * v12)) + (float)(v19 * v10);
-  v24 = v22 * v10;
-  v25 = *(float *)((char *)&dword_140404A6C[280651457] + v8);
-  v52[1] = v23;
-  v26 = v21 * v9;
-  v27 = *(float *)((char *)&dword_140404A6C[280651455] + v8);
-  v28 = v13 * v14;
-  v29 = *(float *)((char *)&dword_140404A6C[280651459] + v8);
-  v52[2] = (float)(v26 + (float)(v20 * v12)) + v24;
-  v52[3] = (float)((float)(v27 * v16) + v28) + (float)(v25 * v15);
-  v52[4] = (float)((float)(v27 * v18) + (float)(v13 * v17)) + (float)(v25 * v19);
-  v52[5] = (float)((float)(v27 * v21) + (float)(v13 * v20)) + (float)(v25 * v22);
-  v30 = *(float *)((char *)&dword_140404A6C[280651458] + v8);
-  v31 = *(float *)((char *)&dword_140404A6C[280651460] + v8);
-  v52[6] = (float)((float)(v30 * v16) + (float)(v29 * *(float *)((char *)&dword_140404A6C[280651453] + v11)))
-         + (float)(v31 * *(float *)((char *)&dword_140404A6C[280651454] + v11));
-  v52[7] = (float)((float)(v30 * v18) + (float)(v29 * v17)) + (float)(v31 * v19);
-  v52[8] = (float)((float)(v30 * v21) + (float)(v29 * v20)) + (float)(v31 * v22);
-  sub_14010E370(SR_VEC_LANES(128, v53, f32), v52);
-  v32 = *(float *)((char *)&dword_140404A6C[280651452] + v8);
-  v33 = a4[1];
-  v34 = (float)((float)(*a4 * v32) + (float)(v33 * *(float *)((char *)&dword_140404A6C[280651453] + v8)))
-      + (float)(a4[2] * *(float *)((char *)&dword_140404A6C[280651454] + v8));
-  v35 = (float)((float)(*a4 * v27) + (float)(v33 * v13))
-      + (float)(a4[2] * *(float *)((char *)&dword_140404A6C[280651457] + v8));
-  v36 = (float)((float)(*a4 * v30) + (float)(v33 * v29)) + (float)(a4[2] * v31);
-  if ( SR_VEC_LANES(128, v53, f32)[3] < 0.0 )
-    v53 = _mm_xor_ps(v53, ((__m128)_mm_load_si128((const __m128i *)&xmmword_140279870)));
-  v37 = SR_VEC_LANES(128, v53, f32)[0] * 2.0;
-  v38 = SR_VEC_LANES(128, v53, f32)[1] * 2.0;
-  v39 = SR_VEC_LANES(128, v53, f32)[2] * 2.0;
-  if ( (a3 == 11 || a3 == 14) && v37 > 1.570796326795 )
-    v37 = -3.14159265359 - (3.14159265359 - v37);
-  v40 = 25 * v7;
-  v41 = *(float *)&dword_140404A6C[25 * v7 + 282486061];
-  v42 = *(float *)&dword_140404A6C[25 * v7 + 282486064];
-  if ( v37 < v41 && (float)((float)((float)(v37 - v41) * -0.25) - v34) > 0.0 )
-    v34 = (float)(v37 - v41) * -0.25;
-  if ( v37 > v42 )
-  {
-    v43 = (float)(v37 - v42) * -0.25;
-    if ( (float)(v43 - v34) < 0.0 )
-      v34 = v43;
-  }
-  v44 = *(float *)&dword_140404A6C[v40 + 282486062];
-  v45 = *(float *)&dword_140404A6C[v40 + 282486065];
-  if ( v38 < v44 && (float)((float)((float)(v38 - v44) * -0.25) - v35) > 0.0 )
-    v35 = (float)(v38 - v44) * -0.25;
-  if ( v38 > v45 )
-  {
-    v46 = (float)(v38 - v45) * -0.25;
-    if ( (float)(v46 - v35) < 0.0 )
-      v35 = v46;
-  }
-  v47 = *(float *)&dword_140404A6C[v40 + 282486063];
-  v48 = *(float *)&dword_140404A6C[v40 + 282486066];
-  if ( v39 < v47 && (float)((float)((float)(v39 - v47) * -0.25) - v36) > 0.0 )
-    v36 = (float)(v39 - v47) * -0.25;
-  if ( v39 > v48 )
-  {
-    v49 = (float)(v39 - v48) * -0.25;
-    if ( (float)(v49 - v36) < 0.0 )
-      v36 = v49;
-  }
-  *a4 = (float)((float)(v35 * v27) + (float)(v34 * v32))
-      + (float)(v36 * *(float *)((char *)&dword_140404A6C[280651458] + v8));
-  a4[1] = (float)((float)(v35 * *(float *)((char *)&dword_140404A6C[280651456] + v8))
-                + (float)(v34 * *(float *)((char *)&dword_140404A6C[280651453] + v8)))
-        + (float)(v36 * *(float *)((char *)&dword_140404A6C[280651459] + v8));
-  a4[2] = (float)((float)(v35 * *(float *)((char *)&dword_140404A6C[280651457] + v8))
-                + (float)(v34 * *(float *)((char *)&dword_140404A6C[280651454] + v8)))
-        + (float)(v36 * *(float *)((char *)&dword_140404A6C[280651460] + v8));
-  return 0; /* compatibility result discarded by all reviewed callers */
+  /* Clean implementation: src/engine/human_ragdoll.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void human_limit_joint_turn(int, int, int, float *);
+  human_limit_joint_turn(a1, a2, a3, a4);
+  return 0;
 }
-#undef v51
-#undef v52
-#undef v53
-#undef v54
-
 // 140279870: using guessed type __int128 xmmword_140279870;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400A9EF0) ----------------------------------------------------
 __int64            sub_1400A9EF0(int a1, int a2, int a3, float *a4)
 {
-  __int64 v5; // r10
-  __int64 v6; // rdi
-  __int64 v7; // rbx
-  __int64 v8; // rbp
-  float v9; // xmm10_4
-  float v10; // xmm8_4
-  float v11; // xmm11_4
-  float v12; // xmm12_4
-  float v13; // xmm15_4
-  float v14; // xmm13_4
-  float v15; // xmm14_4
-  float v16; // xmm6_4
-  float v17; // xmm9_4
-  float v18; // xmm7_4
-  float v19; // xmm7_4
-  __int64 v20; // rdx
-  __m128 v21; // xmm0
-  float v22; // xmm3_4
-  float v23; // xmm5_4
-  float v24; // xmm2_4
-  float v25; // xmm12_4
-  float v26; // xmm3_4
-  float v27; // xmm11_4
-  float v28; // xmm14_4
-  float v29; // xmm6_4
-  float v30; // xmm4_4
-  __int64 result; // rax
-  float v32; // xmm12_4
-  float v33; // xmm3_4
-  float v34; // xmm10_4
-  float v35; // xmm15_4
-  float v36; // xmm0_4
-  float v37; // xmm11_4
-  float v38; // xmm13_4
-  float v39; // xmm10_4
-  float v40; // xmm0_4
-  float v41; // xmm7_4
-  float v42; // xmm13_4
-  float v43; // xmm7_4
-  float v44; // xmm11_4
-  float v45; // xmm0_4
-  float v46; // xmm2_4
-  float v47; // xmm3_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400A9EF0[48];
-#define v48 (*(float (*))(void *)(sr_frame_1400A9EF0 + 0)) /* [rsp+20h] */
-#define v49 (*(float (*))(void *)(sr_frame_1400A9EF0 + 4)) /* [rsp+24h] */
-#define v50 (*(float (*))(void *)(sr_frame_1400A9EF0 + 8)) /* [rsp+28h] */
-#define v51 (*(float (*))(void *)(sr_frame_1400A9EF0 + 12)) /* [rsp+2Ch] */
-#define v52 (*(float (*))(void *)(sr_frame_1400A9EF0 + 16)) /* [rsp+30h] */
-#define v53 (*(float (*))(void *)(sr_frame_1400A9EF0 + 20)) /* [rsp+34h] */
-#define v54 (*(float (*))(void *)(sr_frame_1400A9EF0 + 24)) /* [rsp+38h] */
-#define v55 (*(float (*))(void *)(sr_frame_1400A9EF0 + 28)) /* [rsp+3Ch] */
-#define v56 (*(float (*))(void *)(sr_frame_1400A9EF0 + 32)) /* [rsp+40h] */
-#define v57 (*(float (*))(void *)(sr_frame_1400A9EF0 + 36)) /* [rsp+44h] */
-
-  v5 = 28664LL * a1;
-  v6 = a3;
-  v7 = v5 + 312LL * a2;
-  v8 = v5 + 312LL * a3;
-  v55 = *(float *)((char *)&dword_140404A6C[280651452] + v7);
-  v56 = *(float *)((char *)&dword_140404A6C[280651453] + v7);
-  v9 = *(float *)((char *)&dword_140404A6C[280651453] + v8);
-  v10 = *(float *)((char *)&dword_140404A6C[280651454] + v8);
-  v11 = *(float *)((char *)&dword_140404A6C[280651455] + v8);
-  v12 = *(float *)((char *)&dword_140404A6C[280651457] + v8);
-  v13 = *(float *)((char *)&dword_140404A6C[280651459] + v8);
-  v14 = *(float *)((char *)&dword_140404A6C[280651458] + v8);
-  v15 = *(float *)((char *)&dword_140404A6C[280651460] + v8);
-  v48 = *(float *)((char *)&dword_140404A6C[280651458] + v7);
-  v52 = *(float *)((char *)&dword_140404A6C[280651456] + v7);
-  v49 = *(float *)((char *)&dword_140404A6C[280651459] + v7);
-  v50 = *(float *)((char *)&dword_140404A6C[280651460] + v7);
-  v16 = *(float *)((char *)&dword_140404A6C[280651452] + v8);
-  v57 = *(float *)((char *)&dword_140404A6C[280651454] + v7);
-  v51 = *(float *)((char *)&dword_140404A6C[280651455] + v7);
-  v17 = (float)((float)(v9 * v56) + (float)(v16 * v55)) + (float)(v10 * v57);
-  v53 = *(float *)((char *)&dword_140404A6C[280651457] + v7);
-  v18 = (float)((float)(v9 * v52) + (float)(v16 * v51)) + (float)(v10 * v53);
-  v54 = sub_14023F704(
-          (float)((float)(*(float *)((char *)&dword_140404A6C[280651456] + v8) * v49) + (float)(v11 * v48))
-        + (float)(v12 * v50),
-          (float)((float)(v13 * v49) + (float)(v14 * v48)) + (float)(v15 * v50));
-  v19 = sub_14023F704(
-          -(float)((float)((float)(v9 * v49) + (float)(v16 * v48)) + (float)(v10 * v50)),
-          fsqrt((float)(v18 * v18) + (float)(v17 * v17)));
-  v21 = sub_1401F8AC0(
-          COERCE_DOUBLE((unsigned __int64)LODWORD(v54)),
-          v20,
-          COERCE_DOUBLE((unsigned __int64)COERCE_UNSIGNED_INT(v14 * v48)));
-  v22 = SR_VEC_READ_LANES(128, _mm_shuffle_ps(v21, v21, 1), f32)[0];
-  v23 = sub_14023F704(
-          (float)((float)((float)((float)(v13 * v56) + (float)(v14 * v55)) + (float)(v15 * v57)) * SR_VEC_LANES(128, v21, f32)[0])
-        - (float)((float)((float)((float)(*(float *)((char *)&dword_140404A6C[280651456] + v8) * v56)
-                                + (float)(v11 * v55))
-                        + (float)(v12 * v57))
-                * v22),
-          (float)((float)((float)((float)(*(float *)((char *)&dword_140404A6C[280651456] + v8) * v52)
-                                + (float)(v11 * v51))
-                        + (float)(v12 * v53))
-                * v22)
-        - (float)((float)((float)((float)(v13 * v52) + (float)(v14 * v51)) + (float)(v15 * v53)) * SR_VEC_LANES(128, v21, f32)[0]));
-  v24 = *(float *)((char *)&dword_140404A6C[280651462] + v7) - *(float *)((char *)&dword_140404A6C[280651462] + v8);
-  v25 = *(float *)((char *)&dword_140404A6C[280651461] + v7) - *(float *)((char *)&dword_140404A6C[280651461] + v8);
-  v26 = *(float *)((char *)&dword_140404A6C[280651463] + v7) - *(float *)((char *)&dword_140404A6C[280651463] + v8);
-  v27 = (float)((float)(v24 * v56) + (float)(v25 * v55)) + (float)(v26 * v57);
-  v28 = (float)((float)(v24 * v52) + (float)(v25 * v51)) + (float)(v26 * v53);
-  v29 = 0.0;
-  v30 = 0.0;
-  result = 25 * v6;
-  v32 = (float)((float)(v25 * v48) + (float)(v24 * v49)) + (float)(v26 * v50);
-  v33 = 0.0;
-  v34 = *(float *)&dword_140404A6C[25 * v6 + 282486061];
-  v35 = *(float *)&dword_140404A6C[25 * v6 + 282486064];
-  if ( v54 < v34 && (float)((float)((float)(v54 - v34) * -0.25) - (float)(v27 * 0.5)) > 0.0 )
-    v29 = (float)((float)(v54 - v34) * -0.25) - (float)(v27 * 0.5);
-  if ( v54 > v35 )
-  {
-    v36 = (float)((float)(v54 - v35) * -0.25) - (float)(v27 * 0.5);
-    if ( v36 < 0.0 )
-      v29 = v29 + v36;
-  }
-  v37 = *(float *)&dword_140404A6C[25 * v6 + 282486065];
-  v38 = *(float *)&dword_140404A6C[25 * v6 + 282486062];
-  v39 = fminf(fmaxf(v34, v54), v35);
-  if ( v19 < v38 && (float)((float)((float)(v19 - v38) * -0.25) - (float)(v28 * 0.5)) > 0.0 )
-    v30 = (float)((float)(v19 - v38) * -0.25) - (float)(v28 * 0.5);
-  if ( v19 > v37 )
-  {
-    v40 = (float)((float)(v19 - v37) * -0.25) - (float)(v28 * 0.5);
-    if ( v40 < 0.0 )
-      v30 = v30 + v40;
-  }
-  v41 = fmaxf(v19, v38);
-  v42 = *(float *)&dword_140404A6C[25 * v6 + 282486063];
-  v43 = fminf(v41, v37);
-  v44 = *(float *)&dword_140404A6C[25 * v6 + 282486066];
-  if ( v23 < v42 && (float)((float)((float)(v23 - v42) * -0.25) - (float)(v32 * 0.5)) > 0.0 )
-    v33 = (float)((float)(v23 - v42) * -0.25) - (float)(v32 * 0.5);
-  if ( v23 > v44 )
-  {
-    v45 = (float)((float)(v23 - v44) * -0.25) - (float)(v32 * 0.5);
-    if ( v45 < 0.0 )
-      v33 = v33 + v45;
-  }
-  v46 = v33 * v49;
-  *(float *)((char *)&dword_140404A6C[280651502] + v8) = v39;
-  *(float *)((char *)&dword_140404A6C[280651503] + v8) = v43;
-  *(float *)((char *)&dword_140404A6C[280651504] + v8) = fminf(fmaxf(v23, v42), v44);
-  *a4 = (float)((float)(v30 * v51) + (float)(v55 * v29)) + (float)((float)(v33 * v48) + *a4);
-  v47 = (float)((float)(v33 * v50) + (float)(v29 * v57)) + (float)((float)(v30 * v53) + a4[2]);
-  a4[1] = (float)(v46 + (float)(v29 * v56)) + (float)((float)(v30 * v52) + a4[1]);
-  a4[2] = v47;
-  return result;
+  /* Clean implementation: src/engine/human_ragdoll.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void human_limit_joint_angles(int, int, int, float *);
+  human_limit_joint_angles(a1, a2, a3, a4);
+  return 0;
 }
-#undef v48
-#undef v49
-#undef v50
-#undef v51
-#undef v52
-#undef v53
-#undef v54
-#undef v55
-#undef v56
-#undef v57
-
-// 1400AA135: variable 'v20' is possibly undefined
 // 140279870: using guessed type __int128 xmmword_140279870;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400AA510) ----------------------------------------------------
 __int64            sub_1400AA510(int a1, int a2)
 {
-  unsigned int v2; // edi
-  __int64 v3; // rbx
-  __int64 v4; // r14
-  __int64 v5; // rdx
-  __int64 v6; // rax
-  __int64 v7; // rsi
-  __int64 v8; // rsi
-  __int64 v9; // rcx
-  float v10; // xmm6_4
-  float v11; // xmm7_4
-  float v12; // xmm9_4
-  float v13; // xmm10_4
-  float v14; // xmm8_4
-  float v15; // xmm11_4
-  float v16; // xmm4_4
-  float v17; // xmm3_4
-  float v18; // xmm2_4
-  float v19; // xmm1_4
-  float v20; // xmm9_4
-  float v21; // xmm10_4
-  float v22; // xmm11_4
-  __int64 v23; // rcx
-  float v24; // xmm2_4
-  float v25; // xmm1_4
-  float v26; // xmm4_4
-  float v27; // xmm3_4
-  float v28; // xmm2_4
-  float v29; // xmm0_4
-  float v30; // xmm0_4
-  float v31; // xmm1_4
-  float v32; // xmm2_4
-  __int64 result; // rax
-  float v34; // xmm3_4
-  float v35; // xmm4_4
-  float v36; // xmm5_4
-  float v37; // xmm0_4
-  int v38; // edx
-  int v39; // ecx
-  float v40; // xmm6_4
-  float v41; // xmm8_4
-  float v42; // xmm1_4
-  unsigned int v43; // xmm7_4
-  unsigned int v44; // xmm1_4
-  unsigned int v45; // xmm0_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400AA510[368];
-#define v46 (*(__int64 (*))(void *)(sr_frame_1400AA510 + 0)) /* [rsp+50h] */
-#define v47 (*(float (*))(void *)(sr_frame_1400AA510 + 8)) /* [rsp+58h] */
-#define v48 (*(float (*))(void *)(sr_frame_1400AA510 + 16)) /* [rsp+60h] */
-#define v49 (*(float (*))(void *)(sr_frame_1400AA510 + 20)) /* [rsp+64h] */
-#define v50 (*(float (*))(void *)(sr_frame_1400AA510 + 24)) /* [rsp+68h] */
-#define v51 (*(float (*))(void *)(sr_frame_1400AA510 + 32)) /* [rsp+70h] */
-#define v52 (*(float (*))(void *)(sr_frame_1400AA510 + 36)) /* [rsp+74h] */
-#define v53 (*(float (*))(void *)(sr_frame_1400AA510 + 40)) /* [rsp+78h] */
-#define v54 (*(unsigned int (*)[4])(void *)(sr_frame_1400AA510 + 48)) /* [rsp+80h] */
-#define v55 (*(unsigned int (*)[4])(void *)(sr_frame_1400AA510 + 64)) /* [rsp+90h] */
-#define v56 (*(float (*))(void *)(sr_frame_1400AA510 + 80)) /* [rsp+A0h] */
-#define v57 (*(float (*))(void *)(sr_frame_1400AA510 + 84)) /* [rsp+A4h] */
-#define v58 (*(float (*))(void *)(sr_frame_1400AA510 + 88)) /* [rsp+A8h] */
-#define v59 (*(float (*))(void *)(sr_frame_1400AA510 + 92)) /* [rsp+ACh] */
-#define v60 (*(float (*))(void *)(sr_frame_1400AA510 + 96)) /* [rsp+B0h] */
-#define v61 (*(float (*))(void *)(sr_frame_1400AA510 + 100)) /* [rsp+B4h] */
-#define v62 (*(float (*)[3])(void *)(sr_frame_1400AA510 + 104)) /* [rsp+B8h] */
-#define v63 (*(float (*)[3])(void *)(sr_frame_1400AA510 + 116)) /* [rsp+C4h] */
-#define v64 (*(float (*))(void *)(sr_frame_1400AA510 + 352)) /* [rsp+1B0h] */
-
-  v2 = 0;
-  v3 = 1760LL * a2;
-  v4 = 28664LL * a1;
-  do
-  {
-    v5 = 175;
-    v6 = 182;
-    if ( v2 >= 2 )
-    {
-      v5 = 50;
-      v6 = 52;
-    }
-    v7 = 2184;
-    if ( v2 >= 2 )
-      v7 = 624;
-    v8 = v4 + v7;
-    v9 = v4 + 12 * (v6 + (int)dword_140404A6C[v5 + 282486067]);
-    v10 = *(float *)((char *)&dword_140404A6C[280651452] + v9);
-    v11 = *(float *)((char *)&dword_140404A6C[280651453] + v9);
-    v12 = *(float *)((char *)&dword_140404A6C[280651440] + v8);
-    v13 = *(float *)((char *)&dword_140404A6C[280651441] + v8);
-    v14 = *(float *)((char *)&dword_140404A6C[280651454] + v9);
-    v15 = *(float *)((char *)&dword_140404A6C[280651442] + v8);
-    v59 = (float)(v10 * 0.1640625) + v12;
-    v60 = (float)(v11 * 0.1640625) + v13;
-    v61 = (float)(v14 * 0.1640625) + v15;
-    v56 = (float)(v10 * 0.2890625) + v12;
-    v57 = (float)(v11 * 0.2890625) + v13;
-    v58 = (float)(v14 * 0.2890625) + v15;
-    if ( v2 >= 2 )
-    {
-      v16 = (float)(*(float *)&dword_140404A6C[v5 + 282486068] * -0.5) - 0.0625;
-      v17 = *(float *)((char *)&dword_140404A6C[280651455] + v8) * 0.0625;
-      v18 = *(float *)((char *)&dword_140404A6C[280651456] + v8) * 0.0625;
-      v19 = *(float *)((char *)&dword_140404A6C[280651457] + v8) * 0.0625;
-      v56 = (float)((float)(v10 * v16) + v12) + v17;
-      v59 = (float)((float)(v10 * (float)(*(float *)&dword_140404A6C[282486224] - 0.125)) + v12) + v17;
-      v57 = (float)((float)(v11 * v16) + v13) + v18;
-      v60 = (float)((float)(v11 * (float)(*(float *)&dword_140404A6C[282486224] - 0.125)) + v13) + v18;
-      v58 = (float)((float)(v14 * v16) + v15) + v19;
-      v61 = (float)((float)(v14 * (float)(*(float *)&dword_140404A6C[282486224] - 0.125)) + v15) + v19;
-    }
-    v20 = *(float *)&dword_140404A6C[v3 + 278845916];
-    v21 = *(float *)&dword_140404A6C[v3 + 278845917];
-    v22 = *(float *)&dword_140404A6C[v3 + 278845918];
-    v23 = 1268LL * (int)dword_140404A6C[v3 + 278845898];
-    v24 = *(float *)&dword_140404A6C[v23 + 278522539];
-    v25 = (float)(*(float *)&dword_140404A6C[v23 + 278522540] * *(float *)&dword_140404A6C[v3 + 278845940]) + v20;
-    v26 = (float)(*(float *)&dword_140404A6C[v23 + 278522540] * *(float *)&dword_140404A6C[v3 + 278845941]) + v21;
-    v27 = (float)(*(float *)&dword_140404A6C[v23 + 278522540] * *(float *)&dword_140404A6C[v3 + 278845942]) + v22;
-    if ( (v2 & 1) != 0 )
-      v28 = v24 + 0.0625;
-    else
-      v28 = v24 - 0.0625;
-    v29 = v28 * *(float *)&dword_140404A6C[v3 + 278845937];
-    LODWORD(v63[0]) = dword_140404A6C[v3 + 278845916];
-    v30 = v29 + v25;
-    v63[1] = v21;
-    v63[2] = v22;
-    v31 = v28 * *(float *)&dword_140404A6C[v3 + 278845938];
-    v32 = v28 * *(float *)&dword_140404A6C[v3 + 278845939];
-    v62[0] = v30;
-    v62[1] = v31 + v26;
-    v62[2] = v32 + v27;
-    result = sub_1400D6890(&v48, &v51, &v64, &v56, &v59, v62, v63, 0.125);
-    if ( (_DWORD)result )
-    {
-      v34 = v48 - v51;
-      v35 = v49 - v52;
-      v36 = v50 - v53;
-      v37 = fsqrt((float)((float)(v35 * v35) + (float)(v34 * v34)) + (float)(v36 * v36));
-      if ( v37 == 0.0 )
-      {
-        v46 = 0;
-        v47 = 0.0;
-      }
-      else
-      {
-        *(float *)&v46 = (float)(1.0 / v37) * v34;
-        *((float *)&v46 + 1) = (float)(1.0 / v37) * v35;
-        v47 = (float)(1.0 / v37) * v36;
-      }
-      v38 = dword_140404A6C[v3 + 278845915];
-      v39 = *(unsigned int *)((char *)&dword_140404A6C[280651439] + v8);
-      v40 = (float)(v51 + v48) * 0.5;
-      v41 = (float)(v53 + v50) * 0.5;
-      v42 = (float)(v52 + v49) * 0.5;
-      *(float *)&v43 = v42 - v21;
-      *(float *)&v44 = v42 - *(float *)((char *)&dword_140404A6C[280651441] + v8);
-      *(float *)v55 = v40 - *(float *)((char *)&dword_140404A6C[280651440] + v8);
-      *(float *)&v45 = v41 - *(float *)((char *)&dword_140404A6C[280651442] + v8);
-      *(float *)v54 = v40 - v20;
-      v55[1] = v44;
-      v55[2] = v45;
-      v54[1] = v43;
-      *(float *)&v54[2] = v41 - v22;
-      result = sub_1400052C0(v39, v38, v55, v54, (unsigned int *)&v46, 0.125 - v64, 0x3ECCCCCDu, 0.03125, 0x3D800000u);
-    }
-    ++v2;
-  }
-  while ( (int)v2 < 4 );
-  return result;
+  /* Clean implementation: src/engine/human_ragdoll.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void human_keep_arms_off_item(int, int);
+  human_keep_arms_off_item(a1, a2);
+  return 0;
 }
-#undef v46
-#undef v47
-#undef v48
-#undef v49
-#undef v50
-#undef v51
-#undef v52
-#undef v53
-#undef v54
-#undef v55
-#undef v56
-#undef v57
-#undef v58
-#undef v59
-#undef v60
-#undef v61
-#undef v62
-#undef v63
-#undef v64
-
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400AAAA0) ----------------------------------------------------
@@ -5541,112 +5014,12 @@ __int64            sub_1400AAAA0(int a1)
 //----- (00000001400AC530) ----------------------------------------------------
 __int64            sub_1400AC530(float *a1, int a2, int a3)
 {
-  __int64 v4; // rbx
-  __int64 v5; // r8
-  __int64 v6; // rdi
-  float v7; // xmm10_4
-  float v8; // xmm9_4
-  float v9; // xmm2_4
-  float v10; // xmm7_4
-  float v11; // xmm9_4
-  double v12; // xmm2_8
-  float v13; // xmm5_4
-  float v14; // xmm0_4
-  float v15; // xmm8_4
-  float v16; // xmm11_4
-  float v17; // xmm5_4
-  float v18; // xmm0_4
-  float v19; // xmm11_4
-  float v20; // xmm8_4
-  float v21; // xmm3_4
-  float v22; // xmm8_4
-  float v23; // xmm4_4
-  float v24; // xmm0_4
-  float v25; // xmm6_4
-  float v26; // xmm7_4
-  float v27; // xmm5_4
-  float v28; // xmm6_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400AC530[80];
-#define v30 (*(__int64 (*))(void *)(sr_frame_1400AC530 + 0)) /* [rsp+0h] */
-#define v31 (*(__int128 (*))(void *)(sr_frame_1400AC530 + 32)) /* [rsp+20h] */
-#define v32 (*(__int128 (*))(void *)(sr_frame_1400AC530 + 48)) /* [rsp+30h] */
-#define v33 (*(int (*))(void *)(sr_frame_1400AC530 + 64)) /* [rsp+40h] */
-#define v34 (*(__int64 (*))(void *)(sr_frame_1400AC530 + 72)) /* [rsp+48h] */
-
-  v4 = 1760LL * a3;
-  v33 = 1065353216;
-  v5 = 1268LL * (int)dword_140404A6C[v4 + 278845898];
-  v6 = 7166LL * a2;
-  v7 = (float)((float)((float)(*(float *)&dword_140404A6C[v5 + 278521317] * *(float *)&dword_140404A6C[v4 + 278845934])
-                     + *(float *)&dword_140404A6C[v4 + 278845916])
-             + (float)(*(float *)&dword_140404A6C[v5 + 278521318] * *(float *)&dword_140404A6C[v4 + 278845937]))
-     + (float)(*(float *)&dword_140404A6C[v5 + 278521319] * *(float *)&dword_140404A6C[v4 + 278845940]);
-  v8 = (float)((float)(*(float *)&dword_140404A6C[v5 + 278521317] * *(float *)&dword_140404A6C[v4 + 278845936])
-             + *(float *)&dword_140404A6C[v4 + 278845918])
-     + (float)(*(float *)&dword_140404A6C[v5 + 278521318] * *(float *)&dword_140404A6C[v4 + 278845939]);
-  v9 = *(float *)&dword_140404A6C[v5 + 278521319] * *(float *)&dword_140404A6C[v4 + 278845942];
-  v10 = (float)((float)((float)(*(float *)&dword_140404A6C[v5 + 278521317] * *(float *)&dword_140404A6C[v4 + 278845935])
-                      + *(float *)&dword_140404A6C[v4 + 278845917])
-              + (float)(*(float *)&dword_140404A6C[v5 + 278521318] * *(float *)&dword_140404A6C[v4 + 278845938]))
-      + (float)(*(float *)&dword_140404A6C[v5 + 278521319] * *(float *)&dword_140404A6C[v4 + 278845941]);
-  v31 = xmmword_140278D30;
-  v11 = v8 + v9;
-  *(_QWORD *)&v12 = dword_140404A6C[v6 + 280651377];
-  v32 = xmmword_140278D30;
-  sub_14007B2A0((__int64)&v31, (float *)&dword_1402F6188, v12);
-  LODWORD(v12) = DWORD1(v31);
-  v13 = *((float *)&v31 + 3) * 0.5;
-  v14 = (float)(*(float *)&v31 * 0.875) + *(float *)&dword_140404A6C[v4 + 278846085];
-  v15 = *((float *)&v31 + 2) * 0.875;
-  v16 = *(float *)&v32 * 0.5;
-  *a1 = v14;
-  v17 = v13 + v14;
-  v18 = *((float *)&v32 + 1) * 0.5;
-  *(float *)&v12 = (float)(*(float *)&v12 * 0.875) + *(float *)&dword_140404A6C[v4 + 278846086];
-  a1[1] = *(float *)&v12;
-  v19 = v16 + *(float *)&v12;
-  v20 = v15 + *(float *)&dword_140404A6C[v4 + 278846087];
-  *a1 = v17;
-  v21 = v17 - v7;
-  a1[1] = v19;
-  v22 = v20 + v18;
-  a1[2] = v22;
-  v23 = v22 - v11;
-  v24 = fsqrt((float)(v23 * v23) + (float)(v21 * v21));
-  if ( v24 <= 0.0625 )
-  {
-    v10 = v19;
-    v25 = v22;
-  }
-  else
-  {
-    a1[1] = v10;
-    v25 = (float)((float)((float)(1.0 / v24) * v23) * 0.0625) + v11;
-    v17 = (float)((float)((float)(1.0 / v24) * v21) * 0.0625) + v7;
-    a1[2] = v25;
-    *a1 = v17;
-  }
-  v26 = v10 - *(float *)&dword_140404A6C[v6 + 280651597];
-  v27 = v17 - *(float *)&dword_140404A6C[v6 + 280651596];
-  v28 = v25 - *(float *)&dword_140404A6C[v6 + 280651598];
-  *a1 = (float)((float)(v26 * *(float *)&dword_140404A6C[v6 + 280651609])
-              + (float)(v27 * *(float *)&dword_140404A6C[v6 + 280651608]))
-      + (float)(v28 * *(float *)&dword_140404A6C[v6 + 280651610]);
-  a1[1] = (float)((float)(v26 * *(float *)&dword_140404A6C[v6 + 280651612])
-                + (float)(v27 * *(float *)&dword_140404A6C[v6 + 280651611]))
-        + (float)(v28 * *(float *)&dword_140404A6C[v6 + 280651613]);
-  a1[2] = (float)((float)(v26 * *(float *)&dword_140404A6C[v6 + 280651615])
-                + (float)(v27 * *(float *)&dword_140404A6C[v6 + 280651614]))
-        + (float)(v28 * *(float *)&dword_140404A6C[v6 + 280651616]);
-  return 0; /* compatibility result discarded by all reviewed callers */
+  /* Clean implementation: src/engine/human_ragdoll.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void human_item_28_hand_target(float *, int, int);
+  human_item_28_hand_target(a1, a2, a3);
+  return 0;
 }
-#undef v30
-#undef v31
-#undef v32
-#undef v33
-#undef v34
-
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 1402F6188: using guessed type int dword_1402F6188;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -6122,100 +5495,13 @@ LABEL_38:
 //----- (00000001400B29B0) ----------------------------------------------------
 __int64            sub_1400B29B0(__int64 a1, int a2, int a3, int a4, int a5, float *a6)
 {
-  float v6; // xmm3_4
-  float v8; // xmm1_4
-  float v9; // xmm3_4
-  float v10; // xmm0_4
-  float v11; // xmm5_4
-  __int64 v12; // rcx
-  __int64 v13; // rdx
-  __int64 result; // rax
-  float v15; // xmm4_4
-  float v16; // xmm2_4
-  float v17; // xmm1_4
-  float v18; // xmm4_4
-  float v19; // xmm5_4
-  float v20; // xmm0_4
-  float v21; // xmm3_4
-  float v22; // xmm5_4
-  float v23; // xmm4_4
-  float v24; // xmm1_4
-  float v25; // xmm2_4
-  float v26; // xmm4_4
-  float v27; // xmm6_4
-  float v28; // xmm0_4
-  float v29; // xmm1_4
-  float v30; // xmm6_4
-  float v31; // xmm5_4
-  float v32; // xmm4_4
-  float v33; // xmm3_4
-  float v34; // xmm5_4
-  float v35; // xmm0_4
-
-  v6 = *(float *)&dword_140404A6C[282486224];
-  *(_DWORD *)a1 = dword_140404A6C[282486224];
-  v8 = *(float *)&dword_140404A6C[282486225];
-  v9 = v6 - 0.0625;
-  *(_DWORD *)(a1 + 4) = dword_140404A6C[282486225];
-  v10 = v8;
-  v11 = *(float *)&dword_140404A6C[282486226] - 0.09375;
-  *(float *)a1 = v9;
-  *(float *)(a1 + 8) = v11;
-  v12 = 7166LL * a2;
-  if ( dword_140404A6C[v12 + 280658335] != 1 && (int)dword_140404A6C[v12 + 280651327] < 2 )
-  {
-    v10 = v8 - 0.25;
-    *(float *)(a1 + 4) = v8 - 0.25;
-  }
-  if ( dword_140404A6C[v12 + 280651313] != -1 )
-  {
-    v10 = v10 + 0.25;
-    *(float *)(a1 + 4) = v10;
-  }
-  v13 = 1268LL * a4;
-  result = v13 * 4 + 12LL * a3;
-  v15 = -*(float *)&dword_140404A6C[v13 + 278522538];
-  v16 = (float)(v15 * *a6) + v9;
-  *(float *)a1 = v16;
-  v17 = (float)(v15 * a6[1]) + v10;
-  *(float *)(a1 + 4) = v17;
-  v18 = (float)(v15 * a6[2]) + v11;
-  *(float *)(a1 + 8) = v18;
-  v19 = -*(float *)&dword_140404A6C[v13 + 278522539];
-  v20 = (float)(v19 * a6[3]) + v16;
-  *(float *)a1 = v20;
-  v21 = (float)(v19 * a6[4]) + v17;
-  *(float *)(a1 + 4) = v21;
-  v22 = (float)(v19 * a6[5]) + v18;
-  *(float *)(a1 + 8) = v22;
-  v23 = -*(float *)&dword_140404A6C[v13 + 278522540];
-  v24 = (float)(v23 * a6[6]) + v20;
-  *(float *)a1 = v24;
-  v25 = (float)(v23 * a6[7]) + v21;
-  *(float *)(a1 + 4) = v25;
-  v26 = (float)(v23 * a6[8]) + v22;
-  *(float *)(a1 + 8) = v26;
-  v27 = *(float *)((char *)&dword_140404A6C[278521317] + result);
-  v28 = (float)(v27 * *a6) + v24;
-  *(float *)a1 = v28;
-  v29 = (float)(v27 * a6[1]) + v25;
-  *(float *)(a1 + 4) = v29;
-  v30 = (float)(v27 * a6[2]) + v26;
-  *(float *)(a1 + 8) = v30;
-  v31 = *(float *)((char *)&dword_140404A6C[278521318] + result);
-  v32 = (float)(v31 * a6[3]) + v28;
-  *(float *)a1 = v32;
-  v33 = (float)(v31 * a6[4]) + v29;
-  *(float *)(a1 + 4) = v33;
-  v34 = (float)(v31 * a6[5]) + v30;
-  *(float *)(a1 + 8) = v34;
-  v35 = *(float *)((char *)&dword_140404A6C[278521319] + result);
-  *(float *)a1 = (float)(v35 * a6[6]) + v32;
-  *(float *)(a1 + 4) = (float)(v35 * a6[7]) + v33;
-  *(float *)(a1 + 8) = (float)(v35 * a6[8]) + v34;
-  return result;
+  /* Clean implementation: src/engine/human_ragdoll.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void human_aim_hand_target(float *, int, int, int, const float *);
+  (void)a5;
+  human_aim_hand_target((float *)a1, a2, a3, a4, a6);
+  return 0;
 }
-
 // 140279870: using guessed type __int128 xmmword_140279870;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 // 18399E1AC: using guessed type unsigned int;
@@ -6224,59 +5510,12 @@ __int64            sub_1400B29B0(__int64 a1, int a2, int a3, int a4, int a5, flo
 //----- (00000001400B2BF0) ----------------------------------------------------
 __int64            sub_1400B2BF0(int a1, int a2, int a3, float *a4, float a5, float a6)
 {
-  __int64 v6; // rcx
-  __int64 result; // rax
-  __int64 v8; // r8
-  __int64 v9; // rdx
-  float v10; // xmm6_4
-  float v11; // xmm7_4
-  float v12; // xmm8_4
-  float v13; // xmm3_4
-  float v14; // xmm4_4
-  float v15; // xmm5_4
-  float v16; // xmm2_4
-  float v17; // xmm3_4
-  float v18; // xmm4_4
-  float v19; // xmm5_4
-
-  v6 = 28664LL * a1;
-  result = a2;
-  v8 = v6 + 312LL * a3;
-  v9 = v6 + 312LL * a2;
-  v10 = (float)(*(float *)((char *)&dword_140404A6C[280651461] + v9)
-              - *(float *)((char *)&dword_140404A6C[280651461] + v8))
-      * a6;
-  v11 = (float)(*(float *)((char *)&dword_140404A6C[280651462] + v9)
-              - *(float *)((char *)&dword_140404A6C[280651462] + v8))
-      * a6;
-  v12 = (float)(*(float *)((char *)&dword_140404A6C[280651463] + v9)
-              - *(float *)((char *)&dword_140404A6C[280651463] + v8))
-      * a6;
-  v13 = *a4 - v10;
-  v14 = a4[1] - v11;
-  v15 = a4[2] - v12;
-  v16 = fsqrt((float)((float)(v14 * v14) + (float)(v13 * v13)) + (float)(v15 * v15));
-  if ( v16 > a5 )
-  {
-    if ( v16 == 0.0 )
-    {
-      v17 = 0.0;
-      v18 = 0.0;
-      v19 = 0.0;
-    }
-    else
-    {
-      v17 = v13 * (float)(1.0 / v16);
-      v18 = v14 * (float)(1.0 / v16);
-      v19 = v15 * (float)(1.0 / v16);
-    }
-    *a4 = (float)(v17 * a5) + v10;
-    a4[1] = (float)(v18 * a5) + v11;
-    a4[2] = (float)(v19 * a5) + v12;
-  }
-  return result;
+  /* Clean implementation: src/engine/human_ragdoll.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void human_limit_joint_change(int, int, int, float *, float, float);
+  human_limit_joint_change(a1, a2, a3, a4, a5, a6);
+  return a2;
 }
-
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400B2D20) ----------------------------------------------------
@@ -7015,248 +6254,12 @@ __int64            sub_1400B40B0(int a1)
 //----- (00000001400B4DA0) ----------------------------------------------------
 __int64            sub_1400B4DA0(int a1, int a2, int a3, unsigned int *a4, unsigned int *a5, float *a6)
 {
-  __int64 v6; // rbp
-  __int64 v8; // rdi
-  __int64 v9; // r15
-  int v10; // r8d
-  unsigned int *v11; // rax
-  __int64 v12; // rbx
-  unsigned int v13; // r8d
-  __int64 v14; // rdi
-  bool v15; // zf
-  unsigned int v16; // edx
-  int v17; // ecx
-  unsigned int *v18; // rax
-  float v19; // xmm4_4
-  float v20; // xmm5_4
-  float v21; // xmm3_4
-  float v22; // xmm6_4
-  __int64 v23; // rax
-  float v24; // xmm7_4
-  float v25; // xmm0_4
-  __int64 v26; // rbx
-  float v27; // xmm2_4
-  float v28; // xmm8_4
-  float v29; // xmm1_4
-  float v30; // xmm9_4
-  float v31; // xmm10_4
-  float v32; // xmm2_4
-  float v33; // xmm0_4
-  float v34; // xmm4_4
-  float v35; // xmm2_4
-  float v36; // xmm1_4
-  float v37; // xmm5_4
-  float v38; // xmm2_4
-  float v39; // xmm0_4
-  float v40; // xmm2_4
-  float v41; // xmm1_4
-  float v42; // xmm2_4
-  float v43; // xmm0_4
-  float v44; // xmm2_4
-  float v45; // xmm1_4
-  float v46; // xmm6_4
-  float v47; // xmm4_4
-  float v48; // xmm3_4
-  float v49; // xmm1_4
-  float v50; // xmm8_4
-  float v51; // xmm5_4
-  double v52; // xmm2_8
-  float v53; // xmm0_4
-  float v54; // xmm9_4
-  float v55; // xmm10_4
-  float v56; // xmm3_4
-  float v57; // xmm4_4
-  float v58; // xmm5_4
-  float v59; // xmm0_4
-  float v60; // xmm6_4
-  float v61; // xmm7_4
-  double v62; // xmm0_8
-  float v63; // xmm1_4
-  float v64; // xmm6_4
-  float v65; // xmm8_4
-  float v66; // xmm7_4
-  float v67; // xmm1_4
-  float v68; // xmm2_4
-  float v69; // xmm6_4
-  unsigned int v70; // xmm1_4
-  float v71; // xmm7_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400B4DA0[112];
-#define v73 (*(__int64 (*))(void *)(sr_frame_1400B4DA0 + 0)) /* [rsp+0h] */
-#define v74 (*(float (*))(void *)(sr_frame_1400B4DA0 + 32)) /* [rsp+20h] */
-#define v75 (*(float (*))(void *)(sr_frame_1400B4DA0 + 36)) /* [rsp+24h] */
-#define v76 (*(float (*)[4])(void *)(sr_frame_1400B4DA0 + 40)) /* [rsp+28h] */
-#define v77 (*(float (*)[10])(void *)(sr_frame_1400B4DA0 + 56)) /* [rsp+38h] */
-#define v78 (*(__int64 (*))(void *)(sr_frame_1400B4DA0 + 96)) /* [rsp+60h] */
-
-  v6 = 1760LL * a3;
-  v8 = a2;
-  v9 = a1;
-  if ( dword_140404A6C[v6 + 278845898] != 39 )
-  {
-    v10 = 0;
-    v11 = &dword_140404A6C[486149253];
-    while ( *v11 )
-    {
-      ++v10;
-      v11 += 61;
-      if ( (__int64)v11 >= (__int64)&dword_140404A6C[487148677] )
-        return 0; /* compatibility result discarded by all reviewed callers */
-    }
-    if ( v10 != -1 )
-    {
-      v12 = 61LL * v10;
-      sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[v12 + 486149254]), 0, 0xF0u);
-      v13 = dword_140404A6C[v6 + 278845915];
-      dword_140404A6C[v12 + 486149253] = 1;
-      dword_140404A6C[v12 + 486149254] = 7;
-      *(_QWORD *)&dword_140404A6C[v12 + 486149256] = 0;
-      dword_140404A6C[v12 + 486149292] = v13;
-      v14 = 28664 * v9 + 312 * v8;
-      v15 = dword_140404A6C[v6 + 278845898] == 28;
-      v16 = *(unsigned int *)((char *)&dword_140404A6C[280651439] + v14);
-      dword_140404A6C[v12 + 486149291] = v16;
-      dword_140404A6C[v12 + 486149281] = 1048576000;
-      dword_140404A6C[v12 + 486149282] = 1052770304;
-      dword_140404A6C[v12 + 486149267] = *a4;
-      dword_140404A6C[v12 + 486149268] = a4[1];
-      dword_140404A6C[v12 + 486149269] = a4[2];
-      dword_140404A6C[v12 + 486149270] = *a5;
-      dword_140404A6C[v12 + 486149271] = a5[1];
-      dword_140404A6C[v12 + 486149272] = a5[2];
-      if ( !v15 )
-      {
-        v17 = 0;
-        v18 = &dword_140404A6C[486149253];
-        while ( *v18 )
-        {
-          ++v17;
-          v18 += 61;
-          if ( (__int64)v18 >= (__int64)&dword_140404A6C[487148677] )
-            return 0; /* compatibility result discarded by all reviewed callers */
-        }
-        if ( v17 != -1 )
-        {
-          v19 = *(float *)((char *)&dword_140404A6C[280651453] + v14);
-          v20 = *(float *)((char *)&dword_140404A6C[280651454] + v14);
-          v21 = *(float *)((char *)&dword_140404A6C[280651452] + v14);
-          v22 = *(float *)((char *)&dword_140404A6C[280651455] + v14);
-          v23 = 61LL * v17;
-          v24 = *(float *)&dword_140404A6C[v6 + 278845940];
-          v25 = *(float *)&dword_140404A6C[v6 + 278845938] * v19;
-          v26 = 18LL * v17;
-          v27 = (float)((float)(v21 * *(float *)&dword_140404A6C[v6 + 278845934])
-                      + (float)(v19 * *(float *)&dword_140404A6C[v6 + 278845935]))
-              + (float)(v20 * *(float *)&dword_140404A6C[v6 + 278845936]);
-          v28 = *(float *)&dword_140404A6C[v6 + 278845941];
-          v29 = *(float *)&dword_140404A6C[v6 + 278845939] * v20;
-          dword_140404A6C[v23 + 486149253] = 1;
-          v77[0] = v27;
-          v30 = *(float *)&dword_140404A6C[v6 + 278845942];
-          v31 = *(float *)&dword_140404A6C[v6 + 278845937];
-          v74 = v19;
-          dword_140404A6C[v23 + 486149254] = 8;
-          v75 = v20;
-          *(_QWORD *)&dword_140404A6C[v23 + 486149256] = 0;
-          v32 = (float)(v31 * v21) + v25;
-          dword_140404A6C[v23 + 486149291] = v16;
-          dword_140404A6C[v23 + 486149292] = v13;
-          v33 = v28 * v19;
-          dword_140404A6C[v23 + 486149281] = 1031798784;
-          v34 = *(float *)((char *)&dword_140404A6C[280651456] + v14);
-          v35 = v32 + v29;
-          dword_140404A6C[v23 + 486149287] = 1049135241;
-          dword_140404A6C[v23 + 486149282] = 1056964608;
-          v36 = v30 * v20;
-          dword_140404A6C[36 * v17 + 485543046] = 1056964608;
-          v37 = *(float *)((char *)&dword_140404A6C[280651457] + v14);
-          v77[1] = v35;
-          v38 = (float)(v24 * v21) + v33;
-          v39 = v34 * *(float *)&dword_140404A6C[v6 + 278845935];
-          v40 = v38 + v36;
-          v41 = v37 * *(float *)&dword_140404A6C[v6 + 278845936];
-          v77[2] = v40;
-          v42 = (float)(v22 * *(float *)&dword_140404A6C[v6 + 278845934]) + v39;
-          v43 = v34 * *(float *)&dword_140404A6C[v6 + 278845938];
-          v44 = v42 + v41;
-          v45 = v37 * *(float *)&dword_140404A6C[v6 + 278845939];
-          v77[3] = v44;
-          v77[4] = (float)((float)(v22 * v31) + v43) + v45;
-          v77[5] = (float)((float)(v22 * v24) + (float)(v34 * v28)) + (float)(v37 * v30);
-          v46 = *(float *)((char *)&dword_140404A6C[280651458] + v14);
-          v47 = *(float *)((char *)&dword_140404A6C[280651459] + v14) * v28;
-          v48 = (float)(v46 * v31)
-              + (float)(*(float *)((char *)&dword_140404A6C[280651459] + v14)
-                      * *(float *)&dword_140404A6C[v6 + 278845938]);
-          v49 = *(float *)((char *)&dword_140404A6C[280651460] + v14) * *(float *)&dword_140404A6C[v6 + 278845939];
-          v50 = 0.0;
-          v51 = *(float *)((char *)&dword_140404A6C[280651460] + v14) * v30;
-          v77[6] = (float)((float)(*(float *)((char *)&dword_140404A6C[280651459] + v14)
-                                 * *(float *)&dword_140404A6C[v6 + 278845935])
-                         + (float)(v46 * *(float *)&dword_140404A6C[v6 + 278845934]))
-                 + (float)(*(float *)((char *)&dword_140404A6C[280651460] + v14)
-                         * *(float *)&dword_140404A6C[v6 + 278845936]);
-          *(_QWORD *)&v52 = *((unsigned int *)a6 + 3);
-          v53 = fabs(a6[3]);
-          v77[7] = v48 + v49;
-          v77[8] = (float)((float)(v46 * v24) + v47) + v51;
-          if ( v53 <= 0.0 )
-          {
-            v54 = v74;
-            v55 = v75;
-          }
-          else
-          {
-            sub_14007B2A0((__int64)v77, a6, v52);
-            v54 = *(float *)((char *)&dword_140404A6C[280651453] + v14);
-            v55 = *(float *)((char *)&dword_140404A6C[280651454] + v14);
-          }
-          sub_14010E370(v76, v77);
-          v56 = -v76[0];
-          v57 = -v76[1];
-          v58 = -v76[2];
-          v59 = fsqrt((float)((float)(v57 * v57) + (float)(v56 * v56)) + (float)(v58 * v58));
-          if ( v59 == 0.0 )
-          {
-            v60 = 0.0;
-            v61 = 0.0;
-          }
-          else
-          {
-            v50 = (float)(1.0 / v59) * v56;
-            v60 = (float)(1.0 / v59) * v57;
-            v61 = (float)(1.0 / v59) * v58;
-          }
-          v62 = acos(fminf(fmaxf(v76[3], -1.0), 1.0));
-          v63 = v62 + v62;
-          v64 = v60 * v63;
-          v65 = v50 * v63;
-          v66 = v61 * v63;
-          v67 = (float)(v64 * *(float *)((char *)&dword_140404A6C[280651456] + v14)) + (float)(v54 * v65);
-          v68 = (float)(v64 * *(float *)((char *)&dword_140404A6C[280651457] + v14)) + (float)(v55 * v65);
-          v69 = (float)(v64 * *(float *)((char *)&dword_140404A6C[280651455] + v14))
-              + (float)(v65 * *(float *)((char *)&dword_140404A6C[280651452] + v14));
-          *(float *)&v70 = v67 + (float)(v66 * *(float *)((char *)&dword_140404A6C[280651459] + v14));
-          *(float *)&v62 = v66 * *(float *)((char *)&dword_140404A6C[280651460] + v14);
-          v71 = v66 * *(float *)((char *)&dword_140404A6C[280651458] + v14);
-          dword_140404A6C[2 * v26 + 485543034] = v70;
-          *(float *)&dword_140404A6C[2 * v26 + 485543035] = v68 + *(float *)&v62;
-          *(float *)&dword_140404A6C[2 * v26 + 485543033] = (float)(v69 + v71) * 0.25;
-          *(float *)&dword_140404A6C[2 * v26 + 485543034] = *(float *)&dword_140404A6C[2 * v26 + 485543034] * 0.25;
-          *(float *)&dword_140404A6C[2 * v26 + 485543035] = *(float *)&dword_140404A6C[2 * v26 + 485543035] * 0.25;
-        }
-      }
-    }
-  }
-  return 0; /* compatibility result discarded by all reviewed callers */
+  /* Clean implementation: src/engine/human_ragdoll.c, checked against the original executable
+     (tools/native-compare suite ragdoll). */
+  extern void human_hold_item(int, int, int, const float *, const float *, const float *);
+  human_hold_item(a1, a2, a3, (const float *)a4, (const float *)a5, a6);
+  return 0;
 }
-#undef v73
-#undef v74
-#undef v75
-#undef v76
-#undef v77
-#undef v78
-
 // 140279870: using guessed type __int128 xmmword_140279870;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 

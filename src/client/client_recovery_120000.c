@@ -1151,7 +1151,7 @@ __int64            sub_140123F80(int a1)
     qword_1404042E0(0);
   }
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(32823);
-  return sub_1401F8B20((unsigned __int64)&v4 ^ v8);
+  return 0; /* the function has no caller */
 }
 #undef v4
 #undef v8
@@ -1170,7 +1170,7 @@ __int64            sub_140123F80(int a1)
 double            sub_1401241B0(int a1)
 {
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(32823);
-  (*(void (**)(void))&flt_140384000[131078])();
+  (*(void (**)(float,float))&flt_140384000[131078])(1.0f, 1.0f); /* glPolygonOffset: native XMM0, XMM1 */
   if ( !a1 )
   {
     qword_1404042E0(dword_140404A6C[71738165]);
@@ -3035,7 +3035,7 @@ __int64 sub_140127500()
     sub_14020CE0C(*(__int64 *)&dword_140404A6C[19065875], 1, (int)dword_140404A6C[19065874], v3);
     sub_14020B9E8(v3);
   }
-  return sub_1401F8B20((unsigned __int64)&v5 ^ v9);
+  return 0; /* the function has no caller */
 }
 #undef v5
 #undef v6
@@ -4062,7 +4062,7 @@ __int64            sub_14012C6D0(int a1, char *a2)
     sub_14024C22C("..");
   if ( !v4 )
     sub_14024C22C("..");
-  return sub_1401F8B20((unsigned __int64)&v15 ^ v18);
+  return 1; /* 0x14012C86B: mov eax, 1 */
 }
 #undef v15
 #undef v16
@@ -4139,7 +4139,7 @@ __int64            sub_14012C890(int a1, char *a2, int a3)
     if ( !v6 )
       sub_14024C22C("..");
   }
-  return sub_1401F8B20((unsigned __int64)&v18 ^ v21);
+  return 0; /* the function has no caller */
 }
 #undef v18
 #undef v19
@@ -4240,7 +4240,7 @@ __int64            sub_14012CAC0(int a1, char *a2, int a3)
     if ( !v6 )
       sub_14024C22C("..");
   }
-  return sub_1401F8B20((unsigned __int64)&v20 ^ v24);
+  return 0; /* the function has no caller */
 }
 #undef v20
 #undef v21
@@ -5904,7 +5904,7 @@ __int64            sub_14012FB60(_BYTE *a1, __int64 a2)
   while ( *++v5 != 0 )
     ;
   strcpy(v5, v9);
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v10);
+  return 0; /* the function has no caller */
 }
 #undef v8
 #undef v9
@@ -5931,7 +5931,7 @@ __int64            sub_14012FC30(_BYTE *a1)
   while ( *++v3 != 0 )
     ;
   strcpy(v3, v7);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return 0; /* the function has no caller */
 }
 #undef v6
 #undef v7
@@ -5970,7 +5970,7 @@ __int64            sub_14012FCE0(_BYTE *a1, __int64 a2, __int64 a3)
   while ( *++v7 != 0 )
     ;
   strcpy(v7, v11);
-  return sub_1401F8B20((unsigned __int64)&v10 ^ v12);
+  return 0; /* the function has no caller */
 }
 #undef v10
 #undef v11
@@ -6009,7 +6009,7 @@ __int64            sub_14012FDA0(_BYTE *a1, __int64 a2)
   while ( *++v5 != 0 )
     ;
   strcpy(v5, v9);
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v10);
+  return 0; /* the function has no caller */
 }
 #undef v8
 #undef v9
@@ -6046,7 +6046,7 @@ __int64            sub_14012FE70(_BYTE *a1)
   while ( *++v3 != 0 )
     ;
   strcpy(v3, v7);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return 0; /* the function has no caller */
 }
 #undef v6
 #undef v7
@@ -6546,13 +6546,13 @@ __int64            sub_1401307D0(int a1, __int64 a2)
   v3 = a2;
   v195 = a2;
   if ( a1 == -1 )
-    return sub_1401F8B20((unsigned __int64)&v192 ^ v204);
+    return 0; /* 0x140130805: xor eax, eax */
   v4 = 14388LL * a1;
   v5 = a1;
   v198 = a1;
   v197 = v4;
   if ( *(int *)((char *)&dword_140404A6C[71856269] + v4) > 0 )
-    return sub_1401F8B20((unsigned __int64)&v192 ^ v204);
+    return 1; /* 0x140130858: jg -> mov eax, 1 */
   *(_BYTE *)(a2 + 63) = 0;
   v6 = -1;
   do
@@ -6618,7 +6618,7 @@ LABEL_9:
     v194 = v10;
   }
   if ( *(_BYTE *)v3 != 47 )
-    return sub_1401F8B20((unsigned __int64)&v192 ^ v204);
+    return 0; /* 0x1401309A7: jne -> xor eax, eax */
   if ( !(unsigned int)strncmp_sr((const char *)(uintptr_t)(v3), (const char *)(uintptr_t)("/admin "), 7) && (int)++*(unsigned int *)((char *)&dword_140404A6C[71856267] + v4) < 5 )
   {
     if ( LOBYTE(dword_140404A6C[73991352]) )
@@ -6681,7 +6681,7 @@ LABEL_9:
     }
   }
   if ( !*(unsigned int *)((char *)&dword_140404A6C[71856266] + v4) )
-    return sub_1401F8B20((unsigned __int64)&v192 ^ v204);
+    return 1; /* 0x140130B6A: je -> mov eax, 1 */
   if ( !(unsigned int)strncmp_sr((const char *)(uintptr_t)(v3), (const char *)(uintptr_t)("/hlist"), 6) )
   {
     v26 = 0;
@@ -7698,7 +7698,7 @@ LABEL_253:
   if ( !v170 )
     v171 = 0;
   dword_140404A6C[438887397] = v171;
-  return sub_1401F8B20((unsigned __int64)&v192 ^ v204);
+  return 1; /* 0x140132565: mov eax, 1 */
 }
 #undef v192
 #undef v193
@@ -13553,7 +13553,7 @@ __int64 sub_14013C6E0()
     }
     while ( v19 );
   }
-  return sub_1401F8B20((unsigned __int64)&v23 ^ v26);
+  return 0; /* the function has no caller */
 }
 #undef v23
 #undef v24

@@ -36,19 +36,13 @@ float sr_text_bits_float(unsigned bits){float value;memcpy(&value,&bits,4);retur
 void sr_text_draw_recovered(char *text,float x,float y,float size,unsigned flags,
  float red,float green,float blue,float alpha,const uint64 *arguments)
 {
- unsigned char buffer[65536];
- if(flags&0x40)strcpy((char *)buffer,text);
- else sub_14006E530(buffer,(unsigned char *)text,10000,(__int64)(uintptr_t)arguments);
- if(flags&3){
-   float width=0;
-   if(dword_140404A6C[3592*dword_140404A6C[438291413]+72777085])
-     for(int i=0;buffer[i]&&i<65535;i++)
-       width+=size*(*(float *)&dword_140404A6C[3592*(int)dword_140404A6C[438291413]+72777093+(signed char)buffer[i]]);
-   if(flags&1)x+=width*(-0.5f);else x-=width;
- }
- if(flags&4)y+=size*(-0.5f);else if(flags&8)y-=size;
- if(flags&0x20)sub_14006DB90(buffer,x+size*0.0625f,(_BYTE *)(uintptr_t)sr_text_float_bits(y+size*0.0625f),size,0,0,0,sr_text_float_bits(alpha),(flags>>7)&1);
- sub_14006DB90(buffer,x,(_BYTE *)(uintptr_t)sr_text_float_bits(y),size,sr_text_float_bits(red),sr_text_float_bits(green),sr_text_float_bits(blue),sr_text_float_bits(alpha),(flags>>7)&1);
+ /* sr_CSDrawText (0x14006D930) with its variadic arguments as 8-byte slots:
+    src/engine/text.c. */
+ extern void text_draw(const char *format, float x, float y, float size, int flags,
+                       float red, float green, float blue, float alpha, const unsigned long long *arguments);
+ static const unsigned long long no_arguments[8];
+ text_draw(text, x, y, size, (int)flags, red, green, blue, alpha,
+           arguments ? (const unsigned long long *)arguments : no_arguments);
 }
 
 
@@ -1294,7 +1288,7 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
       dword_140404A6C[v12 + 72777085] = 1;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v51 ^ v55);
+  return 0; /* the function has no caller */
 }
 #undef v51
 #undef v52

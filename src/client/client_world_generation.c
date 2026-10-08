@@ -730,13 +730,13 @@ LABEL_40:
     while ( v102 < (int)dword_140404A6C[v101 + 284024934] );
   }
   sub_14014D3E0(v94, 1);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   sub_1400EDED0(dword_140404A6C[283830714], "data/terrain_normal.png", 1, 0x812Fu, 0x812Fu, 0x2601u, 0x2601u, 0);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   sub_1400ED9D0(dword_140404A6C[283830715], "data/terrain_detail.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   sub_1400EDED0(dword_140404A6C[283830716], "data/terrain.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   sub_1400EDED0(dword_140404A6C[283830717], "data/terrain_reflection.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
   sub_14009D7A0(dword_140404A6C[283830705]);
   sub_1400ED9D0(dword_140404A6C[283830701], "texture/mic.png", 0, 0x812Fu, 0x812Fu, 0x2601u, 0x2601u);

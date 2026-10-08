@@ -1905,6 +1905,7 @@ __int64            sub_140262618(
   __int64 v20; // [rsp+50h] [rbp+20h]
 
   sub_140213644((_LocaleUpdate *)&v18, a1);
+  unsigned int sr_ret = 0; /* edi: 0x140262697 / 0x140262754 xor edi, edi */
   v17 = 0;
   v16 = nullptr;
   v6 = sub_140259504();
@@ -1945,7 +1946,7 @@ LABEL_12:
     v16 = v11;
     v13 = sub_140259504();
     if ( v13 )
-      ((void (           *)(_QWORD, __int64 *, _QWORD, __int64))GetStringTypeW)(a2, v11, v13, lpCharType);
+      sr_ret = ((unsigned int (           *)(_QWORD, __int64 *, _QWORD, __int64))GetStringTypeW)(a2, v11, v13, lpCharType);
   }
 LABEL_15:
   if ( v11 && *((_DWORD *)v11 - 4) == 56797 )
@@ -1953,7 +1954,7 @@ LABEL_15:
 LABEL_18:
   if ( v19 )
     *(_DWORD *)(v18 + 936) &= ~2u;
-  return sub_1401F8B20((unsigned __int64)&v18 ^ v20);
+  return sr_ret; /* 0x14026277D: mov eax, edi */
 }
 
 // 14026E038: invalid function type 'BOOL (__stdcall *GetStringTypeW)(DWORD dwInfoType, LPCWCH lpSrcStr, int cchSrc, LPWORD lpCharType)' has been ignored
@@ -2235,7 +2236,7 @@ __int64            GetLocaleNameFromDefault(__int64 a1)
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
   }
-  return sub_1401F8B20((unsigned __int64)v4 ^ v6);
+  return 0; /* no caller reads the result */
 }
 
 // 140262C4F: control flows out of bounds to 140262C54
@@ -2373,7 +2374,7 @@ __int64            LangCountryEnumProcEx(__int64 a1)
     {
 LABEL_2:
       *((_DWORD *)v3 + 4) = 0;
-      return sub_1401F8B20((unsigned __int64)v17 ^ v19);
+      return (*((_DWORD *)v3 + 4) & 4) == 0; /* 0x140263092: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1 */
     }
     v5 = sub_14026AE18((unsigned __int16 *)*v3, String2);
     v6 = *((_DWORD *)v3 + 4);
@@ -2413,11 +2414,11 @@ LABEL_2:
   }
 LABEL_15:
   if ( (v3[2] & 0x300) == 0x300 )
-    return sub_1401F8B20((unsigned __int64)v17 ^ v19);
+    return (*((_DWORD *)v3 + 4) & 4) == 0; /* 0x140263092: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1 */
   if ( !(unsigned int)sub_14024F174(a1, *((_DWORD *)v3 + 6) != 0 ? 3 : 4097, (__int64)String2, 0x40u) )
     goto LABEL_2;
   if ( (unsigned int)sub_14026AE18((unsigned __int16 *)*v3, String2) )
-    return sub_1401F8B20((unsigned __int64)v17 ^ v19);
+    return (*((_DWORD *)v3 + 4) & 4) == 0; /* 0x140263092: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1 */
   v8 = *((_DWORD *)v3 + 4) | 0x200;
   *((_DWORD *)v3 + 4) = v8;
   if ( *((_DWORD *)v3 + 6) )
@@ -2425,7 +2426,7 @@ LABEL_15:
     v9 = v3 + 75;
     *((_DWORD *)v3 + 4) = v8 | 0x100;
     if ( *((_WORD *)v3 + 300) )
-      return sub_1401F8B20((unsigned __int64)v17 ^ v19);
+      return (*((_DWORD *)v3 + 4) & 4) == 0; /* 0x140263092: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1 */
     do
       ++v4;
     while ( *(_WORD *)(a1 + 2 * v4) );
@@ -2443,7 +2444,7 @@ LABEL_43:
     v9 = v3 + 75;
     *((_DWORD *)v3 + 4) = v8 | 0x100;
     if ( *((_WORD *)v3 + 300) )
-      return sub_1401F8B20((unsigned __int64)v17 ^ v19);
+      return (*((_DWORD *)v3 + 4) & 4) == 0; /* 0x140263092: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1 */
     do
       ++v4;
     while ( *(_WORD *)(a1 + 2 * v4) );
@@ -2482,14 +2483,14 @@ LABEL_51:
       while ( *(_WORD *)(a1 + 2 * v4) );
 LABEL_45:
       if ( !(unsigned int)sub_140260D80(v9, 85, a1, v4 + 1) )
-        return sub_1401F8B20((unsigned __int64)v17 ^ v19);
+        return (*((_DWORD *)v3 + 4) & 4) == 0; /* 0x140263092: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1 */
 LABEL_47:
       v17[4] = 0;
       sub_14024CFBC();
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
   }
-  return sub_1401F8B20((unsigned __int64)v17 ^ v19);
+  return (*((_DWORD *)v3 + 4) & 4) == 0; /* 0x140263092: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1 */
 }
 
 // 1402630D4: control flows out of bounds to 1402630D9
@@ -2528,7 +2529,7 @@ __int64            LanguageEnumProcEx(__int64 a1)
   {
     *(_DWORD *)(v3 + 16) = 0;
   }
-  return sub_1401F8B20((unsigned __int64)v6 ^ v8);
+  return (*(_DWORD *)(v3 + 16) & 4) == 0; /* 0x140263181: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1 */
 }
 
 // 1402631C0: control flows out of bounds to 1402631C5
@@ -2576,8 +2577,8 @@ __int64            TestDefaultCountry(_WORD *a1)
   __int64 v5; // [rsp+38h] [rbp-10h]
 
   if ( (unsigned int)sub_14024F174((__int64)a1, 0x59u, (__int64)v4, 9u) )
-    wcsncmp_sr(v4, a1, 9);
-  return sub_1401F8B20((unsigned __int64)&v3 ^ v5);
+    return (unsigned int)wcsncmp_sr(v4, a1, 9) == 0; /* 0x1402632D7: test eax, eax; jne -> xor eax, eax; else mov eax, 1 */
+  return 0; /* 0x1402632E2: xor eax, eax */
 }
 
 
@@ -2789,7 +2790,7 @@ __int64            CountryEnumProc(unsigned __int16 *a1)
           *v3 |= 4u;
           v3[2] = v4;
           v3[1] = v4;
-          return sub_1401F8B20((unsigned __int64)&v8 ^ v10);
+          return (*v3 & 4) == 0; /* 0x140263725: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
         }
       }
     }
@@ -2798,7 +2799,7 @@ __int64            CountryEnumProc(unsigned __int16 *a1)
   {
     *v3 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v10);
+  return (*v3 & 4) == 0; /* 0x140263725: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
 }
 
 // 14026E100: invalid function type 'int (__stdcall *GetLocaleInfoW)(LCID Locale, LCTYPE LCType, LPWSTR lpLCData, int cchData)' has been ignored
@@ -2975,7 +2976,7 @@ __int64            LangCountryEnumProc(unsigned __int16 *a1)
   {
 LABEL_38:
     *v3 = 0;
-    return sub_1401F8B20((unsigned __int64)&v17 ^ v19);
+    return (*v3 & 4) == 0; /* 0x140263B7A: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
   }
   v6 = sub_14026AE18((unsigned __int16 *)*v2, LCData);
   v7 = *v3;
@@ -3028,7 +3029,7 @@ LABEL_19:
   }
 LABEL_20:
   if ( (*v3 & 0x300) == 0x300 )
-    return sub_1401F8B20((unsigned __int64)&v17 ^ v19);
+    return (*v3 & 4) == 0; /* 0x140263B7A: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
   if ( !(unsigned int)((__int64 (           *)(_QWORD, _QWORD, unsigned __int16 *, __int64))GetLocaleInfoW)(
                         (unsigned int)v4,
                         *((_DWORD *)v2 + 6) != 0 ? 3 : 4097,
@@ -3038,7 +3039,7 @@ LABEL_20:
   if ( (unsigned int)sub_14026AE18((unsigned __int16 *)*v2, LCData) )
   {
     if ( *((_DWORD *)v2 + 6) || !*((_DWORD *)v2 + 5) || (unsigned int)sub_14026AE18((unsigned __int16 *)*v2, LCData) )
-      return sub_1401F8B20((unsigned __int64)&v17 ^ v19);
+      return (*v3 & 4) == 0; /* 0x140263B7A: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
     v15 = 0;
     goto LABEL_33;
   }
@@ -3054,7 +3055,7 @@ LABEL_20:
       v15 = 1;
 LABEL_33:
       if ( !TestDefaultLanguage_0(v4, v15) )
-        return sub_1401F8B20((unsigned __int64)&v17 ^ v19);
+        return (*v3 & 4) == 0; /* 0x140263B7A: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
       *v3 |= 0x100u;
       goto LABEL_35;
     }
@@ -3063,7 +3064,7 @@ LABEL_33:
 LABEL_35:
   if ( !v3[1] )
     v3[1] = v4;
-  return sub_1401F8B20((unsigned __int64)&v17 ^ v19);
+  return (*v3 & 4) == 0; /* 0x140263B7A: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
 }
 
 // 14026E100: invalid function type 'int (__stdcall *GetLocaleInfoW)(LCID Locale, LCTYPE LCType, LPWSTR lpLCData, int cchData)' has been ignored
@@ -3092,7 +3093,7 @@ __int64            LanguageEnumProc(unsigned __int16 *a1)
                         120) )
   {
     *v3 = 0;
-    return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+    return (*v3 & 4) == 0; /* 0x140263C91: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
   }
   v5 = sub_14026AE18(*(unsigned __int16 **)(v2 + 152), LCData);
   v6 = *(_DWORD *)(v2 + 176);
@@ -3103,19 +3104,19 @@ __int64            LanguageEnumProc(unsigned __int16 *a1)
     v7 = 1;
 LABEL_10:
     if ( !TestDefaultLanguage_0(v4, v7) )
-      return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+      return (*v3 & 4) == 0; /* 0x140263C91: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
 LABEL_11:
     *v3 |= 4u;
     v3[1] = v4;
     v3[2] = v4;
-    return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+    return (*v3 & 4) == 0; /* 0x140263C91: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
   }
   if ( !v6 && *(_DWORD *)(v2 + 172) && !(unsigned int)sub_14026AE18(*(unsigned __int16 **)(v2 + 152), LCData) )
   {
     v7 = 0;
     goto LABEL_10;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return (*v3 & 4) == 0; /* 0x140263C91: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1 */
 }
 
 // 14026E100: invalid function type 'int (__stdcall *GetLocaleInfoW)(LCID Locale, LCTYPE LCType, LPWSTR lpLCData, int cchData)' has been ignored
@@ -3307,7 +3308,7 @@ __int64            _acrt_get_qualified_locale_downlevel(__int64 a1, signed int *
     }
 LABEL_23:
     if ( !(_DWORD)Locale )
-      return sub_1401F8B20((unsigned __int64)&v14 ^ v17);
+      return 0; /* 0x140264171: xor eax, eax */
     goto LABEL_24;
   }
   if ( *v7 && *(_WORD *)*v7 )
@@ -3335,7 +3336,8 @@ LABEL_24:
     if ( a2 )
       *a2 = v12;
     sub_14024F460(HIDWORD(Locale), (_WORD *)(v6 + 752), 0x55u, 0);
-    if ( a3 )
+    if ( !a3 )
+      return 1; /* 0x140264104: je -> mov eax, 1 */
     {
       sub_14024F460(HIDWORD(Locale), (_WORD *)(a3 + 288), 0x55u, 0);
       if ( (unsigned int)((__int64 (           *)(_QWORD, __int64, __int64, __int64))GetLocaleInfoW)(
@@ -3349,11 +3351,14 @@ LABEL_24:
                              4098,
                              a3 + 128,
                              64) )
+        {
           itow_s(v12, (__int16 *)(a3 + 256), 0x10u, 0xAu);
+          return 1; /* 0x14026416A: mov eax, 1 */
+        }
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v14 ^ v17);
+  return 0; /* 0x140264171: xor eax, eax */
 }
 
 // 14026E0E8: invalid function type 'BOOL (__stdcall *EnumSystemLocalesW)(LOCALE_ENUMPROCW lpLocaleEnumProc, DWORD dwFlags)' has been ignored
@@ -3402,7 +3407,7 @@ int         chdrive(int Drive)
     *errno_sr() = 13;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)&v3 ^ v6);
+  return 0; /* the function has no caller */
 }
 
 // 14026E140: invalid function type 'BOOL (__stdcall *SetCurrentDirectoryW)(LPCWSTR lpPathName)' has been ignored
@@ -7010,7 +7015,7 @@ LABEL_256:
       v155 = 9;
   }
   *v101 = 0;
-  return sub_1401F8B20((unsigned __int64)&v157 ^ v177);
+  return 0; /* the function has no caller */
 }
 
 // 1402674A1: conditional instruction was optimized away because r15d.4<73u
@@ -8169,7 +8174,7 @@ LABEL_278:
 LABEL_310:
   if ( v166 )
     fesetenv_sr((     sr_anon_70 *)&Env);
-  return sub_1401F8B20((unsigned __int64)v158 ^ v178);
+  return 0; /* no caller reads the result */
 }
 
 // 1402697B3: control flows out of bounds to 1402697B8
@@ -8656,6 +8661,7 @@ __int64            InternalGetLocaleInfoA(
   char v20; // [rsp+58h] [rbp+18h]
   __int64 v21; // [rsp+60h] [rbp+20h]
 
+  unsigned int sr_ret = 0; /* edi: 0x14026A4C9 / 0x14026A590 xor edi, edi */
   sub_140213644((_LocaleUpdate *)v19, a1);
   v8 = *(_DWORD *)(v19[1] + 12LL);
   v9 = sub_14024F174((__int64)a2, a3, 0, 0);
@@ -8692,7 +8698,7 @@ LABEL_12:
   if ( v14 && (unsigned int)sub_14024F174((__int64)a2, a3, (__int64)v14, v10) )
   {
     LODWORD(v18) = a5;
-    sub_140258A84(v8, 0, (__int64)v14, 0xFFFFFFFFLL, a4 & -(__int64)(a5 != 0), v18, 0, 0);
+    sr_ret = (unsigned int)sub_140258A84(v8, 0, (__int64)v14, 0xFFFFFFFFLL, a4 & -(__int64)(a5 != 0), v18, 0, 0); /* 0x14026A58C: mov edi, eax */
   }
 LABEL_15:
   if ( v14 && *((_DWORD *)v14 - 4) == 56797 )
@@ -8700,7 +8706,7 @@ LABEL_15:
 LABEL_18:
   if ( v20 )
     *(_DWORD *)(v19[0] + 936LL) &= ~2u;
-  return sub_1401F8B20((unsigned __int64)v19 ^ v21);
+  return sr_ret; /* 0x14026A5B9: mov eax, edi */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -8723,6 +8729,7 @@ __int64            _acrt_GetLocaleInfoA_sr(struct sr_anon_68 *a1, int a2,      s
   char Source[128]; // [rsp+40h] [rbp-C8h] BYREF
   __int64 v22; // [rsp+C0h] [rbp-48h]
 
+  int sr_ret = -1; /* edi: 0x14026A6F2 or edi, 0xffffffff */
   *a5 = 0;
   switch ( a2 )
   {
@@ -8739,20 +8746,20 @@ __int64            _acrt_GetLocaleInfoA_sr(struct sr_anon_68 *a1, int a2,      s
           sub_14024CFBC();
           __debugbreak();
         }
-        return sub_1401F8B20((unsigned __int64)&v18 ^ v22);
+        return *a5 ? 0 : (unsigned int)-1; /* 0x14026A65E: je -> or eax, 0xffffffff; else 0x14026A682: xor eax, eax */
       }
       if ( (unsigned int)((__int64 (*)(void))GetLastError)() != 122 )
-        return sub_1401F8B20((unsigned __int64)&v18 ^ v22);
+        return (unsigned int)-1; /* 0x14026A692: -> or eax, 0xffffffff */
       v10 = InternalGetLocaleInfoA(a1, a3, a4, 0, 0);
       if ( !v10 )
-        return sub_1401F8B20((unsigned __int64)&v18 ^ v22);
+        return (unsigned int)-1; /* 0x14026A6B2: -> or eax, 0xffffffff */
       v11 = calloc_base();
       v12 = (void *)v11;
       if ( !v11 )
       {
 LABEL_12:
         free_base(v12);
-        return sub_1401F8B20((unsigned __int64)&v18 ^ v22);
+        return (unsigned int)sr_ret; /* 0x14026A6FD: mov eax, edi */
       }
       v13 = InternalGetLocaleInfoA(a1, a3, a4, v11, v10);
 LABEL_10:
@@ -8761,12 +8768,13 @@ LABEL_10:
         v14 = (__int64)v12;
         v12 = nullptr;
         *a5 = v14;
+        sr_ret = 0; /* edi stays 0 on this path */
       }
       goto LABEL_12;
     case 2:
       v15 = sub_14024F174((__int64)a3, a4, 0, 0);
       if ( !v15 )
-        return sub_1401F8B20((unsigned __int64)&v18 ^ v22);
+        return (unsigned int)-1; /* 0x14026A71F: -> or eax, 0xffffffff */
       v16 = calloc_base();
       v12 = (void *)v16;
       if ( !v16 )
@@ -8776,10 +8784,13 @@ LABEL_10:
     case 0:
       v20[0] = 0;
       if ( (unsigned int)sub_14024F174((__int64)a3, a4 | 0x20000000, (__int64)v20, 2u) )
+      {
         *(_BYTE *)a5 = v20[0];
+        return 0; /* 0x14026A76D -> 0x14026A682: xor eax, eax */
+      }
       break;
   }
-  return sub_1401F8B20((unsigned __int64)&v18 ^ v22);
+  return (unsigned int)-1; /* 0x14026A772: or eax, 0xffffffff */
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
@@ -8836,7 +8847,7 @@ __int64            _acrt_OutputDebugStringA(__int64 a1)
         ((void (           *)(_QWORD *))OutputDebugStringW)(OutputString);
     }
   }
-  return sub_1401F8B20((unsigned __int64)OutputString ^ OutputString[1]);
+  return 0; /* no caller reads the result */
 }
 
 // 14026E090: invalid function type 'void (__stdcall *OutputDebugStringW)(LPCWSTR lpOutputString)' has been ignored
@@ -8872,7 +8883,7 @@ __int64            unknown_libname_943(_BYTE *a1, unsigned __int8 *a2)
   while ( *a1
        && ((unsigned __int8)(1 << (*a1 & 7)) & *((_BYTE *)&v8[4] + ((unsigned __int64)(unsigned __int8)*a1 >> 3))) == 0 )
     ++a1;
-  return sub_1401F8B20((unsigned __int64)v8 ^ v8[8]);
+  return *a1 ? (__int64)a1 : 0; /* 0x14026A8F3: mov rax, r8 at a match; 0x14026A8DF: xor eax, eax at the terminator */
 }
 
 
@@ -9666,7 +9677,7 @@ __int64            __crt_mbstring____mbrtoc32_utf8(__int64 a1, char *a2, unsigne
       {
         if ( v8 )
           *v8 = v9;
-        return sub_1401F8B20((unsigned __int64)v16 ^ v17);
+        return v9 != 0; /* 0x14026B5F9: setne r10b; mov rax, r10 */
       }
       if ( (v9 & 0xE0) == 0xC0 )
       {
@@ -9700,7 +9711,7 @@ __int64            __crt_mbstring____mbrtoc32_utf8(__int64 a1, char *a2, unsigne
       *((_WORD *)v4 + 2) = v10;
       *((_WORD *)v4 + 3) = (unsigned __int8)(v11 - v13);
       *v4 = v12;
-      return sub_1401F8B20((unsigned __int64)v16 ^ v17);
+      return -2; /* 0x14026B6CC -> 0x14026B5CD: mov rax, 0xfffffffffffffffe */
     }
     if ( v12 - 55296 > 0x7FF && v12 < 0x110000 )
     {
@@ -9712,14 +9723,15 @@ __int64            __crt_mbstring____mbrtoc32_utf8(__int64 a1, char *a2, unsigne
         if ( v8 )
           *v8 = v12;
         *(_QWORD *)v4 = 0;
-        return sub_1401F8B20((unsigned __int64)v16 ^ v17);
+        return v12 ? (unsigned __int64)v11 : 0; /* 0x14026B70F: neg edx; sbb rax, rax; and rax, rbp */
       }
     }
 LABEL_37:
     *(_QWORD *)v4 = 0;
     *errno_sr() = 42;
+    return -1; /* 0x14026B72A: or rax, 0xffffffffffffffff */
   }
-  return sub_1401F8B20((unsigned __int64)v16 ^ v17);
+  return -2; /* 0x14026B5CD: mov rax, 0xfffffffffffffffe */
 }
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -10019,11 +10031,12 @@ __int64            InternalCompareStringA(
 
   v8 = a5;
   v33 = a3;
+  unsigned int sr_ret = 0; /* esi: 0x14026BEED / 0x14026BF07 xor esi, esi */
   v34 = a2;
   if ( a5 <= 0 )
   {
     if ( a5 < -1 )
-      return sub_1401F8B20((unsigned __int64)&v33 ^ v36);
+      return 0; /* 0x14026BC49: -> xor eax, eax */
   }
   else
   {
@@ -10033,7 +10046,7 @@ __int64            InternalCompareStringA(
   if ( a7 <= 0 )
   {
     if ( a7 < -1 )
-      return sub_1401F8B20((unsigned __int64)&v33 ^ v36);
+      return 0; /* 0x14026BC6D: -> xor eax, eax */
   }
   else
   {
@@ -10044,12 +10057,15 @@ __int64            InternalCompareStringA(
     v12 = *(_DWORD *)(*(_QWORD *)a1 + 12LL);
   if ( !v8 || !v11 )
   {
-    if ( v8 == v11
-      || v11 > 1
-      || v8 > 1
-      || !(unsigned int)((__int64 (           *)(_QWORD, _DWORD *))GetCPInfo)(v12, CPInfo) )
+    if ( v8 == v11 )
+      return 2; /* 0x14026BC94: -> mov eax, 2 */
+    if ( v11 > 1 )
+      return 1; /* 0x14026BC9D: -> mov eax, 1 */
+    if ( v8 > 1 )
+      return 3; /* 0x14026BCA6: -> mov eax, 3 */
+    if ( !(unsigned int)((__int64 (           *)(_QWORD, _DWORD *))GetCPInfo)(v12, CPInfo) )
     {
-      return sub_1401F8B20((unsigned __int64)&v33 ^ v36);
+      return 0; /* 0x14026BCB7: -> xor eax, eax */
     }
     if ( v8 > 0 )
     {
@@ -10057,11 +10073,13 @@ __int64            InternalCompareStringA(
       {
         for ( i = (unsigned __int8 *)&CPInfo[1] + 2; *i; i += 2 )
         {
-          if ( !i[1] || *a4 >= *i && *a4 <= i[1] )
+          if ( !i[1] )
             break;
+          if ( *a4 >= *i && *a4 <= i[1] )
+            return 2; /* 0x14026BCE1: jbe -> mov eax, 2 */
         }
       }
-      return sub_1401F8B20((unsigned __int64)&v33 ^ v36);
+      return 3; /* 0x14026BCF0: mov eax, 3 */
     }
     if ( v11 > 0 )
     {
@@ -10069,11 +10087,13 @@ __int64            InternalCompareStringA(
       {
         for ( j = (unsigned __int8 *)&CPInfo[1] + 2; *j; j += 2 )
         {
-          if ( !j[1] || (unsigned __int8)*String >= *j && (unsigned __int8)*String <= j[1] )
+          if ( !j[1] )
             break;
+          if ( (unsigned __int8)*String >= *j && (unsigned __int8)*String <= j[1] )
+            return 2; /* 0x14026BD1F: jbe -> mov eax, 2 */
         }
       }
-      return sub_1401F8B20((unsigned __int64)&v33 ^ v36);
+      return 1; /* 0x14026BD2E: mov eax, 1 */
     }
   }
   v32 = 0;
@@ -10081,7 +10101,7 @@ __int64            InternalCompareStringA(
   v15 = sub_140259504();
   v16 = v15;
   if ( !v15 )
-    return sub_1401F8B20((unsigned __int64)&v33 ^ v36);
+    return 0; /* 0x14026BD5A: -> xor eax, eax */
   v17 = (2LL * v15 + 16) & -(__int64)(2LL * v15 < (unsigned __int64)(2LL * v15 + 16));
   if ( !v17 )
   {
@@ -10139,7 +10159,7 @@ LABEL_55:
               v32 = v23;
               v31 = v27;
               if ( (unsigned int)sub_140259504() )
-                sub_14024EDE0(v34, v33, (__int64)v20, v16, (__int64)v27, v23, 0, 0, 0);
+                sr_ret = (unsigned int)sub_14024EDE0(v34, v33, (__int64)v20, v16, (__int64)v27, v23, 0, 0, 0); /* 0x14026BEE9: mov esi, eax */
             }
 LABEL_58:
             if ( v27 && *(v27 - 4) == 56797 )
@@ -10167,7 +10187,7 @@ LABEL_58:
 LABEL_61:
   if ( v20 && *(v20 - 4) == 56797 )
     free_base(v20 - 4);
-  return sub_1401F8B20((unsigned __int64)&v33 ^ v36);
+  return sr_ret; /* 0x14026BF1F: mov eax, esi */
 }
 
 // 14026E0A8: invalid function type 'BOOL (__stdcall *GetCPInfo)(UINT CodePage, LPCPINFO lpCPInfo)' has been ignored

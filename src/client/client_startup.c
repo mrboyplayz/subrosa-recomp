@@ -405,7 +405,7 @@ LABEL_24:
     v30 = "Error";
 LABEL_60:
     sub_140198F95(16, (__int64)v30, (__int64)v29);
-    return sub_1401F8B20((unsigned __int64)&v40 ^ v45);
+    return 1; /* 0x140001B7B: mov eax, esi (esi holds 1) */
   }
   v31 = ((__int64 (           *)(     __int16 *))LoadLibraryW)(L"opengl32.dll");
   *(_QWORD *)&dword_140404A6C[18215111] = v31;
@@ -484,7 +484,7 @@ LABEL_59:
   sub_140199049();
   sub_140198FB3();
   sub_140198E20();
-  return sub_1401F8B20((unsigned __int64)&v40 ^ v45);
+  return 0; /* 0x140001B42: xor eax, eax */
 }
 #undef v40
 #undef v41

@@ -966,7 +966,7 @@ __int64            sub_1400C3140(unsigned __int64 a1, float *a2)
       while ( v97 );
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v104 ^ v123);
+  return 0; /* the function has no caller */
 }
 #undef v104
 #undef v105
@@ -1598,7 +1598,7 @@ LABEL_22:
         dword_140404A6C[v2 + 278847170] = v22;
       }
     }
-    return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+    return 0; /* no result: rax is residue at 0x1400C532F */
   }
   if ( v4 == -1 )
   {
@@ -1680,7 +1680,7 @@ LABEL_85:
           v115);
         sub_1400C3E00(v1);
         LOBYTE(dword_140404A6C[16 * (v37 + (int)dword_140404A6C[v2 + 278846111]) + 278846114]) = 0;
-        return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+        return 0; /* no result: rax is residue at 0x1400C532F */
       }
     }
     v47 = 0;
@@ -1728,7 +1728,7 @@ LABEL_155:
               *(_QWORD *)&dword_140404A6C[v2 + 278846111] = 0;
               sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[v2 + 278847325]), 0, 0x520u);
               sub_1400C92B0(v1);
-              return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+              return 0; /* no result: rax is residue at 0x1400C532F */
             }
             if ( *(_BYTE *)v11 )
             {
@@ -1738,7 +1738,7 @@ LABEL_155:
               *((_BYTE *)&dword_140404A6C[278846120] + v94) = 0;
               goto LABEL_178;
             }
-            return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+            return 0; /* no result: rax is residue at 0x1400C532F */
           }
 LABEL_142:
           LODWORD(v108) = (_DWORD)v110;
@@ -1821,7 +1821,7 @@ LABEL_150:
             dword_140404A6C[v2 + 278847324] = 1;
             dword_140404A6C[v2 + 278847454] = v101;
             sub_1400C5C00(v1);
-            return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+            return 0; /* no result: rax is residue at 0x1400C532F */
           }
           v102 = (110 * v1 + (int)dword_140404A6C[v2 + 278846111]) << 6;
           *(_OWORD *)((char *)&dword_140404A6C[278846114] + v102) = xmmword_140276068;
@@ -1880,7 +1880,7 @@ LABEL_131:
           *(unsigned int *)((char *)&dword_140404A6C[297756297] + v83) = 1065353216;
           *(unsigned int *)((char *)&dword_140404A6C[297756298] + v83) = 1065353216;
         }
-        return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+        return 0; /* no result: rax is residue at 0x1400C532F */
       }
     }
     while ( v47 != 5 );
@@ -1971,7 +1971,7 @@ LABEL_131:
                 v64 = sub_14004C960(v1, v106);
                 v65 = v64;
                 if ( v64 == -1 )
-                  return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+                  return 0; /* no result: rax is residue at 0x1400C532F */
                 v66 = v108;
                 if ( (unsigned int)sub_140080820(v64, v108, (__int64)Str1) == -1 )
                 {
@@ -2000,7 +2000,7 @@ LABEL_131:
                   dword_140404A6C[v2 + 278847257] = *(unsigned int *)((char *)&dword_140404A6C[6 * v3 + 275754073] + v109);
                   LOBYTE(dword_140404A6C[16 * (110 * v1 + v70) + 278846114]) = 0;
                   sub_140051650(dword_140404A6C[283786018], v1, 1.0, 1.0);
-                  return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+                  return 0; /* no result: rax is residue at 0x1400C532F */
                 }
                 v71 = (110 * v1 + (int)dword_140404A6C[v2 + 278846111]) << 6;
                 *(_OWORD *)((char *)&dword_140404A6C[278846114] + v71) = xmmword_140275FA0;
@@ -2016,7 +2016,7 @@ LABEL_131:
               }
 LABEL_178:
               sub_1400C3E00(v1);
-              return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+              return 0; /* no result: rax is residue at 0x1400C532F */
             }
           }
         }
@@ -2048,7 +2048,7 @@ LABEL_98:
   else
   {
     if ( v106 || (int)dword_140404A6C[v2 + 278845906] <= 0 )
-      return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+      return 0; /* no result: rax is residue at 0x1400C532F */
     v25 = dword_140404A6C[1760 * dword_140404A6C[v2 + 278845907] + 278846098];
   }
   if ( v25 != -1 )
@@ -2091,7 +2091,7 @@ LABEL_98:
       *(_QWORD *)&dword_140404A6C[18 * (int)v106 + 278847172 + v2] = 0;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v105 ^ v116);
+  return 0; /* no result: rax is residue at 0x1400C532F */
 }
 #undef v105
 #undef v106
@@ -5219,8 +5219,7 @@ __int64            sub_1400C8D20(int a1, int a2)
     --v4;
   }
   while ( v4 );
-  sub_1400584B0(a1, v10);
-  return sub_1401F8B20((unsigned __int64)v9 ^ v12);
+  return sub_1400584B0(a1, v10); /* 0x1400C8DE3: the result of this call is still in rax at the exit */
 }
 #undef v9
 #undef v10
@@ -5408,7 +5407,7 @@ __int64            sub_1400C8E10(int a1)
   do
     sub_140050F90(v22, v21++);
   while ( v21 < 24 );
-  return sub_1401F8B20((unsigned __int64)&v28 ^ v34);
+  return 0; /* no result: rax is residue of the loop's last call at 0x1400C9086 */
 }
 #undef v28
 #undef v29
@@ -5897,191 +5896,11 @@ void            sub_1400C9B60(int a1)
 //----- (00000001400C9D20) ----------------------------------------------------
 unsigned __int64 sub_1400C9D20()
 {
-  unsigned __int64 result; // rax
-  unsigned int *v1; // rbx
-  float *v2; // rbp
-  unsigned int *v3; // rdi
-  __int64 v4; // r14
-  __int64 v5; // rsi
-  float v6; // xmm3_4
-  float v7; // xmm1_4
-  float v8; // xmm0_4
-  signed int v9; // r8d
-  float v10; // xmm7_4
-  float v11; // xmm4_4
-  __int64 v12; // rdx
-  float v13; // xmm14_4
-  float v14; // xmm12_4
-  float v15; // xmm11_4
-  float v16; // xmm10_4
-  float v17; // xmm8_4
-  float v18; // xmm9_4
-  __int64 v19; // r9
-  __int64 v20; // rax
-  float v21; // xmm0_4
-  float v22; // xmm6_4
-  float v23; // xmm1_4
-  float v24; // xmm5_4
-  float v25; // xmm0_4
-  float v26; // xmm1_4
-  int v27; // eax
-  float v28; // xmm0_4
-  int v29; // eax
-  float v30; // xmm1_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400C9D20[16];
-#define retaddr (*(_UNKNOWN * (*))(void *)(sr_frame_1400C9D20 + 0)) /* [rsp+D8h] */
-
-  result = (unsigned __int64)&retaddr;
-  v1 = &dword_140404A6C[278845958];
-  v2 = (float *)&dword_140404A6C[278845919];
-  v3 = &dword_140404A6C[278845939];
-  v4 = 1024;
-  do
-  {
-    if ( *(v3 - 46) && *(v3 - 45) )
-    {
-      *(v3 - 20) = *(v3 - 23);
-      *(v3 - 19) = *(v3 - 22);
-      *(v3 - 18) = *(v3 - 21);
-      v5 = 47LL * (int)*(v3 - 24);
-      *(v3 - 23) = dword_140404A6C[v5 + 18215715];
-      *(v3 - 22) = dword_140404A6C[v5 + 18215716];
-      *(v3 - 21) = dword_140404A6C[v5 + 18215717];
-      *(v3 - 14) = dword_140404A6C[v5 + 18215718];
-      *(v3 - 13) = dword_140404A6C[v5 + 18215719];
-      *(v3 - 12) = dword_140404A6C[v5 + 18215720];
-      *(v3 - 5) = dword_140404A6C[v5 + 18215724];
-      *(v3 - 4) = dword_140404A6C[v5 + 18215725];
-      *(v3 - 3) = dword_140404A6C[v5 + 18215726];
-      *(v3 - 2) = dword_140404A6C[v5 + 18215727];
-      *(v3 - 1) = dword_140404A6C[v5 + 18215728];
-      *v3 = dword_140404A6C[v5 + 18215729];
-      v3[1] = dword_140404A6C[v5 + 18215730];
-      v3[2] = dword_140404A6C[v5 + 18215731];
-      v3[3] = dword_140404A6C[v5 + 18215732];
-      v3[4] = dword_140404A6C[v5 + 18215736];
-      v3[5] = dword_140404A6C[v5 + 18215737];
-      v3[6] = dword_140404A6C[v5 + 18215738];
-      if ( (unsigned int)sub_1400DC050(v2, v2 - 3, 1) )
-      {
-        v6 = (float)((float)(*((float *)v3 - 23) - *((float *)v3 - 20))
-                   * (float)(*(float *)&dword_140404A6C[73006987] * 0.97500002))
-           + *((float *)v3 - 20);
-        v7 = (float)((float)(*((float *)v3 - 22) - *((float *)v3 - 19))
-                   * (float)(*(float *)&dword_140404A6C[73006987] * 0.97500002))
-           + *((float *)v3 - 19);
-        v8 = (float)((float)(*((float *)v3 - 21) - *((float *)v3 - 18))
-                   * (float)(*(float *)&dword_140404A6C[73006987] * 0.97500002))
-           + *((float *)v3 - 18);
-        *((float *)v3 - 23) = v6;
-        *(float *)&dword_140404A6C[v5 + 18215715] = v6;
-        *((float *)v3 - 22) = v7;
-        *(float *)&dword_140404A6C[v5 + 18215716] = v7;
-        *((float *)v3 - 21) = v8;
-        *(float *)&dword_140404A6C[v5 + 18215717] = v8;
-      }
-      *v1 = 1199570944;
-      v9 = 0;
-      v1[3] = -947912704;
-      v10 = 65536.0;
-      v1[1] = 1199570944;
-      v11 = -65536.0;
-      v1[4] = -947912704;
-      v1[2] = 1199570944;
-      v1[5] = -947912704;
-      v12 = (int)*(v3 - 41);
-      if ( (int)dword_140404A6C[1268 * v12 + 278522247] > 0 )
-      {
-        v13 = 65536.0;
-        v14 = -65536.0;
-        v15 = 65536.0;
-        v16 = -65536.0;
-        v17 = 65536.0;
-        v18 = -65536.0;
-        v19 = 0;
-        do
-        {
-          v20 = *(_QWORD *)&dword_140404A6C[1268 * (int)v12 + 278522249];
-          v21 = *(float *)(v20 + v19 + 4);
-          v22 = (float)((float)((float)(*(float *)(v20 + v19) * *((float *)v3 - 5)) + *((float *)v3 - 23))
-                      + (float)(v21 * *((float *)v3 - 2)))
-              + (float)(*(float *)(v20 + v19 + 8) * *((float *)v3 + 1));
-          v23 = *(float *)(v20 + v19 + 8);
-          v10 = v22;
-          v11 = (float)((float)((float)(*(float *)(v20 + v19) * *((float *)v3 - 3)) + *((float *)v3 - 21))
-                      + (float)(v21 * *(float *)v3))
-              + (float)(v23 * *((float *)v3 + 3));
-          v24 = (float)((float)((float)(*(float *)(v20 + v19) * *((float *)v3 - 4)) + *((float *)v3 - 22))
-                      + (float)(v21 * *((float *)v3 - 1)))
-              + (float)(v23 * *((float *)v3 + 2));
-          if ( v13 <= v22 )
-          {
-            v10 = *(float *)v1;
-          }
-          else
-          {
-            *(float *)v1 = v22;
-            v13 = v22;
-          }
-          if ( v14 < v22 )
-          {
-            *((float *)v1 + 3) = v22;
-            v14 = v22;
-          }
-          if ( v15 > v24 )
-          {
-            *((float *)v1 + 1) = v24;
-            v15 = v24;
-          }
-          if ( v16 < v24 )
-          {
-            *((float *)v1 + 4) = v24;
-            v16 = v24;
-          }
-          if ( v17 > v11 )
-          {
-            *((float *)v1 + 2) = v11;
-            v17 = v11;
-          }
-          if ( v18 >= v11 )
-          {
-            v11 = *((float *)v1 + 5);
-          }
-          else
-          {
-            *((float *)v1 + 5) = v11;
-            v18 = v11;
-          }
-          v12 = (int)*(v3 - 41);
-          ++v9;
-          v19 += 12;
-        }
-        while ( v9 < (int)dword_140404A6C[1268 * v12 + 278522247] );
-      }
-      v25 = *((float *)v1 + 3) * 0.25;
-      v26 = *((float *)v1 + 1) * 0.25;
-      v1[6] = (int)(float)(v10 * 0.25);
-      v27 = (int)v25;
-      v28 = *((float *)v1 + 4);
-      v1[9] = v27;
-      v29 = (int)v26;
-      v30 = *((float *)v1 + 2);
-      v1[7] = v29;
-      v1[10] = (int)(float)(v28 * 0.25);
-      v1[8] = (int)(float)(v30 * 0.25);
-      result = (unsigned int)(int)(float)(v11 * 0.25);
-      v1[11] = result;
-    }
-    v2 += 1760;
-    v3 += 1760;
-    v1 += 1760;
-    --v4;
-  }
-  while ( v4 );
-  return result;
+  extern void world_update_item_bounds(void);
+  /* src/engine/world_items.c; the original's return value is a leftover, no caller reads it. */
+  world_update_item_bounds();
+  return 0;
 }
-#undef retaddr
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -8624,7 +8443,8 @@ __int64            sub_1400CDBD0(unsigned int a1, signed int a2, signed int a3, 
   v8 = a3;
   v9 = 1 << a2;
   v33 = a2;
-  if ( ((unsigned int)sub_1400169B0(a3, a4, a5, a6) & (1 << a2)) == 0 )
+  if ( ((unsigned int)sub_1400169B0(a3, a4, a5, a6) & (1 << a2)) != 0 )
+    return (unsigned int)-1; /* 0x1400CDC2D: mov eax, 0xffffffff */
   {
     v35 = xmmword_140278D30;
     v36 = xmmword_140278D30;
@@ -8709,7 +8529,7 @@ __int64            sub_1400CDBD0(unsigned int a1, signed int a2, signed int a3, 
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v30 ^ v38);
+  return (unsigned int)v32; /* 0x1400CDFA9: mov eax, dword ptr [rsp + 0x34] */
 }
 #undef v30
 #undef v31
@@ -15195,8 +15015,7 @@ __int64            sub_1400DA8E0(__int64 a1, __int64 a2, float *a3, float *a4)
   v4 = v12;
   v6 = v13;
   sub_14011BF40((__int64)v10, a2, a3, a4);
-  sub_1400DA960(a1, a2, (__int64)v10, v4, v6);
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return sub_1400DA960(a1, a2, (__int64)v10, v4, v6); /* 0x1400DA937: the result of this call is still in rax at the exit */
 }
 #undef v10
 #undef v11
@@ -16922,24 +16741,24 @@ __int64            sub_1400DDB70(int a1, float *a2, float *a3)
   v136 = a2;
   v7 = *(float *)&dword_140404A6C[v5 + 129716753];
   if ( v3 < v7 && v7 > *a3 )
-    return sub_1401F8B20((unsigned __int64)&v135 ^ v165);
+    return 0; /* the function has no caller */
   v8 = *(float *)&dword_140404A6C[v5 + 129716754];
   v9 = a2[1];
   if ( v9 < v8 && v8 > a3[1] )
-    return sub_1401F8B20((unsigned __int64)&v135 ^ v165);
+    return 0; /* the function has no caller */
   v10 = *(float *)&dword_140404A6C[v5 + 129716755];
   v11 = a2[2];
   if ( v11 < v10 && v10 > a3[2] )
-    return sub_1401F8B20((unsigned __int64)&v135 ^ v165);
+    return 0; /* the function has no caller */
   v12 = *(float *)&dword_140404A6C[v5 + 129716756];
   if ( v3 > v12 && v12 < *a3 )
-    return sub_1401F8B20((unsigned __int64)&v135 ^ v165);
+    return 0; /* the function has no caller */
   v13 = *(float *)&dword_140404A6C[v5 + 129716757];
   if ( v9 > v13 && v13 < a3[1] )
-    return sub_1401F8B20((unsigned __int64)&v135 ^ v165);
+    return 0; /* the function has no caller */
   v14 = *(float *)&dword_140404A6C[v5 + 129716758];
   if ( v11 > v14 && v14 < a3[2] )
-    return sub_1401F8B20((unsigned __int64)&v135 ^ v165);
+    return 0; /* the function has no caller */
   v15 = 99776LL * (int)dword_140404A6C[v5 + 129716710];
   v16 = 0;
   dword_140404A6C[73006987] = 1065353216;
@@ -17236,7 +17055,7 @@ LABEL_19:
     }
     while ( v16 < *(int *)((char *)&dword_140404A6C[346718495] + v147) );
   }
-  return sub_1401F8B20((unsigned __int64)&v135 ^ v165);
+  return 0; /* the function has no caller */
 }
 #undef v135
 #undef v136
@@ -18393,24 +18212,24 @@ __int64            sub_1400DFB70(int a1, float *a2, float *a3, int a4)
   v262 = a2;
   v8 = *(float *)&dword_140404A6C[v6 + 129716753];
   if ( v4 < v8 && v8 > *a3 )
-    return sub_1401F8B20((unsigned __int64)&v238 ^ v283);
+    return 0; /* outside the vehicle's box (0x1400DFBCF..0x1400DFC5A jump to xor eax,eax) */
   v9 = *(float *)&dword_140404A6C[v6 + 129716754];
   v10 = a2[1];
   if ( v10 < v9 && v9 > a3[1] )
-    return sub_1401F8B20((unsigned __int64)&v238 ^ v283);
+    return 0; /* outside the vehicle's box (0x1400DFBCF..0x1400DFC5A jump to xor eax,eax) */
   v11 = *(float *)&dword_140404A6C[v6 + 129716755];
   v12 = a2[2];
   if ( v12 < v11 && v11 > a3[2] )
-    return sub_1401F8B20((unsigned __int64)&v238 ^ v283);
+    return 0; /* outside the vehicle's box (0x1400DFBCF..0x1400DFC5A jump to xor eax,eax) */
   v13 = *(float *)&dword_140404A6C[v6 + 129716756];
   if ( v4 > v13 && v13 < *a3 )
-    return sub_1401F8B20((unsigned __int64)&v238 ^ v283);
+    return 0; /* outside the vehicle's box (0x1400DFBCF..0x1400DFC5A jump to xor eax,eax) */
   v14 = *(float *)&dword_140404A6C[v6 + 129716757];
   if ( v10 > v14 && v14 < a3[1] )
-    return sub_1401F8B20((unsigned __int64)&v238 ^ v283);
+    return 0; /* outside the vehicle's box (0x1400DFBCF..0x1400DFC5A jump to xor eax,eax) */
   v15 = *(float *)&dword_140404A6C[v6 + 129716758];
   if ( v12 > v15 && v15 < a3[2] )
-    return sub_1401F8B20((unsigned __int64)&v238 ^ v283);
+    return 0; /* outside the vehicle's box (0x1400DFBCF..0x1400DFC5A jump to xor eax,eax) */
   v16 = (int)dword_140404A6C[v6 + 129716710];
   v17 = 0;
   v18 = 0;
@@ -19081,7 +18900,9 @@ LABEL_70:
     }
     while ( v17 < (int)dword_140404A6C[v6 + 129720373] );
   }
-  return sub_1401F8B20((unsigned __int64)&v238 ^ v283);
+  /* 0x1400E1547: 1 when a hit lowered the fraction below 1 (comiss with 1.0f, jae -> 0). The
+     original's stack cookie check does not change this result. */
+  return !(*(float *)&dword_140404A6C[73006987] >= 1.0f);
 }
 #undef v238
 #undef v239

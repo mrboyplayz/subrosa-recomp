@@ -318,76 +318,100 @@ def startup_storage_assembly(pe, names):
     return '\n'.join(lines) + '\n', record
 
 
-def dependencies(report, output, rust_leaf_library=None):
-    compiler = report['command'][0]
+LINKED = PROJECT / 'src/rebuild/client_link'
+# Assembly the link needs besides the C sources: data the C refers to by address and the
+# routines that are not C yet. It lives in the repository; --from-original rewrites it from
+# the pinned original client, which is otherwise not needed to build.
+LINKED_SOURCES = ('client_native_gaps.s', 'time_vtable.s', 'codec_storage.s', 'startup_storage.s',
+                  'named_data.s', 'spelling_table.s', 'math_constants.s', 'storage_aliases.s',
+                  'pointer_storage.s')
+# Functions of the DLLs the client imports that the recovered window code adds to the recorded list.
+EXTRA_IMPORTS = {'SDL2': {'SDL_GetWindowDisplayIndex', 'SDL_GetDisplayBounds',
+    'SDL_GetWindowPosition', 'SDL_SetWindowPosition', 'SDL_SetWindowBordered',
+    'SDL_SetWindowResizable', 'SDL_SetHintWithPriority'}}
+
+
+def generate_linked_sources(report, output):
+    """Write LINKED_SOURCES from the pinned original client; returns the per-file records."""
     binary = PROJECT.parent / 'subrosa.exe'
     if digest(binary) != CLIENT_SHA:
         raise ValueError('Requires the pinned vanilla client')
     pe = pefile.PE(str(binary))
     names = run(['nm', '--undefined-only', report['object_file']], output, 'nm').stdout
     names = sorted({line.split()[-1] for line in names.splitlines() if line.split()})
-    from recover_client_native_gaps import assembly as native_gap_assembly, BINDINGS, BOUNDARIES
-    native_source, native_obj = output / 'client_native_gaps.s', output / 'client_native_gaps.obj'
-    native_text, native_record = native_gap_assembly(pe)
-    native_source.write_text(native_text, encoding='utf-8')
-    run([compiler, '-c', str(native_source), '-o', str(native_obj)], output, 'native-gaps')
+    texts, records = {}, {}
+    from recover_client_native_gaps import assembly as native_gap_assembly
+    texts['client_native_gaps.s'], records['native_gaps'] = native_gap_assembly(pe)
     from recover_client_time_vtable import assembly as time_vtable_assembly, WEEKDAYS
     if 'off_14028B0E0' in names:
         names = sorted(set(names) | {f'sr_mem_{address:x}' for address in WEEKDAYS})
-    time_source, time_obj = output / 'time_vtable.s', output / 'time_vtable.obj'
-    time_text, time_record = time_vtable_assembly(pe, names)
-    time_source.write_text(time_text, encoding='utf-8')
-    run([compiler, '-c', str(time_source), '-o', str(time_obj)], output, 'time-vtable')
-    time_relocations = run(['objdump','-r',str(time_obj)],output,'time-vtable-relocations').stdout
-    (output/'time-vtable-relocations.txt').write_text(time_relocations,encoding='utf-8')
-    if time_record.get('vtable') and 'IMAGE_REL_AMD64_ADDR32NB' not in time_relocations:
-        raise ValueError('Missing image-relative RTTI relocation')
-    dname_source, dname_obj = PROJECT / 'src/recovered/client_dname.c', output / 'client_dname.obj'
-    run([compiler, '-c', '-O0', '-mcmodel=large', str(dname_source), '-o', str(dname_obj)], output, 'dname')
+    texts['time_vtable.s'], records['time_vtable'] = time_vtable_assembly(pe, names)
     from recover_client_opaque import opaque_data_assembly
-    opaque_source = output / 'codec_storage.s'
-    opaque_obj = output / 'codec_storage.obj'
-    opaque_text, opaque_records = opaque_data_assembly(pe, names)
-    opaque_source.write_text(opaque_text, encoding='utf-8')
-    run([compiler, '-c', str(opaque_source), '-o', str(opaque_obj)], output, 'codec-storage')
-    startup_source = output / 'startup_storage.s'; startup_obj = output / 'startup_storage.obj'
-    startup_text, startup_record = startup_storage_assembly(pe, names)
-    startup_source.write_text(startup_text, encoding='utf-8')
-    run([compiler, '-c', str(startup_source), '-o', str(startup_obj)], output, 'startup-storage')
-    startup_relocs = run(['objdump', '-r', str(startup_obj)], output, 'startup-relocations').stdout
-    (output / 'startup-relocations.txt').write_text(startup_relocs, encoding='utf-8')
-    named_source = output / 'named_data.s'; named_obj = output / 'named_data.obj'
-    named_text, named_records = named_data_assembly(pe, names)
-    named_source.write_text(named_text, encoding='utf-8')
-    run([compiler, '-c', str(named_source), '-o', str(named_obj)], output, 'named-data')
-    spelling_source = output / 'spelling_table.s'; spelling_obj = output / 'spelling_table.obj'
-    spelling_text, spelling_record = spelling_table_assembly(pe, names)
-    spelling_source.write_text(spelling_text, encoding='utf-8')
-    run([compiler, '-c', str(spelling_source), '-o', str(spelling_obj)], output, 'spelling-table')
+    texts['codec_storage.s'], records['codec_storage'] = opaque_data_assembly(pe, names)
+    texts['startup_storage.s'], records['startup_storage'] = startup_storage_assembly(pe, names)
+    texts['named_data.s'], records['named_data'] = named_data_assembly(pe, names)
+    texts['spelling_table.s'], records['spelling_table'] = spelling_table_assembly(pe, names)
     from recover_client_opaque import inside as inside_codec, address as codec_address
-    constant_names = [n for n in names if not opaque_records or not inside_codec(codec_address(n))]
+    constant_names = [n for n in names if not records['codec_storage'] or not inside_codec(codec_address(n))]
     groups = constant_groups(pe, constant_names)
-    assembly = output / 'math_constants.s'
-    assembly.write_text(constant_assembly(pe, groups), encoding='utf-8')
-    constant_obj = output / 'math_constants.obj'
-    run([compiler, '-c', str(assembly), '-o', str(constant_obj)], output, 'constants')
-    storage_source = output / 'storage_aliases.s'
-    storage_text, storage_records = storage_assembly(pe,names)
-    storage_source.write_text(storage_text,encoding='utf-8')
-    storage_obj = output / 'storage_aliases.obj'
-    run([compiler,'-c',str(storage_source),'-o',str(storage_obj)],output,'storage-aliases')
-    pointer_source=output/'pointer_storage.s';pointer_obj=output/'pointer_storage.obj'
-    pointer_text,pointer_records=pointer_storage(pe,names)
-    pointer_source.write_text(pointer_text,encoding='utf-8')
-    run([compiler,'-c',str(pointer_source),'-o',str(pointer_obj)],output,'pointer-storage')
-    relocations=run(['objdump','-r',str(pointer_obj)],output,'pointer-relocations').stdout
-    (output/'pointer-relocations.txt').write_text(relocations,encoding='utf-8')
-    for record in pointer_records:
-        if record['target_symbol'] not in relocations or 'IMAGE_REL_AMD64_ADDR64' not in relocations:
-            raise ValueError('Missing x64 pointer relocation')
-    leaf_obj = output / 'client_leaf.obj'
+    texts['math_constants.s'], records['constant_groups'] = constant_assembly(pe, groups), groups
+    texts['storage_aliases.s'], records['storage_windows'] = storage_assembly(pe, names)
+    texts['pointer_storage.s'], records['pointer_storage'] = pointer_storage(pe, names)
     if pe.get_data(0x26cf90, 2) != bytes.fromhex('ffe0'):
         raise ValueError('Native guard dispatch is no longer JMP RAX')
+    # The exported wrapper was mechanically renamed WinMain_sr. The
+    # original five-byte thunk is JMP 0x140001030, not missing behavior.
+    if pe.get_data(0x11d0, 5) != bytes.fromhex('e95bfeffff'):
+        raise ValueError('Original WinMain thunk changed')
+    for module, dll_name in [('SDL2', 'SDL2.dll'), ('steam_api64', 'steam_api64.dll')]:
+        image = pefile.PE(str(PROJECT.parent / dll_name))
+        if image.FILE_HEADER.Machine != 0x8664:
+            raise ValueError('Requires x64 DLL: ' + dll_name)
+        exports = {item.name.decode('ascii') for item in image.DIRECTORY_ENTRY_EXPORT.symbols if item.name}
+        if set(wanted_imports(module)) - exports:
+            raise ValueError('Recorded DLL imports do not match installed exports: ' + dll_name)
+    LINKED.mkdir(parents=True, exist_ok=True)
+    for name in LINKED_SOURCES:
+        (LINKED / name).write_text(texts[name], encoding='utf-8', newline='\n')
+    (LINKED / 'records.json').write_text(json.dumps(records, indent=1) + '\n', encoding='utf-8', newline='\n')
+    return records
+
+
+def wanted_imports(module):
+    imports = json.loads((PROJECT / 'exports/client/imports.json').read_text(encoding='utf-8'))
+    wanted = {i['name'] for i in imports if i['module'].lower() == module.lower()} | EXTRA_IMPORTS.get(module, set())
+    if not wanted:
+        raise ValueError('No recorded imports for ' + module)
+    return sorted(wanted)
+
+
+def dependencies(report, output, rust_leaf_library=None, from_original=False):
+    compiler = report['command'][0]
+    if from_original:
+        records = generate_linked_sources(report, output)
+    else:
+        missing = [n for n in LINKED_SOURCES + ('records.json',) if not (LINKED / n).exists()]
+        if missing:
+            raise ValueError('Missing %s in %s; run once with --from-original' % (', '.join(missing), LINKED))
+        records = json.loads((LINKED / 'records.json').read_text(encoding='utf-8'))
+    objects = {}
+    for name in LINKED_SOURCES:
+        objects[name] = output / (name[:-2] + '.obj')
+        run([compiler, '-c', str(LINKED / name), '-o', str(objects[name])], output, name[:-2].replace('_', '-'))
+    time_relocations = run(['objdump','-r',str(objects['time_vtable.s'])],output,'time-vtable-relocations').stdout
+    (output/'time-vtable-relocations.txt').write_text(time_relocations,encoding='utf-8')
+    if records['time_vtable'].get('vtable') and 'IMAGE_REL_AMD64_ADDR32NB' not in time_relocations:
+        raise ValueError('Missing image-relative RTTI relocation')
+    startup_relocs = run(['objdump', '-r', str(objects['startup_storage.s'])], output, 'startup-relocations').stdout
+    (output / 'startup-relocations.txt').write_text(startup_relocs, encoding='utf-8')
+    relocations=run(['objdump','-r',str(objects['pointer_storage.s'])],output,'pointer-relocations').stdout
+    (output/'pointer-relocations.txt').write_text(relocations,encoding='utf-8')
+    for record in records['pointer_storage']:
+        if record['target_symbol'] not in relocations or 'IMAGE_REL_AMD64_ADDR64' not in relocations:
+            raise ValueError('Missing x64 pointer relocation')
+    dname_source, dname_obj = PROJECT / 'src/recovered/client_dname.c', output / 'client_dname.obj'
+    run([compiler, '-c', '-O0', '-mcmodel=large', str(dname_source), '-o', str(dname_obj)], output, 'dname')
+    leaf_obj = output / 'client_leaf.obj'
     if rust_leaf_library is None:
         run([compiler, '-c', '-O0', '-mcmodel=large', str(PROJECT / 'src/recovered/client_leaf.c'),
              '-o', str(leaf_obj)], output, 'leaf')
@@ -419,22 +443,9 @@ def dependencies(report, output, rust_leaf_library=None):
     run([compiler, '-c', '-std=gnu11', '-O0', '-g', '-mcmodel=large',
          '-Wall', '-Wextra', '-Werror', str(debug_source), '-o', str(debug_obj)],
         output, 'debug-console')
-    imports = json.loads((PROJECT / 'exports/client/imports.json').read_text(encoding='utf-8'))
     libraries, dll_records = [], []
     for module, dll_name in [('SDL2', 'SDL2.dll'), ('steam_api64', 'steam_api64.dll')]:
-        dll = PROJECT.parent / dll_name
-        image = pefile.PE(str(dll))
-        if image.FILE_HEADER.Machine != 0x8664:
-            raise ValueError('Requires x64 DLL: ' + dll_name)
-        exports = {item.name.decode('ascii') for item in image.DIRECTORY_ENTRY_EXPORT.symbols
-                   if item.name}
-        wanted = sorted({i['name'] for i in imports if i['module'].lower() == module.lower()})
-        if module == 'SDL2':
-            wanted = sorted(set(wanted) | {'SDL_GetWindowDisplayIndex', 'SDL_GetDisplayBounds',
-                'SDL_GetWindowPosition', 'SDL_SetWindowPosition', 'SDL_SetWindowBordered',
-                'SDL_SetWindowResizable', 'SDL_SetHintWithPriority'})
-        if not wanted or set(wanted) - exports:
-            raise ValueError('Recorded DLL imports do not match installed exports: ' + dll_name)
+        wanted = wanted_imports(module)
         definition = output / (module + '.def')
         definition.write_text('LIBRARY ' + dll_name + '\nEXPORTS\n' +
                               '\n'.join(wanted) + '\n', encoding='utf-8')
@@ -442,25 +453,31 @@ def dependencies(report, output, rust_leaf_library=None):
         run(['dlltool', '-m', 'i386:x86-64', '-d', str(definition), '-l', str(library)],
             output, module + '-imports')
         libraries.append(library)
-        dll_records.append({'path': str(dll), 'sha256': digest(dll), 'imports': wanted})
-    artifacts = [constant_obj, storage_obj, pointer_obj, named_obj, spelling_obj, startup_obj, leaf_obj, shim_obj, opaque_obj, time_obj, dname_obj, native_obj, window_obj, debug_obj] + libraries
+        dll_records.append({'dll': dll_name, 'imports': wanted})
+    order = ('math_constants.s', 'storage_aliases.s', 'pointer_storage.s', 'named_data.s', 'spelling_table.s',
+             'startup_storage.s')
+    artifacts = ([objects[n] for n in order] + [leaf_obj, shim_obj, objects['codec_storage.s'],
+                 objects['time_vtable.s'], dname_obj, objects['client_native_gaps.s'], window_obj, debug_obj] + libraries)
+    groups = records['constant_groups']
+    from recover_client_native_gaps import BINDINGS, BOUNDARIES
     record = {'reference_sha256': CLIENT_SHA, 'constant_groups': groups,
+              'linked_sources_from_original': from_original,
               'leaf_implementation': 'rust' if rust_leaf_library is not None else 'c',
               'rust_leaf_library': str(rust_leaf_library) if rust_leaf_library is not None else None,
               'constant_count': sum(len(g['entries']) for g in groups),
-              'storage_windows': storage_records,
-              'codec_storage': opaque_records,
-              'time_vtable': time_record,
-              'native_gaps': native_record,
-              'pointer_storage': pointer_records,
-              'named_data': named_records, 'spelling_table': spelling_record,
-              'startup_storage': startup_record,
+              'storage_windows': records['storage_windows'],
+              'codec_storage': records['codec_storage'],
+              'time_vtable': records['time_vtable'],
+              'native_gaps': records['native_gaps'],
+              'pointer_storage': records['pointer_storage'],
+              'named_data': records['named_data'], 'spelling_table': records['spelling_table'],
+              'startup_storage': records['startup_storage'],
               'guard_dispatch': {'original_address': 0x14026cf90,
                                  'original_bytes': 'ffe0', 'target_register': 'RAX',
                                  'export_binding': guard_offsets},
               'dlls': dll_records,
-              'source_sha256': {str(p): digest(p) for p in [assembly, storage_source, pointer_source,
-                  named_source, spelling_source, startup_source, opaque_source, time_source, dname_source, native_source, BINDINGS, BOUNDARIES, PROJECT / 'src/rebuild/client_opaque_data.json', PROJECT / 'src/rebuild/client_named_data.json', shim,
+              'source_sha256': {str(p): digest(p) for p in [LINKED / n for n in LINKED_SOURCES] + [
+                  dname_source, BINDINGS, BOUNDARIES, PROJECT / 'src/rebuild/client_opaque_data.json', PROJECT / 'src/rebuild/client_named_data.json', shim,
                   PROJECT / 'src/recovered/client_leaf.c', PROJECT / 'src/recovered/client_leaf.h',
                   window_source, window_source.with_suffix('.h'),
                   debug_source, debug_source.with_suffix('.h')]},
@@ -475,6 +492,8 @@ def main():
                         default=Path('reports/client-object-final-20260930/client-prepared.json'))
     parser.add_argument('--output', type=Path, default=Path('reports/client-link'))
     parser.add_argument('--baseline', action='store_true', help='link without recovered dependencies')
+    parser.add_argument('--from-original', action='store_true',
+                        help='rewrite src/rebuild/client_link from the pinned original client (../subrosa.exe) before linking')
     parser.add_argument('--rust-leaf-library', type=Path,
                         help='Replace recovered C leaf helpers with the Rust static archive; other routines remain C/native')
     args = parser.parse_args()
@@ -489,14 +508,16 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     if args.baseline and args.rust_leaf_library:
         parser.error('Rust leaf library requires recovered dependencies')
-    inputs = [] if args.baseline else dependencies(report, output, args.rust_leaf_library)
-    command = [report['command'][0], report['object_file']] + [str(p) for p in inputs]
+    inputs = [] if args.baseline else dependencies(report, output, args.rust_leaf_library, args.from_original)
+    # Link the translation-unit objects the aggregate was made from, not the
+    # aggregate itself: GNU ld's relocatable (-r) link of PE objects leaves
+    # the section-relative .pdata addends unadjusted, so most functions of
+    # the aggregate get wrong unwind entries (breaking SEH, longjmp and stack
+    # walks). The aggregate's hash above still pins the build.
+    units = [a for a in report['command'][3:]
+             if a.endswith('.obj') and Path(a).resolve() != Path(report['object_file']).resolve()]
+    command = [report['command'][0]] + (units or [report['object_file']]) + [str(p) for p in inputs]
     if not args.baseline:
-        image = pefile.PE(str(PROJECT.parent / 'subrosa.exe'))
-        # The exported wrapper was mechanically renamed WinMain_sr. The
-        # original five-byte thunk is JMP 0x140001030, not missing behavior.
-        if image.get_data(0x11d0, 5) != bytes.fromhex('e95bfeffff'):
-            raise ValueError('Original WinMain thunk changed')
         defined = run(['nm', '--defined-only', report['object_file']], output, 'nm-defined').stdout
         if not re.search(r'\bT WinMain_sr$', defined, re.M):
             raise ValueError('Exported WinMain definition is missing')

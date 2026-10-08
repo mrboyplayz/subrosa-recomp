@@ -4231,7 +4231,7 @@ __int64            unknown_libname_581(__int64 a1)
       else
         *v5 += v11;
       if ( ++v3 == *(_DWORD *)(a1 + 80) )
-        return sub_1401F8B20((unsigned __int64)&v10 ^ v13);
+        return 1; /* 0x140223C46: mov al, 1 */
     }
     *(_DWORD *)(a1 + 40) = -1;
   }
@@ -4245,7 +4245,7 @@ __int64            unknown_libname_581(__int64 a1)
     else
       *v8 += v6;
   }
-  return sub_1401F8B20((unsigned __int64)&v10 ^ v13);
+  return 1; /* 0x140223C46: mov al, 1 */
 }
 
 // 140223B82: conditional instruction was optimized away because eax.4>=1
@@ -4288,7 +4288,7 @@ __int64            unknown_libname_582(__int64 a1)
       else
         *v5 += v11;
       if ( ++v3 == *(_DWORD *)(a1 + 80) )
-        return sub_1401F8B20((unsigned __int64)&v10 ^ v13);
+        return 1; /* 0x140223D6A: mov al, 1 */
     }
     *(_DWORD *)(a1 + 40) = -1;
   }
@@ -4302,7 +4302,7 @@ __int64            unknown_libname_582(__int64 a1)
     else
       *v8 += v6;
   }
-  return sub_1401F8B20((unsigned __int64)&v10 ^ v13);
+  return 1; /* 0x140223D6A: mov al, 1 */
 }
 
 // 140223CA6: conditional instruction was optimized away because eax.4>=1
@@ -4345,7 +4345,7 @@ __int64            unknown_libname_583(__int64 a1)
       else
         *v5 += v11;
       if ( ++v3 == *(_DWORD *)(a1 + 80) )
-        return sub_1401F8B20((unsigned __int64)&v10 ^ v13);
+        return 1; /* 0x140223E8E: mov al, 1 */
     }
     *(_DWORD *)(a1 + 40) = -1;
   }
@@ -4359,7 +4359,7 @@ __int64            unknown_libname_583(__int64 a1)
     else
       *v8 += v6;
   }
-  return sub_1401F8B20((unsigned __int64)&v10 ^ v13);
+  return 1; /* 0x140223E8E: mov al, 1 */
 }
 
 // 140223DCA: conditional instruction was optimized away because eax.4>=1
@@ -4398,7 +4398,7 @@ __int64            unknown_libname_584(__int64 a1)
       v9 = a1 + 16;
       unknown_libname_593(a1 + 1128, (     __m128i *)v11, v10, (_DWORD *)(a1 + 40));
       if ( ++v3 == *(_DWORD *)(a1 + 80) )
-        return sub_1401F8B20((unsigned __int64)&v8 ^ v12);
+        return 1; /* 0x140223F66: mov al, 1 */
     }
     *(_DWORD *)(a1 + 40) = -1;
   }
@@ -4409,7 +4409,7 @@ __int64            unknown_libname_584(__int64 a1)
     v9 = a1 + 16;
     unknown_libname_593(a1 + 1128, v6, v5, (_DWORD *)(a1 + 40));
   }
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v12);
+  return 1; /* 0x140223F66: mov al, 1 */
 }
 
 // 140223EE6: conditional instruction was optimized away because eax.4>=1
@@ -4448,7 +4448,7 @@ __int64            unknown_libname_585(__int64 a1)
       v9 = a1 + 16;
       unknown_libname_593(a1 + 1128, (     __m128i *)v11, v10, (_DWORD *)(a1 + 40));
       if ( ++v3 == *(_DWORD *)(a1 + 80) )
-        return sub_1401F8B20((unsigned __int64)&v8 ^ v12);
+        return 1; /* 0x14022403E: mov al, 1 */
     }
     *(_DWORD *)(a1 + 40) = -1;
   }
@@ -4459,7 +4459,7 @@ __int64            unknown_libname_585(__int64 a1)
     v9 = a1 + 16;
     unknown_libname_593(a1 + 1128, v6, v5, (_DWORD *)(a1 + 40));
   }
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v12);
+  return 1; /* 0x14022403E: mov al, 1 */
 }
 
 // 140223FBE: conditional instruction was optimized away because eax.4>=1
@@ -5736,7 +5736,7 @@ __int64            sub_1402254C4(
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)&v11 ^ v33);
+  return 0; /* the function has no caller */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -5893,10 +5893,11 @@ __int64            unknown_libname_600(struct __crt_locale_pointers *a1, __int64
   if ( a3 && a1 )
   {
     v6 = sub_140225DBC(a1, a2, v10);
-    sub_14022AD78(v6, (__int64)v10, a3);
+    __int64 sr_result = sub_14022AD78(v6, (__int64)v10, a3); /* the result stays in rax */
     v7 = *(_BYTE **)(a2 + 24);
     if ( v7 && !*(_QWORD *)(a2 + 16) )
       *v7 = 0;
+    return sr_result;
   }
   else
   {
@@ -5906,7 +5907,7 @@ __int64            unknown_libname_600(struct __crt_locale_pointers *a1, __int64
     if ( v5 && !*(_QWORD *)(a2 + 16) )
       *v5 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return 1; /* mov eax, 1 */
 }
 
 
@@ -5925,10 +5926,11 @@ __int64            unknown_libname_601(struct __crt_locale_pointers *a1, __int64
   if ( a3 && a1 )
   {
     v6 = sub_140225DBC(a1, a2, v10);
-    sub_14022AEE8(v6, (__int64)v10, a3);
+    __int64 sr_result = sub_14022AEE8(v6, (__int64)v10, a3); /* the result stays in rax */
     v7 = *(_BYTE **)(a2 + 24);
     if ( v7 && !*(_QWORD *)(a2 + 16) )
       *v7 = 0;
+    return sr_result;
   }
   else
   {
@@ -5938,7 +5940,7 @@ __int64            unknown_libname_601(struct __crt_locale_pointers *a1, __int64
     if ( v5 && !*(_QWORD *)(a2 + 16) )
       *v5 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return 1; /* mov eax, 1 */
 }
 
 
@@ -5957,10 +5959,11 @@ __int64            unknown_libname_602(__int64 a1, __int64 a2, unsigned int *a3)
   if ( a3 && a1 )
   {
     v6 = sub_140226624(a1, (FILE ***)a2, (__int64)v10);
-    sub_14022AD78(v6, (__int64)v10, a3);
+    __int64 sr_result = sub_14022AD78(v6, (__int64)v10, a3); /* the result stays in rax */
     v7 = *(_BYTE **)(a2 + 24);
     if ( v7 && !*(_QWORD *)(a2 + 16) )
       *v7 = 0;
+    return sr_result;
   }
   else
   {
@@ -5970,7 +5973,7 @@ __int64            unknown_libname_602(__int64 a1, __int64 a2, unsigned int *a3)
     if ( v5 && !*(_QWORD *)(a2 + 16) )
       *v5 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return 1; /* mov eax, 1 */
 }
 
 
@@ -5989,10 +5992,11 @@ __int64            unknown_libname_603(__int64 a1, __int64 a2, unsigned __int64 
   if ( a3 && a1 )
   {
     v6 = sub_140226624(a1, (FILE ***)a2, (__int64)v10);
-    sub_14022AEE8(v6, (__int64)v10, a3);
+    __int64 sr_result = sub_14022AEE8(v6, (__int64)v10, a3); /* the result stays in rax */
     v7 = *(_BYTE **)(a2 + 24);
     if ( v7 && !*(_QWORD *)(a2 + 16) )
       *v7 = 0;
+    return sr_result;
   }
   else
   {
@@ -6002,7 +6006,7 @@ __int64            unknown_libname_603(__int64 a1, __int64 a2, unsigned __int64 
     if ( v5 && !*(_QWORD *)(a2 + 16) )
       *v5 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return 1; /* mov eax, 1 */
 }
 
 
@@ -6021,10 +6025,11 @@ __int64            unknown_libname_604(struct __crt_locale_pointers *a1, _QWORD 
   if ( a3 && a1 )
   {
     v6 = sub_140227894(a1, a2, (__int64)v10);
-    sub_14022AD78(v6, (__int64)v10, a3);
+    __int64 sr_result = sub_14022AD78(v6, (__int64)v10, a3); /* the result stays in rax */
     v7 = (_BYTE *)a2[3];
     if ( v7 && !a2[2] )
       *v7 = 0;
+    return sr_result;
   }
   else
   {
@@ -6034,7 +6039,7 @@ __int64            unknown_libname_604(struct __crt_locale_pointers *a1, _QWORD 
     if ( v5 && !a2[2] )
       *v5 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return 1; /* mov eax, 1 */
 }
 
 
@@ -6053,10 +6058,11 @@ __int64            unknown_libname_605(struct __crt_locale_pointers *a1, _QWORD 
   if ( a3 && a1 )
   {
     v6 = sub_140227894(a1, a2, (__int64)v10);
-    sub_14022AEE8(v6, (__int64)v10, a3);
+    __int64 sr_result = sub_14022AEE8(v6, (__int64)v10, a3); /* the result stays in rax */
     v7 = (_BYTE *)a2[3];
     if ( v7 && !a2[2] )
       *v7 = 0;
+    return sr_result;
   }
   else
   {
@@ -6066,7 +6072,7 @@ __int64            unknown_libname_605(struct __crt_locale_pointers *a1, _QWORD 
     if ( v5 && !a2[2] )
       *v5 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return 1; /* mov eax, 1 */
 }
 
 
@@ -6085,10 +6091,11 @@ __int64            unknown_libname_606(__int64 a1, unsigned __int64 *a2, unsigne
   if ( a3 && a1 )
   {
     v6 = sub_1402280D0(a1, a2, (__int64)v10);
-    sub_14022AD78(v6, (__int64)v10, a3);
+    __int64 sr_result = sub_14022AD78(v6, (__int64)v10, a3); /* the result stays in rax */
     v7 = (_BYTE *)a2[3];
     if ( v7 && !a2[2] )
       *v7 = 0;
+    return sr_result;
   }
   else
   {
@@ -6098,7 +6105,7 @@ __int64            unknown_libname_606(__int64 a1, unsigned __int64 *a2, unsigne
     if ( v5 && !a2[2] )
       *v5 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return 1; /* mov eax, 1 */
 }
 
 
@@ -6117,10 +6124,11 @@ __int64            unknown_libname_607(__int64 a1, unsigned __int64 *a2, unsigne
   if ( a3 && a1 )
   {
     v6 = sub_1402280D0(a1, a2, (__int64)v10);
-    sub_14022AEE8(v6, (__int64)v10, a3);
+    __int64 sr_result = sub_14022AEE8(v6, (__int64)v10, a3); /* the result stays in rax */
     v7 = (_BYTE *)a2[3];
     if ( v7 && !a2[2] )
       *v7 = 0;
+    return sr_result;
   }
   else
   {
@@ -6130,7 +6138,7 @@ __int64            unknown_libname_607(__int64 a1, unsigned __int64 *a2, unsigne
     if ( v5 && !a2[2] )
       *v5 = 0;
   }
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v11);
+  return 1; /* mov eax, 1 */
 }
 
 
@@ -15242,10 +15250,10 @@ __int64            _lambda_f3caf1ecae5fe01a9a1a6239afa44510___operator_call(__in
   v21 = 0;
   v24 = v3;
   v25 = 0;
-  sub_1402337F8((__int64)&v10);
+  __int64 sr_result = sub_1402337F8((__int64)&v10); /* 0x14022F1B9: the result stays in rax */
   if ( v9[16] )
     *(_DWORD *)(v8 + 936) &= ~2u;
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v26);
+  return sr_result; /* 0x14022F1B9: the call's result stays in rax */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -15679,7 +15687,6 @@ LABEL_96:
         }
       }
     }
-    sub_1401F8B20((unsigned __int64)&v60 ^ v71);
   }
 }
 
@@ -16242,7 +16249,14 @@ __int64            sub_140230010(_DWORD *a1, unsigned int a2, unsigned __int8 a3
   }
   return sub_14022FC68(v12, v9, a3, v11, a5);
 }
- /* recovered in client_native_gaps.s */
+
+//----- (000000014023023C) ----------------------------------------------------
+__int64 sub_14023023C(_DWORD *a1, __crt_strtox__floating_point_value *a2)
+{
+  extern long long crt_convert_decimal(const void *number, const void *target);
+  /* src/engine/crt_strtod.c */
+  return crt_convert_decimal(a1, a2);
+}
 // 140231940: control flows out of bounds to 140231947
 // 140231BF3: conditional instruction was optimized away because r9d.4<73u
 // 140231DDA: conditional instruction was optimized away because ebx.4<73u
@@ -17079,7 +17093,7 @@ __int64            sub_140232B30(
               v42 = 0;
               *(_DWORD *)this = 0;
               sub_140236F50((__m128i *)((char *)this + 4), 0x1CCu, (     __m128i *)v43, 0);
-              return sub_1401F8B20((unsigned __int64)&v39 ^ v46);
+              return 0; /* the function has no caller */
             }
             v26 = v41;
           }
@@ -17106,7 +17120,7 @@ __int64            sub_140232B30(
         v44 = 0;
         *(_DWORD *)this = 0;
         sub_140236F50((__m128i *)((char *)this + 4), 0x1CCu, Source, 0);
-        return sub_1401F8B20((unsigned __int64)&v39 ^ v46);
+        return 0; /* the function has no caller */
       }
       if ( (_DWORD)v16 != 1 )
       {
@@ -17130,7 +17144,7 @@ __int64            sub_140232B30(
             {
               *((_DWORD *)this + v22 + 1) = HIDWORD(v21);
               ++*(_DWORD *)this;
-              return sub_1401F8B20((unsigned __int64)&v39 ^ v46);
+              return 0; /* the function has no caller */
             }
             goto LABEL_12;
           }
@@ -17146,7 +17160,7 @@ __int64            sub_140232B30(
       v44 = 0;
       *(_DWORD *)this = 0;
       sub_140236F50((__m128i *)((char *)this + 4), 0x1CCu, Source, 0);
-      return sub_1401F8B20((unsigned __int64)&v39 ^ v46);
+      return 0; /* the function has no caller */
     }
     if ( v5 != 1 )
     {
@@ -17172,7 +17186,7 @@ __int64            sub_140232B30(
           {
             *((_DWORD *)this + v13 + 1) = HIDWORD(v12);
             ++*(_DWORD *)this;
-            return sub_1401F8B20((unsigned __int64)&v39 ^ v46);
+            return 0; /* the function has no caller */
           }
 LABEL_12:
           v44 = 0;
@@ -17182,7 +17196,7 @@ LABEL_12:
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v39 ^ v46);
+  return 0; /* the function has no caller */
 }
 
 
@@ -17556,7 +17570,7 @@ LABEL_56:
       v59 = 0;
       *(_DWORD *)this = 0;
       sub_140236F50((__m128i *)((char *)this + 4), 0x1CCu, v60, 0);
-      return sub_1401F8B20((unsigned __int64)&v53 ^ v65);
+      return 0; /* the function has no caller */
     }
     if ( (_DWORD)v43 != 1 )
     {
@@ -17582,14 +17596,14 @@ LABEL_56:
           {
             *((_DWORD *)this + v52 + 1) = HIDWORD(v51);
             ++*(_DWORD *)this;
-            return sub_1401F8B20((unsigned __int64)&v53 ^ v65);
+            return 0; /* the function has no caller */
           }
           goto LABEL_56;
         }
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v53 ^ v65);
+  return 0; /* the function has no caller */
 }
 
 // 140285688: using guessed type int dword_140285688[10];
@@ -22443,7 +22457,7 @@ __int64            common_find_first_narrow___wfinddata32_t___finddata32_t(_BYTE
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v13);
+  return 0; /* the function has no caller */
 }
 
 
@@ -22477,7 +22491,7 @@ __int64            common_find_first_narrow___wfinddata32i64_t___finddata32i64_t
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v13);
+  return 0; /* the function has no caller */
 }
 
 
@@ -22511,7 +22525,7 @@ __int64            common_find_first_narrow___wfinddata64_t____finddata64_t(_BYT
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v13);
+  return 0; /* the function has no caller */
 }
 
 
@@ -22545,7 +22559,7 @@ __int64            common_find_first_narrow___wfinddata64i32_t___finddata64i32_t
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v13);
+  return 0; /* the function has no caller */
 }
 
 
@@ -22564,13 +22578,14 @@ __int64            sub_1402389D8(__int64 a1, _DWORD *a2)
 
   if ( a2 && a1 )
   {
-    if ( ((__int64 (           *)(__int64, _QWORD, int *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
+    __int64 sr_handle = ((__int64 (           *)(__int64, _QWORD, int *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
            a1,
            0,
            &FindFileData,
            0,
            0,
-           0) == -1 )
+           0); /* mov rdi, rax */
+    if ( sr_handle == -1 )
     {
       v4 = ((__int64 (*)(void))GetLastError)();
       if ( v4 >= 2 )
@@ -22580,13 +22595,13 @@ __int64            sub_1402389D8(__int64 a1, _DWORD *a2)
         if ( v4 == 8 )
         {
           *errno_sr() = 12;
-          return sub_1401F8B20((unsigned __int64)v6 ^ v12);
+          return -1; /* or rax, 0xffffffffffffffff */
         }
         if ( v4 == 18 )
         {
 LABEL_12:
           *errno_sr() = 2;
-          return sub_1401F8B20((unsigned __int64)v6 ^ v12);
+          return -1; /* or rax, 0xffffffffffffffff */
         }
       }
       *errno_sr() = 22;
@@ -22607,6 +22622,7 @@ LABEL_12:
         sub_14024CFBC();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
+      return sr_handle; /* mov rax, rdi */
     }
   }
   else
@@ -22614,7 +22630,7 @@ LABEL_12:
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)v6 ^ v12);
+  return -1; /* or rax, 0xffffffffffffffff */
 }
 
 // 140238B17: control flows out of bounds to 140238B1C
@@ -22638,13 +22654,14 @@ __int64            sub_140238B20(__int64 a1, __int64 a2)
 
   if ( a2 && a1 )
   {
-    if ( ((__int64 (           *)(__int64, _QWORD, int *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
+    __int64 sr_handle = ((__int64 (           *)(__int64, _QWORD, int *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
            a1,
            0,
            &FindFileData,
            0,
            0,
-           0) == -1 )
+           0); /* mov rdi, rax */
+    if ( sr_handle == -1 )
     {
       v4 = ((__int64 (*)(void))GetLastError)();
       if ( v4 >= 2 )
@@ -22654,13 +22671,13 @@ __int64            sub_140238B20(__int64 a1, __int64 a2)
         if ( v4 == 8 )
         {
           *errno_sr() = 12;
-          return sub_1401F8B20((unsigned __int64)v8 ^ v14);
+          return -1; /* or rax, 0xffffffffffffffff */
         }
         if ( v4 == 18 )
         {
 LABEL_12:
           *errno_sr() = 2;
-          return sub_1401F8B20((unsigned __int64)v8 ^ v14);
+          return -1; /* or rax, 0xffffffffffffffff */
         }
       }
       *errno_sr() = 22;
@@ -22683,6 +22700,7 @@ LABEL_12:
         sub_14024CFBC();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
+      return sr_handle; /* mov rax, rdi */
     }
   }
   else
@@ -22690,7 +22708,7 @@ LABEL_12:
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)v8 ^ v14);
+  return -1; /* or rax, 0xffffffffffffffff */
 }
 
 // 140238C6B: control flows out of bounds to 140238C70
@@ -22714,13 +22732,14 @@ __int64            sub_140238C74(__int64 a1, __int64 a2)
 
   if ( a2 && a1 )
   {
-    if ( ((__int64 (           *)(__int64, _QWORD, int *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
+    __int64 sr_handle = ((__int64 (           *)(__int64, _QWORD, int *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
            a1,
            0,
            &FindFileData,
            0,
            0,
-           0) == -1 )
+           0); /* mov rdi, rax */
+    if ( sr_handle == -1 )
     {
       v4 = ((__int64 (*)(void))GetLastError)();
       if ( v4 >= 2 )
@@ -22730,13 +22749,13 @@ __int64            sub_140238C74(__int64 a1, __int64 a2)
         if ( v4 == 8 )
         {
           *errno_sr() = 12;
-          return sub_1401F8B20((unsigned __int64)v8 ^ v14);
+          return -1; /* or rax, 0xffffffffffffffff */
         }
         if ( v4 == 18 )
         {
 LABEL_12:
           *errno_sr() = 2;
-          return sub_1401F8B20((unsigned __int64)v8 ^ v14);
+          return -1; /* or rax, 0xffffffffffffffff */
         }
       }
       *errno_sr() = 22;
@@ -22759,6 +22778,7 @@ LABEL_12:
         sub_14024CFBC();
         __debugbreak();
       }
+      return sr_handle; /* mov rax, rdi */
     }
   }
   else
@@ -22766,7 +22786,7 @@ LABEL_12:
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)v8 ^ v14);
+  return -1; /* or rax, 0xffffffffffffffff */
 }
 
 // 14026E1D8: invalid function type 'HANDLE (__stdcall *FindFirstFileExW)(LPCWSTR lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, LPVOID lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, LPVOID lpSearchFilter, DWORD dwAdditionalFlags)' has been ignored
@@ -22803,7 +22823,7 @@ __int64            common_find_next_narrow___wfinddata32_t___finddata32_t(__int6
 
   if ( (unsigned int)sub_1402390C0(a1, v7) != -1 )
     sub_140239710((__int64)v7, a2, a3);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return 0; /* the function has no caller */
 }
 
 
@@ -22816,7 +22836,7 @@ __int64            common_find_next_narrow___wfinddata32i64_t___finddata32i64_t(
 
   if ( (unsigned int)sub_1402391E4(a1, (__int64)v7) != -1 )
     sub_1402397C0((__int64)v7, a2, a3);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return 0; /* the function has no caller */
 }
 
 
@@ -22829,7 +22849,7 @@ __int64            common_find_next_narrow___wfinddata64_t____finddata64_t(__int
 
   if ( (unsigned int)sub_140239314(a1, (__int64)v7) != -1 )
     sub_140239870((__int64)v7, a2, a3);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return 0; /* the function has no caller */
 }
 
 
@@ -22842,7 +22862,7 @@ __int64            common_find_next_narrow___wfinddata64i32_t___finddata64i32_t(
 
   if ( (unsigned int)sub_140239448(a1, (__int64)v7) != -1 )
     sub_140239928((__int64)v7, a2, a3);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v8);
+  return 0; /* the function has no caller */
 }
 
 
@@ -22873,6 +22893,7 @@ __int64            sub_1402390C0(__int64 a1, _DWORD *a2)
         sub_14024CFBC();
         __debugbreak();
       }
+      return 0; /* the name copy returned 0 and nothing wrote eax since */
     }
     else
     {
@@ -22884,13 +22905,13 @@ __int64            sub_1402390C0(__int64 a1, _DWORD *a2)
         if ( v4 == 8 )
         {
           *errno_sr() = 12;
-          return sub_1401F8B20((unsigned __int64)v6 ^ v8);
+          return (unsigned int)-1; /* or eax, 0xffffffff */
         }
         if ( v4 == 18 )
         {
 LABEL_13:
           *errno_sr() = 2;
-          return sub_1401F8B20((unsigned __int64)v6 ^ v8);
+          return (unsigned int)-1; /* or eax, 0xffffffff */
         }
       }
       *errno_sr() = 22;
@@ -22901,7 +22922,7 @@ LABEL_13:
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)v6 ^ v8);
+  return (unsigned int)-1; /* or eax, 0xffffffff */
 }
 
 // 14026E1D0: invalid function type 'BOOL (__stdcall *FindNextFileW)(HANDLE hFindFile, LPWIN32_FIND_DATAW lpFindFileData)' has been ignored
@@ -22938,6 +22959,7 @@ __int64            sub_1402391E4(__int64 a1, __int64 a2)
         sub_14024CFBC();
         __debugbreak();
       }
+      return 0; /* the name copy returned 0 and nothing wrote eax since */
     }
     else
     {
@@ -22949,13 +22971,13 @@ __int64            sub_1402391E4(__int64 a1, __int64 a2)
         if ( v4 == 8 )
         {
           *errno_sr() = 12;
-          return sub_1401F8B20((unsigned __int64)v8 ^ v10);
+          return (unsigned int)-1; /* or eax, 0xffffffff */
         }
         if ( v4 == 18 )
         {
 LABEL_13:
           *errno_sr() = 2;
-          return sub_1401F8B20((unsigned __int64)v8 ^ v10);
+          return (unsigned int)-1; /* or eax, 0xffffffff */
         }
       }
       *errno_sr() = 22;
@@ -22966,7 +22988,7 @@ LABEL_13:
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)v8 ^ v10);
+  return (unsigned int)-1; /* or eax, 0xffffffff */
 }
 
 // 14026E1D0: invalid function type 'BOOL (__stdcall *FindNextFileW)(HANDLE hFindFile, LPWIN32_FIND_DATAW lpFindFileData)' has been ignored
@@ -23003,6 +23025,7 @@ __int64            sub_140239314(__int64 a1, __int64 a2)
         sub_14024CFBC();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
+      return 0; /* the name copy returned 0 and nothing wrote eax since */
     }
     else
     {
@@ -23014,13 +23037,13 @@ __int64            sub_140239314(__int64 a1, __int64 a2)
         if ( v4 == 8 )
         {
           *errno_sr() = 12;
-          return sub_1401F8B20((unsigned __int64)v8 ^ v10);
+          return (unsigned int)-1; /* or eax, 0xffffffff */
         }
         if ( v4 == 18 )
         {
 LABEL_13:
           *errno_sr() = 2;
-          return sub_1401F8B20((unsigned __int64)v8 ^ v10);
+          return (unsigned int)-1; /* or eax, 0xffffffff */
         }
       }
       *errno_sr() = 22;
@@ -23031,7 +23054,7 @@ LABEL_13:
     *errno_sr() = 22;
     sub_14024CF6C();
   }
-  return sub_1401F8B20((unsigned __int64)v8 ^ v10);
+  return (unsigned int)-1; /* or eax, 0xffffffff */
 }
 
 // 140239441: control flows out of bounds to 140239446
@@ -23117,9 +23140,9 @@ __int64            sub_140239580(_DWORD *a1)
                        &SystemTime,
                        LocalTime) )
   {
-    _loctotime32_t_sr(LocalTime[0], LocalTime[1], LocalTime[3], LocalTime[4], LocalTime[5], LocalTime[6], -1);
+    return _loctotime32_t_sr(LocalTime[0], LocalTime[1], LocalTime[3], LocalTime[4], LocalTime[5], LocalTime[6], -1); /* 0x1402395F2: the call's result stays in rax */
   }
-  return sub_1401F8B20((unsigned __int64)&v2 ^ v5);
+  return (unsigned int)-1; /* 0x1402395F9: or eax, 0xffffffff */
 }
 
 // 14026E1C0: invalid function type 'BOOL (__stdcall *FileTimeToSystemTime)(const FILETIME *lpFileTime, LPSYSTEMTIME lpSystemTime)' has been ignored
@@ -23553,7 +23576,7 @@ __int64            sub_140239CF4(_BYTE *a1, _DWORD *a2)
   {
     *errno_sr() = 22;
     sub_14024CF6C();
-    return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+    return 0; /* the function has no caller */
   }
   v7[0] = 0;
   v7[1] = 0;
@@ -23564,7 +23587,7 @@ __int64            sub_140239CF4(_BYTE *a1, _DWORD *a2)
   if ( (unsigned int)sub_140238394(a1, (__int64)v7) )
   {
     if ( !v11 )
-      return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+      return 0; /* the function has no caller */
     goto LABEL_22;
   }
   if ( sub_1402389D8((__int64)Block, v14) == -1 || !sub_140239710((__int64)v14, a2, v4) )
@@ -23577,7 +23600,7 @@ __int64            sub_140239CF4(_BYTE *a1, _DWORD *a2)
 LABEL_22:
     free_base(Block);
   }
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+  return 0; /* the function has no caller */
 }
 
 // 140239CF4: invalid function type 'intptr_t __cdecl sub_140239CF4(const char *FileName, struct _finddata32_t *FindData)' has been ignored
@@ -23621,7 +23644,7 @@ __int64            sub_140239E80(_BYTE *a1, __int64 a2)
   {
     *errno_sr() = 22;
     sub_14024CF6C();
-    return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+    return 0; /* the function has no caller */
   }
   v7[0] = 0;
   v7[1] = 0;
@@ -23632,7 +23655,7 @@ __int64            sub_140239E80(_BYTE *a1, __int64 a2)
   if ( (unsigned int)sub_140238394(a1, (__int64)v7) )
   {
     if ( !v11 )
-      return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+      return 0; /* the function has no caller */
     goto LABEL_22;
   }
   if ( sub_140238B20((__int64)Block, (__int64)v14) == -1 || !sub_1402397C0((__int64)v14, a2, v4) )
@@ -23645,7 +23668,7 @@ __int64            sub_140239E80(_BYTE *a1, __int64 a2)
 LABEL_22:
     free_base(Block);
   }
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+  return 0; /* the function has no caller */
 }
 
 // 140239E80: invalid function type 'intptr_t __cdecl sub_140239E80(const char *FileName, struct _finddata32i64_t *FindData)' has been ignored
@@ -23689,7 +23712,7 @@ __int64            sub_14023A00C(_BYTE *a1, __int64 a2)
   {
     *errno_sr() = 22;
     sub_14024CF6C();
-    return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+    return 0; /* the function has no caller */
   }
   v7[0] = 0;
   v7[1] = 0;
@@ -23700,7 +23723,7 @@ __int64            sub_14023A00C(_BYTE *a1, __int64 a2)
   if ( (unsigned int)sub_140238394(a1, (__int64)v7) )
   {
     if ( !v11 )
-      return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+      return 0; /* the function has no caller */
     goto LABEL_22;
   }
   if ( sub_140238C74((__int64)Block, (__int64)v14) == -1 || !sub_140239870((__int64)v14, a2, v4) )
@@ -23713,7 +23736,7 @@ __int64            sub_14023A00C(_BYTE *a1, __int64 a2)
 LABEL_22:
     free_base(Block);
   }
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v15);
+  return 0; /* the function has no caller */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -23769,7 +23792,7 @@ __int64            sub_14023A324(__int64 a1, _DWORD *a2)
   }
   if ( (unsigned int)sub_1402390C0(a1, v9) != -1 )
     sub_140239710((__int64)v9, a2, v4);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v10);
+  return 0; /* the function has no caller */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -23805,7 +23828,7 @@ __int64            sub_14023A404(__int64 a1, __int64 a2)
   }
   if ( (unsigned int)sub_1402391E4(a1, (__int64)v9) != -1 )
     sub_1402397C0((__int64)v9, a2, v4);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v10);
+  return 0; /* the function has no caller */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -23841,7 +23864,7 @@ __int64            sub_14023A4E4(__int64 a1, __int64 a2)
   }
   if ( (unsigned int)sub_140239314(a1, (__int64)v9) != -1 )
     sub_140239870((__int64)v9, a2, v4);
-  return sub_1401F8B20((unsigned __int64)&v6 ^ v10);
+  return 0; /* the function has no caller */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -26927,7 +26950,7 @@ __int64            sub_14023D430(char *a1, char *a2, int a3, __int64 a4)
   {
     __debugbreak();
   }
-  return sub_1401F8B20((unsigned __int64)&v11 ^ v13);
+  return 0; /* no result: rax is residue of the dispatch at 0x14023D4A9 */
 }
 
 
@@ -26959,7 +26982,7 @@ __int64            sub_14023D4F4(char *a1, char *a2, int a3, __int64 a4)
   {
     __debugbreak();
   }
-  return sub_1401F8B20((unsigned __int64)&v11 ^ v13);
+  return 0; /* no result: rax is residue of the dispatch at 0x14023D56D */
 }
 
 // 140285AE0: using guessed type __int16[37];
@@ -27170,7 +27193,7 @@ LABEL_67:
     sub_14024CFBC();
     __debugbreak();
   }
-  return sub_1401F8B20((unsigned __int64)v34 ^ v39);
+  return 0; /* no caller reads the result */
 }
 
 // 14026E190: invalid function type 'BOOL (__stdcall *GetModuleHandleExW)(DWORD dwFlags, LPCWSTR lpModuleName, HMODULE *phModule)' has been ignored
@@ -27386,7 +27409,7 @@ LABEL_66:
     sub_14024CFBC();
     __debugbreak();
   }
-  return sub_1401F8B20((unsigned __int64)&v34 ^ v38);
+  return 0; /* no caller reads the result */
 }
 
 // 14026E190: invalid function type 'BOOL (__stdcall *GetModuleHandleExW)(DWORD dwFlags, LPCWSTR lpModuleName, HMODULE *phModule)' has been ignored
@@ -27566,7 +27589,7 @@ __int64            sub_14023E370(__int64 a1, __int64 a2, int a3)
         abort();
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v10 ^ v14);
+  return 0; /* the function has no caller */
 }
 
 // 14026E188: invalid function type 'HANDLE (__stdcall *GetStdHandle)(DWORD nStdHandle)' has been ignored
@@ -27793,7 +27816,7 @@ LABEL_10:
       v2 = 3.141592653589793;
       goto LABEL_10;
     }
-    handle_error((__int64)"acos", 13, 0xFFF8000000000000uLL, 1, 8, 0x21u, X, 0, 1);
+    return handle_error((__int64)"acos", 13, 0xFFF8000000000000uLL, 1, 8, 0x21u, X, 0, 1); /* 0x14023E8C8: its result stays in xmm0 */
   }
   return X;
 }
@@ -27802,8 +27825,9 @@ LABEL_10:
 //----- (000000014023EAC0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
-void            unknown_libname_734(__int64 a1, char a2)
+double            unknown_libname_734(double a1, char a2)
 {
+  /* The original keeps the double argument (xmm0) in xmm6 across set_statfp and returns it. */
   char v3; // r8
   char v4; // cl
   char v6; // dl
@@ -27822,101 +27846,26 @@ void            unknown_libname_734(__int64 a1, char a2)
   if ( (a2 & 0x10) == 0 )
     v7 = v6;
   set_statfp(v7);
+  return a1;
 }
 
 
 //----- (000000014023EB20) ----------------------------------------------------
-double            sub_14023EB20(double result)
+float            sub_14023EB20(float a1)
 {
-  __int64 v1; // xmm6_8
-  unsigned int v2; // edx
-  float v3; // xmm2_4
-  float v4; // xmm3_4
-  double v5; // xmm5_8
-  float v6; // xmm4_4
-  float v7; // [rsp+70h] [rbp+8h]
-  float v8; // [rsp+78h] [rbp+10h]
-
-  v7 = 0.0;
-  *(double *)&v1 = result;
-  v2 = (unsigned __int8)(LODWORD(result) >> 23);
-  if ( (LODWORD(result) & 0x7FFFFFFFu) > 0x7F800000 )
-  {
-    *(float *)&result = handle_nanf_sr(SLODWORD(result));
-    return result;
-  }
-  if ( v2 < 0x71 )
-    goto LABEL_9;
-  if ( v2 < 0x7F )
-  {
-    if ( SLODWORD(result) < 0 )
-      *(float *)&v1 = -*(float *)&result;
-    if ( v2 < 0x7E )
-    {
-      v4 = 0.0;
-      v3 = *(float *)&v1 * *(float *)&v1;
-      v8 = *(float *)&v1 * *(float *)&v1;
-    }
-    else
-    {
-      v3 = (float)(1.0 - *(float *)&v1) * 0.5;
-      v8 = v3;
-      v7 = fsqrt(v3);
-      v4 = v7;
-      *(float *)&v1 = v7;
-    }
-    HIDWORD(v5) = 0;
-    *(float *)&v5 = (float)((float)((float)((float)((float)((float)(-0.013381929 - (float)(v3 * 0.0039613745)) * v3)
-                                                  - 0.056529868)
-                                          * v3)
-                                  + 0.1841616)
-                          * v3)
-                  / (float)(1.1049696 - (float)(v3 * 0.8364113));
-    if ( v2 < 0x7E )
-    {
-      *(float *)&v5 = (float)(*(float *)&v5 * *(float *)&v1) + *(float *)&v1;
-    }
-    else
-    {
-      LODWORD(v6) = LODWORD(v4) & 0xFFFF0000;
-      HIDWORD(v5) = 0;
-      *(float *)&v5 = 0.78539813
-                    - (float)((float)((float)((float)(v7 * 2.0) * *(float *)&v5)
-                                    - (float)(0.000000075497894
-                                            - (float)((float)((float)(v8 - (float)(v6 * v6)) / (float)(v6 + v7))
-                                                    + (float)((float)(v8 - (float)(v6 * v6)) / (float)(v6 + v7)))))
-                            - (float)(0.78539813 - (float)(v6 * 2.0)));
-    }
-    if ( SLODWORD(result) < 0 )
-      *(_QWORD *)&v5 ^= 0x8000000080000000uLL;
-    return v5;
-  }
-  else
-  {
-    if ( *(float *)&result == 1.0 )
-    {
-      v1 = 1070141403;
-LABEL_9:
-      set_statfp(32);
-      return *(double *)&v1;
-    }
-    if ( *(float *)&result == -1.0 )
-    {
-      v1 = 3217625051LL;
-      goto LABEL_9;
-    }
-    handle_errorf((__int64)"asinf", 14, -4194304, 1, 8, 0x21u, *(float *)&result, 0.0, 1);
-  }
-  return result;
+  /* Clean implementation (asinf): src/engine/crt_math.c, checked against the original executable
+     (tools/native-compare suite crt). The decompiled body did several steps in double precision. */
+  extern float crt_asinf(float x);
+  return crt_asinf(a1);
 }
-
 // 140279870: using guessed type __int128 xmmword_140279870;
 
 //----- (000000014023ED84) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
-void            unknown_libname_735(__int64 a1, char a2)
+double            unknown_libname_735(double a1, char a2)
 {
+  /* The original keeps the double argument (xmm0) in xmm6 across set_statfp and returns it. */
   char v3; // r8
   char v4; // cl
   char v6; // dl
@@ -27935,6 +27884,7 @@ void            unknown_libname_735(__int64 a1, char a2)
   if ( (a2 & 0x10) == 0 )
     v7 = v6;
   set_statfp(v7);
+  return a1;
 }
 
 
@@ -28190,8 +28140,9 @@ LABEL_48:
 //----- (000000014023F6A4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
-void            unknown_libname_736(__int64 a1, char a2)
+double            unknown_libname_736(double a1, char a2)
 {
+  /* The original keeps the double argument (xmm0) in xmm6 across set_statfp and returns it. */
   char v3; // r8
   char v4; // cl
   char v6; // dl
@@ -28210,6 +28161,7 @@ void            unknown_libname_736(__int64 a1, char a2)
   if ( (a2 & 0x10) == 0 )
     v7 = v6;
   set_statfp(v7);
+  return a1;
 }
 
 
@@ -28382,8 +28334,9 @@ LABEL_56:
 //----- (000000014023FC08) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
-void            unknown_libname_737(__int64 a1, char a2)
+double            unknown_libname_737(double a1, char a2)
 {
+  /* The original keeps the double argument (xmm0) in xmm6 across set_statfp and returns it. */
   char v3; // r8
   char v4; // cl
   char v6; // dl
@@ -28402,4 +28355,5 @@ void            unknown_libname_737(__int64 a1, char a2)
   if ( (a2 & 0x10) == 0 )
     v7 = v6;
   set_statfp(v7);
+  return a1;
 }

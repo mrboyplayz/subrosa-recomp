@@ -186,22 +186,34 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
     dword_140404A6C[456217205] = 2;
     dword_140404A6C[456217207] = 0;
     dword_140404A6C[456217208] = 9;
-    sub_14007D420(v13, v12, v14);
-    sub_14007D420(v16, v15, v17);
-    sub_14007D420(v19, v18, v20);
-    sub_14007D420(v22, v21, v23);
-    *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279460;
-    sub_1401F8A50((float)(*(float *)&dword_140404A6C[v1 + 71856300] * 15.0), v24, 0.0);
-    sub_14007D420(v26, v25, v27);
-    sub_14007D420(v29, v28, v30);
-    *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279410;
-    sub_14007D420(v32, v31, v33);
-    sub_1401F8A50((float)(*(float *)&dword_140404A6C[v1 + 71856300] * 14.0625), v34, 0.0);
-    sub_14007D420(v36, v35, v37);
-    sub_14007D420(v39, v38, v40);
-    sub_1401F8A50((float)(*(float *)&dword_140404A6C[v1 + 71856300] * 13.125), v41, 0.0);
-    sub_14007D420(v43, v42, v44);
-    sub_14006E0D0(v46, v45, v47);
+    {
+      /* 0x1400862F4..0x14008648E: the positions are constants and the sine/cosine pair left in xmm0
+         by each call (0x14008635F, 0x1400863EC, 0x140086452); the C had dropped all of them. */
+      __m128d sr_pair;
+      float sr_x, sr_y;
+      sub_14007D420(608.0f, 352.0f, 0.0f);
+      sub_14007D420(578.43585f, 327.50827f, 0.0f);
+      sub_14007D420(608.0f, 352.0f, 0.0f);
+      sub_14007D420(578.43585f, 376.49173f, 0.0f);
+      *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279460;
+      sr_pair = sub_1401F8A50((float)(*(float *)&dword_140404A6C[v1 + 71856300] * 15.0), 0, 0.0);
+      sub_14007D420(608.0f, 352.0f, 0.0f);
+      sr_y = (float)(_mm_cvtsd_f64(sr_pair) * 64.0) + 352.0f;
+      sr_x = 608.0f - (float)(_mm_cvtsd_f64(_mm_unpackhi_pd(sr_pair, sr_pair)) * 32.0);
+      sub_14007D420(sr_x, sr_y, 0.0f);
+      *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279410;
+      sub_14007D420(sr_x, sr_y, 0.0f);
+      sr_pair = sub_1401F8A50((float)(*(float *)&dword_140404A6C[v1 + 71856300] * 14.0625), 0, 0.0);
+      sr_y = (float)(_mm_cvtsd_f64(sr_pair) * 64.0) + 352.0f;
+      sr_x = 608.0f - (float)(_mm_cvtsd_f64(_mm_unpackhi_pd(sr_pair, sr_pair)) * 32.0);
+      sub_14007D420(sr_x, sr_y, 0.0f);
+      sub_14007D420(sr_x, sr_y, 0.0f);
+      sr_pair = sub_1401F8A50((float)(*(float *)&dword_140404A6C[v1 + 71856300] * 13.125), 0, 0.0);
+      sr_y = (float)(_mm_cvtsd_f64(sr_pair) * 64.0) + 352.0f;
+      sr_x = 608.0f - (float)(_mm_cvtsd_f64(_mm_unpackhi_pd(sr_pair, sr_pair)) * 32.0);
+      sub_14007D420(sr_x, sr_y, 0.0f);
+      sub_14006E0D0(0, 0, 0);
+    }
     v7 = _mm_cvtsi32_si128((int)(0x43900000u));
     v8 = _mm_cvtsi32_si128((int)(0x43C00000u));
   }
@@ -362,9 +374,9 @@ LABEL_67:
       if ( dword_140404A6C[v1 + 71856339] == 2 )
       {
         sub_140082110(
-          v65,
-          v64,
-          sr_export_float_lane_container(1108344832),
+          548.0f,
+          480.0f,
+          36.0f,
           (float)((float)(fsqrt(
                             (float)((float)(*(float *)&dword_140404A6C[5210 * v70 + 129716744]
                                           * *(float *)&dword_140404A6C[5210 * v70 + 129716744])
@@ -376,9 +388,9 @@ LABEL_67:
                 * 6.28318530718)
         - 2.3561944901925);
         sub_140082110(
-          v74,
-          v73,
-          sr_export_float_lane_container(1107296256),
+          480.0f,
+          480.0f,
+          32.0f,
           (float)((float)((float)(int)dword_140404A6C[5210 * v70 + 129720369] * 0.00019999999) * 3.14159265359)
         - 2.3561944901925);
         qword_140404050(3553, dword_140404A6C[451221642]);
@@ -437,18 +449,22 @@ LABEL_67:
   }
   if ( (int)dword_140404A6C[v1 + 71857714] > 0 && LOBYTE(dword_140404A6C[v1 + 71857715]) == 28 )
   {
-    sub_1401F8A50(
+    /* 0x140087565: movaps xmm7, xmm0 -- the pair gives the end of the line (0x1400875AF..0x1400875DD) */
+    __m128d sr_pair = sub_1401F8A50(
       (float)(*(float *)&dword_140404A6C[v1 + 71856293] - *(float *)&dword_140404A6C[v1 + 71856297]),
-      v64,
-      *(double *)&v62);
+      0,
+      0.0);
     qword_140404050(3553, dword_140404A6C[451221642]);
     *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279430;
     dword_140404A6C[456217205] = 2;
     dword_140404A6C[456217207] = 0;
     dword_140404A6C[456217208] = 9;
-    sub_14007D420(v97, v96, v98);
-    sub_14007D420(v100, v99, v101);
-    sub_14006E0D0(v103, v102, v104);
+    sub_14007D420(512.0f, 336.0f, 0.0f);
+    sub_14007D420(
+      (float)(_mm_cvtsd_f64(_mm_unpackhi_pd(sr_pair, sr_pair)) * 64.0) + 512.0f,
+      (float)(_mm_cvtsd_f64(sr_pair) * 64.0) + 336.0f,
+      0.0f);
+    sub_14006E0D0(0, 0, 0);
   }
   if ( (dword_140404A6C[v1 + 71856325] & 0x10) == 0 )
   {
@@ -467,14 +483,21 @@ LABEL_84:
       dword_140404A6C[456217207] = 0;
       dword_140404A6C[456217208] = 9;
       *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279430;
-      sub_14007D420(v106, v105, v107);
-      sub_14007D420(v109, v108, v110);
-      sub_14007D420(v112, v111, v113);
-      sub_14007D420(v115, v114, v116);
-      sub_14007D420(v118, v117, v119);
-      sub_14007D420(v121, v120, v122);
-      sub_14007D420(v124, v123, v125);
-      sub_14007D420(v127, v126, v128);
+      {
+        /* 0x140087638..0x14008771A: a cross at (512, 288, 0) (xmm12 0x1400874E4, xmm8 0x1400874ED, xmm14
+           0x140086272) with arms from s to 2s, s = 8.0 (xmm13, 0x140087501) / dword_140404A6C[284024514]
+           (0x140087638), 2s = s + s (0x140087676). The C had lost all 24 arguments. */
+        float sr_s = 8.0f / *(float *)&dword_140404A6C[284024514];
+        float sr_s2 = sr_s + sr_s;
+        sub_14007D420(512.0f, 288.0f - sr_s2, 0.0f);
+        sub_14007D420(512.0f, 288.0f - sr_s, 0.0f);
+        sub_14007D420(512.0f, sr_s + 288.0f, 0.0f);
+        sub_14007D420(512.0f, sr_s2 + 288.0f, 0.0f);
+        sub_14007D420(512.0f - sr_s2, 288.0f, 0.0f);
+        sub_14007D420(512.0f - sr_s, 288.0f, 0.0f);
+        sub_14007D420(sr_s + 512.0f, 288.0f, 0.0f);
+        sub_14007D420(sr_s2 + 512.0f, 288.0f, 0.0f);
+      }
       sub_14006E0D0(v130, v129, v131);
       return;
     }

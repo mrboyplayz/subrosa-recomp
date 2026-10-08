@@ -794,7 +794,7 @@ __int64            asset_load_block_sbl_candidate(     char *a1)
     }
     sub_14020B9E8(v2);
   }
-  return sub_1401F8B20((unsigned __int64)&v16 ^ v19);
+  return 0; /* the function has no caller */
 }
 #undef v16
 #undef v17

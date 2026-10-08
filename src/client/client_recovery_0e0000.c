@@ -210,24 +210,24 @@ __int64            sub_1400E15A0(__int64 a1, int a2, float *a3, float *a4, int a
   v170 = v7;
   v10 = *(float *)((char *)&dword_140404A6C[129716753] + v7);
   if ( v5 < v10 && v10 > *a4 )
-    return sub_1401F8B20((unsigned __int64)&v148 ^ v183);
+    return 0; /* 0x1400E21CC: xor eax, eax */
   v11 = *(float *)((char *)&dword_140404A6C[129716754] + v7);
   v12 = a3[1];
   if ( v12 < v11 && v11 > a4[1] )
-    return sub_1401F8B20((unsigned __int64)&v148 ^ v183);
+    return 0; /* 0x1400E21CC: xor eax, eax */
   v13 = *(float *)((char *)&dword_140404A6C[129716755] + v7);
   v14 = a3[2];
   if ( v14 < v13 && v13 > a4[2] )
-    return sub_1401F8B20((unsigned __int64)&v148 ^ v183);
+    return 0; /* 0x1400E21CC: xor eax, eax */
   v15 = *(float *)((char *)&dword_140404A6C[129716756] + v7);
   if ( v5 > v15 && v15 < *a4 )
-    return sub_1401F8B20((unsigned __int64)&v148 ^ v183);
+    return 0; /* 0x1400E21CC: xor eax, eax */
   v16 = *(float *)((char *)&dword_140404A6C[129716757] + v7);
   if ( v12 > v16 && v16 < a4[1] )
-    return sub_1401F8B20((unsigned __int64)&v148 ^ v183);
+    return 0; /* 0x1400E21CC: xor eax, eax */
   v17 = *(float *)((char *)&dword_140404A6C[129716758] + v7);
   if ( v14 > v17 && v17 < a4[2] )
-    return sub_1401F8B20((unsigned __int64)&v148 ^ v183);
+    return 0; /* 0x1400E21CC: xor eax, eax */
   v18 = 0;
   v19 = 0;
   *(_DWORD *)(a1 + 24) = 1065353216;
@@ -553,7 +553,7 @@ LABEL_19:
     }
     while ( v18 < *(int *)((char *)&dword_140404A6C[129720373] + v7) );
   }
-  return sub_1401F8B20((unsigned __int64)&v148 ^ v183);
+  return 1.0f > *(float *)(a1 + 24); /* 0x1400E21AF: comiss 1.0f, [rbx + 0x18]; jbe -> xor eax, eax, else mov eax, 1 */
 }
 #undef v149
 #undef v150
@@ -1157,7 +1157,7 @@ LABEL_14:
     (int)dword_140404A6C[v4 + 293119325],
     0x40u,
     (int (           *)(unsigned __int64, _BYTE *))sub_14004C4C0);
-  return sub_1401F8B20((unsigned __int64)&v14 ^ v17);
+  return 0; /* the function has no caller */
 }
 #undef v14
 #undef v15
@@ -1994,7 +1994,7 @@ __int64            sub_1400E54D0(_QWORD *a1, int *a2, _DWORD *a3, int *a4, unsig
   if ( a5 > 4 )
   {
     *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("bad req_comp");
-    return sub_1401F8B20((unsigned __int64)&v98 ^ v113);
+    return 0; /* 0x1400E5EA4: xor eax, eax */
   }
   v8 = sub_14015FAD0(a1);
   v9 = (int *)*v7;
@@ -2030,7 +2030,7 @@ __int64            sub_1400E54D0(_QWORD *a1, int *a2, _DWORD *a3, int *a4, unsig
       }
       while ( v10 );
     }
-    return sub_1401F8B20((unsigned __int64)&v98 ^ v113);
+    return 0; /* 0x1400E5596: xor eax, eax */
   }
   v14 = v9[2];
   v15 = 1;
@@ -2195,7 +2195,7 @@ LABEL_135:
     }
 LABEL_144:
     *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("outofmem");
-    return sub_1401F8B20((unsigned __int64)&v98 ^ v113);
+    return 0; /* 0x1400E5E7A: xor eax, eax */
   }
   v32 = sr_path_malloc(v31 + 1);
   v33 = (int *)*v7;
@@ -2547,7 +2547,7 @@ LABEL_119:
       v15 = 3;
     *v108 = v15;
   }
-  return sub_1401F8B20((unsigned __int64)&v98 ^ v113);
+  return v34; /* 0x1400E5DB2: mov rax, r12 */
 }
 #undef v98
 #undef v99
@@ -2581,8 +2581,7 @@ __int64 sub_1400E5EB0()
   dword_140404A6C[133919261] = 0;
   sub_14024C22C(&dword_140404A6C[278520373]);
   sub_140158AB0(v2, "client2.csk");
-  sub_14024C22C(&dword_140404A6C[278520245]);
-  return sub_1401F8B20((unsigned __int64)&v1 ^ v3);
+  return sub_14024C22C(&dword_140404A6C[278520245]); /* 0x1400E5EF1: the result of this call is still in rax at the exit */
 }
 #undef v1
 #undef v2
@@ -3014,7 +3013,7 @@ __int64 sub_1400E65F0()
         sub_140138590(v12, 0, 0x2901u, 0x2901u, 0x2601u, 0x2601u, 255, 64, 128, 0);
       else
         sub_1400EE0A0(v12, v10, *(_QWORD *)&dword_140404A6C[v3 + 421784757], 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-      (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+      (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
       sub_140158AB0(v21, "texturematerial/%s.png", v4);
       v13 = sub_14020B8D8(v21, "rb");
       v14 = (FILE *)v13;
@@ -3034,7 +3033,7 @@ __int64 sub_1400E65F0()
         goto LABEL_13;
       sub_1400EE0A0(v18, v17, *(_QWORD *)&dword_140404A6C[v3 + 421784761], 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
 LABEL_14:
-      (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+      (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
       if ( ++v0 >= (int)dword_140404A6C[421784474] )
         return 0; /* compatibility result discarded by all reviewed callers */
     }
@@ -3421,7 +3420,7 @@ __int64            sub_1400E7270(int a1, char *a2)
     if ( Buffer[0] != 1 )
     {
       sub_14020B9E8(v9);
-      return sub_1401F8B20((unsigned __int64)&v15 ^ v18);
+      return 0; /* the function has no caller */
     }
     v10 = 4100 * v2;
     v11 = &dword_140404A6C[1025 * v2 + 486132853];
@@ -3438,7 +3437,7 @@ __int64            sub_1400E7270(int a1, char *a2)
     sub_14024C22C("..");
   if ( !v4 )
     sub_14024C22C("..");
-  return sub_1401F8B20((unsigned __int64)&v15 ^ v18);
+  return 0; /* the function has no caller */
 }
 #undef v15
 #undef Buffer
@@ -3466,14 +3465,14 @@ double            sub_1400E7410(int a1)
     sub_140138590(v4, 0, 0x2901u, 0x2901u, 0x2601u, 0x2601u, 255, 64, 128, 0);
   else
     sub_1400EE0A0(v4, v3, *(_QWORD *)&dword_140404A6C[v1 + 421784757], 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-  (*(void (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   v5 = dword_140404A6C[v1 + 421784759];
   v6 = dword_140404A6C[2 * v2 + 283827815];
   if ( v5 <= 0 )
     sub_140138590(v6, 0, 0x2901u, 0x2901u, 0x2601u, 0x2601u, 32, 192, 0, 0);
   else
     sub_1400EE0A0(v6, v5, *(_QWORD *)&dword_140404A6C[v1 + 421784761], 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
-  return (*(double (           **)(__int64, __int64))&dword_140404A6C[18215073])(3553, 34046);
+  return (*(double (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
 }
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -3595,7 +3594,7 @@ __int64            sub_1400E7720(int a1, __int64 a2)
 #define v29 (*(__int64 (*))(void *)(sr_frame_1400E7720 + 288)) /* [rsp+120h] */
 
   if ( !a1 )
-    return sub_1401F8B20((unsigned __int64)v19 ^ v29);
+    return 0; /* the function has no caller */
   v22 = 0;
   v23 = 0;
   v27 = a2;
@@ -3605,7 +3604,7 @@ __int64            sub_1400E7720(int a1, __int64 a2)
   v24 = 0;
   v2 = sub_140166160((__int64)v21, (int *)&dword_140404A6C[468765293], (int *)&dword_140404A6C[468765294], v20, 0);
   if ( !v2 )
-    return sub_1401F8B20((unsigned __int64)v19 ^ v29);
+    return 0; /* the function has no caller */
   v3 = dword_140404A6C[468765294];
   v4 = v20[0];
   v5 = dword_140404A6C[468765293];
@@ -3652,7 +3651,7 @@ __int64            sub_1400E7720(int a1, __int64 a2)
     while ( v7 < v3 );
   }
   free(v2);
-  return sub_1401F8B20((unsigned __int64)v19 ^ v29);
+  return 0; /* the function has no caller */
 }
 #undef v19
 #undef v20
@@ -3842,7 +3841,7 @@ __int64            sub_1400E7C40(int a1, char *a2)
       if ( !v4 )
         sub_14024C22C("..");
       sub_14020B9E8(v9);
-      return sub_1401F8B20((unsigned __int64)&v20 ^ v25);
+      return 0; /* the function has no caller */
     }
     v10 = 50 * v2;
     fread_sr((void *)(uintptr_t)(&dword_140404A6C[50 * v2 + 272248205]), 1, 64, (FILE *)(uintptr_t)(v9));
@@ -3894,7 +3893,7 @@ __int64            sub_1400E7C40(int a1, char *a2)
     sub_14024C22C("..");
   sub_140158AB0(FileName, "data/item/%s", (     char *)&dword_140404A6C[50 * (int)v2 + 272248205]);
   sub_1400EDED0(dword_140404A6C[(int)v2 + 283830981], FileName, 0, 0x812Fu, 0x812Fu, 0x2601u, 0x2601u, 0);
-  return sub_1401F8B20((unsigned __int64)&v20 ^ v25);
+  return 0; /* the function has no caller */
 }
 #undef v20
 #undef Buffer
@@ -7379,7 +7378,7 @@ __int64            sub_1400ED690(char *a1)
     v10 = (__m128i *)sr_path_malloc(v9);
     sub_1401FC920(v10, (     __m128i *)&dword_140404A6C[71823477], v9);
   }
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v14);
+  return 0; /* the function has no caller */
 }
 #undef v12
 #undef v13
@@ -12847,7 +12846,7 @@ __int64            sub_1400F52D0(unsigned int a1)
         v6 = 50400;
       dword_140404A6C[283831450] = v6;
     }
-    return sub_1401F8B20((unsigned __int64)&v8 ^ v10);
+    return 0; /* the function has no caller */
   }
   return result;
 }
@@ -13985,13 +13984,13 @@ __int64            sub_1400F6170(__int64 a1, __int64 a2, __int64 a3)
       dword_140404A6C[283831450] = 25200;
       dword_140404A6C[284022086] = 0;
     }
-    return sub_1401F8B20((unsigned __int64)&v118 ^ v122);
+    return 0; /* no result: rax is residue at the exit */
   }
   if ( dword_140404A6C[283831448] != 2 )
   {
     if ( dword_140404A6C[283831448] == 3 && (int)--dword_140404A6C[283831450] <= 0 )
       sr_ResetGame(a1, a2, a3);
-    return sub_1401F8B20((unsigned __int64)&v118 ^ v122);
+    return 0; /* no result: rax is residue at the exit */
   }
   v58 = dword_140404A6C[284022086];
   v59 = dword_140404A6C[283831450];
@@ -14217,7 +14216,7 @@ LABEL_102:
       *(_OWORD *)&dword_140404A6C[179992730] = v116;
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v118 ^ v122);
+  return 0; /* no result: rax is residue at the exit */
 }
 #undef v118
 #undef v119
@@ -14664,12 +14663,12 @@ LABEL_195:
             dword_140404A6C[283831448] = 3;
             dword_140404A6C[283831450] = dword_140404A6C[283831473];
           }
-          return sub_1401F8B20((unsigned __int64)&v142 ^ v153);
+          return 0; /* no result: rax is residue at the exit */
         }
       }
     }
     if ( dword_140404A6C[283831448] != 3 )
-      return sub_1401F8B20((unsigned __int64)&v142 ^ v153);
+      return 0; /* no result: rax is residue at the exit */
     v114 = dword_140404A6C[283831450] - 1;
     dword_140404A6C[283831450] = v114;
     if ( v114 == 1250 )
@@ -14729,7 +14728,7 @@ LABEL_195:
       v114 = dword_140404A6C[283831450];
     }
     if ( v114 > 0 )
-      return sub_1401F8B20((unsigned __int64)&v142 ^ v153);
+      return 0; /* no result: rax is residue at the exit */
     v115 = &dword_140404A6C[71856289];
     v116 = 0;
     v117 = (__int64)&dword_140404A6C[72777121];
@@ -14893,7 +14892,7 @@ LABEL_279:
           }
           while ( v116 < 256 );
           sr_ResetGame(v117, (__int64)v127, v126);
-          return sub_1401F8B20((unsigned __int64)&v142 ^ v153);
+          return 0; /* no result: rax is residue at the exit */
         }
         goto LABEL_242;
       }
@@ -15288,7 +15287,7 @@ LABEL_92:
     dword_140404A6C[283831448] = 2;
     dword_140404A6C[283831450] = 3600 * dword_140404A6C[284022480];
   }
-  return sub_1401F8B20((unsigned __int64)&v142 ^ v153);
+  return 0; /* no result: rax is residue at the exit */
 }
 #undef v142
 #undef v143
@@ -15529,7 +15528,7 @@ __int64            sub_1400F80A0(__int64 a1, __int64 a2, __int64 a3)
     {
       if ( dword_140404A6C[283831448] == 3 && (int)--dword_140404A6C[283831450] <= 0 )
         sr_ResetGame(a1, a2, a3);
-      return sub_1401F8B20((unsigned __int64)&v188 ^ v199);
+      return 0; /* no result: rax is residue at the exit */
     }
     v97 = &dword_140404A6C[71859139];
     v98 = dword_140404A6C[283831450] - 1;
@@ -15702,7 +15701,7 @@ LABEL_215:
         if ( !v173 )
         {
           if ( v98 > 0 )
-            return sub_1401F8B20((unsigned __int64)&v188 ^ v199);
+            return 0; /* no result: rax is residue at the exit */
           dword_140404A6C[283831505] = 100;
           dword_140404A6C[283837378] = 0;
           dword_140404A6C[283843251] = 100;
@@ -15751,7 +15750,7 @@ LABEL_215:
         v97 += 3597;
       }
       while ( v181 < 256 );
-      return sub_1401F8B20((unsigned __int64)&v188 ^ v199);
+      return 0; /* no result: rax is residue at the exit */
     }
     v125 = rand() % 8;
     sub_1400A56B0(&v190, 0.25, 0.0);
@@ -16022,10 +16021,10 @@ LABEL_166:
   if ( v4 < 3 && v9 < 1800 )
   {
     dword_140404A6C[283831450] = 1800;
-    return sub_1401F8B20((unsigned __int64)&v188 ^ v199);
+    return 0; /* no result: rax is residue at the exit */
   }
   if ( v9 > 0 )
-    return sub_1401F8B20((unsigned __int64)&v188 ^ v199);
+    return 0; /* no result: rax is residue at the exit */
   sub_14012E960(128);
   *(_OWORD *)&dword_140404A6C[284022317] = 0;
   if ( (int)dword_140404A6C[225391228] > 0 )
@@ -16432,7 +16431,7 @@ LABEL_91:
   }
   dword_140404A6C[283831448] = 2;
   *(_QWORD *)&dword_140404A6C[283831450] = 54000;
-  return sub_1401F8B20((unsigned __int64)&v188 ^ v199);
+  return 0; /* no result: rax is residue at the exit */
 }
 #undef v189
 #undef v190
@@ -16590,10 +16589,10 @@ __int64 sub_1400F99A0()
       if ( !v4 )
       {
         dword_140404A6C[283831450] = 1800;
-        return sub_1401F8B20((unsigned __int64)&v70 ^ v77);
+        return 0; /* no result: rax is residue at the exit */
       }
       if ( v7 > 0 )
-        return sub_1401F8B20((unsigned __int64)&v70 ^ v77);
+        return 0; /* no result: rax is residue at the exit */
       for ( i = 0; i < 256; ++i )
       {
         if ( *(v2 - 2886) )
@@ -16668,7 +16667,7 @@ __int64 sub_1400F99A0()
 LABEL_50:
           dword_140404A6C[283831448] = 2;
           dword_140404A6C[283831450] = 3600 * dword_140404A6C[284022501];
-          return sub_1401F8B20((unsigned __int64)&v70 ^ v77);
+          return 0; /* no result: rax is residue at the exit */
         }
       }
       else
@@ -16921,7 +16920,7 @@ LABEL_105:
       }
       break;
   }
-  return sub_1401F8B20((unsigned __int64)&v70 ^ v77);
+  return 0; /* no result: rax is residue at the exit */
 }
 #undef v70
 #undef v71
@@ -17693,7 +17692,7 @@ __int64 sub_1400FB0A0()
   v0 = sub_140237448(nullptr);
   srand(v0);
   *(_QWORD *)&dword_140404A6C[284024355] = 0;
-  (*(void (           **)(__int64, __int64, __int64, __int64))&dword_140404A6C[18215089])(v2, v1, v3, v4);
+  (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.03529411926865578f,0.062745101749897f,0.08235294371843338f,0.0f) /* native XMM0-3 */;
   (*(void (           **)(__int64))&dword_140404A6C[18215087])(16640);
   sub_14007BB00();
   sr_CSDrawText("generating", 512.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))), 20.0);
@@ -17713,7 +17712,7 @@ __int64 sub_1400FB0A0()
   *(_QWORD *)&dword_140404A6C[193070967] = -1;
   dword_140404A6C[193070974] = -1;
   sub_14013CDF0();
-  (*(void (           **)(__int64, __int64, __int64, __int64))&dword_140404A6C[18215089])(v8, v7, v9, v10);
+  (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.03529411926865578f,0.062745101749897f,0.08235294371843338f,0.0f) /* native XMM0-3 */;
   (*(void (           **)(__int64))&dword_140404A6C[18215087])(16640);
   sub_14007BB00();
   v20[16] = 1065353216;
@@ -17778,7 +17777,7 @@ __int64 sub_1400FB0A0()
   do
     sub_1401E2C30(*v18++);
   while ( (__int64)v18 < (__int64)&dword_140404A6C[299853581] );
-  return sub_1401F8B20((unsigned __int64)v20 ^ v23);
+  return 0; /* the function has no caller */
 }
 #undef v20
 #undef v21
@@ -17899,7 +17898,7 @@ __int64 sub_1400FB4D0()
     while ( v3 );
     sub_14020B9E8(v2);
   }
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v13);
+  return 0; /* the function has no caller */
 }
 #undef v7
 #undef v8
@@ -19104,7 +19103,7 @@ __int64 sub_1400FE050()
   dword_140404A6C[179662129] = -1;
   dword_140404A6C[179662131] = 0;
   dword_140404A6C[179662127] = 0;
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v10);
+  return 0; /* the function has no caller */
 }
 #undef v8
 #undef name
@@ -19208,9 +19207,9 @@ void sub_1400FE760()
 
 //----- (00000001400FE870) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
-__int64            sub_1400FE870(__int64 a1, int a2, __int64 a3, double a4, float a5, float a6, char a7)
+__int64            sub_1400FE870(__int64 a1, int a2, double a3, double a4, float a5, float a6, char a7)
 {
-  double v7; // xmm2_8
+  double v7 = a3; // xmm2_8: x arrives in xmm2 (0x1400FE8C0 movaps xmm12, xmm2); Hex-Rays had lost it
   __m128i v8; // xmm7
   __int64 v9; // rbx
   __int64 v10; // r8
@@ -19234,14 +19233,25 @@ __int64            sub_1400FE870(__int64 a1, int a2, __int64 a3, double a4, floa
 
   v8 = *(__m128i *)&a4;
   v9 = a2;
-  sub_14006D660(v7, a4, a3, a6, 0, 1061158912, 1061158912, 1061158912, 1065353216);
+  /* 0x1400FE908: width a5 ([rsp+2F0h], 0x1400FE8D0), not the third argument */
+  sub_14006D660(v7, a4, sr_text_float_bits(a5), a6, 0, 1061158912, 1061158912, 1061158912, 1065353216);
   v11 = *(__m128i *)&a4;
   *(float *)SR_VEC_LANES(128, v11, i32) = *(float *)&a4 + 2.0;
   if ( (a7 & 1) != 0 )
     v12 = 1056964608;
   else
     v12 = 1048576000;
-  sub_14006D660(v7, *(double *)SR_VEC_LANES(128, v11, i64), v10, a6 - 4.0, 0, v12, v12, v12, 1065353216);
+  /* 0x1400FE97E: x + 2 (0x1400FE932), width - 4 (0x1400FE919); the C had passed x and an undefined width */
+  sub_14006D660(
+    sr_export_float_lane_container(sr_text_float_bits(*(float *)&v7 + 2.0f)),
+    *(double *)SR_VEC_LANES(128, v11, i64),
+    sr_text_float_bits(a5 - 4.0f),
+    a6 - 4.0,
+    0,
+    v12,
+    v12,
+    v12,
+    1065353216);
   v13 = (int)dword_140404A6C[v9 + 280649319];
   v14 = 16.0;
   if ( !dword_140404A6C[3597 * v13 + 71856270] || dword_140404A6C[v13 + 284023074] )
@@ -19277,7 +19287,7 @@ __int64            sub_1400FE870(__int64 a1, int a2, __int64 a3, double a4, floa
     v20 = 1;
     sr_CSDrawText("MUTED", v15, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(v8), 16.0);
   }
-  return sub_1401F8B20((unsigned __int64)&v19 ^ v26);
+  return 0; /* no result: rax is residue at 0x1400FEB02 */
 }
 #undef v19
 #undef v20

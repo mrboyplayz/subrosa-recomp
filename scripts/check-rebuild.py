@@ -133,6 +133,41 @@ def check(compiler, source, header, destination, lenient=False, object_build=Fal
     return report
 
 
+ENGINE_FLAGS = ("-x", "c", "-std=gnu11", "-O2", "-msse4.2", "-mcmodel=large", "-fno-strict-aliasing",
+                "-ffp-contract=off", "-Wall", "-Wextra")
+
+
+def compile_engine(compiler, engine_dir, output, debug_info=False):
+    """Compile the clean engine modules in src/engine.
+
+    These are ordinary C files, not decompiler output: they are built optimized,
+    without the compatibility header, and are outside the client ownership
+    inventory. Returns (object paths, hashed inputs, diagnostics, failed).
+    """
+    output.mkdir(parents=True, exist_ok=True)
+    sources = sorted(engine_dir.glob("*.c"))
+    inputs = {str(path.resolve()): hashlib.sha256(path.read_bytes()).hexdigest()
+              for path in sources + sorted(engine_dir.glob("*.h"))}
+    objects, diagnostics, failed = [], [], False
+    for source in sources:
+        target = output / (source.stem + ".obj")
+        command = [compiler, *ENGINE_FLAGS, *(("-g",) if debug_info else ()),
+                   "-c", str(source), "-o", str(target)]
+        result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        (output / (source.stem + ".stderr.log")).write_text(result.stderr, encoding="utf-8")
+        if result.returncode != 0:
+            failed = True
+            diagnostics.append({"kind": "error", "stage": "engine",
+                                "message": source.name + ": " + result.stderr, "locations": []})
+        else:
+            objects.append(str(target))
+            if result.stderr.strip():
+                diagnostics.append({"kind": "warning", "stage": "engine",
+                                    "message": source.name + ": " + result.stderr, "locations": []})
+    return objects, inputs, diagnostics, failed
+
+
+
 def check_split(compiler, source, header, destination, lenient=False, object_build=False, debug_info=False):
     from client_sources import load_modules
     from client_sheet_book import preflight,routing
@@ -151,14 +186,22 @@ def check_split(compiler, source, header, destination, lenient=False, object_bui
     raw_diagnostic_counts=dict(Counter(d['kind'] for d in diagnostics))
     diagnostics=list({json.dumps(d,sort_keys=True):d for d in diagnostics}.values())
     failed=any(r['exit_code'] for r in reports)
+    engine_objects,engine_inputs=[],{}
+    engine_dir=source.parent.parent/'engine'
+    if object_build and engine_dir.is_dir():
+        engine_objects,engine_inputs,engine_diagnostics,engine_failed=compile_engine(
+            compiler,engine_dir,destination.parent/'engine',debug_info)
+        diagnostics+=engine_diagnostics
+        failed=failed or engine_failed
     command=[compiler,'-r','-nostdlib']
     if object_build and not failed:
-        command += [r['object_file'] for r in reports]+['-o',str(destination.with_suffix('.obj'))]
+        command += [r['object_file'] for r in reports]+engine_objects+['-o',str(destination.with_suffix('.obj'))]
         result=subprocess.run(command,capture_output=True,text=True,encoding='utf-8',errors='replace')
         destination.with_suffix('.aggregate.log').write_text(result.stderr,encoding='utf-8')
         failed=result.returncode!=0
         if failed:diagnostics.append({'kind':'error','stage':'aggregate','message':result.stderr,'locations':[]})
     inputs={p:h for report in reports for p,h in report['local_input_sha256'].items()}
+    inputs.update(engine_inputs)
     manifest_path=source
     inputs[str(manifest_path.resolve())]=hashlib.sha256(manifest_path.read_bytes()).hexdigest()
     report={'source':str(source),'source_sha256':inputs[str(source.resolve())],
@@ -173,7 +216,8 @@ def check_split(compiler, source, header, destination, lenient=False, object_bui
             'diagnostic_counts_by_stage':{},'diagnostics':diagnostics,
             'build_layout':'multiple_translation_units','translation_unit_count':len(reports),
             'unit_reports':[str(units/Path(u['path']).stem)+'.json' for u in manifest['translation_units']],
-            'function_count':manifest['function_count'],'static_linkage_promotions':manifest['static_linkage_promotions']}
+            'function_count':manifest['function_count'],'static_linkage_promotions':manifest['static_linkage_promotions'],
+            'engine_objects':engine_objects}
     destination.with_suffix('.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     return report
 

@@ -1712,14 +1712,14 @@ __int64            sub_140201F64(DName *a1, int a2)
   {
     *((_DWORD *)a1 + 2) = 0;
     *(_QWORD *)a1 = (uint64)(uintptr_t)(&off_1402848D0);
-    return sub_1401F8B20((unsigned __int64)&v9 ^ v13);
+    return 0; /* no caller reads the result */
   }
   if ( (unsigned __int8)(**(_BYTE **)&dword_140404A6C[19064555] - 48) <= 9u )
   {
     v4 = (char)**(_BYTE **)&dword_140404A6C[19064555] - 47;
     ++*(_QWORD *)&dword_140404A6C[19064555];
     sub_1401FE40C(a1, v4);
-    return sub_1401F8B20((unsigned __int64)&v9 ^ v13);
+    return 0; /* no caller reads the result */
   }
   sub_1402053CC((__int64)&v10);
   if ( v11 )
@@ -1730,7 +1730,7 @@ __int64            sub_140201F64(DName *a1, int a2)
 LABEL_8:
       sub_140158C70(v12, 65, (__int64)"%lf", v5);
       sub_1401FDBF8((__int64)a1, v12);
-      return sub_1401F8B20((unsigned __int64)&v9 ^ v13);
+      return 0; /* no caller reads the result */
     }
     if ( a2 == 65 )
     {
@@ -1744,7 +1744,7 @@ LABEL_8:
   v7 = -**(_BYTE **)&dword_140404A6C[19064555];
   *(_QWORD *)a1 = (uint64)(uintptr_t)(v6);
   *((_DWORD *)a1 + 2) = v7 != 0 ? 2 : 0;
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v13);
+  return 0; /* no caller reads the result */
 }
 
 // 1402848D0: using guessed type _UNKNOWN **off_1402848D0;
@@ -4086,7 +4086,7 @@ __int64            sub_140204850(DName *a1, __int64 a2, __int64 a3)
       {
         sub_140204CC0((DName *)v33);
         sub_140204850(a1, v19, v20);
-        return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+        return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
       }
       if ( (_BYTE)v4 == 81 )
         goto LABEL_24;
@@ -4096,7 +4096,7 @@ __int64            sub_140204850(DName *a1, __int64 a2, __int64 a3)
         {
           *(_QWORD *)a1 = 0;
           *((_DWORD *)a1 + 2) = 0;
-          return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+          return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
         }
         if ( (unsigned __int8)(v4 - 84) > 2u )
           goto LABEL_24;
@@ -4118,7 +4118,7 @@ __int64            sub_140204850(DName *a1, __int64 a2, __int64 a3)
           if ( v11 )
           {
             sub_1401FDCAC((__int64)a1, v11);
-            return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+            return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
           }
         }
       }
@@ -4151,7 +4151,7 @@ LABEL_38:
       v18 = (unsigned __int64 *)&v32;
 LABEL_70:
       sub_1401FE7EC((__int64)v18, (__int64)a1, v17);
-      return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+      return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
     }
     v35 = 0;
     v36 = 0;
@@ -4258,38 +4258,38 @@ LABEL_55:
   {
     case 0x45:
       sub_1402014E4((__int64)a1, a2, a3);
-      return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+      return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
     case 0:
       *(_QWORD *)&dword_140404A6C[19064555] = (uint64)(uintptr_t)(v5 - 1);
       *(_QWORD *)a1 = (uint64)(uintptr_t)(&off_1402848D0);
       *((_DWORD *)a1 + 2) = 0;
-      return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+      return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
     case 0x30:
       sub_140203F1C((__int64)a1);
-      return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+      return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
   }
   if ( (_BYTE)v4 != 49 )
   {
     if ( (_BYTE)v4 == 50 )
     {
       sub_140205440((__int64)a1);
-      return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+      return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
     }
     if ( (_BYTE)v4 == 52 )
     {
       sub_1402042B4((__int64)a1);
-      return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+      return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
     }
     if ( (unsigned __int8)(v4 - 65) <= 1u )
     {
       sub_140201F64(a1, v4);
-      return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+      return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
     }
 LABEL_24:
     *((_DWORD *)a1 + 2) = 0;
     *((_BYTE *)a1 + 8) = 2;
     *(_QWORD *)a1 = 0;
-    return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+    return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
   }
   if ( *v5 == 64 )
   {
@@ -4307,7 +4307,7 @@ LABEL_24:
     v9 = sub_1402014E4((__int64)&v32, v7, v8);
     sub_1401FE7C0((__int64)&v35, (__int64)a1, v9);
   }
-  return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+  return (__int64)a1; /* 0x140204C97: mov rax, rdi (rdi = a1) */
 }
 
 // 140204BAB: conditional instruction was optimized away because ebx.4==4A
@@ -4376,7 +4376,7 @@ __int64            sub_140204CC0(DName *a1)
     DWORD2(v8) = 0;
     sub_1402030E0(a1, (__int64)&v8);
   }
-  return sub_1401F8B20((unsigned __int64)&v7 ^ v13);
+  return (__int64)a1; /* 0x140204E06: mov rax, rbx (rbx = a1) */
 }
 
 // 1401FE248: using guessed type DName *__fastcall sub_1401FE248(DName *this, const struct StringLiteral *a2);
@@ -5113,7 +5113,7 @@ __int64            sub_140205810(__int64 a1, char a2, char a3)
   {
     ++*(_QWORD *)&dword_140404A6C[19064555];
     sub_1401FE684(*(signed int **)&dword_140404A6C[19064551], a1, v6);
-    return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+    return (__int64)a1; /* 0x140205AC9: mov rax, r14 (r14 = a1) */
   }
   if ( **(_BYTE **)&dword_140404A6C[19064555] == 63 )
   {
@@ -5245,7 +5245,7 @@ LABEL_35:
   }
   *(_QWORD *)a1 = (uint64)(uintptr_t)(v8);
   *(_DWORD *)(a1 + 8) = v9;
-  return sub_1401F8B20((unsigned __int64)&v31 ^ v38);
+  return (__int64)a1; /* 0x140205AC9: mov rax, r14 (r14 = a1) */
 }
 
 // 1401FE248: using guessed type DName *__fastcall sub_1401FE248(DName *this, const struct StringLiteral *a2);
@@ -6323,7 +6323,7 @@ __int64            sub_140207130(
     0,
     v12,
     HistoryTable);
-  return sub_1401F8B20((unsigned __int64)&v15 ^ v18);
+  return 0; /* no result: rax is residue of the RtlUnwindEx call */
 }
 
 // 14026E278: invalid function type 'void (__stdcall *RtlUnwindEx)(PVOID TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord, PUNWIND_HISTORY_TABLE HistoryTable)' has been ignored
@@ -6382,7 +6382,7 @@ __int64            sub_140207234(
     0,
     v14,
     HistoryTable);
-  return sub_1401F8B20((unsigned __int64)&v18 ^ v21);
+  return 0; /* no result: rax is residue of the RtlUnwindEx call */
 }
 
 // 14026E278: invalid function type 'void (__stdcall *RtlUnwindEx)(PVOID TargetFrame, PVOID TargetIp, PEXCEPTION_RECORD ExceptionRecord, PVOID ReturnValue, PCONTEXT ContextRecord, PUNWIND_HISTORY_TABLE HistoryTable)' has been ignored
@@ -7312,7 +7312,7 @@ LABEL_33:
         {
 LABEL_51:
           if ( !*(_QWORD *)(sub_1401FD83C() + 56) )
-            return sub_1401F8B20((unsigned __int64)&v32 ^ v52);
+            return 0; /* no caller reads the result */
 LABEL_55:
           abort();
         }
@@ -7375,7 +7375,7 @@ LABEL_55:
     }
     goto LABEL_17;
   }
-  return sub_1401F8B20((unsigned __int64)&v32 ^ v52);
+  return 0; /* no caller reads the result */
 }
 
 
@@ -7583,7 +7583,7 @@ LABEL_45:
       sub_140208CDC(a1, v8, a3, a4, a5, v12, a7, a8);
     }
     if ( !*(_QWORD *)(sub_1401FD83C() + 56) )
-      return sub_1401F8B20((unsigned __int64)&v32 ^ v54);
+      return 0; /* no caller reads the result */
 LABEL_54:
     abort();
   }
@@ -7620,7 +7620,7 @@ LABEL_54:
     }
     goto LABEL_25;
   }
-  return sub_1401F8B20((unsigned __int64)&v32 ^ v54);
+  return 0; /* no caller reads the result */
 }
 
 
@@ -7894,7 +7894,7 @@ __int64            sub_140208CDC(
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v27 ^ v46);
+  return 0; /* no caller reads the result */
 }
 
 // 14026E208: invalid function type 'PVOID (__stdcall *EncodePointer)(PVOID Ptr)' has been ignored
@@ -8865,7 +8865,7 @@ __int64            sub_14020A450(
     v20 = sub_1401FD83C();
     --*(_DWORD *)(v20 + 48);
   }
-  return sub_1401F8B20((unsigned __int64)&v22 ^ v39);
+  return 0; /* no result: rax is residue of the call at 0x14020A6F2 / 0x14020A6FD */
 }
 
 
@@ -9422,8 +9422,7 @@ double            sub_14020B144(double result, int *a2)
       v5 = 8;
       v6 = result + 1.0;
 LABEL_7:
-      except1(v5, 23, result, v6, v3);
-      return result;
+      return except1(v5, 23, result, v6, v3); /* 0x14020B1DD: its result stays in xmm0 */
     }
   }
   else
@@ -9435,7 +9434,7 @@ LABEL_7:
       v5 = 0;
       goto LABEL_7;
     }
-    decomp_sr(result, a2);
+    result = decomp_sr(result, a2); /* 0x14020B216: movaps xmm6, xmm0 */
   }
   ctrlfp(v3, 65472);
   return result;
@@ -9443,7 +9442,7 @@ LABEL_7:
 
 
 //----- (000000014020B23C) ----------------------------------------------------
-__int64            sub_14020B23C(double a1, int a2)
+double            sub_14020B23C(double a1, int a2)
 {
   __int64 v4; // rdi
   int v5; // eax
@@ -9456,8 +9455,11 @@ __int64            sub_14020B23C(double a1, int a2)
   if ( (HIWORD(a1) & 0x7FF0) != 0x7FF0 )
   {
     if ( a1 == 0.0 )
-      return ctrlfp(v4, 65472);
-    decomp_sr(a1, &v10);
+    {
+      ctrlfp(v4, 65472);
+      return a1; /* 0x14020B2B4: movaps xmm0, xmm6 */
+    }
+    v8 = decomp_sr(a1, &v10); /* the mantissa stays in xmm0 for everything below (0x14020B2EA..0x14020B360) */
     if ( a2 >= 0 )
     {
       if ( v10 > 0x7FFFFFFF - a2 )
@@ -9472,7 +9474,7 @@ __int64            sub_14020B23C(double a1, int a2)
     {
       if ( v9 > 1024 )
       {
-        v8 = set_exp_sr(a1, (unsigned __int16)v9 - 1536);
+        v8 = set_exp_sr(v8, (unsigned __int16)v9 - 1536); /* 0x14020B323 */
 LABEL_23:
         v7 = 17;
         return except2(v7, 25, a1, (double)a2, v8, v4);
@@ -9481,31 +9483,36 @@ LABEL_23:
       {
         if ( v9 >= -1021 )
         {
-          set_exp_sr(a1, v9);
-          return ctrlfp(v4, 65472);
+          v8 = set_exp_sr(v8, v9); /* 0x14020B356 -> 0x14020B2A6: movaps xmm6, xmm0 */
+          ctrlfp(v4, 65472);
+          return v8;
         }
-        v8 = set_exp_sr(a1, (unsigned __int16)v9 + 1536);
+        v8 = set_exp_sr(v8, (unsigned __int16)v9 + 1536); /* 0x14020B34F */
         goto LABEL_18;
       }
 LABEL_17:
-      v8 = a1 * 0.0;
+      v8 = v8 * 0.0; /* 0x14020B332: mulsd xmm0, qword ptr [rip + 0x77e6e] */
 LABEL_18:
       v7 = 18;
       return except2(v7, 25, a1, (double)a2, v8, v4);
     }
 LABEL_22:
-    v8 = copysign(INFINITY, a1);
+    v8 = copysign(INFINITY, v8); /* 0x14020B360: movaps xmm1, xmm0 */
     goto LABEL_23;
   }
   v5 = sptype_sr(a1);
   if ( v5 > 0 )
   {
     if ( v5 <= 2 )
-      return ctrlfp(v4, 65472);
+    {
+      ctrlfp(v4, 65472);
+      return a1; /* 0x14020B2B4: movaps xmm0, xmm6 */
+    }
     if ( v5 == 3 )
     {
-      handle_qnan2_sr(a1, (double)a2);
-      return ctrlfp(v4, 65472);
+      v8 = handle_qnan2_sr(a1, (double)a2); /* 0x14020B2A6: movaps xmm6, xmm0 */
+      ctrlfp(v4, 65472);
+      return v8;
     }
   }
   v7 = 8;
@@ -10682,7 +10689,8 @@ __int64            sub_14020C8A8(__int64 a1, __int64 a2)
 
   v4 = 0;
   v5 = fileno((FILE *)a1);
-  if ( *(_DWORD *)(a1 + 16) )
+  if ( !*(_DWORD *)(a1 + 16) )
+    return a2; /* 0x14020C8F4: mov rax, rsi */
   {
     v6 = (*(_QWORD *)a1 - *(_QWORD *)(a1 + 8)) / 2LL;
     v7 = lseeki64_sr(v5, *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * (v5 >> 6) + 19065401] + 72 * (v5 & 0x3F) + 48), 0);
@@ -10720,11 +10728,12 @@ __int64            sub_14020C8A8(__int64 a1, __int64 a2)
             }
             while ( v4 != v6 );
           }
+          return v7 + (v10 - (unsigned __int8 *)v14); /* 0x14020C9E6: lea rax, [r12 + rcx] */
         }
       }
     }
   }
-  return sub_1401F8B20((unsigned __int64)&v12 ^ v15);
+  return -1; /* 0x14020C9EC: or rax, 0xffffffffffffffff */
 }
 
 // 14026E1F0: invalid function type 'BOOL (__stdcall *ReadFile)(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead, LPOVERLAPPED lpOverlapped)' has been ignored
@@ -12120,7 +12129,7 @@ __int64            sub_14020DE94(
   {
     *errno_sr() = 22;
     sub_14024CF6C();
-    return sub_1401F8B20((unsigned __int64)&v15 ^ v33);
+    return (unsigned int)-1; /* 0x14020DEE3: or eax, 0xffffffff */
   }
   sub_140213644((_LocaleUpdate *)&v22, a5);
   v19 = 0;
@@ -12152,10 +12161,17 @@ __int64            sub_14020DE94(
     if ( (a1 & 1) != 0 )
     {
       if ( !a3 && v12 )
+      {
+        v12 = -1; /* or ebx, 0xffffffff in the chunk after the ret */
         goto LABEL_20;
+      }
       v13 = v17;
       if ( v17 == a3 )
+      {
+        if ( v12 >= 0 && (unsigned __int64)v12 > (unsigned __int64)a3 )
+          v12 = -1; /* cmp rbx, rdi; ja -> or ebx, 0xffffffff */
         goto LABEL_20;
+      }
       goto LABEL_19;
     }
     if ( (a1 & 2) != 0 )
@@ -12183,15 +12199,17 @@ LABEL_19:
         a2[v13] = 0;
         goto LABEL_20;
       }
+      v12 = -2; /* mov ebx, 0xfffffffe: the output was truncated */
       goto LABEL_26;
     }
+    v12 = -1; /* no room at all: or ebx, 0xffffffff */
   }
 LABEL_20:
   free_base(Block);
   Block = nullptr;
   if ( v23[16] )
     *(_DWORD *)(v22 + 936) &= ~2u;
-  return sub_1401F8B20((unsigned __int64)&v15 ^ v33);
+  return (unsigned int)v12; /* 0x14020E01C: mov eax, ebx */
 }
 
 // 14020DFA0: variable 'v10' is possibly undefined
@@ -12236,7 +12254,7 @@ __int64            sub_14020E060(
   {
     *errno_sr() = 22;
     sub_14024CF6C();
-    return sub_1401F8B20((unsigned __int64)&v15 ^ v34);
+    return (unsigned int)-1; /* 0x14020E0AF: or eax, 0xffffffff */
   }
   sub_140213644((_LocaleUpdate *)&v22, a5);
   v19 = 0;
@@ -12269,10 +12287,17 @@ __int64            sub_14020E060(
     if ( (a1 & 1) != 0 )
     {
       if ( !a3 && v12 )
+      {
+        v12 = -1; /* or ebx, 0xffffffff in the chunk after the ret */
         goto LABEL_20;
+      }
       v13 = v17;
       if ( v17 == a3 )
+      {
+        if ( v12 >= 0 && (unsigned __int64)v12 > (unsigned __int64)a3 )
+          v12 = -1; /* cmp rbx, rdi; ja -> or ebx, 0xffffffff */
         goto LABEL_20;
+      }
       goto LABEL_19;
     }
     if ( (a1 & 2) != 0 )
@@ -12300,15 +12325,17 @@ LABEL_19:
         a2[v13] = 0;
         goto LABEL_20;
       }
+      v12 = -2; /* mov ebx, 0xfffffffe: the output was truncated */
       goto LABEL_26;
     }
+    v12 = -1; /* no room at all: or ebx, 0xffffffff */
   }
 LABEL_20:
   free_base(Block);
   Block = nullptr;
   if ( v23[16] )
     *(_DWORD *)(v22 + 936) &= ~2u;
-  return sub_1401F8B20((unsigned __int64)&v15 ^ v34);
+  return (unsigned int)v12; /* 0x14020E1EE: mov eax, ebx */
 }
 
 // 14020E170: variable 'v10' is possibly undefined
@@ -12354,7 +12381,7 @@ __int64            sub_14020E234(
   {
     *errno_sr() = 22;
     sub_14024CF6C();
-    return sub_1401F8B20((unsigned __int64)&v13 ^ v35);
+    return 0; /* the function has no caller */
   }
   sub_140213644((_LocaleUpdate *)&v20, a5);
   v17 = 0;
@@ -12429,7 +12456,7 @@ LABEL_20:
   Block = nullptr;
   if ( v21[16] )
     *(_DWORD *)(v20 + 936) &= ~2u;
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v35);
+  return 0; /* the function has no caller */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *__hidden this, struct __crt_locale_pointers *const);
@@ -12468,7 +12495,7 @@ __int64            sub_14020E41C(__int64 a1, _WORD *a2, __int64 a3, __int64 a4, 
   {
     *errno_sr() = 22;
     sub_14024CF6C();
-    return sub_1401F8B20((unsigned __int64)&v13 ^ v36);
+    return 0; /* the function has no caller */
   }
   sub_140213644((_LocaleUpdate *)&v20, a5);
   v17 = 0;
@@ -12544,7 +12571,7 @@ LABEL_20:
   Block = nullptr;
   if ( v21[16] )
     *(_DWORD *)(v20 + 936) &= ~2u;
-  return sub_1401F8B20((unsigned __int64)&v13 ^ v36);
+  return 0; /* the function has no caller */
 }
 
 __int64 sub_14020E60C(__int64 options, _BYTE *destination, __int64 capacity,
@@ -12655,7 +12682,7 @@ __int64            sub_14020E7D8(
   {
     *errno_sr() = 22;
     sub_14024CF6C();
-    return sub_1401F8B20((unsigned __int64)&v15 ^ v34);
+    return (unsigned int)-1; /* 0x14020E827: or eax, 0xffffffff */
   }
   sub_140213644((_LocaleUpdate *)&v22, a5);
   v19 = 0;
@@ -12688,10 +12715,17 @@ __int64            sub_14020E7D8(
     if ( (a1 & 1) != 0 )
     {
       if ( !a3 && v12 )
+      {
+        v12 = -1; /* or ebx, 0xffffffff in the chunk after the ret */
         goto LABEL_20;
+      }
       v13 = v17;
       if ( v17 == a3 )
+      {
+        if ( v12 >= 0 && (unsigned __int64)v12 > (unsigned __int64)a3 )
+          v12 = -1; /* cmp rbx, rdi; ja -> or ebx, 0xffffffff */
         goto LABEL_20;
+      }
       goto LABEL_19;
     }
     if ( (a1 & 2) != 0 )
@@ -12719,15 +12753,17 @@ LABEL_19:
         a2[v13] = 0;
         goto LABEL_20;
       }
+      v12 = -2; /* mov ebx, 0xfffffffe: the output was truncated */
       goto LABEL_26;
     }
+    v12 = -1; /* no room at all: or ebx, 0xffffffff */
   }
 LABEL_20:
   free_base(Block);
   Block = nullptr;
   if ( v23[16] )
     *(_DWORD *)(v22 + 936) &= ~2u;
-  return sub_1401F8B20((unsigned __int64)&v15 ^ v34);
+  return (unsigned int)v12; /* 0x14020E966: mov eax, ebx */
 }
 
 // 14020E8E8: variable 'v10' is possibly undefined
@@ -17397,13 +17433,13 @@ __int64            _lambda_ee59099aa97e0ff6f003b984c1584058___operator_call(__in
   v21 = 0;
   v22 = 0;
   v23 = v6;
-  sub_140216AF0((__int64)v12);
+  int sr_result = (int)sub_140216AF0((__int64)v12); /* mov ebx, eax */
   free_base(Block);
   Block = nullptr;
   if ( v11[16] )
     *(_DWORD *)(v10 + 936) &= ~2u;
   sub_140253EBC(v3, v2);
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v26);
+  return (unsigned int)sr_result; /* mov eax, ebx */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -17461,13 +17497,13 @@ __int64            _lambda_a2288fdbbd702c8f223b438290af01a4___operator_call(__in
   v20 = 0;
   v21 = 0;
   v22 = v6;
-  sub_140215CFC((__int64)v12);
+  int sr_result = (int)sub_140215CFC((__int64)v12); /* mov ebx, eax */
   free_base(Block);
   Block = nullptr;
   if ( v11[16] )
     *(_DWORD *)(v10 + 936) &= ~2u;
   sub_140253EBC(v3, v2);
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v25);
+  return (unsigned int)sr_result; /* mov eax, ebx */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -17519,13 +17555,13 @@ __int64            sub_140213FD0(__int64 **a1)
   v12[3] = v5;
   v12[4] = v4;
   v21 = 0;
-  sub_140216DA4((__int64)v12, (__int64)v6, v7);
+  int sr_result = (int)sub_140216DA4((__int64)v12, (__int64)v6, v7); /* 0x1402140AC: mov ebx, eax */
   free_base(Block);
   Block = nullptr;
   if ( v11[16] )
     *(_DWORD *)(v10 + 936) &= ~2u;
   sub_140253EBC(v3, v2);
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v22);
+  return (unsigned int)sr_result; /* 0x1402140D8: mov eax, ebx */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -17577,13 +17613,13 @@ __int64            _lambda_7e489fec146d5348dbc86d3cce37c1b5___operator_call(__in
   v12[3] = v5;
   v12[4] = v4;
   v21 = 0;
-  sub_140216878((__int64)v12, (__int64)v6, v7);
+  int sr_result = (int)sub_140216878((__int64)v12, (__int64)v6, v7); /* mov ebx, eax */
   free_base(Block);
   Block = nullptr;
   if ( v11[16] )
     *(_DWORD *)(v10 + 936) &= ~2u;
   sub_140253EBC(v3, v2);
-  return sub_1401F8B20((unsigned __int64)&v9 ^ v22);
+  return (unsigned int)sr_result; /* mov eax, ebx */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -17631,13 +17667,13 @@ __int64            _lambda_32f117a32e8f8eb613cbf2ca819ed45e___operator_call(__in
   v11[3] = v5;
   v11[4] = v4;
   v19 = 0;
-  sub_140215AD4((__int64)v11);
+  int sr_result = (int)sub_140215AD4((__int64)v11); /* mov ebx, eax */
   free_base(Block);
   Block = nullptr;
   if ( v10[16] )
     *(_DWORD *)(v9 + 936) &= ~2u;
   sub_140253EBC(v3, v2);
-  return sub_1401F8B20((unsigned __int64)&v8 ^ v20);
+  return (unsigned int)sr_result; /* mov eax, ebx */
 }
 
 // 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
@@ -24618,7 +24654,7 @@ LABEL_23:
       if ( v1 != 117 )
       {
         if ( v1 != 120 )
-          return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+          return 0; /* 0x14021B071: xor al, al */
         v5 = 16;
         goto LABEL_32;
       }
@@ -24639,7 +24675,7 @@ LABEL_30:
   if ( v1 != 67 )
   {
     if ( v1 <= 0x44u )
-      return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+      return 0; /* 0x14021B071: xor al, al */
     if ( v1 <= 0x47u )
       goto LABEL_34;
     if ( v1 != 83 )
@@ -24654,7 +24690,7 @@ LABEL_30:
         if ( v1 != 97 )
         {
           if ( v1 != 99 )
-            return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+            return 0; /* 0x14021B071: xor al, al */
           goto LABEL_12;
         }
 LABEL_34:
@@ -24669,7 +24705,7 @@ LABEL_12:
   v4 = unknown_libname_523(a1);
 LABEL_35:
   if ( !v4 || *(_BYTE *)(v3 + 64) )
-    return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+    return v4 != 0; /* 0x14021B06D: test al, al -> xor al, al; otherwise 0x14021B1E8: mov al, r15b (1) */
   v8 = *(_DWORD *)(v3 + 48);
   v18 = 0;
   v9 = 0;
@@ -24720,7 +24756,7 @@ LABEL_47:
   unknown_libname_587(v3);
   if ( *v14 >= 0 && (*(_DWORD *)(v3 + 48) & 4) != 0 )
     sub_140212B98((__int64 *)(v3 + 1128), 32, v13, (_DWORD *)(v3 + 40));
-  return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+  return 1; /* 0x14021B1E8: mov al, r15b (1) */
 }
 
 
@@ -24785,7 +24821,7 @@ LABEL_23:
       if ( v1 != 117 )
       {
         if ( v1 != 120 )
-          return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+          return 0; /* xor al, al */
         v5 = 16;
         goto LABEL_32;
       }
@@ -24810,7 +24846,7 @@ LABEL_12:
       goto LABEL_35;
     }
     if ( v1 <= 0x44u )
-      return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+      return 0; /* xor al, al */
     if ( v1 > 0x47u )
     {
       if ( v1 != 83 )
@@ -24825,7 +24861,7 @@ LABEL_12:
           if ( v1 != 97 )
           {
             if ( v1 != 99 )
-              return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+              return 0; /* xor al, al */
             goto LABEL_12;
           }
           goto LABEL_34;
@@ -24839,7 +24875,7 @@ LABEL_34:
   v4 = sub_14021DD24(a1);
 LABEL_35:
   if ( !v4 || *(_DWORD *)(v3 + 1148) == 2 && *(_DWORD *)(v3 + 1144) == 1 || *(_BYTE *)(v3 + 64) )
-    return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+    return v4 != 0; /* test al, al -> xor al, al; otherwise 0x14021B4DE: mov al, r15b (1) */
   v8 = *(_DWORD *)(v3 + 48);
   v18 = 0;
   v9 = 0;
@@ -24890,7 +24926,7 @@ LABEL_49:
   unknown_libname_588(v3);
   if ( *v14 >= 0 && (*(_DWORD *)(v3 + 48) & 4) != 0 )
     sub_140212B98((__int64 *)(v3 + 1128), 32, v13, (_DWORD *)(v3 + 40));
-  return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+  return 1; /* 0x14021B4DE: mov al, r15b (1) */
 }
 
 
@@ -24955,7 +24991,7 @@ LABEL_23:
       if ( v1 != 117 )
       {
         if ( v1 != 120 )
-          return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+          return 0; /* 0x14021B645: xor al, al */
         v5 = 16;
         goto LABEL_32;
       }
@@ -24976,7 +25012,7 @@ LABEL_30:
   if ( v1 != 67 )
   {
     if ( v1 <= 0x44u )
-      return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+      return 0; /* 0x14021B645: xor al, al */
     if ( v1 <= 0x47u )
       goto LABEL_34;
     if ( v1 != 83 )
@@ -24991,7 +25027,7 @@ LABEL_30:
         if ( v1 != 97 )
         {
           if ( v1 != 99 )
-            return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+            return 0; /* 0x14021B645: xor al, al */
           goto LABEL_12;
         }
 LABEL_34:
@@ -25006,7 +25042,7 @@ LABEL_12:
   v4 = unknown_libname_524(a1);
 LABEL_35:
   if ( !v4 || *(_BYTE *)(v3 + 64) )
-    return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+    return v4 != 0; /* 0x14021B641: test al, al -> xor al, al; otherwise 0x14021B7BC: mov al, r15b (1) */
   v8 = *(_DWORD *)(v3 + 48);
   v18 = 0;
   v9 = 0;
@@ -25057,7 +25093,7 @@ LABEL_47:
   unknown_libname_589(v3);
   if ( *v14 >= 0 && (*(_DWORD *)(v3 + 48) & 4) != 0 )
     sub_140212B98((__int64 *)(v3 + 1128), 32, v13, (_DWORD *)(v3 + 40));
-  return sub_1401F8B20((unsigned __int64)&v17 ^ v20);
+  return 1; /* 0x14021B7BC: mov al, r15b (1) */
 }
 
 
@@ -25119,7 +25155,7 @@ LABEL_23:
       if ( v1 != 117 )
       {
         if ( v1 != 120 )
-          return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+          return 0; /* xor al, al */
         v5 = 16;
         goto LABEL_32;
       }
@@ -25140,7 +25176,7 @@ LABEL_30:
   if ( v1 != 67 )
   {
     if ( v1 <= 0x44u )
-      return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+      return 0; /* xor al, al */
     if ( v1 <= 0x47u )
       goto LABEL_34;
     if ( v1 != 83 )
@@ -25155,7 +25191,7 @@ LABEL_30:
         if ( v1 != 97 )
         {
           if ( v1 != 99 )
-            return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+            return 0; /* xor al, al */
           goto LABEL_12;
         }
 LABEL_34:
@@ -25170,7 +25206,7 @@ LABEL_12:
   v4 = unknown_libname_525(a1);
 LABEL_35:
   if ( !v4 || *(_BYTE *)(v3 + 64) )
-    return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+    return v4 != 0; /* test al, al -> xor al, al; otherwise 0x14021BA84: mov al, r15b (1) */
   v8 = *(_DWORD *)(v3 + 48);
   SR_VEC_LANES(128, v17, i32)[0] = 0;
   v9 = 0;
@@ -25218,7 +25254,7 @@ LABEL_47:
   unknown_libname_590(v3);
   if ( *(int *)(v3 + 40) >= 0 && (*(_DWORD *)(v3 + 48) & 4) != 0 )
     sub_140212CA4((__int64 *)(v3 + 1128), 32, v13, (int *)(v3 + 40));
-  return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+  return 1; /* 0x14021BA84: mov al, r15b (1) */
 }
 
 
@@ -25280,7 +25316,7 @@ LABEL_23:
       if ( v1 != 117 )
       {
         if ( v1 != 120 )
-          return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+          return 0; /* xor al, al */
         v5 = 16;
         goto LABEL_32;
       }
@@ -25305,7 +25341,7 @@ LABEL_12:
       goto LABEL_35;
     }
     if ( v1 <= 0x44u )
-      return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+      return 0; /* xor al, al */
     if ( v1 > 0x47u )
     {
       if ( v1 != 83 )
@@ -25320,7 +25356,7 @@ LABEL_12:
           if ( v1 != 97 )
           {
             if ( v1 != 99 )
-              return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+              return 0; /* xor al, al */
             goto LABEL_12;
           }
           goto LABEL_34;
@@ -25334,7 +25370,7 @@ LABEL_34:
   v4 = sub_14021E414(a1);
 LABEL_35:
   if ( !v4 || *(_DWORD *)(v3 + 1148) == 2 && *(_DWORD *)(v3 + 1144) == 1 || *(_BYTE *)(v3 + 64) )
-    return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+    return v4 != 0; /* test al, al -> xor al, al; otherwise 0x14021BD66: mov al, r15b (1) */
   v8 = *(_DWORD *)(v3 + 48);
   SR_VEC_LANES(128, v17, i32)[0] = 0;
   v9 = 0;
@@ -25382,7 +25418,7 @@ LABEL_49:
   unknown_libname_591(v3);
   if ( *(int *)(v3 + 40) >= 0 && (*(_DWORD *)(v3 + 48) & 4) != 0 )
     sub_140212CA4((__int64 *)(v3 + 1128), 32, v13, (int *)(v3 + 40));
-  return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+  return 1; /* 0x14021BD66: mov al, r15b (1) */
 }
 
 
@@ -25444,7 +25480,7 @@ LABEL_23:
       if ( v1 != 117 )
       {
         if ( v1 != 120 )
-          return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+          return 0; /* xor al, al */
         v5 = 16;
         goto LABEL_32;
       }
@@ -25465,7 +25501,7 @@ LABEL_30:
   if ( v1 != 67 )
   {
     if ( v1 <= 0x44u )
-      return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+      return 0; /* xor al, al */
     if ( v1 <= 0x47u )
       goto LABEL_34;
     if ( v1 != 83 )
@@ -25480,7 +25516,7 @@ LABEL_30:
         if ( v1 != 97 )
         {
           if ( v1 != 99 )
-            return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+            return 0; /* xor al, al */
           goto LABEL_12;
         }
 LABEL_34:
@@ -25495,7 +25531,7 @@ LABEL_12:
   v4 = unknown_libname_526(a1);
 LABEL_35:
   if ( !v4 || *(_BYTE *)(v3 + 64) )
-    return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+    return v4 != 0; /* test al, al -> xor al, al; otherwise 0x14021C030: mov al, r15b (1) */
   v8 = *(_DWORD *)(v3 + 48);
   SR_VEC_LANES(128, v17, i32)[0] = 0;
   v9 = 0;
@@ -25543,7 +25579,7 @@ LABEL_47:
   unknown_libname_592(v3);
   if ( *(int *)(v3 + 40) >= 0 && (*(_DWORD *)(v3 + 48) & 4) != 0 )
     sub_140212CA4((__int64 *)(v3 + 1128), 32, v13, (int *)(v3 + 40));
-  return sub_1401F8B20((unsigned __int64)v16 ^ SR_VEC_LANES(128, v17, i64)[1]);
+  return 1; /* 0x14021C030: mov al, r15b (1) */
 }
 
 

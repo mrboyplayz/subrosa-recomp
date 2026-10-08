@@ -5806,7 +5806,7 @@ __int64            sub_14015B780(unsigned int *a1, _DWORD *a2, _DWORD *a3, _DWOR
   v143 = a5;
   HIDWORD(v153) = 255;
   if ( !sub_14015C5E0((__int64)a1, (__int64)&v147) )
-    return sub_1401F8B20((unsigned __int64)&v126 ^ v159);
+    return 0; /* 0x14015B7DC: je -> xor eax, eax */
   v144 = a1[1];
   v7 = abs32(v144);
   a1[1] = v7;
@@ -5854,7 +5854,7 @@ LABEL_9:
     v14 = "bad offset";
 LABEL_214:
     *(_QWORD *)(v13 + 16) = (uint64)(uintptr_t)(v14);
-    return sub_1401F8B20((unsigned __int64)&v126 ^ v159);
+    return 0; /* 0x14015C5B7: xor eax, eax */
   }
 LABEL_14:
   if ( v11 == 24 && v10 == -16777216 )
@@ -6580,14 +6580,19 @@ LABEL_195:
       while ( v118 < v117 >> 1 );
     }
   }
-  if ( !v143 || v143 == v24 || sub_14015D7E0(v22, v24, v143, *a1, a1[1]) )
+  if ( v143 && v143 != v24 )
+  {
+    v22 = (char *)sub_14015D7E0(v22, v24, v143, *a1, a1[1]); /* 0x14015C525: mov rsi, rax */
+    if ( !v22 )
+      return 0; /* 0x14015C52A: je -> xor eax, eax */
+  }
   {
     *v155 = *a1;
     *v156 = a1[1];
     if ( v157 )
       *v157 = a1[2];
   }
-  return sub_1401F8B20((unsigned __int64)&v126 ^ v159);
+  return (__int64)v22; /* 0x14015C54F: mov rax, rsi */
 }
 #undef v126
 #undef j
@@ -7677,36 +7682,11 @@ __int64            sub_14015D730(unsigned __int8 *Block, int a2, int a3, int a4)
 //----- (000000014015D7E0) ----------------------------------------------------
 char *sub_14015D7E0(char *Block,int source_channels,int channels,int width,int height)
 {
-  if(channels==source_channels)return Block;
-  if((unsigned)(channels-1)>3)
-    sub_14023E640((char *)L"req_comp >= 1 && req_comp <= 4",(char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",0x6a4);
-  if(channels<0 || width<0 || (width && channels>INT32_MAX/width) || height<0)
-    goto outofmem;
-  int row_bytes=width*channels;
-  if(row_bytes<0 || (height && row_bytes>INT32_MAX/height))goto outofmem;
-  unsigned char *out=(void *)(uintptr_t)sr_path_malloc(height*row_bytes);
-  if(!out)goto outofmem;
-  if(source_channels<1 || source_channels>4 || channels<1 || channels>4){
-    sub_14023E640((char *)L"0",(char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",0x6c1);
-    free(Block);free(out);
-    *(const char **)(*(_QWORD *)(__readgsqword(0x58)+8LL*dword_140404A6C[19064470])+16)="unsupported";
-    return NULL;
-  }
-  for(int y=0;y<height;y++){
-    const unsigned char *in=(const unsigned char *)Block+(int64_t)width*source_channels*y;
-    unsigned char *row=out+(int64_t)row_bytes*y;
-    for(int x=0;x<width;x++,in+=source_channels,row+=channels){
-      unsigned r=in[0],g=source_channels<3?r:in[1],b=source_channels<3?r:in[2];
-      unsigned alpha=source_channels==2?in[1]:source_channels==4?in[3]:255;
-      if(channels<3){row[0]=(unsigned char)((77*r+150*g+29*b)>>8);if(channels==2)row[1]=(unsigned char)alpha;}
-      else {row[0]=(unsigned char)r;row[1]=(unsigned char)g;row[2]=(unsigned char)b;if(channels==4)row[3]=(unsigned char)alpha;}
-    }
-  }
-  free(Block);return (char *)out;
-outofmem:
-  free(Block);
-  *(const char **)(*(_QWORD *)(__readgsqword(0x58)+8LL*dword_140404A6C[19064470])+16)="outofmem";
-  return NULL;
+  extern unsigned char *image_convert_channels(unsigned char *pixels, int source_channels, int channels,
+                                               unsigned int width, unsigned int height, const char **failure);
+  /* src/engine/image_convert.c; the failure reason is the decoder's thread-local one. */
+  return (char *)image_convert_channels((unsigned char *)Block, source_channels, channels, width, height,
+      (const char **)(*(_QWORD *)(__readgsqword(0x58)+8LL*dword_140404A6C[19064470])+16));
 }
 
 //----- (000000014015DD00) ----------------------------------------------------

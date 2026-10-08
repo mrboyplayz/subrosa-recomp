@@ -1,0 +1,1723 @@
+{
+ "app_main_utf8_candidate": {
+  "note": "0x140001B7B mov eax,esi on the error path (esi is 1 from 0x140001357 on); 0x140001B42 xor eax,eax after shutdown",
+  "exits": [
+   "1 ## 0x140001B7B: mov eax, esi (esi holds 1)",
+   "0 ## 0x140001B42: xor eax, eax"
+  ]
+ },
+ "sub_1400096B0": {
+  "note": "void in the original: rax at the exit is whatever the last loop iteration left (0x14000975F add rax,r14 / 0x1400097BA / 0x1400098A9 / 0x1400099B3); the only caller 0x140009D7E returns straight after",
+  "exits": [
+   "0 ## no result: rax is loop residue at 0x1400099D6"
+  ]
+ },
+ "sub_140037220": {
+  "note": "0x1400372C7 test eax,eax after the call to 0x140035E50 picks 1 or 0; box tests and 0x1400379DC jump to xor eax,eax at 0x1400372CF; after the part loop 0x140037DBD comiss [0x151A8489C],65536.0f, jae -> 0",
+  "edits": [
+   [
+    "    sub_140035E50(a1, a2, v4, a4);\n    return sub_1401F8B20((unsigned __int64)&v126 ^ v159);",
+    "    return (unsigned int)sub_140035E50(a1, a2, v4, a4) != 0; /* 0x1400372C7: test eax, eax; jne -> mov eax, 1 */"
+   ]
+  ],
+  "exits": [
+   "!(*(float *)&dword_140404A6C[73006988] >= 65536.0f) ## 0x140037DBD: comiss; jae -> xor eax, eax, else mov eax, 1",
+   "0 ## 0x1400372CF: xor eax, eax"
+  ]
+ },
+ "sub_140041B80": {
+  "note": "void in the original: no instruction sets a result; rax at 0x1400428EE is residue (sub eax,r8d at 0x14004289C and others); caller 0x140191353 returns straight after",
+  "exits": [
+   "0 ## no result: rax is residue at 0x1400428EE"
+  ]
+ },
+ "sub_140048DA0": {
+  "note": "0x14004A0C5 mov eax,[rsp+0x50] (the hit flag, v244); the early exit 0x140049D56 -> 0x14004A0CB mov eax,r13d comes right after 0x140049D47 stored r13d in that slot",
+  "exits": [
+   "(unsigned int)v244 ## 0x14004A0C5: mov eax, dword ptr [rsp + 0x50]"
+  ]
+ },
+ "sub_14004C9C0": {
+  "note": "-1 from 0x14004CA7E/CA9D/CABE/CB3A/CB9A, 1 from 0x14004CBC7/CC4B, 0 from 0x14004CBE9/CC31/CC40",
+  "edits": [
+   [
+    "      if ( v21 <= 0 )\n        break;",
+    "      if ( v21 <= 0 )\n        return 1; /* 0x14004CBC7: jle -> mov eax, 1 */"
+   ],
+   [
+    "      if ( v25 <= 1 )\n        break;",
+    "      if ( v25 <= 1 )\n        return 0; /* 0x14004CBE9: jle -> xor eax, eax */"
+   ],
+   [
+    "      if ( v23 == -1 )\n        break;",
+    "      if ( v23 == -1 )\n        return 0; /* 0x14004CC40: je -> xor eax, eax */"
+   ],
+   [
+    "      if ( *(_BYTE *)(v17 + a4) != 92 )\n        break;\n      v12 = v33;",
+    "      if ( *(_BYTE *)(v17 + a4) != 92 )\n        return 1; /* 0x14004CC4B: jne -> mov eax, 1 */\n      v12 = v33;"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-1 ## 0x14004CA7E: jne -> mov eax, 0xffffffff",
+   "(unsigned int)-1 ## 0x14004CA9D: jle -> mov eax, 0xffffffff",
+   "(unsigned int)-1 ## 0x14004CB3A: jne -> mov eax, 0xffffffff",
+   "(unsigned int)-1 ## 0x14004CB9A: jge -> mov eax, 0xffffffff",
+   "0 ## 0x14004CC31: jge -> xor eax, eax",
+   "(unsigned int)-1 ## 0x14004CABE: je -> mov eax, 0xffffffff"
+  ]
+ },
+ "sub_1400C4280": {
+  "note": "void in the original (console command parser): every path reaches 0x1400C532F with rax left over from an unrelated call or load; caller 0x1400C6FE0 does not read it",
+  "exits": [
+   "0 ## no result: rax is residue at 0x1400C532F"
+  ]
+ },
+ "sub_1400C8E10": {
+  "note": "void in the original: rax at the exit is left by the last call to 0x140050F90 in the closing loop; callers 0x1400C9810 (tail jump) and 0x1400C9B4A return straight after",
+  "exits": [
+   "0 ## no result: rax is residue of the loop's last call at 0x1400C9086"
+  ]
+ },
+ "sub_1400CDBD0": {
+  "note": "0x1400CDC2D mov eax,-1 when the part is already gone; otherwise 0x1400CDFA9 mov eax,[rsp+0x34] = the item index from sr_CreateItem (0x1400CDE54 jumps out with eax still that index, -1)",
+  "edits": [
+   [
+    "  if ( ((unsigned int)sub_1400169B0(a3, a4, a5, a6) & (1 << a2)) == 0 )\n  {",
+    "  if ( ((unsigned int)sub_1400169B0(a3, a4, a5, a6) & (1 << a2)) != 0 )\n    return (unsigned int)-1; /* 0x1400CDC2D: mov eax, 0xffffffff */\n  {"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v32 ## 0x1400CDFA9: mov eax, dword ptr [rsp + 0x34]"
+  ]
+ },
+ "sub_1400E15A0": {
+  "note": "box tests 0x1400E1613..0x1400E169B jump to xor eax,eax at 0x1400E21CC; at the end 0x1400E21AF comiss 1.0f,[rbx+0x18] (rbx = a1), jbe -> 0, else 1",
+  "exits": [
+   "0 ## 0x1400E21CC: xor eax, eax",
+   "0 ## 0x1400E21CC: xor eax, eax",
+   "0 ## 0x1400E21CC: xor eax, eax",
+   "0 ## 0x1400E21CC: xor eax, eax",
+   "0 ## 0x1400E21CC: xor eax, eax",
+   "0 ## 0x1400E21CC: xor eax, eax",
+   "1.0f > *(float *)(a1 + 24) ## 0x1400E21AF: comiss 1.0f, [rbx + 0x18]; jbe -> xor eax, eax, else mov eax, 1"
+  ]
+ },
+ "sub_1400E54D0": {
+  "note": "error paths 0x1400E5EA4, 0x1400E5596, 0x1400E5E7A xor eax,eax; success 0x1400E5DB2 mov rax,r12 (the output buffer, v34)",
+  "exits": [
+   "0 ## 0x1400E5EA4: xor eax, eax",
+   "0 ## 0x1400E5596: xor eax, eax",
+   "0 ## 0x1400E5E7A: xor eax, eax",
+   "v34 ## 0x1400E5DB2: mov rax, r12"
+  ]
+ },
+ "sub_1400F6170": {
+  "note": "void in the original (round logic): rax at the exit is residue of unrelated loads and calls; caller 0x1400F5AEC does not read it",
+  "exits": [
+   "0 ## no result: rax is residue at the exit"
+  ]
+ },
+ "sub_1400F6C50": {
+  "note": "void in the original (round logic): rax at the exit is residue; caller 0x1400F5AFC does not read it",
+  "exits": [
+   "0 ## no result: rax is residue at the exit"
+  ]
+ },
+ "sub_1400F80A0": {
+  "note": "void in the original (round logic): rax at the exit is residue; caller 0x1400F5B1C does not read it",
+  "exits": [
+   "0 ## no result: rax is residue at the exit"
+  ]
+ },
+ "sub_1400F99A0": {
+  "note": "void in the original (round logic): rax at the exit is residue; caller 0x1400F5B3C returns straight after",
+  "exits": [
+   "0 ## no result: rax is residue at the exit"
+  ]
+ },
+ "sub_1400FE870": {
+  "note": "void in the original (menu draw callback, only referenced by address): rax at 0x1400FEB02 is left by a table load or by the last text call",
+  "exits": [
+   "0 ## no result: rax is residue at 0x1400FEB02"
+  ]
+ },
+ "sub_1401307D0": {
+  "note": "chat command handler: 0x140130805 xor eax,eax (no player), 0x1401309A7 jne -> 0x140132965 xor eax,eax (not a '/' command); everything else reaches 0x140132565 mov eax,1 (0x140130858 jg, 0x140130B6A je, fall through)",
+  "exits": [
+   "0 ## 0x140130805: xor eax, eax",
+   "1 ## 0x140130858: jg -> mov eax, 1",
+   "0 ## 0x1401309A7: jne -> xor eax, eax",
+   "1 ## 0x140130B6A: je -> mov eax, 1",
+   "1 ## 0x140132565: mov eax, 1"
+  ]
+ },
+ "sub_14015B780": {
+  "note": "stb_image loader: 0x14015B7DC and the error label reach 0x14015C5B7 xor eax,eax; the end returns rsi (v22), which 0x14015C525 reloads from the conversion call 0x14015D7E0 (the decompiler dropped that assignment), with 0x14015C52A je -> 0 when it failed",
+  "edits": [
+   [
+    "  if ( !v143 || v143 == v24 || sub_14015D7E0(v22, v24, v143, *a1, a1[1]) )\n  {",
+    "  if ( v143 && v143 != v24 )\n  {\n    v22 = (char *)sub_14015D7E0(v22, v24, v143, *a1, a1[1]); /* 0x14015C525: mov rsi, rax */\n    if ( !v22 )\n      return 0; /* 0x14015C52A: je -> xor eax, eax */\n  }\n  {"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x14015B7DC: je -> xor eax, eax",
+   "0 ## 0x14015C5B7: xor eax, eax",
+   "(__int64)v22 ## 0x14015C54F: mov rax, rsi"
+  ]
+ },
+ "sub_140160E00": {
+  "note": "stb_image loader: 0x140160E95 mov rax,rbx (v10). The decompiler dropped two writes of rbx: 0x140160E70 xor ebx,ebx when the decoder returned its own context, and 0x140160EE7 mov rbx,rax after the conversion call",
+  "edits": [
+   [
+    "  if ( v9 == a1 || !v9 )\n  {\n    if ( Block )",
+    "  if ( v9 == a1 || !v9 )\n  {\n    v10 = nullptr; /* 0x140160E70: xor ebx, ebx */\n    if ( Block )"
+   ],
+   [
+    "      sub_14015D7E0(v10, 4, v4, v12, v13);",
+    "      v10 = (char *)sub_14015D7E0(v10, 4, v4, v12, v13); /* 0x140160EE7: mov rbx, rax */"
+   ]
+  ],
+  "exits": [
+   "(__int64)v10 ## 0x140160E95: mov rax, rbx"
+  ]
+ },
+ "sub_1401623E0": {
+  "note": "stb_image HDR loader: error labels xor eax,eax (0x140162503, 0x14016252D, 0x1401629F8, 0x140162BA8); 0x140162696, 0x140162B07 and 0x1401629BA reach 0x1401629C4 mov rax,[rsp+0x40] (the pixel buffer, Block)",
+  "exits": [
+   "0 ## 0x140162503: xor eax, eax",
+   "0 ## 0x14016252D: xor eax, eax",
+   "0 ## 0x1401629F8: xor eax, eax",
+   "(__int64)Block ## 0x1401629C4: mov rax, qword ptr [rsp + 0x40]",
+   "(__int64)Block ## 0x1401629C4: mov rax, qword ptr [rsp + 0x40]",
+   "(__int64)Block ## 0x1401629C4: mov rax, qword ptr [rsp + 0x40]",
+   "0 ## 0x140162BA8: xor eax, eax"
+  ]
+ },
+ "sub_140163020": {
+  "note": "void in the original (pixel loop, only referenced by address): rax at the exit is the last clamped sample",
+  "exits": [
+   "0 ## no result: rax is residue at 0x140163608"
+  ]
+ },
+ "sub_1401663E0": {
+  "note": "stb_image GIF loader: 0x14016669A and 0x1401665DE xor eax,eax; the end 0x14016666F mov rax,rbp (v12), which 0x140166665 reloads from the conversion call (assignment dropped by the decompiler)",
+  "edits": [
+   [
+    "    sub_14015D7E0(v12, 4, v7, v10 * v27, v28);",
+    "    v12 = (char *)sub_14015D7E0(v12, 4, v7, v10 * v27, v28); /* 0x140166665: mov rbp, rax */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x14016669A: xor eax, eax",
+   "0 ## 0x1401665DE: xor eax, eax",
+   "(__int64)v12 ## 0x14016666F: mov rax, rbp"
+  ]
+ },
+ "sub_140167230": {
+  "note": "stb_image JPEG scan: every loop end and every non-restart marker reaches 0x140167480 mov eax,1; the four block-decoder failures (0x1401673A1, 0x1401675AE, 0x1401677CF, 0x14016794E) jump to 0x140167A46 xor eax,eax. In the C those failures left their loop and shared the last return",
+  "edits": [
+   [
+    "            goto LABEL_17;\n        }\n      }",
+    "            goto LABEL_17;\n        }\n        return 0; /* 0x1401673A1: block decoder failed -> xor eax, eax */\n      }"
+   ],
+   [
+    "(v22 + 18092) << 7) + a1 + 13448)) )\n            break;",
+    "(v22 + 18092) << 7) + a1 + 13448)) )\n            return 0; /* 0x1401675AE: block decoder failed -> xor eax, eax */"
+   ],
+   [
+    ": (unsigned int)sub_140165200(a1, v34, 1680LL * *(int *)(a1 + v30 + 18096) + a1 + 8, v28)) )\n          break;",
+    ": (unsigned int)sub_140165200(a1, v34, 1680LL * *(int *)(a1 + v30 + 18096) + a1 + 8, v28)) )\n          return 0; /* 0x1401677CF: block decoder failed -> xor eax, eax */"
+   ],
+   [
+    "          goto LABEL_65;\n      }\n    }",
+    "          goto LABEL_65;\n      }\n      return 0; /* 0x14016794E: block decoder failed -> xor eax, eax */\n    }"
+   ]
+  ],
+  "exits": [
+   "1 ## 0x140167480: mov eax, 1"
+  ]
+ },
+ "sub_1401691A0": {
+  "note": "stb_image: 0x14016943D xor eax,eax (0x1401692F4 and the restore block at 0x140169425), 0x14016941E mov eax,1 after storing the component count, 0x14016921E xor eax,eax after the restore block at 0x140169206",
+  "exits": [
+   "0 ## 0x1401692F4: -> xor eax, eax",
+   "0 ## 0x14016943D: xor eax, eax",
+   "1 ## 0x14016941E: mov eax, 1",
+   "0 ## 0x14016921E: xor eax, eax"
+  ]
+ },
+ "sub_140169770": {
+  "note": "stb_image PIC core: 0x14016A145 mov rax,[rsp+0x50] (the result buffer passed in, v108) when the rows are done; error paths 0x14016A1D0 xor eax,eax",
+  "exits": [
+   "v108 ## 0x14016A145: mov rax, qword ptr [rsp + 0x50]",
+   "v108 ## 0x14016A145: mov rax, qword ptr [rsp + 0x50]",
+   "0 ## 0x14016A1D0: xor eax, eax",
+   "0 ## 0x14016A1D0: xor eax, eax",
+   "0 ## 0x14016A1D0: xor eax, eax"
+  ]
+ },
+ "sub_14016BB40": {
+  "note": "stb_image JPEG marker: errors xor eax,eax; DHT and DQT end with 0x14016C2BE test r12d,r12d; sete r13b; mov eax,r13d (remaining length == 0), also when the length was not positive to begin with (0x14016C02D, 0x14016BEAA); DRI 0x14016BE8E mov eax,1 or bad length 0x14016BE42 xor eax,eax; skipped segments 0x14016BCE2 / 0x14016BE15 mov eax,1. In the C the DHT, DQT and DRI cases left the switch and shared the last return",
+  "edits": [
+   [
+    "(\"bad DHT header\");\n      }\n      break;",
+    "(\"bad DHT header\");\n        return 0; /* 0x14016C319: xor eax, eax */\n      }\n      return v41 == 0; /* 0x14016C02D -> 0x14016C2BE: test r12d, r12d; sete r13b */"
+   ],
+   [
+    "(\"bad DQT type\");\n      }\n      break;",
+    "(\"bad DQT type\");\n        return 0; /* 0x14016BE79: xor eax, eax */\n      }\n      return v27 == 0; /* 0x14016BEAA -> 0x14016C2C1: sete r13b */"
+   ],
+   [
+    "        *((_DWORD *)a1 + 4634) = sub_1401604F0(*a1);\n      else\n        *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)(\"bad DRI len\");\n      break;",
+    "      {\n        *((_DWORD *)a1 + 4634) = sub_1401604F0(*a1);\n        return 1; /* 0x14016BE8E: mov eax, 1 */\n      }\n      *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)(\"bad DRI len\");\n      return 0; /* 0x14016BE42: xor eax, eax */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x14016C13B: -> xor eax, eax",
+   "0 ## 0x14016C157: -> xor eax, eax",
+   "v41 == 0 ## 0x14016C2BE: test r12d, r12d; sete r13b; mov eax, r13d",
+   "0 ## 0x14016C015: xor eax, eax",
+   "v27 == 0 ## 0x14016C2C1: sete r13b; mov eax, r13d",
+   "0 ## 0x14016BBD2: xor eax, eax",
+   "0 ## 0x14016BC26: xor eax, eax",
+   "0 ## 0x14016BC14: xor eax, eax",
+   "1 ## 0x14016BCE2: mov eax, 1",
+   "1 ## 0x14016BE15: mov eax, 1",
+   "0 ## not reached: every case returns"
+  ]
+ },
+ "sub_1401707E0": {
+  "note": "stb_image HDR test: 0x140170A1F mov eax,edi; edi is 1 from 0x140170836 and is cleared at 0x1401709FE (mov edi,r15d, r15d = 0) only when the second signature mismatches. The decompiler had no variable for edi",
+  "edits": [
+   [
+    "  _Alignas(16) unsigned char sr_frame_1401707E0[272];",
+    "  _Alignas(16) unsigned char sr_frame_1401707E0[272];\n  int sr_matched = 1; /* edi: 0x140170836 mov edi, 1 */"
+   ],
+   [
+    "    if ( (unsigned __int8)v11 != *v9 )\n      break;",
+    "    if ( (unsigned __int8)v11 != *v9 )\n    {\n      sr_matched = 0; /* 0x1401709FE: mov edi, r15d */\n      break;\n    }"
+   ]
+  ],
+  "exits": [
+   "sr_matched ## 0x140170A1F: mov eax, edi"
+  ]
+ },
+ "sub_140171DD0": {
+  "note": "stb_image_write HDR core: the three argument tests 0x140171E0A/E12/E1B jump to 0x140171F2D xor eax,eax; otherwise 0x140171F16 mov eax,1",
+  "edits": [
+   [
+    "  if ( a3 > 0 && a2 > 0 && a5 )\n  {",
+    "  if ( !(a3 > 0 && a2 > 0 && a5) )\n    return 0; /* 0x140171F2D: xor eax, eax */\n  {"
+   ]
+  ],
+  "exits": [
+   "1 ## 0x140171F16: mov eax, 1"
+  ]
+ },
+ "sub_140172080": {
+  "note": "stb_image_write JPEG core: the four argument tests 0x1401720CC/D4/DD/EA jump to 0x1401737CD xor eax,eax; otherwise 0x1401737C6 mov eax,1",
+  "edits": [
+   [
+    "  if ( a5 && a2 && a3 && (unsigned int)(a4 - 1) <= 3 )\n  {",
+    "  if ( !(a5 && a2 && a3 && (unsigned int)(a4 - 1) <= 3) )\n    return 0; /* 0x1401737CD: xor eax, eax */\n  {"
+   ]
+  ],
+  "exits": [
+   "1 ## 0x1401737C6: mov eax, 1"
+  ]
+ },
+ "sub_140173990": {
+  "note": "stb_image_write PNG to memory: 0x140174096 mov rax,r14 (the output buffer, v39); allocation failures 0x140173A66, 0x140173A79, 0x140173D29, 0x140173D45 reach 0x140173A83 xor eax,eax. v39 is first assigned from the output allocation, so starting it at 0 gives those paths their result",
+  "edits": [
+   [
+    "  v6 = a5;\n  v7 = a3;",
+    "  v39 = 0; /* failure paths: 0x140173A83 xor eax, eax */\n  v6 = a5;\n  v7 = a3;"
+   ]
+  ],
+  "exits": [
+   "v39 ## 0x140174096: mov rax, r14"
+  ]
+ },
+ "CMFCVisualManager__OnDrawTab": {
+  "note": "(misnamed by signature matching; stb_image_write JPEG block coder) 0x140176C51 mov eax,[rbp-0x50] = the first coefficient v117[0] (cookie at [rbp+0xB0] is 0x100 above it, as in the C frame); the early path 0x140176956 mov eax,r13d reloaded r13d from the same slot at 0x140176770",
+  "exits": [
+   "(unsigned int)v117[0] ## 0x140176C51: mov eax, dword ptr [rbp - 0x50]"
+  ]
+ },
+ "sub_14017A640": {
+  "note": "stb_truetype SDF glyph: 0x14017A6B6/A719/A8CC/A8D5 jump to 0x14017B326 xor eax,eax; after the two frees at 0x14017B300 the result is 0x14017B319 mov rax,rbx (the bitmap, v151 / [rsp+0x78])",
+  "exits": [
+   "0 ## 0x14017A719: js -> xor eax, eax",
+   "(__int64)v151 ## 0x14017B319: mov rax, rbx",
+   "0 ## 0x14017B326: xor eax, eax"
+  ]
+ },
+ "sub_140182AD0": {
+  "note": "stb_truetype charstring interpreter: the only mov eax,1 is 0x14018378E after closing the shape (endchar); every error and the fall-out jump to 0x140182DEF xor eax,eax",
+  "edits": [
+   [
+    "        sub_14017FF00(a3);\n        return sub_1401F8B20((unsigned __int64)&v77 ^ v104);",
+    "        sub_14017FF00(a3);\n        return 1; /* 0x14018378E: mov eax, 1 */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x140182DEF: xor eax, eax"
+  ]
+ },
+ "sub_14019F210": {
+  "note": "CELT decoder: 0x14019F3AB and 0x14019F3F3 mov eax,-1 (bad block size / length / no output); 0x1401A07ED mov eax,-3 when more bits were read than the packet holds; otherwise 0x14019F51A / 0x1401A0820 idiv: frame size [rbp+0x220] (a5) divided by the downsampling factor a1+0x14",
+  "edits": [
+   [
+    "  if ( i <= *(_DWORD *)(v35 + 40) )\n  {\n    v87 = 1;",
+    "  if ( i > *(_DWORD *)(v35 + 40) )\n    return (unsigned int)-1; /* 0x14019F3AB: mov eax, 0xffffffff */\n  {\n    v87 = 1;"
+   ],
+   [
+    "    if ( (unsigned int)a3 < 0x4FC )\n    {\n      if ( a4 )\n      {",
+    "    if ( (unsigned int)a3 >= 0x4FC || !a4 )\n      return (unsigned int)-1; /* 0x14019F3F3: mov eax, 0xffffffff */\n    {\n      {"
+   ],
+   [
+    "          if ( (int)sub_14019A0A0((__int64)a6) <= 8 * a3 && (unsigned int)unknown_libname_997((__int64)a6) )\n            *((_DWORD *)a1 + 12) = 1;",
+    "          if ( (int)sub_14019A0A0((__int64)a6) > 8 * a3 )\n            return (unsigned int)-3; /* 0x1401A07ED: mov eax, 0xfffffffd */\n          if ( (unsigned int)unknown_libname_997((__int64)a6) )\n            *((_DWORD *)a1 + 12) = 1;"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)(a5 / (int)*((_DWORD *)a1 + 5)) ## 0x1401A0820: idiv dword ptr [rcx + 0x14] with eax = [rbp + 0x220]"
+  ]
+ },
+ "sub_1401A3A00": {
+  "note": "CELT spreading decision: 0x1401A3AA8 xor eax,eax when the last band is too narrow; otherwise 0x1401A3EFB mov eax,[rsp+0x38] (v19)",
+  "edits": [
+   [
+    "  if ( (*(__int16 *)(v26 + 2LL * a8) - *(__int16 *)(v26 + 2LL * (a8 - 1))) * a10 > 8 )\n  {\n    v18 = 0;",
+    "  if ( (*(__int16 *)(v26 + 2LL * a8) - *(__int16 *)(v26 + 2LL * (a8 - 1))) * a10 <= 8 )\n    return 0; /* 0x1401A3AA8: xor eax, eax */\n  {\n    v18 = 0;"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v19 ## 0x1401A3EFB: mov eax, dword ptr [rsp + 0x38]"
+  ]
+ },
+ "sub_1401A6710": {
+  "note": "0x1401A67DF stores the last call's result in [rbp+4] and 0x1401A67E2 reloads it",
+  "exits": [
+   "(unsigned int)LODWORD(v10[1]) ## 0x1401A67E2: mov eax, dword ptr [rbp + 4]"
+  ]
+ },
+ "CGlobalUtils__CheckAlignment": {
+  "note": "(misnamed by signature matching; CELT stereo band quantiser) one-sample bands return the result of 0x1401AB360 (0x1401AC777, then jmp to the exit); otherwise 0x1401AD1EE mov eax,[rsp+0x6c] (v16)",
+  "edits": [
+   [
+    "    sub_1401AB360((int *)a1, a2, a3, a5, a9);\n  }\n  else\n  {",
+    "    return sub_1401AB360((int *)a1, a2, a3, a5, a9); /* 0x1401AC777: the call's result stays in rax */\n  }\n  else\n  {"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v16 ## 0x1401AD1EE: mov eax, dword ptr [rsp + 0x6c]"
+  ]
+ },
+ "sub_1401BBF70": {
+  "note": "0x1401BC001 xor eax,eax when the coefficients overflow; otherwise the result of the call at 0x1401BC011 stays in rax",
+  "edits": [
+   [
+    "  if ( v5 < 4096 )\n    sub_1401DC4C0(v6, a2);",
+    "  if ( v5 < 4096 )\n    return sub_1401DC4C0(v6, a2); /* 0x1401BC011: the call's result stays in rax */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x1401BC001: xor eax, eax"
+  ]
+ },
+ "sub_1401BC940": {
+  "note": "void in the original: at both exits rax is the loop bound just loaded for the closing compare (0x1401BCC74 / 0x1401BCD56 mov eax,[rsp+0x130] = a3)",
+  "exits": [
+   "(unsigned int)a3 ## no result: rax still holds the loop bound from 0x1401BCC74 / 0x1401BCD56"
+  ]
+ },
+ "CWinApp__ShowAppMessageBox": {
+  "note": "(misnamed by signature matching) void in the original: rax at the exit is the last stability test's result; five callers overwrite it and 0x1401C5D16 passes it to a caller that does not read it",
+  "exits": [
+   "0 ## no result: rax is residue of the call at 0x1401BD117"
+  ]
+ },
+ "sub_1401C5A20": {
+  "note": "void in the original: rax at the exit is left by 0x1401BCEC0 or by the copy at 0x1401C5D70; the caller 0x1401D61E7 does not read it",
+  "exits": [
+   "0 ## no result: rax is residue of the last call"
+  ]
+ },
+ "sub_1401CABA0": {
+  "note": "SILK decoder: 0x1401CAEE7, 0x1401CB072, 0x1401CB09F mov eax,-101 (bad frame size arguments); 0x1401CAC83 / 0x1401CB142 / 0x1401CCA5F mov eax,[rbp+0x14] (the status, v24)",
+  "exits": [
+   "(unsigned int)-101 ## 0x1401CAEE7: mov eax, 0xffffff9b",
+   "(unsigned int)-101 ## 0x1401CB072: mov eax, 0xffffff9b",
+   "(unsigned int)v24 ## 0x1401CB142: mov eax, dword ptr [rbp + 0x14]",
+   "(unsigned int)v24 ## 0x1401CCA5F: mov eax, dword ptr [rbp + 0x14]"
+  ]
+ },
+ "sub_1401CCB60": {
+  "note": "SILK encoder setup: 0x1401CCE35 mov eax,-203, 0x1401CCE63 mov eax,-200, otherwise 0x1401CDE47 / 0x1401CCF9C mov eax,[rbp+0x10] (the status, v21)",
+  "exits": [
+   "(unsigned int)-203 ## 0x1401CCE35: mov eax, 0xffffff35",
+   "(unsigned int)-200 ## 0x1401CCE63: mov eax, 0xffffff38",
+   "(unsigned int)v21 ## 0x1401CDE47: mov eax, dword ptr [rbp + 0x10]"
+  ]
+ },
+ "sub_1401CE5E0": {
+  "note": "SILK pitch analysis: the two unvoiced paths clear the outputs and 0x1401CED94 / 0x1401CF685 mov eax,1; the voiced path ends 0x1401CFF03 xor eax,eax",
+  "edits": [
+   [
+    "\n      *v87 = 0.0;\n      *v85 = 0;\n      *v86 = 0;",
+    "\n      *v87 = 0.0;\n      *v85 = 0;\n      *v86 = 0;\n      return 1; /* 0x1401CF685: mov eax, 1 */"
+   ],
+   [
+    "\n    *v87 = 0.0;\n    *v85 = 0;\n    *v86 = 0;",
+    "\n    *v87 = 0.0;\n    *v85 = 0;\n    *v86 = 0;\n    return 1; /* 0x1401CED94: mov eax, 1 */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x1401CFF03: xor eax, eax"
+  ]
+ },
+ "sub_1401D1780": {
+  "note": "SILK frame encoder: both exits 0x1401D264B / 0x1401D26C7 mov eax,[rsp+0x94]; that slot is written once, 0x1401D17B4 mov dword ptr [rsp+0x94],0",
+  "exits": [
+   "0 ## 0x1401D26C7: mov eax, dword ptr [rsp + 0x94], a slot only ever set to 0 (0x1401D17B4)"
+  ]
+ },
+ "sub_1401E25C0": {
+  "note": "opus_decode: 0x1401E25F2 mov eax,-1 when the frame size is not positive; 0x1401E2647 mov eax,-4 when the packet holds no samples; otherwise 0x1401E271A mov eax,[rbp+8] (decoded sample count, v12)",
+  "edits": [
+   [
+    "  if ( a5 > 0 )\n  {\n    if ( a2 && a3 > 0 && !a6 )",
+    "  if ( a5 <= 0 )\n    return (unsigned int)-1; /* 0x1401E25F2: mov eax, 0xffffffff */\n  {\n    if ( a2 && a3 > 0 && !a6 )"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-4 ## 0x1401E2647: mov eax, 0xfffffffc",
+   "(unsigned int)v12 ## 0x1401E271A: mov eax, dword ptr [rbp + 8]"
+  ]
+ },
+ "sub_1401E3980": {
+  "note": "opus_packet_pad: 0x1401E39B1 -1 (length < 1), 0x1401E39CB 0 (already that length), 0x1401E39E4 -1 (longer than the target), 0x1401E3AA2 the repacketizer's error, 0x1401E3AE7 0 when the output call returned > 0, else 0x1401E3AED its result",
+  "edits": [
+   [
+    "  if ( a2 >= 1 && a2 != a3 && a2 <= a3 )\n  {",
+    "  if ( a2 < 1 )\n    return (unsigned int)-1; /* 0x1401E39B1: mov eax, 0xffffffff */\n  if ( a2 == a3 )\n    return 0; /* 0x1401E39CB: xor eax, eax */\n  if ( a2 > a3 )\n    return (unsigned int)-1; /* 0x1401E39E4: mov eax, 0xffffffff */\n  {"
+   ],
+   [
+    "    if ( !v5 )\n      v5 = sub_1401EA090((__int64)v6, 0, v7, a1, a3, 0, 1);",
+    "    if ( v5 )\n      return (unsigned int)v5; /* 0x1401E3AA2: mov eax, dword ptr [rsp + 0x40] */\n    v5 = sub_1401EA090((__int64)v6, 0, v7, a1, a3, 0, 1);\n    if ( v5 > 0 )\n      return 0; /* 0x1401E3AE7: xor eax, eax */"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v5 ## 0x1401E3AED: mov eax, dword ptr [rsp + 0x40]"
+  ]
+ },
+ "sub_1401E9360": {
+  "note": "opus_decode_native: argument checks 0x1401E93A1 / 0x1401E93FB / 0x1401E94DF mov eax,-1; lost-packet loop 0x1401E9482 (error, [rsp+0x6c]) or 0x1401E94CA (samples, [rsp+0x54]); parse error 0x1401E9594 ([rsp+0x64]); FEC paths 0x1401E9635 (result of the recursive call), 0x1401E96D2 / 0x1401E978B ([rsp+0x5c]), 0x1401E97B7 (frame size); 0x1401E97D5 mov eax,-2 (buffer too small); frame loop error 0x1401E98B4 ([rsp+0x74]); end 0x1401E9980 ([rsp+0x58]). The C had merged all but three into the last return",
+  "edits": [
+   [
+    "                sub_1401E9360(a1, nullptr, 0, a4, a5, 0, 0, nullptr, a9);\n              }",
+    "                return sub_1401E9360(a1, nullptr, 0, a4, a5, 0, 0, nullptr, a9); /* 0x1401E9635: the call's result stays in rax */\n              }"
+   ],
+   [
+    "                  if ( v14 >= 0 )\n                  {\n                    sub_1401A2600();\n                    a1[18] = a5;\n                  }\n                }\n                else\n                {\n                  a1[18] = v25;\n                }",
+    "                  if ( v14 >= 0 )\n                  {\n                    sub_1401A2600();\n                    a1[18] = a5;\n                    return (unsigned int)a5; /* 0x1401E97B7: mov eax, dword ptr [rsp + 0x130] */\n                  }\n                  return (unsigned int)v14; /* 0x1401E978B: mov eax, dword ptr [rsp + 0x5c] */\n                }\n                else\n                {\n                  a1[18] = v25;\n                  return (unsigned int)v14; /* 0x1401E96D2: mov eax, dword ptr [rsp + 0x5c] */\n                }"
+   ],
+   [
+    "                a1[20] = 0;\n                a1[19] = 0;\n              }\n            }\n          }\n        }\n      }\n      else\n      {\n        v12 = 0;",
+    "                a1[20] = 0;\n                a1[19] = 0;\n              }\n              return (unsigned int)v13; /* 0x1401E9980: mov eax, dword ptr [rsp + 0x58] */\n            }\n            return (unsigned int)-2; /* 0x1401E97D5: mov eax, 0xfffffffe */\n          }\n          return (unsigned int)v16; /* 0x1401E9594: mov eax, dword ptr [rsp + 0x64] */\n        }\n        return (unsigned int)-1; /* 0x1401E94DF: mov eax, 0xffffffff */\n      }\n      else\n      {\n        v12 = 0;"
+   ],
+   [
+    "          if ( v18 < 0 )\n            break;",
+    "          if ( v18 < 0 )\n            return (unsigned int)v18; /* 0x1401E9482: mov eax, dword ptr [rsp + 0x6c] */"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v20 ## 0x1401E98B4: mov eax, dword ptr [rsp + 0x74]",
+   "(unsigned int)v12 ## 0x1401E94CA: mov eax, dword ptr [rsp + 0x54]",
+   "(unsigned int)-1 ## 0x1401E93A1 / 0x1401E93FB: mov eax, 0xffffffff"
+  ]
+ },
+ "sub_1401F2AA0": {
+  "note": "opus_decode_frame: 0x1401F2B80 mov eax,-2 (buffer too small); 0x1401F2CDA mov eax,[rbp+4] after the silence fill (v24); the split-PLC loop returns its error 0x1401F2D34 ([rbp+0x50], v42) or 0x1401F2D77 the frame size (a5); 0x1401F2EFA mov eax,-1 when the packet is longer than the frame; every failed decoder control call mov eax,-3; success 0x1401F3E38 mov eax,[rbp+0xb4] (v65). In the C the -1, the nested -3 paths and the success path shared the last return",
+  "edits": [
+   [
+    "        if ( v42 < 0 )\n          break;",
+    "        if ( v42 < 0 )\n          return (unsigned int)v42; /* 0x1401F2D34: mov eax, dword ptr [rbp + 0x50] */"
+   ],
+   [
+    "  if ( v24 <= v95 )\n  {\n    v96 = v24;",
+    "  if ( v24 > v95 )\n    return (unsigned int)-1; /* 0x1401F2EFA: mov eax, 0xffffffff */\n  {\n    v96 = v24;"
+   ],
+   [
+    "              else\n                v65 = v44;\n            }",
+    "              else\n                v65 = v44;\n              return (unsigned int)v65; /* 0x1401F3E38: mov eax, dword ptr [rbp + 0xb4] */\n            }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-2 ## 0x1401F2B80: mov eax, 0xfffffffe",
+   "(unsigned int)v24 ## 0x1401F2CDA: mov eax, dword ptr [rbp + 4]",
+   "(unsigned int)a5 ## 0x1401F2D77: mov eax, dword ptr [rbp + 0x1b0]",
+   "(unsigned int)-3 ## 0x1401F31CE: mov eax, 0xfffffffd",
+   "(unsigned int)-3 ## mov eax, 0xfffffffd after a failed control call",
+   "(unsigned int)-3 ## mov eax, 0xfffffffd after a failed control call",
+   "(unsigned int)-3 ## mov eax, 0xfffffffd after a failed control call",
+   "(unsigned int)-3 ## mov eax, 0xfffffffd after a failed control call",
+   "(unsigned int)-3 ## mov eax, 0xfffffffd after a failed control call",
+   "(unsigned int)-3 ## the nested control calls that failed: each mov eax, 0xfffffffd (0x1401F34CA ... 0x1401F39AB)"
+  ]
+ },
+ "sub_1401F59A0": {
+  "note": "Opus encoder (multi-frame path): 0x1401F5D06, 0x1401F5D3C, 0x1401F5DA3 mov eax,-3 when a frame encode, a repacketizer add or the final output fails; otherwise 0x1401F5DE4 mov eax,[rbp+4] (v16)",
+  "exits": [
+   "(unsigned int)-3 ## 0x1401F5D06: mov eax, 0xfffffffd",
+   "(unsigned int)-3 ## 0x1401F5D3C: mov eax, 0xfffffffd",
+   "(unsigned int)(v16 < 0 ? -3 : v16) ## 0x1401F5DA3: mov eax, 0xfffffffd when [rbp + 4] < 0, else 0x1401F5DE4: mov eax, dword ptr [rbp + 4]"
+  ]
+ },
+ "sub_14021AF34": {
+  "note": "printf state handler (one of six instantiations): the three unknown-conversion exits jump to 0x14021B071 xor al,al, which is also where a failed conversion (test al,al at 0x14021B06D) falls; everything after that returns 0x14021B1E8 mov al,r15b with r15b = 1 (0x14021AF68 lea r15d,[rsi-0x77], esi = 'x')",
+  "exits": [
+   "0 ## 0x14021B071: xor al, al",
+   "0 ## 0x14021B071: xor al, al",
+   "0 ## 0x14021B071: xor al, al",
+   "v4 != 0 ## 0x14021B06D: test al, al -> xor al, al; otherwise 0x14021B1E8: mov al, r15b (1)",
+   "1 ## 0x14021B1E8: mov al, r15b (1)"
+  ]
+ },
+ "sub_14021B214": {
+  "note": "as sub_14021AF34: 0x14021B351 xor al,al / 0x14021B4DE mov al,r15b",
+  "exits": [
+   "0 ## xor al, al",
+   "0 ## xor al, al",
+   "0 ## xor al, al",
+   "v4 != 0 ## test al, al -> xor al, al; otherwise 0x14021B4DE: mov al, r15b (1)",
+   "1 ## 0x14021B4DE: mov al, r15b (1)"
+  ]
+ },
+ "sub_14021B508": {
+  "note": "as sub_14021AF34: 0x14021B645 xor al,al / 0x14021B7BC mov al,r15b",
+  "exits": [
+   "0 ## 0x14021B645: xor al, al",
+   "0 ## 0x14021B645: xor al, al",
+   "0 ## 0x14021B645: xor al, al",
+   "v4 != 0 ## 0x14021B641: test al, al -> xor al, al; otherwise 0x14021B7BC: mov al, r15b (1)",
+   "1 ## 0x14021B7BC: mov al, r15b (1)"
+  ]
+ },
+ "sub_14021B7E8": {
+  "note": "as sub_14021AF34: xor al,al / 0x14021BA84 mov al,r15b",
+  "exits": [
+   "0 ## xor al, al",
+   "0 ## xor al, al",
+   "0 ## xor al, al",
+   "v4 != 0 ## test al, al -> xor al, al; otherwise 0x14021BA84: mov al, r15b (1)",
+   "1 ## 0x14021BA84: mov al, r15b (1)"
+  ]
+ },
+ "sub_14021BAB4": {
+  "note": "as sub_14021AF34: xor al,al / 0x14021BD66 mov al,r15b",
+  "exits": [
+   "0 ## xor al, al",
+   "0 ## xor al, al",
+   "0 ## xor al, al",
+   "v4 != 0 ## test al, al -> xor al, al; otherwise 0x14021BD66: mov al, r15b (1)",
+   "1 ## 0x14021BD66: mov al, r15b (1)"
+  ]
+ },
+ "sub_14021BD94": {
+  "note": "as sub_14021AF34: xor al,al / 0x14021C030 mov al,r15b",
+  "exits": [
+   "0 ## xor al, al",
+   "0 ## xor al, al",
+   "0 ## xor al, al",
+   "v4 != 0 ## test al, al -> xor al, al; otherwise 0x14021C030: mov al, r15b (1)",
+   "1 ## 0x14021C030: mov al, r15b (1)"
+  ]
+ },
+ "sub_14020C8A8": {
+  "note": "ftell helper for translated text streams: 0x14020C8F4 mov rax,rsi (a2) when nothing is buffered; 0x14020C94E / C976 / C989 / C992 jump to 0x14020C9EC or rax,-1; otherwise 0x14020C9E6 lea rax,[r12+rcx]: the first seek's result (r12, v7) plus the bytes walked in the buffer",
+  "edits": [
+   [
+    "  if ( *(_DWORD *)(a1 + 16) )\n  {",
+    "  if ( !*(_DWORD *)(a1 + 16) )\n    return a2; /* 0x14020C8F4: mov rax, rsi */\n  {"
+   ],
+   [
+    "            while ( v4 != v6 );\n          }",
+    "            while ( v4 != v6 );\n          }\n          return v7 + (v10 - (unsigned __int8 *)v14); /* 0x14020C9E6: lea rax, [r12 + rcx] */"
+   ]
+  ],
+  "exits": [
+   "-1 ## 0x14020C9EC: or rax, 0xffffffffffffffff"
+  ]
+ },
+ "sub_14020E7D8": {
+  "note": "formatted print into a counted buffer: or eax,-1 after the invalid-parameter report; otherwise mov eax,ebx, ebx being the formatter's result, replaced in the chunk placed after the ret by -1 (no room, or more characters than the count in the first mode) or -2 (truncated). The decompiler had dropped those three writes. 0x14020E98E / 0x14020E99D",
+  "exits": [
+   "(unsigned int)-1 ## 0x14020E827: or eax, 0xffffffff",
+   "(unsigned int)v12 ## 0x14020E966: mov eax, ebx"
+  ],
+  "edits": [
+   [
+    "      if ( !a3 && v12 )\n        goto LABEL_20;\n      v13 = v17;\n      if ( v17 == a3 )\n        goto LABEL_20;\n      goto LABEL_19;",
+    "      if ( !a3 && v12 )\n      {\n        v12 = -1; /* or ebx, 0xffffffff in the chunk after the ret */\n        goto LABEL_20;\n      }\n      v13 = v17;\n      if ( v17 == a3 )\n      {\n        if ( v12 >= 0 && (unsigned __int64)v12 > (unsigned __int64)a3 )\n          v12 = -1; /* cmp rbx, rdi; ja -> or ebx, 0xffffffff */\n        goto LABEL_20;\n      }\n      goto LABEL_19;"
+   ],
+   [
+    "        a2[v13] = 0;\n        goto LABEL_20;\n      }\n      goto LABEL_26;\n    }\n  }",
+    "        a2[v13] = 0;\n        goto LABEL_20;\n      }\n      v12 = -2; /* mov ebx, 0xfffffffe: the output was truncated */\n      goto LABEL_26;\n    }\n    v12 = -1; /* no room at all: or ebx, 0xffffffff */\n  }"
+   ]
+  ]
+ },
+ "sub_140213FD0": {
+  "note": "0x1402140D8 mov eax,ebx; ebx is the formatter's result (0x1402140AC mov ebx,eax after the call to 0x140216DA4), which the decompiler dropped",
+  "edits": [
+   [
+    "  sub_140216DA4((__int64)v12, (__int64)v6, v7);\n  free_base(Block);",
+    "  int sr_result = (int)sub_140216DA4((__int64)v12, (__int64)v6, v7); /* 0x1402140AC: mov ebx, eax */\n  free_base(Block);"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)sr_result ## 0x1402140D8: mov eax, ebx"
+  ]
+ },
+ "sub_14023D4F4": {
+  "note": "no result in the original (assertion report; reached by tail jumps only): rax at the exit is the message box answer minus 4 left by the dispatch at 0x14023D568",
+  "exits": [
+   "0 ## no result: rax is residue of the dispatch at 0x14023D56D"
+  ]
+ },
+ "__acrt_get_full_path_name_narrow_acp_or_utf8____crt_win32_buffer_public_dynamic_resizing": {
+  "note": "0x14024A83A mov eax,ebx; ebx is the status of the last step run: 0x14024A7EC (conversion to wide), 0x14024A805 (wide full path), 0x14024A819 (conversion back). The decompiler kept the calls but not the register",
+  "edits": [
+   [
+    "  if ( !(unsigned int)sub_140238394(a1, (__int64)v11) )\n  {",
+    "  int sr_status = (int)sub_140238394(a1, (__int64)v11); /* 0x14024A7EC: mov ebx, eax */\n  if ( !sr_status )\n  {"
+   ],
+   [
+    "    if ( !full_path_name )\n      __acrt_wcs_to_mbs_cp____crt_win32_buffer_public_dynamic_resizing(v17, a2, v5);",
+    "    sr_status = (int)full_path_name; /* 0x14024A805: mov ebx, eax */\n    if ( !full_path_name )\n      sr_status = (int)__acrt_wcs_to_mbs_cp____crt_win32_buffer_public_dynamic_resizing(v17, a2, v5); /* 0x14024A819: mov ebx, eax */"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)sr_status ## 0x14024A83A: mov eax, ebx"
+  ]
+ },
+ "is_valid_drive": {
+  "note": "0x14024B82D xor eax,eax after the error report (drive > 26); 0x14024B837 lea eax,[rbx+1] = 1 for drive 0; otherwise 0x14024B85D cmp eax,2; setae bl; mov eax,ebx on GetDriveTypeW's answer",
+  "edits": [
+   [
+    "      ((void (",
+    "      return ((unsigned int ("
+   ],
+   [
+    "GetDriveTypeW)(&RootPathName);\n    }\n",
+    "GetDriveTypeW)(&RootPathName) >= 2; /* 0x14024B85D: cmp eax, 2; setae bl; mov eax, ebx */\n    }\n    return 1; /* 0x14024B837: lea eax, [rbx + 1] (rbx = 0) */\n"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x14024B82D: xor eax, eax"
+  ]
+ },
+ "sub_14024FB24": {
+  "note": "is the process interactive: 0x14024FBD0 mov al,1 when either API is missing (0x14024FB62, 0x14024FB89) or the station flags have WSF_VISIBLE (0x14024FBC5 test byte ptr [rsp+0x38],1); 0x14024FBCC xor al,al when there is no station or the query fails",
+  "edits": [
+   [
+    "        v1(v2, 1, &v5, 12, 0);\n      }",
+    "        return ((unsigned int (*)(__int64, __int64, __int64 *, __int64, _QWORD))v1)(v2, 1, &v5, 12, 0) && (v6 & 1); /* 0x14024FBC1: test eax, eax; 0x14024FBC5: test byte ptr [rsp + 0x38], 1 */\n      }\n      return 0; /* 0x14024FB97: je -> xor al, al */"
+   ]
+  ],
+  "exits": [
+   "1 ## 0x14024FBD0: mov al, 1"
+  ]
+ },
+ "write_text_ansi_nolock": {
+  "note": "returns its result record: 0x14025375F mov rax,rdi (rdi = a1)",
+  "exits": [
+   "a1 ## 0x14025375F: mov rax, rdi"
+  ]
+ },
+ "write_text_utf16le_nolock": {
+  "note": "returns its result record: 0x14025387A mov rax,rdi (rdi = a1)",
+  "exits": [
+   "a1 ## 0x14025387A: mov rax, rdi"
+  ]
+ },
+ "write_text_utf8_nolock": {
+  "note": "returns its result record: 0x1402539E9 mov rax,rbx (rbx = a1)",
+  "exits": [
+   "a1 ## 0x1402539E9: mov rax, rbx"
+  ]
+ },
+ "sub_140256B38": {
+  "note": "wide character put: 0x140256C91 movzx eax,si (the character, a1) on success; 0x140256C80 the flush routine's result; 0x140256C6D mov eax,0xffff when the conversion (0x140256C42) or a byte write (0x140256C5E) fails",
+  "edits": [
+   [
+    "    sub_140251E94(a1, a2);\n    return sub_1401F8B20((unsigned __int64)&v12 ^ v15);",
+    "    return sub_140251E94(a1, a2); /* 0x140256C80: the call's result stays in rax */"
+   ],
+   [
+    "  if ( !(unsigned int)CDialog__CreateIndirect(",
+    "  int sr_failed;\n  if ( !(sr_failed = (int)CDialog__CreateIndirect("
+   ],
+   [
+    "(void *)a1)\n    && v13 > 0 )",
+    "(void *)a1))\n    && v13 > 0 )"
+   ],
+   [
+    "      if ( (unsigned int)unknown_libname_207(*v10, v2) == -1 )\n        break;",
+    "      if ( (unsigned int)unknown_libname_207(*v10, v2) == -1 )\n        return 0xFFFF; /* 0x140256C5E: je -> mov eax, 0xffff */"
+   ]
+  ],
+  "exits": [
+   "a1 ## 0x140256C91: movzx eax, si",
+   "a1 ## 0x140256C91: movzx eax, si",
+   "sr_failed ? 0xFFFF : a1 ## 0x140256C42: -> mov eax, 0xffff when the conversion failed; else 0x140256C91: movzx eax, si"
+  ]
+ },
+ "isctype_l": {
+  "note": "0x140256EEC movzx eax,word ptr [rcx+rdi*2]; 0x140256F71 and eax,esi for characters in the table; otherwise the type word from GetStringType (0x140256F6D movzx eax,word ptr [rbp-0x18]) and esi, or 0x140256F69 xor eax,eax when that call fails",
+  "edits": [
+   [
+    "  sub_140213644((_LocaleUpdate *)&v10, a3);\n  if ( (unsigned int)(a1 + 1) <= 0x100 )\n    goto LABEL_9;",
+    "  unsigned int sr_result = 0; /* 0x140256F69: xor eax, eax */\n  sub_140213644((_LocaleUpdate *)&v10, a3);\n  if ( (unsigned int)(a1 + 1) <= 0x100 )\n  {\n    sr_result = *(unsigned __int16 *)(*(_QWORD *)v11 + 2LL * a1) & (unsigned int)a2; /* 0x140256EEC: movzx eax, word ptr [rcx + rdi*2]; and eax, esi */\n    goto LABEL_9;\n  }"
+   ],
+   [
+    "                       1) )\n  {\nLABEL_9:",
+    "                       1) )\n  {\n    sr_result = (unsigned __int16)v13 & (unsigned int)a2; /* 0x140256F6D: movzx eax, word ptr [rbp - 0x18]; and eax, esi */\nLABEL_9:"
+   ]
+  ],
+  "exits": [
+   "sr_result ## 0x140256F71: and eax, esi"
+  ]
+ },
+ "sub_140259CC8": {
+  "note": "LCMapStringA: 0x140259D59 leaves with eax = 0 when the first conversion fails. Otherwise 0x140259F93 mov eax,edi: edi is cleared at 0x140259F7B on every failure, holds the mapped size (0x140259E33) when only the size was asked for (0x140259E4D), the sort key call's result (0x140259E8B), or the final narrow conversion's result (0x140259F64). The decompiler kept the calls but not edi",
+  "edits": [
+   [
+    "  v11 = sub_140259504();\n  v12 = v11;",
+    "  unsigned int sr_ret = 0; /* edi: 0x140259F7B xor edi, edi on every failure */\n  v11 = sub_140259504();\n  v12 = v11;"
+   ],
+   [
+    "          if ( a7 && v19 <= a7 )\n            sub_14024F4D0(v18, a3, (__int64)v16, v12, (__int64)a6, a7, 0, 0, 0);\n          goto LABEL_40;",
+    "          if ( !a7 )\n            sr_ret = v20; /* 0x140259E4D: je with edi = the size */\n          else if ( v19 <= a7 )\n            sr_ret = (unsigned int)sub_14024F4D0(v18, a3, (__int64)v16, v12, (__int64)a6, a7, 0, 0, 0); /* 0x140259E8B: mov edi, eax */\n          goto LABEL_40;"
+   ],
+   [
+    "            if ( (unsigned int)sub_140258A84(v10, 0, (__int64)v24, v20, (__int64)v28, v29, v30, v31) )\n            {",
+    "            sr_ret = (unsigned int)sub_140258A84(v10, 0, (__int64)v24, v20, (__int64)v28, v29, v30, v31); /* 0x140259F64: mov edi, eax */\n            if ( sr_ret )\n            {"
+   ]
+  ],
+  "exits": [
+   "sr_ret ## 0x140259F93: mov eax, edi",
+   "0 ## 0x140259D59: je with eax = 0"
+  ]
+ },
+ "setmbcp_nolock": {
+  "note": "0x14025F8A2 xor eax,eax after setting up the tables (0x14025F6BB, and after the single-byte fallback at 0x14025F89D); 0x14025F7A5 or eax,-1 when the code page is not usable",
+  "edits": [
+   [
+    "LABEL_57:\n      setSBCS_sr((struct __crt_multibyte_data *)a2);\n  }",
+    "LABEL_57:\n    {\n      setSBCS_sr((struct __crt_multibyte_data *)a2);\n      return 0; /* 0x14025F8A2: xor eax, eax */\n    }\n  }"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x14025F6BB: -> xor eax, eax",
+   "(unsigned int)-1 ## 0x14025F7A5: or eax, 0xffffffff"
+  ]
+ },
+ "sub_140262618": {
+  "note": "GetStringTypeA: 0x14026277D mov eax,edi; edi is GetStringTypeW's result (0x140262750) or 0 (0x140262697 / 0x140262754) when a conversion or the buffer fails. The decompiler dropped the assignment",
+  "edits": [
+   [
+    "  v17 = 0;\n  v16 = nullptr;\n  v6 = sub_140259504();",
+    "  unsigned int sr_ret = 0; /* edi: 0x140262697 / 0x140262754 xor edi, edi */\n  v17 = 0;\n  v16 = nullptr;\n  v6 = sub_140259504();"
+   ],
+   [
+    "    if ( v13 )\n      ((void (",
+    "    if ( v13 )\n      sr_ret = ((unsigned int ("
+   ]
+  ],
+  "exits": [
+   "sr_ret ## 0x14026277D: mov eax, edi"
+  ]
+ },
+ "__crt_mbstring____mbrtoc32_utf8": {
+  "note": "0x14026B5FD mov rax,r10 (1 for a non-zero ASCII byte, else 0); 0x14026B5CD mov rax,-2 for an incomplete sequence (also when no bytes were given); 0x14026B717 and rax,rbp: the sequence length (rbp = v11, 0x14026B676) unless the character is 0; 0x14026B72A or rax,-1 on an invalid sequence",
+  "edits": [
+   [
+    "    *errno_sr() = 42;\n  }",
+    "    *errno_sr() = 42;\n    return -1; /* 0x14026B72A: or rax, 0xffffffffffffffff */\n  }"
+   ]
+  ],
+  "exits": [
+   "v9 != 0 ## 0x14026B5F9: setne r10b; mov rax, r10",
+   "-2 ## 0x14026B6CC -> 0x14026B5CD: mov rax, 0xfffffffffffffffe",
+   "v12 ? (unsigned __int64)v11 : 0 ## 0x14026B70F: neg edx; sbb rax, rax; and rax, rbp",
+   "-2 ## 0x14026B5CD: mov rax, 0xfffffffffffffffe"
+  ]
+ },
+ "InternalCompareStringA": {
+  "note": "0x14026BF2A xor eax,eax on bad lengths or failed calls; with an empty string: 0x14026BC94 -> 2 (both empty), 0x14026BC9D -> 1, 0x14026BCA6 -> 3, then the lead-byte scans give 2 when the single byte is a lead byte (0x14026BCE1 / 0x14026BD1F) and 3 / 1 otherwise; the general path 0x14026BF1F mov eax,esi with esi = the wide comparison's result (0x14026BEE9) or 0",
+  "edits": [
+   [
+    "    if ( v8 == v11\n      || v11 > 1\n      || v8 > 1\n      || !(unsigned int)((",
+    "    if ( v8 == v11 )\n      return 2; /* 0x14026BC94: -> mov eax, 2 */\n    if ( v11 > 1 )\n      return 1; /* 0x14026BC9D: -> mov eax, 1 */\n    if ( v8 > 1 )\n      return 3; /* 0x14026BCA6: -> mov eax, 3 */\n    if ( !(unsigned int)(("
+   ],
+   [
+    "          if ( !i[1] || *a4 >= *i && *a4 <= i[1] )\n            break;",
+    "          if ( !i[1] )\n            break;\n          if ( *a4 >= *i && *a4 <= i[1] )\n            return 2; /* 0x14026BCE1: jbe -> mov eax, 2 */"
+   ],
+   [
+    "          if ( !j[1] || (unsigned __int8)*String >= *j && (unsigned __int8)*String <= j[1] )\n            break;",
+    "          if ( !j[1] )\n            break;\n          if ( (unsigned __int8)*String >= *j && (unsigned __int8)*String <= j[1] )\n            return 2; /* 0x14026BD1F: jbe -> mov eax, 2 */"
+   ],
+   [
+    "                sub_14024EDE0(v34, v33, (__int64)v20, v16, (__int64)v27, v23, 0, 0, 0);",
+    "                sr_ret = (unsigned int)sub_14024EDE0(v34, v33, (__int64)v20, v16, (__int64)v27, v23, 0, 0, 0); /* 0x14026BEE9: mov esi, eax */"
+   ],
+   [
+    "  v34 = a2;\n  if ( a5 <= 0 )",
+    "  unsigned int sr_ret = 0; /* esi: 0x14026BEED / 0x14026BF07 xor esi, esi */\n  v34 = a2;\n  if ( a5 <= 0 )"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x14026BC49: -> xor eax, eax",
+   "0 ## 0x14026BC6D: -> xor eax, eax",
+   "0 ## 0x14026BCB7: -> xor eax, eax",
+   "3 ## 0x14026BCF0: mov eax, 3",
+   "1 ## 0x14026BD2E: mov eax, 1",
+   "0 ## 0x14026BD5A: -> xor eax, eax",
+   "sr_ret ## 0x14026BF1F: mov eax, esi"
+  ]
+ },
+ "sub_1401FE364": {
+  "note": "returns the string object it appended to: mov rax,rbx (rbx = this) before the epilogue",
+  "exits": [
+   "(__int64)this ## mov rax, rbx (rbx = this)"
+  ]
+ },
+ "sub_1401FE40C": {
+  "note": "returns the string object it appended to: mov rax,rbx (rbx = this) before the epilogue",
+  "exits": [
+   "(__int64)this ## mov rax, rbx (rbx = this)"
+  ]
+ },
+ "sub_140204CC0": {
+  "note": "returns the string object it filled: 0x140204E06 mov rax,rbx (rbx = a1)",
+  "exits": [
+   "(__int64)a1 ## 0x140204E06: mov rax, rbx (rbx = a1)"
+  ]
+ },
+ "_lambda_ee59099aa97e0ff6f003b984c1584058___operator_call": {
+  "note": "mov eax,ebx at the exit; ebx is the formatter's result (0x140213E15 mov ebx,eax after the call), which the decompiler dropped",
+  "edits": [
+   [
+    "  sub_140216AF0((__int64)v12);\n  free_base(Block);",
+    "  int sr_result = (int)sub_140216AF0((__int64)v12); /* mov ebx, eax */\n  free_base(Block);"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)sr_result ## mov eax, ebx"
+  ]
+ },
+ "_lambda_a2288fdbbd702c8f223b438290af01a4___operator_call": {
+  "note": "mov eax,ebx at the exit; ebx is the formatter's result (0x140213F79 mov ebx,eax after the call), which the decompiler dropped",
+  "edits": [
+   [
+    "  sub_140215CFC((__int64)v12);\n  free_base(Block);",
+    "  int sr_result = (int)sub_140215CFC((__int64)v12); /* mov ebx, eax */\n  free_base(Block);"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)sr_result ## mov eax, ebx"
+  ]
+ },
+ "_lambda_7e489fec146d5348dbc86d3cce37c1b5___operator_call": {
+  "note": "mov eax,ebx at the exit; ebx is the formatter's result (mov ebx, eax mov ebx,eax after the call), which the decompiler dropped",
+  "edits": [
+   [
+    "  sub_140216878((__int64)v12, (__int64)v6, v7);\n  free_base(Block);",
+    "  int sr_result = (int)sub_140216878((__int64)v12, (__int64)v6, v7); /* mov ebx, eax */\n  free_base(Block);"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)sr_result ## mov eax, ebx"
+  ]
+ },
+ "_lambda_32f117a32e8f8eb613cbf2ca819ed45e___operator_call": {
+  "note": "mov eax,ebx at the exit; ebx is the formatter's result (0x140214320 mov ebx,eax after the call), which the decompiler dropped",
+  "edits": [
+   [
+    "  sub_140215AD4((__int64)v11);\n  free_base(Block);",
+    "  int sr_result = (int)sub_140215AD4((__int64)v11); /* mov ebx, eax */\n  free_base(Block);"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)sr_result ## mov eax, ebx"
+  ]
+ },
+ "_lambda_f3caf1ecae5fe01a9a1a6239afa44510___operator_call": {
+  "note": "rax at the exit is still the result of the call at 0x14022F1B9 (only rcx is used afterwards)",
+  "edits": [
+   [
+    "  sub_1402337F8((__int64)&v10);\n",
+    "  __int64 sr_result = sub_1402337F8((__int64)&v10); /* 0x14022F1B9: the result stays in rax */\n"
+   ]
+  ],
+  "exits": [
+   "sr_result ## 0x14022F1B9: the call's result stays in rax"
+  ]
+ },
+ "unknown_libname_600": {
+  "note": "number parser wrapper: mov eax,1 after the invalid-parameter report; otherwise rax is still the result of the conversion call (sub_14022AD78)",
+  "edits": [
+   [
+    "    sub_14022AD78(v6, (__int64)v10, a3);",
+    "    __int64 sr_result = sub_14022AD78(v6, (__int64)v10, a3); /* the result stays in rax */"
+   ],
+   [
+    "      *v7 = 0;\n  }\n  else",
+    "      *v7 = 0;\n    return sr_result;\n  }\n  else"
+   ]
+  ],
+  "exits": [
+   "1 ## mov eax, 1"
+  ]
+ },
+ "unknown_libname_601": {
+  "note": "number parser wrapper: mov eax,1 after the invalid-parameter report; otherwise rax is still the result of the conversion call (sub_14022AEE8)",
+  "edits": [
+   [
+    "    sub_14022AEE8(v6, (__int64)v10, a3);",
+    "    __int64 sr_result = sub_14022AEE8(v6, (__int64)v10, a3); /* the result stays in rax */"
+   ],
+   [
+    "      *v7 = 0;\n  }\n  else",
+    "      *v7 = 0;\n    return sr_result;\n  }\n  else"
+   ]
+  ],
+  "exits": [
+   "1 ## mov eax, 1"
+  ]
+ },
+ "unknown_libname_602": {
+  "note": "number parser wrapper: mov eax,1 after the invalid-parameter report; otherwise rax is still the result of the conversion call (sub_14022AD78)",
+  "edits": [
+   [
+    "    sub_14022AD78(v6, (__int64)v10, a3);",
+    "    __int64 sr_result = sub_14022AD78(v6, (__int64)v10, a3); /* the result stays in rax */"
+   ],
+   [
+    "      *v7 = 0;\n  }\n  else",
+    "      *v7 = 0;\n    return sr_result;\n  }\n  else"
+   ]
+  ],
+  "exits": [
+   "1 ## mov eax, 1"
+  ]
+ },
+ "unknown_libname_603": {
+  "note": "number parser wrapper: mov eax,1 after the invalid-parameter report; otherwise rax is still the result of the conversion call (sub_14022AEE8)",
+  "edits": [
+   [
+    "    sub_14022AEE8(v6, (__int64)v10, a3);",
+    "    __int64 sr_result = sub_14022AEE8(v6, (__int64)v10, a3); /* the result stays in rax */"
+   ],
+   [
+    "      *v7 = 0;\n  }\n  else",
+    "      *v7 = 0;\n    return sr_result;\n  }\n  else"
+   ]
+  ],
+  "exits": [
+   "1 ## mov eax, 1"
+  ]
+ },
+ "unknown_libname_604": {
+  "note": "number parser wrapper: mov eax,1 after the invalid-parameter report; otherwise rax is still the result of the conversion call (sub_14022AD78)",
+  "edits": [
+   [
+    "    sub_14022AD78(v6, (__int64)v10, a3);",
+    "    __int64 sr_result = sub_14022AD78(v6, (__int64)v10, a3); /* the result stays in rax */"
+   ],
+   [
+    "      *v7 = 0;\n  }\n  else",
+    "      *v7 = 0;\n    return sr_result;\n  }\n  else"
+   ]
+  ],
+  "exits": [
+   "1 ## mov eax, 1"
+  ]
+ },
+ "unknown_libname_605": {
+  "note": "number parser wrapper: mov eax,1 after the invalid-parameter report; otherwise rax is still the result of the conversion call (sub_14022AEE8)",
+  "edits": [
+   [
+    "    sub_14022AEE8(v6, (__int64)v10, a3);",
+    "    __int64 sr_result = sub_14022AEE8(v6, (__int64)v10, a3); /* the result stays in rax */"
+   ],
+   [
+    "      *v7 = 0;\n  }\n  else",
+    "      *v7 = 0;\n    return sr_result;\n  }\n  else"
+   ]
+  ],
+  "exits": [
+   "1 ## mov eax, 1"
+  ]
+ },
+ "unknown_libname_606": {
+  "note": "number parser wrapper: mov eax,1 after the invalid-parameter report; otherwise rax is still the result of the conversion call (sub_14022AD78)",
+  "edits": [
+   [
+    "    sub_14022AD78(v6, (__int64)v10, a3);",
+    "    __int64 sr_result = sub_14022AD78(v6, (__int64)v10, a3); /* the result stays in rax */"
+   ],
+   [
+    "      *v7 = 0;\n  }\n  else",
+    "      *v7 = 0;\n    return sr_result;\n  }\n  else"
+   ]
+  ],
+  "exits": [
+   "1 ## mov eax, 1"
+  ]
+ },
+ "unknown_libname_607": {
+  "note": "number parser wrapper: mov eax,1 after the invalid-parameter report; otherwise rax is still the result of the conversion call (sub_14022AEE8)",
+  "edits": [
+   [
+    "    sub_14022AEE8(v6, (__int64)v10, a3);",
+    "    __int64 sr_result = sub_14022AEE8(v6, (__int64)v10, a3); /* the result stays in rax */"
+   ],
+   [
+    "      *v7 = 0;\n  }\n  else",
+    "      *v7 = 0;\n    return sr_result;\n  }\n  else"
+   ]
+  ],
+  "exits": [
+   "1 ## mov eax, 1"
+  ]
+ },
+ "sub_140239580": {
+  "note": "0x1402395F9 or eax,-1 when the file time conversions fail; otherwise the result of the call at 0x1402395F2 stays in rax",
+  "edits": [
+   [
+    "    _loctotime32_t_sr(LocalTime[0], LocalTime[1], LocalTime[3], LocalTime[4], LocalTime[5], LocalTime[6], -1);",
+    "    return _loctotime32_t_sr(LocalTime[0], LocalTime[1], LocalTime[3], LocalTime[4], LocalTime[5], LocalTime[6], -1); /* 0x1402395F2: the call's result stays in rax */"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-1 ## 0x1402395F9: or eax, 0xffffffff"
+  ]
+ },
+ "sub_14023D430": {
+  "note": "no result in the original (assertion report; reached by tail jumps only): rax is the message box answer minus 4 left by the dispatch at 0x14023D4A4",
+  "exits": [
+   "0 ## no result: rax is residue of the dispatch at 0x14023D4A9"
+  ]
+ },
+ "sub_140207130": {
+  "note": "no result in the original: the function ends in RtlUnwindEx; rax at the exit is whatever that call left",
+  "exits": [
+   "0 ## no result: rax is residue of the RtlUnwindEx call"
+  ]
+ },
+ "sub_140207234": {
+  "note": "no result in the original: the function ends in RtlUnwindEx; rax at the exit is whatever that call left",
+  "exits": [
+   "0 ## no result: rax is residue of the RtlUnwindEx call"
+  ]
+ },
+ "sub_14020DE94": {
+  "note": "formatted print into a counted buffer: or eax,-1 after the invalid-parameter report; otherwise mov eax,ebx, ebx being the formatter's result, replaced in the chunk placed after the ret by -1 (no room, or more characters than the count in the first mode) or -2 (truncated). The decompiler had dropped those three writes. 0x14020E044 / 0x14020E053",
+  "exits": [
+   "(unsigned int)-1 ## 0x14020DEE3: or eax, 0xffffffff",
+   "(unsigned int)v12 ## 0x14020E01C: mov eax, ebx"
+  ],
+  "edits": [
+   [
+    "      if ( !a3 && v12 )\n        goto LABEL_20;\n      v13 = v17;\n      if ( v17 == a3 )\n        goto LABEL_20;\n      goto LABEL_19;",
+    "      if ( !a3 && v12 )\n      {\n        v12 = -1; /* or ebx, 0xffffffff in the chunk after the ret */\n        goto LABEL_20;\n      }\n      v13 = v17;\n      if ( v17 == a3 )\n      {\n        if ( v12 >= 0 && (unsigned __int64)v12 > (unsigned __int64)a3 )\n          v12 = -1; /* cmp rbx, rdi; ja -> or ebx, 0xffffffff */\n        goto LABEL_20;\n      }\n      goto LABEL_19;"
+   ],
+   [
+    "        a2[v13] = 0;\n        goto LABEL_20;\n      }\n      goto LABEL_26;\n    }\n  }",
+    "        a2[v13] = 0;\n        goto LABEL_20;\n      }\n      v12 = -2; /* mov ebx, 0xfffffffe: the output was truncated */\n      goto LABEL_26;\n    }\n    v12 = -1; /* no room at all: or ebx, 0xffffffff */\n  }"
+   ]
+  ]
+ },
+ "except1": {
+  "note": "returns a double in xmm0 (the prototype was an integer one): the user matherr hook's result (call 0x14024DB44 at 0x14024D3BD) or the result slot 0x14024D3D8 movsd xmm0,[rbp-0x61] (v11)",
+  "edits": [
+   [
+    "__int64            except1(",
+    "double            except1("
+   ],
+   [
+    "    umatherr(v8, a2, a3, 0.0, v11, v5);",
+    "    return umatherr(v8, a2, a3, 0.0, v11, v5); /* 0x14024D3BD: its result stays in xmm0 */"
+   ]
+  ],
+  "exits": [
+   "v11 ## 0x14024D3D8: movsd xmm0, qword ptr [rbp - 0x61]"
+  ]
+ },
+ "except2": {
+  "note": "returns a double in xmm0 (the prototype was an integer one): the user matherr hook's result (call 0x14024DB44 at 0x14024D4C1) or the result argument 0x14024D4DC movsd xmm0,[rbp+0x77] (a5)",
+  "edits": [
+   [
+    "__int64            except2(",
+    "double            except2("
+   ],
+   [
+    "    umatherr(v9, a2, a3, a4, a5, v6);",
+    "    return umatherr(v9, a2, a3, a4, a5, v6); /* 0x14024D4C1: its result stays in xmm0 */"
+   ]
+  ],
+  "exits": [
+   "a5 ## 0x14024D4DC: movsd xmm0, qword ptr [rbp + 0x77]"
+  ]
+ },
+ "handle_error": {
+  "note": "returns a double in xmm0 (the prototype was an integer one): call_matherr's result (0x14025C2B2) or the result slot 0x14025C2CF movsd xmm0,[rsp+0x48] (v18[0]). The assembly routines in client_native_gaps.s read it",
+  "edits": [
+   [
+    "__int64            handle_error(",
+    "double            handle_error("
+   ],
+   [
+    "    call_matherr(a4, a6, a1, a7, v14, v18[0], v17);",
+    "    return call_matherr(a4, a6, a1, a7, v14, v18[0], v17); /* 0x14025C2B2: its result stays in xmm0 */"
+   ]
+  ],
+  "exits": [
+   "v18[0] ## 0x14025C2CF: movsd xmm0, qword ptr [rsp + 0x48]"
+  ]
+ },
+ "handle_errorf": {
+  "note": "returns a float in xmm0 (the prototype was an integer one): call_matherr's result narrowed (0x14025C3E7 cvtsd2ss xmm0,xmm0) or the result slot 0x14025C403 movss xmm0,[rsp+0x40] (low half of v17)",
+  "edits": [
+   [
+    "__int64            handle_errorf(",
+    "float            handle_errorf("
+   ],
+   [
+    "    call_matherr(a4, a6, a1, a7, COERCE__INT64((double)v14), *(float *)&v17, v18);",
+    "    return (float)call_matherr(a4, a6, a1, a7, COERCE__INT64((double)v14), *(float *)&v17, v18); /* 0x14025C3E7: cvtsd2ss xmm0, xmm0 */"
+   ]
+  ],
+  "exits": [
+   "*(float *)&v17 ## 0x14025C403: movss xmm0, dword ptr [rsp + 0x40]"
+  ]
+ },
+ "sub_1401F5F20": {
+  "note": "Opus multistream packet validation: 0x1401F5F83 mov eax,-4 when the data runs out, 0x1401F5FFD the parser's error ([rsp+0x54], v11), 0x1401F6031 mov eax,-4 when streams disagree on the sample count, otherwise 0x1401F6076 mov eax,[rsp+0x4c] (samples, v9)",
+  "edits": [
+   [
+    "    if ( a2 <= 0 )\n      break;",
+    "    if ( a2 <= 0 )\n      return (unsigned int)-4; /* 0x1401F5F83: mov eax, 0xfffffffc */"
+   ],
+   [
+    "    if ( v11 < 0 )\n      break;",
+    "    if ( v11 < 0 )\n      return (unsigned int)v11; /* 0x1401F5FFD: mov eax, dword ptr [rsp + 0x54] */"
+   ],
+   [
+    "      if ( v9 != v12 )\n        break;",
+    "      if ( v9 != v12 )\n        return (unsigned int)-4; /* 0x1401F6031: mov eax, 0xfffffffc */"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v9 ## 0x1401F6076: mov eax, dword ptr [rsp + 0x4c]"
+  ]
+ },
+ "sub_1401F1D90": {
+  "note": "Opus projection encoder setup: 0x1401F1DF1 mov eax,-1 when the matrix size does not match, 0x1401F1ED0 mov eax,-1 when the first matrix is empty, otherwise 0x1401F1F76 mov eax,[rbp+0x10] (v16)",
+  "edits": [
+   [
+    "  if ( v15 == a7 )\n  {",
+    "  if ( v15 != a7 )\n    return (unsigned int)-1; /* 0x1401F1DF1: mov eax, 0xffffffff */\n  {"
+   ],
+   [
+    "    if ( *a1 )\n    {\n      v9 = ",
+    "    if ( !*a1 )\n      return (unsigned int)-1; /* 0x1401F1ED0: mov eax, 0xffffffff */\n    {\n      v9 = "
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v16 ## 0x1401F1F76: mov eax, dword ptr [rbp + 0x10]"
+  ]
+ },
+ "sub_1401F1430": {
+  "note": "Opus ambisonics encoder setup: mov eax,-1 for missing outputs (0x1401F1472), a failed layout query (0x1401F14AD), an unknown order (0x1401F158B / 0x1401F1690), an empty matrix (0x1401F15C0 / 0x1401F16C7) or mismatched sizes (0x1401F1739); 0x1401F16D3 mov eax,-5 for a mapping family other than 3; otherwise 0x1401F17D1 mov eax,[rsp+0x58] (v14)",
+  "edits": [
+   [
+    "  if ( a5 && a6 && !(unsigned int)sub_1401F81E0(a3, a4, a5, a6, &v10) && a4 == 3 )\n  {",
+    "  if ( !a5 || !a6 )\n    return (unsigned int)-1; /* 0x1401F1472: mov eax, 0xffffffff */\n  if ( (unsigned int)sub_1401F81E0(a3, a4, a5, a6, &v10) )\n    return (unsigned int)-1; /* 0x1401F14AD: mov eax, 0xffffffff */\n  if ( a4 != 3 )\n    return (unsigned int)-5; /* 0x1401F14BF -> 0x1401F16D3: mov eax, 0xfffffffb */\n  {"
+   ],
+   [
+    "    *a1 = sub_1401F2140(*v12, v12[1]);\n    if ( *a1 )\n    {",
+    "    *a1 = sub_1401F2140(*v12, v12[1]);\n    if ( !*a1 )\n      return (unsigned int)-1; /* 0x1401F15C0: mov eax, 0xffffffff */\n    {"
+   ],
+   [
+    "      if ( a1[1] && *a6 + *a5 <= *v12 && a3 <= v12[1] && a3 <= *v13 && *a6 + *a5 <= v13[1] )\n      {",
+    "      if ( !(a1[1] && *a6 + *a5 <= *v12 && a3 <= v12[1] && a3 <= *v13 && *a6 + *a5 <= v13[1]) )\n        return (unsigned int)-1; /* 0x1401F16C7 / 0x1401F1739: mov eax, 0xffffffff */\n      {"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-1 ## 0x1401F158B: mov eax, 0xffffffff",
+   "(unsigned int)-1 ## 0x1401F1690: mov eax, 0xffffffff",
+   "(unsigned int)v14 ## 0x1401F17D1: mov eax, dword ptr [rsp + 0x58]"
+  ]
+ },
+ "sub_1401EB3E0": {
+  "note": "Opus multistream decode: 0x1401EB41F -1 (frame size), 0x1401EB452 -3 (sample rate query), 0x1401EB526 -1 (negative length), 0x1401EB549 -4 (packet too short), 0x1401EB57D the validation error ([rbp+0x18], v18), 0x1401EB592 -2 (frame too small), 0x1401EB60A -3 (data ran out inside the loop), 0x1401EB6AD a stream decoder's result <= 0 ([rbp+0x20], v20), otherwise 0x1401EB872 mov eax,[rbp+0x98] (frame size, v36)",
+  "edits": [
+   [
+    "  if ( a6 > 0 && !(unsigned int)sub_1401F1160((__int64)a1, 4029, &v14) )\n  {",
+    "  if ( a6 <= 0 )\n    return (unsigned int)-1; /* 0x1401EB41F: mov eax, 0xffffffff */\n  if ( (unsigned int)sub_1401F1160((__int64)a1, 4029, &v14) )\n    return (unsigned int)-3; /* 0x1401EB452: mov eax, 0xfffffffd */\n  {"
+   ],
+   [
+    "    if ( a3 >= 0 && (v17 || a3 >= 2 * a1[1] - 1) )\n    {",
+    "    if ( a3 < 0 )\n      return (unsigned int)-1; /* 0x1401EB526: mov eax, 0xffffffff */\n    if ( !v17 && a3 < 2 * a1[1] - 1 )\n      return (unsigned int)-4; /* 0x1401EB549: mov eax, 0xfffffffc */\n    {"
+   ],
+   [
+    "      if ( v17 || (v18 = sub_1401F5F20(a2, a3, a1[1], v14), v18 >= 0) && v18 <= v36 )\n      {",
+    "      if ( !v17 )\n      {\n        v18 = sub_1401F5F20(a2, a3, a1[1], v14);\n        if ( v18 < 0 )\n          return (unsigned int)v18; /* 0x1401EB57D: mov eax, dword ptr [rbp + 0x18] */\n        if ( v18 > v36 )\n          return (unsigned int)-2; /* 0x1401EB592: mov eax, 0xfffffffe */\n      }\n      {"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-3 ## 0x1401EB60A: mov eax, 0xfffffffd",
+   "(unsigned int)v20 ## 0x1401EB6AD: mov eax, dword ptr [rbp + 0x20]",
+   "(unsigned int)v36 ## 0x1401EB872: mov eax, dword ptr [rbp + 0x98]"
+  ]
+ },
+ "sub_1401EA7F0": {
+  "note": "Opus multistream encode: 0x1401EA92E -1 (frame size), 0x1401EA974 -2 (output too small), 0x1401EB2B8 a stream encoder's error ([rbp+0x20], v24), 0x1401EB2E6 -3 (repacketizer), otherwise 0x1401EB3B4 mov eax,[rbp+0x30] (total size, v28)",
+  "edits": [
+   [
+    "  if ( v18 > 0 )\n  {",
+    "  if ( v18 <= 0 )\n    return (unsigned int)-1; /* 0x1401EA92E: mov eax, 0xffffffff */\n  {"
+   ],
+   [
+    "    if ( a6 >= v21 )\n    {",
+    "    if ( a6 < v21 )\n      return (unsigned int)-2; /* 0x1401EA974: mov eax, 0xfffffffe */\n    {"
+   ],
+   [
+    "        if ( v24 < 0 )\n          break;",
+    "        if ( v24 < 0 )\n          return (unsigned int)v24; /* 0x1401EB2B8: mov eax, dword ptr [rbp + 0x20] */"
+   ],
+   [
+    "        if ( (unsigned int)sub_1401E3870((__int64)v67, SR_VEC_LANES(128, v70[0], i8), v24) )\n          break;",
+    "        if ( (unsigned int)sub_1401E3870((__int64)v67, SR_VEC_LANES(128, v70[0], i8), v24) )\n          return (unsigned int)-3; /* 0x1401EB2E6: mov eax, 0xfffffffd */"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v28 ## 0x1401EB3B4: mov eax, dword ptr [rbp + 0x30]"
+  ]
+ },
+ "sub_14020E060": {
+  "note": "formatted print into a counted buffer: or eax,-1 after the invalid-parameter report; otherwise mov eax,ebx, ebx being the formatter's result, replaced in the chunk placed after the ret by -1 (no room, or more characters than the count in the first mode) or -2 (truncated). The decompiler had dropped those three writes. 0x14020E0AF, 0x14020E1EE, 0x14020E216, 0x14020E225",
+  "edits": [
+   [
+    "      if ( !a3 && v12 )\n        goto LABEL_20;\n      v13 = v17;\n      if ( v17 == a3 )\n        goto LABEL_20;\n      goto LABEL_19;",
+    "      if ( !a3 && v12 )\n      {\n        v12 = -1; /* or ebx, 0xffffffff in the chunk after the ret */\n        goto LABEL_20;\n      }\n      v13 = v17;\n      if ( v17 == a3 )\n      {\n        if ( v12 >= 0 && (unsigned __int64)v12 > (unsigned __int64)a3 )\n          v12 = -1; /* cmp rbx, rdi; ja -> or ebx, 0xffffffff */\n        goto LABEL_20;\n      }\n      goto LABEL_19;"
+   ],
+   [
+    "        a2[v13] = 0;\n        goto LABEL_20;\n      }\n      goto LABEL_26;\n    }\n  }",
+    "        a2[v13] = 0;\n        goto LABEL_20;\n      }\n      v12 = -2; /* mov ebx, 0xfffffffe: the output was truncated */\n      goto LABEL_26;\n    }\n    v12 = -1; /* no room at all: or ebx, 0xffffffff */\n  }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-1 ## 0x14020E0AF: or eax, 0xffffffff",
+   "(unsigned int)v12 ## 0x14020E1EE: mov eax, ebx"
+  ]
+ },
+ "sub_140204850": {
+  "note": "name undecorator step: every path ends 0x140204C97 mov rax,rdi, rdi being the result object passed in (a1, 0x140204880)",
+  "exits": [
+   "(__int64)a1 ## 0x140204C97: mov rax, rdi (rdi = a1)"
+  ]
+ },
+ "sub_140205810": {
+  "note": "name undecorator step: 0x140205AC9 mov rax,r14, r14 being the result object passed in (a1, 0x14020584A)",
+  "exits": [
+   "(__int64)a1 ## 0x140205AC9: mov rax, r14 (r14 = a1)"
+  ]
+ },
+ "sub_14020A450": {
+  "note": "no result in the original: rax at the exit is the per-thread data pointer left by the last call to 0x1401FD83C; the C callers discard it",
+  "exits": [
+   "0 ## no result: rax is residue of the call at 0x14020A6F2 / 0x14020A6FD"
+  ]
+ },
+ "sub_1402389D8": {
+  "note": "find-first wrapper: every error path ends or rax,-1; on success 0x140238B00 mov rax,rdi returns the search handle from FindFirstFileExW, which the decompiler had only compared and dropped",
+  "edits": [
+   [
+    "    if ( ((__int64 (",
+    "    __int64 sr_handle = ((__int64 ("
+   ],
+   [
+    "           0,\n           0) == -1 )\n    {",
+    "           0,\n           0); /* mov rdi, rax */\n    if ( sr_handle == -1 )\n    {"
+   ],
+   [
+    "        do { __asm__ volatile(\"int3\"); __builtin_unreachable(); } while (0);\n      }\n    }",
+    "        do { __asm__ volatile(\"int3\"); __builtin_unreachable(); } while (0);\n      }\n      return sr_handle; /* mov rax, rdi */\n    }"
+   ]
+  ],
+  "exits": [
+   "-1 ## or rax, 0xffffffffffffffff"
+  ]
+ },
+ "sub_140238B20": {
+  "note": "find-first wrapper: every error path ends or rax,-1; on success mov rax, rdi mov rax,rdi returns the search handle from FindFirstFileExW, which the decompiler had only compared and dropped",
+  "edits": [
+   [
+    "    if ( ((__int64 (",
+    "    __int64 sr_handle = ((__int64 ("
+   ],
+   [
+    "           0,\n           0) == -1 )\n    {",
+    "           0,\n           0); /* mov rdi, rax */\n    if ( sr_handle == -1 )\n    {"
+   ],
+   [
+    "        do { __asm__ volatile(\"int3\"); __builtin_unreachable(); } while (0);\n      }\n    }",
+    "        do { __asm__ volatile(\"int3\"); __builtin_unreachable(); } while (0);\n      }\n      return sr_handle; /* mov rax, rdi */\n    }"
+   ]
+  ],
+  "exits": [
+   "-1 ## or rax, 0xffffffffffffffff"
+  ]
+ },
+ "sub_140238C74": {
+  "note": "find-first wrapper: every error path ends or rax,-1; on success mov rax, rdi mov rax,rdi returns the search handle from FindFirstFileExW, which the decompiler had only compared and dropped",
+  "edits": [
+   [
+    "    if ( ((__int64 (",
+    "    __int64 sr_handle = ((__int64 ("
+   ],
+   [
+    "           0,\n           0) == -1 )\n    {",
+    "           0,\n           0); /* mov rdi, rax */\n    if ( sr_handle == -1 )\n    {"
+   ],
+   [
+    "        __debugbreak();\n      }\n    }",
+    "        __debugbreak();\n      }\n      return sr_handle; /* mov rax, rdi */\n    }"
+   ]
+  ],
+  "exits": [
+   "-1 ## or rax, 0xffffffffffffffff"
+  ]
+ },
+ "sub_1402390C0": {
+  "note": "find-next wrapper: every error path ends or eax,-1; on success rax is still the 0 returned by the name copy (call 0x140259444; test eax,eax; a non-zero result traps)",
+  "edits": [
+   [
+    "        __debugbreak();\n      }\n    }",
+    "        __debugbreak();\n      }\n      return 0; /* the name copy returned 0 and nothing wrote eax since */\n    }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-1 ## or eax, 0xffffffff"
+  ]
+ },
+ "sub_1402391E4": {
+  "note": "find-next wrapper: every error path ends or eax,-1; on success rax is still the 0 returned by the name copy (call 0x140259444; test eax,eax; a non-zero result traps)",
+  "edits": [
+   [
+    "        __debugbreak();\n      }\n    }",
+    "        __debugbreak();\n      }\n      return 0; /* the name copy returned 0 and nothing wrote eax since */\n    }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-1 ## or eax, 0xffffffff"
+  ]
+ },
+ "sub_140239314": {
+  "note": "find-next wrapper: every error path ends or eax,-1; on success rax is still the 0 returned by the name copy (call 0x140259444; test eax,eax; a non-zero result traps)",
+  "edits": [
+   [
+    "        do { __asm__ volatile(\"int3\"); __builtin_unreachable(); } while (0);\n      }\n    }",
+    "        do { __asm__ volatile(\"int3\"); __builtin_unreachable(); } while (0);\n      }\n      return 0; /* the name copy returned 0 and nothing wrote eax since */\n    }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-1 ## or eax, 0xffffffff"
+  ]
+ },
+ "write_string_to_console": {
+  "note": "no result in the original: rax at the exit is whatever GetStdHandle or the console write left; the only caller (0x140247716) returns straight after",
+  "exits": [
+   "0 ## no result: rax is residue of the call at 0x140247567 / 0x1402475CC"
+  ]
+ },
+ "sub_140248A88": {
+  "note": "locale name expansion: 0x140248AEB xor eax,eax without a name; the \"C\" locale returns the output buffer (0x140248B3D mov rax,rsi, rsi = a2); every failure reaches 0x140248DBA mov r12,r13 (0) and returns it; success jumps past that (0x140248ED5 -> 0x140248DBD) so 0x140248DEA mov rax,r12 returns the expanded name (v11). In the C both shared one label",
+  "edits": [
+   [
+    "        goto LABEL_67;\n      goto LABEL_51;",
+    "        goto LABEL_67;\n      if ( v10 || !(unsigned int)sub_140260D80((_WORD *)(v40 + 600), 85, (__int64)v38, MaxCount) )\n        return (__int64)v11; /* 0x140248ED5 -> 0x140248DBD: r12 keeps the expanded name; 0x140248DEA mov rax, r12 */\n      goto LABEL_67;"
+   ]
+  ],
+  "exits": [
+   "(__int64)a2 ## 0x140248B3D: mov rax, rsi (rsi = a2)",
+   "0 ## 0x140248DBA: mov r12, r13 (0); 0x140248DEA: mov rax, r12",
+   "0 ## 0x140248AEB: xor eax, eax"
+  ]
+ },
+ "sub_14024B0BC": {
+  "note": "current directory of a drive (wide): 0x14024B0F8 xor eax,eax on every error; with a caller buffer 0x14024B21B mov rax,rdi (a2) when the path call returns 0; otherwise the detached allocated buffer, 0x14024B1AD mov rbx,rax / 0x14024B1BF mov rax,rbx (the decompiler dropped it)",
+  "edits": [
+   [
+    "      unknown_libname_805((__int64)v14, (__int64)&v8);\n      return sub_1401F8B20((unsigned __int64)&v7 ^ v16);",
+    "      return (unsigned int)unknown_libname_805((__int64)v14, (__int64)&v8) ? 0 : (__int64)a2; /* 0x14024B213: test eax, eax; jne -> xor eax, eax; else 0x14024B21B: mov rax, rdi */"
+   ],
+   [
+    "    sub_14024B710((__int64 *)&v8);\n    if ( v13 )\n      free(Block);",
+    "    __int64 sr_result = (__int64)sub_14024B710((__int64 *)&v8); /* 0x14024B1AD: mov rbx, rax */\n    if ( v13 )\n      free(Block);\n    return sr_result; /* 0x14024B1BF: mov rax, rbx */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x14024B0F8: xor eax, eax"
+  ]
+ },
+ "ungetwc_text_mode_nolock": {
+  "note": "0x140257CC9 mov eax,0xffff when the conversion fails or there is no room; otherwise 0x140257CA6 movzx eax,word ptr [rbp-0x20] (the character, v13)",
+  "exits": [
+   "0xFFFF ## 0x140257CC9: mov eax, 0xffff",
+   "0xFFFF ## 0x140257CC9: mov eax, 0xffff",
+   "v13 ## 0x140257CA6: movzx eax, word ptr [rbp - 0x20]"
+  ]
+ },
+ "_loctotime32_t_0": {
+  "note": "local time fields to time_t: the whole computation lived in registers the decompiler treated as dead. 0x14025967C..0x1402596F0: edi = ((((yr*365 + (yr-1)/4 - (yr-1)/100 + (yr+299)/400 + yday)*24 + hour)*60 + min)*60 + timezone + sec + 0x7C558180 (the 1970 offset), r14d = edi + the daylight bias. 0x14025972B mov eax,r14d when DST is forced (0x1402596F7) or detected (0x140259725); 0x140259727 mov eax,edi otherwise; 0x14025973B or eax,-1 for fields out of range",
+  "edits": [
+   [
+    "    if ( a7 != 1 )\n    {\n      v17[7] = v10;",
+    "    unsigned int sr_t = ((((unsigned int)v7 * 365u\n                         + (unsigned int)((int)(v7 - 1) / 4 - (int)(v7 - 1) / 100 + (int)(v7 + 299) / 400 + v10)) * 24u\n                        + v13) * 60u\n                       + a5) * 60u\n                     + (unsigned int)v14 + a6 + 0x7C558180u; /* 0x14025967C..0x1402596EE: edi */\n    if ( a7 == 1 )\n      return sr_t + (unsigned int)v15; /* 0x1402596F7: je -> 0x14025972B: mov eax, r14d */\n    {\n      v17[7] = v10;"
+   ],
+   [
+    "        if ( v16 )\n          sub_140238034((struct tm *)v17);",
+    "        if ( v16 && (unsigned int)sub_140238034((struct tm *)v17) )\n          return sr_t + (unsigned int)v15; /* 0x140259725: jne -> mov eax, r14d */"
+   ],
+   [
+    "      }\n    }\n  }\n  else\n  {\n    *errno_sr() = 22;\n  }",
+    "      }\n    }\n    return sr_t; /* 0x140259727: mov eax, edi */\n  }\n  else\n  {\n    *errno_sr() = 22;\n  }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)-1 ## 0x14025973B: or eax, 0xffffffff"
+  ]
+ },
+ "sub_14025B344": {
+  "note": "module file name (narrow): 0x14025B397 xor eax,eax when the system call fails; otherwise 0x14025B43A mov eax,[rsp+0x60], the length the conversion stored in its buffer record (v11[4])",
+  "edits": [
+   [
+    "    sub_14024D14C(v5);\n  }",
+    "    sub_14024D14C(v5);\n    return 0; /* 0x14025B397: xor eax, eax */\n  }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)v11[4] ## 0x14025B43A: mov eax, dword ptr [rsp + 0x60]"
+  ]
+ },
+ "sub_1402494A8": {
+  "note": "setlocale worker: for one category the result of the per-category routine (0x1402494E3) or, without a name, the current name 0x1402494F4 mov rax,[rax+rcx+0x28]; for all categories the composed name from 0x1402492BC (0x140249651) or 0 (0x140249681 xor eax,eax; 0x14024971B mov rax,r13 with r13 = 0) when nothing could be set",
+  "edits": [
+   [
+    "    if ( a3 )\n      sub_140249740(a1, a2, (char *)a3);\n    return sub_1401F8B20((unsigned __int64)v24 ^ v28);",
+    "    if ( a3 )\n      return sub_140249740(a1, a2, (char *)a3); /* 0x1402494E3: the call's result stays in rax */\n    return *(_QWORD *)((char *)a1 + 32LL * a2 + 40); /* 0x1402494F4: mov rax, qword ptr [rax + rcx + 0x28] */"
+   ],
+   [
+    "    sub_1402492BC((__int64)a1);\n    return sub_1401F8B20((unsigned __int64)v24 ^ v28);",
+    "    return sub_1402492BC((__int64)a1); /* 0x140249651: the call's result stays in rax */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x140249681: xor eax, eax / 0x14024971B: mov rax, r13 (0)"
+  ]
+ },
+ "sub_140249740": {
+  "note": "setlocale for one category: 0x1402499ED xor eax,eax when the name cannot be expanded, memory runs out or the category's init routine fails; the current name (0x1402497C3 mov rax,[rbx+rdi+0x28]) when it is already set (0x1402497E6) and the new one after success (0x140249A6E)",
+  "edits": [
+   [
+    "    if ( v10 )\n    {\n      v11 = -1;",
+    "    if ( !v10 )\n      return *(_QWORD *)&a1[v8 + 10]; /* 0x1402497C3: mov rax, qword ptr [rbx + rdi + 0x28]; 0x1402497E6: je to the exit */\n    {\n      v11 = -1;"
+   ],
+   [
+    "          *v13 = 1;\n          *(_QWORD *)&a1[v8 + 14] = (uint64)(uintptr_t)(v13);",
+    "          *v13 = 1;\n          *(_QWORD *)&a1[v8 + 14] = (uint64)(uintptr_t)(v13);\n          return *(_QWORD *)&a1[v8 + 10]; /* 0x140249A6E: mov rax, qword ptr [rbx + rdi + 0x28] */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x1402499ED: xor eax, eax"
+  ]
+ },
+ "parse_bcp47": {
+  "note": "BCP-47 name parser (bool): sil is 1 from 0x140249B36 and 0x140249CAC clears it; 0x140249CC2 xor al,al for more than four parts; one part returns the language parser's result (0x140249CBB); the other shapes return 1 as soon as an optional part parses (jne 0x140249CAF) or the code page parser's answer (0x140249CA3). The C had kept the calls and lost which of them decides the result, so the tail is written out again from 0x140249BAD..0x140249CC0",
+  "edits": [
+   [
+    "  v12 = v5 - 1;\n  if ( v12 )\n  {",
+    "  else\n  {\n    parse_bcp47_language(a1, v18);\n  }\n",
+    "  v12 = v5 - 1;\n  if ( !v12 )\n    return parse_bcp47_language(a1, v18); /* 0x140249CBB: the call's result stays in al */\n  if ( v12 == 1 )\n  {\n    if ( !parse_bcp47_language(a1, v18) )\n      return 0; /* 0x140249C7A: je -> mov sil, r13b */\n    if ( parse_bcp47_script((__int64)a1, v20) || sub_140249DC0((__int64)a1, v20) )\n      return 1; /* 0x140249C8A / 0x140249C9A: jne -> mov al, sil */\n    return parse_bcp47_code_page((__int64)a1, (__int64)v20) != 0; /* 0x140249CA3 */\n  }\n  if ( v12 == 2 )\n  {\n    if ( !parse_bcp47_language(a1, v18) )\n      return 0; /* 0x140249C20 */\n    if ( parse_bcp47_script((__int64)a1, v20)\n      && (sub_140249DC0((__int64)a1, v21) || parse_bcp47_code_page((__int64)a1, (__int64)v21)) )\n      return 1; /* 0x140249C44 / 0x140249C54: jne -> mov al, sil */\n    if ( !sub_140249DC0((__int64)a1, v20) )\n      return 0; /* 0x140249C64 */\n    return parse_bcp47_code_page((__int64)a1, (__int64)v21) != 0; /* 0x140249C6A -> 0x140249CA0 */\n  }\n  if ( v12 == 3 )\n  {\n    if ( !parse_bcp47_language(a1, v18) || !parse_bcp47_script((__int64)a1, v20) || !sub_140249DC0((__int64)a1, v21) )\n      return 0; /* 0x140249BDB / 0x140249BEF / 0x140249C03 */\n    return parse_bcp47_code_page((__int64)a1, (__int64)&v22) != 0; /* 0x140249C0D -> 0x140249CA0 */\n  }\n"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x140249B3E: jae -> xor al, al",
+   "0 ## 0x140249BC7: jne -> xor al, al"
+  ]
+ },
+ "unknown_libname_943": {
+  "note": "first character of a1 that is in the set a2: 0x14026A8F3 mov rax,r8 (the position) or 0x14026A8DF xor eax,eax at the end of the string",
+  "exits": [
+   "*a1 ? (__int64)a1 : 0 ## 0x14026A8F3: mov rax, r8 at a match; 0x14026A8DF: xor eax, eax at the terminator"
+  ]
+ },
+ "sub_14025DF6C": {
+  "note": "wildcard expansion of one argument (narrow): without a wildcard directory the result of the add routine (0x14025DFF0, then jmp to the exit); otherwise 0x14025E24E mov eax,edi, edi being the add routine's status (0x14025E0F1, 0x14025E1C7) and 0 after a completed scan (0x14025E1CD / 0x14025DFFE). The decompiler dropped edi",
+  "edits": [
+   [
+    "  for ( i = 0x200000000801LL; a2 != Start; a2 = mbsdec_sr(Start, a2) )",
+    "  int sr_ret = 0; /* edi: 0x14025DFFE xor edi, edi */\n  for ( i = 0x200000000801LL; a2 != Start; a2 = mbsdec_sr(Start, a2) )"
+   ],
+   [
+    "    if ( v12 == -1 )\n    {\n      sub_14025DC58((__int64)Start, 0, 0, a3);\n    }",
+    "    if ( v12 == -1 )\n    {\n      sr_ret = (int)sub_14025DC58((__int64)Start, 0, 0, a3); /* 0x14025E0F1: mov edi, eax */\n    }"
+   ],
+   [
+    "          if ( (unsigned int)sub_14025DC58((__int64)v17, (__int64)Start, v9, a3) )\n            break;",
+    "          sr_ret = (int)sub_14025DC58((__int64)v17, (__int64)Start, v9, a3); /* 0x14025E1C7: mov edi, eax */\n          if ( sr_ret )\n            break;"
+   ],
+   [
+    "  else\n  {\n    sub_14025DC58((__int64)Start, 0, 0, a3);\n  }",
+    "  else\n  {\n    return sub_14025DC58((__int64)Start, 0, 0, a3); /* 0x14025DFF0: the call's result stays in rax */\n  }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)sr_ret ## 0x14025E24E: mov eax, edi"
+  ]
+ },
+ "common_expand_argv_wildcards__wchar_t": {
+  "note": "wildcard expansion of argv (wide): 0x14025D8DA mov eax,ebx (22) without an output pointer; otherwise 0x14025DC14 mov eax,r15d: the add routine's status when it fails (0x14025D955 / 0x14025D9AC / 0x14025DA41), -1 when the result block cannot be allocated (0x14025DB4F), 0 on success (0x14025DBCC). The decompiler dropped r15d",
+  "edits": [
+   [
+    "  v2 = 0;\n  v41 = a2;",
+    "  int sr_ret = 0; /* r15d */\n  v2 = 0;\n  v41 = a2;"
+   ],
+   [
+    "        v12 = v14 == 0;",
+    "        sr_ret = (int)v14; /* r15d */\n        v12 = v14 == 0;"
+   ],
+   [
+    "        v12 = v11 == 0;",
+    "        sr_ret = (int)v11; /* 0x14025D955: mov r15d, eax */\n        v12 = v11 == 0;"
+   ],
+   [
+    "      *v41 = v26;\n    }\n    free_base(nullptr);",
+    "      *v41 = v26;\n    }\n    else\n    {\n      sr_ret = -1; /* 0x14025DB4F: or r15d, 0xffffffff */\n    }\n    free_base(nullptr);"
+   ],
+   [
+    "    *errno_sr() = 22;\n    sub_14024CF6C();\n  }",
+    "    *errno_sr() = 22;\n    sub_14024CF6C();\n    return 22; /* 0x14025D8DA: mov eax, ebx */\n  }"
+   ]
+  ],
+  "exits": [
+   "(unsigned int)sr_ret ## 0x14025DC14: mov eax, r15d"
+  ]
+ },
+ "LanguageEnumProcEx": {
+  "note": "locale enumeration callback: the result tells the system whether to go on, 1 until the match flag (4) is set: mov eax,[flags]; shr eax,2; not eax; and eax,1. The paths that clear the flags first load 1 directly, which is the same value. 0x140263181..0x140263189, 0x14026313E",
+  "exits": [
+   "(*(_DWORD *)(v3 + 16) & 4) == 0 ## 0x140263181: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1"
+  ]
+ },
+ "CountryEnumProc": {
+  "note": "locale enumeration callback: the result tells the system whether to go on, 1 until the match flag (4) is set: mov eax,[flags]; shr eax,2; not eax; and eax,1. The paths that clear the flags first load 1 directly, which is the same value. 0x140263725..0x14026372C, 0x1402636EB",
+  "exits": [
+   "(*v3 & 4) == 0 ## 0x140263725: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1"
+  ]
+ },
+ "LanguageEnumProc": {
+  "note": "locale enumeration callback: the result tells the system whether to go on, 1 until the match flag (4) is set: mov eax,[flags]; shr eax,2; not eax; and eax,1. The paths that clear the flags first load 1 directly, which is the same value. 0x140263C91..0x140263C98, 0x140263C2C",
+  "exits": [
+   "(*v3 & 4) == 0 ## 0x140263C91: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1"
+  ]
+ },
+ "LangCountryEnumProcEx": {
+  "note": "locale enumeration callback: the result tells the system whether to go on, 1 until the match flag (4) is set: mov eax,[flags]; shr eax,2; not eax; and eax,1. The paths that clear the flags first load 1 directly, which is the same value. 0x140263092..0x14026309A, 0x140262E55",
+  "exits": [
+   "(*((_DWORD *)v3 + 4) & 4) == 0 ## 0x140263092: mov eax, [rbx + 0x10]; shr eax, 2; not eax; and eax, 1"
+  ]
+ },
+ "LangCountryEnumProc": {
+  "note": "locale enumeration callback: the result tells the system whether to go on, 1 until the match flag (4) is set: mov eax,[flags]; shr eax,2; not eax; and eax,1. The paths that clear the flags first load 1 directly, which is the same value. 0x140263B7A..0x140263B81, 0x140263B89",
+  "exits": [
+   "(*v3 & 4) == 0 ## 0x140263B7A: mov eax, [rdi]; shr eax, 2; not eax; and eax, 1"
+  ]
+ },
+ "TestDefaultCountry": {
+  "note": "0x1402632DB mov eax,1 when the locale's country name could be read and equals the given one (0x1402632D7 test eax,eax on the comparison); 0x1402632E2 xor eax,eax otherwise",
+  "edits": [
+   [
+    "    wcsncmp_sr(v4, a1, 9);",
+    "    return (unsigned int)wcsncmp_sr(v4, a1, 9) == 0; /* 0x1402632D7: test eax, eax; jne -> xor eax, eax; else mov eax, 1 */"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x1402632E2: xor eax, eax"
+  ]
+ },
+ "_acrt_get_qualified_locale_downlevel": {
+  "note": "0x14026416A mov eax,1 once the locale and code page are valid and, when names are wanted, both could be read (0x140264104 skips straight to it without an output record); 0x140264171 xor eax,eax on every other path",
+  "edits": [
+   [
+    "    if ( a3 )\n    {\n      sub_14024F460(HIDWORD(Locale), (_WORD *)(a3 + 288), 0x55u, 0);",
+    "    if ( !a3 )\n      return 1; /* 0x140264104: je -> mov eax, 1 */\n    {\n      sub_14024F460(HIDWORD(Locale), (_WORD *)(a3 + 288), 0x55u, 0);"
+   ],
+   [
+    "          itow_s(v12, (__int16 *)(a3 + 256), 0x10u, 0xAu);",
+    "        {\n          itow_s(v12, (__int16 *)(a3 + 256), 0x10u, 0xAu);\n          return 1; /* 0x14026416A: mov eax, 1 */\n        }"
+   ]
+  ],
+  "exits": [
+   "0 ## 0x140264171: xor eax, eax"
+  ]
+ },
+ "InternalGetLocaleInfoA": {
+  "note": "0x14026A5B9 mov eax,edi: the narrow conversion's result (0x14026A58C mov edi,eax) or 0 (0x14026A4C9 / 0x14026A590 xor edi,edi) when the wide query or the buffer fails. The decompiler dropped the assignment",
+  "edits": [
+   [
+    "  sub_140213644((_LocaleUpdate *)v19, a1);\n  v8 = ",
+    "  unsigned int sr_ret = 0; /* edi: 0x14026A4C9 / 0x14026A590 xor edi, edi */\n  sub_140213644((_LocaleUpdate *)v19, a1);\n  v8 = "
+   ],
+   [
+    "    sub_140258A84(v8, 0, (__int64)v14, 0xFFFFFFFFLL, a4 & -(__int64)(a5 != 0), v18, 0, 0);",
+    "    sr_ret = (unsigned int)sub_140258A84(v8, 0, (__int64)v14, 0xFFFFFFFFLL, a4 & -(__int64)(a5 != 0), v18, 0, 0); /* 0x14026A58C: mov edi, eax */"
+   ]
+  ],
+  "exits": [
+   "sr_ret ## 0x14026A5B9: mov eax, edi"
+  ]
+ },
+ "_acrt_GetLocaleInfoA_sr": {
+  "note": "0 on success, -1 on failure: 0x14026A682 xor eax,eax after the copy (0x14026A65E -> or eax,-1 when the allocation failed) and after the one-byte query (0x14026A76D); 0x14026A772 or eax,-1 for the failed queries; the two allocate-and-fill paths end 0x14026A6FD mov eax,edi with edi = 0 when the buffer was handed over and -1 otherwise (0x14026A6F2)",
+  "edits": [
+   [
+    "  *a5 = 0;\n  switch ( a2 )",
+    "  int sr_ret = -1; /* edi: 0x14026A6F2 or edi, 0xffffffff */\n  *a5 = 0;\n  switch ( a2 )"
+   ],
+   [
+    "        v14 = (__int64)v12;\n        v12 = nullptr;\n        *a5 = v14;",
+    "        v14 = (__int64)v12;\n        v12 = nullptr;\n        *a5 = v14;\n        sr_ret = 0; /* edi stays 0 on this path */"
+   ],
+   [
+    "        *(_BYTE *)a5 = v20[0];\n      break;",
+    "      {\n        *(_BYTE *)a5 = v20[0];\n        return 0; /* 0x14026A76D -> 0x14026A682: xor eax, eax */\n      }\n      break;"
+   ]
+  ],
+  "exits": [
+   "*a5 ? 0 : (unsigned int)-1 ## 0x14026A65E: je -> or eax, 0xffffffff; else 0x14026A682: xor eax, eax",
+   "(unsigned int)-1 ## 0x14026A692: -> or eax, 0xffffffff",
+   "(unsigned int)-1 ## 0x14026A6B2: -> or eax, 0xffffffff",
+   "(unsigned int)sr_ret ## 0x14026A6FD: mov eax, edi",
+   "(unsigned int)-1 ## 0x14026A71F: -> or eax, 0xffffffff",
+   "(unsigned int)-1 ## 0x14026A772: or eax, 0xffffffff"
+  ]
+ }
+}

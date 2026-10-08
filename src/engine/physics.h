@@ -1,0 +1,278 @@
+/* Rigid-body physics: bodies, the bonds (joints) between them, and the
+ * impulse solver that keeps bonded bodies together.
+ *
+ * The layouts follow the server's declarations in RosaServer's structs.h
+ * where the client's machine code agrees with them; fields the client uses
+ * differently, or whose meaning is not settled, are named unknown_<offset>.
+ *
+ * Each function is a rewrite of one routine of the original executable and
+ * produces the same memory contents, bit for bit. The original address is
+ * given next to every declaration.
+ */
+#ifndef SR_ENGINE_PHYSICS_H
+#define SR_ENGINE_PHYSICS_H
+
+#include <stdint.h>
+#include "memory.h"
+
+/* ---- bodies -------------------------------------------------------------- */
+
+enum {
+    PHYSICS_BODY_BONE = 0,
+    PHYSICS_BODY_CAR = 1,
+    PHYSICS_BODY_WHEEL = 2,
+    PHYSICS_BODY_ITEM = 3
+};
+
+/* 0x1449816E0, 188 bytes each. */
+typedef struct PhysicsBody {
+    int32_t active;
+    int32_t type;                        /* PHYSICS_BODY_* */
+    int32_t settled;
+    int32_t unknown_c;                   /* RosaServer: owning human or item */
+    int32_t unknown_10;                  /* RosaServer: bone */
+    float mass;
+    float position[3];
+    float velocity[3];
+    float velocity_change[3];            /* impulses gathered during a solve */
+    float rotation[9];                   /* rows are the body's axes */
+    float angular_momentum[3];
+    float angular_velocity[3];
+    float angular_velocity_change[3];    /* impulses gathered during a solve */
+    float unknown_84[3];
+    float inverse_inertia[3];            /* about the body's own axes */
+    float unknown_9c;                    /* angular momentum is limited to 8 times this; also scales bond rotation */
+    uint8_t unknown_a0[0xB8 - 0xA0];
+    float friction_work;                 /* sliding against the level during the last solve */
+} PhysicsBody;
+
+#define PHYSICS_BODY_CAPACITY 8192
+
+#define physics_bodies (&SR_GLOBAL(PhysicsBody, 0x1449816E0ULL))
+
+/* ---- points ---------------------------------------------------------------- */
+
+/* Point masses joined by links and contacts (bonds with point[] indices).
+   0x151A84920, 240 bytes each; the count follows the array. */
+typedef struct PhysicsPoint {
+    int32_t unknown_0, unknown_4;
+    float mass;
+    int32_t unknown_c, unknown_10;
+    float position[3];
+    uint8_t unknown_20[0x2C - 0x20];
+    float velocity[3];
+    uint8_t unknown_38[0x50 - 0x38];
+    int32_t bond_count;
+    int32_t bonds[39];                   /* PhysicsBond indices */
+} PhysicsPoint;
+
+#define physics_points      (&SR_GLOBAL(PhysicsPoint, 0x151A84920ULL))
+#define physics_point_count SR_GLOBAL(int32_t, 0x151E44920ULL)
+
+/* Velocities of the points while a solve runs, and their gathered changes.
+   The array lives in the client's data section (0x140384000), outside the
+   shared state region. */
+typedef struct PhysicsPointScratch {
+    float velocity[4];
+    float change[4];
+} PhysicsPointScratch;
+
+extern float flt_140384000[];
+#define physics_point_scratch     ((PhysicsPointScratch *)(void *)flt_140384000)
+/* Number of the solver iteration running, 0x140404000. */
+#define physics_solver_iteration  (*(int32_t *)(void *)&flt_140384000[0x20000])
+
+/* Set: the point solve updates all four lanes of each scratch vector. */
+#define physics_points_four_lanes SR_GLOBAL(int32_t, 0x182A7D558ULL)
+/* Set: rotation bonds between bones use fixed limits by bone (byte flag). */
+#define physics_bone_rotation_limits SR_GLOBAL(uint8_t, 0x183F7C960ULL)
+
+/* ---- vehicles ----------------------------------------------------------- */
+
+/* Only the parts of a vehicle named so far. 0x15F2D9200, 20,840 bytes
+   each. */
+typedef struct PhysicsVehicle {
+    int32_t active;
+    int32_t type;                        /* vehicle type index */
+    uint8_t unknown_8[0x28 - 0x8];
+    int32_t body;                        /* PhysicsBody index */
+    float position[3];                   /* of the type's origin point on the body */
+    float previous_position[3];
+    float rotation[9];
+    float previous_rotation[9];
+    float velocity[3];
+    uint8_t unknown_98[0xA4 - 0x98];
+    float angular_velocity[3];
+    float bounds_min[3];                 /* box around the type's bound points, in world axes */
+    float bounds_max[3];
+    int32_t voxel_min[3];                /* x, y, z of the voxels the vehicle occupies, inclusive */
+    int32_t voxel_max[3];
+    uint8_t unknown_e0[0x3F4 - 0xE0];
+    int32_t bond_count;
+    int32_t bonds[(0x5168 - 0x3F8) / 4];     /* PhysicsBond indices */
+} PhysicsVehicle;
+
+#define PHYSICS_VEHICLE_CAPACITY 512
+
+#define physics_vehicles (&SR_GLOBAL(PhysicsVehicle, 0x15F2D9200ULL))
+
+/* ---- bonds ----------------------------------------------------------------- */
+
+#define PHYSICS_BOND_CAPACITY 0x4000
+
+enum {
+    PHYSICS_BOND_LEVEL = 4,          /* a body point held to a point in the world */
+    PHYSICS_BOND_BODIES = 7,         /* a point of one body held to a point of another */
+    PHYSICS_BOND_ROTATION = 8,       /* two bodies held at the same orientation */
+    PHYSICS_BOND_JOINT = 10          /* points and angular velocities held together, see physics_prepare_joint */
+};
+
+/* PhysicsConstraint.kind: what the iterations solve for a bond. Except
+   where noted it is the bond's type. */
+enum {
+    PHYSICS_CONSTRAINT_POINT_LINK = 0,       /* two points at a distance */
+    PHYSICS_CONSTRAINT_POINT_LEVEL = 1,      /* point against the level, with friction */
+    PHYSICS_CONSTRAINT_POINT_POINT = 2,      /* point against point */
+    PHYSICS_CONSTRAINT_POINT_TRIANGLE = 3,   /* point against a triangle of points */
+    PHYSICS_CONSTRAINT_BODY_LEVEL = 4,       /* body point held to a world point */
+    PHYSICS_CONSTRAINT_BODY_CONTACT = 5,     /* body against the level, with friction */
+    PHYSICS_CONSTRAINT_BODY_BODY_CONTACT = 6,
+    PHYSICS_CONSTRAINT_BODY_POINTS = 7,
+    PHYSICS_CONSTRAINT_ROTATION = 8,
+    PHYSICS_BOND_BODY_SURFACE = 9,           /* bond type: body against a moving surface */
+    PHYSICS_CONSTRAINT_JOINT = 10
+};
+
+/* Value of PhysicsBond.unknown_a4 that limits a joint's positional
+   correction more tightly. */
+#define PHYSICS_BOND_TIGHT 1111
+
+/* 0x1B4287C80, 244 bytes each. */
+typedef struct PhysicsBond {
+    int32_t active;
+    int32_t type;                        /* PHYSICS_BOND_* */
+    int32_t unknown_8;
+    int32_t lifetime;                    /* ticks left; 0: this tick only; from 0x10000 never expires */
+    int32_t pass_mask;                   /* solved in the iterations whose number has all these bits; above 255 never */
+    int32_t point_count;                 /* entries of point[] (it continues past four) */
+    int32_t point[4];                    /* PhysicsPoint indices of point bonds and contacts; -1: none */
+    int32_t unknown_28;
+    float world_point[3];                /* level bonds; type 9: angular axis */
+    float local_point[3];                /* on body */
+    float other_local_point[3];          /* on other_body */
+    float point_weight[3];               /* contact with a triangle: weights of point[1..3] */
+    uint8_t unknown_5c[0x64 - 0x5C];
+    float distance;                      /* rest length, or contact depth */
+    uint8_t unknown_68[0x70 - 0x68];
+    float stiffness;
+    float damping;
+    float normal[3];
+    float friction;
+    float angular_limit;                 /* 0, or the largest angular velocity difference corrected */
+    uint8_t unknown_8c[0x94 - 0x8C];
+    int32_t vehicle_count;               /* vehicles whose bond lists hold this bond; their indices start at body */
+    int32_t body;
+    int32_t other_body;
+    int32_t unknown_a0;
+    int32_t unknown_a4;                  /* PHYSICS_BOND_TIGHT */
+    uint8_t unknown_a8[0xC4 - 0xA8];
+    float target_velocity[3];            /* contacts: velocity of the surface touched */
+    uint8_t unknown_d0[0xF4 - 0xD0];
+} PhysicsBond;
+
+#define physics_bonds (&SR_GLOBAL(PhysicsBond, 0x1B4287C80ULL))
+
+/* Working data of one bond during a solve, 0x1B4037C40, 144 bytes each, at
+   the bond's index. "a" is PhysicsBond.body, "b" its other body. */
+typedef struct PhysicsConstraint {
+    uint16_t body_a, body_b;             /* PhysicsBody or, for point bonds, PhysicsPoint indices */
+    int32_t unknown_4;
+    int32_t pass_mask;                   /* copied from the bond */
+    int32_t kind;                        /* PHYSICS_CONSTRAINT_* */
+    float bias[3];                       /* relative velocity the point solve aims for; contacts: normal */
+    float depth;                         /* contacts: penetration; point links: stretch */
+    float offset_a[3];                   /* bond point on a, relative to a's position, in world axes */
+    float offset_b[3];                   /* the same for b */
+    uint8_t unknown_38[0x3C - 0x38];
+    float share_a;                       /* b's mass / (a's + b's): a's part of each impulse */
+    float share_b;                       /* a's mass / (a's + b's) */
+    float stiffness;
+    float friction;
+    int32_t has_axis;
+    float axis[3];
+    int32_t has_free_axis;               /* rotation bonds: one axis left free */
+    float free_axis[3];
+    float position_bias[3];              /* scaled separation of the points */
+    float angular_bias[3];               /* joints: 7/8 of bias */
+    float angular_scale;
+    uint8_t unknown_88[4];
+    float angular_gain;                  /* 0: 1/8 */
+} PhysicsConstraint;
+
+#define physics_constraints (&SR_GLOBAL(PhysicsConstraint, 0x1B4037C40ULL))
+
+_Static_assert(sizeof(PhysicsBody) == 0xBC, "PhysicsBody size");
+_Static_assert(__builtin_offsetof(PhysicsBody, angular_velocity_change) == 0x78, "PhysicsBody layout");
+_Static_assert(__builtin_offsetof(PhysicsBody, unknown_9c) == 0x9C, "PhysicsBody layout");
+_Static_assert(sizeof(PhysicsBond) == 0xF4, "PhysicsBond size");
+_Static_assert(__builtin_offsetof(PhysicsBond, angular_limit) == 0x88, "PhysicsBond layout");
+_Static_assert(__builtin_offsetof(PhysicsBond, body) == 0x98, "PhysicsBond layout");
+_Static_assert(__builtin_offsetof(PhysicsBond, unknown_a4) == 0xA4, "PhysicsBond layout");
+_Static_assert(sizeof(PhysicsConstraint) == 0x90, "PhysicsConstraint size");
+_Static_assert(__builtin_offsetof(PhysicsConstraint, share_a) == 0x3C, "PhysicsConstraint layout");
+_Static_assert(__builtin_offsetof(PhysicsConstraint, has_axis) == 0x4C, "PhysicsConstraint layout");
+_Static_assert(__builtin_offsetof(PhysicsConstraint, position_bias) == 0x6C, "PhysicsConstraint layout");
+_Static_assert(__builtin_offsetof(PhysicsConstraint, angular_scale) == 0x84, "PhysicsConstraint layout");
+_Static_assert(__builtin_offsetof(PhysicsConstraint, angular_gain) == 0x8C, "PhysicsConstraint layout");
+_Static_assert(__builtin_offsetof(PhysicsConstraint, depth) == 0x1C, "PhysicsConstraint layout");
+_Static_assert(__builtin_offsetof(PhysicsConstraint, free_axis) == 0x60, "PhysicsConstraint layout");
+_Static_assert(__builtin_offsetof(PhysicsBody, inverse_inertia) == 0x90, "PhysicsBody layout");
+_Static_assert(__builtin_offsetof(PhysicsBody, friction_work) == 0xB8, "PhysicsBody layout");
+_Static_assert(__builtin_offsetof(PhysicsBond, distance) == 0x64, "PhysicsBond layout");
+_Static_assert(__builtin_offsetof(PhysicsBond, normal) == 0x78, "PhysicsBond layout");
+_Static_assert(__builtin_offsetof(PhysicsBond, target_velocity) == 0xC4, "PhysicsBond layout");
+_Static_assert(sizeof(PhysicsPoint) == 0xF0, "PhysicsPoint size");
+_Static_assert(__builtin_offsetof(PhysicsPoint, bond_count) == 0x50, "PhysicsPoint layout");
+_Static_assert(sizeof(PhysicsVehicle) == 0x5168, "PhysicsVehicle size");
+_Static_assert(__builtin_offsetof(PhysicsVehicle, bond_count) == 0x3F4, "PhysicsVehicle layout");
+_Static_assert(__builtin_offsetof(PhysicsVehicle, previous_rotation) == 0x68, "PhysicsVehicle layout");
+_Static_assert(__builtin_offsetof(PhysicsVehicle, voxel_min) == 0xC8, "PhysicsVehicle layout");
+_Static_assert(__builtin_offsetof(PhysicsBond, vehicle_count) == 0x94, "PhysicsBond layout");
+_Static_assert(__builtin_offsetof(PhysicsBond, point_count) == 0x14, "PhysicsBond layout");
+_Static_assert(__builtin_offsetof(PhysicsPoint, velocity) == 0x2C, "PhysicsPoint layout");
+
+/* ---- functions ----------------------------------------------------------- */
+
+/* Fills the constraint of a joint bond from its bodies' current state.
+   0x14001C780 */
+void physics_prepare_joint(int bond);
+
+/* Applies to both bodies the impulse that brings the relative velocity of
+   the bond points toward bias. 0x14001CBB0 */
+void physics_solve_point_velocity(int constraint);
+
+/* The same toward position_bias, then the angular impulse of a joint.
+   0x14001BF70 */
+void physics_solve_joint(int bond);
+
+/* Counts down bond lifetimes and removes expired bonds from the bond lists
+   of their points and vehicles. 0x14001FB90 */
+void physics_expire_bonds(void);
+
+/* Turns a body's rotation by one tick of its angular momentum (fourth-order
+   Runge-Kutta) and stores the angular velocity used. 0x14012B2D0 */
+void physics_integrate_rotation(float rotation[9], const float angular_momentum[3],
+                                float angular_velocity[3], const float inverse_inertia[3]);
+
+/* One physics tick: gravity and position integration, rotation, spatial
+   bounds and grid, collision preparation, humans, the bond solver, item and
+   bond lifetimes. 0x140116210 */
+void physics_tick(void);
+
+/* One physics tick of the bond solver: sets up every bond's constraint,
+   runs 32 impulse iterations over bodies and points (with the vehicle wheel
+   solvers in each), integrates velocities, and retires bonds that last one
+   tick. 0x14001D080 */
+void physics_solve(void);
+
+#endif
