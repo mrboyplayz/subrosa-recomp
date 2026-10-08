@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 
 static CRITICAL_SECTION sr_debug_lock;
 static HANDLE sr_debug_output, sr_debug_file = INVALID_HANDLE_VALUE;
@@ -222,4 +224,88 @@ void sr_debug_console_stop(unsigned long result)
     if (sr_debug_worker) CloseHandle(sr_debug_worker);
     if (sr_debug_stop_event) CloseHandle(sr_debug_stop_event);
     /* Keep the console attached until process exit. */
+}
+
+/* Test aid: SUBROSA_AUTOSTART=practice presses the named menu button once, 30 frames in. */
+int sr_debug_autostart(const char *what)
+{
+    static int calls, done;
+    const char *wanted = getenv("SUBROSA_AUTOSTART");
+    if (done || !wanted || _stricmp(wanted, what)) return 0;
+    if (++calls < 30) return 0;
+    done = 1;
+    sr_debug_log("Autostart: %s", what);
+    return 1;
+}
+
+/* Game mode asked for by SUBROSA_AUTOSTART=world or round (4 or 3), until it has been started. */
+int sr_debug_autostart_mode(void)
+{
+    static int mode = -1;
+    if (mode < 0) {
+        const char *wanted = getenv("SUBROSA_AUTOSTART");
+        mode = !wanted ? 0 : !_stricmp(wanted, "world") ? 4 : !_stricmp(wanted, "round") ? 3 : 0;
+    }
+    return mode;
+}
+
+/* Test aid: SUBROSA_FRAME_DUMP=<folder> saves the back buffer as frame_NNNNN.bmp before
+   every SUBROSA_FRAME_DUMP_EVERY-th swap (default 300). Reads pixels only. */
+void sr_debug_frame(void)
+{
+    static int state, every = 300;
+    static unsigned long frame;
+    static char folder[MAX_PATH];
+    static void (APIENTRY *read_pixels)(int, int, int, int, unsigned, unsigned, void *);
+    static void (APIENTRY *get_integer)(unsigned, int *);
+    static void (APIENTRY *pixel_store)(unsigned, int);
+    static void (APIENTRY *read_buffer)(unsigned);
+    int viewport[4] = {0}, alignment = 4;
+    char path[MAX_PATH + 32];
+    if (!state) {
+        const char *value = getenv("SUBROSA_FRAME_DUMP"), *step = getenv("SUBROSA_FRAME_DUMP_EVERY");
+        HMODULE gl = GetModuleHandleA("opengl32.dll");
+        state = -1;
+        if (!value || !*value || !gl) { if (value) sr_debug_log("Frame dump: opengl32 not loaded"); return; }
+        snprintf(folder, sizeof folder, "%s", value);
+        if (step && atoi(step) > 0) every = atoi(step);
+        read_pixels = (void *)GetProcAddress(gl, "glReadPixels");
+        get_integer = (void *)GetProcAddress(gl, "glGetIntegerv");
+        pixel_store = (void *)GetProcAddress(gl, "glPixelStorei");
+        read_buffer = (void *)GetProcAddress(gl, "glReadBuffer");
+        if (read_pixels && get_integer && pixel_store && read_buffer) state = 1;
+        sr_debug_log("Frame dump: folder=%s every=%d gl=%p ready=%d", folder, every, (void *)gl, state);
+    }
+    if (state < 0 || ++frame % (unsigned long)every) return;
+    get_integer(0x0BA2, viewport);
+    if (viewport[2] <= 0 || viewport[3] <= 0 || viewport[2] > 8192 || viewport[3] > 8192) return;
+    size_t size = (size_t)viewport[2] * viewport[3] * 4;
+    unsigned char *pixels = malloc(size);
+    if (!pixels) return;
+    get_integer(0x0D05, &alignment);
+    pixel_store(0x0D05, 4);
+    read_buffer(0x0405);
+    read_pixels(0, 0, viewport[2], viewport[3], 0x80E1, 0x1401, pixels);
+    pixel_store(0x0D05, alignment);
+    snprintf(path, sizeof path, "%s/frame_%05lu.bmp", folder, frame / every);
+    FILE *file = fopen(path, "wb");
+    if (!file && frame / every < 3) sr_debug_log("Frame dump: cannot write %s", path);
+    if (file) {
+        BITMAPFILEHEADER head = {0};
+        BITMAPINFOHEADER info = {0};
+        head.bfType = 0x4D42;
+        head.bfOffBits = sizeof head + sizeof info;
+        head.bfSize = head.bfOffBits + (DWORD)size;
+        info.biSize = sizeof info;
+        info.biWidth = viewport[2];
+        info.biHeight = viewport[3];
+        info.biPlanes = 1;
+        info.biBitCount = 32;
+        info.biSizeImage = (DWORD)size;
+        fwrite(&head, sizeof head, 1, file);
+        fwrite(&info, sizeof info, 1, file);
+        fwrite(pixels, size, 1, file);
+        fclose(file);
+    }
+    free(pixels);
 }

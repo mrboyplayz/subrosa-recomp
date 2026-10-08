@@ -12,7 +12,7 @@ routine can move here without anything else changing.
 
 ## Status
 
-45 of roughly 1,430 game routines are here.
+59 of roughly 1,430 game routines are here.
 
 | File | Contents | Original routines |
 |---|---|---|
@@ -27,6 +27,9 @@ routine can move here without anything else changing.
 | `world_grid.c` | insertion into the spatial grid | 0x140037DE0 |
 | `world_items.c` | tick stage: items follow their bodies; boxes and voxels they occupy | 0x1400C9D20 |
 | `world_vehicles.c` | tick stage: vehicles follow their bodies; boxes and voxels; block parts they break off | 0x1401069C0 |
+| `world_streets.c`, `world_streets.h` | World map ("test2") streets: street patches, railway segments, filing streets into the 64 x 64 street cells, the railway route with its stops, the race track | 0x14005F6E0, 0x1400603A0, 0x1401899F0, 0x14002A9A0, 0x14002A680 |
+| `world_street_mesh.c` | the three street meshes (embankments, ground between the rails, track) and their GL upload | 0x140188B80 |
+| `collision.c`, `collision.h` | swept-sphere collision: segment-segment, line-plane, line-triangle, sphere-triangle; sweeps against vehicle hulls and trains (faces and unbroken windows); rays against vehicles (faces, windows, wheels) | 0x1400D6890, 0x1400779F0, 0x140077FA0, 0x140035690, 0x140035E50, 0x140037220, 0x1400DFB70, 0x1400DF380 |
 | `human_ragdoll.c`, `human.h` | the active ragdoll: target poses of a human's joints (so far the look pose; the per-tick drive 0x1400AD2B0 is next) | 0x1400AD030 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |

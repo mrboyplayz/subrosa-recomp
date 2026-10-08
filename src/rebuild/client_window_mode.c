@@ -15,7 +15,7 @@ extern void SDL_SetWindowResizable(void *, int);
 extern int SDL_SetWindowFullscreen(void *, unsigned);
 extern int SDL_SetHintWithPriority(const char *, const char *, int);
 
-enum { SDL_WINDOW_FULLSCREEN = 0x1u, SDL_WINDOW_FULLSCREEN_DESKTOP = 0x1001u };
+enum { SDL_WINDOW_FULLSCREEN = 0x1u };
 enum { SDL_HINT_OVERRIDE = 2 };
 
 unsigned sr_recomp_window_mode = 0;
@@ -64,10 +64,18 @@ int sr_recomp_window_set(void *window, unsigned mode, int save)
         SDL_GetWindowSize(window, &sr_window_w, &sr_window_h);
     }
     SDL_SetHintWithPriority("SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS", mode == 2 ? "1" : "0", SDL_HINT_OVERRIDE);
-    /* Let SDL manage desktop sizing and restoration, as in the supplied example. */
-    unsigned fullscreen_flags = mode == 1 ? SDL_WINDOW_FULLSCREEN_DESKTOP :
-                                mode == 2 ? SDL_WINDOW_FULLSCREEN : 0;
-    if (SDL_SetWindowFullscreen(window, fullscreen_flags)) return -1;
+    /* Borderless is an ordinary window without a frame, never an SDL fullscreen mode: SDL's
+       "fullscreen desktop" makes the driver present it exclusively, which is what made
+       borderless behave like fullscreen. Only mode 2 asks SDL for fullscreen. */
+    if (SDL_SetWindowFullscreen(window, mode == 2 ? SDL_WINDOW_FULLSCREEN : 0)) return -1;
+    if (mode == 1) {
+        SDL_SetWindowBordered(window, 0);
+        SDL_SetWindowResizable(window, 0);
+        SDL_SetWindowPosition(window, bounds.x, bounds.y);
+        /* One row past the bottom edge: a frameless OpenGL window that matches the display
+           exactly is promoted to exclusive presentation by the driver. */
+        SDL_SetWindowSize(window, bounds.w, bounds.h + 1);
+    }
     if (mode == 0) {
         SDL_SetWindowBordered(window, 1);
         SDL_SetWindowResizable(window, 1);

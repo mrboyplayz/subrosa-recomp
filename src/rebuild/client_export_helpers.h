@@ -10,6 +10,11 @@
     type sr_coerce_output; \
     _Static_assert(sizeof(sr_coerce_output) <= sizeof(sr_coerce_input), \
                    "bit coercion cannot widen its source"); \
+    /* A float expression promoted by a double literal (x * 0.5) must not \
+       be bit-copied as a float: that reads the low half of the double. */ \
+    _Static_assert(sizeof(sr_coerce_output) != 4 || \
+                   !_Generic(sr_coerce_input, double: 1, default: 0), \
+                   "32-bit coercion of a double: use a float literal"); \
     memcpy(&sr_coerce_output, &sr_coerce_input, sizeof(sr_coerce_output)); \
     sr_coerce_output; })
 #define COERCE_FLOAT(v) SR_EXPORT_COERCE(float, v)

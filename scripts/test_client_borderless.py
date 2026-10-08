@@ -43,14 +43,14 @@ int main(void) {
  void *window=(void *)0x1234567887654321ULL;
  sr_recomp_window_load(); CHECK(sr_recomp_window_mode==1&&minimize_hint==0);
  CHECK(!sr_recomp_window_set(window,1,1));
- CHECK(x==-2560&&y==0&&w==2560&&h==1440&&flags==0x1001&&minimize_hint==0);
+ CHECK(x==-2560&&y==0&&w==2560&&h==1441&&flags==0&&!bordered&&!resizable&&minimize_hint==0);
  CHECK(sr_borderless_selected&&!sr_fullscreen_selected);
  CHECK(GetPrivateProfileIntW(L"Window",L"Mode",9,path)==1);
  for(int i=0;i<32;i++) {
   CHECK(!sr_recomp_window_toggle(window,0));
   CHECK(x==-2200&&y==100&&w==1024&&h==576&&!flags&&bordered&&resizable);
   CHECK(!sr_recomp_window_toggle(window,0x1001));
-  CHECK(x==-2560&&w==2560&&flags==0x1001&&minimize_hint==0&&sr_recomp_window_mode==1);
+  CHECK(x==-2560&&w==2560&&flags==0&&!bordered&&minimize_hint==0&&sr_recomp_window_mode==1);
  }
  CHECK(!sr_recomp_window_set(window,2,1));CHECK(flags==1&&minimize_hint==1);
  CHECK(!sr_borderless_selected&&sr_fullscreen_selected);
@@ -59,7 +59,7 @@ int main(void) {
  CHECK(!sr_recomp_window_toggle(window,0x1001));CHECK(flags==1&&sr_recomp_window_mode==2);
  CHECK(!sr_recomp_window_set(window,0,1));
  x=-2100;y=150;w=1200;h=675;
- CHECK(!sr_recomp_window_set(window,1,1));CHECK(flags==0x1001);
+ CHECK(!sr_recomp_window_set(window,1,1));CHECK(flags==0&&!bordered&&w==2560);
  CHECK(!sr_recomp_window_set(window,0,1));CHECK(x==-2100&&y==150&&w==1200&&h==675);
  bad_bounds=1;CHECK(sr_recomp_window_set(window,1,1)==-1);CHECK(sr_recomp_window_mode==0);
  bad_bounds=0;CHECK(sr_recomp_window_set(NULL,1,1)==-1);

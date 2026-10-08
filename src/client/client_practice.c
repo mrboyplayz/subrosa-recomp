@@ -2217,8 +2217,7 @@ __int64            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4,
   v40[8] = 1065353216;
   sub_14007B2A0(
     (__int64)&dword_140404A6C[v38 + 132400648],
-    (float *)&dword_140404A6C[v38 + 132400651],
-    v25 + 1.570796326795);
+    (float *)&dword_140404A6C[v38 + 132400651], sr_export_float_lane_container(sr_text_float_bits((float)(v25 + 1.570796326795))) /* the original converts to float (cvtsd2ss) before this call */);
   v41 = dword_140404A6C[132792829];
   ++dword_140404A6C[dword_140404A6C[132792829] + 132792837];
   dword_140404A6C[132792829] = v41 + 1;

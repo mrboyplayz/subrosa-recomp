@@ -928,8 +928,7 @@ __int64 sub_1401597F0()
                   v123 = rand();
                   sub_14007B2A0(
                     (__int64)&dword_140404A6C[v73 + 432826961],
-                    (float *)&dword_140404A6C[v73 + 432826967],
-                    (float)v123 * 0.01227184630308594);
+                    (float *)&dword_140404A6C[v73 + 432826967], sr_export_float_lane_container(sr_text_float_bits((float)((float)v123 * 0.01227184630308594))) /* the original converts to float (cvtsd2ss) before this call */);
                   v124 = *(float *)&dword_140404A6C[v1 + 432826984];
                   v125 = *(float *)&dword_140404A6C[v1 + 432826952];
                   v126 = -v124;

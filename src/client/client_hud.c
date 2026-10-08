@@ -366,7 +366,7 @@ LABEL_67:
           sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container(1138753536), 1098907648, 80.0, 5, 0, 0, 0, 1056964608),
           v62 = 1098907648,
           sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container((unsigned __int64)COERCE_UNSIGNED_INT(
-                                              448.0
+                                              448.0f
                                             - (float)((float)(*(float *)&dword_140404A6C[v1 + 71856296] * 16.0)
                                                     + (float)(*(float *)&dword_140404A6C[v1 + 71856296] * 16.0)))), 1098907648, 16.0, 5, 1065353216, 1065353216, 1065353216, 1056964608),
           !dword_140404A6C[v9 + 280651314]) )

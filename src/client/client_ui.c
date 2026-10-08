@@ -1333,7 +1333,7 @@ void sub_1400FE1B0()
   dword_140404A6C[70087067] = 1135607808;
   dword_140404A6C[70087069] = 1134559232;
   dword_140404A6C[70087074] = 7;
-  if ( (unsigned int)sr_DrawMenuButton("Practice") )
+  if ( (unsigned int)sr_DrawMenuButton("Practice") || SR_DEBUG_AUTOSTART("practice") )
   {
     SR_DEBUG_STAGE("Practice selected: start local game setup");
     sr_menu_relative_mode(1);
@@ -1367,7 +1367,7 @@ void sub_1400FE1B0()
     sub_140095B00();
   }
   dword_140404A6C[70087074] = 22;
-  v4 = sr_DrawMenuButton("Start Game");
+  v4 = sr_DrawMenuButton("Start Game") || SR_DEBUG_AUTOSTART_MODE();
   v5 = dword_140404A6C[283831310];
   dword_140404A6C[70087074] = 13;
   if ( v4 )

@@ -42,6 +42,7 @@ typedef ptrdiff_t GLintptr;
 #define GL_ARRAY_BUFFER 0x8892
 #define GL_ELEMENT_ARRAY_BUFFER 0x8893
 #define GL_STREAM_DRAW 0x88E0
+#define GL_STATIC_DRAW 0x88E4
 
 /* Storage of the pointer table. The symbols are defined by the recompiled
    client's data module; each one holds a single function pointer. */

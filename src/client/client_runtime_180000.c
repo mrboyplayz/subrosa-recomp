@@ -1045,6 +1045,7 @@ __int64 sub_140198EED()
 __int64 sub_140198EF3(void)
 {
  void *window;memcpy(&window,&dword_140404A6C[137297751],8);
+ SR_DEBUG_FRAME();
  return sr_swap_window_import(window);
 }
 

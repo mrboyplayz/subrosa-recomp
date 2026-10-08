@@ -8484,9 +8484,9 @@ extern char aSteamban[10];
  // weak
 extern __int16 word_140274678;
  // weak
-extern int dword_140274DA8;
+extern char dword_140274DA8[8];
  // weak
-extern int dword_140274E04;
+extern char dword_140274E04[8];
  // weak
 extern __int128 xmmword_140275F48;
  // weak
@@ -9605,7 +9605,7 @@ extern void (*qword_140294670)(void);
  // weak
 extern _UNKNOWN pThrowInfo;
  // weak
-extern _UNKNOWN *off_1402B2000;
+extern char *off_1402B2000[32];
  // weak
 extern char *off_1402B2100[8];
  // weak

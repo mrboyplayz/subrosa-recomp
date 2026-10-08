@@ -482,3 +482,13 @@ test_client_cell_ray_geometry	scripts/test_client_cell_ray_geometry.py	test	part
 repair_client_cell_ray_storage	scripts/repair_client_cell_ray_storage.py	algorithm	partial	scripts/test_client_cell_ray_geometry.py	Native cell-ray stack vector addresses; reports/player-hud-recovery-20261006/cell-ray
 repair_client_data_tables	scripts/repair_client_data_tables.py	tool	partial		Original contents for 81 data objects left as one-byte placeholders (SSE sine/cosine tables, JPEG writer tables, locale tables, exception record templates); 5 left with reasons; tools/native-compare t_sincos, tools/audits/filled_tables.py
 repair_client_cookie_exits	scripts/repair_client_cookie_exits.py	tool	partial		Real results for functions whose exits Hex-Rays rendered as the stack-cookie check; evidence in src/rebuild/client_cookie_exits.json, reviewed entries in src/rebuild/client_cookie_exits_hand.json; tools/audits/cookie_exits.py
+kernel_b01f452d87fe	src/client/client_blocks.c	glue	partial		src/client/client_blocks.c
+kernel_f6b6d79b6e2c	src/client/client_city.c	glue	partial		src/client/client_city.c
+kernel_337d138a0d29	src/client/client_gl_loader.c	glue	partial		src/client/client_gl_loader.c
+kernel_955b0d3d33de	src/client/client_gpu_buffers.c	glue	partial		src/client/client_gpu_buffers.c
+kernel_9d853c42df9f	src/client/client_network.c	glue	partial		src/client/client_network.c
+kernel_7f8eb80dca29	src/client/client_replay.c	glue	partial		src/client/client_replay.c
+kernel_8fb742573ec6	src/client/client_stb_image.c	glue	partial		src/client/client_stb_image.c
+kernel_2c91e1b534bf	src/client/client_stb_truetype.c	glue	partial		src/client/client_stb_truetype.c
+kernel_d08eecf063ce	src/client/client_terminal.c	glue	partial		src/client/client_terminal.c
+kernel_7323f24164d7	src/client/client_widgets.c	glue	partial		src/client/client_widgets.c

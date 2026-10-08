@@ -3407,9 +3407,11 @@ char aSteamban[10] = "steamban=";
  // weak
 __int16 word_140274678 = 8236;
  // weak
-int dword_140274DA8 = 1853190002;
+/* 0x140274DA8: the string "round" (6 bytes); the map-name comparison in 0x140127910 walks all of it. */
+char dword_140274DA8[8] = "round";
  // weak
-int dword_140274E04 = 1936876918;
+/* 0x140274E04: the string "versus" (7 bytes), compared byte by byte with the map name. */
+char dword_140274E04[8] = "versus";
  // weak
 __int128 xmmword_140275F48 = ((__int128)0x4f4e204556495244ull | ((__int128)0x59444145522054ull << 64));
  // weak
@@ -9354,7 +9356,13 @@ void (*qword_140294670)(void) = NULL;
  // weak
 _UNKNOWN pThrowInfo;
  // weak
-_UNKNOWN *off_1402B2000 = (_UNKNOWN *)0x140270030LL;
+/* 0x1402B2000: thirty-two document code names (pointers to 0x140270030..), indexed by rand() & 0x1F. */
+char *off_1402B2000[32] = {
+  "ACTOR", "GOLD", "RIVER", "PIANO", "PILLOW", "ANIMAL", "HORSE", "HONEY",
+  "BRANCH", "LAMP", "LION", "TENT", "LONDON", "NIGHT", "FISH", "FLOWER",
+  "TRUCK", "GLASS", "GHOST", "KNIFE", "SPOON", "TRAFFIC", "VASE", "SUGAR",
+  "KITCHEN", "SCOOTER", "KING", "QUEEN", "LIZARD", "CARAVAN", "DREAM", "DRESS"
+};
  // weak
 char *off_1402B2100[8] = { "ATOMIC", "BRAZIL", "CROWN", "DENVER", "EAGLE", "FALCON", "GUILD", "HOUND" };
  // weak
@@ -9389,207 +9397,35 @@ _Alignas(16) unsigned char unk_1402B2410[320] = {
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
  // weak
-int dword_1402B2550[] = { 0 };
- // weak
-int dword_1402B2554[] = { 0 };
- // weak
-int dword_1402B2558[6] = { 0, 0, 0, 1059760811, 0, 1059760811 };
- // weak
-char byte_1402B2570[160] =
-{
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\xAB',
-  '\xAA',
-  '*',
-  '?',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\xAB',
-  '\xAA',
-  '\xAA',
-  '>',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\0',
-  '\0',
-  '\x80',
-  '?',
-  '\0',
-  '\0',
-  '\x80',
-  '?'
+/* 0x1402B2550..0x1402B26C0: terminal palette (16 RGB triples), then the unit octahedron's corners and faces. One table in the original; code indexes it across the
+   names below, so they are aliases into a single array (tools/repairs/join_tables.py). */
+_Alignas(16) unsigned int sr_tables_1402B2550[92] = {
+  0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x3F2AAAABu, 0x00000000u, 0x3F2AAAABu,
+  0x00000000u, 0x00000000u, 0x3F2AAAABu, 0x3F2AAAABu, 0x3F2AAAABu, 0x00000000u, 0x00000000u, 0x3F2AAAABu,
+  0x00000000u, 0x3F2AAAABu, 0x3F2AAAABu, 0x3EAAAAABu, 0x00000000u, 0x3F2AAAABu, 0x3F2AAAABu, 0x3F2AAAABu,
+  0x3EAAAAABu, 0x3EAAAAABu, 0x3EAAAAABu, 0x3EAAAAABu, 0x3EAAAAABu, 0x3F800000u, 0x3EAAAAABu, 0x3F800000u,
+  0x3EAAAAABu, 0x3EAAAAABu, 0x3F800000u, 0x3F800000u, 0x3F800000u, 0x3EAAAAABu, 0x3EAAAAABu, 0x3F800000u,
+  0x3EAAAAABu, 0x3F800000u, 0x3F800000u, 0x3F800000u, 0x3EAAAAABu, 0x3F800000u, 0x3F800000u, 0x3F800000u,
+  0x00000000u, 0xBF800000u, 0x00000000u, 0xBF800000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+  0xBF800000u, 0x3F800000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x3F800000u, 0x00000000u,
+  0x3F800000u, 0x00000000u, 0x50464437u, 0x00000000u, 0x00000005u, 0x00000003u, 0x00000004u, 0x00000005u,
+  0x00000004u, 0x00000001u, 0x00000005u, 0x00000002u, 0x00000003u, 0x00000005u, 0x00000001u, 0x00000002u,
+  0x00000004u, 0x00000003u, 0x00000000u, 0x00000001u, 0x00000004u, 0x00000000u, 0x00000003u, 0x00000002u,
+  0x00000000u, 0x00000002u, 0x00000001u, 0x00000000u,
 };
- // weak
-int dword_1402B2610[] = { 0 };
- // weak
-int dword_1402B2614[] = { -1082130432 };
- // weak
-float dword_1402B2618[16] =
-{
-  0.0,
-  -1.0,
-  0.0,
-  0.0,
-  0.0,
-  0.0,
-  -1.0,
-  1.0,
-  0.0,
-  0.0,
-  0.0,
-  0.0,
-  1.0,
-  0.0,
-  1.0,
-  0.0
-};
- // weak
-int dword_1402B2658 = 1346782263;
- // weak
-int dword_1402B2660[] = { 5 };
- // weak
-int dword_1402B2664[] = { 3 };
- // weak
-int dword_1402B2668[22] = { 4, 5, 4, 1, 5, 2, 3, 5, 1, 2, 4, 3, 0, 1, 4, 0, 3, 2, 0, 2, 1, 0 };
+__asm__(
+  ".globl dword_1402B2550\n.set dword_1402B2550, sr_tables_1402B2550+0\n"
+  ".globl dword_1402B2554\n.set dword_1402B2554, sr_tables_1402B2550+4\n"
+  ".globl dword_1402B2558\n.set dword_1402B2558, sr_tables_1402B2550+8\n"
+  ".globl byte_1402B2570\n.set byte_1402B2570, sr_tables_1402B2550+32\n"
+  ".globl dword_1402B2610\n.set dword_1402B2610, sr_tables_1402B2550+192\n"
+  ".globl dword_1402B2614\n.set dword_1402B2614, sr_tables_1402B2550+196\n"
+  ".globl dword_1402B2618\n.set dword_1402B2618, sr_tables_1402B2550+200\n"
+  ".globl dword_1402B2658\n.set dword_1402B2658, sr_tables_1402B2550+264\n"
+  ".globl dword_1402B2660\n.set dword_1402B2660, sr_tables_1402B2550+272\n"
+  ".globl dword_1402B2664\n.set dword_1402B2664, sr_tables_1402B2550+276\n"
+  ".globl dword_1402B2668\n.set dword_1402B2668, sr_tables_1402B2550+280\n"
+);
  // weak
 int unk_1402B26C0 = 0x46464437;
 __asm__(".globl byte_1402B26C3\n.set byte_1402B26C3, unk_1402B26C0+3");
@@ -79048,59 +78884,17 @@ int dword_14030186C = 625;
  // weak
 _DWORD dword_140301870[20] = { 0, 255, 85, 73, 17, 33, 65, 129, 1, 0, 0, 0, 0, 1, 0, 2, 4, 6, 0, 0 };
  // weak
-__int16 word_1403018C0[] = { 3 };
- // weak
-__int16 word_1403018C2 = 4;
- // weak
-__int16 word_1403018C4[46] =
-{
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  13,
-  15,
-  17,
-  19,
-  23,
-  27,
-  31,
-  35,
-  43,
-  51,
-  59,
-  67,
-  83,
-  99,
-  115,
-  131,
-  163,
-  195,
-  227,
-  258,
-  259,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  257,
-  257,
-  514,
-  514,
-  771,
-  771,
-  1028,
-  1028,
-  1285,
-  1285,
-  0,
-  0
+/* 0x1403018C0..0x140301900: a 16-bit table of the audio code (indexed from its first word). One table in the original; code indexes it across the
+   names below, so they are aliases into a single array (tools/repairs/join_tables.py). */
+_Alignas(16) unsigned int sr_tables_1403018C0[16] = {
+  0x00040003u, 0x00060005u, 0x00080007u, 0x000A0009u, 0x000D000Bu, 0x0011000Fu, 0x00170013u, 0x001F001Bu,
+  0x002B0023u, 0x003B0033u, 0x00530043u, 0x00730063u, 0x00A30083u, 0x00E300C3u, 0x01030102u, 0x00000000u,
 };
+__asm__(
+  ".globl word_1403018C0\n.set word_1403018C0, sr_tables_1403018C0+0\n"
+  ".globl word_1403018C2\n.set word_1403018C2, sr_tables_1403018C0+2\n"
+  ".globl word_1403018C4\n.set word_1403018C4, sr_tables_1403018C0+4\n"
+);
  // weak
 unsigned __int8 byte_140301900[32] =
 {
@@ -79138,59 +78932,17 @@ unsigned __int8 byte_140301900[32] =
   0u
 };
  // weak
-__int16 word_140301920[] = { 1 };
- // weak
-__int16 word_140301922 = 2;
- // weak
-__int16 word_140301924[46] =
-{
-  3,
-  4,
-  5,
-  7,
-  9,
-  13,
-  17,
-  25,
-  33,
-  49,
-  65,
-  97,
-  129,
-  193,
-  257,
-  385,
-  513,
-  769,
-  1025,
-  1537,
-  2049,
-  3073,
-  4097,
-  6145,
-  8193,
-  12289,
-  16385,
-  24577,
-  32768,
-  0,
-  0,
-  0,
-  257,
-  514,
-  771,
-  1028,
-  1285,
-  1542,
-  1799,
-  2056,
-  2313,
-  2570,
-  2827,
-  3084,
-  3341,
-  0
+/* 0x140301920..0x140301960: a 16-bit table of the audio code (indexed from its first word). One table in the original; code indexes it across the
+   names below, so they are aliases into a single array (tools/repairs/join_tables.py). */
+_Alignas(16) unsigned int sr_tables_140301920[16] = {
+  0x00020001u, 0x00040003u, 0x00070005u, 0x000D0009u, 0x00190011u, 0x00310021u, 0x00610041u, 0x00C10081u,
+  0x01810101u, 0x03010201u, 0x06010401u, 0x0C010801u, 0x18011001u, 0x30012001u, 0x60014001u, 0x00008000u,
 };
+__asm__(
+  ".globl word_140301920\n.set word_140301920, sr_tables_140301920+0\n"
+  ".globl word_140301922\n.set word_140301922, sr_tables_140301920+2\n"
+  ".globl word_140301924\n.set word_140301924, sr_tables_140301920+4\n"
+);
  // weak
 unsigned __int8 byte_140301960[32] =
 {

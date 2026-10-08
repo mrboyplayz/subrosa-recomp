@@ -5,17 +5,21 @@ Borderless and Fullscreen checkboxes; selecting either deselects the other.
 Clearing the active checkbox returns to a normal window. Alt+Enter switches
 between the normal window and the last selected desktop mode.
 
-Following the user's supplied SDL example, Borderless now calls
-`SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP)` (`0x1001`).
-SDL takes the desktop dimensions without selecting an exclusive display mode.
-Fullscreen uses `SDL_WINDOW_FULLSCREEN` (`0x1`). Windowed calls the same API
-with `0` and restores the normal window's position and dimensions.
-The native resize events continue to update the viewport and render state.
+Borderless is an ordinary window without a frame, placed at the display's origin and sized to the
+display (2026-10-08). It no longer calls `SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP)`:
+with OpenGL the driver presents SDL's "fullscreen desktop" window exclusively, so Borderless behaved like
+real fullscreen (mode-switch flicker on Alt+Tab, other windows could not be drawn over it). The window is
+one row taller than the display (1920x1081 on a 1080p screen); a frameless OpenGL window that matches the
+display exactly gets the same exclusive treatment. The game's 16:9 fit still renders 1920x1080.
+Fullscreen uses `SDL_WINDOW_FULLSCREEN` (`0x1`). Windowed clears SDL fullscreen and restores the normal
+window's frame, position and dimensions. The native resize events continue to update the viewport.
+
+The native code still turns a maximized window into the preferred desktop mode (window event 8 in the
+event pump) and toggles on Alt+Enter; both go through `sr_recomp_window_toggle`.
 
 Borderless explicitly sets `SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS` to `0` with
 override priority, including before initial window creation. Exclusive fullscreen
-sets it to `1`. This keeps the borderless window from minimizing just because
-another application receives keyboard focus.
+sets it to `1`.
 
 SDL references:
 https://wiki.libsdl.org/SDL2/SDL_SetWindowFullscreen and

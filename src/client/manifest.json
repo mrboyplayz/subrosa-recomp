@@ -9,16 +9,28 @@
       "functions": 1
     },
     {
+      "path": "client_blocks.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 59
+    },
+    {
       "path": "client_character.c",
       "sha256": "5c6d61e24d644611cefdea0a1b75bfaa3cf229be37f96918338b663e0cb1762a",
       "bytes": 40677,
       "functions": 2
     },
     {
+      "path": "client_city.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 20
+    },
+    {
       "path": "client_collision.c",
       "sha256": "640e2f0b865c38897208e78cb2e1518f16214d9f5986edfba246fdbed488de7a",
       "bytes": 340991,
-      "functions": 19
+      "functions": 34
     },
     {
       "path": "client_data.c",
@@ -33,6 +45,18 @@
       "functions": 2
     },
     {
+      "path": "client_gl_loader.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 13
+    },
+    {
+      "path": "client_gpu_buffers.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 4
+    },
+    {
       "path": "client_hud.c",
       "sha256": "56ebc2140fce4e07aac09b85241b1106e3b78505e55f8ef06f0dbe4a153dfb5d",
       "bytes": 32465,
@@ -42,7 +66,7 @@
       "path": "client_humans.c",
       "sha256": "66dc2d8a1198c6980fb48d23b3d8270523b755332b8d2667c61c139520b85e39",
       "bytes": 227344,
-      "functions": 6
+      "functions": 52
     },
     {
       "path": "client_input.c",
@@ -54,7 +78,7 @@
       "path": "client_items.c",
       "sha256": "88266661053147bd1248cd211390bdd9a9ee3e98449f16ab5bcef7e86724c505",
       "bytes": 102938,
-      "functions": 4
+      "functions": 11
     },
     {
       "path": "client_main.c",
@@ -75,10 +99,16 @@
       "functions": 4
     },
     {
+      "path": "client_network.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 7
+    },
+    {
       "path": "client_physics.c",
       "sha256": "11859519db82116583a3a7e9fa374a3fde6a330b3dccb6c8876b9c624a6d6b60",
       "bytes": 54971,
-      "functions": 4
+      "functions": 17
     },
     {
       "path": "client_practice.c",
@@ -90,85 +120,91 @@
       "path": "client_recovery_000000.c",
       "sha256": "6645953b82de8d07b9b1f8b4884c012dc749fe30e084e197223640197ae6c763",
       "bytes": 662481,
-      "functions": 83
+      "functions": 32
     },
     {
       "path": "client_recovery_020000.c",
       "sha256": "3a64117bab1c6d3cc1175635c5f1e48b364a6169dbfad75e96a7897e68d90248",
       "bytes": 623925,
-      "functions": 61
+      "functions": 35
     },
     {
       "path": "client_recovery_040000.c",
       "sha256": "f3ac11bba914dae67505f202a57c7d6f19542cc84ad9ff914e5f25b19e42bade",
       "bytes": 611883,
-      "functions": 95
+      "functions": 73
     },
     {
       "path": "client_recovery_060000.c",
       "sha256": "9211b5c745b794ee13e8c4830dcb0031fa8933b5a632d8fc6a818cd2af709ca4",
       "bytes": 576394,
-      "functions": 149
+      "functions": 107
     },
     {
       "path": "client_recovery_080000.c",
       "sha256": "1c6d0551d98dd365293650c8f09894474079a888baeed721fbe64ad4cb3206b3",
       "bytes": 591253,
-      "functions": 96
+      "functions": 61
     },
     {
       "path": "client_recovery_0a0000.c",
       "sha256": "e30454d93eab1bd1e205b96851a5831788ca11742ef5240d66661f9f14604743",
       "bytes": 455197,
-      "functions": 69
+      "functions": 34
     },
     {
       "path": "client_recovery_0c0000.c",
       "sha256": "42ededa67a799f9d0f12f854631f480891fa5d90a3ccc279232b674cb9661772",
       "bytes": 607187,
-      "functions": 101
+      "functions": 57
     },
     {
       "path": "client_recovery_0e0000.c",
       "sha256": "1356d0993cb083fba6af754e32801000d59b35783c77bb03c984b0dd27a86260",
       "bytes": 640168,
-      "functions": 92
+      "functions": 62
     },
     {
       "path": "client_recovery_100000.c",
       "sha256": "88f9e537fbe96ea86a08a428adecf902fe593bf7b4a083fa304be594f9d0d776",
       "bytes": 598215,
-      "functions": 115
+      "functions": 83
     },
     {
       "path": "client_recovery_120000.c",
       "sha256": "ec4fef2aa7fc9467d7aef4c89d3cd8348d80c931ea4e8e974de4a88130192bde",
       "bytes": 546250,
-      "functions": 70
+      "functions": 37
     },
     {
       "path": "client_recovery_140000.c",
       "sha256": "a9147a9cfa792216e55cd6965ff1ebd8f3b302f9577a8cb047d7f74765e41b64",
       "bytes": 301283,
-      "functions": 53
+      "functions": 11
     },
     {
       "path": "client_recovery_160000.c",
       "sha256": "f3937c9529b49345d91961e6132cbfc46c8abb00878df0c46b5877dceac7f7e9",
       "bytes": 690612,
-      "functions": 256
+      "functions": 0
     },
     {
       "path": "client_recovery_180000.c",
       "sha256": "b40c27d974b27a97f8042f7cbc40e8f179ad425b0383023f48e4269e5c6b23bc",
       "bytes": 502220,
-      "functions": 98
+      "functions": 42
     },
     {
       "path": "client_renderer.c",
       "sha256": "de39b709cf242aac2f46bb660982ba786ce9fefc9dd2704ce71d6d7276f614a8",
       "bytes": 106682,
-      "functions": 5
+      "functions": 73
+    },
+    {
+      "path": "client_replay.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 3
     },
     {
       "path": "client_runtime_180000.c",
@@ -204,7 +240,7 @@
       "path": "client_runtime_220000.c",
       "sha256": "4a0c183ba71fea8f764c0ffce75f61319835d83b644f0a898b979e096d10df3f",
       "bytes": 690388,
-      "functions": 491
+      "functions": 492
     },
     {
       "path": "client_runtime_240000.c",
@@ -225,6 +261,24 @@
       "functions": 18
     },
     {
+      "path": "client_stb_image.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 184
+    },
+    {
+      "path": "client_stb_truetype.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 139
+    },
+    {
+      "path": "client_terminal.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 27
+    },
+    {
       "path": "client_terrain.c",
       "sha256": "db24710699cec6677bd0fbba87c7ace7a9e682c75712e351b02298ecfa7fc312",
       "bytes": 28921,
@@ -240,7 +294,13 @@
       "path": "client_vehicles.c",
       "sha256": "c496d92ac6359620aec0c799d6bf997c38e1331c7ef40aeadd80c7a6f748ce14",
       "bytes": 151269,
-      "functions": 6
+      "functions": 79
+    },
+    {
+      "path": "client_widgets.c",
+      "sha256": "",
+      "bytes": 0,
+      "functions": 27
     },
     {
       "path": "client_world_assets.c",
@@ -588,7 +648,7 @@
     },
     {
       "name": "sub_140006F70",
-      "module": "client_recovery_000000.c",
+      "module": "client_collision.c",
       "original_rva": "0x6f70",
       "source_line": 86291,
       "source_end_line": 86449,
@@ -618,7 +678,7 @@
     },
     {
       "name": "sub_140007C90",
-      "module": "client_recovery_000000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x7c90",
       "source_line": 86747,
       "source_end_line": 86846,
@@ -638,7 +698,7 @@
     },
     {
       "name": "sub_140008020",
-      "module": "client_recovery_000000.c",
+      "module": "client_humans.c",
       "original_rva": "0x8020",
       "source_line": 86929,
       "source_end_line": 87140,
@@ -648,7 +708,7 @@
     },
     {
       "name": "sub_140008440",
-      "module": "client_recovery_000000.c",
+      "module": "client_humans.c",
       "original_rva": "0x8440",
       "source_line": 87140,
       "source_end_line": 87415,
@@ -658,7 +718,7 @@
     },
     {
       "name": "sub_140008BB0",
-      "module": "client_recovery_000000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x8bb0",
       "source_line": 87415,
       "source_end_line": 87523,
@@ -668,7 +728,7 @@
     },
     {
       "name": "sub_140008E40",
-      "module": "client_recovery_000000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x8e40",
       "source_line": 87523,
       "source_end_line": 87652,
@@ -688,7 +748,7 @@
     },
     {
       "name": "sub_140009340",
-      "module": "client_recovery_000000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x9340",
       "source_line": 87757,
       "source_end_line": 87902,
@@ -708,7 +768,7 @@
     },
     {
       "name": "sub_140009A00",
-      "module": "client_recovery_000000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x9a00",
       "source_line": 88064,
       "source_end_line": 88127,
@@ -718,7 +778,7 @@
     },
     {
       "name": "sub_140009BA0",
-      "module": "client_recovery_000000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x9ba0",
       "source_line": 88127,
       "source_end_line": 88217,
@@ -728,7 +788,7 @@
     },
     {
       "name": "sub_140009E30",
-      "module": "client_recovery_000000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x9e30",
       "source_line": 88217,
       "source_end_line": 89106,
@@ -768,7 +828,7 @@
     },
     {
       "name": "sub_14000B950",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0xb950",
       "source_line": 89270,
       "source_end_line": 89675,
@@ -778,7 +838,7 @@
     },
     {
       "name": "sub_14000C180",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0xc180",
       "source_line": 89675,
       "source_end_line": 89818,
@@ -788,7 +848,7 @@
     },
     {
       "name": "sub_14000C4C0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0xc4c0",
       "source_line": 89818,
       "source_end_line": 91151,
@@ -818,7 +878,7 @@
     },
     {
       "name": "sub_14000F830",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0xf830",
       "source_line": 91924,
       "source_end_line": 92172,
@@ -828,7 +888,7 @@
     },
     {
       "name": "sub_140010020",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x10020",
       "source_line": 92172,
       "source_end_line": 92215,
@@ -838,7 +898,7 @@
     },
     {
       "name": "sub_140010110",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x10110",
       "source_line": 92215,
       "source_end_line": 93627,
@@ -848,7 +908,7 @@
     },
     {
       "name": "sub_140012490",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x12490",
       "source_line": 93627,
       "source_end_line": 93740,
@@ -858,7 +918,7 @@
     },
     {
       "name": "sub_140012670",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x12670",
       "source_line": 93740,
       "source_end_line": 93814,
@@ -878,7 +938,7 @@
     },
     {
       "name": "sub_1400129D0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x129d0",
       "source_line": 93836,
       "source_end_line": 93875,
@@ -888,7 +948,7 @@
     },
     {
       "name": "sub_140012B10",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x12b10",
       "source_line": 93875,
       "source_end_line": 93917,
@@ -898,7 +958,7 @@
     },
     {
       "name": "sub_140012CA0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x12ca0",
       "source_line": 93917,
       "source_end_line": 93956,
@@ -908,7 +968,7 @@
     },
     {
       "name": "sub_140012DE0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x12de0",
       "source_line": 93956,
       "source_end_line": 93996,
@@ -928,7 +988,7 @@
     },
     {
       "name": "sub_140013020",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x13020",
       "source_line": 94015,
       "source_end_line": 94050,
@@ -938,7 +998,7 @@
     },
     {
       "name": "sub_140013120",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x13120",
       "source_line": 94050,
       "source_end_line": 95802,
@@ -948,7 +1008,7 @@
     },
     {
       "name": "sub_140016130",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16130",
       "source_line": 95802,
       "source_end_line": 95922,
@@ -958,7 +1018,7 @@
     },
     {
       "name": "sub_140016450",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16450",
       "source_line": 95922,
       "source_end_line": 95961,
@@ -968,7 +1028,7 @@
     },
     {
       "name": "sub_140016590",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16590",
       "source_line": 95961,
       "source_end_line": 96003,
@@ -978,7 +1038,7 @@
     },
     {
       "name": "sub_140016720",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16720",
       "source_line": 96003,
       "source_end_line": 96043,
@@ -988,7 +1048,7 @@
     },
     {
       "name": "sub_140016870",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16870",
       "source_line": 96043,
       "source_end_line": 96082,
@@ -998,7 +1058,7 @@
     },
     {
       "name": "sub_1400169B0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x169b0",
       "source_line": 96082,
       "source_end_line": 96121,
@@ -1008,7 +1068,7 @@
     },
     {
       "name": "sub_140016AF0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16af0",
       "source_line": 96121,
       "source_end_line": 96181,
@@ -1018,7 +1078,7 @@
     },
     {
       "name": "sub_140016C80",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16c80",
       "source_line": 96181,
       "source_end_line": 96233,
@@ -1028,7 +1088,7 @@
     },
     {
       "name": "sub_140016E30",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16e30",
       "source_line": 96233,
       "source_end_line": 96266,
@@ -1038,7 +1098,7 @@
     },
     {
       "name": "sub_140016F60",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x16f60",
       "source_line": 96266,
       "source_end_line": 96324,
@@ -1048,7 +1108,7 @@
     },
     {
       "name": "sub_140017110",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x17110",
       "source_line": 96324,
       "source_end_line": 96360,
@@ -1058,7 +1118,7 @@
     },
     {
       "name": "sub_140017260",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x17260",
       "source_line": 96360,
       "source_end_line": 96401,
@@ -1068,7 +1128,7 @@
     },
     {
       "name": "sub_1400173C0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x173c0",
       "source_line": 96401,
       "source_end_line": 96434,
@@ -1098,7 +1158,7 @@
     },
     {
       "name": "sub_140017910",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x17910",
       "source_line": 96598,
       "source_end_line": 96712,
@@ -1108,7 +1168,7 @@
     },
     {
       "name": "sub_140017AC0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x17ac0",
       "source_line": 96712,
       "source_end_line": 96760,
@@ -1128,7 +1188,7 @@
     },
     {
       "name": "sub_140017CA0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x17ca0",
       "source_line": 96781,
       "source_end_line": 97309,
@@ -1138,7 +1198,7 @@
     },
     {
       "name": "sub_140018CA0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x18ca0",
       "source_line": 97309,
       "source_end_line": 97456,
@@ -1158,7 +1218,7 @@
     },
     {
       "name": "sub_140019140",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x19140",
       "source_line": 97480,
       "source_end_line": 97599,
@@ -1168,7 +1228,7 @@
     },
     {
       "name": "sub_1400194B0",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x194b0",
       "source_line": 97599,
       "source_end_line": 97788,
@@ -1178,7 +1238,7 @@
     },
     {
       "name": "sub_140019940",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x19940",
       "source_line": 97788,
       "source_end_line": 97906,
@@ -1188,7 +1248,7 @@
     },
     {
       "name": "sub_140019C10",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x19c10",
       "source_line": 97906,
       "source_end_line": 98062,
@@ -1198,7 +1258,7 @@
     },
     {
       "name": "sub_14001A050",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x1a050",
       "source_line": 98062,
       "source_end_line": 98108,
@@ -1208,7 +1268,7 @@
     },
     {
       "name": "sub_14001A1C0",
-      "module": "client_recovery_000000.c",
+      "module": "client_city.c",
       "original_rva": "0x1a1c0",
       "source_line": 98108,
       "source_end_line": 98265,
@@ -1218,7 +1278,7 @@
     },
     {
       "name": "sub_14001A590",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x1a590",
       "source_line": 98265,
       "source_end_line": 98426,
@@ -1228,7 +1288,7 @@
     },
     {
       "name": "sub_14001A990",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x1a990",
       "source_line": 98426,
       "source_end_line": 98724,
@@ -1238,7 +1298,7 @@
     },
     {
       "name": "sub_14001B390",
-      "module": "client_recovery_000000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x1b390",
       "source_line": 98724,
       "source_end_line": 98846,
@@ -1258,7 +1318,7 @@
     },
     {
       "name": "sub_14001B6A0",
-      "module": "client_recovery_000000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x1b6a0",
       "source_line": 98907,
       "source_end_line": 99062,
@@ -1348,7 +1408,7 @@
     },
     {
       "name": "sub_140020580",
-      "module": "client_recovery_020000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x20580",
       "source_line": 101607,
       "source_end_line": 102259,
@@ -1358,7 +1418,7 @@
     },
     {
       "name": "sub_1400212E0",
-      "module": "client_recovery_020000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x212e0",
       "source_line": 102259,
       "source_end_line": 103329,
@@ -1368,7 +1428,7 @@
     },
     {
       "name": "sub_140022DF0",
-      "module": "client_recovery_020000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x22df0",
       "source_line": 103329,
       "source_end_line": 103716,
@@ -1388,7 +1448,7 @@
     },
     {
       "name": "sub_140023AC0",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x23ac0",
       "source_line": 103748,
       "source_end_line": 105177,
@@ -1408,7 +1468,7 @@
     },
     {
       "name": "sub_140026E70",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x26e70",
       "source_line": 105349,
       "source_end_line": 105537,
@@ -1418,7 +1478,7 @@
     },
     {
       "name": "sub_140027230",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x27230",
       "source_line": 105537,
       "source_end_line": 105810,
@@ -1428,7 +1488,7 @@
     },
     {
       "name": "sub_140027690",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x27690",
       "source_line": 105810,
       "source_end_line": 105870,
@@ -1438,7 +1498,7 @@
     },
     {
       "name": "sub_140027A60",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x27a60",
       "source_line": 105870,
       "source_end_line": 105925,
@@ -1448,7 +1508,7 @@
     },
     {
       "name": "sub_140027B40",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x27b40",
       "source_line": 105925,
       "source_end_line": 105981,
@@ -1458,7 +1518,7 @@
     },
     {
       "name": "sub_140027C20",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x27c20",
       "source_line": 105981,
       "source_end_line": 106037,
@@ -1478,7 +1538,7 @@
     },
     {
       "name": "sub_140028790",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x28790",
       "source_line": 106393,
       "source_end_line": 106762,
@@ -1488,7 +1548,7 @@
     },
     {
       "name": "sub_140028BD0",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x28bd0",
       "source_line": 106762,
       "source_end_line": 107021,
@@ -1498,7 +1558,7 @@
     },
     {
       "name": "sub_140029120",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x29120",
       "source_line": 107021,
       "source_end_line": 107474,
@@ -1508,7 +1568,7 @@
     },
     {
       "name": "sub_140029800",
-      "module": "client_recovery_020000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x29800",
       "source_line": 107474,
       "source_end_line": 107557,
@@ -1518,7 +1578,7 @@
     },
     {
       "name": "sub_1400299C0",
-      "module": "client_recovery_020000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x299c0",
       "source_line": 107557,
       "source_end_line": 108209,
@@ -1538,7 +1598,7 @@
     },
     {
       "name": "sub_14002A9A0",
-      "module": "client_recovery_020000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x2a9a0",
       "source_line": 108348,
       "source_end_line": 108903,
@@ -1628,7 +1688,7 @@
     },
     {
       "name": "sub_14002DB60",
-      "module": "client_recovery_020000.c",
+      "module": "client_humans.c",
       "original_rva": "0x2db60",
       "source_line": 110206,
       "source_end_line": 110732,
@@ -1658,7 +1718,7 @@
     },
     {
       "name": "sub_14002EFF0",
-      "module": "client_recovery_020000.c",
+      "module": "client_humans.c",
       "original_rva": "0x2eff0",
       "source_line": 111151,
       "source_end_line": 111448,
@@ -1668,7 +1728,7 @@
     },
     {
       "name": "sub_14002FA00",
-      "module": "client_recovery_020000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x2fa00",
       "source_line": 111448,
       "source_end_line": 111831,
@@ -1808,7 +1868,7 @@
     },
     {
       "name": "sub_140035E50",
-      "module": "client_recovery_020000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x35e50",
       "source_line": 115208,
       "source_end_line": 115932,
@@ -1818,7 +1878,7 @@
     },
     {
       "name": "sub_140037220",
-      "module": "client_recovery_020000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x37220",
       "source_line": 115932,
       "source_end_line": 116397,
@@ -1828,7 +1888,7 @@
     },
     {
       "name": "sub_140037DE0",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x37de0",
       "source_line": 116397,
       "source_end_line": 116476,
@@ -1838,7 +1898,7 @@
     },
     {
       "name": "sub_140037FE0",
-      "module": "client_recovery_020000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x37fe0",
       "source_line": 116476,
       "source_end_line": 116574,
@@ -1858,7 +1918,7 @@
     },
     {
       "name": "sub_140038230",
-      "module": "client_recovery_020000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x38230",
       "source_line": 116594,
       "source_end_line": 116706,
@@ -1898,7 +1958,7 @@
     },
     {
       "name": "sub_14003A0F0",
-      "module": "client_recovery_020000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x3a0f0",
       "source_line": 117802,
       "source_end_line": 119840,
@@ -1978,7 +2038,7 @@
     },
     {
       "name": "sub_14003E4B0",
-      "module": "client_recovery_020000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x3e4b0",
       "source_line": 121058,
       "source_end_line": 121415,
@@ -1988,7 +2048,7 @@
     },
     {
       "name": "sub_14003ED30",
-      "module": "client_recovery_020000.c",
+      "module": "client_city.c",
       "original_rva": "0x3ed30",
       "source_line": 121415,
       "source_end_line": 121553,
@@ -2028,7 +2088,7 @@
     },
     {
       "name": "sub_140040490",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x40490",
       "source_line": 122086,
       "source_end_line": 122948,
@@ -2048,7 +2108,7 @@
     },
     {
       "name": "sub_140042930",
-      "module": "client_recovery_040000.c",
+      "module": "client_humans.c",
       "original_rva": "0x42930",
       "source_line": 123446,
       "source_end_line": 125072,
@@ -2098,7 +2158,7 @@
     },
     {
       "name": "sub_1400462B0",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x462b0",
       "source_line": 126300,
       "source_end_line": 127676,
@@ -2118,7 +2178,7 @@
     },
     {
       "name": "sub_140048110",
-      "module": "client_recovery_040000.c",
+      "module": "client_physics.c",
       "original_rva": "0x48110",
       "source_line": 127698,
       "source_end_line": 128122,
@@ -2128,7 +2188,7 @@
     },
     {
       "name": "sub_140048BA0",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x48ba0",
       "source_line": 128122,
       "source_end_line": 128198,
@@ -2178,7 +2238,7 @@
     },
     {
       "name": "sub_14004A670",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x4a670",
       "source_line": 129354,
       "source_end_line": 129396,
@@ -2248,7 +2308,7 @@
     },
     {
       "name": "sub_14004CCB0",
-      "module": "client_recovery_040000.c",
+      "module": "client_terminal.c",
       "original_rva": "0x4ccb0",
       "source_line": 131164,
       "source_end_line": 131245,
@@ -2268,7 +2328,7 @@
     },
     {
       "name": "sub_14004D170",
-      "module": "client_recovery_040000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x4d170",
       "source_line": 131332,
       "source_end_line": 131499,
@@ -2278,7 +2338,7 @@
     },
     {
       "name": "sub_14004D390",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x4d390",
       "source_line": 131499,
       "source_end_line": 131635,
@@ -2288,7 +2348,7 @@
     },
     {
       "name": "sub_14004D750",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x4d750",
       "source_line": 131635,
       "source_end_line": 131783,
@@ -2298,7 +2358,7 @@
     },
     {
       "name": "sub_14004DA50",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x4da50",
       "source_line": 131783,
       "source_end_line": 131819,
@@ -2308,7 +2368,7 @@
     },
     {
       "name": "sub_14004DB20",
-      "module": "client_recovery_040000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x4db20",
       "source_line": 131819,
       "source_end_line": 131936,
@@ -2318,7 +2378,7 @@
     },
     {
       "name": "sub_14004DE30",
-      "module": "client_recovery_040000.c",
+      "module": "client_collision.c",
       "original_rva": "0x4de30",
       "source_line": 131936,
       "source_end_line": 132072,
@@ -2428,7 +2488,7 @@
     },
     {
       "name": "sub_140050C80",
-      "module": "client_recovery_040000.c",
+      "module": "client_physics.c",
       "original_rva": "0x50c80",
       "source_line": 133343,
       "source_end_line": 133466,
@@ -2708,7 +2768,7 @@
     },
     {
       "name": "sub_140055FA0",
-      "module": "client_recovery_040000.c",
+      "module": "client_humans.c",
       "original_rva": "0x55fa0",
       "source_line": 135966,
       "source_end_line": 136031,
@@ -2738,7 +2798,7 @@
     },
     {
       "name": "sub_140056980",
-      "module": "client_recovery_040000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x56980",
       "source_line": 136236,
       "source_end_line": 137371,
@@ -2748,7 +2808,7 @@
     },
     {
       "name": "sub_1400584B0",
-      "module": "client_recovery_040000.c",
+      "module": "client_terminal.c",
       "original_rva": "0x584b0",
       "source_line": 137371,
       "source_end_line": 137569,
@@ -2758,7 +2818,7 @@
     },
     {
       "name": "sub_1400588F0",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x588f0",
       "source_line": 137569,
       "source_end_line": 137607,
@@ -2858,7 +2918,7 @@
     },
     {
       "name": "sub_14005CBB0",
-      "module": "client_recovery_040000.c",
+      "module": "client_collision.c",
       "original_rva": "0x5cbb0",
       "source_line": 140282,
       "source_end_line": 140319,
@@ -2878,7 +2938,7 @@
     },
     {
       "name": "sub_14005CF80",
-      "module": "client_recovery_040000.c",
+      "module": "client_physics.c",
       "original_rva": "0x5cf80",
       "source_line": 140389,
       "source_end_line": 140486,
@@ -2918,7 +2978,7 @@
     },
     {
       "name": "sub_14005D920",
-      "module": "client_recovery_040000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x5d920",
       "source_line": 140748,
       "source_end_line": 141155,
@@ -3008,7 +3068,7 @@
     },
     {
       "name": "sub_14005F6E0",
-      "module": "client_recovery_040000.c",
+      "module": "client_city.c",
       "original_rva": "0x5f6e0",
       "source_line": 141960,
       "source_end_line": 142363,
@@ -3018,7 +3078,7 @@
     },
     {
       "name": "sub_1400603A0",
-      "module": "client_recovery_060000.c",
+      "module": "client_city.c",
       "original_rva": "0x603a0",
       "source_line": 142363,
       "source_end_line": 142954,
@@ -3038,7 +3098,7 @@
     },
     {
       "name": "sub_140061A60",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x61a60",
       "source_line": 142997,
       "source_end_line": 144103,
@@ -3048,7 +3108,7 @@
     },
     {
       "name": "sub_1400636E0",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x636e0",
       "source_line": 144103,
       "source_end_line": 145029,
@@ -3068,7 +3128,7 @@
     },
     {
       "name": "sub_1400656E0",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x656e0",
       "source_line": 145280,
       "source_end_line": 145423,
@@ -3098,7 +3158,7 @@
     },
     {
       "name": "sub_140067970",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x67970",
       "source_line": 146334,
       "source_end_line": 146847,
@@ -3258,7 +3318,7 @@
     },
     {
       "name": "sub_14006A5F0",
-      "module": "client_recovery_060000.c",
+      "module": "client_physics.c",
       "original_rva": "0x6a5f0",
       "source_line": 147905,
       "source_end_line": 148381,
@@ -3328,7 +3388,7 @@
     },
     {
       "name": "sub_14006C360",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x6c360",
       "source_line": 149032,
       "source_end_line": 149121,
@@ -3358,7 +3418,7 @@
     },
     {
       "name": "sub_14006C5E0",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x6c5e0",
       "source_line": 149160,
       "source_end_line": 149197,
@@ -3418,7 +3478,7 @@
     },
     {
       "name": "sub_14006CCA0",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x6cca0",
       "source_line": 149378,
       "source_end_line": 149451,
@@ -3428,7 +3488,7 @@
     },
     {
       "name": "sub_14006CD90",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x6cd90",
       "source_line": 149451,
       "source_end_line": 149517,
@@ -3568,7 +3628,7 @@
     },
     {
       "name": "sub_14006ECE0",
-      "module": "client_recovery_060000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x6ece0",
       "source_line": 150535,
       "source_end_line": 150580,
@@ -3578,7 +3638,7 @@
     },
     {
       "name": "sub_14006EDD0",
-      "module": "client_recovery_060000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x6edd0",
       "source_line": 150580,
       "source_end_line": 150631,
@@ -3618,7 +3678,7 @@
     },
     {
       "name": "sub_14006F380",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x6f380",
       "source_line": 150767,
       "source_end_line": 150834,
@@ -3658,7 +3718,7 @@
     },
     {
       "name": "sub_14006FD10",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x6fd10",
       "source_line": 151088,
       "source_end_line": 151152,
@@ -3668,7 +3728,7 @@
     },
     {
       "name": "sub_14006FEB0",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x6feb0",
       "source_line": 151152,
       "source_end_line": 151203,
@@ -3688,7 +3748,7 @@
     },
     {
       "name": "sub_140070200",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x70200",
       "source_line": 151254,
       "source_end_line": 151299,
@@ -3698,7 +3758,7 @@
     },
     {
       "name": "sub_140070380",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x70380",
       "source_line": 151299,
       "source_end_line": 151476,
@@ -3708,7 +3768,7 @@
     },
     {
       "name": "sub_1400707C0",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x707c0",
       "source_line": 151476,
       "source_end_line": 151642,
@@ -3748,7 +3808,7 @@
     },
     {
       "name": "sub_1400711D0",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x711d0",
       "source_line": 151865,
       "source_end_line": 151939,
@@ -3768,7 +3828,7 @@
     },
     {
       "name": "sub_140071640",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x71640",
       "source_line": 152000,
       "source_end_line": 152054,
@@ -3788,7 +3848,7 @@
     },
     {
       "name": "sub_140071AA0",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x71aa0",
       "source_line": 152113,
       "source_end_line": 152162,
@@ -3938,7 +3998,7 @@
     },
     {
       "name": "sub_1400745F0",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x745f0",
       "source_line": 153031,
       "source_end_line": 153261,
@@ -3968,7 +4028,7 @@
     },
     {
       "name": "sub_140074E50",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x74e50",
       "source_line": 153340,
       "source_end_line": 153655,
@@ -4018,7 +4078,7 @@
     },
     {
       "name": "sub_140075650",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x75650",
       "source_line": 153795,
       "source_end_line": 153843,
@@ -4068,7 +4128,7 @@
     },
     {
       "name": "sub_1400764B0",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x764b0",
       "source_line": 154481,
       "source_end_line": 154548,
@@ -4078,7 +4138,7 @@
     },
     {
       "name": "sub_140076770",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x76770",
       "source_line": 154558,
       "source_end_line": 155064,
@@ -4088,7 +4148,7 @@
     },
     {
       "name": "sub_140077230",
-      "module": "client_recovery_060000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x77230",
       "source_line": 155064,
       "source_end_line": 155285,
@@ -4098,7 +4158,7 @@
     },
     {
       "name": "sub_140077660",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x77660",
       "source_line": 155285,
       "source_end_line": 155329,
@@ -4108,7 +4168,7 @@
     },
     {
       "name": "sub_140077710",
-      "module": "client_recovery_060000.c",
+      "module": "client_city.c",
       "original_rva": "0x77710",
       "source_line": 155329,
       "source_end_line": 155412,
@@ -4168,7 +4228,7 @@
     },
     {
       "name": "sub_1400784C0",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x784c0",
       "source_line": 155734,
       "source_end_line": 155805,
@@ -4208,7 +4268,7 @@
     },
     {
       "name": "sub_1400799F0",
-      "module": "client_recovery_060000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x799f0",
       "source_line": 156538,
       "source_end_line": 156567,
@@ -4298,7 +4358,7 @@
     },
     {
       "name": "sub_14007A8C0",
-      "module": "client_recovery_060000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x7a8c0",
       "source_line": 156993,
       "source_end_line": 157065,
@@ -4458,7 +4518,7 @@
     },
     {
       "name": "sub_14007C0C0",
-      "module": "client_recovery_060000.c",
+      "module": "client_network.c",
       "original_rva": "0x7c0c0",
       "source_line": 157763,
       "source_end_line": 157799,
@@ -4468,7 +4528,7 @@
     },
     {
       "name": "sub_14007C1C0",
-      "module": "client_recovery_060000.c",
+      "module": "client_network.c",
       "original_rva": "0x7c1c0",
       "source_line": 157799,
       "source_end_line": 157869,
@@ -4488,7 +4548,7 @@
     },
     {
       "name": "sub_14007C660",
-      "module": "client_recovery_060000.c",
+      "module": "client_network.c",
       "original_rva": "0x7c660",
       "source_line": 157995,
       "source_end_line": 158111,
@@ -4578,7 +4638,7 @@
     },
     {
       "name": "sub_14007D230",
-      "module": "client_recovery_060000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x7d230",
       "source_line": 158405,
       "source_end_line": 158446,
@@ -4648,7 +4708,7 @@
     },
     {
       "name": "sub_14007D930",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x7d930",
       "source_line": 158736,
       "source_end_line": 158953,
@@ -4668,7 +4728,7 @@
     },
     {
       "name": "sub_14007E010",
-      "module": "client_recovery_060000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x7e010",
       "source_line": 159076,
       "source_end_line": 159255,
@@ -4678,7 +4738,7 @@
     },
     {
       "name": "sub_14007E2A0",
-      "module": "client_recovery_060000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x7e2a0",
       "source_line": 159255,
       "source_end_line": 159622,
@@ -4688,7 +4748,7 @@
     },
     {
       "name": "sub_14007E9D0",
-      "module": "client_recovery_060000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x7e9d0",
       "source_line": 159622,
       "source_end_line": 159868,
@@ -4698,7 +4758,7 @@
     },
     {
       "name": "sub_14007EEB0",
-      "module": "client_recovery_060000.c",
+      "module": "client_network.c",
       "original_rva": "0x7eeb0",
       "source_line": 159868,
       "source_end_line": 160140,
@@ -4738,7 +4798,7 @@
     },
     {
       "name": "sub_14007FE00",
-      "module": "client_recovery_060000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x7fe00",
       "source_line": 160542,
       "source_end_line": 160676,
@@ -4748,7 +4808,7 @@
     },
     {
       "name": "sub_140080070",
-      "module": "client_recovery_080000.c",
+      "module": "client_collision.c",
       "original_rva": "0x80070",
       "source_line": 160676,
       "source_end_line": 160825,
@@ -4828,7 +4888,7 @@
     },
     {
       "name": "sub_1400817C0",
-      "module": "client_recovery_080000.c",
+      "module": "client_gpu_buffers.c",
       "original_rva": "0x817c0",
       "source_line": 161444,
       "source_end_line": 161542,
@@ -4858,7 +4918,7 @@
     },
     {
       "name": "sub_140081DA0",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x81da0",
       "source_line": 161642,
       "source_end_line": 161708,
@@ -4868,7 +4928,7 @@
     },
     {
       "name": "sub_140081F20",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x81f20",
       "source_line": 161708,
       "source_end_line": 161791,
@@ -4878,7 +4938,7 @@
     },
     {
       "name": "sub_140082110",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x82110",
       "source_line": 161791,
       "source_end_line": 161895,
@@ -4888,7 +4948,7 @@
     },
     {
       "name": "sub_140082420",
-      "module": "client_recovery_080000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x82420",
       "source_line": 161895,
       "source_end_line": 163147,
@@ -4918,7 +4978,7 @@
     },
     {
       "name": "sub_140085AA0",
-      "module": "client_recovery_080000.c",
+      "module": "client_humans.c",
       "original_rva": "0x85aa0",
       "source_line": 163606,
       "source_end_line": 163784,
@@ -4938,7 +4998,7 @@
     },
     {
       "name": "sub_140087810",
-      "module": "client_recovery_080000.c",
+      "module": "client_humans.c",
       "original_rva": "0x87810",
       "source_line": 164338,
       "source_end_line": 164758,
@@ -4948,7 +5008,7 @@
     },
     {
       "name": "sub_140088000",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x88000",
       "source_line": 164758,
       "source_end_line": 164809,
@@ -4958,7 +5018,7 @@
     },
     {
       "name": "sub_140088130",
-      "module": "client_recovery_080000.c",
+      "module": "client_humans.c",
       "original_rva": "0x88130",
       "source_line": 164809,
       "source_end_line": 165156,
@@ -4988,7 +5048,7 @@
     },
     {
       "name": "sub_1400891B0",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x891b0",
       "source_line": 165284,
       "source_end_line": 165375,
@@ -5098,7 +5158,7 @@
     },
     {
       "name": "sub_14008D280",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x8d280",
       "source_line": 167617,
       "source_end_line": 167735,
@@ -5108,7 +5168,7 @@
     },
     {
       "name": "sub_14008D560",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x8d560",
       "source_line": 167735,
       "source_end_line": 167926,
@@ -5118,7 +5178,7 @@
     },
     {
       "name": "sub_14008D800",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x8d800",
       "source_line": 167926,
       "source_end_line": 168691,
@@ -5128,7 +5188,7 @@
     },
     {
       "name": "sub_14008EAD0",
-      "module": "client_recovery_080000.c",
+      "module": "client_network.c",
       "original_rva": "0x8ead0",
       "source_line": 168691,
       "source_end_line": 168787,
@@ -5138,7 +5198,7 @@
     },
     {
       "name": "sub_14008EB80",
-      "module": "client_recovery_080000.c",
+      "module": "client_network.c",
       "original_rva": "0x8eb80",
       "source_line": 168787,
       "source_end_line": 168819,
@@ -5178,7 +5238,7 @@
     },
     {
       "name": "sub_14008F050",
-      "module": "client_recovery_080000.c",
+      "module": "client_terminal.c",
       "original_rva": "0x8f050",
       "source_line": 168970,
       "source_end_line": 169027,
@@ -5188,7 +5248,7 @@
     },
     {
       "name": "sub_14008F1B0",
-      "module": "client_recovery_080000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x8f1b0",
       "source_line": 169027,
       "source_end_line": 169987,
@@ -5298,7 +5358,7 @@
     },
     {
       "name": "sub_140092140",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x92140",
       "source_line": 171001,
       "source_end_line": 171056,
@@ -5318,7 +5378,7 @@
     },
     {
       "name": "sub_140092D70",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x92d70",
       "source_line": 171351,
       "source_end_line": 171544,
@@ -5328,7 +5388,7 @@
     },
     {
       "name": "sub_1400932D0",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x932d0",
       "source_line": 171544,
       "source_end_line": 172027,
@@ -5338,7 +5398,7 @@
     },
     {
       "name": "sub_140093E60",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x93e60",
       "source_line": 172027,
       "source_end_line": 172251,
@@ -5408,7 +5468,7 @@
     },
     {
       "name": "sub_140095B00",
-      "module": "client_recovery_080000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x95b00",
       "source_line": 173198,
       "source_end_line": 173381,
@@ -5438,7 +5498,7 @@
     },
     {
       "name": "sub_1400990A0",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x990a0",
       "source_line": 175049,
       "source_end_line": 175490,
@@ -5448,7 +5508,7 @@
     },
     {
       "name": "sub_140099730",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x99730",
       "source_line": 175490,
       "source_end_line": 175731,
@@ -5458,7 +5518,7 @@
     },
     {
       "name": "sub_140099DD0",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x99dd0",
       "source_line": 175731,
       "source_end_line": 175874,
@@ -5478,7 +5538,7 @@
     },
     {
       "name": "sub_14009A5F0",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x9a5f0",
       "source_line": 176035,
       "source_end_line": 176614,
@@ -5518,7 +5578,7 @@
     },
     {
       "name": "sub_14009C040",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x9c040",
       "source_line": 177075,
       "source_end_line": 177254,
@@ -5528,7 +5588,7 @@
     },
     {
       "name": "sub_14009C680",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x9c680",
       "source_line": 177254,
       "source_end_line": 177523,
@@ -5538,7 +5598,7 @@
     },
     {
       "name": "sub_14009CD10",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x9cd10",
       "source_line": 177523,
       "source_end_line": 177730,
@@ -5548,7 +5608,7 @@
     },
     {
       "name": "sub_14009D210",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x9d210",
       "source_line": 177730,
       "source_end_line": 177925,
@@ -5568,7 +5628,7 @@
     },
     {
       "name": "sub_14009DA10",
-      "module": "client_recovery_080000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x9da10",
       "source_line": 178052,
       "source_end_line": 178158,
@@ -5588,7 +5648,7 @@
     },
     {
       "name": "sub_14009DE80",
-      "module": "client_recovery_080000.c",
+      "module": "client_physics.c",
       "original_rva": "0x9de80",
       "source_line": 178204,
       "source_end_line": 178255,
@@ -5658,7 +5718,7 @@
     },
     {
       "name": "sub_14009E210",
-      "module": "client_recovery_080000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x9e210",
       "source_line": 178369,
       "source_end_line": 178533,
@@ -5728,7 +5788,7 @@
     },
     {
       "name": "gameplay_mouse_camera_state_candidate",
-      "module": "client_recovery_080000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x9fe00",
       "source_line": 179425,
       "source_end_line": 180098,
@@ -5738,7 +5798,7 @@
     },
     {
       "name": "sub_1400A0EB0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xa0eb0",
       "source_line": 180098,
       "source_end_line": 180472,
@@ -5788,7 +5848,7 @@
     },
     {
       "name": "sub_1400A2C00",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xa2c00",
       "source_line": 181241,
       "source_end_line": 181309,
@@ -5818,7 +5878,7 @@
     },
     {
       "name": "sub_1400A3970",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_replay.c",
       "original_rva": "0xa3970",
       "source_line": 181608,
       "source_end_line": 181768,
@@ -5888,7 +5948,7 @@
     },
     {
       "name": "sub_1400A48D0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xa48d0",
       "source_line": 182268,
       "source_end_line": 182344,
@@ -5898,7 +5958,7 @@
     },
     {
       "name": "sub_1400A4B40",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xa4b40",
       "source_line": 182344,
       "source_end_line": 182423,
@@ -5948,7 +6008,7 @@
     },
     {
       "name": "sub_1400A5510",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xa5510",
       "source_line": 182678,
       "source_end_line": 182732,
@@ -5968,7 +6028,7 @@
     },
     {
       "name": "sub_1400A5890",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xa5890",
       "source_line": 182783,
       "source_end_line": 182881,
@@ -5988,7 +6048,7 @@
     },
     {
       "name": "sub_1400A5D30",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xa5d30",
       "source_line": 182911,
       "source_end_line": 183049,
@@ -5998,7 +6058,7 @@
     },
     {
       "name": "sub_1400A63E0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_blocks.c",
       "original_rva": "0xa63e0",
       "source_line": 183049,
       "source_end_line": 183139,
@@ -6028,7 +6088,7 @@
     },
     {
       "name": "sub_1400A6700",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xa6700",
       "source_line": 183198,
       "source_end_line": 183349,
@@ -6038,7 +6098,7 @@
     },
     {
       "name": "sub_1400A6DF0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xa6df0",
       "source_line": 183349,
       "source_end_line": 183399,
@@ -6048,7 +6108,7 @@
     },
     {
       "name": "sub_1400A6E90",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xa6e90",
       "source_line": 183399,
       "source_end_line": 183428,
@@ -6058,7 +6118,7 @@
     },
     {
       "name": "sub_1400A6F30",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xa6f30",
       "source_line": 183428,
       "source_end_line": 183457,
@@ -6068,7 +6128,7 @@
     },
     {
       "name": "sub_1400A6FB0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xa6fb0",
       "source_line": 183457,
       "source_end_line": 183490,
@@ -6078,7 +6138,7 @@
     },
     {
       "name": "sub_1400A70B0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_physics.c",
       "original_rva": "0xa70b0",
       "source_line": 183490,
       "source_end_line": 183649,
@@ -6138,7 +6198,7 @@
     },
     {
       "name": "sub_1400A83B0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xa83b0",
       "source_line": 184332,
       "source_end_line": 184443,
@@ -6148,7 +6208,7 @@
     },
     {
       "name": "sub_1400A85E0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xa85e0",
       "source_line": 184443,
       "source_end_line": 184508,
@@ -6158,7 +6218,7 @@
     },
     {
       "name": "sub_1400A87A0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xa87a0",
       "source_line": 184508,
       "source_end_line": 185179,
@@ -6168,7 +6228,7 @@
     },
     {
       "name": "sub_1400A9760",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xa9760",
       "source_line": 185179,
       "source_end_line": 185254,
@@ -6208,7 +6268,7 @@
     },
     {
       "name": "sub_1400AAAA0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xaaaa0",
       "source_line": 185733,
       "source_end_line": 186170,
@@ -6248,7 +6308,7 @@
     },
     {
       "name": "sub_1400AC890",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xac890",
       "source_line": 186709,
       "source_end_line": 186872,
@@ -6298,7 +6358,7 @@
     },
     {
       "name": "sub_1400B2440",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xb2440",
       "source_line": 189853,
       "source_end_line": 190074,
@@ -6328,7 +6388,7 @@
     },
     {
       "name": "sub_1400B2D20",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xb2d20",
       "source_line": 190239,
       "source_end_line": 190298,
@@ -6358,7 +6418,7 @@
     },
     {
       "name": "sub_1400B40B0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xb40b0",
       "source_line": 190994,
       "source_end_line": 191453,
@@ -6388,7 +6448,7 @@
     },
     {
       "name": "sub_1400B5460",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xb5460",
       "source_line": 191711,
       "source_end_line": 192035,
@@ -6398,7 +6458,7 @@
     },
     {
       "name": "sub_1400B5E70",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xb5e70",
       "source_line": 192035,
       "source_end_line": 192259,
@@ -6408,7 +6468,7 @@
     },
     {
       "name": "sub_1400B62E0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xb62e0",
       "source_line": 192259,
       "source_end_line": 193168,
@@ -6418,7 +6478,7 @@
     },
     {
       "name": "sub_1400B78F0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xb78f0",
       "source_line": 193168,
       "source_end_line": 193994,
@@ -6428,7 +6488,7 @@
     },
     {
       "name": "sub_1400B91E0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xb91e0",
       "source_line": 193994,
       "source_end_line": 194090,
@@ -6458,7 +6518,7 @@
     },
     {
       "name": "sub_1400B9D90",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xb9d90",
       "source_line": 194460,
       "source_end_line": 194649,
@@ -6468,7 +6528,7 @@
     },
     {
       "name": "sub_1400BA210",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xba210",
       "source_line": 194649,
       "source_end_line": 194913,
@@ -6478,7 +6538,7 @@
     },
     {
       "name": "sub_1400BAA40",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xbaa40",
       "source_line": 194913,
       "source_end_line": 195294,
@@ -6488,7 +6548,7 @@
     },
     {
       "name": "sub_1400BB6B0",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xbb6b0",
       "source_line": 195294,
       "source_end_line": 195541,
@@ -6498,7 +6558,7 @@
     },
     {
       "name": "sub_1400BBF30",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xbbf30",
       "source_line": 195541,
       "source_end_line": 195939,
@@ -6508,7 +6568,7 @@
     },
     {
       "name": "sub_1400BCA30",
-      "module": "client_recovery_0a0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xbca30",
       "source_line": 195939,
       "source_end_line": 196666,
@@ -6528,7 +6588,7 @@
     },
     {
       "name": "sub_1400C2210",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xc2210",
       "source_line": 199129,
       "source_end_line": 199451,
@@ -6538,7 +6598,7 @@
     },
     {
       "name": "sub_1400C2BB0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_physics.c",
       "original_rva": "0xc2bb0",
       "source_line": 199451,
       "source_end_line": 199555,
@@ -6558,7 +6618,7 @@
     },
     {
       "name": "sub_1400C2DB0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xc2db0",
       "source_line": 199581,
       "source_end_line": 199661,
@@ -6598,7 +6658,7 @@
     },
     {
       "name": "sub_1400C3AB0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc3ab0",
       "source_line": 200065,
       "source_end_line": 200108,
@@ -6638,7 +6698,7 @@
     },
     {
       "name": "sub_1400C3E00",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc3e00",
       "source_line": 200216,
       "source_end_line": 200254,
@@ -6648,7 +6708,7 @@
     },
     {
       "name": "sub_1400C3ED0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc3ed0",
       "source_line": 200254,
       "source_end_line": 200425,
@@ -6658,7 +6718,7 @@
     },
     {
       "name": "sub_1400C4280",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc4280",
       "source_line": 200425,
       "source_end_line": 201161,
@@ -6668,7 +6728,7 @@
     },
     {
       "name": "sub_1400C5360",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc5360",
       "source_line": 201161,
       "source_end_line": 201328,
@@ -6678,7 +6738,7 @@
     },
     {
       "name": "sub_1400C5610",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc5610",
       "source_line": 201328,
       "source_end_line": 201387,
@@ -6688,7 +6748,7 @@
     },
     {
       "name": "sub_1400C5750",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc5750",
       "source_line": 201387,
       "source_end_line": 201463,
@@ -6698,7 +6758,7 @@
     },
     {
       "name": "sub_1400C58E0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc58e0",
       "source_line": 201463,
       "source_end_line": 201671,
@@ -6708,7 +6768,7 @@
     },
     {
       "name": "sub_1400C5C00",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc5c00",
       "source_line": 201671,
       "source_end_line": 202048,
@@ -6718,7 +6778,7 @@
     },
     {
       "name": "sub_1400C6580",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc6580",
       "source_line": 202048,
       "source_end_line": 202202,
@@ -6728,7 +6788,7 @@
     },
     {
       "name": "sub_1400C6980",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc6980",
       "source_line": 202202,
       "source_end_line": 202245,
@@ -6768,7 +6828,7 @@
     },
     {
       "name": "sub_1400C6D90",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc6d90",
       "source_line": 202393,
       "source_end_line": 202656,
@@ -6778,7 +6838,7 @@
     },
     {
       "name": "sub_1400C72B0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc72b0",
       "source_line": 202656,
       "source_end_line": 202716,
@@ -6788,7 +6848,7 @@
     },
     {
       "name": "sub_1400C7450",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc7450",
       "source_line": 202716,
       "source_end_line": 202968,
@@ -6798,7 +6858,7 @@
     },
     {
       "name": "sub_1400C7890",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc7890",
       "source_line": 202968,
       "source_end_line": 203377,
@@ -6808,7 +6868,7 @@
     },
     {
       "name": "sub_1400C7FC0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc7fc0",
       "source_line": 203377,
       "source_end_line": 203656,
@@ -6818,7 +6878,7 @@
     },
     {
       "name": "sub_1400C8500",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc8500",
       "source_line": 203656,
       "source_end_line": 203753,
@@ -6828,7 +6888,7 @@
     },
     {
       "name": "sub_1400C86D0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc86d0",
       "source_line": 203753,
       "source_end_line": 204009,
@@ -6878,7 +6938,7 @@
     },
     {
       "name": "sub_1400C8E10",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc8e10",
       "source_line": 204216,
       "source_end_line": 204397,
@@ -6898,7 +6958,7 @@
     },
     {
       "name": "sub_1400C9120",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc9120",
       "source_line": 204409,
       "source_end_line": 204470,
@@ -6908,7 +6968,7 @@
     },
     {
       "name": "sub_1400C92B0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc92b0",
       "source_line": 204470,
       "source_end_line": 204655,
@@ -6918,7 +6978,7 @@
     },
     {
       "name": "sub_1400C9820",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc9820",
       "source_line": 204655,
       "source_end_line": 204801,
@@ -6928,7 +6988,7 @@
     },
     {
       "name": "sub_1400C9B60",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xc9b60",
       "source_line": 204801,
       "source_end_line": 204863,
@@ -6958,7 +7018,7 @@
     },
     {
       "name": "sub_1400CA430",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xca430",
       "source_line": 205110,
       "source_end_line": 205225,
@@ -6978,7 +7038,7 @@
     },
     {
       "name": "sub_1400CA7C0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xca7c0",
       "source_line": 205272,
       "source_end_line": 205358,
@@ -6998,7 +7058,7 @@
     },
     {
       "name": "sub_1400CAA90",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xcaa90",
       "source_line": 205404,
       "source_end_line": 205628,
@@ -7008,7 +7068,7 @@
     },
     {
       "name": "sub_1400CB2D0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_items.c",
       "original_rva": "0xcb2d0",
       "source_line": 205628,
       "source_end_line": 205781,
@@ -7018,7 +7078,7 @@
     },
     {
       "name": "sub_1400CB5F0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_items.c",
       "original_rva": "0xcb5f0",
       "source_line": 205781,
       "source_end_line": 206329,
@@ -7028,7 +7088,7 @@
     },
     {
       "name": "sub_1400CC370",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_items.c",
       "original_rva": "0xcc370",
       "source_line": 206329,
       "source_end_line": 206466,
@@ -7038,7 +7098,7 @@
     },
     {
       "name": "sub_1400CC610",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_items.c",
       "original_rva": "0xcc610",
       "source_line": 206466,
       "source_end_line": 207415,
@@ -7058,7 +7118,7 @@
     },
     {
       "name": "sub_1400CDFF0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_terminal.c",
       "original_rva": "0xcdff0",
       "source_line": 207679,
       "source_end_line": 207766,
@@ -7078,7 +7138,7 @@
     },
     {
       "name": "sub_1400CF160",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xcf160",
       "source_line": 208290,
       "source_end_line": 208490,
@@ -7098,7 +7158,7 @@
     },
     {
       "name": "sub_1400CF670",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_physics.c",
       "original_rva": "0xcf670",
       "source_line": 208518,
       "source_end_line": 208707,
@@ -7228,7 +7288,7 @@
     },
     {
       "name": "sub_1400D3340",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_physics.c",
       "original_rva": "0xd3340",
       "source_line": 210765,
       "source_end_line": 211408,
@@ -7248,7 +7308,7 @@
     },
     {
       "name": "sub_1400D4360",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xd4360",
       "source_line": 211498,
       "source_end_line": 211646,
@@ -7418,7 +7478,7 @@
     },
     {
       "name": "sub_1400D6B60",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_blocks.c",
       "original_rva": "0xd6b60",
       "source_line": 212875,
       "source_end_line": 213989,
@@ -7448,7 +7508,7 @@
     },
     {
       "name": "sub_1400D8B70",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xd8b70",
       "source_line": 214134,
       "source_end_line": 214566,
@@ -7458,7 +7518,7 @@
     },
     {
       "name": "sub_1400D97A0",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xd97a0",
       "source_line": 214566,
       "source_end_line": 214992,
@@ -7518,7 +7578,7 @@
     },
     {
       "name": "sub_1400DB060",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xdb060",
       "source_line": 215590,
       "source_end_line": 215736,
@@ -7568,7 +7628,7 @@
     },
     {
       "name": "sub_1400DC940",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xdc940",
       "source_line": 216467,
       "source_end_line": 217078,
@@ -7578,7 +7638,7 @@
     },
     {
       "name": "sub_1400DDB70",
-      "module": "client_recovery_0c0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xddb70",
       "source_line": 217078,
       "source_end_line": 217580,
@@ -7638,7 +7698,7 @@
     },
     {
       "name": "sub_1400E15A0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xe15a0",
       "source_line": 219345,
       "source_end_line": 219898,
@@ -7658,7 +7718,7 @@
     },
     {
       "name": "sub_1400E2D40",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_collision.c",
       "original_rva": "0xe2d40",
       "source_line": 220357,
       "source_end_line": 220650,
@@ -7698,7 +7758,7 @@
     },
     {
       "name": "sub_1400E3AB0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_renderer.c",
       "original_rva": "0xe3ab0",
       "source_line": 220906,
       "source_end_line": 220974,
@@ -7718,7 +7778,7 @@
     },
     {
       "name": "sub_1400E3BC0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe3bc0",
       "source_line": 220992,
       "source_end_line": 221049,
@@ -7728,7 +7788,7 @@
     },
     {
       "name": "sub_1400E3EE0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe3ee0",
       "source_line": 221049,
       "source_end_line": 221119,
@@ -7738,7 +7798,7 @@
     },
     {
       "name": "sub_1400E3FD0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe3fd0",
       "source_line": 221119,
       "source_end_line": 221144,
@@ -7748,7 +7808,7 @@
     },
     {
       "name": "sub_1400E4030",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe4030",
       "source_line": 221144,
       "source_end_line": 221164,
@@ -7758,7 +7818,7 @@
     },
     {
       "name": "sub_1400E40E0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe40e0",
       "source_line": 221164,
       "source_end_line": 221182,
@@ -7768,7 +7828,7 @@
     },
     {
       "name": "sub_1400E4190",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe4190",
       "source_line": 221182,
       "source_end_line": 221209,
@@ -7778,7 +7838,7 @@
     },
     {
       "name": "sub_1400E42E0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe42e0",
       "source_line": 221209,
       "source_end_line": 221315,
@@ -7788,7 +7848,7 @@
     },
     {
       "name": "sub_1400E48D0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe48d0",
       "source_line": 221315,
       "source_end_line": 221357,
@@ -7798,7 +7858,7 @@
     },
     {
       "name": "sub_1400E4950",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe4950",
       "source_line": 221357,
       "source_end_line": 221449,
@@ -7808,7 +7868,7 @@
     },
     {
       "name": "sub_1400E4EB0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe4eb0",
       "source_line": 221449,
       "source_end_line": 221492,
@@ -7818,7 +7878,7 @@
     },
     {
       "name": "sub_1400E4FC0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe4fc0",
       "source_line": 221492,
       "source_end_line": 221523,
@@ -7828,7 +7888,7 @@
     },
     {
       "name": "sub_1400E5110",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_gl_loader.c",
       "original_rva": "0xe5110",
       "source_line": 221523,
       "source_end_line": 221591,
@@ -7858,7 +7918,7 @@
     },
     {
       "name": "sub_1400E5F10",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xe5f10",
       "source_line": 222287,
       "source_end_line": 222567,
@@ -7868,7 +7928,7 @@
     },
     {
       "name": "sub_1400E64C0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xe64c0",
       "source_line": 222567,
       "source_end_line": 222641,
@@ -7948,7 +8008,7 @@
     },
     {
       "name": "sub_1400E7960",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_items.c",
       "original_rva": "0xe7960",
       "source_line": 223524,
       "source_end_line": 223636,
@@ -8008,7 +8068,7 @@
     },
     {
       "name": "player_load_profile_config_candidate",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_blocks.c",
       "original_rva": "0xeaa00",
       "source_line": 225422,
       "source_end_line": 226800,
@@ -8148,7 +8208,7 @@
     },
     {
       "name": "sub_1400EE780",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xee780",
       "source_line": 228704,
       "source_end_line": 229148,
@@ -8158,7 +8218,7 @@
     },
     {
       "name": "sub_1400EF0D0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xef0d0",
       "source_line": 229148,
       "source_end_line": 229572,
@@ -8208,7 +8268,7 @@
     },
     {
       "name": "sub_1400F0160",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xf0160",
       "source_line": 229870,
       "source_end_line": 230017,
@@ -8228,7 +8288,7 @@
     },
     {
       "name": "sub_1400F0640",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xf0640",
       "source_line": 230071,
       "source_end_line": 230844,
@@ -8238,7 +8298,7 @@
     },
     {
       "name": "sub_1400F1950",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xf1950",
       "source_line": 230844,
       "source_end_line": 232162,
@@ -8348,7 +8408,7 @@
     },
     {
       "name": "sub_1400F5B60",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xf5b60",
       "source_line": 233733,
       "source_end_line": 234070,
@@ -8368,7 +8428,7 @@
     },
     {
       "name": "sub_1400F6170",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0xf6170",
       "source_line": 234144,
       "source_end_line": 234711,
@@ -8388,7 +8448,7 @@
     },
     {
       "name": "sub_1400F80A0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_humans.c",
       "original_rva": "0xf80a0",
       "source_line": 235774,
       "source_end_line": 236903,
@@ -8498,7 +8558,7 @@
     },
     {
       "name": "sub_1400FCFF0",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_widgets.c",
       "original_rva": "0xfcff0",
       "source_line": 239024,
       "source_end_line": 239121,
@@ -8508,7 +8568,7 @@
     },
     {
       "name": "sub_1400FD300",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_widgets.c",
       "original_rva": "0xfd300",
       "source_line": 239121,
       "source_end_line": 239610,
@@ -8558,7 +8618,7 @@
     },
     {
       "name": "sub_1400FE760",
-      "module": "client_recovery_0e0000.c",
+      "module": "client_widgets.c",
       "original_rva": "0xfe760",
       "source_line": 239921,
       "source_end_line": 239962,
@@ -8688,7 +8748,7 @@
     },
     {
       "name": "sub_140103D50",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x103d50",
       "source_line": 242606,
       "source_end_line": 243048,
@@ -8838,7 +8898,7 @@
     },
     {
       "name": "sub_140106FD0",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x106fd0",
       "source_line": 244485,
       "source_end_line": 244993,
@@ -8848,7 +8908,7 @@
     },
     {
       "name": "sub_140107ED0",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x107ed0",
       "source_line": 244993,
       "source_end_line": 245415,
@@ -8868,7 +8928,7 @@
     },
     {
       "name": "sub_14010AA70",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x10aa70",
       "source_line": 246639,
       "source_end_line": 246925,
@@ -8878,7 +8938,7 @@
     },
     {
       "name": "sub_14010AF90",
-      "module": "client_recovery_100000.c",
+      "module": "client_physics.c",
       "original_rva": "0x10af90",
       "source_line": 246925,
       "source_end_line": 247445,
@@ -8908,7 +8968,7 @@
     },
     {
       "name": "sub_14010C850",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x10c850",
       "source_line": 247851,
       "source_end_line": 247895,
@@ -8918,7 +8978,7 @@
     },
     {
       "name": "sub_14010C900",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x10c900",
       "source_line": 247895,
       "source_end_line": 247929,
@@ -8928,7 +8988,7 @@
     },
     {
       "name": "sub_14010CAC0",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x10cac0",
       "source_line": 247929,
       "source_end_line": 247990,
@@ -8958,7 +9018,7 @@
     },
     {
       "name": "sub_14010D610",
-      "module": "client_recovery_100000.c",
+      "module": "client_physics.c",
       "original_rva": "0x10d610",
       "source_line": 248361,
       "source_end_line": 248622,
@@ -9078,7 +9138,7 @@
     },
     {
       "name": "sub_14010EC30",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x10ec30",
       "source_line": 249184,
       "source_end_line": 249273,
@@ -9088,7 +9148,7 @@
     },
     {
       "name": "sub_14010EE20",
-      "module": "client_recovery_100000.c",
+      "module": "client_humans.c",
       "original_rva": "0x10ee20",
       "source_line": 249273,
       "source_end_line": 249294,
@@ -9118,7 +9178,7 @@
     },
     {
       "name": "sub_1401107F0",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x1107f0",
       "source_line": 250468,
       "source_end_line": 250678,
@@ -9138,7 +9198,7 @@
     },
     {
       "name": "sub_140114330",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x114330",
       "source_line": 252888,
       "source_end_line": 253220,
@@ -9148,7 +9208,7 @@
     },
     {
       "name": "sub_140114AF0",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x114af0",
       "source_line": 253220,
       "source_end_line": 253347,
@@ -9328,7 +9388,7 @@
     },
     {
       "name": "sub_140115FF0",
-      "module": "client_recovery_100000.c",
+      "module": "client_items.c",
       "original_rva": "0x115ff0",
       "source_line": 254229,
       "source_end_line": 254286,
@@ -9398,7 +9458,7 @@
     },
     {
       "name": "sub_140116D80",
-      "module": "client_recovery_100000.c",
+      "module": "client_humans.c",
       "original_rva": "0x116d80",
       "source_line": 254694,
       "source_end_line": 254797,
@@ -9418,7 +9478,7 @@
     },
     {
       "name": "sub_140117340",
-      "module": "client_recovery_100000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x117340",
       "source_line": 254938,
       "source_end_line": 255122,
@@ -9438,7 +9498,7 @@
     },
     {
       "name": "sub_1401178F0",
-      "module": "client_recovery_100000.c",
+      "module": "client_humans.c",
       "original_rva": "0x1178f0",
       "source_line": 255194,
       "source_end_line": 255736,
@@ -9458,7 +9518,7 @@
     },
     {
       "name": "sub_140118B70",
-      "module": "client_recovery_100000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x118b70",
       "source_line": 255781,
       "source_end_line": 255963,
@@ -9468,7 +9528,7 @@
     },
     {
       "name": "sub_140119050",
-      "module": "client_recovery_100000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x119050",
       "source_line": 255963,
       "source_end_line": 256022,
@@ -9478,7 +9538,7 @@
     },
     {
       "name": "sub_140119220",
-      "module": "client_recovery_100000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x119220",
       "source_line": 256022,
       "source_end_line": 256378,
@@ -9488,7 +9548,7 @@
     },
     {
       "name": "sub_140119F70",
-      "module": "client_recovery_100000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x119f70",
       "source_line": 256378,
       "source_end_line": 256536,
@@ -9498,7 +9558,7 @@
     },
     {
       "name": "sub_14011A330",
-      "module": "client_recovery_100000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x11a330",
       "source_line": 256536,
       "source_end_line": 256806,
@@ -9508,7 +9568,7 @@
     },
     {
       "name": "sub_14011AA20",
-      "module": "client_recovery_100000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x11aa20",
       "source_line": 256806,
       "source_end_line": 256845,
@@ -9518,7 +9578,7 @@
     },
     {
       "name": "sub_14011AB60",
-      "module": "client_recovery_100000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x11ab60",
       "source_line": 256845,
       "source_end_line": 256907,
@@ -9528,7 +9588,7 @@
     },
     {
       "name": "sub_14011ACC0",
-      "module": "client_recovery_100000.c",
+      "module": "client_widgets.c",
       "original_rva": "0x11acc0",
       "source_line": 256907,
       "source_end_line": 257014,
@@ -9548,7 +9608,7 @@
     },
     {
       "name": "sub_14011B2A0",
-      "module": "client_recovery_100000.c",
+      "module": "client_humans.c",
       "original_rva": "0x11b2a0",
       "source_line": 257226,
       "source_end_line": 257464,
@@ -9678,7 +9738,7 @@
     },
     {
       "name": "sub_14011C510",
-      "module": "client_recovery_100000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x11c510",
       "source_line": 257882,
       "source_end_line": 257920,
@@ -9748,7 +9808,7 @@
     },
     {
       "name": "sub_14011D470",
-      "module": "client_recovery_100000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x11d470",
       "source_line": 258447,
       "source_end_line": 258664,
@@ -9758,7 +9818,7 @@
     },
     {
       "name": "sub_14011DA50",
-      "module": "client_recovery_100000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x11da50",
       "source_line": 258664,
       "source_end_line": 258799,
@@ -9778,7 +9838,7 @@
     },
     {
       "name": "sub_14011E090",
-      "module": "client_recovery_100000.c",
+      "module": "client_gpu_buffers.c",
       "original_rva": "0x11e090",
       "source_line": 258893,
       "source_end_line": 258935,
@@ -9788,7 +9848,7 @@
     },
     {
       "name": "sub_14011E210",
-      "module": "client_recovery_100000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x11e210",
       "source_line": 258935,
       "source_end_line": 259084,
@@ -9828,7 +9888,7 @@
     },
     {
       "name": "sub_140122690",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x122690",
       "source_line": 261576,
       "source_end_line": 261858,
@@ -9838,7 +9898,7 @@
     },
     {
       "name": "sub_140122CA0",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x122ca0",
       "source_line": 261858,
       "source_end_line": 262020,
@@ -9848,7 +9908,7 @@
     },
     {
       "name": "sub_140123190",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x123190",
       "source_line": 262020,
       "source_end_line": 262559,
@@ -9858,7 +9918,7 @@
     },
     {
       "name": "sub_140123F80",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x123f80",
       "source_line": 262559,
       "source_end_line": 262711,
@@ -9868,7 +9928,7 @@
     },
     {
       "name": "sub_1401241B0",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x1241b0",
       "source_line": 262711,
       "source_end_line": 262748,
@@ -9878,7 +9938,7 @@
     },
     {
       "name": "sub_140124320",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x124320",
       "source_line": 262748,
       "source_end_line": 262894,
@@ -9888,7 +9948,7 @@
     },
     {
       "name": "sub_140124840",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x124840",
       "source_line": 262894,
       "source_end_line": 262999,
@@ -9898,7 +9958,7 @@
     },
     {
       "name": "sub_140124AF0",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x124af0",
       "source_line": 262999,
       "source_end_line": 263153,
@@ -9908,7 +9968,7 @@
     },
     {
       "name": "sub_140124FE0",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x124fe0",
       "source_line": 263153,
       "source_end_line": 263233,
@@ -9918,7 +9978,7 @@
     },
     {
       "name": "sub_140125270",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x125270",
       "source_line": 263233,
       "source_end_line": 263283,
@@ -9928,7 +9988,7 @@
     },
     {
       "name": "sub_1401253C0",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x1253c0",
       "source_line": 263283,
       "source_end_line": 263401,
@@ -9938,7 +9998,7 @@
     },
     {
       "name": "sub_140125670",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x125670",
       "source_line": 263401,
       "source_end_line": 263460,
@@ -9948,7 +10008,7 @@
     },
     {
       "name": "sub_140125860",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x125860",
       "source_line": 263460,
       "source_end_line": 263515,
@@ -9958,7 +10018,7 @@
     },
     {
       "name": "sub_1401259B0",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x1259b0",
       "source_line": 263515,
       "source_end_line": 263626,
@@ -9968,7 +10028,7 @@
     },
     {
       "name": "sub_140125DB0",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x125db0",
       "source_line": 263626,
       "source_end_line": 264298,
@@ -9988,7 +10048,7 @@
     },
     {
       "name": "sub_140127300",
-      "module": "client_recovery_120000.c",
+      "module": "client_replay.c",
       "original_rva": "0x127300",
       "source_line": 264381,
       "source_end_line": 264501,
@@ -10008,7 +10068,7 @@
     },
     {
       "name": "sub_140127630",
-      "module": "client_recovery_120000.c",
+      "module": "client_replay.c",
       "original_rva": "0x127630",
       "source_line": 264548,
       "source_end_line": 264678,
@@ -10048,7 +10108,7 @@
     },
     {
       "name": "sub_14012B090",
-      "module": "client_recovery_120000.c",
+      "module": "client_physics.c",
       "original_rva": "0x12b090",
       "source_line": 267011,
       "source_end_line": 267044,
@@ -10058,7 +10118,7 @@
     },
     {
       "name": "sub_14012B170",
-      "module": "client_recovery_120000.c",
+      "module": "client_physics.c",
       "original_rva": "0x12b170",
       "source_line": 267044,
       "source_end_line": 267071,
@@ -10108,7 +10168,7 @@
     },
     {
       "name": "sub_14012C1F0",
-      "module": "client_recovery_120000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x12c1f0",
       "source_line": 267540,
       "source_end_line": 267663,
@@ -10128,7 +10188,7 @@
     },
     {
       "name": "sub_14012C480",
-      "module": "client_recovery_120000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x12c480",
       "source_line": 267673,
       "source_end_line": 267811,
@@ -10148,7 +10208,7 @@
     },
     {
       "name": "sub_14012C890",
-      "module": "client_recovery_120000.c",
+      "module": "client_items.c",
       "original_rva": "0x12c890",
       "source_line": 267883,
       "source_end_line": 267953,
@@ -10188,7 +10248,7 @@
     },
     {
       "name": "sub_14012D310",
-      "module": "client_recovery_120000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x12d310",
       "source_line": 268241,
       "source_end_line": 268506,
@@ -10198,7 +10258,7 @@
     },
     {
       "name": "sub_14012DC20",
-      "module": "client_recovery_120000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x12dc20",
       "source_line": 268506,
       "source_end_line": 268815,
@@ -10208,7 +10268,7 @@
     },
     {
       "name": "sub_14012E620",
-      "module": "client_recovery_120000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x12e620",
       "source_line": 268815,
       "source_end_line": 268948,
@@ -10318,7 +10378,7 @@
     },
     {
       "name": "sub_140130350",
-      "module": "client_recovery_120000.c",
+      "module": "client_network.c",
       "original_rva": "0x130350",
       "source_line": 270028,
       "source_end_line": 270128,
@@ -10338,7 +10398,7 @@
     },
     {
       "name": "sub_1401307D0",
-      "module": "client_recovery_120000.c",
+      "module": "client_humans.c",
       "original_rva": "0x1307d0",
       "source_line": 270187,
       "source_end_line": 271550,
@@ -10358,7 +10418,7 @@
     },
     {
       "name": "sub_140132B00",
-      "module": "client_recovery_120000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x132b00",
       "source_line": 271625,
       "source_end_line": 271759,
@@ -10398,7 +10458,7 @@
     },
     {
       "name": "sub_140133090",
-      "module": "client_recovery_120000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x133090",
       "source_line": 271914,
       "source_end_line": 274638,
@@ -10408,7 +10468,7 @@
     },
     {
       "name": "sub_140136450",
-      "module": "client_recovery_120000.c",
+      "module": "client_humans.c",
       "original_rva": "0x136450",
       "source_line": 274638,
       "source_end_line": 275879,
@@ -10438,7 +10498,7 @@
     },
     {
       "name": "sub_1401380F0",
-      "module": "client_recovery_120000.c",
+      "module": "client_humans.c",
       "original_rva": "0x1380f0",
       "source_line": 276001,
       "source_end_line": 276086,
@@ -10478,7 +10538,7 @@
     },
     {
       "name": "sub_140138770",
-      "module": "client_recovery_120000.c",
+      "module": "client_humans.c",
       "original_rva": "0x138770",
       "source_line": 276232,
       "source_end_line": 276576,
@@ -10548,7 +10608,7 @@
     },
     {
       "name": "sub_14013D1B0",
-      "module": "client_recovery_120000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x13d1b0",
       "source_line": 278815,
       "source_end_line": 279083,
@@ -10608,7 +10668,7 @@
     },
     {
       "name": "sub_140144700",
-      "module": "client_recovery_140000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x144700",
       "source_line": 283151,
       "source_end_line": 283270,
@@ -10648,7 +10708,7 @@
     },
     {
       "name": "sub_14014A8E0",
-      "module": "client_recovery_140000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x14a8e0",
       "source_line": 286141,
       "source_end_line": 286359,
@@ -10658,7 +10718,7 @@
     },
     {
       "name": "sub_14014AAE0",
-      "module": "client_recovery_140000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x14aae0",
       "source_line": 286359,
       "source_end_line": 286736,
@@ -10718,7 +10778,7 @@
     },
     {
       "name": "sub_14014D3E0",
-      "module": "client_recovery_140000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x14d3e0",
       "source_line": 287631,
       "source_end_line": 287718,
@@ -10728,7 +10788,7 @@
     },
     {
       "name": "sub_14014D6D0",
-      "module": "client_recovery_140000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x14d6d0",
       "source_line": 287718,
       "source_end_line": 288422,
@@ -10808,7 +10868,7 @@
     },
     {
       "name": "sub_1401540B0",
-      "module": "client_recovery_140000.c",
+      "module": "client_collision.c",
       "original_rva": "0x1540b0",
       "source_line": 291752,
       "source_end_line": 291800,
@@ -10848,7 +10908,7 @@
     },
     {
       "name": "sub_140155790",
-      "module": "client_recovery_140000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x155790",
       "source_line": 292645,
       "source_end_line": 293088,
@@ -10878,7 +10938,7 @@
     },
     {
       "name": "sub_140158610",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x158610",
       "source_line": 294546,
       "source_end_line": 294582,
@@ -10888,7 +10948,7 @@
     },
     {
       "name": "sub_140158760",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x158760",
       "source_line": 294582,
       "source_end_line": 294726,
@@ -10898,7 +10958,7 @@
     },
     {
       "name": "sub_140158AB0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x158ab0",
       "source_line": 294726,
       "source_end_line": 294738,
@@ -10908,7 +10968,7 @@
     },
     {
       "name": "sub_140158B10",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x158b10",
       "source_line": 294738,
       "source_end_line": 294767,
@@ -10918,7 +10978,7 @@
     },
     {
       "name": "sub_140158C70",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x158c70",
       "source_line": 294767,
       "source_end_line": 294782,
@@ -10948,7 +11008,7 @@
     },
     {
       "name": "sub_14015AE10",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15ae10",
       "source_line": 295855,
       "source_end_line": 295942,
@@ -10958,7 +11018,7 @@
     },
     {
       "name": "sub_14015AFD0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15afd0",
       "source_line": 295942,
       "source_end_line": 295977,
@@ -10968,7 +11028,7 @@
     },
     {
       "name": "sub_14015B070",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15b070",
       "source_line": 295977,
       "source_end_line": 295989,
@@ -10978,7 +11038,7 @@
     },
     {
       "name": "sub_14015B0D0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15b0d0",
       "source_line": 295989,
       "source_end_line": 296000,
@@ -10988,7 +11048,7 @@
     },
     {
       "name": "sub_14015B140",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15b140",
       "source_line": 296000,
       "source_end_line": 296066,
@@ -10998,7 +11058,7 @@
     },
     {
       "name": "sub_14015B270",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15b270",
       "source_line": 296066,
       "source_end_line": 296184,
@@ -11008,7 +11068,7 @@
     },
     {
       "name": "sub_14015B530",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15b530",
       "source_line": 296184,
       "source_end_line": 296203,
@@ -11018,7 +11078,7 @@
     },
     {
       "name": "sub_14015B580",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15b580",
       "source_line": 296203,
       "source_end_line": 296221,
@@ -11028,7 +11088,7 @@
     },
     {
       "name": "sub_14015B6D0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15b6d0",
       "source_line": 296221,
       "source_end_line": 296253,
@@ -11038,7 +11098,7 @@
     },
     {
       "name": "sub_14015B780",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15b780",
       "source_line": 296253,
       "source_end_line": 297201,
@@ -11048,7 +11108,7 @@
     },
     {
       "name": "sub_14015C5E0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15c5e0",
       "source_line": 297201,
       "source_end_line": 297386,
@@ -11058,7 +11118,7 @@
     },
     {
       "name": "sub_14015C9B0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15c9b0",
       "source_line": 297386,
       "source_end_line": 297449,
@@ -11068,7 +11128,7 @@
     },
     {
       "name": "sub_14015CAD0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15cad0",
       "source_line": 297449,
       "source_end_line": 297505,
@@ -11078,7 +11138,7 @@
     },
     {
       "name": "sub_14015CBD0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15cbd0",
       "source_line": 297505,
       "source_end_line": 297550,
@@ -11088,7 +11148,7 @@
     },
     {
       "name": "sub_14015CCB0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15ccb0",
       "source_line": 297550,
       "source_end_line": 297661,
@@ -11098,7 +11158,7 @@
     },
     {
       "name": "sub_14015CE80",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15ce80",
       "source_line": 297661,
       "source_end_line": 297702,
@@ -11108,7 +11168,7 @@
     },
     {
       "name": "sub_14015CF70",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15cf70",
       "source_line": 297702,
       "source_end_line": 298026,
@@ -11118,7 +11178,7 @@
     },
     {
       "name": "sub_14015D400",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15d400",
       "source_line": 298026,
       "source_end_line": 298086,
@@ -11128,7 +11188,7 @@
     },
     {
       "name": "sub_14015D4C0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15d4c0",
       "source_line": 298086,
       "source_end_line": 298143,
@@ -11138,7 +11198,7 @@
     },
     {
       "name": "sub_14015D5D0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15d5d0",
       "source_line": 298143,
       "source_end_line": 298206,
@@ -11148,7 +11208,7 @@
     },
     {
       "name": "sub_14015D730",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15d730",
       "source_line": 298206,
       "source_end_line": 298237,
@@ -11158,7 +11218,7 @@
     },
     {
       "name": "sub_14015D7E0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15d7e0",
       "source_line": 298237,
       "source_end_line": 298274,
@@ -11168,7 +11228,7 @@
     },
     {
       "name": "sub_14015DD00",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15dd00",
       "source_line": 298274,
       "source_end_line": 298486,
@@ -11178,7 +11238,7 @@
     },
     {
       "name": "sub_14015E240",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15e240",
       "source_line": 298486,
       "source_end_line": 298494,
@@ -11188,7 +11248,7 @@
     },
     {
       "name": "sub_14015E260",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15e260",
       "source_line": 298494,
       "source_end_line": 298694,
@@ -11198,7 +11258,7 @@
     },
     {
       "name": "sub_14015E5F0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15e5f0",
       "source_line": 298694,
       "source_end_line": 299773,
@@ -11208,7 +11268,7 @@
     },
     {
       "name": "sub_14015F820",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15f820",
       "source_line": 299773,
       "source_end_line": 299879,
@@ -11218,7 +11278,7 @@
     },
     {
       "name": "sub_14015F960",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15f960",
       "source_line": 299879,
       "source_end_line": 299944,
@@ -11228,7 +11288,7 @@
     },
     {
       "name": "sub_14015FAD0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15fad0",
       "source_line": 299944,
       "source_end_line": 300234,
@@ -11238,7 +11298,7 @@
     },
     {
       "name": "sub_14015FFC0",
-      "module": "client_recovery_140000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x15ffc0",
       "source_line": 300234,
       "source_end_line": 300306,
@@ -11248,7 +11308,7 @@
     },
     {
       "name": "sub_140160180",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160180",
       "source_line": 300306,
       "source_end_line": 300371,
@@ -11258,7 +11318,7 @@
     },
     {
       "name": "sub_1401602C0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1602c0",
       "source_line": 300371,
       "source_end_line": 300396,
@@ -11268,7 +11328,7 @@
     },
     {
       "name": "sub_140160350",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160350",
       "source_line": 300396,
       "source_end_line": 300446,
@@ -11278,7 +11338,7 @@
     },
     {
       "name": "sub_1401603C0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1603c0",
       "source_line": 300446,
       "source_end_line": 300469,
@@ -11288,7 +11348,7 @@
     },
     {
       "name": "sub_140160430",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160430",
       "source_line": 300469,
       "source_end_line": 300484,
@@ -11298,7 +11358,7 @@
     },
     {
       "name": "sub_140160460",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160460",
       "source_line": 300484,
       "source_end_line": 300525,
@@ -11308,7 +11368,7 @@
     },
     {
       "name": "sub_1401604F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1604f0",
       "source_line": 300525,
       "source_end_line": 300570,
@@ -11318,7 +11378,7 @@
     },
     {
       "name": "sub_1401605B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1605b0",
       "source_line": 300570,
       "source_end_line": 300615,
@@ -11328,7 +11388,7 @@
     },
     {
       "name": "sub_140160670",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160670",
       "source_line": 300615,
       "source_end_line": 300624,
@@ -11338,7 +11398,7 @@
     },
     {
       "name": "sub_1401606A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1606a0",
       "source_line": 300624,
       "source_end_line": 300633,
@@ -11348,7 +11408,7 @@
     },
     {
       "name": "sub_1401606D0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1606d0",
       "source_line": 300633,
       "source_end_line": 300663,
@@ -11358,7 +11418,7 @@
     },
     {
       "name": "sub_140160730",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160730",
       "source_line": 300663,
       "source_end_line": 300676,
@@ -11368,7 +11428,7 @@
     },
     {
       "name": "sub_140160790",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160790",
       "source_line": 300676,
       "source_end_line": 300726,
@@ -11378,7 +11438,7 @@
     },
     {
       "name": "sub_140160860",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160860",
       "source_line": 300726,
       "source_end_line": 300760,
@@ -11388,7 +11448,7 @@
     },
     {
       "name": "sub_140160930",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160930",
       "source_line": 300760,
       "source_end_line": 300952,
@@ -11398,7 +11458,7 @@
     },
     {
       "name": "sub_140160CA0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160ca0",
       "source_line": 300952,
       "source_end_line": 300977,
@@ -11408,7 +11468,7 @@
     },
     {
       "name": "sub_140160D50",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160d50",
       "source_line": 300977,
       "source_end_line": 301002,
@@ -11418,7 +11478,7 @@
     },
     {
       "name": "sub_140160E00",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160e00",
       "source_line": 301002,
       "source_end_line": 301042,
@@ -11428,7 +11488,7 @@
     },
     {
       "name": "sub_140160EF0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x160ef0",
       "source_line": 301042,
       "source_end_line": 301801,
@@ -11438,7 +11498,7 @@
     },
     {
       "name": "sub_140161A30",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x161a30",
       "source_line": 301801,
       "source_end_line": 301902,
@@ -11448,7 +11508,7 @@
     },
     {
       "name": "sub_140161B80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x161b80",
       "source_line": 301902,
       "source_end_line": 301913,
@@ -11458,7 +11518,7 @@
     },
     {
       "name": "sub_140161BB0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x161bb0",
       "source_line": 301913,
       "source_end_line": 302008,
@@ -11468,7 +11528,7 @@
     },
     {
       "name": "sub_140161D20",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x161d20",
       "source_line": 302008,
       "source_end_line": 302136,
@@ -11478,7 +11538,7 @@
     },
     {
       "name": "sub_140161F00",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x161f00",
       "source_line": 302136,
       "source_end_line": 302187,
@@ -11488,7 +11548,7 @@
     },
     {
       "name": "sub_140162030",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x162030",
       "source_line": 302187,
       "source_end_line": 302316,
@@ -11498,7 +11558,7 @@
     },
     {
       "name": "sub_140162220",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x162220",
       "source_line": 302316,
       "source_end_line": 302387,
@@ -11508,7 +11568,7 @@
     },
     {
       "name": "sub_1401623E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1623e0",
       "source_line": 302387,
       "source_end_line": 302821,
@@ -11518,7 +11578,7 @@
     },
     {
       "name": "sub_140162BB0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x162bb0",
       "source_line": 302821,
       "source_end_line": 302878,
@@ -11528,7 +11588,7 @@
     },
     {
       "name": "sub_140162C90",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x162c90",
       "source_line": 302878,
       "source_end_line": 302926,
@@ -11538,7 +11598,7 @@
     },
     {
       "name": "sub_140162D40",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x162d40",
       "source_line": 302926,
       "source_end_line": 303017,
@@ -11548,7 +11608,7 @@
     },
     {
       "name": "sub_140162FB0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x162fb0",
       "source_line": 303017,
       "source_end_line": 303064,
@@ -11558,7 +11618,7 @@
     },
     {
       "name": "sub_140163020",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x163020",
       "source_line": 303064,
       "source_end_line": 303438,
@@ -11568,7 +11628,7 @@
     },
     {
       "name": "sub_140163640",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x163640",
       "source_line": 303438,
       "source_end_line": 303805,
@@ -11578,7 +11638,7 @@
     },
     {
       "name": "sub_140163E70",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x163e70",
       "source_line": 303805,
       "source_end_line": 304043,
@@ -11588,7 +11648,7 @@
     },
     {
       "name": "sub_1401643B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1643b0",
       "source_line": 304043,
       "source_end_line": 304102,
@@ -11598,7 +11658,7 @@
     },
     {
       "name": "sub_140164500",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x164500",
       "source_line": 304102,
       "source_end_line": 304356,
@@ -11608,7 +11668,7 @@
     },
     {
       "name": "sub_140164A80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x164a80",
       "source_line": 304356,
       "source_end_line": 304788,
@@ -11618,7 +11678,7 @@
     },
     {
       "name": "sub_140165200",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165200",
       "source_line": 304788,
       "source_end_line": 304927,
@@ -11628,7 +11688,7 @@
     },
     {
       "name": "sub_140165570",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165570",
       "source_line": 304927,
       "source_end_line": 305004,
@@ -11638,7 +11698,7 @@
     },
     {
       "name": "sub_140165700",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165700",
       "source_line": 305004,
       "source_end_line": 305024,
@@ -11648,7 +11708,7 @@
     },
     {
       "name": "sub_140165750",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165750",
       "source_line": 305024,
       "source_end_line": 305046,
@@ -11658,7 +11718,7 @@
     },
     {
       "name": "sub_1401657B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1657b0",
       "source_line": 305046,
       "source_end_line": 305105,
@@ -11668,7 +11728,7 @@
     },
     {
       "name": "sub_140165940",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165940",
       "source_line": 305105,
       "source_end_line": 305144,
@@ -11678,7 +11738,7 @@
     },
     {
       "name": "sub_140165A10",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165a10",
       "source_line": 305144,
       "source_end_line": 305175,
@@ -11688,7 +11748,7 @@
     },
     {
       "name": "sub_140165AC0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165ac0",
       "source_line": 305175,
       "source_end_line": 305189,
@@ -11698,7 +11758,7 @@
     },
     {
       "name": "sub_140165BB0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165bb0",
       "source_line": 305189,
       "source_end_line": 305213,
@@ -11708,7 +11768,7 @@
     },
     {
       "name": "sub_140165C60",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165c60",
       "source_line": 305213,
       "source_end_line": 305373,
@@ -11718,7 +11778,7 @@
     },
     {
       "name": "sub_140165FD0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x165fd0",
       "source_line": 305373,
       "source_end_line": 305448,
@@ -11728,7 +11788,7 @@
     },
     {
       "name": "sub_140166160",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x166160",
       "source_line": 305448,
       "source_end_line": 305557,
@@ -11738,7 +11798,7 @@
     },
     {
       "name": "sub_1401663E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1663e0",
       "source_line": 305557,
       "source_end_line": 305676,
@@ -11748,7 +11808,7 @@
     },
     {
       "name": "sub_1401666B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1666b0",
       "source_line": 305676,
       "source_end_line": 305957,
@@ -11758,7 +11818,7 @@
     },
     {
       "name": "sub_140166D20",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x166d20",
       "source_line": 305957,
       "source_end_line": 306000,
@@ -11768,7 +11828,7 @@
     },
     {
       "name": "sub_140166EE0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x166ee0",
       "source_line": 306000,
       "source_end_line": 306023,
@@ -11778,7 +11838,7 @@
     },
     {
       "name": "sub_140167010",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x167010",
       "source_line": 306023,
       "source_end_line": 306034,
@@ -11788,7 +11848,7 @@
     },
     {
       "name": "sub_1401670A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1670a0",
       "source_line": 306034,
       "source_end_line": 306098,
@@ -11798,7 +11858,7 @@
     },
     {
       "name": "sub_1401671C0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1671c0",
       "source_line": 306098,
       "source_end_line": 306117,
@@ -11808,7 +11868,7 @@
     },
     {
       "name": "sub_140167230",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x167230",
       "source_line": 306117,
       "source_end_line": 306490,
@@ -11818,7 +11878,7 @@
     },
     {
       "name": "sub_140167A50",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x167a50",
       "source_line": 306493,
       "source_end_line": 306640,
@@ -11828,7 +11888,7 @@
     },
     {
       "name": "sub_140167D10",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x167d10",
       "source_line": 306659,
       "source_end_line": 307589,
@@ -11838,7 +11898,7 @@
     },
     {
       "name": "sub_140168C80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x168c80",
       "source_line": 307589,
       "source_end_line": 307704,
@@ -11848,7 +11908,7 @@
     },
     {
       "name": "sub_140168E00",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x168e00",
       "source_line": 307704,
       "source_end_line": 307870,
@@ -11858,7 +11918,7 @@
     },
     {
       "name": "sub_1401691A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1691a0",
       "source_line": 307870,
       "source_end_line": 308061,
@@ -11868,7 +11928,7 @@
     },
     {
       "name": "sub_140169470",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x169470",
       "source_line": 308061,
       "source_end_line": 308100,
@@ -11878,7 +11938,7 @@
     },
     {
       "name": "sub_140169510",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x169510",
       "source_line": 308100,
       "source_end_line": 308188,
@@ -11888,7 +11948,7 @@
     },
     {
       "name": "sub_140169770",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x169770",
       "source_line": 308188,
       "source_end_line": 308960,
@@ -11898,7 +11958,7 @@
     },
     {
       "name": "sub_14016A210",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a210",
       "source_line": 308960,
       "source_end_line": 309000,
@@ -11908,7 +11968,7 @@
     },
     {
       "name": "sub_14016A2C0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a2c0",
       "source_line": 309000,
       "source_end_line": 309030,
@@ -11918,7 +11978,7 @@
     },
     {
       "name": "sub_14016A360",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a360",
       "source_line": 309030,
       "source_end_line": 309058,
@@ -11928,7 +11988,7 @@
     },
     {
       "name": "sub_14016A400",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a400",
       "source_line": 309058,
       "source_end_line": 309082,
@@ -11938,7 +11998,7 @@
     },
     {
       "name": "sub_14016A4A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a4a0",
       "source_line": 309082,
       "source_end_line": 309098,
@@ -11948,7 +12008,7 @@
     },
     {
       "name": "sub_14016A500",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a500",
       "source_line": 309098,
       "source_end_line": 309162,
@@ -11958,7 +12018,7 @@
     },
     {
       "name": "sub_14016A670",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a670",
       "source_line": 309162,
       "source_end_line": 309174,
@@ -11968,7 +12028,7 @@
     },
     {
       "name": "sub_14016A6A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a6a0",
       "source_line": 309174,
       "source_end_line": 309240,
@@ -11978,7 +12038,7 @@
     },
     {
       "name": "sub_14016A7D0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a7d0",
       "source_line": 309240,
       "source_end_line": 309349,
@@ -11988,7 +12048,7 @@
     },
     {
       "name": "sub_14016A9F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16a9f0",
       "source_line": 309349,
       "source_end_line": 309405,
@@ -11998,7 +12058,7 @@
     },
     {
       "name": "sub_14016ABA0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16aba0",
       "source_line": 309405,
       "source_end_line": 309546,
@@ -12008,7 +12068,7 @@
     },
     {
       "name": "sub_14016ADD0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16add0",
       "source_line": 309546,
       "source_end_line": 309598,
@@ -12018,7 +12078,7 @@
     },
     {
       "name": "sub_14016AEA0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16aea0",
       "source_line": 309598,
       "source_end_line": 309948,
@@ -12028,7 +12088,7 @@
     },
     {
       "name": "sub_14016B5F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16b5f0",
       "source_line": 309948,
       "source_end_line": 310265,
@@ -12038,7 +12098,7 @@
     },
     {
       "name": "sub_14016BB40",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16bb40",
       "source_line": 310265,
       "source_end_line": 310720,
@@ -12048,7 +12108,7 @@
     },
     {
       "name": "sub_14016C320",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16c320",
       "source_line": 310720,
       "source_end_line": 310985,
@@ -12058,7 +12118,7 @@
     },
     {
       "name": "sub_14016C720",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16c720",
       "source_line": 310985,
       "source_end_line": 311135,
@@ -12068,7 +12128,7 @@
     },
     {
       "name": "sub_14016C960",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16c960",
       "source_line": 311135,
       "source_end_line": 311188,
@@ -12078,7 +12138,7 @@
     },
     {
       "name": "sub_14016CA90",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16ca90",
       "source_line": 311188,
       "source_end_line": 311225,
@@ -12088,7 +12148,7 @@
     },
     {
       "name": "sub_14016CB70",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16cb70",
       "source_line": 311225,
       "source_end_line": 311755,
@@ -12098,7 +12158,7 @@
     },
     {
       "name": "sub_14016D7A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16d7a0",
       "source_line": 311755,
       "source_end_line": 311770,
@@ -12108,7 +12168,7 @@
     },
     {
       "name": "sub_14016D800",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16d800",
       "source_line": 311770,
       "source_end_line": 311831,
@@ -12118,7 +12178,7 @@
     },
     {
       "name": "sub_14016D910",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16d910",
       "source_line": 311831,
       "source_end_line": 311860,
@@ -12128,7 +12188,7 @@
     },
     {
       "name": "sub_14016D990",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16d990",
       "source_line": 311860,
       "source_end_line": 311888,
@@ -12138,7 +12198,7 @@
     },
     {
       "name": "sub_14016D9D0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16d9d0",
       "source_line": 311888,
       "source_end_line": 311940,
@@ -12148,7 +12208,7 @@
     },
     {
       "name": "sub_14016DAC0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16dac0",
       "source_line": 311940,
       "source_end_line": 311990,
@@ -12158,7 +12218,7 @@
     },
     {
       "name": "sub_14016DB80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16db80",
       "source_line": 311990,
       "source_end_line": 312096,
@@ -12168,7 +12228,7 @@
     },
     {
       "name": "sub_14016DD80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16dd80",
       "source_line": 312096,
       "source_end_line": 312227,
@@ -12178,7 +12238,7 @@
     },
     {
       "name": "sub_14016DFD0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16dfd0",
       "source_line": 312227,
       "source_end_line": 312254,
@@ -12188,7 +12248,7 @@
     },
     {
       "name": "sub_14016E050",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e050",
       "source_line": 312254,
       "source_end_line": 312274,
@@ -12198,7 +12258,7 @@
     },
     {
       "name": "sub_14016E0F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e0f0",
       "source_line": 312274,
       "source_end_line": 312312,
@@ -12208,7 +12268,7 @@
     },
     {
       "name": "sub_14016E150",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e150",
       "source_line": 312312,
       "source_end_line": 312315,
@@ -12218,7 +12278,7 @@
     },
     {
       "name": "sub_14016E170",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e170",
       "source_line": 312315,
       "source_end_line": 312334,
@@ -12228,7 +12288,7 @@
     },
     {
       "name": "sub_14016E1E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e1e0",
       "source_line": 312334,
       "source_end_line": 312353,
@@ -12238,7 +12298,7 @@
     },
     {
       "name": "sub_14016E2A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e2a0",
       "source_line": 312353,
       "source_end_line": 312374,
@@ -12248,7 +12308,7 @@
     },
     {
       "name": "sub_14016E2F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e2f0",
       "source_line": 312374,
       "source_end_line": 312380,
@@ -12258,7 +12318,7 @@
     },
     {
       "name": "sub_14016E370",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e370",
       "source_line": 312380,
       "source_end_line": 312653,
@@ -12268,7 +12328,7 @@
     },
     {
       "name": "sub_14016E7A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16e7a0",
       "source_line": 312653,
       "source_end_line": 313258,
@@ -12278,7 +12338,7 @@
     },
     {
       "name": "sub_14016F120",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16f120",
       "source_line": 313258,
       "source_end_line": 313280,
@@ -12288,7 +12348,7 @@
     },
     {
       "name": "sub_14016F1B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16f1b0",
       "source_line": 313280,
       "source_end_line": 313473,
@@ -12298,7 +12358,7 @@
     },
     {
       "name": "sub_14016F470",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16f470",
       "source_line": 313473,
       "source_end_line": 313524,
@@ -12308,7 +12368,7 @@
     },
     {
       "name": "sub_14016F590",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16f590",
       "source_line": 313524,
       "source_end_line": 313609,
@@ -12318,7 +12378,7 @@
     },
     {
       "name": "sub_14016F730",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16f730",
       "source_line": 313609,
       "source_end_line": 313721,
@@ -12328,7 +12388,7 @@
     },
     {
       "name": "sub_14016F9E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16f9e0",
       "source_line": 313721,
       "source_end_line": 313767,
@@ -12338,7 +12398,7 @@
     },
     {
       "name": "sub_14016FB20",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16fb20",
       "source_line": 313767,
       "source_end_line": 313792,
@@ -12348,7 +12408,7 @@
     },
     {
       "name": "sub_14016FB90",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16fb90",
       "source_line": 313792,
       "source_end_line": 313830,
@@ -12358,7 +12418,7 @@
     },
     {
       "name": "sub_14016FC70",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16fc70",
       "source_line": 313830,
       "source_end_line": 313850,
@@ -12368,7 +12428,7 @@
     },
     {
       "name": "sub_14016FD50",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16fd50",
       "source_line": 313850,
       "source_end_line": 313919,
@@ -12378,7 +12438,7 @@
     },
     {
       "name": "sub_14016FED0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16fed0",
       "source_line": 313919,
       "source_end_line": 313975,
@@ -12388,7 +12448,7 @@
     },
     {
       "name": "sub_14016FFD0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x16ffd0",
       "source_line": 313975,
       "source_end_line": 314027,
@@ -12398,7 +12458,7 @@
     },
     {
       "name": "sub_1401700F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1700f0",
       "source_line": 314027,
       "source_end_line": 314054,
@@ -12408,7 +12468,7 @@
     },
     {
       "name": "sub_140170180",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x170180",
       "source_line": 314054,
       "source_end_line": 314122,
@@ -12418,7 +12478,7 @@
     },
     {
       "name": "sub_1401702F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1702f0",
       "source_line": 314122,
       "source_end_line": 314178,
@@ -12428,7 +12488,7 @@
     },
     {
       "name": "sub_1401703D0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1703d0",
       "source_line": 314178,
       "source_end_line": 314230,
@@ -12438,7 +12498,7 @@
     },
     {
       "name": "sub_1401704E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1704e0",
       "source_line": 314230,
       "source_end_line": 314257,
@@ -12448,7 +12508,7 @@
     },
     {
       "name": "sub_140170550",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x170550",
       "source_line": 314257,
       "source_end_line": 314277,
@@ -12458,7 +12518,7 @@
     },
     {
       "name": "sub_1401705B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1705b0",
       "source_line": 314277,
       "source_end_line": 314423,
@@ -12468,7 +12528,7 @@
     },
     {
       "name": "sub_1401707E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1707e0",
       "source_line": 314423,
       "source_end_line": 314575,
@@ -12478,7 +12538,7 @@
     },
     {
       "name": "sub_140170A50",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x170a50",
       "source_line": 314575,
       "source_end_line": 314645,
@@ -12488,7 +12548,7 @@
     },
     {
       "name": "sub_140170C30",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x170c30",
       "source_line": 314664,
       "source_end_line": 314698,
@@ -12498,7 +12558,7 @@
     },
     {
       "name": "sub_140170DC0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x170dc0",
       "source_line": 314698,
       "source_end_line": 314763,
@@ -12508,7 +12568,7 @@
     },
     {
       "name": "sub_140170F50",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x170f50",
       "source_line": 314763,
       "source_end_line": 314819,
@@ -12518,7 +12578,7 @@
     },
     {
       "name": "sub_140171060",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171060",
       "source_line": 314819,
       "source_end_line": 314844,
@@ -12528,7 +12588,7 @@
     },
     {
       "name": "sub_140171100",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171100",
       "source_line": 314844,
       "source_end_line": 314897,
@@ -12538,7 +12598,7 @@
     },
     {
       "name": "sub_140171210",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171210",
       "source_line": 314897,
       "source_end_line": 314947,
@@ -12548,7 +12608,7 @@
     },
     {
       "name": "sub_140171340",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171340",
       "source_line": 314947,
       "source_end_line": 314999,
@@ -12558,7 +12618,7 @@
     },
     {
       "name": "sub_140171470",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171470",
       "source_line": 314999,
       "source_end_line": 315026,
@@ -12568,7 +12628,7 @@
     },
     {
       "name": "sub_140171510",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171510",
       "source_line": 315026,
       "source_end_line": 315100,
@@ -12578,7 +12638,7 @@
     },
     {
       "name": "sub_140171670",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171670",
       "source_line": 315100,
       "source_end_line": 315161,
@@ -12588,7 +12648,7 @@
     },
     {
       "name": "sub_1401717D0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1717d0",
       "source_line": 315161,
       "source_end_line": 315217,
@@ -12598,7 +12658,7 @@
     },
     {
       "name": "sub_1401718E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1718e0",
       "source_line": 315217,
       "source_end_line": 315266,
@@ -12608,7 +12668,7 @@
     },
     {
       "name": "sub_1401719E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1719e0",
       "source_line": 315266,
       "source_end_line": 315293,
@@ -12618,7 +12678,7 @@
     },
     {
       "name": "sub_140171AD0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171ad0",
       "source_line": 315293,
       "source_end_line": 315328,
@@ -12628,7 +12688,7 @@
     },
     {
       "name": "sub_140171BB0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171bb0",
       "source_line": 315328,
       "source_end_line": 315377,
@@ -12638,7 +12698,7 @@
     },
     {
       "name": "sub_140171C80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171c80",
       "source_line": 315377,
       "source_end_line": 315400,
@@ -12648,7 +12708,7 @@
     },
     {
       "name": "sub_140171D10",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171d10",
       "source_line": 315400,
       "source_end_line": 315433,
@@ -12658,7 +12718,7 @@
     },
     {
       "name": "sub_140171DD0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171dd0",
       "source_line": 315433,
       "source_end_line": 315470,
@@ -12668,7 +12728,7 @@
     },
     {
       "name": "sub_140171F50",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171f50",
       "source_line": 315470,
       "source_end_line": 315492,
@@ -12678,7 +12738,7 @@
     },
     {
       "name": "sub_140171FC0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x171fc0",
       "source_line": 315492,
       "source_end_line": 315525,
@@ -12688,7 +12748,7 @@
     },
     {
       "name": "sub_140172080",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x172080",
       "source_line": 315525,
       "source_end_line": 316386,
@@ -12698,7 +12758,7 @@
     },
     {
       "name": "sub_1401737F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x1737f0",
       "source_line": 316386,
       "source_end_line": 316415,
@@ -12708,7 +12768,7 @@
     },
     {
       "name": "sub_140173860",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x173860",
       "source_line": 316415,
       "source_end_line": 316443,
@@ -12718,7 +12778,7 @@
     },
     {
       "name": "sub_140173910",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x173910",
       "source_line": 316443,
       "source_end_line": 316468,
@@ -12728,7 +12788,7 @@
     },
     {
       "name": "sub_140173990",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_image.c",
       "original_rva": "0x173990",
       "source_line": 316468,
       "source_end_line": 316779,
@@ -12738,7 +12798,7 @@
     },
     {
       "name": "sub_1401740A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1740a0",
       "source_line": 316779,
       "source_end_line": 316824,
@@ -12748,7 +12808,7 @@
     },
     {
       "name": "sub_140174170",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x174170",
       "source_line": 316824,
       "source_end_line": 317059,
@@ -12758,7 +12818,7 @@
     },
     {
       "name": "sub_1401745F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1745f0",
       "source_line": 317059,
       "source_end_line": 317084,
@@ -12768,7 +12828,7 @@
     },
     {
       "name": "sub_140174680",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x174680",
       "source_line": 317084,
       "source_end_line": 318371,
@@ -12778,7 +12838,7 @@
     },
     {
       "name": "sub_140175A20",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x175a20",
       "source_line": 318371,
       "source_end_line": 318402,
@@ -12788,7 +12848,7 @@
     },
     {
       "name": "sub_140175AC0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x175ac0",
       "source_line": 318402,
       "source_end_line": 318438,
@@ -12798,7 +12858,7 @@
     },
     {
       "name": "sub_140175B80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x175b80",
       "source_line": 318438,
       "source_end_line": 318477,
@@ -12808,7 +12868,7 @@
     },
     {
       "name": "sub_140175C40",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x175c40",
       "source_line": 318477,
       "source_end_line": 318517,
@@ -12818,7 +12878,7 @@
     },
     {
       "name": "sub_140175D00",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x175d00",
       "source_line": 318517,
       "source_end_line": 318536,
@@ -12828,7 +12888,7 @@
     },
     {
       "name": "sub_140175DA0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x175da0",
       "source_line": 318536,
       "source_end_line": 318572,
@@ -12838,7 +12898,7 @@
     },
     {
       "name": "sub_140175E60",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x175e60",
       "source_line": 318572,
       "source_end_line": 318592,
@@ -12848,7 +12908,7 @@
     },
     {
       "name": "sub_140175EB0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x175eb0",
       "source_line": 318592,
       "source_end_line": 318786,
@@ -12858,7 +12918,7 @@
     },
     {
       "name": "sub_1401761E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1761e0",
       "source_line": 318786,
       "source_end_line": 318801,
@@ -12868,7 +12928,7 @@
     },
     {
       "name": "sub_140176210",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x176210",
       "source_line": 318801,
       "source_end_line": 318856,
@@ -12878,7 +12938,7 @@
     },
     {
       "name": "CMFCVisualManager__OnDrawTab",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x176410",
       "source_line": 318856,
       "source_end_line": 319363,
@@ -12888,7 +12948,7 @@
     },
     {
       "name": "sub_140176C80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x176c80",
       "source_line": 319363,
       "source_end_line": 319408,
@@ -12898,7 +12958,7 @@
     },
     {
       "name": "sub_140176D40",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x176d40",
       "source_line": 319408,
       "source_end_line": 319437,
@@ -12908,7 +12968,7 @@
     },
     {
       "name": "sub_140176DF0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x176df0",
       "source_line": 319437,
       "source_end_line": 319529,
@@ -12918,7 +12978,7 @@
     },
     {
       "name": "sub_140176F90",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x176f90",
       "source_line": 319529,
       "source_end_line": 319555,
@@ -12928,7 +12988,7 @@
     },
     {
       "name": "sub_140177000",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177000",
       "source_line": 319555,
       "source_end_line": 319564,
@@ -12938,7 +12998,7 @@
     },
     {
       "name": "sub_140177030",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177030",
       "source_line": 319564,
       "source_end_line": 319602,
@@ -12948,7 +13008,7 @@
     },
     {
       "name": "sub_140177160",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177160",
       "source_line": 319602,
       "source_end_line": 319623,
@@ -12958,7 +13018,7 @@
     },
     {
       "name": "sub_1401771B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1771b0",
       "source_line": 319623,
       "source_end_line": 319643,
@@ -12968,7 +13028,7 @@
     },
     {
       "name": "sub_140177220",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177220",
       "source_line": 319643,
       "source_end_line": 319655,
@@ -12978,7 +13038,7 @@
     },
     {
       "name": "sub_140177290",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177290",
       "source_line": 319655,
       "source_end_line": 319670,
@@ -12988,7 +13048,7 @@
     },
     {
       "name": "sub_1401772C0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1772c0",
       "source_line": 319670,
       "source_end_line": 319921,
@@ -12998,7 +13058,7 @@
     },
     {
       "name": "sub_1401776D0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1776d0",
       "source_line": 319921,
       "source_end_line": 320015,
@@ -13008,7 +13068,7 @@
     },
     {
       "name": "sub_140177890",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177890",
       "source_line": 320015,
       "source_end_line": 320104,
@@ -13018,7 +13078,7 @@
     },
     {
       "name": "sub_140177A10",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177a10",
       "source_line": 320104,
       "source_end_line": 320122,
@@ -13028,7 +13088,7 @@
     },
     {
       "name": "sub_140177A80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177a80",
       "source_line": 320122,
       "source_end_line": 320133,
@@ -13038,7 +13098,7 @@
     },
     {
       "name": "sub_140177AB0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177ab0",
       "source_line": 320133,
       "source_end_line": 320205,
@@ -13048,7 +13108,7 @@
     },
     {
       "name": "sub_140177C80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177c80",
       "source_line": 320205,
       "source_end_line": 320255,
@@ -13058,7 +13118,7 @@
     },
     {
       "name": "sub_140177D70",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177d70",
       "source_line": 320255,
       "source_end_line": 320324,
@@ -13068,7 +13128,7 @@
     },
     {
       "name": "sub_140177E50",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x177e50",
       "source_line": 320324,
       "source_end_line": 320535,
@@ -13078,7 +13138,7 @@
     },
     {
       "name": "sub_1401783D0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1783d0",
       "source_line": 320535,
       "source_end_line": 320548,
@@ -13088,7 +13148,7 @@
     },
     {
       "name": "sub_1401783F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1783f0",
       "source_line": 320548,
       "source_end_line": 320554,
@@ -13098,7 +13158,7 @@
     },
     {
       "name": "sub_140178410",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x178410",
       "source_line": 320554,
       "source_end_line": 320692,
@@ -13108,7 +13168,7 @@
     },
     {
       "name": "sub_140178800",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x178800",
       "source_line": 320692,
       "source_end_line": 320796,
@@ -13118,7 +13178,7 @@
     },
     {
       "name": "sub_140178A70",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x178a70",
       "source_line": 320796,
       "source_end_line": 320954,
@@ -13128,7 +13188,7 @@
     },
     {
       "name": "sub_140178E30",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x178e30",
       "source_line": 320954,
       "source_end_line": 321010,
@@ -13138,7 +13198,7 @@
     },
     {
       "name": "sub_140179010",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179010",
       "source_line": 321010,
       "source_end_line": 321021,
@@ -13148,7 +13208,7 @@
     },
     {
       "name": "sub_140179090",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179090",
       "source_line": 321021,
       "source_end_line": 321038,
@@ -13158,7 +13218,7 @@
     },
     {
       "name": "sub_140179120",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179120",
       "source_line": 321038,
       "source_end_line": 321057,
@@ -13168,7 +13228,7 @@
     },
     {
       "name": "sub_140179160",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179160",
       "source_line": 321057,
       "source_end_line": 321076,
@@ -13178,7 +13238,7 @@
     },
     {
       "name": "sub_1401791D0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1791d0",
       "source_line": 321076,
       "source_end_line": 321153,
@@ -13188,7 +13248,7 @@
     },
     {
       "name": "sub_140179360",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179360",
       "source_line": 321153,
       "source_end_line": 321162,
@@ -13198,7 +13258,7 @@
     },
     {
       "name": "sub_1401793A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1793a0",
       "source_line": 321162,
       "source_end_line": 321229,
@@ -13208,7 +13268,7 @@
     },
     {
       "name": "sub_140179510",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179510",
       "source_line": 321229,
       "source_end_line": 321248,
@@ -13218,7 +13278,7 @@
     },
     {
       "name": "sub_140179560",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179560",
       "source_line": 321248,
       "source_end_line": 321257,
@@ -13228,7 +13288,7 @@
     },
     {
       "name": "sub_140179590",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179590",
       "source_line": 321257,
       "source_end_line": 321273,
@@ -13238,7 +13298,7 @@
     },
     {
       "name": "sub_140179650",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179650",
       "source_line": 321273,
       "source_end_line": 321309,
@@ -13248,7 +13308,7 @@
     },
     {
       "name": "sub_140179790",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179790",
       "source_line": 321309,
       "source_end_line": 321330,
@@ -13258,7 +13318,7 @@
     },
     {
       "name": "sub_140179870",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179870",
       "source_line": 321330,
       "source_end_line": 321354,
@@ -13268,7 +13328,7 @@
     },
     {
       "name": "sub_140179950",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179950",
       "source_line": 321354,
       "source_end_line": 321383,
@@ -13278,7 +13338,7 @@
     },
     {
       "name": "sub_140179A00",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179a00",
       "source_line": 321383,
       "source_end_line": 321406,
@@ -13288,7 +13348,7 @@
     },
     {
       "name": "sub_140179AD0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179ad0",
       "source_line": 321406,
       "source_end_line": 321412,
@@ -13298,7 +13358,7 @@
     },
     {
       "name": "sub_140179B20",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179b20",
       "source_line": 321412,
       "source_end_line": 321426,
@@ -13308,7 +13368,7 @@
     },
     {
       "name": "sub_140179B80",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179b80",
       "source_line": 321426,
       "source_end_line": 321559,
@@ -13318,7 +13378,7 @@
     },
     {
       "name": "sub_140179E50",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x179e50",
       "source_line": 321559,
       "source_end_line": 321730,
@@ -13328,7 +13388,7 @@
     },
     {
       "name": "sub_14017A240",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17a240",
       "source_line": 321730,
       "source_end_line": 321808,
@@ -13338,7 +13398,7 @@
     },
     {
       "name": "sub_14017A3C0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17a3c0",
       "source_line": 321808,
       "source_end_line": 321865,
@@ -13348,7 +13408,7 @@
     },
     {
       "name": "sub_14017A4F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17a4f0",
       "source_line": 321865,
       "source_end_line": 321923,
@@ -13358,7 +13418,7 @@
     },
     {
       "name": "sub_14017A640",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17a640",
       "source_line": 321923,
       "source_end_line": 322470,
@@ -13368,7 +13428,7 @@
     },
     {
       "name": "sub_14017B360",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17b360",
       "source_line": 322470,
       "source_end_line": 322523,
@@ -13378,7 +13438,7 @@
     },
     {
       "name": "sub_14017B460",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17b460",
       "source_line": 322523,
       "source_end_line": 322545,
@@ -13388,7 +13448,7 @@
     },
     {
       "name": "sub_14017B4F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17b4f0",
       "source_line": 322545,
       "source_end_line": 322566,
@@ -13398,7 +13458,7 @@
     },
     {
       "name": "sub_14017B740",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17b740",
       "source_line": 322566,
       "source_end_line": 322769,
@@ -13408,7 +13468,7 @@
     },
     {
       "name": "sub_14017BCC0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17bcc0",
       "source_line": 322769,
       "source_end_line": 322807,
@@ -13418,7 +13478,7 @@
     },
     {
       "name": "sub_14017BD70",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17bd70",
       "source_line": 322807,
       "source_end_line": 322816,
@@ -13428,7 +13488,7 @@
     },
     {
       "name": "sub_14017BE00",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17be00",
       "source_line": 322816,
       "source_end_line": 322835,
@@ -13438,7 +13498,7 @@
     },
     {
       "name": "sub_14017BE60",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17be60",
       "source_line": 322835,
       "source_end_line": 322875,
@@ -13448,7 +13508,7 @@
     },
     {
       "name": "sub_14017BFE0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17bfe0",
       "source_line": 322875,
       "source_end_line": 322881,
@@ -13458,7 +13518,7 @@
     },
     {
       "name": "sub_14017C040",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17c040",
       "source_line": 322881,
       "source_end_line": 322983,
@@ -13468,7 +13528,7 @@
     },
     {
       "name": "sub_14017C2C0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17c2c0",
       "source_line": 322983,
       "source_end_line": 323023,
@@ -13478,7 +13538,7 @@
     },
     {
       "name": "sub_14017C420",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17c420",
       "source_line": 323023,
       "source_end_line": 323071,
@@ -13488,7 +13548,7 @@
     },
     {
       "name": "sub_14017C520",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17c520",
       "source_line": 323071,
       "source_end_line": 323079,
@@ -13498,7 +13558,7 @@
     },
     {
       "name": "sub_14017C540",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17c540",
       "source_line": 323079,
       "source_end_line": 323095,
@@ -13508,7 +13568,7 @@
     },
     {
       "name": "sub_14017C590",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17c590",
       "source_line": 323095,
       "source_end_line": 323275,
@@ -13518,7 +13578,7 @@
     },
     {
       "name": "sub_14017C8A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17c8a0",
       "source_line": 323275,
       "source_end_line": 323444,
@@ -13528,7 +13588,7 @@
     },
     {
       "name": "sub_14017CCF0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17ccf0",
       "source_line": 323444,
       "source_end_line": 323514,
@@ -13538,7 +13598,7 @@
     },
     {
       "name": "sub_14017CDD0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17cdd0",
       "source_line": 323514,
       "source_end_line": 323765,
@@ -13548,7 +13608,7 @@
     },
     {
       "name": "sub_14017D490",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17d490",
       "source_line": 323765,
       "source_end_line": 323790,
@@ -13558,7 +13618,7 @@
     },
     {
       "name": "sub_14017D510",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17d510",
       "source_line": 323790,
       "source_end_line": 323831,
@@ -13568,7 +13628,7 @@
     },
     {
       "name": "sub_14017D6B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17d6b0",
       "source_line": 323831,
       "source_end_line": 323957,
@@ -13578,7 +13638,7 @@
     },
     {
       "name": "sub_14017D900",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17d900",
       "source_line": 323957,
       "source_end_line": 324027,
@@ -13588,7 +13648,7 @@
     },
     {
       "name": "sub_14017DA60",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17da60",
       "source_line": 324027,
       "source_end_line": 324071,
@@ -13598,7 +13658,7 @@
     },
     {
       "name": "sub_14017DB90",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17db90",
       "source_line": 324071,
       "source_end_line": 324125,
@@ -13608,7 +13668,7 @@
     },
     {
       "name": "sub_14017DCC0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17dcc0",
       "source_line": 324125,
       "source_end_line": 324299,
@@ -13618,7 +13678,7 @@
     },
     {
       "name": "sub_14017E0F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17e0f0",
       "source_line": 324299,
       "source_end_line": 324359,
@@ -13628,7 +13688,7 @@
     },
     {
       "name": "sub_14017E1A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17e1a0",
       "source_line": 324359,
       "source_end_line": 324402,
@@ -13638,7 +13698,7 @@
     },
     {
       "name": "sub_14017E2A0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17e2a0",
       "source_line": 324402,
       "source_end_line": 324445,
@@ -13648,7 +13708,7 @@
     },
     {
       "name": "sub_14017E380",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17e380",
       "source_line": 324445,
       "source_end_line": 324991,
@@ -13658,7 +13718,7 @@
     },
     {
       "name": "sub_14017F020",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f020",
       "source_line": 324991,
       "source_end_line": 325036,
@@ -13668,7 +13728,7 @@
     },
     {
       "name": "sub_14017F0C0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f0c0",
       "source_line": 325036,
       "source_end_line": 325050,
@@ -13678,7 +13738,7 @@
     },
     {
       "name": "sub_14017F0E0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f0e0",
       "source_line": 325050,
       "source_end_line": 325068,
@@ -13688,7 +13748,7 @@
     },
     {
       "name": "sub_14017F130",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f130",
       "source_line": 325068,
       "source_end_line": 325092,
@@ -13698,7 +13758,7 @@
     },
     {
       "name": "sub_14017F190",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f190",
       "source_line": 325092,
       "source_end_line": 325120,
@@ -13708,7 +13768,7 @@
     },
     {
       "name": "sub_14017F1F0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f1f0",
       "source_line": 325120,
       "source_end_line": 325227,
@@ -13718,7 +13778,7 @@
     },
     {
       "name": "sub_14017F380",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f380",
       "source_line": 325227,
       "source_end_line": 325267,
@@ -13728,7 +13788,7 @@
     },
     {
       "name": "sub_14017F410",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f410",
       "source_line": 325267,
       "source_end_line": 325364,
@@ -13738,7 +13798,7 @@
     },
     {
       "name": "sub_14017F5B0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f5b0",
       "source_line": 325364,
       "source_end_line": 325458,
@@ -13748,7 +13808,7 @@
     },
     {
       "name": "sub_14017F720",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f720",
       "source_line": 325458,
       "source_end_line": 325520,
@@ -13758,7 +13818,7 @@
     },
     {
       "name": "sub_14017F820",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17f820",
       "source_line": 325520,
       "source_end_line": 325685,
@@ -13768,7 +13828,7 @@
     },
     {
       "name": "sub_14017FA30",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17fa30",
       "source_line": 325685,
       "source_end_line": 325746,
@@ -13778,7 +13838,7 @@
     },
     {
       "name": "sub_14017FB20",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17fb20",
       "source_line": 325746,
       "source_end_line": 325932,
@@ -13788,7 +13848,7 @@
     },
     {
       "name": "sub_14017FF00",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17ff00",
       "source_line": 325932,
       "source_end_line": 325975,
@@ -13798,7 +13858,7 @@
     },
     {
       "name": "sub_14017FFC0",
-      "module": "client_recovery_160000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x17ffc0",
       "source_line": 325975,
       "source_end_line": 325998,
@@ -13808,7 +13868,7 @@
     },
     {
       "name": "sub_140180060",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x180060",
       "source_line": 325998,
       "source_end_line": 326043,
@@ -13818,7 +13878,7 @@
     },
     {
       "name": "sub_140180120",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x180120",
       "source_line": 326043,
       "source_end_line": 326092,
@@ -13828,7 +13888,7 @@
     },
     {
       "name": "sub_140180200",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x180200",
       "source_line": 326092,
       "source_end_line": 326179,
@@ -13838,7 +13898,7 @@
     },
     {
       "name": "sub_140180360",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x180360",
       "source_line": 326179,
       "source_end_line": 326190,
@@ -13848,7 +13908,7 @@
     },
     {
       "name": "sub_1401803B0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1803b0",
       "source_line": 326190,
       "source_end_line": 326344,
@@ -13858,7 +13918,7 @@
     },
     {
       "name": "sub_1401805D0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1805d0",
       "source_line": 326344,
       "source_end_line": 326376,
@@ -13868,7 +13928,7 @@
     },
     {
       "name": "sub_140180640",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x180640",
       "source_line": 326376,
       "source_end_line": 326664,
@@ -13878,7 +13938,7 @@
     },
     {
       "name": "sub_140180D50",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x180d50",
       "source_line": 326664,
       "source_end_line": 326703,
@@ -13888,7 +13948,7 @@
     },
     {
       "name": "sub_140180E10",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x180e10",
       "source_line": 326703,
       "source_end_line": 326776,
@@ -13898,7 +13958,7 @@
     },
     {
       "name": "sub_140180F10",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x180f10",
       "source_line": 326776,
       "source_end_line": 326843,
@@ -13908,7 +13968,7 @@
     },
     {
       "name": "sub_140181080",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x181080",
       "source_line": 326843,
       "source_end_line": 327018,
@@ -13918,7 +13978,7 @@
     },
     {
       "name": "sub_140181350",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x181350",
       "source_line": 327018,
       "source_end_line": 327153,
@@ -13928,7 +13988,7 @@
     },
     {
       "name": "sub_140181620",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x181620",
       "source_line": 327153,
       "source_end_line": 327199,
@@ -13938,7 +13998,7 @@
     },
     {
       "name": "sub_1401816D0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1816d0",
       "source_line": 327199,
       "source_end_line": 327219,
@@ -13948,7 +14008,7 @@
     },
     {
       "name": "sub_140181710",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x181710",
       "source_line": 327219,
       "source_end_line": 327256,
@@ -13958,7 +14018,7 @@
     },
     {
       "name": "sub_140181790",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x181790",
       "source_line": 327256,
       "source_end_line": 327292,
@@ -13968,7 +14028,7 @@
     },
     {
       "name": "sub_1401818E0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1818e0",
       "source_line": 327292,
       "source_end_line": 327381,
@@ -13978,7 +14038,7 @@
     },
     {
       "name": "sub_140181B30",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x181b30",
       "source_line": 327381,
       "source_end_line": 327442,
@@ -13988,7 +14048,7 @@
     },
     {
       "name": "sub_140181C60",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x181c60",
       "source_line": 327442,
       "source_end_line": 327459,
@@ -13998,7 +14058,7 @@
     },
     {
       "name": "sub_140181CF0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x181cf0",
       "source_line": 327459,
       "source_end_line": 327908,
@@ -14008,7 +14068,7 @@
     },
     {
       "name": "sub_140182310",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x182310",
       "source_line": 327908,
       "source_end_line": 328144,
@@ -14018,7 +14078,7 @@
     },
     {
       "name": "sub_1401827E0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1827e0",
       "source_line": 328144,
       "source_end_line": 328230,
@@ -14028,7 +14088,7 @@
     },
     {
       "name": "sub_140182AD0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x182ad0",
       "source_line": 328230,
       "source_end_line": 328785,
@@ -14038,7 +14098,7 @@
     },
     {
       "name": "sub_140183820",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x183820",
       "source_line": 328785,
       "source_end_line": 328881,
@@ -14048,7 +14108,7 @@
     },
     {
       "name": "sub_140183A70",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x183a70",
       "source_line": 328881,
       "source_end_line": 328938,
@@ -14058,7 +14118,7 @@
     },
     {
       "name": "sub_140183B30",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x183b30",
       "source_line": 328938,
       "source_end_line": 328998,
@@ -14068,7 +14128,7 @@
     },
     {
       "name": "sub_140183BF0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x183bf0",
       "source_line": 328998,
       "source_end_line": 329130,
@@ -14078,7 +14138,7 @@
     },
     {
       "name": "sub_140183DC0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x183dc0",
       "source_line": 329130,
       "source_end_line": 329265,
@@ -14088,7 +14148,7 @@
     },
     {
       "name": "sub_140184190",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x184190",
       "source_line": 329265,
       "source_end_line": 329328,
@@ -14098,7 +14158,7 @@
     },
     {
       "name": "sub_1401843E0",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x1843e0",
       "source_line": 329328,
       "source_end_line": 329509,
@@ -14108,7 +14168,7 @@
     },
     {
       "name": "sub_140184710",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x184710",
       "source_line": 329509,
       "source_end_line": 329601,
@@ -14118,7 +14178,7 @@
     },
     {
       "name": "sub_140184A70",
-      "module": "client_recovery_180000.c",
+      "module": "client_stb_truetype.c",
       "original_rva": "0x184a70",
       "source_line": 329601,
       "source_end_line": 329613,
@@ -14128,7 +14188,7 @@
     },
     {
       "name": "sub_140184AB0",
-      "module": "client_recovery_180000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x184ab0",
       "source_line": 329613,
       "source_end_line": 329646,
@@ -14138,7 +14198,7 @@
     },
     {
       "name": "sub_140184BB0",
-      "module": "client_recovery_180000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x184bb0",
       "source_line": 329646,
       "source_end_line": 330235,
@@ -14148,7 +14208,7 @@
     },
     {
       "name": "sub_140185D00",
-      "module": "client_recovery_180000.c",
+      "module": "client_blocks.c",
       "original_rva": "0x185d00",
       "source_line": 330235,
       "source_end_line": 330883,
@@ -14198,7 +14258,7 @@
     },
     {
       "name": "sub_140187860",
-      "module": "client_recovery_180000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x187860",
       "source_line": 331061,
       "source_end_line": 331130,
@@ -14208,7 +14268,7 @@
     },
     {
       "name": "sub_140187A40",
-      "module": "client_recovery_180000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x187a40",
       "source_line": 331130,
       "source_end_line": 331213,
@@ -14218,7 +14278,7 @@
     },
     {
       "name": "sub_140187C70",
-      "module": "client_recovery_180000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x187c70",
       "source_line": 331213,
       "source_end_line": 331353,
@@ -14238,7 +14298,7 @@
     },
     {
       "name": "sub_140188120",
-      "module": "client_recovery_180000.c",
+      "module": "client_collision.c",
       "original_rva": "0x188120",
       "source_line": 331395,
       "source_end_line": 331581,
@@ -14248,7 +14308,7 @@
     },
     {
       "name": "sub_1401885C0",
-      "module": "client_recovery_180000.c",
+      "module": "client_city.c",
       "original_rva": "0x1885c0",
       "source_line": 331581,
       "source_end_line": 331652,
@@ -14258,7 +14318,7 @@
     },
     {
       "name": "sub_140188720",
-      "module": "client_recovery_180000.c",
+      "module": "client_city.c",
       "original_rva": "0x188720",
       "source_line": 331652,
       "source_end_line": 331720,
@@ -14278,7 +14338,7 @@
     },
     {
       "name": "sub_140188B80",
-      "module": "client_recovery_180000.c",
+      "module": "client_city.c",
       "original_rva": "0x188b80",
       "source_line": 331844,
       "source_end_line": 332348,
@@ -14288,7 +14348,7 @@
     },
     {
       "name": "sub_1401899F0",
-      "module": "client_recovery_180000.c",
+      "module": "client_city.c",
       "original_rva": "0x1899f0",
       "source_line": 332348,
       "source_end_line": 332604,
@@ -14298,7 +14358,7 @@
     },
     {
       "name": "sub_140189E80",
-      "module": "client_recovery_180000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x189e80",
       "source_line": 332604,
       "source_end_line": 332716,
@@ -14308,7 +14368,7 @@
     },
     {
       "name": "sub_14018A3E0",
-      "module": "client_recovery_180000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x18a3e0",
       "source_line": 332716,
       "source_end_line": 333510,
@@ -14318,7 +14378,7 @@
     },
     {
       "name": "sub_14018B680",
-      "module": "client_recovery_180000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x18b680",
       "source_line": 333510,
       "source_end_line": 333949,
@@ -14408,7 +14468,7 @@
     },
     {
       "name": "sub_14018D9F0",
-      "module": "client_recovery_180000.c",
+      "module": "client_humans.c",
       "original_rva": "0x18d9f0",
       "source_line": 334643,
       "source_end_line": 334671,
@@ -14438,7 +14498,7 @@
     },
     {
       "name": "sub_14018EF40",
-      "module": "client_recovery_180000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x18ef40",
       "source_line": 335787,
       "source_end_line": 335886,
@@ -14448,7 +14508,7 @@
     },
     {
       "name": "sub_14018F1B0",
-      "module": "client_recovery_180000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x18f1b0",
       "source_line": 335886,
       "source_end_line": 337408,
@@ -14458,7 +14518,7 @@
     },
     {
       "name": "sub_140191360",
-      "module": "client_recovery_180000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x191360",
       "source_line": 337408,
       "source_end_line": 337681,
@@ -14468,7 +14528,7 @@
     },
     {
       "name": "sub_140191A20",
-      "module": "client_recovery_180000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x191a20",
       "source_line": 337681,
       "source_end_line": 337980,
@@ -14548,7 +14608,7 @@
     },
     {
       "name": "sub_140193FE0",
-      "module": "client_recovery_180000.c",
+      "module": "client_gpu_buffers.c",
       "original_rva": "0x193fe0",
       "source_line": 339458,
       "source_end_line": 339537,
@@ -14558,7 +14618,7 @@
     },
     {
       "name": "sub_1401941F0",
-      "module": "client_recovery_180000.c",
+      "module": "client_gpu_buffers.c",
       "original_rva": "0x1941f0",
       "source_line": 339537,
       "source_end_line": 339684,
@@ -14578,7 +14638,7 @@
     },
     {
       "name": "sub_1401945F0",
-      "module": "client_recovery_180000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x1945f0",
       "source_line": 339698,
       "source_end_line": 339794,
@@ -14628,7 +14688,7 @@
     },
     {
       "name": "sub_140195480",
-      "module": "client_recovery_180000.c",
+      "module": "client_vehicles.c",
       "original_rva": "0x195480",
       "source_line": 340336,
       "source_end_line": 340569,
@@ -14688,7 +14748,7 @@
     },
     {
       "name": "sub_140196D60",
-      "module": "client_recovery_180000.c",
+      "module": "client_renderer.c",
       "original_rva": "0x196d60",
       "source_line": 341257,
       "source_end_line": 341465,

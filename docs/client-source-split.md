@@ -59,6 +59,25 @@ their selected test inputs in memory.
 The migration's per-function evidence and unchanged-body checks are recorded
 in `reports/client-module-organization-20261005/organization.json`.
 
+## Subject sort on 2026-10-08
+
+`tools/sort/apply.py` moved 705 routines out of the address buckets (`client_recovery_*.c`) into files
+named for their subject; 633 remain in the buckets. Bodies are moved verbatim with their address markers
+and decompiler notes. A routine moves only on strong evidence: its original address lies in a library's
+range (`client_stb_image.c`, `client_stb_truetype.c`), it loads OpenGL entry points by name
+(`client_gl_loader.c`), it calls the socket layer (`client_network.c`), or it makes six or more references
+to state tables of known subject and at least 60% of them point at one subject (`client_blocks.c`,
+`client_city.c`, `client_terminal.c`, `client_widgets.c`, `client_gpu_buffers.c`, `client_replay.c`, and the
+existing humans, vehicles, items, physics, collision and renderer files). The table ranges and the plan
+(`build/sort/plan.tsv`, one line per moved routine with its reason) come from the tool; run it without
+`--apply` to see what a further pass would move after adding ranges.
+
+The classification is by evidence, not by reading each routine: a file's name says what most of a routine's
+state references are about. Routines whose subject the tables cannot decide stay in the buckets.
+The manifest, `sources.cmake`, both ownership sheets, the kernel index and `README.md` were updated by the
+tool; the build's ownership check and sheet preflight pass, the client links with no unresolved or duplicate
+symbols, and Practice, World and Round start and run.
+
 ## Verification on 2026-10-03
 
 The following checks describe the earlier 30-file build.
