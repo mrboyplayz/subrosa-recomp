@@ -33,6 +33,63 @@ int collision_line_triangle(float point[3], const float normal[3], float *t, con
 int collision_sphere_triangle(float point[3], float normal[3], float *distance, const float from[3], const float to[3],
                               float radius, const float a[3], const float b[3], const float c[3]);
 
+/* collision_sphere_triangle() without the edges: only sweeps that reach the
+   face itself hit. 0x140035B70 */
+int collision_sphere_triangle_face(float point[3], float normal[3], float *distance, const float from[3],
+                                   const float to[3], float radius, const float a[3], const float b[3], const float c[3]);
+
+/* The weights of `point` (in the plane of triangle a b c) in its corners:
+   1 at a corner, 0 on the opposite edge's line. 0x14002D370 */
+void collision_triangle_weights(float weights[3], const float point[3], const float a[3], const float b[3],
+                                const float c[3]);
+
+/* ---- convex meshes (collision_mesh.c) ------------------------------------------ */
+
+#include <stdint.h>
+
+/* A convex collision mesh: points (position and the vertex they move from),
+   faces (3 or 4 point indices and a normal), edges (two point indices and a
+   vertex on the far side, for the side test) and vertices. */
+typedef struct CollisionMeshPoint {
+    float position[3];
+    int32_t vertex;
+} CollisionMeshPoint;
+
+typedef struct CollisionMeshFace {
+    uint32_t unknown_0;
+    int32_t corner_count;
+    int32_t corner[4];
+    float normal[3];
+} CollisionMeshFace;
+
+typedef struct CollisionMeshEdge {
+    int32_t point[2];
+    int32_t vertex;
+} CollisionMeshEdge;
+
+typedef struct CollisionMesh {
+    int32_t point_count;
+    uint32_t unknown_4;
+    CollisionMeshPoint *points;
+    int32_t face_count;
+    uint32_t unknown_14;
+    CollisionMeshFace *faces;
+    int32_t edge_count;
+    uint32_t unknown_24;
+    CollisionMeshEdge *edges;
+    int32_t vertex_count;
+    float vertex[][3];
+} CollisionMesh;
+
+/* Contacts between mesh a on body_a and mesh b on body_b, each placed by a
+   position and rotation: points of each against the other's faces and every
+   pair of edges. Bit 0 of flags (the only one read) skips a's points and one
+   of the two side tests of an edge contact. Applies each contact
+   (0x1400052C0) and returns whether there was any. 0x140048DA0 */
+int collision_mesh_contact(int body_a, int body_b, const CollisionMesh *a, const CollisionMesh *b,
+                           const float position_a[3], const float rotation_a[9], const float position_b[3],
+                           const float rotation_b[9], uint32_t flags);
+
 /* ---- vehicle meshes --------------------------------------------------------- */
 
 #include <stdint.h>
@@ -49,7 +106,7 @@ typedef struct CollisionHit {
     int32_t part;                        /* rays: the face or window index, -1 for a wheel */
     int32_t unknown_34[3];               /* rays: the vehicle's unknown_f0 three times, or the wheel index first */
     uint32_t unknown_40;
-    float weights[3];                    /* rays: the hit point's weights in the face's corners (0x14002D370) */
+    float weights[3];                    /* rays: the hit point's weights in the face's corners */
 } CollisionHit;
 
 #define collision_hit SR_GLOBAL(CollisionHit, 0x151A84880ULL)

@@ -168,6 +168,38 @@ int collision_sphere_triangle(float point[3], float normal[3], float *distance, 
     return 1;
 }
 
+int collision_sphere_triangle_face(float point[3], float normal[3], float *distance, const float from[3],
+                                   const float to[3], float radius, const float a[3], const float b[3], const float c[3])
+{
+    float scratch = radius;            /* the original lets the plane test write its fraction over the radius */
+    float d_from, d_to;
+
+    math_triangle_normal(normal, a, b, c);
+    d_from = ((from[Y] - a[Y]) * normal[Y] + (from[X] - a[X]) * normal[X]) + (from[Z] - a[Z]) * normal[Z];
+    d_to = ((to[Y] - a[Y]) * normal[Y] + (to[X] - a[X]) * normal[X]) + (to[Z] - a[Z]) * normal[Z];
+
+    if (d_from >= radius && d_to >= radius)
+        return 0;
+    if (d_from > 0.0f && d_to > 0.0f) {
+        const float *start = d_from >= d_to ? to : from;
+        float k = radius * PUSH_THROUGH;
+        float through[3] = {normal[X] * k + start[X], normal[Y] * k + start[Y], normal[Z] * k + start[Z]};
+
+        if (!collision_line_triangle(point, normal, &scratch, start, through, a, b, c))
+            return 0;
+        *distance = distance_between(point, start);
+        return 1;
+    }
+    /* An end behind the face (comiss/jb: a NaN distance counts as behind). */
+    if (!(d_from >= 0.0f) && !(d_to >= 0.0f))
+        return 0;
+    if (!collision_line_triangle(point, normal, &scratch, from, to, a, b, c)
+        && !collision_line_triangle(point, normal, &scratch, to, from, a, b, c))
+        return 0;
+    *distance = 0.0f;
+    return 1;
+}
+
 /* ---- trains ------------------------------------------------------------------ */
 
 #include "physics.h"
@@ -276,8 +308,6 @@ int collision_sweep_train(int index, const float from[3], const float to[3], flo
 
 /* ---- rays against vehicles ----------------------------------------------------- */
 
-/* Still in src/client/: the hit point's weights in triangle a b c. 0x14002D370 */
-extern float *sub_14002D370(float *weights, float *point, float *a, float *b, float *c);
 
 int collision_ray_sphere(float point[3], float normal[3], float *fraction, const float from[3], const float to[3],
                          const float centre[3], float radius)
@@ -340,6 +370,48 @@ static void face_normal(float n[3], const float a[3], const float b[3], const fl
     }
 }
 
+/* e x n, normalized (zero when degenerate or NaN): in the face's plane, at
+   right angles to edge e. */
+static void edge_perpendicular(float p[3], const float e[3], const float n[3])
+{
+    float x = e[Y] * n[Z] - e[Z] * n[Y];
+    float y = e[Z] * n[X] - e[X] * n[Z];
+    float z = e[X] * n[Y] - e[Y] * n[X];
+    float length = sqrt_float((y * y + x * x) + z * z);
+
+    if (is_zero_or_nan(length)) {
+        p[X] = p[Y] = p[Z] = 0.0f;
+    } else {
+        float inverse = 1.0f / length;
+        p[X] = x * inverse;
+        p[Y] = y * inverse;
+        p[Z] = z * inverse;
+    }
+}
+
+void collision_triangle_weights(float weights[3], const float point[3], const float a[3], const float b[3],
+                                const float c[3])
+{
+    float n[3], p[3];
+    float bc[3] = {c[X] - b[X], c[Y] - b[Y], c[Z] - b[Z]};
+    float ca[3] = {a[X] - c[X], a[Y] - c[Y], a[Z] - c[Z]};
+    float ab[3] = {b[X] - a[X], b[Y] - a[Y], b[Z] - a[Z]};
+
+    face_normal(n, a, b, c);
+
+    /* Each corner: the point's distance from the opposite edge over the
+       corner's own, both measured across the edge in the face's plane. */
+    edge_perpendicular(p, bc, n);
+    weights[0] = (((point[Y] - b[Y]) * p[Y] + (point[X] - b[X]) * p[X]) + (point[Z] - b[Z]) * p[Z])
+               / (((a[Y] - b[Y]) * p[Y] + (a[X] - b[X]) * p[X]) + (a[Z] - b[Z]) * p[Z]);
+    edge_perpendicular(p, ca, n);
+    weights[1] = (((point[X] - c[X]) * p[X] + (point[Y] - c[Y]) * p[Y]) + (point[Z] - c[Z]) * p[Z])
+               / (((b[Y] - c[Y]) * p[Y] + (b[X] - c[X]) * p[X]) + (b[Z] - c[Z]) * p[Z]);
+    edge_perpendicular(p, ab, n);
+    weights[2] = (((point[Y] - a[Y]) * p[Y] + (point[X] - a[X]) * p[X]) + (point[Z] - a[Z]) * p[Z])
+               / (((c[X] - a[X]) * p[X] + (c[Y] - a[Y]) * p[Y]) + (c[Z] - a[Z]) * p[Z]);
+}
+
 /* Records a face or window hit of a ray (kind 0 face, 1 window). */
 static void record_ray_hit(int vehicle, const float point[3], const float normal[3], float fraction, int window,
                            int part, const float *a, const float *b, const float *c)
@@ -356,7 +428,7 @@ static void record_ray_hit(int vehicle, const float point[3], const float normal
     collision_hit.fraction = fraction;
     collision_hit.window = window;
     collision_hit.part = part;
-    sub_14002D370(collision_hit.weights, collision_hit.point, (float *)a, (float *)b, (float *)c);
+    collision_triangle_weights(collision_hit.weights, collision_hit.point, a, b, c);
     collision_hit.unknown_20[0] = 0;
     collision_hit.unknown_20[1] = 0;
     collision_hit.unknown_20[2] = 0;
