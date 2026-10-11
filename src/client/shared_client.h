@@ -397,7 +397,7 @@ __int64            sub_140048BA0(signed int a1, unsigned int *a2);
 
 __int64            sub_140048DA0(int a1, int a2, __int64 a3, __int64 a4, float *a5, float *a6, float *a7, float *a8, char a9);
 
-__int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4);
+__int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4, float *a5, float *a6);
 
 _BOOL8            sub_14004A1D0(float *a1, __int64 a2, __int64 a3, __int64 a4, float *a5, float *a6);
 
@@ -13661,7 +13661,7 @@ __int64            sub_140048DA0(
 
 
 //----- (000000014004A130) ----------------------------------------------------
-__int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4)
+__int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4, float *a5, float *a6)
 ;
 
 

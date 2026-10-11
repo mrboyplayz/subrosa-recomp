@@ -10,18 +10,18 @@
 extern void sub_14012B2D0(float *rotation, float *angular_momentum, float *angular_velocity,
                           float *inverse_inertia);
 extern int64_t sub_1401069C0(void);          /* vehicle spatial bounds */
-extern void sub_1400B95E0(void);             /* human spatial bounds */
+extern void sub_1400B95E0(void);             /* human spatial bounds, world_update_human_bounds */
 extern uint64_t sub_1400C9D20(void);         /* item spatial bounds */
 extern void sub_140037DE0(int32_t layer, int32_t x, uint32_t y, uint32_t z, uint16_t object);   /* world_grid_insert */
-extern int64_t sub_1401154D0(void);          /* collision and contact preparation */
+extern int64_t sub_1401154D0(void);          /* physics_integrate_points */
 extern int64_t sub_140108930(void);
 extern int64_t sub_1400BE010(void);          /* humans and their pose targets */
 extern int64_t sub_1400CE370(void);
 extern int64_t sub_1400CC610(void);
 extern unsigned int *sub_14001D080(void);    /* physics_solve */
-extern void sub_14007F970(int32_t item);     /* removes an item */
-extern void sub_14010BE50(void);             /* broadphase and contacts */
-extern void sub_140115830(void);
+extern void sub_14007F970(int32_t item);     /* world_remove_item */
+extern void sub_14010BE50(void);             /* world_expire_vehicles */
+extern void sub_140115830(void);             /* physics_expire_points */
 extern void sub_14001FB90(void);             /* physics_expire_bonds */
 
 #define GRAVITY 0.0027222224f   /* per tick, along -y */

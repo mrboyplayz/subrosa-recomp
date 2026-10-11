@@ -276,48 +276,12 @@ void sub_14008F050()
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C3AB0) ----------------------------------------------------
-__int64            sub_1400C3AB0(int a1, int a2, int a3)
+__int64 sub_1400C3AB0(int item, int bill, int denomination)
 {
-  __int64 v3; // rsi
-  int v4; // r9d
-  signed int v6; // r9d
-  unsigned int v7; // r10d
-  int v8; // ebx
-  __int64 v9; // rdi
-  char v10; // cl
-  int v11; // edx
-  int v12; // eax
-
-  v3 = 1760LL * a1;
-  v4 = dword_140404A6C[v3 + 278846062];
-  if ( v4 >= 9 )
-    return 0;
-  v6 = v4 + 1;
-  dword_140404A6C[v3 + 278846062] = v6;
-  if ( v6 > a2 )
-  {
-    v7 = dword_140404A6C[v3 + 278846063];
-    v8 = 3 * v6;
-    v9 = (unsigned int)(v6 - a2);
-    LOBYTE(v6) = a2;
-    do
-    {
-      v10 = v8;
-      v11 = (v7 >> (v8 - 3)) & 7;
-      v12 = 7 << v8;
-      v8 -= 3;
-      v7 = (v11 << v10) | ~v12 & v7;
-      --v9;
-    }
-    while ( v9 );
-    dword_140404A6C[v3 + 278846063] = v7;
-  }
-  dword_140404A6C[v3 + 278846063] = (a3 << (3 * v6)) | dword_140404A6C[v3 + 278846063] & ~(7 << (3 * v6));
-  ++dword_140404A6C[v3 + 278846061];
-  return 1;
+  extern unsigned long long item_insert_cash_bill(int, int, unsigned int);
+  /* src/engine/item_state.c */
+  return (__int64)item_insert_cash_bill(item, bill, (unsigned int)denomination);
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C3E00) ----------------------------------------------------
 __int64            sub_1400C3E00(int a1)
@@ -4685,96 +4649,12 @@ void            sub_1400C9B60(int a1)
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400CDFF0) ----------------------------------------------------
-__int64            sub_1400CDFF0(int a1)
+__int64 sub_1400CDFF0(int item)
 {
-  __int64 v1; // r15
-  int v2; // ebx
-  int v3; // edi
-  int v4; // esi
-  int v5; // ebp
-  double v6; // xmm15_8
-  float v7; // xmm7_4
-  float v8; // xmm11_4
-  float v9; // xmm14_4
-  float v10; // xmm10_4
-  float v11; // xmm13_4
-  __int64 v12; // rax
-  float v13; // xmm0_4
-  float v14; // xmm2_4
-  float v15; // xmm1_4
-  float v16; // xmm6_4
-  float v17; // xmm9_4
-  float v18; // xmm12_4
-  float v19; // xmm8_4
-  float v20; // xmm14_4
-  float v21; // xmm3_4
-  float v22; // xmm2_4
-  float v23; // xmm0_4
-  unsigned int v24; // edi
-  unsigned int v25; // esi
-  unsigned int v26; // ebp
-  unsigned int v27; // ebx
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400CDFF0[112];
-#define v29 (*(__int64 (*))(void *)(sr_frame_1400CDFF0 + 8)) /* [rsp+0h] */
-#define v30 (*(float (*))(void *)(sr_frame_1400CDFF0 + 56)) /* [rsp+30h] */
-#define v31 (*(__int128 (*))(void *)(sr_frame_1400CDFF0 + 64)) /* [rsp+38h] */
-#define v32 (*(__int128 (*))(void *)(sr_frame_1400CDFF0 + 80)) /* [rsp+48h] */
-#define v33 (*(float (*))(void *)(sr_frame_1400CDFF0 + 96)) /* [rsp+58h] */
-#define v34 (*(__int64 (*))(void *)(sr_frame_1400CDFF0 + 104)) /* [rsp+60h] */
-
-  v1 = 1760LL * a1;
-  v2 = dword_140404A6C[v1 + 278846096];
-  v3 = dword_140404A6C[v1 + 278846093];
-  v4 = dword_140404A6C[v1 + 278846094];
-  v5 = dword_140404A6C[v1 + 278846095];
-  v30 = *(float *)&dword_140404A6C[263004 * dword_140404A6C[v1 + 278846092] + 111579653];
-  v31 = xmmword_140278D30;
-  v32 = xmmword_140278D30;
-  v33 = 1.0;
-  v6 = (float)((v2 >> 24) & 3) * 1.570796326795;
-  sub_14007B2A0((__int64)&v31, (float *)&dword_1402F6188, sr_export_float_lane_container(sr_text_float_bits((float)(v6))) /* the original converts to float (cvtsd2ss) before this call */);
-  v7 = *((float *)&v31 + 3);
-  v8 = *((float *)&v31 + 1);
-  v9 = *((float *)&v31 + 2);
-  v10 = *(float *)&v32;
-  v11 = *((float *)&v32 + 1);
-  v12 = 3792LL * (v2 & 0x3FF) + 116LL * (int)dword_140404A6C[v1 + 278846097];
-  v13 = *(float *)((char *)&dword_140404A6C[272299436] + v12);
-  v14 = *(float *)((char *)&dword_140404A6C[272299434] + v12);
-  v15 = *(float *)((char *)&dword_140404A6C[272299435] + v12);
-  v16 = *((float *)&v32 + 2) * v13;
-  v17 = *((float *)&v32 + 3) * v13;
-  v18 = v33 * v13;
-  v19 = *(float *)&v31 * v14;
-  v31 = *(_OWORD *)((char *)&dword_140404A6C[272299437] + v12);
-  v32 = *(_OWORD *)((char *)&dword_140404A6C[272299441] + v12);
-  v20 = v9 * v14;
-  v33 = *(float *)((char *)&dword_140404A6C[272299445] + v12);
-  sub_14007B2A0((__int64)&v31, (float *)&dword_1402F6188, sr_export_float_lane_container(sr_text_float_bits((float)(v6))) /* the original converts to float (cvtsd2ss) before this call */);
-  v21 = (float)((float)((float)((float)((float)((float)v3 + 0.5) * v30) + v19) + (float)(v7 * v15)) + v16)
-      - *(float *)&dword_140404A6C[v1 + 278845916];
-  v22 = (float)((float)((float)((float)((float)v4 * v30) + (float)(v8 * v14)) + (float)(v10 * v15)) + v17)
-      - *(float *)&dword_140404A6C[v1 + 278845917];
-  v23 = (float)((float)((float)((float)((float)((float)v5 + 0.5) * v30) + v20) + (float)(v11 * v15)) + v18)
-      - *(float *)&dword_140404A6C[v1 + 278845918];
-  if ( fsqrt((float)((float)(v22 * v22) + (float)(v21 * v21)) + (float)(v23 * v23)) < 0.125 )
-  {
-    v24 = dword_140404A6C[v1 + 278846095];
-    v25 = dword_140404A6C[v1 + 278846094];
-    v26 = dword_140404A6C[v1 + 278846093];
-    v27 = ~(1 << dword_140404A6C[v1 + 278846097]) & sub_1400169B0(dword_140404A6C[v1 + 278846092], v26, v25, v24);
-    sub_140017110(dword_140404A6C[v1 + 278846092], v26, v25, v24, v27);
-    sub_1400516B0(dword_140404A6C[v1 + 278846092], v26, v25, v24, v27, 1u);
-  }
-  return 0; /* compatibility result discarded by all reviewed callers */
+  extern void item_restore_block_part(int item);
+  item_restore_block_part(item);
+  return 0; /* compatibility result is unused by the reviewed callers */
 }
-#undef v29
-#undef v30
-#undef v31
-#undef v32
-#undef v33
-#undef v34
 
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 1402F6188: using guessed type int dword_1402F6188;

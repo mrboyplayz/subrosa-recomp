@@ -1050,66 +1050,17 @@ __int64            sub_140004140(__int64 a1)
 // 16A91BDA8: using guessed type unsigned int;
 
 //----- (0000000140005160) ----------------------------------------------------
-__int64            sub_140005160(
-        __int16 a1,
-        unsigned int *a2,
-        unsigned int *a3,
-        float a4,
-        unsigned int a5,
-        float a6,
-        unsigned int a7)
+__int64 sub_140005160(__int16 body, unsigned int *offset, unsigned int *normal,
+                      float depth, unsigned int friction_bits, float depth_scale,
+                      unsigned int stiffness_bits)
 {
-  __int64 result; // rax
-  int v11; // r9d
-  __int64 v12; // rbx
-  __int64 v13; // rdi
-  __int64 v14; // rcx
-
-  result = (__int64)&dword_140404A6C[486149253];
-  v11 = 0;
-  while ( *(_DWORD *)result )
-  {
-    ++v11;
-    result += 244;
-    if ( result >= (__int64)&dword_140404A6C[487148677] )
-      return result;
-  }
-  if ( v11 != -1 )
-  {
-    v12 = v11;
-    v13 = 61LL * v11;
-    sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[v13 + 486149254]), 0, 0xF0u);
-    dword_140404A6C[v13 + 486149253] = 1;
-    v14 = 18 * v12;
-    dword_140404A6C[v13 + 486149254] = 5;
-    *(_QWORD *)&dword_140404A6C[v13 + 486149256] = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v14 + 485543029] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v14 + 485543033] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v14 + 485543037] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v14 + 485543041] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v14 + 485543045] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v14 + 485543049] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v14 + 485543053] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v14 + 485543057] + 2) = 0;
-    *(_QWORD *)((char *)&dword_140404A6C[2 * v14 + 485543061] + 2) = 0;
-    *(unsigned int *)((char *)&dword_140404A6C[2 * v14 + 485543063] + 2) = 0;
-    HIWORD(dword_140404A6C[2 * v14 + 485543064]) = 0;
-    LOWORD(dword_140404A6C[2 * v14 + 485543029]) = a1;
-    dword_140404A6C[2 * v14 + 485543037] = *a2;
-    dword_140404A6C[2 * v14 + 485543038] = a2[1];
-    dword_140404A6C[2 * v14 + 485543039] = a2[2];
-    dword_140404A6C[2 * v14 + 485543033] = *a3;
-    dword_140404A6C[2 * v14 + 485543034] = a3[1];
-    result = a3[2];
-    dword_140404A6C[2 * v14 + 485543035] = result;
-    dword_140404A6C[2 * v14 + 485543046] = a7;
-    dword_140404A6C[2 * v14 + 485543047] = a5;
-    *(float *)&dword_140404A6C[2 * v14 + 485543036] = a4 * a6;
-  }
-  return result;
+  extern uintptr_t physics_add_world_contact(int16_t, const float *, const float *, float, float, float, float);
+  float friction, stiffness;
+  __builtin_memcpy(&friction, &friction_bits, 4);
+  __builtin_memcpy(&stiffness, &stiffness_bits, 4);
+  return (__int64)physics_add_world_contact(body, (const float *)offset, (const float *)normal,
+                                           depth, friction, depth_scale, stiffness);
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400052C0) ----------------------------------------------------
 __int64            sub_1400052C0(
@@ -1123,72 +1074,16 @@ __int64            sub_1400052C0(
         float a8,
         unsigned int a9)
 {
-  __int64 v9; // r15
-  __int64 result; // rax
-  __int64 v11; // rbp
-  int v14; // r10d
-  __int64 v15; // rbx
-  __int64 v16; // rdi
-  __int64 v17; // rdx
-  float v18; // xmm3_4
-  float v19; // xmm0_4
-
-  v9 = a1;
-  result = (__int64)&dword_140404A6C[486149253];
-  v11 = a2;
-  v14 = 0;
-  while ( *(_DWORD *)result )
-  {
-    ++v14;
-    result += 244;
-    if ( result >= (__int64)&dword_140404A6C[487148677] )
-      return result;
-  }
-  if ( v14 != -1 )
-  {
-    v15 = v14;
-    v16 = 61LL * v14;
-    sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[v16 + 486149254]), 0, 0xF0u);
-    v17 = 18 * v15;
-    dword_140404A6C[v16 + 486149253] = 1;
-    dword_140404A6C[v16 + 486149254] = 6;
-    *(_QWORD *)&dword_140404A6C[v16 + 486149256] = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v17 + 485543029] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v17 + 485543033] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v17 + 485543037] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v17 + 485543041] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v17 + 485543045] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v17 + 485543049] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v17 + 485543053] + 2) = 0;
-    *(_OWORD *)((char *)&dword_140404A6C[2 * v17 + 485543057] + 2) = 0;
-    *(_QWORD *)((char *)&dword_140404A6C[2 * v17 + 485543061] + 2) = 0;
-    *(unsigned int *)((char *)&dword_140404A6C[2 * v17 + 485543063] + 2) = 0;
-    HIWORD(dword_140404A6C[2 * v17 + 485543064]) = 0;
-    LOWORD(dword_140404A6C[2 * v17 + 485543029]) = v9;
-    HIWORD(dword_140404A6C[2 * v17 + 485543029]) = v11;
-    dword_140404A6C[2 * v17 + 485543037] = *a3;
-    dword_140404A6C[2 * v17 + 485543038] = a3[1];
-    dword_140404A6C[2 * v17 + 485543039] = a3[2];
-    dword_140404A6C[2 * v17 + 485543040] = *a4;
-    dword_140404A6C[2 * v17 + 485543041] = a4[1];
-    dword_140404A6C[2 * v17 + 485543042] = a4[2];
-    dword_140404A6C[2 * v17 + 485543033] = *a5;
-    dword_140404A6C[2 * v17 + 485543034] = a5[1];
-    result = a5[2];
-    dword_140404A6C[2 * v17 + 485543035] = result;
-    *(float *)&dword_140404A6C[2 * v17 + 485543036] = a6 * a8;
-    dword_140404A6C[2 * v17 + 485543046] = a9;
-    dword_140404A6C[2 * v17 + 485543047] = a7;
-    v18 = *(float *)&dword_140404A6C[47 * v9 + 18215714];
-    v19 = *(float *)&dword_140404A6C[47 * v11 + 18215714] + v18;
-    *(float *)&dword_140404A6C[2 * v17 + 485543044] = *(float *)&dword_140404A6C[47 * v11 + 18215714]
-                                                    * (float)(1.0 / v19);
-    *(float *)&dword_140404A6C[2 * v17 + 485543045] = v18 * (float)(1.0 / v19);
-  }
-  return result;
+  extern int physics_add_contact(int body_a, int body_b, const float *offset_a, const float *offset_b,
+                                 const float *normal, float depth, float friction, float depth_scale, float stiffness);
+  /* src/engine/physics_bonds.c. The original leaves in RAX the normal's z bits when it added the contact, else the
+     end of the bond array; 0x1400CA430 returns it, so it is kept. */
+  if (physics_add_contact(a1, a2, (const float *)a3, (const float *)a4, (const float *)a5, a6, *(float *)&a7, a8,
+                          *(float *)&a9) < 0)
+    return (__int64)&dword_140404A6C[487148677];
+  return a5[2];
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400054F0) ----------------------------------------------------
 __int64            sub_1400054F0(float *a1, float *a2, double a3, float a4)

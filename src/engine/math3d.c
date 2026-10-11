@@ -26,7 +26,7 @@ void math_vec3_normalize(float out[3], const float v[3])
     float x = v[0];
     float length = sqrt_float((x * x + v[1] * v[1]) + v[2] * v[2]);
 
-    if (is_zero_or_nan(length)) {
+    if (is_zero_or_nan_quiet(length)) {
         out[0] = 0.0f;
         out[1] = 0.0f;
         out[2] = 0.0f;

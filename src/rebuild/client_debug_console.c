@@ -226,13 +226,17 @@ void sr_debug_console_stop(unsigned long result)
     /* Keep the console attached until process exit. */
 }
 
-/* Test aid: SUBROSA_AUTOSTART=practice presses the named menu button once, 30 frames in. */
+/* Test aid: SUBROSA_AUTOSTART=practice presses the named menu button once, 30 frames in and not
+   before SUBROSA_AUTOSTART_AFTER_MS milliseconds (the menu ignores the press until Steam has answered). */
 int sr_debug_autostart(const char *what)
 {
     static int calls, done;
-    const char *wanted = getenv("SUBROSA_AUTOSTART");
+    static DWORD first;
+    const char *wanted = getenv("SUBROSA_AUTOSTART"), *after = getenv("SUBROSA_AUTOSTART_AFTER_MS");
     if (done || !wanted || _stricmp(wanted, what)) return 0;
+    if (!first) first = GetTickCount() | 1;
     if (++calls < 30) return 0;
+    if (after && GetTickCount() - first < (DWORD)atoi(after)) return 0;
     done = 1;
     sr_debug_log("Autostart: %s", what);
     return 1;

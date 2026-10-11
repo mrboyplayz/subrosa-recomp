@@ -16442,114 +16442,13 @@ __int64            sub_140125860(unsigned int *a1, _DWORD *a2, float a3, int a4)
 //----- (00000001401259B0) ----------------------------------------------------
 void            sub_1401259B0(int a1, __int64 a2, __int64 a3)
 {
-  unsigned int v4; // eax
-  __int64 v5; // r8
-  unsigned int v6; // eax
-  __int64 v7; // r8
-  __int64 v8; // r8
-  __int64 v9; // r8
-  __int64 v10; // r8
-  __int64 v11; // r8
-
-  if ( dword_140404A6C[73991655] )
-  {
-    v4 = dword_140404A6C[431744815];
-    if ( dword_140404A6C[431744816] != dword_140404A6C[431744815] )
-    {
-      qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791446] + 283793813], a3);
-      qword_140404198(34962, 0, 32 * dword_140404A6C[431744815], &dword_140404A6C[431744817]);
-      qword_140404170(34962, 0, v5);
-      v4 = dword_140404A6C[431744815];
-    }
-    dword_140404A6C[431744816] = v4;
-    v6 = dword_140404A6C[432269105];
-    if ( dword_140404A6C[432269106] != dword_140404A6C[432269105] )
-    {
-      qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791447] + 283793813], a3);
-      qword_140404198(34962, 0, 32 * dword_140404A6C[432269105], &dword_140404A6C[432269107]);
-      qword_140404170(34962, 0, v7);
-      v6 = dword_140404A6C[432269105];
-    }
-    dword_140404A6C[432269106] = v6;
-    qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830699] + 284024944]);
-    qword_140404238(0);
-    if ( !a1 )
-    {
-      qword_140404238(1);
-      qword_140404238(2);
-      unk_140404098(33985);
-      qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944]);
-      unk_140404098(33986);
-      qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
-    }
-    qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791446] + 283793813], v8);
-    ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0, 3, 5126,0,(int)(uint32_t)(32),(const void *)(intptr_t)(0));
-    if ( a1 )
-    {
-      qword_140302FF8(4, 0, dword_140404A6C[431744815]);
-    }
-    else
-    {
-      ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(1, 2, 5126,0,(int)(uint32_t)(32),(const void *)(intptr_t)(12));
-      ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(2, 3, 5126,0,(int)(uint32_t)(32),(const void *)(intptr_t)(20));
-      qword_140302FF8(4, 0, dword_140404A6C[431744815]);
-      unk_140404098(33984);
-      qword_140404230(1);
-      qword_140404230(2);
-    }
-    qword_140404230(0);
-    qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283827818] + 284024944]);
-    qword_140404238(0);
-    if ( !a1 )
-    {
-      qword_140404238(1);
-      qword_140404238(2);
-      unk_140404098(33985);
-      qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944]);
-      unk_140404098(33986);
-      qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
-    }
-    qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791447] + 283793813], v9);
-    ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0, 3, 5126,0,(int)(uint32_t)(32),(const void *)(intptr_t)(0));
-    if ( a1 )
-    {
-      qword_140302FF8(4, 0, dword_140404A6C[432269105]);
-      qword_140404170(34962, 0, v11);
-    }
-    else
-    {
-      ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(1, 2, 5126,0,(int)(uint32_t)(32),(const void *)(intptr_t)(12));
-      ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(2, 3, 5126,0,(int)(uint32_t)(32),(const void *)(intptr_t)(20));
-      qword_140302FF8(4, 0, dword_140404A6C[432269105]);
-      qword_140404170(34962, 0, v10);
-      unk_140404098(33984);
-      qword_140404230(1);
-      qword_140404230(2);
-    }
-    qword_140404230(0);
-  }
+  /* Clean implementation: src/engine/world_particles.c, checked against the original executable
+     (tools/native-compare suite particledraw). Only a1 is an argument. */
+  extern void world_draw_resting_particles(int depth_only);
+  (void)a2;
+  (void)a3;
+  world_draw_resting_particles(a1);
 }
-
-// 140125A1F: variable 'v5' is possibly undefined
-// 140125A52: variable 'a3' is possibly undefined
-// 140125A7F: variable 'v7' is possibly undefined
-// 140125B38: variable 'v8' is possibly undefined
-// 140125CA6: variable 'v9' is possibly undefined
-// 140125D44: variable 'v10' is possibly undefined
-// 140125D8E: variable 'v11' is possibly undefined
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A72FE728: using guessed type unsigned int;
-// 1A72FE72C: using guessed type unsigned int;
-// 1A74FE730: using guessed type unsigned int;
-// 1A74FE734: using guessed type unsigned int;
 
 //----- (0000000140125DB0) ----------------------------------------------------
 double            sub_140125DB0(

@@ -37,6 +37,8 @@ typedef ptrdiff_t GLintptr;
 #define GL_DEPTH_TEST 0x0B71
 #define GL_BLEND 0x0BE2
 #define GL_TEXTURE_2D 0x0DE1
+#define GL_TEXTURE0 0x84C0
+#define GL_TEXTURE_CUBE_MAP 0x8513
 #define GL_UNSIGNED_SHORT 0x1403
 #define GL_FLOAT 0x1406
 #define GL_ARRAY_BUFFER 0x8892
@@ -48,7 +50,7 @@ typedef ptrdiff_t GLintptr;
    client's data module; each one holds a single function pointer. */
 extern char qword_140302FE8[], qword_140302FF8[], qword_140404050[], qword_140404170[], unk_140404190[],
             qword_140404198[], qword_140404230[], qword_140404238[], qword_1404042E0[],
-            qword_140404378[], unk_140404470[], qword_1404044A8[];
+            qword_140404378[], unk_140404470[], qword_1404044A8[], unk_140404098[];
 extern float flt_140384000[];
 
 #define SR_GL_SLOT(storage, prototype) ((prototype)(*(void **)(void *)(storage)))
@@ -58,6 +60,7 @@ extern float flt_140384000[];
 
 #define glDrawArrays              SR_GL_SLOT(qword_140302FF8, void (*)(GLenum, GLint, GLsizei))
 #define glDrawElements            SR_GL_SLOT(&flt_140384000[131076], void (*)(GLenum, GLsizei, GLenum, const void *))
+#define glActiveTexture           SR_GL_SLOT(unk_140404098, void (*)(GLenum))
 #define glBindTexture             SR_GL_SLOT(qword_140404050, void (*)(GLenum, GLuint))
 #define glBindBuffer              SR_GL_SLOT(qword_140404170, void (*)(GLenum, GLuint))
 #define glBufferData              SR_GL_SLOT(unk_140404190, void (*)(GLenum, GLsizeiptr, const void *, GLenum))

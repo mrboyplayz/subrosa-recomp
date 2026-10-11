@@ -1800,232 +1800,35 @@ __int64            sub_140048DA0(
 }
 
 //----- (000000014004A130) ----------------------------------------------------
-__int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4)
+__int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4, float *a5, float *a6)
 {
-  float *v4; // rdi
-  float *v6; // rbx
-  __int64 v9; // [rsp-20h] [rbp-60B0h] BYREF
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14004A130[12400];
-#define v10 (*(_BYTE (*)[6144])(void *)(sr_frame_14004A130 + 0)) /* [rsp+10h] */
-#define v11 (*(_BYTE (*)[6144])(void *)(sr_frame_14004A130 + 6144)) /* [rsp+1810h] */
-#define v12 (*(__int64 (*))(void *)(sr_frame_14004A130 + 12288)) /* [rsp+3010h] */
-#define v13 (*(float * (*))(void *)(sr_frame_14004A130 + 12384)) /* [rsp+3070h] */
-#define v14 (*(float * (*))(void *)(sr_frame_14004A130 + 12392)) /* [rsp+3078h] */
-
-  v4 = v13;
-  v6 = v14;
-  sub_14004A480((__int64)v11, (__int64)v10, a2, a3, a4);
-  return sub_14004A1D0(a1, a2, (__int64)v11, (__int64)v10, v4, v6); /* 0x14004A1A4: the result of this call is still in rax at the exit */
+  extern int collision_mesh_point_sweep(void *hit, const void *mesh, const float *position, const float *rotation,
+                                        const float *from, const float *to);
+  /* src/engine/collision_mesh.c. Hex-Rays had dropped the last two arguments (the sweep's ends, read from the stack)
+     and passed two unset locals instead; no code of the original calls this routine. */
+  return collision_mesh_point_sweep(a1, (const void *)a2, a3, a4, a5, a6);
 }
-#undef v10
-#undef v11
-#undef v12
-#undef v13
-#undef v14
 
 
 //----- (000000014004A1D0) ----------------------------------------------------
 _BOOL8            sub_14004A1D0(float *a1, __int64 a2, __int64 a3, __int64 a4, float *a5, float *a6)
 {
-  int v6; // r15d
-  float *v10; // rsi
-  __int64 v11; // rdi
-  float *v12; // r12
-  __int64 v13; // rdx
-  bool v14; // zf
-  __int64 v15; // rax
-  float v16; // xmm1_4
-  float v17; // xmm0_4
-  __int64 v18; // rax
-  float v19; // xmm1_4
-  float v20; // xmm0_4
-  __int64 v21; // rax
-  float v22; // xmm1_4
-  __int64 v23; // rax
-  float v24; // xmm1_4
-  float v25; // xmm6_4
-  float v26; // xmm7_4
-  float v27; // xmm8_4
-  float v28; // xmm2_4
-  int v29; // xmm1_4
-  float v30; // xmm2_4
-  int v31; // xmm1_4
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14004A1D0[208];
-#define v33 (*(int (*))(void *)(sr_frame_14004A1D0 + 0)) /* [rsp+48h] */
-#define v34 (*(int (*))(void *)(sr_frame_14004A1D0 + 4)) /* [rsp+4Ch] */
-#define v35 (*(int (*))(void *)(sr_frame_14004A1D0 + 8)) /* [rsp+50h] */
-#define v36 (*(float (*)[4])(void *)(sr_frame_14004A1D0 + 16)) /* [rsp+58h] */
-#define v37 (*(float (*)[4])(void *)(sr_frame_14004A1D0 + 32)) /* [rsp+68h] */
-#define v38 (*(float (*)[4])(void *)(sr_frame_14004A1D0 + 48)) /* [rsp+78h] */
-#define v39 (*(float (*)[4])(void *)(sr_frame_14004A1D0 + 64)) /* [rsp+88h] */
-#define v40 (*(float (*)[6])(void *)(sr_frame_14004A1D0 + 80)) /* [rsp+98h] */
-#define v41 (*(float (*))(void *)(sr_frame_14004A1D0 + 192)) /* [rsp+108h] */
-
-  v6 = 0;
-  a1[6] = 1.0;
-  if ( *(int *)(a2 + 16) <= 0 )
-    return 0;
-  v10 = (float *)(a4 + 8);
-  v11 = 0;
-  v12 = a6;
-  do
-  {
-    v13 = *(_QWORD *)(a2 + 24);
-    v14 = *(_DWORD *)(v13 + v11 + 4) == 4;
-    v15 = 3 * *(_DWORD *)(v13 + v11 + 8);
-    v16 = *(float *)(a3 + 4 * v15 + 4);
-    v37[0] = *(float *)(a3 + 4 * v15);
-    v17 = *(float *)(a3 + 4 * v15 + 8);
-    LODWORD(v15) = *(_DWORD *)(v13 + v11 + 12);
-    v37[2] = v17;
-    v37[1] = v16;
-    v18 = 3 * (int)v15;
-    v19 = *(float *)(a3 + 4 * v18 + 4);
-    v39[0] = *(float *)(a3 + 4 * v18);
-    v20 = *(float *)(a3 + 4 * v18 + 8);
-    LODWORD(v18) = *(_DWORD *)(v13 + v11 + 16);
-    v39[2] = v20;
-    v39[1] = v19;
-    v21 = 3 * (int)v18;
-    v22 = *(float *)(a3 + 4 * v21 + 4);
-    v36[0] = *(float *)(a3 + 4 * v21);
-    v36[2] = *(float *)(a3 + 4 * v21 + 8);
-    v36[1] = v22;
-    if ( v14 )
-    {
-      v23 = 3 * *(_DWORD *)(v13 + v11 + 20);
-      v24 = *(float *)(a3 + 4 * v23 + 4);
-      v40[0] = *(float *)(a3 + 4 * v23);
-      v40[2] = *(float *)(a3 + 4 * v23 + 8);
-      v40[1] = v24;
-    }
-    v25 = *(v10 - 2);
-    v26 = *(v10 - 1);
-    v27 = *v10;
-    v38[0] = v25;
-    v38[1] = v26;
-    v38[2] = v27;
-    if ( sub_140077FA0((float *)&v33, v38, &v41, a5, v12, v37, v39, v36) )
-    {
-      v28 = v41;
-      if ( v41 < a1[6] )
-      {
-        v29 = v34;
-        *(_DWORD *)a1 = v33;
-        *((_DWORD *)a1 + 2) = v35;
-        *((_DWORD *)a1 + 1) = v29;
-        a1[3] = v25;
-        a1[4] = v26;
-        a1[5] = v27;
-        a1[6] = v28;
-      }
-    }
-    if ( *(_DWORD *)(*(_QWORD *)(a2 + 24) + v11 + 4) == 4
-      && sub_140077FA0((float *)&v33, v38, &v41, a5, v12, v37, v36, v40) )
-    {
-      v30 = v41;
-      if ( v41 < a1[6] )
-      {
-        v31 = v34;
-        *(_DWORD *)a1 = v33;
-        *((_DWORD *)a1 + 2) = v35;
-        *((_DWORD *)a1 + 1) = v31;
-        a1[3] = v25;
-        a1[4] = v26;
-        a1[5] = v27;
-        a1[6] = v30;
-      }
-    }
-    ++v6;
-    v10 += 3;
-    v11 += 36;
-  }
-  while ( v6 < *(_DWORD *)(a2 + 16) );
-  return a1[6] < 1.0;
+  extern int collision_mesh_point_faces(void *hit, const void *mesh, const float (*points)[3], const float (*normals)[3],
+                                        const float *from, const float *to);
+  /* src/engine/collision_mesh.c */
+  return collision_mesh_point_faces(a1, (const void *)a2, (const float (*)[3])a3, (const float (*)[3])a4, a5, a6);
 }
-#undef v33
-#undef v34
-#undef v35
-#undef v36
-#undef v37
-#undef v38
-#undef v39
-#undef v40
-#undef v41
 
 
 //----- (000000014004A480) ----------------------------------------------------
 __int64            sub_14004A480(__int64 a1, __int64 a2, __int64 a3, float *a4, float *a5)
 {
-  int v5; // r11d
-  int v8; // ebx
-  __int64 v9; // rcx
-  float *v10; // rdx
-  __int64 result; // rax
-  float v12; // xmm5_4
-  float v13; // xmm4_4
-  float v14; // xmm8_4
-  float v15; // xmm11_4
-  float v16; // xmm7_4
-  float v17; // xmm10_4
-  float v18; // xmm9_4
-  float v19; // xmm3_4
-  float v20; // xmm6_4
-  __int64 v21; // rcx
-  float *v22; // rdx
-  float v23; // xmm4_4
-  float v24; // xmm6_4
-  float v25; // xmm5_4
-
-  v5 = 0;
-  v8 = 0;
-  if ( *(int *)a3 > 0 )
-  {
-    v9 = 0;
-    v10 = (float *)(a1 + 8);
-    do
-    {
-      result = *(_QWORD *)(a3 + 8);
-      ++v8;
-      v12 = a5[4];
-      v13 = a5[7];
-      v14 = *(float *)(v9 + result);
-      v15 = *(float *)(v9 + result + 4);
-      v16 = *(float *)(v9 + result + 8);
-      v9 += 16;
-      v17 = a5[5];
-      v18 = a5[8];
-      v19 = a5[1] * v14;
-      v20 = a5[2] * v14;
-      *(v10 - 2) = (float)((float)(v14 * *a5) + (float)(v16 * a5[6])) + (float)((float)(v15 * a5[3]) + *a4);
-      *(v10 - 1) = (float)((float)(v13 * v16) + v19) + (float)((float)(v12 * v15) + a4[1]);
-      *v10 = (float)((float)(v18 * v16) + v20) + (float)((float)(v17 * v15) + a4[2]);
-      v10 += 3;
-    }
-    while ( v8 < *(_DWORD *)a3 );
-  }
-  if ( *(int *)(a3 + 16) > 0 )
-  {
-    v21 = 0;
-    v22 = (float *)(a2 + 8);
-    do
-    {
-      result = *(_QWORD *)(a3 + 24);
-      ++v5;
-      v23 = *(float *)(v21 + result + 24);
-      v24 = *(float *)(v21 + result + 28);
-      v25 = *(float *)(v21 + result + 32);
-      v21 += 36;
-      *(v22 - 2) = (float)((float)(v23 * *a5) + (float)(v24 * a5[3])) + (float)(v25 * a5[6]);
-      *(v22 - 1) = (float)((float)(v23 * a5[1]) + (float)(v24 * a5[4])) + (float)(v25 * a5[7]);
-      *v22 = (float)((float)(v24 * a5[5]) + (float)(v23 * a5[2])) + (float)(v25 * a5[8]);
-      v22 += 3;
-    }
-    while ( v5 < *(_DWORD *)(a3 + 16) );
-  }
-  return result;
+  extern void collision_mesh_transform(float (*points)[3], float (*normals)[3], const void *mesh, const float *position,
+                                       const float *r);
+  /* src/engine/collision_mesh.c; the original returns a leftover pointer; its callers (0x14004A130 and
+     0x140048DA0, now in src/engine) do not read it. */
+  collision_mesh_transform((float (*)[3])a1, (float (*)[3])a2, (const void *)a3, a4, a5);
+  return 0;
 }
 
 
@@ -9599,78 +9402,11 @@ __int64            sub_14005EE40(unsigned int a1, unsigned int *a2, float *a3, f
 //----- (000000014005F150) ----------------------------------------------------
 __int64            sub_14005F150(unsigned int a1, unsigned int *a2, unsigned int *a3, float *a4)
 {
-  unsigned int v4; // r11d
-  __int64 v7; // r8
-  unsigned int v8; // xmm0_4
-  unsigned int v9; // ecx
-  unsigned int v10; // edx
-  int v11; // eax
-  float v12; // xmm1_4
-  int v13; // ecx
-  unsigned int v14; // xmm2_4
-  unsigned int v15; // r11d
-  unsigned int v16; // xmm1_4
-  float v17; // xmm1_4
-  float v18; // xmm1_4
-
-  v4 = dword_140404A6C[431564581];
-  if ( (int)dword_140404A6C[431564581] >= 0x4000 )
-    return 0xFFFFFFFFLL;
-  v7 = 26LL * (int)dword_140404A6C[431564581];
-  dword_140404A6C[v7 + 431138501] = a1;
-  dword_140404A6C[v7 + 431138504] = *a2;
-  dword_140404A6C[v7 + 431138505] = a2[1];
-  dword_140404A6C[v7 + 431138506] = a2[2];
-  if ( a3 )
-  {
-    dword_140404A6C[v7 + 431138507] = *a3;
-    dword_140404A6C[v7 + 431138508] = a3[1];
-    v8 = a3[2];
-  }
-  else
-  {
-    v8 = 0;
-    *(_QWORD *)&dword_140404A6C[v7 + 431138507] = 0;
-  }
-  dword_140404A6C[v7 + 431138509] = v8;
-  dword_140404A6C[v7 + 431138510] = *(_DWORD *)a4;
-  dword_140404A6C[v7 + 431138511] = *((_DWORD *)a4 + 1);
-  dword_140404A6C[v7 + 431138512] = *((_DWORD *)a4 + 2);
-  dword_140404A6C[v7 + 431138513] = *((_DWORD *)a4 + 3);
-  dword_140404A6C[v7 + 431138514] = *((_DWORD *)a4 + 4);
-  dword_140404A6C[v7 + 431138515] = *((_DWORD *)a4 + 5);
-  v9 = dword_140404A6C[133919253];
-  dword_140404A6C[v7 + 431138516] = *((_DWORD *)a4 + 6);
-  dword_140404A6C[v7 + 431138517] = *((_DWORD *)a4 + 7);
-  v10 = v9 + 1;
-  dword_140404A6C[v7 + 431138518] = *((_DWORD *)a4 + 8);
-  dword_140404A6C[v7 + 431138523] = 993158992;
-  dword_140404A6C[v7 + 431138524] = 1065311273;
-  dword_140404A6C[133919253] = v10;
-  v11 = 15731 * ((v9 << 13) ^ v9) * ((v9 << 13) ^ v9) + 789221;
-  v13 = 15731 * (v10 ^ ((v9 + 1) << 13)) * (v10 ^ ((v9 + 1) << 13)) + 789221;
-  v12 = (float)(0.06666667 - (float)((float)((v11 * v11 - 771171059) & 0x7FFFFFFF) * 6.2088175e-11)) + 0.20000002;
-  *(float *)&v14 = v12 * a4[3];
-  v15 = v4 + 1;
-  dword_140404A6C[v7 + 431138519] = v14;
-  *(float *)&dword_140404A6C[v7 + 431138520] = v12 * a4[4];
-  *(float *)&v16 = v12 * a4[5];
-  dword_140404A6C[133919253] = v10 + 1;
-  dword_140404A6C[v7 + 431138521] = v16;
-  v17 = -0.20000002 - (float)((float)((float)((v13 * v13 - 771171059) & 0x7FFFFFFF) * -6.2088175e-11) + 0.06666667);
-  *(float *)&dword_140404A6C[v7 + 431138519] = (float)(v17 * *a4) + *(float *)&v14;
-  *(float *)&dword_140404A6C[v7 + 431138520] = (float)(v17 * a4[1]) + *(float *)&dword_140404A6C[v7 + 431138520];
-  v18 = v17 * a4[2];
-  dword_140404A6C[431564581] = v15;
-  *(float *)&dword_140404A6C[v7 + 431138521] = v18 + *(float *)&dword_140404A6C[v7 + 431138521];
-  dword_140404A6C[v7 + 431138524] = 1065311273;
-  dword_140404A6C[v7 + 431138503] = 1;
-  return v15 - 1;
+  /* Clean implementation: src/engine/world_particles.c, checked against the original executable
+     (tools/native-compare suite particles). */
+  extern int world_spawn_particle(int type, const float *position, const float *velocity, const float *rotation);
+  return (unsigned int)world_spawn_particle((int)a1, (const float *)a2, (const float *)a3, a4);
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1602E12C0: using guessed type unsigned int;
-// 1A724E700: using guessed type unsigned int;
 
 //----- (000000014005F370) ----------------------------------------------------
 double            sub_14005F370(int a1, int a2)

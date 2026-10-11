@@ -9497,7 +9497,9 @@ __m128            sub_1401F9480(__m128d a1)
   __m128 v68; // [rsp+20h] [rbp-178h]
   __m128 v69; // [rsp+30h] [rbp-168h]
   __int128 v70; // [rsp+40h] [rbp-158h]
-  _BYTE v71[81]; // [rsp+8Fh] [rbp-109h] BYREF
+  /* 64-byte aligned and large enough: the original aligns v71 down to 64 and uses 0x50 bytes from there,
+     which in this frame would overwrite live locals (the special-lane mask), giving garbage for +-inf. */
+  _Alignas(64) _BYTE v71[128]; // [rsp+8Fh] [rbp-109h] BYREF
   unsigned __int64 v72; // [rsp+188h] [rbp-10h]
 
   v1 = 0;
@@ -9817,7 +9819,9 @@ __m128d            sub_1401F9B00(__m128d a1)
   __m128d v68; // [rsp+20h] [rbp-178h]
   __m128d v69; // [rsp+30h] [rbp-168h]
   __int128 v70; // [rsp+40h] [rbp-158h]
-  _BYTE v71[81]; // [rsp+8Fh] [rbp-109h] BYREF
+  /* 64-byte aligned and large enough: the original aligns v71 down to 64 and uses 0x50 bytes from there,
+     which in this frame would overwrite live locals (the special-lane mask), giving garbage for +-inf. */
+  _Alignas(64) _BYTE v71[128]; // [rsp+8Fh] [rbp-109h] BYREF
   unsigned __int64 v72; // [rsp+188h] [rbp-10h]
 
   v1 = 0;
@@ -10165,7 +10169,9 @@ __m128            sub_1401FA180(double a1)
   __m128i v98[2]; // [rsp+70h] [rbp-188h] BYREF
   __m128i v99; // [rsp+90h] [rbp-168h] BYREF
   __m128i v100[4]; // [rsp+A0h] [rbp-158h] BYREF
-  _BYTE v101[81]; // [rsp+EFh] [rbp-109h] BYREF
+  /* 64-byte aligned and large enough: the original aligns v101 down to 64 and uses 0x50 bytes from there,
+     which in this frame would overwrite live locals (the special-lane mask), giving garbage for +-inf. */
+  _Alignas(64) _BYTE v101[128]; // [rsp+EFh] [rbp-109h] BYREF
   unsigned __int64 v102; // [rsp+1E8h] [rbp-10h]
 
   v1 = 0;
@@ -10534,7 +10540,9 @@ __m128            sub_1401FAAC0(double a1)
   __m128 v79; // xmm4
   __m128 v80; // xmm6
   __m128 v81; // [rsp+20h] [rbp-158h]
-  _BYTE v82[81]; // [rsp+6Fh] [rbp-109h] BYREF
+  /* 64-byte aligned and large enough: the original aligns v82 down to 64 and uses 0x50 bytes from there,
+     which in this frame would overwrite live locals (the special-lane mask), giving garbage for +-inf. */
+  _Alignas(64) _BYTE v82[128]; // [rsp+6Fh] [rbp-109h] BYREF
   unsigned __int64 v83; // [rsp+168h] [rbp-10h]
 
   v1 = *(__m128 *)&a1;

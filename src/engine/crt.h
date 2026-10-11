@@ -25,6 +25,7 @@ float crt_asinf(float x);                                           /* 0x14023EB
    declared where used). */
 extern double crt_acos(double x) __asm__("acos");
 extern double crt_sin(double x) __asm__("sin");
+extern double crt_cos(double x) __asm__("cos");                      /* 0x14023FC70 */
 extern float crt_atan2f(float y, float x) __asm__("sub_14023F704");   /* atan2f */
 
 /* Error handling of the math routines, still in src/client/: set_statfp

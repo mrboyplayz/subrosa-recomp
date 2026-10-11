@@ -5,6 +5,7 @@
 !.gitignore
 !.gitattributes
 !README.md
+!CODEX-CLAUDE.md
 !CMakeLists.txt
 !docs/
 !docs/**

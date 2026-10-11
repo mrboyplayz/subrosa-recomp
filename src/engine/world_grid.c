@@ -57,3 +57,52 @@ void world_grid_insert(int layer, int32_t x, int32_t y, int32_t z, uint16_t obje
         unit->count++;
     }
 }
+
+void world_grid_query_items(WorldGridItems *out, const int32_t minimum[3], const int32_t maximum[3])
+{
+    out->count = 0;
+    uint32_t size_x = (uint32_t)world_grid_size_x(0);
+    uint32_t size_z = (uint32_t)world_grid_size_z(0);
+    WorldGridUnit *leaves = world_grid_leaves;
+    /* Native traversal order is y, z, x, each inclusive. */
+    for (int32_t y = minimum[1]; y <= maximum[1]; y = add_int(y, 1)) {
+        if (y < 0 || y >= (int32_t)((uint32_t)world_grid_size_y(0) << 6))
+            continue;
+        for (int32_t z = minimum[2]; z <= maximum[2]; z = add_int(z, 1)) {
+            if (z < 0 || z >= (int32_t)(size_z << 6))
+                continue;
+            for (int32_t x = minimum[0]; x <= maximum[0]; x = add_int(x, 1)) {
+                if (x < 0 || x >= (int32_t)(size_x << 6))
+                    continue;
+                int32_t cell = add_int(x >> 6, multiply_int((int32_t)size_x,
+                                      add_int(z >> 6, multiply_int((int32_t)size_z, y >> 6))));
+                int32_t block = world_grid_cells(0)[cell];
+                if (block == -1)
+                    continue;
+                int32_t leaf = world_grid_blocks[(intptr_t)block * 512
+                                + ((x >> 3) & 7) + 8 * (((z >> 3) & 7) + 8 * ((y >> 3) & 7))];
+                if (leaf == -1)
+                    continue;
+                intptr_t unit_index = (intptr_t)leaf * 512 + (x & 7) + 8 * ((z & 7) + 8 * (y & 7));
+                for (int n = 0; n < leaves[unit_index].count; n++) {
+                    if (out->count < 256) {
+                        int32_t item = leaves[unit_index].objects[n] & 0x3FFF;
+                        int k = 0;
+                        while (k < out->count && out->entries[k].item != item)
+                            k++;
+                        if (k == out->count) {
+                            out->entries[k].unknown_0 = 0;
+                            out->entries[k].item = leaves[unit_index].objects[n] & 0x3FFF;
+                            out->count++;
+                            leaves = world_grid_leaves;
+                        }
+                    }
+                }
+                if (leaves[unit_index].count > 0) {
+                    size_z = (uint32_t)world_grid_size_z(0);
+                    size_x = (uint32_t)world_grid_size_x(0);
+                }
+            }
+        }
+    }
+}

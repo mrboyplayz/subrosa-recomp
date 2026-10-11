@@ -6126,83 +6126,17 @@ __int64            sub_140016720(unsigned int a1, unsigned int a2, unsigned int 
 //----- (0000000140016870) ----------------------------------------------------
 __int64            sub_140016870(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 {
-  __int64 v5; // rdx
-  signed int v6; // eax
-  __int64 v7; // r11
-  __int64 v8; // rcx
-
-  if ( a1 > 3 )
-    return 0;
-  if ( (a2 & 0x80000000) != 0 )
-    return 0;
-  if ( (a3 & 0x80000000) != 0 )
-    return 0;
-  if ( (a4 & 0x80000000) != 0 )
-    return 0;
-  v5 = 263004LL * (int)a1;
-  if ( (int)(a2 >> 6) >= (int)dword_140404A6C[v5 + 111579650] )
-    return 0;
-  if ( (int)(a3 >> 6) >= (int)dword_140404A6C[v5 + 111579651] )
-    return 0;
-  v6 = dword_140404A6C[v5 + 111579652];
-  if ( (int)(a4 >> 6) >= v6 )
-    return 0;
-  v7 = *(int *)(*(_QWORD *)&dword_140404A6C[v5 + 111579655]
-              + 4LL * (int)((a2 >> 6) + dword_140404A6C[v5 + 111579650] * ((a4 >> 6) + (a3 >> 6) * v6)));
-  if ( (_DWORD)v7 == -1 )
-    return 0;
-  v8 = (int)dword_140404A6C[263004 * (int)a1
-                          + 111579985
-                          + 513 * v7
-                          + (int)(((a2 >> 3) & 7) + 8 * (((a4 >> 3) & 7) + 8 * ((a3 >> 3) & 7)))];
-  if ( (_DWORD)v8 == -1 )
-    return 0;
-  else
-    return dword_140404A6C[6930 * v8 + 83199479 + 64 * (a3 & 7) + 8 * (a4 & 7) + (a2 & 7)];
+  extern uint32_t world_block_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+  /* src/engine/world_blocks.c */
+  return world_block_at(a1, a2, a3, a4);
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001400169B0) ----------------------------------------------------
 __int64            sub_1400169B0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 {
-  __int64 v5; // rdx
-  signed int v6; // eax
-  __int64 v7; // r11
-  __int64 v8; // rcx
-
-  if ( a1 > 3 )
-    return 0;
-  if ( (a2 & 0x80000000) != 0 )
-    return 0;
-  if ( (a3 & 0x80000000) != 0 )
-    return 0;
-  if ( (a4 & 0x80000000) != 0 )
-    return 0;
-  v5 = 263004LL * (int)a1;
-  if ( (int)(a2 >> 6) >= (int)dword_140404A6C[v5 + 111579650] )
-    return 0;
-  if ( (int)(a3 >> 6) >= (int)dword_140404A6C[v5 + 111579651] )
-    return 0;
-  v6 = dword_140404A6C[v5 + 111579652];
-  if ( (int)(a4 >> 6) >= v6 )
-    return 0;
-  v7 = *(int *)(*(_QWORD *)&dword_140404A6C[v5 + 111579655]
-              + 4LL * (int)((a2 >> 6) + dword_140404A6C[v5 + 111579650] * ((a4 >> 6) + (a3 >> 6) * v6)));
-  if ( (_DWORD)v7 == -1 )
-    return 0;
-  v8 = (int)dword_140404A6C[263004 * (int)a1
-                          + 111579985
-                          + 513 * v7
-                          + (int)(((a2 >> 3) & 7) + 8 * (((a4 >> 3) & 7) + 8 * ((a3 >> 3) & 7)))];
-  if ( (_DWORD)v8 == -1 )
-    return 0;
-  else
-    return dword_140404A6C[6930 * v8 + 83199991 + 64 * (a3 & 7) + 8 * (a4 & 7) + (a2 & 7)];
+  extern uint32_t world_block_gone_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+  /* src/engine/world_blocks.c */
+  return world_block_gone_at(a1, a2, a3, a4);
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140016AF0) ----------------------------------------------------
 void            sub_140016AF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5)
 {
@@ -9765,122 +9699,11 @@ void sub_140037FE0()
 // 1A4CF0924: using guessed type unsigned int;
 
 //----- (0000000140038230) ----------------------------------------------------
-void            sub_140038230(int *a1, int *a2, int *a3)
+void sub_140038230(int *out, int *minimum, int *maximum)
 {
-  int v4; // r12d
-  unsigned int v6; // r8d
-  unsigned int v7; // ebx
-  __int64 v8; // rdi
-  int i; // r15d
-  int v10; // ebp
-  __int64 v11; // rdx
-  __int64 v12; // rdx
-  int v13; // r11d
-  __int64 v14; // r10
-  __int64 v15; // rsi
-  __int64 v16; // rdx
-  int v17; // ecx
-  int *v18; // rax
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_140038230[16];
-#define v19 (*(int * (*))(void *)(sr_frame_140038230 + 0)) /* [rsp+38h] */
-
-  v19 = a2;
-  *a1 = 0;
-  v4 = a2[1];
-  if ( v4 <= a3[1] )
-  {
-    v6 = dword_140404A6C[111579650];
-    v7 = dword_140404A6C[111579652];
-    v8 = *(_QWORD *)&dword_140404A6C[421769135];
-    do
-    {
-      if ( v4 >= 0 && v4 < (signed int)(dword_140404A6C[111579651] << 6) )
-      {
-        for ( i = a2[2]; i <= a3[2]; ++i )
-        {
-          if ( i >= 0 && i < (int)(v7 << 6) )
-          {
-            v10 = *a2;
-            if ( *a2 <= *a3 )
-            {
-              do
-              {
-                if ( v10 >= 0 && v10 < (int)(v6 << 6) )
-                {
-                  v11 = *(int *)(*(_QWORD *)&dword_140404A6C[421506981]
-                               + 4LL * (int)((v10 >> 6) + v6 * ((i >> 6) + v7 * (v4 >> 6))));
-                  if ( (_DWORD)v11 != -1 )
-                  {
-                    v12 = (int)dword_140404A6C[512 * v11
-                                             + 421506990
-                                             + 64 * ((v4 >> 3) & 7u)
-                                             + 8 * ((i >> 3) & 7)
-                                             + ((v10 >> 3) & 7)];
-                    if ( (_DWORD)v12 != -1 )
-                    {
-                      v13 = 0;
-                      v14 = 0;
-                      v15 = (v12 << 9) + (v10 & 7) + 8 * ((i & 7) + 8 * (v4 & 7u));
-                      if ( *(int *)(132 * v15 + v8) > 0 )
-                      {
-                        do
-                        {
-                          v16 = *a1;
-                          if ( (int)v16 < 256 )
-                          {
-                            v17 = 0;
-                            if ( (int)v16 <= 0 )
-                            {
-LABEL_19:
-                              a1[2 * v16 + 1] = 0;
-                              a1[2 * (*a1)++ + 2] = *(_DWORD *)(*(_QWORD *)&dword_140404A6C[421769135]
-                                                              + 4 * (v14 + 33 * v15)
-                                                              + 4)
-                                                  & 0x3FFF;
-                              v8 = *(_QWORD *)&dword_140404A6C[421769135];
-                            }
-                            else
-                            {
-                              v18 = a1 + 2;
-                              while ( *v18 != (*(_DWORD *)(v8 + 4 * (v14 + 33 * v15) + 4) & 0x3FFF) )
-                              {
-                                ++v17;
-                                v18 += 2;
-                                if ( v17 >= (int)v16 )
-                                  goto LABEL_19;
-                              }
-                            }
-                          }
-                          ++v13;
-                          ++v14;
-                        }
-                        while ( v13 < *(_DWORD *)(132 * v15 + v8) );
-                        v7 = dword_140404A6C[111579652];
-                        v6 = dword_140404A6C[111579650];
-                      }
-                    }
-                  }
-                }
-                ++v10;
-              }
-              while ( v10 <= *a3 );
-              a2 = v19;
-            }
-          }
-        }
-      }
-      ++v4;
-    }
-    while ( v4 <= a3[1] );
-  }
+  extern void world_grid_query_items(void *, const int32_t *, const int32_t *);
+  world_grid_query_items(out, minimum, maximum);
 }
-#undef v19
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 15ADA9274: using guessed type unsigned int;
-// 15ADA927C: using guessed type unsigned int;
-// 1A4CF0928: using guessed type unsigned int;
 
 //----- (000000014003E4B0) ----------------------------------------------------
 _BOOL8            sub_14003E4B0(

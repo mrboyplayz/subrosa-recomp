@@ -53,6 +53,16 @@ static inline int is_zero_or_nan(float value)
     return !(value < 0.0f || value > 0.0f);
 }
 
+/* UCOMISS + JE, including its quiet-NaN exception behavior. Ordered C
+   comparisons can emit COMISS, which additionally raises invalid for qNaN. */
+static inline int is_zero_or_nan_quiet(float value)
+{
+    __m128 v = _mm_set_ss(value);
+    __m128 equal = _mm_cmpeq_ss(v, _mm_setzero_ps());
+    __m128 unordered = _mm_cmpunord_ss(v, v);
+    return (_mm_movemask_ps(_mm_or_ps(equal, unordered)) & 1) != 0;
+}
+
 /* MINSS: the second operand unless the first is smaller (so the second
    when either is not a number). */
 static inline float min_float(float a, float b)

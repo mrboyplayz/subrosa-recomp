@@ -191,67 +191,12 @@ __int64            sr_CreateItem(int a1, float *a2, unsigned int *a3, float *a4)
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400CA1C0) ----------------------------------------------------
-__int64            sub_1400CA1C0(int a1)
+__int64 sub_1400CA1C0(int item)
 {
-  __int64 v2; // rbx
-  char *v3; // rsi
-  __int64 v4; // r14
-  __int64 v5; // rcx
-  __int64 v6; // rdi
-  unsigned sr_item_contact_candidates[513];
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400CA1C0[2144];
-#define v8 (*(__int64 (*))(void *)(sr_frame_1400CA1C0 + 0)) /* [rsp+0h] */
-#define v11 (*(__int64 (*))(void *)(sr_frame_1400CA1C0 + 2128)) /* [rsp+850h] */
-
-  v2 = 1760LL * a1;
-  if ( dword_140404A6C[1268 * dword_140404A6C[v2 + 278845898] + 278521288] )
-  {
-    sub_140038230((int *)&sr_item_contact_candidates[0], (int *)&dword_140404A6C[v2 + 278845964], (int *)&dword_140404A6C[v2 + 278845967]);
-    if ( (int)sr_item_contact_candidates[0] > 0 )
-    {
-      v3 = &(*(char *)(void *)(sr_item_contact_candidates+2));
-      v4 = sr_item_contact_candidates[0];
-      do
-      {
-        if ( *(_DWORD *)v3 != a1 )
-        {
-          v5 = *(int *)v3;
-          if ( *(_DWORD *)v3 > a1 || dword_140404A6C[1760 * v5 + 278845895] )
-          {
-            v6 = 1760 * v5;
-            if ( *(float *)&dword_140404A6C[1760 * v5 + 278845958] <= *(float *)&dword_140404A6C[v2 + 278845961]
-              && *(float *)&dword_140404A6C[v6 + 278845961] >= *(float *)&dword_140404A6C[v2 + 278845958]
-              && *(float *)&dword_140404A6C[v6 + 278845960] <= *(float *)&dword_140404A6C[v2 + 278845963]
-              && *(float *)&dword_140404A6C[v6 + 278845963] >= *(float *)&dword_140404A6C[v2 + 278845960]
-              && *(float *)&dword_140404A6C[v6 + 278845959] <= *(float *)&dword_140404A6C[v2 + 278845962]
-              && *(float *)&dword_140404A6C[v6 + 278845962] >= *(float *)&dword_140404A6C[v2 + 278845959]
-              && (unsigned int)sub_14004A7A0(
-                                 dword_140404A6C[v2 + 278845915],
-                                 dword_140404A6C[v6 + 278845915],
-                                 (int *)&dword_140404A6C[1268 * dword_140404A6C[v2 + 278845898] + 278522247],
-                                 (int *)&dword_140404A6C[1268 * dword_140404A6C[v6 + 278845898] + 278522247],
-                                 (float *)&dword_140404A6C[v2 + 278845916],
-                                 (float *)&dword_140404A6C[v2 + 278845934],
-                                 (float *)&dword_140404A6C[v6 + 278845916],
-                                 (float *)&dword_140404A6C[v6 + 278845934])
-              && ((int)dword_140404A6C[v6 + 278845896] < 60 || (int)dword_140404A6C[v2 + 278845896] < 60) )
-            {
-              dword_140404A6C[v2 + 278845895] = 0;
-              dword_140404A6C[v6 + 278845895] = 0;
-            }
-          }
-        }
-        v3 += 8;
-        --v4;
-      }
-      while ( v4 );
-    }
-  }
-  return 0; /* compatibility result discarded by all reviewed callers */
+  extern void item_solve_contacts(int item);
+  item_solve_contacts(item);
+  return 0; /* compatibility result is unused by the reviewed callers */
 }
-#undef v8
-#undef v11
 
 // 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
 // 140278F50: using guessed type __int128 xmmword_140278F50;
@@ -4813,7 +4758,8 @@ __int64            sub_14012C890(int a1, char *a2, int a3)
       sub_14024C22C("..");
   }
   return 0; /* the function has no caller */
-}
+}
+
 #undef v18
 #undef v19
 #undef v20

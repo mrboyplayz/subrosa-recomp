@@ -481,19 +481,19 @@ static void choose_item(const Drive *d, Arm *arm)
     arm->grip = 0;
     if (arm->side == 1) {
         if (h->hands[0].count > 0)
-            arm->item = h->hands[0].item;
+            arm->item = h->hands[0].items[0];
     } else if (h->hands[1].count <= 0) {
         if (h->hands[0].count > 0) {
-            int type = item_type_of(h->hands[0].item);
+            int type = item_type_of(h->hands[0].items[0]);
             if ((item_type_unknown_7c(type) > 1 || type == ITEM_TYPE_36)
                 && (h->unknown_6768 > 0.70700002f || !(h->input_flags & HUMAN_INPUT_8))) {
-                arm->item = h->hands[0].item;
+                arm->item = h->hands[0].items[0];
                 arm->both_hands = 1;
                 arm->grip = 1;
             }
         }
     } else {
-        arm->item = h->hands[1].item;
+        arm->item = h->hands[1].items[0];
     }
 
     arm->aimed = 0;
@@ -587,7 +587,7 @@ static void hand_offset(const Drive *d, const Arm *arm, float offset[3])
     if (arm->side == 1) {
         if (arm->item == -1)
             return;
-        if (arm->type == ITEM_TYPE_25 && item_int(h->hands[0].item, 0x27C) == 3) {
+        if (arm->type == ITEM_TYPE_25 && item_int(h->hands[0].items[0], 0x27C) == 3) {
             offset[0] = (r[6] * 0.4375f + offset[0]) + r[3] * 0.0625f;
             offset[1] = (r[7] * 0.4375f + offset[1]) + r[4] * 0.0625f;
             offset[2] = (r[8] * 0.4375f + offset[2]) + r[5] * 0.0625f;
@@ -1058,16 +1058,16 @@ void human_drive_ragdoll(int human)
         h->unknown_6850 = 0;
 
     /* aiming: an item of an aimed type in hand 0, or else in hand 1 */
-    if (h->hands[0].count > 0 && item_type_unknown_10(item_type_of(h->hands[0].item)))
+    if (h->hands[0].count > 0 && item_type_unknown_10(item_type_of(h->hands[0].items[0])))
         d.aiming = 1;
-    else if (h->hands[1].count > 0 && item_type_unknown_10(item_type_of(h->hands[1].item)))
+    else if (h->hands[1].count > 0 && item_type_unknown_10(item_type_of(h->hands[1].items[0])))
         d.aiming = 1;
     d.lean = h->unknown_60 == 2 ? PI_4 : PI_8;
     if (h->input_flags & HUMAN_INPUT_2)
         d.lean = 0.0f;
     if (!d.aiming)
         d.lean = 0.0f;
-    if (h->hands[0].count > 0 && item_type_unknown_14(item_type_of(h->hands[0].item)))
+    if (h->hands[0].count > 0 && item_type_unknown_14(item_type_of(h->hands[0].items[0])))
         d.lean = -d.lean;
     if (ragdoll_unknown_mode)
         d.lean = 0.0f;
@@ -1628,7 +1628,7 @@ void human_keep_arms_off_item(int human, int item)
            side of the item's sight */
         int bone = k < 2 ? HUMAN_BONE_SHOULDER + 3 : HUMAN_BONE_CHEST;
         const HumanBone *b = &h->bones[bone];
-        const float *dir = &b->rotation[3 * human_skeleton[bone].unknown_18];
+        const float *dir = &b->rotation[3 * human_skeleton[bone].axis_row];
         const float *p = b->position, *sight = item_type_floats(item_type_of(item), 0x1394);
         const float *ip = item_position(item), *ir = item_rotation(item);
         float near[3], far[3], item_end[3], item_start[3], side, closest_a[3], closest_b[3], depth;
@@ -1638,7 +1638,7 @@ void human_keep_arms_off_item(int human, int item)
             far[i] = dir[i] * 0.2890625f + p[i];
         }
         if (k >= 2) {
-            float back = human_skeleton[bone].unknown_1c * -0.5f - 0.0625f;
+            float back = human_skeleton[bone].length * -0.5f - 0.0625f;
             float forward = human_skeleton[HUMAN_BONE_HAND].unknown_34[0] - 0.125f;
 
             for (int i = 0; i < 3; i++) {

@@ -55,19 +55,26 @@ typedef struct PhysicsBody {
 /* Point masses joined by links and contacts (bonds with point[] indices).
    0x151A84920, 240 bytes each; the count follows the array. */
 typedef struct PhysicsPoint {
-    int32_t unknown_0, unknown_4;
+    int32_t unknown_0;
+    int32_t lifetime;                    /* ticks left; from 0x10000 never expires; 0 removes the point */
     float mass;
-    int32_t unknown_c, unknown_10;
+    float gravity;                       /* taken off the y velocity every tick */
+    int32_t unknown_10;
     float position[3];
-    uint8_t unknown_20[0x2C - 0x20];
+    float previous_position[3];          /* before this tick's move */
     float velocity[3];
-    uint8_t unknown_38[0x50 - 0x38];
+    float previous_velocity[3];          /* the velocity this tick's move used */
+    uint8_t unknown_44[0x50 - 0x44];
     int32_t bond_count;
-    int32_t bonds[39];                   /* PhysicsBond indices */
+    int32_t bonds[32];                   /* PhysicsBond indices */
+    int32_t vehicle_count;               /* vehicles whose point lists hold this point */
+    int32_t vehicles[6];
 } PhysicsPoint;
 
 #define physics_points      (&SR_GLOBAL(PhysicsPoint, 0x151A84920ULL))
 #define physics_point_count SR_GLOBAL(int32_t, 0x151E44920ULL)
+/* Set: points get no gravity. 0x16B27ECF4 */
+#define physics_points_no_gravity SR_GLOBAL(int32_t, 0x16B27ECF4ULL)
 
 /* Velocities of the points while a solve runs, and their gathered changes.
    The array lives in the client's data section (0x140384000), outside the
@@ -240,8 +247,31 @@ _Static_assert(__builtin_offsetof(PhysicsVehicle, voxel_min) == 0xC8, "PhysicsVe
 _Static_assert(__builtin_offsetof(PhysicsBond, vehicle_count) == 0x94, "PhysicsBond layout");
 _Static_assert(__builtin_offsetof(PhysicsBond, point_count) == 0x14, "PhysicsBond layout");
 _Static_assert(__builtin_offsetof(PhysicsPoint, velocity) == 0x2C, "PhysicsPoint layout");
+_Static_assert(__builtin_offsetof(PhysicsPoint, previous_velocity) == 0x38, "PhysicsPoint layout");
+_Static_assert(__builtin_offsetof(PhysicsPoint, vehicle_count) == 0xD4, "PhysicsPoint layout");
 
 /* ---- functions ----------------------------------------------------------- */
+
+/* Adds a contact between two bodies for this tick: a bond of type 6 in the
+   first free slot, its constraint filled with the contact points (relative
+   to each body, world axes), the normal pushing body_a out, depth *
+   depth_scale, the stiffness and friction, and each body's share of the
+   impulses by mass. Returns the bond, or -1 when all are taken (nothing
+   added). The callers pass friction 0.4, depth_scale 1/64, stiffness 1/32.
+   0x1400052C0 */
+int physics_add_contact(int body_a, int body_b, const float offset_a[3], const float offset_b[3],
+                        const float normal[3], float depth, float friction, float depth_scale, float stiffness);
+
+/* Moves every point by its velocity (keeping the previous position and
+   velocity) and, unless physics_points_no_gravity, applies its gravity.
+   0x1401154D0 */
+void physics_integrate_points(void);
+
+/* Counts down point lifetimes. A point whose time is up loses its bonds
+   (last first) and the last point moves into its slot,
+   with the references to it in bonds, vehicles and humans renumbered.
+   0x140115830 */
+void physics_expire_points(void);
 
 /* Fills the constraint of a joint bond from its bodies' current state.
    0x14001C780 */
@@ -259,6 +289,10 @@ void physics_solve_joint(int bond);
    of their points and vehicles. 0x14001FB90 */
 void physics_expire_bonds(void);
 
+/* Takes bond out of the bond lists of its points and vehicles and marks it
+   inactive; indices outside the array do nothing. 0x14007F370 */
+void physics_remove_bond(int bond);
+
 /* Turns a body's rotation by one tick of its angular momentum (fourth-order
    Runge-Kutta) and stores the angular velocity used. 0x14012B2D0 */
 void physics_integrate_rotation(float rotation[9], const float angular_momentum[3],
@@ -274,5 +308,10 @@ void physics_tick(void);
    solvers in each), integrates velocities, and retires bonds that last one
    tick. 0x14001D080 */
 void physics_solve(void);
+
+/* Contact against the level in the first free bond slot (type 5).
+   0x140005160. Retains the native normal-word/full-pool pointer return. */
+uintptr_t physics_add_world_contact(int16_t body, const float offset[3], const float normal[3],
+                                    float depth, float friction, float depth_scale, float stiffness);
 
 #endif

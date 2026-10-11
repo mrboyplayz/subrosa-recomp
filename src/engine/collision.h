@@ -81,6 +81,37 @@ typedef struct CollisionMesh {
     float vertex[][3];
 } CollisionMesh;
 
+/* The mesh's points and face normals turned by rotation r (rows) and moved
+   by position. 0x14004A480 */
+void collision_mesh_transform(float (*points)[3], float (*normals)[3], const CollisionMesh *mesh,
+                              const float position[3], const float r[9]);
+
+/* The nearest face of a mesh (points and normals already transformed) that
+   the line from `from` to `to` crosses from behind: its point, normal and
+   fraction (left at 1 on a miss). 0x14004A1D0 */
+typedef struct CollisionMeshHit {
+    float point[3];
+    float normal[3];
+    float fraction;
+} CollisionMeshHit;
+
+int collision_mesh_point_faces(CollisionMeshHit *hit, const CollisionMesh *mesh, const float (*points)[3],
+                               const float (*normals)[3], const float from[3], const float to[3]);
+
+/* collision_mesh_point_faces() against mesh placed at position, rotation.
+   0x14004A130 (no caller in the original) */
+int collision_mesh_point_sweep(CollisionMeshHit *hit, const CollisionMesh *mesh, const float position[3],
+                               const float rotation[9], const float from[3], const float to[3]);
+
+/* The closest points of edges a0-a1 and b0-b1 when they lie within both
+   edges, and their distance. 0x14008CEB0 */
+int collision_edge_edge(float on_a[3], float on_b[3], float *distance, const float a0[3], const float a1[3],
+                        const float b0[3], const float b1[3]);
+
+/* Whether segment p0-p1 crosses the plane of triangle c e0 e1 inside the
+   triangle (touching counts). 0x140187410 */
+int collision_edge_side(const float p0[3], const float p1[3], const float c[3], const float e0[3], const float e1[3]);
+
 /* Contacts between mesh a on body_a and mesh b on body_b, each placed by a
    position and rotation: points of each against the other's faces and every
    pair of edges. Bit 0 of flags (the only one read) skips a's points and one
