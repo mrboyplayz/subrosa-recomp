@@ -15,7 +15,7 @@ from repair_client_menu_actions import pinned_pe
 PROJECT=Path(__file__).resolve().parents[1]
 
 def entries():
-    source=(PROJECT/'src/client/client_recovery_0e0000.c').read_text()
+    source=(PROJECT/'src/client/client_gl_loader.c').read_text()
     declarations=(PROJECT/'src/client/shared_client.h').read_text()
     found={}
     for line in source.splitlines():

@@ -450,3 +450,89 @@ LABEL_19:
 // 1ABC5B60C: using guessed type unsigned int;
 // 1AD04B20C: using guessed type unsigned int;
 
+
+//----- (0000000140127240) ----------------------------------------------------
+void            sub_140127240(char *a1)
+{
+  __int64 v1; // rax
+  __int64 v2; // rbx
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140127240[16];
+#define Buffer (*(int (*))(void *)(sr_frame_140127240 + 0)) /* [rsp+38h] */
+#define v4 (*(int (*))(void *)(sr_frame_140127240 + 8)) /* [rsp+40h] */
+
+  dword_140404A6C[19065874] = 0;
+  v1 = sub_14020B8D8(a1, "rb");
+  v2 = v1;
+  if ( v1 )
+  {
+    fread_sr((void *)(uintptr_t)(&Buffer), 4, 1, (FILE *)(uintptr_t)(v1));
+    if ( Buffer == 1 )
+    {
+      fread_sr((void *)(uintptr_t)(&v4), 4, 1, (FILE *)(uintptr_t)(v2));
+      if ( v4 == dword_1402B26C8 )
+      {
+        dword_140404A6C[19065873] = 0;
+        fread_sr((void *)(uintptr_t)(&dword_140404A6C[19065874]), 4, 1, (FILE *)(uintptr_t)(v2));
+        fread_sr((void *)(uintptr_t)(*(_QWORD *)&dword_140404A6C[19065875]), 1, (int)dword_140404A6C[19065874], (FILE *)(uintptr_t)(v2));
+      }
+    }
+    sub_14020B9E8(v2);
+  }
+}
+#undef Buffer
+#undef v4
+
+// 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
+// 1402B26C8: using guessed type int dword_1402B26C8;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144CBFAB0: using guessed type unsigned int;
+// 144CBFAB4: using guessed type unsigned int;
+
+//----- (0000000140127500) ----------------------------------------------------
+__int64 sub_140127500()
+{
+  int v0; // ebx
+  __int64 i; // rax
+  __int64 v2; // rax
+  __int64 v3; // rbx
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140127500[128];
+#define v5 (*(__int64 (*))(void *)(sr_frame_140127500 + 0)) /* [rsp+0h] */
+#define v6 (*(int (*))(void *)(sr_frame_140127500 + 32)) /* [rsp+20h] */
+#define v7 (*(int (*)[3])(void *)(sr_frame_140127500 + 36)) /* [rsp+24h] */
+#define v8 (*(char (*)[64])(void *)(sr_frame_140127500 + 48)) /* [rsp+30h] */
+#define v9 (*(__int64 (*))(void *)(sr_frame_140127500 + 112)) /* [rsp+70h] */
+
+  v0 = 1;
+  sub_140158AB0(v8, "replay%03d.srp", 1);
+  for ( i = sub_14020B8D8(v8, "rb"); i; i = sub_14020B8D8(v8, "rb") )
+  {
+    if ( v0 >= 1000 )
+      break;
+    sub_14020B9E8(i);
+    sub_140158AB0(v8, "replay%03d.srp", ++v0);
+  }
+  v2 = sub_14020B8D8(v8, "wb");
+  v3 = v2;
+  if ( v2 )
+  {
+    v6 = 1;
+    sub_14020CE0C((__int64)&v6, 4, 1, v2);
+    v7[0] = dword_1402B26C8;
+    sub_14020CE0C((__int64)v7, 4, 1, v3);
+    sub_14020CE0C((__int64)&dword_140404A6C[19065874], 4, 1, v3);
+    sub_14020CE0C(*(__int64 *)&dword_140404A6C[19065875], 1, (int)dword_140404A6C[19065874], v3);
+    sub_14020B9E8(v3);
+  }
+  return 0; /* the function has no caller */
+}
+#undef v5
+#undef v6
+#undef v7
+#undef v8
+#undef v9
+
+// 1402B26C8: using guessed type int dword_1402B26C8;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+

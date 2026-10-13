@@ -55,7 +55,7 @@ static void record_fatal_blow(WorldHuman *h, int vehicle)
         event->tick = game_tick;
         event->a = game_unknown_183e9362c;
         for (int k = 0; k < 3; k++)
-            ((uint32_t *)(void *)event->vector_a)[k] = h->unknown_80[k];
+            ((uint32_t *)(void *)event->vector_a)[k] = h->position[k];
         ((uint32_t *)(void *)event)[0x30 / 4] = 0x3F800000;
         ((uint32_t *)(void *)event)[0x34 / 4] = 0x3F000000;
     }
@@ -110,7 +110,7 @@ void human_collide_vehicle(int human, int vehicle)
 
         /* Not the vehicle the human belongs to, and not an arm below the
            shoulder. */
-        if (vehicle == h->unknown_30 || (i != 7 && i > 4 && i < 10))
+        if (vehicle == h->last_vehicle || (i != 7 && i > 4 && i < 10))
             continue;
         /* How fast the hull moves into the bone at the hit. */
         hull = &physics_bodies[physics_vehicles[vehicle].body];
@@ -127,8 +127,8 @@ void human_collide_vehicle(int human, int vehicle)
             continue;
         if (!((vy * collision_hit.normal[1] + vx * collision_hit.normal[0]) + vz * collision_hit.normal[2] > threshold))
             continue;
-        h->unknown_3c = subtract_int(h->unknown_3c, 120);
-        if ((uint32_t)add_int(h->unknown_3c, 119) > 119)
+        h->old_health = subtract_int(h->old_health, 120);
+        if ((uint32_t)add_int(h->old_health, 119) > 119)
             continue;
         record_fatal_blow(h, vehicle);
     }

@@ -286,212 +286,22 @@ __int64 sub_1400C3AB0(int item, int bill, int denomination)
 //----- (00000001400C3E00) ----------------------------------------------------
 __int64            sub_1400C3E00(int a1)
 {
-  __m128i si128; // xmm0
-  __int64 v2; // rbx
-  __int64 v3; // rdi
-  unsigned int *v4; // rdx
-  unsigned int v5; // edx
-  unsigned int v6; // ecx
-  int v7; // eax
-  __int64 result; // rax
-
-  si128 = _mm_load_si128((     __m128i *)&xmmword_140279200);
-  v2 = a1;
-  v3 = 1760LL * a1;
-  v4 = &dword_140404A6C[16 * ((int)dword_140404A6C[v3 + 278846111] + 110LL * a1) + 278846626];
-  _mm_storeu_si128((__m128i *)(void *)v4, si128);
-  _mm_storeu_si128((__m128i *)(void *)(v4 + 4), si128);
-  _mm_storeu_si128((__m128i *)(void *)(v4 + 8), si128);
-  *((_QWORD *)v4 + 6) = SR_VEC_LANES(128, si128, i64)[0];
-  v4[14] = SR_VEC_LANES(128, si128, i32)[0];
-  *((_WORD *)v4 + 30) = SR_VEC_LANES(128, si128, i16)[0];
-  *((_BYTE *)v4 + 62) = SR_VEC_LANES(128, si128, i8)[0];
-  sub_140050F90(a1, dword_140404A6C[v3 + 278846111]);
-  v5 = dword_140404A6C[v3 + 278846111];
-  v6 = dword_140404A6C[v3 + 278846112];
-  if ( (((_BYTE)v5 + 10) & 0x1F) == v6 )
-    dword_140404A6C[v3 + 278846112] = ((_BYTE)v6 + 1) & 0x1F;
-  v7 = ((_BYTE)v5 + 1) & 0x1F;
-  dword_140404A6C[v3 + 278846111] = v7;
-  result = (unsigned int)(v7 << 6);
-  ++dword_140404A6C[v2 + 280648157];
-  dword_140404A6C[v3 + 278846113] = result;
-  return result;
+  /* src/engine/items/computer.c */
+  extern void computer_new_line(int item);
+  computer_new_line(a1);
+  return 0;
 }
 
 // 140279200: using guessed type __int128 xmmword_140279200;
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C3ED0) ----------------------------------------------------
-int            sub_1400C3ED0(int a1)
+int sub_1400C3ED0(int item)
 {
-  __int64 v2; // rdi
-  __int64 v3; // rbp
-  __int64 v4; // rax
-  int v5; // eax
-  __int64 v6; // rbx
-  signed int v7; // ebx
-  int *v8; // r14
-  __int64 v9; // r8
-  int v10; // r10d
-  __int64 v11; // rcx
-  __int64 v12; // rdx
-  __int64 v13; // rdx
-  __int64 v14; // r9
-  char *v15; // rcx
-  unsigned int *v17; // r14
-  signed int v18; // ebx
-  int *v19; // rdi
-
-  v2 = 1760LL * a1;
-  v3 = a1;
-  LODWORD(v4) = dword_140404A6C[v2 + 278847244];
-  if ( (int)v4 > 0 )
-  {
-    LODWORD(v4) = v4 - 1;
-    dword_140404A6C[v2 + 278847244] = v4;
-    if ( !(_DWORD)v4 )
-    {
-      if ( !dword_140404A6C[v2 + 278847243] )
-      {
-        v5 = sub_14004C960(a1, dword_140404A6C[v2 + 278847245]);
-        v6 = 110 * v3;
-        if ( v5 == -1 )
-        {
-          sub_140158AB0(&dword_140404A6C[16 * (v6 + (int)dword_140404A6C[v2 + 278846111]) + 278846114], "DISK ERROR");
-        }
-        else
-        {
-          sub_140080690(
-            v5,
-            dword_140404A6C[v2 + 278847246],
-            (char *)&dword_140404A6C[v2 + 278847249],
-            dword_140404A6C[v2 + 278847257]);
-          sub_140158AB0(
-            &dword_140404A6C[16 * (v6 + (int)dword_140404A6C[v2 + 278846111]) + 278846114],
-            "  1 FILE(S) COPIED.");
-        }
-        sub_1400C3E00(a1);
-        LODWORD(v4) = dword_140404A6C[v2 + 278847258];
-        if ( (_DWORD)v4 )
-        {
-          v7 = 0;
-          if ( (int)v4 > 0 )
-          {
-            v8 = (int *)&dword_140404A6C[v2 + 278847259];
-            do
-            {
-              LODWORD(v4) = sub_1400C6D90(a1, *v8);
-              ++v7;
-              ++v8;
-            }
-            while ( v7 < (int)dword_140404A6C[v2 + 278847258] );
-          }
-          dword_140404A6C[v2 + 278847258] = 0;
-        }
-        else
-        {
-          LODWORD(v4) = sub_1400C6D90(a1, 8);
-        }
-      }
-      if ( dword_140404A6C[v2 + 278847243] == 1 )
-      {
-        LODWORD(v4) = sub_14004C960(a1, dword_140404A6C[v2 + 278847245]);
-        if ( (_DWORD)v4 == -1 )
-        {
-          sub_140158AB0(
-            &dword_140404A6C[16 * (110 * v3 + (int)dword_140404A6C[v2 + 278846111]) + 278846114],
-            "DISK ERROR");
-          LODWORD(v4) = sub_1400C3E00(a1);
-        }
-        else
-        {
-          v9 = 2570LL * (int)v4;
-          v10 = dword_140404A6C[v9 + 275753047];
-          while ( 1 )
-          {
-            while ( 1 )
-            {
-              v11 = (int)dword_140404A6C[v2 + 278847247];
-              if ( (int)v11 < v10 )
-                break;
-              v13 = (int)dword_140404A6C[v2 + 278847248];
-              if ( (int)v13 >= (int)dword_140404A6C[v9 + 275754072] )
-                goto LABEL_27;
-              v14 = v9 * 4 + 24 * v13;
-              if ( *(unsigned int *)((char *)&dword_140404A6C[275754078] + v14) == dword_140404A6C[v2 + 278847246] )
-              {
-                sub_140158AB0(
-                  &dword_140404A6C[16 * (110 * v3 + (int)dword_140404A6C[v2 + 278846111]) + 278846114],
-                  "%s",
-                  (     char *)&dword_140404A6C[275754074] + v14);
-                sub_1400C3E00(a1);
-                v4 = (110 * v3 + (int)dword_140404A6C[v2 + 278846111]) << 6;
-                *((_BYTE *)&dword_140404A6C[278846114] + v4) = 0;
-                ++dword_140404A6C[v2 + 278847248];
-                dword_140404A6C[v2 + 278847244] = 4;
-                goto LABEL_27;
-              }
-              LODWORD(v4) = v13 + 1;
-              dword_140404A6C[v2 + 278847248] = v13 + 1;
-            }
-            v12 = v9 * 4 + 16 * v11;
-            if ( *(unsigned int *)((char *)&dword_140404A6C[275753051] + v12) == dword_140404A6C[v2 + 278847246] )
-              break;
-            LODWORD(v4) = v11 + 1;
-            dword_140404A6C[v2 + 278847247] = v11 + 1;
-          }
-          sub_140158AB0(
-            &dword_140404A6C[16 * (110 * v3 + (int)dword_140404A6C[v2 + 278846111]) + 278846114],
-            "%s            ",
-            (     char *)&dword_140404A6C[275753048] + v12);
-          HIBYTE(dword_140404A6C[16 * (110 * v3 + (int)dword_140404A6C[v2 + 278846111]) + 278846116]) = 0;
-          v15 = (char *)&dword_140404A6C[16 * (110 * v3 + (int)dword_140404A6C[v2 + 278846111]) + 278846113] + 3;
-          while ( *++v15 != 0 )
-            ;
-          strcpy(v15, "<DIR>");
-          sub_1400C3E00(a1);
-          v4 = (110 * v3 + (int)dword_140404A6C[v2 + 278846111]) << 6;
-          *((_BYTE *)&dword_140404A6C[278846114] + v4) = 0;
-          ++dword_140404A6C[v2 + 278847247];
-          dword_140404A6C[v2 + 278847244] = 4;
-        }
-LABEL_27:
-        if ( !dword_140404A6C[v2 + 278847244] )
-        {
-          sub_1400C3E00(a1);
-          v17 = &dword_140404A6C[v2 + 278847258];
-          LOBYTE(dword_140404A6C[16 * (110 * v3 + (int)dword_140404A6C[v2 + 278846111]) + 278846114]) = 0;
-          LOBYTE(dword_140404A6C[v2 + 278847154]) = 0;
-          LODWORD(v4) = dword_140404A6C[v2 + 278847258];
-          if ( (_DWORD)v4 )
-          {
-            v18 = 0;
-            if ( (int)v4 > 0 )
-            {
-              v19 = (int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + v2 * 4 + 1119602392);
-              do
-              {
-                LODWORD(v4) = sub_1400C6D90(a1, *v19);
-                ++v18;
-                ++v19;
-              }
-              while ( v18 < (int)*v17 );
-            }
-            *v17 = 0;
-          }
-          else
-          {
-            LODWORD(v4) = sub_1400C6D90(a1, 8);
-          }
-        }
-      }
-    }
-  }
-  return v4;
+  extern void computer_update_disk_job(int);
+  computer_update_disk_job(item);
+  return 0; /* Incidental native result is discarded by reviewed callers. */
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C4280) ----------------------------------------------------
 __int64            sub_1400C4280(int a1)
@@ -1266,148 +1076,10 @@ LABEL_98:
 //----- (00000001400C5360) ----------------------------------------------------
 __int64            sub_1400C5360(int a1)
 {
-  __int64 v2; // rax
-  int v3; // ebx
-  unsigned int *v4; // r11
-  int v5; // r10d
-  __int64 v6; // rsi
-  char *v7; // rcx
-  unsigned int *v8; // rdi
-  int v9; // r9d
-  char v10; // al
-  char v11; // dl
-  __int64 v12; // rdi
-  __int64 v13; // r9
-  unsigned int *v14; // r8
-  char *v15; // rcx
-  unsigned int *v16; // rdx
-  char v17; // al
-  char *v18; // r9
-  unsigned int *v19; // r11
-  _BYTE *v20; // r10
-  int v21; // r8d
-  char v22; // cl
-  char v23; // dl
-  __int64 v24; // r9
-  unsigned int *v25; // r8
-  char *v26; // rcx
-  unsigned int *v27; // rdx
-  char v28; // al
-
-  v2 = 1760LL * a1;
-  v3 = 0;
-  v4 = &dword_140404A6C[v2 + 278847519];
-  v5 = 0;
-  v6 = a1;
-  v7 = (char *)&dword_140404A6C[v2 + 278846386] + 1;
-  v8 = &dword_140404A6C[v2 + 278845893];
-  do
-  {
-    v9 = *v4;
-    *(v7 - 1) = v5 + 65;
-    v10 = 12;
-    if ( v8[1690] != v5 )
-      v10 = 15;
-    v7[2047] = v10;
-    v7[2048] = -113;
-    if ( v9 < 10 )
-      v11 = 32;
-    else
-      v11 = v9 / 10 + 48;
-    *v7 = v11;
-    ++v5;
-    v7[1] = v9 % 10 + 48;
-    ++v4;
-    v7[2049] = -113;
-    v7[2] = 32;
-    v7 += 4;
-  }
-  while ( v5 < 15 );
-  v12 = 1760 * v6;
-  LOBYTE(dword_140404A6C[1760 * v6 + 278846401]) = 0;
-  sub_140050F90(a1, 17);
-  v13 = 15;
-  v14 = &dword_140404A6C[1760 * v6 + 278846402];
-  v15 = (char *)&dword_140404A6C[1760 * v6 + 278846402] + 2;
-  v16 = &dword_140404A6C[1760 * v6 + 278847551];
-  do
-  {
-    if ( *v16 == -1 )
-      v17 = 32;
-    else
-      v17 = *v16 + 65;
-    *(_BYTE *)v14 = v17;
-    ++v16;
-    *(_WORD *)(v15 - 1) = 8224;
-    ++v14;
-    v15[1] = 32;
-    v15 += 4;
-    --v13;
-  }
-  while ( v13 );
-  LOBYTE(dword_140404A6C[v12 + 278846417]) = 0;
-  sub_140050F90(a1, 18);
-  sub_140050F90(a1, 19);
-  v18 = (char *)&dword_140404A6C[v12 + 278846434] + 1;
-  v19 = &dword_140404A6C[v12 + 278847534];
-  v20 = (char *)&dword_140404A6C[v12 + 278846946] + 2;
-  do
-  {
-    v21 = *v19;
-    *(v20 - 2050) = v3 + 80;
-    v22 = 12;
-    if ( dword_140404A6C[v12 + 278847583] != v3 + 15 )
-      v22 = 15;
-    *(v20 - 2) = v22;
-    if ( v21 < 10 )
-    {
-      v18[2048] = -113;
-      v23 = 32;
-    }
-    else
-    {
-      *(v20 - 1) = -113;
-      v23 = v21 / 10 + 48;
-    }
-    *v18 = v23;
-    ++v3;
-    v18[1] = v21
-           - 2
-           * (4
-            * (((((unsigned __int64)(1717986919LL * v21) >> 32) & 0x80000000) != 0LL)
-             + ((int)((unsigned __int64)(1717986919LL * v21) >> 32) >> 2))
-            + v21 / 10)
-           + 48;
-    ++v19;
-    *v20 = -113;
-    v20 += 4;
-    v18[2] = 32;
-    v18 += 4;
-  }
-  while ( v3 < 11 );
-  LOBYTE(dword_140404A6C[v12 + 278846445]) = 0;
-  sub_140050F90(a1, 20);
-  v24 = 11;
-  v25 = &dword_140404A6C[v12 + 278846450];
-  v26 = (char *)&dword_140404A6C[v12 + 278846450] + 2;
-  v27 = &dword_140404A6C[v12 + 278847566];
-  do
-  {
-    if ( *v27 == -1 )
-      v28 = 32;
-    else
-      v28 = *v27 + 65;
-    *(_BYTE *)v25 = v28;
-    ++v27;
-    *(_WORD *)(v26 - 1) = 8224;
-    ++v25;
-    v26[1] = 32;
-    v26 += 4;
-    --v24;
-  }
-  while ( v24 );
-  LOBYTE(dword_140404A6C[v12 + 278846461]) = 0;
-  return sub_140050F90(a1, 21);
+  /* src/engine/items/computer.c */
+  extern void computer_draw_letter_counts(int item);
+  computer_draw_letter_counts(a1);
+  return 0;
 }
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -1475,76 +1147,10 @@ __int64            sub_1400C5610(int a1, int a2, __int64 a3, int a4)
 //----- (00000001400C5750) ----------------------------------------------------
 __int64            sub_1400C5750(int a1)
 {
-  __int64 v2; // rsi
-  unsigned int *v3; // rdi
-  signed int v4; // ebp
-  __int64 v5; // r15
-  __int64 v6; // rbx
-  __int64 i; // r8
-  __int64 v8; // rcx
-  __int64 v9; // r9
-  char v10; // al
-  __int64 v11; // r8
-  __int64 v12; // rcx
-  unsigned int v13; // eax
-  char v14; // al
-  __int64 v15; // rcx
-
-  v2 = a1;
-  v3 = &dword_140404A6C[1760 * a1 + 278847325];
-  v4 = 3;
-  v5 = 1760LL * a1;
-  v6 = v5 * 4 + 128;
-  do
-  {
-    for ( i = 0; i < 62; ++i )
-    {
-      v8 = *((char *)v3 + i);
-      if ( !(_BYTE)v8 )
-        break;
-      v9 = v6 + i;
-      if ( (unsigned __int8)(v8 - 65) > 0x19u )
-      {
-        *((_BYTE *)&dword_140404A6C[278846114] + v9) = v8;
-      }
-      else
-      {
-        v10 = LOBYTE(dword_140404A6C[1760 * v2 + 278847390 + v8]) + 65;
-        *((_BYTE *)&dword_140404A6C[278846626] + v9) = 15;
-        *((_BYTE *)&dword_140404A6C[278846114] + v9) = v10;
-        if ( dword_140404A6C[v5 + 278847583] == dword_140404A6C[1760 * v2 + 278847390 + v8] )
-          *((_BYTE *)&dword_140404A6C[278846626] + v9) = 12;
-      }
-    }
-    *((_BYTE *)&dword_140404A6C[278846114] + i + v6) = 0;
-    sub_140050F90(a1, v4 - 1);
-    v11 = 0;
-    do
-    {
-      v12 = *((char *)v3 + v11);
-      if ( !(_BYTE)v12 )
-        break;
-      if ( (unsigned __int8)(v12 - 65) > 0x19u )
-      {
-        v14 = *((_BYTE *)v3 + v11);
-      }
-      else
-      {
-        v13 = dword_140404A6C[1760 * v2 + 278847551 + (int)dword_140404A6C[1760 * v2 + 278847390 + v12]];
-        v14 = v13 == -1 ? 32 : v13 + 65;
-      }
-      v15 = v6 + v11++;
-      *((_BYTE *)&dword_140404A6C[278846130] + v15) = v14;
-    }
-    while ( v11 < 62 );
-    *((_BYTE *)&dword_140404A6C[278846130] + v6 + v11) = 0;
-    sub_140050F90(a1, v4);
-    v4 += 3;
-    v3 += 16;
-    v6 += 192;
-  }
-  while ( v4 < 18 );
-  return sub_1400C5360(a1);
+  /* src/engine/items/computer.c */
+  extern void computer_draw_cipher(int item);
+  computer_draw_cipher(a1);
+  return 0;
 }
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -2936,1254 +2542,42 @@ LABEL_54:
 //----- (00000001400C7890) ----------------------------------------------------
 __int64            sub_1400C7890(int a1)
 {
-  __int64 v1; // rax
-  __int64 v2; // rcx
-  __int64 v3; // r13
-  signed int v4; // r14d
-  __int64 v5; // rsi
-  __int64 v6; // r12
-  unsigned int v7; // r15d
-  __int64 v8; // rax
-  unsigned int v9; // ebx
-  int v10; // ecx
-       char *v11; // rdx
-  unsigned int v12; // r8d
-  __int64 v13; // rdi
-  __int64 v14; // rdi
-  char *v15; // rcx
-  int v17; // edx
-  __int64 v18; // r9
-  __int64 v19; // r10
-  char *v20; // rax
-  char v21; // r8
-  char v22; // r8
-  char v23; // r8
-  char v24; // r8
-  char v25; // r8
-  char v26; // r8
-  char v27; // r8
-  char v28; // r8
-  char v29; // r8
-  char v30; // r8
-  char v31; // r8
-  char v32; // r8
-  char v33; // r8
-  char v34; // r8
-  char v35; // r8
-  char v36; // r8
-  char v37; // r8
-  char v38; // r8
-  char v39; // r8
-  char v40; // r8
-  char v41; // r8
-  char v42; // r8
-  char v43; // r8
-  char v44; // r8
-  char v45; // r8
-  char v46; // r8
-  char v47; // r8
-  char v48; // r8
-  char v49; // r8
-  char v50; // r8
-  char v51; // r8
-  char v52; // r8
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400C7890[576];
-#define v54 (*(_BYTE (*)[40])(void *)(sr_frame_1400C7890 + 0)) /* [rsp+0h] */
-#define v55 (*(__int64 (*))(void *)(sr_frame_1400C7890 + 40)) /* [rsp+28h] */
-#define v56 (*(_BYTE (*)[512])(void *)(sr_frame_1400C7890 + 48)) /* [rsp+30h] */
-#define v57 (*(__int64 (*))(void *)(sr_frame_1400C7890 + 560)) /* [rsp+230h] */
-
-  v1 = a1;
-  v2 = 1760LL * a1;
-  v3 = v1;
-  v4 = 0;
-  v55 = v2 * 4;
-  if ( dword_140404A6C[v2 + 278847323] == -1 )
-  {
-    dword_140404A6C[v2 + 278847327] = 0;
+    extern void computer_draw_mission_menu(int);
+    computer_draw_mission_menu(a1);
     return 0; /* compatibility result discarded by all reviewed callers */
-  }
-  v5 = 0;
-  v6 = (int)dword_140404A6C[v2 + 278847323];
-  v7 = 0;
-  do
-  {
-    if ( v5 == 1 )
-    {
-      v8 = 1760 * v3;
-      dword_140404A6C[v8 + 278846130] = 1397967181;
-      dword_140404A6C[v8 + 278846642] = 252645135;
-      dword_140404A6C[v8 + 278846131] = 542003017;
-      dword_140404A6C[v8 + 278846643] = 252645135;
-      dword_140404A6C[v8 + 278846132] = 1162626387;
-      dword_140404A6C[v8 + 278846644] = 252645135;
-      dword_140404A6C[v8 + 278846133] = 538989635;
-      dword_140404A6C[v8 + 278846645] = 252645135;
-      LOBYTE(dword_140404A6C[v8 + 278846134]) = 0;
-      goto LABEL_128;
-    }
-    if ( (unsigned __int64)(v5 - 3) > 9 )
-    {
-      LOBYTE(dword_140404A6C[16 * (v5 + 110 * v3) + 278846114]) = 0;
-      goto LABEL_128;
-    }
-    v9 = v7 - 5;
-    if ( v7 == 3 )
-    {
-      v10 = dword_140404A6C[5 * v6 + 188872240];
-      if ( v10 > 0 )
-      {
-        if ( v10 <= 8 )
-        {
-          sub_140158AB0(v56, "REQUEST INTEL");
-          goto LABEL_26;
-        }
-        if ( v10 == 11 )
-        {
-          sub_140158AB0(v56, "INTEL FAXED");
-          goto LABEL_26;
-        }
-LABEL_14:
-        sub_140158AB0(v56, "NO INTEL AVAILABLE");
-        goto LABEL_26;
-      }
-      v11 = "INTEL REQUESTED";
-      if ( v10 )
-        goto LABEL_14;
-      goto LABEL_25;
-    }
-    if ( v7 == 4 )
-    {
-      sub_140158AB0(v56, "UPLOAD FILE");
-      goto LABEL_26;
-    }
-    if ( v9 > 6 )
-    {
-      v11 = "EXIT";
-LABEL_25:
-      sub_140158AB0(v56, v11);
-      goto LABEL_26;
-    }
-    v12 = v9 + 1;
-    v13 = 138612LL * v7;
-    if ( dword_140404A6C[34653 * v5 + 179827806] )
-    {
-      v14 = v13 - 693060;
-      sub_140158AB0(v56, "%d. PROJECT %s                ", v12, (     char *)&dword_140404A6C[180035705] + v14);
-    }
-    else
-    {
-      sub_140158AB0(v56, "%d. UNKNOWN                   ", v12);
-      v14 = v13 - 693060;
-    }
-    v56[24] = 0;
-    v15 = &v54[47];
-    while ( *++v15 != 0 )
-      ;
-    strcpy(v15, (     char *)&dword_140404A6C[539 * v6 + 180001596] + v14);
-LABEL_26:
-    v17 = 0;
-    v18 = 2;
-    v19 = (v5 + 110 * v3) << 6;
-    v20 = (char *)&dword_140404A6C[278846626] + v19;
-    if ( *(unsigned int *)((char *)&dword_140404A6C[278847328] + v55) == v9 )
-    {
-      do
-      {
-        v21 = v56[v17];
-        if ( v21 )
-          ++v17;
-        else
-          v21 = 32;
-        *(v20 - 2048) = v21;
-        *v20 = -24;
-        v22 = v56[v17];
-        if ( v22 )
-          ++v17;
-        else
-          v22 = 32;
-        *(v20 - 2047) = v22;
-        v20[1] = -24;
-        v23 = v56[v17];
-        if ( v23 )
-          ++v17;
-        else
-          v23 = 32;
-        *(v20 - 2046) = v23;
-        v20[2] = -24;
-        v24 = v56[v17];
-        if ( v24 )
-          ++v17;
-        else
-          v24 = 32;
-        *(v20 - 2045) = v24;
-        v20[3] = -24;
-        v25 = v56[v17];
-        if ( v25 )
-          ++v17;
-        else
-          v25 = 32;
-        *(v20 - 2044) = v25;
-        v20[4] = -24;
-        v26 = v56[v17];
-        if ( v26 )
-          ++v17;
-        else
-          v26 = 32;
-        *(v20 - 2043) = v26;
-        v20[5] = -24;
-        v27 = v56[v17];
-        if ( v27 )
-          ++v17;
-        else
-          v27 = 32;
-        *(v20 - 2042) = v27;
-        v20[6] = -24;
-        v28 = v56[v17];
-        if ( v28 )
-          ++v17;
-        else
-          v28 = 32;
-        *(v20 - 2041) = v28;
-        v20[7] = -24;
-        v29 = v56[v17];
-        if ( v29 )
-          ++v17;
-        else
-          v29 = 32;
-        *(v20 - 2040) = v29;
-        v20[8] = -24;
-        v30 = v56[v17];
-        if ( v30 )
-          ++v17;
-        else
-          v30 = 32;
-        *(v20 - 2039) = v30;
-        v20[9] = -24;
-        v31 = v56[v17];
-        if ( v31 )
-          ++v17;
-        else
-          v31 = 32;
-        *(v20 - 2038) = v31;
-        v20[10] = -24;
-        v32 = v56[v17];
-        if ( v32 )
-          ++v17;
-        else
-          v32 = 32;
-        *(v20 - 2037) = v32;
-        v20[11] = -24;
-        v33 = v56[v17];
-        if ( v33 )
-          ++v17;
-        else
-          v33 = 32;
-        *(v20 - 2036) = v33;
-        v20[12] = -24;
-        v34 = v56[v17];
-        if ( v34 )
-          ++v17;
-        else
-          v34 = 32;
-        *(v20 - 2035) = v34;
-        v20[13] = -24;
-        v35 = v56[v17];
-        if ( v35 )
-          ++v17;
-        else
-          v35 = 32;
-        *(v20 - 2034) = v35;
-        v20[14] = -24;
-        v36 = v56[v17];
-        if ( v36 )
-          ++v17;
-        else
-          v36 = 32;
-        *(v20 - 2033) = v36;
-        v20[15] = -24;
-        v20 += 16;
-        --v18;
-      }
-      while ( v18 );
-      *((_BYTE *)&dword_140404A6C[278846122] + v19) = 0;
-    }
-    else
-    {
-      do
-      {
-        v37 = v56[v17];
-        if ( v37 )
-          ++v17;
-        else
-          v37 = 32;
-        *(v20 - 2048) = v37;
-        *v20 = 15;
-        v38 = v56[v17];
-        if ( v38 )
-          ++v17;
-        else
-          v38 = 32;
-        *(v20 - 2047) = v38;
-        v20[1] = 15;
-        v39 = v56[v17];
-        if ( v39 )
-          ++v17;
-        else
-          v39 = 32;
-        *(v20 - 2046) = v39;
-        v20[2] = 15;
-        v40 = v56[v17];
-        if ( v40 )
-          ++v17;
-        else
-          v40 = 32;
-        *(v20 - 2045) = v40;
-        v20[3] = 15;
-        v41 = v56[v17];
-        if ( v41 )
-          ++v17;
-        else
-          v41 = 32;
-        *(v20 - 2044) = v41;
-        v20[4] = 15;
-        v42 = v56[v17];
-        if ( v42 )
-          ++v17;
-        else
-          v42 = 32;
-        *(v20 - 2043) = v42;
-        v20[5] = 15;
-        v43 = v56[v17];
-        if ( v43 )
-          ++v17;
-        else
-          v43 = 32;
-        *(v20 - 2042) = v43;
-        v20[6] = 15;
-        v44 = v56[v17];
-        if ( v44 )
-          ++v17;
-        else
-          v44 = 32;
-        *(v20 - 2041) = v44;
-        v20[7] = 15;
-        v45 = v56[v17];
-        if ( v45 )
-          ++v17;
-        else
-          v45 = 32;
-        *(v20 - 2040) = v45;
-        v20[8] = 15;
-        v46 = v56[v17];
-        if ( v46 )
-          ++v17;
-        else
-          v46 = 32;
-        *(v20 - 2039) = v46;
-        v20[9] = 15;
-        v47 = v56[v17];
-        if ( v47 )
-          ++v17;
-        else
-          v47 = 32;
-        *(v20 - 2038) = v47;
-        v20[10] = 15;
-        v48 = v56[v17];
-        if ( v48 )
-          ++v17;
-        else
-          v48 = 32;
-        *(v20 - 2037) = v48;
-        v20[11] = 15;
-        v49 = v56[v17];
-        if ( v49 )
-          ++v17;
-        else
-          v49 = 32;
-        *(v20 - 2036) = v49;
-        v20[12] = 15;
-        v50 = v56[v17];
-        if ( v50 )
-          ++v17;
-        else
-          v50 = 32;
-        *(v20 - 2035) = v50;
-        v20[13] = 15;
-        v51 = v56[v17];
-        if ( v51 )
-          ++v17;
-        else
-          v51 = 32;
-        *(v20 - 2034) = v51;
-        v20[14] = 15;
-        v52 = v56[v17];
-        if ( v52 )
-          ++v17;
-        else
-          v52 = 32;
-        *(v20 - 2033) = v52;
-        v20[15] = 15;
-        v20 += 16;
-        --v18;
-      }
-      while ( v18 );
-      *((_BYTE *)&dword_140404A6C[278846122] + v19) = 0;
-    }
-LABEL_128:
-    ++v7;
-    ++v5;
-  }
-  while ( v5 < 24 );
-  do
-    sub_140050F90(v3, v4++);
-  while ( v4 < 24 );
-  return 0; /* compatibility result discarded by all reviewed callers */
 }
-#undef v54
-#undef v55
-#undef v56
-#undef v57
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C7FC0) ----------------------------------------------------
 __int64            sub_1400C7FC0(int a1)
 {
-  __int64 v2; // r12
-  __int64 v3; // r14
-  signed int v4; // ebx
-  __int64 v5; // rsi
-  int v6; // edi
-  __int64 v7; // r13
-  char **v8; // r15
-  __int64 v9; // rcx
-  int v10; // eax
-  __int64 v11; // r10
-  __int64 v12; // r9
-  char *v13; // rdx
-  char v14; // r8
-  char v15; // r8
-  char v16; // r8
-  char v17; // r8
-  char v18; // r8
-  char v19; // r8
-  char v20; // r8
-  char v21; // r8
-  char v22; // r8
-  char v23; // r8
-  int v24; // ecx
-  __int64 v25; // r9
-  __int64 v26; // r10
-  char *v27; // rdx
-  char v28; // r8
-  char v29; // r8
-  char v30; // r8
-  char v31; // r8
-  char v32; // r8
-  char v33; // r8
-  char v34; // r8
-  char v35; // r8
-  char v36; // r8
-  char v37; // r8
-  __int64 v38; // r9
-  char *v39; // r8
-  char v40; // r9
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400C7FC0[592];
-#define v42 (*(_BYTE (*)[32])(void *)(sr_frame_1400C7FC0 + 0)) /* [rsp+0h] */
-#define v43 (*(int (*))(void *)(sr_frame_1400C7FC0 + 32)) /* [rsp+20h] */
-#define v44 (*(char * (*))(void *)(sr_frame_1400C7FC0 + 48)) /* [rsp+30h] */
-#define v45 (*(char * (*))(void *)(sr_frame_1400C7FC0 + 56)) /* [rsp+38h] */
-#define v46 (*(_BYTE (*)[512])(void *)(sr_frame_1400C7FC0 + 64)) /* [rsp+40h] */
-#define v47 (*(__int64 (*))(void *)(sr_frame_1400C7FC0 + 576)) /* [rsp+240h] */
-
-  v2 = 1760LL * a1;
-  v44 = "BACK";
-  v3 = a1;
-  v45 = "UPLOAD";
-  if ( dword_140404A6C[v2 + 278847323] == -1 || (dword_140404A6C[v2 + 278847328] & 0x80000000) != 0 )
-  {
-    dword_140404A6C[v2 + 278847327] = 0;
+    extern void computer_draw_mission_document(int);
+    computer_draw_mission_document(a1);
     return 0; /* compatibility result discarded by all reviewed callers */
-  }
-  v4 = 0;
-  v5 = 0;
-  v6 = 0;
-  v7 = (int)dword_140404A6C[v2 + 278847323];
-  v8 = (char **)&v42[-48];
-  do
-  {
-    if ( !v6 )
-    {
-      v9 = 34653LL * (int)dword_140404A6C[v2 + 278847328];
-      if ( dword_140404A6C[v9 + 180001071] )
-        sub_140158AB0(v46, "PROJECT %s", (     char *)&dword_140404A6C[v9 + 180035705]);
-      else
-        sub_140158AB0(v46, "UNKNOWN                     ");
-      v10 = 0;
-      v11 = (v5 + 110 * v3) << 6;
-      v12 = 2;
-      v13 = (char *)&dword_140404A6C[278846626] + v11;
-      do
-      {
-        v14 = v46[v10];
-        if ( v14 )
-          ++v10;
-        else
-          v14 = 32;
-        *(v13 - 2048) = v14;
-        *v13 = 15;
-        v15 = v46[v10];
-        if ( v15 )
-          ++v10;
-        else
-          v15 = 32;
-        *(v13 - 2047) = v15;
-        v13[1] = 15;
-        v16 = v46[v10];
-        if ( v16 )
-          ++v10;
-        else
-          v16 = 32;
-        *(v13 - 2046) = v16;
-        v13[2] = 15;
-        v17 = v46[v10];
-        if ( v17 )
-          ++v10;
-        else
-          v17 = 32;
-        *(v13 - 2045) = v17;
-        v13[3] = 15;
-        v18 = v46[v10];
-        if ( v18 )
-          ++v10;
-        else
-          v18 = 32;
-        *(v13 - 2044) = v18;
-        v13[4] = 15;
-        v19 = v46[v10];
-        if ( v19 )
-          ++v10;
-        else
-          v19 = 32;
-        *(v13 - 2043) = v19;
-        v13[5] = 15;
-        v20 = v46[v10];
-        if ( v20 )
-          ++v10;
-        else
-          v20 = 32;
-        *(v13 - 2042) = v20;
-        v13[6] = 15;
-        v21 = v46[v10];
-        if ( v21 )
-          ++v10;
-        else
-          v21 = 32;
-        *(v13 - 2041) = v21;
-        v13[7] = 15;
-        v22 = v46[v10];
-        if ( v22 )
-          ++v10;
-        else
-          v22 = 32;
-        *(v13 - 2040) = v22;
-        v13[8] = 15;
-        v23 = v46[v10];
-        if ( v23 )
-          ++v10;
-        else
-          v23 = 32;
-        *(v13 - 2039) = v23;
-        v13[9] = 15;
-        v13 += 10;
-        --v12;
-      }
-      while ( v12 );
-      *((_BYTE *)&dword_140404A6C[278846119] + v11) = 0;
-      goto LABEL_84;
-    }
-    if ( v6 != 3 )
-    {
-      if ( (unsigned int)(v6 - 4) > 3 )
-      {
-        if ( v6 == 12 )
-        {
-          v40 = -72;
-          v39 = *v8;
-          if ( dword_140404A6C[v2 + 278847329] )
-            v40 = 15;
-          v43 = 16;
-          goto LABEL_82;
-        }
-      }
-      else
-      {
-        v38 = 2156 * v7 + 138612LL * (int)dword_140404A6C[v2 + 278847328];
-        if ( v6 - 4 < *(int *)((char *)&dword_140404A6C[180001083] + v38) )
-        {
-          v43 = 60;
-          v39 = (char *)&dword_140404A6C[64 * (unsigned __int64)(unsigned int)v6 + 180000828] + v38;
-          v40 = 15;
-LABEL_82:
-          sub_1400C6AB0(a1, v6, v39, v40, v43);
-          goto LABEL_84;
-        }
-      }
-      LOBYTE(dword_140404A6C[16 * (v5 + 110 * v3) + 278846114]) = 0;
-      goto LABEL_84;
-    }
-    v24 = 0;
-    v25 = 2;
-    v26 = (v5 + 110 * v3) << 6;
-    v27 = (char *)&dword_140404A6C[278846626] + v26;
-    do
-    {
-      v28 = aStatus[v24];
-      if ( v28 )
-        ++v24;
-      else
-        v28 = 32;
-      *(v27 - 2048) = v28;
-      *v27 = 15;
-      v29 = aStatus[v24];
-      if ( v29 )
-        ++v24;
-      else
-        v29 = 32;
-      *(v27 - 2047) = v29;
-      v27[1] = 15;
-      v30 = aStatus[v24];
-      if ( v30 )
-        ++v24;
-      else
-        v30 = 32;
-      *(v27 - 2046) = v30;
-      v27[2] = 15;
-      v31 = aStatus[v24];
-      if ( v31 )
-        ++v24;
-      else
-        v31 = 32;
-      *(v27 - 2045) = v31;
-      v27[3] = 15;
-      v32 = aStatus[v24];
-      if ( v32 )
-        ++v24;
-      else
-        v32 = 32;
-      *(v27 - 2044) = v32;
-      v27[4] = 15;
-      v33 = aStatus[v24];
-      if ( v33 )
-        ++v24;
-      else
-        v33 = 32;
-      *(v27 - 2043) = v33;
-      v27[5] = 15;
-      v34 = aStatus[v24];
-      if ( v34 )
-        ++v24;
-      else
-        v34 = 32;
-      *(v27 - 2042) = v34;
-      v27[6] = 15;
-      v35 = aStatus[v24];
-      if ( v35 )
-        ++v24;
-      else
-        v35 = 32;
-      *(v27 - 2041) = v35;
-      v27[7] = 15;
-      v36 = aStatus[v24];
-      if ( v36 )
-        ++v24;
-      else
-        v36 = 32;
-      *(v27 - 2040) = v36;
-      v27[8] = 15;
-      v37 = aStatus[v24];
-      if ( v37 )
-        ++v24;
-      else
-        v37 = 32;
-      *(v27 - 2039) = v37;
-      v27[9] = 15;
-      v27 += 10;
-      --v25;
-    }
-    while ( v25 );
-    *((_BYTE *)&dword_140404A6C[278846119] + v26) = 0;
-LABEL_84:
-    ++v6;
-    ++v5;
-    ++v8;
-  }
-  while ( v6 < 24 );
-  do
-    sub_140050F90(a1, v4++);
-  while ( v4 < 24 );
-  return 0; /* compatibility result discarded by all reviewed callers */
 }
-#undef v42
-#undef v43
-#undef v44
-#undef v45
-#undef v46
-#undef v47
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C8500) ----------------------------------------------------
-void            sub_1400C8500(int a1)
+void sub_1400C8500(int item)
 {
-  __int64 v2; // rsi
-  __int64 v3; // rbp
-  int v4; // r12d
-  int v5; // eax
-  unsigned int v6; // eax
-  bool v7; // zf
-  unsigned int v8; // ecx
-  unsigned int v9; // eax
-  int v10; // r9d
-  int v11; // ebx
-  __int64 v12; // rbp
-  unsigned int *v13; // r14
-  unsigned int v14; // eax
-
-  v2 = 1760LL * a1;
-  v3 = a1;
-  v4 = dword_140404A6C[v2 + 278847323];
-  if ( v4 != -1 && dword_140404A6C[v2 + 278846098] != -1 )
-  {
-    v5 = dword_140404A6C[v2 + 278847326];
-    if ( v5 <= 0 )
-    {
-      if ( (((unsigned __int8)a1 ^ LOBYTE(dword_140404A6C[283831474])) & 0xF) == 0 )
-      {
-        v14 = dword_140404A6C[v2 + 278847327];
-        if ( !v14 )
-        {
-          sub_1400C7890(a1);
-          v14 = dword_140404A6C[v2 + 278847327];
-        }
-        if ( v14 == 1 )
-        {
-          sub_1400C7FC0(a1);
-          v14 = dword_140404A6C[v2 + 278847327];
-        }
-        if ( v14 == 2 )
-          sub_1400C86D0(a1);
-      }
-    }
-    else
-    {
-      v6 = v5 - 1;
-      v7 = dword_140404A6C[v2 + 278847325] == 1;
-      v8 = v6;
-      dword_140404A6C[v2 + 278847326] = v6;
-      if ( v7 && (v6 & 0xF) == 0 )
-      {
-        sub_1400C86D0(a1);
-        v8 = dword_140404A6C[v2 + 278847326];
-      }
-      if ( !v8 )
-      {
-        v9 = dword_140404A6C[v2 + 278847325];
-        if ( v9 )
-        {
-          if ( v9 == 1 )
-          {
-            v10 = 0;
-            v11 = 0;
-            v12 = 1760 * v3;
-            v13 = &dword_140404A6C[180035569];
-            dword_140404A6C[v2 + 278847327] = 0;
-            do
-            {
-              if ( dword_140404A6C[2570 * dword_140404A6C[v2 + 278846098]
-                                 + 275754073
-                                 + 6 * dword_140404A6C[v12 + 278847333 + (int)dword_140404A6C[v2 + 278847330]]] == *v13 )
-              {
-                sub_140195FB0(v11, v4);
-                v10 = 1;
-                dword_140404A6C[v2 + 278847328] = v11;
-                dword_140404A6C[v2 + 278847327] = 1;
-                dword_140404A6C[v2 + 278847329] = 0;
-              }
-              ++v11;
-              v13 += 34653;
-            }
-            while ( v11 < 7 );
-            if ( !v10 )
-              sub_1400C7890(a1);
-            if ( dword_140404A6C[v2 + 278847327] == 1 )
-              sub_1400C7FC0(a1);
-          }
-        }
-        else
-        {
-          sub_1400C7890(a1);
-        }
-      }
-    }
-  }
+  extern void computer_update_program(int);
+  computer_update_program(item);
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C86D0) ----------------------------------------------------
 __int64            sub_1400C86D0(int a1)
 {
-  signed int v1; // esi
-  int v2; // r13d
-  __int64 v3; // r12
-  __int64 v4; // r15
-  __int64 v5; // r14
-  __int64 j; // rbx
-  unsigned int *v7; // rax
-  char *v8; // rdx
-  __int64 v9; // r8
-  char v10; // cl
-  __int64 v11; // rcx
-  __int64 v12; // rdx
-  char v13; // al
-  unsigned int *v14; // rax
-  char *v15; // rdx
-  __int64 v16; // r8
-  char v17; // cl
-  int v18; // ebp
-  __int64 i; // rdi
-  unsigned int *v20; // rax
-  char *v21; // rdx
-  __int64 v22; // r8
-  char v23; // cl
-  int v24; // edx
-  int v25; // ebx
-  __int64 v26; // r8
-  __int64 v27; // r9
-  char *v28; // rax
-  char *v29; // rdx
-  char v30; // cl
-  char v31; // cl
-  __int64 v32; // r9
-  __int64 v33; // r9
-  char *v34; // rax
-       char *v35; // rdx
-  __int64 v36; // r8
-  char v37; // cl
-  char v38; // cl
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400C86D0[576];
-#define v40 (*(__int64 (*))(void *)(sr_frame_1400C86D0 + 0)) /* [rsp+0h] */
-#define v41 (*(_BYTE (*)[512])(void *)(sr_frame_1400C86D0 + 48)) /* [rsp+30h] */
-#define v42 (*(__int64 (*))(void *)(sr_frame_1400C86D0 + 560)) /* [rsp+230h] */
-
-  v1 = 0;
-  v2 = a1;
-  v3 = a1;
-  v4 = 1760LL * a1;
-  v5 = 110LL * a1;
-  if ( (int)dword_140404A6C[v4 + 278847326] <= 0 )
-  {
-    v18 = 0;
-    for ( i = 0; i < 24; ++i )
-    {
-      if ( i )
-      {
-        if ( (unsigned __int64)(i - 4) > 0xF )
-        {
-          LOBYTE(dword_140404A6C[16 * v5 + 278846114 + 16 * i]) = 0;
-        }
-        else
-        {
-          v24 = v18 + (dword_140404A6C[v4 + 278847330] & 0xFFFFFFF0);
-          v25 = v24 - 4;
-          if ( v24 - 4 >= (int)dword_140404A6C[v4 + 278847332] )
-          {
-            v32 = i + v5;
-            if ( v25 == dword_140404A6C[v4 + 278847332] )
-            {
-              v33 = v32 << 6;
-              v34 = (char *)&dword_140404A6C[278846626] + v33;
-              v35 = " CANCEL";
-              v36 = 16;
-              if ( v25 == dword_140404A6C[v4 + 278847330] )
-              {
-                do
-                {
-                  v37 = *v35;
-                  if ( *v35 )
-                    ++v35;
-                  else
-                    v37 = 32;
-                  *(v34 - 2048) = v37;
-                  *v34++ = -72;
-                  --v36;
-                }
-                while ( v36 );
-                *((_BYTE *)&dword_140404A6C[278846118] + v33) = 0;
-              }
-              else
-              {
-                do
-                {
-                  v38 = *v35;
-                  if ( *v35 )
-                    ++v35;
-                  else
-                    v38 = 32;
-                  *(v34 - 2048) = v38;
-                  *v34++ = 15;
-                  --v36;
-                }
-                while ( v36 );
-                *((_BYTE *)&dword_140404A6C[278846118] + v33) = 0;
-              }
-            }
-            else
-            {
-              LOBYTE(dword_140404A6C[16 * v32 + 278846114]) = 0;
-            }
-          }
-          else
-          {
-            sub_140158AB0(
-              v41,
-              " %s",
-              (     char *)&dword_140404A6C[2570 * dword_140404A6C[v4 + 278846098]
-                                           + 275754074
-                                           + 6 * dword_140404A6C[1760 * v3 + 278847329 + v24]]);
-            v26 = 16;
-            v27 = (i + v5) << 6;
-            v28 = (char *)&dword_140404A6C[278846626] + v27;
-            v29 = v41;
-            if ( v25 == dword_140404A6C[v4 + 278847330] )
-            {
-              do
-              {
-                v30 = *v29;
-                if ( *v29 )
-                  ++v29;
-                else
-                  v30 = 32;
-                *(v28 - 2048) = v30;
-                *v28++ = -72;
-                --v26;
-              }
-              while ( v26 );
-              *((_BYTE *)&dword_140404A6C[278846118] + v27) = 0;
-            }
-            else
-            {
-              do
-              {
-                v31 = *v29;
-                if ( *v29 )
-                  ++v29;
-                else
-                  v31 = 32;
-                *(v28 - 2048) = v31;
-                *v28++ = 15;
-                --v26;
-              }
-              while ( v26 );
-              *((_BYTE *)&dword_140404A6C[278846118] + v27) = 0;
-            }
-          }
-        }
-      }
-      else
-      {
-        sub_140158AB0(v41, "UPLOAD FILE");
-        v20 = &dword_140404A6C[v4 + 278846626];
-        v21 = v41;
-        v22 = 20;
-        do
-        {
-          v23 = *v21;
-          if ( *v21 )
-            ++v21;
-          else
-            v23 = 32;
-          *((_BYTE *)v20 - 2048) = v23;
-          *(_BYTE *)v20 = -16;
-          v20 = (unsigned int *)((char *)v20 + 1);
-          --v22;
-        }
-        while ( v22 );
-        LOBYTE(dword_140404A6C[16 * v5 + 278846119]) = 0;
-      }
-      ++v18;
-    }
-    v2 = v3;
-  }
-  else
-  {
-    for ( j = 0; j < 24; ++j )
-    {
-      if ( j )
-      {
-        if ( j == 1 )
-        {
-          v11 = 0;
-          v12 = (__int64)(int)(255 - dword_140404A6C[v4 + 278847326]) >> 4;
-          do
-          {
-            v13 = 127;
-            if ( v11 > v12 )
-              v13 = 32;
-            v41[v11++] = v13;
-          }
-          while ( v11 < 16 );
-          v41[16] = 0;
-          v14 = &dword_140404A6C[v4 + 278846642];
-          v15 = v41;
-          v16 = 16;
-          do
-          {
-            v17 = *v15;
-            if ( *v15 )
-              ++v15;
-            else
-              v17 = 32;
-            *((_BYTE *)v14 - 2048) = v17;
-            *(_BYTE *)v14 = -16;
-            v14 = (unsigned int *)((char *)v14 + 1);
-            --v16;
-          }
-          while ( v16 );
-          LOBYTE(dword_140404A6C[16 * v5 + 278846134]) = 0;
-        }
-        else
-        {
-          LOBYTE(dword_140404A6C[16 * v5 + 278846114 + 16 * j]) = 0;
-        }
-      }
-      else
-      {
-        sub_140158AB0(v41, "UPLOADING");
-        v7 = &dword_140404A6C[v4 + 278846626];
-        v8 = v41;
-        v9 = 16;
-        do
-        {
-          v10 = *v8;
-          if ( *v8 )
-            ++v8;
-          else
-            v10 = 32;
-          *((_BYTE *)v7 - 2048) = v10;
-          *(_BYTE *)v7 = -16;
-          v7 = (unsigned int *)((char *)v7 + 1);
-          --v9;
-        }
-        while ( v9 );
-        LOBYTE(dword_140404A6C[16 * v5 + 278846118]) = 0;
-      }
-    }
-  }
-  do
-    sub_140050F90(v2, v1++);
-  while ( v1 < 24 );
-  return 0; /* compatibility result discarded by all reviewed callers */
+    extern void computer_draw_mission_upload(int);
+    computer_draw_mission_upload(a1);
+    return 0; /* compatibility result discarded by all reviewed callers */
 }
-#undef v40
-#undef v41
-#undef v42
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C8E10) ----------------------------------------------------
 __int64            sub_1400C8E10(int a1)
 {
-  __int64 v1; // r13
-  unsigned int v2; // r9d
-  unsigned int v3; // r8d
-  __int64 v4; // r14
-  unsigned int *v5; // rax
-  char *v6; // rcx
-  __int64 v7; // r8
-  char v8; // dl
-  char v9; // dl
-  __int64 v10; // rdi
-  __int64 v11; // r10
-  __int64 v12; // rbp
-  __int64 v13; // r8
-  __int64 v14; // r9
-  _BYTE *v15; // rsi
-  char *v16; // rax
-  char v17; // dl
-  char v18; // cl
-  char v19; // dl
-  char v20; // cl
-  signed int v21; // ebx
-  int v22; // r12d
-  _BYTE *v23; // rax
-  char *v24; // rcx
-  char v25; // dl
-  char v26; // dl
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400C8E10[576];
-#define v28 (*(__int64 (*))(void *)(sr_frame_1400C8E10 + 0)) /* [rsp+0h] */
-#define v29 (*(int (*))(void *)(sr_frame_1400C8E10 + 32)) /* [rsp+20h] */
-#define v30 (*(__int128 (*))(void *)(sr_frame_1400C8E10 + 48)) /* [rsp+30h] */
-#define v31 (*(__int128 (*))(void *)(sr_frame_1400C8E10 + 64)) /* [rsp+40h] */
-#define v32 (*(__int128 (*))(void *)(sr_frame_1400C8E10 + 80)) /* [rsp+50h] */
-#define v33 (*(__int128 (*))(void *)(sr_frame_1400C8E10 + 96)) /* [rsp+60h] */
-#define v34 (*(__int64 (*))(void *)(sr_frame_1400C8E10 + 560)) /* [rsp+230h] */
-
-  v1 = 1760LL * a1;
-  v30 = 0;
-  v31 = 0;
-  v29 = a1;
-  v32 = 0;
-  v2 = dword_140404A6C[v1 + 278847327];
-  v3 = dword_140404A6C[v1 + 278847325];
-  v33 = 0;
-  sub_140158AB0(&v30, "  SNAKE    SCORE:%05d  LEVEL:%03d    Ctrl-X EXIT", v3, v2);
-  v4 = 31;
-  v5 = &dword_140404A6C[v1 + 278846114];
-  v6 = (char *)&v30;
-  v7 = 31;
-  do
-  {
-    v8 = *v6;
-    if ( *v6 )
-      ++v6;
-    else
-      v8 = 32;
-    *(_BYTE *)v5 = v8;
-    v9 = *v6;
-    *((_BYTE *)v5 + 2048) = 112;
-    if ( v9 )
-      ++v6;
-    else
-      v9 = 32;
-    *((_BYTE *)v5 + 1) = v9;
-    *((_BYTE *)v5 + 2049) = 112;
-    v5 = (unsigned int *)((char *)v5 + 2);
-    --v7;
-  }
-  while ( v7 );
-  BYTE2(dword_140404A6C[v1 + 278846129]) = 0;
-  v10 = v1 * 4 + 64;
-  v11 = v1 * 4 + 32;
-  v12 = 23;
-  do
-  {
-    v13 = 0;
-    v14 = 31;
-    v15 = (char *)&dword_140404A6C[278846129] + v10 + 2;
-    v16 = v15 + 1987;
-    do
-    {
-      *(v16 - 2049) = 32;
-      v17 = *((_BYTE *)&dword_140404A6C[278847461] + v11 + (v13 >> 1));
-      if ( v17 )
-      {
-        if ( v17 == 1 )
-        {
-          *(v16 - 1) = 127;
-        }
-        else if ( v17 == 2 )
-        {
-          *(v16 - 1) = 31;
-        }
-        else
-        {
-          v18 = 47;
-          if ( v17 == 3 )
-            v18 = -97;
-          *(v16 - 1) = v18;
-        }
-      }
-      else
-      {
-        *(v16 - 1) = 15;
-      }
-      v16[(char *)&dword_140404A6C[278845617] + 2 - ((char *)&dword_140404A6C[278846129] + 2)] = 32;
-      v19 = *((_BYTE *)&dword_140404A6C[278847461] + v11 + ((v13 + 1) >> 1));
-      if ( v19 )
-      {
-        if ( v19 == 1 )
-        {
-          *v16 = 127;
-        }
-        else if ( v19 == 2 )
-        {
-          *v16 = 31;
-        }
-        else
-        {
-          v20 = 47;
-          if ( v19 == 3 )
-            v20 = -97;
-          *v16 = v20;
-        }
-      }
-      else
-      {
-        *v16 = 15;
-      }
-      v13 += 2;
-      v16 += 2;
-      --v14;
-    }
-    while ( v14 );
-    v11 += 32;
-    *v15 = 0;
-    v10 += 64;
-    v21 = 0;
-    --v12;
-  }
-  while ( v12 );
-  v22 = v29;
-  if ( dword_140404A6C[v1 + 278847329] )
-  {
-    v30 = 0;
-    v31 = 0;
-    v32 = 0;
-    v33 = 0;
-    sub_140158AB0(&v30, "                           GAME OVER!", v13);
-    v23 = (char *)&dword_140404A6C[v1 + 278846642] + 1;
-    v24 = (char *)&v30;
-    do
-    {
-      v25 = *v24;
-      if ( *v24 )
-        ++v24;
-      else
-        v25 = 32;
-      *(v23 - 2049) = v25;
-      v26 = *v24;
-      *(v23 - 1) = 15;
-      if ( v26 )
-        ++v24;
-      else
-        v26 = 32;
-      *(v23 - 2048) = v26;
-      *v23 = 15;
-      v23 += 2;
-      --v4;
-    }
-    while ( v4 );
-    BYTE2(dword_140404A6C[v1 + 278846145]) = 0;
-  }
-  do
-    sub_140050F90(v22, v21++);
-  while ( v21 < 24 );
-  return 0; /* no result: rax is residue of the loop's last call at 0x1400C9086 */
+  /* src/engine/items/computer_snake.c */
+  extern void snake_draw(int item);
+  snake_draw(a1);
+  return 0;
 }
-#undef v28
-#undef v29
-#undef v30
-#undef v31
-#undef v32
-#undef v33
-#undef v34
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
@@ -4253,334 +2647,20 @@ void            sub_1400C9120(int a1, int a2)
 //----- (00000001400C92B0) ----------------------------------------------------
 __int64            sub_1400C92B0(int a1)
 {
-  __int64 v1; // r10
-  __int64 v2; // r8
-  unsigned int *v3; // r9
-  __int64 v4; // r12
-  __int64 i; // rdx
-  bool v6; // cf
-  __int64 v7; // rdx
-  unsigned int v8; // r8d
-  int v9; // r13d
-  __int64 v10; // rsi
-  int v11; // ebp
-  int v12; // r14d
-  __int64 v13; // r15
-  int v14; // ebx
-  int v15; // ecx
-  int j; // edi
-  __int64 v17; // rdx
-  __int64 v18; // r8
-  __int64 v19; // rdx
-  __int64 v20; // rcx
-  __int64 v21; // rcx
-  __int64 v22; // rcx
-  __int64 v23; // rcx
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400C92B0[16];
-#define v26 (*(int (*))(void *)(sr_frame_1400C92B0 + 0)) /* [rsp+68h] */
-
-  v1 = 1760LL * a1;
-  v2 = 0;
-  v3 = &dword_140404A6C[v1 + 278847461];
-  v4 = a1;
-  do
-  {
-    for ( i = 0; i < 32; ++i )
-    {
-      *((_BYTE *)v3 + i) = 0;
-      if ( !v2 || (v6 = (unsigned __int64)v2 < 0x15, v2 == 21) )
-      {
-        *((_BYTE *)v3 + i) = 1;
-        v6 = (unsigned __int64)v2 < 0x15;
-      }
-      if ( v6 && (!i || i == 30) )
-        *((_BYTE *)&dword_140404A6C[1760 * a1 + 278847461 + 8 * v2] + i) = 1;
-    }
-    ++v2;
-    v3 += 8;
-  }
-  while ( v2 < 24 );
-  v7 = 1760LL * a1;
-  v8 = dword_140404A6C[v7 + 278847327] & 7;
-  if ( v8 )
-  {
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847479]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847487]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847495]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847503]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847511]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847519]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847527]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847618]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847610]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847602]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847594]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847586]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847578]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847570]) = 1;
-  }
-  if ( v8 >= 2 )
-  {
-    BYTE2(dword_140404A6C[1760 * a1 + 278847482]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847490]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847498]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847506]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847514]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847522]) = 1;
-    BYTE2(dword_140404A6C[1760 * a1 + 278847530]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847615]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847607]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847599]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847591]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847583]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847575]) = 1;
-    LOBYTE(dword_140404A6C[1760 * a1 + 278847567]) = 1;
-  }
-  if ( v8 >= 3 )
-  {
-    *(unsigned int *)((char *)&dword_140404A6C[v7 + 278847549] + 1) = 16843009;
-    *(unsigned int *)((char *)&dword_140404A6C[v7 + 278847550] + 1) = 16843009;
-  }
-  if ( v8 >= 4 )
-  {
-    *(unsigned int *)((char *)&dword_140404A6C[v7 + 278847555] + 2) = 16843009;
-    *(unsigned int *)((char *)&dword_140404A6C[v7 + 278847554] + 2) = 16843009;
-  }
-  if ( v8 >= 5 )
-  {
-    *(unsigned int *)((char *)&dword_140404A6C[v7 + 278847495] + 3) = 16843009;
-    *(unsigned int *)((char *)&dword_140404A6C[v7 + 278847496] + 3) = 16843009;
-    HIBYTE(dword_140404A6C[v7 + 278847497]) = 1;
-  }
-  if ( v8 >= 6 )
-  {
-    *(unsigned int *)((char *)&dword_140404A6C[v1 + 278847599] + 3) = 16843009;
-    *(unsigned int *)((char *)&dword_140404A6C[v1 + 278847600] + 3) = 16843009;
-    HIBYTE(dword_140404A6C[v1 + 278847601]) = 1;
-  }
-  if ( v8 >= 7 )
-  {
-    BYTE2(dword_140404A6C[v7 + 278847562]) = 1;
-    LOBYTE(dword_140404A6C[v7 + 278847471]) = 1;
-  }
-  v9 = 0;
-  v26 = 0;
-  v10 = 220LL * a1;
-  do
-  {
-    if ( v9 )
-    {
-      v11 = 17;
-      if ( v9 == 1 )
-      {
-        v12 = 1;
-      }
-      else
-      {
-        v12 = 11;
-        if ( v9 != 2 )
-          v11 = 1;
-      }
-    }
-    else
-    {
-      v11 = 1;
-      v12 = 1;
-    }
-    v13 = 2;
-    do
-    {
-      v14 = v11 + rand() % 12;
-      v15 = v12 + rand() % 9;
-      for ( j = 0; j < 512; ++j )
-      {
-        if ( !*((_BYTE *)&dword_140404A6C[8 * v10 + 278847461 + 8 * v15] + v14) )
-          break;
-        v14 = v11 + rand() % 12;
-        v15 = v12 + rand() % 9;
-      }
-      v17 = v14 + 32 * (220 * v4 + v15);
-      if ( !*((_BYTE *)&dword_140404A6C[278847461] + v17) )
-      {
-        *((_BYTE *)&dword_140404A6C[278847461] + v17) = 4;
-        ++dword_140404A6C[1760 * v4 + 278847326];
-      }
-      --v13;
-    }
-    while ( v13 );
-    v9 = v26 + 1;
-    v26 = v9;
-  }
-  while ( v9 < 4 );
-  v18 = 1760 * v4;
-  v19 = 880 * v4;
-  *(_QWORD *)&dword_140404A6C[v18 + 278847331] = 0;
-  dword_140404A6C[2 * v19 + 278847333] = 15;
-  dword_140404A6C[2 * v19 + 278847334] = 10;
-  v20 = ((unsigned __int8)dword_140404A6C[1760 * v4 + 278847331] + 1) & 0x3F;
-  dword_140404A6C[v18 + 278847331] = v20;
-  v21 = 880 * v4 + v20;
-  dword_140404A6C[2 * v21 + 278847333] = 15;
-  dword_140404A6C[2 * v21 + 278847334] = 10;
-  v22 = ((unsigned __int8)dword_140404A6C[1760 * v4 + 278847331] + 1) & 0x3F;
-  dword_140404A6C[v18 + 278847331] = v22;
-  v23 = 880 * v4 + v22;
-  dword_140404A6C[2 * v23 + 278847333] = 15;
-  dword_140404A6C[2 * v23 + 278847334] = 10;
-  HIBYTE(dword_140404A6C[v18 + 278847544]) = 3;
-  dword_140404A6C[v18 + 278847330] = 0;
-  ++dword_140404A6C[v18 + 278847327];
-  dword_140404A6C[v18 + 278847328] = 64;
-  return sub_1400C8E10(a1);
+  /* src/engine/items/computer_snake.c */
+  extern void snake_start_level(int item);
+  snake_start_level(a1);
+  return 0;
 }
-#undef v26
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (00000001400C9820) ----------------------------------------------------
 void            sub_1400C9820(int a1)
 {
-  __int64 v2; // r9
-  __int64 v3; // r11
-  signed int v4; // ecx
-  __int64 v5; // r10
-  __int64 v6; // rax
-  unsigned int v7; // ecx
-  signed int v8; // r8d
-  signed int v9; // edx
-  unsigned int v10; // eax
-  int v11; // eax
-  int v12; // eax
-  __int64 v13; // rax
-  __int64 v14; // r11
-  __int64 v15; // rcx
-  __int64 v16; // rcx
-  __int64 v17; // rax
-  unsigned int v18; // edx
-  __int64 v19; // rcx
-  unsigned int v20; // r8d
-  __int64 v21; // rcx
-  __int64 v22; // rcx
-  __int64 v23; // rcx
-  __int64 v24; // rcx
-  __int64 v25; // rcx
-  __int64 v26; // rcx
-  __int64 v27; // rcx
-  __int64 v28; // rax
-  __int64 v29; // rax
-  unsigned int v30; // eax
-  unsigned int v31; // r8d
-  __int64 v32; // rdx
-
-  v2 = 1760LL * a1;
-  v3 = a1;
-  if ( !dword_140404A6C[v2 + 278847329] && (int)--dword_140404A6C[v2 + 278847328] <= 0 )
-  {
-    if ( dword_140404A6C[v2 + 278847326] )
-    {
-      v4 = 16 - (((int)dword_140404A6C[v2 + 278847327] >> 1) & 0xFFFFFFFC);
-      if ( v4 < 4 )
-        v4 = 4;
-      dword_140404A6C[v2 + 278847328] = v4;
-      v5 = 880 * v3;
-      v6 = 880 * v3 + (dword_140404A6C[v2 + 278847331] & 0x3F);
-      v7 = ((unsigned __int8)dword_140404A6C[v2 + 278847331] + 1) & 0x3F;
-      v8 = dword_140404A6C[2 * v6 + 278847333];
-      v9 = dword_140404A6C[2 * v6 + 278847334];
-      v10 = dword_140404A6C[v2 + 278847330];
-      dword_140404A6C[v2 + 278847331] = v7;
-      if ( v10 )
-      {
-        if ( v10 == 1 )
-        {
-          v12 = v9 + 1;
-          v9 = 0;
-          if ( v12 < 22 )
-            v9 = v12;
-        }
-        else if ( v10 == 2 )
-        {
-          if ( --v8 < 0 )
-            v8 = 30;
-        }
-        else if ( v10 == 3 && --v9 < 0 )
-        {
-          v9 = 21;
-        }
-      }
-      else
-      {
-        v11 = v8 + 1;
-        v8 = 0;
-        if ( v11 < 31 )
-          v8 = v11;
-      }
-      v13 = v5 + v7;
-      v14 = 220 * v3;
-      dword_140404A6C[2 * v13 + 278847333] = v8;
-      dword_140404A6C[2 * v13 + 278847334] = v9;
-      v15 = v8 + 32 * (v14 + v9);
-      if ( *((_BYTE *)&dword_140404A6C[278847461] + v15) == 4 )
-      {
-        *((_BYTE *)&dword_140404A6C[278847461] + v15) = 0;
-        dword_140404A6C[v2 + 278847325] += 5;
-        --dword_140404A6C[v2 + 278847326];
-        HIWORD(dword_140404A6C[v2 + 278847325]) = 0;
-        if ( (int)dword_140404A6C[v2 + 278847326] <= 0 )
-        {
-          dword_140404A6C[v2 + 278847328] = 32;
-          dword_140404A6C[v2 + 278847326] = 0;
-        }
-        v16 = (int)dword_140404A6C[v2 + 278847332];
-        v17 = v5 + v16;
-        v18 = dword_140404A6C[2 * v5 + 278847333 + 2 * v16];
-        v19 = ((_BYTE)v16 - 1) & 0x3F;
-        v20 = dword_140404A6C[2 * v17 + 278847334];
-        dword_140404A6C[v2 + 278847332] = v19;
-        v21 = v5 + v19;
-        dword_140404A6C[2 * v21 + 278847333] = v18;
-        dword_140404A6C[2 * v21 + 278847334] = v20;
-        v22 = ((unsigned __int8)dword_140404A6C[v2 + 278847332] - 1) & 0x3F;
-        dword_140404A6C[v2 + 278847332] = v22;
-        v23 = v5 + v22;
-        dword_140404A6C[2 * v23 + 278847333] = v18;
-        dword_140404A6C[2 * v23 + 278847334] = v20;
-        v24 = ((unsigned __int8)dword_140404A6C[v2 + 278847332] - 1) & 0x3F;
-        dword_140404A6C[v2 + 278847332] = v24;
-        v25 = v5 + v24;
-        dword_140404A6C[2 * v25 + 278847333] = v18;
-        dword_140404A6C[2 * v25 + 278847334] = v20;
-        v26 = ((unsigned __int8)dword_140404A6C[v2 + 278847332] - 1) & 0x3F;
-        dword_140404A6C[v2 + 278847332] = v26;
-        v27 = v5 + v26;
-        dword_140404A6C[2 * v27 + 278847333] = v18;
-        dword_140404A6C[2 * v27 + 278847334] = v20;
-      }
-      v28 = v5 + (int)dword_140404A6C[v2 + 278847331];
-      if ( *((_BYTE *)&dword_140404A6C[8 * v14 + 278847461 + 8 * (int)dword_140404A6C[2 * v28 + 278847334]]
-           + (int)dword_140404A6C[2 * v28 + 278847333]) )
-        dword_140404A6C[v2 + 278847329] = 1;
-      v29 = v5 + (int)dword_140404A6C[v2 + 278847332];
-      *((_BYTE *)&dword_140404A6C[8 * v14 + 278847461 + 8 * (int)dword_140404A6C[2 * v29 + 278847334]]
-      + (int)dword_140404A6C[2 * v29 + 278847333]) = 0;
-      v30 = ((unsigned __int8)dword_140404A6C[v2 + 278847332] + 1) & 0x3F;
-      v31 = dword_140404A6C[v2 + 278847331] & 0x3F;
-      for ( dword_140404A6C[v2 + 278847332] = v30; v30 != v31; *((_BYTE *)&dword_140404A6C[278847461] + v32) = 2 )
-      {
-        v32 = (int)dword_140404A6C[2 * v5 + 278847333 + 2 * v30]
-            + 32 * (v14 + (int)dword_140404A6C[2 * v5 + 278847334 + 2 * v30]);
-        v30 = ((_BYTE)v30 + 1) & 0x3F;
-      }
-      *((_BYTE *)&dword_140404A6C[8 * v14 + 278847461 + 8 * (int)dword_140404A6C[2 * v5 + 278847334 + 2 * v30]]
-      + (int)dword_140404A6C[2 * v5 + 278847333 + 2 * v30]) = 3;
-      sub_1400C8E10(a1);
-    }
-    else
-    {
-      sub_1400C92B0(a1);
-    }
-  }
+  /* src/engine/items/computer_snake.c */
+  extern void computer_update_snake(int item);
+  computer_update_snake(a1);
 }
 
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
@@ -4658,5 +2738,612 @@ __int64 sub_1400CDFF0(int item)
 
 // 140278D30: using guessed type __int128 xmmword_140278D30;
 // 1402F6188: using guessed type int dword_1402F6188;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+
+//----- (000000014004C960) ----------------------------------------------------
+__int64 sub_14004C960(int item, int drive)
+{
+  extern uint32_t computer_resolve_drive(int, int);
+  return (__int64)computer_resolve_drive(item, drive);
+}
+
+//----- (000000014004C9C0) ----------------------------------------------------
+__int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5)
+{
+  __int64 v8; // rbp
+  __int64 v9; // rbx
+  __int64 i; // rax
+  unsigned __int8 v11; // al
+  int *v12; // r11
+  __int64 v13; // rdx
+  __int64 v14; // r8
+  __int64 v15; // r9
+  signed int v16; // r10d
+  __int64 v17; // r8
+  __int64 v18; // r13
+  int v19; // edx
+  char v20; // cl
+  __int64 v21; // rcx
+  char v22; // al
+  int v23; // r10d
+  __int64 v24; // rbp
+  int v25; // edi
+  _DWORD *j; // r11
+  unsigned int *v27; // rax
+  _BYTE *v28; // r9
+  int v29; // ecx
+  int v30; // edx
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14004C9C0[576];
+#define v32 (*(__int64 (*))(void *)(sr_frame_14004C9C0 + 0)) /* [rsp+0h] */
+#define v33 (*(int * (*))(void *)(sr_frame_14004C9C0 + 32)) /* [rsp+20h] */
+#define v34 (*(_BYTE (*)[512])(void *)(sr_frame_14004C9C0 + 48)) /* [rsp+30h] */
+#define v35 (*(__int64 (*))(void *)(sr_frame_14004C9C0 + 560)) /* [rsp+230h] */
+
+  v33 = a5;
+  v8 = a1;
+  v9 = *a5;
+  for ( i = v9; i < 62; ++i )
+  {
+    if ( *(_BYTE *)(i + a4) != 32 )
+      break;
+    LODWORD(v9) = v9 + 1;
+  }
+  v11 = toupper(*(unsigned __int8 *)((int)v9 + a4));
+  if ( (unsigned __int8)(v11 - 65) <= 0x19u && *(_BYTE *)((int)v9 + a4 + 1) == 58 )
+  {
+    *a2 = v11 - 65;
+    LODWORD(v9) = v9 + 2;
+  }
+  v12 = v33;
+  *v33 = v9;
+  v13 = *a2;
+  if ( (_DWORD)v13 == 2 )
+  {
+    v14 = 1760 * v8;
+    v15 = v8;
+    v16 = dword_140404A6C[1760 * v8 + 278846098];
+  }
+  else
+  {
+    if ( (_DWORD)v13 )
+      return (unsigned int)-1; /* 0x14004CA7E: jne -> mov eax, 0xffffffff */
+    v14 = 1760 * v8;
+    v15 = v8;
+    if ( (int)dword_140404A6C[1760 * v8 + 278845906] <= 0 )
+      return (unsigned int)-1; /* 0x14004CA9D: jle -> mov eax, 0xffffffff */
+    v16 = dword_140404A6C[1760 * dword_140404A6C[v14 + 278845907] + 278846098];
+  }
+  if ( v16 != -1 )
+  {
+    *a3 = dword_140404A6C[1760 * v15 + 278847173 + 18 * v13 + (int)dword_140404A6C[18 * v13 + 278847172 + v14]];
+    if ( *(_BYTE *)((int)v9 + a4) == 92 )
+    {
+      *a3 = 0;
+      LODWORD(v9) = v9 + 1;
+    }
+    v17 = (int)v9;
+    v18 = v16;
+    while ( 1 )
+    {
+      while ( 1 )
+      {
+        *v12 = v9;
+        if ( *(_BYTE *)(v17 + a4) != 46 )
+          break;
+        ++v17;
+        v19 = v9 + 1;
+        if ( *(_BYTE *)(v17 + a4) == 46 )
+        {
+          v20 = *(_BYTE *)((int)v9 + a4 + 2);
+          if ( v20 != 92 && v20 )
+            return (unsigned int)-1; /* 0x14004CB3A: jne -> mov eax, 0xffffffff */
+          ++v17;
+          *a3 = dword_140404A6C[2570 * v18 + 275753051 + 4 * *a3];
+        }
+        else
+        {
+          v19 = v9;
+        }
+        LODWORD(v9) = v19 + 1;
+        if ( *(_BYTE *)(v17 + a4) != 92 )
+          break;
+        LODWORD(v9) = v19 + 2;
+        ++v17;
+      }
+      v21 = 0;
+      if ( v17 < 62 )
+      {
+        do
+        {
+          v22 = *(_BYTE *)(v17 + a4);
+          if ( v22 == 92 || v22 == 32 || !v22 )
+            break;
+          if ( v21 >= 12 )
+            return (unsigned int)-1; /* 0x14004CB9A: jge -> mov eax, 0xffffffff */
+          v34[v21] = v22;
+          LODWORD(v9) = v9 + 1;
+          ++v21;
+          ++v17;
+        }
+        while ( v17 < 62 );
+        if ( (unsigned __int64)v21 >= 0x200 )
+          sub_1401F8694();
+      }
+      v34[v21] = 0;
+      if ( v21 <= 0 )
+        return 1; /* 0x14004CBC7: jle -> mov eax, 1 */
+      v23 = 1;
+      v24 = 2570 * v18;
+      v25 = dword_140404A6C[2570 * v18 + 275753047];
+      if ( v25 <= 1 )
+        return 0; /* 0x14004CBE9: jle -> xor eax, eax */
+      for ( j = (_DWORD *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + v24 * 4 + 1107225576); ; j += 4 )
+      {
+        if ( *j == *a3 )
+        {
+          v27 = &dword_140404A6C[4 * v23 + 275753048 + v24];
+          v28 = (_BYTE *)(v34 - (_BYTE *)v27);
+          do
+          {
+            v29 = (unsigned __int8)v28[(_QWORD)v27];
+            v30 = *(unsigned __int8 *)v27 - v29;
+            if ( v30 )
+              break;
+            v27 = (unsigned int *)((char *)v27 + 1);
+          }
+          while ( v29 );
+          if ( !v30 )
+            break;
+        }
+        if ( ++v23 >= v25 )
+          return 0; /* 0x14004CC31: jge -> xor eax, eax */
+      }
+      if ( v23 == -1 )
+        return 0; /* 0x14004CC40: je -> xor eax, eax */
+      *a3 = v23;
+      if ( *(_BYTE *)(v17 + a4) != 92 )
+        return 1; /* 0x14004CC4B: jne -> mov eax, 1 */
+      v12 = v33;
+      LODWORD(v9) = v9 + 1;
+      ++v17;
+    }
+  }
+  return (unsigned int)-1; /* 0x14004CABE: je -> mov eax, 0xffffffff */
+}
+#undef v32
+#undef v33
+#undef v34
+#undef v35
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (0000000140050F90) ----------------------------------------------------
+__int64            sub_140050F90(int a1, signed int a2)
+{
+  /* src/engine/item_text.c */
+  extern unsigned int computer_line_link(int item, int line);
+  return computer_line_link(a1, a2);
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 183EBFD34: using guessed type unsigned int;
+
+//----- (0000000140051170) ----------------------------------------------------
+__int64            sub_140051170(int a1, unsigned int a2, int a3)
+{
+  __int64 v4; // rdx
+  unsigned int *v5; // rax
+  unsigned int v6; // ebx
+  signed int v8; // ecx
+  __int64 v9; // r9
+  unsigned int v10; // eax
+
+  v4 = a1;
+  v5 = &dword_140404A6C[290382645];
+  v6 = 0;
+  while ( *v5 )
+  {
+    ++v6;
+    v5 += 39;
+    if ( (__int64)v5 >= (__int64)&dword_140404A6C[291021621] )
+      return 0xFFFFFFFFLL;
+  }
+  if ( v6 == -1 )
+    return 0xFFFFFFFFLL;
+  v8 = 64;
+  if ( a3 <= 64 )
+    v8 = a3;
+  v9 = 39LL * (int)v6;
+  v10 = dword_140404A6C[283831474];
+  dword_140404A6C[v9 + 290382649] = v4;
+  dword_140404A6C[v9 + 290382651] = v8;
+  dword_140404A6C[v9 + 290382650] = a2;
+  dword_140404A6C[v9 + 290382648] = v10;
+  *(_QWORD *)&dword_140404A6C[v9 + 290382645] = 1;
+  dword_140404A6C[v9 + 290382647] = 0;
+  sub_1401FC920(
+    (__m128i *)&dword_140404A6C[v9 + 290382652],
+    (     __m128i *)((char *)&dword_140404A6C[1760 * v4 + 278846111] + (int)(a2 << 6)),
+    v8);
+  return v6;
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 183EBFD34: using guessed type unsigned int;
+
+//----- (0000000140080690) ----------------------------------------------------
+__int64 sub_140080690(int disk, unsigned int directory, char *name, unsigned int content)
+{
+  extern uint32_t disk_append_file(int, uint32_t, const char *, uint32_t);
+  return (__int64)disk_append_file(disk, directory, name, content);
+}
+
+//----- (0000000140080720) ----------------------------------------------------
+__int64            sub_140080720(int a1, int a2, __int64 a3)
+{
+  unsigned int v3; // r9d
+  __int64 v4; // rdi
+  int v7; // r11d
+  unsigned int *i; // r10
+  unsigned int *v9; // rax
+  __int64 v10; // r8
+  int v11; // ecx
+  int v12; // edx
+
+  v3 = 1;
+  v4 = 2570LL * a1;
+  v7 = dword_140404A6C[v4 + 275753047];
+  if ( v7 <= 1 )
+    return 0xFFFFFFFFLL;
+  for ( i = &dword_140404A6C[v4 + 275753055]; ; i += 4 )
+  {
+    if ( *i == a2 )
+    {
+      v9 = &dword_140404A6C[4 * v3 + 275753048 + v4];
+      v10 = a3 - (_QWORD)v9;
+      do
+      {
+        v11 = *((unsigned __int8 *)v9 + v10);
+        v12 = *(unsigned __int8 *)v9 - v11;
+        if ( v12 )
+          break;
+        v9 = (unsigned int *)((char *)v9 + 1);
+      }
+      while ( v11 );
+      if ( !v12 )
+        break;
+    }
+    if ( (int)++v3 >= v7 )
+      return 0xFFFFFFFFLL;
+  }
+  return v3;
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (0000000140080820) ----------------------------------------------------
+__int64            sub_140080820(int a1, int a2, __int64 a3)
+{
+  __int64 v3; // r9
+  __int64 v4; // rdi
+  int v7; // r11d
+  unsigned int *i; // r10
+  unsigned int *v9; // rax
+  __int64 v10; // r8
+  int v11; // ecx
+  int v12; // edx
+
+  v3 = 0;
+  v4 = 2570LL * a1;
+  v7 = dword_140404A6C[v4 + 275754072];
+  if ( v7 <= 0 )
+    return 0xFFFFFFFFLL;
+  for ( i = &dword_140404A6C[v4 + 275754078]; ; i += 6 )
+  {
+    if ( *i == a2 )
+    {
+      v9 = &dword_140404A6C[6 * v3 + 275754074 + v4];
+      v10 = a3 - (_QWORD)v9;
+      do
+      {
+        v11 = *((unsigned __int8 *)v9 + v10);
+        v12 = *(unsigned __int8 *)v9 - v11;
+        if ( v12 )
+          break;
+        v9 = (unsigned int *)((char *)v9 + 1);
+      }
+      while ( v11 );
+      if ( !v12 )
+        break;
+    }
+    v3 = (unsigned int)(v3 + 1);
+    if ( (int)v3 >= v7 )
+      return 0xFFFFFFFFLL;
+  }
+  return (unsigned int)v3;
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (00000001400C6B30) ----------------------------------------------------
+void            sub_1400C6B30(_BYTE *a1, int a2, int a3)
+{
+    extern void computer_format_drive_path(char *, int, int);
+    computer_format_drive_path((char *)a1, a2, a3);
+}
+
+//----- (00000001400C6C90) ----------------------------------------------------
+__m128i *           sub_1400C6C90(int a1)
+{
+  __int64 v2; // rsi
+  __int64 v3; // rdx
+  signed int v4; // ebx
+  __int64 v5; // rdx
+  __m128i *result; // rax
+  __m128i si128; // xmm0
+
+  v2 = 1760LL * a1;
+  v3 = (int)dword_140404A6C[v2 + 278846111];
+  v4 = 2;
+  dword_140404A6C[v2 + 278847170] = 2;
+  dword_140404A6C[v2 + 278847323] = -1;
+  strcpy((char *)&dword_140404A6C[1760 * a1 + 278846114 + 16 * v3], "STARTING CS-DOS...");
+  sub_1400C3E00(a1);
+  sub_1400C3E00(a1);
+  sub_1400C6D90(a1, 0);
+  do
+    sub_140050F90(a1, v4++);
+  while ( v4 < 24 );
+  v5 = 32;
+  result = (__m128i *)&dword_140404A6C[v2 + 278846626];
+  do
+  {
+    si128 = _mm_load_si128((     __m128i *)&xmmword_140279200);
+    *result = si128;
+    result[1] = si128;
+    result[2] = si128;
+    result += 4;
+    SR_VEC_LANES(128, result[-1], i64)[0] = SR_VEC_LANES(128, si128, i64)[0];
+    SR_VEC_LANES(128, result[-1], i32)[2] = SR_VEC_LANES(128, si128, i32)[0];
+    SR_VEC_LANES(128, result[-1], i16)[6] = SR_VEC_LANES(128, si128, i16)[0];
+    SR_VEC_LANES(128, result[-1], i8)[14] = SR_VEC_LANES(128, si128, i8)[0];
+    --v5;
+  }
+  while ( v5 );
+  return result;
+}
+
+// 140279200: using guessed type __int128 xmmword_140279200;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (00000001400C8AD0) ----------------------------------------------------
+__int64            sub_1400C8AD0(_BYTE *a1, __int64 a2, int *a3)
+{
+  int v3; // r10d
+  unsigned int v4; // edi
+  int v7; // r11d
+  int v8; // r9d
+  char v9; // cl
+  _BYTE *v10; // rdx
+  char v11; // cl
+
+  v3 = *a3;
+  v4 = 0;
+  v7 = 0;
+  if ( *a3 < 62 )
+  {
+    v8 = *a3;
+    do
+    {
+      v9 = *(_BYTE *)(v3 + a2);
+      if ( (unsigned __int8)(v9 - 97) <= 0x19u )
+        break;
+      if ( (unsigned __int8)(v9 - 65) <= 0x19u )
+        break;
+      if ( (unsigned __int8)(v9 - 48) <= 9u )
+        break;
+      if ( !v9 )
+        break;
+      *a3 = ++v3;
+      v8 = v3;
+    }
+    while ( v3 < 62 );
+    if ( v8 < 62 )
+    {
+      v10 = a1;
+      do
+      {
+        v11 = *(_BYTE *)(v8 + a2);
+        if ( (unsigned __int8)(v11 - 97) > 0x19u
+          && (unsigned __int8)(v11 - 65) > 0x19u
+          && (unsigned __int8)(v11 - 48) > 9u
+          && v11 != 46 )
+        {
+          break;
+        }
+        *v10 = v11;
+        ++v7;
+        ++v10;
+        v8 = *a3 + 1;
+        *a3 = v8;
+      }
+      while ( v8 < 62 );
+    }
+  }
+  a1[v7] = 0;
+  LOBYTE(v4) = v7 > 0;
+  return v4;
+}
+
+// 1400C8B63: conditional instruction was optimized away because cl.1 is in (==2E|30..39)
+
+//----- (00000001400C8BA0) ----------------------------------------------------
+__int64            sub_1400C8BA0(_BYTE *a1, __int64 a2, int *a3)
+{
+  int v3; // r10d
+  unsigned int v4; // edi
+  int v7; // r11d
+  int v8; // r9d
+  char v9; // cl
+  _BYTE *v10; // rdx
+  char v11; // cl
+
+  v3 = *a3;
+  v4 = 0;
+  v7 = 0;
+  if ( *a3 < 62 )
+  {
+    v8 = *a3;
+    do
+    {
+      v9 = *(_BYTE *)(v3 + a2);
+      if ( (unsigned __int8)(v9 - 97) <= 0x19u )
+        break;
+      if ( (unsigned __int8)(v9 - 65) <= 0x19u )
+        break;
+      if ( (unsigned __int8)(v9 - 48) <= 9u )
+        break;
+      if ( !v9 )
+        break;
+      *a3 = ++v3;
+      v8 = v3;
+    }
+    while ( v3 < 62 );
+    if ( v8 < 62 )
+    {
+      v10 = a1;
+      do
+      {
+        v11 = *(_BYTE *)(v8 + a2);
+        if ( (unsigned __int8)(v11 - 97) > 0x19u
+          && (unsigned __int8)(v11 - 65) > 0x19u
+          && (unsigned __int8)(v11 - 48) > 9u )
+        {
+          break;
+        }
+        *v10 = v11;
+        ++v7;
+        ++v10;
+        v8 = *a3 + 1;
+        *a3 = v8;
+      }
+      while ( v8 < 62 );
+    }
+  }
+  a1[v7] = 0;
+  LOBYTE(v4) = v7 > 0;
+  return v4;
+}
+
+// 1400C8C2E: conditional instruction was optimized away because cl.1 is in (30..39)
+
+//----- (00000001400C8C70) ----------------------------------------------------
+__int64            sub_1400C8C70(_BYTE *a1, __int64 a2, int *a3)
+{
+  int v3; // eax
+  int v4; // r9d
+  int v6; // r10d
+  char v7; // dl
+  __int64 v8; // rdx
+  char v9; // al
+
+  v3 = *a3;
+  v4 = 0;
+  if ( *a3 < 62 )
+  {
+    v6 = *a3;
+    do
+    {
+      if ( *(_BYTE *)(v6 + a2) != 32 )
+        break;
+      *a3 = ++v6;
+      v3 = v6;
+    }
+    while ( v6 < 62 );
+  }
+  v7 = *(_BYTE *)(v3 + a2);
+  if ( (unsigned __int8)(v7 - 97) <= 0x19u || (unsigned __int8)(v7 - 65) <= 0x19u || (unsigned __int8)(v7 - 48) <= 9u )
+  {
+    *a1 = 0;
+  }
+  else
+  {
+    if ( v7 && v3 < 62 )
+    {
+      v8 = 0;
+      do
+      {
+        if ( v8 >= 2 )
+          break;
+        v9 = *(_BYTE *)(v3 + a2);
+        if ( !v9 )
+          break;
+        a1[v8] = v9;
+        ++v4;
+        ++v8;
+        v3 = *a3 + 1;
+        *a3 = v3;
+      }
+      while ( v3 < 62 );
+    }
+    a1[v4] = 0;
+    if ( v4 > 0 )
+      return 1;
+  }
+  return 0;
+}
+
+
+//----- (00000001400C8D20) ----------------------------------------------------
+__int64            sub_1400C8D20(int a1, int a2)
+{
+  __int64 v3; // rsi
+  __int64 v4; // rdi
+  int v5; // ebx
+  char *v6; // rax
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400C8D20[2096];
+#define v9 (*(_BYTE (*)[32])(void *)(sr_frame_1400C8D20 + 0)) /* [rsp+0h] */
+#define v10 (*(__m128i (*)[64])(void *)(sr_frame_1400C8D20 + 32)) /* [rsp+20h] */
+#define v11 (*(char (*)[1024])(void *)(sr_frame_1400C8D20 + 1056)) /* [rsp+420h] */
+#define v12 (*(__int64 (*))(void *)(sr_frame_1400C8D20 + 2080)) /* [rsp+820h] */
+
+  SR_VEC_LANES(128, v10[0], i8)[0] = 0;
+  v3 = 110LL * a2;
+  v4 = 23;
+  v5 = dword_140404A6C[1760 * a2 + 278846112];
+  do
+  {
+    sub_140158AB0(v11, "%s\n", (     char *)&dword_140404A6C[16 * (v3 + v5) + 278846114]);
+    v6 = &v9[31];
+    while ( *++v6 != 0 )
+      ;
+    strcpy(v6, v11);
+    v5 = ((_BYTE)v5 + 1) & 0x1F;
+    --v4;
+  }
+  while ( v4 );
+  return sub_1400584B0(a1, v10); /* 0x1400C8DE3: the result of this call is still in rax at the exit */
+}
+#undef v9
+#undef v10
+#undef v11
+#undef v12
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (00000001400C90D0) ----------------------------------------------------
+__int64            sub_1400C90D0(int a1)
+{
+  __int64 v2; // rdx
+
+  v2 = 1760LL * a1;
+  *(_QWORD *)&dword_140404A6C[v2 + 278846111] = 0;
+  sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[v2 + 278847325]), 0, 0x520u);
+  return sub_1400C92B0(a1);
+}
+
 // 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 

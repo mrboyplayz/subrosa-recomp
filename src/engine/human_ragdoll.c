@@ -31,7 +31,7 @@ extern int sub_1400DC050(float *from, float *to, int unknown);
 /* A height the hands are kept above when the level is in the way. */
 #define ragdoll_unknown_height   SR_GLOBAL(float, 0x151A84884ULL)
 /* Per arm (side 0, 1): where the hand sits relative to the chest. */
-#define ragdoll_arm_offset(side) (human_skeleton[HUMAN_BONE_HEAD + 3 * (side)].unknown_34)
+#define ragdoll_arm_offset(side) (human_skeleton[HUMAN_BONE_HEAD + 3 * (side)].anchor)
 
 /* Item type fields the ragdoll reads (world.h's WorldItemType). */
 #define item_type_int(type, offset) \
@@ -98,24 +98,24 @@ void human_build_look_pose(int human, float twist)
 
     /* Joint 0 turns by -(0x140 / 2 + 0xF8) about y, -0x9C / 2 about x and
        -0x144 * 3/4 about x. */
-    turn(q, AXIS_Y, (h->unknown_140 * 0.5f + h->unknown_f8) * -0.5f);
+    turn(q, AXIS_Y, (h->input_spine_twist * 0.5f + h->look_yaw_offset) * -0.5f);
     math_quat_multiply(pose[0], pose[0], q);
-    turn(q, AXIS_X, h->unknown_9c * -0.25f);
+    turn(q, AXIS_X, h->view_pitch * -0.25f);
     math_quat_multiply(pose[0], pose[0], q);
     math_quat_multiply(pose[3], pose[3], q);
-    turn(q, AXIS_X, h->unknown_144 * -0.375f);
+    turn(q, AXIS_X, h->input_spine_bend * -0.375f);
     math_quat_multiply(pose[0], pose[0], q);
 
     /* Joint 1 turns by -0x9C / 4 about x, -twist about y and -0x140 / 4
        about y. */
     set_identity(pose[1]);
-    turn(q, AXIS_X, h->unknown_9c * -0.125f);
+    turn(q, AXIS_X, h->view_pitch * -0.125f);
     math_quat_multiply(pose[1], pose[1], q);
     math_quat_multiply(pose[3], pose[3], q);
     turn(q, AXIS_Y, twist * -0.5f);
     math_quat_multiply(pose[1], pose[1], q);
     math_quat_multiply(pose[3], pose[3], q);
-    turn(q, AXIS_Y, h->unknown_140 * -0.125f);
+    turn(q, AXIS_Y, h->input_spine_twist * -0.125f);
     math_quat_multiply(pose[1], pose[1], q);
 
     /* Joint 2 stays straight. Joint 3 collected the x turns of 0x9C and the
@@ -281,7 +281,7 @@ typedef struct Drive {
 static float spine_yaw(const Drive *d, float lean)
 {
     const WorldHuman *h = d->h;
-    float yaw = ((h->unknown_140 * 0.5f + d->input_yaw) + h->unknown_f8) + lean;
+    float yaw = ((h->input_spine_twist * 0.5f + d->input_yaw) + h->look_yaw_offset) + lean;
 
     if (!d->on_foot)
         yaw = d->input_yaw + lean;
@@ -300,10 +300,10 @@ static void drive_lower_spine(Drive *d)
     float *bias = bone_constraint(stomach)->bias;
 
     joint_rotation(q, pelvis, stomach);
-    if (h->input_flags & HUMAN_INPUT_20)
-        pitch = h->unknown_9c * 0.5f;
+    if (h->input_flags & HUMAN_INPUT_THROW)
+        pitch = h->view_pitch * 0.5f;
     else
-        pitch = (h->unknown_9c + h->unknown_144) * 0.75f;
+        pitch = (h->view_pitch + h->input_spine_bend) * 0.75f;
     if (!d->on_foot)
         pitch = d->input_pitch;
     pitch *= 0.75f;
@@ -328,10 +328,10 @@ static void drive_upper_spine(Drive *d)
     float *bias = bone_constraint(chest)->bias;
 
     joint_rotation(q, stomach, chest);
-    if (h->input_flags & HUMAN_INPUT_20)
-        pitch = h->unknown_9c * 0.5f;
+    if (h->input_flags & HUMAN_INPUT_THROW)
+        pitch = h->view_pitch * 0.5f;
     else
-        pitch = h->unknown_144 * 0.75f + h->unknown_9c * 0.25f;
+        pitch = h->input_spine_bend * 0.75f + h->view_pitch * 0.25f;
     if (!d->on_foot)
         pitch = d->input_pitch;
     pitch *= 0.5f;
@@ -390,22 +390,22 @@ static void drive_head(Drive *d)
     float *bias = bone_constraint(head)->bias;
 
     joint_rotation(q, chest, head);
-    yaw = h->unknown_140 * 0.5f;
+    yaw = h->input_spine_twist * 0.5f;
     if (ragdoll_unknown_mode)
-        yaw = (yaw + d->input_yaw) + h->unknown_f8;
+        yaw = (yaw + d->input_yaw) + h->look_yaw_offset;
     else
         yaw = yaw - d->lean;
     math_sine_cosine(yaw * -0.5f, &sy, &cy);
     ty = sy;
     tw = cy;
-    if (h->unknown_60 == 2 && d->aiming) {
+    if (h->zoom_level == 2 && d->aiming) {
         /* tilted by pi/16 about the head's z axis */
         tx = sy * -0.098017141f;
         ty = sy * 0.99518472f;
         tz = cy * -0.098017141f;
         tw = cy * 0.99518472f;
     }
-    pitch = h->unknown_144 * 0.25f + h->unknown_9c * 0.5f;
+    pitch = h->input_spine_bend * 0.25f + h->view_pitch * 0.5f;
     if (ragdoll_unknown_mode)
         pitch = (float)((double)pitch - 0.39269908169875);
     math_sine_cosine(pitch * -0.5f, &sp, &cp);
@@ -420,12 +420,12 @@ static void drive_head(Drive *d)
         const float *p = h->pose_rotations[3];
         float s, c, x, y, z, w;
 
-        math_sine_cosine(h->unknown_9c * -0.5f, &s, &c);
+        math_sine_cosine(h->view_pitch * -0.5f, &s, &c);
         y = p[2] * s + p[1] * c;
         z = p[2] * c - p[1] * s;
         x = c * p[0] + s * p[3];
         w = c * p[3] - s * p[0];
-        math_sine_cosine(h->unknown_140 * -0.125f, &s, &c);
+        math_sine_cosine(h->input_spine_twist * -0.125f, &s, &c);
         target[0] = x * c - z * s;
         target[1] = y * c + w * s;
         target[2] = z * c + x * s;
@@ -486,7 +486,7 @@ static void choose_item(const Drive *d, Arm *arm)
         if (h->hands[0].count > 0) {
             int type = item_type_of(h->hands[0].items[0]);
             if ((item_type_unknown_7c(type) > 1 || type == ITEM_TYPE_36)
-                && (h->unknown_6768 > 0.70700002f || !(h->input_flags & HUMAN_INPUT_8))) {
+                && (h->smoothed_rotation[4] > 0.70700002f || !(h->input_flags & HUMAN_INPUT_CROUCH))) {
                 arm->item = h->hands[0].items[0];
                 arm->both_hands = 1;
                 arm->grip = 1;
@@ -513,18 +513,18 @@ static void base_hand_rotation(const Drive *d, Arm *arm)
 {
     const WorldHuman *h = d->h;
     float *r = arm->rotation;
-    int arms_follow_70 = (h->input_flags & HUMAN_INPUT_20) || !h->unknown_6de0;
+    int arms_follow_70 = (h->input_flags & HUMAN_INPUT_THROW) || !h->inventory_anim_flags;
 
     set_identity3(r);
-    math_mat3_rotate_rows(r, x_axis, h->unknown_9c * 0.5f - 0.049087387f);
+    math_mat3_rotate_rows(r, x_axis, h->view_pitch * 0.5f - 0.049087387f);
     turn_about_row(r, 0, 0x1.921fb6p-8f);                /* pi/512 */
     turn_about_row(r, 1, -0x1.2d97c8p-6f);               /* -3pi/512 */
-    if (h->unknown_6de0 == 1)
+    if (h->inventory_anim_flags == 1)
         turn_about_row(r, 2, PI_8);
-    if (d->on_foot && (h->input_flags & HUMAN_INPUT_2))
+    if (d->on_foot && (h->input_flags & HUMAN_INPUT_AIM))
         math_mat3_rotate_rows(r, x_axis, PI_4);
     if (arms_follow_70)
-        math_mat3_rotate_rows(r, x_axis, h->unknown_70 + h->unknown_70);
+        math_mat3_rotate_rows(r, x_axis, h->throw_pitch + h->throw_pitch);
     math_mat3_rotate_rows(r, y_axis, -d->lean);
     if (arm->item == -1)
         set_identity3(r);
@@ -535,11 +535,11 @@ static void base_hand_rotation(const Drive *d, Arm *arm)
         float inverse[4] = {-p[0], -p[1], -p[2], p[3]};
 
         math_mat3_from_quat(r, inverse);
-        turn_about_row(r, 0, (float)((double)h->unknown_9c - 0.03681553890925782));
-        if (d->on_foot && (h->input_flags & HUMAN_INPUT_2))
+        turn_about_row(r, 0, (float)((double)h->view_pitch - 0.03681553890925782));
+        if (d->on_foot && (h->input_flags & HUMAN_INPUT_AIM))
             turn_about_row(r, 0, PI_4);
         if (arms_follow_70)
-            turn_about_row(r, 0, h->unknown_70 + h->unknown_70);
+            turn_about_row(r, 0, h->throw_pitch + h->throw_pitch);
     }
 }
 
@@ -551,7 +551,7 @@ static void hand_offset(const Drive *d, const Arm *arm, float offset[3])
     const float *r = arm->rotation;
     float a = 0.1875f, b = 0.0625f, c = 0.0f;
 
-    if (h->unknown_60 == 2) {
+    if (h->zoom_level == 2) {
         a = 0.0625f;
         b = 0.125f;
     }
@@ -568,8 +568,8 @@ static void hand_offset(const Drive *d, const Arm *arm, float offset[3])
         if (!d->on_foot)
             b = -0.125f;
     }
-    if ((h->input_flags & HUMAN_INPUT_20) || !h->unknown_6de0) {
-        float reach = -0.25f - (float)(crt_sin((double)(min_float((float)((double)h->unknown_70 + 1.17809724509625), 0.0f) * 3.0f)) * 0.375);
+    if ((h->input_flags & HUMAN_INPUT_THROW) || !h->inventory_anim_flags) {
+        float reach = -0.25f - (float)(crt_sin((double)(min_float((float)((double)h->throw_pitch + 1.17809724509625), 0.0f) * 3.0f)) * 0.375);
 
         c = reach * r[8];
         a = a + reach * r[6];
@@ -596,7 +596,7 @@ static void hand_offset(const Drive *d, const Arm *arm, float offset[3])
     if (arm->item != -1) {
         if (arm->type == ITEM_TYPE_11) {
             if (d->on_foot) {
-                if (h->unknown_60 == 2) {
+                if (h->zoom_level == 2) {
                     offset[0] = offset[0] + r[6] * -0.25f;
                     offset[1] = offset[1] + r[7] * -0.25f;
                     offset[2] = offset[2] + r[8] * -0.25f;
@@ -638,28 +638,28 @@ static void empty_hand_target(const Drive *d, Arm *arm)
     double lanes[2];
 
     arm->target[0] = arm->side ? 0.0625f : -0.0625f;
-    swing = (float)((double)h->unknown_6acc * 0.39269908169875);
-    if (h->unknown_60 > 0)
+    swing = (float)((double)h->stride_lean * 0.39269908169875);
+    if (h->zoom_level > 0)
         swing *= 0.5f;
     if (arm->side == 1)
         swing = -swing;
-    bend = (float)((double)swing + (h->unknown_60 ? 0.196349540849375 : 0.39269908169875));
-    if (h->unknown_6734 > 0)
+    bend = (float)((double)swing + (h->zoom_level ? 0.196349540849375 : 0.39269908169875));
+    if (h->jump_charge > 0)
         bend = PI_4;
-    scale = h->unknown_60 ? 0.875f : 0.75f;
+    scale = h->zoom_level ? 0.875f : 0.75f;
     if (ragdoll_unknown_mode) {
-        float pitch = h->unknown_9c;
+        float pitch = h->view_pitch;
 
-        bend = (float)(2.74889357189125 - (double)((pitch + h->unknown_144) * 1.5f));
+        bend = (float)(2.74889357189125 - (double)((pitch + h->input_spine_bend) * 1.5f));
         scale = 1.0f;
         if (pitch > 0.0f) {
             float t = pitch * 0.75f;
             scale = t >= 0.75f ? 0.25f : 1.0f - t;
         }
     }
-    if (h->unknown_58 == 1 || h->unknown_58 == 3) {
+    if (h->movement_state == 1 || h->movement_state == 3) {
         scale = 0.9375f;
-        bend = (float)(1.570796326795 - (double)(h->unknown_144 + h->unknown_9c));
+        bend = (float)(1.570796326795 - (double)(h->input_spine_bend + h->view_pitch));
     }
     if (!d->on_foot)
         bend = PI_2;
@@ -674,13 +674,13 @@ static void empty_hand_target(const Drive *d, Arm *arm)
         arm->target[0] = -0.1875f;
         arm->target[1] = 0.0f;
         arm->target[2] = -0.65625f;
-        a = h->unknown_144 * 0.75f;
+        a = h->input_spine_bend * 0.75f;
         if (!((double)a >= -0.6872233929727672))
             a = -0x1.5fdbbep-1f;                         /* -7pi/32 */
         else if ((double)a > 0.7853981633974483)
             a = PI_4;
         math_vec3_rotate(arm->target, x_axis, a);
-        a = h->unknown_140 * 0.75f;
+        a = h->input_spine_twist * 0.75f;
         if (!((double)a >= -0.6872233929727672))
             a = -0x1.5fdbbep-1f;
         else if ((double)a > 0.7853981633974483)
@@ -689,11 +689,11 @@ static void empty_hand_target(const Drive *d, Arm *arm)
     }
 }
 
-/* The spring of unknown_1a8 (side 0 only): a random push of length 1/128,
+/* The spring of idle_sway (side 0 only): a random push of length 1/128,
    pulled back by 1/256 of the distance and damped by 15/16 each tick. */
 static void push_spring(WorldHuman *h, float push[3])
 {
-    float *p = h->unknown_1a8, *v = h->unknown_1b4;
+    float *p = h->idle_sway, *v = h->idle_sway_velocity;
     float vx, vy, vz;
 
     human_random_direction(push, 0.0078125f, 0.0f);
@@ -717,7 +717,7 @@ static void push_spring(WorldHuman *h, float push[3])
 }
 
 /* With the level in the way of the chest's y axis, the hand is pulled in
-   (unknown_54 set, unknown_6768 below 1/2 and HUMAN_INPUT_8). */
+   (on_ground set, smoothed_rotation[4] below 1/2 and HUMAN_INPUT_CROUCH). */
 static void probe_ahead(const Drive *d, Arm *arm)
 {
     const WorldHuman *h = d->h;
@@ -769,7 +769,7 @@ static void drive_arm(Drive *d, int side)
     hand_offset(d, &arm, offset);
 
     if (arm.item != -1) {
-        if (!((h->input_flags & HUMAN_INPUT_20) || !h->unknown_6de0) && arm.type == ITEM_TYPE_15) {
+        if (!((h->input_flags & HUMAN_INPUT_THROW) || !h->inventory_anim_flags) && arm.type == ITEM_TYPE_15) {
             offset[0] = y_axis[0] * -0.65625f;
             offset[1] = y_axis[1] * -0.65625f;
             offset[2] = y_axis[2] * -0.65625f;
@@ -812,13 +812,13 @@ static void drive_arm(Drive *d, int side)
     if (arm.item != -1) {
         float d_chest[3];
 
-        if (((h->input_flags & HUMAN_INPUT_20) || !h->unknown_6de0) && arm.type == ITEM_TYPE_15)
+        if (((h->input_flags & HUMAN_INPUT_THROW) || !h->inventory_anim_flags) && arm.type == ITEM_TYPE_15)
             turn_for_type_15(&arm);
         if (arm.aimed && arm.type != ITEM_TYPE_11 && (side == 1 || arm.both_hands == 1))
             human_aim_hand_target(arm.target, d->human, arm.both_hands, arm.type, r);
 
-        if (h->unknown_6de0 == 1) {
-            float along = -(((arm.target[1] * r[1] + arm.target[0] * r[0]) + arm.target[2] * r[2]) * h->unknown_6de4);
+        if (h->inventory_anim_flags == 1) {
+            float along = -(((arm.target[1] * r[1] + arm.target[0] * r[0]) + arm.target[2] * r[2]) * h->inventory_anim_progress);
             arm.target[0] = arm.target[0] + r[0] * along;
             arm.target[1] = arm.target[1] + r[1] * along;
             arm.target[2] = arm.target[2] + r[2] * along;
@@ -829,11 +829,11 @@ static void drive_arm(Drive *d, int side)
             float bx = body[0], by = body[1], bz = body[2];
 
             if (ragdoll_unknown_mode) {
-                float jitter[3], *kept = h->unknown_6c3c[side ^ 1];
+                float jitter[3], *kept = h->grips[side ^ 1].kept_velocity;
 
-                jitter[0] = bx - h->unknown_678c[0];
-                jitter[1] = by - h->unknown_678c[1];
-                jitter[2] = bz - h->unknown_678c[2];
+                jitter[0] = bx - h->trunk_velocity[0];
+                jitter[1] = by - h->trunk_velocity[1];
+                jitter[2] = bz - h->trunk_velocity[2];
                 {
                     float length = sqrt_float((jitter[1] * jitter[1] + jitter[0] * jitter[0]) + jitter[2] * jitter[2]);
                     human_random_direction(jitter, length + length, 0.0f);
@@ -845,12 +845,12 @@ static void drive_arm(Drive *d, int side)
                 bz = (jitter[2] + kept[2]) * 0.75f + bz * 0.25f;
                 kept[2] = bz;
             }
-            d_chest[1] = by - h->unknown_678c[1];
-            d_chest[0] = bx - h->unknown_678c[0];
-            d_chest[2] = bz - h->unknown_678c[2];
+            d_chest[1] = by - h->trunk_velocity[1];
+            d_chest[0] = bx - h->trunk_velocity[0];
+            d_chest[2] = bz - h->trunk_velocity[2];
         }
         to_local(axis, chest->rotation, d_chest);
-        if (!(h->input_flags & HUMAN_INPUT_20) && h->unknown_6de0) {
+        if (!(h->input_flags & HUMAN_INPUT_THROW) && h->inventory_anim_flags) {
             arm.target[0] = arm.target[0] + axis[0] * -0.75f;
             arm.target[1] = arm.target[1] + axis[1] * -0.75f;
             arm.target[2] = arm.target[2] + axis[2] * -0.75f;
@@ -865,7 +865,7 @@ static void drive_arm(Drive *d, int side)
 
             human_item_28_hand_target(arm.target, d->human, arm.item);
             set_identity3(m);
-            math_mat3_rotate_rows(m, y_axis, (float)((double)h->unknown_98 + 1.570796326794897));
+            math_mat3_rotate_rows(m, y_axis, (float)((double)h->view_yaw + 1.570796326794897));
             math_mat3_multiply_transposed(r, chest->rotation, m);
         }
         {
@@ -904,13 +904,13 @@ static void drive_arm(Drive *d, int side)
     wrist_turn[1] = -wrist_turn[1];
     wrist_turn[2] = -wrist_turn[2];
     limit = 0.19634955f;
-    if (!h->unknown_6de0)
+    if (!h->inventory_anim_flags)
         limit = PI_4;
-    if (h->unknown_6734 > 0)
+    if (h->jump_charge > 0)
         limit = PI_4;
-    if (h->unknown_58 == 3)
+    if (h->movement_state == 3)
         limit = PI_4;
-    if (h->unknown_58 != 2 && h->unknown_54 && h->unknown_6768 < 0.5f && (h->input_flags & HUMAN_INPUT_8))
+    if (h->movement_state != 2 && h->on_ground && h->smoothed_rotation[4] < 0.5f && (h->input_flags & HUMAN_INPUT_CROUCH))
         probe_ahead(d, &arm);
 
     /* the arm's inverse kinematics */
@@ -933,10 +933,10 @@ static void drive_arm(Drive *d, int side)
 
         twist = 0.0f;
         if (d->on_foot && arm.item == -1) {
-            if (h->unknown_58 == 3)
-                loose = h->unknown_6914 >= 0.875f;
+            if (h->movement_state == 3)
+                loose = h->legs[0].progress >= 0.875f;
             else
-                loose = h->unknown_58 == 1 && !(h->input_flags & HUMAN_INPUT_8);
+                loose = h->movement_state == 1 && !(h->input_flags & HUMAN_INPUT_CROUCH);
         }
         if (loose) {
             /* held loosely: no twist and no health flag */
@@ -958,7 +958,7 @@ static void drive_arm(Drive *d, int side)
     }
     if (side == 0)
         twist = -twist;
-    if ((h->input_flags & HUMAN_INPUT_20) || !h->unknown_6de0)
+    if ((h->input_flags & HUMAN_INPUT_THROW) || !h->inventory_anim_flags)
         twist = 0.0f;
     angular_limit[0] = angular_limit[1] = angular_limit[2] = 0;
     if (d->health[side] < 1.0f) {
@@ -973,7 +973,7 @@ static void drive_arm(Drive *d, int side)
 
 after_arm:
     if (arm.item == -1) {
-        if (h->unknown_58 == 2) {
+        if (h->movement_state == 2) {
             /* lying: the arm follows the pelvis */
             float tilt = crt_asinf(h->bones[HUMAN_BONE_PELVIS].rotation[7]), bend, arm_twist;
             __m128d sine_cosine;
@@ -1002,7 +1002,7 @@ after_arm:
         memcpy(grip_offset, item_type_grip_offset(arm.type, arm.grip), sizeof grip_offset);
         human_hold_item(d->human, 3 * side + HUMAN_BONE_HAND, arm.item, hand_point, grip_offset,
                         item_type_grip_turn(arm.type, arm.both_hands));
-        if (!(h->input_flags & HUMAN_INPUT_20) && h->unknown_6de0 && side == 1 && arm.aimed && d->on_foot)
+        if (!(h->input_flags & HUMAN_INPUT_THROW) && h->inventory_anim_flags && side == 1 && arm.aimed && d->on_foot)
             human_keep_arms_off_item(d->human, arm.item);
     }
 }
@@ -1046,24 +1046,24 @@ void human_drive_ragdoll(int human)
                                  HUMAN_BONE_FOREARM, HUMAN_BONE_SHOULDER + 3, HUMAN_BONE_FOREARM + 3};
     WorldHuman *h = &world_humans[human];
     Drive d = {.human = human, .h = h};
-    if (h->unknown_6de0 && (h->input_flags & HUMAN_INPUT_20))
-        h->unknown_70 = h->unknown_144 * 8.0f;
+    if (h->inventory_anim_flags && (h->input_flags & HUMAN_INPUT_THROW))
+        h->throw_pitch = h->input_spine_bend * 8.0f;
     d.health[0] = 1.0f;
     d.health[1] = 1.0f;
-    if (h->unknown_6d6c < 100)
-        d.health[0] = (float)h->unknown_6d6c * 0.0099999998f;
-    if (h->unknown_6d74 < 100)
-        d.health[1] = (float)h->unknown_6d74 * 0.0099999998f;
-    if (h->unknown_58 == 1 && 0.0f > h->unknown_678c[1])
-        h->unknown_6850 = 0;
+    if (h->parts[HUMAN_PART_LEFT_ARM].health < 100)
+        d.health[0] = (float)h->parts[HUMAN_PART_LEFT_ARM].health * 0.0099999998f;
+    if (h->parts[HUMAN_PART_RIGHT_ARM].health < 100)
+        d.health[1] = (float)h->parts[HUMAN_PART_RIGHT_ARM].health * 0.0099999998f;
+    if (h->movement_state == 1 && 0.0f > h->trunk_velocity[1])
+        h->jump_pose_angle = 0;
 
     /* aiming: an item of an aimed type in hand 0, or else in hand 1 */
     if (h->hands[0].count > 0 && item_type_unknown_10(item_type_of(h->hands[0].items[0])))
         d.aiming = 1;
     else if (h->hands[1].count > 0 && item_type_unknown_10(item_type_of(h->hands[1].items[0])))
         d.aiming = 1;
-    d.lean = h->unknown_60 == 2 ? PI_4 : PI_8;
-    if (h->input_flags & HUMAN_INPUT_2)
+    d.lean = h->zoom_level == 2 ? PI_4 : PI_8;
+    if (h->input_flags & HUMAN_INPUT_AIM)
         d.lean = 0.0f;
     if (!d.aiming)
         d.lean = 0.0f;
@@ -1088,10 +1088,10 @@ void human_drive_ragdoll(int human)
 
     for (unsigned i = 0; i < sizeof driven / sizeof driven[0]; i++)
         physics_constraints[h->bones[driven[i]].bond].has_axis = 0;
-    if (h->unknown_58 == 2)
+    if (h->movement_state == 2)
         set_joint_axes(human, 0.0078125f, 0.03125f);
-    if (h->unknown_78 > 0) {
-        float limit = 0.125f - min_float((float)h->unknown_78 * 0.016666668f, 1.0f) * 0.1171875f;
+    if (h->damage_ticks > 0) {
+        float limit = 0.125f - min_float((float)h->damage_ticks * 0.016666668f, 1.0f) * 0.1171875f;
         set_joint_axes(human, limit, limit * 0.25f);
     }
 }
@@ -1126,6 +1126,31 @@ void human_random_direction(float v[3], float length, float add)
     v[0] = scale * v[0];
     v[1] = scale * v[1];
     v[2] = scale * v[2];
+}
+
+void human_random_direction_2d(float v[2], float length, float add)
+{
+    float x, y, size, scale;
+
+    x = noise();
+    v[0] = x;
+    y = noise();
+    x = v[0];
+    size = sqrt_float(x * x + y * y);
+    if (is_zero_or_nan_quiet(size)) {
+        y = 0.0f;
+        x = 0.0f;
+    } else {
+        float inverse = 1.0f / size;
+
+        y = y * inverse;
+        x = x * inverse;
+    }
+    v[0] = x;
+    v[1] = y;
+    scale = ((noise() + 1.0f) * length) * 0.5f + add;
+    v[1] = scale * v[1];
+    v[0] = scale * v[0];
 }
 
 void human_limit_joint_change(int human, int parent_bone, int child_bone, float bias[3], float limit, float share)
@@ -1210,11 +1235,11 @@ void human_limit_joint_angles(int human, int parent_bone, int child_bone, float 
 void human_aim_hand_target(float target[3], int human, int grip, int item_type, const float rotation[9])
 {
     const WorldHuman *h = &world_humans[human];
-    const float *aim = human_skeleton[HUMAN_BONE_HAND].unknown_34;
+    const float *aim = human_skeleton[HUMAN_BONE_HAND].anchor;
     const float *sight = item_type_floats(item_type, 0x1394), *offset = item_type_grip_offset(item_type, grip);
     float x = aim[0] - 0.0625f, y = aim[1], z = aim[2] - 0.09375f;
 
-    if (h->unknown_6de0 != 1 && h->unknown_60 < 2)
+    if (h->inventory_anim_flags != 1 && h->zoom_level < 2)
         y = y - 0.25f;
     if (h->vehicle != -1)
         y = y + 0.25f;
@@ -1252,7 +1277,7 @@ void human_item_28_hand_target(float target[3], int human, int item)
     gy = ((grip[0] * r[1] + position[1]) + grip[1] * r[4]) + grip[2] * r[7];
 
     set_identity3(m);
-    math_mat3_rotate_rows(m, y_axis, h->unknown_128);
+    math_mat3_rotate_rows(m, y_axis, h->input_turn_yaw);
     x = (m[0] * 0.875f + anchor[0]) + m[3] * 0.5f;
     y = (m[1] * 0.875f + anchor[1]) + m[4] * 0.5f;
     z = (m[2] * 0.875f + anchor[2]) + m[5] * 0.5f;
@@ -1417,14 +1442,14 @@ void human_limb_inverse_kinematics(int human, int parent_bone, int bone, const f
     bias[0] = velocity[0] * 0.5f + bias[0];
     bias[1] = velocity[1] * 0.5f + bias[1];
     bias[2] = velocity[2] * 0.5f + bias[2];
-    if (bone == 10) {                    /* legs: unknown_67c8 / unknown_67d4 are added */
-        bias[0] = bias[0] + h->unknown_67c8[0];
-        bias[1] = h->unknown_67c8[1] + bias[1];
-        bias[2] = h->unknown_67c8[2] + bias[2];
+    if (bone == 10) {                    /* legs: hip_turn[0] / hip_turn[1] are added */
+        bias[0] = bias[0] + h->hip_turn[0][0];
+        bias[1] = h->hip_turn[0][1] + bias[1];
+        bias[2] = h->hip_turn[0][2] + bias[2];
     } else if (bone == 13) {
-        bias[1] = bias[1] + h->unknown_67d4[1];
-        bias[2] = bias[2] + h->unknown_67d4[2];
-        bias[0] = bias[0] + h->unknown_67d4[0];
+        bias[1] = bias[1] + h->hip_turn[1][1];
+        bias[2] = bias[2] + h->hip_turn[1][2];
+        bias[0] = bias[0] + h->hip_turn[1][0];
     }
     if (flags & 0x10) {
         human_limit_joint_change(human, parent_bone, bone, bias, change_limit[0], 1.0f);
@@ -1639,7 +1664,7 @@ void human_keep_arms_off_item(int human, int item)
         }
         if (k >= 2) {
             float back = human_skeleton[bone].length * -0.5f - 0.0625f;
-            float forward = human_skeleton[HUMAN_BONE_HAND].unknown_34[0] - 0.125f;
+            float forward = human_skeleton[HUMAN_BONE_HAND].anchor[0] - 0.125f;
 
             for (int i = 0; i < 3; i++) {
                 float up = b->rotation[3 + i] * 0.0625f;

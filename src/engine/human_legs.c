@@ -23,7 +23,7 @@ static const float up[3] = {0.0f, 1.0f, 0.0f};
    anchor of the thigh along the pelvis's first two rows. */
 static void hip_point(const HumanBone *pelvis, int leg, float hip[3])
 {
-    const float *anchor = human_skeleton[HUMAN_BONE_THIGH - 1 + 3 * leg].unknown_34;
+    const float *anchor = human_skeleton[HUMAN_BONE_THIGH - 1 + 3 * leg].anchor;
 
     hip[0] = (pelvis->rotation[0] * anchor[0] + pelvis->position[0]) + anchor[1] * pelvis->rotation[3];
     hip[1] = (pelvis->rotation[1] * anchor[0] + pelvis->position[1]) + anchor[1] * pelvis->rotation[4];
@@ -37,9 +37,9 @@ static void probe_below(WorldHuman *h)
     HumanBone *pelvis = &h->bones[HUMAN_BONE_PELVIS];
     float reach, to[3];
 
-    if (h->unknown_54)
+    if (h->on_ground)
         return;
-    reach = h->unknown_678c[1] * 16.0f - 0.875f;
+    reach = h->trunk_velocity[1] * 16.0f - 0.875f;
     to[0] = up[0] * reach + pelvis->position[0];
     to[1] = up[1] * reach + pelvis->position[1];
     to[2] = up[2] * reach + pelvis->position[2];
@@ -73,7 +73,7 @@ void human_sit_legs(int human)
     HumanBone *pelvis = &h->bones[HUMAN_BONE_PELVIS];
     float hips[2][3];
 
-    h->unknown_7c = 0;
+    h->standing = 0;
     h->legs[0].state = 0;
     h->legs[1].state = 0;
     hip_point(pelvis, 0, hips[0]);
@@ -120,12 +120,12 @@ void human_lie_legs(int human)
     const float *r = pelvis->rotation;
     float ankles[2][3], hips[2][3];
 
-    h->unknown_7c = 0;
+    h->standing = 0;
     h->legs[0].state = 0;
     h->legs[1].state = 0;
     for (int leg = 0; leg < 2; leg++) {
         const HumanBone *shin = &h->bones[HUMAN_BONE_SHIN + 3 * leg];
-        float length = human_skeleton[HUMAN_BONE_SHIN + 3 * leg].unknown_34[1];
+        float length = human_skeleton[HUMAN_BONE_SHIN + 3 * leg].anchor[1];
 
         for (int k = 0; k < 3; k++)
             ankles[leg][k] = length * shin->rotation[3 + k] + shin->position[k];
@@ -137,7 +137,7 @@ void human_lie_legs(int human)
 
     for (int leg = 0; leg < 2; leg++) {
         HumanLeg *l = &h->legs[leg];
-        const float *v = h->unknown_678c;
+        const float *v = h->trunk_velocity;
         float velocity[3] = {0.0f, 0.0f, 0.0f};
         float wrist_turn[4] = {0.0f, 0.0f, 0.0f, 1.0f};
         float target[3], hip[3], x, y, z, spread, tx, ty, tz;
@@ -167,7 +167,7 @@ void human_lie_legs(int human)
         ty = ((y - r[7] * 0.25f) - r[4] * 0.75f) - r[7] * 0.125f;
         tz = (((z + spread * r[2]) - r[8] * 0.25f) - r[5] * 0.75f) - r[8] * 0.125f;
         /* In the air the feet barely move from where they are. */
-        if (!h->unknown_54) {
+        if (!h->on_ground) {
             float ax = v[0] + ankles[leg][0], ay = v[1] + ankles[leg][1], az = v[2] + ankles[leg][2];
             tx = (tx - ax) * 0.015625f + ax;
             ty = (ty - ay) * 0.015625f + ay;
@@ -224,7 +224,7 @@ static void follow_foot(WorldHuman *h, int leg)
 
     if (l->state != LEG_PLANTED)
         return;
-    if (!foot->unknown_130)
+    if (!foot->ground_bond_count)
         l->contact = 0.0f;
     dx = foot->position[0] - l->planted[0];
     dz = foot->position[2] - l->planted[2];
@@ -268,7 +268,7 @@ static void land_step(int human, int leg)
         l->planted[0] = foot->position[0];
         l->planted[2] = foot->position[2];
         l->planted[1] = 0.03125f;
-        l->yaw = h->unknown_98;
+        l->yaw = h->view_yaw;
     }
 }
 
@@ -277,7 +277,7 @@ static void count_air_ticks(WorldHuman *h, int leg)
 {
     HumanLeg *l = &h->legs[leg];
 
-    if (!h->bones[HUMAN_BONE_FOOT + 3 * leg].unknown_130 && l->state == LEG_PLANTED) {
+    if (!h->bones[HUMAN_BONE_FOOT + 3 * leg].ground_bond_count && l->state == LEG_PLANTED) {
         l->air_ticks++;
         if (l->air_ticks >= 30)
             l->state = LEG_LOOSE;
@@ -294,7 +294,7 @@ static void count_ground_contact(WorldHuman *h, int leg)
         return;
     if (!(l->contact >= 1.0f))
         l->contact = l->contact + 0.5f;
-    if (!h->bones[HUMAN_BONE_FOOT + 3 * leg].unknown_130)
+    if (!h->bones[HUMAN_BONE_FOOT + 3 * leg].ground_bond_count)
         l->contact = 0.0f;
 }
 
@@ -342,37 +342,37 @@ void human_plan_steps(int human, const float from[2][3], const float to[2][3])
 
     /* A loose leg whose foot touches the ground while the body is not
        rising is planted. */
-    if (h->legs[0].state == LEG_LOOSE && 0.033333335f > h->centre_velocity[1] && foot0->unknown_130 > 0)
+    if (h->legs[0].state == LEG_LOOSE && 0.033333335f > h->centre_velocity[1] && foot0->ground_bond_count > 0)
         plant_foot(h, 0);
-    if (h->legs[1].state == LEG_LOOSE && 0.033333335f > h->centre_velocity[1] && foot1->unknown_130 > 0)
+    if (h->legs[1].state == LEG_LOOSE && 0.033333335f > h->centre_velocity[1] && foot1->ground_bond_count > 0)
         plant_foot(h, 1);
 
     /* Standing but tipped over: the legs go loose, and once the body lies
        still on the ground the human is in state 5. */
-    if (h->unknown_58 == HUMAN_STATE_STAND && 0.5f > h->unknown_6768) {
-        h->unknown_6734 = 0;
+    if (h->movement_state == HUMAN_STATE_STAND && 0.5f > h->smoothed_rotation[4]) {
+        h->jump_charge = 0;
         h->legs[0].state = LEG_LOOSE;
         h->legs[1].state = LEG_LOOSE;
-        if (h->unknown_54) {
+        if (h->on_ground) {
             float speed = sqrt_float((h->centre_velocity[0] * h->centre_velocity[0]
                                       + h->centre_velocity[1] * h->centre_velocity[1])
                                      + h->centre_velocity[2] * h->centre_velocity[2]);
             if (!(speed >= 0.0083333338f))
-                h->unknown_58 = HUMAN_STATE_5;
+                h->movement_state = HUMAN_STATE_5;
         }
     }
 
     /* One foot planted and the other touching: plant it too. */
-    if (h->legs[0].state == LEG_LOOSE && h->legs[1].state == LEG_PLANTED && foot1->unknown_130)
+    if (h->legs[0].state == LEG_LOOSE && h->legs[1].state == LEG_PLANTED && foot1->ground_bond_count)
         plant_foot(h, 0);
-    if (h->legs[1].state == LEG_LOOSE && h->legs[0].state == LEG_PLANTED && foot0->unknown_130)
+    if (h->legs[1].state == LEG_LOOSE && h->legs[0].state == LEG_PLANTED && foot0->ground_bond_count)
         plant_foot(h, 1);
 
-    /* State 5: getting up needs HUMAN_INPUT_8; the foot further from the
+    /* State 5: getting up needs HUMAN_INPUT_CROUCH; the foot further from the
        centre steps first, and ten ticks upright end the state. */
-    if (h->unknown_58 == HUMAN_STATE_5) {
-        h->unknown_6734 = 0;
-        if (!(h->input_flags & HUMAN_INPUT_8)) {
+    if (h->movement_state == HUMAN_STATE_5) {
+        h->jump_charge = 0;
+        if (!(h->input_flags & HUMAN_INPUT_CROUCH)) {
             h->legs[0].state = LEG_LOOSE;
             h->legs[1].state = LEG_LOOSE;
         } else {
@@ -384,12 +384,12 @@ void human_plan_steps(int human, const float from[2][3], const float to[2][3])
             if (h->legs[0].state == LEG_LOOSE && h->legs[1].state == LEG_LOOSE)
                 start_step(h, off0 > off1, from, to);
         }
-        if (0.5f >= h->unknown_6768) {
-            h->unknown_5c = 0;
+        if (0.5f >= h->smoothed_rotation[4]) {
+            h->stand_up_ticks = 0;
         } else {
-            h->unknown_5c++;
-            if (h->unknown_5c >= 10)
-                h->unknown_58 = HUMAN_STATE_STAND;
+            h->stand_up_ticks++;
+            if (h->stand_up_ticks >= 10)
+                h->movement_state = HUMAN_STATE_STAND;
         }
     }
 
@@ -503,7 +503,7 @@ void human_swing_step(int human, int leg, const float hip_target[3], const float
     ez = z - hip_target[2];
     ey = (float)((double)ground - crt_sin((double)l->pitch) * 0.25) - hip_target[1];
     l->progress = l->progress + 0.050000001f;
-    if (h->unknown_58 != HUMAN_STATE_5)
+    if (h->movement_state != HUMAN_STATE_5)
         l->progress = l->progress + 0.033333335f;
     t = min_float(l->progress, 1.0f);
     u = 1.0f - t;
@@ -521,8 +521,8 @@ void human_swing_step(int human, int leg, const float hip_target[3], const float
                   + ((u * l->start[1]) * (u * u));
     l->swing[2] = (((((ez * 3.0f) * u + ez * t) * t) + ((kick * axes[8] + l->start[2]) * 3.0f) * (u * u)) * t)
                   + ((u * l->start[2]) * (u * u));
-    l->swing[0] = (l->swing[0] + hip_target[0]) + h->unknown_6890[0];
-    l->swing[1] = h->unknown_6890[1] + (l->swing[1] + hip_target[1]);
-    l->swing[2] = h->unknown_6890[2] + (l->swing[2] + hip_target[2]);
+    l->swing[0] = (l->swing[0] + hip_target[0]) + h->step_offset[0];
+    l->swing[1] = h->step_offset[1] + (l->swing[1] + hip_target[1]);
+    l->swing[2] = h->step_offset[2] + (l->swing[2] + hip_target[2]);
     l->contact = 0.0f;
 }

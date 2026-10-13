@@ -35,7 +35,7 @@ static void heading_axes(float m[9], float yaw)
 
 static void hip_point(const HumanBone *pelvis, int leg, float hip[3])
 {
-    const float *anchor = human_skeleton[HUMAN_BONE_THIGH - 1 + 3 * leg].unknown_34;
+    const float *anchor = human_skeleton[HUMAN_BONE_THIGH - 1 + 3 * leg].anchor;
 
     hip[0] = (pelvis->rotation[0] * anchor[0] + pelvis->position[0]) + anchor[1] * pelvis->rotation[3];
     hip[1] = (pelvis->rotation[1] * anchor[0] + pelvis->position[1]) + anchor[1] * pelvis->rotation[4];
@@ -131,7 +131,7 @@ void human_launch_jump(int human)
     static const uint32_t angular_limit[3] = {0x3D800000, 0x3D800000, 0x3D800000};      /* 1/16 as floats */
     WorldHuman *h = &world_humans[human];
     HumanBone *pelvis = &h->bones[HUMAN_BONE_PELVIS];
-    const float *v = h->unknown_678c;
+    const float *v = h->trunk_velocity;
     const float *r = h->smoothed_rotation;
     float ankles[2][3], hips[2][3], targets[2][3], turns[2][3];
     float axes[9], wanted[9], q[4], kept[4], turn_q[4];
@@ -141,15 +141,15 @@ void human_launch_jump(int human)
 
     for (int leg = 0; leg < 2; leg++) {
         const HumanBone *shin = &h->bones[HUMAN_BONE_SHIN + 3 * leg];
-        float shin_length = human_skeleton[HUMAN_BONE_SHIN + 3 * leg].unknown_34[1];
+        float shin_length = human_skeleton[HUMAN_BONE_SHIN + 3 * leg].anchor[1];
 
         for (int k = 0; k < 3; k++)
             ankles[leg][k] = shin_length * shin->rotation[3 + k] + shin->position[k];
     }
     hip_point(pelvis, 0, hips[0]);
     hip_point(pelvis, 1, hips[1]);
-    heading_axes(axes, h->unknown_98);
-    heading_axes(wanted, h->unknown_98);
+    heading_axes(axes, h->view_yaw);
+    heading_axes(wanted, h->view_yaw);
 
     /* The walk point moves on and is put at standing height above the
        ground under the centre. */
@@ -272,7 +272,7 @@ void human_launch_jump(int human)
 
         /* A planted foot off the ground, or the push-off over: the hip
            just goes on with the body. */
-        if (l->state == LEG_PLANTED && !foot->unknown_130) {
+        if (l->state == LEG_PLANTED && !foot->ground_bond_count) {
             for (int k = 0; k < 3; k++) {
                 targets[leg][k] = hips[leg][k] + v[k];
                 turns[leg][k] = 0.0f;
@@ -285,7 +285,7 @@ void human_launch_jump(int human)
             }
         }
 
-        heading_axes(box, h->unknown_98);
+        heading_axes(box, h->view_yaw);
         math_mat3_rotate_rows(box, &box[0], -l->pitch);
         math_mat3_multiply_transposed(box, box, pelvis->rotation);
         math_quat_from_mat3(wrist_turn, box);
@@ -299,7 +299,7 @@ void human_launch_jump(int human)
             target[2] = ankles[leg][2] - targets[leg][2];
             change_limit[0] = change_limit[1] = change_limit[2] = as_float(0x3E96CBE4);
             unknown_8c[0] = unknown_8c[1] = unknown_8c[2] = 0x3F700000;                 /* 15/16 */
-            if (!foot->unknown_130) {
+            if (!foot->ground_bond_count) {
                 target[0] = ankles[leg][0] - hips[leg][0];
                 target[1] = ankles[leg][1] - hips[leg][1];
                 target[2] = ankles[leg][2] - hips[leg][2];
@@ -336,18 +336,18 @@ void human_launch_jump(int human)
     /* Off the ground. The spin comes from two values kept when the jump
        began (within 1/2 and 3/4), an eighth of each about the heading's
        first two rows. */
-    h->unknown_68b4 = h->legs[0].state == LEG_PLANTED;
-    h->unknown_58 = HUMAN_STATE_FALL;
-    side = max_float(as_float(h->unknown_6740), -0.5f);
+    h->push_leg = h->legs[0].state == LEG_PLANTED;
+    h->movement_state = HUMAN_STATE_FALL;
+    side = max_float(as_float(h->jump_side), -0.5f);
     h->legs[0].state = LEG_LOOSE;
     h->legs[1].state = LEG_LOOSE;
     if (side > 0.5f)
         side = 0.5f;
-    forward = max_float(as_float(h->unknown_6744), -0.75f);
-    h->unknown_6740 = as_bits(side);
+    forward = max_float(as_float(h->jump_forward), -0.75f);
+    h->jump_side = as_bits(side);
     if (forward > 0.75f)
         forward = 0.75f;
-    h->unknown_6744 = as_bits(forward);
+    h->jump_forward = as_bits(forward);
     side = side * 0.125f;
     forward = forward * 0.125f;
     spin[0] = forward * axes[3] + side * axes[0];
@@ -355,11 +355,11 @@ void human_launch_jump(int human)
     spin[2] = forward * axes[5] + side * axes[2];
 
     /* The longer the jump was held, the higher. */
-    if (h->unknown_6734 < 8)
+    if (h->jump_charge < 8)
         speed = 0.033333335f;
-    else if (h->unknown_6734 < 16)
+    else if (h->jump_charge < 16)
         speed = 0.050000001f;
-    else if (h->unknown_6734 < 24)
+    else if (h->jump_charge < 24)
         speed = 0.06666667f;
     else
         speed = 0.083333336f;
@@ -368,13 +368,13 @@ void human_launch_jump(int human)
     velocity[1] = lift + v[1];
     velocity[2] = v[2];
     launch_bodies(h, velocity, spin);
-    h->unknown_678c[1] = lift * 3.0f + h->unknown_678c[1];
+    h->trunk_velocity[1] = lift * 3.0f + h->trunk_velocity[1];
     for (int hand = 0; hand < 2; hand++) {
         if (h->hands[hand].count > 0) {
             PhysicsBody *body = &physics_bodies[world_items[h->hands[hand].items[0]].body];
             body->velocity[1] = lift + body->velocity[1];
         }
     }
-    h->unknown_6734 = 0;
-    h->unknown_6850 = 0x3FC90FDB;        /* pi / 2 as a float */
+    h->jump_charge = 0;
+    h->jump_pose_angle = 0x3FC90FDB;        /* pi / 2 as a float */
 }

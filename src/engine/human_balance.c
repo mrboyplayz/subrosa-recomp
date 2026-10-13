@@ -50,13 +50,13 @@ void human_balance_on_leg(int human, int leg, float target[3], float turn[3], co
     float dx, dy, dz, length, toward_x, toward_z, vx, vy, vz, lift;
     float q[4], kept[4], turn_q[4], ax, ay, az, angle, wx, wy, wz;
     float push_x, push_y, push_z, rx, ry, rz, cx, cy, cz, along;
-    float *hip_turn = leg ? h->unknown_67d4 : h->unknown_67c8;
+    float *hip_turn = leg ? h->hip_turn[1] : h->hip_turn[0];
     const float *r = h->smoothed_rotation;
     double half;
 
-    /* A hurt body (unknown_78 counting down) is steered more weakly. */
-    if (h->unknown_78 > 0) {
-        float weak = 1.0f - min_float((float)h->unknown_78 * 0.033333335f, 1.0f);
+    /* A hurt body (damage_ticks counting down) is steered more weakly. */
+    if (h->damage_ticks > 0) {
+        float weak = 1.0f - min_float((float)h->damage_ticks * 0.033333335f, 1.0f);
         change_limit = change_limit * weak;
         turn_change_limit = turn_change_limit * weak;
         turn_limit = weak * 0.25f;
@@ -193,7 +193,7 @@ void human_balance_on_leg(int human, int leg, float target[3], float turn[3], co
     /* This leg's share; a foot without ground contact lifts less. */
     push_x = push_x * share;
     push_z = push_z * share;
-    if (!h->bones[HUMAN_BONE_FOOT + 3 * leg].unknown_130)
+    if (!h->bones[HUMAN_BONE_FOOT + 3 * leg].ground_bond_count)
         push_y = push_y * (share * 0.75f + 0.25f);
 
     /* Where the hip is sent: on with the walk velocity and the push, and

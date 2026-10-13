@@ -407,7 +407,7 @@ __int64 sub_1401597F0()
           if ( v27 == 3 )
           {
             *(_QWORD *)&v72 = dword_140404A6C[v1 + 432826982];
-            if ( *(float *)&v72 > 0.0041666669 )
+            if ( *(float *)&v72 > 0.004166666883975267 )
               sub_14012BD30(
                 ((intptr_t)dword_140404A6C - 0x404a6cLL) + 148LL * v0 + 1735521200,
                 (float *)&dword_140404A6C[37 * v0 + 432826979],
@@ -480,7 +480,7 @@ __int64 sub_1401597F0()
               v95 = &dword_140404A6C[v1 + 432826961];
               dword_140404A6C[v1 + 432826969] = v92;
               v96 = &dword_140404A6C[v1 + 432826962];
-              if ( fabs(*(float *)&v76) >= 0.70700002 )
+              if ( fabs(*(float *)&v76) >= 0.7070000171661377 )
               {
                 v97 = dword_1402F617C;
                 v98 = dword_1402F6178;
@@ -563,7 +563,7 @@ __int64 sub_1401597F0()
                   v123 = rand();
                   sub_14007B2A0(
                     (__int64)&dword_140404A6C[v73 + 432826961],
-                    (float *)&dword_140404A6C[v73 + 432826967], sr_export_float_lane_container(sr_text_float_bits((float)((float)v123 * 0.01227184630308594))) /* the original converts to float (cvtsd2ss) before this call */);
+                    (float *)&dword_140404A6C[v73 + 432826967], sr_export_float_lane_container(sr_text_float_bits((float)((float)v123 * 0.012271846303085938))) /* the original converts to float (cvtsd2ss) before this call */);
                   v124 = *(float *)&dword_140404A6C[v1 + 432826984];
                   v125 = *(float *)&dword_140404A6C[v1 + 432826952];
                   v126 = -v124;
@@ -723,3 +723,120 @@ __int64 sub_1401597F0()
 #undef v193
 #undef v194
 #undef v200
+
+//----- (000000014005EE40) ----------------------------------------------------
+__int64            sub_14005EE40(unsigned int a1, unsigned int *a2, float *a3, float a4)
+{
+  unsigned int v4; // esi
+  __int64 v6; // rbx
+  unsigned int v7; // xmm0_4
+  float *v8; // rdi
+  float *v9; // rbp
+  int v10; // xmm3_4
+  int v11; // xmm2_4
+  int v12; // xmm1_4
+  float *v13; // rdx
+
+  v4 = dword_140404A6C[433435845];
+  if ( (int)dword_140404A6C[433435845] >= 0x4000 )
+    return 0xFFFFFFFFLL;
+  v6 = 37LL * (int)dword_140404A6C[433435845];
+  dword_140404A6C[v6 + 432826949] = a1;
+  dword_140404A6C[v6 + 432826952] = *a2;
+  dword_140404A6C[v6 + 432826953] = a2[1];
+  dword_140404A6C[v6 + 432826954] = a2[2];
+  if ( a3 )
+  {
+    dword_140404A6C[v6 + 432826955] = *(_DWORD *)a3;
+    dword_140404A6C[v6 + 432826956] = *((_DWORD *)a3 + 1);
+    v7 = *((_DWORD *)a3 + 2);
+  }
+  else
+  {
+    *(_QWORD *)&dword_140404A6C[v6 + 432826955] = 0;
+    v7 = 0;
+  }
+  dword_140404A6C[v6 + 432826957] = v7;
+  if ( a1 )
+  {
+    switch ( a1 )
+    {
+      case 1u:
+        dword_140404A6C[v6 + 432826950] = 0xFFFF;
+        *(float *)&dword_140404A6C[v6 + 432826984] = a4 * 0.25;
+        *(float *)&dword_140404A6C[v6 + 432826985] = a4 * 0.5;
+        dword_140404A6C[v6 + 432826951] = 993158992;
+        dword_140404A6C[v6 + 432826983] = 1065311273;
+        break;
+      case 2u:
+        dword_140404A6C[v6 + 432826950] = 60;
+        *(float *)&dword_140404A6C[v6 + 432826984] = a4;
+        *(float *)&dword_140404A6C[v6 + 432826985] = a4;
+        dword_140404A6C[v6 + 432826951] = 993158992;
+        dword_140404A6C[v6 + 432826983] = 1064933786;
+        break;
+      case 5u:
+        *(_QWORD *)&dword_140404A6C[v6 + 432826950] = 3;
+        *(float *)&dword_140404A6C[v6 + 432826984] = a4;
+        *(float *)&dword_140404A6C[v6 + 432826985] = a4;
+        dword_140404A6C[v6 + 432826983] = 1063256064;
+        break;
+    }
+  }
+  else
+  {
+    *(_QWORD *)&dword_140404A6C[v6 + 432826950] = 0xFFFF;
+    *(float *)&dword_140404A6C[v6 + 432826984] = a4;
+    *(float *)&dword_140404A6C[v6 + 432826985] = a4;
+    dword_140404A6C[v6 + 432826983] = 0;
+    v8 = (float *)&dword_140404A6C[v6 + 432826949];
+    sub_14007A240((__int64)&dword_140404A6C[v6 + 432826967], a3);
+    v9 = (float *)&dword_140404A6C[v6 + 432826949];
+    if ( fabs(*(float *)&dword_140404A6C[v6 + 432826968]) >= 0.7070000171661377 )
+    {
+      v10 = dword_1402F617C;
+      v11 = dword_1402F6180;
+      v9[12] = (float)(*(float *)&dword_1402F617C * v8[20]) - (float)(*(float *)&dword_1402F6180 * v8[19]);
+      v12 = dword_1402F6178;
+    }
+    else
+    {
+      v10 = dword_1402F618C;
+      v11 = dword_1402F6190;
+      v9[12] = (float)(*(float *)&dword_1402F618C * v8[20]) - (float)(*(float *)&dword_1402F6190 * v8[19]);
+      v12 = dword_1402F6188;
+    }
+    v9[13] = (float)(*(float *)&v11 * v8[18]) - (float)(*(float *)&v12 * v8[20]);
+    v9[14] = (float)(*(float *)&v12 * v8[19]) - (float)(*(float *)&v10 * v8[18]);
+    sub_14007A240((__int64)(v9 + 12), v9 + 12);
+    v13 = (float *)&dword_140404A6C[v6 + 432826964];
+    *v13 = (float)(v8[19] * v9[14]) - (float)(v8[20] * v9[13]);
+    v13[1] = (float)(v9[12] * v8[20]) - (float)(v9[14] * v8[18]);
+    v13[2] = (float)(v9[13] * v8[18]) - (float)(v9[12] * v8[19]);
+    sub_14007A240((__int64)v13, v13);
+    *(float *)&dword_140404A6C[v6 + 432826952] = (float)(v8[18] * 0.015625) + *(float *)&dword_140404A6C[v6 + 432826952];
+    *(float *)&dword_140404A6C[v6 + 432826953] = (float)(v8[19] * 0.015625) + *(float *)&dword_140404A6C[v6 + 432826953];
+    *(float *)&dword_140404A6C[v6 + 432826954] = (float)(v8[20] * 0.015625) + *(float *)&dword_140404A6C[v6 + 432826954];
+  }
+  dword_140404A6C[433435845] = v4 + 1;
+  return v4;
+}
+
+// 1402F6178: using guessed type int dword_1402F6178;
+// 1402F617C: using guessed type int dword_1402F617C;
+// 1402F6180: using guessed type int dword_1402F6180;
+// 1402F6188: using guessed type int dword_1402F6188;
+// 1402F618C: using guessed type int dword_1402F618C;
+// 1402F6190: using guessed type int dword_1402F6190;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 1A7971D80: using guessed type unsigned int;
+
+//----- (000000014005F150) ----------------------------------------------------
+__int64            sub_14005F150(unsigned int a1, unsigned int *a2, unsigned int *a3, float *a4)
+{
+  /* Clean implementation: src/engine/world_particles.c, checked against the original executable
+     (tools/native-compare suite particles). */
+  extern int world_spawn_particle(int type, const float *position, const float *velocity, const float *rotation);
+  return (unsigned int)world_spawn_particle((int)a1, (const float *)a2, (const float *)a3, a4);
+}
+

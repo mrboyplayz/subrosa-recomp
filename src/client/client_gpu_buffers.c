@@ -63,12 +63,12 @@ __int64 sub_1400817C0()
             COERCE_UNSIGNED_INT((float)(v4)) /* native XMM2 width = XMM8 */,
             (float)v11[1] * v3,
             8,
-            COERCE_INT((float)(0.5 - (float)((float)((v13 * v13 - 771171059) & 0x7FFFFFFF) * 4.6566129e-10)) + 0.5f),
-            COERCE_INT((float)(0.5 - (float)(v15 * 4.6566129e-10)) + 0.5f),
+            COERCE_INT((float)(0.5 - (float)((float)((v13 * v13 - 771171059) & 0x7FFFFFFF) * 4.656612873077393e-10)) + 0.5f),
+            COERCE_INT((float)(0.5 - (float)(v15 * 4.656612873077393e-10)) + 0.5f),
             COERCE_INT(
               (float)(0.5
                     - (float)((float)(((15731 * v16 + 789221) * (15731 * v16 + 789221) - 771171059) & 0x7FFFFFFF)
-                            * 4.6566129e-10))
+                            * 4.656612873077393e-10))
             + 0.5f),
             1065353216);
           ++v10;

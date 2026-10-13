@@ -70,6 +70,62 @@ void world_update_vehicle_bounds(void)
     }
 }
 
+/* Takes a vehicle out of the world: frees its points, wheel and hull
+   bodies, takes humans out, drops the traffic cars' and the type 27 items'
+   references to it and, when connected, records event 4 with its position. */
+static void remove_vehicle(int index, int32_t traffic_cars, int32_t connected, int32_t tick)
+{
+    PhysicsVehicle *vehicle = &physics_vehicles[index];
+    int32_t wheels;
+
+    for (int i = 0; i < world_vehicle_point_count(index); i++)
+        physics_points[world_vehicle_points(index)[i]].lifetime = 0;
+    for (int h = 0; h < WORLD_HUMAN_CAPACITY; h++) {
+        if (world_humans[h].active && world_humans[h].vehicle == index)
+            world_humans[h].vehicle = -1;
+    }
+    for (int i = 0; i < traffic_cars; i++) {
+        if (world_unknown_15fd16260_vehicle(i) == index)
+            world_unknown_15fd16260_vehicle(i) = -1;
+    }
+
+    wheels = world_vehicle_wheel_count(index);
+    vehicle->active = 0;
+    for (int w = 0; w < wheels; w++) {
+        uint32_t body = (uint32_t)world_vehicle_wheel_body(index, w);
+        if (body < PHYSICS_BODY_CAPACITY)
+            physics_bodies[body].active = 0;
+    }
+    if ((uint32_t)vehicle->body < PHYSICS_BODY_CAPACITY)
+        physics_bodies[vehicle->body].active = 0;
+
+    for (int i = 0; i < WORLD_ITEM_CAPACITY; i++) {
+        WorldItem *item = &world_items[i];
+        if (item->active && item->type == WORLD_ITEM_TYPE_27 && world_item_vehicle(i) == index) {
+            item->lifetime = 0;
+            world_item_vehicle(i) = -1;
+        }
+    }
+
+    if (connected) {
+        int32_t count = world_event_count;
+        WorldEvent *event = &world_events[count];
+
+        event->type = WORLD_EVENT_VEHICLE_REMOVED;
+        event->tick = tick;
+        event->a = index;
+        event->b = 3;
+        event->c = 0;
+        event->vector_a[0] = vehicle->position[0];
+        event->vector_a[1] = vehicle->position[1];
+        event->vector_a[2] = vehicle->position[2];
+        world_event_count = (count + 1) & 0xFFFF;
+        event->vector_b[0] = 0.0f;
+        event->vector_b[1] = 0.0f;
+        event->vector_b[2] = 0.0f;
+    }
+}
+
 void world_expire_vehicles(void)
 {
     /* Read once, before any vehicle is removed. */
@@ -88,51 +144,38 @@ void world_expire_vehicles(void)
             world_vehicle_lifetime(index) = ticks = subtract_int(ticks, 1);
         if (ticks > 0)
             continue;
+        remove_vehicle(index, unknown_count, connected, tick);
+    }
+}
 
-        for (int i = 0; i < world_vehicle_point_count(index); i++)
-            physics_points[world_vehicle_points(index)[i]].lifetime = 0;
-        for (int h = 0; h < WORLD_HUMAN_CAPACITY; h++) {
-            if (world_humans[h].active && world_humans[h].vehicle == index)
-                world_humans[h].vehicle = -1;
-        }
-        for (int i = 0; i < unknown_count; i++) {
-            if (world_unknown_15fd16260_vehicle(i) == index)
-                world_unknown_15fd16260_vehicle(i) = -1;
-        }
+void world_remove_vehicle(int vehicle)
+{
+    if ((uint32_t)vehicle >= PHYSICS_VEHICLE_CAPACITY)
+        return;
+    remove_vehicle(vehicle, world_unknown_15fd16260_count, game_connected, game_tick);
+}
 
-        vehicle->active = 0;
-        for (int w = 0; w < world_vehicle_wheel_count(index); w++) {
-            uint32_t body = (uint32_t)world_vehicle_wheel_body(index, w);
-            if (body < PHYSICS_BODY_CAPACITY)
-                physics_bodies[body].active = 0;
-        }
-        if ((uint32_t)vehicle->body < PHYSICS_BODY_CAPACITY)
-            physics_bodies[vehicle->body].active = 0;
+void world_vehicle_spin_from_points(int vehicle, const float origin[3])
+{
+    PhysicsVehicle *body = &physics_vehicles[vehicle];
+    float spin[3] = { 0.0f, 0.0f, 0.0f };
 
-        for (int i = 0; i < WORLD_ITEM_CAPACITY; i++) {
-            WorldItem *item = &world_items[i];
-            if (item->active && item->type == WORLD_ITEM_TYPE_27 && world_item_vehicle(i) == index) {
-                item->lifetime = 0;
-                world_item_vehicle(i) = -1;
-            }
-        }
+    body->angular_velocity[0] = 0.0f;
+    body->angular_velocity[1] = 0.0f;
+    body->angular_velocity[2] = 0.0f;
+    for (int i = 0; i < world_vehicle_point_count(vehicle); i++) {
+        const PhysicsPoint *point = &physics_points[world_vehicle_points(vehicle)[i]];
+        float x = point->position[0] - origin[0];
+        float z = point->position[2] - origin[2];
+        float y = point->position[1] - origin[1];
 
-        if (connected) {
-            int32_t count = world_event_count;
-            WorldEvent *event = &world_events[count];
+        for (int axis = 0; axis < 3; axis++) {
+            const float *row = &body->rotation[3 * axis];
 
-            event->type = WORLD_EVENT_VEHICLE_REMOVED;
-            event->tick = tick;
-            event->a = index;
-            event->b = 3;
-            event->c = 0;
-            event->vector_a[0] = vehicle->position[0];
-            event->vector_a[1] = vehicle->position[1];
-            event->vector_a[2] = vehicle->position[2];
-            world_event_count = (count + 1) & 0xFFFF;
-            event->vector_b[0] = 0.0f;
-            event->vector_b[1] = 0.0f;
-            event->vector_b[2] = 0.0f;
+            spin[axis] = spin[axis]
+                + (((row[0] * z - row[2] * x) * point->velocity[1] + (row[2] * y - row[1] * z) * point->velocity[0])
+                   + (row[1] * x - row[0] * y) * point->velocity[2]);
+            body->angular_velocity[axis] = spin[axis];
         }
     }
 }

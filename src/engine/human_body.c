@@ -21,9 +21,9 @@ static void create_joint(int human, int parent, int child)
     float anchor[3];
     int bond;
 
-    anchor[0] = human_skeleton[child - 1].unknown_34[0];
-    anchor[1] = human_skeleton[child - 1].unknown_34[1];
-    anchor[2] = human_skeleton[child - 1].unknown_34[2];
+    anchor[0] = human_skeleton[child - 1].anchor[0];
+    anchor[1] = human_skeleton[child - 1].anchor[1];
+    anchor[2] = human_skeleton[child - 1].anchor[2];
     bond = sub_140055FA0(human, parent, child, anchor);
     if (bond != -1)
         world_humans[human].bones[child].bond = bond;
@@ -99,9 +99,9 @@ void human_update_centre(int human)
 
     /* Their velocity, smoothed, and relative to the ground stood on. */
     trunk_mean(h, __builtin_offsetof(HumanBone, velocity), mean);
-    halve_toward(h->unknown_678c, mean);
+    halve_toward(h->trunk_velocity, mean);
     for (int k = 0; k < 3; k++)
-        h->centre_velocity[k] = h->unknown_678c[k] - h->ground_velocity[k];
+        h->centre_velocity[k] = h->trunk_velocity[k] - h->ground_velocity[k];
 
     trunk_mean(h, __builtin_offsetof(HumanBone, angular_velocity), mean);
     halve_toward(h->smoothed_angular_velocity, mean);

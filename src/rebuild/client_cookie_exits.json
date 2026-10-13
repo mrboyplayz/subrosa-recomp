@@ -3,7 +3,7 @@
   "0x14000B950": {
    "function": "0x14000B950",
    "name": "sub_14000B950",
-   "file": "client_recovery_000000.c",
+   "file": "client_blocks.c",
    "exits": 2,
    "epilogues": [
     {
@@ -46,7 +46,7 @@
   "0x140028790": {
    "function": "0x140028790",
    "name": "sub_140028790",
-   "file": "client_recovery_020000.c",
+   "file": "client_city.c",
    "exits": 1,
    "epilogues": [
     {
@@ -74,7 +74,7 @@
   "0x14002EFF0": {
    "function": "0x14002EFF0",
    "name": "sub_14002EFF0",
-   "file": "client_recovery_020000.c",
+   "file": "client_humans.c",
    "exits": 1,
    "epilogues": [
     {
@@ -102,7 +102,7 @@
   "0x14002FA00": {
    "function": "0x14002FA00",
    "name": "sub_14002FA00",
-   "file": "client_recovery_020000.c",
+   "file": "client_renderer.c",
    "exits": 3,
    "epilogues": [
     {
@@ -145,7 +145,7 @@
   "0x140033B50": {
    "function": "0x140033B50",
    "name": "sub_140033B50",
-   "file": "client_recovery_020000.c",
+   "file": "client_collision.c",
    "exits": 1,
    "epilogues": [
     {
@@ -168,7 +168,7 @@
   "0x140045420": {
    "function": "0x140045420",
    "name": "sub_140045420",
-   "file": "client_recovery_040000.c",
+   "file": "client_vehicles.c",
    "exits": 1,
    "epilogues": [
     {
@@ -241,7 +241,7 @@
   "0x1400462B0": {
    "function": "0x1400462B0",
    "name": "sub_1400462B0",
-   "file": "client_recovery_040000.c",
+   "file": "client_vehicles.c",
    "exits": 1,
    "epilogues": [
     {
@@ -279,7 +279,7 @@
   "0x14004A130": {
    "function": "0x14004A130",
    "name": "sub_14004A130",
-   "file": "client_recovery_040000.c",
+   "file": "client_collision.c",
    "exits": 1,
    "epilogues": [
     {
@@ -302,7 +302,7 @@
   "0x14004BFC0": {
    "function": "0x14004BFC0",
    "name": "sub_14004BFC0",
-   "file": "client_recovery_040000.c",
+   "file": "client_collision.c",
    "exits": 1,
    "epilogues": [
     {
@@ -345,7 +345,7 @@
   "0x14004CCB0": {
    "function": "0x14004CCB0",
    "name": "sub_14004CCB0",
-   "file": "client_recovery_040000.c",
+   "file": "client_terminal.c",
    "exits": 3,
    "epilogues": [
     {
@@ -393,7 +393,7 @@
   "0x14004D390": {
    "function": "0x14004D390",
    "name": "sub_14004D390",
-   "file": "client_recovery_040000.c",
+   "file": "client_vehicles.c",
    "exits": 3,
    "epilogues": [
     {
@@ -449,7 +449,7 @@
   "0x14005A990": {
    "function": "0x14005A990",
    "name": "sub_14005A990",
-   "file": "client_recovery_040000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -492,7 +492,7 @@
   "0x14005D550": {
    "function": "0x14005D550",
    "name": "sub_14005D550",
-   "file": "client_recovery_040000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -540,7 +540,7 @@
   "0x14005E860": {
    "function": "0x14005E860",
    "name": "sub_14005E860",
-   "file": "client_recovery_040000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -623,7 +623,7 @@
   "0x14006BDC0": {
    "function": "0x14006BDC0",
    "name": "sub_14006BDC0",
-   "file": "client_recovery_060000.c",
+   "file": "client_ui.c",
    "exits": 2,
    "epilogues": [
     {
@@ -651,7 +651,7 @@
   "0x14006ECE0": {
    "function": "0x14006ECE0",
    "name": "sub_14006ECE0",
-   "file": "client_recovery_060000.c",
+   "file": "client_blocks.c",
    "exits": 1,
    "epilogues": [
     {
@@ -674,7 +674,7 @@
   "0x140070BD0": {
    "function": "0x140070BD0",
    "name": "sub_140070BD0",
-   "file": "client_recovery_060000.c",
+   "file": "client_widgets.c",
    "exits": 1,
    "epilogues": [
     {
@@ -697,7 +697,7 @@
   "0x1400784C0": {
    "function": "0x1400784C0",
    "name": "sub_1400784C0",
-   "file": "client_recovery_060000.c",
+   "file": "client_vehicles.c",
    "exits": 1,
    "epilogues": [
     {
@@ -748,7 +748,7 @@
   "0x1400808E0": {
    "function": "0x1400808E0",
    "name": "sub_1400808E0",
-   "file": "client_recovery_080000.c",
+   "file": "client_hud.c",
    "exits": 1,
    "epilogues": [
     {
@@ -816,7 +816,7 @@
   "0x1400814D0": {
    "function": "0x1400814D0",
    "name": "sub_1400814D0",
-   "file": "client_recovery_080000.c",
+   "file": "client_hud.c",
    "exits": 1,
    "epilogues": [
     {
@@ -849,7 +849,7 @@
   "0x14009E880": {
    "function": "0x14009E880",
    "name": "sub_14009E880",
-   "file": "client_recovery_080000.c",
+   "file": "client_math.c",
    "exits": 1,
    "epilogues": [
     {
@@ -872,7 +872,7 @@
   "0x14009F050": {
    "function": "0x14009F050",
    "name": "sub_14009F050",
-   "file": "client_recovery_080000.c",
+   "file": "client_players.c",
    "exits": 1,
    "epilogues": [
     {
@@ -935,7 +935,7 @@
   "0x1400A3E30": {
    "function": "0x1400A3E30",
    "name": "sub_1400A3E30",
-   "file": "client_recovery_0a0000.c",
+   "file": "client_network.c",
    "exits": 1,
    "epilogues": [
     {
@@ -968,7 +968,7 @@
   "0x1400A4DD0": {
    "function": "0x1400A4DD0",
    "name": "sub_1400A4DD0",
-   "file": "client_recovery_0a0000.c",
+   "file": "client_vehicles.c",
    "exits": 1,
    "epilogues": [
     {
@@ -991,7 +991,7 @@
   "0x1400A5400": {
    "function": "0x1400A5400",
    "name": "sub_1400A5400",
-   "file": "client_recovery_0a0000.c",
+   "file": "client_text.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1016,7 +1016,7 @@
   "0x1400A63E0": {
    "function": "0x1400A63E0",
    "name": "sub_1400A63E0",
-   "file": "client_recovery_0a0000.c",
+   "file": "client_blocks.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1039,7 +1039,7 @@
   "0x1400C3140": {
    "function": "0x1400C3140",
    "name": "sub_1400C3140",
-   "file": "client_recovery_0c0000.c",
+   "file": "client_math.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1077,7 +1077,7 @@
   "0x1400C8D20": {
    "function": "0x1400C8D20",
    "name": "sub_1400C8D20",
-   "file": "client_recovery_0c0000.c",
+   "file": "client_terminal.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1100,7 +1100,7 @@
   "0x1400DA8E0": {
    "function": "0x1400DA8E0",
    "name": "sub_1400DA8E0",
-   "file": "client_recovery_0c0000.c",
+   "file": "client_collision.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1123,7 +1123,7 @@
   "0x1400DDB70": {
    "function": "0x1400DDB70",
    "name": "sub_1400DDB70",
-   "file": "client_recovery_0c0000.c",
+   "file": "client_vehicles.c",
    "exits": 7,
    "epilogues": [
     {
@@ -1151,7 +1151,7 @@
   "0x1400E3960": {
    "function": "0x1400E3960",
    "name": "sub_1400E3960",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_widgets.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1174,7 +1174,7 @@
   "0x1400E5EB0": {
    "function": "0x1400E5EB0",
    "name": "sub_1400E5EB0",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_master_network.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1225,7 +1225,7 @@
   "0x1400E7270": {
    "function": "0x1400E7270",
    "name": "sub_1400E7270",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_missions.c",
    "exits": 2,
    "epilogues": [
     {
@@ -1268,7 +1268,7 @@
   "0x1400E7720": {
    "function": "0x1400E7720",
    "name": "sub_1400E7720",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_textures.c",
    "exits": 3,
    "epilogues": [
     {
@@ -1302,7 +1302,7 @@
   "0x1400E7C40": {
    "function": "0x1400E7C40",
    "name": "sub_1400E7C40",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_items.c",
    "exits": 2,
    "epilogues": [
     {
@@ -1330,7 +1330,7 @@
   "0x1400ED690": {
    "function": "0x1400ED690",
    "name": "sub_1400ED690",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_config.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1358,7 +1358,7 @@
   "0x1400F52D0": {
    "function": "0x1400F52D0",
    "name": "sub_1400F52D0",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_events.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1391,7 +1391,7 @@
   "0x1400FB0A0": {
    "function": "0x1400FB0A0",
    "name": "sub_1400FB0A0",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_master_network.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1414,7 +1414,7 @@
   "0x1400FB4D0": {
    "function": "0x1400FB4D0",
    "name": "sub_1400FB4D0",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_renderer.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1442,7 +1442,7 @@
   "0x1400FE050": {
    "function": "0x1400FE050",
    "name": "sub_1400FE050",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_network.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1475,7 +1475,7 @@
   "0x1401014E0": {
    "function": "0x1401014E0",
    "name": "sub_1401014E0",
-   "file": "client_recovery_100000.c",
+   "file": "client_mesh_builder.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1498,7 +1498,7 @@
   "0x1401019A0": {
    "function": "0x1401019A0",
    "name": "sub_1401019A0",
-   "file": "client_recovery_100000.c",
+   "file": "client_mesh_builder.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1521,7 +1521,7 @@
   "0x140102AA0": {
    "function": "0x140102AA0",
    "name": "sub_140102AA0",
-   "file": "client_recovery_100000.c",
+   "file": "client_mesh_builder.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1544,7 +1544,7 @@
   "0x140105770": {
    "function": "0x140105770",
    "name": "sub_140105770",
-   "file": "client_recovery_100000.c",
+   "file": "client_math.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1567,7 +1567,7 @@
   "0x140114AF0": {
    "function": "0x140114AF0",
    "name": "sub_140114AF0",
-   "file": "client_recovery_100000.c",
+   "file": "client_vehicles.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1610,7 +1610,7 @@
   "0x140114E90": {
    "function": "0x140114E90",
    "name": "sub_140114E90",
-   "file": "client_recovery_100000.c",
+   "file": "client_network.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1638,7 +1638,7 @@
   "0x140123F80": {
    "function": "0x140123F80",
    "name": "sub_140123F80",
-   "file": "client_recovery_120000.c",
+   "file": "client_renderer.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1661,7 +1661,7 @@
   "0x140127500": {
    "function": "0x140127500",
    "name": "sub_140127500",
-   "file": "client_recovery_120000.c",
+   "file": "client_replay.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1689,7 +1689,7 @@
   "0x14012C6D0": {
    "function": "0x14012C6D0",
    "name": "sub_14012C6D0",
-   "file": "client_recovery_120000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1712,7 +1712,7 @@
   "0x14012C890": {
    "function": "0x14012C890",
    "name": "sub_14012C890",
-   "file": "client_recovery_120000.c",
+   "file": "client_items.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1740,7 +1740,7 @@
   "0x14012CAC0": {
    "function": "0x14012CAC0",
    "name": "sub_14012CAC0",
-   "file": "client_recovery_120000.c",
+   "file": "client_items.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1768,7 +1768,7 @@
   "0x14012FB60": {
    "function": "0x14012FB60",
    "name": "sub_14012FB60",
-   "file": "client_recovery_120000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1791,7 +1791,7 @@
   "0x14012FC30": {
    "function": "0x14012FC30",
    "name": "sub_14012FC30",
-   "file": "client_recovery_120000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1814,7 +1814,7 @@
   "0x14012FCE0": {
    "function": "0x14012FCE0",
    "name": "sub_14012FCE0",
-   "file": "client_recovery_120000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1837,7 +1837,7 @@
   "0x14012FDA0": {
    "function": "0x14012FDA0",
    "name": "sub_14012FDA0",
-   "file": "client_recovery_120000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1860,7 +1860,7 @@
   "0x14012FE70": {
    "function": "0x14012FE70",
    "name": "sub_14012FE70",
-   "file": "client_recovery_120000.c",
+   "file": "client_missions.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1883,7 +1883,7 @@
   "0x14013C6E0": {
    "function": "0x14013C6E0",
    "name": "sub_14013C6E0",
-   "file": "client_recovery_120000.c",
+   "file": "client_textures.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1921,7 +1921,7 @@
   "0x140162220": {
    "function": "0x140162220",
    "name": "sub_140162220",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1954,7 +1954,7 @@
   "0x14016FD50": {
    "function": "0x14016FD50",
    "name": "sub_14016FD50",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -1982,7 +1982,7 @@
   "0x14016FED0": {
    "function": "0x14016FED0",
    "name": "sub_14016FED0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2005,7 +2005,7 @@
   "0x14016FFD0": {
    "function": "0x14016FFD0",
    "name": "sub_14016FFD0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2028,7 +2028,7 @@
   "0x1401700F0": {
    "function": "0x1401700F0",
    "name": "sub_1401700F0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2051,7 +2051,7 @@
   "0x140170180": {
    "function": "0x140170180",
    "name": "sub_140170180",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2079,7 +2079,7 @@
   "0x1401702F0": {
    "function": "0x1401702F0",
    "name": "sub_1401702F0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2102,7 +2102,7 @@
   "0x1401703D0": {
    "function": "0x1401703D0",
    "name": "sub_1401703D0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2125,7 +2125,7 @@
   "0x1401704E0": {
    "function": "0x1401704E0",
    "name": "sub_1401704E0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2148,7 +2148,7 @@
   "0x1401705B0": {
    "function": "0x1401705B0",
    "name": "sub_1401705B0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 2,
    "epilogues": [
     {
@@ -2181,7 +2181,7 @@
   "0x140170A50": {
    "function": "0x140170A50",
    "name": "sub_140170A50",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 2,
    "epilogues": [
     {
@@ -2214,7 +2214,7 @@
   "0x140170DC0": {
    "function": "0x140170DC0",
    "name": "sub_140170DC0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2242,7 +2242,7 @@
   "0x140170F50": {
    "function": "0x140170F50",
    "name": "sub_140170F50",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2265,7 +2265,7 @@
   "0x140171060": {
    "function": "0x140171060",
    "name": "sub_140171060",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2288,7 +2288,7 @@
   "0x140171100": {
    "function": "0x140171100",
    "name": "sub_140171100",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2311,7 +2311,7 @@
   "0x140171210": {
    "function": "0x140171210",
    "name": "sub_140171210",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2339,7 +2339,7 @@
   "0x140171340": {
    "function": "0x140171340",
    "name": "sub_140171340",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2367,7 +2367,7 @@
   "0x140171470": {
    "function": "0x140171470",
    "name": "sub_140171470",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2390,7 +2390,7 @@
   "0x140171510": {
    "function": "0x140171510",
    "name": "sub_140171510",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2423,7 +2423,7 @@
   "0x140171670": {
    "function": "0x140171670",
    "name": "sub_140171670",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2451,7 +2451,7 @@
   "0x1401717D0": {
    "function": "0x1401717D0",
    "name": "sub_1401717D0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2474,7 +2474,7 @@
   "0x1401718E0": {
    "function": "0x1401718E0",
    "name": "sub_1401718E0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2497,7 +2497,7 @@
   "0x1401719E0": {
    "function": "0x1401719E0",
    "name": "sub_1401719E0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2520,7 +2520,7 @@
   "0x140171AD0": {
    "function": "0x140171AD0",
    "name": "sub_140171AD0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2548,7 +2548,7 @@
   "0x140171C80": {
    "function": "0x140171C80",
    "name": "sub_140171C80",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2571,7 +2571,7 @@
   "0x1401740A0": {
    "function": "0x1401740A0",
    "name": "sub_1401740A0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2599,7 +2599,7 @@
   "0x1401745F0": {
    "function": "0x1401745F0",
    "name": "sub_1401745F0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2622,7 +2622,7 @@
   "0x140175A20": {
    "function": "0x140175A20",
    "name": "sub_140175A20",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2656,7 +2656,7 @@
   "0x140175AC0": {
    "function": "0x140175AC0",
    "name": "sub_140175AC0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2684,7 +2684,7 @@
   "0x140175B80": {
    "function": "0x140175B80",
    "name": "sub_140175B80",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2712,7 +2712,7 @@
   "0x140175C40": {
    "function": "0x140175C40",
    "name": "sub_140175C40",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2740,7 +2740,7 @@
   "0x140175D00": {
    "function": "0x140175D00",
    "name": "sub_140175D00",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2774,7 +2774,7 @@
   "0x140175DA0": {
    "function": "0x140175DA0",
    "name": "sub_140175DA0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2802,7 +2802,7 @@
   "0x140183A70": {
    "function": "0x140183A70",
    "name": "sub_140183A70",
-   "file": "client_recovery_180000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2835,7 +2835,7 @@
   "0x140183B30": {
    "function": "0x140183B30",
    "name": "sub_140183B30",
-   "file": "client_recovery_180000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2868,7 +2868,7 @@
   "0x140188120": {
    "function": "0x140188120",
    "name": "sub_140188120",
-   "file": "client_recovery_180000.c",
+   "file": "client_collision.c",
    "exits": 1,
    "epilogues": [
     {
@@ -2896,7 +2896,7 @@
   "0x140191A20": {
    "function": "0x140191A20",
    "name": "sub_140191A20",
-   "file": "client_recovery_180000.c",
+   "file": "client_vehicles.c",
    "exits": 1,
    "epilogues": [
     {
@@ -6671,7 +6671,7 @@
   "0x1400096B0": {
    "function": "0x1400096B0",
    "name": "sub_1400096B0",
-   "file": "client_recovery_000000.c",
+   "file": "client_players.c",
    "exits": 1,
    "epilogues": [
     {
@@ -6721,7 +6721,7 @@
   "0x140037220": {
    "function": "0x140037220",
    "name": "sub_140037220",
-   "file": "client_recovery_020000.c",
+   "file": "client_vehicles.c",
    "exits": 3,
    "epilogues": [
     {
@@ -6762,7 +6762,7 @@
   "0x140041B80": {
    "function": "0x140041B80",
    "name": "sub_140041B80",
-   "file": "client_recovery_040000.c",
+   "file": "client_vehicles.c",
    "exits": 1,
    "epilogues": [
     {
@@ -6848,7 +6848,7 @@
   "0x140048DA0": {
    "function": "0x140048DA0",
    "name": "sub_140048DA0",
-   "file": "client_recovery_040000.c",
+   "file": "client_collision.c",
    "exits": 1,
    "epilogues": [
     {
@@ -6888,7 +6888,7 @@
   "0x14004C9C0": {
    "function": "0x14004C9C0",
    "name": "sub_14004C9C0",
-   "file": "client_recovery_040000.c",
+   "file": "client_terminal.c",
    "exits": 6,
    "epilogues": [
     {
@@ -6959,7 +6959,7 @@
   "0x1400590B0": {
    "function": "0x1400590B0",
    "name": "sub_1400590B0",
-   "file": "client_recovery_040000.c",
+   "file": "client_missions.c",
    "exits": 0,
    "epilogues": [
     {
@@ -6982,7 +6982,7 @@
   "0x14005AF40": {
    "function": "0x14005AF40",
    "name": "sub_14005AF40",
-   "file": "client_recovery_040000.c",
+   "file": "client_missions.c",
    "exits": 0,
    "epilogues": [
     {
@@ -7005,7 +7005,7 @@
   "0x1400C4280": {
    "function": "0x1400C4280",
    "name": "sub_1400C4280",
-   "file": "client_recovery_0c0000.c",
+   "file": "client_terminal.c",
    "exits": 11,
    "epilogues": [
     {
@@ -7136,7 +7136,7 @@
   "0x1400C8E10": {
    "function": "0x1400C8E10",
    "name": "sub_1400C8E10",
-   "file": "client_recovery_0c0000.c",
+   "file": "client_terminal.c",
    "exits": 1,
    "epilogues": [
     {
@@ -7178,7 +7178,7 @@
   "0x1400CDBD0": {
    "function": "0x1400CDBD0",
    "name": "sub_1400CDBD0",
-   "file": "client_recovery_0c0000.c",
+   "file": "client_items.c",
    "exits": 1,
    "epilogues": [
     {
@@ -7251,7 +7251,7 @@
   "0x1400E15A0": {
    "function": "0x1400E15A0",
    "name": "sub_1400E15A0",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_vehicles.c",
    "exits": 7,
    "epilogues": [
     {
@@ -7297,7 +7297,7 @@
   "0x1400E54D0": {
    "function": "0x1400E54D0",
    "name": "sub_1400E54D0",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_stb_image.c",
    "exits": 4,
    "epilogues": [
     {
@@ -7357,7 +7357,7 @@
   "0x1400F6170": {
    "function": "0x1400F6170",
    "name": "sub_1400F6170",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_vehicles.c",
    "exits": 3,
    "epilogues": [
     {
@@ -7493,7 +7493,7 @@
   "0x1400F6C50": {
    "function": "0x1400F6C50",
    "name": "sub_1400F6C50",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_game_modes.c",
    "exits": 5,
    "epilogues": [
     {
@@ -7644,7 +7644,7 @@
   "0x1400F80A0": {
    "function": "0x1400F80A0",
    "name": "sub_1400F80A0",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_humans.c",
    "exits": 6,
    "epilogues": [
     {
@@ -7795,7 +7795,7 @@
   "0x1400F99A0": {
    "function": "0x1400F99A0",
    "name": "sub_1400F99A0",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_game_modes.c",
    "exits": 4,
    "epilogues": [
     {
@@ -7870,7 +7870,7 @@
   "0x1400FE870": {
    "function": "0x1400FE870",
    "name": "sub_1400FE870",
-   "file": "client_recovery_0e0000.c",
+   "file": "client_ui.c",
    "exits": 1,
    "epilogues": [
     {
@@ -7904,7 +7904,7 @@
   "0x14011A330": {
    "function": "0x14011A330",
    "name": "sub_14011A330",
-   "file": "client_recovery_100000.c",
+   "file": "client_widgets.c",
    "exits": 0,
    "epilogues": [
     {
@@ -7946,7 +7946,7 @@
   "0x1401307D0": {
    "function": "0x1401307D0",
    "name": "sub_1401307D0",
-   "file": "client_recovery_120000.c",
+   "file": "client_humans.c",
    "exits": 5,
    "epilogues": [
     {
@@ -7995,7 +7995,7 @@
   "0x14015B780": {
    "function": "0x14015B780",
    "name": "sub_14015B780",
-   "file": "client_recovery_140000.c",
+   "file": "client_stb_image.c",
    "exits": 3,
    "epilogues": [
     {
@@ -8037,7 +8037,7 @@
   "0x140160E00": {
    "function": "0x140160E00",
    "name": "sub_140160E00",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -8072,7 +8072,7 @@
   "0x1401623E0": {
    "function": "0x1401623E0",
    "name": "sub_1401623E0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 7,
    "epilogues": [
     {
@@ -8140,7 +8140,7 @@
   "0x140163020": {
    "function": "0x140163020",
    "name": "sub_140163020",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -8178,7 +8178,7 @@
   "0x1401663E0": {
    "function": "0x1401663E0",
    "name": "sub_1401663E0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 3,
    "epilogues": [
     {
@@ -8225,7 +8225,7 @@
   "0x140167230": {
    "function": "0x140167230",
    "name": "sub_140167230",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 9,
    "epilogues": [
     {
@@ -8265,7 +8265,7 @@
   "0x1401691A0": {
    "function": "0x1401691A0",
    "name": "sub_1401691A0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 4,
    "epilogues": [
     {
@@ -8313,7 +8313,7 @@
   "0x140169770": {
    "function": "0x140169770",
    "name": "sub_140169770",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 5,
    "epilogues": [
     {
@@ -8357,7 +8357,7 @@
   "0x14016BB40": {
    "function": "0x14016BB40",
    "name": "sub_14016BB40",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 11,
    "epilogues": [
     {
@@ -8464,7 +8464,7 @@
   "0x14016F590": {
    "function": "0x14016F590",
    "name": "sub_14016F590",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 0,
    "epilogues": [
     {
@@ -8487,7 +8487,7 @@
   "0x1401707E0": {
    "function": "0x1401707E0",
    "name": "sub_1401707E0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -8522,7 +8522,7 @@
   "0x140171DD0": {
    "function": "0x140171DD0",
    "name": "sub_140171DD0",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -8569,7 +8569,7 @@
   "0x140172080": {
    "function": "0x140172080",
    "name": "sub_140172080",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -8616,7 +8616,7 @@
   "0x140173990": {
    "function": "0x140173990",
    "name": "sub_140173990",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_image.c",
    "exits": 1,
    "epilogues": [
     {
@@ -8663,7 +8663,7 @@
   "0x140176410": {
    "function": "0x140176410",
    "name": "CMFCVisualManager__OnDrawTab",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 1,
    "epilogues": [
     {
@@ -8759,7 +8759,7 @@
   "0x14017A640": {
    "function": "0x14017A640",
    "name": "sub_14017A640",
-   "file": "client_recovery_160000.c",
+   "file": "client_stb_truetype.c",
    "exits": 3,
    "epilogues": [
     {
@@ -8801,7 +8801,7 @@
   "0x140182AD0": {
    "function": "0x140182AD0",
    "name": "sub_140182AD0",
-   "file": "client_recovery_180000.c",
+   "file": "client_stb_truetype.c",
    "exits": 26,
    "epilogues": [
     {

@@ -1203,19 +1203,19 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         v30 = v23 - v22;
         v31 = *((unsigned __int16 *)v18 + 10);
         v32 = 1.0 - (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v29), f32)[0] * 0.001953125);
-        *(float *)SR_VEC_LANES(128, v29, i32) = *(float *)(v18 + 14) * 0.07692308;
+        *(float *)SR_VEC_LANES(128, v29, i32) = *(float *)(v18 + 14) * 0.07692307978868484;
         v33 = (float)v26 * 0.001953125;
         *((float *)v21 - 4) = v32;
         *((float *)v21 - 2) = v32;
         *(v20 - 2) = SR_VEC_LANES(128, v29, i32)[0];
         v34 = _mm_cvtsi32_si128(v25);
         v35 = *((unsigned __int16 *)v18 + 11);
-        *(v19 - 3) = *(float *)(v18 + 6) * 0.07692308;
-        *(v19 - 5) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v34), f32)[0] * 0.07692308;
+        *(v19 - 3) = *(float *)(v18 + 6) * 0.07692307978868484;
+        *(v19 - 5) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v34), f32)[0] * 0.07692307978868484;
         v36 = _mm_cvtsi32_si128(v30);
         v37 = *((unsigned __int16 *)v18 + 12);
-        *(v19 - 4) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v36), f32)[0] * 0.07692308;
-        *(v19 - 2) = (float)(*(float *)(v18 + 10) * 0.07692308) + 0.75;
+        *(v19 - 4) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v36), f32)[0] * 0.07692307978868484;
+        *(v19 - 2) = (float)(*(float *)(v18 + 10) * 0.07692307978868484) + 0.75;
         *((float *)v21 - 1) = v33;
         *((float *)v21 + 5) = v33;
         v38 = 1.0 - (float)((float)v31 * 0.001953125);
@@ -1225,7 +1225,7 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         v21[1] = SR_VEC_LANES(128, v36, i32)[0];
         v21[3] = SR_VEC_LANES(128, v36, i32)[0];
         v39 = 1.0 - (float)((float)v37 * 0.001953125);
-        *(float *)SR_VEC_LANES(128, v36, i32) = *(float *)(v18 + 34) * 0.07692308;
+        *(float *)SR_VEC_LANES(128, v36, i32) = *(float *)(v18 + 34) * 0.07692307978868484;
         *((float *)v21 + 4) = v39;
         *((float *)v21 + 6) = v39;
         *(v20 - 1) = SR_VEC_LANES(128, v36, i32)[0];
@@ -1234,13 +1234,13 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         v42 = *((unsigned __int16 *)v18 + 20);
         v43 = *((unsigned __int16 *)v18 + 21);
         v44 = *((unsigned __int16 *)v18 + 19);
-        v19[1] = *(float *)(v18 + 26) * 0.07692308;
-        *(v19 - 1) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v40), f32)[0] * 0.07692308;
+        v19[1] = *(float *)(v18 + 26) * 0.07692307978868484;
+        *(v19 - 1) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v40), f32)[0] * 0.07692307978868484;
         v45 = _mm_cvtsi32_si128(v41);
         v46 = *((unsigned __int16 *)v18 + 22);
         v47 = (float)v44 * 0.001953125;
-        *v19 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v45), f32)[0] * 0.07692308;
-        v19[2] = (float)(*(float *)(v18 + 30) * 0.07692308) + 0.75;
+        *v19 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v45), f32)[0] * 0.07692307978868484;
+        v19[2] = (float)(*(float *)(v18 + 30) * 0.07692307978868484) + 0.75;
         *((float *)v21 + 7) = v47;
         *((float *)v21 + 13) = v47;
         v48 = 1.0 - (float)((float)v42 * 0.001953125);
@@ -1249,19 +1249,19 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         *((float *)v21 + 10) = v48;
         v21[9] = SR_VEC_LANES(128, v45, i32)[0];
         v21[11] = SR_VEC_LANES(128, v45, i32)[0];
-        *(float *)SR_VEC_LANES(128, v45, i32) = *(float *)(v18 + 54) * 0.07692308;
+        *(float *)SR_VEC_LANES(128, v45, i32) = *(float *)(v18 + 54) * 0.07692307978868484;
         *((float *)v21 + 12) = 1.0 - (float)((float)v46 * 0.001953125);
         *((float *)v21 + 14) = 1.0 - (float)((float)v46 * 0.001953125);
         v21 += 24;
         v49 = *(float *)(v18 + 46);
         *v20 = SR_VEC_LANES(128, v45, i32)[0];
         v20 += 3;
-        v19[5] = v49 * 0.07692308;
-        v19[3] = (float)(v43 - v44) * 0.07692308;
-        v19[4] = (float)(v46 - v42) * 0.07692308;
+        v19[5] = v49 * 0.07692307978868484;
+        v19[3] = (float)(v43 - v44) * 0.07692307978868484;
+        v19[4] = (float)(v46 - v42) * 0.07692307978868484;
         SR_VEC_LANES(128, v45, i32)[0] = *(_DWORD *)(v18 + 50);
         v18 += 60;
-        v19[6] = (float)(*(float *)SR_VEC_LANES(128, v45, i32) * 0.07692308) + 0.75;
+        v19[6] = (float)(*(float *)SR_VEC_LANES(128, v45, i32) * 0.07692307978868484) + 0.75;
         v19 += 12;
         --v6;
       }
@@ -1768,3 +1768,736 @@ LABEL_47:
 #undef v33
 #undef v34
 #undef v35
+
+//----- (000000014006BDC0) ----------------------------------------------------
+__int64 sub_14006BDC0()
+{
+  char *v0; // rcx
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14006BDC0[608];
+#define v2 (*(_QWORD (*)[5])(void *)(sr_frame_14006BDC0 + 0)) /* [rsp+0h] */
+#define v3 (*(int (*))(void *)(sr_frame_14006BDC0 + 40)) /* [rsp+28h] */
+#define v4 (*(int (*))(void *)(sr_frame_14006BDC0 + 48)) /* [rsp+30h] */
+#define v5 (*(int (*))(void *)(sr_frame_14006BDC0 + 56)) /* [rsp+38h] */
+#define v6 (*(int (*))(void *)(sr_frame_14006BDC0 + 64)) /* [rsp+40h] */
+#define v7 (*(_BYTE (*)[512])(void *)(sr_frame_14006BDC0 + 80)) /* [rsp+50h] */
+#define v8 (*(__int64 (*))(void *)(sr_frame_14006BDC0 + 592)) /* [rsp+250h] */
+
+  switch ( dword_140404A6C[179668277] )
+  {
+    case 0u:
+      if ( dword_140404A6C[278384725] )
+      {
+        v0 = "Steam Auth...";
+        if ( !dword_140404A6C[278384987] )
+          v0 = "Steam Ticket...";
+      }
+      else
+      {
+        v0 = "Steam Init Failed";
+      }
+      goto LABEL_11;
+    case 1u:
+      v0 = "CS Auth...";
+LABEL_11:
+      v6 = 1065353216;
+      v5 = 1065353216;
+      v4 = 1065353216;
+      v3 = 1065353216;
+      v2[4] = 0;
+      sr_text_draw_recovered(v0, 16.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x440C0000u))))), 12.0, 0u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14006BEAA */;
+      return 0; /* the function has no caller */
+    case 2u:
+      sub_140158AB0(v7, "%03d-%04d", dword_140404A6C[134050337] / 0x2710, dword_140404A6C[134050337] % 0x2710);
+      v0 = v7;
+      goto LABEL_11;
+  }
+  return 0; /* the function has no caller */
+}
+#undef v2
+#undef v3
+#undef v4
+#undef v5
+#undef v6
+#undef v7
+#undef v8
+
+// 14006BF1E: conditional instruction was optimized away because eax.4!=0
+// 1402B2658: using guessed type int dword_1402B2658;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 1603612E4: using guessed type unsigned int;
+// 1603612F0: using guessed type unsigned int;
+// 1603612F4: using guessed type unsigned int;
+// 16B165F40: using guessed type unsigned int;
+// 1829F8BD0: using guessed type unsigned int;
+// 1829F8FD8: using guessed type unsigned int;
+// 18539D408: using guessed type unsigned int;
+// 1853AD41C: using guessed type unsigned int;
+// 1853AD420: using guessed type unsigned int;
+
+//----- (00000001400CFC80) ----------------------------------------------------
+void sub_1400CFC80(int a1,unsigned a2,float x,float y,float width,float height,unsigned flags)
+{
+  (void)a2;
+  float outer=0.625f,inner=(flags&1)?0.5f:0.0f;
+  if(flags&8){outer=0.25f;inner=0.0f;}
+  unsigned color=sr_text_float_bits(outer);
+  sub_14006D660(sr_export_float_lane_container(sr_text_float_bits(x)),sr_export_float_lane_container(sr_text_float_bits(y)),sr_text_float_bits(width),height,0,color,color,color,0x3f800000);
+  color=sr_text_float_bits(inner);
+  sub_14006D660(sr_export_float_lane_container(sr_text_float_bits(x+2.0f)),sr_export_float_lane_container(sr_text_float_bits(y+2.0f)),sr_text_float_bits(width-4.0f),height-4.0f,0,color,color,color,0x3f800000);
+  __int64 row=23LL*a1;
+  float middle=height*0.5f+y;
+  sr_text_draw_recovered((char *)&dword_140404A6C[row+179473704],x+4.0f,middle,16.0f,68,1,1,1,1,NULL);
+  uint64_t ping[]={dword_140404A6C[row+179473720]};
+  sr_text_draw_recovered("/i",480.0f,middle,16.0f,6,1,1,1,1,ping);
+  uint64_t players[]={dword_140404A6C[row+179473717],dword_140404A6C[row+179473719]};
+  sr_text_draw_recovered("/i///i",560.0f,middle,16.0f,6,1,1,1,1,players);
+  unsigned mode=dword_140404A6C[row+179473721];
+  if(mode==5)sr_text_draw_recovered("Eliminator",672.0f,middle,16.0f,6,1,1,1,1,NULL);
+  if(mode==3)sr_text_draw_recovered("Round",672.0f,middle,16.0f,6,1,1,1,1,NULL);
+  if(mode==4)sr_text_draw_recovered("World",672.0f,middle,16.0f,6,1,1,1,1,NULL);
+  if(mode==7)sr_text_draw_recovered("Versus",672.0f,middle,16.0f,6,1,1,1,1,NULL);
+  uint64_t version[]={dword_140404A6C[row+179473701],(uint32_t)(dword_140404A6C[row+179473702]+97u)};
+  sr_text_draw_recovered("Alpha /i/c",784.0f,middle,16.0f,6,1,1,1,1,version);
+  if(dword_140404A6C[row+179473723])sr_text_draw_recovered("Yes",878.0f,middle,16.0f,6,1,1,1,1,NULL);
+}
+
+
+//----- (00000001400D4740) ----------------------------------------------------
+__int64            sub_1400D4740(__int64 a1)
+{
+  return ((__int64 (           *)(_QWORD,      char *, __int64, char *,      char *, int))ShellExecuteA)(
+           0,
+           "open",
+           a1,
+           Parameters,
+           "c:\\",
+           1);
+}
+
+// 14026E558: invalid function type 'HINSTANCE (__stdcall *ShellExecuteA)(HWND hwnd, LPCSTR lpOperation, LPCSTR lpFile, LPCSTR lpParameters, LPCSTR lpDirectory, INT nShowCmd)' has been ignored
+
+//----- (00000001400FB870) ----------------------------------------------------
+__int64 sub_1400FB870()
+{
+  int v0; // eax
+  unsigned int v1; // ecx
+  __int64 result; // rax
+
+  if ( (int)dword_140404A6C[70317962] < 16 )
+  {
+    dword_140404A6C[2 * dword_140404A6C[70317962] + 70317963] = dword_140404A6C[70087069];
+    dword_140404A6C[2 * dword_140404A6C[70317962]++ + 70317964] = dword_140404A6C[70087070];
+  }
+  dword_140404A6C[70087069] = 1128267776;
+  dword_140404A6C[70087070] = 1103101952;
+  dword_140404A6C[70087074] = 41;
+  v0 = sr_DrawMenuButton("Back");
+  v1 = dword_140404A6C[283831310];
+  if ( v0 )
+    v1 = 0;
+  dword_140404A6C[283831310] = v1;
+  dword_140404A6C[70087067] = 1107296256;
+  *(float *)&dword_140404A6C[70087068] = *(float *)&dword_140404A6C[70087068] + 64.0;
+  sr_DrawMenuButtonSelectable("Female", (int *)&dword_140404A6C[73991647], 0);
+  sr_DrawMenuButtonSelectable("Male", (int *)&dword_140404A6C[73991647], 1);
+  sr_DrawMenuSlider("Head", (int *)&dword_140404A6C[73991648], 0, 4, 1);
+  sr_DrawMenuSlider("Eyes", (int *)&dword_140404A6C[73991652], 0, 7, 1);
+  sr_DrawMenuSlider("Hair", (int *)&dword_140404A6C[73991651], 0, 8, 1);
+  sr_DrawMenuSlider("Hair Color", (int *)&dword_140404A6C[73991650], 0, 11, 1);
+  sr_DrawMenuSlider("Skin", (int *)&dword_140404A6C[73991649], 0, 5, 1);
+  result = dword_140404A6C[70317962];
+  if ( (int)dword_140404A6C[70317962] > 0 )
+  {
+    --dword_140404A6C[70317962];
+    result = (int)result - 1;
+    dword_140404A6C[70087069] = dword_140404A6C[2 * (int)result + 70317963];
+    dword_140404A6C[70087070] = dword_140404A6C[2 * (int)result + 70317964];
+  }
+  return result;
+}
+
+// 1400FBAD0: variable 'v0' is possibly undefined
+// 1400FBAEA: variable 'v2' is possibly undefined
+// 1400FBAEA: variable 'v1' is possibly undefined
+// 1400FBAEA: variable 'v3' is possibly undefined
+// 1400FBAEA: variable 'v4' is possibly undefined
+// 1400FBEE5: variable 'v7' is possibly undefined
+// 1400FBF9F: variable 'v10' is possibly undefined
+// 1400FC204: variable 'v13' is possibly undefined
+// 1400FC2BE: variable 'v16' is possibly undefined
+// 1400FC357: variable 'v17' is possibly undefined
+// 140278D30: using guessed type __int128 xmmword_140278D30;
+// 140278D80: using guessed type __int128 xmmword_140278D80;
+// 140278E20: using guessed type __int128 xmmword_140278E20;
+// 140279490: using guessed type __int128 xmmword_140279490;
+// 1402796C0: using guessed type __int128 xmmword_1402796C0;
+// 1402F6188: using guessed type int dword_1402F6188;
+// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
+// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
+// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
+// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
+// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
+// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
+// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
+// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
+// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
+// 140404370: using guessed type __int64 (__fastcall *unk_140404370)(_QWORD, _QWORD, _QWORD, _QWORD);
+// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
+// 140404470: using guessed type __int64 (__fastcall *unk_140404470)(_QWORD, _QWORD);
+// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
+// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
+// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
+// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
+// 144980D58: using guessed type double (__fastcall *)(_QWORD);
+// 144980D60: using guessed type double (__fastcall *)(_QWORD);
+// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
+// 183F7C544: using guessed type unsigned int;
+// 183F7C554: using guessed type unsigned int;
+// 183F7C564: using guessed type unsigned int;
+// 184178D40: using guessed type unsigned int;
+// 184178D44: using guessed type unsigned int;
+// 184178D48: using guessed type unsigned int;
+// 184178D50: using guessed type unsigned int;
+// 184178D54: using guessed type unsigned int;
+// 184178D58: using guessed type unsigned int;
+// 1A724E600: using guessed type unsigned int;
+// 1A724E610: using guessed type unsigned int;
+// 1A724E620: using guessed type unsigned int;
+// 1A724E630: using guessed type unsigned int;
+// 1A724E638: using guessed type unsigned int;
+// 1A724E63C: using guessed type unsigned int;
+
+//----- (00000001400FC480) ----------------------------------------------------
+__int64 sub_1400FC480()
+{
+  int v0; // eax
+  unsigned int v1; // ecx
+  __int64 result; // rax
+  unsigned int v3; // eax
+  char v4; // si
+  signed int v5; // edx
+  __int128 v6; // xmm1
+  signed int v7; // eax
+  __int128 v8; // xmm1
+  signed int v9; // eax
+  int v10; // edi
+  int v11; // ebx
+  int v12; // r8d
+  __int64 v13; // rax
+  int v14; // r9d
+  char v15; // r10
+  int v16; // eax
+  signed int v17; // ecx
+  __int128 v18; // xmm0
+  __int128 v19; // xmm1
+  int v20; // [rsp+50h] [rbp+8h]
+
+  dword_140404A6C[70087069] = 1126170624;
+  dword_140404A6C[70087070] = 1101004800;
+  dword_140404A6C[70087074] = 41;
+  v0 = sr_DrawMenuButton("Cancel");
+  v1 = dword_140404A6C[283831310];
+  if ( v0 )
+    v1 = 1;
+  dword_140404A6C[283831310] = v1;
+  if ( !dword_140404A6C[179662132] )
+  {
+    dword_140404A6C[70087067] = 1138229248;
+    dword_140404A6C[70087068] = 1131413504;
+    dword_140404A6C[70087069] = 1126170624;
+    dword_140404A6C[70087070] = 1101004800;
+    dword_140404A6C[70087077] = 1;
+    sub_140070200("Password", (__int64)&dword_140404A6C[179662133], 0x18u);
+    *(float *)&dword_140404A6C[70087068] = *(float *)&dword_140404A6C[70087068] + 16.0;
+    result = sr_DrawMenuButton("Connect");
+    if ( (_DWORD)result )
+      dword_140404A6C[179662132] = 1;
+    return result;
+  }
+  if ( (unsigned int)sub_140198F9B() - dword_140404A6C[179662126] <= 0xC8 )
+  {
+    v4 = v20;
+  }
+  else
+  {
+    dword_140404A6C[179662126] = sub_140198F9B();
+    v3 = dword_140404A6C[179662132];
+    if ( dword_140404A6C[179662132] == 1 )
+    {
+      v4 = 75;
+      dword_140404A6C[289301094] = dword_1402B2658;
+      *(unsigned int *)((char *)&dword_140404A6C[289301095] + 1) = dword_140404A6C[134050334];
+      *(unsigned int *)((char *)&dword_140404A6C[289301096] + 1) = dword_140404A6C[134050338];
+      *(unsigned int *)((char *)&dword_140404A6C[289301097] + 1) = dword_140404A6C[456202719];
+      *(_WORD *)((char *)&dword_140404A6C[289301098] + 1) = dword_140404A6C[456202720];
+      *(_QWORD *)&dword_140404A6C[289301092] = 19;
+      LOBYTE(dword_140404A6C[289301095]) = 75;
+      sub_140130350(dword_140404A6C[280649181], dword_140404A6C[280649182], 0);
+      v3 = dword_140404A6C[179662132];
+    }
+    else
+    {
+      v4 = v20;
+    }
+    if ( v3 == 2 )
+    {
+      v4 = 2;
+      *(_QWORD *)&dword_140404A6C[289301092] = 5;
+      LOBYTE(dword_140404A6C[289301095]) = 2;
+      dword_140404A6C[289301094] = dword_1402B2658;
+      sub_140115D90(&dword_1402B231C, 8);
+      v5 = dword_140404A6C[289301092];
+      if ( (int)dword_140404A6C[289301092] < 0x10000 )
+      {
+        if ( (int)dword_140404A6C[289301093] > 0 )
+        {
+          v5 = dword_140404A6C[289301092] + 1;
+          dword_140404A6C[289301093] = 0;
+          ++dword_140404A6C[289301092];
+        }
+        *(unsigned int *)((char *)&dword_140404A6C[289301094] + v5) = dword_140404A6C[134050334];
+        v5 = dword_140404A6C[289301092] + 4;
+        dword_140404A6C[289301092] = v5;
+        if ( v5 < 0x10000 )
+        {
+          if ( (int)dword_140404A6C[289301093] > 0 )
+          {
+            ++v5;
+            dword_140404A6C[289301093] = 0;
+            dword_140404A6C[289301092] = v5;
+          }
+          *(unsigned int *)((char *)&dword_140404A6C[289301094] + v5) = dword_140404A6C[134050339];
+          v5 = dword_140404A6C[289301092] + 4;
+          dword_140404A6C[289301092] = v5;
+          if ( v5 < 0x10000 )
+          {
+            if ( (int)dword_140404A6C[289301093] > 0 )
+            {
+              ++v5;
+              dword_140404A6C[289301093] = 0;
+              dword_140404A6C[289301092] = v5;
+            }
+            v6 = *(_OWORD *)&dword_140404A6C[73991100];
+            *(_OWORD *)((char *)&dword_140404A6C[289301094] + v5) = *(_OWORD *)&dword_140404A6C[73991096];
+            *(_OWORD *)((char *)&dword_140404A6C[289301098] + v5) = v6;
+            v5 = dword_140404A6C[289301092] + 32;
+            dword_140404A6C[289301092] += 32;
+          }
+        }
+      }
+      if ( v5 < 0x10000 )
+      {
+        if ( (int)dword_140404A6C[289301093] > 0 )
+        {
+          ++v5;
+          dword_140404A6C[289301093] = 0;
+          dword_140404A6C[289301092] = v5;
+        }
+        *(unsigned int *)((char *)&dword_140404A6C[289301094] + v5) = dword_140404A6C[73991647]
+                                                                    + 2
+                                                                    * (dword_140404A6C[73991648]
+                                                                     + 16
+                                                                     * (dword_140404A6C[73991649]
+                                                                      + 8
+                                                                      * (dword_140404A6C[73991650]
+                                                                       + 16
+                                                                       * (dword_140404A6C[73991651]
+                                                                        + 16 * dword_140404A6C[73991652]))));
+        v7 = dword_140404A6C[289301092] + 4;
+        dword_140404A6C[289301092] = v7;
+        if ( v7 < 0x10000 )
+        {
+          if ( (int)dword_140404A6C[289301093] > 0 )
+          {
+            ++v7;
+            dword_140404A6C[289301093] = 0;
+            dword_140404A6C[289301092] = v7;
+          }
+          v8 = *(_OWORD *)&dword_140404A6C[179662137];
+          *(_OWORD *)((char *)&dword_140404A6C[289301094] + v7) = *(_OWORD *)&dword_140404A6C[179662133];
+          *(_OWORD *)((char *)&dword_140404A6C[289301098] + v7) = v8;
+          dword_140404A6C[289301092] += 32;
+        }
+      }
+      sub_140115D90(&dword_1402B26C8, 8);
+      v9 = dword_140404A6C[289301092];
+      if ( (int)dword_140404A6C[289301092] < 0x10000 )
+      {
+        if ( (int)dword_140404A6C[289301093] > 0 )
+        {
+          v9 = dword_140404A6C[289301092] + 1;
+          dword_140404A6C[289301093] = 0;
+          ++dword_140404A6C[289301092];
+        }
+        *(unsigned int *)((char *)&dword_140404A6C[289301094] + v9) = dword_140404A6C[134050337];
+        dword_140404A6C[289301092] += 4;
+      }
+      sub_140130350(dword_140404A6C[456202714], dword_140404A6C[456202715], *(__int64 *)&dword_140404A6C[456202717]);
+    }
+  }
+  result = sub_14011C760();
+  if ( (int)result > 0 )
+  {
+    v10 = v20;
+    do
+    {
+      v11 = dword_140404A6C[289317484];
+      if ( (int)dword_140404A6C[289317484] >= 0x10000
+        || (signed int)(dword_140404A6C[289317484] + 1) > (int)dword_140404A6C[289317483] )
+      {
+        v12 = dword_140404A6C[289317485];
+      }
+      else
+      {
+        v12 = dword_140404A6C[289317485];
+        if ( (int)dword_140404A6C[289317485] > 0 )
+        {
+          v11 = ++dword_140404A6C[289317484];
+          v12 = 0;
+          dword_140404A6C[289317485] = 0;
+        }
+        v13 = v11++;
+        v4 = *((_BYTE *)&dword_140404A6C[289317486] + v13);
+        dword_140404A6C[289317484] = v11;
+      }
+      switch ( v4 )
+      {
+        case 75:
+          if ( v11 < 0x10000 && v11 + 4 <= (int)dword_140404A6C[289317483] )
+          {
+            if ( v12 > 0 )
+            {
+              ++v11;
+              dword_140404A6C[289317485] = 0;
+              dword_140404A6C[289317484] = v11;
+            }
+            dword_140404A6C[134050339] = *(unsigned int *)((char *)&dword_140404A6C[289317486] + v11);
+            dword_140404A6C[289317484] = v11 + 4;
+          }
+          dword_140404A6C[179662132] = 2;
+          break;
+        case 6:
+          if ( v11 < 0x10000 && v11 + 4 <= (int)dword_140404A6C[289317483] )
+          {
+            if ( v12 > 0 )
+            {
+              ++v11;
+              dword_140404A6C[289317485] = 0;
+              dword_140404A6C[289317484] = v11;
+            }
+            dword_140404A6C[421831838] = *(unsigned int *)((char *)&dword_140404A6C[289317486] + v11);
+            dword_140404A6C[289317484] = v11 + 4;
+          }
+          sub_140115AE0(&dword_140404A6C[283831312], 4);
+          sub_140115AE0(&dword_140404A6C[283831441], 4);
+          sub_140115AE0(&dword_140404A6C[283831446], 8);
+          v17 = dword_140404A6C[289317484];
+          if ( (int)dword_140404A6C[289317484] < 0x10000
+            && (signed int)(dword_140404A6C[289317484] + 32) <= (int)dword_140404A6C[289317483] )
+          {
+            if ( (int)dword_140404A6C[289317485] > 0 )
+            {
+              v17 = dword_140404A6C[289317484] + 1;
+              dword_140404A6C[289317485] = 0;
+              ++dword_140404A6C[289317484];
+            }
+            v18 = *(_OWORD *)((char *)&dword_140404A6C[289317486] + v17);
+            v19 = *(_OWORD *)((char *)&dword_140404A6C[289317490] + v17);
+            dword_140404A6C[289317484] = v17 + 32;
+            *(_OWORD *)&dword_140404A6C[283831313] = v18;
+            *(_OWORD *)&dword_140404A6C[283831317] = v19;
+          }
+          sub_14018D440((float *)&dword_140404A6C[283831482], 16);
+          sub_14018D440((float *)&dword_140404A6C[283831483], 16);
+          if ( dword_140404A6C[283831312] == 7 )
+            sub_140115AE0(&dword_140404A6C[284022502], 8);
+          dword_140404A6C[179662132] = 3;
+          dword_140404A6C[283831310] = 0;
+          return sub_140095B00();
+        case 3:
+          v14 = 6;
+          if ( v11 < 0x10000 )
+          {
+            if ( v11 <= (int)dword_140404A6C[289317483] )
+            {
+              v10 = 0;
+              v15 = 0;
+              while ( 1 )
+              {
+                v16 = 8 - v12;
+                v10 |= (~(-1 << v14)
+                      & (*((unsigned __int8 *)&dword_140404A6C[289317486] + v11) >> SLOBYTE(dword_140404A6C[289317485]))) << v15;
+                if ( v14 < (unsigned int)(8 - v12) )
+                  break;
+                v12 = 0;
+                dword_140404A6C[289317485] = 0;
+                if ( v14 == v16 )
+                {
+                  dword_140404A6C[289317484] = ++v11;
+                  goto LABEL_60;
+                }
+                ++v11;
+                v14 -= v16;
+                v15 += v16;
+                dword_140404A6C[289317484] = v11;
+                if ( v14 <= 0 )
+                  goto LABEL_60;
+              }
+              v12 += v14;
+              dword_140404A6C[289317485] = v12;
+            }
+LABEL_60:
+            if ( v11 < 0x10000 && v11 + v10 <= (int)dword_140404A6C[289317483] )
+            {
+              if ( v12 > 0 )
+              {
+                ++v11;
+                dword_140404A6C[289317485] = 0;
+                dword_140404A6C[289317484] = v11;
+              }
+              sub_1401FC920(
+                (__m128i *)&dword_140404A6C[179662389],
+                (     __m128i *)((char *)&dword_140404A6C[289317486] + v11),
+                v10);
+              dword_140404A6C[289317484] = v10 + v11;
+            }
+          }
+          *((_BYTE *)&dword_140404A6C[179662389] + v10) = 0;
+          dword_140404A6C[179662132] = 4;
+          break;
+      }
+      result = sub_14011C760();
+    }
+    while ( (int)result > 0 );
+  }
+  return result;
+}
+
+// 1402B231C: using guessed type int dword_1402B231C;
+// 1402B2658: using guessed type int dword_1402B2658;
+// 1402B26C8: using guessed type int dword_1402B26C8;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 150F610D8: using guessed type unsigned int;
+// 150F610DC: using guessed type unsigned int;
+// 150F610E0: using guessed type unsigned int;
+// 150F610E4: using guessed type unsigned int;
+// 150F610F4: using guessed type unsigned int;
+// 150F61100: using guessed type unsigned int;
+// 151E4595C: using guessed type unsigned int;
+// 1603612E4: using guessed type unsigned int;
+// 1603612F0: using guessed type unsigned int;
+// 1603612F4: using guessed type unsigned int;
+// 1603612F8: using guessed type unsigned int;
+// 16B15FF3C: using guessed type unsigned int;
+// 16B15FF40: using guessed type unsigned int;
+// 16B15FF50: using guessed type unsigned int;
+// 183EBFAA4: using guessed type unsigned int;
+// 183EBFAB0: using guessed type unsigned int;
+// 183EBFAC0: using guessed type unsigned int;
+// 18539D400: using guessed type unsigned int;
+// 18539D408: using guessed type unsigned int;
+// 1853AD41C: using guessed type unsigned int;
+// 1853AD420: using guessed type unsigned int;
+// 1A4D2DCE4: using guessed type unsigned int;
+// 1AD04B1E8: using guessed type unsigned int;
+// 1AD04B1EC: using guessed type unsigned int;
+
+//----- (00000001400FCB50) ----------------------------------------------------
+void sub_1400FCB50()
+{
+  unsigned int v0; // ecx
+
+  v0 = dword_140404A6C[179662132];
+  if ( dword_140404A6C[179662132] - 1 <= 1 )
+  {
+    sr_text_draw_recovered("Connecting", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))))), 20.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FCBBC */;
+    v0 = dword_140404A6C[179662132];
+  }
+  if ( v0 == 4 )
+    sr_text_draw_recovered((char *)&dword_140404A6C[179662389], 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))))), 20.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FCC19 */;
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 16B15FF3C: using guessed type unsigned int;
+
+//----- (00000001400FCC30) ----------------------------------------------------
+__int64 sub_1400FCC30()
+{
+  __int64 result; // rax
+  unsigned int v1; // ecx
+
+  dword_140404A6C[70087069] = 1126170624;
+  dword_140404A6C[70087070] = 1101004800;
+  dword_140404A6C[70087074] = 41;
+  result = sr_DrawMenuButton("Back");
+  v1 = dword_140404A6C[283831310];
+  if ( (_DWORD)result )
+    v1 = 0;
+  dword_140404A6C[283831310] = v1;
+  return result;
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 150F610E0: using guessed type unsigned int;
+// 150F610E4: using guessed type unsigned int;
+// 150F610F4: using guessed type unsigned int;
+// 183EBFAA4: using guessed type unsigned int;
+
+//----- (00000001400FCC90) ----------------------------------------------------
+void sub_1400FCC90()
+{
+  sr_text_draw_recovered("Design//Programming",16.0f,64.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
+  sr_text_draw_recovered("Alex Austin",16.0f,96.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
+  sr_text_draw_recovered("Art",16.0f,144.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
+  sr_text_draw_recovered("Sofia da Silva",16.0f,176.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
+  sr_text_draw_recovered("Design//Art",16.0f,224.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
+  sr_text_draw_recovered("Brendon Chung",16.0f,256.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
+  sr_text_draw_recovered("Luke Hetherington",16.0f,272.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
+  sr_text_draw_recovered("Production",16.0f,320.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
+  sr_text_draw_recovered("Justin Woodward",16.0f,352.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
+  sr_text_draw_recovered("Community Manager",16.0f,400.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
+  sr_text_draw_recovered("W1nters",16.0f,432.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
+}
+
+
+//----- (00000001400FDD80) ----------------------------------------------------
+void sub_1400FDD80()
+{
+  sr_CSDrawText("Name", 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))), 20.0);
+  sr_text_draw_recovered("Ping", 480.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDE3F */;
+  sr_text_draw_recovered("Players", 560.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDE8B */;
+  sr_text_draw_recovered("Game Type", 672.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDED7 */;
+  sr_text_draw_recovered("Version", 784.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDF23 */;
+  sr_text_draw_recovered("Password", 878.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDF6F */;
+  sr_text_draw_recovered("/i", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43C80000u))))), 12.0, 0u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, (const uint64[]){dword_140404A6C[179473694]}) /* 0x1400FDFD3 */;
+  sr_text_draw_recovered("/i", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43CE0000u))))), 12.0, 0u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, (const uint64[]){dword_140404A6C[179662128]}) /* 0x1400FE02F */;
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (00000001400FE5D0) ----------------------------------------------------
+void sub_1400FE5D0()
+{
+  sr_text_draw_recovered("Sub Rosa", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))))), 16.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FE62E */;
+  sr_text_draw_recovered("ALPHA /i/c", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43300000u))))), 16.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FE697 */;
+  sr_text_draw_recovered((char *)off_1402B2810, 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43400000u))))), 14.0, 65u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FE6E9 */;
+  if ( dword_140404A6C[278384725] )
+    sr_text_draw_recovered("Steam", 16.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x44090000u))))), 12.0, 0u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FE745 */;
+}
+
+// 1402B231C: using guessed type int dword_1402B231C;
+// 1402B23DC: using guessed type int dword_1402B23DC;
+// 1402B2810: using guessed type char (*off_1402B2810)[7];
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (00000001400FE870) ----------------------------------------------------
+// local variable allocation has failed, the output may be wrong!
+__int64            sub_1400FE870(__int64 a1, int a2, double a3, double a4, float a5, float a6, char a7)
+{
+  double v7 = a3; // xmm2_8: x arrives in xmm2 (0x1400FE8C0 movaps xmm12, xmm2); Hex-Rays had lost it
+  __m128i v8; // xmm7
+  __int64 v9; // rbx
+  __int64 v10; // r8
+  __m128i v11; // xmm10
+  int v12; // xmm0_4
+  __int64 v13; // rax
+  float v14; // xmm3_4
+  float v15; // xmm9_4
+  unsigned int v16; // r9d
+  __m128i v17; // xmm2
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FE870[608];
+#define v19 (*(__int64 (*))(void *)(sr_frame_1400FE870 + 0)) /* [rsp+0h] */
+#define v20 (*(int (*))(void *)(sr_frame_1400FE870 + 32)) /* [rsp+20h] */
+#define v21 (*(int (*))(void *)(sr_frame_1400FE870 + 40)) /* [rsp+28h] */
+#define v22 (*(int (*))(void *)(sr_frame_1400FE870 + 48)) /* [rsp+30h] */
+#define v23 (*(int (*))(void *)(sr_frame_1400FE870 + 56)) /* [rsp+38h] */
+#define v24 (*(int (*))(void *)(sr_frame_1400FE870 + 64)) /* [rsp+40h] */
+#define v25 (*(char (*)[512])(void *)(sr_frame_1400FE870 + 80)) /* [rsp+50h] */
+#define v26 (*(__int64 (*))(void *)(sr_frame_1400FE870 + 592)) /* [rsp+250h] */
+
+  v8 = *(__m128i *)&a4;
+  v9 = a2;
+  /* 0x1400FE908: width a5 ([rsp+2F0h], 0x1400FE8D0), not the third argument */
+  sub_14006D660(v7, a4, sr_text_float_bits(a5), a6, 0, 1061158912, 1061158912, 1061158912, 1065353216);
+  v11 = *(__m128i *)&a4;
+  *(float *)SR_VEC_LANES(128, v11, i32) = *(float *)&a4 + 2.0;
+  if ( (a7 & 1) != 0 )
+    v12 = 1056964608;
+  else
+    v12 = 1048576000;
+  /* 0x1400FE97E: x + 2 (0x1400FE932), width - 4 (0x1400FE919); the C had passed x and an undefined width */
+  sub_14006D660(
+    sr_export_float_lane_container(sr_text_float_bits(*(float *)&v7 + 2.0f)),
+    *(double *)SR_VEC_LANES(128, v11, i64),
+    sr_text_float_bits(a5 - 4.0f),
+    a6 - 4.0,
+    0,
+    v12,
+    v12,
+    v12,
+    1065353216);
+  v13 = (int)dword_140404A6C[v9 + 280649319];
+  v14 = 16.0;
+  if ( !dword_140404A6C[3597 * v13 + 71856270] || dword_140404A6C[v13 + 284023074] )
+    v14 = 12.0;
+  v24 = 1065353216;
+  v23 = 1065353216;
+  v22 = 1065353216;
+  v15 = (float)(a5 * 0.5) + *(float *)&v7;
+  v21 = 1065353216;
+  v20 = 1;
+  sr_text_draw_recovered((char *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 14388 * v13 + 291638372), v15, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v11))), v14, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FEA10 */;
+  v16 = dword_140404A6C[3597 * dword_140404A6C[v9 + 280649319] + 71856265];
+  sub_140158AB0(v25, "%03d-%04d", v16 / 0x2710, v16 % 0x2710);
+  v24 = 1065353216;
+  v17 = v8;
+  *(float *)SR_VEC_LANES(128, v17, i32) = *(float *)SR_VEC_LANES(128, v8, i32) + 18.0;
+  v23 = 1065353216;
+  v22 = 1065353216;
+  v21 = 1065353216;
+  v20 = 1;
+  sr_text_draw_recovered(v25, v15, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v17))), 12.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FEA9E */;
+  if ( dword_140404A6C[dword_140404A6C[v9 + 280649319] + 284023074] )
+  {
+    *(float *)SR_VEC_LANES(128, v8, i32) = *(float *)SR_VEC_LANES(128, v8, i32) + 30.0;
+    v24 = 1065353216;
+    v23 = 1065353216;
+    v22 = 1065353216;
+    v21 = 1065353216;
+    v20 = 1;
+    sr_text_draw_recovered("MUTED", v15, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v8))), 16.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FEAFD */;
+  }
+  return 0; /* no result: rax is residue at 0x1400FEB02 */
+}
+#undef v19
+#undef v20
+#undef v21
+#undef v22
+#undef v23
+#undef v24
+#undef v25
+#undef v26
+
+
+// 140198E51: using guessed type __int64(void);
+// 140302FA8: using guessed type __int64 (__fastcall *qword_140302FA8)(_QWORD);
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144970C98: using guessed type unsigned int;
+// 144970C9C: using guessed type unsigned int;
+// 144978CA4: using guessed type unsigned int;
+// 144978CA8: using guessed type unsigned int;
+// 1449815C4: using guessed type unsigned int;
+// 150F610D8: using guessed type unsigned int;
+// 150F610DC: using guessed type unsigned int;
+// 150F610E0: using guessed type unsigned int;
+// 150F610E4: using guessed type unsigned int;
+// 150F610F4: using guessed type unsigned int;
+// 151E461C8: using guessed type unsigned int;
+// 151E461CC: using guessed type unsigned int;
+// 183EBFAA4: using guessed type unsigned int;
+// 1B0032404: using guessed type unsigned int;
+

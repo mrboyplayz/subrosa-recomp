@@ -17,7 +17,7 @@
    here the foot's turn is held to 1/16. Meaning not settled. */
 #define ragdoll_unknown_mode SR_GLOBAL(uint8_t, 0x183F7C960ULL)
 
-/* WorldHuman.unknown_58 */
+/* WorldHuman.movement_state */
 enum { HUMAN_STATE_2 = 2, HUMAN_STATE_JUMP = 3 };
 /* HumanLeg.state */
 enum { LEG_STATE_0 = 0, LEG_PLANTED = 1, LEG_STATE_3 = 3 };
@@ -46,7 +46,7 @@ static void foot_turn(const WorldHuman *h, const HumanLeg *leg, const HumanBone 
     axes[0] = 1.0f; axes[1] = 0.0f; axes[2] = 0.0f;
     axes[3] = 0.0f; axes[4] = 1.0f; axes[5] = 0.0f;
     axes[6] = 0.0f; axes[7] = 0.0f; axes[8] = 1.0f;
-    math_mat3_rotate_rows(axes, &axes[3], leg->state == LEG_PLANTED ? leg->yaw : h->unknown_98);
+    math_mat3_rotate_rows(axes, &axes[3], leg->state == LEG_PLANTED ? leg->yaw : h->view_yaw);
     math_mat3_rotate_rows(axes, &axes[0], -leg->pitch);
     math_quat_from_mat3(target, axes);
     math_quat_from_mat3(q, foot->rotation);
@@ -117,18 +117,18 @@ static void start_jump(WorldHuman *h, int leg)
 {
     const HumanBone *pelvis = &h->bones[HUMAN_BONE_PELVIS];
 
-    h->unknown_58 = HUMAN_STATE_JUMP;
+    h->movement_state = HUMAN_STATE_JUMP;
     h->legs[leg].state = LEG_PLANTED;
-    h->unknown_68b4 = leg ^ 1;
-    h->unknown_6740 = h->unknown_16c;
-    h->unknown_6744 = h->unknown_168;
-    h->unknown_6850 = 0x4016CBE4;        /* 3 pi / 4 as a float */
+    h->push_leg = leg ^ 1;
+    h->jump_side = h->input_jump_side;
+    h->jump_forward = h->input_jump_forward;
+    h->jump_pose_angle = 0x4016CBE4;        /* 3 pi / 4 as a float */
     h->legs[0].progress = 0;
     h->legs[1].progress = 0;
     for (int side = 0; side < 2; side++) {
         const HumanBone *shin = &h->bones[HUMAN_BONE_SHIN + 3 * side];
-        float ankle = human_skeleton[HUMAN_BONE_SHIN + 3 * side].unknown_34[1];
-        float hip = human_skeleton[HUMAN_BONE_THIGH - 1 + 3 * side].unknown_34[0];
+        float ankle = human_skeleton[HUMAN_BONE_SHIN + 3 * side].anchor[1];
+        float hip = human_skeleton[HUMAN_BONE_THIGH - 1 + 3 * side].anchor[0];
 
         for (int k = 0; k < 3; k++)
             h->legs[side].start[k] = (ankle * shin->rotation[3 + k] + shin->position[k])
@@ -192,18 +192,18 @@ void human_foot_ground_contact(int human, int leg_index)
     bond->target_velocity[0] = h->ground_velocity[0];
     bond->target_velocity[1] = h->ground_velocity[1];
     bond->target_velocity[2] = h->ground_velocity[2];
-    bond->point_weight[0] = foot->unknown_a0 + foot->unknown_a0;
+    bond->point_weight[0] = foot->ground_bond_strength + foot->ground_bond_strength;
     bond->point_weight[1] = 0.1875f;
-    if (h->unknown_58 == HUMAN_STATE_2)
+    if (h->movement_state == HUMAN_STATE_2)
         bond->point_weight[0] = 0.0f;
-    else if (h->unknown_58 == HUMAN_STATE_JUMP)
+    else if (h->movement_state == HUMAN_STATE_JUMP)
         bond->point_weight[1] = 1.0f;
     if (leg->state == LEG_STATE_0 || leg->state == LEG_STATE_3) {
         bond->friction = 0.0f;
         bond->stiffness = 0.015625f;
         bond->damping = 0.015625f;
     }
-    if (h->unknown_58 == HUMAN_STATE_2)
+    if (h->movement_state == HUMAN_STATE_2)
         bond->friction = 0.1f;
 
     foot_turn(h, leg, foot, turn);
@@ -212,9 +212,9 @@ void human_foot_ground_contact(int human, int leg_index)
     bond->world_point[2] = (turn[1] * foot->rotation[5] + turn[0] * foot->rotation[2]) + turn[2] * foot->rotation[8];
 
     leg->ground_bond = index;
-    foot->unknown_130++;
-    h->unknown_54 = 1;
-    if (h->unknown_58 != HUMAN_STATE_JUMP && h->unknown_6734 > 0 && !(h->input_flags & HUMAN_INPUT_4)
+    foot->ground_bond_count++;
+    h->on_ground = 1;
+    if (h->movement_state != HUMAN_STATE_JUMP && h->jump_charge > 0 && !(h->input_flags & HUMAN_INPUT_JUMP)
             && leg->state == LEG_PLANTED && is_zero_or_nan(leg->contact))
         start_jump(h, leg_index);
 }

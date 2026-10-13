@@ -37,25 +37,25 @@ void human_update_health(int human)
     uint32_t tick;
 
     if (type == GAME_TYPE_6 && h->health < 50)
-        h->unknown_3c = 0;
+        h->old_health = 0;
     if (h->player != -1 && player_unknown_151623978(h->player) && h->health < 50)
-        h->unknown_3c = 0;
+        h->old_health = 0;
 
     if (h->immortal) {
-        if (h->unknown_44 > 0)
-            h->unknown_44--;
+        if (h->immortal_heal_timer > 0)
+            h->immortal_heal_timer--;
         if (h->health < 50)
-            h->unknown_44 = 1800;
+            h->immortal_heal_timer = 1800;
     } else if (h->health < 75) {
         /* Hurt: the joints go loose for up to a second. */
         int32_t ticks = (75 - h->health) * 2;
         if (ticks > 60)
             ticks = 60;
-        if (h->unknown_78 < ticks)
-            h->unknown_78 = ticks;
+        if (h->damage_ticks < ticks)
+            h->damage_ticks = ticks;
     }
 
-    if (h->unknown_3c <= 0) {
+    if (h->old_health <= 0) {
         h->bleeding = 0;
         h->health = 0;
         return;
@@ -76,9 +76,9 @@ void human_update_health(int human)
         mask = 7;
     } else {
         if (chest <= 0)
-            h->unknown_3c = 0;
+            h->old_health = 0;
         if (h->parts[HUMAN_PART_HEAD].health <= 0)
-            h->unknown_3c = 0;
+            h->old_health = 0;
     }
 
     /* Recovery: health every 32 ticks (64 while bleeding), blood every 256
@@ -139,5 +139,5 @@ void human_update_health(int human)
         }
     }
     if (!h->immortal && h->blood <= 10)
-        h->unknown_3c = 0;
+        h->old_health = 0;
 }

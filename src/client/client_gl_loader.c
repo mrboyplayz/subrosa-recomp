@@ -788,3 +788,732 @@ void            sub_1400E5110(__int64 (           *a1)(     char *))
 }
 
 
+
+//----- (00000001400453F0) ----------------------------------------------------
+__int64 sub_1400453F0()
+{
+  __int64 result; // rax
+
+  if ( *(_QWORD *)&dword_140404A6C[18215111] )
+  {
+    result = ((__int64 (*)(void))FreeLibrary)();
+    *(_QWORD *)&dword_140404A6C[18215111] = 0;
+  }
+  return result;
+}
+
+// 14026E000: invalid function type 'BOOL (__stdcall *FreeLibrary)(HMODULE hLibModule)' has been ignored
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (0000000140091880) ----------------------------------------------------
+__int64 sub_140091880()
+{
+  int v0; // ebp
+       char *v1; // rdi
+  __int64 v2; // r14
+  __int64 v3; // rsi
+  __int64 v4; // rbx
+  unsigned int v5; // edx
+  int v6; // edx
+  int v7; // edx
+  int v8; // edx
+  int v9; // edx
+  int v10; // edx
+  int v11; // edx
+  int v12; // edx
+  int v13; // edx
+  int v14; // edx
+  int v15; // edx
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140091880[96];
+#define v17 (*(__int64 (*))(void *)(sr_frame_140091880 + 0)) /* [rsp+0h] */
+#define v18 (*(int (*))(void *)(sr_frame_140091880 + 32)) /* [rsp+20h] */
+#define v19 (*(int (*))(void *)(sr_frame_140091880 + 36)) /* [rsp+24h] */
+#define v20 (*(char * (*))(void *)(sr_frame_140091880 + 40)) /* [rsp+28h] */
+#define v21 (*(_QWORD (*)[5])(void *)(sr_frame_140091880 + 48)) /* [rsp+30h] */
+
+  v0 = 0;
+  v21[0] = (uint64)(uintptr_t)("OpenGL ES-CL ");
+  v1 = "OpenGL ES-CM ";
+  v20 = "OpenGL ES-CM ";
+  v21[1] = (uint64)(uintptr_t)("OpenGL ES ");
+  v21[2] = 0;
+  v2 = qword_140302FA8(7938);
+  if ( !v2 )
+    return 0;
+  v3 = 0;
+  while ( 1 )
+  {
+    v4 = -1;
+    do
+      ++v4;
+    while ( v1[v4] );
+    if ( !(unsigned int)strncmp_sr((const char *)(uintptr_t)(v2), (const char *)(uintptr_t)(v1), v4) )
+      break;
+    v1 = (     char *)v21[v3++];
+    if ( !v1 )
+      goto LABEL_9;
+  }
+  v2 += v4;
+LABEL_9:
+  sub_14015B0D0(v2, "%d.%d", (__int64)(uintptr_t)&v18, (__int64)(uintptr_t)&v19);
+  dword_140404A68 = v18;
+  dword_140404A6C[0] = v19;
+  dword_140404A6C[18215115] = v18;
+  dword_140404A6C[18215116] = v19;
+  if ( v18 == 1 )
+  {
+    if ( v19 >= 0 )
+    {
+LABEL_11:
+      v5 = 1;
+      goto LABEL_12;
+    }
+  }
+  else if ( v18 > 1 )
+  {
+    goto LABEL_11;
+  }
+  v5 = 0;
+LABEL_12:
+  dword_140404A6C[18215057] = v5;
+  if ( v18 == 1 )
+  {
+    if ( v19 >= 1 )
+    {
+LABEL_14:
+      v6 = 1;
+      goto LABEL_15;
+    }
+  }
+  else if ( v18 > 1 )
+  {
+    goto LABEL_14;
+  }
+  v6 = 0;
+LABEL_15:
+  dword_140302FF0 = v6;
+  if ( v18 == 1 )
+  {
+    if ( v19 >= 2 )
+    {
+LABEL_17:
+      v7 = 1;
+      goto LABEL_18;
+    }
+  }
+  else if ( v18 > 1 )
+  {
+    goto LABEL_17;
+  }
+  v7 = 0;
+LABEL_18:
+  dword_140302FF4 = v7;
+  if ( v18 == 1 )
+  {
+    if ( v19 >= 3 )
+    {
+LABEL_20:
+      v8 = 1;
+      goto LABEL_21;
+    }
+  }
+  else if ( v18 > 1 )
+  {
+    goto LABEL_20;
+  }
+  v8 = 0;
+LABEL_21:
+  unk_140404090 = v8;
+  if ( v18 == 1 )
+  {
+    if ( v19 >= 4 )
+    {
+LABEL_23:
+      v9 = 1;
+      goto LABEL_24;
+    }
+  }
+  else if ( v18 > 1 )
+  {
+    goto LABEL_23;
+  }
+  v9 = 0;
+LABEL_24:
+  unk_140404094 = v9;
+  if ( v18 == 1 )
+  {
+    if ( v19 >= 5 )
+    {
+LABEL_26:
+      v10 = 1;
+      goto LABEL_27;
+    }
+  }
+  else if ( v18 > 1 )
+  {
+    goto LABEL_26;
+  }
+  v10 = 0;
+LABEL_27:
+  unk_140404128 = v10;
+  if ( v18 == 2 )
+  {
+    if ( v19 >= 0 )
+    {
+LABEL_29:
+      v11 = 1;
+      goto LABEL_30;
+    }
+  }
+  else if ( v18 > 2 )
+  {
+    goto LABEL_29;
+  }
+  v11 = 0;
+LABEL_30:
+  unk_14040412C = v11;
+  if ( v18 == 2 )
+  {
+    if ( v19 >= 1 )
+    {
+LABEL_32:
+      v12 = 1;
+      goto LABEL_33;
+    }
+  }
+  else if ( v18 > 2 )
+  {
+    goto LABEL_32;
+  }
+  v12 = 0;
+LABEL_33:
+  unk_1404044B0 = v12;
+  if ( v18 == 3 )
+  {
+    if ( v19 >= 0 )
+    {
+LABEL_35:
+      v13 = 1;
+      goto LABEL_36;
+    }
+  }
+  else if ( v18 > 3 )
+  {
+    goto LABEL_35;
+  }
+  v13 = 0;
+LABEL_36:
+  unk_1404044B4 = v13;
+  if ( v18 == 3 )
+  {
+    if ( v19 >= 1 )
+    {
+LABEL_38:
+      v14 = 1;
+      goto LABEL_39;
+    }
+  }
+  else if ( v18 > 3 )
+  {
+    goto LABEL_38;
+  }
+  v14 = 0;
+LABEL_39:
+  unk_140404788 = v14;
+  if ( v18 == 3 )
+  {
+    if ( v19 >= 2 )
+    {
+LABEL_41:
+      v15 = 1;
+      goto LABEL_42;
+    }
+  }
+  else if ( v18 > 3 )
+  {
+    goto LABEL_41;
+  }
+  v15 = 0;
+LABEL_42:
+  unk_14040478C = v15;
+  if ( v18 == 3 )
+  {
+    if ( v19 < 3 )
+      goto LABEL_69;
+    goto LABEL_68;
+  }
+  if ( v18 > 3 )
+LABEL_68:
+    v0 = 1;
+LABEL_69:
+  unk_140404888 = v0;
+  if ( v18 > 3 || v18 >= 3 && v19 >= 3 )
+  {
+    dword_140404A6C[18215115] = 3;
+    dword_140404A6C[18215116] = 3;
+  }
+  return (unsigned int)v18;
+}
+#undef v17
+#undef v18
+#undef v19
+#undef v20
+#undef v21
+
+// 140236FF0: using guessed type __int64 __fastcall strncmp(_QWORD, _QWORD, _QWORD);
+// 140302FA8: using guessed type __int64 (__fastcall *qword_140302FA8)(_QWORD);
+// 140302FF0: using guessed type int dword_140302FF0;
+// 140302FF4: using guessed type int dword_140302FF4;
+// 140404A68: using guessed type int dword_140404A68;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144980CB0: using guessed type unsigned int;
+// 144980D98: using guessed type unsigned int;
+// 144980D9C: using guessed type unsigned int;
+
+//----- (0000000140091BA0) ----------------------------------------------------
+__int64 sub_140091BA0()
+{
+  __int64 v0; // rax
+  int v1; // edi
+       __m128i *v2; // rsi
+  char *v3; // rbx
+  __int64 v4; // rax
+  __int64 v6; // rsi
+  __int64 v7; // rax
+       __m128i *v8; // rbx
+  __int64 v9; // rcx
+  unsigned __int64 v11; // rbp
+  __m128i *v12; // rax
+  __m128i *v13; // rdi
+       __m128i *v14; // rax
+       __m128i *v15; // rcx
+  int v16; // eax
+  int v17; // esi
+       char **v18; // r14
+  int v19; // esi
+  __int64 v20; // rdi
+
+  if ( (int)dword_140404A6C[18215115] < 3 )
+  {
+    v0 = qword_140302FA8(7939);
+    v1 = dword_140404A6C[18215119];
+    v2 = (     __m128i *)v0;
+    v3 = *(char **)&dword_140404A6C[18215121];
+    *(_QWORD *)&dword_140404A6C[18215117] = v0;
+    goto LABEL_16;
+  }
+  dword_140404A6C[18215119] = 0;
+  qword_140302FA0(33309, &dword_140404A6C[18215119]);
+  v1 = dword_140404A6C[18215119];
+  if ( (int)dword_140404A6C[18215119] <= 0 )
+  {
+    v3 = *(char **)&dword_140404A6C[18215121];
+  }
+  else
+  {
+    v4 = j__realloc_base_sr(*(_QWORD *)&dword_140404A6C[18215121], 8LL * (int)dword_140404A6C[18215119]);
+    v3 = (char *)v4;
+    if ( !v4 )
+      return 0;
+    v1 = dword_140404A6C[18215119];
+    *(_QWORD *)&dword_140404A6C[18215121] = v4;
+  }
+  if ( !v3 )
+    return 0;
+  v6 = 0;
+  if ( v1 )
+  {
+    do
+    {
+      v7 = unk_1404046B0(7939, (unsigned int)v6);
+      v8 = (     __m128i *)v7;
+      v9 = -1;
+      while ( *(_BYTE *)(v7 + v9++ + 1) != 0 )
+        ;
+      v11 = v9 + 1;
+      v12 = (__m128i *)sr_path_malloc(v9 + 1);
+      v13 = v12;
+      if ( v12 )
+        sub_1401FC920(v12, v8, v11);
+      v3 = *(char **)&dword_140404A6C[18215121];
+      *(_QWORD *)(*(_QWORD *)&dword_140404A6C[18215121] + 8 * v6) = (uint64)(uintptr_t)(v13);
+      v6 = (unsigned int)(v6 + 1);
+      v1 = dword_140404A6C[18215119];
+    }
+    while ( (unsigned int)v6 < dword_140404A6C[18215119] );
+  }
+  v2 = *(     __m128i **)&dword_140404A6C[18215117];
+LABEL_16:
+  if ( (int)dword_140404A6C[18215115] < 3 )
+  {
+    if ( v2 )
+    {
+      v14 = sub_1401FC614(v2, (     __m128i *)"GL_ARB_clip_control");
+      if ( v14 )
+      {
+        while ( 1 )
+        {
+          v15 = (     __m128i *)((char *)v14 + 19);
+          if ( (v14 == v2 || SR_VEC_LANES(128, v14[-1], i8)[15] == 32) && (SR_VEC_PTR_LANES(128, v15, i8)[0] & 0xDF) == 0 )
+            break;
+          v2 = (     __m128i *)((char *)v14 + 19);
+          v14 = sub_1401FC614(v15, (     __m128i *)"GL_ARB_clip_control");
+          if ( !v14 )
+            goto LABEL_23;
+        }
+        v1 = dword_140404A6C[18215119];
+        v16 = 1;
+        v3 = *(char **)&dword_140404A6C[18215121];
+      }
+      else
+      {
+LABEL_23:
+        v1 = dword_140404A6C[18215119];
+        v16 = 0;
+        v3 = *(char **)&dword_140404A6C[18215121];
+      }
+    }
+    else
+    {
+      v16 = 0;
+    }
+LABEL_34:
+    unk_14040488C = v16;
+    if ( v3 )
+    {
+      v19 = 0;
+      if ( v1 > 0 )
+      {
+        v20 = 0;
+        do
+        {
+          free(*(void **)&v3[v20]);
+          v3 = *(char **)&dword_140404A6C[18215121];
+          v20 += 8;
+          ++v19;
+        }
+        while ( v19 < (int)dword_140404A6C[18215119] );
+      }
+      free(v3);
+      *(_QWORD *)&dword_140404A6C[18215121] = 0;
+    }
+    return 1;
+  }
+  if ( v3 )
+  {
+    v17 = 0;
+    if ( v1 <= 0 )
+    {
+LABEL_33:
+      v16 = 0;
+    }
+    else
+    {
+      v18 = (     char **)v3;
+      while ( !*v18 || strcmp_sr(*v18, "GL_ARB_clip_control") )
+      {
+        ++v17;
+        ++v18;
+        if ( v17 >= v1 )
+          goto LABEL_33;
+      }
+      v16 = 1;
+    }
+    goto LABEL_34;
+  }
+  unk_14040488C = 0;
+  return 1;
+}
+
+// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
+// 14023AD00: using guessed type __int64 __fastcall j__realloc_base(_QWORD, _QWORD);
+// 140302FA0: using guessed type __int64 (__fastcall *qword_140302FA0)(_QWORD, _QWORD);
+// 140302FA8: using guessed type __int64 (__fastcall *qword_140302FA8)(_QWORD);
+// 1404046B0: using guessed type __int64 (__fastcall *unk_1404046B0)(_QWORD, _QWORD);
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144980DA0: using guessed type unsigned int;
+// 144980DA8: using guessed type unsigned int;
+
+//----- (0000000140095910) ----------------------------------------------------
+void sub_140095910()
+{
+  char *v0; // rcx
+  int v1; // ebx
+  __int64 v2; // rdi
+
+  v0 = *(char **)&dword_140404A6C[18215121];
+  if ( *(_QWORD *)&dword_140404A6C[18215121] )
+  {
+    v1 = 0;
+    if ( (int)dword_140404A6C[18215119] > 0 )
+    {
+      v2 = 0;
+      do
+      {
+        free(*(void **)&v0[v2]);
+        v0 = *(char **)&dword_140404A6C[18215121];
+        v2 += 8;
+        ++v1;
+      }
+      while ( v1 < (int)dword_140404A6C[18215119] );
+    }
+    free(v0);
+    *(_QWORD *)&dword_140404A6C[18215121] = 0;
+  }
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+
+//----- (000000014009E070) ----------------------------------------------------
+__int64 sub_14009E070()
+{
+  __int64 v1; // rbx
+  unsigned int v2; // eax
+  __int64 v3; // rcx
+  __int64 v4; // rax
+  __int64 v5; // rax
+       __m128i *v6; // rdi
+  __int64 v7; // rcx
+  unsigned __int64 v9; // rbp
+  __m128i *v10; // rax
+  __m128i *v11; // rsi
+
+  if ( (int)dword_140404A6C[18215115] < 3 )
+  {
+    *(_QWORD *)&dword_140404A6C[18215117] = qword_140302FA8(7939);
+    return 1;
+  }
+  v1 = 0;
+  dword_140404A6C[18215119] = 0;
+  qword_140302FA0(33309, &dword_140404A6C[18215119]);
+  v2 = dword_140404A6C[18215119];
+  v3 = *(_QWORD *)&dword_140404A6C[18215121];
+  if ( (int)dword_140404A6C[18215119] > 0 )
+  {
+    v4 = j__realloc_base_sr(*(_QWORD *)&dword_140404A6C[18215121], 8LL * (int)dword_140404A6C[18215119]);
+    v3 = v4;
+    if ( !v4 )
+      return 0;
+    *(_QWORD *)&dword_140404A6C[18215121] = v4;
+    v2 = dword_140404A6C[18215119];
+  }
+  if ( !v3 )
+    return 0;
+  if ( v2 )
+  {
+    do
+    {
+      v5 = unk_1404046B0(7939, (unsigned int)v1);
+      v6 = (     __m128i *)v5;
+      v7 = -1;
+      while ( *(_BYTE *)(v5 + v7++ + 1) != 0 )
+        ;
+      v9 = v7 + 1;
+      v10 = (__m128i *)sr_path_malloc(v7 + 1);
+      v11 = v10;
+      if ( v10 )
+        sub_1401FC920(v10, v6, v9);
+      *(_QWORD *)(*(_QWORD *)&dword_140404A6C[18215121] + 8 * v1) = (uint64)(uintptr_t)(v11);
+      v1 = (unsigned int)(v1 + 1);
+    }
+    while ( (unsigned int)v1 < dword_140404A6C[18215119] );
+  }
+  return 1;
+}
+
+// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
+// 14023AD00: using guessed type __int64 __fastcall j__realloc_base(_QWORD, _QWORD);
+// 140302FA0: using guessed type __int64 (__fastcall *qword_140302FA0)(_QWORD, _QWORD);
+// 140302FA8: using guessed type __int64 (__fastcall *qword_140302FA8)(_QWORD);
+// 1404046B0: using guessed type __int64 (__fastcall *unk_1404046B0)(_QWORD, _QWORD);
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144980DA0: using guessed type unsigned int;
+// 144980DA8: using guessed type unsigned int;
+
+//----- (000000014009E190) ----------------------------------------------------
+__int64            sub_14009E190(__int64 a1)
+{
+  __int64 v2; // rcx
+  __int64 result; // rax
+
+  v2 = *(_QWORD *)&dword_140404A6C[18215111];
+  if ( !*(_QWORD *)&dword_140404A6C[18215111] )
+    return 0;
+  if ( *(_QWORD *)&dword_140404A6C[18215113] )
+  {
+    result = (*(__int64 (           **)(__int64))&dword_140404A6C[18215113])(a1);
+    if ( result )
+      return result;
+    v2 = *(_QWORD *)&dword_140404A6C[18215111];
+  }
+  return ((__int64 (           *)(__int64, __int64))GetProcAddress)(v2, a1);
+}
+
+// 14026E300: invalid function type 'FARPROC (__stdcall *GetProcAddress)(HMODULE hModule, LPCSTR lpProcName)' has been ignored
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144980D90: using guessed type __int64 (__fastcall *)(_QWORD);
+
+//----- (00000001400A6670) ----------------------------------------------------
+__int64 sub_1400A6670()
+{
+  __int64 v0; // rax
+  __int64 result; // rax
+  unsigned int v2; // ebx
+
+  v0 = ((__int64 (           *)(     __int16 *))LoadLibraryW)(L"opengl32.dll");
+  *(_QWORD *)&dword_140404A6C[18215111] = v0;
+  if ( !v0 )
+    return 0;
+  *(_QWORD *)&dword_140404A6C[18215113] = ((__int64 (           *)(__int64,      char *))GetProcAddress)(
+                                            v0,
+                                            "wglGetProcAddress");
+  if ( !*(_QWORD *)&dword_140404A6C[18215113] )
+    return 0;
+  result = sub_1400A6700((__int64 (           *)(     char *))sub_14009E190);
+  v2 = result;
+  if ( *(_QWORD *)&dword_140404A6C[18215111] )
+  {
+    ((void (*)(void))FreeLibrary)();
+    result = v2;
+    *(_QWORD *)&dword_140404A6C[18215111] = 0;
+  }
+  return result;
+}
+
+// 14026E2F8: invalid function type 'HMODULE (__stdcall *LoadLibraryW)(LPCWSTR lpLibFileName)' has been ignored
+// 14026E300: invalid function type 'FARPROC (__stdcall *GetProcAddress)(HMODULE hModule, LPCSTR lpProcName)' has been ignored
+// 14026E000: invalid function type 'BOOL (__stdcall *FreeLibrary)(HMODULE hLibModule)' has been ignored
+// 140270438: using guessed type __int16 LibFileName[13];
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144980D90: using guessed type __int64 (__fastcall *)(_QWORD);
+
+//----- (00000001400A7620) ----------------------------------------------------
+__int64            sub_1400A7620(     __m128i *a1)
+{
+       __m128i *v2; // rdi
+       __m128i *v3; // rax
+  __int64 v4; // rcx
+       __m128i *v5; // rcx
+  char **v7; // r9
+  int v8; // r10d
+  char *v9; // rax
+  char *v10; // r8
+  int v11; // ecx
+  int v12; // edx
+
+  if ( (int)dword_140404A6C[18215115] >= 3 )
+  {
+    v7 = *(char ***)&dword_140404A6C[18215121];
+    if ( *(_QWORD *)&dword_140404A6C[18215121] )
+    {
+      v8 = 0;
+      if ( (int)dword_140404A6C[18215119] > 0 )
+      {
+        while ( 1 )
+        {
+          v9 = *v7;
+          if ( *v7 )
+          {
+            v10 = (char *)((char *)a1 - v9);
+            do
+            {
+              v11 = (unsigned __int8)v10[(_QWORD)v9];
+              v12 = (unsigned __int8)*v9 - v11;
+              if ( v12 )
+                break;
+              ++v9;
+            }
+            while ( v11 );
+            if ( !v12 )
+              break;
+          }
+          ++v8;
+          ++v7;
+          if ( v8 >= (int)dword_140404A6C[18215119] )
+            return 0;
+        }
+        return 1;
+      }
+    }
+    return 0;
+  }
+  v2 = *(     __m128i **)&dword_140404A6C[18215117];
+  if ( !*(_QWORD *)&dword_140404A6C[18215117] )
+    return 0;
+  if ( !a1 )
+    return 0;
+  v3 = sub_1401FC614(*(     __m128i **)&dword_140404A6C[18215117], a1);
+  if ( !v3 )
+    return 0;
+  while ( 1 )
+  {
+    v4 = -1;
+    do
+      ++v4;
+    while ( SR_VEC_PTR_LANES(128, a1, i8)[v4] );
+    v5 = (     __m128i *)((char *)v3 + v4);
+    if ( (v3 == v2 || SR_VEC_LANES(128, v3[-1], i8)[15] == 32) && (SR_VEC_PTR_LANES(128, v5, i8)[0] & 0xDF) == 0 )
+      break;
+    v2 = v5;
+    v3 = sub_1401FC614(v5, a1);
+    if ( !v3 )
+      return 0;
+  }
+  return 1;
+}
+
+// 1400A77FB: variable 'a3' is possibly undefined
+// 1400A7804: variable 'a2' is possibly undefined
+// 1400A78E5: variable 'a2' is possibly undefined
+// 1400A78E5: variable 'a3' is possibly undefined
+// 1400A7956: variable 'v20' is possibly undefined
+// 1400A7956: variable 'v21' is possibly undefined
+// 1400A79D2: variable 'v28' is possibly undefined
+// 1400A79D2: variable 'v29' is possibly undefined
+// 1400A7A30: variable 'v37' is possibly undefined
+// 140279870: using guessed type __int128 xmmword_140279870;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 1AD059440: using guessed type unsigned int;
+// 1AD059448: using guessed type unsigned int;
+// 1AD05944C: using guessed type unsigned int;
+
+//----- (00000001400E3B90) ----------------------------------------------------
+__int64 (           *           sub_1400E3B90(__int64 (           *a1)(_QWORD)))(_QWORD, _QWORD)
+{
+  __int64 (           *result)(_QWORD, _QWORD); // rax
+
+  result = (__int64 (           *)(_QWORD, _QWORD))a1;
+  if ( unk_14040488C )
+  {
+    result = (__int64 (           *)(_QWORD, _QWORD))a1("glClipControl");
+    unk_140404A60 = result;
+  }
+  return result;
+}
+
+// 140404A60: using guessed type __int64 (__fastcall *unk_140404A60)(_QWORD, _QWORD);
+
+//----- (000000014010E030) ----------------------------------------------------
+__int64 sub_14010E030()
+{
+  __int64 result; // rax
+
+  result = ((__int64 (           *)(     __int16 *))LoadLibraryW)(L"opengl32.dll");
+  *(_QWORD *)&dword_140404A6C[18215111] = result;
+  if ( result )
+  {
+    *(_QWORD *)&dword_140404A6C[18215113] = ((__int64 (           *)(__int64,      char *))GetProcAddress)(
+                                              result,
+                                              "wglGetProcAddress");
+    return *(_QWORD *)&dword_140404A6C[18215113] != 0;
+  }
+  return result;
+}
+
+// 14026E2F8: invalid function type 'HMODULE (__stdcall *LoadLibraryW)(LPCWSTR lpLibFileName)' has been ignored
+// 14026E300: invalid function type 'FARPROC (__stdcall *GetProcAddress)(HMODULE hModule, LPCSTR lpProcName)' has been ignored
+// 140270438: using guessed type __int16 LibFileName[13];
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144980D90: using guessed type __int64 (__fastcall *)(_QWORD);
+

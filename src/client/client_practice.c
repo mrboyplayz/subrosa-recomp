@@ -608,7 +608,7 @@ LABEL_157:
     *(v31 - 3) = 100;
     v31[1] = ((unsigned int)v34 >> 31) + (v34 >> 2);
     v37 = &dword_140404A6C[71856288];
-    *((float *)v31 - 1) = v35 * 0.1;
+    *((float *)v31 - 1) = v35 * 0.10000000149011612;
     do
     {
       if ( *(v37 - 2) == j )
@@ -637,12 +637,12 @@ LABEL_157:
     sub_1401063E0();
     if ( dword_140404A6C[456202453] )
     {
-      *(float *)&dword_140404A6C[283831482] = (float)(unsigned __int8)rand() * 0.003067961575771484;
-      *(float *)&dword_140404A6C[283831482] = (float)((unsigned __int8)rand() + 64) * 0.003067961575771484;
+      *(float *)&dword_140404A6C[283831482] = (float)(unsigned __int8)rand() * 0.0030679615757714844;
+      *(float *)&dword_140404A6C[283831482] = (float)((unsigned __int8)rand() + 64) * 0.0030679615757714844;
       v39 = rand();
       v38 = dword_140404A6C[283831447];
       dword_140404A6C[179992853] = 2376000;
-      *(float *)&v40 = (float)v39 * 0.01227184630308594;
+      *(float *)&v40 = (float)v39 * 0.012271846303085938;
       dword_140404A6C[283831483] = v40;
       goto LABEL_197;
     }
@@ -2079,153 +2079,9 @@ SR_TEST_ARENA_FINALIZE:
 //----- (000000014012CEB0) ----------------------------------------------------
 __int64            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6)
 {
-  __int64 v6; // r15
-  __int64 v9; // rbx
-  int v11; // ecx
-  int v12; // edx
-  float v13; // xmm1_4
-  float v14; // xmm4_4
-  float v15; // xmm3_4
-  __int64 v16; // r8
-  int v17; // eax
-  __int64 v18; // rax
-  float v19; // xmm7_4
-  float v20; // xmm9_4
-  float v21; // xmm8_4
-  float v22; // xmm5_4
-  float v23; // xmm2_4
-  __int64 v24; // rax
-  float v25; // xmm6_4
-  float v26; // xmm5_4
-  float v27; // xmm1_4
-  float v28; // xmm3_4
-  float v29; // xmm0_4
-  float v30; // xmm4_4
-  float v31; // xmm7_4
-  __int64 v32; // r14
-  unsigned int v33; // xmm7_4
-  unsigned int v34; // xmm1_4
-  unsigned int v35; // eax
-  int v36; // eax
-  int v37; // ebx
-  __int64 v38; // rdi
-  char v39; // al
-  unsigned int *v40; // rcx
-  unsigned int v41; // ecx
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14012CEB0[96];
-#define v43 (*(__int64 (*))(void *)(sr_frame_14012CEB0 + 0)) /* [rsp+0h] */
-#define v44 (*(unsigned int (*))(void *)(sr_frame_14012CEB0 + 48)) /* [rsp+30h] */
-#define v45 (*(float (*))(void *)(sr_frame_14012CEB0 + 52)) /* [rsp+34h] */
-#define v46 (*(float (*))(void *)(sr_frame_14012CEB0 + 56)) /* [rsp+38h] */
-#define v47 (*(float (*)[4])(void *)(sr_frame_14012CEB0 + 64)) /* [rsp+40h] */
-#define v48 (*(__int64 (*))(void *)(sr_frame_14012CEB0 + 80)) /* [rsp+50h] */
-
-  v6 = a1;
-  v9 = 396LL * a3;
-  v11 = 0;
-  v12 = dword_140404A6C[v9 + 225426061];
-  v13 = *(float *)&dword_140404A6C[v9 + 225426175];
-  v14 = *(float *)&dword_140404A6C[v9 + 225426176];
-  v15 = *(float *)&dword_140404A6C[v9 + 225426174];
-  v16 = (int)dword_140404A6C[v9 + 225426057];
-  if ( (v12 >> 1) - a5 - 1 >= 0 )
-    v11 = ((int)dword_140404A6C[v9 + 225426061] >> 1) - a5 - 1;
-  v17 = v12 - 1;
-  if ( v11 <= v12 - 1 )
-    v17 = v11;
-  if ( a4 )
-  {
-    v15 = -v15;
-    v13 = -v13;
-    v14 = -v14;
-    v24 = v9 * 4 + 28LL * v17;
-    v22 = *(float *)((char *)&dword_140404A6C[225426063] + v24);
-    v23 = *(float *)((char *)&dword_140404A6C[225426065] + v24);
-    v19 = *(float *)((char *)&dword_140404A6C[225426066] + v24);
-    v20 = *(float *)((char *)&dword_140404A6C[225426067] + v24);
-    v21 = *(float *)((char *)&dword_140404A6C[225426068] + v24);
-  }
-  else
-  {
-    v18 = v9 * 4 + 28LL * (v12 - v17);
-    v19 = *(float *)((char *)&dword_140404A6C[225426056] + v18);
-    v20 = *(float *)((char *)&dword_140404A6C[225426057] + v18);
-    v21 = *(float *)((char *)&dword_140404A6C[225426058] + v18);
-    v22 = *(float *)((char *)&dword_140404A6C[225426059] + v18);
-    v23 = *(float *)((char *)&dword_140404A6C[225426061] + v18);
-  }
-  v25 = -1.5707964;
-  v26 = a6 * fsqrt((float)((float)(v23 - v21) * (float)(v23 - v21)) + (float)((float)(v22 - v19) * (float)(v22 - v19)));
-  if ( !dword_140404A6C[v9 + 225426058] )
-    v25 = -3.1415927;
-  if ( !a4 )
-    v25 = v25 + 3.14159265359;
-  v27 = (float)(v13 * v26) + v20;
-  v28 = (float)(v15 * v26) + v19;
-  v29 = *(float *)&dword_140404A6C[34 * dword_140404A6C[v9 + 225426056] + 225391234];
-  v30 = (float)(v14 * v26) + v21;
-  v44 = LODWORD(v28);
-  v46 = v30;
-  if ( v27 < v29 )
-    v27 = v29;
-  if ( v27 < *(float *)&dword_140404A6C[34 * v16 + 225391234] )
-    v27 = *(float *)&dword_140404A6C[34 * v16 + 225391234];
-  v45 = v27 + 2.0;
-  v47[0] = v28 - (float)(*(float *)&dword_1402F6188 * 128.0);
-  v47[1] = (float)(v27 + 2.0) - (float)(*(float *)&dword_1402F618C * 128.0);
-  v47[2] = v30 - (float)(*(float *)&dword_1402F6190 * 128.0);
-  if ( (unsigned int)sub_1400DC050((float *)&v44, v47, 0) )
-    v31 = *(float *)&dword_140404A6C[73006982];
-  else
-    v31 = v45;
-  v32 = 383LL * (int)dword_140404A6C[132792829];
-  *(float *)&v33 = v31 + (float)(0.375 - *(float *)&dword_140404A6C[24944 * v6 + 346731821]);
-  sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[v32 + 132400638]), 0, 0x5F8u);
-  v34 = LODWORD(v46);
-  v35 = dword_140404A6C[v9 + 225426059];
-  dword_140404A6C[v32 + 132400641] = v44;
-  dword_140404A6C[v32 + 132400643] = v34;
-  dword_140404A6C[v32 + 132400642] = v33;
-  dword_140404A6C[v32 + 132400637] = v6;
-  *(_QWORD *)&dword_140404A6C[v32 + 132400638] = -1;
-  *(float *)&dword_140404A6C[v32 + 132400647] = v25;
-  dword_140404A6C[v32 + 132401011] = a2;
-  dword_140404A6C[v32 + 132400659] = 1080033280;
-  dword_140404A6C[v32 + 132400660] = -1090519040;
-  dword_140404A6C[v32 + 132400661] = 1077936128;
-  dword_140404A6C[v32 + 132400668] = 1;
-  if ( a4 )
-    v36 = v35 - a5 - 1;
-  else
-    v36 = a5 + v35;
-  dword_140404A6C[v32 + 132400996] = v36;
-  dword_140404A6C[v32 + 132400997] = v36;
-  dword_140404A6C[v32 + 132400993] = a3;
-  dword_140404A6C[v32 + 132400994] = a4;
-  dword_140404A6C[v32 + 132400995] = -1;
-  dword_140404A6C[v32 + 132400999] = 0;
-  v37 = rand() % (signed int)dword_140404A6C[225426046];
-  v38 = 383LL * (int)dword_140404A6C[132792829];
-  v39 = rand();
-  sub_140008E40(dword_140404A6C[132792829], dword_140404A6C[v38 + 132400993], a4, v37, v39 & 1);
-  v40 = &dword_140404A6C[v38 + 132400648];
-  *(_QWORD *)v40 = 1065353216;
-  *((_QWORD *)v40 + 1) = 0;
-  *((_QWORD *)v40 + 2) = 1065353216;
-  *((_QWORD *)v40 + 3) = 0;
-  v40[8] = 1065353216;
-  sub_14007B2A0(
-    (__int64)&dword_140404A6C[v38 + 132400648],
-    (float *)&dword_140404A6C[v38 + 132400651], sr_export_float_lane_container(sr_text_float_bits((float)(v25 + 1.570796326795))) /* the original converts to float (cvtsd2ss) before this call */);
-  v41 = dword_140404A6C[132792829];
-  ++dword_140404A6C[dword_140404A6C[132792829] + 132792837];
-  dword_140404A6C[132792829] = v41 + 1;
-  return (unsigned int)v41; /* native pre-increment spawn index */
+  /* Clean implementation: src/engine/traffic_spawn.c, checked against the original executable
+     (tools/native-compare, suite trafficspawn). */
+  extern int traffic_create_car(int type, unsigned int color, int street, int end, int lane, float along);
+  return (unsigned int)traffic_create_car(a1, a2, a3, a4, a5, a6);
 }
-#undef v43
-#undef v44
-#undef v45
-#undef v46
-#undef v47
-#undef v48
+

@@ -29,6 +29,9 @@ The table records the recovered routines by original address. Recovery is incomp
 | `world_items.c` | tick stage: items follow their bodies; boxes and voxels they occupy; removing an item, detaching it from its parent, taking it out of a human's hand or slot | 0x1400C9D20, 0x14007F970, 0x1400CA9B0, 0x1400CA7C0 |
 | `item_contacts.c`, `item_state.c`, `item.h` | item/item and item/human contacts, cash insertion/removal and valuation, inventory append, item attachment/transfer and link registration, broken block parts becoming items and returning to their origins | 0x1400CA1C0, 0x1400CA430, 0x1400CA740, 0x1400C3AB0, 0x1400C3BA0, 0x1400C3D10, 0x1400C3C90, 0x1400E38A0, 0x1400E35D0, 0x1400CDBD0, 0x1400CDFF0 |
 | `item_physics.c` | item physics for a tick: expiry, held/static bodies, world contacts and settling | 0x1400CE370 |
+| `item_tick.c`, `items/` | the item update of a tick: walkie-talkie lists, worn items following the holder's chest, attached items following their parents, lifetimes, then each type's work, one file per type: `gun.c` (every gun: trigger, chambering, the bullet, recoil), `phone.c` (Cell Phone, Pay Phone), `walkie_talkie.c`, `key.c`, `computer.c` (states, cipher screen), `computer_snake.c` (SNAKE.EXE), `briefcase.c` (with the cash inside), `grenade.c` (fuse and blast), `bandage.c`, `burger.c`, `arcade.c`; `items/items.h` names every item type | 0x1400CC610, 0x1401380F0, 0x1400CF670, 0x1400A70B0, 0x1400C5750, 0x1400C9820 |
+| `bullets.c`, `bullets.h` | firing a bullet: its record and the frame it is drawn with | 0x14004E8A0 |
+| `events.c`, `events.h` | events the game records for its clients: the item-info event | 0x140051940 |
 | `world_blocks.c` | block id and gone-parts lookups in the level's layers; block parts broken loose by vehicles and humans; tick stage: humans' bones follow their bodies, capsule boxes and voxels | 0x140016870, 0x1400169B0, 0x1400B95E0 |
 | `world_vehicles.c` | tick stages: vehicles follow their bodies (boxes, voxels, block parts they break off); lifetimes and removal; wheel joints (suspension, grip, axle); drivetrain (engine curve, brakes, driven wheels) | 0x1401069C0, 0x14010BE50, 0x14010D610, 0x140107ED0 |
 | `world_streets.c`, `world_streets.h` | World map ("test2") streets: street patches, railway segments, filing streets into the 64 x 64 street cells, the railway route with its stops, the race track | 0x14005F6E0, 0x1400603A0, 0x1401899F0, 0x14002A9A0, 0x14002A680 |
@@ -48,67 +51,51 @@ The table records the recovered routines by original address. Recovery is incomp
 | `human_collide.c` | a human's bones against the level's triangles, the items near it and the bones of other humans: a contact for each hit | 0x1400B2E70 |
 | `human_hits.c` | a human struck by a vehicle: contacts of its bones with the hull, the harm of a hard blow, the event and score of a fatal one | 0x1400B3A80 |
 | `human_health.c` | health for a tick: death, the looseness of a hurt body, recovery, bleeding and its event | 0x1400B5E70 |
-| `gl.h` | OpenGL entry points with their real prototypes | |
-| `memory.h` | access to the game state shared with `src/client/` | |
-| `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
+| `vehicle_tick.c`, `vehicle.h` | the vehicle stage of a tick, over all vehicles: crash noise and damage from sudden changes of velocity, drag (stronger under water), then per vehicle its controls, a train's engine and timetable of stops, each wheel (how it hangs, skid, turn), hull corners against the level (breaking block parts), the swivelling part of type 17, hull against items, hull corners against other vehicles; breaking a part off a block | 0x140108930, 0x14000B7D0 |
+| `vehicle_controls.c`, `vehicle_damage.c`, `event_sound.c` | a car's controls (pedals, clutch, gear stick and automatic gearbox, gear ratios, the turn of both front wheels); damage to a vehicle's health and the destroyed event; the sound event | 0x14010AA70, 0x14000B650, 0x1400515E0 |
+| `vehicle_helicopter.c` | a helicopter: rotor run-up with a pilot aboard, the bond that levels the rotor, drag on the body, and sixteen blade elements whose lift (collective and cyclic) and drag push the rotor's body | 0x14010AF90 |
+| `vehicle_train.c` | a train car: its bogies' swivel bonds, wheel places against the rails' triangles, the rail street it is on; a street's triangles by range | 0x14010C110, 0x1401885C0 |
+| `vehicle_wheels.c`, `collision_wheel.c` | a wheel against the ground (two discs, one at each end of its axle, against the level and the road triangles near it); a disc against one triangle and a list of triangles; an edge through a plane | 0x14010D0D0, 0x14003F0B0, 0x14003D830, 0x140077B30 |
+| `collision_hull_ray.c` | a ray against a vehicle's hull mesh | 0x1400E21F0 |
+| `vehicle_spawn.c`, `physics_create.c`, `physics_create.h` | making a vehicle of a type (hull, wheel, rotor and bogie bodies with their bonds, seats, the created event); making a body; making the rotation and point bonds that hold two bodies together | 0x14005BCA0, 0x14005CF80, 0x14004E5B0, 0x14004E430 |
+| `traffic_route.c`, `traffic.h` | traffic cars: the route search over the road network's nodes, planning a car's route with its turns at each crossing, the speed a car may keep behind the cars ahead of it on a street, listing a street's cars, drawing a random street | 0x14012C1F0, 0x140008E40, 0x140008BB0, 0x14018C250, 0x140130000, 0x140009340 (building the network from the streets) |
+| `traffic_car.c` | traffic cars: how one drives for a tick (keeping and changing lane, slowing for the end of the street, the lights and the traffic ahead, the curve over a crossing, a new route when the old one runs out) | 0x140009E30 |
+| `traffic_tick.c` | traffic cars: the traffic stage of the tick (crossing lights, driving the bots' cars, making and dropping the vehicles as players come and go, moving a car without a vehicle, working the controls of one with a vehicle) and filing the cars on the streets | 0x14018A3E0, 0x14018B680 |
+| `traffic_spawn.c` | traffic cars: making one on a street, filling the city with them, and a bot player driving a vehicle that is one | 0x14012CEB0, 0x14012E960, 0x140009A00 |
+| `vehicle_type_build.c` | vehicle types: adding an edge, a part and a wheel while a type is put together | 0x14010C850, 0x14010C900, 0x14010CAC0 |
+| `world_vehicles.c`, `vehicle_train.c`, `human_ragdoll.c` (additions 2026-10-13) | removing a vehicle at once; a vehicle's turning from its points; a train at every train stop; a random direction in a plane | 0x14007FE00, 0x1400A48D0, 0x140061950, 0x1400A5510 |
+| `collision_wheel_level.c`, `collision_wheel_blocks.c`, `collision_wheel_level.h` | a wheel against the level: the terrain under it gathered as a mesh with shared corners, the wheel against such a mesh, against a cube block and a block shape in a voxel, against a whole block layer (both shape entries of every voxel its box covers), and the test that puts terrain and layers together | 0x14003DE80, 0x1400D05B0, 0x14003DAE0, 0x14003C760, 0x14003E100, 0x14003E4B0 |
+| `net_transport.c`, `net_transport.h` | UDP socket lifecycle, byte transfer, UDP/Steam send and receive, 1,024-byte fragmentation and 64-slot reassembly | 0x14008EAD0, 0x14008EB80, 0x1400805E0, 0x14015AFD0, 0x140130350, 0x14011BD70, 0x14011C760 |
 
-All of them are in use by the built client except `renderer_batch_vertex2f`
-(0x14007D230), which no recompiled code calls yet.
+Additional computer routines restored on 2026-10-12:
 
-## Rules
+| File | Contents | Original routines |
+| --- | --- | --- |
+| `disk.c`, `disk.h` | resolving a computer drive and appending an in-memory disk file | 0x14004C960, 0x140080690 |
+| `items/computer.c` | pending disk copy/list jobs and the mission application's per-tick state machine | 0x1400C3ED0, 0x1400C8500 |
+| `items/computer_mission.c` | intel/project menu, document status view, upload listing/progress, and padded screen rows | 0x1400C7890, 0x1400C7FC0, 0x1400C86D0, 0x1400C6AB0 |
+| `items/computer_path.c` | formatting the current drive and directory path | 0x1400C6B30 |
+| `bot.c`, `bot.h`, `city.h` | bots: picking the next street at an intersection (toward the target intersection, never back the way it came), planning a whole route of up to 32 waypoints; the player's waypoint list; city road tables | 0x1400090C0, 0x1400096B0 |
+| `player.c`, `player.h` | players: taking a free slot and setting up a new player (random face and hair), tidying a joining player's name, removing one (corporation lists, managed corporations, saving to the account, letting its human go); Player and Account records after RosaServer | 0x14005CCF0, 0x1400802F0, 0x140091E60 |
+| `player_input.c` | the local player's keys and mouse buttons as actions: inventory keys (R, E, Q, 1-5, Shift for the hand), the left-click primary input; queueing inventory and chat actions; keys typed on a computer (letters, symbols with Shift, Ctrl, Enter, Backspace, arrows) | 0x14009EA20, 0x140116A40, 0x140116B00, 0x1400A1640 |
+| `stocks.c`, `stocks.h` | corporation stocks and team money: a player buying shares (up to 10000) and selling them (price less what active missions drew beyond what the stocks paid in, 95% or 98%), a team's money shared out into its players' corporate ratings when the manager goes; corporation missions in `corporation.h` | 0x1401189F0, 0x14011AF80, 0x140194C10 |
+| `player_team.c` | a player changing team (a manager leaving gives up the corporation, the team's suit and tie, bought suit colours kept) and taking back the damage done to a teammate | 0x140138430, 0x14011B7F0 |
+| `event_player.c` | events 7 and 8 for the clients: a player's state and appearance packed into bit fields, and its money, stocks and phone number; event 2, a message (63 characters at most) | 0x140051DC0, 0x140051F50, 0x140051480 |
+| `player_chat.c` | what a player says: to everyone while restarting or without a living human, otherwise through the human, a phone connected both ways in the first hand and every other walkie-talkie on the channel of one in hand | 0x1401164B0 |
+| `player_inventory.c`, `saved_cars.h` | what a player keeps of their human's inventory between humans (guns with magazine and chambered round, cash, car keys: in world games the car itself is saved and made again, otherwise teams 0 to 2 get a new car from their corporation's parking), the local player's mute list, a corporation making a car on a free parking place | 0x140117340, 0x140117020, 0x140117820, 0x1400F00D0 |
+| `car_shop.c` | a player buying a car at a car shop: made at the shop's spawn point (stepping back 4 units per sale, 8 places), the key into the first free body slot, the price paid, the car off the shop list; RosaServer Building fields (spawnRot, shop cars, sales) | 0x1400EFD20 |
 
-1. **A routine moves here only when it is proven equal to the original.**
-   `tools/native-compare/run.sh` runs the original executable's routine and the
-   one here with the same inputs and compares results, resulting state and
-   every OpenGL call. A port is done when that comparison is identical, and
-   changing any single operation of the port makes it differ (unless the
-   change is equivalent, such as `x * -2` for `-(x + x)`).
-2. **Floating-point expressions keep the original's order of operations.**
-   `(a + b) + c` and `a + (b + c)` round differently, and physics diverges
-   from a single different bit. Names and structure are free; the arithmetic
-   is not.
-3. **No addresses outside the headers.** State is reached through a named
-   struct or accessor declared next to its address (`renderer_batch`,
-   `renderer_ui_program`). Fields whose meaning is not known yet are called
-   `unknown_<offset>` and say so.
-4. **OpenGL is called through `gl.h` only**, so every call has a prototype.
-   Many rendering bugs in the recompiled client came from calls without one.
+Verification and the corrected composed item-tick fixture are documented in `../../docs/client-computerjobs-20261012.md`.
 
-## How a routine is replaced
 
-The recompiled function keeps its name and place in `src/client/` and its
-body becomes a call into this directory:
+Mission screen comparisons are documented in `../../docs/client-missionscreens-20261012.md`.
 
-    void sub_14007B2A0(__int64 a1, float *a2, double a3)
-    {
-      extern void math_mat3_rotate_rows(float matrix[9], const float axis[3], float angle);
-      math_mat3_rotate_rows((float *)a1, a2, *(float *)&a3);
-    }
+Network transport and drive-path proof: `../../docs/client-networktransport-20261012.md`.
 
-Recompiled callers are untouched, and the client's ownership inventory
-(`src/client/manifest.json`) still lists every original routine. When all
-callers of a wrapper have moved here as well, the wrapper can go.
+Engine replication restored on 2026-10-12 (direct engine comparisons; client integration pending):
 
-## Build
+| File | Contents | Original routines |
+| --- | --- | --- |
+| `net_replication.c`, `net_replication.h` | angle, position/component delta codecs, packed quaternion rotation, item spawn and item snapshot/interpolation updates | 0x14018D440, 0x14018D510, 0x14018D5E0, 0x140191F90, 0x14018D6D0, 0x14018DB20 |
 
-`scripts/check-rebuild.py` compiles every `*.c` in this directory and links
-the objects into the client. Unlike the recompiled sources these files are
-built with optimization (`-O2`); they must stay free of undefined behaviour.
-`-fno-strict-aliasing` is required because the shared state is one array
-viewed through structs.
-
-## Known limits of the comparison
-
-- Results are compared bit for bit, except that any not-a-number result
-  counts as equal to any other. Which of two NaN operands a processor
-  propagates depends on operand order, which the compiler chooses.
-- A routine that calls routines not ported yet is compared with those
-  replaced, in both programs, by the same recording stub. That proves the
-  routine's own work and its calls, not what the callees do.
-- The comparison runs code that computes and that calls OpenGL. It cannot yet
-  run code that reads files or talks to the operating system, and OpenGL calls
-  are recorded, not drawn.
-
-The 2026-10-11 item batches are documented in `../../docs/client-itemactions-20261011.md`, `../../docs/client-iteminventory-20261011.md` and `../../docs/client-itemphysics-20261011.md`. Their wrappers are integrated into the combined executable. The existing linked rotation helper has a documented FP-status mismatch; the cash/inventory routines do not use that boundary.
-
-The four collision helpers restored after Claude stopped, and the quiet-NaN FP-status correction in vector normalization, are documented in `../../docs/client-collisionhelpers-20261011.md`.
+Evidence: `../../docs/engine-network-replication-20261012.md`.

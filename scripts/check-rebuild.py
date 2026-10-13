@@ -145,9 +145,10 @@ def compile_engine(compiler, engine_dir, output, debug_info=False):
     inventory. Returns (object paths, hashed inputs, diagnostics, failed).
     """
     output.mkdir(parents=True, exist_ok=True)
-    sources = sorted(engine_dir.glob("*.c"))
+    # Item types live in their own files under items/ (one per type).
+    sources = sorted(engine_dir.glob("*.c")) + sorted(engine_dir.glob("items/*.c"))
     inputs = {str(path.resolve()): hashlib.sha256(path.read_bytes()).hexdigest()
-              for path in sources + sorted(engine_dir.glob("*.h"))}
+              for path in sources + sorted(engine_dir.glob("*.h")) + sorted(engine_dir.glob("items/*.h"))}
     objects, diagnostics, failed = [], [], False
     for source in sources:
         target = output / (source.stem + ".obj")

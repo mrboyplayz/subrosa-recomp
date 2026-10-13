@@ -142,6 +142,75 @@ typedef struct CollisionHit {
 
 #define collision_hit SR_GLOBAL(CollisionHit, 0x151A84880ULL)
 
+/* Sweeps from -> to through the level: its own surfaces, the active block
+   layers, with with_records also the 128 records at 0x1A796F380, and the
+   streets' embankments. The nearest hit is left in collision_hit (fraction
+   along the segment, from 1; item_hit_layer is the block layer hit, else
+   -1) and the result is whether one lies before `to` (a NaN fraction counts).
+   0x1400DC050 */
+int collision_sweep_level(float from[3], float to[3], int with_records);
+
+/* Sweeps from -> to through block layer `layer` (skipped when both ends lie
+   beyond the same side of its bounds): walks its voxels in the layer's frame
+   and tests each one's block parts, model and two shape entries. The first
+   voxel with a hit stops the walk: point and normal (world axes, except for
+   block parts, which stay in the layer's frame as in the original), *fraction
+   (from 1) and the hit's layer, voxel and kind (0x151A848D4..0x151A84908).
+   True then. 0x1400D6B60 */
+int collision_sweep_layer(float point[3], float normal[3], float *fraction, int layer, const float from[3],
+                          const float to[3]);
+
+/* Sweeps from -> to across the terrain height field (8 x 8 tiles of 2048
+   one-unit cells, solid where the 4 x 4-cell mask says so), walking the
+   cells under the segment in x and z (at most 0x4001 steps) and testing each
+   solid one as two triangles. hit gets point, normal and fraction (from 1)
+   of the first cell that yields one; true then. 0x1400D1830 */
+int collision_sweep_terrain(float hit[7], const float from[3], const float to[3]);
+
+/* The segment from -> to against the faces of voxel cell `voxel` (a cube of
+   side `scale` at voxel * scale) chosen by `faces`: face f (0 -y, 1 +z,
+   2 -x, 3 -z, 4 +x, 5 +y) is tested when bits f and 6 + f are both set. On
+   the first face hit (in that order, not the nearest) point, normal and *t
+   are set, the face index is left at 0x151A848EC and the result is true.
+   normal is the last tested face's either way. 0x1400DC650 */
+int collision_segment_cell(float point[3], float normal[3], float *t, const float from[3], const float to[3],
+                           const int32_t voxel[3], uint32_t faces, float scale);
+
+/* The segment from -> to against the block shape in voxel cell `voxel`
+   (corners (voxel + vertex) * scale): the type's quads (low 16 bits of
+   type_and_gone) as triangles a b c and a c d, then its parts not marked
+   gone in the high 16 bits (part i by bit i, rotating; only the first ten
+   can be gone), both sides. The nearest hit sets point, normal and *t (from
+   1); its quad's id goes to 0x151A848EC and its index (parts | 0x10000) to
+   0x151A848F4. True when a hit lies before `to`. 0x1400DE770 */
+int collision_segment_block_shape(float point[3], float normal[3], float *t, const float from[3], const float to[3],
+                                  const int32_t voxel[3], uint32_t type_and_gone, float scale);
+
+/* Sweeps from -> to against placed model `index` (one of 128 at
+   0x1A796F380): skipped when both ends lie beyond the same side of the box
+   its model's radius gives; else every face (quads as two triangles) is
+   tested and the nearest hit kept in point / normal / *fraction (from 1).
+   A textured face's hit leaves texture steps at 0x151A8490C / 0x151A84910,
+   an untextured one -1 in the first. True on a hit, which also copies the
+   record's three hit words into collision_hit. 0x1400D8B70 */
+int collision_sweep_model(float point[3], float normal[3], float *fraction, int index, const float from[3],
+                          const float to[3]);
+
+/* The same sweep for model `model` placed at position, turned by rotation
+   (not one of the placed records); a hit clears collision_hit.unknown_20.
+   0x1400D97A0 */
+int collision_sweep_model_at(float point[3], float normal[3], float *fraction, int model, const float position[3],
+                             const float rotation[9], const float from[3], const float to[3]);
+
+struct StreetTriangleList;
+/* The nearest triangle of the list the segment from -> to passes through:
+   hit gets the point, the triangle's unit normal ((c - a) x (b - a); zero
+   when that has length 0 or NaN) and the fraction along the segment, which
+   starts at 1. True when a hit lies before `to` (a NaN fraction counts, and
+   is replaced by any later hit). 0x1400DA300 */
+int collision_segment_triangles(float hit[7], const struct StreetTriangleList *triangles, const float from[3],
+                                const float to[3]);
+
 /* A vehicle type's collision mesh, in the type's own axes: vertices
    (0x190297C5C), faces of 3 or 4 corners (0x19029AC60) and windows, quads
    that stop colliding once broken (0x1902B4C64); 180,288 bytes per type. */
@@ -202,6 +271,16 @@ int collision_ray_sphere(float point[3], float normal[3], float *fraction, const
    set, its wheels. Leaves the nearest hit in collision_hit (fraction from 1
    down) and returns whether there was one. 0x1400DFB70 */
 int collision_ray_vehicle(int vehicle, const float from[3], const float to[3], int wheels);
+
+/* The same for a vehicle with a soft body (made of physics points); a rigid
+   vehicle type goes to collision_ray_vehicle(). Skipped when both ends lie
+   beyond the same side of the vehicle's bounds. Each active face is tested
+   (quads as a b c and a c d, one-sided): a hit leaves the face in
+   collision_hit.part, the reported points of its three corners in
+   unknown_34, their weights and the surface's velocity there (unknown_20).
+   With `wheels`, wheel hits leave part -1 and the wheel in unknown_34[0].
+   0x1400DC940 */
+int collision_ray_soft_vehicle(int vehicle, const float from[3], const float to[3], int wheels);
 
 /* Sweeps a sphere against a vehicle's hull (a train's collision mesh
    instead, see collision_sweep_train()). Leaves the closest hit in

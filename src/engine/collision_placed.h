@@ -45,4 +45,11 @@ int collision_capsule_placed_mesh(PlacedMeshHit *hit, const PlacedMesh *mesh,
                                   const float (*placed)[3], const float from[3],
                                   const float to[3], float radius);
 
+/* 0x1400DA960: the nearest hit of the segment from -> to on the mesh's
+   faces (quads as triangles a b c and a c d) with its points placed: hit
+   gets point, unit normal ((c - a) x (b - a), zero when degenerate) and
+   fraction (from 1). True when a hit lies before `to`. */
+int collision_segment_placed_mesh(float hit[7], const PlacedMesh *mesh, const float (*points)[3], const float from[3],
+                                  const float to[3]);
+
 #endif

@@ -1561,3 +1561,34 @@ LABEL_254:
 #undef v226
 #undef v227
 #undef v228
+
+/* 0x1400403F0 is not a routine of its own: it is a patch block that 0x14003B920 jumps to and back from,
+   written over the start of a small routine nothing calls. src/engine/frame.c has it as part of game_frame. */
+//----- (000000014003B920) ----------------------------------------------------
+int sub_14003B920(int process_input)
+{
+  extern int game_frame(int process_input);
+  /* src/engine/frame.c, which also covers the patch block at 0x1400403F0 */
+  return game_frame(process_input);
+}
+
+//----- (00000001400A4560) ----------------------------------------------------
+__int64 sub_1400A4560()
+{
+  unsigned int v0; // ecx
+  unsigned int *v1; // rax
+
+  v0 = 0;
+  v1 = &dword_140404A6C[278520517];
+  while ( *v1 )
+  {
+    ++v0;
+    v1 += 3;
+    if ( (__int64)v1 >= (__int64)&dword_140404A6C[278521285] )
+      return 0xFFFFFFFFLL;
+  }
+  return v0;
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+

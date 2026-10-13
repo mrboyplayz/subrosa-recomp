@@ -2146,15 +2146,15 @@ float *           sub_140176210(float *a1, float *a2, float *a3, float *a4, floa
   v17 = (float)(*a4 - *a5) + v10;
   v18 = v15 + v13;
   v19 = v13 - v15;
-  v20 = (float)(v10 + v12) * 0.70710677;
+  v20 = (float)(v10 + v12) * 0.7071067690849304;
   v21 = (float)(v9 + v11) + v18;
   v22 = v18 - (float)(v9 + v11);
-  v23 = (float)(v17 - (float)(v12 + v14)) * 0.38268343;
+  v23 = (float)(v17 - (float)(v12 + v14)) * 0.3826834261417389;
   v24 = v20 + v14;
-  v25 = (float)((float)(v11 - v9) + v19) * 0.70710677;
+  v25 = (float)((float)(v11 - v9) + v19) * 0.7071067690849304;
   v26 = v14 - v20;
-  v27 = (float)(v17 * 0.54119611) + v23;
-  v28 = (float)(v16 * 1.306563) + v23;
+  v27 = (float)(v17 * 0.5411961078643799) + v23;
+  v28 = (float)(v16 * 1.3065630197525024) + v23;
   *a6 = v26 + v27;
   *a4 = v26 - v27;
   *a2 = v24 + v28;
@@ -2753,7 +2753,7 @@ char            sub_140176D40(_BYTE *a1, float *a2)
   int v9; // [rsp+48h] [rbp+10h] BYREF
 
   v4 = fmaxf(fmaxf(a2[2], a2[1]), *a2);
-  if ( v4 >= 1.0e-32 )
+  if ( v4 >= 1.000000023742228e-32 )
   {
     v5 = sub_14020B144(v4, &v9);
     v6 = (float)(v5 * 256.0) / v4;
@@ -3112,7 +3112,7 @@ __int64            sub_1401772C0(__int64 a1, int a2, int a3, _BYTE *a4, float *a
       v19 = fmaxf(*v14, *v15);
       if ( *v8 > v19 )
         v19 = *v8;
-      if ( v19 >= 1.0e-32 )
+      if ( v19 >= 1.000000023742228e-32 )
       {
         v24 = sub_14020B144(v19, &v58);
         v20 = v58 + 0x80;
@@ -3245,7 +3245,7 @@ __int64            sub_1401772C0(__int64 a1, int a2, int a3, _BYTE *a4, float *a
     v47 = fmaxf(*v42, *v43);
     if ( *v38 > v47 )
       v47 = *v38;
-    if ( v47 >= 1.0e-32 )
+    if ( v47 >= 1.000000023742228e-32 )
     {
       v48 = sub_14020B144(v47, &v58);
       v49 = (float)(v48 * 256.0) / v47;
@@ -5179,7 +5179,7 @@ LABEL_29:
     {
       v43 = *(_QWORD *)a1;
       v45[2] = v41;
-      sub_14017D510(v45, 0.34999999, (__int64)Block, v13, v10, v11, a4, a5, v26, v31, 1, v43);
+      sub_14017D510(v45, 0.3499999940395355, (__int64)Block, v13, v10, v11, a4, a5, v26, v31, 1, v43);
       v15 = v46;
     }
   }
@@ -6534,7 +6534,7 @@ LABEL_15:
   v34[2] = a5;
   v34[1] = a4;
   if ( a3 && a4 )
-    sub_14017D510(v34, 0.34999999, (__int64)Block, v15, v19, v18, v17, SR_VEC_LANES(128, v16, f32)[0], v28, v32, 1, *(_QWORD *)a1);
+    sub_14017D510(v34, 0.3499999940395355, (__int64)Block, v15, v19, v18, v17, SR_VEC_LANES(128, v16, f32)[0], v28, v32, 1, *(_QWORD *)a1);
   free(v33);
 }
 #undef v34
@@ -8490,7 +8490,7 @@ LABEL_90:
       v62 = 0.0;
       v63 = (__int16)(((unsigned __int8)*v53 << 8) + (unsigned __int8)v53[1]);
       v53 += 2;
-      v64 = (float)v63 * 0.000061035156;
+      v64 = (float)v63 * 6.103515625e-05;
       v65 = v64;
     }
     else if ( (v54 & 0x40) != 0 )
@@ -8500,8 +8500,8 @@ LABEL_90:
       v66 = _mm_cvtsi32_si128((__int16)(((unsigned __int8)*v53 << 8) + (unsigned __int8)v53[1]));
       v67 = (__int16)(((unsigned __int8)v53[2] << 8) + (unsigned __int8)v53[3]);
       v53 += 4;
-      v65 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v66), f32)[0] * 0.000061035156;
-      v64 = (float)v67 * 0.000061035156;
+      v65 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v66), f32)[0] * 6.103515625e-05;
+      v64 = (float)v67 * 6.103515625e-05;
     }
     else if ( v54 >= 0 )
     {
@@ -8512,13 +8512,13 @@ LABEL_90:
     }
     else
     {
-      v65 = (float)(__int16)(((unsigned __int8)*v53 << 8) + (unsigned __int8)v53[1]) * 0.000061035156;
+      v65 = (float)(__int16)(((unsigned __int8)*v53 << 8) + (unsigned __int8)v53[1]) * 6.103515625e-05;
       v68 = _mm_cvtsi32_si128((__int16)(((unsigned __int8)v53[4] << 8) + (unsigned __int8)v53[5]));
-      v62 = (float)(__int16)(((unsigned __int8)v53[2] << 8) + (unsigned __int8)v53[3]) * 0.000061035156;
+      v62 = (float)(__int16)(((unsigned __int8)v53[2] << 8) + (unsigned __int8)v53[3]) * 6.103515625e-05;
       v69 = (__int16)(((unsigned __int8)v53[6] << 8) + (unsigned __int8)v53[7]);
       v53 += 8;
-      v61 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v68), f32)[0] * 0.000061035156;
-      v64 = (float)v69 * 0.000061035156;
+      v61 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v68), f32)[0] * 6.103515625e-05;
+      v64 = (float)v69 * 6.103515625e-05;
     }
     v70 = v58 + (v56 << 8);
     v71 = fsqrt((float)(v62 * v62) + (float)(v65 * v65));
@@ -9484,14 +9484,14 @@ __int64            sub_14017FB20(float a1, float a2, unsigned int a3, __int64 a4
   v44 = 1065353216;
   v45[0] = a1;
   v9 = fmod(a2, 1.0);
-  if ( v9 >= 0.0099999998 )
+  if ( v9 >= 0.009999999776482582 )
   {
-    if ( v9 > 0.99000001 )
-      v6 = v6 + -0.0099999998;
+    if ( v9 > 0.9900000095367432 )
+      v6 = v6 + -0.009999999776482582;
   }
   else
   {
-    v6 = v6 + 0.0099999998;
+    v6 = v6 + 0.009999999776482582;
   }
   v45[1] = v6;
   if ( (int)v8 > 0 )
@@ -10262,7 +10262,7 @@ LABEL_66:
             }
           }
           v41 = v28 + (float)((float)(v22 - (int)v16 - 1) * v13);
-          if ( fabs(v29) > 1.01 )
+          if ( fabs(v29) > 1.0099999904632568 )
             sub_14023E640(
               (char *)L"fabs(area) <= 1.01f",
               (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_truetype.h",
@@ -12506,7 +12506,7 @@ LABEL_68:
           {
             v75 = 0;
           }
-          v66 = (float)(v75 | (v74 << 8)) * 0.000015258789;
+          v66 = (float)(v75 | (v74 << 8)) * 1.52587890625e-05;
         }
         else
         {
@@ -12619,22 +12619,22 @@ __int64            sub_140183820(float a1, float a2, float a3, float *a4)
   float v23; // xmm2_4
   float v24; // xmm2_4
 
-  v5 = a2 - (float)((float)(a1 * a1) * 0.33333334);
-  v6 = a1 * -0.33333334;
+  v5 = a2 - (float)((float)(a1 * a1) * 0.3333333432674408);
+  v6 = a1 * -0.3333333432674408;
   v7 = (float)(v5 * v5) * v5;
-  v8 = (float)((float)((float)((float)((float)(a1 + a1) * a1) - (float)(a2 * 9.0)) * a1) * 0.037037037) + a3;
-  v9 = (float)(v8 * v8) + (float)(v7 * 0.14814815);
+  v8 = (float)((float)((float)((float)((float)(a1 + a1) * a1) - (float)(a2 * 9.0)) * a1) * 0.03703703731298447) + a3;
+  v9 = (float)(v8 * v8) + (float)(v7 * 0.14814814925193787);
   if ( v9 < 0.0 )
   {
     v18 = ((__m128)_mm_cvtsi32_si128((int)(0xC1D80000)));
     SR_VEC_LANES(128, v18, f32)[0] = -27.0 / v7;
-    v19 = fsqrt(v5 * -0.33333334);
+    v19 = fsqrt(v5 * -0.3333333432674408);
     v20 = acos(SR_VEC_READ_LANES(128, _mm_sqrt_pd(_mm_cvtps_pd(v18)), f64)[0] * v8 * -0.5);
-    v21 = v20 * 0.33333334;
+    v21 = v20 * 0.3333333432674408;
     v22 = cosf(v21);
     *(double *)SR_VEC_LANES(128, v18, u64) = cos(v21 - 1.570796);
     v23 = *(double *)SR_VEC_LANES(128, v18, u64);
-    v24 = v23 * 1.7320508;
+    v24 = v23 * 1.7320507764816284;
     *a4 = (float)((float)(v19 + v19) * v22) + v6;
     a4[1] = v6 - (float)((float)(v24 + v22) * v19);
     a4[2] = v6 - (float)((float)(v22 - v24) * v19);

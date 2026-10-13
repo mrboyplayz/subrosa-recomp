@@ -89,7 +89,7 @@ static void expire_items(void)
 void physics_tick(void)
 {
     for (int index = 0; index < WORLD_HUMAN_CAPACITY; index++)
-        world_humans[index].unknown_6ddc = 0;
+        world_humans[index].progress_bar = 0;
     integrate_body_positions();
     sub_1401069C0();
     sub_1400B95E0();

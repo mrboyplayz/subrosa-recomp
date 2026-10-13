@@ -481,59 +481,220 @@ LABEL_27:
 //----- (000000014011C760) ----------------------------------------------------
 __int64 sub_14011C760()
 {
-  signed int v0; // ebx
-  __int64 result; // rax
-  int v2; // [rsp+50h] [rbp+8h] BYREF
-
-  while ( 1 )
-  {
-    v0 = 0;
-    dword_140404A6C[289301087] = 0;
-    if ( !dword_140404A6C[dword_140404A6C[289301069] + 289301070]
-      || (v0 = recvfrom_sr(
-                 (int)dword_140404A6C[dword_140404A6C[289301069] + 289301078],
-                 &dword_140404A6C[289317486],
-                 0x10000,
-                 0,
-                 &dword_140404A6C[289301086],
-                 &dword_140404A6C[289301090]),
-          dword_140404A6C[289317478] = ntohl_sr(dword_140404A6C[289301087]),
-          LOWORD(dword_140404A6C[289317479]) = ntohs_sr(HIWORD(dword_140404A6C[289301086])),
-          *(_QWORD *)&dword_140404A6C[289317481] = 0,
-          v0 <= 0) )
-    {
-      if ( !(unsigned int)sub_140198C60(
-                            &dword_140404A6C[289317481],
-                            (__int64)&dword_140404A6C[289317486],
-                            (__int64)&v2,
-                            0x10000u) )
-        break;
-      v0 = v2;
-      dword_140404A6C[289317478] = 0;
-      LOWORD(dword_140404A6C[289317479]) = 0;
-      if ( v2 <= 0 )
-        break;
-    }
-    if ( LOBYTE(dword_140404A6C[289317486]) == (char)dword_1402B2658
-      && BYTE1(dword_140404A6C[289317486]) == SBYTE1(dword_1402B2658)
-      && BYTE2(dword_140404A6C[289317486]) == SBYTE2(dword_1402B2658) )
-    {
-      if ( HIBYTE(dword_140404A6C[289317486]) == SHIBYTE(dword_1402B2658) )
-      {
-        *(_QWORD *)&dword_140404A6C[289317484] = 4;
-        break;
-      }
-      if ( HIBYTE(dword_140404A6C[289317486]) == byte_1402B26C3 )
-      {
-        result = sub_14011BD70(v0);
-        if ( (_DWORD)result )
-        {
-          dword_140404A6C[289317483] = result;
-          return result;
-        }
-      }
-    }
-  }
-  dword_140404A6C[289317483] = v0;
-  return (unsigned int)v0;
+    extern uint32_t net_receive_packet(void);
+    return (__int64)net_receive_packet();
 }
+
+//----- (00000001400E5EB0) ----------------------------------------------------
+__int64 sub_1400E5EB0()
+{
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400E5EB0[112];
+#define v1 (*(__int64 (*))(void *)(sr_frame_1400E5EB0 + 0)) /* [rsp+0h] */
+#define v2 (*(_BYTE (*)[64])(void *)(sr_frame_1400E5EB0 + 32)) /* [rsp+20h] */
+#define v3 (*(__int64 (*))(void *)(sr_frame_1400E5EB0 + 96)) /* [rsp+60h] */
+
+  dword_140404A6C[133919261] = 0;
+  sub_14024C22C(&dword_140404A6C[278520373]);
+  sub_140158AB0(v2, "client2.csk");
+  return sub_14024C22C(&dword_140404A6C[278520245]); /* 0x1400E5EF1: the result of this call is still in rax at the exit */
+}
+#undef v1
+#undef v2
+#undef v3
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 1602E12E0: using guessed type unsigned int;
+
+//----- (00000001400FB0A0) ----------------------------------------------------
+__int64 sub_1400FB0A0()
+{
+  unsigned int v0; // eax
+  __int64 v1; // rdx
+  __int64 v2; // rcx
+  __int64 v3; // r8
+  __int64 v4; // r9
+  __int64 v5; // rdx
+  __int64 v6; // rcx
+  __int64 v7; // rdx
+  __int64 v8; // rcx
+  __int64 v9; // r8
+  __int64 v10; // r9
+  unsigned int v11; // eax
+  __int64 v12; // rcx
+  char v13; // al
+  signed int i; // ebx
+  int v15; // eax
+  __int64 v16; // rcx
+  char v17; // al
+  void **v18; // rbx
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400FB0A0[688];
+#define v20 (*(_DWORD (*)[20])(void *)(sr_frame_1400FB0A0 + 0)) /* [rsp+0h] */
+#define v21 (*(_DWORD (*)[16])(void *)(sr_frame_1400FB0A0 + 96)) /* [rsp+60h] */
+#define v22 (*(_BYTE (*)[512])(void *)(sr_frame_1400FB0A0 + 160)) /* [rsp+A0h] */
+#define v23 (*(__int64 (*))(void *)(sr_frame_1400FB0A0 + 672)) /* [rsp+2A0h] */
+
+  sub_140198FA7();
+  dword_140404A6C[179457306] = 39;
+  v0 = sub_140237448(nullptr);
+  srand(v0);
+  *(_QWORD *)&dword_140404A6C[284024355] = 0;
+  (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.03529411926865578f,0.062745101749897f,0.08235294371843338f,0.0f) /* native XMM0-3 */;
+  (*(void (           **)(__int64))&dword_140404A6C[18215087])(16640);
+  sub_14007BB00();
+  sr_text_draw_recovered("generating", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))))), 20.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FB184 */;
+  sub_140198EF3();
+  sub_140075650();
+  *(_OWORD *)&dword_140404A6C[70087069] = xmmword_140279780;
+  sub_140139E90(v6, v5, 0.0 /* unused native input */);
+  *(_OWORD *)&dword_140404A6C[225391181] = xmmword_140279810;
+  dword_140404A6C[225391198] = 1061158912;
+  dword_140404A6C[225391197] = 1115684864;
+  *(_OWORD *)&dword_140404A6C[225391185] = xmmword_140279710;
+  *(_OWORD *)&dword_140404A6C[225391189] = xmmword_140279490;
+  *(_OWORD *)&dword_140404A6C[225391193] = xmmword_140279490;
+  sub_14007B2A0((__int64)&dword_140404A6C[225391188], (float *)&dword_140404A6C[225391188], sr_export_float_lane_container(1070141403));
+  dword_140404A6C[193070975] = 3;
+  *(_QWORD *)&dword_140404A6C[193070976] = 3;
+  *(_QWORD *)&dword_140404A6C[193070967] = -1;
+  dword_140404A6C[193070974] = -1;
+  sub_14013CDF0();
+  (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.03529411926865578f,0.062745101749897f,0.08235294371843338f,0.0f) /* native XMM0-3 */;
+  (*(void (           **)(__int64))&dword_140404A6C[18215087])(16640);
+  sub_14007BB00();
+  v20[16] = 1065353216;
+  v20[14] = 1065353216;
+  v20[12] = 1065353216;
+  v20[10] = 1065353216;
+  v20[8] = 1;
+  sr_text_draw_recovered("connecting", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))))), 20.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FB2CD */;
+  sub_140198EF3();
+  if ( !(unsigned int)sr_ConnectMasterServer() )
+  {
+    v11 = inet_addr_sr("66.226.72.227");
+    dword_140404A6C[280649181] = ntohl_sr(v11);
+    LOWORD(dword_140404A6C[280649182]) = 27592;
+  }
+  sub_1400E5F10();
+  if ( (unsigned int)sub_140198AF0((__int64)v22) )
+  {
+    v22[63] = 0;
+    v12 = 0;
+    do
+    {
+      v13 = v22[v12];
+      *((_BYTE *)&dword_140404A6C[73991096] + v12++) = v13;
+    }
+    while ( v13 );
+    HIBYTE(dword_140404A6C[73991103]) = 0;
+  }
+  dword_140404A6C[278384725] = sub_140198A50(&dword_140404A6C[278384727]);
+  dword_140404A6C[278384988] = sub_1401988C0(4u);
+  for ( i = 0; i < (int)dword_140404A6C[278384988]; ++i )
+    sub_140198820(
+      (__int64 *)&dword_140404A6C[132LL * i + 278384989],
+      (__int64)&dword_140404A6C[132 * i + 278384992],
+      i,
+      4u);
+  dword_140404A6C[133919261] = 0;
+  sub_14024C22C(&dword_140404A6C[278520373]);
+  sub_140158AB0(v21, "client2.csk");
+  sub_14024C22C(&dword_140404A6C[278520245]);
+  sub_14008EAD0(1);
+  dword_140404A6C[289301069] = 1;
+  v15 = sub_140198F9B();
+  dword_140404A6C[283831312] = 0;
+  dword_140404A6C[179668278] = v15 - 1000;
+  v16 = 0;
+  dword_140404A6C[283831453] = 25200;
+  do
+  {
+    v17 = *((_BYTE *)&dword_140404A6C[73991224] + v16);
+    *((_BYTE *)&dword_140404A6C[456202458] + v16++) = v17;
+  }
+  while ( v17 );
+  dword_140404A6C[456202722] = 1;
+  dword_140404A6C[456202453] = 1;
+  *(_QWORD *)&dword_140404A6C[73991608] = 0;
+  sr_ClientMain();
+  closesocket_sr((int)dword_140404A6C[289301079]);
+  dword_140404A6C[289301071] = 0;
+  sub_1401E0F20(*(void **)&dword_140404A6C[299853437]);
+  v18 = (void **)&dword_140404A6C[299853565];
+  do
+    sub_1401E2C30(*v18++);
+  while ( (__int64)v18 < (__int64)&dword_140404A6C[299853581] );
+  return 0; /* the function has no caller */
+}
+#undef v20
+#undef v21
+#undef v22
+#undef v23
+
+// 1400FB114: variable 'v2' is possibly undefined
+// 1400FB114: variable 'v1' is possibly undefined
+// 1400FB114: variable 'v3' is possibly undefined
+// 1400FB114: variable 'v4' is possibly undefined
+// 1400FB1A8: variable 'v6' is possibly undefined
+// 1400FB1A8: variable 'v5' is possibly undefined
+// 1400FB266: variable 'v8' is possibly undefined
+// 1400FB266: variable 'v7' is possibly undefined
+// 1400FB266: variable 'v9' is possibly undefined
+// 1400FB266: variable 'v10' is possibly undefined
+// 140198FD7: using guessed type __int64 __fastcall closesocket(_QWORD);
+// 140199001: using guessed type __int64 __fastcall ntohl(_QWORD);
+// 140279490: using guessed type __int128 xmmword_140279490;
+// 140279710: using guessed type __int128 xmmword_140279710;
+// 140279780: using guessed type __int128 xmmword_140279780;
+// 140279810: using guessed type __int128 xmmword_140279810;
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
+// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
+// 150F610E0: using guessed type unsigned int;
+// 151E4614C: using guessed type unsigned int;
+// 1602E12E0: using guessed type unsigned int;
+// 16B097ED4: using guessed type unsigned int;
+// 16E486848: using guessed type unsigned int;
+// 16E486864: using guessed type unsigned int;
+// 16E486868: using guessed type unsigned int;
+// 16E48686C: using guessed type unsigned int;
+// 175FD13A0: using guessed type unsigned int;
+// 175FD13B0: using guessed type unsigned int;
+// 175FD13C0: using guessed type unsigned int;
+// 175FD13D0: using guessed type unsigned int;
+// 175FD13E0: using guessed type unsigned int;
+// 175FD13E4: using guessed type unsigned int;
+// 18329C1E4: using guessed type unsigned int;
+// 183EBFAAC: using guessed type unsigned int;
+// 183EBFCE0: using guessed type unsigned int;
+// 183F7C2F8: using guessed type unsigned int;
+// 18539D3A0: using guessed type unsigned int;
+// 18539D3A8: using guessed type unsigned int;
+// 1AD04ADC0: using guessed type unsigned int;
+// 1AD04B1F4: using guessed type unsigned int;
+
+//----- (000000014011BD70) ----------------------------------------------------
+__int64            sub_14011BD70(signed int a1)
+{
+    extern uint32_t net_accept_fragment(int);
+    return (__int64)net_accept_fragment(a1);
+}
+
+//----- (00000001401880C0) ----------------------------------------------------
+__m128i *           sub_1401880C0(     __m128i *a1, unsigned int a2)
+{
+  __m128i *result; // rax
+
+  if ( a2 <= 0x400 )
+  {
+    dword_140404A6C[278384730] = a2;
+    result = sub_1401FC920((__m128i *)&dword_140404A6C[278384731], a1, a2);
+    dword_140404A6C[278384987] = 1;
+  }
+  return result;
+}
+
+// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
+// 1829F8BD4: using guessed type unsigned int;
+// 1829F8FD8: using guessed type unsigned int;

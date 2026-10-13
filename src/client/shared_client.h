@@ -105,7 +105,7 @@ __int64            sub_1400090C0(int a1);
 
 void sub_140009340();
 
-__int64            sub_1400096B0(int a1, int a2, int a3, unsigned int a4);
+__int64            sub_1400096B0(int a1, int a2, int a3, unsigned int a4, int a5, int a6);
 
 void            sub_140009A00(int a1, int a2);
 
@@ -11790,7 +11790,7 @@ void sub_140009340()
 // 175FF3464: using guessed type unsigned int;
 
 //----- (00000001400096B0) ----------------------------------------------------
-__int64            sub_1400096B0(int a1, int a2, int a3, unsigned int a4)
+__int64            sub_1400096B0(int a1, int a2, int a3, unsigned int a4, int a5, int a6)
 ;
 
 // 140278DF0: using guessed type __int128 xmmword_140278DF0;
