@@ -95,7 +95,6 @@ typedef int bool;       // we want to use bool in our C programs
 #define __noreturn  __declspec(noreturn)
 #endif
 
-
 #ifndef NULL
 #define NULL 0
 #endif

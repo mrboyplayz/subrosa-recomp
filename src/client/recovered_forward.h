@@ -232,8 +232,8 @@ extern unsigned char sr_mem_1402f61e0[];
 extern unsigned char sr_mem_1402f6460[];
 extern unsigned char sr_mem_1402f7bb0[];
 extern unsigned char sr_mem_1402f7e60[];
-extern unsigned char sr_mem_1402f97bf[];
-extern unsigned char sr_mem_1402f99af[];
+extern unsigned char sr_shader_source_4[];
+extern unsigned char sr_shader_source_5[];
 extern unsigned char sr_mem_1402f9fd0[];
 extern unsigned char sr_mem_1402fa480[];
 extern unsigned char sr_mem_1402fb8a0[];
@@ -359,8 +359,8 @@ __int64 sub_1401FC358();
 _BOOL8 sub_1401FC3AC();
 __int64 sub_1401FC5EA();
 __int64            sub_1401FC820(unsigned __int64 *a1, __int64 a2, unsigned __int64 a3);
-__m128i *           sub_1401FC920(__m128i *a1,      __m128i *a2, unsigned __int64 a3);
-void *           sub_1401FCD30(void *destination, unsigned __int8 a2, unsigned __int64 a3);
+__m128i *           crt_memcpy(__m128i *a1,      __m128i *a2, unsigned __int64 a3);
+void *           crt_memset(void *destination, unsigned __int8 a2, unsigned __int64 a3);
 __int64            sub_1401FD298(__int64 a1, int *a2);
 __int64            sub_1401FD570(__int64 a1, __int64 a2);
 void sub_1401FDA90();
@@ -372,10 +372,10 @@ __int64            sub_140201914(__int64 a1);
 __int64 sub_1402027E8();
 __int64            sub_140204E68(__int64 a1);
 char            sub_140206CC4(struct _xDISPATCHER_CONTEXT *a1, struct FH4__FuncInfo4 *a2);
-unsigned __int64 *           sub_140206E30(
-        unsigned __int64 *a1,
-        struct _xDISPATCHER_CONTEXT *a2,
-        struct FH4__FuncInfo4 *a3,
+unsigned __int64 *           sub_140206E30(
+        unsigned __int64 *a1,
+        struct _xDISPATCHER_CONTEXT *a2,
+        struct FH4__FuncInfo4 *a3,
         unsigned __int64 *a4);
 _DWORD *           sub_140207378(__int64 a1, __int64 a2);
 void            sub_1402077D0(unsigned __int64 *a1,      struct _s_FuncInfo *a2, int a3);
@@ -385,13 +385,13 @@ FH4__TryBlockMap4 *           sub_1402097C4(FH4__TryBlockMap4 *this,      struct
 char            sub_14020A084(FH4__HandlerMap4 *this);
 unsigned __int8 *           sub_14020A9E4(FH4__UWMap4 *this, unsigned __int8 **a2);
 __int64            sub_14020AB14(__int64 a1, __int64 (           *a2)(__int64, __int64), __int64 a3);
-__int64            sub_14020AB20(
-        __int64 a1,
-        __int64 (           *a2)(__int64, __int64, _QWORD),
-        __int64 a3,
+__int64            sub_14020AB20(
+        __int64 a1,
+        __int64 (           *a2)(__int64, __int64, _QWORD),
+        __int64 a3,
         unsigned int a4);
 char *           sub_14020B528(unsigned int a1);
-__int64            sub_14020B8D8(char *a1, char *a2);
+__int64            crt_fopen(char *a1, char *a2);
 int         getc_nolock(FILE *Stream);
 __int64            unknown_libname_207(unsigned __int8 a1, __int64 a2);
 __int64            sub_14020C4A8(__int64 a1, int a2, unsigned int a3);
@@ -451,7 +451,7 @@ __int64            sub_140254F48(__m128i *a1, unsigned __int64 a2);
 __int64            unknown_libname_878(unsigned __int16 a1, __int64 a2);
 int         get_printf_count_output();
 __int64            getenv_s_sr(unsigned __int64 *a1, _BYTE *a2, unsigned __int64 a3, __int64 a4);
-__int64 sub_140259504();
+__int64 crt_multi_byte_to_wide_char();
 __int64            _loctotime32_t_sr(int a1, int a2, int a3, unsigned int a4, unsigned int a5, unsigned int a6, int a7);
 __int64            _loctotime64_t_sr(int a1, int a2, int a3, unsigned int a4, unsigned int a5, unsigned int a6, int a7);
 unsigned int *           get_global_action_nolock(int a1);
@@ -500,73 +500,73 @@ _BOOL8            sub_14026CA90(__int64 a1);
 __m128i *           sub_14026CD4C(unsigned __int64 a1, int a2);
 __int8 *           sub_14026CE7C(__int64 a1, unsigned __int8 a2);
 __m128i *           sub_14026CEFC(     __m128i *a1, unsigned __int16 a2);
-__m128i *(           *           sub_14016DFD0(
+__m128i *(           *           sub_14016DFD0(
         _QWORD *a1))(__m128i *a1, unsigned __int8 *a2,      __m128i *a3, int a4);
 __int64            j__realloc_base_sr(__int64 a1, __int64 a2);
 __int64 swprintf_0_sr(_WORD *a1, __int64 a2, __int64 a3, ...);
 __int64 (           *           try_cor_exit_process(unsigned int a1))(_QWORD);
 __int64 (           *           sub_14024F744(unsigned int a1))(_QWORD);
-__int64            wctomb_s_l(
-        int *a1,
-        _BYTE *a2,
-        unsigned __int64 a3,
-        unsigned __int16 a4,
+__int64            wctomb_s_l(
+        int *a1,
+        _BYTE *a2,
+        unsigned __int64 a3,
+        unsigned __int16 a4,
         struct __crt_locale_pointers *Locale);
-__int64            fp_format_e_internal(
-        char *     a1,
-        unsigned __int64 a2,
-        int a3,
-        char a4,
-        unsigned int a5,
-        struct _strflt *     a6,
-        bool a7,
+__int64            fp_format_e_internal(
+        char *     a1,
+        unsigned __int64 a2,
+        int a3,
+        char a4,
+        unsigned int a5,
+        struct _strflt *     a6,
+        bool a7,
         struct __crt_locale_pointers *     a8);
-__int64            fp_format_f_internal(
-        char *     a1,
-        __int64 a2,
-        int a3,
-        struct _strflt *     a4,
-        bool a5,
+__int64            fp_format_f_internal(
+        char *     a1,
+        __int64 a2,
+        int a3,
+        struct _strflt *     a4,
+        bool a5,
         struct __crt_locale_pointers *     a6);
-double            handle_error(
-        __int64 a1,
-        __int16 a2,
-        __int64 a3,
-        int a4,
-        char a5,
-        unsigned int a6,
-        double a7,
-        __int64 a8,
+double            handle_error(
+        __int64 a1,
+        __int16 a2,
+        __int64 a3,
+        int a4,
+        char a5,
+        unsigned int a6,
+        double a7,
+        __int64 a8,
         int a9);
-float            handle_errorf(
-        __int64 a1,
-        __int16 a2,
-        int a3,
-        int a4,
-        char a5,
-        unsigned int a6,
-        float a7,
-        float a8,
+float            handle_errorf(
+        __int64 a1,
+        __int16 a2,
+        int a3,
+        int a4,
+        char a5,
+        unsigned int a6,
+        float a7,
+        float a8,
         int a9);
-struct __crt_multibyte_data *           update_thread_multibyte_data_internal(
-        struct __acrt_ptd *     a1,
+struct __crt_multibyte_data *           update_thread_multibyte_data_internal(
+        struct __acrt_ptd *     a1,
         struct __crt_multibyte_data **     a2);
-__int64            strnicmp_l(
-        unsigned __int8 *a1,
-        unsigned __int8 *a2,
-        unsigned __int64 a3,
+__int64            strnicmp_l(
+        unsigned __int8 *a1,
+        unsigned __int8 *a2,
+        unsigned __int64 a3,
         struct __crt_locale_pointers *a4);
-__int64            wcsnicoll_l(
-        unsigned __int16 *a1,
-        unsigned __int16 *a2,
-        unsigned __int64 a3,
+__int64            wcsnicoll_l(
+        unsigned __int16 *a1,
+        unsigned __int16 *a2,
+        unsigned __int64 a3,
         struct __crt_locale_pointers *a4);
-__int64            _acrt_CompareStringA(
-        struct __crt_locale_pointers *a1,
-        __int64 a2,
-        unsigned int a3,
-        unsigned __int8 *a4,
-        int a5,
-        char *a6,
-        int a7,
+__int64            _acrt_CompareStringA(
+        struct __crt_locale_pointers *a1,
+        __int64 a2,
+        unsigned int a3,
+        unsigned __int8 *a4,
+        int a5,
+        char *a6,
+        int a7,
         unsigned int a8);

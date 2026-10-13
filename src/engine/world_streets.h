@@ -88,38 +88,31 @@ typedef struct StreetCell {
    and enters the street in every cell its box overlaps. 0x1401899F0 */
 void world_file_street(int index);
 
-/* ---- street triangles in a box (world_street_query.c) ---------------------- */
-
-/* A triangle copied out of a street: its three corners. The last three words
-   are left for the caller (the level's triangles carry a normal there). */
-typedef struct StreetTriangle {
-    float corner[3][3];
-    union {
-        float unknown_24[3];
-        float normal[3];                 /* filled by world_street_range_triangles only */
-    };
-} StreetTriangle;
-
+/* Street triangles gathered for collision: a count, then up to 1,024 records
+   of three corners (x y z each) and three more floats the gathering leaves
+   untouched. Callers put other triangles in the same buffer. */
 #define STREET_TRIANGLE_LIST_CAPACITY 1024
 
 typedef struct StreetTriangleList {
     int32_t count;
-    StreetTriangle triangle[STREET_TRIANGLE_LIST_CAPACITY];
+    struct {
+        float corner[3][3];
+        float unknown_24[3];
+    } triangle[STREET_TRIANGLE_LIST_CAPACITY];
 } StreetTriangleList;
 
-/* Appends to `list` the triangles of street `street`'s triangle range
-   `range` (0..3) whose boxes meet the box min..max, while the list has room.
-   A box edge that is NaN keeps the triangle on the max side of the test and
-   drops it on the min side, as in the original. 0x140188720 */
+/* Appends the triangles of street `street`'s range `range` (see
+   Street.range_first) whose boxes overlap [box_min, box_max], while the list
+   has room. 0x140188720 */
 void world_street_triangles_in_box(StreetTriangleList *list, const float box_min[3], const float box_max[3],
                                    int street, int range);
 
-/* Appends the street triangles in the box min..max: looks through the
-   street cells the box covers (at most 64 street entries, a street filed in
-   several cells is seen once per cell), and for each street whose box meets
-   the query box adds its triangle range 0 if `ranges` has bit 0, range 1 for
-   bit 1 and range 2 for bit 2. 0x140188900 */
-void world_street_triangles(StreetTriangleList *list, const float box_min[3], const float box_max[3], int ranges);
+/* Appends the triangles of every street near [box_min, box_max]: the streets
+   filed in the cells the box covers (the first 64 found) whose own boxes
+   overlap it, and for each, range 0, 1 and 2 when bit 1, 2 and 4 of
+   `ranges` is set. 0x140188900 */
+void world_streets_triangles_in_box(StreetTriangleList *list, const float box_min[3], const float box_max[3],
+                                    int ranges);
 
 /* The current map's name, compared with "test2" (the World map). */
 #define world_map_name (&SR_GLOBAL(char, 0x183EBFAB0ULL))

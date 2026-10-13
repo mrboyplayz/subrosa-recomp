@@ -77,10 +77,4 @@ static inline float max_float(float a, float b)
     return _mm_cvtss_f32(_mm_max_ss(_mm_set_ss(a), _mm_set_ss(b)));
 }
 
-/* double to int as CVTTSD2SI: toward zero, 0x80000000 when out of range. */
-static inline int32_t truncate_double(double value)
-{
-    return _mm_cvttsd_si32(_mm_set_sd(value));
-}
-
 #endif

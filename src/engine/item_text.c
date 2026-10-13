@@ -1,56 +1,47 @@
-/* Texts of items shared with the clients. */
-#include "item_text.h"
-#include "item.h"
+/* An item's lines of text and the records they are sent in (0x140050F90).
+   See item.h. */
+#include <string.h>
 #include "frame.h"
-#include "items/items.h"
+#include "item.h"
 
-static int32_t first_free_text(void)
+uint32_t item_link_text_line(int item, int line)
 {
-    for (int32_t k = 0; k < ITEM_TEXT_CAPACITY; k++)
-        if (item_texts[k].active == 0)
-            return k;
-    return -1;
-}
+    const char *text = item_text_line(item, line);
+    const uint8_t *colours = item_text_colours(item, line);
+    int64_t n = -1;
+    do
+        n++;
+    while (text[n]);                     /* (the original's own strlen, not limited to the line) */
+    int32_t length = (int32_t)n > 63 ? 63 : (int32_t)n;
 
-uint32_t computer_line_link(int item, int line)
-{
-    const char *text = computer_line(item, line);
-    const uint8_t *colors = computer_line_colors(item, line);
-    int64_t scanned = 0;
-    while (text[scanned] != 0)
-        scanned++;
-    int32_t length = (int32_t)scanned;
-    if (length > 63)
-        length = 63;
-
-    /* The line's record, if unchanged, is kept. */
-    WorldItem *owner = &world_items[item];
-    if ((owner->link_mask[(int64_t)line >> 5] >> (line & 31)) & 1) {
-        int32_t record = owner->links[line];
-        ItemText *old = &item_texts[record];
+    if ((item_link_mask_word(item, line >> 5) >> (line & 31)) & 1) {
+        int32_t index = (int32_t)item_link_value(item, line);
+        ItemLinkRecord *old = &item_link_records[index];
         if (old->length == length) {
-            int same = 1;
-            for (int32_t n = 0; n < length && same; n++)
-                same = old->text[n] == text[n] && old->colors[n] == colors[n];
-            if (same)
-                return (uint32_t)record;
+            int64_t k = 0;
+            if (length <= 0)
+                return (uint32_t)index;
+            while (old->text[k] == text[k] && old->colours[k] == colours[k])
+                if (++k >= length)
+                    return (uint32_t)index;
         }
-        old->active = 0;
+        old->used = 0;
     }
 
-    int32_t record = first_free_text();
-    if (record == -1)
-        return 0xFFFFFFFFu;
-    ItemText *shared = &item_texts[record];
-    shared->length = length;
-    shared->active = 1;
-    shared->active_high = 0;
-    shared->tick = game_tick;
-    shared->kind = 1;
-    shared->item = item;
-    shared->line = line;
-    __builtin_memcpy(shared->text, text, (size_t)(int64_t)length);
-    __builtin_memcpy(shared->colors, colors, (size_t)(int64_t)length);
-    item_register_link(item, (uint32_t)record, line);
-    return (uint32_t)record;
+    int32_t index = 0;
+    while (item_link_records[index].used)
+        if (++index >= ITEM_LINK_RECORD_CAPACITY)
+            return UINT32_MAX;
+    ItemLinkRecord *r = &item_link_records[index];
+    r->length = length;
+    r->used = 1;
+    r->unknown_4 = 0;
+    r->tick = game_tick;
+    r->unknown_8 = 1;
+    r->item = item;
+    r->line = line;
+    memmove(r->text, text, (size_t)length);
+    memmove(r->colours, colours, (size_t)length);
+    item_register_link(item, (uint32_t)index, line);
+    return (uint32_t)index;
 }

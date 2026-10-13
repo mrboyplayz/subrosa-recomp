@@ -1,6 +1,0 @@
-[build]
-target = "x86_64-pc-windows-gnu"
-
-[target.x86_64-pc-windows-gnu]
-linker = "C:/Users/junin/mingw64/bin/gcc.exe"
-

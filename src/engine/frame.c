@@ -1,6 +1,7 @@
 /* One pass of the client's main loop (0x14003B920). See frame.h. */
 #include <string.h>
 #include "arith.h"
+#include "effect.h"
 #include "frame.h"
 #include "math3d.h"
 #include "world.h"
@@ -161,22 +162,22 @@ static void advance_game(void)
     }
 }
 
-/* Counts the timed records down and removes the expired ones, moving the last
-   record into each gap. */
-static void expire_timed_records(void)
+/* Counts the effects' lifetimes down and removes the expired ones, moving the
+   last effect into each gap. */
+static void expire_effects(void)
 {
-    int32_t count = frame_timed_record_count;
+    int32_t count = world_effect_count;
     int32_t index = 0;
 
     if (count <= 0)
         return;
     while (index < count) {
-        FrameTimedRecord *record = &frame_timed_records[index];
-        int32_t left = record->time_left;
+        Effect *effect = &world_effects[index];
+        int32_t left = effect->lifetime;
 
         if (left < 0xFFFF) {
             left = subtract_int(left, 1);
-            record->time_left = left;
+            effect->lifetime = left;
         }
         if (left > 0) {
             index++;
@@ -185,9 +186,9 @@ static void expire_timed_records(void)
         count--;
         if (index == count)
             break;
-        memcpy(record, &frame_timed_records[count], sizeof *record);
+        memcpy(effect, &world_effects[count], sizeof *effect);
     }
-    frame_timed_record_count = count;
+    world_effect_count = count;
 }
 
 /* Finds the loose item nearest the local human's reach, within half a unit. */
@@ -326,7 +327,7 @@ static void run_tick(void)
         sub_1401597F0();
         sub_140158CD0();
         sub_14002CE50();
-        expire_timed_records();
+        expire_effects();
         find_nearest_item();
     }
 

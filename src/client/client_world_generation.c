@@ -1,143 +1,140 @@
 #include "shared_client.h"
 
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140139E90) ----------------------------------------------------
 void            sub_140139E90(__int64 a1, __int64 a2, double a3)
 {
-  int v3; // edi
-  unsigned int *v4; // rbx
-  unsigned int *v5; // rbx
-  __int64 v6; // rsi
-  unsigned int *v7; // rbx
-  __int64 v8; // rsi
-  unsigned int *v9; // rbx
-  void *v10; // rcx
-  _WORD *v11; // rax
-  __int64 v12; // rcx
-  __int64 v13; // rdx
-  __int64 v14; // rax
-  __int64 v15; // rcx
-  __int64 v16; // rax
-  __int64 v17; // rcx
-  __int64 v18; // rax
-  __int64 v19; // rcx
-  __int64 v20; // rax
-  __int64 v21; // rcx
-  __int64 v22; // rax
-  __int64 v23; // rcx
-  __int64 v24; // rax
-  __int64 v25; // rcx
-  __int64 v26; // rax
-  __int64 v27; // rcx
-  __int64 v28; // rax
-  __int64 v29; // rcx
-  __int64 v30; // rax
-  __int64 v31; // rcx
-  unsigned int *v32; // rbx
-  int i; // r8d
-  __int64 v34; // rax
-  unsigned int v35; // edx
-  unsigned int *v36; // rcx
-  unsigned int v37; // eax
-  unsigned int *v38; // rdx
-  unsigned int *v39; // rcx
-  unsigned int *v40; // rdx
-  unsigned int *v41; // rcx
-  unsigned int v42; // eax
-  unsigned int *v43; // rbx
-  unsigned int v44; // r8d
-  int v45; // eax
-  int v46; // ecx
-  int v47; // eax
-  unsigned int v48; // r8d
-  int v49; // eax
-  int v50; // eax
-  int v51; // eax
-  int v52; // eax
-  int v53; // ecx
-  int v54; // eax
-  int v55; // eax
-  __m128i si128; // xmm0
-  __m128i v57; // xmm1
-  __int64 v58; // rcx
-  int v59; // eax
-  __int64 v60; // r8
-  __int64 v61; // r8
-  __int64 v62; // r8
-  __int64 v63; // r8
-  unsigned int *v64; // rsi
-  __int64 v65; // r8
-  __int64 v66; // r8
-  unsigned int *v67; // rbx
-  int v68; // ebx
-  int *v69; // rsi
-  unsigned int *v70; // r14
-  int *v71; // r15
-  int v72; // eax
-  int v73; // esi
-  int v74; // ebx
-  unsigned int *v75; // rbx
-  int v76; // ecx
-  unsigned int *v77; // rax
-  int v78; // esi
-  int v79; // ecx
-  unsigned int *v80; // rax
-  int v81; // esi
-  int *v82; // r14
-  int *v83; // r14
-  int v84; // esi
-  int v85; // esi
-  int *v86; // r14
-  int v87; // esi
-  int j; // eax
-  signed int v89; // eax
-  int k; // ebx
-  int m; // ebx
-  int *v92; // rbx
-  int n; // ebx
-  __int64 v94; // rsi
-  int v95; // ecx
-  unsigned int v96; // r9d
-  signed int v97; // r10d
-  signed int v98; // r8d
-  int v99; // edx
-  int v100; // eax
-  __int64 v101; // rbx
-  signed int v102; // r10d
-  signed int ii; // r9d
-  __int64 v104; // rcx
-  signed int v105; // eax
-  int v106; // esi
-  __int64 v107; // rbx
-  signed int jj; // r9d
-  signed int kk; // r8d
-  signed int v110; // eax
-  int v111; // esi
-  __int64 v112; // rbx
-  signed int v113; // r10d
-  char *v114; // r11
-  int v115; // ecx
-  int v116; // r8d
-  int *v117; // r9
-  int v118; // eax
-  int v119; // edx
-  int v120; // eax
-  int *v121; // rbx
-  int v122; // esi
-  int v123; // esi
-  int *v124; // rbx
-  int v125; // esi
-  int *v126; // rbx
-  int v127; // esi
-  int *v128; // rbx
-  int v129; // esi
-  int *v130; // rbx
-  int *v131; // rbx
-  signed int *v132; // rbx
-  __int64 v133; // rdx
-  __int64 v134; // rcx
+  int v3;
+  unsigned int *v4;
+  unsigned int *v5;
+  __int64 v6;
+  unsigned int *v7;
+  __int64 v8;
+  unsigned int *v9;
+  void *v10;
+  _WORD *v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  unsigned int *v32;
+  int i;
+  __int64 v34;
+  unsigned int v35;
+  unsigned int *v36;
+  unsigned int v37;
+  unsigned int *v38;
+  unsigned int *v39;
+  unsigned int *v40;
+  unsigned int *v41;
+  unsigned int v42;
+  unsigned int *v43;
+  unsigned int v44;
+  int v45;
+  int v46;
+  int v47;
+  unsigned int v48;
+  int v49;
+  int v50;
+  int v51;
+  int v52;
+  int v53;
+  int v54;
+  int v55;
+  __m128i si128;
+  __m128i v57;
+  __int64 v58;
+  int v59;
+  __int64 v60;
+  __int64 v61;
+  __int64 v62;
+  __int64 v63;
+  unsigned int *v64;
+  __int64 v65;
+  __int64 v66;
+  unsigned int *v67;
+  int v68;
+  int *v69;
+  unsigned int *v70;
+  int *v71;
+  int v72;
+  int v73;
+  int v74;
+  unsigned int *v75;
+  int v76;
+  unsigned int *v77;
+  int v78;
+  int v79;
+  unsigned int *v80;
+  int v81;
+  int *v82;
+  int *v83;
+  int v84;
+  int v85;
+  int *v86;
+  int v87;
+  int j;
+  signed int v89;
+  int k;
+  int m;
+  int *v92;
+  int n;
+  __int64 v94;
+  int v95;
+  unsigned int v96;
+  signed int v97;
+  signed int v98;
+  int v99;
+  int v100;
+  __int64 v101;
+  signed int v102;
+  signed int ii;
+  __int64 v104;
+  signed int v105;
+  int v106;
+  __int64 v107;
+  signed int jj;
+  signed int kk;
+  signed int v110;
+  int v111;
+  __int64 v112;
+  signed int v113;
+  char *v114;
+  int v115;
+  int v116;
+  int *v117;
+  int v118;
+  int v119;
+  int v120;
+  int *v121;
+  int v122;
+  int v123;
+  int *v124;
+  int v125;
+  int *v126;
+  int v127;
+  int *v128;
+  int v129;
+  int *v130;
+  int *v131;
+  signed int *v132;
+  __int64 v133;
+  __int64 v134;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140139E90[384];
 #define v136 (*(__int64 (*))(void *)(sr_frame_140139E90 + 0)) /* [rsp+8h] */
@@ -188,7 +185,7 @@ void            sub_140139E90(__int64 a1, __int64 a2, double a3)
     free(v10);
     v11 = (_WORD *)sr_path_malloc(0x100000);
     *((_QWORD *)v9 - 2) = (uint64)(uintptr_t)(v11);
-    sub_1401FCD30((void *)(uintptr_t)(v11), 0, 0x100000u);
+    crt_memset((void *)(uintptr_t)(v11), 0, 0x100000u);
     v12 = 0;
     v13 = 384;
     *((_QWORD *)v9 - 1) = 0;
@@ -269,13 +266,13 @@ void            sub_140139E90(__int64 a1, __int64 a2, double a3)
     v37 = ++dword_140404A6C[283790157];
   }
   while ( (__int64)v36 < (__int64)&dword_140404A6C[283791190] );
-  v39 = &dword_140404A6C[283791446];
+  v39 = &resting_buffer_0;
   do
   {
     *v38++ = v37;
     v37 = ++dword_140404A6C[283790157];
   }
-  while ( (__int64)v38 < (__int64)&dword_140404A6C[283791446] );
+  while ( (__int64)v38 < (__int64)&resting_buffer_0 );
   v40 = &dword_140404A6C[283791462];
   do
   {
@@ -288,7 +285,7 @@ void            sub_140139E90(__int64 a1, __int64 a2, double a3)
     *v40++ = v37;
     v37 = ++dword_140404A6C[283790157];
   }
-  while ( (__int64)v40 < (__int64)&dword_140404A6C[283791478] );
+  while ( (__int64)v40 < (__int64)&effect_mesh_buffer );
   dword_140404A6C[283791480] = v37;
   v41 = &dword_140404A6C[283791496];
   dword_140404A6C[283791481] = v37 + 1;
@@ -363,7 +360,7 @@ void            sub_140139E90(__int64 a1, __int64 a2, double a3)
   dword_140404A6C[271985517] = 24 * v59;
   dword_140404A6C[283790154] = 4;
   dword_140404A6C[283791479] = dword_140404A6C[283790157] + 1;
-  dword_140404A6C[283791478] = dword_140404A6C[283790157] + 2;
+  effect_mesh_buffer = dword_140404A6C[283790157] + 2;
   dword_140404A6C[283790157] += 3;
   _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283790137], si128);
   dword_140404A6C[283790145] = 13;
@@ -376,7 +373,7 @@ void            sub_140139E90(__int64 a1, __int64 a2, double a3)
   sub_14013DCD0();
   qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791479] + 283793813], v61);
   unk_140404190(34962, 1572864, 0, 35048);
-  qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791478] + 283793813], v62);
+  qword_140404170(34962, dword_140404A6C[2 * effect_mesh_buffer + 283793813], v62);
   unk_140404190(34962, 393216, 0, 35048);
   v64 = &dword_140404A6C[283791752];
   do
@@ -387,9 +384,9 @@ void            sub_140139E90(__int64 a1, __int64 a2, double a3)
     v43 += 24582;
   }
   while ( (__int64)v64 <= (__int64)&dword_140404A6C[283791758] );
-  qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791446] + 283793813], v63);
+  qword_140404170(34962, dword_140404A6C[2 * resting_buffer_0 + 283793813], v63);
   unk_140404190(34962, 0x200000, 0, 35048);
-  qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791447] + 283793813], v65);
+  qword_140404170(34962, dword_140404A6C[2 * resting_buffer_1 + 283793813], v65);
   unk_140404190(34962, 0x100000, 0, 35048);
   v67 = &dword_140404A6C[283827286];
   do
@@ -518,8 +515,8 @@ LABEL_40:
   sub_1401449C0(v73, 0);
   sub_14013FCD0(42, dword_140404A6C[283827008]);
   sub_14013FCD0(43, dword_140404A6C[283827009]);
-  sub_1400FFAE0(dword_140404A6C[283826983], 0.0439453125, 0.03125, 0.10546875);
-  sub_1400FFAE0(dword_140404A6C[283826984], 0.05126953125, 0.01171875, 0.123046875);
+  sub_1400FFAE0(dword_140404A6C[283826983], 0.043945312, 0.03125, 0.10546875);
+  sub_1400FFAE0(dword_140404A6C[283826984], 0.051269531, 0.01171875, 0.12304688);
   sub_140050280(dword_140404A6C[283826995], 0.25, 0.015625, 0.25);
   sub_140050280(dword_140404A6C[283827000], 0.25, 0.015625, 0.25);
   v78 = dword_140404A6C[283827804];
@@ -576,7 +573,7 @@ LABEL_40:
   asset_load_character_cmc_candidate(22, "mnecklace1");
   asset_load_character_cmc_candidate(23, "mnecklace4");
   dword_140404A6C[177167565] = 0;
-  v83 = (int *)&dword_140404A6C[283827574];
+  v83 = (int *)&world_particle_mesh_0;
   dword_140404A6C[177495247] = 0;
   v84 = 0;
   dword_140404A6C[178322641] = 0;
@@ -620,13 +617,13 @@ LABEL_40:
   sub_1400E9A60(dword_140404A6C[283827756], -1, "mhair7");
   sub_1400E9A60(dword_140404A6C[283827757], -1, "mhair8");
   sub_1400E9A60(dword_140404A6C[283827758], -1, "mhair9");
-  v87 = dword_140404A6C[283827769];
+  v87 = world_particle_mesh_1;
   dword_140404A6C[177167565] = 0;
   dword_140404A6C[177495247] = 0;
   dword_140404A6C[178322641] = 0;
   dword_140404A6C[178519250] = 0;
   memset(v137, 0, 12);
-  sub_140002D00((float *)v137, 0.019999999552965164, 0.019999999552965164, 0.019999999552965164);
+  sub_140002D00((float *)v137, 0.02, 0.02, 0.02);
   for ( j = 0; j < (int)dword_140404A6C[177495247]; v75 += 6 )
   {
     *(_QWORD *)(v75 - 1) = 0;
@@ -647,7 +644,7 @@ LABEL_40:
   for ( m = 0; m < 11; ++m )
     sub_1400990A0(1, m, 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u);
   sub_14009A5F0(dword_140404A6C[283829875], 1, 0x812Fu, 0x812Fu, 0x2600u, 0x2600u);
-  sub_14009A5F0(dword_140404A6C[283829876], 1, 0x812Fu, 0x812Fu, 0x2600u, 0x2600u);
+  sub_14009A5F0(effect_texture, 1, 0x812Fu, 0x812Fu, 0x2600u, 0x2600u);
   sub_14009A5F0(dword_140404A6C[283830649], 1, 0x812Fu, 0x812Fu, 0x2600u, 0x2600u);
   sub_14009A5F0(dword_140404A6C[283830689], 1, 0x812Fu, 0x812Fu, 0x2600u, 0x2600u);
   v92 = (int *)&dword_140404A6C[283830658];
@@ -658,7 +655,7 @@ LABEL_40:
     sub_14009A5F0(n, 1, 0x812Fu, 0x812Fu, 0x2600u, 0x2600u);
   sub_1400EDED0(dword_140404A6C[283830696], "data/model/tex_2.png", 0, 0x812Fu, 0x812Fu, 0x2601u, 0x2601u, 0);
   sub_1400EDED0(dword_140404A6C[283830697], "data/model/walkie-talkie1.png", 0, 0x812Fu, 0x812Fu, 0x2601u, 0x2601u, 0);
-  sub_14009A5F0(dword_140404A6C[283830699], 1, 0x812Fu, 0x812Fu, 0x2600u, 0x2600u);
+  sub_14009A5F0(resting_texture_0, 1, 0x812Fu, 0x812Fu, 0x2600u, 0x2600u);
   v94 = (int)dword_140404A6C[283830720];
   v95 = 128;
   v96 = dword_140404A6C[293250409];
@@ -834,7 +831,7 @@ LABEL_40:
   dword_140404A6C[433435865] = 0;
   free(*(void **)&dword_140404A6C[433435863]);
   *(_QWORD *)&dword_140404A6C[433435863] = sr_path_malloc(4 * dword_140404A6C[433435853] * dword_140404A6C[433435854]);
-  sub_1401FCD30(
+  crt_memset(
     (void *)(uintptr_t)(*(_WORD **)&dword_140404A6C[433435863]),
     0xFFu,
     4 * dword_140404A6C[433435853] * dword_140404A6C[433435854]);
@@ -887,7 +884,7 @@ LABEL_40:
   v122 = 1;
   do
   {
-    sub_140158AB0(v139, "ak47_fire%02d.wav", v122);
+    crt_sprintf(v139, "ak47_fire%02d.wav", v122);
     sub_1400EE400(*v121, (__int64)v139, 10.0);
     ++v122;
     ++v121;
@@ -897,7 +894,7 @@ LABEL_40:
   v124 = (int *)&dword_140404A6C[283786083];
   do
   {
-    sub_140158AB0(v139, "m16_fire%02d.wav", v123);
+    crt_sprintf(v139, "m16_fire%02d.wav", v123);
     sub_1400EE400(*v124, (__int64)v139, 10.0);
     ++v123;
     ++v124;
@@ -907,7 +904,7 @@ LABEL_40:
   v126 = (int *)&dword_140404A6C[283786147];
   do
   {
-    sub_140158AB0(v139, "mp5_fire%02d.wav", v125);
+    crt_sprintf(v139, "mp5_fire%02d.wav", v125);
     sub_1400EE400(*v126, (__int64)v139, 10.0);
     ++v125;
     ++v126;
@@ -917,7 +914,7 @@ LABEL_40:
   v128 = (int *)&dword_140404A6C[283786179];
   do
   {
-    sub_140158AB0(v139, "uzi_fire%02d.wav", v127);
+    crt_sprintf(v139, "uzi_fire%02d.wav", v127);
     sub_1400EE400(*v128, (__int64)v139, 10.0);
     ++v127;
     ++v128;
@@ -927,7 +924,7 @@ LABEL_40:
   v130 = (int *)&dword_140404A6C[283786211];
   do
   {
-    sub_140158AB0(v139, "pistol_fire%02d.wav", v129);
+    crt_sprintf(v139, "pistol_fire%02d.wav", v129);
     sub_1400EE400(*v130, (__int64)v139, 10.0);
     ++v129;
     ++v130;
@@ -938,7 +935,7 @@ LABEL_40:
   v131 = (int *)&dword_140404A6C[283785947];
   do
   {
-    sub_140158AB0(v139, "ricochet%02d.wav", v3);
+    crt_sprintf(v139, "ricochet%02d.wav", v3);
     sub_1400EE400(*v131, (__int64)v139, 10.0);
     ++v3;
     ++v131;
@@ -947,17 +944,17 @@ LABEL_40:
   sub_1400EE400(dword_140404A6C[283785963], (__int64)"carcrash01.wav", 32.0);
   sub_1400EE400(dword_140404A6C[283785964], (__int64)"carcrash02.wav", 32.0);
   sub_1400EE400(dword_140404A6C[283785967], (__int64)"bullethitbody01.wav", 10.0);
-  sub_1400EE400(dword_140404A6C[283785968], (__int64)"bullethitbody02.wav", 10.0);
+  sub_1400EE400(game_unknown_183e9362c, (__int64)"bullethitbody02.wav", 10.0);
   sub_1400EE400(dword_140404A6C[283785971], (__int64)"bullethitmetal01.wav", 10.0);
   sub_1400EE400(dword_140404A6C[283785972], (__int64)"bullethitmetal02.wav", 10.0);
   sub_1400EE400(dword_140404A6C[283785979], (__int64)"glassbreak01.wav", 10.0);
-  sub_1400EE400(dword_140404A6C[283785983], (__int64)"phonering01.wav", 1.0);
+  sub_1400EE400(item_event_ring_back, (__int64)"phonering01.wav", 1.0);
   v132 = (signed int *)&dword_140404A6C[283785984];
   do
     sub_140065AE0(*v132++, 0.25);
   while ( (__int64)v132 < (__int64)&dword_140404A6C[283785995] );
   sub_1400EE400(dword_140404A6C[283786000], (__int64)"reload01.wav", 1.0);
-  sub_1400EE400(dword_140404A6C[283786008], (__int64)"shell_hit_cement.wav", 2.0);
+  sub_1400EE400(particle_landing_sound, (__int64)"shell_hit_cement.wav", 2.0);
   sub_1400EE400(dword_140404A6C[283786009], (__int64)"gearshift01.wav", 1.0);
   sub_1400EE400(dword_140404A6C[283786010], (__int64)"helicopter02.wav", 32.0);
   sub_140065AE0(dword_140404A6C[283786011], 32.0);
@@ -1034,71 +1031,50 @@ LABEL_40:
 #undef v139
 #undef v140
 
-// 140278F50: using guessed type __int128 xmmword_140278F50;
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 1404046C0: using guessed type __int64 (__fastcall *unk_1404046C0)(_QWORD, _QWORD);
-// 1404046D8: using guessed type __int64 (__fastcall *unk_1404046D8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404708: using guessed type __int64 (__fastcall *unk_140404708)(_QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404728: using guessed type __int64 (__fastcall *unk_140404728)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404738: using guessed type double (__fastcall *unk_140404738)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D18: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 182A7D55C: using guessed type unsigned int;
-// 182A7D560: using guessed type unsigned int;
-// 183EBE408: using guessed type unsigned int;
-// 183EBE414: using guessed type unsigned int;
-// 183EBE41C: using guessed type unsigned int;
-// 183EBE420: using guessed type unsigned int;
-// 183EBE424: using guessed type unsigned int;
-
 //----- (000000014013DCD0) ----------------------------------------------------
 __int64 sub_14013DCD0()
 {
-  __int64 v0; // rcx
-  __int64 result; // rax
-  int v2; // ebx
-  unsigned int *v3; // rdi
-  __int64 v4; // rax
-       char *v5; // r8
-  unsigned int *v6; // rcx
-  unsigned int v7; // eax
-  unsigned int *v8; // rcx
-  unsigned int *v9; // rcx
-  unsigned int *v10; // rdx
-  unsigned int *v11; // rcx
-  unsigned int *v12; // rcx
-  unsigned int *v13; // rdx
-  unsigned int *v14; // rcx
-  unsigned int *v15; // rdx
-  unsigned int *v16; // r8
-  unsigned int *v17; // rdx
-  unsigned int v18; // eax
-  unsigned int *v19; // rcx
-  unsigned int v20; // eax
-  unsigned int *v21; // rcx
-  unsigned int v22; // eax
-  unsigned int *v23; // rcx
-  unsigned int v24; // eax
-  unsigned int *v25; // rcx
-  unsigned int v26; // eax
-  unsigned int *v27; // rdx
-  unsigned int *v28; // rcx
-  unsigned int v29; // eax
-  unsigned int *v30; // rcx
-  unsigned int v31; // eax
-  unsigned int *v32; // rcx
-  unsigned int v33; // eax
-  unsigned int *v34; // rax
-  int v35; // ecx
-  unsigned int *v36; // rax
-  float v37; // xmm0_4
-  unsigned int *v38; // rdx
-  int v39; // ecx
-  _DWORD *v40; // rax
+  __int64 v0;
+  __int64 result;
+  int v2;
+  unsigned int *v3;
+  __int64 v4;
+       char *v5;
+  unsigned int *v6;
+  unsigned int v7;
+  unsigned int *v8;
+  unsigned int *v9;
+  unsigned int *v10;
+  unsigned int *v11;
+  unsigned int *v12;
+  unsigned int *v13;
+  unsigned int *v14;
+  unsigned int *v15;
+  unsigned int *v16;
+  unsigned int *v17;
+  unsigned int v18;
+  unsigned int *v19;
+  unsigned int v20;
+  unsigned int *v21;
+  unsigned int v22;
+  unsigned int *v23;
+  unsigned int v24;
+  unsigned int *v25;
+  unsigned int v26;
+  unsigned int *v27;
+  unsigned int *v28;
+  unsigned int v29;
+  unsigned int *v30;
+  unsigned int v31;
+  unsigned int *v32;
+  unsigned int v33;
+  unsigned int *v34;
+  int v35;
+  unsigned int *v36;
+  float v37;
+  unsigned int *v38;
+  int v39;
+  _DWORD *v40;
 
   v0 = 138412032;
   if ( dword_140404A6C[284024929] )
@@ -1134,7 +1110,7 @@ LABEL_56:
     dword_140404A6C[137297749] = 1;
     return result;
   }
-  dword_140404A6C[179955874] = 1;
+  physics_points_no_gravity = 1;
   dword_140404A6C[179955862] = 1;
   dword_140404A6C[19065869] = 0x400000;
   *(_QWORD *)&dword_140404A6C[19065875] = sr_path_malloc(0x400000);
@@ -1200,7 +1176,7 @@ LABEL_56:
     v7 = ++dword_140404A6C[283826581];
   }
   while ( (__int64)v13 < (__int64)&dword_140404A6C[283827702] );
-  v15 = &dword_140404A6C[283827574];
+  v15 = &world_particle_mesh_0;
   v16 = &dword_140404A6C[283827606];
   do
   {
@@ -1261,7 +1237,7 @@ LABEL_56:
   while ( (__int64)v21 < (__int64)&dword_140404A6C[283828839] );
   dword_140404A6C[283829862] = v22;
   v23 = &dword_140404A6C[283830137];
-  dword_140404A6C[283829863] = v22 + 1;
+  shading_texture = v22 + 1;
   dword_140404A6C[283829864] = v22 + 2;
   dword_140404A6C[283829865] = v22 + 3;
   dword_140404A6C[283829866] = v22 + 4;
@@ -1270,10 +1246,10 @@ LABEL_56:
   dword_140404A6C[283829869] = v22 + 7;
   dword_140404A6C[283829870] = v22 + 8;
   dword_140404A6C[283829871] = v22 + 9;
-  dword_140404A6C[283829872] = v22 + 10;
+  shading_cube_map = v22 + 10;
   dword_140404A6C[283829873] = v22 + 11;
   dword_140404A6C[283829875] = v22 + 12;
-  dword_140404A6C[283829876] = v22 + 13;
+  effect_texture = v22 + 13;
   dword_140404A6C[283829874] = v22 + 14;
   dword_140404A6C[283830649] = v22 + 15;
   dword_140404A6C[283830650] = v22 + 16;
@@ -1320,7 +1296,7 @@ LABEL_56:
   dword_140404A6C[283830696] = v26 + 6;
   dword_140404A6C[283830697] = v26 + 7;
   dword_140404A6C[283830698] = v26 + 8;
-  dword_140404A6C[283830699] = v26 + 9;
+  resting_texture_0 = v26 + 9;
   dword_140404A6C[283830700] = v26 + 10;
   dword_140404A6C[283830701] = v26 + 11;
   dword_140404A6C[283830702] = v26 + 12;
@@ -1392,7 +1368,7 @@ LABEL_56:
   dword_140404A6C[283785942] = 8;
   _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283785946], _mm_load_si128((     __m128i *)&xmmword_140279030));
   dword_140404A6C[283785943] = 9;
-  _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283785983], _mm_load_si128((     __m128i *)&xmmword_1402790A0));
+  _mm_storeu_si128((__m128i *)(void *)&item_event_ring_back, _mm_load_si128((     __m128i *)&xmmword_1402790A0));
   dword_140404A6C[283785954] = 18;
   _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283785938], _mm_load_si128((     __m128i *)&xmmword_140278FB0));
   dword_140404A6C[283785963] = 19;
@@ -1401,7 +1377,7 @@ LABEL_56:
   _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283785950], _mm_load_si128((     __m128i *)&xmmword_140279050));
   dword_140404A6C[283785967] = 21;
   _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283786012], _mm_load_si128((     __m128i *)&xmmword_1402790E0));
-  dword_140404A6C[283785968] = 22;
+  game_unknown_183e9362c = 22;
   _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283785987], _mm_load_si128((     __m128i *)&xmmword_1402790B0));
   dword_140404A6C[283785971] = 23;
   _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283785975], _mm_load_si128((     __m128i *)&xmmword_140279100));
@@ -1409,7 +1385,7 @@ LABEL_56:
   dword_140404A6C[283785979] = 25;
   dword_140404A6C[283785980] = 26;
   dword_140404A6C[283786000] = 39;
-  _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[283786008], _mm_load_si128((     __m128i *)&xmmword_1402790D0));
+  _mm_storeu_si128((__m128i *)(void *)&particle_landing_sound, _mm_load_si128((     __m128i *)&xmmword_1402790D0));
   dword_140404A6C[283786016] = 48;
   dword_140404A6C[283786017] = 49;
   dword_140404A6C[283786018] = 50;

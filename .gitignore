@@ -1,74 +1,29 @@
-# Private recomp source repository. Keep installed game files and caches local.
+# Only the project itself is tracked; the game's files and build output stay local.
 *
 
-# Track the reverse-engineering project itself.
 !.gitignore
 !.gitattributes
 !README.md
-!CODEX-CLAUDE.md
-!CMakeLists.txt
-!docs/
-!docs/**
 !scripts/
 !scripts/**
 !src/
 !src/**
-!ui/
-!ui/**
+!tools/
+!tools/**
 !ida/
 !ida/**
-!notes/
-!notes/**
-!specs/
-!specs/**
-!sheets/
-!sheets/**
-!rust-client/
-!rust-client/**
-!exports/
-!exports/client/
-!exports/client/**
-!exports/dedicated/
-!exports/dedicated/**
-!third_party/
-!third_party/**
-!RosaServer-cmo-port/
-!RosaServer-cmo-port/**
-!handoff/
-!handoff/**
-!ghidra/
-!ghidra/*.java
-!ghidra/*.txt
-!re/
-!re/ghidra_scripts/
-!re/ghidra_scripts/**
-!work/
-!work/rebuild/
-!work/rebuild/dedicated/
-!work/rebuild/dedicated/**
 
-# Generated local reports are reproducible.
-reports/
 build/
+dist/
 __pycache__/
 *.pyc
-rust-client/target/
-**/.git/
-**/.vs/
-**/.vscode/
-**/CMakeFiles/
 *.o
 *.obj
-*.pdb
 *.exe
 *.dll
-*.so
-*.x64
 *.a
-*.lib
-*.zip
 
-# IDA/Ghidra/Binary Ninja project state can contain copied binary data.
+# IDA project state contains copied binary data.
 *.i64
 *.id0
 *.id1
@@ -76,6 +31,3 @@ rust-client/target/
 *.nam
 *.til
 *.idb
-*.rep
-*.gpr
-*.bndb

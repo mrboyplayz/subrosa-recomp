@@ -82,6 +82,97 @@ void sr_debug_tick_begin(void)
     sr_debug_tick_stage("Physics: integrate body positions and rotations (0x116210)");
 }
 
+/* Blood, effects and audio (diagnostic, with SUBROSA_DEBUG_EFFECTS=1). Every 300 ticks: events of type 1
+   (hits; b = 1..3 is blood) recorded since the last report, and the effects
+   in the table at 0x1A771F380 (148 bytes each, count at 0x1A7971D80) by type,
+   and the vertices of the blood stains landed drops leave (0x1A724E720).
+   SUBROSA_TEST_BLOOD=1 also records a blood hit (type 1, b 1) 3 units along
+   the camera's depth axis every 120 ticks, to test playback and drawing alone. */
+extern unsigned int dword_140404A6C[];
+#define SR_DEBUG_AT(type, address) (*(type *)((unsigned char *)dword_140404A6C + ((address) - 0x140404A6CULL)))
+static void sr_debug_effects_probe(void)
+{
+    static int test = -1, enabled = -1;
+    static unsigned int seen_count, hits[4], other;
+    if (test < 0) test = getenv("SUBROSA_TEST_BLOOD") != NULL;
+    if (enabled < 0) enabled = test || getenv("SUBROSA_DEBUG_EFFECTS") != NULL;
+    if (!enabled) return;
+    unsigned int count = SR_DEBUG_AT(unsigned int, 0x189C1DC64ULL) & 0xFFFF;
+    while (seen_count != count) {
+        unsigned char *event = &SR_DEBUG_AT(unsigned char, 0x1873DE460ULL) + 128ULL * seen_count;
+        if (*(int *)event == 1) {
+            unsigned int b = *(unsigned int *)(event + 0x24);
+            if (b < 4) hits[b]++; else other++;
+        }
+        seen_count = (seen_count + 1) & 0xFFFF;
+    }
+    if (test && sr_debug_completed % 120 == 60) {
+        /* Four hits around the local player's head (or the camera when there is none). */
+        float at[3];
+        int player = SR_DEBUG_AT(int, 0x183F7C540ULL), human = -1;
+        if (player >= 0 && player < 256) human = SR_DEBUG_AT(int, 0x151620C60ULL + 0x3834ULL * player + 0x9C);
+        for (int k = 0; k < 3; k++)
+            at[k] = human >= 0 && human < 256
+                ? SR_DEBUG_AT(float, 0x18329E308ULL + 0x6FF8ULL * human + 0x220 + 3 * 0x138 + 4 + 4 * k)
+                : SR_DEBUG_AT(float, 0x183F7C544ULL + 4 * k);
+        static const float around[4][2] = {{1.2f, 0}, {-1.2f, 0}, {0, 1.2f}, {0, -1.2f}};
+        for (int n = 0; n < 4; n++) {
+            unsigned int c = SR_DEBUG_AT(unsigned int, 0x189C1DC64ULL) & 0xFFFF;
+            unsigned char *event = &SR_DEBUG_AT(unsigned char, 0x1873DE460ULL) + 128ULL * c;
+            memset(event, 0, 128);
+            *(int *)event = 1;
+            *(int *)(event + 4) = SR_DEBUG_AT(int, 0x183EBFD34ULL);
+            ((float *)(event + 8))[0] = at[0] + around[n][0];
+            ((float *)(event + 8))[1] = at[1];
+            ((float *)(event + 8))[2] = at[2] + around[n][1];
+            *(int *)(event + 0x24) = 1;
+            SR_DEBUG_AT(unsigned int, 0x189C1DC64ULL) = (c + 1) & 0xFFFF;
+        }
+        if (sr_debug_completed % 600 == 60) {
+            const float *v = &SR_DEBUG_AT(float, 0x183F7C550ULL);
+            sr_debug_log("Test blood around %.2f %.2f %.2f (human %d); camera axes %.3f %.3f %.3f | %.3f %.3f %.3f | %.3f %.3f %.3f",
+                         at[0], at[1], at[2], human, v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8]);
+        }
+    }
+    /* Test mode: blow drops up to half a unit so drawing can be judged on screen. */
+    if (test)
+        for (int i = 0; i < SR_DEBUG_AT(int, 0x1A7971D80ULL) && i < 0x4000; i++) {
+            unsigned char *e = &SR_DEBUG_AT(unsigned char, 0x1A771F380ULL) + 148ULL * i;
+            if (*(int *)e == 1) *(float *)(e + 0x8C) = 0.5f;
+        }
+    /* Largest number of each type seen on any tick since the last report. */
+    static int most[7];
+    int effects = SR_DEBUG_AT(int, 0x1A7971D80ULL), types[7] = {0};
+    for (int i = 0; i < effects && i < 0x4000; i++) {
+        unsigned int t = *(unsigned int *)(&SR_DEBUG_AT(unsigned char, 0x1A771F380ULL) + 148ULL * i);
+        types[t < 6 ? t : 6]++;
+    }
+    for (int t = 0; t < 7; t++)
+        if (types[t] > most[t]) most[t] = types[t];
+    /* Test mode: how long the injected drops last (drops alive on each of the 40 ticks after one). */
+    if (test && sr_debug_completed % 600 >= 60 && sr_debug_completed % 600 < 100) {
+        static char line[400];
+        static int used;
+        int phase = (int)(sr_debug_completed % 600) - 60;
+        if (phase == 0) used = 0;
+        used += snprintf(line + used, sizeof line - used, "%d ", types[1]);
+        if (phase == 39) sr_debug_log("Drops alive on the 40 ticks after a test hit: %s", line);
+    }
+    if (sr_debug_completed % 300 == 0) {
+        extern volatile int sr_audio_calls, sr_audio_peak;
+        int loaded = 0;
+        for (int slot = 0; slot < 4096; slot++)
+            loaded += SR_DEBUG_AT(int, 0x140404A6CULL + 4ULL * (18165777ULL + 8ULL * slot)) != 0;
+        sr_debug_log("Audio: %d callbacks, loudest sample %d of 32767, %d sounds loaded", sr_audio_calls, sr_audio_peak, loaded);
+        sr_audio_peak = 0;
+        sr_debug_log("Effects: hit events b0 %u, b1 %u, b2 %u, b3 %u, other %u; table now %d; most per tick: type0 %d type1 %d type2 %d type3 %d type4 %d type5 %d other %d; blood stain vertices %d; camera %.1f %.1f %.1f",
+                     hits[0], hits[1], hits[2], hits[3], other, effects, most[0], most[1], most[2], most[3], most[4],
+                     most[5], most[6], SR_DEBUG_AT(int, 0x1A724E720ULL), SR_DEBUG_AT(float, 0x183F7C544ULL), SR_DEBUG_AT(float, 0x183F7C548ULL),
+                     SR_DEBUG_AT(float, 0x183F7C54CULL));
+        memset(most, 0, sizeof most);
+    }
+}
+
 void sr_debug_tick_end(void)
 {
     if (!InterlockedCompareExchange(&sr_debug_ready, 0, 0)) return;
@@ -90,6 +181,7 @@ void sr_debug_tick_end(void)
     LeaveCriticalSection(&sr_debug_lock);
     if (sr_debug_completed <= 4 || sr_debug_completed % 300 == 0)
         sr_debug_log("Physics tick %lu completed", sr_debug_completed);
+    sr_debug_effects_probe();
     sr_debug_tick_stage("Simulation: remaining tick work / world rendering");
 }
 

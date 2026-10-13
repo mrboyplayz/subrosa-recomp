@@ -12,7 +12,7 @@ size_t crt_strnlen(const char *text, size_t limit);                 /* 0x140254C
 size_t crt_wcsnlen(const uint16_t *text, size_t limit);             /* 0x140254F48 */
 
 /* Still in src/client/. */
-extern long long sub_14023E640(char *expression, char *file, int line);   /* _wassert */
+extern long long crt_assert(char *expression, char *file, int line);      /* _wassert, 0x14023E640 */
 extern long long sr_path_malloc(unsigned long long size);                 /* malloc, 0x14023ACF8 */
 extern void free(void *block);                                            /* 0x14023ACE4 */
 
@@ -36,7 +36,7 @@ extern float handle_errorf(const char *name, short type, int nan_bits, int a4, c
                            float argument, float argument_2, int a9);
 extern float handle_nanf_sr(int bits);
 
-#define crt_wassert(expression, file, line) sub_14023E640((char *)(expression), (char *)(file), (line))
+#define crt_wassert(expression, file, line) crt_assert((char *)(expression), (char *)(file), (line))
 #define crt_malloc(size) ((void *)(uintptr_t)sr_path_malloc(size))
 #define crt_free(block) free(block)
 

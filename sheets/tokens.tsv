@@ -1,6 +1,0 @@
-# sheet: tokens
-# version: 1
-# generator: client_c_recovery
-# owned_by: root
-id:string*	measurement:string	value:u32?	evidence:string
-provider_usage	actual_provider_tokens	NULL	not exposed by this session

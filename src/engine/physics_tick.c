@@ -1,5 +1,6 @@
 /* One physics tick (0x140116210). See physics.h. */
 #include "arith.h"
+#include "item.h"
 #include "physics.h"
 #include "world.h"
 
@@ -17,7 +18,6 @@ extern int64_t sub_1401154D0(void);          /* physics_integrate_points */
 extern int64_t sub_140108930(void);
 extern int64_t sub_1400BE010(void);          /* humans and their pose targets */
 extern int64_t sub_1400CE370(void);
-extern int64_t sub_1400CC610(void);
 extern unsigned int *sub_14001D080(void);    /* physics_solve */
 extern void sub_14007F970(int32_t item);     /* world_remove_item */
 extern void sub_14010BE50(void);             /* world_expire_vehicles */
@@ -89,7 +89,7 @@ static void expire_items(void)
 void physics_tick(void)
 {
     for (int index = 0; index < WORLD_HUMAN_CAPACITY; index++)
-        world_humans[index].progress_bar = 0;
+        world_humans[index].unknown_6ddc = 0;
     integrate_body_positions();
     sub_1401069C0();
     sub_1400B95E0();
@@ -101,7 +101,7 @@ void physics_tick(void)
     sub_140108930();
     sub_1400BE010();
     sub_1400CE370();
-    sub_1400CC610();
+    item_tick_states();
     sub_14001D080();
     expire_items();
     sub_14010BE50();

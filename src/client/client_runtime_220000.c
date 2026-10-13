@@ -1,21 +1,20 @@
 #include "shared_client.h"
 
-
 //----- (0000000140220004) ----------------------------------------------------
 char            sub_140220004(__int64 a1, unsigned int a2, char a3)
 {
-  int v5; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rdi
-  int v12; // ecx
-  int v13; // ecx
-  char v14; // al
-  int v15; // ecx
-  unsigned __int64 v16; // rsi
-  unsigned __int64 v17; // rdx
-  __int64 v18; // [rsp+50h] [rbp+8h] BYREF
+  int v5;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  int v12;
+  int v13;
+  char v14;
+  int v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
 
   v5 = *(_DWORD *)(a1 + 60);
   if ( v5 > 5 )
@@ -93,7 +92,7 @@ LABEL_9:
       break;
     default:
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
   }
   if ( !v14 )
@@ -135,27 +134,26 @@ LABEL_9:
   return 1;
 }
 
-
 //----- (000000014022020C) ----------------------------------------------------
 char            sub_14022020C(__int64 a1, unsigned int a2, char a3)
 {
-  int v5; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rdi
-  int v12; // ecx
-  int v13; // ecx
-  __int64 v14; // rsi
-  int v15; // eax
-  bool v16; // zf
-  __int64 v17; // rax
-  int v18; // eax
-  __int64 v19; // rax
-  int v20; // eax
-  __int64 v21; // rax
-  int v22; // ecx
-  unsigned __int64 v23; // rdx
+  int v5;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  int v12;
+  int v13;
+  __int64 v14;
+  int v15;
+  bool v16;
+  __int64 v17;
+  int v18;
+  __int64 v19;
+  int v20;
+  __int64 v21;
+  int v22;
+  unsigned __int64 v23;
 
   v5 = *(_DWORD *)(a1 + 60);
   if ( v5 > 5 )
@@ -242,7 +240,7 @@ LABEL_9:
       break;
     default:
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
   }
   v22 = *(_DWORD *)(a1 + 48);
@@ -278,27 +276,26 @@ LABEL_9:
   return 1;
 }
 
-
 //----- (00000001402203D8) ----------------------------------------------------
 char            sub_1402203D8(__int64 a1, unsigned int a2, char a3)
 {
-  int v5; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rdi
-  int v12; // ecx
-  int v13; // ecx
-  __int64 v14; // rsi
-  int v15; // eax
-  bool v16; // zf
-  __int64 v17; // rax
-  int v18; // eax
-  __int64 v19; // rax
-  int v20; // eax
-  __int64 v21; // rax
-  int v22; // ecx
-  unsigned __int64 v23; // rdx
+  int v5;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  int v12;
+  int v13;
+  __int64 v14;
+  int v15;
+  bool v16;
+  __int64 v17;
+  int v18;
+  __int64 v19;
+  int v20;
+  __int64 v21;
+  int v22;
+  unsigned __int64 v23;
 
   v5 = *(_DWORD *)(a1 + 60);
   if ( v5 > 5 )
@@ -385,7 +382,7 @@ LABEL_9:
       break;
     default:
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
   }
   v22 = *(_DWORD *)(a1 + 48);
@@ -421,22 +418,21 @@ LABEL_9:
   return 1;
 }
 
-
 //----- (00000001402205A4) ----------------------------------------------------
 char            sub_1402205A4(__int64 a1, unsigned int a2, char a3)
 {
-  int v5; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rdi
-  int v12; // ecx
-  int v13; // ecx
-  char v14; // al
-  int v15; // ecx
-  unsigned __int64 v16; // rsi
-  unsigned __int64 v17; // rdx
-  __int64 v18; // [rsp+50h] [rbp+8h] BYREF
+  int v5;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  int v12;
+  int v13;
+  char v14;
+  int v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
 
   v5 = *(_DWORD *)(a1 + 60);
   if ( v5 > 5 )
@@ -514,7 +510,7 @@ LABEL_9:
       break;
     default:
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
   }
   if ( !v14 )
@@ -556,27 +552,26 @@ LABEL_9:
   return 1;
 }
 
-
 //----- (00000001402207AC) ----------------------------------------------------
 char            sub_1402207AC(__int64 a1, unsigned int a2, char a3)
 {
-  int v5; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rdi
-  int v12; // ecx
-  int v13; // ecx
-  __int64 v14; // rsi
-  int v15; // eax
-  bool v16; // zf
-  __int64 v17; // rax
-  int v18; // eax
-  __int64 v19; // rax
-  int v20; // eax
-  __int64 v21; // rax
-  int v22; // ecx
-  unsigned __int64 v23; // rdx
+  int v5;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  int v12;
+  int v13;
+  __int64 v14;
+  int v15;
+  bool v16;
+  __int64 v17;
+  int v18;
+  __int64 v19;
+  int v20;
+  __int64 v21;
+  int v22;
+  unsigned __int64 v23;
 
   v5 = *(_DWORD *)(a1 + 60);
   if ( v5 > 5 )
@@ -663,7 +658,7 @@ LABEL_9:
       break;
     default:
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
   }
   v22 = *(_DWORD *)(a1 + 48);
@@ -699,23 +694,22 @@ LABEL_9:
   return 1;
 }
 
-
 //----- (0000000140220978) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_527(__int64 a1)
 {
-  __int64 v1; // rbx
-  _QWORD *v3; // rsi
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  __int64 v13; // rbx
+  __int64 v1;
+  _QWORD *v3;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v1 = 8;
   *(_QWORD *)(a1 + 32) += 8LL;
@@ -778,7 +772,7 @@ LABEL_18:
         {
 LABEL_2:
           *errno_sr() = 22;
-          sub_14024CF6C();
+          crt_invalid_parameter_noinfo();
           return 0;
         }
         *v3 = *(int *)(a1 + 40);
@@ -801,21 +795,20 @@ LABEL_2:
   return 1;
 }
 
-
 //----- (0000000140220A54) ----------------------------------------------------
 char            sub_140220A54(__int64 a1)
 {
-  __int64 v1; // rbx
-  int v4; // ecx
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rbx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  _QWORD *v13; // [rsp+38h] [rbp+10h] BYREF
+  __int64 v1;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  _QWORD *v13;
 
   v1 = 0;
   v13 = nullptr;
@@ -827,7 +820,7 @@ char            sub_140220A54(__int64 a1)
   {
 LABEL_6:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v4 = *(_DWORD *)(a1 + 60);
@@ -907,23 +900,22 @@ LABEL_22:
   return 1;
 }
 
-
 //----- (0000000140220B58) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_528(__int64 a1)
 {
-  __int64 v1; // rbx
-  _QWORD *v3; // rsi
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  __int64 v13; // rbx
+  __int64 v1;
+  _QWORD *v3;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v1 = 8;
   *(_QWORD *)(a1 + 32) += 8LL;
@@ -986,7 +978,7 @@ LABEL_18:
         {
 LABEL_2:
           *errno_sr() = 22;
-          sub_14024CF6C();
+          crt_invalid_parameter_noinfo();
           return 0;
         }
         *v3 = *(int *)(a1 + 40);
@@ -1008,24 +1000,23 @@ LABEL_2:
   *(_BYTE *)(a1 + 64) = 1;
   return 1;
 }
-
 
 //----- (0000000140220C34) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_529(__int64 a1)
 {
-  __int64 v1; // rbx
-  _QWORD *v3; // rsi
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  __int64 v13; // rbx
+  __int64 v1;
+  _QWORD *v3;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v1 = 8;
   *(_QWORD *)(a1 + 32) += 8LL;
@@ -1088,7 +1079,7 @@ LABEL_18:
         {
 LABEL_2:
           *errno_sr() = 22;
-          sub_14024CF6C();
+          crt_invalid_parameter_noinfo();
           return 0;
         }
         *v3 = *(int *)(a1 + 40);
@@ -1111,21 +1102,20 @@ LABEL_2:
   return 1;
 }
 
-
 //----- (0000000140220D10) ----------------------------------------------------
 char            sub_140220D10(__int64 a1)
 {
-  __int64 v1; // rbx
-  int v4; // ecx
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rbx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  _QWORD *v13; // [rsp+38h] [rbp+10h] BYREF
+  __int64 v1;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  _QWORD *v13;
 
   v1 = 0;
   v13 = nullptr;
@@ -1137,7 +1127,7 @@ char            sub_140220D10(__int64 a1)
   {
 LABEL_6:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v4 = *(_DWORD *)(a1 + 60);
@@ -1217,23 +1207,22 @@ LABEL_22:
   return 1;
 }
 
-
 //----- (0000000140220E14) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_530(__int64 a1)
 {
-  __int64 v1; // rbx
-  _QWORD *v3; // rsi
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  __int64 v13; // rbx
+  __int64 v1;
+  _QWORD *v3;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v1 = 8;
   *(_QWORD *)(a1 + 32) += 8LL;
@@ -1296,7 +1285,7 @@ LABEL_18:
         {
 LABEL_2:
           *errno_sr() = 22;
-          sub_14024CF6C();
+          crt_invalid_parameter_noinfo();
           return 0;
         }
         *v3 = *(int *)(a1 + 40);
@@ -1318,24 +1307,23 @@ LABEL_2:
   *(_BYTE *)(a1 + 64) = 1;
   return 1;
 }
-
 
 //----- (0000000140220EF0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_531(__int64 a1)
 {
-  __int64 v1; // rbx
-  _QWORD *v3; // rsi
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  __int64 v13; // rbx
+  __int64 v1;
+  _QWORD *v3;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v1 = 8;
   *(_QWORD *)(a1 + 32) += 8LL;
@@ -1398,7 +1386,7 @@ LABEL_18:
         {
 LABEL_2:
           *errno_sr() = 22;
-          sub_14024CF6C();
+          crt_invalid_parameter_noinfo();
           return 0;
         }
         *v3 = *(int *)(a1 + 40);
@@ -1421,21 +1409,20 @@ LABEL_2:
   return 1;
 }
 
-
 //----- (0000000140220FCC) ----------------------------------------------------
 char            sub_140220FCC(__int64 a1)
 {
-  __int64 v1; // rbx
-  int v4; // ecx
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rbx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  _QWORD *v13; // [rsp+38h] [rbp+10h] BYREF
+  __int64 v1;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  _QWORD *v13;
 
   v1 = 0;
   v13 = nullptr;
@@ -1447,7 +1434,7 @@ char            sub_140220FCC(__int64 a1)
   {
 LABEL_6:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v4 = *(_DWORD *)(a1 + 60);
@@ -1527,23 +1514,22 @@ LABEL_22:
   return 1;
 }
 
-
 //----- (00000001402210D0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_532(__int64 a1)
 {
-  __int64 v1; // rbx
-  _QWORD *v3; // rsi
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  __int64 v13; // rbx
+  __int64 v1;
+  _QWORD *v3;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v1 = 8;
   *(_QWORD *)(a1 + 32) += 8LL;
@@ -1606,7 +1592,7 @@ LABEL_18:
         {
 LABEL_2:
           *errno_sr() = 22;
-          sub_14024CF6C();
+          crt_invalid_parameter_noinfo();
           return 0;
         }
         *v3 = *(int *)(a1 + 40);
@@ -1628,24 +1614,23 @@ LABEL_2:
   *(_BYTE *)(a1 + 64) = 1;
   return 1;
 }
-
 
 //----- (00000001402211AC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_533(__int64 a1)
 {
-  __int64 v1; // rbx
-  _QWORD *v3; // rsi
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  __int64 v13; // rbx
+  __int64 v1;
+  _QWORD *v3;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v1 = 8;
   *(_QWORD *)(a1 + 32) += 8LL;
@@ -1708,7 +1693,7 @@ LABEL_18:
         {
 LABEL_2:
           *errno_sr() = 22;
-          sub_14024CF6C();
+          crt_invalid_parameter_noinfo();
           return 0;
         }
         *v3 = *(int *)(a1 + 40);
@@ -1731,21 +1716,20 @@ LABEL_2:
   return 1;
 }
 
-
 //----- (0000000140221288) ----------------------------------------------------
 char            sub_140221288(__int64 a1)
 {
-  __int64 v1; // rbx
-  int v4; // ecx
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  __int64 v10; // rbx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  _QWORD *v13; // [rsp+38h] [rbp+10h] BYREF
+  __int64 v1;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  _QWORD *v13;
 
   v1 = 0;
   v13 = nullptr;
@@ -1757,7 +1741,7 @@ char            sub_140221288(__int64 a1)
   {
 LABEL_6:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v4 = *(_DWORD *)(a1 + 60);
@@ -1837,23 +1821,22 @@ LABEL_22:
   return 1;
 }
 
-
 //----- (000000014022138C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_534(__int64 a1)
 {
-  __int64 v1; // rbx
-  _QWORD *v3; // rsi
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  __int64 v11; // rbx
-  __int64 v12; // rbx
-  __int64 v13; // rbx
+  __int64 v1;
+  _QWORD *v3;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v1 = 8;
   *(_QWORD *)(a1 + 32) += 8LL;
@@ -1916,7 +1899,7 @@ LABEL_18:
         {
 LABEL_2:
           *errno_sr() = 22;
-          sub_14024CF6C();
+          crt_invalid_parameter_noinfo();
           return 0;
         }
         *v3 = *(int *)(a1 + 40);
@@ -1939,19 +1922,18 @@ LABEL_2:
   return 1;
 }
 
-
 //----- (0000000140221708) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_535(__int64 a1)
 {
-  int v2; // r8d
-  __m128i *v3; // rcx
-  int v4; // edx
-  int v5; // edx
-  int v6; // edx
-  bool v7; // al
-  unsigned int v8; // eax
+  int v2;
+  __m128i *v3;
+  int v4;
+  int v5;
+  int v6;
+  bool v7;
+  unsigned int v8;
 
   *(_QWORD *)(a1 + 32) += 8LL;
   v2 = *(_DWORD *)(a1 + 56);
@@ -1999,18 +1981,16 @@ LABEL_16:
   return 1;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (00000001402217A0) ----------------------------------------------------
 char            sub_1402217A0(__int64 a1)
 {
-  __m128i **v1; // rdi
-  char result; // al
-  int v4; // edx
-  bool v5; // al
-  __m128i *v6; // rcx
-  unsigned int v7; // eax
-  __m128i *v8; // rcx
+  __m128i **v1;
+  char result;
+  int v4;
+  bool v5;
+  __m128i *v6;
+  unsigned int v7;
+  __m128i *v8;
 
   v1 = (__m128i **)(a1 + 72);
   result = unknown_libname_252(a1, (_QWORD *)(a1 + 72));
@@ -2061,20 +2041,18 @@ LABEL_16:
   return result;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140221858) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_536(__int64 a1)
 {
-  int v2; // r8d
-  __m128i *v3; // rcx
-  int v4; // edx
-  int v5; // edx
-  int v6; // edx
-  bool v7; // al
-  unsigned int v8; // eax
+  int v2;
+  __m128i *v3;
+  int v4;
+  int v5;
+  int v6;
+  bool v7;
+  unsigned int v8;
 
   *(_QWORD *)(a1 + 32) += 8LL;
   v2 = *(_DWORD *)(a1 + 56);
@@ -2121,21 +2099,19 @@ LABEL_16:
   *(_DWORD *)(a1 + 80) = v8;
   return 1;
 }
-
-// 140284CC0: using guessed type __int16[7];
 
 //----- (00000001402218F0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_537(__int64 a1)
 {
-  int v2; // r8d
-  __m128i *v3; // rcx
-  int v4; // edx
-  int v5; // edx
-  int v6; // edx
-  bool v7; // al
-  unsigned int v8; // eax
+  int v2;
+  __m128i *v3;
+  int v4;
+  int v5;
+  int v6;
+  bool v7;
+  unsigned int v8;
 
   *(_QWORD *)(a1 + 32) += 8LL;
   v2 = *(_DWORD *)(a1 + 56);
@@ -2183,18 +2159,16 @@ LABEL_16:
   return 1;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140221988) ----------------------------------------------------
 char            sub_140221988(__int64 a1)
 {
-  __m128i **v1; // rdi
-  char result; // al
-  int v4; // edx
-  bool v5; // al
-  __m128i *v6; // rcx
-  unsigned int v7; // eax
-  __m128i *v8; // rcx
+  __m128i **v1;
+  char result;
+  int v4;
+  bool v5;
+  __m128i *v6;
+  unsigned int v7;
+  __m128i *v8;
 
   v1 = (__m128i **)(a1 + 72);
   result = unknown_libname_253(a1, (_QWORD *)(a1 + 72));
@@ -2245,20 +2219,18 @@ LABEL_16:
   return result;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140221A40) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_538(__int64 a1)
 {
-  int v2; // r8d
-  __m128i *v3; // rcx
-  int v4; // edx
-  int v5; // edx
-  int v6; // edx
-  bool v7; // al
-  unsigned int v8; // eax
+  int v2;
+  __m128i *v3;
+  int v4;
+  int v5;
+  int v6;
+  bool v7;
+  unsigned int v8;
 
   *(_QWORD *)(a1 + 32) += 8LL;
   v2 = *(_DWORD *)(a1 + 56);
@@ -2306,20 +2278,18 @@ LABEL_16:
   return 1;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140221AD8) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_539(__int64 a1)
 {
-  int v2; // esi
-  int v3; // r8d
-  __int16 v4; // dx
-  __m128i *v5; // rbx
-  int v6; // eax
-  int i; // r9d
-  __m128i *v8; // rcx
+  int v2;
+  int v3;
+  __int16 v4;
+  __m128i *v5;
+  int v6;
+  int i;
+  __m128i *v8;
 
   *(_QWORD *)(a1 + 32) += 8LL;
   v2 = *(_DWORD *)(a1 + 56);
@@ -2361,18 +2331,16 @@ char            unknown_libname_539(__int64 a1)
   return 1;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140221BA0) ----------------------------------------------------
 char            sub_140221BA0(__int64 a1)
 {
-  __m128i **v1; // rsi
-  char result; // al
-  int v4; // ebp
-  __m128i *v5; // rbx
-  int v6; // eax
-  int i; // r8d
-  __m128i *v8; // rax
+  __m128i **v1;
+  char result;
+  int v4;
+  __m128i *v5;
+  int v6;
+  int i;
+  __m128i *v8;
 
   v1 = (__m128i **)(a1 + 72);
   result = unknown_libname_254(a1, (_QWORD *)(a1 + 72));
@@ -2419,20 +2387,18 @@ char            sub_140221BA0(__int64 a1)
   return result;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140221C8C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_540(__int64 a1)
 {
-  int v2; // esi
-  int v3; // r8d
-  __int16 v4; // dx
-  __m128i *v5; // rbx
-  int v6; // eax
-  int i; // r9d
-  __m128i *v8; // rcx
+  int v2;
+  int v3;
+  __int16 v4;
+  __m128i *v5;
+  int v6;
+  int i;
+  __m128i *v8;
 
   *(_QWORD *)(a1 + 32) += 8LL;
   v2 = *(_DWORD *)(a1 + 56);
@@ -2473,21 +2439,19 @@ char            unknown_libname_540(__int64 a1)
   *(_DWORD *)(a1 + 80) = v6;
   return 1;
 }
-
-// 140284CC0: using guessed type __int16[7];
 
 //----- (0000000140221D54) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_541(__int64 a1)
 {
-  int v2; // esi
-  int v3; // r8d
-  __int16 v4; // dx
-  __m128i *v5; // rbx
-  int v6; // eax
-  int i; // r9d
-  __m128i *v8; // rcx
+  int v2;
+  int v3;
+  __int16 v4;
+  __m128i *v5;
+  int v6;
+  int i;
+  __m128i *v8;
 
   *(_QWORD *)(a1 + 32) += 8LL;
   v2 = *(_DWORD *)(a1 + 56);
@@ -2529,18 +2493,16 @@ char            unknown_libname_541(__int64 a1)
   return 1;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140221E1C) ----------------------------------------------------
 char            sub_140221E1C(__int64 a1)
 {
-  __m128i **v1; // rsi
-  char result; // al
-  int v4; // ebp
-  __m128i *v5; // rbx
-  int v6; // eax
-  int i; // r8d
-  __m128i *v8; // rax
+  __m128i **v1;
+  char result;
+  int v4;
+  __m128i *v5;
+  int v6;
+  int i;
+  __m128i *v8;
 
   v1 = (__m128i **)(a1 + 72);
   result = unknown_libname_255(a1, (_QWORD *)(a1 + 72));
@@ -2587,20 +2549,18 @@ char            sub_140221E1C(__int64 a1)
   return result;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140221F08) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_542(__int64 a1)
 {
-  int v2; // esi
-  int v3; // r8d
-  __int16 v4; // dx
-  __m128i *v5; // rbx
-  int v6; // eax
-  int i; // r9d
-  __m128i *v8; // rcx
+  int v2;
+  int v3;
+  __int16 v4;
+  __m128i *v5;
+  int v6;
+  int i;
+  __m128i *v8;
 
   *(_QWORD *)(a1 + 32) += 8LL;
   v2 = *(_DWORD *)(a1 + 56);
@@ -2642,16 +2602,14 @@ char            unknown_libname_542(__int64 a1)
   return 1;
 }
 
-// 140284CC0: using guessed type __int16[7];
-
 //----- (0000000140222018) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_549(__int64 a1, int a2)
 {
-  _BYTE *v2; // r9
-  unsigned int i; // r10d
-  _BYTE *v5; // rcx
+  _BYTE *v2;
+  unsigned int i;
+  _BYTE *v5;
 
   v2 = *(_BYTE **)(a1 + 72);
   for ( i = 0; (int)i < a2; v2 = v5 + 1 )
@@ -2665,16 +2623,15 @@ __int64            unknown_libname_549(__int64 a1, int a2)
   }
   return i;
 }
-
 
 //----- (000000014022206C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_550(__int64 a1, int a2)
 {
-  _BYTE *v2; // r9
-  unsigned int i; // r10d
-  _BYTE *v5; // rcx
+  _BYTE *v2;
+  unsigned int i;
+  _BYTE *v5;
 
   v2 = *(_BYTE **)(a1 + 72);
   for ( i = 0; (int)i < a2; v2 = v5 + 1 )
@@ -2688,16 +2645,15 @@ __int64            unknown_libname_550(__int64 a1, int a2)
   }
   return i;
 }
-
 
 //----- (00000001402220C0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_551(__int64 a1, int a2)
 {
-  _BYTE *v2; // r9
-  unsigned int i; // r10d
-  _BYTE *v5; // rcx
+  _BYTE *v2;
+  unsigned int i;
+  _BYTE *v5;
 
   v2 = *(_BYTE **)(a1 + 72);
   for ( i = 0; (int)i < a2; v2 = v5 + 1 )
@@ -2711,16 +2667,15 @@ __int64            unknown_libname_551(__int64 a1, int a2)
   }
   return i;
 }
-
 
 //----- (0000000140222114) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_552(__int64 a1, int a2)
 {
-  _BYTE *v2; // r9
-  unsigned int i; // r10d
-  _BYTE *v5; // rcx
+  _BYTE *v2;
+  unsigned int i;
+  _BYTE *v5;
 
   v2 = *(_BYTE **)(a1 + 72);
   for ( i = 0; (int)i < a2; v2 = v5 + 1 )
@@ -2734,16 +2689,15 @@ __int64            unknown_libname_552(__int64 a1, int a2)
   }
   return i;
 }
-
 
 //----- (0000000140222168) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_553(__int64 a1, int a2)
 {
-  _BYTE *v2; // r9
-  unsigned int i; // r10d
-  _BYTE *v5; // rcx
+  _BYTE *v2;
+  unsigned int i;
+  _BYTE *v5;
 
   v2 = *(_BYTE **)(a1 + 72);
   for ( i = 0; (int)i < a2; v2 = v5 + 1 )
@@ -2757,16 +2711,15 @@ __int64            unknown_libname_553(__int64 a1, int a2)
   }
   return i;
 }
-
 
 //----- (00000001402221BC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_554(__int64 a1, int a2)
 {
-  _BYTE *v2; // r9
-  unsigned int i; // r10d
-  _BYTE *v5; // rcx
+  _BYTE *v2;
+  unsigned int i;
+  _BYTE *v5;
 
   v2 = *(_BYTE **)(a1 + 72);
   for ( i = 0; (int)i < a2; v2 = v5 + 1 )
@@ -2781,21 +2734,20 @@ __int64            unknown_libname_554(__int64 a1, int a2)
   return i;
 }
 
-
 //----- (0000000140222390) ----------------------------------------------------
 char            sub_140222390(__int64 a1)
 {
-  __int64 v2; // rcx
-  char v3; // di
-  int v4; // eax
-  bool v5; // zf
-  _BYTE *v6; // rcx
-  int v7; // edx
-  int v8; // eax
-  int v9; // r8d
-  char v10; // r9
-  __int64 v11; // rdx
-  _BYTE *v13; // [rsp+40h] [rbp+8h] BYREF
+  __int64 v2;
+  char v3;
+  int v4;
+  bool v5;
+  _BYTE *v6;
+  int v7;
+  int v8;
+  int v9;
+  char v10;
+  __int64 v11;
+  _BYTE *v13;
 
   if ( *(_DWORD *)(a1 + 1148) != 1 )
   {
@@ -2815,7 +2767,7 @@ char            sub_140222390(__int64 a1)
     if ( v7 < 0 || *v6 != 36 || v7 >= 100 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v8 = v4 - 1;
@@ -2830,7 +2782,7 @@ char            sub_140222390(__int64 a1)
       if ( !sub_140214A64(a1, v11, 1, v10, v9) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v3;
       }
     }
@@ -2846,22 +2798,21 @@ char            sub_140222390(__int64 a1)
   *(_DWORD *)(a1 + 52) = *(_DWORD *)(*(_QWORD *)(a1 + 32) - 8LL);
   return 1;
 }
-
 
 //----- (00000001402224A8) ----------------------------------------------------
 char            sub_1402224A8(__int64 a1)
 {
-  __int64 v2; // rcx
-  char v3; // di
-  int v4; // eax
-  bool v5; // zf
-  _BYTE *v6; // rcx
-  int v7; // edx
-  int v8; // eax
-  int v9; // r8d
-  char v10; // r9
-  __int64 v11; // rdx
-  _BYTE *v13; // [rsp+40h] [rbp+8h] BYREF
+  __int64 v2;
+  char v3;
+  int v4;
+  bool v5;
+  _BYTE *v6;
+  int v7;
+  int v8;
+  int v9;
+  char v10;
+  __int64 v11;
+  _BYTE *v13;
 
   if ( *(_DWORD *)(a1 + 1148) != 1 )
   {
@@ -2881,7 +2832,7 @@ char            sub_1402224A8(__int64 a1)
     if ( v7 < 0 || *v6 != 36 || v7 >= 100 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v8 = v4 - 1;
@@ -2896,7 +2847,7 @@ char            sub_1402224A8(__int64 a1)
       if ( !sub_140214C94(a1, v11, 1, v10, v9) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v3;
       }
     }
@@ -2913,21 +2864,20 @@ char            sub_1402224A8(__int64 a1)
   return 1;
 }
 
-
 //----- (00000001402225C0) ----------------------------------------------------
 char            sub_1402225C0(__int64 a1)
 {
-  unsigned __int16 *v2; // rcx
-  char v3; // di
-  int v4; // eax
-  bool v5; // zf
-  _WORD *v6; // rcx
-  int v7; // edx
-  int v8; // eax
-  int v9; // r8d
-  __int16 v10; // r9
-  __int64 v11; // rdx
-  _WORD *v13; // [rsp+40h] [rbp+8h] BYREF
+  unsigned __int16 *v2;
+  char v3;
+  int v4;
+  bool v5;
+  _WORD *v6;
+  int v7;
+  int v8;
+  int v9;
+  __int16 v10;
+  __int64 v11;
+  _WORD *v13;
 
   if ( *(_DWORD *)(a1 + 1148) != 1 )
   {
@@ -2947,7 +2897,7 @@ char            sub_1402225C0(__int64 a1)
     if ( v7 < 0 || *v6 != 36 || v7 >= 100 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v8 = v4 - 1;
@@ -2962,7 +2912,7 @@ char            sub_1402225C0(__int64 a1)
       if ( !sub_140214EC4((_QWORD *)a1, v11, 1, v10, v9) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v3;
       }
     }
@@ -2979,21 +2929,20 @@ char            sub_1402225C0(__int64 a1)
   return 1;
 }
 
-
 //----- (00000001402226D8) ----------------------------------------------------
 char            sub_1402226D8(__int64 a1)
 {
-  unsigned __int16 *v2; // rcx
-  char v3; // di
-  int v4; // eax
-  bool v5; // zf
-  _WORD *v6; // rcx
-  int v7; // edx
-  int v8; // eax
-  int v9; // r8d
-  __int16 v10; // r9
-  __int64 v11; // rdx
-  _WORD *v13; // [rsp+40h] [rbp+8h] BYREF
+  unsigned __int16 *v2;
+  char v3;
+  int v4;
+  bool v5;
+  _WORD *v6;
+  int v7;
+  int v8;
+  int v9;
+  __int16 v10;
+  __int64 v11;
+  _WORD *v13;
 
   if ( *(_DWORD *)(a1 + 1148) != 1 )
   {
@@ -3013,7 +2962,7 @@ char            sub_1402226D8(__int64 a1)
     if ( v7 < 0 || *v6 != 36 || v7 >= 100 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v8 = v4 - 1;
@@ -3028,7 +2977,7 @@ char            sub_1402226D8(__int64 a1)
       if ( !sub_1402150C4((_QWORD *)a1, v11, 1, v10, v9) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v3;
       }
     }
@@ -3045,21 +2994,20 @@ char            sub_1402226D8(__int64 a1)
   return 1;
 }
 
-
 //----- (0000000140222840) ----------------------------------------------------
 char            sub_140222840(__int64 a1)
 {
-  __int64 v2; // rcx
-  char v3; // di
-  int v4; // eax
-  bool v5; // zf
-  _BYTE *v6; // rcx
-  int v7; // edx
-  int v8; // eax
-  int v9; // r8d
-  char v10; // r9
-  __int64 v11; // rdx
-  _BYTE *v13; // [rsp+40h] [rbp+8h] BYREF
+  __int64 v2;
+  char v3;
+  int v4;
+  bool v5;
+  _BYTE *v6;
+  int v7;
+  int v8;
+  int v9;
+  char v10;
+  __int64 v11;
+  _BYTE *v13;
 
   if ( *(_DWORD *)(a1 + 1148) != 1 )
   {
@@ -3079,7 +3027,7 @@ char            sub_140222840(__int64 a1)
     if ( v7 < 0 || *v6 != 36 || v7 >= 100 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v8 = v4 - 1;
@@ -3094,7 +3042,7 @@ char            sub_140222840(__int64 a1)
       if ( !sub_140214A64(a1, v11, 1, v10, v9) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v3;
       }
     }
@@ -3111,21 +3059,20 @@ char            sub_140222840(__int64 a1)
   return 1;
 }
 
-
 //----- (0000000140222958) ----------------------------------------------------
 char            sub_140222958(__int64 a1)
 {
-  __int64 v2; // rcx
-  char v3; // di
-  int v4; // eax
-  bool v5; // zf
-  _BYTE *v6; // rcx
-  int v7; // edx
-  int v8; // eax
-  int v9; // r8d
-  char v10; // r9
-  __int64 v11; // rdx
-  _BYTE *v13; // [rsp+40h] [rbp+8h] BYREF
+  __int64 v2;
+  char v3;
+  int v4;
+  bool v5;
+  _BYTE *v6;
+  int v7;
+  int v8;
+  int v9;
+  char v10;
+  __int64 v11;
+  _BYTE *v13;
 
   if ( *(_DWORD *)(a1 + 1148) != 1 )
   {
@@ -3145,7 +3092,7 @@ char            sub_140222958(__int64 a1)
     if ( v7 < 0 || *v6 != 36 || v7 >= 100 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v8 = v4 - 1;
@@ -3160,7 +3107,7 @@ char            sub_140222958(__int64 a1)
       if ( !sub_140214C94(a1, v11, 1, v10, v9) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v3;
       }
     }
@@ -3177,21 +3124,20 @@ char            sub_140222958(__int64 a1)
   return 1;
 }
 
-
 //----- (0000000140222A70) ----------------------------------------------------
 char            sub_140222A70(__int64 a1)
 {
-  unsigned __int16 *v2; // rcx
-  char v3; // di
-  int v4; // eax
-  bool v5; // zf
-  _WORD *v6; // rcx
-  int v7; // edx
-  int v8; // eax
-  int v9; // r8d
-  __int16 v10; // r9
-  __int64 v11; // rdx
-  _WORD *v13; // [rsp+40h] [rbp+8h] BYREF
+  unsigned __int16 *v2;
+  char v3;
+  int v4;
+  bool v5;
+  _WORD *v6;
+  int v7;
+  int v8;
+  int v9;
+  __int16 v10;
+  __int64 v11;
+  _WORD *v13;
 
   if ( *(_DWORD *)(a1 + 1148) != 1 )
   {
@@ -3211,7 +3157,7 @@ char            sub_140222A70(__int64 a1)
     if ( v7 < 0 || *v6 != 36 || v7 >= 100 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v8 = v4 - 1;
@@ -3226,7 +3172,7 @@ char            sub_140222A70(__int64 a1)
       if ( !sub_140214EC4((_QWORD *)a1, v11, 1, v10, v9) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v3;
       }
     }
@@ -3243,21 +3189,20 @@ char            sub_140222A70(__int64 a1)
   return 1;
 }
 
-
 //----- (0000000140222B88) ----------------------------------------------------
 char            sub_140222B88(__int64 a1)
 {
-  unsigned __int16 *v2; // rcx
-  char v3; // di
-  int v4; // eax
-  bool v5; // zf
-  _WORD *v6; // rcx
-  int v7; // edx
-  int v8; // eax
-  int v9; // r8d
-  __int16 v10; // r9
-  __int64 v11; // rdx
-  _WORD *v13; // [rsp+40h] [rbp+8h] BYREF
+  unsigned __int16 *v2;
+  char v3;
+  int v4;
+  bool v5;
+  _WORD *v6;
+  int v7;
+  int v8;
+  int v9;
+  __int16 v10;
+  __int64 v11;
+  _WORD *v13;
 
   if ( *(_DWORD *)(a1 + 1148) != 1 )
   {
@@ -3277,7 +3222,7 @@ char            sub_140222B88(__int64 a1)
     if ( v7 < 0 || *v6 != 36 || v7 >= 100 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v8 = v4 - 1;
@@ -3292,7 +3237,7 @@ char            sub_140222B88(__int64 a1)
       if ( !sub_1402150C4((_QWORD *)a1, v11, 1, v10, v9) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v3;
       }
     }
@@ -3308,23 +3253,21 @@ char            sub_140222B88(__int64 a1)
   *(_DWORD *)(a1 + 56) = *(_DWORD *)(*(_QWORD *)(a1 + 32) - 8LL);
   return 1;
 }
-
 
 //----- (0000000140222CF0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_563(__int64 *a1)
 {
-  __int64 v1; // rcx
+  __int64 v1;
 
   v1 = *a1;
   if ( v1 )
     return sub_14022389C(v1);
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222D1C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -3334,10 +3277,9 @@ char            unknown_libname_564(_QWORD *a1)
   if ( *a1 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222D44) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -3347,10 +3289,9 @@ char            unknown_libname_565(_QWORD *a1)
   if ( *a1 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222D6C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -3360,10 +3301,9 @@ char            unknown_libname_566(_QWORD *a1)
   if ( *a1 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222D94) ----------------------------------------------------
 char            sub_140222D94(__int64 a1, __int64 a2, int a3, char a4, int a5)
@@ -3378,10 +3318,9 @@ char            sub_140222D94(__int64 a1, __int64 a2, int a3, char a4, int a5)
   if ( sub_140214A64(a1, a2, a3, a4, a5) )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222DD4) ----------------------------------------------------
 char            sub_140222DD4(__int64 a1, __int64 a2, int a3, char a4, int a5)
@@ -3396,10 +3335,9 @@ char            sub_140222DD4(__int64 a1, __int64 a2, int a3, char a4, int a5)
   if ( sub_140214C94(a1, a2, a3, a4, a5) )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222E14) ----------------------------------------------------
 char            sub_140222E14(_QWORD *a1, __int64 a2, int a3, __int16 a4, int a5)
@@ -3414,10 +3352,9 @@ char            sub_140222E14(_QWORD *a1, __int64 a2, int a3, __int16 a4, int a5
   if ( sub_140214EC4(a1, a2, a3, a4, a5) )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222E54) ----------------------------------------------------
 char            sub_140222E54(_QWORD *a1, __int64 a2, int a3, __int16 a4, int a5)
@@ -3432,25 +3369,24 @@ char            sub_140222E54(_QWORD *a1, __int64 a2, int a3, __int16 a4, int a5
   if ( sub_1402150C4(a1, a2, a3, a4, a5) )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222E94) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_567(__int64 a1)
 {
-  char *v2; // rcx
-  char v3; // al
-  int v4; // edx
-  int v6; // eax
-  bool v7; // zf
-  _BYTE *v8; // rcx
-  int v9; // edx
-  _BYTE *v10; // [rsp+30h] [rbp+8h] BYREF
-  _BYTE *v11; // [rsp+38h] [rbp+10h] BYREF
+  char *v2;
+  char v3;
+  int v4;
+  int v6;
+  bool v7;
+  _BYTE *v8;
+  int v9;
+  _BYTE *v10;
+  _BYTE *v11;
 
   if ( *(_DWORD *)(a1 + 44) != 1 )
     return 1;
@@ -3479,7 +3415,7 @@ LABEL_13:
     return 1;
   }
   if ( *(_DWORD *)(a1 + 1144) == 1 )
-    sub_1401FCD30((void *)(uintptr_t)((_WORD *)(a1 + 1160)), 0, 0x960u);
+    crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 1160)), 0, 0x960u);
   v2 = *(char **)(a1 + 24);
   *(_DWORD *)(a1 + 1148) = 2;
 LABEL_14:
@@ -3500,25 +3436,24 @@ LABEL_14:
     return 1;
   }
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140222FA0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_568(__int64 a1)
 {
-  char *v2; // rcx
-  char v3; // al
-  int v4; // edx
-  int v6; // eax
-  bool v7; // zf
-  _BYTE *v8; // rcx
-  int v9; // edx
-  _BYTE *v10; // [rsp+30h] [rbp+8h] BYREF
-  _BYTE *v11; // [rsp+38h] [rbp+10h] BYREF
+  char *v2;
+  char v3;
+  int v4;
+  int v6;
+  bool v7;
+  _BYTE *v8;
+  int v9;
+  _BYTE *v10;
+  _BYTE *v11;
 
   if ( *(_DWORD *)(a1 + 44) != 1 )
     return 1;
@@ -3547,7 +3482,7 @@ LABEL_13:
     return 1;
   }
   if ( *(_DWORD *)(a1 + 1144) == 1 )
-    sub_1401FCD30((void *)(uintptr_t)((_WORD *)(a1 + 1160)), 0, 0x960u);
+    crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 1160)), 0, 0x960u);
   v2 = *(char **)(a1 + 24);
   *(_DWORD *)(a1 + 1148) = 2;
 LABEL_14:
@@ -3568,25 +3503,24 @@ LABEL_14:
     return 1;
   }
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402230AC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_569(__int64 a1)
 {
-  unsigned __int16 *v2; // rcx
-  unsigned __int16 v3; // ax
-  int v4; // edx
-  int v6; // eax
-  bool v7; // zf
-  _WORD *v8; // rcx
-  int v9; // edx
-  _WORD *v10; // [rsp+30h] [rbp+8h] BYREF
-  _WORD *v11; // [rsp+38h] [rbp+10h] BYREF
+  unsigned __int16 *v2;
+  unsigned __int16 v3;
+  int v4;
+  int v6;
+  bool v7;
+  _WORD *v8;
+  int v9;
+  _WORD *v10;
+  _WORD *v11;
 
   if ( *(_DWORD *)(a1 + 44) != 1 )
     return 1;
@@ -3615,7 +3549,7 @@ LABEL_13:
     return 1;
   }
   if ( *(_DWORD *)(a1 + 1144) == 1 )
-    sub_1401FCD30((void *)(uintptr_t)((_WORD *)(a1 + 1160)), 0, 0x960u);
+    crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 1160)), 0, 0x960u);
   v2 = *(unsigned __int16 **)(a1 + 24);
   *(_DWORD *)(a1 + 1148) = 2;
 LABEL_14:
@@ -3636,25 +3570,24 @@ LABEL_14:
     return 1;
   }
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402231C0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_570(__int64 a1)
 {
-  unsigned __int16 *v2; // rcx
-  unsigned __int16 v3; // ax
-  int v4; // edx
-  int v6; // eax
-  bool v7; // zf
-  _WORD *v8; // rcx
-  int v9; // edx
-  _WORD *v10; // [rsp+30h] [rbp+8h] BYREF
-  _WORD *v11; // [rsp+38h] [rbp+10h] BYREF
+  unsigned __int16 *v2;
+  unsigned __int16 v3;
+  int v4;
+  int v6;
+  bool v7;
+  _WORD *v8;
+  int v9;
+  _WORD *v10;
+  _WORD *v11;
 
   if ( *(_DWORD *)(a1 + 44) != 1 )
     return 1;
@@ -3683,7 +3616,7 @@ LABEL_13:
     return 1;
   }
   if ( *(_DWORD *)(a1 + 1144) == 1 )
-    sub_1401FCD30((void *)(uintptr_t)((_WORD *)(a1 + 1160)), 0, 0x960u);
+    crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 1160)), 0, 0x960u);
   v2 = *(unsigned __int16 **)(a1 + 24);
   *(_DWORD *)(a1 + 1148) = 2;
 LABEL_14:
@@ -3704,10 +3637,9 @@ LABEL_14:
     return 1;
   }
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402232E4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -3717,10 +3649,9 @@ char            unknown_libname_571(__int64 a1)
   if ( !*(_DWORD *)(a1 + 44) || *(_DWORD *)(a1 + 44) == 7 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140223310) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -3731,10 +3662,9 @@ char            unknown_libname_572(__int64 a1)
   if ( !*(_DWORD *)(a1 + 44) || *(_DWORD *)(a1 + 44) == 7 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (000000014022333C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -3744,10 +3674,9 @@ char            unknown_libname_573(__int64 a1)
   if ( !*(_DWORD *)(a1 + 44) || *(_DWORD *)(a1 + 44) == 7 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140223368) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -3757,26 +3686,25 @@ char            unknown_libname_574(__int64 a1)
   if ( !*(_DWORD *)(a1 + 44) || *(_DWORD *)(a1 + 44) == 7 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140223394) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_575(__int64 a1)
 {
-  __int64 v2; // r8
-  __int64 v3; // r9
-  __int64 v4; // rdx
-  __int64 v5; // r10
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   if ( *(_DWORD *)(a1 + 44) && *(_DWORD *)(a1 + 44) != 7 )
   {
 LABEL_3:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( *(_DWORD *)(a1 + 1148) == 2 && *(_DWORD *)(a1 + 1144) == 1 )
@@ -3803,23 +3731,22 @@ LABEL_3:
   }
   return 1;
 }
-
 
 //----- (0000000140223430) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_576(__int64 a1)
 {
-  __int64 v2; // r8
-  __int64 v3; // r9
-  __int64 v4; // rdx
-  __int64 v5; // r10
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   if ( *(_DWORD *)(a1 + 44) && *(_DWORD *)(a1 + 44) != 7 )
   {
 LABEL_3:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( *(_DWORD *)(a1 + 1148) == 2 && *(_DWORD *)(a1 + 1144) == 1 )
@@ -3846,23 +3773,22 @@ LABEL_3:
   }
   return 1;
 }
-
 
 //----- (00000001402234CC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_577(__int64 a1)
 {
-  __int64 v2; // r8
-  __int64 v3; // r9
-  __int64 v4; // rdx
-  __int64 v5; // r10
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   if ( *(_DWORD *)(a1 + 44) && *(_DWORD *)(a1 + 44) != 7 )
   {
 LABEL_3:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( *(_DWORD *)(a1 + 1148) == 2 && *(_DWORD *)(a1 + 1144) == 1 )
@@ -3889,23 +3815,22 @@ LABEL_3:
   }
   return 1;
 }
-
 
 //----- (0000000140223568) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_578(__int64 a1)
 {
-  __int64 v2; // r8
-  __int64 v3; // r9
-  __int64 v4; // rdx
-  __int64 v5; // r10
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   if ( *(_DWORD *)(a1 + 44) && *(_DWORD *)(a1 + 44) != 7 )
   {
 LABEL_3:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( *(_DWORD *)(a1 + 1148) == 2 && *(_DWORD *)(a1 + 1144) == 1 )
@@ -3933,15 +3858,14 @@ LABEL_3:
   return 1;
 }
 
-
 //----- (0000000140223614) ----------------------------------------------------
 char            sub_140223614(__int64 a1)
 {
-  __int64 v1; // rax
-  int v3; // r8d
-  char v4; // r9
-  char v5; // bl
-  __int64 v6; // rdx
+  __int64 v1;
+  int v3;
+  char v4;
+  char v5;
+  __int64 v6;
 
   if ( *(_DWORD *)(a1 + 1148) == 2 && *(_DWORD *)(a1 + 1144) == 1 )
   {
@@ -3949,7 +3873,7 @@ char            sub_140223614(__int64 a1)
     if ( (unsigned int)v1 > 0x63 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v3 = *(_DWORD *)(a1 + 60);
@@ -3961,7 +3885,7 @@ char            sub_140223614(__int64 a1)
       if ( !sub_140214A64(a1, v6, 4, v4, v3) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v5;
       }
     }
@@ -3976,15 +3900,14 @@ char            sub_140223614(__int64 a1)
   return 1;
 }
 
-
 //----- (00000001402236B0) ----------------------------------------------------
 char            sub_1402236B0(__int64 a1)
 {
-  __int64 v1; // rax
-  int v3; // r8d
-  char v4; // r9
-  char v5; // bl
-  __int64 v6; // rdx
+  __int64 v1;
+  int v3;
+  char v4;
+  char v5;
+  __int64 v6;
 
   if ( *(_DWORD *)(a1 + 1148) == 2 && *(_DWORD *)(a1 + 1144) == 1 )
   {
@@ -3992,7 +3915,7 @@ char            sub_1402236B0(__int64 a1)
     if ( (unsigned int)v1 > 0x63 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v3 = *(_DWORD *)(a1 + 60);
@@ -4004,7 +3927,7 @@ char            sub_1402236B0(__int64 a1)
       if ( !sub_140214C94(a1, v6, 4, v4, v3) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v5;
       }
     }
@@ -4019,15 +3942,14 @@ char            sub_1402236B0(__int64 a1)
   return 1;
 }
 
-
 //----- (000000014022374C) ----------------------------------------------------
 char            sub_14022374C(__int64 a1)
 {
-  __int64 v1; // rax
-  int v3; // r8d
-  __int16 v4; // r9
-  char v5; // bl
-  __int64 v6; // rdx
+  __int64 v1;
+  int v3;
+  __int16 v4;
+  char v5;
+  __int64 v6;
 
   if ( *(_DWORD *)(a1 + 1148) == 2 && *(_DWORD *)(a1 + 1144) == 1 )
   {
@@ -4035,7 +3957,7 @@ char            sub_14022374C(__int64 a1)
     if ( (unsigned int)v1 > 0x63 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v3 = *(_DWORD *)(a1 + 60);
@@ -4047,7 +3969,7 @@ char            sub_14022374C(__int64 a1)
       if ( !sub_140214EC4((_QWORD *)a1, v6, 4, v4, v3) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v5;
       }
     }
@@ -4062,15 +3984,14 @@ char            sub_14022374C(__int64 a1)
   return 1;
 }
 
-
 //----- (00000001402237EC) ----------------------------------------------------
 char            sub_1402237EC(__int64 a1)
 {
-  __int64 v1; // rax
-  int v3; // r8d
-  __int16 v4; // r9
-  char v5; // bl
-  __int64 v6; // rdx
+  __int64 v1;
+  int v3;
+  __int16 v4;
+  char v5;
+  __int64 v6;
 
   if ( *(_DWORD *)(a1 + 1148) == 2 && *(_DWORD *)(a1 + 1144) == 1 )
   {
@@ -4078,7 +3999,7 @@ char            sub_1402237EC(__int64 a1)
     if ( (unsigned int)v1 > 0x63 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       return 0;
     }
     v3 = *(_DWORD *)(a1 + 60);
@@ -4090,7 +4011,7 @@ char            sub_1402237EC(__int64 a1)
       if ( !sub_1402150C4((_QWORD *)a1, v6, 4, v4, v3) )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
         return v5;
       }
     }
@@ -4105,13 +4026,12 @@ char            sub_1402237EC(__int64 a1)
   return 1;
 }
 
-
 //----- (000000014022389C) ----------------------------------------------------
 char            sub_14022389C(__int64 a1)
 {
-  int v1; // eax
-  _BYTE *v2; // r10
-  _BYTE *v3; // rdx
+  int v1;
+  _BYTE *v2;
+  _BYTE *v3;
 
   if ( (*(_DWORD *)(a1 + 20) & 0x1000) != 0 )
     return 1;
@@ -4128,16 +4048,14 @@ char            sub_14022389C(__int64 a1)
       return 1;
   }
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (000000014022399C) ----------------------------------------------------
 __int64            sub_14022399C(__int64 *a1, unsigned __int8 a2, _DWORD *a3)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( ((*(_DWORD *)(*a1 + 20) & 0x1000) == 0 || (result = *a1, *(_QWORD *)(*a1 + 8)))
     && (result = unknown_libname_207(a2, *a1), (_DWORD)result == -1) )
@@ -4151,11 +4069,10 @@ __int64            sub_14022399C(__int64 *a1, unsigned __int8 a2, _DWORD *a3)
   return result;
 }
 
-
 //----- (00000001402239E4) ----------------------------------------------------
 __int64            sub_1402239E4(__int64 *a1, unsigned __int16 a2, _DWORD *a3)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( ((*(_DWORD *)(*a1 + 20) & 0x1000) == 0 || (result = *a1, *(_QWORD *)(*a1 + 8)))
     && (result = sub_140256B38(a2, *a1), (_WORD)result == 0xFFFF) )
@@ -4169,11 +4086,10 @@ __int64            sub_1402239E4(__int64 *a1, unsigned __int16 a2, _DWORD *a3)
   return result;
 }
 
-
 //----- (0000000140223AC0) ----------------------------------------------------
 bool            sub_140223AC0(__int64 *a1, unsigned __int8 a2)
 {
-  bool result; // al
+  bool result;
 
   result = 1;
   if ( (*(_DWORD *)(*a1 + 20) & 0x1000) == 0 || *(_QWORD *)(*a1 + 8) )
@@ -4181,11 +4097,10 @@ bool            sub_140223AC0(__int64 *a1, unsigned __int8 a2)
   return result;
 }
 
-
 //----- (0000000140223B00) ----------------------------------------------------
 bool            sub_140223B00(__int64 *a1, unsigned __int16 a2)
 {
-  bool result; // al
+  bool result;
 
   result = 1;
   if ( (*(_DWORD *)(*a1 + 20) & 0x1000) == 0 || *(_QWORD *)(*a1 + 8) )
@@ -4193,23 +4108,22 @@ bool            sub_140223B00(__int64 *a1, unsigned __int16 a2)
   return result;
 }
 
-
 //----- (0000000140223B44) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_581(__int64 a1)
 {
-  unsigned __int16 *v2; // rsi
-  int v3; // edi
-  void *v4; // r9
-  _DWORD *v5; // r9
-  int v6; // r8d
-  int **v7; // r10
-  _DWORD *v8; // r9
-  __int64 v10; // [rsp+0h] [rbp-58h] BYREF
-  int v11; // [rsp+30h] [rbp-28h] BYREF
-  char v12[12]; // [rsp+34h] [rbp-24h] BYREF
-  __int64 v13; // [rsp+40h] [rbp-18h]
+  unsigned __int16 *v2;
+  int v3;
+  void *v4;
+  _DWORD *v5;
+  int v6;
+  int **v7;
+  _DWORD *v8;
+  __int64 v10;
+  int v11;
+  char v12[12];
+  __int64 v13;
 
   if ( *(_BYTE *)(a1 + 84) && *(int *)(a1 + 80) > 0 )
   {
@@ -4249,24 +4163,23 @@ __int64            unknown_libname_581(__int64 a1)
 }
 
 // 140223B82: conditional instruction was optimized away because eax.4>=1
-// 1402543A8: using guessed type __int64 __fastcall CDialog::CreateIndirect(CDialog *__hidden this, const struct DLGTEMPLATE *, struct CWnd *, void *);
 
 //----- (0000000140223C68) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_582(__int64 a1)
 {
-  unsigned __int16 *v2; // rsi
-  int v3; // edi
-  void *v4; // r9
-  _DWORD *v5; // r9
-  int v6; // r8d
-  int **v7; // r10
-  _DWORD *v8; // r9
-  __int64 v10; // [rsp+0h] [rbp-58h] BYREF
-  int v11; // [rsp+30h] [rbp-28h] BYREF
-  char v12[12]; // [rsp+34h] [rbp-24h] BYREF
-  __int64 v13; // [rsp+40h] [rbp-18h]
+  unsigned __int16 *v2;
+  int v3;
+  void *v4;
+  _DWORD *v5;
+  int v6;
+  int **v7;
+  _DWORD *v8;
+  __int64 v10;
+  int v11;
+  char v12[12];
+  __int64 v13;
 
   if ( *(_BYTE *)(a1 + 84) && *(int *)(a1 + 80) > 0 )
   {
@@ -4306,24 +4219,23 @@ __int64            unknown_libname_582(__int64 a1)
 }
 
 // 140223CA6: conditional instruction was optimized away because eax.4>=1
-// 1402543A8: using guessed type __int64 __fastcall CDialog::CreateIndirect(CDialog *__hidden this, const struct DLGTEMPLATE *, struct CWnd *, void *);
 
 //----- (0000000140223D8C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_583(__int64 a1)
 {
-  unsigned __int16 *v2; // rsi
-  int v3; // edi
-  void *v4; // r9
-  _DWORD *v5; // r9
-  int v6; // r8d
-  int **v7; // r10
-  _DWORD *v8; // r9
-  __int64 v10; // [rsp+0h] [rbp-58h] BYREF
-  int v11; // [rsp+30h] [rbp-28h] BYREF
-  char v12[12]; // [rsp+34h] [rbp-24h] BYREF
-  __int64 v13; // [rsp+40h] [rbp-18h]
+  unsigned __int16 *v2;
+  int v3;
+  void *v4;
+  _DWORD *v5;
+  int v6;
+  int **v7;
+  _DWORD *v8;
+  __int64 v10;
+  int v11;
+  char v12[12];
+  __int64 v13;
 
   if ( *(_BYTE *)(a1 + 84) && *(int *)(a1 + 80) > 0 )
   {
@@ -4363,23 +4275,22 @@ __int64            unknown_libname_583(__int64 a1)
 }
 
 // 140223DCA: conditional instruction was optimized away because eax.4>=1
-// 1402543A8: using guessed type __int64 __fastcall CDialog::CreateIndirect(CDialog *__hidden this, const struct DLGTEMPLATE *, struct CWnd *, void *);
 
 //----- (0000000140223EB0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_584(__int64 a1)
 {
-  unsigned __int16 *v2; // rsi
-  int v3; // edi
-  void *v4; // r9
-  int v5; // r8d
-       __m128i *v6; // rdx
-  __int64 v8; // [rsp+0h] [rbp-58h] BYREF
-  __int64 v9; // [rsp+20h] [rbp-38h]
-  int v10; // [rsp+30h] [rbp-28h] BYREF
-  _BYTE v11[12]; // [rsp+34h] [rbp-24h] BYREF
-  __int64 v12; // [rsp+40h] [rbp-18h]
+  unsigned __int16 *v2;
+  int v3;
+  void *v4;
+  int v5;
+       __m128i *v6;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  _BYTE v11[12];
+  __int64 v12;
 
   if ( *(_BYTE *)(a1 + 84) && *(int *)(a1 + 80) > 0 )
   {
@@ -4413,23 +4324,22 @@ __int64            unknown_libname_584(__int64 a1)
 }
 
 // 140223EE6: conditional instruction was optimized away because eax.4>=1
-// 1402543A8: using guessed type __int64 __fastcall CDialog::CreateIndirect(CDialog *__hidden this, const struct DLGTEMPLATE *, struct CWnd *, void *);
 
 //----- (0000000140223F88) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_585(__int64 a1)
 {
-  unsigned __int16 *v2; // rsi
-  int v3; // edi
-  void *v4; // r9
-  int v5; // r8d
-       __m128i *v6; // rdx
-  __int64 v8; // [rsp+0h] [rbp-58h] BYREF
-  __int64 v9; // [rsp+20h] [rbp-38h]
-  int v10; // [rsp+30h] [rbp-28h] BYREF
-  _BYTE v11[12]; // [rsp+34h] [rbp-24h] BYREF
-  __int64 v12; // [rsp+40h] [rbp-18h]
+  unsigned __int16 *v2;
+  int v3;
+  void *v4;
+  int v5;
+       __m128i *v6;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  _BYTE v11[12];
+  __int64 v12;
 
   if ( *(_BYTE *)(a1 + 84) && *(int *)(a1 + 80) > 0 )
   {
@@ -4463,7 +4373,6 @@ __int64            unknown_libname_585(__int64 a1)
 }
 
 // 140223FBE: conditional instruction was optimized away because eax.4>=1
-// 1402543A8: using guessed type __int64 __fastcall CDialog::CreateIndirect(CDialog *__hidden this, const struct DLGTEMPLATE *, struct CWnd *, void *);
 
 //----- (0000000140224060) ----------------------------------------------------
 unsigned char unknown_libname_586(__int64 processor)
@@ -4496,21 +4405,20 @@ unsigned char unknown_libname_586(__int64 processor)
   return 1;
 }
 
-
 //----- (0000000140224138) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_587(__int64 a1)
 {
-  sr_anon_49 *v2; // rsi
-  int v3; // edi
-  __int64 v4; // r9
-  int v5; // eax
-  __int64 v6; // rbp
-  int v7; // r8d
-  int **v8; // r10
-  _DWORD *v9; // r9
-  unsigned __int16 v11; // [rsp+50h] [rbp+8h] BYREF
+  sr_anon_49 *v2;
+  int v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  int v7;
+  int **v8;
+  _DWORD *v9;
+  unsigned __int16 v11;
 
   if ( *(_BYTE *)(a1 + 84) || *(int *)(a1 + 80) <= 0 )
   {
@@ -4551,23 +4459,21 @@ char            unknown_libname_587(__int64 a1)
   }
   return 1;
 }
-
-// 140253FC0: using guessed type __int64 __fastcall mbtowc_l(#115 *this, #49 *, char *);
 
 //----- (0000000140224240) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_588(__int64 a1)
 {
-  sr_anon_49 *v2; // rsi
-  int v3; // edi
-  __int64 v4; // r9
-  int v5; // eax
-  __int64 v6; // rbp
-  int v7; // r8d
-  int **v8; // r10
-  _DWORD *v9; // r9
-  unsigned __int16 v11; // [rsp+50h] [rbp+8h] BYREF
+  sr_anon_49 *v2;
+  int v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  int v7;
+  int **v8;
+  _DWORD *v9;
+  unsigned __int16 v11;
 
   if ( *(_BYTE *)(a1 + 84) || *(int *)(a1 + 80) <= 0 )
   {
@@ -4608,23 +4514,21 @@ char            unknown_libname_588(__int64 a1)
   }
   return 1;
 }
-
-// 140253FC0: using guessed type __int64 __fastcall mbtowc_l(#115 *this, #49 *, char *);
 
 //----- (0000000140224348) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_589(__int64 a1)
 {
-  sr_anon_49 *v2; // rsi
-  int v3; // edi
-  __int64 v4; // r9
-  int v5; // eax
-  __int64 v6; // rbp
-  int v7; // r8d
-  int **v8; // r10
-  _DWORD *v9; // r9
-  unsigned __int16 v11; // [rsp+50h] [rbp+8h] BYREF
+  sr_anon_49 *v2;
+  int v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  int v7;
+  int **v8;
+  _DWORD *v9;
+  unsigned __int16 v11;
 
   if ( *(_BYTE *)(a1 + 84) || *(int *)(a1 + 80) <= 0 )
   {
@@ -4666,20 +4570,18 @@ char            unknown_libname_589(__int64 a1)
   return 1;
 }
 
-// 140253FC0: using guessed type __int64 __fastcall mbtowc_l(#115 *this, #49 *, char *);
-
 //----- (0000000140224450) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_590(__int64 a1)
 {
-  sr_anon_49 *v2; // rsi
-  int v3; // edi
-  __int64 v4; // r9
-  int v5; // eax
-  __int64 v6; // rcx
-  __int16 v7; // dx
-  __int16 v9; // [rsp+40h] [rbp+8h] BYREF
+  sr_anon_49 *v2;
+  int v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  __int16 v7;
+  __int16 v9;
 
   if ( *(_BYTE *)(a1 + 84) || *(int *)(a1 + 80) <= 0 )
   {
@@ -4720,21 +4622,19 @@ char            unknown_libname_590(__int64 a1)
   }
   return 1;
 }
-
-// 140253FC0: using guessed type __int64 __fastcall mbtowc_l(#115 *this, #49 *, char *);
 
 //----- (000000014022453C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_591(__int64 a1)
 {
-  sr_anon_49 *v2; // rsi
-  int v3; // edi
-  __int64 v4; // r9
-  int v5; // eax
-  __int64 v6; // rcx
-  __int16 v7; // dx
-  __int16 v9; // [rsp+40h] [rbp+8h] BYREF
+  sr_anon_49 *v2;
+  int v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  __int16 v7;
+  __int16 v9;
 
   if ( *(_BYTE *)(a1 + 84) || *(int *)(a1 + 80) <= 0 )
   {
@@ -4775,21 +4675,19 @@ char            unknown_libname_591(__int64 a1)
   }
   return 1;
 }
-
-// 140253FC0: using guessed type __int64 __fastcall mbtowc_l(#115 *this, #49 *, char *);
 
 //----- (0000000140224628) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_592(__int64 a1)
 {
-  sr_anon_49 *v2; // rsi
-  int v3; // edi
-  __int64 v4; // r9
-  int v5; // eax
-  __int64 v6; // rcx
-  __int16 v7; // dx
-  __int16 v9; // [rsp+40h] [rbp+8h] BYREF
+  sr_anon_49 *v2;
+  int v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  __int16 v7;
+  __int16 v9;
 
   if ( *(_BYTE *)(a1 + 84) || *(int *)(a1 + 80) <= 0 )
   {
@@ -4831,19 +4729,17 @@ char            unknown_libname_592(__int64 a1)
   return 1;
 }
 
-// 140253FC0: using guessed type __int64 __fastcall mbtowc_l(#115 *this, #49 *, char *);
-
 //----- (000000014022475C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_593(__int64 a1,      __m128i *a2, int a3, _DWORD *a4)
 {
-  __int64 v5; // rdi
-  _QWORD *v6; // rcx
-  __int64 v8; // rax
-  unsigned __int64 v9; // rax
-  unsigned __int64 v10; // rsi
-  __m128i *v11; // rcx
+  __int64 v5;
+  _QWORD *v6;
+  __int64 v8;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  __m128i *v11;
 
   if ( a3 )
   {
@@ -4864,7 +4760,7 @@ void            unknown_libname_593(__int64 a1,      __m128i *a2, int a3, _DWORD
       v11 = (__m128i *)*v6;
       if ( v9 < a3 )
         v10 = v9;
-      sub_1401FC920(v11, a2, v10);
+      crt_memcpy(v11, a2, v10);
       **(_QWORD **)a1 += v10;
       *(_QWORD *)(*(_QWORD *)a1 + 16LL) += v10;
       if ( *(_BYTE *)(*(_QWORD *)a1 + 24LL) )
@@ -4883,18 +4779,17 @@ void            unknown_libname_593(__int64 a1,      __m128i *a2, int a3, _DWORD
   }
 }
 
-
 //----- (0000000140224800) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_594(__int64 a1,      __m128i *a2, int a3, _DWORD *a4)
 {
-  __int64 v5; // rsi
-  _QWORD *v6; // rcx
-  __int64 v8; // rax
-  unsigned __int64 v9; // rax
-  unsigned __int64 v10; // r14
-  __m128i *v11; // rcx
+  __int64 v5;
+  _QWORD *v6;
+  __int64 v8;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  __m128i *v11;
 
   if ( a3 )
   {
@@ -4915,7 +4810,7 @@ void            unknown_libname_594(__int64 a1,      __m128i *a2, int a3, _DWORD
       v11 = (__m128i *)*v6;
       if ( v9 < a3 )
         v10 = v9;
-      sub_1401FC920(v11, a2, 2 * v10);
+      crt_memcpy(v11, a2, 2 * v10);
       **(_QWORD **)a1 += 2 * v10;
       *(_QWORD *)(*(_QWORD *)a1 + 16LL) += v10;
       if ( *(_BYTE *)(*(_QWORD *)a1 + 24LL) )
@@ -4934,16 +4829,15 @@ void            unknown_libname_594(__int64 a1,      __m128i *a2, int a3, _DWORD
   }
 }
 
-
 //----- (00000001402248A8) ----------------------------------------------------
 int *           sub_1402248A8(int **a1, char *a2, int a3, _DWORD *a4, int **a5)
 {
-  int *result; // rax
-  __int64 v7; // rbp
-  int *v10; // rbx
-  int v11; // r12d
-  char *v12; // rbp
-  _UNKNOWN *retaddr; // [rsp+38h] [rbp+0h] BYREF
+  int *result;
+  __int64 v7;
+  int *v10;
+  int v11;
+  char *v12;
+  _UNKNOWN *retaddr;
 
   result = (int *)&retaddr;
   v7 = a3;
@@ -4999,16 +4893,15 @@ LABEL_13:
   return result;
 }
 
-
 //----- (00000001402249A0) ----------------------------------------------------
 int *           sub_1402249A0(int **a1, unsigned __int16 *a2, int a3, _DWORD *a4, int **a5)
 {
-  int *result; // rax
-  __int64 v7; // r12
-  int *v10; // rbx
-  int v11; // ebp
-  unsigned __int16 *v12; // r12
-  _UNKNOWN *retaddr; // [rsp+38h] [rbp+0h] BYREF
+  int *result;
+  __int64 v7;
+  int *v10;
+  int v11;
+  unsigned __int16 *v12;
+  _UNKNOWN *retaddr;
 
   result = (int *)&retaddr;
   v7 = a3;
@@ -5064,18 +4957,17 @@ LABEL_13:
   return result;
 }
 
-
 //----- (0000000140224AEC) ----------------------------------------------------
 __int64            sub_140224AEC(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
 {
-  __int64 v6; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v7; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v8; // [rsp+30h] [rbp-30h] BYREF
-  __int64 *v9[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v10; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v11; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v12; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v13; // [rsp+88h] [rbp+28h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 *v9[5];
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v6 = a5;
   v11 = a4;
@@ -5096,23 +4988,22 @@ __int64            sub_140224AEC(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
 
-
 //----- (0000000140224B78) ----------------------------------------------------
 __int64            sub_140224B78(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
 {
-  __int64 v6; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v7; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v8; // [rsp+30h] [rbp-30h] BYREF
-  __int64 *v9[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v10; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v11; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v12; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v13; // [rsp+88h] [rbp+28h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 *v9[5];
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v6 = a5;
   v11 = a4;
@@ -5133,23 +5024,22 @@ __int64            sub_140224B78(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
 
-
 //----- (0000000140224C04) ----------------------------------------------------
 __int64            sub_140224C04(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
 {
-  __int64 v6; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v7; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v8; // [rsp+30h] [rbp-30h] BYREF
-  __int64 *v9[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v10; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v11; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v12; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v13; // [rsp+88h] [rbp+28h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 *v9[5];
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v6 = a5;
   v11 = a4;
@@ -5170,23 +5060,22 @@ __int64            sub_140224C04(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
 
-
 //----- (0000000140224C90) ----------------------------------------------------
 __int64            sub_140224C90(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
 {
-  __int64 v6; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v7; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v8; // [rsp+30h] [rbp-30h] BYREF
-  __int64 *v9[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v10; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v11; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v12; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v13; // [rsp+88h] [rbp+28h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 *v9[5];
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v6 = a5;
   v11 = a4;
@@ -5207,23 +5096,22 @@ __int64            sub_140224C90(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
 
-
 //----- (0000000140224D1C) ----------------------------------------------------
 __int64            sub_140224D1C(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
 {
-  __int64 v6; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v7; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v8; // [rsp+30h] [rbp-30h] BYREF
-  __int64 *v9[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v10; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v11; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v12; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v13; // [rsp+88h] [rbp+28h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 *v9[5];
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v6 = a5;
   v11 = a4;
@@ -5244,23 +5132,22 @@ __int64            sub_140224D1C(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
 
-
 //----- (0000000140224DA8) ----------------------------------------------------
 __int64            sub_140224DA8(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
 {
-  __int64 v6; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v7; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v8; // [rsp+30h] [rbp-30h] BYREF
-  __int64 *v9[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v10; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v11; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v12; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v13; // [rsp+88h] [rbp+28h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 *v9[5];
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v6 = a5;
   v11 = a4;
@@ -5281,11 +5168,10 @@ __int64            sub_140224DA8(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
-
 
 //----- (0000000140224E34) ----------------------------------------------------
 __int64            sub_140224E34(
@@ -5297,18 +5183,18 @@ __int64            sub_140224E34(
         struct __crt_locale_pointers *a6,
         __int64 a7)
 {
-  int *v11; // rax
-  unsigned int v12; // ebx
-  int v13; // ebx
-  int v14; // r14d
-  int v15; // eax
+  int *v11;
+  unsigned int v12;
+  int v13;
+  int v14;
+  int v15;
 
   if ( !a5 )
   {
     v11 = errno_sr();
 LABEL_3:
     *v11 = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return (unsigned int)-1;
   }
   if ( a4 )
@@ -5362,7 +5248,7 @@ LABEL_23:
     if ( v15 == -2 )
     {
       *errno_sr() = 34;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
     }
     return v12;
   }
@@ -5370,7 +5256,6 @@ LABEL_23:
     *errno_sr() = v14;
   return v12;
 }
-
 
 //----- (0000000140224F68) ----------------------------------------------------
 __int64            sub_140224F68(
@@ -5382,18 +5267,18 @@ __int64            sub_140224F68(
         struct __crt_locale_pointers *a6,
         __int64 a7)
 {
-  int *v11; // rax
-  unsigned int v12; // ebx
-  int v13; // ebx
-  int v14; // r14d
-  int v15; // eax
+  int *v11;
+  unsigned int v12;
+  int v13;
+  int v14;
+  int v15;
 
   if ( !a5 )
   {
     v11 = errno_sr();
 LABEL_3:
     *v11 = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return (unsigned int)-1;
   }
   if ( !a4 )
@@ -5447,7 +5332,7 @@ LABEL_22:
     if ( v15 == -2 )
     {
       *errno_sr() = 34;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
     }
     return v12;
   }
@@ -5455,7 +5340,6 @@ LABEL_22:
     *errno_sr() = v14;
   return v12;
 }
-
 
 //----- (00000001402250AC) ----------------------------------------------------
 // attributes: thunk
@@ -5470,7 +5354,6 @@ __int64            sub_1402250AC(
   return sub_14020E60C(a1, a2, a3, a4, a5, a6);
 }
 
-
 //----- (00000001402250BC) ----------------------------------------------------
 __int64            sub_1402250BC(
         __int64 a1,
@@ -5480,7 +5363,7 @@ __int64            sub_1402250BC(
         struct __crt_locale_pointers *a5,
         __int64 a6)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( !a4 || !a2 || !a3 )
   {
@@ -5494,12 +5377,11 @@ __int64            sub_1402250BC(
   {
     *errno_sr() = 34;
 LABEL_9:
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
   return result;
 }
-
 
 //----- (0000000140225120) ----------------------------------------------------
 // attributes: thunk
@@ -5514,7 +5396,6 @@ __int64            sub_140225120(
   return sub_14020E7D8(a1, a2, a3, a4, a5, a6);
 }
 
-
 //----- (0000000140225130) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
@@ -5526,7 +5407,7 @@ __int64            unknown_libname_595(
         struct __crt_locale_pointers *a5,
         __int64 a6)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( !a4 || !a2 || !a3 )
   {
@@ -5540,71 +5421,66 @@ __int64            unknown_libname_595(
   {
     *errno_sr() = 34;
 LABEL_9:
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
   return result;
 }
 
-
 //----- (00000001402251E4) ----------------------------------------------------
 __int64            sub_1402251E4(__int64 a1, __int64 *a2, __int64 a3, __int64 *a4)
 {
-  sub_14020B5E0(*a2);
+  crt_lock_file(*a2);
   LODWORD(a3) = _lambda_f3caf1ecae5fe01a9a1a6239afa44510___operator_call(a3);
-  sub_14020B5EC(*a4);
+  crt_unlock_file(*a4);
   return (unsigned int)a3;
 }
-
 
 //----- (0000000140225224) ----------------------------------------------------
 __int64            sub_140225224(__int64 a1, __int64 *a2, __int64 a3, __int64 *a4)
 {
-  sub_14020B5E0(*a2);
+  crt_lock_file(*a2);
   LODWORD(a3) = unknown_libname_647(a3);
-  sub_14020B5EC(*a4);
+  crt_unlock_file(*a4);
   return (unsigned int)a3;
 }
-
 
 //----- (0000000140225264) ----------------------------------------------------
 __int64            sub_140225264(__int64 a1, __int64 a2)
 {
-  __int64 v3; // [rsp+30h] [rbp+8h] BYREF
-  __int64 v4; // [rsp+40h] [rbp+18h] BYREF
-  __int64 v5; // [rsp+48h] [rbp+20h] BYREF
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   v4 = a1;
   v5 = a1;
   return sub_140225224((__int64)&v3, &v5, a2, &v4);
 }
 
-
 //----- (000000014022528C) ----------------------------------------------------
 __int64            sub_14022528C(__int64 a1, __int64 a2)
 {
-  __int64 v3; // [rsp+30h] [rbp+8h] BYREF
-  __int64 v4; // [rsp+40h] [rbp+18h] BYREF
-  __int64 v5; // [rsp+48h] [rbp+20h] BYREF
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   v4 = a1;
   v5 = a1;
   return sub_1402251E4((__int64)&v3, &v5, a2, &v4);
 }
 
-
 //----- (00000001402253B4) ----------------------------------------------------
 __int64 sub_1402253B4(__int64 a1, __int64 a2, __int64 a3, __int64 a4, ...)
 {
-  _BYTE v5[8]; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v6; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v7; // [rsp+30h] [rbp-30h] BYREF
-  _QWORD v8[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v9; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v10; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v11; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v12; // [rsp+88h] [rbp+28h] BYREF
-  va_list va; // [rsp+90h] [rbp+30h] BYREF
+  _BYTE v5[8];
+  __int64 v6;
+  __int64 v7;
+  _QWORD v8[5];
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  va_list va;
 
   va_start(va, a4);
   v12 = a4;
@@ -5625,24 +5501,23 @@ __int64 sub_1402253B4(__int64 a1, __int64 a2, __int64 a3, __int64 a4, ...)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
 
-
 //----- (000000014022543C) ----------------------------------------------------
 __int64 sub_14022543C(__int64 a1, __int64 a2, __int64 a3, __int64 a4, ...)
 {
-  _BYTE v5[8]; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v6; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v7; // [rsp+30h] [rbp-30h] BYREF
-  _QWORD v8[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v9; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v10; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v11; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v12; // [rsp+88h] [rbp+28h] BYREF
-  va_list va; // [rsp+90h] [rbp+30h] BYREF
+  _BYTE v5[8];
+  __int64 v6;
+  __int64 v7;
+  _QWORD v8[5];
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  va_list va;
 
   va_start(va, a4);
   v12 = a4;
@@ -5663,11 +5538,10 @@ __int64 sub_14022543C(__int64 a1, __int64 a2, __int64 a3, __int64 a4, ...)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
-
 
 //----- (00000001402254C4) ----------------------------------------------------
 __int64            sub_1402254C4(
@@ -5678,35 +5552,35 @@ __int64            sub_1402254C4(
         struct __crt_locale_pointers *a5,
         __int64 a6)
 {
-  char *v9; // rbx
-  __int64 v11; // [rsp+0h] [rbp-C9h] BYREF
-  __int128 v12; // [rsp+20h] [rbp-A9h]
-  __m128i *v13; // [rsp+30h] [rbp-99h]
-  __int64 v14; // [rsp+38h] [rbp-91h] BYREF
-  _BYTE v15[32]; // [rsp+40h] [rbp-89h] BYREF
-  __int64 v16; // [rsp+60h] [rbp-69h] BYREF
-  __int128 v17; // [rsp+68h] [rbp-61h]
-  __m128i *v18; // [rsp+78h] [rbp-51h]
-  __int64 v19; // [rsp+80h] [rbp-49h]
-  __int64 v20; // [rsp+88h] [rbp-41h]
-  int v21; // [rsp+90h] [rbp-39h]
-  int v22; // [rsp+94h] [rbp-35h]
-  __int16 v23; // [rsp+98h] [rbp-31h]
-  char v24; // [rsp+9Ah] [rbp-2Fh]
-  __int64 v25; // [rsp+A0h] [rbp-29h]
-  int v26; // [rsp+A8h] [rbp-21h]
-  char v27; // [rsp+ACh] [rbp-1Dh]
-  int v28; // [rsp+B0h] [rbp-19h]
-  _WORD v29[18]; // [rsp+B4h] [rbp-15h] BYREF
-  _BYTE *v30; // [rsp+D8h] [rbp+Fh]
-  __int64 v31; // [rsp+E0h] [rbp+17h]
-  __int64 v32; // [rsp+E8h] [rbp+1Fh]
-  __int64 v33; // [rsp+F0h] [rbp+27h]
+  char *v9;
+  __int64 v11;
+  __int128 v12;
+  __m128i *v13;
+  __int64 v14;
+  _BYTE v15[32];
+  __int64 v16;
+  __int128 v17;
+  __m128i *v18;
+  __int64 v19;
+  __int64 v20;
+  int v21;
+  int v22;
+  __int16 v23;
+  char v24;
+  __int64 v25;
+  int v26;
+  char v27;
+  int v28;
+  _WORD v29[18];
+  _BYTE *v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
 
   if ( a2 && a4 )
   {
     v9 = strnlen_sr(a2, a3);
-    sub_140213644((_LocaleUpdate *)&v14, a5);
+    crt_locale_update((_LocaleUpdate *)&v14, a5);
     v21 = 0;
     *((_QWORD *)&v12 + 1) = (uint64)(uintptr_t)(&v9[(_QWORD)a2]);
     *(_QWORD *)&v12 = (uint64)(uintptr_t)(a2);
@@ -5716,7 +5590,7 @@ __int64            sub_1402254C4(
     v18 = a2;
     v19 = a1;
     v20 = a4;
-    sub_1401FCD30((void *)(uintptr_t)(v29), 0, 0x20u);
+    crt_memset((void *)(uintptr_t)(v29), 0, 0x20u);
     v22 = 0;
     v23 = 0;
     v25 = 0;
@@ -5734,12 +5608,10 @@ __int64            sub_1402254C4(
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return 0; /* the function has no caller */
 }
-
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
 
 //----- (00000001402255EC) ----------------------------------------------------
 __int64            sub_1402255EC(
@@ -5750,32 +5622,32 @@ __int64            sub_1402255EC(
         struct __crt_locale_pointers *a5,
         __int64 a6)
 {
-  __int64 v10; // rbx
-  unsigned int v11; // ebx
-  __int128 v12; // [rsp+28h] [rbp-89h]
-  __int64 v13; // [rsp+48h] [rbp-69h] BYREF
-  __int128 v14; // [rsp+50h] [rbp-61h]
-  __m128i *v15; // [rsp+60h] [rbp-51h]
-  __int64 v16; // [rsp+68h] [rbp-49h]
-  __int64 v17; // [rsp+70h] [rbp-41h]
-  __int64 v18; // [rsp+78h] [rbp-39h]
-  int v19; // [rsp+80h] [rbp-31h]
-  char v20; // [rsp+84h] [rbp-2Dh]
-  __int64 v21; // [rsp+88h] [rbp-29h]
-  int v22; // [rsp+90h] [rbp-21h]
-  char v23; // [rsp+94h] [rbp-1Dh]
-  int v24; // [rsp+98h] [rbp-19h]
-  void *Block; // [rsp+A0h] [rbp-11h]
-  _BYTE *v26; // [rsp+A8h] [rbp-9h]
-  __int64 v27; // [rsp+B0h] [rbp-1h]
-  __int64 v28; // [rsp+B8h] [rbp+7h]
-  __int64 v29; // [rsp+C8h] [rbp+17h] BYREF
-  _BYTE v30[24]; // [rsp+D0h] [rbp+1Fh] BYREF
+  __int64 v10;
+  unsigned int v11;
+  __int128 v12;
+  __int64 v13;
+  __int128 v14;
+  __m128i *v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  int v19;
+  char v20;
+  __int64 v21;
+  int v22;
+  char v23;
+  int v24;
+  void *Block;
+  _BYTE *v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  _BYTE v30[24];
 
   if ( a2 && a4 )
   {
     v10 = sub_140254F48(a2, a3);
-    sub_140213644((_LocaleUpdate *)&v29, a5);
+    crt_locale_update((_LocaleUpdate *)&v29, a5);
     *(_QWORD *)&v12 = (uint64)(uintptr_t)(a2);
     *((_QWORD *)&v12 + 1) = (uint64)(uintptr_t)((char *)a2 + 2 * v10);
     v26 = v30;
@@ -5804,66 +5676,60 @@ __int64            sub_1402255EC(
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (0000000140225704) ----------------------------------------------------
 __int64            sub_140225704(_DWORD *a1, __int64 a2)
 {
-  __int64 v3; // [rsp+20h] [rbp-18h] BYREF
-  char v4; // [rsp+28h] [rbp-10h]
+  __int64 v3;
+  char v4;
 
   v3 = a2;
   v4 = 0;
   return sub_14023023C(a1, (__crt_strtox__floating_point_value *)&v3);
 }
-
 
 //----- (0000000140225724) ----------------------------------------------------
 __int64            sub_140225724(_DWORD *a1, __int64 a2)
 {
-  __int64 v3; // [rsp+20h] [rbp-18h] BYREF
-  char v4; // [rsp+28h] [rbp-10h]
+  __int64 v3;
+  char v4;
 
   v3 = a2;
   v4 = 1;
   return sub_14023023C(a1, (__crt_strtox__floating_point_value *)&v3);
 }
 
-
 //----- (0000000140225744) ----------------------------------------------------
 __int64            __crt_strtox__convert_hexadecimal_string_to_floating_type__float(__int64 a1, __int64 a2)
 {
-  __int64 v3; // [rsp+20h] [rbp-18h] BYREF
-  char v4; // [rsp+28h] [rbp-10h]
+  __int64 v3;
+  char v4;
 
   v3 = a2;
   v4 = 0;
   return sub_140231FC0(a1, (__int64)&v3);
 }
 
-
 //----- (0000000140225764) ----------------------------------------------------
 __int64            __crt_strtox__convert_hexadecimal_string_to_floating_type__double(__int64 a1, __int64 a2)
 {
-  __int64 v3; // [rsp+20h] [rbp-18h] BYREF
-  char v4; // [rsp+28h] [rbp-10h]
+  __int64 v3;
+  char v4;
 
   v3 = a2;
   v4 = 1;
   return sub_140231FC0(a1, (__int64)&v3);
 }
 
-
 //----- (00000001402257B4) ----------------------------------------------------
 bool            sub_1402257B4(char a1, unsigned __int64 a2)
 {
-  unsigned __int64 v2; // rax
-  bool result; // al
+  unsigned __int64 v2;
+  bool result;
 
   result = true;
   if ( (a1 & 4) == 0 )
@@ -5877,18 +5743,17 @@ bool            sub_1402257B4(char a1, unsigned __int64 a2)
   return result;
 }
 
-
 //----- (000000014022587C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_600(struct __crt_locale_pointers *a1, __int64 a2, unsigned int *a3)
 {
-  _BYTE *v5; // rax
-  int v6; // eax
-  _BYTE *v7; // rcx
-  __int64 v9; // [rsp+0h] [rbp-348h] BYREF
-  int v10[196]; // [rsp+20h] [rbp-328h] BYREF
-  __int64 v11; // [rsp+330h] [rbp-18h]
+  _BYTE *v5;
+  int v6;
+  _BYTE *v7;
+  __int64 v9;
+  int v10[196];
+  __int64 v11;
 
   if ( a3 && a1 )
   {
@@ -5902,26 +5767,25 @@ __int64            unknown_libname_600(struct __crt_locale_pointers *a1, __int64
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v5 = *(_BYTE **)(a2 + 24);
     if ( v5 && !*(_QWORD *)(a2 + 16) )
       *v5 = 0;
   }
   return 1; /* mov eax, 1 */
 }
-
 
 //----- (0000000140225924) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_601(struct __crt_locale_pointers *a1, __int64 a2, unsigned __int64 *a3)
 {
-  _BYTE *v5; // rax
-  int v6; // eax
-  _BYTE *v7; // rcx
-  __int64 v9; // [rsp+0h] [rbp-348h] BYREF
-  int v10[196]; // [rsp+20h] [rbp-328h] BYREF
-  __int64 v11; // [rsp+330h] [rbp-18h]
+  _BYTE *v5;
+  int v6;
+  _BYTE *v7;
+  __int64 v9;
+  int v10[196];
+  __int64 v11;
 
   if ( a3 && a1 )
   {
@@ -5935,26 +5799,25 @@ __int64            unknown_libname_601(struct __crt_locale_pointers *a1, __int64
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v5 = *(_BYTE **)(a2 + 24);
     if ( v5 && !*(_QWORD *)(a2 + 16) )
       *v5 = 0;
   }
   return 1; /* mov eax, 1 */
 }
-
 
 //----- (00000001402259CC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_602(__int64 a1, __int64 a2, unsigned int *a3)
 {
-  _BYTE *v5; // rax
-  int v6; // eax
-  _BYTE *v7; // rcx
-  __int64 v9; // [rsp+0h] [rbp-348h] BYREF
-  _BYTE v10[784]; // [rsp+20h] [rbp-328h] BYREF
-  __int64 v11; // [rsp+330h] [rbp-18h]
+  _BYTE *v5;
+  int v6;
+  _BYTE *v7;
+  __int64 v9;
+  _BYTE v10[784];
+  __int64 v11;
 
   if ( a3 && a1 )
   {
@@ -5968,26 +5831,25 @@ __int64            unknown_libname_602(__int64 a1, __int64 a2, unsigned int *a3)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v5 = *(_BYTE **)(a2 + 24);
     if ( v5 && !*(_QWORD *)(a2 + 16) )
       *v5 = 0;
   }
   return 1; /* mov eax, 1 */
 }
-
 
 //----- (0000000140225A74) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_603(__int64 a1, __int64 a2, unsigned __int64 *a3)
 {
-  _BYTE *v5; // rax
-  int v6; // eax
-  _BYTE *v7; // rcx
-  __int64 v9; // [rsp+0h] [rbp-348h] BYREF
-  _BYTE v10[784]; // [rsp+20h] [rbp-328h] BYREF
-  __int64 v11; // [rsp+330h] [rbp-18h]
+  _BYTE *v5;
+  int v6;
+  _BYTE *v7;
+  __int64 v9;
+  _BYTE v10[784];
+  __int64 v11;
 
   if ( a3 && a1 )
   {
@@ -6001,7 +5863,7 @@ __int64            unknown_libname_603(__int64 a1, __int64 a2, unsigned __int64 
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v5 = *(_BYTE **)(a2 + 24);
     if ( v5 && !*(_QWORD *)(a2 + 16) )
       *v5 = 0;
@@ -6009,18 +5871,17 @@ __int64            unknown_libname_603(__int64 a1, __int64 a2, unsigned __int64 
   return 1; /* mov eax, 1 */
 }
 
-
 //----- (0000000140225B1C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_604(struct __crt_locale_pointers *a1, _QWORD *a2, unsigned int *a3)
 {
-  _BYTE *v5; // rax
-  int v6; // eax
-  _BYTE *v7; // rcx
-  __int64 v9; // [rsp+0h] [rbp-348h] BYREF
-  _BYTE v10[784]; // [rsp+20h] [rbp-328h] BYREF
-  __int64 v11; // [rsp+330h] [rbp-18h]
+  _BYTE *v5;
+  int v6;
+  _BYTE *v7;
+  __int64 v9;
+  _BYTE v10[784];
+  __int64 v11;
 
   if ( a3 && a1 )
   {
@@ -6034,26 +5895,25 @@ __int64            unknown_libname_604(struct __crt_locale_pointers *a1, _QWORD 
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v5 = (_BYTE *)a2[3];
     if ( v5 && !a2[2] )
       *v5 = 0;
   }
   return 1; /* mov eax, 1 */
 }
-
 
 //----- (0000000140225BC4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_605(struct __crt_locale_pointers *a1, _QWORD *a2, unsigned __int64 *a3)
 {
-  _BYTE *v5; // rax
-  int v6; // eax
-  _BYTE *v7; // rcx
-  __int64 v9; // [rsp+0h] [rbp-348h] BYREF
-  _BYTE v10[784]; // [rsp+20h] [rbp-328h] BYREF
-  __int64 v11; // [rsp+330h] [rbp-18h]
+  _BYTE *v5;
+  int v6;
+  _BYTE *v7;
+  __int64 v9;
+  _BYTE v10[784];
+  __int64 v11;
 
   if ( a3 && a1 )
   {
@@ -6067,7 +5927,7 @@ __int64            unknown_libname_605(struct __crt_locale_pointers *a1, _QWORD 
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v5 = (_BYTE *)a2[3];
     if ( v5 && !a2[2] )
       *v5 = 0;
@@ -6075,18 +5935,17 @@ __int64            unknown_libname_605(struct __crt_locale_pointers *a1, _QWORD 
   return 1; /* mov eax, 1 */
 }
 
-
 //----- (0000000140225C6C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_606(__int64 a1, unsigned __int64 *a2, unsigned int *a3)
 {
-  _BYTE *v5; // rax
-  int v6; // eax
-  _BYTE *v7; // rcx
-  __int64 v9; // [rsp+0h] [rbp-348h] BYREF
-  _BYTE v10[784]; // [rsp+20h] [rbp-328h] BYREF
-  __int64 v11; // [rsp+330h] [rbp-18h]
+  _BYTE *v5;
+  int v6;
+  _BYTE *v7;
+  __int64 v9;
+  _BYTE v10[784];
+  __int64 v11;
 
   if ( a3 && a1 )
   {
@@ -6100,7 +5959,7 @@ __int64            unknown_libname_606(__int64 a1, unsigned __int64 *a2, unsigne
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v5 = (_BYTE *)a2[3];
     if ( v5 && !a2[2] )
       *v5 = 0;
@@ -6108,18 +5967,17 @@ __int64            unknown_libname_606(__int64 a1, unsigned __int64 *a2, unsigne
   return 1; /* mov eax, 1 */
 }
 
-
 //----- (0000000140225D14) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_607(__int64 a1, unsigned __int64 *a2, unsigned __int64 *a3)
 {
-  _BYTE *v5; // rax
-  int v6; // eax
-  _BYTE *v7; // rcx
-  __int64 v9; // [rsp+0h] [rbp-348h] BYREF
-  _BYTE v10[784]; // [rsp+20h] [rbp-328h] BYREF
-  __int64 v11; // [rsp+330h] [rbp-18h]
+  _BYTE *v5;
+  int v6;
+  _BYTE *v7;
+  __int64 v9;
+  _BYTE v10[784];
+  __int64 v11;
 
   if ( a3 && a1 )
   {
@@ -6133,7 +5991,7 @@ __int64            unknown_libname_607(__int64 a1, unsigned __int64 *a2, unsigne
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v5 = (_BYTE *)a2[3];
     if ( v5 && !a2[2] )
       *v5 = 0;
@@ -6141,114 +5999,113 @@ __int64            unknown_libname_607(__int64 a1, unsigned __int64 *a2, unsigne
   return 1; /* mov eax, 1 */
 }
 
-
 //----- (0000000140225DBC) ----------------------------------------------------
 __int64            sub_140225DBC(struct __crt_locale_pointers *a1, __int64 a2, int *a3)
 {
-  FILE **v3; // rdi
-  bool v8; // zf
-  unsigned __int64 v9; // r13
-  int v10; // eax
-  unsigned __int64 v11; // rax
-  FILE **v12; // rdi
-  int v13; // edx
-  int *v14; // r12
-  unsigned __int64 v15; // rax
-  FILE **v16; // rdi
-  unsigned __int64 v17; // rsi
-  FILE **v18; // rdi
-  int v19; // eax
-  char v20; // r8
-  unsigned __int64 v21; // rax
-  FILE **v22; // rdi
-  int v23; // eax
-  unsigned __int64 v24; // rax
-  FILE **v25; // rax
-  int *v26; // rax
-  char v27; // r15
-  unsigned __int64 v28; // rax
-  FILE **v29; // rdi
-  int v30; // eax
-  int *v31; // r14
-  int v32; // r13d
-  unsigned int v33; // esi
-  unsigned int v34; // eax
-  unsigned __int64 v35; // rax
-  FILE **v36; // rdi
-  int v37; // eax
-  unsigned __int64 v38; // rax
-  FILE **v39; // rdi
-  int v40; // eax
-  int *v41; // r8
-  char v42; // cl
-  unsigned __int64 v43; // rax
-  FILE **v44; // rdi
-  int v45; // eax
-  unsigned int v46; // eax
-  unsigned __int64 v47; // rax
-  FILE **v48; // rdi
-  int v49; // eax
-  unsigned __int64 v50; // rcx
-  unsigned __int64 v51; // rax
-  int v52; // ecx
-  FILE **v53; // rdx
-  unsigned __int64 v54; // r13
-  unsigned __int64 v55; // r8
-  int v56; // r9d
-  FILE **v57; // rdx
-  FILE **v58; // rdi
-  int v59; // ecx
-  char v60; // al
-  unsigned __int8 v61; // r12
-  int v62; // esi
-  unsigned __int64 v63; // rax
-  FILE **v64; // rdi
-  int v65; // eax
-  char v66; // r14
-  char v67; // dl
-  unsigned __int64 v68; // rax
-  FILE **v69; // rdi
-  int v70; // eax
-  char v71; // r15
-  unsigned __int64 v72; // rax
-  FILE **v73; // rdi
-  int v74; // eax
-  unsigned int v75; // r8d
-  unsigned __int64 v76; // rax
-  FILE **v77; // rdi
-  int v78; // eax
-  unsigned int v79; // eax
-  unsigned __int64 v80; // rax
-  FILE **v81; // rdi
-  int v82; // eax
-  int v83; // eax
-  unsigned __int64 v84; // rax
-  int v85; // ecx
-  FILE **v86; // rdx
-  unsigned __int64 v87; // rax
-  FILE **v88; // rdi
-  int v89; // eax
-  unsigned __int64 v90; // rax
-  FILE **v91; // rdx
-  int *v92; // r9
-  int *v93; // rdx
-  int *v94; // r8
-  int *v95; // rax
-  int v96; // esi
-  int v97; // [rsp+20h] [rbp-28h]
-  int *v98; // [rsp+28h] [rbp-20h]
-  int *v99; // [rsp+28h] [rbp-20h]
-  unsigned __int64 v100; // [rsp+30h] [rbp-18h]
-  char v102; // [rsp+98h] [rbp+50h] BYREF
-  int *v103; // [rsp+A0h] [rbp+58h]
-  char v104; // [rsp+A8h] [rbp+60h]
+  FILE **v3;
+  bool v8;
+  unsigned __int64 v9;
+  int v10;
+  unsigned __int64 v11;
+  FILE **v12;
+  int v13;
+  int *v14;
+  unsigned __int64 v15;
+  FILE **v16;
+  unsigned __int64 v17;
+  FILE **v18;
+  int v19;
+  char v20;
+  unsigned __int64 v21;
+  FILE **v22;
+  int v23;
+  unsigned __int64 v24;
+  FILE **v25;
+  int *v26;
+  char v27;
+  unsigned __int64 v28;
+  FILE **v29;
+  int v30;
+  int *v31;
+  int v32;
+  unsigned int v33;
+  unsigned int v34;
+  unsigned __int64 v35;
+  FILE **v36;
+  int v37;
+  unsigned __int64 v38;
+  FILE **v39;
+  int v40;
+  int *v41;
+  char v42;
+  unsigned __int64 v43;
+  FILE **v44;
+  int v45;
+  unsigned int v46;
+  unsigned __int64 v47;
+  FILE **v48;
+  int v49;
+  unsigned __int64 v50;
+  unsigned __int64 v51;
+  int v52;
+  FILE **v53;
+  unsigned __int64 v54;
+  unsigned __int64 v55;
+  int v56;
+  FILE **v57;
+  FILE **v58;
+  int v59;
+  char v60;
+  unsigned __int8 v61;
+  int v62;
+  unsigned __int64 v63;
+  FILE **v64;
+  int v65;
+  char v66;
+  char v67;
+  unsigned __int64 v68;
+  FILE **v69;
+  int v70;
+  char v71;
+  unsigned __int64 v72;
+  FILE **v73;
+  int v74;
+  unsigned int v75;
+  unsigned __int64 v76;
+  FILE **v77;
+  int v78;
+  unsigned int v79;
+  unsigned __int64 v80;
+  FILE **v81;
+  int v82;
+  int v83;
+  unsigned __int64 v84;
+  int v85;
+  FILE **v86;
+  unsigned __int64 v87;
+  FILE **v88;
+  int v89;
+  unsigned __int64 v90;
+  FILE **v91;
+  int *v92;
+  int *v93;
+  int *v94;
+  int *v95;
+  int v96;
+  int v97;
+  int *v98;
+  int *v99;
+  unsigned __int64 v100;
+  char v102;
+  int *v103;
+  char v104;
 
   v103 = a3;
   v3 = *(FILE ***)a2;
   if ( !*(_QWORD *)a2 || !*(_QWORD *)(a2 + 24) )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 7;
   }
   v8 = *(_QWORD *)(a2 + 8) == 0;
@@ -6262,7 +6119,7 @@ __int64            sub_140225DBC(struct __crt_locale_pointers *a1, __int64 a2, i
   while ( 1 )
   {
     v102 = v10;
-    if ( !(unsigned int)sub_140236ED8((unsigned __int8)v10, 8, a1) )
+    if ( !(unsigned int)crt_isctype_l((unsigned __int8)v10, 8, a1) )
       break;
     v11 = *(_QWORD *)(a2 + 16) + 1LL;
     v8 = *(_QWORD *)(a2 + 8) == 0;
@@ -6777,121 +6634,120 @@ LABEL_199:
   return 9;
 }
 
-
 //----- (0000000140226624) ----------------------------------------------------
 __int64            sub_140226624(__int64 a1, FILE ***a2, __int64 a3)
 {
-  FILE **v3; // rdi
-  FILE **v7; // r15
-  unsigned __int16 v8; // ax
-  FILE **v9; // rax
-  unsigned __int16 v10; // ax
-  FILE **v11; // rdi
-  __int64 v12; // r8
-  _BYTE *v13; // r13
-  FILE **v14; // rax
-  FILE **v15; // rdi
-  unsigned __int16 v16; // ax
-  char v17; // r12
-  FILE **v18; // rsi
-  __int64 v19; // rcx
-  FILE **v20; // rdi
-  unsigned __int16 v21; // ax
-  FILE **v22; // rax
-  FILE **v23; // rdi
-  unsigned __int16 v24; // ax
-  FILE **v25; // rax
-  FILE **v26; // rdx
-  char v27; // si
-  FILE **v28; // rax
-  FILE **v29; // rdi
-  unsigned __int16 v30; // ax
-  _BYTE *v31; // r14
-  int v32; // r15d
-  unsigned int v33; // r12d
-  int v34; // ecx
-  unsigned int v35; // eax
-  unsigned int v36; // edx
-  int v37; // eax
-  FILE **v38; // rax
-  FILE **v39; // rdi
-  unsigned __int16 v40; // ax
-  FILE **v41; // r15
-  FILE **v42; // rax
-  unsigned __int16 v43; // ax
-  FILE **v44; // rdi
-  _BYTE *v45; // r9
-  unsigned __int16 v46; // cx
-  FILE **v47; // rax
-  FILE **v48; // rdi
-  unsigned int v49; // eax
-  int v50; // edx
-  unsigned int v51; // edx
-  int v52; // eax
-  FILE **v53; // rax
-  FILE **v54; // rdi
-  unsigned __int16 v55; // ax
-  FILE **v56; // rcx
-  FILE **v57; // rax
-  FILE **v58; // rdx
-  FILE **v59; // r13
-  FILE **v60; // rdx
-  FILE **v61; // rdx
-  __int64 v62; // rcx
-  FILE **v63; // rdi
-  unsigned __int16 v64; // ax
-  char v65; // al
-  unsigned __int8 v66; // r12
-  int v67; // esi
-  FILE **v68; // rax
-  unsigned __int16 v69; // dx
-  FILE **v70; // rdi
-  unsigned __int16 v71; // ax
-  FILE **v72; // rax
-  FILE **v73; // rdi
-  unsigned __int16 v74; // ax
-  bool v75; // cf
-  FILE **v76; // rax
-  FILE **v77; // rdi
-  unsigned __int16 v78; // ax
-  int v79; // eax
-  unsigned int v80; // eax
-  int v81; // r8d
-  FILE **v82; // rax
-  FILE **v83; // rdi
-  unsigned int v84; // eax
-  int v85; // edx
-  int v86; // eax
-  FILE **v87; // rax
-  FILE **v88; // rdi
-  unsigned __int16 v89; // ax
-  FILE **v90; // r13
-  FILE **v91; // rax
-  FILE **v92; // rdx
-  FILE **v93; // rax
-  FILE **v94; // rdi
-  unsigned __int16 v95; // ax
-  FILE **v96; // rax
-  FILE **v97; // rdx
-  _BYTE *v98; // rdx
-  _BYTE *v99; // r8
-  _BYTE *v100; // rax
-  int v101; // esi
-  _WORD v102[2]; // [rsp+20h] [rbp-28h] BYREF
-  int v103; // [rsp+24h] [rbp-24h]
-  int v104; // [rsp+28h] [rbp-20h]
-  int v105; // [rsp+2Ch] [rbp-1Ch]
-  _BYTE *v106; // [rsp+30h] [rbp-18h]
-  FILE **v107; // [rsp+38h] [rbp-10h]
-  char v109; // [rsp+98h] [rbp+50h]
-  FILE **v111; // [rsp+A8h] [rbp+60h]
-  char v112; // [rsp+A8h] [rbp+60h]
+  FILE **v3;
+  FILE **v7;
+  unsigned __int16 v8;
+  FILE **v9;
+  unsigned __int16 v10;
+  FILE **v11;
+  __int64 v12;
+  _BYTE *v13;
+  FILE **v14;
+  FILE **v15;
+  unsigned __int16 v16;
+  char v17;
+  FILE **v18;
+  __int64 v19;
+  FILE **v20;
+  unsigned __int16 v21;
+  FILE **v22;
+  FILE **v23;
+  unsigned __int16 v24;
+  FILE **v25;
+  FILE **v26;
+  char v27;
+  FILE **v28;
+  FILE **v29;
+  unsigned __int16 v30;
+  _BYTE *v31;
+  int v32;
+  unsigned int v33;
+  int v34;
+  unsigned int v35;
+  unsigned int v36;
+  int v37;
+  FILE **v38;
+  FILE **v39;
+  unsigned __int16 v40;
+  FILE **v41;
+  FILE **v42;
+  unsigned __int16 v43;
+  FILE **v44;
+  _BYTE *v45;
+  unsigned __int16 v46;
+  FILE **v47;
+  FILE **v48;
+  unsigned int v49;
+  int v50;
+  unsigned int v51;
+  int v52;
+  FILE **v53;
+  FILE **v54;
+  unsigned __int16 v55;
+  FILE **v56;
+  FILE **v57;
+  FILE **v58;
+  FILE **v59;
+  FILE **v60;
+  FILE **v61;
+  __int64 v62;
+  FILE **v63;
+  unsigned __int16 v64;
+  char v65;
+  unsigned __int8 v66;
+  int v67;
+  FILE **v68;
+  unsigned __int16 v69;
+  FILE **v70;
+  unsigned __int16 v71;
+  FILE **v72;
+  FILE **v73;
+  unsigned __int16 v74;
+  bool v75;
+  FILE **v76;
+  FILE **v77;
+  unsigned __int16 v78;
+  int v79;
+  unsigned int v80;
+  int v81;
+  FILE **v82;
+  FILE **v83;
+  unsigned int v84;
+  int v85;
+  int v86;
+  FILE **v87;
+  FILE **v88;
+  unsigned __int16 v89;
+  FILE **v90;
+  FILE **v91;
+  FILE **v92;
+  FILE **v93;
+  FILE **v94;
+  unsigned __int16 v95;
+  FILE **v96;
+  FILE **v97;
+  _BYTE *v98;
+  _BYTE *v99;
+  _BYTE *v100;
+  int v101;
+  _WORD v102[2];
+  int v103;
+  int v104;
+  int v105;
+  _BYTE *v106;
+  FILE **v107;
+  char v109;
+  FILE **v111;
+  char v112;
 
   v3 = *a2;
   if ( !*a2 || !a2[3] )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 7;
   }
   v7 = a2[2];
@@ -7950,96 +7806,92 @@ LABEL_378:
   return 8;
 }
 
-// 140227733: variable 'v12' is possibly undefined
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (0000000140227894) ----------------------------------------------------
 __int64            sub_140227894(struct __crt_locale_pointers *a1, _QWORD *a2, __int64 a3)
 {
-  __int64 v4; // rdx
-  __int64 v7; // rbp
-  unsigned __int8 *v8; // rax
-  unsigned __int8 v9; // di
-  unsigned __int8 v10; // si
-  unsigned __int64 v11; // rax
-  unsigned __int8 *v12; // rax
-  int *v13; // r11
-  _BYTE *v14; // r9
-  unsigned __int64 v15; // rax
-  unsigned __int8 *v16; // rax
-  unsigned __int8 v17; // r13
-  __int64 v18; // r8
-  char *v19; // rax
-  char v20; // cl
-  unsigned __int64 v21; // rax
-  unsigned __int8 *v22; // rax
-  unsigned __int64 v23; // rax
-  __int64 v24; // rax
-  int v25; // r10d
-  _BYTE *v26; // r12
-  char v27; // r8
-  _BYTE *v28; // r15
-  unsigned __int64 v29; // rax
-  unsigned __int8 *v30; // rax
-  unsigned int v31; // edx
-  unsigned int v32; // eax
-  unsigned __int64 v33; // rax
-  unsigned __int8 *v34; // rax
-  __int64 v35; // rax
-  unsigned __int64 v36; // rax
-  unsigned __int8 *v37; // rax
-  unsigned __int8 v38; // cl
-  unsigned __int64 v39; // rax
-  unsigned __int8 *v40; // rax
-  unsigned int v41; // eax
-  unsigned __int64 v42; // rax
-  unsigned __int8 *v43; // rax
-  unsigned __int64 v44; // rcx
-  unsigned __int64 v45; // rax
-  __int64 v46; // r8
-  unsigned __int64 v47; // rsi
-  unsigned __int64 v48; // rdx
-  __int64 v49; // r9
-  char *v50; // rax
-  char v51; // cl
-  char v52; // al
-  int v53; // r9d
-  unsigned __int64 v54; // rax
-  char *v55; // rax
-  char v56; // r8
-  char v57; // r11
-  unsigned __int64 v58; // rax
-  char *v59; // rax
-  char v60; // r10
-  unsigned __int64 v61; // rax
-  char *v62; // rax
-  unsigned int v63; // edx
-  unsigned __int64 v64; // rax
-  char *v65; // rax
-  unsigned int v66; // eax
-  unsigned __int64 v67; // rax
-  char *v68; // rax
-  int v69; // eax
-  unsigned __int64 v70; // rax
-  __int64 v71; // r8
-  unsigned __int64 v72; // rax
-  char *v73; // rax
-  unsigned __int64 v74; // rax
-  __int64 v75; // rax
-  _BYTE *v76; // rax
-  _BYTE *v77; // rcx
-  bool v78; // zf
-  int v79; // r9d
-  int v80; // [rsp+68h] [rbp+10h] BYREF
-  __int64 v81; // [rsp+70h] [rbp+18h]
+  __int64 v4;
+  __int64 v7;
+  unsigned __int8 *v8;
+  unsigned __int8 v9;
+  unsigned __int8 v10;
+  unsigned __int64 v11;
+  unsigned __int8 *v12;
+  int *v13;
+  _BYTE *v14;
+  unsigned __int64 v15;
+  unsigned __int8 *v16;
+  unsigned __int8 v17;
+  __int64 v18;
+  char *v19;
+  char v20;
+  unsigned __int64 v21;
+  unsigned __int8 *v22;
+  unsigned __int64 v23;
+  __int64 v24;
+  int v25;
+  _BYTE *v26;
+  char v27;
+  _BYTE *v28;
+  unsigned __int64 v29;
+  unsigned __int8 *v30;
+  unsigned int v31;
+  unsigned int v32;
+  unsigned __int64 v33;
+  unsigned __int8 *v34;
+  __int64 v35;
+  unsigned __int64 v36;
+  unsigned __int8 *v37;
+  unsigned __int8 v38;
+  unsigned __int64 v39;
+  unsigned __int8 *v40;
+  unsigned int v41;
+  unsigned __int64 v42;
+  unsigned __int8 *v43;
+  unsigned __int64 v44;
+  unsigned __int64 v45;
+  __int64 v46;
+  unsigned __int64 v47;
+  unsigned __int64 v48;
+  __int64 v49;
+  char *v50;
+  char v51;
+  char v52;
+  int v53;
+  unsigned __int64 v54;
+  char *v55;
+  char v56;
+  char v57;
+  unsigned __int64 v58;
+  char *v59;
+  char v60;
+  unsigned __int64 v61;
+  char *v62;
+  unsigned int v63;
+  unsigned __int64 v64;
+  char *v65;
+  unsigned int v66;
+  unsigned __int64 v67;
+  char *v68;
+  int v69;
+  unsigned __int64 v70;
+  __int64 v71;
+  unsigned __int64 v72;
+  char *v73;
+  unsigned __int64 v74;
+  __int64 v75;
+  _BYTE *v76;
+  _BYTE *v77;
+  bool v78;
+  int v79;
+  int v80;
+  __int64 v81;
 
   v81 = a3;
   v4 = *a2;
   if ( !v4 || !a2[3] )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 7;
   }
   v7 = a2[2];
@@ -8056,7 +7908,7 @@ __int64            sub_140227894(struct __crt_locale_pointers *a1, _QWORD *a2, _
   }
   LOBYTE(v80) = v9;
   v10 = v9;
-  if ( (unsigned int)sub_140236ED8(v9, 8, a1) )
+  if ( (unsigned int)crt_isctype_l(v9, 8, a1) )
   {
     do
     {
@@ -8073,7 +7925,7 @@ __int64            sub_140227894(struct __crt_locale_pointers *a1, _QWORD *a2, _
       }
       LOBYTE(v80) = v9;
     }
-    while ( (unsigned int)sub_140236ED8(v9, 8, a1) );
+    while ( (unsigned int)crt_isctype_l(v9, 8, a1) );
     v10 = v9;
   }
   v13 = (int *)v81;
@@ -8554,119 +8406,118 @@ LABEL_148:
   return 9;
 }
 
-
 //----- (00000001402280D0) ----------------------------------------------------
 __int64            sub_1402280D0(__int64 a1, unsigned __int64 *a2, __int64 a3)
 {
-  __int64 v4; // rdx
-  __int64 v6; // rbp
-  unsigned __int16 v7; // bx
-  unsigned __int16 *v8; // rax
-  __int16 v9; // di
-  unsigned __int16 i; // cx
-  unsigned __int64 v11; // rax
-  __int16 *v12; // rax
-  __int16 v13; // dx
-  __int64 v14; // r11
-  _BYTE *v15; // r10
-  unsigned __int64 v16; // rax
-  __int16 *v17; // rax
-  char v18; // r13
-  unsigned __int64 v19; // r8
-  __int16 v20; // cx
-  __int16 *v21; // rax
-  unsigned __int64 v22; // rax
-  unsigned __int16 *v23; // rax
-  unsigned __int64 v24; // rax
-  __int64 v25; // rax
-  _BYTE *v26; // r15
-  int v27; // edi
-  char v28; // r8
-  int v29; // ecx
-  unsigned __int64 v30; // rax
-  unsigned __int16 *v31; // rax
-  unsigned __int16 v32; // dx
-  unsigned int v33; // r9d
-  unsigned int v34; // eax
-  unsigned int v35; // edx
-  int v36; // eax
-  unsigned __int64 v37; // rax
-  unsigned __int16 *v38; // rax
-  int *v39; // r11
-  unsigned __int64 v40; // rbp
-  unsigned __int8 v41; // r13
-  _BYTE *v42; // r12
-  unsigned __int64 v43; // rax
-  unsigned __int16 v44; // dx
-  unsigned __int16 *v45; // rax
-  unsigned __int16 v46; // cx
-  unsigned __int64 v47; // rax
-  unsigned __int16 *v48; // rax
-  unsigned int v49; // eax
-  int v50; // edx
-  unsigned int v51; // edx
-  int v52; // eax
-  unsigned __int64 v53; // rax
-  unsigned __int16 *v54; // rax
-  unsigned __int64 v55; // rcx
-  unsigned __int64 v56; // rax
-  __int64 v57; // r8
-  unsigned __int64 v58; // rdi
-  unsigned __int64 v59; // rdx
-  __int64 v60; // r9
-  unsigned __int16 v61; // dx
-  unsigned __int16 *v62; // rax
-  char v63; // al
-  int v64; // r9d
-  unsigned __int64 v65; // rax
-  unsigned __int16 *v66; // rax
-  unsigned __int16 v67; // r11
-  unsigned __int16 v68; // cx
-  unsigned __int64 v69; // rax
-  unsigned __int16 *v70; // rax
-  unsigned __int16 v71; // dx
-  int v72; // eax
-  bool v73; // cf
-  unsigned __int64 v74; // rax
-  unsigned __int16 *v75; // rax
-  unsigned int v76; // r8d
-  unsigned int v77; // eax
-  int v78; // r8d
-  unsigned __int64 v79; // rax
-  unsigned __int16 *v80; // rax
-  unsigned int v81; // eax
-  int v82; // ecx
-  unsigned int v83; // r8d
-  int v84; // eax
-  unsigned __int64 v85; // rax
-  unsigned __int16 *v86; // rax
-  unsigned __int64 v87; // rax
-  __int64 v88; // r8
-  unsigned __int64 v89; // rax
-  unsigned __int16 *v90; // rax
-  unsigned __int64 v91; // rax
-  __int64 v92; // rax
-  _BYTE *v93; // rax
-  _BYTE *v94; // rcx
-  bool v95; // zf
-  int v96; // r9d
-  int v97; // [rsp+20h] [rbp-78h]
-  unsigned __int16 v98; // [rsp+24h] [rbp-74h]
-  int v99; // [rsp+28h] [rbp-70h]
-  unsigned __int64 v100; // [rsp+30h] [rbp-68h]
-  unsigned __int64 v101; // [rsp+30h] [rbp-68h]
-  _BYTE *v102; // [rsp+38h] [rbp-60h]
-  _BYTE *v103; // [rsp+40h] [rbp-58h]
-  __int16 v105; // [rsp+A8h] [rbp+10h] BYREF
-  __int64 v106; // [rsp+B0h] [rbp+18h]
-  int v107; // [rsp+B8h] [rbp+20h]
+  __int64 v4;
+  __int64 v6;
+  unsigned __int16 v7;
+  unsigned __int16 *v8;
+  __int16 v9;
+  unsigned __int16 i;
+  unsigned __int64 v11;
+  __int16 *v12;
+  __int16 v13;
+  __int64 v14;
+  _BYTE *v15;
+  unsigned __int64 v16;
+  __int16 *v17;
+  char v18;
+  unsigned __int64 v19;
+  __int16 v20;
+  __int16 *v21;
+  unsigned __int64 v22;
+  unsigned __int16 *v23;
+  unsigned __int64 v24;
+  __int64 v25;
+  _BYTE *v26;
+  int v27;
+  char v28;
+  int v29;
+  unsigned __int64 v30;
+  unsigned __int16 *v31;
+  unsigned __int16 v32;
+  unsigned int v33;
+  unsigned int v34;
+  unsigned int v35;
+  int v36;
+  unsigned __int64 v37;
+  unsigned __int16 *v38;
+  int *v39;
+  unsigned __int64 v40;
+  unsigned __int8 v41;
+  _BYTE *v42;
+  unsigned __int64 v43;
+  unsigned __int16 v44;
+  unsigned __int16 *v45;
+  unsigned __int16 v46;
+  unsigned __int64 v47;
+  unsigned __int16 *v48;
+  unsigned int v49;
+  int v50;
+  unsigned int v51;
+  int v52;
+  unsigned __int64 v53;
+  unsigned __int16 *v54;
+  unsigned __int64 v55;
+  unsigned __int64 v56;
+  __int64 v57;
+  unsigned __int64 v58;
+  unsigned __int64 v59;
+  __int64 v60;
+  unsigned __int16 v61;
+  unsigned __int16 *v62;
+  char v63;
+  int v64;
+  unsigned __int64 v65;
+  unsigned __int16 *v66;
+  unsigned __int16 v67;
+  unsigned __int16 v68;
+  unsigned __int64 v69;
+  unsigned __int16 *v70;
+  unsigned __int16 v71;
+  int v72;
+  bool v73;
+  unsigned __int64 v74;
+  unsigned __int16 *v75;
+  unsigned int v76;
+  unsigned int v77;
+  int v78;
+  unsigned __int64 v79;
+  unsigned __int16 *v80;
+  unsigned int v81;
+  int v82;
+  unsigned int v83;
+  int v84;
+  unsigned __int64 v85;
+  unsigned __int16 *v86;
+  unsigned __int64 v87;
+  __int64 v88;
+  unsigned __int64 v89;
+  unsigned __int16 *v90;
+  unsigned __int64 v91;
+  __int64 v92;
+  _BYTE *v93;
+  _BYTE *v94;
+  bool v95;
+  int v96;
+  int v97;
+  unsigned __int16 v98;
+  int v99;
+  unsigned __int64 v100;
+  unsigned __int64 v101;
+  _BYTE *v102;
+  _BYTE *v103;
+  __int16 v105;
+  __int64 v106;
+  int v107;
 
   v106 = a3;
   v4 = *a2;
   if ( !v4 || !a2[3] )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 7;
   }
   v6 = a2[2];
@@ -9656,36 +9507,35 @@ LABEL_392:
   return 8;
 }
 
-
 //----- (00000001402292F0) ----------------------------------------------------
 __int64            sub_1402292F0(char *a1, __int64 a2, __int64 a3)
 {
-  __int64 v3; // rsi
-  char v6; // dl
-  char v8; // r9
-  unsigned int v9; // edi
-  unsigned __int64 v10; // rax
-  bool v11; // zf
-  FILE **v12; // r14
-  int v13; // eax
-  unsigned __int64 v14; // r9
-  unsigned __int64 v15; // r8
-  unsigned __int64 v16; // rbp
-  unsigned __int64 v17; // rax
-  int v18; // ecx
-  FILE **v19; // rdx
-  FILE **v20; // rsi
-  int v21; // eax
-  unsigned __int64 v22; // rax
-  FILE **v23; // rdx
-  __int64 v25; // rsi
-  int v26; // ecx
-  unsigned __int64 v27; // rax
-  FILE **v28; // r14
-  unsigned __int64 v29; // rax
-  FILE **v30; // rdx
-  unsigned __int64 v31; // rax
-  FILE **v32; // rdx
+  __int64 v3;
+  char v6;
+  char v8;
+  unsigned int v9;
+  unsigned __int64 v10;
+  bool v11;
+  FILE **v12;
+  int v13;
+  unsigned __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  int v18;
+  FILE **v19;
+  FILE **v20;
+  int v21;
+  unsigned __int64 v22;
+  FILE **v23;
+  __int64 v25;
+  int v26;
+  unsigned __int64 v27;
+  FILE **v28;
+  unsigned __int64 v29;
+  FILE **v30;
+  unsigned __int64 v31;
+  FILE **v32;
 
   v3 = 0;
   v6 = *a1;
@@ -9810,35 +9660,33 @@ __int64            sub_1402292F0(char *a1, __int64 a2, __int64 a3)
   return v9;
 }
 
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (0000000140229560) ----------------------------------------------------
 __int64            sub_140229560(char *a1, __int64 a2, __int64 a3)
 {
-  char v3; // r9
-  __int64 v4; // rbx
-  char v6; // r10
-  unsigned int v7; // r11d
-  unsigned __int64 v8; // rax
-  bool v9; // zf
-  char *v10; // rax
-  unsigned __int64 v11; // r8
-  unsigned __int64 v12; // rcx
-  unsigned __int64 v13; // r10
-  unsigned __int64 v14; // rax
-  __int64 v15; // rbx
-  char *v16; // rax
-  char v17; // cl
-  unsigned __int64 v18; // rax
-  __int64 v19; // rax
-  __int64 v21; // r9
-  char v22; // r8
-  unsigned __int64 v23; // rax
-  char *v24; // rax
-  unsigned __int64 v25; // rax
-  __int64 v26; // rcx
-  unsigned __int64 v27; // rax
-  __int64 v28; // rax
+  char v3;
+  __int64 v4;
+  char v6;
+  unsigned int v7;
+  unsigned __int64 v8;
+  bool v9;
+  char *v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  char *v16;
+  char v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  __int64 v21;
+  char v22;
+  unsigned __int64 v23;
+  char *v24;
+  unsigned __int64 v25;
+  __int64 v26;
+  unsigned __int64 v27;
+  __int64 v28;
 
   v3 = *a1;
   v4 = 0;
@@ -9964,35 +9812,33 @@ __int64            sub_140229560(char *a1, __int64 a2, __int64 a3)
   return v7;
 }
 
-// 1402858D4: using guessed type _BYTE byte_1402858D4[96];
-
 //----- (0000000140229798) ----------------------------------------------------
 __int64            sub_140229798(unsigned __int64 a1, FILE ***a2, FILE **a3)
 {
-  _WORD *v3; // r14
-  __int64 v6; // rdi
-  unsigned __int16 v7; // r9
-  FILE **v8; // rax
-  FILE **v9; // rsi
-  unsigned __int16 v10; // ax
-  FILE **v11; // r8
-  FILE **v12; // rdx
-  FILE **v13; // rbp
-  FILE **v14; // rax
-  FILE **v15; // rdx
-  FILE **v16; // rax
-  FILE **v17; // rdx
-  unsigned __int16 v19; // ax
-  FILE **v20; // rdi
-  __int64 v21; // rdi
-  __int64 v22; // rcx
-  FILE **v23; // rax
-  FILE **v24; // rsi
-  unsigned __int16 v25; // ax
-  FILE **v26; // rax
-  FILE **v27; // rdx
-  FILE **v28; // rax
-  FILE **v29; // rdx
+  _WORD *v3;
+  __int64 v6;
+  unsigned __int16 v7;
+  FILE **v8;
+  FILE **v9;
+  unsigned __int16 v10;
+  FILE **v11;
+  FILE **v12;
+  FILE **v13;
+  FILE **v14;
+  FILE **v15;
+  FILE **v16;
+  FILE **v17;
+  unsigned __int16 v19;
+  FILE **v20;
+  __int64 v21;
+  __int64 v22;
+  FILE **v23;
+  FILE **v24;
+  unsigned __int16 v25;
+  FILE **v26;
+  FILE **v27;
+  FILE **v28;
+  FILE **v29;
 
   v3 = (_WORD *)a1;
   LOWORD(a1) = *(_WORD *)a1;
@@ -10126,39 +9972,34 @@ LABEL_20:
 }
 
 // 140229875: conditional instruction was optimized away because cx.2 is in (1..FFFE)
-// 1402298C7: variable 'a3' is possibly undefined
-// 1402299C2: variable 'v11' is possibly undefined
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-// 1402858D4: using guessed type _BYTE byte_1402858D4[96];
 
 //----- (0000000140229A30) ----------------------------------------------------
 __int64            sub_140229A30(__int16 *a1, _QWORD *a2, __int64 a3)
 {
-  __int16 v3; // r9
-  __int16 v4; // r10
-  __int64 v5; // r11
-  unsigned __int64 v8; // rax
-  __int16 *v9; // rax
-  __int16 v10; // r8
-  unsigned __int64 v11; // r8
-  unsigned __int64 v12; // rcx
-  unsigned __int64 v13; // r11
-  unsigned __int64 v14; // rax
-  __int64 v15; // r10
-  __int16 v16; // r8
-  unsigned __int64 v17; // rax
-  __int64 v18; // rax
-  __int16 *v20; // rax
-  __int64 v21; // r9
-  __int16 v22; // cx
-  unsigned __int64 v23; // rax
-  __int16 *v24; // rax
-  __int16 v25; // r8
-  unsigned __int64 v26; // rax
-  __int64 v27; // rax
-  unsigned __int64 v28; // rax
-  __int64 v29; // rax
+  __int16 v3;
+  __int16 v4;
+  __int64 v5;
+  unsigned __int64 v8;
+  __int16 *v9;
+  __int16 v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  __int16 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  __int16 *v20;
+  __int64 v21;
+  __int16 v22;
+  unsigned __int64 v23;
+  __int16 *v24;
+  __int16 v25;
+  unsigned __int64 v26;
+  __int64 v27;
+  unsigned __int64 v28;
+  __int64 v29;
 
   v3 = *a1;
   v4 = *a1;
@@ -10276,39 +10117,38 @@ LABEL_26:
   return 7;
 }
 
-
 //----- (0000000140229CC0) ----------------------------------------------------
 __int64            sub_140229CC0(char *a1, __int64 a2, unsigned __int64 a3)
 {
-  char v4; // dl
-  __int64 i; // rdi
-  unsigned __int64 v7; // rax
-  bool v8; // zf
-  FILE **v9; // rsi
-  int v10; // eax
-  unsigned __int64 v11; // r9
-  unsigned __int64 v12; // r8
-  unsigned __int64 v13; // rcx
-  unsigned __int64 v14; // rax
-  int v15; // r10d
-  FILE **v16; // rdx
-  unsigned __int64 v17; // rcx
-  FILE **v18; // rdi
-  int v19; // eax
-  unsigned __int64 v21; // rax
-  FILE **v22; // rdi
-  int v23; // eax
-  char v24; // cl
-  unsigned __int64 v25; // rax
-  FILE **v26; // rdx
-  char v27; // al
-  int v28; // ecx
-  unsigned __int64 v29; // rax
-  FILE **v30; // rdx
-  unsigned __int64 v31; // rax
-  FILE **v32; // rdi
-  __int64 v33[7]; // [rsp+20h] [rbp-38h] BYREF
-  unsigned __int64 v34; // [rsp+70h] [rbp+18h] BYREF
+  char v4;
+  __int64 i;
+  unsigned __int64 v7;
+  bool v8;
+  FILE **v9;
+  int v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  int v15;
+  FILE **v16;
+  unsigned __int64 v17;
+  FILE **v18;
+  int v19;
+  unsigned __int64 v21;
+  FILE **v22;
+  int v23;
+  char v24;
+  unsigned __int64 v25;
+  FILE **v26;
+  char v27;
+  int v28;
+  unsigned __int64 v29;
+  FILE **v30;
+  unsigned __int64 v31;
+  FILE **v32;
+  __int64 v33[7];
+  unsigned __int64 v34;
 
   v34 = a3;
   v33[0] = a2;
@@ -10435,44 +10275,42 @@ __int64            sub_140229CC0(char *a1, __int64 a2, unsigned __int64 a3)
   }
 }
 
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (0000000140229F5C) ----------------------------------------------------
 __int64            sub_140229F5C(char *a1, _QWORD *a2, __int64 a3)
 {
-  char v4; // dl
-  char v5; // di
-  char v6; // r9
-  __int64 i; // r10
-  unsigned __int64 v9; // rax
-  char *v10; // rax
-  unsigned __int64 v11; // r8
-  unsigned __int64 v12; // rcx
-  unsigned __int64 v13; // rbp
-  unsigned __int64 v14; // rax
-  __int64 v15; // r9
-  char *v16; // rax
-  char v17; // cl
-  unsigned __int64 v18; // rax
-  __int64 v19; // rax
-  __int64 v21; // rdx
-  unsigned __int64 v22; // rax
-  unsigned __int64 v23; // rdx
-  bool v24; // cc
-  __int64 v25; // rax
-  char *v26; // rax
-  char v27; // cl
-  char v28; // cl
-  unsigned __int64 v29; // rax
-  __int64 v30; // rax
-  char v31; // al
-  char v32; // dl
-  unsigned __int64 v33; // rax
-  __int64 v34; // rax
-  char v35; // r8
-  unsigned __int64 v36; // rax
-  char *v37; // rax
-  unsigned __int64 v38; // rax
+  char v4;
+  char v5;
+  char v6;
+  __int64 i;
+  unsigned __int64 v9;
+  char *v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  char *v16;
+  char v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  __int64 v21;
+  unsigned __int64 v22;
+  unsigned __int64 v23;
+  bool v24;
+  __int64 v25;
+  char *v26;
+  char v27;
+  char v28;
+  unsigned __int64 v29;
+  __int64 v30;
+  char v31;
+  char v32;
+  unsigned __int64 v33;
+  __int64 v34;
+  char v35;
+  unsigned __int64 v36;
+  char *v37;
+  unsigned __int64 v38;
 
   v4 = *a1;
   v5 = 0;
@@ -10644,39 +10482,37 @@ LABEL_33:
   }
 }
 
-// 1402858D4: using guessed type _BYTE byte_1402858D4[96];
-
 //----- (000000014022A27C) ----------------------------------------------------
 __int64            sub_14022A27C(__int64 a1, FILE ***a2, __int64 *a3)
 {
-  __int16 *v3; // r14
-  __int64 i; // rdi
-  FILE **v6; // rax
-  FILE **v7; // rsi
-  unsigned __int16 v8; // ax
-  FILE **v9; // r9
-  FILE **v10; // r8
-  FILE **v11; // rdx
-  FILE **v12; // rax
-  FILE **v13; // rdx
-  FILE **v14; // rdx
-  __int16 v15; // ax
-  FILE **v17; // rdi
-  FILE **v18; // rax
-  __int16 v19; // ax
-  FILE **v20; // rdi
-  __int64 v21; // rcx
-  FILE **v22; // rax
-  FILE **v23; // rdx
-  char v24; // al
-  __int64 v25; // rcx
-  FILE **v26; // rax
-  FILE **v27; // rdx
-  FILE **v28; // rax
-  FILE **v29; // rdi
-  __int16 v30; // ax
-  __int64 v31[4]; // [rsp+20h] [rbp-48h] BYREF
-  __int64 *v32; // [rsp+80h] [rbp+18h] BYREF
+  __int16 *v3;
+  __int64 i;
+  FILE **v6;
+  FILE **v7;
+  unsigned __int16 v8;
+  FILE **v9;
+  FILE **v10;
+  FILE **v11;
+  FILE **v12;
+  FILE **v13;
+  FILE **v14;
+  __int16 v15;
+  FILE **v17;
+  FILE **v18;
+  __int16 v19;
+  FILE **v20;
+  __int64 v21;
+  FILE **v22;
+  FILE **v23;
+  char v24;
+  __int64 v25;
+  FILE **v26;
+  FILE **v27;
+  FILE **v28;
+  FILE **v29;
+  __int16 v30;
+  __int64 v31[4];
+  __int64 *v32;
 
   v32 = a3;
   v31[1] = a1;
@@ -10833,47 +10669,44 @@ __int64            sub_14022A27C(__int64 a1, FILE ***a2, __int64 *a3)
 }
 
 // 14022A358: conditional instruction was optimized away because cx.2 is in (1..FFFE)
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-// 1402858D4: using guessed type _BYTE byte_1402858D4[96];
 
 //----- (000000014022A55C) ----------------------------------------------------
 __int64            sub_14022A55C(unsigned __int16 *a1, unsigned __int64 *a2, __int64 a3)
 {
-  unsigned __int16 v4; // dx
-  char v5; // di
-  unsigned __int16 v6; // r9
-  __int64 i; // r10
-  unsigned __int64 v9; // rax
-  unsigned __int16 *v10; // rax
-  unsigned __int64 v11; // r8
-  unsigned __int64 v12; // rcx
-  unsigned __int64 v13; // rbp
-  unsigned __int64 v14; // rax
-  __int64 v15; // r9
-  unsigned __int16 v16; // cx
-  unsigned __int64 v17; // rax
-  __int64 v18; // rax
-  unsigned __int16 *v20; // rax
-  unsigned __int64 v21; // rdx
-  unsigned __int64 v22; // rax
-  unsigned __int64 v23; // rdx
-  bool v24; // cc
-  __int64 v25; // rax
-  unsigned __int16 v26; // cx
-  unsigned __int16 *v27; // rax
-  unsigned __int16 v28; // cx
-  unsigned __int64 v29; // rax
-  __int64 v30; // rax
-  char v31; // al
-  __int16 v32; // dx
-  unsigned __int64 v33; // rax
-  __int64 v34; // rcx
-  unsigned __int16 v35; // r8
-  unsigned __int64 v36; // rax
-  unsigned __int16 *v37; // rax
-  unsigned __int16 v38; // dx
-  unsigned __int64 v39; // rax
+  unsigned __int16 v4;
+  char v5;
+  unsigned __int16 v6;
+  __int64 i;
+  unsigned __int64 v9;
+  unsigned __int16 *v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  unsigned __int16 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  unsigned __int16 *v20;
+  unsigned __int64 v21;
+  unsigned __int64 v22;
+  unsigned __int64 v23;
+  bool v24;
+  __int64 v25;
+  unsigned __int16 v26;
+  unsigned __int16 *v27;
+  unsigned __int16 v28;
+  unsigned __int64 v29;
+  __int64 v30;
+  char v31;
+  __int16 v32;
+  unsigned __int64 v33;
+  __int64 v34;
+  unsigned __int16 v35;
+  unsigned __int64 v36;
+  unsigned __int16 *v37;
+  unsigned __int16 v38;
+  unsigned __int64 v39;
 
   v4 = *a1;
   v5 = 0;
@@ -11054,11 +10887,11 @@ LABEL_34:
 //----- (000000014022A8F0) ----------------------------------------------------
 char            sub_14022A8F0(_BYTE *a1, __int64 a2)
 {
-  int v2; // eax
-  char v3; // bl
-  __int64 v5; // rdi
-  unsigned __int64 v7; // rax
-  FILE **v8; // rsi
+  int v2;
+  char v3;
+  __int64 v5;
+  unsigned __int64 v7;
+  FILE **v8;
 
   LOBYTE(v2) = *a1;
   v3 = 0;
@@ -11084,16 +10917,14 @@ char            sub_14022A8F0(_BYTE *a1, __int64 a2)
   return v3;
 }
 
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (000000014022A988) ----------------------------------------------------
 char            sub_14022A988(char *a1, _QWORD *a2)
 {
-  char v2; // r9
-  char v3; // r8
-  __int64 v4; // r10
-  unsigned __int64 v5; // rax
-  char *v6; // rax
+  char v2;
+  char v3;
+  __int64 v4;
+  unsigned __int64 v5;
+  char *v6;
 
   v2 = *a1;
   v3 = 0;
@@ -11119,16 +10950,14 @@ char            sub_14022A988(char *a1, _QWORD *a2)
   return v3;
 }
 
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (000000014022AA00) ----------------------------------------------------
 char            sub_14022AA00(__int16 *a1, __int64 a2)
 {
-  __int16 v2; // ax
-  char v3; // bl
-  __int64 v5; // rdi
-  unsigned __int64 v7; // rax
-  FILE **v8; // rsi
+  __int16 v2;
+  char v3;
+  __int64 v5;
+  unsigned __int64 v7;
+  FILE **v8;
 
   v2 = *a1;
   v3 = 0;
@@ -11158,18 +10987,15 @@ char            sub_14022AA00(__int16 *a1, __int64 a2)
   return v3;
 }
 
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (000000014022AAA4) ----------------------------------------------------
 char            sub_14022AAA4(__int16 *a1, _QWORD *a2)
 {
-  __int16 v2; // ax
-  char v3; // r8
-  __int64 v5; // r9
-  unsigned __int64 v6; // rax
-  __int16 *v7; // rax
-  __int16 v8; // dx
+  __int16 v2;
+  char v3;
+  __int64 v5;
+  unsigned __int64 v6;
+  __int16 *v7;
+  __int16 v8;
 
   v2 = *a1;
   v3 = 0;
@@ -11196,16 +11022,14 @@ char            sub_14022AAA4(__int16 *a1, _QWORD *a2)
   return v3;
 }
 
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (000000014022AB34) ----------------------------------------------------
 char            sub_14022AB34(_BYTE *a1, __int64 a2)
 {
-  int v2; // eax
-  char v3; // bl
-  __int64 v5; // rdi
-  unsigned __int64 v7; // rax
-  FILE **v8; // rsi
+  int v2;
+  char v3;
+  __int64 v5;
+  unsigned __int64 v7;
+  FILE **v8;
 
   LOBYTE(v2) = *a1;
   v3 = 0;
@@ -11231,16 +11055,14 @@ char            sub_14022AB34(_BYTE *a1, __int64 a2)
   return v3;
 }
 
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (000000014022ABCC) ----------------------------------------------------
 char            sub_14022ABCC(char *a1, _QWORD *a2)
 {
-  char v2; // r9
-  char v3; // r8
-  __int64 v4; // r10
-  unsigned __int64 v5; // rax
-  char *v6; // rax
+  char v2;
+  char v3;
+  __int64 v4;
+  unsigned __int64 v5;
+  char *v6;
 
   v2 = *a1;
   v3 = 0;
@@ -11266,16 +11088,14 @@ char            sub_14022ABCC(char *a1, _QWORD *a2)
   return v3;
 }
 
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (000000014022AC44) ----------------------------------------------------
 char            sub_14022AC44(__int16 *a1, __int64 a2)
 {
-  __int16 v2; // ax
-  char v3; // bl
-  __int64 v5; // rdi
-  unsigned __int64 v7; // rax
-  FILE **v8; // rsi
+  __int16 v2;
+  char v3;
+  __int64 v5;
+  unsigned __int64 v7;
+  FILE **v8;
 
   v2 = *a1;
   v3 = 0;
@@ -11305,18 +11125,15 @@ char            sub_14022AC44(__int16 *a1, __int64 a2)
   return v3;
 }
 
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (000000014022ACE8) ----------------------------------------------------
 char            sub_14022ACE8(__int16 *a1, _QWORD *a2)
 {
-  __int16 v2; // ax
-  char v3; // r8
-  __int64 v5; // r9
-  unsigned __int64 v6; // rax
-  __int16 *v7; // rax
-  __int16 v8; // dx
+  __int16 v2;
+  char v3;
+  __int64 v5;
+  unsigned __int64 v6;
+  __int16 *v7;
+  __int16 v8;
 
   v2 = *a1;
   v3 = 0;
@@ -11343,20 +11160,18 @@ char            sub_14022ACE8(__int16 *a1, _QWORD *a2)
   return v3;
 }
 
-// 140285934: using guessed type _BYTE byte_140285934[244];
-
 //----- (000000014022AD78) ----------------------------------------------------
 __int64            sub_14022AD78(int a1, __int64 a2, unsigned int *a3)
 {
-  int v3; // ecx
-  int v4; // ecx
-  int v5; // ecx
-  unsigned int v6; // ecx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  unsigned int *v11; // [rsp+20h] [rbp-18h] BYREF
-  char v12; // [rsp+28h] [rbp-10h]
+  int v3;
+  int v4;
+  int v5;
+  unsigned int v6;
+  int v8;
+  int v9;
+  int v10;
+  unsigned int *v11;
+  char v12;
 
   if ( a1 > 5 )
   {
@@ -11425,19 +11240,18 @@ LABEL_9:
   return 0;
 }
 
-
 //----- (000000014022AEE8) ----------------------------------------------------
 __int64            sub_14022AEE8(int a1, __int64 a2, unsigned __int64 *a3)
 {
-  int v3; // ecx
-  int v4; // ecx
-  int v5; // ecx
-  unsigned __int64 v6; // rcx
-  int v8; // ecx
-  int v9; // ecx
-  int v10; // ecx
-  unsigned __int64 *v11; // [rsp+20h] [rbp-18h] BYREF
-  char v12; // [rsp+28h] [rbp-10h]
+  int v3;
+  int v4;
+  int v5;
+  unsigned __int64 v6;
+  int v8;
+  int v9;
+  int v10;
+  unsigned __int64 *v11;
+  char v12;
 
   if ( a1 > 5 )
   {
@@ -11513,7 +11327,6 @@ LABEL_9:
   return 0;
 }
 
-
 //----- (000000014022B0C8) ----------------------------------------------------
 unsigned __int64            sub_14022B0C8(
         struct __crt_locale_pointers *a1,
@@ -11521,51 +11334,51 @@ unsigned __int64            sub_14022B0C8(
         signed int a3,
         unsigned __int8 a4)
 {
-  signed int v5; // esi
-  FILE **v7; // rax
-  unsigned __int64 v8; // rbp
-  FILE **v9; // r14
-  FILE **v10; // rdi
-  FILE **v11; // rax
-  int v12; // eax
-  int v13; // r14d
-  FILE **v14; // rax
-  int v15; // eax
-  int v16; // eax
-  int v17; // eax
-  FILE **v18; // rax
-  FILE **v19; // r15
-  int v20; // eax
-  char v21; // dl
-  int v22; // eax
-  FILE **v23; // rax
-  int v24; // eax
-  int v25; // eax
-  FILE **v26; // rax
-  int v27; // ecx
-  FILE **v28; // rdx
-  unsigned __int64 v29; // r15
-  unsigned int v30; // ecx
-  __int64 v31; // rdx
-  FILE **v32; // rax
-  bool v33; // zf
-  int v34; // eax
-  FILE **v35; // rax
-  FILE **v36; // rdx
-  FILE **v37; // rax
-  FILE **v39; // rax
-  FILE **v40; // rax
-  FILE **v41; // rcx
-  __int64 v42; // [rsp+20h] [rbp-48h] BYREF
-  char v43[16]; // [rsp+28h] [rbp-40h] BYREF
-  char v44; // [rsp+38h] [rbp-30h]
-  FILE **v45; // [rsp+78h] [rbp+10h]
+  signed int v5;
+  FILE **v7;
+  unsigned __int64 v8;
+  FILE **v9;
+  FILE **v10;
+  FILE **v11;
+  int v12;
+  int v13;
+  FILE **v14;
+  int v15;
+  int v16;
+  int v17;
+  FILE **v18;
+  FILE **v19;
+  int v20;
+  char v21;
+  int v22;
+  FILE **v23;
+  int v24;
+  int v25;
+  FILE **v26;
+  int v27;
+  FILE **v28;
+  unsigned __int64 v29;
+  unsigned int v30;
+  __int64 v31;
+  FILE **v32;
+  bool v33;
+  int v34;
+  FILE **v35;
+  FILE **v36;
+  FILE **v37;
+  FILE **v39;
+  FILE **v40;
+  FILE **v41;
+  __int64 v42;
+  char v43[16];
+  char v44;
+  FILE **v45;
 
   v5 = a3;
   if ( !*a2 || !a2[3] || a3 && (unsigned int)(a3 - 2) > 0x22 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v7 = a2[3];
     if ( v7 )
     {
@@ -11574,7 +11387,7 @@ unsigned __int64            sub_14022B0C8(
     }
     return 0;
   }
-  sub_140213644((_LocaleUpdate *)&v42, a1);
+  crt_locale_update((_LocaleUpdate *)&v42, a1);
   v45 = a2[2];
   v8 = 0;
   a2[2] = (FILE **)((char *)v45 + 1);
@@ -11582,7 +11395,7 @@ unsigned __int64            sub_14022B0C8(
     LOBYTE(v10) = 0;
   else
     v9[1] = (FILE *)((char *)v9[1] + 1);
-  while ( (unsigned int)sub_140236ED8((unsigned __int8)v10, 8, (struct __crt_locale_pointers *)v43) )
+  while ( (unsigned int)crt_isctype_l((unsigned __int8)v10, 8, (struct __crt_locale_pointers *)v43) )
   {
     v11 = (FILE **)((char *)a2[2] + 1);
     a2[2] = v11;
@@ -11792,8 +11605,6 @@ LABEL_75:
   return 0;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014022B534) ----------------------------------------------------
 unsigned __int64            sub_14022B534(
         struct __crt_locale_pointers *a1,
@@ -11801,60 +11612,60 @@ unsigned __int64            sub_14022B534(
         signed int a3,
         unsigned __int8 a4)
 {
-  signed int v5; // r13d
-  FILE **v7; // rax
-  unsigned __int64 v8; // r12
-  unsigned __int64 v9; // rax
-  FILE **v10; // rsi
-  unsigned __int16 v11; // bx
-  FILE **v12; // rax
-  FILE **v13; // rbx
-  unsigned __int16 v14; // ax
-  int v15; // r15d
-  FILE **v16; // rax
-  int v17; // ecx
-  __int64 v18; // r8
-  int v19; // eax
-  FILE **v20; // rbx
-  unsigned __int16 v21; // ax
-  unsigned int v22; // edx
-  int v23; // eax
-  int v24; // eax
-  FILE **v25; // rax
-  __int64 v26; // rcx
-  FILE **v27; // rsi
-  unsigned __int16 v28; // ax
-  int v29; // eax
-  FILE **v30; // rax
-  FILE **v31; // rbx
-  unsigned __int16 v32; // ax
-  int v33; // eax
-  FILE **v34; // rax
-  FILE **v35; // rdx
-  unsigned __int64 v36; // rsi
-  int v37; // eax
-  unsigned int v38; // ecx
-  unsigned int v39; // eax
-  int v40; // ecx
-  __int64 v41; // rdx
-  FILE **v42; // rax
-  FILE **v43; // rbx
-  unsigned __int16 v44; // ax
-  FILE **v45; // rax
-  FILE **v46; // rdx
-  FILE **v47; // rax
-  FILE **v49; // rax
-  FILE **v50; // rax
-  FILE **v51; // rcx
-  __int64 v52[3]; // [rsp+70h] [rbp-58h] BYREF
-  char v53; // [rsp+88h] [rbp-40h]
-  FILE **v54; // [rsp+90h] [rbp-38h]
+  signed int v5;
+  FILE **v7;
+  unsigned __int64 v8;
+  unsigned __int64 v9;
+  FILE **v10;
+  unsigned __int16 v11;
+  FILE **v12;
+  FILE **v13;
+  unsigned __int16 v14;
+  int v15;
+  FILE **v16;
+  int v17;
+  __int64 v18;
+  int v19;
+  FILE **v20;
+  unsigned __int16 v21;
+  unsigned int v22;
+  int v23;
+  int v24;
+  FILE **v25;
+  __int64 v26;
+  FILE **v27;
+  unsigned __int16 v28;
+  int v29;
+  FILE **v30;
+  FILE **v31;
+  unsigned __int16 v32;
+  int v33;
+  FILE **v34;
+  FILE **v35;
+  unsigned __int64 v36;
+  int v37;
+  unsigned int v38;
+  unsigned int v39;
+  int v40;
+  __int64 v41;
+  FILE **v42;
+  FILE **v43;
+  unsigned __int16 v44;
+  FILE **v45;
+  FILE **v46;
+  FILE **v47;
+  FILE **v49;
+  FILE **v50;
+  FILE **v51;
+  __int64 v52[3];
+  char v53;
+  FILE **v54;
 
   v5 = a3;
   if ( !*a2 || !a2[3] || a3 && (unsigned int)(a3 - 2) > 0x22 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     v7 = a2[3];
     if ( v7 )
     {
@@ -11863,7 +11674,7 @@ unsigned __int64            sub_14022B534(
     }
     return 0;
   }
-  sub_140213644((_LocaleUpdate *)v52, a1);
+  crt_locale_update((_LocaleUpdate *)v52, a1);
   v8 = 0;
   v54 = a2[2];
   v9 = (unsigned __int64)v54 + 1;
@@ -12341,11 +12152,6 @@ LABEL_159:
   return 0;
 }
 
-// 14022BA88: variable 'v18' is possibly undefined
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (000000014022BE60) ----------------------------------------------------
 unsigned __int64            sub_14022BE60(
         struct __crt_locale_pointers *a1,
@@ -12353,41 +12159,41 @@ unsigned __int64            sub_14022BE60(
         signed int a3,
         unsigned __int8 a4)
 {
-  signed int v5; // esi
-  __int64 v7; // r15
-  unsigned __int64 v8; // rbp
-  unsigned __int64 i; // rax
-  unsigned __int8 *v10; // rax
-  unsigned __int8 v11; // di
-  int v12; // eax
-  int v13; // r14d
-  unsigned __int64 v14; // rax
-  unsigned __int8 *v15; // rax
-  int v16; // eax
-  int v17; // eax
-  unsigned __int64 v18; // rcx
-  unsigned __int64 v19; // r8
-  char v20; // dl
-  char *v21; // rax
-  int v22; // eax
-  unsigned __int64 v23; // r8
-  __int64 v24; // rcx
-  __int64 v25; // rax
-  _BYTE *v26; // rax
-  int v27; // eax
-  unsigned __int64 v28; // r8
-  unsigned __int8 *v29; // rax
-  unsigned __int64 v30; // r8
-  unsigned int v31; // ecx
-  __int64 v32; // rdx
-  unsigned __int64 v33; // rax
-  unsigned __int8 *v34; // rax
-  unsigned __int64 v35; // rax
-  __int64 v36; // rax
-  _BYTE *v37; // rax
-  _BYTE *v39; // rax
-  _BYTE *v40; // rax
-  _BYTE *v41; // rcx
+  signed int v5;
+  __int64 v7;
+  unsigned __int64 v8;
+  unsigned __int64 i;
+  unsigned __int8 *v10;
+  unsigned __int8 v11;
+  int v12;
+  int v13;
+  unsigned __int64 v14;
+  unsigned __int8 *v15;
+  int v16;
+  int v17;
+  unsigned __int64 v18;
+  unsigned __int64 v19;
+  char v20;
+  char *v21;
+  int v22;
+  unsigned __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  _BYTE *v26;
+  int v27;
+  unsigned __int64 v28;
+  unsigned __int8 *v29;
+  unsigned __int64 v30;
+  unsigned int v31;
+  __int64 v32;
+  unsigned __int64 v33;
+  unsigned __int8 *v34;
+  unsigned __int64 v35;
+  __int64 v36;
+  _BYTE *v37;
+  _BYTE *v39;
+  _BYTE *v40;
+  _BYTE *v41;
   struct { uint64_t thread, pair[2]; unsigned char changed, padding[7]; } number_locale;
   _Static_assert(sizeof(number_locale)==32, "Native integer locale");
 
@@ -12395,10 +12201,10 @@ unsigned __int64            sub_14022BE60(
   if ( !*a2 || !a2[3] || a3 && (unsigned int)(a3 - 2) > 0x22 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     goto LABEL_86;
   }
-  sub_140213644((_LocaleUpdate *)&number_locale, a1);
+  crt_locale_update((_LocaleUpdate *)&number_locale, a1);
   v7 = a2[2];
   v8 = 0;
   for ( i = v7 + 1; ; i = a2[2] + 1LL )
@@ -12413,7 +12219,7 @@ unsigned __int64            sub_14022BE60(
       v11 = *v10;
       *(_QWORD *)(*a2 + 16LL) = (uint64)(uintptr_t)(v10 + 1);
     }
-    if ( !(unsigned int)sub_140236ED8(v11, 8, (struct __crt_locale_pointers *)number_locale.pair) )
+    if ( !(unsigned int)crt_isctype_l(v11, 8, (struct __crt_locale_pointers *)number_locale.pair) )
       break;
   }
   v12 = a4;
@@ -12618,8 +12424,6 @@ LABEL_86:
   return 0;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014022C26C) ----------------------------------------------------
 unsigned __int64            sub_14022C26C(
         struct __crt_locale_pointers *a1,
@@ -12627,62 +12431,62 @@ unsigned __int64            sub_14022C26C(
         signed int a3,
         unsigned __int8 a4)
 {
-  signed int v5; // r14d
-  unsigned __int64 v7; // rbp
-  unsigned __int16 *v8; // rax
-  unsigned __int16 v9; // bx
-  unsigned __int64 v10; // rax
-  unsigned __int16 *v11; // rax
-  unsigned __int16 v12; // dx
-  int v13; // eax
-  int v14; // esi
-  unsigned __int64 v15; // rax
-  unsigned __int16 *v16; // rax
-  unsigned __int16 v17; // dx
-  int v18; // ecx
-  int v19; // eax
-  unsigned int v20; // edx
-  int v21; // eax
-  int v22; // eax
-  unsigned __int64 v23; // rcx
-  unsigned __int64 v24; // rdx
-  __int16 v25; // r8
-  __int16 *v26; // rax
-  __int16 v27; // r9
-  int v28; // eax
-  unsigned __int64 v29; // rdx
-  __int64 v30; // rax
-  int v31; // eax
-  unsigned __int64 v32; // rdx
-  unsigned __int16 *v33; // rax
-  unsigned __int16 v34; // dx
-  unsigned __int64 v35; // r8
-  unsigned int v36; // ecx
-  int v37; // eax
-  unsigned int v38; // eax
-  int v39; // ecx
-  __int64 v40; // rdx
-  unsigned __int64 v41; // rax
-  unsigned __int16 *v42; // rax
-  unsigned __int16 v43; // dx
-  unsigned __int64 v44; // rax
-  __int64 v45; // rax
-  _BYTE *v46; // rax
-  _BYTE *v48; // rax
-  _BYTE *v49; // rax
-  _BYTE *v50; // rcx
-  __int64 v51[3]; // [rsp+20h] [rbp-48h] BYREF
-  char v52; // [rsp+38h] [rbp-30h]
-  __int64 v53; // [rsp+78h] [rbp+10h]
+  signed int v5;
+  unsigned __int64 v7;
+  unsigned __int16 *v8;
+  unsigned __int16 v9;
+  unsigned __int64 v10;
+  unsigned __int16 *v11;
+  unsigned __int16 v12;
+  int v13;
+  int v14;
+  unsigned __int64 v15;
+  unsigned __int16 *v16;
+  unsigned __int16 v17;
+  int v18;
+  int v19;
+  unsigned int v20;
+  int v21;
+  int v22;
+  unsigned __int64 v23;
+  unsigned __int64 v24;
+  __int16 v25;
+  __int16 *v26;
+  __int16 v27;
+  int v28;
+  unsigned __int64 v29;
+  __int64 v30;
+  int v31;
+  unsigned __int64 v32;
+  unsigned __int16 *v33;
+  unsigned __int16 v34;
+  unsigned __int64 v35;
+  unsigned int v36;
+  int v37;
+  unsigned int v38;
+  int v39;
+  __int64 v40;
+  unsigned __int64 v41;
+  unsigned __int16 *v42;
+  unsigned __int16 v43;
+  unsigned __int64 v44;
+  __int64 v45;
+  _BYTE *v46;
+  _BYTE *v48;
+  _BYTE *v49;
+  _BYTE *v50;
+  __int64 v51[3];
+  char v52;
+  __int64 v53;
 
   v5 = a3;
   if ( !*a2 || !a2[3] || a3 && (unsigned int)(a3 - 2) > 0x22 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     goto LABEL_172;
   }
-  sub_140213644((_LocaleUpdate *)v51, a1);
+  crt_locale_update((_LocaleUpdate *)v51, a1);
   v7 = 0;
   v53 = a2[2];
   a2[2] = v53 + 1;
@@ -13117,18 +12921,16 @@ LABEL_172:
   return 0;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014022CA88) ----------------------------------------------------
 char            sub_14022CA88(__int64 a1, _BYTE *a2, _BYTE *a3, char *a4, __int64 a5)
 {
-  char v8; // r10
-  _BYTE *v9; // rbx
-  __int64 v10; // rsi
-  unsigned __int64 v11; // rax
-  bool v12; // zf
-  FILE **v13; // rdi
-  int v14; // eax
+  char v8;
+  _BYTE *v9;
+  __int64 v10;
+  unsigned __int64 v11;
+  bool v12;
+  FILE **v13;
+  int v14;
 
   if ( !a3 )
     return 1;
@@ -13157,15 +12959,14 @@ char            sub_14022CA88(__int64 a1, _BYTE *a2, _BYTE *a3, char *a4, __int6
   return 0;
 }
 
-
 //----- (000000014022CB3C) ----------------------------------------------------
 char            sub_14022CB3C(__int64 a1, _BYTE *a2, _BYTE *a3, char *a4, _QWORD *a5)
 {
-  char v5; // r10
-  _BYTE *v6; // r11
-  unsigned __int64 v7; // rax
-  bool v8; // zf
-  char *v9; // rax
+  char v5;
+  _BYTE *v6;
+  unsigned __int64 v7;
+  bool v8;
+  char *v9;
 
   if ( !a3 )
     return 1;
@@ -13193,16 +12994,15 @@ char            sub_14022CB3C(__int64 a1, _BYTE *a2, _BYTE *a3, char *a4, _QWORD
   return 0;
 }
 
-
 //----- (000000014022CBC0) ----------------------------------------------------
 char            sub_14022CBC0(__int64 a1, _WORD *a2, __int64 a3, __int16 *a4, __int64 a5)
 {
-  _WORD *v7; // rbx
-  __int64 v8; // rsi
-  __int16 v9; // ax
-  __int64 v10; // rbp
-  unsigned __int64 v11; // rax
-  FILE **v12; // rdi
+  _WORD *v7;
+  __int64 v8;
+  __int16 v9;
+  __int64 v10;
+  unsigned __int64 v11;
+  FILE **v12;
 
   v7 = a2;
   v8 = 0;
@@ -13236,17 +13036,15 @@ char            sub_14022CBC0(__int64 a1, _WORD *a2, __int64 a3, __int16 *a4, __
   return 0;
 }
 
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-
 //----- (000000014022CC78) ----------------------------------------------------
 char            sub_14022CC78(__int64 a1, _WORD *a2, __int64 a3, __int16 *a4, _QWORD *a5)
 {
-  __int64 v6; // r10
-  __int16 v7; // ax
-  __int64 v8; // r11
-  unsigned __int64 v9; // rax
-  __int16 *v10; // rax
-  __int16 v11; // r8
+  __int64 v6;
+  __int16 v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  __int16 *v10;
+  __int16 v11;
 
   v6 = 0;
   if ( !a3 )
@@ -13276,17 +13074,16 @@ char            sub_14022CC78(__int64 a1, _WORD *a2, __int64 a3, __int16 *a4, _Q
   return 0;
 }
 
-
 //----- (000000014022CD20) ----------------------------------------------------
 char            sub_14022CD20(__int64 a1)
 {
-  struct __crt_locale_pointers *v2; // rcx
-  char v3; // bl
-  int v4; // eax
-  _DWORD *v6; // rcx
-  _QWORD v7[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v8; // [rsp+50h] [rbp+8h] BYREF
-  unsigned int v9; // [rsp+58h] [rbp+10h] BYREF
+  struct __crt_locale_pointers *v2;
+  char v3;
+  int v4;
+  _DWORD *v6;
+  _QWORD v7[5];
+  char v8;
+  unsigned int v9;
 
   v8 = 1;
   v7[0] = a1 + 8;
@@ -13311,22 +13108,21 @@ char            sub_14022CD20(__int64 a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return v3;
 }
 
-
 //----- (000000014022CDC0) ----------------------------------------------------
 char            sub_14022CDC0(__int64 a1)
 {
-  struct __crt_locale_pointers *v2; // rcx
-  char v3; // bl
-  int v4; // eax
-  _DWORD *v6; // rcx
-  _QWORD v7[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v8; // [rsp+50h] [rbp+8h] BYREF
-  unsigned int v9; // [rsp+58h] [rbp+10h] BYREF
+  struct __crt_locale_pointers *v2;
+  char v3;
+  int v4;
+  _DWORD *v6;
+  _QWORD v7[5];
+  char v8;
+  unsigned int v9;
 
   v8 = 1;
   v7[0] = a1 + 8;
@@ -13351,22 +13147,21 @@ char            sub_14022CDC0(__int64 a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return v3;
 }
 
-
 //----- (000000014022CE64) ----------------------------------------------------
 char            sub_14022CE64(__int64 a1)
 {
-  __int64 v2; // rcx
-  char v3; // bl
-  int v4; // eax
-  _DWORD *v6; // rcx
-  _QWORD v7[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v8; // [rsp+50h] [rbp+8h] BYREF
-  unsigned int v9; // [rsp+58h] [rbp+10h] BYREF
+  __int64 v2;
+  char v3;
+  int v4;
+  _DWORD *v6;
+  _QWORD v7[5];
+  char v8;
+  unsigned int v9;
 
   v8 = 1;
   v7[0] = a1 + 8;
@@ -13391,22 +13186,21 @@ char            sub_14022CE64(__int64 a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return v3;
 }
 
-
 //----- (000000014022CF04) ----------------------------------------------------
 char            sub_14022CF04(__int64 a1)
 {
-  __int64 v2; // rcx
-  char v3; // bl
-  int v4; // eax
-  _DWORD *v6; // rcx
-  unsigned __int64 v7[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v8; // [rsp+50h] [rbp+8h] BYREF
-  unsigned int v9; // [rsp+58h] [rbp+10h] BYREF
+  __int64 v2;
+  char v3;
+  int v4;
+  _DWORD *v6;
+  unsigned __int64 v7[5];
+  char v8;
+  unsigned int v9;
 
   v8 = 1;
   v7[0] = a1 + 8;
@@ -13431,22 +13225,21 @@ char            sub_14022CF04(__int64 a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return v3;
 }
 
-
 //----- (000000014022CFA4) ----------------------------------------------------
 char            sub_14022CFA4(__int64 a1)
 {
-  struct __crt_locale_pointers *v2; // rcx
-  char v3; // bl
-  int v4; // eax
-  _QWORD *v6; // rcx
-  _QWORD v7[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v8; // [rsp+50h] [rbp+8h] BYREF
-  unsigned __int64 v9; // [rsp+58h] [rbp+10h] BYREF
+  struct __crt_locale_pointers *v2;
+  char v3;
+  int v4;
+  _QWORD *v6;
+  _QWORD v7[5];
+  char v8;
+  unsigned __int64 v9;
 
   v8 = 1;
   v7[0] = a1 + 8;
@@ -13471,22 +13264,21 @@ char            sub_14022CFA4(__int64 a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return v3;
 }
 
-
 //----- (000000014022D044) ----------------------------------------------------
 char            sub_14022D044(__int64 a1)
 {
-  struct __crt_locale_pointers *v2; // rcx
-  char v3; // bl
-  int v4; // eax
-  _QWORD *v6; // rcx
-  _QWORD v7[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v8; // [rsp+50h] [rbp+8h] BYREF
-  unsigned __int64 v9; // [rsp+58h] [rbp+10h] BYREF
+  struct __crt_locale_pointers *v2;
+  char v3;
+  int v4;
+  _QWORD *v6;
+  _QWORD v7[5];
+  char v8;
+  unsigned __int64 v9;
 
   v8 = 1;
   v7[0] = a1 + 8;
@@ -13511,22 +13303,21 @@ char            sub_14022D044(__int64 a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return v3;
 }
 
-
 //----- (000000014022D0EC) ----------------------------------------------------
 char            sub_14022D0EC(__int64 a1)
 {
-  __int64 v2; // rcx
-  char v3; // bl
-  int v4; // eax
-  _QWORD *v6; // rcx
-  _QWORD v7[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v8; // [rsp+50h] [rbp+8h] BYREF
-  unsigned __int64 v9; // [rsp+58h] [rbp+10h] BYREF
+  __int64 v2;
+  char v3;
+  int v4;
+  _QWORD *v6;
+  _QWORD v7[5];
+  char v8;
+  unsigned __int64 v9;
 
   v8 = 1;
   v7[0] = a1 + 8;
@@ -13551,22 +13342,21 @@ char            sub_14022D0EC(__int64 a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return v3;
 }
 
-
 //----- (000000014022D18C) ----------------------------------------------------
 char            sub_14022D18C(__int64 a1)
 {
-  __int64 v2; // rcx
-  char v3; // bl
-  int v4; // eax
-  _QWORD *v6; // rcx
-  unsigned __int64 v7[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v8; // [rsp+50h] [rbp+8h] BYREF
-  unsigned __int64 v9; // [rsp+58h] [rbp+10h] BYREF
+  __int64 v2;
+  char v3;
+  int v4;
+  _QWORD *v6;
+  unsigned __int64 v7[5];
+  char v8;
+  unsigned __int64 v9;
 
   v8 = 1;
   v7[0] = a1 + 8;
@@ -13591,25 +13381,24 @@ char            sub_14022D18C(__int64 a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return v3;
 }
 
-
 //----- (000000014022D22C) ----------------------------------------------------
 char            sub_14022D22C(__int64 a1, int a2)
 {
-  _BYTE *v2; // rsi
-  __int64 v5; // rax
-  __int64 v7; // rax
-  __int64 v8; // rdi
-  __int64 v9; // r13
-  _BYTE *v10; // r12
-  __int64 v11; // r15
-  __int64 i; // rbp
-  int v13; // r9d
-  bool v14; // zf
+  _BYTE *v2;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  _BYTE *v10;
+  __int64 v11;
+  __int64 i;
+  int v13;
+  bool v14;
 
   v2 = nullptr;
   if ( *(_BYTE *)(a1 + 50) )
@@ -13620,7 +13409,7 @@ char            sub_14022D22C(__int64 a1, int a2)
   if ( !v2 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( (*(_BYTE *)a1 & 1) == 0 )
@@ -13702,23 +13491,22 @@ LABEL_34:
   return 1;
 }
 
-
 //----- (000000014022D3C8) ----------------------------------------------------
 char            sub_14022D3C8(__int64 a1, int a2)
 {
-  _BYTE *v2; // r11
-  __int64 v3; // rax
-  __int64 v5; // rax
-  __int64 v6; // r10
-  __int64 v7; // rax
-  __int64 v8; // r12
-  _BYTE *v9; // r15
-  __int64 v10; // rbp
-  __int64 i; // rdi
-  unsigned __int8 *v12; // rbx
-  unsigned __int64 v13; // rsi
-  char v14; // al
-  bool v15; // zf
+  _BYTE *v2;
+  __int64 v3;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  _BYTE *v9;
+  __int64 v10;
+  __int64 i;
+  unsigned __int8 *v12;
+  unsigned __int64 v13;
+  char v14;
+  bool v15;
 
   v2 = nullptr;
   if ( *(_BYTE *)(a1 + 58) )
@@ -13729,7 +13517,7 @@ char            sub_14022D3C8(__int64 a1, int a2)
   if ( !v2 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( (*(_BYTE *)a1 & 1) == 0 )
@@ -13817,24 +13605,23 @@ LABEL_30:
   return 1;
 }
 
-
 //----- (000000014022D584) ----------------------------------------------------
 char            sub_14022D584(__int64 a1, int a2)
 {
-       struct DLGTEMPLATE *v2; // rsi
-  __int64 v5; // rax
-  __int64 v7; // rax
-  __int64 v8; // rdi
-  __int64 v9; // rax
-  struct CWnd *v10; // rbp
-  __int64 i; // r15
-  unsigned __int16 v12; // ax
-  __int64 v13; // r8
-  unsigned __int16 v14; // r14
-  bool v15; // zf
-       struct DLGTEMPLATE *v16; // [rsp+30h] [rbp-48h] BYREF
-  __int64 v17; // [rsp+80h] [rbp+8h]
-  struct CWnd *v18; // [rsp+98h] [rbp+20h] BYREF
+       struct DLGTEMPLATE *v2;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  struct CWnd *v10;
+  __int64 i;
+  unsigned __int16 v12;
+  __int64 v13;
+  unsigned __int16 v14;
+  bool v15;
+       struct DLGTEMPLATE *v16;
+  __int64 v17;
+  struct CWnd *v18;
 
   v2 = nullptr;
   if ( *(_BYTE *)(a1 + 52) )
@@ -13845,7 +13632,7 @@ char            sub_14022D584(__int64 a1, int a2)
   if ( !v2 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( (*(_BYTE *)a1 & 1) == 0 )
@@ -13937,27 +13724,23 @@ LABEL_37:
   return 1;
 }
 
-// 14022D731: variable 'v13' is possibly undefined
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (000000014022D774) ----------------------------------------------------
 char            sub_14022D774(__int64 a1, int a2)
 {
-       struct DLGTEMPLATE *v2; // rsi
-  __int64 v5; // rax
-  __int64 v7; // rax
-  __int64 v8; // rdi
-  __int64 v9; // rax
-  __int64 v10; // r13
-  struct CWnd *v11; // r14
-  __int64 i; // r15
-  unsigned __int16 *v13; // rax
-  unsigned __int16 v14; // bp
-  bool v15; // zf
-  __int64 v16; // rax
-  struct CWnd *v17; // [rsp+70h] [rbp+8h] BYREF
-       struct DLGTEMPLATE *v18; // [rsp+88h] [rbp+20h] BYREF
+       struct DLGTEMPLATE *v2;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  struct CWnd *v11;
+  __int64 i;
+  unsigned __int16 *v13;
+  unsigned __int16 v14;
+  bool v15;
+  __int64 v16;
+  struct CWnd *v17;
+       struct DLGTEMPLATE *v18;
 
   v2 = nullptr;
   if ( *(_BYTE *)(a1 + 60) )
@@ -13968,7 +13751,7 @@ char            sub_14022D774(__int64 a1, int a2)
   if ( !v2 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( (*(_BYTE *)a1 & 1) == 0 )
@@ -14058,22 +13841,21 @@ LABEL_37:
   return 1;
 }
 
-
 //----- (000000014022D954) ----------------------------------------------------
 char            sub_14022D954(__int64 a1, int a2)
 {
-  _WORD *v4; // rsi
-  __int64 v5; // rax
-  __int64 v7; // rax
-  __int64 v8; // rdi
-  __int64 v9; // r12
-  __int64 v10; // rbp
-  __int64 i; // r14
-  int v12; // r9d
-  bool v13; // zf
-  __int16 v14; // [rsp+28h] [rbp-40h]
-  __int64 v15; // [rsp+70h] [rbp+8h] BYREF
-  _WORD *v16; // [rsp+88h] [rbp+20h] BYREF
+  _WORD *v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 i;
+  int v12;
+  bool v13;
+  __int16 v14;
+  __int64 v15;
+  _WORD *v16;
 
   v4 = nullptr;
   if ( *(_BYTE *)(a1 + 50) )
@@ -14084,7 +13866,7 @@ char            sub_14022D954(__int64 a1, int a2)
   if ( !v4 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( (*(_BYTE *)a1 & 1) == 0 )
@@ -14178,26 +13960,24 @@ LABEL_35:
   return 1;
 }
 
-// 14022DAB1: variable 'v14' is possibly undefined
-
 //----- (000000014022DB28) ----------------------------------------------------
 char            sub_14022DB28(__int64 a1, int a2)
 {
-  _WORD *v4; // rsi
-  __int64 v5; // rax
-  __int64 v7; // rax
-  __int64 v8; // rdi
-  __int64 v9; // rax
-  __int64 v10; // r15
-  __int64 v11; // r10
-  __int64 i; // rbp
-  unsigned __int8 *v13; // r9
-  unsigned __int64 v14; // r11
-  char v15; // al
-  bool v16; // zf
-  __int16 v17; // [rsp+28h] [rbp-30h]
-  __int64 v18; // [rsp+60h] [rbp+8h] BYREF
-  _WORD *v19; // [rsp+78h] [rbp+20h] BYREF
+  _WORD *v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 i;
+  unsigned __int8 *v13;
+  unsigned __int64 v14;
+  char v15;
+  bool v16;
+  __int16 v17;
+  __int64 v18;
+  _WORD *v19;
 
   v4 = nullptr;
   if ( *(_BYTE *)(a1 + 58) )
@@ -14208,7 +13988,7 @@ char            sub_14022DB28(__int64 a1, int a2)
   if ( !v4 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( (*(_BYTE *)a1 & 1) == 0 )
@@ -14302,26 +14082,24 @@ LABEL_30:
   return 1;
 }
 
-// 14022DC98: variable 'v17' is possibly undefined
-
 //----- (000000014022DD14) ----------------------------------------------------
 char            sub_14022DD14(__int64 a1, int a2)
 {
-  unsigned __int16 *v4; // rsi
-  __int64 v5; // rax
-  __int64 v7; // rax
-  __int64 v8; // rdi
-  __int64 v9; // rcx
-  unsigned __int16 *v10; // rax
-  __int64 v11; // r12
-  __int64 i; // r14
-  unsigned __int16 v13; // ax
-  __int64 v14; // r8
-  unsigned __int16 v15; // bp
-  bool v16; // zf
-  __int64 v17; // rdx
-  unsigned __int16 *v18; // [rsp+60h] [rbp+8h]
-  __int64 v19; // [rsp+78h] [rbp+20h]
+  unsigned __int16 *v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  unsigned __int16 *v10;
+  __int64 v11;
+  __int64 i;
+  unsigned __int16 v13;
+  __int64 v14;
+  unsigned __int16 v15;
+  bool v16;
+  __int64 v17;
+  unsigned __int16 *v18;
+  __int64 v19;
 
   v4 = nullptr;
   if ( *(_BYTE *)(a1 + 52) )
@@ -14332,7 +14110,7 @@ char            sub_14022DD14(__int64 a1, int a2)
   if ( !v4 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( (*(_BYTE *)a1 & 1) == 0 )
@@ -14425,27 +14203,23 @@ LABEL_35:
   return 1;
 }
 
-// 14022DE95: variable 'v14' is possibly undefined
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (000000014022DED8) ----------------------------------------------------
 char            sub_14022DED8(__int64 a1, int a2)
 {
-  unsigned __int16 *v4; // rsi
-  __int64 v5; // rax
-  __int64 v7; // rax
-  __int64 v8; // rdi
-  __int64 v9; // rax
-  __int64 v10; // rax
-  unsigned __int16 *v11; // r13
-  __int64 v12; // r12
-  __int64 i; // r14
-  unsigned __int16 *v14; // rax
-  unsigned __int16 v15; // bp
-  bool v16; // zf
-  __int64 v17; // rax
-  __int64 v18; // [rsp+50h] [rbp+8h]
+  unsigned __int16 *v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  unsigned __int16 *v11;
+  __int64 v12;
+  __int64 i;
+  unsigned __int16 *v14;
+  unsigned __int16 v15;
+  bool v16;
+  __int64 v17;
+  __int64 v18;
 
   v4 = nullptr;
   if ( *(_BYTE *)(a1 + 60) )
@@ -14456,7 +14230,7 @@ char            sub_14022DED8(__int64 a1, int a2)
   if ( !v4 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( (*(_BYTE *)a1 & 1) == 0 )
@@ -14544,12 +14318,11 @@ LABEL_36:
   return 1;
 }
 
-
 //----- (000000014022E0F4) ----------------------------------------------------
 __int64            sub_14022E0F4(__int64 a1, struct __crt_locale_pointers *a2)
 {
-  int v4; // eax
-  unsigned int v5; // ebx
+  int v4;
+  unsigned int v5;
 
   do
   {
@@ -14559,15 +14332,14 @@ __int64            sub_14022E0F4(__int64 a1, struct __crt_locale_pointers *a2)
       break;
     ++*(_QWORD *)(a1 + 8);
   }
-  while ( (unsigned int)sub_140236ED8((unsigned __int8)v4, 8, a2) );
+  while ( (unsigned int)crt_isctype_l((unsigned __int8)v4, 8, a2) );
   return v5;
 }
-
 
 //----- (000000014022E144) ----------------------------------------------------
 __int64            sub_14022E144(FILE **a1)
 {
-  unsigned __int16 v2; // bx
+  unsigned __int16 v2;
 
   do
   {
@@ -14580,13 +14352,11 @@ __int64            sub_14022E144(FILE **a1)
   return v2;
 }
 
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-
 //----- (000000014022E18C) ----------------------------------------------------
 __int64            sub_14022E18C(__int64 a1, struct __crt_locale_pointers *a2)
 {
-  unsigned __int8 *v4; // rax
-  unsigned int v5; // ebx
+  unsigned __int8 *v4;
+  unsigned int v5;
 
   while ( 1 )
   {
@@ -14595,18 +14365,17 @@ __int64            sub_14022E18C(__int64 a1, struct __crt_locale_pointers *a2)
       break;
     v5 = *v4;
     *(_QWORD *)(a1 + 16) = (uint64)(uintptr_t)(v4 + 1);
-    if ( !(unsigned int)sub_140236ED8(v5, 8, a2) )
+    if ( !(unsigned int)crt_isctype_l(v5, 8, a2) )
       return v5;
   }
   return (unsigned int)-1;
 }
 
-
 //----- (000000014022E1E0) ----------------------------------------------------
 __int64            sub_14022E1E0(__int64 a1)
 {
-  unsigned __int16 *v2; // rax
-  unsigned __int16 v3; // bx
+  unsigned __int16 *v2;
+  unsigned __int16 v3;
 
   while ( 1 )
   {
@@ -14621,11 +14390,10 @@ __int64            sub_14022E1E0(__int64 a1)
   return (unsigned __int16)-1;
 }
 
-
 //----- (000000014022E28C) ----------------------------------------------------
 char            sub_14022E28C(__int64 a1, _DWORD *a2)
 {
-  _DWORD *v2; // rcx
+  _DWORD *v2;
 
   *(_QWORD *)(a1 + 120) += 8LL;
   v2 = *(_DWORD **)(*(_QWORD *)(a1 + 120) - 8LL);
@@ -14637,16 +14405,15 @@ char            sub_14022E28C(__int64 a1, _DWORD *a2)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
 }
 
-
 //----- (000000014022E2C4) ----------------------------------------------------
 char            sub_14022E2C4(__int64 a1, _DWORD *a2)
 {
-  _DWORD *v2; // rcx
+  _DWORD *v2;
 
   *(_QWORD *)(a1 + 128) += 8LL;
   v2 = *(_DWORD **)(*(_QWORD *)(a1 + 128) - 8LL);
@@ -14658,16 +14425,15 @@ char            sub_14022E2C4(__int64 a1, _DWORD *a2)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
 }
 
-
 //----- (000000014022E300) ----------------------------------------------------
 char            sub_14022E300(__int64 a1, _DWORD *a2)
 {
-  _DWORD *v2; // rcx
+  _DWORD *v2;
 
   *(_QWORD *)(a1 + 96) += 8LL;
   v2 = *(_DWORD **)(*(_QWORD *)(a1 + 96) - 8LL);
@@ -14679,16 +14445,15 @@ char            sub_14022E300(__int64 a1, _DWORD *a2)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
 }
 
-
 //----- (000000014022E338) ----------------------------------------------------
 char            sub_14022E338(__int64 a1, _DWORD *a2)
 {
-  _DWORD *v2; // rcx
+  _DWORD *v2;
 
   *(_QWORD *)(a1 + 104) += 8LL;
   v2 = *(_DWORD **)(*(_QWORD *)(a1 + 104) - 8LL);
@@ -14700,16 +14465,15 @@ char            sub_14022E338(__int64 a1, _DWORD *a2)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
 }
 
-
 //----- (000000014022E370) ----------------------------------------------------
 char            sub_14022E370(__int64 a1, _QWORD *a2)
 {
-  _QWORD *v2; // rcx
+  _QWORD *v2;
 
   *(_QWORD *)(a1 + 120) += 8LL;
   v2 = *(_QWORD **)(*(_QWORD *)(a1 + 120) - 8LL);
@@ -14721,16 +14485,15 @@ char            sub_14022E370(__int64 a1, _QWORD *a2)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
 }
 
-
 //----- (000000014022E3A8) ----------------------------------------------------
 char            sub_14022E3A8(__int64 a1, _QWORD *a2)
 {
-  _QWORD *v2; // rcx
+  _QWORD *v2;
 
   *(_QWORD *)(a1 + 128) += 8LL;
   v2 = *(_QWORD **)(*(_QWORD *)(a1 + 128) - 8LL);
@@ -14742,16 +14505,15 @@ char            sub_14022E3A8(__int64 a1, _QWORD *a2)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
 }
 
-
 //----- (000000014022E3E8) ----------------------------------------------------
 char            sub_14022E3E8(__int64 a1, _QWORD *a2)
 {
-  _QWORD *v2; // rcx
+  _QWORD *v2;
 
   *(_QWORD *)(a1 + 96) += 8LL;
   v2 = *(_QWORD **)(*(_QWORD *)(a1 + 96) - 8LL);
@@ -14763,16 +14525,15 @@ char            sub_14022E3E8(__int64 a1, _QWORD *a2)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
 }
 
-
 //----- (000000014022E420) ----------------------------------------------------
 char            sub_14022E420(__int64 a1, _QWORD *a2)
 {
-  _QWORD *v2; // rcx
+  _QWORD *v2;
 
   *(_QWORD *)(a1 + 104) += 8LL;
   v2 = *(_QWORD **)(*(_QWORD *)(a1 + 104) - 8LL);
@@ -14784,11 +14545,10 @@ char            sub_14022E420(__int64 a1, _QWORD *a2)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
 }
-
 
 //----- (000000014022E598) ----------------------------------------------------
 __int64            sub_14022E598(__int64 a1, __int64 a2, __int64 a3)
@@ -14796,7 +14556,7 @@ __int64            sub_14022E598(__int64 a1, __int64 a2, __int64 a3)
   *(_DWORD *)(a1 + 16) = 0;
   *(_QWORD *)a1 = a2;
   *(_QWORD *)(a1 + 8) = a3;
-  sub_1401FCD30((void *)(uintptr_t)((_WORD *)(a1 + 52)), 0, 0x20u);
+  crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 52)), 0, 0x20u);
   *(_DWORD *)(a1 + 20) = 0;
   *(_WORD *)(a1 + 24) = 0;
   *(_QWORD *)(a1 + 32) = 0;
@@ -14807,7 +14567,6 @@ __int64            sub_14022E598(__int64 a1, __int64 a2, __int64 a3)
   return a1;
 }
 
-
 //----- (000000014022E68C) ----------------------------------------------------
 __int64            sub_14022E68C(__int64 a1, _OWORD *a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6)
 {
@@ -14816,7 +14575,7 @@ __int64            sub_14022E68C(__int64 a1, _OWORD *a2, __int64 a3, __int64 a4,
   *(_DWORD *)(a1 + 40) = 0;
   *(_QWORD *)(a1 + 24) = a3;
   *(_QWORD *)(a1 + 32) = a4;
-  sub_1401FCD30((void *)(uintptr_t)((_WORD *)(a1 + 76)), 0, 0x20u);
+  crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 76)), 0, 0x20u);
   *(_DWORD *)(a1 + 44) = 0;
   *(_WORD *)(a1 + 48) = 0;
   *(_QWORD *)(a1 + 56) = 0;
@@ -14830,7 +14589,6 @@ __int64            sub_14022E68C(__int64 a1, _OWORD *a2, __int64 a3, __int64 a4,
   return a1;
 }
 
-
 //----- (000000014022E6FC) ----------------------------------------------------
 __int64            sub_14022E6FC(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6)
 {
@@ -14840,7 +14598,7 @@ __int64            sub_14022E6FC(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   *(_DWORD *)(a1 + 48) = 0;
   *(_QWORD *)(a1 + 32) = a3;
   *(_QWORD *)(a1 + 40) = a4;
-  sub_1401FCD30((void *)(uintptr_t)((_WORD *)(a1 + 84)), 0, 0x20u);
+  crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 84)), 0, 0x20u);
   *(_DWORD *)(a1 + 52) = 0;
   *(_WORD *)(a1 + 56) = 0;
   *(_QWORD *)(a1 + 64) = 0;
@@ -14854,26 +14612,23 @@ __int64            sub_14022E6FC(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   return a1;
 }
 
-
 //----- (000000014022E818) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 _WORD *           unknown_libname_634(_WORD *a1)
 {
-  sub_1401FCD30((void *)(uintptr_t)(a1), 0, 0x20u);
+  crt_memset((void *)(uintptr_t)(a1), 0, 0x20u);
   return a1;
 }
-
 
 //----- (000000014022E840) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 _WORD *           unknown_libname_635(_WORD *a1)
 {
-  sub_1401FCD30((void *)(uintptr_t)(a1), 0, 0x20u);
+  crt_memset((void *)(uintptr_t)(a1), 0, 0x20u);
   return a1;
 }
-
 
 //----- (000000014022E8B0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -14885,7 +14640,6 @@ _DWORD *           unknown_libname_638(_DWORD *a1, _DWORD *a2)
   return a1;
 }
 
-
 //----- (000000014022E904) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
@@ -14896,14 +14650,12 @@ void            unknown_libname_1013(void **a1)
   *a1 = nullptr;
 }
 
-
 //----- (000000014022E920) ----------------------------------------------------
 void            sub_14022E920(__int64 a1)
 {
   free_base(*(void **)(a1 + 56));
   *(_QWORD *)(a1 + 56) = 0;
 }
-
 
 //----- (000000014022E990) ----------------------------------------------------
 void            sub_14022E990(__int64 a1)
@@ -14912,14 +14664,12 @@ void            sub_14022E990(__int64 a1)
   *(_QWORD *)(a1 + 80) = 0;
 }
 
-
 //----- (000000014022E9B0) ----------------------------------------------------
 void            sub_14022E9B0(__int64 a1)
 {
   free_base(*(void **)(a1 + 88));
   *(_QWORD *)(a1 + 88) = 0;
 }
-
 
 //----- (000000014022E9D0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -14931,7 +14681,6 @@ void            unknown_libname_1014(void **a1)
   *a1 = nullptr;
 }
 
-
 //----- (000000014022E9EC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
@@ -14941,7 +14690,6 @@ void            unknown_libname_1015(void **a1)
   free_base(*a1);
   *a1 = nullptr;
 }
-
 
 //----- (000000014022EA08) ----------------------------------------------------
 void **           __crt_unique_heap_ptr__wchar_t____crt_internal_free_policy__operator_assign_dup2(void **a1, void **a2)
@@ -14953,7 +14701,6 @@ void **           __crt_unique_heap_ptr__wchar_t____crt_internal_free_policy__op
   return a1;
 }
 
-
 //----- (000000014022EA40) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
@@ -14964,15 +14711,14 @@ _DWORD *           unknown_libname_646(_DWORD *a1, _DWORD *a2)
   return a1;
 }
 
-
 //----- (000000014022EAC0) ----------------------------------------------------
 char            _lambda_1232a416a9149be513dc40db5f8b835d___operator_call(__int64 *a1)
 {
-  char v2; // bl
-  __int64 v3; // rdx
-  char v4; // cl
-  unsigned __int64 v5; // rax
-  __int64 *v6; // rdx
+  char v2;
+  __int64 v3;
+  char v4;
+  unsigned __int64 v5;
+  __int64 *v6;
 
   v2 = 0;
   v3 = *a1;
@@ -14994,16 +14740,15 @@ char            _lambda_1232a416a9149be513dc40db5f8b835d___operator_call(__int64
   **(_BYTE **)(*a1 + 24) = 0;
   return v2;
 }
-
 
 //----- (000000014022EB44) ----------------------------------------------------
 char            sub_14022EB44(__int64 *a1)
 {
-  char v2; // bl
-  __int64 v3; // rdx
-  char v4; // cl
-  unsigned __int64 v5; // rax
-  __int64 *v6; // rdx
+  char v2;
+  __int64 v3;
+  char v4;
+  unsigned __int64 v5;
+  __int64 *v6;
 
   v2 = 0;
   v3 = *a1;
@@ -15025,16 +14770,15 @@ char            sub_14022EB44(__int64 *a1)
   **(_BYTE **)(*a1 + 24) = 0;
   return v2;
 }
-
 
 //----- (000000014022EC98) ----------------------------------------------------
 char            sub_14022EC98(__int64 *a1)
 {
-  char v2; // bl
-  _QWORD *v3; // rdx
-  __int64 v4; // rcx
-  unsigned __int64 v5; // rax
-  _QWORD *v6; // rdx
+  char v2;
+  _QWORD *v3;
+  __int64 v4;
+  unsigned __int64 v5;
+  _QWORD *v6;
 
   v2 = 0;
   v3 = (_QWORD *)*a1;
@@ -15053,17 +14797,15 @@ char            sub_14022EC98(__int64 *a1)
   **(_BYTE **)(*a1 + 24) = 0;
   return v2;
 }
-
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
 
 //----- (000000014022ED14) ----------------------------------------------------
 char            _lambda_2869a9057330eafa474e853b0696fc23___operator_call(__int64 *a1)
 {
-  char v2; // bl
-  _QWORD *v3; // rdx
-  __int64 v4; // rcx
-  unsigned __int64 v5; // rax
-  _QWORD *v6; // rdx
+  char v2;
+  _QWORD *v3;
+  __int64 v4;
+  unsigned __int64 v5;
+  _QWORD *v6;
 
   v2 = 0;
   v3 = (_QWORD *)*a1;
@@ -15082,17 +14824,15 @@ char            _lambda_2869a9057330eafa474e853b0696fc23___operator_call(__int64
   **(_BYTE **)(*a1 + 24) = 0;
   return v2;
 }
-
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
 
 //----- (000000014022ED90) ----------------------------------------------------
 char            _lambda_2869a9057330eafa474e853b0696fc23___operator_call_dup2(__int64 *a1)
 {
-  char v2; // bl
-  _QWORD *v3; // rdx
-  __int64 v4; // rcx
-  unsigned __int64 v5; // rax
-  _QWORD *v6; // rdx
+  char v2;
+  _QWORD *v3;
+  __int64 v4;
+  unsigned __int64 v5;
+  _QWORD *v6;
 
   v2 = 0;
   v3 = (_QWORD *)*a1;
@@ -15112,16 +14852,14 @@ char            _lambda_2869a9057330eafa474e853b0696fc23___operator_call_dup2(__
   return v2;
 }
 
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (000000014022EE0C) ----------------------------------------------------
 char            sub_14022EE0C(__int64 *a1)
 {
-  char v2; // bl
-  __int64 v3; // rdx
-  char v4; // cl
-  unsigned __int64 v5; // rax
-  __int64 *v6; // rdx
+  char v2;
+  __int64 v3;
+  char v4;
+  unsigned __int64 v5;
+  __int64 *v6;
 
   v2 = 0;
   v3 = *a1;
@@ -15143,36 +14881,35 @@ char            sub_14022EE0C(__int64 *a1)
   **(_BYTE **)(*a1 + 24) = 0;
   return v2;
 }
-
 
 //----- (000000014022EF60) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_647(__int64 a1)
 {
-  __int128 v2; // xmm0
-  __int64 v3; // r8
-  __int64 v4; // rdx
-  unsigned int v5; // ebx
-  __int64 v7; // [rsp+30h] [rbp-39h] BYREF
-  __int128 v8; // [rsp+38h] [rbp-31h]
-  __int64 v9; // [rsp+48h] [rbp-21h]
-  __int64 v10; // [rsp+50h] [rbp-19h]
-  __int64 v11; // [rsp+58h] [rbp-11h]
-  int v12; // [rsp+60h] [rbp-9h]
-  char v13; // [rsp+64h] [rbp-5h]
-  __int64 v14; // [rsp+68h] [rbp-1h]
-  int v15; // [rsp+70h] [rbp+7h]
-  char v16; // [rsp+74h] [rbp+Bh]
-  int v17; // [rsp+78h] [rbp+Fh]
-  void *Block; // [rsp+80h] [rbp+17h]
-  _BYTE *v19; // [rsp+88h] [rbp+1Fh]
-  __int64 v20; // [rsp+90h] [rbp+27h]
-  __int64 v21; // [rsp+98h] [rbp+2Fh]
-  __int64 v22; // [rsp+A0h] [rbp+37h] BYREF
-  _BYTE v23[24]; // [rsp+A8h] [rbp+3Fh] BYREF
+  __int128 v2;
+  __int64 v3;
+  __int64 v4;
+  unsigned int v5;
+  __int64 v7;
+  __int128 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+  char v13;
+  __int64 v14;
+  int v15;
+  char v16;
+  int v17;
+  void *Block;
+  _BYTE *v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  _BYTE v23[24];
 
-  sub_140213644((_LocaleUpdate *)&v22, **(struct __crt_locale_pointers *     **)a1);
+  crt_locale_update((_LocaleUpdate *)&v22, **(struct __crt_locale_pointers *     **)a1);
   v2 = **(unsigned __int64 **)(a1 + 8);
   v3 = **(_QWORD **)(a1 + 32);
   v4 = **(_QWORD **)(a1 + 24);
@@ -15199,37 +14936,35 @@ __int64            unknown_libname_647(__int64 a1)
   return v5;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014022F104) ----------------------------------------------------
 __int64            _lambda_f3caf1ecae5fe01a9a1a6239afa44510___operator_call(__int64 a1)
 {
-  __int64 *v2; // rax
-  __int64 v3; // rdi
-  __int64 v4; // rdx
-  __int64 v6; // [rsp+8h] [rbp-99h] BYREF
-  __int128 v7; // [rsp+28h] [rbp-79h]
-  __int64 v8; // [rsp+38h] [rbp-69h] BYREF
-  _BYTE v9[24]; // [rsp+40h] [rbp-61h] BYREF
-  __int64 v10; // [rsp+58h] [rbp-49h] BYREF
-  __int128 v11; // [rsp+60h] [rbp-41h]
-  __int64 v12; // [rsp+70h] [rbp-31h]
-  __int64 v13; // [rsp+78h] [rbp-29h]
-  int v14; // [rsp+80h] [rbp-21h]
-  int v15; // [rsp+84h] [rbp-1Dh]
-  __int16 v16; // [rsp+88h] [rbp-19h]
-  char v17; // [rsp+8Ah] [rbp-17h]
-  __int64 v18; // [rsp+90h] [rbp-11h]
-  int v19; // [rsp+98h] [rbp-9h]
-  char v20; // [rsp+9Ch] [rbp-5h]
-  int v21; // [rsp+A0h] [rbp-1h]
-  _WORD v22[18]; // [rsp+A4h] [rbp+3h] BYREF
-  _BYTE *v23; // [rsp+C8h] [rbp+27h]
-  __int64 v24; // [rsp+D0h] [rbp+2Fh]
-  __int64 v25; // [rsp+D8h] [rbp+37h]
-  __int64 v26; // [rsp+E8h] [rbp+47h]
+  __int64 *v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v6;
+  __int128 v7;
+  __int64 v8;
+  _BYTE v9[24];
+  __int64 v10;
+  __int128 v11;
+  __int64 v12;
+  __int64 v13;
+  int v14;
+  int v15;
+  __int16 v16;
+  char v17;
+  __int64 v18;
+  int v19;
+  char v20;
+  int v21;
+  _WORD v22[18];
+  _BYTE *v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
 
-  sub_140213644((_LocaleUpdate *)&v8, **(struct __crt_locale_pointers *     **)a1);
+  crt_locale_update((_LocaleUpdate *)&v8, **(struct __crt_locale_pointers *     **)a1);
   v2 = *(__int64 **)(a1 + 32);
   v7 = **(unsigned __int64 **)(a1 + 8);
   v3 = *v2;
@@ -15239,7 +14974,7 @@ __int64            _lambda_f3caf1ecae5fe01a9a1a6239afa44510___operator_call(__in
   v13 = v4;
   v11 = v7;
   v14 = 0;
-  sub_1401FCD30((void *)(uintptr_t)(v22), 0, 0x20u);
+  crt_memset((void *)(uintptr_t)(v22), 0, 0x20u);
   v15 = 0;
   v23 = v9;
   v16 = 0;
@@ -15256,79 +14991,77 @@ __int64            _lambda_f3caf1ecae5fe01a9a1a6239afa44510___operator_call(__in
   return sr_result; /* 0x14022F1B9: the call's result stays in rax */
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014022F1F4) ----------------------------------------------------
 void            sub_14022F1F4(unsigned __int8 *a1, unsigned __int8 *a2, unsigned int *a3)
 {
-  unsigned __int64 v3; // r15
-  unsigned int v5; // r13d
-  unsigned __int8 *v6; // r9
-  unsigned int v7; // r11d
-  unsigned __int64 v8; // r8
-  __int64 v9; // r10
-  unsigned __int64 v10; // rcx
-  __int64 v11; // rax
-  __int64 v12; // r8
-  unsigned __int64 v13; // rcx
-  int v14; // eax
-  unsigned int v15; // eax
-  unsigned int v16; // r12d
-  int v17; // eax
-  __int64 v18; // rax
-  __int64 v19; // rdi
-  __int64 v20; // rsi
-  unsigned __int64 v21; // rbx
-  __int64 v22; // r11
-  unsigned int v23; // r10d
-  unsigned __int64 v24; // r8
-  __int64 v25; // r11
-  __int64 v26; // r9
-  unsigned __int64 v27; // rcx
-  char v28; // al
-  __int64 v29; // rbx
-  unsigned __int64 v30; // r8
-  __m128i *v31; // rcx
-  unsigned int v32; // r10d
-  __int64 v33; // r9
-  unsigned __int64 v34; // rcx
-  bool v35; // cf
-  __m128i *v36; // rdx
-  unsigned int v37; // edi
-  __m128i *v38; // rcx
-  unsigned int v39; // eax
-  __int64 v40; // r10
-  __int64 v41; // r12
-  unsigned __int64 v42; // rbx
-  unsigned int v43; // r8d
-  __int64 v44; // rsi
-  __int64 v45; // rcx
-  unsigned __int64 v46; // rdx
-  __int64 v47; // rdx
-  unsigned __int64 v48; // rcx
-  unsigned __int64 v49; // r8
-  __m128i *v50; // rcx
-  int v51; // r13d
-  unsigned int v52; // eax
-  unsigned int v53; // r10d
-  unsigned __int64 v54; // r8
-  __int64 v55; // r9
-  unsigned __int64 v56; // rcx
-  __int64 v57; // rax
-  __int64 v58; // r8
-  unsigned __int64 v59; // rdx
-  __int64 v60; // [rsp+0h] [rbp-100h] BYREF
-  unsigned int v61; // [rsp+20h] [rbp-E0h]
-  unsigned int v62; // [rsp+24h] [rbp-DCh]
-  int v63; // [rsp+28h] [rbp-D8h]
-  unsigned int v64; // [rsp+2Ch] [rbp-D4h]
-  __m128i *v65; // [rsp+30h] [rbp-D0h]
-  __m128i *v66; // [rsp+38h] [rbp-C8h]
-  unsigned int v67; // [rsp+40h] [rbp-C0h]
-  __m128i v68; // [rsp+44h] [rbp-BCh] BYREF
-  unsigned int v69; // [rsp+210h] [rbp+110h]
-  __m128i Src[28]; // [rsp+214h] [rbp+114h] BYREF
-  __int64 v71; // [rsp+3E0h] [rbp+2E0h]
+  unsigned __int64 v3;
+  unsigned int v5;
+  unsigned __int8 *v6;
+  unsigned int v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  int v14;
+  unsigned int v15;
+  unsigned int v16;
+  int v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  unsigned __int64 v21;
+  __int64 v22;
+  unsigned int v23;
+  unsigned __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  unsigned __int64 v27;
+  char v28;
+  __int64 v29;
+  unsigned __int64 v30;
+  __m128i *v31;
+  unsigned int v32;
+  __int64 v33;
+  unsigned __int64 v34;
+  bool v35;
+  __m128i *v36;
+  unsigned int v37;
+  __m128i *v38;
+  unsigned int v39;
+  __int64 v40;
+  __int64 v41;
+  unsigned __int64 v42;
+  unsigned int v43;
+  __int64 v44;
+  __int64 v45;
+  unsigned __int64 v46;
+  __int64 v47;
+  unsigned __int64 v48;
+  unsigned __int64 v49;
+  __m128i *v50;
+  int v51;
+  unsigned int v52;
+  unsigned int v53;
+  unsigned __int64 v54;
+  __int64 v55;
+  unsigned __int64 v56;
+  __int64 v57;
+  __int64 v58;
+  unsigned __int64 v59;
+  __int64 v60;
+  unsigned int v61;
+  unsigned int v62;
+  int v63;
+  unsigned int v64;
+  __m128i *v65;
+  __m128i *v66;
+  unsigned int v67;
+  __m128i v68;
+  unsigned int v69;
+  __m128i Src[28];
+  __int64 v71;
 
   if ( a1 != a2 )
   {
@@ -15417,8 +15150,8 @@ void            sub_14022F1F4(unsigned __int8 *a1, unsigned __int8 *a2, unsigned
           v20 = (unsigned __int8)byte_1402855F3[4 * v18];
           v21 = 4LL * (unsigned __int8)byte_1402855F2[4 * v18];
           v69 = v20 + (unsigned __int8)byte_1402855F2[4 * v18];
-          sub_1401FCD30((void *)(uintptr_t)(Src), 0, v21);
-          sub_1401FC920(
+          crt_memset((void *)(uintptr_t)(Src), 0, v21);
+          crt_memcpy(
             (__m128i *)((char *)Src + v21),
             (     __m128i *)((char *)&unk_140284CE0 + 4 * (unsigned __int16)word_1402855F0[2 * v19]),
             4 * v20);
@@ -15550,13 +15283,13 @@ LABEL_70:
               v50 = (__m128i *)(a3 + 1);
               if ( v49 <= 0x1CC )
               {
-                sub_1401FC920(v50, &v68, v49);
+                crt_memcpy(v50, &v68, v49);
                 goto LABEL_82;
               }
-              sub_1401FCD30((void *)(uintptr_t)(v50), 0, 0x1CCu);
+              crt_memset((void *)(uintptr_t)(v50), 0, 0x1CCu);
               *errno_sr() = 34;
             }
-            sub_14024CF6C();
+            crt_invalid_parameter_noinfo();
             goto LABEL_82;
           }
           v29 = a3[1];
@@ -15568,17 +15301,17 @@ LABEL_70:
             {
               *errno_sr() = 22;
 LABEL_42:
-              sub_14024CF6C();
+              crt_invalid_parameter_noinfo();
               goto LABEL_43;
             }
             v31 = (__m128i *)(a3 + 1);
             if ( v30 > 0x1CC )
             {
-              sub_1401FCD30((void *)(uintptr_t)(v31), 0, 0x1CCu);
+              crt_memset((void *)(uintptr_t)(v31), 0, 0x1CCu);
               *errno_sr() = 34;
               goto LABEL_42;
             }
-            sub_1401FC920(v31, Src, v30);
+            crt_memcpy(v31, Src, v30);
           }
 LABEL_43:
           if ( !(_DWORD)v29 )
@@ -15690,18 +15423,15 @@ LABEL_96:
   }
 }
 
-// 1402855F0: using guessed type __int16 word_1402855F0[];
-// 140285688: using guessed type int dword_140285688[10];
-
 //----- (000000014022F790) ----------------------------------------------------
 char            sub_14022F790(__crt_strtox *this, struct __crt_strtox__big_integer *a2)
 {
-  unsigned __int64 v2; // r9
-  __int64 v3; // rax
-  unsigned int v4; // r10d
-  __int64 v5; // rax
-  unsigned __int64 v6; // rdx
-  _BYTE v8[468]; // [rsp+24h] [rbp-1D4h] BYREF
+  unsigned __int64 v2;
+  __int64 v3;
+  unsigned int v4;
+  __int64 v5;
+  unsigned __int64 v6;
+  _BYTE v8[468];
 
   LODWORD(v2) = (_DWORD)a2;
   if ( !(_DWORD)a2 )
@@ -15733,18 +15463,17 @@ char            sub_14022F790(__crt_strtox *this, struct __crt_strtox__big_integ
   return 0;
 }
 
-
 //----- (000000014022F860) ----------------------------------------------------
 char            sub_14022F860(__int64 a1)
 {
-  _BYTE *v2; // rax
-  int v4; // eax
-  unsigned __int8 *v5; // rcx
-  int v6; // eax
-  char v7; // di
-  _BYTE *v8; // rax
-  _BYTE *v9; // rcx
-  _BYTE *v10; // rax
+  _BYTE *v2;
+  int v4;
+  unsigned __int8 *v5;
+  int v6;
+  char v7;
+  _BYTE *v8;
+  _BYTE *v9;
+  _BYTE *v10;
 
   if ( *(_DWORD *)(a1 + 16) )
     return 0;
@@ -15838,19 +15567,17 @@ LABEL_19:
   return v7;
 }
 
-// 140285820: using guessed type _BYTE byte_140285820[120];
-
 //----- (000000014022FA28) ----------------------------------------------------
 char            sub_14022FA28(__int64 a1)
 {
-  unsigned __int16 *v2; // rax
-  int v4; // eax
-  unsigned __int16 *v5; // rcx
-  unsigned __int16 i; // cx
-  _WORD *v7; // rdx
-  _WORD *v8; // rcx
-  bool v9; // al
-  __int64 v10; // rax
+  unsigned __int16 *v2;
+  int v4;
+  unsigned __int16 *v5;
+  unsigned __int16 i;
+  _WORD *v7;
+  _WORD *v8;
+  bool v9;
+  __int64 v10;
 
   if ( *(_DWORD *)(a1 + 16) )
     return 0;
@@ -15932,14 +15659,12 @@ LABEL_23:
   return 1;
 }
 
-// 140285820: using guessed type _BYTE byte_140285820[120];
-
 //----- (000000014022FBC0) ----------------------------------------------------
 __int64            sub_14022FBC0(__crt_strtox__floating_point_value *this)
 {
   if ( !*((_BYTE *)this + 8) )
   {
-    sub_14024CFBC();
+    crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
   return *(_QWORD *)this;
@@ -15952,7 +15677,7 @@ __int64            sub_14022FBFC(__crt_strtox__floating_point_value *this)
 {
   if ( *((_BYTE *)this + 8) )
   {
-    sub_14024CFBC();
+    crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
   return *(_QWORD *)this;
@@ -15963,33 +15688,33 @@ __int64            sub_14022FBFC(__crt_strtox__floating_point_value *this)
 //----- (000000014022FC68) ----------------------------------------------------
 __int64            sub_14022FC68(unsigned __int64 a1, int a2, unsigned __int8 a3, char a4, __int64 a5)
 {
-  int v7; // r11d
-  unsigned __int64 v8; // rbx
-  bool v9; // zf
-  int v10; // ecx
-  int v11; // ecx
-  unsigned __int64 **v12; // r15
-  char v13; // dl
-  int v14; // r14d
-  int v15; // edi
-  int v16; // r8d
-  int v17; // r9d
-  int v18; // r13d
-  __int64 v19; // r12
-  bool v20; // r15
-  int v21; // eax
-  unsigned __int8 v22; // al
-  unsigned __int64 *v23; // rcx
-  char v25; // cl
-  unsigned int v26; // r14d
-  __int64 v27; // r12
-  bool v28; // r15
-  int v29; // eax
-  unsigned __int8 v30; // al
-  unsigned __int64 *v31; // r8
-  unsigned __int64 *v32; // r9
-  __int64 v33; // r8
-  int v34; // [rsp+70h] [rbp+8h]
+  int v7;
+  unsigned __int64 v8;
+  bool v9;
+  int v10;
+  int v11;
+  unsigned __int64 **v12;
+  char v13;
+  int v14;
+  int v15;
+  int v16;
+  int v17;
+  int v18;
+  __int64 v19;
+  bool v20;
+  int v21;
+  unsigned __int8 v22;
+  unsigned __int64 *v23;
+  char v25;
+  unsigned int v26;
+  __int64 v27;
+  bool v28;
+  int v29;
+  unsigned __int8 v30;
+  unsigned __int64 *v31;
+  unsigned __int64 *v32;
+  __int64 v33;
+  int v34;
 
   v7 = a2;
   v8 = a1;
@@ -16152,31 +15877,30 @@ LABEL_63:
   return 3;
 }
 
-
 //----- (0000000140230010) ----------------------------------------------------
 __int64            sub_140230010(_DWORD *a1, unsigned int a2, unsigned __int8 a3, char a4, __int64 a5)
 {
-  unsigned int v8; // r10d
-  int v9; // edx
-  __int64 v10; // rax
-  char v11; // r9
-  unsigned __int64 v12; // rcx
-  char v13; // r8
-  __int64 v14; // rdi
-  __int64 v15; // rsi
-  __int64 v16; // r12
-  __int64 v17; // rbx
-  int v18; // r14d
-  int v19; // r8d
-  unsigned __int64 v20; // rbx
-  int v21; // edi
-  char v22; // r8
-  int v23; // r14d
-  __int64 v24; // rdx
-  __int64 v25; // rdi
-  char v26; // al
-  int v27; // ecx
-  char v28; // r9
+  unsigned int v8;
+  int v9;
+  __int64 v10;
+  char v11;
+  unsigned __int64 v12;
+  char v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  int v18;
+  int v19;
+  unsigned __int64 v20;
+  int v21;
+  char v22;
+  int v23;
+  __int64 v24;
+  __int64 v25;
+  char v26;
+  int v27;
+  char v28;
 
   v8 = 0;
   v9 = *(_BYTE *)(a5 + 8) != 0 ? 52 : 23;
@@ -16264,21 +15988,18 @@ __int64 sub_14023023C(_DWORD *a1, __crt_strtox__floating_point_value *a2)
 // 140230B9B: conditional instruction was optimized away because r15d.4>=2u
 // 140231240: conditional instruction was optimized away because ebx.4>=2u
 // 140231827: conditional instruction was optimized away because ebx.4>=2u
-// 140231EA2: variable 'v213' is possibly undefined
-// 1402855F0: using guessed type __int16 word_1402855F0[];
-// 140285688: using guessed type int dword_140285688[10];
 
 //----- (0000000140231FC0) ----------------------------------------------------
 __int64            sub_140231FC0(__int64 a1, __int64 a2)
 {
-  unsigned __int64 v3; // rcx
-  unsigned __int8 *v5; // r8
-  __int64 v6; // r11
-  int v7; // r10d
-  unsigned __int64 v8; // rdx
-  __int64 v9; // rax
-  char i; // r9
-  char v11; // al
+  unsigned __int64 v3;
+  unsigned __int8 *v5;
+  __int64 v6;
+  int v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  char i;
+  char v11;
 
   v3 = 0;
   v5 = (unsigned __int8 *)(a1 + 8);
@@ -16303,12 +16024,11 @@ __int64            sub_140231FC0(__int64 a1, __int64 a2)
   return sub_14022FC68(v3, v7, *(_BYTE *)(a1 + 776), i, a2);
 }
 
-
 //----- (0000000140232088) ----------------------------------------------------
 void *           sub_140232088(void **a1)
 {
-  void *result; // rax
-  void *v3; // rbx
+  void *result;
+  void *v3;
 
   result = *a1;
   if ( !*a1 )
@@ -16322,78 +16042,76 @@ void *           sub_140232088(void **a1)
   return result;
 }
 
-// 14024DF98: using guessed type __int64 __fastcall calloc_base(_QWORD, _QWORD);
-
 //----- (00000001402320F0) ----------------------------------------------------
 __int64            sub_1402320F0(
         __crt_strtox *this,
         struct __crt_strtox__big_integer *a2,
              struct __crt_strtox__big_integer *a3)
 {
-  unsigned int v5; // edi
-  __int64 v6; // r10
-  unsigned int v7; // eax
-  unsigned __int64 v8; // r12
-  int v9; // ebp
-  unsigned int v10; // ebx
-  unsigned int v12; // ebx
-  __int64 v13; // rdi
-  unsigned __int64 v14; // r14
-  __int64 v15; // rax
-  unsigned __int64 v16; // rtt
-  __int64 v17; // rdx
-  int v18; // r8d
-  int v19; // r9d
-  __int64 v20; // r11
-  _DWORD *v21; // rcx
-  unsigned int v22; // r9d
-  unsigned int v23; // ebp
-  bool v24; // zf
-  int v25; // eax
-  int v26; // r11d
-  char v27; // bl
-  unsigned int v28; // eax
-  unsigned int v29; // r9d
-  unsigned int v30; // ebp
-  int v31; // r14d
-  __int64 v32; // r12
-  unsigned __int64 v33; // rbx
-  __int64 v34; // r13
-  unsigned int v35; // edx
-  __int64 v36; // r11
-  unsigned __int64 v37; // r8
-  unsigned __int64 v38; // rax
-  unsigned __int64 v39; // r8
-  __int64 v40; // r9
-  unsigned __int64 v41; // rax
-  unsigned __int64 v42; // r10
-  unsigned int v43; // r11d
-  unsigned int *v44; // rbx
-  __int64 v45; // rax
-  unsigned __int64 v46; // r10
-  unsigned int v47; // r8d
-  __int64 v48; // rcx
-  unsigned int v49; // eax
-  unsigned __int64 v50; // rdx
-  unsigned int v51; // r10d
-  unsigned __int64 v52; // r8
-  unsigned int *v53; // r11
-  __int64 v54; // rax
-  __int64 v55; // rcx
-  char *v56; // rdx
-  __int64 v57; // rax
-  unsigned __int64 v58; // r8
-  __int64 v59; // rdx
-  unsigned int i; // ecx
-  __int64 v61; // rax
-  char v62; // [rsp+20h] [rbp-238h]
-  unsigned __int64 v63; // [rsp+28h] [rbp-230h]
-  char v64; // [rsp+30h] [rbp-228h]
-  unsigned __int64 v65; // [rsp+38h] [rbp-220h]
-  __m128i Source[29]; // [rsp+44h] [rbp-214h] BYREF
-  unsigned int v67; // [rsp+260h] [rbp+8h]
-  int v69; // [rsp+270h] [rbp+18h]
-  unsigned int v70; // [rsp+278h] [rbp+20h]
+  unsigned int v5;
+  __int64 v6;
+  unsigned int v7;
+  unsigned __int64 v8;
+  int v9;
+  unsigned int v10;
+  unsigned int v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  unsigned __int64 v16;
+  __int64 v17;
+  int v18;
+  int v19;
+  __int64 v20;
+  _DWORD *v21;
+  unsigned int v22;
+  unsigned int v23;
+  bool v24;
+  int v25;
+  int v26;
+  char v27;
+  unsigned int v28;
+  unsigned int v29;
+  unsigned int v30;
+  int v31;
+  __int64 v32;
+  unsigned __int64 v33;
+  __int64 v34;
+  unsigned int v35;
+  __int64 v36;
+  unsigned __int64 v37;
+  unsigned __int64 v38;
+  unsigned __int64 v39;
+  __int64 v40;
+  unsigned __int64 v41;
+  unsigned __int64 v42;
+  unsigned int v43;
+  unsigned int *v44;
+  __int64 v45;
+  unsigned __int64 v46;
+  unsigned int v47;
+  __int64 v48;
+  unsigned int v49;
+  unsigned __int64 v50;
+  unsigned int v51;
+  unsigned __int64 v52;
+  unsigned int *v53;
+  __int64 v54;
+  __int64 v55;
+  char *v56;
+  __int64 v57;
+  unsigned __int64 v58;
+  __int64 v59;
+  unsigned int i;
+  __int64 v61;
+  char v62;
+  unsigned __int64 v63;
+  char v64;
+  unsigned __int64 v65;
+  __m128i Source[29];
+  unsigned int v67;
+  int v69;
+  unsigned int v70;
 
   if ( !*(_DWORD *)this )
     return 0;
@@ -16612,14 +16330,13 @@ LABEL_18:
   return v32;
 }
 
-
 //----- (0000000140232538) ----------------------------------------------------
 char            sub_140232538(__int64 a1)
 {
-  unsigned __int64 v1; // rax
-  bool v2; // zf
-  FILE **v3; // rbx
-  int v4; // eax
+  unsigned __int64 v1;
+  bool v2;
+  FILE **v3;
+  int v4;
 
   v1 = *(_QWORD *)(a1 + 16) + 1LL;
   v2 = *(_QWORD *)(a1 + 8) == 0;
@@ -16631,13 +16348,12 @@ char            sub_140232538(__int64 a1)
   return v4;
 }
 
-
 //----- (0000000140232574) ----------------------------------------------------
 __int64            sub_140232574(__int64 a1)
 {
-  unsigned __int64 v1; // rax
-  FILE **v2; // rbx
-  __int64 result; // rax
+  unsigned __int64 v1;
+  FILE **v2;
+  __int64 result;
 
   v1 = *(_QWORD *)(a1 + 16) + 1LL;
   *(_QWORD *)(a1 + 16) = v1;
@@ -16651,12 +16367,10 @@ __int64            sub_140232574(__int64 a1)
   return result;
 }
 
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-
 //----- (0000000140232638) ----------------------------------------------------
 int            sub_140232638(__int64 a1)
 {
-  int result; // eax
+  int result;
 
   result = getc_nolock(*(FILE **)a1);
   if ( result != -1 )
@@ -16664,11 +16378,10 @@ int            sub_140232638(__int64 a1)
   return result;
 }
 
-
 //----- (0000000140232658) ----------------------------------------------------
 __int64            sub_140232658(FILE **a1)
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = j__fgetwc_nolock(*a1);
   if ( (_WORD)result != 0xFFFF )
@@ -16676,15 +16389,13 @@ __int64            sub_140232658(FILE **a1)
   return result;
 }
 
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-
 //----- (00000001402326E8) ----------------------------------------------------
 char *           sub_1402326E8(char **a1)
 {
-  char *v1; // rdx
-  char *v3; // rbx
-  char *result; // rax
-  char *v5; // rcx
+  char *v1;
+  char *v3;
+  char *result;
+  char *v5;
 
   v1 = *a1;
   if ( !*a1 )
@@ -16709,12 +16420,10 @@ char *           sub_1402326E8(char **a1)
   return result;
 }
 
-// 14024DF98: using guessed type __int64 __fastcall calloc_base(_QWORD, _QWORD);
-
 //----- (00000001402327F8) ----------------------------------------------------
 char            sub_1402327F8(__int64 a1, int a2, unsigned __int16 a3)
 {
-  int v3; // edx
+  int v3;
 
   if ( a3 == 0xFFFF )
     return 0;
@@ -16734,11 +16443,10 @@ char            sub_1402327F8(__int64 a1, int a2, unsigned __int16 a3)
   return 1;
 }
 
-
 //----- (0000000140232844) ----------------------------------------------------
 char            sub_140232844(__int64 a1, int a2, unsigned __int16 a3)
 {
-  int v3; // edx
+  int v3;
 
   if ( a3 == 0xFFFF )
     return 0;
@@ -16758,13 +16466,11 @@ char            sub_140232844(__int64 a1, int a2, unsigned __int16 a3)
   return 1;
 }
 
-
 //----- (00000001402328D8) ----------------------------------------------------
 bool            sub_1402328D8(sr_anon_107 *this, struct __crt_locale_pointers *a2, struct sr_anon_68 *     a3)
 {
-  return (unsigned int)sub_140236ED8((unsigned __int8)this, 8, a2) != 0;
+  return (unsigned int)crt_isctype_l((unsigned __int8)this, 8, a2) != 0;
 }
-
 
 //----- (00000001402328F8) ----------------------------------------------------
 bool            sub_1402328F8(unsigned __int16 a1)
@@ -16772,12 +16478,11 @@ bool            sub_1402328F8(unsigned __int16 a1)
   return (unsigned int)sub_140256E00(a1, 8) != 0;
 }
 
-
 //----- (0000000140232918) ----------------------------------------------------
 bool            sub_140232918(void **a1)
 {
-  bool v2; // zf
-  void *v3; // rbx
+  bool v2;
+  void *v3;
 
   v2 = *a1 == nullptr;
   if ( !*a1 )
@@ -16791,23 +16496,21 @@ bool            sub_140232918(void **a1)
   return !v2;
 }
 
-// 14024DF98: using guessed type __int64 __fastcall calloc_base(_QWORD, _QWORD);
-
 //----- (0000000140232974) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_649(__int64 a1)
 {
-  int v1; // eax
-  __int64 v2; // rdx
-  int v4; // eax
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  bool v8; // zf
-  int v9; // ecx
-  int v10; // ecx
-  int v11; // ecx
+  int v1;
+  __int64 v2;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  bool v8;
+  int v9;
+  int v10;
+  int v11;
 
   v1 = *(_DWORD *)(a1 + 48);
   if ( v1 < 0 )
@@ -16876,23 +16579,22 @@ LABEL_19:
   }
   return (*(_BYTE *)(a1 + 44) != 0) + 1LL;
 }
-
 
 //----- (0000000140232A10) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_650(__int64 a1)
 {
-  int v1; // eax
-  __int64 v2; // rdx
-  int v4; // eax
-  int v5; // ecx
-  int v6; // ecx
-  int v7; // ecx
-  bool v8; // zf
-  int v9; // ecx
-  int v10; // ecx
-  int v11; // ecx
+  int v1;
+  __int64 v2;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  bool v8;
+  int v9;
+  int v10;
+  int v11;
 
   v1 = *(_DWORD *)(a1 + 48);
   if ( v1 < 0 )
@@ -16961,7 +16663,6 @@ LABEL_19:
   }
   return (*(_BYTE *)(a1 + 44) != 0) + 1LL;
 }
-
 
 //----- (0000000140232B30) ----------------------------------------------------
 __int64            sub_140232B30(
@@ -16969,48 +16670,48 @@ __int64            sub_140232B30(
         struct __crt_strtox__big_integer *a2,
              struct __crt_strtox__big_integer *a3)
 {
-  unsigned int v4; // ecx
-  int v5; // eax
-  unsigned int v6; // r11d
-  char *v7; // rbx
-  unsigned __int64 v8; // r8
-  unsigned int v9; // r10d
-  __int64 v10; // rdi
-  __int64 v11; // rax
-  unsigned __int64 v12; // rdx
-  __int64 v13; // rax
-  unsigned int *v14; // r12
-  unsigned int v15; // r15d
-  __int64 v16; // rbx
-  unsigned int v17; // r11d
-  unsigned __int64 v18; // r8
-  unsigned int v19; // r10d
-  __int64 v20; // rax
-  unsigned __int64 v21; // rdx
-  __int64 v22; // rax
-  unsigned int v23; // r11d
-  sr_anon_107 *v24; // r8
-  sr_anon_107 *v25; // rax
-  char *v26; // r8
-  unsigned int v27; // ecx
-  unsigned int v28; // ebx
-  char *v29; // r13
-  __int64 v30; // r14
-  unsigned __int64 v31; // r10
-  unsigned int v32; // eax
-  __int64 v33; // r11
-  __int64 v34; // rcx
-  unsigned __int64 v35; // r8
-  __int64 v36; // r8
-  unsigned __int64 v37; // rdx
-  __int64 v39; // [rsp+0h] [rbp-100h] BYREF
-  unsigned int v40; // [rsp+20h] [rbp-E0h]
-  char *v41; // [rsp+28h] [rbp-D8h]
-  int v42; // [rsp+30h] [rbp-D0h]
-  char v43[460]; // [rsp+34h] [rbp-CCh] BYREF
-  unsigned int v44; // [rsp+200h] [rbp+100h]
-  __m128i Source[28]; // [rsp+204h] [rbp+104h] BYREF
-  __int64 v46; // [rsp+3D0h] [rbp+2D0h]
+  unsigned int v4;
+  int v5;
+  unsigned int v6;
+  char *v7;
+  unsigned __int64 v8;
+  unsigned int v9;
+  __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  unsigned int *v14;
+  unsigned int v15;
+  __int64 v16;
+  unsigned int v17;
+  unsigned __int64 v18;
+  unsigned int v19;
+  __int64 v20;
+  unsigned __int64 v21;
+  __int64 v22;
+  unsigned int v23;
+  sr_anon_107 *v24;
+  sr_anon_107 *v25;
+  char *v26;
+  unsigned int v27;
+  unsigned int v28;
+  char *v29;
+  __int64 v30;
+  unsigned __int64 v31;
+  unsigned int v32;
+  __int64 v33;
+  __int64 v34;
+  unsigned __int64 v35;
+  __int64 v36;
+  unsigned __int64 v37;
+  __int64 v39;
+  unsigned int v40;
+  char *v41;
+  int v42;
+  char v43[460];
+  unsigned int v44;
+  __m128i Source[28];
+  __int64 v46;
 
   v4 = *(_DWORD *)a2;
   if ( *(_DWORD *)a2 > 1u )
@@ -17199,19 +16900,18 @@ LABEL_12:
   return 0; /* the function has no caller */
 }
 
-
 //----- (0000000140232EE0) ----------------------------------------------------
 char            sub_140232EE0(sr_anon_107 *this, struct __crt_strtox__big_integer *a2)
 {
-  int v3; // ebx
-  unsigned __int64 v4; // r9
-  __int64 v5; // rsi
-  unsigned int v6; // r11d
-  __m128i *v7; // rdi
-  __int64 v8; // rax
-  unsigned __int64 v9; // rdx
-  __int64 v10; // rax
-  __m128i Source[28]; // [rsp+24h] [rbp-1D4h] BYREF
+  int v3;
+  unsigned __int64 v4;
+  __int64 v5;
+  unsigned int v6;
+  __m128i *v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  __int64 v10;
+  __m128i Source[28];
 
   if ( !(_DWORD)a2 )
   {
@@ -17253,72 +16953,71 @@ char            sub_140232EE0(sr_anon_107 *this, struct __crt_strtox__big_intege
   return 1;
 }
 
-
 //----- (0000000140232FE0) ----------------------------------------------------
 __int64            sub_140232FE0(sr_anon_107 *this, struct __crt_strtox__big_integer *a2)
 {
-  int v2; // r8d
-  unsigned int v4; // eax
-  unsigned int v5; // r15d
-  int v6; // r13d
-  __int64 v7; // rcx
-  __int64 v8; // rsi
-  __int64 v9; // rbx
-  __int64 v10; // rcx
-  int v11; // r10d
-  char *v12; // r11
-  unsigned __int64 v13; // r8
-  unsigned int v14; // r9d
-  __int64 v15; // rbx
-  __int64 v16; // rax
-  unsigned __int64 v17; // rdx
-  __int64 v18; // rax
-  char v19; // al
-  unsigned int v20; // esi
-  unsigned int *v21; // r15
-  __int64 v22; // rbx
-  int v23; // r10d
-  unsigned __int64 v24; // r8
-  unsigned int v25; // r9d
-  __int64 v26; // rax
-  unsigned __int64 v27; // rdx
-  __int64 v28; // rax
-  __m128i *v29; // rdx
-  __m128i *v30; // r12
-  unsigned int v31; // r13d
-  unsigned int v32; // ecx
-  __int64 v33; // rbx
-  __int64 v34; // rdi
-  unsigned __int64 v35; // r10
-  unsigned int v36; // eax
-  __int64 v37; // r9
-  __int64 v38; // rcx
-  unsigned __int64 v39; // r8
-  __int64 v40; // r8
-  unsigned __int64 v41; // rdx
-  int v42; // r8d
-  __int64 v43; // rax
-  int v45; // r10d
-  char *v46; // r11
-  unsigned __int64 v47; // r8
-  unsigned int v48; // r9d
-  __int64 v49; // rbx
-  __int64 v50; // rax
-  unsigned __int64 v51; // rdx
-  __int64 v52; // rax
-  __int64 v53; // [rsp+0h] [rbp-100h] BYREF
-  unsigned int v54; // [rsp+20h] [rbp-E0h]
-  int v55; // [rsp+24h] [rbp-DCh]
-  unsigned int v56; // [rsp+28h] [rbp-D8h]
-  int v57; // [rsp+2Ch] [rbp-D4h]
-  __m128i *v58; // [rsp+30h] [rbp-D0h]
-  int v59; // [rsp+40h] [rbp-C0h]
-  __m128i v60[28]; // [rsp+44h] [rbp-BCh] BYREF
-  unsigned int v61; // [rsp+210h] [rbp+110h]
-  _DWORD v62[115]; // [rsp+214h] [rbp+114h] BYREF
-  unsigned int v63; // [rsp+3E0h] [rbp+2E0h]
-  __m128i v64[28]; // [rsp+3E4h] [rbp+2E4h] BYREF
-  __int64 v65; // [rsp+5B0h] [rbp+4B0h]
+  int v2;
+  unsigned int v4;
+  unsigned int v5;
+  int v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  int v11;
+  char *v12;
+  unsigned __int64 v13;
+  unsigned int v14;
+  __int64 v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  char v19;
+  unsigned int v20;
+  unsigned int *v21;
+  __int64 v22;
+  int v23;
+  unsigned __int64 v24;
+  unsigned int v25;
+  __int64 v26;
+  unsigned __int64 v27;
+  __int64 v28;
+  __m128i *v29;
+  __m128i *v30;
+  unsigned int v31;
+  unsigned int v32;
+  __int64 v33;
+  __int64 v34;
+  unsigned __int64 v35;
+  unsigned int v36;
+  __int64 v37;
+  __int64 v38;
+  unsigned __int64 v39;
+  __int64 v40;
+  unsigned __int64 v41;
+  int v42;
+  __int64 v43;
+  int v45;
+  char *v46;
+  unsigned __int64 v47;
+  unsigned int v48;
+  __int64 v49;
+  __int64 v50;
+  unsigned __int64 v51;
+  __int64 v52;
+  __int64 v53;
+  unsigned int v54;
+  int v55;
+  unsigned int v56;
+  int v57;
+  __m128i *v58;
+  int v59;
+  __m128i v60[28];
+  unsigned int v61;
+  _DWORD v62[115];
+  unsigned int v63;
+  __m128i v64[28];
+  __int64 v65;
 
   v2 = (int)a2;
   v57 = (int)a2;
@@ -17338,8 +17037,8 @@ __int64            sub_140232FE0(sr_anon_107 *this, struct __crt_strtox__big_int
       v8 = *(unsigned __int8 *)(0x140000003LL + 4LL * (unsigned int)(v6 - 1) + 2643440);
       v9 = 4 * v7;
       v63 = v8 + v7;
-      sub_1401FCD30((void *)(uintptr_t)(v64), 0, 4 * v7);
-      sub_1401FC920(
+      crt_memset((void *)(uintptr_t)(v64), 0, 4 * v7);
+      crt_memcpy(
         (__m128i *)((char *)v64 + v9),
         (     __m128i *)((char *)&unk_140284CE0
                         + 4 * *(unsigned __int16 *)(0x140000000LL + 4LL * (unsigned int)(v6 - 1) + 2643440)),
@@ -17606,17 +17305,15 @@ LABEL_56:
   return 0; /* the function has no caller */
 }
 
-// 140285688: using guessed type int dword_140285688[10];
-
 //----- (0000000140233590) ----------------------------------------------------
 unsigned __int64            sub_140233590(sr_anon_107 *this, unsigned int *     a2, unsigned int a3)
 {
-  unsigned __int64 result; // rax
-  int v4; // r10d
-  unsigned int v5; // r9d
-  __int64 v6; // r11
-  __int64 v7; // r8
-  unsigned __int64 v8; // rdx
+  unsigned __int64 result;
+  int v4;
+  unsigned int v5;
+  __int64 v6;
+  __int64 v7;
+  unsigned __int64 v8;
 
   result = 0;
   v4 = (int)a2;
@@ -17636,14 +17333,13 @@ unsigned __int64            sub_140233590(sr_anon_107 *this, unsigned int *     
   return result;
 }
 
-
 //----- (00000001402337F8) ----------------------------------------------------
 __int64            sub_1402337F8(__int64 a1)
 {
-  __int64 v2; // rcx
-  unsigned int v4; // edi
-  int v5; // eax
-  int v6; // ebx
+  __int64 v2;
+  unsigned int v4;
+  int v5;
+  int v6;
 
   v2 = *(_QWORD *)(a1 + 8);
   if ( !v2 )
@@ -17654,7 +17350,7 @@ __int64            sub_1402337F8(__int64 a1)
   {
 LABEL_2:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
   while ( sub_14022F860(a1 + 24)
@@ -17680,29 +17376,28 @@ LABEL_2:
     if ( v6 )
     {
       *errno_sr() = v6;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
     }
   }
   return v4;
 }
 
-
 //----- (00000001402338B8) ----------------------------------------------------
 __int64            sub_1402338B8(__int64 a1)
 {
-  unsigned __int64 v1; // rax
-  unsigned int v4; // edi
-  __int64 i; // rcx
-  unsigned int v6; // esi
-  unsigned __int8 *v7; // rax
-  int v8; // ecx
-  int v9; // ebx
+  unsigned __int64 v1;
+  unsigned int v4;
+  __int64 i;
+  unsigned int v6;
+  unsigned __int8 *v7;
+  int v8;
+  int v9;
 
   v1 = *(_QWORD *)(a1 + 24);
   if ( !v1 || v1 > *(_QWORD *)(a1 + 16) )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
   if ( !*(_QWORD *)(a1 + 40) )
@@ -17710,7 +17405,7 @@ __int64            sub_1402338B8(__int64 a1)
     v4 = -1;
     *errno_sr() = 22;
 LABEL_22:
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return v4;
   }
   for ( i = a1 + 32;
@@ -17750,23 +17445,22 @@ LABEL_22:
   return v6;
 }
 
-
 //----- (00000001402339A4) ----------------------------------------------------
 __int64            sub_1402339A4(__int64 a1)
 {
-  unsigned int v2; // edi
-  __int64 i; // rcx
-  unsigned int v4; // esi
-  unsigned __int16 v5; // ax
-  __int64 v6; // r8
-  int v7; // ebx
+  unsigned int v2;
+  __int64 i;
+  unsigned int v4;
+  unsigned __int16 v5;
+  __int64 v6;
+  int v7;
 
   if ( !*(_QWORD *)(a1 + 8) || !*(_QWORD *)(a1 + 32) )
   {
     v2 = -1;
     *errno_sr() = 22;
 LABEL_18:
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return v2;
   }
   for ( i = a1 + 24;
@@ -17803,25 +17497,21 @@ LABEL_18:
   return v4;
 }
 
-// 140233A33: variable 'v6' is possibly undefined
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (0000000140233A68) ----------------------------------------------------
 __int64            sub_140233A68(__int64 a1)
 {
-  unsigned __int64 v1; // rax
-  unsigned int v4; // edi
-  __int64 i; // rcx
-  __int16 *v6; // rax
-  __int16 v7; // dx
-  int v8; // ebx
+  unsigned __int64 v1;
+  unsigned int v4;
+  __int64 i;
+  __int16 *v6;
+  __int16 v7;
+  int v8;
 
   v1 = *(_QWORD *)(a1 + 24);
   if ( !v1 || v1 > *(_QWORD *)(a1 + 16) )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
   if ( !*(_QWORD *)(a1 + 40) )
@@ -17868,28 +17558,27 @@ LABEL_20:
     return v4;
   *errno_sr() = v8;
 LABEL_23:
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return v4;
 }
-
 
 //----- (0000000140233BA8) ----------------------------------------------------
 char            sub_140233BA8(__int64 a1)
 {
-  int v1; // edx
-  char v3; // di
-  int v4; // edx
-  int v5; // edx
-  int v6; // edx
-  signed int v7; // edx
-  unsigned __int8 v8; // r8
-  __int64 v10; // rax
-  int v11; // edx
-  int v13; // edx
-  int v14; // edx
-  int v15; // edx
-  int v16; // edx
-  __int64 v17; // rax
+  int v1;
+  char v3;
+  int v4;
+  int v5;
+  int v6;
+  signed int v7;
+  unsigned __int8 v8;
+  __int64 v10;
+  int v11;
+  int v13;
+  int v14;
+  int v15;
+  int v16;
+  __int64 v17;
 
   v1 = *(_DWORD *)(a1 + 72);
   if ( v1 <= 5 )
@@ -17975,24 +17664,23 @@ LABEL_37:
              *(_QWORD *)(a1 + 16));
 }
 
-
 //----- (0000000140233CC4) ----------------------------------------------------
 char            sub_140233CC4(__int64 a1)
 {
-  int v1; // edx
-  char v3; // di
-  int v4; // edx
-  int v5; // edx
-  int v6; // edx
-  signed int v7; // edx
-  unsigned __int8 v8; // r8
-  __int64 v10; // rax
-  int v11; // edx
-  int v13; // edx
-  int v14; // edx
-  int v15; // edx
-  int v16; // edx
-  __int64 v17; // rax
+  int v1;
+  char v3;
+  int v4;
+  int v5;
+  int v6;
+  signed int v7;
+  unsigned __int8 v8;
+  __int64 v10;
+  int v11;
+  int v13;
+  int v14;
+  int v15;
+  int v16;
+  __int64 v17;
 
   v1 = *(_DWORD *)(a1 + 80);
   if ( v1 <= 5 )
@@ -18078,24 +17766,23 @@ LABEL_37:
              *(_QWORD *)(a1 + 24) - *(_QWORD *)(a1 + 8));
 }
 
-
 //----- (0000000140233DE4) ----------------------------------------------------
 char            sub_140233DE4(__int64 a1)
 {
-  int v1; // edx
-  char v3; // di
-  int v4; // edx
-  int v5; // edx
-  int v6; // edx
-  signed int v7; // edx
-  unsigned __int8 v8; // r8
-  __int64 v10; // rax
-  int v11; // edx
-  int v13; // edx
-  int v14; // edx
-  int v15; // edx
-  int v16; // edx
-  __int64 v17; // rax
+  int v1;
+  char v3;
+  int v4;
+  int v5;
+  int v6;
+  signed int v7;
+  unsigned __int8 v8;
+  __int64 v10;
+  int v11;
+  int v13;
+  int v14;
+  int v15;
+  int v16;
+  __int64 v17;
 
   v1 = *(_DWORD *)(a1 + 72);
   if ( v1 <= 5 )
@@ -18181,24 +17868,23 @@ LABEL_37:
              *(_QWORD *)(a1 + 16));
 }
 
-
 //----- (0000000140233F00) ----------------------------------------------------
 char            sub_140233F00(__int64 a1)
 {
-  int v1; // edx
-  char v3; // di
-  int v4; // edx
-  int v5; // edx
-  int v6; // edx
-  signed int v7; // edx
-  unsigned __int8 v8; // r8
-  __int64 v10; // rax
-  int v11; // edx
-  int v13; // edx
-  int v14; // edx
-  int v15; // edx
-  int v16; // edx
-  __int64 v17; // rax
+  int v1;
+  char v3;
+  int v4;
+  int v5;
+  int v6;
+  signed int v7;
+  unsigned __int8 v8;
+  __int64 v10;
+  int v11;
+  int v13;
+  int v14;
+  int v15;
+  int v16;
+  __int64 v17;
 
   v1 = *(_DWORD *)(a1 + 80);
   if ( v1 <= 5 )
@@ -18284,12 +17970,11 @@ LABEL_37:
              (__int64)(*(_QWORD *)(a1 + 24) - *(_QWORD *)(a1 + 8)) >> 1);
 }
 
-
 //----- (0000000140234024) ----------------------------------------------------
 char            sub_140234024(__int64 *a1)
 {
-  int v2; // eax
-  __int64 v3; // rax
+  int v2;
+  __int64 v3;
 
   v2 = sub_14022E0F4((__int64)(a1 + 1), (struct __crt_locale_pointers *)a1[14]);
   if ( v2 != -1 )
@@ -18305,13 +17990,12 @@ char            sub_140234024(__int64 *a1)
   return 0;
 }
 
-
 //----- (0000000140234088) ----------------------------------------------------
 char            sub_140234088(_QWORD *a1)
 {
-  int v2; // ecx
-  __int64 v3; // rax
-  __int64 v4; // rax
+  int v2;
+  __int64 v3;
+  __int64 v4;
 
   v2 = sub_14022E18C((__int64)(a1 + 1), (struct __crt_locale_pointers *)a1[15]);
   v3 = a1[3];
@@ -18325,13 +18009,12 @@ char            sub_140234088(_QWORD *a1)
   return 0;
 }
 
-
 //----- (00000001402340F8) ----------------------------------------------------
 char            sub_1402340F8(__int64 a1)
 {
-  unsigned __int16 v2; // ax
-  __int64 v3; // r8
-  __int64 v4; // rax
+  unsigned __int16 v2;
+  __int64 v3;
+  __int64 v4;
 
   v2 = sub_14022E144((FILE **)(a1 + 8));
   if ( v2 != 0xFFFF )
@@ -18347,15 +18030,12 @@ char            sub_1402340F8(__int64 a1)
   return 0;
 }
 
-// 140234127: variable 'v3' is possibly undefined
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (0000000140234164) ----------------------------------------------------
 char            sub_140234164(_QWORD *a1)
 {
-  __int16 v2; // cx
-  __int64 v3; // rax
-  __int64 v4; // rax
+  __int16 v2;
+  __int64 v3;
+  __int64 v4;
 
   v2 = sub_14022E1E0((__int64)(a1 + 1));
   v3 = a1[3];
@@ -18369,16 +18049,15 @@ char            sub_140234164(_QWORD *a1)
   return 0;
 }
 
-
 //----- (00000001402341DC) ----------------------------------------------------
 char            sub_1402341DC(__int64 a1, signed int a2, unsigned __int8 a3)
 {
-  __int64 *v4; // rdi
-  int v7; // eax
-  struct __crt_locale_pointers *v8; // rcx
-  unsigned __int64 v9; // rax
-  FILE **v11[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v12; // [rsp+50h] [rbp+8h] BYREF
+  __int64 *v4;
+  int v7;
+  struct __crt_locale_pointers *v8;
+  unsigned __int64 v9;
+  FILE **v11[5];
+  char v12;
 
   v4 = (__int64 *)(a1 + 8);
   v7 = sub_14022E0F4(a1 + 8, *(struct __crt_locale_pointers **)(a1 + 112));
@@ -18401,17 +18080,16 @@ char            sub_1402341DC(__int64 a1, signed int a2, unsigned __int8 a3)
   return __crt_stdio_input__input_processor__char____crt_stdio_input__stream_input_adapter__char____write_integer(a1, v9);
 }
 
-
 //----- (0000000140234288) ----------------------------------------------------
 char            sub_140234288(__int64 a1, signed int a2, unsigned __int8 a3)
 {
-  _QWORD *v4; // rdi
-  int v7; // ecx
-  __int64 v8; // rax
-  struct __crt_locale_pointers *v9; // rcx
-  unsigned __int64 v10; // rax
-  _QWORD v12[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v13; // [rsp+50h] [rbp+8h] BYREF
+  _QWORD *v4;
+  int v7;
+  __int64 v8;
+  struct __crt_locale_pointers *v9;
+  unsigned __int64 v10;
+  _QWORD v12[5];
+  char v13;
 
   v4 = (_QWORD *)(a1 + 8);
   v7 = sub_14022E18C(a1 + 8, *(struct __crt_locale_pointers **)(a1 + 120));
@@ -18432,17 +18110,16 @@ char            sub_140234288(__int64 a1, signed int a2, unsigned __int8 a3)
   return __crt_stdio_input__input_processor__char____crt_stdio_input__string_input_adapter__char____write_integer(a1, v10);
 }
 
-
 //----- (0000000140234340) ----------------------------------------------------
 char            sub_140234340(__int64 a1, signed int a2, unsigned __int8 a3)
 {
-  FILE **v4; // rdi
-  unsigned __int16 v7; // ax
-  __int64 v8; // r8
-  struct __crt_locale_pointers *v9; // rcx
-  unsigned __int64 v10; // rax
-  FILE **v12[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v13; // [rsp+50h] [rbp+8h] BYREF
+  FILE **v4;
+  unsigned __int16 v7;
+  __int64 v8;
+  struct __crt_locale_pointers *v9;
+  unsigned __int64 v10;
+  FILE **v12[5];
+  char v13;
 
   v4 = (FILE **)(a1 + 8);
   v7 = sub_14022E144((FILE **)(a1 + 8));
@@ -18467,19 +18144,16 @@ char            sub_140234340(__int64 a1, signed int a2, unsigned __int8 a3)
            v10);
 }
 
-// 140234380: variable 'v8' is possibly undefined
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (00000001402343F4) ----------------------------------------------------
 char            sub_1402343F4(__int64 a1, signed int a2, unsigned __int8 a3)
 {
-  _QWORD *v4; // rdi
-  __int16 v7; // cx
-  __int64 v8; // rax
-  struct __crt_locale_pointers *v9; // rcx
-  unsigned __int64 v10; // rax
-  _QWORD v12[5]; // [rsp+20h] [rbp-28h] BYREF
-  char v13; // [rsp+50h] [rbp+8h] BYREF
+  _QWORD *v4;
+  __int16 v7;
+  __int64 v8;
+  struct __crt_locale_pointers *v9;
+  unsigned __int64 v10;
+  _QWORD v12[5];
+  char v13;
 
   v4 = (_QWORD *)(a1 + 8);
   v7 = sub_14022E1E0(a1 + 8);
@@ -18502,14 +18176,13 @@ char            sub_1402343F4(__int64 a1, signed int a2, unsigned __int8 a3)
            v10);
 }
 
-
 //----- (00000001402344B4) ----------------------------------------------------
 char            sub_1402344B4(__int64 a1)
 {
-  int v2; // eax
-  __int64 v3; // rdx
-  __int64 v4; // rcx
-  __int64 v5; // rdx
+  int v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   v2 = getc_nolock(*(FILE **)(a1 + 8));
   if ( v2 == -1 )
@@ -18529,14 +18202,13 @@ char            sub_1402344B4(__int64 a1)
            v2);
 }
 
-
 //----- (0000000140234538) ----------------------------------------------------
 char            sub_140234538(__int64 a1)
 {
-  unsigned __int16 v2; // ax
-  __int64 v3; // r8
-  __int64 v4; // rcx
-  __int64 v5; // rdx
+  unsigned __int16 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   v2 = j__fgetwc_nolock(*(FILE **)(a1 + 8));
   if ( v2 == 0xFFFF )
@@ -18553,16 +18225,12 @@ char            sub_140234538(__int64 a1)
   return 1;
 }
 
-// 140234573: variable 'v3' is possibly undefined
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (00000001402345C0) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__stream_input_adapter__char____process_literal_character_tchar(
         __int64 a1,
         unsigned __int8 a2)
 {
-  int v4; // eax
+  int v4;
 
   if ( (sub_140256DC0()[a2] & 0x8000u) == 0 )
     return 1;
@@ -18584,14 +18252,13 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 0;
 }
 
-
 //----- (0000000140234634) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__string_input_adapter__char____process_literal_character_tchar(
         __int64 a1,
         unsigned __int8 a2)
 {
-  unsigned __int8 *v4; // r8
-  int v5; // ecx
+  unsigned __int8 *v4;
+  int v5;
 
   if ( (sub_140256DC0()[a2] & 0x8000u) == 0 )
     return 1;
@@ -18617,18 +18284,17 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 0;
 }
 
-
 //----- (00000001402346C0) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__stream_input_adapter__char____process_state(
         __int64 a1)
 {
-  int v2; // ecx
-  int v3; // ecx
-  char v4; // cl
-  int v6; // r8d
-  __int64 v7; // rax
-  __int64 v8; // rdx
-  int v9; // eax
+  int v2;
+  int v3;
+  char v4;
+  int v6;
+  __int64 v7;
+  __int64 v8;
+  int v9;
 
   v2 = *(_DWORD *)(a1 + 44) - 2;
   if ( v2 )
@@ -18671,18 +18337,17 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 1;
 }
 
-
 //----- (000000014023477C) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__string_input_adapter__char____process_state(
         __int64 a1)
 {
-  int v2; // ecx
-  int v3; // ecx
-  char v4; // cl
-  unsigned __int8 *v6; // rax
-  int v7; // edx
-  int v8; // ecx
-  __int64 v9; // rax
+  int v2;
+  int v3;
+  char v4;
+  unsigned __int8 *v6;
+  int v7;
+  int v8;
+  __int64 v9;
 
   v2 = *(_DWORD *)(a1 + 52) - 2;
   if ( v2 )
@@ -18722,20 +18387,19 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 1;
 }
 
-
 //----- (0000000140234834) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__stream_input_adapter__wchar_t____process_state(
         __int64 a1)
 {
-  int v2; // ecx
-  int v3; // ecx
-  char v4; // cl
-  unsigned __int16 v6; // ax
-  __int64 v7; // r8
-  __int64 v8; // rax
-  __int64 v9; // rdx
-  unsigned __int16 v10; // ax
-  __int64 v11; // r8
+  int v2;
+  int v3;
+  char v4;
+  unsigned __int16 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  unsigned __int16 v10;
+  __int64 v11;
 
   v2 = *(_DWORD *)(a1 + 44) - 2;
   if ( !v2 )
@@ -18774,22 +18438,18 @@ char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__
   return v4;
 }
 
-// 1402348DE: variable 'v11' is possibly undefined
-// 140257AB8: using guessed type __int64 __fastcall j__fgetwc_nolock(FILE *Stream);
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (00000001402348F4) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__string_input_adapter__wchar_t____process_state(
         __int64 a1)
 {
-  int v2; // ecx
-  int v3; // ecx
-  char v4; // cl
-  __int16 *v6; // rax
-  __int16 v7; // dx
-  _WORD *v8; // rax
-  __int16 v9; // dx
-  __int64 v10; // rax
+  int v2;
+  int v3;
+  char v4;
+  __int16 *v6;
+  __int16 v7;
+  _WORD *v8;
+  __int16 v9;
+  __int64 v10;
 
   v2 = *(_DWORD *)(a1 + 52) - 2;
   if ( !v2 )
@@ -18827,14 +18487,13 @@ char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__
   return v4;
 }
 
-
 //----- (00000001402349B4) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__stream_input_adapter__char____process_string_specifier(
         __int64 *a1,
         int a2)
 {
-  int v4; // eax
-  __int64 v5; // rax
+  int v4;
+  __int64 v5;
 
   if ( a2 == 1 )
   {
@@ -18853,15 +18512,14 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 0;
 }
 
-
 //----- (0000000140234A34) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__string_input_adapter__char____process_string_specifier(
         _QWORD *a1,
         int a2)
 {
-  int v4; // ecx
-  __int64 v5; // rax
-  __int64 v6; // rax
+  int v4;
+  __int64 v5;
+  __int64 v6;
 
   if ( a2 == 1 )
   {
@@ -18878,15 +18536,14 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 0;
 }
 
-
 //----- (0000000140234AC0) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__stream_input_adapter__wchar_t____process_string_specifier(
         __int64 a1,
         int a2)
 {
-  unsigned __int16 v4; // ax
-  __int64 v5; // r8
-  __int64 v6; // rax
+  unsigned __int16 v4;
+  __int64 v5;
+  __int64 v6;
 
   if ( a2 == 1 )
   {
@@ -18905,17 +18562,14 @@ char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__
   return 0;
 }
 
-// 140234AFB: variable 'v5' is possibly undefined
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (0000000140234B48) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__string_input_adapter__wchar_t____process_string_specifier(
         _QWORD *a1,
         int a2)
 {
-  __int16 v4; // cx
-  __int64 v5; // rax
-  __int64 v6; // rax
+  __int16 v4;
+  __int64 v5;
+  __int64 v6;
 
   if ( a2 == 1 )
   {
@@ -18932,13 +18586,12 @@ char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__
   return 0;
 }
 
-
 //----- (0000000140234BD8) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__stream_input_adapter__char____process_whitespace(
         __int64 a1)
 {
-  __int64 *v1; // rbx
-  int v2; // eax
+  __int64 *v1;
+  int v2;
 
   v1 = (__int64 *)(a1 + 8);
   v2 = sub_14022E0F4(a1 + 8, *(struct __crt_locale_pointers **)(a1 + 112));
@@ -18950,14 +18603,13 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 1;
 }
 
-
 //----- (0000000140234C0C) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__string_input_adapter__char____process_whitespace(
         __int64 a1)
 {
-  _QWORD *v1; // rbx
-  int v2; // ecx
-  __int64 v3; // rax
+  _QWORD *v1;
+  int v2;
+  __int64 v3;
 
   v1 = (_QWORD *)(a1 + 8);
   v2 = sub_14022E18C(a1 + 8, *(struct __crt_locale_pointers **)(a1 + 120));
@@ -18967,14 +18619,13 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 1;
 }
 
-
 //----- (0000000140234C48) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__stream_input_adapter__wchar_t____process_whitespace(
         __int64 a1)
 {
-  _QWORD *v1; // rbx
-  unsigned __int16 v2; // ax
-  __int64 v3; // r8
+  _QWORD *v1;
+  unsigned __int16 v2;
+  __int64 v3;
 
   v1 = (_QWORD *)(a1 + 8);
   v2 = sub_14022E144((FILE **)(a1 + 8));
@@ -18986,16 +18637,13 @@ char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__
   return 1;
 }
 
-// 140234C72: variable 'v3' is possibly undefined
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (0000000140234C80) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__string_input_adapter__wchar_t____process_whitespace(
         __int64 a1)
 {
-  _QWORD *v1; // rbx
-  __int16 v2; // cx
-  __int64 v3; // rax
+  _QWORD *v1;
+  __int16 v2;
+  __int64 v3;
 
   v1 = (_QWORD *)(a1 + 8);
   v2 = sub_14022E1E0(a1 + 8);
@@ -19004,7 +18652,6 @@ char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__
     v1[2] = v3 - 2;
   return 1;
 }
-
 
 //----- (0000000140234CC4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -19016,38 +18663,34 @@ void            unknown_libname_1016(void **a1)
   *a1 = nullptr;
 }
 
-
 //----- (0000000140234CE0) ----------------------------------------------------
 void            AfxSafeArrayInit_sr(struct COleSafeArray *a1)
 {
   if ( a1 )
-    sub_1401FCD30((void *)(uintptr_t)(a1), 0, 0x20u);
+    crt_memset((void *)(uintptr_t)(a1), 0, 0x20u);
 }
-
 
 //----- (0000000140234CFC) ----------------------------------------------------
 void            sub_140234CFC(void **a1)
 {
-  _WORD *v2; // rcx
-  void *v3; // rbx
+  _WORD *v2;
+  void *v3;
 
   v2 = *a1;
   if ( v2 || (v3 = (void *)calloc_base(0x2000, 1), free_base(*a1), *a1 = v3, free_base(nullptr), (v2 = *a1) != nullptr) )
-    sub_1401FCD30((void *)(uintptr_t)(v2), 0, 0x2000u);
+    crt_memset((void *)(uintptr_t)(v2), 0, 0x2000u);
 }
-
-// 14024DF98: using guessed type __int64 __fastcall calloc_base(_QWORD, _QWORD);
 
 //----- (0000000140234E14) ----------------------------------------------------
 unsigned __int64            sub_140234E14(sr_anon_107 *this, unsigned __int64 a2, unsigned int a3, char a4)
 {
-  char v4; // r15
-  unsigned __int8 v6; // si
-  __int64 v8; // r12
-  unsigned __int8 v9; // bl
-  __int64 v10; // r14
-  char v11; // bp
-  int v12; // eax
+  char v4;
+  unsigned __int8 v6;
+  __int64 v8;
+  unsigned __int8 v9;
+  __int64 v10;
+  char v11;
+  int v12;
 
   v4 = a3;
   v6 = (unsigned __int8)this;
@@ -19079,15 +18722,14 @@ LABEL_12:
   return (a2 >> v4) + v9;
 }
 
-
 //----- (0000000140234F00) ----------------------------------------------------
 char            sub_140234F00(__int64 a1)
 {
-  unsigned __int8 *v1; // r8
-  unsigned __int8 v3; // al
-  int v5; // r9d
-  int v6; // ecx
-  int v7; // ecx
+  unsigned __int8 *v1;
+  unsigned __int8 v3;
+  int v5;
+  int v6;
+  int v7;
 
   v1 = *(unsigned __int8 **)(a1 + 8);
   v3 = *v1;
@@ -19205,14 +18847,13 @@ LABEL_38:
   return sub_140235928(a1);
 }
 
-
 //----- (00000001402350A4) ----------------------------------------------------
 char            sub_1402350A4(__int64 a1)
 {
-  _WORD *v1; // r8
-  int v4; // r9d
-  int v5; // ecx
-  int v6; // ecx
+  _WORD *v1;
+  int v4;
+  int v5;
+  int v6;
 
   v1 = *(_WORD **)(a1 + 8);
   if ( *v1 > 0x64u )
@@ -19329,15 +18970,14 @@ LABEL_38:
   return sub_140235ADC(a1);
 }
 
-
 //----- (00000001402352B4) ----------------------------------------------------
 char            sub_1402352B4(__int64 a1)
 {
-  char *v2; // rcx
-  unsigned int v3; // eax
-  unsigned __int64 v5; // rax
-  __int64 v6; // rcx
-  __int64 v7; // [rsp+30h] [rbp+8h] BYREF
+  char *v2;
+  unsigned int v3;
+  unsigned __int64 v5;
+  __int64 v6;
+  __int64 v7;
 
   v2 = *(char **)(a1 + 8);
   if ( (unsigned __int8)(*v2 - 48) > 9u )
@@ -19383,19 +19023,18 @@ char            sub_1402352B4(__int64 a1)
   return 0;
 }
 
-
 //----- (000000014023535C) ----------------------------------------------------
 char            sub_14023535C(__int64 a1)
 {
-  unsigned __int16 *v1; // r9
-  int v3; // ecx
-  unsigned int v4; // eax
-  int v5; // ecx
-  unsigned int v6; // edx
-  int v7; // eax
-  unsigned __int64 v9; // rax
-  __int64 v10; // rcx
-  __int64 v11; // [rsp+30h] [rbp+8h] BYREF
+  unsigned __int16 *v1;
+  int v3;
+  unsigned int v4;
+  int v5;
+  unsigned int v6;
+  int v7;
+  unsigned __int64 v9;
+  __int64 v10;
+  __int64 v11;
 
   v1 = *(unsigned __int16 **)(a1 + 8);
   v3 = 48;
@@ -19551,17 +19190,16 @@ LABEL_46:
   return 0;
 }
 
-
 //----- (00000001402355CC) ----------------------------------------------------
 char            sub_1402355CC(__int64 a1)
 {
-  unsigned __int64 v1; // rax
-  _BYTE *v2; // r8
-  char v4; // al
-  char v5; // cl
-  _BYTE *v6; // rcx
-  char v7; // al
-  __int64 v8; // r8
+  unsigned __int64 v1;
+  _BYTE *v2;
+  char v4;
+  char v5;
+  _BYTE *v6;
+  char v7;
+  __int64 v8;
 
   v2 = *(_BYTE **)(a1 + 8);
   LOBYTE(v1) = *v2;
@@ -19639,20 +19277,18 @@ LABEL_25:
   return v1;
 }
 
-// 1402356EF: variable 'v1' is possibly undefined
-
 //----- (0000000140235704) ----------------------------------------------------
 void            sub_140235704(__int64 a1)
 {
-  _WORD *v1; // r8
-  __int16 v3; // cx
-  __int64 v4; // rax
-  int v5; // eax
-  __int16 v6; // cx
-  __int64 v7; // r9
-  _WORD *v8; // rcx
-  unsigned __int64 v9; // rax
-  __int64 v10; // r8
+  _WORD *v1;
+  __int16 v3;
+  __int64 v4;
+  int v5;
+  __int16 v6;
+  __int64 v7;
+  _WORD *v8;
+  unsigned __int64 v9;
+  __int64 v10;
 
   v1 = *(_WORD **)(a1 + 8);
   if ( *v1 != 73 )
@@ -19740,11 +19376,10 @@ LABEL_30:
   }
 }
 
-
 //----- (0000000140235864) ----------------------------------------------------
 char            sub_140235864(__int64 a1)
 {
-  _BYTE *v2; // rax
+  _BYTE *v2;
 
   if ( (sub_140256DC0()[*(unsigned __int8 *)(a1 + 24)] & 0x8000u) != 0 )
   {
@@ -19766,22 +19401,21 @@ char            sub_140235864(__int64 a1)
   return 1;
 }
 
-
 //----- (0000000140235928) ----------------------------------------------------
 char            sub_140235928(__int64 a1)
 {
-  unsigned __int64 v1; // rdi
-  _BYTE *v4; // r8
-  _BYTE *v5; // rcx
-  char v6; // r11
-  unsigned __int8 v7; // al
-  _BYTE *v8; // rsi
-  _BYTE *v9; // rdx
-  unsigned __int8 v10; // cl
-  unsigned __int8 v11; // r10
-  unsigned __int8 v12; // r9
-  char v13; // r10
-  _BYTE *v14; // rdx
+  unsigned __int64 v1;
+  _BYTE *v4;
+  _BYTE *v5;
+  char v6;
+  unsigned __int8 v7;
+  _BYTE *v8;
+  _BYTE *v9;
+  unsigned __int8 v10;
+  unsigned __int8 v11;
+  unsigned __int8 v12;
+  char v13;
+  _BYTE *v14;
 
   v1 = a1 + 52;
   if ( a1 == -52 )
@@ -19795,7 +19429,7 @@ char            sub_140235928(__int64 a1)
     *(_DWORD *)((uintptr_t)a1 + 48) = 0;
     return 0;
   }
-  sub_1401FCD30((void *)(uintptr_t)((_WORD *)(a1 + 52)), 0, 0x20u);
+  crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 52)), 0, 0x20u);
   v4 = *(_BYTE **)(a1 + 8);
   v5 = v4;
   v6 = *v4;
@@ -19878,24 +19512,23 @@ char            sub_140235928(__int64 a1)
   return 1;
 }
 
-
 //----- (0000000140235ADC) ----------------------------------------------------
 char            sub_140235ADC(__int64 a1)
 {
-  void **v1; // rsi
-  _WORD *v3; // rcx
-  __int64 v4; // rbx
-  unsigned __int16 *v6; // rbx
-  unsigned __int16 *v7; // rcx
-  unsigned __int16 v8; // r15
-  unsigned __int16 v9; // ax
-  unsigned __int16 *v10; // r12
-  unsigned __int16 *v11; // rdx
-  unsigned __int16 *v12; // rcx
-  unsigned __int16 v13; // bp
-  unsigned __int16 v14; // r14
-  __int16 v15; // r14
-  unsigned __int16 v16; // [rsp+50h] [rbp+8h]
+  void **v1;
+  _WORD *v3;
+  __int64 v4;
+  unsigned __int16 *v6;
+  unsigned __int16 *v7;
+  unsigned __int16 v8;
+  unsigned __int16 v9;
+  unsigned __int16 *v10;
+  unsigned __int16 *v11;
+  unsigned __int16 *v12;
+  unsigned __int16 v13;
+  unsigned __int16 v14;
+  __int16 v15;
+  unsigned __int16 v16;
 
   v1 = (void **)(a1 + 56);
   v3 = *(_WORD **)(a1 + 56);
@@ -19919,7 +19552,7 @@ LABEL_4:
       return 0;
     }
   }
-  sub_1401FCD30((void *)(uintptr_t)(v3), 0, 0x2000u);
+  crt_memset((void *)(uintptr_t)(v3), 0, 0x2000u);
   v6 = *(unsigned __int16 **)(a1 + 8);
   v7 = v6;
   v8 = *v6;
@@ -19986,14 +19619,12 @@ LABEL_4:
   return 1;
 }
 
-// 14024DF98: using guessed type __int64 __fastcall calloc_base(_QWORD, _QWORD);
-
 //----- (0000000140235D1C) ----------------------------------------------------
 __int64            sub_140235D1C(void **a1, unsigned __int16 a2)
 {
-  _BYTE *v2; // r8
-  void *v5; // rbx
-  __int64 result; // rax
+  _BYTE *v2;
+  void *v5;
+  __int64 result;
 
   v2 = *a1;
   if ( !*a1 )
@@ -20009,14 +19640,12 @@ __int64            sub_140235D1C(void **a1, unsigned __int16 a2)
   return result;
 }
 
-// 14024DF98: using guessed type __int64 __fastcall calloc_base(_QWORD, _QWORD);
-
 //----- (0000000140235D88) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_657(__int64 a1)
 {
-  int v1; // edx
-  __int64 result; // rax
+  int v1;
+  __int64 result;
 
   v1 = *(_DWORD *)(a1 + 40);
   if ( v1 == 2 )
@@ -20027,28 +19656,27 @@ __int64            unknown_libname_657(__int64 a1)
   return result;
 }
 
-
 //----- (0000000140235DD0) ----------------------------------------------------
 char            sub_140235DD0(sr_anon_107 *this, struct __crt_strtox__big_integer *a2)
 {
-  unsigned int v3; // edi
-  unsigned int v4; // r11d
-  int v5; // edx
-  int v7; // eax
-  int v8; // eax
-  unsigned int v9; // esi
-  bool v10; // cc
-  int v11; // ebx
-  unsigned int v12; // r10d
-  __int64 v13; // rax
-  __int64 v14; // rcx
-  int v15; // r9d
-  int v16; // edx
-  __int64 v17; // rax
-  unsigned int v18; // eax
-  __int64 v19; // rcx
-  int v20; // eax
-  __m128i Source; // [rsp+24h] [rbp-1F4h] BYREF
+  unsigned int v3;
+  unsigned int v4;
+  int v5;
+  int v7;
+  int v8;
+  unsigned int v9;
+  bool v10;
+  int v11;
+  unsigned int v12;
+  __int64 v13;
+  __int64 v14;
+  int v15;
+  int v16;
+  __int64 v17;
+  unsigned int v18;
+  __int64 v19;
+  int v20;
+  __m128i Source;
 
   v3 = (unsigned __int8)a2 & 0x1F;
   v4 = (unsigned int)a2 >> 5;
@@ -20111,9 +19739,9 @@ LABEL_24:
 //----- (0000000140235F50) ----------------------------------------------------
 char            sub_140235F50(__crt_strtox *this, char a2, char a3, char a4)
 {
-  char v4; // bl
-  char v8; // di
-  int v9; // eax
+  char v4;
+  char v8;
+  int v9;
 
   v4 = 0;
   v8 = (char)this;
@@ -20141,12 +19769,11 @@ char            sub_140235F50(__crt_strtox *this, char a2, char a3, char a4)
   }
 }
 
-
 //----- (0000000140236014) ----------------------------------------------------
 bool            sub_140236014(void **a1, unsigned __int16 a2)
 {
-  _BYTE *v2; // r8
-  void *v5; // rbx
+  _BYTE *v2;
+  void *v5;
 
   v2 = *a1;
   if ( !*a1 )
@@ -20160,14 +19787,12 @@ bool            sub_140236014(void **a1, unsigned __int16 a2)
   return ((unsigned __int8)(1 << (a2 & 7)) & v2[(unsigned __int64)a2 >> 3]) != 0;
 }
 
-// 14024DF98: using guessed type __int64 __fastcall calloc_base(_QWORD, _QWORD);
-
 //----- (00000001402360F4) ----------------------------------------------------
 unsigned __int64            sub_1402360F4(__int64 a1, int a2)
 {
-  unsigned __int64 result; // rax
-  bool v3; // zf
-  __int64 *v4; // rdx
+  unsigned __int64 result;
+  bool v3;
+  __int64 *v4;
 
   result = *(_QWORD *)(a1 + 16) - 1LL;
   v3 = *(_QWORD *)(a1 + 8) == 0;
@@ -20189,14 +19814,13 @@ unsigned __int64            sub_1402360F4(__int64 a1, int a2)
   return result;
 }
 
-
 //----- (0000000140236138) ----------------------------------------------------
 unsigned __int64            sub_140236138(__int64 **a1, unsigned __int16 a2)
 {
-  __int64 v2; // r8
-  unsigned __int64 result; // rax
-  bool v4; // zf
-  _QWORD *v5; // rdx
+  __int64 v2;
+  unsigned __int64 result;
+  bool v4;
+  _QWORD *v5;
 
   v2 = a2;
   result = (unsigned __int64)a1[2] - 1;
@@ -20215,12 +19839,10 @@ unsigned __int64            sub_140236138(__int64 **a1, unsigned __int16 a2)
   return result;
 }
 
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (00000001402361F0) ----------------------------------------------------
 __int64            __crt_stdio_input__stream_input_adapter__char__unget(__int64 *a1, unsigned int a2)
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = a2;
   if ( a2 != -1 )
@@ -20231,14 +19853,13 @@ __int64            __crt_stdio_input__stream_input_adapter__char__unget(__int64 
   return result;
 }
 
-
 //----- (0000000140236210) ----------------------------------------------------
 __int64            __crt_stdio_input__stream_input_adapter__wchar_t__unget(
         __int64 *a1,
         unsigned __int16 a2,
         __int64 a3)
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = a2;
   if ( a2 != 0xFFFF )
@@ -20249,8 +19870,6 @@ __int64            __crt_stdio_input__stream_input_adapter__wchar_t__unget(
   return result;
 }
 
-// 140257CD0: using guessed type __int64 __fastcall ungetwc_nolock(_QWORD, _QWORD, _QWORD);
-
 //----- (0000000140236278) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
@@ -20259,10 +19878,9 @@ char            unknown_libname_659(__int64 a1)
   if ( *(_QWORD *)(a1 + 8) )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402362A0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -20272,10 +19890,9 @@ char            unknown_libname_660(__int64 a1)
   if ( *(_QWORD *)(a1 + 8) )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402362C8) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -20285,10 +19902,9 @@ char            unknown_libname_661(_QWORD *a1)
   if ( *a1 && a1[3] )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402362F4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -20298,10 +19914,9 @@ char            unknown_libname_662(_QWORD *a1)
   if ( *a1 && a1[3] )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140236320) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -20311,10 +19926,9 @@ char            unknown_libname_663(_QWORD *a1)
   if ( *a1 && a1[3] )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (000000014023634C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -20324,26 +19938,24 @@ char            unknown_libname_664(_QWORD *a1)
   if ( *a1 && a1[3] )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (0000000140236378) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_665(__int64 *a1)
 {
-  __int64 v1; // rcx
+  __int64 v1;
 
   v1 = *a1;
   if ( v1 )
     return sub_14022389C(v1);
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402363A4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -20353,42 +19965,39 @@ char            unknown_libname_666(_QWORD *a1)
   if ( *a1 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402363CC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_667(__int64 a1)
 {
-  unsigned __int64 v1; // rax
+  unsigned __int64 v1;
 
   v1 = *(_QWORD *)(a1 + 16);
   if ( v1 && v1 <= *(_QWORD *)(a1 + 8) )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402363FC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 char            unknown_libname_668(__int64 a1)
 {
-  unsigned __int64 v1; // rax
+  unsigned __int64 v1;
 
   v1 = *(_QWORD *)(a1 + 16);
   if ( v1 && v1 <= *(_QWORD *)(a1 + 8) )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (00000001402365F4) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__stream_input_adapter__char____write_character(
@@ -20399,10 +20008,10 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
         _QWORD *a5,
         __int16 a6)
 {
-  __int64 v6; // rdi
-  int v9; // eax
-  __int64 v10; // r9
-  __int16 v12; // [rsp+30h] [rbp+8h] BYREF
+  __int64 v6;
+  int v9;
+  __int64 v10;
+  __int16 v12;
 
   v6 = (unsigned __int8)a6;
   HIBYTE(a6) = 0;
@@ -20421,17 +20030,15 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 1;
 }
 
-// 140253FC0: using guessed type __int64 __fastcall mbtowc_l(#115 *this, #49 *, char *);
-
 //----- (00000001402366A0) ----------------------------------------------------
 char            sub_1402366A0(_QWORD *a1, __int64 a2, __int64 a3, _WORD **a4, _QWORD *a5, __int16 a6)
 {
-  __int64 v6; // rdi
-  char *v9; // rax
-  char v10; // cl
-  __int64 v11; // r9
-  _QWORD *v12; // rax
-  __int16 v14; // [rsp+30h] [rbp+8h] BYREF
+  __int64 v6;
+  char *v9;
+  char v10;
+  __int64 v11;
+  _QWORD *v12;
+  __int16 v14;
 
   v6 = (unsigned __int8)a6;
   HIBYTE(a6) = 0;
@@ -20459,8 +20066,6 @@ char            sub_1402366A0(_QWORD *a1, __int64 a2, __int64 a3, _WORD **a4, _Q
   return 1;
 }
 
-// 140253FC0: using guessed type __int64 __fastcall mbtowc_l(#115 *this, #49 *, char *);
-
 //----- (0000000140236738) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
@@ -20472,13 +20077,13 @@ char            unknown_libname_671_sr(
         struct CWnd **a5,
         unsigned __int16 a6)
 {
-       struct DLGTEMPLATE *v8; // rdx
-  int Indirect; // eax
-  __int64 v10; // rcx
-  struct CWnd **v11; // rax
-  struct CWnd **v12; // rdi
-  __int64 v14; // rax
-  int v15; // [rsp+50h] [rbp+18h] BYREF
+       struct DLGTEMPLATE *v8;
+  int Indirect;
+  __int64 v10;
+  struct CWnd **v11;
+  struct CWnd **v12;
+  __int64 v14;
+  int v15;
 
   v15 = 0;
   v8 = *a4;
@@ -20489,7 +20094,7 @@ char            unknown_libname_671_sr(
     {
       if ( Indirect == 22 || Indirect == 34 )
       {
-        sub_14024CFBC();
+        crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
     }
@@ -20520,7 +20125,6 @@ char            unknown_libname_671_sr(
 }
 
 // 1402367DC: control flows out of bounds to 1402367E1
-// 1402543A8: using guessed type __int64 __fastcall CDialog::CreateIndirect(CDialog *__hidden this, const struct DLGTEMPLATE *, struct CWnd *, void *);
 
 //----- (0000000140236800) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -20533,13 +20137,13 @@ char            unknown_libname_673_sr(
         struct CWnd **a5,
         unsigned __int16 a6)
 {
-       struct DLGTEMPLATE *v8; // rdx
-  int Indirect; // eax
-  __int64 v10; // rcx
-  struct CWnd **v11; // rax
-  struct CWnd **v12; // rdi
-  __int64 v14; // rax
-  int v15; // [rsp+50h] [rbp+18h] BYREF
+       struct DLGTEMPLATE *v8;
+  int Indirect;
+  __int64 v10;
+  struct CWnd **v11;
+  struct CWnd **v12;
+  __int64 v14;
+  int v15;
 
   v15 = 0;
   v8 = *a4;
@@ -20550,7 +20154,7 @@ char            unknown_libname_673_sr(
     {
       if ( Indirect == 22 || Indirect == 34 )
       {
-        sub_14024CFBC();
+        crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
     }
@@ -20581,24 +20185,23 @@ char            unknown_libname_673_sr(
 }
 
 // 1402368A4: control flows out of bounds to 1402368A9
-// 1402543A8: using guessed type __int64 __fastcall CDialog::CreateIndirect(CDialog *__hidden this, const struct DLGTEMPLATE *, struct CWnd *, void *);
 
 //----- (00000001402368C8) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__stream_input_adapter__char____write_integer(
         __int64 a1,
         __int64 a2)
 {
-  _QWORD *v3; // rbx
-  __int64 v5; // rax
-  __int64 v6; // rax
-  __int64 v7; // rax
+  _QWORD *v3;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
 
   *(_QWORD *)(a1 + 120) += 8LL;
   v3 = *(_QWORD **)(*(_QWORD *)(a1 + 120) - 8LL);
   if ( !v3 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v5 = unknown_libname_649(a1 + 24) - 1;
@@ -20631,23 +20234,22 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 1;
 }
 
-
 //----- (000000014023693C) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__char____crt_stdio_input__string_input_adapter__char____write_integer(
         __int64 a1,
         __int64 a2)
 {
-  _QWORD *v3; // rbx
-  __int64 v5; // rax
-  __int64 v6; // rax
-  __int64 v7; // rax
+  _QWORD *v3;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
 
   *(_QWORD *)(a1 + 128) += 8LL;
   v3 = *(_QWORD **)(*(_QWORD *)(a1 + 128) - 8LL);
   if ( !v3 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v5 = unknown_libname_649(a1 + 32) - 1;
@@ -20680,23 +20282,22 @@ char            __crt_stdio_input__input_processor__char____crt_stdio_input__str
   return 1;
 }
 
-
 //----- (00000001402369B4) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__stream_input_adapter__wchar_t____write_integer(
         __int64 a1,
         __int64 a2)
 {
-  _QWORD *v3; // rbx
-  __int64 v5; // rax
-  __int64 v6; // rax
-  __int64 v7; // rax
+  _QWORD *v3;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
 
   *(_QWORD *)(a1 + 96) += 8LL;
   v3 = *(_QWORD **)(*(_QWORD *)(a1 + 96) - 8LL);
   if ( !v3 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v5 = unknown_libname_650(a1 + 24) - 1;
@@ -20729,23 +20330,22 @@ char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__
   return 1;
 }
 
-
 //----- (0000000140236A28) ----------------------------------------------------
 char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__string_input_adapter__wchar_t____write_integer(
         __int64 a1,
         __int64 a2)
 {
-  _QWORD *v3; // rbx
-  __int64 v5; // rax
-  __int64 v6; // rax
-  __int64 v7; // rax
+  _QWORD *v3;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
 
   *(_QWORD *)(a1 + 104) += 8LL;
   v3 = *(_QWORD **)(*(_QWORD *)(a1 + 104) - 8LL);
   if ( !v3 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v5 = unknown_libname_650(a1 + 32) - 1;
@@ -20778,18 +20378,17 @@ char            __crt_stdio_input__input_processor__wchar_t____crt_stdio_input__
   return 1;
 }
 
-
 //----- (0000000140236ADC) ----------------------------------------------------
 __int64            sub_140236ADC(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
 {
-  __int64 v6; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v7; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v8; // [rsp+30h] [rbp-30h] BYREF
-  _QWORD v9[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v10; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v11; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v12; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v13; // [rsp+88h] [rbp+28h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD v9[5];
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v6 = a5;
   v10 = a4;
@@ -20810,23 +20409,22 @@ __int64            sub_140236ADC(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
 
-
 //----- (0000000140236B68) ----------------------------------------------------
 __int64            sub_140236B68(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
 {
-  __int64 v6; // [rsp+20h] [rbp-40h] BYREF
-  __int64 v7; // [rsp+28h] [rbp-38h] BYREF
-  __int64 v8; // [rsp+30h] [rbp-30h] BYREF
-  _QWORD v9[5]; // [rsp+38h] [rbp-28h] BYREF
-  __int64 v10; // [rsp+70h] [rbp+10h] BYREF
-  __int64 v11; // [rsp+78h] [rbp+18h] BYREF
-  __int64 v12; // [rsp+80h] [rbp+20h] BYREF
-  __int64 v13; // [rsp+88h] [rbp+28h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD v9[5];
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
 
   v6 = a5;
   v10 = a4;
@@ -20847,7 +20445,7 @@ __int64            sub_140236B68(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
 }
@@ -20862,11 +20460,11 @@ __int64 sub_140236BF4(__int64 options,__m128i *input,unsigned __int64 limit,
   if (!input || !format)
   {
     *errno_sr()=22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return UINT32_MAX;
   }
   length=(uintptr_t)strnlen_sr(input,limit);
-  sub_140213644((_LocaleUpdate *)(void *)&locale,provided);
+  crt_locale_update((_LocaleUpdate *)(void *)&locale,provided);
   processor.options=options;
   processor.input.begin=(uintptr_t)input;
   processor.input.end=(uintptr_t)input+length;
@@ -20887,7 +20485,6 @@ __int64 sub_140236BF4(__int64 options,__m128i *input,unsigned __int64 limit,
   return result;
 }
 
-
 //----- (0000000140236D1C) ----------------------------------------------------
 __int64            sub_140236D1C(
         __int64 a1,
@@ -20897,32 +20494,32 @@ __int64            sub_140236D1C(
         struct __crt_locale_pointers *a5,
         __int64 a6)
 {
-  unsigned int v9; // ebx
-  __int64 v10; // rbx
-  __int128 v12; // [rsp+28h] [rbp-89h]
-  __int64 v13; // [rsp+48h] [rbp-69h] BYREF
-  __int128 v14; // [rsp+50h] [rbp-61h]
-  __m128i *v15; // [rsp+60h] [rbp-51h]
-  __int64 v16; // [rsp+68h] [rbp-49h]
-  __int64 v17; // [rsp+70h] [rbp-41h]
-  __int64 v18; // [rsp+78h] [rbp-39h]
-  int v19; // [rsp+80h] [rbp-31h]
-  char v20; // [rsp+84h] [rbp-2Dh]
-  __int64 v21; // [rsp+88h] [rbp-29h]
-  int v22; // [rsp+90h] [rbp-21h]
-  char v23; // [rsp+94h] [rbp-1Dh]
-  int v24; // [rsp+98h] [rbp-19h]
-  void *Block; // [rsp+A0h] [rbp-11h]
-  _BYTE *v26; // [rsp+A8h] [rbp-9h]
-  __int64 v27; // [rsp+B0h] [rbp-1h]
-  __int64 v28; // [rsp+B8h] [rbp+7h]
-  __int64 v29; // [rsp+C8h] [rbp+17h] BYREF
-  _BYTE v30[24]; // [rsp+D0h] [rbp+1Fh] BYREF
+  unsigned int v9;
+  __int64 v10;
+  __int128 v12;
+  __int64 v13;
+  __int128 v14;
+  __m128i *v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  int v19;
+  char v20;
+  __int64 v21;
+  int v22;
+  char v23;
+  int v24;
+  void *Block;
+  _BYTE *v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  _BYTE v30[24];
 
   if ( a2 && a4 )
   {
     v10 = sub_140254F48(a2, a3);
-    sub_140213644((_LocaleUpdate *)&v29, a5);
+    crt_locale_update((_LocaleUpdate *)&v29, a5);
     *(_QWORD *)&v12 = (uint64)(uintptr_t)(a2);
     *((_QWORD *)&v12 + 1) = (uint64)(uintptr_t)((char *)a2 + 2 * v10);
     v26 = v30;
@@ -20950,22 +20547,20 @@ __int64            sub_140236D1C(
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return (unsigned int)-1;
   }
   return v9;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (0000000140236E34) ----------------------------------------------------
 __int64            sub_140236E34(int a1, int a2, _QWORD **a3)
 {
-  __int64 v3; // rdi
-  unsigned int v4; // ebx
-  unsigned int v6; // esi
-  unsigned int v7; // ebx
-       unsigned __int16 *v8; // rax
+  __int64 v3;
+  unsigned int v4;
+  unsigned int v6;
+  unsigned int v7;
+       unsigned __int16 *v8;
 
   v3 = a1;
   v4 = 0;
@@ -20990,13 +20585,12 @@ __int64            sub_140236E34(int a1, int a2, _QWORD **a3)
   return v4;
 }
 
-
 //----- (0000000140236E98) ----------------------------------------------------
 __int64            sub_140236E98(unsigned int a1, int a2, int a3)
 {
   if ( a1 && (a1 == a2 || a1 == a3) )
   {
-    sub_14024CFBC();
+    crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
   return a1;
@@ -21005,13 +20599,13 @@ __int64            sub_140236E98(unsigned int a1, int a2, int a3)
 // 140236ECF: control flows out of bounds to 140236ED4
 
 //----- (0000000140236ED8) ----------------------------------------------------
-__int64            sub_140236ED8(unsigned int a1, __int16 a2, struct __crt_locale_pointers *a3)
+__int64            crt_isctype_l(unsigned int a1, __int16 a2, struct __crt_locale_pointers *a3)
 {
-  __int64 v3; // rdi
-  unsigned int v4; // ebx
-  unsigned int v6; // ebp
-  __int64 v7; // rax
-       unsigned __int16 *v9; // rax
+  __int64 v3;
+  unsigned int v4;
+  unsigned int v6;
+  __int64 v7;
+       unsigned __int16 *v9;
 
   v3 = (int)a1;
   v4 = 0;
@@ -21040,13 +20634,11 @@ __int64            sub_140236ED8(unsigned int a1, __int16 a2, struct __crt_local
   }
 }
 
-// 140256EA0: using guessed type __int64 __fastcall isctype_l(_QWORD);
-
 //----- (0000000140236F50) ----------------------------------------------------
 __int64            sub_140236F50(__m128i *a1, unsigned __int64 a2,      __m128i *a3, unsigned __int64 a4)
 {
-  int *v8; // rax
-  unsigned int v9; // ebx
+  int *v8;
+  unsigned int v9;
 
   if ( !a4 )
     return 0;
@@ -21054,10 +20646,10 @@ __int64            sub_140236F50(__m128i *a1, unsigned __int64 a2,      __m128i 
     goto LABEL_4;
   if ( a3 && a2 >= a4 )
   {
-    sub_1401FC920(a1, a3, a4);
+    crt_memcpy(a1, a3, a4);
     return 0;
   }
-  sub_1401FCD30((void *)(uintptr_t)(a1), 0, a2);
+  crt_memset((void *)(uintptr_t)(a1), 0, a2);
   if ( !a3 )
   {
 LABEL_4:
@@ -21065,7 +20657,7 @@ LABEL_4:
     v9 = 22;
 LABEL_5:
     *v8 = v9;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return v9;
   }
   if ( a2 < a4 )
@@ -21077,16 +20669,15 @@ LABEL_5:
   return 22;
 }
 
-
 //----- (0000000140236FF0) ----------------------------------------------------
 __int64            strncmp_sr(const char *left, const char *right, unsigned __int64 a3)
 {
   const _QWORD *a1 = (const _QWORD *)(const void *)left;
   uintptr_t a2 = (uintptr_t)right;
-  uintptr_t v3; // rdx
-  unsigned __int8 v4; // al
-  uint64_t v5; // rax
-  bool v6; // cc
+  uintptr_t v3;
+  unsigned __int8 v4;
+  uint64_t v5;
+  bool v6;
 
   v3 = a2 - (_QWORD)a1;
   if ( !a3 )
@@ -21126,9 +20717,9 @@ comp_head_loop_begin:
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_675(_DWORD *a1, int a2)
 {
-  unsigned __int64 result; // rax
-  _DWORD *v3; // rdi
-  __int64 i; // rcx
+  unsigned __int64 result;
+  _DWORD *v3;
+  __int64 i;
 
   result = (unsigned __int64)(a1 + 1);
   if ( a1 < a1 + 1 )
@@ -21140,16 +20731,15 @@ unsigned __int64            unknown_libname_675(_DWORD *a1, int a2)
   }
   return result;
 }
-
 
 //----- (00000001402370A0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_676(_DWORD *a1, int a2)
 {
-  unsigned __int64 result; // rax
-  _DWORD *v3; // rdi
-  __int64 i; // rcx
+  unsigned __int64 result;
+  _DWORD *v3;
+  __int64 i;
 
   result = (unsigned __int64)(a1 + 1);
   if ( a1 < a1 + 1 )
@@ -21161,7 +20751,6 @@ unsigned __int64            unknown_libname_676(_DWORD *a1, int a2)
   }
   return result;
 }
-
 
 //----- (0000000140237118) ----------------------------------------------------
 unsigned int *sub_140237118()
@@ -21169,15 +20758,11 @@ unsigned int *sub_140237118()
   return &dword_140404A6C[19064598];
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140237120) ----------------------------------------------------
 unsigned int *sub_140237120()
 {
   return &dword_140404A6C[19064599];
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140237128) ----------------------------------------------------
 unsigned int *sub_140237128()
@@ -21185,16 +20770,11 @@ unsigned int *sub_140237128()
   return &dword_140404A6C[19064597];
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140237130) ----------------------------------------------------
 __int64 sub_140237130()
 {
   return *(_QWORD *)&dword_140404A6C[19064601];
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBE6D0: using guessed type unsigned int;
 
 //----- (0000000140237138) ----------------------------------------------------
 __int64            sub_140237138(_DWORD *a1)
@@ -21207,13 +20787,10 @@ __int64            sub_140237138(_DWORD *a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 22;
   }
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBE6C4: using guessed type unsigned int;
 
 //----- (0000000140237168) ----------------------------------------------------
 __int64            sub_140237168(_DWORD *a1)
@@ -21226,13 +20803,10 @@ __int64            sub_140237168(_DWORD *a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 22;
   }
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBE6C8: using guessed type unsigned int;
 
 //----- (0000000140237198) ----------------------------------------------------
 __int64            sub_140237198(_DWORD *a1)
@@ -21245,19 +20819,16 @@ __int64            sub_140237198(_DWORD *a1)
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 22;
   }
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBE6C0: using guessed type unsigned int;
-
 //----- (00000001402371C8) ----------------------------------------------------
 __int64            sub_1402371C8(unsigned __int64 *a1, _BYTE *a2, unsigned __int64 a3, signed int a4)
 {
-  __int64 v4; // rax
-  unsigned __int64 v5; // rax
+  __int64 v4;
+  unsigned __int64 v5;
 
   if ( a2 )
   {
@@ -21265,7 +20836,7 @@ __int64            sub_1402371C8(unsigned __int64 *a1, _BYTE *a2, unsigned __int
       goto LABEL_3;
 LABEL_12:
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 22;
   }
   if ( a3 )
@@ -21288,15 +20859,12 @@ LABEL_3:
   return 34;
 }
 
-// 14024C810: using guessed type __int64 __fastcall strcpy_s(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140237268) ----------------------------------------------------
 __int64            sub_140237268(unsigned int *a1)
 {
-  int v2; // eax
-  unsigned int v3; // edx
-  __int64 v5; // [rsp+30h] [rbp+8h] BYREF
+  int v2;
+  unsigned int v3;
+  __int64 v5;
 
   v5 = 0;
   v2 = sub_1402372E4(&v5, 1);
@@ -21308,13 +20876,12 @@ __int64            sub_140237268(unsigned int *a1)
   return v3;
 }
 
-
 //----- (00000001402372A4) ----------------------------------------------------
 __int64            sub_1402372A4(__int64 *a1)
 {
-  int v2; // eax
-  __int64 v3; // rdx
-  __int64 v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  int v2;
+  __int64 v3;
+  __int64 v5[3];
 
   v5[0] = 0;
   v2 = sub_140237378((__int64)v5, 1);
@@ -21326,17 +20893,16 @@ __int64            sub_1402372A4(__int64 *a1)
   return v3;
 }
 
-
 //----- (00000001402372E4) ----------------------------------------------------
 __int64            sub_1402372E4(_DWORD *a1, int a2)
 {
-  __int64 v4; // r8
-  __int64 v5; // [rsp+30h] [rbp+8h] BYREF
+  __int64 v4;
+  __int64 v5;
 
   if ( !a1 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( a2 != 1 )
@@ -21351,18 +20917,17 @@ __int64            sub_1402372E4(_DWORD *a1, int a2)
   return 1;
 }
 
-
 //----- (0000000140237378) ----------------------------------------------------
 __int64            sub_140237378(__int64 a1, int a2)
 {
-  int v4; // r8d
-  __int64 v5; // rdx
-  __int64 v6; // [rsp+30h] [rbp+8h] BYREF
+  int v4;
+  __int64 v5;
+  __int64 v6;
 
   if ( !a1 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   if ( a2 != 1 )
@@ -21378,13 +20943,12 @@ __int64            sub_140237378(__int64 a1, int a2)
   return 1;
 }
 
-
 //----- (000000014023740C) ----------------------------------------------------
 __int64            sub_14023740C(unsigned int *a1)
 {
-  int v2; // eax
-  unsigned int v3; // edx
-  __int64 v5; // [rsp+30h] [rbp+8h] BYREF
+  int v2;
+  unsigned int v3;
+  __int64 v5;
 
   v5 = 0;
   v2 = sub_1402372E4(&v5, 1);
@@ -21396,13 +20960,12 @@ __int64            sub_14023740C(unsigned int *a1)
   return v3;
 }
 
-
 //----- (0000000140237448) ----------------------------------------------------
 __int64            sub_140237448(__int64 *a1)
 {
-  int v2; // eax
-  __int64 v3; // rdx
-  __int64 v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  int v2;
+  __int64 v3;
+  __int64 v5[3];
 
   v5[0] = 0;
   v2 = sub_140237378((__int64)v5, 1);
@@ -21414,39 +20977,37 @@ __int64            sub_140237448(__int64 *a1)
   return v3;
 }
 
-
 //----- (00000001402374E4) ----------------------------------------------------
 bool            sub_1402374E4(int a1)
 {
   return !(a1 % 4) && a1 != 100 * (a1 / 100) || a1 + 1900 == 400 * ((a1 + 1900) / 400);
 }
 
-
 //----- (0000000140237544) ----------------------------------------------------
 __int64            sub_140237544(struct tm *     a1)
 {
-  unsigned int v2; // edi
-  int v3; // esi
-  int v4; // r14d
-  int v5; // r15d
-  int v6; // r12d
-  int v7; // r13d
-  __int64 v8; // rbx
-  int v9; // ecx
-  int v10; // eax
-  int v11; // edx
-  int v12; // ecx
-  int v13; // r8d
-  int v14; // eax
-  int v15; // eax
-  int v17; // ecx
-  int v18; // [rsp+98h] [rbp+10h] BYREF
+  unsigned int v2;
+  int v3;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  __int64 v8;
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  int v15;
+  int v17;
+  int v18;
 
   v2 = 0;
   v18 = 0;
   if ( (unsigned int)sub_140237138(&v18) )
   {
-    sub_14024CFBC();
+    crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
   if ( !v18 )
@@ -21545,49 +21106,36 @@ LABEL_29:
 }
 
 // 140237830: control flows out of bounds to 140237835
-// 140237544: using guessed type __int64 __fastcall sub_140237544(struct tm *const a1);
-// 14028BF14: using guessed type int dword_14028BF14[];
-// 14028BF4C: using guessed type int dword_14028BF4C[];
-// 140302280: using guessed type int dword_140302280;
-// 140302284: using guessed type int dword_140302284;
-// 140302288: using guessed type int dword_140302288;
-// 140302290: using guessed type int dword_140302290;
-// 140302294: using guessed type int dword_140302294;
-// 140302298: using guessed type int dword_140302298;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140237838) ----------------------------------------------------
 unsigned int *           sub_140237838(unsigned int a1)
 {
-  unsigned int *result; // rax
+  unsigned int *result;
 
   result = sub_140237118();
   *result = a1;
   return result;
 }
 
-
 //----- (0000000140237850) ----------------------------------------------------
 unsigned int *           sub_140237850(unsigned int a1)
 {
-  unsigned int *result; // rax
+  unsigned int *result;
 
   result = sub_140237120();
   *result = a1;
   return result;
 }
 
-
 //----- (0000000140237868) ----------------------------------------------------
 unsigned int *           sub_140237868(unsigned int a1)
 {
-  unsigned int *result; // rax
+  unsigned int *result;
 
   result = sub_140237128();
   *result = a1;
   return result;
 }
-
 
 //----- (0000000140237880) ----------------------------------------------------
 __int64            sub_140237880(
@@ -21603,19 +21151,19 @@ __int64            sub_140237880(
         int a10,
         int a11)
 {
-  __int64 v12; // rbx
-  bool v15; // al
-  bool v16; // bp
-  int v17; // r10d
-  int v18; // r10d
-  int v19; // r8d
-  int v20; // eax
-  int v21; // ecx
-  int v22; // r8d
-  int v23; // r8d
-  __int64 result; // rax
-  bool v25; // sf
-  int v26; // [rsp+50h] [rbp+8h] BYREF
+  __int64 v12;
+  bool v15;
+  bool v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  int v21;
+  int v22;
+  int v23;
+  __int64 result;
+  bool v25;
+  int v26;
 
   v26 = 0;
   v12 = a4;
@@ -21660,7 +21208,7 @@ __int64            sub_140237880(
   dword_140302294 = v22;
   if ( (unsigned int)sub_140237168(&v26) )
   {
-    sub_14024CFBC();
+    crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
   v25 = 1000 * v26 + dword_140302298 < 0;
@@ -21686,26 +21234,16 @@ LABEL_25:
 }
 
 // 140237A6F: control flows out of bounds to 140237A74
-// 14028BF14: using guessed type int dword_14028BF14[];
-// 14028BF18: using guessed type int dword_14028BF18[13];
-// 14028BF4C: using guessed type int dword_14028BF4C[];
-// 14028BF50: using guessed type int dword_14028BF50[16];
-// 140302280: using guessed type int dword_140302280;
-// 140302284: using guessed type int dword_140302284;
-// 140302288: using guessed type int dword_140302288;
-// 140302290: using guessed type int dword_140302290;
-// 140302294: using guessed type int dword_140302294;
-// 140302298: using guessed type int dword_140302298;
 
 //----- (0000000140237A80) ----------------------------------------------------
 char *           get_tz_environment_variable(char (*a1)[256])
 {
-  int v2; // eax
-  _BYTE *v4; // rax
-  void *v5; // rbx
-  void *v6; // rdi
-  unsigned __int64 RequiredCount; // [rsp+38h] [rbp+10h] BYREF
-  unsigned __int64 v8; // [rsp+40h] [rbp+18h] BYREF
+  int v2;
+  _BYTE *v4;
+  void *v5;
+  void *v6;
+  unsigned __int64 RequiredCount;
+  unsigned __int64 v8;
 
   v2 = getenv_s_sr(&RequiredCount, (char *)a1, 0x100u, (__int64)"TZ");
   if ( !v2 )
@@ -21727,29 +21265,26 @@ char *           get_tz_environment_variable(char (*a1)[256])
   return (char *)v6;
 }
 
-// 140237A80: using guessed type char *__fastcall get_tz_environment_variable(char (*a1)[256]);
-// 140253F60: using guessed type __int64 __fastcall malloc_base(_QWORD);
-
 //----- (0000000140237B08) ----------------------------------------------------
 void            sub_140237B08(char *Source)
 {
-  __int64 v2; // rax
-  __int64 v3; // r14
-  __int64 v4; // rbx
-  __int64 v5; // rcx
-  __int64 v6; // rbx
-  char v7; // si
-  char *v8; // rbx
-  int v9; // edx
-  int v10; // ecx
-  char v11; // al
-  char v12; // cl
-  int v13; // eax
-  bool v14; // zf
-  unsigned int v15; // ebx
-  unsigned int v16; // ebx
-  int v17; // [rsp+68h] [rbp+38h] BYREF
-  BOOL v18; // [rsp+70h] [rbp+40h] BYREF
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  char v7;
+  char *v8;
+  int v9;
+  int v10;
+  char v11;
+  char v12;
+  int v13;
+  bool v14;
+  unsigned int v15;
+  unsigned int v16;
+  int v17;
+  BOOL v18;
 
   v2 = sub_140237130();
   v17 = 0;
@@ -21840,36 +21375,32 @@ LABEL_35:
         }
       }
 LABEL_37:
-      sub_14024CFBC();
+      crt_invoke_watson();
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
   }
 }
 
 // 140237D08: control flows out of bounds to 140237D0D
-// 14024C810: using guessed type __int64 __fastcall strcpy_s(_QWORD, _QWORD, _QWORD);
-// 140253F60: using guessed type __int64 __fastcall malloc_base(_QWORD);
-// 14025896C: using guessed type __int64 __fastcall strncpy_s(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140237D10) ----------------------------------------------------
 unsigned int *tzset_from_system_nolock()
 {
-  __int64 v0; // rax
-  __int64 *v1; // rbx
-  int v2; // ecx
-  unsigned int v3; // edx
-  unsigned int v4; // edi
-  unsigned int v5; // ebx
-  unsigned int v6; // ebx
-  unsigned int v7; // ebx
-  unsigned int *result; // rax
-  __int64 v9 = 0; // [rsp+28h] [rbp-20h]
-  __int64 v10 = 0; // [rsp+28h] [rbp-20h]
-  unsigned int v11; // [rsp+70h] [rbp+28h] BYREF
-  int v12; // [rsp+78h] [rbp+30h] BYREF
-  unsigned int v13; // [rsp+80h] [rbp+38h] BYREF
-  unsigned int v14; // [rsp+88h] [rbp+40h] BYREF
+  __int64 v0;
+  __int64 *v1;
+  int v2;
+  unsigned int v3;
+  unsigned int v4;
+  unsigned int v5;
+  unsigned int v6;
+  unsigned int v7;
+  unsigned int *result;
+  __int64 v9 = 0;
+  __int64 v10 = 0;
+  unsigned int v11;
+  int v12;
+  unsigned int v13;
+  unsigned int v14;
 
   v0 = sub_140237130();
   v11 = 0;
@@ -21878,7 +21409,7 @@ unsigned int *tzset_from_system_nolock()
   v14 = 0;
   if ( (unsigned int)sub_140237198(&v11) || (unsigned int)sub_140237138(&v13) || (unsigned int)sub_140237168(&v14) )
   {
-    sub_14024CFBC();
+    crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
   free_base(*(void **)&dword_140404A6C[19064603]);
@@ -21903,7 +21434,7 @@ unsigned int *tzset_from_system_nolock()
     v14 = v3;
     v4 = sub_140258CA0();
     LODWORD(v9) = 63;
-    if ( !(unsigned int)sub_140258A84(
+    if ( !(unsigned int)crt_wide_char_to_multi_byte(
                           v4,
                           0,
                           (__int64)&dword_140404A6C[19064610],
@@ -21921,7 +21452,7 @@ unsigned int *tzset_from_system_nolock()
       *(_BYTE *)(*v1 + 63) = 0;
     }
     LODWORD(v10) = 63;
-    if ( !(unsigned int)sub_140258A84(
+    if ( !(unsigned int)crt_wide_char_to_multi_byte(
                           v4,
                           0,
                           (__int64)&dword_140404A6C[19064631],
@@ -21952,16 +21483,16 @@ unsigned int *tzset_from_system_nolock()
 //----- (0000000140237EB8) ----------------------------------------------------
 void sub_140237EB8()
 {
-  int v0; // eax
-  char *v1; // rdi
-  char *v2; // rax
-  char *v3; // rcx
-  char *v4; // rbx
-  __int64 v6; // [rsp+0h] [rbp-148h] BYREF
-  unsigned __int64 Size; // [rsp+20h] [rbp-128h] BYREF
-  unsigned __int64 RequiredCount; // [rsp+28h] [rbp-120h] BYREF
-  char Buffer[256]; // [rsp+30h] [rbp-118h] BYREF
-  __int64 v10; // [rsp+130h] [rbp-18h]
+  int v0;
+  char *v1;
+  char *v2;
+  char *v3;
+  char *v4;
+  __int64 v6;
+  unsigned __int64 Size;
+  unsigned __int64 RequiredCount;
+  char Buffer[256];
+  __int64 v10;
 
   dword_140302290 = -1;
   dword_140404A6C[19064605] = 0;
@@ -22003,39 +21534,31 @@ LABEL_11:
   return;
 }
 
-// 140253F60: using guessed type __int64 __fastcall malloc_base(_QWORD);
-// 140302280: using guessed type int dword_140302280;
-// 140302290: using guessed type int dword_140302290;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBE6E0: using guessed type unsigned int;
-
 //----- (0000000140237FC0) ----------------------------------------------------
 __int64 sub_140237FC0()
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = dword_140404A6C[19064652];
   if ( !dword_140404A6C[19064652] )
   {
-    sub_140258B64(6);
+    crt_lock(6);
     if ( !dword_140404A6C[19064652] )
     {
       sub_140237EB8();
       _InterlockedIncrement((volatile signed __int32 *)&dword_140404A6C[19064652]);
     }
-    return sub_140258BB8(6);
+    return crt_unlock(6);
   }
   return result;
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140238000) ----------------------------------------------------
 void            sub_140238000(int a1)
 {
   if ( a1 )
   {
-    sub_14024CFBC();
+    crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
 }
@@ -22045,36 +21568,33 @@ void            sub_140238000(int a1)
 //----- (0000000140238034) ----------------------------------------------------
 __int64            sub_140238034(struct tm *a1)
 {
-  sub_140258B64(6);
+  crt_lock(6);
   LODWORD(a1) = sub_140237544(a1);
-  sub_140258BB8(6);
+  crt_unlock(6);
   return (unsigned int)a1;
 }
-
-// 140237544: using guessed type __int64 __fastcall sub_140237544(struct tm *const a1);
 
 //----- (0000000140238064) ----------------------------------------------------
 void         sub_140238064()
 {
-  sub_140258B64(6);
+  crt_lock(6);
   sub_140237EB8();
-  sub_140258BB8(6);
+  crt_unlock(6);
 }
-
 
 //----- (000000014023808C) ----------------------------------------------------
 __int64            sub_14023808C(_BYTE *a1, __int64 a2)
 {
-  __int64 v3; // rax
-  __int64 result; // rax
-  int v5; // eax
-  __int64 v6; // rdx
-  __int64 v7; // rcx
-  __int64 v8; // rsi
-  unsigned int v9; // eax
-  __int64 v10; // rax
-  __int64 v11; // rdx
-  int v12; // eax
+  __int64 v3;
+  __int64 result;
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  unsigned int v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
 
   if ( !a1 )
   {
@@ -22089,7 +21609,7 @@ __int64            sub_14023808C(_BYTE *a1, __int64 a2)
   }
   if ( *a1 )
   {
-    v5 = sub_140259504();
+    v5 = crt_multi_byte_to_wide_char();
     v8 = v5;
     if ( v5 )
     {
@@ -22111,7 +21631,7 @@ __int64            sub_14023808C(_BYTE *a1, __int64 a2)
         if ( (_DWORD)result )
           return result;
       }
-      v12 = sub_140259504();
+      v12 = crt_multi_byte_to_wide_char();
       if ( v12 )
       {
         *(_QWORD *)(a2 + 32) = v12 - 1LL;
@@ -22119,7 +21639,7 @@ __int64            sub_14023808C(_BYTE *a1, __int64 a2)
       }
     }
     v9 = ((__int64 (           *)(__int64, __int64))GetLastError)(v7, v6);
-    sub_14024D14C(v9);
+    crt_errno_map_os_error(v9);
     return (unsigned int)*errno_sr();
   }
   if ( *(_QWORD *)(a2 + 24) )
@@ -22146,9 +21666,6 @@ LABEL_5:
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
-// 140238157: variable 'v7' is possibly undefined
-// 140238157: variable 'v6' is possibly undefined
-// 140253F60: using guessed type __int64 __fastcall malloc_base(_QWORD);
 
 //----- (0000000140238208) ----------------------------------------------------
 __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1aa8c02be35c86a17d324c4_____crt_win32_buffer_internal_dynamic_resizing(
@@ -22157,16 +21674,16 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
         __int64 a3,
         unsigned int a4)
 {
-  __int64 v7; // rax
-  __int64 result; // rax
-  int v9; // eax
-  unsigned __int64 v10; // rsi
-  unsigned int v11; // eax
-  unsigned __int64 v12; // rdx
-  __int64 v13; // rax
-  int v14; // eax
-  __int64 v15; // [rsp+28h] [rbp-20h]
-  __int64 v16; // [rsp+28h] [rbp-20h]
+  __int64 v7;
+  __int64 result;
+  int v9;
+  unsigned __int64 v10;
+  unsigned int v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  int v14;
+  __int64 v15;
+  __int64 v16;
 
   if ( !a1 )
   {
@@ -22182,7 +21699,7 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
   if ( *a1 )
   {
     LODWORD(v15) = 0;
-    v9 = sub_140258A84(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v15, 0, 0);
+    v9 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v15, 0, 0);
     v10 = v9;
     if ( v9 )
     {
@@ -22206,7 +21723,7 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
           return result;
       }
       LODWORD(v16) = v12;
-      v14 = sub_140258A84(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v16, 0, 0);
+      v14 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v16, 0, 0);
       if ( v14 )
       {
         *(_QWORD *)(a2 + 32) = v14 - 1LL;
@@ -22214,7 +21731,7 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
       }
     }
     v11 = ((__int64 (*)(void))GetLastError)();
-    sub_14024D14C(v11);
+    crt_errno_map_os_error(v11);
     return (unsigned int)*errno_sr();
   }
   if ( *(_QWORD *)(a2 + 24) )
@@ -22241,25 +21758,22 @@ LABEL_5:
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
-// 1402382CF: variable 'v15' is possibly undefined
-// 14023835F: variable 'v16' is possibly undefined
-// 140253F60: using guessed type __int64 __fastcall malloc_base(_QWORD);
 
 //----- (0000000140238394) ----------------------------------------------------
 __int64            sub_140238394(_BYTE *a1, __int64 a2)
 {
-  unsigned int v2; // ebx
-  __int64 v4; // rax
-  unsigned int v5; // edx
-  int v6; // eax
-  __int64 v7; // rdx
-  __int64 v8; // rcx
-  __int64 v9; // r14
-  unsigned int v10; // eax
-  __int64 v11; // rax
-  __int64 v12; // rcx
-  __int64 v13; // rax
-  int v14; // eax
+  unsigned int v2;
+  __int64 v4;
+  unsigned int v5;
+  int v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  unsigned int v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  int v14;
 
   v2 = 0;
   if ( !a1 )
@@ -22275,7 +21789,7 @@ __int64            sub_140238394(_BYTE *a1, __int64 a2)
   }
   if ( *a1 )
   {
-    v6 = sub_140259504();
+    v6 = crt_multi_byte_to_wide_char();
     v9 = v6;
     if ( v6 )
     {
@@ -22298,7 +21812,7 @@ __int64            sub_140238394(_BYTE *a1, __int64 a2)
         if ( (v13 == 0 ? 0xC : 0) != 0 )
           return v5;
       }
-      v14 = sub_140259504();
+      v14 = crt_multi_byte_to_wide_char();
       v8 = v14;
       if ( v14 )
       {
@@ -22307,7 +21821,7 @@ __int64            sub_140238394(_BYTE *a1, __int64 a2)
       }
     }
     v10 = ((__int64 (           *)(__int64, __int64))GetLastError)(v8, v7);
-    sub_14024D14C(v10);
+    crt_errno_map_os_error(v10);
     return (unsigned int)*errno_sr();
   }
   if ( !*(_QWORD *)(a2 + 24) )
@@ -22337,18 +21851,18 @@ __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_res
         __int64 a2,
         unsigned int a3)
 {
-  unsigned int v3; // ebx
-  __int64 v7; // rax
-  unsigned int v8; // edx
-  int v9; // eax
-  unsigned __int64 v10; // rbp
-  unsigned int v11; // eax
-  unsigned __int64 v12; // rcx
-  __int64 v13; // rax
-  __int64 v14; // rax
-  int v15; // eax
-  __int64 v17 = 0; // [rsp+28h] [rbp-20h]
-  __int64 v18 = 0; // [rsp+28h] [rbp-20h]
+  unsigned int v3;
+  __int64 v7;
+  unsigned int v8;
+  int v9;
+  unsigned __int64 v10;
+  unsigned int v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  int v15;
+  __int64 v17 = 0;
+  __int64 v18 = 0;
 
   v3 = 0;
   if ( !a1 )
@@ -22365,7 +21879,7 @@ __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_res
   if ( *a1 )
   {
     LODWORD(v17) = 0;
-    v9 = sub_140258A84(a3, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v17, 0, 0);
+    v9 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v17, 0, 0);
     v10 = v9;
     if ( v9 )
     {
@@ -22390,7 +21904,7 @@ __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_res
           return v8;
       }
       LODWORD(v18) = v12;
-      v15 = sub_140258A84(a3, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v18, 0, 0);
+      v15 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v18, 0, 0);
       if ( v15 )
       {
         *(_QWORD *)(a2 + 32) = v15 - 1LL;
@@ -22398,7 +21912,7 @@ __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_res
       }
     }
     v11 = ((__int64 (*)(void))GetLastError)();
-    sub_14024D14C(v11);
+    crt_errno_map_os_error(v11);
     return (unsigned int)*errno_sr();
   }
   if ( !*(_QWORD *)(a2 + 24) )
@@ -22423,21 +21937,18 @@ LABEL_5:
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
-// 1402385CF: variable 'v17' is possibly undefined
-// 140238662: variable 'v18' is possibly undefined
-// 140253F60: using guessed type __int64 __fastcall sr_path_malloc(_QWORD);
 
 //----- (0000000140238698) ----------------------------------------------------
 __int64            common_find_first_narrow___wfinddata32_t___finddata32_t(_BYTE *a1, _DWORD *a2, unsigned int a3)
 {
-  __int64 v6; // [rsp+0h] [rbp-298h] BYREF
-  _QWORD v7[2]; // [rsp+20h] [rbp-278h] BYREF
-  void *Block; // [rsp+30h] [rbp-268h]
-  __int64 v9; // [rsp+38h] [rbp-260h]
-  __int64 v10; // [rsp+40h] [rbp-258h]
-  char v11; // [rsp+48h] [rbp-250h]
-  _DWORD v12[136]; // [rsp+50h] [rbp-248h] BYREF
-  __int64 v13; // [rsp+270h] [rbp-28h]
+  __int64 v6;
+  _QWORD v7[2];
+  void *Block;
+  __int64 v9;
+  __int64 v10;
+  char v11;
+  _DWORD v12[136];
+  __int64 v13;
 
   if ( a2 )
   {
@@ -22455,23 +21966,22 @@ __int64            common_find_first_narrow___wfinddata32_t___finddata32_t(_BYTE
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return 0; /* the function has no caller */
 }
 
-
 //----- (0000000140238768) ----------------------------------------------------
 __int64            common_find_first_narrow___wfinddata32i64_t___finddata32i64_t(_BYTE *a1, __int64 a2, unsigned int a3)
 {
-  __int64 v6; // [rsp+0h] [rbp-298h] BYREF
-  _QWORD v7[2]; // [rsp+20h] [rbp-278h] BYREF
-  void *Block; // [rsp+30h] [rbp-268h]
-  __int64 v9; // [rsp+38h] [rbp-260h]
-  __int64 v10; // [rsp+40h] [rbp-258h]
-  char v11; // [rsp+48h] [rbp-250h]
-  _BYTE v12[544]; // [rsp+50h] [rbp-248h] BYREF
-  __int64 v13; // [rsp+270h] [rbp-28h]
+  __int64 v6;
+  _QWORD v7[2];
+  void *Block;
+  __int64 v9;
+  __int64 v10;
+  char v11;
+  _BYTE v12[544];
+  __int64 v13;
 
   if ( a2 )
   {
@@ -22489,23 +21999,22 @@ __int64            common_find_first_narrow___wfinddata32i64_t___finddata32i64_t
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return 0; /* the function has no caller */
 }
 
-
 //----- (0000000140238838) ----------------------------------------------------
 __int64            common_find_first_narrow___wfinddata64_t____finddata64_t(_BYTE *a1, __int64 a2, unsigned int a3)
 {
-  __int64 v6; // [rsp+0h] [rbp-2A8h] BYREF
-  _QWORD v7[2]; // [rsp+20h] [rbp-288h] BYREF
-  void *Block; // [rsp+30h] [rbp-278h]
-  __int64 v9; // [rsp+38h] [rbp-270h]
-  __int64 v10; // [rsp+40h] [rbp-268h]
-  char v11; // [rsp+48h] [rbp-260h]
-  _BYTE v12[560]; // [rsp+50h] [rbp-258h] BYREF
-  __int64 v13; // [rsp+280h] [rbp-28h]
+  __int64 v6;
+  _QWORD v7[2];
+  void *Block;
+  __int64 v9;
+  __int64 v10;
+  char v11;
+  _BYTE v12[560];
+  __int64 v13;
 
   if ( a2 )
   {
@@ -22523,23 +22032,22 @@ __int64            common_find_first_narrow___wfinddata64_t____finddata64_t(_BYT
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return 0; /* the function has no caller */
 }
 
-
 //----- (0000000140238908) ----------------------------------------------------
 __int64            common_find_first_narrow___wfinddata64i32_t___finddata64i32_t(_BYTE *a1, __int64 a2, unsigned int a3)
 {
-  __int64 v6; // [rsp+0h] [rbp-2A8h] BYREF
-  _QWORD v7[2]; // [rsp+20h] [rbp-288h] BYREF
-  void *Block; // [rsp+30h] [rbp-278h]
-  __int64 v9; // [rsp+38h] [rbp-270h]
-  __int64 v10; // [rsp+40h] [rbp-268h]
-  char v11; // [rsp+48h] [rbp-260h]
-  _BYTE v12[560]; // [rsp+50h] [rbp-258h] BYREF
-  __int64 v13; // [rsp+280h] [rbp-28h]
+  __int64 v6;
+  _QWORD v7[2];
+  void *Block;
+  __int64 v9;
+  __int64 v10;
+  char v11;
+  _BYTE v12[560];
+  __int64 v13;
 
   if ( a2 )
   {
@@ -22557,24 +22065,23 @@ __int64            common_find_first_narrow___wfinddata64i32_t___finddata64i32_t
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return 0; /* the function has no caller */
 }
 
-
 //----- (00000001402389D8) ----------------------------------------------------
 __int64            sub_1402389D8(__int64 a1, _DWORD *a2)
 {
-  unsigned int v4; // eax
-  int v5; // eax
-  _QWORD v6[5]; // [rsp+0h] [rbp-298h] BYREF
-  int FindFileData; // [rsp+30h] [rbp-268h] BYREF
-  _DWORD v8[2]; // [rsp+34h] [rbp-264h] BYREF
-  _DWORD v9[2]; // [rsp+3Ch] [rbp-25Ch] BYREF
-  _DWORD v10[6]; // [rsp+44h] [rbp-254h] BYREF
-  _BYTE Source[548]; // [rsp+5Ch] [rbp-23Ch] BYREF
-  __int64 v12; // [rsp+280h] [rbp-18h]
+  unsigned int v4;
+  int v5;
+  _QWORD v6[5];
+  int FindFileData;
+  _DWORD v8[2];
+  _DWORD v9[2];
+  _DWORD v10[6];
+  _BYTE Source[548];
+  __int64 v12;
 
   if ( a2 && a1 )
   {
@@ -22619,7 +22126,7 @@ LABEL_12:
       if ( (unsigned int)sub_140259444((_WORD *)a2 + 10, 260, (__int64)Source) )
       {
         v6[4] = 0;
-        sub_14024CFBC();
+        crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
       return sr_handle; /* mov rax, rdi */
@@ -22628,7 +22135,7 @@ LABEL_12:
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return -1; /* or rax, 0xffffffffffffffff */
 }
@@ -22640,17 +22147,17 @@ LABEL_12:
 //----- (0000000140238B20) ----------------------------------------------------
 __int64            sub_140238B20(__int64 a1, __int64 a2)
 {
-  unsigned int v4; // eax
-  int v5; // eax
-  int v6; // eax
-  unsigned __int64 v7; // rcx
-  _QWORD v8[5]; // [rsp+0h] [rbp-298h] BYREF
-  int FindFileData; // [rsp+30h] [rbp-268h] BYREF
-  _DWORD v10[2]; // [rsp+34h] [rbp-264h] BYREF
-  _DWORD v11[2]; // [rsp+3Ch] [rbp-25Ch] BYREF
-  _DWORD v12[6]; // [rsp+44h] [rbp-254h] BYREF
-  _BYTE Source[548]; // [rsp+5Ch] [rbp-23Ch] BYREF
-  __int64 v14; // [rsp+280h] [rbp-18h]
+  unsigned int v4;
+  int v5;
+  int v6;
+  unsigned __int64 v7;
+  _QWORD v8[5];
+  int FindFileData;
+  _DWORD v10[2];
+  _DWORD v11[2];
+  _DWORD v12[6];
+  _BYTE Source[548];
+  __int64 v14;
 
   if ( a2 && a1 )
   {
@@ -22697,7 +22204,7 @@ LABEL_12:
       if ( (unsigned int)sub_140259444((_WORD *)(a2 + 24), 260, (__int64)Source) )
       {
         v8[4] = 0;
-        sub_14024CFBC();
+        crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
       return sr_handle; /* mov rax, rdi */
@@ -22706,7 +22213,7 @@ LABEL_12:
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return -1; /* or rax, 0xffffffffffffffff */
 }
@@ -22718,17 +22225,17 @@ LABEL_12:
 //----- (0000000140238C74) ----------------------------------------------------
 __int64            sub_140238C74(__int64 a1, __int64 a2)
 {
-  unsigned int v4; // eax
-  int v5; // eax
-  __int64 v6; // rax
-  unsigned __int64 v7; // rcx
-  _QWORD v8[5]; // [rsp+0h] [rbp-298h] BYREF
-  int FindFileData; // [rsp+30h] [rbp-268h] BYREF
-  _DWORD v10[2]; // [rsp+34h] [rbp-264h] BYREF
-  _DWORD v11[2]; // [rsp+3Ch] [rbp-25Ch] BYREF
-  _DWORD v12[6]; // [rsp+44h] [rbp-254h] BYREF
-  _BYTE v13[548]; // [rsp+5Ch] [rbp-23Ch] BYREF
-  __int64 v14; // [rsp+280h] [rbp-18h]
+  unsigned int v4;
+  int v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  _QWORD v8[5];
+  int FindFileData;
+  _DWORD v10[2];
+  _DWORD v11[2];
+  _DWORD v12[6];
+  _BYTE v13[548];
+  __int64 v14;
 
   if ( a2 && a1 )
   {
@@ -22775,7 +22282,7 @@ LABEL_12:
       if ( (unsigned int)sub_140259444((_WORD *)(a2 + 40), 260, (__int64)v13) )
       {
         v8[4] = 0;
-        sub_14024CFBC();
+        crt_invoke_watson();
         __debugbreak();
       }
       return sr_handle; /* mov rax, rdi */
@@ -22784,7 +22291,7 @@ LABEL_12:
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return -1; /* or rax, 0xffffffffffffffff */
 }
@@ -22796,7 +22303,7 @@ LABEL_12:
 __int64 sub_140238DC8(__int64 a1,__int64 a2)
 {
  WIN32_FIND_DATAW data;
- if(!a1 || !a2){*errno_sr()=22;sub_14024CF6C();return -1;}
+ if(!a1 || !a2){*errno_sr()=22;crt_invalid_parameter_noinfo();return -1;}
  HANDLE handle=FindFirstFileExW((LPCWSTR)(uintptr_t)a1,FindExInfoStandard,&data,FindExSearchNameMatch,NULL,0);
  if(handle==INVALID_HANDLE_VALUE){
    DWORD error=GetLastError();
@@ -22809,7 +22316,7 @@ __int64 sub_140238DC8(__int64 a1,__int64 a2)
  *(_QWORD *)(a2+24)=sub_140239610((_DWORD *)&data.ftLastWriteTime);
  *(_DWORD *)(a2+32)=data.nFileSizeLow;
  if((unsigned int)sub_140259444((_WORD *)(a2+36),260,(__int64)(uintptr_t)data.cFileName)){
-   sub_14024CFBC();__debugbreak();
+   crt_invoke_watson();__debugbreak();
  }
  return (__int64)(intptr_t)handle;
 }
@@ -22817,63 +22324,59 @@ __int64 sub_140238DC8(__int64 a1,__int64 a2)
 //----- (0000000140238F10) ----------------------------------------------------
 __int64            common_find_next_narrow___wfinddata32_t___finddata32_t(__int64 a1, _DWORD *a2, unsigned int a3)
 {
-  __int64 v6; // [rsp+0h] [rbp-268h] BYREF
-  _DWORD v7[136]; // [rsp+20h] [rbp-248h] BYREF
-  __int64 v8; // [rsp+240h] [rbp-28h]
+  __int64 v6;
+  _DWORD v7[136];
+  __int64 v8;
 
   if ( (unsigned int)sub_1402390C0(a1, v7) != -1 )
     sub_140239710((__int64)v7, a2, a3);
   return 0; /* the function has no caller */
 }
 
-
 //----- (0000000140238F7C) ----------------------------------------------------
 __int64            common_find_next_narrow___wfinddata32i64_t___finddata32i64_t(__int64 a1, __int64 a2, unsigned int a3)
 {
-  __int64 v6; // [rsp+0h] [rbp-268h] BYREF
-  _BYTE v7[544]; // [rsp+20h] [rbp-248h] BYREF
-  __int64 v8; // [rsp+240h] [rbp-28h]
+  __int64 v6;
+  _BYTE v7[544];
+  __int64 v8;
 
   if ( (unsigned int)sub_1402391E4(a1, (__int64)v7) != -1 )
     sub_1402397C0((__int64)v7, a2, a3);
   return 0; /* the function has no caller */
 }
 
-
 //----- (0000000140238FE8) ----------------------------------------------------
 __int64            common_find_next_narrow___wfinddata64_t____finddata64_t(__int64 a1, __int64 a2, unsigned int a3)
 {
-  __int64 v6; // [rsp+0h] [rbp-278h] BYREF
-  _BYTE v7[560]; // [rsp+20h] [rbp-258h] BYREF
-  __int64 v8; // [rsp+250h] [rbp-28h]
+  __int64 v6;
+  _BYTE v7[560];
+  __int64 v8;
 
   if ( (unsigned int)sub_140239314(a1, (__int64)v7) != -1 )
     sub_140239870((__int64)v7, a2, a3);
   return 0; /* the function has no caller */
 }
 
-
 //----- (0000000140239054) ----------------------------------------------------
 __int64            common_find_next_narrow___wfinddata64i32_t___finddata64i32_t(__int64 a1, __int64 a2, unsigned int a3)
 {
-  __int64 v6; // [rsp+0h] [rbp-278h] BYREF
-  _BYTE v7[560]; // [rsp+20h] [rbp-258h] BYREF
-  __int64 v8; // [rsp+250h] [rbp-28h]
+  __int64 v6;
+  _BYTE v7[560];
+  __int64 v8;
 
   if ( (unsigned int)sub_140239448(a1, (__int64)v7) != -1 )
     sub_140239928((__int64)v7, a2, a3);
   return 0; /* the function has no caller */
 }
 
-
 //----- (00000001402390C0) ----------------------------------------------------
 __int64            sub_1402390C0(__int64 a1, _DWORD *a2)
 {
-  unsigned int v4; // eax
-  int v5; // eax
-  _QWORD v6[6]; // [rsp+0h] [rbp-298h] BYREF
-  _DWORD FindFileData[148]; // [rsp+30h] [rbp-268h] BYREF
-  __int64 v8; // [rsp+280h] [rbp-18h]
+  unsigned int v4;
+  int v5;
+  _QWORD v6[6];
+  _DWORD FindFileData[148];
+  __int64 v8;
 
   if ( a1 && a1 != -1 && a2 )
   {
@@ -22890,7 +22393,7 @@ __int64            sub_1402390C0(__int64 a1, _DWORD *a2)
       if ( (unsigned int)sub_140259444((_WORD *)a2 + 10, 260, (__int64)&FindFileData[11]) )
       {
         v6[4] = 0;
-        sub_14024CFBC();
+        crt_invoke_watson();
         __debugbreak();
       }
       return 0; /* the name copy returned 0 and nothing wrote eax since */
@@ -22920,7 +22423,7 @@ LABEL_13:
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return (unsigned int)-1; /* or eax, 0xffffffff */
 }
@@ -22931,13 +22434,13 @@ LABEL_13:
 //----- (00000001402391E4) ----------------------------------------------------
 __int64            sub_1402391E4(__int64 a1, __int64 a2)
 {
-  unsigned int v4; // eax
-  int v5; // eax
-  int v6; // eax
-  unsigned __int64 v7; // rcx
-  _QWORD v8[6]; // [rsp+0h] [rbp-298h] BYREF
-  _DWORD FindFileData[148]; // [rsp+30h] [rbp-268h] BYREF
-  __int64 v10; // [rsp+280h] [rbp-18h]
+  unsigned int v4;
+  int v5;
+  int v6;
+  unsigned __int64 v7;
+  _QWORD v8[6];
+  _DWORD FindFileData[148];
+  __int64 v10;
 
   if ( a1 && a1 != -1 && a2 )
   {
@@ -22956,7 +22459,7 @@ __int64            sub_1402391E4(__int64 a1, __int64 a2)
       if ( (unsigned int)sub_140259444((_WORD *)(a2 + 24), 260, (__int64)&FindFileData[11]) )
       {
         v8[4] = 0;
-        sub_14024CFBC();
+        crt_invoke_watson();
         __debugbreak();
       }
       return 0; /* the name copy returned 0 and nothing wrote eax since */
@@ -22986,7 +22489,7 @@ LABEL_13:
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return (unsigned int)-1; /* or eax, 0xffffffff */
 }
@@ -22997,13 +22500,13 @@ LABEL_13:
 //----- (0000000140239314) ----------------------------------------------------
 __int64            sub_140239314(__int64 a1, __int64 a2)
 {
-  unsigned int v4; // eax
-  int v5; // eax
-  __int64 v6; // rax
-  unsigned __int64 v7; // rcx
-  _QWORD v8[6]; // [rsp+0h] [rbp-298h] BYREF
-  _DWORD FindFileData[148]; // [rsp+30h] [rbp-268h] BYREF
-  __int64 v10; // [rsp+280h] [rbp-18h]
+  unsigned int v4;
+  int v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  _QWORD v8[6];
+  _DWORD FindFileData[148];
+  __int64 v10;
 
   if ( a1 && a1 != -1 && a2 )
   {
@@ -23022,7 +22525,7 @@ __int64            sub_140239314(__int64 a1, __int64 a2)
       if ( (unsigned int)sub_140259444((_WORD *)(a2 + 40), 260, (__int64)&FindFileData[11]) )
       {
         v8[4] = 0;
-        sub_14024CFBC();
+        crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
       return 0; /* the name copy returned 0 and nothing wrote eax since */
@@ -23052,7 +22555,7 @@ LABEL_13:
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return (unsigned int)-1; /* or eax, 0xffffffff */
 }
@@ -23064,12 +22567,12 @@ LABEL_13:
 //----- (0000000140239448) ----------------------------------------------------
 __int64            sub_140239448(__int64 a1, __int64 a2)
 {
-  unsigned int v4; // eax
-  int v5; // eax
+  unsigned int v4;
+  int v5;
   unsigned int status=0xffffffffu;
-  _QWORD v6[6]; // [rsp+0h] [rbp-298h] BYREF
-  _DWORD FindFileData[148]; // [rsp+30h] [rbp-268h] BYREF
-  __int64 v8; // [rsp+280h] [rbp-18h]
+  _QWORD v6[6];
+  _DWORD FindFileData[148];
+  __int64 v8;
 
   if ( a1 && a1 != -1 && a2 )
   {
@@ -23087,7 +22590,7 @@ __int64            sub_140239448(__int64 a1, __int64 a2)
       if ( (unsigned int)sub_140259444((_WORD *)(a2 + 36), 260, (__int64)&FindFileData[11]) )
       {
         v6[4] = 0;
-        sub_14024CFBC();
+        crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
     }
@@ -23116,7 +22619,7 @@ LABEL_13:
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return status;
 }
@@ -23128,10 +22631,10 @@ LABEL_13:
 //----- (0000000140239580) ----------------------------------------------------
 __int64            sub_140239580(_DWORD *a1)
 {
-  __int64 v2; // [rsp+0h] [rbp-78h] BYREF
-  _WORD LocalTime[8]; // [rsp+40h] [rbp-38h] BYREF
-  __int128 SystemTime; // [rsp+50h] [rbp-28h] BYREF
-  __int64 v5; // [rsp+60h] [rbp-18h]
+  __int64 v2;
+  _WORD LocalTime[8];
+  __int128 SystemTime;
+  __int64 v5;
 
   if ( (*a1 || a1[1])
     && (unsigned int)((__int64 (           *)(_DWORD *, __int128 *))FileTimeToSystemTime)(a1, &SystemTime)
@@ -23164,23 +22667,21 @@ __int64            convert_system_time_to_time_t__long(unsigned __int16 *a1)
   return _loctotime32_t_sr(*a1, a1[1], a1[3], a1[4], a1[5], a1[6], -1);
 }
 
-
 //----- (00000001402396D8) ----------------------------------------------------
 __int64            convert_system_time_to_time_t____int64(unsigned __int16 *a1)
 {
   return _loctotime64_t_sr(*a1, a1[1], a1[3], a1[4], a1[5], a1[6], -1);
 }
 
-
 //----- (0000000140239710) ----------------------------------------------------
 char            sub_140239710(__int64 a1, _DWORD *a2, unsigned int a3)
 {
-  char v5; // bl
-  _QWORD v7[2]; // [rsp+30h] [rbp-38h] BYREF
-  char *Source; // [rsp+40h] [rbp-28h]
-  __int64 v9; // [rsp+48h] [rbp-20h]
-  __int64 v10; // [rsp+50h] [rbp-18h]
-  char v11; // [rsp+58h] [rbp-10h]
+  char v5;
+  _QWORD v7[2];
+  char *Source;
+  __int64 v9;
+  __int64 v10;
+  char v11;
 
   v7[0] = 0;
   v7[1] = 0;
@@ -23199,7 +22700,7 @@ char            sub_140239710(__int64 a1, _DWORD *a2, unsigned int a3)
   {
     if ( (unsigned int)strcpy_s_sr(a2 + 5, 260, Source) )
     {
-      sub_14024CFBC();
+      crt_invoke_watson();
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
     *a2 = *(_DWORD *)a1;
@@ -23215,17 +22716,16 @@ char            sub_140239710(__int64 a1, _DWORD *a2, unsigned int a3)
 }
 
 // 1402397B7: control flows out of bounds to 1402397BC
-// 14024C810: using guessed type __int64 __fastcall strcpy_s(_QWORD, _QWORD, _QWORD);
 
 //----- (00000001402397C0) ----------------------------------------------------
 char            sub_1402397C0(__int64 a1, __int64 a2, unsigned int a3)
 {
-  char v5; // bl
-  _QWORD v7[2]; // [rsp+30h] [rbp-38h] BYREF
-  char *Source; // [rsp+40h] [rbp-28h]
-  __int64 v9; // [rsp+48h] [rbp-20h]
-  __int64 v10; // [rsp+50h] [rbp-18h]
-  char v11; // [rsp+58h] [rbp-10h]
+  char v5;
+  _QWORD v7[2];
+  char *Source;
+  __int64 v9;
+  __int64 v10;
+  char v11;
 
   v7[0] = 0;
   v7[1] = 0;
@@ -23244,7 +22744,7 @@ char            sub_1402397C0(__int64 a1, __int64 a2, unsigned int a3)
   {
     if ( (unsigned int)strcpy_s_sr(a2 + 24, 260, Source) )
     {
-      sub_14024CFBC();
+      crt_invoke_watson();
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
     *(_DWORD *)a2 = *(_DWORD *)a1;
@@ -23260,17 +22760,16 @@ char            sub_1402397C0(__int64 a1, __int64 a2, unsigned int a3)
 }
 
 // 140239869: control flows out of bounds to 14023986E
-// 14024C810: using guessed type __int64 __fastcall strcpy_s(_QWORD, _QWORD, _QWORD);
 
 //----- (0000000140239870) ----------------------------------------------------
 char            sub_140239870(__int64 a1, __int64 a2, unsigned int a3)
 {
-  char v5; // bl
-  _QWORD v7[2]; // [rsp+30h] [rbp-38h] BYREF
-  char *Source; // [rsp+40h] [rbp-28h]
-  __int64 v9; // [rsp+48h] [rbp-20h]
-  __int64 v10; // [rsp+50h] [rbp-18h]
-  char v11; // [rsp+58h] [rbp-10h]
+  char v5;
+  _QWORD v7[2];
+  char *Source;
+  __int64 v9;
+  __int64 v10;
+  char v11;
 
   v7[0] = 0;
   v7[1] = 0;
@@ -23289,7 +22788,7 @@ char            sub_140239870(__int64 a1, __int64 a2, unsigned int a3)
   {
     if ( (unsigned int)strcpy_s_sr(a2 + 40, 260, Source) )
     {
-      sub_14024CFBC();
+      crt_invoke_watson();
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
     *(_DWORD *)a2 = *(_DWORD *)a1;
@@ -23305,7 +22804,6 @@ char            sub_140239870(__int64 a1, __int64 a2, unsigned int a3)
 }
 
 // 14023991F: control flows out of bounds to 140239924
-// 14024C810: using guessed type __int64 __fastcall strcpy_s(_QWORD, _QWORD, _QWORD);
 
 //----- (0000000140239928)
 char sub_140239928(__int64 a1,__int64 a2,unsigned int a3)
@@ -23315,7 +22813,7 @@ char sub_140239928(__int64 a1,__int64 a2,unsigned int a3)
  if(!(unsigned int)__acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_resizing(
       (_WORD *)(a1+36),(__int64)(uintptr_t)&path,a3)){
    if((unsigned int)strcpy_s_sr(a2+36,260,path.buffer)){
-     sub_14024CFBC();__debugbreak();
+     crt_invoke_watson();__debugbreak();
    }
    *(_DWORD *)a2=*(_DWORD *)a1;
    *(_QWORD *)(a2+8)=*(_QWORD *)(a1+8);
@@ -23340,7 +22838,6 @@ void            unknown_libname_681(__int64 a1)
   }
 }
 
-
 //----- (0000000140239A38) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
@@ -23353,37 +22850,33 @@ void            unknown_libname_682(__int64 a1)
   }
 }
 
-
 //----- (0000000140239A5C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_683()
 {
-  return sub_140259504();
+  return crt_multi_byte_to_wide_char();
 }
-
 
 //----- (0000000140239A84) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_684(__int64 a1, unsigned int a2, __int64 a3, __int64 a4, int a5)
 {
-  __int64 v6; // [rsp+28h] [rbp-20h]
+  __int64 v6;
 
   LODWORD(v6) = a5;
-  return sub_140258A84(a2, 0, a3, 0xFFFFFFFFLL, a4, v6, 0, 0);
+  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, v6, 0, 0);
 }
-
-// 140239AA9: variable 'v6' is possibly undefined
 
 //----- (0000000140239AB4) ----------------------------------------------------
 __int64 sub_140239AB4()
 {
-  unsigned int v0; // edx
-  _QWORD v2[3]; // [rsp+20h] [rbp-28h] BYREF
-  char v3; // [rsp+38h] [rbp-10h]
+  unsigned int v0;
+  _QWORD v2[3];
+  char v3;
 
-  sub_140213644((_LocaleUpdate *)v2, nullptr);
+  crt_locale_update((_LocaleUpdate *)v2, nullptr);
   v0 = 65001;
   if ( *(_DWORD *)(v2[1] + 12LL) != 65001 )
     v0 = sub_14024EDA4() == 0;
@@ -23391,8 +22884,6 @@ __int64 sub_140239AB4()
     *(_DWORD *)(v2[0] + 936LL) &= ~2u;
   return v0;
 }
-
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
 
 //----- (0000000140239B00) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -23406,7 +22897,6 @@ void            unknown_libname_685(__int64 a1)
   }
 }
 
-
 //----- (0000000140239B24) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
@@ -23419,14 +22909,13 @@ void            unknown_libname_686(__int64 a1)
   }
 }
 
-
 //----- (0000000140239B48) ----------------------------------------------------
 __int64            __crt_win32_buffer__char____crt_win32_buffer_internal_dynamic_resizing__allocate(
         __int64 a1,
         __int64 a2)
 {
-  __int64 v4; // rax
-  __int64 result; // rax
+  __int64 v4;
+  __int64 result;
 
   if ( *(_BYTE *)(a1 + 40) )
   {
@@ -23450,15 +22939,13 @@ __int64            __crt_win32_buffer__char____crt_win32_buffer_internal_dynamic
   return result;
 }
 
-// 140253F60: using guessed type __int64 __fastcall malloc_base(_QWORD);
-
 //----- (0000000140239BA4) ----------------------------------------------------
 __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_internal_dynamic_resizing__allocate(
         __int64 a1,
         __int64 a2)
 {
-  __int64 v4; // rax
-  __int64 result; // rax
+  __int64 v4;
+  __int64 result;
 
   if ( *(_BYTE *)(a1 + 40) )
   {
@@ -23482,19 +22969,15 @@ __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_internal_dyna
   return result;
 }
 
-// 140253F60: using guessed type __int64 __fastcall malloc_base(_QWORD);
-
 //----- (0000000140239C00) ----------------------------------------------------
 __int64            sub_140239C00(__int64 *a1, __int64 a2)
 {
-  __int64 v3; // rax
+  __int64 v3;
 
   v3 = malloc_base(a2);
   *a1 = v3;
   return v3 == 0 ? 0xC : 0;
 }
-
-// 140253F60: using guessed type __int64 __fastcall malloc_base(_QWORD);
 
 //----- (0000000140239C54) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -23510,7 +22993,6 @@ void            unknown_libname_992(__int64 a1)
   *(_QWORD *)(a1 + 32) = 0;
 }
 
-
 //----- (0000000140239C88) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_993(__int64 a1)
@@ -23524,7 +23006,6 @@ void            unknown_libname_993(__int64 a1)
   *(_QWORD *)(a1 + 24) = 0;
   *(_QWORD *)(a1 + 32) = 0;
 }
-
 
 //----- (0000000140239CCC) ----------------------------------------------------
 __int64 sub_140239CCC(__int64 handle)
@@ -23541,19 +23022,19 @@ __int64 sub_140239CCC(__int64 handle)
 //----- (0000000140239CF4) ----------------------------------------------------
 __int64            sub_140239CF4(_BYTE *a1, _DWORD *a2)
 {
-  unsigned int v4; // r14d
-  __int64 v6; // [rsp+0h] [rbp-100h] BYREF
-  _QWORD v7[2]; // [rsp+20h] [rbp-E0h] BYREF
-  void *Block; // [rsp+30h] [rbp-D0h]
-  __int64 v9; // [rsp+38h] [rbp-C8h]
-  __int64 v10; // [rsp+40h] [rbp-C0h]
-  char v11; // [rsp+48h] [rbp-B8h]
-  _QWORD v12[3]; // [rsp+50h] [rbp-B0h] BYREF
-  char v13; // [rsp+68h] [rbp-98h]
-  _DWORD v14[136]; // [rsp+70h] [rbp-90h] BYREF
-  __int64 v15; // [rsp+290h] [rbp+190h]
+  unsigned int v4;
+  __int64 v6;
+  _QWORD v7[2];
+  void *Block;
+  __int64 v9;
+  __int64 v10;
+  char v11;
+  _QWORD v12[3];
+  char v13;
+  _DWORD v14[136];
+  __int64 v15;
 
-  sub_140213644((_LocaleUpdate *)v12, nullptr);
+  crt_locale_update((_LocaleUpdate *)v12, nullptr);
   v4 = 65001;
   if ( *(_DWORD *)(v12[1] + 12LL) == 65001 )
   {
@@ -23575,7 +23056,7 @@ __int64            sub_140239CF4(_BYTE *a1, _DWORD *a2)
   if ( !a2 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0; /* the function has no caller */
   }
   v7[0] = 0;
@@ -23604,24 +23085,23 @@ LABEL_22:
 }
 
 // 140239CF4: invalid function type 'intptr_t __cdecl sub_140239CF4(const char *FileName, struct _finddata32_t *FindData)' has been ignored
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
 
 //----- (0000000140239E80) ----------------------------------------------------
 __int64            sub_140239E80(_BYTE *a1, __int64 a2)
 {
-  unsigned int v4; // r14d
-  __int64 v6; // [rsp+0h] [rbp-100h] BYREF
-  _QWORD v7[2]; // [rsp+20h] [rbp-E0h] BYREF
-  void *Block; // [rsp+30h] [rbp-D0h]
-  __int64 v9; // [rsp+38h] [rbp-C8h]
-  __int64 v10; // [rsp+40h] [rbp-C0h]
-  char v11; // [rsp+48h] [rbp-B8h]
-  _QWORD v12[3]; // [rsp+50h] [rbp-B0h] BYREF
-  char v13; // [rsp+68h] [rbp-98h]
-  _BYTE v14[544]; // [rsp+70h] [rbp-90h] BYREF
-  __int64 v15; // [rsp+290h] [rbp+190h]
+  unsigned int v4;
+  __int64 v6;
+  _QWORD v7[2];
+  void *Block;
+  __int64 v9;
+  __int64 v10;
+  char v11;
+  _QWORD v12[3];
+  char v13;
+  _BYTE v14[544];
+  __int64 v15;
 
-  sub_140213644((_LocaleUpdate *)v12, nullptr);
+  crt_locale_update((_LocaleUpdate *)v12, nullptr);
   v4 = 65001;
   if ( *(_DWORD *)(v12[1] + 12LL) == 65001 )
   {
@@ -23643,7 +23123,7 @@ __int64            sub_140239E80(_BYTE *a1, __int64 a2)
   if ( !a2 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0; /* the function has no caller */
   }
   v7[0] = 0;
@@ -23672,24 +23152,23 @@ LABEL_22:
 }
 
 // 140239E80: invalid function type 'intptr_t __cdecl sub_140239E80(const char *FileName, struct _finddata32i64_t *FindData)' has been ignored
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
 
 //----- (000000014023A00C) ----------------------------------------------------
 __int64            sub_14023A00C(_BYTE *a1, __int64 a2)
 {
-  unsigned int v4; // r14d
-  __int64 v6; // [rsp+0h] [rbp-100h] BYREF
-  _QWORD v7[2]; // [rsp+20h] [rbp-E0h] BYREF
-  void *Block; // [rsp+30h] [rbp-D0h]
-  __int64 v9; // [rsp+38h] [rbp-C8h]
-  __int64 v10; // [rsp+40h] [rbp-C0h]
-  char v11; // [rsp+48h] [rbp-B8h]
-  _QWORD v12[3]; // [rsp+50h] [rbp-B0h] BYREF
-  char v13; // [rsp+68h] [rbp-98h]
-  _BYTE v14[560]; // [rsp+70h] [rbp-90h] BYREF
-  __int64 v15; // [rsp+2A0h] [rbp+1A0h]
+  unsigned int v4;
+  __int64 v6;
+  _QWORD v7[2];
+  void *Block;
+  __int64 v9;
+  __int64 v10;
+  char v11;
+  _QWORD v12[3];
+  char v13;
+  _BYTE v14[560];
+  __int64 v15;
 
-  sub_140213644((_LocaleUpdate *)v12, nullptr);
+  crt_locale_update((_LocaleUpdate *)v12, nullptr);
   v4 = 65001;
   if ( *(_DWORD *)(v12[1] + 12LL) == 65001 )
   {
@@ -23711,7 +23190,7 @@ __int64            sub_14023A00C(_BYTE *a1, __int64 a2)
   if ( !a2 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0; /* the function has no caller */
   }
   v7[0] = 0;
@@ -23739,8 +23218,6 @@ LABEL_22:
   return 0; /* the function has no caller */
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014023A198)
 __int64 sub_14023A198(_BYTE *a1,__int64 a2)
 {
@@ -23749,10 +23226,10 @@ __int64 sub_14023A198(_BYTE *a1,__int64 a2)
  unsigned char wide[560];
  unsigned int cp=65001;
  __int64 result=-1;
- sub_140213644((_LocaleUpdate *)&locale,NULL);
+ crt_locale_update((_LocaleUpdate *)&locale,NULL);
  if(*(_DWORD *)(locale.locale+12)!=65001)cp=(unsigned int)sub_14024EDA4()?0:1;
  if(locale.changed)*(_DWORD *)(locale.thread+936)&=~2u;
- if(!a2){*errno_sr()=22;sub_14024CF6C();return -1;}
+ if(!a2){*errno_sr()=22;crt_invalid_parameter_noinfo();return -1;}
  if(!(unsigned int)sr_path_mbs(a1,(__int64)(uintptr_t)&path,cp)){
    __int64 handle=sub_140238DC8((__int64)(uintptr_t)path.buffer,(__int64)(uintptr_t)wide);
    if(handle!=-1 && sub_140239928((__int64)(uintptr_t)wide,a2,cp))result=handle;
@@ -23764,14 +23241,14 @@ __int64 sub_14023A198(_BYTE *a1,__int64 a2)
 //----- (000000014023A324) ----------------------------------------------------
 __int64            sub_14023A324(__int64 a1, _DWORD *a2)
 {
-  unsigned int v4; // ebx
-  __int64 v6; // [rsp+0h] [rbp-288h] BYREF
-  _QWORD v7[3]; // [rsp+20h] [rbp-268h] BYREF
-  char v8; // [rsp+38h] [rbp-250h]
-  _DWORD v9[136]; // [rsp+40h] [rbp-248h] BYREF
-  __int64 v10; // [rsp+260h] [rbp-28h]
+  unsigned int v4;
+  __int64 v6;
+  _QWORD v7[3];
+  char v8;
+  _DWORD v9[136];
+  __int64 v10;
 
-  sub_140213644((_LocaleUpdate *)v7, nullptr);
+  crt_locale_update((_LocaleUpdate *)v7, nullptr);
   v4 = 65001;
   if ( *(_DWORD *)(v7[1] + 12LL) == 65001 )
   {
@@ -23795,19 +23272,17 @@ __int64            sub_14023A324(__int64 a1, _DWORD *a2)
   return 0; /* the function has no caller */
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014023A404) ----------------------------------------------------
 __int64            sub_14023A404(__int64 a1, __int64 a2)
 {
-  unsigned int v4; // ebx
-  __int64 v6; // [rsp+0h] [rbp-288h] BYREF
-  _QWORD v7[3]; // [rsp+20h] [rbp-268h] BYREF
-  char v8; // [rsp+38h] [rbp-250h]
-  _BYTE v9[544]; // [rsp+40h] [rbp-248h] BYREF
-  __int64 v10; // [rsp+260h] [rbp-28h]
+  unsigned int v4;
+  __int64 v6;
+  _QWORD v7[3];
+  char v8;
+  _BYTE v9[544];
+  __int64 v10;
 
-  sub_140213644((_LocaleUpdate *)v7, nullptr);
+  crt_locale_update((_LocaleUpdate *)v7, nullptr);
   v4 = 65001;
   if ( *(_DWORD *)(v7[1] + 12LL) == 65001 )
   {
@@ -23831,19 +23306,17 @@ __int64            sub_14023A404(__int64 a1, __int64 a2)
   return 0; /* the function has no caller */
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014023A4E4) ----------------------------------------------------
 __int64            sub_14023A4E4(__int64 a1, __int64 a2)
 {
-  unsigned int v4; // ebx
-  __int64 v6; // [rsp+0h] [rbp-298h] BYREF
-  _QWORD v7[3]; // [rsp+20h] [rbp-278h] BYREF
-  char v8; // [rsp+38h] [rbp-260h]
-  _BYTE v9[560]; // [rsp+40h] [rbp-258h] BYREF
-  __int64 v10; // [rsp+270h] [rbp-28h]
+  unsigned int v4;
+  __int64 v6;
+  _QWORD v7[3];
+  char v8;
+  _BYTE v9[560];
+  __int64 v10;
 
-  sub_140213644((_LocaleUpdate *)v7, nullptr);
+  crt_locale_update((_LocaleUpdate *)v7, nullptr);
   v4 = 65001;
   if ( *(_DWORD *)(v7[1] + 12LL) == 65001 )
   {
@@ -23867,15 +23340,13 @@ __int64            sub_14023A4E4(__int64 a1, __int64 a2)
   return 0; /* the function has no caller */
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014023A5C4)
 __int64 sub_14023A5C4(__int64 a1,__int64 a2)
 {
  struct {uintptr_t thread,locale,multibyte;unsigned char changed;} locale;
  unsigned char wide[560];
  unsigned int cp=65001,result=0xffffffffu;
- sub_140213644((_LocaleUpdate *)&locale,NULL);
+ crt_locale_update((_LocaleUpdate *)&locale,NULL);
  if(*(_DWORD *)(locale.locale+12)!=65001)cp=(unsigned int)sub_14024EDA4()?0:1;
  if(locale.changed)*(_DWORD *)(locale.thread+936)&=~2u;
  unsigned int status=(unsigned int)sub_140239448(a1,(__int64)(uintptr_t)wide);
@@ -23886,24 +23357,24 @@ __int64 sub_14023A5C4(__int64 a1,__int64 a2)
 //----- (000000014023A6E4) ----------------------------------------------------
 __int64            sub_14023A6E4(unsigned int a1, unsigned int a2, struct __crt_locale_pointers *a3)
 {
-  __int64 result; // rax
-  unsigned int v4; // ebx
-  int v6; // ecx
-  int *v7; // rax
-  int v8; // eax
-  __int64 v9; // [rsp+50h] [rbp-20h] BYREF
-  __int128 v10; // [rsp+58h] [rbp-18h] BYREF
-  char v11; // [rsp+68h] [rbp-8h]
-  char v12; // [rsp+90h] [rbp+20h] BYREF
-  char v13; // [rsp+91h] [rbp+21h]
-  char v14; // [rsp+92h] [rbp+22h]
-  __int64 v15; // [rsp+A8h] [rbp+38h] BYREF
+  __int64 result;
+  unsigned int v4;
+  int v6;
+  int *v7;
+  int v8;
+  __int64 v9;
+  __int128 v10;
+  char v11;
+  char v12;
+  char v13;
+  char v14;
+  __int64 v15;
 
   result = 0xFFFFFFFFLL;
   v4 = a1;
   if ( a1 != -1 )
   {
-    sub_140213644((_LocaleUpdate *)&v9, a3);
+    crt_locale_update((_LocaleUpdate *)&v9, a3);
     if ( v4 >= 0x100 )
     {
       v14 = 0;
@@ -23952,30 +23423,27 @@ __int64            sub_14023A6E4(unsigned int a1, unsigned int a2, struct __crt_
   return result;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-// 140259A50: using guessed type __int64 __fastcall isleadbyte_l(_QWORD, _QWORD);
-
 //----- (000000014023A7F8) ----------------------------------------------------
 __int64            sub_14023A7F8(unsigned int a1, unsigned int a2, struct __crt_locale_pointers *a3)
 {
-  __int64 result; // rax
-  unsigned int v4; // ebx
-  int v6; // ecx
-  int *v7; // rax
-  int v8; // eax
-  __int64 v9; // [rsp+50h] [rbp-20h] BYREF
-  __int128 v10; // [rsp+58h] [rbp-18h] BYREF
-  char v11; // [rsp+68h] [rbp-8h]
-  char v12; // [rsp+90h] [rbp+20h] BYREF
-  char v13; // [rsp+91h] [rbp+21h]
-  char v14; // [rsp+92h] [rbp+22h]
-  __int64 v15; // [rsp+A8h] [rbp+38h] BYREF
+  __int64 result;
+  unsigned int v4;
+  int v6;
+  int *v7;
+  int v8;
+  __int64 v9;
+  __int128 v10;
+  char v11;
+  char v12;
+  char v13;
+  char v14;
+  __int64 v15;
 
   result = 0xFFFFFFFFLL;
   v4 = a1;
   if ( a1 != -1 )
   {
-    sub_140213644((_LocaleUpdate *)&v9, a3);
+    crt_locale_update((_LocaleUpdate *)&v9, a3);
     if ( v4 >= 0x100 )
     {
       v14 = 0;
@@ -24024,24 +23492,21 @@ __int64            sub_14023A7F8(unsigned int a1, unsigned int a2, struct __crt_
   return result;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-// 140259A50: using guessed type __int64 __fastcall isleadbyte_l(_QWORD, _QWORD);
-
 //----- (000000014023A90C) ----------------------------------------------------
 __int64            sub_14023A90C(int a1, unsigned int a2, struct __crt_locale_pointers *     a3)
 {
-  __int64 v3; // rax
-  int v7; // edi
-  int v8; // ecx
-  int *v9; // rax
-  __int64 v10; // rdx
-  int v11; // eax
-  __int64 result; // rax
-  bool v13; // zf
-  char v14; // [rsp+80h] [rbp+30h] BYREF
-  char v15; // [rsp+81h] [rbp+31h]
-  char v16; // [rsp+82h] [rbp+32h]
-  __int64 v17; // [rsp+88h] [rbp+38h] BYREF
+  __int64 v3;
+  int v7;
+  int v8;
+  int *v9;
+  __int64 v10;
+  int v11;
+  __int64 result;
+  bool v13;
+  char v14;
+  char v15;
+  char v16;
+  __int64 v17;
 
   v3 = *(_QWORD *)a3;
   v16 = 0;
@@ -24073,27 +23538,25 @@ __int64            sub_14023A90C(int a1, unsigned int a2, struct __crt_locale_po
   return result;
 }
 
-// 140259A50: using guessed type __int64 __fastcall isleadbyte_l(_QWORD, _QWORD);
-
 //----- (000000014023A9FC) ----------------------------------------------------
 __int64            sub_14023A9FC(unsigned int a1, struct __crt_locale_pointers *a2)
 {
-  unsigned int v2; // r8d
-  int v4; // ecx
-  int *v5; // rax
-  int v6; // eax
-  __int64 v8; // [rsp+50h] [rbp-20h] BYREF
-  _QWORD v9[2]; // [rsp+58h] [rbp-18h] BYREF
-  char v10; // [rsp+68h] [rbp-8h]
-  char v11; // [rsp+80h] [rbp+10h] BYREF
-  char v12; // [rsp+81h] [rbp+11h]
-  char v13; // [rsp+82h] [rbp+12h]
-  __int64 v14; // [rsp+90h] [rbp+20h] BYREF
+  unsigned int v2;
+  int v4;
+  int *v5;
+  int v6;
+  __int64 v8;
+  _QWORD v9[2];
+  char v10;
+  char v11;
+  char v12;
+  char v13;
+  __int64 v14;
 
   v2 = -1;
   if ( a1 != -1 )
   {
-    sub_140213644((_LocaleUpdate *)&v8, a2);
+    crt_locale_update((_LocaleUpdate *)&v8, a2);
     if ( a1 >= 0x100 )
     {
       v13 = 0;
@@ -24147,28 +23610,25 @@ __int64            sub_14023A9FC(unsigned int a1, struct __crt_locale_pointers *
   return v2;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-// 140259A50: using guessed type __int64 __fastcall isleadbyte_l(_QWORD, _QWORD);
-
 //----- (000000014023AB50) ----------------------------------------------------
 __int64            sub_14023AB50(unsigned int a1, struct __crt_locale_pointers *a2)
 {
-  unsigned int v2; // r8d
-  int v4; // ecx
-  int *v5; // rax
-  int v6; // eax
-  __int64 v8; // [rsp+50h] [rbp-20h] BYREF
-  _QWORD v9[2]; // [rsp+58h] [rbp-18h] BYREF
-  char v10; // [rsp+68h] [rbp-8h]
-  char v11; // [rsp+80h] [rbp+10h] BYREF
-  char v12; // [rsp+81h] [rbp+11h]
-  char v13; // [rsp+82h] [rbp+12h]
-  __int64 v14; // [rsp+90h] [rbp+20h] BYREF
+  unsigned int v2;
+  int v4;
+  int *v5;
+  int v6;
+  __int64 v8;
+  _QWORD v9[2];
+  char v10;
+  char v11;
+  char v12;
+  char v13;
+  __int64 v14;
 
   v2 = -1;
   if ( a1 != -1 )
   {
-    sub_140213644((_LocaleUpdate *)&v8, a2);
+    crt_locale_update((_LocaleUpdate *)&v8, a2);
     if ( a1 >= 0x100 )
     {
       v13 = 0;
@@ -24222,9 +23682,6 @@ __int64            sub_14023AB50(unsigned int a1, struct __crt_locale_pointers *
   return v2;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-// 140259A50: using guessed type __int64 __fastcall isleadbyte_l(_QWORD, _QWORD);
-
 //----- (000000014023AC8C) ----------------------------------------------------
 int         tolower(int C)
 {
@@ -24235,8 +23692,6 @@ int         tolower(int C)
   return C;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014023ACB8) ----------------------------------------------------
 int         toupper(int C)
 {
@@ -24246,8 +23701,6 @@ int         toupper(int C)
     C -= 32;
   return C;
 }
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (000000014023ACE4) ----------------------------------------------------
 void         free(void *Block)
@@ -24264,7 +23717,6 @@ __int64            j__malloc_base()
   return malloc_base();
 }
 
-
 //----- (000000014023AD00) ----------------------------------------------------
 // attributes: thunk
 __int64            j__realloc_base_sr(__int64 a1, __int64 a2)
@@ -24272,20 +23724,17 @@ __int64            j__realloc_base_sr(__int64 a1, __int64 a2)
   return realloc_base(a1, a2);
 }
 
-// 14023AD00: using guessed type __int64 __fastcall j__realloc_base(_QWORD, _QWORD);
-// 14025A0BC: using guessed type __int64 __fastcall realloc_base(_QWORD, _QWORD);
-
 //----- (000000014023AD10) ----------------------------------------------------
 void            shortsort(char *a1, char *a2, __int64 a3, int (           *a4)(char *, char *))
 {
-  char *v6; // rdi
-  char *v7; // r12
-  char *v9; // rbx
-  char *i; // rsi
-  __int64 v11; // r8
-  char *v12; // rax
-  signed __int64 v13; // rbx
-  char v14; // dl
+  char *v6;
+  char *v7;
+  char *v9;
+  char *i;
+  __int64 v11;
+  char *v12;
+  signed __int64 v13;
+  char v14;
 
   if ( a2 > a1 )
   {
@@ -24319,8 +23768,6 @@ void            shortsort(char *a1, char *a2, __int64 a3, int (           *a4)(c
   }
 }
 
-// 14026E698: using guessed type __int64 (__fastcall *_guard_dispatch_icall_fptr)(_QWORD);
-
 //----- (000000014023AE00) ----------------------------------------------------
 void            sub_14023AE00(
         unsigned __int64 a1,
@@ -24328,40 +23775,40 @@ void            sub_14023AE00(
         unsigned __int64 a3,
         int (           *a4)(unsigned __int64, _BYTE *))
 {
-  unsigned __int64 v6; // r13
-  unsigned __int64 v7; // r15
-  __int64 v8; // rcx
-  unsigned __int64 v9; // rbx
-  _BYTE *v10; // rbx
-  unsigned __int64 i; // rdi
-  unsigned __int64 v12; // r8
-  _BYTE *v13; // rdx
-  _BYTE *v14; // rbx
-  char v15; // cl
-  __int64 v16; // rax
-  unsigned __int64 v17; // rbx
-  _BYTE *v18; // rdi
-  _BYTE *v19; // r8
-  unsigned __int64 v20; // r9
-  char v21; // cl
-  unsigned __int64 v22; // r8
-  _BYTE *v23; // rdx
-  unsigned __int64 v24; // r9
-  char v25; // cl
-  unsigned __int64 v26; // r8
-  _BYTE *v27; // rdx
-  _BYTE *v28; // r9
-  char v29; // cl
-  unsigned __int64 v30; // rbx
-  unsigned __int64 v31; // rsi
-  unsigned __int64 v32; // rbp
-  _BYTE *v33; // rdx
-  unsigned __int64 v34; // r9
-  char v35; // cl
-  _BYTE *v36; // rax
-  __int64 v38; // [rsp+0h] [rbp-468h] BYREF
-  __int64 v39; // [rsp+20h] [rbp-448h]
-  _QWORD v40[127]; // [rsp+30h] [rbp-438h]
+  unsigned __int64 v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  _BYTE *v10;
+  unsigned __int64 i;
+  unsigned __int64 v12;
+  _BYTE *v13;
+  _BYTE *v14;
+  char v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  _BYTE *v18;
+  _BYTE *v19;
+  unsigned __int64 v20;
+  char v21;
+  unsigned __int64 v22;
+  _BYTE *v23;
+  unsigned __int64 v24;
+  char v25;
+  unsigned __int64 v26;
+  _BYTE *v27;
+  _BYTE *v28;
+  char v29;
+  unsigned __int64 v30;
+  unsigned __int64 v31;
+  unsigned __int64 v32;
+  _BYTE *v33;
+  unsigned __int64 v34;
+  char v35;
+  _BYTE *v36;
+  __int64 v38;
+  __int64 v39;
+  _QWORD v40[127];
 
   v6 = a1;
   if ( (a1 || !a2) && a3 && a4 )
@@ -24572,22 +24019,16 @@ LABEL_19:
   else
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   return;
 }
 
-// 14023AFA4: variable 'v19' is possibly undefined
-// 14023AFA4: variable 'v20' is possibly undefined
-// 14023AFE1: variable 'v22' is possibly undefined
-// 14023B036: variable 'v26' is possibly undefined
-// 14026E698: using guessed type __int64 (__fastcall *_guard_dispatch_icall_fptr)(_QWORD);
-
 //----- (000000014023B1B0) ----------------------------------------------------
 int         rand()
 {
-  unsigned __int64 v0; // rax
-  unsigned int v1; // ecx
+  unsigned __int64 v0;
+  unsigned int v1;
 
   v0 = sub_140255A70();
   v1 = 214013 * *(_DWORD *)(v0 + 40) + 2531011;
@@ -24595,62 +24036,60 @@ int         rand()
   return HIWORD(v1) & 0x7FFF;
 }
 
-
 //----- (000000014023B1DC) ----------------------------------------------------
 void         srand(unsigned int Seed)
 {
   *(_DWORD *)(sub_140255A70() + 40) = Seed;
 }
 
-
 //----- (000000014023B240) ----------------------------------------------------
 __int64            sub_14023B240(struct __crt_locale_pointers *a1, __int64 *a2, unsigned int a3, char a4)
 {
-  unsigned int v5; // r14d
-  __int64 v7; // r15
-  unsigned int v8; // esi
-  unsigned int v9; // edi
-  __int64 i; // rax
-  char v11; // al
-  char v12; // bp
-  int v13; // eax
-  int v14; // eax
-  char v15; // dl
-  _BYTE *v16; // rcx
-  int v17; // eax
-  _BYTE *v18; // rcx
-  unsigned int v19; // r8d
-  unsigned int v20; // ecx
-  char v21; // cl
-  _BYTE *v22; // rax
-  bool v23; // zf
-  _QWORD *v24; // rcx
-  int v26; // edi
-  int v27; // ebp
-  _QWORD *v28; // rax
-  _QWORD *v29; // rdx
-  _QWORD *v30; // rdx
+  unsigned int v5;
+  __int64 v7;
+  unsigned int v8;
+  unsigned int v9;
+  __int64 i;
+  char v11;
+  char v12;
+  int v13;
+  int v14;
+  char v15;
+  _BYTE *v16;
+  int v17;
+  _BYTE *v18;
+  unsigned int v19;
+  unsigned int v20;
+  char v21;
+  _BYTE *v22;
+  bool v23;
+  _QWORD *v24;
+  int v26;
+  int v27;
+  _QWORD *v28;
+  _QWORD *v29;
+  _QWORD *v30;
   sr_format_locale sr_integer_locale;
 
   v5 = a3;
   if ( !*a2 || a3 && a3 - 2 > 0x22 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
 LABEL_54:
     v24 = (_QWORD *)a2[1];
     if ( v24 )
       *v24 = *a2;
     return 0;
   }
-  sub_140213644((_LocaleUpdate *)&sr_integer_locale, a1);
+  crt_locale_update((_LocaleUpdate *)&sr_integer_locale, a1);
   v7 = *a2;
   v8 = 0;
   v9 = *(unsigned __int8 *)*a2;
   for ( i = *a2 + 1; ; i = *a2 + 1 )
   {
     *a2 = i;
-    if ( !(unsigned int)sub_140236ED8(v9, 8, (struct __crt_locale_pointers *)sr_integer_locale.pair) )
+    if ( !(unsigned int)crt_isctype_l(v9, 8, (struct __crt_locale_pointers *)sr_integer_locale.pair) )
       break;
     v9 = *(unsigned __int8 *)*a2;
   }
@@ -24708,7 +24147,7 @@ LABEL_29:
     if ( v15 && *v18 != v15 )
     {
       *errno_sr() = 22;
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
     }
   }
 LABEL_32:
@@ -24745,7 +24184,7 @@ LABEL_32:
   if ( (_BYTE)v9 && *v22 != (_BYTE)v9 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   if ( (v12 & 8) == 0 )
   {
@@ -24806,51 +24245,49 @@ LABEL_63:
   }
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014023B548) ----------------------------------------------------
 __int64            sub_14023B548(struct __crt_locale_pointers *a1, unsigned __int16 **a2, unsigned int a3, char a4)
 {
-  unsigned int v5; // r14d
-  unsigned int v7; // ebp
-  unsigned __int16 v8; // bx
-  unsigned __int16 *i; // rax
-  char v10; // al
-  char v11; // si
-  int v12; // ecx
-  int v13; // eax
-  unsigned int v14; // edx
-  int v15; // eax
-  int v16; // eax
-  __int16 v17; // dx
-  unsigned __int16 *v18; // rcx
-  int v19; // eax
-  unsigned __int16 *v20; // rcx
-  unsigned int v21; // r8d
-  unsigned int v22; // ecx
-  int v23; // eax
-  unsigned int v24; // eax
-  int v25; // ecx
-  char v26; // cl
-  unsigned __int16 *v27; // rax
-  unsigned __int16 *v28; // rcx
-  int v30; // ebx
-  int v31; // esi
-  unsigned __int16 *v32; // rdx
-  unsigned __int16 *v33; // rdx
-  unsigned __int16 *v34; // rdx
-  __int64 v35[3]; // [rsp+20h] [rbp-48h] BYREF
-  char v36; // [rsp+38h] [rbp-30h]
-  unsigned __int16 *v37; // [rsp+78h] [rbp+10h]
+  unsigned int v5;
+  unsigned int v7;
+  unsigned __int16 v8;
+  unsigned __int16 *i;
+  char v10;
+  char v11;
+  int v12;
+  int v13;
+  unsigned int v14;
+  int v15;
+  int v16;
+  __int16 v17;
+  unsigned __int16 *v18;
+  int v19;
+  unsigned __int16 *v20;
+  unsigned int v21;
+  unsigned int v22;
+  int v23;
+  unsigned int v24;
+  int v25;
+  char v26;
+  unsigned __int16 *v27;
+  unsigned __int16 *v28;
+  int v30;
+  int v31;
+  unsigned __int16 *v32;
+  unsigned __int16 *v33;
+  unsigned __int16 *v34;
+  __int64 v35[3];
+  char v36;
+  unsigned __int16 *v37;
 
   v5 = a3;
   if ( !*a2 || a3 && a3 - 2 > 0x22 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     goto LABEL_138;
   }
-  sub_140213644((_LocaleUpdate *)v35, a1);
+  crt_locale_update((_LocaleUpdate *)v35, a1);
   v7 = 0;
   v37 = *a2;
   v8 = **a2;
@@ -25027,7 +24464,7 @@ LABEL_63:
       if ( v17 && *v20 != v17 )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
       }
       goto LABEL_75;
     }
@@ -25195,7 +24632,7 @@ LABEL_124:
   if ( v8 && *v27 != v8 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   if ( (v11 & 8) != 0 )
   {
@@ -25261,8 +24698,6 @@ LABEL_138:
   return 0;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014023BBF0) ----------------------------------------------------
 unsigned __int64            sub_14023BBF0(
         struct __crt_locale_pointers *a1,
@@ -25270,47 +24705,47 @@ unsigned __int64            sub_14023BBF0(
         signed int a3,
         unsigned __int8 a4)
 {
-  signed int v5; // r14d
-  unsigned __int8 *v7; // r15
-  unsigned __int64 v8; // rsi
-  unsigned int v9; // edi
-  char *i; // rax
-  int v11; // eax
-  int v12; // ebp
-  int v13; // eax
-  int v14; // eax
-  char v15; // dl
-  char *v16; // rcx
-  int v17; // eax
-  char *v18; // rcx
-  unsigned __int64 v19; // r8
-  unsigned int v20; // ecx
-  __int64 v21; // rdx
-  char *v22; // rax
-  bool v23; // zf
-  char *v24; // rcx
-  char *v26; // rcx
-  char *v27; // rcx
-  char *v28; // rax
-  __int64 v29; // [rsp+20h] [rbp-38h] BYREF
-  __int64 v30; // [rsp+28h] [rbp-30h] BYREF
-  char v31; // [rsp+38h] [rbp-20h]
+  signed int v5;
+  unsigned __int8 *v7;
+  unsigned __int64 v8;
+  unsigned int v9;
+  char *i;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  char v15;
+  char *v16;
+  int v17;
+  char *v18;
+  unsigned __int64 v19;
+  unsigned int v20;
+  __int64 v21;
+  char *v22;
+  bool v23;
+  char *v24;
+  char *v26;
+  char *v27;
+  char *v28;
+  __int64 v29;
+  __int64 v30;
+  char v31;
 
   v5 = a3;
   if ( !*a2 || a3 && (unsigned int)(a3 - 2) > 0x22 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     goto LABEL_55;
   }
-  sub_140213644((_LocaleUpdate *)&v29, a1);
+  crt_locale_update((_LocaleUpdate *)&v29, a1);
   v7 = (unsigned __int8 *)*a2;
   v8 = 0;
   v9 = (unsigned __int8)**a2;
   for ( i = *a2 + 1; ; i = *a2 + 1 )
   {
     *a2 = i;
-    if ( !(unsigned int)sub_140236ED8(v9, 8, (struct __crt_locale_pointers *)&v30) )
+    if ( !(unsigned int)crt_isctype_l(v9, 8, (struct __crt_locale_pointers *)&v30) )
       break;
     v9 = (unsigned __int8)**a2;
   }
@@ -25360,7 +24795,7 @@ unsigned __int64            sub_14023BBF0(
       if ( v15 && *v18 != v15 )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
       }
       goto LABEL_32;
     }
@@ -25407,7 +24842,7 @@ LABEL_48:
   if ( (_BYTE)v9 && *v22 != (_BYTE)v9 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   if ( (v12 & 8) != 0 )
   {
@@ -25459,8 +24894,6 @@ LABEL_55:
   return 0;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014023BEE0) ----------------------------------------------------
 unsigned __int64            sub_14023BEE0(
         struct __crt_locale_pointers *a1,
@@ -25468,45 +24901,45 @@ unsigned __int64            sub_14023BEE0(
         signed int a3,
         unsigned __int8 a4)
 {
-  signed int v5; // r14d
-  unsigned __int64 v7; // rbp
-  unsigned __int16 v8; // bx
-  unsigned __int16 *i; // rax
-  int v10; // eax
-  int v11; // esi
-  int v12; // ecx
-  int v13; // eax
-  unsigned int v14; // edx
-  int v15; // eax
-  int v16; // eax
-  __int16 v17; // dx
-  unsigned __int16 *v18; // rcx
-  int v19; // eax
-  unsigned __int16 *v20; // rcx
-  unsigned __int64 v21; // r8
-  unsigned int v22; // ecx
-  int v23; // eax
-  unsigned int v24; // eax
-  int v25; // ecx
-  __int64 v26; // rdx
-  unsigned __int16 *v27; // r15
-  unsigned __int16 *v28; // rax
-  unsigned __int16 *v29; // rcx
-  unsigned __int16 *v31; // rcx
-  unsigned __int16 *v32; // rcx
-  unsigned __int16 *v33; // rdx
-  __int64 v34[3]; // [rsp+78h] [rbp-50h] BYREF
-  char v35; // [rsp+90h] [rbp-38h]
-  unsigned __int16 *v36; // [rsp+98h] [rbp-30h]
+  signed int v5;
+  unsigned __int64 v7;
+  unsigned __int16 v8;
+  unsigned __int16 *i;
+  int v10;
+  int v11;
+  int v12;
+  int v13;
+  unsigned int v14;
+  int v15;
+  int v16;
+  __int16 v17;
+  unsigned __int16 *v18;
+  int v19;
+  unsigned __int16 *v20;
+  unsigned __int64 v21;
+  unsigned int v22;
+  int v23;
+  unsigned int v24;
+  int v25;
+  __int64 v26;
+  unsigned __int16 *v27;
+  unsigned __int16 *v28;
+  unsigned __int16 *v29;
+  unsigned __int16 *v31;
+  unsigned __int16 *v32;
+  unsigned __int16 *v33;
+  __int64 v34[3];
+  char v35;
+  unsigned __int16 *v36;
 
   v5 = a3;
   if ( !*a2 || a3 && (unsigned int)(a3 - 2) > 0x22 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     goto LABEL_140;
   }
-  sub_140213644((_LocaleUpdate *)v34, a1);
+  crt_locale_update((_LocaleUpdate *)v34, a1);
   v7 = 0;
   v36 = *a2;
   v8 = *v36;
@@ -25685,7 +25118,7 @@ LABEL_64:
       if ( v17 && *v20 != v17 )
       {
         *errno_sr() = 22;
-        sub_14024CF6C();
+        crt_invalid_parameter_noinfo();
       }
       goto LABEL_76;
     }
@@ -25856,7 +25289,7 @@ LABEL_133:
   if ( v8 && *v28 != v8 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
   }
   if ( (v11 & 8) != 0 )
   {
@@ -25907,14 +25340,12 @@ LABEL_140:
   return 0;
 }
 
-// 140213644: using guessed type _LocaleUpdate *__fastcall sub_140213644(_LocaleUpdate *this, struct __crt_locale_pointers *const a2);
-
 //----- (000000014023C638) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_689(__int64 a1, __int64 *a2, unsigned int a3, struct __crt_locale_pointers *a4)
 {
-  __int64 v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  __int64 v5[3];
 
   v5[0] = a1;
   v5[1] = (__int64)a2;
@@ -25922,7 +25353,6 @@ __int64            unknown_libname_689(__int64 a1, __int64 *a2, unsigned int a3,
     *a2 = a1;
   return sub_14023B240(a4, v5, a3, 1);
 }
-
 
 //----- (000000014023C668) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -25933,7 +25363,7 @@ __int64            unknown_libname_690(
         unsigned int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -25942,13 +25372,12 @@ __int64            unknown_libname_690(
   return sub_14023B548(a4, v5, a3, 1);
 }
 
-
 //----- (000000014023C698) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_691(__int64 a1, __int64 *a2, unsigned int a3, struct __crt_locale_pointers *a4)
 {
-  __int64 v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  __int64 v5[3];
 
   v5[0] = a1;
   v5[1] = (__int64)a2;
@@ -25956,7 +25385,6 @@ __int64            unknown_libname_691(__int64 a1, __int64 *a2, unsigned int a3,
     *a2 = a1;
   return sub_14023B240(a4, v5, a3, 0);
 }
-
 
 //----- (000000014023C6C8) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -25967,7 +25395,7 @@ __int64            unknown_libname_692(
         unsigned int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -25976,13 +25404,12 @@ __int64            unknown_libname_692(
   return sub_14023B548(a4, v5, a3, 0);
 }
 
-
 //----- (000000014023C6F8) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_693(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -25990,7 +25417,6 @@ unsigned __int64            unknown_libname_693(char *a1, char *a2, signed int a
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BBF0(a4, v5, a3, 1u);
 }
-
 
 //----- (000000014023C728) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26001,7 +25427,7 @@ unsigned __int64            unknown_libname_694(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26010,13 +25436,12 @@ unsigned __int64            unknown_libname_694(
   return sub_14023BEE0(a4, v5, a3, 1u);
 }
 
-
 //----- (000000014023C758) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_695(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26024,7 +25449,6 @@ unsigned __int64            unknown_libname_695(char *a1, char *a2, signed int a
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BBF0(a4, v5, a3, 0);
 }
-
 
 //----- (000000014023C788) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26035,7 +25459,7 @@ unsigned __int64            unknown_libname_696(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26044,11 +25468,10 @@ unsigned __int64            unknown_libname_696(
   return sub_14023BEE0(a4, v5, a3, 0);
 }
 
-
 //----- (000000014023C844) ----------------------------------------------------
 _BYTE *           __crt_strtox__c_string_character_source__char__unget(_QWORD *a1, char a2)
 {
-  _BYTE *result; // rax
+  _BYTE *result;
 
   result = (_BYTE *)(*a1 - 1LL);
   *a1 = (uint64)(uintptr_t)(result);
@@ -26057,17 +25480,16 @@ _BYTE *           __crt_strtox__c_string_character_source__char__unget(_QWORD *a
     if ( *result != a2 )
     {
       *errno_sr() = 22;
-      return (_BYTE *)sub_14024CF6C();
+      return (_BYTE *)crt_invalid_parameter_noinfo();
     }
   }
   return result;
 }
 
-
 //----- (000000014023C870) ----------------------------------------------------
 _WORD *           __crt_strtox__c_string_character_source__wchar_t__unget(_QWORD *a1, __int16 a2)
 {
-  _WORD *result; // rax
+  _WORD *result;
 
   result = (_WORD *)(*a1 - 2LL);
   *a1 = (uint64)(uintptr_t)(result);
@@ -26076,12 +25498,11 @@ _WORD *           __crt_strtox__c_string_character_source__wchar_t__unget(_QWORD
     if ( *result != a2 )
     {
       *errno_sr() = 22;
-      return (_WORD *)sub_14024CF6C();
+      return (_WORD *)crt_invalid_parameter_noinfo();
     }
   }
   return result;
 }
-
 
 //----- (000000014023C8A0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26091,10 +25512,9 @@ char            unknown_libname_701(_QWORD *a1)
   if ( *a1 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (000000014023C8C8) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26104,15 +25524,14 @@ char            unknown_libname_702(_QWORD *a1)
   if ( *a1 )
     return 1;
   *errno_sr() = 22;
-  sub_14024CF6C();
+  crt_invalid_parameter_noinfo();
   return 0;
 }
-
 
 //----- (000000014023C8F0) ----------------------------------------------------
 unsigned __int64            sub_14023C8F0(char *a1, char *a2, signed int a3)
 {
-  char *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26121,13 +25540,12 @@ unsigned __int64            sub_14023C8F0(char *a1, char *a2, signed int a3)
   return sub_14023BBF0(nullptr, v4, a3, 1u);
 }
 
-
 //----- (000000014023C91C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_703(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26135,14 +25553,13 @@ unsigned __int64            unknown_libname_703(char *a1, char *a2, signed int a
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BBF0(a4, v5, a3, 1u);
 }
-
 
 //----- (000000014023C94C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_704(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26151,13 +25568,12 @@ unsigned __int64            unknown_libname_704(char *a1, char *a2, signed int a
   return sub_14023BBF0(a4, v5, a3, 1u);
 }
 
-
 //----- (000000014023C97C) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_705(__int64 a1, __int64 *a2, unsigned int a3, struct __crt_locale_pointers *a4)
 {
-  __int64 v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  __int64 v5[3];
 
   v5[0] = a1;
   v5[1] = (__int64)a2;
@@ -26166,13 +25582,12 @@ __int64            unknown_libname_705(__int64 a1, __int64 *a2, unsigned int a3,
   return sub_14023B240(a4, v5, a3, 1);
 }
 
-
 //----- (000000014023C9AC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_706(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26181,11 +25596,10 @@ unsigned __int64            unknown_libname_706(char *a1, char *a2, signed int a
   return sub_14023BBF0(a4, v5, a3, 1u);
 }
 
-
 //----- (000000014023C9DC) ----------------------------------------------------
 unsigned __int64            sub_14023C9DC(char *a1, char *a2, signed int a3)
 {
-  char *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26194,13 +25608,12 @@ unsigned __int64            sub_14023C9DC(char *a1, char *a2, signed int a3)
   return sub_14023BBF0(nullptr, v4, a3, 0);
 }
 
-
 //----- (000000014023CA08) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_707(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26209,13 +25622,12 @@ unsigned __int64            unknown_libname_707(char *a1, char *a2, signed int a
   return sub_14023BBF0(a4, v5, a3, 0);
 }
 
-
 //----- (000000014023CA38) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_708(__int64 a1, __int64 *a2, unsigned int a3, struct __crt_locale_pointers *a4)
 {
-  __int64 v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  __int64 v5[3];
 
   v5[0] = a1;
   v5[1] = (__int64)a2;
@@ -26224,13 +25636,12 @@ __int64            unknown_libname_708(__int64 a1, __int64 *a2, unsigned int a3,
   return sub_14023B240(a4, v5, a3, 0);
 }
 
-
 //----- (000000014023CA68) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_709(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26238,14 +25649,13 @@ unsigned __int64            unknown_libname_709(char *a1, char *a2, signed int a
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BBF0(a4, v5, a3, 0);
 }
-
 
 //----- (000000014023CA98) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_710(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26254,11 +25664,10 @@ unsigned __int64            unknown_libname_710(char *a1, char *a2, signed int a
   return sub_14023BBF0(a4, v5, a3, 0);
 }
 
-
 //----- (000000014023CAC8) ----------------------------------------------------
 unsigned __int64            sub_14023CAC8(unsigned __int16 *a1, unsigned __int16 *a2, signed int a3)
 {
-  unsigned __int16 *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26266,7 +25675,6 @@ unsigned __int64            sub_14023CAC8(unsigned __int16 *a1, unsigned __int16
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BEE0(nullptr, v4, a3, 1u);
 }
-
 
 //----- (000000014023CAF4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26277,7 +25685,7 @@ unsigned __int64            unknown_libname_711(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26285,7 +25693,6 @@ unsigned __int64            unknown_libname_711(
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BEE0(a4, v5, a3, 1u);
 }
-
 
 //----- (000000014023CB24) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26296,7 +25703,7 @@ unsigned __int64            unknown_libname_712(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26304,7 +25711,6 @@ unsigned __int64            unknown_libname_712(
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BEE0(a4, v5, a3, 1u);
 }
-
 
 //----- (000000014023CB54) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26315,7 +25721,7 @@ __int64            unknown_libname_713(
         unsigned int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26323,7 +25729,6 @@ __int64            unknown_libname_713(
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023B548(a4, v5, a3, 1);
 }
-
 
 //----- (000000014023CB84) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26334,7 +25739,7 @@ unsigned __int64            unknown_libname_714(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26343,11 +25748,10 @@ unsigned __int64            unknown_libname_714(
   return sub_14023BEE0(a4, v5, a3, 1u);
 }
 
-
 //----- (000000014023CBB4) ----------------------------------------------------
 unsigned __int64            sub_14023CBB4(unsigned __int16 *a1, unsigned __int16 *a2, signed int a3)
 {
-  unsigned __int16 *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26355,7 +25759,6 @@ unsigned __int64            sub_14023CBB4(unsigned __int16 *a1, unsigned __int16
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BEE0(nullptr, v4, a3, 0);
 }
-
 
 //----- (000000014023CBE0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26366,7 +25769,7 @@ unsigned __int64            unknown_libname_715(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26374,7 +25777,6 @@ unsigned __int64            unknown_libname_715(
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BEE0(a4, v5, a3, 0);
 }
-
 
 //----- (000000014023CC10) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26385,7 +25787,7 @@ __int64            unknown_libname_716(
         unsigned int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26393,7 +25795,6 @@ __int64            unknown_libname_716(
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023B548(a4, v5, a3, 0);
 }
-
 
 //----- (000000014023CC40) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26404,7 +25805,7 @@ unsigned __int64            unknown_libname_717(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26412,7 +25813,6 @@ unsigned __int64            unknown_libname_717(
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BEE0(a4, v5, a3, 0);
 }
-
 
 //----- (000000014023CC70) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26423,7 +25823,7 @@ unsigned __int64            unknown_libname_718(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v5[3];
 
   v5[0] = a1;
   v5[1] = a2;
@@ -26432,11 +25832,10 @@ unsigned __int64            unknown_libname_718(
   return sub_14023BEE0(a4, v5, a3, 0);
 }
 
-
 //----- (000000014023CCA0) ----------------------------------------------------
 unsigned __int64            sub_14023CCA0(char *a1, char *a2, signed int a3)
 {
-  char *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26445,11 +25844,10 @@ unsigned __int64            sub_14023CCA0(char *a1, char *a2, signed int a3)
   return sub_14023BBF0(nullptr, v4, a3, 1u);
 }
 
-
 //----- (000000014023CCCC) ----------------------------------------------------
 __int64            sub_14023CCCC(__int64 a1, __int64 *a2, unsigned int a3)
 {
-  __int64 v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  __int64 v4[3];
 
   v4[0] = a1;
   v4[1] = (__int64)a2;
@@ -26458,11 +25856,10 @@ __int64            sub_14023CCCC(__int64 a1, __int64 *a2, unsigned int a3)
   return sub_14023B240(nullptr, v4, a3, 1);
 }
 
-
 //----- (000000014023CCF8) ----------------------------------------------------
 unsigned __int64            sub_14023CCF8(char *a1, char *a2, signed int a3)
 {
-  char *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26471,11 +25868,10 @@ unsigned __int64            sub_14023CCF8(char *a1, char *a2, signed int a3)
   return sub_14023BBF0(nullptr, v4, a3, 1u);
 }
 
-
 //----- (000000014023CD24) ----------------------------------------------------
 __int64            sub_14023CD24(__int64 a1, __int64 *a2, unsigned int a3)
 {
-  __int64 v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  __int64 v4[3];
 
   v4[0] = a1;
   v4[1] = (__int64)a2;
@@ -26484,11 +25880,10 @@ __int64            sub_14023CD24(__int64 a1, __int64 *a2, unsigned int a3)
   return sub_14023B240(nullptr, v4, a3, 0);
 }
 
-
 //----- (000000014023CD50) ----------------------------------------------------
 unsigned __int64            sub_14023CD50(char *a1, char *a2, signed int a3)
 {
-  char *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26496,12 +25891,11 @@ unsigned __int64            sub_14023CD50(char *a1, char *a2, signed int a3)
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BBF0(nullptr, v4, a3, 0);
 }
-
 
 //----- (000000014023CD7C) ----------------------------------------------------
 unsigned __int64            sub_14023CD7C(char *a1, char *a2, signed int a3)
 {
-  char *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  char *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26510,11 +25904,10 @@ unsigned __int64            sub_14023CD7C(char *a1, char *a2, signed int a3)
   return sub_14023BBF0(nullptr, v4, a3, 0);
 }
 
-
 //----- (000000014023CDA8) ----------------------------------------------------
 unsigned __int64            sub_14023CDA8(unsigned __int16 *a1, unsigned __int16 *a2, signed int a3)
 {
-  unsigned __int16 *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26523,11 +25916,10 @@ unsigned __int64            sub_14023CDA8(unsigned __int16 *a1, unsigned __int16
   return sub_14023BEE0(nullptr, v4, a3, 1u);
 }
 
-
 //----- (000000014023CDD4) ----------------------------------------------------
 __int64            sub_14023CDD4(unsigned __int16 *a1, unsigned __int16 *a2, unsigned int a3)
 {
-  unsigned __int16 *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26536,11 +25928,10 @@ __int64            sub_14023CDD4(unsigned __int16 *a1, unsigned __int16 *a2, uns
   return sub_14023B548(nullptr, v4, a3, 1);
 }
 
-
 //----- (000000014023CE00) ----------------------------------------------------
 unsigned __int64            sub_14023CE00(unsigned __int16 *a1, unsigned __int16 *a2, signed int a3)
 {
-  unsigned __int16 *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26549,11 +25940,10 @@ unsigned __int64            sub_14023CE00(unsigned __int16 *a1, unsigned __int16
   return sub_14023BEE0(nullptr, v4, a3, 1u);
 }
 
-
 //----- (000000014023CE2C) ----------------------------------------------------
 __int64            sub_14023CE2C(unsigned __int16 *a1, unsigned __int16 *a2, unsigned int a3)
 {
-  unsigned __int16 *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26562,11 +25952,10 @@ __int64            sub_14023CE2C(unsigned __int16 *a1, unsigned __int16 *a2, uns
   return sub_14023B548(nullptr, v4, a3, 0);
 }
 
-
 //----- (000000014023CE58) ----------------------------------------------------
 unsigned __int64            sub_14023CE58(unsigned __int16 *a1, unsigned __int16 *a2, signed int a3)
 {
-  unsigned __int16 *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26574,12 +25963,11 @@ unsigned __int64            sub_14023CE58(unsigned __int16 *a1, unsigned __int16
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BEE0(nullptr, v4, a3, 0);
 }
-
 
 //----- (000000014023CE84) ----------------------------------------------------
 unsigned __int64            sub_14023CE84(unsigned __int16 *a1, unsigned __int16 *a2, signed int a3)
 {
-  unsigned __int16 *v4[3]; // [rsp+20h] [rbp-18h] BYREF
+  unsigned __int16 *v4[3];
 
   v4[0] = a1;
   v4[1] = a2;
@@ -26587,15 +25975,14 @@ unsigned __int64            sub_14023CE84(unsigned __int16 *a1, unsigned __int16
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
   return sub_14023BEE0(nullptr, v4, a3, 0);
 }
-
 
 //----- (000000014023CEB8) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 void            __attribute__((noreturn)) unknown_libname_719(__int64 a1)
 {
-  unsigned int v2; // eax
-  unsigned int v3; // eax
+  unsigned int v2;
+  unsigned int v3;
 
   if ( !a1 )
   {
@@ -26611,14 +25998,13 @@ void            __attribute__((noreturn)) unknown_libname_719(__int64 a1)
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
 // 14026E1A8: invalid function type 'void (__stdcall __noreturn *ExitThread)(DWORD dwExitCode)' has been ignored
-// 14026E698: using guessed type __int64 (__fastcall *_guard_dispatch_icall_fptr)(_QWORD);
 
 //----- (000000014023CF20) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 void            __attribute__((noreturn)) StartAddress(__int64 a1)
 {
-  unsigned int v2; // eax
+  unsigned int v2;
 
   if ( !a1 )
   {
@@ -26634,7 +26020,6 @@ void            __attribute__((noreturn)) StartAddress(__int64 a1)
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
 // 14026E1A8: invalid function type 'void (__stdcall __noreturn *ExitThread)(DWORD dwExitCode)' has been ignored
-// 14026E698: using guessed type __int64 (__fastcall *_guard_dispatch_icall_fptr)(_QWORD);
 
 //----- (000000014023CF98) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26646,13 +26031,12 @@ void            unknown_libname_1017(void **a1)
   *a1 = nullptr;
 }
 
-
 //----- (000000014023CFB4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_722(_QWORD **a1)
 {
-  _QWORD *v1; // rbx
+  _QWORD *v1;
 
   v1 = *a1;
   if ( *a1 )
@@ -26688,9 +26072,9 @@ void            _anonymous_namespace___thread_parameter_free_policy__operator_ca
 //----- (000000014023D044) ----------------------------------------------------
 void            __attribute__((noreturn)) sub_14023D044(unsigned int a1)
 {
-  unsigned __int64 v2; // rax
-  __int64 v3; // rbx
-  __int64 v4; // rcx
+  unsigned __int64 v2;
+  __int64 v3;
+  __int64 v4;
 
   v2 = sub_140255BEC();
   if ( v2 )
@@ -26717,8 +26101,8 @@ void            __attribute__((noreturn)) sub_14023D044(unsigned int a1)
 //----- (000000014023D0A8) ----------------------------------------------------
 _QWORD *           sub_14023D0A8(__int64 a1, __int64 a2)
 {
-  _QWORD *v4; // rbx
-  _QWORD *result; // rax
+  _QWORD *v4;
+  _QWORD *result;
 
   v4 = (_QWORD *)calloc_base(1, 40);
   free_base(nullptr);
@@ -26734,7 +26118,6 @@ _QWORD *           sub_14023D0A8(__int64 a1, __int64 a2)
 }
 
 // 14026E190: invalid function type 'BOOL (__stdcall *GetModuleHandleExW)(DWORD dwFlags, LPCWSTR lpModuleName, HMODULE *phModule)' has been ignored
-// 14024DF98: using guessed type __int64 __fastcall calloc_base(_QWORD, _QWORD);
 
 //----- (000000014023D124) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -26746,13 +26129,12 @@ void            unknown_libname_1018(void **a1)
   *a1 = nullptr;
 }
 
-
 //----- (000000014023D140) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_726(_QWORD **a1)
 {
-  _QWORD *v1; // rbx
+  _QWORD *v1;
 
   v1 = *a1;
   if ( *a1 )
@@ -26772,18 +26154,18 @@ void            unknown_libname_726(_QWORD **a1)
 //----- (000000014023D18C) ----------------------------------------------------
 __int64            sub_14023D18C(__int64 a1, unsigned int a2, __int64 a3)
 {
-  __int64 v3; // rdi
-  _QWORD *v5; // rbx
-  __int64 v6; // rax
-  __int64 v7; // rdi
-  unsigned int v8; // eax
-  __int64 ThreadId; // [rsp+40h] [rbp+8h] BYREF
+  __int64 v3;
+  _QWORD *v5;
+  __int64 v6;
+  __int64 v7;
+  unsigned int v8;
+  __int64 ThreadId;
 
   v3 = a2;
   if ( !a1 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return -1;
   }
   v5 = sub_14023D0A8(a1, a3);
@@ -26808,7 +26190,7 @@ __int64            sub_14023D18C(__int64 a1, unsigned int a2, __int64 a3)
       }
     }
     v8 = ((__int64 (*)(void))GetLastError)();
-    sub_14024D14C(v8);
+    crt_errno_map_os_error(v8);
   }
   v7 = -1;
 LABEL_7:
@@ -26833,17 +26215,17 @@ LABEL_7:
 //----- (000000014023D25C) ----------------------------------------------------
 __int64            sub_14023D25C(__int64 a1, unsigned int a2, __int64 a3, __int64 a4, __int64 a5, _DWORD *a6)
 {
-  __int64 v6; // rdi
-  _QWORD *v9; // rbx
-  __int64 v10; // rdi
-  unsigned int v11; // eax
-  __int128 ThreadId; // [rsp+50h] [rbp+18h] BYREF
+  __int64 v6;
+  _QWORD *v9;
+  __int64 v10;
+  unsigned int v11;
+  __int128 ThreadId;
 
   v6 = a2;
   if ( !a3 )
   {
     *errno_sr() = 22;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return 0;
   }
   v9 = sub_14023D0A8(a3, a4);
@@ -26864,7 +26246,7 @@ __int64            sub_14023D25C(__int64 a1, unsigned int a2, __int64 a3, __int6
       goto LABEL_7;
     }
     v11 = ((__int64 (*)(void))GetLastError)();
-    sub_14024D14C(v11);
+    crt_errno_map_os_error(v11);
   }
   v10 = 0;
 LABEL_7:
@@ -26890,18 +26272,16 @@ void         __attribute__((noreturn)) _report_rangecheckfailure_0()
   sub_14023D044(0);
 }
 
-
 //----- (000000014023D33C) ----------------------------------------------------
 void         __attribute__((noreturn)) sub_14023D33C(unsigned int ReturnCode)
 {
   sub_14023D044(ReturnCode);
 }
 
-
 //----- (000000014023D348) ----------------------------------------------------
 __int64            common_assert__char(char *a1, char *a2, unsigned int a3, __int64 a4)
 {
-  int v8; // eax
+  int v8;
 
   v8 = set_error_mode(3);
   if ( v8 == 1 || !v8 && (unsigned int)sub_14024774C() == 1 )
@@ -26909,11 +26289,10 @@ __int64            common_assert__char(char *a1, char *a2, unsigned int a3, __in
   return sub_14023D430(a1, a2, a3, a4);
 }
 
-
 //----- (000000014023D3BC) ----------------------------------------------------
 __int64            common_assert__wchar_t(char *a1, char *a2, unsigned int a3, __int64 a4)
 {
-  int v8; // eax
+  int v8;
 
   v8 = set_error_mode(3);
   if ( v8 == 1 || !v8 && (unsigned int)sub_14024774C() == 1 )
@@ -26921,17 +26300,16 @@ __int64            common_assert__wchar_t(char *a1, char *a2, unsigned int a3, _
   return sub_14023D4F4(a1, a2, a3, a4);
 }
 
-
 //----- (000000014023D430) ----------------------------------------------------
 __int64            sub_14023D430(char *a1, char *a2, int a3, __int64 a4)
 {
-  int v8; // eax
-  int v9; // eax
-  __int64 v11; // [rsp+0h] [rbp-298h] BYREF
-  _WORD v12[288]; // [rsp+30h] [rbp-268h] BYREF
-  __int64 v13; // [rsp+270h] [rbp-28h]
+  int v8;
+  int v9;
+  __int64 v11;
+  _WORD v12[288];
+  __int64 v13;
 
-  sub_1401FCD30((void *)(uintptr_t)(v12), 0, 0x240u);
+  crt_memset((void *)(uintptr_t)(v12), 0, 0x240u);
   sub_14023D5B8(v12, 0x240u, a1, a2, a3, a4);
   v8 = unknown_libname_891((__int64)v12, (__int64)"Microsoft Visual C++ Runtime Library", 0x12012u) - 3;
   if ( !v8 )
@@ -26953,17 +26331,16 @@ __int64            sub_14023D430(char *a1, char *a2, int a3, __int64 a4)
   return 0; /* no result: rax is residue of the dispatch at 0x14023D4A9 */
 }
 
-
 //----- (000000014023D4F4) ----------------------------------------------------
 __int64            sub_14023D4F4(char *a1, char *a2, int a3, __int64 a4)
 {
-  int v8; // eax
-  int v9; // eax
-  __int64 v11; // [rsp+0h] [rbp-4D8h] BYREF
-  _WORD v12[576]; // [rsp+30h] [rbp-4A8h] BYREF
-  __int64 v13; // [rsp+4B0h] [rbp-28h]
+  int v8;
+  int v9;
+  __int64 v11;
+  _WORD v12[576];
+  __int64 v13;
 
-  sub_1401FCD30((void *)(uintptr_t)(v12), 0, 0x480u);
+  crt_memset((void *)(uintptr_t)(v12), 0, 0x480u);
   sub_14023DA68((char *)v12, 0x240u, a1, a2, a3, a4);
   v8 = unknown_libname_892((__int64)v12, (__int64)L"Microsoft Visual C++ Runtime Library", 0x12012u) - 3;
   if ( !v8 )
@@ -26985,8 +26362,6 @@ __int64            sub_14023D4F4(char *a1, char *a2, int a3, __int64 a4)
   return 0; /* no result: rax is residue of the dispatch at 0x14023D56D */
 }
 
-// 140285AE0: using guessed type __int16[37];
-
 //----- (000000014023D5B8) ----------------------------------------------------
 __int64            sub_14023D5B8(
         _BYTE *a1,
@@ -26996,35 +26371,35 @@ __int64            sub_14023D5B8(
         unsigned int Value,
         __int64 lpModuleName)
 {
-  int v10; // eax
-  __int64 v11; // r14
-  char *v12; // rcx
-  __int64 v13; // rdx
-  unsigned __int64 v14; // r8
-  __int64 v15; // rax
-  unsigned __int64 v16; // r15
-  char v17; // al
-  unsigned __int64 v18; // r12
-  char *v19; // rcx
-  bool v20; // cf
-  char *v21; // r8
-  unsigned __int64 v22; // rdx
-  _BYTE *v23; // rcx
-  int v24; // eax
-  __int64 v25; // rax
-  __int64 v26; // rcx
-  __int64 v27; // rax
-  __int64 v28; // rax
-       char *v29; // r8
-  unsigned __int64 v30; // rdx
-  _BYTE *v31; // rcx
-  char *v32; // r8
-  _BYTE v34[32]; // [rsp+0h] [rbp-100h] BYREF
-  __int128 Reserved; // [rsp+20h] [rbp-E0h]
-  __int128 phModule; // [rsp+30h] [rbp-D0h] BYREF
-  char Destination[261]; // [rsp+40h] [rbp-C0h] BYREF
-  char v38; // [rsp+145h] [rbp+45h] BYREF
-  __int64 v39; // [rsp+150h] [rbp+50h]
+  int v10;
+  __int64 v11;
+  char *v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  unsigned __int64 v16;
+  char v17;
+  unsigned __int64 v18;
+  char *v19;
+  bool v20;
+  char *v21;
+  unsigned __int64 v22;
+  _BYTE *v23;
+  int v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+       char *v29;
+  unsigned __int64 v30;
+  _BYTE *v31;
+  char *v32;
+  _BYTE v34[32];
+  __int128 Reserved;
+  __int128 phModule;
+  char Destination[261];
+  char v38;
+  __int64 v39;
 
   if ( (unsigned int)strcpy_s_sr(a1, a2, "Assertion failed!") )
     goto LABEL_67;
@@ -27032,7 +26407,7 @@ __int64            sub_14023D5B8(
     goto LABEL_67;
   if ( (unsigned int)strcat_s_sr(a1, a2, "Program: ") )
     goto LABEL_67;
-  sub_1401FCD30((void *)(uintptr_t)(Destination), 0, 0x105u);
+  crt_memset((void *)(uintptr_t)(Destination), 0, 0x105u);
   *(_QWORD *)&phModule = 0;
   v10 = ((__int64 (           *)(__int64, __int64, __int128 *))GetModuleHandleExW)(6, lpModuleName, &phModule);
   *(_QWORD *)&phModule = phModule & -(__int64)(v10 != 0);
@@ -27058,12 +26433,12 @@ __int64            sub_14023D5B8(
     }
     if ( v14 < 3 )
     {
-      sub_1401FCD30((void *)(uintptr_t)(v12), 0, v14);
+      crt_memset((void *)(uintptr_t)(v12), 0, v14);
       *errno_sr() = 34;
 LABEL_66:
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       *(_QWORD *)&Reserved = 0;
-      sub_14024CFBC();
+      crt_invoke_watson();
       __debugbreak();
     }
     qmemcpy(v12, "...", 3);
@@ -27190,17 +26565,13 @@ LABEL_35:
   {
 LABEL_67:
     *(_QWORD *)&Reserved = 0;
-    sub_14024CFBC();
+    crt_invoke_watson();
     __debugbreak();
   }
   return 0; /* no caller reads the result */
 }
 
 // 14026E190: invalid function type 'BOOL (__stdcall *GetModuleHandleExW)(DWORD dwFlags, LPCWSTR lpModuleName, HMODULE *phModule)' has been ignored
-// 14024C810: using guessed type __int64 __fastcall strcpy_s(_QWORD, _QWORD, _QWORD);
-// 14025A9FC: using guessed type __int64 __fastcall itoa_s(_QWORD, _QWORD, _QWORD, _QWORD);
-// 14025AFAC: using guessed type __int64 __fastcall strcat_s(_QWORD, _QWORD, _QWORD);
-// 14025B100: using guessed type __int64 __fastcall strncat_s(_QWORD, _QWORD, _QWORD, _QWORD);
 
 //----- (000000014023DA68) ----------------------------------------------------
 __int64            sub_14023DA68(
@@ -27211,34 +26582,34 @@ __int64            sub_14023DA68(
         unsigned int Value,
         __int64 lpModuleName)
 {
-  int v10; // eax
-  __int64 v11; // rbp
-  _WORD *v12; // rcx
-  __int64 v13; // rdx
-  __int64 v14; // rax
-  unsigned __int64 v15; // rsi
-  __int64 v16; // rax
-  unsigned __int64 v17; // rsi
-  __int16 v18; // ax
-  unsigned __int64 v19; // r14
-  char *v20; // rcx
-  unsigned __int64 v21; // r12
-  bool v22; // cf
-  char *v23; // r8
-  unsigned __int64 v24; // r14
-  int v25; // eax
-  __int64 v26; // rax
-  __int64 v27; // rcx
-  __int64 v28; // rax
-  __int64 v29; // rax
-       __int16 *v30; // r8
-  __int64 v31; // rdx
-  char *v32; // rcx
-  __int64 v34; // [rsp+0h] [rbp-2A8h] BYREF
-  __int128 Reserved; // [rsp+20h] [rbp-288h]
-  __int128 phModule; // [rsp+30h] [rbp-278h] BYREF
-  _WORD Filename[264]; // [rsp+40h] [rbp-268h] BYREF
-  __int64 v38; // [rsp+250h] [rbp-58h]
+  int v10;
+  __int64 v11;
+  _WORD *v12;
+  __int64 v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  __int16 v18;
+  unsigned __int64 v19;
+  char *v20;
+  unsigned __int64 v21;
+  bool v22;
+  char *v23;
+  unsigned __int64 v24;
+  int v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+       __int16 *v30;
+  __int64 v31;
+  char *v32;
+  __int64 v34;
+  __int128 Reserved;
+  __int128 phModule;
+  _WORD Filename[264];
+  __int64 v38;
 
   if ( (unsigned int)sub_140259444(a1, a2, (__int64)L"Assertion failed!") )
     goto LABEL_66;
@@ -27246,7 +26617,7 @@ __int64            sub_14023DA68(
     goto LABEL_66;
   if ( (unsigned int)sub_14025ACB4(a1, a2, (__int64)L"Program: ") )
     goto LABEL_66;
-  sub_1401FCD30((void *)(uintptr_t)(Filename), 0, 0x20Au);
+  crt_memset((void *)(uintptr_t)(Filename), 0, 0x20Au);
   *(_QWORD *)&phModule = 0;
   v10 = ((__int64 (           *)(__int64, __int64, __int128 *))GetModuleHandleExW)(6, lpModuleName, &phModule);
   *(_QWORD *)&phModule = phModule & -(__int64)(v10 != 0);
@@ -27273,12 +26644,12 @@ __int64            sub_14023DA68(
     }
     if ( v15 < 6 )
     {
-      sub_1401FCD30((void *)(uintptr_t)(v12), 0, v15);
+      crt_memset((void *)(uintptr_t)(v12), 0, v15);
       *errno_sr() = 34;
 LABEL_68:
-      sub_14024CF6C();
+      crt_invalid_parameter_noinfo();
       *(_QWORD *)&Reserved = 0;
-      sub_14024CFBC();
+      crt_invoke_watson();
       __debugbreak();
     }
     *(_DWORD *)v12 = *(_DWORD *)asc_140285E10;
@@ -27406,7 +26777,7 @@ LABEL_36:
   {
 LABEL_66:
     *(_QWORD *)&Reserved = 0;
-    sub_14024CFBC();
+    crt_invoke_watson();
     __debugbreak();
   }
   return 0; /* no caller reads the result */
@@ -27414,30 +26785,19 @@ LABEL_66:
 
 // 14026E190: invalid function type 'BOOL (__stdcall *GetModuleHandleExW)(DWORD dwFlags, LPCWSTR lpModuleName, HMODULE *phModule)' has been ignored
 // 14026E178: invalid function type 'DWORD (__stdcall *GetModuleFileNameW)(HMODULE hModule, LPWSTR lpFilename, DWORD nSize)' has been ignored
-// 14025AA4C: using guessed type __int64 __fastcall itow_s(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140285B48: using guessed type __int16[18];
-// 140285B80: using guessed type __int16[10];
-// 140285BA0: using guessed type __int16[7];
-// 140285BB8: using guessed type __int16[7];
-// 140285BD8: using guessed type __int16[13];
-// 140285C70: using guessed type __int16[112];
-// 140285D90: using guessed type __int16[61];
-// 140285E10: using guessed type __int16 asc_140285E10[2];
-// 140285E1C: using guessed type __int16 asc_140285E1C[3];
-// 140285E40: using guessed type __int16[23];
 
 //----- (000000014023DF6C) ----------------------------------------------------
 void            __attribute__((noreturn)) sub_14023DF6C(__int64 a1, __int64 a2, int a3)
 {
-  char *v3; // rax
-  char *v4; // rax
-  char *v5; // rax
-  __int64 v6; // [rsp+28h] [rbp-20h]
-  __int64 v7[3]; // [rsp+30h] [rbp-18h] BYREF
-  __int64 v8; // [rsp+50h] [rbp+8h] BYREF
-  __int64 v9; // [rsp+58h] [rbp+10h] BYREF
-  int v10; // [rsp+60h] [rbp+18h] BYREF
-       char *v11; // [rsp+68h] [rbp+20h] BYREF
+  char *v3;
+  char *v4;
+  char *v5;
+  __int64 v6;
+  __int64 v7[3];
+  __int64 v8;
+  __int64 v9;
+  int v10;
+       char *v11;
 
   v10 = a3;
   v9 = a2;
@@ -27455,25 +26815,22 @@ void            __attribute__((noreturn)) sub_14023DF6C(__int64 a1, __int64 a2, 
   abort();
 }
 
-// 14023DFE8: variable 'v6' is possibly undefined
-// 14025B8F8: using guessed type __int64 __fastcall setvbuf(_QWORD, _QWORD, _QWORD);
-
 //----- (000000014023E008) ----------------------------------------------------
 void            __attribute__((noreturn)) sub_14023E008(__int64 a1, __int64 a2, int a3)
 {
-  __int64 v6; // rax
-  __int64 v7; // rbx
-  __int64 v8; // rax
-  char *v9; // rax
-  char *v10; // rax
-  __int64 v11; // [rsp+28h] [rbp-D8h]
-  __int64 NumberOfCharsWritten; // [rsp+30h] [rbp-D0h] BYREF
-  __int64 v13; // [rsp+38h] [rbp-C8h] BYREF
-  __int64 v14; // [rsp+40h] [rbp-C0h] BYREF
-  __int64 v15; // [rsp+48h] [rbp-B8h] BYREF
-       __int16 *v16; // [rsp+50h] [rbp-B0h] BYREF
-  char *v17; // [rsp+58h] [rbp-A8h] BYREF
-  _WORD Buffer[576]; // [rsp+60h] [rbp-A0h] BYREF
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  char *v9;
+  char *v10;
+  __int64 v11;
+  __int64 NumberOfCharsWritten;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+       __int16 *v16;
+  char *v17;
+  _WORD Buffer[576];
 
   v15 = a1;
   v14 = a2;
@@ -27516,10 +26873,6 @@ void            __attribute__((noreturn)) sub_14023E008(__int64 a1, __int64 a2, 
 // 14026E188: invalid function type 'HANDLE (__stdcall *GetStdHandle)(DWORD nStdHandle)' has been ignored
 // 14026E180: invalid function type 'DWORD (__stdcall *GetFileType)(HANDLE hFile)' has been ignored
 // 14026E170: invalid function type 'BOOL (__stdcall *WriteConsoleW)(HANDLE hConsoleOutput, const void *lpBuffer, DWORD nNumberOfCharsToWrite, LPDWORD lpNumberOfCharsWritten, LPVOID lpReserved)' has been ignored
-// 14023E13A: variable 'v11' is possibly undefined
-// 14023E780: using guessed type __int64 swprintf_0(_QWORD, _QWORD, _QWORD, ...);
-// 14025B8F8: using guessed type __int64 __fastcall setvbuf(_QWORD, _QWORD, _QWORD);
-// 140285A60: using guessed type __int16 Format[42];
 
 //----- (000000014023E158) ----------------------------------------------------
 __int64            sub_14023E158(
@@ -27537,7 +26890,6 @@ __int64            sub_14023E158(
   return sub_1400920F0(*a1, *a2, *a3, *a4, a5, a6, a7, a8, a9);
 }
 
-
 //----- (000000014023E178) ----------------------------------------------------
 __int64            sub_14023E178(
         __int64 *a1,
@@ -27554,18 +26906,17 @@ __int64            sub_14023E178(
   return sub_14023E6B4(*a1, *a2, *a3, *a4, a5, a6, a7, a8, a9);
 }
 
-
 //----- (000000014023E370) ----------------------------------------------------
 __int64            sub_14023E370(__int64 a1, __int64 a2, int a3)
 {
-  __int64 v6; // rax
-  __int64 v7; // rbx
-  __int64 v8; // rax
-  __int64 v10; // [rsp+0h] [rbp-4E8h] BYREF
-  __int64 v11; // [rsp+28h] [rbp-4C0h]
-  __int128 NumberOfCharsWritten; // [rsp+30h] [rbp-4B8h] BYREF
-  _WORD Buffer[576]; // [rsp+40h] [rbp-4A8h] BYREF
-  __int64 v14; // [rsp+4C0h] [rbp-28h]
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+  __int128 NumberOfCharsWritten;
+  _WORD Buffer[576];
+  __int64 v14;
 
   v6 = ((__int64 (           *)(__int64))GetStdHandle)(4294967284LL);
   v7 = v6;
@@ -27595,8 +26946,6 @@ __int64            sub_14023E370(__int64 a1, __int64 a2, int a3)
 // 14026E188: invalid function type 'HANDLE (__stdcall *GetStdHandle)(DWORD nStdHandle)' has been ignored
 // 14026E180: invalid function type 'DWORD (__stdcall *GetFileType)(HANDLE hFile)' has been ignored
 // 14026E170: invalid function type 'BOOL (__stdcall *WriteConsoleW)(HANDLE hConsoleOutput, const void *lpBuffer, DWORD nNumberOfCharsToWrite, LPDWORD lpNumberOfCharsWritten, LPVOID lpReserved)' has been ignored
-// 14023E780: using guessed type __int64 swprintf_0(_QWORD, _QWORD, _QWORD, ...);
-// 140285A60: using guessed type __int16 Format[42];
 
 //----- (000000014023E448) ----------------------------------------------------
      char *sub_14023E448()
@@ -27604,20 +26953,17 @@ __int64            sub_14023E370(__int64 a1, __int64 a2, int a3)
   return "Assertion failed: %Ts, file %Ts, line %d\n";
 }
 
-
 //----- (000000014023E450) ----------------------------------------------------
      __int16 *sub_14023E450()
 {
   return L"Assertion failed: %Ts, file %Ts, line %d\n";
 }
 
-// 140285A60: using guessed type __int16 Format[42];
-
 //----- (000000014023E518) ----------------------------------------------------
 __int64            sub_14023E518(char *a1, char *a2, int a3)
 {
-  int v6; // eax
-  __int64 retaddr; // [rsp+28h] [rbp+0h]
+  int v6;
+  __int64 retaddr;
 
   v6 = set_error_mode(3);
   if ( v6 == 1 || !v6 && (unsigned int)sub_14024774C() == 1 )
@@ -27625,11 +26971,10 @@ __int64            sub_14023E518(char *a1, char *a2, int a3)
   return sub_14023D430(a1, a2, a3, retaddr);
 }
 
-
 //----- (000000014023E58C) ----------------------------------------------------
 __int64            vsprintf_s_l_0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 {
-  __int64 *v8; // rax
+  __int64 *v8;
 
   v8 = (__int64 *)sub_140001BB0();
   return sub_140224C90(*v8, a1, a2, a3, a4);
@@ -27645,8 +26990,8 @@ __int64            vswprintf_c_l_0(
         struct __crt_locale_pointers *a4,
         __int64 ArgList)
 {
-  __int64 *v9; // rax
-  __int64 result; // rax
+  __int64 *v9;
+  __int64 result;
 
   v9 = (__int64 *)sub_140001BB0();
   result = sub_140225120(*v9, a1, a2, a3, a4, ArgList);
@@ -27658,10 +27003,10 @@ __int64            vswprintf_c_l_0(
 // 14023E5DC: invalid function type 'int __cdecl vswprintf_c_l_0(#49 *const Buffer, const #66 BufferCount, const #49 *const Format, const _locale_t Locale, #67 ArgList)' has been ignored
 
 //----- (000000014023E640) ----------------------------------------------------
-__int64            sub_14023E640(char *a1, char *a2, int a3)
+__int64            crt_assert(char *a1, char *a2, int a3)
 {
-  int v6; // eax
-  __int64 retaddr; // [rsp+28h] [rbp+0h]
+  int v6;
+  __int64 retaddr;
 
   v6 = set_error_mode(3);
   if ( v6 == 1 || !v6 && (unsigned int)sub_14024774C() == 1 )
@@ -27669,24 +27014,22 @@ __int64            sub_14023E640(char *a1, char *a2, int a3)
   return sub_14023D4F4(a1, a2, a3, retaddr);
 }
 
-
 //----- (000000014023E6B4) ----------------------------------------------------
 __int64 sub_14023E6B4(__int64 a1, __int64 a2, ...)
 {
-  __int64 *v4; // rax
-  va_list va; // [rsp+60h] [rbp+18h] BYREF
+  __int64 *v4;
+  va_list va;
 
   va_start(va, a2);
   v4 = (__int64 *)sub_140001BB0();
   return sub_140224C90(*v4, a1, a2, 0, (__int64)va);
 }
 
-
 //----- (000000014023E6F8) ----------------------------------------------------
 __int64            sub_14023E6F8(__m128i *a1, unsigned __int64 a2,      __m128i *a3, unsigned __int64 a4)
 {
-  int *v8; // rax
-  unsigned int v9; // ebx
+  int *v8;
+  unsigned int v9;
 
   if ( !a4 )
     return 0;
@@ -27694,10 +27037,10 @@ __int64            sub_14023E6F8(__m128i *a1, unsigned __int64 a2,      __m128i 
     goto LABEL_4;
   if ( a3 && a2 >= a4 )
   {
-    sub_1401FC920(a1, a3, a4);
+    crt_memcpy(a1, a3, a4);
     return 0;
   }
-  sub_1401FCD30((void *)(uintptr_t)(a1), 0, a2);
+  crt_memset((void *)(uintptr_t)(a1), 0, a2);
   if ( !a3 )
   {
 LABEL_4:
@@ -27705,7 +27048,7 @@ LABEL_4:
     v9 = 22;
 LABEL_5:
     *v8 = v9;
-    sub_14024CF6C();
+    crt_invalid_parameter_noinfo();
     return v9;
   }
   if ( a2 < a4 )
@@ -27717,13 +27060,12 @@ LABEL_5:
   return 22;
 }
 
-
 //----- (000000014023E780) ----------------------------------------------------
 __int64 swprintf_0_sr(_WORD *a1, __int64 a2, __int64 a3, ...)
 {
-  __int64 *v6; // rax
-  __int64 result; // rax
-  va_list va; // [rsp+78h] [rbp+20h] BYREF
+  __int64 *v6;
+  __int64 result;
+  va_list va;
 
   va_start(va, a3);
   v6 = (__int64 *)sub_140001BB0();
@@ -27733,19 +27075,17 @@ __int64 swprintf_0_sr(_WORD *a1, __int64 a2, __int64 a3, ...)
   return result;
 }
 
-// 14023E780: using guessed type __int64 swprintf_0(_QWORD, _QWORD, _QWORD, ...);
-
 //----- (000000014023E7D4) ----------------------------------------------------
 double         acos(double X)
 {
-  __int64 v1; // rdx
-  double v2; // xmm6_8
-  double v3; // xmm5_8
-  double v4; // xmm6_8
-  double v5; // xmm1_8
-  double v6; // xmm4_8
-  double v7; // [rsp+70h] [rbp+8h]
-  double v8; // [rsp+78h] [rbp+10h]
+  __int64 v1;
+  double v2;
+  double v3;
+  double v4;
+  double v5;
+  double v6;
+  double v7;
+  double v8;
 
   v7 = 0.0;
   v1 = (*(_QWORD *)&X >> 52) & 0x7FFLL;
@@ -27753,7 +27093,7 @@ double         acos(double X)
     return handle_nan_sr(*(__int64 *)&X);
   if ( (unsigned int)v1 < 0x3C7 )
   {
-    v2 = 1.5707963267948966;
+    v2 = 1.570796326794897;
 LABEL_10:
     set_statfp(32);
     return v2;
@@ -27777,17 +27117,17 @@ LABEL_10:
       v5 = v7;
       v3 = v7;
     }
-    v6 = (((((v4 * 0.0000482901920344787 + 0.0010924269723507467) * v4 - 0.054998980923568586) * v4 + 0.27555817525693765)
+    v6 = (((((v4 * 0.0000482901920344787 + 0.001092426972350747) * v4 - 0.05499898092356859) * v4 + 0.2755581752569377)
          * v4
          - 0.4450172168676356)
         * v4
-        + 0.22748583555693502)
+        + 0.227485835556935)
        * v4
-       / ((((v4 * 0.10586942208720437 - 0.9436391370324927) * v4 + 2.76568859157271) * v4 - 3.2843150572095867) * v4
-        + 1.3649150133416104);
+       / ((((v4 * 0.1058694220872044 - 0.9436391370324927) * v4 + 2.76568859157271) * v4 - 3.284315057209587) * v4
+        + 1.36491501334161);
     if ( (unsigned int)v1 < 0x3FE )
     {
-      return 1.5707963267948966 - (X - (6.123233995736766e-17 - v6 * X));
+      return 1.570796326794897 - (X - (6.123233995736766e-17 - v6 * X));
     }
     else if ( X >= 0.0 )
     {
@@ -27821,17 +27161,16 @@ LABEL_10:
   return X;
 }
 
-
 //----- (000000014023EAC0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 double            unknown_libname_734(double a1, char a2)
 {
   /* The original keeps the double argument (xmm0) in xmm6 across set_statfp and returns it. */
-  char v3; // r8
-  char v4; // cl
-  char v6; // dl
-  char v7; // cl
+  char v3;
+  char v4;
+  char v6;
+  char v7;
 
   v3 = (8 * (a2 & 1)) | 0x10;
   if ( (a2 & 2) == 0 )
@@ -27848,7 +27187,6 @@ double            unknown_libname_734(double a1, char a2)
   set_statfp(v7);
   return a1;
 }
-
 
 //----- (000000014023EB20) ----------------------------------------------------
 float            sub_14023EB20(float a1)
@@ -27858,7 +27196,6 @@ float            sub_14023EB20(float a1)
   extern float crt_asinf(float x);
   return crt_asinf(a1);
 }
-// 140279870: using guessed type __int128 xmmword_140279870;
 
 //----- (000000014023ED84) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
@@ -27866,10 +27203,10 @@ float            sub_14023EB20(float a1)
 double            unknown_libname_735(double a1, char a2)
 {
   /* The original keeps the double argument (xmm0) in xmm6 across set_statfp and returns it. */
-  char v3; // r8
-  char v4; // cl
-  char v6; // dl
-  char v7; // cl
+  char v3;
+  char v4;
+  char v6;
+  char v7;
 
   v3 = (8 * (a2 & 1)) | 0x10;
   if ( (a2 & 2) == 0 )
@@ -27887,40 +27224,39 @@ double            unknown_libname_735(double a1, char a2)
   return a1;
 }
 
-
 //----- (000000014023EDE4) ----------------------------------------------------
 double            sub_14023EDE4(double result, double a2)
 {
-  double v2; // xmm8_8
-  __int64 v3; // rdi
-  double v4; // xmm9_8
-  __int64 v5; // r15
-  __int64 v6; // rdx
-  int v7; // esi
-  unsigned __int64 v8; // r13
-  double v9; // rcx
-  unsigned __int64 v10; // rbx
-  __int64 v11; // xmm0_8
-  double v12; // xmm0_8
-  unsigned __int64 v13; // rcx
-  __int64 v14; // xmm0_8
-  double v15; // xmm0_8
-  double v16; // rsi
-  double v17; // rax
-  __int64 v18; // rcx
-  unsigned __int64 v19; // rax
-  double v20; // rbx
-  int v21; // r8d
-  double v22; // xmm0_8
-  double v23; // xmm5_8
-  __int64 v24; // rcx
-  double v25; // xmm7_8
-  double v26; // xmm10_8
-  double v27; // xmm6_8
-  int v28; // kr00_4
-  double v29; // xmm3_8
-  double v30; // xmm4_8
-  double v31; // xmm10_8
+  double v2;
+  __int64 v3;
+  double v4;
+  __int64 v5;
+  __int64 v6;
+  int v7;
+  unsigned __int64 v8;
+  double v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  double v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  double v15;
+  double v16;
+  double v17;
+  __int64 v18;
+  unsigned __int64 v19;
+  double v20;
+  int v21;
+  double v22;
+  double v23;
+  __int64 v24;
+  double v25;
+  double v26;
+  double v27;
+  int v28;
+  double v29;
+  double v30;
+  double v31;
 
   v2 = result;
   v3 = *(_QWORD *)&result;
@@ -27950,7 +27286,7 @@ double            sub_14023EDE4(double result, double a2)
   {
     set_statfp(32);
     if ( result < 0.0 )
-      return -1.5707963267948966;
+      return -1.570796326794897;
     v6 = *(_QWORD *)&a2 & 0x7FFFFFFFFFFFFFFFLL;
   }
   if ( (unsigned int)v5 < 0x3FD && ((unsigned __int16)(*(_QWORD *)&result >> 52) & 0x7FFu) < 0x3FD )
@@ -27989,8 +27325,8 @@ double            sub_14023EDE4(double result, double a2)
   {
     set_statfp(32);
     if ( v3 >= 0 )
-      return 1.5707963267948966;
-    return -1.5707963267948966;
+      return 1.570796326794897;
+    return -1.570796326794897;
   }
   if ( v7 >= -28 || a2 < 0.0 )
   {
@@ -28049,8 +27385,8 @@ LABEL_48:
                - (v23 - COERCE_DOUBLE(*(_QWORD *)&v23 & 0xFFFFFFFF00000000uLL)) * v4)
               / v4
               - (0.3333333333333317
-               - (0.19999999999393223
-                - (0.1428571356180717 - (0.11110736283514526 - v23 * v23 * 0.09002981028544979) * (v23 * v23))
+               - (0.1999999999939322
+                - (0.1428571356180717 - (0.1111073628351453 - v23 * v23 * 0.09002981028544979) * (v23 * v23))
                 * (v23
                  * v23))
                * (v23
@@ -28080,16 +27416,16 @@ LABEL_48:
                 & 0xFFFFFFFFF8000000uLL))
              * v27)
             / (v27 * v29 + COERCE_DOUBLE((v28 / 2 + 1023LL) << 52) * v4 * COERCE_DOUBLE(((int)v24 + 1023LL) << 52));
-        v23 = v30 + v25 - (0.33333333333224097 - v30 * v30 * 0.19999918038989142) * (v30 * v30) * v30;
+        v23 = v30 + v25 - (0.333333333332241 - v30 * v30 * 0.1999991803898914) * (v30 * v30) * v30;
       }
       if ( v21 )
       {
-        v26 = 1.5707963267948966 - v26;
+        v26 = 1.570796326794897 - v26;
         v23 = 6.123233995736766e-17 - v23;
       }
       if ( a2 < 0.0 )
       {
-        v26 = 3.1415926218032837 - v26;
+        v26 = 3.141592621803284 - v26;
         v23 = 0.00000003178650954705639 - v23;
       }
       v31 = v26 + v23;
@@ -28106,7 +27442,7 @@ LABEL_48:
     }
     else
     {
-      v17 = fabs(1.2676506002282294e+30 * v2 / v4);
+      v17 = fabs(1.267650600228229e30 * v2 / v4);
       v18 = *(_QWORD *)&v17 >> 52;
       if ( (unsigned int)(*(_QWORD *)&v17 >> 52) <= 0x64 )
       {
@@ -28118,7 +27454,7 @@ LABEL_48:
       {
         v10 = *(_QWORD *)&v17 & 0x800FFFFFFFFFFFFFuLL | ((v18 - 100) << 52);
       }
-      *(_QWORD *)&v20 = COERCE_UNSIGNED_INT64(1.2676506002282294e+30 * v2 / v4) & 0x8000000000000000uLL | v10;
+      *(_QWORD *)&v20 = COERCE_UNSIGNED_INT64(1.267650600228229e30 * v2 / v4) & 0x8000000000000000uLL | v10;
       if ( (*(_QWORD *)&v20 & 0x7FF0000000000000LL) == 0 )
         set_statfp(32);
       return v20;
@@ -28134,19 +27470,16 @@ LABEL_48:
   }
 }
 
-// 140285F30: using guessed type double qword_140285F30[242];
-// 1402866C0: using guessed type double qword_1402866C0[249];
-
 //----- (000000014023F6A4) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 double            unknown_libname_736(double a1, char a2)
 {
   /* The original keeps the double argument (xmm0) in xmm6 across set_statfp and returns it. */
-  char v3; // r8
-  char v4; // cl
-  char v6; // dl
-  char v7; // cl
+  char v3;
+  char v4;
+  char v6;
+  char v7;
 
   v3 = (8 * (a2 & 1)) | 0x10;
   if ( (a2 & 2) == 0 )
@@ -28164,30 +27497,29 @@ double            unknown_libname_736(double a1, char a2)
   return a1;
 }
 
-
 //----- (000000014023F704) ----------------------------------------------------
 float            sub_14023F704(float result, float a2)
 {
-  double v2; // xmm7_8
-  double v3; // xmm6_8
-  double v4; // r14
-  double v5; // rdi
-  int v6; // esi
-  double v7; // r12
-  double v8; // r15
-  unsigned __int64 v10; // rbx
-  double v11; // rax
-  unsigned __int64 v12; // r8
-  __int64 v13; // rdx
-  unsigned __int64 v14; // rax
-  float v15; // xmm6_4
-  int v16; // edx
-  double v17; // xmm0_8
-  double v18; // xmm4_8
-  int v19; // eax
-  double v20; // xmm3_8
-  double v21; // xmm0_8
-  float v22; // [rsp+80h] [rbp+8h]
+  double v2;
+  double v3;
+  double v4;
+  double v5;
+  int v6;
+  double v7;
+  double v8;
+  unsigned __int64 v10;
+  double v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  float v15;
+  int v16;
+  double v17;
+  double v18;
+  int v19;
+  double v20;
+  double v21;
+  float v22;
 
   v2 = a2;
   v3 = result;
@@ -28214,9 +27546,9 @@ float            sub_14023F704(float result, float a2)
 LABEL_33:
       set_statfp(32);
       if ( v5 >= 0.0 )
-        return 3.1415927410125732;
+        return 3.1415927;
       else
-        return -3.1415927410125732;
+        return -3.1415927;
     }
     return v3;
   }
@@ -28224,14 +27556,14 @@ LABEL_33:
   {
     set_statfp(32);
     if ( v5 < 0.0 )
-      return -1.5707963705062866;
+      return -1.5707964;
   }
   if ( v6 > 26 )
   {
     set_statfp(32);
     if ( v5 >= 0.0 )
-      return 1.5707963705062866;
-    return -1.5707963705062866;
+      return 1.5707964;
+    return -1.5707964;
   }
   if ( v6 >= -13 || v4 < 0.0 )
   {
@@ -28243,17 +27575,17 @@ LABEL_33:
       if ( v4 >= 0.0 )
       {
         if ( v5 >= 0.0 )
-          return 0.7853981852531433;
+          return 0.78539819;
         else
-          return -0.7853981852531433;
+          return -0.78539819;
       }
       else if ( v5 >= 0.0 )
       {
-        return 2.356194496154785;
+        return 2.3561945;
       }
       else
       {
-        return -2.356194496154785;
+        return -2.3561945;
       }
     }
     if ( v4 < 0.0 )
@@ -28275,14 +27607,14 @@ LABEL_33:
       {
 LABEL_56:
         if ( v16 )
-          v18 = 1.5707963267948966 - v18;
+          v18 = 1.570796326794897 - v18;
         if ( v4 < 0.0 )
           v18 = 3.141592653589793 - v18;
         if ( v5 < 0.0 )
           return -v18;
         return v18;
       }
-      v21 = (0.3333333333333317 - (0.19999999999393223 - v18 * v18 * 0.1428571356180717) * (v18 * v18))
+      v21 = (0.3333333333333317 - (0.1999999999939322 - v18 * v18 * 0.1428571356180717) * (v18 * v18))
           * (v18
            * v18
            * v18);
@@ -28292,7 +27624,7 @@ LABEL_56:
       v19 = (int)(v18 * 256.0 + 0.5);
       v20 = (v3 * 256.0 - (double)v19 * v2) / ((double)v19 * v3 + v2 * 256.0);
       v18 = v20 + dbl_140286F10[v19 - 16];
-      v21 = v20 * v20 * v20 * 0.33333333333224097;
+      v21 = v20 * v20 * v20 * 0.333333333332241;
     }
     v18 = v18 - v21;
     goto LABEL_56;
@@ -28301,8 +27633,8 @@ LABEL_56:
   {
     if ( v6 >= -126 )
       return v3 / v2;
-    v11 = fabs(1.2676506002282294e+30 * v3 / v2);
-    v12 = COERCE_UNSIGNED_INT64(1.2676506002282294e+30 * v3 / v2) & 0x8000000000000000uLL;
+    v11 = fabs(1.267650600228229e30 * v3 / v2);
+    v12 = COERCE_UNSIGNED_INT64(1.267650600228229e30 * v3 / v2) & 0x8000000000000000uLL;
     v13 = *(_QWORD *)&v11 >> 52;
     if ( (unsigned int)(*(_QWORD *)&v11 >> 52) <= 0x64 )
     {
@@ -28329,18 +27661,16 @@ LABEL_56:
   }
 }
 
-// 140286F10: using guessed type double dbl_140286F10[245];
-
 //----- (000000014023FC08) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 // Microsoft VisualC 64bit universal runtime
 double            unknown_libname_737(double a1, char a2)
 {
   /* The original keeps the double argument (xmm0) in xmm6 across set_statfp and returns it. */
-  char v3; // r8
-  char v4; // cl
-  char v6; // dl
-  char v7; // cl
+  char v3;
+  char v4;
+  char v6;
+  char v7;
 
   v3 = (8 * (a2 & 1)) | 0x10;
   if ( (a2 & 2) == 0 )

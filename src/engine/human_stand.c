@@ -14,12 +14,12 @@
 #include "physics.h"
 
 enum { HUMAN_BONE_THIGH = 10, HUMAN_BONE_SHIN = 11 };   /* + 3 * leg */
-enum { HUMAN_STATE_STAND = 0, HUMAN_STATE_FALL = 1 };   /* WorldHuman.movement_state */
+enum { HUMAN_STATE_STAND = 0, HUMAN_STATE_FALL = 1 };   /* WorldHuman.unknown_58 */
 enum { LEG_LOOSE = 0, LEG_PLANTED = 1, LEG_STEPPING = 3, LEG_STATE_8 = 8 };
 
 /* A length in the skeleton's record of each shin (its field at 0x30),
    taken off 3/32 where a planted foot's point is set back from the foot. */
-#define skeleton_shin_offset(bone) (human_skeleton[bone].shin_offset)
+#define skeleton_unknown_30(bone) SR_GLOBAL(float, 0x18399DF20ULL + 100ULL * (uint64_t)(bone) + 0x30)
 
 static const float up[3] = {0.0f, 1.0f, 0.0f};
 
@@ -35,7 +35,7 @@ static void heading_axes(float m[9], float yaw)
 /* Where a leg's hip joint is (as in human_legs.c). */
 static void hip_point(const HumanBone *pelvis, int leg, float hip[3])
 {
-    const float *anchor = human_skeleton[HUMAN_BONE_THIGH - 1 + 3 * leg].anchor;
+    const float *anchor = human_skeleton[HUMAN_BONE_THIGH - 1 + 3 * leg].unknown_34;
 
     hip[0] = (pelvis->rotation[0] * anchor[0] + pelvis->position[0]) + anchor[1] * pelvis->rotation[3];
     hip[1] = (pelvis->rotation[1] * anchor[0] + pelvis->position[1]) + anchor[1] * pelvis->rotation[4];
@@ -48,7 +48,7 @@ static void yaw_from_pelvis(WorldHuman *h)
     const float *r = h->bones[HUMAN_BONE_PELVIS].rotation;
 
     if (!(0.875f >= r[4]))
-        h->view_yaw = crt_atan2f(-r[6], r[8]);
+        h->unknown_98 = crt_atan2f(-r[6], r[8]);
 }
 
 /* Standing or falling: a standing human with both legs loose that is off
@@ -56,23 +56,23 @@ static void yaw_from_pelvis(WorldHuman *h)
    not rising stands. */
 static void update_state(WorldHuman *h)
 {
-    if (h->movement_state == HUMAN_STATE_STAND) {
-        h->standing = 1;
+    if (h->unknown_58 == HUMAN_STATE_STAND) {
+        h->unknown_7c = 1;
         if (h->legs[0].state == LEG_LOOSE && h->legs[1].state == LEG_LOOSE) {
-            if (!h->on_ground || !(0.016666668f >= h->centre_velocity[1])) {
+            if (!h->unknown_54 || !(0.016666668f >= h->centre_velocity[1])) {
                 yaw_from_pelvis(h);
-                h->movement_state = HUMAN_STATE_FALL;
-                h->jump_charge = 0;
+                h->unknown_58 = HUMAN_STATE_FALL;
+                h->unknown_6734 = 0;
             }
-            h->standing = 0;
+            h->unknown_7c = 0;
         }
-    } else if (h->movement_state == HUMAN_STATE_FALL) {
-        h->standing = 0;
-        h->jump_charge = 0;
+    } else if (h->unknown_58 == HUMAN_STATE_FALL) {
+        h->unknown_7c = 0;
+        h->unknown_6734 = 0;
         yaw_from_pelvis(h);
-        if (h->on_ground && 0.016666668f > h->centre_velocity[1]) {
-            h->movement_state = HUMAN_STATE_STAND;
-            h->standing = 1;
+        if (h->unknown_54 && 0.016666668f > h->centre_velocity[1]) {
+            h->unknown_58 = HUMAN_STATE_STAND;
+            h->unknown_7c = 1;
         }
     }
 }
@@ -85,7 +85,7 @@ static void set_ground_grip(const WorldHuman *h, int leg, float fast)
     const HumanLeg *l = &h->legs[leg];
     PhysicsBond *bond;
 
-    if (!h->bones[HUMAN_BONE_FOOT + 3 * leg].ground_bond_count || l->ground_bond == -1)
+    if (!h->bones[HUMAN_BONE_FOOT + 3 * leg].unknown_130 || l->ground_bond == -1)
         return;
     bond = &physics_bonds[l->ground_bond];
     bond->local_point[0] = 0.0f;
@@ -135,8 +135,8 @@ void human_stand_legs(int human)
     float fast, lean, sum, x, y, z, length, angle, upright;
     double tilt, half;
 
-    fast = min_float(max_float(sqrt_float((h->trunk_velocity[0] * h->trunk_velocity[0] + h->trunk_velocity[1] * h->trunk_velocity[1])
-                                          + h->trunk_velocity[2] * h->trunk_velocity[2]) * 60.0f - 0.5f, 0.0f), 1.0f);
+    fast = min_float(max_float(sqrt_float((h->unknown_678c[0] * h->unknown_678c[0] + h->unknown_678c[1] * h->unknown_678c[1])
+                                          + h->unknown_678c[2] * h->unknown_678c[2]) * 60.0f - 0.5f, 0.0f), 1.0f);
     if (h->parts[HUMAN_PART_LEFT_LEG].health < 100)
         leg_health[0] = (float)h->parts[HUMAN_PART_LEFT_LEG].health * 0.0099999998f;
     if (h->parts[HUMAN_PART_RIGHT_LEG].health < 100)
@@ -145,20 +145,20 @@ void human_stand_legs(int human)
     update_state(h);
 
     for (int k = 0; k < 3; k++) {
-        h->hip_turn[0][k] = 0.0f;
-        h->hip_turn[1][k] = 0.0f;
+        h->unknown_67c8[k] = 0.0f;
+        h->unknown_67d4[k] = 0.0f;
     }
     for (int leg = 0; leg < 2; leg++) {
         const HumanBone *shin = &h->bones[HUMAN_BONE_SHIN + 3 * leg];
-        float reach = human_skeleton[HUMAN_BONE_SHIN + 3 * leg].anchor[1];
+        float reach = human_skeleton[HUMAN_BONE_SHIN + 3 * leg].unknown_34[1];
 
         for (int k = 0; k < 3; k++)
             ankles[leg][k] = reach * shin->rotation[3 + k] + shin->position[k];
     }
     hip_point(pelvis, 0, hips[0]);
     hip_point(pelvis, 1, hips[1]);
-    heading_axes(axes, h->view_yaw);
-    heading_axes(wanted, h->view_yaw);
+    heading_axes(axes, h->unknown_98);
+    heading_axes(wanted, h->unknown_98);
 
     /* How far the ankles are behind the hips along the heading, eased
        (half as much with both legs loose). */
@@ -171,7 +171,7 @@ void human_stand_legs(int human)
     }
     if (h->legs[0].state == LEG_LOOSE && h->legs[1].state == LEG_LOOSE)
         sum = sum * 0.5f;
-    h->stride_lean = (sum - h->stride_lean) * 0.5f + h->stride_lean;
+    h->unknown_6acc = (sum - h->unknown_6acc) * 0.5f + h->unknown_6acc;
 
     human_update_walk_point(human);
 
@@ -203,9 +203,9 @@ void human_stand_legs(int human)
         wanted_centre[leg][2] = h->walk_point[2];
     }
     h->walk_velocity[1] = 0.0f;
-    h->step_offset[0] = h->walk_velocity[0] + h->ground_velocity[0];
-    h->step_offset[1] = h->walk_velocity[1] + h->ground_velocity[1];
-    h->step_offset[2] = h->walk_velocity[2] + h->ground_velocity[2];
+    h->unknown_6890[0] = h->walk_velocity[0] + h->ground_velocity[0];
+    h->unknown_6890[1] = h->walk_velocity[1] + h->ground_velocity[1];
+    h->unknown_6890[2] = h->walk_velocity[2] + h->ground_velocity[2];
 
     human_plan_steps(human, hips, ankles);
 
@@ -220,9 +220,9 @@ void human_stand_legs(int human)
         share[1] = h->legs[1].contact;
     }
     for (int leg = 0; leg < 2; leg++) {
-        targets[leg][0] = hips[leg][0] + h->trunk_velocity[0];
-        targets[leg][1] = hips[leg][1] + h->trunk_velocity[1];
-        targets[leg][2] = hips[leg][2] + h->trunk_velocity[2];
+        targets[leg][0] = hips[leg][0] + h->unknown_678c[0];
+        targets[leg][1] = hips[leg][1] + h->unknown_678c[1];
+        targets[leg][2] = hips[leg][2] + h->unknown_678c[2];
         turns[leg][0] = 0.0f;
         turns[leg][1] = 0.0f;
         turns[leg][2] = 0.0f;
@@ -262,7 +262,7 @@ void human_stand_legs(int human)
     }
     half = crt_acos(min_float(max_float(turn_q[3], -1.0f), 1.0f));
     angle = (float)(half + half);
-    upright = max_float(min_float(h->smoothed_rotation[4] + 0.5f, 1.0f), 0.125f) * 0.25f;
+    upright = max_float(min_float(h->unknown_6768 + 0.5f, 1.0f), 0.125f) * 0.25f;
     x = (x * angle) * upright;
     y = (y * angle) * upright;
     z = (z * angle) * upright;
@@ -293,7 +293,7 @@ void human_stand_legs(int human)
 
         /* The foot's rotation wanted, relative to the body's: along the
            heading (a planted foot: along its own yaw), pitched. */
-        heading_axes(axes, h->view_yaw);
+        heading_axes(axes, h->unknown_98);
         math_mat3_rotate_rows(axes, &axes[0], -l->pitch);
         state = l->state;
         if (state == LEG_PLANTED) {
@@ -313,9 +313,9 @@ void human_stand_legs(int human)
 
         /* Where the hip is taken to be: on by the body's velocity, or
            where the balance sends it. */
-        tx = hips[leg][0] + h->trunk_velocity[0];
-        ty = hips[leg][1] + h->trunk_velocity[1];
-        tz = hips[leg][2] + h->trunk_velocity[2];
+        tx = hips[leg][0] + h->unknown_678c[0];
+        ty = hips[leg][1] + h->unknown_678c[1];
+        tz = hips[leg][2] + h->unknown_678c[2];
         if (state == LEG_PLANTED) {
             ty = targets[leg][1];
             tz = targets[leg][2];
@@ -349,9 +349,9 @@ void human_stand_legs(int human)
             to[2] = from[2] - up[2] * 0.5f;
             if (human_probe_ground(human, from, to))
                 by = collision_hit.point[1] + 0.03125f;
-            if (foot->ground_bond_count)
+            if (foot->unknown_130)
                 by = l->ground_height + 0.03125f;
-            forward = 0.09375f - skeleton_shin_offset(HUMAN_BONE_SHIN + 3 * leg);
+            forward = 0.09375f - skeleton_unknown_30(HUMAN_BONE_SHIN + 3 * leg);
             state = l->state;
             fx = axes[6] * forward + bx;
             fy = axes[7] * forward + by;
@@ -375,14 +375,14 @@ void human_stand_legs(int human)
             fy = r[4] * hang + ty;
             fz = r[5] * hang + tz;
             fx = r[3] * hang + tx;
-            if (h->on_ground) {
-                fy = fy - max_float(h->smoothed_rotation[4], 0.0f) * 0.25f;
-            } else if (0.016666668f > h->trunk_velocity[1]) {
+            if (h->unknown_54) {
+                fy = fy - max_float(h->unknown_6768, 0.0f) * 0.25f;
+            } else if (0.016666668f > h->unknown_678c[1]) {
                 float level = max_float(r[4], 0.0f);
                 float vz = level * h->centre_velocity[2];
                 float vx = level * h->centre_velocity[0];
 
-                if (leg == h->push_leg) {
+                if (leg == h->unknown_68b4) {
                     fx = vx * 6.0f + fx;
                     fz = vz * 6.0f + fz;
                 } else {
@@ -415,8 +415,8 @@ void human_stand_legs(int human)
             unknown_8c[1] = 0x3E800000u;
             unknown_8c[2] = 0x3E800000u;
         }
-        if (h->damage_ticks > 0) {
-            float loose = 0.125f - min_float((float)h->damage_ticks * 0.033333335f, 1.0f) * 0.09375f;
+        if (h->unknown_78 > 0) {
+            float loose = 0.125f - min_float((float)h->unknown_78 * 0.033333335f, 1.0f) * 0.09375f;
             uint32_t bits;
 
             __builtin_memcpy(&bits, &loose, 4);

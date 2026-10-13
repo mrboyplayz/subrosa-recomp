@@ -1,21 +1,5 @@
 #include "shared_client.h"
 
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
 //----- (000000014007A570) ----------------------------------------------------
 __int64            sub_14007A570(int a1, int a2, int a3, int a4, float a5, float a6, float a7)
 {
@@ -25,119 +9,98 @@ __int64            sub_14007A570(int a1, int a2, int a3, int a4, float a5, float
   return 0;
 }
 
-// 1400947A1: variable 'v0' is possibly undefined
-// 1400947BB: variable 'v1' is possibly undefined
-// 140094953: variable 'v11' is possibly undefined
-// 140094960: variable 'v12' is possibly undefined
-// 140094A5F: variable 'v13' is possibly undefined
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 1404042E8: using guessed type __int64 (__fastcall *unk_1404042E8)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 150F55020: using guessed type unsigned int;
-// 18417E1B4: using guessed type unsigned int;
-
 //----- (0000000140094A90) ----------------------------------------------------
 __int64 sub_140094A90()
 {
-  unsigned int v0; // r12d
-  unsigned int *v1; // rbx
-  unsigned int *v2; // rdi
-  unsigned int v3; // r13d
-  __int64 v4; // r15
-  __int64 v5; // r11
-  __int64 v6; // kr08_8
-  int *v7; // r10
-  int v8; // r14d
-  __int64 v9; // r8
-  int v10; // ecx
-  unsigned int *v11; // r9
-  int v12; // edx
-  float *v13; // rax
-  float *v14; // r8
-  signed __int64 v15; // rcx
-  __int64 v16; // r10
-  float v17; // xmm3_4
-  __int64 v18; // rdx
-  float v19; // xmm4_4
-  float v20; // xmm5_4
-  float v21; // xmm6_4
-  float *v22; // r14
-  float *v23; // rax
-  float *v24; // r8
-  signed __int64 v25; // rcx
-  __int64 v26; // r10
-  float v27; // xmm3_4
-  __int64 v28; // rdx
-  float v29; // xmm4_4
-  float v30; // xmm5_4
-  float v31; // xmm6_4
-  float *v32; // rax
-  float *v33; // r8
-  signed __int64 v34; // rcx
-  __int64 v35; // r10
-  float v36; // xmm3_4
-  __int64 v37; // rdx
-  float v38; // xmm4_4
-  float v39; // xmm5_4
-  float v40; // xmm6_4
-  float *v41; // rsi
-  float *v42; // rax
-  float *v43; // r8
-  signed __int64 v44; // rcx
-  __int64 v45; // r10
-  float v46; // xmm3_4
-  __int64 v47; // rdx
-  float v48; // xmm4_4
-  float v49; // xmm5_4
-  float v50; // xmm6_4
-  __int64 v51; // r9
-  __int64 v52; // rdx
-  __int64 v53; // rcx
-  __int64 v54; // r8
-  __int64 v55; // r9
-  __int64 v56; // rdx
-  __int64 v57; // r8
-  __int64 v58; // r8
-  __int64 v59; // r8
-  __int64 v60; // rcx
-  float v61; // xmm7_4
-  float *v62; // rax
-  float *v63; // r8
-  signed __int64 v64; // rcx
-  __int64 v65; // r10
-  float v66; // xmm3_4
-  __int64 v67; // rdx
-  float v68; // xmm4_4
-  float v69; // xmm5_4
-  float v70; // xmm6_4
-  float *v71; // rax
-  __int64 v72; // r8
-  signed __int64 v73; // rdi
-  float v74; // xmm3_4
-  __int64 v75; // rcx
-  float v76; // xmm4_4
-  float v77; // xmm5_4
-  float v78; // xmm6_4
-  float *v79; // rax
-  signed __int64 v80; // rbx
-  __int64 v81; // r8
-  float v82; // xmm3_4
-  __int64 v83; // rcx
-  float v84; // xmm4_4
-  float v85; // xmm5_4
-  float v86; // xmm6_4
-  __int64 v87; // rdx
-  __int64 v88; // r8
+  unsigned int v0;
+  unsigned int *v1;
+  unsigned int *v2;
+  unsigned int v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  int *v7;
+  int v8;
+  __int64 v9;
+  int v10;
+  unsigned int *v11;
+  int v12;
+  float *v13;
+  float *v14;
+  signed __int64 v15;
+  __int64 v16;
+  float v17;
+  __int64 v18;
+  float v19;
+  float v20;
+  float v21;
+  float *v22;
+  float *v23;
+  float *v24;
+  signed __int64 v25;
+  __int64 v26;
+  float v27;
+  __int64 v28;
+  float v29;
+  float v30;
+  float v31;
+  float *v32;
+  float *v33;
+  signed __int64 v34;
+  __int64 v35;
+  float v36;
+  __int64 v37;
+  float v38;
+  float v39;
+  float v40;
+  float *v41;
+  float *v42;
+  float *v43;
+  signed __int64 v44;
+  __int64 v45;
+  float v46;
+  __int64 v47;
+  float v48;
+  float v49;
+  float v50;
+  __int64 v51;
+  __int64 v52;
+  __int64 v53;
+  __int64 v54;
+  __int64 v55;
+  __int64 v56;
+  __int64 v57;
+  __int64 v58;
+  __int64 v59;
+  __int64 v60;
+  float v61;
+  float *v62;
+  float *v63;
+  signed __int64 v64;
+  __int64 v65;
+  float v66;
+  __int64 v67;
+  float v68;
+  float v69;
+  float v70;
+  float *v71;
+  __int64 v72;
+  signed __int64 v73;
+  float v74;
+  __int64 v75;
+  float v76;
+  float v77;
+  float v78;
+  float *v79;
+  signed __int64 v80;
+  __int64 v81;
+  float v82;
+  __int64 v83;
+  float v84;
+  float v85;
+  float v86;
+  __int64 v87;
+  __int64 v88;
   _Alignas(16) __int128 sr_visibility_matrix[4];
   _Alignas(16) unsigned char sr_visibility_clip[16];
   _Alignas(16) __int128 sr_visibility_basis[4];
@@ -148,7 +111,7 @@ __int64 sub_140094A90()
 #define v92 (*(__int64 (*))(void *)(sr_frame_140094A90 + 40)) /* [rsp+30h] */
 #define v104 (*(__int64 (*))(void *)(sr_frame_140094A90 + 208)) /* [rsp+D8h] */
 
-  sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[40714349]), 0, 0x400u);
+  crt_memset((void *)(uintptr_t)(&dword_140404A6C[40714349]), 0, 0x400u);
   if ( !dword_140404A6C[284024893] )
   {
     v0 = dword_140404A6C[315570520];
@@ -365,7 +328,7 @@ __int64 sub_140094A90()
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
   dword_140404A6C[456217211] = dword_140404A6C[188872559];
   dword_140404A6C[456217217] = dword_140404A6C[188872559];
-  v56 = dword_140404A6C[2 * dword_140404A6C[283791478] + 283793813];
+  v56 = dword_140404A6C[2 * effect_mesh_buffer + 283793813];
   *(_OWORD *)&dword_140404A6C[456217212] = xmmword_140279830;
   dword_140404A6C[456217208] = 6;
   *(_OWORD *)&dword_140404A6C[456217218] = xmmword_140279830;
@@ -388,7 +351,7 @@ __int64 sub_140094A90()
   qword_140404338(dword_140404A6C[71737821], 1, &dword_140404A6C[284545209]);
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(2884);
   unk_140404098(33985);
-  qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+  qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
   unk_140404098(33984);
   ((void (*)(unsigned,float,float))unk_1404043C8)(1,0.5f,0.5f);
   qword_140404238(0);
@@ -525,28 +488,19 @@ __int64 sub_140094A90()
 #undef v92
 #undef v104
 
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 183F7C544: using guessed type unsigned int;
-// 183F7C548: using guessed type unsigned int;
-// 183F7C54C: using guessed type unsigned int;
-// 1841FA224: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-
 //----- (000000014011DDB0) ----------------------------------------------------
 __int64            sub_14011DDB0(int a1, int a2)
 {
-  __int64 result; // rax
-  __int64 v4; // rdi
-  __int64 v5; // r15
-  unsigned int *v6; // rsi
-  __int64 v7; // r9
-  signed int v8; // edi
-  __int64 v9; // r14
-  unsigned int *v10; // rbx
-  __int64 v11; // rcx
-  _UNKNOWN *retaddr; // [rsp+58h] [rbp+0h] BYREF
+  __int64 result;
+  __int64 v4;
+  __int64 v5;
+  unsigned int *v6;
+  __int64 v7;
+  signed int v8;
+  __int64 v9;
+  unsigned int *v10;
+  __int64 v11;
+  _UNKNOWN *retaddr;
 
   result = (__int64)&retaddr;
   v4 = a1;
@@ -623,345 +577,286 @@ __int64            sub_14011DDB0(int a1, int a2)
   return result;
 }
 
-// 14011EE07: variable 'v0' is possibly undefined
-// 14011EE14: variable 'v27' is possibly undefined
-// 14011F28D: variable 'v80' is possibly undefined
-// 14011F28D: variable 'v81' is possibly undefined
-// 14011F2A8: variable 'v82' is possibly undefined
-// 14011F2A8: variable 'v83' is possibly undefined
-// 14011F2FB: variable 'v49' is possibly undefined
-// 14011F2FB: variable 'v48' is possibly undefined
-// 14011F2FB: variable 'v50' is possibly undefined
-// 14011F77A: variable 'v84' is possibly undefined
-// 14011F77A: variable 'v86' is possibly undefined
-// 14011F78E: variable 'v159' is possibly undefined
-// 14011F78E: variable 'v160' is possibly undefined
-// 14011F7A2: variable 'v161' is possibly undefined
-// 14011F7A2: variable 'v162' is possibly undefined
-// 14011F7B7: variable 'v163' is possibly undefined
-// 14011F7B7: variable 'v164' is possibly undefined
-// 14011F7CC: variable 'v165' is possibly undefined
-// 14011F7CC: variable 'v166' is possibly undefined
-// 14011F7E1: variable 'v167' is possibly undefined
-// 14011F7E1: variable 'v168' is possibly undefined
-// 14011F7F6: variable 'v169' is possibly undefined
-// 14011F7F6: variable 'v170' is possibly undefined
-// 14011F80B: variable 'v171' is possibly undefined
-// 14011F80B: variable 'v172' is possibly undefined
-// 14011F834: variable 'v85' is possibly undefined
-// 14011FA32: variable 'v175' is possibly undefined
-// 14011FA92: variable 'v197' is possibly undefined
-// 14011FA92: variable 'v198' is possibly undefined
-// 14011FB04: variable 'v173' is possibly undefined
-// 14011FB13: variable 'v204' is possibly undefined
-// 14011FB13: variable 'v205' is possibly undefined
-// 14011FB90: variable 'v208' is possibly undefined
-// 14011FB90: variable 'v209' is possibly undefined
-// 14011FC03: variable 'v213' is possibly undefined
-// 14011FC03: variable 'v214' is possibly undefined
-// 14011FC18: variable 'v174' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 1402794A0: using guessed type __int128 xmmword_1402794A0;
-// 1402794E0: using guessed type __int128 xmmword_1402794E0;
-// 140279550: using guessed type __int128 xmmword_140279550;
-// 140279650: using guessed type __int128 xmmword_140279650;
-// 140279660: using guessed type __int128 xmmword_140279660;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 1404043F8: using guessed type double (__fastcall *unk_1404043F8)(_QWORD);
-// 140404400: using guessed type double (__fastcall *unk_140404400)(_QWORD, _QWORD);
-// 140404468: using guessed type double (__fastcall *unk_140404468)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 175FF3464: using guessed type unsigned int;
-// 1A4BF08E0: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-
 //----- (000000014011FD00) ----------------------------------------------------
 __int64 sub_14011FD00()
 {
-  __int64 v0; // rdx
-  int v1; // esi
-  __int64 v2; // rcx
-  __int64 v3; // rax
-  __int64 v4; // rdx
-  __int64 v5; // rcx
-  __int64 v6; // r8
-  __int64 v7; // r9
-  __int64 v8; // r8
-  __int64 v9; // r12
-  __int64 v10; // rdx
-  __int64 v11; // r8
-  __int64 v12; // r8
-  unsigned int *v13; // rsi
-  unsigned int *v14; // rbx
-  __int64 v15; // r15
-  unsigned int *v16; // rdi
-  unsigned int *v17; // r14
-  __int64 v18; // r8
-  __int64 v19; // r8
-  __int64 v20; // r8
-  __int64 v21; // r8
-  int *v22; // r14
-  int v23; // edi
-  int *v24; // rbx
-  __int64 v25; // r8
-  unsigned int v26; // ecx
-  unsigned int *v27; // rdi
-  unsigned int v28; // edx
-  __int64 v29; // rbx
-  float *v30; // rax
-  float *v31; // r8
-  signed __int64 v32; // rcx
-  __int64 v33; // r10
-  float v34; // xmm3_4
-  __int64 v35; // rdx
-  float v36; // xmm4_4
-  float v37; // xmm5_4
-  float v38; // xmm6_4
-  float *v39; // rax
-  float *v40; // r8
-  signed __int64 v41; // rcx
-  __int64 v42; // r10
-  float v43; // xmm3_4
-  __int64 v44; // rdx
-  float v45; // xmm4_4
-  float v46; // xmm5_4
-  float v47; // xmm6_4
-  __int64 v48; // rdx
-  __int64 v49; // r8
-  __int64 v50; // rdx
-  __int64 v51; // r8
-  __int64 v52; // rdx
-  __int64 v53; // r8
-  float *v54; // rax
-  float *v55; // r8
-  signed __int64 v56; // rcx
-  __int64 v57; // r10
-  float v58; // xmm3_4
-  __int64 v59; // rdx
-  float v60; // xmm4_4
-  float v61; // xmm5_4
-  float v62; // xmm6_4
-  float *v63; // rax
-  float *v64; // r8
-  signed __int64 v65; // rcx
-  __int64 v66; // r10
-  float v67; // xmm3_4
-  __int64 v68; // rdx
-  float v69; // xmm4_4
-  float v70; // xmm5_4
-  float v71; // xmm6_4
-  float *v72; // rax
-  float *v73; // r8
-  signed __int64 v74; // rcx
-  __int64 v75; // r10
-  float v76; // xmm3_4
-  __int64 v77; // rdx
-  float v78; // xmm4_4
-  float v79; // xmm5_4
-  float v80; // xmm6_4
-  float *v81; // rax
-  float *v82; // r8
-  signed __int64 v83; // rcx
-  __int64 v84; // r10
-  float v85; // xmm3_4
-  __int64 v86; // rdx
-  float v87; // xmm4_4
-  float v88; // xmm5_4
-  float v89; // xmm6_4
-  int i; // ebx
-  unsigned int v91; // r9d
-  unsigned int *v92; // rcx
-  float *v93; // rdx
-  __int64 v94; // r8
-  float v95; // xmm1_4
-  unsigned int v96; // ecx
-  __int64 v97; // r8
-  unsigned int *v98; // r9
-  __int64 v99; // r10
-  __int64 v100; // rax
-  __int64 v101; // rdx
-  unsigned int v102; // xmm2_4
-  unsigned int v103; // xmm1_4
-  unsigned int v104; // xmm0_4
-  __int64 v105; // rcx
-  __int64 v106; // rcx
-  __int64 v107; // rcx
-  __int64 v108; // rcx
-  __int64 v109; // rcx
-  __int64 v110; // rcx
-  __int64 v111; // rcx
-  __int64 v112; // r8
-  __int64 v113; // r8
-  __int64 v114; // rdx
-  __int64 v115; // r8
-  __int64 v116; // r9
-  __int64 v117; // rbx
-  __int64 v118; // r8
-  __int64 v119; // r8
-  float *v120; // rax
-  signed __int64 v121; // rcx
-  float *v122; // r8
-  __int64 v123; // r10
-  float v124; // xmm3_4
-  __int64 v125; // rdx
-  float v126; // xmm4_4
-  float v127; // xmm5_4
-  float v128; // xmm6_4
-  float *v129; // rax
-  float *v130; // r8
-  signed __int64 v131; // rcx
-  __int64 v132; // r10
-  float v133; // xmm3_4
-  __int64 v134; // rdx
-  float v135; // xmm4_4
-  float v136; // xmm5_4
-  float v137; // xmm6_4
-  __int64 v138; // rcx
-  unsigned int v139; // xmm1_4
-  __int64 v140; // rcx
-  __int64 v141; // rdx
-  __int64 v142; // rcx
-  __int64 v143; // rdx
-  __int64 v144; // rcx
-  signed __int64 v145; // rcx
-  float *v146; // r8
-  signed int v147; // r11d
-  int v148; // r14d
-  __int64 v149; // rax
-  unsigned int v150; // eax
-  unsigned int *v151; // rbx
-  unsigned int *v152; // rdi
-  int j; // esi
-  float v154; // xmm4_4
-  float v155; // xmm3_4
-  float v156; // xmm5_4
-  float *v157; // rax
-  float *v158; // r8
-  signed __int64 v159; // rcx
-  __int64 v160; // r10
-  float v161; // xmm3_4
-  __int64 v162; // rdx
-  float v163; // xmm4_4
-  float v164; // xmm5_4
-  float v165; // xmm6_4
-  float *v166; // rax
-  signed __int64 v167; // rcx
-  float *v168; // r8
-  __int64 v169; // r10
-  float v170; // xmm3_4
-  __int64 v171; // rdx
-  float v172; // xmm4_4
-  float v173; // xmm5_4
-  float v174; // xmm6_4
-  float *v175; // rax
-  signed __int64 v176; // rcx
-  float *v177; // r8
-  __int64 v178; // r10
-  float v179; // xmm3_4
-  __int64 v180; // rdx
-  float v181; // xmm4_4
-  float v182; // xmm5_4
-  float v183; // xmm6_4
-  int v184; // edx
-  int v185; // xmm6_4
-  int v186; // xmm7_4
-  unsigned int v187; // eax
-  __int64 v188; // rax
-  unsigned int v189; // r9d
-  float *v190; // rax
-  signed __int64 v191; // rcx
-  float *v192; // r8
-  __int64 v193; // r10
-  float v194; // xmm3_4
-  __int64 v195; // rdx
-  float v196; // xmm4_4
-  float v197; // xmm5_4
-  float v198; // xmm6_4
-  float *v199; // rax
-  __int64 v200; // r10
-  float v201; // xmm3_4
-  __int64 v202; // rdx
-  float v203; // xmm4_4
-  float v204; // xmm5_4
-  float v205; // xmm6_4
-  unsigned int *v206; // rbx
-  unsigned int v207; // edi
-  int v208; // r11d
-  float *v209; // rax
-  unsigned int v210; // xmm3_4
-  unsigned int v211; // xmm2_4
-  unsigned int v212; // xmm4_4
-  float *v213; // r8
-  signed __int64 v214; // rcx
-  __int64 v215; // r10
-  float v216; // xmm3_4
-  __int64 v217; // rdx
-  float v218; // xmm4_4
-  float v219; // xmm5_4
-  float v220; // xmm6_4
-  float *v221; // rax
-  float *v222; // r8
-  signed __int64 v223; // rcx
-  __int64 v224; // r10
-  float v225; // xmm3_4
-  __int64 v226; // rdx
-  float v227; // xmm4_4
-  float v228; // xmm5_4
-  float v229; // xmm6_4
-  float *v230; // rax
-  float *v231; // r8
-  signed __int64 v232; // rcx
-  __int64 v233; // r10
-  float v234; // xmm3_4
-  __int64 v235; // rdx
-  float v236; // xmm4_4
-  float v237; // xmm5_4
-  float v238; // xmm6_4
-  float *v239; // rax
-  float *v240; // r8
-  signed __int64 v241; // rcx
-  __int64 v242; // r10
-  float v243; // xmm3_4
-  __int64 v244; // rdx
-  float v245; // xmm4_4
-  float v246; // xmm5_4
-  float v247; // xmm6_4
-  float *v248; // rax
-  __int64 v249; // r10
-  float v250; // xmm3_4
-  __int64 v251; // rdx
-  float v252; // xmm4_4
-  float v253; // xmm5_4
-  float v254; // xmm6_4
-  __int64 v255; // rdx
-  __int128 v256; // xmm0
-  float v257; // xmm6_4
-  __int64 v258; // rdx
-  __int64 v259; // r8
-  __int64 v260; // rdx
-  __int64 v261; // rcx
-  __int64 v262; // r8
-  __int64 v264; // [rsp+8h] [rbp-100h] BYREF
-  __int64 v265; // [rsp+28h] [rbp-E0h]
-  __int64 v266; // [rsp+30h] [rbp-D8h]
-  int v267; // [rsp+38h] [rbp-D0h]
-  int v268; // [rsp+40h] [rbp-C8h]
-  int v269; // [rsp+48h] [rbp-C0h]
-  int v270; // [rsp+50h] [rbp-B8h]
+  __int64 v0;
+  int v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned int *v13;
+  unsigned int *v14;
+  __int64 v15;
+  unsigned int *v16;
+  unsigned int *v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  int *v22;
+  int v23;
+  int *v24;
+  __int64 v25;
+  unsigned int v26;
+  unsigned int *v27;
+  unsigned int v28;
+  __int64 v29;
+  float *v30;
+  float *v31;
+  signed __int64 v32;
+  __int64 v33;
+  float v34;
+  __int64 v35;
+  float v36;
+  float v37;
+  float v38;
+  float *v39;
+  float *v40;
+  signed __int64 v41;
+  __int64 v42;
+  float v43;
+  __int64 v44;
+  float v45;
+  float v46;
+  float v47;
+  __int64 v48;
+  __int64 v49;
+  __int64 v50;
+  __int64 v51;
+  __int64 v52;
+  __int64 v53;
+  float *v54;
+  float *v55;
+  signed __int64 v56;
+  __int64 v57;
+  float v58;
+  __int64 v59;
+  float v60;
+  float v61;
+  float v62;
+  float *v63;
+  float *v64;
+  signed __int64 v65;
+  __int64 v66;
+  float v67;
+  __int64 v68;
+  float v69;
+  float v70;
+  float v71;
+  float *v72;
+  float *v73;
+  signed __int64 v74;
+  __int64 v75;
+  float v76;
+  __int64 v77;
+  float v78;
+  float v79;
+  float v80;
+  float *v81;
+  float *v82;
+  signed __int64 v83;
+  __int64 v84;
+  float v85;
+  __int64 v86;
+  float v87;
+  float v88;
+  float v89;
+  int i;
+  unsigned int v91;
+  unsigned int *v92;
+  float *v93;
+  __int64 v94;
+  float v95;
+  unsigned int v96;
+  __int64 v97;
+  unsigned int *v98;
+  __int64 v99;
+  __int64 v100;
+  __int64 v101;
+  unsigned int v102;
+  unsigned int v103;
+  unsigned int v104;
+  __int64 v105;
+  __int64 v106;
+  __int64 v107;
+  __int64 v108;
+  __int64 v109;
+  __int64 v110;
+  __int64 v111;
+  __int64 v112;
+  __int64 v113;
+  __int64 v114;
+  __int64 v115;
+  __int64 v116;
+  __int64 v117;
+  __int64 v118;
+  __int64 v119;
+  float *v120;
+  signed __int64 v121;
+  float *v122;
+  __int64 v123;
+  float v124;
+  __int64 v125;
+  float v126;
+  float v127;
+  float v128;
+  float *v129;
+  float *v130;
+  signed __int64 v131;
+  __int64 v132;
+  float v133;
+  __int64 v134;
+  float v135;
+  float v136;
+  float v137;
+  __int64 v138;
+  unsigned int v139;
+  __int64 v140;
+  __int64 v141;
+  __int64 v142;
+  __int64 v143;
+  __int64 v144;
+  signed __int64 v145;
+  float *v146;
+  signed int v147;
+  int v148;
+  __int64 v149;
+  unsigned int v150;
+  unsigned int *v151;
+  unsigned int *v152;
+  int j;
+  float v154;
+  float v155;
+  float v156;
+  float *v157;
+  float *v158;
+  signed __int64 v159;
+  __int64 v160;
+  float v161;
+  __int64 v162;
+  float v163;
+  float v164;
+  float v165;
+  float *v166;
+  signed __int64 v167;
+  float *v168;
+  __int64 v169;
+  float v170;
+  __int64 v171;
+  float v172;
+  float v173;
+  float v174;
+  float *v175;
+  signed __int64 v176;
+  float *v177;
+  __int64 v178;
+  float v179;
+  __int64 v180;
+  float v181;
+  float v182;
+  float v183;
+  int v184;
+  int v185;
+  int v186;
+  unsigned int v187;
+  __int64 v188;
+  unsigned int v189;
+  float *v190;
+  signed __int64 v191;
+  float *v192;
+  __int64 v193;
+  float v194;
+  __int64 v195;
+  float v196;
+  float v197;
+  float v198;
+  float *v199;
+  __int64 v200;
+  float v201;
+  __int64 v202;
+  float v203;
+  float v204;
+  float v205;
+  unsigned int *v206;
+  unsigned int v207;
+  int v208;
+  float *v209;
+  unsigned int v210;
+  unsigned int v211;
+  unsigned int v212;
+  float *v213;
+  signed __int64 v214;
+  __int64 v215;
+  float v216;
+  __int64 v217;
+  float v218;
+  float v219;
+  float v220;
+  float *v221;
+  float *v222;
+  signed __int64 v223;
+  __int64 v224;
+  float v225;
+  __int64 v226;
+  float v227;
+  float v228;
+  float v229;
+  float *v230;
+  float *v231;
+  signed __int64 v232;
+  __int64 v233;
+  float v234;
+  __int64 v235;
+  float v236;
+  float v237;
+  float v238;
+  float *v239;
+  float *v240;
+  signed __int64 v241;
+  __int64 v242;
+  float v243;
+  __int64 v244;
+  float v245;
+  float v246;
+  float v247;
+  float *v248;
+  __int64 v249;
+  float v250;
+  __int64 v251;
+  float v252;
+  float v253;
+  float v254;
+  __int64 v255;
+  __int128 v256;
+  float v257;
+  __int64 v258;
+  __int64 v259;
+  __int64 v260;
+  __int64 v261;
+  __int64 v262;
+  __int64 v264;
+  __int64 v265;
+  __int64 v266;
+  int v267;
+  int v268;
+  int v269;
+  int v270;
   _Alignas(16) uint32_t sr_world_direction[3];
   uint32_t sr_world_material_pair[2];
   _Alignas(16) unsigned char sr_world_matrix_backing[80];
   _Alignas(16) __int128 sr_world_matrix[4];
-  __int128 v284; // [rsp+F8h] [rbp-10h] BYREF
-  char v285[512]; // [rsp+108h] [rbp+0h] BYREF
-  __int64 v286; // [rsp+308h] [rbp+200h]
+  __int128 v284;
+  char v285[512];
+  __int64 v286;
 
   if ( unk_14040488C && unk_140404A60 )
   {
@@ -981,25 +876,25 @@ __int64 sub_14011FD00()
   dword_140404A6C[284545218] = dword_140404A6C[284024514];
   *(float *)&dword_140404A6C[284545192] = (float)(int)dword_140404A6C[278520509];
   dword_140404A6C[284545217] = 1182793728;
-  *(float *)&dword_140404A6C[284545267] = (float)(*(float *)&dword_140404A6C[284024505] * 0.707099974155426)
-                                        + (float)(*(float *)&dword_140404A6C[284024511] * 0.707099974155426);
-  *(float *)&dword_140404A6C[284545270] = (float)(*(float *)&dword_140404A6C[284024511] * 0.707099974155426)
-                                        - (float)(*(float *)&dword_140404A6C[284024505] * 0.707099974155426);
-  *(float *)&dword_140404A6C[284545268] = (float)(*(float *)&dword_140404A6C[284024506] * 0.707099974155426)
-                                        + (float)(*(float *)&dword_140404A6C[284024512] * 0.707099974155426);
-  *(float *)&dword_140404A6C[284545271] = (float)(*(float *)&dword_140404A6C[284024512] * 0.707099974155426)
-                                        - (float)(*(float *)&dword_140404A6C[284024506] * 0.707099974155426);
-  *(float *)&dword_140404A6C[284545269] = (float)(*(float *)&dword_140404A6C[284024507] * 0.707099974155426)
-                                        + (float)(*(float *)&dword_140404A6C[284024513] * 0.707099974155426);
-  *(float *)&dword_140404A6C[284545272] = (float)(*(float *)&dword_140404A6C[284024513] * 0.707099974155426)
-                                        - (float)(*(float *)&dword_140404A6C[284024507] * 0.707099974155426);
+  *(float *)&dword_140404A6C[284545267] = (float)(*(float *)&dword_140404A6C[284024505] * 0.70709997)
+                                        + (float)(*(float *)&dword_140404A6C[284024511] * 0.70709997);
+  *(float *)&dword_140404A6C[284545270] = (float)(*(float *)&dword_140404A6C[284024511] * 0.70709997)
+                                        - (float)(*(float *)&dword_140404A6C[284024505] * 0.70709997);
+  *(float *)&dword_140404A6C[284545268] = (float)(*(float *)&dword_140404A6C[284024506] * 0.70709997)
+                                        + (float)(*(float *)&dword_140404A6C[284024512] * 0.70709997);
+  *(float *)&dword_140404A6C[284545271] = (float)(*(float *)&dword_140404A6C[284024512] * 0.70709997)
+                                        - (float)(*(float *)&dword_140404A6C[284024506] * 0.70709997);
+  *(float *)&dword_140404A6C[284545269] = (float)(*(float *)&dword_140404A6C[284024507] * 0.70709997)
+                                        + (float)(*(float *)&dword_140404A6C[284024513] * 0.70709997);
+  *(float *)&dword_140404A6C[284545272] = (float)(*(float *)&dword_140404A6C[284024513] * 0.70709997)
+                                        - (float)(*(float *)&dword_140404A6C[284024507] * 0.70709997);
   *(float *)&dword_140404A6C[284677591] = *(float *)&dword_140404A6C[284024502] * *(float *)&dword_1402F61BC;
   *(float *)&dword_140404A6C[284677592] = (float)(*(float *)&dword_140404A6C[284024503] * *(float *)&dword_1402F61BC)
                                         + *(float *)&dword_1402F61C4;
   *(float *)&dword_140404A6C[284677593] = *(float *)&dword_140404A6C[284024504] * *(float *)&dword_1402F61BC;
   sub_14007A240((__int64)&dword_140404A6C[284550403], (float *)&dword_140404A6C[284550403]);
-  (*(float *)&sr_world_direction[1]) = 0.4472135901451111;
-  *(float *)&sr_world_direction[2] = -0.8944271802902222;
+  (*(float *)&sr_world_direction[1]) = 0.44721359;
+  *(float *)&sr_world_direction[2] = -0.89442718;
   *(float *)&sr_world_direction[0] = 0.0;
   sub_14007B4D0(
     (float *)&dword_140404A6C[284550403],
@@ -1089,8 +984,8 @@ __int64 sub_14011FD00()
           dword_140404A6C[44 * dword_140404A6C[283830715] + 284024944],
           dword_140404A6C[44 * dword_140404A6C[283830716] + 284024944],
           dword_140404A6C[44 * dword_140404A6C[283830718] + 284024944],
-          dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944],
-          dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944],
+          dword_140404A6C[44 * shading_texture + 284024944],
+          dword_140404A6C[44 * shading_cube_map + 284024944],
           dword_140404A6C[71738165],
           (int)dword_140404A6C[71738170], (int)dword_140404A6C[71738171],
           (int)dword_140404A6C[71738172], (int)dword_140404A6C[71738173],
@@ -1225,8 +1120,8 @@ __int64 sub_14011FD00()
       {
         if ( (int)*v14 > 0 )
         {
-          qword_1404042E0(dword_140404A6C[451221605]);
-          qword_140404378(dword_140404A6C[451221610], 1, 0, &dword_140404A6C[431564565]);
+          qword_1404042E0(renderer_ui_program);
+          qword_140404378(renderer_ui_matrix_uniform, 1, 0, &dword_140404A6C[431564565]);
           unk_140404098(33984);
           qword_140404050(3553, dword_140404A6C[44 * *v13 + 284024944]);
           unk_140404808(4, v16, 5125, v17, *v14, v16 + 25165824);
@@ -1255,7 +1150,7 @@ __int64 sub_14011FD00()
   qword_140404238(1);
   qword_140404238(2);
   unk_140404098(33985);
-  qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944]);
+  qword_140404050(3553, dword_140404A6C[44 * shading_texture + 284024944]);
   unk_140404098(33984);
   qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791462] + 283793813], v19);
   qword_140404170(34963, dword_140404A6C[2 * dword_140404A6C[283791465] + 283793813], v20);
@@ -1282,11 +1177,11 @@ __int64 sub_14011FD00()
   qword_1404042E0(0);
   qword_1404042E0(dword_140404A6C[71737865]);
   sub_140124AF0(0, 0);
-  v26 = dword_140404A6C[283827818];
+  v26 = resting_texture_1;
   v284 = 0;
-  sr_world_material_pair[0] = dword_140404A6C[283827818];
-  sr_world_material_pair[1] = dword_140404A6C[283827818];
-  if ( (int)dword_140404A6C[431564581] > 0 )
+  sr_world_material_pair[0] = resting_texture_1;
+  sr_world_material_pair[1] = resting_texture_1;
+  if ( (int)world_particle_count > 0 )
   {
     v27 = &dword_140404A6C[431138501];
     do
@@ -1297,36 +1192,36 @@ __int64 sub_14011FD00()
         v29 = 26LL * v1;
         if ( !*v27 )
         {
-          sr_world_material_pair[0] = dword_140404A6C[283830699];
-          sr_world_material_pair[1] = dword_140404A6C[283830699];
+          sr_world_material_pair[0] = resting_texture_0;
+          sr_world_material_pair[1] = resting_texture_0;
           sub_140124840(
-            dword_140404A6C[283827574],
+            world_particle_mesh_0,
             &dword_140404A6C[v29 + 431138504],
             &dword_140404A6C[v29 + 431138510],
             0,
             (int *)&sr_world_material_pair[0],
             (__int64)&v284);
           v28 = *v27;
-          v26 = dword_140404A6C[283827818];
+          v26 = resting_texture_1;
         }
         if ( v28 == 1 )
         {
           sr_world_material_pair[0] = v26;
           sr_world_material_pair[1] = v26;
           sub_140124840(
-            dword_140404A6C[283827769],
+            world_particle_mesh_1,
             &dword_140404A6C[v29 + 431138504],
             &dword_140404A6C[v29 + 431138510],
             0,
             (int *)&sr_world_material_pair[0],
             (__int64)&v284);
-          v26 = dword_140404A6C[283827818];
+          v26 = resting_texture_1;
         }
       }
       ++v1;
       v27 += 26;
     }
-    while ( v1 < (int)dword_140404A6C[431564581] );
+    while ( v1 < (int)world_particle_count );
   }
   *(_OWORD *)&dword_140404A6C[431564517] = xmmword_140278D30;
   v30 = (float *)&sr_world_matrix[0];
@@ -1577,7 +1472,7 @@ __int64 sub_14011FD00()
   qword_140404338(dword_140404A6C[71737821], 1, &dword_140404A6C[284545209]);
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(2884);
   unk_140404098(33985);
-  qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+  qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
   unk_140404098(33984);
   for ( i = 0; i < (int)dword_140404A6C[70074733]; ++v22 )
   {
@@ -1599,9 +1494,9 @@ __int64 sub_14011FD00()
     }
     while ( v94 );
   }
-  dword_140404A6C[436668493] = v91;
+  renderer_sort_count = v91;
   sub_14007D710();
-  qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[4 * dword_140404A6C[421784429] + 283827814] + 284024944]);
+  qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[4 * mark_texture_choice + 283827814] + 284024944]);
   dword_140404A6C[456217207] = 0;
   v96 = 6;
   dword_140404A6C[456217208] = 6;
@@ -1674,60 +1569,30 @@ __int64 sub_14011FD00()
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(2884);
   qword_1404042E0(0);
   (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
-  sub_140125DB0(
-    0,
-    v114,
-    v115,
-    v116,
-    v265,
-    12,
-    v267,
-    v268,
-    v269,
-    v270,
-    sr_world_direction[0],
-    sr_world_direction[2],
-    sr_world_material_pair[0],
-    ((uint64_t *)(sr_world_matrix_backing+8))[0],
-    ((uint64_t *)(sr_world_matrix_backing+8))[1],
-    ((uint64_t *)(sr_world_matrix_backing+8))[2],
-    (*(__int128 *)(sr_world_matrix_backing+32)),
-    SDWORD2((*(__int128 *)(sr_world_matrix_backing+32))),
-    (*(__int128 *)(sr_world_matrix_backing+48)),
-    SDWORD2((*(__int128 *)(sr_world_matrix_backing+48))),
-    (*(__int128 *)(sr_world_matrix_backing+64)),
-    SDWORD2((*(__int128 *)(sr_world_matrix_backing+64))),
-    sr_world_matrix[0],
-    SDWORD2(sr_world_matrix[0]),
-    sr_world_matrix[1],
-    SDWORD2(sr_world_matrix[1]),
-    sr_world_matrix[2],
-    SDWORD2(sr_world_matrix[2]),
-    sr_world_matrix[3],
-    *((__int64 *)&sr_world_matrix[3] + 1));
+  sub_140125DB0();
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(2884);
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
   (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(1,771);
   (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(2884);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3553);
-  qword_1404042E0(dword_140404A6C[451221605]);
+  qword_1404042E0(renderer_ui_program);
   sub_1401253C0();
-  if ( !dword_140404A6C[284023069]
-    && dword_140404A6C[282486845] != -1
-    && dword_140404A6C[1760 * dword_140404A6C[282486845] + 278845898] != 42 )
+  if ( !toggle_183f7aee0
+    && nearest_item != -1
+    && dword_140404A6C[1760 * nearest_item + 278845898] != 42 )
   {
     LODWORD(v265) = 1056964608;
     ((void (*)(unsigned,float,float,float,float))unk_140404468)(2,0x1.0000000000000p+0f,0x1.0000000000000p+0f,0x1.0000000000000p+0f,0x1.0000000000000p-1f);
-    v117 = (int)dword_140404A6C[dword_140404A6C[1760 * dword_140404A6C[282486845] + 278845898] + 283826966];
+    v117 = (int)dword_140404A6C[dword_140404A6C[1760 * nearest_item + 278845898] + 283826966];
     sub_14007B990(
-      (unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 52LL * (int)dword_140404A6C[282486845] + 1144548656),
-      (_DWORD *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 52LL * (int)dword_140404A6C[282486845] + 1144548668));
+      (unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 52LL * (int)nearest_item + 1144548656),
+      (_DWORD *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 52LL * (int)nearest_item + 1144548668));
     sub_14007B6F0(1.125, 1.125, 1.125);
-    qword_140404378(dword_140404A6C[451221610], 1, 0, &dword_140404A6C[431564565]);
+    qword_140404378(renderer_ui_matrix_uniform, 1, 0, &dword_140404A6C[431564565]);
     qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[v117 + 283790166] + 283793813], v118);
     qword_140404238(0);
     v266 = 0;
@@ -1802,7 +1667,7 @@ __int64 sub_14011FD00()
     *(_OWORD *)&dword_140404A6C[431564573] = (*(__int128 *)(sr_world_matrix_backing+48));
     *(_OWORD *)&dword_140404A6C[431564577] = (*(__int128 *)(sr_world_matrix_backing+64));
     (*(void (           **)(__int64, __int64))&dword_140404A6C[18215069])(1032, 6914);
-    v138 = 1760LL * (int)dword_140404A6C[282486845];
+    v138 = 1760LL * (int)nearest_item;
     v139 = dword_140404A6C[v138 + 278845917];
     sr_world_direction[0] = dword_140404A6C[v138 + 278845916];
     sr_world_direction[2] = dword_140404A6C[v138 + 278845918];
@@ -1811,8 +1676,8 @@ __int64 sub_14011FD00()
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
   LOBYTE(v140) = 1;
   (*(void (           **)(__int64))&dword_140404A6C[18215099])(v140);
-  qword_1404042E0(dword_140404A6C[451221605]);
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_1404042E0(renderer_ui_program);
+  qword_140404050(3553, renderer_white_texture);
   if ( dword_140404A6C[179668287] )
     sub_14011E9B0();
   (*(void (           **)(__int64, __int64))&dword_140404A6C[18215069])(1032, 6914);
@@ -1823,15 +1688,15 @@ __int64 sub_14011FD00()
   (*(void (**)(float))&dword_140404A6C[18215065])(0x1.8000000000000p+1f);
   (*(void (**)(float))&dword_140404A6C[18215065])(1.0f);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3553);
-  if ( dword_140404A6C[309078285] )
+  if ( game_unknown_189f0eea0 )
     sub_14008D800();
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
-  v147 = dword_140404A6C[284024501];
+  v147 = local_player;
   v148 = -1;
-  dword_140404A6C[438291413] = 2;
-  if ( dword_140404A6C[284024501] != -1 )
+  renderer_current_font = 2;
+  if ( local_player != -1 )
   {
-    v145 = 14388LL * (int)dword_140404A6C[284024501];
+    v145 = 14388LL * (int)local_player;
     v149 = *(int *)((char *)&dword_140404A6C[71856292] + v145);
     if ( (_DWORD)v149 != -1 )
     {
@@ -1966,7 +1831,7 @@ __int64 sub_14011FD00()
     if ( v148 != -1 && v151[8] == v148 )
     {
       (*(void (           **)(__int64))&dword_140404A6C[18215101])(2929);
-      v147 = dword_140404A6C[284024501];
+      v147 = local_player;
     }
     v184 = v151[7145];
     v185 = 1065353216;
@@ -1991,20 +1856,20 @@ LABEL_114:
         LODWORD(v265) = 193;
         sr_text_draw_recovered((char *)&dword_140404A6C[3597 * v188 + 71856254], 0.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x3E800000u))))), 0.3125, 193u, 0x1.0000000000000p+0f, 0x0.0p+0f, 0x0.0p+0f, 0x1.0000000000000p+0f, NULL) /* 0x140121B9D */;
         v189 = dword_140404A6C[3597 * *v151 + 71856265];
-        sub_140158AB0(v285, "%03d-%04d", v189 / 0x2710, v189 % 0x2710);
+        crt_sprintf(v285, "%03d-%04d", v189 / 0x2710, v189 % 0x2710);
         v269 = 1065353216;
         v268 = v186;
         v267 = v185;
         LODWORD(v266) = 1065353216;
         LODWORD(v265) = 193;
         sr_text_draw_recovered(v285, 0.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0LL))))), 0.25, 193u, 0x1.0000000000000p+0f, 0x0.0p+0f, 0x0.0p+0f, 0x1.0000000000000p+0f, NULL) /* 0x140121C22 */;
-        v147 = dword_140404A6C[284024501];
+        v147 = local_player;
       }
     }
     if ( v148 != -1 && v151[8] == v148 )
     {
       (*(void (           **)(__int64))&dword_140404A6C[18215103])(2929);
-      v147 = dword_140404A6C[284024501];
+      v147 = local_player;
     }
     *(_OWORD *)&dword_140404A6C[431564517] = xmmword_140278D30;
     v190 = (float *)&((uint64_t *)(sr_world_matrix_backing+8))[1];
@@ -2074,7 +1939,7 @@ LABEL_133:
     v152 += 344;
     v151 += 7166;
   }
-  if ( !dword_140404A6C[280649846] && dword_140404A6C[283831312] == 5 && v147 != -1 )
+  if ( !dword_140404A6C[280649846] && game_type == 5 && v147 != -1 )
   {
     v145 = 14388LL * v147;
     if ( *(unsigned int *)((char *)&dword_140404A6C[71856286] + v145) == 2 )
@@ -2282,15 +2147,15 @@ LABEL_133:
         --v9;
       }
       while ( v9 );
-      v147 = dword_140404A6C[284024501];
+      v147 = local_player;
     }
   }
-  if ( !dword_140404A6C[284023069] )
+  if ( !toggle_183f7aee0 )
   {
     sub_140092D70();
-    v147 = dword_140404A6C[284024501];
+    v147 = local_player;
   }
-  if ( dword_140404A6C[283831312] == 5 && v147 != -1 )
+  if ( game_type == 5 && v147 != -1 )
   {
     v145 = 14388LL * v147;
     v255 = *(unsigned int *)((char *)&dword_140404A6C[71856286] + v145);
@@ -2331,19 +2196,13 @@ LABEL_133:
   return 0; /* compatibility result discarded by all reviewed callers */
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 192FD7140: using guessed type unsigned int;
-// 192FD7148: using guessed type unsigned int;
-// 192FD7174: using guessed type unsigned int;
-// 192FD7178: using guessed type unsigned int;
-
 //----- (000000014014B2A0) ----------------------------------------------------
 // Candidate shader/camera uniform cache: resolves viewposition/viewdirection/matrices/light/sampler uniforms and sets inverse resolution.
 __int64 render_cache_camera_uniforms_candidate()
 {
-  __int64 v0; // rax
-  __int64 v1; // rax
-  __int64 v2; // rbx
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
   float resolution[2]; /* original contiguous vec2 uniform */
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14014B2A0[64];
@@ -2409,7 +2268,7 @@ __int64 render_cache_camera_uniforms_candidate()
     qword_140404308(dword_140404A6C[71737765], 3);
     qword_1404042E0(0);
   }
-  if ( (unsigned int)sub_14004C4E0(2, (__int64)(uintptr_t)sr_mem_1402f97bf, (__int64)(uintptr_t)sr_mem_1402f99af, 0) )
+  if ( (unsigned int)sub_14004C4E0(2, (__int64)(uintptr_t)sr_shader_source_4, (__int64)(uintptr_t)sr_shader_source_5, 0) )
   {
     qword_1404042E0(dword_140404A6C[71737805]);
     dword_140404A6C[71737810] = unk_140404288(dword_140404A6C[71737805], "ooresolution");
@@ -2578,13 +2437,13 @@ __int64 render_cache_camera_uniforms_candidate()
   while ( *((_BYTE *)&dword_140404A6C[71741525] + v0) );
   if ( v0 )
   {
-    v1 = sub_14020B8D8("shaderoutput.txt", "wb");
+    v1 = crt_fopen("shaderoutput.txt", "wb");
     v2 = v1;
     v0 = v1;
     if ( v1 )
     {
       sub_1400920F0(v1, (     char *)&dword_140404A6C[71741525]);
-      v0 = sub_14020B9E8(v2);
+      v0 = crt_fclose(v2);
     }
   }
   return v0; /* native strlen, fopen-failure or fclose RAX */
@@ -2596,15 +2455,15 @@ __int64 render_cache_camera_uniforms_candidate()
 //----- (000000014001B6A0) ----------------------------------------------------
 __int64 sub_14001B6A0()
 {
-  unsigned int *v0; // r14
-  int v1; // edi
-  int i; // esi
-  int j; // ebx
-  __int64 v4; // r8
-  __int64 v5; // xmm2_8
-  float *v6; // rdx
-  __int64 v7; // rdx
-  __int64 v8; // rcx
+  unsigned int *v0;
+  int v1;
+  int i;
+  int j;
+  __int64 v4;
+  __int64 v5;
+  float *v6;
+  __int64 v7;
+  __int64 v8;
   _Alignas(16) unsigned sr_cube_filter_rotation[12];
   _Alignas(16) unsigned sr_cube_filter_vertices[28];
   /* Stack locals keep their original frame adjacency (see frameify.py). */
@@ -2637,7 +2496,7 @@ __int64 sub_14001B6A0()
   v1 = 256;
   for ( i = 1; i < 10; ++i )
   {
-    qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+    qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
     unk_1404046F0(36160, dword_140404A6C[2 * *v0 + 283791765]);
     ((void (*)(int,float))unk_1404042E8)((int)dword_140404A6C[71738298],_mm_cvtss_f32(_mm_cvtepi32_ps(_mm_setr_epi32(i-1,0,0,0))));
     for ( j = 0; j < 6; ++j )
@@ -2646,7 +2505,7 @@ __int64 sub_14001B6A0()
         36160,
         36064,
         (unsigned int)(j + 34069),
-        dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944],
+        dword_140404A6C[44 * shading_cube_map + 284024944],
         i);
       qword_140302FE8(0, 0, (unsigned int)v1, (unsigned int)v1);
       (*(float *)(void *)(sr_cube_filter_rotation+8)) = 1.0;
@@ -2679,7 +2538,7 @@ LABEL_13:
       sub_14007B2A0((__int64)&(*(__m256i *)(void *)sr_cube_filter_rotation), v6, *(double *)&v5);
 LABEL_15:
       HIDWORD(((uint64_t *)(void *)sr_cube_filter_vertices)[0]) = 0;
-      v7 = dword_140404A6C[2 * dword_140404A6C[283791478] + 283793813];
+      v7 = dword_140404A6C[2 * effect_mesh_buffer + 283793813];
       ((uint64_t *)(void *)sr_cube_filter_vertices)[1] = 1065353216;
       (*(uint64_t *)(void *)(sr_cube_filter_vertices+25)) = *(__int64 *)((char *)&SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i64)[1] + 4);
       (*(unsigned *)(void *)(sr_cube_filter_vertices+27)) = SR_VEC_LANES(256, (*(__m256i *)(void *)sr_cube_filter_rotation), i32)[5];
@@ -2731,252 +2590,212 @@ LABEL_15:
 #undef v11
 #undef v35
 
-// 14001BAF3: variable 'v4' is possibly undefined
-// 14001BC11: variable 'v8' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D40: using guessed type __int128 xmmword_140278D40;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278DA0: using guessed type __int128 xmmword_140278DA0;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140278EB0: using guessed type __int128 xmmword_140278EB0;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279730: using guessed type __int128 xmmword_140279730;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 1404042E8: using guessed type __int64 (__fastcall *unk_1404042E8)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E580: using guessed type unsigned int;
-// 1A724E590: using guessed type unsigned int;
-// 1A724E5A0: using guessed type unsigned int;
-// 1A724E5B0: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
 //----- (00000001400212E0) ----------------------------------------------------
 __int64 sub_1400212E0()
 {
-  int v0; // r13d
-  unsigned int *v1; // r14
-  unsigned int *v2; // rdi
-  int v3; // ebx
-  int *v4; // rsi
-  unsigned int *v5; // rsi
-  unsigned int *v6; // rbx
-  float *v7; // r12
-  int v8; // edi
-  unsigned int v9; // ecx
-  unsigned int v10; // xmm0_4
-  int v11; // eax
-  unsigned int v12; // r15d
-  unsigned int v13; // eax
-  float v14; // xmm6_4
-  float v15; // xmm7_4
-  float v16; // xmm8_4
-  int v17; // ecx
-  unsigned int v18; // eax
-  float v19; // xmm6_4
-  unsigned int v20; // ecx
-  float v21; // xmm7_4
-  float v22; // xmm8_4
-  __m128i v23; // xmm0
-  __m128i v24; // xmm1
-  int v25; // ecx
-  float v26; // xmm1_4
-  float v27; // xmm0_4
-  float v28; // xmm6_4
-  float v29; // xmm0_4
-  int v30; // r14d
-  unsigned int *v31; // rdi
-  __int64 v32; // rax
-  __int64 v33; // rbx
-  unsigned int v34; // xmm1_4
-  float v35; // xmm2_4
-  float v36; // xmm7_4
-  float v37; // xmm8_4
-  float v38; // xmm9_4
-  unsigned int v39; // ecx
-  float v40; // xmm0_4
-  float v41; // xmm7_4
-  float v42; // xmm8_4
-  float v43; // xmm9_4
-  signed int v44; // esi
-  unsigned int *v45; // rbx
-  float v46; // xmm4_4
-  float v47; // xmm5_4
-  float v48; // xmm6_4
-  __int64 v49; // rax
-  unsigned int v50; // ecx
-  unsigned int *v51; // r12
-  float v52; // xmm14_4
-  unsigned int *v53; // rcx
-  float v54; // xmm15_4
-  unsigned int *v55; // rbx
-  float v56; // xmm8_4
-  __int64 v57; // rax
-  float v58; // xmm1_4
-  float v59; // xmm12_4
-  float v60; // xmm0_4
-  __int64 v61; // rdi
-  float v62; // xmm12_4
-  bool v63; // cc
-  __int64 v64; // rcx
-  unsigned int v65; // xmm1_4
-  __int128 v66; // xmm0
-  __int64 v67; // rsi
-  signed int v68; // r15d
-  int *v69; // r14
-  float *v70; // rsi
-  __int64 v71; // r12
-  float *v72; // rdi
-  float v73; // xmm2_4
-  float v74; // xmm6_4
-  float v75; // xmm3_4
-  float v76; // xmm5_4
-  float v77; // xmm9_4
-  float v78; // xmm11_4
-  float v79; // xmm0_4
-  float v80; // xmm8_4
-  float v81; // xmm1_4
-  float v82; // xmm10_4
-  float v83; // xmm4_4
-  float v84; // xmm7_4
-  double v85; // xmm2_8
-  float v86; // xmm7_4
-  float v87; // xmm10_4
-  float v88; // xmm3_4
-  float v89; // xmm4_4
-  unsigned int v90; // xmm0_4
-  unsigned int v91; // xmm1_4
-  int v92; // xmm0_4
-  unsigned int v93; // xmm2_4
-  unsigned int v94; // xmm3_4
-  float v95; // xmm4_4
-  float v96; // xmm0_4
-  double v97; // xmm2_8
-  __int64 v98; // r15
-  __int64 v99; // r14
-  _DWORD *v100; // rdi
-  __int64 v101; // rsi
-  int v102; // eax
-  __int64 v103; // r8
-  float v104; // xmm10_4
-  float *v105; // rdx
-  float v106; // xmm11_4
-  float v107; // xmm12_4
-  float v108; // xmm6_4
-  float v109; // xmm8_4
-  __int64 v110; // rcx
-  float v111; // xmm7_4
-  float v112; // xmm9_4
-  float v113; // xmm1_4
-  float v114; // xmm2_4
-  float v115; // xmm3_4
-  float v116; // xmm7_4
-  float v117; // xmm9_4
-  float v118; // xmm3_4
-  float v119; // xmm5_4
-  float v120; // xmm4_4
-  __int64 v121; // rcx
-  float v122; // xmm6_4
-  __int64 v123; // rcx
-  float *v124; // rdx
-  float v125; // xmm2_4
-  float v126; // xmm1_4
-  float v127; // xmm0_4
-  float v128; // xmm5_4
-  float v129; // xmm4_4
-  float v130; // xmm7_4
-  float v131; // xmm6_4
-  float v132; // xmm3_4
-  float v133; // xmm0_4
-  __int64 v134; // rcx
-  int v135; // ebx
-  unsigned int *v136; // rdi
-  unsigned int *v137; // rbx
-  unsigned int *v138; // r14
-  unsigned int *v139; // rsi
-  unsigned int v140; // edx
-  __int64 v141; // r15
-  __int64 v142; // r8
-  __int64 v143; // rax
-  unsigned __int64 v144; // rcx
-  unsigned int v145; // eax
-  signed int v146; // edi
-  int v147; // eax
-  float v148; // xmm6_4
-  float v149; // xmm8_4
-  float v150; // xmm9_4
-  unsigned int v151; // xmm1_4
-  float v152; // xmm0_4
-  float v153; // xmm6_4
-  float v154; // xmm8_4
-  float v155; // xmm9_4
-  unsigned __int64 v156; // rax
-  bool v157; // zf
-  float v158; // xmm14_4
-  float v159; // xmm15_4
-  unsigned int v160; // eax
-  float v161; // xmm10_4
-  double v162; // xmm11_8
-  __int64 v163; // r8
-  unsigned int v164; // eax
-  __int64 v165; // rdx
-  unsigned int *v166; // rdi
-  __int64 v167; // r15
-  __int64 v168; // rax
-  __int64 v169; // r12
-  signed int v170; // ecx
-  float *v171; // rsi
-  signed int v172; // r14d
-  __int64 v173; // r15
-  int v174; // edi
-  unsigned int *v175; // rbx
-  __int64 v176; // rcx
-  float v177; // xmm4_4
-  float v178; // xmm5_4
-  float v179; // xmm1_4
-  float v180; // xmm3_4
-  float v181; // xmm6_4
-  float v182; // xmm3_4
-  float v183; // xmm1_4
-  float v184; // xmm2_4
-  signed int v185; // edi
-  unsigned int *v186; // rbx
-  __int64 v187; // rdx
-  unsigned int v188; // eax
-  unsigned int v189; // eax
-  __int64 v190; // rax
-  unsigned int *v191; // r14
-  unsigned int *v192; // rsi
-  __int64 v193; // r8
-  unsigned int v194; // ecx
-  unsigned int v195; // eax
-  __int64 v196; // rax
-  int v197; // ebx
-  unsigned int *v198; // rcx
-  __int64 v199; // r8
-  unsigned int *v200; // rdx
-  unsigned int v201; // eax
-  __int64 v202; // rcx
+  int v0;
+  unsigned int *v1;
+  unsigned int *v2;
+  int v3;
+  int *v4;
+  unsigned int *v5;
+  unsigned int *v6;
+  float *v7;
+  int v8;
+  unsigned int v9;
+  unsigned int v10;
+  int v11;
+  unsigned int v12;
+  unsigned int v13;
+  float v14;
+  float v15;
+  float v16;
+  int v17;
+  unsigned int v18;
+  float v19;
+  unsigned int v20;
+  float v21;
+  float v22;
+  __m128i v23;
+  __m128i v24;
+  int v25;
+  float v26;
+  float v27;
+  float v28;
+  float v29;
+  int v30;
+  unsigned int *v31;
+  __int64 v32;
+  __int64 v33;
+  unsigned int v34;
+  float v35;
+  float v36;
+  float v37;
+  float v38;
+  unsigned int v39;
+  float v40;
+  float v41;
+  float v42;
+  float v43;
+  signed int v44;
+  unsigned int *v45;
+  float v46;
+  float v47;
+  float v48;
+  __int64 v49;
+  unsigned int v50;
+  unsigned int *v51;
+  float v52;
+  unsigned int *v53;
+  float v54;
+  unsigned int *v55;
+  float v56;
+  __int64 v57;
+  float v58;
+  float v59;
+  float v60;
+  __int64 v61;
+  float v62;
+  bool v63;
+  __int64 v64;
+  unsigned int v65;
+  __int128 v66;
+  __int64 v67;
+  signed int v68;
+  int *v69;
+  float *v70;
+  __int64 v71;
+  float *v72;
+  float v73;
+  float v74;
+  float v75;
+  float v76;
+  float v77;
+  float v78;
+  float v79;
+  float v80;
+  float v81;
+  float v82;
+  float v83;
+  float v84;
+  double v85;
+  float v86;
+  float v87;
+  float v88;
+  float v89;
+  unsigned int v90;
+  unsigned int v91;
+  int v92;
+  unsigned int v93;
+  unsigned int v94;
+  float v95;
+  float v96;
+  double v97;
+  __int64 v98;
+  __int64 v99;
+  _DWORD *v100;
+  __int64 v101;
+  int v102;
+  __int64 v103;
+  float v104;
+  float *v105;
+  float v106;
+  float v107;
+  float v108;
+  float v109;
+  __int64 v110;
+  float v111;
+  float v112;
+  float v113;
+  float v114;
+  float v115;
+  float v116;
+  float v117;
+  float v118;
+  float v119;
+  float v120;
+  __int64 v121;
+  float v122;
+  __int64 v123;
+  float *v124;
+  float v125;
+  float v126;
+  float v127;
+  float v128;
+  float v129;
+  float v130;
+  float v131;
+  float v132;
+  float v133;
+  __int64 v134;
+  int v135;
+  unsigned int *v136;
+  unsigned int *v137;
+  unsigned int *v138;
+  unsigned int *v139;
+  unsigned int v140;
+  __int64 v141;
+  __int64 v142;
+  __int64 v143;
+  unsigned __int64 v144;
+  unsigned int v145;
+  signed int v146;
+  int v147;
+  float v148;
+  float v149;
+  float v150;
+  unsigned int v151;
+  float v152;
+  float v153;
+  float v154;
+  float v155;
+  unsigned __int64 v156;
+  bool v157;
+  float v158;
+  float v159;
+  unsigned int v160;
+  float v161;
+  double v162;
+  __int64 v163;
+  unsigned int v164;
+  __int64 v165;
+  unsigned int *v166;
+  __int64 v167;
+  __int64 v168;
+  __int64 v169;
+  signed int v170;
+  float *v171;
+  signed int v172;
+  __int64 v173;
+  int v174;
+  unsigned int *v175;
+  __int64 v176;
+  float v177;
+  float v178;
+  float v179;
+  float v180;
+  float v181;
+  float v182;
+  float v183;
+  float v184;
+  signed int v185;
+  unsigned int *v186;
+  __int64 v187;
+  unsigned int v188;
+  unsigned int v189;
+  __int64 v190;
+  unsigned int *v191;
+  unsigned int *v192;
+  __int64 v193;
+  unsigned int v194;
+  unsigned int v195;
+  __int64 v196;
+  int v197;
+  unsigned int *v198;
+  __int64 v199;
+  unsigned int *v200;
+  unsigned int v201;
+  __int64 v202;
   unsigned sr_scene_draw_textures[4];
   _Alignas(8) unsigned sr_scene_draw_position[3];
   _Alignas(16) unsigned sr_scene_draw_rotation[12];
@@ -3035,9 +2854,9 @@ __int64 sub_1400212E0()
         *(float *)&dword_140404A6C[30 * dword_140404A6C[284550610] + 284554705] = (float)((float)(v11 - 1) * 0.0625)
                                                                                 + 0.03125;
       v12 = 1;
-      if ( !dword_140404A6C[284024355] && dword_140404A6C[284024501] != -1 )
+      if ( !dword_140404A6C[284024355] && local_player != -1 )
       {
-        v13 = dword_140404A6C[3597 * dword_140404A6C[284024501] + 71856292];
+        v13 = dword_140404A6C[3597 * local_player + 71856292];
         if ( v13 != -1
           && !dword_140404A6C[179668288]
           && v13 == v8
@@ -3105,7 +2924,7 @@ __int64 sub_1400212E0()
   }
   while ( v8 < 256 );
   v30 = 0;
-  if ( (int)dword_140404A6C[132792829] > 0 )
+  if ( (int)world_unknown_15fd16260_count > 0 )
   {
     v31 = &dword_140404A6C[132400650];
     do
@@ -3170,7 +2989,7 @@ __int64 sub_1400212E0()
       ++v30;
       v31 += 383;
     }
-    while ( v30 < (int)dword_140404A6C[132792829] );
+    while ( v30 < (int)world_unknown_15fd16260_count );
   }
   v51 = &dword_140404A6C[129716711];
   v52 = *(float *)&dword_140404A6C[284024504];
@@ -3411,9 +3230,9 @@ __int64 sub_1400212E0()
   }
   while ( v57 );
   v135 = 0;
-  sr_scene_draw_textures[0] = dword_140404A6C[283830699];
-  sr_scene_draw_textures[1] = dword_140404A6C[283830699];
-  if ( (int)dword_140404A6C[438881242] > 0 )
+  sr_scene_draw_textures[0] = resting_texture_0;
+  sr_scene_draw_textures[1] = resting_texture_0;
+  if ( (int)world_bullet_count > 0 )
   {
     v136 = &dword_140404A6C[437914581];
     do
@@ -3427,7 +3246,7 @@ __int64 sub_1400212E0()
       ++v135;
       v136 += 23;
     }
-    while ( v135 < (int)dword_140404A6C[438881242] );
+    while ( v135 < (int)world_bullet_count );
   }
   v137 = &dword_140404A6C[278845903];
   v138 = &dword_140404A6C[285083825];
@@ -3461,7 +3280,7 @@ __int64 sub_1400212E0()
         }
         if ( (_DWORD)v144 == 6 )
         {
-          v145 = dword_140404A6C[283830699];
+          v145 = resting_texture_0;
         }
         else
         {
@@ -3819,7 +3638,7 @@ LABEL_155:
     }
     while ( v199 );
   }
-  dword_140404A6C[436668493] = v197;
+  renderer_sort_count = v197;
   sub_14007D710();
   if ( v197 > 0 )
   {
@@ -3844,46 +3663,19 @@ LABEL_155:
 #undef v215
 #undef v219
 
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 1402F6188: using guessed type int dword_1402F6188;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 183EBC404: using guessed type unsigned int;
-// 183EBF050: using guessed type unsigned int;
-// 183EBF074: using guessed type unsigned int;
-// 183EBF078: using guessed type unsigned int;
-// 183EBF07C: using guessed type unsigned int;
-// 183EBF0F0: using guessed type unsigned int;
-// 183EBF0F4: using guessed type unsigned int;
-// 183EBF10C: using guessed type unsigned int;
-// 183EBF110: using guessed type unsigned int;
-// 183EBF118: using guessed type unsigned int;
-// 183EBF148: using guessed type unsigned int;
-// 183EBF168: using guessed type unsigned int;
-// 183EBF16C: using guessed type unsigned int;
-// 183EBF174: using guessed type unsigned int;
-// 183EBF178: using guessed type unsigned int;
-// 183EBF17C: using guessed type unsigned int;
-// 183EBF57C: using guessed type unsigned int;
-// 183F7C544: using guessed type unsigned int;
-// 183F7C548: using guessed type unsigned int;
-// 183F7C54C: using guessed type unsigned int;
-// 18417E1B4: using guessed type unsigned int;
-// 1841FA224: using guessed type unsigned int;
-// 1A85C6BA0: using guessed type unsigned int;
-
 //----- (0000000140029800) ----------------------------------------------------
 __int64            sub_140029800(__int64 a1, __int64 a2, int a3)
 {
-  int v4; // ebx
-  int *v6; // rdi
-  int v8; // r12d
-  int *v9; // rbp
-  __int64 v10; // r15
-  __int64 v11; // rcx
-  int v12; // ebx
-  __int64 v13; // rax
-  __int64 v14; // rcx
-  __int64 v15; // r14
+  int v4;
+  int *v6;
+  int v8;
+  int *v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140029800[112];
 #define v16 (*(int (*))(void *)(sr_frame_140029800 + 0)) /* [rsp+20h] */
@@ -3893,9 +3685,9 @@ __int64            sub_140029800(__int64 a1, __int64 a2, int a3)
   v4 = a3;
   if ( a3 )
   {
-    sub_14020CE0C((__int64)&v18, 4, 1, a2);
+    crt_fread((__int64)&v18, 4, 1, a2);
     v6 = (int *)(a1 + 47352508);
-    sub_14020CE0C(a1 + 47352508, 4, 1, a2);
+    crt_fread(a1 + 47352508, 4, 1, a2);
   }
   else
   {
@@ -3915,7 +3707,7 @@ __int64            sub_140029800(__int64 a1, __int64 a2, int a3)
       v10 = 1028LL * v8;
       v11 = v10 + a1 + 47352512;
       if ( v4 )
-        sub_14020CE0C(v11, 4, 1, a2);
+        crt_fread(v11, 4, 1, a2);
       else
         fread_sr((void *)(uintptr_t)(v11), 4, 1, (FILE *)(uintptr_t)(a2));
       v12 = 0;
@@ -3928,8 +3720,8 @@ __int64            sub_140029800(__int64 a1, __int64 a2, int a3)
           v15 = v13 + a1;
           if ( a3 )
           {
-            sub_14020CE0C(v14, 4, 3, a2);
-            sub_14020CE0C(v15 + 47352528, 4, 1, a2);
+            crt_fread(v14, 4, 3, a2);
+            crt_fread(v15 + 47352528, 4, 1, a2);
           }
           else
           {
@@ -3953,92 +3745,90 @@ __int64            sub_140029800(__int64 a1, __int64 a2, int a3)
 #undef v16
 #undef v18
 
-// 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
-
 //----- (000000014002FA00) ----------------------------------------------------
 __int64 sub_14002FA00()
 {
-  __int64 v0; // rcx
-  __int64 v1; // rdi
-  unsigned int v2; // xmm1_4
-  unsigned int v3; // xmm2_4
-  unsigned int v4; // xmm5_4
-  unsigned int v5; // xmm6_4
-  __int128 v6; // xmm0
-  unsigned int v7; // xmm1_4
-  float v8; // xmm4_4
-  __int64 v9; // rbx
-  float v10; // xmm3_4
-  double v11; // xmm8_8
-  double v12; // xmm13_8
-  double v13; // xmm0_8
-  double v14; // xmm0_8
-  __int128 v15; // xmm1
-  float v16; // xmm0_4
-  float *v17; // rdx
-  double v18; // xmm2_8
-  double v19; // xmm2_8
-  double v20; // xmm2_8
-  float v21; // xmm2_4
-  float v22; // xmm3_4
-  float v23; // xmm15_4
-  float v24; // xmm4_4
-  float v25; // xmm5_4
-  float v26; // xmm10_4
-  float v27; // xmm7_4
-  float v28; // xmm0_4
-  float v29; // xmm8_4
-  float v30; // xmm5_4
-  float v31; // xmm8_4
-  float v32; // xmm6_4
-  float v33; // xmm1_4
-  float v34; // xmm10_4
-  float v35; // xmm6_4
-  float v36; // xmm0_4
-  float v37; // xmm4_4
-  float v38; // xmm8_4
-  float v39; // xmm3_4
-  float v40; // xmm4_4
-  float v41; // xmm7_4
-  float v42; // xmm6_4
-  float v43; // xmm8_4
-  double v44; // xmm0_8
-  float v45; // xmm1_4
-  float v46; // xmm6_4
-  float v47; // xmm7_4
-  float v48; // xmm8_4
-  double v49; // xmm2_8
-  float v50; // xmm1_4
-  float v51; // xmm10_4
-  float v52; // xmm13_4
-  float v53; // xmm10_4
-  double v54; // xmm2_8
-  __int64 v55; // rcx
-  double v56; // xmm2_8
-  double v57; // xmm2_8
-  __int64 v58; // rcx
-  double v59; // xmm2_8
-  float v60; // xmm15_4
-  float v61; // xmm4_4
-  float v62; // xmm5_4
-  float v63; // xmm13_4
-  float v64; // xmm4_4
-  float v65; // xmm13_4
-  float v66; // xmm5_4
-  float v67; // xmm6_4
-  float v68; // xmm8_4
-  float v69; // xmm7_4
-  float v70; // xmm3_4
-  float v71; // xmm4_4
-  float v72; // xmm6_4
-  float v73; // xmm8_4
-  float v74; // xmm7_4
-  double v75; // xmm0_8
-  float v76; // xmm1_4
-  float v77; // xmm6_4
-  float v78; // xmm8_4
-  float v79; // xmm7_4
-  float v80; // xmm3_4
+  __int64 v0;
+  __int64 v1;
+  unsigned int v2;
+  unsigned int v3;
+  unsigned int v4;
+  unsigned int v5;
+  __int128 v6;
+  unsigned int v7;
+  float v8;
+  __int64 v9;
+  float v10;
+  double v11;
+  double v12;
+  double v13;
+  double v14;
+  __int128 v15;
+  float v16;
+  float *v17;
+  double v18;
+  double v19;
+  double v20;
+  float v21;
+  float v22;
+  float v23;
+  float v24;
+  float v25;
+  float v26;
+  float v27;
+  float v28;
+  float v29;
+  float v30;
+  float v31;
+  float v32;
+  float v33;
+  float v34;
+  float v35;
+  float v36;
+  float v37;
+  float v38;
+  float v39;
+  float v40;
+  float v41;
+  float v42;
+  float v43;
+  double v44;
+  float v45;
+  float v46;
+  float v47;
+  float v48;
+  double v49;
+  float v50;
+  float v51;
+  float v52;
+  float v53;
+  double v54;
+  __int64 v55;
+  double v56;
+  double v57;
+  __int64 v58;
+  double v59;
+  float v60;
+  float v61;
+  float v62;
+  float v63;
+  float v64;
+  float v65;
+  float v66;
+  float v67;
+  float v68;
+  float v69;
+  float v70;
+  float v71;
+  float v72;
+  float v73;
+  float v74;
+  double v75;
+  float v76;
+  float v77;
+  float v78;
+  float v79;
+  float v80;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14002FA00[144];
 #define v82 (*(__int64 (*))(void *)(sr_frame_14002FA00 + 8)) /* [rsp+8h] */
@@ -4053,12 +3843,12 @@ __int64 sub_14002FA00()
 #define v91 (*(unsigned int (*))(void *)(sr_frame_14002FA00 + 128)) /* [rsp+80h] */
 #define v92 (*(__int64 (*))(void *)(sr_frame_14002FA00 + 136)) /* [rsp+88h] */
 
-  if ( dword_140404A6C[284024501] == -1 )
+  if ( local_player == -1 )
   {
     dword_140404A6C[284024519] = -1;
     return 0; /* the function has no caller */
   }
-  v0 = 3597LL * (int)dword_140404A6C[284024501];
+  v0 = 3597LL * (int)local_player;
   v1 = (int)dword_140404A6C[v0 + 71856292];
   if ( (_DWORD)v1 == -1 )
   {
@@ -4143,14 +3933,14 @@ LABEL_15:
   {
     *(float *)&v11 = (float)(*(float *)&v11 - v16) * 0.5;
     sub_14007B2A0((__int64)&v89, (float *)&v89 + 3, v11);
-    *(_QWORD *)&v19 = dword_140404A6C[3597 * dword_140404A6C[284024501] + 71856298];
+    *(_QWORD *)&v19 = dword_140404A6C[3597 * local_player + 71856298];
     *(float *)&v19 = (float)(*(float *)&v19 - *(float *)&dword_140404A6C[v9 + 284956342]) * 0.5;
     sub_14007B2A0((__int64)&v89, (float *)&v89, v19);
-    *(_QWORD *)&v20 = dword_140404A6C[3597 * dword_140404A6C[284024501] + 71856297];
+    *(_QWORD *)&v20 = dword_140404A6C[3597 * local_player + 71856297];
     *(float *)&v20 = (float)(*(float *)&v20 - *(float *)&dword_140404A6C[v9 + 284956341]) * 0.5;
     sub_14007B2A0((__int64)&v89, (float *)&v89 + 3, v20);
     v17 = (float *)&v89;
-    *(_QWORD *)&v18 = dword_140404A6C[3597 * dword_140404A6C[284024501] + 71856298];
+    *(_QWORD *)&v18 = dword_140404A6C[3597 * local_player + 71856298];
     *(float *)&v18 = (float)(*(float *)&v18 - *(float *)&dword_140404A6C[v9 + 284956342]) * 0.5;
   }
   sub_14007B2A0((__int64)&v89, v17, v18);
@@ -4174,11 +3964,11 @@ LABEL_15:
                      + (float)(*(float *)v85 * *(float *)&v85[2]))
              + (float)((float)(v83 * *(float *)&v85[1]) + (float)(v84 * *((float *)&v85[1] + 1)))) < 0.0 )
   {
-    *(__m128 *)&v85[1] = _mm_xor_ps(*(__m128 *)&v85[1], ((__m128)_mm_load_si128((const __m128i *)&xmmword_140279870)));
+    *(__m128_u *)&v85[1] = _mm_xor_ps(*(__m128_u *)&v85[1], ((__m128)_mm_load_si128((const __m128i *)&xmmword_140279870)));
     v24 = *(float *)&v85[2];
     v26 = *((float *)&v85[1] + 1);
     v25 = *(float *)&v85[1];
-    v23 = SR_VEC_READ_LANES(128, _mm_shuffle_ps(*(__m128 *)&v85[1], *(__m128 *)&v85[1], 255), f32)[0];
+    v23 = SR_VEC_READ_LANES(128, _mm_shuffle_ps(*(__m128_u *)&v85[1], *(__m128_u *)&v85[1], 255), f32)[0];
   }
   *(float *)&v85[2] = -v24;
   *(float *)&v85[1] = -v25;
@@ -4225,7 +4015,7 @@ LABEL_15:
   *(float *)&dword_140404A6C[284024536] = v46 * 0.5;
   *(float *)&dword_140404A6C[284024537] = v48 * 0.5;
   *(float *)&v49 = fsqrt((float)((float)((float)(v46 * v46) + (float)(v47 * v47)) + (float)(v48 * v48)) * 0.25);
-  if ( *(float *)&v49 > 1.52587890625e-05 )
+  if ( *(float *)&v49 > 0.000015258789 )
   {
     v86 = (float)(v47 * 0.5) * (float)(1.0 / *(float *)&v49);
     v87 = (float)(v46 * 0.5) * (float)(1.0 / *(float *)&v49);
@@ -4248,17 +4038,17 @@ LABEL_15:
       v89 = xmmword_140278D30;
       v90 = xmmword_140278D30;
       v91 = 1065353216;
-      *(_QWORD *)&v54 = dword_140404A6C[3597 * dword_140404A6C[284024501] + 71856299];
+      *(_QWORD *)&v54 = dword_140404A6C[3597 * local_player + 71856299];
       *(float *)&v54 = (float)(*(float *)&v54 * 0.5) + v52;
       sub_14007B2A0((__int64)&v89, (float *)&v89 + 3, v54);
-      v55 = 3597LL * (int)dword_140404A6C[284024501];
+      v55 = 3597LL * (int)local_player;
       *(_QWORD *)&v56 = dword_140404A6C[v55 + 71856300];
       *(float *)&v56 = (float)(*(float *)&v56 * 0.75) + (float)(*(float *)&dword_140404A6C[v55 + 71856298] * 0.5);
       sub_14007B2A0((__int64)&v89, (float *)&v89, v56);
-      *(_QWORD *)&v57 = dword_140404A6C[3597 * dword_140404A6C[284024501] + 71856299];
+      *(_QWORD *)&v57 = dword_140404A6C[3597 * local_player + 71856299];
       *(float *)&v57 = *(float *)&v57 * 0.5;
       sub_14007B2A0((__int64)&v89, (float *)&v89 + 3, v57);
-      v58 = 3597LL * (int)dword_140404A6C[284024501];
+      v58 = 3597LL * (int)local_player;
       *(_QWORD *)&v59 = dword_140404A6C[v58 + 71856300];
       *(float *)&v59 = (float)(*(float *)&v59 * 0.25) + (float)(*(float *)&dword_140404A6C[v58 + 71856298] * 0.5);
       sub_14007B2A0((__int64)&v89, (float *)&v89, v59);
@@ -4272,11 +4062,11 @@ LABEL_15:
                          + (float)(*(float *)v85 * *(float *)&v85[2]))
                  + (float)((float)(v83 * *(float *)&v85[1]) + (float)(v84 * *((float *)&v85[1] + 1)))) < 0.0 )
       {
-        *(__m128 *)&v85[1] = _mm_xor_ps(*(__m128 *)&v85[1], ((__m128)_mm_load_si128((const __m128i *)&xmmword_140279870)));
+        *(__m128_u *)&v85[1] = _mm_xor_ps(*(__m128_u *)&v85[1], ((__m128)_mm_load_si128((const __m128i *)&xmmword_140279870)));
         v61 = *(float *)&v85[2];
         v63 = *((float *)&v85[1] + 1);
         v62 = *(float *)&v85[1];
-        v60 = SR_VEC_READ_LANES(128, _mm_shuffle_ps(*(__m128 *)&v85[1], *(__m128 *)&v85[1], 255), f32)[0];
+        v60 = SR_VEC_READ_LANES(128, _mm_shuffle_ps(*(__m128_u *)&v85[1], *(__m128_u *)&v85[1], 255), f32)[0];
       }
       v64 = -v61;
       v65 = -v63;
@@ -4308,7 +4098,7 @@ LABEL_15:
       v78 = (float)(v73 * v76) * (float)(v53 * 0.5);
       v79 = (float)(v74 * v76) * (float)(v53 * 0.5);
       v80 = fsqrt((float)((float)(v78 * v78) + (float)(v77 * v77)) + (float)(v79 * v79));
-      if ( v80 > 1.52587890625e-05 )
+      if ( v80 > 0.000015258789 )
       {
         v87 = (float)(1.0 / v80) * v78;
         v86 = v77 * (float)(1.0 / v80);
@@ -4334,602 +4124,583 @@ LABEL_15:
 #undef v91
 #undef v92
 
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 183F7C588: using guessed type unsigned int;
-// 183F7C58C: using guessed type unsigned int;
-// 183F7C590: using guessed type unsigned int;
-// 183F7C594: using guessed type unsigned int;
-// 183F7C598: using guessed type unsigned int;
-// 183F7C5A0: using guessed type unsigned int;
-// 183F7C5A4: using guessed type unsigned int;
-// 183F7C5A8: using guessed type unsigned int;
-// 183F7C5AC: using guessed type unsigned int;
-// 183F7C5B0: using guessed type unsigned int;
-// 183F7C5B4: using guessed type unsigned int;
-// 183F7C5C0: using guessed type unsigned int;
-// 183F7C5C4: using guessed type unsigned int;
-// 183F7C5C8: using guessed type unsigned int;
-// 183F7C5D0: using guessed type unsigned int;
-
 //----- (000000014003A0F0) ----------------------------------------------------
 void sub_14003A0F0()
 {
-  unsigned int *v0; // rax
-  __int64 v1; // rdx
-  __int64 v2; // r8
-  unsigned int *v3; // rcx
-  __int128 v4; // xmm0
-  __int128 v5; // xmm1
-  __int128 v6; // xmm0
-  __int128 v7; // xmm1
-  __int128 v8; // xmm0
-  __int128 v9; // xmm1
-  __int128 v10; // xmm0
-  __int128 v11; // xmm1
-  __int64 v12; // r8
-  __int128 v13; // xmm1
-  __int128 v14; // xmm0
-  __int128 v15; // xmm1
-  __int128 v16; // xmm0
-  __int128 v17; // xmm1
-  __int128 v18; // xmm0
-  unsigned int *v19; // rcx
-  unsigned int *v20; // rax
-  __int128 v21; // xmm0
-  __int128 v22; // xmm1
-  __int128 v23; // xmm0
-  __int128 v24; // xmm1
-  __int128 v25; // xmm0
-  __int128 v26; // xmm1
-  __int128 v27; // xmm0
-  __int128 v28; // xmm1
-  __int64 v29; // r8
-  __int128 v30; // xmm1
-  __int128 v31; // xmm0
-  __int128 v32; // xmm1
-  __int128 v33; // xmm0
-  __int128 v34; // xmm1
-  __int128 v35; // xmm0
-  unsigned int *v36; // rcx
-  unsigned int *v37; // rax
-  __int128 v38; // xmm0
-  __int128 v39; // xmm1
-  __int128 v40; // xmm0
-  __int128 v41; // xmm1
-  __int128 v42; // xmm0
-  __int128 v43; // xmm1
-  __int128 v44; // xmm0
-  __int128 v45; // xmm1
-  __int64 v46; // r8
-  __int128 v47; // xmm1
-  __int128 v48; // xmm0
-  __int128 v49; // xmm1
-  __int128 v50; // xmm0
-  __int128 v51; // xmm1
-  __int128 v52; // xmm0
-  unsigned int *v53; // rcx
-  unsigned int *v54; // rax
-  __int128 v55; // xmm0
-  __int128 v56; // xmm1
-  __int128 v57; // xmm0
-  __int128 v58; // xmm1
-  __int128 v59; // xmm0
-  __int128 v60; // xmm1
-  __int128 v61; // xmm0
-  __int128 v62; // xmm1
-  __int64 v63; // r8
-  __int128 v64; // xmm1
-  __int128 v65; // xmm0
-  __int128 v66; // xmm1
-  __int128 v67; // xmm0
-  __int128 v68; // xmm1
-  __int128 v69; // xmm0
-  unsigned int *v70; // rcx
-  unsigned int *v71; // rax
-  __int128 v72; // xmm0
-  __int128 v73; // xmm1
-  __int128 v74; // xmm0
-  __int128 v75; // xmm1
-  __int128 v76; // xmm0
-  __int128 v77; // xmm1
-  __int128 v78; // xmm0
-  __int128 v79; // xmm1
-  __int64 v80; // r8
-  __int128 v81; // xmm1
-  __int128 v82; // xmm0
-  __int128 v83; // xmm1
-  __int128 v84; // xmm0
-  __int128 v85; // xmm1
-  __int128 v86; // xmm0
-  unsigned int *v87; // rcx
-  unsigned int *v88; // rax
-  __int128 v89; // xmm0
-  __int128 v90; // xmm1
-  __int128 v91; // xmm0
-  __int128 v92; // xmm1
-  __int128 v93; // xmm0
-  __int128 v94; // xmm1
-  __int128 v95; // xmm0
-  __int128 v96; // xmm1
-  __int64 v97; // r8
-  __int128 v98; // xmm1
-  __int128 v99; // xmm0
-  __int128 v100; // xmm1
-  __int128 v101; // xmm0
-  __int128 v102; // xmm1
-  __int128 v103; // xmm0
-  unsigned int *v104; // rcx
-  unsigned int *v105; // rax
-  __int128 v106; // xmm0
-  __int128 v107; // xmm1
-  __int128 v108; // xmm0
-  __int128 v109; // xmm1
-  __int128 v110; // xmm0
-  __int128 v111; // xmm1
-  __int128 v112; // xmm0
-  __int128 v113; // xmm1
-  __int64 v114; // r8
-  __int128 v115; // xmm1
-  __int128 v116; // xmm0
-  __int128 v117; // xmm1
-  __int128 v118; // xmm0
-  __int128 v119; // xmm1
-  __int128 v120; // xmm0
-  unsigned int *v121; // rcx
-  unsigned int *v122; // rax
-  __int128 v123; // xmm0
-  __int128 v124; // xmm1
-  __int128 v125; // xmm0
-  __int128 v126; // xmm1
-  __int128 v127; // xmm0
-  __int128 v128; // xmm1
-  __int128 v129; // xmm0
-  __int128 v130; // xmm1
-  __int64 v131; // r8
-  __int128 v132; // xmm1
-  __int128 v133; // xmm0
-  __int128 v134; // xmm1
-  __int128 v135; // xmm0
-  __int128 v136; // xmm1
-  __int128 v137; // xmm0
-  unsigned int *v138; // rcx
-  unsigned int *v139; // rax
-  __int128 v140; // xmm0
-  __int128 v141; // xmm1
-  __int128 v142; // xmm0
-  __int128 v143; // xmm1
-  __int128 v144; // xmm0
-  __int128 v145; // xmm1
-  __int128 v146; // xmm0
-  __int128 v147; // xmm1
-  __int64 v148; // r8
-  __int128 v149; // xmm1
-  __int128 v150; // xmm0
-  __int128 v151; // xmm1
-  __int128 v152; // xmm0
-  __int128 v153; // xmm1
-  __int128 v154; // xmm0
-  unsigned int *v155; // rcx
-  unsigned int *v156; // rax
-  __int128 v157; // xmm0
-  __int128 v158; // xmm1
-  __int128 v159; // xmm0
-  __int128 v160; // xmm1
-  __int128 v161; // xmm0
-  __int128 v162; // xmm1
-  __int128 v163; // xmm0
-  __int128 v164; // xmm1
-  __int64 v165; // r8
-  __int128 v166; // xmm1
-  __int128 v167; // xmm0
-  __int128 v168; // xmm1
-  __int128 v169; // xmm0
-  __int128 v170; // xmm1
-  __int128 v171; // xmm0
-  unsigned int *v172; // rcx
-  unsigned int *v173; // rax
-  __int128 v174; // xmm0
-  __int128 v175; // xmm1
-  __int128 v176; // xmm0
-  __int128 v177; // xmm1
-  __int128 v178; // xmm0
-  __int128 v179; // xmm1
-  __int128 v180; // xmm0
-  __int128 v181; // xmm1
-  __int64 v182; // r8
-  __int128 v183; // xmm1
-  __int128 v184; // xmm0
-  __int128 v185; // xmm1
-  __int128 v186; // xmm0
-  __int128 v187; // xmm1
-  __int128 v188; // xmm0
-  unsigned int *v189; // rcx
-  unsigned int *v190; // rax
-  __int128 v191; // xmm0
-  __int128 v192; // xmm1
-  __int128 v193; // xmm0
-  __int128 v194; // xmm1
-  __int128 v195; // xmm0
-  __int128 v196; // xmm1
-  __int128 v197; // xmm0
-  __int128 v198; // xmm1
-  __int64 v199; // r8
-  __int128 v200; // xmm1
-  __int128 v201; // xmm0
-  __int128 v202; // xmm1
-  __int128 v203; // xmm0
-  __int128 v204; // xmm1
-  __int128 v205; // xmm0
-  unsigned int *v206; // rcx
-  unsigned int *v207; // rax
-  __int128 v208; // xmm0
-  __int128 v209; // xmm1
-  __int128 v210; // xmm0
-  __int128 v211; // xmm1
-  __int128 v212; // xmm0
-  __int128 v213; // xmm1
-  __int128 v214; // xmm0
-  __int128 v215; // xmm1
-  __int64 v216; // r8
-  __int128 v217; // xmm1
-  __int128 v218; // xmm0
-  __int128 v219; // xmm1
-  __int128 v220; // xmm0
-  __int128 v221; // xmm1
-  __int128 v222; // xmm0
-  unsigned int *v223; // rcx
-  unsigned int *v224; // rax
-  __int128 v225; // xmm0
-  __int128 v226; // xmm1
-  __int128 v227; // xmm0
-  __int128 v228; // xmm1
-  __int128 v229; // xmm0
-  __int128 v230; // xmm1
-  __int128 v231; // xmm0
-  __int128 v232; // xmm1
-  __int64 v233; // r8
-  __int128 v234; // xmm1
-  __int128 v235; // xmm0
-  __int128 v236; // xmm1
-  __int128 v237; // xmm0
-  __int128 v238; // xmm1
-  __int128 v239; // xmm0
-  unsigned int *v240; // rcx
-  unsigned int *v241; // rax
-  __int128 v242; // xmm0
-  __int128 v243; // xmm1
-  __int128 v244; // xmm0
-  __int128 v245; // xmm1
-  __int128 v246; // xmm0
-  __int128 v247; // xmm1
-  __int128 v248; // xmm0
-  __int128 v249; // xmm1
-  __int64 v250; // r8
-  __int128 v251; // xmm1
-  __int128 v252; // xmm0
-  __int128 v253; // xmm1
-  __int128 v254; // xmm0
-  __int128 v255; // xmm1
-  __int128 v256; // xmm0
-  unsigned int *v257; // rcx
-  unsigned int *v258; // rax
-  __int128 v259; // xmm0
-  __int128 v260; // xmm1
-  __int128 v261; // xmm0
-  __int128 v262; // xmm1
-  __int128 v263; // xmm0
-  __int128 v264; // xmm1
-  __int128 v265; // xmm0
-  __int128 v266; // xmm1
-  __int64 v267; // r8
-  __int128 v268; // xmm1
-  __int128 v269; // xmm0
-  __int128 v270; // xmm1
-  __int128 v271; // xmm0
-  __int128 v272; // xmm1
-  __int128 v273; // xmm0
-  unsigned int *v274; // rcx
-  unsigned int *v275; // rax
-  __int128 v276; // xmm0
-  __int128 v277; // xmm1
-  __int128 v278; // xmm0
-  __int128 v279; // xmm1
-  __int128 v280; // xmm0
-  __int128 v281; // xmm1
-  __int128 v282; // xmm0
-  __int128 v283; // xmm1
-  __int64 v284; // r8
-  __int128 v285; // xmm1
-  __int128 v286; // xmm0
-  __int128 v287; // xmm1
-  __int128 v288; // xmm0
-  __int128 v289; // xmm1
-  __int128 v290; // xmm0
-  unsigned int *v291; // rcx
-  unsigned int *v292; // rax
-  __int128 v293; // xmm0
-  __int128 v294; // xmm1
-  __int128 v295; // xmm0
-  __int128 v296; // xmm1
-  __int128 v297; // xmm0
-  __int128 v298; // xmm1
-  __int128 v299; // xmm0
-  __int128 v300; // xmm1
-  __int64 v301; // r8
-  __int128 v302; // xmm1
-  __int128 v303; // xmm0
-  __int128 v304; // xmm1
-  __int128 v305; // xmm0
-  __int128 v306; // xmm1
-  __int128 v307; // xmm0
-  unsigned int *v308; // rcx
-  unsigned int *v309; // rax
-  __int128 v310; // xmm0
-  __int128 v311; // xmm1
-  __int128 v312; // xmm0
-  __int128 v313; // xmm1
-  __int128 v314; // xmm0
-  __int128 v315; // xmm1
-  __int128 v316; // xmm0
-  __int128 v317; // xmm1
-  __int64 v318; // r8
-  __int128 v319; // xmm1
-  __int128 v320; // xmm0
-  __int128 v321; // xmm1
-  __int128 v322; // xmm0
-  __int128 v323; // xmm1
-  __int128 v324; // xmm0
-  unsigned int *v325; // rcx
-  unsigned int *v326; // rax
-  __int128 v327; // xmm0
-  __int128 v328; // xmm1
-  __int128 v329; // xmm0
-  __int128 v330; // xmm1
-  __int128 v331; // xmm0
-  __int128 v332; // xmm1
-  __int128 v333; // xmm0
-  __int128 v334; // xmm1
-  __int64 v335; // r8
-  __int128 v336; // xmm1
-  __int128 v337; // xmm0
-  __int128 v338; // xmm1
-  __int128 v339; // xmm0
-  __int128 v340; // xmm1
-  __int128 v341; // xmm0
-  unsigned int *v342; // rcx
-  unsigned int *v343; // rax
-  __int128 v344; // xmm0
-  __int128 v345; // xmm1
-  __int128 v346; // xmm0
-  __int128 v347; // xmm1
-  __int128 v348; // xmm0
-  __int128 v349; // xmm1
-  __int128 v350; // xmm0
-  __int128 v351; // xmm1
-  __int64 v352; // r8
-  __int128 v353; // xmm1
-  __int128 v354; // xmm0
-  __int128 v355; // xmm1
-  __int128 v356; // xmm0
-  __int128 v357; // xmm1
-  __int128 v358; // xmm0
-  unsigned int *v359; // rcx
-  unsigned int *v360; // rax
-  __int128 v361; // xmm0
-  __int128 v362; // xmm1
-  __int128 v363; // xmm0
-  __int128 v364; // xmm1
-  __int128 v365; // xmm0
-  __int128 v366; // xmm1
-  __int128 v367; // xmm0
-  __int128 v368; // xmm1
-  __int64 v369; // r8
-  __int128 v370; // xmm1
-  __int128 v371; // xmm0
-  __int128 v372; // xmm1
-  __int128 v373; // xmm0
-  __int128 v374; // xmm1
-  __int128 v375; // xmm0
-  unsigned int *v376; // rcx
-  unsigned int *v377; // rax
-  __int128 v378; // xmm0
-  __int128 v379; // xmm1
-  __int128 v380; // xmm0
-  __int128 v381; // xmm1
-  __int128 v382; // xmm0
-  __int128 v383; // xmm1
-  __int128 v384; // xmm0
-  __int128 v385; // xmm1
-  __int64 v386; // r8
-  __int128 v387; // xmm1
-  __int128 v388; // xmm0
-  __int128 v389; // xmm1
-  __int128 v390; // xmm0
-  __int128 v391; // xmm1
-  __int128 v392; // xmm0
-  unsigned int *v393; // rcx
-  unsigned int *v394; // rax
-  __int128 v395; // xmm0
-  __int128 v396; // xmm1
-  __int128 v397; // xmm0
-  __int128 v398; // xmm1
-  __int128 v399; // xmm0
-  __int128 v400; // xmm1
-  __int128 v401; // xmm0
-  __int128 v402; // xmm1
-  __int64 v403; // r8
-  __int128 v404; // xmm1
-  __int128 v405; // xmm0
-  __int128 v406; // xmm1
-  __int128 v407; // xmm0
-  __int128 v408; // xmm1
-  __int128 v409; // xmm0
-  unsigned int *v410; // rcx
-  unsigned int *v411; // rax
-  __int128 v412; // xmm0
-  __int128 v413; // xmm1
-  __int128 v414; // xmm0
-  __int128 v415; // xmm1
-  __int128 v416; // xmm0
-  __int128 v417; // xmm1
-  __int128 v418; // xmm0
-  __int128 v419; // xmm1
-  __int64 v420; // r8
-  __int128 v421; // xmm1
-  __int128 v422; // xmm0
-  __int128 v423; // xmm1
-  __int128 v424; // xmm0
-  __int128 v425; // xmm1
-  __int128 v426; // xmm0
-  unsigned int *v427; // rcx
-  unsigned int *v428; // rax
-  __int128 v429; // xmm0
-  __int128 v430; // xmm1
-  __int128 v431; // xmm0
-  __int128 v432; // xmm1
-  __int128 v433; // xmm0
-  __int128 v434; // xmm1
-  __int128 v435; // xmm0
-  __int128 v436; // xmm1
-  __int64 v437; // r8
-  __int128 v438; // xmm1
-  __int128 v439; // xmm0
-  __int128 v440; // xmm1
-  __int128 v441; // xmm0
-  __int128 v442; // xmm1
-  __int128 v443; // xmm0
-  unsigned int *v444; // rcx
-  unsigned int *v445; // rax
-  __int128 v446; // xmm0
-  __int128 v447; // xmm1
-  __int128 v448; // xmm0
-  __int128 v449; // xmm1
-  __int128 v450; // xmm0
-  __int128 v451; // xmm1
-  __int128 v452; // xmm0
-  __int128 v453; // xmm1
-  __int64 v454; // r8
-  __int128 v455; // xmm1
-  __int128 v456; // xmm0
-  __int128 v457; // xmm1
-  __int128 v458; // xmm0
-  __int128 v459; // xmm1
-  __int128 v460; // xmm0
-  unsigned int *v461; // rcx
-  unsigned int *v462; // rax
-  __int128 v463; // xmm0
-  __int128 v464; // xmm1
-  __int128 v465; // xmm0
-  __int128 v466; // xmm1
-  __int128 v467; // xmm0
-  __int128 v468; // xmm1
-  __int128 v469; // xmm0
-  __int128 v470; // xmm1
-  __int64 v471; // r8
-  __int128 v472; // xmm1
-  __int128 v473; // xmm0
-  __int128 v474; // xmm1
-  __int128 v475; // xmm0
-  __int128 v476; // xmm1
-  __int128 v477; // xmm0
-  unsigned int *v478; // rcx
-  unsigned int *v479; // rax
-  __int128 v480; // xmm0
-  __int128 v481; // xmm1
-  __int128 v482; // xmm0
-  __int128 v483; // xmm1
-  __int128 v484; // xmm0
-  __int128 v485; // xmm1
-  __int128 v486; // xmm0
-  __int128 v487; // xmm1
-  __int64 v488; // r8
-  __int128 v489; // xmm1
-  __int128 v490; // xmm0
-  __int128 v491; // xmm1
-  __int128 v492; // xmm0
-  __int128 v493; // xmm1
-  __int128 v494; // xmm0
-  unsigned int *v495; // rcx
-  unsigned int *v496; // rax
-  __int128 v497; // xmm0
-  __int128 v498; // xmm1
-  __int128 v499; // xmm0
-  __int128 v500; // xmm1
-  __int128 v501; // xmm0
-  __int128 v502; // xmm1
-  __int128 v503; // xmm0
-  __int128 v504; // xmm1
-  __int64 v505; // r8
-  __int128 v506; // xmm1
-  __int128 v507; // xmm0
-  __int128 v508; // xmm1
-  __int128 v509; // xmm0
-  __int128 v510; // xmm1
-  __int128 v511; // xmm0
-  unsigned int *v512; // rcx
-  unsigned int *v513; // rax
-  __int128 v514; // xmm0
-  __int128 v515; // xmm1
-  __int128 v516; // xmm0
-  __int128 v517; // xmm1
-  __int128 v518; // xmm0
-  __int128 v519; // xmm1
-  __int128 v520; // xmm0
-  __int128 v521; // xmm1
-  __int128 v522; // xmm1
-  __int128 v523; // xmm0
-  __int128 v524; // xmm1
-  __int128 v525; // xmm0
-  __int128 v526; // xmm1
-  __int128 v527; // xmm0
-  unsigned int *v528; // rcx
-  unsigned int *v529; // rax
-  __int128 v530; // xmm0
-  __int128 v531; // xmm1
-  __int128 v532; // xmm0
-  __int128 v533; // xmm1
-  __int128 v534; // xmm0
-  __int128 v535; // xmm1
-  __int128 v536; // xmm0
-  __int128 v537; // xmm1
-  __int128 v538; // xmm1
-  __int128 v539; // xmm0
-  __int128 v540; // xmm1
-  __int128 v541; // xmm0
-  __int128 v542; // xmm1
-  __int128 v543; // xmm0
-  int v544; // r12d
-  __int64 v545; // rsi
-  unsigned int *v546; // r15
-  int v547; // ebx
-  int v548; // eax
-  signed int v549; // edi
-  __int64 v550; // rbx
-  int v551; // ecx
-  unsigned int *v552; // rbp
-  signed int v553; // edi
-  unsigned int *v554; // r14
-  unsigned int *v555; // rbp
-  signed int v556; // edi
-  unsigned int *v557; // r14
-  signed int v558; // ebp
-  _DWORD *v559; // rbx
-  _QWORD *v560; // rdi
-  int v561; // ecx
-  __int64 v562; // rax
-  int v563; // ebx
-  char *v564; // rax
-  __int64 v565; // r8
-  char *v566; // rdx
-  char v567; // cl
-  __int64 v568; // rax
-  int v569; // ebx
-  char *v570; // rax
-  __int64 v571; // rbx
-  char *v572; // rdx
-  char v573; // cl
+  unsigned int *v0;
+  __int64 v1;
+  __int64 v2;
+  unsigned int *v3;
+  __int128 v4;
+  __int128 v5;
+  __int128 v6;
+  __int128 v7;
+  __int128 v8;
+  __int128 v9;
+  __int128 v10;
+  __int128 v11;
+  __int64 v12;
+  __int128 v13;
+  __int128 v14;
+  __int128 v15;
+  __int128 v16;
+  __int128 v17;
+  __int128 v18;
+  unsigned int *v19;
+  unsigned int *v20;
+  __int128 v21;
+  __int128 v22;
+  __int128 v23;
+  __int128 v24;
+  __int128 v25;
+  __int128 v26;
+  __int128 v27;
+  __int128 v28;
+  __int64 v29;
+  __int128 v30;
+  __int128 v31;
+  __int128 v32;
+  __int128 v33;
+  __int128 v34;
+  __int128 v35;
+  unsigned int *v36;
+  unsigned int *v37;
+  __int128 v38;
+  __int128 v39;
+  __int128 v40;
+  __int128 v41;
+  __int128 v42;
+  __int128 v43;
+  __int128 v44;
+  __int128 v45;
+  __int64 v46;
+  __int128 v47;
+  __int128 v48;
+  __int128 v49;
+  __int128 v50;
+  __int128 v51;
+  __int128 v52;
+  unsigned int *v53;
+  unsigned int *v54;
+  __int128 v55;
+  __int128 v56;
+  __int128 v57;
+  __int128 v58;
+  __int128 v59;
+  __int128 v60;
+  __int128 v61;
+  __int128 v62;
+  __int64 v63;
+  __int128 v64;
+  __int128 v65;
+  __int128 v66;
+  __int128 v67;
+  __int128 v68;
+  __int128 v69;
+  unsigned int *v70;
+  unsigned int *v71;
+  __int128 v72;
+  __int128 v73;
+  __int128 v74;
+  __int128 v75;
+  __int128 v76;
+  __int128 v77;
+  __int128 v78;
+  __int128 v79;
+  __int64 v80;
+  __int128 v81;
+  __int128 v82;
+  __int128 v83;
+  __int128 v84;
+  __int128 v85;
+  __int128 v86;
+  unsigned int *v87;
+  unsigned int *v88;
+  __int128 v89;
+  __int128 v90;
+  __int128 v91;
+  __int128 v92;
+  __int128 v93;
+  __int128 v94;
+  __int128 v95;
+  __int128 v96;
+  __int64 v97;
+  __int128 v98;
+  __int128 v99;
+  __int128 v100;
+  __int128 v101;
+  __int128 v102;
+  __int128 v103;
+  unsigned int *v104;
+  unsigned int *v105;
+  __int128 v106;
+  __int128 v107;
+  __int128 v108;
+  __int128 v109;
+  __int128 v110;
+  __int128 v111;
+  __int128 v112;
+  __int128 v113;
+  __int64 v114;
+  __int128 v115;
+  __int128 v116;
+  __int128 v117;
+  __int128 v118;
+  __int128 v119;
+  __int128 v120;
+  unsigned int *v121;
+  unsigned int *v122;
+  __int128 v123;
+  __int128 v124;
+  __int128 v125;
+  __int128 v126;
+  __int128 v127;
+  __int128 v128;
+  __int128 v129;
+  __int128 v130;
+  __int64 v131;
+  __int128 v132;
+  __int128 v133;
+  __int128 v134;
+  __int128 v135;
+  __int128 v136;
+  __int128 v137;
+  unsigned int *v138;
+  unsigned int *v139;
+  __int128 v140;
+  __int128 v141;
+  __int128 v142;
+  __int128 v143;
+  __int128 v144;
+  __int128 v145;
+  __int128 v146;
+  __int128 v147;
+  __int64 v148;
+  __int128 v149;
+  __int128 v150;
+  __int128 v151;
+  __int128 v152;
+  __int128 v153;
+  __int128 v154;
+  unsigned int *v155;
+  unsigned int *v156;
+  __int128 v157;
+  __int128 v158;
+  __int128 v159;
+  __int128 v160;
+  __int128 v161;
+  __int128 v162;
+  __int128 v163;
+  __int128 v164;
+  __int64 v165;
+  __int128 v166;
+  __int128 v167;
+  __int128 v168;
+  __int128 v169;
+  __int128 v170;
+  __int128 v171;
+  unsigned int *v172;
+  unsigned int *v173;
+  __int128 v174;
+  __int128 v175;
+  __int128 v176;
+  __int128 v177;
+  __int128 v178;
+  __int128 v179;
+  __int128 v180;
+  __int128 v181;
+  __int64 v182;
+  __int128 v183;
+  __int128 v184;
+  __int128 v185;
+  __int128 v186;
+  __int128 v187;
+  __int128 v188;
+  unsigned int *v189;
+  unsigned int *v190;
+  __int128 v191;
+  __int128 v192;
+  __int128 v193;
+  __int128 v194;
+  __int128 v195;
+  __int128 v196;
+  __int128 v197;
+  __int128 v198;
+  __int64 v199;
+  __int128 v200;
+  __int128 v201;
+  __int128 v202;
+  __int128 v203;
+  __int128 v204;
+  __int128 v205;
+  unsigned int *v206;
+  unsigned int *v207;
+  __int128 v208;
+  __int128 v209;
+  __int128 v210;
+  __int128 v211;
+  __int128 v212;
+  __int128 v213;
+  __int128 v214;
+  __int128 v215;
+  __int64 v216;
+  __int128 v217;
+  __int128 v218;
+  __int128 v219;
+  __int128 v220;
+  __int128 v221;
+  __int128 v222;
+  unsigned int *v223;
+  unsigned int *v224;
+  __int128 v225;
+  __int128 v226;
+  __int128 v227;
+  __int128 v228;
+  __int128 v229;
+  __int128 v230;
+  __int128 v231;
+  __int128 v232;
+  __int64 v233;
+  __int128 v234;
+  __int128 v235;
+  __int128 v236;
+  __int128 v237;
+  __int128 v238;
+  __int128 v239;
+  unsigned int *v240;
+  unsigned int *v241;
+  __int128 v242;
+  __int128 v243;
+  __int128 v244;
+  __int128 v245;
+  __int128 v246;
+  __int128 v247;
+  __int128 v248;
+  __int128 v249;
+  __int64 v250;
+  __int128 v251;
+  __int128 v252;
+  __int128 v253;
+  __int128 v254;
+  __int128 v255;
+  __int128 v256;
+  unsigned int *v257;
+  unsigned int *v258;
+  __int128 v259;
+  __int128 v260;
+  __int128 v261;
+  __int128 v262;
+  __int128 v263;
+  __int128 v264;
+  __int128 v265;
+  __int128 v266;
+  __int64 v267;
+  __int128 v268;
+  __int128 v269;
+  __int128 v270;
+  __int128 v271;
+  __int128 v272;
+  __int128 v273;
+  unsigned int *v274;
+  unsigned int *v275;
+  __int128 v276;
+  __int128 v277;
+  __int128 v278;
+  __int128 v279;
+  __int128 v280;
+  __int128 v281;
+  __int128 v282;
+  __int128 v283;
+  __int64 v284;
+  __int128 v285;
+  __int128 v286;
+  __int128 v287;
+  __int128 v288;
+  __int128 v289;
+  __int128 v290;
+  unsigned int *v291;
+  unsigned int *v292;
+  __int128 v293;
+  __int128 v294;
+  __int128 v295;
+  __int128 v296;
+  __int128 v297;
+  __int128 v298;
+  __int128 v299;
+  __int128 v300;
+  __int64 v301;
+  __int128 v302;
+  __int128 v303;
+  __int128 v304;
+  __int128 v305;
+  __int128 v306;
+  __int128 v307;
+  unsigned int *v308;
+  unsigned int *v309;
+  __int128 v310;
+  __int128 v311;
+  __int128 v312;
+  __int128 v313;
+  __int128 v314;
+  __int128 v315;
+  __int128 v316;
+  __int128 v317;
+  __int64 v318;
+  __int128 v319;
+  __int128 v320;
+  __int128 v321;
+  __int128 v322;
+  __int128 v323;
+  __int128 v324;
+  unsigned int *v325;
+  unsigned int *v326;
+  __int128 v327;
+  __int128 v328;
+  __int128 v329;
+  __int128 v330;
+  __int128 v331;
+  __int128 v332;
+  __int128 v333;
+  __int128 v334;
+  __int64 v335;
+  __int128 v336;
+  __int128 v337;
+  __int128 v338;
+  __int128 v339;
+  __int128 v340;
+  __int128 v341;
+  unsigned int *v342;
+  unsigned int *v343;
+  __int128 v344;
+  __int128 v345;
+  __int128 v346;
+  __int128 v347;
+  __int128 v348;
+  __int128 v349;
+  __int128 v350;
+  __int128 v351;
+  __int64 v352;
+  __int128 v353;
+  __int128 v354;
+  __int128 v355;
+  __int128 v356;
+  __int128 v357;
+  __int128 v358;
+  unsigned int *v359;
+  unsigned int *v360;
+  __int128 v361;
+  __int128 v362;
+  __int128 v363;
+  __int128 v364;
+  __int128 v365;
+  __int128 v366;
+  __int128 v367;
+  __int128 v368;
+  __int64 v369;
+  __int128 v370;
+  __int128 v371;
+  __int128 v372;
+  __int128 v373;
+  __int128 v374;
+  __int128 v375;
+  unsigned int *v376;
+  unsigned int *v377;
+  __int128 v378;
+  __int128 v379;
+  __int128 v380;
+  __int128 v381;
+  __int128 v382;
+  __int128 v383;
+  __int128 v384;
+  __int128 v385;
+  __int64 v386;
+  __int128 v387;
+  __int128 v388;
+  __int128 v389;
+  __int128 v390;
+  __int128 v391;
+  __int128 v392;
+  unsigned int *v393;
+  unsigned int *v394;
+  __int128 v395;
+  __int128 v396;
+  __int128 v397;
+  __int128 v398;
+  __int128 v399;
+  __int128 v400;
+  __int128 v401;
+  __int128 v402;
+  __int64 v403;
+  __int128 v404;
+  __int128 v405;
+  __int128 v406;
+  __int128 v407;
+  __int128 v408;
+  __int128 v409;
+  unsigned int *v410;
+  unsigned int *v411;
+  __int128 v412;
+  __int128 v413;
+  __int128 v414;
+  __int128 v415;
+  __int128 v416;
+  __int128 v417;
+  __int128 v418;
+  __int128 v419;
+  __int64 v420;
+  __int128 v421;
+  __int128 v422;
+  __int128 v423;
+  __int128 v424;
+  __int128 v425;
+  __int128 v426;
+  unsigned int *v427;
+  unsigned int *v428;
+  __int128 v429;
+  __int128 v430;
+  __int128 v431;
+  __int128 v432;
+  __int128 v433;
+  __int128 v434;
+  __int128 v435;
+  __int128 v436;
+  __int64 v437;
+  __int128 v438;
+  __int128 v439;
+  __int128 v440;
+  __int128 v441;
+  __int128 v442;
+  __int128 v443;
+  unsigned int *v444;
+  unsigned int *v445;
+  __int128 v446;
+  __int128 v447;
+  __int128 v448;
+  __int128 v449;
+  __int128 v450;
+  __int128 v451;
+  __int128 v452;
+  __int128 v453;
+  __int64 v454;
+  __int128 v455;
+  __int128 v456;
+  __int128 v457;
+  __int128 v458;
+  __int128 v459;
+  __int128 v460;
+  unsigned int *v461;
+  unsigned int *v462;
+  __int128 v463;
+  __int128 v464;
+  __int128 v465;
+  __int128 v466;
+  __int128 v467;
+  __int128 v468;
+  __int128 v469;
+  __int128 v470;
+  __int64 v471;
+  __int128 v472;
+  __int128 v473;
+  __int128 v474;
+  __int128 v475;
+  __int128 v476;
+  __int128 v477;
+  unsigned int *v478;
+  unsigned int *v479;
+  __int128 v480;
+  __int128 v481;
+  __int128 v482;
+  __int128 v483;
+  __int128 v484;
+  __int128 v485;
+  __int128 v486;
+  __int128 v487;
+  __int64 v488;
+  __int128 v489;
+  __int128 v490;
+  __int128 v491;
+  __int128 v492;
+  __int128 v493;
+  __int128 v494;
+  unsigned int *v495;
+  unsigned int *v496;
+  __int128 v497;
+  __int128 v498;
+  __int128 v499;
+  __int128 v500;
+  __int128 v501;
+  __int128 v502;
+  __int128 v503;
+  __int128 v504;
+  __int64 v505;
+  __int128 v506;
+  __int128 v507;
+  __int128 v508;
+  __int128 v509;
+  __int128 v510;
+  __int128 v511;
+  unsigned int *v512;
+  unsigned int *v513;
+  __int128 v514;
+  __int128 v515;
+  __int128 v516;
+  __int128 v517;
+  __int128 v518;
+  __int128 v519;
+  __int128 v520;
+  __int128 v521;
+  __int128 v522;
+  __int128 v523;
+  __int128 v524;
+  __int128 v525;
+  __int128 v526;
+  __int128 v527;
+  unsigned int *v528;
+  unsigned int *v529;
+  __int128 v530;
+  __int128 v531;
+  __int128 v532;
+  __int128 v533;
+  __int128 v534;
+  __int128 v535;
+  __int128 v536;
+  __int128 v537;
+  __int128 v538;
+  __int128 v539;
+  __int128 v540;
+  __int128 v541;
+  __int128 v542;
+  __int128 v543;
+  int v544;
+  __int64 v545;
+  unsigned int *v546;
+  int v547;
+  int v548;
+  signed int v549;
+  __int64 v550;
+  int v551;
+  unsigned int *v552;
+  signed int v553;
+  unsigned int *v554;
+  unsigned int *v555;
+  signed int v556;
+  unsigned int *v557;
+  signed int v558;
+  _DWORD *v559;
+  _QWORD *v560;
+  int v561;
+  __int64 v562;
+  int v563;
+  char *v564;
+  __int64 v565;
+  char *v566;
+  char v567;
+  __int64 v568;
+  int v569;
+  char *v570;
+  __int64 v571;
+  char *v572;
+  char v573;
 
   if ( dword_140404A6C[278520173] )
   {
@@ -6210,7 +5981,7 @@ void sub_14003A0F0()
                 {
                   ++v552;
                   ++v549;
-                  *((float *)v552 - 1) = (float)(__int16)sr_pad_controller_axis(((void *)(uintptr_t)*(uint64_t *)&dword_140404A6C[v545 + 285105085]),v549-1) * 3.0517578125e-05;
+                  *((float *)v552 - 1) = (float)(__int16)sr_pad_controller_axis(((void *)(uintptr_t)*(uint64_t *)&dword_140404A6C[v545 + 285105085]),v549-1) * 0.000030517578;
                 }
                 while ( v549 < (int)dword_140404A6C[v550 + 285101115] );
               }
@@ -6235,7 +6006,7 @@ void sub_14003A0F0()
                 {
                   ++v555;
                   ++v549;
-                  *((float *)v555 - 1) = (float)(__int16)sr_pad_axis(((void *)(uintptr_t)*(uint64_t *)&dword_140404A6C[v545 + 285105149]),v549-1) * 3.0517578125e-05;
+                  *((float *)v555 - 1) = (float)(__int16)sr_pad_axis(((void *)(uintptr_t)*(uint64_t *)&dword_140404A6C[v545 + 285105149]),v549-1) * 0.000030517578;
                 }
                 while ( v549 < (int)dword_140404A6C[v550 + 285101115] );
               }
@@ -6339,180 +6110,180 @@ void sub_14003A0F0()
 //----- (0000000140056980) ----------------------------------------------------
 __int64 sub_140056980()
 {
-  int v0; // esi
-  unsigned int v1; // eax
-  signed int v2; // ecx
-  unsigned int v3; // ebp
-  unsigned int *v4; // r14
-  __int64 v5; // rdx
-  char *v6; // r8
-  char v7; // al
-  __int64 v8; // rdi
-  __int64 v9; // rbx
-  int v10; // edx
-  int v11; // ecx
-  int v12; // edx
-  int v13; // ecx
-  __int64 v14; // rdx
-  __int64 v15; // rcx
-  __int64 v16; // r8
-  __int64 v17; // rcx
-  __int64 v18; // rdx
-  unsigned int *v19; // rax
-  unsigned int v20; // r15d
-  int v21; // r14d
-  unsigned int *v22; // r11
-  __int64 v23; // rbx
-  unsigned int v24; // eax
-  signed int v25; // r8d
-  int v26; // r10d
-  unsigned int v27; // r9d
-  unsigned int v28; // eax
-  __m128i v29; // xmm0
-  __m128i v30; // xmm1
-  unsigned int v31; // eax
-  float v32; // xmm0_4
-  unsigned int v33; // eax
-  signed int *v34; // rbx
-  __int64 v35; // rbp
-  unsigned int *v36; // rdi
-  signed int v37; // r9d
-  signed int v38; // r8d
-  signed int v39; // edx
-  signed int v40; // ecx
-  unsigned int *v41; // rbx
-  signed int v42; // eax
-  signed int v43; // ebp
-  int v44; // r11d
-  signed int v45; // r9d
-       char *v46; // r10
-  float v47; // xmm10_4
-  int v48; // ebx
-  int v49; // ebx
-  int v50; // r10d
-  unsigned int *v51; // r8
-  unsigned int *v52; // r9
-  int v53; // eax
-  int v54; // eax
-  int v55; // eax
-  int v56; // eax
-  int v57; // eax
-  unsigned int v58; // eax
-  __m128i v59; // xmm0
-  int v60; // eax
-  int i; // ebx
-  __int64 v62; // r13
-  unsigned int *v63; // r14
-  int v64; // r8d
-  unsigned int *v65; // rbp
-  _DWORD *v66; // r15
-  int v67; // r12d
-  __int64 v68; // rbx
-  int v69; // edi
-  unsigned int v70; // edx
-  __int64 v71; // rcx
-  int v72; // ebp
-  bool v73; // al
-  bool v74; // al
-  bool v75; // al
-  bool v76; // al
-  bool v77; // al
-  bool v78; // al
-  int v79; // r13d
-  unsigned int v80; // r12d
-  int v81; // edi
-  BOOL v82; // ebx
-  int v83; // eax
-  int v84; // edi
-  int v85; // ebx
-  int v86; // eax
-  int v87; // ecx
-  int v88; // eax
-  unsigned int *v89; // r15
-       char *v90; // r14
-  int v91; // ebx
-  int v92; // eax
-  int v93; // ecx
-  signed int v94; // edi
-  __int64 v95; // rcx
-  unsigned __int8 v96; // al
-  int v97; // eax
-  bool v98; // cf
-  __int64 v99; // rax
-  char v100; // cl
-  bool v101; // zf
-  __int64 v102; // rax
-  char v103; // cl
-  bool v104; // zf
-  __int64 v105; // rax
-  char v106; // cl
-  bool v107; // zf
-  __int64 v108; // rax
-  char v109; // cl
-  bool v110; // zf
-  __int64 v111; // rax
-  char v112; // cl
-  bool v113; // zf
-  __int64 v114; // rax
-  char v115; // cl
-  bool v116; // zf
-  __int64 v117; // rax
-  char v118; // cl
-  bool v119; // zf
-  __int64 v120; // rax
-  char v121; // cl
-  bool v122; // zf
-  __int64 v123; // rax
-  char v124; // cl
-  bool v125; // zf
-  int v126; // edx
-  unsigned int v127; // r8d
-  int v128; // ecx
-  unsigned int v129; // ebx
-  unsigned int v130; // r9d
-  __int64 v131; // rbp
-  int v132; // r13d
-  int v133; // r12d
-  unsigned int v134; // r15d
-  float v135; // xmm2_4
-  int v136; // r14d
-  float v137; // xmm6_4
-  float v138; // xmm5_4
-  float v139; // xmm11_4
-  float v140; // xmm8_4
-  float v141; // xmm12_4
-  float v142; // xmm9_4
-  float v143; // xmm13_4
-  unsigned int v144; // esi
-  int v145; // edi
-  float v146; // xmm4_4
-  float v147; // xmm3_4
-  unsigned int v148; // eax
-  unsigned int v149; // ebx
-  float v150; // xmm5_4
-  float v151; // xmm1_4
-  __int64 v152; // rcx
-  char v153; // al
-  int j; // edi
-  int k; // ebx
-  unsigned int *v156; // rbx
-  int v157; // r12d
-  unsigned int *v158; // r14
-  int v159; // r15d
-  __int64 v160; // r13
-  int v161; // edi
-  __int64 v162; // rbp
-  __int64 v163; // rcx
-  unsigned int v164; // xmm1_4
-  unsigned int v165; // xmm0_4
-  __int64 v166; // rcx
-  __int64 v167; // rdx
-  signed int v168; // r14d
-  __int64 v169; // r15
-  unsigned __int64 v170; // rbp
-  __int64 m; // rdi
-  __int64 v172; // rbx
-  int *v173; // rbx
+  int v0;
+  unsigned int v1;
+  signed int v2;
+  unsigned int v3;
+  unsigned int *v4;
+  __int64 v5;
+  char *v6;
+  char v7;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  int v11;
+  int v12;
+  int v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  unsigned int *v19;
+  unsigned int v20;
+  int v21;
+  unsigned int *v22;
+  __int64 v23;
+  unsigned int v24;
+  signed int v25;
+  int v26;
+  unsigned int v27;
+  unsigned int v28;
+  __m128i v29;
+  __m128i v30;
+  unsigned int v31;
+  float v32;
+  unsigned int v33;
+  signed int *v34;
+  __int64 v35;
+  unsigned int *v36;
+  signed int v37;
+  signed int v38;
+  signed int v39;
+  signed int v40;
+  unsigned int *v41;
+  signed int v42;
+  signed int v43;
+  int v44;
+  signed int v45;
+       char *v46;
+  float v47;
+  int v48;
+  int v49;
+  int v50;
+  unsigned int *v51;
+  unsigned int *v52;
+  int v53;
+  int v54;
+  int v55;
+  int v56;
+  int v57;
+  unsigned int v58;
+  __m128i v59;
+  int v60;
+  int i;
+  __int64 v62;
+  unsigned int *v63;
+  int v64;
+  unsigned int *v65;
+  _DWORD *v66;
+  int v67;
+  __int64 v68;
+  int v69;
+  unsigned int v70;
+  __int64 v71;
+  int v72;
+  bool v73;
+  bool v74;
+  bool v75;
+  bool v76;
+  bool v77;
+  bool v78;
+  int v79;
+  unsigned int v80;
+  int v81;
+  BOOL v82;
+  int v83;
+  int v84;
+  int v85;
+  int v86;
+  int v87;
+  int v88;
+  unsigned int *v89;
+       char *v90;
+  int v91;
+  int v92;
+  int v93;
+  signed int v94;
+  __int64 v95;
+  unsigned __int8 v96;
+  int v97;
+  bool v98;
+  __int64 v99;
+  char v100;
+  bool v101;
+  __int64 v102;
+  char v103;
+  bool v104;
+  __int64 v105;
+  char v106;
+  bool v107;
+  __int64 v108;
+  char v109;
+  bool v110;
+  __int64 v111;
+  char v112;
+  bool v113;
+  __int64 v114;
+  char v115;
+  bool v116;
+  __int64 v117;
+  char v118;
+  bool v119;
+  __int64 v120;
+  char v121;
+  bool v122;
+  __int64 v123;
+  char v124;
+  bool v125;
+  int v126;
+  unsigned int v127;
+  int v128;
+  unsigned int v129;
+  unsigned int v130;
+  __int64 v131;
+  int v132;
+  int v133;
+  unsigned int v134;
+  float v135;
+  int v136;
+  float v137;
+  float v138;
+  float v139;
+  float v140;
+  float v141;
+  float v142;
+  float v143;
+  unsigned int v144;
+  int v145;
+  float v146;
+  float v147;
+  unsigned int v148;
+  unsigned int v149;
+  float v150;
+  float v151;
+  __int64 v152;
+  char v153;
+  int j;
+  int k;
+  unsigned int *v156;
+  int v157;
+  unsigned int *v158;
+  int v159;
+  __int64 v160;
+  int v161;
+  __int64 v162;
+  __int64 v163;
+  unsigned int v164;
+  unsigned int v165;
+  __int64 v166;
+  __int64 v167;
+  signed int v168;
+  __int64 v169;
+  unsigned __int64 v170;
+  __int64 m;
+  __int64 v172;
+  int *v173;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140056980[176];
 #define v175 (*(_QWORD (*)[5])(void *)(sr_frame_140056980 + 0)) /* [rsp+0h] */
@@ -6534,9 +6305,9 @@ __int64 sub_140056980()
 #define v191 (*(int (*))(void *)(sr_frame_140056980 + 164)) /* [rsp+A4h] */
 #define v192 (*(__int64 (*))(void *)(sr_frame_140056980 + 168)) /* [rsp+A8h] */
 
-  sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[254388963]), 0, 0x4000000u);
-  v182 = sub_14024C22C("data");
-  v183 = sub_14024C22C(&dword_140404A6C[283831313]);
+  crt_memset((void *)(uintptr_t)(&dword_140404A6C[254388963]), 0, 0x4000000u);
+  v182 = crt_chdir("data");
+  v183 = crt_chdir(&dword_140404A6C[283831313]);
   sub_1401979D0(0, 0);
   asset_load_city_sbc_candidate();
   _mm_storeu_si128((__m128i *)(void *)&dword_140404A6C[225391222], _mm_load_si128((const __m128i *)&xmmword_1402799A0));
@@ -6552,7 +6323,7 @@ __int64 sub_140056980()
   sub_1400EDED0(dword_140404A6C[283827815], "concrete2_material.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
   (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   v0 = 0;
-  sub_1400EDED0(dword_140404A6C[283827818], "asphalt2.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
+  sub_1400EDED0(resting_texture_1, "asphalt2.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
   (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   sub_1400EDED0(dword_140404A6C[283827819], "asphalt2_material.png", 1, 0x2901u, 0x2901u, 0x2601u, 0x2703u, 0);
   v1 = dword_140404A6C[293512634];
@@ -6695,7 +6466,7 @@ __int64 sub_140056980()
     v19 += 576;
   }
   while ( (__int64)v19 < (__int64)&dword_140404A6C[254388972] );
-  v20 = dword_140404A6C[283831312];
+  v20 = game_type;
   v21 = 0;
   dword_140404A6C[225391228] = 0;
   dword_140404A6C[225426046] = 0;
@@ -6710,9 +6481,9 @@ __int64 sub_140056980()
   dword_140404A6C[283865696] = 0;
   dword_140404A6C[283871569] = 0;
   dword_140404A6C[283877442] = 0;
-  dword_140404A6C[225641186] = 0;
+  item_block_region_count = 0;
   dword_140404A6C[180001054] = 0;
-  if ( dword_140404A6C[283831312] != 1 )
+  if ( game_type != 1 )
   {
     if ( (int)dword_140404A6C[193070979] > 0 )
     {
@@ -6816,10 +6587,10 @@ __int64 sub_140056980()
       0,
       0);
     v21 = dword_140404A6C[225391228];
-    v20 = dword_140404A6C[283831312];
+    v20 = game_type;
   }
   v41 = &dword_140404A6C[225170825];
-  sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[225170825]), 0, 0x1000u);
+  crt_memset((void *)(uintptr_t)(&dword_140404A6C[225170825]), 0, 0x1000u);
   v42 = dword_140404A6C[225154440];
   v43 = 0;
   if ( (int)dword_140404A6C[225154440] > 0 )
@@ -7487,9 +7258,9 @@ LABEL_104:
     sub_14009DA10(*v173++, v0++);
   while ( v0 < 17 );
   if ( !v183 )
-    sub_14024C22C("..");
+    crt_chdir("..");
   if ( !v182 )
-    sub_14024C22C("..");
+    crt_chdir("..");
   dword_140404A6C[225391205] = 1;
   return 0; /* legacy result ignored; native returns void */
 }
@@ -7512,97 +7283,25 @@ LABEL_104:
 #undef v191
 #undef v192
 
-// 140056D64: variable 'v15' is possibly undefined
-// 140056D64: variable 'v14' is possibly undefined
-// 140056D64: variable 'v16' is possibly undefined
-// 140276369: using guessed type _BYTE algn_140276369[3];
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 1402799A0: using guessed type __int128 xmmword_1402799A0;
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D18: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 16B2A2ECC: using guessed type unsigned int;
-// 16B2A2ED0: using guessed type unsigned int;
-// 16B2A2ED4: using guessed type unsigned int;
-// 16B2A2ED8: using guessed type unsigned int;
-// 16B2A2EDC: using guessed type unsigned int;
-// 16B2AAEE4: using guessed type unsigned int;
-// 175EEA08C: using guessed type unsigned int;
-// 175FBB094: using guessed type unsigned int;
-// 175FD1400: using guessed type unsigned int;
-// 175FD1444: using guessed type unsigned int;
-// 175FD144C: using guessed type unsigned int;
-// 175FD1450: using guessed type unsigned int;
-// 175FD1454: using guessed type unsigned int;
-// 175FD1458: using guessed type unsigned int;
-// 175FD145C: using guessed type unsigned int;
-// 175FD1460: using guessed type unsigned int;
-// 175FF3464: using guessed type unsigned int;
-// 1760B9468: using guessed type unsigned int;
-// 1760BF46C: using guessed type unsigned int;
-// 1760C5470: using guessed type unsigned int;
-// 1760C55F4: using guessed type unsigned int;
-// 181676080: using guessed type unsigned int;
-// 183EBFAAC: using guessed type unsigned int;
-// 183EC4918: using guessed type unsigned int;
-// 183ECA4DC: using guessed type unsigned int;
-// 183ED00A0: using guessed type unsigned int;
-// 183ED5C64: using guessed type unsigned int;
-// 183EDB828: using guessed type unsigned int;
-// 183EE13EC: using guessed type unsigned int;
-// 183EE6FB0: using guessed type unsigned int;
-// 183EECB74: using guessed type unsigned int;
-// 183F79E00: using guessed type unsigned int;
-// 18402CC00: using guessed type unsigned int;
-// 1863AE154: using guessed type unsigned int;
-// 1873DE440: using guessed type unsigned int;
-// 1A4CF0940: using guessed type unsigned int;
-// 1A4CFF560: using guessed type unsigned int;
-// 1A4CFF8D0: using guessed type unsigned int;
-// 1A4CFF8D4: using guessed type unsigned int;
-// 1AD2C94E8: using guessed type unsigned int;
-// 1AD2C94EC: using guessed type unsigned int;
-// 1AD2C94F0: using guessed type unsigned int;
-// 1AD2C94F4: using guessed type unsigned int;
-// 1AE1C9504: using guessed type unsigned int;
-// 1AE1C9508: using guessed type unsigned int;
-// 1AE1C950C: using guessed type unsigned int;
-// 1AF0C9510: using guessed type unsigned int;
-// 1AF0C9514: using guessed type unsigned int;
-// 1AF0C9518: using guessed type unsigned int;
-// 1AF0C9520: using guessed type unsigned int;
-// 1AF0C9810: using guessed type unsigned int;
-// 1AF0C9814: using guessed type unsigned int;
-// 1AF0C9818: using guessed type unsigned int;
-// 1AF0C981C: using guessed type unsigned int;
-// 1AF0C9820: using guessed type unsigned int;
-// 1AF0C9824: using guessed type unsigned int;
-// 1AF0C982C: using guessed type unsigned int;
-// 1AF0C9834: using guessed type unsigned int;
-// 1AF0C9838: using guessed type unsigned int;
-// 1AF0C983C: using guessed type unsigned int;
-
 //----- (000000014007A8C0) ----------------------------------------------------
 __int64            sub_14007A8C0(int a1, int a2, int a3, int a4, float a5, float a6, float a7)
 {
-  float v8; // xmm6_4
-  float v9; // xmm10_4
-  unsigned int v10; // ebp
-  unsigned int v11; // esi
-  unsigned int v12; // edi
-  unsigned int v13; // ebx
-  float v14; // xmm8_4
+  float v8;
+  float v9;
+  unsigned int v10;
+  unsigned int v11;
+  unsigned int v12;
+  unsigned int v13;
+  float v14;
 
   v8 = (float)a3;
   v9 = (float)a4;
-  v10 = (int)(float)((float)(a1 * dword_140404A6C[278520508]) * (float)(1.0 / *(float *)&dword_140404A6C[438291414]));
-  v11 = (int)(float)((float)(a3 * dword_140404A6C[278520508]) * (float)(1.0 / *(float *)&dword_140404A6C[438291414]));
+  v10 = (int)(float)((float)(a1 * dword_140404A6C[278520508]) * (float)(1.0 / renderer_canvas_width));
+  v11 = (int)(float)((float)(a3 * dword_140404A6C[278520508]) * (float)(1.0 / renderer_canvas_width));
   v12 = (int)(float)((float)(dword_140404A6C[278520509]
-                           * (int)(float)(*(float *)&dword_140404A6C[438291415] - (float)(a2 + a4)))
-                   * (float)(1.0 / *(float *)&dword_140404A6C[438291415]));
-  v13 = (int)(float)((float)(a4 * dword_140404A6C[278520509]) * (float)(1.0 / *(float *)&dword_140404A6C[438291415]));
+                           * (int)(float)(renderer_canvas_height - (float)(a2 + a4)))
+                   * (float)(1.0 / renderer_canvas_height));
+  v13 = (int)(float)((float)(a4 * dword_140404A6C[278520509]) * (float)(1.0 / renderer_canvas_height));
   qword_140302FE8(v10, v12, v11, v13);
   (*(void (           **)(_QWORD, _QWORD, _QWORD, _QWORD))&dword_140404A6C[18215071])(v10, v12, v11, v13);
   *(float *)&dword_140404A6C[431564485] = a5 / (float)(a5 * a7);
@@ -7640,40 +7339,17 @@ __int64            sub_14007A8C0(int a1, int a2, int a3, int a4, float a5, float
            (__int64)&dword_140404A6C[431564485]);
 }
 
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278DE0: using guessed type __int128 xmmword_140278DE0;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CE8: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1A724E5A8: using guessed type unsigned int;
-// 1A724E5AC: using guessed type unsigned int;
-// 1A724E5B0: using guessed type unsigned int;
-// 1A724E5B8: using guessed type unsigned int;
-// 1A724E5BC: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
 //----- (000000014007D230) ----------------------------------------------------
 __int64            sub_14007D230(float a1, float a2)
 {
   /* x arrives in xmm0 (0x14007D247), y in xmm1 (0x14007D23F); Hex-Rays had typed them as integers and lost both */
-  unsigned int v3 = sr_text_float_bits(a1); // xmm0_4
-  unsigned int v4 = sr_text_float_bits(a2); // xmm1_4
-  unsigned int v5; // eax
-  unsigned int v6; // ecx
-  __int64 v7; // rax
-  __int64 v8; // rcx
-  __int64 result; // rax
+  unsigned int v3 = sr_text_float_bits(a1);
+  unsigned int v4 = sr_text_float_bits(a2);
+  unsigned int v5;
+  unsigned int v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 result;
 
   v5 = dword_140404A6C[456217207];
   if ( (int)dword_140404A6C[456217207] < 0x10000 )
@@ -7704,18 +7380,6 @@ __int64            sub_14007D230(float a1, float a2)
   return result;
 }
 
-// 14007D27D: variable 'v3' is possibly undefined
-// 14007D288: variable 'v4' is possibly undefined
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-
 //----- (000000014007E010) ----------------------------------------------------
 __int64            sub_14007E010(
         unsigned int *a1,
@@ -7727,31 +7391,31 @@ __int64            sub_14007E010(
         unsigned int a7,
         unsigned int a8)
 {
-  __int64 v8; // rdx
-  __int64 v9; // r8
-  float *v10; // rbx
-  int v11; // edi
-  float v12; // xmm1_4
-  float v13; // xmm0_4
-  __int64 v14; // rax
-  __int64 v15; // rdx
-  __int64 v16; // r8
-  float v17; // xmm1_4
-  float v18; // xmm0_4
-  __int64 v19; // rdx
-  __int64 v20; // r8
-  __int64 v21; // rax
-  __int64 v22; // rdx
-  __int64 v23; // r8
-  float v24; // xmm1_4
-  float v25; // xmm0_4
-  __int64 v26; // rdx
-  __int64 v27; // r8
-  float v28; // xmm1_4
-  float v29; // xmm0_4
-  __int64 v30; // rdx
-  __int64 v31; // r8
-  __int64 v32; // rcx
+  __int64 v8;
+  __int64 v9;
+  float *v10;
+  int v11;
+  float v12;
+  float v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  float v17;
+  float v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  float v24;
+  float v25;
+  __int64 v26;
+  __int64 v27;
+  float v28;
+  float v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007E010[16];
 #define v34 (*(float (*))(void *)(sr_frame_14007E010 + 0)) /* [rsp+20h] */
@@ -7822,127 +7486,95 @@ __int64            sub_14007E010(
 #undef v35
 #undef v36
 
-// 14007E0DC: variable 'v8' is possibly undefined
-// 14007E0DC: variable 'v9' is possibly undefined
-// 14007E11A: variable 'v15' is possibly undefined
-// 14007E11A: variable 'v16' is possibly undefined
-// 14007E14A: variable 'v19' is possibly undefined
-// 14007E14A: variable 'v20' is possibly undefined
-// 14007E18C: variable 'v22' is possibly undefined
-// 14007E18C: variable 'v23' is possibly undefined
-// 14007E1BD: variable 'v26' is possibly undefined
-// 14007E1BD: variable 'v27' is possibly undefined
-// 14007E1ED: variable 'v30' is possibly undefined
-// 14007E1ED: variable 'v31' is possibly undefined
-// 14007E1FF: variable 'v32' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 1402B2C90: using guessed type float flt_1402B2C90[13];
-// 1402B2CF4: using guessed type float flt_1402B2CF4[479];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-
 //----- (000000014007E2A0) ----------------------------------------------------
 __int64            sub_14007E2A0(float *a1, __int64 a2, int a3, float a4, float a5)
 {
-  signed int v5; // r13d
-  int v8; // eax
-  __int64 v9; // rdx
-  float v10; // xmm12_4
-  float *v11; // r14
-  __int64 v12; // r15
-  float v13; // xmm6_4
-  double v14; // xmm2_8
-  __int64 v15; // rbx
-  __int64 v16; // rdi
-  __int64 v17; // rbp
-  signed int v18; // eax
-  __m128i v19; // xmm0
-  __m128 v20; // xmm0
-  float v21; // xmm15_4
-  float v22; // xmm13_4
-  float v23; // xmm13_4
-  float v24; // xmm14_4
-  float v25; // xmm6_4
-  float v26; // xmm7_4
-  float v27; // xmm8_4
-  float v28; // xmm9_4
-  float v29; // xmm10_4
-  float v30; // xmm11_4
-  __int64 v31; // rdx
-  __m128 v32; // xmm0
-  float v33; // xmm3_4
-  float v34; // xmm5_4
-  float v35; // xmm1_4
-  float v36; // xmm9_4
-  float v37; // xmm4_4
-  float v38; // xmm2_4
-  float v39; // xmm1_4
-  float v40; // xmm10_4
-  double v41; // xmm2_8
-  float v42; // xmm15_4
-  float v43; // xmm9_4
-  float v44; // xmm7_4
-  float v45; // xmm8_4
-  float v46; // xmm7_4
-  float v47; // xmm9_4
-  __m128 v48; // xmm0
-  float v49; // xmm3_4
-  float v50; // xmm4_4
-  float v51; // xmm1_4
-  __int64 v52; // rdx
-  __int64 v53; // r8
-  unsigned int *v54; // rbp
-  __int64 v55; // r13
-  char v56; // r14
-  __int64 v57; // r12
-  __int64 v58; // r15
-  __int64 v59; // rdi
-  __int64 v60; // rdx
-  __int64 v61; // r8
-  __int64 v62; // rdx
-  __int64 v63; // r8
-  __int64 v64; // r8
-  __int64 v65; // rdx
-  __int64 v66; // r8
-  __int64 v67; // rdx
-  __int64 v68; // r8
-  __int64 v69; // rdx
-  __int64 v70; // r8
-  __int64 v71; // rdx
-  __int64 v72; // r8
-  __int64 v73; // rcx
-  bool v74; // zf
-  float *v75; // rax
-  signed __int64 v76; // rcx
-  float *v77; // r8
-  __int64 v78; // r10
-  float v79; // xmm3_4
-  __int64 v80; // rdx
-  float v81; // xmm4_4
-  float v82; // xmm5_4
-  float v83; // xmm6_4
-  float *v84; // rax
-  signed __int64 v85; // rcx
-  float *v86; // r8
-  __int64 v87; // r10
-  float v88; // xmm3_4
-  __int64 v89; // rdx
-  float v90; // xmm4_4
-  float v91; // xmm5_4
-  float v92; // xmm6_4
+  signed int v5;
+  int v8;
+  __int64 v9;
+  float v10;
+  float *v11;
+  __int64 v12;
+  float v13;
+  double v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  signed int v18;
+  __m128i v19;
+  __m128 v20;
+  float v21;
+  float v22;
+  float v23;
+  float v24;
+  float v25;
+  float v26;
+  float v27;
+  float v28;
+  float v29;
+  float v30;
+  __int64 v31;
+  __m128 v32;
+  float v33;
+  float v34;
+  float v35;
+  float v36;
+  float v37;
+  float v38;
+  float v39;
+  float v40;
+  double v41;
+  float v42;
+  float v43;
+  float v44;
+  float v45;
+  float v46;
+  float v47;
+  __m128 v48;
+  float v49;
+  float v50;
+  float v51;
+  __int64 v52;
+  __int64 v53;
+  unsigned int *v54;
+  __int64 v55;
+  char v56;
+  __int64 v57;
+  __int64 v58;
+  __int64 v59;
+  __int64 v60;
+  __int64 v61;
+  __int64 v62;
+  __int64 v63;
+  __int64 v64;
+  __int64 v65;
+  __int64 v66;
+  __int64 v67;
+  __int64 v68;
+  __int64 v69;
+  __int64 v70;
+  __int64 v71;
+  __int64 v72;
+  __int64 v73;
+  bool v74;
+  float *v75;
+  signed __int64 v76;
+  float *v77;
+  __int64 v78;
+  float v79;
+  __int64 v80;
+  float v81;
+  float v82;
+  float v83;
+  float *v84;
+  signed __int64 v85;
+  float *v86;
+  __int64 v87;
+  float v88;
+  __int64 v89;
+  float v90;
+  float v91;
+  float v92;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007E2A0[1680];
 #define v94 (*(__int64 (*))(void *)(sr_frame_14007E2A0 + 0)) /* [rsp+0h] */
@@ -8045,7 +7677,7 @@ __int64            sub_14007E2A0(float *a1, __int64 a2, int a3, float a4, float 
       *(float *)&v41 = (float)(*(float *)&v41 * v37) + SR_VEC_LANES(128, v32, f32)[0];
       SR_VEC_LANES(128, v32, f32)[0] = *(float *)(a2 + 4 * v15 + 8) * v34;
       *(float *)&v41 = *(float *)&v41 + v39;
-      v42 = v21 + 0.39269909262657166;
+      v42 = v21 + 0.39269909;
       *(v11 - 1) = *(float *)&v41;
       *v11 = (float)((float)(v33 * v37) + SR_VEC_LANES(128, v32, f32)[0]) + (float)(v40 + v30);
       if ( v12 >= 4 )
@@ -8065,7 +7697,7 @@ __int64            sub_14007E2A0(float *a1, __int64 a2, int a3, float a4, float 
       v47 = v43 + *a1;
       v48 = _mm_castpd_ps(sub_1401F8A50(v42, v31, v41));
       *(_QWORD *)&v14 = *(unsigned int *)(a2 + 4 * v15 + 4);
-      v21 = v42 + 0.39269909262657166;
+      v21 = v42 + 0.39269909;
       v49 = SR_VEC_READ_LANES(128, _mm_shuffle_pd((__m128d)v48, (__m128d)v48, 1), f64)[0] * v99;
       v50 = *(double *)SR_VEC_LANES(128, v48, u64) * v99;
       SR_VEC_LANES(128, v48, f32)[0] = *(float *)(a2 + 4 * v16 + 4) * v50;
@@ -8206,108 +7838,66 @@ __int64            sub_14007E2A0(float *a1, __int64 a2, int a3, float a4, float 
 #undef v106
 #undef v107
 
-// 14007E3B6: variable 'v9' is possibly undefined
-// 14007E57B: variable 'v31' is possibly undefined
-// 14007E707: variable 'v52' is possibly undefined
-// 14007E707: variable 'v53' is possibly undefined
-// 14007E729: variable 'v60' is possibly undefined
-// 14007E729: variable 'v61' is possibly undefined
-// 14007E731: variable 'v62' is possibly undefined
-// 14007E731: variable 'v63' is possibly undefined
-// 14007E74D: variable 'v64' is possibly undefined
-// 14007E755: variable 'v65' is possibly undefined
-// 14007E755: variable 'v66' is possibly undefined
-// 14007E75D: variable 'v67' is possibly undefined
-// 14007E75D: variable 'v68' is possibly undefined
-// 14007E765: variable 'v69' is possibly undefined
-// 14007E765: variable 'v70' is possibly undefined
-// 14007E771: variable 'v71' is possibly undefined
-// 14007E771: variable 'v72' is possibly undefined
-// 14007E796: variable 'v73' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279530: using guessed type __int128 xmmword_140279530;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A724E640: using guessed type unsigned int;
-// 1A724E650: using guessed type unsigned int;
-// 1A724E660: using guessed type unsigned int;
-// 1A724E670: using guessed type unsigned int;
-// 1A724E6C0: using guessed type unsigned int;
-// 1A724E6D0: using guessed type unsigned int;
-// 1A724E6E0: using guessed type unsigned int;
-// 1A724E6F0: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-
 //----- (000000014007E9D0) ----------------------------------------------------
 __int64            sub_14007E9D0(unsigned int *a1, _DWORD *a2, double a3, float a4)
 {
-  float v4; // xmm8_4
-  float v5; // xmm7_4
-  __int64 v6; // rdx
-  __int64 v7; // r8
-  double v8; // xmm6_8
-  __int64 v9; // rdx
-  __int64 v10; // r8
-  __int64 v11; // rdx
-  __int64 v12; // rdx
-  __int64 v13; // r8
-  __m128 v14; // xmm0
-  __int64 v15; // rbx
-  __int64 v16; // rdi
-  float v17; // xmm14_4
-  float v18; // xmm13_4
-  __int64 v19; // rdx
-  __m128 v20; // xmm0
-  double v21; // xmm1_8
-  __int64 v22; // rdx
-  __int64 v23; // r8
-  float v24; // xmm7_4
-  __int64 v25; // rdx
-  __int64 v26; // r8
-  __int64 v27; // rdx
-  __int64 v28; // r8
-  __int64 v29; // rdx
-  __m128 v30; // xmm0
-  double v31; // xmm1_8
-  __int64 v32; // rdx
-  __int64 v33; // r8
-  __int64 v34; // rbx
-  __m128 v35; // xmm0
-  double v36; // xmm1_8
-  __int64 v37; // rdx
-  __int64 v38; // r8
-  __int64 v39; // rdx
-  __int64 v40; // r8
-  __int64 v41; // rcx
-  __int64 v42; // r8
-  float *v43; // rax
-  signed __int64 v44; // rcx
-  float *v45; // r8
-  __int64 v46; // r10
-  float v47; // xmm3_4
-  __int64 v48; // rdx
-  float v49; // xmm4_4
-  float v50; // xmm5_4
-  float v51; // xmm6_4
-  float *v52; // rax
-  signed __int64 v53; // rcx
-  float *v54; // r8
-  __int64 v55; // r10
-  float v56; // xmm3_4
-  __int64 v57; // rdx
-  float v58; // xmm4_4
-  float v59; // xmm5_4
-  float v60; // xmm6_4
+  float v4;
+  float v5;
+  __int64 v6;
+  __int64 v7;
+  double v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __m128 v14;
+  __int64 v15;
+  __int64 v16;
+  float v17;
+  float v18;
+  __int64 v19;
+  __m128 v20;
+  double v21;
+  __int64 v22;
+  __int64 v23;
+  float v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __m128 v30;
+  double v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __m128 v35;
+  double v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  float *v43;
+  signed __int64 v44;
+  float *v45;
+  __int64 v46;
+  float v47;
+  __int64 v48;
+  float v49;
+  float v50;
+  float v51;
+  float *v52;
+  signed __int64 v53;
+  float *v54;
+  __int64 v55;
+  float v56;
+  __int64 v57;
+  float v58;
+  float v59;
+  float v60;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007E9D0[128];
 #define v62 (*(__int64 (*))(void *)(sr_frame_14007E9D0 + 0)) /* [rsp+8h] */
@@ -8341,7 +7931,7 @@ __int64            sub_14007E9D0(unsigned int *a1, _DWORD *a2, double a3, float 
   do
   {
     sub_14007D520((unsigned int *)&v63 + 1, v12, v13);
-    v5 = v5 + 0.19634954631328583;
+    v5 = v5 + 0.19634955;
     v20 = _mm_castpd_ps(sub_1401F8A50(v5, v19, a3));
     v21 = *(double *)SR_VEC_LANES(128, v20, u64);
     SR_VEC_LANES(128, v20, f32)[0] = SR_VEC_READ_LANES(128, _mm_shuffle_pd((__m128d)v20, (__m128d)v20, 1), f64)[0] * v8;
@@ -8361,7 +7951,7 @@ __int64            sub_14007E9D0(unsigned int *a1, _DWORD *a2, double a3, float 
   do
   {
     sub_14007D520((unsigned int *)&v63 + 1, v27, v28);
-    v24 = v24 + 0.19634954631328583;
+    v24 = v24 + 0.19634955;
     v30 = _mm_castpd_ps(sub_1401F8A50(v24, v29, a3));
     v31 = *(double *)SR_VEC_LANES(128, v30, u64);
     SR_VEC_LANES(128, v30, f32)[0] = SR_VEC_READ_LANES(128, _mm_shuffle_pd((__m128d)v30, (__m128d)v30, 1), f64)[0] * v8;
@@ -8383,7 +7973,7 @@ __int64            sub_14007E9D0(unsigned int *a1, _DWORD *a2, double a3, float 
     sub_14007D520((unsigned int *)&v63 + 1, v37, v38);
     *((float *)&v63 + 1) = a4;
     sub_14007D520((unsigned int *)&v63 + 1, v39, v40);
-    v4 = v4 + 0.39269909262657166;
+    v4 = v4 + 0.39269909;
     --v34;
   }
   while ( v34 );
@@ -8463,53 +8053,6 @@ __int64            sub_14007E9D0(unsigned int *a1, _DWORD *a2, double a3, float 
 #undef v68
 #undef v69
 
-// 14007EA87: variable 'v6' is possibly undefined
-// 14007EA87: variable 'v7' is possibly undefined
-// 14007EAA5: variable 'v9' is possibly undefined
-// 14007EAA5: variable 'v10' is possibly undefined
-// 14007EAB0: variable 'v11' is possibly undefined
-// 14007EAFA: variable 'v12' is possibly undefined
-// 14007EAFA: variable 'v13' is possibly undefined
-// 14007EB0E: variable 'v19' is possibly undefined
-// 14007EB3C: variable 'v22' is possibly undefined
-// 14007EB3C: variable 'v23' is possibly undefined
-// 14007EB6D: variable 'v25' is possibly undefined
-// 14007EB6D: variable 'v26' is possibly undefined
-// 14007EB85: variable 'v27' is possibly undefined
-// 14007EB85: variable 'v28' is possibly undefined
-// 14007EB99: variable 'v29' is possibly undefined
-// 14007EBC7: variable 'v32' is possibly undefined
-// 14007EBC7: variable 'v33' is possibly undefined
-// 14007EC20: variable 'v37' is possibly undefined
-// 14007EC20: variable 'v38' is possibly undefined
-// 14007EC31: variable 'v39' is possibly undefined
-// 14007EC31: variable 'v40' is possibly undefined
-// 14007EC41: variable 'v41' is possibly undefined
-// 14007EC41: variable 'v42' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 1402794A0: using guessed type __int128 xmmword_1402794A0;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A724E640: using guessed type unsigned int;
-// 1A724E650: using guessed type unsigned int;
-// 1A724E660: using guessed type unsigned int;
-// 1A724E670: using guessed type unsigned int;
-// 1A724E6C0: using guessed type unsigned int;
-// 1A724E6D0: using guessed type unsigned int;
-// 1A724E6E0: using guessed type unsigned int;
-// 1A724E6F0: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-
 //----- (0000000140081DA0) ----------------------------------------------------
 void            sub_140081DA0(
         float a1,
@@ -8520,23 +8063,23 @@ void            sub_140081DA0(
         unsigned int a6,
         unsigned int a7)
 {
-  __int64 v7; // rdx
-  float v9; // xmm9_4
-  __int64 v10; // rdx
-  __int64 v11; // r8
-  __m128 v12; // xmm0
-  double v13; // xmm6_8
-  __int64 v14; // rbx
-  double v15; // xmm8_8
-  double v16; // xmm7_8
-  double v17; // xmm2_8
-  unsigned int v18; // xmm1_4
-  __int64 v19; // rdx
-  __m128 v20; // xmm0
-  unsigned int v21; // xmm1_4
-  __int64 v22; // rdx
-  __int64 v23; // r8
-  __int64 v24; // rcx
+  __int64 v7;
+  float v9;
+  __int64 v10;
+  __int64 v11;
+  __m128 v12;
+  double v13;
+  __int64 v14;
+  double v15;
+  double v16;
+  double v17;
+  unsigned int v18;
+  __int64 v19;
+  __m128 v20;
+  unsigned int v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140081DA0[16];
 #define v25 (*(unsigned int (*))(void *)(sr_frame_140081DA0 + 0)) /* [rsp+20h] */
@@ -8565,7 +8108,7 @@ void            sub_140081DA0(
   do
   {
     sub_14007D520(&v25, v10, v11);
-    v9 = v9 + 0.09817477315664291;
+    v9 = v9 + 0.098174773;
     v20 = _mm_castpd_ps(sub_1401F8A50(v9, v19, v17));
     *(float *)&v21 = *(double *)SR_VEC_LANES(128, v20, u64) * v13 + v16;
     v25 = v21;
@@ -8576,26 +8119,10 @@ void            sub_140081DA0(
   }
   while ( v14 );
   sub_14006E0D0(v24, v10, v11);
-}
+}
 #undef v25
 #undef v26
 #undef v27
-
-// 140081E32: variable 'v7' is possibly undefined
-// 140081E95: variable 'v10' is possibly undefined
-// 140081E95: variable 'v11' is possibly undefined
-// 140081EAA: variable 'v19' is possibly undefined
-// 140081EE7: variable 'v22' is possibly undefined
-// 140081EE7: variable 'v23' is possibly undefined
-// 140081F16: variable 'v24' is possibly undefined
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
 
 //----- (0000000140081F20) ----------------------------------------------------
 void            sub_140081F20(
@@ -8607,30 +8134,30 @@ void            sub_140081F20(
         unsigned int a6,
         unsigned int a7)
 {
-  float v8; // xmm6_4
-  __int64 v9; // rdx
-  __int64 v10; // rdx
-  __int64 v11; // r8
-  __m128 v12; // xmm0
-  double v13; // xmm9_8
-  __int64 v14; // rbx
-  double v15; // xmm2_8
-  float v16; // xmm7_4
-  float v17; // xmm8_4
-  __int64 v18; // rdx
-  __int64 v19; // r8
-  __int64 v20; // rdx
-  __m128 v21; // xmm0
-  __int64 v22; // rdx
-  __int64 v23; // r8
-  __int64 v24; // rcx
+  float v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __m128 v12;
+  double v13;
+  __int64 v14;
+  double v15;
+  float v16;
+  float v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __m128 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140081F20[16];
 #define v25 (*(float (*))(void *)(sr_frame_140081F20 + 0)) /* [rsp+20h] */
 #define v26 (*(float (*))(void *)(sr_frame_140081F20 + 4)) /* [rsp+24h] */
 #define v27 (*(int (*))(void *)(sr_frame_140081F20 + 8)) /* [rsp+28h] */
 
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   dword_140404A6C[456807036] = a7;
   *(float *)&dword_140404A6C[456807033] = a4;
   dword_140404A6C[456807034] = a5;
@@ -8654,7 +8181,7 @@ void            sub_140081F20(
     v25 = v16;
     v26 = v17;
     sub_14007D520((unsigned int *)&v25, v18, v19);
-    v8 = v8 + 0.09817477315664291;
+    v8 = v8 + 0.098174773;
     v21 = _mm_castpd_ps(sub_1401F8A50(v8, v20, v15));
     v16 = *(double *)SR_VEC_LANES(128, v21, u64) * v13 + a1;
     v25 = v16;
@@ -8665,29 +8192,10 @@ void            sub_140081F20(
   }
   while ( v14 );
   sub_14006E0D0(v24, v10, v11);
-}
+}
 #undef v25
 #undef v26
 #undef v27
-
-// 140081FD7: variable 'v9' is possibly undefined
-// 140082046: variable 'v10' is possibly undefined
-// 140082046: variable 'v11' is possibly undefined
-// 14008205D: variable 'v18' is possibly undefined
-// 14008205D: variable 'v19' is possibly undefined
-// 140082071: variable 'v20' is possibly undefined
-// 1400820B7: variable 'v22' is possibly undefined
-// 1400820B7: variable 'v23' is possibly undefined
-// 140082100: variable 'v24' is possibly undefined
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
 
 //----- (0000000140082110) ----------------------------------------------------
 __int64            sub_140082110(float a1, float a2, float a3, float a4)
@@ -8697,17 +8205,17 @@ __int64            sub_140082110(float a1, float a2, float a3, float a4)
      0x14008224F, 0x14008230F, 0x140082388: each is followed by movaps xmmN, xmm0 / shufpd / mulsd),
      so every vertex was drawn from undefined values. */
   __m128d v4; // xmm0: sine in the low lane, cosine in the high lane
-  double v5; // xmm6_8
-  double v6; // xmm8_8
-  double v7; // xmm11_8
-  float v8; // xmm7_4
+  double v5;
+  double v6;
+  double v7;
+  float v8;
   float v9; // xmm13_4 / xmm9_4
   float v10; // xmm14_4 / xmm10_4
-  float v11; // [rsp+D8h]
-  float v12; // xmm10_4
-  __int64 v13; // rbx
+  float v11;
+  float v12;
+  __int64 v13;
 
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   dword_140404A6C[456217205] = 0;
   dword_140404A6C[456217207] = 0;
   dword_140404A6C[456217208] = 9;
@@ -8765,46 +8273,6 @@ __int64            sub_140082110(float a1, float a2, float a3, float a4)
   return (*(__int64 (**)(float))&dword_140404A6C[18215065])(1.0f /* native XMM0 */);
 }
 
-// 1400821B2: variable 'v5' is possibly undefined
-// 14008222B: variable 'v7' is possibly undefined
-// 14008222B: variable 'v6' is possibly undefined
-// 14008222B: variable 'v8' is possibly undefined
-// 14008223B: variable 'v12' is possibly undefined
-// 14008223B: variable 'v11' is possibly undefined
-// 14008223B: variable 'v13' is possibly undefined
-// 14008224F: variable 'v15' is possibly undefined
-// 14008228E: variable 'v17' is possibly undefined
-// 14008228E: variable 'v16' is possibly undefined
-// 14008228E: variable 'v18' is possibly undefined
-// 1400822A6: variable 'v20' is possibly undefined
-// 1400822A6: variable 'v19' is possibly undefined
-// 1400822FB: variable 'v22' is possibly undefined
-// 1400822FB: variable 'v21' is possibly undefined
-// 1400822FB: variable 'v23' is possibly undefined
-// 14008230F: variable 'v26' is possibly undefined
-// 14008234E: variable 'v28' is possibly undefined
-// 14008234E: variable 'v27' is possibly undefined
-// 14008234E: variable 'v29' is possibly undefined
-// 140082388: variable 'v30' is possibly undefined
-// 1400823B6: variable 'v32' is possibly undefined
-// 1400823B6: variable 'v31' is possibly undefined
-// 1400823B6: variable 'v33' is possibly undefined
-// 1400823BB: variable 'v35' is possibly undefined
-// 1400823BB: variable 'v34' is possibly undefined
-// 1400823BB: variable 'v36' is possibly undefined
-// 14008240C: variable 'v38' is possibly undefined
-// 14008240C: variable 'v37' is possibly undefined
-// 1402792F0: using guessed type __int128 xmmword_1402792F0;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 1402796B0: using guessed type __int128 xmmword_1402796B0;
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CD0: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD);
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-
 //----- (0000000140088000) ----------------------------------------------------
 void            sub_140088000(
         float a1,
@@ -8818,15 +8286,15 @@ void            sub_140088000(
 {
   float v8 = a2; // xmm1_4: y (0x140088044 movaps xmm9, xmm1); Hex-Rays had lost it
   double v9 = sr_export_float_lane_container(sr_text_float_bits(a3)); // xmm2_8: the length (0x140088028), as float bits
-  float v11; // xmm9_4
-  __int64 v12; // rdx
-  __m128 v13; // xmm0
-  unsigned int v14; // xmm1_4
-  __int64 v15; // rdx
-  __int64 v16; // r8
-  __int64 v17; // rdx
-  __int64 v18; // rcx
-  __int64 v19; // r8
+  float v11;
+  __int64 v12;
+  __m128 v13;
+  unsigned int v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140088000[16];
 #define v20 (*(unsigned int (*))(void *)(sr_frame_140088000 + 0)) /* [rsp+20h] */
@@ -8851,27 +8319,10 @@ void            sub_140088000(
   v20 = v14;
   sub_14007D520(&v20, v15, v16);
   sub_14006E0D0(v18, v17, v19);
-}
+}
 #undef v20
 #undef v21
 #undef v22
-
-// 140088044: variable 'v8' is possibly undefined
-// 1400880B0: variable 'v12' is possibly undefined
-// 1400880B0: variable 'v9' is possibly undefined
-// 140088100: variable 'v15' is possibly undefined
-// 140088100: variable 'v16' is possibly undefined
-// 14008811F: variable 'v18' is possibly undefined
-// 14008811F: variable 'v17' is possibly undefined
-// 14008811F: variable 'v19' is possibly undefined
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
 
 //----- (00000001400891B0) ----------------------------------------------------
 void            sub_1400891B0(
@@ -8884,36 +8335,36 @@ void            sub_1400891B0(
         unsigned int a7,
         float a8)
 {
-  __int64 v10; // rdx
-  __int64 v11; // r8
-  signed int v12; // ebx
-  signed int v14; // edi
-  double v15; // xmm9_8
-  double v16; // xmm11_8
-  double v17; // xmm12_8
-  __m128i v18; // xmm0
-  float v19; // xmm6_4
-  __int64 v20; // rdx
-  __m128 v21; // xmm0
-  double v22; // xmm2_8
-  unsigned int v23; // xmm1_4
-  __int64 v24; // rdx
-  __int64 v25; // r8
-  __int64 v26; // rdx
-  __m128i v27; // xmm0
-  float v28; // xmm6_4
-  __m128 v29; // xmm0
-  unsigned int v30; // xmm1_4
-  __int64 v31; // rdx
-  __int64 v32; // r8
-  __int64 v33; // rcx
+  __int64 v10;
+  __int64 v11;
+  signed int v12;
+  signed int v14;
+  double v15;
+  double v16;
+  double v17;
+  __m128i v18;
+  float v19;
+  __int64 v20;
+  __m128 v21;
+  double v22;
+  unsigned int v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __m128i v27;
+  float v28;
+  __m128 v29;
+  unsigned int v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400891B0[16];
 #define v34 (*(unsigned int (*))(void *)(sr_frame_1400891B0 + 0)) /* [rsp+20h] */
 #define v35 (*(__int32 (*))(void *)(sr_frame_1400891B0 + 4)) /* [rsp+24h] */
 #define v36 (*(int (*))(void *)(sr_frame_1400891B0 + 8)) /* [rsp+28h] */
 
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   v12 = 0;
   v14 = 63;
   v15 = *(float *)&a3;
@@ -8944,7 +8395,7 @@ void            sub_1400891B0(
     v34 = v23;
     v35 = SR_VEC_LANES(128, v21, i32)[0];
     sub_14007D520(&v34, v24, v25);
-    a8 = a8 + 0.09817477315664291;
+    a8 = a8 + 0.098174773;
     if ( ++v12 >= 32 )
       v27 = _mm_cvtsi32_si128(v14);
     else
@@ -8961,29 +8412,10 @@ void            sub_1400891B0(
   }
   while ( v14 > -1 );
   sub_14006E0D0(v33, v10, v11);
-}
+}
 #undef v34
 #undef v35
 #undef v36
-
-// 1400892E4: variable 'v10' is possibly undefined
-// 1400892E4: variable 'v11' is possibly undefined
-// 1400892F4: variable 'v20' is possibly undefined
-// 140089348: variable 'v24' is possibly undefined
-// 140089348: variable 'v25' is possibly undefined
-// 140089381: variable 'v26' is possibly undefined
-// 1400893D5: variable 'v31' is possibly undefined
-// 1400893D5: variable 'v32' is possibly undefined
-// 140089429: variable 'v33' is possibly undefined
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
 
 //----- (000000014008D280) ----------------------------------------------------
 void            sub_14008D280(float *a1, float a2, float a3, float a4, float a5, float a6, float a7)
@@ -9025,15 +8457,6 @@ void            sub_14008D280(float *a1, float a2, float a3, float a4, float a5,
   sub_14006E0D0(0, 0, 0);
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-
 //----- (000000014008D560) ----------------------------------------------------
 void            sub_14008D560(float *a1, float a2, float a3, float a4, float a5)
 {
@@ -9074,143 +8497,134 @@ void            sub_14008D560(float *a1, float a2, float a3, float a4, float a5)
   sub_14006E0D0(0, 0, 0);
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-
 //----- (000000014008D800) ----------------------------------------------------
 __int64 sub_14008D800()
 {
-  int v0; // r14d
-  int v1; // ebx
-  float v2; // xmm7_4
-  float v3; // xmm8_4
-  float v4; // xmm9_4
-  float v5; // xmm10_4
-  int v6; // esi
-  int v7; // r13d
-  int v8; // r15d
-  __int64 v9; // rdx
-  __int64 v10; // r8
-  __int64 v11; // rdx
-  __int64 v12; // r8
-  __int64 v13; // rdx
-  __int64 v14; // r8
-  __int64 v15; // rdx
-  __int64 v16; // r8
-  __int64 v17; // rdx
-  __int64 v18; // rcx
-  __int64 v19; // r8
-  __int64 v20; // rdx
-  __int64 v21; // rcx
-  __int64 v22; // r8
-  int n; // ebx
-  __int64 v24; // rdx
-  __int64 v25; // r8
-  int ii; // ebx
-  __int64 v27; // rdx
-  __int64 v28; // r8
-  __int64 v29; // rdx
-  __int64 v30; // r8
-  __int64 v31; // rdx
-  __int64 v32; // r8
-  int i; // ebx
-  __int64 v34; // rdx
-  __int64 v35; // r8
-  __int64 v36; // rdx
-  __int64 v37; // r8
-  int j; // ebx
-  __int64 v39; // rdx
-  __int64 v40; // r8
-  int k; // ebx
-  __int64 v42; // rdx
-  __int64 v43; // r8
-  int m; // ebx
-  __int64 v45; // rdx
-  __int64 v46; // r8
-  __int64 v47; // rdx
-  __int64 v48; // rcx
-  __int64 v49; // r8
-  __int64 v50; // r8
-  __int64 v51; // r9
-  __int64 v52; // r11
-  unsigned int v53; // r10d
-  __int64 v54; // rdx
-  unsigned int v55; // ecx
-  unsigned int v56; // eax
-  signed int v57; // eax
-  __int64 v58; // r9
-  int v59; // edi
-  unsigned int *v60; // rbx
-  float v61; // xmm1_4
-  float v62; // xmm0_4
-  __int64 v63; // r8
-  __int64 v64; // rdx
-  int v65; // eax
-  unsigned int v66; // ecx
-  unsigned int v67; // r10d
-  __int64 v68; // r9
-  unsigned int v69; // eax
-  float v70; // xmm0_4
-  int v71; // eax
-  int v72; // esi
-  int v73; // eax
-  int v74; // edi
-  int v75; // ebx
-  int v76; // edi
-  unsigned int *v77; // rbx
-  double v78; // xmm2_8
-  float v79; // xmm1_4
-  float v80; // xmm0_4
-  int v81; // esi
-  unsigned int *v82; // rdi
-  __int128 v83; // xmm0
-  __int64 v84; // rax
-  __int64 v85; // r8
-  int v86; // r10d
-  __int64 v87; // rdx
-  int v88; // r9d
-  int v89; // r11d
-  float v90; // xmm2_4
-  float v91; // xmm3_4
-  float v92; // xmm4_4
-  float v93; // xmm8_4
-  float v94; // xmm13_4
-  float v95; // xmm10_4
-  float v96; // xmm11_4
-  unsigned int v97; // xmm10_4
-  float v98; // xmm12_4
-  __int64 v99; // rdx
-  __int64 v100; // r8
-  float v101; // xmm9_4
-  float v102; // xmm10_4
-  signed int v103; // ebx
-  float v104; // xmm14_4
-  float v105; // xmm1_4
-  float v106; // xmm15_4
-  float v107; // xmm6_4
-  float v108; // xmm8_4
-  float v109; // xmm13_4
-  float v110; // xmm7_4
-  __int64 v111; // rdx
-  __int64 v112; // r8
-  float v113; // xmm11_4
-  float v114; // xmm9_4
-  float v115; // xmm12_4
-  float v116; // xmm10_4
-  signed int v117; // ebx
-  float v118; // xmm13_4
-  float v119; // xmm8_4
-  __int64 v120; // rdx
-  __int64 v121; // r8
-  int *v122; // rbx
-  float v123; // xmm1_4
-  float v124; // xmm0_4
+  int v0;
+  int v1;
+  float v2;
+  float v3;
+  float v4;
+  float v5;
+  int v6;
+  int v7;
+  int v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  int n;
+  __int64 v24;
+  __int64 v25;
+  int ii;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  int i;
+  __int64 v34;
+  __int64 v35;
+  __int64 v36;
+  __int64 v37;
+  int j;
+  __int64 v39;
+  __int64 v40;
+  int k;
+  __int64 v42;
+  __int64 v43;
+  int m;
+  __int64 v45;
+  __int64 v46;
+  __int64 v47;
+  __int64 v48;
+  __int64 v49;
+  __int64 v50;
+  __int64 v51;
+  __int64 v52;
+  unsigned int v53;
+  __int64 v54;
+  unsigned int v55;
+  unsigned int v56;
+  signed int v57;
+  __int64 v58;
+  int v59;
+  unsigned int *v60;
+  float v61;
+  float v62;
+  __int64 v63;
+  __int64 v64;
+  int v65;
+  unsigned int v66;
+  unsigned int v67;
+  __int64 v68;
+  unsigned int v69;
+  float v70;
+  int v71;
+  int v72;
+  int v73;
+  int v74;
+  int v75;
+  int v76;
+  unsigned int *v77;
+  double v78;
+  float v79;
+  float v80;
+  int v81;
+  unsigned int *v82;
+  __int128 v83;
+  __int64 v84;
+  __int64 v85;
+  int v86;
+  __int64 v87;
+  int v88;
+  int v89;
+  float v90;
+  float v91;
+  float v92;
+  float v93;
+  float v94;
+  float v95;
+  float v96;
+  unsigned int v97;
+  float v98;
+  __int64 v99;
+  __int64 v100;
+  float v101;
+  float v102;
+  signed int v103;
+  float v104;
+  float v105;
+  float v106;
+  float v107;
+  float v108;
+  float v109;
+  float v110;
+  __int64 v111;
+  __int64 v112;
+  float v113;
+  float v114;
+  float v115;
+  float v116;
+  signed int v117;
+  float v118;
+  float v119;
+  __int64 v120;
+  __int64 v121;
+  int *v122;
+  float v123;
+  float v124;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14008D800[224];
 #define v126 (*(_DWORD (*)[10])(void *)(sr_frame_14008D800 + 8)) /* [rsp+0h] */
@@ -9268,7 +8682,7 @@ __int64 sub_14008D800()
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(2884);
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279420;
   dword_140404A6C[456217205] = 1;
   dword_140404A6C[456217207] = 0;
@@ -9783,7 +9197,7 @@ LABEL_120:
   LOBYTE(v48) = 1;
   (*(void (           **)(__int64))&dword_140404A6C[18215099])(v48);
   return 0; /* compatibility result discarded by all reviewed callers */
-}
+}
 #undef v126
 #undef v127
 #undef v128
@@ -9808,79 +9222,6 @@ LABEL_120:
 #undef v147
 
 // 14008DEAD: conditional instruction was optimized away because ebx.4==2
-// 14008D996: variable 'v9' is possibly undefined
-// 14008D996: variable 'v10' is possibly undefined
-// 14008D9DD: variable 'v11' is possibly undefined
-// 14008D9DD: variable 'v12' is possibly undefined
-// 14008DA24: variable 'v13' is possibly undefined
-// 14008DA24: variable 'v14' is possibly undefined
-// 14008DA6B: variable 'v15' is possibly undefined
-// 14008DA6B: variable 'v16' is possibly undefined
-// 14008DA70: variable 'v18' is possibly undefined
-// 14008DA70: variable 'v17' is possibly undefined
-// 14008DA70: variable 'v19' is possibly undefined
-// 14008DB2C: variable 'v20' is possibly undefined
-// 14008DB2C: variable 'v22' is possibly undefined
-// 14008DB56: variable 'v24' is possibly undefined
-// 14008DB56: variable 'v25' is possibly undefined
-// 14008DC26: variable 'v27' is possibly undefined
-// 14008DC26: variable 'v28' is possibly undefined
-// 14008DCA5: variable 'v29' is possibly undefined
-// 14008DCA5: variable 'v30' is possibly undefined
-// 14008DD3C: variable 'v31' is possibly undefined
-// 14008DD3C: variable 'v32' is possibly undefined
-// 14008DD66: variable 'v34' is possibly undefined
-// 14008DD66: variable 'v35' is possibly undefined
-// 14008DDD7: variable 'v36' is possibly undefined
-// 14008DDD7: variable 'v37' is possibly undefined
-// 14008DE96: variable 'v39' is possibly undefined
-// 14008DE96: variable 'v40' is possibly undefined
-// 14008DF67: variable 'v42' is possibly undefined
-// 14008DF67: variable 'v43' is possibly undefined
-// 14008E036: variable 'v45' is possibly undefined
-// 14008E036: variable 'v46' is possibly undefined
-// 14008E045: variable 'v21' is possibly undefined
-// 14008E0C1: variable 'v47' is possibly undefined
-// 14008E0C1: variable 'v49' is possibly undefined
-// 14008E1CE: variable 'v50' is possibly undefined
-// 14008E257: variable 'v58' is possibly undefined
-// 14008E325: variable 'v63' is possibly undefined
-// 14008E744: variable 'v99' is possibly undefined
-// 14008E744: variable 'v100' is possibly undefined
-// 14008E7F3: variable 'v111' is possibly undefined
-// 14008E7F3: variable 'v112' is possibly undefined
-// 14008E8BF: variable 'v120' is possibly undefined
-// 14008E8BF: variable 'v121' is possibly undefined
-// 14008E935: variable 'v48' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140279320: using guessed type __int128 xmmword_140279320;
-// 140279340: using guessed type __int128 xmmword_140279340;
-// 140279420: using guessed type __int128 xmmword_140279420;
-// 140279430: using guessed type __int128 xmmword_140279430;
-// 140279550: using guessed type __int128 xmmword_140279550;
-// 140279690: using guessed type __int128 xmmword_140279690;
-// 1402796A0: using guessed type __int128 xmmword_1402796A0;
-// 1402796D0: using guessed type __int128 xmmword_1402796D0;
-// 140279700: using guessed type __int128 xmmword_140279700;
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404468: using guessed type double (__fastcall *unk_140404468)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 189F0EEDC: using guessed type unsigned int;
-// 189F0EEE0: using guessed type unsigned int;
-// 189F0EEE4: using guessed type unsigned int;
-// 189F0EF1C: using guessed type unsigned int;
-// 189F0EF20: using guessed type unsigned int;
-// 189F0EF24: using guessed type unsigned int;
-// 189F0EF28: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
 
 //----- (0000000140092140) ----------------------------------------------------
 __int64            sub_140092140(
@@ -9890,11 +9231,11 @@ __int64            sub_140092140(
         unsigned int *a4,
         unsigned int *a5)
 {
-  __int64 result; // rax
-  unsigned int *v6; // rcx
-  unsigned int *v7; // rcx
-  unsigned int *v8; // rcx
-  unsigned int *v9; // rcx
+  __int64 result;
+  unsigned int *v6;
+  unsigned int *v7;
+  unsigned int *v8;
+  unsigned int *v9;
 
   result = (int)dword_140404A6C[284550610];
   if ( (int)dword_140404A6C[284550610] < 4096 )
@@ -9937,44 +9278,41 @@ __int64            sub_140092140(
   return result;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 18417E1B4: using guessed type unsigned int;
-
 //----- (0000000140092D70) ----------------------------------------------------
 __int64 sub_140092D70()
 {
-  unsigned int *v0; // rbx
-  __int64 v1; // rdi
-  __int64 v2; // rsi
-  __int64 v3; // r11
-  float v4; // xmm7_4
-  int v5; // eax
-  int v6; // eax
-  __int64 v7; // r9
-  __int64 v8; // rcx
-  __int16 *v9; // r10
-  unsigned __int64 v10; // r8
-  float v11; // xmm2_4
-  float v12; // xmm0_4
-  __m128i v13; // xmm1
-  int v14; // eax
-  __int64 v15; // rcx
-  __int16 *v16; // r8
-  int v17; // eax
-  float *v18; // rax
-  float *v19; // r8
-  __int64 v20; // r10
-  unsigned int v21; // xmm3_4
-  unsigned int v22; // xmm2_4
-  unsigned int v23; // xmm4_4
-  signed __int64 v24; // rcx
-  float v25; // xmm7_4
-  float v26; // xmm3_4
-  __int64 v27; // rdx
-  float v28; // xmm4_4
-  float v29; // xmm5_4
-  float v30; // xmm6_4
-  __int64 v31; // r8
+  unsigned int *v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  float v4;
+  int v5;
+  int v6;
+  __int64 v7;
+  __int64 v8;
+  __int16 *v9;
+  unsigned __int64 v10;
+  float v11;
+  float v12;
+  __m128i v13;
+  int v14;
+  __int64 v15;
+  __int16 *v16;
+  int v17;
+  float *v18;
+  float *v19;
+  __int64 v20;
+  unsigned int v21;
+  unsigned int v22;
+  unsigned int v23;
+  signed __int64 v24;
+  float v25;
+  float v26;
+  __int64 v27;
+  float v28;
+  float v29;
+  float v30;
+  __int64 v31;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140092D70[224];
 #define v33 (*(_DWORD (*)[21])(void *)(sr_frame_140092D70 + 0)) /* [rsp+0h] */
@@ -10056,7 +9394,7 @@ LABEL_11:
         v34[6] = 0;
         v34[7] = dword_140404A6C[284024511];
         v34[8] = dword_140404A6C[284024512];
-        v25 = fmaxf(v4 * 0.0010416667209938169, 0.25);
+        v25 = fmaxf(v4 * 0.0010416667, 0.25);
         dword_140404A6C[431564530] = v22;
         dword_140404A6C[431564529] = v21;
         dword_140404A6C[431564531] = v23;
@@ -10119,161 +9457,137 @@ LABEL_11:
   }
   while ( v2 );
   return 0; /* compatibility result discarded by all reviewed callers */
-}
+}
 #undef v33
 #undef v34
 #undef v35
 #undef v36
 #undef v37
 
-// 1400931E1: variable 'v31' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 183F7C550: using guessed type unsigned int;
-// 183F7C554: using guessed type unsigned int;
-// 183F7C558: using guessed type unsigned int;
-// 183F7C55C: using guessed type unsigned int;
-// 183F7C560: using guessed type unsigned int;
-// 183F7C564: using guessed type unsigned int;
-// 183F7C568: using guessed type unsigned int;
-// 183F7C56C: using guessed type unsigned int;
-// 183F7C570: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A724E634: using guessed type unsigned int;
-// 1A724E638: using guessed type unsigned int;
-// 1A724E63C: using guessed type unsigned int;
-
 //----- (00000001400932D0) ----------------------------------------------------
 _UNKNOWN **           sub_1400932D0()
 {
-  int v0; // edi
-  int v1; // ebx
-  unsigned int v2; // eax
-  int v3; // ecx
-  int v4; // eax
-  float v5; // xmm4_4
-  signed int v6; // r8d
-  float v7; // xmm3_4
-  int v8; // eax
-  double v9; // xmm6_8
-  char v10; // cl
-  unsigned int v11; // eax
-  unsigned int v12; // ecx
-  __int64 v13; // r15
-  __int64 v14; // r13
-  __int64 v15; // r12
-  unsigned int *v16; // rax
-  __int64 v17; // rcx
-  __int64 v18; // rsi
-  __int64 v19; // r14
-  unsigned __int64 v20; // rdi
-  __int64 v21; // r15
-  __int64 v22; // rax
-  float v23; // xmm2_4
-  __int64 v24; // rcx
-  float v25; // xmm1_4
-  float v26; // xmm1_4
-  float v27; // xmm2_4
-  float v28; // xmm3_4
-  float v29; // xmm1_4
-  float v30; // xmm0_4
-  float v31; // xmm1_4
-  float v32; // xmm2_4
-  unsigned int v33; // xmm1_4
-  float v34; // xmm3_4
-  float v35; // xmm1_4
-  unsigned int v36; // xmm0_4
-  float v37; // xmm1_4
-  unsigned int v38; // xmm0_4
-  float v39; // xmm1_4
-  unsigned int v40; // xmm0_4
-  float v41; // xmm1_4
-  unsigned int v42; // xmm0_4
-  unsigned __int64 v43; // r15
-  float *v44; // rbx
-  unsigned __int64 v45; // r12
-  __int64 v46; // rdi
-  __int64 v47; // r15
-  float *v48; // rbx
-  float *v49; // rdi
-  __int64 v50; // rbp
-  float v51; // xmm5_4
-  float v52; // xmm4_4
-  __int64 v53; // rcx
-  float v54; // xmm1_4
-  float v55; // xmm3_4
-  __int64 v56; // rax
-  float v57; // xmm2_4
-  float v58; // xmm0_4
-  float v59; // xmm5_4
-  float v60; // xmm1_4
-  float v61; // xmm2_4
-  float v62; // xmm3_4
-  float v63; // xmm4_4
-  float v64; // xmm3_4
-  float v65; // xmm5_4
-  float v66; // xmm4_4
-  float v67; // xmm2_4
-  float v68; // xmm0_4
-  float v69; // xmm3_4
-  float v70; // xmm1_4
-  float v71; // xmm2_4
-  float v72; // xmm5_4
-  unsigned int *v73; // rbx
-  __int64 v74; // rsi
-  __int64 v75; // rdi
-  __int64 v76; // rbp
-  __int64 v77; // rcx
-  float v78; // xmm1_4
-  float v79; // xmm3_4
-  float v80; // xmm2_4
-  __int64 v81; // rax
-  unsigned int v82; // xmm0_4
-  float v83; // xmm1_4
-  unsigned int v84; // xmm0_4
-  __int64 v85; // rdx
-  __int64 v86; // rcx
-  float v87; // xmm1_4
-  unsigned int v88; // xmm0_4
-  float v89; // xmm1_4
-  __int64 v90; // rcx
-  float v91; // xmm0_4
-  __int64 v92; // rdx
-  unsigned int v93; // xmm0_4
-  float v94; // xmm1_4
-  unsigned int v95; // xmm0_4
-  float v96; // xmm1_4
-  __int64 v97; // rdx
-  __int64 v98; // rcx
-  float v99; // xmm1_4
-  unsigned int v100; // xmm0_4
-  float v101; // xmm1_4
-  float v102; // xmm0_4
-  __int64 v103; // rdx
-  __int64 v104; // rcx
-  unsigned int v105; // xmm0_4
-  float v106; // xmm1_4
-  unsigned int v107; // xmm0_4
-  float v108; // xmm1_4
-  __int64 v109; // r14
-  unsigned int *v110; // rdi
-  __int64 v111; // rbx
-  __int64 v112; // rsi
-  float *v113; // rax
-  __int64 v114; // rcx
-  unsigned int v115; // xmm1_4
-  float v116; // xmm0_4
-  float v117; // xmm2_4
-  float v118; // xmm4_4
-  float v119; // xmm1_4
-  unsigned int v120; // xmm0_4
+  int v0;
+  int v1;
+  unsigned int v2;
+  int v3;
+  int v4;
+  float v5;
+  signed int v6;
+  float v7;
+  int v8;
+  double v9;
+  char v10;
+  unsigned int v11;
+  unsigned int v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  unsigned int *v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  float v23;
+  __int64 v24;
+  float v25;
+  float v26;
+  float v27;
+  float v28;
+  float v29;
+  float v30;
+  float v31;
+  float v32;
+  unsigned int v33;
+  float v34;
+  float v35;
+  unsigned int v36;
+  float v37;
+  unsigned int v38;
+  float v39;
+  unsigned int v40;
+  float v41;
+  unsigned int v42;
+  unsigned __int64 v43;
+  float *v44;
+  unsigned __int64 v45;
+  __int64 v46;
+  __int64 v47;
+  float *v48;
+  float *v49;
+  __int64 v50;
+  float v51;
+  float v52;
+  __int64 v53;
+  float v54;
+  float v55;
+  __int64 v56;
+  float v57;
+  float v58;
+  float v59;
+  float v60;
+  float v61;
+  float v62;
+  float v63;
+  float v64;
+  float v65;
+  float v66;
+  float v67;
+  float v68;
+  float v69;
+  float v70;
+  float v71;
+  float v72;
+  unsigned int *v73;
+  __int64 v74;
+  __int64 v75;
+  __int64 v76;
+  __int64 v77;
+  float v78;
+  float v79;
+  float v80;
+  __int64 v81;
+  unsigned int v82;
+  float v83;
+  unsigned int v84;
+  __int64 v85;
+  __int64 v86;
+  float v87;
+  unsigned int v88;
+  float v89;
+  __int64 v90;
+  float v91;
+  __int64 v92;
+  unsigned int v93;
+  float v94;
+  unsigned int v95;
+  float v96;
+  __int64 v97;
+  __int64 v98;
+  float v99;
+  unsigned int v100;
+  float v101;
+  float v102;
+  __int64 v103;
+  __int64 v104;
+  unsigned int v105;
+  float v106;
+  unsigned int v107;
+  float v108;
+  __int64 v109;
+  unsigned int *v110;
+  __int64 v111;
+  __int64 v112;
+  float *v113;
+  __int64 v114;
+  unsigned int v115;
+  float v116;
+  float v117;
+  float v118;
+  float v119;
+  unsigned int v120;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400932D0[32];
 #define v122 (*(__int64 (*))(void *)(sr_frame_1400932D0 + 0)) /* [rsp+A0h] */
@@ -10282,7 +9596,7 @@ _UNKNOWN **           sub_1400932D0()
 #define v125 (*(__int64 (*))(void *)(sr_frame_1400932D0 + 24)) /* [rsp+B8h] */
 
   v0 = 16;
-  if ( dword_140404A6C[283831481] )
+  if ( frame_slow_pacing )
     v0 = 100;
   v1 = sub_140198F9B() - dword_140404A6C[421846189];
   v2 = sub_140198F9B();
@@ -10295,27 +9609,27 @@ _UNKNOWN **           sub_1400932D0()
   if ( v4 <= v3 )
     v3 = v4;
   v6 = v3 + dword_140404A6C[421846190];
-  v7 = (float)(v0 * dword_140404A6C[283831474]);
+  v7 = (float)(v0 * game_tick);
   if ( (float)(v3 + dword_140404A6C[421846190]) > (float)(v7 - (float)(v5 * 0.125)) )
     v6 -= (unsigned int)v0 >> 3;
   if ( (float)v6 < (float)(v7 - (float)((float)(*(float *)&dword_140404A6C[421846191] + 0.125) * v5)) )
     v6 += (unsigned int)v0 >> 4;
-  if ( v6 > (signed int)(v0 * dword_140404A6C[283831474]) )
-    v6 = v0 * dword_140404A6C[283831474];
+  if ( v6 > (signed int)(v0 * game_tick) )
+    v6 = v0 * game_tick;
   dword_140404A6C[421846190] = v6;
-  if ( v6 < (signed int)(v0 * (dword_140404A6C[283831474] - 20)) )
+  if ( v6 < (signed int)(v0 * (game_tick - 20)) )
   {
     v6 = (int)(float)(v7 - (float)(v5 * 20.0));
     dword_140404A6C[421846190] = v6;
   }
-  if ( dword_140404A6C[19065870] && v6 < (signed int)(v0 * (dword_140404A6C[283831474] - 1)) )
+  if ( replay_active && v6 < (signed int)(v0 * (game_tick - 1)) )
   {
     v6 = (int)(float)(v7 - v5);
     dword_140404A6C[421846190] = v6;
   }
   v8 = v6 / v0;
-  if ( v6 / v0 > (int)dword_140404A6C[283831474] )
-    v8 = dword_140404A6C[283831474];
+  if ( v6 / v0 > (int)game_tick )
+    v8 = game_tick;
   *(_QWORD *)&v9 = COERCE_UNSIGNED_INT((float)(v6 - v0 * v8));
   *(float *)&v9 = fmaxf(*(float *)&v9 / v5, 0.0);
   if ( *(float *)&v9 > 1.0 )
@@ -10326,7 +9640,7 @@ _UNKNOWN **           sub_1400932D0()
   if ( !dword_140404A6C[73991654] || dword_140404A6C[179668287] )
   {
     *(_QWORD *)&v9 = 1065353216;
-    v12 = dword_140404A6C[283831474] & 0x3F;
+    v12 = game_tick & 0x3F;
     v11 = v12;
   }
   v13 = v11;
@@ -10610,40 +9924,34 @@ _UNKNOWN **           sub_1400932D0()
            (float *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 563328 * v122 + 1692161364),
            (float *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 563328 * v15 + 1692161364),
            v9);
-}
+}
 #undef v122
 #undef v123
 #undef v124
 #undef v125
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 183EBFD34: using guessed type unsigned int;
-// 183F7C594: using guessed type unsigned int;
-// 1A4D3BD20: using guessed type unsigned int;
-// 1A4D3BD24: using guessed type unsigned int;
-
 //----- (0000000140093E60) ----------------------------------------------------
 __int64 sub_140093E60()
 {
-  int i; // edi
-  __int64 v1; // rdx
-  __int64 v2; // rcx
-  __int64 v3; // r8
-  __int64 v4; // r9
-  __int64 v5; // xmm2_8
-  float *v6; // rdx
-  float *v7; // rax
-  float *v8; // r8
-  signed __int64 v9; // rcx
-  __int64 v10; // r10
-  float v11; // xmm3_4
-  __int64 v12; // rdx
-  float v13; // xmm4_4
-  float v14; // xmm5_4
-  float v15; // xmm6_4
-  int j; // ebx
-  unsigned int v17; // ecx
-  __int64 v18; // rdx
+  int i;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  float *v6;
+  float *v7;
+  float *v8;
+  signed __int64 v9;
+  __int64 v10;
+  float v11;
+  __int64 v12;
+  float v13;
+  float v14;
+  float v15;
+  int j;
+  unsigned int v17;
+  __int64 v18;
   _Alignas(16) unsigned sr_cube_rotation[12];
   float sr_cube_light[3];
   _Alignas(16) unsigned sr_cube_translation[16];
@@ -10661,7 +9969,7 @@ __int64 sub_140093E60()
       36160,
       36064,
       (unsigned int)(i + 34069),
-      dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944],
+      dword_140404A6C[44 * shading_cube_map + 284024944],
       0);
     (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.375f,0.375f,0.375f,0.0f);
     (*(void (           **)(__int64))&dword_140404A6C[18215095])(0xFFFFFFFFLL);
@@ -10813,7 +10121,7 @@ LABEL_13:
     unk_140404098(33986);
     qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830717] + 284024944]);
     unk_140404098(33988);
-    qword_140404050(3553, dword_140404A6C[451221642]);
+    qword_140404050(3553, renderer_white_texture);
     unk_140404098(33987);
     qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830718] + 284024944]);
     qword_140404238(0);
@@ -10825,7 +10133,7 @@ LABEL_13:
     (*(void (           **)(__int64))&dword_140404A6C[18215101])(32823);
   }
   unk_1404046F0(36160, 0);
-  qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+  qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
   sub_14001B6A0();
   v17 = dword_140404A6C[73991626];
   if ( dword_140404A6C[73991626] )
@@ -10841,68 +10149,10 @@ LABEL_13:
     unk_140404A60(36001, v18);
   }
   return 0; /* compatibility result discarded by all reviewed callers */
-}
+}
 #undef v20
 #undef v32
 #undef v33
-
-// 140093F9C: variable 'v2' is possibly undefined
-// 140093F9C: variable 'v1' is possibly undefined
-// 140093F9C: variable 'v3' is possibly undefined
-// 140093F9C: variable 'v4' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278D90: using guessed type __int128 xmmword_140278D90;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A60: using guessed type __int64 (__fastcall *unk_140404A60)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D38: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D48: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 151E46194: using guessed type unsigned int;
-// 1A724E580: using guessed type unsigned int;
-// 1A724E590: using guessed type unsigned int;
-// 1A724E5A0: using guessed type unsigned int;
-// 1A724E5AC: using guessed type unsigned int;
-// 1A724E5B0: using guessed type unsigned int;
-// 1A724E5BC: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5C4: using guessed type unsigned int;
-// 1A724E5C8: using guessed type unsigned int;
-// 1A724E5CC: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5D4: using guessed type unsigned int;
-// 1A724E5D8: using guessed type unsigned int;
-// 1A724E5DC: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5E4: using guessed type unsigned int;
-// 1A724E5E8: using guessed type unsigned int;
-// 1A724E5EC: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E5F8: using guessed type unsigned int;
-// 1A724E5FC: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E60C: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E61C: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A724E63C: using guessed type unsigned int;
 
 //----- (00000001400990A0) ----------------------------------------------------
 double            sub_1400990A0(
@@ -10914,42 +10164,42 @@ double            sub_1400990A0(
         unsigned int a6,
         unsigned int a7)
 {
-  unsigned int v7; // ebp
-  int v8; // esi
-  signed int v10; // edx
-  __int64 v11; // r14
-  unsigned int v12; // r11d
-  unsigned int v13; // r9d
-  int v14; // ecx
-  int v15; // edx
-  int v16; // r8d
-  bool v17; // cc
-  unsigned int v18; // eax
-  bool v19; // cc
-  unsigned int v20; // edi
-  int v21; // ecx
-  __int64 v22; // r12
-  unsigned int v23; // r13d
-  unsigned int v24; // edi
-  unsigned int v25; // esi
-  unsigned int v26; // r15d
-  signed int v27; // eax
-  int v28; // r14d
-  unsigned int v29; // r15d
-  int v30; // edi
-  int v31; // ebp
-  float v32; // xmm8_4
-  float v33; // xmm7_4
-  int v34; // esi
-  int v35; // ecx
-  float v36; // xmm6_4
-  float v37; // xmm0_4
-  float v38; // xmm0_4
-  float v39; // xmm0_4
-  float v40; // xmm0_4
-  float v41; // xmm0_4
-  int v42; // ecx
-  int v43; // eax
+  unsigned int v7;
+  int v8;
+  signed int v10;
+  __int64 v11;
+  unsigned int v12;
+  unsigned int v13;
+  int v14;
+  int v15;
+  int v16;
+  bool v17;
+  unsigned int v18;
+  bool v19;
+  unsigned int v20;
+  int v21;
+  __int64 v22;
+  unsigned int v23;
+  unsigned int v24;
+  unsigned int v25;
+  unsigned int v26;
+  signed int v27;
+  int v28;
+  unsigned int v29;
+  int v30;
+  int v31;
+  float v32;
+  float v33;
+  int v34;
+  int v35;
+  float v36;
+  float v37;
+  float v38;
+  float v39;
+  float v40;
+  float v41;
+  int v42;
+  int v43;
 
   v7 = dword_140404A6C[293250409];
   v8 = 128;
@@ -11197,64 +10447,53 @@ LABEL_49:
   return (*(double (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(35866, 34046, 16.0f /* native XMM2 */);
 }
 
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404078: using guessed type double (__fastcall *unk_140404078)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 140404080: using guessed type __int64 (__fastcall *unk_140404080)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 140404738: using guessed type double (__fastcall *unk_140404738)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 1862AE010: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (0000000140099730) ----------------------------------------------------
 double            sub_140099730(int a1, int a2, unsigned int a3, unsigned int a4, unsigned int a5, unsigned int a6)
 {
-  __int64 v7; // r13
-  int v8; // r12d
-  int v9; // r15d
-  int v10; // ebx
-  int v11; // ecx
-  __int64 v12; // rcx
-  unsigned int v13; // r12d
-  int i; // esi
-  int v15; // edi
-  int v16; // r15d
-  int v17; // ebp
-  int v18; // eax
-  int v19; // ecx
-  int v20; // edx
-  float v21; // xmm10_4
-  float v22; // xmm9_4
-  float v23; // xmm8_4
-  float v24; // xmm0_4
-  int v25; // edx
-  int v26; // ecx
-  int v27; // eax
-  unsigned int v28; // ecx
-  int v29; // eax
-  __int64 v30; // rdi
-  __int64 v31; // rax
-  signed int v32; // r10d
-  signed int j; // r9d
-  __int64 v34; // r8
-  signed int v35; // eax
-  double result; // xmm0_8
-  signed int v37; // r10d
-  signed int v38; // r8d
-  __int64 v39; // rdi
-  int v40; // ecx
-  unsigned int v41; // r9d
-  int v42; // edx
-  __int64 v43; // rax
-  __int64 v44; // rbx
-  __int64 v45; // rax
-  signed int v46; // r10d
-  signed int k; // r9d
-  __int64 v48; // r8
-  signed int v49; // eax
-  int v50; // [rsp+140h] [rbp+8h]
+  __int64 v7;
+  int v8;
+  int v9;
+  int v10;
+  int v11;
+  __int64 v12;
+  unsigned int v13;
+  int i;
+  int v15;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  float v21;
+  float v22;
+  float v23;
+  float v24;
+  int v25;
+  int v26;
+  int v27;
+  unsigned int v28;
+  int v29;
+  __int64 v30;
+  __int64 v31;
+  signed int v32;
+  signed int j;
+  __int64 v34;
+  signed int v35;
+  double result;
+  signed int v37;
+  signed int v38;
+  __int64 v39;
+  int v40;
+  unsigned int v41;
+  int v42;
+  __int64 v43;
+  __int64 v44;
+  __int64 v45;
+  signed int v46;
+  signed int k;
+  __int64 v48;
+  signed int v49;
+  int v50;
 
   v7 = 2LL * a1;
   v8 = a2;
@@ -11262,7 +10501,7 @@ double            sub_140099730(int a1, int a2, unsigned int a3, unsigned int a4
   v50 = v9;
   if ( a1 == 1 )
   {
-    v12 = 44LL * (int)dword_140404A6C[283827818];
+    v12 = 44LL * (int)resting_texture_1;
     v10 = dword_140404A6C[v12 + 284024933];
     v11 = dword_140404A6C[v12 + 284024934];
     dword_140404A6C[468765293] = v10;
@@ -11439,33 +10678,26 @@ LABEL_17:
   return result;
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 1862AE010: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (0000000140099DD0) ----------------------------------------------------
 double            sub_140099DD0(int a1, int a2, unsigned int a3, unsigned int a4, unsigned int a5, unsigned int a6)
 {
-  int v6; // edi
-  unsigned int v8; // ebx
-  int v9; // r12d
-  int v10; // ebp
-  __int64 v11; // r15
-  signed int v12; // eax
-  __int64 v13; // r14
-  float v14; // xmm3_4
-  __int64 v15; // r8
-  unsigned int *v16; // rbx
-  unsigned int v17; // esi
-  __int64 v18; // rax
-  double v19; // xmm9_8
-  double v20; // xmm11_8
-  float v21; // xmm12_4
-  __int64 v22; // r8
-  __int64 v23; // r8
+  int v6;
+  unsigned int v8;
+  int v9;
+  int v10;
+  __int64 v11;
+  signed int v12;
+  __int64 v13;
+  float v14;
+  __int64 v15;
+  unsigned int *v16;
+  unsigned int v17;
+  __int64 v18;
+  double v19;
+  double v20;
+  float v21;
+  __int64 v22;
+  __int64 v23;
 
   v6 = 0;
   v8 = a3;
@@ -11560,7 +10792,7 @@ double            sub_140099DD0(int a1, int a2, unsigned int a3, unsigned int a4
         if ( !v10 )
         {
           (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(0,0,0,1);
-          qword_140404050(3553, dword_140404A6C[451221642]);
+          qword_140404050(3553, renderer_white_texture);
           sub_14006CFF0(v19, v20, COERCE_UNSIGNED_INT((float)(*(float *)((char *)&dword_140404A6C[451023991] + v18) * 128.0f)) /* native XMM2 width = XMM10 */, v21, 128, 0, 0, 0, 1065353216);
         }
         ++v6;
@@ -11583,86 +10815,52 @@ double            sub_140099DD0(int a1, int a2, unsigned int a3, unsigned int a4
   return unk_1404046F0(36160, 0);
 }
 
-// 14009A230: variable 'v22' is possibly undefined
-// 14009A28B: variable 'v23' is possibly undefined
-// 14009A2C5: variable 'v15' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278E60: using guessed type __int128 xmmword_140278E60;
-// 140278E70: using guessed type __int128 xmmword_140278E70;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404078: using guessed type double (__fastcall *unk_140404078)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404738: using guessed type double (__fastcall *unk_140404738)(_QWORD);
-// 140404750: using guessed type __int64 (__fastcall *unk_140404750)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E5A8: using guessed type unsigned int;
-// 1A724E5AC: using guessed type unsigned int;
-// 1A724E5B8: using guessed type unsigned int;
-// 1A724E5C8: using guessed type unsigned int;
-// 1A724E5E8: using guessed type unsigned int;
-// 1A724E5F8: using guessed type unsigned int;
-// 1A724E608: using guessed type unsigned int;
-// 1A724E628: using guessed type unsigned int;
-// 1A724E638: using guessed type unsigned int;
-// 1A724E63C: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (000000014009A5F0) ----------------------------------------------------
 void            sub_14009A5F0(int a1, int a2, unsigned int a3, unsigned int a4, unsigned int a5, unsigned int a6)
 {
-  int v6; // r11d
-  int v7; // esi
-  __int64 v8; // r14
-  int v9; // xmm8_4
-  int v10; // xmm9_4
-  int v11; // xmm10_4
-  int v12; // r10d
-  unsigned int v13; // r11d
-  int v14; // r15d
-  signed int v15; // ecx
-  int v16; // r8d
-  int v17; // edx
-  int v18; // r9d
-  int v19; // ecx
-  int v20; // eax
-  int v21; // eax
-  int v22; // r9d
-  int v23; // edx
-  int v24; // r8d
-  int v25; // r13d
-  int v26; // edi
-  int v27; // esi
-  int v28; // ebp
-  int v29; // ecx
-  int v30; // edx
-  int v31; // r8d
-  int v32; // eax
-  float v33; // xmm6_4
-  float v34; // xmm0_4
-  int v35; // r8d
-  signed int v36; // r9d
-  int v37; // r8d
-  int v38; // r8d
-  float v39; // xmm0_4
-  bool v40; // cf
-  float v41; // xmm0_4
-  __int64 v42; // rbx
-  __int64 v43; // rax
-  signed int v44; // r10d
-  signed int i; // r9d
-  __int64 v46; // r8
-  signed int v47; // eax
-  int v48; // [rsp+110h] [rbp+8h]
+  int v6;
+  int v7;
+  __int64 v8;
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  unsigned int v13;
+  int v14;
+  signed int v15;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  int v21;
+  int v22;
+  int v23;
+  int v24;
+  int v25;
+  int v26;
+  int v27;
+  int v28;
+  int v29;
+  int v30;
+  int v31;
+  int v32;
+  float v33;
+  float v34;
+  int v35;
+  signed int v36;
+  int v37;
+  int v38;
+  float v39;
+  bool v40;
+  float v41;
+  __int64 v42;
+  __int64 v43;
+  signed int v44;
+  signed int i;
+  __int64 v46;
+  signed int v47;
+  int v48;
 
   v6 = dword_140404A6C[283829878];
   v7 = a2;
@@ -11852,7 +11050,7 @@ LABEL_63:
           v28 = 16;
         }
       }
-      if ( (_DWORD)v8 == dword_140404A6C[283830699] )
+      if ( (_DWORD)v8 == resting_texture_0 )
       {
         v27 = 160;
         v28 = 32;
@@ -11892,7 +11090,7 @@ LABEL_63:
         if ( (float)((float)((float)(64 - v12) * (float)(64 - v12)) + (float)((float)(64 - v25) * (float)(64 - v25))) < 2304.0 )
           v29 = 192;
       }
-      if ( (_DWORD)v8 == dword_140404A6C[283829876] )
+      if ( (_DWORD)v8 == effect_texture )
       {
         v27 = 255;
         v26 = 255;
@@ -12194,72 +11392,52 @@ LABEL_162:
   sub_14014D3E0(v8, 1);
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 1402B2830: using guessed type int dword_1402B2830[];
-// 1402B2834: using guessed type int dword_1402B2834[];
-// 1402B2838: using guessed type int dword_1402B2838[];
-// 1402B283C: using guessed type int dword_1402B283C;
-// 1402B2840: using guessed type int dword_1402B2840;
-// 1402B2844: using guessed type int dword_1402B2844;
-// 1402B2848: using guessed type int dword_1402B2848;
-// 1402B284C: using guessed type int dword_1402B284C;
-// 1402B2850: using guessed type int dword_1402B2850;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 183EBE444: using guessed type unsigned int;
-// 183EBF074: using guessed type unsigned int;
-// 183EBF07C: using guessed type unsigned int;
-// 183EBF0F4: using guessed type unsigned int;
-// 183EBF108: using guessed type unsigned int;
-// 1862AE010: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (000000014009C040) ----------------------------------------------------
 double            sub_14009C040(int a1, int a2)
 {
-  __int64 v2; // rsi
-  __int64 v4; // rbp
-  __int64 v5; // rdi
-  float v6; // xmm10_4
-  __int64 v7; // rdx
-  __int64 v8; // rcx
-  __int64 v9; // r8
-  __int64 v10; // r9
-  __int64 v11; // rdx
-  __int64 v12; // rcx
-  __int64 v13; // r8
-  __int64 v14; // rdx
-  __int64 v15; // rcx
-  __int64 v16; // r8
-  __int64 v17; // rdx
-  __int64 v18; // rcx
-  __int64 v19; // r8
-  __int64 v20; // rdx
-  __int64 v21; // rcx
-  __int64 v22; // r8
-  __int64 v23; // rdx
-  __int64 v24; // rcx
-  __int64 v25; // r8
-  __int64 v26; // r8
-  unsigned int v27; // ebx
-  __int64 v28; // rdx
-  __int64 v29; // rcx
-  __int64 v30; // r8
-  __int64 v31; // rdx
-  int v32; // ecx
-  unsigned int v33; // xmm8_4
-  unsigned int v34; // xmm9_4
-  __int64 v35; // rdx
-  __int64 v36; // r8
-  __int64 v37; // rdx
-  __int64 v38; // r8
-  __int64 v39; // rdx
-  __int64 v40; // r8
-  __int64 v41; // rdx
-  __int64 v42; // r8
-  __int64 v43; // r8
-  __int64 v44; // r8
-  __int64 v45; // rcx
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  float v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  unsigned int v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  int v32;
+  unsigned int v33;
+  unsigned int v34;
+  __int64 v35;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  __int64 v43;
+  __int64 v44;
+  __int64 v45;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14009C040[16];
 #define v47 (*(float (*))(void *)(sr_frame_14009C040 + 0)) /* [rsp+40h] */
@@ -12295,8 +11473,8 @@ double            sub_14009C040(int a1, int a2)
   sub_140079F00(
     (__int64)&dword_140404A6C[431564485],
     0.0,
-    *(float *)&dword_140404A6C[438291414],
-    *(float *)&dword_140404A6C[438291415],
+    renderer_canvas_width,
+    renderer_canvas_height,
     0.0,
     -1.0,
     1.0);
@@ -12318,7 +11496,7 @@ double            sub_14009C040(int a1, int a2)
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(3042);
   (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.5f,0.5f,0.5f,0.0f) /* native XMM0-3 */;
   (*(void (           **)(__int64))&dword_140404A6C[18215087])(0x4000);
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   *(_OWORD *)&dword_140404A6C[456807033] = 0;
   dword_140404A6C[456217205] = 1;
   dword_140404A6C[456217207] = 0;
@@ -12332,8 +11510,8 @@ double            sub_14009C040(int a1, int a2)
   LOBYTE(v26) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  v27 = dword_140404A6C[438291413];
-  dword_140404A6C[438291413] = 3;
+  v27 = renderer_current_font;
+  renderer_current_font = 3;
   if ( (_DWORD)v4 != -1 )
   {
     qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283831303] + 284024944]);
@@ -12384,7 +11562,7 @@ double            sub_14009C040(int a1, int a2)
     }
   }
   unk_1404046F0(36160, 0);
-  dword_140404A6C[438291413] = v27;
+  renderer_current_font = v27;
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
   LOBYTE(v44) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
@@ -12394,135 +11572,63 @@ double            sub_14009C040(int a1, int a2)
   LOBYTE(v45) = 1;
   (*(void (           **)(__int64))&dword_140404A6C[18215099])(v45);
   return (*(double (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
-}
+}
 #undef v47
 #undef v48
-
-// 14009C31D: variable 'v8' is possibly undefined
-// 14009C31D: variable 'v7' is possibly undefined
-// 14009C31D: variable 'v9' is possibly undefined
-// 14009C31D: variable 'v10' is possibly undefined
-// 14009C374: variable 'v12' is possibly undefined
-// 14009C374: variable 'v11' is possibly undefined
-// 14009C374: variable 'v13' is possibly undefined
-// 14009C382: variable 'v15' is possibly undefined
-// 14009C382: variable 'v14' is possibly undefined
-// 14009C382: variable 'v16' is possibly undefined
-// 14009C390: variable 'v18' is possibly undefined
-// 14009C390: variable 'v17' is possibly undefined
-// 14009C390: variable 'v19' is possibly undefined
-// 14009C39E: variable 'v21' is possibly undefined
-// 14009C39E: variable 'v20' is possibly undefined
-// 14009C39E: variable 'v22' is possibly undefined
-// 14009C3A3: variable 'v24' is possibly undefined
-// 14009C3A3: variable 'v23' is possibly undefined
-// 14009C3A3: variable 'v25' is possibly undefined
-// 14009C3B5: variable 'v26' is possibly undefined
-// 14009C4DA: variable 'v30' is possibly undefined
-// 14009C50C: variable 'v35' is possibly undefined
-// 14009C50C: variable 'v36' is possibly undefined
-// 14009C52F: variable 'v37' is possibly undefined
-// 14009C52F: variable 'v38' is possibly undefined
-// 14009C552: variable 'v39' is possibly undefined
-// 14009C552: variable 'v40' is possibly undefined
-// 14009C569: variable 'v29' is possibly undefined
-// 14009C569: variable 'v28' is possibly undefined
-// 14009C583: variable 'v41' is possibly undefined
-// 14009C583: variable 'v42' is possibly undefined
-// 14009C5BA: variable 'v43' is possibly undefined
-// 14009C602: variable 'v44' is possibly undefined
-// 14009C635: variable 'v45' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279700: using guessed type __int128 xmmword_140279700;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A8BF79C0: using guessed type unsigned int;
-// 1A8BF79C4: using guessed type unsigned int;
-// 1A8BF79C8: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
 
 //----- (000000014009C680) ----------------------------------------------------
 __int64            sub_14009C680(int a1, int a2)
 {
-  __int64 v3; // rdi
-  __int64 v4; // rsi
-  __int64 v5; // rdx
-  __int64 v6; // rcx
-  __int64 v7; // r8
-  __int64 v8; // r9
-  __int64 v9; // rdx
-  __int64 v10; // rcx
-  __int64 v11; // r8
-  int v12; // edi
-  unsigned int *v13; // rbx
-  unsigned int v14; // xmm1_4
-  unsigned int v15; // xmm0_4
-  __int64 v16; // rdx
-  __int64 v17; // rcx
-  __int64 v18; // r8
-  __int64 v19; // rdx
-  __int64 v20; // rcx
-  __int64 v21; // r8
-  __int64 v22; // rdx
-  __int64 v23; // rcx
-  __int64 v24; // r8
-  __int64 v25; // rdx
-  __int64 v26; // rcx
-  __int64 v27; // r8
-  __int64 v28; // rdx
-  __int64 v29; // rcx
-  __int64 v30; // r8
-  __int64 v31; // rdx
-  __int64 v32; // rcx
-  __int64 v33; // r8
-  __int64 v34; // rdx
-  __int64 v35; // rcx
-  __int64 v36; // r8
-  __int64 v37; // rdx
-  __int64 v38; // rcx
-  __int64 v39; // r8
-  __int64 v40; // r8
-  unsigned int v41; // r14d
-  float v42; // xmm6_4
-  __int64 v43; // r8
-  __int64 v44; // rdi
-  __int64 v45; // rbp
-  __int64 v46; // rsi
-  int v47; // ebx
-  int v48; // ecx
-  unsigned int v49; // eax
-  __m128i v50; // xmm2
-  __int64 v51; // r8
-  __int64 v52; // rcx
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+  unsigned int *v13;
+  unsigned int v14;
+  unsigned int v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v35;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  unsigned int v41;
+  float v42;
+  __int64 v43;
+  __int64 v44;
+  __int64 v45;
+  __int64 v46;
+  int v47;
+  int v48;
+  unsigned int v49;
+  __m128i v50;
+  __int64 v51;
+  __int64 v52;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14009C680[1120];
 #define v54 (*(_DWORD (*)[20])(void *)(sr_frame_14009C680 + 0)) /* [rsp+0h] */
@@ -12557,8 +11663,8 @@ __int64            sub_14009C680(int a1, int a2)
   sub_140079F00(
     (__int64)&dword_140404A6C[431564485],
     0.0,
-    *(float *)&dword_140404A6C[438291414],
-    *(float *)&dword_140404A6C[438291415],
+    renderer_canvas_width,
+    renderer_canvas_height,
     0.0,
     -1.0,
     1.0);
@@ -12580,7 +11686,7 @@ __int64            sub_14009C680(int a1, int a2)
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(3042);
   (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.5f,0.5f,0.5f,0.0f) /* native XMM0-3 */;
   (*(void (           **)(__int64))&dword_140404A6C[18215087])(0x4000);
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   v12 = 0;
   dword_140404A6C[456217205] = 1;
   dword_140404A6C[456217207] = 0;
@@ -12617,9 +11723,9 @@ __int64            sub_14009C680(int a1, int a2)
   LOBYTE(v40) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  v41 = dword_140404A6C[438291413];
+  v41 = renderer_current_font;
   v42 = 16.0;
-  dword_140404A6C[438291413] = 3;
+  renderer_current_font = 3;
   if ( (_DWORD)v4 != -1 )
   {
     qword_140404050(3553, dword_140404A6C[72787862]);
@@ -12656,7 +11762,7 @@ __int64            sub_14009C680(int a1, int a2)
     }
   }
   unk_1404046F0(36160, 0);
-  dword_140404A6C[438291413] = v41;
+  renderer_current_font = v41;
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
   LOBYTE(v51) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
@@ -12667,105 +11773,32 @@ __int64            sub_14009C680(int a1, int a2)
   (*(void (           **)(__int64))&dword_140404A6C[18215099])(v52);
   (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   return 0; /* native stack-cookie check is non-returning only on corruption */
-}
+}
 #undef v54
 #undef v55
 #undef v56
 
-// 14009C983: variable 'v6' is possibly undefined
-// 14009C983: variable 'v5' is possibly undefined
-// 14009C983: variable 'v7' is possibly undefined
-// 14009C983: variable 'v8' is possibly undefined
-// 14009CA36: variable 'v10' is possibly undefined
-// 14009CA36: variable 'v9' is possibly undefined
-// 14009CA36: variable 'v11' is possibly undefined
-// 14009CA50: variable 'v17' is possibly undefined
-// 14009CA50: variable 'v16' is possibly undefined
-// 14009CA50: variable 'v18' is possibly undefined
-// 14009CA60: variable 'v20' is possibly undefined
-// 14009CA60: variable 'v19' is possibly undefined
-// 14009CA60: variable 'v21' is possibly undefined
-// 14009CA70: variable 'v23' is possibly undefined
-// 14009CA70: variable 'v22' is possibly undefined
-// 14009CA70: variable 'v24' is possibly undefined
-// 14009CAD0: variable 'v26' is possibly undefined
-// 14009CAD0: variable 'v25' is possibly undefined
-// 14009CAD0: variable 'v27' is possibly undefined
-// 14009CAE0: variable 'v29' is possibly undefined
-// 14009CAE0: variable 'v28' is possibly undefined
-// 14009CAE0: variable 'v30' is possibly undefined
-// 14009CAF1: variable 'v32' is possibly undefined
-// 14009CAF1: variable 'v31' is possibly undefined
-// 14009CAF1: variable 'v33' is possibly undefined
-// 14009CB02: variable 'v35' is possibly undefined
-// 14009CB02: variable 'v34' is possibly undefined
-// 14009CB02: variable 'v36' is possibly undefined
-// 14009CB07: variable 'v38' is possibly undefined
-// 14009CB07: variable 'v37' is possibly undefined
-// 14009CB07: variable 'v39' is possibly undefined
-// 14009CB1A: variable 'v40' is possibly undefined
-// 14009CBBB: variable 'v43' is possibly undefined
-// 14009CC85: variable 'v51' is possibly undefined
-// 14009CCB8: variable 'v52' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A8BF79C0: using guessed type unsigned int;
-// 1A8BF79C4: using guessed type unsigned int;
-// 1A8BF79C8: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (000000014009CD10) ----------------------------------------------------
 __int64            sub_14009CD10(int a1, int a2)
 {
-  __int64 v3; // rdi
-  __int64 v4; // rsi
-  __int64 v5; // rdx
-  __int64 v6; // rcx
-  __int64 v7; // r8
-  __int64 v8; // r9
-  unsigned int v9; // r15d
-  int v10; // r14d
-  __m128i v11; // xmm6
-  __int64 v12; // rbp
-  __int64 v13; // rsi
-  int v14; // edi
-  __int64 i; // rbx
-  unsigned __int8 v16; // cl
-  int v17; // edx
-  char v18; // cl
-  __int64 v19; // r8
-  __int64 v20; // rcx
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  unsigned int v9;
+  int v10;
+  __m128i v11;
+  __int64 v12;
+  __int64 v13;
+  int v14;
+  __int64 i;
+  unsigned __int8 v16;
+  int v17;
+  char v18;
+  __int64 v19;
+  __int64 v20;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14009CD10[1120];
 #define v22 (*(_DWORD (*)[20])(void *)(sr_frame_14009CD10 + 0)) /* [rsp+0h] */
@@ -12801,8 +11834,8 @@ __int64            sub_14009CD10(int a1, int a2)
   sub_140079F00(
     (__int64)&dword_140404A6C[431564485],
     0.0,
-    *(float *)&dword_140404A6C[438291414],
-    *(float *)&dword_140404A6C[438291415],
+    renderer_canvas_width,
+    renderer_canvas_height,
     0.0,
     -1.0,
     1.0);
@@ -12824,12 +11857,12 @@ __int64            sub_14009CD10(int a1, int a2)
   (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.5f,0.5f,0.5f,0.0f) /* native XMM0-3 */;
   (*(void (           **)(__int64))&dword_140404A6C[18215087])(0x4000);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  v9 = dword_140404A6C[438291413];
+  v9 = renderer_current_font;
   v10 = 0;
   v11 = _mm_cvtsi32_si128((int)(0x41800000u));
   v12 = 0;
   v13 = 1760 * v4;
-  dword_140404A6C[438291413] = 3;
+  renderer_current_font = 3;
   do
   {
     if ( !*((_BYTE *)&dword_140404A6C[v13 + 278846111] + v12) )
@@ -12869,7 +11902,7 @@ __int64            sub_14009CD10(int a1, int a2)
   }
   while ( v12 < 1024 );
   unk_1404046F0(36160, 0);
-  dword_140404A6C[438291413] = v9;
+  renderer_current_font = v9;
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
   LOBYTE(v19) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
@@ -12880,69 +11913,33 @@ __int64            sub_14009CD10(int a1, int a2)
   (*(void (           **)(__int64))&dword_140404A6C[18215099])(v20);
   (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   return 0; /* compatibility result discarded by all reviewed callers */
-}
+}
 #undef v22
 #undef v23
 #undef v24
 
-// 14009D008: variable 'v6' is possibly undefined
-// 14009D008: variable 'v5' is possibly undefined
-// 14009D008: variable 'v7' is possibly undefined
-// 14009D008: variable 'v8' is possibly undefined
-// 14009D173: variable 'v19' is possibly undefined
-// 14009D1A0: variable 'v20' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A8BF79C0: using guessed type unsigned int;
-// 1A8BF79C4: using guessed type unsigned int;
-// 1A8BF79C8: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (000000014009D210) ----------------------------------------------------
 __int64            sub_14009D210(int a1, int a2)
 {
-  __int64 v3; // rdi
-  __int64 v4; // rsi
-  __int64 v5; // rdx
-  __int64 v6; // rcx
-  __int64 v7; // r8
-  __int64 v8; // r9
-  unsigned int v9; // r15d
-  __m128i v10; // xmm6
-  int v11; // r14d
-  __int64 v12; // rbp
-  __int64 v13; // rsi
-  char v14; // r8
-  int v15; // edi
-  __int64 i; // rbx
-  unsigned __int8 v17; // cl
-  int v18; // edx
-  char v19; // cl
-  __int64 v20; // r8
-  __int64 v21; // rcx
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  unsigned int v9;
+  __m128i v10;
+  int v11;
+  __int64 v12;
+  __int64 v13;
+  char v14;
+  int v15;
+  __int64 i;
+  unsigned __int8 v17;
+  int v18;
+  char v19;
+  __int64 v20;
+  __int64 v21;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14009D210[1120];
 #define v23 (*(__int64 (*))(void *)(sr_frame_14009D210 + 0)) /* [rsp+0h] */
@@ -12983,8 +11980,8 @@ __int64            sub_14009D210(int a1, int a2)
   sub_140079F00(
     (__int64)&dword_140404A6C[431564485],
     0.0,
-    *(float *)&dword_140404A6C[438291414],
-    *(float *)&dword_140404A6C[438291415],
+    renderer_canvas_width,
+    renderer_canvas_height,
     0.0,
     -1.0,
     1.0);
@@ -13006,12 +12003,12 @@ __int64            sub_14009D210(int a1, int a2)
   (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.5f,0.5f,0.5f,0.0f) /* native XMM0-3 */;
   (*(void (           **)(__int64))&dword_140404A6C[18215087])(0x4000);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  v9 = dword_140404A6C[438291413];
+  v9 = renderer_current_font;
   v28 = 1065353216;
   v27 = 0;
   v26 = 0;
   v25 = 0;
-  dword_140404A6C[438291413] = 2;
+  renderer_current_font = 2;
   v24 = 65;
   sr_text_draw_recovered("The Readme", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x41800000u))))), 48.0, 65u, 0x0.0p+0f, 0x0.0p+0f, 0x0.0p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14009D588 */;
   v10 = _mm_cvtsi32_si128((int)(0x42C00000u));
@@ -13070,7 +12067,7 @@ __int64            sub_14009D210(int a1, int a2)
   }
   while ( v12 < 1024 );
   unk_1404046F0(36160, 0);
-  dword_140404A6C[438291413] = v9;
+  renderer_current_font = v9;
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
   LOBYTE(v20) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
@@ -13081,7 +12078,7 @@ __int64            sub_14009D210(int a1, int a2)
   (*(void (           **)(__int64))&dword_140404A6C[18215099])(v21);
   (*(void (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
   return 0; /* compatibility result discarded by all reviewed callers */
-}
+}
 #undef v23
 #undef v24
 #undef v25
@@ -13091,57 +12088,21 @@ __int64            sub_14009D210(int a1, int a2)
 #undef v29
 #undef v30
 
-// 14009D50A: variable 'v6' is possibly undefined
-// 14009D50A: variable 'v5' is possibly undefined
-// 14009D50A: variable 'v7' is possibly undefined
-// 14009D50A: variable 'v8' is possibly undefined
-// 14009D6F2: variable 'v20' is possibly undefined
-// 14009D71F: variable 'v21' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A8BF79C0: using guessed type unsigned int;
-// 1A8BF79C4: using guessed type unsigned int;
-// 1A8BF79C8: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (000000014009DA10) ----------------------------------------------------
 double            sub_14009DA10(int a1, int a2)
 {
-  __int64 v3; // rsi
-  __int64 v4; // rdi
-  __int64 v5; // rdx
-  __int64 v6; // rcx
-  __int64 v7; // r8
-  __int64 v8; // r9
-  __int64 v9; // r8
-  unsigned int v10; // ebx
-  char *v11; // rcx
-  __m128i v12; // xmm2
-  __int64 v13; // r8
-  __int64 v14; // rcx
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  unsigned int v10;
+  char *v11;
+  __m128i v12;
+  __int64 v13;
+  __int64 v14;
 
   v3 = 44LL * a1;
   v4 = a2;
@@ -13172,14 +12133,14 @@ double            sub_14009DA10(int a1, int a2)
     (float)(int)dword_140404A6C[468765293],
     (float)(int)dword_140404A6C[468765294],
     (float)(int)dword_140404A6C[468765294]);
-  *(float *)&dword_140404A6C[438291414] = (float)(int)dword_140404A6C[468765293];
-  *(float *)&dword_140404A6C[438291415] = (float)(int)dword_140404A6C[468765294];
+  renderer_canvas_width = (float)(int)dword_140404A6C[468765293];
+  renderer_canvas_height = (float)(int)dword_140404A6C[468765294];
   qword_140302FE8(0, 0, dword_140404A6C[468765293], dword_140404A6C[468765294]);
   sub_140079F00(
     (__int64)&dword_140404A6C[431564485],
     0.0,
-    *(float *)&dword_140404A6C[438291414],
-    *(float *)&dword_140404A6C[438291415],
+    renderer_canvas_width,
+    renderer_canvas_height,
     0.0,
     -1.0,
     1.0);
@@ -13204,16 +12165,16 @@ double            sub_14009DA10(int a1, int a2)
   LOBYTE(v9) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  v10 = dword_140404A6C[438291413];
+  v10 = renderer_current_font;
   v11 = (char *)off_1402B2C00[v4];
   v12 = _mm_castps_si128(_mm_set_ss((float)(int)dword_140404A6C[468765294]));
-  dword_140404A6C[438291413] = dword_140404A6C[278520159];
+  renderer_current_font = dword_140404A6C[278520159];
   *(float *)SR_VEC_LANES(128, v12, i32) = *(float *)SR_VEC_LANES(128, v12, i32) * 0.5;
   sr_text_draw_recovered(v11, (float)(int)dword_140404A6C[468765293] * 0.5, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v12))), 52.0, 5u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14009DDAE */;
   unk_1404046F0(36160, 0);
   qword_140404050(3553, dword_140404A6C[v3 + 284024944]);
   unk_140404738(3553);
-  dword_140404A6C[438291413] = v10;
+  renderer_current_font = v10;
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
   LOBYTE(v13) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
@@ -13225,81 +12186,40 @@ double            sub_14009DA10(int a1, int a2)
   return (*(double (**)(unsigned, unsigned, float))&dword_140404A6C[18215073])(3553, 34046, 16.0f /* native XMM2 */);
 }
 
-// 14009DD09: variable 'v6' is possibly undefined
-// 14009DD09: variable 'v5' is possibly undefined
-// 14009DD09: variable 'v7' is possibly undefined
-// 14009DD09: variable 'v8' is possibly undefined
-// 14009DD27: variable 'v9' is possibly undefined
-// 14009DDFC: variable 'v13' is possibly undefined
-// 14009DE2F: variable 'v14' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 1402B2C00: using guessed type __int64 off_1402B2C00[17];
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404738: using guessed type double (__fastcall *unk_140404738)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CF0: using guessed type double (__fastcall *)(_QWORD, _QWORD);
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 182A7CFE8: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A8BF79C0: using guessed type unsigned int;
-// 1A8BF79C4: using guessed type unsigned int;
-// 1A8BF79C8: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (00000001400A0EB0) ----------------------------------------------------
 void            sub_1400A0EB0(int a1)
 {
-  __int64 v2; // rbx
-  __int64 v3; // r14
-  bool v4; // zf
-  __int64 v5; // r12
-  __int64 v6; // rcx
-  signed int v7; // ebp
-  float v8; // xmm1_4
-  unsigned int v9; // xmm1_4
-  float v10; // xmm2_4
-  float v11; // xmm4_4
-  float v12; // xmm1_4
-  unsigned int *v13; // rsi
-  float v14; // xmm0_4
-  unsigned int *v15; // rdi
-  float v16; // xmm0_4
-  float v17; // xmm2_4
-  float v18; // xmm1_4
-  float v19; // xmm1_4
-  float v20; // xmm1_4
-  float v21; // xmm0_4
-  float v22; // xmm0_4
-  float v23; // xmm1_4
-  __int64 v24; // rcx
-  double v25; // xmm2_8
-  unsigned int v26; // xmm0_4
-  unsigned int v27; // xmm1_4
-  double v28; // xmm0_8
-  double v29; // xmm1_8
-  double v30; // xmm2_8
-  unsigned int v31; // eax
-  float v32; // xmm0_4
+  __int64 v2;
+  __int64 v3;
+  bool v4;
+  __int64 v5;
+  __int64 v6;
+  signed int v7;
+  float v8;
+  unsigned int v9;
+  float v10;
+  float v11;
+  float v12;
+  unsigned int *v13;
+  float v14;
+  unsigned int *v15;
+  float v16;
+  float v17;
+  float v18;
+  float v19;
+  float v20;
+  float v21;
+  float v22;
+  float v23;
+  __int64 v24;
+  double v25;
+  unsigned int v26;
+  unsigned int v27;
+  double v28;
+  double v29;
+  double v30;
+  unsigned int v31;
+  float v32;
 
   v2 = 3597LL * a1;
   v3 = a1;
@@ -13391,9 +12311,9 @@ void            sub_1400A0EB0(int a1)
         {
           v13 = &dword_140404A6C[v2 + 71856293];
           v15 = &dword_140404A6C[v2 + 71856295];
-          v17 = (float)(*(float *)&dword_140404A6C[284024599] * 0.006666666828095913)
+          v17 = (float)(*(float *)&dword_140404A6C[284024599] * 0.0066666668)
               + *(float *)&dword_140404A6C[v2 + 71856293];
-          v18 = (float)(*(float *)&dword_140404A6C[284024600] * 0.006666666828095913)
+          v18 = (float)(*(float *)&dword_140404A6C[284024600] * 0.0066666668)
               + *(float *)&dword_140404A6C[v2 + 71856295];
           *(float *)&dword_140404A6C[v2 + 71856293] = v17;
           *(float *)&dword_140404A6C[v2 + 71856295] = v18;
@@ -13462,7 +12382,7 @@ void            sub_1400A0EB0(int a1)
           v22 = *(float *)&dword_140404A6C[v2 + 71856294];
           if ( LOBYTE(dword_140404A6C[284024766]) )
           {
-            if ( v22 <= -0.721875011920929 )
+            if ( v22 <= -0.72187501 )
             {
               v22 = -0.75;
               dword_140404A6C[v2 + 71856294] = -1086324736;
@@ -13470,12 +12390,12 @@ void            sub_1400A0EB0(int a1)
             }
             else
             {
-              v22 = v22 - 0.02812500111758709;
+              v22 = v22 - 0.028125001;
               *(float *)&dword_140404A6C[v2 + 71856294] = v22;
               v23 = v22;
             }
           }
-          else if ( v22 >= -0.03750000149011612 )
+          else if ( v22 >= -0.037500001 )
           {
             v23 = *(float *)&dword_140404A6C[v2 + 71856294];
             if ( v22 < 0.0 )
@@ -13487,25 +12407,25 @@ void            sub_1400A0EB0(int a1)
           }
           else
           {
-            v22 = v22 + 0.03750000149011612;
+            v22 = v22 + 0.037500001;
             *(float *)&dword_140404A6C[v2 + 71856294] = v22;
             v23 = v22;
           }
           if ( HIBYTE(dword_140404A6C[284024766]) )
           {
-            if ( v22 >= 0.721875011920929 )
+            if ( v22 >= 0.72187501 )
               dword_140404A6C[v2 + 71856294] = 1061158912;
             else
-              *(float *)&dword_140404A6C[v2 + 71856294] = v23 + 0.02812500111758709;
+              *(float *)&dword_140404A6C[v2 + 71856294] = v23 + 0.028125001;
           }
-          else if ( v22 <= 0.03750000149011612 )
+          else if ( v22 <= 0.037500001 )
           {
             if ( v22 > 0.0 )
               dword_140404A6C[v2 + 71856294] = 0;
           }
           else
           {
-            *(float *)&dword_140404A6C[v2 + 71856294] = v23 - 0.03750000149011612;
+            *(float *)&dword_140404A6C[v2 + 71856294] = v23 - 0.037500001;
           }
           if ( LOBYTE(dword_140404A6C[284024776]) )
             dword_140404A6C[v2 + 71856325] |= 4u;
@@ -13528,10 +12448,10 @@ void            sub_1400A0EB0(int a1)
           if ( LOBYTE(dword_140404A6C[284024784]) )
             dword_140404A6C[3597 * v3 + 71856325] |= 0x40000u;
         }
-        if ( dword_140404A6C[284024356] )
+        if ( toggle_183f7c2fc )
         {
           v4 = dword_140404A6C[285101134] == 0;
-          v25 = *(float *)&dword_140404A6C[285101118] * 2.3561944901925003;
+          v25 = *(float *)&dword_140404A6C[285101118] * 2.3561944901925;
           *(float *)&v26 = fabs(*(float *)&dword_140404A6C[285101116]) * *(float *)&dword_140404A6C[285101116] * 0.75;
           *(float *)&v27 = *(float *)&dword_140404A6C[285101121] - *(float *)&dword_140404A6C[285101120];
           dword_140404A6C[v2 + 71856294] = v26;
@@ -13541,7 +12461,7 @@ void            sub_1400A0EB0(int a1)
           *(float *)&v28 = (v25 - v28) * 0.0625 + v28;
           v30 = *(float *)&dword_140404A6C[285101119];
           dword_140404A6C[v2 + 71856297] = LODWORD(v28);
-          *(float *)&dword_140404A6C[v2 + 71856298] = (v30 * 2.3561944901925003 - v29) * 0.0625 + v29;
+          *(float *)&dword_140404A6C[v2 + 71856298] = (v30 * 2.3561944901925 - v29) * 0.0625 + v29;
           if ( !v4 )
             dword_140404A6C[v2 + 71856325] |= 4u;
           if ( dword_140404A6C[285101135] && !dword_140404A6C[285097167] )
@@ -13577,38 +12497,35 @@ void            sub_1400A0EB0(int a1)
   }
 }
 
-// 140279850: using guessed type __int128 xmmword_140279850;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001400A5890) ----------------------------------------------------
 void            sub_1400A5890(float *a1)
 {
-  float v2; // xmm10_4
-  float v3; // xmm15_4
-  float v4; // xmm2_4
-  float v5; // xmm8_4
-  float v6; // xmm9_4
-  float v7; // xmm3_4
-  float v8; // xmm12_4
-  float v9; // xmm4_4
-  float v10; // xmm6_4
-  float v11; // xmm0_4
-  float v12; // xmm13_4
-  float v13; // xmm0_4
-  float v14; // xmm14_4
-  float v15; // xmm2_4
-  float v16; // xmm3_4
-  float v17; // xmm8_4
-  float v18; // xmm9_4
-  float v19; // xmm0_4
-  float v20; // xmm9_4
-  float v21; // xmm12_4
-  float v22; // xmm10_4
-  float v23; // xmm15_4
-  float v24; // xmm10_4
-  float v25; // xmm6_4
-  float v26; // xmm7_4
-  float v27; // xmm0_4
+  float v2;
+  float v3;
+  float v4;
+  float v5;
+  float v6;
+  float v7;
+  float v8;
+  float v9;
+  float v10;
+  float v11;
+  float v12;
+  float v13;
+  float v14;
+  float v15;
+  float v16;
+  float v17;
+  float v18;
+  float v19;
+  float v20;
+  float v21;
+  float v22;
+  float v23;
+  float v24;
+  float v25;
+  float v26;
+  float v27;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400A5890[32];
 #define v28 (*(float (*))(void *)(sr_frame_1400A5890 + 0)) /* [rsp+D0h] */
@@ -13660,7 +12577,7 @@ void            sub_1400A5890(float *a1)
   }
   v19 = *(float *)&dword_140404A6C[284550405] * v18;
   v20 = v8 * 0.0390625;
-  v21 = v8 * 0.0146484375;
+  v21 = v8 * 0.014648438;
   v22 = (float)(v2 * v17) + (float)(v3 * v15);
   v23 = *(float *)&dword_1402B23D0;
   v24 = (float)((float)(v22 + v19) * (float)(v22 + v19)) + 1.0;
@@ -13681,44 +12598,36 @@ void            sub_1400A5890(float *a1)
 #undef v29
 #undef v30
 
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 1402B23D0: using guessed type int dword_1402B23D0;
-// 1402B23D4: using guessed type int dword_1402B23D4;
-// 1402B23D8: using guessed type int dword_1402B23D8;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 18417DE78: using guessed type unsigned int;
-// 18417DE7C: using guessed type unsigned int;
-
 //----- (00000001400A5D30) ----------------------------------------------------
 void sub_1400A5D30()
 {
-  float v0; // xmm2_4
-  float v1; // xmm3_4
-  float v2; // xmm3_4
-  float v3; // xmm2_4
-  float v4; // xmm3_4
-  float v5; // xmm5_4
-  float v6; // xmm15_4
-  float v7; // xmm1_4
-  float v8; // xmm12_4
-  float v9; // xmm13_4
-  float v10; // xmm14_4
-  float v11; // xmm7_4
-  float v12; // xmm7_4
-  float v13; // xmm6_4
-  float v14; // xmm7_4
-  float v15; // xmm7_4
-  float v16; // xmm11_4
-  float v17; // xmm7_4
-  float v18; // xmm7_4
-  float v19; // xmm6_4
-  float v20; // xmm7_4
-  float v21; // xmm0_4
-  float v22; // xmm8_4
-  float v23; // xmm7_4
-  float v24; // xmm7_4
-  float v25; // xmm6_4
-  float v26; // xmm7_4
+  float v0;
+  float v1;
+  float v2;
+  float v3;
+  float v4;
+  float v5;
+  float v6;
+  float v7;
+  float v8;
+  float v9;
+  float v10;
+  float v11;
+  float v12;
+  float v13;
+  float v14;
+  float v15;
+  float v16;
+  float v17;
+  float v18;
+  float v19;
+  float v20;
+  float v21;
+  float v22;
+  float v23;
+  float v24;
+  float v25;
+  float v26;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400A5D30[32];
 #define v27 (*(float (*))(void *)(sr_frame_1400A5D30 + 0)) /* [rsp+D0h] */
@@ -13829,25 +12738,10 @@ void sub_1400A5D30()
 #undef v29
 #undef v30
 
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 1402B23D0: using guessed type int dword_1402B23D0;
-// 1402B23D4: using guessed type int dword_1402B23D4;
-// 1402B23D8: using guessed type int dword_1402B23D8;
-// 1402F6178: using guessed type int dword_1402F6178;
-// 1402F617C: using guessed type int dword_1402F617C;
-// 1402F6180: using guessed type int dword_1402F6180;
-// 1402F6188: using guessed type int dword_1402F6188;
-// 1402F618C: using guessed type int dword_1402F618C;
-// 1402F6190: using guessed type int dword_1402F6190;
-// 1402F6198: using guessed type int dword_1402F6198;
-// 1402F619C: using guessed type int dword_1402F619C;
-// 1402F61A0: using guessed type int dword_1402F61A0;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001400A6DF0) ----------------------------------------------------
 __int64 sub_1400A6DF0()
 {
-  __int64 v0; // r8
+  __int64 v0;
 
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3553);
   LOBYTE(v0) = 1;
@@ -13863,21 +12757,10 @@ __int64 sub_1400A6DF0()
   return qword_140302F48(517, 0, 0xFFFFFFFFLL);
 }
 
-// 1400A6E0C: variable 'v0' is possibly undefined
-// 140302F48: using guessed type __int64 (__fastcall *qword_140302F48)(_QWORD, _QWORD, _QWORD);
-// 140302F50: using guessed type __int64 (__fastcall *qword_140302F50)(_QWORD, _QWORD, _QWORD);
-// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D48: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-
 //----- (00000001400A6E90) ----------------------------------------------------
 __int64 sub_1400A6E90()
 {
-  __int64 v0; // r8
+  __int64 v0;
 
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3553);
   LOBYTE(v0) = 1;
@@ -13893,22 +12776,11 @@ __int64 sub_1400A6E90()
   return qword_140302F48(514, 0, 0xFFFFFFFFLL);
 }
 
-// 1400A6EAC: variable 'v0' is possibly undefined
-// 140302F48: using guessed type __int64 (__fastcall *qword_140302F48)(_QWORD, _QWORD, _QWORD);
-// 140302F50: using guessed type __int64 (__fastcall *qword_140302F50)(_QWORD, _QWORD, _QWORD);
-// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D48: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-
 //----- (00000001400A6F30) ----------------------------------------------------
 double sub_1400A6F30()
 {
-  __int64 v0; // r8
-  __int64 v1; // rcx
+  __int64 v0;
+  __int64 v1;
 
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(3553);
   LOBYTE(v0) = 1;
@@ -13923,20 +12795,10 @@ double sub_1400A6F30()
   return (*(double (           **)(__int64))&dword_140404A6C[18215101])(2960);
 }
 
-// 1400A6F4C: variable 'v0' is possibly undefined
-// 1400A6F54: variable 'v1' is possibly undefined
-// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-
 //----- (00000001400A6FB0) ----------------------------------------------------
 __int64 sub_1400A6FB0()
 {
-  __int64 v0; // rcx
+  __int64 v0;
 
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(3553);
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(0,0,0,0);
@@ -13957,30 +12819,19 @@ __int64 sub_1400A6FB0()
   return unk_1404041D8(1028, 7680, 7680, 34055);
 }
 
-// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
-// 1404041D8: using guessed type __int64 (__fastcall *unk_1404041D8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404041E0: using guessed type __int64 (__fastcall *unk_1404041E0)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404041E8: using guessed type __int64 (__fastcall *unk_1404041E8)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-
 //----- (00000001400C2DB0) ----------------------------------------------------
 __int64            sub_1400C2DB0(__int64 a1, __int64 a2, __int64 a3)
 {
-  unsigned int *v3; // rbx
-  __int64 i; // rsi
-  int v5; // eax
-  __int64 v6; // rcx
-  unsigned int *v7; // rax
-  int v8; // edi
-  int v9; // ecx
-  unsigned int *v10; // rax
-  int v11; // edi
-  int v13; // [rsp+40h] [rbp+8h] BYREF
+  unsigned int *v3;
+  __int64 i;
+  int v5;
+  __int64 v6;
+  unsigned int *v7;
+  int v8;
+  int v9;
+  unsigned int *v10;
+  int v11;
+  int v13;
 
   v3 = &dword_140404A6C[312226123];
   for ( i = 0; i < 6; ++i )
@@ -14045,42 +12896,34 @@ __int64            sub_1400C2DB0(__int64 a1, __int64 a2, __int64 a3)
   return unk_140404190(dword_140404A6C[331800957], 0x80000, 0, 35048);
 }
 
-// 1400C2E99: variable 'a3' is possibly undefined
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404190: using guessed type __int64 (__fastcall *unk_140404190)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404041B8: using guessed type __int64 (__fastcall *unk_1404041B8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 160FC47C0: using guessed type unsigned int;
-// 18F5BD060: using guessed type unsigned int;
-
 //----- (00000001400D4360) ----------------------------------------------------
 double            sub_1400D4360(int a1, int a2, unsigned int a3, unsigned int a4, unsigned int a5, unsigned int a6)
 {
-  double result; // xmm0_8
-  unsigned int v7; // eax
-  int v8; // esi
-  int v9; // ebx
-  int v10; // r12d
-  int v11; // r13d
-  int v12; // r15d
-  int v13; // r8d
-  int v14; // ebp
-  __int64 v15; // r14
-  signed int v16; // ecx
-  int v17; // edi
-  int v18; // ecx
-  int v19; // ecx
-  int v20; // eax
-  int v21; // edx
-  unsigned int v22; // edx
-  int v23; // eax
-  __int64 v24; // rdi
-  __int64 v25; // rax
-  signed int v26; // r10d
-  signed int i; // r9d
-  __int64 v28; // r8
-  signed int v29; // eax
-  int v30; // [rsp+C0h] [rbp+8h]
+  double result;
+  unsigned int v7;
+  int v8;
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  __int64 v15;
+  signed int v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  int v21;
+  unsigned int v22;
+  int v23;
+  __int64 v24;
+  __int64 v25;
+  signed int v26;
+  signed int i;
+  __int64 v28;
+  signed int v29;
+  int v30;
 
   v7 = dword_140404A6C[283830717];
   v8 = a3;
@@ -14121,7 +12964,7 @@ double            sub_1400D4360(int a1, int a2, unsigned int a3, unsigned int a4
           v8 = (int)(float)((float)(16.0
                                   - (float)((float)(((15731 * v18 + 789221) * (15731 * v18 + 789221) - 771171059)
                                                   & 0x7FFFFFFF)
-                                          * 1.4901161193847656e-08))
+                                          * 0.000000014901161))
                           + 192.0);
           v12 = v8;
           v10 = v8;
@@ -14197,23 +13040,17 @@ double            sub_1400D4360(int a1, int a2, unsigned int a3, unsigned int a4
   return result;
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 183EBF160: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (00000001400E3AB0) ----------------------------------------------------
 __int64 sub_1400E3AB0()
 {
-  int v0; // ebx
-  __int64 result; // rax
-  __int64 v2; // r8
-  int v3; // ecx
-  unsigned int *v4; // rax
-  __int64 v5; // rcx
-  __int64 v6; // rcx
-  unsigned int v7; // edx
+  int v0;
+  __int64 result;
+  __int64 v2;
+  int v3;
+  unsigned int *v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned int v7;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400E3AB0[16];
 #define v8 (*(unsigned int (*))(void *)(sr_frame_1400E3AB0 + 0)) /* [rsp+24h] */
@@ -14273,44 +13110,39 @@ LABEL_8:
 #undef v8
 #undef v9
 
-// 1400E3B14: variable 'v8' is possibly undefined
-// 1400E3B16: variable 'v9' is possibly undefined
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 184393D30: using guessed type unsigned int;
-
 //----- (000000014011DA50) ----------------------------------------------------
 void            sub_14011DA50(int a1)
 {
-  __int64 v1; // r12
-  unsigned int *v2; // r15
-  __int64 v3; // rbx
-  __int64 v4; // r14
-  signed int v5; // edi
-  int v6; // eax
-  unsigned int *v7; // rbx
-  float *v8; // rbp
-  float *v9; // rsi
-  float v10; // xmm8_4
-  float v11; // xmm10_4
-  float v12; // xmm11_4
-  float v13; // xmm2_4
-  float v14; // xmm9_4
-  float v15; // xmm6_4
-  float v16; // xmm7_4
-  float v17; // xmm0_4
-  float v18; // xmm1_4
-  float v19; // xmm4_4
-  float v20; // xmm5_4
-  float v21; // xmm3_4
-  __int64 v22; // rcx
-  __int64 v23; // rcx
-  __int64 v24; // rcx
-  float v25; // xmm10_4
-  float v26; // xmm9_4
-  float v27; // xmm2_4
-  __int64 v28; // rcx
-  float v29; // xmm0_4
-  float v30; // xmm1_4
+  __int64 v1;
+  unsigned int *v2;
+  __int64 v3;
+  __int64 v4;
+  signed int v5;
+  int v6;
+  unsigned int *v7;
+  float *v8;
+  float *v9;
+  float v10;
+  float v11;
+  float v12;
+  float v13;
+  float v14;
+  float v15;
+  float v16;
+  float v17;
+  float v18;
+  float v19;
+  float v20;
+  float v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  float v25;
+  float v26;
+  float v27;
+  __int64 v28;
+  float v29;
+  float v30;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14011DA50[16];
 #define v31 (*(unsigned int * (*))(void *)(sr_frame_14011DA50 + 0)) /* [rsp+E0h] */
@@ -14329,7 +13161,7 @@ void            sub_14011DA50(int a1)
       {
         qword_140404050(
           3553,
-          dword_140404A6C[44 * dword_140404A6C[4 * dword_140404A6C[421784429] + 283827814] + 284024944]);
+          dword_140404A6C[44 * dword_140404A6C[4 * mark_texture_choice + 283827814] + 284024944]);
         v4 = 8969 * v3;
         v5 = 0;
         dword_140404A6C[456217207] = 0;
@@ -14413,29 +13245,23 @@ void            sub_14011DA50(int a1)
 #undef v31
 #undef v32
 
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 1404047F0: using guessed type __int64 (__fastcall *unk_1404047F0)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014011E210) ----------------------------------------------------
 void            sub_14011E210(int a1, __int64 a2, __int64 a3)
 {
-  __int64 v4; // r8
-  int v5; // ebx
-  __int64 v6; // r8
-  unsigned int *v7; // r14
-  unsigned int *v8; // rsi
-  unsigned int *v9; // rbp
-  unsigned int *v10; // r15
-  __int64 v11; // rcx
-  __int64 v12; // rcx
-  __int64 v13; // rdx
-  __int64 v14; // rcx
-  __int64 v15; // rdx
-  __int64 v16; // rcx
-  __int64 v17; // r8
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  unsigned int *v7;
+  unsigned int *v8;
+  unsigned int *v9;
+  unsigned int *v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
 
   if ( dword_140404A6C[315570516] || dword_140404A6C[318816604] )
     return;
@@ -14481,8 +13307,8 @@ LABEL_7:
     {
       if ( a1 != 2 )
         goto LABEL_26;
-      qword_1404042E0(dword_140404A6C[451221605]);
-      qword_140404378(dword_140404A6C[451221610], 1, 0, &dword_140404A6C[431564565]);
+      qword_1404042E0(renderer_ui_program);
+      qword_140404378(renderer_ui_matrix_uniform, 1, 0, &dword_140404A6C[431564565]);
       unk_140404098(33984);
       v15 = dword_140404A6C[44 * *v8 + 284024944];
       v16 = 3553;
@@ -14515,7 +13341,7 @@ LABEL_7:
         v12 = 35866;
       qword_140404050(v12, dword_140404A6C[44 * *v8 + 284024944]);
       unk_140404098(33985);
-      qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944]);
+      qword_140404050(3553, dword_140404A6C[44 * shading_texture + 284024944]);
       if ( v5 == dword_140404A6C[421784414] )
       {
         unk_140404098(33986);
@@ -14530,7 +13356,7 @@ LABEL_7:
       }
       qword_140404050(v14, v13);
       unk_140404098(33987);
-      qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+      qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
       unk_140404098(33988);
       qword_140404050(35866, dword_140404A6C[44 * dword_140404A6C[283827820] + 284024944]);
       unk_140404098(33989);
@@ -14565,30 +13391,14 @@ LABEL_28:
 }
 
 // 14011E71A: conditional instruction was optimized away because edi.4!=0
-// 14011E285: variable 'v4' is possibly undefined
-// 14011E6A7: variable 'v6' is possibly undefined
-// 14011E6B4: variable 'v17' is possibly undefined
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404308: using guessed type __int64 (__fastcall *qword_140404308)(_QWORD, _QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404468: using guessed type double (__fastcall *unk_140404468)(_QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404808: using guessed type __int64 (__fastcall *unk_140404808)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140122690) ----------------------------------------------------
 __int64            sub_140122690(float a1, __int64 a2, __int64 a3)
 {
-  __int64 v4; // rdx
-  __int64 v5; // r8
-  __int64 v6; // r8
-  __int64 v7; // rcx
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
 
   LOBYTE(a3) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
@@ -14664,7 +13474,7 @@ __int64            sub_140122690(float a1, __int64 a2, __int64 a3)
                                                 - (float)((float)(*(float *)&dword_140404A6C[284024514] * a1)
                                                         * *(float *)&dword_140404A6C[284024509]))
                                         - *(float *)&dword_140404A6C[284024512];
-  v4 = dword_140404A6C[2 * dword_140404A6C[283791478] + 283793813];
+  v4 = dword_140404A6C[2 * effect_mesh_buffer + 283793813];
   *(_QWORD *)&dword_140404A6C[456217221] = 1065353216;
   *(float *)&dword_140404A6C[456217224] = (float)((float)(*(float *)&dword_140404A6C[284024505]
                                                         * *(float *)&dword_140404A6C[284024514])
@@ -14717,82 +13527,25 @@ __int64            sub_140122690(float a1, __int64 a2, __int64 a3)
   return (*(__int64 (           **)(__int64))&dword_140404A6C[18215061])(2304);
 }
 
-// 140122B32: variable 'v5' is possibly undefined
-// 140122C13: variable 'v6' is possibly undefined
-// 140122C4D: variable 'v7' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D40: using guessed type __int128 xmmword_140278D40;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278DA0: using guessed type __int128 xmmword_140278DA0;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140278E80: using guessed type __int128 xmmword_140278E80;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279760: using guessed type __int128 xmmword_140279760;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404308: using guessed type __int64 (__fastcall *qword_140404308)(_QWORD, _QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404043C8: using guessed type __int64 (__fastcall *unk_1404043C8)(_QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E580: using guessed type unsigned int;
-// 1A724E590: using guessed type unsigned int;
-// 1A724E5A0: using guessed type unsigned int;
-// 1A724E5B0: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD059454: using guessed type unsigned int;
-// 1AD059458: using guessed type unsigned int;
-// 1AD059468: using guessed type unsigned int;
-// 1AD05946C: using guessed type unsigned int;
-// 1AD059470: using guessed type unsigned int;
-// 1AD059480: using guessed type unsigned int;
-// 1AD059488: using guessed type unsigned int;
-// 1AD059498: using guessed type unsigned int;
-// 1AD0594A0: using guessed type unsigned int;
-
 //----- (0000000140122CA0) ----------------------------------------------------
 double            sub_140122CA0(float a1, float *a2, __int64 a3)
 {
-  __int64 v5; // rdx
-  unsigned int v6; // xmm0_4
-  unsigned int v7; // xmm2_4
-  float v8; // xmm1_4
-  float v9; // xmm0_4
-  float v10; // xmm2_4
-  float v11; // xmm6_4
-  unsigned int v12; // xmm0_4
-  unsigned int v13; // xmm2_4
-  unsigned int v14; // xmm0_4
-  unsigned int v15; // xmm2_4
-  unsigned int v16; // xmm1_4
-  unsigned int v17; // xmm0_4
-  unsigned int v18; // xmm6_4
-  __int64 v19; // r8
-  __int64 v20; // rcx
+  __int64 v5;
+  unsigned int v6;
+  unsigned int v7;
+  float v8;
+  float v9;
+  float v10;
+  float v11;
+  unsigned int v12;
+  unsigned int v13;
+  unsigned int v14;
+  unsigned int v15;
+  unsigned int v16;
+  unsigned int v17;
+  unsigned int v18;
+  __int64 v19;
+  __int64 v20;
 
   LOBYTE(a3) = 1;
   (*(void (**)(unsigned char,unsigned char,unsigned char,unsigned char))&dword_140404A6C[18215097])(1,1,1,0);
@@ -14824,7 +13577,7 @@ double            sub_140122CA0(float a1, float *a2, __int64 a3)
   qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830721] + 284024944]);
   dword_140404A6C[456217207] = 0;
   dword_140404A6C[456217208] = 6;
-  v5 = dword_140404A6C[2 * dword_140404A6C[283791478] + 283793813];
+  v5 = dword_140404A6C[2 * effect_mesh_buffer + 283793813];
   *(float *)&v6 = (float)((float)(a1 * a2[5]) - a2[2]) - a2[8];
   *(float *)&v7 = (float)((float)(a1 * a2[3]) - *a2) - a2[6];
   *(float *)&dword_140404A6C[456217213] = (float)((float)(a1 * a2[4]) - a2[1]) - a2[7];
@@ -14880,300 +13633,114 @@ double            sub_140122CA0(float a1, float *a2, __int64 a3)
   return (*(double (           **)(__int64))&dword_140404A6C[18215101])(3042);
 }
 
-// 140123063: variable 'v19' is possibly undefined
-// 14012313C: variable 'v20' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D40: using guessed type __int128 xmmword_140278D40;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278DA0: using guessed type __int128 xmmword_140278DA0;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140278EB0: using guessed type __int128 xmmword_140278EB0;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279730: using guessed type __int128 xmmword_140279730;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E580: using guessed type unsigned int;
-// 1A724E590: using guessed type unsigned int;
-// 1A724E5A0: using guessed type unsigned int;
-// 1A724E5B0: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD059450: using guessed type unsigned int;
-// 1AD059454: using guessed type unsigned int;
-// 1AD05945C: using guessed type unsigned int;
-// 1AD059464: using guessed type unsigned int;
-// 1AD059468: using guessed type unsigned int;
-// 1AD05946C: using guessed type unsigned int;
-// 1AD059474: using guessed type unsigned int;
-// 1AD05947C: using guessed type unsigned int;
-// 1AD059480: using guessed type unsigned int;
-// 1AD059488: using guessed type unsigned int;
-// 1AD05948C: using guessed type unsigned int;
-// 1AD059494: using guessed type unsigned int;
-// 1AD059498: using guessed type unsigned int;
-// 1AD0594A0: using guessed type unsigned int;
-// 1AD0594A4: using guessed type unsigned int;
-// 1AD0594A8: using guessed type unsigned int;
-// 1AD0594AC: using guessed type unsigned int;
-
 //----- (0000000140123190)
-
-
-// 140123063: variable 'v19' is possibly undefined
-// 14012313C: variable 'v20' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D40: using guessed type __int128 xmmword_140278D40;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278DA0: using guessed type __int128 xmmword_140278DA0;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140278EB0: using guessed type __int128 xmmword_140278EB0;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279730: using guessed type __int128 xmmword_140279730;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E580: using guessed type unsigned int;
-// 1A724E590: using guessed type unsigned int;
-// 1A724E5A0: using guessed type unsigned int;
-// 1A724E5B0: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD059450: using guessed type unsigned int;
-// 1AD059454: using guessed type unsigned int;
-// 1AD05945C: using guessed type unsigned int;
-// 1AD059464: using guessed type unsigned int;
-// 1AD059468: using guessed type unsigned int;
-// 1AD05946C: using guessed type unsigned int;
-// 1AD059474: using guessed type unsigned int;
-// 1AD05947C: using guessed type unsigned int;
-// 1AD059480: using guessed type unsigned int;
-// 1AD059488: using guessed type unsigned int;
-// 1AD05948C: using guessed type unsigned int;
-// 1AD059494: using guessed type unsigned int;
-// 1AD059498: using guessed type unsigned int;
-// 1AD0594A0: using guessed type unsigned int;
-// 1AD0594A4: using guessed type unsigned int;
-// 1AD0594A8: using guessed type unsigned int;
-// 1AD0594AC: using guessed type unsigned int;
-
-
-
-// 140123063: variable 'v19' is possibly undefined
-// 14012313C: variable 'v20' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D40: using guessed type __int128 xmmword_140278D40;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278DA0: using guessed type __int128 xmmword_140278DA0;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140278EB0: using guessed type __int128 xmmword_140278EB0;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279730: using guessed type __int128 xmmword_140279730;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E580: using guessed type unsigned int;
-// 1A724E590: using guessed type unsigned int;
-// 1A724E5A0: using guessed type unsigned int;
-// 1A724E5B0: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD059450: using guessed type unsigned int;
-// 1AD059454: using guessed type unsigned int;
-// 1AD05945C: using guessed type unsigned int;
-// 1AD059464: using guessed type unsigned int;
-// 1AD059468: using guessed type unsigned int;
-// 1AD05946C: using guessed type unsigned int;
-// 1AD059474: using guessed type unsigned int;
-// 1AD05947C: using guessed type unsigned int;
-// 1AD059480: using guessed type unsigned int;
-// 1AD059488: using guessed type unsigned int;
-// 1AD05948C: using guessed type unsigned int;
-// 1AD059494: using guessed type unsigned int;
-// 1AD059498: using guessed type unsigned int;
-// 1AD0594A0: using guessed type unsigned int;
-// 1AD0594A4: using guessed type unsigned int;
-// 1AD0594A8: using guessed type unsigned int;
-// 1AD0594AC: using guessed type unsigned int;
 
 __int64 sub_140123190()
 {
-  __int64 v0; // rdx
-  __int64 v1; // rcx
-  __int64 v2; // r8
-  __int64 v3; // r9
-  __int64 v4; // rdx
-  __int64 v5; // r8
-  __int64 v6; // r8
-  __int64 v7; // r8
-  unsigned int *v8; // rdi
-  __int64 v9; // r14
-  unsigned int *v10; // rbx
-  unsigned int *v11; // rsi
-  __int64 v12; // r8
-  __int64 v13; // r8
-  __int64 v14; // r8
-  __int64 v15; // r8
-  int v16; // edi
-  int *v17; // rbx
-  __int64 v18; // r8
-  int v19; // esi
-  unsigned int *v20; // rdi
-  unsigned int v21; // eax
-  __int64 v22; // r14
-  __int64 v23; // rbx
-  __int64 v24; // r8
-  __int64 v25; // r8
-  __int64 v26; // rbx
-  __int64 v27; // r8
-  __int64 v28; // r8
-  float *v29; // rsi
-  float *v30; // rax
-  float *v31; // r8
-  signed __int64 v32; // rcx
-  __int64 v33; // r10
-  float v34; // xmm3_4
-  __int64 v35; // rdx
-  float v36; // xmm4_4
-  float v37; // xmm5_4
-  float v38; // xmm6_4
-  float *v39; // r14
-  float *v40; // rax
-  __int64 v41; // r11
-  float *v42; // r8
-  signed __int64 v43; // rcx
-  float v44; // xmm3_4
-  __int64 v45; // rdx
-  float v46; // xmm4_4
-  float v47; // xmm5_4
-  float v48; // xmm6_4
-  __int64 v49; // rdx
-  __int64 v50; // r8
-  __int64 v51; // rdx
-  __int64 v52; // rcx
-  __int64 v53; // r8
-  __int64 v54; // r9
-  __int64 v55; // rcx
-  __int64 v56; // rdx
-  float *v57; // rax
-  signed __int64 v58; // rdi
-  __int64 v59; // r8
-  float v60; // xmm3_4
-  __int64 v61; // rcx
-  float v62; // xmm4_4
-  float v63; // xmm5_4
-  float v64; // xmm6_4
-  float *v65; // rax
-  float *v66; // r8
-  signed __int64 v67; // rcx
-  __int64 v68; // r10
-  float v69; // xmm3_4
-  __int64 v70; // rdx
-  float v71; // xmm4_4
-  float v72; // xmm5_4
-  float v73; // xmm6_4
-  float *v74; // rax
-  __int64 v75; // r8
-  signed __int64 v76; // rbx
-  float v77; // xmm3_4
-  __int64 v78; // rcx
-  float v79; // xmm4_4
-  float v80; // xmm5_4
-  float v81; // xmm6_4
-  __int64 v82; // rdx
-  __int64 v83; // rcx
-  __int64 v84; // r8
-  __int64 v85; // rdx
-  __int64 v86; // rcx
-  __int64 v87; // r8
-  __int64 v88; // rdx
-  __int64 v89; // rcx
-  __int64 v90; // r8
-  __int64 v91; // rdx
-  __int64 v92; // rcx
-  __int64 v93; // r8
-  __int64 v94; // rdx
-  __int64 v95; // rcx
-  __int64 v96; // r8
-  __int64 v97; // r8
-  __int64 v98; // rcx
-  __int64 v100; // [rsp+8h] [rbp-69h] BYREF
-  __int64 v101; // [rsp+28h] [rbp-49h]
-  __int64 v102; // [rsp+30h] [rbp-41h]
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  unsigned int *v8;
+  __int64 v9;
+  unsigned int *v10;
+  unsigned int *v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  int v16;
+  int *v17;
+  __int64 v18;
+  int v19;
+  unsigned int *v20;
+  unsigned int v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  float *v29;
+  float *v30;
+  float *v31;
+  signed __int64 v32;
+  __int64 v33;
+  float v34;
+  __int64 v35;
+  float v36;
+  float v37;
+  float v38;
+  float *v39;
+  float *v40;
+  __int64 v41;
+  float *v42;
+  signed __int64 v43;
+  float v44;
+  __int64 v45;
+  float v46;
+  float v47;
+  float v48;
+  __int64 v49;
+  __int64 v50;
+  __int64 v51;
+  __int64 v52;
+  __int64 v53;
+  __int64 v54;
+  __int64 v55;
+  __int64 v56;
+  float *v57;
+  signed __int64 v58;
+  __int64 v59;
+  float v60;
+  __int64 v61;
+  float v62;
+  float v63;
+  float v64;
+  float *v65;
+  float *v66;
+  signed __int64 v67;
+  __int64 v68;
+  float v69;
+  __int64 v70;
+  float v71;
+  float v72;
+  float v73;
+  float *v74;
+  __int64 v75;
+  signed __int64 v76;
+  float v77;
+  __int64 v78;
+  float v79;
+  float v80;
+  float v81;
+  __int64 v82;
+  __int64 v83;
+  __int64 v84;
+  __int64 v85;
+  __int64 v86;
+  __int64 v87;
+  __int64 v88;
+  __int64 v89;
+  __int64 v90;
+  __int64 v91;
+  __int64 v92;
+  __int64 v93;
+  __int64 v94;
+  __int64 v95;
+  __int64 v96;
+  __int64 v97;
+  __int64 v98;
+  __int64 v100;
+  __int64 v101;
+  __int64 v102;
   _Alignas(16) unsigned sr_stencil_pass_matrix[16];
-  __int64 v107; // [rsp+78h] [rbp+7h]
+  __int64 v107;
 
   unk_140404718(36160, 36064, 3553, dword_140404A6C[44 * dword_140404A6C[283829866] + 284024944], 0);
   (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0x1.0000000000000p+0f,0x1.0000000000000p+0f,0x1.0000000000000p+0f,0.0f);
@@ -15243,7 +13810,7 @@ __int64 sub_140123190()
   qword_140404308(dword_140404A6C[71738025], 0);
   sub_140124AF0(1, 0);
   v19 = 0;
-  if ( (int)dword_140404A6C[431564581] > 0 )
+  if ( (int)world_particle_count > 0 )
   {
     v20 = &dword_140404A6C[431138501];
     do
@@ -15254,7 +13821,7 @@ __int64 sub_140123190()
         v22 = 26LL * v19;
         if ( !*v20 )
         {
-          v23 = (int)dword_140404A6C[283827574];
+          v23 = (int)world_particle_mesh_0;
           sub_14007B990(&dword_140404A6C[v22 + 431138504], &dword_140404A6C[v22 + 431138510]);
           qword_140404378(dword_140404A6C[71737990], 1, 0, &dword_140404A6C[431564565]);
           qword_140404238(0);
@@ -15283,7 +13850,7 @@ __int64 sub_140123190()
         }
         if ( v21 == 1 )
         {
-          v26 = (int)dword_140404A6C[283827769];
+          v26 = (int)world_particle_mesh_1;
           sub_14007B990(&dword_140404A6C[v22 + 431138504], &dword_140404A6C[v22 + 431138510]);
           qword_140404378(dword_140404A6C[71737990], 1, 0, &dword_140404A6C[431564565]);
           qword_140404238(0);
@@ -15313,7 +13880,7 @@ __int64 sub_140123190()
       ++v19;
       v20 += 26;
     }
-    while ( v19 < (int)dword_140404A6C[431564581] );
+    while ( v19 < (int)world_particle_count );
   }
   v29 = (float *)&dword_140404A6C[431564518];
   *(_OWORD *)&dword_140404A6C[431564517] = xmmword_140278D30;
@@ -15384,7 +13951,7 @@ __int64 sub_140123190()
   qword_140404378(dword_140404A6C[71737990], 1, 0, &dword_140404A6C[431564565]);
   sub_1401259B0(1, v49, v50);
   qword_1404042E0(0);
-  unk_140404718(36160, 36064, 3553, dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944], 0);
+  unk_140404718(36160, 36064, 3553, dword_140404A6C[44 * shading_texture + 284024944], 0);
   (*(void (**)(float,float,float,float))&dword_140404A6C[18215089])(0.0f,0.0f,0.0f,0.0f);
   (*(void (           **)(__int64))&dword_140404A6C[18215087])(0x4000);
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(3553);
@@ -15519,7 +14086,7 @@ __int64 sub_140123190()
   *(_OWORD *)&dword_140404A6C[431564569] = (*(__int128 *)(void *)(sr_stencil_pass_matrix+4));
   *(_OWORD *)&dword_140404A6C[431564573] = (*(__int128 *)(void *)(sr_stencil_pass_matrix+8));
   *(_OWORD *)&dword_140404A6C[431564577] = (*(__int128 *)(void *)(sr_stencil_pass_matrix+12));
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   *(_OWORD *)&dword_140404A6C[456807033] = xmmword_1402796E0;
   dword_140404A6C[456217205] = 1;
   dword_140404A6C[456217207] = 0;
@@ -15545,7 +14112,7 @@ __int64 sub_140123190()
 //----- (0000000140123F80) ----------------------------------------------------
 __int64            sub_140123F80(int a1)
 {
-  int i; // ebx
+  int i;
   float sr_terrain_light[3]; // native rsp+20h..28h vec3 upload
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140123F80[64];
@@ -15571,7 +14138,7 @@ __int64            sub_140123F80(int a1)
     unk_140404098(33986);
     qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830717] + 284024944]);
     unk_140404098(33988);
-    qword_140404050(3553, dword_140404A6C[451221642]);
+    qword_140404050(3553, renderer_white_texture);
   }
   unk_140404098(33987);
   qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283830718] + 284024944]);
@@ -15586,19 +14153,9 @@ __int64            sub_140123F80(int a1)
   }
   (*(void (           **)(__int64))&dword_140404A6C[18215101])(32823);
   return 0; /* the function has no caller */
-}
+}
 #undef v4
 #undef v8
-
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
 
 //----- (00000001401241B0) ----------------------------------------------------
 double            sub_1401241B0(int a1)
@@ -15628,38 +14185,27 @@ double            sub_1401241B0(int a1)
   return (*(double (           **)(__int64))&dword_140404A6C[18215101])(32823);
 }
 
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404018: using guessed type __int64 (*)(void);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-
 //----- (0000000140124320) ----------------------------------------------------
 __int64 sub_140124320()
 {
-  int v1; // edi
-  __int64 v2; // rbx
-  void *v3; // rcx
-  __int64 v4; // rcx
-  __int64 v5; // rdx
-  __int64 v6; // rcx
-  __int64 v7; // r8
-  __int64 v8; // r9
-  __int64 v9; // r8
-  __int64 v10; // r8
-  __int64 v11; // r8
-  __int64 v12; // r8
-  unsigned int *v13; // rbx
-  __int64 v14; // r14
-  unsigned int *v15; // rsi
-  unsigned int *v16; // rdi
-  unsigned int *v17; // rbp
-  __int64 v18; // r8
+  int v1;
+  __int64 v2;
+  void *v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned int *v13;
+  __int64 v14;
+  unsigned int *v15;
+  unsigned int *v16;
+  unsigned int *v17;
+  __int64 v18;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140124320[128];
 #define v19 (*(_DWORD (*)[10])(void *)(sr_frame_140124320 + 0)) /* [rsp+0h] */
@@ -15742,8 +14288,8 @@ __int64 sub_140124320()
       {
         if ( (int)*v13 > 0 )
         {
-          qword_1404042E0(dword_140404A6C[451221605]);
-          qword_140404378(dword_140404A6C[451221610], 1, 0, &dword_140404A6C[431564565]);
+          qword_1404042E0(renderer_ui_program);
+          qword_140404378(renderer_ui_matrix_uniform, 1, 0, &dword_140404A6C[431564565]);
           unk_140404098(33984);
           qword_140404050(3553, dword_140404A6C[44 * *v15 + 284024944]);
           unk_140404808(4, v16, 5125, v17, *v13, v16 + 25165824);
@@ -15775,7 +14321,7 @@ __int64 sub_140124320()
       COERCE_FLOAT(LODWORD(v22)));
     return 0; /* reset caller ignores native EAX */
   }
-}
+}
 #undef v19
 #undef v20
 #undef v21
@@ -15784,54 +14330,14 @@ __int64 sub_140124320()
 #undef v24
 #undef v25
 
-// 1401244A4: variable 'v4' is possibly undefined
-// 1401244F4: variable 'v6' is possibly undefined
-// 1401244F4: variable 'v5' is possibly undefined
-// 1401244F4: variable 'v7' is possibly undefined
-// 1401244F4: variable 'v8' is possibly undefined
-// 140124513: variable 'v9' is possibly undefined
-// 14012461B: variable 'v10' is possibly undefined
-// 140124635: variable 'v11' is possibly undefined
-// 140124776: variable 'v12' is possibly undefined
-// 140124783: variable 'v18' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404038: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _QWORD, _DWORD, _DWORD, _QWORD, _DWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404468: using guessed type double (__fastcall *unk_140404468)(_QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404808: using guessed type __int64 (__fastcall *unk_140404808)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _QWORD);
-// 140404A60: using guessed type __int64 (__fastcall *unk_140404A60)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CC0: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D40: using guessed type __int64 (*)(void);
-// 144980D50: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 18399EB64: using guessed type unsigned int;
-// 18399EB68: using guessed type unsigned int;
-// 18399EB6C: using guessed type unsigned int;
-// 183EBF11C: using guessed type unsigned int;
-
 //----- (0000000140124840) ----------------------------------------------------
 double            sub_140124840(int a1, unsigned int *a2, _DWORD *a3, int a4, int *a5, __int64 a6)
 {
-  __int64 v8; // r15
-  __int64 v10; // rcx
-  __int64 v11; // r8
-  __int64 v12; // r8
-  double result; // xmm0_8
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  double result;
 
   v8 = a1;
   if ( a4 )
@@ -15854,7 +14360,7 @@ double            sub_140124840(int a1, unsigned int *a2, _DWORD *a3, int a4, in
     unk_140404098(33984);
     qword_140404050(3553, dword_140404A6C[44 * *a5 + 284024944]);
     unk_140404098(33986);
-    qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+    qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
     sub_14007B990(a2, a3);
     qword_140404378(dword_140404A6C[71737874], 1, 0, &dword_140404A6C[431564565]);
     qword_140404238(0);
@@ -15890,43 +14396,22 @@ double            sub_140124840(int a1, unsigned int *a2, _DWORD *a3, int a4, in
   return result;
 }
 
-// 140124980: variable 'v11' is possibly undefined
-// 140124A40: variable 'v12' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404470: using guessed type __int64 (__fastcall *unk_140404470)(_QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
 //----- (0000000140124AF0) ----------------------------------------------------
 double            sub_140124AF0(int a1, int a2)
 {
-  int v2; // edi
-  signed int v4; // ecx
-  signed int v5; // r12d
-  unsigned int v6; // ebp
-  unsigned int *v7; // r13
-  __int64 v8; // rsi
-  __int64 v9; // r14
-  __int64 v10; // rcx
-  unsigned int *v11; // r9
-  __int64 v12; // r8
-  __int64 v13; // r8
-  double result; // xmm0_8
-  int v15; // [rsp+80h] [rbp+18h]
+  int v2;
+  signed int v4;
+  signed int v5;
+  unsigned int v6;
+  unsigned int *v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  unsigned int *v11;
+  __int64 v12;
+  __int64 v13;
+  double result;
+  int v15;
 
   v2 = a2;
   if ( !dword_140404A6C[179668287] )
@@ -15940,9 +14425,9 @@ double            sub_140124AF0(int a1, int a2)
       if ( !a1 )
       {
         unk_140404098(33985);
-        qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944]);
+        qword_140404050(3553, dword_140404A6C[44 * shading_texture + 284024944]);
         unk_140404098(33986);
-        qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+        qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
       }
     }
     v4 = dword_140404A6C[284550610];
@@ -16045,43 +14530,18 @@ LABEL_22:
   return result;
 }
 
-// 140124DB4: variable 'v12' is possibly undefined
-// 140124F46: variable 'v13' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 140404308: using guessed type __int64 (__fastcall *qword_140404308)(_QWORD, _QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404370: using guessed type __int64 (__fastcall *unk_140404370)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404470: using guessed type __int64 (__fastcall *unk_140404470)(_QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 18417E1B4: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
 //----- (0000000140124FE0) ----------------------------------------------------
 __int64            sub_140124FE0(int a1, int a2, unsigned int *a3, __int64 a4)
 {
-  __int64 v4; // rdi
-  __int64 v5; // rbx
-  float v6; // xmm5_4
-  float v7; // xmm1_4
-  float v8; // xmm3_4
-  float v9; // xmm6_4
-  __int64 v10; // r8
-  __int64 v11; // r8
-  __int64 v12; // r8
+  __int64 v4;
+  __int64 v5;
+  float v6;
+  float v7;
+  float v8;
+  float v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140124FE0[80];
 #define v14 (*(_DWORD (*)[10])(void *)(sr_frame_140124FE0 + 0)) /* [rsp+0h] */
@@ -16126,46 +14586,23 @@ __int64            sub_140124FE0(int a1, int a2, unsigned int *a3, __int64 a4)
   sub_14007A0E0(&dword_140404A6C[431564533], (__int64)&dword_140404A6C[431564517], (__int64)&dword_140404A6C[431564501]);
   sub_14007A0E0(&dword_140404A6C[431564565], (__int64)&dword_140404A6C[431564533], (__int64)&dword_140404A6C[431564485]);
   return 0; /* compatibility result discarded by all reviewed callers */
-}
+}
 #undef v14
 #undef v15
 #undef v16
 #undef v17
 
-// 14012514F: variable 'v10' is possibly undefined
-// 140125169: variable 'v11' is possibly undefined
-// 1401251DF: variable 'v12' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 1404042E8: using guessed type __int64 (__fastcall *unk_1404042E8)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
 //----- (0000000140125270) ----------------------------------------------------
 __int64            sub_140125270(int a1, unsigned int *a2, _DWORD *a3, __int64 a4, float a5)
 {
-  __int64 v5; // rbx
-  __int64 v6; // r8
-  __int64 v7; // r8
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
 
   v5 = a1;
   sub_14007B990(a2, a3);
   sub_14007B6F0(a5, a5, a5);
-  qword_140404378(dword_140404A6C[451221610], 1, 0, &dword_140404A6C[431564565]);
+  qword_140404378(renderer_ui_matrix_uniform, 1, 0, &dword_140404A6C[431564565]);
   qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[v5 + 283790166] + 283793813], v6);
   qword_140404238(0);
   ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[908*v5+178527462]),(const void *)(intptr_t)(0));
@@ -16183,57 +14620,39 @@ __int64            sub_140125270(int a1, unsigned int *a2, _DWORD *a3, __int64 a
            (__int64)&dword_140404A6C[431564485]);
 }
 
-// 1401252D1: variable 'v6' is possibly undefined
-// 140125337: variable 'v7' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
 //----- (00000001401253C0) ----------------------------------------------------
 double sub_1401253C0()
 {
-  __int64 v0; // rdx
-  __int64 v1; // rcx
-  __int64 v2; // r8
-  unsigned int *v3; // rbx
-  __int64 v4; // r14
-  int v5; // eax
-  int v6; // ebp
-  float v7; // xmm8_4
-  __int64 v8; // rdi
-  __int64 v9; // rsi
-  float v10; // xmm5_4
-  float v11; // xmm6_4
-  __int64 v12; // rdx
-  __int64 v13; // rax
-  float v14; // xmm7_4
-  float v15; // xmm1_4
-  float v16; // xmm2_4
-  float v17; // xmm3_4
-  float v18; // xmm0_4
-  float v19; // xmm7_4
-  float v20; // xmm0_4
-  float v21; // xmm1_4
-  float v22; // xmm2_4
-  float v23; // xmm3_4
-  float v24; // xmm0_4
-  __int64 v25; // rcx
-  unsigned int v27[4]; // [rsp+20h] [rbp-98h] BYREF
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  unsigned int *v3;
+  __int64 v4;
+  int v5;
+  int v6;
+  float v7;
+  __int64 v8;
+  __int64 v9;
+  float v10;
+  float v11;
+  __int64 v12;
+  __int64 v13;
+  float v14;
+  float v15;
+  float v16;
+  float v17;
+  float v18;
+  float v19;
+  float v20;
+  float v21;
+  float v22;
+  float v23;
+  float v24;
+  __int64 v25;
+  unsigned int v27[4];
 
   (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,1);
   v3 = &dword_140404A6C[278845942];
   v4 = 1024;
@@ -16302,30 +14721,15 @@ double sub_1401253C0()
   return (*(double (           **)(__int64))&dword_140404A6C[18215099])(v25);
 }
 
-// 140125612: variable 'v1' is possibly undefined
-// 140125612: variable 'v0' is possibly undefined
-// 140125612: variable 'v2' is possibly undefined
-// 140125666: variable 'v25' is possibly undefined
-// 140279300: using guessed type __int128 xmmword_140279300;
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1665C4A18: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-
 //----- (0000000140125670) ----------------------------------------------------
 __int64            sub_140125670(unsigned int *a1, float a2, int a3)
 {
-  __int64 v3; // rbx
-  __int64 v4; // rbx
-  __int64 v5; // r8
-  __int64 v6; // r8
-  __int64 v7; // r8
-  __int64 v8; // r8
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
 
   v3 = a3;
   *(_OWORD *)&dword_140404A6C[431564521] = xmmword_140278D80;
@@ -16341,7 +14745,7 @@ __int64            sub_140125670(unsigned int *a1, float a2, int a3)
   sub_14007A0E0(&dword_140404A6C[431564533], (__int64)&dword_140404A6C[431564517], (__int64)&dword_140404A6C[431564501]);
   sub_14007A0E0(&dword_140404A6C[431564565], (__int64)&dword_140404A6C[431564533], (__int64)&dword_140404A6C[431564485]);
   sub_14007B6F0(a2, a2, a2);
-  qword_140404378(dword_140404A6C[451221610], 1, 0, &dword_140404A6C[431564565]);
+  qword_140404378(renderer_ui_matrix_uniform, 1, 0, &dword_140404A6C[431564565]);
   v4 = 5 * v3;
   qword_140404170(34962, dword_140404A6C[2 * v4 + 159842277], v5);
   qword_140404170(34963, dword_140404A6C[2 * v4 + 159842278], v6);
@@ -16362,42 +14766,19 @@ __int64            sub_140125670(unsigned int *a1, float a2, int a3)
            (__int64)&dword_140404A6C[431564485]);
 }
 
-// 140125757: variable 'v5' is possibly undefined
-// 140125766: variable 'v6' is possibly undefined
-// 1401257C3: variable 'v7' is possibly undefined
-// 1401257D0: variable 'v8' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A724E634: using guessed type unsigned int;
-// 1A724E638: using guessed type unsigned int;
-
 //----- (0000000140125860) ----------------------------------------------------
 __int64            sub_140125860(unsigned int *a1, _DWORD *a2, float a3, int a4)
 {
-  __int64 v4; // rbx
-  __int64 v5; // r8
-  __int64 v6; // r8
-  __int64 v7; // r8
-  __int64 v8; // r8
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
 
   v4 = a4;
   sub_14007B990(a1, a2);
   sub_14007B6F0(a3, a3, a3);
-  qword_140404378(dword_140404A6C[451221610], 1, 0, &dword_140404A6C[431564565]);
+  qword_140404378(renderer_ui_matrix_uniform, 1, 0, &dword_140404A6C[431564565]);
   v4 *= 5;
   qword_140404170(34962, dword_140404A6C[2 * v4 + 159842277], v5);
   qword_140404170(34963, dword_140404A6C[2 * v4 + 159842278], v6);
@@ -16418,27 +14799,6 @@ __int64            sub_140125860(unsigned int *a1, _DWORD *a2, float a3, int a4)
            (__int64)&dword_140404A6C[431564485]);
 }
 
-// 1401258B2: variable 'v5' is possibly undefined
-// 1401258C1: variable 'v6' is possibly undefined
-// 14012591E: variable 'v7' is possibly undefined
-// 14012592B: variable 'v8' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
 //----- (00000001401259B0) ----------------------------------------------------
 void            sub_1401259B0(int a1, __int64 a2, __int64 a3)
 {
@@ -16451,750 +14811,41 @@ void            sub_1401259B0(int a1, __int64 a2, __int64 a3)
 }
 
 //----- (0000000140125DB0) ----------------------------------------------------
-double            sub_140125DB0(
-        __int64 a1,
-        __int64 a2,
-        __int64 a3,
-        __int64 a4,
-        int a5,
-        int a6,
-        int a7,
-        int a8,
-        int a9,
-        int a10,
-        int a11,
-        int a12,
-        int a13,
-        int a14,
-        int a15,
-        int a16,
-        int a17,
-        int a18,
-        int a19,
-        int a20,
-        int a21,
-        int a22,
-        int a23,
-        int a24,
-        int a25,
-        int a26,
-        int a27,
-        int a28,
-        int a29,
-        __int64 __return_address)
+void            sub_140125DB0(void)
 {
-  signed int v30; // r9d
-  float v31; // xmm6_4
-  int v32; // edi
-  int v33; // r10d
-  float v34; // xmm7_4
-  float v35; // xmm8_4
-  float v36; // xmm11_4
-  float v37; // xmm12_4
-  __int64 v38; // rdx
-  float v39; // xmm13_4
-  float *v40; // rcx
-  unsigned int v41; // eax
-  __int64 v42; // r8
-  float v43; // xmm3_4
-  float v44; // xmm4_4
-  float v45; // xmm0_4
-  float v46; // xmm1_4
-  float v47; // xmm2_4
-  float v48; // xmm2_4
-  float v49; // xmm0_4
-  float v50; // xmm2_4
-  float v51; // xmm1_4
-  int v52; // eax
-  float v53; // xmm2_4
-  int v54; // eax
-  float v55; // xmm2_4
-  unsigned int *v56; // r8
-  float *v57; // rcx
-  __int64 v58; // rdx
-  float v59; // xmm4_4
-  float v60; // xmm3_4
-  float v61; // xmm2_4
-  unsigned int v62; // r12d
-  __int64 v63; // rdx
-  __int64 v64; // rcx
-  __int64 v65; // r8
-  unsigned int *v66; // rsi
-  int v67; // r15d
-  unsigned int *v68; // r14
-  __int64 v69; // rbx
-  float v70; // xmm6_4
-  float v71; // xmm0_4
-  float v72; // xmm1_4
-  float v73; // xmm2_4
-  float v74; // xmm1_4
-  float v75; // xmm2_4
-  float v76; // xmm1_4
-  __int64 v77; // rdx
-  __int64 v78; // r8
-  float v79; // xmm2_4
-  float v80; // xmm1_4
-  __int64 v81; // rdx
-  __int64 v82; // r8
-  float v83; // xmm2_4
-  float v84; // xmm1_4
-  __int64 v85; // rdx
-  __int64 v86; // r8
-  bool v87; // zf
-  float v88; // xmm6_4
-  float v89; // xmm7_4
-  float v90; // xmm2_4
-  float v91; // xmm0_4
-  float v92; // xmm2_4
-  float v93; // xmm0_4
-  float v94; // xmm1_4
-  float v95; // xmm0_4
-  float v96; // xmm1_4
-  float v97; // xmm1_4
-  float v98; // xmm0_4
-  __int64 v99; // rdx
-  __int64 v100; // r8
-  float v101; // xmm1_4
-  float v102; // xmm2_4
-  float v103; // xmm6_4
-  float v104; // xmm2_4
-  float v105; // xmm0_4
-  __int64 v106; // rdx
-  __int64 v107; // r8
-  float v108; // xmm1_4
-  float v109; // xmm0_4
-  float v110; // xmm0_4
-  __int64 v111; // rdx
-  __int64 v112; // r8
-  unsigned int *v113; // r8
-  int v114; // eax
-  __int64 i; // r10
-  __int64 v116; // r9
-  __int64 v117; // rdx
-  unsigned int v118; // ecx
-  float v119; // xmm3_4
-  float v120; // xmm4_4
-  float v121; // xmm5_4
-  float v122; // xmm2_4
-  float v123; // xmm12_4
-  float v124; // xmm11_4
-  float v125; // xmm1_4
-  __int64 v126; // rax
-  float v127; // xmm3_4
-  float v128; // xmm13_4
-  float v129; // xmm5_4
-  float v130; // xmm6_4
-  float v131; // xmm4_4
-  float v132; // xmm14_4
-  float v133; // xmm13_4
-  float v134; // xmm0_4
-  __int64 v135; // rcx
-  __int64 v136; // rcx
-  __int64 v137; // rcx
-  float v138; // xmm12_4
-  float v139; // xmm11_4
-  __int64 v140; // rcx
-  __int64 v141; // rcx
-  __int64 v142; // rcx
-  __int64 v143; // rcx
-  __int64 v144; // rcx
-  __int64 v145; // rcx
-  __int64 v146; // rcx
-  __int64 v147; // rcx
-  __int64 v148; // rdx
-  unsigned int v149; // xmm12_4
-  unsigned int v150; // xmm13_4
-  float v151; // xmm2_4
-  float v152; // xmm5_4
-  unsigned int v153; // xmm11_4
-  float v154; // xmm1_4
-  unsigned int v155; // xmm15_4
-  unsigned int v156; // xmm14_4
-  float v157; // xmm7_4
-  float v158; // xmm0_4
-  float v159; // xmm6_4
-  float v160; // xmm5_4
-  float v161; // xmm3_4
-  unsigned int v162; // xmm7_4
-  unsigned int v163; // xmm5_4
-  unsigned int v164; // xmm6_4
-  unsigned int v165; // xmm0_4
-  unsigned int v166; // xmm1_4
-  unsigned int v167; // xmm2_4
-  __int64 v168; // rax
-  __int64 v169; // rcx
-  __int64 v170; // rcx
-  unsigned int v171; // xmm0_4
-  __int64 v172; // rcx
-  __int64 v173; // rcx
-  __int64 v174; // rcx
-  __int64 v175; // rdx
-  __int64 v176; // r8
-  __int64 v177; // rcx
-  __int64 v178; // rbx
-  signed int v179; // eax
-  float v180; // xmm0_4
-  __int64 v181; // rdx
-  __int64 v182; // r8
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_140125DB0[288];
-#define v184 (*(float (*))(void *)(sr_frame_140125DB0 + 0)) /* [rsp+38h] */
-#define v185 (*(float (*))(void *)(sr_frame_140125DB0 + 4)) /* [rsp+3Ch] */
-#define v186 (*(float (*))(void *)(sr_frame_140125DB0 + 8)) /* [rsp+40h] */
-#define v187 (*(float (*))(void *)(sr_frame_140125DB0 + 12)) /* [rsp+44h] */
-#define v188 (*(float (*))(void *)(sr_frame_140125DB0 + 16)) /* [rsp+48h] */
-#define v189 (*(unsigned int (*))(void *)(sr_frame_140125DB0 + 264)) /* [rsp+140h] */
-#define v190 (*(unsigned int (*))(void *)(sr_frame_140125DB0 + 272)) /* [rsp+148h] */
-#define v191 (*(unsigned int (*))(void *)(sr_frame_140125DB0 + 280)) /* [rsp+150h] */
-
-  v30 = dword_140404A6C[433435845];
-  v31 = *(float *)&dword_140404A6C[284024513];
-  v32 = 0;
-  v33 = 0;
-  v34 = *(float *)&dword_140404A6C[284024512];
-  v35 = *(float *)&dword_140404A6C[284024511];
-  if ( (int)dword_140404A6C[433435845] < 4 )
-  {
-    if ( (int)dword_140404A6C[433435845] <= 0 )
-      goto LABEL_10;
-    v36 = *(float *)&dword_140404A6C[284024502];
-    v38 = 0;
-    v37 = *(float *)&dword_140404A6C[284024503];
-    v39 = *(float *)&dword_140404A6C[284024504];
-    goto LABEL_8;
-  }
-  v36 = *(float *)&dword_140404A6C[284024502];
-  v37 = *(float *)&dword_140404A6C[284024503];
-  v38 = 0;
-  v39 = *(float *)&dword_140404A6C[284024504];
-  v40 = (float *)&dword_140404A6C[432826954];
-  v41 = ((dword_140404A6C[433435845] - 4) >> 2) + 1;
-  v42 = v41;
-  v33 = 4 * v41;
-  do
-  {
-    v43 = v40[109];
-    v44 = v40[110];
-    v45 = v34 * v40[36];
-    v46 = v31 * v40[37];
-    v47 = v35 * v40[35];
-    dword_140404A6C[v38 + 437192782] = (int)(float)((float)((float)((float)((float)(v35 * *(v40 - 2))
-                                                                          + (float)(v34 * *(v40 - 1)))
-                                                                  + (float)(v31 * *v40))
-                                                          * 1024.0)
-                                                  + 16777216.0);
-    v48 = v47 + v45;
-    v49 = v34 * v40[73];
-    v50 = v48 + v46;
-    v51 = v31 * v40[74];
-    v52 = (int)(float)((float)(v50 * 1024.0) + 16777216.0);
-    v53 = v35 * v40[72];
-    dword_140404A6C[v38 + 437192783] = v52;
-    v186 = v43 - v36;
-    v187 = v44 - v37;
-    v54 = (int)(float)((float)((float)((float)(v53 + v49) + v51) * 1024.0) + 16777216.0);
-    v55 = v40[111];
-    v40 += 148;
-    dword_140404A6C[v38 + 437192784] = v54;
-    v188 = v55 - v39;
-    dword_140404A6C[v38 + 437192785] = (int)(float)((float)((float)((float)((float)(v44 * v34) + (float)(v43 * v35))
-                                                                  + (float)(v55 * v31))
-                                                          * 1024.0)
-                                                  + 16777216.0);
-    v38 += 4;
-    --v42;
-  }
-  while ( v42 );
-  if ( v33 < v30 )
-  {
-LABEL_8:
-    v56 = &dword_140404A6C[v38 + 437192782];
-    v57 = (float *)&dword_140404A6C[37 * v38 + 432826954];
-    v58 = (unsigned int)(v30 - v33);
-    do
-    {
-      v59 = *(v57 - 2);
-      v60 = *v57;
-      v61 = *(v57 - 1);
-      v57 += 37;
-      v186 = v59 - v36;
-      v187 = v61 - v37;
-      v188 = v60 - v39;
-      *v56++ = (int)(float)((float)((float)((float)((float)(v35 * v59) + (float)(v34 * v61)) + (float)(v31 * v60))
-                                  * 1024.0)
-                          + 16777216.0);
-      --v58;
-    }
-    while ( v58 );
-  }
-LABEL_10:
-  dword_140404A6C[436668493] = v30;
-  sub_14007D710();
-  (*(void (           **)(_QWORD))&dword_140404A6C[18215099])(0);
-  (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
-  (*(void (           **)(__int64))&dword_140404A6C[18215101])(2884);
-  v62 = 6;
-  dword_140404A6C[456217207] = 0;
-  dword_140404A6C[456217208] = 6;
-  qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283829876] + 284024944]);
-  v66 = &dword_140404A6C[436668494];
-  v67 = 0;
-  dword_140404A6C[456217205] = 1;
-  dword_140404A6C[456217207] = 0;
-  dword_140404A6C[456217208] = 9;
-  if ( (int)dword_140404A6C[433435845] > 0 )
-  {
-    v68 = &dword_140404A6C[436668494];
-    do
-    {
-      v69 = 37LL * (int)*v68;
-      if ( dword_140404A6C[v69 + 432826949] == 2 )
-      {
-        v70 = *(float *)&dword_140404A6C[v69 + 432826984];
-        v71 = (float)(int)dword_140404A6C[v69 + 432826950];
-        dword_140404A6C[456807033] = 1065353216;
-        dword_140404A6C[456807034] = 1065353216;
-        dword_140404A6C[456807035] = 1061158912;
-        dword_140404A6C[456807037] = 0;
-        dword_140404A6C[456807038] = 1065353216;
-        v72 = (float)(*(float *)&dword_140404A6C[284024505] * (float)-v70) + *(float *)&dword_140404A6C[v69 + 432826952];
-        v73 = (float)(*(float *)&dword_140404A6C[284024506] * (float)-v70) + *(float *)&dword_140404A6C[v69 + 432826953];
-        dword_140404A6C[456807036] = fminf(v71 * 0.03125, 1.0);
-        v186 = v72 + (float)(*(float *)&dword_140404A6C[284024508] * v70);
-        v74 = (float)(*(float *)&dword_140404A6C[284024507] * (float)-v70) + *(float *)&dword_140404A6C[v69 + 432826954];
-        v187 = v73 + (float)(*(float *)&dword_140404A6C[284024509] * v70);
-        v188 = v74 + (float)(*(float *)&dword_140404A6C[284024510] * v70);
-        sub_14007D520((unsigned int *)&v186, v63, v65);
-        dword_140404A6C[456807037] = 1065353216;
-        dword_140404A6C[456807038] = 1065353216;
-        v75 = (float)(*(float *)&dword_140404A6C[284024506] * v70) + *(float *)&dword_140404A6C[v69 + 432826953];
-        v186 = (float)((float)(*(float *)&dword_140404A6C[284024505] * v70) + *(float *)&dword_140404A6C[v69 + 432826952])
-             + (float)(*(float *)&dword_140404A6C[284024508] * v70);
-        v76 = (float)(*(float *)&dword_140404A6C[284024507] * v70) + *(float *)&dword_140404A6C[v69 + 432826954];
-        v187 = v75 + (float)(*(float *)&dword_140404A6C[284024509] * v70);
-        v188 = v76 + (float)(*(float *)&dword_140404A6C[284024510] * v70);
-        sub_14007D520((unsigned int *)&v186, v77, v78);
-        v79 = (float)(*(float *)&dword_140404A6C[284024506] * v70) + *(float *)&dword_140404A6C[v69 + 432826953];
-        v186 = (float)((float)(*(float *)&dword_140404A6C[284024505] * v70) + *(float *)&dword_140404A6C[v69 + 432826952])
-             + (float)(*(float *)&dword_140404A6C[284024508] * (float)-v70);
-        v80 = (float)(*(float *)&dword_140404A6C[284024507] * v70) + *(float *)&dword_140404A6C[v69 + 432826954];
-        v187 = v79 + (float)(*(float *)&dword_140404A6C[284024509] * (float)-v70);
-        v188 = v80 + (float)(*(float *)&dword_140404A6C[284024510] * (float)-v70);
-        *(_QWORD *)&dword_140404A6C[456807037] = 1065353216;
-        sub_14007D520((unsigned int *)&v186, v81, v82);
-        *(_QWORD *)&dword_140404A6C[456807037] = 0;
-        v83 = (float)(*(float *)&dword_140404A6C[284024506] * (float)-v70) + *(float *)&dword_140404A6C[v69 + 432826953];
-        v186 = (float)((float)(*(float *)&dword_140404A6C[284024505] * (float)-v70)
-                     + *(float *)&dword_140404A6C[v69 + 432826952])
-             + (float)(*(float *)&dword_140404A6C[284024508] * (float)-v70);
-        v84 = (float)(*(float *)&dword_140404A6C[284024507] * (float)-v70) + *(float *)&dword_140404A6C[v69 + 432826954];
-        v187 = v83 + (float)(*(float *)&dword_140404A6C[284024509] * (float)-v70);
-        v188 = v84 + (float)(*(float *)&dword_140404A6C[284024510] * (float)-v70);
-        sub_14007D520((unsigned int *)&v186, v85, v86);
-      }
-      v87 = dword_140404A6C[v69 + 432826949] == 1;
-      if ( dword_140404A6C[v69 + 432826949] <= 1 )
-      {
-        dword_140404A6C[456807036] = fminf((float)(int)dword_140404A6C[v69 + 432826950] * 0.03125, 1.0);
-        if ( v87 )
-        {
-          *(_QWORD *)&dword_140404A6C[456807034] = 0;
-          *(float *)&dword_140404A6C[456807033] = *(float *)&dword_140404A6C[284545205] * 0.25;
-        }
-        else
-        {
-          *(_QWORD *)&dword_140404A6C[456807033] = 0;
-          dword_140404A6C[456807035] = 0;
-        }
-        v88 = *(float *)&dword_140404A6C[v69 + 432826984];
-        dword_140404A6C[456807037] = 0;
-        v89 = -v88;
-        dword_140404A6C[456807038] = 1065353216;
-        v90 = (float)((float)-v88 * *(float *)&dword_140404A6C[v69 + 432826962])
-            + *(float *)&dword_140404A6C[v69 + 432826953];
-        v91 = v88 * *(float *)&dword_140404A6C[v69 + 432826965];
-        v186 = (float)((float)((float)-v88 * *(float *)&dword_140404A6C[v69 + 432826961])
-                     + *(float *)&dword_140404A6C[v69 + 432826952])
-             + (float)(v88 * *(float *)&dword_140404A6C[v69 + 432826964]);
-        v92 = v90 + v91;
-        v93 = v88 * *(float *)&dword_140404A6C[v69 + 432826966];
-        v94 = (float)((float)-v88 * *(float *)&dword_140404A6C[v69 + 432826963])
-            + *(float *)&dword_140404A6C[v69 + 432826954];
-        v187 = v92;
-        v188 = v94 + v93;
-        sub_14007D520((unsigned int *)&v186, v63, v65);
-        v95 = *(float *)&dword_140404A6C[v69 + 432826961] + *(float *)&dword_140404A6C[v69 + 432826964];
-        v96 = *(float *)&dword_140404A6C[v69 + 432826965] + *(float *)&dword_140404A6C[v69 + 432826962];
-        dword_140404A6C[456807037] = 1065353216;
-        dword_140404A6C[456807038] = 1065353216;
-        v97 = (float)(v96 * v88) + *(float *)&dword_140404A6C[v69 + 432826953];
-        v186 = (float)(v95 * v88) + *(float *)&dword_140404A6C[v69 + 432826952];
-        v98 = *(float *)&dword_140404A6C[v69 + 432826966] + *(float *)&dword_140404A6C[v69 + 432826963];
-        v187 = v97;
-        v188 = (float)(v98 * v88) + *(float *)&dword_140404A6C[v69 + 432826954];
-        sub_14007D520((unsigned int *)&v186, v99, v100);
-        *(_QWORD *)&dword_140404A6C[456807037] = 1065353216;
-        v101 = v88 * *(float *)&dword_140404A6C[v69 + 432826961];
-        v102 = v88 * *(float *)&dword_140404A6C[v69 + 432826962];
-        v103 = (float)(v88 * *(float *)&dword_140404A6C[v69 + 432826963]) + *(float *)&dword_140404A6C[v69 + 432826954];
-        v104 = (float)(v102 + *(float *)&dword_140404A6C[v69 + 432826953])
-             + (float)(v89 * *(float *)&dword_140404A6C[v69 + 432826965]);
-        v186 = (float)(v101 + *(float *)&dword_140404A6C[v69 + 432826952])
-             + (float)(v89 * *(float *)&dword_140404A6C[v69 + 432826964]);
-        v105 = v89 * *(float *)&dword_140404A6C[v69 + 432826966];
-        v187 = v104;
-        v188 = v103 + v105;
-        sub_14007D520((unsigned int *)&v186, v106, v107);
-        v108 = (float)((float)(*(float *)&dword_140404A6C[v69 + 432826965] + *(float *)&dword_140404A6C[v69 + 432826962])
-                     * v89)
-             + *(float *)&dword_140404A6C[v69 + 432826953];
-        v186 = (float)((float)(*(float *)&dword_140404A6C[v69 + 432826961] + *(float *)&dword_140404A6C[v69 + 432826964])
-                     * v89)
-             + *(float *)&dword_140404A6C[v69 + 432826952];
-        v109 = *(float *)&dword_140404A6C[v69 + 432826966];
-        v187 = v108;
-        v110 = v109 + *(float *)&dword_140404A6C[v69 + 432826963];
-        *(_QWORD *)&dword_140404A6C[456807037] = 0;
-        v188 = (float)(v110 * v89) + *(float *)&dword_140404A6C[v69 + 432826954];
-        sub_14007D520((unsigned int *)&v186, v111, v112);
-      }
-      ++v67;
-      ++v68;
-    }
-    while ( v67 < (int)dword_140404A6C[433435845] );
-  }
-  sub_14006E0D0(v64, v63, v65);
-  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(1,771);
-  qword_1404042E0(dword_140404A6C[71737805]);
-  qword_140404338(dword_140404A6C[71737811], 1, &dword_140404A6C[284024502]);
-  qword_140404338(dword_140404A6C[71737815], 1, &dword_140404A6C[284550403]);
-  qword_140404378(dword_140404A6C[71737819], 1, 0, &dword_140404A6C[431564565]);
-  qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[4 * dword_140404A6C[421784429] + 283827814] + 284024944]);
-  qword_140404338(dword_140404A6C[71737820], 1, &dword_140404A6C[284545205]);
-  qword_140404338(dword_140404A6C[71737821], 1, &dword_140404A6C[284545209]);
-  unk_140404098(33985);
-  qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
-  unk_140404098(33984);
-  v114 = 0;
-  dword_140404A6C[456217207] = 0;
-  dword_140404A6C[456217208] = 6;
-  if ( (int)dword_140404A6C[433435845] > 0 )
-  {
-    v113 = &dword_140404A6C[436668494];
-    for ( i = dword_140404A6C[433435845]; i; --i )
-    {
-      if ( v114 < 16376 )
-      {
-        v116 = (int)*v113;
-        v117 = 37 * v116;
-        v118 = dword_140404A6C[37 * v116 + 432826949];
-        if ( v118 == 3 )
-        {
-          v119 = *(float *)&dword_140404A6C[v117 + 432826967];
-          v120 = *(float *)&dword_140404A6C[v117 + 432826968];
-          v121 = *(float *)&dword_140404A6C[v117 + 432826969];
-          *(float *)&v191 = v119;
-          *(float *)&v190 = v120;
-          *(float *)&v189 = v121;
-          if ( (float)((float)((float)((float)(*(float *)&dword_140404A6C[v117 + 432826953]
-                                             - *(float *)&dword_140404A6C[284024503])
-                                     * v120)
-                             + (float)((float)(*(float *)&dword_140404A6C[v117 + 432826952]
-                                             - *(float *)&dword_140404A6C[284024502])
-                                     * v119))
-                     + (float)((float)(*(float *)&dword_140404A6C[v117 + 432826954]
-                                     - *(float *)&dword_140404A6C[284024504])
-                             * v121)) < 0.0 )
-          {
-            *(float *)&v191 = -v119;
-            *(float *)&v190 = -v120;
-            *(float *)&v189 = -v121;
-          }
-          v122 = *(float *)&dword_140404A6C[v117 + 432826984];
-          v123 = *(float *)&dword_140404A6C[v117 + 432826965];
-          v124 = *(float *)&dword_140404A6C[v117 + 432826966];
-          v125 = *(float *)&dword_140404A6C[v117 + 432826964] * v122;
-          v126 = (int)(v62 * v114);
-          v127 = v124 * v122;
-          v128 = *(float *)&dword_140404A6C[v117 + 432826963];
-          v184 = (float)(*(float *)&dword_140404A6C[v117 + 432826961] * (float)-v122)
-               + *(float *)&dword_140404A6C[v117 + 432826952];
-          v129 = (float)(*(float *)&dword_140404A6C[v117 + 432826962] * v122)
-               + *(float *)&dword_140404A6C[v117 + 432826953];
-          v130 = (float)(v128 * v122) + *(float *)&dword_140404A6C[v117 + 432826954];
-          v131 = (float)(*(float *)&dword_140404A6C[v117 + 432826961] * v122)
-               + *(float *)&dword_140404A6C[v117 + 432826952];
-          v185 = (float)(*(float *)&dword_140404A6C[v117 + 432826962] * (float)-v122)
-               + *(float *)&dword_140404A6C[v117 + 432826953];
-          v132 = *(float *)&dword_140404A6C[v117 + 432826964] * (float)-v122;
-          v133 = (float)(v128 * (float)-v122) + *(float *)&dword_140404A6C[v117 + 432826954];
-          v134 = v123 * v122;
-          *(float *)&dword_140404A6C[v126 + 456217209] = v125 + v184;
-          *(float *)&dword_140404A6C[v126 + 456217211] = (float)(v124 * v122) + v133;
-          *(float *)&dword_140404A6C[v126 + 456217210] = (float)(v123 * v122) + v185;
-          v135 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v135 + 456217212] = v191;
-          dword_140404A6C[v135 + 456217213] = v190;
-          dword_140404A6C[v135 + 456217214] = v189;
-          v136 = ++dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          *(float *)&dword_140404A6C[v136 + 456217209] = v131 + v125;
-          *(float *)&dword_140404A6C[v136 + 456217211] = v130 + (float)(v124 * v122);
-          *(float *)&dword_140404A6C[v136 + 456217210] = v129 + (float)(v123 * v122);
-          v137 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v137 + 456217212] = v191;
-          dword_140404A6C[v137 + 456217213] = v190;
-          dword_140404A6C[v137 + 456217214] = v189;
-          ++dword_140404A6C[456217207];
-          v138 = v123 * (float)-v122;
-          v139 = v124 * (float)-v122;
-          v140 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          *(float *)&dword_140404A6C[v140 + 456217209] = v132 + v131;
-          *(float *)&dword_140404A6C[v140 + 456217210] = v138 + v129;
-          *(float *)&dword_140404A6C[v140 + 456217211] = v139 + v130;
-          v141 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v141 + 456217212] = v191;
-          dword_140404A6C[v141 + 456217213] = v190;
-          dword_140404A6C[v141 + 456217214] = v189;
-          v142 = ++dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          *(float *)&dword_140404A6C[v142 + 456217209] = v125 + v184;
-          *(float *)&dword_140404A6C[v142 + 456217210] = v134 + v185;
-          *(float *)&dword_140404A6C[v142 + 456217211] = v127 + v133;
-          v143 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v143 + 456217212] = v191;
-          dword_140404A6C[v143 + 456217213] = v190;
-          dword_140404A6C[v143 + 456217214] = v189;
-          v144 = ++dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          *(float *)&dword_140404A6C[v144 + 456217211] = v139 + v130;
-          *(float *)&dword_140404A6C[v144 + 456217209] = v132 + v131;
-          *(float *)&dword_140404A6C[v144 + 456217210] = v138 + v129;
-          v145 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v145 + 456217212] = v191;
-          dword_140404A6C[v145 + 456217213] = v190;
-          dword_140404A6C[v145 + 456217214] = v189;
-          v146 = ++dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          *(float *)&dword_140404A6C[v146 + 456217209] = v132 + v184;
-          *(float *)&dword_140404A6C[v146 + 456217210] = v138 + v185;
-          *(float *)&dword_140404A6C[v146 + 456217211] = v139 + v133;
-          v147 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v147 + 456217212] = v191;
-          dword_140404A6C[v147 + 456217213] = v190;
-          dword_140404A6C[v147 + 456217214] = v189;
-LABEL_34:
-          v62 = dword_140404A6C[456217208];
-          v114 = ++dword_140404A6C[456217207];
-          goto LABEL_35;
-        }
-        if ( v118 == 4 )
-        {
-          v148 = 37 * v116;
-          v149 = dword_140404A6C[37 * v116 + 432826962];
-          v150 = dword_140404A6C[37 * v116 + 432826963];
-          v151 = *(float *)&dword_140404A6C[37 * v116 + 432826968] - *(float *)&v149;
-          v152 = *(float *)&dword_140404A6C[37 * v116 + 432826969] - *(float *)&v150;
-          v153 = dword_140404A6C[37 * v116 + 432826961];
-          v154 = *(float *)&dword_140404A6C[37 * v116 + 432826966] - *(float *)&v150;
-          v155 = dword_140404A6C[37 * v116 + 432826965];
-          v156 = dword_140404A6C[37 * v116 + 432826964];
-          v157 = (float)(v151 * v154) - (float)(v152 * (float)(*(float *)&v155 - *(float *)&v149));
-          v158 = *(float *)&dword_140404A6C[37 * v116 + 432826967] - *(float *)&v153;
-          v159 = (float)(v158 * (float)(*(float *)&v155 - *(float *)&v149))
-               - (float)(v151 * (float)(*(float *)&v156 - *(float *)&v153));
-          v160 = (float)(v152 * (float)(*(float *)&v156 - *(float *)&v153)) - (float)(v158 * v154);
-          v161 = fsqrt((float)((float)(v157 * v157) + (float)(v160 * v160)) + (float)(v159 * v159));
-          if ( v161 == 0.0 )
-          {
-            *(float *)&v162 = 0.0;
-            *(float *)&v163 = 0.0;
-            *(float *)&v164 = 0.0;
-          }
-          else
-          {
-            *(float *)&v162 = v157 * (float)(1.0 / v161);
-            *(float *)&v163 = v160 * (float)(1.0 / v161);
-            *(float *)&v164 = v159 * (float)(1.0 / v161);
-          }
-          if ( (float)((float)((float)((float)(*(float *)&v149 - *(float *)&dword_140404A6C[284024503]) * *(float *)&v163)
-                             + (float)((float)(*(float *)&v153 - *(float *)&dword_140404A6C[284024502]) * *(float *)&v162))
-                     + (float)((float)(*(float *)&v150 - *(float *)&dword_140404A6C[284024504]) * *(float *)&v164)) < 0.0 )
-          {
-            *(float *)&v162 = -*(float *)&v162;
-            *(float *)&v163 = -*(float *)&v163;
-            *(float *)&v164 = -*(float *)&v164;
-          }
-          v165 = dword_140404A6C[v148 + 432826966];
-          v166 = dword_140404A6C[v148 + 432826968];
-          v167 = dword_140404A6C[v148 + 432826969];
-          v168 = (int)(v62 * v114);
-          dword_140404A6C[v168 + 456217209] = v153;
-          dword_140404A6C[v168 + 456217210] = v149;
-          dword_140404A6C[v168 + 456217211] = v150;
-          v169 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v169 + 456217212] = v162;
-          dword_140404A6C[v169 + 456217213] = v163;
-          dword_140404A6C[v169 + 456217214] = v164;
-          v170 = ++dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v170 + 456217211] = v165;
-          v171 = dword_140404A6C[v148 + 432826967];
-          dword_140404A6C[v170 + 456217209] = v156;
-          dword_140404A6C[v170 + 456217210] = v155;
-          v172 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v172 + 456217212] = v162;
-          dword_140404A6C[v172 + 456217213] = v163;
-          dword_140404A6C[v172 + 456217214] = v164;
-          v173 = ++dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v173 + 456217209] = v171;
-          dword_140404A6C[v173 + 456217210] = v166;
-          dword_140404A6C[v173 + 456217211] = v167;
-          v174 = dword_140404A6C[456217207] * dword_140404A6C[456217208];
-          dword_140404A6C[v174 + 456217212] = v162;
-          dword_140404A6C[v174 + 456217213] = v163;
-          dword_140404A6C[v174 + 456217214] = v164;
-          goto LABEL_34;
-        }
-      }
-LABEL_35:
-      ++v113;
-    }
-  }
-  qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791478] + 283793813], v113);
-  qword_140404198(34962, 0, 4 * dword_140404A6C[456217207] * dword_140404A6C[456217208], &dword_140404A6C[456217209]);
-  ((void (*)(unsigned,float,float))unk_1404043C8)(1,0.5f,0.5f);
-  qword_140404238(0);
-  qword_140404238(2);
-  ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[456217208]),(const void *)(intptr_t)(0));
-  ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(2, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[456217208]),(const void *)(intptr_t)(12));
-  qword_140302FF8(4, 0, dword_140404A6C[456217207]);
-  qword_140404230(0);
-  qword_140404230(2);
-  (*(void (**)(unsigned,unsigned))&dword_140404A6C[18215109])(770,771);
-  qword_140404050(3553, dword_140404A6C[451221642]);
-  (*(void (           **)(__int64))&dword_140404A6C[18215103])(2848);
-  v177 = dword_140404A6C[433435845];
-  dword_140404A6C[456217205] = 2;
-  dword_140404A6C[456217207] = 0;
-  dword_140404A6C[456217208] = 9;
-  if ( (int)dword_140404A6C[433435845] > 0 )
-  {
-    do
-    {
-      v178 = 37LL * (int)*v66;
-      if ( dword_140404A6C[v178 + 432826949] == 5 )
-      {
-        v179 = dword_140404A6C[v178 + 432826950] - 1;
-        dword_140404A6C[456807033] = 1065353216;
-        dword_140404A6C[456807034] = 1065353216;
-        dword_140404A6C[456807035] = 1065353216;
-        dword_140404A6C[456807036] = fmaxf(fminf((float)v179 * 0.5, 1.0) * 0.5, 0.0);
-        sub_14007D520(&dword_140404A6C[v178 + 432826955], v175, v176);
-        v180 = (float)(int)dword_140404A6C[v178 + 432826950];
-        dword_140404A6C[456807033] = 1065353216;
-        dword_140404A6C[456807034] = 1065353216;
-        dword_140404A6C[456807035] = 1065353216;
-        *(float *)&dword_140404A6C[456807036] = fminf(v180 * 0.5, 1.0) * 0.5;
-        sub_14007D520(&dword_140404A6C[v178 + 432826952], v181, v182);
-        v177 = dword_140404A6C[433435845];
-      }
-      ++v32;
-      ++v66;
-    }
-    while ( v32 < (int)v177 );
-  }
-  sub_14006E0D0(v177, v175, v176);
-  return (*(double (           **)(__int64))&dword_140404A6C[18215101])(2848);
-}
-#undef v184
-#undef v185
-#undef v186
-#undef v187
-#undef v188
-#undef v189
-#undef v190
-#undef v191
-
-// 140126260: variable 'v63' is possibly undefined
-// 140126260: variable 'v65' is possibly undefined
-// 140126302: variable 'v77' is possibly undefined
-// 140126302: variable 'v78' is possibly undefined
-// 14012639B: variable 'v81' is possibly undefined
-// 14012639B: variable 'v82' is possibly undefined
-// 140126430: variable 'v85' is possibly undefined
-// 140126430: variable 'v86' is possibly undefined
-// 1401265D6: variable 'v99' is possibly undefined
-// 1401265D6: variable 'v100' is possibly undefined
-// 140126672: variable 'v106' is possibly undefined
-// 140126672: variable 'v107' is possibly undefined
-// 1401266FB: variable 'v111' is possibly undefined
-// 1401266FB: variable 'v112' is possibly undefined
-// 14012671C: variable 'v64' is possibly undefined
-// 140126FB9: variable 'v113' is possibly undefined
-// 140127181: variable 'v175' is possibly undefined
-// 140127181: variable 'v176' is possibly undefined
-// 1401271D0: variable 'v181' is possibly undefined
-// 1401271D0: variable 'v182' is possibly undefined
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404043C8: using guessed type __int64 (__fastcall *unk_1404043C8)(_QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 183F7C544: using guessed type unsigned int;
-// 183F7C548: using guessed type unsigned int;
-// 183F7C54C: using guessed type unsigned int;
-// 183F7C568: using guessed type unsigned int;
-// 183F7C56C: using guessed type unsigned int;
-// 183F7C570: using guessed type unsigned int;
-// 1A7971D80: using guessed type unsigned int;
-// 1A85C6BA0: using guessed type unsigned int;
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
+  /* Clean implementation: src/engine/world_effects_draw.c, checked against the original executable
+     (tools/native-compare suite effectsdraw). The original takes no arguments. */
+  extern void world_draw_effects(void);
+  world_draw_effects();
+}
 
 //----- (000000014013D1B0) ----------------------------------------------------
 double sub_14013D1B0()
 {
-  int v0; // ebx
-  __m128 v1; // xmm6
-  double v2; // xmm0_8
-  int i; // ebx
-  double v4; // xmm0_8
-  double v5; // xmm1_8
-  unsigned int *v6; // rdi
-  signed int v7; // ebx
-  __m128i si128; // xmm7
-  double v9; // xmm0_8
-  int v10; // edi
-  __int64 v11; // rbx
-  int v12; // edi
-  __int64 v13; // rbx
-  int v14; // edi
-  __int64 v15; // rbx
-  int v16; // edi
-  __int64 v17; // rbx
-  int v18; // edi
-  __int64 v19; // rbx
-  int j; // ebx
-  __int64 v21; // rdx
-  int v22; // eax
-  __int64 v23; // rdx
+  int v0;
+  __m128 v1;
+  double v2;
+  int i;
+  double v4;
+  double v5;
+  unsigned int *v6;
+  signed int v7;
+  __m128i si128;
+  double v9;
+  int v10;
+  __int64 v11;
+  int v12;
+  __int64 v13;
+  int v14;
+  __int64 v15;
+  int v16;
+  __int64 v17;
+  int v18;
+  __int64 v19;
+  int j;
+  __int64 v21;
+  int v22;
+  __int64 v23;
 
   v0 = 0;
   SR_VEC_LANES(128, v1, i32)[0] = 0;
@@ -17271,8 +14922,8 @@ double sub_14013D1B0()
     6408,
     5121,
     0);
-  v10 = dword_140404A6C[283829863];
-  v11 = 44LL * (int)dword_140404A6C[283829863];
+  v10 = shading_texture;
+  v11 = 44LL * (int)shading_texture;
   dword_140404A6C[v11 + 284024933] = dword_140404A6C[278520508];
   dword_140404A6C[v11 + 284024934] = dword_140404A6C[278520509];
   dword_140404A6C[v11 + 284024935] = 1;
@@ -17357,7 +15008,7 @@ double sub_14013D1B0()
   (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(3553, 10242, 33071);
   (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(3553, 10243, 33071);
   (*(void (           **)(__int64))&dword_140404A6C[18215103])(34895);
-  qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+  qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
   (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(34067, 10240, 9729);
   (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(34067, 10241, 9985);
   (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(34067, 10242, 33071);
@@ -17400,7 +15051,7 @@ double sub_14013D1B0()
     sub_140198F95(16, (__int64)"OpenGL Error", (__int64)"Unable to create framebuffer");
 LABEL_16:
   unk_1404046F0(36160, dword_140404A6C[2 * dword_140404A6C[283790136] + 283791765]);
-  unk_140404718(36160, 36064, 34069, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944], 0);
+  unk_140404718(36160, 36064, 34069, dword_140404A6C[44 * shading_cube_map + 284024944], 0);
   unk_1404046C0(36161, dword_140404A6C[2 * dword_140404A6C[283790136] + 283791766]);
   unk_1404046D8(36161, 35056, 512, 512);
   unk_1404046C0(36161, 0);
@@ -17419,126 +15070,23 @@ LABEL_16:
   return unk_1404046F0(36160, 0);
 }
 
-// 140239CCC: using guessed type __int64 __fastcall sub_140239CCC(_QWORD);
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 1402794C0: using guessed type __int128 xmmword_1402794C0;
-// 1402794D0: using guessed type __int128 xmmword_1402794D0;
-// 1402794F0: using guessed type __int128 xmmword_1402794F0;
-// 140279500: using guessed type __int128 xmmword_140279500;
-// 140279510: using guessed type __int128 xmmword_140279510;
-// 140279520: using guessed type __int128 xmmword_140279520;
-// 140279540: using guessed type __int128 xmmword_140279540;
-// 140279560: using guessed type __int128 xmmword_140279560;
-// 140279570: using guessed type __int128 xmmword_140279570;
-// 140279580: using guessed type __int128 xmmword_140279580;
-// 140279590: using guessed type __int128 xmmword_140279590;
-// 1402795A0: using guessed type __int128 xmmword_1402795A0;
-// 1402795B0: using guessed type __int128 xmmword_1402795B0;
-// 1402795C0: using guessed type __int128 xmmword_1402795C0;
-// 1402795D0: using guessed type __int128 xmmword_1402795D0;
-// 1402795E0: using guessed type __int128 xmmword_1402795E0;
-// 1402795F0: using guessed type __int128 xmmword_1402795F0;
-// 140279600: using guessed type __int128 xmmword_140279600;
-// 140279610: using guessed type __int128 xmmword_140279610;
-// 140279620: using guessed type __int128 xmmword_140279620;
-// 140279630: using guessed type __int128 xmmword_140279630;
-// 140279640: using guessed type __int128 xmmword_140279640;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1812C2F9C: using guessed type unsigned int;
-// 1812C2FE0: using guessed type unsigned int;
-// 1812C2FE4: using guessed type unsigned int;
-// 1812C2FF4: using guessed type unsigned int;
-// 1812C3004: using guessed type unsigned int;
-// 1812C3054: using guessed type unsigned int;
-// 1812C3058: using guessed type unsigned int;
-// 1812C3068: using guessed type unsigned int;
-// 1812C3078: using guessed type unsigned int;
-// 1812C30C8: using guessed type unsigned int;
-// 1812C30CC: using guessed type unsigned int;
-// 1812C30DC: using guessed type unsigned int;
-// 1812C30EC: using guessed type unsigned int;
-// 1812C313C: using guessed type unsigned int;
-// 1812C3140: using guessed type unsigned int;
-// 1812C3150: using guessed type unsigned int;
-// 1812C3160: using guessed type unsigned int;
-// 1812C31B0: using guessed type unsigned int;
-// 1812C31B4: using guessed type unsigned int;
-// 1812C31C4: using guessed type unsigned int;
-// 1812C31D4: using guessed type unsigned int;
-// 1812C3224: using guessed type unsigned int;
-// 1812C3228: using guessed type unsigned int;
-// 1812C3238: using guessed type unsigned int;
-// 1812C3248: using guessed type unsigned int;
-// 1812C3298: using guessed type unsigned int;
-// 1812C329C: using guessed type unsigned int;
-// 1812C32AC: using guessed type unsigned int;
-// 1812C32BC: using guessed type unsigned int;
-// 1812C3E6C: using guessed type unsigned int;
-// 1812C3EB0: using guessed type int[];
-// 1812C3EB4: using guessed type unsigned int;
-// 1812C3EC4: using guessed type unsigned int;
-// 1812C3ED4: using guessed type unsigned int;
-// 1812C3F24: using guessed type unsigned int;
-// 1812C3F28: using guessed type unsigned int;
-// 1812C3F38: using guessed type unsigned int;
-// 1812C3F48: using guessed type unsigned int;
-// 1812C3F98: using guessed type unsigned int;
-// 1812C3F9C: using guessed type unsigned int;
-// 1812C3FAC: using guessed type unsigned int;
-// 1812C3FBC: using guessed type unsigned int;
-// 1812C4D3C: using guessed type unsigned int;
-// 1812C4D80: using guessed type unsigned int;
-// 1812C4D84: using guessed type unsigned int;
-// 1812C4D94: using guessed type unsigned int;
-// 1812C4DA4: using guessed type unsigned int;
-// 1812C4DF4: using guessed type unsigned int;
-// 1812C4DF8: using guessed type unsigned int;
-// 1812C4E08: using guessed type unsigned int;
-// 1812C4E18: using guessed type unsigned int;
-// 1812C4E68: using guessed type unsigned int;
-// 1812C4E6C: using guessed type unsigned int;
-// 1812C4E7C: using guessed type unsigned int;
-// 1812C4E8C: using guessed type unsigned int;
-// 1812C4EDC: using guessed type unsigned int;
-// 1812C4EE0: using guessed type unsigned int;
-// 1812C4EF0: using guessed type unsigned int;
-// 1812C4F00: using guessed type unsigned int;
-// 1812C4F50: using guessed type unsigned int;
-// 1812C4F54: using guessed type unsigned int;
-// 1812C4F64: using guessed type unsigned int;
-// 1812C4F74: using guessed type unsigned int;
-// 1812C4FC4: using guessed type unsigned int;
-// 1812C4FC8: using guessed type unsigned int;
-// 1812C4FD8: using guessed type unsigned int;
-// 1812C4FE8: using guessed type unsigned int;
-// 1812C5038: using guessed type unsigned int;
-// 1812C503C: using guessed type unsigned int;
-// 1812C504C: using guessed type unsigned int;
-// 1812C505C: using guessed type unsigned int;
-// 1812C50AC: using guessed type unsigned int;
-// 1812C50B0: using guessed type unsigned int;
-// 1812C50C0: using guessed type unsigned int;
-// 1812C50D0: using guessed type unsigned int;
-// 181676080: using guessed type unsigned int;
-// 18622DFE0: using guessed type unsigned int;
-
 //----- (0000000140144700) ----------------------------------------------------
 void sub_140144700()
 {
-  int v0; // edi
-  __int64 v1; // rsi
-  __int64 v2; // rax
-  int v3; // ebx
-  __int64 v4; // rax
-  __int64 v5; // r8
-  char *v6; // rdx
-  char v7; // cl
-  __int64 v8; // rax
-  int v9; // ebx
-  __int64 v10; // rax
-  __int64 v11; // rbx
-  char *v12; // rdx
-  char v13; // cl
+  int v0;
+  __int64 v1;
+  __int64 v2;
+  int v3;
+  __int64 v4;
+  __int64 v5;
+  char *v6;
+  char v7;
+  __int64 v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  char *v12;
+  char v13;
 
   sr_pad_mappings(sr_pad_file("gamecontrollerdb.txt","rb"),1);
   dword_140404A6C[285101109] = 0;
@@ -17643,49 +15191,16 @@ void sub_140144700()
 }
 
 // 1401449A7: control flows out of bounds to 140198F4D
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 184397B40: using guessed type unsigned int;
-// 184397D30: using guessed type unsigned int;
-// 184397F20: using guessed type unsigned int;
-// 184398110: using guessed type unsigned int;
-// 184398300: using guessed type unsigned int;
-// 1843984F0: using guessed type unsigned int;
-// 1843986E0: using guessed type unsigned int;
-// 1843988D0: using guessed type unsigned int;
-// 184398AC0: using guessed type unsigned int;
-// 184398CB0: using guessed type unsigned int;
-// 184398EA0: using guessed type unsigned int;
-// 184399090: using guessed type unsigned int;
-// 184399280: using guessed type unsigned int;
-// 184399470: using guessed type unsigned int;
-// 184399660: using guessed type unsigned int;
-// 184399850: using guessed type unsigned int;
-// 184399A40: using guessed type unsigned int;
-// 184399C30: using guessed type unsigned int;
-// 184399E20: using guessed type unsigned int;
-// 18439A010: using guessed type unsigned int;
-// 18439A200: using guessed type unsigned int;
-// 18439A3F0: using guessed type unsigned int;
-// 18439A5E0: using guessed type unsigned int;
-// 18439A7D0: using guessed type unsigned int;
-// 18439A9C0: using guessed type unsigned int;
-// 18439ABB0: using guessed type unsigned int;
-// 18439ADA0: using guessed type unsigned int;
-// 18439AF90: using guessed type unsigned int;
-// 18439B180: using guessed type unsigned int;
-// 18439B370: using guessed type unsigned int;
-// 18439B560: using guessed type unsigned int;
-// 18439B750: using guessed type unsigned int;
 
 //----- (000000014014D3E0) ----------------------------------------------------
 void            sub_14014D3E0(int a1, int a2)
 {
-  __int64 v2; // rsi
-  int v4; // eax
-  int v5; // ebx
-  unsigned int *v6; // rdi
-  signed int v7; // edi
-  void **v8; // rbx
+  __int64 v2;
+  int v4;
+  int v5;
+  unsigned int *v6;
+  signed int v7;
+  void **v8;
 
   v2 = 44LL * a1;
   qword_140404050(3553, dword_140404A6C[v2 + 284024944]);
@@ -17749,28 +15264,23 @@ void            sub_14014D3E0(int a1, int a2)
   }
 }
 
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D18: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-
 //----- (0000000140187860) ----------------------------------------------------
 void            sub_140187860(int a1, float a2, float a3, float a4)
 {
-  int v6; // ebx
-  __int128 v8; // xmm10
-  __int128 v9; // xmm14
-  __int128 v10; // xmm11
-  unsigned int v11; // xmm8_4
-  unsigned int v12; // xmm9_4
-  __int128 v13; // xmm12
-  __int64 v14; // rdx
-  __int64 v15; // r8
-  __int64 v16; // rdx
-  __int64 v17; // r8
-  __int64 v18; // rdx
-  __int64 v19; // r8
-  __int64 v20; // rcx
+  int v6;
+  __int128 v8;
+  __int128 v9;
+  __int128 v10;
+  unsigned int v11;
+  unsigned int v12;
+  __int128 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140187860[16];
 #define v21 (*(float (*))(void *)(sr_frame_140187860 + 0)) /* [rsp+20h] */
@@ -17829,43 +15339,23 @@ void            sub_140187860(int a1, float a2, float a3, float a4)
 #undef v21
 #undef v22
 
-// 14018788A: variable 'v4' is possibly undefined
-// 1401878A8: variable 'v5' is possibly undefined
-// 14018794B: variable 'a2' is possibly undefined
-// 14018794B: variable 'a3' is possibly undefined
-// 14018797E: variable 'v14' is possibly undefined
-// 14018797E: variable 'v15' is possibly undefined
-// 1401879A0: variable 'v16' is possibly undefined
-// 1401879A0: variable 'v17' is possibly undefined
-// 1401879C3: variable 'v18' is possibly undefined
-// 1401879C3: variable 'v19' is possibly undefined
-// 140187A2E: variable 'v20' is possibly undefined
-// 140279700: using guessed type __int128 xmmword_140279700;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-
 //----- (0000000140187A40) ----------------------------------------------------
 void            sub_140187A40(_BYTE *a1, __int64 a2, float a3, float a4, float a5)
 {
   float v5 = a3; // xmm2_4: x arrives in xmm2 (0x140187A89 movaps xmm15, xmm2); Hex-Rays had lost it
-  float v7; // xmm13_4
-  _BYTE *v8; // rbx
-  float v9; // xmm12_4
-  int v10; // ecx
-  __int64 v11; // rdx
-  unsigned int v12; // xmm9_4
-  unsigned int v13; // xmm10_4
-  __int64 v14; // rdx
-  __int64 v15; // r8
-  __int64 v16; // rdx
-  __int64 v17; // r8
-  __int64 v18; // rdx
-  __int64 v19; // r8
+  float v7;
+  _BYTE *v8;
+  float v9;
+  int v10;
+  __int64 v11;
+  unsigned int v12;
+  unsigned int v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140187A40[16];
 #define v20 (*(float (*))(void *)(sr_frame_140187A40 + 0)) /* [rsp+D0h] */
@@ -17917,62 +15407,43 @@ void            sub_140187A40(_BYTE *a1, __int64 a2, float a3, float a4, float a
 #undef v20
 #undef v21
 
-// 140187B3F: variable 'v5' is possibly undefined
-// 140187B6D: variable 'a3' is possibly undefined
-// 140187BA5: variable 'v14' is possibly undefined
-// 140187BA5: variable 'v15' is possibly undefined
-// 140187BCD: variable 'v16' is possibly undefined
-// 140187BCD: variable 'v17' is possibly undefined
-// 140187BF6: variable 'v18' is possibly undefined
-// 140187BF6: variable 'v19' is possibly undefined
-// 140187C62: variable 'a1' is possibly undefined
-// 140187C62: variable 'a2' is possibly undefined
-// 140279700: using guessed type __int128 xmmword_140279700;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-
 //----- (0000000140187C70) ----------------------------------------------------
 void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float a5)
 {
   float v5 = a3; // xmm2_4: x arrives in xmm2 (0x140187CBB movaps xmm11, xmm2); Hex-Rays had lost it
-  __int64 v6; // rbx
-  float v7; // xmm10_4
-  __int64 v8; // rsi
-  _BYTE *v9; // rdi
-  float v10; // xmm8_4
-  unsigned __int64 v11; // rax
-  int v12; // xmm0_4
-  __int64 v13; // rax
-  __int64 v14; // rdx
-  __int64 v15; // r8
-  __int64 v16; // rax
-  __int64 v17; // rdx
-  __int64 v18; // r8
-  __int64 v19; // rdx
-  __int64 v20; // r8
-  __int64 v21; // rax
-  __int64 v22; // rcx
-  unsigned int v23; // xmm1_4
-  __int64 v24; // rdx
-  __int64 v25; // r8
-  __int64 v26; // rdx
-  __int64 v27; // rax
-  unsigned int v28; // xmm0_4
-  __int64 v29; // r8
-  __int64 v30; // rdx
-  __int64 v31; // rax
-  unsigned int v32; // xmm1_4
-  __int64 v33; // r8
-  __int64 v34; // rcx
-  unsigned int v35; // xmm1_4
-  __int64 v36; // rdx
-  __int64 v37; // r8
-  __int64 v38; // rax
+  __int64 v6;
+  float v7;
+  __int64 v8;
+  _BYTE *v9;
+  float v10;
+  unsigned __int64 v11;
+  int v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  unsigned int v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  unsigned int v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  unsigned int v32;
+  __int64 v33;
+  __int64 v34;
+  unsigned int v35;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140187C70[16];
 #define v39 (*(float (*))(void *)(sr_frame_140187C70 + 0)) /* [rsp+B0h] */
@@ -18005,13 +15476,13 @@ void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float 
       sub_14007D320((unsigned int *)&v39, a2, a3);
       v13 = (unsigned __int8)*v9;
       *(_QWORD *)&dword_140404A6C[456807037] = 0;
-      v39 = (float)(v10 * *(float *)&dword_140404A6C[3592 * (int)dword_140404A6C[438291413] + 72777093 + v13])
+      v39 = (float)(v10 * *(float *)&dword_140404A6C[3592 * (int)renderer_current_font + 72777093 + v13])
           + (float)(v7 + v5);
       sub_14007D320((unsigned int *)&v39, v14, v15);
       v16 = (unsigned __int8)*v9;
       *(_QWORD *)&dword_140404A6C[456807037] = 0;
       v40 = a4 + v10;
-      v39 = (float)(v10 * *(float *)&dword_140404A6C[3592 * (int)dword_140404A6C[438291413] + 72777093 + v16])
+      v39 = (float)(v10 * *(float *)&dword_140404A6C[3592 * (int)renderer_current_font + 72777093 + v16])
           + (float)(v7 + v5);
       sub_14007D320((unsigned int *)&v39, v17, v18);
       v39 = v7 + v5;
@@ -18023,36 +15494,36 @@ void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float 
       dword_140404A6C[456807033] = dword_1402B2550[3 * v21];
       dword_140404A6C[456807034] = dword_1402B2554[3 * v21];
       dword_140404A6C[456807035] = dword_1402B2558[3 * v21];
-      v22 = 8 * ((unsigned __int8)*v9 + 449LL * (int)dword_140404A6C[438291413]);
+      v22 = 8 * ((unsigned __int8)*v9 + 449LL * (int)renderer_current_font);
       v23 = dword_140404A6C[v22 + 72777350];
       dword_140404A6C[456807037] = dword_140404A6C[v22 + 72777349];
       dword_140404A6C[456807038] = v23;
       sub_14007D320((unsigned int *)&v39, v24, v25);
       v26 = (unsigned __int8)*v9;
-      v39 = (float)(v10 * *(float *)&dword_140404A6C[3592 * (int)dword_140404A6C[438291413] + 72777093 + v26])
+      v39 = (float)(v10 * *(float *)&dword_140404A6C[3592 * (int)renderer_current_font + 72777093 + v26])
           + (float)(v7 + v5);
-      v27 = 8 * (v26 + 449LL * (int)dword_140404A6C[438291413]);
+      v27 = 8 * (v26 + 449LL * (int)renderer_current_font);
       v28 = dword_140404A6C[v27 + 72777351];
       dword_140404A6C[456807038] = dword_140404A6C[v27 + 72777352];
       dword_140404A6C[456807037] = v28;
       sub_14007D320((unsigned int *)&v39, v26, v29);
       v30 = (unsigned __int8)*v9;
       v40 = a4 + v10;
-      v39 = (float)(v10 * *(float *)&dword_140404A6C[3592 * (int)dword_140404A6C[438291413] + 72777093 + v30])
+      v39 = (float)(v10 * *(float *)&dword_140404A6C[3592 * (int)renderer_current_font + 72777093 + v30])
           + (float)(v7 + v5);
-      v31 = 8 * (v30 + 449LL * (int)dword_140404A6C[438291413]);
+      v31 = 8 * (v30 + 449LL * (int)renderer_current_font);
       v32 = dword_140404A6C[v31 + 72777354];
       dword_140404A6C[456807037] = dword_140404A6C[v31 + 72777353];
       dword_140404A6C[456807038] = v32;
       sub_14007D320((unsigned int *)&v39, v30, v33);
       v39 = v7 + v5;
-      v34 = 8 * ((unsigned __int8)*v9 + 449LL * (int)dword_140404A6C[438291413]);
+      v34 = 8 * ((unsigned __int8)*v9 + 449LL * (int)renderer_current_font);
       v35 = dword_140404A6C[v34 + 72777356];
       dword_140404A6C[456807037] = dword_140404A6C[v34 + 72777355];
       dword_140404A6C[456807038] = v35;
       sub_14007D320((unsigned int *)&v39, v36, v37);
       v38 = (unsigned __int8)*v9++;
-      a1 = v38 + 3592LL * (int)dword_140404A6C[438291413];
+      a1 = v38 + 3592LL * (int)renderer_current_font;
       v7 = v7 + (float)(v10 * *(float *)&dword_140404A6C[a1 + 72777093]);
     }
     while ( *v9 );
@@ -18062,46 +15533,17 @@ void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float 
 #undef v39
 #undef v40
 
-// 140187DA5: variable 'v5' is possibly undefined
-// 140187DAE: variable 'a2' is possibly undefined
-// 140187DAE: variable 'a3' is possibly undefined
-// 140187DF4: variable 'v14' is possibly undefined
-// 140187DF4: variable 'v15' is possibly undefined
-// 140187E4C: variable 'v17' is possibly undefined
-// 140187E4C: variable 'v18' is possibly undefined
-// 140187E6D: variable 'v19' is possibly undefined
-// 140187E6D: variable 'v20' is possibly undefined
-// 140187F01: variable 'v24' is possibly undefined
-// 140187F01: variable 'v25' is possibly undefined
-// 140187F67: variable 'v29' is possibly undefined
-// 140187FD6: variable 'v33' is possibly undefined
-// 140188021: variable 'v36' is possibly undefined
-// 140188021: variable 'v37' is possibly undefined
-// 1402B2550: using guessed type int dword_1402B2550[];
-// 1402B2554: using guessed type int dword_1402B2554[];
-// 1402B2558: using guessed type int dword_1402B2558[6];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-
 //----- (0000000140189E80) ----------------------------------------------------
 double            sub_140189E80(int a1, __int64 a2, __int64 a3)
 {
-  __int64 v4; // r8
-  __int64 v5; // r8
-  __int64 v6; // r8
-  __int64 v7; // rcx
-  __int64 v8; // r8
-  __int64 v9; // rcx
-  __int64 v10; // r8
-  __int64 v11; // rcx
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
 
   if ( a1 )
   {
@@ -18128,11 +15570,11 @@ double            sub_140189E80(int a1, __int64 a2, __int64 a3)
     unk_140404098(33984);
     qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283827814] + 284024944]);
     unk_140404098(33985);
-    qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283829863] + 284024944]);
+    qword_140404050(3553, dword_140404A6C[44 * shading_texture + 284024944]);
     unk_140404098(33986);
     qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283827815] + 284024944]);
     unk_140404098(33987);
-    qword_140404050(34067, dword_140404A6C[44 * dword_140404A6C[283829872] + 284024944]);
+    qword_140404050(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
     unk_140404098(33988);
     qword_140404050(35866, dword_140404A6C[44 * dword_140404A6C[283827820] + 284024944]);
     unk_140404098(33989);
@@ -18182,7 +15624,7 @@ LABEL_11:
   ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(v9, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[358297497]),(const void *)(intptr_t)(v9==0?0:20));
 LABEL_16:
   unk_140404098(33984);
-  qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283827818] + 284024944]);
+  qword_140404050(3553, dword_140404A6C[44 * resting_texture_1 + 284024944]);
   unk_140404098(33986);
   qword_140404050(3553, dword_140404A6C[44 * dword_140404A6C[283827819] + 284024944]);
   unk_140404098(33984);
@@ -18204,47 +15646,28 @@ LABEL_20:
   return qword_140404170(34962, 0, v10);
 }
 
-// 14018A03F: variable 'v4' is possibly undefined
-// 14018A123: variable 'v5' is possibly undefined
-// 14018A1A2: variable 'v6' is possibly undefined
-// 14018A288: variable 'v8' is possibly undefined
-// 14018A3D9: variable 'v10' is possibly undefined
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401945F0)
-
-
 
 __int64 sub_1401945F0()
 {
-  float *v0; // rax
-  float *v1; // r8
-  signed __int64 v2; // rcx
-  __int64 v3; // r10
-  float v4; // xmm3_4
-  __int64 v5; // rdx
-  float v6; // xmm4_4
-  float v7; // xmm5_4
-  float v8; // xmm6_4
-  __int64 v9; // rdx
-  __int64 v10; // r8
-  _DWORD v12[10]; // [rsp-20h] [rbp-11E0h] BYREF
-  __int64 v13; // [rsp+8h] [rbp-11B8h]
+  float *v0;
+  float *v1;
+  signed __int64 v2;
+  __int64 v3;
+  float v4;
+  __int64 v5;
+  float v6;
+  float v7;
+  float v8;
+  __int64 v9;
+  __int64 v10;
+  _DWORD v12[10];
+  __int64 v13;
   _Alignas(16) unsigned sr_screen_sample_matrix[16];
-  _DWORD v17[1048]; // [rsp+50h] [rbp-1170h] BYREF
+  _DWORD v17[1048];
   _Alignas(16) unsigned sr_screen_sample_result[16];
-  _DWORD v21[1024]; // [rsp+1180h] [rbp-40h] BYREF
-  __int64 v22; // [rsp+2180h] [rbp+FC0h]
+  _DWORD v21[1024];
+  __int64 v22;
 
   qword_1404042E0(dword_140404A6C[71738405]);
   v17[0] = dword_140404A6C[284205197];
@@ -18295,7 +15718,7 @@ __int64 sub_1401945F0()
   v21[0] = dword_140404A6C[188872557];
   v21[2] = dword_140404A6C[188872559];
   v21[5] = dword_140404A6C[188872559];
-  v9 = dword_140404A6C[2 * dword_140404A6C[283791478] + 283793813];
+  v9 = dword_140404A6C[2 * effect_mesh_buffer + 283793813];
   v21[9] = dword_140404A6C[188872557];
   v21[1] = 1102577664;
   v21[3] = 1157627904;
@@ -18318,28 +15741,28 @@ __int64 sub_1401945F0()
 //----- (0000000140196D60) ----------------------------------------------------
 __int64            sub_140196D60(char *Buffer, FILE *Stream, int a3)
 {
-  int v3; // ebx
-  char *v6; // rsi
-  char *v7; // rbp
-  char *v8; // r14
-  char *v9; // r12
-  int i; // edi
-  char *v11; // rcx
-  char *v12; // rcx
-  int j; // edi
-  char *v14; // rcx
-  char *v15; // rcx
-  int k; // edi
-  char *v17; // rcx
-  char *v18; // rcx
-  int m; // edi
-  char *v20; // rcx
-  int v21; // ecx
-  int v22; // eax
-  int v23; // edi
-  __int64 v24; // r12
-  __int64 v25; // rbx
-  char *v26; // rcx
+  int v3;
+  char *v6;
+  char *v7;
+  char *v8;
+  char *v9;
+  int i;
+  char *v11;
+  char *v12;
+  int j;
+  char *v14;
+  char *v15;
+  int k;
+  char *v17;
+  char *v18;
+  int m;
+  char *v20;
+  int v21;
+  int v22;
+  int v23;
+  __int64 v24;
+  __int64 v25;
+  char *v26;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140196D60[128];
 #define v28 (*(int (*))(void *)(sr_frame_140196D60 + 0)) /* [rsp+20h] */
@@ -18354,19 +15777,19 @@ __int64            sub_140196D60(char *Buffer, FILE *Stream, int a3)
   v29 = 1;
   if ( a3 )
   {
-    sub_14020CE0C((__int64)&v29, 4, 1, (__int64)Stream);
-    sub_14020CE0C((__int64)Buffer, 1, 64, (__int64)Stream);
+    crt_fread((__int64)&v29, 4, 1, (__int64)Stream);
+    crt_fread((__int64)Buffer, 1, 64, (__int64)Stream);
     v6 = Buffer + 64;
-    sub_14020CE0C((__int64)(Buffer + 64), 4, 1, (__int64)Stream);
+    crt_fread((__int64)(Buffer + 64), 4, 1, (__int64)Stream);
     v7 = Buffer + 68;
-    sub_14020CE0C((__int64)(Buffer + 68), 4, 1, (__int64)Stream);
+    crt_fread((__int64)(Buffer + 68), 4, 1, (__int64)Stream);
     v8 = Buffer + 72;
-    sub_14020CE0C((__int64)(Buffer + 72), 4, 1, (__int64)Stream);
-    sub_14020CE0C((__int64)(Buffer + 76), 4, 1, (__int64)Stream);
-    sub_14020CE0C((__int64)(Buffer + 80), 4, 1, (__int64)Stream);
-    sub_14020CE0C((__int64)(Buffer + 84), 4, 1, (__int64)Stream);
+    crt_fread((__int64)(Buffer + 72), 4, 1, (__int64)Stream);
+    crt_fread((__int64)(Buffer + 76), 4, 1, (__int64)Stream);
+    crt_fread((__int64)(Buffer + 80), 4, 1, (__int64)Stream);
+    crt_fread((__int64)(Buffer + 84), 4, 1, (__int64)Stream);
     v9 = Buffer + 47187628;
-    sub_14020CE0C((__int64)(Buffer + 47187628), 4, 1, (__int64)Stream);
+    crt_fread((__int64)(Buffer + 47187628), 4, 1, (__int64)Stream);
     goto LABEL_6;
   }
   *((_DWORD *)Buffer + 16) = 24;
@@ -18394,46 +15817,46 @@ LABEL_6:
   {
     v11 = &Buffer[64 * (__int64)i + 47187632];
     if ( v3 )
-      sub_14020CE0C((__int64)v11, 1, 64, (__int64)Stream);
+      crt_fread((__int64)v11, 1, 64, (__int64)Stream);
     else
       fread_sr((void *)(uintptr_t)(v11), 1, 64, (FILE *)(uintptr_t)(Stream));
   }
   v12 = Buffer + 47208112;
   if ( v3 )
-    sub_14020CE0C((__int64)v12, 4, 1, (__int64)Stream);
+    crt_fread((__int64)v12, 4, 1, (__int64)Stream);
   else
     fread_sr((void *)(uintptr_t)(v12), 4, 1, (FILE *)(uintptr_t)(Stream));
   for ( j = 0; j < *((_DWORD *)Buffer + 11802028); ++j )
   {
     v14 = &Buffer[64 * (__int64)j + 47208116];
     if ( v3 )
-      sub_14020CE0C((__int64)v14, 1, 64, (__int64)Stream);
+      crt_fread((__int64)v14, 1, 64, (__int64)Stream);
     else
       fread_sr((void *)(uintptr_t)(v14), 1, 64, (FILE *)(uintptr_t)(Stream));
   }
   v15 = Buffer + 47277748;
   if ( v3 )
-    sub_14020CE0C((__int64)v15, 4, 1, (__int64)Stream);
+    crt_fread((__int64)v15, 4, 1, (__int64)Stream);
   else
     fread_sr((void *)(uintptr_t)(v15), 4, 1, (FILE *)(uintptr_t)(Stream));
   for ( k = 0; k < *((_DWORD *)Buffer + 11819437); ++k )
   {
     v17 = &Buffer[64 * (__int64)k + 47277752];
     if ( v3 )
-      sub_14020CE0C((__int64)v17, 1, 64, (__int64)Stream);
+      crt_fread((__int64)v17, 1, 64, (__int64)Stream);
     else
       fread_sr((void *)(uintptr_t)(v17), 1, 64, (FILE *)(uintptr_t)(Stream));
   }
   v18 = Buffer + 47282872;
   if ( v3 )
-    sub_14020CE0C((__int64)v18, 4, 1, (__int64)Stream);
+    crt_fread((__int64)v18, 4, 1, (__int64)Stream);
   else
     fread_sr((void *)(uintptr_t)(v18), 4, 1, (FILE *)(uintptr_t)(Stream));
   for ( m = 0; m < *((_DWORD *)Buffer + 11820718); ++m )
   {
     v20 = &Buffer[64 * (__int64)m + 47282876];
     if ( v3 )
-      sub_14020CE0C((__int64)v20, 1, 64, (__int64)Stream);
+      crt_fread((__int64)v20, 1, 64, (__int64)Stream);
     else
       fread_sr((void *)(uintptr_t)(v20), 1, 64, (FILE *)(uintptr_t)(Stream));
   }
@@ -18456,29 +15879,29 @@ LABEL_6:
             v26 = &Buffer[v25 + 92];
             if ( v30 )
             {
-              sub_14020CE0C((__int64)v26, 4, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 96], 4, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 88], 4, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 100], 4, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 104], 4, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 108], 4, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 112], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 114], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 116], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 118], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 120], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 122], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 124], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 126], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 128], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 130], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 132], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 134], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 136], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 138], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 140], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 142], 2, 1, (__int64)Stream);
-              sub_14020CE0C((__int64)&Buffer[v25 + 144], 4, 1, (__int64)Stream);
+              crt_fread((__int64)v26, 4, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 96], 4, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 88], 4, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 100], 4, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 104], 4, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 108], 4, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 112], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 114], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 116], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 118], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 120], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 122], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 124], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 126], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 128], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 130], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 132], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 134], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 136], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 138], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 140], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 142], 2, 1, (__int64)Stream);
+              crt_fread((__int64)&Buffer[v25 + 144], 4, 1, (__int64)Stream);
             }
             else
             {
@@ -18526,3740 +15949,4 @@ LABEL_6:
 #undef v29
 #undef v30
 #undef n
-
-// 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
-
-
-//----- (000000014001FD20) ----------------------------------------------------
-__int64            sub_14001FD20(float *a1, float *a2)
-{
-  float *v4; // rdx
-  int i; // ecx
-  float *v6; // rax
-  float v7; // xmm2_4
-  unsigned int v8; // eax
-  float v9; // xmm8_4
-  float v10; // xmm7_4
-
-  /* The five view-frustum planes (three floats each) are one table at 0x1402B27D0..0x1402B280B in the
-     original, walked by pointer below. Separate globals do not stay adjacent, so keep it as one array. */
-  static float sr_frustum_planes[15];
-  static const float sr_frustum_plane_values[15] = {
-    0.0f, 0.0f, 1.0f,   1.0f, 0.0f, 1.0f,   -1.0f, 0.0f, 1.0f,   0.0f, 0.75f, 1.0f,   0.0f, -0.75f, 1.0f
-  };
-  for ( i = 0; i < 5; ++i )
-  {
-    sr_frustum_planes[3 * i] = sr_frustum_plane_values[3 * i];
-    sr_frustum_planes[3 * i + 1] = sr_frustum_plane_values[3 * i + 1];
-    sr_frustum_planes[3 * i + 2] = sr_frustum_plane_values[3 * i + 2];
-    sub_14007A240((__int64)&sr_frustum_planes[3 * i], &sr_frustum_planes[3 * i]);
-  }
-  v4 = &sr_frustum_planes[2];
-  while ( 2 )
-  {
-    for ( i = 0; ; ++i )
-    {
-      if ( i >= 8 )
-        return 0;
-      v6 = a1;
-      if ( i >= 4 )
-        v6 = a2;
-      v7 = *v6;
-      v8 = i & 3;
-      if ( v8 >= 2 )
-      {
-        v9 = a2[1];
-      }
-      else
-      {
-        v9 = a1[1];
-        if ( (i & 3) == 0 )
-          goto LABEL_8;
-      }
-      if ( v8 == 3 )
-      {
-LABEL_8:
-        v10 = a1[2];
-        goto LABEL_9;
-      }
-      v10 = a2[2];
-LABEL_9:
-      if ( (float)((float)((float)((float)((float)((float)(*(v4 - 2) * *(float *)&dword_140404A6C[284024505])
-                                                 + (float)(*(v4 - 1) * *(float *)&dword_140404A6C[284024508]))
-                                         + (float)(*v4 * *(float *)&dword_140404A6C[284024511]))
-                                 * (float)(v7 - *(float *)&dword_140404A6C[284024502]))
-                         + (float)((float)((float)((float)(*(v4 - 2) * *(float *)&dword_140404A6C[284024506])
-                                                 + (float)(*(v4 - 1) * *(float *)&dword_140404A6C[284024509]))
-                                         + (float)(*v4 * *(float *)&dword_140404A6C[284024512]))
-                                 * (float)(v9 - *(float *)&dword_140404A6C[284024503])))
-                 + (float)((float)((float)((float)(*(v4 - 2) * *(float *)&dword_140404A6C[284024507])
-                                         + (float)(*(v4 - 1) * *(float *)&dword_140404A6C[284024510]))
-                                 + (float)(*v4 * *(float *)&dword_140404A6C[284024513]))
-                         * (float)(v10 - *(float *)&dword_140404A6C[284024504]))) < 0.0 )
-        break;
-    }
-    v4 += 3;
-    if ( v4 < &sr_frustum_planes[15] + 2 )
-      continue;
-    return 1;
-  }
-}
-//----- (0000000140027D00) ----------------------------------------------------
-__int64 sub_140027D00()
-{
-  int v0; // eax
-  int v1; // edi
-  int v2; // r9d
-  int v3; // edx
-  __int64 v4; // rbx
-  int v5; // r10d
-  __int64 v6; // r11
-  int v7; // r8d
-  unsigned int *v8; // rcx
-  __int128 v9; // xmm0
-  unsigned int v10; // r10d
-  int v11; // ebx
-  unsigned int v12; // r9d
-  unsigned int v13; // edx
-  __int64 v14; // rax
-  unsigned int *v15; // rcx
-  int v16; // r13d
-  unsigned int v17; // esi
-  unsigned int v18; // ebp
-  __int64 v19; // r15
-  __int64 v20; // r12
-  int v21; // r11d
-  __int64 v22; // r14
-  int v23; // edi
-  __int64 v24; // r10
-  unsigned int *v25; // r8
-  int v26; // edx
-  int v27; // ebx
-  __int64 v28; // rcx
-  int v29; // eax
-  int v30; // ebx
-  __int64 v31; // rdx
-  __int64 v32; // rcx
-  unsigned int v33; // edx
-  __int64 v34; // rax
-  __int64 v35; // rax
-  __int64 v36; // rcx
-  int v38; // [rsp+30h] [rbp+8h]
-
-  v0 = dword_140404A6C[460788389];
-  v1 = 0;
-  v2 = dword_140404A6C[460788388];
-  v3 = dword_140404A6C[460788387];
-  if ( (int)dword_140404A6C[460788389] > 0 )
-  {
-    v4 = 0;
-    do
-    {
-      v5 = 0;
-      v6 = 0;
-      if ( v2 >= 0 )
-      {
-        do
-        {
-          v7 = 0;
-          if ( v3 >= 0 )
-          {
-            v8 = &dword_140404A6C[960 * v4 + 464720760 + 960 * v6];
-            do
-            {
-              v9 = *(_OWORD *)(v8 - 3932367);
-              ++v7;
-              v8 += 15;
-              *(_OWORD *)(v8 - 15) = v9;
-              *(_OWORD *)(v8 - 11) = *(_OWORD *)(v8 - 3932378);
-              *(_OWORD *)(v8 - 7) = *(_OWORD *)(v8 - 3932374);
-              *(_QWORD *)(v8 - 3) = *((_QWORD *)v8 - 1966185);
-              *(v8 - 1) = *(v8 - 3932368);
-              v3 = dword_140404A6C[460788387];
-            }
-            while ( v7 <= (int)dword_140404A6C[460788387] );
-            v2 = dword_140404A6C[460788388];
-          }
-          ++v5;
-          ++v6;
-        }
-        while ( v5 <= v2 );
-        v0 = dword_140404A6C[460788389];
-      }
-      ++v1;
-      v4 += 64;
-    }
-    while ( v1 < v0 );
-  }
-  v10 = v3;
-  if ( v3 < (unsigned int)v2 )
-    v10 = v2;
-  v11 = 0;
-  if ( v0 > 0 )
-  {
-    do
-    {
-      v12 = 0;
-      do
-      {
-        v13 = 0;
-        do
-        {
-          v14 = ((((__int64)v11 << 6) + (int)v12) << 6) + (int)v13++;
-          v15 = &dword_140404A6C[15 * v14 + 460788393];
-          *(_OWORD *)v15 = 0;
-          *((_OWORD *)v15 + 1) = 0;
-          *((_OWORD *)v15 + 2) = 0;
-          *((_QWORD *)v15 + 6) = 0;
-          v15[14] = 0;
-        }
-        while ( v13 <= v10 );
-        ++v12;
-      }
-      while ( v12 <= v10 );
-      v0 = dword_140404A6C[460788389];
-      ++v11;
-    }
-    while ( v11 < (int)dword_140404A6C[460788389] );
-    v2 = dword_140404A6C[460788388];
-    v3 = dword_140404A6C[460788387];
-  }
-  v16 = 0;
-  *(_QWORD *)&dword_140404A6C[468652924] = *(_QWORD *)&dword_140404A6C[464720557];
-  *(_QWORD *)&dword_140404A6C[468652930] = *(_QWORD *)&dword_140404A6C[464720563];
-  *(_QWORD *)&dword_140404A6C[468652936] = *(_QWORD *)&dword_140404A6C[464720569];
-  *(_QWORD *)&dword_140404A6C[468652942] = *(_QWORD *)&dword_140404A6C[464720575];
-  *(_QWORD *)&dword_140404A6C[468652948] = *(_QWORD *)&dword_140404A6C[464720581];
-  *(_QWORD *)&dword_140404A6C[468652954] = *(_QWORD *)&dword_140404A6C[464720587];
-  *(_QWORD *)&dword_140404A6C[468652960] = *(_QWORD *)&dword_140404A6C[464720593];
-  *(_QWORD *)&dword_140404A6C[468652966] = *(_QWORD *)&dword_140404A6C[464720599];
-  *(_QWORD *)&dword_140404A6C[468652972] = *(_QWORD *)&dword_140404A6C[464720605];
-  *(_QWORD *)&dword_140404A6C[468652978] = *(_QWORD *)&dword_140404A6C[464720611];
-  *(_QWORD *)&dword_140404A6C[468652984] = *(_QWORD *)&dword_140404A6C[464720617];
-  *(_QWORD *)&dword_140404A6C[468652990] = *(_QWORD *)&dword_140404A6C[464720623];
-  *(_QWORD *)&dword_140404A6C[468652996] = *(_QWORD *)&dword_140404A6C[464720629];
-  *(_QWORD *)&dword_140404A6C[468653002] = *(_QWORD *)&dword_140404A6C[464720635];
-  *(_QWORD *)&dword_140404A6C[468653008] = *(_QWORD *)&dword_140404A6C[464720641];
-  *(_QWORD *)&dword_140404A6C[468653014] = *(_QWORD *)&dword_140404A6C[464720647];
-  v38 = 0;
-  *(_OWORD *)&dword_140404A6C[468652920] = *(_OWORD *)&dword_140404A6C[464720553];
-  *(_OWORD *)&dword_140404A6C[468652926] = *(_OWORD *)&dword_140404A6C[464720559];
-  *(_OWORD *)&dword_140404A6C[468652932] = *(_OWORD *)&dword_140404A6C[464720565];
-  *(_OWORD *)&dword_140404A6C[468652938] = *(_OWORD *)&dword_140404A6C[464720571];
-  *(_OWORD *)&dword_140404A6C[468652944] = *(_OWORD *)&dword_140404A6C[464720577];
-  *(_OWORD *)&dword_140404A6C[468652950] = *(_OWORD *)&dword_140404A6C[464720583];
-  *(_OWORD *)&dword_140404A6C[468652956] = *(_OWORD *)&dword_140404A6C[464720589];
-  *(_OWORD *)&dword_140404A6C[468652962] = *(_OWORD *)&dword_140404A6C[464720595];
-  *(_OWORD *)&dword_140404A6C[468652968] = *(_OWORD *)&dword_140404A6C[464720601];
-  *(_OWORD *)&dword_140404A6C[468652974] = *(_OWORD *)&dword_140404A6C[464720607];
-  *(_OWORD *)&dword_140404A6C[468652980] = *(_OWORD *)&dword_140404A6C[464720613];
-  *(_OWORD *)&dword_140404A6C[468652986] = *(_OWORD *)&dword_140404A6C[464720619];
-  *(_OWORD *)&dword_140404A6C[468652992] = *(_OWORD *)&dword_140404A6C[464720625];
-  *(_OWORD *)&dword_140404A6C[468652998] = *(_OWORD *)&dword_140404A6C[464720631];
-  *(_OWORD *)&dword_140404A6C[468653004] = *(_OWORD *)&dword_140404A6C[464720637];
-  *(_OWORD *)&dword_140404A6C[468653010] = *(_OWORD *)&dword_140404A6C[464720643];
-  if ( v0 > 0 )
-  {
-    v17 = dword_140404A6C[19928871];
-    v18 = dword_140404A6C[19928870];
-    v19 = 0;
-    v20 = 0;
-    do
-    {
-      v21 = 0;
-      v22 = 0;
-      if ( v2 >= 0 )
-      {
-        do
-        {
-          v23 = 0;
-          if ( v3 >= 0 )
-          {
-            v24 = v20;
-            v25 = &dword_140404A6C[960 * v19 + 464720766 + 960 * v22];
-            do
-            {
-              if ( v21 < v2 )
-              {
-                v26 = *(v25 - 5);
-                v27 = v2 - v21 - 1;
-                if ( (v26 & 0xE0000000) == 0x80000000 )
-                {
-                  v26 = (unsigned __int16)v26;
-                  v27 = v2 - v21 - dword_140404A6C[58 * (unsigned __int16)v26 + 20074647];
-                  if ( (unsigned __int16)v26 >= v18 && (unsigned __int16)v26 < v17 )
-                  {
-                    v26 = (unsigned __int16)v26 + 1;
-                    if ( (v26 & 3) == 0 )
-                      v26 -= 4;
-                  }
-                  v26 |= 0x80000000;
-                }
-                v28 = 15 * (v24 + v27);
-                if ( !dword_140404A6C[v28 + 460788394] )
-                {
-                  dword_140404A6C[v28 + 460788394] = v26;
-                  LOWORD(dword_140404A6C[v28 + 460788399]) = *(_WORD *)v25;
-                  HIWORD(dword_140404A6C[v28 + 460788400]) = *((_WORD *)v25 + 2);
-                  LOWORD(dword_140404A6C[v28 + 460788401]) = *((_WORD *)v25 + 3);
-                  HIWORD(dword_140404A6C[v28 + 460788399]) = *((_WORD *)v25 + 4);
-                  LOWORD(dword_140404A6C[v28 + 460788400]) = *((_WORD *)v25 + 1);
-                  HIWORD(dword_140404A6C[v28 + 460788401]) = *((_WORD *)v25 + 5);
-                  LOWORD(dword_140404A6C[v28 + 460788402]) = *((_WORD *)v25 + 6);
-                  HIWORD(dword_140404A6C[v28 + 460788402]) = *((_WORD *)v25 + 7);
-                  v2 = dword_140404A6C[460788388];
-                }
-                v29 = *(v25 - 4);
-                v30 = v2 - v21 - 1;
-                if ( (v29 & 0xE0000000) == 0x80000000 )
-                {
-                  v29 = (unsigned __int16)v29;
-                  v30 = v2 - v21 - dword_140404A6C[58 * (unsigned __int16)v29 + 20074647];
-                  if ( (unsigned __int16)v29 >= v18 && (unsigned __int16)v29 < v17 )
-                  {
-                    v29 = (unsigned __int16)v29 + 1;
-                    if ( (v29 & 3) == 0 )
-                      v29 -= 4;
-                  }
-                  v29 |= 0x80000000;
-                }
-                v31 = 15 * (v24 + v30);
-                if ( !dword_140404A6C[v31 + 460788395] )
-                {
-                  dword_140404A6C[v31 + 460788395] = v29;
-                  LOWORD(dword_140404A6C[v31 + 460788403]) = *((_WORD *)v25 + 8);
-                  HIWORD(dword_140404A6C[v31 + 460788404]) = *((_WORD *)v25 + 10);
-                  LOWORD(dword_140404A6C[v31 + 460788405]) = *((_WORD *)v25 + 11);
-                  HIWORD(dword_140404A6C[v31 + 460788403]) = *((_WORD *)v25 + 12);
-                  LOWORD(dword_140404A6C[v31 + 460788404]) = *((_WORD *)v25 + 9);
-                  HIWORD(dword_140404A6C[v31 + 460788405]) = *((_WORD *)v25 + 13);
-                  LOWORD(dword_140404A6C[v31 + 460788406]) = *((_WORD *)v25 + 14);
-                  HIWORD(dword_140404A6C[v31 + 460788406]) = *((_WORD *)v25 + 15);
-                  v2 = dword_140404A6C[460788388];
-                }
-                if ( (v29 & 0xE0000000) == 0x80000000 )
-                {
-                  v32 = v24 + v2 - v21;
-                  if ( !dword_140404A6C[15 * v32 + 460788380] )
-                  {
-                    dword_140404A6C[15 * v32 + 460788380] = -1073741824;
-                    v2 = dword_140404A6C[460788388];
-                  }
-                }
-                dword_140404A6C[15 * v24 + 460788378 + 15 * (v2 - v21)] = *(v25 - 6);
-                dword_140404A6C[15 * v24 + 460788381 + 15 * (dword_140404A6C[460788388] - v21)] = *(v25 - 2);
-                dword_140404A6C[15 * v24 + 460788383 + 15 * (dword_140404A6C[460788388] - v21)] = *(v25 - 1);
-                v33 = v25[8];
-                v34 = 15 * (v24 + dword_140404A6C[460788388] - v21);
-                if ( v33 )
-                {
-                  dword_140404A6C[v34 + 460788392] = v33;
-                  dword_140404A6C[15 * v24 + 460788392 + 15 * (dword_140404A6C[460788388] - v21)] &= 0xFCFFFFFF;
-                  dword_140404A6C[15 * v24 + 460788392 + 15 * (dword_140404A6C[460788388] - v21)] |= ((v33 & 0xFF000000) + 0x1000000) & 0x3000000;
-                }
-                else
-                {
-                  dword_140404A6C[v34 + 460788392] = 0;
-                }
-                v2 = dword_140404A6C[460788388];
-              }
-              ++v23;
-              v35 = v24 + v2 - v21;
-              v24 += 64;
-              v36 = 15 * v35;
-              LODWORD(v35) = *(v25 - 3);
-              v25 += 15;
-              dword_140404A6C[v36 + 460788397] = v35;
-              v3 = dword_140404A6C[460788387];
-              v2 = dword_140404A6C[460788388];
-            }
-            while ( v23 <= (int)dword_140404A6C[460788387] );
-          }
-          ++v21;
-          ++v22;
-        }
-        while ( v21 <= v2 );
-        v0 = dword_140404A6C[460788389];
-        v16 = v38;
-      }
-      ++v16;
-      v20 += 4096;
-      v19 += 64;
-      v38 = v16;
-    }
-    while ( v16 < v0 );
-  }
-  dword_140404A6C[464720556] = dword_140404A6C[468652925];
-  dword_140404A6C[464720553] = v2 - dword_140404A6C[468652922] - dword_140404A6C[468652925];
-  dword_140404A6C[464720555] = dword_140404A6C[468652920];
-  dword_140404A6C[464720558] = dword_140404A6C[468652923];
-  dword_140404A6C[464720562] = dword_140404A6C[468652931];
-  dword_140404A6C[464720559] = v2 - dword_140404A6C[468652928] - dword_140404A6C[468652931];
-  dword_140404A6C[464720561] = dword_140404A6C[468652926];
-  dword_140404A6C[464720564] = dword_140404A6C[468652929];
-  dword_140404A6C[464720568] = dword_140404A6C[468652937];
-  dword_140404A6C[464720565] = v2 - dword_140404A6C[468652937] - dword_140404A6C[468652934];
-  dword_140404A6C[464720567] = dword_140404A6C[468652932];
-  dword_140404A6C[464720570] = dword_140404A6C[468652935];
-  dword_140404A6C[464720574] = dword_140404A6C[468652943];
-  dword_140404A6C[464720571] = v2 - dword_140404A6C[468652943] - dword_140404A6C[468652940];
-  dword_140404A6C[464720573] = dword_140404A6C[468652938];
-  dword_140404A6C[464720576] = dword_140404A6C[468652941];
-  dword_140404A6C[464720580] = dword_140404A6C[468652949];
-  dword_140404A6C[464720577] = v2 - dword_140404A6C[468652949] - dword_140404A6C[468652946];
-  dword_140404A6C[464720579] = dword_140404A6C[468652944];
-  dword_140404A6C[464720582] = dword_140404A6C[468652947];
-  dword_140404A6C[464720586] = dword_140404A6C[468652955];
-  dword_140404A6C[464720583] = v2 - dword_140404A6C[468652955] - dword_140404A6C[468652952];
-  dword_140404A6C[464720585] = dword_140404A6C[468652950];
-  dword_140404A6C[464720588] = dword_140404A6C[468652953];
-  dword_140404A6C[464720592] = dword_140404A6C[468652961];
-  dword_140404A6C[464720589] = v2 - dword_140404A6C[468652961] - dword_140404A6C[468652958];
-  dword_140404A6C[464720591] = dword_140404A6C[468652956];
-  dword_140404A6C[464720594] = dword_140404A6C[468652959];
-  dword_140404A6C[464720598] = dword_140404A6C[468652967];
-  dword_140404A6C[464720595] = v2 - dword_140404A6C[468652967] - dword_140404A6C[468652964];
-  dword_140404A6C[464720597] = dword_140404A6C[468652962];
-  dword_140404A6C[464720600] = dword_140404A6C[468652965];
-  dword_140404A6C[464720604] = dword_140404A6C[468652973];
-  dword_140404A6C[460788387] = v2;
-  dword_140404A6C[464720601] = v2 - dword_140404A6C[468652973] - dword_140404A6C[468652970];
-  dword_140404A6C[464720603] = dword_140404A6C[468652968];
-  dword_140404A6C[464720606] = dword_140404A6C[468652971];
-  dword_140404A6C[464720610] = dword_140404A6C[468652979];
-  dword_140404A6C[464720607] = v2 - dword_140404A6C[468652979] - dword_140404A6C[468652976];
-  dword_140404A6C[464720609] = dword_140404A6C[468652974];
-  dword_140404A6C[464720612] = dword_140404A6C[468652977];
-  dword_140404A6C[464720616] = dword_140404A6C[468652985];
-  dword_140404A6C[464720613] = v2 - dword_140404A6C[468652985] - dword_140404A6C[468652982];
-  dword_140404A6C[464720615] = dword_140404A6C[468652980];
-  dword_140404A6C[464720618] = dword_140404A6C[468652983];
-  dword_140404A6C[464720622] = dword_140404A6C[468652991];
-  dword_140404A6C[464720619] = v2 - dword_140404A6C[468652991] - dword_140404A6C[468652988];
-  dword_140404A6C[464720621] = dword_140404A6C[468652986];
-  dword_140404A6C[464720624] = dword_140404A6C[468652989];
-  dword_140404A6C[464720628] = dword_140404A6C[468652997];
-  dword_140404A6C[464720625] = v2 - dword_140404A6C[468652997] - dword_140404A6C[468652994];
-  dword_140404A6C[464720627] = dword_140404A6C[468652992];
-  dword_140404A6C[464720630] = dword_140404A6C[468652995];
-  dword_140404A6C[464720634] = dword_140404A6C[468653003];
-  dword_140404A6C[464720631] = v2 - dword_140404A6C[468653000] - dword_140404A6C[468653003];
-  dword_140404A6C[464720633] = dword_140404A6C[468652998];
-  dword_140404A6C[464720636] = dword_140404A6C[468653001];
-  dword_140404A6C[464720640] = dword_140404A6C[468653009];
-  dword_140404A6C[464720637] = v2 - dword_140404A6C[468653006] - dword_140404A6C[468653009];
-  dword_140404A6C[464720639] = dword_140404A6C[468653004];
-  dword_140404A6C[464720642] = dword_140404A6C[468653007];
-  dword_140404A6C[464720646] = dword_140404A6C[468653015];
-  dword_140404A6C[464720643] = v2 - dword_140404A6C[468653012] - dword_140404A6C[468653015];
-  dword_140404A6C[464720645] = dword_140404A6C[468653010];
-  dword_140404A6C[464720648] = dword_140404A6C[468653013];
-  dword_140404A6C[460788388] = v3;
-  return dword_140404A6C[468653013];
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 14500A704: using guessed type unsigned int;
-// 14500A708: using guessed type unsigned int;
-// 1AE1C94F8: using guessed type unsigned int;
-// 1AE1C94FC: using guessed type unsigned int;
-// 1AE1C9500: using guessed type unsigned int;
-// 1AF0C9510: using guessed type unsigned int;
-// 1AF0C9518: using guessed type unsigned int;
-// 1AF0C951C: using guessed type unsigned int;
-// 1AF0C9520: using guessed type unsigned int;
-// 1AF0C9524: using guessed type unsigned int;
-// 1AF0C9528: using guessed type unsigned int;
-// 1AF0C9530: using guessed type unsigned int;
-// 1AF0C9534: using guessed type unsigned int;
-// 1AF0C9538: using guessed type unsigned int;
-// 1AF0C953C: using guessed type unsigned int;
-// 1AF0C9540: using guessed type unsigned int;
-// 1AF0C9548: using guessed type unsigned int;
-// 1AF0C954C: using guessed type unsigned int;
-// 1AF0C9550: using guessed type unsigned int;
-// 1AF0C9554: using guessed type unsigned int;
-// 1AF0C9558: using guessed type unsigned int;
-// 1AF0C9560: using guessed type unsigned int;
-// 1AF0C9564: using guessed type unsigned int;
-// 1AF0C9568: using guessed type unsigned int;
-// 1AF0C956C: using guessed type unsigned int;
-// 1AF0C9570: using guessed type unsigned int;
-// 1AF0C9578: using guessed type unsigned int;
-// 1AF0C957C: using guessed type unsigned int;
-// 1AF0C9580: using guessed type unsigned int;
-// 1AF0C9584: using guessed type unsigned int;
-// 1AF0C9588: using guessed type unsigned int;
-// 1AF0C9590: using guessed type unsigned int;
-// 1AF0C9594: using guessed type unsigned int;
-// 1AF0C9598: using guessed type unsigned int;
-// 1AF0C959C: using guessed type unsigned int;
-// 1AF0C95A0: using guessed type unsigned int;
-// 1AF0C95A8: using guessed type unsigned int;
-// 1AF0C95AC: using guessed type unsigned int;
-// 1AF0C95B0: using guessed type unsigned int;
-// 1AF0C95B4: using guessed type unsigned int;
-// 1AF0C95B8: using guessed type unsigned int;
-// 1AF0C95C0: using guessed type unsigned int;
-// 1AF0C95C4: using guessed type unsigned int;
-// 1AF0C95C8: using guessed type unsigned int;
-// 1AF0C95CC: using guessed type unsigned int;
-// 1AF0C95D0: using guessed type unsigned int;
-// 1AF0C95D8: using guessed type unsigned int;
-// 1AF0C95DC: using guessed type unsigned int;
-// 1AF0C95E0: using guessed type unsigned int;
-// 1AF0C95E4: using guessed type unsigned int;
-// 1AF0C95E8: using guessed type unsigned int;
-// 1AF0C95F0: using guessed type unsigned int;
-// 1AF0C95F4: using guessed type unsigned int;
-// 1AF0C95F8: using guessed type unsigned int;
-// 1AF0C95FC: using guessed type unsigned int;
-// 1AF0C9600: using guessed type unsigned int;
-// 1AF0C9608: using guessed type unsigned int;
-// 1AF0C960C: using guessed type unsigned int;
-// 1AF0C9610: using guessed type unsigned int;
-// 1AF0C9614: using guessed type unsigned int;
-// 1AF0C9618: using guessed type unsigned int;
-// 1AF0C9620: using guessed type unsigned int;
-// 1AF0C9624: using guessed type unsigned int;
-// 1AF0C9628: using guessed type unsigned int;
-// 1AF0C962C: using guessed type unsigned int;
-// 1AF0C9630: using guessed type unsigned int;
-// 1AF0C9638: using guessed type unsigned int;
-// 1AF0C963C: using guessed type unsigned int;
-// 1AF0C9640: using guessed type unsigned int;
-// 1AF0C9644: using guessed type unsigned int;
-// 1AF0C9648: using guessed type unsigned int;
-// 1AF0C9650: using guessed type unsigned int;
-// 1AF0C9654: using guessed type unsigned int;
-// 1AF0C9658: using guessed type unsigned int;
-// 1AF0C965C: using guessed type unsigned int;
-// 1AF0C9660: using guessed type unsigned int;
-// 1AF0C9668: using guessed type unsigned int;
-// 1AF0C966C: using guessed type unsigned int;
-// 1AF0C9670: using guessed type unsigned int;
-// 1AF0C9674: using guessed type unsigned int;
-// 1AF0C9678: using guessed type unsigned int;
-// 1AF0C9680: using guessed type unsigned int;
-// 1AF0C9684: using guessed type unsigned int;
-// 1AF0C9688: using guessed type unsigned int;
-// 1AF0C968C: using guessed type unsigned int;
-// 1AFFC984C: using guessed type unsigned int;
-// 1AFFC9858: using guessed type unsigned int;
-// 1AFFC985C: using guessed type unsigned int;
-// 1AFFC9860: using guessed type unsigned int;
-// 1AFFC9864: using guessed type unsigned int;
-// 1AFFC9870: using guessed type unsigned int;
-// 1AFFC9874: using guessed type unsigned int;
-// 1AFFC9878: using guessed type unsigned int;
-// 1AFFC987C: using guessed type unsigned int;
-// 1AFFC9888: using guessed type unsigned int;
-// 1AFFC988C: using guessed type unsigned int;
-// 1AFFC9890: using guessed type unsigned int;
-// 1AFFC9894: using guessed type unsigned int;
-// 1AFFC98A0: using guessed type unsigned int;
-// 1AFFC98A4: using guessed type unsigned int;
-// 1AFFC98A8: using guessed type unsigned int;
-// 1AFFC98AC: using guessed type unsigned int;
-// 1AFFC98B8: using guessed type unsigned int;
-// 1AFFC98BC: using guessed type unsigned int;
-// 1AFFC98C0: using guessed type unsigned int;
-// 1AFFC98C4: using guessed type unsigned int;
-// 1AFFC98D0: using guessed type unsigned int;
-// 1AFFC98D4: using guessed type unsigned int;
-// 1AFFC98D8: using guessed type unsigned int;
-// 1AFFC98DC: using guessed type unsigned int;
-// 1AFFC98E8: using guessed type unsigned int;
-// 1AFFC98EC: using guessed type unsigned int;
-// 1AFFC98F0: using guessed type unsigned int;
-// 1AFFC98F4: using guessed type unsigned int;
-// 1AFFC9900: using guessed type unsigned int;
-// 1AFFC9904: using guessed type unsigned int;
-// 1AFFC9908: using guessed type unsigned int;
-// 1AFFC990C: using guessed type unsigned int;
-// 1AFFC9918: using guessed type unsigned int;
-// 1AFFC991C: using guessed type unsigned int;
-// 1AFFC9920: using guessed type unsigned int;
-// 1AFFC9924: using guessed type unsigned int;
-// 1AFFC9930: using guessed type unsigned int;
-// 1AFFC9934: using guessed type unsigned int;
-// 1AFFC9938: using guessed type unsigned int;
-// 1AFFC993C: using guessed type unsigned int;
-// 1AFFC9948: using guessed type unsigned int;
-// 1AFFC994C: using guessed type unsigned int;
-// 1AFFC9950: using guessed type unsigned int;
-// 1AFFC9954: using guessed type unsigned int;
-// 1AFFC9960: using guessed type unsigned int;
-// 1AFFC9964: using guessed type unsigned int;
-// 1AFFC9968: using guessed type unsigned int;
-// 1AFFC996C: using guessed type unsigned int;
-// 1AFFC9978: using guessed type unsigned int;
-// 1AFFC997C: using guessed type unsigned int;
-// 1AFFC9980: using guessed type unsigned int;
-// 1AFFC9984: using guessed type unsigned int;
-// 1AFFC9990: using guessed type unsigned int;
-// 1AFFC9994: using guessed type unsigned int;
-// 1AFFC9998: using guessed type unsigned int;
-// 1AFFC999C: using guessed type unsigned int;
-// 1AFFC99A8: using guessed type unsigned int;
-// 1AFFC99AC: using guessed type unsigned int;
-// 1AFFC99B0: using guessed type unsigned int;
-// 1AFFC99B4: using guessed type unsigned int;
-// 1AFFC99C0: using guessed type unsigned int;
-// 1AFFC99C4: using guessed type unsigned int;
-// 1AFFC99C8: using guessed type unsigned int;
-
-//----- (000000014002EDF0) ----------------------------------------------------
-void            sub_14002EDF0(int a1, __int64 a2)
-{
-  __m128 v2; // xmm6
-  __int64 v4; // rdi
-  float v5; // xmm7_4
-  float v6; // xmm8_4
-  double v7; // xmm0_8
-  float v8; // xmm4_4
-  float v9; // xmm2_4
-  float v10; // xmm3_4
-  float v11; // xmm8_4
-  float v12; // xmm8_4
-  float v13; // xmm1_4
-  unsigned int v14; // xmm8_4
-  float v15; // xmm2_4
-  float v16; // xmm2_4
-  unsigned int v17; // xmm0_4
-
-  v2 = _mm_castsi128_ps(_mm_cvtsi32_si128((int)(*(unsigned int *)(a2 + 8))));
-  v4 = 7LL * a1;
-  SR_VEC_LANES(128, v2, f32)[0] = SR_VEC_LANES(128, v2, f32)[0] - *(float *)&dword_140404A6C[v4 + 284024383];
-  v5 = *(float *)a2 - *(float *)&dword_140404A6C[v4 + 284024381];
-  v6 = sub_14023F704(v5, -SR_VEC_LANES(128, v2, f32)[0]);
-  SR_VEC_LANES(128, v2, f32)[0] = (float)(SR_VEC_LANES(128, v2, f32)[0] * SR_VEC_LANES(128, v2, f32)[0]) + (float)(v5 * v5);
-  v7 = sub_14023EDE4(
-         (float)(*(float *)&dword_140404A6C[v4 + 284024382] - *(float *)(a2 + 4)),
-         SR_VEC_READ_LANES(128, _mm_sqrt_pd(_mm_cvtps_pd(v2)), f64)[0]);
-  v8 = *(float *)&dword_140404A6C[v4 + 284024384];
-  v9 = v7;
-  v10 = (float)(1.0 - *(float *)&dword_140404A6C[v4 + 284024386]) * 0.04908738521234375;
-  if ( (float)(v8 - v6) >= 3.14159265359 )
-    v6 = v6 + 6.2831854820251465;
-  if ( (float)(v6 - v8) >= 3.14159265359 )
-    v8 = v8 + 6.2831854820251465;
-  v11 = v6 - v8;
-  if ( v11 >= (float)-v10 )
-  {
-    if ( v11 <= v10 )
-      v12 = 0.0;
-    else
-      v12 = v11 - v10;
-  }
-  else
-  {
-    v12 = v11 + v10;
-  }
-  v13 = *(float *)&dword_140404A6C[v4 + 284024385];
-  *(float *)&v14 = (float)(v12 * 0.125) + *(float *)&dword_140404A6C[v4 + 284024384];
-  dword_140404A6C[v4 + 284024384] = v14;
-  if ( (float)(v13 - v9) >= 3.14159265359 )
-    v9 = v9 + 6.2831854820251465;
-  if ( (float)(v9 - v13) >= 3.14159265359 )
-    v13 = v13 + 6.2831854820251465;
-  v15 = v9 - v13;
-  if ( v15 >= (float)-v10 )
-  {
-    if ( v15 <= v10 )
-      v16 = 0.0;
-    else
-      v16 = v15 - v10;
-  }
-  else
-  {
-    v16 = v15 + v10;
-  }
-  *(float *)&dword_140404A6C[v4 + 284024385] = (float)(v16 * 0.125) + *(float *)&dword_140404A6C[v4 + 284024385];
-  if ( *(float *)&v14 < -3.14159265359 )
-  {
-    *(float *)&v17 = *(float *)&v14 + 6.28318530718;
-    dword_140404A6C[v4 + 284024384] = v17;
-    v14 = v17;
-  }
-  if ( *(float *)&v14 > 3.14159265359 )
-    *(float *)&dword_140404A6C[v4 + 284024384] = *(float *)&v14 - 6.28318530718;
-}
-
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
-//----- (0000000140056560) ----------------------------------------------------
-void            sub_140056560()
-{
-  unsigned int v0; // r12d
-  float *v1; // rbp
-  int v2; // r15d
-  int v3; // esi
-  int v4; // edi
-  int v5; // r14d
-  float v6; // xmm1_4
-  float v7; // xmm2_4
-  int v8; // ebx
-  float v9; // xmm7_4
-  float v10; // xmm8_4
-  float v11; // xmm8_4
-  float v12; // xmm10_4
-  float v13; // xmm7_4
-  float v14; // xmm6_4
-  float v15; // xmm2_4
-  float v16; // xmm0_4
-  float v17; // xmm2_4
-  float v18; // xmm2_4
-  float v19; // [rsp+110h] [rbp+8h]
-
-  v0 = dword_140404A6C[284024893];
-  v1 = (float *)&dword_140404A6C[188872560];
-  v2 = 0;
-  v3 = 768;
-  dword_140404A6C[188872557] = -981467136;
-  dword_140404A6C[188872559] = -981467136;
-  do
-  {
-    v4 = 0;
-    v5 = 638;
-    v6 = (float)v2 * 0.015625;
-    v7 = (float)(v2 - 704 + 64) * (float)(v2 - 704 + 64);
-    v19 = v6 * 0.5;
-    do
-    {
-      v8 = v4 - 704;
-      v9 = (float)v4 * 0.015625;
-      v10 = fminf(
-              fmaxf((float)(fsqrt((float)((float)(v8 + 64) * (float)(v8 + 64)) + v7) * 0.00390625) - 0.75, 0.0),
-              3.0);
-      v11 = v10 * v10;
-      v12 = SR_VEC_READ_LANES(128, sub_1401305F0(v9, v6, -1), f32)[0] + v11;
-      v13 = (float)((float)(SR_VEC_READ_LANES(128, sub_1401305F0(v9 * 0.5, v19, -1), f32)[0] * 32.0) + (float)(v11 * 8.0)) * v11;
-      v14 = fminf(
-              fmaxf(
-                (float)(fsqrt((float)((float)v8 * (float)v8) + (float)((float)(v2 - 704) * (float)(v2 - 704))) - 320.0)
-              * 0.015625,
-                0.0),
-              1.0);
-      *v1 = (float)((float)((float)((float)(SR_VEC_READ_LANES(128, sub_1401305F0((float)v4 * 0.03125, (float)v2 * 0.03125, -1), f32)[0] * 8.0)
-                                  + 23.75)
-                          + (float)((float)(v12 * 16.0) + v13))
-                  * v14)
-          + (float)((float)(1.0 - v14) * 23.875);
-      if ( v0 )
-        goto LABEL_12;
-      if ( v3 <= 130 )
-      {
-        if ( v3 <= 0 )
-          goto LABEL_12;
-      }
-      else if ( (unsigned int)v4 <= 0x2FF )
-      {
-        v15 = fminf(
-                fmaxf(
-                  fmaxf(1.0 - fminf((float)(v3 - 130) * 0.25, 1.0), 1.0 - fminf((float)(v5 + 130) * 0.25, 1.0)),
-                  0.0),
-                1.0);
-        *v1 = (float)((float)(36.0 - (float)(v15 * 24.0)) * (float)(v15 * v15)) + 11.75;
-      }
-      if ( (unsigned int)v4 <= 0x27D )
-      {
-        v16 = fminf((float)v3 * 0.25, 1.0);
-        v17 = 1.0 - fminf((float)v5 * 0.25, 1.0);
-        if ( v3 > 130 )
-          v17 = 0.0;
-        v18 = fminf(fmaxf(fmaxf(v17, 1.0 - v16), 0.0), 1.0);
-        *v1 = (float)((float)(36.0 - (float)(v18 * 24.0)) * (float)(v18 * v18)) + 11.75;
-      }
-LABEL_12:
-      v6 = (float)v2 * 0.015625;
-      ++v4;
-      v7 = (float)(v2 - 704 + 64) * (float)(v2 - 704 + 64);
-      --v5;
-      ++v1;
-    }
-    while ( v4 < 2049 );
-    ++v2;
-    --v3;
-  }
-  while ( v3 > -1281 );
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 16D482820: using guessed type unsigned int;
-// 16D482828: using guessed type unsigned int;
-// 183F7CB60: using guessed type unsigned int;
-
-//----- (0000000140068FC0) ----------------------------------------------------
-__int64            sub_140068FC0(int a1, char *a2)
-{
-  __int64 v2; // rbx
-  unsigned int v3; // ebp
-  unsigned int v4; // r15d
-  int *v5; // rdi
-  int v6; // r14d
-  __int64 v7; // r13
-  __int64 v8; // r10
-  __int64 v9; // r12
-  unsigned int *v10; // rsi
-  int v11; // r8d
-  int v12; // r11d
-  __int64 v13; // rdx
-  int v14; // r9d
-  unsigned int v15; // r12d
-  unsigned int v16; // r10d
-  unsigned int v17; // r11d
-  signed int v18; // esi
-  int v19; // ebp
-  int v20; // r15d
-  int v21; // r9d
-  __int64 v22; // r8
-  signed int v23; // eax
-  signed int *i; // rcx
-  signed int v25; // edx
-  int v26; // ecx
-  int v27; // eax
-  __int64 v28; // rax
-  __int64 v30; // r8
-  float v31; // xmm3_4
-  int v32; // r11d
-  float v33; // xmm4_4
-  float v34; // xmm2_4
-  float v35; // xmm1_4
-  int v36; // edi
-  __int64 v37; // r13
-  __int64 v38; // rax
-  int v39; // r9d
-  __int64 v40; // r8
-  __int64 v41; // r10
-  __int64 v42; // [rsp-20h] [rbp-10118h] BYREF
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_140068FC0[32800];
-#define v43 (*(unsigned int (*))(void *)(sr_frame_140068FC0 + 0)) /* [rsp+30h] */
-#define v44 (*(unsigned int (*))(void *)(sr_frame_140068FC0 + 4)) /* [rsp+34h] */
-#define v45 (*(int (*))(void *)(sr_frame_140068FC0 + 8)) /* [rsp+38h] */
-#define v46 (*(_DWORD (*)[8192])(void *)(sr_frame_140068FC0 + 16)) /* [rsp+40h] */
-#define v47 (*(__int64 (*))(void *)(sr_frame_140068FC0 + 32784)) /* [rsp+8040h] */
-
-  v2 = 49166LL * a1;
-  if ( (int)dword_140404A6C[v2 + 433435865] < 4096 && (unsigned int)sub_140079840(a2) )
-  {
-    v3 = dword_140404A6C[468765293];
-    v4 = dword_140404A6C[468765294];
-    v5 = (int *)&dword_140404A6C[v2 + 433435853];
-    v6 = dword_140404A6C[v2 + 433435853];
-    if ( v6 > 0 )
-      sub_1401FCD30((void *)(uintptr_t)(v46), 0, 4LL * (unsigned int)v6);
-    v7 = (int)dword_140404A6C[v2 + 433435865];
-    v45 = v7;
-    if ( (int)v7 > 0 )
-    {
-      v8 = 0;
-      v9 = (unsigned int)v7;
-      v10 = &dword_140404A6C[v2 + 433435868];
-      do
-      {
-        v11 = *(v10 - 2);
-        v12 = v11 + *v10;
-        if ( v11 < v12 )
-        {
-          v13 = (int)*(v10 - 2);
-          do
-          {
-            if ( v13 >= 0 && v11 < v6 )
-            {
-              v14 = v5[v8 + 16] + v5[v8 + 14];
-              if ( v46[v13] < v14 )
-                v46[v13] = v14;
-            }
-            ++v11;
-            ++v13;
-          }
-          while ( v11 < v12 );
-        }
-        v8 += 12;
-        v10 += 12;
-        --v9;
-      }
-      while ( v9 );
-    }
-    v15 = 0;
-    v44 = v3;
-    v43 = 0;
-    v16 = v3;
-    v17 = v4;
-    v18 = 0;
-    v19 = v3 + 2;
-    v20 = v4 + 2;
-    v21 = dword_140404A6C[v2 + 433435854] - v20;
-    if ( v21 >= 0 )
-    {
-      v22 = 0;
-      while ( 2 )
-      {
-        v23 = v15;
-        for ( i = &v46[v22]; ; ++i )
-        {
-          if ( v23 >= (int)(v15 + v19) )
-          {
-            v30 = v2 * 4 + 48 * v7;
-            v31 = (float)(int)(v18 + 1 + v17);
-            v32 = 0;
-            *(unsigned int *)((char *)&dword_140404A6C[433435866] + v30) = v15;
-            *(unsigned int *)((char *)&dword_140404A6C[433435867] + v30) = v18;
-            *(unsigned int *)((char *)&dword_140404A6C[433435868] + v30) = v19;
-            *(unsigned int *)((char *)&dword_140404A6C[433435869] + v30) = v20;
-            v33 = (float)(int)(v15 + 1);
-            v34 = (float)(int)(v15 + 1 + v16);
-            *(float *)((char *)&dword_140404A6C[433435870] + v30) = v33 / (float)*v5;
-            *(float *)((char *)&dword_140404A6C[433435871] + v30) = v31 / (float)(int)dword_140404A6C[v2 + 433435854];
-            *(float *)((char *)&dword_140404A6C[433435872] + v30) = v34 / (float)*v5;
-            *(float *)((char *)&dword_140404A6C[433435873] + v30) = v31 / (float)(int)dword_140404A6C[v2 + 433435854];
-            *(float *)((char *)&dword_140404A6C[433435874] + v30) = v34 / (float)*v5;
-            v35 = (float)(v18 + 1);
-            *(float *)((char *)&dword_140404A6C[433435875] + v30) = v35 / (float)(int)dword_140404A6C[v2 + 433435854];
-            *(float *)((char *)&dword_140404A6C[433435876] + v30) = v33 / (float)*v5;
-            *(float *)((char *)&dword_140404A6C[433435877] + v30) = v35 / (float)(int)dword_140404A6C[v2 + 433435854];
-            ++dword_140404A6C[v2 + 433435865];
-            if ( v20 > 0 )
-            {
-              v36 = -v16;
-              v37 = 0;
-              v38 = 4LL * v19;
-              do
-              {
-                v39 = 0;
-                if ( v19 > 0 )
-                {
-                  v40 = 0;
-                  v41 = v37;
-                  do
-                  {
-                    *(_DWORD *)(v41 + *(_QWORD *)&dword_140404A6C[v2 + 433435863]) = 0;
-                    if ( v32 && v32 < v20 - 1 && v40 && v39 < v19 - 1 )
-                      *(_DWORD *)(v41 + *(_QWORD *)&dword_140404A6C[v2 + 433435863]) = dword_140404A6C[v36 + 468765294 + v39];
-                    ++v39;
-                    ++v40;
-                    v41 += 4;
-                  }
-                  while ( v40 < v19 );
-                  v16 = v44;
-                  v38 = 4LL * v19;
-                }
-                ++v32;
-                v37 += v38;
-                v36 += v16;
-              }
-              while ( v32 < v20 );
-              v15 = v43;
-            }
-            qword_140404050(3553, dword_140404A6C[v2 + 433435861]);
-            (*(void (           **)(__int64, _QWORD, _QWORD, _QWORD, int, int, int, int, _QWORD))&flt_140384000[131090])(
-              3553,
-              0,
-              v15,
-              (unsigned int)v18,
-              v19,
-              v20,
-              6408,
-              5121,
-              *(_QWORD *)&dword_140404A6C[v2 + 433435863]);
-            return (unsigned int)v45;
-          }
-          if ( v18 < *i )
-            break;
-          ++v23;
-        }
-        v25 = v15 + 1;
-        v26 = v6 - v19;
-        v27 = v18 + 1;
-        if ( (int)(v15 + 1) <= v6 - v19 )
-          v27 = v18;
-        v15 = 0;
-        v18 = v27;
-        v28 = v22 + 1;
-        if ( v25 <= v26 )
-          v15 = v25;
-        v22 = 0;
-        v43 = v15;
-        if ( v25 <= v26 )
-          v22 = v28;
-        if ( v18 <= v21 )
-          continue;
-        break;
-      }
-    }
-  }
-  return (unsigned int)-1;
-}
-#undef v43
-#undef v44
-#undef v45
-#undef v46
-#undef v47
-
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404048: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
-//----- (000000014006C780) ----------------------------------------------------
-__int64 sub_14006C780()
-{
-  extern void camera_update_letterbox(void);
-  camera_update_letterbox();
-  return 0;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 160FC47D8: using guessed type unsigned int;
-// 160FC47F0: using guessed type unsigned int;
-// 160FC47F8: using guessed type unsigned int;
-// 160FC47FC: using guessed type unsigned int;
-
-//----- (000000014006CA30) ----------------------------------------------------
-__int64            sub_14006CA30(unsigned int a1, unsigned int a2)
-{
-  dword_140404A6C[433435853] = a1;
-  dword_140404A6C[433435854] = a2;
-  dword_140404A6C[433435865] = 0;
-  free(*(void **)&dword_140404A6C[433435863]);
-  *(_QWORD *)&dword_140404A6C[433435863] = sr_path_malloc(4 * dword_140404A6C[433435853] * dword_140404A6C[433435854]);
-  sub_1401FCD30(
-    (void *)(uintptr_t)(*(_WORD **)&dword_140404A6C[433435863]),
-    0xFFu,
-    4 * dword_140404A6C[433435853] * dword_140404A6C[433435854]);
-  unk_140404060(1, &dword_140404A6C[433435861]);
-  qword_140404050(3553, dword_140404A6C[433435861]);
-  (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(3553, 10242, 33071);
-  (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(3553, 10243, 33071);
-  (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(3553, 10240, 9729);
-  (*(void (           **)(__int64, __int64, __int64))&dword_140404A6C[18215077])(3553, 10241, 9729);
-  (*(void (           **)(__int64, _QWORD, __int64, _QWORD, unsigned int, _DWORD, int, int, _QWORD))&dword_140404A6C[18215083])(
-    3553,
-    0,
-    6408,
-    dword_140404A6C[433435853],
-    dword_140404A6C[433435854],
-    0,
-    6408,
-    5121,
-    *(_QWORD *)&dword_140404A6C[433435863]);
-  return 0;
-}
-
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404060: using guessed type __int64 (__fastcall *unk_140404060)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D18: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 1A7971DA0: using guessed type unsigned int;
-// 1A7971DA4: using guessed type unsigned int;
-// 1A7971DD0: using guessed type unsigned int;
-
-//----- (000000014006CFF0) ----------------------------------------------------
-// local variable allocation has failed, the output may be wrong!
-__int64            sub_14006CFF0(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9)
-{
-  /* Clean implementation: src/engine/renderer.c, checked against the original executable
-     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
-  extern void renderer_draw_textured_rect(float x, float y, float width, float height, int flags,
-                                          float red, float green, float blue, float alpha);
-  /* x, y and width arrive as float bits in wider containers; the colour as float bits in ints. */
-  renderer_draw_textured_rect(*(float *)&a1, *(float *)&a2, *(float *)&a3, a4, a5,
-                              *(float *)&a6, *(float *)&a7, *(float *)&a8, *(float *)&a9);
-  return 0;
-}
-
-// 14006CFF0: inconsistent variable size for 'xmm0_8.8'
-// 14006CFF0: inconsistent variable size for 'xmm1_8.8'
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404190: using guessed type __int64 (__fastcall *unk_140404190)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404470: using guessed type __int64 (__fastcall *unk_140404470)(_QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A8BF79CC: using guessed type unsigned int;
-// 1A8BF79D0: using guessed type unsigned int;
-// 1A8BF79D4: using guessed type unsigned int;
-// 1A8BF79D8: using guessed type unsigned int;
-// 1A8BF79DC: using guessed type unsigned int;
-// 1A8BF79E0: using guessed type unsigned int;
-// 1A8BF79E8: using guessed type unsigned int;
-// 1A8BF79F0: using guessed type unsigned int;
-// 1A8BF79F4: using guessed type unsigned int;
-// 1A8BF7A04: using guessed type unsigned int;
-// 1A8BF7A08: using guessed type unsigned int;
-// 1A8BF7A10: using guessed type unsigned int;
-// 1A8BF7A18: using guessed type unsigned int;
-// 1A8BF7A1C: using guessed type unsigned int;
-
-//----- (000000014006D300) ----------------------------------------------------
-__int64            sr_CSDrawAtlasEntry(
-        int a1,
-        int a2,
-        float a3,
-        float a4,
-        float a5,
-        float a6,
-        char a7,
-        int a8,
-        int a9,
-        int a10,
-        int a11)
-{
-  /* Clean implementation: src/engine/renderer.c, checked against the original executable
-     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
-  extern void renderer_draw_atlas_sprite(int atlas, int entry, float x, float y, float width, float height,
-                                         int flags, float red, float green, float blue, float alpha);
-  /* The colour arrives as float bits in ints. */
-  renderer_draw_atlas_sprite(a1, a2, a3, a4, a5, a6, a7,
-                             *(float *)&a8, *(float *)&a9, *(float *)&a10, *(float *)&a11);
-  return 0;
-}
-
-// 14006D548: variable 'v22' is possibly undefined
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404190: using guessed type __int64 (__fastcall *unk_140404190)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404470: using guessed type __int64 (__fastcall *unk_140404470)(_QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A8BF79CC: using guessed type unsigned int;
-// 1A8BF79D0: using guessed type unsigned int;
-// 1A8BF79D4: using guessed type unsigned int;
-// 1A8BF79DC: using guessed type unsigned int;
-// 1A8BF79E4: using guessed type unsigned int;
-// 1A8BF79EC: using guessed type unsigned int;
-// 1A8BF79F4: using guessed type unsigned int;
-// 1A8BF79FC: using guessed type unsigned int;
-// 1A8BF7A04: using guessed type unsigned int;
-// 1A8BF7A0C: using guessed type unsigned int;
-// 1A8BF7A14: using guessed type unsigned int;
-// 1A8BF7A1C: using guessed type unsigned int;
-// 1A8BF7A24: using guessed type unsigned int;
-// 1A8BF7A2C: using guessed type unsigned int;
-
-//----- (000000014006D660) ----------------------------------------------------
-// local variable allocation has failed, the output may be wrong!
-__int64            sub_14006D660(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9)
-{
-  /* Clean implementation: src/engine/renderer.c, checked against the original executable
-     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
-  extern void renderer_draw_flat_rect(float x, float y, float width, float height, int flags,
-                                      float red, float green, float blue, float alpha);
-  /* x, y and width arrive as float bits in wider containers; the colour as float bits in ints. */
-  renderer_draw_flat_rect(*(float *)&a1, *(float *)&a2, *(float *)&a3, a4, a5,
-                          *(float *)&a6, *(float *)&a7, *(float *)&a8, *(float *)&a9);
-  return 0;
-}
-
-//----- (000000014006E0D0) ----------------------------------------------------
-void            sub_14006E0D0(__int64 a1, __int64 a2, __int64 a3)
-{
-  /* Clean implementation: src/engine/renderer.c, checked against the original executable
-     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
-  extern void renderer_batch_flush(void);
-  (void)a1; (void)a2; (void)a3;
-  renderer_batch_flush();
-}
-
-// 14006E241: variable 'v3' is possibly undefined
-// 14006E263: variable 'v6' is possibly undefined
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-
-//----- (000000014006E2D0) ----------------------------------------------------
-void            sub_14006E2D0(__int64 a1, __int64 a2, __int64 a3)
-{
-  extern void renderer_batch_draw(void);
-  renderer_batch_draw();
-}
-
-// 14006E41B: variable 'v3' is possibly undefined
-// 14006E43D: variable 'v6' is possibly undefined
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-
-//----- (0000000140079840) ----------------------------------------------------
-__int64            sub_140079840(char *a1)
-{
-  __int64 result; // rax
-  unsigned __int8 *v2; // rcx
-  int v3; // r12d
-  signed int v4; // edx
-  int v5; // ebx
-  signed int v6; // ebp
-  unsigned int v7; // r13d
-  int v8; // r15d
-  int v9; // r14d
-  int v10; // esi
-  int v11; // edi
-  int v12; // r9d
-  int v13; // r10d
-  int v14; // r8d
-  int v15; // r11d
-  int v16; // eax
-  unsigned int v17; // [rsp+68h] [rbp+10h] BYREF
-
-  result = sub_140170C30(a1, (int *)&dword_140404A6C[468765293], (int *)&dword_140404A6C[468765294], &v17, 0);
-  v2 = (unsigned __int8 *)result;
-  if ( result )
-  {
-    v3 = dword_140404A6C[468765293];
-    if ( (int)dword_140404A6C[468765293] > 4096
-      || (v4 = dword_140404A6C[468765294], (int)dword_140404A6C[468765294] > 4096)
-      || (v5 = v17, v17 - 1 > 3) )
-    {
-      free((void *)result);
-      return 0;
-    }
-    else
-    {
-      v6 = 0;
-      v7 = v17 * dword_140404A6C[468765293];
-      v17 *= dword_140404A6C[468765293];
-      if ( (int)dword_140404A6C[468765294] > 0 )
-      {
-        v8 = 0;
-        do
-        {
-          v9 = 0;
-          if ( v3 > 0 )
-          {
-            v10 = v8;
-            v11 = v8;
-            do
-            {
-              v12 = v2[v11];
-              if ( v5 <= 1 )
-              {
-                v13 = v2[v11];
-                v14 = v13;
-              }
-              else
-              {
-                v13 = v2[v11 + 1];
-                v14 = v2[v11 + 2];
-              }
-              if ( v5 == 4 )
-                v15 = v2[v10 + 3];
-              else
-                v15 = 255;
-              v11 += v5;
-              v10 += 4;
-              v16 = v9 + v3 * (v4 - v6 - 1);
-              ++v9;
-              dword_140404A6C[v16 + 468765295] = (v15 << 24) + v12 + (v14 << 16) + (v13 << 8);
-              v3 = dword_140404A6C[468765293];
-              v4 = dword_140404A6C[468765294];
-            }
-            while ( v9 < (int)dword_140404A6C[468765293] );
-            v7 = v17;
-          }
-          ++v6;
-          v8 += v7;
-        }
-        while ( v6 < v4 );
-      }
-      free(v2);
-      return 1;
-    }
-  }
-  return result;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
-//----- (0000000140079AA0) ----------------------------------------------------
-__int64            sub_140079AA0(
-        int a1,
-        char *a2,
-        int a3,
-        unsigned int a4,
-        unsigned int a5,
-        unsigned int a6,
-        unsigned int a7,
-        int a8)
-{
-  __int64 v8; // rdi
-  __int64 result; // rax
-  __int64 v12; // r14
-  void **v13; // rbx
-  signed int v14; // r10d
-  signed int i; // eax
-  __int64 v16; // r9
-  signed int v17; // ecx
-  signed int v18; // edi
-  void **v19; // rsi
-  signed int j; // edi
-
-  v8 = a1;
-  result = sub_140079840(a2);
-  if ( (_DWORD)result )
-  {
-    v12 = 42 * v8;
-    dword_140404A6C[v12 + 436582477] = dword_140404A6C[468765293];
-    dword_140404A6C[v12 + 436582478] = dword_140404A6C[468765294];
-    dword_140404A6C[v12 + 436582482] = a4;
-    dword_140404A6C[v12 + 436582483] = a5;
-    v13 = (void **)&dword_140404A6C[42 * v8 + 436582487];
-    dword_140404A6C[v12 + 436582484] = a6;
-    dword_140404A6C[v12 + 436582485] = a7;
-    dword_140404A6C[v12 + 436582479] = 1;
-    dword_140404A6C[v12 + 436582480] = 6408;
-    dword_140404A6C[v12 + 436582481] = 6408;
-    free(*v13);
-    *v13 = (void *)sr_path_malloc((int)(4 * dword_140404A6C[42 * v8 + 436582477] * dword_140404A6C[42 * v8 + 436582478]));
-    v14 = 0;
-    if ( (int)dword_140404A6C[42 * v8 + 436582478] > 0 )
-    {
-      do
-      {
-        for ( i = 0; i < (int)dword_140404A6C[v12 + 436582477]; *((_DWORD *)*v13 + v17) = dword_140404A6C[v16 + 468765295] )
-        {
-          v16 = i + v14 * dword_140404A6C[468765293];
-          v17 = i + v14 * dword_140404A6C[v12 + 436582477];
-          ++i;
-        }
-        ++v14;
-      }
-      while ( v14 < (int)dword_140404A6C[v12 + 436582478] );
-    }
-    qword_140404050(3553, dword_140404A6C[v12 + 436582486]);
-    (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
-      3553,
-      10242,
-      dword_140404A6C[v12 + 436582482]);
-    (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
-      3553,
-      10243,
-      dword_140404A6C[v12 + 436582483]);
-    (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
-      3553,
-      10240,
-      dword_140404A6C[v12 + 436582484]);
-    (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
-      3553,
-      10241,
-      dword_140404A6C[v12 + 436582485]);
-    v18 = 0;
-    if ( (int)dword_140404A6C[v12 + 436582479] > 0 )
-    {
-      v19 = v13;
-      do
-      {
-        (*(void (           **)(__int64, _QWORD, _QWORD, _QWORD, int, _DWORD, unsigned int, int, void *))&dword_140404A6C[18215083])(
-          3553,
-          (unsigned int)v18,
-          dword_140404A6C[v12 + 436582481],
-          (unsigned int)((int)dword_140404A6C[v12 + 436582477] >> v18),
-          (int)dword_140404A6C[v12 + 436582478] >> v18,
-          0,
-          dword_140404A6C[v12 + 436582480],
-          5121,
-          *v19);
-        ++v18;
-        ++v19;
-      }
-      while ( v18 < (int)dword_140404A6C[v12 + 436582479] );
-    }
-    if ( a3 )
-      unk_140404738(3553);
-    if ( a8 )
-    {
-      for ( j = 0; j < (int)dword_140404A6C[v12 + 436582479]; ++v13 )
-      {
-        if ( *v13 )
-        {
-          free(*v13);
-          *v13 = nullptr;
-        }
-        ++j;
-      }
-    }
-    return 1;
-  }
-  return result;
-}
-
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404738: using guessed type double (__fastcall *unk_140404738)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D18: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
-//----- (000000014007A2C0) ----------------------------------------------------
-__int64            sub_14007A2C0(int a1, int a2, int a3, int a4, float a5, float a6, float a7)
-{
-  extern void camera_begin_orthographic(int x, int y, int width, int height,
-                                        float half_width, float half_height, float half_depth);
-  camera_begin_orthographic(a1, a2, a3, a4, a5, a6, a7);
-  return 0;
-}
-
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278D90: using guessed type __int128 xmmword_140278D90;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E5AC: using guessed type unsigned int;
-// 1A724E5B0: using guessed type unsigned int;
-// 1A724E5BC: using guessed type unsigned int;
-// 1A724E5CC: using guessed type unsigned int;
-// 1A724E5DC: using guessed type unsigned int;
-// 1A724E5FC: using guessed type unsigned int;
-// 1A724E60C: using guessed type unsigned int;
-// 1A724E61C: using guessed type unsigned int;
-// 1A724E63C: using guessed type unsigned int;
-
-//----- (000000014007B6F0) ----------------------------------------------------
-__int64            sub_14007B6F0(float a1, float a2, float a3)
-{
-  extern void camera_scale_model(float x, float y, float z);
-  camera_scale_model(a1, a2, a3);
-  return 0;
-}
-#undef v4
-#undef v5
-#undef v6
-#undef v7
-#undef v8
-#undef v9
-#undef v10
-#undef v11
-#undef v12
-#undef v13
-#undef v14
-
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
-//----- (000000014007B7E0) ----------------------------------------------------
-__int64            sub_14007B7E0(float a1, float a2, float a3, float a4)
-{
-  extern void camera_set_scissor(float x, float y, float width, float height);
-  camera_set_scissor(a1, a2, a3, a4);
-  return 0;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980CE8: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-
-//----- (000000014007B990) ----------------------------------------------------
-__int64            sub_14007B990(unsigned int *a1, _DWORD *a2)
-{
-  extern void camera_set_model(const float position[3], const float rotation[9]);
-  camera_set_model((const float *)a1, (const float *)a2);
-  return 0;
-}
-#undef v11
-#undef v12
-#undef v13
-#undef v14
-
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A724E634: using guessed type unsigned int;
-// 1A724E638: using guessed type unsigned int;
-
-//----- (000000014007BB00) ----------------------------------------------------
-double sub_14007BB00()
-{
-  extern void camera_begin_2d(void);
-  camera_begin_2d();
-  return 0.0;
-}
-
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140302FE8: using guessed type __int64 (__fastcall *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D80: using guessed type __int64 (__fastcall *)(_QWORD);
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
-//----- (000000014007BCB0) ----------------------------------------------------
-void            sub_14007BCB0(int a1, int a2, int a3)
-{
-  __int64 v3; // rsi
-  signed int v6; // ebx
-  unsigned int *v7; // rdi
-  signed int v8; // edi
-  void **v9; // rbx
-
-  v3 = 42LL * a1;
-  qword_140404050(3553, dword_140404A6C[v3 + 436582486]);
-  (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
-    3553,
-    10242,
-    dword_140404A6C[v3 + 436582482]);
-  (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
-    3553,
-    10243,
-    dword_140404A6C[v3 + 436582483]);
-  (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
-    3553,
-    10240,
-    dword_140404A6C[v3 + 436582484]);
-  (*(void (           **)(__int64, __int64, _QWORD))&dword_140404A6C[18215077])(
-    3553,
-    10241,
-    dword_140404A6C[v3 + 436582485]);
-  v6 = 0;
-  if ( (int)dword_140404A6C[v3 + 436582479] > 0 )
-  {
-    v7 = &dword_140404A6C[v3 + 436582487];
-    do
-    {
-      (*(void (           **)(__int64, _QWORD, _QWORD, _QWORD, int, _DWORD, unsigned int, int, _QWORD))&dword_140404A6C[18215083])(
-        3553,
-        (unsigned int)v6,
-        dword_140404A6C[v3 + 436582481],
-        (unsigned int)((int)dword_140404A6C[v3 + 436582477] >> v6),
-        (int)dword_140404A6C[v3 + 436582478] >> v6,
-        0,
-        dword_140404A6C[v3 + 436582480],
-        5121,
-        *(_QWORD *)v7);
-      ++v6;
-      v7 += 2;
-    }
-    while ( v6 < (int)dword_140404A6C[v3 + 436582479] );
-  }
-  if ( a2 )
-    unk_140404738(3553);
-  if ( a3 )
-  {
-    v8 = 0;
-    if ( (int)dword_140404A6C[v3 + 436582479] > 0 )
-    {
-      v9 = (void **)&dword_140404A6C[v3 + 436582487];
-      do
-      {
-        if ( *v9 )
-        {
-          free(*v9);
-          *v9 = nullptr;
-        }
-        ++v8;
-        ++v9;
-      }
-      while ( v8 < (int)dword_140404A6C[v3 + 436582479] );
-    }
-  }
-}
-
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404738: using guessed type double (__fastcall *unk_140404738)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D18: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-
-//----- (000000014007BE20) ----------------------------------------------------
-__int64            sub_14007BE20(float *a1, unsigned int *a2)
-{
-  extern void camera_set_view(const float eye[3], const float rotation[9]);
-  camera_set_view(a1, (const float *)a2);
-  return 0;
-}
-#undef v6
-#undef v12
-
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5C4: using guessed type unsigned int;
-// 1A724E5C8: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5D4: using guessed type unsigned int;
-// 1A724E5D8: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5E4: using guessed type unsigned int;
-// 1A724E5E8: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
-//----- (000000014007D320) ----------------------------------------------------
-__int64            sub_14007D320(unsigned int *a1, __int64 a2, __int64 a3)
-{
-  /* Clean implementation: src/engine/renderer.c, checked against the original executable
-     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
-  extern void renderer_batch_vertex2fv(const float *position);
-  (void)a2; (void)a3;
-  renderer_batch_vertex2fv((const float *)a1);
-  return 0;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-
-//----- (000000014007D420)
-
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-
-__int64            sub_14007D420(float a1, float a2, float a3)
-{
-  /* Clean implementation: src/engine/renderer.c, checked against the original executable
-     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
-  extern void renderer_batch_vertex3f(float x, float y, float z);
-  renderer_batch_vertex3f(a1, a2, a3);
-  return 0;
-}
-//----- (000000014007D520) ----------------------------------------------------
-__int64            sub_14007D520(unsigned int *a1, __int64 a2, __int64 a3)
-{
-  /* Clean implementation: src/engine/renderer.c, checked against the original executable
-     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
-  extern void renderer_batch_vertex3fv(const float *position);
-  (void)a2; (void)a3;
-  renderer_batch_vertex3fv((const float *)a1);
-  return 0;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-// 1AD299460: using guessed type unsigned int;
-// 1AD299464: using guessed type unsigned int;
-
-//----- (000000014007D710) ----------------------------------------------------
-__int64 sub_14007D710()
-{
-  int v0; // eax
-  unsigned int *v1; // rcx
-  int i; // ebx
-  int v3; // r8d
-  unsigned int *v4; // rdx
-  __int64 v5; // rax
-  __int64 v6; // rcx
-  unsigned int *v7; // rax
-  unsigned int v8; // edx
-  unsigned int v9; // edx
-  unsigned int v10; // r8d
-  unsigned int v11; // edx
-  unsigned int v12; // r8d
-  int v13; // edx
-  __int64 result; // rax
-  int v15; // r10d
-  unsigned int *v16; // r9
-  __int64 v17; // r8
-  __int64 v18; // rcx
-
-  v0 = 0;
-  if ( (int)dword_140404A6C[436668493] > 0 )
-  {
-    v1 = &dword_140404A6C[436668494];
-    do
-      *v1++ = v0++;
-    while ( v0 < (int)dword_140404A6C[436668493] );
-  }
-  for ( i = 0; i < 4; ++i )
-  {
-    sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[437717070]), 0, 0x400u);
-    v3 = 0;
-    if ( (int)dword_140404A6C[436668493] > 0 )
-    {
-      v4 = &dword_140404A6C[436668494];
-      do
-      {
-        v5 = (int)*v4;
-        v4[0x40000] = v5;
-        ++v4;
-        ++v3;
-        v6 = (unsigned __int8)(dword_140404A6C[v5 + 437192782] >> (8 * i));
-        ++dword_140404A6C[v6 + 437717070];
-      }
-      while ( v3 < (int)dword_140404A6C[436668493] );
-    }
-    dword_140404A6C[437717326] = 0;
-    v7 = &dword_140404A6C[437717326];
-    v8 = 0;
-    do
-    {
-      v9 = *(v7 - 256) + v8;
-      v7[1] = v9;
-      v10 = v9 + *(v7 - 255);
-      v7[2] = v10;
-      v11 = v10 + *(v7 - 254);
-      v7[3] = v11;
-      v12 = v11 + *(v7 - 253);
-      v7[4] = v12;
-      v13 = *(v7 - 252);
-      v7 += 5;
-      v8 = v12 + v13;
-      *v7 = v8;
-    }
-    while ( (__int64)v7 < (__int64)&dword_140404A6C[437717581] );
-    LODWORD(result) = dword_140404A6C[436668493];
-    v15 = 0;
-    if ( (int)dword_140404A6C[436668493] > 0 )
-    {
-      v16 = &dword_140404A6C[436930638];
-      do
-      {
-        v17 = (int)*v16++;
-        ++v15;
-        v18 = (unsigned __int8)(dword_140404A6C[v17 + 437192782] >> (8 * i));
-        dword_140404A6C[dword_140404A6C[v18 + 437717326]++ + 436668494] = v17;
-        LODWORD(result) = dword_140404A6C[436668493];
-      }
-      while ( v15 < (int)dword_140404A6C[436668493] );
-    }
-  }
-  result = (int)result;
-  dword_140404A6C[(int)result + 436668494] = -1;
-  return result;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A85C6BA0: using guessed type unsigned int;
-// 1A89C6FA4: using guessed type unsigned int;
-
-//----- (000000014007DDF0) ----------------------------------------------------
-void            sub_14007DDF0(float *a1, float *a2)
-{
-  /* Written out from the assembly (0x14007DE2C..0x14007DFFE): the 12 edges of the box with corners a1 (rbx)
-     and a2 (rdi) as 24 line vertices; the comment on each call is its address. Hex-Rays had typed the corners
-     as integers, passed the first call the pointers themselves and lost every argument after that. */
-  *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279700;
-  dword_140404A6C[456217205] = 2;
-  dword_140404A6C[456217207] = 0;
-  dword_140404A6C[456217208] = 9;
-  sub_14007D420(a1[0], a1[1], a1[2]); /* 0x14007DE3A */
-  sub_14007D420(a2[0], a1[1], a1[2]); /* 0x14007DE4D */
-  sub_14007D420(a2[0], a1[1], a1[2]); /* 0x14007DE60 */
-  sub_14007D420(a2[0], a2[1], a1[2]); /* 0x14007DE73 */
-  sub_14007D420(a2[0], a2[1], a1[2]); /* 0x14007DE86 */
-  sub_14007D420(a1[0], a2[1], a1[2]); /* 0x14007DE99 */
-  sub_14007D420(a1[0], a2[1], a1[2]); /* 0x14007DEAC */
-  sub_14007D420(a1[0], a1[1], a1[2]); /* 0x14007DEBF */
-  sub_14007D420(a1[0], a1[1], a1[2]); /* 0x14007DED2 */
-  sub_14007D420(a1[0], a1[1], a2[2]); /* 0x14007DEE5 */
-  sub_14007D420(a2[0], a1[1], a1[2]); /* 0x14007DEF8 */
-  sub_14007D420(a2[0], a1[1], a2[2]); /* 0x14007DF0B */
-  sub_14007D420(a2[0], a2[1], a1[2]); /* 0x14007DF1E */
-  sub_14007D420(a2[0], a2[1], a2[2]); /* 0x14007DF31 */
-  sub_14007D420(a1[0], a2[1], a1[2]); /* 0x14007DF44 */
-  sub_14007D420(a1[0], a2[1], a2[2]); /* 0x14007DF57 */
-  sub_14007D420(a2[0], a2[1], a2[2]); /* 0x14007DF6A */
-  sub_14007D420(a1[0], a2[1], a2[2]); /* 0x14007DF7D */
-  sub_14007D420(a1[0], a2[1], a2[2]); /* 0x14007DF90 */
-  sub_14007D420(a1[0], a1[1], a2[2]); /* 0x14007DFA3 */
-  sub_14007D420(a1[0], a1[1], a2[2]); /* 0x14007DFB6 */
-  sub_14007D420(a2[0], a1[1], a2[2]); /* 0x14007DFC9 */
-  sub_14007D420(a2[0], a1[1], a2[2]); /* 0x14007DFDC */
-  sub_14007D420(a2[0], a2[1], a2[2]); /* 0x14007DFEF */
-  sub_14006E0D0(0, 0, 0);
-}
-
-// 140279700: using guessed type __int128 xmmword_140279700;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-
-//----- (0000000140094690) ----------------------------------------------------
-__int64 sub_140094690()
-{
-  (*(void (           **)(__int64))&dword_140404A6C[18215101])(2884);
-  (*(void (           **)(__int64))&dword_140404A6C[18215101])(2929);
-  (*(void (           **)(__int64))&dword_140404A6C[18215103])(2884);
-  return (*(__int64 (           **)(__int64))&dword_140404A6C[18215103])(2929);
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-
-//----- (00000001400946D0) ----------------------------------------------------
-double sub_1400946D0()
-{
-  __int64 v0; // r8
-  __int64 v1; // r8
-  signed int v2; // eax
-  int v3; // r14d
-  signed int v4; // r12d
-  unsigned int *v5; // r15
-  __int64 v6; // rbp
-  unsigned int *v7; // rbx
-  __int64 v8; // rax
-  __int64 v9; // rsi
-  __int64 v10; // rdi
-  __int64 v11; // r8
-  __int64 v12; // r8
-  __int64 v13; // r8
-  int v14; // eax
-  unsigned int *v15; // rbx
-  int v16; // esi
-  unsigned int *v17; // rdi
-  int v18; // r10d
-  int v19; // r10d
-
-  sub_14011C950();
-  qword_1404042E0(dword_140404A6C[71738225]);
-  qword_140404378(dword_140404A6C[71738230], 1, 0, &dword_140404A6C[431564517]);
-  qword_140404378(dword_140404A6C[71738231], 1, 0, &dword_140404A6C[431564565]);
-  qword_140404378(dword_140404A6C[71738234], 1, 0, &dword_140404A6C[431564485]);
-  qword_140404378(dword_140404A6C[71738235], 1, 0, &dword_140404A6C[431564501]);
-  qword_140404338(dword_140404A6C[71738232], 1, &dword_140404A6C[284550403]);
-  ((void (*)(int,float))unk_1404042E8)((int)dword_140404A6C[71738233],0x1.0000000000000p+5f);
-  qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791462] + 283793813], v0);
-  qword_140404170(34963, dword_140404A6C[2 * dword_140404A6C[283791467] + 283793813], v1);
-  qword_140404238(0);
-  v2 = dword_140404A6C[70074733];
-  v3 = 0;
-  v4 = 0;
-  if ( (int)dword_140404A6C[70074733] > 0 )
-  {
-    v5 = &dword_140404A6C[70074734];
-    do
-    {
-      if ( !dword_140404A6C[312324428] && !dword_140404A6C[328554868] )
-      {
-        v6 = 4;
-        v7 = &dword_140404A6C[6930 * *v5 + 83200503];
-        do
-        {
-          if ( v7[780] )
-          {
-            v8 = (int)*v7;
-            if ( (int)v8 >= 0 )
-            {
-              v9 = 3 * v8;
-              v10 = (int)*v7;
-              if ( dword_140404A6C[6 * v8 + 312226123] != -1 )
-              {
-                ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0,3,5126,0,64,(const void *)((intptr_t)(int32_t)(dword_140404A6C[309078348+3074*((int64_t)(int32_t)dword_140404A6C[6*v8+312226123])+3*((int64_t)(int32_t)dword_140404A6C[(6*v8+312226123)+1])]+(uint32_t)((int64_t)(int32_t)dword_140404A6C[6*v8+312226123])*dword_140404A6C[309078344])));
-                if ( dword_140404A6C[2 * v9 + 328456563] != -1 )
-                  (*(void (**)(unsigned,int,unsigned,const void *))&flt_140384000[131076])(12,(int)(uint32_t)(6u*dword_140404A6C[8969*v10+73991665]),5125,(const void *)((intptr_t)(int32_t)(dword_140404A6C[325308788+3074*((int64_t)(int32_t)dword_140404A6C[2*v9+328456563])+3*((int64_t)(int32_t)dword_140404A6C[(2*v9+328456563)+1])]+(uint32_t)((int64_t)(int32_t)dword_140404A6C[2*v9+328456563])*dword_140404A6C[325308784])));
-              }
-            }
-          }
-          ++v7;
-          --v6;
-        }
-        while ( v6 );
-        v2 = dword_140404A6C[70074733];
-      }
-      ++v4;
-      ++v5;
-    }
-    while ( v4 < v2 );
-  }
-  qword_140404230(0);
-  qword_140404170(34963, 0, v11);
-  qword_140404170(34962, 0, v12);
-  (*(void (           **)(__int64))&dword_140404A6C[18215101])(32823);
-  (*(void (           **)(__int64))&dword_140404A6C[18215103])(3042);
-  if ( !dword_140404A6C[179668287] )
-  {
-    v14 = dword_140404A6C[284550610];
-    v15 = &dword_140404A6C[284554707];
-    v16 = 0;
-    if ( (int)dword_140404A6C[284550610] > 0 )
-    {
-      v17 = &dword_140404A6C[284554707];
-      do
-      {
-        if ( (v17[3] & 1) != 0 )
-        {
-          v18 = *v17;
-          if ( (int)*v17 >= (int)dword_140404A6C[283827286] && v18 <= (int)dword_140404A6C[283827541] )
-          {
-            sub_140124FE0(
-              v18,
-              v17[1],
-              &dword_140404A6C[30 * v16 + 284554715],
-              (__int64)&dword_140404A6C[30 * v16 + 284554718]);
-            v14 = dword_140404A6C[284550610];
-          }
-        }
-        ++v16;
-        v17 += 30;
-      }
-      while ( v16 < v14 );
-      if ( v14 > 0 )
-      {
-        do
-        {
-          if ( (v15[3] & 1) != 0 )
-          {
-            v19 = *v15;
-            if ( (int)*v15 < (int)dword_140404A6C[283827286] || v19 > (int)dword_140404A6C[283827541] )
-            {
-              sub_140124FE0(
-                v19,
-                v15[1],
-                &dword_140404A6C[30 * v3 + 284554715],
-                (__int64)&dword_140404A6C[30 * v3 + 284554718]);
-              v14 = dword_140404A6C[284550610];
-            }
-          }
-          ++v3;
-          v15 += 30;
-        }
-        while ( v3 < v14 );
-      }
-    }
-    qword_140404170(34962, 0, v13);
-  }
-  (*(void (           **)(__int64))&dword_140404A6C[18215101])(32823);
-  return qword_1404042E0(0);
-}
-
-// 140095195: variable 'v53' is possibly undefined
-// 140095195: variable 'v52' is possibly undefined
-// 140095195: variable 'v54' is possibly undefined
-// 140095195: variable 'v55' is possibly undefined
-// 14009529F: variable 'v57' is possibly undefined
-// 140095423: variable 'v58' is possibly undefined
-// 140095457: variable 'v59' is possibly undefined
-// 140095495: variable 'v60' is possibly undefined
-// 1400957BF: variable 'v87' is possibly undefined
-// 1400957BF: variable 'v88' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278DE0: using guessed type __int128 xmmword_140278DE0;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140278E30: using guessed type __int128 xmmword_140278E30;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140279830: using guessed type __int128 xmmword_140279830;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404340: using guessed type __int64 (__fastcall *unk_140404340)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404043C8: using guessed type __int64 (__fastcall *unk_1404043C8)(_QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D38: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D40: using guessed type __int64 (*)(void);
-// 144980D48: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 16D482820: using guessed type unsigned int;
-// 16D482828: using guessed type unsigned int;
-// 183F7C550: using guessed type unsigned int;
-// 183F7C554: using guessed type unsigned int;
-// 183F7C558: using guessed type unsigned int;
-// 183F7C55C: using guessed type unsigned int;
-// 183F7C560: using guessed type unsigned int;
-// 183F7C564: using guessed type unsigned int;
-// 183F7C568: using guessed type unsigned int;
-// 183F7C56C: using guessed type unsigned int;
-// 183F7C570: using guessed type unsigned int;
-// 1873DE440: using guessed type unsigned int;
-// 18AB70FAC: using guessed type unsigned int;
-// 18B7D2FCC: using guessed type unsigned int;
-// 1A724E5C0: using guessed type unsigned int;
-// 1A724E5C4: using guessed type unsigned int;
-// 1A724E5C8: using guessed type unsigned int;
-// 1A724E5CC: using guessed type unsigned int;
-// 1A724E5D0: using guessed type unsigned int;
-// 1A724E5D4: using guessed type unsigned int;
-// 1A724E5D8: using guessed type unsigned int;
-// 1A724E5DC: using guessed type unsigned int;
-// 1A724E5E0: using guessed type unsigned int;
-// 1A724E5E4: using guessed type unsigned int;
-// 1A724E5E8: using guessed type unsigned int;
-// 1A724E5EC: using guessed type unsigned int;
-// 1A724E5F0: using guessed type unsigned int;
-// 1A724E5F8: using guessed type unsigned int;
-// 1A724E5FC: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A724E638: using guessed type unsigned int;
-// 1A724E63C: using guessed type unsigned int;
-// 1A724E640: using guessed type unsigned int;
-// 1A724E650: using guessed type unsigned int;
-// 1A724E660: using guessed type unsigned int;
-// 1A724E670: using guessed type unsigned int;
-// 1A724E680: using guessed type unsigned int;
-// 1A724E690: using guessed type unsigned int;
-// 1A724E6A0: using guessed type unsigned int;
-// 1A724E6B0: using guessed type unsigned int;
-// 1A724E6C0: using guessed type unsigned int;
-// 1A724E6D0: using guessed type unsigned int;
-// 1A724E6E0: using guessed type unsigned int;
-// 1A724E6F0: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD059450: using guessed type unsigned int;
-// 1AD059454: using guessed type unsigned int;
-// 1AD059458: using guessed type unsigned int;
-// 1AD05945C: using guessed type unsigned int;
-// 1AD05946C: using guessed type unsigned int;
-// 1AD059470: using guessed type unsigned int;
-// 1AD059474: using guessed type unsigned int;
-// 1AD059484: using guessed type unsigned int;
-// 1AD059488: using guessed type unsigned int;
-// 1AD059498: using guessed type unsigned int;
-// 1AD05949C: using guessed type unsigned int;
-// 1AD0594A0: using guessed type unsigned int;
-
-//----- (00000001400A7A40) ----------------------------------------------------
-void            sub_1400A7A40(float a1, float a2, float a3, float a4, float a5)
-{
-  float v5 = a2; // xmm1_4: y0 (0x1400A7A7C); Hex-Rays had lost it
-  float v6 = a3; // xmm2_4: x1 (0x1400A7A62)
-  float v8; // xmm9_4
-  float v9; // xmm10_4
-  float v10; // xmm6_4
-  float v11; // xmm7_4
-  float v12; // xmm1_4
-  float v13; // xmm7_4
-  float v14; // xmm6_4
-  char v15; // di
-  __int64 v16; // rbx
-  float v17; // xmm13_4
-  float v18; // xmm2_4
-  float v19; // xmm1_4
-  float v20; // xmm3_4
-  float v21; // xmm4_4
-  float v22; // xmm3_4
-  float v23; // xmm4_4
-  __int64 v24; // rdx
-  __int64 v25; // r8
-  __int64 v26; // rax
-  float v27; // xmm2_4
-  float v28; // xmm1_4
-  float v29; // xmm3_4
-  float v30; // xmm4_4
-  float v31; // xmm3_4
-  float v32; // xmm4_4
-  __int64 v33; // rcx
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400A7A40[16];
-#define v34 (*(float (*))(void *)(sr_frame_1400A7A40 + 0)) /* [rsp+20h] */
-#define v35 (*(float (*))(void *)(sr_frame_1400A7A40 + 4)) /* [rsp+24h] */
-#define v36 (*(int (*))(void *)(sr_frame_1400A7A40 + 8)) /* [rsp+28h] */
-
-  v8 = v6;
-  v9 = v5;
-  v10 = a4 - v5;
-  v11 = v6 - a1;
-  v12 = fsqrt((float)(v10 * v10) + (float)(v11 * v11));
-  if ( v12 == 0.0 )
-  {
-    v13 = 0.0;
-    v14 = 0.0;
-  }
-  else
-  {
-    v13 = v11 * (float)(1.0 / v12);
-    v14 = v10 * (float)(1.0 / v12);
-  }
-  v15 = 0;
-  dword_140404A6C[456217205] = 2;
-  v16 = 0;
-  dword_140404A6C[456217207] = 0;
-  v36 = 0;
-  v17 = -v13;
-  dword_140404A6C[456217208] = 9;
-  do
-  {
-    v18 = a5 * *(float *)&dword_140404A6C[2 * v16 + 346696314];
-    v19 = a5 * *(float *)&dword_140404A6C[2 * v16 + 346696315];
-    v20 = (float)(v13 * v19) + (float)(v14 * v18);
-    v21 = (float)(v17 * v18) + (float)(v14 * v19);
-    if ( (unsigned __int64)v16 >= 0x20 )
-    {
-      v22 = v20 + a1;
-      v23 = v21 + v9;
-    }
-    else
-    {
-      v22 = v20 + v8;
-      v23 = v21 + a4;
-    }
-    v35 = v23;
-    v34 = v22;
-    sub_14007D520((unsigned int *)&v34, a2, a3);
-    v26 = ++v15 & 0x3F;
-    v27 = a5 * *(float *)&dword_140404A6C[2 * v26 + 346696314];
-    v28 = a5 * *(float *)&dword_140404A6C[2 * v26 + 346696315];
-    v29 = (float)(v13 * v28) + (float)(v14 * v27);
-    v30 = (float)(v17 * v27) + (float)(v14 * v28);
-    if ( (v15 & 0x3Fu) >= 0x20 )
-    {
-      v31 = v29 + a1;
-      v32 = v30 + v9;
-    }
-    else
-    {
-      v31 = v29 + v8;
-      v32 = v30 + a4;
-    }
-    v35 = v32;
-    v34 = v31;
-    sub_14007D520((unsigned int *)&v34, v24, v25);
-    ++v16;
-  }
-  while ( v16 < 64 );
-  sub_14006E0D0(v33, a2, a3);
-}
-#undef v34
-#undef v35
-#undef v36
-
-// 1400A81E1: variable 'v54' is possibly undefined
-// 1400A81E1: variable 'v55' is possibly undefined
-// 1400A825D: variable 'v69' is possibly undefined
-// 1400A825D: variable 'v70' is possibly undefined
-// 1400A826F: variable 'v78' is possibly undefined
-// 1400A8304: variable 'v79' is possibly undefined
-// 1400A8304: variable 'v80' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1AD059440: using guessed type unsigned int;
-// 1AD059448: using guessed type unsigned int;
-// 1AD05944C: using guessed type unsigned int;
-// 1AD299450: using guessed type unsigned int;
-// 1AD299454: using guessed type unsigned int;
-// 1AD299458: using guessed type unsigned int;
-// 1AD29945C: using guessed type unsigned int;
-
-//----- (00000001400FB4D0) ----------------------------------------------------
-__int64 sub_1400FB4D0()
-{
-  unsigned int *v0; // rbx
-  __int64 v1; // rax
-  __int64 v2; // rsi
-  __int64 v3; // r15
-  __int64 v4; // r14
-  unsigned int v5; // edi
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400FB4D0[96];
-#define v7 (*(__int64 (*))(void *)(sr_frame_1400FB4D0 + 0)) /* [rsp+0h] */
-#define v8 (*(_BYTE (*)[4])(void *)(sr_frame_1400FB4D0 + 64)) /* [rsp+40h] */
-#define v9 (*(_WORD (*)[2])(void *)(sr_frame_1400FB4D0 + 68)) /* [rsp+44h] */
-#define FileName (*(char (*)[13])(void *)(sr_frame_1400FB4D0 + 72)) /* [rsp+48h] */
-#define v11 (*(__int16 (*))(void *)(sr_frame_1400FB4D0 + 85)) /* [rsp+55h] */
-#define v12 (*(char (*))(void *)(sr_frame_1400FB4D0 + 87)) /* [rsp+57h] */
-#define v13 (*(__int64 (*))(void *)(sr_frame_1400FB4D0 + 88)) /* [rsp+58h] */
-
-  v11 = 0;
-  v12 = 0;
-  strcpy(FileName, "scsht000.tga");
-  qword_140302F70(1029);
-  v0 = &dword_140404A6C[282491301];
-  qword_140302F78(0, 0, 512, 512, 6408, 5121, &dword_140404A6C[282491301]);
-  v1 = sub_14020B8D8(FileName, "wb");
-  v2 = v1;
-  if ( v1 )
-  {
-    v8[0] = 0;
-    sub_14020CE0C((__int64)v8, 1, 1, v1);
-    v8[0] = 0;
-    sub_14020CE0C((__int64)v8, 1, 1, v2);
-    v8[0] = 2;
-    sub_14020CE0C((__int64)v8, 1, 1, v2);
-    v9[0] = 0;
-    sub_14020CE0C((__int64)v9, 2, 1, v2);
-    v9[0] = 0;
-    sub_14020CE0C((__int64)v9, 2, 1, v2);
-    v8[0] = 0;
-    sub_14020CE0C((__int64)v8, 1, 1, v2);
-    v9[0] = 0;
-    sub_14020CE0C((__int64)v9, 2, 1, v2);
-    v9[0] = 0;
-    sub_14020CE0C((__int64)v9, 2, 1, v2);
-    v9[0] = 512;
-    sub_14020CE0C((__int64)v9, 2, 1, v2);
-    v9[0] = 512;
-    sub_14020CE0C((__int64)v9, 2, 1, v2);
-    v8[0] = 24;
-    sub_14020CE0C((__int64)v8, 1, 1, v2);
-    v8[0] = 0;
-    sub_14020CE0C((__int64)v8, 1, 1, v2);
-    v3 = 512;
-    do
-    {
-      v4 = 512;
-      do
-      {
-        v5 = *v0;
-        sub_14020BCA8(BYTE2(*v0), v2);
-        sub_14020BCA8(SBYTE1(v5), v2);
-        sub_14020BCA8(v5, v2);
-        ++v0;
-        --v4;
-      }
-      while ( v4 );
-      --v3;
-    }
-    while ( v3 );
-    sub_14020B9E8(v2);
-  }
-  return 0; /* the function has no caller */
-}
-#undef v7
-#undef v8
-#undef v9
-#undef FileName
-#undef v11
-#undef v12
-#undef v13
-
-// 140302F70: using guessed type __int64 (__fastcall *qword_140302F70)(_QWORD);
-// 140302F78: using guessed type __int64 (__fastcall *qword_140302F78)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
-//----- (000000014011BAD0) ----------------------------------------------------
-_BOOL8            sub_14011BAD0(float *a1)
-{
-  float v1; // xmm5_4
-  float v2; // xmm6_4
-  float v3; // xmm7_4
-  float v4; // xmm10_4
-  float v5; // xmm11_4
-  float v6; // xmm12_4
-  _BOOL8 result; // rax
-
-  v1 = *a1 - *(float *)&dword_140404A6C[284024502];
-  v2 = a1[1] - *(float *)&dword_140404A6C[284024503];
-  v3 = a1[2] - *(float *)&dword_140404A6C[284024504];
-  result = false;
-  if ( (float)((float)((float)(v2 * *(float *)&dword_140404A6C[284024512])
-                     + (float)(v1 * *(float *)&dword_140404A6C[284024511]))
-             + (float)(v3 * *(float *)&dword_140404A6C[284024513])) <= 0.0 )
-  {
-    v4 = *(float *)&dword_140404A6C[284024511] * 0.707099974155426;
-    v5 = *(float *)&dword_140404A6C[284024512] * 0.707099974155426;
-    v6 = *(float *)&dword_140404A6C[284024513] * 0.707099974155426;
-    if ( (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[284024511] * 0.707099974155426)
-                                       - (float)(*(float *)&dword_140404A6C[284024505] * 0.707099974155426))
-                               * v1)
-                       + (float)((float)((float)(*(float *)&dword_140404A6C[284024512] * 0.707099974155426)
-                                       - (float)(*(float *)&dword_140404A6C[284024506] * 0.707099974155426))
-                               * v2))
-               + (float)((float)((float)(*(float *)&dword_140404A6C[284024513] * 0.707099974155426)
-                               - (float)(*(float *)&dword_140404A6C[284024507] * 0.707099974155426))
-                       * v3)) <= 0.0
-      && (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[284024506] * 0.707099974155426) + v5) * v2)
-                       + (float)((float)((float)(*(float *)&dword_140404A6C[284024505] * 0.707099974155426) + v4) * v1))
-               + (float)((float)((float)(*(float *)&dword_140404A6C[284024507] * 0.707099974155426) + v6) * v3)) <= 0.0
-      && (float)((float)((float)((float)(v4 - (float)(*(float *)&dword_140404A6C[284024508] * 0.707099974155426)) * v1)
-                       + (float)((float)(v5 - (float)(*(float *)&dword_140404A6C[284024509] * 0.707099974155426)) * v2))
-               + (float)((float)(v6 - (float)(*(float *)&dword_140404A6C[284024510] * 0.707099974155426)) * v3)) <= 0.0
-      && (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[284024509] * 0.707099974155426) + v5) * v2)
-                       + (float)((float)((float)(*(float *)&dword_140404A6C[284024508] * 0.707099974155426) + v4) * v1))
-               + (float)((float)((float)(*(float *)&dword_140404A6C[284024510] * 0.707099974155426) + v6) * v3)) <= 0.0 )
-    {
-      return true;
-    }
-  }
-  return result;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
-//----- (000000014011C730) ----------------------------------------------------
-__int64            sub_14011C730(__int64 a1, __int64 a2, __int64 a3)
-{
-  if ( dword_140404A6C[283831484] )
-    sub_140198F0B(1, a2, a3);
-  sub_14013D1B0();
-  return render_cache_camera_uniforms_candidate();
-}
-
-// 140199001: using guessed type __int64 __fastcall ntohl(_QWORD);
-// 140199007: using guessed type __int64 __fastcall ntohs(_QWORD);
-// 140199013: using guessed type __int64 __fastcall recvfrom(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-// 1402B2658: using guessed type int dword_1402B2658;
-// 1402B26C3: using guessed type char byte_1402B26C3;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1853AD404: using guessed type unsigned int;
-// 1853AD408: using guessed type unsigned int;
-// 1853AD410: using guessed type unsigned int;
-// 1853AD418: using guessed type unsigned int;
-// 1853AD41C: using guessed type unsigned int;
-
-//----- (000000014011C950) ----------------------------------------------------
-double sub_14011C950()
-{
-  __int64 v0; // r8
-  __int64 v1; // r8
-  unsigned int *v2; // rdi
-  __int64 i; // rbx
-  __int64 v4; // r8
-  __int64 v5; // r8
-  double result; // xmm0_8
-
-  if ( !dword_140404A6C[315570516] && !dword_140404A6C[325308780] )
-  {
-    *(_OWORD *)&dword_140404A6C[431564517] = xmmword_140278D30;
-    *(_OWORD *)&dword_140404A6C[431564521] = xmmword_140278D80;
-    *(_OWORD *)&dword_140404A6C[431564525] = xmmword_140278E20;
-    *(_OWORD *)&dword_140404A6C[431564529] = xmmword_140279490;
-    sub_14007A0E0(
-      &dword_140404A6C[431564533],
-      (__int64)&dword_140404A6C[431564517],
-      (__int64)&dword_140404A6C[431564501]);
-    sub_14007A0E0(
-      &dword_140404A6C[431564565],
-      (__int64)&dword_140404A6C[431564533],
-      (__int64)&dword_140404A6C[431564485]);
-    qword_1404042E0(dword_140404A6C[71738225]);
-    qword_140404378(dword_140404A6C[71738230], 1, 0, &dword_140404A6C[431564517]);
-    qword_140404378(dword_140404A6C[71738231], 1, 0, &dword_140404A6C[431564565]);
-    qword_140404378(dword_140404A6C[71738234], 1, 0, &dword_140404A6C[431564485]);
-    qword_140404378(dword_140404A6C[71738235], 1, 0, &dword_140404A6C[431564501]);
-    qword_140404338(dword_140404A6C[71738232], 1, &dword_140404A6C[284550403]);
-    qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[283791463] + 283793813], v0);
-    qword_140404170(34963, dword_140404A6C[2 * dword_140404A6C[283791466] + 283793813], v1);
-    qword_140404238(0);
-    v2 = &dword_140404A6C[83194358];
-    for ( i = 0; i < 98304; i += 24 )
-    {
-      if ( *(v2 - 1) )
-      {
-        /* sr_item_shadow_uniform: original MAXSS/DIVSS/CVTDQ2PS/MULSS order. */
-        __m128 sr_shadow_denom=_mm_max_ss(_mm_set_ss(*(float *)&dword_140404A6C[284550404]),_mm_set_ss(0.125f));
-        __m128 sr_shadow_recip=_mm_div_ss(_mm_set_ss(8.0f),sr_shadow_denom);
-        int32_t sr_shadow_age=(int32_t)(v2[6150]+1u);
-        __m128 sr_shadow_value=_mm_cvtepi32_ps(_mm_setr_epi32(sr_shadow_age,0,0,0));
-        sr_shadow_value=_mm_mul_ss(sr_shadow_value,_mm_set_ss(*(float *)&dword_140404A6C[111579653+263004*(int64_t)(int32_t)*v2]));
-        sr_shadow_value=_mm_mul_ss(sr_shadow_value,sr_shadow_recip);
-        ((void (*)(int,float))unk_1404042E8)((int)dword_140404A6C[71738233],_mm_cvtss_f32(sr_shadow_value));
-        /* sr_item_shadow_uniform_end */
-        ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0,3,5126,0,64,(const void *)((intptr_t)(int32_t)(dword_140404A6C[312324436+3074*((int64_t)(int32_t)dword_140404A6C[i/4+315472211])+3*((int64_t)(int32_t)dword_140404A6C[(i/4+315472211)+1])]+(uint32_t)((int64_t)(int32_t)dword_140404A6C[i/4+315472211])*dword_140404A6C[312324432])));
-        (*(void (**)(unsigned,int,unsigned,const void *))&flt_140384000[131076])(12,(int)(uint32_t)(6u*v2[6154]),5125,(const void *)((intptr_t)(int32_t)(dword_140404A6C[322062700+3074*((int64_t)(int32_t)dword_140404A6C[i/4+325210475])+3*((int64_t)(int32_t)dword_140404A6C[(i/4+325210475)+1])]+(uint32_t)((int64_t)(int32_t)dword_140404A6C[i/4+325210475])*dword_140404A6C[322062696])));
-      }
-      v2 += 6930;
-    }
-    qword_140404230(0);
-    qword_140404170(34963, 0, v4);
-    return qword_140404170(34962, 0, v5);
-  }
-  return result;
-}
-
-// 14011CAA9: variable 'v0' is possibly undefined
-// 14011CAC2: variable 'v1' is possibly undefined
-// 14011CBF2: variable 'v4' is possibly undefined
-// 14011CBFF: variable 'v5' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 1404042E8: using guessed type __int64 (__fastcall *unk_1404042E8)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-
-//----- (000000014011CC30) ----------------------------------------------------
-__int64            sub_14011CC30(int a1)
-{
-  unsigned int v1; // eax
-  float v2; // xmm9_4
-  float v3; // xmm13_4
-  unsigned int *v4; // rbx
-  float v5; // xmm14_4
-  __int64 v6; // r13
-  float v7; // xmm15_4
-  unsigned int *v8; // rdi
-  unsigned int v9; // r12d
-  __int64 v10; // r15
-  int v11; // ecx
-  int v12; // edx
-  int v13; // eax
-  float v14; // xmm3_4
-  float v15; // xmm1_4
-  float v16; // xmm0_4
-  float v17; // xmm7_4
-  __int64 v18; // rax
-  unsigned int *v19; // r12
-  signed int i; // r15d
-  signed int v21; // edi
-  _BYTE *v22; // rbx
-  char *v23; // r13
-  float v24; // xmm7_4
-  unsigned int *v25; // r8
-  float v26; // xmm4_4
-  float v27; // xmm5_4
-  int v28; // r9d
-  float v29; // xmm9_4
-  unsigned int v30; // r10d
-  int v31; // eax
-  int v32; // ecx
-  int v33; // edx
-  int v34; // eax
-  float v35; // xmm3_4
-  float v36; // xmm0_4
-  float v37; // xmm1_4
-  int *v38; // rsi
-  int *v39; // rbx
-  int v40; // r14d
-  int v41; // ecx
-  int v42; // edx
-  int v43; // eax
-  int v44; // eax
-  float v45; // xmm1_4
-  float v46; // xmm0_4
-  int v47; // r12d
-  _DWORD *v48; // r9
-  __int64 v49; // r15
-  __int64 v50; // r10
-  __int64 v51; // rdi
-  __int64 v52; // r11
-  __int64 v53; // rax
-  unsigned int *v54; // r8
-  __int64 v55; // r10
-  int v56; // edx
-  __int64 v57; // kr00_8
-  int v58; // ebx
-  int v59; // r14d
-  unsigned int *v60; // rcx
-  float *v61; // rdx
-  __int64 v62; // r8
-  float v63; // xmm1_4
-  __int64 v64; // rcx
-  __int64 v65; // rax
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14011CC30[128];
-#define v67 (*(__int64 (*))(void *)(sr_frame_14011CC30 + 8)) /* [rsp+8h] */
-#define v68 (*(float (*))(void *)(sr_frame_14011CC30 + 40)) /* [rsp+28h] */
-#define v69 (*(float (*))(void *)(sr_frame_14011CC30 + 44)) /* [rsp+2Ch] */
-#define v70 (*(float (*))(void *)(sr_frame_14011CC30 + 48)) /* [rsp+30h] */
-#define v71 (*(int (*))(void *)(sr_frame_14011CC30 + 56)) /* [rsp+38h] */
-#define v72 (*(float (*))(void *)(sr_frame_14011CC30 + 64)) /* [rsp+40h] */
-#define v73 (*(float (*))(void *)(sr_frame_14011CC30 + 68)) /* [rsp+44h] */
-#define v74 (*(__int64 (*))(void *)(sr_frame_14011CC30 + 72)) /* [rsp+48h] */
-#define v75 (*(__int64 (*))(void *)(sr_frame_14011CC30 + 80)) /* [rsp+50h] */
-#define v76 (*(unsigned int * (*))(void *)(sr_frame_14011CC30 + 88)) /* [rsp+58h] */
-#define v77 (*(_BYTE (*)[16])(void *)(sr_frame_14011CC30 + 96)) /* [rsp+60h] */
-#define v78 (*(__int128 (*))(void *)(sr_frame_14011CC30 + 112)) /* [rsp+70h] */
-
-  v71 = a1;
-  sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[40714349]), 0, 0x400u);
-  dword_140404A6C[70074733] = 0;
-  dword_140404A6C[70087022] = 0;
-  v1 = sub_140198F9B();
-  v2 = *(float *)&dword_140404A6C[111579653];
-  v3 = *(float *)&dword_140404A6C[284024504];
-  v4 = &dword_140404A6C[83201284];
-  v5 = *(float *)&dword_140404A6C[284024503];
-  v6 = 4096;
-  v7 = *(float *)&dword_140404A6C[284024502];
-  v8 = &dword_140404A6C[83200507];
-  v9 = dword_140404A6C[284024893];
-  v10 = 4096;
-  v76 = &dword_140404A6C[83200507];
-  dword_140404A6C[70087023] = v1;
-  do
-  {
-    if ( *(v8 - 6150) )
-    {
-      v8[775] = 0;
-      *(_QWORD *)(v4 - 1) = 0;
-      *(_QWORD *)(v4 + 1) = 0;
-      v11 = v8[1];
-      v12 = v8[2];
-      v13 = *v8 + 1;
-      v14 = (float)(int)*v8 * 8.0;
-      v15 = (float)v11 * 8.0;
-      v69 = (float)(v15 * v2) - 8.0;
-      v16 = (float)v12 * 8.0;
-      v70 = (float)(v16 * v2) - 8.0;
-      v17 = (float)((float)((float)(v5 - (float)((float)(v15 + 4.0) * v2))
-                          * (float)(v5 - (float)((float)(v15 + 4.0) * v2)))
-                  + (float)((float)(v7 - (float)((float)(v14 + 4.0) * v2))
-                          * (float)(v7 - (float)((float)(v14 + 4.0) * v2))))
-          + (float)((float)(v3 - (float)((float)(v16 + 4.0) * v2)) * (float)(v3 - (float)((float)(v16 + 4.0) * v2)));
-      v68 = (float)(v2 * v14) - 8.0;
-      v72 = (float)((float)((float)v13 * 8.0) * v2) + 8.0;
-      v73 = (float)((float)((float)(v11 + 1) * 8.0) * v2) + 8.0;
-      *(float *)&v74 = (float)((float)((float)(v12 + 1) * 8.0) * v2) + 8.0;
-      if ( v9 )
-      {
-        if ( v17 <= 4096.0 )
-          goto LABEL_7;
-      }
-      if ( (unsigned int)sub_14001FD20(&v68, &v72) )
-      {
-LABEL_7:
-        if ( v17 < 1024.0 || v17 < 36864.0 )
-        {
-          v8[775] = 1;
-          *(v4 - 1) = 1;
-          *v4 = 1;
-          v4[1] = 1;
-          v4[2] = 1;
-        }
-      }
-    }
-    v8 += 6930;
-    v4 += 6930;
-    --v10;
-  }
-  while ( v10 );
-  v18 = 27704LL - (_QWORD)v77;
-  v19 = &dword_140404A6C[83194357];
-  v75 = 27704LL - (_QWORD)v77;
-  for ( i = 0; i < 4096; ++i )
-  {
-    if ( *v19 && v19[6925] )
-    {
-      v21 = 0;
-      v22 = v77;
-      v23 = (char *)v19 + v18;
-      do
-      {
-        if ( *(_DWORD *)&v23[(_QWORD)v22] )
-          sub_140013120(i, v21);
-        ++v21;
-        v22 += 4;
-      }
-      while ( v21 < 4 );
-      v18 = v75;
-      v6 = 4096;
-    }
-    v19 += 6930;
-  }
-  v24 = *(float *)&dword_140404A6C[111579653];
-  v25 = &dword_140404A6C[83200503];
-  v26 = *(float *)&dword_140404A6C[284024504];
-  v27 = *(float *)&dword_140404A6C[284024503];
-  v28 = 0;
-  v29 = *(float *)&dword_140404A6C[284024502];
-  v30 = dword_140404A6C[70074733];
-  do
-  {
-    if ( *(v25 - 6146) && v25[779] )
-    {
-      v31 = 0;
-      v32 = 0;
-      v33 = 0;
-      if ( v25[1] != -1 )
-      {
-        LOBYTE(v31) = *v25 != -1;
-        v32 = v31;
-      }
-      v34 = 0;
-      if ( v25[2] != -1 )
-        v33 = v32;
-      if ( v25[3] != -1 )
-        v34 = v33;
-      if ( v34 )
-      {
-        v35 = (float)(int)v25[4];
-        dword_140404A6C[2 * v30 + 70078830] = v28;
-        v36 = (float)((float)(int)v25[6] * 8.0) + 4.0;
-        v37 = (float)((float)((float)(int)v25[5] * 8.0) + 4.0) * v24;
-        v68 = (float)((float)(v35 * 8.0) + 4.0) * v24;
-        v69 = v37;
-        v70 = v36 * v24;
-        *(float *)&dword_140404A6C[2 * dword_140404A6C[70074733] + 70078831] = fsqrt(
-                                                                                 (float)((float)((float)(v27 - v37)
-                                                                                               * (float)(v27 - v37))
-                                                                                       + (float)((float)(v29 - v68)
-                                                                                               * (float)(v29 - v68)))
-                                                                               + (float)((float)(v26 - (float)(v36 * v24))
-                                                                                       * (float)(v26 - (float)(v36 * v24))));
-        v30 = ++dword_140404A6C[70074733];
-      }
-      else
-      {
-        v25[779] = 0;
-      }
-    }
-    ++v28;
-    v25 += 6930;
-  }
-  while ( v28 < 4096 );
-  v38 = (int *)v76;
-  v39 = (int *)&dword_140404A6C[315472211];
-  v40 = v71;
-  do
-  {
-    if ( *(v38 - 6150) )
-    {
-      if ( !v40 )
-        goto LABEL_37;
-      v41 = v38[1];
-      v42 = v38[2];
-      v43 = *v38 + 1;
-      v68 = (float)((float)((float)*v38 * 8.0) * v24) - 8.0;
-      v69 = (float)((float)((float)v41 * 8.0) * v24) - 8.0;
-      v70 = (float)((float)((float)v42 * 8.0) * v24) - 8.0;
-      v72 = (float)((float)((float)v43 * 8.0) * v24) + 8.0;
-      v73 = (float)((float)((float)(v41 + 1) * 8.0) * v24) + 8.0;
-      *(float *)&v74 = (float)((float)((float)(v42 + 1) * 8.0) * v24) + 8.0;
-      if ( (unsigned int)sub_14001FD20(&v68, &v72) || v38[775] )
-      {
-LABEL_37:
-        v44 = v38[6];
-        v45 = (float)((float)((float)v38[1] * 8.0) + 4.0) * v24;
-        v68 = (float)((float)((float)*v38 * 8.0) + 4.0) * v24;
-        v46 = (float)v38[2];
-        v69 = v45;
-        v70 = (float)((float)(v46 * 8.0) + 4.0) * v24;
-        if ( v44 > 0 )
-        {
-          v47 = v38[775];
-          v48 = v38 + 8;
-          v49 = (unsigned int)v44;
-          do
-          {
-            v50 = *((unsigned __int8 *)v48 - 4);
-            if ( !v47 || !dword_140404A6C[46 * v50 + 421784738] )
-            {
-              v51 = v39[3246088];
-              if ( (_DWORD)v51 != -1 )
-              {
-                v52 = *v39;
-                if ( (_DWORD)v52 != -1 )
-                {
-                  if ( *v48 )
-                  {
-                    v53 = (int)dword_140404A6C[v50 + 40714349];
-                    v54 = &dword_140404A6C[v50 + 40714349];
-                    v55 = v50 << 14;
-                    dword_140404A6C[v55 + 40714605 + v53] = 3 * *v48;
-                    v56 = v48[1]
-                        + (int)(v51 * dword_140404A6C[315570520]
-                              + dword_140404A6C[3074 * v51 + 315570524 + 3 * v39[3246089]])
-                        / 4
-                        + 2 * v48[1];
-                    dword_140404A6C[v55 + 53297517 + (int)*v54] = v56;
-                    dword_140404A6C[v55 + 53297517 + (int)*v54] *= 4;
-                    *(_QWORD *)&dword_140404A6C[2 * v55 + 44908909 + 2 * (int)*v54] = 4 * v56;
-                    *(_QWORD *)&dword_140404A6C[2 * v55 + 57491821 + 2 * (int)*v54] = dword_140404A6C[v55 + 53297517 + (int)*v54];
-                    v57 = (int)(v52 * dword_140404A6C[312324432] + dword_140404A6C[3074 * v52 + 312324436 + 3 * v39[1]]);
-                    dword_140404A6C[v55 + 65880429 + (int)(*v54)++] = ((BYTE4(v57) & 0x3F) + (int)v57) >> 6;
-                  }
-                }
-              }
-            }
-            v48 += 3;
-            --v49;
-          }
-          while ( v49 );
-          v40 = v71;
-        }
-      }
-    }
-    v39 += 6;
-    v38 += 6930;
-    --v6;
-  }
-  while ( v6 );
-  v58 = dword_140404A6C[70074733];
-  v59 = 0;
-  if ( (int)dword_140404A6C[70074733] > 0 )
-  {
-    v60 = &dword_140404A6C[437192782];
-    v61 = (float *)&dword_140404A6C[70078831];
-    v62 = dword_140404A6C[70074733];
-    do
-    {
-      v63 = *v61 * 256.0;
-      v61 += 2;
-      *v60++ = (int)(float)(16777216.0 - v63);
-      --v62;
-    }
-    while ( v62 );
-  }
-  dword_140404A6C[436668493] = v58;
-  sub_14007D710();
-  if ( v58 > 0 )
-  {
-    v64 = 0;
-    do
-    {
-      v65 = (int)dword_140404A6C[v64 + 436668494];
-      ++v64;
-      ++v59;
-      dword_140404A6C[v64 + 70074733] = dword_140404A6C[2 * v65 + 70078830];
-    }
-    while ( v59 < (int)dword_140404A6C[70074733] );
-  }
-  return 0; /* all native callers ignore EAX */
-}
-#undef v67
-#undef v68
-#undef v69
-#undef v70
-#undef v71
-#undef v72
-#undef v73
-#undef v74
-#undef v75
-#undef v76
-#undef v77
-#undef v78
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 150F55020: using guessed type unsigned int;
-// 150F61024: using guessed type unsigned int;
-// 150F61028: using guessed type unsigned int;
-// 15ADA9280: using guessed type unsigned int;
-// 183F7C544: using guessed type unsigned int;
-// 183F7C548: using guessed type unsigned int;
-// 183F7C54C: using guessed type unsigned int;
-// 183F7CB60: using guessed type unsigned int;
-// 1A85C6BA0: using guessed type unsigned int;
-
-//----- (000000014011E730) ----------------------------------------------------
-double            sub_14011E730(int a1, int a2)
-{
-  __int64 v2; // rdi
-  __int64 v3; // rbx
-  __int64 v4; // r8
-  __int64 v5; // rdx
-  __int64 v6; // rcx
-  __int64 v7; // r8
-
-  v2 = a1;
-  v3 = a2;
-  qword_1404042E0(dword_140404A6C[71737925]);
-  qword_140404238(0);
-  qword_140404238(1);
-  qword_140404238(2);
-  qword_140404238(4);
-  qword_140404238(5);
-  qword_140404170(34962, dword_140404A6C[2 * dword_140404A6C[v3 + 283791190] + 283793813], v4);
-  ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[196707*v3+160858070]),(const void *)(intptr_t)(0));
-  ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(1, 2, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[196707*v3+160858070]),(const void *)(intptr_t)(12));
-  ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(2, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[196707*v3+160858070]),(const void *)(intptr_t)(20));
-  unk_140404560(4, 4, 5124, 4 * dword_140404A6C[196707 * v3 + 160858070], 32, 20);
-  ((void (*)(unsigned,int,unsigned,unsigned char,int,const void *))qword_1404044A8)(5, 4, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[196707*v3+160858070]),(const void *)(intptr_t)(48));
-  qword_140404338(dword_140404A6C[71737938], 16, &dword_140404A6C[240 * v2 + 23875685]);
-  qword_140404338(dword_140404A6C[71737939], 16, &dword_140404A6C[240 * v2 + 23875733]);
-  unk_140404370(dword_140404A6C[71737940], 16, 0, &dword_140404A6C[240 * v2 + 23875781]);
-  (*(void (           **)(__int64))&dword_140404A6C[18215103])(35977);
-  unk_140404518(0);
-  qword_140302FF8(0, 0, dword_140404A6C[196707 * v3 + 160858069]);
-  unk_140404520(v6, v5);
-  (*(void (           **)(__int64))&dword_140404A6C[18215101])(35977);
-  qword_140404230(0);
-  qword_140404230(1);
-  qword_140404230(2);
-  qword_140404230(4);
-  qword_140404230(5);
-  qword_140404170(34962, 0, v7);
-  return qword_1404042E0(0);
-}
-
-// 14011E7A7: variable 'v4' is possibly undefined
-// 14011E912: variable 'v6' is possibly undefined
-// 14011E912: variable 'v5' is possibly undefined
-// 14011E95E: variable 'v7' is possibly undefined
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404370: using guessed type __int64 (__fastcall *unk_140404370)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404518: using guessed type __int64 (__fastcall *unk_140404518)(_QWORD);
-// 140404520: using guessed type __int64 (__fastcall *unk_140404520)(_QWORD, _QWORD);
-// 140404560: using guessed type __int64 (__fastcall *unk_140404560)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-
-//----- (000000014011E9B0) ----------------------------------------------------
-__int64 sub_14011E9B0()
-{
-  __int64 v0; // r8
-  int v1; // r14d
-  int i; // ebx
-  int j; // ebx
-  int v4; // edi
-  float *v5; // rsi
-  __int64 v6; // rbx
-  int v7; // edi
-  float *v8; // rsi
-  __int64 v9; // rbx
-  __int64 v10; // rax
-  unsigned int *v11; // r12
-  unsigned int *v12; // r13
-  unsigned int *v13; // rdi
-  float *v14; // rsi
-  unsigned int *v15; // rbx
-  __int64 v16; // r15
-  int v17; // r8d
-  float v18; // xmm1_4
-  float v19; // xmm3_4
-  __int128 v20; // xmm0
-  int v21; // edi
-  unsigned int *v22; // rbx
-  unsigned int v23; // xmm0_4
-  float v24; // xmm0_4
-  unsigned int *v25; // rbx
-  __int64 v26; // rdi
-  __int64 v27; // r8
-  unsigned int *v28; // rbx
-  __int64 v29; // rdi
-  float *v30; // rbx
-  __int64 v31; // rsi
-  int v32; // edi
-  __int64 v33; // rsi
-  unsigned int v34; // eax
-  float v35; // xmm2_4
-  float v36; // xmm5_4
-  float v37; // xmm4_4
-  float v38; // xmm3_4
-  float v39; // xmm2_4
-  float v40; // xmm1_4
-  float v41; // xmm0_4
-  float v42; // xmm2_4
-  float v43; // xmm5_4
-  float v44; // xmm4_4
-  float v45; // xmm3_4
-  float v46; // xmm0_4
-  float v47; // xmm2_4
-  __int64 v48; // rdx
-  unsigned int *v49; // rcx
-  __int64 v50; // r8
-  signed int v51; // r13d
-  signed int v52; // eax
-  unsigned int *v53; // r12
-  __int64 v54; // r15
-  signed int v55; // edi
-  __int64 v56; // rsi
-  unsigned int *v57; // rbx
-  __int64 v58; // r9
-  __int64 v59; // r8
-  __int64 v60; // rdx
-  float v61; // xmm1_4
-  float v62; // xmm0_4
-  float v63; // xmm4_4
-  float v64; // xmm2_4
-  float v65; // xmm3_4
-  float v66; // xmm9_4
-  float v67; // xmm6_4
-  float v68; // xmm5_4
-  float v69; // xmm0_4
-  float v70; // xmm7_4
-  float v71; // xmm8_4
-  float v72; // xmm9_4
-  float v73; // xmm3_4
-  float v74; // xmm7_4
-  float v75; // xmm8_4
-  float v76; // xmm9_4
-  float v77; // xmm7_4
-  float v78; // xmm0_4
-  unsigned int v79; // xmm7_4
-  __int64 v80; // rdx
-  __int64 v81; // r8
-  __int64 v82; // rdx
-  __int64 v83; // r8
-  __int64 v84; // rdx
-  __int64 v85; // rcx
-  __int64 v86; // r8
-  float *v87; // rdi
-  __int64 v88; // r9
-  __int64 v89; // r15
-  float v90; // xmm8_4
-  float v91; // xmm7_4
-  float *v92; // r10
-  float v93; // xmm9_4
-  float v94; // xmm13_4
-  float v95; // xmm14_4
-  float v96; // xmm15_4
-  __int64 v97; // r11
-  __int64 v98; // rax
-  float v99; // xmm6_4
-  float v100; // xmm2_4
-  float v101; // xmm5_4
-  float v102; // xmm6_4
-  float v103; // xmm4_4
-  float v104; // xmm3_4
-  float v105; // xmm0_4
-  float v106; // xmm6_4
-  float v107; // xmm5_4
-  float v108; // xmm1_4
-  float v109; // xmm6_4
-  float v110; // xmm2_4
-  float v111; // xmm0_4
-  float v112; // xmm2_4
-  float v113; // xmm1_4
-  float v114; // xmm5_4
-  float v115; // xmm6_4
-  float v116; // xmm4_4
-  float v117; // xmm3_4
-  float v118; // xmm0_4
-  float v119; // xmm6_4
-  float v120; // xmm5_4
-  float v121; // xmm1_4
-  float v122; // xmm6_4
-  float v123; // xmm3_4
-  float v124; // xmm1_4
-  float v125; // xmm4_4
-  float v126; // xmm5_4
-  float v127; // xmm3_4
-  float v128; // xmm1_4
-  float v129; // xmm2_4
-  float v130; // xmm3_4
-  float v131; // xmm6_4
-  float v132; // xmm4_4
-  float v133; // xmm5_4
-  float v134; // xmm6_4
-  float v135; // xmm4_4
-  float v136; // xmm1_4
-  float v137; // xmm1_4
-  float v138; // xmm2_4
-  float v139; // xmm8_4
-  float v140; // xmm7_4
-  float v141; // xmm9_4
-  float v142; // xmm13_4
-  float v143; // xmm14_4
-  float v144; // xmm15_4
-  __int64 v145; // rax
-  float v146; // xmm1_4
-  float v147; // xmm6_4
-  float v148; // xmm2_4
-  float v149; // xmm3_4
-  float v150; // xmm4_4
-  float v151; // xmm5_4
-  float v152; // xmm6_4
-  float v153; // xmm4_4
-  float v154; // xmm1_4
-  float v155; // xmm1_4
-  float v156; // xmm2_4
-  signed int v157; // esi
-  unsigned int *v158; // rbx
-  __int64 v159; // rdx
-  __int64 v160; // r8
-  __int64 v161; // rdx
-  __int64 v162; // r8
-  __int64 v163; // rdx
-  __int64 v164; // r8
-  __int64 v165; // rdx
-  __int64 v166; // r8
-  __int64 v167; // rdx
-  __int64 v168; // r8
-  __int64 v169; // rdx
-  __int64 v170; // r8
-  __int64 v171; // rdx
-  __int64 v172; // r8
-  __int64 v173; // rdx
-  __int64 v174; // rcx
-  __int64 v175; // r8
-  unsigned int *v176; // rbx
-  signed int v177; // esi
-  float *v178; // rdi
-  unsigned int v179; // xmm0_4
-  double v180; // xmm2_8
-  __int128 v181; // xmm1
-  float v182; // xmm0_4
-  __int128 v183; // xmm1
-  unsigned int *v184; // rdx
-  unsigned int *v185; // rcx
-  __int64 v186; // rax
-  signed int v187; // edi
-  __int64 v188; // rbx
-  __int64 v189; // rdx
-  unsigned int v190; // eax
-  __int64 v191; // rcx
-  unsigned int v192; // xmm1_4
-  float v193; // xmm0_4
-  __int64 v194; // rcx
-  unsigned int v195; // xmm1_4
-  float v196; // xmm0_4
-  __int64 v197; // rdx
-  __int64 v198; // r8
-  signed int v199; // eax
-  signed int v200; // r12d
-  unsigned int *v201; // rsi
-  signed int v202; // edi
-  __int64 v203; // rbx
-  __int64 v204; // rdx
-  __int64 v205; // r8
-  unsigned int *v206; // rbx
-  __int64 v207; // rax
-  __int64 v208; // rdx
-  __int64 v209; // r8
-  unsigned int *v210; // rdi
-  unsigned int v211; // xmm1_4
-  unsigned int v212; // xmm0_4
-  __int64 v213; // rdx
-  __int64 v214; // r8
-  unsigned int *v215; // rbx
-  __int64 v216; // rsi
-  unsigned int *v217; // rdi
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14011E9B0[3232];
-#define v219 (*(__int64 (*))(void *)(sr_frame_14011E9B0 + 0)) /* [rsp+8h] */
-#define v220 (*(int (*))(void *)(sr_frame_14011E9B0 + 32)) /* [rsp+28h] */
-#define v221 (*(int (*))(void *)(sr_frame_14011E9B0 + 40)) /* [rsp+30h] */
-#define v222 (*(int (*))(void *)(sr_frame_14011E9B0 + 48)) /* [rsp+38h] */
-#define v223 (*(int (*))(void *)(sr_frame_14011E9B0 + 56)) /* [rsp+40h] */
-#define v224 (*(unsigned int (*))(void *)(sr_frame_14011E9B0 + 64)) /* [rsp+48h] */
-#define v225 (*(float (*))(void *)(sr_frame_14011E9B0 + 68)) /* [rsp+4Ch] */
-#define v226 (*(__int64 (*))(void *)(sr_frame_14011E9B0 + 72)) /* [rsp+50h] */
-#define v227 (*(__int64 (*))(void *)(sr_frame_14011E9B0 + 80)) /* [rsp+58h] */
-#define v228 (*(unsigned int * (*))(void *)(sr_frame_14011E9B0 + 88)) /* [rsp+60h] */
-#define v229 (*(__int128 (*))(void *)(sr_frame_14011E9B0 + 96)) /* [rsp+68h] */
-#define v230 (*(__int128 (*))(void *)(sr_frame_14011E9B0 + 112)) /* [rsp+78h] */
-#define v231 (*(float (*))(void *)(sr_frame_14011E9B0 + 128)) /* [rsp+88h] */
-#define v232 (*(_DWORD (*)[2])(void *)(sr_frame_14011E9B0 + 144)) /* [rsp+98h] */
-#define v233 (*(_DWORD (*)[766])(void *)(sr_frame_14011E9B0 + 152)) /* [rsp+A0h] */
-#define v234 (*(__int64 (*))(void *)(sr_frame_14011E9B0 + 3216)) /* [rsp+C98h] */
-
-  qword_140404050(3553, dword_140404A6C[451221642]);
-  v1 = 0;
-  for ( i = 0; i < (int)dword_140404A6C[179930436]; ++i )
-  {
-    ((void (*)(unsigned,float,float,float))unk_1404043F8)(2, 1.0f, 0.0f, 0.5f); /* native XMM1-3 */
-    sub_140125670((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 12LL * i + 723935104), 4.0, 2);
-  }
-  if ( dword_140404A6C[179668287] )
-  {
-    ((void (*)(unsigned,float,float,float))unk_1404043F8)(2, 1.0f, 1.0f, 0.0f); /* native XMM1-3 */
-    for ( j = 0; j < (int)dword_140404A6C[112631653]; ++j )
-      sub_140125670((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 20LL * j + 454739976), 1.0, 1);
-  }
-  v4 = 0;
-  if ( (int)dword_140404A6C[179815746] > 0 )
-  {
-    v5 = (float *)&dword_140404A6C[179815753];
-    do
-    {
-      v6 = 7LL * v4;
-      unk_140404400(2, &dword_140404A6C[v6 + 179815750]);
-      sub_140125670(&dword_140404A6C[v6 + 179815747], *v5, 2);
-      ++v4;
-      v5 += 7;
-    }
-    while ( v4 < (int)dword_140404A6C[179815746] );
-  }
-  v7 = 0;
-  if ( (int)dword_140404A6C[179873091] > 0 )
-  {
-    v8 = (float *)&dword_140404A6C[179873098];
-    do
-    {
-      v9 = 7LL * v7;
-      unk_140404400(2, &dword_140404A6C[v9 + 179873095]);
-      sub_140125670(&dword_140404A6C[v9 + 179873092], *v8, 2);
-      ++v7;
-      v8 += 7;
-    }
-    while ( v7 < (int)dword_140404A6C[179873091] );
-  }
-  v10 = 256;
-  v11 = &dword_140404A6C[280651457];
-  v227 = 256;
-  v12 = &dword_140404A6C[280651440];
-  do
-  {
-    if ( *(v11 - 154) )
-    {
-      v13 = &dword_140404A6C[282486068];
-      v14 = (float *)v12;
-      v15 = v11;
-      v16 = 16;
-      do
-      {
-        v17 = *(v13 - 1);
-        v18 = *((float *)v13 + 1);
-        v19 = *(float *)v13;
-        v229 = *(_OWORD *)(v15 - 5);
-        v20 = *(_OWORD *)(v15 - 1);
-        v220 = LODWORD(v18);
-        v230 = v20;
-        v231 = *((float *)v15 + 3);
-        sub_14007E2A0(v14, (__int64)&v229, v17, v19, v18);
-        v14 += 78;
-        v15 += 78;
-        v13 += 25;
-        --v16;
-      }
-      while ( v16 );
-      v10 = v227;
-    }
-    v12 += 7166;
-    v11 += 7166;
-    v227 = --v10;
-  }
-  while ( v10 );
-  v21 = 0;
-  if ( (int)dword_140404A6C[132792829] > 0 )
-  {
-    v22 = &dword_140404A6C[132400643];
-    do
-    {
-      v231 = 1.0;
-      v229 = xmmword_140278D30;
-      v230 = xmmword_140278D30;
-      sub_14007B2A0((__int64)&v229, (float *)&v229 + 3, sr_export_float_lane_container(1070141403));
-      sub_14007B2A0((__int64)&v229, (float *)&v229 + 3, sr_export_float_lane_container((unsigned __int64)v22[4]));
-      sub_140125670(&dword_140404A6C[383 * v21 + 132400641], 0.125, 1);
-      *(float *)&v23 = *((float *)v22 - 2) - (float)(*((float *)&v230 + 2) * 1.5);
-      v223 = 0;
-      v222 = 0;
-      v224 = v23;
-      v24 = *((float *)v22 - 1) - (float)(*((float *)&v230 + 3) * 1.5);
-      v221 = 1065353216;
-      v220 = 0x40000000;
-      v225 = v24;
-      *(float *)&v226 = *(float *)v22 - (float)(v231 * 1.5);
-      sub_14007E010(&v224, &v229, 1.0, 1.0, 2.0, 0x3F800000u, 0, 0);
-      if ( v21 == dword_140404A6C[179992045] )
-        sub_14007E010(&v224, &v229, 1.0, 2.0, 2.0, 0x3F800000u, 0x3F800000u, 0);
-      ++v21;
-      v22 += 383;
-    }
-    while ( v21 < (int)dword_140404A6C[132792829] );
-  }
-  v25 = &dword_140404A6C[283831485];
-  v26 = 6;
-  do
-  {
-    sub_14007DDF0((float *)v25, (float *)(v25 + 3));
-    sub_14007DDF0((float *)(v25 + 6), (float *)(v25 + 9));
-    v25 += 5873;
-    --v26;
-  }
-  while ( v26 );
-  v28 = &dword_140404A6C[487148756];
-  v29 = 8;
-  do
-  {
-    v220 = 1065353216;
-    ((void (*)(unsigned,float,float,float,float))unk_140404468)(2,0x1.0000000000000p-1f,0x1.0000000000000p-1f,0x0.0p+0f,0x1.0000000000000p+0f);
-    sub_140125670(v28, 1.0, 2);
-    v28 += 19;
-    --v29;
-  }
-  while ( v29 );
-  v30 = (float *)&dword_140404A6C[278845898];
-  do
-  {
-    if ( *((_DWORD *)v30 - 5) )
-    {
-      v31 = *(int *)v30;
-      v220 = 1061158912;
-      ((void (*)(unsigned,float,float,float,float))unk_140404468)(2,0x1.0000000000000p-1f,0x1.0000000000000p-1f,0x0.0p+0f,0x1.8000000000000p-1f);
-      if ( *((_DWORD *)v30 - 4) )
-      {
-        v220 = 1061158912;
-        ((void (*)(unsigned,float,float,float,float))unk_140404468)(2,0x0.0p+0f,0x1.0000000000000p+0f,0x1.0000000000000p+0f,0x1.8000000000000p-1f);
-      }
-      v32 = 0;
-      v33 = 1268 * v31;
-      do
-      {
-        v34 = v32 & 3;
-        if ( (v32 & 3) == 0 || v34 == 3 )
-          v35 = -*(float *)&dword_140404A6C[v33 + 278521350];
-        else
-          v35 = *(float *)&dword_140404A6C[v33 + 278521350];
-        v36 = *(float *)&dword_140404A6C[v33 + 278521351];
-        v37 = (float)(v35 * v30[37]) + v30[19];
-        v38 = (float)(v35 * v30[36]) + v30[18];
-        v39 = (float)(v35 * v30[38]) + v30[20];
-        if ( (unsigned int)v32 < 4 )
-          v36 = -v36;
-        v40 = v36 * v30[40];
-        v41 = v36 * v30[39];
-        v42 = v39 + (float)(v36 * v30[41]);
-        v43 = *(float *)&dword_140404A6C[v33 + 278521352];
-        v44 = v37 + v40;
-        v45 = v38 + v41;
-        if ( v34 < 2 )
-          v43 = -v43;
-        v46 = v43 * v30[42];
-        v47 = v42 + (float)(v43 * v30[44]);
-        v225 = v44 + (float)(v43 * v30[43]);
-        *(float *)&v224 = v45 + v46;
-        *(float *)&v226 = v47;
-        sub_140125670(&v224, 0.03125, 1);
-        ++v32;
-      }
-      while ( v32 < 8 );
-    }
-    v30 += 1760;
-  }
-  while ( (__int64)v30 < (__int64)&dword_140404A6C[280648138] );
-  qword_140404050(3553, dword_140404A6C[451221642]);
-  v51 = 0;
-  v52 = dword_140404A6C[421506973];
-  dword_140404A6C[456217205] = 0;
-  dword_140404A6C[456217207] = 0;
-  dword_140404A6C[456217208] = 9;
-  LODWORD(v227) = 0;
-  *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279650;
-  if ( (int)dword_140404A6C[421506973] > 0 )
-  {
-    v49 = &dword_140404A6C[358300589];
-    v53 = &dword_140404A6C[358300579];
-    v54 = 0;
-    v228 = &dword_140404A6C[358300589];
-    do
-    {
-      v55 = 0;
-      if ( (int)*v53 > 0 )
-      {
-        v56 = 5144LL * v51;
-        v57 = v49;
-        do
-        {
-          v58 = (int)*(v57 - 1);
-          v59 = 3 * (v54 + (int)v57[1]);
-          v60 = 3 * (v54 + (int)*v57);
-          v61 = *(float *)&dword_140404A6C[3 * v54 + 358297508 + 3 * v58];
-          v62 = *(float *)&dword_140404A6C[3 * v54 + 358297509 + 3 * v58];
-          v63 = *(float *)&dword_140404A6C[3 * v54 + 358297508 + 3 * (int)v57[1]] - v61;
-          v64 = *(float *)&dword_140404A6C[3 * v54 + 358297507 + 3 * v58];
-          v65 = *(float *)&dword_140404A6C[3 * v54 + 358297509 + 3 * (int)*v57] - v62;
-          v66 = *(float *)&dword_140404A6C[3 * v54 + 358297507 + 3 * (int)v57[1]] - v64;
-          v67 = *(float *)&dword_140404A6C[3 * v54 + 358297507 + 3 * (int)*v57] - v64;
-          v68 = *(float *)&dword_140404A6C[3 * v54 + 358297508 + 3 * (int)*v57] - v61;
-          v69 = *(float *)&dword_140404A6C[3 * v54 + 358297509 + 3 * (int)v57[1]] - v62;
-          v70 = (float)(v63 * v65) - (float)(v69 * v68);
-          v71 = (float)(v69 * v67) - (float)(v66 * v65);
-          v72 = (float)(v66 * v68) - (float)(v63 * v67);
-          v73 = fsqrt((float)((float)(v71 * v71) + (float)(v70 * v70)) + (float)(v72 * v72));
-          if ( v73 == 0.0 )
-          {
-            v74 = 0.0;
-            v75 = 0.0;
-            v76 = 0.0;
-          }
-          else
-          {
-            v74 = v70 * (float)(1.0 / v73);
-            v75 = v71 * (float)(1.0 / v73);
-            v76 = v72 * (float)(1.0 / v73);
-          }
-          v77 = (float)((float)(v74 * *(float *)&dword_140404A6C[284550403])
-                      + (float)(v75 * *(float *)&dword_140404A6C[284550404]))
-              + (float)(v76 * *(float *)&dword_140404A6C[284550405]);
-          if ( v77 <= 0.0 )
-            v77 = 0.0;
-          dword_140404A6C[456807036] = 1065353216;
-          if ( ((2 * (_BYTE)v51 + (_BYTE)v55) & 3u) >= 2 )
-          {
-            v78 = (float)(v77 * 0.28049999475479126) + 0.09350000321865082;
-            *(float *)&v79 = (float)(v77 * 0.28125) + 0.09375;
-          }
-          else
-          {
-            v78 = (float)(v77 * 0.17999999225139618) + 0.05999999865889549;
-            *(float *)&v79 = (float)(v77 * 0.1875) + 0.0625;
-          }
-          dword_140404A6C[456807035] = v79;
-          dword_140404A6C[456807034] = v79;
-          *(float *)&dword_140404A6C[456807033] = v78;
-          sub_14007D520((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 12 * (v58 + v56) + 1437403384), v60, v59);
-          sub_14007D520((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 12 * (v56 + (int)*v57) + 1437403384), v80, v81);
-          sub_14007D520((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 12 * (v56 + (int)v57[1]) + 1437403384), v82, v83);
-          ++v55;
-          v57 += 3;
-        }
-        while ( v55 < (int)*v53 );
-        v52 = dword_140404A6C[421506973];
-        v1 = 0;
-        v51 = v227;
-        v49 = v228;
-      }
-      ++v51;
-      v49 += 15432;
-      v54 += 5144;
-      LODWORD(v227) = v51;
-      v53 += 15432;
-      v228 = v49;
-    }
-    while ( v51 < v52 );
-  }
-  sub_14006E0D0((__int64)v49, v48, v50);
-  v87 = (float *)&dword_140404A6C[129716721];
-  *(_OWORD *)&dword_140404A6C[456807033] = xmmword_1402794A0;
-  dword_140404A6C[456217205] = 2;
-  dword_140404A6C[456217207] = 0;
-  dword_140404A6C[456217208] = 9;
-  do
-  {
-    if ( *((_DWORD *)v87 - 12) )
-    {
-      v84 = *((int *)v87 - 11);
-      v88 = 0;
-      v89 = 45072 * v84;
-      v86 = (int)dword_140404A6C[45072 * v84 + 335161466];
-      if ( v86 >= 4 )
-      {
-        v90 = v87[5];
-        v91 = *(v87 - 1);
-        v92 = (float *)v233;
-        v93 = v87[6];
-        v94 = *v87;
-        v95 = v87[7];
-        v96 = v87[1];
-        v97 = 15024 * v84;
-        v85 = ((unsigned __int64)(v86 - 4) >> 2) + 1;
-        v88 = 4 * v85;
-        do
-        {
-          v98 = 3 * v97;
-          v99 = *(float *)&dword_140404A6C[3 * v97 + 335161467];
-          v100 = (float)(v99 * v90) + v91;
-          v101 = *(float *)&dword_140404A6C[3 * v97 + 335161469] * v87[13];
-          v102 = (float)((float)(v99 * v95) + v96) + (float)(*(float *)&dword_140404A6C[3 * v97 + 335161468] * v87[10]);
-          v103 = *(float *)&dword_140404A6C[3 * v97 + 335161471];
-          v104 = (float)((float)((float)(*(float *)&dword_140404A6C[3 * v97 + 335161467] * v93) + v94)
-                       + (float)(*(float *)&dword_140404A6C[3 * v97 + 335161468] * v87[9]))
-               + (float)(*(float *)&dword_140404A6C[3 * v97 + 335161469] * v87[12]);
-          *(v92 - 2) = (float)(v100 + (float)(*(float *)&dword_140404A6C[3 * v97 + 335161468] * v87[8]))
-                     + (float)(*(float *)&dword_140404A6C[3 * v97 + 335161469] * v87[11]);
-          v105 = v103 * v87[8];
-          v106 = v102 + v101;
-          v107 = *(float *)&dword_140404A6C[3 * v97 + 335161472];
-          *(v92 - 1) = v104;
-          v108 = v107 * v87[11];
-          *v92 = v106;
-          v109 = *(float *)&dword_140404A6C[3 * v97 + 335161470];
-          v110 = (float)((float)(v109 * v90) + v91) + v105;
-          v111 = v103 * v87[9];
-          v112 = v110 + v108;
-          v113 = v107 * v87[12];
-          v114 = v107 * v87[13];
-          v115 = (float)((float)(v109 * v95) + v96) + (float)(v103 * v87[10]);
-          v116 = *(float *)&dword_140404A6C[3 * v97 + 335161474];
-          v117 = (float)((float)((float)(*(float *)&dword_140404A6C[3 * v97 + 335161470] * v93) + v94) + v111) + v113;
-          v92[1] = v112;
-          v118 = v116 * v87[8];
-          v119 = v115 + v114;
-          v120 = *(float *)&dword_140404A6C[3 * v97 + 335161475];
-          v92[2] = v117;
-          v121 = v120 * v87[11];
-          v92[3] = v119;
-          v122 = *(float *)&dword_140404A6C[3 * v97 + 335161473];
-          v123 = (float)((float)(v122 * v93) + v94) + (float)(v116 * v87[9]);
-          v92[4] = (float)((float)((float)(v122 * v90) + v91) + v118) + v121;
-          v124 = v120 * v87[12];
-          v97 += 4;
-          v125 = v116 * v87[10];
-          v126 = v120 * v87[13];
-          v127 = v123 + v124;
-          v128 = *(float *)&dword_140404A6C[v98 + 335161477];
-          v129 = *(float *)&dword_140404A6C[v98 + 335161478];
-          v92[5] = v127;
-          v130 = v128 * v87[8];
-          v92[6] = (float)((float)((float)(v122 * v95) + v96) + v125) + v126;
-          v131 = *(float *)&dword_140404A6C[v98 + 335161476];
-          v132 = v131;
-          v133 = v131 * v90;
-          *(float *)&v224 = (float)(v91 + (float)(v131 * v90)) + v130;
-          v134 = (float)((float)(v131 * v95) + v96) + (float)(v128 * v87[10]);
-          v135 = (float)((float)(v132 * v93) + v94) + (float)(v128 * v87[9]);
-          v136 = (float)(v129 * v87[11]) + v130;
-          *(float *)&v226 = v134;
-          v225 = v135;
-          v92[7] = v136 + (float)(v91 + v133);
-          v137 = (float)(v129 * v87[12]) + v135;
-          v138 = (float)(v129 * v87[13]) + v134;
-          v92[8] = v137;
-          v92[9] = v138;
-          v92 += 12;
-          --v85;
-        }
-        while ( v85 );
-      }
-      if ( v88 < v86 )
-      {
-        v139 = v87[5];
-        v140 = *(v87 - 1);
-        v141 = v87[6];
-        v85 = (__int64)&v233[3 * v88];
-        v142 = *v87;
-        v143 = v87[7];
-        v144 = v87[1];
-        v84 = v88 + 15024 * v84;
-        v86 -= v88;
-        do
-        {
-          v145 = 3 * v84;
-          v146 = *(float *)&dword_140404A6C[3 * v84++ + 335161468];
-          v147 = *(float *)&dword_140404A6C[v145 + 335161467];
-          v148 = *(float *)&dword_140404A6C[v145 + 335161469];
-          v149 = v146 * v87[8];
-          v150 = v147;
-          v151 = v147 * v139;
-          *(float *)&v224 = (float)(v140 + (float)(v147 * v139)) + v149;
-          v152 = (float)((float)(v147 * v143) + v144) + (float)(v146 * v87[10]);
-          v153 = (float)((float)(v150 * v141) + v142) + (float)(v146 * v87[9]);
-          v154 = (float)(v148 * v87[11]) + v149;
-          *(float *)&v226 = v152;
-          v225 = v153;
-          *(float *)(v85 - 8) = v154 + (float)(v140 + v151);
-          v155 = (float)(v148 * v87[12]) + v153;
-          v156 = (float)(v148 * v87[13]) + v152;
-          *(float *)(v85 - 4) = v155;
-          *(float *)v85 = v156;
-          v85 += 12;
-          --v86;
-        }
-        while ( v86 );
-      }
-      v157 = 0;
-      if ( (int)dword_140404A6C[v89 + 335164539] > 0 )
-      {
-        v158 = &dword_140404A6C[v89 + 335164543];
-        do
-        {
-          if ( *(v158 - 2) == 4 )
-          {
-            sub_14007D520(&v232[3 * *(v158 - 1)], v84, v86);
-            sub_14007D520(&v232[3 * *v158], v159, v160);
-            sub_14007D520(&v232[3 * *v158], v161, v162);
-            sub_14007D520(&v232[3 * v158[1]], v163, v164);
-            sub_14007D520(&v232[3 * v158[1]], v165, v166);
-            sub_14007D520(&v232[3 * v158[2]], v167, v168);
-            sub_14007D520(&v232[3 * v158[2]], v169, v170);
-            sub_14007D520(&v232[3 * *(v158 - 1)], v171, v172);
-          }
-          ++v157;
-          v158 += 6;
-        }
-        while ( v157 < (int)dword_140404A6C[v89 + 335164539] );
-      }
-    }
-    v87 += 5210;
-  }
-  while ( (__int64)v87 < (__int64)&dword_140404A6C[132384241] );
-  sub_14006E0D0(v85, v84, v86);
-  v176 = &dword_140404A6C[129716728];
-  do
-  {
-    if ( *(v176 - 19) )
-    {
-      v177 = 0;
-      if ( (int)v176[3645] > 0 )
-      {
-        v178 = (float *)(v176 + 3667);
-        do
-        {
-          v179 = *((unsigned int *)v178 - 2);
-          *(_QWORD *)&v180 = *((unsigned int *)v178 - 3);
-          v225 = *(v178 - 1);
-          v181 = *(_OWORD *)(v176 - 2);
-          v224 = v179;
-          v182 = *v178;
-          v229 = v181;
-          v183 = *(_OWORD *)(v176 + 2);
-          *(float *)&v226 = v182;
-          v230 = v183;
-          v231 = *((float *)v176 + 6);
-          sub_14007B2A0((__int64)&v229, (float *)&v229 + 3, v180);
-          sub_14007B2A0((__int64)&v229, (float *)&v229, sr_export_float_lane_container((unsigned __int64)*((_DWORD *)v178 - 4)));
-          if ( dword_140404A6C[179955874] )
-          {
-            v186 = *((int *)v178 - 21);
-            v184 = &dword_140404A6C[47 * v186 + 18215724];
-            v185 = (unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 188 * v186 + 77076216);
-          }
-          else
-          {
-            v184 = (unsigned int *)&v229;
-            v185 = &v224;
-          }
-          sub_14007E9D0(v185, v184, COERCE_DOUBLE((unsigned __int64)*((_DWORD *)v178 - 8)), 0.125);
-          ++v177;
-          v178 += 43;
-        }
-        while ( v177 < (int)v176[3645] );
-      }
-    }
-    v176 += 5210;
-  }
-  while ( (__int64)v176 < (__int64)&dword_140404A6C[132384248] );
-  *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279550;
-  dword_140404A6C[456217205] = 2;
-  dword_140404A6C[456217207] = 0;
-  dword_140404A6C[456217208] = 9;
-  if ( dword_140404A6C[179668287] )
-  {
-    if ( dword_140404A6C[179992045] != -1 )
-    {
-      v174 = 383LL * (int)dword_140404A6C[179992045];
-      v187 = 0;
-      if ( (int)dword_140404A6C[v174 + 132400671] > 0 )
-      {
-        v188 = 0;
-        while ( 1 )
-        {
-          v189 = v174 * 4 + v188 * 4;
-          v190 = dword_140404A6C[v174 + 132400681 + v188];
-          *(_OWORD *)&dword_140404A6C[456807033] = xmmword_1402794E0;
-          if ( v190 == -1 )
-            goto LABEL_87;
-          if ( v190 == 1 )
-            break;
-LABEL_88:
-          v191 = 34LL
-               * (int)dword_140404A6C[396 * *(unsigned int *)((char *)&dword_140404A6C[132400672] + v189) + 225426056];
-          v192 = dword_140404A6C[v191 + 225391235];
-          v224 = dword_140404A6C[v191 + 225391233];
-          v193 = *(float *)&dword_140404A6C[v191 + 225391234];
-          LODWORD(v226) = v192;
-          v225 = v193 + 4.0;
-          sub_14007D520(&v224, v189, v175);
-          v194 = 34LL
-               * (int)dword_140404A6C[396 * dword_140404A6C[383 * (int)dword_140404A6C[179992045] + 132400672 + v188]
-                                    + 225426057];
-          v195 = dword_140404A6C[v194 + 225391235];
-          v224 = dword_140404A6C[v194 + 225391233];
-          v196 = *(float *)&dword_140404A6C[v194 + 225391234];
-          LODWORD(v226) = v195;
-          v225 = v196 + 4.0;
-          sub_14007D520(&v224, v197, v198);
-          ++v187;
-          v174 = 383LL * (int)dword_140404A6C[179992045];
-          v188 += 5;
-          if ( v187 >= (int)dword_140404A6C[v174 + 132400671] )
-            goto LABEL_89;
-        }
-        dword_140404A6C[456807033] = 0;
-LABEL_87:
-        dword_140404A6C[456807035] = 1065353216;
-        goto LABEL_88;
-      }
-    }
-LABEL_89:
-    v199 = dword_140404A6C[225426046];
-    v200 = 0;
-    if ( (int)dword_140404A6C[225426046] > 0 )
-    {
-      v201 = &dword_140404A6C[225426061];
-      do
-      {
-        v202 = 0;
-        if ( (int)*v201 > 0 )
-        {
-          do
-          {
-            *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279660;
-            v203 = 1584LL * v200 + 28LL * v202;
-            sub_14007D520((unsigned int *)((char *)&dword_140404A6C[225426063] + v203), v173, v175);
-            sub_14007D520((unsigned int *)((char *)&dword_140404A6C[225426066] + v203), v204, v205);
-            ++v202;
-          }
-          while ( v202 < (int)*v201 );
-          v199 = dword_140404A6C[225426046];
-        }
-        ++v200;
-        v201 += 396;
-      }
-      while ( v200 < v199 );
-    }
-    v206 = &dword_140404A6C[486149254];
-    *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279550;
-    do
-    {
-      if ( *(v206 - 1) && !*v206 )
-      {
-        v207 = (int)v206[5];
-        *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279550;
-        sub_14007D520(&dword_140404A6C[60 * v207 + 73007026], v173, v175);
-        sub_14007D520(&dword_140404A6C[60 * v206[6] + 73007026], v208, v209);
-      }
-      v206 += 61;
-    }
-    while ( (__int64)v206 < (__int64)&dword_140404A6C[487148678] );
-    if ( (int)dword_140404A6C[179668289] > 0 )
-    {
-      v210 = &dword_140404A6C[179668298];
-      do
-      {
-        v211 = *(v210 - 1);
-        dword_140404A6C[456807033] = *(v210 - 2);
-        v212 = *v210;
-        dword_140404A6C[456807034] = v211;
-        dword_140404A6C[456807035] = v212;
-        dword_140404A6C[456807036] = 1065353216;
-        sub_14007D520((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 36LL * v1 + 722886516), v173, v175);
-        sub_14007D520((unsigned int *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 36LL * v1++ + 722886528), v213, v214);
-        v210 += 9;
-      }
-      while ( v1 < (int)dword_140404A6C[179668289] );
-    }
-  }
-  sub_14006E0D0(v174 * 4, v173, v175);
-  v215 = &dword_140404A6C[18215710];
-  v216 = 0x2000;
-  v217 = &dword_140404A6C[18215715];
-  do
-  {
-    if ( *(v215 - 1) && *v215 == 1 )
-      sub_14007E010(
-        v217,
-        v217 + 9,
-        *((float *)v215 + 42),
-        *((float *)v215 + 43),
-        *((float *)v215 + 44),
-        0,
-        0x3F800000u,
-        0);
-    v217 += 47;
-    v215 += 47;
-    --v216;
-  }
-  while ( v216 );
-  return 0; /* compatibility result discarded by all reviewed callers */
-}
-#undef v219
-#undef v220
-#undef v221
-#undef v222
-#undef v223
-#undef v224
-#undef v225
-#undef v226
-#undef v227
-#undef v228
-#undef v229
-#undef v230
-#undef v231
-#undef v232
-#undef v233
-#undef v234
-//----- (00000001401386C0) ----------------------------------------------------
-__int64            sub_1401386C0(
-        unsigned int a1,
-        unsigned int a2,
-        __int64 a3,
-        __int64 a4,
-        unsigned int a5,
-        unsigned int a6,
-        unsigned int a7,
-        unsigned int a8,
-        unsigned int a9,
-        unsigned int a10)
-{
-  unsigned int v11; // ebx
-  unsigned int v12; // edi
-
-  v11 = a4;
-  v12 = a3;
-  unk_1404041E0(1029, a1, a3, a4);
-  unk_1404041E8(1029, 0xFFFFFFFFLL);
-  unk_1404041D8(1029, a5, a6, a7);
-  unk_1404041E0(1028, a2, v12, v11);
-  unk_1404041E8(1028, 0xFFFFFFFFLL);
-  return unk_1404041D8(1028, a8, a9, a10);
-}
-
-// 1404041D8: using guessed type __int64 (__fastcall *unk_1404041D8)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404041E0: using guessed type __int64 (__fastcall *unk_1404041E0)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 1404041E8: using guessed type __int64 (__fastcall *unk_1404041E8)(_QWORD, _QWORD);
 

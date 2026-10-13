@@ -44,29 +44,6 @@ uint32_t world_block_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z)
     return record == -1 ? 0 : world_block_record_ids(record)[voxel];
 }
 
-uint32_t world_block_unknown_8_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z)
-{
-    uint32_t voxel;
-    int32_t record = block_record(layer, x, y, z, &voxel);
-    return record == -1 ? 0 : world_block_record_unknown_8(record)[voxel];
-}
-
-uint32_t world_block_layout_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z)
-{
-    uint32_t voxel;
-    int32_t record = block_record(layer, x, y, z, &voxel);
-    return record == -1 ? 0 : world_block_record_layout(record)[voxel];
-}
-
-uint32_t world_block_resolved_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z)
-{
-    uint32_t block = world_block_layout_at(layer, x, y, z);
-
-    if ((block & 0xE0000000u) != 0xC0000000u)
-        return block;
-    return world_block_layout_at(layer, x - (block & 0xFF), y - (block >> 16 & 0xFF), z - (block >> 8 & 0xFF));
-}
-
 uint32_t world_block_gone_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z)
 {
     uint32_t voxel;
@@ -178,39 +155,4 @@ void world_update_human_bounds(void)
         }
         world_break_blocks(human->voxel_min, human->voxel_max);
     }
-}
-
-uint32_t world_block_unknown_8_resolved_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z)
-{
-    uint32_t block = world_block_unknown_8_at(layer, x, y, z);
-
-    if ((block & 0xE0000000u) != 0xC0000000u)
-        return block;
-    return world_block_unknown_8_at(layer, x - (block & 0xFF), y - (block >> 16 & 0xFF), z - (block >> 8 & 0xFF));
-}
-
-/* A record's face words (record + 0x1008, 8 per voxel) and its bytes at
-   record + 0x3808 (8 per voxel). */
-#define record_face_words(record) (&SR_GLOBAL(uint16_t, 0x154162248ULL + 0x6C48ULL * (uint64_t)(int64_t)(record)))
-#define record_unknown_3808(record) (&SR_GLOBAL(uint8_t, 0x154164A48ULL + 0x6C48ULL * (uint64_t)(int64_t)(record)))
-
-uint32_t world_block_face_word_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, int32_t index)
-{
-    uint32_t voxel;
-    int32_t record = block_record(layer, x, y, z, &voxel);
-    return record == -1 ? 0xFFFFFFFFu : record_face_words(record)[(int32_t)((uint32_t)index + 8 * voxel)];
-}
-
-uint32_t world_block_last_face_word_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z)
-{
-    uint32_t voxel;
-    int32_t record = block_record(layer, x, y, z, &voxel);
-    return record == -1 ? 0xFFFFFFFFu : record_face_words(record)[8 * voxel + 7];
-}
-
-uint32_t world_block_unknown_3808_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, int32_t index)
-{
-    uint32_t voxel;
-    int32_t record = block_record(layer, x, y, z, &voxel);
-    return record == -1 ? 0xFFFFFFFFu : record_unknown_3808(record)[(int32_t)((uint32_t)index + 8 * voxel)];
 }

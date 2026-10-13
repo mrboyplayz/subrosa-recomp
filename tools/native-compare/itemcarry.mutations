@@ -1,0 +1,48 @@
+hands too
+    if ((uint32_t)item->slot <= 1u)
+----
+    if ((uint32_t)item->slot <= 0u)
+====
+negative slots skipped
+    if ((uint32_t)item->slot <= 1u)
+----
+    if (item->slot <= 1)
+====
+third row not negated
+    item->rotation[4] = -r[7];
+----
+    item->rotation[4] = r[7];
+====
+rows 2 and 3 swapped
+    item->rotation[6] = r[3];
+----
+    item->rotation[6] = -r[6];
+====
+quarter unit forward
+        item->position[axis] = chest->position[axis] - item->rotation[3 + axis] * 0.25f;
+----
+        item->position[axis] = chest->position[axis] + item->rotation[3 + axis] * 0.25f;
+====
+eighth along the second row
+        item->position[axis] = item->rotation[axis] * 0.125f + item->position[axis];
+----
+        item->position[axis] = item->rotation[3 + axis] * 0.125f + item->position[axis];
+====
+from the pelvis instead of the chest
+    const HumanBone *chest = &h->bones[HUMAN_BONE_CHEST];
+----
+    const HumanBone *chest = &h->bones[1];
+====
+vehicle position ignored
+    if (h->vehicle != -1)
+----
+    if (0)
+====
+body keeps turning
+        body->angular_momentum[axis] = 0.0f;
+----
+====
+velocity from the chest
+        item->velocity[axis] = pelvis->velocity[axis];
+----
+        item->velocity[axis] = chest->velocity[axis];

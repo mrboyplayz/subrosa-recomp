@@ -9,7 +9,7 @@
 /* The original's sprintf (0x140158AB0, part of its C runtime, still
    recompiled code). Numbers must be formatted by it: another runtime may
    print a float's last digits differently. */
-extern void sub_140158AB0(char *buffer, const char *format, ...);
+extern void crt_sprintf(char *buffer, const char *format, ...);
 
 /* ---- fonts ----------------------------------------------------------------- */
 
@@ -88,27 +88,27 @@ int text_format(char *out, const char *format, int capacity, const uint64_t *arg
                 break;
             case 'i':
                 i++;
-                sub_140158AB0(piece, "%d", (int32_t)argument);
+                crt_sprintf(piece, "%d", (int32_t)argument);
                 append(out, &length, piece);
                 break;
             case 'u':
                 i++;
-                sub_140158AB0(piece, "%u", (uint32_t)argument);
+                crt_sprintf(piece, "%u", (uint32_t)argument);
                 append(out, &length, piece);
                 break;
             case 'x':
                 i++;
-                sub_140158AB0(piece, "%X", (uint32_t)argument);
+                crt_sprintf(piece, "%X", (uint32_t)argument);
                 append(out, &length, piece);
                 break;
             case 'l':
                 i++;
-                sub_140158AB0(piece, "%I64d", (int64_t)argument);
+                crt_sprintf(piece, "%I64d", (int64_t)argument);
                 append(out, &length, piece);
                 break;
             case 'L':
                 i++;
-                sub_140158AB0(piece, "%I64u", argument);
+                crt_sprintf(piece, "%I64u", argument);
                 append(out, &length, piece);
                 break;
             case 'f':
@@ -117,7 +117,7 @@ int text_format(char *out, const char *format, int capacity, const uint64_t *arg
 
                 i++;
                 memcpy(&value, &argument, sizeof value);
-                sub_140158AB0(piece, directive == 'f' ? "%.3f" : "%.7f", value);
+                crt_sprintf(piece, directive == 'f' ? "%.3f" : "%.7f", value);
                 append(out, &length, piece);
                 break;
             }
@@ -131,7 +131,7 @@ int text_format(char *out, const char *format, int capacity, const uint64_t *arg
                        which overflow the original's stack. */
                     append(out, &length, string);
                 } else {
-                    sub_140158AB0(piece, "%s", string);
+                    crt_sprintf(piece, "%s", string);
                     append(out, &length, piece);
                 }
                 break;
@@ -153,20 +153,20 @@ int text_format(char *out, const char *format, int capacity, const uint64_t *arg
 
                 i++;
                 if (value >= 1000000) {
-                    sub_140158AB0(piece, "%d", value / 1000000);
+                    crt_sprintf(piece, "%d", value / 1000000);
                     append(out, &length, piece);
                     out[length++] = ',';
-                    sub_140158AB0(piece, "%.3d", value / 1000 % 1000);
+                    crt_sprintf(piece, "%.3d", value / 1000 % 1000);
                     append(out, &length, piece);
                     out[length++] = ',';
-                    sub_140158AB0(piece, "%.3d", value % 1000);
+                    crt_sprintf(piece, "%.3d", value % 1000);
                 } else if (value >= 1000) {
-                    sub_140158AB0(piece, "%d", value / 1000 % 1000);
+                    crt_sprintf(piece, "%d", value / 1000 % 1000);
                     append(out, &length, piece);
                     out[length++] = ',';
-                    sub_140158AB0(piece, "%.3d", value % 1000);
+                    crt_sprintf(piece, "%.3d", value % 1000);
                 } else {
-                    sub_140158AB0(piece, "%d", value);
+                    crt_sprintf(piece, "%d", value);
                 }
                 append(out, &length, piece);
                 break;

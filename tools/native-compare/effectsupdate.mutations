@@ -1,0 +1,89 @@
+drag on vertical speed before gravity
+    e->velocity[1] = (e->velocity[1] - e->gravity) * drag;
+----
+    e->velocity[1] = e->velocity[1] * drag - e->gravity;
+====
+spark offset 1/32
+        rest_on_hit(e->position, 0.015625f);
+        bounce(e->velocity, 0.9375f);
+    }
+}
+----
+        rest_on_hit(e->position, 0.03125f);
+        bounce(e->velocity, 0.9375f);
+    }
+}
+====
+friction limit in single precision
+    double limit = (double)absolute_value(into) * 0.699999988079071;
+----
+    double limit = (double)(absolute_value(into) * 0.7f);
+====
+bounce grouping
+    float into = (vy * n[1] + vx * n[0]) + n[2] * vz;
+----
+    float into = vy * n[1] + (vx * n[0] + n[2] * vz);
+====
+restitution 1.0
+    float back = into * -1.125f;
+----
+    float back = into * -1.0f;
+====
+three points: live velocities in the pull
+                      - ((dx * before[k][0] + dy * before[k][1]) + dz * before[k][2]) * 0.25f)
+----
+                      - ((dx * e->point_velocity[k][0] + dy * before[k][1]) + dz * before[k][2]) * 0.25f)
+====
+three points: edge 2-0 missing
+    for (int k = 0; k < 3; k++) {
+        int j = (k + 1) % 3;
+----
+    for (int k = 0; k < 2; k++) {
+        int j = (k + 1) % 3;
+====
+three points: alive from 59400
+        if (e->type == EFFECT_4 && e->lifetime > 59400)
+----
+        if (e->type == EFFECT_4 && e->lifetime >= 59400)
+====
+quad corner order
+        corners[2][axis] = down + far;
+        corners[3][axis] = down + near;
+----
+        corners[2][axis] = down + near;
+        corners[3][axis] = down + far;
+====
+stain uv flipped
+    static const float uv[4][2] = {{0, 1}, {1, 1}, {1, 0}, {0, 0}};
+----
+    static const float uv[4][2] = {{0, 0}, {1, 0}, {1, 1}, {0, 1}};
+====
+mark spin step
+    float angle = (float)((double)(rand() & 0xFF) * 0.012271846303085938);
+----
+    float angle = (float)((double)(rand() & 0x7F) * 0.012271846303085938);
+====
+drop size from 7 bits
+        e->size = (float)(rand() & 0x3F) * 0.00048828125f + 0.03125f;
+----
+        e->size = (float)(rand() & 0x7F) * 0.00048828125f + 0.03125f;
+====
+marks also stick to walls
+    if (type == EFFECT_3 && !(collision_hit.normal[1] > 0.0f)) {
+----
+    if (type == EFFECT_3 && collision_hit.normal[1] < 0.0f) {
+====
+drops stop facing the camera
+        if (type != EFFECT_3)
+            memcpy(e->frame, camera_axes, sizeof e->frame);   /* face the camera */
+----
+====
+spin threshold 1/256
+    if (e->type == EFFECT_3 && e->spin > 0.0041666669f)
+----
+    if (e->type == EFFECT_3 && e->spin > 0.00390625f)
+====
+stain capacity 15996
+    if (blood_stain_count >= EFFECT_MARK_VERTEX_CAPACITY)
+----
+    if (blood_stain_count >= EFFECT_MARK_VERTEX_CAPACITY - 4)

@@ -1,0 +1,108 @@
+sort key offset
+    return truncate_float_64(depth * 1024.0f + 16777216.0f);
+----
+    return truncate_float_64(depth * 1024.0f + 16777215.0f);
+====
+sort key grouping
+    float depth = (camera_view[0] * p[0] + camera_view[1] * p[1]) + camera_view[2] * p[2];
+----
+    float depth = camera_view[0] * p[0] + (camera_view[1] * p[1] + camera_view[2] * p[2]);
+====
+32-bit key conversion
+    return (int32_t)_mm_cvttss_si64(_mm_set_ss(value));
+----
+    return _mm_cvtt_ss2si(_mm_set_ss(value));
+====
+fade length
+    return min_float((float)e->lifetime * 0.03125f, 1.0f);
+----
+    return min_float((float)e->lifetime * 0.0625f, 1.0f);
+====
+spark colour
+    set_color(1.0f, 1.0f, 0.75f, fade(e));
+----
+    set_color(1.0f, 1.0f, 0.5f, fade(e));
+====
+drop red
+        set_color(light_ambient[0] * 0.25f, 0.0f, 0.0f, fade(e));
+----
+        set_color(light_ambient[0] * 0.5f, 0.0f, 0.0f, fade(e));
+====
+signed type test
+        if ((uint32_t)e->type <= EFFECT_BLOOD_DROP)      /* an unsigned compare: no negative types */
+----
+        if (e->type <= EFFECT_BLOOD_DROP)
+====
+hole corner order
+        corner[k] = (side[k] + up[k]) * s + p[k];
+----
+        corner[k] = (side[k] * s + up[k] * s) + p[k];
+====
+spark third texcoord
+    set_texcoord(1.0f, 0.0f);
+    renderer_batch_vertex3fv(corner);
+    set_texcoord(0.0f, 0.0f);
+    for (int k = 0; k < 3; k++)
+        corner[k] = (camera_side[k] * -s + p[k]) + camera_up[k] * -s;
+----
+    set_texcoord(1.0f, 1.0f);
+    renderer_batch_vertex3fv(corner);
+    set_texcoord(0.0f, 0.0f);
+    for (int k = 0; k < 3; k++)
+        corner[k] = (camera_side[k] * -s + p[k]) + camera_up[k] * -s;
+====
+face camera NaN
+    if (!(facing >= 0.0f)) {
+----
+    if (facing < 0.0f) {
+====
+mesh limit
+#define MESH_VERTEX_LIMIT 16376
+----
+#define MESH_VERTEX_LIMIT 16
+====
+quad second triangle
+    add_mesh_vertex(corner[2], normal);
+    add_mesh_vertex(corner[3], normal);
+----
+    add_mesh_vertex(corner[3], normal);
+    add_mesh_vertex(corner[2], normal);
+====
+triangle normal sign
+    normal[1] = ac[2] * ab[0] - ac[0] * ab[2];
+----
+    normal[1] = ac[0] * ab[2] - ac[2] * ab[0];
+====
+degenerate triangle
+    if (is_zero_or_nan_quiet(length)) {
+----
+    if (length == 0.0f) {
+====
+tracer fade
+    set_color(1.0f, 1.0f, 1.0f, min_float((float)e->lifetime * 0.5f, 1.0f) * 0.5f);
+----
+    set_color(1.0f, 1.0f, 1.0f, min_float((float)e->lifetime * 0.5f, 1.0f) * 0.75f);
+====
+tracer start clamp
+    set_color(1.0f, 1.0f, 1.0f, max_float(min_float((float)(e->lifetime - 1) * 0.5f, 1.0f) * 0.5f, 0.0f));
+----
+    set_color(1.0f, 1.0f, 1.0f, min_float((float)(e->lifetime - 1) * 0.5f, 1.0f) * 0.5f);
+====
+premultiplied blend
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+----
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+====
+mesh texture
+    glBindTexture(GL_TEXTURE_2D, gl_texture_name(mark_texture(mark_texture_choice)));
+----
+    glBindTexture(GL_TEXTURE_2D, gl_texture_name(effect_texture));
+====
+upload size
+    glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr)multiply_int(multiply_int(batch->vertex_count, batch->floats_per_vertex), 4),
+----
+    glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr)multiply_int(batch->vertex_count, 4),
+====
+line smooth off
+    glDisable(GL_LINE_SMOOTH);
+----

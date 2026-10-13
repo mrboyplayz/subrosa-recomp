@@ -1,13 +1,12 @@
 #include "shared_client.h"
 
-
 //----- (000000014007CA90) ----------------------------------------------------
 // Candidate keyboard snapshot wrapper: copies 323 bytes from SDL_GetKeyboardState(NULL) into caller buffer.
 __int128 *           input_get_keyboard_state_candidate(__int64 a1)
 {
-  __int128 *result; // rax
-  __int64 v3; // rcx
-  __int128 v4; // xmm0
+  __int128 *result;
+  __int64 v3;
+  __int128 v4;
 
   result = (__int128 *)((const unsigned char *(*)(int *))sub_140198EF9)(NULL);
   v3 = 2;
@@ -36,15 +35,14 @@ __int128 *           input_get_keyboard_state_candidate(__int64 a1)
   return result;
 }
 
-
 //----- (000000014007CB30) ----------------------------------------------------
 __int64            input_get_mouse_state_candidate(__int64 a1)
 {
-  unsigned int v2; // eax
-  int v3; // ecx
-  __m128i v4; // xmm0
-  float v5; // xmm2_4
-  __int64 result; // rax
+  unsigned int v2;
+  int v3;
+  __m128i v4;
+  float v5;
+  __int64 result;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007CB30[16];
 #define v7 (*(int (*))(void *)(sr_frame_14007CB30 + 0)) /* [rsp+30h] */
@@ -52,9 +50,9 @@ __int64            input_get_mouse_state_candidate(__int64 a1)
 
   v2 = ((unsigned (*)(int *, int *))sub_140198EFF)(&v7, &v8);
   v3 = v2 & 1;
-  *(float *)a1 = (float)((float)v7 * *(float *)&dword_140404A6C[438291414]) / (float)(int)dword_140404A6C[137297755];
+  *(float *)a1 = (float)((float)v7 * renderer_canvas_width) / (float)(int)dword_140404A6C[137297755];
   v4 = _mm_cvtsi32_si128(dword_140404A6C[137297756]);
-  v5 = (float)v8 * *(float *)&dword_140404A6C[438291415];
+  v5 = (float)v8 * renderer_canvas_height;
   *(_DWORD *)(a1 + 152) = v2;
   result = (v2 >> 2) & 1;
   *(float *)(a1 + 4) = v5 / SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v4), f32)[0];
@@ -65,14 +63,12 @@ __int64            input_get_mouse_state_candidate(__int64 a1)
 #undef v7
 #undef v8
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014007CBC0) ----------------------------------------------------
 __int64            input_get_relative_mouse_state_candidate(float *a1)
 {
-  unsigned int v2; // eax
-  int v3; // edx
-  __int64 result; // rax
+  unsigned int v2;
+  int v3;
+  __int64 result;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007CBC0[16];
 #define v5 (*(int (*))(void *)(sr_frame_14007CBC0 + 0)) /* [rsp+30h] */
@@ -97,13 +93,13 @@ __int64            input_get_relative_mouse_state_candidate(float *a1)
 // Candidate SDL event pump: tracks wheel delta, key events, Alt+Enter fullscreen toggle, resize/viewport state.
 void input_poll_events_candidate()
 {
-  unsigned int v0; // r8d
-  unsigned int v1; // edx
-  int v2; // ebx
-  int v3; // r11d
-  int v4; // ecx
-  int v5; // r10d
-  unsigned int v6; // eax
+  unsigned int v0;
+  unsigned int v1;
+  int v2;
+  int v3;
+  int v4;
+  int v5;
+  unsigned int v6;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007CC30[112];
 #define v8 (*(__int64 (*))(void *)(sr_frame_14007CC30 + 0)) /* [rsp+0h] */
@@ -190,8 +186,8 @@ LABEL_16:
           dword_140404A6C[137297773] = 1;
           if ( dword_140404A6C[137297769] )
           {
-            *(float *)&dword_140404A6C[438291414] = (float)(int)dword_140404A6C[137297755];
-            *(float *)&dword_140404A6C[438291415] = (float)(int)dword_140404A6C[137297756];
+            renderer_canvas_width = (float)(int)dword_140404A6C[137297755];
+            renderer_canvas_height = (float)(int)dword_140404A6C[137297756];
           }
         }
         if ( v12 == 5 && !dword_140404A6C[137297766] )

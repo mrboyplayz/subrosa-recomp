@@ -1,4 +1,5 @@
 /* 2D drawing layer of the renderer. See renderer.h. */
+#include <string.h>
 #include "renderer.h"
 #include "gl.h"
 
@@ -286,4 +287,38 @@ void renderer_draw_atlas_sprite(int atlas_index, int entry_index, float x, float
     upload_quad_scratch();
     draw_quad_scratch(GL_TRIANGLES, 2, color);
     glUseProgram(0);
+}
+
+/* ---- depth sort ------------------------------------------------------------ */
+
+/* Working memory of the sort: the order before the current pass, and the
+   count and first slot of each byte value. */
+#define sort_previous (&SR_GLOBAL(int32_t, 0x1A86C6BA4ULL))
+#define sort_counts   (&SR_GLOBAL(int32_t, 0x1A89C6BA4ULL))
+#define sort_starts   (&SR_GLOBAL(int32_t, 0x1A89C6FA4ULL))
+
+void renderer_sort(void)
+{
+    int count = renderer_sort_count;
+    int32_t *order = renderer_sort_order;
+
+    for (int i = 0; i < count; i++)
+        order[i] = i;
+    for (int pass = 0; pass < 4; pass++) {
+        int shift = 8 * pass;
+        memset(sort_counts, 0, 256 * sizeof *sort_counts);
+        for (int i = 0; i < count; i++) {
+            int item = order[i];
+            sort_previous[i] = item;
+            sort_counts[(renderer_sort_keys[item] >> shift) & 0xFF]++;
+        }
+        sort_starts[0] = 0;
+        for (int value = 0; value < 255; value++)
+            sort_starts[value + 1] = sort_starts[value] + sort_counts[value];
+        for (int i = 0; i < count; i++) {
+            int item = sort_previous[i];
+            order[sort_starts[(renderer_sort_keys[item] >> shift) & 0xFF]++] = item;
+        }
+    }
+    order[count] = -1;
 }

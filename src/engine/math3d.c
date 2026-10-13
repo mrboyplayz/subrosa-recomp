@@ -3,6 +3,7 @@
 #include <xmmintrin.h>
 #include "arith.h"
 #include "math3d.h"
+#include "memory.h"
 
 /* The original's sine/cosine routine (0x1401F8AC0, part of its C runtime,
    still recompiled code). Takes the angle as a float in the low lane of XMM0
@@ -300,4 +301,44 @@ void math_mat3_from_quat(float m[9], const float q[4])
     m[7] = yz2 + xw2;
     m[4] = 1.0f - ((zz + zz) + xx2);
     m[8] = 1.0f - (yy2 + xx2);
+}
+
+/* World axes the original keeps in its initialized data: x and y. */
+extern float dword_1402F6178[3], dword_1402F6188[3];
+
+static float absolute_bits(float value)
+{
+    uint32_t bits;
+    memcpy(&bits, &value, 4);
+    bits &= 0x7FFFFFFFu;
+    memcpy(&value, &bits, 4);
+    return value;
+}
+
+void math_frame_across(const float direction[3], float side[3], float up[3])
+{
+    const float *axis = absolute_bits(direction[1]) >= 0.70700002f ? dword_1402F6178 : dword_1402F6188;
+    float ax = axis[0], ay = axis[1], az = axis[2];
+
+    side[0] = ay * direction[2] - az * direction[1];
+    side[1] = az * direction[0] - ax * direction[2];
+    side[2] = ax * direction[1] - ay * direction[0];
+    math_vec3_normalize(side, side);
+    up[0] = direction[1] * side[2] - direction[2] * side[1];
+    up[1] = side[0] * direction[2] - direction[0] * side[2];
+    up[2] = direction[0] * side[1] - side[0] * direction[1];
+    math_vec3_normalize(up, up);
+}
+
+#define noise_seed SR_GLOBAL(uint32_t, 0x1602E12C0ULL)
+
+int32_t math_noise_next(void)
+{
+    uint32_t seed = noise_seed;
+    uint32_t h = (seed << 13) ^ seed;
+    uint32_t t;
+
+    noise_seed = seed + 1;
+    t = (h * h) * 15731u + 789221u;
+    return (int32_t)((t * t - 771171059u) & 0x7FFFFFFF);
 }

@@ -1,0 +1,34 @@
+connected not required
+    if (!game_connected || (uint32_t)item > 0x3FF)
+----
+    if ((uint32_t)item > 0x3FF)
+====
+items up to 1024
+    if (!game_connected || (uint32_t)item > 0x3FF)
+----
+    if (!game_connected || (uint32_t)item > 0x400)
+====
+count kept at 17 bits
+    world_event_count = (int32_t)((uint32_t)count + 1u) & 0xFFFF;
+----
+    world_event_count = (int32_t)((uint32_t)count + 1u) & 0x1FFFF;
+====
+event type
+    event->type = 6;
+----
+    event->type = 7;
+====
+change not counted
+    world_item_change_count(item)++;
+----
+====
+state and number swapped
+    event->b = item_call_state(item);
+    event->c = item_call_number(item);
+----
+    event->b = item_call_number(item);
+    event->c = item_call_state(item);
+====
+word at 0x278 not recorded
+    event->unknown_2c = item_unknown_278(item);
+----

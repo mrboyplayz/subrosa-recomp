@@ -2,32 +2,6 @@
 
 // 14006D660: inconsistent variable size for 'xmm0_8.8'
 // 14006D660: inconsistent variable size for 'xmm1_8.8'
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404190: using guessed type __int64 (__fastcall *unk_140404190)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404470: using guessed type __int64 (__fastcall *unk_140404470)(_QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1A8BF79CC: using guessed type unsigned int;
-// 1A8BF79D0: using guessed type unsigned int;
-// 1A8BF79D4: using guessed type unsigned int;
-// 1A8BF79D8: using guessed type unsigned int;
-// 1A8BF79DC: using guessed type unsigned int;
-// 1A8BF79E0: using guessed type unsigned int;
-// 1A8BF79F0: using guessed type unsigned int;
-// 1A8BF79F4: using guessed type unsigned int;
-// 1A8BF7A04: using guessed type unsigned int;
-// 1A8BF7A08: using guessed type unsigned int;
-// 1A8BF7A18: using guessed type unsigned int;
-// 1A8BF7A1C: using guessed type unsigned int;
-// 1A8BF7A2C: using guessed type unsigned int;
-// 1A8BF7A30: using guessed type unsigned int;
-// 1A8BF7A40: using guessed type unsigned int;
-// 1A8BF7A44: using guessed type unsigned int;
 
 unsigned sr_text_float_bits(float value){unsigned bits;memcpy(&bits,&value,4);return bits;}
 
@@ -45,15 +19,14 @@ void sr_text_draw_recovered(char *text,float x,float y,float size,unsigned flags
            arguments ? (const unsigned long long *)arguments : no_arguments);
 }
 
-
 //----- (000000014006F1F0) ----------------------------------------------------
 // Immediate-mode button helper. Widget type code 0; returns true on active click/press interaction.
 __int64            sr_DrawMenuButton(unsigned __int8 *a1)
 {
-  unsigned int v2; // eax
-  signed int v3; // eax
-  signed int v4; // ebx
-  __int64 v5; // rdi
+  unsigned int v2;
+  signed int v3;
+  signed int v4;
+  __int64 v5;
 
   v2 = sub_14006C670(a1, (dword_140404A6C[70087046] << 8) + (dword_140404A6C[70087064] << 16));
   v3 = sub_140070380(
@@ -102,17 +75,14 @@ __int64            sr_DrawMenuButton(unsigned __int8 *a1)
   return 0;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 150F610D0: using guessed type unsigned int;
-
 //----- (000000014006F5A0) ----------------------------------------------------
 __int64            sr_DrawMenuButtonSelectable(unsigned __int8 *a1, int *a2, int a3)
 {
-  unsigned int v6; // eax
-  signed int v7; // eax
-  signed int v8; // edi
-  __int64 v9; // rbx
-  bool v10; // zf
+  unsigned int v6;
+  signed int v7;
+  signed int v8;
+  __int64 v9;
+  bool v10;
 
   v6 = sub_14006C670(a1, (dword_140404A6C[70087046] << 8) + (dword_140404A6C[70087064] << 16));
   v7 = sub_140070380(
@@ -165,9 +135,6 @@ LABEL_14:
   return 0;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 150F61178: using guessed type unsigned int;
-
 //----- (000000014006F8D0) ----------------------------------------------------
 // Immediate-mode combo-box helper. Widget type code 10; stores current index pointer, item table, and item count; mouse wheel changes selection.
 __int64            sr_DrawMenuList(
@@ -182,24 +149,24 @@ __int64            sr_DrawMenuList(
         unsigned int a9,
         unsigned int a10)
 {
-  unsigned int v13; // eax
-  signed int v14; // eax
-  signed int v15; // edi
-  __int64 v16; // rbx
-  unsigned int v17; // eax
-  bool v18; // cc
-  int *v19; // rcx
-  bool v20; // sf
-  signed int v21; // eax
-  _DWORD *v22; // rcx
-  unsigned int v23; // xmm2_4
-  unsigned int v24; // xmm1_4
-  unsigned int v25; // xmm6_4
-  int v26; // eax
-  int v27; // edi
-  __int64 v28; // rdx
-  unsigned int v29; // ecx
-  unsigned int v30; // eax
+  unsigned int v13;
+  signed int v14;
+  signed int v15;
+  __int64 v16;
+  unsigned int v17;
+  bool v18;
+  int *v19;
+  bool v20;
+  signed int v21;
+  _DWORD *v22;
+  unsigned int v23;
+  unsigned int v24;
+  unsigned int v25;
+  int v26;
+  int v27;
+  __int64 v28;
+  unsigned int v29;
+  unsigned int v30;
 
   v13 = sub_14006C670(a1, (dword_140404A6C[70087046] << 8) + (dword_140404A6C[70087064] << 16));
   v14 = sub_140070380(
@@ -322,20 +289,16 @@ __int64            sr_DrawMenuList(
   return 0;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 150F610D0: using guessed type unsigned int;
-// 151042A3C: using guessed type unsigned int;
-
 //----- (0000000140070060) ----------------------------------------------------
 // Immediate-mode text entry helper. Widget type code 5; stores text buffer pointer and length bounds.
 __int64            sr_DrawMenuTextBox(unsigned __int8 *a1, __int64 a2, unsigned int a3, unsigned int a4)
 {
-  unsigned int v8; // eax
-  signed int v9; // eax
-  int v10; // edi
-  __int64 v11; // rbx
-  __int64 result; // rax
-  double v13; // xmm2_8
+  unsigned int v8;
+  signed int v9;
+  int v10;
+  __int64 v11;
+  __int64 result;
+  double v13;
 
   v8 = sub_14006C670(a1, (dword_140404A6C[70087046] << 8) + (dword_140404A6C[70087064] << 16));
   v9 = sub_140070380(
@@ -375,18 +338,16 @@ __int64            sr_DrawMenuTextBox(unsigned __int8 *a1, __int64 a2, unsigned 
 }
 
 // 1400713C6: conditional instruction was optimized away because rcx.8<100000000u
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 150F610D0: using guessed type unsigned int;
 
 //----- (0000000140071440) ----------------------------------------------------
 // Immediate-mode integer slider helper. Widget type code 11; stores int pointer, min, max, and step.
 __int64            sr_DrawMenuSlider(unsigned __int8 *a1, int *a2, int a3, signed int a4, int a5)
 {
-  unsigned int v9; // eax
-  signed int v10; // eax
-  unsigned int v11; // edi
-  __int64 v12; // rsi
-  int v13; // ecx
+  unsigned int v9;
+  signed int v10;
+  unsigned int v11;
+  __int64 v12;
+  int v13;
 
   v9 = sub_14006C670(a1, (dword_140404A6C[70087046] << 8) + (dword_140404A6C[70087064] << 16));
   v10 = sub_140070380(
@@ -436,26 +397,14 @@ __int64            sr_DrawMenuSlider(unsigned __int8 *a1, int *a2, int a3, signe
   return v11;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 150F61084: using guessed type unsigned int;
-// 150F610D4: using guessed type unsigned int;
-// 150F610D8: using guessed type unsigned int;
-// 150F610DC: using guessed type unsigned int;
-// 150F610E8: using guessed type unsigned int;
-// 150F61128: using guessed type unsigned int;
-// 150F6112C: using guessed type unsigned int;
-// 150F61130: using guessed type unsigned int;
-// 150F61134: using guessed type unsigned int;
-// 150FDB190: using guessed type unsigned int;
-
 //----- (0000000140071910) ----------------------------------------------------
 // Immediate-mode checkbox helper. Widget type code 1; stores int pointer and toggles value on activation.
 __int64            sr_DrawMenuToggle(unsigned __int8 *a1, _DWORD *a2)
 {
-  unsigned int v4; // eax
-  signed int v5; // eax
-  signed int v6; // edi
-  __int64 v7; // rbx
+  unsigned int v4;
+  signed int v5;
+  signed int v6;
+  __int64 v7;
 
   v4 = sub_14006C670(a1, (dword_140404A6C[70087046] << 8) + (dword_140404A6C[70087064] << 16));
   v5 = sub_140070380(
@@ -496,38 +445,34 @@ __int64            sr_DrawMenuToggle(unsigned __int8 *a1, _DWORD *a2)
   return 1;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 151042A30: using guessed type unsigned int;
-// 151042A34: using guessed type unsigned int;
-
 //----- (0000000140072450) ----------------------------------------------------
 void               sr_DrawMenu(char a1)
 {
-  __int64 v1; // r10
-  unsigned int *v3; // rsi
-  unsigned int *v4; // r8
-  __int64 v5; // rdx
-  unsigned int *v6; // rcx
-  __int64 v7; // r9
-  unsigned int *v8; // rbx
-  int v9; // edi
-  double v10; // xmm2_8
-  double v11; // xmm1_8
-  signed int v12; // eax
-  signed int v13; // edi
-  unsigned int *v14; // rbx
-  unsigned int v15; // eax
-  unsigned int v16; // xmm1_4
-  float v17; // xmm3_4
-  __m128i v18; // xmm2
-  unsigned int v19; // xmm0_4
-  unsigned int v20; // xmm1_4
-  float v21; // xmm1_4
-  int v22; // edx
-  int i; // ecx
-  __int64 j; // rbx
-  __int64 v25; // rcx
-  __int64 v26; // r8
+  __int64 v1;
+  unsigned int *v3;
+  unsigned int *v4;
+  __int64 v5;
+  unsigned int *v6;
+  __int64 v7;
+  unsigned int *v8;
+  int v9;
+  double v10;
+  double v11;
+  signed int v12;
+  signed int v13;
+  unsigned int *v14;
+  unsigned int v15;
+  unsigned int v16;
+  float v17;
+  __m128i v18;
+  unsigned int v19;
+  unsigned int v20;
+  float v21;
+  int v22;
+  int i;
+  __int64 j;
+  __int64 v25;
+  __int64 v26;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140072450[1120];
 #define v28 (*(_DWORD (*)[276])(void *)(sr_frame_140072450 + 0)) /* [rsp+0h] */
@@ -558,7 +503,7 @@ void               sr_DrawMenu(char a1)
   }
   while ( (__int64)v4 < (__int64)&dword_140404A6C[70315981] );
   dword_140404A6C[70317864] = 0;
-  qword_140404050(3553, dword_140404A6C[3592 * dword_140404A6C[438291413] + 72777086]);
+  qword_140404050(3553, dword_140404A6C[3592 * renderer_current_font + 72777086]);
   v8 = &dword_140404A6C[70087118];
   v9 = 0;
   dword_140404A6C[70318062] = dword_140404A6C[438291414];
@@ -570,7 +515,7 @@ void               sr_DrawMenu(char a1)
     {
       *(_QWORD *)&v10 = v8[17];
       *(_QWORD *)&v11 = v8[16];
-      dword_140404A6C[438291413] = v8[5];
+      renderer_current_font = v8[5];
       sub_140073430(v9, v11, v10);
     }
     ++v9;
@@ -597,7 +542,7 @@ void               sr_DrawMenu(char a1)
         v28[12] = v19;
         v28[10] = v20;
         v21 = *((float *)v14 + 2);
-        dword_140404A6C[438291413] = v15;
+        renderer_current_font = v15;
         v28[8] = 64;
         sr_text_draw_recovered((char *)&dword_140404A6C[77 * v13 + 70212055], v21, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v18))), v17, 64, sr_text_bits_float(v28[10]), sr_text_bits_float(v28[12]), sr_text_bits_float(v28[14]), sr_text_bits_float(v28[16]), NULL);
         v12 = dword_140404A6C[70212041];
@@ -625,7 +570,7 @@ void               sr_DrawMenu(char a1)
   }
   if ( (a1 & 1) == 0 )
   {
-    qword_140404050(3553, dword_140404A6C[3592 * dword_140404A6C[438291413] + 72777087]);
+    qword_140404050(3553, dword_140404A6C[3592 * renderer_current_font + 72777087]);
     sub_14006CFF0(
       sr_export_float_lane_container((unsigned __int64)dword_140404A6C[468760125]),
       sr_export_float_lane_container((unsigned __int64)dword_140404A6C[468760126]),
@@ -643,74 +588,71 @@ void               sr_DrawMenu(char a1)
 #undef v28
 #undef v29
 
-// 140239CCC: using guessed type __int64 __fastcall sub_140239CCC(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140078610) ----------------------------------------------------
 __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2, int a3)
 {
-  __int64 v3; // rbx
-  char v4; // r14
-  __int64 v6; // r12
-  __int64 v7; // rdi
-  void *v8; // rcx
-  int v9; // esi
-  int v10; // ecx
-  int i; // r8d
-  int v12; // r15d
-  __int64 v13; // r14
-  __int64 v14; // rax
-  int v15; // r13d
-  FILE *v16; // rbx
-  signed int v17; // eax
-  float v18; // xmm6_4
-  signed int v19; // ebx
-  signed int j; // esi
-  __int64 v21; // rax
-  int k; // ebp
-  signed int v23; // ebx
-  signed int m; // esi
-  __int64 v25; // rax
-  float v26; // xmm0_4
-  unsigned __int64 v27; // rdi
-  float *v28; // r9
-  unsigned int *v29; // r8
-  float *v30; // rdx
-  float v31; // xmm2_4
-  float v32; // xmm3_4
-  float v33; // xmm0_4
-  float v34; // xmm1_4
-  float v35; // xmm3_4
-  float v36; // xmm2_4
-  float v37; // xmm0_4
-  float v38; // xmm1_4
-  float v39; // xmm3_4
-  float v40; // xmm2_4
-  float v41; // xmm0_4
-  float v42; // xmm1_4
-  float v43; // xmm3_4
-  float v44; // xmm2_4
-  float v45; // xmm0_4
-  float v46; // xmm1_4
-  float v47; // xmm3_4
-  float v48; // xmm2_4
-  float v49; // xmm0_4
-  float v50; // xmm1_4
-  float v51; // xmm3_4
-  float v52; // xmm2_4
-  float v53; // xmm0_4
-  float v54; // xmm1_4
-  float v55; // xmm3_4
-  float v56; // xmm2_4
-  float v57; // xmm0_4
-  float v58; // xmm1_4
-  float v59; // xmm3_4
-  float v60; // xmm2_4
-  float v61; // xmm0_4
-  float v62; // xmm1_4
-  unsigned int v63; // eax
-  __int64 v64; // rdx
-  _DWORD *v65; // rcx
+  __int64 v3;
+  char v4;
+  __int64 v6;
+  __int64 v7;
+  void *v8;
+  int v9;
+  int v10;
+  int i;
+  int v12;
+  __int64 v13;
+  __int64 v14;
+  int v15;
+  FILE *v16;
+  signed int v17;
+  float v18;
+  signed int v19;
+  signed int j;
+  __int64 v21;
+  int k;
+  signed int v23;
+  signed int m;
+  __int64 v25;
+  float v26;
+  unsigned __int64 v27;
+  float *v28;
+  unsigned int *v29;
+  float *v30;
+  float v31;
+  float v32;
+  float v33;
+  float v34;
+  float v35;
+  float v36;
+  float v37;
+  float v38;
+  float v39;
+  float v40;
+  float v41;
+  float v42;
+  float v43;
+  float v44;
+  float v45;
+  float v46;
+  float v47;
+  float v48;
+  float v49;
+  float v50;
+  float v51;
+  float v52;
+  float v53;
+  float v54;
+  float v55;
+  float v56;
+  float v57;
+  float v58;
+  float v59;
+  float v60;
+  float v61;
+  float v62;
+  unsigned int v63;
+  __int64 v64;
+  _DWORD *v65;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140078610[1136];
 #define v67 (*(__int64 (*))(void *)(sr_frame_140078610 + 0)) /* [rsp+0h] */
@@ -726,7 +668,7 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
   v68 = a3;
   if ( a1 <= 0x3F )
   {
-    sub_140158AB0(v71, "font/%s.png", a2);
+    crt_sprintf(v71, "font/%s.png", a2);
     if ( (unsigned int)sub_140079840(v71) )
     {
       v6 = v3;
@@ -780,9 +722,9 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
         6408,
         5121,
         *(_QWORD *)&dword_140404A6C[v7 + 72777091]);
-      sub_140158AB0(v71, "font/%s.csv", a2);
+      crt_sprintf(v71, "font/%s.csv", a2);
       dword_140404A6C[129454558] = 0;
-      v14 = sub_14020B8D8(v71, "rb");
+      v14 = crt_fopen(v71, "rb");
       v15 = 2;
       v16 = (FILE *)v14;
       if ( v14 )
@@ -796,11 +738,11 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
         dword_140404A6C[129454558] = v17;
         fread_sr((void *)(uintptr_t)(&dword_140404A6C[129454559]), v17, 1, (FILE *)(uintptr_t)(v16));
         *((_BYTE *)&dword_140404A6C[129454559] + (int)dword_140404A6C[129454558]) = 0;
-        sub_14020B9E8((__int64)v16);
+        crt_fclose((__int64)v16);
       }
       v18 = 64.0;
       dword_140404A6C[129454557] = 0;
-      sub_140158AB0(v70, "Cell Height,", (unsigned int)v9);
+      crt_sprintf(v70, "Cell Height,", (unsigned int)v9);
       v19 = dword_140404A6C[129454557];
       for ( j = dword_140404A6C[129454558]; v19 < j; dword_140404A6C[129454557] = ++v19 )
       {
@@ -816,7 +758,7 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
         v18 = (float)(int)sub_14006EDD0();
       for ( k = 0; k < 256; ++k )
       {
-        sub_140158AB0(v70, "Char %d Base Width,", k);
+        crt_sprintf(v70, "Char %d Base Width,", k);
         v23 = dword_140404A6C[129454557];
         for ( m = dword_140404A6C[129454558]; v23 < m; dword_140404A6C[129454557] = ++v23 )
         {
@@ -1029,69 +971,57 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
 #undef v71
 #undef v72
 
-// 14020C0C8: using guessed type __int64 __fastcall fread(_QWORD, _QWORD, _QWORD, _QWORD);
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404060: using guessed type __int64 (__fastcall *unk_140404060)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D00: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 144980D18: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
-// 15F1D91E0: using guessed type unsigned int;
-// 15F1D91E4: using guessed type unsigned int;
-// 1B0037420: using guessed type unsigned int;
-// 1B0037424: using guessed type unsigned int;
-
 //----- (0000000140079140) ----------------------------------------------------
 __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char *a2)
 {
-  __int64 v2; // rdi
-  __int64 v3; // rax
-  __int64 v4; // rbx
-  int v5; // ebx
-  __int64 v6; // rsi
-  signed int v7; // ecx
-  signed int v8; // r8d
-  int v9; // edx
-  int v10; // ecx
-  int v11; // eax
-  __int64 v12; // rdi
-  void *v13; // rcx
-  __int64 v14; // rax
-  int v15; // r9d
-  int v16; // ecx
-  int i; // r8d
-  char *v18; // r10
-  float *v19; // r11
-  unsigned int *v20; // rbx
-  unsigned int *v21; // r9
-  int v22; // r8d
-  unsigned int v23; // eax
-  float v24; // xmm1_4
-  unsigned int v25; // ecx
-  int v26; // edx
-  float v27; // xmm2_4
-  float v28; // xmm0_4
-  __m128i v29; // xmm0
-  unsigned int v30; // eax
-  int v31; // r8d
-  float v32; // xmm1_4
-  float v33; // xmm2_4
-  __m128i v34; // xmm0
-  int v35; // ecx
-  __m128i v36; // xmm0
-  int v37; // eax
-  float v38; // xmm1_4
-  float v39; // xmm1_4
-  __m128i v40; // xmm0
-  unsigned int v41; // eax
-  int v42; // r8d
-  int v43; // ecx
-  int v44; // edx
-  __m128i v45; // xmm0
-  int v46; // eax
-  float v47; // xmm2_4
-  float v48; // xmm1_4
-  float v49; // xmm1_4
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  signed int v7;
+  signed int v8;
+  int v9;
+  int v10;
+  int v11;
+  __int64 v12;
+  void *v13;
+  __int64 v14;
+  int v15;
+  int v16;
+  int i;
+  char *v18;
+  float *v19;
+  unsigned int *v20;
+  unsigned int *v21;
+  int v22;
+  unsigned int v23;
+  float v24;
+  unsigned int v25;
+  int v26;
+  float v27;
+  float v28;
+  __m128i v29;
+  unsigned int v30;
+  int v31;
+  float v32;
+  float v33;
+  __m128i v34;
+  int v35;
+  __m128i v36;
+  int v37;
+  float v38;
+  float v39;
+  __m128i v40;
+  unsigned int v41;
+  int v42;
+  int v43;
+  int v44;
+  __m128i v45;
+  int v46;
+  float v47;
+  float v48;
+  float v49;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140079140[2528];
 #define v51 (*(__int64 (*))(void *)(sr_frame_140079140 + 0)) /* [rsp+0h] */
@@ -1103,13 +1033,13 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
   v2 = (int)a1;
   if ( a1 <= 0x3F )
   {
-    sub_140158AB0(v54, "font/%s.ttf", a2);
-    v3 = sub_14020B8D8(v54, "rb");
+    crt_sprintf(v54, "font/%s.ttf", a2);
+    v3 = crt_fopen(v54, "rb");
     v4 = v3;
     if ( v3 )
     {
       fread_sr((void *)(uintptr_t)(&dword_140404A6C[284270757]), 1, 0x100000, (FILE *)(uintptr_t)(v3));
-      sub_14020B9E8(v4);
+      crt_fclose(v4);
       v5 = 512;
       v6 = 32;
       sub_140177E50(
@@ -1203,19 +1133,19 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         v30 = v23 - v22;
         v31 = *((unsigned __int16 *)v18 + 10);
         v32 = 1.0 - (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v29), f32)[0] * 0.001953125);
-        *(float *)SR_VEC_LANES(128, v29, i32) = *(float *)(v18 + 14) * 0.07692307978868484;
+        *(float *)SR_VEC_LANES(128, v29, i32) = *(float *)(v18 + 14) * 0.07692308;
         v33 = (float)v26 * 0.001953125;
         *((float *)v21 - 4) = v32;
         *((float *)v21 - 2) = v32;
         *(v20 - 2) = SR_VEC_LANES(128, v29, i32)[0];
         v34 = _mm_cvtsi32_si128(v25);
         v35 = *((unsigned __int16 *)v18 + 11);
-        *(v19 - 3) = *(float *)(v18 + 6) * 0.07692307978868484;
-        *(v19 - 5) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v34), f32)[0] * 0.07692307978868484;
+        *(v19 - 3) = *(float *)(v18 + 6) * 0.07692308;
+        *(v19 - 5) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v34), f32)[0] * 0.07692308;
         v36 = _mm_cvtsi32_si128(v30);
         v37 = *((unsigned __int16 *)v18 + 12);
-        *(v19 - 4) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v36), f32)[0] * 0.07692307978868484;
-        *(v19 - 2) = (float)(*(float *)(v18 + 10) * 0.07692307978868484) + 0.75;
+        *(v19 - 4) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v36), f32)[0] * 0.07692308;
+        *(v19 - 2) = (float)(*(float *)(v18 + 10) * 0.07692308) + 0.75;
         *((float *)v21 - 1) = v33;
         *((float *)v21 + 5) = v33;
         v38 = 1.0 - (float)((float)v31 * 0.001953125);
@@ -1225,7 +1155,7 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         v21[1] = SR_VEC_LANES(128, v36, i32)[0];
         v21[3] = SR_VEC_LANES(128, v36, i32)[0];
         v39 = 1.0 - (float)((float)v37 * 0.001953125);
-        *(float *)SR_VEC_LANES(128, v36, i32) = *(float *)(v18 + 34) * 0.07692307978868484;
+        *(float *)SR_VEC_LANES(128, v36, i32) = *(float *)(v18 + 34) * 0.07692308;
         *((float *)v21 + 4) = v39;
         *((float *)v21 + 6) = v39;
         *(v20 - 1) = SR_VEC_LANES(128, v36, i32)[0];
@@ -1234,13 +1164,13 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         v42 = *((unsigned __int16 *)v18 + 20);
         v43 = *((unsigned __int16 *)v18 + 21);
         v44 = *((unsigned __int16 *)v18 + 19);
-        v19[1] = *(float *)(v18 + 26) * 0.07692307978868484;
-        *(v19 - 1) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v40), f32)[0] * 0.07692307978868484;
+        v19[1] = *(float *)(v18 + 26) * 0.07692308;
+        *(v19 - 1) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v40), f32)[0] * 0.07692308;
         v45 = _mm_cvtsi32_si128(v41);
         v46 = *((unsigned __int16 *)v18 + 22);
         v47 = (float)v44 * 0.001953125;
-        *v19 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v45), f32)[0] * 0.07692307978868484;
-        v19[2] = (float)(*(float *)(v18 + 30) * 0.07692307978868484) + 0.75;
+        *v19 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v45), f32)[0] * 0.07692308;
+        v19[2] = (float)(*(float *)(v18 + 30) * 0.07692308) + 0.75;
         *((float *)v21 + 7) = v47;
         *((float *)v21 + 13) = v47;
         v48 = 1.0 - (float)((float)v42 * 0.001953125);
@@ -1249,19 +1179,19 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         *((float *)v21 + 10) = v48;
         v21[9] = SR_VEC_LANES(128, v45, i32)[0];
         v21[11] = SR_VEC_LANES(128, v45, i32)[0];
-        *(float *)SR_VEC_LANES(128, v45, i32) = *(float *)(v18 + 54) * 0.07692307978868484;
+        *(float *)SR_VEC_LANES(128, v45, i32) = *(float *)(v18 + 54) * 0.07692308;
         *((float *)v21 + 12) = 1.0 - (float)((float)v46 * 0.001953125);
         *((float *)v21 + 14) = 1.0 - (float)((float)v46 * 0.001953125);
         v21 += 24;
         v49 = *(float *)(v18 + 46);
         *v20 = SR_VEC_LANES(128, v45, i32)[0];
         v20 += 3;
-        v19[5] = v49 * 0.07692307978868484;
-        v19[3] = (float)(v43 - v44) * 0.07692307978868484;
-        v19[4] = (float)(v46 - v42) * 0.07692307978868484;
+        v19[5] = v49 * 0.07692308;
+        v19[3] = (float)(v43 - v44) * 0.07692308;
+        v19[4] = (float)(v46 - v42) * 0.07692308;
         SR_VEC_LANES(128, v45, i32)[0] = *(_DWORD *)(v18 + 50);
         v18 += 60;
-        v19[6] = (float)(*(float *)SR_VEC_LANES(128, v45, i32) * 0.07692307978868484) + 0.75;
+        v19[6] = (float)(*(float *)SR_VEC_LANES(128, v45, i32) * 0.07692308) + 0.75;
         v19 += 12;
         --v6;
       }
@@ -1299,29 +1229,29 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
 //----- (00000001400FE1B0) ----------------------------------------------------
 void sub_1400FE1B0()
 {
-  __int64 v0; // rdx
-  __int64 v1; // r8
-  __int64 v2; // rcx
-  char v3; // al
-  int v4; // eax
-  unsigned int v5; // ecx
-  struct hostent *v6; // rax
-  struct hostent *v7; // rdi
-  _QWORD *v8; // rax
-  unsigned int v9; // edx
-  __int64 v10; // rbx
-  int v11; // eax
-  __int64 v12; // rdx
-  int v13; // eax
-  unsigned int v14; // ecx
-  int v15; // eax
-  unsigned int v16; // ecx
-  int v17; // eax
-  unsigned int v18; // ecx
-  int v19; // eax
-  unsigned int v20; // ecx
-  bool v21; // zf
-  unsigned int v22; // eax
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  char v3;
+  int v4;
+  unsigned int v5;
+  struct hostent *v6;
+  struct hostent *v7;
+  _QWORD *v8;
+  unsigned int v9;
+  __int64 v10;
+  int v11;
+  __int64 v12;
+  int v13;
+  unsigned int v14;
+  int v15;
+  unsigned int v16;
+  int v17;
+  unsigned int v18;
+  int v19;
+  unsigned int v20;
+  bool v21;
+  unsigned int v22;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400FE1B0[576];
 #define v24 (*(_DWORD (*)[12])(void *)(sr_frame_1400FE1B0 + 0)) /* [rsp+0h] */
@@ -1342,7 +1272,7 @@ void sub_1400FE1B0()
     dword_140404A6C[284024598] = 1134559232;
     v2 = 0;
     dword_140404A6C[284024634] = (LOBYTE(dword_140404A6C[284024635]) >> 2) & 1;
-    dword_140404A6C[283831312] = 0;
+    game_type = 0;
     dword_140404A6C[283831453] = 25200;
     *(float *)&dword_140404A6C[284024599] = (float)(int)v24[8];
     dword_140404A6C[284024597] = 1140850688;
@@ -1354,7 +1284,7 @@ void sub_1400FE1B0()
     }
     while ( v3 );
     dword_140404A6C[456202722] = 1;
-    dword_140404A6C[456202453] = 1;
+    game_connected = 1;
     *(_QWORD *)&dword_140404A6C[73991608] = 0;
     /* Native Practice leaves the map name alone: it is "test2", the World-mode city,
        set at startup by 0x14013DCD0. Set SUBROSA_PRACTICE_MAP to a data folder name
@@ -1375,9 +1305,9 @@ void sub_1400FE1B0()
   dword_140404A6C[283831310] = v5;
   if ( (unsigned int)sr_DrawMenuButton("Join Game") )
   {
-    dword_140404A6C[456202453] = 0;
-    sub_1401FCD30((void *)(uintptr_t)(&dword_140404A6C[421831837]), 0, 0x2270864u);
-    dword_140404A6C[283831447] = -1;
+    game_connected = 0;
+    crt_memset((void *)(uintptr_t)(&game_unknown_1a4d2dce0), 0, 0x2270864u);
+    game_unknown_183ebfcc8 = -1;
     dword_140404A6C[179662126] = sub_140198F9B();
     dword_140404A6C[179662117] = 0;
     dword_140404A6C[179473694] = 0;
@@ -1467,32 +1397,32 @@ void sub_1400FE1B0()
 // Candidate options menu builder: Back, Fullscreen, V-Sync, Frame Smoothing, Sprite Models, Invert Mouse, advanced inventory, audio selectors.
 void ui_build_options_menu_candidate()
 {
-  unsigned int v0; // eax
-  int v1; // eax
-  unsigned int v2; // ecx
-  unsigned int *v3; // rcx
-  char *v4; // rdx
-  char v5; // al
-  int v6; // r8d
-  int v7; // ecx
-  unsigned int v8; // edx
-  __int64 v9; // r8
-  int v10; // edx
-  unsigned int v11; // ecx
-       char *v12; // r8
-  char *v13; // rcx
-  bool v14; // zf
-  _QWORD *v15; // rax
-  char *v16; // rcx
-       char *v17; // rdi
-       char *v18; // rbx
-       char *v19; // rax
-  char *v20; // rcx
-  _WORD *v21; // rcx
-  int v22; // eax
-  char *v23; // rcx
-  char *v24; // rdx
-  __int64 v26; // [rsp-20h] [rbp-15C0h] BYREF
+  unsigned int v0;
+  int v1;
+  unsigned int v2;
+  unsigned int *v3;
+  char *v4;
+  char v5;
+  int v6;
+  int v7;
+  unsigned int v8;
+  __int64 v9;
+  int v10;
+  unsigned int v11;
+       char *v12;
+  char *v13;
+  bool v14;
+  _QWORD *v15;
+  char *v16;
+       char *v17;
+       char *v18;
+       char *v19;
+  char *v20;
+  _WORD *v21;
+  int v22;
+  char *v23;
+  char *v24;
+  __int64 v26;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400FEB50[10560];
 #define v27 (*(__int64 (*))(void *)(sr_frame_1400FEB50 + 0)) /* [rsp+0h] */
@@ -1534,7 +1464,7 @@ void ui_build_options_menu_candidate()
   if ( (unsigned int)sr_DrawMenuToggle("V-Sync", &dword_140404A6C[73991643]) )
     sr_window_swap((int)dword_140404A6C[73991643]);
   sr_DrawMenuToggle("Frame Smoothing", &dword_140404A6C[73991654]);
-  sr_DrawMenuToggle("Sprite Models", &dword_140404A6C[73991655]);
+  sr_DrawMenuToggle("Sprite Models", &draw_unknown_151e46208);
   sub_140071640(Parameters);
   sub_140071640(Parameters);
   sr_DrawMenuToggle("Invert Mouse", &dword_140404A6C[73991627]);
@@ -1617,7 +1547,7 @@ void ui_build_options_menu_candidate()
           v6 = 8;
         break;
     }
-    sub_140158AB0(v33, "Mouse %d", v6);
+    crt_sprintf(v33, "Mouse %d", v6);
   }
   sr_DrawMenuButtonSelectable((unsigned __int8 *)v33, (int *)&dword_140404A6C[18215638], 1);
   if ( dword_140404A6C[18215638] )
@@ -1696,7 +1626,7 @@ LABEL_47:
     v17 = (     char *)qword_140302FA8(7936);
     v18 = (     char *)qword_140302FA8(7937);
     v19 = (     char *)qword_140302FA8(7938);
-    sub_140158AB0(v34, "GL_VENDOR: %s\nGL_RENDERER: %s\nGL_VERSION: %s\n", v17, v18, v19);
+    crt_sprintf(v34, "GL_VENDOR: %s\nGL_RENDERER: %s\nGL_VERSION: %s\n", v17, v18, v19);
     v20 = (char *)&dword_140404A6C[83177972] + 3;
     do
       v14 = *++v20 == 0;
@@ -1711,7 +1641,7 @@ LABEL_47:
     while ( !v14 );
     *v21 = 10;
     v22 = sub_140198EB1();
-    sub_140158AB0(v34, "RAM: %d MB\n", v22);
+    crt_sprintf(v34, "RAM: %d MB\n", v22);
     v23 = (char *)&dword_140404A6C[83177972] + 3;
     do
       v14 = *++v23 == 0;
@@ -1768,736 +1698,3 @@ LABEL_47:
 #undef v33
 #undef v34
 #undef v35
-
-//----- (000000014006BDC0) ----------------------------------------------------
-__int64 sub_14006BDC0()
-{
-  char *v0; // rcx
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14006BDC0[608];
-#define v2 (*(_QWORD (*)[5])(void *)(sr_frame_14006BDC0 + 0)) /* [rsp+0h] */
-#define v3 (*(int (*))(void *)(sr_frame_14006BDC0 + 40)) /* [rsp+28h] */
-#define v4 (*(int (*))(void *)(sr_frame_14006BDC0 + 48)) /* [rsp+30h] */
-#define v5 (*(int (*))(void *)(sr_frame_14006BDC0 + 56)) /* [rsp+38h] */
-#define v6 (*(int (*))(void *)(sr_frame_14006BDC0 + 64)) /* [rsp+40h] */
-#define v7 (*(_BYTE (*)[512])(void *)(sr_frame_14006BDC0 + 80)) /* [rsp+50h] */
-#define v8 (*(__int64 (*))(void *)(sr_frame_14006BDC0 + 592)) /* [rsp+250h] */
-
-  switch ( dword_140404A6C[179668277] )
-  {
-    case 0u:
-      if ( dword_140404A6C[278384725] )
-      {
-        v0 = "Steam Auth...";
-        if ( !dword_140404A6C[278384987] )
-          v0 = "Steam Ticket...";
-      }
-      else
-      {
-        v0 = "Steam Init Failed";
-      }
-      goto LABEL_11;
-    case 1u:
-      v0 = "CS Auth...";
-LABEL_11:
-      v6 = 1065353216;
-      v5 = 1065353216;
-      v4 = 1065353216;
-      v3 = 1065353216;
-      v2[4] = 0;
-      sr_text_draw_recovered(v0, 16.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x440C0000u))))), 12.0, 0u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14006BEAA */;
-      return 0; /* the function has no caller */
-    case 2u:
-      sub_140158AB0(v7, "%03d-%04d", dword_140404A6C[134050337] / 0x2710, dword_140404A6C[134050337] % 0x2710);
-      v0 = v7;
-      goto LABEL_11;
-  }
-  return 0; /* the function has no caller */
-}
-#undef v2
-#undef v3
-#undef v4
-#undef v5
-#undef v6
-#undef v7
-#undef v8
-
-// 14006BF1E: conditional instruction was optimized away because eax.4!=0
-// 1402B2658: using guessed type int dword_1402B2658;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 1603612E4: using guessed type unsigned int;
-// 1603612F0: using guessed type unsigned int;
-// 1603612F4: using guessed type unsigned int;
-// 16B165F40: using guessed type unsigned int;
-// 1829F8BD0: using guessed type unsigned int;
-// 1829F8FD8: using guessed type unsigned int;
-// 18539D408: using guessed type unsigned int;
-// 1853AD41C: using guessed type unsigned int;
-// 1853AD420: using guessed type unsigned int;
-
-//----- (00000001400CFC80) ----------------------------------------------------
-void sub_1400CFC80(int a1,unsigned a2,float x,float y,float width,float height,unsigned flags)
-{
-  (void)a2;
-  float outer=0.625f,inner=(flags&1)?0.5f:0.0f;
-  if(flags&8){outer=0.25f;inner=0.0f;}
-  unsigned color=sr_text_float_bits(outer);
-  sub_14006D660(sr_export_float_lane_container(sr_text_float_bits(x)),sr_export_float_lane_container(sr_text_float_bits(y)),sr_text_float_bits(width),height,0,color,color,color,0x3f800000);
-  color=sr_text_float_bits(inner);
-  sub_14006D660(sr_export_float_lane_container(sr_text_float_bits(x+2.0f)),sr_export_float_lane_container(sr_text_float_bits(y+2.0f)),sr_text_float_bits(width-4.0f),height-4.0f,0,color,color,color,0x3f800000);
-  __int64 row=23LL*a1;
-  float middle=height*0.5f+y;
-  sr_text_draw_recovered((char *)&dword_140404A6C[row+179473704],x+4.0f,middle,16.0f,68,1,1,1,1,NULL);
-  uint64_t ping[]={dword_140404A6C[row+179473720]};
-  sr_text_draw_recovered("/i",480.0f,middle,16.0f,6,1,1,1,1,ping);
-  uint64_t players[]={dword_140404A6C[row+179473717],dword_140404A6C[row+179473719]};
-  sr_text_draw_recovered("/i///i",560.0f,middle,16.0f,6,1,1,1,1,players);
-  unsigned mode=dword_140404A6C[row+179473721];
-  if(mode==5)sr_text_draw_recovered("Eliminator",672.0f,middle,16.0f,6,1,1,1,1,NULL);
-  if(mode==3)sr_text_draw_recovered("Round",672.0f,middle,16.0f,6,1,1,1,1,NULL);
-  if(mode==4)sr_text_draw_recovered("World",672.0f,middle,16.0f,6,1,1,1,1,NULL);
-  if(mode==7)sr_text_draw_recovered("Versus",672.0f,middle,16.0f,6,1,1,1,1,NULL);
-  uint64_t version[]={dword_140404A6C[row+179473701],(uint32_t)(dword_140404A6C[row+179473702]+97u)};
-  sr_text_draw_recovered("Alpha /i/c",784.0f,middle,16.0f,6,1,1,1,1,version);
-  if(dword_140404A6C[row+179473723])sr_text_draw_recovered("Yes",878.0f,middle,16.0f,6,1,1,1,1,NULL);
-}
-
-
-//----- (00000001400D4740) ----------------------------------------------------
-__int64            sub_1400D4740(__int64 a1)
-{
-  return ((__int64 (           *)(_QWORD,      char *, __int64, char *,      char *, int))ShellExecuteA)(
-           0,
-           "open",
-           a1,
-           Parameters,
-           "c:\\",
-           1);
-}
-
-// 14026E558: invalid function type 'HINSTANCE (__stdcall *ShellExecuteA)(HWND hwnd, LPCSTR lpOperation, LPCSTR lpFile, LPCSTR lpParameters, LPCSTR lpDirectory, INT nShowCmd)' has been ignored
-
-//----- (00000001400FB870) ----------------------------------------------------
-__int64 sub_1400FB870()
-{
-  int v0; // eax
-  unsigned int v1; // ecx
-  __int64 result; // rax
-
-  if ( (int)dword_140404A6C[70317962] < 16 )
-  {
-    dword_140404A6C[2 * dword_140404A6C[70317962] + 70317963] = dword_140404A6C[70087069];
-    dword_140404A6C[2 * dword_140404A6C[70317962]++ + 70317964] = dword_140404A6C[70087070];
-  }
-  dword_140404A6C[70087069] = 1128267776;
-  dword_140404A6C[70087070] = 1103101952;
-  dword_140404A6C[70087074] = 41;
-  v0 = sr_DrawMenuButton("Back");
-  v1 = dword_140404A6C[283831310];
-  if ( v0 )
-    v1 = 0;
-  dword_140404A6C[283831310] = v1;
-  dword_140404A6C[70087067] = 1107296256;
-  *(float *)&dword_140404A6C[70087068] = *(float *)&dword_140404A6C[70087068] + 64.0;
-  sr_DrawMenuButtonSelectable("Female", (int *)&dword_140404A6C[73991647], 0);
-  sr_DrawMenuButtonSelectable("Male", (int *)&dword_140404A6C[73991647], 1);
-  sr_DrawMenuSlider("Head", (int *)&dword_140404A6C[73991648], 0, 4, 1);
-  sr_DrawMenuSlider("Eyes", (int *)&dword_140404A6C[73991652], 0, 7, 1);
-  sr_DrawMenuSlider("Hair", (int *)&dword_140404A6C[73991651], 0, 8, 1);
-  sr_DrawMenuSlider("Hair Color", (int *)&dword_140404A6C[73991650], 0, 11, 1);
-  sr_DrawMenuSlider("Skin", (int *)&dword_140404A6C[73991649], 0, 5, 1);
-  result = dword_140404A6C[70317962];
-  if ( (int)dword_140404A6C[70317962] > 0 )
-  {
-    --dword_140404A6C[70317962];
-    result = (int)result - 1;
-    dword_140404A6C[70087069] = dword_140404A6C[2 * (int)result + 70317963];
-    dword_140404A6C[70087070] = dword_140404A6C[2 * (int)result + 70317964];
-  }
-  return result;
-}
-
-// 1400FBAD0: variable 'v0' is possibly undefined
-// 1400FBAEA: variable 'v2' is possibly undefined
-// 1400FBAEA: variable 'v1' is possibly undefined
-// 1400FBAEA: variable 'v3' is possibly undefined
-// 1400FBAEA: variable 'v4' is possibly undefined
-// 1400FBEE5: variable 'v7' is possibly undefined
-// 1400FBF9F: variable 'v10' is possibly undefined
-// 1400FC204: variable 'v13' is possibly undefined
-// 1400FC2BE: variable 'v16' is possibly undefined
-// 1400FC357: variable 'v17' is possibly undefined
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140278D80: using guessed type __int128 xmmword_140278D80;
-// 140278E20: using guessed type __int128 xmmword_140278E20;
-// 140279490: using guessed type __int128 xmmword_140279490;
-// 1402796C0: using guessed type __int128 xmmword_1402796C0;
-// 1402F6188: using guessed type int dword_1402F6188;
-// 140302F58: using guessed type double (__fastcall *qword_140302F58)(_QWORD);
-// 140302FF8: using guessed type __int64 (__fastcall *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404098: using guessed type double (__fastcall *unk_140404098)(_QWORD);
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404230: using guessed type double (__fastcall *qword_140404230)(_QWORD);
-// 140404238: using guessed type __int64 (__fastcall *qword_140404238)(_QWORD);
-// 1404042E0: using guessed type double (__fastcall *qword_1404042E0)(_QWORD);
-// 140404338: using guessed type double (__fastcall *qword_140404338)(_QWORD, _QWORD, _QWORD);
-// 140404370: using guessed type __int64 (__fastcall *unk_140404370)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404378: using guessed type __int64 (__fastcall *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404470: using guessed type __int64 (__fastcall *unk_140404470)(_QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 1404046F0: using guessed type double (__fastcall *unk_1404046F0)(_QWORD, _QWORD);
-// 140404718: using guessed type __int64 (__fastcall *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144980D58: using guessed type double (__fastcall *)(_QWORD);
-// 144980D60: using guessed type double (__fastcall *)(_QWORD);
-// 144980D68: using guessed type __int64 (__fastcall *)(_QWORD);
-// 183F7C544: using guessed type unsigned int;
-// 183F7C554: using guessed type unsigned int;
-// 183F7C564: using guessed type unsigned int;
-// 184178D40: using guessed type unsigned int;
-// 184178D44: using guessed type unsigned int;
-// 184178D48: using guessed type unsigned int;
-// 184178D50: using guessed type unsigned int;
-// 184178D54: using guessed type unsigned int;
-// 184178D58: using guessed type unsigned int;
-// 1A724E600: using guessed type unsigned int;
-// 1A724E610: using guessed type unsigned int;
-// 1A724E620: using guessed type unsigned int;
-// 1A724E630: using guessed type unsigned int;
-// 1A724E638: using guessed type unsigned int;
-// 1A724E63C: using guessed type unsigned int;
-
-//----- (00000001400FC480) ----------------------------------------------------
-__int64 sub_1400FC480()
-{
-  int v0; // eax
-  unsigned int v1; // ecx
-  __int64 result; // rax
-  unsigned int v3; // eax
-  char v4; // si
-  signed int v5; // edx
-  __int128 v6; // xmm1
-  signed int v7; // eax
-  __int128 v8; // xmm1
-  signed int v9; // eax
-  int v10; // edi
-  int v11; // ebx
-  int v12; // r8d
-  __int64 v13; // rax
-  int v14; // r9d
-  char v15; // r10
-  int v16; // eax
-  signed int v17; // ecx
-  __int128 v18; // xmm0
-  __int128 v19; // xmm1
-  int v20; // [rsp+50h] [rbp+8h]
-
-  dword_140404A6C[70087069] = 1126170624;
-  dword_140404A6C[70087070] = 1101004800;
-  dword_140404A6C[70087074] = 41;
-  v0 = sr_DrawMenuButton("Cancel");
-  v1 = dword_140404A6C[283831310];
-  if ( v0 )
-    v1 = 1;
-  dword_140404A6C[283831310] = v1;
-  if ( !dword_140404A6C[179662132] )
-  {
-    dword_140404A6C[70087067] = 1138229248;
-    dword_140404A6C[70087068] = 1131413504;
-    dword_140404A6C[70087069] = 1126170624;
-    dword_140404A6C[70087070] = 1101004800;
-    dword_140404A6C[70087077] = 1;
-    sub_140070200("Password", (__int64)&dword_140404A6C[179662133], 0x18u);
-    *(float *)&dword_140404A6C[70087068] = *(float *)&dword_140404A6C[70087068] + 16.0;
-    result = sr_DrawMenuButton("Connect");
-    if ( (_DWORD)result )
-      dword_140404A6C[179662132] = 1;
-    return result;
-  }
-  if ( (unsigned int)sub_140198F9B() - dword_140404A6C[179662126] <= 0xC8 )
-  {
-    v4 = v20;
-  }
-  else
-  {
-    dword_140404A6C[179662126] = sub_140198F9B();
-    v3 = dword_140404A6C[179662132];
-    if ( dword_140404A6C[179662132] == 1 )
-    {
-      v4 = 75;
-      dword_140404A6C[289301094] = dword_1402B2658;
-      *(unsigned int *)((char *)&dword_140404A6C[289301095] + 1) = dword_140404A6C[134050334];
-      *(unsigned int *)((char *)&dword_140404A6C[289301096] + 1) = dword_140404A6C[134050338];
-      *(unsigned int *)((char *)&dword_140404A6C[289301097] + 1) = dword_140404A6C[456202719];
-      *(_WORD *)((char *)&dword_140404A6C[289301098] + 1) = dword_140404A6C[456202720];
-      *(_QWORD *)&dword_140404A6C[289301092] = 19;
-      LOBYTE(dword_140404A6C[289301095]) = 75;
-      sub_140130350(dword_140404A6C[280649181], dword_140404A6C[280649182], 0);
-      v3 = dword_140404A6C[179662132];
-    }
-    else
-    {
-      v4 = v20;
-    }
-    if ( v3 == 2 )
-    {
-      v4 = 2;
-      *(_QWORD *)&dword_140404A6C[289301092] = 5;
-      LOBYTE(dword_140404A6C[289301095]) = 2;
-      dword_140404A6C[289301094] = dword_1402B2658;
-      sub_140115D90(&dword_1402B231C, 8);
-      v5 = dword_140404A6C[289301092];
-      if ( (int)dword_140404A6C[289301092] < 0x10000 )
-      {
-        if ( (int)dword_140404A6C[289301093] > 0 )
-        {
-          v5 = dword_140404A6C[289301092] + 1;
-          dword_140404A6C[289301093] = 0;
-          ++dword_140404A6C[289301092];
-        }
-        *(unsigned int *)((char *)&dword_140404A6C[289301094] + v5) = dword_140404A6C[134050334];
-        v5 = dword_140404A6C[289301092] + 4;
-        dword_140404A6C[289301092] = v5;
-        if ( v5 < 0x10000 )
-        {
-          if ( (int)dword_140404A6C[289301093] > 0 )
-          {
-            ++v5;
-            dword_140404A6C[289301093] = 0;
-            dword_140404A6C[289301092] = v5;
-          }
-          *(unsigned int *)((char *)&dword_140404A6C[289301094] + v5) = dword_140404A6C[134050339];
-          v5 = dword_140404A6C[289301092] + 4;
-          dword_140404A6C[289301092] = v5;
-          if ( v5 < 0x10000 )
-          {
-            if ( (int)dword_140404A6C[289301093] > 0 )
-            {
-              ++v5;
-              dword_140404A6C[289301093] = 0;
-              dword_140404A6C[289301092] = v5;
-            }
-            v6 = *(_OWORD *)&dword_140404A6C[73991100];
-            *(_OWORD *)((char *)&dword_140404A6C[289301094] + v5) = *(_OWORD *)&dword_140404A6C[73991096];
-            *(_OWORD *)((char *)&dword_140404A6C[289301098] + v5) = v6;
-            v5 = dword_140404A6C[289301092] + 32;
-            dword_140404A6C[289301092] += 32;
-          }
-        }
-      }
-      if ( v5 < 0x10000 )
-      {
-        if ( (int)dword_140404A6C[289301093] > 0 )
-        {
-          ++v5;
-          dword_140404A6C[289301093] = 0;
-          dword_140404A6C[289301092] = v5;
-        }
-        *(unsigned int *)((char *)&dword_140404A6C[289301094] + v5) = dword_140404A6C[73991647]
-                                                                    + 2
-                                                                    * (dword_140404A6C[73991648]
-                                                                     + 16
-                                                                     * (dword_140404A6C[73991649]
-                                                                      + 8
-                                                                      * (dword_140404A6C[73991650]
-                                                                       + 16
-                                                                       * (dword_140404A6C[73991651]
-                                                                        + 16 * dword_140404A6C[73991652]))));
-        v7 = dword_140404A6C[289301092] + 4;
-        dword_140404A6C[289301092] = v7;
-        if ( v7 < 0x10000 )
-        {
-          if ( (int)dword_140404A6C[289301093] > 0 )
-          {
-            ++v7;
-            dword_140404A6C[289301093] = 0;
-            dword_140404A6C[289301092] = v7;
-          }
-          v8 = *(_OWORD *)&dword_140404A6C[179662137];
-          *(_OWORD *)((char *)&dword_140404A6C[289301094] + v7) = *(_OWORD *)&dword_140404A6C[179662133];
-          *(_OWORD *)((char *)&dword_140404A6C[289301098] + v7) = v8;
-          dword_140404A6C[289301092] += 32;
-        }
-      }
-      sub_140115D90(&dword_1402B26C8, 8);
-      v9 = dword_140404A6C[289301092];
-      if ( (int)dword_140404A6C[289301092] < 0x10000 )
-      {
-        if ( (int)dword_140404A6C[289301093] > 0 )
-        {
-          v9 = dword_140404A6C[289301092] + 1;
-          dword_140404A6C[289301093] = 0;
-          ++dword_140404A6C[289301092];
-        }
-        *(unsigned int *)((char *)&dword_140404A6C[289301094] + v9) = dword_140404A6C[134050337];
-        dword_140404A6C[289301092] += 4;
-      }
-      sub_140130350(dword_140404A6C[456202714], dword_140404A6C[456202715], *(__int64 *)&dword_140404A6C[456202717]);
-    }
-  }
-  result = sub_14011C760();
-  if ( (int)result > 0 )
-  {
-    v10 = v20;
-    do
-    {
-      v11 = dword_140404A6C[289317484];
-      if ( (int)dword_140404A6C[289317484] >= 0x10000
-        || (signed int)(dword_140404A6C[289317484] + 1) > (int)dword_140404A6C[289317483] )
-      {
-        v12 = dword_140404A6C[289317485];
-      }
-      else
-      {
-        v12 = dword_140404A6C[289317485];
-        if ( (int)dword_140404A6C[289317485] > 0 )
-        {
-          v11 = ++dword_140404A6C[289317484];
-          v12 = 0;
-          dword_140404A6C[289317485] = 0;
-        }
-        v13 = v11++;
-        v4 = *((_BYTE *)&dword_140404A6C[289317486] + v13);
-        dword_140404A6C[289317484] = v11;
-      }
-      switch ( v4 )
-      {
-        case 75:
-          if ( v11 < 0x10000 && v11 + 4 <= (int)dword_140404A6C[289317483] )
-          {
-            if ( v12 > 0 )
-            {
-              ++v11;
-              dword_140404A6C[289317485] = 0;
-              dword_140404A6C[289317484] = v11;
-            }
-            dword_140404A6C[134050339] = *(unsigned int *)((char *)&dword_140404A6C[289317486] + v11);
-            dword_140404A6C[289317484] = v11 + 4;
-          }
-          dword_140404A6C[179662132] = 2;
-          break;
-        case 6:
-          if ( v11 < 0x10000 && v11 + 4 <= (int)dword_140404A6C[289317483] )
-          {
-            if ( v12 > 0 )
-            {
-              ++v11;
-              dword_140404A6C[289317485] = 0;
-              dword_140404A6C[289317484] = v11;
-            }
-            dword_140404A6C[421831838] = *(unsigned int *)((char *)&dword_140404A6C[289317486] + v11);
-            dword_140404A6C[289317484] = v11 + 4;
-          }
-          sub_140115AE0(&dword_140404A6C[283831312], 4);
-          sub_140115AE0(&dword_140404A6C[283831441], 4);
-          sub_140115AE0(&dword_140404A6C[283831446], 8);
-          v17 = dword_140404A6C[289317484];
-          if ( (int)dword_140404A6C[289317484] < 0x10000
-            && (signed int)(dword_140404A6C[289317484] + 32) <= (int)dword_140404A6C[289317483] )
-          {
-            if ( (int)dword_140404A6C[289317485] > 0 )
-            {
-              v17 = dword_140404A6C[289317484] + 1;
-              dword_140404A6C[289317485] = 0;
-              ++dword_140404A6C[289317484];
-            }
-            v18 = *(_OWORD *)((char *)&dword_140404A6C[289317486] + v17);
-            v19 = *(_OWORD *)((char *)&dword_140404A6C[289317490] + v17);
-            dword_140404A6C[289317484] = v17 + 32;
-            *(_OWORD *)&dword_140404A6C[283831313] = v18;
-            *(_OWORD *)&dword_140404A6C[283831317] = v19;
-          }
-          sub_14018D440((float *)&dword_140404A6C[283831482], 16);
-          sub_14018D440((float *)&dword_140404A6C[283831483], 16);
-          if ( dword_140404A6C[283831312] == 7 )
-            sub_140115AE0(&dword_140404A6C[284022502], 8);
-          dword_140404A6C[179662132] = 3;
-          dword_140404A6C[283831310] = 0;
-          return sub_140095B00();
-        case 3:
-          v14 = 6;
-          if ( v11 < 0x10000 )
-          {
-            if ( v11 <= (int)dword_140404A6C[289317483] )
-            {
-              v10 = 0;
-              v15 = 0;
-              while ( 1 )
-              {
-                v16 = 8 - v12;
-                v10 |= (~(-1 << v14)
-                      & (*((unsigned __int8 *)&dword_140404A6C[289317486] + v11) >> SLOBYTE(dword_140404A6C[289317485]))) << v15;
-                if ( v14 < (unsigned int)(8 - v12) )
-                  break;
-                v12 = 0;
-                dword_140404A6C[289317485] = 0;
-                if ( v14 == v16 )
-                {
-                  dword_140404A6C[289317484] = ++v11;
-                  goto LABEL_60;
-                }
-                ++v11;
-                v14 -= v16;
-                v15 += v16;
-                dword_140404A6C[289317484] = v11;
-                if ( v14 <= 0 )
-                  goto LABEL_60;
-              }
-              v12 += v14;
-              dword_140404A6C[289317485] = v12;
-            }
-LABEL_60:
-            if ( v11 < 0x10000 && v11 + v10 <= (int)dword_140404A6C[289317483] )
-            {
-              if ( v12 > 0 )
-              {
-                ++v11;
-                dword_140404A6C[289317485] = 0;
-                dword_140404A6C[289317484] = v11;
-              }
-              sub_1401FC920(
-                (__m128i *)&dword_140404A6C[179662389],
-                (     __m128i *)((char *)&dword_140404A6C[289317486] + v11),
-                v10);
-              dword_140404A6C[289317484] = v10 + v11;
-            }
-          }
-          *((_BYTE *)&dword_140404A6C[179662389] + v10) = 0;
-          dword_140404A6C[179662132] = 4;
-          break;
-      }
-      result = sub_14011C760();
-    }
-    while ( (int)result > 0 );
-  }
-  return result;
-}
-
-// 1402B231C: using guessed type int dword_1402B231C;
-// 1402B2658: using guessed type int dword_1402B2658;
-// 1402B26C8: using guessed type int dword_1402B26C8;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 150F610D8: using guessed type unsigned int;
-// 150F610DC: using guessed type unsigned int;
-// 150F610E0: using guessed type unsigned int;
-// 150F610E4: using guessed type unsigned int;
-// 150F610F4: using guessed type unsigned int;
-// 150F61100: using guessed type unsigned int;
-// 151E4595C: using guessed type unsigned int;
-// 1603612E4: using guessed type unsigned int;
-// 1603612F0: using guessed type unsigned int;
-// 1603612F4: using guessed type unsigned int;
-// 1603612F8: using guessed type unsigned int;
-// 16B15FF3C: using guessed type unsigned int;
-// 16B15FF40: using guessed type unsigned int;
-// 16B15FF50: using guessed type unsigned int;
-// 183EBFAA4: using guessed type unsigned int;
-// 183EBFAB0: using guessed type unsigned int;
-// 183EBFAC0: using guessed type unsigned int;
-// 18539D400: using guessed type unsigned int;
-// 18539D408: using guessed type unsigned int;
-// 1853AD41C: using guessed type unsigned int;
-// 1853AD420: using guessed type unsigned int;
-// 1A4D2DCE4: using guessed type unsigned int;
-// 1AD04B1E8: using guessed type unsigned int;
-// 1AD04B1EC: using guessed type unsigned int;
-
-//----- (00000001400FCB50) ----------------------------------------------------
-void sub_1400FCB50()
-{
-  unsigned int v0; // ecx
-
-  v0 = dword_140404A6C[179662132];
-  if ( dword_140404A6C[179662132] - 1 <= 1 )
-  {
-    sr_text_draw_recovered("Connecting", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))))), 20.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FCBBC */;
-    v0 = dword_140404A6C[179662132];
-  }
-  if ( v0 == 4 )
-    sr_text_draw_recovered((char *)&dword_140404A6C[179662389], 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))))), 20.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FCC19 */;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 16B15FF3C: using guessed type unsigned int;
-
-//----- (00000001400FCC30) ----------------------------------------------------
-__int64 sub_1400FCC30()
-{
-  __int64 result; // rax
-  unsigned int v1; // ecx
-
-  dword_140404A6C[70087069] = 1126170624;
-  dword_140404A6C[70087070] = 1101004800;
-  dword_140404A6C[70087074] = 41;
-  result = sr_DrawMenuButton("Back");
-  v1 = dword_140404A6C[283831310];
-  if ( (_DWORD)result )
-    v1 = 0;
-  dword_140404A6C[283831310] = v1;
-  return result;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 150F610E0: using guessed type unsigned int;
-// 150F610E4: using guessed type unsigned int;
-// 150F610F4: using guessed type unsigned int;
-// 183EBFAA4: using guessed type unsigned int;
-
-//----- (00000001400FCC90) ----------------------------------------------------
-void sub_1400FCC90()
-{
-  sr_text_draw_recovered("Design//Programming",16.0f,64.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
-  sr_text_draw_recovered("Alex Austin",16.0f,96.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
-  sr_text_draw_recovered("Art",16.0f,144.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
-  sr_text_draw_recovered("Sofia da Silva",16.0f,176.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
-  sr_text_draw_recovered("Design//Art",16.0f,224.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
-  sr_text_draw_recovered("Brendon Chung",16.0f,256.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
-  sr_text_draw_recovered("Luke Hetherington",16.0f,272.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
-  sr_text_draw_recovered("Production",16.0f,320.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
-  sr_text_draw_recovered("Justin Woodward",16.0f,352.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
-  sr_text_draw_recovered("Community Manager",16.0f,400.0f,16.0f,0,0.75f,0.75f,0.75f,1.0f,NULL);
-  sr_text_draw_recovered("W1nters",16.0f,432.0f,16.0f,0,1.0f,1.0f,1.0f,1.0f,NULL);
-}
-
-
-//----- (00000001400FDD80) ----------------------------------------------------
-void sub_1400FDD80()
-{
-  sr_CSDrawText("Name", 4.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))), 20.0);
-  sr_text_draw_recovered("Ping", 480.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDE3F */;
-  sr_text_draw_recovered("Players", 560.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDE8B */;
-  sr_text_draw_recovered("Game Type", 672.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDED7 */;
-  sr_text_draw_recovered("Version", 784.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDF23 */;
-  sr_text_draw_recovered("Password", 878.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42000000u))))), 20.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FDF6F */;
-  sr_text_draw_recovered("/i", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43C80000u))))), 12.0, 0u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, (const uint64[]){dword_140404A6C[179473694]}) /* 0x1400FDFD3 */;
-  sr_text_draw_recovered("/i", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43CE0000u))))), 12.0, 0u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, (const uint64[]){dword_140404A6C[179662128]}) /* 0x1400FE02F */;
-}
-
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
-//----- (00000001400FE5D0) ----------------------------------------------------
-void sub_1400FE5D0()
-{
-  sr_text_draw_recovered("Sub Rosa", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43200000u))))), 16.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FE62E */;
-  sr_text_draw_recovered("ALPHA /i/c", 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43300000u))))), 16.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FE697 */;
-  sr_text_draw_recovered((char *)off_1402B2810, 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43400000u))))), 14.0, 65u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FE6E9 */;
-  if ( dword_140404A6C[278384725] )
-    sr_text_draw_recovered("Steam", 16.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x44090000u))))), 12.0, 0u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FE745 */;
-}
-
-// 1402B231C: using guessed type int dword_1402B231C;
-// 1402B23DC: using guessed type int dword_1402B23DC;
-// 1402B2810: using guessed type char (*off_1402B2810)[7];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
-//----- (00000001400FE870) ----------------------------------------------------
-// local variable allocation has failed, the output may be wrong!
-__int64            sub_1400FE870(__int64 a1, int a2, double a3, double a4, float a5, float a6, char a7)
-{
-  double v7 = a3; // xmm2_8: x arrives in xmm2 (0x1400FE8C0 movaps xmm12, xmm2); Hex-Rays had lost it
-  __m128i v8; // xmm7
-  __int64 v9; // rbx
-  __int64 v10; // r8
-  __m128i v11; // xmm10
-  int v12; // xmm0_4
-  __int64 v13; // rax
-  float v14; // xmm3_4
-  float v15; // xmm9_4
-  unsigned int v16; // r9d
-  __m128i v17; // xmm2
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400FE870[608];
-#define v19 (*(__int64 (*))(void *)(sr_frame_1400FE870 + 0)) /* [rsp+0h] */
-#define v20 (*(int (*))(void *)(sr_frame_1400FE870 + 32)) /* [rsp+20h] */
-#define v21 (*(int (*))(void *)(sr_frame_1400FE870 + 40)) /* [rsp+28h] */
-#define v22 (*(int (*))(void *)(sr_frame_1400FE870 + 48)) /* [rsp+30h] */
-#define v23 (*(int (*))(void *)(sr_frame_1400FE870 + 56)) /* [rsp+38h] */
-#define v24 (*(int (*))(void *)(sr_frame_1400FE870 + 64)) /* [rsp+40h] */
-#define v25 (*(char (*)[512])(void *)(sr_frame_1400FE870 + 80)) /* [rsp+50h] */
-#define v26 (*(__int64 (*))(void *)(sr_frame_1400FE870 + 592)) /* [rsp+250h] */
-
-  v8 = *(__m128i *)&a4;
-  v9 = a2;
-  /* 0x1400FE908: width a5 ([rsp+2F0h], 0x1400FE8D0), not the third argument */
-  sub_14006D660(v7, a4, sr_text_float_bits(a5), a6, 0, 1061158912, 1061158912, 1061158912, 1065353216);
-  v11 = *(__m128i *)&a4;
-  *(float *)SR_VEC_LANES(128, v11, i32) = *(float *)&a4 + 2.0;
-  if ( (a7 & 1) != 0 )
-    v12 = 1056964608;
-  else
-    v12 = 1048576000;
-  /* 0x1400FE97E: x + 2 (0x1400FE932), width - 4 (0x1400FE919); the C had passed x and an undefined width */
-  sub_14006D660(
-    sr_export_float_lane_container(sr_text_float_bits(*(float *)&v7 + 2.0f)),
-    *(double *)SR_VEC_LANES(128, v11, i64),
-    sr_text_float_bits(a5 - 4.0f),
-    a6 - 4.0,
-    0,
-    v12,
-    v12,
-    v12,
-    1065353216);
-  v13 = (int)dword_140404A6C[v9 + 280649319];
-  v14 = 16.0;
-  if ( !dword_140404A6C[3597 * v13 + 71856270] || dword_140404A6C[v13 + 284023074] )
-    v14 = 12.0;
-  v24 = 1065353216;
-  v23 = 1065353216;
-  v22 = 1065353216;
-  v15 = (float)(a5 * 0.5) + *(float *)&v7;
-  v21 = 1065353216;
-  v20 = 1;
-  sr_text_draw_recovered((char *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 14388 * v13 + 291638372), v15, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v11))), v14, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FEA10 */;
-  v16 = dword_140404A6C[3597 * dword_140404A6C[v9 + 280649319] + 71856265];
-  sub_140158AB0(v25, "%03d-%04d", v16 / 0x2710, v16 % 0x2710);
-  v24 = 1065353216;
-  v17 = v8;
-  *(float *)SR_VEC_LANES(128, v17, i32) = *(float *)SR_VEC_LANES(128, v8, i32) + 18.0;
-  v23 = 1065353216;
-  v22 = 1065353216;
-  v21 = 1065353216;
-  v20 = 1;
-  sr_text_draw_recovered(v25, v15, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v17))), 12.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FEA9E */;
-  if ( dword_140404A6C[dword_140404A6C[v9 + 280649319] + 284023074] )
-  {
-    *(float *)SR_VEC_LANES(128, v8, i32) = *(float *)SR_VEC_LANES(128, v8, i32) + 30.0;
-    v24 = 1065353216;
-    v23 = 1065353216;
-    v22 = 1065353216;
-    v21 = 1065353216;
-    v20 = 1;
-    sr_text_draw_recovered("MUTED", v15, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v8))), 16.0, 1u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400FEAFD */;
-  }
-  return 0; /* no result: rax is residue at 0x1400FEB02 */
-}
-#undef v19
-#undef v20
-#undef v21
-#undef v22
-#undef v23
-#undef v24
-#undef v25
-#undef v26
-
-
-// 140198E51: using guessed type __int64(void);
-// 140302FA8: using guessed type __int64 (__fastcall *qword_140302FA8)(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144970C98: using guessed type unsigned int;
-// 144970C9C: using guessed type unsigned int;
-// 144978CA4: using guessed type unsigned int;
-// 144978CA8: using guessed type unsigned int;
-// 1449815C4: using guessed type unsigned int;
-// 150F610D8: using guessed type unsigned int;
-// 150F610DC: using guessed type unsigned int;
-// 150F610E0: using guessed type unsigned int;
-// 150F610E4: using guessed type unsigned int;
-// 150F610F4: using guessed type unsigned int;
-// 151E461C8: using guessed type unsigned int;
-// 151E461CC: using guessed type unsigned int;
-// 183EBFAA4: using guessed type unsigned int;
-// 1B0032404: using guessed type unsigned int;
-

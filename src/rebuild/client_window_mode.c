@@ -67,6 +67,9 @@ int sr_recomp_window_set(void *window, unsigned mode, int save)
     /* Borderless is an ordinary window without a frame, never an SDL fullscreen mode: SDL's
        "fullscreen desktop" makes the driver present it exclusively, which is what made
        borderless behave like fullscreen. Only mode 2 asks SDL for fullscreen. */
+    /* Exclusive fullscreen takes the display mode from the window's size, so a 1280x720
+       window would switch the monitor to 1280x720. Size it to the desktop first. */
+    if (mode == 2) SDL_SetWindowSize(window, bounds.w, bounds.h);
     if (SDL_SetWindowFullscreen(window, mode == 2 ? SDL_WINDOW_FULLSCREEN : 0)) return -1;
     if (mode == 1) {
         SDL_SetWindowBordered(window, 0);

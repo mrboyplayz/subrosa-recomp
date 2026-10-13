@@ -79,6 +79,7 @@ int game_frame(int process_input);
 #define player_field(index, offset) \
     SR_GLOBAL(int32_t, 0x151620C60ULL + 0x3834ULL * (uint64_t)(int64_t)(index) + (offset))
 #define player_active(index)        player_field(index, 0x0)
+#define player_team(index)          player_field(index, 0x84)
 #define player_human(index)         player_field(index, 0x9C)     /* -1: none */
 #define player_flags(index)         player_field(index, 0x120)    /* 0x10: uses the other hand */
 #define player_unknown_2d18(index)  player_field(index, 0x2D18)
@@ -117,17 +118,6 @@ int game_frame(int process_input);
 #define effect_183f7aed8         SR_GLOBAL(float, 0x183F7AED8ULL)
 #define effect_183f7aedc         SR_GLOBAL(float, 0x183F7AEDCULL)
 
-/* ---- lists counted down every pass ---------------------------------------- */
-
-/* 0x1A771F380: records of 0x94 bytes whose second word is the time they have left. */
-typedef struct FrameTimedRecord {
-    int32_t unknown_0;
-    int32_t time_left;                   /* from 0xFFFF never expires */
-    uint8_t unknown_8[0x94 - 8];
-} FrameTimedRecord;
-
-#define frame_timed_records      (&SR_GLOBAL(FrameTimedRecord, 0x1A771F380ULL))
-#define frame_timed_record_count SR_GLOBAL(int32_t, 0x1A7971D80ULL)
 
 /* 0x192E8F668: 128 records of 0x130 bytes with countdowns at 0 and 0x98. */
 #define countdown_192e8f668(index, offset) \

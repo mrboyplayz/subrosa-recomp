@@ -1,0 +1,32 @@
+# Names given to recompiled client functions: original address, then name.
+# Applied by tools/cleanup/rename_client_functions.py. Functions of the
+# statically linked Microsoft C runtime carry a crt_ prefix so that they do
+# not clash with the C runtime the rebuild links.
+14024CF6C	crt_invalid_parameter_noinfo
+14024CEBC	crt_invalid_parameter
+14024CFBC	crt_invoke_watson
+1401FC920	crt_memcpy
+1401FCD30	crt_memset
+140158AB0	crt_sprintf
+14015B070	crt_sscanf
+14015B0D0	crt_sscanf_s
+14020CE0C	crt_fread
+14020B8D8	crt_fopen
+14020B6A0	crt_fsopen
+14020B9E8	crt_fclose
+14020B5E0	crt_lock_file
+14020B5EC	crt_unlock_file
+140258B64	crt_lock
+140258BB8	crt_unlock
+14024C22C	crt_chdir
+14023E640	crt_assert
+1401FD83C	crt_getptd
+14024D19C	crt_doserrno
+14024D14C	crt_errno_map_os_error
+140213644	crt_locale_update
+140236ED8	crt_isctype_l
+1402026E0	crt_heap_manager_get_memory
+140258A84	crt_wide_char_to_multi_byte
+140259504	crt_multi_byte_to_wide_char
+14016D910	stbi_refill_buffer
+140158B10	format_with_thousands

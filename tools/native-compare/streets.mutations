@@ -1,0 +1,90 @@
+min x test: >= instead of >
+    if (minimum[0] > box_max[0] || minimum[1] > box_max[1] || minimum[2] > box_max[2])
+----
+    if (minimum[0] >= box_max[0] || minimum[1] > box_max[1] || minimum[2] > box_max[2])
+====
+min z test dropped
+    if (minimum[0] > box_max[0] || minimum[1] > box_max[1] || minimum[2] > box_max[2])
+----
+    if (minimum[0] > box_max[0] || minimum[1] > box_max[1])
+====
+max y test NaN handling (rejects NaN no more)
+!(maximum[1] >= box_min[1])
+----
+maximum[1] < box_min[1]
+====
+max x compared with the far corner
+!(maximum[0] >= box_min[0])
+----
+!(maximum[0] >= box_max[0])
+====
+list capacity 1023
+        if (n < STREET_TRIANGLE_LIST_CAPACITY && box_overlaps(bounds, bounds + 3, box_min, box_max)) {
+----
+        if (n < STREET_TRIANGLE_LIST_CAPACITY - 1 && box_overlaps(bounds, bounds + 3, box_min, box_max)) {
+====
+range end inclusive
+    while (i < s->range_end[range]) {
+----
+    while (i <= s->range_end[range]) {
+====
+corners in another order
+                uint32_t *out = (uint32_t *)list->triangle[n].corner[c];
+----
+                uint32_t *out = (uint32_t *)list->triangle[n].corner[2 - c];
+====
+vertex z not copied
+                out[2] = v[2];
+----
+                out[2] = v[1];
+====
+candidate limit 63
+                            if (count < 64)
+----
+                            if (count < 63)
+====
+cells: x scale applied to z
+    int32_t z_first = truncate_float(box_min[2] * 0.015625f);
+----
+    int32_t z_first = truncate_float(box_min[0] * 0.015625f);
+====
+cells: last column excluded
+                uint64_t columns = (uint32_t)((uint32_t)x_last - (uint32_t)x_first + 1u);
+----
+                uint64_t columns = (uint32_t)((uint32_t)x_last - (uint32_t)x_first);
+====
+cells: rounding instead of truncation
+    int32_t x_last = truncate_float(box_max[0] * 0.015625f);
+----
+    int32_t x_last = (int32_t)__builtin_lrintf(box_max[0] * 0.015625f);
+====
+cells: negative row accepted as row 0
+            if ((uint64_t)z < STREET_CELLS_ACROSS && x_first <= x_last) {
+----
+            if ((uint64_t)(z < 0 ? 0 : z) < STREET_CELLS_ACROSS && x_first <= x_last) {
+====
+cell entries capped at 8
+                        int64_t entries = cell->count;
+----
+                        int64_t entries = cell->count > 8 ? 8 : cell->count;
+====
+street box test skipped
+        if (!box_overlaps(s->bounds_min, s->bounds_max, box_min, box_max))
+            continue;
+----
+====
+range bit 2 selects range 2
+            world_street_triangles_in_box(list, box_min, box_max, street, 1);
+----
+            world_street_triangles_in_box(list, box_min, box_max, street, 2);
+====
+ranges 0 and 1 gathered in the other order
+        if (ranges & 1)
+            world_street_triangles_in_box(list, box_min, box_max, street, 0);
+        if (ranges & 2)
+            world_street_triangles_in_box(list, box_min, box_max, street, 1);
+----
+        if (ranges & 2)
+            world_street_triangles_in_box(list, box_min, box_max, street, 1);
+        if (ranges & 1)
+            world_street_triangles_in_box(list, box_min, box_max, street, 0);

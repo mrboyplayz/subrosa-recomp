@@ -1,0 +1,26 @@
+counts kept between passes
+        memset(sort_counts, 0, 256 * sizeof *sort_counts);
+----
+        if (pass == 0)
+            memset(sort_counts, 0, 256 * sizeof *sort_counts);
+====
+three passes
+    for (int pass = 0; pass < 4; pass++) {
+----
+    for (int pass = 0; pass < 3; pass++) {
+====
+no end marker
+    order[count] = -1;
+----
+====
+last start
+        for (int value = 0; value < 255; value++)
+----
+        for (int value = 0; value < 254; value++)
+====
+unstable
+            int item = sort_previous[i];
+            order[sort_starts[(renderer_sort_keys[item] >> shift) & 0xFF]++] = item;
+----
+            int item = sort_previous[count - 1 - i];
+            order[sort_starts[(renderer_sort_keys[item] >> shift) & 0xFF]++] = item;

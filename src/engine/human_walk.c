@@ -37,8 +37,8 @@ extern int sub_1400DC940(int vehicle, float *from, float *to, int unknown);
 #define item_type_grip_offset(type) (&SR_GLOBAL(float, 0x182A7E180ULL + 0x13D0ULL * (uint64_t)(int64_t)(type) + 0x80))
 #define ITEM_TYPE_28 28
 
-/* Movement modes (WorldHuman.zoom_level) and the state in which the walk
-   velocity is not steered (WorldHuman.movement_state). */
+/* Movement modes (WorldHuman.unknown_60) and the state in which the walk
+   velocity is not steered (WorldHuman.unknown_58). */
 enum { HUMAN_MODE_RUN = 0, HUMAN_MODE_AIM = 2 };
 #define HUMAN_STATE_5 5
 
@@ -157,7 +157,7 @@ void human_feel_ground_ahead(int human)
     float here, height, x, z, dx, dy, dz, speed, length;
     int hits = 0;
 
-    heading_axes(axes, h->view_yaw);
+    heading_axes(axes, h->unknown_98);
     here = ground_under_pelvis(human, pelvis);
 
     /* The direction walked in; when slower than 1/60 a tick, pushed back
@@ -239,7 +239,7 @@ void human_update_walk_height(int human)
     float x, y, z, dx, dy, dz, carried, uphill, target, height, low;
     int hits = 0;
 
-    heading_axes(axes, h->view_yaw);
+    heading_axes(axes, h->unknown_98);
     y = ground_under_pelvis(human, pelvis);
 
     /* Eight probes along the walk velocity less 1/64 of the heading, the
@@ -262,9 +262,9 @@ void human_update_walk_height(int human)
 
     /* How high the hips are carried: lower when looking down or crouched,
        by movement mode, and on rising ground the full stride's height. */
-    carried = (float)(crt_cos((double)(h->view_pitch * 0.5f)) * (double)h->smoothed_rotation[4]);
+    carried = (float)(crt_cos((double)(h->unknown_9c * 0.5f)) * (double)h->unknown_6768);
     carried = max_float(carried, 0.125f);
-    if (h->zoom_level != HUMAN_MODE_RUN)
+    if (h->unknown_60 != HUMAN_MODE_RUN)
         low = h->walk_amount * 0.46875f + 0.125f;
     else
         low = h->walk_amount * 0.21875f + 0.34375f;
@@ -278,7 +278,7 @@ void human_update_walk_height(int human)
         /* A planted foot holds the ground down to its own height + 1/8. */
         for (int leg = 0; leg < 2; leg++) {
             const HumanLeg *l = &h->legs[leg];
-            if (l->state == 1 && h->bones[HUMAN_BONE_FOOT + 3 * leg].ground_bond_count) {
+            if (l->state == 1 && h->bones[HUMAN_BONE_FOOT + 3 * leg].unknown_130) {
                 float limit = l->ground_height + 0.125f;
                 for (int i = 0; i < hits; i++) {
                     if (!(limit >= heights[i]))
@@ -319,13 +319,13 @@ static void wanted_velocity(WorldHuman *h, float wanted[3])
     float speed, amount, back, x, y, z, length, across;
 
     speed = 0.050000001f;
-    if (h->zoom_level == HUMAN_MODE_RUN)
+    if (h->unknown_60 == HUMAN_MODE_RUN)
         speed = 0.083333336f;
-    else if (h->zoom_level == HUMAN_MODE_AIM)
+    else if (h->unknown_60 == HUMAN_MODE_AIM)
         speed = 0.025f;
-    amount = h->jump_charge ? 1.0f : h->walk_amount;
+    amount = h->unknown_6734 ? 1.0f : h->walk_amount;
     speed = (speed * amount) * h->ground_flat;
-    heading_axes(axes, h->look_yaw_offset + h->view_yaw);
+    heading_axes(axes, h->unknown_f8 + h->unknown_98);
 
     back = -h->input_forward;
     x = axes[6] * back + h->input_strafe * axes[0];
@@ -369,7 +369,7 @@ static void wanted_velocity(WorldHuman *h, float wanted[3])
             z = (scale * z) * 0.050000001f;
         }
     }
-    if (0.5f > h->smoothed_rotation[4]) {
+    if (0.5f > h->unknown_6768) {
         x = 0.0f;
         y = 0.0f;
         z = 0.0f;
@@ -393,7 +393,7 @@ static void follow_item_28(WorldHuman *h, int item)
 
     h->lean_side = 0.0f;
     h->lean_forward = 0.0f;
-    turned_axes(axes, h->input_turn_yaw);
+    turned_axes(axes, h->unknown_128);
     px = axes[0] * 0.875f + anchor[0];
     pz = axes[2] * 0.875f + anchor[2];
     gz = ((grip[0] * it->rotation[2] + it->position[2]) + grip[1] * it->rotation[5]) + grip[2] * it->rotation[8];
@@ -411,7 +411,7 @@ static void follow_item_28(WorldHuman *h, int item)
     distance = sqrt_float(ez * ez + ex * ex);
     if (!(distance >= 0.5f)) {
         float away;
-        turned_axes(axes, h->view_yaw);
+        turned_axes(axes, h->unknown_98);
         away = (0.5f - distance) + 0.0625f;
         ax = away * axes[6];
         ay = away * axes[7];
@@ -438,11 +438,11 @@ void human_update_walk_point(int human)
     int held;
 
     /* How much of the walking speed is used. */
-    target = (h->input_flags & HUMAN_INPUT_CROUCH) ? 0.625f : 1.0f;
+    target = (h->input_flags & HUMAN_INPUT_8) ? 0.625f : 1.0f;
     rate = 0.03125f;
-    if (h->jump_charge == 0 && h->on_ground)
-        h->cleared_on_ground = 0;
-    else if (h->jump_charge > 0)
+    if (h->unknown_6734 == 0 && h->unknown_54)
+        h->unknown_6738 = 0;
+    else if (h->unknown_6734 > 0)
         rate = 0.125f;
     if (!(h->walk_amount >= target - rate))
         h->walk_amount = h->walk_amount + rate;
@@ -451,7 +451,7 @@ void human_update_walk_point(int human)
     else
         h->walk_amount = target;
 
-    heading_axes(heading, h->view_yaw);
+    heading_axes(heading, h->unknown_98);
     human_feel_ground_ahead(human);
 
     /* The walk velocity stays within 1/30 of the body's. */
@@ -520,7 +520,7 @@ void human_update_walk_point(int human)
     /* Toward the wanted velocity by at most 1/225 a tick. */
     dx = wanted[0] - vx;
     dz = wanted[2] - vz;
-    limit = h->movement_state == HUMAN_STATE_5 ? 0.0f : 0.0044444446f;
+    limit = h->unknown_58 == HUMAN_STATE_5 ? 0.0f : 0.0044444446f;
     length = sqrt_float(dz * dz + dx * dx);
     if (length > limit) {
         if (is_zero_or_nan(length)) {

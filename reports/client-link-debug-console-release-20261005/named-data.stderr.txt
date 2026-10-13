@@ -1,4 +1,0 @@
-D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\named_data.s: Assembler messages:
-D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\named_data.s:3: Warning: .space repeat count is zero, ignored
-D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\named_data.s:27: Warning: .space repeat count is zero, ignored
-D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\named_data.s:33: Warning: .space repeat count is zero, ignored

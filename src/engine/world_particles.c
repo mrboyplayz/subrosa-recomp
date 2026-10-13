@@ -16,8 +16,6 @@ extern int rand(void);                   /* the original's own, 0x14023B1B0 */
 
 /* ---- state ------------------------------------------------------------------- */
 
-/* The noise generator shared with other effects (see human_ragdoll.c). */
-#define particle_noise_seed SR_GLOBAL(uint32_t, 0x1602E12C0ULL)
 /* The sound of a piece landing. 0x183E936CC */
 #define particle_landing_sound SR_GLOBAL(int32_t, 0x183E936CCULL)
 
@@ -29,17 +27,6 @@ static float fabsf_bits(float value)
     return _mm_cvtss_f32(_mm_and_ps(_mm_set_ss(value), _mm_castsi128_ps(_mm_set1_epi32(0x7FFFFFFF))));
 }
 
-/* The next value of the noise generator, 0 to 2^31 - 1. */
-static int32_t noise_bits(void)
-{
-    uint32_t seed = particle_noise_seed;
-    uint32_t h = (seed << 13) ^ seed;
-    uint32_t t;
-
-    particle_noise_seed = seed + 1;
-    t = (h * h) * 15731u + 789221u;
-    return (int32_t)((t * t - 771171059u) & 0x7FFFFFFF);
-}
 
 int world_spawn_particle(int type, const float position[3], const float velocity[3], const float rotation[9])
 {
@@ -70,11 +57,11 @@ int world_spawn_particle(int type, const float position[3], const float velocity
 
     /* A spin of 1/5 to 1/3 radian a tick about the second axis and the
        same, the other way round, about the first. */
-    about_second = (0.06666667f - (float)noise_bits() * 6.2088175e-11f) + 0.20000002f;
+    about_second = (0.06666667f - (float)math_noise_next() * 6.2088175e-11f) + 0.20000002f;
     p->spin[0] = about_second * rotation[3];
     p->spin[1] = about_second * rotation[4];
     p->spin[2] = about_second * rotation[5];
-    about_first = -0.20000002f - ((float)noise_bits() * -6.2088175e-11f + 0.06666667f);
+    about_first = -0.20000002f - ((float)math_noise_next() * -6.2088175e-11f + 0.06666667f);
     p->spin[0] = about_first * rotation[0] + p->spin[0];
     p->spin[1] = about_first * rotation[1] + p->spin[1];
     p->spin[2] = about_first * rotation[2] + p->spin[2];

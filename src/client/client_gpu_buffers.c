@@ -1,34 +1,33 @@
 #include "shared_client.h"
 
-
 //----- (00000001400817C0) ----------------------------------------------------
 __int64 sub_1400817C0()
 {
-  __int64 v0; // r8
-  signed int v1; // eax
-  double v2; // xmm6_8
-  float v3; // xmm9_4
-  float v4; // xmm8_4
-  signed int v5; // edi
-  unsigned int *v6; // rbx
-  int v7; // ebp
-  int v8; // esi
-  int v9; // r14d
-  signed int v10; // r15d
-  int *v11; // r12
-  signed int v12; // r13d
-  int v13; // ecx
-  int v14; // eax
-  float v15; // xmm0_4
-  int v16; // eax
-  double v17; // xmm0_8
-  __int64 v18; // r8
+  __int64 v0;
+  signed int v1;
+  double v2;
+  float v3;
+  float v4;
+  signed int v5;
+  unsigned int *v6;
+  int v7;
+  int v8;
+  int v9;
+  signed int v10;
+  int *v11;
+  signed int v12;
+  int v13;
+  int v14;
+  float v15;
+  int v16;
+  double v17;
+  __int64 v18;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400817C0[16];
 #define v20 (*(signed int (*))(void *)(sr_frame_1400817C0 + 0)) /* [rsp+120h] */
 #define v21 (*(int (*))(void *)(sr_frame_1400817C0 + 8)) /* [rsp+128h] */
 
-  qword_140404050(3553, dword_140404A6C[451221642]);
+  qword_140404050(3553, renderer_white_texture);
   v1 = dword_140404A6C[315570519];
   *(_QWORD *)&v2 = 1115684864;
   v3 = 384.0;
@@ -63,12 +62,12 @@ __int64 sub_1400817C0()
             COERCE_UNSIGNED_INT((float)(v4)) /* native XMM2 width = XMM8 */,
             (float)v11[1] * v3,
             8,
-            COERCE_INT((float)(0.5 - (float)((float)((v13 * v13 - 771171059) & 0x7FFFFFFF) * 4.656612873077393e-10)) + 0.5f),
-            COERCE_INT((float)(0.5 - (float)(v15 * 4.656612873077393e-10)) + 0.5f),
+            COERCE_INT((float)(0.5 - (float)((float)((v13 * v13 - 771171059) & 0x7FFFFFFF) * 4.6566129e-10)) + 0.5f),
+            COERCE_INT((float)(0.5 - (float)(v15 * 4.6566129e-10)) + 0.5f),
             COERCE_INT(
               (float)(0.5
                     - (float)((float)(((15731 * v16 + 789221) * (15731 * v16 + 789221) - 771171059) & 0x7FFFFFFF)
-                            * 4.656612873077393e-10))
+                            * 4.6566129e-10))
             + 0.5f),
             1065353216);
           ++v10;
@@ -101,20 +100,14 @@ __int64 sub_1400817C0()
 #undef v20
 #undef v21
 
-// 1400819EF: variable 'v0' is possibly undefined
-// 140081B24: variable 'v18' is possibly undefined
-// 140404050: using guessed type double (__fastcall *qword_140404050)(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 18B7D2FC8: using guessed type unsigned int;
-
 //----- (000000014011E090) ----------------------------------------------------
 void            sub_14011E090(int a1)
 {
-  __int64 v1; // rbp
-  unsigned int *v2; // rbx
-  __int64 v3; // rax
-  __int64 v4; // rdi
-  __int64 v5; // rsi
+  __int64 v1;
+  unsigned int *v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
 
   if ( !dword_140404A6C[312324428] && !dword_140404A6C[328554868] )
   {
@@ -144,24 +137,19 @@ void            sub_14011E090(int a1)
   }
 }
 
-// 140384000: using guessed type float flt_140384000[131092];
-// 140404010: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD);
-// 1404044A8: using guessed type double (__fastcall *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140193FE0) ----------------------------------------------------
 __int64            sub_140193FE0(int a1, int a2, __int64 a3, int a4)
 {
-  __int64 v4; // rsi
-  __int64 v6; // rdi
-  __int64 v8; // r12
-  __int64 v10; // rbp
-  int v11; // ebx
-  __int64 v12; // r8
-  _DWORD *v13; // rax
-  __int64 v14; // r8
-  unsigned int *v15; // r10
-  int *v16; // r9
+  __int64 v4;
+  __int64 v6;
+  __int64 v8;
+  __int64 v10;
+  int v11;
+  __int64 v12;
+  _DWORD *v13;
+  __int64 v14;
+  unsigned int *v15;
+  int *v16;
 
   v4 = a4;
   v6 = 3246088LL * a1;
@@ -225,39 +213,35 @@ LABEL_16:
   }
 }
 
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 140404198: using guessed type double (__fastcall *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401941F0) ----------------------------------------------------
 void            sub_1401941F0(int a1, int a2)
 {
-  __int64 v2; // r8
-  __int64 v3; // r14
-  __int64 v4; // rax
-  __int64 v5; // rsi
-  __int64 v6; // r12
-  __int64 v7; // rdi
-  __int64 v8; // r13
-  __int64 v9; // rcx
-  int v10; // eax
-  bool v11; // sf
-  unsigned int v12; // eax
-  int v13; // ebx
-  unsigned int v14; // ebp
-  __int64 v15; // r8
-  int v16; // eax
-  unsigned int *v17; // r15
-  __int64 v18; // rax
-  __int64 v19; // rdi
-  unsigned int v20; // edx
-  __int64 v21; // r8
-  unsigned int v22; // eax
-  unsigned int v23; // r15d
-  unsigned int *v24; // rax
-  __int64 v25; // rcx
-  __int64 v26; // r8
-  unsigned int v27; // edx
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  bool v11;
+  unsigned int v12;
+  int v13;
+  unsigned int v14;
+  __int64 v15;
+  int v16;
+  unsigned int *v17;
+  __int64 v18;
+  __int64 v19;
+  unsigned int v20;
+  __int64 v21;
+  unsigned int v22;
+  unsigned int v23;
+  unsigned int *v24;
+  __int64 v25;
+  __int64 v26;
+  unsigned int v27;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401941F0[32];
 #define v28 (*(unsigned int (*))(void *)(sr_frame_1401941F0 + 0)) /* [rsp+70h] */
@@ -376,10 +360,4 @@ void            sub_1401941F0(int a1, int a2)
 }
 #undef v28
 #undef v29
-
-// 1401943A3: variable 'v15' is possibly undefined
-// 1401943FB: variable 'v21' is possibly undefined
-// 140404170: using guessed type double (__fastcall *qword_140404170)(_QWORD, _QWORD, _QWORD);
-// 1404047B0: using guessed type __int64 (__fastcall *unk_1404047B0)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 

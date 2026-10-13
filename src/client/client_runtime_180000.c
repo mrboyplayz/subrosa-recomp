@@ -21,17 +21,10 @@ int sr_steam_callback_size16(void) {return 16;}
 
 int sr_steam_callback_size264(void) {return 264;}
 
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-// 14026E668: using guessed type __int64 __fastcall SteamAPI_UnregisterCallResult(_QWORD);
-// 140279A58: using guessed type __int64 (__fastcall *off_140279A58)();
-// 140279A78: using guessed type void (*off_140279A78)(CHtmlStream *__hidden this);
-// 140279AC8: using guessed type void (*off_140279AC8)(CHtmlStream *__hidden this);
-// 140279B18: using guessed type void (*off_140279B18)(CHtmlStream *__hidden this);
-
 //----- (0000000140198040) ----------------------------------------------------
 _BYTE *           sub_140198040(_BYTE *Block, char a2)
 {
-  bool v2; // zf
+  bool v2;
 
   v2 = (Block[8] & 1) == 0;
   *(_QWORD *)Block = (uint64)(uintptr_t)(&off_140279AC8);
@@ -41,14 +34,11 @@ _BYTE *           sub_140198040(_BYTE *Block, char a2)
     j_j_free(Block);
   return Block;
 }
-
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-// 140279AC8: using guessed type void (*off_140279AC8)(CHtmlStream *__hidden this);
 
 //----- (0000000140198090) ----------------------------------------------------
 _BYTE *           sub_140198090(_BYTE *Block, char a2)
 {
-  bool v2; // zf
+  bool v2;
 
   v2 = (Block[8] & 1) == 0;
   *(_QWORD *)Block = (uint64)(uintptr_t)(&off_140279A78);
@@ -58,14 +48,11 @@ _BYTE *           sub_140198090(_BYTE *Block, char a2)
     j_j_free(Block);
   return Block;
 }
-
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-// 140279A78: using guessed type void (*off_140279A78)(CHtmlStream *__hidden this);
 
 //----- (00000001401980E0) ----------------------------------------------------
 _BYTE *           sub_1401980E0(_BYTE *Block, char a2)
 {
-  bool v2; // zf
+  bool v2;
 
   v2 = (Block[8] & 1) == 0;
   *(_QWORD *)Block = (uint64)(uintptr_t)(&off_140279B18);
@@ -75,14 +62,11 @@ _BYTE *           sub_1401980E0(_BYTE *Block, char a2)
     j_j_free(Block);
   return Block;
 }
-
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-// 140279B18: using guessed type void (*off_140279B18)(CHtmlStream *__hidden this);
 
 //----- (0000000140198130) ----------------------------------------------------
 _BYTE *           sub_140198130(_BYTE *Block, char a2)
 {
-  bool v2; // zf
+  bool v2;
 
   v2 = (Block[8] & 1) == 0;
   *(_QWORD *)Block = (uint64)(uintptr_t)(&off_140279B18);
@@ -93,13 +77,10 @@ _BYTE *           sub_140198130(_BYTE *Block, char a2)
   return Block;
 }
 
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-// 140279B18: using guessed type void (*off_140279B18)(CHtmlStream *__hidden this);
-
 //----- (0000000140198180) ----------------------------------------------------
 _BYTE *           sub_140198180(_BYTE *Block, char a2)
 {
-  bool v2; // zf
+  bool v2;
 
   v2 = (Block[8] & 1) == 0;
   *(_QWORD *)Block = (uint64)(uintptr_t)(&off_140279A78);
@@ -110,13 +91,10 @@ _BYTE *           sub_140198180(_BYTE *Block, char a2)
   return Block;
 }
 
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-// 140279A78: using guessed type void (*off_140279A78)(CHtmlStream *__hidden this);
-
 //----- (00000001401981D0) ----------------------------------------------------
 _BYTE *           sub_1401981D0(_BYTE *Block, char a2)
 {
-  bool v2; // zf
+  bool v2;
 
   v2 = (Block[8] & 1) == 0;
   *(_QWORD *)Block = (uint64)(uintptr_t)(&off_140279AC8);
@@ -127,13 +105,10 @@ _BYTE *           sub_1401981D0(_BYTE *Block, char a2)
   return Block;
 }
 
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-// 140279AC8: using guessed type void (*off_140279AC8)(CHtmlStream *__hidden this);
-
 //----- (0000000140198220) ----------------------------------------------------
 __int64            sub_140198220(__int64 a1)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( *(_QWORD *)(a1 + 16) )
   {
@@ -143,39 +118,31 @@ __int64            sub_140198220(__int64 a1)
   return result;
 }
 
-// 14026E668: using guessed type __int64 __fastcall SteamAPI_UnregisterCallResult(_QWORD);
-
 //----- (00000001401982A0) ----------------------------------------------------
 __int64            sub_1401982A0(__int64 a1, __int64 a2)
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = *(_QWORD *)(a2 + 8);
   *(_QWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 8LL) = result;
   return result;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDB38: using guessed type unsigned int;
-
 //----- (00000001401982B0) ----------------------------------------------------
 __int64            sub_1401982B0(__int64 a1, _QWORD *a2)
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = *(_QWORD *)&dword_140404A6C[19063859];
   **(_QWORD **)&dword_140404A6C[19063859] = *a2;
   return result;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDB38: using guessed type unsigned int;
-
 //----- (00000001401982C0) ----------------------------------------------------
 __int64            sub_1401982C0(__int64 a1, __int64 *a2)
 {
-  __int64 v2; // rbx
-  _QWORD *v3; // rax
+  __int64 v2;
+  _QWORD *v3;
 
   v2 = *a2;
   *(_QWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 16LL) = *a2;
@@ -183,15 +150,10 @@ __int64            sub_1401982C0(__int64 a1, __int64 *a2)
   return (*(__int64 (           **)(_QWORD, __int64))(*(_QWORD *)*v3 + 24LL))(*v3, v2);
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E70: using guessed type __int64 (__fastcall *off_140301E70)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDB38: using guessed type unsigned int;
-
 //----- (0000000140198300) ----------------------------------------------------
 void            sub_140198300(__int64 a1, _DWORD *a2)
 {
-  _QWORD *v2; // rax
+  _QWORD *v2;
 
   if ( a2 && *a2 == 1 )
   {
@@ -208,15 +170,10 @@ void            sub_140198300(__int64 a1, _DWORD *a2)
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E10: using guessed type __int64 (__fastcall *off_140301E10)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDF48: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD);
-
 //----- (0000000140198360) ----------------------------------------------------
 __int64            sub_140198360(__int64 a1, __int64 a2, __int64 a3)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( a2 && a3 )
   {
@@ -229,13 +186,10 @@ __int64            sub_140198360(__int64 a1, __int64 a2, __int64 a3)
   return result;
 }
 
-// 14026E650: using guessed type __int64 __fastcall SteamAPI_RegisterCallback(_QWORD, _QWORD);
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-
 //----- (00000001401983C0) ----------------------------------------------------
 __int64            sub_1401983C0(__int64 a1, __int64 a2, __int64 a3)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( a2 && a3 )
   {
@@ -248,13 +202,10 @@ __int64            sub_1401983C0(__int64 a1, __int64 a2, __int64 a3)
   return result;
 }
 
-// 14026E650: using guessed type __int64 __fastcall SteamAPI_RegisterCallback(_QWORD, _QWORD);
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-
 //----- (0000000140198420) ----------------------------------------------------
 __int64            sub_140198420(__int64 a1, __int64 a2, __int64 a3)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( a2 && a3 )
   {
@@ -267,9 +218,6 @@ __int64            sub_140198420(__int64 a1, __int64 a2, __int64 a3)
   return result;
 }
 
-// 14026E650: using guessed type __int64 __fastcall SteamAPI_RegisterCallback(_QWORD, _QWORD);
-// 14026E658: using guessed type __int64 __fastcall SteamAPI_UnregisterCallback(_QWORD);
-
 //----- (00000001401984A0) ----------------------------------------------------
 void sub_1401984A0(__int64 a1,__int64 a2,__int64 a3,__int64 a4) {
   uintptr_t active,object,method;
@@ -280,11 +228,10 @@ void sub_1401984A0(__int64 a1,__int64 a2,__int64 a3,__int64 a4) {
   ((void (*)(uintptr_t,uintptr_t,uintptr_t))method)(object,(uintptr_t)a2,(uintptr_t)a3);
 }
 
-
 //----- (0000000140198520) ----------------------------------------------------
 __int64            sub_140198520(_QWORD *a1, __int64 a2, __int64 a3, __int64 a4)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( a1[2] )
     result = SteamAPI_UnregisterCallResult(a1);
@@ -296,17 +243,11 @@ __int64            sub_140198520(_QWORD *a1, __int64 a2, __int64 a3, __int64 a4)
   return result;
 }
 
-// 14026E660: using guessed type __int64 __fastcall SteamAPI_RegisterCallResult(_QWORD, _QWORD);
-// 14026E668: using guessed type __int64 __fastcall SteamAPI_UnregisterCallResult(_QWORD);
-
 //----- (00000001401985D0) ----------------------------------------------------
 __int64 sub_1401985D0()
 {
   return *(_QWORD *)SteamInternal_ContextInit(&off_140301E58);
 }
-
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E58: using guessed type __int64 (__fastcall *off_140301E58)();
 
 //----- (00000001401985F0) ----------------------------------------------------
 __int64 sub_1401985F0()
@@ -314,14 +255,11 @@ __int64 sub_1401985F0()
   return *(_QWORD *)SteamInternal_ContextInit(&off_140301E28);
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-
 //----- (0000000140198610) ----------------------------------------------------
 __int64            sub_140198610(__int64 *a1)
 {
-  unsigned int HSteamUser; // eax
-  __int64 result; // rax
+  unsigned int HSteamUser;
+  __int64 result;
 
   HSteamUser = SteamAPI_GetHSteamUser();
   result = SteamInternal_FindOrCreateUserInterface(HSteamUser, "STEAMAPPS_INTERFACE_VERSION008");
@@ -329,14 +267,11 @@ __int64            sub_140198610(__int64 *a1)
   return result;
 }
 
-// 14026E638: using guessed type __int64 SteamAPI_GetHSteamUser(void);
-// 14026E648: using guessed type __int64 __fastcall SteamInternal_FindOrCreateUserInterface(_QWORD, _QWORD);
-
 //----- (0000000140198640) ----------------------------------------------------
 __int64            sub_140198640(__int64 *a1)
 {
-  unsigned int HSteamUser; // eax
-  __int64 result; // rax
+  unsigned int HSteamUser;
+  __int64 result;
 
   HSteamUser = SteamAPI_GetHSteamUser();
   result = SteamInternal_FindOrCreateUserInterface(HSteamUser, "SteamFriends017");
@@ -344,14 +279,11 @@ __int64            sub_140198640(__int64 *a1)
   return result;
 }
 
-// 14026E638: using guessed type __int64 SteamAPI_GetHSteamUser(void);
-// 14026E648: using guessed type __int64 __fastcall SteamInternal_FindOrCreateUserInterface(_QWORD, _QWORD);
-
 //----- (0000000140198670) ----------------------------------------------------
 __int64            sub_140198670(__int64 *a1)
 {
-  unsigned int HSteamUser; // eax
-  __int64 result; // rax
+  unsigned int HSteamUser;
+  __int64 result;
 
   HSteamUser = SteamAPI_GetHSteamUser();
   result = SteamInternal_FindOrCreateUserInterface(HSteamUser, "SteamMatchMaking009");
@@ -359,14 +291,11 @@ __int64            sub_140198670(__int64 *a1)
   return result;
 }
 
-// 14026E638: using guessed type __int64 SteamAPI_GetHSteamUser(void);
-// 14026E648: using guessed type __int64 __fastcall SteamInternal_FindOrCreateUserInterface(_QWORD, _QWORD);
-
 //----- (00000001401986A0) ----------------------------------------------------
 __int64            sub_1401986A0(__int64 *a1)
 {
-  unsigned int HSteamUser; // eax
-  __int64 result; // rax
+  unsigned int HSteamUser;
+  __int64 result;
 
   HSteamUser = SteamAPI_GetHSteamUser();
   result = SteamInternal_FindOrCreateUserInterface(HSteamUser, "SteamNetworking006");
@@ -374,14 +303,11 @@ __int64            sub_1401986A0(__int64 *a1)
   return result;
 }
 
-// 14026E638: using guessed type __int64 SteamAPI_GetHSteamUser(void);
-// 14026E648: using guessed type __int64 __fastcall SteamInternal_FindOrCreateUserInterface(_QWORD, _QWORD);
-
 //----- (00000001401986D0) ----------------------------------------------------
 __int64            sub_1401986D0(__int64 *a1)
 {
-  unsigned int HSteamUser; // eax
-  __int64 result; // rax
+  unsigned int HSteamUser;
+  __int64 result;
 
   HSteamUser = SteamAPI_GetHSteamUser();
   result = SteamInternal_FindOrCreateUserInterface(HSteamUser, "SteamUser020");
@@ -389,17 +315,11 @@ __int64            sub_1401986D0(__int64 *a1)
   return result;
 }
 
-// 14026E638: using guessed type __int64 SteamAPI_GetHSteamUser(void);
-// 14026E648: using guessed type __int64 __fastcall SteamInternal_FindOrCreateUserInterface(_QWORD, _QWORD);
-
 //----- (0000000140198700) ----------------------------------------------------
 __int64 sub_140198700()
 {
   return *(_QWORD *)SteamInternal_ContextInit(&off_140301E40);
 }
-
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E40: using guessed type __int64 (__fastcall *off_140301E40)();
 
 //----- (0000000140198720) ----------------------------------------------------
 __int64 sub_140198720()
@@ -407,22 +327,16 @@ __int64 sub_140198720()
   return *(_QWORD *)SteamInternal_ContextInit(&off_140301E70);
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E70: using guessed type __int64 (__fastcall *off_140301E70)();
-
 //----- (0000000140198740) ----------------------------------------------------
 __int64 sub_140198740()
 {
   return *(_QWORD *)SteamInternal_ContextInit(&off_140301E10);
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E10: using guessed type __int64 (__fastcall *off_140301E10)();
-
 //----- (0000000140198790) ----------------------------------------------------
 void            sub_140198790(__int64 a1)
 {
-  _QWORD *v2; // rax
+  _QWORD *v2;
 
   if ( dword_140404A6C[19063857] )
   {
@@ -431,14 +345,10 @@ void            sub_140198790(__int64 a1)
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401987E0) ----------------------------------------------------
 void            sub_1401987E0(unsigned int a1)
 {
-  _QWORD *v2; // rax
+  _QWORD *v2;
 
   if ( dword_140404A6C[19063857] )
   {
@@ -447,21 +357,17 @@ void            sub_1401987E0(unsigned int a1)
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E40: using guessed type __int64 (__fastcall *off_140301E40)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140198820) ----------------------------------------------------
 void            sub_140198820(__int64 *a1, __int64 a2, unsigned int a3, unsigned int a4)
 {
-  _QWORD *v8; // rax
-  __int64 *v9; // rax
-  __int64 v10; // rbx
-  _QWORD *v11; // rax
-  char *v12; // rax
-  __int64 v13; // rdi
-  char v14; // cl
-  _BYTE v15[24]; // [rsp+20h] [rbp-18h] BYREF
+  _QWORD *v8;
+  __int64 *v9;
+  __int64 v10;
+  _QWORD *v11;
+  char *v12;
+  __int64 v13;
+  char v14;
+  _BYTE v15[24];
 
   if ( dword_140404A6C[19063857] )
   {
@@ -486,14 +392,10 @@ void            sub_140198820(__int64 *a1, __int64 a2, unsigned int a3, unsigned
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401988C0) ----------------------------------------------------
 __int64            sub_1401988C0(unsigned int a1)
 {
-  _QWORD *v3; // rax
+  _QWORD *v3;
 
   if ( !dword_140404A6C[19063857] )
     return 0;
@@ -501,20 +403,16 @@ __int64            sub_1401988C0(unsigned int a1)
   return (*(__int64 (           **)(_QWORD, _QWORD))(*(_QWORD *)*v3 + 24LL))(*v3, a1);
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140198900) ----------------------------------------------------
 void            sub_140198900(__int64 a1, unsigned int a2, unsigned int a3, __int64 a4)
 {
-  _QWORD *v8; // rax
-  __int64 v9; // rbx
-  _QWORD *v10; // rax
-  char *v11; // rax
-  __int64 v12; // rdi
-  char v13; // cl
-  _BYTE v14[24]; // [rsp+20h] [rbp-18h] BYREF
+  _QWORD *v8;
+  __int64 v9;
+  _QWORD *v10;
+  char *v11;
+  __int64 v12;
+  char v13;
+  _BYTE v14[24];
 
   if ( dword_140404A6C[19063857] )
   {
@@ -537,17 +435,13 @@ void            sub_140198900(__int64 a1, unsigned int a2, unsigned int a3, __in
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401989A0) ----------------------------------------------------
 __int64            sub_1401989A0(unsigned int a1, unsigned int a2)
 {
-  _QWORD *v5; // rax
-  __int64 v6; // rbx
-  _QWORD *v7; // rax
-  char v8; // [rsp+40h] [rbp+18h] BYREF
+  _QWORD *v5;
+  __int64 v6;
+  _QWORD *v7;
+  char v8;
 
   if ( !dword_140404A6C[19063857] )
     return 0;
@@ -557,14 +451,10 @@ __int64            sub_1401989A0(unsigned int a1, unsigned int a2)
   return (*(__int64 (           **)(_QWORD, __int64))(*(_QWORD *)*v7 + 48LL))(*v7, v6);
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140198A10) ----------------------------------------------------
 __int64            sub_140198A10(__int64 a1)
 {
-  _QWORD *v3; // rax
+  _QWORD *v3;
 
   if ( !dword_140404A6C[19063857] )
     return 0;
@@ -572,17 +462,13 @@ __int64            sub_140198A10(__int64 a1)
   return (*(__int64 (           **)(_QWORD, __int64))(*(_QWORD *)*v3 + 48LL))(*v3, a1);
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140198A50) ----------------------------------------------------
 __int64            sub_140198A50(_QWORD *a1)
 {
-  _QWORD *v2; // rax
-  __int64 v3; // rbx
-  _QWORD *v4; // rax
-  char v6; // [rsp+38h] [rbp+10h] BYREF
+  _QWORD *v2;
+  __int64 v3;
+  _QWORD *v4;
+  char v6;
 
   if ( !dword_140404A6C[19063857] )
     return 0;
@@ -602,20 +488,13 @@ __int64            sub_140198A50(_QWORD *a1)
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E10: using guessed type __int64 (__fastcall *off_140301E10)();
-// 140301E58: using guessed type __int64 (__fastcall *off_140301E58)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDB30: using guessed type unsigned int;
-// 144CBDB34: using guessed type unsigned int;
-
 //----- (0000000140198AF0) ----------------------------------------------------
 __int64            sub_140198AF0(__int64 a1)
 {
-  _QWORD *v2; // rax
-  char *v3; // rax
-  __int64 v4; // rbx
-  char v5; // cl
+  _QWORD *v2;
+  char *v3;
+  __int64 v4;
+  char v5;
 
   if ( !dword_140404A6C[19063857] )
     return 0;
@@ -632,17 +511,13 @@ __int64            sub_140198AF0(__int64 a1)
   return 1;
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140198B50) ----------------------------------------------------
 __int64            sub_140198B50(__int64 a1)
 {
-  _QWORD *v2; // rax
-  __int64 v4; // [rsp+0h] [rbp-48h] BYREF
-  _BYTE v5[24]; // [rsp+20h] [rbp-28h] BYREF
-  __int64 v6; // [rsp+38h] [rbp-10h]
+  _QWORD *v2;
+  __int64 v4;
+  _BYTE v5[24];
+  __int64 v6;
 
   if ( dword_140404A6C[19063857] )
   {
@@ -654,11 +529,6 @@ __int64            sub_140198B50(__int64 a1)
   }
   return 0; /* the function has no caller */
 }
-
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E70: using guessed type __int64 (__fastcall *off_140301E70)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDB38: using guessed type unsigned int;
 
 //----- (0000000140198BD0) ----------------------------------------------------
 __int64            sub_140198BD0(__int64 a1)
@@ -676,16 +546,10 @@ __int64            sub_140198BD0(__int64 a1)
   }
 }
 
-// 14026E670: using guessed type __int64 SteamAPI_Init(void);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDB30: using guessed type unsigned int;
-// 144CBDB34: using guessed type unsigned int;
-// 144CBDB38: using guessed type unsigned int;
-
 //----- (0000000140198C10) ----------------------------------------------------
 void            sub_140198C10(__int64 a1)
 {
-  _QWORD *v2; // rax
+  _QWORD *v2;
 
   if ( dword_140404A6C[19063857] )
   {
@@ -694,18 +558,14 @@ void            sub_140198C10(__int64 a1)
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E28: using guessed type __int64 (__fastcall *off_140301E28)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140198C60) ----------------------------------------------------
 __int64            sub_140198C60(_QWORD *a1, __int64 a2, __int64 a3, unsigned int a4)
 {
-  unsigned int v4; // ebx
-  _QWORD *v10; // rax
-  _QWORD *v11; // rax
-  unsigned __int8 v12; // al
-  __int64 v13; // [rsp+30h] [rbp-18h] BYREF
+  unsigned int v4;
+  _QWORD *v10;
+  _QWORD *v11;
+  unsigned __int8 v12;
+  __int64 v13;
 
   HIWORD(v13) = BYTE6(v13) & 0xF;
   v4 = 0;
@@ -730,15 +590,11 @@ __int64            sub_140198C60(_QWORD *a1, __int64 a2, __int64 a3, unsigned in
   return v4;
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E70: using guessed type __int64 (__fastcall *off_140301E70)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140198D20) ----------------------------------------------------
 void            sub_140198D20(__int64 a1)
 {
-  _QWORD *v1; // rax
-  __int64 v2; // rbx
+  _QWORD *v1;
+  __int64 v2;
 
   if ( dword_140404A6C[19063857] )
   {
@@ -755,21 +611,10 @@ void            sub_140198D20(__int64 a1)
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 14026E660: using guessed type __int64 __fastcall SteamAPI_RegisterCallResult(_QWORD, _QWORD);
-// 14026E668: using guessed type __int64 __fastcall SteamAPI_UnregisterCallResult(_QWORD);
-// 140301E10: using guessed type __int64 (__fastcall *off_140301E10)();
-// 140301E90: using guessed type __int64 (__fastcall **off_140301E90)();
-// 140301EA0: using guessed type __int64 qword_140301EA0;
-// 140301EA8: using guessed type __int64 qword_140301EA8;
-// 140301EB0: using guessed type __int64 qword_140301EB0;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDF48: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD);
-
 //----- (0000000140198DC0) ----------------------------------------------------
 void            sub_140198DC0(__int64 a1, __int64 a2, unsigned int a3)
 {
-  _QWORD *v6; // rax
+  _QWORD *v6;
 
   if ( dword_140404A6C[19063857] )
   {
@@ -778,36 +623,25 @@ void            sub_140198DC0(__int64 a1, __int64 a2, unsigned int a3)
   }
 }
 
-// 14026E640: using guessed type __int64 __fastcall SteamInternal_ContextInit(_QWORD);
-// 140301E70: using guessed type __int64 (__fastcall *off_140301E70)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140198E20) ----------------------------------------------------
 __int64 sub_140198E20()
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = SteamAPI_Shutdown();
   dword_140404A6C[19063857] = 0;
   return result;
 }
 
-// 14026E678: using guessed type __int64 SteamAPI_Shutdown(void);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144CBDB30: using guessed type unsigned int;
-
 //----- (0000000140198E40) ----------------------------------------------------
 __int64 sub_140198E40()
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( dword_140404A6C[19063857] )
     return SteamAPI_RunCallbacks();
   return result;
 }
-
-// 14026E630: using guessed type __int64 SteamAPI_RunCallbacks(void);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140198E51) ----------------------------------------------------
 // attributes: thunk
@@ -816,230 +650,204 @@ __int64 sub_140198E51(void)
   return SDL_GetPlatform();
 }
 
-// 140198E51: using guessed type __int64(void);
-// 14026E4D8: using guessed type __int64 SDL_GetPlatform(void);
-
 //----- (0000000140198E57) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E57()
+/* A jump to off_14026E338_sr, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E57()
 {
-  return off_14026E338_sr();
+  __asm__("movabs $off_14026E338_sr, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E338: using guessed type __int64 off_14026E338();
 
 //----- (0000000140198E5D) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E5D()
+/* A jump to off_14026E340_sr, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E5D()
 {
-  return off_14026E340_sr();
+  __asm__("movabs $off_14026E340_sr, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E340: using guessed type __int64 off_14026E340();
 
 //----- (0000000140198E63) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E63()
+__int64 sub_140198E63(void *a1)
 {
-  return off_14026E348_sr();
+  /* SDL_SemWait(sem); the export dropped the argument. */
+  return off_14026E348_sr(a1);
 }
-
-// 14026E348: using guessed type __int64 off_14026E348();
 
 //----- (0000000140198E6F) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E6F()
+/* A jump to off_14026E358_sr, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E6F()
 {
-  return off_14026E358_sr();
+  __asm__("movabs $off_14026E358_sr, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E358: using guessed type __int64 off_14026E358();
 
 //----- (0000000140198E75) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E75()
+/* A jump to off_14026E360_sr, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E75()
 {
-  return off_14026E360_sr();
+  __asm__("movabs $off_14026E360_sr, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E360: using guessed type __int64 off_14026E360();
 
 //----- (0000000140198E7B) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E7B()
+/* A jump to SDL_GetNumAudioDevices, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E7B()
 {
-  return SDL_GetNumAudioDevices();
+  __asm__("movabs $__imp_SDL_GetNumAudioDevices, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E368: using guessed type __int64 SDL_GetNumAudioDevices();
 
 //----- (0000000140198E81) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E81()
+/* A jump to SDL_GetAudioDeviceName, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E81()
 {
-  return SDL_GetAudioDeviceName();
+  __asm__("movabs $__imp_SDL_GetAudioDeviceName, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E370: using guessed type __int64 SDL_GetAudioDeviceName();
 
 //----- (0000000140198E87) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E87()
+/* A jump to SDL_OpenAudioDevice, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E87()
 {
-  return SDL_OpenAudioDevice();
+  __asm__("movabs $__imp_SDL_OpenAudioDevice, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E378: using guessed type __int64 SDL_OpenAudioDevice();
 
 //----- (0000000140198E8D) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E8D()
+/* A jump to SDL_PauseAudioDevice, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E8D()
 {
-  return SDL_PauseAudioDevice();
+  __asm__("movabs $__imp_SDL_PauseAudioDevice, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E380: using guessed type __int64 SDL_PauseAudioDevice();
 
 //----- (0000000140198E93) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E93()
+/* A jump to SDL_LoadWAV_RW, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E93()
 {
-  return SDL_LoadWAV_RW();
+  __asm__("movabs $__imp_SDL_LoadWAV_RW, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E388: using guessed type __int64 SDL_LoadWAV_RW();
 
 //----- (0000000140198E99) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E99()
+/* A jump to SDL_FreeWAV, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E99()
 {
-  return SDL_FreeWAV();
+  __asm__("movabs $__imp_SDL_FreeWAV, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E390: using guessed type __int64 SDL_FreeWAV();
 
 //----- (0000000140198E9F) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198E9F()
+/* A jump to SDL_CloseAudioDevice, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198E9F()
 {
-  return SDL_CloseAudioDevice();
+  __asm__("movabs $__imp_SDL_CloseAudioDevice, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E398: using guessed type __int64 SDL_CloseAudioDevice();
 
 //----- (0000000140198EA5) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EA5()
+/* A jump to SDL_SetClipboardText, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EA5()
 {
-  return SDL_SetClipboardText();
+  __asm__("movabs $__imp_SDL_SetClipboardText, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E3A0: using guessed type __int64 SDL_SetClipboardText();
 
 //----- (0000000140198EAB) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EAB()
+/* A jump to SDL_HasSSE2, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EAB()
 {
-  return SDL_HasSSE2();
+  __asm__("movabs $__imp_SDL_HasSSE2, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E3A8: using guessed type __int64 SDL_HasSSE2();
 
 //----- (0000000140198EB1) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EB1()
+/* A jump to SDL_GetSystemRAM, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EB1()
 {
-  return SDL_GetSystemRAM();
+  __asm__("movabs $__imp_SDL_GetSystemRAM, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E3B0: using guessed type __int64 SDL_GetSystemRAM();
 
 //----- (0000000140198EB7) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EB7()
+/* A jump to SDL_GetNumDisplayModes, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EB7()
 {
-  return SDL_GetNumDisplayModes();
+  __asm__("movabs $__imp_SDL_GetNumDisplayModes, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E3B8: using guessed type __int64 SDL_GetNumDisplayModes();
 
 //----- (0000000140198EBD) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EBD()
+/* A jump to SDL_GetDisplayMode, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EBD()
 {
-  return SDL_GetDisplayMode();
+  __asm__("movabs $__imp_SDL_GetDisplayMode, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E3C0: using guessed type __int64 SDL_GetDisplayMode();
 
 //----- (0000000140198EC3) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EC3()
+/* A jump to SDL_CreateWindow, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EC3()
 {
-  return SDL_CreateWindow();
+  __asm__("movabs $__imp_SDL_CreateWindow, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E3C8: using guessed type __int64 SDL_CreateWindow();
 
 //----- (0000000140198EC9) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EC9()
+/* A jump to SDL_SetWindowSize, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EC9()
 {
-  return SDL_SetWindowSize();
+  __asm__("movabs $__imp_SDL_SetWindowSize, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E400: using guessed type __int64 SDL_SetWindowSize();
 
 //----- (0000000140198ECF) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198ECF()
+/* A jump to SDL_GetWindowSize, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198ECF()
 {
-  return SDL_GetWindowSize();
+  __asm__("movabs $__imp_SDL_GetWindowSize, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E408: using guessed type __int64 SDL_GetWindowSize();
 
 //----- (0000000140198ED5) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198ED5()
+/* A jump to SDL_RestoreWindow, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198ED5()
 {
-  return SDL_RestoreWindow();
+  __asm__("movabs $__imp_SDL_RestoreWindow, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E410: using guessed type __int64 SDL_RestoreWindow();
 
 //----- (0000000140198EDB) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EDB()
+/* A jump to SDL_SetWindowFullscreen, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EDB()
 {
-  return SDL_SetWindowFullscreen();
+  __asm__("movabs $__imp_SDL_SetWindowFullscreen, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E418: using guessed type __int64 SDL_SetWindowFullscreen();
 
 //----- (0000000140198EE1) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EE1()
+/* A jump to SDL_GL_SetAttribute, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EE1()
 {
-  return SDL_GL_SetAttribute();
+  __asm__("movabs $__imp_SDL_GL_SetAttribute, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E420: using guessed type __int64 SDL_GL_SetAttribute();
 
 //----- (0000000140198EE7) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EE7()
+/* A jump to SDL_GL_CreateContext, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EE7()
 {
-  return SDL_GL_CreateContext();
+  __asm__("movabs $__imp_SDL_GL_CreateContext, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E428: using guessed type __int64 SDL_GL_CreateContext();
 
 //----- (0000000140198EED) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EED()
+/* A jump to SDL_GL_SetSwapInterval, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EED()
 {
-  return SDL_GL_SetSwapInterval();
+  __asm__("movabs $__imp_SDL_GL_SetSwapInterval, %rax\n\tjmp *(%rax)");
 }
 
 __int64 sub_140198EF3(void)
@@ -1051,30 +859,27 @@ __int64 sub_140198EF3(void)
 
 //----- (0000000140198EF9) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EF9()
+/* A jump to SDL_GetKeyboardState, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EF9()
 {
-  return SDL_GetKeyboardState();
+  __asm__("movabs $__imp_SDL_GetKeyboardState, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E440: using guessed type __int64 SDL_GetKeyboardState();
 
 //----- (0000000140198EFF) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198EFF()
+/* A jump to SDL_GetMouseState, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198EFF()
 {
-  return SDL_GetMouseState();
+  __asm__("movabs $__imp_SDL_GetMouseState, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E448: using guessed type __int64 SDL_GetMouseState();
 
 //----- (0000000140198F05) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F05()
+/* A jump to SDL_GetRelativeMouseState, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F05()
 {
-  return SDL_GetRelativeMouseState();
+  __asm__("movabs $__imp_SDL_GetRelativeMouseState, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E450: using guessed type __int64 SDL_GetRelativeMouseState();
 
 //----- (0000000140198F0B) ----------------------------------------------------
 // attributes: thunk
@@ -1083,196 +888,173 @@ __int64            sub_140198F0B(__int64 a1, __int64 a2, __int64 a3)
   return SDL_SetRelativeMouseMode(a1, a2, a3);
 }
 
-// 14026E458: using guessed type __int64 __fastcall SDL_SetRelativeMouseMode(_QWORD, _QWORD, _QWORD);
-
 //----- (0000000140198F11) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F11()
+/* A jump to SDL_ShowCursor, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F11()
 {
-  return SDL_ShowCursor();
+  __asm__("movabs $__imp_SDL_ShowCursor, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E460: using guessed type __int64 SDL_ShowCursor();
 
 //----- (0000000140198F17) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F17()
+/* A jump to SDL_NumJoysticks, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F17()
 {
-  return SDL_NumJoysticks();
+  __asm__("movabs $__imp_SDL_NumJoysticks, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E468: using guessed type __int64 SDL_NumJoysticks();
 
 //----- (0000000140198F1D) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F1D()
+/* A jump to SDL_JoystickNameForIndex, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F1D()
 {
-  return SDL_JoystickNameForIndex();
+  __asm__("movabs $__imp_SDL_JoystickNameForIndex, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E470: using guessed type __int64 SDL_JoystickNameForIndex();
 
 //----- (0000000140198F23) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F23()
+/* A jump to SDL_JoystickOpen, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F23()
 {
-  return SDL_JoystickOpen();
+  __asm__("movabs $__imp_SDL_JoystickOpen, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E478: using guessed type __int64 SDL_JoystickOpen();
 
 //----- (0000000140198F29) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F29()
+/* A jump to SDL_JoystickGetAttached, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F29()
 {
-  return SDL_JoystickGetAttached();
+  __asm__("movabs $__imp_SDL_JoystickGetAttached, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E480: using guessed type __int64 SDL_JoystickGetAttached();
 
 //----- (0000000140198F2F) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F2F()
+/* A jump to SDL_JoystickInstanceID, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F2F()
 {
-  return SDL_JoystickInstanceID();
+  __asm__("movabs $__imp_SDL_JoystickInstanceID, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E488: using guessed type __int64 SDL_JoystickInstanceID();
 
 //----- (0000000140198F35) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F35()
+/* A jump to SDL_JoystickNumAxes, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F35()
 {
-  return SDL_JoystickNumAxes();
+  __asm__("movabs $__imp_SDL_JoystickNumAxes, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E490: using guessed type __int64 SDL_JoystickNumAxes();
 
 //----- (0000000140198F3B) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F3B()
+/* A jump to SDL_JoystickNumHats, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F3B()
 {
-  return SDL_JoystickNumHats();
+  __asm__("movabs $__imp_SDL_JoystickNumHats, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E498: using guessed type __int64 SDL_JoystickNumHats();
 
 //----- (0000000140198F41) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F41()
+/* A jump to SDL_JoystickNumButtons, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F41()
 {
-  return SDL_JoystickNumButtons();
+  __asm__("movabs $__imp_SDL_JoystickNumButtons, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4A0: using guessed type __int64 SDL_JoystickNumButtons();
 
 //----- (0000000140198F47) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F47()
+/* A jump to SDL_JoystickUpdate, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F47()
 {
-  return SDL_JoystickUpdate();
+  __asm__("movabs $__imp_SDL_JoystickUpdate, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E538: using guessed type __int64 SDL_JoystickUpdate();
 
 //----- (0000000140198F53) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F53()
+/* A jump to SDL_JoystickGetAxis, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F53()
 {
-  return SDL_JoystickGetAxis();
+  __asm__("movabs $__imp_SDL_JoystickGetAxis, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E528: using guessed type __int64 SDL_JoystickGetAxis();
 
 //----- (0000000140198F59) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F59()
+/* A jump to SDL_JoystickGetHat, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F59()
 {
-  return SDL_JoystickGetHat();
+  __asm__("movabs $__imp_SDL_JoystickGetHat, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E520: using guessed type __int64 SDL_JoystickGetHat();
 
 //----- (0000000140198F5F) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F5F()
+/* A jump to SDL_JoystickGetButton, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F5F()
 {
-  return SDL_JoystickGetButton();
+  __asm__("movabs $__imp_SDL_JoystickGetButton, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E518: using guessed type __int64 SDL_JoystickGetButton();
 
 //----- (0000000140198F65) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F65()
+/* A jump to SDL_GameControllerAddMappingsFromRW, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F65()
 {
-  return SDL_GameControllerAddMappingsFromRW();
+  __asm__("movabs $__imp_SDL_GameControllerAddMappingsFromRW, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E510: using guessed type __int64 SDL_GameControllerAddMappingsFromRW();
 
 //----- (0000000140198F6B) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F6B()
+/* A jump to SDL_IsGameController, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F6B()
 {
-  return SDL_IsGameController();
+  __asm__("movabs $__imp_SDL_IsGameController, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E508: using guessed type __int64 SDL_IsGameController();
 
 //----- (0000000140198F71) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F71()
+/* A jump to SDL_GameControllerOpen, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F71()
 {
-  return SDL_GameControllerOpen();
+  __asm__("movabs $__imp_SDL_GameControllerOpen, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E500: using guessed type __int64 SDL_GameControllerOpen();
 
 //----- (0000000140198F77) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F77()
+/* A jump to SDL_GameControllerGetAttached, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F77()
 {
-  return SDL_GameControllerGetAttached();
+  __asm__("movabs $__imp_SDL_GameControllerGetAttached, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4F8: using guessed type __int64 SDL_GameControllerGetAttached();
 
 //----- (0000000140198F7D) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F7D()
+/* A jump to SDL_GameControllerGetJoystick, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F7D()
 {
-  return SDL_GameControllerGetJoystick();
+  __asm__("movabs $__imp_SDL_GameControllerGetJoystick, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4F0: using guessed type __int64 SDL_GameControllerGetJoystick();
 
 //----- (0000000140198F83) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F83()
+/* A jump to SDL_GameControllerGetAxis, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F83()
 {
-  return SDL_GameControllerGetAxis();
+  __asm__("movabs $__imp_SDL_GameControllerGetAxis, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4E8: using guessed type __int64 SDL_GameControllerGetAxis();
 
 //----- (0000000140198F89) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F89()
+/* A jump to SDL_GameControllerGetButton, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F89()
 {
-  return SDL_GameControllerGetButton();
+  __asm__("movabs $__imp_SDL_GameControllerGetButton, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4E0: using guessed type __int64 SDL_GameControllerGetButton();
 
 //----- (0000000140198F8F) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F8F()
+/* A jump to SDL_PollEvent, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F8F()
 {
-  return SDL_PollEvent();
+  __asm__("movabs $__imp_SDL_PollEvent, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E3D0: using guessed type __int64 SDL_PollEvent();
 
 //----- (0000000140198F95) ----------------------------------------------------
 // attributes: thunk
@@ -1281,16 +1063,13 @@ __int64            sub_140198F95(__int64 a1, __int64 a2, __int64 a3)
   return SDL_ShowSimpleMessageBox(a1, a2, a3);
 }
 
-// 14026E4D0: using guessed type __int64 __fastcall SDL_ShowSimpleMessageBox(_QWORD, _QWORD, _QWORD);
-
 //----- (0000000140198F9B) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198F9B()
+/* A jump to SDL_GetTicks, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F9B()
 {
-  return SDL_GetTicks();
+  __asm__("movabs $__imp_SDL_GetTicks, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4C8: using guessed type __int64 SDL_GetTicks();
 
 //----- (0000000140198FA1) ----------------------------------------------------
 // attributes: thunk
@@ -1299,34 +1078,29 @@ __int64            sub_140198FA1(__int64 a1)
   return SDL_Delay(a1);
 }
 
-// 14026E4C0: using guessed type __int64 __fastcall SDL_Delay(_QWORD);
-
 //----- (0000000140198FA7) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198FA7()
+/* A jump to SDL_GetVersion, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198FA7()
 {
-  return SDL_GetVersion();
+  __asm__("movabs $__imp_SDL_GetVersion, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4B8: using guessed type __int64 SDL_GetVersion();
 
 //----- (0000000140198FAD) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198FAD()
+/* A jump to SDL_Init, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198FAD()
 {
-  return SDL_Init();
+  __asm__("movabs $__imp_SDL_Init, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4B0: using guessed type __int64 SDL_Init();
 
 //----- (0000000140198FB3) ----------------------------------------------------
 // attributes: thunk
-__int64 sub_140198FB3()
+/* A jump to SDL_Quit, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198FB3()
 {
-  return SDL_Quit();
+  __asm__("movabs $__imp_SDL_Quit, %rax\n\tjmp *(%rax)");
 }
-
-// 14026E4A8: using guessed type __int64 SDL_Quit();
 
 //----- (0000000140198FCB) ----------------------------------------------------
 // attributes: thunk
@@ -1336,7 +1110,6 @@ __int64            _WSAFDIsSet_sr(__int64 a1, __int64 a2)
 }
 
 // 14026E5A0: invalid function type 'int (__stdcall *__WSAFDIsSet)(SOCKET fd, fd_set *)' has been ignored
-// 140198FCB: using guessed type __int64 __fastcall _WSAFDIsSet(_QWORD, _QWORD);
 
 //----- (0000000140198FD1) ----------------------------------------------------
 // attributes: thunk
@@ -1346,7 +1119,6 @@ __int64            bind_sr(__int64 a1, __int64 a2, __int64 a3)
 }
 
 // 14026E578: invalid function type 'int (__stdcall *bind)(SOCKET s, const struct sockaddr *name, int namelen)' has been ignored
-// 140198FD1: using guessed type __int64 __fastcall bind(_QWORD, _QWORD, _QWORD);
 
 //----- (0000000140198FD7) ----------------------------------------------------
 // attributes: thunk
@@ -1356,7 +1128,6 @@ __int64            closesocket_sr(__int64 a1)
 }
 
 // 14026E580: invalid function type 'int (__stdcall *closesocket)(SOCKET s)' has been ignored
-// 140198FD7: using guessed type __int64 __fastcall closesocket(_QWORD);
 
 //----- (0000000140198FDD) ----------------------------------------------------
 // attributes: thunk
@@ -1366,7 +1137,6 @@ __int64            connect_sr(__int64 a1, __int64 a2, __int64 a3)
 }
 
 // 14026E588: invalid function type 'int (__stdcall *connect)(SOCKET s, const struct sockaddr *name, int namelen)' has been ignored
-// 140198FDD: using guessed type __int64 __fastcall connect(_QWORD, _QWORD, _QWORD);
 
 //----- (0000000140198FE3) ----------------------------------------------------
 // attributes: thunk
@@ -1376,7 +1146,6 @@ __int64            ioctlsocket_sr(__int64 a1, __int64 a2, __int64 a3)
 }
 
 // 14026E590: invalid function type 'int (__stdcall *ioctlsocket)(SOCKET s, int cmd, u_long *argp)' has been ignored
-// 140198FE3: using guessed type __int64 __fastcall ioctlsocket(_QWORD, _QWORD, _QWORD);
 
 //----- (0000000140198FE9) ----------------------------------------------------
 // attributes: thunk
@@ -1386,7 +1155,6 @@ __int64            getsockopt_sr(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
 }
 
 // 14026E598: invalid function type 'int (__stdcall *getsockopt)(SOCKET s, int level, int optname, char *optval, int *optlen)' has been ignored
-// 140198FE9: using guessed type __int64 __fastcall getsockopt(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 //----- (0000000140198FEF) ----------------------------------------------------
 // attributes: thunk
@@ -1396,7 +1164,6 @@ __int64            htonl_sr(__int64 a1)
 }
 
 // 14026E5E0: invalid function type 'u_long (__stdcall *htonl)(u_long hostlong)' has been ignored
-// 140198FEF: using guessed type __int64 __fastcall htonl(_QWORD);
 
 //----- (0000000140198FF5) ----------------------------------------------------
 // attributes: thunk
@@ -1406,7 +1173,6 @@ __int64            htons_sr(__int64 a1)
 }
 
 // 14026E5A8: invalid function type 'u_short (__stdcall *htons)(u_short hostshort)' has been ignored
-// 140198FF5: using guessed type __int64 __fastcall htons(_QWORD);
 
 //----- (0000000140198FFB) ----------------------------------------------------
 // attributes: thunk
@@ -1414,7 +1180,6 @@ unsigned int           inet_addr_sr(     char *cp)
 {
   return ((unsigned long (*)(const char *))__imp_inet_addr)(cp);
 }
-
 
 //----- (0000000140199001) ----------------------------------------------------
 // attributes: thunk
@@ -1424,7 +1189,6 @@ __int64            ntohl_sr(__int64 a1)
 }
 
 // 14026E5B8: invalid function type 'u_long (__stdcall *ntohl)(u_long netlong)' has been ignored
-// 140199001: using guessed type __int64 __fastcall ntohl(_QWORD);
 
 //----- (0000000140199007) ----------------------------------------------------
 // attributes: thunk
@@ -1434,7 +1198,6 @@ __int64            ntohs_sr(__int64 a1)
 }
 
 // 14026E5C0: invalid function type 'u_short (__stdcall *ntohs)(u_short netshort)' has been ignored
-// 140199007: using guessed type __int64 __fastcall ntohs(_QWORD);
 
 //----- (000000014019900D) ----------------------------------------------------
 // attributes: thunk
@@ -1444,7 +1207,6 @@ __int64            recv_sr(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 }
 
 // 14026E5C8: invalid function type 'int (__stdcall *recv)(SOCKET s, char *buf, int len, int flags)' has been ignored
-// 14019900D: using guessed type __int64 __fastcall recv(_QWORD, _QWORD, _QWORD, _QWORD);
 
 //----- (0000000140199013) ----------------------------------------------------
 // attributes: thunk
@@ -1460,7 +1222,6 @@ __int64            recvfrom_sr(__int64 a1, __int64 a2, __int64 a3, __int64 a4, _
 }
 
 // 14026E5D0: invalid function type 'int (__stdcall *recvfrom)(SOCKET s, char *buf, int len, int flags, struct sockaddr *from, int *fromlen)' has been ignored
-// 140199013: using guessed type __int64 __fastcall recvfrom(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 //----- (0000000140199019) ----------------------------------------------------
 // attributes: thunk
@@ -1468,7 +1229,6 @@ int           select_sr(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exc
 {
   return ((int (*)(int, fd_set *, fd_set *, fd_set *, const struct timeval *))__imp_select)(nfds, readfds, writefds, exceptfds, timeout);
 }
-
 
 //----- (000000014019901F) ----------------------------------------------------
 // attributes: thunk
@@ -1478,7 +1238,6 @@ __int64            send_sr(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 }
 
 // 14026E5E8: invalid function type 'int (__stdcall *send)(SOCKET s, const char *buf, int len, int flags)' has been ignored
-// 14019901F: using guessed type __int64 __fastcall send(_QWORD, _QWORD, _QWORD, _QWORD);
 
 //----- (0000000140199025) ----------------------------------------------------
 // attributes: thunk
@@ -1494,7 +1253,6 @@ __int64            sendto_sr(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __i
 }
 
 // 14026E5F0: invalid function type 'int (__stdcall *sendto)(SOCKET s, const char *buf, int len, int flags, const struct sockaddr *to, int tolen)' has been ignored
-// 140199025: using guessed type __int64 __fastcall sendto(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
 
 //----- (000000014019902B) ----------------------------------------------------
 // attributes: thunk
@@ -1504,7 +1262,6 @@ __int64            socket_sr(__int64 a1, __int64 a2, __int64 a3)
 }
 
 // 14026E5F8: invalid function type 'SOCKET (__stdcall *socket)(int af, int type, int protocol)' has been ignored
-// 14019902B: using guessed type __int64 __fastcall socket(_QWORD, _QWORD, _QWORD);
 
 //----- (0000000140199031) ----------------------------------------------------
 // attributes: thunk
@@ -1513,7 +1270,6 @@ struct hostent *          sub_140199031(     char *name)
   return gethostbyname(name);
 }
 
-
 //----- (0000000140199037) ----------------------------------------------------
 // attributes: thunk
 int           sub_140199037(char *name, int namelen)
@@ -1521,14 +1277,12 @@ int           sub_140199037(char *name, int namelen)
   return gethostname(name, namelen);
 }
 
-
 //----- (000000014019903D) ----------------------------------------------------
 // attributes: thunk
 struct servent *          sub_14019903D(     char *name,      char *proto)
 {
   return getservbyname(name, proto);
 }
-
 
 //----- (0000000140199043) ----------------------------------------------------
 // attributes: thunk
@@ -1538,7 +1292,6 @@ __int64            sub_140199043(__int64 a1, __int64 a2)
 }
 
 // 14026E618: invalid function type 'int (__stdcall *WSAStartup)(WORD wVersionRequested, LPWSADATA lpWSAData)' has been ignored
-// 140199043: using guessed type __int64 __fastcall(_QWORD, _QWORD);
 
 //----- (0000000140199049) ----------------------------------------------------
 // attributes: thunk
@@ -1547,12 +1300,11 @@ int           sub_140199049()
   return WSACleanup();
 }
 
-
 //----- (00000001401990A0) ----------------------------------------------------
 __int64            sub_1401990A0(int a1, int a2, _DWORD *a3)
 {
-  int v4; // [rsp+0h] [rbp-18h]
-  int i; // [rsp+4h] [rbp-14h]
+  int v4;
+  int i;
 
   v4 = 0;
 LABEL_2:
@@ -1583,16 +1335,14 @@ LABEL_2:
   }
 }
 
-// 14027E0B8: using guessed type _UNKNOWN *off_14027E0B8;
-
 //----- (0000000140199190) ----------------------------------------------------
 __int64            sub_140199190(_DWORD *a1, int a2, __m128i *a3)
 {
-  int v3; // eax
-  int i; // [rsp+30h] [rbp-98h]
-  int v6; // [rsp+5Ch] [rbp-6Ch]
-  _DWORD *v7; // [rsp+88h] [rbp-40h]
-  _DWORD *v8; // [rsp+B0h] [rbp-18h]
+  int v3;
+  int i;
+  int v6;
+  _DWORD *v7;
+  _DWORD *v8;
 
   if ( a2 > 10002 )
   {
@@ -1623,7 +1373,7 @@ __int64            sub_140199190(_DWORD *a1, int a2, __m128i *a3)
         return 0;
       case 10022:
         if ( a3 )
-          sub_1401FC920((__m128i *)(a1 + 31), a3, 0x40u);
+          crt_memcpy((__m128i *)(a1 + 31), a3, 0x40u);
         return 0;
       case 10024:
         a1[17] = (_DWORD)a3;
@@ -1633,7 +1383,7 @@ __int64            sub_140199190(_DWORD *a1, int a2, __m128i *a3)
         return 0;
       case 10028:
         if ( a3 )
-          sub_1401FC920((__m128i *)(a1 + 47), a3, 8u);
+          crt_memcpy((__m128i *)(a1 + 47), a3, 8u);
         return 0;
       default:
         return 4294967291LL;
@@ -1672,7 +1422,7 @@ __int64            sub_140199190(_DWORD *a1, int a2, __m128i *a3)
         v7 = &a1[(*(_DWORD *)(*(_QWORD *)a1 + 4LL) + 1024) * a1[2] + 63 + *(_DWORD *)(*(_QWORD *)a1 + 8LL) * a1[2]];
         v8 = &v7[*(_DWORD *)(*(_QWORD *)a1 + 8LL) * a1[2]];
         v3 = sub_1401AE360(*(_QWORD *)a1, a1[2]);
-        sub_1401FCD30((void *)(uintptr_t)((_WORD *)a1 + 40), 0, v3 - 80LL);
+        crt_memset((void *)(uintptr_t)((_WORD *)a1 + 40), 0, v3 - 80LL);
         for ( i = 0; i < *(_DWORD *)(*(_QWORD *)a1 + 8LL) * a1[2]; ++i )
         {
           v8[i] = -1042284544;
@@ -1722,14 +1472,13 @@ __int64            sub_140199190(_DWORD *a1, int a2, __m128i *a3)
   return 0xFFFFFFFFLL;
 }
 
-
 //----- (0000000140199AA0) ----------------------------------------------------
 __int64            sub_140199AA0(_DWORD *a1, int a2, int *a3)
 {
-  int v3; // eax
-  int i; // [rsp+2Ch] [rbp-7Ch]
-  _DWORD *v6; // [rsp+58h] [rbp-50h]
-  _DWORD *v7; // [rsp+90h] [rbp-18h]
+  int v3;
+  int i;
+  _DWORD *v6;
+  _DWORD *v7;
 
   if ( a2 <= 10007 )
   {
@@ -1746,7 +1495,7 @@ __int64            sub_140199AA0(_DWORD *a1, int a2, int *a3)
           v6 = &a1[24 * a1[3] + 24 + 2 * *(_DWORD *)(*(_QWORD *)a1 + 8LL) + a1[3] * (a1[2] + 2048)];
           v7 = &v6[2 * *(_DWORD *)(*(_QWORD *)a1 + 8LL)];
           v3 = sub_1401B38C0(*(_QWORD *)a1, a1[3]);
-          sub_1401FCD30((void *)(uintptr_t)((_WORD *)a1 + 22), 0, v3 - 44LL);
+          crt_memset((void *)(uintptr_t)((_WORD *)a1 + 22), 0, v3 - 44LL);
           for ( i = 0; i < 2 * *(_DWORD *)(*(_QWORD *)a1 + 8LL); ++i )
           {
             v7[i] = -1042284544;
@@ -1818,7 +1567,6 @@ __int64            sub_140199AA0(_DWORD *a1, int a2, int *a3)
   return 4294967291LL;
 }
 
-
 //----- (000000014019A020) ----------------------------------------------------
 unsigned int       sub_14019A020(unsigned int a1)
 {
@@ -1827,14 +1575,12 @@ unsigned int       sub_14019A020(unsigned int a1)
   return (unsigned int)result; /* native EAX bit index, not an unrelated local */
 }
 
-
 //----- (000000014019A040) ----------------------------------------------------
 // MFC 7-14 64bit
 __int64            unknown_libname_995(__int64 a1)
 {
   return *(unsigned int *)(a1 + 28);
 }
-
 
 //----- (000000014019A060) ----------------------------------------------------
 // Microsoft VisualC v14 64bit runtime
@@ -1848,7 +1594,6 @@ __int64            unknown_libname_996(__int64 a1)
   return *(_QWORD *)a1;
 }
 
-
 //----- (000000014019A080) ----------------------------------------------------
 // MFC 7-14 64bit
 __int64            unknown_libname_997(__int64 a1)
@@ -1856,19 +1601,17 @@ __int64            unknown_libname_997(__int64 a1)
   return *(unsigned int *)(a1 + 48);
 }
 
-
 //----- (000000014019A0A0) ----------------------------------------------------
 __int64            sub_14019A0A0(__int64 a1)
 {
   return *(_DWORD *)(a1 + 24) - ((unsigned int)sub_14019A020(*(_DWORD *)(a1 + 32)) + 1);
 }
 
-
 //----- (000000014019A0E0) ----------------------------------------------------
 __int64            sub_14019A0E0(__int64 a1)
 {
-  int v1; // eax
-  int v3; // [rsp+30h] [rbp-18h]
+  int v1;
+  int v3;
 
   v3 = 8 * *(_DWORD *)(a1 + 24);
   v1 = sub_14019A020(*(_DWORD *)(a1 + 32));
@@ -1880,21 +1623,17 @@ __int64            sub_14019A0E0(__int64 a1)
         + 8 * (v1 + 1));
 }
 
-// 14027E098: using guessed type _DWORD dword_14027E098[8];
-
 //----- (000000014019A1A0) ----------------------------------------------------
 __int64            sub_14019A1A0(unsigned int a1, unsigned int a2)
 {
   return a1 / a2;
 }
 
-
 //----- (000000014019A1C0) ----------------------------------------------------
 __int64            sub_14019A1C0(int a1, int a2)
 {
   return (unsigned int)(a1 / a2);
 }
-
 
 //----- (000000014019A1E0) ----------------------------------------------------
 __int64            sub_14019A1E0(__int64 a1, __int64 a2, int a3)
@@ -1914,12 +1653,11 @@ __int64            sub_14019A1E0(__int64 a1, __int64 a2, int a3)
   return a1;
 }
 
-
 //----- (000000014019A290) ----------------------------------------------------
 _DWORD *           sub_14019A290(_DWORD *a1, int a2, int a3, unsigned int a4)
 {
-  int v4; // eax
-  int v6; // [rsp+20h] [rbp-18h]
+  int v4;
+  int v6;
 
   v6 = sub_14019A1A0(a1[8], a4);
   if ( a2 )
@@ -1935,12 +1673,11 @@ _DWORD *           sub_14019A290(_DWORD *a1, int a2, int a3, unsigned int a4)
   return sub_1401B6120(a1);
 }
 
-
 //----- (000000014019A360) ----------------------------------------------------
 _DWORD *           sub_14019A360(_DWORD *a1, int a2, int a3, char a4)
 {
-  int v4; // eax
-  int v6; // [rsp+20h] [rbp-28h]
+  int v4;
+  int v6;
 
   v6 = a1[8] >> a4;
   if ( a2 )
@@ -1956,14 +1693,13 @@ _DWORD *           sub_14019A360(_DWORD *a1, int a2, int a3, char a4)
   return sub_1401B6120(a1);
 }
 
-
 //----- (000000014019A450) ----------------------------------------------------
 _DWORD *           sub_14019A450(_DWORD *a1, int a2, char a3)
 {
-  unsigned int v4; // [rsp+20h] [rbp-18h]
-  unsigned int v5; // [rsp+20h] [rbp-18h]
-  unsigned int v6; // [rsp+24h] [rbp-14h]
-  unsigned int v7; // [rsp+28h] [rbp-10h]
+  unsigned int v4;
+  unsigned int v5;
+  unsigned int v6;
+  unsigned int v7;
 
   v4 = a1[8];
   v6 = v4 >> a3;
@@ -1981,12 +1717,11 @@ _DWORD *           sub_14019A450(_DWORD *a1, int a2, char a3)
   return sub_1401B6120(a1);
 }
 
-
 //----- (000000014019A4F0) ----------------------------------------------------
 _DWORD *           sub_14019A4F0(_DWORD *a1, int a2, __int64 a3, char a4)
 {
-  int v4; // eax
-  int v6; // [rsp+20h] [rbp-18h]
+  int v4;
+  int v6;
 
   v6 = a1[8] >> a4;
   if ( a2 <= 0 )
@@ -2002,13 +1737,12 @@ _DWORD *           sub_14019A4F0(_DWORD *a1, int a2, __int64 a3, char a4)
   return sub_1401B6120(a1);
 }
 
-
 //----- (000000014019A5E0) ----------------------------------------------------
 _DWORD *           sub_14019A5E0(_DWORD *a1, unsigned int a2, int a3)
 {
-  int v4; // [rsp+20h] [rbp-18h]
-  int v5; // [rsp+20h] [rbp-18h]
-  unsigned int v8; // [rsp+50h] [rbp+18h]
+  int v4;
+  int v5;
+  unsigned int v8;
 
   v8 = a3 - 1;
   v4 = sub_14019A020(a3 - 1) + 1;
@@ -2019,13 +1753,12 @@ _DWORD *           sub_14019A5E0(_DWORD *a1, unsigned int a2, int a3)
   return (_DWORD *)sub_14019A6D0(a1, ((1 << v5) - 1) & a2, v5);
 }
 
-
 //----- (000000014019A6D0) ----------------------------------------------------
 __int64            sub_14019A6D0(_DWORD *a1, int a2, int a3)
 {
-  __int64 result; // rax
-  int v4; // [rsp+20h] [rbp-18h]
-  unsigned int v5; // [rsp+24h] [rbp-14h]
+  __int64 result;
+  int v4;
+  unsigned int v5;
 
   v5 = a1[4];
   v4 = a1[5];
@@ -2046,13 +1779,12 @@ __int64            sub_14019A6D0(_DWORD *a1, int a2, int a3)
   return result;
 }
 
-
 //----- (000000014019A7C0) ----------------------------------------------------
 unsigned __int8 **           sub_14019A7C0(unsigned __int8 **a1, int a2, char a3)
 {
-  unsigned __int8 **result; // rax
-  char v4; // [rsp+0h] [rbp-18h]
-  int v5; // [rsp+4h] [rbp-14h]
+  unsigned __int8 **result;
+  char v4;
+  int v5;
 
   v4 = 8 - a3;
   v5 = ((1 << a3) - 1) << (8 - a3);
@@ -2082,11 +1814,10 @@ unsigned __int8 **           sub_14019A7C0(unsigned __int8 **a1, int a2, char a3
   return result;
 }
 
-
 //----- (000000014019A8F0) ----------------------------------------------------
 __int64            sub_14019A8F0(__int64 a1, unsigned int a2)
 {
-  sub_1401FC920(
+  crt_memcpy(
     (__m128i *)(a2 + *(_QWORD *)a1 - *(unsigned int *)(a1 + 12)),
     (     __m128i *)(*(unsigned int *)(a1 + 8) + *(_QWORD *)a1 - *(unsigned int *)(a1 + 12)),
     *(unsigned int *)(a1 + 12));
@@ -2094,18 +1825,17 @@ __int64            sub_14019A8F0(__int64 a1, unsigned int a2)
   return a1;
 }
 
-
 //----- (000000014019A9C0) ----------------------------------------------------
 __int64            sub_14019A9C0(_DWORD *a1)
 {
-  int v1; // eax
-  __int64 result; // rax
-  int v3; // [rsp+20h] [rbp-28h]
-  int v4; // [rsp+20h] [rbp-28h]
-  unsigned int v5; // [rsp+24h] [rbp-24h]
-  unsigned int v6; // [rsp+28h] [rbp-20h]
-  unsigned int v7; // [rsp+2Ch] [rbp-1Ch]
-  int i; // [rsp+30h] [rbp-18h]
+  int v1;
+  __int64 result;
+  int v3;
+  int v4;
+  unsigned int v5;
+  unsigned int v6;
+  unsigned int v7;
+  int i;
 
   v1 = sub_14019A020(a1[8]);
   v3 = 32 - (v1 + 1);
@@ -2133,7 +1863,7 @@ __int64            sub_14019A9C0(_DWORD *a1)
   result = (__int64)a1;
   if ( !a1[12] )
   {
-    result = (__int64)sub_1401FCD30(
+    result = (__int64)crt_memset(
                         (void *)(uintptr_t)((_WORD *)(*(_QWORD *)a1 + (unsigned int)a1[7])),
                         0,
                         (unsigned int)(a1[2] - a1[7] - a1[3]));
@@ -2161,7 +1891,6 @@ __int64            sub_14019A9C0(_DWORD *a1)
   return result;
 }
 
-
 //----- (000000014019AC50) ----------------------------------------------------
 _DWORD *           sub_14019AC50(_DWORD *a1, __int64 a2, int a3)
 {
@@ -2179,34 +1908,31 @@ _DWORD *           sub_14019AC50(_DWORD *a1, __int64 a2, int a3)
   return sub_1401B5EA0(a1);
 }
 
-
 //----- (000000014019AD20) ----------------------------------------------------
 __int64            sub_14019AD20(unsigned int *a1, unsigned int a2)
 {
-  unsigned int v3; // [rsp+20h] [rbp-18h]
+  unsigned int v3;
 
   a1[10] = sub_14019A1A0(a1[8], a2);
   v3 = a1[9] / a1[10];
   return a2 - (v3 + (a2 < v3 + 1 ? a2 - (v3 + 1) : 0) + 1);
 }
 
-
 //----- (000000014019ADB0) ----------------------------------------------------
 __int64            sub_14019ADB0(_DWORD *a1, char a2)
 {
-  int v3; // [rsp+0h] [rbp-28h]
+  int v3;
 
   a1[10] = a1[8] >> a2;
   v3 = a1[9] / a1[10];
   return (1 << a2) - (v3 + (1 << a2 < (unsigned int)(v3 + 1) ? (1 << a2) - (v3 + 1) : 0) + 1);
 }
 
-
 //----- (000000014019AE70) ----------------------------------------------------
 _DWORD *           sub_14019AE70(_DWORD *a1, int a2, int a3, int a4)
 {
-  int v5; // [rsp+20h] [rbp-18h]
-  int v6; // [rsp+24h] [rbp-14h]
+  int v5;
+  int v6;
 
   v5 = (a4 - a3) * a1[10];
   a1[9] -= v5;
@@ -2218,15 +1944,14 @@ _DWORD *           sub_14019AE70(_DWORD *a1, int a2, int a3, int a4)
   return sub_1401B5EA0(a1);
 }
 
-
 //----- (000000014019AF20) ----------------------------------------------------
 _BOOL8            sub_14019AF20(_DWORD *a1, char a2)
 {
-  unsigned int v3; // [rsp+20h] [rbp-28h]
-  BOOL v4; // [rsp+24h] [rbp-24h]
-  unsigned int v5; // [rsp+2Ch] [rbp-1Ch]
-  unsigned int v6; // [rsp+30h] [rbp-18h]
-  unsigned int v7; // [rsp+34h] [rbp-14h]
+  unsigned int v3;
+  BOOL v4;
+  unsigned int v5;
+  unsigned int v6;
+  unsigned int v7;
 
   v6 = a1[8];
   v5 = a1[9];
@@ -2246,15 +1971,14 @@ _BOOL8            sub_14019AF20(_DWORD *a1, char a2)
   return v4;
 }
 
-
 //----- (000000014019AFE0) ----------------------------------------------------
 __int64            sub_14019AFE0(_DWORD *a1, __int64 a2, char a3)
 {
-  unsigned int v4; // [rsp+20h] [rbp-28h]
-  unsigned int v5; // [rsp+24h] [rbp-24h]
-  unsigned int v6; // [rsp+28h] [rbp-20h]
-  unsigned int v7; // [rsp+2Ch] [rbp-1Ch]
-  unsigned int v8; // [rsp+30h] [rbp-18h]
+  unsigned int v4;
+  unsigned int v5;
+  unsigned int v6;
+  unsigned int v7;
+  unsigned int v8;
 
   v4 = a1[8];
   v6 = a1[9];
@@ -2272,17 +1996,16 @@ __int64            sub_14019AFE0(_DWORD *a1, __int64 a2, char a3)
   return v5;
 }
 
-
 //----- (000000014019B0A0) ----------------------------------------------------
 __int64            sub_14019B0A0(unsigned int *a1, int a2)
 {
-  int v3; // [rsp+20h] [rbp-28h]
-  unsigned int v4; // [rsp+20h] [rbp-28h]
-  int v5; // [rsp+24h] [rbp-24h]
-  unsigned int v6; // [rsp+24h] [rbp-24h]
-  unsigned int v7; // [rsp+2Ch] [rbp-1Ch]
-  unsigned int v9; // [rsp+58h] [rbp+10h]
-  unsigned int v10; // [rsp+58h] [rbp+10h]
+  int v3;
+  unsigned int v4;
+  int v5;
+  unsigned int v6;
+  unsigned int v7;
+  unsigned int v9;
+  unsigned int v10;
 
   v9 = a2 - 1;
   v5 = sub_14019A020(a2 - 1) + 1;
@@ -2311,12 +2034,11 @@ __int64            sub_14019B0A0(unsigned int *a1, int a2)
   }
 }
 
-
 //----- (000000014019B1C0) ----------------------------------------------------
 __int64            sub_14019B1C0(_DWORD *a1, unsigned int a2)
 {
-  int v3; // [rsp+20h] [rbp-18h]
-  unsigned int v4; // [rsp+24h] [rbp-14h]
+  int v3;
+  unsigned int v4;
 
   v4 = a1[4];
   v3 = a1[5];
@@ -2335,269 +2057,267 @@ __int64            sub_14019B1C0(_DWORD *a1, unsigned int a2)
   return ((1 << a2) - 1) & v4;
 }
 
-
 //----- (000000014019B2A0) ----------------------------------------------------
 __int64            sub_14019B2A0(int a1)
 {
-  __int64 v2; // [rsp+20h] [rbp-18h]
+  __int64 v2;
 
   v2 = sub_1401990A0(48000, 960, nullptr);
   return sub_1401AE360(v2, a1);
 }
 
-
 //----- (000000014019B2E0) ----------------------------------------------------
 int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int a5, unsigned int *a6)
 {
-  unsigned __int64 v6; // rcx
-  void *v7; // rsp
-  float v8; // xmm0_4
-  int v9; // eax
-  int v10; // eax
-  double v11; // xmm0_8
-  int v12; // eax
-  unsigned __int64 v13; // rcx
-  void *v14; // rsp
-  unsigned __int64 v15; // rcx
-  void *v16; // rsp
-  unsigned __int64 v17; // rcx
-  void *v18; // rsp
-  unsigned __int64 v19; // rcx
-  void *v20; // rsp
-  unsigned __int64 v21; // rcx
-  void *v22; // rsp
-  int v23; // eax
-  int v24; // eax
-  unsigned __int64 v25; // rcx
-  void *v26; // rsp
-  unsigned __int64 v27; // rcx
-  void *v28; // rsp
-  unsigned __int64 v29; // rcx
-  void *v30; // rsp
-  unsigned __int64 v31; // rcx
-  void *v32; // rsp
-  unsigned __int64 v33; // rcx
-  void *v34; // rsp
-  unsigned __int64 v35; // rcx
-  void *v36; // rsp
-  float v37; // xmm0_4
-  int v38; // eax
-  unsigned __int64 v39; // rcx
-  void *v40; // rsp
-  unsigned __int64 v41; // rcx
-  void *v42; // rsp
-  unsigned __int64 v43; // rcx
-  void *v44; // rsp
-  unsigned __int64 v45; // rcx
-  void *v46; // rsp
-  int v47; // eax
-  unsigned __int64 v48; // rcx
-  void *v49; // rsp
-  int v50; // eax
-  int j; // [rsp+C0h] [rbp+0h] BYREF
-  int v53; // [rsp+C4h] [rbp+4h]
-  int v54; // [rsp+C8h] [rbp+8h]
-  int k; // [rsp+CCh] [rbp+Ch]
-  int i; // [rsp+D0h] [rbp+10h]
-  int v57; // [rsp+D4h] [rbp+14h]
-  int v58; // [rsp+D8h] [rbp+18h]
-  int v59; // [rsp+DCh] [rbp+1Ch]
-  __int64 v60; // [rsp+E0h] [rbp+20h]
-  int v61; // [rsp+E8h] [rbp+28h]
-  int v62; // [rsp+ECh] [rbp+2Ch]
-  int v63; // [rsp+F0h] [rbp+30h]
-  int v64; // [rsp+F4h] [rbp+34h]
-  int v65; // [rsp+F8h] [rbp+38h]
-  float v66; // [rsp+FCh] [rbp+3Ch]
-  float v67; // [rsp+100h] [rbp+40h]
-  int v68; // [rsp+104h] [rbp+44h]
-  int v69; // [rsp+108h] [rbp+48h]
-  BOOL v70; // [rsp+10Ch] [rbp+4Ch]
-  signed int v71; // [rsp+110h] [rbp+50h]
-  int v72; // [rsp+114h] [rbp+54h]
-  int v73; // [rsp+118h] [rbp+58h]
-  int v74; // [rsp+11Ch] [rbp+5Ch]
-  int v75; // [rsp+120h] [rbp+60h] BYREF
-  int v76; // [rsp+124h] [rbp+64h]
-  int v77; // [rsp+128h] [rbp+68h]
-  float v78; // [rsp+12Ch] [rbp+6Ch]
-  float v79; // [rsp+130h] [rbp+70h]
-  BOOL v80; // [rsp+134h] [rbp+74h]
-  __m128i *v81; // [rsp+138h] [rbp+78h]
-  float *v82; // [rsp+140h] [rbp+80h]
-  float v83; // [rsp+148h] [rbp+88h]
-  float v84; // [rsp+14Ch] [rbp+8Ch] BYREF
-  int v85; // [rsp+150h] [rbp+90h]
-       __m128i *v86; // [rsp+158h] [rbp+98h]
-  int v87; // [rsp+160h] [rbp+A0h]
-  int v88; // [rsp+164h] [rbp+A4h]
-  int v89; // [rsp+168h] [rbp+A8h]
-  int v90; // [rsp+16Ch] [rbp+ACh]
-  int v91; // [rsp+170h] [rbp+B0h]
-  int v92; // [rsp+174h] [rbp+B4h]
-  int v93; // [rsp+178h] [rbp+B8h]
-  float v94; // [rsp+17Ch] [rbp+BCh]
-  float v95; // [rsp+180h] [rbp+C0h]
-  float v96; // [rsp+184h] [rbp+C4h]
-  int v97; // [rsp+188h] [rbp+C8h]
-  __m128i *v98; // [rsp+190h] [rbp+D0h]
-  int n; // [rsp+198h] [rbp+D8h]
-  int v100; // [rsp+19Ch] [rbp+DCh]
-  int v101; // [rsp+1A0h] [rbp+E0h]
-  int v102; // [rsp+1A4h] [rbp+E4h]
-  int v103; // [rsp+1A8h] [rbp+E8h]
-  int v104; // [rsp+1ACh] [rbp+ECh]
-  int v105; // [rsp+1B0h] [rbp+F0h]
-  int m; // [rsp+1B4h] [rbp+F4h]
-  float v107; // [rsp+1B8h] [rbp+F8h]
-  int v108; // [rsp+1BCh] [rbp+FCh]
-  __int64 v109; // [rsp+1C0h] [rbp+100h]
-  __m128i *v110; // [rsp+1C8h] [rbp+108h]
-  int *v111; // [rsp+1D0h] [rbp+110h]
-  int v112; // [rsp+1D8h] [rbp+118h]
-  unsigned int v113; // [rsp+1DCh] [rbp+11Ch]
-  int v114; // [rsp+1E0h] [rbp+120h]
-  int v115; // [rsp+1E4h] [rbp+124h]
-  int v116; // [rsp+1E8h] [rbp+128h] BYREF
-  int v117; // [rsp+1ECh] [rbp+12Ch]
-  int v118; // [rsp+1F0h] [rbp+130h]
-  BOOL v119; // [rsp+1F4h] [rbp+134h] BYREF
-  int v120; // [rsp+1F8h] [rbp+138h]
-  float v121; // [rsp+1FCh] [rbp+13Ch] BYREF
-  int v122; // [rsp+200h] [rbp+140h]
-  int *v123; // [rsp+208h] [rbp+148h]
-  int *p_j; // [rsp+210h] [rbp+150h]
-  int *v125; // [rsp+218h] [rbp+158h]
-  __m128i *v126; // [rsp+220h] [rbp+160h]
-  int *v127; // [rsp+228h] [rbp+168h]
-  int v128; // [rsp+230h] [rbp+170h]
-  int v129; // [rsp+234h] [rbp+174h]
-  int v130; // [rsp+238h] [rbp+178h]
-  int v131; // [rsp+23Ch] [rbp+17Ch]
-  int v132; // [rsp+240h] [rbp+180h]
-  float v133; // [rsp+244h] [rbp+184h]
-  float v134; // [rsp+248h] [rbp+188h]
-  BOOL v135; // [rsp+24Ch] [rbp+18Ch]
-  signed int v136; // [rsp+250h] [rbp+190h]
-  BOOL v137; // [rsp+254h] [rbp+194h]
-  BOOL v138; // [rsp+258h] [rbp+198h]
-  BOOL v139; // [rsp+25Ch] [rbp+19Ch]
-  BOOL v140; // [rsp+260h] [rbp+1A0h]
-  BOOL v141; // [rsp+264h] [rbp+1A4h]
-  float v142; // [rsp+268h] [rbp+1A8h]
-  int v143; // [rsp+26Ch] [rbp+1ACh]
-  int v144; // [rsp+270h] [rbp+1B0h]
-  float v145; // [rsp+274h] [rbp+1B4h]
-  int v146; // [rsp+278h] [rbp+1B8h]
-  float v147; // [rsp+27Ch] [rbp+1BCh]
-  float v148; // [rsp+280h] [rbp+1C0h]
-  int v149; // [rsp+284h] [rbp+1C4h]
-  int v150; // [rsp+288h] [rbp+1C8h]
-  float v151; // [rsp+28Ch] [rbp+1CCh]
-  float v152; // [rsp+290h] [rbp+1D0h]
-  float v153; // [rsp+294h] [rbp+1D4h]
-  float v154; // [rsp+298h] [rbp+1D8h]
-  float v155; // [rsp+29Ch] [rbp+1DCh]
-  float v156; // [rsp+2A0h] [rbp+1E0h]
-  float v157; // [rsp+2A4h] [rbp+1E4h]
-  int v158; // [rsp+2A8h] [rbp+1E8h]
-  float v159; // [rsp+2ACh] [rbp+1ECh]
-  BOOL v160; // [rsp+2B0h] [rbp+1F0h]
-  BOOL v161; // [rsp+2B4h] [rbp+1F4h]
-  int v162; // [rsp+2B8h] [rbp+1F8h]
-  int v163; // [rsp+2BCh] [rbp+1FCh] BYREF
-  BOOL v164; // [rsp+2C0h] [rbp+200h]
-  int v165; // [rsp+2C4h] [rbp+204h]
-  BOOL v166; // [rsp+2C8h] [rbp+208h]
-  int v167; // [rsp+2CCh] [rbp+20Ch]
-  int v168; // [rsp+2D0h] [rbp+210h]
-  int v169; // [rsp+2D4h] [rbp+214h]
-  int v170; // [rsp+2D8h] [rbp+218h]
-  BOOL v171; // [rsp+2DCh] [rbp+21Ch]
-  BOOL v172; // [rsp+2E0h] [rbp+220h]
-  int v173; // [rsp+2E4h] [rbp+224h]
-  int v174; // [rsp+2E8h] [rbp+228h]
-  int v175; // [rsp+2ECh] [rbp+22Ch]
-  int v176; // [rsp+2F0h] [rbp+230h]
-  int v177; // [rsp+2F4h] [rbp+234h]
-  float v178; // [rsp+2F8h] [rbp+238h]
-  int v179; // [rsp+2FCh] [rbp+23Ch]
-  int v180; // [rsp+300h] [rbp+240h]
-  float v181; // [rsp+304h] [rbp+244h]
-  BOOL v182; // [rsp+308h] [rbp+248h]
-  int v183; // [rsp+30Ch] [rbp+24Ch]
-  int v184; // [rsp+310h] [rbp+250h]
-  int v185; // [rsp+314h] [rbp+254h]
-  int v186; // [rsp+318h] [rbp+258h]
-  int v187; // [rsp+31Ch] [rbp+25Ch]
-  int v188; // [rsp+320h] [rbp+260h]
-  int v189; // [rsp+324h] [rbp+264h]
-  float v190; // [rsp+328h] [rbp+268h]
-  int v191; // [rsp+32Ch] [rbp+26Ch]
-  int v192; // [rsp+330h] [rbp+270h]
-  int v193; // [rsp+334h] [rbp+274h]
-  int v194; // [rsp+338h] [rbp+278h]
-  int v195; // [rsp+33Ch] [rbp+27Ch]
-  int v196; // [rsp+340h] [rbp+280h]
-  int v197; // [rsp+344h] [rbp+284h]
-  BOOL v198; // [rsp+348h] [rbp+288h]
-  BOOL v199; // [rsp+34Ch] [rbp+28Ch]
-  float v200; // [rsp+350h] [rbp+290h]
-  __int32 v201; // [rsp+354h] [rbp+294h]
-  int v202; // [rsp+358h] [rbp+298h]
-  __int32 v203; // [rsp+35Ch] [rbp+29Ch]
-  int v204; // [rsp+360h] [rbp+2A0h]
-  BOOL v205; // [rsp+364h] [rbp+2A4h]
-  int v206; // [rsp+368h] [rbp+2A8h]
-  int v207; // [rsp+36Ch] [rbp+2ACh]
-  BOOL v208; // [rsp+370h] [rbp+2B0h]
-  BOOL v209; // [rsp+374h] [rbp+2B4h]
-  int v210; // [rsp+378h] [rbp+2B8h]
-  BOOL v211; // [rsp+37Ch] [rbp+2BCh]
-  BOOL v212; // [rsp+380h] [rbp+2C0h]
-  int v213; // [rsp+384h] [rbp+2C4h]
-  int v214; // [rsp+388h] [rbp+2C8h]
-  int v215; // [rsp+38Ch] [rbp+2CCh]
-  int v216; // [rsp+390h] [rbp+2D0h]
-  int v217; // [rsp+394h] [rbp+2D4h]
-  int *v218; // [rsp+398h] [rbp+2D8h]
-  __m128i *v219; // [rsp+3A0h] [rbp+2E0h]
-  int v220[4]; // [rsp+3A8h] [rbp+2E8h] BYREF
-  int v221; // [rsp+3B8h] [rbp+2F8h]
-  signed int v222; // [rsp+3BCh] [rbp+2FCh]
-  unsigned int v223; // [rsp+3C0h] [rbp+300h] BYREF
-  int v224; // [rsp+3C4h] [rbp+304h]
-  int v225; // [rsp+3C8h] [rbp+308h]
-  float v226; // [rsp+3CCh] [rbp+30Ch]
-  int v227; // [rsp+3D0h] [rbp+310h]
-  int v228; // [rsp+3D4h] [rbp+314h]
-  int v229; // [rsp+3D8h] [rbp+318h]
-  BOOL v230; // [rsp+3DCh] [rbp+31Ch]
-  int v231[2]; // [rsp+3E0h] [rbp+320h] BYREF
-  int v232; // [rsp+3E8h] [rbp+328h]
-  float v233; // [rsp+3ECh] [rbp+32Ch]
-  BOOL v234; // [rsp+3F0h] [rbp+330h]
-  int v235; // [rsp+3F4h] [rbp+334h]
-  int v236; // [rsp+3F8h] [rbp+338h]
-  int v237; // [rsp+3FCh] [rbp+33Ch]
-  float v238; // [rsp+400h] [rbp+340h]
-  int *v239; // [rsp+408h] [rbp+348h]
-  int *v240; // [rsp+410h] [rbp+350h]
-  __int16 *v241; // [rsp+418h] [rbp+358h]
-  int *v242; // [rsp+420h] [rbp+360h]
-  int *v243; // [rsp+428h] [rbp+368h]
-  int *v244; // [rsp+430h] [rbp+370h]
-  int *v245; // [rsp+438h] [rbp+378h]
-  int *v246; // [rsp+440h] [rbp+380h]
-  __int64 v247; // [rsp+448h] [rbp+388h]
-  __int64 v248; // [rsp+450h] [rbp+390h]
-  __int64 v249; // [rsp+458h] [rbp+398h]
-  __int64 v250; // [rsp+460h] [rbp+3A0h]
-  int *v251; // [rsp+468h] [rbp+3A8h]
-  _BYTE v252[56]; // [rsp+470h] [rbp+3B0h] BYREF
-  __int64 v253; // [rsp+4A8h] [rbp+3E8h]
-  int v256; // [rsp+4D0h] [rbp+410h]
-  signed int v258; // [rsp+4E0h] [rbp+420h]
+  unsigned __int64 v6;
+  void *v7;
+  float v8;
+  int v9;
+  int v10;
+  double v11;
+  int v12;
+  unsigned __int64 v13;
+  void *v14;
+  unsigned __int64 v15;
+  void *v16;
+  unsigned __int64 v17;
+  void *v18;
+  unsigned __int64 v19;
+  void *v20;
+  unsigned __int64 v21;
+  void *v22;
+  int v23;
+  int v24;
+  unsigned __int64 v25;
+  void *v26;
+  unsigned __int64 v27;
+  void *v28;
+  unsigned __int64 v29;
+  void *v30;
+  unsigned __int64 v31;
+  void *v32;
+  unsigned __int64 v33;
+  void *v34;
+  unsigned __int64 v35;
+  void *v36;
+  float v37;
+  int v38;
+  unsigned __int64 v39;
+  void *v40;
+  unsigned __int64 v41;
+  void *v42;
+  unsigned __int64 v43;
+  void *v44;
+  unsigned __int64 v45;
+  void *v46;
+  int v47;
+  unsigned __int64 v48;
+  void *v49;
+  int v50;
+  int j;
+  int v53;
+  int v54;
+  int k;
+  int i;
+  int v57;
+  int v58;
+  int v59;
+  __int64 v60;
+  int v61;
+  int v62;
+  int v63;
+  int v64;
+  int v65;
+  float v66;
+  float v67;
+  int v68;
+  int v69;
+  BOOL v70;
+  signed int v71;
+  int v72;
+  int v73;
+  int v74;
+  int v75;
+  int v76;
+  int v77;
+  float v78;
+  float v79;
+  BOOL v80;
+  __m128i *v81;
+  float *v82;
+  float v83;
+  float v84;
+  int v85;
+       __m128i *v86;
+  int v87;
+  int v88;
+  int v89;
+  int v90;
+  int v91;
+  int v92;
+  int v93;
+  float v94;
+  float v95;
+  float v96;
+  int v97;
+  __m128i *v98;
+  int n;
+  int v100;
+  int v101;
+  int v102;
+  int v103;
+  int v104;
+  int v105;
+  int m;
+  float v107;
+  int v108;
+  __int64 v109;
+  __m128i *v110;
+  int *v111;
+  int v112;
+  unsigned int v113;
+  int v114;
+  int v115;
+  int v116;
+  int v117;
+  int v118;
+  BOOL v119;
+  int v120;
+  float v121;
+  int v122;
+  int *v123;
+  int *p_j;
+  int *v125;
+  __m128i *v126;
+  int *v127;
+  int v128;
+  int v129;
+  int v130;
+  int v131;
+  int v132;
+  float v133;
+  float v134;
+  BOOL v135;
+  signed int v136;
+  BOOL v137;
+  BOOL v138;
+  BOOL v139;
+  BOOL v140;
+  BOOL v141;
+  float v142;
+  int v143;
+  int v144;
+  float v145;
+  int v146;
+  float v147;
+  float v148;
+  int v149;
+  int v150;
+  float v151;
+  float v152;
+  float v153;
+  float v154;
+  float v155;
+  float v156;
+  float v157;
+  int v158;
+  float v159;
+  BOOL v160;
+  BOOL v161;
+  int v162;
+  int v163;
+  BOOL v164;
+  int v165;
+  BOOL v166;
+  int v167;
+  int v168;
+  int v169;
+  int v170;
+  BOOL v171;
+  BOOL v172;
+  int v173;
+  int v174;
+  int v175;
+  int v176;
+  int v177;
+  float v178;
+  int v179;
+  int v180;
+  float v181;
+  BOOL v182;
+  int v183;
+  int v184;
+  int v185;
+  int v186;
+  int v187;
+  int v188;
+  int v189;
+  float v190;
+  int v191;
+  int v192;
+  int v193;
+  int v194;
+  int v195;
+  int v196;
+  int v197;
+  BOOL v198;
+  BOOL v199;
+  float v200;
+  __int32 v201;
+  int v202;
+  __int32 v203;
+  int v204;
+  BOOL v205;
+  int v206;
+  int v207;
+  BOOL v208;
+  BOOL v209;
+  int v210;
+  BOOL v211;
+  BOOL v212;
+  int v213;
+  int v214;
+  int v215;
+  int v216;
+  int v217;
+  int *v218;
+  __m128i *v219;
+  int v220[4];
+  int v221;
+  signed int v222;
+  unsigned int v223;
+  int v224;
+  int v225;
+  float v226;
+  int v227;
+  int v228;
+  int v229;
+  BOOL v230;
+  int v231[2];
+  int v232;
+  float v233;
+  BOOL v234;
+  int v235;
+  int v236;
+  int v237;
+  float v238;
+  int *v239;
+  int *v240;
+  __int16 *v241;
+  int *v242;
+  int *v243;
+  int *v244;
+  int *v245;
+  int *v246;
+  __int64 v247;
+  __int64 v248;
+  __int64 v249;
+  __int64 v250;
+  int *v251;
+  _BYTE v252[56];
+  __int64 v253;
+  int v256;
+  signed int v258;
   /* v258 shares the original +420 output-count slot with v258. */
 
   v74 = 0;
@@ -2843,7 +2563,7 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
       v230 = v139;
       v104 = *(_DWORD *)(a1 + 104);
       v165 = sub_1401B2750((__int64 *)a1, (__int64)v127, v249, v59, v69, v104, &v75, &v121, v231, v139, v58, a1 + 124);
-      if ( v121 > 0.4000000059604645 || (LODWORD(v11) = *(_DWORD *)(a1 + 112), *(float *)&v11 > 0.4000000059604645) )
+      if ( v121 > 0.40000001 || (LODWORD(v11) = *(_DWORD *)(a1 + 112), *(float *)&v11 > 0.40000001) )
       {
         if ( !*(_DWORD *)(a1 + 124) || (v11 = *(float *)(a1 + 128), v11 > 0.3) )
         {
@@ -2927,12 +2647,12 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
       {
         for ( j = 2; j < v57; ++j )
         {
-          if ( (float)(9.999999747378752e-05 * *v82) <= v82[j] )
-            v142 = 9.999999747378752e-05 * *v82;
+          if ( (float)(0.000099999997 * *v82) <= v82[j] )
+            v142 = 0.000099999997 * *v82;
           else
             v142 = v82[j];
           v82[j] = v142;
-          if ( v82[j] <= 1.0000000036274937e-15 )
+          if ( v82[j] <= 1.0e-15 )
             v143 = 646978941;
           else
             v143 = LODWORD(v82[j]);
@@ -2946,7 +2666,7 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
         v21 = 0xFFFFFFFFFFFFFF0LL;
       v22 = alloca(v21 & 0xFFFFFFFFFFFFFFF0uLL);
       p_j = (int *)v22;
-      sub_1401FCD30(p_j, 0, 4LL * v57);
+      crt_memset(p_j, 0, 4LL * v57);
       if ( !v70 && *(_QWORD *)(a1 + 240) && !*(_DWORD *)(a1 + 68) )
       {
         v67 = 0.0;
@@ -2986,20 +2706,20 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
           }
         }
         v67 = v67 / (float)v114;
-        v67 = v67 + 0.20000000298023224;
+        v67 = v67 + 0.2;
         v66 = (float)(v66 * 6.0) / (float)(v77 * (v77 + 1) * (v77 - 1) * v53);
         v66 = 0.5 * v66;
-        if ( v66 >= 0.03099999949336052 )
-          v148 = 0.03099999949336052;
+        if ( v66 >= 0.030999999 )
+          v148 = 0.030999999;
         else
           v148 = v66;
-        if ( v148 <= -0.03099999949336052 )
+        if ( v148 <= -0.030999999 )
         {
-          *(float *)&v150 = -0.03099999949336052;
+          *(float *)&v150 = -0.030999999;
         }
         else
         {
-          if ( v66 >= 0.03099999949336052 )
+          if ( v66 >= 0.030999999 )
             v149 = 1023275958;
           else
             v149 = LODWORD(v66);
@@ -3057,10 +2777,10 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
           {
             v67 = 0.0;
             v66 = 0.0;
-            sub_1401FCD30((void *)(uintptr_t)(p_j), 0, 4LL * v77);
+            crt_memset((void *)(uintptr_t)(p_j), 0, 4LL * v77);
           }
         }
-        v67 = v67 + 0.20000000298023224;
+        v67 = v67 + 0.2;
         v178 = 64.0 * v66;
         *(float *)&v11 = v67;
         v181 = v67;
@@ -3110,11 +2830,11 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
           v159 = 3.0;
         }
         v79 = v159;
-        *(float *)&v11 = *(float *)(a1 + 248) + (float)(0.019999999552965164 * v159);
+        *(float *)&v11 = *(float *)(a1 + 248) + (float)(0.02 * v159);
         *(_DWORD *)(a1 + 248) = LODWORD(v11);
       }
       if ( !v160 )
-        sub_1401FC920(v110, v86, 4LL * v54 * v53);
+        crt_memcpy(v110, v86, 4LL * v54 * v53);
       if ( i > 0 )
       {
         v23 = sub_14019A0A0((__int64)a6);
@@ -3133,7 +2853,7 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
           for ( j = 0; j < v54 * v53; ++j )
             *(float *)&SR_VEC_PTR_LANES(128, v110, i32)[j] = *(float *)&SR_VEC_PTR_LANES(128, v110, i32)[j] + (float)(0.5 * (float)i);
           LODWORD(v11) = 1045220557;
-          v84 = 0.20000000298023224;
+          v84 = 0.2;
         }
       }
       if ( i > 0 )
@@ -3472,7 +3192,7 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
             v63 -= 144 >> (3 - i);
           }
           v63 += (int)(float)((float)(v84 - 0.25) * 400.0);
-          if ( v84 > 0.699999988079071 )
+          if ( v84 > 0.69999999 )
           {
             if ( v63 <= 400 )
               v184 = 400;
@@ -3534,7 +3254,7 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
           v189 = 0;
         }
         if ( *(int *)(a1 + 224) >= 970 )
-          v190 = 0.0010000000474974513;
+          v190 = 0.001;
         else
           v190 = 1.0 / (float)(++*(_DWORD *)(a1 + 224) + 20);
         if ( *(_DWORD *)(a1 + 56) )
@@ -3712,7 +3432,7 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
       v224 = 8 * v258;
       v50 = sub_14019A0A0((__int64)a6);
       sub_1401A7930(v60, v62, v57, (__int64)v81, (__int64)v126, (__int64)v240, (__int64)v246, v224 - v50, a6, v53);
-      sub_1401FCD30((void *)(uintptr_t)(v241), 0, 4LL * v59 * v54);
+      crt_memset((void *)(uintptr_t)(v241), 0, 4LL * v59 * v54);
       k = 0;
       do
       {
@@ -3748,7 +3468,7 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
       *(float *)(a1 + 112) = v121;
       *(_DWORD *)(a1 + 116) = v104;
       if ( v59 == 2 && v53 == 1 )
-        sub_1401FC920((__m128i *)((char *)v81 + 4 * v54), v81, 4LL * v54);
+        crt_memcpy((__m128i *)((char *)v81 + 4 * v54), v81, 4LL * v54);
       if ( v64 )
       {
         for ( j = 0; j < v54 * v59; ++j )
@@ -3762,8 +3482,8 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
       }
       else
       {
-        sub_1401FC920(v219, v98, 4LL * v54 * v59);
-        sub_1401FC920(v98, v81, 4LL * v54 * v59);
+        crt_memcpy(v219, v98, 4LL * v54 * v59);
+        crt_memcpy(v98, v81, 4LL * v54 * v59);
       }
       k = 0;
       do
@@ -3801,8 +3521,8 @@ int                sub_14019B2E0(__int64 a1, __int64 a2, int a3, __int64 a4, int
 //----- (000000014019F0E0) ----------------------------------------------------
 __int64            sub_14019F0E0(_DWORD *a1, int a2, unsigned int a3, int a4)
 {
-  __int64 v4; // rax
-  unsigned int v6; // [rsp+20h] [rbp-18h]
+  __int64 v4;
+  unsigned int v6;
 
   v4 = sub_1401990A0(48000, 960, nullptr);
   v6 = sub_1401AE3C0(a1, v4, a3, a4);
@@ -3812,22 +3532,20 @@ __int64            sub_14019F0E0(_DWORD *a1, int a2, unsigned int a3, int a4)
   return 0;
 }
 
-
 //----- (000000014019F150) ----------------------------------------------------
 __int64            sub_14019F150(int a1)
 {
-  __int64 v2; // [rsp+20h] [rbp-18h]
+  __int64 v2;
 
   v2 = sub_1401990A0(48000, 960, nullptr);
   return sub_1401B38C0(v2, a1);
 }
 
-
 //----- (000000014019F190) ----------------------------------------------------
 __int64            sub_14019F190(_DWORD *a1, int a2, unsigned int a3)
 {
-  __int64 v3; // rax
-  unsigned int v5; // [rsp+20h] [rbp-18h]
+  __int64 v3;
+  unsigned int v5;
 
   v3 = sub_1401990A0(48000, 960, nullptr);
   v5 = sub_1401B3920(a1, v3, a3);
@@ -3840,112 +3558,111 @@ __int64            sub_14019F190(_DWORD *a1, int a2, unsigned int a3)
     return 0xFFFFFFFFLL;
 }
 
-
 //----- (000000014019F210) ----------------------------------------------------
 __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, int a5, unsigned int *a6, int a7)
 {
-  unsigned __int64 v7; // rcx
-  void *v8; // rsp
-  unsigned __int64 v9; // rcx
-  void *v10; // rsp
-  unsigned __int64 v11; // rcx
-  void *v12; // rsp
-  unsigned __int64 v13; // rcx
-  void *v14; // rsp
-  int v15; // eax
-  unsigned __int64 v16; // rcx
-  void *v17; // rsp
-  unsigned __int64 v18; // rcx
-  void *v19; // rsp
-       __m128i *v20; // rcx
-  unsigned __int64 v21; // rcx
-  void *v22; // rsp
-  unsigned __int64 v23; // rcx
-  void *v24; // rsp
-  int v25; // eax
-  int v26; // eax
-  int j; // [rsp+C0h] [rbp+0h] BYREF
-  int k; // [rsp+C4h] [rbp+4h]
-  int v30; // [rsp+C8h] [rbp+8h]
-  int i; // [rsp+CCh] [rbp+Ch]
-  int v32; // [rsp+D0h] [rbp+10h]
-  int v33; // [rsp+D4h] [rbp+14h]
-  int v34; // [rsp+D8h] [rbp+18h]
-  __int64 v35; // [rsp+E0h] [rbp+20h]
-  void *Src; // [rsp+E8h] [rbp+28h]
-  int v37; // [rsp+F0h] [rbp+30h]
-  int v38; // [rsp+F4h] [rbp+34h]
-  int v39; // [rsp+F8h] [rbp+38h]
-  int v40; // [rsp+FCh] [rbp+3Ch]
-  int v41; // [rsp+100h] [rbp+40h]
-  BOOL v42; // [rsp+104h] [rbp+44h]
-  int v43; // [rsp+108h] [rbp+48h]
-  int v44; // [rsp+10Ch] [rbp+4Ch]
-  int v45; // [rsp+110h] [rbp+50h]
-  void *v46; // [rsp+118h] [rbp+58h]
-  int v47; // [rsp+120h] [rbp+60h]
-  int v48; // [rsp+124h] [rbp+64h]
-  int v49; // [rsp+128h] [rbp+68h]
-  int v50; // [rsp+12Ch] [rbp+6Ch]
-  int v51; // [rsp+130h] [rbp+70h]
-  int v52; // [rsp+134h] [rbp+74h]
-  float v53; // [rsp+138h] [rbp+78h]
-  int v54; // [rsp+13Ch] [rbp+7Ch]
-  int v55; // [rsp+140h] [rbp+80h]
-  float v56; // [rsp+144h] [rbp+84h]
-  void *v57; // [rsp+148h] [rbp+88h]
-  int v58; // [rsp+150h] [rbp+90h]
-  int v59; // [rsp+154h] [rbp+94h]
-  int v60; // [rsp+158h] [rbp+98h]
-  int v61; // [rsp+15Ch] [rbp+9Ch]
-  int v62; // [rsp+160h] [rbp+A0h]
-  int v63; // [rsp+164h] [rbp+A4h]
-  int v64; // [rsp+168h] [rbp+A8h]
-  int v65; // [rsp+16Ch] [rbp+ACh] BYREF
-  int v66; // [rsp+170h] [rbp+B0h] BYREF
-  int v67; // [rsp+174h] [rbp+B4h]
-  int v68; // [rsp+178h] [rbp+B8h]
-  int v69; // [rsp+17Ch] [rbp+BCh]
-  int v70; // [rsp+180h] [rbp+C0h]
-  int v71; // [rsp+184h] [rbp+C4h]
-  float v72; // [rsp+188h] [rbp+C8h]
-  int v73; // [rsp+18Ch] [rbp+CCh]
-  BOOL v74; // [rsp+190h] [rbp+D0h]
-  int v75; // [rsp+194h] [rbp+D4h]
-  int v76; // [rsp+198h] [rbp+D8h]
-  int v77; // [rsp+19Ch] [rbp+DCh]
-  int *v78; // [rsp+1A0h] [rbp+E0h]
-  int v79; // [rsp+1A8h] [rbp+E8h]
-  BOOL v80; // [rsp+1ACh] [rbp+ECh]
-  int v81; // [rsp+1B0h] [rbp+F0h]
-  int v82; // [rsp+1B4h] [rbp+F4h]
-  int v83; // [rsp+1B8h] [rbp+F8h]
-  int v84; // [rsp+1BCh] [rbp+FCh]
-  unsigned int v85; // [rsp+1C0h] [rbp+100h] BYREF
-  int v86; // [rsp+1C4h] [rbp+104h]
-  int v87; // [rsp+1C8h] [rbp+108h]
-  int v88; // [rsp+1CCh] [rbp+10Ch]
-  int v89; // [rsp+1D0h] [rbp+110h]
-  int v90; // [rsp+1D4h] [rbp+114h]
-  int *v91; // [rsp+1D8h] [rbp+118h]
-  int *v92; // [rsp+1E0h] [rbp+120h]
-  int *v93; // [rsp+1E8h] [rbp+128h]
-  char *v94; // [rsp+1F0h] [rbp+130h]
-  __int64 v95[2]; // [rsp+1F8h] [rbp+138h] BYREF
-  __int64 v96; // [rsp+208h] [rbp+148h]
-  int *v97; // [rsp+210h] [rbp+150h]
-  int *p_j; // [rsp+218h] [rbp+158h]
-  int *v99; // [rsp+220h] [rbp+160h]
-  int *v100; // [rsp+228h] [rbp+168h]
-  int *v101; // [rsp+230h] [rbp+170h]
-  void *v102[2]; // [rsp+238h] [rbp+178h]
-  char *v103; // [rsp+248h] [rbp+188h]
-  __int64 v104; // [rsp+250h] [rbp+190h]
-  __int64 v105; // [rsp+258h] [rbp+198h]
-  __m128i *v106; // [rsp+260h] [rbp+1A0h]
-  _DWORD v107[14]; // [rsp+268h] [rbp+1A8h] BYREF
-  __int64 v108; // [rsp+2A0h] [rbp+1E0h]
-  int v112; // [rsp+2E0h] [rbp+220h]
+  unsigned __int64 v7;
+  void *v8;
+  unsigned __int64 v9;
+  void *v10;
+  unsigned __int64 v11;
+  void *v12;
+  unsigned __int64 v13;
+  void *v14;
+  int v15;
+  unsigned __int64 v16;
+  void *v17;
+  unsigned __int64 v18;
+  void *v19;
+       __m128i *v20;
+  unsigned __int64 v21;
+  void *v22;
+  unsigned __int64 v23;
+  void *v24;
+  int v25;
+  int v26;
+  int j;
+  int k;
+  int v30;
+  int i;
+  int v32;
+  int v33;
+  int v34;
+  __int64 v35;
+  void *Src;
+  int v37;
+  int v38;
+  int v39;
+  int v40;
+  int v41;
+  BOOL v42;
+  int v43;
+  int v44;
+  int v45;
+  void *v46;
+  int v47;
+  int v48;
+  int v49;
+  int v50;
+  int v51;
+  int v52;
+  float v53;
+  int v54;
+  int v55;
+  float v56;
+  void *v57;
+  int v58;
+  int v59;
+  int v60;
+  int v61;
+  int v62;
+  int v63;
+  int v64;
+  int v65;
+  int v66;
+  int v67;
+  int v68;
+  int v69;
+  int v70;
+  int v71;
+  float v72;
+  int v73;
+  BOOL v74;
+  int v75;
+  int v76;
+  int v77;
+  int *v78;
+  int v79;
+  BOOL v80;
+  int v81;
+  int v82;
+  int v83;
+  int v84;
+  unsigned int v85;
+  int v86;
+  int v87;
+  int v88;
+  int v89;
+  int v90;
+  int *v91;
+  int *v92;
+  int *v93;
+  char *v94;
+  __int64 v95[2];
+  __int64 v96;
+  int *v97;
+  int *p_j;
+  int *v99;
+  int *v100;
+  int *v101;
+  void *v102[2];
+  char *v103;
+  __int64 v104;
+  __int64 v105;
+  __m128i *v106;
+  _DWORD v107[14];
+  __int64 v108;
+  int v112;
 
   v40 = *((_DWORD *)a1 + 3);
   v65 = 0;
@@ -4060,7 +3777,7 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
           if ( v7 <= 4LL * v30 )
             v7 = 0xFFFFFFFFFFFFFF0LL;
           v8 = alloca(v7 & 0xFFFFFFFFFFFFFFF0uLL);
-          p_j = &j;
+          p_j = v8;
           sub_1401B4530(v37, v39, v42, (__int64)&j, i, a6);
           v32 = sub_14019A0A0((__int64)a6);
           v67 = 2;
@@ -4070,13 +3787,13 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
           if ( v9 <= 4LL * v30 )
             v9 = 0xFFFFFFFFFFFFFF0LL;
           v10 = alloca(v9 & 0xFFFFFFFFFFFFFFF0uLL);
-          v91 = &j;
+          v91 = v10;
           sub_1401A12E0(v35, (__int64)&j, i, v33);
           v11 = 4LL * v30 + 15;
           if ( v11 <= 4LL * v30 )
             v11 = 0xFFFFFFFFFFFFFF0LL;
           v12 = alloca(v11 & 0xFFFFFFFFFFFFFFF0uLL);
-          v97 = &j;
+          v97 = v12;
           v47 = 6;
           v34 *= 8;
           v32 = sub_14019A0E0((__int64)a6);
@@ -4128,7 +3845,7 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
           if ( v13 <= 4LL * v30 )
             v13 = 0xFFFFFFFFFFFFFF0LL;
           v14 = alloca(v13 & 0xFFFFFFFFFFFFFFF0uLL);
-          v92 = &j;
+          v92 = v14;
           if ( v32 + 48 > v34 )
             v63 = 5;
           else
@@ -4147,12 +3864,12 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
           if ( v16 <= 4LL * v30 )
             v16 = 0xFFFFFFFFFFFFFF0LL;
           v17 = alloca(v16 & 0xFFFFFFFFFFFFFFF0uLL);
-          v93 = &j;
+          v93 = v17;
           v18 = 4LL * v30 + 15;
           if ( v18 <= 4LL * v30 )
             v18 = 0xFFFFFFFFFFFFFF0LL;
           v19 = alloca(v18 & 0xFFFFFFFFFFFFFFF0uLL);
-          v100 = &j;
+          v100 = v19;
           v84 = sub_1401A29F0(
                   v35,
                   v37,
@@ -4180,19 +3897,19 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
             v83 = 2048 - v38;
             v20 = (     __m128i *)((char *)v102[k] + 4 * v38);
             v105 = k;
-            sub_1401FC920((__m128i *)v102[k++], v20, 4LL * (v45 / 2 + 2048 - v38));
+            crt_memcpy((__m128i *)v102[k++], v20, 4LL * (v45 / 2 + 2048 - v38));
           }
           while ( k < v40 );
           v21 = v30 * v33 + 15LL;
           if ( v21 <= v30 * v33 )
             v21 = 0xFFFFFFFFFFFFFF0LL;
           v22 = alloca(v21 & 0xFFFFFFFFFFFFFFF0uLL);
-          v101 = &j;
+          v101 = v22;
           v23 = 4LL * v38 * v33 + 15;
           if ( v23 <= 4LL * v38 * v33 )
             v23 = 0xFFFFFFFFFFFFFF0LL;
           v24 = alloca(v23 & 0xFFFFFFFFFFFFFFF0uLL);
-          v78 = &j;
+          v78 = v24;
           if ( v33 == 2 )
             v99 = &v78[v38];
           else
@@ -4305,7 +4022,7 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
             *((_DWORD *)a1 + 21) = *((_DWORD *)a1 + 20);
           }
           if ( v33 == 1 )
-            sub_1401FC920((__m128i *)((char *)Src + 4 * v30), (     __m128i *)Src, 4LL * v30);
+            crt_memcpy((__m128i *)((char *)Src + 4 * v30), (     __m128i *)Src, 4LL * v30);
           if ( v42 )
           {
             for ( j = 0; j < 2 * v30; ++j )
@@ -4319,12 +4036,12 @@ __int64            sub_14019F210(__int64 *a1, __int64 a2, int a3, __int64 a4, in
           }
           else
           {
-            sub_1401FC920((__m128i *)v57, (     __m128i *)v46, 8LL * v30);
-            sub_1401FC920((__m128i *)v46, (     __m128i *)Src, 8LL * v30);
+            crt_memcpy((__m128i *)v57, (     __m128i *)v46, 8LL * v30);
+            crt_memcpy((__m128i *)v46, (     __m128i *)Src, 8LL * v30);
             if ( *((int *)a1 + 14) >= 10 )
               v56 = 1.0;
             else
-              v56 = (float)v55 * 0.0010000000474974513;
+              v56 = (float)v55 * 0.001;
             for ( j = 0; j < 2 * v30; ++j )
             {
               if ( *((float *)Src + j) <= (float)(*(float *)&v94[4 * j] + v56) )

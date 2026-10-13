@@ -39,8 +39,6 @@ void world_break_blocks(const int32_t voxel_min[3], const int32_t voxel_max[3]);
     (&SR_GLOBAL(uint8_t, 0x15ADA9288ULL + WORLD_LEVEL_LAYER_STRIDE * (uint64_t)(int64_t)(layer)))
 #define world_level_cells(layer, slot) \
     (&SR_GLOBAL(int32_t, 0x15ADA97B0ULL + WORLD_LEVEL_LAYER_STRIDE * (uint64_t)(int64_t)(layer) + 0x804ULL * (uint64_t)(int64_t)(slot)))
-#define world_block_record_unknown_8(record) (&SR_GLOBAL(uint32_t, 0x154161248ULL + 0x6C48ULL * (uint64_t)(int64_t)(record)))
-#define world_block_record_layout(record) (&SR_GLOBAL(uint32_t, 0x154164248ULL + 0x6C48ULL * (uint64_t)(int64_t)(record)))
 #define world_block_record_ids(record) (&SR_GLOBAL(uint32_t, 0x154166248ULL + 0x6C48ULL * (uint64_t)(int64_t)(record)))
 #define world_block_record_gone(record) (&SR_GLOBAL(uint32_t, 0x154166A48ULL + 0x6C48ULL * (uint64_t)(int64_t)(record)))
 
@@ -51,238 +49,6 @@ uint32_t world_block_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
 /* The gone-parts mask of the block at voxel x, y, z (0 where
    world_block_at() gives 0). 0x1400169B0 */
 uint32_t world_block_gone_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-
-/* The entry of the block record's first table (0x2000 bytes before the ids
-   world_block_at() reads) at voxel x, y, z, 0 where world_block_at() gives
-   0. An entry whose top bits are 110 marks a voxel covered by a larger
-   block: its low byte is the x distance back to the voxel holding it, the
-   next byte the z distance, the third the y distance. 0x140016450 */
-uint32_t world_block_layout_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-
-/* The entry of the block record's table at +8 (0x3000 bytes before the
-   layout table) at voxel x, y, z, 0 where world_block_at() gives 0.
-   0x1400129D0 */
-uint32_t world_block_unknown_8_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-
-/* world_block_layout_at(), with a covered voxel followed back to the voxel
-   holding its block (once). 0x140016590 */
-uint32_t world_block_resolved_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-
-/* ---- changing voxels (world_block_edit.c) ---------------------------------- */
-
-/* Takes the first free of a layer's 512 chunk slots for chunk cx, cy, cz,
-   fills its cells with -1 and returns it (-1: out of range or none free).
-   0x140010020 */
-int world_chunk_allocate(uint32_t layer, int32_t cx, int32_t cy, int32_t cz);
-
-/* Takes the first free of the 4096 block records for the 8-voxel cell
-   x8, y8, z8 of chunk slot `slot`: enters it in the slot, clears its
-   tables (+8, +0x808, +0x3008, +0x4808, +0x5008), counts it in the layer
-   and marks its four meshes absent. -1: out of range or none free.
-   0x140012490 */
-int world_block_record_allocate(int layer, int slot, int32_t x8, int32_t y8, int32_t z8);
-
-/* Marks the record holding voxel x, y, z as changed (its meshes are rebuilt).
-   0x1400173C0 */
-void world_block_mark_changed(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-
-/* Writes the voxel's +8 shape entry, allocating its chunk slot and record
-   when needed, and marks the record changed. 0x140017AC0 */
-void world_block_set_unknown_8(int layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
-
-/* The faces of block shape `shape` on side `side` (0..5; the opposite side
-   is 5 - side) that shape `neighbour` covers: `mask` & the shape's mask for
-   that side, plus bit q for each outer quad q on that side that meets an
-   outer quad of the neighbour on the opposite side corner for corner in the
-   two axes along the side (NaN coordinates match). world_block_faces.c,
-   0x14001B390 */
-uint32_t world_block_covered_faces(int shape, int side, uint32_t mask, int neighbour);
-
-/* Emits the faces of a cube block chosen by `faces` (bit f: face f, the
-   cube faces of collision_segment_cell()) as 1 x 1 surface patches with
-   corners origin + scale * corner, flags from the block's turn and the
-   face's texture (textures 1-4 and 9-12 turned with the block).
-   world_block_patches.c, 0x140019940 */
-void world_block_cube_patches(int turn, const float origin[3], const float scale[3], uint32_t faces,
-                              const int32_t textures[6]);
-
-/* Turns the scratch shape being built a quarter turn about y: sets block
-   shape `shape`'s size to `size` with x and z swapped, moves the points
-   (x, z) -> (size z - z, x) and their two vectors (x, z) -> (-z, x), and
-   turns the quads' texture and side flags with them.
-   world_shape_build.c, 0x14004D170 */
-void world_shape_build_turn(int shape, const int32_t size[3]);
-
-/* Adds a thin slab to the scratch shape as one 1 x 1 patch moved by
-   `offset`: kind 0 a floor 1/16 high, 5 a ceiling at 7/8, otherwise a wall
-   1/16 in on side kind - 1; marks the new quad's +0x15133B768 entry 128.
-   world_shape_build.c, 0x140019140 */
-void world_shape_build_slab(int kind, const float offset[3]);
-
-/* Copies the scratch shape into block shape `shape`: moves the outer quads
-   (corners all on one side of the unit cube) to the front with a mask per
-   side of the quads not on it, sets each quad's texture coordinates from the
-   side it faces, and replaces the shape's arrays with fresh copies of the
-   points, vectors, coordinates, quads (flags cut to the texture), the
-   0x15138B768 entries and the first 12 words of each box.
-   world_shape_build.c, 0x140017CA0 */
-void world_shape_build_finish(int shape);
-
-/* Adds two walls to the scratch shape as patches, turned `turn` quarter
-   turns: one across x from 0 to x at depth z, one across z from 0 to z at x.
-   world_shape_build.c, 0x14001A050 */
-void world_shape_build_corner(int turn, float x, float z);
-
-/* world_shape_build_slab() with the floor's or ceiling's edges pulled in by
-   1/16 for each `trim` bit 0x02, 0x04, 0x08, 0x10 (walls are not trimmed).
-   world_shape_build.c, 0x1400194B0 */
-void world_shape_build_slab_trimmed(int kind, const float offset[3], uint32_t trim);
-
-/* Removes quad q from the scratch shape, the last quad moving into its
-   place. world_shape_build.c, 0x140184AB0 */
-void world_shape_build_remove_quad(int q);
-
-/* Adds a box to the scratch shape for each rectangle of list (a, b) at
-   0x1ABC89C00: its four corners at depth 1/64 (1/256 for kind 1) on the
-   patch grid, turned `turn` quarter turns (world_patch_grid_turn()).
-   world_shape_build.c, 0x14001A590 */
-void world_shape_build_boxes(int turn, int a, int b);
-
-/* Adds the wall of rectangle list (a, b) to the scratch shape as cube
-   patches 1/16 thick around its opening, then its framed pieces, turned
-   `turn` quarter turns. world_shape_build.c, 0x14001A1C0 */
-void world_shape_build_wall(int turn, int a, int b);
-
-/* Builds block shape `code` (24 bits: four side kinds of 4 bits, 0x10000
-   floor, 0x20000 ceiling, bits 18-21 the wall style) from slabs, walls,
-   corner posts and boxes. Made shapes are kept per code and returned again;
-   a new one gets the next free shape number (0 when there are 65,536).
-   With `preview` the result stays in the scratch shape (shape 0xFFFF's
-   size and side mask are set) instead. world_shape_build.c, 0x14001A990 */
-int world_shape_build_procedural(int preview, uint32_t code);
-
-/* Bezier curve of order 1-3 through p0..p3 at t (order 1 uses p0 and p3,
-   order 2 p0, p1 and p3), and its slope along t. For other orders the
-   original returns stack garbage; 0 here. world_patch_mesh.c, 0x140187180
-   and 0x1401872F0 */
-float patch_bezier(int order, float t, float p0, float p1, float p2, float p3);
-float patch_bezier_slope(int order, float t, float p0, float p1, float p2, float p3);
-
-/* Turns the patch control grid (0x14500A5C0, 4 x 4 points) `turns` quarter
-   turns about y, (x, z) -> (1 - z, x), and returns `side_code` (a cube side
-   in bits 16-18) turned with it. world_patch_mesh.c, 0x14001B5C0 */
-uint32_t world_patch_grid_turn(int turns, uint32_t side_code);
-
-/* Tessellates a Bezier patch (4 x 4 control points, rows 12 floats apart;
-   4 x 4 texture coordinates) into the scratch shape: (steps_u + 1) x
-   (steps_v + 1) points with normals and tangents, then steps_u x steps_v
-   quads with `flags`. world_patch_mesh.c, 0x140001F20 */
-void world_patch_tessellate(const float *points, const float *coordinates, int steps_u, int order_u, int steps_v,
-                            int order_v, uint32_t flags);
-
-/* Adds the faces of a box chosen by `faces` (bit f: face f of
-   world_block_cube_patches()) to the scratch shape as flat quads, four
-   points each with the face's normal, flagged `flags` and the cube side the
-   normal faces most. world_block_patches.c, 0x140019C10 */
-void world_block_cube_quads(const float corners[8][3], uint32_t flags, uint32_t faces);
-
-/* ---- more voxel entries (world_blocks.c, world_block_edit.c) --------------- */
-
-/* world_block_unknown_8_at(), with a covered voxel followed back to the
-   voxel covering it. 0x140012B10 */
-uint32_t world_block_unknown_8_resolved_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-/* Face word `index` of the voxel (record + 0x1008, 8 per voxel), word 7, and
-   byte `index` of record + 0x3808 (8 per voxel); 0xFFFFFFFF where the voxel
-   has no record. 0x140012DE0, 0x140012CA0, 0x140016720 */
-uint32_t world_block_face_word_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, int32_t index);
-uint32_t world_block_last_face_word_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-uint32_t world_block_unknown_3808_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, int32_t index);
-
-/* Writes the voxel's layout entry, allocating its chunk slot and record,
-   releases the mesh of its band and marks it changed. 0x140016C80 */
-void world_block_set_layout(int layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
-/* Writes the layout entry of a voxel that has a record, nothing else.
-   0x140016E30 */
-void world_block_write_layout(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
-/* Writes the gone-parts mask (+0x5808) of a voxel that has a record and
-   sets the record's +0x6028 flag. 0x140017110 */
-void world_block_write_gone(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
-/* Writes the voxel's block id (+0x5008), allocating as needed, clears its
-   gone-parts mask and releases the mesh of its band. 0x140016F60 */
-void world_block_set_id(int layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
-/* Clears the first word of the entries of the voxel's band mesh part list
-   that name this voxel and `part`. 0x140016AF0 */
-void world_block_mesh_clear_part(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, int32_t part);
-/* Empties the voxel's +8 and layout entries (a cube uncovers the faces of
-   the cubes next to it) and marks it changed. 0x140012670 */
-void world_block_clear(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-/* Like world_block_set_layout(); a shape entry (0x80000000) also stores
-   the low bytes of `parts` at +0x3808 and points the rest of the shape's
-   footprint back to this voxel. 0x140016130 */
-void world_block_place_layout(int layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value, const uint16_t parts[8]);
-/* Rebuilds a block record's meshes (0x14000C4C0, still recompiled) and
-   copies its gone-parts masks into their model lists. 0x140017910 */
-void world_block_record_refresh(int record);
-/* Sets the +0x6C34 flag and the band's +0x6C38 flag of the record holding
-   voxel x, y, z (the layer is not range checked). 0x14011C510 */
-void world_block_mark_unknown_6c34(int layer, int32_t x, int32_t y, int32_t z);
-
-/* Lines: a count and up to 256 lines. */
-typedef struct {
-    float from[3];
-    float to[3];
-} WorldLine;
-typedef struct {
-    int32_t count;
-    WorldLine lines[256];
-} WorldLineList;
-
-/* Adds the edges of block shape `shape`'s quads, scaled by `scale` and placed
-   at voxel `voxel` of a layer, to `list` (as long as it has room).
-   world_block_outline.c, 0x140018CA0 */
-void world_block_shape_outline(WorldLineList *list, int layer, const int32_t voxel[3], uint16_t shape, float scale);
-
-/* Adds the edges of a cube entry (faces shown when both bit f and bit f + 6
-   are set; an edge needs both its faces) like world_block_shape_outline().
-   world_block_outline.c, 0x1400174D0 */
-void world_block_cube_outline(WorldLineList *list, int layer, const int32_t voxel[3], uint32_t cube, float scale);
-
-/* Outlines the +8 and layout entries (cubes and shapes) of every voxel of a
-   layer in the world box box_min..box_max. world_block_outline.c,
-   0x14000C180 */
-void world_block_outline_box(WorldLineList *list, int layer, const float box_min[3], const float box_max[3]);
-
-/* Sets up level layer `layer` (0-3) at `origin` with the given size in
-   chunks and voxel scale: new chunk tables with every chunk empty, all its
-   chunk slots and block records free, and every block mesh free.
-   world_level.c, 0x14004DB20 */
-void world_level_layer_init(int layer, const float origin[3], int32_t chunks_x, int32_t chunks_y, int32_t chunks_z,
-                            float scale);
-
-/* The block record holding voxel x, y, z, -1: none. 0x140013020 */
-int world_block_record_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-
-/* Writes the voxel's +0x808 entry when it has a record; returns the value,
-   or 0xFFFFFFFF. 0x140017C40 */
-uint32_t world_block_set_unknown_808(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
-
-/* Places block `value` in voxel x, y, z (nothing for 0), allocating its
-   chunk slot and record: a cube (top bits 010: turn bits 24-25 kept, all
-   faces set, then a face bit per non-negative face word; faces against
-   neighbouring cubes, and the floor at y 0, are cleared on both sides) or a
-   shape (100: the rest of its voxels get entries pointing back to this one,
-   and the covered-face masks of this voxel and of neighbouring shapes are
-   updated). faces: the voxel's eight face words. Marks the records changed.
-   0x14000F830 */
-void world_block_place(int layer, int32_t x, uint32_t y, int32_t z, uint32_t value, const uint16_t faces[8]);
-
-/* Frees a record's mesh for height band `band` (the GPU buffers too).
-   0x140012940 */
-void world_block_release_mesh(int record, int band);
-
-/* Writes the voxel's model entry (if it has a record) and frees the mesh of
-   its height band ((y >> 1) & 3). 0x140017260 */
-void world_block_set_model(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, int32_t value);
 
 /* ---- vehicle lifetimes ------------------------------------------------------- */
 
@@ -297,29 +63,24 @@ void world_block_set_model(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, i
 /* A vehicle's wheel, 172 bytes from vehicle + 0x3944 (count at + 0x3940). */
 typedef struct VehicleWheel {
     int32_t body;                        /* PhysicsBody of the wheel */
-    float half_width;                    /* from the wheel body's centre to each end of its axle */
-    int32_t unknown_8;                   /* from the type (RosaServer has isPopped here) */
-    int32_t unknown_c;                   /* from the type */
-    int32_t health;                      /* 8 in a new wheel (RosaServer: health) */
-    int32_t unknown_14[4];               /* from the type */
+    uint8_t unknown_4[0x24 - 0x4];
     float mount[3];                      /* where the wheel hangs, in the car body's axes */
     float unknown_30;                    /* the drive divides by the engine's 8 plus this (the wheel's inertia?) */
     float radius;
     float unknown_38;                    /* without wheel bodies: scales unknown_3c into spin, and the drive's push */
     float unknown_3c;                    /* cleared before the wheels are solved */
     float spin;                          /* angular speed about the axle */
-    float turned;                        /* spin summed up: the angle the wheel is drawn at */
+    uint8_t unknown_44[0x48 - 0x44];
     float steer;                         /* wheels 0 and 1: radians the axle turns about the car's up axis */
     float point[3];                      /* the point the wheel ray test 0x1400DF380 takes */
     float unknown_58[3];                 /* unknown_64 as it was before this tick's solve */
     float unknown_64[3];
-    float visual_height;                 /* how far the wheel body is from its mount along the car's up axis, -1..1 */
+    uint8_t unknown_70[0x74 - 0x70];
     float extension;                     /* added to mount[1] */
     float spring;                        /* stiffness of the hold on the mount point */
     float damping;                       /* of the relative velocity there */
     float grip;                          /* scales a second push along the car's up axis */
-    float skid;                          /* the wheel body's sliding against the ground, 0..1 */
-    uint8_t unknown_88[0xAC - 0x88];
+    uint8_t unknown_84[0xAC - 0x84];
 } VehicleWheel;
 
 _Static_assert(sizeof(VehicleWheel) == 0xAC, "VehicleWheel size");
@@ -337,26 +98,14 @@ typedef struct VehicleDrive {
     float unknown_38b0;
     float unknown_38b4;
     float unknown_38b8;
-    int32_t gear;                        /* -1 reverse, 0 neutral, 1 to 4 */
-    int32_t previous_gear;               /* gear at the end of the tick before */
-    uint8_t unknown_38c4[0x38C8 - 0x38C4];
-    union {
-        float unknown_38c8;              /* 0 (or not a number): the engine is not coupled to the drive */
-        float gear_ratio;                /* engine turns per turn of the drive in this gear; 0 in neutral */
-    };
-    float inverse_gear_ratio;            /* 1 / gear_ratio, 0 in neutral */
-    union {
-        float unknown_38d0;
-        float clutch;                    /* 0 (apart) to 1 (closed): how much of the engine's pull reaches the drive */
-    };
+    uint8_t unknown_38bc[0x38C8 - 0x38BC];
+    float unknown_38c8;                  /* 0 (or not a number): the engine is not coupled to the drive */
+    uint8_t unknown_38cc[0x38D0 - 0x38CC];
+    float unknown_38d0;
     float brake;
     uint8_t unknown_38d8[0x38E0 - 0x38D8];
     int32_t driven_count;
-    int32_t driven[(0x3930 - 0x38E4) / 4];   /* wheel indices */
-    int32_t engine_rpm;                  /* engine_speed in turns per minute, 0 to 8191 (RosaServer: engineRPM) */
-    int32_t automatic;                   /* the gear stick is at "automatic" this tick */
-    int32_t shift_delay;                 /* ticks until the automatic gearbox may change gear again */
-    float steer;                         /* the steering control as the wheels were set from it */
+    int32_t driven[(0x3940 - 0x38E4) / 4];   /* wheel indices */
 } VehicleDrive;
 
 _Static_assert(sizeof(VehicleDrive) == 0x3940 - 0x3894, "VehicleDrive size");
@@ -400,8 +149,12 @@ typedef struct WorldEvent {
     float vector_a[3];
     float vector_b[3];
     int32_t a, b, c;
-    uint8_t unknown_2c[0x80 - 0x2C];
+    int32_t unknown_2c;                  /* phone state (type 6): the phone's word at +0x278 */
+    float unknown_30, unknown_34;        /* phone rings (type 19): 1 and 1, or 0.5 and 1 (volume, pitch?) */
+    uint8_t unknown_38[0x80 - 0x38];
 } WorldEvent;
+
+_Static_assert(sizeof(WorldEvent) == 0x80, "WorldEvent size");
 
 #define world_events (&SR_GLOBAL(WorldEvent, 0x1873DE460ULL))
 #define world_event_count SR_GLOBAL(int32_t, 0x189C1DC64ULL)
@@ -412,15 +165,6 @@ typedef struct WorldEvent {
    other references and, when connected, records event 4 with the vehicle's
    position. 0x14010BE50 */
 void world_expire_vehicles(void);
-
-/* Removes one vehicle at once, as world_expire_vehicles does when its time
-   is up; nothing for a number that is not a vehicle's. 0x14007FE00 */
-void world_remove_vehicle(int vehicle);
-
-/* A vehicle's turning, from its points: for each of its axes the sum over
-   the points of (axis x (point - origin)) . the point's velocity, written
-   to the vehicle's angular velocity. 0x1400A48D0 */
-void world_vehicle_spin_from_points(int vehicle, const float origin[3]);
 
 /* ---- item types ---------------------------------------------------------- */
 
@@ -445,14 +189,8 @@ typedef struct WorldItemType {
 typedef struct WorldItem {
     int32_t active;
     int32_t physics_simulated;           /* RosaServer: physicsSim; the item follows its body */
-    union {
-        int32_t unknown_8;               /* set with physics_simulated when a vehicle breaks the item off a block */
-        int32_t physics_settled;         /* RosaServer: physicsSettled; cleared when a vehicle touches the item */
-    };
-    union {
-        uint8_t unknown_c[0x14 - 0xC];
-        int32_t physics_settled_timer;   /* RosaServer: physicsSettledTimer */
-    };
+    int32_t unknown_8;                   /* set with physics_simulated when a vehicle breaks the item off a block */
+    uint8_t unknown_c[0x14 - 0xC];
     int32_t type;                        /* WorldItemType index */
     uint8_t unknown_18[0x1C - 0x18];
     int32_t lifetime;                    /* ticks left; from 0xFFFF never expires */
@@ -587,14 +325,6 @@ typedef struct WorldGridUnit {
    layer, and objects beyond a unit's 32 or the 2,048 leaves, are dropped.
    0x140037DE0 */
 void world_grid_insert(int layer, int32_t x, int32_t y, int32_t z, uint16_t object);
-
-/* Gives chunk (cx, cy, cz) of a layer a new grid block, all its cells empty,
-   and returns it (no checks). 0x140038130 */
-int32_t world_grid_add_block(int layer, int32_t cx, int32_t cy, int32_t cz);
-
-/* Empties layer 0's grid and enters every active item whose type occupies
-   space into each voxel of its voxel box as 0x8000 + item. 0x140037FE0 */
-void world_grid_rebuild(void);
 
 _Static_assert(sizeof(WorldGridUnit) == 132, "WorldGridUnit size");
 _Static_assert(sizeof(WorldItemType) == 0x13D0, "WorldItemType size");

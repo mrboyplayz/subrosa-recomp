@@ -8,6 +8,8 @@
 #ifndef SR_ENGINE_MATH3D_H
 #define SR_ENGINE_MATH3D_H
 
+#include <stdint.h>
+
 /* Sine and cosine of angle radians, from the original's own C runtime routine
    (0x1401F8AC0): another library's results differ in the last bit. */
 void math_sine_cosine(float angle, float *sine, float *cosine);
@@ -64,5 +66,15 @@ float math_point_segment_distance(const float a[3], const float b[3], const floa
    (translation in elements 12-14). 0x140079F00 */
 void math_mat4_ortho(float out[16], float left, float right, float bottom, float top,
                      float z_near, float z_far);
+
+/* Two axes across a unit direction, as bullets and decals orient themselves:
+   side is world x crossed with the direction (world y instead when the
+   direction's y is under 0.707 or not a number), up is the direction crossed
+   with side; each is made length 1. (Inline in the original's callers.) */
+void math_frame_across(const float direction[3], float side[3], float up[3]);
+
+/* A hash-based noise generator shared by several effects: the next value,
+   0 to 2^31 - 1. Its seed (0x1602E12C0) advances by one per call. */
+int32_t math_noise_next(void);
 
 #endif

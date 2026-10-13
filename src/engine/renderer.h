@@ -110,4 +110,17 @@ void renderer_draw_flat_rect(float x, float y, float width, float height, int fl
 void renderer_draw_atlas_sprite(int atlas, int entry, float x, float y, float width, float height,
                                 int flags, float red, float green, float blue, float alpha);
 
+/* ---- depth sort ---------------------------------------------------------- */
+
+/* A list to sort: the caller writes a key per item and the count; the sort
+   leaves the items' indices in `order`, smallest key first, items with
+   equal keys in their original order, followed by -1. */
+#define RENDERER_SORT_CAPACITY 0x40000
+#define renderer_sort_count SR_GLOBAL(int32_t, 0x1A85C6BA0ULL)
+#define renderer_sort_order (&SR_GLOBAL(int32_t, 0x1A85C6BA4ULL))
+#define renderer_sort_keys  (&SR_GLOBAL(uint32_t, 0x1A87C6BA4ULL))
+
+/* Sorts the list, a byte of the key at a time. 0x14007D710 */
+void renderer_sort(void);
+
 #endif

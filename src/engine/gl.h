@@ -27,12 +27,14 @@ typedef ptrdiff_t GLsizeiptr;
 typedef ptrdiff_t GLintptr;
 
 #define GL_FALSE 0
+#define GL_ONE 1
 #define GL_ONE_MINUS_SRC_ALPHA 0x0303
 #define GL_SRC_ALPHA 0x0302
 #define GL_POINTS 0x0000
 #define GL_LINES 0x0001
 #define GL_TRIANGLES 0x0004
 #define GL_TRIANGLE_STRIP 0x0005
+#define GL_LINE_SMOOTH 0x0B20
 #define GL_CULL_FACE 0x0B44
 #define GL_DEPTH_TEST 0x0B71
 #define GL_BLEND 0x0BE2
@@ -50,7 +52,7 @@ typedef ptrdiff_t GLintptr;
    client's data module; each one holds a single function pointer. */
 extern char qword_140302FE8[], qword_140302FF8[], qword_140404050[], qword_140404170[], unk_140404190[],
             qword_140404198[], qword_140404230[], qword_140404238[], qword_1404042E0[],
-            qword_140404378[], unk_140404470[], qword_1404044A8[], unk_140404098[];
+            qword_140404378[], qword_140404338[], unk_1404043C8[], unk_140404470[], qword_1404044A8[], unk_140404098[];
 extern float flt_140384000[];
 
 #define SR_GL_SLOT(storage, prototype) ((prototype)(*(void **)(void *)(storage)))
@@ -68,7 +70,9 @@ extern float flt_140384000[];
 #define glDisableVertexAttribArray SR_GL_SLOT(qword_140404230, void (*)(GLuint))
 #define glEnableVertexAttribArray SR_GL_SLOT(qword_140404238, void (*)(GLuint))
 #define glUseProgram              SR_GL_SLOT(qword_1404042E0, void (*)(GLuint))
+#define glUniform3fv              SR_GL_SLOT(qword_140404338, void (*)(GLint, GLsizei, const GLfloat *))
 #define glUniformMatrix4fv        SR_GL_SLOT(qword_140404378, void (*)(GLint, GLsizei, GLboolean, const GLfloat *))
+#define glVertexAttrib2f          SR_GL_SLOT(unk_1404043C8, void (*)(GLuint, GLfloat, GLfloat))
 #define glVertexAttrib4fv         SR_GL_SLOT(unk_140404470, void (*)(GLuint, const GLfloat *))
 #define glVertexAttribPointer     SR_GL_SLOT(qword_1404044A8, void (*)(GLuint, GLint, GLenum, GLboolean, GLsizei, const void *))
 #define glViewport                SR_GL_SLOT(qword_140302FE8, void (*)(GLint, GLint, GLsizei, GLsizei))

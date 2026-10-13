@@ -1,16 +1,15 @@
 #include "shared_client.h"
 
-
 //----- (0000000140158610) ----------------------------------------------------
 __int64            sub_140158610(float *a1, float *a2, float *a3, float *a4, float a5, float *a6, float *a7, float *a8)
 {
-  float v11; // xmm5_4
-  float v12; // xmm6_4
-  float v13; // xmm2_4
-  float v14; // xmm5_4
-  float v15; // xmm6_4
-  float v17; // xmm0_4
-  float v18[4]; // [rsp+40h] [rbp-28h] BYREF
+  float v11;
+  float v12;
+  float v13;
+  float v14;
+  float v15;
+  float v17;
+  float v18[4];
 
   v11 = a2[1];
   v12 = a2[2];
@@ -35,41 +34,39 @@ __int64            sub_140158610(float *a1, float *a2, float *a3, float *a4, flo
   return 1;
 }
 
-// 140279870: using guessed type __int128 xmmword_140279870;
-
 //----- (0000000140158760) ----------------------------------------------------
 _BOOL8            sub_140158760(float *a1, float *a2, float *a3, float *a4, float a5, float *a6, float *a7, float *a8)
 {
-  float *v8; // r15
-  float v11; // xmm3_4
-  float v13; // xmm4_4
-  float v14; // xmm5_4
-  float v15; // xmm6_4
-  float v17; // xmm7_4
-  float v18; // xmm8_4
-  float v19; // xmm9_4
-  float v20; // xmm2_4
-  float *v21; // r12
-  float *v22; // r13
-  float v23; // xmm0_4
-  float v24; // xmm2_4
-  float v25; // xmm1_4
-  float v26; // xmm6_4
-  float v27; // xmm2_4
-  float v28; // xmm1_4
-  float v29; // xmm0_4
-  int v30; // xmm1_4
-  float v31; // xmm0_4
-  float v32; // xmm2_4
-  float v33; // xmm1_4
-  float v34; // xmm0_4
-  int v35; // xmm1_4
-  float v36; // xmm0_4
-  float v37; // xmm2_4
-  float v38; // xmm1_4
-  float v39; // xmm0_4
-  int v40; // xmm1_4
-  float v41; // xmm0_4
+  float *v8;
+  float v11;
+  float v13;
+  float v14;
+  float v15;
+  float v17;
+  float v18;
+  float v19;
+  float v20;
+  float *v21;
+  float *v22;
+  float v23;
+  float v24;
+  float v25;
+  float v26;
+  float v27;
+  float v28;
+  float v29;
+  int v30;
+  float v31;
+  float v32;
+  float v33;
+  float v34;
+  int v35;
+  float v36;
+  float v37;
+  float v38;
+  float v39;
+  int v40;
+  float v41;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140158760[112];
 #define v43 (*(float (*))(void *)(sr_frame_140158760 + 0)) /* [rsp+48h] */
@@ -189,40 +186,37 @@ _BOOL8            sub_140158760(float *a1, float *a2, float *a3, float *a4, floa
 #undef v48
 #undef v49
 
-// 140279870: using guessed type __int128 xmmword_140279870;
-
 //----- (0000000140158AB0) ----------------------------------------------------
-void sub_140158AB0(_BYTE *a1,      char *a2, ...)
+void crt_sprintf(_BYTE *a1,      char *a2, ...)
 {
-  unsigned int *v4; // rax
-  va_list va; // [rsp+60h] [rbp+18h] BYREF
+  unsigned int *v4;
+  va_list va;
 
   va_start(va, a2);
   v4 = sub_140001BB0();
   sub_1402250AC(*(_QWORD *)v4 | 1LL, a1, -1, (__int64)a2, nullptr, (__int64)va);
 }
 
-
 //----- (0000000140158B10) ----------------------------------------------------
-void            sub_140158B10(_BYTE *a1, unsigned int a2)
+void            format_with_thousands(_BYTE *a1, unsigned int a2)
 {
   if ( (int)a2 < 1000000000 )
   {
     if ( (int)a2 < 1000000 )
     {
       if ( (int)a2 < 1000 )
-        sub_140158AB0(a1, "%d", a2);
+        crt_sprintf(a1, "%d", a2);
       else
-        sub_140158AB0(a1, "%d,%03d", a2 / 0x3E8, a2 % 0x3E8);
+        crt_sprintf(a1, "%d,%03d", a2 / 0x3E8, a2 % 0x3E8);
     }
     else
     {
-      sub_140158AB0(a1, "%d,%03d,%03d", a2 / 0xF4240, (int)(a2 / 0x3E8) % 1000, a2 % 0x3E8);
+      crt_sprintf(a1, "%d,%03d,%03d", a2 / 0xF4240, (int)(a2 / 0x3E8) % 1000, a2 % 0x3E8);
     }
   }
   else
   {
-    sub_140158AB0(
+    crt_sprintf(
       a1,
       "%d,%03d,%03d,%03d",
       a2 / 0x3B9ACA00,
@@ -232,13 +226,12 @@ void            sub_140158B10(_BYTE *a1, unsigned int a2)
   }
 }
 
-
 //----- (0000000140158C70) ----------------------------------------------------
 __int64 sub_140158C70(_BYTE *a1, __int64 a2, __int64 a3, ...)
 {
-  __int64 *v6; // rax
-  __int64 result; // rax
-  va_list va; // [rsp+78h] [rbp+20h] BYREF
+  __int64 *v6;
+  __int64 result;
+  va_list va;
 
   va_start(va, a3);
   v6 = (__int64 *)sub_140001BB0();
@@ -248,37 +241,20 @@ __int64 sub_140158C70(_BYTE *a1, __int64 a2, __int64 a3, ...)
   return result;
 }
 
-// 140279870: using guessed type __int128 xmmword_140279870;
-// 1402F6178: using guessed type int dword_1402F6178;
-// 1402F617C: using guessed type int dword_1402F617C;
-// 1402F6180: using guessed type int dword_1402F6180;
-// 1402F6188: using guessed type int dword_1402F6188;
-// 1402F618C: using guessed type int dword_1402F618C;
-// 1402F6190: using guessed type int dword_1402F6190;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 151A8488C: using guessed type unsigned int;
-// 151A84890: using guessed type unsigned int;
-// 151A84894: using guessed type unsigned int;
-// 183F7C550: using guessed type unsigned int;
-// 183F7C560: using guessed type unsigned int;
-// 183F7C570: using guessed type unsigned int;
-// 1A724E720: using guessed type unsigned int;
-// 1A729E724: using guessed type unsigned int;
-
 //----- (000000014015AE10) ----------------------------------------------------
 __int64            sub_14015AE10(int a1, _DWORD *a2, int a3)
 {
-  __int64 v3; // rsi
-  signed int v4; // r9d
-  unsigned int v6; // r11d
-  unsigned int j; // ebx
-  unsigned int v8; // eax
-  unsigned int v9; // ecx
-  int v10; // ebp
-  char v11; // bl
-  char v12; // cl
-  unsigned int i; // edi
-  unsigned int v14; // eax
+  __int64 v3;
+  signed int v4;
+  unsigned int v6;
+  unsigned int j;
+  unsigned int v8;
+  unsigned int v9;
+  int v10;
+  char v11;
+  char v12;
+  unsigned int i;
+  unsigned int v14;
 
   v3 = 16388LL * a1;
   v4 = dword_140404A6C[v3 + 291021661];
@@ -336,56 +312,79 @@ LABEL_18:
   return 1;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015AFD0) ----------------------------------------------------
 __int64            sub_14015AFD0(int a1,      __m128i *a2, int a3, int a4)
 {
-    extern uint32_t net_packet_transfer(int, void *, int, int);
-    return (__int64)net_packet_transfer(a1, a2, a3, a4);
+  __int64 v4;
+       __m128i *v5;
+  __int64 v6;
+  int v7;
+  __m128i *v9;
+
+  v4 = 16388LL * a1;
+  v5 = a2;
+  if ( (int)dword_140404A6C[v4 + 291021662] > 0 )
+  {
+    ++dword_140404A6C[v4 + 291021661];
+    dword_140404A6C[v4 + 291021662] = 0;
+  }
+  v6 = (int)dword_140404A6C[v4 + 291021661];
+  v7 = a4 * a3;
+  if ( (int)v6 + a4 * a3 >= 0x10000 )
+    return 0;
+  if ( dword_140404A6C[v4 + 291021664] )
+  {
+    a2 = (     __m128i *)((char *)&dword_140404A6C[v4 + 291021665] + v6);
+    v9 = (__m128i *)v5;
+  }
+  else
+  {
+    v9 = (__m128i *)((char *)&dword_140404A6C[v4 + 291021665] + v6);
+  }
+  crt_memcpy(v9, a2, v7);
+  dword_140404A6C[v4 + 291021661] += v7;
+  return 1;
 }
 
 //----- (000000014015B070) ----------------------------------------------------
-__int64 sub_14015B070(__int64 a1,      char *a2, ...)
+__int64 crt_sscanf(__int64 a1,      char *a2, ...)
 {
-  __int64 *v4; // rax
-  va_list va; // [rsp+60h] [rbp+18h] BYREF
+  __int64 *v4;
+  va_list va;
 
   va_start(va, a2);
   v4 = (__int64 *)sub_140001BC0();
   return sub_140236BF4(*v4, a1, -1, (__int64)a2, nullptr, (__int64)va);
 }
 
-
 //----- (000000014015B0D0) ----------------------------------------------------
-__int64 sub_14015B0D0(__int64 a1,      char *a2, ...)
+__int64 crt_sscanf_s(__int64 a1,      char *a2, ...)
 {
-  unsigned int *v4; // rax
-  va_list va; // [rsp+60h] [rbp+18h] BYREF
+  unsigned int *v4;
+  va_list va;
 
   va_start(va, a2);
   v4 = sub_140001BC0();
   return sub_140236BF4(*(_QWORD *)v4 | 1LL, a1, -1, (__int64)a2, nullptr, (__int64)va);
 }
 
-
 //----- (000000014015B140) ----------------------------------------------------
 void            sub_14015B140(__int64 a1, __int64 a2, __int64 a3, unsigned __int8 *a4, int a5, int a6)
 {
-  __int64 v6; // rdi
-  unsigned __int8 *v7; // rbx
-  _BYTE *v8; // rax
-  __int64 v9; // r14
-  __int64 v10; // rbp
-  int v11; // r8d
-  int v12; // r9d
-  int v13; // r10d
-  int v14; // r11d
-  int v15; // r8d
-  int v16; // edx
-  char v17; // cl
-  char v18; // cl
-  char v19; // cl
+  __int64 v6;
+  unsigned __int8 *v7;
+  _BYTE *v8;
+  __int64 v9;
+  __int64 v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  int v15;
+  int v16;
+  char v17;
+  char v18;
+  char v19;
 
   v6 = a5;
   v7 = a4;
@@ -435,39 +434,38 @@ void            sub_14015B140(__int64 a1, __int64 a2, __int64 a3, unsigned __int
   }
 }
 
-
 //----- (000000014015B270) ----------------------------------------------------
 __int64            sub_14015B270(__m128i *a1, __int64 a2, __int64 a3, __int64 a4, int a5, int a6)
 {
-  int v7; // r8d
-  __m128i si128; // xmm5
-  __m128i v9; // xmm7
-  __m128i v10; // xmm8
-  __m128i v11; // xmm9
-  __m128i v12; // xmm10
-  __m128i v13; // xmm11
-  __int64 v14; // rax
-  __m128i v15; // xmm2
-  __m128i v16; // xmm4
-  __m128i v17; // xmm1
-  __m128i v18; // xmm3
-  __m128i v19; // xmm4
-  __m128i v20; // xmm1
-  __m128i v21; // xmm3
-  __int64 result; // rax
-  __int8 *v23; // r11
-  __int64 v24; // rbp
-  __int64 v25; // rsi
-  unsigned __int8 *v26; // rbx
-  __int64 v27; // rdi
-  int v28; // edx
-  int v29; // r8d
-  int v30; // r9d
-  int v31; // r10d
-  int v32; // edx
-  char v33; // cl
-  char v34; // cl
-  unsigned int v35; // ecx
+  int v7;
+  __m128i si128;
+  __m128i v9;
+  __m128i v10;
+  __m128i v11;
+  __m128i v12;
+  __m128i v13;
+  __int64 v14;
+  __m128i v15;
+  __m128i v16;
+  __m128i v17;
+  __m128i v18;
+  __m128i v19;
+  __m128i v20;
+  __m128i v21;
+  __int64 result;
+  __int8 *v23;
+  __int64 v24;
+  __int64 v25;
+  unsigned __int8 *v26;
+  __int64 v27;
+  int v28;
+  int v29;
+  int v30;
+  int v31;
+  int v32;
+  char v33;
+  char v34;
+  unsigned int v35;
 
   v7 = 0;
   if ( a6 == 4 )
@@ -554,17 +552,10 @@ __int64            sub_14015B270(__m128i *a1, __int64 a2, __int64 a3, __int64 a4
   return result;
 }
 
-// 1402791D0: using guessed type __int128 xmmword_1402791D0;
-// 140279240: using guessed type __int128 xmmword_140279240;
-// 140279250: using guessed type __int128 xmmword_140279250;
-// 140279880: using guessed type __int128 xmmword_140279880;
-// 140279970: using guessed type __int128 xmmword_140279970;
-// 140279990: using guessed type __int128 xmmword_140279990;
-
 //----- (000000014015B530) ----------------------------------------------------
 __int64            sub_14015B530(__int64 a1)
 {
-  __int64 result; // rax
+  __int64 result;
 
   if ( !*(_QWORD *)(a1 + 16) )
     return *(_QWORD *)(a1 + 192) >= *(_QWORD *)(a1 + 200);
@@ -574,18 +565,17 @@ __int64            sub_14015B530(__int64 a1)
   return !*(_DWORD *)(a1 + 48) || *(_QWORD *)(a1 + 192) >= *(_QWORD *)(a1 + 200);
 }
 
-
 //----- (000000014015B580) ----------------------------------------------------
 __int64            sub_14015B580(int a1, int a2)
 {
-  char v2; // bl
-  int v4; // eax
-  int v5; // edi
-  unsigned int v6; // ecx
+  char v2;
+  int v4;
+  int v5;
+  unsigned int v6;
 
   v2 = a2;
   if ( a2 > 16 )
-    sub_14023E640((char *)L"bits <= 16", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0xFA6u);
+    crt_assert((char *)L"bits <= 16", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0xFA6u);
   v4 = a1;
   v5 = 2 * (a1 & 0x5555);
   v6 = (16 * ((4 * (v5 & 0x3333 | (v4 >> 1) & 0x1111)) & 0xF0F | ((v5 | (v4 >> 1) & 0x5555u) >> 2) & 0x303))
@@ -593,13 +583,10 @@ __int64            sub_14015B580(int a1, int a2)
   return (int)((v6 >> 8) | ((unsigned __int8)v6 << 8)) >> (16 - v2);
 }
 
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 1402727C8: using guessed type __int16[11];
-
 //----- (000000014015B6D0) ----------------------------------------------------
 __int64            sub_14015B6D0(__int64 a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
 {
-  __int64 result; // rax
+  __int64 result;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14015B6D0[32];
 #define v9 (*(_DWORD (*)[6])(void *)(sr_frame_14015B6D0 + 0)) /* [rsp+20h] */
@@ -631,129 +618,128 @@ __int64            sub_14015B6D0(__int64 a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
 #undef v10
 #undef v11
 
-
 //----- (000000014015B780) ----------------------------------------------------
 __int64            sub_14015B780(unsigned int *a1, _DWORD *a2, _DWORD *a3, _DWORD *a4, int a5)
 {
-  int v6; // r12d
-  unsigned int v7; // eax
-  int v8; // r13d
-  __int64 v9; // rdi
-  int v10; // esi
-  int v11; // r15d
-  signed int v12; // ecx
-  __int64 v13; // rax
-       char *v14; // rdx
-  int v15; // r14d
-  int v16; // eax
-  int v17; // r11d
-  int v18; // r9d
-  int v19; // ecx
-  int v20; // ecx
-  char *v21; // rax
-  char *v22; // rsi
-  signed int v23; // edi
-  int v24; // r13d
-  char *v25; // rax
-  __int64 v26; // r15
-  int v27; // esi
-  unsigned __int64 v28; // rcx
-  char v29; // dl
-  __int64 v30; // r14
-  __int64 v31; // r8
-  char v32; // dl
-  char v33; // cl
-  char *v34; // rax
-  unsigned int v35; // r12d
-  int v36; // eax
-  int v37; // r12d
-  __int64 v38; // rdi
-  unsigned __int8 *v39; // rax
-  int v40; // r14d
-  unsigned __int8 v41; // cl
-  unsigned __int8 *v42; // rax
-  int v43; // edx
-  signed int v44; // r15d
-  __int64 i; // r8
-  unsigned __int8 *v46; // rax
-  unsigned __int8 v47; // cl
-  unsigned __int8 *v48; // rax
-  signed int v49; // ecx
-  signed int v50; // ecx
-  int v51; // r14d
-  unsigned __int8 *v52; // r8
-  unsigned __int8 v53; // cl
-  unsigned __int8 *v54; // rax
-  __int64 v55; // r10
-  __int64 v56; // rax
-  __int64 v57; // rcx
-  int v58; // edi
-  __int64 v59; // rcx
-  __int64 v60; // rcx
-  __int64 v61; // rax
-  int v62; // r9d
-  unsigned __int8 v63; // cl
-  unsigned __int8 *v64; // rax
-  __int64 v65; // rcx
-  int v66; // edi
-  __int64 v67; // rcx
-  __int64 v68; // rcx
-  __int64 v69; // rax
-  signed int v70; // ecx
-  int v71; // r12d
-  unsigned int v72; // r8d
-  int v73; // r8d
-  __int64 v74; // r15
-  unsigned int v75; // r10d
-  unsigned int v76; // r10d
-  unsigned int v77; // edi
-  unsigned int v78; // r11d
-  unsigned int v79; // r11d
-  unsigned int v80; // r9d
-  unsigned int v81; // r9d
-  unsigned int v82; // r10d
-  unsigned int v83; // ecx
-  int v84; // edi
-  int v85; // eax
-  int v86; // r14d
-  unsigned __int8 *v87; // rcx
-  unsigned __int8 *v88; // rdi
-  unsigned __int64 v89; // rax
-  unsigned __int8 v90; // dl
-  unsigned __int8 *v91; // rax
-  unsigned __int8 v92; // dl
-  unsigned __int8 *v93; // rax
-  unsigned __int8 v94; // dl
-  unsigned __int8 *v95; // rax
-  unsigned __int8 v96; // dl
-  unsigned __int8 *v97; // rax
-  signed int v98; // edi
-  char *v99; // r15
-  int v100; // esi
-  unsigned int v101; // eax
-  unsigned int v102; // r14d
-  char v103; // al
-  int v104; // r8d
-  unsigned int v105; // ecx
-  int v106; // edx
-  char v107; // al
-  int v108; // r8d
-  unsigned int v109; // ecx
-  int v110; // edx
-  char v111; // al
-  int v112; // r9d
-  int v113; // eax
-  signed int v114; // ecx
-  signed int v115; // eax
-  __int64 k; // rcx
-  int v117; // edx
-  int v118; // r10d
-  signed int v119; // r8d
-  __int64 v120; // rdx
-  __int64 v121; // rax
-  char *v122; // rdx
-  __int64 v123; // r9
-  char v124; // cl
+  int v6;
+  unsigned int v7;
+  int v8;
+  __int64 v9;
+  int v10;
+  int v11;
+  signed int v12;
+  __int64 v13;
+       char *v14;
+  int v15;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  char *v21;
+  char *v22;
+  signed int v23;
+  int v24;
+  char *v25;
+  __int64 v26;
+  int v27;
+  unsigned __int64 v28;
+  char v29;
+  __int64 v30;
+  __int64 v31;
+  char v32;
+  char v33;
+  char *v34;
+  unsigned int v35;
+  int v36;
+  int v37;
+  __int64 v38;
+  unsigned __int8 *v39;
+  int v40;
+  unsigned __int8 v41;
+  unsigned __int8 *v42;
+  int v43;
+  signed int v44;
+  __int64 i;
+  unsigned __int8 *v46;
+  unsigned __int8 v47;
+  unsigned __int8 *v48;
+  signed int v49;
+  signed int v50;
+  int v51;
+  unsigned __int8 *v52;
+  unsigned __int8 v53;
+  unsigned __int8 *v54;
+  __int64 v55;
+  __int64 v56;
+  __int64 v57;
+  int v58;
+  __int64 v59;
+  __int64 v60;
+  __int64 v61;
+  int v62;
+  unsigned __int8 v63;
+  unsigned __int8 *v64;
+  __int64 v65;
+  int v66;
+  __int64 v67;
+  __int64 v68;
+  __int64 v69;
+  signed int v70;
+  int v71;
+  unsigned int v72;
+  int v73;
+  __int64 v74;
+  unsigned int v75;
+  unsigned int v76;
+  unsigned int v77;
+  unsigned int v78;
+  unsigned int v79;
+  unsigned int v80;
+  unsigned int v81;
+  unsigned int v82;
+  unsigned int v83;
+  int v84;
+  int v85;
+  int v86;
+  unsigned __int8 *v87;
+  unsigned __int8 *v88;
+  unsigned __int64 v89;
+  unsigned __int8 v90;
+  unsigned __int8 *v91;
+  unsigned __int8 v92;
+  unsigned __int8 *v93;
+  unsigned __int8 v94;
+  unsigned __int8 *v95;
+  unsigned __int8 v96;
+  unsigned __int8 *v97;
+  signed int v98;
+  char *v99;
+  int v100;
+  unsigned int v101;
+  unsigned int v102;
+  char v103;
+  int v104;
+  unsigned int v105;
+  int v106;
+  char v107;
+  int v108;
+  unsigned int v109;
+  int v110;
+  char v111;
+  int v112;
+  int v113;
+  signed int v114;
+  signed int v115;
+  __int64 k;
+  int v117;
+  int v118;
+  signed int v119;
+  __int64 v120;
+  __int64 v121;
+  char *v122;
+  __int64 v123;
+  char v124;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14015B780[1248];
 #define v126 (*(__int64 (*))(void *)(sr_frame_14015B780 + 0)) /* [rsp+0h] */
@@ -834,7 +820,7 @@ LABEL_9:
   v12 = a1[46];
   if ( v148 != v12 + a1[48] - a1[52] )
   {
-    sub_14023E640(
+    crt_assert(
       (char *)L"info.offset == s->callback_already_read + (int) (s->img_buffer - s->img_buffer_original)",
       (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
       0x1515u);
@@ -1043,7 +1029,7 @@ LABEL_145:
                     v88[2] = 0;
                     goto LABEL_156;
                   }
-                  sub_14016D910((__int64)a1);
+                  stbi_refill_buffer((__int64)a1);
                   v91 = *((unsigned __int8 **)a1 + 24);
                   v90 = *v91;
                   v87 = v91 + 1;
@@ -1066,7 +1052,7 @@ LABEL_156:
                   v88[1] = 0;
                   goto LABEL_161;
                 }
-                sub_14016D910((__int64)a1);
+                stbi_refill_buffer((__int64)a1);
                 v93 = *((unsigned __int8 **)a1 + 24);
                 v92 = *v93;
                 v87 = v93 + 1;
@@ -1083,7 +1069,7 @@ LABEL_158:
 LABEL_161:
                 if ( a1[12] )
                 {
-                  sub_14016D910((__int64)a1);
+                  stbi_refill_buffer((__int64)a1);
                   v95 = *((unsigned __int8 **)a1 + 24);
                   v94 = *v95;
                   v87 = v95 + 1;
@@ -1103,7 +1089,7 @@ LABEL_164:
                   {
                     if ( a1[12] )
                     {
-                      sub_14016D910((__int64)a1);
+                      stbi_refill_buffer((__int64)a1);
                       v97 = *((unsigned __int8 **)a1 + 24);
                       v96 = *v97;
                       v87 = v97 + 1;
@@ -1238,7 +1224,7 @@ LABEL_211:
       goto LABEL_40;
     if ( a1[12] )
     {
-      sub_14016D910((__int64)a1);
+      stbi_refill_buffer((__int64)a1);
       v25 = *((char **)a1 + 24);
       v28 = *((_QWORD *)a1 + 25);
 LABEL_40:
@@ -1261,7 +1247,7 @@ LABEL_43:
       v158[v31 + 1] = 0;
       goto LABEL_48;
     }
-    sub_14016D910((__int64)a1);
+    stbi_refill_buffer((__int64)a1);
     v25 = *((char **)a1 + 24);
     v28 = *((_QWORD *)a1 + 25);
 LABEL_45:
@@ -1277,7 +1263,7 @@ LABEL_45:
 LABEL_48:
     if ( a1[12] )
     {
-      sub_14016D910((__int64)a1);
+      stbi_refill_buffer((__int64)a1);
       v34 = *((char **)a1 + 24);
       v33 = *v34;
       v25 = v34 + 1;
@@ -1295,7 +1281,7 @@ LABEL_51:
       {
         if ( a1[12] )
         {
-          sub_14016D910((__int64)a1);
+          stbi_refill_buffer((__int64)a1);
           v25 = (char *)++*((_QWORD *)a1 + 24);
         }
       }
@@ -1348,7 +1334,7 @@ LABEL_64:
         {
           if ( a1[12] )
           {
-            sub_14016D910((__int64)a1);
+            stbi_refill_buffer((__int64)a1);
             v42 = *((unsigned __int8 **)a1 + 24);
             v41 = *v42;
             *((_QWORD *)a1 + 24) = (uint64)(uintptr_t)(v42 + 1);
@@ -1383,7 +1369,7 @@ LABEL_64:
             {
               if ( a1[12] )
               {
-                sub_14016D910((__int64)a1);
+                stbi_refill_buffer((__int64)a1);
                 v48 = *((unsigned __int8 **)a1 + 24);
                 v47 = *v48;
                 *((_QWORD *)a1 + 24) = (uint64)(uintptr_t)(v48 + 1);
@@ -1437,7 +1423,7 @@ LABEL_64:
           {
             if ( a1[12] )
             {
-              sub_14016D910((__int64)a1);
+              stbi_refill_buffer((__int64)a1);
               v54 = *((unsigned __int8 **)a1 + 24);
               v53 = *v54;
               v52 = v54 + 1;
@@ -1482,7 +1468,7 @@ LABEL_64:
             {
               if ( a1[12] )
               {
-                sub_14016D910((__int64)a1);
+                stbi_refill_buffer((__int64)a1);
                 v64 = *((unsigned __int8 **)a1 + 24);
                 v63 = *v64;
                 *((_QWORD *)a1 + 24) = (uint64)(uintptr_t)(v64 + 1);
@@ -1621,44 +1607,32 @@ LABEL_195:
 #undef v158
 #undef v159
 
-// 14015C060: variable 'v75' is possibly undefined
-// 14015C07A: variable 'v76' is possibly undefined
-// 14015C0BA: variable 'v78' is possibly undefined
-// 14015C0D4: variable 'v79' is possibly undefined
-// 14015C116: variable 'v80' is possibly undefined
-// 14015C130: variable 'v81' is possibly undefined
-// 14015C184: variable 'v82' is possibly undefined
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272B60: using guessed type __int16[89];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015C5E0) ----------------------------------------------------
 __int64            sub_14015C5E0(__int64 a1, __int64 a2)
 {
-  char *v2; // rax
-  char v5; // cl
-  char *v6; // rax
-  char v7; // cl
-  int v8; // edi
-  int v9; // edi
-  int v10; // eax
-  unsigned __int64 v11; // rbp
-  __int64 v12; // rcx
-  __int64 v13; // rax
-       char *v14; // rdx
-  int v16; // eax
-  int v17; // edi
-  __int64 v18; // rdi
-  int v19; // eax
-  int v20; // ecx
+  char *v2;
+  char v5;
+  char *v6;
+  char v7;
+  int v8;
+  int v9;
+  int v10;
+  unsigned __int64 v11;
+  __int64 v12;
+  __int64 v13;
+       char *v14;
+  int v16;
+  int v17;
+  __int64 v18;
+  int v19;
+  int v20;
 
   v2 = *(char **)(a1 + 192);
   if ( (unsigned __int64)v2 >= *(_QWORD *)(a1 + 200) )
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_42;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v2 = *(char **)(a1 + 192);
   }
   v5 = *v2;
@@ -1674,7 +1648,7 @@ LABEL_42:
     *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("not BMP");
     return 0;
   }
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   v6 = *(char **)(a1 + 192);
 LABEL_8:
   v7 = *v6;
@@ -1807,26 +1781,24 @@ LABEL_40:
   return 1;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015C9B0) ----------------------------------------------------
 __int64            sub_14015C9B0(__int64 a1)
 {
-  char *v1; // rax
-  char v3; // cl
-  char *v4; // rax
-  char v5; // cl
-  int v6; // ebx
-  unsigned __int64 v7; // rax
-  __int64 v8; // rdx
-  __int64 result; // rax
+  char *v1;
+  char v3;
+  char *v4;
+  char v5;
+  int v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  __int64 result;
 
   v1 = *(char **)(a1 + 192);
   if ( (unsigned __int64)v1 >= *(_QWORD *)(a1 + 200) )
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_14;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v1 = *(char **)(a1 + 192);
   }
   v3 = *v1;
@@ -1838,7 +1810,7 @@ __int64            sub_14015C9B0(__int64 a1)
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v4 = *(char **)(a1 + 192);
       goto LABEL_8;
     }
@@ -1871,24 +1843,23 @@ LABEL_15:
   return result;
 }
 
-
 //----- (000000014015CAD0) ----------------------------------------------------
 __int64            sub_14015CAD0(__int64 a1)
 {
-  char *v1; // rax
-  char v3; // cl
-  char *v4; // rax
-  char v5; // cl
-  int v6; // ebx
-  unsigned __int64 v7; // rax
-  __int64 v8; // rdx
+  char *v1;
+  char v3;
+  char *v4;
+  char v5;
+  int v6;
+  unsigned __int64 v7;
+  __int64 v8;
 
   v1 = *(char **)(a1 + 192);
   if ( (unsigned __int64)v1 >= *(_QWORD *)(a1 + 200) )
   {
     if ( !*(_DWORD *)(a1 + 48) )
       return 0;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v1 = *(char **)(a1 + 192);
   }
   v3 = *v1;
@@ -1900,7 +1871,7 @@ __int64            sub_14015CAD0(__int64 a1)
     {
       if ( !*(_DWORD *)(a1 + 48) )
         return 0;
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v4 = *(char **)(a1 + 192);
     }
     v5 = *v4;
@@ -1928,16 +1899,15 @@ __int64            sub_14015CAD0(__int64 a1)
   return 0;
 }
 
-
 //----- (000000014015CBD0) ----------------------------------------------------
 __int16            sub_14015CBD0(_WORD *a1, unsigned __int8 *a2)
 {
-  int v2; // r10d
-  unsigned __int8 *v4; // r11
-  __int64 v5; // rax
-  int v6; // ebx
-  int v7; // edi
-  int v8; // r8d
+  int v2;
+  unsigned __int8 *v4;
+  __int64 v5;
+  int v6;
+  int v7;
+  int v8;
 
   v2 = 0;
   v4 = a2;
@@ -1974,32 +1944,31 @@ __int16            sub_14015CBD0(_WORD *a1, unsigned __int8 *a2)
   return v5;
 }
 
-
 //----- (000000014015CCB0) ----------------------------------------------------
 __int64            sub_14015CCB0(_WORD *a1, int *a2)
 {
-  int v2; // edi
-  int v4; // r9d
-  int v5; // r11d
-  __int64 v6; // r8
-  int v7; // eax
-  char *v8; // rcx
-  __int64 v9; // rax
-  unsigned int *v10; // r15
-  int v11; // r10d
-  unsigned int v12; // edx
-  int v13; // ebx
-  __int64 v14; // r9
-  int i; // esi
-  unsigned __int8 *v16; // rcx
-  _WORD *v17; // r8
-  unsigned int v18; // r11d
-  unsigned int v19; // eax
-  unsigned __int8 *v20; // rsi
-  unsigned __int16 *v21; // rbp
-  unsigned int v22; // eax
-  char v23; // cl
-  int v24; // eax
+  int v2;
+  int v4;
+  int v5;
+  __int64 v6;
+  int v7;
+  char *v8;
+  __int64 v9;
+  unsigned int *v10;
+  int v11;
+  unsigned int v12;
+  int v13;
+  __int64 v14;
+  int i;
+  unsigned __int8 *v16;
+  _WORD *v17;
+  unsigned int v18;
+  unsigned int v19;
+  unsigned __int8 *v20;
+  unsigned __int16 *v21;
+  unsigned int v22;
+  char v23;
+  int v24;
 
   v2 = 0;
   v4 = 0;
@@ -2062,7 +2031,7 @@ __int64            sub_14015CCB0(_WORD *a1, int *a2)
     ++v10;
   }
   *(_DWORD *)&a1[2 * v11 + 770] = -1;
-  sub_1401FCD30((void *)(uintptr_t)(a1), 0xFFu, 0x200u);
+  crt_memset((void *)(uintptr_t)(a1), 0xFFu, 0x200u);
   if ( v13 > 0 )
   {
     v20 = (unsigned __int8 *)(a1 + 640);
@@ -2075,7 +2044,7 @@ __int64            sub_14015CCB0(_WORD *a1, int *a2)
         v23 = 9 - v22;
         v24 = 1 << (9 - v22);
         if ( v24 > 0 )
-          sub_1401FCD30((void *)(uintptr_t)((_WORD *)((char *)a1 + (*v21 << v23))), v2, v24);
+          crt_memset((void *)(uintptr_t)((_WORD *)((char *)a1 + (*v21 << v23))), v2, v24);
       }
       ++v2;
       ++v21;
@@ -2086,15 +2055,13 @@ __int64            sub_14015CCB0(_WORD *a1, int *a2)
   return 1;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015CE80) ----------------------------------------------------
 __int64            sub_14015CE80(__int64 a1)
 {
-  __int64 v2; // rdi
-  char *v3; // rax
-  unsigned char v4; // cl
-  char *v5; // rax
+  __int64 v2;
+  char *v3;
+  unsigned char v4;
+  char *v5;
 
   v2 = 0;
   while ( 1 )
@@ -2104,7 +2071,7 @@ __int64            sub_14015CE80(__int64 a1)
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v5 = *(char **)(a1 + 192);
         v4 = *v5;
         *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v5 + 1);
@@ -2128,69 +2095,66 @@ __int64            sub_14015CE80(__int64 a1)
   return 0;
 }
 
-// 14026E760: using guessed type _BYTE byte_14026E760[8];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015CF70) ----------------------------------------------------
 __int64            sub_14015CF70(__int64 a1)
 {
-  int v2; // ecx
-  int v3; // ecx
-  unsigned int v4; // r12d
-  int v5; // eax
-  unsigned int v6; // r12d
-  int v7; // esi
-  int v8; // r10d
-  unsigned int v9; // eax
-  int v10; // r12d
-  unsigned int v11; // r9d
-  int v12; // r10d
-  int v13; // r15d
-  __int64 v14; // r14
-  __int64 v15; // rbp
-  int v16; // r8d
-  unsigned int v17; // edx
-  unsigned int v18; // esi
-  char v19; // r11
-  unsigned __int64 v20; // rdi
-  unsigned __int8 *v21; // rax
-  unsigned __int8 v22; // cl
-  __int64 v23; // rax
-  int v24; // r13d
-  int v25; // esi
-  int v26; // edx
-  unsigned __int64 v27; // r10
-  unsigned int v28; // r9d
-  int v29; // r8d
-  unsigned __int8 *v30; // rax
-  unsigned __int8 v31; // cl
-  unsigned int v32; // eax
-  unsigned int v33; // ecx
-  int v34; // eax
-  int v35; // edi
-  unsigned __int8 v36; // r11
-  int v37; // edx
-  unsigned int v38; // r9d
-  int v39; // r8d
-  unsigned __int64 v40; // r10
-  unsigned __int8 *v41; // rax
-  unsigned __int8 v42; // cl
-  int v43; // edi
-  int v44; // ecx
-  int v45; // edi
-  int v46; // eax
-  int v47; // ecx
-  int v48; // edi
-  int v49; // eax
-  __int64 v51; // [rsp+0h] [rbp-A48h] BYREF
-  int v52; // [rsp+20h] [rbp-A28h]
-  int v53; // [rsp+24h] [rbp-A24h]
-  _WORD v54[1016]; // [rsp+30h] [rbp-A18h] BYREF
-  unsigned char v55[19]; // [rsp+820h] [rbp-228h] BYREF
-  __int16 v56; // [rsp+830h] [rbp-218h]
-  char v57; // [rsp+832h] [rbp-216h]
-  unsigned __int8 v59[464]; // [rsp+840h] [rbp-208h] BYREF
-  __int64 v60; // [rsp+A10h] [rbp-38h]
+  int v2;
+  int v3;
+  unsigned int v4;
+  int v5;
+  unsigned int v6;
+  int v7;
+  int v8;
+  unsigned int v9;
+  int v10;
+  unsigned int v11;
+  int v12;
+  int v13;
+  __int64 v14;
+  __int64 v15;
+  int v16;
+  unsigned int v17;
+  unsigned int v18;
+  char v19;
+  unsigned __int64 v20;
+  unsigned __int8 *v21;
+  unsigned __int8 v22;
+  __int64 v23;
+  int v24;
+  int v25;
+  int v26;
+  unsigned __int64 v27;
+  unsigned int v28;
+  int v29;
+  unsigned __int8 *v30;
+  unsigned __int8 v31;
+  unsigned int v32;
+  unsigned int v33;
+  int v34;
+  int v35;
+  unsigned __int8 v36;
+  int v37;
+  unsigned int v38;
+  int v39;
+  unsigned __int64 v40;
+  unsigned __int8 *v41;
+  unsigned __int8 v42;
+  int v43;
+  int v44;
+  int v45;
+  int v46;
+  int v47;
+  int v48;
+  int v49;
+  __int64 v51;
+  int v52;
+  int v53;
+  _WORD v54[1016];
+  unsigned char v55[19];
+  __int16 v56;
+  char v57;
+  unsigned __int8 v59[464];
+  __int64 v60;
 
   v2 = *(_DWORD *)(a1 + 16);
   if ( v2 < 5 )
@@ -2228,7 +2192,6 @@ __int64            sub_14015CF70(__int64 a1)
   *(_DWORD *)(a1 + 20) = v9 >> 4;
   *(_DWORD *)(a1 + 16) = v12;
   v13 = 0;
-
 
   v14 = (v9 & 0xF) + 4;
   v52 = v10 + v7;
@@ -2429,7 +2392,7 @@ LABEL_43:
         }
         if ( v24 - v13 < v35 )
           goto LABEL_60;
-        sub_1401FCD30((void *)(uintptr_t)(&v59[v13]), v36, (unsigned int)v35);
+        crt_memset((void *)(uintptr_t)(&v59[v13]), v36, (unsigned int)v35);
       }
       else
       {
@@ -2455,20 +2418,17 @@ LABEL_60:
 
 // 14015D05E: conditional instruction was optimized away because eax.4<10u
 // 14015D307: conditional instruction was optimized away because eax.4==12
-// 14015D356: variable 'v36' is possibly undefined
-// 14026FED0: using guessed type unsigned __int8 byte_14026FED0[32];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (000000014015D400) ----------------------------------------------------
 __int64            sub_14015D400(_QWORD *a1, _BYTE *a2, int a3)
 {
-  _BYTE *v4; // rdi
-  unsigned int v5; // esi
-  _BYTE *v6; // rax
-  __int64 v7; // rdx
-  __int64 v8; // rdx
-  char v9; // cl
-  bool v10; // zf
+  _BYTE *v4;
+  unsigned int v5;
+  _BYTE *v6;
+  __int64 v7;
+  __int64 v8;
+  char v9;
+  bool v10;
 
   v4 = (_BYTE *)a1[3];
   v5 = *(_DWORD *)*a1 * *(_DWORD *)(*a1 + 4LL);
@@ -2493,7 +2453,7 @@ __int64            sub_14015D400(_QWORD *a1, _BYTE *a2, int a3)
   else
   {
     if ( a3 != 4 )
-      sub_14023E640(
+      crt_assert(
         (char *)L"out_n == 2 || out_n == 4",
         (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
         0x12C3u);
@@ -2514,19 +2474,16 @@ __int64            sub_14015D400(_QWORD *a1, _BYTE *a2, int a3)
   return 1;
 }
 
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272960: using guessed type __int16[25];
-
 //----- (000000014015D4C0) ----------------------------------------------------
 __int64            sub_14015D4C0(_QWORD *a1, _WORD *a2, int a3)
 {
-  _WORD *v4; // rdi
-  unsigned int v5; // esi
-  _WORD *v6; // rax
-  __int64 v7; // rdx
-  __int64 v8; // rdx
-  __int16 v9; // cx
-  bool v10; // zf
+  _WORD *v4;
+  unsigned int v5;
+  _WORD *v6;
+  __int64 v7;
+  __int64 v8;
+  __int16 v9;
+  bool v10;
 
   v4 = (_WORD *)a1[3];
   v5 = *(_DWORD *)*a1 * *(_DWORD *)(*a1 + 4LL);
@@ -2551,7 +2508,7 @@ __int64            sub_14015D4C0(_QWORD *a1, _WORD *a2, int a3)
   else
   {
     if ( a3 != 4 )
-      sub_14023E640(
+      crt_assert(
         (char *)L"out_n == 2 || out_n == 4",
         (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
         0x12DCu);
@@ -2572,27 +2529,24 @@ __int64            sub_14015D4C0(_QWORD *a1, _WORD *a2, int a3)
   return 1;
 }
 
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272960: using guessed type __int16[25];
-
 //----- (000000014015D5D0) ----------------------------------------------------
 __int64            sub_14015D5D0(char *Block, int a2, int a3, int a4)
 {
-  int v5; // ebx
-  __int64 v6; // rbp
-  __int64 v7; // rdi
-  int v9; // ecx
-  int v10; // ebx
-  __int64 v11; // rdx
-  char *v12; // r9
-  __m128i v13; // xmm2
-  __m128i v14; // xmm0
-  __m128i v15; // xmm1
-  __m128i v16; // xmm0
-  __m128i v17; // xmm1
-  __m128i v18; // xmm0
-  __m128i v19; // xmm1
-  __int64 i; // rax
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  int v9;
+  int v10;
+  __int64 v11;
+  char *v12;
+  __m128i v13;
+  __m128i v14;
+  __m128i v15;
+  __m128i v16;
+  __m128i v17;
+  __m128i v18;
+  __m128i v19;
+  __int64 i;
 
   v5 = a4 * a3 * a2;
   v6 = v5;
@@ -2638,16 +2592,13 @@ __int64            sub_14015D5D0(char *Block, int a2, int a3, int a4)
 
 // 14015D648: conditional instruction was optimized away because ebx.4>=20
 // 14015D643: mask 0x8000001F is shortened because ebx.4 <= 0x7FFFFFFF
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 1402791D0: using guessed type __int128 xmmword_1402791D0;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (000000014015D730) ----------------------------------------------------
 __int64            sub_14015D730(unsigned __int8 *Block, int a2, int a3, int a4)
 {
-  int v5; // esi
-  __int64 v6; // rbx
-  __int64 i; // rax
+  int v5;
+  __int64 v6;
+  __int64 i;
 
   v5 = a4 * a3 * a2;
   v6 = sr_path_malloc(2 * v5);
@@ -2668,9 +2619,6 @@ __int64            sub_14015D730(unsigned __int8 *Block, int a2, int a3, int a4)
   }
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015D7E0) ----------------------------------------------------
 char *sub_14015D7E0(char *Block,int source_channels,int channels,int width,int height)
 {
@@ -2684,43 +2632,43 @@ char *sub_14015D7E0(char *Block,int source_channels,int channels,int width,int h
 //----- (000000014015DD00) ----------------------------------------------------
 char *           sub_14015DD00(char *Block, int a2, int a3, int a4, int a5)
 {
-  char *v10; // r14
-  int v11; // r11d
-  char *v12; // r9
-  char *v13; // rax
-  int i; // edx
-  int j; // edx
-  __int16 v16; // cx
-  int k; // edx
-  __int16 v18; // cx
-  int m; // edx
-  int n; // edx
-  __int16 v21; // cx
-  int ii; // edx
-  __int16 v23; // cx
-  int mm; // edx
-  __int16 v25; // cx
-  int jj; // r10d
-  int v27; // r8d
-  int v28; // ecx
-  int kk; // r10d
-  int v30; // r8d
-  int v31; // ecx
-  int v32; // edx
-  int v33; // ecx
-  int nn; // r10d
-  int v35; // r8d
-  int v36; // ecx
-  int i1; // r10d
-  int v38; // r8d
-  int v39; // ecx
-  int i2; // edx
-  __int16 v41; // cx
+  char *v10;
+  int v11;
+  char *v12;
+  char *v13;
+  int i;
+  int j;
+  __int16 v16;
+  int k;
+  __int16 v18;
+  int m;
+  int n;
+  __int16 v21;
+  int ii;
+  __int16 v23;
+  int mm;
+  __int16 v25;
+  int jj;
+  int v27;
+  int v28;
+  int kk;
+  int v30;
+  int v31;
+  int v32;
+  int v33;
+  int nn;
+  int v35;
+  int v36;
+  int i1;
+  int v38;
+  int v39;
+  int i2;
+  __int16 v41;
 
   if ( a3 == a2 )
     return Block;
   if ( (unsigned int)(a3 - 1) > 3 )
-    sub_14023E640(
+    crt_assert(
       (char *)L"req_comp >= 1 && req_comp <= 4",
       (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
       0x6DDu);
@@ -2874,7 +2822,7 @@ LABEL_44:
               break;
             continue;
           default:
-            sub_14023E640((char *)L"0", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0x6FAu);
+            crt_assert((char *)L"0", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0x6FAu);
             free(Block);
             free(v10);
             *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("unsupported");
@@ -2894,45 +2842,38 @@ LABEL_44:
   }
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 1402724F0: using guessed type __int16[31];
-// 140272530: using guessed type __int16[2];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015E240)
 __int64 sub_14015E240(void) { return sr_client_cpu_leaf1_edx(); }
-
 
 //----- (000000014015E260) ----------------------------------------------------
 __int64            sub_14015E260(__int64 a1, unsigned __int8 *a2, unsigned int a3, int a4, int a5, int a6, int a7)
 {
-  unsigned __int8 *v7; // r14
-  int *v9; // rcx
-  unsigned int v10; // r11d
-  int v11; // edi
-  int v12; // r8d
-  int v13; // ecx
-  int v14; // ecx
-  void *v15; // rax
-  int v16; // r10d
-  __int64 v17; // r15
-  int *v18; // r8
-  unsigned int v19; // r9d
-  unsigned __int32 v20; // ecx
-  int v21; // eax
-  unsigned int v22; // eax
-  __int64 v23; // r12
-  unsigned int v24; // r9d
-  int v25; // ecx
-  int v26; // esi
-  unsigned int v27; // ebx
-  int v28; // r14d
-  int v29; // ecx
-  int v30; // eax
-  int v31; // esi
-  int v32; // r8d
-  int v33; // ebx
+  unsigned __int8 *v7;
+  int *v9;
+  unsigned int v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  void *v15;
+  int v16;
+  __int64 v17;
+  int *v18;
+  unsigned int v19;
+  unsigned __int32 v20;
+  int v21;
+  unsigned int v22;
+  __int64 v23;
+  unsigned int v24;
+  int v25;
+  int v26;
+  unsigned int v27;
+  int v28;
+  int v29;
+  int v30;
+  int v31;
+  int v32;
+  int v33;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14015E260[288];
 #define v35 (*(__int64 (*))(void *)(sr_frame_14015E260 + 0)) /* [rsp+0h] */
@@ -3059,7 +3000,7 @@ __int64            sub_14015E260(__int64 a1, unsigned __int8 *a2, unsigned int a
                 v33 = v11 * v45;
                 do
                 {
-                  sub_1401FC920(
+                  crt_memcpy(
                     (__m128i *)((char *)Block + (unsigned int)(v11 * v32 * **(_DWORD **)a1) + v33),
                     (     __m128i *)(*(_QWORD *)(a1 + 24) + v31),
                     v11);
@@ -3139,12 +3080,6 @@ __int64            sub_14015E260(__int64 a1, unsigned __int8 *a2, unsigned int a
 #undef v66
 #undef v67
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140278E00: using guessed type __int128 xmmword_140278E00;
-// 140278F00: using guessed type __int128 xmmword_140278F00;
-// 140278F70: using guessed type __int128 xmmword_140278F70;
-// 140278F90: using guessed type __int128 xmmword_140278F90;
-
 //----- (000000014015E5F0) ----------------------------------------------------
 __int64            sub_14015E5F0(
         _QWORD *a1,
@@ -3156,180 +3091,180 @@ __int64            sub_14015E5F0(
         int a7,
         int a8)
 {
-  unsigned int v8; // r12d
-  unsigned int v10; // r15d
-  int v11; // eax
-  _QWORD *v12; // r8
-  int v13; // ebx
-  int v14; // r13d
-  int v15; // r14d
-  __int64 v17; // rax
-  _QWORD *v18; // r11
-  int v19; // r8d
-  int v20; // r10d
-  int v21; // r9d
-  int v22; // ecx
-  unsigned int v23; // r9d
-  __int64 v24; // rax
-       char *v25; // rdx
-  unsigned int v26; // edx
-  __int64 v27; // r14
-  __int64 v28; // r15
-  __int64 v29; // rbx
-  __int64 v30; // rbp
-  unsigned __int8 *v31; // rdi
-  unsigned __int8 *v32; // r11
-  __int64 v33; // rbx
-  __int64 v34; // rsi
-  __int64 v35; // r10
-  unsigned __int8 *v36; // rdx
-  __int64 v37; // r9
-  __int64 v38; // r8
-  unsigned __int8 v39; // al
-  unsigned __int8 v40; // al
-  unsigned __int8 v41; // cl
-       __m128i *v42; // rdi
-  char *v43; // rsi
-  __m128i *v44; // rbx
-  unsigned __int8 *v45; // r12
-  unsigned __int8 *v46; // kr08_8
-  unsigned int v47; // edx
-  __int64 v48; // r9
-  __m128i *v49; // rcx
-  __int64 v50; // rdx
-  __int64 v51; // r10
-  unsigned __int8 *v52; // rcx
-  __int64 v53; // rdx
-  __int64 v54; // r11
-  __int64 v55; // r10
-  __int64 v56; // rcx
-  unsigned __int64 v57; // rdx
-  signed __int64 v58; // rcx
-  signed __int64 v59; // rdx
-  unsigned __int8 *v60; // rax
-  __m128i v61; // xmm0
-  __m128i v62; // xmm1
-  __m128i v63; // xmm2
-  __m128i v64; // xmm1
-  __m128i v65; // xmm0
-  __m128i v66; // xmm2
-  __m128i v67; // xmm0
-  __m128i v68; // xmm1
-  __m128i v69; // xmm1
-  __m128i v70; // xmm0
-  __m128i v71; // xmm2
-  unsigned __int8 *v72; // rcx
-  __int64 v73; // rdx
-  __int64 v74; // rbp
-  char *v75; // rdx
-  __int64 v76; // r9
-  int v77; // ecx
-  int v78; // eax
-  __int64 v79; // rdx
-  __int8 *v80; // rcx
-  __int64 v81; // r10
-  __int64 v82; // r8
-  __int64 v83; // rax
-  __int64 v84; // r12
-  __int8 *v85; // r9
-  signed __int64 v86; // rcx
-  char *v87; // rbx
-  signed __int64 v88; // rsi
-  unsigned __int8 *v89; // r14
-  int v90; // r10d
-  int v91; // ebp
-  int v92; // r13d
-  signed int v93; // r11d
-  signed int v94; // ecx
-  signed int v95; // eax
-  __int64 v96; // r10
-  unsigned __int8 *v97; // rcx
-  __int64 v98; // rdx
-  unsigned __int8 v99; // al
-  __int64 v100; // r10
-  unsigned __int8 *v101; // rcx
-  __int64 v102; // rdx
-  __int64 v103; // rcx
-  __int64 v104; // rax
-  int v105; // r10d
-  __int64 v106; // r9
-       __m128i *v107; // rcx
-  signed __int64 v108; // rdx
-  signed __int64 v109; // rbx
-  signed __int64 v110; // rdx
-  __int64 v111; // rcx
-  char *v112; // r8
-  signed __int64 v113; // rcx
-  __int64 v114; // r10
-  signed __int64 v115; // r8
-       __m128i *v116; // rax
-  __m128i v117; // xmm0
-  __m128i v118; // xmm1
-  __m128i v119; // xmm2
-  __m128i v120; // xmm1
-  __m128i v121; // xmm0
-  __m128i v122; // xmm2
-  __m128i v123; // xmm0
-  __m128i v124; // xmm1
-  __m128i v125; // xmm1
-  __m128i v126; // xmm0
-  __m128i v127; // xmm2
-  signed __int64 v128; // rsi
-       __m128i *v129; // rcx
-  signed __int64 v130; // rbx
-  __int64 v131; // r9
-  signed __int64 v132; // r8
-  signed __int64 v133; // rdx
-  signed __int64 v134; // rbx
-  int v135; // ecx
-  int v136; // eax
-  __m128i *v137; // r10
-  signed __int64 v138; // r13
-  char *v139; // r15
-  __int8 *v140; // rbp
-  int v141; // r11d
-  int v142; // esi
-  int v143; // r12d
-  signed int v144; // ebx
-  signed int v145; // ecx
-  signed int v146; // eax
-       __m128i *v147; // rcx
-  signed __int64 v148; // rdx
-  signed __int64 v149; // rbx
-  unsigned __int8 v150; // al
-       __m128i *v151; // rcx
-  signed __int64 v152; // rdx
-  signed __int64 v153; // rbx
-  __int64 v154; // rbp
-  __int64 v155; // rsi
-  __int64 v156; // r14
-  __int64 v157; // rax
-  __int64 v158; // rdi
-  char *v159; // r9
-  _BYTE *v160; // r8
-  char v161; // r10
-  int v162; // ebx
-  unsigned __int64 v163; // r11
-  char v164; // al
-  int v165; // ebx
-  unsigned __int64 v166; // r11
-  char v167; // al
-  char v168; // cl
-  int v169; // r11d
-  unsigned __int64 v170; // rbx
-  char v171; // al
-  __int64 v172; // rbx
-  __int64 i; // rcx
-  __int64 v174; // r8
-  _BYTE *v175; // rdx
-  _BYTE *v176; // rcx
-  char v177; // al
-  unsigned __int8 *v179; // r9
-  unsigned __int8 *v180; // r8
-  unsigned int v181; // r14d
-  __int64 v182; // r10
-  __int16 v183; // dx
-  __int16 v184; // cx
+  unsigned int v8;
+  unsigned int v10;
+  int v11;
+  _QWORD *v12;
+  int v13;
+  int v14;
+  int v15;
+  __int64 v17;
+  _QWORD *v18;
+  int v19;
+  int v20;
+  int v21;
+  int v22;
+  unsigned int v23;
+  __int64 v24;
+       char *v25;
+  unsigned int v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  unsigned __int8 *v31;
+  unsigned __int8 *v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v35;
+  unsigned __int8 *v36;
+  __int64 v37;
+  __int64 v38;
+  unsigned __int8 v39;
+  unsigned __int8 v40;
+  unsigned __int8 v41;
+       __m128i *v42;
+  char *v43;
+  __m128i *v44;
+  unsigned __int8 *v45;
+  unsigned __int8 *v46;
+  unsigned int v47;
+  __int64 v48;
+  __m128i *v49;
+  __int64 v50;
+  __int64 v51;
+  unsigned __int8 *v52;
+  __int64 v53;
+  __int64 v54;
+  __int64 v55;
+  __int64 v56;
+  unsigned __int64 v57;
+  signed __int64 v58;
+  signed __int64 v59;
+  unsigned __int8 *v60;
+  __m128i v61;
+  __m128i v62;
+  __m128i v63;
+  __m128i v64;
+  __m128i v65;
+  __m128i v66;
+  __m128i v67;
+  __m128i v68;
+  __m128i v69;
+  __m128i v70;
+  __m128i v71;
+  unsigned __int8 *v72;
+  __int64 v73;
+  __int64 v74;
+  char *v75;
+  __int64 v76;
+  int v77;
+  int v78;
+  __int64 v79;
+  __int8 *v80;
+  __int64 v81;
+  __int64 v82;
+  __int64 v83;
+  __int64 v84;
+  __int8 *v85;
+  signed __int64 v86;
+  char *v87;
+  signed __int64 v88;
+  unsigned __int8 *v89;
+  int v90;
+  int v91;
+  int v92;
+  signed int v93;
+  signed int v94;
+  signed int v95;
+  __int64 v96;
+  unsigned __int8 *v97;
+  __int64 v98;
+  unsigned __int8 v99;
+  __int64 v100;
+  unsigned __int8 *v101;
+  __int64 v102;
+  __int64 v103;
+  __int64 v104;
+  int v105;
+  __int64 v106;
+       __m128i *v107;
+  signed __int64 v108;
+  signed __int64 v109;
+  signed __int64 v110;
+  __int64 v111;
+  char *v112;
+  signed __int64 v113;
+  __int64 v114;
+  signed __int64 v115;
+       __m128i *v116;
+  __m128i v117;
+  __m128i v118;
+  __m128i v119;
+  __m128i v120;
+  __m128i v121;
+  __m128i v122;
+  __m128i v123;
+  __m128i v124;
+  __m128i v125;
+  __m128i v126;
+  __m128i v127;
+  signed __int64 v128;
+       __m128i *v129;
+  signed __int64 v130;
+  __int64 v131;
+  signed __int64 v132;
+  signed __int64 v133;
+  signed __int64 v134;
+  int v135;
+  int v136;
+  __m128i *v137;
+  signed __int64 v138;
+  char *v139;
+  __int8 *v140;
+  int v141;
+  int v142;
+  int v143;
+  signed int v144;
+  signed int v145;
+  signed int v146;
+       __m128i *v147;
+  signed __int64 v148;
+  signed __int64 v149;
+  unsigned __int8 v150;
+       __m128i *v151;
+  signed __int64 v152;
+  signed __int64 v153;
+  __int64 v154;
+  __int64 v155;
+  __int64 v156;
+  __int64 v157;
+  __int64 v158;
+  char *v159;
+  _BYTE *v160;
+  char v161;
+  int v162;
+  unsigned __int64 v163;
+  char v164;
+  int v165;
+  unsigned __int64 v166;
+  char v167;
+  char v168;
+  int v169;
+  unsigned __int64 v170;
+  char v171;
+  __int64 v172;
+  __int64 i;
+  __int64 v174;
+  _BYTE *v175;
+  _BYTE *v176;
+  char v177;
+  unsigned __int8 *v179;
+  unsigned __int8 *v180;
+  unsigned int v181;
+  __int64 v182;
+  __int16 v183;
+  __int16 v184;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14015E5F0[144];
 #define v185 (*(int (*))(void *)(sr_frame_14015E5F0 + 0)) /* [rsp+20h] */
@@ -3364,7 +3299,7 @@ __int64            sub_14015E5F0(
   v192 = a5 * v13;
   if ( a4 != v11 && a4 != v11 + 1 )
   {
-    sub_14023E640(
+    crt_assert(
       (char *)L"out_n == s->img_n || out_n == s->img_n+1",
       (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
       0x11C8u);
@@ -3569,7 +3504,7 @@ LABEL_235:
       if ( v19 == a4 )
         break;
       if ( v19 + 1 != a4 )
-        sub_14023E640((char *)L"img_n+1 == out_n", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0x121Cu);
+        crt_assert((char *)L"img_n+1 == out_n", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0x121Cu);
       v46 = (unsigned __int8 *)v42;
       a2 = v45;
       switch ( (int)v30 )
@@ -4021,7 +3956,7 @@ LABEL_216:
               else
               {
                 if ( v185 != 3 )
-                  sub_14023E640(
+                  crt_assert(
                     (char *)L"img_n == 3",
                     (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
                     0x1275u);
@@ -4063,7 +3998,7 @@ LABEL_216:
     switch ( (int)v30 )
     {
       case 0:
-        sub_1401FC920(v44, v42, v105);
+        crt_memcpy(v44, v42, v105);
         break;
       case 1:
         if ( v105 > 0 )
@@ -4243,32 +4178,24 @@ LABEL_236:
 // 14015EFFB: conditional instruction was optimized away because r10d.4>=40
 // 14015EB98: mask 0x8000003F is shortened because r13d.4 <= 0x7FFFFFFF
 // 14015EFF5: mask 0x8000003F is shortened because r10d.4 <= 0x7FFFFFFF
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 14026E768: using guessed type _BYTE byte_14026E768[24];
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272890: using guessed type __int16[41];
-// 140272920: using guessed type __int16[17];
-// 140272948: using guessed type __int16[11];
-// 140301848: using guessed type unsigned __int8 byte_140301848[8];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (000000014015F820) ----------------------------------------------------
 __int64            sub_14015F820(__int64 *a1)
 {
-  __int64 result; // rax
-  _BYTE *v2; // rbx
-  unsigned int v3; // edi
-  int v4; // ecx
-  __int64 v5; // rdx
-  char v6; // cl
-  unsigned __int8 *v7; // rbx
-  __int64 v8; // r11
-  unsigned int v9; // eax
-  int v10; // ecx
-  int v11; // edi
-  unsigned int v12; // r10d
-  __int64 v13; // rdx
-  char v14; // cl
+  __int64 result;
+  _BYTE *v2;
+  unsigned int v3;
+  int v4;
+  __int64 v5;
+  char v6;
+  unsigned __int8 *v7;
+  __int64 v8;
+  unsigned int v9;
+  int v10;
+  int v11;
+  unsigned int v12;
+  __int64 v13;
+  char v14;
 
   result = *a1;
   v2 = (_BYTE *)a1[3];
@@ -4294,7 +4221,7 @@ __int64            sub_14015F820(__int64 *a1)
   else
   {
     if ( v4 != 4 )
-      result = sub_14023E640(
+      result = crt_assert(
                  (char *)L"s->img_out_n == 4",
                  (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
                  0x132Du);
@@ -4346,16 +4273,12 @@ __int64            sub_14015F820(__int64 *a1)
   return result;
 }
 
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272998: using guessed type __int16[18];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015F960) ----------------------------------------------------
 _BOOL8            sub_14015F960(__int64 *a1, int a2)
 {
-  int v2; // ebp
-  int v6; // ecx
-  __int64 v7; // rbx
+  int v2;
+  int v6;
+  __int64 v7;
 
   v2 = 0;
   *((_DWORD *)a1 + 4627) = -1;
@@ -4412,52 +4335,50 @@ LABEL_17:
   return 0;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015FAD0) ----------------------------------------------------
 __int64            sub_14015FAD0(_QWORD *a1)
 {
-  __int64 v1; // rbp
-  int v3; // eax
-  __int64 v4; // rbx
-  __int64 v5; // rdi
-  char *v6; // rax
-  int v7; // eax
-  char v8; // cl
-  __int64 v9; // rbx
-  char *v10; // rax
-  char v11; // cl
-  char *v12; // rax
-  char v13; // cl
-  __int64 v14; // rbx
-  unsigned __int64 v15; // rcx
-  unsigned __int8 *v16; // rax
-  unsigned __int8 v17; // dl
-  unsigned __int8 *v18; // rax
-  int v19; // edi
-  unsigned __int8 v20; // cl
-  unsigned __int8 *v21; // rax
-  __int64 v22; // rbx
-  int v23; // ebp
-  unsigned __int64 v24; // rcx
-  unsigned __int8 *v25; // rax
-  unsigned __int8 v26; // dl
-  unsigned __int8 *v27; // rax
-  int v28; // edi
-  unsigned __int8 v29; // cl
-  unsigned __int8 *v30; // rax
-  int v31; // r13d
-  _QWORD *v32; // rbx
-  int v33; // r14d
-  int v34; // r15d
-  int v35; // r12d
-  int v36; // edi
-  __int64 v37; // r10
-  __int64 v38; // r8
-  __int64 v39; // rax
-  char *v40; // r9
-  __int16 v41; // cx
-  __int16 v42; // dx
+  __int64 v1;
+  int v3;
+  __int64 v4;
+  __int64 v5;
+  char *v6;
+  int v7;
+  char v8;
+  __int64 v9;
+  char *v10;
+  char v11;
+  char *v12;
+  char v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int8 *v16;
+  unsigned __int8 v17;
+  unsigned __int8 *v18;
+  int v19;
+  unsigned __int8 v20;
+  unsigned __int8 *v21;
+  __int64 v22;
+  int v23;
+  unsigned __int64 v24;
+  unsigned __int8 *v25;
+  unsigned __int8 v26;
+  unsigned __int8 *v27;
+  int v28;
+  unsigned __int8 v29;
+  unsigned __int8 *v30;
+  int v31;
+  _QWORD *v32;
+  int v33;
+  int v34;
+  int v35;
+  int v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  char *v40;
+  __int16 v41;
+  __int16 v42;
 
   v1 = 0;
   a1[2267] = 0;
@@ -4494,7 +4415,7 @@ __int64            sub_14015FAD0(_QWORD *a1)
           v19 = 0;
           goto LABEL_30;
         }
-        sub_14016D910(*a1);
+        stbi_refill_buffer(*a1);
         v16 = *(unsigned __int8 **)(v14 + 192);
         v15 = *(_QWORD *)(v14 + 200);
       }
@@ -4511,7 +4432,7 @@ __int64            sub_14015FAD0(_QWORD *a1)
 LABEL_30:
       if ( *(_DWORD *)(v14 + 48) )
       {
-        sub_14016D910(v14);
+        stbi_refill_buffer(v14);
         v21 = *(unsigned __int8 **)(v14 + 192);
         v20 = *v21;
         *(_QWORD *)(v14 + 192) = (uint64)(uintptr_t)(v21 + 1);
@@ -4532,7 +4453,7 @@ LABEL_33:
           v28 = 0;
           goto LABEL_39;
         }
-        sub_14016D910(*a1);
+        stbi_refill_buffer(*a1);
         v25 = *(unsigned __int8 **)(v22 + 192);
         v24 = *(_QWORD *)(v22 + 200);
       }
@@ -4561,7 +4482,7 @@ LABEL_42:
 LABEL_39:
       if ( *(_DWORD *)(v22 + 48) )
       {
-        sub_14016D910(v22);
+        stbi_refill_buffer(v22);
         v30 = *(unsigned __int8 **)(v22 + 192);
         v29 = *v30;
         *(_QWORD *)(v22 + 192) = (uint64)(uintptr_t)(v30 + 1);
@@ -4625,7 +4546,7 @@ LABEL_17:
     {
       if ( *(_DWORD *)(v9 + 48) )
       {
-        sub_14016D910(*a1);
+        stbi_refill_buffer(*a1);
         v12 = *(char **)(v9 + 192);
         v13 = *v12;
         *(_QWORD *)(v9 + 192) = (uint64)(uintptr_t)(v12 + 1);
@@ -4703,22 +4624,20 @@ LABEL_47:
   return 1;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014015FFC0) ----------------------------------------------------
 char *           sub_14015FFC0(int **a1, int *a2, _DWORD *a3, _DWORD *a4, unsigned int a5, int *a6)
 {
-  char *v10; // rsi
-  int v11; // eax
-  int *v12; // rcx
-  int v13; // edx
-  int v14; // eax
-  int v15; // r9d
-  char *v16; // rax
-  int *v17; // rcx
-  int *v18; // rcx
-  __int64 v20; // rax
-       char *v21; // rdx
+  char *v10;
+  int v11;
+  int *v12;
+  int v13;
+  int v14;
+  int v15;
+  char *v16;
+  int *v17;
+  int *v18;
+  __int64 v20;
+       char *v21;
 
   v10 = nullptr;
   if ( a5 > 4 )
@@ -4778,14 +4697,14 @@ LABEL_6:
 //----- (0000000140160180) ----------------------------------------------------
 __int64            sub_140160180(void **a1, __int64 a2, __int64 a3, int a4)
 {
-  unsigned __int8 *v5; // rbx
-  int v8; // esi
-  __int64 v9; // rax
-  void *v10; // r14
-  __int64 v11; // r8
-  __int64 v12; // rdx
-  __int64 v13; // rcx
-  __int64 v14; // rcx
+  unsigned __int8 *v5;
+  int v8;
+  __int64 v9;
+  void *v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
 
   v5 = (unsigned __int8 *)a1[3];
   v8 = *(_DWORD *)*a1 * *((_DWORD *)*a1 + 1);
@@ -4839,17 +4758,14 @@ __int64            sub_140160180(void **a1, __int64 a2, __int64 a3, int a4)
   }
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401602C0) ----------------------------------------------------
 __int64            sub_1401602C0(__int64 a1, int a2)
 {
-  __int64 v2; // rdi
-  int v4; // r8d
-  int v5; // r9d
-  int v6; // r8d
-  int v7; // edx
+  __int64 v2;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
 
   v2 = a2;
   if ( *(_DWORD *)(a1 + 18468) < a2 )
@@ -4865,19 +4781,16 @@ __int64            sub_1401602C0(__int64 a1, int a2)
   return (unsigned int)(v7 + v6);
 }
 
-// 14026FBF0: using guessed type int dword_14026FBF0[20];
-// 14026FC40: using guessed type int dword_14026FC40[16];
-
 //----- (0000000140160350) ----------------------------------------------------
 __int64            sub_140160350(__int64 a1)
 {
-  unsigned int v1; // r9d
-  __int64 result; // rax
-  int v3; // r8d
-  unsigned __int64 v4; // r10
-  unsigned __int8 *v5; // rcx
-  unsigned __int8 v6; // dl
-  int v7; // edx
+  unsigned int v1;
+  __int64 result;
+  int v3;
+  unsigned __int64 v4;
+  unsigned __int8 *v5;
+  unsigned __int8 v6;
+  int v7;
 
   v1 = *(_DWORD *)(a1 + 20);
   result = a1;
@@ -4916,13 +4829,12 @@ LABEL_8:
   return result;
 }
 
-
 //----- (00000001401603C0) ----------------------------------------------------
 void sub_1401603C0(__m128i *a1, unsigned int *a2, unsigned int *a3, int *a4, int a5)
 {
-  __int64 v6; // r11
-  __int64 result; // rax
-  int v8; // r9d
+  __int64 v6;
+  __int64 result;
+  int v8;
 
   v6 = sr_client_static_tls();
   if ( *(_DWORD *)(v6 + 8) )
@@ -4940,14 +4852,12 @@ void sub_1401603C0(__m128i *a1, unsigned int *a2, unsigned int *a3, int *a4, int
   return;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140160430) ----------------------------------------------------
 __int64            sub_140160430(char *a1, char *a2)
 {
-  int v2; // eax
-  __int64 v3; // rcx
-  __int64 v5; // [rsp+40h] [rbp+18h] BYREF
+  int v2;
+  __int64 v3;
+  __int64 v5;
 
   v2 = sub_14020B8E4(&v5, a1, a2);
   v3 = v5;
@@ -4956,14 +4866,13 @@ __int64            sub_140160430(char *a1, char *a2)
   return v3;
 }
 
-
 //----- (0000000140160460) ----------------------------------------------------
 __int64            sub_140160460(__int64 a1, int a2, unsigned int a3)
 {
-  __int64 v4; // rbx
-  __int64 v5; // rdi
-  void *v6; // rcx
-  void *v7; // rcx
+  __int64 v4;
+  __int64 v5;
+  void *v6;
+  void *v7;
 
   if ( a2 > 0 )
   {
@@ -4998,18 +4907,17 @@ __int64            sub_140160460(__int64 a1, int a2, unsigned int a3)
   return a3;
 }
 
-
 //----- (00000001401604F0) ----------------------------------------------------
 __int64            sub_1401604F0(__int64 a1)
 {
-  unsigned __int8 *v1; // rax
-  unsigned __int64 v3; // rcx
-  unsigned __int8 v4; // dl
-  unsigned __int8 *v5; // rax
-  int v6; // edi
-  unsigned __int8 v7; // cl
-  unsigned __int8 *v9; // rax
-  unsigned __int8 v10; // cl
+  unsigned __int8 *v1;
+  unsigned __int64 v3;
+  unsigned __int8 v4;
+  unsigned __int8 *v5;
+  int v6;
+  unsigned __int8 v7;
+  unsigned __int8 *v9;
+  unsigned __int8 v10;
 
   v1 = *(unsigned __int8 **)(a1 + 192);
   v3 = *(_QWORD *)(a1 + 200);
@@ -5020,7 +4928,7 @@ __int64            sub_1401604F0(__int64 a1)
       v6 = 0;
       goto LABEL_7;
     }
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v1 = *(unsigned __int8 **)(a1 + 192);
     v3 = *(_QWORD *)(a1 + 200);
   }
@@ -5037,25 +4945,24 @@ __int64            sub_1401604F0(__int64 a1)
 LABEL_7:
   if ( !*(_DWORD *)(a1 + 48) )
     return (unsigned int)(v6 << 8);
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   v9 = *(unsigned __int8 **)(a1 + 192);
   v10 = *v9;
   *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v9 + 1);
   return (v6 << 8) + (unsigned int)v10;
 }
 
-
 //----- (00000001401605B0) ----------------------------------------------------
 __int64            sub_1401605B0(__int64 a1)
 {
-  unsigned __int8 *v1; // rax
-  unsigned __int64 v3; // rcx
-  unsigned __int8 v4; // dl
-  unsigned __int8 *v5; // rax
-  unsigned int v6; // edi
-  unsigned __int8 v7; // cl
-  unsigned __int8 *v9; // rax
-  unsigned __int8 v10; // cl
+  unsigned __int8 *v1;
+  unsigned __int64 v3;
+  unsigned __int8 v4;
+  unsigned __int8 *v5;
+  unsigned int v6;
+  unsigned __int8 v7;
+  unsigned __int8 *v9;
+  unsigned __int8 v10;
 
   v1 = *(unsigned __int8 **)(a1 + 192);
   v3 = *(_QWORD *)(a1 + 200);
@@ -5066,7 +4973,7 @@ __int64            sub_1401605B0(__int64 a1)
       v6 = 0;
       goto LABEL_7;
     }
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v1 = *(unsigned __int8 **)(a1 + 192);
     v3 = *(_QWORD *)(a1 + 200);
   }
@@ -5083,47 +4990,44 @@ __int64            sub_1401605B0(__int64 a1)
 LABEL_7:
   if ( !*(_DWORD *)(a1 + 48) )
     return v6;
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   v9 = *(unsigned __int8 **)(a1 + 192);
   v10 = *v9;
   *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v9 + 1);
   return v6 + (v10 << 8);
 }
 
-
 //----- (0000000140160670) ----------------------------------------------------
 __int64            sub_140160670(__int64 a1)
 {
-  int v2; // edi
+  int v2;
 
   v2 = sub_1401604F0(a1);
   return (v2 << 16) + (unsigned int)sub_1401604F0(a1);
 }
 
-
 //----- (00000001401606A0) ----------------------------------------------------
 __int64            sub_1401606A0(__int64 a1)
 {
-  int v2; // edi
+  int v2;
 
   v2 = sub_1401605B0(a1);
   return v2 + ((unsigned int)sub_1401605B0(a1) << 16);
 }
 
-
 //----- (00000001401606D0) ----------------------------------------------------
 char            sub_1401606D0(__int64 a1)
 {
-  char *v1; // rdx
-  char result; // al
-  char *v4; // rcx
+  char *v1;
+  char result;
+  char *v4;
 
   v1 = *(char **)(a1 + 192);
   if ( (unsigned __int64)v1 >= *(_QWORD *)(a1 + 200) )
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v4 = *(char **)(a1 + 192);
       result = *v4;
       *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v4 + 1);
@@ -5141,13 +5045,12 @@ char            sub_1401606D0(__int64 a1)
   return result;
 }
 
-
 //----- (0000000140160730) ----------------------------------------------------
 unsigned __int64            sub_140160730(__int64 a1)
 {
-  int v2; // edi
-  unsigned int v3; // edi
-  int v4; // ebx
+  int v2;
+  unsigned int v3;
+  int v4;
 
   v2 = sub_1401604F0(a1);
   v3 = sub_1401604F0(a1) + (v2 << 16);
@@ -5155,17 +5058,16 @@ unsigned __int64            sub_140160730(__int64 a1)
   return v3 | ((unsigned __int64)((v4 << 16) + (unsigned int)sub_1401604F0(a1)) << 32);
 }
 
-
 //----- (0000000140160790) ----------------------------------------------------
 char            sub_140160790(_BYTE *a1)
 {
-  char result; // al
-  __int64 v3; // rbx
-  char *v4; // rax
-  char v5; // cl
-  __int64 v6; // rbx
-  char *v7; // rax
-  char v8; // cl
+  char result;
+  __int64 v3;
+  char *v4;
+  char v5;
+  __int64 v6;
+  char *v7;
+  char v8;
 
   result = a1[18472];
   if ( result != -1 )
@@ -5179,7 +5081,7 @@ char            sub_140160790(_BYTE *a1)
   {
     if ( !*(_DWORD *)(v3 + 48) )
       return -1;
-    sub_14016D910(*(_QWORD *)a1);
+    stbi_refill_buffer(*(_QWORD *)a1);
     v4 = *(char **)(v3 + 192);
   }
   v5 = *v4;
@@ -5194,7 +5096,7 @@ char            sub_140160790(_BYTE *a1)
       {
         if ( !*(_DWORD *)(v6 + 48) )
           return 0;
-        sub_14016D910(*(_QWORD *)a1);
+        stbi_refill_buffer(*(_QWORD *)a1);
         v7 = *(char **)(v6 + 192);
       }
       v8 = *v7;
@@ -5206,20 +5108,19 @@ char            sub_140160790(_BYTE *a1)
   return -1;
 }
 
-
 //----- (0000000140160860) ----------------------------------------------------
 _BOOL8            sub_140160860(__int64 a1, __m128i *a2, int a3)
 {
-  __int64 v4; // rbp
-  int v6; // esi
-  unsigned int v7; // ebp
-  int v8; // eax
-       __m128i *v10; // rdx
+  __int64 v4;
+  int v6;
+  unsigned int v7;
+  int v8;
+       __m128i *v10;
 
   v4 = a3;
   if ( *(_QWORD *)(a1 + 16) && (v6 = *(_DWORD *)(a1 + 200) - *(_DWORD *)(a1 + 192), v6 < a3) )
   {
-    sub_1401FC920(a2, *(     __m128i **)(a1 + 192), v6);
+    crt_memcpy(a2, *(     __m128i **)(a1 + 192), v6);
     v7 = v4 - v6;
     v8 = (*(__int64 (           **)(_QWORD, __int8 *, _QWORD))(a1 + 16))(*(_QWORD *)(a1 + 40), &SR_VEC_PTR_LANES(128, a2, i8)[v6], v7);
     *(_QWORD *)(a1 + 192) = *(_QWORD *)(a1 + 200);
@@ -5234,48 +5135,47 @@ _BOOL8            sub_140160860(__int64 a1, __m128i *a2, int a3)
     }
     else
     {
-      sub_1401FC920(a2, v10, a3);
+      crt_memcpy(a2, v10, a3);
       *(_QWORD *)(a1 + 192) += v4;
       return 1;
     }
   }
 }
 
-
 //----- (0000000140160930) ----------------------------------------------------
 __int64            sub_140160930(__int64 a1, _DWORD *a2, _DWORD *a3, int a4)
 {
-  char *v4; // rax
-  char v9; // cl
-  char *v10; // rax
-  char v11; // cl
-  char *v12; // rax
-  char v13; // cl
-  char *v14; // rax
-  char v15; // cl
-  char *v16; // rax
-  char v17; // cl
-  char *v18; // rax
-  char v19; // dl
-  _QWORD *v20; // rsi
-  unsigned __int8 *v21; // rax
-  unsigned __int8 v22; // cl
-  unsigned __int8 *v23; // rax
-  unsigned __int8 *v24; // rax
-  unsigned __int8 v25; // cl
-  unsigned __int8 *v26; // rax
-  unsigned __int8 *v27; // rax
-  unsigned __int8 v28; // cl
-  unsigned __int8 *v29; // rax
-  bool v30; // cc
-  int v31; // eax
+  char *v4;
+  char v9;
+  char *v10;
+  char v11;
+  char *v12;
+  char v13;
+  char *v14;
+  char v15;
+  char *v16;
+  char v17;
+  char *v18;
+  char v19;
+  _QWORD *v20;
+  unsigned __int8 *v21;
+  unsigned __int8 v22;
+  unsigned __int8 *v23;
+  unsigned __int8 *v24;
+  unsigned __int8 v25;
+  unsigned __int8 *v26;
+  unsigned __int8 *v27;
+  unsigned __int8 v28;
+  unsigned __int8 *v29;
+  bool v30;
+  int v31;
 
   v4 = *(char **)(a1 + 192);
   if ( (unsigned __int64)v4 >= *(_QWORD *)(a1 + 200) )
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_49;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v4 = *(char **)(a1 + 192);
   }
   v9 = *v4;
@@ -5287,7 +5187,7 @@ __int64            sub_140160930(__int64 a1, _DWORD *a2, _DWORD *a3, int a4)
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_49;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v10 = *(char **)(a1 + 192);
   }
   v11 = *v10;
@@ -5299,7 +5199,7 @@ __int64            sub_140160930(__int64 a1, _DWORD *a2, _DWORD *a3, int a4)
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_49;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v12 = *(char **)(a1 + 192);
   }
   v13 = *v12;
@@ -5311,7 +5211,7 @@ __int64            sub_140160930(__int64 a1, _DWORD *a2, _DWORD *a3, int a4)
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_49;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v14 = *(char **)(a1 + 192);
   }
   v15 = *v14;
@@ -5323,7 +5223,7 @@ __int64            sub_140160930(__int64 a1, _DWORD *a2, _DWORD *a3, int a4)
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_49;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v16 = *(char **)(a1 + 192);
   }
   v17 = *v16;
@@ -5339,7 +5239,7 @@ LABEL_49:
     *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("not GIF");
     return 0;
   }
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   v18 = *(char **)(a1 + 192);
 LABEL_24:
   v19 = *v18;
@@ -5355,7 +5255,7 @@ LABEL_24:
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v23 = *(unsigned __int8 **)(a1 + 192);
       v22 = *v23;
       *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v23 + 1);
@@ -5376,7 +5276,7 @@ LABEL_24:
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v26 = *(unsigned __int8 **)(a1 + 192);
       v25 = *v26;
       *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v26 + 1);
@@ -5397,7 +5297,7 @@ LABEL_24:
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v29 = *(unsigned __int8 **)(a1 + 192);
       v28 = *v29;
       *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v29 + 1);
@@ -5434,12 +5334,10 @@ LABEL_24:
   }
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140160CA0) ----------------------------------------------------
 __int64            sub_140160CA0(_QWORD *a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
 {
-  _DWORD *v8; // rdi
+  _DWORD *v8;
 
   v8 = (_DWORD *)sr_path_malloc(34928);
   if ( (unsigned int)sub_140160930((__int64)a1, v8, a4, 1) )
@@ -5459,13 +5357,11 @@ __int64            sub_140160CA0(_QWORD *a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
     return 0;
   }
 }
-
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
 
 //----- (0000000140160D50) ----------------------------------------------------
 __int64            sub_140160D50(_QWORD *a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
 {
-  _DWORD *v8; // rdi
+  _DWORD *v8;
 
   v8 = (_DWORD *)sr_path_malloc(34928);
   if ( (unsigned int)sub_140160930((__int64)a1, v8, a4, 1) )
@@ -5486,17 +5382,15 @@ __int64            sub_140160D50(_QWORD *a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
   }
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-
 //----- (0000000140160E00) ----------------------------------------------------
 __int64            sub_140160E00(__int64 a1, _DWORD *a2, int *a3, _DWORD *a4)
 {
-  unsigned int v4; // esi
-  __int64 v9; // rax
-  char *v10; // rbx
-  int v12; // r9d
-  int v13; // eax
-  __int64 v14; // [rsp-20h] [rbp-11188h] BYREF
+  unsigned int v4;
+  __int64 v9;
+  char *v10;
+  int v12;
+  int v13;
+  __int64 v14;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140160E00[35040];
 #define v15 (*(int (*)[2])(void *)(sr_frame_140160E00 + 0)) /* [rsp+10h] */
@@ -5507,7 +5401,7 @@ __int64            sub_140160E00(__int64 a1, _DWORD *a2, int *a3, _DWORD *a4)
 #define v20 (*(unsigned int (*))(void *)(sr_frame_140160E00 + 35024)) /* [rsp+88E0h] */
 
   v4 = v20;
-  sub_1401FCD30((void *)(uintptr_t)(v15), 0, 0x8870u);
+  crt_memset((void *)(uintptr_t)(v15), 0, 0x8870u);
   v9 = sub_140160EF0(a1, v15, a4, v4, 0);
   v10 = (char *)v9;
   if ( v9 == a1 || !v9 )
@@ -5536,112 +5430,111 @@ __int64            sub_140160E00(__int64 a1, _DWORD *a2, int *a3, _DWORD *a4)
 #undef v19
 #undef v20
 
-
 //----- (0000000140160EF0) ----------------------------------------------------
 __int64            sub_140160EF0(__int64 a1, int *a2, _DWORD *a3, __int64 a4, __int64 a5)
 {
-  __int64 v5; // r12
-  int v8; // edi
-  int v9; // ecx
-  int v10; // r8d
-  int v11; // edi
-  unsigned __int64 v12; // rbp
-  __int64 v13; // rax
-  _WORD *v14; // rcx
-  __int64 v15; // rax
-       char *v16; // rdx
-  int v17; // ecx
-  int v18; // eax
-  __int64 v19; // r8
-  __int64 i; // rdx
-  __int64 j; // rdx
-  char *v22; // rax
-  int v23; // eax
-  char v24; // cl
-  unsigned __int8 *v25; // rax
-  int v26; // eax
-  unsigned __int8 v27; // dl
-  unsigned __int8 *v28; // rax
-  unsigned __int8 *v29; // rcx
-  unsigned __int64 v30; // rdx
-  unsigned __int8 v31; // r8
-  unsigned __int8 *v32; // rax
-  __int64 v33; // rax
-  unsigned __int8 v34; // dl
-  unsigned __int8 *v35; // rax
-  unsigned __int64 v36; // rcx
-  unsigned __int8 *v37; // rax
-  unsigned __int8 v38; // dl
-  unsigned __int8 *v39; // rax
-  int v40; // edi
-  unsigned __int8 v41; // cl
-  unsigned __int8 *v42; // rax
-  __int64 v43; // rax
-  unsigned __int8 *v44; // rax
-  unsigned __int8 v45; // cl
-  unsigned __int8 *v46; // rax
-  unsigned __int64 v47; // rdx
-  unsigned __int8 *v48; // rcx
-  unsigned __int8 v49; // r8
-  int v50; // ecx
-  int v51; // r8d
-  __int64 v52; // rcx
-  int v53; // eax
-  unsigned __int8 *v54; // rax
-  __int64 v55; // rax
-  int v56; // r8d
-  __int64 v57; // rcx
-  unsigned __int64 v59; // rcx
-  unsigned __int8 v60; // dl
-  unsigned __int8 *v61; // rax
-  int v62; // edi
-  int v63; // r14d
-  unsigned __int8 v64; // dl
-  unsigned __int8 *v65; // rax
-  unsigned __int8 v66; // dl
-  unsigned __int8 *v67; // rax
-  int v68; // ebp
-  int v69; // edi
-  unsigned __int8 v70; // dl
-  unsigned __int8 *v71; // rax
-  unsigned __int8 v72; // dl
-  unsigned __int8 *v73; // rax
-  int v74; // ebp
-  int v75; // r15d
-  int v76; // r13d
-  unsigned __int8 v77; // r8
-  unsigned __int8 *v78; // rax
-  unsigned __int8 *v79; // rax
-  int v80; // ebp
-  unsigned __int8 v81; // cl
-  unsigned __int8 *v82; // rax
-  int v83; // r9d
-  int v84; // edx
-  int v85; // r8d
-  char *v86; // rax
-  char v87; // cl
-  char *v88; // rax
-  int v89; // edx
-  int v90; // r8d
-  int v91; // eax
-  int v92; // r15d
-  char *v93; // rdi
-  int v94; // ebp
-  __int64 v95; // r14
-  char *v96; // rax
-  char v97; // cl
-  char *v98; // rax
-  char *v99; // rax
-  char v100; // cl
-  char *v101; // rax
-  char *v102; // rax
-  char v103; // cl
-  char *v104; // rax
-  char v105; // al
-  __int64 v106; // rax
-  __int64 v107; // r8
-  int v108; // eax
-  int v109; // [rsp+58h] [rbp+10h]
+  __int64 v5;
+  int v8;
+  int v9;
+  int v10;
+  int v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  _WORD *v14;
+  __int64 v15;
+       char *v16;
+  int v17;
+  int v18;
+  __int64 v19;
+  __int64 i;
+  __int64 j;
+  char *v22;
+  int v23;
+  char v24;
+  unsigned __int8 *v25;
+  int v26;
+  unsigned __int8 v27;
+  unsigned __int8 *v28;
+  unsigned __int8 *v29;
+  unsigned __int64 v30;
+  unsigned __int8 v31;
+  unsigned __int8 *v32;
+  __int64 v33;
+  unsigned __int8 v34;
+  unsigned __int8 *v35;
+  unsigned __int64 v36;
+  unsigned __int8 *v37;
+  unsigned __int8 v38;
+  unsigned __int8 *v39;
+  int v40;
+  unsigned __int8 v41;
+  unsigned __int8 *v42;
+  __int64 v43;
+  unsigned __int8 *v44;
+  unsigned __int8 v45;
+  unsigned __int8 *v46;
+  unsigned __int64 v47;
+  unsigned __int8 *v48;
+  unsigned __int8 v49;
+  int v50;
+  int v51;
+  __int64 v52;
+  int v53;
+  unsigned __int8 *v54;
+  __int64 v55;
+  int v56;
+  __int64 v57;
+  unsigned __int64 v59;
+  unsigned __int8 v60;
+  unsigned __int8 *v61;
+  int v62;
+  int v63;
+  unsigned __int8 v64;
+  unsigned __int8 *v65;
+  unsigned __int8 v66;
+  unsigned __int8 *v67;
+  int v68;
+  int v69;
+  unsigned __int8 v70;
+  unsigned __int8 *v71;
+  unsigned __int8 v72;
+  unsigned __int8 *v73;
+  int v74;
+  int v75;
+  int v76;
+  unsigned __int8 v77;
+  unsigned __int8 *v78;
+  unsigned __int8 *v79;
+  int v80;
+  unsigned __int8 v81;
+  unsigned __int8 *v82;
+  int v83;
+  int v84;
+  int v85;
+  char *v86;
+  char v87;
+  char *v88;
+  int v89;
+  int v90;
+  int v91;
+  int v92;
+  char *v93;
+  int v94;
+  __int64 v95;
+  char *v96;
+  char v97;
+  char *v98;
+  char *v99;
+  char v100;
+  char *v101;
+  char *v102;
+  char v103;
+  char *v104;
+  char v105;
+  __int64 v106;
+  __int64 v107;
+  int v108;
+  int v109;
 
   v5 = 0;
   v109 = 0;
@@ -5667,7 +5560,7 @@ __int64            sub_140160EF0(__int64 a1, int *a2, _DWORD *a3, __int64 a4, __
       if ( v18 != 2 )
       {
 LABEL_33:
-        sub_1401FC920(*((__m128i **)a2 + 2), *((     __m128i **)a2 + 1), 4 * a2[1] * *a2);
+        crt_memcpy(*((__m128i **)a2 + 2), *((     __m128i **)a2 + 1), 4 * a2[1] * *a2);
         goto LABEL_34;
       }
     }
@@ -5725,12 +5618,12 @@ LABEL_186:
     *(_QWORD *)(v15 + 16) = (uint64)(uintptr_t)(v16);
     return 0;
   }
-  sub_1401FCD30((void *)(uintptr_t)(v14), 0, v12);
-  sub_1401FCD30((void *)(uintptr_t)(*((_WORD **)a2 + 2)), 0, v12);
-  sub_1401FCD30((void *)(uintptr_t)(*((_WORD **)a2 + 3)), 0, v11);
+  crt_memset((void *)(uintptr_t)(v14), 0, v12);
+  crt_memset((void *)(uintptr_t)(*((_WORD **)a2 + 2)), 0, v12);
+  crt_memset((void *)(uintptr_t)(*((_WORD **)a2 + 3)), 0, v11);
   v109 = 1;
 LABEL_34:
-  sub_1401FCD30((void *)(uintptr_t)(*((_WORD **)a2 + 3)), 0, a2[1] * *a2);
+  crt_memset((void *)(uintptr_t)(*((_WORD **)a2 + 3)), 0, a2[1] * *a2);
   while ( 1 )
   {
     v22 = *(char **)(a1 + 192);
@@ -5794,7 +5687,7 @@ LABEL_34:
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v32 = *(unsigned __int8 **)(a1 + 192);
         v30 = *(_QWORD *)(a1 + 200);
         v31 = *v32;
@@ -5819,7 +5712,7 @@ LABEL_34:
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v35 = *(unsigned __int8 **)(a1 + 192);
           v34 = *v35;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v35 + 1);
@@ -5845,7 +5738,7 @@ LABEL_34:
 LABEL_66:
           if ( *(_DWORD *)(a1 + 48) )
           {
-            sub_14016D910(a1);
+            stbi_refill_buffer(a1);
             v42 = *(unsigned __int8 **)(a1 + 192);
             v41 = *v42;
             *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v42 + 1);
@@ -5856,7 +5749,7 @@ LABEL_66:
           }
           goto LABEL_69;
         }
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v37 = *(unsigned __int8 **)(a1 + 192);
         v36 = *(_QWORD *)(a1 + 200);
       }
@@ -5880,7 +5773,7 @@ LABEL_69:
         {
           if ( *(_DWORD *)(a1 + 48) )
           {
-            sub_14016D910(a1);
+            stbi_refill_buffer(a1);
             v46 = *(unsigned __int8 **)(a1 + 192);
             v45 = *v46;
             *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v46 + 1);
@@ -5994,7 +5887,7 @@ LABEL_185:
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v25 = *(unsigned __int8 **)(a1 + 192);
       v59 = *(_QWORD *)(a1 + 200);
       goto LABEL_106;
@@ -6004,7 +5897,7 @@ LABEL_185:
 LABEL_109:
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v61 = *(unsigned __int8 **)(a1 + 192);
       v59 = *(_QWORD *)(a1 + 200);
       goto LABEL_111;
@@ -6031,7 +5924,7 @@ LABEL_111:
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_116;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v65 = *(unsigned __int8 **)(a1 + 192);
     v59 = *(_QWORD *)(a1 + 200);
   }
@@ -6045,7 +5938,7 @@ LABEL_111:
 LABEL_117:
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v67 = *(unsigned __int8 **)(a1 + 192);
       v59 = *(_QWORD *)(a1 + 200);
       goto LABEL_119;
@@ -6056,7 +5949,7 @@ LABEL_124:
 LABEL_125:
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v73 = *(unsigned __int8 **)(a1 + 192);
       v59 = *(_QWORD *)(a1 + 200);
       goto LABEL_127;
@@ -6073,7 +5966,7 @@ LABEL_119:
     goto LABEL_122;
   if ( !*(_DWORD *)(a1 + 48) )
     goto LABEL_124;
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   v71 = *(unsigned __int8 **)(a1 + 192);
   v59 = *(_QWORD *)(a1 + 200);
 LABEL_122:
@@ -6097,7 +5990,7 @@ LABEL_127:
 LABEL_130:
   if ( *(_DWORD *)(a1 + 48) )
   {
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v79 = *(unsigned __int8 **)(a1 + 192);
     v59 = *(_QWORD *)(a1 + 200);
     v77 = *v79;
@@ -6118,7 +6011,7 @@ LABEL_132:
   }
   if ( *(_DWORD *)(a1 + 48) )
   {
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v82 = *(unsigned __int8 **)(a1 + 192);
     v81 = *v82;
     *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v82 + 1);
@@ -6151,7 +6044,7 @@ LABEL_138:
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v88 = *(char **)(a1 + 192);
       v87 = *v88;
       *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v88 + 1);
@@ -6200,7 +6093,7 @@ LABEL_138:
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v98 = *(char **)(a1 + 192);
           v97 = *v98;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v98 + 1);
@@ -6221,7 +6114,7 @@ LABEL_138:
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v101 = *(char **)(a1 + 192);
           v100 = *v101;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v101 + 1);
@@ -6242,7 +6135,7 @@ LABEL_138:
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v104 = *(char **)(a1 + 192);
           v103 = *v104;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v104 + 1);
@@ -6296,25 +6189,22 @@ LABEL_138:
   return v107;
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140161A30) ----------------------------------------------------
 void            sub_140161A30(__int64 a1, __int64 a2, int a3, int a4)
 {
-  int v4; // esi
-  __int64 v5; // rbp
-  _BYTE *v7; // rdi
-  char *v9; // rax
-  char v10; // cl
-  char *v11; // rax
-  char *v12; // rax
-  char v13; // cl
-  char *v14; // rax
-  char *v15; // rax
-  char v16; // cl
-  char *v17; // rax
-  char v18; // al
+  int v4;
+  __int64 v5;
+  _BYTE *v7;
+  char *v9;
+  char v10;
+  char *v11;
+  char *v12;
+  char v13;
+  char *v14;
+  char *v15;
+  char v16;
+  char *v17;
+  char v18;
 
   if ( a3 > 0 )
   {
@@ -6328,7 +6218,7 @@ void            sub_140161A30(__int64 a1, __int64 a2, int a3, int a4)
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v11 = *(char **)(a1 + 192);
           v10 = *v11;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v11 + 1);
@@ -6349,7 +6239,7 @@ void            sub_140161A30(__int64 a1, __int64 a2, int a3, int a4)
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v14 = *(char **)(a1 + 192);
           v13 = *v14;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v14 + 1);
@@ -6370,7 +6260,7 @@ void            sub_140161A30(__int64 a1, __int64 a2, int a3, int a4)
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v17 = *(char **)(a1 + 192);
           v16 = *v17;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v17 + 1);
@@ -6398,11 +6288,10 @@ void            sub_140161A30(__int64 a1, __int64 a2, int a3, int a4)
   }
 }
 
-
 //----- (0000000140161B80) ----------------------------------------------------
 __int64            sub_140161B80(_QWORD *a1)
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = sub_140161BB0((__int64)a1);
   a1[24] = a1[26];
@@ -6410,29 +6299,28 @@ __int64            sub_140161B80(_QWORD *a1)
   return result;
 }
 
-
 //----- (0000000140161BB0) ----------------------------------------------------
 __int64            sub_140161BB0(__int64 a1)
 {
-  char *v1; // rax
-  char v3; // cl
-  char *v4; // rax
-  char v5; // cl
-  char *v6; // rax
-  char v7; // cl
-  char *v8; // rax
-  char v9; // cl
-  char *v10; // rax
-  char v11; // cl
-  char *v12; // rax
-  char v13; // cl
+  char *v1;
+  char v3;
+  char *v4;
+  char v5;
+  char *v6;
+  char v7;
+  char *v8;
+  char v9;
+  char *v10;
+  char v11;
+  char *v12;
+  char v13;
 
   v1 = *(char **)(a1 + 192);
   if ( (unsigned __int64)v1 >= *(_QWORD *)(a1 + 200) )
   {
     if ( !*(_DWORD *)(a1 + 48) )
       return 0;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v1 = *(char **)(a1 + 192);
   }
   v3 = *v1;
@@ -6444,7 +6332,7 @@ __int64            sub_140161BB0(__int64 a1)
     {
       if ( !*(_DWORD *)(a1 + 48) )
         return 0;
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v4 = *(char **)(a1 + 192);
     }
     v5 = *v4;
@@ -6456,7 +6344,7 @@ __int64            sub_140161BB0(__int64 a1)
       {
         if ( !*(_DWORD *)(a1 + 48) )
           return 0;
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v6 = *(char **)(a1 + 192);
       }
       v7 = *v6;
@@ -6468,7 +6356,7 @@ __int64            sub_140161BB0(__int64 a1)
         {
           if ( !*(_DWORD *)(a1 + 48) )
             return 0;
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v8 = *(char **)(a1 + 192);
         }
         v9 = *v8;
@@ -6480,7 +6368,7 @@ __int64            sub_140161BB0(__int64 a1)
           {
             if ( !*(_DWORD *)(a1 + 48) )
               return 0;
-            sub_14016D910(a1);
+            stbi_refill_buffer(a1);
             v10 = *(char **)(a1 + 192);
           }
           v11 = *v10;
@@ -6492,7 +6380,7 @@ __int64            sub_140161BB0(__int64 a1)
           {
             if ( !*(_DWORD *)(a1 + 48) )
               return 0;
-            sub_14016D910(a1);
+            stbi_refill_buffer(a1);
             v12 = *(char **)(a1 + 192);
           }
           v13 = *v12;
@@ -6506,26 +6394,25 @@ __int64            sub_140161BB0(__int64 a1)
   return 0;
 }
 
-
 //----- (0000000140161D20) ----------------------------------------------------
 __int64            sub_140161D20(_QWORD *a1)
 {
-  int v2; // ebp
-  __int64 v3; // rbx
-  unsigned __int8 *v4; // rax
-  unsigned __int8 v5; // cl
-  unsigned __int8 *v6; // rax
-  __int64 v7; // rbx
-  unsigned __int8 *v8; // rax
-  unsigned __int8 v9; // cl
-  unsigned __int8 *v10; // rax
-  __int64 result; // rax
-  __int64 v12; // rbx
-  unsigned __int8 *v13; // rax
-  unsigned __int8 v14; // cl
-  int v15; // eax
-  unsigned __int8 *v16; // rax
-  int v17; // edx
+  int v2;
+  __int64 v3;
+  unsigned __int8 *v4;
+  unsigned __int8 v5;
+  unsigned __int8 *v6;
+  __int64 v7;
+  unsigned __int8 *v8;
+  unsigned __int8 v9;
+  unsigned __int8 *v10;
+  __int64 result;
+  __int64 v12;
+  unsigned __int8 *v13;
+  unsigned __int8 v14;
+  int v15;
+  unsigned __int8 *v16;
+  int v17;
 
   while ( *((_DWORD *)a1 + 4619) )
   {
@@ -6544,7 +6431,7 @@ LABEL_25:
   {
     if ( *(_DWORD *)(v3 + 48) )
     {
-      sub_14016D910(*a1);
+      stbi_refill_buffer(*a1);
       v6 = *(unsigned __int8 **)(v3 + 192);
       v5 = *v6;
       *(_QWORD *)(v3 + 192) = (uint64)(uintptr_t)(v6 + 1);
@@ -6568,7 +6455,7 @@ LABEL_25:
   {
     if ( *(_DWORD *)(v7 + 48) )
     {
-      sub_14016D910(*a1);
+      stbi_refill_buffer(*a1);
       v10 = *(unsigned __int8 **)(v7 + 192);
       v9 = *v10;
       *(_QWORD *)(v7 + 192) = (uint64)(uintptr_t)(v10 + 1);
@@ -6635,12 +6522,11 @@ LABEL_25:
   return result;
 }
 
-
 //----- (0000000140161F00) ----------------------------------------------------
 __int64            sub_140161F00(__int64 a1, unsigned __int8 *a2, int a3)
 {
-  __int64 result; // rax
-  float v7; // xmm2_4
+  __int64 result;
+  float v7;
 
   result = a2[3];
   if ( (_BYTE)result )
@@ -6658,7 +6544,7 @@ __int64            sub_140161F00(__int64 a1, unsigned __int8 *a2, int a3)
     else
     {
       result = *a2;
-      *(float *)a1 = (float)((float)(*a2 + a2[1] + a2[2]) * v7) * 0.3333333432674408;
+      *(float *)a1 = (float)((float)(*a2 + a2[1] + a2[2]) * v7) * 0.33333334;
       if ( a3 == 2 )
         *(_DWORD *)(a1 + 4) = 1065353216;
     }
@@ -6686,21 +6572,20 @@ LABEL_14:
   return 0;
 }
 
-
 //----- (0000000140162030) ----------------------------------------------------
 __int64            sub_140162030(__int64 a1, __int64 a2)
 {
-  char *v2; // rax
-  int v5; // ebp
-  char v6; // di
-  char *v7; // rax
-  __int64 v8; // rsi
-  char *v9; // rax
-  int v10; // eax
-  char *v11; // rax
-  char *v12; // rax
-  unsigned __int64 v13; // rcx
-  char v14; // cl
+  char *v2;
+  int v5;
+  char v6;
+  char *v7;
+  __int64 v8;
+  char *v9;
+  int v10;
+  char *v11;
+  char *v12;
+  unsigned __int64 v13;
+  char v14;
 
   v2 = *(char **)(a1 + 192);
   v5 = 0;
@@ -6708,7 +6593,7 @@ __int64            sub_140162030(__int64 a1, __int64 a2)
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v7 = *(char **)(a1 + 192);
       v6 = *v7;
       *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v7 + 1);
@@ -6761,7 +6646,7 @@ LABEL_29:
         }
         else if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v12 = *(char **)(a1 + 192);
           goto LABEL_29;
         }
@@ -6816,17 +6701,16 @@ LABEL_30:
   return a2;
 }
 
-
 //----- (0000000140162220) ----------------------------------------------------
 __int64            sub_140162220(_QWORD *a1, char *a2, char *a3, char *a4)
 {
-  int v4; // edi
-  char *v5; // r14
-  char *v6; // rsi
-  char *v7; // r15
-       char *v9; // rax
-  int v10; // eax
-  _BYTE *v11; // rcx
+  int v4;
+  char *v5;
+  char *v6;
+  char *v7;
+       char *v9;
+  int v10;
+  _BYTE *v11;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140162220[1088];
 #define v13 (*(__int64 (*))(void *)(sr_frame_140162220 + 0)) /* [rsp+0h] */
@@ -6895,62 +6779,60 @@ LABEL_19:
 #undef v16
 #undef v17
 
-// 140236FF0: using guessed type __int64 __fastcall strncmp(_QWORD, _QWORD, _QWORD);
-
 //----- (00000001401623E0) ----------------------------------------------------
 __int64            sub_1401623E0(__int64 a1, _DWORD *a2, int *a3, _DWORD *a4, unsigned int a5)
 {
-  int v9; // edi
-       char *v10; // rsi
-  __int64 v11; // rcx
-  char v12; // al
-       char *v13; // rax
-  __int32 v14; // eax
-  _BYTE *v15; // rcx
-  int v16; // esi
-  __int64 v17; // r13
-  __int64 v18; // r15
-  char *v19; // r12
-  char *v20; // rax
-  unsigned __int64 v21; // rcx
-  unsigned __int8 v22; // r14
-  int v23; // r15d
-  unsigned __int8 v24; // si
-  int v25; // ebp
-  char v26; // cl
-  char *v27; // rax
-  int v28; // edi
-  unsigned __int8 v29; // cl
-  unsigned __int8 *v30; // rax
-  __int64 v31; // r15
-  int v32; // ebp
-  __int64 v33; // r14
-  unsigned int v34; // esi
-  unsigned __int8 *v35; // rax
-  unsigned __int8 v36; // di
-  char *v37; // rax
-  char v38; // dl
-  char *v39; // rax
-  unsigned __int8 v40; // di
-  char *v41; // rax
-  __int64 v42; // rcx
-  __int64 v43; // rax
-  char *v44; // rdi
-  __int64 v45; // rsi
-  char *v46; // rax
-  char v47; // cl
-  char *v48; // rax
-  unsigned __int8 *v49; // rdi
-  __int64 v50; // rbp
-  int v51; // r15d
-  __int64 v52; // r14
-  char *v53; // rsi
-  __int64 v54; // rax
-       char *v55; // rdx
-  char v57; // cl
-  char *v58; // rax
-  int v59; // edi
-  int v60; // esi
+  int v9;
+       char *v10;
+  __int64 v11;
+  char v12;
+       char *v13;
+  __int32 v14;
+  _BYTE *v15;
+  int v16;
+  __int64 v17;
+  __int64 v18;
+  char *v19;
+  char *v20;
+  unsigned __int64 v21;
+  unsigned __int8 v22;
+  int v23;
+  unsigned __int8 v24;
+  int v25;
+  char v26;
+  char *v27;
+  int v28;
+  unsigned __int8 v29;
+  unsigned __int8 *v30;
+  __int64 v31;
+  int v32;
+  __int64 v33;
+  unsigned int v34;
+  unsigned __int8 *v35;
+  unsigned __int8 v36;
+  char *v37;
+  char v38;
+  char *v39;
+  unsigned __int8 v40;
+  char *v41;
+  __int64 v42;
+  __int64 v43;
+  char *v44;
+  __int64 v45;
+  char *v46;
+  char v47;
+  char *v48;
+  unsigned __int8 *v49;
+  __int64 v50;
+  int v51;
+  __int64 v52;
+  char *v53;
+  __int64 v54;
+       char *v55;
+  char v57;
+  char *v58;
+  int v59;
+  int v60;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401623E0[1136];
 #define v61 (*(__int64 (*))(void *)(sr_frame_1401623E0 + 8)) /* [rsp+0h] */
@@ -7060,7 +6942,7 @@ LABEL_40:
           v25 = 0;
           goto LABEL_45;
         }
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v20 = *(char **)(a1 + 192);
         v21 = *(_QWORD *)(a1 + 200);
 LABEL_42:
@@ -7081,7 +6963,7 @@ LABEL_48:
             {
               if ( *(_DWORD *)(a1 + 48) )
               {
-                sub_14016D910(a1);
+                stbi_refill_buffer(a1);
                 v58 = *(char **)(a1 + 192);
                 v57 = *v58;
                 *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v58 + 1);
@@ -7126,7 +7008,7 @@ LABEL_105:
           {
             if ( *(_DWORD *)(a1 + 48) )
             {
-              sub_14016D910(a1);
+              stbi_refill_buffer(a1);
               v30 = *(unsigned __int8 **)(a1 + 192);
               v29 = *v30;
               *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v30 + 1);
@@ -7173,7 +7055,7 @@ LABEL_60:
                 v36 = 0;
                 goto LABEL_76;
               }
-              sub_14016D910(a1);
+              stbi_refill_buffer(a1);
               v35 = *(unsigned __int8 **)(a1 + 192);
             }
             v36 = *v35;
@@ -7185,7 +7067,7 @@ LABEL_60:
               {
                 if ( *(_DWORD *)(a1 + 48) )
                 {
-                  sub_14016D910(a1);
+                  stbi_refill_buffer(a1);
                   v39 = *(char **)(a1 + 192);
                   v38 = *v39;
                   *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v39 + 1);
@@ -7243,7 +7125,7 @@ LABEL_76:
                 {
                   if ( *(_DWORD *)(a1 + 48) )
                   {
-                    sub_14016D910(a1);
+                    stbi_refill_buffer(a1);
                     v48 = *(char **)(a1 + 192);
                     v47 = *v48;
                     *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v48 + 1);
@@ -7296,7 +7178,7 @@ LABEL_85:
 LABEL_45:
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v27 = *(char **)(a1 + 192);
           v26 = *v27;
           v20 = v27 + 1;
@@ -7308,7 +7190,7 @@ LABEL_45:
         }
         goto LABEL_48;
       }
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v20 = *(char **)(a1 + 192);
       v21 = *(_QWORD *)(a1 + 200);
     }
@@ -7344,19 +7226,16 @@ LABEL_45:
 // 1401627FB: conditional instruction was optimized away because r13d.4 is in (8..7FFF)
 // 14016295E: conditional instruction was optimized away because r13d.4 is in (8..7FFF)
 // 1401629BA: conditional instruction was optimized away because r12.8!=0
-// 140236FF0: using guessed type __int64 __fastcall strncmp(_QWORD, _QWORD, _QWORD);
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140162BB0) ----------------------------------------------------
 __int64            sub_140162BB0(__int64 a1)
 {
-  unsigned __int8 **v2; // rdi
-       char *v3; // rbx
-  unsigned __int8 *v4; // rax
-  unsigned __int8 v5; // dl
-  __int64 result; // rax
-  __int64 v7; // rcx
+  unsigned __int8 **v2;
+       char *v3;
+  unsigned __int8 *v4;
+  unsigned __int8 v5;
+  __int64 result;
+  __int64 v7;
 
   v2 = (unsigned __int8 **)(a1 + 192);
   v3 = "#?RADIANCE\n";
@@ -7367,7 +7246,7 @@ __int64            sub_140162BB0(__int64 a1)
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v5 = *(*v2)++;
       }
       else
@@ -7398,14 +7277,13 @@ LABEL_11:
   return result;
 }
 
-
 //----- (0000000140162C90) ----------------------------------------------------
 __int64            sub_140162C90(__int64 a1, char *a2)
 {
-  char *v2; // rdi
-  unsigned __int8 *v4; // rax
-  unsigned __int8 v5; // dl
-  unsigned __int8 *v6; // rax
+  char *v2;
+  unsigned __int8 *v4;
+  unsigned __int8 v5;
+  unsigned __int8 *v6;
 
   v2 = a2;
   if ( *a2 )
@@ -7417,7 +7295,7 @@ __int64            sub_140162C90(__int64 a1, char *a2)
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v6 = *(unsigned __int8 **)(a1 + 192);
           v5 = *v6;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v6 + 1);
@@ -7447,28 +7325,27 @@ LABEL_9:
   }
 }
 
-
 //----- (0000000140162D40) ----------------------------------------------------
 __int64            sub_140162D40(void *Block, int a2, int a3, int a4)
 {
-  __int64 v4; // rsi
-  void *v5; // rdi
-  int v6; // ebx
-  __int64 v7; // r8
-  int v8; // eax
-  __int64 v9; // r10
-  __int64 v10; // r9
-  int v11; // r13d
-  __int64 v12; // r14
-  float *v13; // r15
-  float v14; // xmm9_4
-  __int64 v15; // rdx
-  float v16; // xmm10_4
-  __int64 v17; // r12
-  int v18; // ebp
-  __int64 v19; // rbx
-  float *v20; // rdi
-  float v21; // xmm0_4
+  __int64 v4;
+  void *v5;
+  int v6;
+  __int64 v7;
+  int v8;
+  __int64 v9;
+  __int64 v10;
+  int v11;
+  __int64 v12;
+  float *v13;
+  float v14;
+  __int64 v15;
+  float v16;
+  __int64 v17;
+  int v18;
+  __int64 v19;
+  float *v20;
+  float v21;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140162D40[32];
 #define v23 (*(int (*))(void *)(sr_frame_140162D40 + 0)) /* [rsp+20h] */
@@ -7544,20 +7421,16 @@ __int64            sub_140162D40(void *Block, int a2, int a3, int a4)
 #undef v24
 #undef v25
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140301844: using guessed type int dword_140301844;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140162FB0) ----------------------------------------------------
 __int64            sub_140162FB0(unsigned int a1)
 {
-  __int64 result; // rax
-  unsigned int v3; // ecx
-  int v4; // edx
-  int v5; // eax
-  unsigned int v6; // r8d
-  unsigned int v7; // edx
-  unsigned int v8; // ecx
+  __int64 result;
+  unsigned int v3;
+  int v4;
+  int v5;
+  unsigned int v6;
+  unsigned int v7;
+  unsigned int v8;
 
   if ( !a1 )
     return 0xFFFFFFFFLL;
@@ -7592,118 +7465,117 @@ __int64            sub_140162FB0(unsigned int a1)
   return result;
 }
 
-
 //----- (0000000140163020) ----------------------------------------------------
 __int64            sub_140163020(__int64 a1, int a2, __int64 a3)
 {
-  int *v3; // rbp
-  __int16 *v4; // rax
-  int v5; // ebx
-  int v6; // ecx
-  int v7; // r13d
-  int v8; // edx
-  int v9; // r11d
-  int v10; // r9d
-  int v11; // edx
-  int v12; // r14d
-  int v13; // esi
-  int v14; // r13d
-  int v15; // r8d
-  int v16; // ecx
-  int v17; // edx
-  int v18; // r9d
-  int v19; // r10d
-  int v20; // ecx
-  int v21; // edx
-  int v22; // r8d
-  int v23; // r13d
-  int v24; // r12d
-  int v25; // r13d
-  int v26; // r10d
-  int v27; // edi
-  int v28; // r15d
-  int v29; // ebx
-  int v30; // ecx
-  int v31; // edi
-  int v32; // edx
-  int v33; // r9d
-  int v34; // r11d
-  int v35; // r8d
-  int v36; // r9d
-  int v37; // r10d
-  int v38; // edx
-  int v39; // ebx
-  int v40; // ecx
-  int v41; // r13d
-  int v42; // edx
-  int v43; // r11d
-  int v44; // r9d
-  int v45; // edx
-  int v46; // r14d
-  int v47; // esi
-  int v48; // r13d
-  int v49; // r8d
-  int v50; // ecx
-  int v51; // edx
-  int v52; // r9d
-  int v53; // r10d
-  int v54; // ecx
-  int v55; // edx
-  int v56; // r8d
-  int v57; // r13d
-  int v58; // r12d
-  int v59; // r13d
-  int v60; // r10d
-  int v61; // edi
-  int v62; // r15d
-  int v63; // ebx
-  int v64; // ecx
-  int v65; // edi
-  int v66; // edx
-  int v67; // r9d
-  int v68; // r11d
-  int v69; // r8d
-  int v70; // r9d
-  int v71; // r10d
-  int v72; // edx
-  __int64 *v73; // r11
-  _BYTE *v74; // r13
-  int v75; // r8d
-  int v76; // esi
-  int v77; // edi
-  int v78; // r10d
-  int v79; // r14d
-  int v80; // r9d
-  int v81; // eax
-  int v82; // ecx
-  int v83; // r15d
-  int v84; // r14d
-  int v85; // r12d
-  int v86; // r14d
-  int v87; // r9d
-  int v88; // ebp
-  int v89; // r12d
-  int v90; // r14d
-  int v91; // r15d
-  int v92; // r11d
-  int v93; // eax
-  int v94; // ebx
-  int v95; // ecx
-  int v96; // r8d
-  int v97; // r9d
-  int v98; // edx
-  int v99; // ecx
-  int v100; // edx
-  int v101; // eax
-  int v102; // ebp
-  int v103; // eax
-  int v104; // r12d
-  int v105; // eax
-  int v106; // r14d
-  int v107; // eax
-  int v108; // r15d
-  __int64 v109; // rcx
-  bool v110; // zf
+  int *v3;
+  __int16 *v4;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  int v15;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  int v21;
+  int v22;
+  int v23;
+  int v24;
+  int v25;
+  int v26;
+  int v27;
+  int v28;
+  int v29;
+  int v30;
+  int v31;
+  int v32;
+  int v33;
+  int v34;
+  int v35;
+  int v36;
+  int v37;
+  int v38;
+  int v39;
+  int v40;
+  int v41;
+  int v42;
+  int v43;
+  int v44;
+  int v45;
+  int v46;
+  int v47;
+  int v48;
+  int v49;
+  int v50;
+  int v51;
+  int v52;
+  int v53;
+  int v54;
+  int v55;
+  int v56;
+  int v57;
+  int v58;
+  int v59;
+  int v60;
+  int v61;
+  int v62;
+  int v63;
+  int v64;
+  int v65;
+  int v66;
+  int v67;
+  int v68;
+  int v69;
+  int v70;
+  int v71;
+  int v72;
+  __int64 *v73;
+  _BYTE *v74;
+  int v75;
+  int v76;
+  int v77;
+  int v78;
+  int v79;
+  int v80;
+  int v81;
+  int v82;
+  int v83;
+  int v84;
+  int v85;
+  int v86;
+  int v87;
+  int v88;
+  int v89;
+  int v90;
+  int v91;
+  int v92;
+  int v93;
+  int v94;
+  int v95;
+  int v96;
+  int v97;
+  int v98;
+  int v99;
+  int v100;
+  int v101;
+  int v102;
+  int v103;
+  int v104;
+  int v105;
+  int v106;
+  int v107;
+  int v108;
+  __int64 v109;
+  bool v110;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140163020[304];
 #define v112 (*(int (*))(void *)(sr_frame_140163020 + 0)) /* [rsp+0h] */
@@ -7987,152 +7859,152 @@ __int64            sub_140163020(__int64 a1, int a2, __int64 a3)
 //----- (0000000140163640) ----------------------------------------------------
 __int64            sub_140163640(_QWORD *a1, int a2,      __m128i *a3)
 {
-  __m128i v3; // xmm3
-  __m128i v4; // xmm5
-  __m128i v5; // xmm4
-  __m128i v6; // xmm2
-  __m128i v7; // xmm6
-  __m128i v8; // xmm7
-  __m128i v9; // xmm6
-  __m128i v10; // xmm10
-  __m128i v11; // xmm11
-  __m128i v12; // xmm8
-  __m128i v13; // xmm0
-  __m128i v14; // xmm10
-  __m128i v15; // xmm2
-  __m128i v16; // xmm14
-  __m128i v17; // xmm13
-  __m128i v18; // xmm1
-  __m128i v19; // xmm15
-  __m128i v20; // xmm6
-  __m128i v21; // xmm7
-  __m128i v22; // xmm5
-  __m128i v23; // xmm0
-  __m128i v24; // xmm11
-  __m128i v25; // xmm8
-  __m128i v26; // xmm2
-  __m128i v27; // xmm8
-  __m128i v28; // xmm1
-  __m128i v29; // xmm0
-  __m128i v30; // xmm1
-  __m128i v31; // xmm12
-  __m128i v32; // xmm3
-  __m128i v33; // xmm15
-  __m128i v34; // xmm9
-  __m128i v35; // xmm10
-  __m128i v36; // xmm13
-  __m128i v37; // xmm11
-  __m128i si128; // xmm4
-  __m128i v39; // xmm6
-  __m128i v40; // xmm8
-  __m128i v41; // xmm7
-  __m128i v42; // xmm0
-  __m128i v43; // xmm2
-  __m128i v44; // xmm8
-  __m128i v45; // xmm5
-  __m128i v46; // xmm6
-  __m128i v47; // xmm5
-  __m128i v48; // xmm6
-  __m128i v49; // xmm2
-  __m128i v50; // xmm8
-  __m128i v51; // xmm1
-  __m128i v52; // xmm15
-  __m128i v53; // xmm14
-  __m128i v54; // xmm5
-  __m128i v55; // xmm0
-  __m128i v56; // xmm15
-  __m128i v57; // xmm1
-  __m128i v58; // xmm4
-  __m128i v59; // xmm3
-  __m128i v60; // xmm0
-  __m128i v61; // xmm2
-  __m128i v62; // xmm7
-  __m128i v63; // xmm6
-  __m128i v64; // xmm1
-  __m128i v65; // xmm0
-  __m128i v66; // xmm2
-  __m128i v67; // xmm3
-  __m128i v68; // xmm14
-  __m128i v69; // xmm6
-  __m128i v70; // xmm7
-  __m128i v71; // xmm0
-  __m128i v72; // xmm2
-  __m128i v73; // xmm1
-  __m128i v74; // xmm14
-  __m128i v75; // xmm3
-  __m128i v76; // xmm6
-  __m128i v77; // xmm15
-  __m128i v78; // xmm7
-  __m128i v79; // xmm4
-  __m128i v80; // xmm5
-  __m128i v81; // xmm8
-  __m128i v82; // xmm5
-  __m128i v83; // xmm0
-  __m128i v84; // xmm2
-  __m128i v85; // xmm13
-  __m128i v86; // xmm15
-  __m128i v87; // xmm9
-  __m128i v88; // xmm13
-  __m128i v89; // xmm0
-  __m128i v90; // xmm3
-  __m128i v91; // xmm4
-  __m128i v92; // xmm14
-  __m128i v93; // xmm12
-  __m128i v94; // xmm8
-  __m128i v95; // xmm5
-  __m128i v96; // xmm0
-  __m128i v97; // xmm10
-  __m128i v98; // xmm1
-  __m128i v99; // xmm15
-  __m128i v100; // xmm0
-  __m128i v101; // xmm8
-  __m128i v102; // xmm14
-  __m128i v103; // xmm2
-  __m128i v104; // xmm3
-  __m128i v105; // xmm11
-  __m128i v106; // xmm5
-  __m128i v107; // xmm4
-  __m128i v108; // xmm7
-  __m128i v109; // xmm5
-  __m128i v110; // xmm6
-  __m128i v111; // xmm7
-  __m128i v112; // xmm8
-  __m128i v113; // xmm12
-  __m128i v114; // xmm2
-  __m128i v115; // xmm12
-  __m128i v116; // xmm9
-  __m128i v117; // xmm3
-  __m128i v118; // xmm11
-  __m128i v119; // xmm1
-  __m128i v120; // xmm8
-  __m128i v121; // xmm0
-  __m128i v122; // xmm12
-  __m128i v123; // xmm11
-  __m128i v124; // xmm4
-  __m128i v125; // xmm3
-  __m128i v126; // xmm14
-  __m128i v127; // xmm9
-  __m128i v128; // xmm2
-  __m128i v130; // xmm12
-  __m128i v131; // xmm1
-  __m128i v132; // xmm0
-  __m128i v133; // xmm4
-  __m128i v134; // xmm9
-  __m128i v135; // xmm3
-  __m128i v136; // xmm4
-  __m128i v137; // xmm2
-  __m128i v138; // xmm0
-  __m128i v139; // xmm1
-  _QWORD *v140; // rcx
-  __m128i v141; // xmm3
-  __m128i v142; // xmm9
-  __m128i v143; // xmm2
-  __m128i v144; // xmm4
-  _QWORD *v145; // rcx
-  _QWORD *v146; // rcx
-  _QWORD *v147; // rcx
-  _QWORD *v148; // rcx
-  _QWORD *v149; // rcx
+  __m128i v3;
+  __m128i v4;
+  __m128i v5;
+  __m128i v6;
+  __m128i v7;
+  __m128i v8;
+  __m128i v9;
+  __m128i v10;
+  __m128i v11;
+  __m128i v12;
+  __m128i v13;
+  __m128i v14;
+  __m128i v15;
+  __m128i v16;
+  __m128i v17;
+  __m128i v18;
+  __m128i v19;
+  __m128i v20;
+  __m128i v21;
+  __m128i v22;
+  __m128i v23;
+  __m128i v24;
+  __m128i v25;
+  __m128i v26;
+  __m128i v27;
+  __m128i v28;
+  __m128i v29;
+  __m128i v30;
+  __m128i v31;
+  __m128i v32;
+  __m128i v33;
+  __m128i v34;
+  __m128i v35;
+  __m128i v36;
+  __m128i v37;
+  __m128i si128;
+  __m128i v39;
+  __m128i v40;
+  __m128i v41;
+  __m128i v42;
+  __m128i v43;
+  __m128i v44;
+  __m128i v45;
+  __m128i v46;
+  __m128i v47;
+  __m128i v48;
+  __m128i v49;
+  __m128i v50;
+  __m128i v51;
+  __m128i v52;
+  __m128i v53;
+  __m128i v54;
+  __m128i v55;
+  __m128i v56;
+  __m128i v57;
+  __m128i v58;
+  __m128i v59;
+  __m128i v60;
+  __m128i v61;
+  __m128i v62;
+  __m128i v63;
+  __m128i v64;
+  __m128i v65;
+  __m128i v66;
+  __m128i v67;
+  __m128i v68;
+  __m128i v69;
+  __m128i v70;
+  __m128i v71;
+  __m128i v72;
+  __m128i v73;
+  __m128i v74;
+  __m128i v75;
+  __m128i v76;
+  __m128i v77;
+  __m128i v78;
+  __m128i v79;
+  __m128i v80;
+  __m128i v81;
+  __m128i v82;
+  __m128i v83;
+  __m128i v84;
+  __m128i v85;
+  __m128i v86;
+  __m128i v87;
+  __m128i v88;
+  __m128i v89;
+  __m128i v90;
+  __m128i v91;
+  __m128i v92;
+  __m128i v93;
+  __m128i v94;
+  __m128i v95;
+  __m128i v96;
+  __m128i v97;
+  __m128i v98;
+  __m128i v99;
+  __m128i v100;
+  __m128i v101;
+  __m128i v102;
+  __m128i v103;
+  __m128i v104;
+  __m128i v105;
+  __m128i v106;
+  __m128i v107;
+  __m128i v108;
+  __m128i v109;
+  __m128i v110;
+  __m128i v111;
+  __m128i v112;
+  __m128i v113;
+  __m128i v114;
+  __m128i v115;
+  __m128i v116;
+  __m128i v117;
+  __m128i v118;
+  __m128i v119;
+  __m128i v120;
+  __m128i v121;
+  __m128i v122;
+  __m128i v123;
+  __m128i v124;
+  __m128i v125;
+  __m128i v126;
+  __m128i v127;
+  __m128i v128;
+  __m128i v130;
+  __m128i v131;
+  __m128i v132;
+  __m128i v133;
+  __m128i v134;
+  __m128i v135;
+  __m128i v136;
+  __m128i v137;
+  __m128i v138;
+  __m128i v139;
+  _QWORD *v140;
+  __m128i v141;
+  __m128i v142;
+  __m128i v143;
+  __m128i v144;
+  _QWORD *v145;
+  _QWORD *v146;
+  _QWORD *v147;
+  _QWORD *v148;
+  _QWORD *v149;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140163640[128];
 #define v150 (*(__m128i (*))(void *)(sr_frame_140163640 + 0)) /* [rsp+0h] */
@@ -8353,48 +8225,37 @@ __int64            sub_140163640(_QWORD *a1, int a2,      __m128i *a3)
 #undef v156
 #undef v157
 
-// 1402791A0: using guessed type __int128 xmmword_1402791A0;
-// 1402791E0: using guessed type __int128 xmmword_1402791E0;
-// 1402791F0: using guessed type __int128 xmmword_1402791F0;
-// 140279210: using guessed type __int128 xmmword_140279210;
-// 140279220: using guessed type __int128 xmmword_140279220;
-// 140279230: using guessed type __int128 xmmword_140279230;
-// 140279940: using guessed type __int128 xmmword_140279940;
-// 140279950: using guessed type __int128 xmmword_140279950;
-// 140279960: using guessed type __int128 xmmword_140279960;
-// 140279980: using guessed type __int128 xmmword_140279980;
-
 //----- (0000000140163E70) ----------------------------------------------------
 __int64            sub_140163E70(__int64 a1, char *a2, char *a3, unsigned int *a4)
 {
-  int *v7; // r14
-  __int64 *v8; // rbx
-  int *v9; // rdx
-  __int64 v10; // rax
-  int v11; // eax
-  __int64 v12; // rcx
-  int *v13; // rbx
-  _QWORD *v14; // r13
-  __int64 *v15; // r12
-  __int64 v16; // rax
-  int *v17; // rax
-  char *v18; // rax
-  unsigned int *v19; // rax
-  int v20; // ebx
-  int v21; // ecx
-  int v22; // eax
-  int v23; // eax
-  __int64 v24; // rcx
-  int v25; // ebx
-  int *v26; // rax
-  char *v27; // rax
-  unsigned int *v28; // rax
-       char *v29; // rax
-  int v30; // eax
-  _DWORD *i; // rcx
-  int v32; // eax
-  __int64 v33; // r10
-  unsigned int v34; // ecx
+  int *v7;
+  __int64 *v8;
+  int *v9;
+  __int64 v10;
+  int v11;
+  __int64 v12;
+  int *v13;
+  _QWORD *v14;
+  __int64 *v15;
+  __int64 v16;
+  int *v17;
+  char *v18;
+  unsigned int *v19;
+  int v20;
+  int v21;
+  int v22;
+  int v23;
+  __int64 v24;
+  int v25;
+  int *v26;
+  char *v27;
+  unsigned int *v28;
+       char *v29;
+  int v30;
+  _DWORD *i;
+  int v32;
+  __int64 v33;
+  unsigned int v34;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140163E70[1168];
 #define v36 (*(__int64 (*))(void *)(sr_frame_140163E70 + 0)) /* [rsp+0h] */
@@ -8606,19 +8467,15 @@ LABEL_40:
 #undef v46
 #undef v47
 
-// 140236FF0: using guessed type __int64 __fastcall strncmp(_QWORD, _QWORD, _QWORD);
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401643B0) ----------------------------------------------------
 __int64            sub_1401643B0(__int64 a1)
 {
-  __int64 v2; // rdx
-  __int64 v3; // rcx
-  int v4; // ebx
-  _QWORD *v5; // rbx
-  int v6; // ecx
-  __int64 v7; // rcx
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  _QWORD *v5;
+  int v6;
+  __int64 v7;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401643B0[48];
 #define v9 (*(__int64 (*)[4])(void *)(sr_frame_1401643B0 + 0)) /* [rsp+20h] */
@@ -8670,62 +8527,61 @@ LABEL_14:
 #undef v9
 #undef v10
 
-
 //----- (0000000140164500) ----------------------------------------------------
 __int64            sub_140164500(__int64 a1, _OWORD *a2, __int64 a3, __int64 a4, __int64 a5, int a6, _WORD *a7)
 {
-  unsigned int v11; // r10d
-  __int64 v12; // rcx
-  int v13; // eax
-  __int64 v14; // rdx
-  int v15; // ecx
-  signed int v16; // edi
-  unsigned int *v17; // rax
-  int i; // edi
-  int v19; // r11d
-  __int64 v20; // r9
-  __int64 v21; // r14
-  signed int v22; // r9d
-  int v23; // r8d
-  int v24; // r10d
-  __int64 v25; // rcx
-  int v26; // r8d
-  int v27; // edx
-  int v28; // r8d
-  int v29; // esi
-  __int64 v30; // rcx
-  int v31; // edx
-  int v32; // r8d
-  unsigned int v33; // edx
-  unsigned __int64 v34; // rax
-  int v35; // r9d
-  int v36; // ecx
-  int v37; // esi
-  __int64 v38; // rax
-  unsigned int v39; // r10d
-  unsigned __int64 v40; // rax
-  __int64 v41; // rcx
-  int v42; // r9d
-  __int64 v43; // rax
-  int v44; // ecx
-  int v45; // r10d
-  int v46; // r9d
-  unsigned int v47; // eax
-  unsigned int v48; // r10d
-  unsigned int *v49; // rax
-  int v50; // edi
-  __int64 j; // r8
-  int v52; // r9d
-  unsigned int v53; // r10d
-  __int64 v54; // r14
-  int v55; // edx
-  __int64 v56; // rdi
-  int v57; // esi
-  __int64 v58; // rax
-  __int64 v59; // r14
-  int v60; // r9d
-  int v61; // eax
-  __int16 v62; // dx
+  unsigned int v11;
+  __int64 v12;
+  int v13;
+  __int64 v14;
+  int v15;
+  signed int v16;
+  unsigned int *v17;
+  int i;
+  int v19;
+  __int64 v20;
+  __int64 v21;
+  signed int v22;
+  int v23;
+  int v24;
+  __int64 v25;
+  int v26;
+  int v27;
+  int v28;
+  int v29;
+  __int64 v30;
+  int v31;
+  int v32;
+  unsigned int v33;
+  unsigned __int64 v34;
+  int v35;
+  int v36;
+  int v37;
+  __int64 v38;
+  unsigned int v39;
+  unsigned __int64 v40;
+  __int64 v41;
+  int v42;
+  __int64 v43;
+  int v44;
+  int v45;
+  int v46;
+  unsigned int v47;
+  unsigned int v48;
+  unsigned int *v49;
+  int v50;
+  __int64 j;
+  int v52;
+  unsigned int v53;
+  __int64 v54;
+  int v55;
+  __int64 v56;
+  int v57;
+  __int64 v58;
+  __int64 v59;
+  int v60;
+  int v61;
+  __int16 v62;
 
   if ( *(int *)(a1 + 18468) < 16 )
   {
@@ -8759,7 +8615,7 @@ __int64            sub_140164500(__int64 a1, _OWORD *a2, __int64 a3, __int64 a4,
     v21 = v20 + a3;
     if ( (dword_14026FBF0[*(unsigned __int8 *)(v20 + a3 + 1280)] & (v11 >> (32 - *(_BYTE *)(v20 + a3 + 1280)))) != *(unsigned __int16 *)(a3 + 2 * v20 + 512) )
     {
-      sub_14023E640(
+      crt_assert(
         (char *)L"(((j->code_buffer) >> (32 - h->size[c])) & stbi__bmask[h->size[c]]) == h->code[c]",
         (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
         0x81Au);
@@ -8861,7 +8717,7 @@ LABEL_21:
           v54 = (int)(*(_DWORD *)(a4 + 4 * j + 1612) + (dword_14026FBF0[j] & (v33 >> (32 - v50))));
           if ( (dword_14026FBF0[*(unsigned __int8 *)(v54 + a4 + 1280)] & (v33 >> (32 - *(_BYTE *)(v54 + a4 + 1280)))) != *(unsigned __int16 *)(a4 + 2 * v54 + 512) )
           {
-            sub_14023E640(
+            crt_assert(
               (char *)L"(((j->code_buffer) >> (32 - h->size[c])) & stbi__bmask[h->size[c]]) == h->code[c]",
               (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
               0x81Au);
@@ -8925,94 +8781,87 @@ LABEL_48:
   return 0;
 }
 
-// 14026FBF0: using guessed type int dword_14026FBF0[20];
-// 14026FC40: using guessed type int dword_14026FC40[16];
-// 14026FC80: using guessed type unsigned __int8 byte_14026FC80[336];
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272560: using guessed type __int16[82];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140164A80) ----------------------------------------------------
 __int64            sub_140164A80(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 {
-  __int64 v4; // rdi
-  __int64 v7; // r10
-  int v10; // eax
-  int v11; // r15d
-  int v12; // r8d
-  unsigned int v13; // r9d
-  unsigned __int64 v14; // rax
-  int v15; // edx
-  int v16; // ecx
-  int v17; // edi
-  __int64 v18; // rax
-  unsigned int v19; // edx
-  unsigned __int64 v20; // rax
-  __int64 v21; // rcx
-  int v22; // r10d
-  __int64 v23; // rax
-  int v24; // ecx
-  int v25; // edx
-  int v26; // r10d
-  int v27; // r9d
-  unsigned int v28; // esi
-  unsigned int v29; // edx
-  unsigned int *v30; // rax
-  int v31; // esi
-  __int64 i; // r8
-  int v33; // r10d
-  __int64 v34; // rbp
-  char v35; // bp
-  int v36; // r11d
-  __int64 v37; // rsi
-  int v38; // ebp
-  int v39; // edi
-  __int64 v40; // rax
-  __int64 v41; // rsi
-  int v42; // r8d
-  int v43; // eax
-  int v44; // r9d
-  int v45; // r8d
-  int v46; // r9d
-  int v47; // r8d
-  int v48; // edx
-  int v49; // eax
-  unsigned __int16 v50; // r14
-  unsigned __int8 *v51; // rbp
-  __int16 *v52; // rsi
-  int v53; // edx
-  int v54; // ecx
-  __int16 v55; // ax
-  __int16 v56; // ax
-  __int64 v57; // r12
-  unsigned int v58; // r10d
-  unsigned __int64 v59; // rax
-  __int64 v60; // rcx
-  int v61; // r9d
-  __int64 v62; // rax
-  int v63; // ecx
-  int v64; // r10d
-  int v65; // r9d
-  unsigned int v66; // ebp
-  unsigned int *v67; // rax
-  int v68; // esi
-  __int64 j; // r8
-  int v70; // r9d
-  __int64 v71; // rbp
-  char v72; // r15
-  __int64 v73; // rbp
-  int v74; // r15d
-  int v75; // edx
-  int v76; // r10d
-  int v77; // ecx
-  int v78; // eax
-  bool v79; // cc
-  __int64 v80; // r10
-  __int16 *v81; // rsi
-  int v82; // edx
-  int v83; // ecx
-  __int16 v84; // ax
-  __int16 v85; // ax
+  __int64 v4;
+  __int64 v7;
+  int v10;
+  int v11;
+  int v12;
+  unsigned int v13;
+  unsigned __int64 v14;
+  int v15;
+  int v16;
+  int v17;
+  __int64 v18;
+  unsigned int v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  int v22;
+  __int64 v23;
+  int v24;
+  int v25;
+  int v26;
+  int v27;
+  unsigned int v28;
+  unsigned int v29;
+  unsigned int *v30;
+  int v31;
+  __int64 i;
+  int v33;
+  __int64 v34;
+  char v35;
+  int v36;
+  __int64 v37;
+  int v38;
+  int v39;
+  __int64 v40;
+  __int64 v41;
+  int v42;
+  int v43;
+  int v44;
+  int v45;
+  int v46;
+  int v47;
+  int v48;
+  int v49;
+  unsigned __int16 v50;
+  unsigned __int8 *v51;
+  __int16 *v52;
+  int v53;
+  int v54;
+  __int16 v55;
+  __int16 v56;
+  __int64 v57;
+  unsigned int v58;
+  unsigned __int64 v59;
+  __int64 v60;
+  int v61;
+  __int64 v62;
+  int v63;
+  int v64;
+  int v65;
+  unsigned int v66;
+  unsigned int *v67;
+  int v68;
+  __int64 j;
+  int v70;
+  __int64 v71;
+  char v72;
+  __int64 v73;
+  int v74;
+  int v75;
+  int v76;
+  int v77;
+  int v78;
+  bool v79;
+  __int64 v80;
+  __int16 *v81;
+  int v82;
+  int v83;
+  __int16 v84;
+  __int16 v85;
 
   v4 = *(int *)(a1 + 18484);
   v7 = a2;
@@ -9084,7 +8933,7 @@ __int64            sub_140164A80(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
           v34 = (int)(*(_DWORD *)(a3 + 4 * i + 1612) + (dword_14026FBF0[i] & (v13 >> (32 - v31))));
           if ( (dword_14026FBF0[*(unsigned __int8 *)(a3 + v34 + 1280)] & (v13 >> (32 - *(_BYTE *)(a3 + v34 + 1280)))) != *(unsigned __int16 *)(a3 + 2 * v34 + 512) )
           {
-            sub_14023E640(
+            crt_assert(
               (char *)L"(((j->code_buffer) >> (32 - h->size[c])) & stbi__bmask[h->size[c]]) == h->code[c]",
               (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
               0x81Au);
@@ -9204,7 +9053,7 @@ LABEL_95:
         v71 = (int)(*(_DWORD *)(a3 + 4 * j + 1612) + (dword_14026FBF0[j] & (v58 >> (32 - v68))));
         if ( (dword_14026FBF0[*(unsigned __int8 *)(a3 + v71 + 1280)] & (v58 >> (32 - *(_BYTE *)(a3 + v71 + 1280)))) != *(unsigned __int16 *)(a3 + 2 * v71 + 512) )
         {
-          sub_14023E640(
+          crt_assert(
             (char *)L"(((j->code_buffer) >> (32 - h->size[c])) & stbi__bmask[h->size[c]]) == h->code[c]",
             (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
             0x81Au);
@@ -9358,39 +9207,32 @@ LABEL_91:
   return 1;
 }
 
-// 14026FBF0: using guessed type int dword_14026FBF0[20];
-// 14026FC40: using guessed type int dword_14026FC40[16];
-// 14026FC80: using guessed type unsigned __int8 byte_14026FC80[336];
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272560: using guessed type __int16[82];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140165200) ----------------------------------------------------
 __int64            sub_140165200(__int64 a1, __int64 a2, __int64 a3, int a4)
 {
-  __int64 v5; // r15
-  unsigned int v9; // r10d
-  unsigned __int64 v10; // rax
-  __int64 v11; // rcx
-  int v12; // r11d
-  __int64 v13; // rax
-  int v14; // ecx
-  int v15; // r10d
-  signed int v16; // r11d
-  signed int v17; // esi
-  unsigned int *v18; // rax
-  int i; // esi
-  int v20; // r11d
-  __int64 v21; // r8
-  __int64 v22; // r14
-  int v23; // r9d
-  __int64 v24; // rcx
-  int v25; // r8d
-  int v26; // edx
-  int v27; // r8d
-  int v28; // edx
-  int v29; // eax
-  int v30; // edx
+  __int64 v5;
+  unsigned int v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  int v12;
+  __int64 v13;
+  int v14;
+  int v15;
+  signed int v16;
+  signed int v17;
+  unsigned int *v18;
+  int i;
+  int v20;
+  __int64 v21;
+  __int64 v22;
+  int v23;
+  __int64 v24;
+  int v25;
+  int v26;
+  int v27;
+  int v28;
+  int v29;
+  int v30;
 
   v5 = a4;
   if ( *(_DWORD *)(a1 + 18488) )
@@ -9441,7 +9283,7 @@ __int64            sub_140165200(__int64 a1, __int64 a2, __int64 a3, int a4)
       v22 = v21 + a3;
       if ( (dword_14026FBF0[*(unsigned __int8 *)(v21 + a3 + 1280)] & (v9 >> (32 - *(_BYTE *)(v21 + a3 + 1280)))) != *(unsigned __int16 *)(a3 + 2 * v21 + 512) )
       {
-        sub_14023E640(
+        crt_assert(
           (char *)L"(((j->code_buffer) >> (32 - h->size[c])) & stbi__bmask[h->size[c]]) == h->code[c]",
           (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
           0x81Au);
@@ -9498,28 +9340,22 @@ LABEL_25:
   return 1;
 }
 
-// 14026FBF0: using guessed type int dword_14026FBF0[20];
-// 14026FC40: using guessed type int dword_14026FC40[16];
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272560: using guessed type __int16[82];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140165570) ----------------------------------------------------
 void            sub_140165570(_DWORD *a1)
 {
-  int v2; // r13d
-  _DWORD *v3; // rbx
-  int v4; // ebp
-  int v5; // r15d
-  int v6; // r12d
-  int v7; // edi
-  __int64 v8; // rsi
-  __int64 v9; // r10
-  __int64 v10; // r8
-  __int64 v11; // rax
-  char *v12; // r9
-  __int16 v13; // cx
-  __int16 v14; // dx
+  int v2;
+  _DWORD *v3;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  char *v12;
+  __int16 v13;
+  __int16 v14;
 
   if ( a1[4620] )
   {
@@ -9576,13 +9412,12 @@ void            sub_140165570(_DWORD *a1)
   }
 }
 
-
 //----- (0000000140165700) ----------------------------------------------------
 __int64            sub_140165700(__int64 a1)
 {
-  int v1; // edx
-  int v3; // eax
-  int v4; // ecx
+  int v1;
+  int v3;
+  int v4;
 
   v1 = *(_DWORD *)(a1 + 18468);
   if ( v1 < 1 )
@@ -9597,14 +9432,13 @@ __int64            sub_140165700(__int64 a1)
   return v3 & 0x80000000;
 }
 
-
 //----- (0000000140165750) ----------------------------------------------------
 __int64            sub_140165750(__int64 a1, int a2)
 {
-  int v2; // r8d
-  __int64 v4; // rdi
-  int v5; // edx
-  int v6; // eax
+  int v2;
+  __int64 v4;
+  int v5;
+  int v6;
 
   v2 = *(_DWORD *)(a1 + 18468);
   v4 = a2;
@@ -9620,21 +9454,19 @@ __int64            sub_140165750(__int64 a1, int a2)
   return v5 & (unsigned int)v6;
 }
 
-// 14026FBF0: using guessed type int dword_14026FBF0[20];
-
 //----- (00000001401657B0) ----------------------------------------------------
 __int64            sub_1401657B0(__int64 a1, __int64 a2)
 {
-  unsigned int v4; // r10d
-  __int64 v5; // rcx
-  int v6; // eax
-  __int64 v7; // rdx
-  int v8; // ecx
-  unsigned int *v10; // rax
-  int i; // ebx
-  int v12; // r11d
-  __int64 v13; // r8
-  __int64 v14; // rbp
+  unsigned int v4;
+  __int64 v5;
+  int v6;
+  __int64 v7;
+  int v8;
+  unsigned int *v10;
+  int i;
+  int v12;
+  __int64 v13;
+  __int64 v14;
 
   if ( *(int *)(a1 + 18468) < 16 )
     sub_140161D20((_QWORD *)a1);
@@ -9668,7 +9500,7 @@ __int64            sub_1401657B0(__int64 a1, __int64 a2)
   v14 = v13 + a2;
   if ( (dword_14026FBF0[*(unsigned __int8 *)(v13 + a2 + 1280)] & (v4 >> (32 - *(_BYTE *)(v13 + a2 + 1280)))) != *(unsigned __int16 *)(a2 + 2 * v13 + 512) )
   {
-    sub_14023E640(
+    crt_assert(
       (char *)L"(((j->code_buffer) >> (32 - h->size[c])) & stbi__bmask[h->size[c]]) == h->code[c]",
       (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
       0x81Au);
@@ -9680,17 +9512,13 @@ __int64            sub_1401657B0(__int64 a1, __int64 a2)
   return *(unsigned __int8 *)(v14 + 1024);
 }
 
-// 14026FBF0: using guessed type int dword_14026FBF0[20];
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272560: using guessed type __int16[82];
-
 //----- (0000000140165940) ----------------------------------------------------
 __int64            sub_140165940(__int64 a1, _DWORD *a2, _DWORD *a3, int *a4)
 {
-  __int64 *v8; // rdi
-  _QWORD *v9; // rdx
-  unsigned int v10; // ebx
-  int v11; // edx
+  __int64 *v8;
+  _QWORD *v9;
+  unsigned int v10;
+  int v11;
 
   v8 = (__int64 *)sr_path_malloc(18568);
   *v8 = a1;
@@ -9720,13 +9548,11 @@ __int64            sub_140165940(__int64 a1, _DWORD *a2, _DWORD *a3, int *a4)
   return v10;
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-
 //----- (0000000140165A10) ----------------------------------------------------
 __int64            sub_140165A10(__int64 *a1, _DWORD *a2, _DWORD *a3, int *a4)
 {
-  _QWORD *v8; // rcx
-  int v10; // edx
+  _QWORD *v8;
+  int v10;
 
   if ( sub_14015F960(a1, 2) )
   {
@@ -9752,12 +9578,11 @@ __int64            sub_140165A10(__int64 *a1, _DWORD *a2, _DWORD *a3, int *a4)
   }
 }
 
-
 //----- (0000000140165AC0) ----------------------------------------------------
 __int64            sub_140165AC0(__int64 a1, int *a2, _DWORD *a3, int *a4, unsigned int a5)
 {
-  _QWORD *v9; // rdi
-  __int64 v10; // rbx
+  _QWORD *v9;
+  __int64 v10;
 
   v9 = (_QWORD *)sr_path_malloc(18568);
   *v9 = a1;
@@ -9767,13 +9592,11 @@ __int64            sub_140165AC0(__int64 a1, int *a2, _DWORD *a3, int *a4, unsig
   return v10;
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-
 //----- (0000000140165BB0) ----------------------------------------------------
 __int64            sub_140165BB0(_QWORD *a1)
 {
-  __int64 v2; // rdi
-  unsigned int v3; // esi
+  __int64 v2;
+  unsigned int v3;
 
   v2 = sr_path_malloc(18568);
   *(_QWORD *)v2 = (uint64)(uintptr_t)(a1);
@@ -9792,48 +9615,45 @@ __int64            sub_140165BB0(_QWORD *a1)
   return v3;
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140165C60) ----------------------------------------------------
 __int64            sub_140165C60(char *Block, int a2, int a3, int a4)
 {
-  __int64 v4; // r15
-  char *v5; // r12
-  int v7; // ebp
-  int v8; // eax
-  __int64 v9; // r13
-  int v10; // edi
-  int v11; // ebx
-  __int64 v12; // rcx
-  float v13; // xmm7_4
-  __int64 v14; // rax
-  char *v15; // rsi
-  float v16; // xmm8_4
-  __int64 v17; // r12
-  __int64 v18; // r13
-  __int64 v19; // r14
-  __int64 v20; // rbx
-  __int64 v21; // rdi
-  double v22; // xmm0_8
-  __int64 v23; // rsi
-  __int64 v24; // rdx
-  __int64 v25; // r10
-  __int64 v26; // r11
-  char *v27; // r8
-  __int64 v28; // rcx
-  float *v29; // r9
-  unsigned int v30; // eax
-  __int64 v31; // rdx
-  unsigned int v32; // eax
-  float v33; // xmm1_4
-  __m128i v34; // xmm0
-  int v35; // eax
-  int v36; // eax
-  float *v37; // r8
-  char *v38; // rdx
-  __int64 v39; // rcx
-  int v40; // eax
+  __int64 v4;
+  char *v5;
+  int v7;
+  int v8;
+  __int64 v9;
+  int v10;
+  int v11;
+  __int64 v12;
+  float v13;
+  __int64 v14;
+  char *v15;
+  float v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  double v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  char *v27;
+  __int64 v28;
+  float *v29;
+  unsigned int v30;
+  __int64 v31;
+  unsigned int v32;
+  float v33;
+  __m128i v34;
+  int v35;
+  int v36;
+  float *v37;
+  char *v38;
+  __int64 v39;
+  int v40;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140165C60[32];
 #define v41 (*(int (*))(void *)(sr_frame_140165C60 + 0)) /* [rsp+20h] */
@@ -9882,7 +9702,7 @@ __int64            sub_140165C60(char *Block, int a2, int a3, int a4)
           v21 = v17;
           do
           {
-            v22 = pow((float)((float)(unsigned __int8)v15[v20] * 0.003921568859368563), v13);
+            v22 = pow((float)((float)(unsigned __int8)v15[v20] * 0.0039215689), v13);
             v21 += 4;
             ++v20;
             *(float *)&v22 = v22 * v16;
@@ -9921,13 +9741,13 @@ __int64            sub_140165C60(char *Block, int a2, int a3, int a4)
         {
           v32 = (unsigned __int8)*v27;
           v33 = (float)(unsigned __int8)v27[v25];
-          v29[v28] = (float)(unsigned __int8)v27[v28] * 0.003921568859368563;
+          v29[v28] = (float)(unsigned __int8)v27[v28] * 0.0039215689;
           v34 = _mm_cvtsi32_si128(v32);
           v35 = (unsigned __int8)v27[v26];
           v27 += v23;
-          v29[v25] = v33 * 0.003921568859368563;
-          *v29 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v34), f32)[0] * 0.003921568859368563;
-          v29[v26] = (float)v35 * 0.003921568859368563;
+          v29[v25] = v33 * 0.0039215689;
+          *v29 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v34), f32)[0] * 0.0039215689;
+          v29[v26] = (float)v35 * 0.0039215689;
           v29 += v23;
           --v31;
         }
@@ -9943,7 +9763,7 @@ __int64            sub_140165C60(char *Block, int a2, int a3, int a4)
         {
           v40 = (unsigned __int8)*v38;
           v38 += (int)v4;
-          *v37 = (float)v40 * 0.003921568859368563;
+          *v37 = (float)v40 * 0.0039215689;
           v37 += (int)v4;
           --v39;
         }
@@ -9957,26 +9777,21 @@ __int64            sub_140165C60(char *Block, int a2, int a3, int a4)
 #undef v41
 #undef v42
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140301838: using guessed type int dword_140301838;
-// 14030183C: using guessed type int dword_14030183C;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140165FD0) ----------------------------------------------------
 __m128i *           sub_140165FD0(__int64 a1, int *a2, int *a3, int *a4, unsigned int a5)
 {
-  unsigned int v5; // edi
-  __m128i *result; // rax
-  __m128i *v10; // rbx
-  int v11; // esi
-  unsigned int v12; // eax
-  int v13; // esi
-  __int64 v14; // rax
-  __m128i *v15; // r14
-  __int64 i; // r8
-  __int64 v17; // rdx
-  unsigned int v18; // eax
-  int v19[4]; // [rsp+40h] [rbp-28h] BYREF
+  unsigned int v5;
+  __m128i *result;
+  __m128i *v10;
+  int v11;
+  unsigned int v12;
+  int v13;
+  __int64 v14;
+  __m128i *v15;
+  __int64 i;
+  __int64 v17;
+  unsigned int v18;
+  int v19[4];
 
   v5 = a5;
   result = (__m128i *)sub_1401666B0(a1, a2, a3, a4, a5, v19, 16);
@@ -9988,7 +9803,7 @@ __m128i *           sub_140165FD0(__int64 a1, int *a2, int *a3, int *a4, unsigne
     goto LABEL_5;
   if ( v19[0] != 16 )
   {
-    sub_14023E640(
+    crt_assert(
       (char *)L"ri.bits_per_channel == 8 || ri.bits_per_channel == 16",
       (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
       0x4D3u);
@@ -10033,39 +9848,33 @@ LABEL_5:
   return v10;
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272470: using guessed type __int16[54];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980DAC: using guessed type unsigned int;
-
 //----- (0000000140166160) ----------------------------------------------------
 __m128i *           sub_140166160(__int64 a1, int *a2, int *a3, unsigned int *a4, unsigned int a5)
 {
-  unsigned int v5; // r14d
-  __m128i *result; // rax
-  __m128i *v10; // rbx
-  unsigned int v11; // eax
-  int v12; // edi
-  __int64 v13; // rbp
-  unsigned __int64 v14; // rsi
-  unsigned int v15; // r8d
-  int v16; // edx
-  __int64 v17; // rcx
-  int v18; // edi
-  unsigned __int64 v19; // rcx
-  __m128i *v20; // r9
-  __m128i v21; // xmm2
-  __m128i v22; // xmm0
-  __m128i v23; // xmm1
-  __m128i v24; // xmm0
-  __m128i v25; // xmm1
-  __m128i v26; // xmm0
-  __m128i v27; // xmm1
-  __int64 i; // rax
-  __int64 v29; // rdx
-  unsigned int v30; // eax
-  int v31[14]; // [rsp+40h] [rbp-38h] BYREF
+  unsigned int v5;
+  __m128i *result;
+  __m128i *v10;
+  unsigned int v11;
+  int v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  unsigned int v15;
+  int v16;
+  __int64 v17;
+  int v18;
+  unsigned __int64 v19;
+  __m128i *v20;
+  __m128i v21;
+  __m128i v22;
+  __m128i v23;
+  __m128i v24;
+  __m128i v25;
+  __m128i v26;
+  __m128i v27;
+  __int64 i;
+  __int64 v29;
+  unsigned int v30;
+  int v31[14];
 
   v5 = a5;
   result = (__m128i *)sub_1401666B0(a1, a2, a3, (int *)a4, a5, v31, 8);
@@ -10075,7 +9884,7 @@ __m128i *           sub_140166160(__int64 a1, int *a2, int *a3, unsigned int *a4
   if ( v31[0] == 8 )
     goto LABEL_18;
   if ( v31[0] != 16 )
-    sub_14023E640(
+    crt_assert(
       (char *)L"ri.bits_per_channel == 8 || ri.bits_per_channel == 16",
       (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
       0x4B9u);
@@ -10145,32 +9954,25 @@ LABEL_19:
 
 // 140166284: conditional instruction was optimized away because edi.4>=20
 // 14016627F: mask 0x8000001F is shortened because edi.4 <= 0x7FFFFFFF
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272470: using guessed type __int16[54];
-// 1402791D0: using guessed type __int128 xmmword_1402791D0;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980DAC: using guessed type unsigned int;
-// 144CBE4C4: using guessed type unsigned int;
 
 //----- (00000001401663E0) ----------------------------------------------------
 __int64            sub_1401663E0(     __m128i *a1, __int64 *a2, _DWORD *a3, int *a4)
 {
-  _DWORD *v5; // r14
-  unsigned int v7; // esi
-  int v8; // eax
-  __int64 v9; // rcx
-  int v10; // ebx
-  __int64 v11; // r15
-  char *v12; // rbp
-  int v13; // r12d
-       __m128i *v14; // rax
-       __m128i *v15; // r14
-  int v16; // edx
-  int v17; // esi
-  int v18; // esi
-  __int64 v19; // rax
-  __int64 v21; // [rsp-20h] [rbp-11230h] BYREF
+  _DWORD *v5;
+  unsigned int v7;
+  int v8;
+  __int64 v9;
+  int v10;
+  __int64 v11;
+  char *v12;
+  int v13;
+       __m128i *v14;
+       __m128i *v15;
+  int v16;
+  int v17;
+  int v18;
+  __int64 v19;
+  __int64 v21;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401663E0[35136];
 #define v22 (*(unsigned int (*))(void *)(sr_frame_1401663E0 + 0)) /* [rsp+10h] */
@@ -10208,7 +10010,7 @@ __int64            sub_1401663E0(     __m128i *a1, __int64 *a2, _DWORD *a3, int 
   v10 = 0;
   v11 = 0;
   v12 = nullptr;
-  sub_1401FCD30((void *)(uintptr_t)(&v27), 0, 0x8870u);
+  crt_memset((void *)(uintptr_t)(&v27), 0, 0x8870u);
   if ( a2 )
     *a2 = 0;
   while ( 1 )
@@ -10248,7 +10050,7 @@ LABEL_12:
       *a2 = v19;
     }
 LABEL_13:
-    sub_1401FC920((__m128i *)&v12[v18 * v13], v15, v18);
+    crt_memcpy((__m128i *)&v12[v18 * v13], v15, v18);
     if ( v10 >= 2 )
       v11 = (__int64)&v12[-2 * v18];
     v7 = v22;
@@ -10280,52 +10082,47 @@ LABEL_13:
 #undef v35
 #undef v36
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 14023AD00: using guessed type __int64 __fastcall j__realloc_base(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401666B0) ----------------------------------------------------
 char *           sub_1401666B0(__int64 a1, int *a2, int *a3, int *a4, unsigned int a5, int *a6, int a7)
 {
-  unsigned int v9; // r14d
-  char *v10; // rbp
-  __int64 v12; // rbx
-  char **v13; // rdi
-  unsigned __int64 *v14; // r15
-  __int64 *v15; // rdi
-  __int64 v16; // rbx
-  int v18; // eax
-  char *v19; // rcx
-  unsigned __int64 v20; // rdx
-  char *v21; // rdi
-  int v22; // eax
-  int *v23; // rbx
-  int v24; // edx
-  int v25; // r9d
-  char *v26; // rax
-  char v27; // dl
-  char *v28; // rax
-  char v29; // cl
-  int v30; // ebx
-  unsigned __int64 v31; // rax
-  __int64 v32; // rdx
-  int v33; // eax
-  int v34; // ebx
-  int v35; // eax
-  __int64 v36; // rbx
-  char *v37; // rax
-  unsigned __int64 v38; // rcx
-  char v39; // bl
-  char *v40; // rax
-  char v41; // cl
-  void *v42; // rax
+  unsigned int v9;
+  char *v10;
+  __int64 v12;
+  char **v13;
+  unsigned __int64 *v14;
+  __int64 *v15;
+  __int64 v16;
+  int v18;
+  char *v19;
+  unsigned __int64 v20;
+  char *v21;
+  int v22;
+  int *v23;
+  int v24;
+  int v25;
+  char *v26;
+  char v27;
+  char *v28;
+  char v29;
+  int v30;
+  unsigned __int64 v31;
+  __int64 v32;
+  int v33;
+  int v34;
+  int v35;
+  __int64 v36;
+  char *v37;
+  unsigned __int64 v38;
+  char v39;
+  char *v40;
+  char v41;
+  void *v42;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401666B0[80];
 #define v43 (*(int (*))(void *)(sr_frame_1401666B0 + 0)) /* [rsp+20h] */
 #define v44 (*(_QWORD (*)[5])(void *)(sr_frame_1401666B0 + 32)) /* [rsp+40h] */
 
-
-  int v49; // [rsp+D8h] [rbp+30h]
+  int v49;
 
   v9 = a5;
   v10 = nullptr;
@@ -10371,7 +10168,7 @@ char *           sub_1401666B0(__int64 a1, int *a2, int *a3, int *a4, unsigned i
     {
       if ( !*(_DWORD *)(a1 + 48) )
         goto LABEL_41;
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v27 = **v13;
       v28 = *v13 + 1;
     }
@@ -10387,7 +10184,7 @@ char *           sub_1401666B0(__int64 a1, int *a2, int *a3, int *a4, unsigned i
       {
         if ( !*(_DWORD *)(a1 + 48) )
           goto LABEL_41;
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v28 = *v13;
       }
       v29 = *v28;
@@ -10433,7 +10230,7 @@ LABEL_42:
             {
               if ( *(_DWORD *)(a1 + 48) )
               {
-                sub_14016D910(a1);
+                stbi_refill_buffer(a1);
                 ++*v13;
               }
             }
@@ -10462,7 +10259,7 @@ LABEL_42:
             v39 = 0;
             goto LABEL_60;
           }
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v37 = *v13;
           v38 = *v14;
         }
@@ -10478,7 +10275,7 @@ LABEL_42:
 LABEL_60:
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v41 = *(*v13)++;
         }
         else
@@ -10566,16 +10363,13 @@ LABEL_22:
 #undef v43
 #undef v44
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140166D20) ----------------------------------------------------
 __m128i *           sub_140166D20(__int64 a1, int *a2, int *a3, unsigned int *a4, unsigned int a5)
 {
-  int v9; // ebx
-  __m128i *v10; // rsi
-  __int64 v11; // rax
-  __m128i *v14; // rax
+  int v9;
+  __m128i *v10;
+  __int64 v11;
+  __m128i *v14;
 
   v9 = a5;
   if ( (unsigned int)sub_140162BB0(a1) )
@@ -10610,15 +10404,12 @@ __m128i *           sub_140166D20(__int64 a1, int *a2, int *a3, unsigned int *a4
   }
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980DAC: using guessed type unsigned int;
-
 //----- (0000000140166EE0) ----------------------------------------------------
 _BOOL8            sub_140166EE0(int a1, int a2, int a3, int a4, int a5)
 {
-  int v5; // ecx
-  int v6; // ecx
-  _BOOL8 result; // rax
+  int v5;
+  int v6;
+  _BOOL8 result;
 
   result = false;
   if ( a1 >= 0 && a2 >= 0 && (!a2 || a1 <= (int)(0x7FFFFFFFu / a2)) )
@@ -10634,11 +10425,10 @@ _BOOL8            sub_140166EE0(int a1, int a2, int a3, int a4, int a5)
   return result;
 }
 
-
 //----- (0000000140167010) ----------------------------------------------------
 __int64            sub_140167010(int a1, int a2, int a3, int a4, int a5)
 {
-  int v8; // r8d
+  int v8;
 
   if ( sub_140166EE0(a1, a2, a3, a4, a5) )
     return sr_path_malloc(a5 + a4 * v8 * a2 * a1);
@@ -10646,23 +10436,20 @@ __int64            sub_140167010(int a1, int a2, int a3, int a4, int a5)
     return 0;
 }
 
-// 140167043: variable 'v8' is possibly undefined
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-
 //----- (00000001401670A0) ----------------------------------------------------
 __int64            sub_1401670A0(__int64 a1, unsigned __int16 a2)
 {
-  __int64 v2; // rdi
-  signed __int16 v4; // dx
-  __int64 result; // rax
-  int v6; // ecx
-  _BYTE *v7; // r8
-  _BYTE *v8; // rdx
-  int v9; // r9d
-  int v10; // r8d
-  int v11; // edx
-  int v12; // ecx
-  int v13; // ecx
+  __int64 v2;
+  signed __int16 v4;
+  __int64 result;
+  int v6;
+  _BYTE *v7;
+  _BYTE *v8;
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  int v13;
 
   v2 = a2;
   v4 = *(_WORD *)(a1 + 4LL * a2 + 2100);
@@ -10711,14 +10498,13 @@ __int64            sub_1401670A0(__int64 a1, unsigned __int16 a2)
   return result;
 }
 
-
 //----- (00000001401671C0) ----------------------------------------------------
 __int64            sub_1401671C0(unsigned int a1, unsigned int a2, unsigned int a3)
 {
-  int v4; // r10d
-  signed int v5; // r11d
-  signed int v6; // ecx
-  signed int v7; // eax
+  int v4;
+  signed int v5;
+  signed int v6;
+  signed int v7;
 
   v4 = a1 - a3 + a2 - a3;
   v5 = abs32(a2 - a3);
@@ -10731,55 +10517,54 @@ __int64            sub_1401671C0(unsigned int a1, unsigned int a2, unsigned int 
   return a3;
 }
 
-
 //----- (0000000140167230) ----------------------------------------------------
 __int64            sub_140167230(__int64 a1)
 {
-  int v2; // eax
-  int v3; // ecx
-  bool v4; // zf
-  int v5; // eax
-  __int64 v6; // r12
-  int v7; // r14d
-  __int64 v8; // rsi
-  int v9; // r15d
-  int v10; // r13d
-  int v11; // edi
-  int v12; // ebp
-  int v13; // ecx
-  int v14; // eax
-  int v16; // edx
-  int v17; // r13d
-  int v18; // r8d
-  int *v19; // rax
-  __int64 v20; // r12
-  int v21; // r15d
-  __int64 v22; // rbp
-  int v23; // edi
-  int v24; // r14d
-  int v25; // esi
-  int v26; // ecx
-  int v27; // eax
-  __int64 v28; // r14
-  int v29; // esi
-  __int64 v30; // r12
-  int v31; // ebp
-  int v32; // r15d
-  int v33; // edi
-  __int64 v34; // rdx
-  int v36; // ecx
-  int v37; // eax
-  int v38; // r12d
-  int v39; // r15d
-  int v40; // r13d
-  int *v41; // rax
-  __int64 v42; // r14
-  int v43; // ebp
-  __int64 v44; // rsi
-  int v45; // eax
-  int v46; // edi
-  int v47; // ecx
-  int v48; // eax
+  int v2;
+  int v3;
+  bool v4;
+  int v5;
+  __int64 v6;
+  int v7;
+  __int64 v8;
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  int v16;
+  int v17;
+  int v18;
+  int *v19;
+  __int64 v20;
+  int v21;
+  __int64 v22;
+  int v23;
+  int v24;
+  int v25;
+  int v26;
+  int v27;
+  __int64 v28;
+  int v29;
+  __int64 v30;
+  int v31;
+  int v32;
+  int v33;
+  __int64 v34;
+  int v36;
+  int v37;
+  int v38;
+  int v39;
+  int v40;
+  int *v41;
+  __int64 v42;
+  int v43;
+  __int64 v44;
+  int v45;
+  int v46;
+  int v47;
+  int v48;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140167230[224];
 #define v49 (*(__int64 (*))(void *)(sr_frame_140167230 + 0)) /* [rsp+0h] */
@@ -11118,24 +10903,24 @@ LABEL_65:
 //----- (0000000140167A50) ----------------------------------------------------
 __int64            sub_140167A50(__int64 a1)
 {
-  _BYTE *v1; // rsi
-  unsigned int v3; // edx
-  __int64 v4; // rax
-  unsigned int v5; // edi
-  int v6; // edi
-  int v7; // r8d
-  int v8; // r11d
-  unsigned __int64 v9; // rdi
-  unsigned int v10; // edx
-  unsigned int v11; // edx
-  unsigned int v12; // eax
-  int v13; // eax
-  int v14; // r11d
-  int v15; // r14d
-  int v16; // r8d
-  unsigned int v17; // edx
-  unsigned __int8 *v18; // rcx
-  char v19; // al
+  _BYTE *v1;
+  unsigned int v3;
+  __int64 v4;
+  unsigned int v5;
+  int v6;
+  int v7;
+  int v8;
+  unsigned __int64 v9;
+  unsigned int v10;
+  unsigned int v11;
+  unsigned int v12;
+  int v13;
+  int v14;
+  int v15;
+  int v16;
+  unsigned int v17;
+  unsigned __int8 *v18;
+  char v19;
 
   v1 = *(_BYTE **)(a1 + 24);
   while ( 1 )
@@ -11246,7 +11031,7 @@ LABEL_40:
     {
       if ( (_DWORD)v9 )
       {
-        sub_1401FCD30((void *)(uintptr_t)(v1), *v18, v9);
+        crt_memset((void *)(uintptr_t)(v1), *v18, v9);
         v1 += v9;
       }
     }
@@ -11266,119 +11051,119 @@ LABEL_40:
 //----- (0000000140167D10) ----------------------------------------------------
 __int64            sub_140167D10(__int64 a1, int a2, int a3)
 {
-  _DWORD *v4; // rbx
-  unsigned int v5; // r14d
-  int v6; // r13d
-  unsigned int v8; // r15d
-  int v9; // esi
-  unsigned int v10; // esi
-  int v11; // edi
-  int v12; // eax
-  int v13; // edi
-  int v14; // edx
-  __int64 v15; // rax
-  char *v16; // rdx
-  unsigned int v17; // eax
-  unsigned int v18; // edi
-  __int64 v19; // rax
-  int v20; // edi
-  int v21; // edi
-  unsigned int v22; // ecx
-  unsigned __int8 *v23; // rax
-  unsigned __int8 v24; // cl
-  unsigned __int8 *v25; // rax
-  unsigned int v26; // eax
-  int v27; // ecx
-  char *v28; // rax
-  unsigned __int8 v29; // cl
-  unsigned __int8 *v30; // rax
-  unsigned int v31; // edi
-  char v32; // si
-  char v33; // cl
-  char v34; // cl
-  unsigned __int8 v35; // cl
-  unsigned __int8 *v36; // rax
-  unsigned int v37; // r9d
-  unsigned int v38; // eax
-  unsigned int v39; // r8d
-  int v40; // ecx
-  unsigned int v41; // esi
-  __int64 v42; // rcx
-  unsigned int v43; // edi
-  char *v44; // rax
-  char v45; // dl
-  char *v46; // rax
-  __int64 v47; // rax
-  int v48; // ecx
-  int v49; // esi
-  _WORD *v50; // rdi
-  __int16 *v51; // rdi
-  unsigned int v52; // esi
-  char *v53; // r8
-  unsigned __int64 v54; // rdx
-  char v55; // cl
-  char *v56; // rax
-  int v57; // edi
-  int v58; // r9d
-  char v59; // r9
-  char *v60; // rax
-  char v61; // dl
-  char *v62; // rax
-  __int64 v63; // rdi
-  __int64 v64; // rsi
-  char *v65; // rax
-  void *v66; // rax
-  unsigned int v67; // edi
-  int v68; // ecx
-  unsigned __int8 v69; // r14
-  int v70; // r9d
-  char v71; // r15
-  int v72; // eax
-  int v73; // eax
-  _WORD *v74; // rdi
-  unsigned int v75; // esi
-  __int16 v76; // dx
-  _WORD *v77; // rax
-  __int16 v78; // r8
-  __int16 v79; // r9
-  __int64 v80; // rcx
-  unsigned __int16 v81; // dx
-  __int64 v82; // rcx
-  bool v83; // zf
-  __int16 v84; // ax
-  char v85; // dl
-  _BYTE *v86; // rax
-  char v87; // r8
-  char v88; // r9
-  __int64 v89; // rcx
-  unsigned __int8 v90; // dl
-  __int64 v91; // rcx
-  char v92; // al
-  _BYTE *v93; // rdi
-  __int64 v94; // rsi
-  int v95; // ecx
-  __int64 v96; // rdx
-  char v97; // cl
-  unsigned __int8 *v98; // rdi
-  unsigned int v99; // eax
-  int v100; // ecx
-  int v101; // r11d
-  unsigned int v102; // r10d
-  unsigned int v103; // eax
-  __int64 v104; // rdx
-  char v105; // cl
-  int v106; // eax
-  int v107; // esi
-  unsigned __int8 *v108; // rdi
-  int v109; // r14d
-  __int64 v110; // rax
-  __int64 v111; // r15
-  __int64 v112; // r9
-  __int64 v113; // r8
-  __int64 v114; // rdx
-  __int64 v115; // rdx
-  unsigned __int64 v116; // rax
-  __int64 v118; // [rsp-20h] [rbp-1590h] BYREF
+  _DWORD *v4;
+  unsigned int v5;
+  int v6;
+  unsigned int v8;
+  int v9;
+  unsigned int v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  __int64 v15;
+  char *v16;
+  unsigned int v17;
+  unsigned int v18;
+  __int64 v19;
+  int v20;
+  int v21;
+  unsigned int v22;
+  unsigned __int8 *v23;
+  unsigned __int8 v24;
+  unsigned __int8 *v25;
+  unsigned int v26;
+  int v27;
+  char *v28;
+  unsigned __int8 v29;
+  unsigned __int8 *v30;
+  unsigned int v31;
+  char v32;
+  char v33;
+  char v34;
+  unsigned __int8 v35;
+  unsigned __int8 *v36;
+  unsigned int v37;
+  unsigned int v38;
+  unsigned int v39;
+  int v40;
+  unsigned int v41;
+  __int64 v42;
+  unsigned int v43;
+  char *v44;
+  char v45;
+  char *v46;
+  __int64 v47;
+  int v48;
+  int v49;
+  _WORD *v50;
+  __int16 *v51;
+  unsigned int v52;
+  char *v53;
+  unsigned __int64 v54;
+  char v55;
+  char *v56;
+  int v57;
+  int v58;
+  char v59;
+  char *v60;
+  char v61;
+  char *v62;
+  __int64 v63;
+  __int64 v64;
+  char *v65;
+  void *v66;
+  unsigned int v67;
+  int v68;
+  unsigned __int8 v69;
+  int v70;
+  char v71;
+  int v72;
+  int v73;
+  _WORD *v74;
+  unsigned int v75;
+  __int16 v76;
+  _WORD *v77;
+  __int16 v78;
+  __int16 v79;
+  __int64 v80;
+  unsigned __int16 v81;
+  __int64 v82;
+  bool v83;
+  __int16 v84;
+  char v85;
+  _BYTE *v86;
+  char v87;
+  char v88;
+  __int64 v89;
+  unsigned __int8 v90;
+  __int64 v91;
+  char v92;
+  _BYTE *v93;
+  __int64 v94;
+  int v95;
+  __int64 v96;
+  char v97;
+  unsigned __int8 *v98;
+  unsigned int v99;
+  int v100;
+  int v101;
+  unsigned int v102;
+  unsigned int v103;
+  __int64 v104;
+  char v105;
+  int v106;
+  int v107;
+  unsigned __int8 *v108;
+  int v109;
+  __int64 v110;
+  __int64 v111;
+  __int64 v112;
+  __int64 v113;
+  __int64 v114;
+  __int64 v115;
+  unsigned __int64 v116;
+  __int64 v118;
   sr_png_inflate_context sr_inflate;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140167D10[10464];
@@ -11454,7 +11239,7 @@ __int64            sub_140167D10(__int64 a1, int a2, int a3)
         }
         if ( v4[12] )
         {
-          sub_14016D910((__int64)v4);
+          stbi_refill_buffer((__int64)v4);
           v56 = *((char **)v4 + 24);
           v54 = *((_QWORD *)v4 + 25);
           v55 = *v56;
@@ -11478,7 +11263,7 @@ LABEL_116:
         }
         if ( v4[12] )
         {
-          sub_14016D910((__int64)v4);
+          stbi_refill_buffer((__int64)v4);
           v60 = *((char **)v4 + 24);
           v54 = *((_QWORD *)v4 + 25);
           v59 = *v60;
@@ -11499,7 +11284,7 @@ LABEL_121:
         }
         if ( v4[12] )
         {
-          sub_14016D910((__int64)v4);
+          stbi_refill_buffer((__int64)v4);
           v62 = *((char **)v4 + 24);
           v61 = *v62;
           v53 = v62 + 1;
@@ -11551,7 +11336,7 @@ LABEL_127:
         {
           if ( v4[12] )
           {
-            sub_14016D910((__int64)v4);
+            stbi_refill_buffer((__int64)v4);
             v46 = *((char **)v4 + 24);
             v45 = *v46;
             *((_QWORD *)v4 + 24) = (uint64)(uintptr_t)(v46 + 1);
@@ -11651,7 +11436,7 @@ LABEL_70:
     {
       if ( v4[12] )
       {
-        sub_14016D910((__int64)v4);
+        stbi_refill_buffer((__int64)v4);
         v25 = *((unsigned __int8 **)v4 + 24);
         v24 = *v25;
         *((_QWORD *)v4 + 24) = (uint64)(uintptr_t)(v25 + 1);
@@ -11682,7 +11467,7 @@ LABEL_70:
     {
       if ( v4[12] )
       {
-        sub_14016D910((__int64)v4);
+        stbi_refill_buffer((__int64)v4);
         v30 = *((unsigned __int8 **)v4 + 24);
         v29 = *v30;
         v28 = (char *)(v30 + 1);
@@ -11724,7 +11509,7 @@ LABEL_219:
     {
       if ( !v4[12] )
         goto LABEL_53;
-      sub_14016D910((__int64)v4);
+      stbi_refill_buffer((__int64)v4);
       v28 = *((char **)v4 + 24);
     }
     v33 = *v28++;
@@ -11745,7 +11530,7 @@ LABEL_57:
         {
           if ( v4[12] )
           {
-            sub_14016D910((__int64)v4);
+            stbi_refill_buffer((__int64)v4);
             v36 = *((unsigned __int8 **)v4 + 24);
             v35 = *v36;
             *((_QWORD *)v4 + 24) = (uint64)(uintptr_t)(v36 + 1);
@@ -11792,7 +11577,7 @@ LABEL_57:
         }
         goto LABEL_128;
       }
-      sub_14016D910((__int64)v4);
+      stbi_refill_buffer((__int64)v4);
       v28 = *((char **)v4 + 24);
     }
     v34 = *v28++;
@@ -11976,7 +11761,7 @@ LABEL_9:
                 else
                 {
                   if ( v73 != 4 )
-                    sub_14023E640(
+                    crt_assert(
                       (char *)L"out_n == 2 || out_n == 4",
                       (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
                       0x12DCu);
@@ -12020,7 +11805,7 @@ LABEL_9:
               else
               {
                 if ( v73 != 4 )
-                  sub_14023E640(
+                  crt_assert(
                     (char *)L"out_n == 2 || out_n == 4",
                     (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
                     0x12C3u);
@@ -12066,7 +11851,7 @@ LABEL_9:
               else
               {
                 if ( v95 != 4 )
-                  sub_14023E640(
+                  crt_assert(
                     (char *)L"s->img_out_n == 4",
                     (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
                     0x132Du);
@@ -12213,41 +11998,26 @@ LABEL_210:
 
 // 1401688D3: conditional instruction was optimized away because esi.4>=1
 // 1401688D9: conditional instruction was optimized away because esi.4>=1
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 14023AD00: using guessed type __int64 __fastcall j__realloc_base(_QWORD, _QWORD);
-// 14026E768: using guessed type _BYTE byte_14026E768[24];
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272960: using guessed type __int16[25];
-// 140272998: using guessed type __int16[18];
-// 140301850: using guessed type char byte_140301850;
-// 140301851: using guessed type char byte_140301851;
-// 140301852: using guessed type char byte_140301852;
-// 140301853: using guessed type char byte_140301853;
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (0000000140168C80) ----------------------------------------------------
 __int64            sub_140168C80(char **a1)
 {
   unsigned char sr_stored_header[4]; /* native RSP+30..33 */
-  int v1; // eax
-  int v3; // r9d
-  int v4; // r11d
-  int v5; // r8d
-  bool v6; // sf
-  unsigned int v7; // ecx
-  unsigned __int8 *v8; // rdx
-  int v9; // eax
-  __int64 v11; // rcx
-  char *v12; // r8
-  char *v13; // rax
-  char v14; // dl
-  __int64 v15; // r8
-  unsigned __int64 v16; // rdi
-  char *v17; // rdx
-
-
-
-
+  int v1;
+  int v3;
+  int v4;
+  int v5;
+  bool v6;
+  unsigned int v7;
+  unsigned __int8 *v8;
+  int v9;
+  __int64 v11;
+  char *v12;
+  char *v13;
+  char v14;
+  __int64 v15;
+  unsigned __int64 v16;
+  char *v17;
 
   v1 = *((_DWORD *)a1 + 4);
   v3 = v1;
@@ -12321,41 +12091,38 @@ LABEL_10:
   v17 = a1[3];
   if ( &v17[v15] > a1[5] && !(unsigned int)sub_14016F9E0((__int64)a1, (__int64)v17, v15) )
     return 0;
-  sub_1401FC920((__m128i *)a1[3], (     __m128i *)*a1, v16);
+  crt_memcpy((__m128i *)a1[3], (     __m128i *)*a1, v16);
   *a1 += v16;
   a1[3] += v16;
   return 1;
 }
 
-// 140168CA8: variable 'v4' is possibly undefined
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140168E00) ----------------------------------------------------
 __int64            sub_140168E00(__int64 a1, int a2)
 {
-  char *v3; // rcx
-  unsigned __int64 v4; // rdx
-  int v5; // eax
-  unsigned __int8 *v6; // rcx
-  int v7; // r10d
-  unsigned __int8 *v8; // rcx
-  int v10; // r8d
-  unsigned int v11; // r9d
-  int v12; // edx
-  unsigned __int64 v13; // r10
-  char *v14; // rax
-  unsigned __int8 v15; // cl
-  unsigned int v16; // edx
-  int v17; // edi
-  int v18; // r8d
-  int v19; // r9d
-  unsigned int v20; // r10d
-  unsigned __int64 v21; // r11
-  char *v22; // rax
-  unsigned __int8 v23; // cl
-  int v24; // ecx
-  int v25; // eax
-  int v26; // eax
+  char *v3;
+  unsigned __int64 v4;
+  int v5;
+  unsigned __int8 *v6;
+  int v7;
+  unsigned __int8 *v8;
+  int v10;
+  unsigned int v11;
+  int v12;
+  unsigned __int64 v13;
+  char *v14;
+  unsigned __int8 v15;
+  unsigned int v16;
+  int v17;
+  int v18;
+  int v19;
+  unsigned int v20;
+  unsigned __int64 v21;
+  char *v22;
+  unsigned __int8 v23;
+  int v24;
+  int v25;
+  int v26;
 
   if ( a2 )
   {
@@ -12494,31 +12261,27 @@ LABEL_30:
   return 1;
 }
 
-// 14026FEF0: using guessed type unsigned __int8 byte_14026FEF0[288];
-// 140270010: using guessed type unsigned __int8 byte_140270010[40];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401691A0) ----------------------------------------------------
 __int64            sub_1401691A0(__int64 a1, int *a2, int *a3, char *a4)
 {
-  __int64 v4; // r15
-  int *v5; // rsi
-  int *v6; // r14
-  char *v7; // rax
-  unsigned __int64 *v9; // rdi
-  char v10; // r13
-  int v11; // ecx
-  int v12; // ecx
-  char *v13; // r12
-  char *v14; // rcx
-  char *v15; // rsi
-  unsigned __int64 v16; // rax
-  char v17; // r14
-  char *v18; // rcx
-  char v19; // bp
-  unsigned __int64 v20; // rcx
-  char *v21; // rcx
-  char v22; // dl
+  __int64 v4;
+  int *v5;
+  int *v6;
+  char *v7;
+  unsigned __int64 *v9;
+  char v10;
+  int v11;
+  int v12;
+  char *v13;
+  char *v14;
+  char *v15;
+  unsigned __int64 v16;
+  char v17;
+  char *v18;
+  char v19;
+  unsigned __int64 v20;
+  char *v21;
+  char v22;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401691A0[96];
 #define v24 (*(__int64 (*))(void *)(sr_frame_1401691A0 + 0)) /* [rsp+0h] */
@@ -12595,7 +12358,7 @@ LABEL_17:
           v17 = 0;
           goto LABEL_32;
         }
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v17 = *(_BYTE *)*v9;
         v18 = (char *)(*v9 + 1);
         v16 = *(_QWORD *)(a1 + 200);
@@ -12618,7 +12381,7 @@ LABEL_32:
         v19 = 0;
         goto LABEL_37;
       }
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v19 = *(_BYTE *)*v9;
       v20 = *v9 + 1;
       v16 = *(_QWORD *)(a1 + 200);
@@ -12635,7 +12398,7 @@ LABEL_37:
         v15[1] = 0;
         goto LABEL_42;
       }
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v16 = *(_QWORD *)(a1 + 200);
       v21 = (char *)(*v9 + 1);
 LABEL_39:
@@ -12649,7 +12412,7 @@ LABEL_39:
 LABEL_42:
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v22 = *(_BYTE *)(*v9)++;
       }
       else
@@ -12693,14 +12456,13 @@ LABEL_8:
 #undef v27
 #undef v28
 
-
 //----- (0000000140169470) ----------------------------------------------------
 __int64            sub_140169470(__int64 a1, __int64 a2)
 {
-  __int64 v4; // rdi
-  char *v5; // rax
-  char v6; // cl
-  char *v7; // rax
+  __int64 v4;
+  char *v5;
+  char v6;
+  char *v7;
 
   v4 = 0;
   while ( 1 )
@@ -12710,7 +12472,7 @@ __int64            sub_140169470(__int64 a1, __int64 a2)
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v7 = *(char **)(a1 + 192);
         v6 = *v7;
         *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v7 + 1);
@@ -12733,20 +12495,19 @@ __int64            sub_140169470(__int64 a1, __int64 a2)
   return 0;
 }
 
-
 //----- (0000000140169510) ----------------------------------------------------
 char *           sub_140169510(__int64 a1, int *a2, int *a3, int *a4, int a5)
 {
-  int *v5; // r15
-  __int64 v9; // rdi
-  unsigned __int64 v10; // rax
-  int v11; // esi
-  int v12; // edi
-  int v14; // ebp
-  _WORD *v15; // r14
-  int v16; // ebp
-  int v17; // r8d
-  char v18; // [rsp+78h] [rbp+20h] BYREF
+  int *v5;
+  __int64 v9;
+  unsigned __int64 v10;
+  int v11;
+  int v12;
+  int v14;
+  _WORD *v15;
+  int v16;
+  int v17;
+  char v18;
 
   v5 = (int *)&v18;
   if ( a4 )
@@ -12759,7 +12520,7 @@ char *           sub_140169510(__int64 a1, int *a2, int *a3, int *a4, int a5)
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         ++*(_QWORD *)(a1 + 192);
       }
     }
@@ -12808,7 +12569,7 @@ LABEL_32:
     v16 = 4 * v14;
     v15 = (_WORD *)sr_path_malloc(v16);
   }
-  sub_1401FCD30((void *)(uintptr_t)(v15), 0xFFu, v16);
+  crt_memset((void *)(uintptr_t)(v15), 0xFFu, v16);
   if ( !sub_140169770(a1, v11, v12, v5, (__int64)v15) )
   {
     free(v15);
@@ -12822,102 +12583,99 @@ LABEL_32:
   return sub_14015D7E0((char *)v15, 4, v17, v11, v12);
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140169770) ----------------------------------------------------
 __int64            sub_140169770(__int64 a1, int a2, int a3, _DWORD *a4, __int64 a5)
 {
-  _QWORD *v5; // r14
-  char v6; // r15
-  __int64 v7; // r13
-  char *v10; // rax
-  unsigned __int64 v11; // rcx
-  _BYTE *v12; // rsi
-  int v13; // eax
-  char v14; // bp
-  char *v15; // rax
-  int v16; // eax
-  char v17; // dl
-  char *v18; // rax
-  int v19; // eax
-  char v20; // dl
-  char *v21; // rax
-  char v22; // cl
-  int v23; // eax
-  char *v24; // rax
-  int v25; // edx
-  int v26; // eax
-  __int64 v27; // rcx
-  int v28; // r12d
-  _BYTE *v29; // rax
-  __int64 v30; // rdx
-  _BYTE *v31; // r13
-  int v32; // ecx
-  int v33; // ecx
-  unsigned __int8 *v34; // rdi
-  unsigned __int8 *v35; // rax
-  unsigned __int8 v36; // cl
-  unsigned __int8 *v37; // rax
-  unsigned int v38; // r15d
-  unsigned __int8 *v39; // rax
-  unsigned __int64 v40; // rcx
-  unsigned __int8 v41; // dl
-  unsigned __int8 *v42; // rax
-  int v43; // r15d
-  unsigned __int8 v44; // cl
-  int v45; // r15d
-  unsigned __int8 *v46; // rax
-  unsigned __int8 v47; // cl
-  int v48; // ebp
-  int v49; // esi
-  __int64 v50; // rdi
-  char *v51; // rax
-  unsigned __int64 v52; // rcx
-  char v53; // cl
-  char *v54; // rax
-  char v55; // al
-  char v56; // dl
-  char v57; // r8
-  char v58; // r9
-  __int64 v59; // rcx
-  int v60; // r14d
-  int v61; // ebp
-  int v62; // esi
-  __int64 v63; // rdi
-  char *v64; // rax
-  unsigned __int64 v65; // rcx
-  char v66; // cl
-  char *v67; // rax
-  int v68; // r15d
-  unsigned __int8 *v69; // r12
-  unsigned __int8 *v70; // rax
-  unsigned __int8 v71; // di
-  unsigned __int8 *v72; // rax
-  int v73; // ebp
-  int v74; // esi
-  unsigned __int8 v75; // r14
-  __int64 j; // rdi
-  char *v77; // rax
-  unsigned __int64 v78; // rcx
-  char v79; // cl
-  char *v80; // rax
-  char v81; // al
-  __int64 v82; // rcx
-  char v83; // dl
-  char v84; // r8
-  char v85; // r9
-  int v86; // r15d
-  int v87; // r14d
-  int v88; // ebp
-  __int64 i; // rsi
-  char *v90; // rax
-  unsigned __int64 v91; // rcx
-  char v92; // cl
-  int v93; // eax
-  char *v94; // rax
-       char *v95; // rdx
-  __int64 v96; // rax
+  _QWORD *v5;
+  char v6;
+  __int64 v7;
+  char *v10;
+  unsigned __int64 v11;
+  _BYTE *v12;
+  int v13;
+  char v14;
+  char *v15;
+  int v16;
+  char v17;
+  char *v18;
+  int v19;
+  char v20;
+  char *v21;
+  char v22;
+  int v23;
+  char *v24;
+  int v25;
+  int v26;
+  __int64 v27;
+  int v28;
+  _BYTE *v29;
+  __int64 v30;
+  _BYTE *v31;
+  int v32;
+  int v33;
+  unsigned __int8 *v34;
+  unsigned __int8 *v35;
+  unsigned __int8 v36;
+  unsigned __int8 *v37;
+  unsigned int v38;
+  unsigned __int8 *v39;
+  unsigned __int64 v40;
+  unsigned __int8 v41;
+  unsigned __int8 *v42;
+  int v43;
+  unsigned __int8 v44;
+  int v45;
+  unsigned __int8 *v46;
+  unsigned __int8 v47;
+  int v48;
+  int v49;
+  __int64 v50;
+  char *v51;
+  unsigned __int64 v52;
+  char v53;
+  char *v54;
+  char v55;
+  char v56;
+  char v57;
+  char v58;
+  __int64 v59;
+  int v60;
+  int v61;
+  int v62;
+  __int64 v63;
+  char *v64;
+  unsigned __int64 v65;
+  char v66;
+  char *v67;
+  int v68;
+  unsigned __int8 *v69;
+  unsigned __int8 *v70;
+  unsigned __int8 v71;
+  unsigned __int8 *v72;
+  int v73;
+  int v74;
+  unsigned __int8 v75;
+  __int64 j;
+  char *v77;
+  unsigned __int64 v78;
+  char v79;
+  char *v80;
+  char v81;
+  __int64 v82;
+  char v83;
+  char v84;
+  char v85;
+  int v86;
+  int v87;
+  int v88;
+  __int64 i;
+  char *v90;
+  unsigned __int64 v91;
+  char v92;
+  int v93;
+  char *v94;
+       char *v95;
+  __int64 v96;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140169770[144];
 #define v98 (*(__int64 (*))(void *)(sr_frame_140169770 + 0)) /* [rsp+0h] */
@@ -13232,7 +12990,7 @@ LABEL_182:
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v72 = *(unsigned __int8 **)(a1 + 192);
           v71 = *v72;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v72 + 1);
@@ -13281,7 +13039,7 @@ LABEL_139:
         {
           if ( *(_DWORD *)(a1 + 48) )
           {
-            sub_14016D910(a1);
+            stbi_refill_buffer(a1);
             v80 = *(char **)(a1 + 192);
             v79 = *v80;
             *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v80 + 1);
@@ -13357,7 +13115,7 @@ LABEL_190:
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v37 = *(unsigned __int8 **)(a1 + 192);
         v36 = *v37;
         *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v37 + 1);
@@ -13398,7 +13156,7 @@ LABEL_57:
           goto LABEL_63;
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v39 = *(unsigned __int8 **)(a1 + 192);
           v40 = *(_QWORD *)(a1 + 200);
 LABEL_63:
@@ -13420,7 +13178,7 @@ LABEL_63:
         }
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v46 = *(unsigned __int8 **)(a1 + 192);
           v47 = *v46;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v46 + 1);
@@ -13464,7 +13222,7 @@ LABEL_78:
         {
           if ( *(_DWORD *)(a1 + 48) )
           {
-            sub_14016D910(a1);
+            stbi_refill_buffer(a1);
             v54 = *(char **)(a1 + 192);
             v53 = *v54;
             *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v54 + 1);
@@ -13562,7 +13320,7 @@ LABEL_107:
         {
           if ( *(_DWORD *)(a1 + 48) )
           {
-            sub_14016D910(a1);
+            stbi_refill_buffer(a1);
             v67 = *(char **)(a1 + 192);
             v66 = *v67;
             *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v67 + 1);
@@ -13611,14 +13369,12 @@ LABEL_107:
 #undef v110
 #undef v111
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016A210) ----------------------------------------------------
 _BOOL8            sub_14016A210(__int64 a1)
 {
-  BOOL v2; // edx
-  __int64 v3; // rdi
-  unsigned __int64 v4; // rax
+  BOOL v2;
+  __int64 v3;
+  unsigned __int64 v4;
 
   if ( (unsigned int)sub_140169470(a1, (__int64)&unk_140272D00) )
   {
@@ -13630,7 +13386,7 @@ _BOOL8            sub_14016A210(__int64 a1)
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           ++*(_QWORD *)(a1 + 192);
         }
       }
@@ -13652,12 +13408,11 @@ _BOOL8            sub_14016A210(__int64 a1)
   return v2;
 }
 
-
 //----- (000000014016A2C0) ----------------------------------------------------
 _BOOL8            sub_14016A2C0(__int64 a1)
 {
-  __int64 v2; // rdi
-  unsigned __int64 v3; // rax
+  __int64 v2;
+  unsigned __int64 v3;
 
   if ( !(unsigned int)sub_140169470(a1, (__int64)&unk_140272D00) )
     return 0;
@@ -13669,7 +13424,7 @@ _BOOL8            sub_14016A2C0(__int64 a1)
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         ++*(_QWORD *)(a1 + 192);
       }
     }
@@ -13683,13 +13438,12 @@ _BOOL8            sub_14016A2C0(__int64 a1)
   return (unsigned int)sub_140169470(a1, (__int64)"PICT") != 0;
 }
 
-
 //----- (000000014016A360) ----------------------------------------------------
 __int64            sub_14016A360(__int64 a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
 {
-  int v7; // eax
-  __int64 v8; // rcx
-  _QWORD v10[7]; // [rsp+20h] [rbp-38h] BYREF
+  int v7;
+  __int64 v8;
+  _QWORD v10[7];
 
   v10[0] = a1;
   v7 = sub_140167D10((__int64)v10, 2, 0);
@@ -13712,11 +13466,10 @@ __int64            sub_14016A360(__int64 a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
   }
 }
 
-
 //----- (000000014016A400) ----------------------------------------------------
 __int64            sub_14016A400(_DWORD **a1, _DWORD *a2, _DWORD *a3, _DWORD *a4)
 {
-  _QWORD *v8; // rcx
+  _QWORD *v8;
 
   if ( (unsigned int)sub_140167D10((__int64)a1, 2, 0) )
   {
@@ -13737,11 +13490,10 @@ __int64            sub_14016A400(_DWORD **a1, _DWORD *a2, _DWORD *a3, _DWORD *a4
   }
 }
 
-
 //----- (000000014016A4A0) ----------------------------------------------------
 __int64            sub_14016A4A0(__int64 a1)
 {
-  __int64 v1; // rcx
+  __int64 v1;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016A4A0[48];
 #define v3 (*(_QWORD (*)[4])(void *)(sr_frame_14016A4A0 + 0)) /* [rsp+20h] */
@@ -13758,17 +13510,16 @@ __int64            sub_14016A4A0(__int64 a1)
 #undef v3
 #undef v4
 
-
 //----- (000000014016A500) ----------------------------------------------------
 char *           sub_14016A500(__int64 a1, _DWORD *a2, _DWORD *a3, _DWORD *a4, unsigned int a5, int *a6)
 {
-  char *v6; // rdi
-  char *v10; // rbp
-  int v11; // eax
-  _DWORD *v12; // rbx
-  int v13; // edx
-  int v14; // r9d
-  char *v15; // rax
+  char *v6;
+  char *v10;
+  int v11;
+  _DWORD *v12;
+  int v13;
+  int v14;
+  char *v15;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016A500[64];
 #define v17 (*(int (*))(void *)(sr_frame_14016A500 + 0)) /* [rsp+20h] */
@@ -13829,12 +13580,10 @@ LABEL_6:
 #undef v19
 #undef v20
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016A670) ----------------------------------------------------
 __int64            sub_14016A670(_QWORD *a1)
 {
-  __int64 result; // rax
+  __int64 result;
 
   result = sub_14015CE80((__int64)a1);
   a1[24] = a1[26];
@@ -13842,16 +13591,15 @@ __int64            sub_14016A670(_QWORD *a1)
   return result;
 }
 
-
 //----- (000000014016A6A0) ----------------------------------------------------
 __int64            sub_14016A6A0(__int64 a1, _BYTE *a2)
 {
-  unsigned int v2; // esi
-  char *v5; // rax
-  char v6; // cl
-  int v7; // eax
-  char *v8; // rax
-  char v9; // cl
+  unsigned int v2;
+  char *v5;
+  char v6;
+  int v7;
+  char *v8;
+  char v9;
 
   v2 = 0;
   while ( 1 )
@@ -13909,23 +13657,22 @@ LABEL_6:
   }
 }
 
-
 //----- (000000014016A7D0) ----------------------------------------------------
 __int64            sub_14016A7D0(__int64 a1, char *a2, char *a3, int *a4)
 {
-  char *v4; // rax
-  char *v5; // r14
-  char *v7; // r15
-  unsigned __int64 v8; // rcx
-  int *v9; // rsi
-  char v10; // di
-  char *v11; // rax
-  char v12; // cl
-  char *v13; // rax
-  int v14; // eax
-  char *v15; // rax
-  char v16; // cl
-  char *v17; // rax
+  char *v4;
+  char *v5;
+  char *v7;
+  unsigned __int64 v8;
+  int *v9;
+  char v10;
+  char *v11;
+  char v12;
+  char *v13;
+  int v14;
+  char *v15;
+  char v16;
+  char *v17;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016A7D0[16];
 #define v19 (*(char (*))(void *)(sr_frame_14016A7D0 + 0)) /* [rsp+40h] */
@@ -13951,7 +13698,7 @@ __int64            sub_14016A7D0(__int64 a1, char *a2, char *a3, int *a4)
       v10 = 0;
       goto LABEL_13;
     }
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v4 = *(char **)(a1 + 192);
     v8 = *(_QWORD *)(a1 + 200);
   }
@@ -13967,7 +13714,7 @@ __int64            sub_14016A7D0(__int64 a1, char *a2, char *a3, int *a4)
 LABEL_13:
   if ( *(_DWORD *)(a1 + 48) )
   {
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v13 = *(char **)(a1 + 192);
     v12 = *v13;
     *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v13 + 1);
@@ -13988,7 +13735,7 @@ LABEL_16:
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v17 = *(char **)(a1 + 192);
         v16 = *v17;
         *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v17 + 1);
@@ -14023,20 +13770,18 @@ LABEL_16:
 #undef v19
 #undef v20
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016A9F0) ----------------------------------------------------
 char *           sub_14016A9F0(__int64 a1, _DWORD *a2, _DWORD *a3, _DWORD *a4, int a5)
 {
-  int v9; // r10d
-  int v10; // r8d
-  int v11; // r9d
-  int v12; // ecx
-  __m128i *v13; // rax
-  char *v14; // rbx
-  int v15; // edx
-  __int64 v17; // rax
-       char *v18; // rdx
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  __m128i *v13;
+  char *v14;
+  int v15;
+  __int64 v17;
+       char *v18;
 
   if ( !(unsigned int)sub_14016A7D0(a1, (char *)a1, (char *)(a1 + 4), (int *)(a1 + 8)) )
     return nullptr;
@@ -14080,23 +13825,20 @@ LABEL_25:
   return nullptr;
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016ABA0) ----------------------------------------------------
 unsigned __int64            sub_14016ABA0(__int64 a1, _BYTE *a2)
 {
-  char *v4; // rax
-  char v5; // cl
-  int v6; // eax
-  char *v7; // rax
-  char v8; // cl
-  unsigned __int64 result; // rax
-  char *v10; // rax
-  char v11; // cl
-  int v12; // eax
-  char *v13; // rax
-  char v14; // cl
+  char *v4;
+  char v5;
+  int v6;
+  char *v7;
+  char v8;
+  unsigned __int64 result;
+  char *v10;
+  char v11;
+  int v12;
+  char *v13;
+  char v14;
 
   while ( 1 )
   {
@@ -14222,16 +13964,15 @@ LABEL_18:
   return result;
 }
 
-
 //----- (000000014016ADD0) ----------------------------------------------------
 __int64            sub_14016ADD0(__int64 a1)
 {
-  char *v1; // rax
-  unsigned __int64 v3; // rcx
-  char v4; // di
-  char *v5; // rax
-  char v6; // cl
-  char *v7; // rax
+  char *v1;
+  unsigned __int64 v3;
+  char v4;
+  char *v5;
+  char v6;
+  char *v7;
 
   v1 = *(char **)(a1 + 192);
   v3 = *(_QWORD *)(a1 + 200);
@@ -14242,7 +13983,7 @@ __int64            sub_14016ADD0(__int64 a1)
       v4 = 0;
       goto LABEL_7;
     }
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v1 = *(char **)(a1 + 192);
     v3 = *(_QWORD *)(a1 + 200);
   }
@@ -14258,7 +13999,7 @@ __int64            sub_14016ADD0(__int64 a1)
 LABEL_7:
   if ( *(_DWORD *)(a1 + 48) )
   {
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v7 = *(char **)(a1 + 192);
     v6 = *v7;
     *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v7 + 1);
@@ -14275,60 +14016,59 @@ LABEL_10:
   return 0;
 }
 
-
 //----- (000000014016AEA0) ----------------------------------------------------
 __int64            sub_14016AEA0(__int64 a1, int a2)
 {
-  __int64 v2; // rbx
-  int v4; // r15d
-  int v6; // r12d
-  int v7; // edi
-  char *v9; // rax
-  char v10; // cl
-  int v11; // eax
-  unsigned int v12; // eax
-  _BYTE *v13; // rax
-  __int64 v14; // rcx
-  _BYTE *v15; // rax
-  int v16; // edx
-  _QWORD *v17; // rax
-  int v18; // ecx
-  int v19; // r14d
-  _BYTE *v20; // rbp
-  unsigned int *v21; // rdi
-  unsigned __int8 *v22; // rax
-  unsigned __int8 v23; // cl
-  unsigned __int8 *v24; // rax
-  unsigned __int8 *v25; // rax
-  unsigned __int8 v26; // cl
-  unsigned __int8 *v27; // rax
-  unsigned __int8 v28; // al
-  unsigned int v29; // ecx
-  unsigned int v30; // eax
-  unsigned __int8 *v31; // rax
-  unsigned __int8 v32; // cl
-  unsigned __int8 *v33; // rax
-  int v34; // r8d
-  int v35; // r9d
-  int v36; // r8d
-  int v37; // eax
-  __int64 v38; // rdx
-  __int64 v39; // r8
-  int v40; // eax
-  int v41; // ecx
-  int v42; // ebp
-  __int64 i; // rdi
-  int v44; // r8d
-  int v45; // r9d
-  int v46; // r8d
-  int v47; // r8d
-  __int64 v48; // rax
-  int v49; // ecx
-  int v50; // r8d
-  unsigned int v51; // ecx
-  __int64 v52; // rax
-  __int64 v53; // rax
-       char *v54; // rdx
+  __int64 v2;
+  int v4;
+  int v6;
+  int v7;
+  char *v9;
+  char v10;
+  int v11;
+  unsigned int v12;
+  _BYTE *v13;
+  __int64 v14;
+  _BYTE *v15;
+  int v16;
+  _QWORD *v17;
+  int v18;
+  int v19;
+  _BYTE *v20;
+  unsigned int *v21;
+  unsigned __int8 *v22;
+  unsigned __int8 v23;
+  unsigned __int8 *v24;
+  unsigned __int8 *v25;
+  unsigned __int8 v26;
+  unsigned __int8 *v27;
+  unsigned __int8 v28;
+  unsigned int v29;
+  unsigned int v30;
+  unsigned __int8 *v31;
+  unsigned __int8 v32;
+  unsigned __int8 *v33;
+  int v34;
+  int v35;
+  int v36;
+  int v37;
+  __int64 v38;
+  __int64 v39;
+  int v40;
+  int v41;
+  int v42;
+  __int64 i;
+  int v44;
+  int v45;
+  int v46;
+  int v47;
+  __int64 v48;
+  int v49;
+  int v50;
+  unsigned int v51;
+  __int64 v52;
+  __int64 v53;
+       char *v54;
 
   v2 = *(_QWORD *)a1;
   v4 = 1;
@@ -14349,7 +14089,7 @@ LABEL_96:
       *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("only 8-bit");
       return 0;
     }
-    sub_14016D910(v2);
+    stbi_refill_buffer(v2);
     v9 = *(char **)(v2 + 192);
   }
   v10 = *v9;
@@ -14380,7 +14120,7 @@ LABEL_96:
   {
     if ( *(_DWORD *)(v2 + 48) )
     {
-      sub_14016D910(v2);
+      stbi_refill_buffer(v2);
       v15 = *(_BYTE **)(v2 + 192);
       LOBYTE(v14) = *v15;
       *(_QWORD *)(v2 + 192) = (uint64)(uintptr_t)(v15 + 1);
@@ -14434,7 +14174,7 @@ LABEL_96:
         {
           if ( *(_DWORD *)(v2 + 48) )
           {
-            sub_14016D910(v2);
+            stbi_refill_buffer(v2);
             v24 = *(unsigned __int8 **)(v2 + 192);
             v23 = *v24;
             *(_QWORD *)(v2 + 192) = (uint64)(uintptr_t)(v24 + 1);
@@ -14457,7 +14197,7 @@ LABEL_96:
         {
           if ( *(_DWORD *)(v2 + 48) )
           {
-            sub_14016D910(v2);
+            stbi_refill_buffer(v2);
             v27 = *(unsigned __int8 **)(v2 + 192);
             v26 = *v27;
             *(_QWORD *)(v2 + 192) = (uint64)(uintptr_t)(v27 + 1);
@@ -14490,7 +14230,7 @@ LABEL_96:
         {
           if ( *(_DWORD *)(v2 + 48) )
           {
-            sub_14016D910(v2);
+            stbi_refill_buffer(v2);
             v33 = *(unsigned __int8 **)(v2 + 192);
             v32 = *v33;
             *(_QWORD *)(v2 + 192) = (uint64)(uintptr_t)(v33 + 1);
@@ -14626,51 +14366,48 @@ LABEL_92:
   }
 }
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016B5F0) ----------------------------------------------------
 __int64            sub_14016B5F0(__int64 a1, __int64 a2)
 {
-  unsigned __int8 *v2; // rax
-  __int64 v3; // rdi
-  unsigned __int8 v5; // cl
-  int v7; // r11d
-  __int64 v8; // r8
-  int v9; // edx
-  int v10; // r13d
-  int v11; // r15d
-  int v12; // eax
-  int v13; // ecx
-  int v14; // r14d
-  _BYTE *v15; // rax
-  int v16; // eax
-  int v17; // r12d
-  int v18; // ebp
-  int v19; // esi
-  __int64 v20; // r9
-  unsigned __int8 *v21; // rax
-  unsigned __int8 v22; // cl
-  unsigned __int8 *v23; // rax
-  unsigned __int8 *v24; // rax
-  unsigned __int8 v25; // cl
-  int v26; // eax
-  unsigned __int8 *v27; // rax
-  int v28; // r10d
-  int v29; // r10d
-  __int64 v30; // rdx
-  char v31; // cl
-  int v32; // r10d
-  int v33; // ecx
-  unsigned int v34; // esi
-  __int64 v35; // rcx
-  unsigned __int8 *v36; // rcx
-  unsigned __int8 v37; // dl
-  int v38; // eax
-  int v39; // eax
-  unsigned __int8 *v40; // rax
-  int v41; // r8d
-  __int64 v42; // rcx
+  unsigned __int8 *v2;
+  __int64 v3;
+  unsigned __int8 v5;
+  int v7;
+  __int64 v8;
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  _BYTE *v15;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  __int64 v20;
+  unsigned __int8 *v21;
+  unsigned __int8 v22;
+  unsigned __int8 *v23;
+  unsigned __int8 *v24;
+  unsigned __int8 v25;
+  int v26;
+  unsigned __int8 *v27;
+  int v28;
+  int v29;
+  __int64 v30;
+  char v31;
+  int v32;
+  int v33;
+  unsigned int v34;
+  __int64 v35;
+  unsigned __int8 *v36;
+  unsigned __int8 v37;
+  int v38;
+  int v39;
+  unsigned __int8 *v40;
+  int v41;
+  __int64 v42;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016B5F0[144];
 #define i (*(int (*))(void *)(sr_frame_14016B5F0 + 0)) /* [rsp+20h] */
@@ -14690,7 +14427,7 @@ __int64            sub_14016B5F0(__int64 a1, __int64 a2)
       v5 = 0;
       goto LABEL_7;
     }
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v2 = *(unsigned __int8 **)(a1 + 192);
   }
   v5 = *v2;
@@ -14742,7 +14479,7 @@ LABEL_7:
           {
             if ( *(_DWORD *)(a1 + 48) )
             {
-              sub_14016D910(a1);
+              stbi_refill_buffer(a1);
               v23 = *(unsigned __int8 **)(a1 + 192);
               LODWORD(v8) = v47;
               v22 = *v23;
@@ -14953,82 +14690,77 @@ LABEL_46:
 #undef v49
 #undef v50
 
-// 14016B78E: variable 'v20' is possibly undefined
-// 14016B88F: variable 'v7' is possibly undefined
-// 14016B920: variable 'v32' is possibly undefined
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016BB40) ----------------------------------------------------
 __int64            sub_14016BB40(__int64 *a1, int a2)
 {
-  int v4; // ebp
-  __int64 v5; // rdx
-  int v6; // ebp
-  __int64 v7; // rdi
-  int v8; // r14d
-  __int64 v9; // rbx
-  char *v10; // rax
-  char v11; // cl
-  char *v12; // rax
-  int v13; // eax
-  __int64 v14; // rcx
-  __int64 v15; // rdi
-  int v16; // r14d
-  __int64 v17; // rbx
-  char *v18; // rax
-  char v19; // cl
-  char *v20; // rax
-  int v21; // eax
-  __int64 v22; // rbx
-  unsigned __int64 v23; // rax
-  __int64 v24; // rbx
-  unsigned __int8 *v25; // rax
-  unsigned __int8 v26; // cl
-  int v27; // r12d
-  __int64 v28; // rbx
-  unsigned __int8 *v29; // rax
-  unsigned __int8 v30; // cl
-  unsigned __int8 *v31; // rax
-  unsigned int v32; // ebp
-  __int64 v33; // rdi
-  unsigned __int64 v34; // r14
-  __int64 v35; // rbx
-  __int16 v36; // cx
-  _BYTE *v37; // rax
-  _BYTE *v38; // rax
-  __int64 v39; // rax
-  int v40; // eax
-  int v41; // r12d
-  __int64 v42; // rbx
-  int v43; // r15d
-  unsigned __int8 *v44; // rax
-  unsigned __int8 v45; // cl
-  unsigned __int8 *v46; // rax
-  unsigned int v47; // r14d
-  unsigned int v48; // r13d
-  int *v49; // rdi
-  __int64 v50; // rbp
-  __int64 v51; // rbx
-  unsigned __int8 *v52; // rax
-  unsigned __int8 v53; // cl
-  unsigned __int8 *v54; // rax
-  __int64 v55; // r15
-  __int64 *v56; // r12
-  __int64 v57; // rax
-  __int64 v58; // rbp
-  __int64 *v59; // r14
-  __int64 i; // rdi
-  __int64 v61; // rbx
-  char *v62; // rax
-  char v63; // cl
-  char *v64; // rax
-  __int64 *v65; // r10
-  unsigned __int8 *v66; // rbx
-  int j; // r11d
-  __int64 v68; // rax
-  int v69; // edi
-  int v70; // r9d
-  int v71; // r8d
+  int v4;
+  __int64 v5;
+  int v6;
+  __int64 v7;
+  int v8;
+  __int64 v9;
+  char *v10;
+  char v11;
+  char *v12;
+  int v13;
+  __int64 v14;
+  __int64 v15;
+  int v16;
+  __int64 v17;
+  char *v18;
+  char v19;
+  char *v20;
+  int v21;
+  __int64 v22;
+  unsigned __int64 v23;
+  __int64 v24;
+  unsigned __int8 *v25;
+  unsigned __int8 v26;
+  int v27;
+  __int64 v28;
+  unsigned __int8 *v29;
+  unsigned __int8 v30;
+  unsigned __int8 *v31;
+  unsigned int v32;
+  __int64 v33;
+  unsigned __int64 v34;
+  __int64 v35;
+  __int16 v36;
+  _BYTE *v37;
+  _BYTE *v38;
+  __int64 v39;
+  int v40;
+  int v41;
+  __int64 v42;
+  int v43;
+  unsigned __int8 *v44;
+  unsigned __int8 v45;
+  unsigned __int8 *v46;
+  unsigned int v47;
+  unsigned int v48;
+  int *v49;
+  __int64 v50;
+  __int64 v51;
+  unsigned __int8 *v52;
+  unsigned __int8 v53;
+  unsigned __int8 *v54;
+  __int64 v55;
+  __int64 *v56;
+  __int64 v57;
+  __int64 v58;
+  __int64 *v59;
+  __int64 i;
+  __int64 v61;
+  char *v62;
+  char v63;
+  char *v64;
+  __int64 *v65;
+  unsigned __int8 *v66;
+  int j;
+  __int64 v68;
+  int v69;
+  int v70;
+  int v71;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016BB40[128];
 #define v73 (*(__int64 (*))(void *)(sr_frame_14016BB40 + 0)) /* [rsp+0h] */
@@ -15052,7 +14784,7 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
           {
             if ( *(_DWORD *)(v42 + 48) )
             {
-              sub_14016D910(*a1);
+              stbi_refill_buffer(*a1);
               v46 = *(unsigned __int8 **)(v42 + 192);
               v45 = *v46;
               *(_QWORD *)(v42 + 192) = (uint64)(uintptr_t)(v46 + 1);
@@ -15081,7 +14813,7 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
             {
               if ( *(_DWORD *)(v51 + 48) )
               {
-                sub_14016D910(*a1);
+                stbi_refill_buffer(*a1);
                 v54 = *(unsigned __int8 **)(v51 + 192);
                 v53 = *v54;
                 *(_QWORD *)(v51 + 192) = (uint64)(uintptr_t)(v54 + 1);
@@ -15128,7 +14860,7 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
             {
               if ( *(_DWORD *)(v61 + 48) )
               {
-                sub_14016D910(*a1);
+                stbi_refill_buffer(*a1);
                 v64 = *(char **)(v61 + 192);
                 v63 = *v64;
                 *(_QWORD *)(v61 + 192) = (uint64)(uintptr_t)(v64 + 1);
@@ -15192,7 +14924,7 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
           {
             if ( *(_DWORD *)(v28 + 48) )
             {
-              sub_14016D910(*a1);
+              stbi_refill_buffer(*a1);
               v31 = *(unsigned __int8 **)(v28 + 192);
               v30 = *v31;
               *(_QWORD *)(v28 + 192) = (uint64)(uintptr_t)(v31 + 1);
@@ -15231,7 +14963,7 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
               {
                 if ( *(_DWORD *)(v35 + 48) )
                 {
-                  sub_14016D910(*a1);
+                  stbi_refill_buffer(*a1);
                   v38 = *(_BYTE **)(v35 + 192);
                   LOBYTE(v36) = *v38;
                   *(_QWORD *)(v35 + 192) = (uint64)(uintptr_t)(v38 + 1);
@@ -15305,7 +15037,7 @@ __int64            sub_14016BB40(__int64 *a1, int a2)
             {
               if ( *(_DWORD *)(v9 + 48) )
               {
-                sub_14016D910(*a1);
+                stbi_refill_buffer(*a1);
                 v12 = *(char **)(v9 + 192);
                 v11 = *v12;
                 *(_QWORD *)(v9 + 192) = (uint64)(uintptr_t)(v12 + 1);
@@ -15352,7 +15084,7 @@ LABEL_47:
         {
           if ( *(_DWORD *)(v17 + 48) )
           {
-            sub_14016D910(*a1);
+            stbi_refill_buffer(*a1);
             v20 = *(char **)(v17 + 192);
             v19 = *v20;
             *(_QWORD *)(v17 + 192) = (uint64)(uintptr_t)(v20 + 1);
@@ -15383,7 +15115,7 @@ LABEL_47:
       {
         if ( *(_DWORD *)(v22 + 48) )
         {
-          sub_14016D910(*a1);
+          stbi_refill_buffer(*a1);
           ++*(_QWORD *)(v22 + 192);
         }
       }
@@ -15402,7 +15134,7 @@ LABEL_47:
           v26 = 0;
           goto LABEL_46;
         }
-        sub_14016D910(*a1);
+        stbi_refill_buffer(*a1);
         v25 = *(unsigned __int8 **)(v24 + 192);
       }
       v26 = *v25;
@@ -15420,55 +15152,51 @@ LABEL_46:
 #undef v76
 #undef v77
 
-// 14026E9C8: using guessed type _BYTE byte_14026E9C8[8];
-// 14026FC80: using guessed type unsigned __int8 byte_14026FC80[336];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016C320) ----------------------------------------------------
 __int64            sub_14016C320(__int64 *a1)
 {
-  int v2; // eax
-  __int64 v3; // rbx
-  int v4; // esi
-  unsigned __int8 *v5; // rdx
-  unsigned __int8 v6; // cl
-  unsigned __int8 *v7; // rax
-  int v9; // ebp
-  __int64 *v10; // r14
-  __int64 v11; // rbx
-  unsigned __int8 *v12; // rax
-  unsigned __int8 v13; // cl
-  unsigned __int8 *v14; // rax
-  __int64 v15; // rbx
-  int v16; // esi
-  unsigned __int8 *v17; // rax
-  unsigned __int8 v18; // cl
-  unsigned __int8 *v19; // rax
-  int v20; // edx
-  unsigned int v21; // r9d
-  __int64 v22; // r8
-  int v23; // ecx
-  __int64 *v24; // rax
-  unsigned int v25; // r9d
-  __int64 v26; // rbx
-  unsigned __int8 *v27; // rax
-  unsigned __int8 v28; // cl
-  unsigned __int8 *v29; // rax
-  __int64 v30; // rbx
-  unsigned __int8 *v31; // rax
-  unsigned __int8 v32; // cl
-  unsigned __int8 *v33; // rax
-  __int64 v34; // rbx
-  unsigned __int8 *v35; // rax
-  unsigned __int8 v36; // cl
-  unsigned __int8 *v37; // rax
-  int v38; // edx
-  unsigned int v39; // eax
-  unsigned int v40; // ecx
-  bool v41; // zf
-  int v42; // r8d
-  __int64 v43; // rax
-       char *v44; // rdx
+  int v2;
+  __int64 v3;
+  int v4;
+  unsigned __int8 *v5;
+  unsigned __int8 v6;
+  unsigned __int8 *v7;
+  int v9;
+  __int64 *v10;
+  __int64 v11;
+  unsigned __int8 *v12;
+  unsigned __int8 v13;
+  unsigned __int8 *v14;
+  __int64 v15;
+  int v16;
+  unsigned __int8 *v17;
+  unsigned __int8 v18;
+  unsigned __int8 *v19;
+  int v20;
+  unsigned int v21;
+  __int64 v22;
+  int v23;
+  __int64 *v24;
+  unsigned int v25;
+  __int64 v26;
+  unsigned __int8 *v27;
+  unsigned __int8 v28;
+  unsigned __int8 *v29;
+  __int64 v30;
+  unsigned __int8 *v31;
+  unsigned __int8 v32;
+  unsigned __int8 *v33;
+  __int64 v34;
+  unsigned __int8 *v35;
+  unsigned __int8 v36;
+  unsigned __int8 *v37;
+  int v38;
+  unsigned int v39;
+  unsigned int v40;
+  bool v41;
+  int v42;
+  __int64 v43;
+       char *v44;
 
   v2 = sub_1401604F0(*a1);
   v3 = *a1;
@@ -15478,7 +15206,7 @@ __int64            sub_14016C320(__int64 *a1)
   {
     if ( *(_DWORD *)(v3 + 48) )
     {
-      sub_14016D910(*a1);
+      stbi_refill_buffer(*a1);
       v7 = *(unsigned __int8 **)(v3 + 192);
       v6 = *v7;
       *(_QWORD *)(v3 + 192) = (uint64)(uintptr_t)(v7 + 1);
@@ -15514,7 +15242,7 @@ __int64            sub_14016C320(__int64 *a1)
     {
       if ( *(_DWORD *)(v11 + 48) )
       {
-        sub_14016D910(*a1);
+        stbi_refill_buffer(*a1);
         v14 = *(unsigned __int8 **)(v11 + 192);
         v13 = *v14;
         *(_QWORD *)(v11 + 192) = (uint64)(uintptr_t)(v14 + 1);
@@ -15536,7 +15264,7 @@ __int64            sub_14016C320(__int64 *a1)
     {
       if ( *(_DWORD *)(v15 + 48) )
       {
-        sub_14016D910(*a1);
+        stbi_refill_buffer(*a1);
         v19 = *(unsigned __int8 **)(v15 + 192);
         v18 = *v19;
         *(_QWORD *)(v15 + 192) = (uint64)(uintptr_t)(v19 + 1);
@@ -15599,7 +15327,7 @@ LABEL_26:
   {
     if ( *(_DWORD *)(v26 + 48) )
     {
-      sub_14016D910(*a1);
+      stbi_refill_buffer(*a1);
       v29 = *(unsigned __int8 **)(v26 + 192);
       v28 = *v29;
       *(_QWORD *)(v26 + 192) = (uint64)(uintptr_t)(v29 + 1);
@@ -15621,7 +15349,7 @@ LABEL_26:
   {
     if ( *(_DWORD *)(v30 + 48) )
     {
-      sub_14016D910(v30);
+      stbi_refill_buffer(v30);
       v33 = *(unsigned __int8 **)(v30 + 192);
       v32 = *v33;
       *(_QWORD *)(v30 + 192) = (uint64)(uintptr_t)(v33 + 1);
@@ -15643,7 +15371,7 @@ LABEL_26:
   {
     if ( *(_DWORD *)(v34 + 48) )
     {
-      sub_14016D910(v34);
+      stbi_refill_buffer(v34);
       v37 = *(unsigned __int8 **)(v34 + 192);
       v36 = *v37;
       *(_QWORD *)(v34 + 192) = (uint64)(uintptr_t)(v37 + 1);
@@ -15686,25 +15414,23 @@ LABEL_52:
   return 1;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016C720) ----------------------------------------------------
 __int64            sub_14016C720(__int64 a1, _BYTE *a2, int a3)
 {
-  int v6; // r15d
-  int v7; // r14d
-  unsigned __int8 *v8; // rax
-  unsigned __int8 v9; // cl
-  int v10; // eax
-  unsigned __int8 *v11; // rax
-  unsigned int v12; // ebp
-  char *v13; // rax
-  char v14; // cl
-  int v15; // eax
-  char *v16; // rax
-  int v17; // edi
-  char v18; // cl
-  char *v19; // rax
+  int v6;
+  int v7;
+  unsigned __int8 *v8;
+  unsigned __int8 v9;
+  int v10;
+  unsigned __int8 *v11;
+  unsigned int v12;
+  char *v13;
+  char v14;
+  int v15;
+  char *v16;
+  int v17;
+  char v18;
+  char *v19;
 
   v6 = 0;
   v7 = a3;
@@ -15812,7 +15538,7 @@ LABEL_33:
     {
       if ( *(_DWORD *)(a1 + 48) )
       {
-        sub_14016D910(a1);
+        stbi_refill_buffer(a1);
         v19 = *(char **)(a1 + 192);
         v18 = *v19;
         *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v19 + 1);
@@ -15837,17 +15563,16 @@ LABEL_33:
   return 0;
 }
 
-
 //----- (000000014016C960) ----------------------------------------------------
 __int64            sub_14016C960(__int64 a1, char *a2, char *a3, char *a4)
 {
-  char *v4; // r14
-  char *v5; // r15
-  char *v7; // rsi
-  int v8; // ebx
-  _QWORD *v9; // rbx
-  int v10; // ecx
-  char v12; // [rsp+48h] [rbp+10h] BYREF
+  char *v4;
+  char *v5;
+  char *v7;
+  int v8;
+  _QWORD *v9;
+  int v10;
+  char v12;
 
   v4 = &v12;
   v5 = &v12;
@@ -15891,13 +15616,12 @@ __int64            sub_14016C960(__int64 a1, char *a2, char *a3, char *a4)
   return 0;
 }
 
-
 //----- (000000014016CA90) ----------------------------------------------------
 __int64            sub_14016CA90(__int64 a1)
 {
-  int v2; // ebx
-  _QWORD *v3; // rbx
-  int v4; // ecx
+  int v2;
+  _QWORD *v3;
+  int v4;
 
   v2 = sub_1401604F0(a1);
   if ( (v2 << 16) + (unsigned int)sub_1401604F0(a1) == 943870035 && (unsigned int)sub_1401604F0(a1) == 1 )
@@ -15929,92 +15653,91 @@ __int64            sub_14016CA90(__int64 a1)
   return 0;
 }
 
-
 //----- (000000014016CB70) ----------------------------------------------------
 char *           sub_14016CB70(__int64 a1, int *a2, int *a3, _DWORD *a4, int a5, _DWORD *a6, int a7)
 {
-  int v8; // ebx
-  char **v10; // r14
-  int v11; // ecx
-  int v12; // r15d
-  int v13; // eax
-  int v14; // r12d
-  int v15; // eax
-  __int64 v16; // rbx
-  int v17; // eax
-  int v18; // eax
-  int v19; // eax
-  int v20; // esi
-  int v21; // ecx
-  int v22; // ebp
-  int v23; // ecx
-  __int64 v24; // rax
-  _DWORD *v25; // rdx
-  char *v26; // r13
-  __int64 v27; // rax
-  __int64 v28; // rax
-       char *v29; // rdx
-  __int64 v30; // rsi
-  signed int v31; // ebx
-  char *v32; // rdx
-  char v33; // cl
-  __int64 v34; // rax
-  signed int v35; // ecx
-  int v36; // r15d
-  __int64 v37; // rax
-  _BYTE *v38; // r12
-  __int16 v39; // dx
-  __int16 *v40; // rax
-  __int64 v41; // rcx
-  char v42; // dl
-  char *v43; // rax
-  __int64 v44; // rcx
-  _WORD *v45; // rbx
-  __int64 v46; // rsi
-  _BYTE *v47; // rbx
-  __int64 v48; // rsi
-  __int64 v49; // rsi
-  char *v50; // rax
-  char v51; // cl
-  unsigned __int16 *v52; // rcx
-  unsigned __int64 v53; // r8
-  int v54; // r9d
-  float v55; // xmm2_4
-  float v56; // xmm1_4
-  int v57; // r9d
-  float v58; // xmm2_4
-  float v59; // xmm1_4
-  int v60; // r9d
-  float v61; // xmm2_4
-  float v62; // xmm1_4
-  int v63; // r9d
-  float v64; // xmm2_4
-  float v65; // xmm1_4
-  char *v66; // rcx
-  __int64 v67; // rdx
-  int v68; // r8d
-  float v69; // xmm2_4
-  float v70; // xmm1_4
-  unsigned __int8 *v71; // rcx
-  unsigned __int64 v72; // r8
-  int v73; // r9d
-  float v74; // xmm2_4
-  float v75; // xmm1_4
-  int v76; // r9d
-  float v77; // xmm2_4
-  float v78; // xmm1_4
-  int v79; // r9d
-  float v80; // xmm2_4
-  float v81; // xmm1_4
-  int v82; // r9d
-  float v83; // xmm2_4
-  float v84; // xmm1_4
-  char *v85; // rcx
-  __int64 v86; // rdx
-  int v87; // r8d
-  float v88; // xmm2_4
-  float v89; // xmm1_4
-  char *v90; // rax
+  int v8;
+  char **v10;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  int v15;
+  __int64 v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  int v21;
+  int v22;
+  int v23;
+  __int64 v24;
+  _DWORD *v25;
+  char *v26;
+  __int64 v27;
+  __int64 v28;
+       char *v29;
+  __int64 v30;
+  signed int v31;
+  char *v32;
+  char v33;
+  __int64 v34;
+  signed int v35;
+  int v36;
+  __int64 v37;
+  _BYTE *v38;
+  __int16 v39;
+  __int16 *v40;
+  __int64 v41;
+  char v42;
+  char *v43;
+  __int64 v44;
+  _WORD *v45;
+  __int64 v46;
+  _BYTE *v47;
+  __int64 v48;
+  __int64 v49;
+  char *v50;
+  char v51;
+  unsigned __int16 *v52;
+  unsigned __int64 v53;
+  int v54;
+  float v55;
+  float v56;
+  int v57;
+  float v58;
+  float v59;
+  int v60;
+  float v61;
+  float v62;
+  int v63;
+  float v64;
+  float v65;
+  char *v66;
+  __int64 v67;
+  int v68;
+  float v69;
+  float v70;
+  unsigned __int8 *v71;
+  unsigned __int64 v72;
+  int v73;
+  float v74;
+  float v75;
+  int v76;
+  float v77;
+  float v78;
+  int v79;
+  float v80;
+  float v81;
+  int v82;
+  float v83;
+  float v84;
+  char *v85;
+  __int64 v86;
+  int v87;
+  float v88;
+  float v89;
+  char *v90;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016CB70[32];
 #define v91 (*(unsigned int (*))(void *)(sr_frame_14016CB70 + 0)) /* [rsp+30h] */
@@ -16233,7 +15956,7 @@ LABEL_41:
             {
               if ( *(_DWORD *)(a1 + 48) )
               {
-                sub_14016D910(a1);
+                stbi_refill_buffer(a1);
                 v51 = *(*v10)++;
               }
               else
@@ -16388,7 +16111,7 @@ LABEL_94:
           v73 = *(v71 - 2);
           if ( (unsigned __int8)(v73 - 1) <= 0xFDu )
           {
-            v74 = 254.99998474121094 / (float)v73;
+            v74 = 254.99998 / (float)v73;
             v75 = (float)(1.0 - v74) * 255.0;
             *(v71 - 5) = (int)(float)((float)((float)*(v71 - 5) * v74) + v75);
             *(v71 - 4) = (int)(float)((float)((float)*(v71 - 4) * v74) + v75);
@@ -16397,7 +16120,7 @@ LABEL_94:
           v76 = v71[2];
           if ( (unsigned __int8)(v76 - 1) <= 0xFDu )
           {
-            v77 = 254.99998474121094 / (float)v76;
+            v77 = 254.99998 / (float)v76;
             v78 = (float)(1.0 - v77) * 255.0;
             *(v71 - 1) = (int)(float)((float)((float)*(v71 - 1) * v77) + v78);
             *v71 = (int)(float)((float)((float)*v71 * v77) + v78);
@@ -16406,7 +16129,7 @@ LABEL_94:
           v79 = v71[6];
           if ( (unsigned __int8)(v79 - 1) <= 0xFDu )
           {
-            v80 = 254.99998474121094 / (float)v79;
+            v80 = 254.99998 / (float)v79;
             v81 = (float)(1.0 - v80) * 255.0;
             v71[3] = (int)(float)((float)((float)v71[3] * v80) + v81);
             v71[4] = (int)(float)((float)((float)v71[4] * v80) + v81);
@@ -16415,7 +16138,7 @@ LABEL_94:
           v82 = v71[10];
           if ( (unsigned __int8)(v82 - 1) <= 0xFDu )
           {
-            v83 = 254.99998474121094 / (float)v82;
+            v83 = 254.99998 / (float)v82;
             v84 = (float)(1.0 - v83) * 255.0;
             v71[7] = (int)(float)((float)((float)v71[7] * v83) + v84);
             v71[8] = (int)(float)((float)((float)v71[8] * v83) + v84);
@@ -16435,7 +16158,7 @@ LABEL_94:
           v87 = (unsigned __int8)v85[2];
           if ( (unsigned __int8)(v87 - 1) <= 0xFDu )
           {
-            v88 = 254.99998474121094 / (float)v87;
+            v88 = 254.99998 / (float)v87;
             v89 = (float)(1.0 - v88) * 255.0;
             *(v85 - 1) = (int)(float)((float)((float)(unsigned __int8)*(v85 - 1) * v88) + v89);
             *v85 = (int)(float)((float)((float)(unsigned __int8)*v85 * v88) + v89);
@@ -16467,14 +16190,11 @@ LABEL_94:
 #undef v94
 #undef v95
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016D7A0) ----------------------------------------------------
 _BOOL8            sub_14016D7A0(_QWORD *a1)
 {
-  int v2; // ebx
-  int v3; // eax
+  int v2;
+  int v3;
 
   v2 = sub_1401604F0((__int64)a1);
   v3 = sub_1401604F0((__int64)a1);
@@ -16483,16 +16203,15 @@ _BOOL8            sub_14016D7A0(_QWORD *a1)
   return (v2 << 16) + v3 == 943870035;
 }
 
-
 //----- (000000014016D800) ----------------------------------------------------
 __int64            sub_14016D800(__int64 a1, int a2, __int64 a3)
 {
-  int v6; // esi
-  __int64 v7; // rdi
-  char *v8; // rax
-  unsigned __int64 v9; // rcx
-  char v10; // cl
-  char *v11; // rax
+  int v6;
+  __int64 v7;
+  char *v8;
+  unsigned __int64 v9;
+  char v10;
+  char *v11;
 
   v6 = 128;
   v7 = 0;
@@ -16515,7 +16234,7 @@ LABEL_8:
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v11 = *(char **)(a1 + 192);
           v10 = *v11;
           *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v11 + 1);
@@ -16545,13 +16264,11 @@ LABEL_16:
   return 0;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016D910) ----------------------------------------------------
-__int64            sub_14016D910(__int64 a1)
+__int64            stbi_refill_buffer(__int64 a1)
 {
-  _BYTE *v1; // rbx
-  __int64 result; // rax
+  _BYTE *v1;
+  __int64 result;
 
   v1 = (_BYTE *)(a1 + 56);
   LODWORD(result) = (*(__int64 (           **)(_QWORD, __int64, _QWORD))(a1 + 16))(
@@ -16575,12 +16292,11 @@ __int64            sub_14016D910(__int64 a1)
   return result;
 }
 
-
 //----- (000000014016D990) ----------------------------------------------------
 __int64            sub_14016D990(__int64 a1, _BYTE *a2, __int64 a3, __int64 a4, int a5)
 {
-  __int64 v5; // r10
-  __int64 v6; // rax
+  __int64 v5;
+  __int64 v6;
 
   if ( (int)a4 > 0 )
   {
@@ -16604,20 +16320,19 @@ __int64            sub_14016D990(__int64 a1, _BYTE *a2, __int64 a3, __int64 a4, 
   return a1;
 }
 
-
 //----- (000000014016D9D0) ----------------------------------------------------
 _BYTE *           sub_14016D9D0(_BYTE *a1, unsigned __int8 *a2, __int64 a3, int a4)
 {
-  char v4; // al
-  __int64 v8; // rsi
-  int v9; // edi
-  __int64 v10; // rbx
-  __int64 v11; // r9
-  _BYTE *v12; // r8
-  unsigned __int8 *v13; // rdx
-  int v14; // eax
-  int v15; // ecx
-  __int64 v16; // r8
+  char v4;
+  __int64 v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  _BYTE *v12;
+  unsigned __int8 *v13;
+  int v14;
+  int v15;
+  __int64 v16;
 
   v4 = *a2;
   *a1 = *a2;
@@ -16657,20 +16372,19 @@ _BYTE *           sub_14016D9D0(_BYTE *a1, unsigned __int8 *a2, __int64 a3, int 
   }
 }
 
-
 //----- (000000014016DAC0) ----------------------------------------------------
 _BYTE *           sub_14016DAC0(_BYTE *a1, unsigned __int8 *a2, unsigned __int8 *a3, int a4)
 {
-  __int64 v5; // rsi
-  int v6; // eax
-  unsigned int v7; // eax
-  __int64 v9; // rbx
-  unsigned __int8 *v10; // r9
-  __int64 v11; // rdi
-  _BYTE *v12; // r10
-  int v13; // ecx
-  int v14; // r8d
-  int v15; // eax
+  __int64 v5;
+  int v6;
+  unsigned int v7;
+  __int64 v9;
+  unsigned __int8 *v10;
+  __int64 v11;
+  _BYTE *v12;
+  int v13;
+  int v14;
+  int v15;
 
   v5 = a4;
   v6 = *a3 + 3 * *a2;
@@ -16708,38 +16422,37 @@ _BYTE *           sub_14016DAC0(_BYTE *a1, unsigned __int8 *a2, unsigned __int8 
   }
 }
 
-
 //----- (000000014016DB80) ----------------------------------------------------
 __m128i *           sub_14016DB80(__m128i *a1, unsigned __int8 *a2,      __m128i *a3, int a4)
 {
-  __int64 v5; // r14
-  unsigned int v7; // r9d
-  unsigned int v9; // edx
-  unsigned int v10; // eax
-  __m128i si128; // xmm5
-  __int64 *v13; // r10
-  __int64 v14; // r8
-  __m128i *v15; // rbp
-  unsigned int v16; // eax
-       __m128i *v17; // r11
-  __int64 v18; // r15
-  int v19; // eax
-  __m128i v20; // xmm0
-  __m128i v21; // xmm3
-  __m128i v22; // xmm0
-  __m128i v23; // xmm3
-  __m128i v24; // xmm0
-  __m128i v25; // xmm2
-  __m128i v26; // xmm1
-  int v27; // eax
-  signed int v28; // ecx
-  __int64 v29; // rbx
-  unsigned __int8 *v30; // r9
-  __int64 v31; // r11
-  __int8 *v32; // r10
-  int v33; // ecx
-  int v34; // r8d
-  int v35; // eax
+  __int64 v5;
+  unsigned int v7;
+  unsigned int v9;
+  unsigned int v10;
+  __m128i si128;
+  __int64 *v13;
+  __int64 v14;
+  __m128i *v15;
+  unsigned int v16;
+       __m128i *v17;
+  __int64 v18;
+  int v19;
+  __m128i v20;
+  __m128i v21;
+  __m128i v22;
+  __m128i v23;
+  __m128i v24;
+  __m128i v25;
+  __m128i v26;
+  int v27;
+  signed int v28;
+  __int64 v29;
+  unsigned __int8 *v30;
+  __int64 v31;
+  __int8 *v32;
+  int v33;
+  int v34;
+  int v35;
 
   v5 = a4;
   v7 = 0;
@@ -16815,38 +16528,36 @@ __m128i *           sub_14016DB80(__m128i *a1, unsigned __int8 *a2,      __m128i
   }
 }
 
-// 1402791C0: using guessed type __int128 xmmword_1402791C0;
-
 //----- (000000014016DD80) ----------------------------------------------------
 unsigned __int64            sub_14016DD80(unsigned __int64 a1, unsigned __int64 a2, unsigned __int64 a3, int a4)
 {
-  int v4; // ebx
-  __int64 v7; // rcx
-  unsigned __int64 v8; // rdx
-  __m128i si128; // xmm3
-  __int64 v10; // rdi
-  __m128i v11; // xmm4
-  __int64 v12; // rcx
-  __int64 v13; // rdx
-  __m128i v14; // xmm5
-  __m128i v15; // xmm0
-  __m128i v16; // xmm1
-  __m128i v17; // xmm0
-  __m128i v18; // xmm2
-  __m128i v19; // xmm1
-  __m128i v20; // xmm0
-  __m128i v21; // xmm2
-  __m128i v22; // xmm1
-  __m128i v23; // xmm0
-  __m128i v24; // xmm2
-  __m128i v25; // xmm2
-  __int64 v26; // rcx
-  unsigned __int8 *v27; // rax
-  __int64 v28; // rbx
-  __int64 v29; // r10
-  __int64 v30; // r9
-  int v31; // ecx
-  int v32; // r8d
+  int v4;
+  __int64 v7;
+  unsigned __int64 v8;
+  __m128i si128;
+  __int64 v10;
+  __m128i v11;
+  __int64 v12;
+  __int64 v13;
+  __m128i v14;
+  __m128i v15;
+  __m128i v16;
+  __m128i v17;
+  __m128i v18;
+  __m128i v19;
+  __m128i v20;
+  __m128i v21;
+  __m128i v22;
+  __m128i v23;
+  __m128i v24;
+  __m128i v25;
+  __int64 v26;
+  unsigned __int8 *v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  int v31;
+  int v32;
 
   v4 = 0;
   if ( a4 >= 16 && dword_140302080 >= 2 )
@@ -16947,17 +16658,12 @@ unsigned __int64            sub_14016DD80(unsigned __int64 a1, unsigned __int64 
   return a1;
 }
 
-// 140278F10: using guessed type __int128 xmmword_140278F10;
-// 140278F60: using guessed type __int128 xmmword_140278F60;
-// 1402791D0: using guessed type __int128 xmmword_1402791D0;
-// 140302080: using guessed type int dword_140302080;
-
 //----- (000000014016DFD0) ----------------------------------------------------
 __m128i *(           *           sub_14016DFD0(
         _QWORD *a1))(__m128i *a1, unsigned __int8 *a2,      __m128i *a3, int a4)
 {
   unsigned __int64 _RAX = 0, _RBX = 0, _RCX = 0, _RDX = 0;
-  __m128i *(           *result)(__m128i *, unsigned __int8 *,      __m128i *, int); // rax
+  __m128i *(           *result)(__m128i *, unsigned __int8 *,      __m128i *, int);
 
   a1[2318] = (uintptr_t)sub_140163020;
   a1[2319] = (uintptr_t)sub_14015B140;
@@ -16975,13 +16681,12 @@ __m128i *(           *           sub_14016DFD0(
   return result;
 }
 
-
 //----- (000000014016E050) ----------------------------------------------------
 __int64            sub_14016E050(unsigned int a1, int a2, int a3)
 {
-  __int64 v3; // rdi
-  unsigned int v4; // ebx
-  unsigned int v5; // ebx
+  __int64 v3;
+  unsigned int v4;
+  unsigned int v5;
 
   v3 = a3;
   if ( a2 >= 0 )
@@ -16989,25 +16694,20 @@ __int64            sub_14016E050(unsigned int a1, int a2, int a3)
   else
     v4 = a1 << -(char)a2;
   if ( v4 >= 0x100 )
-    sub_14023E640((char *)L"v < 256", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0x148Eu);
+    crt_assert((char *)L"v < 256", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0x148Eu);
   v5 = v4 >> (8 - v3);
   if ( (unsigned int)v3 > 8 )
-    sub_14023E640((char *)L"bits >= 0 && bits <= 8", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0x1490u);
+    crt_assert((char *)L"bits >= 0 && bits <= 8", (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h", 0x1490u);
   return (unsigned int)((int)(v5 * dword_140301870[v3]) >> dword_140301870[v3 + 10]);
 }
-
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272AF8: using guessed type __int16 aV256[8];
-// 140272B08: using guessed type __int16[23];
-// 140301870: using guessed type _DWORD dword_140301870[20];
 
 //----- (000000014016E0F0) ----------------------------------------------------
 __int64            sub_14016E0F0(__int64 a1, int a2)
 {
-  __int64 result; // rax
-  int v4; // ecx
-  __int64 v5; // rdx
-  __int64 v6; // rcx
+  __int64 result;
+  int v4;
+  __int64 v5;
+  __int64 v6;
 
   if ( a2 )
   {
@@ -17035,15 +16735,13 @@ __int64            sub_14016E0F0(__int64 a1, int a2)
   return result;
 }
 
-
 //----- (000000014016E150)
 __int64 sub_14016E150(void) { return sr_client_cpu_sse2_probe(); }
-
 
 //----- (000000014016E170) ----------------------------------------------------
 __int64            sub_14016E170(__int64 a1, __int64 a2, __int64 a3)
 {
-  __int64 result; // rax
+  __int64 result;
 
   *(_OWORD *)(a1 + 16) = *(_OWORD *)a2;
   *(_QWORD *)(a1 + 32) = *(_QWORD *)(a2 + 16);
@@ -17053,17 +16751,16 @@ __int64            sub_14016E170(__int64 a1, __int64 a2, __int64 a3)
   *(_DWORD *)(a1 + 184) = 0;
   *(_QWORD *)(a1 + 208) = a1 + 56;
   *(_QWORD *)(a1 + 192) = a1 + 56;
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   result = *(_QWORD *)(a1 + 200);
   *(_QWORD *)(a1 + 216) = result;
   return result;
 }
 
-
 //----- (000000014016E1E0) ----------------------------------------------------
 __int64            sub_14016E1E0(__int64 a1, __int64 a2)
 {
-  __int64 result; // rax
+  __int64 result;
 
   *(_OWORD *)(a1 + 16) = *(_OWORD *)&off_140301820;
   *(_QWORD *)(a1 + 32) = (uint64)(uintptr_t)(off_140301830);
@@ -17073,22 +16770,19 @@ __int64            sub_14016E1E0(__int64 a1, __int64 a2)
   *(_DWORD *)(a1 + 184) = 0;
   *(_QWORD *)(a1 + 208) = a1 + 56;
   *(_QWORD *)(a1 + 192) = a1 + 56;
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   result = *(_QWORD *)(a1 + 200);
   *(_QWORD *)(a1 + 216) = result;
   return result;
 }
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-
 //----- (000000014016E2A0) ----------------------------------------------------
 __int64            sub_14016E2A0(unsigned __int64 (           **a1)(__int64, __int64, int), char *a2)
 {
-  int v3; // eax
-  __int64 (           *v4)(__int64, __int64, int); // rdx
-  unsigned int v5; // r8d
-  __int64 (           *v7)(__int64, __int64, int); // [rsp+30h] [rbp+8h] BYREF
+  int v3;
+  __int64 (           *v4)(__int64, __int64, int);
+  unsigned int v5;
+  __int64 (           *v7)(__int64, __int64, int);
 
   v3 = sub_14020B8E4((__int64 *)&v7, a2, "wb");
   v4 = v7;
@@ -17101,49 +16795,47 @@ __int64            sub_14016E2A0(unsigned __int64 (           **a1)(__int64, __i
   return v5;
 }
 
-
 //----- (000000014016E2F0) ----------------------------------------------------
 unsigned __int64            sub_14016E2F0(__int64 a1, __int64 a2, int a3)
 {
-  return sub_14020CE0C(a2, 1, a3, a1);
+  return crt_fread(a2, 1, a3, a1);
 }
-
 
 //----- (000000014016E370) ----------------------------------------------------
 __int64            sub_14016E370(__int64 a1, int *a2, int *a3, unsigned int *a4)
 {
-  unsigned __int8 *v5; // rcx
-  unsigned __int64 v6; // rax
-  unsigned __int8 v7; // di
-  unsigned __int8 *v8; // rax
-  char v10; // r14
-  char *v11; // rax
-  int v12; // r15d
-  int v13; // r8d
-  __int64 v14; // rcx
-  unsigned __int8 *v15; // rcx
-  unsigned __int8 v16; // r8
-  int v17; // edx
-  unsigned __int8 *v18; // rax
-  unsigned __int64 v19; // rdi
-  __int64 v20; // r8
-  int v21; // r8d
-  __int64 v22; // rcx
-  int v23; // r8d
-  __int64 v24; // rcx
-  int v25; // r13d
-  int v26; // r12d
-  unsigned __int8 *v27; // rax
-  unsigned __int64 v28; // rcx
-  unsigned __int8 v29; // dl
-  _BYTE *v30; // rax
-  int v31; // ebp
-  int v32; // esi
-  int v33; // esi
-  int v34; // esi
-  int v35; // esi
-  int v36; // esi
-  unsigned int v37; // edi
+  unsigned __int8 *v5;
+  unsigned __int64 v6;
+  unsigned __int8 v7;
+  unsigned __int8 *v8;
+  char v10;
+  char *v11;
+  int v12;
+  int v13;
+  __int64 v14;
+  unsigned __int8 *v15;
+  unsigned __int8 v16;
+  int v17;
+  unsigned __int8 *v18;
+  unsigned __int64 v19;
+  __int64 v20;
+  int v21;
+  __int64 v22;
+  int v23;
+  __int64 v24;
+  int v25;
+  int v26;
+  unsigned __int8 *v27;
+  unsigned __int64 v28;
+  unsigned __int8 v29;
+  _BYTE *v30;
+  int v31;
+  int v32;
+  int v33;
+  int v34;
+  int v35;
+  int v36;
+  unsigned int v37;
 
   v5 = *(unsigned __int8 **)(a1 + 192);
   v6 = *(_QWORD *)(a1 + 200);
@@ -17151,7 +16843,7 @@ __int64            sub_14016E370(__int64 a1, int *a2, int *a3, unsigned int *a4)
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_11;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v5 = (unsigned __int8 *)++*(_QWORD *)(a1 + 192);
     v6 = *(_QWORD *)(a1 + 200);
   }
@@ -17170,7 +16862,7 @@ LABEL_11:
     v7 = 0;
     goto LABEL_12;
   }
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   v8 = *(unsigned __int8 **)(a1 + 192);
   v7 = *v8;
   v5 = v8 + 1;
@@ -17187,7 +16879,7 @@ LABEL_12:
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v11 = *(char **)(a1 + 192);
       v10 = *v11;
       v5 = (unsigned __int8 *)(v11 + 1);
@@ -17222,7 +16914,7 @@ LABEL_12:
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v18 = *(unsigned __int8 **)(a1 + 192);
           v16 = *v18;
           v15 = v18 + 1;
@@ -17301,7 +16993,7 @@ LABEL_42:
       v32 = 0;
       goto LABEL_52;
     }
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v27 = *(unsigned __int8 **)(a1 + 192);
     v28 = *(_QWORD *)(a1 + 200);
   }
@@ -17318,7 +17010,7 @@ LABEL_42:
 LABEL_52:
   if ( *(_DWORD *)(a1 + 48) )
   {
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     ++*(_QWORD *)(a1 + 192);
   }
 LABEL_54:
@@ -17382,91 +17074,90 @@ LABEL_77:
   return 1;
 }
 
-
 //----- (000000014016E7A0) ----------------------------------------------------
 char *           sub_14016E7A0(__int64 a1, _DWORD *a2, int *a3, unsigned int *a4, int a5)
 {
-  unsigned __int8 *v5; // rax
-  unsigned __int64 v7; // rcx
-  int v8; // ebp
-  unsigned __int8 v9; // r10
-  unsigned __int8 *v10; // rax
-  unsigned __int8 v11; // r15
-  unsigned __int8 *v12; // rax
-  int v13; // esi
-  unsigned __int8 v14; // cl
-  unsigned __int8 *v15; // rax
-  int v16; // eax
-  unsigned __int8 *v17; // rcx
-  unsigned __int8 v18; // dl
-  unsigned __int8 *v19; // rax
-  unsigned int v20; // r14d
-  int v21; // eax
-  unsigned __int64 v22; // rcx
-  unsigned __int8 *v23; // rax
-  unsigned __int8 v24; // dl
-  unsigned __int8 *v25; // rax
-  unsigned int v26; // r12d
-  int v27; // edi
-  unsigned __int8 v28; // cl
-  unsigned __int8 *v29; // rax
-  int v30; // r8d
-  int v31; // r13d
-  unsigned int v32; // eax
-  int v33; // r9d
-  __int32 v34; // ecx
-  int v35; // edi
-  int v36; // edi
-  int v37; // edi
-  int v38; // edi
-  unsigned int v39; // r14d
-  __int64 v40; // rax
-       char *v41; // rdx
-  unsigned __int32 v42; // ecx
-  unsigned int v43; // edi
-  int v44; // eax
-  int v45; // r13d
-  char *v46; // r12
-  __int64 v47; // rdi
-  int v48; // ebp
-  __m128i *v49; // rsi
-  __m128i *v50; // rsi
-  __m128i *v51; // rcx
-  __m128i *v52; // rax
-  __m128i *v53; // rsi
-  __m128i *v54; // rdi
-  __int64 v55; // rsi
-  __int64 v56; // r15
-  __int64 v57; // r10
-  __int64 v58; // r9
-  int v59; // r8d
-  int v60; // r12d
-  unsigned __int8 *v61; // rax
-  unsigned __int8 v62; // cl
-  unsigned __int8 *v63; // rax
-  unsigned __int8 *v64; // rax
-  unsigned __int8 v65; // cl
-  int v66; // eax
-  unsigned __int8 *v67; // rax
-  unsigned __int8 v68; // cl
-  unsigned __int16 v69; // ax
-  __int64 v70; // rdi
-  __int8 *v71; // rax
-  __int8 v72; // cl
-  __int8 *v73; // rax
-  __int64 v74; // rdx
-  __int8 *v75; // rcx
-  __int64 v76; // rdi
-  int v77; // r11d
-  int v78; // ebx
-  int v79; // r10d
-  int v80; // r8d
-  __int64 v81; // r9
-  char *v82; // rdx
-  char v83; // cl
-  char *v84; // r8
-  __int64 v85; // r10
-  char v86; // cl
+  unsigned __int8 *v5;
+  unsigned __int64 v7;
+  int v8;
+  unsigned __int8 v9;
+  unsigned __int8 *v10;
+  unsigned __int8 v11;
+  unsigned __int8 *v12;
+  int v13;
+  unsigned __int8 v14;
+  unsigned __int8 *v15;
+  int v16;
+  unsigned __int8 *v17;
+  unsigned __int8 v18;
+  unsigned __int8 *v19;
+  unsigned int v20;
+  int v21;
+  unsigned __int64 v22;
+  unsigned __int8 *v23;
+  unsigned __int8 v24;
+  unsigned __int8 *v25;
+  unsigned int v26;
+  int v27;
+  unsigned __int8 v28;
+  unsigned __int8 *v29;
+  int v30;
+  int v31;
+  unsigned int v32;
+  int v33;
+  __int32 v34;
+  int v35;
+  int v36;
+  int v37;
+  int v38;
+  unsigned int v39;
+  __int64 v40;
+       char *v41;
+  unsigned __int32 v42;
+  unsigned int v43;
+  int v44;
+  int v45;
+  char *v46;
+  __int64 v47;
+  int v48;
+  __m128i *v49;
+  __m128i *v50;
+  __m128i *v51;
+  __m128i *v52;
+  __m128i *v53;
+  __m128i *v54;
+  __int64 v55;
+  __int64 v56;
+  __int64 v57;
+  __int64 v58;
+  int v59;
+  int v60;
+  unsigned __int8 *v61;
+  unsigned __int8 v62;
+  unsigned __int8 *v63;
+  unsigned __int8 *v64;
+  unsigned __int8 v65;
+  int v66;
+  unsigned __int8 *v67;
+  unsigned __int8 v68;
+  unsigned __int16 v69;
+  __int64 v70;
+  __int8 *v71;
+  __int8 v72;
+  __int8 *v73;
+  __int64 v74;
+  __int8 *v75;
+  __int64 v76;
+  int v77;
+  int v78;
+  int v79;
+  int v80;
+  __int64 v81;
+  char *v82;
+  char v83;
+  char *v84;
+  __int64 v85;
+  char v86;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016E7A0[176];
 #define v88 (*(int (*))(void *)(sr_frame_14016E7A0 + 8)) /* [rsp+30h] */
@@ -17500,7 +17191,7 @@ LABEL_4:
   }
   if ( *(_DWORD *)(a1 + 48) )
   {
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v5 = *(unsigned __int8 **)(a1 + 192);
     v7 = *(_QWORD *)(a1 + 200);
     goto LABEL_4;
@@ -17514,7 +17205,7 @@ LABEL_7:
 LABEL_12:
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v15 = *(unsigned __int8 **)(a1 + 192);
       v14 = *v15;
       *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v15 + 1);
@@ -17525,7 +17216,7 @@ LABEL_12:
     }
     goto LABEL_15;
   }
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   v10 = *(unsigned __int8 **)(a1 + 192);
   v7 = *(_QWORD *)(a1 + 200);
 LABEL_9:
@@ -17547,7 +17238,7 @@ LABEL_15:
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v19 = *(unsigned __int8 **)(a1 + 192);
       v18 = *v19;
       *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v19 + 1);
@@ -17578,7 +17269,7 @@ LABEL_15:
       v27 = 0;
       goto LABEL_26;
     }
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v23 = *(unsigned __int8 **)(a1 + 192);
     v22 = *(_QWORD *)(a1 + 200);
   }
@@ -17596,7 +17287,7 @@ LABEL_15:
 LABEL_26:
   if ( *(_DWORD *)(a1 + 48) )
   {
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v29 = *(unsigned __int8 **)(a1 + 192);
     v28 = *v29;
     *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v29 + 1);
@@ -17712,7 +17403,7 @@ LABEL_76:
         {
           v54 = v52;
           if ( v39 != 3 )
-            sub_14023E640(
+            crt_assert(
               (char *)L"tga_comp == STBI_rgb",
               (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
               0x1691u);
@@ -17816,7 +17507,7 @@ LABEL_124:
         {
           if ( *(_DWORD *)(a1 + 48) )
           {
-            sub_14016D910(a1);
+            stbi_refill_buffer(a1);
             v63 = *(unsigned __int8 **)(a1 + 192);
             v62 = *v63;
             *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v63 + 1);
@@ -17843,7 +17534,7 @@ LABEL_101:
             {
               if ( *(_DWORD *)(a1 + 48) )
               {
-                sub_14016D910(a1);
+                stbi_refill_buffer(a1);
                 v67 = *(unsigned __int8 **)(a1 + 192);
                 v68 = *v67;
                 *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v67 + 1);
@@ -17867,12 +17558,12 @@ LABEL_101:
           }
           if ( v66 >= v95 )
             v66 = 0;
-          sub_1401FC920(&v91, (     __m128i *)((char *)v98 + (int)(v39 * v66)), v39);
+          crt_memcpy(&v91, (     __m128i *)((char *)v98 + (int)(v39 * v66)), v39);
         }
         else if ( v90 )
         {
           if ( v39 != 3 )
-            sub_14023E640(
+            crt_assert(
               (char *)L"tga_comp == STBI_rgb",
               (char *)L"C:\\visualc2010\\code\\csl03\\stb/stb_image.h",
               0x16C2u);
@@ -17891,7 +17582,7 @@ LABEL_101:
             {
               if ( *(_DWORD *)(a1 + 48) )
               {
-                sub_14016D910(a1);
+                stbi_refill_buffer(a1);
                 v73 = *(__int8 **)(a1 + 192);
                 v72 = *v73;
                 *(_QWORD *)(a1 + 192) = (uint64)(uintptr_t)(v73 + 1);
@@ -18008,16 +17699,12 @@ LABEL_138:
 // 14016EF06: conditional instruction was optimized away because r14d.4!=0
 // 14016EF76: conditional instruction was optimized away because r14d.4!=0
 // 14016ECB0: conditional instruction was optimized away because %var_70.4>=1
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140272410: using guessed type __int16 aCVisualc2010Co_1[42];
-// 140272C68: using guessed type __int16[21];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
 
 //----- (000000014016F120) ----------------------------------------------------
 __int64            sub_14016F120(__int64 a1, _BYTE *a2)
 {
-  unsigned __int16 v3; // ax
-  int v4; // ecx
+  unsigned __int16 v3;
+  int v4;
 
   v3 = sub_1401605B0(a1);
   *a2 = (char)-((v3 >> 10) & 0x1F) / 31;
@@ -18027,34 +17714,33 @@ __int64            sub_14016F120(__int64 a1, _BYTE *a2)
   return (unsigned int)((unsigned __int64)(2216757315LL * v4) >> 32) >> 31;
 }
 
-
 //----- (000000014016F1B0) ----------------------------------------------------
 __int64            sub_14016F1B0(__int64 a1)
 {
-  unsigned int v2; // ebp
-  unsigned __int8 *v3; // rcx
-  unsigned __int64 v4; // rax
-  unsigned __int8 v5; // si
-  unsigned __int8 *v6; // rax
-  unsigned __int8 v7; // di
-  char v8; // dl
-  char *v9; // rax
-  int v10; // r14d
-  int v11; // r8d
-  __int64 v12; // rcx
-  unsigned __int8 *v13; // rcx
-  unsigned __int8 v14; // dl
-  int v15; // r9d
-  _BYTE *v16; // r8
-  unsigned __int8 *v17; // rax
-  int v18; // ecx
-  unsigned int v19; // edi
-  __int64 v20; // rcx
-  _BYTE *v21; // rax
-  int v22; // r8d
-  __int64 v23; // rcx
-  unsigned __int8 *v24; // rax
-  unsigned __int8 v25; // cl
+  unsigned int v2;
+  unsigned __int8 *v3;
+  unsigned __int64 v4;
+  unsigned __int8 v5;
+  unsigned __int8 *v6;
+  unsigned __int8 v7;
+  char v8;
+  char *v9;
+  int v10;
+  int v11;
+  __int64 v12;
+  unsigned __int8 *v13;
+  unsigned __int8 v14;
+  int v15;
+  _BYTE *v16;
+  unsigned __int8 *v17;
+  int v18;
+  unsigned int v19;
+  __int64 v20;
+  _BYTE *v21;
+  int v22;
+  __int64 v23;
+  unsigned __int8 *v24;
+  unsigned __int8 v25;
 
   v2 = 0;
   v3 = *(unsigned __int8 **)(a1 + 192);
@@ -18063,7 +17749,7 @@ __int64            sub_14016F1B0(__int64 a1)
   {
     if ( !*(_DWORD *)(a1 + 48) )
       goto LABEL_11;
-    sub_14016D910(a1);
+    stbi_refill_buffer(a1);
     v3 = (unsigned __int8 *)++*(_QWORD *)(a1 + 192);
     v4 = *(_QWORD *)(a1 + 200);
   }
@@ -18083,7 +17769,7 @@ LABEL_11:
     v7 = 0;
     goto LABEL_12;
   }
-  sub_14016D910(a1);
+  stbi_refill_buffer(a1);
   v6 = *(unsigned __int8 **)(a1 + 192);
   v5 = *v6;
   v3 = v6 + 1;
@@ -18097,7 +17783,7 @@ LABEL_12:
   {
     if ( *(_DWORD *)(a1 + 48) )
     {
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v9 = *(char **)(a1 + 192);
       v8 = *v9;
       v3 = (unsigned __int8 *)(v9 + 1);
@@ -18138,7 +17824,7 @@ LABEL_42:
       {
         if ( *(_DWORD *)(a1 + 48) )
         {
-          sub_14016D910(a1);
+          stbi_refill_buffer(a1);
           v25 = **(_BYTE **)(a1 + 192);
         }
         else
@@ -18185,7 +17871,7 @@ LABEL_54:
     {
       if ( !*(_DWORD *)(a1 + 48) )
         goto LABEL_56;
-      sub_14016D910(a1);
+      stbi_refill_buffer(a1);
       v17 = *(unsigned __int8 **)(a1 + 192);
       v14 = *v17;
       v16 = v17 + 1;
@@ -18221,18 +17907,17 @@ LABEL_56:
   return v2;
 }
 
-
 //----- (000000014016F470) ----------------------------------------------------
 void sub_14016F470(__m128i *a1, int a2, int a3, int a4)
 {
-  __m128i *v4; // r12
-  __int64 v5; // r15
-  __m128i *v6; // rbx
-  __int64 v7; // r13
-  __m128i *v8; // rsi
-  __m128i *v9; // rbp
-  unsigned __int64 v10; // r14
-  unsigned __int64 v11; // rdi
+  __m128i *v4;
+  __int64 v5;
+  __m128i *v6;
+  __int64 v7;
+  __m128i *v8;
+  __m128i *v9;
+  unsigned __int64 v10;
+  unsigned __int64 v11;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016F470[2096];
 #define v13 (*(__int64 (*))(void *)(sr_frame_14016F470 + 0)) /* [rsp+0h] */
@@ -18257,9 +17942,9 @@ void sub_14016F470(__m128i *a1, int a2, int a3, int a4)
           v11 = 2048;
           if ( v10 < 0x800 )
             v11 = v10;
-          sub_1401FC920(v14, v8, v11);
-          sub_1401FC920(v8, v9, v11);
-          sub_1401FC920(v9, v14, v11);
+          crt_memcpy(v14, v8, v11);
+          crt_memcpy(v8, v9, v11);
+          crt_memcpy(v9, v14, v11);
           v8 = (__m128i *)((char *)v8 + v11);
           v9 = (__m128i *)((char *)v9 + v11);
           v10 -= v11;
@@ -18278,22 +17963,21 @@ void sub_14016F470(__m128i *a1, int a2, int a3, int a4)
 #undef v14
 #undef v15
 
-
 //----- (000000014016F590) ----------------------------------------------------
 void            sub_14016F590(__m128i *a1, int a2, int a3, int a4, int a5)
 {
-  int v5; // r10d
-  __int64 v6; // r15
-  __int64 v7; // rax
-  __int64 v8; // r9
-  int v9; // edx
-  __int64 v10; // r13
-  __m128i *v11; // r12
-  __m128i *v12; // rbx
-  __m128i *v13; // rsi
-  __m128i *v14; // rbp
-  unsigned __int64 v15; // r14
-  unsigned __int64 v16; // rdi
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  int v9;
+  __int64 v10;
+  __m128i *v11;
+  __m128i *v12;
+  __m128i *v13;
+  __m128i *v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016F590[2128];
 #define v17 (*(__int64 (*))(void *)(sr_frame_14016F590 + 0)) /* [rsp+0h] */
@@ -18336,9 +18020,9 @@ void            sub_14016F590(__m128i *a1, int a2, int a3, int a4, int a5)
               v16 = 2048;
               if ( v15 < 0x800 )
                 v16 = v15;
-              sub_1401FC920(v23, v13, v16);
-              sub_1401FC920(v13, v14, v16);
-              sub_1401FC920(v14, v23, v16);
+              crt_memcpy(v23, v13, v16);
+              crt_memcpy(v13, v14, v16);
+              crt_memcpy(v14, v23, v16);
               v13 = (__m128i *)((char *)v13 + v16);
               v14 = (__m128i *)((char *)v14 + v16);
               v15 -= v16;
@@ -18373,40 +18057,39 @@ void            sub_14016F590(__m128i *a1, int a2, int a3, int a4, int a5)
 #undef v23
 #undef v24
 
-
 //----- (000000014016F730) ----------------------------------------------------
 __int64            sub_14016F730(__int64 a1, unsigned __int8 *a2, int a3)
 {
-  int v5; // edi
-  __int16 v6; // bp
-  unsigned __int8 *v8; // rcx
-  __int64 v9; // rdx
-  __int64 v10; // rax
-  int i; // ecx
-  int v12; // r10d
-  int v13; // r8d
-  int j; // r11d
-  int v15; // esi
-  int v16; // r8d
-  int v17; // eax
-  __int64 v18; // r9
-  int *v19; // r11
-  int v20; // r10d
-  __int64 v21; // rax
-  unsigned int v22; // eax
-  int k; // eax
-  __int64 v24; // rcx
-  __int64 v26; // [rsp+0h] [rbp-E8h] BYREF
-  unsigned int v27[17]; // [rsp+20h] [rbp-C8h] BYREF
-  int v28; // [rsp+60h] [rbp-88h]
-  _DWORD v29[16]; // [rsp+70h] [rbp-78h] BYREF
-  __int64 v30; // [rsp+B0h] [rbp-38h]
+  int v5;
+  __int16 v6;
+  unsigned __int8 *v8;
+  __int64 v9;
+  __int64 v10;
+  int i;
+  int v12;
+  int v13;
+  int j;
+  int v15;
+  int v16;
+  int v17;
+  __int64 v18;
+  int *v19;
+  int v20;
+  __int64 v21;
+  unsigned int v22;
+  int k;
+  __int64 v24;
+  __int64 v26;
+  unsigned int v27[17];
+  int v28;
+  _DWORD v29[16];
+  __int64 v30;
 
   v5 = 0;
 
   v6 = 0;
   memset(v27, 0, sizeof(v27));
-  sub_1401FCD30((void *)(uintptr_t)((_WORD *)a1), 0, 0x400u);
+  crt_memset((void *)(uintptr_t)((_WORD *)a1), 0, 0x400u);
   if ( a3 > 0 )
   {
     v8 = a2;
@@ -18486,16 +18169,14 @@ __int64            sub_14016F730(__int64 a1, unsigned __int8 *a2, int a3)
   return 1;
 }
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016F9E0) ----------------------------------------------------
 __int64            sub_14016F9E0(__int64 a1, __int64 a2, unsigned int a3)
 {
-  bool v3; // zf
-  unsigned int v6; // edi
-  unsigned int v7; // ecx
-  __int64 v8; // rsi
-  __int64 v9; // rax
+  bool v3;
+  unsigned int v6;
+  unsigned int v7;
+  __int64 v8;
+  __int64 v9;
 
   v3 = *(_DWORD *)(a1 + 48) == 0;
   *(_QWORD *)(a1 + 24) = a2;
@@ -18533,15 +18214,12 @@ LABEL_9:
   return 1;
 }
 
-// 14023AD00: using guessed type __int64 __fastcall j__realloc_base(_QWORD, _QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016FB20) ----------------------------------------------------
 __int64            sub_14016FB20(__int64 a1, __int64 a2)
 {
-  __int64 v3; // r11
-  unsigned int v5; // edx
-  unsigned int v6; // eax
+  __int64 v3;
+  unsigned int v5;
+  unsigned int v6;
 
   v3 = a1;
   if ( *(int *)(a1 + 16) < 16 )
@@ -18559,18 +18237,16 @@ __int64            sub_14016FB20(__int64 a1, __int64 a2)
   return v6 & 0x1FF;
 }
 
-// 14016FB4B: variable 'v3' is possibly undefined
-
 //----- (000000014016FB90) ----------------------------------------------------
 __int64            sub_14016FB90(__int64 a1, __int64 a2)
 {
-  int v2; // r10d
-  unsigned int v5; // ecx
-  unsigned int v6; // eax
-  int *v7; // rcx
-  int v8; // r8d
-  int v9; // eax
-  int v10; // edx
+  int v2;
+  unsigned int v5;
+  unsigned int v6;
+  int *v7;
+  int v8;
+  int v9;
+  int v10;
 
   v2 = *(_DWORD *)(a1 + 20);
   v5 = (2 * (v2 & 0x5555)) | (v2 >> 1) & 0x5555;
@@ -18598,13 +18274,12 @@ __int64            sub_14016FB90(__int64 a1, __int64 a2)
   return *(unsigned __int16 *)(a2 + 2LL * v10 + 1444);
 }
 
-
 //----- (000000014016FC70) ----------------------------------------------------
 __int64            sub_14016FC70(__int64 a1, int a2)
 {
-  int v2; // r8d
-  __int64 v4; // r11
-  unsigned int v5; // edx
+  int v2;
+  __int64 v4;
+  unsigned int v5;
 
   v2 = *(_DWORD *)(a1 + 16);
   v4 = a1;
@@ -18619,17 +18294,15 @@ __int64            sub_14016FC70(__int64 a1, int a2)
   return v5 & ((1 << a2) - 1);
 }
 
-// 14016FC89: variable 'v4' is possibly undefined
-
 //----- (000000014016FD50) ----------------------------------------------------
 __int64            sub_14016FD50(char *a1, char *a2, char *a3, unsigned int *a4)
 {
-  int v7; // eax
-  FILE *v8; // rdi
-  int v9; // esi
-  int v10; // eax
-  char *v11; // rax
-  __int64 (           *v17)(); // [rsp+50h] [rbp-B0h]
+  int v7;
+  FILE *v8;
+  int v9;
+  int v10;
+  char *v11;
+  __int64 (           *v17)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016FD50[288];
 #define v13 (*(__int64 (*))(void *)(sr_frame_14016FD50 + 0)) /* [rsp+0h] */
@@ -18682,7 +18355,7 @@ __int64            sub_14016FD50(char *a1, char *a2, char *a3, unsigned int *a4)
     v27 = v11;
     sub_140163E70((__int64)v15, a2, a3, a4);
     sub_14020C4A8((__int64)v8, v9, 0);
-    sub_14020B9E8((__int64)v8);
+    crt_fclose((__int64)v8);
   }
   else
   {
@@ -18706,17 +18379,13 @@ __int64            sub_14016FD50(char *a1, char *a2, char *a3, unsigned int *a4)
 #undef v27
 #undef v28
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (000000014016FED0) ----------------------------------------------------
 __int64            sub_14016FED0(__int128 *a1, __int64 a2, char *a3, char *a4, unsigned int *a5)
 {
-  __int128 v5; // xmm1
-  __int64 v6; // xmm0_8
-  int v9; // eax
-  char *v10; // rax
+  __int128 v5;
+  __int64 v6;
+  int v9;
+  char *v10;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016FED0[272];
 #define v12 (*(__int64 (*))(void *)(sr_frame_14016FED0 + 0)) /* [rsp+0h] */
@@ -18779,14 +18448,13 @@ __int64            sub_14016FED0(__int128 *a1, __int64 a2, char *a3, char *a4, u
 #undef v25
 #undef v26
 
-
 //----- (000000014016FFD0) ----------------------------------------------------
 __int64            sub_14016FFD0(FILE *a1, char *a2, char *a3, unsigned int *a4)
 {
-  int v8; // r15d
-  int v9; // eax
-  char *v10; // rax
-  __int64 (           *v15)(); // [rsp+40h] [rbp-C0h]
+  int v8;
+  int v9;
+  char *v10;
+  __int64 (           *v15)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14016FFD0[272];
 #define v12 (*(__int64 (*))(void *)(sr_frame_14016FFD0 + 0)) /* [rsp+0h] */
@@ -18848,9 +18516,6 @@ __int64            sub_14016FFD0(FILE *a1, char *a2, char *a3, unsigned int *a4)
 #undef v25
 #undef v26
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-
 //----- (00000001401700F0) ----------------------------------------------------
 __int64            sub_1401700F0(__int64 a1, int a2, char *a3, char *a4, unsigned int *a5)
 {
@@ -18887,16 +18552,15 @@ __int64            sub_1401700F0(__int64 a1, int a2, char *a3, char *a4, unsigne
 #undef v14
 #undef v15
 
-
 //----- (0000000140170180) ----------------------------------------------------
 __int64            sub_140170180(char *a1)
 {
-  int v1; // eax
-  FILE *v2; // rdi
-  int v3; // esi
-  int v4; // eax
-  char *v5; // rax
-  __int64 (           *v11)(); // [rsp+50h] [rbp-B0h]
+  int v1;
+  FILE *v2;
+  int v3;
+  int v4;
+  char *v5;
+  __int64 (           *v11)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140170180[288];
 #define v7 (*(__int64 (*))(void *)(sr_frame_140170180 + 0)) /* [rsp+0h] */
@@ -18949,7 +18613,7 @@ __int64            sub_140170180(char *a1)
     v21 = v5;
     sub_1401643B0((__int64)v9);
     sub_14020C4A8((__int64)v2, v3, 0);
-    sub_14020B9E8((__int64)v2);
+    crt_fclose((__int64)v2);
   }
   else
   {
@@ -18973,17 +18637,13 @@ __int64            sub_140170180(char *a1)
 #undef v21
 #undef v22
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401702F0) ----------------------------------------------------
 __int64            sub_1401702F0(__int128 *a1, __int64 a2)
 {
-  __int128 v2; // xmm1
-  __int64 v3; // xmm0_8
-  int v4; // eax
-  char *v5; // rax
+  __int128 v2;
+  __int64 v3;
+  int v4;
+  char *v5;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401702F0[272];
 #define v7 (*(__int64 (*))(void *)(sr_frame_1401702F0 + 0)) /* [rsp+0h] */
@@ -19046,14 +18706,13 @@ __int64            sub_1401702F0(__int128 *a1, __int64 a2)
 #undef v20
 #undef v21
 
-
 //----- (00000001401703D0) ----------------------------------------------------
 __int64            sub_1401703D0(FILE *a1)
 {
-  int v2; // esi
-  int v3; // eax
-  char *v4; // rax
-  __int64 (           *v9)(); // [rsp+40h] [rbp-C0h]
+  int v2;
+  int v3;
+  char *v4;
+  __int64 (           *v9)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401703D0[272];
 #define v6 (*(__int64 (*))(void *)(sr_frame_1401703D0 + 0)) /* [rsp+0h] */
@@ -19115,9 +18774,6 @@ __int64            sub_1401703D0(FILE *a1)
 #undef v19
 #undef v20
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-
 //----- (00000001401704E0) ----------------------------------------------------
 __int64            sub_1401704E0(__int64 a1, int a2)
 {
@@ -19154,14 +18810,13 @@ __int64            sub_1401704E0(__int64 a1, int a2)
 #undef v11
 #undef v12
 
-
 //----- (0000000140170550) ----------------------------------------------------
 __int64            sub_140170550(char *a1)
 {
-  int v1; // eax
-  FILE *v2; // rdi
-  unsigned int v3; // ebx
-  FILE *Stream; // [rsp+38h] [rbp+10h] BYREF
+  int v1;
+  FILE *v2;
+  unsigned int v3;
+  FILE *Stream;
 
   v1 = sub_14020B8E4((__int64 *)&Stream, a1, "rb");
   v2 = Stream;
@@ -19171,25 +18826,24 @@ __int64            sub_140170550(char *a1)
   if ( !v2 )
     return 0;
   v3 = sub_1401707E0(v2);
-  sub_14020B9E8((__int64)v2);
+  crt_fclose((__int64)v2);
   return v3;
 }
-
 
 //----- (00000001401705B0) ----------------------------------------------------
 __int64            sub_1401705B0(__int128 *a1, __int64 a2)
 {
-  __int128 v2; // xmm1
-  __int64 v3; // xmm0_8
-  int v4; // eax
-  char *v5; // rdx
-  char *v6; // r8
-       char *v7; // rbx
-  int v8; // eax
-  char *v9; // r8
-       char *v10; // rbx
-  char *v11; // r9
-  int v12; // eax
+  __int128 v2;
+  __int64 v3;
+  int v4;
+  char *v5;
+  char *v6;
+       char *v7;
+  int v8;
+  char *v9;
+       char *v10;
+  char *v11;
+  int v12;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401705B0[272];
 #define v14 (*(__int64 (*))(void *)(sr_frame_1401705B0 + 0)) /* [rsp+0h] */
@@ -19338,21 +18992,20 @@ __int64            sub_1401705B0(__int128 *a1, __int64 a2)
 #undef v26
 #undef v27
 
-
 //----- (00000001401707E0) ----------------------------------------------------
 __int64            sub_1401707E0(FILE *a1)
 {
-  int v2; // r14d
-  int v3; // eax
-  char *v4; // rdx
-  char *v5; // r8
-       char *v6; // rbx
-  int v7; // eax
-  char *v8; // r8
-       char *v9; // rbx
-  char *v10; // r9
-  int v11; // eax
-  __int64 (           *v15)(); // [rsp+40h] [rbp-C0h]
+  int v2;
+  int v3;
+  char *v4;
+  char *v5;
+       char *v6;
+  int v7;
+  char *v8;
+       char *v9;
+  char *v10;
+  int v11;
+  __int64 (           *v15)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401707E0[272];
   int sr_matched = 1; /* edi: 0x140170836 mov edi, 1 */
@@ -19510,19 +19163,16 @@ LABEL_26:
 #undef v25
 #undef v26
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-
 //----- (0000000140170A50) ----------------------------------------------------
 __int64            sub_140170A50(unsigned __int8 *a1, int a2)
 {
-  unsigned __int8 *v2; // rdx
-       char *v3; // rbx
-  unsigned __int8 *v4; // r9
-  unsigned __int8 v5; // al
-  unsigned __int8 *v6; // rdx
-       char *v7; // rbx
-  unsigned __int8 v8; // al
+  unsigned __int8 *v2;
+       char *v3;
+  unsigned __int8 *v4;
+  unsigned __int8 v5;
+  unsigned __int8 *v6;
+       char *v7;
+  unsigned __int8 v8;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140170A50[272];
 #define v10 (*(_QWORD (*)[9])(void *)(sr_frame_140170A50 + 0)) /* [rsp+0h] */
@@ -19622,18 +19272,18 @@ __int64 sub_140170C30(char *a1, int *a2, int *a3, unsigned int *a4, unsigned int
   decoded=(__int64)(uintptr_t)sub_140166160((__int64)(uintptr_t)&reader,a2,a3,a4,a5);
   if (decoded)
     sub_14020C4A8(file,(unsigned int)((uintptr_t)reader.current-(uintptr_t)reader.end),1u);
-  sub_14020B9E8(file);
+  crt_fclose(file);
   return decoded;
 }
 
 //----- (0000000140170DC0) ----------------------------------------------------
 __int64            sub_140170DC0(char *a1, int *a2, int *a3, int *a4, unsigned int a5)
 {
-  int v8; // eax
-  __int64 v9; // rbx
-  int v10; // eax
-  char *v11; // rax
-  __int64 (           *v17)(); // [rsp+60h] [rbp-A0h]
+  int v8;
+  __int64 v9;
+  int v10;
+  char *v11;
+  __int64 (           *v17)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140170DC0[304];
 #define v13 (*(__int64 (*))(void *)(sr_frame_140170DC0 + 0)) /* [rsp+0h] */
@@ -19685,7 +19335,7 @@ __int64            sub_140170DC0(char *a1, int *a2, int *a3, int *a4, unsigned i
     v27 = v11;
     if ( sub_140165FD0((__int64)v15, a2, a3, a4, a5) )
       sub_14020C4A8(v9, (_DWORD)v24 - (_DWORD)v25, 1u);
-    sub_14020B9E8(v9);
+    crt_fclose(v9);
   }
   else
   {
@@ -19709,17 +19359,13 @@ __int64            sub_140170DC0(char *a1, int *a2, int *a3, int *a4, unsigned i
 #undef v27
 #undef v28
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140170F50) ----------------------------------------------------
 __int64            sub_140170F50(__int128 *a1, __int64 a2, int *a3, int *a4, int *a5, unsigned int a6)
 {
-  __int128 v6; // xmm1
-  __int64 v7; // xmm0_8
-  int v10; // eax
-  char *v11; // rax
+  __int128 v6;
+  __int64 v7;
+  int v10;
+  char *v11;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140170F50[288];
 #define v13 (*(__int64 (*))(void *)(sr_frame_140170F50 + 0)) /* [rsp+0h] */
@@ -19782,7 +19428,6 @@ __int64            sub_140170F50(__int128 *a1, __int64 a2, int *a3, int *a4, int
 #undef v26
 #undef v27
 
-
 //----- (0000000140171060) ----------------------------------------------------
 __int64            sub_140171060(__int64 a1, int a2, int *a3, int *a4, int *a5, unsigned int a6)
 {
@@ -19819,14 +19464,13 @@ __int64            sub_140171060(__int64 a1, int a2, int *a3, int *a4, int *a5, 
 #undef v15
 #undef v16
 
-
 //----- (0000000140171100) ----------------------------------------------------
 __int64            sub_140171100(__int128 *a1, __int64 a2, int *a3, int *a4, unsigned int *a5, unsigned int a6)
 {
-  __int128 v6; // xmm1
-  __int64 v7; // xmm0_8
-  int v10; // eax
-  char *v11; // rax
+  __int128 v6;
+  __int64 v7;
+  int v10;
+  char *v11;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171100[288];
 #define v13 (*(__int64 (*))(void *)(sr_frame_140171100 + 0)) /* [rsp+0h] */
@@ -19889,13 +19533,12 @@ __int64            sub_140171100(__int128 *a1, __int64 a2, int *a3, int *a4, uns
 #undef v26
 #undef v27
 
-
 //----- (0000000140171210) ----------------------------------------------------
 __int64            sub_140171210(__int64 a1, int *a2, int *a3, unsigned int *a4, unsigned int a5)
 {
-  int v9; // eax
-  char *v10; // rax
-  __int64 (           *v15)(); // [rsp+50h] [rbp-B0h]
+  int v9;
+  char *v10;
+  __int64 (           *v15)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171210[288];
 #define v12 (*(__int64 (*))(void *)(sr_frame_140171210 + 0)) /* [rsp+0h] */
@@ -19956,15 +19599,12 @@ __int64            sub_140171210(__int64 a1, int *a2, int *a3, unsigned int *a4,
 #undef v25
 #undef v26
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-
 //----- (0000000140171340) ----------------------------------------------------
 __int64            sub_140171340(__int64 a1, int *a2, int *a3, int *a4, unsigned int a5)
 {
-  int v9; // eax
-  char *v10; // rax
-  __int64 (           *v15)(); // [rsp+50h] [rbp-B0h]
+  int v9;
+  char *v10;
+  __int64 (           *v15)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171340[288];
 #define v12 (*(__int64 (*))(void *)(sr_frame_140171340 + 0)) /* [rsp+0h] */
@@ -20025,9 +19665,6 @@ __int64            sub_140171340(__int64 a1, int *a2, int *a3, int *a4, unsigned
 #undef v25
 #undef v26
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-
 //----- (0000000140171470) ----------------------------------------------------
 __int64            sub_140171470(__int64 a1, int a2, int *a3, int *a4, unsigned int *a5, unsigned int a6)
 {
@@ -20064,7 +19701,6 @@ __int64            sub_140171470(__int64 a1, int a2, int *a3, int *a4, unsigned 
 #undef v15
 #undef v16
 
-
 //----- (0000000140171510) ----------------------------------------------------
 __int64            sub_140171510(
         __int64 a1,
@@ -20076,17 +19712,17 @@ __int64            sub_140171510(
         int *a7,
         unsigned int a8)
 {
-  __int64 v9; // r15
-  __int64 v10; // rax
-  unsigned int v11; // eax
-  int v12; // r14d
-  int v13; // eax
-  int v14; // esi
-  __m128i *v15; // rbx
-  int v16; // ebp
-  int v17; // eax
-  __int64 v18; // rdi
-  __int64 v19; // r12
+  __int64 v9;
+  __int64 v10;
+  unsigned int v11;
+  int v12;
+  int v13;
+  int v14;
+  __m128i *v15;
+  int v16;
+  int v17;
+  __int64 v18;
+  __int64 v19;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171510[304];
 #define v21 (*(_QWORD (*)[6])(void *)(sr_frame_140171510 + 0)) /* [rsp+0h] */
@@ -20152,16 +19788,13 @@ __int64            sub_140171510(
 #undef v30
 #undef v31
 
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980DAC: using guessed type unsigned int;
-
 //----- (0000000140171670) ----------------------------------------------------
 __int64            sub_140171670(char *a1, int *a2, int *a3, unsigned int *a4, unsigned int a5)
 {
-  __int64 v8; // rdi
-  int v9; // eax
-  char *v10; // rax
-  __int64 (           *v16)(); // [rsp+60h] [rbp-A0h]
+  __int64 v8;
+  int v9;
+  char *v10;
+  __int64 (           *v16)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171670[304];
 #define v12 (*(__int64 (*))(void *)(sr_frame_140171670 + 0)) /* [rsp+0h] */
@@ -20211,7 +19844,7 @@ __int64            sub_140171670(char *a1, int *a2, int *a3, unsigned int *a4, u
     v24 = v10;
     v26 = v10;
     sub_140166D20((__int64)v14, a2, a3, a4, a5);
-    sub_14020B9E8(v8);
+    crt_fclose(v8);
   }
   return 0; /* the function has no caller */
 }
@@ -20231,17 +19864,13 @@ __int64            sub_140171670(char *a1, int *a2, int *a3, unsigned int *a4, u
 #undef v26
 #undef v27
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401717D0) ----------------------------------------------------
 __int64            sub_1401717D0(__int128 *a1, __int64 a2, int *a3, int *a4, unsigned int *a5, unsigned int a6)
 {
-  __int128 v6; // xmm1
-  __int64 v7; // xmm0_8
-  int v10; // eax
-  char *v11; // rax
+  __int128 v6;
+  __int64 v7;
+  int v10;
+  char *v11;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401717D0[288];
 #define v13 (*(__int64 (*))(void *)(sr_frame_1401717D0 + 0)) /* [rsp+0h] */
@@ -20304,13 +19933,12 @@ __int64            sub_1401717D0(__int128 *a1, __int64 a2, int *a3, int *a4, uns
 #undef v26
 #undef v27
 
-
 //----- (00000001401718E0) ----------------------------------------------------
 __int64            sub_1401718E0(__int64 a1, int *a2, int *a3, unsigned int *a4, unsigned int a5)
 {
-  int v8; // eax
-  char *v9; // rax
-  __int64 (           *v14)(); // [rsp+50h] [rbp-B0h]
+  int v8;
+  char *v9;
+  __int64 (           *v14)();
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401718E0[288];
 #define v11 (*(__int64 (*))(void *)(sr_frame_1401718E0 + 0)) /* [rsp+0h] */
@@ -20369,9 +19997,6 @@ __int64            sub_1401718E0(__int64 a1, int *a2, int *a3, unsigned int *a4,
 #undef v24
 #undef v25
 
-// 140301820: using guessed type __int64 (__fastcall *off_140301820)(_QWORD, _QWORD, _QWORD);
-// 140301830: using guessed type __int64 (__fastcall *off_140301830)();
-
 //----- (00000001401719E0) ----------------------------------------------------
 __int64            sub_1401719E0(__int64 a1, int a2, int *a3, int *a4, unsigned int *a5, unsigned int a6)
 {
@@ -20408,13 +20033,12 @@ __int64            sub_1401719E0(__int64 a1, int a2, int *a3, int *a4, unsigned 
 #undef v15
 #undef v16
 
-
 //----- (0000000140171AD0) ----------------------------------------------------
 __int64            sub_140171AD0(char *a1, int a2, int a3, int a4, __int64 a5)
 {
-  int v8; // eax
-  __int64 v9; // rcx
-  unsigned __int64 (           *v13)(__int64, __int64, int); // [rsp+40h] [rbp-88h] BYREF
+  int v8;
+  __int64 v9;
+  unsigned __int64 (           *v13)(__int64, __int64, int);
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171AD0[176];
 #define v11 (*(__int64 (*))(void *)(sr_frame_140171AD0 + 0)) /* [rsp+0h] */
@@ -20441,7 +20065,7 @@ __int64            sub_140171AD0(char *a1, int a2, int a3, int a4, __int64 a5)
   if ( v9 )
   {
     sub_140171BB0((__int64)&v13, a2, a3, a4, a5);
-    sub_14020B9E8(v14);
+    crt_fclose(v14);
   }
   return 0; /* the function has no caller */
 }
@@ -20454,7 +20078,6 @@ __int64            sub_140171AD0(char *a1, int a2, int a3, int a4, __int64 a5)
 #undef v18
 #undef v19
 #undef v20
-
 
 //----- (0000000140171BB0) ----------------------------------------------------
 __int64            sub_140171BB0(__int64 a1, int a2, int a3, int a4, __int64 a5)
@@ -20514,7 +20137,6 @@ __int64            sub_140171BB0(__int64 a1, int a2, int a3, int a4, __int64 a5)
 #undef v13
 #undef v14
 
-
 //----- (0000000140171C80) ----------------------------------------------------
 __int64            sub_140171C80(__int64 a1, __int64 a2, int a3, int a4, int a5, __int64 a6)
 {
@@ -20547,14 +20169,13 @@ __int64            sub_140171C80(__int64 a1, __int64 a2, int a3, int a4, int a5,
 #undef v13
 #undef v14
 
-
 //----- (0000000140171D10) ----------------------------------------------------
 __int64            sub_140171D10(char *a1, int a2, int a3, int a4, __int64 a5)
 {
-  int v8; // eax
-  __int64 v9; // rcx
-  unsigned int v10; // ebx
-  unsigned __int64 (           *v13)(__int64, __int64, int); // [rsp+40h] [rbp-68h] BYREF
+  int v8;
+  __int64 v9;
+  unsigned int v10;
+  unsigned __int64 (           *v13)(__int64, __int64, int);
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171D10[112];
 #define v12 (*(__int64 (*))(void *)(sr_frame_140171D10 + 0)) /* [rsp+30h] */
@@ -20579,7 +20200,7 @@ __int64            sub_140171D10(char *a1, int a2, int a3, int a4, __int64 a5)
   if ( !v9 )
     return 0;
   v10 = sub_140171DD0((__int64)&v13, a2, a3, a4, a5);
-  sub_14020B9E8(v14);
+  crt_fclose(v14);
   return v10;
 }
 #undef v12
@@ -20590,15 +20211,14 @@ __int64            sub_140171D10(char *a1, int a2, int a3, int a4, __int64 a5)
 #undef v18
 #undef v19
 
-
 //----- (0000000140171DD0) ----------------------------------------------------
 __int64            sub_140171DD0(__int64 a1, int a2, int a3, int a4, __int64 a5)
 {
-  _BYTE *v9; // r12
-  unsigned int v10; // eax
-  int v11; // ebx
-  int v12; // edi
-  int v13; // eax
+  _BYTE *v9;
+  unsigned int v10;
+  int v11;
+  int v12;
+  int v13;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171DD0[272];
 #define v15 (*(__int64 (*))(void *)(sr_frame_140171DD0 + 0)) /* [rsp+0h] */
@@ -20635,9 +20255,6 @@ __int64            sub_140171DD0(__int64 a1, int a2, int a3, int a4, __int64 a5)
 #undef v17
 #undef v18
 
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (0000000140171F50) ----------------------------------------------------
 __int64            sub_140171F50(__int64 a1, __int64 a2, int a3, int a4, int a5, __int64 a6)
 {
@@ -20666,14 +20283,13 @@ __int64            sub_140171F50(__int64 a1, __int64 a2, int a3, int a4, int a5,
 #undef v11
 #undef v12
 
-
 //----- (0000000140171FC0) ----------------------------------------------------
 __int64            sub_140171FC0(char *a1, int a2, int a3, int a4, __int64 a5, int a6)
 {
-  int v9; // eax
-  __int64 v10; // rcx
-  unsigned int v11; // ebx
-  unsigned __int64 (           *v14)(__int64, __int64, int); // [rsp+40h] [rbp-68h] BYREF
+  int v9;
+  __int64 v10;
+  unsigned int v11;
+  unsigned __int64 (           *v14)(__int64, __int64, int);
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140171FC0[112];
 #define v13 (*(__int64 (*))(void *)(sr_frame_140171FC0 + 0)) /* [rsp+30h] */
@@ -20698,7 +20314,7 @@ __int64            sub_140171FC0(char *a1, int a2, int a3, int a4, __int64 a5, i
   if ( !v10 )
     return 0;
   v11 = sub_140172080((__int64)&v14, a2, a3, a4, a5, a6);
-  sub_14020B9E8(v15);
+  crt_fclose(v15);
   return v11;
 }
 #undef v13
@@ -20709,191 +20325,190 @@ __int64            sub_140171FC0(char *a1, int a2, int a3, int a4, __int64 a5, i
 #undef v19
 #undef v20
 
-
 //----- (0000000140172080) ----------------------------------------------------
 __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5, int a6)
 {
-  __int16 v7; // r11
-  int v10; // r12d
-  int v11; // r9d
-  int v12; // ecx
-  __int64 i; // r8
-  int v14; // edx
-  __int64 v15; // r10
-  int v16; // ecx
-  int v17; // edx
-  float *v18; // r8
-  __int64 v19; // rdx
-  float v20; // xmm2_4
-  __int64 v21; // rcx
-  unsigned int v22; // eax
-  float v23; // xmm1_4
-  float v24; // xmm0_4
-  __m128i v25; // xmm1
-  unsigned int v26; // eax
-  __int64 v27; // rcx
-  float v28; // xmm0_4
-  __m128i v29; // xmm1
-  unsigned int v30; // eax
-  float v31; // xmm0_4
-  __m128i v32; // xmm1
-  unsigned int v33; // eax
-  __int64 v34; // rcx
-  float v35; // xmm0_4
-  __m128i v36; // xmm1
-  unsigned int v37; // eax
-  float v38; // xmm0_4
-  __m128i v39; // xmm1
-  unsigned int v40; // eax
-  __int64 v41; // rcx
-  float v42; // xmm0_4
-  __m128i v43; // xmm1
-  unsigned int v44; // eax
-  float v45; // xmm0_4
-  __m128i v46; // xmm1
-  unsigned int v47; // eax
-  __int64 v48; // rcx
-  float v49; // xmm0_4
-  __m128i v50; // xmm1
-  int v51; // eax
-  float v52; // xmm0_4
-  unsigned int v53; // eax
-  __int64 v54; // rcx
-  float v55; // xmm0_4
-  __m128i v56; // xmm1
-  unsigned int v57; // eax
-  float v58; // xmm0_4
-  __m128i v59; // xmm1
-  unsigned int v60; // eax
-  __int64 v61; // rcx
-  float v62; // xmm0_4
-  __m128i v63; // xmm1
-  unsigned int v64; // eax
-  float v65; // xmm0_4
-  __m128i v66; // xmm1
-  int v67; // eax
-  char v68; // al
-  __int64 v69; // rcx
-  __int64 v70; // rcx
-  __int64 v71; // rcx
-  __int64 v72; // rcx
-  int v73; // ecx
-  __int64 v74; // rdi
-  __int64 v75; // rsi
-  int v76; // r8d
-  __int64 v77; // rdi
-  int k; // r13d
-  __int64 v79; // rdx
-  int v80; // r12d
-  int v81; // r10d
-  int v82; // r8d
-  int v83; // r10d
-  int v84; // r11d
-  int v85; // r13d
-  int v86; // r9d
-  int v87; // ecx
-  __int64 v88; // rcx
-  float v89; // xmm5_4
-  __m128i v90; // xmm3
-  unsigned int v91; // eax
-  int v92; // ecx
-  float v93; // xmm3_4
-  __m128i v94; // xmm4
-  float v95; // xmm4_4
-  __int64 v96; // rcx
-  int v97; // eax
-  float v98; // xmm4_4
-  float v99; // xmm0_4
-  int v100; // eax
-  float v101; // xmm5_4
-  float v102; // xmm3_4
-  __m128i v103; // xmm4
-  int v104; // eax
-  float v105; // xmm4_4
-  __int64 v106; // rcx
-  int v107; // eax
-  float v108; // xmm3_4
-  float v109; // xmm4_4
-  int v110; // eax
-  float v111; // xmm5_4
-  float v112; // xmm3_4
-  float v113; // xmm4_4
-  __int64 v114; // r12
-  int v115; // eax
-  int v116; // eax
-  int v117; // eax
-  int v118; // eax
-  __int64 v119; // rcx
-  __int64 v120; // rax
-  float v121; // xmm2_4
-  float v122; // xmm0_4
-  float v123; // xmm1_4
-  float v124; // xmm2_4
-  float v125; // xmm1_4
-  float v126; // xmm2_4
-  float v127; // xmm1_4
-  float v128; // xmm2_4
-  float v129; // xmm1_4
-  float v130; // xmm2_4
-  float v131; // xmm1_4
-  float v132; // xmm2_4
-  float v133; // xmm0_4
-  float v134; // xmm2_4
-  float v135; // xmm1_4
-  float v136; // xmm0_4
-  float v137; // xmm2_4
-  float v138; // xmm0_4
-  float v139; // xmm1_4
-  float v140; // xmm1_4
-  float v141; // xmm2_4
-  float v142; // xmm0_4
-  int v143; // eax
-  int j; // r13d
-  __int64 v145; // rdx
-  int v146; // r12d
-  int v147; // r10d
-  int v148; // r8d
-  int v149; // r10d
-  int v150; // r11d
-  int v151; // r13d
-  int v152; // r9d
-  int v153; // ecx
-  __int64 v154; // rcx
-  float v155; // xmm5_4
-  __m128i v156; // xmm3
-  unsigned int v157; // eax
-  int v158; // ecx
-  float v159; // xmm3_4
-  __m128i v160; // xmm4
-  float v161; // xmm4_4
-  __int64 v162; // rcx
-  int v163; // eax
-  float v164; // xmm4_4
-  float v165; // xmm0_4
-  int v166; // eax
-  float v167; // xmm5_4
-  float v168; // xmm3_4
-  __m128i v169; // xmm4
-  int v170; // eax
-  float v171; // xmm4_4
-  __int64 v172; // rcx
-  int v173; // eax
-  float v174; // xmm3_4
-  float v175; // xmm4_4
-  int v176; // eax
-  float v177; // xmm5_4
-  float v178; // xmm3_4
-  float v179; // xmm4_4
-  __int64 v180; // r12
-  int v181; // eax
-  __int64 v182; // r14
-  int v183; // edi
-  unsigned __int64 v184; // rsi
-  __int64 v185; // rcx
-  __int64 v186; // rcx
-  __int64 v187; // rcx
-  __int64 v188; // rcx
-  __int64 v190; // [rsp-20h] [rbp-11F0h] BYREF
+  __int16 v7;
+  int v10;
+  int v11;
+  int v12;
+  __int64 i;
+  int v14;
+  __int64 v15;
+  int v16;
+  int v17;
+  float *v18;
+  __int64 v19;
+  float v20;
+  __int64 v21;
+  unsigned int v22;
+  float v23;
+  float v24;
+  __m128i v25;
+  unsigned int v26;
+  __int64 v27;
+  float v28;
+  __m128i v29;
+  unsigned int v30;
+  float v31;
+  __m128i v32;
+  unsigned int v33;
+  __int64 v34;
+  float v35;
+  __m128i v36;
+  unsigned int v37;
+  float v38;
+  __m128i v39;
+  unsigned int v40;
+  __int64 v41;
+  float v42;
+  __m128i v43;
+  unsigned int v44;
+  float v45;
+  __m128i v46;
+  unsigned int v47;
+  __int64 v48;
+  float v49;
+  __m128i v50;
+  int v51;
+  float v52;
+  unsigned int v53;
+  __int64 v54;
+  float v55;
+  __m128i v56;
+  unsigned int v57;
+  float v58;
+  __m128i v59;
+  unsigned int v60;
+  __int64 v61;
+  float v62;
+  __m128i v63;
+  unsigned int v64;
+  float v65;
+  __m128i v66;
+  int v67;
+  char v68;
+  __int64 v69;
+  __int64 v70;
+  __int64 v71;
+  __int64 v72;
+  int v73;
+  __int64 v74;
+  __int64 v75;
+  int v76;
+  __int64 v77;
+  int k;
+  __int64 v79;
+  int v80;
+  int v81;
+  int v82;
+  int v83;
+  int v84;
+  int v85;
+  int v86;
+  int v87;
+  __int64 v88;
+  float v89;
+  __m128i v90;
+  unsigned int v91;
+  int v92;
+  float v93;
+  __m128i v94;
+  float v95;
+  __int64 v96;
+  int v97;
+  float v98;
+  float v99;
+  int v100;
+  float v101;
+  float v102;
+  __m128i v103;
+  int v104;
+  float v105;
+  __int64 v106;
+  int v107;
+  float v108;
+  float v109;
+  int v110;
+  float v111;
+  float v112;
+  float v113;
+  __int64 v114;
+  int v115;
+  int v116;
+  int v117;
+  int v118;
+  __int64 v119;
+  __int64 v120;
+  float v121;
+  float v122;
+  float v123;
+  float v124;
+  float v125;
+  float v126;
+  float v127;
+  float v128;
+  float v129;
+  float v130;
+  float v131;
+  float v132;
+  float v133;
+  float v134;
+  float v135;
+  float v136;
+  float v137;
+  float v138;
+  float v139;
+  float v140;
+  float v141;
+  float v142;
+  int v143;
+  int j;
+  __int64 v145;
+  int v146;
+  int v147;
+  int v148;
+  int v149;
+  int v150;
+  int v151;
+  int v152;
+  int v153;
+  __int64 v154;
+  float v155;
+  __m128i v156;
+  unsigned int v157;
+  int v158;
+  float v159;
+  __m128i v160;
+  float v161;
+  __int64 v162;
+  int v163;
+  float v164;
+  float v165;
+  int v166;
+  float v167;
+  float v168;
+  __m128i v169;
+  int v170;
+  float v171;
+  __int64 v172;
+  int v173;
+  float v174;
+  float v175;
+  int v176;
+  float v177;
+  float v178;
+  float v179;
+  __int64 v180;
+  int v181;
+  __int64 v182;
+  int v183;
+  unsigned __int64 v184;
+  __int64 v185;
+  __int64 v186;
+  __int64 v187;
+  __int64 v188;
+  __int64 v190;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140172080[8416];
 #define v191 (*(char (*)[8])(void *)(sr_frame_140172080 + 0)) /* [rsp+30h] */
@@ -20989,69 +20604,69 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
       v21 = byte_14026E780[v19 + 1];
       v22 = (unsigned __int8)v222[v21];
       v23 = (float)(unsigned __int8)v223[byte_14026E780[v19]];
-      *(float *)&v204[v19] = 0.3535533845424652 / (float)((float)(unsigned __int8)v222[byte_14026E780[v19]] * *v18);
-      v24 = 0.3535533845424652 / (float)(v23 * v20);
+      *(float *)&v204[v19] = 0.35355338 / (float)((float)(unsigned __int8)v222[byte_14026E780[v19]] * *v18);
+      v24 = 0.35355338 / (float)(v23 * v20);
       v25 = _mm_cvtsi32_si128(v22);
       v26 = (unsigned __int8)v223[v21];
       v27 = byte_14026E780[v19 + 2];
       *(float *)&v205[v19] = v24;
-      v28 = 0.2548977732658386 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v25), f32)[0] * v20);
+      v28 = 0.25489777 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v25), f32)[0] * v20);
       v29 = _mm_cvtsi32_si128(v26);
       v30 = (unsigned __int8)v222[v27];
       *(float *)&v204[v19 + 1] = v28;
-      v31 = 0.2548977732658386 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v29), f32)[0] * v20);
+      v31 = 0.25489777 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v29), f32)[0] * v20);
       v32 = _mm_cvtsi32_si128(v30);
       v33 = (unsigned __int8)v223[v27];
       v34 = byte_14026E780[v19 + 3];
       *(float *)&v205[v19 + 1] = v31;
-      v35 = 0.27059805393218994 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v32), f32)[0] * v20);
+      v35 = 0.27059805 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v32), f32)[0] * v20);
       v36 = _mm_cvtsi32_si128(v33);
       v37 = (unsigned __int8)v222[v34];
       *(float *)&v204[v19 + 2] = v35;
-      v38 = 0.27059805393218994 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v36), f32)[0] * v20);
+      v38 = 0.27059805 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v36), f32)[0] * v20);
       v39 = _mm_cvtsi32_si128(v37);
       v40 = (unsigned __int8)v223[v34];
       v41 = byte_14026E780[v19 + 4];
       *(float *)&v205[v19 + 2] = v38;
-      v42 = 0.3006724715232849 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v39), f32)[0] * v20);
+      v42 = 0.30067247 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v39), f32)[0] * v20);
       v43 = _mm_cvtsi32_si128(v40);
       v44 = (unsigned __int8)v222[v41];
       *(float *)&v204[v19 + 3] = v42;
-      v45 = 0.3006724715232849 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v43), f32)[0] * v20);
+      v45 = 0.30067247 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v43), f32)[0] * v20);
       v46 = _mm_cvtsi32_si128(v44);
       v47 = (unsigned __int8)v223[v41];
       v48 = byte_14026E780[v19 + 5];
       *(float *)&v205[v19 + 3] = v45;
-      v49 = 0.3535533845424652 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v46), f32)[0] * v20);
+      v49 = 0.35355338 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v46), f32)[0] * v20);
       v50 = _mm_cvtsi32_si128(v47);
       v51 = (unsigned __int8)v222[v48];
       *(float *)&v204[v19 + 4] = v49;
-      v52 = 0.3535533845424652 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v50), f32)[0] * v20);
+      v52 = 0.35355338 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v50), f32)[0] * v20);
       *(float *)SR_VEC_LANES(128, v50, i32) = (float)v51;
       *(float *)&v205[v19 + 4] = v52;
       v53 = (unsigned __int8)v223[v48];
       v54 = byte_14026E780[v19 + 6];
       v19 += 8;
-      v55 = 0.44998809695243835 / (float)(*(float *)SR_VEC_LANES(128, v50, i32) * v20);
+      v55 = 0.4499881 / (float)(*(float *)SR_VEC_LANES(128, v50, i32) * v20);
       ++v18;
       v56 = _mm_cvtsi32_si128(v53);
       v57 = (unsigned __int8)v222[v54];
       *(float *)&v203[v19 + 61] = v55;
-      v58 = 0.44998809695243835 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v56), f32)[0] * v20);
+      v58 = 0.4499881 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v56), f32)[0] * v20);
       v59 = _mm_cvtsi32_si128(v57);
       v60 = (unsigned __int8)v223[v54];
       v61 = (unsigned __int8)byte_14026E768[v19 + 23];
       *(float *)&v204[v19 + 61] = v58;
-      v62 = 0.6532815098762512 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v59), f32)[0] * v20);
+      v62 = 0.65328151 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v59), f32)[0] * v20);
       v63 = _mm_cvtsi32_si128(v60);
       v64 = (unsigned __int8)v222[v61];
       *(float *)&v203[v19 + 62] = v62;
-      v65 = 0.6532815098762512 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v63), f32)[0] * v20);
+      v65 = 0.65328151 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v63), f32)[0] * v20);
       v66 = _mm_cvtsi32_si128(v64);
       v67 = (unsigned __int8)v223[v61];
       *(float *)&v204[v19 + 62] = v65;
-      *(float *)&v203[v19 + 63] = 1.2814576625823975 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v66), f32)[0] * v20);
-      *(float *)&v204[v19 + 63] = 1.2814576625823975 / (float)((float)v67 * v20);
+      *(float *)&v203[v19 + 63] = 1.2814577 / (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v66), f32)[0] * v20);
+      *(float *)&v204[v19 + 63] = 1.2814577 / (float)((float)v67 * v20);
     }
     while ( (__int64)v18 < (__int64)"JFIF" );
     v213 = HIBYTE(v7);
@@ -21157,23 +20772,23 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
                       v161 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v160), f32)[0];
                       v162 = a4 * (v158 + v149);
                       v163 = *(unsigned __int8 *)(v162 + a5);
-                      *(float *)&v207[v145] = (float)((float)((float)(v159 * 0.5870000123977661) + (float)(v155 * 0.29899999499320984))
-                                                    + (float)(v161 * 0.11400000005960464))
+                      *(float *)&v207[v145] = (float)((float)((float)(v159 * 0.58700001) + (float)(v155 * 0.29899999))
+                                                    + (float)(v161 * 0.114))
                                             - 128.0;
                       *(float *)&v203[v145] = (float)(v161 * 0.5)
-                                            - (float)((float)(v155 * 0.16874000430107117) + (float)(v159 * 0.33125999569892883));
-                      *(float *)&v206[v145] = (float)((float)(v155 * 0.5) - (float)(v159 * 0.4186899960041046))
-                                            - (float)(v161 * 0.08130999654531479);
+                                            - (float)((float)(v155 * 0.16874) + (float)(v159 * 0.33126));
+                      *(float *)&v206[v145] = (float)((float)(v155 * 0.5) - (float)(v159 * 0.41869))
+                                            - (float)(v161 * 0.081309997);
                       v164 = (float)*(unsigned __int8 *)(v162 + v77);
                       v165 = (float)*(unsigned __int8 *)(v162 + v75);
-                      *(float *)&v207[v145 + 1] = (float)((float)((float)(v165 * 0.5870000123977661)
-                                                                + (float)((float)v163 * 0.29899999499320984))
-                                                        + (float)(v164 * 0.11400000005960464))
+                      *(float *)&v207[v145 + 1] = (float)((float)((float)(v165 * 0.58700001)
+                                                                + (float)((float)v163 * 0.29899999))
+                                                        + (float)(v164 * 0.114))
                                                 - 128.0;
                       *(float *)&v203[v145 + 1] = (float)(v164 * 0.5)
-                                                - (float)((float)((float)v163 * 0.16874000430107117) + (float)(v165 * 0.33125999569892883));
-                      *(float *)&v206[v145 + 1] = (float)((float)((float)v163 * 0.5) - (float)(v165 * 0.4186899960041046))
-                                                - (float)(v164 * 0.08130999654531479);
+                                                - (float)((float)((float)v163 * 0.16874) + (float)(v165 * 0.33126));
+                      *(float *)&v206[v145 + 1] = (float)((float)((float)v163 * 0.5) - (float)(v165 * 0.41869))
+                                                - (float)(v164 * 0.081309997);
                       if ( v150 >= a2 )
                       {
                         v166 = v152;
@@ -21194,23 +20809,23 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
                       v150 += 4;
                       v172 = a4 * (v149 + v170);
                       v173 = *(unsigned __int8 *)(v172 + a5);
-                      *(float *)&v207[v145 + 2] = (float)((float)((float)(v168 * 0.5870000123977661) + (float)(v167 * 0.29899999499320984))
-                                                        + (float)(v171 * 0.11400000005960464))
+                      *(float *)&v207[v145 + 2] = (float)((float)((float)(v168 * 0.58700001) + (float)(v167 * 0.29899999))
+                                                        + (float)(v171 * 0.114))
                                                 - 128.0;
                       *(float *)&v203[v145 + 2] = (float)(v171 * 0.5)
-                                                - (float)((float)(v167 * 0.16874000430107117) + (float)(v168 * 0.33125999569892883));
-                      *(float *)&v206[v145 + 2] = (float)((float)(v167 * 0.5) - (float)(v168 * 0.4186899960041046))
-                                                - (float)(v171 * 0.08130999654531479);
+                                                - (float)((float)(v167 * 0.16874) + (float)(v168 * 0.33126));
+                      *(float *)&v206[v145 + 2] = (float)((float)(v167 * 0.5) - (float)(v168 * 0.41869))
+                                                - (float)(v171 * 0.081309997);
                       v174 = (float)*(unsigned __int8 *)(v172 + v75);
                       v175 = (float)*(unsigned __int8 *)(v172 + v77);
-                      *(float *)&v207[v145 + 3] = (float)((float)((float)(v174 * 0.5870000123977661)
-                                                                + (float)((float)v173 * 0.29899999499320984))
-                                                        + (float)(v175 * 0.11400000005960464))
+                      *(float *)&v207[v145 + 3] = (float)((float)((float)(v174 * 0.58700001)
+                                                                + (float)((float)v173 * 0.29899999))
+                                                        + (float)(v175 * 0.114))
                                                 - 128.0;
                       *(float *)&v203[v145 + 3] = (float)(v175 * 0.5)
-                                                - (float)((float)((float)v173 * 0.16874000430107117) + (float)(v174 * 0.33125999569892883));
-                      *(float *)&v206[v145 + 3] = (float)((float)((float)v173 * 0.5) - (float)(v174 * 0.4186899960041046))
-                                                - (float)(v175 * 0.08130999654531479);
+                                                - (float)((float)((float)v173 * 0.16874) + (float)(v174 * 0.33126));
+                      *(float *)&v206[v145 + 3] = (float)((float)((float)v173 * 0.5) - (float)(v174 * 0.41869))
+                                                - (float)(v175 * 0.081309997);
                       v145 += 4;
                     }
                     while ( v148 < v151 );
@@ -21223,13 +20838,13 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
                       v177 = (float)*(unsigned __int8 *)(a4 * (v149 + v176) + a5);
                       v178 = (float)*(unsigned __int8 *)(a4 * (v149 + v176) + v75);
                       v179 = (float)*(unsigned __int8 *)(a4 * (v149 + v176) + v77);
-                      *(float *)&v207[v145] = (float)((float)((float)(v178 * 0.5870000123977661) + (float)(v177 * 0.29899999499320984))
-                                                    + (float)(v179 * 0.11400000005960464))
+                      *(float *)&v207[v145] = (float)((float)((float)(v178 * 0.58700001) + (float)(v177 * 0.29899999))
+                                                    + (float)(v179 * 0.114))
                                             - 128.0;
                       *(float *)&v203[v145] = (float)(v179 * 0.5)
-                                            - (float)((float)(v177 * 0.16874000430107117) + (float)(v178 * 0.33125999569892883));
-                      *(float *)&v206[v145] = (float)((float)(v177 * 0.5) - (float)(v178 * 0.4186899960041046))
-                                            - (float)(v179 * 0.08130999654531479);
+                                            - (float)((float)(v177 * 0.16874) + (float)(v178 * 0.33126));
+                      *(float *)&v206[v145] = (float)((float)(v177 * 0.5) - (float)(v178 * 0.41869))
+                                            - (float)(v179 * 0.081309997);
                     }
                     v73 = v192;
                   }
@@ -21331,22 +20946,22 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
                     v95 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v94), f32)[0];
                     v96 = a4 * (v83 + v92);
                     v97 = *(unsigned __int8 *)(v96 + a5);
-                    *(float *)&v207[v79] = (float)((float)((float)(v89 * 0.29899999499320984) + (float)(v93 * 0.5870000123977661))
-                                                 + (float)(v95 * 0.11400000005960464))
+                    *(float *)&v207[v79] = (float)((float)((float)(v89 * 0.29899999) + (float)(v93 * 0.58700001))
+                                                 + (float)(v95 * 0.114))
                                          - 128.0;
-                    *(float *)&v206[v79] = (float)(v95 * 0.5) - (float)((float)(v89 * 0.16874000430107117) + (float)(v93 * 0.33125999569892883));
-                    *(float *)&v206[v79 + 256] = (float)((float)(v89 * 0.5) - (float)(v93 * 0.4186899960041046))
-                                               - (float)(v95 * 0.08130999654531479);
+                    *(float *)&v206[v79] = (float)(v95 * 0.5) - (float)((float)(v89 * 0.16874) + (float)(v93 * 0.33126));
+                    *(float *)&v206[v79 + 256] = (float)((float)(v89 * 0.5) - (float)(v93 * 0.41869))
+                                               - (float)(v95 * 0.081309997);
                     v98 = (float)*(unsigned __int8 *)(v96 + v77);
                     v99 = (float)*(unsigned __int8 *)(v96 + v75);
-                    *(float *)&v207[v79 + 1] = (float)((float)((float)((float)v97 * 0.29899999499320984)
-                                                             + (float)(v99 * 0.5870000123977661))
-                                                     + (float)(v98 * 0.11400000005960464))
+                    *(float *)&v207[v79 + 1] = (float)((float)((float)((float)v97 * 0.29899999)
+                                                             + (float)(v99 * 0.58700001))
+                                                     + (float)(v98 * 0.114))
                                              - 128.0;
                     *(float *)&v206[v79 + 1] = (float)(v98 * 0.5)
-                                             - (float)((float)((float)v97 * 0.16874000430107117) + (float)(v99 * 0.33125999569892883));
-                    *(float *)&v206[v79 + 257] = (float)((float)((float)v97 * 0.5) - (float)(v99 * 0.4186899960041046))
-                                               - (float)(v98 * 0.08130999654531479);
+                                             - (float)((float)((float)v97 * 0.16874) + (float)(v99 * 0.33126));
+                    *(float *)&v206[v79 + 257] = (float)((float)((float)v97 * 0.5) - (float)(v99 * 0.41869))
+                                               - (float)(v98 * 0.081309997);
                     if ( v84 >= a2 )
                     {
                       v100 = v86;
@@ -21367,23 +20982,23 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
                     v84 += 4;
                     v106 = a4 * (v83 + v104);
                     v107 = *(unsigned __int8 *)(v106 + a5);
-                    *(float *)&v207[v79 + 2] = (float)((float)((float)(v101 * 0.29899999499320984) + (float)(v102 * 0.5870000123977661))
-                                                     + (float)(v105 * 0.11400000005960464))
+                    *(float *)&v207[v79 + 2] = (float)((float)((float)(v101 * 0.29899999) + (float)(v102 * 0.58700001))
+                                                     + (float)(v105 * 0.114))
                                              - 128.0;
                     *(float *)&v206[v79 + 2] = (float)(v105 * 0.5)
-                                             - (float)((float)(v101 * 0.16874000430107117) + (float)(v102 * 0.33125999569892883));
-                    *(float *)&v206[v79 + 258] = (float)((float)(v101 * 0.5) - (float)(v102 * 0.4186899960041046))
-                                               - (float)(v105 * 0.08130999654531479);
+                                             - (float)((float)(v101 * 0.16874) + (float)(v102 * 0.33126));
+                    *(float *)&v206[v79 + 258] = (float)((float)(v101 * 0.5) - (float)(v102 * 0.41869))
+                                               - (float)(v105 * 0.081309997);
                     v108 = (float)*(unsigned __int8 *)(v106 + v75);
                     v109 = (float)*(unsigned __int8 *)(v106 + v77);
-                    *(float *)&v207[v79 + 3] = (float)((float)((float)((float)v107 * 0.29899999499320984)
-                                                             + (float)(v108 * 0.5870000123977661))
-                                                     + (float)(v109 * 0.11400000005960464))
+                    *(float *)&v207[v79 + 3] = (float)((float)((float)((float)v107 * 0.29899999)
+                                                             + (float)(v108 * 0.58700001))
+                                                     + (float)(v109 * 0.114))
                                              - 128.0;
                     *(float *)&v206[v79 + 3] = (float)(v109 * 0.5)
-                                             - (float)((float)((float)v107 * 0.16874000430107117) + (float)(v108 * 0.33125999569892883));
-                    *(float *)&v206[v79 + 259] = (float)((float)((float)v107 * 0.5) - (float)(v108 * 0.4186899960041046))
-                                               - (float)(v109 * 0.08130999654531479);
+                                             - (float)((float)((float)v107 * 0.16874) + (float)(v108 * 0.33126));
+                    *(float *)&v206[v79 + 259] = (float)((float)((float)v107 * 0.5) - (float)(v108 * 0.41869))
+                                               - (float)(v109 * 0.081309997);
                     v79 += 4;
                   }
                   while ( v82 < v85 );
@@ -21396,13 +21011,13 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
                     v111 = (float)*(unsigned __int8 *)(a4 * (v83 + v110) + a5);
                     v112 = (float)*(unsigned __int8 *)(a4 * (v83 + v110) + v75);
                     v113 = (float)*(unsigned __int8 *)(a4 * (v83 + v110) + v77);
-                    *(float *)&v207[v79] = (float)((float)((float)(v111 * 0.29899999499320984) + (float)(v112 * 0.5870000123977661))
-                                                 + (float)(v113 * 0.11400000005960464))
+                    *(float *)&v207[v79] = (float)((float)((float)(v111 * 0.29899999) + (float)(v112 * 0.58700001))
+                                                 + (float)(v113 * 0.114))
                                          - 128.0;
                     *(float *)&v206[v79] = (float)(v113 * 0.5)
-                                         - (float)((float)(v111 * 0.16874000430107117) + (float)(v112 * 0.33125999569892883));
-                    *(float *)&v206[v79 + 256] = (float)((float)(v111 * 0.5) - (float)(v112 * 0.4186899960041046))
-                                               - (float)(v113 * 0.08130999654531479);
+                                         - (float)((float)(v111 * 0.16874) + (float)(v112 * 0.33126));
+                    *(float *)&v206[v79 + 256] = (float)((float)(v111 * 0.5) - (float)(v112 * 0.41869))
+                                               - (float)(v113 * 0.081309997);
                   }
                   v73 = v192;
                 }
@@ -21608,16 +21223,6 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
 #undef v223
 #undef v224
 
-// 14026E768: using guessed type _BYTE byte_14026E768[24];
-// 14026E780: using guessed type unsigned __int8 byte_14026E780[65];
-// 14026E9D0: using guessed type unsigned __int16 word_14026E9D0[512];
-// 14026EDD0: using guessed type unsigned __int16 word_14026EDD0[512];
-// 14026F1D0: using guessed type _WORD word_14026F1D0[512];
-// 14026F5D0: using guessed type _WORD word_14026F5D0[382];
-// 14026F9D0: using guessed type int dword_14026F9D0[64];
-// 14026FAD0: using guessed type int dword_14026FAD0[64];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
 //----- (00000001401737F0) ----------------------------------------------------
 __int64            sub_1401737F0(__int64 a1, __int64 a2, int a3, int a4, int a5, __int64 a6, int a7)
 {
@@ -21646,13 +21251,12 @@ __int64            sub_1401737F0(__int64 a1, __int64 a2, int a3, int a4, int a5,
 #undef v12
 #undef v13
 
-
 //----- (0000000140173860) ----------------------------------------------------
 __int64            sub_140173860(char *a1, int a2, int a3, int a4, __int64 a5, int a6)
 {
-  void *v7; // rdi
-  int v8; // eax
-  __int64 v9; // rbx
+  void *v7;
+  int v8;
+  __int64 v9;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140173860[16];
 #define v11 (*(int (*))(void *)(sr_frame_140173860 + 0)) /* [rsp+30h] */
@@ -21671,14 +21275,13 @@ __int64            sub_140173860(char *a1, int a2, int a3, int a4, __int64 a5, i
     free(v7);
     return 0;
   }
-  sub_14020CE0C((__int64)v7, 1, v11, v9);
-  sub_14020B9E8(v9);
+  crt_fread((__int64)v7, 1, v11, v9);
+  crt_fclose(v9);
   free(v7);
   return 1;
 }
 #undef v11
 #undef v12
-
 
 //----- (0000000140173910) ----------------------------------------------------
 __int64            sub_140173910(
@@ -21690,9 +21293,9 @@ __int64            sub_140173910(
         __int64 a6,
         int a7)
 {
-  __int64 result; // rax
-  void *v10; // rbx
-  _DWORD v11[6]; // [rsp+30h] [rbp-18h] BYREF
+  __int64 result;
+  void *v10;
+  _DWORD v11[6];
 
   result = sub_140173990(a6, a7, a3, a4, a5, (__int64)v11);
   v10 = (void *)result;
@@ -21705,72 +21308,71 @@ __int64            sub_140173910(
   return result;
 }
 
-
 //----- (0000000140173990) ----------------------------------------------------
 __int64            sub_140173990(__int64 a1, int a2, int a3, int a4, int a5, __int64 a6)
 {
-  int v6; // esi
-  int v7; // r12d
-  int v8; // r15d
-  int v9; // ebp
-  int v10; // eax
-  __m128i *v11; // rbx
-  int v13; // eax
-  __int64 v14; // rdi
-  int v15; // r13d
-  int v16; // esi
-  int v17; // r12d
-  int v18; // r15d
-  int v19; // r10d
-  __int64 v20; // rcx
-  __m128i v21; // xmm3
-  __m128i v22; // xmm4
-  __m128i v23; // xmm0
-  __m128i v24; // xmm2
-  __m128i v25; // xmm2
-  __m128i v26; // xmm3
-  __m128i v27; // xmm3
-  int v28; // r8d
-  int v29; // r9d
-  int v30; // eax
-  int v31; // edx
-  int v32; // eax
-  _BYTE *v33; // rax
-  _BYTE *v34; // rsi
-  __m128i *v35; // r15
-  unsigned __int64 v36; // rbp
-  int v37; // ebx
-  __int64 v38; // rax
-  __int64 v39; // r14
-  int v40; // r9d
-  int *v41; // r13
-  __int64 v42; // r9
-  unsigned int v43; // edx
-  unsigned int v44; // r8d
-  unsigned int v45; // edx
-  unsigned int v46; // r8d
-  unsigned int v47; // edx
-  unsigned int v48; // r8d
-  unsigned int v49; // edx
-  unsigned int v50; // r8d
-  unsigned int v51; // edx
-  unsigned int v52; // r8d
-  unsigned __int64 v53; // rcx
-  __int64 v54; // rax
-  unsigned int v55; // edx
-  unsigned int v56; // r8d
-  unsigned int v57; // edx
-  unsigned int v58; // r8d
-  unsigned int v59; // edx
-  int v60; // r8d
-  unsigned __int64 v61; // rbx
-  unsigned int v62; // r8d
-  unsigned __int64 v63; // rdx
-  int v64; // edx
-  int v65; // r8d
-  unsigned int v66; // r8d
-  unsigned int v67; // edx
-  int v68; // r8d
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  __m128i *v11;
+  int v13;
+  __int64 v14;
+  int v15;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  __int64 v20;
+  __m128i v21;
+  __m128i v22;
+  __m128i v23;
+  __m128i v24;
+  __m128i v25;
+  __m128i v26;
+  __m128i v27;
+  int v28;
+  int v29;
+  int v30;
+  int v31;
+  int v32;
+  _BYTE *v33;
+  _BYTE *v34;
+  __m128i *v35;
+  unsigned __int64 v36;
+  int v37;
+  __int64 v38;
+  __int64 v39;
+  int v40;
+  int *v41;
+  __int64 v42;
+  unsigned int v43;
+  unsigned int v44;
+  unsigned int v45;
+  unsigned int v46;
+  unsigned int v47;
+  unsigned int v48;
+  unsigned int v49;
+  unsigned int v50;
+  unsigned int v51;
+  unsigned int v52;
+  unsigned __int64 v53;
+  __int64 v54;
+  unsigned int v55;
+  unsigned int v56;
+  unsigned int v57;
+  unsigned int v58;
+  unsigned int v59;
+  int v60;
+  unsigned __int64 v61;
+  unsigned int v62;
+  unsigned __int64 v63;
+  int v64;
+  int v65;
+  unsigned int v66;
+  unsigned int v67;
+  int v68;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140173990[176];
 #define v69 (*(__int64 (*))(void *)(sr_frame_140173990 + 0)) /* [rsp+0h] */
@@ -21907,7 +21509,7 @@ LABEL_23:
           v33 = v77;
           *v77 = v16;
           v34 = v33;
-          sub_1401FC920((__m128i *)(v33 + 1), v11, v9);
+          crt_memcpy((__m128i *)(v33 + 1), v11, v9);
           ++v15;
           v13 = v70;
           v77 = &v34[v79];
@@ -21974,7 +21576,7 @@ LABEL_23:
           *(_BYTE *)(v39 + 33) = BYTE3(v36);
           *(_BYTE *)(v39 + 34) = BYTE2(v36);
           *(_BYTE *)(v39 + 35) = BYTE1(v36);
-          sub_1401FC920((__m128i *)(v39 + 41), v35, v36);
+          crt_memcpy((__m128i *)(v39 + 41), v35, v36);
           v61 = v36 + v39 + 41;
           free(v35);
           v62 = -1;
@@ -22005,7 +21607,7 @@ LABEL_23:
           *(_BYTE *)(v61 + 14) = BYTE1(v68);
           *(_BYTE *)(v61 + 13) = BYTE2(v68);
           if ( v61 + 16 != v39 + *v41 )
-            sub_14023E640(
+            crt_assert(
               (char *)L"o == out + *out_len",
               (char *)L"C:\\visualc2010\\code\\subrosa12\\stb/stb_image_write.h",
               0x49Bu);
@@ -22037,976 +21639,4 @@ LABEL_23:
 #undef v84
 
 // 140173B8E: conditional instruction was optimized away because ebp.4>=8
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140273670: using guessed type __int16[52];
-// 140273808: using guessed type __int16[20];
-// 140278F30: using guessed type __int128 xmmword_140278F30;
-// 1402B2918: using guessed type int dword_1402B2918;
-// 1402B2BD0: using guessed type int dword_1402B2BD0;
-// 140301980: using guessed type _DWORD dword_140301980[182];
-// 140301C58: using guessed type int dword_140301C58;
-// 140302080: using guessed type int dword_140302080;
-
-
-//----- (00000001400E54D0) ----------------------------------------------------
-__int64            sub_1400E54D0(_QWORD *a1, int *a2, _DWORD *a3, int *a4, unsigned int a5)
-{
-  __int64 v5; // r14
-  __int64 v6; // rax
-  _QWORD *v7; // rsi
-  int v8; // eax
-  int *v9; // rcx
-  __int64 v10; // rbx
-  void **v11; // rsi
-  void *v12; // rcx
-  void *v13; // rcx
-  int v14; // eax
-  int v15; // r13d
-  int v16; // edx
-  __int64 v17; // r15
-  __int64 v18; // rbp
-  unsigned int *v19; // rbx
-  int *v20; // rdi
-  __int64 v21; // rax
-  __int64 v22; // kr00_8
-  unsigned int v23; // r9d
-  int v24; // eax
-  int v25; // r8d
-  __int64 v26; // rcx
-  unsigned int v27; // eax
-  void *v28; // rax
-  int v29; // r8d
-  int v30; // ecx
-  int v31; // ecx
-  __int64 v32; // rax
-  int *v33; // rcx
-  __int64 v34; // r12
-  unsigned int v35; // edx
-  __int64 v36; // r13
-  __int64 v37; // rbp
-  __int64 v38; // r15
-  __int64 v39; // rdi
-  __int64 v40; // rbx
-  __int64 v41; // r14
-  _BYTE *v42; // rbx
-  _QWORD *v43; // rbp
-  __int64 v44; // rsi
-  int *v45; // rdi
-  int v46; // r15d
-  int v47; // r13d
-  __int64 v48; // rdx
-  __int64 v49; // r8
-  __int64 v50; // rbx
-  void **v51; // rsi
-  void *v52; // rcx
-  void *v53; // rcx
-  int v54; // eax
-  __int64 v55; // rcx
-  int v56; // eax
-  __int64 v57; // rdx
-  char v58; // al
-  int v59; // eax
-  __int64 v60; // r9
-  int v61; // r8d
-  int v62; // ecx
-  int v63; // edx
-  void (           *v64)(_BYTE *, __int64, __int64, __int64, int, int); // r10
-  __int64 v65; // r8
-  int v66; // edx
-  __int64 v67; // rdx
-  char v68; // cl
-  int v69; // eax
-  __int64 v70; // r9
-  __int16 v71; // r8
-  __int16 v72; // cx
-  __int16 v73; // ax
-  __int16 v74; // r8
-  __int16 v75; // cx
-  __int16 v76; // ax
-  int v77; // eax
-  __int64 v78; // r10
-  int v79; // ecx
-  int v80; // edx
-  int v81; // r8d
-  int v82; // r9d
-  __int64 v83; // r8
-  int v84; // edx
-  int v85; // eax
-  int v86; // eax
-  __int64 v87; // rdx
-  char v88; // cl
-  __int64 v89; // rdi
-  void **v90; // rbx
-  void *v91; // rcx
-  void *v92; // rcx
-  __int64 v94; // rbx
-  void **v95; // rsi
-  void *v96; // rcx
-  void *v97; // rcx
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_1400E54D0[352];
-#define v98 (*(__int64 (*))(void *)(sr_frame_1400E54D0 + 8)) /* [rsp+0h] */
-#define v99 (*(int (*))(void *)(sr_frame_1400E54D0 + 40)) /* [rsp+20h] */
-#define v100 (*(int (*))(void *)(sr_frame_1400E54D0 + 48)) /* [rsp+28h] */
-#define v101 (*(int (*))(void *)(sr_frame_1400E54D0 + 56)) /* [rsp+30h] */
-#define v102 (*(unsigned int (*))(void *)(sr_frame_1400E54D0 + 60)) /* [rsp+34h] */
-#define v103 (*(__int64 (*))(void *)(sr_frame_1400E54D0 + 64)) /* [rsp+38h] */
-#define v104 (*(__int64 (*))(void *)(sr_frame_1400E54D0 + 72)) /* [rsp+40h] */
-#define v105 (*(_QWORD * (*))(void *)(sr_frame_1400E54D0 + 80)) /* [rsp+48h] */
-#define v106 (*(int * (*))(void *)(sr_frame_1400E54D0 + 88)) /* [rsp+50h] */
-#define v107 (*(_DWORD * (*))(void *)(sr_frame_1400E54D0 + 96)) /* [rsp+58h] */
-#define v108 (*(int * (*))(void *)(sr_frame_1400E54D0 + 104)) /* [rsp+60h] */
-#define v109 (*(__int128 (*))(void *)(sr_frame_1400E54D0 + 112)) /* [rsp+68h] */
-#define v110 (*(__int128 (*))(void *)(sr_frame_1400E54D0 + 128)) /* [rsp+78h] */
-#define v111 (*(char (*))(void *)(sr_frame_1400E54D0 + 176)) /* [rsp+A8h] */
-#define v112 (*(char (*))(void *)(sr_frame_1400E54D0 + 188)) /* [rsp+B4h] */
-#define v113 (*(__int64 (*))(void *)(sr_frame_1400E54D0 + 344)) /* [rsp+150h] */
-
-  LODWORD(v5) = a5;
-  v6 = *a1;
-  v7 = a1;
-  v108 = a4;
-  v107 = a3;
-  v106 = a2;
-  *(_DWORD *)(v6 + 8) = 0;
-  v105 = a1;
-  v101 = a5;
-  if ( a5 > 4 )
-  {
-    *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("bad req_comp");
-    return 0; /* 0x1400E5EA4: xor eax, eax */
-  }
-  v8 = sub_14015FAD0(a1);
-  v9 = (int *)*v7;
-  if ( !v8 )
-  {
-    v10 = v9[2];
-    if ( v10 > 0 )
-    {
-      v11 = (void **)(v7 + 2267);
-      do
-      {
-        if ( *v11 )
-        {
-          free(*v11);
-          *v11 = nullptr;
-          *(v11 - 1) = nullptr;
-        }
-        v12 = v11[1];
-        if ( v12 )
-        {
-          free(v12);
-          v11[1] = nullptr;
-          v11[3] = nullptr;
-        }
-        v13 = v11[2];
-        if ( v13 )
-        {
-          free(v13);
-          v11[2] = nullptr;
-        }
-        v11 += 12;
-        --v10;
-      }
-      while ( v10 );
-    }
-    return 0; /* 0x1400E5596: xor eax, eax */
-  }
-  v14 = v9[2];
-  v15 = 1;
-  if ( !a5 )
-  {
-    LODWORD(v5) = 1;
-    if ( v14 >= 3 )
-      LODWORD(v5) = 3;
-    v101 = v5;
-  }
-  if ( v14 == 3 && (*((_DWORD *)v7 + 4628) == 3 || !*((_DWORD *)v7 + 4627) && !*((_DWORD *)v7 + 4626)) )
-  {
-    v16 = 1;
-    v103 = 1;
-LABEL_23:
-    if ( (int)v5 < 3 && !v16 )
-      v14 = 1;
-    goto LABEL_26;
-  }
-  v103 = 0;
-  v16 = 0;
-  if ( v14 == 3 )
-    goto LABEL_23;
-LABEL_26:
-  v17 = v14;
-  v104 = v14;
-  v109 = 0;
-  v110 = 0;
-  if ( v14 <= 0 )
-    goto LABEL_42;
-  v18 = 0;
-  v19 = (unsigned int *)&v111;
-  v20 = (int *)v7 + 4521;
-  do
-  {
-    v21 = sr_path_malloc((unsigned int)(*(_DWORD *)*v7 + 3));
-    *(_QWORD *)(v20 + 17) = v21;
-    if ( !v21 )
-    {
-      v50 = *(int *)(*v7 + 8LL);
-      if ( v50 > 0 )
-      {
-        v51 = (void **)(v7 + 2267);
-        do
-        {
-          if ( *v51 )
-          {
-            free(*v51);
-            *v51 = nullptr;
-            *(v51 - 1) = nullptr;
-          }
-          v52 = v51[1];
-          if ( v52 )
-          {
-            free(v52);
-            v51[1] = nullptr;
-            v51[3] = nullptr;
-          }
-          v53 = v51[2];
-          if ( v53 )
-          {
-            free(v53);
-            v51[2] = nullptr;
-          }
-          v51 += 12;
-          --v50;
-        }
-        while ( v50 );
-      }
-      goto LABEL_144;
-    }
-    v22 = *((int *)v7 + 4514);
-    v19[4] = 0;
-    v23 = v22 / *v20;
-    *v19 = v23;
-    v24 = *((_DWORD *)v7 + 4515) / v20[1];
-    v19[1] = v24;
-    v25 = v24;
-    v19[3] = v24 >> 1;
-    v26 = *(_QWORD *)(v20 + 11);
-    v27 = v23 + *(_DWORD *)*v7 - 1;
-    *((_QWORD *)v19 - 1) = v26;
-    *((_QWORD *)v19 - 2) = v26;
-    v19[2] = v27 / v23;
-    if ( v23 == 1 )
-    {
-      if ( v25 == 1 )
-      {
-        v28 = sub_140127900;
-        goto LABEL_40;
-      }
-      if ( v25 == 2 )
-      {
-        v28 = sub_14016DD80;
-        goto LABEL_40;
-      }
-    }
-    else if ( v23 == 2 )
-    {
-      if ( v25 == 1 )
-      {
-        v28 = sub_14016D9D0;
-        goto LABEL_40;
-      }
-      if ( v25 == 2 )
-      {
-        v28 = (void *)v7[2320];
-        goto LABEL_40;
-      }
-    }
-    v28 = sub_14016D990;
-LABEL_40:
-    *((_QWORD *)v19 - 3) = (uint64)(uintptr_t)(v28);
-    ++v18;
-    v19 += 12;
-    v20 += 24;
-  }
-  while ( v18 < v17 );
-  v9 = (int *)*v7;
-LABEL_42:
-  v29 = v9[1];
-  v30 = *v9;
-  if ( (int)v5 < 0
-    || v30 < 0
-    || v30 && (int)v5 > 0x7FFFFFFF / v30
-    || (int)v5 * v30 < 0
-    || v29 < 0
-    || v29 && (int)v5 * v30 > 0x7FFFFFFF / v29
-    || (v31 = v5 * v29 * v30, v31 == 0x7FFFFFFF) )
-  {
-    v33 = (int *)*v7;
-LABEL_135:
-    v94 = v33[2];
-    if ( v94 > 0 )
-    {
-      v95 = (void **)(v7 + 2267);
-      do
-      {
-        if ( *v95 )
-        {
-          free(*v95);
-          *v95 = nullptr;
-          *(v95 - 1) = nullptr;
-        }
-        v96 = v95[1];
-        if ( v96 )
-        {
-          free(v96);
-          v95[1] = nullptr;
-          v95[3] = nullptr;
-        }
-        v97 = v95[2];
-        if ( v97 )
-        {
-          free(v97);
-          v95[2] = nullptr;
-        }
-        v95 += 12;
-        --v94;
-      }
-      while ( v94 );
-    }
-LABEL_144:
-    *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("outofmem");
-    return 0; /* 0x1400E5E7A: xor eax, eax */
-  }
-  v32 = sr_path_malloc(v31 + 1);
-  v33 = (int *)*v7;
-  v34 = v32;
-  if ( !v32 )
-    goto LABEL_135;
-  v35 = 0;
-  v102 = 0;
-  if ( !v33[1] )
-    goto LABEL_119;
-  v36 = *((_QWORD *)&v110 + 1);
-  v37 = v110;
-  v38 = *((_QWORD *)&v109 + 1);
-  v39 = v109;
-  while ( 2 )
-  {
-    v40 = (unsigned int)v5 * v35 * *v33;
-    v41 = 0;
-    v42 = (_BYTE *)(v34 + v40);
-    if ( v104 > 0 )
-    {
-      v43 = v7 + 2264;
-      v44 = v104;
-      v45 = (int *)&v112;
-      do
-      {
-        v46 = *(v45 - 2);
-        v47 = *v45;
-        if ( *v45 < v46 >> 1 )
-        {
-          v48 = *(_QWORD *)(v45 - 7);
-          v49 = *(_QWORD *)(v45 - 5);
-        }
-        else
-        {
-          v48 = *(_QWORD *)(v45 - 5);
-          v49 = *(_QWORD *)(v45 - 7);
-        }
-        *((_QWORD *)&v109 + v41) = (*(__int64 (           **)(_QWORD, __int64, __int64, _QWORD, _DWORD))(v45 - 9))(
-                                     v43[5],
-                                     v48,
-                                     v49,
-                                     (unsigned int)*(v45 - 1),
-                                     *(v45 - 3));
-        *v45 = v47 + 1;
-        if ( v47 + 1 >= v46 )
-        {
-          v54 = ++v45[1];
-          v55 = *(_QWORD *)(v45 - 5);
-          *v45 = 0;
-          *(_QWORD *)(v45 - 7) = v55;
-          if ( v54 < *(_DWORD *)v43 )
-            *(_QWORD *)(v45 - 5) = v55 + *((int *)v43 + 1);
-        }
-        ++v41;
-        v45 += 12;
-        v43 += 12;
-      }
-      while ( v41 < v44 );
-      v7 = v105;
-      v36 = *((_QWORD *)&v110 + 1);
-      v37 = v110;
-      v38 = *((_QWORD *)&v109 + 1);
-      v33 = (int *)*v105;
-      v39 = v109;
-    }
-    v5 = v101;
-    if ( v101 < 3 )
-    {
-      if ( v103 )
-      {
-        v69 = *v33;
-        v70 = 0;
-        if ( v101 == 1 )
-        {
-          if ( v69 )
-          {
-            do
-            {
-              ++v42;
-              v71 = 150 * *(unsigned __int8 *)(v70 + v38);
-              v72 = 29 * *(unsigned __int8 *)(v70 + v37);
-              v73 = *(unsigned __int8 *)(v70 + v39);
-              v70 = (unsigned int)(v70 + 1);
-              *(v42 - 1) = (unsigned __int16)(77 * v73 + v72 + v71) >> 8;
-              v33 = (int *)*v7;
-            }
-            while ( (unsigned int)v70 < *(_DWORD *)*v7 );
-          }
-        }
-        else if ( v69 )
-        {
-          do
-          {
-            v42 += 2;
-            v74 = 150 * *(unsigned __int8 *)(v70 + v38);
-            v75 = 29 * *(unsigned __int8 *)(v70 + v37);
-            v76 = *(unsigned __int8 *)(v70 + v39);
-            v70 = (unsigned int)(v70 + 1);
-            *(v42 - 1) = -1;
-            *(v42 - 2) = (unsigned __int16)(77 * v76 + v75 + v74) >> 8;
-            v33 = (int *)*v7;
-          }
-          while ( (unsigned int)v70 < *(_DWORD *)*v7 );
-        }
-        goto LABEL_117;
-      }
-      if ( v33[2] != 4 )
-        goto LABEL_111;
-      v77 = *((_DWORD *)v7 + 4627);
-      if ( !v77 )
-      {
-        v78 = 0;
-        if ( *v33 )
-        {
-          do
-          {
-            v79 = *(unsigned __int8 *)(v78 + v36);
-            v80 = *(unsigned __int8 *)(v78 + v38);
-            v81 = *(unsigned __int8 *)(v78 + v37);
-            v82 = *(unsigned __int8 *)(v78 + v39);
-            v78 = (unsigned int)(v78 + 1);
-            v42[1] = -1;
-            *v42 = (unsigned __int16)(77
-                                    * (unsigned __int8)((unsigned __int16)(v79 * v82
-                                                                         + 128
-                                                                         + ((unsigned int)(v79 * v82 + 128) >> 8)) >> 8)
-                                    + 29
-                                    * (unsigned __int8)((unsigned __int16)(v79 * v81
-                                                                         + 128
-                                                                         + ((unsigned int)(v79 * v81 + 128) >> 8)) >> 8)
-                                    + 150
-                                    * (unsigned __int8)((unsigned __int16)(v79 * v80
-                                                                         + 128
-                                                                         + ((unsigned int)(v79 * v80 + 128) >> 8)) >> 8)) >> 8;
-            v42 += v5;
-            v33 = (int *)*v7;
-          }
-          while ( (unsigned int)v78 < *(_DWORD *)*v7 );
-        }
-        goto LABEL_117;
-      }
-      if ( v77 == 2 )
-      {
-        v83 = 0;
-        if ( *v33 )
-        {
-          do
-          {
-            v84 = (unsigned __int8)~*(_BYTE *)(v83 + v39);
-            v85 = *(unsigned __int8 *)(v83 + v36);
-            v83 = (unsigned int)(v83 + 1);
-            v42[1] = -1;
-            *v42 = (unsigned __int16)(v85 * v84 + 128 + ((unsigned int)(v85 * v84 + 128) >> 8)) >> 8;
-            v42 += v5;
-            v33 = (int *)*v7;
-          }
-          while ( (unsigned int)v83 < *(_DWORD *)*v7 );
-        }
-      }
-      else
-      {
-LABEL_111:
-        v86 = *v33;
-        v87 = 0;
-        if ( v101 == 1 )
-        {
-          if ( v86 )
-          {
-            do
-            {
-              v42[v87] = *(_BYTE *)(v87 + v39);
-              v87 = (unsigned int)(v87 + 1);
-              v33 = (int *)*v7;
-            }
-            while ( (unsigned int)v87 < *(_DWORD *)*v7 );
-          }
-        }
-        else if ( v86 )
-        {
-          do
-          {
-            v88 = *(_BYTE *)(v87 + v39);
-            v87 = (unsigned int)(v87 + 1);
-            *v42 = v88;
-            v42[1] = -1;
-            v42 += 2;
-            v33 = (int *)*v7;
-          }
-          while ( (unsigned int)v87 < *(_DWORD *)*v7 );
-        }
-      }
-    }
-    else
-    {
-      v56 = v33[2];
-      if ( v56 == 3 )
-      {
-        if ( !v103 )
-        {
-          ((void (           *)(_BYTE *, __int64, __int64, __int64, int, int))v7[2319])(v42, v39, v38, v37, *v33, v101);
-          v33 = (int *)*v7;
-          goto LABEL_117;
-        }
-        v57 = 0;
-        if ( *v33 )
-        {
-          do
-          {
-            *v42 = *(_BYTE *)(v57 + v39);
-            v42[1] = *(_BYTE *)(v57 + v38);
-            v58 = *(_BYTE *)(v57 + v37);
-            v57 = (unsigned int)(v57 + 1);
-            v42[2] = v58;
-            v42[3] = -1;
-            v42 += v5;
-          }
-          while ( (unsigned int)v57 < *(_DWORD *)*v7 );
-          v33 = (int *)*v7;
-          goto LABEL_117;
-        }
-LABEL_93:
-        v33 = (int *)*v7;
-        goto LABEL_117;
-      }
-      if ( v56 != 4 )
-      {
-        v67 = 0;
-        if ( *v33 )
-        {
-          do
-          {
-            v68 = *(_BYTE *)(v67 + v39);
-            v67 = (unsigned int)(v67 + 1);
-            v42[2] = v68;
-            v42[1] = v68;
-            *v42 = v68;
-            v42[3] = -1;
-            v42 += v5;
-          }
-          while ( (unsigned int)v67 < *(_DWORD *)*v7 );
-        }
-        goto LABEL_93;
-      }
-      v59 = *((_DWORD *)v7 + 4627);
-      if ( v59 )
-      {
-        v63 = *v33;
-        v64 = (void (           *)(_BYTE *, __int64, __int64, __int64, int, int))v7[2319];
-        v100 = v101;
-        v99 = v63;
-        if ( v59 != 2 )
-        {
-          v64(v42, v39, v38, v37, v99, v100);
-          v33 = (int *)*v7;
-          goto LABEL_117;
-        }
-        v64(v42, v39, v38, v37, v99, v100);
-        v65 = 0;
-        if ( !*(_DWORD *)*v7 )
-          goto LABEL_93;
-        do
-        {
-          v66 = *(unsigned __int8 *)(v65 + v36);
-          v65 = (unsigned int)(v65 + 1);
-          *v42 = (unsigned __int16)(v66 * (unsigned __int8)~*v42
-                                  + 128
-                                  + ((v66 * (unsigned int)(unsigned __int8)~*v42 + 128) >> 8)) >> 8;
-          v42[1] = (unsigned __int16)(v66 * (unsigned __int8)~v42[1]
-                                    + 128
-                                    + ((v66 * (unsigned int)(unsigned __int8)~v42[1] + 128) >> 8)) >> 8;
-          v42[2] = (unsigned __int16)(v66 * (unsigned __int8)~v42[2]
-                                    + 128
-                                    + ((v66 * (unsigned int)(unsigned __int8)~v42[2] + 128) >> 8)) >> 8;
-          v42 += v5;
-        }
-        while ( (unsigned int)v65 < *(_DWORD *)*v7 );
-        v33 = (int *)*v7;
-      }
-      else
-      {
-        v60 = 0;
-        if ( !*v33 )
-          goto LABEL_93;
-        do
-        {
-          v61 = *(unsigned __int8 *)(v60 + v36);
-          *v42 = (unsigned __int16)(v61 * *(unsigned __int8 *)(v60 + v39)
-                                  + 128
-                                  + ((v61 * (unsigned int)*(unsigned __int8 *)(v60 + v39) + 128) >> 8)) >> 8;
-          v42[1] = (unsigned __int16)(v61 * *(unsigned __int8 *)(v60 + v38)
-                                    + 128
-                                    + ((v61 * (unsigned int)*(unsigned __int8 *)(v60 + v38) + 128) >> 8)) >> 8;
-          v62 = *(unsigned __int8 *)(v60 + v37);
-          v60 = (unsigned int)(v60 + 1);
-          v42[3] = -1;
-          v42[2] = (unsigned __int16)(v61 * v62 + 128 + ((unsigned int)(v61 * v62 + 128) >> 8)) >> 8;
-          v42 += v5;
-        }
-        while ( (unsigned int)v60 < *(_DWORD *)*v7 );
-        v33 = (int *)*v7;
-      }
-    }
-LABEL_117:
-    v35 = v102 + 1;
-    v102 = v35;
-    if ( v35 < v33[1] )
-      continue;
-    break;
-  }
-  v15 = 1;
-LABEL_119:
-  v89 = v33[2];
-  if ( v89 > 0 )
-  {
-    v90 = (void **)(v7 + 2267);
-    do
-    {
-      if ( *v90 )
-      {
-        free(*v90);
-        *v90 = nullptr;
-        *(v90 - 1) = nullptr;
-      }
-      v91 = v90[1];
-      if ( v91 )
-      {
-        free(v91);
-        v90[1] = nullptr;
-        v90[3] = nullptr;
-      }
-      v92 = v90[2];
-      if ( v92 )
-      {
-        free(v92);
-        v90[2] = nullptr;
-      }
-      v90 += 12;
-      --v89;
-    }
-    while ( v89 );
-    v33 = (int *)*v7;
-  }
-  *v106 = *v33;
-  *v107 = *(_DWORD *)(*v7 + 4LL);
-  if ( v108 )
-  {
-    if ( *(int *)(*v7 + 8LL) >= 3 )
-      v15 = 3;
-    *v108 = v15;
-  }
-  return v34; /* 0x1400E5DB2: mov rax, r12 */
-}
-#undef v98
-#undef v99
-#undef v100
-#undef v101
-#undef v102
-#undef v103
-#undef v104
-#undef v105
-#undef v106
-#undef v107
-#undef v108
-#undef v109
-#undef v110
-#undef v111
-#undef v112
-#undef v113
-
-// 14023ACF8: using guessed type __int64 __fastcall j__malloc_base(_QWORD);
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-
-//----- (0000000140127900) ----------------------------------------------------
-__int64            sub_140127900(__int64 a1, __int64 a2)
-{
-  return a2;
-}
-
-// 140127BF7: variable 'a3' is possibly undefined
-// 1401294D2: variable 'v88' is possibly undefined
-// 1401294D2: variable 'v87' is possibly undefined
-// 1401294D2: variable 'v89' is possibly undefined
-// 1401294D2: variable 'v90' is possibly undefined
-// 1401296D2: variable 'v101' is possibly undefined
-// 1401296D2: variable 'v100' is possibly undefined
-// 1401296D2: variable 'v102' is possibly undefined
-// 1401296D2: variable 'v103' is possibly undefined
-// 140129E08: variable 'v136' is possibly undefined
-// 140129E08: variable 'v137' is possibly undefined
-// 140129E08: variable 'v135' is possibly undefined
-// 140274DA8: using guessed type int dword_140274DA8;
-// 140274E04: using guessed type int dword_140274E04;
-// 140278D30: using guessed type __int128 xmmword_140278D30;
-// 140279820: using guessed type __int128 xmmword_140279820;
-// 1402B26C8: using guessed type int dword_1402B26C8;
-// 1402B2980: using guessed type int dword_1402B2980[8];
-// 1402B29A0: using guessed type int dword_1402B29A0[8];
-// 140404A6C: using guessed type unsigned int dword_140404A6C[487416165];
-// 144980D28: using guessed type __int64 (__fastcall *)(_QWORD);
-// 144980D30: using guessed type __int64 (__fastcall *)(_QWORD, _QWORD, _QWORD, _QWORD);
-// 144CBFAA8: using guessed type unsigned int;
-// 144CBFAAC: using guessed type unsigned int;
-// 144CBFAB0: using guessed type unsigned int;
-// 15104AE60: using guessed type unsigned int;
-// 151620C60: using guessed type unsigned int;
-// 151620CE4: using guessed type unsigned int;
-// 151620DB8: using guessed type unsigned int;
-// 151E44920: using guessed type unsigned int;
-// 15B1AC860: using guessed type unsigned int;
-// 15FE95260: using guessed type unsigned int;
-// 16B2A2EC0: using guessed type unsigned int;
-// 16B2A2ED0: using guessed type unsigned int;
-// 16B2AAF1C: using guessed type unsigned int;
-// 175FD1400: using guessed type unsigned int;
-// 1816DEB80: using guessed type unsigned int;
-// 18329CC24: using guessed type unsigned int;
-// 18329E52C: using guessed type unsigned int;
-// 18329E530: using guessed type unsigned int;
-// 18329E534: using guessed type unsigned int;
-// 183E53120: using guessed type unsigned int;
-// 183E93524: using guessed type unsigned int;
-// 183E93544: using guessed type unsigned int;
-// 183EBFAAC: using guessed type unsigned int;
-// 183EBFAB0: using guessed type unsigned int;
-// 183EBFAB4: using guessed type unsigned int;
-// 183EBFCC4: using guessed type unsigned int;
-// 183EBFCC8: using guessed type unsigned int;
-// 183EBFCCC: using guessed type unsigned int;
-// 183EBFCD4: using guessed type unsigned int;
-// 183EBFCDC: using guessed type unsigned int;
-// 183EBFCE0: using guessed type unsigned int;
-// 183EBFCE8: using guessed type unsigned int;
-// 183EBFCEC: using guessed type unsigned int;
-// 183EBFD34: using guessed type unsigned int;
-// 183EBFD54: using guessed type unsigned int;
-// 183EBFD58: using guessed type unsigned int;
-// 183EBFDC0: using guessed type unsigned int;
-// 183EC5984: using guessed type unsigned int;
-// 183ECB548: using guessed type unsigned int;
-// 183ED110C: using guessed type unsigned int;
-// 183ED6CD0: using guessed type unsigned int;
-// 183EDC894: using guessed type unsigned int;
-// 183F775E0: using guessed type unsigned int;
-// 183F79DE4: using guessed type unsigned int;
-// 183F79DE8: using guessed type unsigned int;
-// 183F79DF8: using guessed type unsigned int;
-// 183F79F84: using guessed type unsigned int;
-// 183F7A320: using guessed type unsigned int;
-// 183F7A570: using guessed type unsigned int;
-// 183F7A5B0: using guessed type unsigned int;
-// 183F7A5BC: using guessed type unsigned int;
-// 183F7A5FC: using guessed type unsigned int;
-// 183F7A60C: using guessed type unsigned int;
-// 183F7AE14: using guessed type unsigned int;
-// 183F7AEE8: using guessed type unsigned int;
-// 183F7C384: using guessed type unsigned int;
-// 183F7C388: using guessed type unsigned int;
-// 183F7C38C: using guessed type unsigned int;
-// 183F7C588: using guessed type unsigned int;
-// 183F7CBC0: using guessed type unsigned int;
-// 183F7CBD0: using guessed type unsigned int;
-// 183F7CBD4: using guessed type unsigned int;
-// 18417DE78: using guessed type unsigned int;
-// 18417DE7C: using guessed type unsigned int;
-// 18417DE80: using guessed type unsigned int;
-// 18417DE84: using guessed type unsigned int;
-// 189C1DC60: using guessed type unsigned int;
-// 189C1DC64: using guessed type unsigned int;
-// 189C1DC80: using guessed type unsigned int;
-// 189C7BEC4: using guessed type unsigned int;
-// 189CDA108: using guessed type unsigned int;
-// 189D3834C: using guessed type unsigned int;
-// 189D96590: using guessed type unsigned int;
-// 189DF47D4: using guessed type unsigned int;
-// 189E52A18: using guessed type unsigned int;
-// 189EB0C5C: using guessed type unsigned int;
-// 19021F0C0: using guessed type unsigned int;
-// 19021F0C4: using guessed type unsigned int;
-// 19021F0CC: using guessed type unsigned int;
-// 19021F0D8: using guessed type unsigned int;
-// 19021F0DC: using guessed type unsigned int;
-// 19021F0E4: using guessed type unsigned int;
-// 19021F0F0: using guessed type unsigned int;
-// 19021F0F4: using guessed type unsigned int;
-// 19021F0FC: using guessed type unsigned int;
-// 1A4BF08E0: using guessed type unsigned int;
-// 1A4D2DCE0: using guessed type unsigned int;
-// 1A4D2DCE4: using guessed type unsigned int;
-// 1A4D31D14: using guessed type unsigned int;
-// 1A4D3BD1C: using guessed type unsigned int;
-// 1A70AE560: using guessed type unsigned int;
-// 1A70AE564: using guessed type unsigned int;
-// 1A724E700: using guessed type unsigned int;
-// 1A724E720: using guessed type unsigned int;
-// 1A729E724: using guessed type unsigned int;
-// 1A72FE728: using guessed type unsigned int;
-// 1A74FE730: using guessed type unsigned int;
-// 1A796F380: using guessed type unsigned int;
-// 1A796F3D4: using guessed type unsigned int;
-// 1A796F428: using guessed type unsigned int;
-// 1A796F47C: using guessed type unsigned int;
-// 1A796F4D0: using guessed type unsigned int;
-// 1A796F524: using guessed type unsigned int;
-// 1A796F578: using guessed type unsigned int;
-// 1A796F5CC: using guessed type unsigned int;
-// 1A796F620: using guessed type unsigned int;
-// 1A796F674: using guessed type unsigned int;
-// 1A796F6C8: using guessed type unsigned int;
-// 1A796F71C: using guessed type unsigned int;
-// 1A796F770: using guessed type unsigned int;
-// 1A796F7C4: using guessed type unsigned int;
-// 1A796F818: using guessed type unsigned int;
-// 1A796F86C: using guessed type unsigned int;
-// 1A796F8C0: using guessed type unsigned int;
-// 1A796F914: using guessed type unsigned int;
-// 1A796F968: using guessed type unsigned int;
-// 1A796F9BC: using guessed type unsigned int;
-// 1A796FA10: using guessed type unsigned int;
-// 1A796FA64: using guessed type unsigned int;
-// 1A796FAB8: using guessed type unsigned int;
-// 1A796FB0C: using guessed type unsigned int;
-// 1A796FB60: using guessed type unsigned int;
-// 1A796FBB4: using guessed type unsigned int;
-// 1A796FC08: using guessed type unsigned int;
-// 1A796FC5C: using guessed type unsigned int;
-// 1A796FCB0: using guessed type unsigned int;
-// 1A796FD04: using guessed type unsigned int;
-// 1A796FD58: using guessed type unsigned int;
-// 1A796FDAC: using guessed type unsigned int;
-// 1A796FE00: using guessed type unsigned int;
-// 1A796FE54: using guessed type unsigned int;
-// 1A796FEA8: using guessed type unsigned int;
-// 1A796FEFC: using guessed type unsigned int;
-// 1A796FF50: using guessed type unsigned int;
-// 1A796FFA4: using guessed type unsigned int;
-// 1A796FFF8: using guessed type unsigned int;
-// 1A797004C: using guessed type unsigned int;
-// 1A79700A0: using guessed type unsigned int;
-// 1A79700F4: using guessed type unsigned int;
-// 1A7970148: using guessed type unsigned int;
-// 1A797019C: using guessed type unsigned int;
-// 1A79701F0: using guessed type unsigned int;
-// 1A7970244: using guessed type unsigned int;
-// 1A7970298: using guessed type unsigned int;
-// 1A79702EC: using guessed type unsigned int;
-// 1A7970340: using guessed type unsigned int;
-// 1A7970394: using guessed type unsigned int;
-// 1A79703E8: using guessed type unsigned int;
-// 1A797043C: using guessed type unsigned int;
-// 1A7970490: using guessed type unsigned int;
-// 1A79704E4: using guessed type unsigned int;
-// 1A7970538: using guessed type unsigned int;
-// 1A797058C: using guessed type unsigned int;
-// 1A79705E0: using guessed type unsigned int;
-// 1A7970634: using guessed type unsigned int;
-// 1A7970688: using guessed type unsigned int;
-// 1A79706DC: using guessed type unsigned int;
-// 1A7970730: using guessed type unsigned int;
-// 1A7970784: using guessed type unsigned int;
-// 1A79707D8: using guessed type unsigned int;
-// 1A797082C: using guessed type unsigned int;
-// 1A7970880: using guessed type unsigned int;
-// 1A79708D4: using guessed type unsigned int;
-// 1A7970928: using guessed type unsigned int;
-// 1A797097C: using guessed type unsigned int;
-// 1A79709D0: using guessed type unsigned int;
-// 1A7970A24: using guessed type unsigned int;
-// 1A7970A78: using guessed type unsigned int;
-// 1A7970ACC: using guessed type unsigned int;
-// 1A7970B20: using guessed type unsigned int;
-// 1A7970B74: using guessed type unsigned int;
-// 1A7970BC8: using guessed type unsigned int;
-// 1A7970C1C: using guessed type unsigned int;
-// 1A7970C70: using guessed type unsigned int;
-// 1A7970CC4: using guessed type unsigned int;
-// 1A7970D18: using guessed type unsigned int;
-// 1A7970D6C: using guessed type unsigned int;
-// 1A7970DC0: using guessed type unsigned int;
-// 1A7970E14: using guessed type unsigned int;
-// 1A7970E68: using guessed type unsigned int;
-// 1A7970EBC: using guessed type unsigned int;
-// 1A7970F10: using guessed type unsigned int;
-// 1A7970F64: using guessed type unsigned int;
-// 1A7970FB8: using guessed type unsigned int;
-// 1A797100C: using guessed type unsigned int;
-// 1A7971060: using guessed type unsigned int;
-// 1A79710B4: using guessed type unsigned int;
-// 1A7971108: using guessed type unsigned int;
-// 1A797115C: using guessed type unsigned int;
-// 1A79711B0: using guessed type unsigned int;
-// 1A7971204: using guessed type unsigned int;
-// 1A7971258: using guessed type unsigned int;
-// 1A79712AC: using guessed type unsigned int;
-// 1A7971300: using guessed type unsigned int;
-// 1A7971354: using guessed type unsigned int;
-// 1A79713A8: using guessed type unsigned int;
-// 1A79713FC: using guessed type unsigned int;
-// 1A7971450: using guessed type unsigned int;
-// 1A79714A4: using guessed type unsigned int;
-// 1A79714F8: using guessed type unsigned int;
-// 1A797154C: using guessed type unsigned int;
-// 1A79715A0: using guessed type unsigned int;
-// 1A79715F4: using guessed type unsigned int;
-// 1A7971648: using guessed type unsigned int;
-// 1A797169C: using guessed type unsigned int;
-// 1A79716F0: using guessed type unsigned int;
-// 1A7971744: using guessed type unsigned int;
-// 1A7971798: using guessed type unsigned int;
-// 1A79717EC: using guessed type unsigned int;
-// 1A7971840: using guessed type unsigned int;
-// 1A7971894: using guessed type unsigned int;
-// 1A79718E8: using guessed type unsigned int;
-// 1A797193C: using guessed type unsigned int;
-// 1A7971990: using guessed type unsigned int;
-// 1A79719E4: using guessed type unsigned int;
-// 1A7971A38: using guessed type unsigned int;
-// 1A7971A8C: using guessed type unsigned int;
-// 1A7971AE0: using guessed type unsigned int;
-// 1A7971B34: using guessed type unsigned int;
-// 1A7971B88: using guessed type unsigned int;
-// 1A7971BDC: using guessed type unsigned int;
-// 1A7971C30: using guessed type unsigned int;
-// 1A7971C84: using guessed type unsigned int;
-// 1A7971CD8: using guessed type unsigned int;
-// 1A7971D2C: using guessed type unsigned int;
-// 1A7971D80: using guessed type unsigned int;
-// 1A8E379D4: using guessed type unsigned int;
-// 1ABC2D894: using guessed type unsigned int;
-// 1AD04ADC0: using guessed type unsigned int;
-// 1AD04B214: using guessed type unsigned int;
-// 1AD04B21C: using guessed type unsigned int;
-// 1B4657C80: using guessed type unsigned int;
 

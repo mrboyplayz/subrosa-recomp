@@ -39,22 +39,10 @@ typedef struct PhysicsBody {
     float angular_momentum[3];
     float angular_velocity[3];
     float angular_velocity_change[3];    /* impulses gathered during a solve */
-    union {
-        float unknown_84[3];
-        float inertia[3];                /* about the body's own axes */
-    };
+    float unknown_84[3];
     float inverse_inertia[3];            /* about the body's own axes */
-    union {
-        float unknown_9c;                /* angular momentum is limited to 8 times this; also scales bond rotation */
-        float least_inertia;             /* the smallest of inertia[] */
-    };
-    union {
-        uint8_t unknown_a0[0xB8 - 0xA0];
-        struct {
-            uint8_t unknown_a0_pad[0xAC - 0xA0];
-            float unknown_ac[3];         /* 0.5, 0.25, 0.5 in a new body; a helicopter's rotor gets 4, 0.125, 4 */
-        };
-    };
+    float unknown_9c;                    /* angular momentum is limited to 8 times this; also scales bond rotation */
+    uint8_t unknown_a0[0xB8 - 0xA0];
     float friction_work;                 /* sliding against the level during the last solve */
 } PhysicsBody;
 
@@ -113,21 +101,14 @@ extern float flt_140384000[];
 typedef struct PhysicsVehicle {
     int32_t active;
     int32_t type;                        /* vehicle type index */
-    int32_t control;                     /* VEHICLE_CONTROL_* (RosaServer: controllableState) */
-    int32_t health;                      /* damage is taken off; at 0 the vehicle is destroyed */
-    uint8_t unknown_10[0x20 - 0x10];
-    int32_t is_locked;                   /* RosaServer: isLocked; the engine of a locked vehicle does not turn */
-    int32_t unknown_24;
+    uint8_t unknown_8[0x28 - 0x8];
     int32_t body;                        /* PhysicsBody index */
     float position[3];                   /* of the type's origin point on the body */
     float previous_position[3];
     float rotation[9];
     float previous_rotation[9];
     float velocity[3];
-    union {
-        uint8_t unknown_98[0xA4 - 0x98];
-        float last_velocity[3];          /* velocity as the vehicle stage last saw it */
-    };
+    uint8_t unknown_98[0xA4 - 0x98];
     float angular_velocity[3];
     float bounds_min[3];                 /* box around the type's bound points, in world axes */
     float bounds_max[3];
@@ -311,9 +292,6 @@ void physics_expire_bonds(void);
 /* Takes bond out of the bond lists of its points and vehicles and marks it
    inactive; indices outside the array do nothing. 0x14007F370 */
 void physics_remove_bond(int bond);
-
-/* The first inactive bond, -1 when all are in use. 0x1400A4440 */
-int physics_free_bond(void);
 
 /* Turns a body's rotation by one tick of its angular momentum (fourth-order
    Runge-Kutta) and stores the angular velocity used. 0x14012B2D0 */

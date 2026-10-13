@@ -55,7 +55,7 @@ static int bone_meets_level(const WorldHuman *h, int bone)
     if (bone == 12 || bone == 15)
         return 0;
     if (bone == 11 || bone == 14)
-        return h->movement_state == HUMAN_STATE_2 || h->old_health <= 0 || h->health < 50;
+        return h->unknown_58 == HUMAN_STATE_2 || h->unknown_3c <= 0 || h->health < 50;
     return 1;
 }
 

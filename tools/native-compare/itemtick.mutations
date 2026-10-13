@@ -1,0 +1,320 @@
+type-26 list limit 255
+            if (list->count < 256)
+----
+            if (list->count < 255)
+====
+type-26 lists by 6 bits
+            ItemList *list = &item_type26_lists[item_unknown_368(i) & 0x7F];
+----
+            ItemList *list = &item_type26_lists[item_unknown_368(i) & 0x3F];
+====
+held tick for every item
+        if (item->holder != -1)
+            sub_1401380F0(i, item->holder);
+----
+        sub_1401380F0(i, item->holder);
+====
+held tick: item passed as holder
+            sub_1401380F0(i, item->holder);
+----
+            sub_1401380F0(i, i);
+====
+radio part offset constant
+            float along = (float)item->slot * 0.10546875f - 0.2109375f;
+----
+            float along = (float)item->slot * 0.10546875f - 0.2109376f;
+====
+radio part y uses z row
+            y = r[1] * along + py;
+----
+            y = r[2] * along + py;
+====
+radio parts: only 17
+        if (item->type == 17 || item->type == 18) {
+----
+        if (item->type == 17) {
+====
+type 39 child: offset from the child's type
+        float along = item_type_unknown_524(p->type);
+----
+        float along = item_type_unknown_524(item->type);
+====
+type 39 child: grouped differently
+        z = r[8] * along + nz;
+----
+        z = r[8] * (along + nz);
+====
+default child offset sign
+        y = py - r[4] * 0.0625f;
+----
+        y = py + r[4] * 0.0625f;
+====
+previous position not from the offset
+    item->previous_position[1] = y;
+----
+    item->previous_position[1] = py;
+====
+lying free: mask without type 36
+        if (type > 36 || !((0x1002060000ULL >> type) & 1))
+----
+        if (type > 36 || !((0x0002060000ULL >> type) & 1))
+====
+lying free: gun parent ignored
+        if (item_type_is_gun(p->type))
+            return p->holder == -1;
+----
+        if (0)
+            return p->holder == -1;
+====
+lifetime: types 19..24 range
+    int expires = (uint32_t)item->type - 19u > 5u ? loose : 0;
+----
+    int expires = (uint32_t)item->type - 19u > 4u ? loose : 0;
+====
+lifetime: held long-lived item not reset
+        item->lifetime = lifetime = LIFETIME_LOOSE;
+----
+        lifetime = LIFETIME_LOOSE;
+====
+lifetime: clamp at 18001
+    if (lifetime > LIFETIME_LOOSE)
+        lifetime = LIFETIME_LOOSE;
+----
+    if (lifetime > LIFETIME_LOOSE + 1)
+        lifetime = LIFETIME_LOOSE + 1;
+====
+lifetime: children ignored
+    if (item->child_count > 0)
+----
+    if (item->child_count > 1)
+====
+lifetime: game type 5 not forever
+    if ((((uint32_t)game_type - 3u) & ~2u) == 0 && lifetime > 0)
+----
+    if ((uint32_t)game_type == 3u && lifetime > 0)
+====
+lifetime: forever check from 0
+    if ((uint32_t)lifetime - 1u <= 0xFFFEu)
+----
+    if ((uint32_t)lifetime <= 0xFFFEu)
+====
+gun tick: type read after lifetime
+        if (item_type_is_gun(type))
+----
+        if (item_type_is_gun(item->type))
+====
+vehicle: bounds 0x1FE
+            if ((uint32_t)vehicle <= 0x1FF) {
+----
+            if ((uint32_t)vehicle < 0x1FF) {
+====
+vehicle: driver flag stays
+                    vehicle_unknown_20(vehicle) = 0;
+----
+====
+type 26 light from button 2
+            if (item_input(i) & 1)
+                item_unknown_36c(i) = 1;
+----
+            if (item_input(i) & 2)
+                item_unknown_36c(i) = 1;
+====
+phone: wait not counted down
+    if (item_timer(item) > 0)
+        item_timer(item)--;
+----
+====
+phone: engaged tone every 32 ticks
+        if ((tick & 0x3F) == 0 && game_connected)
+----
+        if ((tick & 0x1F) == 0 && game_connected)
+====
+phone: engaged tone for 361 ticks
+        if (ticks >= 360 || pressed(item, 1)) {
+----
+        if (ticks > 360 || pressed(item, 1)) {
+====
+phone: dialling ignores hang-up
+        if (pressed(item, 1)) {
+            item_call_state(item) = 0;
+            item_call_number(item) = 0;
+            item_dialled_number(item) = 0;
+            sub_140051940(item);
+        }
+        phone_dial(item);
+----
+        phone_dial(item);
+====
+phone: dials from 999
+    if (number < 1000)
+----
+    if (number < 999)
+====
+phone: calls itself
+        if (o->active && other != item && is_phone(o) && number == item_phone_number(other))
+----
+        if (o->active && is_phone(o) && number == item_phone_number(other))
+====
+phone: caller id not passed
+    item_call_number(other) = item_phone_number(item);
+    sub_140051940(item);
+    sub_140051940(other);
+----
+    sub_140051940(item);
+    sub_140051940(other);
+====
+phone: ring volume
+                ring_event(tick, sound, item, 0.5f);
+----
+                ring_event(tick, sound, item, 0.25f);
+====
+phone: rings 767 ticks
+            if (++item_call_ticks(item) >= 768) {   /* no answer */
+----
+            if (++item_call_ticks(item) >= 767) {   /* no answer */
+====
+phone: dead partner kept
+        if (partner == -1 || !world_items[partner].active) {
+----
+        if (partner == -1) {
+====
+phone: answer only first ringing phone
+            item_call_number(other) = item_phone_number(item);
+            sub_140051940(other);
+        }
+----
+            item_call_number(other) = item_phone_number(item);
+            sub_140051940(other);
+            break;
+        }
+====
+phone: hang-up order of syncs
+    sub_140051940(item_call_partner(item));
+    item_call_number(item) = 0;
+    item_call_partner(item) = -1;
+    sub_140051940(item);
+}
+----
+    item_call_number(item) = 0;
+    sub_140051940(item);
+    sub_140051940(item_call_partner(item));
+    item_call_partner(item) = -1;
+}
+====
+computer: tries 999
+                if (++tries >= 1000)
+----
+                if (++tries >= 999)
+====
+computer: owner not checked
+                if (item_computer_used(item, k) && item_computer_owner(item, k) == -1)
+----
+                if (item_computer_used(item, k))
+====
+computer: state not read again after setup
+        sub_1400C3ED0(item);
+        state = item_computer_state(item);
+----
+        sub_1400C3ED0(item);
+====
+computer: byte at 0x3B4 kept
+            item_unknown_3b4(item) = 0;
+----
+====
+type 40 counter not wrapped at a byte
+            item_unknown_368(i) = (uint8_t)(item_unknown_368(i) + 1);
+----
+            item_unknown_368(i) = item_unknown_368(i) + 1;
+====
+grenade in any game state
+        } else if (type == 13 && game_state == 2) {
+----
+        } else if (type == 13) {
+====
+grenade fuse 241
+            item_timer(index) = 240;
+----
+            item_timer(index) = 241;
+====
+grenade: dropped with pin out keeps waiting
+        } else if (item->holder == -1) {
+            item_timer(index) = 239;
+        }
+----
+        }
+====
+grenade goes off at 0
+    if (fuse != 1)
+----
+    if (fuse != 0)
+====
+grenade event type
+        event->type = 20;
+----
+        event->type = 21;
+====
+radio toggle not counted
+            if (toggled && game_connected && (uint32_t)i <= 0x3FF)
+----
+            if (0)
+====
+type 30 on press instead of release
+            if (!use && (item_previous_input(i) & 1))
+----
+            if (use && !(item_previous_input(i) & 1))
+====
+type 30 cap 256
+    if (value > 255)
+        value = 255;
+----
+    if (value > 256)
+        value = 256;
+====
+type 30 cap at 106
+    human_unknown_14(h) = value;
+    use_up(index, item);
+----
+    human_unknown_14(h) = value + (value == 105);
+    use_up(index, item);
+====
+first aid range 2.5
+    float best_distance = 2.0f;
+----
+    float best_distance = 2.5f;
+====
+first aid sum order
+        float distance = sqrt_float((dy * dy + dx * dx) + dz * dz);
+----
+        float distance = sqrt_float(dx * dx + (dy * dy + dz * dz));
+====
+first aid: ties go to the later human
+        if (best_distance > distance) {
+----
+        if (best_distance >= distance) {
+====
+first aid: nearly dead from 11
+    if (!human->active || human->unknown_3c <= 0 || (!human->bleeding && human->unknown_3c >= 10))
+----
+    if (!human->active || human->unknown_3c <= 0 || (!human->bleeding && human->unknown_3c >= 11))
+====
+first aid progress shift
+        world_humans[item->holder].unknown_6ddc = (int32_t)((uint32_t)progress << 8) / 256;
+----
+        world_humans[item->holder].unknown_6ddc = progress;
+====
+first aid: patient revived to 11
+        patient->unknown_3c = 10;
+----
+        patient->unknown_3c = 11;
+====
+first aid timer kept when not used
+            else
+                item_timer(i) = 0;
+----
+            else
+                item_timer(i) = item_timer(i);
+====
+inputs not cleared
+    item_input(i) = 0;
+----
+    item_input(i) = item_input(i) & 0x100;

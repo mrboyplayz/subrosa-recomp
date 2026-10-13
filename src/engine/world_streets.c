@@ -645,3 +645,95 @@ void world_build_train_route(void)
     if (memcmp(world_map_name, "test2", 6) == 0)
         world_build_race_track();
 }
+
+/* ---- collision: street triangles near a box --------------------------------- */
+
+/* Box tests of the original (comiss): a minimum above the box's far corner
+   rejects (a NaN does not), a maximum that is not at least the box's near
+   corner rejects (a NaN does). */
+static int box_overlaps(const float minimum[3], const float maximum[3], const float box_min[3],
+                        const float box_max[3])
+{
+    if (minimum[0] > box_max[0] || minimum[1] > box_max[1] || minimum[2] > box_max[2])
+        return 0;
+    if (!(maximum[0] >= box_min[0]) || !(maximum[1] >= box_min[1]) || !(maximum[2] >= box_min[2]))
+        return 0;
+    return 1;
+}
+
+void world_street_triangles_in_box(StreetTriangleList *list, const float box_min[3], const float box_max[3],
+                                   int street, int range)
+{
+    Street *s = &world_streets[street];
+    /* The original counts with a 32-bit and a 64-bit copy of the index and
+       reads the range's end again on every pass. */
+    int32_t i = s->range_first[range];
+    int64_t t = i;
+
+    while (i < s->range_end[range]) {
+        int32_t n = list->count;
+        const float *bounds = &s->triangle_bounds[0][0] + 6 * t;
+        if (n < STREET_TRIANGLE_LIST_CAPACITY && box_overlaps(bounds, bounds + 3, box_min, box_max)) {
+            const int32_t *corners = &s->triangle[0][0] + 3 * t;
+            for (int c = 0; c < 3; c++) {
+                const uint32_t *v = (const uint32_t *)&s->vertex[0][0] + 3 * (int64_t)corners[c];
+                uint32_t *out = (uint32_t *)list->triangle[n].corner[c];
+                out[0] = v[0];
+                out[1] = v[1];
+                out[2] = v[2];
+            }
+            list->count++;
+        }
+        i++;
+        t++;
+    }
+}
+
+void world_streets_triangles_in_box(StreetTriangleList *list, const float box_min[3], const float box_max[3],
+                                    int ranges)
+{
+    int32_t found[64];
+    int count = 0;
+    int32_t x_first = truncate_float(box_min[0] * 0.015625f);
+    int32_t z_first = truncate_float(box_min[2] * 0.015625f);
+    int32_t x_last = truncate_float(box_max[0] * 0.015625f);
+    int32_t z_last = truncate_float(box_max[2] * 0.015625f);
+
+    if (z_first <= z_last) {
+        /* Pass counts as the original keeps them: 32-bit differences plus
+           one, counted down in 64 bits. */
+        uint64_t rows = (uint32_t)((uint32_t)z_last - (uint32_t)z_first + 1u);
+        int64_t z = z_first;
+        do {
+            if ((uint64_t)z < STREET_CELLS_ACROSS && x_first <= x_last) {
+                uint64_t columns = (uint32_t)((uint32_t)x_last - (uint32_t)x_first + 1u);
+                int64_t x = x_first;
+                do {
+                    if ((uint64_t)x < STREET_CELLS_ACROSS) {
+                        const StreetCell *cell = &world_street_cells[z * STREET_CELLS_ACROSS + x];
+                        const int32_t *streets = &cell->count + 1;
+                        int64_t entries = cell->count;
+                        for (int64_t k = 0; k < entries; k++)
+                            if (count < 64)
+                                found[count++] = streets[k];
+                    }
+                    x++;
+                } while (--columns);
+            }
+            z++;
+        } while (--rows);
+    }
+
+    for (int k = 0; k < count; k++) {
+        int street = found[k];
+        Street *s = &world_streets[street];
+        if (!box_overlaps(s->bounds_min, s->bounds_max, box_min, box_max))
+            continue;
+        if (ranges & 1)
+            world_street_triangles_in_box(list, box_min, box_max, street, 0);
+        if (ranges & 2)
+            world_street_triangles_in_box(list, box_min, box_max, street, 1);
+        if (ranges & 4)
+            world_street_triangles_in_box(list, box_min, box_max, street, 2);
+    }
+}

@@ -1,0 +1,67 @@
+kill radius 4.5
+#define BLAST_KILL_SQUARED 16.0f        /* 4 units */
+----
+#define BLAST_KILL_SQUARED 20.25f       /* 4 units */
+====
+NaN distance does not kill
+        if (!(squared >= BLAST_KILL_SQUARED)) {         /* a NaN distance kills too */
+----
+        if (squared < BLAST_KILL_SQUARED) {         /* a NaN distance kills too */
+====
+reach 9
+#define BLAST_REACH_SQUARED 64.0f
+----
+#define BLAST_REACH_SQUARED 81.0f
+====
+distance sum order
+        float squared = (dy * dy + dx * dx) + dz * dz;
+----
+        float squared = dx * dx + (dy * dy + dz * dz);
+====
+victim not killed
+            human->unknown_3c = 0;
+----
+====
+team mates of other teams charged
+                && player_team(thrower) == player_team(human->player)) {
+----
+                && player_team(thrower) != player_team(human->player)) {
+====
+thrower not read again
+                thrower = item_player(index);
+----
+====
+suicide credited too
+    if (thrower != -1 && human->player != -1)
+----
+    if (thrower != -1)
+====
+zero distance not special
+    if (!is_zero_or_nan_quiet(distance)) {
+----
+    if (1) {
+====
+NaN distance raises the flag
+    if (!is_zero_or_nan_quiet(distance)) {
+----
+    if (!(distance == 0.0f || distance != distance)) {
+====
+mass floor order of operands
+    float strength = (max_float(BLAST_REACH / (mass + BLAST_REACH), 0.125f) * near) * (near * 0.01318359375f);
+----
+    float strength = (max_float(0.125f, BLAST_REACH / (mass + BLAST_REACH)) * near) * (near * 0.01318359375f);
+====
+strength grouping
+    float strength = (max_float(BLAST_REACH / (mass + BLAST_REACH), 0.125f) * near) * (near * 0.01318359375f);
+----
+    float strength = max_float(BLAST_REACH / (mass + BLAST_REACH), 0.125f) * (near * near) * 0.01318359375f;
+====
+only 15 bones pushed
+        for (int b = 0; b < HUMAN_BONE_COUNT; b++)
+----
+        for (int b = 0; b < HUMAN_BONE_COUNT - 1; b++)
+====
+push toward the blast
+    body->velocity[1] = uy * strength + body->velocity[1];
+----
+    body->velocity[1] = body->velocity[1] - uy * strength;

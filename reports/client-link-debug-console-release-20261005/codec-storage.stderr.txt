@@ -1,2 +1,0 @@
-D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\codec_storage.s: Assembler messages:
-D:\SteamLibrary\steamapps\common\Sub Rosa\decompilation\reports\client-link-debug-console-release-20261005\codec_storage.s:10: Warning: .space repeat count is zero, ignored
