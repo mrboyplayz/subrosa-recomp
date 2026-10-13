@@ -102,7 +102,6 @@ Companion binaries to track:
 - `../subrosadedicated.exe`
 - `../subrosa.x64`
 - `../subrosadedicated.x64`
-- `../Suitium.dll`
 
 ## Project Layout
 
