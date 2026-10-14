@@ -1,0 +1,19 @@
+disk flag
+disk->used = 1;
+----
+disk->used = 2;
+====
+disk first-free test
+if (disk->used) continue;
+----
+if (disk->used == 1) continue;
+====
+disk last slot
+index < DISK_CAPACITY
+----
+index < DISK_CAPACITY - 1
+====
+disk clear
+sizeof *disk - sizeof disk->used
+----
+sizeof *disk - sizeof disk->used - 1

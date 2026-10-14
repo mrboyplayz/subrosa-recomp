@@ -1,0 +1,31 @@
+    if (list->count >= OUTLINE_CAPACITY)
+====
+    if (list->count > OUTLINE_CAPACITY)
+----
+        line->to[k] = to[k];
+====
+        line->to[k] = from[k];
+----
+        origin[k] = (float)voxel[k] * scale + layer_origin(layer)[k];
+====
+        origin[k] = (float)voxel[k] + layer_origin(layer)[k];
+----
+        origin[k] = (float)voxel[k] * scale + layer_origin(layer)[k];
+====
+        origin[k] = (float)voxel[k] * scale + layer_origin(0)[k];
+----
+    for (int q = 0; q < shape_quad_count(shape); q++) {
+====
+    for (int q = 1; q < shape_quad_count(shape); q++) {
+----
+                corner[c][k] = scale * shape_points(shape)[3 * quad[c] + k] + origin[k];
+====
+                corner[c][k] = shape_points(shape)[3 * quad[c] + k] + origin[k];
+----
+        add_line(list, corner[1], corner[2]);
+====
+        add_line(list, corner[2], corner[1]);
+----
+        add_line(list, corner[3], corner[0]);
+====
+        add_line(list, corner[3], corner[1]);

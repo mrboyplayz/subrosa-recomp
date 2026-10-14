@@ -1,0 +1,29 @@
+    if (mesh->group_count <= 0)
+        return 0;
+====
+    if (mesh->group_count < 0)
+        return 0;
+----
+            if (is_zero_or_nan_quiet(length)) {
+====
+            if (length == 0.0f) {
+----
+                    found = collision_line_triangle(point, n, &t, from, to, a, c, points[face->corner[3]]);
+====
+                    found = collision_line_triangle(point, n, &t, from, to, a, b, points[face->corner[3]]);
+----
+                if (!found || t >= hit[6])
+====
+                if (!found || t > hit[6])
+----
+                hit[4] = n[1];
+====
+                hit[4] = n[2];
+----
+    return !(hit[6] >= 1.0f);
+====
+    return hit[6] < 1.0f;
+----
+            n[1] = e2z * e1x - e2x * e1z;
+====
+            n[1] = e2x * e1z - e2z * e1x;

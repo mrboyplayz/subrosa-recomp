@@ -1395,6 +1395,8 @@ LABEL_197:
   SR_DEBUG_STAGE("Generating level: prepare world render resources (0x124320)");
   sub_140124320();
   SR_DEBUG_LOG("World render resource setup returned");
+  /* SUBROSA_DUMP_WORLD=<folder>: the level geometry and textures, as the minimap pass just drew them */
+  SR_DEBUG_DUMP_WORLD(dword_140404A6C);
 LABEL_348:
   SR_DEBUG_STAGE("Generating level: finalize render state (0x14C390)");
   sub_14014C390();

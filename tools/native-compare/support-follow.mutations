@@ -1,0 +1,63 @@
+    if ((uint32_t)item->slot <= 1)
+        return;
+====
+    if (item->slot <= 1)
+        return;
+----
+    if ((uint32_t)item->slot <= 1)
+        return;
+====
+    if ((uint32_t)item->slot <= 2)
+        return;
+----
+        r[k] = chest->rotation[k];
+====
+        r[k] = chest->rotation[3 + k];
+----
+        r[3 + k] = -chest->rotation[6 + k];
+====
+        r[3 + k] = chest->rotation[6 + k];
+----
+        r[6 + k] = chest->rotation[3 + k];
+====
+        r[6 + k] = -chest->rotation[3 + k];
+----
+        item->position[axis] = chest->position[axis] - r[3 + axis] * 0.25f;
+====
+        item->position[axis] = chest->position[axis] - r[3 + axis] * 0.5f;
+----
+        item->position[axis] = chest->position[axis] - r[3 + axis] * 0.25f;
+====
+        item->position[axis] = pelvis->position[axis] - r[3 + axis] * 0.25f;
+----
+        item->position[axis] = r[axis] * 0.125f + item->position[axis];
+====
+        item->position[axis] = r[axis] * 0.25f + item->position[axis];
+----
+        item->previous_position[axis] = pelvis->position[axis];
+====
+        item->previous_position[axis] = chest->position[axis];
+----
+    if (human->vehicle != -1)
+====
+    if (human->vehicle == -1)
+----
+            item->previous_position[axis] = physics_vehicles[human->vehicle].position[axis];
+====
+            item->previous_position[axis] = physics_vehicles[human->vehicle].previous_position[axis];
+----
+        item->velocity[axis] = pelvis->velocity[axis];
+====
+        item->velocity[axis] = chest->velocity[axis];
+----
+        body->velocity[axis] = pelvis->velocity[axis];
+====
+        body->velocity[axis] = -pelvis->velocity[axis];
+----
+        body->angular_momentum[axis] = 0.0f;
+====
+        body->angular_momentum[axis] = 1.0f;
+----
+        body->angular_velocity[axis] = 0.0f;
+====
+        body->angular_velocity[axis] = 1.0f;

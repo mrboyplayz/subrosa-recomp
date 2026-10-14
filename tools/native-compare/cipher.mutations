@@ -1,0 +1,185 @@
+        int line = 2 + 3 * row;
+====
+        int line = 3 + 3 * row;
+----
+    return (uint8_t)(c - 'A') <= 'Z' - 'A';
+====
+    return (uint8_t)(c - 'A') < 'Z' - 'A';
+----
+                colors[n] = 15;
+====
+                colors[n] = 14;
+----
+coded[n] = (char)((uint8_t)computer_letter(i, c - 'A') + 'A');
+====
+coded[n] = (char)((uint8_t)computer_letter(i, c - 'A') + 'B');
+----
+if (computer_cipher_selected(i) == computer_letter(i, c - 'A'))
+====
+if (computer_cipher_selected(i) != computer_letter(i, c - 'A'))
+----
+                    colors[n] = 12;
+====
+                    colors[n] = 11;
+----
+                coded[n] = c;
+====
+                coded[n] = ' ';
+----
+        coded[n] = 0;
+====
+        coded[n] = 1;
+----
+        computer_line_link(i, line);
+====
+        computer_line_link(i, line + 2);
+----
+        char *decoded = computer_line(i, line + 1);
+====
+        char *decoded = computer_line(i, line + 2);
+----
+shown = revealed == -1 ? ' ' : (char)((uint8_t)revealed + 'A');
+====
+shown = revealed == -1 ? '_' : (char)((uint8_t)revealed + 'A');
+----
+shown = revealed == -1 ? ' ' : (char)((uint8_t)revealed + 'A');
+====
+shown = revealed == -1 ? ' ' : (char)((uint8_t)revealed + 'B');
+----
+int32_t revealed = computer_letter_revealed(i, computer_letter(i, c - 'A'));
+====
+int32_t revealed = computer_letter_revealed(i, c - 'A');
+----
+        decoded[n] = 0;
+====
+        decoded[n] = 1;
+----
+        computer_line_link(i, line + 1);
+====
+        computer_line_link(i, line);
+----
+    computer_draw_letter_counts(i);
+====
+    (void)0;
+----
+    for (int row = 0; row < 5; row++) {
+====
+    for (int row = 0; row < 4; row++) {
+----
+        for (n = 0; n < 62; n++) {
+            char c = computer_cipher_text(i, row)[n];
+            if (c == 0)
+                break;
+            if (is_capital(c)) {
+                colors
+====
+        for (n = 0; n < 63; n++) {
+            char c = computer_cipher_text(i, row)[n];
+            if (c == 0)
+                break;
+            if (is_capital(c)) {
+                colors
+----
+        for (n = 0; n < 62; n++) {
+            char c = computer_cipher_text(i, row)[n];
+            if (c == 0)
+                break;
+            char shown
+====
+        for (n = 0; n < 61; n++) {
+            char c = computer_cipher_text(i, row)[n];
+            if (c == 0)
+                break;
+            char shown
+----
+        cell[0] = (char)('A' + letter);
+====
+        cell[0] = (char)('B' + letter);
+----
+cell_colors[0] = computer_cipher_selected(i) == letter ? 12 : 15;
+====
+cell_colors[0] = computer_cipher_selected(i) == letter ? 12 : 14;
+----
+cell_colors[0] = computer_cipher_selected(i) == letter ? 12 : 15;
+====
+cell_colors[0] = computer_cipher_selected(i) != letter ? 12 : 15;
+----
+        cell_colors[1] = 0x8F;
+====
+        cell_colors[1] = 0x8E;
+----
+cell[1] = times >= 10 ? (char)((uint8_t)tens + '0') : ' ';
+====
+cell[1] = times > 10 ? (char)((uint8_t)tens + '0') : ' ';
+----
+cell[1] = times >= 10 ? (char)((uint8_t)tens + '0') : ' ';
+====
+cell[1] = times >= 10 ? (char)((uint8_t)tens + '0') : '0';
+----
+cell[2] = (char)((uint8_t)times - (uint8_t)(tens * 10) + '0');
+====
+cell[2] = (char)((uint8_t)times % 10 + '0');
+----
+        cell_colors[2] = 0x8F;
+====
+        cell_colors[2] = 0x8E;
+----
+        cell[3] = ' ';
+====
+        cell[3] = '_';
+----
+    row[4 * count] = 0;
+}
+
+/* The row below
+====
+    row[4 * count - 1] = 0;
+}
+
+/* The row below
+----
+row[4 * k] = revealed == -1 ? ' ' : (char)((uint8_t)revealed + 'A');
+====
+row[4 * k] = revealed == -1 ? ' ' : (char)((uint8_t)revealed + 'B');
+----
+        row[4 * k + 1] = ' ';
+====
+        row[4 * k + 1] = '_';
+----
+        row[4 * k + 3] = ' ';
+====
+        row[4 * k + 3] = '_';
+----
+    row[4 * count] = 0;
+}
+
+void computer_draw_letter_counts
+====
+    row[4 * count] = 1;
+}
+
+void computer_draw_letter_counts
+----
+    draw_letter_row(i, 17, 0, 15);
+====
+    draw_letter_row(i, 17, 0, 14);
+----
+    draw_revealed_row(i, 18, 0, 15);
+====
+    draw_revealed_row(i, 18, 1, 15);
+----
+    computer_line_link(i, 19);
+====
+    (void)0;
+----
+    draw_letter_row(i, 20, 15, 11);
+====
+    draw_letter_row(i, 20, 15, 10);
+----
+    draw_revealed_row(i, 21, 15, 11);
+====
+    draw_revealed_row(i, 21, 15, 10);
+----
+        int32_t tens = times / 10;
+====
+        int32_t tens = (int32_t)((uint32_t)times / 10);

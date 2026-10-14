@@ -1,0 +1,10 @@
+    collision_hit.unknown_20[1] = 0;
+    collision_hit.unknown_20[2] = 0;
+====
+    collision_hit.unknown_20[2] = 0;
+----
+    if (!sweep_model(point, normal, fraction, model, position, rotation, from, to))
+        return 0;
+====
+    if (!sweep_model(point, normal, fraction, model, rotation, position, from, to))
+        return 0;

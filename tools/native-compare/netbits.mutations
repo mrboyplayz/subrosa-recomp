@@ -1,0 +1,145 @@
+    return value << (count & 31);
+}
+
+static uint32_t shift_right
+====
+    return count >= 32 ? 0 : value << count;
+}
+
+static uint32_t shift_right
+----
+    return count >= 8 ? 0 : (uint8_t)(value << count);
+====
+    return (uint8_t)(value << count);
+----
+    if (position >= NET_BUFFER_SIZE)
+        return 0;
+    v = *value & ~shift_left(0xFFFFFFFFu, (uint32_t)bits);
+====
+    if (position > NET_BUFFER_SIZE)
+        return 0;
+    v = *value & ~shift_left(0xFFFFFFFFu, (uint32_t)bits);
+----
+        write_buffer[position] &= (uint8_t)~byte_shift_left((uint8_t)(byte_shift_left(1, (uint32_t)bits) - 1),
+                                                             (uint32_t)bit);
+====
+        write_buffer[position] &= (uint8_t)~byte_shift_left((uint8_t)(byte_shift_left(1, (uint32_t)bits) - 1), 0);
+----
+        write_buffer[write_position] |= byte_shift_left((uint8_t)v, (uint32_t)write_bit);
+====
+        write_buffer[write_position] |= (uint8_t)(v << write_bit);
+----
+        if ((uint32_t)bits < room) {
+            write_bit += bits;
+            return 1;
+        }
+        if ((uint32_t)bits == room) {
+            write_position++;
+            write_bit = 0;
+            return 1;
+        }
+        position = write_position + 1;
+        v = shift_right(v, room);
+        bits -= (int)room;
+        write_position = position;
+        write_bit = 0;
+        bit = 0;
+        if (bits <= 0)
+            return 1;
+    }
+}
+
+int net_write_bits_scaled
+====
+        if (bits < (int)room) {
+            write_bit += bits;
+            return 1;
+        }
+        if ((uint32_t)bits == room) {
+            write_position++;
+            write_bit = 0;
+            return 1;
+        }
+        position = write_position + 1;
+        v = shift_right(v, room);
+        bits -= (int)room;
+        write_position = position;
+        write_bit = 0;
+        bit = 0;
+        if (bits <= 0)
+            return 1;
+    }
+}
+
+int net_write_bits_scaled
+----
+    v = (*value / divisor) & ~shift_left(0xFFFFFFFFu, (uint32_t)bits);
+====
+    v = (uint32_t)((int32_t)*value / (int32_t)divisor) & ~shift_left(0xFFFFFFFFu, (uint32_t)bits);
+----
+        if (bit == 0)
+            write_buffer[position] = (uint8_t)v;
+====
+        if (bit == 0)
+            write_buffer[position] |= (uint8_t)v;
+----
+    double turns = (double)__builtin_fabsf(*angle) * ((double)(float)(int64_t)half * 0.15915494309188485);
+====
+    double turns = (double)__builtin_fabsf(*angle) * ((double)(float)(int64_t)half * 0.159154943f);
+----
+    double turns = (double)__builtin_fabsf(*angle) * ((double)(float)(int64_t)half * 0.15915494309188485);
+====
+    double turns = (double)(__builtin_fabsf(*angle) * ((float)(int64_t)half * 0.15915494309188485f));
+----
+    v = (uint32_t)(int64_t)turns & (half - 1);
+====
+    v = (uint32_t)(int32_t)turns & (half - 1);
+----
+    if (!(*angle >= 0.0f))
+====
+    if (*angle < 0.0f)
+----
+    if (position >= NET_BUFFER_SIZE || (int32_t)((uint32_t)position + (uint32_t)(bits >> 3)) > read_length)
+====
+    if (position >= NET_BUFFER_SIZE || (int32_t)((uint32_t)position + (uint32_t)(bits >> 3)) >= read_length)
+----
+            v |= shift_left(shift_right(read_buffer[position], (uint8_t)read_bit) &
+====
+            v |= shift_left(shift_right(read_buffer[position], (uint8_t)bit) &
+----
+                            shift);
+====
+                            0);
+----
+            room = 8u - (uint32_t)bit;
+            if ((uint32_t)bits < room) {
+                read_bit = bit + bits;
+====
+            room = 8u - (uint32_t)bit;
+            if (bits < (int)room) {
+                read_bit = bit + bits;
+----
+                read_position = position + 1;
+                break;
+====
+                break;
+----
+            shift += room;
+====
+            shift += 8;
+----
+    *value = (uint32_t)scale * v;
+====
+    *value = v;
+----
+    *value = v == shift_left(1, (uint32_t)bits) - 1 ? -1 : (int32_t)v;
+====
+    *value = v == (1u << bits) - 1 ? -1 : (int32_t)v;
+----
+    uint32_t sign = shift_left(1, (uint32_t)(bits - 1));
+====
+    uint32_t sign = shift_left(1, (uint32_t)bits) >> 1;
+----
+    *value = (int32_t)((v & sign) == sign ? v | shift_left(0xFFFFFFFFu, (uint32_t)bits) : v);
+====
+    *value = (int32_t)((v & sign) ? v | shift_left(0xFFFFFFFFu, (uint32_t)bits) : v);

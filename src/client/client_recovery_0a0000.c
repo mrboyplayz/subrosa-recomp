@@ -1161,19 +1161,9 @@ __int64 sub_1400A3E30()
 //----- (00000001400A4440) ----------------------------------------------------
 __int64 sub_1400A4440()
 {
-  unsigned int v0;
-  unsigned int *v1;
-
-  v0 = 0;
-  v1 = &dword_140404A6C[486149253];
-  while ( *v1 )
-  {
-    ++v0;
-    v1 += 61;
-    if ( (__int64)v1 >= (__int64)&dword_140404A6C[487148677] )
-      return 0xFFFFFFFFLL;
-  }
-  return v0;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern unsigned int physics_find_free_bond(void);
+  return physics_find_free_bond();
 }
 
 //----- (00000001400A4560) ----------------------------------------------------

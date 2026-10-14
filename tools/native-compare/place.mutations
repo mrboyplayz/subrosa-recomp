@@ -1,0 +1,70 @@
+    if (value == 0)
+        return;
+====
+    if (value == 1)
+        return;
+----
+        *own = (value >> 24 & 3) << 24 | 0x4000003Fu;
+====
+        *own = (value >> 24 & 7) << 24 | 0x4000003Fu;
+----
+            if ((int16_t)faces[i] >= 0)
+====
+            if ((int16_t)faces[i] > 0)
+----
+            record_faces(record, voxel)[i] = faces[i];
+            if ((int16_t)faces[i] >= 0)
+====
+            record_faces(record, voxel)[i ^ 1] = faces[i];
+            if ((int16_t)faces[i] >= 0)
+----
+            if ((other & 0xE0000000u) == 0x40000000u || (n == 0 && y == 0)) {
+====
+            if ((other & 0xE0000000u) == 0x40000000u) {
+----
+                world_block_set_unknown_8(layer, nx, ny, nz, other & ~cube_neighbours[n].theirs);
+====
+                world_block_set_unknown_8(layer, nx, ny, nz, other & ~cube_neighbours[n].own);
+----
+{ 0, 0, 1, 0x02, 0x08 },
+====
+{ 0, 0, 1, 0x08, 0x02 },
+----
+        world_block_mark_changed((uint32_t)layer, (uint32_t)x, y, (uint32_t)z);
+    } else if ((value & 0xE0000000u) == 0x80000000u) {
+====
+    } else if ((value & 0xE0000000u) == 0x80000000u) {
+----
+                    if (!dy && !dz && !dx)
+                        continue;
+====
+                    if (!dy && !dx)
+                        continue;
+----
+                                              (uint32_t)dx | ((uint32_t)dz | (uint32_t)dy << 8) << 8 | 0xC0000000u);
+====
+                                              (uint32_t)dz | ((uint32_t)dx | (uint32_t)dy << 8) << 8 | 0xC0000000u);
+----
+        covered = record_table(record, 0x808)[voxel];
+====
+        covered = 0;
+----
+    { -1, 0, 0 }, { 0, -1, 0 }, { 0, 0, -1 }, { 0, 0, 1 }, { 0, 1, 0 }, { 1, 0, 0 },
+====
+    { -1, 0, 0 }, { 0, 0, -1 }, { 0, -1, 0 }, { 0, 0, 1 }, { 0, 1, 0 }, { 1, 0, 0 },
+----
+            covered = world_block_covered_faces((int)type, side, covered, (int)(other & 0xFFFF));
+====
+            covered = world_block_covered_faces((int)type, 5 - side, covered, (int)(other & 0xFFFF));
+----
+            their_covered = neighbour == -1 ? 0 : record_table(neighbour, 0x808)[voxel_in_cell(nx, ny, nz)];
+====
+            their_covered = 0;
+----
+        record_table(record, 0x808)[voxel] = covered;
+====
+        record_table(record, 0x808)[voxel] = covered | 1;
+----
+    if ((int32_t)((uint32_t)x >> 6) >= world_level_chunks(layer, 0) || (int32_t)(y >> 6) >= world_level_chunks(layer, 1) ||
+====
+    if ((int32_t)((uint32_t)x >> 6) > world_level_chunks(layer, 0) || (int32_t)(y >> 6) >= world_level_chunks(layer, 1) ||

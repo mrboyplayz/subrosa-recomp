@@ -1,0 +1,65 @@
+float x = r[3] * along + position[0];
+====
+float x = r[4] * along + position[0];
+----
+x = r[6] * along + x;
+====
+x = r[6] * along - x;
+----
+y = r[7] * along + y;
+====
+y = r[7] * along + x;
+----
+along = item_type_mount_offset_z(computer->type);
+====
+along = item_type_mount_offset_z(child->type);
+----
+int pick = crt_rand() % 26;
+====
+int pick = crt_rand() % 25;
+----
+if (computer_letter_count(i, letter) != 0 && computer_letter_revealed(i, letter) == -1)
+====
+if (computer_letter_count(i, letter) == 0 && computer_letter_revealed(i, letter) == -1)
+----
+for (int tries = 0; tries < 1000; ) {
+====
+for (int tries = 0; tries < 999; ) {
+----
+computer_letter_revealed(i, computer_letter(i, pick)) = pick;
+====
+computer_letter_revealed(i, computer_letter(i, pick)) = pick + 1;
+----
+    if (state == 0) {
+        computer_boot(i);
+====
+    if (state == 4) {
+        computer_boot(i);
+----
+if (state == 1 && computer_hint_countdown(i) > 0) {
+====
+if (state == 1 && computer_hint_countdown(i) >= 0) {
+----
+computer_line_1_first_char(i) = 0;
+====
+computer_line_1_first_char(i) = 1;
+----
+computer_line_link(i, 1);
+====
+computer_line_link(i, 0);
+----
+        computer_update_program(i);
+        state = computer_state(i);
+====
+        computer_update_program(i);
+        state = 2;
+----
+        if (left == 0) {
+====
+        if (left == 1) {
+----
+        computer_boot(i);
+        state = computer_state(i);
+====
+        computer_boot(i);
+        state = 0;

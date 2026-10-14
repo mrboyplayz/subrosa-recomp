@@ -1,0 +1,39 @@
+__builtin_memset(computer_line_colors(i, computer_current_line(i)), 15, 63);
+====
+__builtin_memset(computer_line_colors(i, computer_current_line(i)), 14, 63);
+----
+__builtin_memset(computer_line_colors(i, computer_current_line(i)), 15, 63);
+====
+__builtin_memset(computer_line_colors(i, computer_current_line(i)), 15, 62);
+----
+    computer_line_link(i, computer_current_line(i));
+====
+    computer_line_link(i, computer_current_line(i) + 1);
+----
+    if ((int32_t)(((uint32_t)line + 10u) & 31) == top)
+====
+    if ((int32_t)(((uint32_t)line + 9u) & 31) == top)
+----
+        computer_top_line(i) = (int32_t)(((uint32_t)top + 1u) & 31);
+====
+        computer_top_line(i) = (int32_t)(((uint32_t)top + 1u) & 15);
+----
+    line = (int32_t)(((uint32_t)line + 1u) & 31);
+====
+    line = (int32_t)(((uint32_t)line + 2u) & 31);
+----
+    world_item_change_count(i)++;
+    computer_cursor(i)
+====
+    world_item_change_count(i) += 2;
+    computer_cursor(i)
+----
+    computer_cursor(i) = line << 6;
+====
+    computer_cursor(i) = line << 5;
+----
+    computer_current_line(i) = line;
+    world_item_change_count
+====
+    computer_current_line(i) = line + 1;
+    world_item_change_count

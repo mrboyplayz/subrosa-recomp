@@ -1,0 +1,137 @@
+~(uint32_t)(ITEM_PAY_PHONE - ITEM_CELL_PHONE)) == 0;
+====
+~(uint32_t)0) == 0;
+----
+event->type = 19;
+====
+event->type = 18;
+----
+world_event_count = (int32_t)(((uint32_t)count + 1u) & 0xFFFF);
+====
+world_event_count = (int32_t)(((uint32_t)count + 1u) & 0x7FFF);
+----
+world_event_float_a(event) = a;
+====
+world_event_float_a(event) = b;
+----
+    item_phone_status(item_phone_connected(i)) = PHONE_IDLE;
+====
+    item_phone_status(item_phone_connected(i)) = PHONE_BUSY;
+----
+    item_phone_connected(item_phone_connected(i)) = -1;
+====
+    item_phone_connected(item_phone_connected(i)) = i;
+----
+    item_phone_display_number(item_phone_connected(i)) = 0;
+    event_update_item_info((unsigned int)item_phone_connected(i));
+    item_phone_display_number(i) = 0;
+====
+    item_phone_display_number(item_phone_connected(i)) = 1;
+    event_update_item_info((unsigned int)item_phone_connected(i));
+    item_phone_display_number(i) = 0;
+----
+    item_phone_connected(i) = -1;
+    event_update_item_info((unsigned int)i);
+}
+
+static void dial
+====
+    item_phone_connected(i) = -2;
+    event_update_item_info((unsigned int)i);
+}
+
+static void dial
+----
+if (number < 1000)
+====
+if (number <= 1000)
+----
+item_cooldown(i) = 180;
+====
+item_cooldown(i) = 181;
+----
+item_phone_number(j) != number)
+====
+item_phone_number(j) != number + 1)
+----
+item_phone_display_number(j) = item_phone_number(i);
+            event_update_item_info((unsigned int)i);
+====
+item_phone_display_number(j) = item_phone_number(j);
+            event_update_item_info((unsigned int)i);
+----
+item_phone_status(i) = PHONE_BUSY;
+====
+item_phone_status(i) = PHONE_IDLE;
+----
+if (callee == -1 || item_phone_connected(callee) != -1) {
+====
+if (callee == -1 || item_phone_connected(callee) == -1) {
+----
+if ((tick & 0x7F) == 0 && game_connected) {
+====
+if ((tick & 0x3F) == 0 && game_connected) {
+----
+record_phone_event(tick, value, i, 0.5f, 1.0f);
+====
+record_phone_event(tick, value, i, 0.25f, 1.0f);
+----
+if (item_phone_caller_ring_timer(i) < 0x300)
+====
+if (item_phone_caller_ring_timer(i) < 0x2FF)
+----
+item_phone_status(callee) = PHONE_IDLE;
+====
+item_phone_status(callee) = PHONE_IN_CALL;
+----
+    if (item_cooldown(i) > 0)
+        item_cooldown(i)--;
+====
+    if (item_cooldown(i) >= 0)
+        item_cooldown(i)--;
+----
+item_phone_status(i) = PHONE_DIALLING;
+====
+item_phone_status(i) = PHONE_RINGING;
+----
+if ((tick & 0x3F) == 0 && game_connected)
+
+====
+if ((tick & 0x1F) == 0 && game_connected)
+
+----
+if (ticks < 360 && !item_pressed(i, 1))
+====
+if (ticks < 361 && !item_pressed(i, 1))
+----
+        item_phone_entered_number(i) = 0;
+        item_phone_connected(i) = -1;
+====
+        item_phone_entered_number(i) = 1;
+        item_phone_connected(i) = -1;
+----
+if (other == -1 || !world_items[other].active) {
+====
+if (other == -1 || world_items[other].active) {
+----
+item_phone_display_number(i) = item_phone_number(j);
+====
+item_phone_display_number(i) = item_phone_number(i);
+----
+item_phone_connected(j) != i)
+====
+item_phone_connected(j) != i + 1)
+----
+    if (item_phone_connected(i) != -1) {
+        hang_up(i);
+====
+    if (item_phone_connected(i) == -1) {
+        hang_up(i);
+----
+int32_t ticks = (int32_t)((uint32_t)item_phone_caller_ring_timer(i) + 1u);
+====
+int32_t ticks = (int32_t)((uint32_t)item_phone_caller_ring_timer(i) + 2u);
+----
+    item_phone_caller_ring_timer(i)++;
+====
+    item_phone_caller_ring_timer(i) += 2;

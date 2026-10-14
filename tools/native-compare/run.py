@@ -95,17 +95,54 @@ def link(objects, program, directory, port):
         raise SystemExit('link failed: ' + program.name)
 
 
-def build(suite, out, engine_dir):
+def client_wrappers(test, directory):
+    """Extract the actual client adapters used by a CALL-based fixture.
+
+    Compile their current signatures and bodies, rather than a second copy
+    of the adapters maintained by the test. Other client routines stay out
+    of this small comparison executable.
+    """
+    addresses = sorted(set(re.findall(r'CALL\(0x([0-9A-Fa-f]+),', test.read_text(encoding='utf-8'))))
+    if not addresses:
+        raise SystemExit('suite has no CALL-based wrapper inventory: ' + test.name)
+    definitions = {}
+    for path in sorted((PROJECT / 'src/client').glob('*.c')):
+        source = path.read_text(encoding='utf-8')
+        for address in addresses:
+            match = re.search(r'^//----- \(0*' + address + r'\)[^\n]*\n', source, re.M)
+            if match:
+                end = source.index('\n}', match.end()) + 2
+                body = source[match.end():end]
+                if 'Native-compared engine port;' not in body:
+                    raise SystemExit('requested function is not a restored adapter: ' + address)
+                definitions[address] = body
+    missing = set(addresses) - definitions.keys()
+    if missing:
+        raise SystemExit('client adapters missing: ' + ', '.join(sorted(missing)))
+    source = directory / 'client_wrappers.c'
+    source.write_text('#include "shared_client.h"\n' + '\n\n'.join(definitions[a] for a in addresses)
+                      + '\nvoid *nc_client_wrapper(uint64_t address) { switch(address) {\n'
+                      + ''.join('case 0x%sULL: return (void *)sub_%s;\n' % (a, a) for a in addresses)
+                      + 'default: abort(); } }\n', encoding='utf-8')
+    flags = HARNESS_FLAGS + ['-O0', '-fms-extensions', '-I', str(PROJECT / 'src/client'),
+                            '-I', str(PROJECT / 'src/rebuild'),
+                            '-include', str(PROJECT / 'src/rebuild/export_compat.h')]
+    return compile_objects([source], flags, directory, [])
+
+
+def build(suite, out, engine_dir, wrapped=False):
     test = HERE / ('t_%s.c' % suite)
     define = ['-DNC_GAME_EXE="%s"' % (GAME_DIR / 'subrosa.exe').as_posix()]
     programs = {}
     for mode in ('native', 'port'):
         directory = out / suite / mode
         directory.mkdir(parents=True, exist_ok=True)
-        flags = define + (['-DNC_NATIVE'] if mode == 'native' else [])
+        flags = define + (['-DNC_NATIVE'] if mode == 'native' else ['-DNC_CLIENT_WRAPPERS'] if wrapped else [])
         objects = compile_objects([test, HERE / 'nc.c'], HARNESS_FLAGS, directory, flags)
         if mode == 'port':
             objects += compile_objects(sorted(engine_dir.glob('*.c')), ENGINE_FLAGS, directory, [])
+            if wrapped:
+                objects += client_wrappers(test, directory)
         program = directory / ('t_%s_%s.exe' % (suite, mode))
         link(objects, program, directory, mode == 'port')
         programs[mode] = program
@@ -118,13 +155,14 @@ def main():
     parser.add_argument('--cases', type=int, default=1000)
     parser.add_argument('--out', type=Path, default=PROJECT / 'build/native-compare')
     parser.add_argument('--engine-dir', type=Path, default=PROJECT / 'src/engine')
+    parser.add_argument('--client-wrappers', action='store_true', help='enter the actual restored client adapters in CALL-based suites')
     parser.add_argument('--timeout', type=int, default=300, help='seconds per program run')
     args = parser.parse_args()
     suites = args.suites or sorted(p.stem[2:] for p in HERE.glob('t_*.c'))
     env = dict(os.environ, CASES=str(args.cases))
     failed = []
     for suite in suites:
-        programs = build(suite, args.out, args.engine_dir)
+        programs = build(suite, args.out, args.engine_dir, args.client_wrappers)
         outputs = {}
         for mode, program in programs.items():
             try:

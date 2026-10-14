@@ -9637,35 +9637,9 @@ __int64            sub_14004DE30(unsigned int a1, int a2, int a3, int a4)
 //----- (000000014005CBB0) ----------------------------------------------------
 __int64            sub_14005CBB0(unsigned int a1, unsigned int *a2, unsigned int *a3, float a4, unsigned int a5)
 {
-  __int64 v5;
-  __int64 v10;
-
-  v5 = (int)physics_point_count;
-  if ( (int)physics_point_count >= 0x4000 )
-    return 0xFFFFFFFFLL;
-  v10 = 60LL * (int)physics_point_count;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v10 + 73007022]), 0, 0xECu);
-  dword_140404A6C[v10 + 73007021] = a1;
-  dword_140404A6C[v10 + 73007022] = 0x10000;
-  dword_140404A6C[v10 + 73007026] = *a2;
-  dword_140404A6C[v10 + 73007027] = a2[1];
-  dword_140404A6C[v10 + 73007028] = a2[2];
-  dword_140404A6C[v10 + 73007029] = *a2;
-  dword_140404A6C[v10 + 73007030] = a2[1];
-  dword_140404A6C[v10 + 73007031] = a2[2];
-  if ( a3 )
-  {
-    dword_140404A6C[v10 + 73007032] = *a3;
-    dword_140404A6C[v10 + 73007033] = a3[1];
-    dword_140404A6C[v10 + 73007034] = a3[2];
-  }
-  *(float *)&dword_140404A6C[v10 + 73007023] = a4;
-  dword_140404A6C[v10 + 73007024] = 993158992;
-  dword_140404A6C[v10 + 73007025] = 1065353216;
-  if ( a5 != -1 )
-    dword_140404A6C[60 * v5 + 73007075 + (int)dword_140404A6C[v10 + 73007074]++] = a5;
-  physics_point_count = v5 + 1;
-  return (unsigned int)v5;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern unsigned int physics_create_point(unsigned int, const float *, const float *, float, unsigned int);
+  return physics_create_point(a1, (const float *)a2, (const float *)a3, a4, a5);
 }
 
 //----- (0000000140080070) ----------------------------------------------------

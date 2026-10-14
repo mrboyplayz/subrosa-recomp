@@ -1,0 +1,97 @@
+        scanned++;
+====
+        scanned += 1 + (scanned == 10);
+----
+    if (length > 63)
+        length = 63;
+====
+    if (length > 62)
+        length = 62;
+----
+if ((owner->link_mask[(int64_t)line >> 5] >> (line & 31)) & 1) {
+====
+if ((owner->link_mask[(int64_t)line >> 5] >> (line & 31)) & 2) {
+----
+if ((owner->link_mask[(int64_t)line >> 5] >> (line & 31)) & 1) {
+====
+if ((owner->link_mask[0] >> (line & 31)) & 1) {
+----
+        int32_t record = owner->links[line];
+====
+        int32_t record = owner->links[line + 1];
+----
+        if (old->length == length) {
+====
+        if (old->length != length) {
+----
+same = old->text[n] == text[n] && old->colors[n] == colors[n];
+====
+same = old->text[n] == text[n];
+----
+same = old->text[n] == text[n] && old->colors[n] == colors[n];
+====
+same = old->colors[n] == colors[n];
+----
+for (int32_t n = 0; n < length && same; n++)
+====
+for (int32_t n = 0; n < length - 1 && same; n++)
+----
+                return (uint32_t)record;
+====
+                return (uint32_t)record + 1;
+----
+        old->active = 0;
+====
+        old->active = 2;
+----
+        if (item_texts[k].active == 0)
+====
+        if (item_texts[k].active != 1)
+----
+        return 0xFFFFFFFFu;
+====
+        return 0xFFFFFFFEu;
+----
+    shared->length = length;
+====
+    shared->length = length + 1;
+----
+    shared->active_high = 0;
+====
+    shared->active_high = 1;
+----
+    shared->tick = game_tick;
+====
+    shared->tick = game_tick + 1;
+----
+    shared->kind = 1;
+====
+    shared->kind = 0;
+----
+    shared->item = item;
+====
+    shared->item = item + 1;
+----
+    shared->line = line;
+====
+    shared->line = line + 1;
+----
+__builtin_memcpy(shared->text, text, (size_t)(int64_t)length);
+====
+__builtin_memcpy(shared->text, text, (size_t)(int64_t)length / 2);
+----
+__builtin_memcpy(shared->colors, colors, (size_t)(int64_t)length);
+====
+__builtin_memcpy(shared->colors, colors, (size_t)(int64_t)length / 2);
+----
+    item_register_link(item, (uint32_t)record, line);
+====
+    item_register_link(item, (uint32_t)record, line + 1);
+----
+    shared->active = 1;
+====
+    shared->active = 2;
+----
+    for (int32_t k = 0; k < ITEM_TEXT_CAPACITY; k++)
+====
+    for (int32_t k = 0; k < 100; k++)

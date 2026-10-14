@@ -1,0 +1,169 @@
+#define GUN_MUZZLE_UP 0.03125f
+====
+#define GUN_MUZZLE_UP 0.0625f
+----
+#define GUN_MUZZLE_FORWARD 0.625f
+====
+#define GUN_MUZZLE_FORWARD 0.5f
+----
+if (gun->child_count <= 0 || item_bullets(gun->children[0]) <= 0)
+====
+if (gun->child_count < 0 || item_bullets(gun->children[0]) <= 0)
+----
+if (gun->child_count <= 0 || item_bullets(gun->children[0]) <= 0)
+====
+if (gun->child_count <= 0 || item_bullets(gun->children[0]) < 0)
+----
+    item_bullets(i) = rounds;
+====
+    item_bullets(i) = rounds + 1;
+----
+    item_bullets(gun->children[0])--;
+====
+    item_bullets(gun->children[0]) -= 2;
+----
+float speed = -item_type_bullet_velocity(type);
+====
+float speed = item_type_bullet_velocity(type);
+----
+human_random_direction(spread, item_type_bullet_spread(type), 0.0f);
+====
+human_random_direction(spread, item_type_bullet_spread(type), 0.5f);
+----
+velocity[axis] = barrel[axis] * speed + gun_velocity[axis] + spread[axis];
+====
+velocity[axis] = barrel[axis] * speed + (gun_velocity[axis] + spread[axis]);
+----
+bullet_create(item_type_bullet_type(type), position, velocity, world_humans[holder].player);
+====
+bullet_create(item_type_bullet_type(type), position, velocity, holder);
+----
+event->type = 0;
+====
+event->type = 1;
+----
+event->vector_a[axis] = body->position[axis] - body->velocity[axis];
+====
+event->vector_a[axis] = body->position[axis] + body->velocity[axis];
+----
+event->b = i;
+====
+event->b = i + 1;
+----
+world_event_count = (int32_t)(((uint32_t)count + 1u) & 0xFFFF);
+====
+world_event_count = (int32_t)(((uint32_t)count + 1u) & 0x7FFF);
+----
+    if (game_connected) {
+====
+    if (!game_connected) {
+----
+item_type_bullet_spread(type) + item_type_bullet_spread(type), 0.0f);
+====
+item_type_bullet_spread(type), 0.0f);
+----
+float kick[3] = {spread[0] + velocity[0],
+====
+float kick[3] = {spread[0] - velocity[0],
+----
+item_cooldown(i) = item_type_fire_rate(type);
+====
+item_cooldown(i) = item_type_fire_rate(type) + 1;
+----
+item_bullets(i) = rounds - 1;
+====
+item_bullets(i) = rounds - 2;
+----
+float push = (mass + mass) / item_mass(i);
+====
+float push = mass / item_mass(i);
+----
+body->velocity[axis] = back * kick[axis] + body->velocity[axis];
+====
+body->velocity[axis] = push * kick[axis] + body->velocity[axis];
+----
+body->angular_momentum[0] = (muzzle[1] * kick[2] - muzzle[2] * kick[1]) * push
+====
+body->angular_momentum[0] = (muzzle[1] * kick[2] + muzzle[2] * kick[1]) * push
+----
+body->angular_momentum[1] = (kick[0] * muzzle[2] - muzzle[0] * kick[2]) * push
+====
+body->angular_momentum[1] = (kick[0] * muzzle[2] - muzzle[0] * kick[2]) * back
+----
+body->angular_momentum[2] = (muzzle[0] * kick[1] - kick[0] * muzzle[1])
+====
+body->angular_momentum[2] = (muzzle[0] * kick[0] - kick[0] * muzzle[1])
+----
+muzzle[axis] = body->rotation[3 + axis] * GUN_MUZZLE_UP
+====
+muzzle[axis] = body->rotation[2 + axis] * GUN_MUZZLE_UP
+----
+    if (rounds - 1 == 0)
+        chamber_round(i, gun, rounds);
+====
+    if (rounds - 1 == 1)
+        chamber_round(i, gun, rounds);
+----
+    if (item_cooldown(i) > 0)
+        item_cooldown(i)--;
+====
+    if (item_cooldown(i) >= 0)
+        item_cooldown(i)--;
+----
+if (holder == -1 || game_state != 2)
+====
+if (holder == -1 || game_state != 1)
+----
+int single_shot = type == ITEM_9MM || type == ITEM_MAGNUM;
+====
+int single_shot = type == ITEM_9MM;
+----
+int32_t fires_at = type == ITEM_MAGNUM ? 6 : 2;
+====
+int32_t fires_at = type == ITEM_MAGNUM ? 5 : 2;
+----
+int32_t fires_at = type == ITEM_MAGNUM ? 6 : 2;
+====
+int32_t fires_at = type == ITEM_MAGNUM ? 6 : 3;
+----
+    if (!trigger)
+        item_trigger_ticks(i) = 0;
+====
+    if (!trigger)
+        item_trigger_ticks(i) = 1;
+----
+    if (single_shot && !trigger)
+        item_cooldown(i) = 0;
+====
+    if (single_shot && !trigger)
+        item_cooldown(i) = 1;
+----
+else if (trigger && (item_trigger_ticks(i) < fires_at || single_shot))
+====
+else if (trigger && (item_trigger_ticks(i) <= fires_at || single_shot))
+----
+else if (trigger && (item_trigger_ticks(i) < fires_at || single_shot))
+====
+else if (trigger && (item_trigger_ticks(i) < fires_at))
+----
+    if (item_bullets(i) == 0)
+        chamber_round(i, gun, 1);
+====
+    if (item_bullets(i) == 0)
+        chamber_round(i, gun, 2);
+----
+if (item_cooldown(i) > 0 || item_trigger_ticks(i) != fires_at || item_bullets(i) <= 0)
+====
+if (item_cooldown(i) > 0 || item_trigger_ticks(i) != fires_at || item_bullets(i) < 0)
+----
+if (item_cooldown(i) > 0 || item_trigger_ticks(i) != fires_at || item_bullets(i) <= 0)
+====
+if (item_cooldown(i) >= 0 || item_trigger_ticks(i) != fires_at || item_bullets(i) <= 0)
+----
+float position[3] = {body->position[0], body->position[1], body->position[2]};
+====
+float position[3] = {body->position[1], body->position[1], body->position[2]};
+----
+int trigger = item_input_flags(i) & 1;
+====
+int trigger = item_input_flags(i) & 2;

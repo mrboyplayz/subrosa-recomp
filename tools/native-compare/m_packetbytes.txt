@@ -1,0 +1,36 @@
+Count alignment in the read limit
+if (add_int(size, position) > net_read_length) return 0;
+----
+if (add_int(size, add_int(position, net_read_bit > 0)) > net_read_length) return 0;
+====
+Accept reads beginning at capacity
+if (position >= NET_BUFFER_SIZE) return 0;
+    int32_t size
+----
+if (position > NET_BUFFER_SIZE) return 0;
+    int32_t size
+====
+Align negative read bit positions
+if (net_read_bit > 0) {
+----
+if (net_read_bit != 0) {
+====
+Overwrite an aliased cursor using its saved value
+net_read_position = add_int(net_read_position, size);
+----
+net_read_position = add_int(position, size);
+====
+Reject byte writes crossing capacity
+int32_t size = multiply_int(count, element_size);
+    memmove(net_write_buffer
+----
+int32_t size = multiply_int(count, element_size);
+    if (add_int(position, size) > NET_BUFFER_SIZE) return 0;
+    memmove(net_write_buffer
+====
+Forget to align the write byte
+position = add_int(position, 1);
+        net_write_bit = 0;
+----
+position = position;
+        net_write_bit = 0;

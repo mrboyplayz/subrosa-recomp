@@ -1,0 +1,149 @@
+return (uint32_t)type <= ITEM_ROPE && ((0x1002060000ULL >> type) & 1);
+====
+return (uint32_t)type <= ITEM_ROPE && ((0x1002040000ULL >> type) & 1);
+----
+position[axis] = position[axis] - r[3 + axis] * 0.0625f;
+====
+position[axis] = position[axis] + r[3 + axis] * 0.0625f;
+----
+position[axis] = position[axis] - r[3 + axis] * 0.0625f;
+====
+position[axis] = position[axis] - r[3 + axis] * 0.125f;
+----
+item->previous_position[axis] = position[axis];
+====
+item->previous_position[axis] = parent->position[axis];
+----
+if (holder == -1 && item->parent == -1 && !lifetime_kept(item->type)) {
+====
+if (holder == -1 && item->parent == -1 && lifetime_kept(item->type)) {
+----
+counts_down = world_items[parent].holder == -1;
+====
+counts_down = world_items[parent].holder != -1;
+----
+if (parent != -1 && item_type_is_gun(world_items[parent].type) != 0)
+====
+if (parent != -1 && item_type_is_gun(world_items[parent].type) == 0)
+----
+if ((uint32_t)type - ITEM_BLACK_DISK <= ITEM_RED_DISK - ITEM_BLACK_DISK)
+====
+if ((uint32_t)type - ITEM_BLACK_DISK < ITEM_RED_DISK - ITEM_BLACK_DISK)
+----
+    if (lifetime >= 0x10000) {
+====
+    if (lifetime > 0x10000) {
+----
+        if (holder == -1)
+            goto hold;
+====
+        if (holder != -1)
+            goto hold;
+----
+    if (lifetime > 18000)
+        lifetime = 18000;
+    if ((type
+====
+    if (lifetime > 18000)
+        lifetime = 18001;
+    if ((type
+----
+lifetime = (int32_t)((uint32_t)lifetime - 1u);
+====
+lifetime = (int32_t)((uint32_t)lifetime - 2u);
+----
+if (item->child_count > 0)
+====
+if (item->child_count >= 0)
+----
+if ((((uint32_t)game_type - 3u) & ~2u) == 0 && lifetime > 0)
+====
+if ((((uint32_t)game_type - 3u) & ~3u) == 0 && lifetime > 0)
+----
+if ((((uint32_t)game_type - 3u) & ~2u) == 0 && lifetime > 0)
+====
+if ((((uint32_t)game_type - 3u) & ~2u) == 0 && lifetime >= 0)
+----
+if ((uint32_t)lifetime - 1u <= 0xFFFEu)
+====
+if ((uint32_t)lifetime - 1u <= 0xFFFFu)
+----
+if ((uint32_t)lifetime - 1u <= 0xFFFEu)
+====
+if ((uint32_t)lifetime <= 0xFFFEu)
+----
+    if (item_type_is_gun(type) != 0)
+        gun_update(i);
+====
+    if (item_type_is_gun(type) == 0)
+        gun_update(i);
+----
+else if (type == ITEM_GRENADE && game_state == 2)
+====
+else if (type == ITEM_GRENADE && game_state == 1)
+----
+if (held_down && !(item_last_input_flags(i) & 1))
+        briefcase_toggle(i);
+====
+if (held_down && (item_last_input_flags(i) & 1))
+        briefcase_toggle(i);
+----
+item_bullets(i)--;
+====
+item_bullets(i) -= 2;
+----
+if (item_bullets(i) <= 0)
+====
+if (item_bullets(i) < 0)
+----
+item_last_input_flags(i) = bits;
+====
+item_last_input_flags(i) = 0;
+----
+item_input_flags(i) = 0;
+====
+item_input_flags(i) = bits;
+----
+walkie_talkie_list_count(channel) = 0;
+====
+walkie_talkie_list_count(channel) = 1;
+----
+            item_follow_holder(i, holder);
+====
+            item_follow_holder(i, -1);
+----
+if ((uint32_t)parent_type - ITEM_BRIEFCASE <= 1u) {
+====
+if ((uint32_t)parent_type - ITEM_BRIEFCASE <= 0u) {
+----
+} else if (parent_type == ITEM_COMPUTER) {
+====
+} else if (parent_type == ITEM_ARCADE) {
+----
+used = burger_update(i, held_down, item_last_input_flags(i) & 1);
+====
+used = burger_update(i, held_down, item_last_input_flags(i) & 2);
+----
+    if (type == ITEM_KEY)
+        key_update(i);
+====
+    if (type == ITEM_DOOR)
+        key_update(i);
+----
+    else if (type == ITEM_WALKIE_TALKIE)
+        walkie_talkie_update(i);
+====
+    else if (type == ITEM_KEY)
+        walkie_talkie_update(i);
+----
+    if (type == ITEM_ARCADE)
+        arcade_update(i);
+====
+    if (type == ITEM_TABLE)
+        arcade_update(i);
+----
+        if (item->type == ITEM_WALKIE_TALKIE)
+            walkie_talkie_file(i);
+====
+        if (item->type == ITEM_KEY)
+            walkie_talkie_file(i);

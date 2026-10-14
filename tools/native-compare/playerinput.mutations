@@ -1,0 +1,110 @@
+@@ ring of 32
+    player->num_actions = (player->num_actions + 1) & 63;
+=>
+    player->num_actions = (player->num_actions + 1) & 31;
+----
+@@ argument dropped
+    next_action(player)->c = argument;
+=>
+    next_action(player)->c = 0;
+----
+@@ chat length not masked
+    size_t length = strlen(text) & 63;
+=>
+    size_t length = strlen(text) > 63 ? 63 : strlen(text);
+----
+@@ chat volume
+    next_action(player)->b = chat_volume;
+=>
+    next_action(player)->b = 1;
+----
+@@ chat type
+    next_action(player)->type = PLAYER_ACTION_CHAT;
+=>
+    next_action(player)->type = PLAYER_ACTION_INVENTORY;
+----
+@@ empty slot read
+    if (world_humans[human].hands[0].count > 0)
+=>
+    if (world_humans[human].hands[0].count >= 0)
+----
+@@ manual hand from another key
+        hand = key_down(SCANCODE_LSHIFT) != 0;
+=>
+        hand = key_down(SCANCODE_E) != 0;
+----
+@@ automatic hands swapped
+        hand = key_down(SCANCODE_LSHIFT) ? 2 : 3;
+=>
+        hand = key_down(SCANCODE_LSHIFT) ? 3 : 2;
+----
+@@ blocked ignored
+    if (input_blocked)
+        return;
+=>
+    if (input_blocked == 12345)
+        return;
+----
+@@ R on press
+    if (key_released(SCANCODE_R))
+=>
+    if (key_pressed(SCANCODE_R))
+----
+@@ E on release
+    if (key_pressed(SCANCODE_E))
+=>
+    if (key_released(SCANCODE_E))
+----
+@@ other hand argument
+        player_queue_inventory_action(index, PLAYER_INVENTORY_KEY_R, hand, hand ^ 1);
+=>
+        player_queue_inventory_action(index, PLAYER_INVENTORY_KEY_R, hand, hand);
+----
+@@ dialling ignored
+    if (held == -1 || !item_is_phone(world_items[held].type) || item_phone_status(held) != PHONE_DIALLING)
+=>
+    if (held == -1 || !item_is_phone(world_items[held].type) || item_phone_status(held) != PHONE_RINGING)
+----
+@@ only four number keys
+        for (int k = 0; k < 5; k++)
+=>
+        for (int k = 0; k < 4; k++)
+----
+@@ right click does not cancel
+                key_q_held = 0;
+=>
+                ;
+----
+@@ Q action argument
+        player_queue_inventory_action(index, PLAYER_INVENTORY_KEY_Q, hand, -1);
+=>
+        player_queue_inventory_action(index, PLAYER_INVENTORY_KEY_Q, hand, 0);
+----
+@@ Q does not stop a click
+    if (left_click_used || key_q_held) {
+=>
+    if (left_click_used) {
+----
+@@ held click re-arms
+        if (!mouse_left_was_down)
+            armed = 1;
+=>
+        if (mouse_left_down)
+            armed = 1;
+----
+@@ released button keeps arm
+    if (!mouse_left_down) {
+        left_click_armed = 0;
+        return;
+    }
+    if (armed)
+=>
+    if (!mouse_left_down) {
+        return;
+    }
+    if (armed)
+----
+@@ wrong input flag
+        player->input_flags |= PLAYER_INPUT_PRIMARY;
+=>
+        player->input_flags |= 2;

@@ -36,6 +36,9 @@ void nc_bind_import(const char *dll, const char *name, void *target);
 /* Address of original code or data. */
 #define NC_ADDR(address) ((void *)(uintptr_t)(address))
 
+/* Supplied by run.py --client-wrappers from the current client sources. */
+void *nc_client_wrapper(uint64_t address);
+
 /* Overwrite the original routine at address with a jump to target. Used to
  * put the same recording stub behind a callee in both builds (the port build
  * reaches the original callee through its absolute symbol, which then lands

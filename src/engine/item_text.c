@@ -4,6 +4,26 @@
 #include "frame.h"
 #include "item.h"
 
+uint32_t item_allocate_text_record(int item, uint32_t line, int length)
+{
+    uint32_t index = 0;
+    while (item_link_records[index].used)
+        if (++index >= ITEM_LINK_RECORD_CAPACITY)
+            return UINT32_MAX;
+    if (length > 64) length = 64;
+    ItemLinkRecord *record = &item_link_records[index];
+    record->item = item;
+    record->length = length;
+    record->line = (int32_t)line;
+    record->tick = game_tick;
+    record->used = 1;
+    record->unknown_4 = 0;
+    record->unknown_8 = 0;
+    /* The native byte offset is a 32-bit shift followed by sign extension. */
+    memcpy(record->text, item_record_text_chunk(item, line), (size_t)length);
+    return index;
+}
+
 uint32_t item_link_text_line(int item, int line)
 {
     const char *text = item_text_line(item, line);

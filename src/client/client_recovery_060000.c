@@ -5211,24 +5211,9 @@ float            sub_14007ABA0(float *a1, float *a2, float *a3)
 //----- (000000014007ADF0) ----------------------------------------------------
 __int64            sub_14007ADF0(__m128i *a1, int a2, int a3)
 {
-  signed int v3;
-  int v4;
-
-  v3 = dword_140404A6C[289317484];
-  if ( (int)dword_140404A6C[289317484] >= 0x10000 )
-    return 0;
-  v4 = a3 * a2;
-  if ( (signed int)(a3 * a2 + dword_140404A6C[289317484]) > (int)dword_140404A6C[289317483] )
-    return 0;
-  if ( (int)dword_140404A6C[289317485] > 0 )
-  {
-    v3 = dword_140404A6C[289317484] + 1;
-    dword_140404A6C[289317485] = 0;
-    ++dword_140404A6C[289317484];
-  }
-  crt_memcpy(a1, (     __m128i *)((char *)&dword_140404A6C[289317486] + v3), v4);
-  dword_140404A6C[289317484] += v4;
-  return 1;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern int net_read_bytes(void *, int, int);
+  return net_read_bytes(a1, a2, a3);
 }
 
 // 14007AE70: returning address of temporary local variable '%__return_address'
@@ -5243,22 +5228,9 @@ void            sub_14007B0F0(float *a1, float *a2, float *a3)
 //----- (000000014007B180) ----------------------------------------------------
 __int64            sub_14007B180(     __m128i *a1, int a2, int a3)
 {
-  signed int v3;
-  int v5;
-
-  v3 = dword_140404A6C[289301092];
-  if ( (int)dword_140404A6C[289301092] >= 0x10000 )
-    return 0;
-  if ( (int)dword_140404A6C[289301093] > 0 )
-  {
-    v3 = dword_140404A6C[289301092] + 1;
-    dword_140404A6C[289301093] = 0;
-    ++dword_140404A6C[289301092];
-  }
-  v5 = a3 * a2;
-  crt_memcpy((__m128i *)((char *)&dword_140404A6C[289301094] + v3), a1, a3 * a2);
-  dword_140404A6C[289301092] += v5;
-  return 1;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern int net_write_bytes(const void *, int, int);
+  return net_write_bytes(a1, a2, a3);
 }
 
 //----- (000000014007B4D0) ----------------------------------------------------

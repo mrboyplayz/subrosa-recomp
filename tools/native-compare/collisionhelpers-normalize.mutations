@@ -1,0 +1,3 @@
+if (is_zero_or_nan_quiet(length))
+====
+if (is_zero_or_nan(length))

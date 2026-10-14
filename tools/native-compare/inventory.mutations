@@ -1,0 +1,224 @@
+@@ only six slots
+#define INVENTORY_SLOTS 7                /* the two hands and five slots on the body */
+=>
+#define INVENTORY_SLOTS 6                /* the two hands and five slots on the body */
+----
+@@ slots not emptied
+    for (slot = 0; slot < INVENTORY_SLOTS; slot++)
+        player->inventory[slot].count = 0;
+    human = player->human;
+=>
+    human = player->human;
+----
+@@ gun types up to 15
+#define ITEM_LAST_GUN_TYPE 14            /* types up to here are guns and their magazines */
+=>
+#define ITEM_LAST_GUN_TYPE 15            /* types up to here are guns and their magazines */
+----
+@@ bullets saved with a magazine in
+                if (world_items[item].child_count <= 0) {
+=>
+                if (world_items[item].child_count < 0) {
+----
+@@ magazine flag not set
+                    entry[1] = 1;
+                    entry[2] = rounds;
+=>
+                    entry[2] = rounds;
+----
+@@ chamber always counted
+                    if (chambered &&
+=>
+                    if (1 &&
+----
+@@ chamber fits up to capacity only
+                        rounds < (int32_t)((uint32_t)item_type_magazine_ammo(world_items[magazine].type) + 1u))
+=>
+                        rounds < item_type_magazine_ammo(world_items[magazine].type))
+----
+@@ chamber capacity of the gun's type
+                        rounds < (int32_t)((uint32_t)item_type_magazine_ammo(world_items[magazine].type) + 1u))
+=>
+                        rounds < (int32_t)((uint32_t)item_type_magazine_ammo(world_items[item].type) + 1u))
+----
+@@ wrecked car kept
+                if (vehicle == -1 || physics_vehicles[vehicle].health <= 0)
+=>
+                if (vehicle == -1 || physics_vehicles[vehicle].health < 0)
+----
+@@ world car kept as type
+                if (game_type == GAME_TYPE_WORLD) {
+                    SavedCar *car;
+=>
+                if (game_type == GAME_TYPE_WORLD + 1) {
+                    SavedCar *car;
+----
+@@ saved car colour missing
+                    car->color = color;
+=>
+                    car->color = 0;
+----
+@@ saved car old vehicle missing
+                    car->old_vehicle = vehicle;
+=>
+                    car->old_vehicle = vehicle_type;
+----
+@@ saved car rotation short
+                    for (k = 0; k < 9; k++)
+                        car->rotation[k] = physics_vehicles[vehicle].rotation[k];
+=>
+                    for (k = 0; k < 8; k++)
+                        car->rotation[k] = physics_vehicles[vehicle].rotation[k];
+----
+@@ saved cars not counted
+                    saved_car_count++;
+=>
+                    (void)0;
+----
+@@ world key entry 2 cleared
+                    entry[1] = vehicle;
+                    saved->count++;
+=>
+                    entry[1] = vehicle;
+                    entry[2] = 0;
+                    saved->count++;
+----
+@@ key colour for type
+                    entry[1] = vehicle_type;
+                    entry[2] = (int32_t)color;
+=>
+                    entry[1] = (int32_t)color;
+                    entry[2] = vehicle_type;
+----
+@@ cash bills not saved
+                entry[2] = (int32_t)item_cash_bill_values(item);
+=>
+                entry[2] = 0;
+----
+@@ restore at the wrong bone
+        position[k] = world_humans[human].bones[HUMAN_BONE_PELVIS].position[k];
+=>
+        position[k] = world_humans[human].bones[1].position[k];
+----
+@@ rotation not upright
+    static const float upright[9] = { 1, 0, 0, 0, 1, 0, 0, 0, 1 };
+=>
+    static const float upright[9] = { 1, 0, 0, 0, 1, 0, 0, 0, -1 };
+----
+@@ magazine without flag
+                    if (entry[1] > 0) {
+=>
+                    if (entry[1] >= 0) {
+----
+@@ magazine of the same type
+                        int magazine = (int32_t)sr_CreateItem(type + 1, position, 0, upright);
+=>
+                        int magazine = (int32_t)sr_CreateItem(type, position, 0, upright);
+----
+@@ magazine rounds not set
+                        item_bullets(magazine) = entry[2];
+=>
+                        (void)0;
+----
+@@ gun gets bullets too
+                } else {
+                    item_bullets(item) = entry[2];
+                }
+                item_transfer(item, -1, human, slot);
+=>
+                }
+                item_bullets(item) = entry[2];
+                item_transfer(item, -1, human, slot);
+----
+@@ first saved car wins
+                        if (saved_cars[n].old_vehicle == old_vehicle)
+                            world_item_vehicle(item) = saved_cars[n].vehicle;
+=>
+                        if (saved_cars[n].old_vehicle == old_vehicle) {
+                            world_item_vehicle(item) = saved_cars[n].vehicle;
+                            break;
+                        }
+----
+@@ old vehicle for new
+                            world_item_vehicle(item) = saved_cars[n].vehicle;
+=>
+                            world_item_vehicle(item) = saved_cars[n].old_vehicle;
+----
+@@ parking for every team
+                } else if (team < PARKING_TEAMS) {
+=>
+                } else if (team < 6) {
+----
+@@ key without a car
+                    if (vehicle != -1) {
+=>
+                    if (vehicle != -2) {
+----
+@@ cash count not restored
+                item_cash_bill_count(item) = entry[1];
+=>
+                (void)0;
+----
+@@ mute limit 256
+    if (index > 255)
+=>
+    if (index > 256)
+----
+@@ mute flag set not flipped
+    player_muted(index) ^= 1;
+=>
+    player_muted(index) = !was_muted;
+----
+@@ mute removes only the first
+                muted_count--;
+                muted_phone_numbers[i] = muted_phone_numbers[muted_count];
+=>
+                muted_count--;
+                muted_phone_numbers[i] = muted_phone_numbers[muted_count];
+                break;
+----
+@@ removal skips the moved entry
+                muted_phone_numbers[i] = muted_phone_numbers[muted_count];
+            } else {
+                i++;
+            }
+=>
+                muted_phone_numbers[i] = muted_phone_numbers[muted_count];
+                i++;
+            } else {
+                i++;
+            }
+----
+@@ duplicate added
+            if (muted_phone_numbers[i] == phone_number)
+                return;
+=>
+            if (muted_phone_numbers[i] == phone_number + 1)
+                return;
+----
+@@ list limit off by one
+        if (muted_count < MAX_MUTED) {
+=>
+        if (muted_count <= MAX_MUTED) {
+----
+@@ corporation -1 allowed
+    if (corporation == -1)
+        return -1;
+    c = &world_corporations[corporation];
+=>
+    c = &world_corporations[corporation];
+----
+@@ last parking place unused
+        if (place + 1 >= c->parking_count)
+=>
+        if (place + 2 >= c->parking_count)
+----
+@@ parking not taken
+    c->parking[place].in_use = 1;
+=>
+    c->parking[place].in_use = c->parking[place].in_use;
+----
+@@ car colour lost
+    return vehicle_create(type, c->parking[place].position, 0, c->parking[place].rotation, color);
+=>
+    return vehicle_create(type, c->parking[place].position, 0, c->parking[place].rotation, 0);

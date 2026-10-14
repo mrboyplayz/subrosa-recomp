@@ -1,0 +1,80 @@
+@@ events when not connected
+    if (!game_connected)
+        return;
+    event = next_event(WORLD_EVENT_UPDATE_PLAYER);
+=>
+    event = next_event(WORLD_EVENT_UPDATE_PLAYER);
+----
+@@ count not wrapped
+    world_event_count = (int32_t)(((uint32_t)count + 1u) & 0xFFFF);
+=>
+    world_event_count = (int32_t)(((uint32_t)count + 1u) & 0x1FFFF);
+----
+@@ count not advanced
+    world_event_count = (int32_t)(((uint32_t)count + 1u) & 0xFFFF);
+=>
+    world_event_count = count;
+----
+@@ tick missing
+    event->tick = game_tick;
+=>
+    event->tick = 0;
+----
+@@ team not plus one
+    flags = (uint32_t)player->is_bot + 2u * ((uint32_t)player->active + 2u * ((uint32_t)player->team + 1u));
+=>
+    flags = (uint32_t)player->is_bot + 2u * ((uint32_t)player->active + 2u * (uint32_t)player->team);
+----
+@@ bot and active swapped
+    flags = (uint32_t)player->is_bot + 2u * ((uint32_t)player->active + 2u * ((uint32_t)player->team + 1u));
+=>
+    flags = (uint32_t)player->active + 2u * ((uint32_t)player->is_bot + 2u * ((uint32_t)player->team + 1u));
+----
+@@ flags shift 7
+    event->a = (int32_t)((uint32_t)index + (flags << 8));
+=>
+    event->a = (int32_t)((uint32_t)index + (flags << 7));
+----
+@@ head field width
+         + 2u * ((uint32_t)player->head + 32u * ((uint32_t)player->skin_color + 8u * (uint32_t)player->hair));
+=>
+         + 2u * ((uint32_t)player->head + 16u * ((uint32_t)player->skin_color + 8u * (uint32_t)player->hair));
+----
+@@ sunglasses for necklace
+            + 16u * ((uint32_t)player->tie_color + 16u * (uint32_t)player->necklace))));
+=>
+            + 16u * ((uint32_t)player->tie_color + 16u * (uint32_t)player->sunglasses))));
+----
+@@ eye and hair colour swapped
+    clothes = (uint32_t)player->eye_color
+            + 8u * ((uint32_t)player->hair_color
+=>
+    clothes = (uint32_t)player->hair_color
+            + 8u * ((uint32_t)player->eye_color
+----
+@@ name 30 characters
+    memcpy(world_event_message(event), player->name, 31);
+=>
+    memcpy(world_event_message(event), player->name, 30);
+----
+@@ name not terminated
+    world_event_message(event)[31] = 0;
+=>
+    (void)0;
+----
+@@ finance without connection
+    if (!game_connected)
+        return;
+    event = next_event(WORLD_EVENT_UPDATE_PLAYER_FINANCE);
+=>
+    event = next_event(WORLD_EVENT_UPDATE_PLAYER_FINANCE);
+----
+@@ finance stocks for money
+    event->b = player->money;
+=>
+    event->b = player->stocks;
+----
+@@ finance phone missing
+    world_event_d(event) = (int32_t)player->phone_number;
+=>
+    world_event_d(event) = (int32_t)player->sub_rosa_id;

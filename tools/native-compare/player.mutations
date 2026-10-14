@@ -1,0 +1,138 @@
+@@ last slot never taken
+    for (index = 0; index < MAX_PLAYERS; index++)
+=>
+    for (index = 0; index < MAX_PLAYERS - 1; index++)
+----
+@@ last word not cleared
+    memset((uint8_t *)player + sizeof player->active, 0, sizeof *player - sizeof player->active);
+=>
+    memset((uint8_t *)player + sizeof player->active, 0, sizeof *player - sizeof player->active - 4);
+----
+@@ team
+    player->team = TEAM_NONE;
+=>
+    player->team = 16;
+----
+@@ money
+    player->money = START_MONEY;
+=>
+    player->money = START_MONEY + 1;
+----
+@@ lobby tab
+    if (game_state == GAME_STATE_LOBBY && game_type == 3)
+=>
+    if (game_state == GAME_STATE_LOBBY && game_type == 4)
+----
+@@ thrown-away rand dropped
+    rand();                              /* drawn and thrown away */
+=>
+    ;
+----
+@@ feature mirrored wrong
+    player->features[1] = (PlayerFeature){ { -0.046875f, 0.046875f, -0.15f }, { 1.0f, 1.0f, 1.0f } };
+=>
+    player->features[1] = (PlayerFeature){ { -0.046875f, -0.046875f, -0.15f }, { 1.0f, 1.0f, 1.0f } };
+----
+@@ skin colour odds
+    if ((rand() & 3) != 3)               /* three times in four */
+=>
+    if ((rand() & 3) != 2)               /* three times in four */
+----
+@@ hair and hair colour order
+    player->hair_color = rand() % 6;
+    player->hair = rand() % 9;
+=>
+    player->hair = rand() % 9;
+    player->hair_color = rand() % 6;
+----
+@@ route start
+    bot_route_start(index) = -1;
+=>
+    bot_route_start(index) = 0;
+----
+@@ bots also leave corporations
+    if (!player->is_bot) {
+=>
+    if (1) {
+----
+@@ five corporations
+        for (int c = 0; c < 6; c++) {
+=>
+        for (int c = 0; c < 5; c++) {
+----
+@@ manager lost in every game type
+            if (game_type == 4)
+=>
+            if (game_type != 0)
+----
+@@ barred list kept
+            corporation->barred_count = 0;
+=>
+            ;
+----
+@@ spawn timer not saved
+            account->spawn_timer = player->spawn_timer;
+=>
+            ;
+----
+@@ ratings swapped
+            account->corporate_rating = player->corporate_rating;
+=>
+            account->corporate_rating = player->criminal_rating;
+----
+@@ human of another player released
+        if (human->player == index) {
+=>
+        if (human->player != -2) {
+----
+@@ human keeps no account
+            human->account = player->account;
+=>
+            human->account = -1;
+----
+@@ event not sent
+    event_update_player(index);
+=>
+    ;
+
+----
+@@ slash range one short
+    for (k = 0; k < 31; k++)
+        if (name[k] == '/')
+=>
+    for (k = 0; k < 30; k++)
+        if (name[k] == '/')
+----
+@@ slash kept
+            name[k] = ' ';
+    name[31] = 0;
+
+=>
+            name[k] = '_';
+    name[31] = 0;
+
+----
+@@ shift stops before the end
+        for (k = 0; k < 31 && name[k] != 0; k++)
+=>
+        for (k = 0; k < 30 && name[k] != 0; k++)
+----
+@@ shift copies past the end
+        for (k = 0; k < 31 && name[k] != 0; k++)
+=>
+        for (k = 0; k < 31; k++)
+----
+@@ trailing spaces kept
+    while (k >= 0 && *last == ' ') {
+=>
+    while (k >= 0 && *last == 'x') {
+----
+@@ empty name kept
+    if (name[0] == 0) {
+=>
+    if (name[0] == 1) {
+----
+@@ return value
+        last = NULL;
+=>
+        last = name;

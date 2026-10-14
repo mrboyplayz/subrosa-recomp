@@ -2270,16 +2270,9 @@ __int64            sub_14004C4E0(int a1, __int64 a2, __int64 a3, __int64 a4)
 //----- (000000014004C960) ----------------------------------------------------
 __int64            sub_14004C960(int a1, int a2)
 {
-  __int64 v3;
-
-  if ( a2 == 2 )
-    return dword_140404A6C[1760 * a1 + 278846098];
-  if ( a2 )
-    return 0xFFFFFFFFLL;
-  v3 = 1760LL * a1;
-  if ( (int)dword_140404A6C[v3 + 278845906] <= 0 )
-    return 0xFFFFFFFFLL;
-  return dword_140404A6C[1760 * dword_140404A6C[v3 + 278845907] + 278846098];
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern unsigned int disk_for_item_drive(int, int);
+  return disk_for_item_drive(a1, a2);
 }
 
 //----- (000000014004C9C0) ----------------------------------------------------
@@ -2635,91 +2628,17 @@ __int64            sub_14004E2E0(unsigned int a1, unsigned int *a2, unsigned int
 //----- (000000014004E430) ----------------------------------------------------
 __int64            sub_14004E430(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4)
 {
-  unsigned int *v5;
-  unsigned int v9;
-  __int64 v11;
-  unsigned int *v12;
-
-  v5 = &dword_140404A6C[486149253];
-  v9 = 0;
-  while ( *v5 )
-  {
-    ++v9;
-    v5 += 61;
-    if ( (__int64)v5 >= (__int64)&dword_140404A6C[487148677] )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v9 == -1 )
-    return 0xFFFFFFFFLL;
-  v11 = 61LL * (int)v9;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v11 + 486149254]), 0, 0xF0u);
-  dword_140404A6C[v11 + 486149253] = 1;
-  dword_140404A6C[v11 + 486149254] = 7;
-  *(_QWORD *)&dword_140404A6C[v11 + 486149256] = 0x10000;
-  dword_140404A6C[v11 + 486149292] = a2;
-  dword_140404A6C[v11 + 486149291] = a1;
-  dword_140404A6C[v11 + 486149293] = -1;
-  dword_140404A6C[v11 + 486149281] = 1048576000;
-  dword_140404A6C[v11 + 486149282] = 1052770304;
-  v12 = &dword_140404A6C[36 * v9 + 485543029];
-  *(_OWORD *)v12 = 0;
-  *((_OWORD *)v12 + 1) = 0;
-  *((_OWORD *)v12 + 2) = 0;
-  *((_OWORD *)v12 + 3) = 0;
-  *((_OWORD *)v12 + 4) = 0;
-  *((_OWORD *)v12 + 5) = 0;
-  *((_OWORD *)v12 + 6) = 0;
-  *((_OWORD *)v12 + 7) = 0;
-  *((_OWORD *)v12 + 8) = 0;
-  dword_140404A6C[v11 + 486149267] = *a3;
-  dword_140404A6C[v11 + 486149268] = a3[1];
-  dword_140404A6C[v11 + 486149269] = a3[2];
-  dword_140404A6C[v11 + 486149270] = *a4;
-  dword_140404A6C[v11 + 486149271] = a4[1];
-  dword_140404A6C[v11 + 486149272] = a4[2];
-  return v9;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern unsigned int physics_create_body_bond(unsigned int, unsigned int, const float *, const float *);
+  return physics_create_body_bond(a1, a2, (const float *)a3, (const float *)a4);
 }
 
 //----- (000000014004E5B0) ----------------------------------------------------
 __int64            sub_14004E5B0(unsigned int a1, unsigned int a2)
 {
-  unsigned int *v3;
-  unsigned int v5;
-  __int64 v7;
-  unsigned int *v8;
-
-  v3 = &dword_140404A6C[486149253];
-  v5 = 0;
-  while ( *v3 )
-  {
-    ++v5;
-    v3 += 61;
-    if ( (__int64)v3 >= (__int64)&dword_140404A6C[487148677] )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v5 == -1 )
-    return 0xFFFFFFFFLL;
-  v7 = 61LL * (int)v5;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v7 + 486149254]), 0, 0xF0u);
-  dword_140404A6C[v7 + 486149253] = 1;
-  dword_140404A6C[v7 + 486149254] = 8;
-  *(_QWORD *)&dword_140404A6C[v7 + 486149256] = 0x10000;
-  dword_140404A6C[v7 + 486149292] = a2;
-  dword_140404A6C[v7 + 486149291] = a1;
-  dword_140404A6C[v7 + 486149293] = -1;
-  v8 = &dword_140404A6C[36 * v5 + 485543029];
-  dword_140404A6C[v7 + 486149281] = 1031798784;
-  dword_140404A6C[v7 + 486149282] = 1040187392;
-  *(_OWORD *)v8 = 0;
-  *((_OWORD *)v8 + 1) = 0;
-  *((_OWORD *)v8 + 2) = 0;
-  *((_OWORD *)v8 + 3) = 0;
-  *((_OWORD *)v8 + 4) = 0;
-  *((_OWORD *)v8 + 5) = 0;
-  *((_OWORD *)v8 + 6) = 0;
-  *((_OWORD *)v8 + 7) = 0;
-  *((_OWORD *)v8 + 8) = 0;
-  return v5;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern unsigned int physics_create_rotation_bond(unsigned int, unsigned int);
+  return physics_create_rotation_bond(a1, a2);
 }
 
 //----- (000000014004E6E0) ----------------------------------------------------
@@ -3695,27 +3614,9 @@ double            sub_1400504C0(int a1, float a2, float a3, float a4)
 //----- (0000000140050EF0) ----------------------------------------------------
 __int64            sub_140050EF0(unsigned int a1)
 {
-  unsigned int *v2;
-  unsigned int v3;
-  __int64 v5;
-
-  v2 = &dword_140404A6C[275753045];
-  v3 = 0;
-  while ( *v2 )
-  {
-    ++v3;
-    v2 += 2570;
-    if ( (__int64)v2 >= (__int64)&dword_140404A6C[278384725] )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v3 != -1 )
-  {
-    v5 = 2570LL * (int)v3;
-    crt_memset((void *)(uintptr_t)(&dword_140404A6C[v5 + 275753046]), 0, 0x2824u);
-    dword_140404A6C[v5 + 275753045] = 1;
-    dword_140404A6C[v5 + 275753046] = a1;
-  }
-  return v3;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern unsigned int disk_create(unsigned int);
+  return disk_create(a1);
 }
 
 //----- (0000000140050F90) ----------------------------------------------------
@@ -3731,236 +3632,68 @@ __int64            sub_140050F90(int a1, signed int a2)
 //----- (0000000140051170) ----------------------------------------------------
 __int64            sub_140051170(int a1, unsigned int a2, int a3)
 {
-  __int64 v4;
-  unsigned int *v5;
-  unsigned int v6;
-  signed int v8;
-  __int64 v9;
-  unsigned int v10;
-
-  v4 = a1;
-  v5 = &dword_140404A6C[290382645];
-  v6 = 0;
-  while ( *v5 )
-  {
-    ++v6;
-    v5 += 39;
-    if ( (__int64)v5 >= (__int64)&dword_140404A6C[291021621] )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v6 == -1 )
-    return 0xFFFFFFFFLL;
-  v8 = 64;
-  if ( a3 <= 64 )
-    v8 = a3;
-  v9 = 39LL * (int)v6;
-  v10 = game_tick;
-  dword_140404A6C[v9 + 290382649] = v4;
-  dword_140404A6C[v9 + 290382651] = v8;
-  dword_140404A6C[v9 + 290382650] = a2;
-  dword_140404A6C[v9 + 290382648] = v10;
-  *(_QWORD *)&dword_140404A6C[v9 + 290382645] = 1;
-  dword_140404A6C[v9 + 290382647] = 0;
-  crt_memcpy(
-    (__m128i *)&dword_140404A6C[v9 + 290382652],
-    (     __m128i *)((char *)&dword_140404A6C[1760 * v4 + 278846111] + (int)(a2 << 6)),
-    v8);
-  return v6;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern unsigned int item_allocate_text_record(int, unsigned int, int);
+  return item_allocate_text_record(a1, a2, a3);
 }
 
 //----- (0000000140051230) ----------------------------------------------------
 void            sub_140051230(unsigned int a1, unsigned int *a2, unsigned int *a3, unsigned int a4)
 {
-  unsigned int v4;
-  unsigned int v5;
-  __int64 v6;
-
-  if ( game_connected )
-  {
-    v4 = world_event_count;
-    v5 = game_tick;
-    v6 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v6) = 0;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v6) = v5;
-    *(unsigned int *)((char *)&dword_140404A6C[297756287] + v6) = *a2;
-    *(unsigned int *)((char *)&dword_140404A6C[297756288] + v6) = a2[1];
-    *(unsigned int *)((char *)&dword_140404A6C[297756289] + v6) = a2[2];
-    *(unsigned int *)((char *)&dword_140404A6C[297756290] + v6) = *a3;
-    *(unsigned int *)((char *)&dword_140404A6C[297756291] + v6) = a3[1];
-    *(unsigned int *)((char *)&dword_140404A6C[297756292] + v6) = a3[2];
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v6) = a1;
-    world_event_count = v4 + 1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v6) = a4;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_bullet(unsigned int, const float *, const float *, unsigned int);
+  event_bullet(a1, (const float *)a2, (const float *)a3, a4);
 }
 
 //----- (00000001400512D0) ----------------------------------------------------
 void            sub_1400512D0(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4)
 {
-  unsigned int v4;
-  unsigned int v5;
-  __int64 v6;
-  unsigned int v7;
-
-  if ( game_connected )
-  {
-    v4 = game_tick;
-    v5 = world_event_count;
-    v6 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v6) = 1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v6) = v4;
-    *(unsigned int *)((char *)&dword_140404A6C[297756287] + v6) = *a3;
-    *(unsigned int *)((char *)&dword_140404A6C[297756288] + v6) = a3[1];
-    *(unsigned int *)((char *)&dword_140404A6C[297756289] + v6) = a3[2];
-    if ( a4 )
-    {
-      *(unsigned int *)((char *)&dword_140404A6C[297756290] + v6) = *a4;
-      *(unsigned int *)((char *)&dword_140404A6C[297756291] + v6) = a4[1];
-      v7 = a4[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&dword_140404A6C[297756290] + v6) = 0;
-      v7 = 0;
-    }
-    *(unsigned int *)((char *)&dword_140404A6C[297756292] + v6) = v7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v6) = a1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v6) = a2;
-    world_event_count = v5 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_bullet_hit(unsigned int, unsigned int, const float *, const float *);
+  event_bullet_hit(a1, a2, (const float *)a3, (const float *)a4);
 }
 
 //----- (0000000140051480) ----------------------------------------------------
 __int64            sub_140051480(unsigned int a1,      __m128i *a2, unsigned int a3, unsigned int a4)
 {
-  __int64 v7;
-  unsigned int v8;
-  unsigned int v9;
-  __int64 v10;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v7 = -1;
-    do
-      ++v7;
-    while ( SR_VEC_PTR_LANES(128, a2, i8)[v7] );
-    v8 = world_event_count;
-    if ( (int)v7 > 63 )
-      LODWORD(v7) = 63;
-    v9 = game_tick;
-    v10 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v10) = 2;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v10) = v9;
-    crt_memcpy((__m128i *)((char *)&dword_140404A6C[297756301] + v10), a2, (int)v7);
-    *((_BYTE *)&dword_140404A6C[297756301] + v10 + (int)v7) = 0;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v10) = v7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v10) = a1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v10) = a3;
-    *(unsigned int *)((char *)&dword_140404A6C[297756296] + v10) = a4;
-    world_event_count = v8 + 1;
-    HIWORD(world_event_count) = 0;
-    return 0;
-  }
-  return result;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_message(unsigned int, const char *, unsigned int, unsigned int);
+  event_message(a1, (const char *)a2, a3, a4);
+  return 0; /* The native event routine has no defined return value. */
 }
 
 //----- (0000000140051560) ----------------------------------------------------
 void            sub_140051560(int a1, int a2, int a3, int a4, unsigned int a5)
 {
-  unsigned int v5;
-  __int64 v6;
-  unsigned int v7;
-
-  if ( game_connected )
-  {
-    v5 = game_tick;
-    v6 = (__int64)(int)world_event_count << 7;
-    v7 = world_event_count + 1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v6) = 18;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v6) = v5;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v6) = a1 + (a2 << 16);
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v6) = a3 + (a4 << 16);
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v6) = a5;
-    world_event_count = v7;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_block_update(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+  event_block_update(a1, a2, a3, a4, a5);
 }
 
 //----- (00000001400515E0) ----------------------------------------------------
 __int64            sub_1400515E0(unsigned int a1, unsigned int *a2, float a3, float a4)
 {
-  unsigned int v4;
-  __int64 v5;
-  unsigned int v6;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v4 = game_tick;
-    v5 = (__int64)(int)world_event_count << 7;
-    v6 = world_event_count + 1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v5) = 9;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v5) = v4;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v5) = a1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756287] + v5) = *a2;
-    *(unsigned int *)((char *)&dword_140404A6C[297756288] + v5) = a2[1];
-    *(unsigned int *)((char *)&dword_140404A6C[297756289] + v5) = a2[2];
-    *(float *)((char *)&dword_140404A6C[297756297] + v5) = a3;
-    world_event_count = v6;
-    HIWORD(world_event_count) = 0;
-    *(float *)((char *)&dword_140404A6C[297756298] + v5) = a4;
-    return 0;
-  }
-  return result;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_sound(unsigned int, const float *, float, float);
+  event_sound(a1, (const float *)a2, a3, a4);
+  return 0; /* The native event routine has no defined return value. */
 }
 
 //----- (0000000140051650) ----------------------------------------------------
 __int64            sub_140051650(unsigned int a1, unsigned int a2, float a3, float a4)
 {
-  unsigned int v4;
-  __int64 v5;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v4 = game_tick;
-    v5 = (__int64)(int)world_event_count++ << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v5) = 19;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v5) = v4;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v5) = a1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v5) = a2;
-    *(float *)((char *)&dword_140404A6C[297756297] + v5) = a3;
-    *(float *)((char *)&dword_140404A6C[297756298] + v5) = a4;
-    HIWORD(world_event_count) = 0;
-    return 0;
-  }
-  return result;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_item_sound(unsigned int, unsigned int, float, float);
+  event_item_sound(a1, a2, a3, a4);
+  return 0; /* The native event routine has no defined return value. */
 }
 
 //----- (00000001400516B0) ----------------------------------------------------
 void            sub_1400516B0(int a1, int a2, int a3, int a4, unsigned int a5, unsigned int a6)
 {
-  unsigned int v6;
-  __int64 v7;
-  unsigned int v8;
-
-  if ( game_connected )
-  {
-    v6 = game_tick;
-    v7 = (__int64)(int)world_event_count << 7;
-    v8 = world_event_count + 1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v7) = 15;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v7) = v6;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v7) = a1 + (a2 << 16);
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v7) = a3 + (a4 << 16);
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v7) = a5;
-    *(unsigned int *)((char *)&dword_140404A6C[297756296] + v7) = a6;
-    world_event_count = v8;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_block_parts(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+  event_block_parts(a1, a2, a3, a4, a5, a6);
 }
 
 //----- (0000000140051730) ----------------------------------------------------
@@ -3974,71 +3707,18 @@ void            sub_140051730(
         unsigned int *a7,
         unsigned int *a8)
 {
-  unsigned int v8;
-  unsigned int v9;
-  unsigned int v10;
-  __int64 v11;
-  unsigned int v12;
-
-  if ( game_connected )
-  {
-    v8 = game_tick;
-    v9 = 0;
-    v10 = world_event_count;
-    v11 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v11) = 16;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v11) = v8;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v11) = a1 + (a2 << 16);
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v11) = a3 + (a4 << 16);
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v11) = a5;
-    *(unsigned int *)((char *)&dword_140404A6C[297756296] + v11) = a6;
-    if ( a7 )
-    {
-      *(unsigned int *)((char *)&dword_140404A6C[297756287] + v11) = *a7;
-      *(unsigned int *)((char *)&dword_140404A6C[297756288] + v11) = a7[1];
-      v12 = a7[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&dword_140404A6C[297756287] + v11) = 0;
-      v12 = 0;
-    }
-    *(unsigned int *)((char *)&dword_140404A6C[297756289] + v11) = v12;
-    if ( a8 )
-    {
-      *(unsigned int *)((char *)&dword_140404A6C[297756290] + v11) = *a8;
-      *(unsigned int *)((char *)&dword_140404A6C[297756291] + v11) = a8[1];
-      v9 = a8[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&dword_140404A6C[297756290] + v11) = 0;
-    }
-    *(unsigned int *)((char *)&dword_140404A6C[297756292] + v11) = v9;
-    world_event_count = v10 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_block_hit(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, const float *, const float *);
+  event_block_hit(a1, a2, a3, a4, a5, a6, (const float *)a7, (const float *)a8);
 }
 
 //----- (00000001400518B0) ----------------------------------------------------
 __int64            sub_1400518B0(unsigned int a1, unsigned int a2)
 {
-  unsigned int v2;
-  __int64 v3;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v2 = game_tick;
-    v3 = (__int64)(int)world_event_count++ << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v3) = 10;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v3) = v2;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v3) = a1;
-    HIWORD(world_event_count) = 0;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v3) = a2;
-    return 0;
-  }
-  return result;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_corporation_door(unsigned int, unsigned int);
+  event_corporation_door(a1, a2);
+  return 0; /* The native event routine has no defined return value. */
 }
 
 //----- (0000000140051940) ----------------------------------------------------
@@ -4054,332 +3734,67 @@ __int64            sub_140051940(unsigned int a1)
 //----- (00000001400519F0) ----------------------------------------------------
 void            sub_1400519F0(int a1, int a2)
 {
-  unsigned int v2;
-  __int64 v3;
-  unsigned int v4;
-  __int64 v5;
-  unsigned int v6;
-  unsigned int v7;
-  int v8;
-
-  if ( game_connected )
-  {
-    v2 = game_tick;
-    v3 = (__int64)(int)world_event_count << 7;
-    v4 = world_event_count + 1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v3) = 12;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v3) = v2;
-    world_event_count = v4;
-    v5 = 1116LL * a2 + 23492LL * a1;
-    v6 = (*(unsigned int *)((char *)&dword_140404A6C[283831606] + v5) + 1) << 16;
-    v7 = *(unsigned int *)((char *)&dword_140404A6C[283831595] + v5)
-       + 16
-       * (*(unsigned int *)((char *)&dword_140404A6C[283831596] + v5)
-        + 16 * *(unsigned int *)((char *)&dword_140404A6C[283831604] + v5));
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v3) = *(unsigned int *)((char *)&dword_140404A6C[283831588]
-                                                                                  + v5)
-                                                                + 2
-                                                                * (a2
-                                                                 + 8
-                                                                 * (a1
-                                                                  + 16
-                                                                  * (*(unsigned int *)((char *)&dword_140404A6C[283831591]
-                                                                                     + v5)
-                                                                   + (*(unsigned int *)((char *)&dword_140404A6C[283831603]
-                                                                                      + v5) << 8))));
-    v8 = *(unsigned int *)((char *)&dword_140404A6C[283831605] + v5);
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v3) = v7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v3) = v8 / 60 + v6;
-    *(unsigned int *)((char *)&dword_140404A6C[297756296] + v3) = *(unsigned int *)((char *)&dword_140404A6C[283831607]
-                                                                                  + v5);
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_mission_update(int, int);
+  event_mission_update(a1, a2);
 }
 
 //----- (0000000140051B00) ----------------------------------------------------
 void            sub_140051B00(int a1, int a2, unsigned int a3, int a4)
 {
-  unsigned int v4;
-  signed int v5;
-  __int64 v6;
-  __int64 v7;
-
-  if ( game_connected )
-  {
-    v4 = game_tick;
-    v5 = 64;
-    v6 = (int)world_event_count;
-    if ( a4 <= 64 )
-      v5 = a4;
-    v7 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v7) = 22;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v7) = v4;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v7) = a1 + (a2 << 8);
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v7) = a3;
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v7) = v5;
-    crt_memcpy(
-      (__m128i *)&dword_140404A6C[32 * v6 + 297756301],
-      (     __m128i *)((char *)&dword_140404A6C[5873 * a1 + 283831611 + 279 * a2] + (int)(a3 << 6)),
-      v5);
-    world_event_count = v6 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_mission_text_line(int, int, unsigned int, int);
+  event_mission_text_line(a1, a2, a3, a4);
 }
 
 //----- (0000000140051BD0) ----------------------------------------------------
 void            sub_140051BD0(int a1, int a2)
 {
-  __int64 v2;
-  unsigned int *v3;
-  int v4;
-  signed int v5;
-  unsigned int v6;
-  unsigned int v7;
-  __int64 v8;
-  __int128 v9;
-  __int128 v10;
-  __int128 v11;
-  __int128 v12;
-
-  if ( game_connected )
-  {
-    v2 = -1;
-    v3 = &dword_140404A6C[5873 * a1 + 283831611 + 279 * a2];
-    do
-      ++v2;
-    while ( *((_BYTE *)v3 + v2) );
-    v4 = ((int)v2 + 1) >> 6;
-    v5 = 0;
-    if ( v4 >= 0 )
-    {
-      v6 = game_tick;
-      v7 = (a2 << 8) + a1;
-      do
-      {
-        v8 = (__int64)(int)world_event_count++ << 7;
-        HIWORD(world_event_count) = 0;
-        v9 = *(_OWORD *)v3;
-        *(unsigned int *)((char *)&dword_140404A6C[297756285] + v8) = 22;
-        *(unsigned int *)((char *)&dword_140404A6C[297756286] + v8) = v6;
-        *(unsigned int *)((char *)&dword_140404A6C[297756293] + v8) = v7;
-        *(unsigned int *)((char *)&dword_140404A6C[297756294] + v8) = v5++;
-        *(unsigned int *)((char *)&dword_140404A6C[297756295] + v8) = 64;
-        v10 = *((_OWORD *)v3 + 1);
-        v3 += 16;
-        *(_OWORD *)((char *)&dword_140404A6C[297756301] + v8) = v9;
-        v11 = *((_OWORD *)v3 - 2);
-        *(_OWORD *)((char *)&dword_140404A6C[297756305] + v8) = v10;
-        v12 = *((_OWORD *)v3 - 1);
-        *(_OWORD *)((char *)&dword_140404A6C[297756309] + v8) = v11;
-        *(_OWORD *)((char *)&dword_140404A6C[297756313] + v8) = v12;
-      }
-      while ( v5 <= v4 );
-    }
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_mission_text(int, int);
+  event_mission_text(a1, a2);
 }
 
 //----- (0000000140051CF0) ----------------------------------------------------
 void            sub_140051CF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int *a4, unsigned int *a5)
 {
-  unsigned int v5;
-  unsigned int v6;
-  unsigned int v7;
-  __int64 v8;
-  unsigned int v9;
-
-  if ( game_connected )
-  {
-    v5 = world_event_count;
-    v6 = 0;
-    v7 = game_tick;
-    v8 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v8) = 4;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v8) = v7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v8) = a1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v8) = a2;
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v8) = a3;
-    if ( a4 )
-    {
-      *(unsigned int *)((char *)&dword_140404A6C[297756287] + v8) = *a4;
-      *(unsigned int *)((char *)&dword_140404A6C[297756288] + v8) = a4[1];
-      v9 = a4[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&dword_140404A6C[297756287] + v8) = 0;
-      v9 = 0;
-    }
-    *(unsigned int *)((char *)&dword_140404A6C[297756289] + v8) = v9;
-    if ( a5 )
-    {
-      *(unsigned int *)((char *)&dword_140404A6C[297756290] + v8) = *a5;
-      *(unsigned int *)((char *)&dword_140404A6C[297756291] + v8) = a5[1];
-      v6 = a5[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&dword_140404A6C[297756290] + v8) = 0;
-    }
-    *(unsigned int *)((char *)&dword_140404A6C[297756292] + v8) = v6;
-    world_event_count = v5 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_vehicle_removed(unsigned int, unsigned int, unsigned int, const float *, const float *);
+  event_vehicle_removed(a1, a2, a3, (const float *)a4, (const float *)a5);
 }
 
 //----- (0000000140051DC0) ----------------------------------------------------
 void            sub_140051DC0(int a1)
 {
-  unsigned int v2;
-  __int64 v3;
-  __int64 v4;
-  __int128 v5;
-  unsigned int v6;
-  __int64 v7;
-  unsigned int v8;
-  unsigned int v9;
-  unsigned int v10;
-  unsigned int v11;
-  unsigned int v12;
-
-  if ( game_connected )
-  {
-    v2 = game_tick;
-    v3 = 3597LL * a1;
-    v4 = (__int64)(int)world_event_count++ << 7;
-    v5 = *(_OWORD *)&dword_140404A6C[v3 + 71856254];
-    v6 = dword_140404A6C[v3 + 71856286] + 1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v4) = 7;
-    v7 = *(_QWORD *)&dword_140404A6C[v3 + 71856258];
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v4) = v2;
-    v8 = dword_140404A6C[v3 + 71856292];
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v4) = a1
-                                                                + ((dword_140404A6C[v3 + 71859139]
-                                                                  + 2 * (dword_140404A6C[v3 + 71856253] + 2 * v6)) << 8);
-    v9 = dword_140404A6C[v3 + 71859819];
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v4) = v8;
-    v10 = dword_140404A6C[v3 + 71859820];
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v4) = dword_140404A6C[v3 + 71859816]
-                                                                + 2
-                                                                * (dword_140404A6C[v3 + 71859825]
-                                                                 + 32 * (dword_140404A6C[v3 + 71859817] + 8 * v9));
-    v11 = v10
-        + 8
-        * (dword_140404A6C[v3 + 71859818]
-         + 16
-         * (dword_140404A6C[v3 + 71859821]
-          + 32
-          * (dword_140404A6C[v3 + 71859822] + 16
-                                            * (dword_140404A6C[v3 + 71859823] + 16 * dword_140404A6C[v3 + 71859826]))));
-    v12 = dword_140404A6C[v3 + 71856260];
-    *(unsigned int *)((char *)&dword_140404A6C[297756296] + v4) = v11;
-    *(_OWORD *)((char *)&dword_140404A6C[297756301] + v4) = v5;
-    *(_QWORD *)((char *)&dword_140404A6C[297756305] + v4) = v7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756307] + v4) = v12;
-    *(_WORD *)((char *)&dword_140404A6C[297756308] + v4) = dword_140404A6C[v3 + 71856261];
-    *((_BYTE *)&dword_140404A6C[297756308] + v4 + 2) = BYTE2(dword_140404A6C[v3 + 71856261]);
-    *((_BYTE *)&dword_140404A6C[297756308] + v4 + 3) = 0;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_player_update(int);
+  event_player_update(a1);
 }
 
 //----- (0000000140051F50) ----------------------------------------------------
 __int64            sub_140051F50(signed int a1)
 {
-  unsigned int v1;
-  __int64 v2;
-  __int64 v3;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v1 = game_tick;
-    v2 = (__int64)(int)world_event_count++ << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v2) = 8;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v2) = v1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v2) = a1;
-    v3 = 3597LL * a1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v2) = dword_140404A6C[v3 + 71856272];
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v2) = dword_140404A6C[v3 + 71856288];
-    *(unsigned int *)((char *)&dword_140404A6C[297756296] + v2) = dword_140404A6C[v3 + 71856265];
-    HIWORD(world_event_count) = 0;
-    return 0;
-  }
-  return result;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_player_finance(int);
+  event_player_finance(a1);
+  return 0; /* The native event routine has no defined return value. */
 }
 
 //----- (0000000140051FF0) ----------------------------------------------------
 void            sub_140051FF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int *a5)
 {
-  unsigned int v5;
-  unsigned int v6;
-  __int64 v7;
-  unsigned int v8;
-
-  if ( game_connected )
-  {
-    v5 = world_event_count;
-    v6 = game_tick;
-    v7 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v7) = 21;
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v7) = v6;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v7) = a1;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v7) = a2;
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v7) = a3;
-    *(unsigned int *)((char *)&dword_140404A6C[297756296] + v7) = a4;
-    if ( a5 )
-    {
-      *(unsigned int *)((char *)&dword_140404A6C[297756287] + v7) = *a5;
-      *(unsigned int *)((char *)&dword_140404A6C[297756288] + v7) = a5[1];
-      v8 = a5[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&dword_140404A6C[297756287] + v7) = 0;
-      v8 = 0;
-    }
-    *(unsigned int *)((char *)&dword_140404A6C[297756289] + v7) = v8;
-    world_event_count = v5 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_type21(unsigned int, unsigned int, unsigned int, unsigned int, const float *);
+  event_type21(a1, a2, a3, a4, (const float *)a5);
 }
 
 //----- (0000000140052090) ----------------------------------------------------
 __int64 sub_140052090()
 {
-  float v0;
-  unsigned int v1;
-  float v2;
-  __int64 v3;
-  unsigned int v4;
-  int v5;
-  unsigned int v6;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v0 = *(float *)&dword_140404A6C[335047074];
-    v1 = world_event_count + 1;
-    v2 = *(float *)&dword_140404A6C[335047062] * 10.0;
-    v3 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&dword_140404A6C[297756285] + v3) = 13;
-    world_event_count = v1;
-    dword_140404A6C[335047064] = (int)v2;
-    dword_140404A6C[335047076] = (int)(float)(v0 * 10.0);
-    dword_140404A6C[335047070] = (int)(float)(*(float *)&dword_140404A6C[335047068] * 10.0);
-    v4 = (int)v2 + (dword_140404A6C[335047070] << 16);
-    v5 = (int)(float)(*(float *)&dword_140404A6C[335047086] * 10.0);
-    dword_140404A6C[335047082] = (int)(float)(*(float *)&dword_140404A6C[335047080] * 10.0);
-    v6 = dword_140404A6C[335047076] + (dword_140404A6C[335047082] << 16);
-    dword_140404A6C[335047088] = v5;
-    dword_140404A6C[335047094] = (int)(float)(*(float *)&dword_140404A6C[335047092] * 10.0);
-    *(unsigned int *)((char *)&dword_140404A6C[297756286] + v3) = game_tick;
-    *(unsigned int *)((char *)&dword_140404A6C[297756293] + v3) = v4;
-    *(unsigned int *)((char *)&dword_140404A6C[297756294] + v3) = v6;
-    *(unsigned int *)((char *)&dword_140404A6C[297756295] + v3) = v5;
-    HIWORD(world_event_count) = 0;
-    return 0;
-  }
-  return result;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern void event_stock_prices(void);
+  event_stock_prices();
+  return 0; /* The native event routine has no defined return value. */
 }
 
 //----- (00000001400521A0) ----------------------------------------------------

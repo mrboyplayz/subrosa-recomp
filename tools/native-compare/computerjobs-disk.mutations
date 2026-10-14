@@ -1,0 +1,40 @@
+if (drive == 2)
+====
+if (drive == 1)
+----
+drive != 0 ||
+====
+drive != 1 ||
+----
+child_count <= 0
+====
+child_count < 0
+----
+children[0]
+====
+children[1]
+----
+count >= DISK_ENTRY_CAPACITY
+====
+count > DISK_ENTRY_CAPACITY
+----
+disk_file(disk, count).content = content;
+====
+disk_file(disk, count).content = directory;
+----
+*out++ = next;
+====
+*out++ = next ? next : 88;
+----
+disk_file(disk, disk_file_count(disk)).directory = directory;
+====
+disk_file(disk, disk_file_count(disk)).directory = content;
+----
+count = disk_file_count(disk);
+    disk_file_count(disk) = add_int(count, 1);
+====
+disk_file_count(disk) = add_int(count, 1);
+----
+return (uint32_t)count;
+====
+return (uint32_t)count + 1u;

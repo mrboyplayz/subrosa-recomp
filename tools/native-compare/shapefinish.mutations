@@ -1,0 +1,161 @@
+    return a < b || a > b;
+====
+    return a != b;
+----
+        int axis = side < 3 ? side : 5 - side;
+====
+        int axis = side < 3 ? side : side - 3;
+----
+        float plane = side >= 3 ? 1.0f : 0.0f;
+====
+        float plane = side > 3 ? 1.0f : 0.0f;
+----
+        for (k = 0; k < 4; k++)
+            if (differ(plane, build_points[3 * quad[k] + axis]))
+====
+        for (k = 0; k < 3; k++)
+            if (differ(plane, build_points[3 * quad[k] + axis]))
+----
+        if (k == 4)
+            found = side;
+====
+        if (k == 4 && found == -1)
+            found = side;
+----
+        e[words * BUILD_SWAP_SLOT + k] = e[words * a + k];
+====
+        e[words * (BUILD_SWAP_SLOT + 1) + k] = e[words * a + k];
+----
+        e[words * b + k] = e[words * BUILD_SWAP_SLOT + k];
+====
+        e[words * b + k] = e[words * a + k];
+----
+        case 0x10000: uv[0] = p[2]; uv[1] = p[1]; break;
+====
+        case 0x10000: uv[0] = p[1]; uv[1] = p[2]; break;
+----
+        case 0x20000: uv[0] = 1.0f - p[2]; uv[1] = p[1]; break;
+====
+        case 0x20000: uv[0] = p[2]; uv[1] = p[1]; break;
+----
+        case 0x30000: uv[0] = p[0]; uv[1] = p[2]; break;
+====
+        case 0x30000: uv[0] = p[0]; uv[1] = 1.0f - p[2]; break;
+----
+        case 0x40000: uv[0] = p[0]; uv[1] = 1.0f - p[2]; break;
+====
+        case 0x40000: uv[0] = p[0]; uv[1] = p[2]; break;
+----
+        case 0x50000: uv[0] = 1.0f - p[0]; uv[1] = p[1]; break;
+====
+        case 0x50000: uv[0] = 1.0f - p[0]; uv[1] = 1.0f - p[1]; break;
+----
+        case 0x60000: uv[0] = p[0]; uv[1] = p[1]; break;
+====
+        case 0x60000: uv[0] = p[0]; uv[1] = p[2]; break;
+----
+    if (mark_floor && side == 0x40000)
+        build_quad_unknown[q] |= 1;
+====
+    if (mark_floor && side == 0x30000)
+        build_quad_unknown[q] |= 1;
+----
+    return crt_malloc((uint64_t)(int64_t)(int32_t)((uint32_t)count * (uint32_t)size));
+====
+    return crt_malloc((uint64_t)(uint32_t)count * (uint32_t)size + 1);
+----
+    crt_free(old);
+====
+    /* no free */
+----
+    shape_outer_count(shape) = 0;
+====
+    /* not reset */
+----
+        shape_side_mask(shape, side) = 0;
+====
+        shape_side_mask(shape, side) = side;
+----
+        if (q > outer) {
+====
+        if (q >= outer + 2) {
+----
+            swap_through_slot(build_quads, 4, outer, q);
+====
+            swap_through_slot(build_quads, 4, q, outer);
+----
+            swap_through_slot(build_quad_flags, 1, outer, q);
+====
+            /* flags stay */
+----
+            swap_through_slot(build_quad_unknown, 1, outer, q);
+====
+            /* unknown stays */
+----
+        shape_side_mask(shape, side) |= 1u << (outer & 31);
+====
+        shape_side_mask(shape, side) |= 1u << (q & 31);
+----
+        build_quad_sides[outer] = side;
+====
+        build_quad_sides[q] = side;
+----
+        shape_side_mask(shape, side) = ~shape_side_mask(shape, side);
+====
+        shape_side_mask(shape, side) = shape_side_mask(shape, side);
+----
+    for (int q = 0; q < build_quad_count; q++)
+        quad_coordinates(q, 1);
+====
+    for (int q = 1; q < build_quad_count; q++)
+        quad_coordinates(q, 1);
+----
+        quad_coordinates(q, 1);
+====
+        quad_coordinates(q, 0);
+----
+    shape_point_count(shape) = build_point_count;
+====
+    shape_point_count(shape) = build_point_count - 1;
+----
+    shape_coordinates(shape) = replace_block(shape_coordinates(shape), build_point_count, 8);
+====
+    shape_coordinates(shape) = replace_block(shape_coordinates(shape), build_point_count, 12);
+----
+        memcpy(&shape_vectors_b(shape)[3 * i], &build_vectors_b[3 * i], 12);
+====
+        memcpy(&shape_vectors_b(shape)[3 * i], &build_vectors_a[3 * i], 12);
+----
+        memcpy(&shape_coordinates(shape)[2 * i], &build_coordinates[3 * i], 8);
+====
+        memcpy(&shape_coordinates(shape)[2 * i], &build_coordinates[2 * i], 8);
+----
+    shape_extra_count(shape) = build_extra_count;
+====
+    shape_extra_count(shape) = build_quad_count;
+----
+    shape_quad_sides(shape) = replace_block(shape_quad_sides(shape), build_quad_count, 4);
+    shape_quad_unknown(shape) = replace_block(shape_quad_unknown(shape), build_quad_count, 4);
+====
+    shape_quad_unknown(shape) = replace_block(shape_quad_unknown(shape), build_quad_count, 4);
+    shape_quad_sides(shape) = replace_block(shape_quad_sides(shape), build_quad_count, 4);
+----
+    copy_block(shape_quad_sides(shape), build_quad_sides, build_quad_count, 4);
+====
+    copy_block(shape_quad_sides(shape), build_quad_unknown, build_quad_count, 4);
+----
+    copy_block(shape_extra_b(shape), build_extra_b, build_extra_count, 4);
+====
+    copy_block(shape_extra_b(shape), build_extra_b, build_extra_count, 3);
+----
+        shape_quad_flags(shape)[q] &= 0xFFF;
+====
+        shape_quad_flags(shape)[q] &= 0xFFFF;
+----
+    shape_box_count(shape) = build_box_count;
+====
+    shape_box_count(shape) = build_box_count & ~1;
+----
+        memcpy(&shape_boxes(shape)[12 * b], &build_boxes[20 * b], 48);
+====
+        memcpy(&shape_boxes(shape)[12 * b], &build_boxes[12 * b], 48);

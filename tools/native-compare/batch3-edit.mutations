@@ -1,0 +1,23 @@
+    if (x < 0 || x >= (int32_t)((uint32_t)world_level_chunks(layer, 0) << 6) || y < 0 ||
+        y >= (int32_t)((uint32_t)world_level_chunks(layer, 1) << 6) || z < 0 ||
+        z >= (int32_t)((uint32_t)world_level_chunks(layer, 2) << 6))
+        return;
+    slot = *chunk_entry(layer, x >> 6, y >> 6, z >> 6);
+====
+    if (x < 0 || x >= (int32_t)((uint32_t)world_level_chunks(layer, 0) << 6) || y < 0 ||
+        y >= (int32_t)((uint32_t)world_level_chunks(layer, 1) << 6) || z < 0 ||
+        z >= (int32_t)((uint32_t)world_level_chunks(layer, 2) << 7))
+        return;
+    slot = *chunk_entry(layer, x >> 6, y >> 6, z >> 6);
+----
+    slot = *chunk_entry(layer, x >> 6, y >> 6, z >> 6);
+====
+    slot = *chunk_entry(layer, x >> 6, z >> 6, y >> 6);
+----
+    record_unknown_6c34(record) = 1;
+====
+    /* kept */
+----
+    record_band_unknown_6c38(record, y >> 1 & 3) = 1;
+====
+    record_band_unknown_6c38(record, y & 3) = 1;

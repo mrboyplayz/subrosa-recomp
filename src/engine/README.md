@@ -55,11 +55,28 @@ The table records the recovered routines by original address. Recovery is incomp
 | `world_effects.c`, `effect.h` | world effects: adding one (bullet holes, blood drops, sparks, tracers); moving them for a tick (drag, gravity, bouncing off the level, the three-point EFFECT_4 body, drops landing as blood stains, EFFECT_3 marks) | 0x14005EE40, 0x1401597F0 |
 | `world_effects_draw.c` | drawing the world effects in depth order: holes, blood drops and sparks as textured quads, EFFECT_3/EFFECT_4 pieces as a lit mesh, tracers as smooth lines | 0x140125DB0 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
+| `events.c`, `events.h` | 17 event constructors: bullets and hits, messages, sounds, blocks, corporation doors and missions, vehicle removal, player appearance and finance, type 21, stock prices | 0x140051230, 0x1400512D0, 0x140051480, 0x140051560, 0x1400515E0, 0x140051650, 0x1400516B0, 0x140051730, 0x1400518B0, 0x1400519F0, 0x140051B00, 0x140051BD0, 0x140051CF0, 0x140051DC0, 0x140051F50, 0x140051FF0, 0x140052090 |
+| `net_bits.c`, `net_bits.h` | packet bit reads and writes, scaled values, two success-only write adapters, angle serialization | 0x140115AE0, 0x140115C20, 0x140115D90, 0x140115E80, 0x140115E60, 0x140115F70, 0x14010E610 |
+| `disk.c`, `disk.h`, `item_text.c` (addition) | first-free disk allocation and raw item text-record allocation | 0x140050EF0, 0x140051170 |
+| `physics_create.c`, `physics.h` (additions) | first-free bond lookup, rigid bodies, body-point and rotation bonds, point-mass allocation | 0x1400A4440, 0x14005CF80, 0x14004E430, 0x14004E5B0, 0x14005CBB0 |
+| `disk_files.c`, `disk.h` (additions) | resolving an item's disk drive and appending file records | 0x14004C960, 0x140080690 |
+| `net_bytes.c`, `net_bits.h` (additions) | aligned byte-stream reads and writes | 0x14007ADF0, 0x14007B180 |
+| `area_bounds.c`, `area_bounds.h` | corporation interior, vault and world-region point-membership queries | 0x14011B8F0, 0x14011B960, 0x14011B9F0 |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
 
 All of them are in use by the built client except `renderer_batch_vertex2f`
-(0x14007D230), which no recompiled code calls yet.
+(0x14007D230), `item_allocate_text_record` (0x140051170) and
+`physics_create_point` (0x14005CBB0), whose restored client entry points
+currently have no recompiled callers.
+
+The 26 routines added on 2026-10-14 are documented in
+[`restoration-20261014.md`](restoration-20261014.md), including their test
+commands, binary fingerprint, and comparison limits.
+
+A second batch of 12 routines is documented in
+[`restoration-20261014-batch2.md`](restoration-20261014-batch2.md), with
+native comparisons, client-adapter checks and mutation tests.
 
 The rows above added on 2026-10-12/13 were compared against the installed
 Steam build (`cc667f7d…`, see `scripts/client_target.py`) with the rebuilt
@@ -71,7 +88,7 @@ of those, 0x1400A56B0, 0x14007A240, 0x14007B4D0, 0x14006EC40, 0x14007ABA0 and
 ## Rules
 
 1. **A routine moves here only when it is proven equal to the original.**
-   `tools/native-compare/run.sh` runs the original executable's routine and the
+   `tools/native-compare/run.py` runs the original executable's routine and the
    one here with the same inputs and compares results, resulting state and
    every OpenGL call. A port is done when that comparison is identical, and
    changing any single operation of the port makes it differ (unless the
@@ -104,7 +121,7 @@ callers of a wrapper have moved here as well, the wrapper can go.
 
 ## Build
 
-`scripts/check-rebuild.py` compiles every `*.c` in this directory and links
+`scripts/build.py` compiles every `*.c` in this directory and links
 the objects into the client. Unlike the recompiled sources these files are
 built with optimization (`-O2`); they must stay free of undefined behaviour.
 `-fno-strict-aliasing` is required because the shared state is one array

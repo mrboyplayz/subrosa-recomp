@@ -11,6 +11,10 @@
 #include <string.h>
 
 static CRITICAL_SECTION sr_debug_lock;
+/* the world dump (sr_debug_dump_world): armed at level generation, taken in sr_debug_frame */
+static const unsigned int *sr_dump_globals;
+static unsigned long sr_dump_frames;
+static void sr_debug_dump_world_now(const unsigned int *globals);
 static HANDLE sr_debug_output, sr_debug_file = INVALID_HANDLE_VALUE;
 static HANDLE sr_debug_stop_event, sr_debug_worker;
 static ULONGLONG sr_debug_started, sr_debug_stage_started;
@@ -358,6 +362,7 @@ void sr_debug_frame(void)
     static void (APIENTRY *read_buffer)(unsigned);
     int viewport[4] = {0}, alignment = 4;
     char path[MAX_PATH + 32];
+    if (sr_dump_globals && ++sr_dump_frames == 600) sr_debug_dump_world_now(sr_dump_globals);
     if (!state) {
         const char *value = getenv("SUBROSA_FRAME_DUMP"), *step = getenv("SUBROSA_FRAME_DUMP_EVERY");
         HMODULE gl = GetModuleHandleA("opengl32.dll");
@@ -404,4 +409,204 @@ void sr_debug_frame(void)
         fclose(file);
     }
     free(pixels);
+}
+
+/* Test aid: SUBROSA_DUMP_WORLD=<folder> saves the level's render geometry once, right after
+   the minimap pass (0x140124320) has drawn the whole level from it, for export to other
+   engines (sub rosa like/world_dump_to_mesh.py reads it). Reads GL state only.
+
+   world.bin: "SRWD", version 1; the vertex buffer (64-byte vertices: position at 0, texture
+   coordinates at 12, normal at 36) and the index buffer (32-bit), each as a size then the
+   bytes; then the 256 texture batches the minimap drew: texture, second (material) texture,
+   draw count, and per draw the index count, the byte offset into the index buffer and the
+   base vertex. texture_NNNN.bin: GL target, width, height, depth, then RGBA bytes. */
+
+/* Arms the dump: the draw lists are rebuilt each frame (0x140094A90) from the chunks loaded
+   then, so the dump is taken from sr_debug_frame() some 600 frames into the game. */
+void sr_debug_dump_world(const unsigned int *globals)
+{
+    const char *value = getenv("SUBROSA_DUMP_WORLD");
+    if (!value || !*value || sr_dump_globals) return;
+    sr_dump_globals = globals;
+    sr_dump_frames = 0;
+    sr_debug_log("World dump: armed");
+}
+
+static void sr_debug_dump_world_now(const unsigned int *globals)
+{
+    typedef void (APIENTRY *bind_buffer_fn)(unsigned, unsigned);
+    typedef void (APIENTRY *buffer_param_fn)(unsigned, unsigned, int *);
+    typedef void (APIENTRY *buffer_sub_data_fn)(unsigned, intptr_t, intptr_t, void *);
+    static int done;
+    const char *value = getenv("SUBROSA_DUMP_WORLD");
+    HMODULE gl = GetModuleHandleA("opengl32.dll");
+    char path[MAX_PATH + 64];
+    unsigned char written_texture[4096] = {0};
+    if (done || !value || !*value || !gl || !globals) return;
+    done = 1;
+
+    PROC (WINAPI *get_proc)(const char *) = (void *)GetProcAddress(gl, "wglGetProcAddress");
+    void (APIENTRY *bind_texture)(unsigned, unsigned) = (void *)GetProcAddress(gl, "glBindTexture");
+    void (APIENTRY *tex_param)(unsigned, int, unsigned, int *) = (void *)GetProcAddress(gl, "glGetTexLevelParameteriv");
+    void (APIENTRY *tex_image)(unsigned, int, unsigned, unsigned, void *) = (void *)GetProcAddress(gl, "glGetTexImage");
+    unsigned (APIENTRY *get_error)(void) = (void *)GetProcAddress(gl, "glGetError");
+    void (APIENTRY *get_integer)(unsigned, int *) = (void *)GetProcAddress(gl, "glGetIntegerv");
+    void (APIENTRY *pixel_store)(unsigned, int) = (void *)GetProcAddress(gl, "glPixelStorei");
+    bind_buffer_fn bind_buffer = get_proc ? (bind_buffer_fn)(void *)get_proc("glBindBuffer") : NULL;
+    buffer_param_fn buffer_param = get_proc ? (buffer_param_fn)(void *)get_proc("glGetBufferParameteriv") : NULL;
+    buffer_sub_data_fn buffer_sub_data = get_proc ? (buffer_sub_data_fn)(void *)get_proc("glGetBufferSubData") : NULL;
+    if (!bind_texture || !tex_param || !tex_image || !get_error || !get_integer || !pixel_store
+        || !bind_buffer || !buffer_param || !buffer_sub_data) {
+        sr_debug_log("World dump: GL entry points missing");
+        return;
+    }
+    CreateDirectoryA(value, NULL);
+    snprintf(path, sizeof path, "%s/world.bin", value);
+    FILE *file = fopen(path, "wb");
+    if (!file) { sr_debug_log("World dump: cannot write %s", path); return; }
+    fwrite("SRWD", 4, 1, file);
+    int version = 1;
+    fwrite(&version, 4, 1, file);
+
+    /* the vertex buffer, then the index buffer, read through the copy-read target so that
+       the bound vertex array's element buffer is left alone */
+    const unsigned buffers[2] = {
+        globals[2 * globals[283791463] + 283793813], globals[2 * globals[283791464] + 283793813]};
+    for (int b = 0; b < 2; b++) {
+        int size = 0;
+        bind_buffer(0x8F36, buffers[b]);
+        buffer_param(0x8F36, 0x8764, &size);
+        void *bytes = size > 0 ? malloc((size_t)size) : NULL;
+        if (bytes) buffer_sub_data(0x8F36, 0, size, bytes);
+        else size = 0;
+        fwrite(&size, 4, 1, file);
+        if (bytes) fwrite(bytes, (size_t)size, 1, file);
+        free(bytes);
+        sr_debug_log("World dump: buffer %u, %d bytes", buffers[b], size);
+    }
+    bind_buffer(0x8F36, 0);
+
+    /* the batches: as sub_140124320 walks them */
+    int draws_total = 0;
+    for (int batch = 0; batch < 256; batch++) {
+        int count = (int)globals[40714349 + batch];
+        unsigned texture = globals[283827814 + 4 * batch], material = globals[283827814 + 4 * batch + 1];
+        const int *counts = (const int *)&globals[40714605 + 0x4000 * batch];
+        const int *bases = (const int *)&globals[40714605 + 0x4000 * batch + 25165824];
+        const int64_t *offsets = (const int64_t *)&globals[57491821 + 0x8000 * batch];
+        if (count < 0) count = 0;
+        if (count > 0x4000) count = 0x4000;
+        fwrite(&texture, 4, 1, file);
+        fwrite(&material, 4, 1, file);
+        fwrite(&count, 4, 1, file);
+        for (int i = 0; i < count; i++) {
+            fwrite(&counts[i], 4, 1, file);
+            fwrite(&offsets[i], 8, 1, file);
+            fwrite(&bases[i], 4, 1, file);
+        }
+        draws_total += count;
+        if (count <= 0) continue;
+
+        /* the batch's two textures, read back from GL (2D, or a 2D array) */
+        unsigned wanted[2] = {texture, material};
+        for (int k = 0; k < 2; k++) {
+            unsigned index = wanted[k];
+            if (index >= sizeof written_texture || written_texture[index]) continue;
+            written_texture[index] = 1;
+            unsigned name = globals[44 * index + 284024944];
+            int saved2d = 0, savedArray = 0, alignment = 4, w = 0, h = 0, depth = 1;
+            unsigned target = 0x0DE1;
+            get_integer(0x8069, &saved2d);
+            get_integer(0x8C1D, &savedArray);
+            get_integer(0x0D05, &alignment);
+            while (get_error()) {}
+            bind_texture(target, name);
+            if (get_error()) {
+                target = 0x8C1A;
+                bind_texture(target, name);
+                if (get_error()) continue;
+            }
+            tex_param(target, 0, 0x1000, &w);
+            tex_param(target, 0, 0x1001, &h);
+            if (target == 0x8C1A) tex_param(target, 0, 0x8071, &depth);
+            if (w > 0 && h > 0 && depth > 0 && w <= 8192 && h <= 8192 && depth <= 256) {
+                size_t size = (size_t)w * h * depth * 4;
+                unsigned char *pixels = malloc(size);
+                if (pixels) {
+                    pixel_store(0x0D05, 1);
+                    tex_image(target, 0, 0x1908, 0x1401, pixels);
+                    pixel_store(0x0D05, alignment);
+                    snprintf(path, sizeof path, "%s/texture_%04u.bin", value, index);
+                    FILE *out = fopen(path, "wb");
+                    if (out) {
+                        fwrite(&target, 4, 1, out);
+                        fwrite(&w, 4, 1, out);
+                        fwrite(&h, 4, 1, out);
+                        fwrite(&depth, 4, 1, out);
+                        fwrite(pixels, size, 1, out);
+                        fclose(out);
+                    }
+                    free(pixels);
+                }
+            }
+            bind_texture(0x0DE1, (unsigned)saved2d);
+            bind_texture(0x8C1A, (unsigned)savedArray);
+        }
+    }
+    fclose(file);
+
+    /* The lighting of that moment, as the world shaders get it (client_renderer.c: the
+       uniforms lightdirection 284550403, lightambient 284545205, lightdiffuse 284545209),
+       and the environment cube map they reflect (shading_cube_map 283829872) as
+       cube_N.bin, N the face (+x -x +y -y +z -z): width, height, then RGBA bytes. */
+    snprintf(path, sizeof path, "%s/lighting.txt", value);
+    FILE *light = fopen(path, "w");
+    if (light) {
+        static const struct { const char *name; uint32_t index; } vectors[] = {
+            {"lightdirection", 284550403u}, {"lightambient", 284545205u}, {"lightdiffuse", 284545209u},
+            {"viewposition", 284024502u},
+        };
+        for (size_t v = 0; v < sizeof vectors / sizeof vectors[0]; v++) {
+            float f[3];
+            memcpy(f, &globals[vectors[v].index], sizeof f);
+            fprintf(light, "%s %.9g %.9g %.9g\n", vectors[v].name, f[0], f[1], f[2]);
+        }
+        fclose(light);
+    }
+    {
+        unsigned index = globals[283829872];
+        unsigned name = index < 4096 ? globals[44 * index + 284024944] : 0;
+        int savedCube = 0, alignment = 4;
+        get_integer(0x8514, &savedCube);
+        get_integer(0x0D05, &alignment);
+        while (get_error()) {}
+        bind_texture(0x8513, name);
+        if (name && !get_error()) {
+            pixel_store(0x0D05, 1);
+            for (int face = 0; face < 6; face++) {
+                int w = 0, h = 0;
+                tex_param(0x8515 + face, 0, 0x1000, &w);
+                tex_param(0x8515 + face, 0, 0x1001, &h);
+                if (w <= 0 || h <= 0 || w > 8192 || h > 8192)
+                    continue;
+                unsigned char *pixels = malloc((size_t)w * h * 4);
+                if (!pixels)
+                    continue;
+                tex_image(0x8515 + face, 0, 0x1908, 0x1401, pixels);
+                snprintf(path, sizeof path, "%s/cube_%d.bin", value, face);
+                FILE *out = fopen(path, "wb");
+                if (out) {
+                    fwrite(&w, 4, 1, out);
+                    fwrite(&h, 4, 1, out);
+                    fwrite(pixels, (size_t)w * h * 4, 1, out);
+                    fclose(out);
+                }
+                free(pixels);
+            }
+            pixel_store(0x0D05, alignment);
+        }
+        bind_texture(0x8513, (unsigned)savedCube);
+        sr_debug_log("World dump: lighting and cube map %u written", name);
+    }
+    sr_debug_log("World dump: %d draws written to %s", draws_total, value);
 }

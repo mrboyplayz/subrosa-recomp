@@ -1,0 +1,24 @@
+Return the parent disk for drive zero
+return *item_disk_index(world_items[item].children[0]);
+----
+return *item_disk_index(item);
+====
+Allow a missing child
+if (world_items[item].child_count <= 0) return UINT32_MAX;
+----
+if (world_items[item].child_count < 0) return UINT32_MAX;
+====
+Reject the last file slot
+if (index >= DISK_ENTRY_CAPACITY) return UINT32_MAX;
+----
+if (index >= DISK_ENTRY_CAPACITY - 1) return UINT32_MAX;
+====
+Truncate names to their nominal field
+} while (byte);
+----
+} while (byte && out < disk_file_name(disk, index) + 16);
+====
+Forget the directory field
+disk_file(disk, *count)->directory = directory;
+----
+(void)directory;

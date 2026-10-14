@@ -1,0 +1,141 @@
+body->settled = 1;
+}
+====
+body->settled = 0;
+}
+----
+body->angular_momentum[axis] = 0.0f;
+    }
+====
+body->angular_momentum[axis] = 0.125f;
+    }
+----
+if (item_hit_block_part == -1)
+====
+if (item_hit_block_part != -1)
+----
+part < item_block_part_count(item_hit_block)
+====
+part < item_block_part_count(item_hit_block) - 1
+----
+if (!sub_1400DC050(body->position, endpoint, 1))
+====
+if (sub_1400DC050(body->position, endpoint, 1) != 1)
+----
+collision_hit.normal[0] * dx
+====
+collision_hit.normal[2] * dx
+----
+layer < 4
+====
+layer < 3
+----
+body->position, 0.11f);
+====
+body->position, 0.125f);
+----
+if (hit && closest > distance)
+====
+if (hit && closest < distance)
+----
+item_hit_unknown_7c = -1;
+====
+item_hit_unknown_7c = 0;
+----
+float depth = 0.11f - closest;
+====
+float depth = 0.125f - closest;
+----
+body->angular_momentum[axis] *= 0.9375f;
+====
+body->angular_momentum[axis] *= 0.875f;
+----
+if (!item->active)
+====
+if (item->active != 1)
+----
+if (item->position[1] < -32.0f)
+====
+if (item->position[1] <= -32.0f)
+----
+if (item->unknown_138 <= 0)
+====
+if (item->unknown_138 < 0)
+----
+event->type = 1;
+====
+event->type = 2;
+----
+(int32_t)((uint32_t)count + 1u) & 0xFFFF
+====
+(int32_t)((uint32_t)count + 1u) & 0xFFFE
+----
+item_unknown_158(index)--;
+====
+item_unknown_158(index) -= 2;
+----
+p->type == 15
+====
+p->type == 14
+----
+(uint32_t)type - 25u > 1u
+====
+(uint32_t)type - 26u > 1u
+----
+item->slot > 2)
+            item_in_pocket
+====
+item->slot >= 2)
+            item_in_pocket
+----
+item->physics_simulated = 0;
+====
+item->physics_simulated = 1;
+----
+(uint32_t)type - 39u <= 1u
+====
+(uint32_t)type - 40u <= 1u
+----
+body->position[axis] = item->position[axis];
+====
+body->position[axis] = item->previous_position[axis];
+----
+item_previous_velocity(index)[axis] = item->velocity[axis];
+====
+item_previous_velocity(index)[axis] = 0.0f;
+----
+p < definition->bound_point_count
+====
+p < definition->bound_point_count - 1
+----
+current_type > 44u
+====
+current_type >= 44u
+----
+world_humans[item->holder].vehicle == -1
+====
+world_humans[item->holder].vehicle != -1
+----
+corner < 8
+====
+corner < 7
+----
+quadrant < 2 ? -half[2] : half[2]
+====
+quadrant < 2 ? half[2] : -half[2]
+----
+!(sqrt_float((v[0] * v[0] + v[1] * v[1]) + v[2] * v[2]) >= 0.0041666669f)
+====
+!(sqrt_float((v[0] * v[0] + v[1] * v[1]) + v[2] * v[2]) >= 0.0041666679f)
+----
+if (timer < 60)
+====
+if (timer < 59)
+----
+if (timer >= 60)
+====
+if (timer >= 59)
+----
+item->previous_position[axis] = item->position[axis];
+====
+item->previous_position[axis] = 0.0f;

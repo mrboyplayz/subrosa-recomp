@@ -1,0 +1,35 @@
+@@ message without connection
+    if (!game_connected)
+        return;
+    length = (int)strlen(text);
+=>
+    length = (int)strlen(text);
+----
+@@ message 64 characters
+    if (length > 63)
+        length = 63;
+=>
+    if (length > 64)
+        length = 64;
+----
+@@ message not terminated
+    world_event_message(event)[length] = 0;
+=>
+    (void)0;
+----
+@@ length not sent
+    event->a = length;
+=>
+    event->a = 0;
+----
+@@ kind and speaker swapped
+    event->b = kind;
+    event->c = speaker;
+=>
+    event->b = speaker;
+    event->c = kind;
+----
+@@ volume lost
+    world_event_d(event) = volume;
+=>
+    world_event_d(event) = 0;

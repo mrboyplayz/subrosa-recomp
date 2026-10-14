@@ -1,0 +1,7 @@
+    for (int i = 0; i < PHYSICS_BOND_CAPACITY; i++)
+====
+    for (int i = 0; i <= PHYSICS_BOND_CAPACITY; i++)
+----
+    return -1;
+====
+    return 0;

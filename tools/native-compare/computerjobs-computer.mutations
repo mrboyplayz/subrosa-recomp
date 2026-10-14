@@ -1,0 +1,150 @@
+if (computer_key_queue_count(item) != 0)
+====
+if (computer_key_queue_count(item) > 0)
+----
+k < computer_key_queue_count(item)
+====
+k < 1
+----
+computer_key_queue_count(item) = 0;
+====
+computer_key_queue_count(item) = 1;
+----
+computer_process_key(item, 8);
+====
+computer_process_key(item, 0);
+----
+if (delay <= 0)
+====
+if (delay < 0)
+----
+computer_job_delay(item) = delay - 1;
+====
+computer_job_delay(item) = delay - 2;
+----
+if (computer_job_delay(item) != 0)
+====
+if (computer_job_delay(item) == 0)
+----
+if (computer_job_kind(item) == 0)
+====
+if (computer_job_kind(item) == 2)
+----
+if (computer_job_kind(item) == 1)
+====
+if (computer_job_kind(item) == 2)
+----
+"  1 FILE(S) COPIED."
+====
+"  2 FILE(S) COPIED."
+----
+while (computer_job_next_directory(item) < directories)
+====
+while (computer_job_next_directory(item) <= directories)
+----
+disk_directory(disk, next).parent == computer_job_directory(item)
+====
+disk_directory(disk, next).parent != computer_job_directory(item)
+----
+row[11] = 0;
+====
+row[10] = 0;
+----
+"<DIR>", 6
+====
+"<FIL>", 6
+----
+computer_job_next_directory(item)++;
+                    computer_job_delay(item) = 4;
+====
+computer_job_next_directory(item) += 2;
+                    computer_job_delay(item) = 4;
+----
+computer_job_next_directory(item)++;
+                    computer_job_delay(item) = 4;
+====
+computer_job_next_directory(item)++;
+                    computer_job_delay(item) = 3;
+----
+while (computer_job_next_file(item) < disk_file_count(disk))
+====
+while (computer_job_next_file(item) <= disk_file_count(disk))
+----
+disk_file(disk, next).directory == computer_job_directory(item)
+====
+disk_file(disk, next).directory != computer_job_directory(item)
+----
+computer_job_next_file(item)++;
+                        computer_job_delay(item) = 4;
+====
+computer_job_next_file(item) += 2;
+                        computer_job_delay(item) = 4;
+----
+computer_job_next_file(item)++;
+                        computer_job_delay(item) = 4;
+====
+computer_job_next_file(item)++;
+                        computer_job_delay(item) = 3;
+----
+computer_command_first_char(item) = 0;
+====
+computer_command_first_char(item) = 1;
+----
+team == -1 || item_disk_index(item) == -1
+====
+team == 0 || item_disk_index(item) == -1
+----
+timer--;
+        computer_mission_connect_timer(item) = timer;
+====
+timer -= 2;
+        computer_mission_connect_timer(item) = timer;
+----
+((uint32_t)timer & 15u) == 0
+====
+((uint32_t)timer & 7u) == 0
+----
+timer = computer_mission_connect_timer(item);
+        }
+====
+timer = 0;
+        }
+----
+document < 7
+====
+document < 6
+----
+disk_file(disk, file).content == mission_document_content(document)
+====
+disk_file(disk, file).directory == mission_document_content(document)
+----
+mission_decode_document(document, team);
+====
+mission_decode_document(document, computer_team(item));
+----
+computer_mission_scroll(item) = 0;
+====
+computer_mission_scroll(item) = 1;
+----
+computer_mission_scroll(item) = 0;
+                    }
+====
+computer_mission_scroll(item) = 0;
+                        break;
+                    }
+----
+((uint32_t)item ^ (uint32_t)game_tick) & 15u
+====
+((uint32_t)item ^ (uint32_t)game_tick) & 7u
+----
+computer_draw_mission_menu(item);
+            menu = (uint32_t)computer_mission_submenu(item);
+====
+computer_draw_mission_menu(item);
+            menu = 0;
+----
+computer_draw_mission_document(item);
+            menu = (uint32_t)computer_mission_submenu(item);
+====
+computer_draw_mission_document(item);
+            menu = 1;

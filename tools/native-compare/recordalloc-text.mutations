@@ -1,0 +1,25 @@
+text cap
+if (length > 64) length = 64;
+----
+if (length > 63) length = 63;
+====
+text record kind
+record->unknown_8 = 0;
+----
+record->unknown_8 = 1;
+====
+raw source twelve-byte offset
+item_record_text_chunk(item, line)
+----
+item_record_text_chunk(item, line) + 12
+====
+text allocation result
+return index;
+}
+
+uint32_t item_link_text_line
+----
+return index + 1;
+}
+
+uint32_t item_link_text_line

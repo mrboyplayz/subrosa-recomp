@@ -3210,20 +3210,11 @@ void            sub_14010E370(float *a1, float *a2)
 }
 
 //----- (000000014010E610) ----------------------------------------------------
-__int64            sub_14010E610(float *a1, char a2)
+__int64            sub_14010E610(float *a1, int a2)
 {
-  signed int v2;
-  float v3;
-  int v4;
-  int v6;
-
-  v2 = (unsigned int)(1 << a2) >> 1;
-  v3 = *a1;
-  v4 = (v2 - 1) & (int)(fabs(*a1) * ((float)v2 * 0.1591549430918849));
-  v6 = v4;
-  if ( v3 < 0.0 )
-    v6 = v2 | v4;
-  return sub_140115D90(&v6, a2);
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern int net_write_angle(const float *, int);
+  return net_write_angle(a1, a2);
 }
 
 //----- (000000014010E6C0) ----------------------------------------------------
@@ -7241,50 +7232,9 @@ void sub_140115830()
 //----- (0000000140115AE0) ----------------------------------------------------
 __int64            sub_140115AE0(_DWORD *a1, int a2)
 {
-  signed int v2;
-  char v3;
-  int v4;
-  unsigned int v5;
-  unsigned int v6;
-
-  v2 = dword_140404A6C[289317484];
-  if ( (int)dword_140404A6C[289317484] >= 0x10000
-    || (signed int)(dword_140404A6C[289317484] + (a2 >> 3)) > (int)dword_140404A6C[289317483] )
-  {
-    return 0;
-  }
-  v3 = 0;
-  v4 = 0;
-  if ( a2 > 0 )
-  {
-    v5 = dword_140404A6C[289317485];
-    while ( 1 )
-    {
-      v6 = 8 - v5;
-      v4 |= (~(-1 << a2)
-           & (*((unsigned __int8 *)&dword_140404A6C[289317486] + v2) >> SLOBYTE(dword_140404A6C[289317485]))) << v3;
-      if ( a2 < 8 - v5 )
-        break;
-      if ( a2 == v6 )
-      {
-        dword_140404A6C[289317485] = 0;
-        dword_140404A6C[289317484] = v2 + 1;
-        goto LABEL_11;
-      }
-      ++v2;
-      v5 = 0;
-      a2 -= v6;
-      dword_140404A6C[289317484] = v2;
-      v3 += v6;
-      dword_140404A6C[289317485] = 0;
-      if ( a2 <= 0 )
-        goto LABEL_11;
-    }
-    dword_140404A6C[289317485] = a2 + v5;
-  }
-LABEL_11:
-  *a1 = v4;
-  return 1;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern int net_read_bits(unsigned int *, int);
+  return net_read_bits(a1, a2);
 }
 
 //----- (0000000140115BD0) ----------------------------------------------------
@@ -7306,50 +7256,9 @@ __int64            sub_140115BD0(int *a1, int a2)
 //----- (0000000140115C20) ----------------------------------------------------
 __int64            sub_140115C20(_DWORD *a1, int a2, int a3)
 {
-  signed int v3;
-  char v4;
-  int v5;
-  unsigned int v6;
-  unsigned int v7;
-
-  v3 = dword_140404A6C[289317484];
-  if ( (int)dword_140404A6C[289317484] >= 0x10000
-    || (signed int)(dword_140404A6C[289317484] + (a2 >> 3)) > (int)dword_140404A6C[289317483] )
-  {
-    return 0;
-  }
-  v4 = 0;
-  v5 = 0;
-  if ( a2 > 0 )
-  {
-    v6 = dword_140404A6C[289317485];
-    while ( 1 )
-    {
-      v7 = 8 - v6;
-      v5 |= (~(-1 << a2)
-           & (*((unsigned __int8 *)&dword_140404A6C[289317486] + v3) >> SLOBYTE(dword_140404A6C[289317485]))) << v4;
-      if ( a2 < 8 - v6 )
-        break;
-      if ( a2 == v7 )
-      {
-        dword_140404A6C[289317485] = 0;
-        dword_140404A6C[289317484] = v3 + 1;
-        goto LABEL_11;
-      }
-      ++v3;
-      v6 = 0;
-      a2 -= v7;
-      dword_140404A6C[289317484] = v3;
-      v4 += v7;
-      dword_140404A6C[289317485] = 0;
-      if ( a2 <= 0 )
-        goto LABEL_11;
-    }
-    dword_140404A6C[289317485] = a2 + v6;
-  }
-LABEL_11:
-  *a1 = a3 * v5;
-  return 1;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern int net_read_bits_scaled(unsigned int *, int, unsigned int);
+  return net_read_bits_scaled(a1, a2, a3);
 }
 
 //----- (0000000140115D20) ----------------------------------------------------
@@ -7372,103 +7281,33 @@ __int64            sub_140115D20(int *a1, int a2)
 //----- (0000000140115D90) ----------------------------------------------------
 __int64            sub_140115D90(_DWORD *a1, signed int a2)
 {
-  signed int v2;
-  unsigned int v4;
-  char v5;
-  unsigned int v6;
-
-  v2 = dword_140404A6C[289301092];
-  if ( (int)dword_140404A6C[289301092] >= 0x10000 )
-    return 0;
-  v4 = *a1 & ~(-1 << a2);
-  if ( a2 > 0 )
-  {
-    v5 = dword_140404A6C[289301093];
-    while ( 1 )
-    {
-      *((_BYTE *)&dword_140404A6C[289301094] + v2) &= ~(((1 << a2) - 1) << v5);
-      *((_BYTE *)&dword_140404A6C[289301094] + (int)dword_140404A6C[289301092]) |= (_BYTE)v4 << SLOBYTE(dword_140404A6C[289301093]);
-      v6 = 8 - dword_140404A6C[289301093];
-      if ( a2 < 8 - dword_140404A6C[289301093] )
-        break;
-      if ( a2 == v6 )
-      {
-        ++dword_140404A6C[289301092];
-        dword_140404A6C[289301093] = 0;
-        return 1;
-      }
-      v5 = 0;
-      v2 = dword_140404A6C[289301092] + 1;
-      v4 >>= v6;
-      a2 -= v6;
-      ++dword_140404A6C[289301092];
-      dword_140404A6C[289301093] = 0;
-      if ( a2 <= 0 )
-        return 1;
-    }
-    dword_140404A6C[289301093] += a2;
-  }
-  return 1;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern int net_write_bits(const unsigned int *, int);
+  return net_write_bits(a1, a2);
 }
 
 //----- (0000000140115E60) ----------------------------------------------------
 __int64            sub_140115E60(_DWORD *a1, signed int a2)
 {
-  sub_140115D90(a1, a2);
-  return 1;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern int net_write_bits_e60(const unsigned int *, int);
+  return net_write_bits_e60(a1, a2);
 }
 
 //----- (0000000140115E80) ----------------------------------------------------
 __int64            sub_140115E80(_DWORD *a1, int a2, unsigned int a3)
 {
-  signed int v3;
-  signed int v4;
-  unsigned int v6;
-  unsigned int v7;
-  unsigned int v8;
-
-  v3 = dword_140404A6C[289301092];
-  v4 = a2;
-  if ( (int)dword_140404A6C[289301092] >= 0x10000 )
-    return 0;
-  v6 = ~(-1 << a2) & (*a1 / a3);
-  if ( a2 > 0 )
-  {
-    v7 = dword_140404A6C[289301093];
-    while ( 1 )
-    {
-      if ( v7 )
-        *((_BYTE *)&dword_140404A6C[289301094] + v3) |= (_BYTE)v6 << v7;
-      else
-        *((_BYTE *)&dword_140404A6C[289301094] + v3) = v6;
-      v8 = 8 - dword_140404A6C[289301093];
-      if ( v4 < 8 - dword_140404A6C[289301093] )
-        break;
-      if ( v4 == v8 )
-      {
-        ++dword_140404A6C[289301092];
-        dword_140404A6C[289301093] = 0;
-        return 1;
-      }
-      v7 = 0;
-      v3 = dword_140404A6C[289301092] + 1;
-      v6 >>= v8;
-      v4 -= v8;
-      ++dword_140404A6C[289301092];
-      dword_140404A6C[289301093] = 0;
-      if ( v4 <= 0 )
-        return 1;
-    }
-    dword_140404A6C[289301093] += v4;
-  }
-  return 1;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern int net_write_bits_scaled(const unsigned int *, int, unsigned int);
+  return net_write_bits_scaled(a1, a2, a3);
 }
 
 //----- (0000000140115F70) ----------------------------------------------------
 __int64            sub_140115F70(_DWORD *a1, signed int a2)
 {
-  sub_140115D90(a1, a2);
-  return 1;
+  /* Native-compared engine port; see tools/native-compare/. */
+  extern int net_write_bits_f70(const unsigned int *, int);
+  return net_write_bits_f70(a1, a2);
 }
 
 //----- (0000000140116210) ----------------------------------------------------
@@ -8249,79 +8088,25 @@ __int64            sub_14011B7F0(int a1, int a2)
 //----- (000000014011B8F0) ----------------------------------------------------
 _BOOL8            sub_14011B8F0(float *a1, int a2, float a3)
 {
-  __int64 v3;
-  float v4;
-  _BOOL8 result;
-
-  v3 = 5873LL * a2;
-  result = false;
-  if ( *a1 >= (float)(*(float *)&dword_140404A6C[v3 + 283831485] - a3)
-    && *a1 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831488]) )
-  {
-    v4 = a1[2];
-    if ( v4 >= (float)(*(float *)&dword_140404A6C[v3 + 283831487] - a3)
-      && v4 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831490]) )
-    {
-      return true;
-    }
-  }
-  return result;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern int corporation_contains_point(const float *, int, float);
+  return corporation_contains_point(a1, a2, a3);
 }
 
 //----- (000000014011B960) ----------------------------------------------------
 _BOOL8            sub_14011B960(float *a1, int a2, float a3)
 {
-  __int64 v3;
-  float v4;
-  float v5;
-  _BOOL8 result;
-
-  v3 = 5873LL * a2;
-  result = false;
-  if ( *a1 >= (float)(*(float *)&dword_140404A6C[v3 + 283831491] - a3)
-    && *a1 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831494]) )
-  {
-    v4 = a1[1];
-    if ( v4 >= (float)(*(float *)&dword_140404A6C[v3 + 283831492] - a3)
-      && v4 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831495]) )
-    {
-      v5 = a1[2];
-      if ( v5 >= (float)(*(float *)&dword_140404A6C[v3 + 283831493] - a3)
-        && v5 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831496]) )
-      {
-        return true;
-      }
-    }
-  }
-  return result;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern int corporation_vault_contains_point(const float *, int, float);
+  return corporation_vault_contains_point(a1, a2, a3);
 }
 
 //----- (000000014011B9F0) ----------------------------------------------------
 _BOOL8            sub_14011B9F0(int a1, float *a2, float a3)
 {
-  __int64 v3;
-  float v4;
-  float v5;
-  _BOOL8 result;
-
-  v3 = 14019LL * a1;
-  result = false;
-  if ( *a2 >= (float)(*(float *)&dword_140404A6C[v3 + 225641219] - a3)
-    && *a2 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 225641222]) )
-  {
-    v4 = a2[1];
-    if ( v4 >= (float)(*(float *)&dword_140404A6C[v3 + 225641220] - a3)
-      && v4 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 225641223]) )
-    {
-      v5 = a2[2];
-      if ( v5 >= (float)(*(float *)&dword_140404A6C[v3 + 225641221] - a3)
-        && v5 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 225641224]) )
-      {
-        return true;
-      }
-    }
-  }
-  return result;
+  /* Native-compared engine port; see src/engine/restoration-20261014-batch2.md. */
+  extern int world_region_contains_point(int, const float *, float);
+  return world_region_contains_point(a1, a2, a3);
 }
 
 //----- (000000014011BAD0) ----------------------------------------------------

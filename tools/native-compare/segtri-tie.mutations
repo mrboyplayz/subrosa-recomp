@@ -1,0 +1,3 @@
+        if (!collision_line_triangle(point, normal, &fraction, from, to, a, b, c) || fraction >= hit[6])
+====
+        if (!collision_line_triangle(point, normal, &fraction, from, to, a, b, c) || fraction > hit[6])

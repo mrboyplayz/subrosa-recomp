@@ -1,0 +1,118 @@
+@@ set team for player -1
+    if (index == -1)
+        return;
+=>
+    if (index == -2)
+        return;
+----
+@@ same team not skipped
+    if (player->team == team)
+        return;
+=>
+    if (player->team == team + 1000)
+        return;
+----
+@@ manager kept
+        world_corporations[player->team].manager = -1;
+=>
+        world_corporations[player->team].manager = world_corporations[player->team].manager;
+----
+@@ money shared in every game type
+        if (game_type == GAME_TYPE_WORLD)
+            corporation_share_team_money(player->team);
+=>
+        corporation_share_team_money(player->team);
+----
+@@ manager of another corporation
+    if ((uint32_t)player->team < CORPORATIONS && world_corporations[player->team].manager == index) {
+=>
+    if ((uint32_t)player->team < CORPORATIONS && world_corporations[(player->team + 1) % CORPORATIONS].manager == index) {
+----
+@@ team range off by one
+    if ((uint32_t)team < CORPORATIONS) {
+=>
+    if ((uint32_t)team <= CORPORATIONS) {
+----
+@@ suit model not set
+        player->model = 1;
+=>
+        player->model = player->model;
+----
+@@ bought suit 7 replaced
+    return color == 3 || color == 7 || color == 8;
+=>
+    return color == 3 || color == 8;
+----
+@@ suit 4 kept
+    return color == 3 || color == 7 || color == 8;
+=>
+    return color == 3 || color == 4 || color == 7 || color == 8;
+----
+@@ tie from the suit table
+        player->tie_color = team_tie_colors[team];
+=>
+        player->tie_color = team_suit_colors[team];
+----
+@@ suit table wrong
+static const int32_t team_suit_colors[CORPORATIONS] = { 6, 10, 11, 2, 1, 2 };
+=>
+static const int32_t team_suit_colors[CORPORATIONS] = { 6, 10, 11, 2, 1, 1 };
+----
+@@ no team keeps the tie
+        if (!bought_suit(player->suit_color))
+            player->suit_color = 0;
+        player->tie_color = 0;
+=>
+        if (!bought_suit(player->suit_color))
+            player->suit_color = 0;
+----
+@@ no team keeps the model
+        player->model = 0;
+=>
+        player->model = player->model;
+----
+@@ version not counted
+        human_appearance_version(human)++;
+=>
+        human_appearance_version(human) += 0;
+----
+@@ human tie not copied
+        world_humans[human].tie_color = player->tie_color;
+=>
+        world_humans[human].tie_color = player->suit_color;
+----
+@@ damage player limit
+    if ((uint32_t)index > 255)
+=>
+    if ((uint32_t)index > 256)
+----
+@@ god mode hurt
+    if (player->is_god_mode || damage <= 0 || game_type == GAME_TYPE_WORLD || game_type == GAME_TYPE_ELIMINATOR)
+=>
+    if (damage <= 0 || game_type == GAME_TYPE_WORLD || game_type == GAME_TYPE_ELIMINATOR)
+----
+@@ zero damage counts
+    if (player->is_god_mode || damage <= 0 || game_type == GAME_TYPE_WORLD || game_type == GAME_TYPE_ELIMINATOR)
+=>
+    if (player->is_god_mode || damage < 0 || game_type == GAME_TYPE_WORLD || game_type == GAME_TYPE_ELIMINATOR)
+----
+@@ eliminator hurts
+    if (player->is_god_mode || damage <= 0 || game_type == GAME_TYPE_WORLD || game_type == GAME_TYPE_ELIMINATOR)
+=>
+    if (player->is_god_mode || damage <= 0 || game_type == GAME_TYPE_WORLD)
+----
+@@ damage not scaled
+                      (int32_t)((uint32_t)damage * (uint32_t)team_damage_percent) / 100);
+=>
+                      damage);
+----
+@@ damage unsigned divide
+                      (int32_t)((uint32_t)damage * (uint32_t)team_damage_percent) / 100);
+=>
+                      (int32_t)(((uint32_t)damage * (uint32_t)team_damage_percent) / 100));
+----
+@@ finance event missing
+    event_update_player_finance(index);
+}
+=>
+}

@@ -1,0 +1,6 @@
+        try_triangle(&s, n, k[0], k[2], k[3], p, p | 0x10000);
+        face_normal(n, k[0], k[2], k[1]);
+====
+        try_triangle(&s, n, k[0], k[2], k[3], p, p | 0x10000);
+        face_normal(n, k[0], k[1], k[2]);
+        n[0] = -n[0]; n[1] = -n[1]; n[2] = -n[2];

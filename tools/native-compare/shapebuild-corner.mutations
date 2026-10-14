@@ -1,0 +1,31 @@
+    set_corner(0, 3, x, 1.0f, z);
+====
+    set_corner(0, 3, x, 1.0f, 0.0f);
+----
+    set_corner(3, 0, 0.0f, 0.0f, z);
+    sub_140001F20
+====
+    set_corner(3, 0, x, 0.0f, z);
+    sub_140001F20
+----
+                  (int)((uint32_t)sub_14001B5C0(turn, 0x60000) | (uint32_t)(turn + 1)));
+====
+                  (int)((uint32_t)sub_14001B5C0(turn, 0x60000) | (uint32_t)turn));
+----
+    set_corner(0, 3, x, 1.0f, 0.0f);
+====
+    set_corner(0, 3, x, 1.0f, z);
+----
+    set_corner(3, 0, x, 0.0f, z);
+    sub_140001F20
+====
+    set_corner(3, 0, x, 0.0f, 0.0f);
+    sub_140001F20
+----
+                  (int)((uint32_t)sub_14001B5C0(turn, 0x20000) | ((((uint32_t)turn - 1) & 3) + 1)));
+====
+                  (int)((uint32_t)sub_14001B5C0(turn, 0x20000) | ((((uint32_t)turn + 1) & 3) + 1)));
+----
+                  (int)((uint32_t)sub_14001B5C0(turn, 0x20000) | ((((uint32_t)turn - 1) & 3) + 1)));
+====
+                  (int)((uint32_t)sub_14001B5C0(turn, 0x10000) | ((((uint32_t)turn - 1) & 3) + 1)));

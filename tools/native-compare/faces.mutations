@@ -1,0 +1,31 @@
+    return a < b || a > b;
+====
+    return a != b;
+----
+    int across = side >= 3 ? opposite : side;   /* the axis the side faces along */
+====
+    int across = side;
+----
+    uint32_t result = mask & shape_side_mask(shape, side);
+====
+    uint32_t result = mask;
+----
+            if (shape_quad_sides(neighbour)[qb] != opposite)
+====
+            if (shape_quad_sides(neighbour)[qb] != side)
+----
+                    differ(coordinate(vb, b[0], k), coordinate(va, a[1], k)) ||
+====
+                    differ(coordinate(vb, b[0], k), coordinate(va, a[0], k)) ||
+----
+                    differ(coordinate(vb, b[2], k), coordinate(va, a[3], k)))
+====
+                    0)
+----
+                result |= 1u << (qa & 31);
+====
+                result |= 1u << (qa & 15);
+----
+        count = shape_outer_count(neighbour);
+====
+        count = shape_outer_count(shape);

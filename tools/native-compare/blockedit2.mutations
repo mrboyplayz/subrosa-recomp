@@ -1,0 +1,17 @@
+    if (layer > 3 || (int32_t)x < 0 || (int32_t)y < 0 || (int32_t)z < 0)
+        return -1;
+    return find_record((int)layer, x, y, z);
+====
+    if (layer > 3 || (int32_t)x < 0 || (int32_t)y < 0)
+        return -1;
+    return find_record((int)layer, x, y, z);
+----
+    record_table(record, 0x808)[voxel_in_cell(x, y, z)] = value;
+    return value;
+====
+    record_table(record, 0x8)[voxel_in_cell(x, y, z)] = value;
+    return value;
+----
+        return 0xFFFFFFFFu;
+====
+        return 0;

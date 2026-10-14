@@ -1,0 +1,99 @@
+        out[0] = (q[0] - p[0]) * w + p[0];
+====
+        out[0] = q[0] * w + p[0] * (1.0f - w);
+----
+    if (face->blend[k] != -1) {
+====
+    if (face->blend[k] >= 0) {
+----
+    return ((ez * qy - ey * qz) * n[0] + (ex * qz - ez * qx) * n[1]) + (ey * qx - ex * qy) * n[2];
+====
+    return (ez * qy - ey * qz) * n[0] + ((ex * qz - ez * qx) * n[1] + (ey * qx - ex * qy) * n[2]);
+----
+    return ((a[1] - p[1]) * n[1] + (a[0] - p[0]) * n[0]) + (a[2] - p[2]) * n[2];
+====
+    return (a[1] - p[1]) * n[1] + ((a[0] - p[0]) * n[0] + (a[2] - p[2]) * n[2]);
+----
+    if (from_side > 0.0f) {
+        if (to_side > 0.0f)
+            return;
+====
+    if (from_side > 0.0f) {
+        if (to_side >= 0.0f)
+            return;
+----
+    } else if (!(from_side >= 0.0f) && !(to_side >= 0.0f)) {
+====
+    } else if (from_side < 0.0f && to_side < 0.0f) {
+----
+    if (is_zero_or_nan_quiet(denominator))
+====
+    if (denominator == 0.0f)
+----
+    p[1] = t * dir[1] + from[1];
+====
+    p[1] = t * dir[1] + to[1];
+----
+    if (!(edge_side(a, b, p, n) >= 0.0f) || !(edge_side(b, c, p, n) >= 0.0f) || !(edge_side(c, a, p, n) >= 0.0f))
+====
+    if (!(edge_side(a, b, p, n) >= 0.0f) || !(edge_side(b, c, p, n) >= 0.0f))
+----
+    if (!(edge_side(a, b, p, n) >= 0.0f) || !(edge_side(b, c, p, n) >= 0.0f) || !(edge_side(c, a, p, n) >= 0.0f))
+====
+    if (edge_side(a, b, p, n) < 0.0f || !(edge_side(b, c, p, n) >= 0.0f) || !(edge_side(c, a, p, n) >= 0.0f))
+----
+    if (t >= collision_hit.fraction)
+====
+    if (t > collision_hit.fraction)
+----
+    collision_hit.part = face_index;
+====
+    collision_hit.part = face_index + 1;
+----
+        collision_hit.unknown_34[k] = world_vehicle_points(vehicle)[vehicle_slot_reported(vehicle, slot[k])];
+====
+        collision_hit.unknown_34[k] = world_vehicle_points(vehicle)[slot[k]];
+----
+    collision_triangle_weights(collision_hit.weights, collision_hit.point, a, b, c);
+====
+    collision_triangle_weights(collision_hit.weights, collision_hit.point, a, c, b);
+----
+        store_float(&collision_hit.unknown_20[2], (w[1] * v1[2] + w[0] * v0[2]) + w[2] * v2[2]);
+====
+        store_float(&collision_hit.unknown_20[2], (w[1] * v1[2] + w[0] * v0[1]) + w[2] * v2[2]);
+----
+        if (!(from[k] >= low[k]) && low[k] > to[k])
+====
+        if (from[k] < low[k] && low[k] > to[k])
+----
+        if (from[k] > high[k] && !(high[k] >= to[k]))
+====
+        if (from[k] > high[k] && high[k] < to[k])
+----
+        if (face->active <= 0)
+====
+        if (face->active == 0)
+----
+            int32_t slot[3] = { face->corner[0], face->corner[2], face->corner[3] };
+====
+            int32_t slot[3] = { face->corner[0], face->corner[1], face->corner[3] };
+----
+            test_triangle(vehicle, f, a, c, d, slot, from, to);
+====
+            test_triangle(vehicle, f, a, d, c, slot, from, to);
+----
+    if (wheels)
+====
+    if (1)
+----
+            collision_hit.part = -1;
+====
+            collision_hit.part = -2;
+----
+            collision_hit.unknown_34[0] = w;
+====
+            collision_hit.unknown_34[1] = w;
+----
+    return !(collision_hit.fraction >= 1.0f);
+====
+    return collision_hit.fraction < 1.0f;

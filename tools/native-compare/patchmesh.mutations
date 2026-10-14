@@ -1,0 +1,203 @@
+        return s * p0 + t * p3;
+====
+        return s * p0 + s * p3;
+----
+        return ((p1 + p1) * s + t * p3) * t + (s * p0) * s;
+====
+        return ((p1 + p2) * s + t * p3) * t + (s * p0) * s;
+----
+        return ((p1 + p1) * s + t * p3) * t + (s * p0) * s;
+====
+        return ((p1 + p1) * s + t * p3) * t + (s * p0) * t;
+----
+        return ((s * s) * (p1 * 3.0f) + ((p2 * 3.0f) * s + t * p3) * t) * t + ((s * p0) * s) * s;
+====
+        return ((s * s) * (p1 * 3.0f) + ((p2 * 3.0f) * s + t * p3) * t) * t + ((s * p0) * s);
+----
+        return ((s * s) * (p1 * 3.0f) + ((p2 * 3.0f) * s + t * p3) * t) * t + ((s * p0) * s) * s;
+====
+        return ((s * s) * (p1 * 3.0f) + ((p2 * 3.0f) * t + t * p3) * t) * t + ((s * p0) * s) * s;
+----
+        return ((s * s) * (p1 * 3.0f) + ((p2 * 3.0f) * s + t * p3) * t) * t + ((s * p0) * s) * s;
+====
+        return ((s * s) * (p1 * 3.0f) + (((p2 * 3.0f) * s + t * p3) * t) * t) + ((s * p0) * s) * s;
+----
+        return p3 - p0;
+====
+        return p3 - p1;
+----
+        return ((p0 - (p1 + p1)) + p3) * twice_t - (p0 + p0) + (p1 + p1);
+====
+        return ((p0 - (p1 + p1)) + p3) * twice_t - (p0 + p0) + (p1 + p2);
+----
+        return ((p0 - (p1 + p1)) + p3) * twice_t - (p0 + p0) + (p1 + p1);
+====
+        return ((p0 - (p1 + p1)) + p3) * twice_t - ((p0 + p0) - (p1 + p1));
+----
+        return ((((p1 * 3.0f - p0) - p2 * 3.0f) + p3) * t) * (t * 3.0f) +
+====
+        return ((((p1 * 3.0f - p0) - p2 * 3.0f) + p3) * t) * (t * 2.0f) +
+----
+               ((p0 * 3.0f - p1 * 6.0f) + p2 * 3.0f) * twice_t - p0 * 3.0f + p1 * 3.0f;
+====
+               ((p0 * 3.0f - p1 * 6.0f) + p2 * 3.0f) * twice_t - p0 * 3.0f + p2 * 3.0f;
+----
+               ((p0 * 3.0f - p1 * 6.0f) + p2 * 3.0f) * twice_t - p0 * 3.0f + p1 * 3.0f;
+====
+               ((p0 * 3.0f - p1 * 6.0f) + p2 * 3.0f) * t - p0 * 3.0f + p1 * 3.0f;
+----
+    for (int n = 0; n < turns; n++) {
+====
+    for (int n = 0; n < turns - 1; n++) {
+----
+            p[0] = 1.0f - p[2];
+====
+            p[0] = p[2];
+----
+            p[2] = x;
+====
+            p[2] = 1.0f - x;
+----
+        for (int i = 0; i < 16; i++) {
+====
+        for (int i = 0; i < 15; i++) {
+----
+        case 0x60000: side_code = 0x10000; break;
+====
+        case 0x60000: side_code = 0x50000; break;
+----
+        case 0x50000: side_code = 0x20000; break;
+====
+        case 0x50000: break;
+----
+        case 0x20000: side_code = 0x60000; break;
+====
+        case 0x20000: side_code = 0x10000; break;
+----
+    if (length == 0.0f || length != length) {
+====
+    if (length == 0.0f) {
+----
+    if (length == 0.0f || length != length) {
+====
+    if (length != length) {
+----
+    out[0] = inverse * x;
+====
+    out[0] = x / length;
+----
+    float length = __builtin_sqrtf((x * x + y * y) + z * z);
+====
+    float length = __builtin_sqrtf(x * x + (y * y + z * z));
+----
+    for (int k = 0; k < 2; k++)
+        coordinates[3 * to + k] = coordinates[3 * from + k];
+====
+    for (int k = 0; k < 3; k++)
+        coordinates[3 * to + k] = coordinates[3 * from + k];
+----
+    for (int k = 0; k < 3; k++)
+        tangents[3 * to + k] = tangents[3 * from + k];
+====
+    for (int k = 0; k < 3; k++)
+        tangents[3 * to + k] = normals[3 * from + k];
+----
+    float step_u = 1.0f / (float)steps_u, step_v = 1.0f / (float)steps_v;
+====
+    float step_u = 1.0f / (float)steps_v, step_v = 1.0f / (float)steps_v;
+----
+    for (int row = 0; row <= steps_v; row++) {
+        float u = 0.0f;
+====
+    for (int row = 0; row < steps_v; row++) {
+        float u = 0.0f;
+----
+                row_points[3 * c + k] = patch_bezier(order_v, v, p[k], p[12 + k], p[24 + k], p[36 + k]);
+====
+                row_points[3 * c + k] = patch_bezier(order_u, v, p[k], p[12 + k], p[24 + k], p[36 + k]);
+----
+                row_coordinates[2 * c + k] = v * uv3[k] + (1.0f - v) * uv0[k];
+====
+                row_coordinates[2 * c + k] = v * uv0[k] + (1.0f - v) * uv3[k];
+----
+                row_slopes[3 * c + k] = patch_bezier_slope(order_v, v, p[k], p[12 + k], p[24 + k], p[36 + k]);
+====
+                row_slopes[3 * c + k] = patch_bezier_slope(order_v, v, p[k], p[12 + k], p[24 + k], p[24 + k]);
+----
+        for (int column = 0; column <= steps_u; column++) {
+====
+        for (int column = 0; column < steps_u; column++) {
+----
+                build_points[3 * n + k] = patch_bezier(order_u, u, q[k], q[3 + k], q[6 + k], q[9 + k]);
+====
+                build_points[3 * n + k] = patch_bezier(order_v, u, q[k], q[3 + k], q[6 + k], q[9 + k]);
+----
+                build_coordinates[3 * n + k] = row_coordinates[k] * (1.0f - u) + row_coordinates[6 + k] * u;
+====
+                build_coordinates[3 * n + k] = row_coordinates[k] * (1.0f - u) + row_coordinates[4 + k] * u;
+----
+                along[k] = patch_bezier_slope(order_u, u, q[k], q[3 + k], q[6 + k], q[9 + k]);
+====
+                along[k] = patch_bezier(order_u, u, q[k], q[3 + k], q[6 + k], q[9 + k]);
+----
+                across[k] = patch_bezier(order_u, u, d[k], d[3 + k], d[6 + k], d[9 + k]);
+====
+                across[k] = patch_bezier(order_u, u, d[k], d[3 + k], d[6 + k], d[6 + k]);
+----
+            build_normals[3 * n + 0] = across[1] * along[2] - across[2] * along[1];
+====
+            build_normals[3 * n + 0] = along[1] * across[2] - across[2] * along[1];
+----
+            build_normals[3 * n + 1] = along[0] * across[2] - across[0] * along[2];
+====
+            build_normals[3 * n + 1] = across[0] * along[2] - along[0] * across[2];
+----
+            build_normals[3 * n + 2] = across[0] * along[1] - along[0] * across[1];
+====
+            build_normals[3 * n + 2] = across[0] * along[1] - along[0] * across[0];
+----
+            unit(&build_tangents[3 * n], along[0], along[1], along[2]);
+====
+            unit(&build_tangents[3 * n], along[0], along[2], along[1]);
+----
+            u = u + step_u;
+====
+            u = u + step_v;
+----
+        v = v + step_v;
+====
+        v = v + step_u;
+----
+    for (int row = 0; row < steps_v; row++) {
+        int32_t at = first + row * (steps_u + 1);   /* grid point (row, 0) */
+====
+    for (int row = 0; row < steps_v; row++) {
+        int32_t at = first + row * steps_u;   /* grid point (row, 0) */
+----
+            quad[0] = row == 0 && column == 0 ? below : copy_point(below);
+====
+            quad[0] = row == 0 ? below : copy_point(below);
+----
+            quad[0] = row == 0 && column == 0 ? below : copy_point(below);
+====
+            quad[0] = column == 0 ? below : copy_point(below);
+----
+            quad[1] = row == 0 ? below + 1 : copy_point(below + 1);
+====
+            quad[1] = copy_point(below + 1);
+----
+            quad[2] = next_row + 1;
+====
+            quad[2] = copy_point(next_row + 1);
+----
+            quad[3] = column == 0 ? next_row : copy_point(next_row);
+====
+            quad[3] = next_row;
+----
+            build_quad_flags[build_quad_count] = flags;
+====
+            build_quad_flags[build_quad_count] = flags & 0xFFFFF;
+----
+            build_quad_unknown[build_quad_count] = 0;
+====
+            /* unknown kept */

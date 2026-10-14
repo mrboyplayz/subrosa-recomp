@@ -1,0 +1,171 @@
+written < width
+====
+written + 1 < width
+----
+text++;
+        else
+====
+text += 2;
+        else
+----
+ch = ' ';
+====
+ch = '_';
+----
+colors[written] = color;
+====
+colors[written] = 15;
+----
+out[written] = 0;
+====
+out[written + 1] = 0;
+----
+return computer_line(0, 0);
+====
+return computer_line(item, line);
+----
+line < 24; line++)
+        computer_line_link
+====
+line < 23; line++)
+        computer_line_link
+----
+if (team == -1) {
+====
+if (team == -1 || team == 0) {
+----
+"MISSION SELECT  ", 15, 16
+====
+"MISSION SELECT  ", 15, 15
+----
+line < 3 || line > 12
+====
+line < 3 || line > 11
+----
+intel > 0 && intel <= 8
+====
+intel > 0 && intel < 8
+----
+intel == 11
+====
+intel == 10
+----
+intel == 0
+====
+intel == -1
+----
+document <= 6
+====
+document < 6
+----
+mission_document_known(document))
+                crt_sprintf(text
+====
+!mission_document_known(document))
+                crt_sprintf(text
+----
+document + 1,
+                            mission_document_name
+====
+document,
+                            mission_document_name
+----
+text[24] = 0;
+====
+text[23] = 0;
+----
+*end++ = *status;
+====
+*end++ = 0;
+----
+== document ? 232 : 15
+====
+== document ? 184 : 15
+----
+item, line, text, color, 32
+====
+item, line, text, color, 31
+----
+computer_mission_document(item) < 0
+====
+computer_mission_document(item) <= 0
+----
+item, line, title, 15, 20
+====
+item, line, title, 15, 19
+----
+"STATUS", 15, 20
+====
+"STATUS", 15, 19
+----
+line >= 4 && line <= 7
+====
+line >= 4 && line < 7
+----
+line - 4 < mission_document_status_count
+====
+line - 4 <= mission_document_status_count
+----
+mission_document_status_count(computer_mission_document(item), team)
+====
+mission_document_status_count(computer_mission_document(item), computer_team(item))
+----
+team, line - 4), 15, 60
+====
+team, line - 4), 15, 59
+----
+} else if (line == 12) {
+====
+} else if (line == 13) {
+----
+computer_mission_scroll(item) == 0 ? 184 : 15
+====
+computer_mission_scroll(item) != 0 ? 184 : 15
+----
+computer_mission_connect_timer(item) > 0
+====
+computer_mission_connect_timer(item) >= 0
+----
+subtract_int(255, computer_mission_connect_timer(item)) >> 4
+====
+subtract_int(256, computer_mission_connect_timer(item)) >> 4
+----
+subtract_int(255, computer_mission_connect_timer(item)) >> 4
+====
+subtract_int(255, computer_mission_connect_timer(item)) / 16
+----
+column > progress
+====
+column >= progress
+----
+item, line, text, 240, 20
+====
+item, line, text, 15, 20
+----
+line >= 4 && line <= 19
+====
+line >= 4 && line < 19
+----
+(uint32_t)selection & ~15u
+====
+(uint32_t)selection & ~7u
+----
+add_int(line - 4,
+====
+add_int(line - 3,
+----
+entry < computer_mission_file_count(item)
+====
+entry <= computer_mission_file_count(item)
+----
+computer_mission_file(item, entry);
+====
+computer_mission_file(item, entry + 1);
+----
+entry == computer_mission_file_count(item)
+====
+entry == computer_mission_file_count(item) + 1
+----
+item, line, " CANCEL", color, 16
+====
+item, line, " CANCEL", color, 15

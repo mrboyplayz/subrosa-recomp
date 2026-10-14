@@ -1,0 +1,93 @@
+#define GRENADE_KILL_RADIUS_SQUARED 16.0f
+====
+#define GRENADE_KILL_RADIUS_SQUARED 15.0f
+----
+#define GRENADE_PUSH_RADIUS_SQUARED 64.0f
+====
+#define GRENADE_PUSH_RADIUS_SQUARED 63.0f
+----
+#define GRENADE_PUSH_RADIUS 8.0f
+====
+#define GRENADE_PUSH_RADIUS 7.5f
+----
+if (!(distance_squared >= GRENADE_KILL_RADIUS_SQUARED)) {
+====
+if (distance_squared < GRENADE_KILL_RADIUS_SQUARED) {
+----
+            human_old_health(h) = 0;
+====
+            human_old_health(h) = 1;
+----
+primer != human->player &&
+====
+primer == primer &&
+----
+player_team(human->player) == player_team(primer)) {
+====
+player_team(human->player) != player_team(primer)) {
+----
+                player_team_damage(primer, 100);
+====
+                player_team_damage(primer, 99);
+----
+                primer = grenade_primer(i);
+====
+                (void)0;
+----
+player_raise_criminal_rating(primer, human->player, 100);
+====
+player_raise_criminal_rating(primer, human->player, 101);
+----
+            if (primer != -1 && human->player != -1)
+                player_raise
+====
+            if (primer != -1)
+                player_raise
+----
+} else if (distance_squared >= GRENADE_PUSH_RADIUS_SQUARED) {
+====
+} else if (distance_squared > GRENADE_PUSH_RADIUS_SQUARED) {
+----
+        float dy = pelvis[1] - grenade->position[1];
+====
+        float dy = pelvis[1] - grenade->position[0];
+----
+float distance = sqrt_float(y * y + x * x + z * z);
+====
+float distance = sqrt_float(y * y + x * x);
+----
+float inverse = 1.0f / distance;
+====
+float inverse = 2.0f / distance;
+----
+away[1] = inverse * y;
+====
+away[1] = inverse * x;
+----
+max_float(GRENADE_PUSH_RADIUS / (bone->mass + GRENADE_PUSH_RADIUS), 0.125f);
+====
+max_float(GRENADE_PUSH_RADIUS / (bone->mass + GRENADE_PUSH_RADIUS), 0.25f);
+----
+float push = lightness * nearness * (nearness * 0.01318359375f);
+====
+float push = lightness * (nearness * nearness * 0.01318359375f);
+----
+body->velocity[axis] = away[axis] * push + body->velocity[axis];
+====
+body->velocity[axis] = body->velocity[axis] - away[axis] * push;
+----
+for (int b = 0; b < HUMAN_BONE_COUNT; b++) {
+====
+for (int b = 0; b < 15; b++) {
+----
+        if (!human->active)
+            continue;
+        WorldItem *grenade
+====
+        if (human->active)
+            continue;
+        WorldItem *grenade
+----
+float nearness = GRENADE_PUSH_RADIUS - distance;
+====
+float nearness = GRENADE_PUSH_RADIUS + distance;

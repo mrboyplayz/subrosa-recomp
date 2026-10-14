@@ -1,0 +1,55 @@
+float best = 2.0f;
+====
+float best = 2.5f;
+----
+if (!human->active || human_old_health(h) <= 0)
+====
+if (!human->active || human_old_health(h) < 0)
+----
+if (human->bleeding == 0 && human_old_health(h) >= 10)
+====
+if (human->bleeding == 0 && human_old_health(h) > 10)
+----
+float dy = point[1] - bandage->position[1];
+====
+float dy = point[1] - bandage->position[0];
+----
+if (best > distance) {
+====
+if (best < distance) {
+----
+/ 256;
+====
+/ 128;
+----
+if (progress < 256)
+====
+if (progress < 255)
+----
+world_humans[nearest].bleeding = 0;
+====
+world_humans[nearest].bleeding = 1;
+----
+if (human_old_health(nearest) < 10)
+====
+if (human_old_health(nearest) < 9)
+----
+        item_cooldown(i) = 0;
+        return 0;
+====
+        item_cooldown(i) = 1;
+        return 0;
+----
+    item_cooldown(i) = 0;
+    world_humans
+====
+    item_cooldown(i) = 1;
+    world_humans
+----
+float distance = sqrt_float(dx * dx + dy * dy + dz * dz);
+====
+float distance = sqrt_float(dx * dx + dy * dy);
+----
+            nearest = h;
+====
+            nearest = h + 1;

@@ -1,0 +1,47 @@
+computer_resolve_drive(item, drive)
+====
+computer_resolve_drive(item, drive == 0 ? 2 : drive)
+----
+if (disk == UINT32_MAX)
+====
+if (disk == UINT32_MAX || disk == 0)
+----
+out[0] = 0;
+====
+out[1] = 0;
+----
+(uint32_t)drive + 'A'
+====
+(uint32_t)drive + 'B'
+----
+if (depth < 1)
+====
+if (depth < 2)
+----
+int component = 1;
+====
+int component = 2;
+----
+computer_drive_directory(item, drive, component)
+====
+computer_drive_directory(item, drive, component - 1)
+----
+*end++ = *name;
+====
+*end++ = 0;
+----
+if (component < depth)
+====
+if (component <= depth)
+----
+end[0] = '\\';
+====
+end[0] = '/';
+----
+end[1] = 0;
+====
+end[2] = 0;
+----
+while (component <= depth)
+====
+while (component < depth)

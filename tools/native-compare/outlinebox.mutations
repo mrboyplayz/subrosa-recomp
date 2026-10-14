@@ -1,0 +1,79 @@
+    { 0, 1 }, { 1, 2 }, { 2, 3 }, { 3, 0 }, { 0, 4 }, { 1, 5 }, { 2, 6 }, { 3, 7 }, { 4, 5 }, { 5, 6 }, { 6, 7 }, { 7, 4 },
+====
+    { 0, 1 }, { 1, 2 }, { 2, 3 }, { 3, 0 }, { 0, 4 }, { 1, 5 }, { 2, 6 }, { 3, 7 }, { 4, 5 }, { 5, 6 }, { 6, 7 }, { 4, 7 },
+----
+    { 0, 3 }, { 0, 4 }, { 0, 1 }, { 0, 2 }, { 2, 3 }, { 3, 4 }, { 4, 1 }, { 1, 2 }, { 3, 5 }, { 4, 5 }, { 1, 5 }, { 2, 5 },
+====
+    { 0, 3 }, { 0, 4 }, { 0, 1 }, { 0, 2 }, { 2, 3 }, { 3, 4 }, { 4, 1 }, { 1, 2 }, { 3, 5 }, { 4, 5 }, { 1, 5 }, { 2, 4 },
+----
+    return (cube >> face & 1) && (cube & (64u << face));
+====
+    return (cube >> face & 1);
+----
+    return (cube >> face & 1) && (cube & (64u << face));
+====
+    return (cube & (64u << face)) != 0;
+----
+        if (!cube_face_shown(cube, cube_edge_faces[e][0]) || !cube_face_shown(cube, cube_edge_faces[e][1]))
+====
+        if (!cube_face_shown(cube, cube_edge_faces[e][0]) && !cube_face_shown(cube, cube_edge_faces[e][1]))
+----
+            to[k] = scale * cube_corner[cube_edge[e][1]][k] + origin[k];
+====
+            to[k] = cube_corner[cube_edge[e][1]][k] + origin[k];
+----
+        origin[k] = (float)voxel[k] * scale + layer_origin(layer)[k];
+    for (int e = 0; e < 12; e++) {
+====
+        origin[k] = (float)voxel[k] * scale;
+    for (int e = 0; e < 12; e++) {
+----
+        world_block_cube_outline(list, layer, voxel, entry, layer_scale(layer));
+====
+        world_block_cube_outline(list, layer, voxel, entry & 0xFFFF, layer_scale(layer));
+----
+        world_block_shape_outline(list, layer, voxel, (uint16_t)entry, layer_scale(layer));
+====
+        world_block_shape_outline(list, layer, voxel, (uint16_t)entry, layer_inverse_scale(layer));
+----
+        from[k] = (int32_t)((box_min[k] - layer_origin(layer)[k]) * layer_inverse_scale(layer));
+====
+        from[k] = (int32_t)((box_min[k] - layer_origin(layer)[k]) * layer_inverse_scale(layer)) + 1;
+----
+        to[k] = (int32_t)((box_max[k] - layer_origin(layer)[k]) * layer_inverse_scale(layer));
+====
+        to[k] = (int32_t)((box_max[k] - layer_origin(layer)[k]) * layer_scale(layer));
+----
+            for (voxel[0] = from[0]; voxel[0] <= to[0]; voxel[0]++) {
+====
+            for (voxel[0] = from[0]; voxel[0] < to[0]; voxel[0]++) {
+----
+                    z >= (int32_t)((uint32_t)world_level_chunks(layer, 2) << 6))
+                    continue;
+                memcpy
+====
+                    z >= (int32_t)((uint32_t)world_level_chunks(layer, 0) << 6))
+                    continue;
+                memcpy
+----
+                                           ((uint32_t)(z >> 6) + (uint32_t)world_level_chunks(layer, 2) * (uint32_t)(y >> 6)))];
+====
+                                           ((uint32_t)(y >> 6) + (uint32_t)world_level_chunks(layer, 2) * (uint32_t)(z >> 6)))];
+----
+                record = world_level_cells(layer, slot)[(x >> 3 & 7) + 8 * ((z >> 3 & 7) + 8 * (y >> 3 & 7))];
+====
+                record = world_level_cells(layer, slot)[(x >> 3 & 7) + 8 * ((y >> 3 & 7) + 8 * (z >> 3 & 7))];
+----
+                outline_entry(list, layer, voxel, world_block_record_unknown_8(record)[at]);
+====
+                /* +8 skipped */
+----
+                outline_entry(list, layer, voxel, world_block_record_layout(record)[at]);
+====
+                outline_entry(list, layer, voxel, world_block_record_ids(record)[at]);
+----
+    if ((entry & 0xE0000000u) == 0x40000000u)
+        world_block_cube_outline
+====
+    if ((entry & 0xC0000000u) == 0x40000000u)
+        world_block_cube_outline

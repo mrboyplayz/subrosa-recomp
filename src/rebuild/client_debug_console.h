@@ -15,6 +15,7 @@ void sr_debug_check_bodies(const unsigned int *bodies, unsigned int count, const
 void sr_debug_frame(void);
 int sr_debug_autostart(const char *what);
 int sr_debug_autostart_mode(void);
+void sr_debug_dump_world(const unsigned int *globals);
 #define SR_DEBUG_START() sr_debug_console_start()
 #define SR_DEBUG_STOP(result) sr_debug_console_stop((unsigned long)(result))
 #define SR_DEBUG_LOG(...) sr_debug_log(__VA_ARGS__)
@@ -26,6 +27,7 @@ int sr_debug_autostart_mode(void);
 #define SR_DEBUG_FRAME() sr_debug_frame()
 #define SR_DEBUG_AUTOSTART(what) sr_debug_autostart(what)
 #define SR_DEBUG_AUTOSTART_MODE() sr_debug_autostart_mode()
+#define SR_DEBUG_DUMP_WORLD(globals) sr_debug_dump_world(globals)
 #else
 #define SR_DEBUG_START() ((void)0)
 #define SR_DEBUG_STOP(result) ((void)0)
@@ -38,5 +40,6 @@ int sr_debug_autostart_mode(void);
 #define SR_DEBUG_FRAME() ((void)0)
 #define SR_DEBUG_AUTOSTART(what) 0
 #define SR_DEBUG_AUTOSTART_MODE() 0
+#define SR_DEBUG_DUMP_WORLD(globals) ((void)0)
 #endif
 #endif

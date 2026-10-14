@@ -15,6 +15,7 @@
 
 build/
 dist/
+tools/rust
 __pycache__/
 *.pyc
 *.o
@@ -31,3 +32,8 @@ __pycache__/
 *.nam
 *.til
 *.idb
+*.crate
+*.TAG
+*.json
+*.toml
+*.rs

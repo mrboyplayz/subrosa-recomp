@@ -1,0 +1,33 @@
+child->type != ITEM_CASH_2)
+====
+child->type != ITEM_CASH)
+----
+float along = (float)child->slot * 0.10546875f - 0.2109375f;
+====
+float along = (float)child->slot * 0.10546875f + 0.2109375f;
+----
+float along = (float)child->slot * 0.10546875f - 0.2109375f;
+====
+float along = (float)child->slot * 0.109375f - 0.2109375f;
+----
+position[1] = r[1] * along + position[1];
+====
+position[1] = r[1] * along - position[1];
+----
+        briefcase->type = ITEM_OPEN_BRIEFCASE;
+====
+        briefcase->type = ITEM_BRIEFCASE;
+----
+        briefcase->type = ITEM_BRIEFCASE;
+    else
+====
+        briefcase->type = ITEM_OPEN_BRIEFCASE;
+    else
+----
+world_item_change_count(i)++;
+====
+world_item_change_count(i) += 2;
+----
+if (game_connected && (uint32_t)i < WORLD_ITEM_CAPACITY)
+====
+if (!game_connected && (uint32_t)i < WORLD_ITEM_CAPACITY)

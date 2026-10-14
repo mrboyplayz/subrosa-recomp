@@ -1,0 +1,29 @@
+if (gone & part_bit)
+        return UINT32_MAX;
+====
+if (gone & part_bit)
+        return UINT64_MAX;
+----
+world_items[index].unknown_318 = 1;
+====
+world_items[index].unknown_318 = 0;
+----
+((float)vx + 0.5f)
+====
+((float)vx + 0.25f)
+----
+origin->block = (block & 0x3FFu) + (block & 0x03000000u);
+====
+origin->block = block;
+----
+if (world_items[index].type == 39)
+====
+if (world_items[index].type == 38)
+----
+position[0] >= region->bounds_max[0]
+====
+!(position[0] < region->bounds_max[0])
+----
+if (region->kind == 1)
+====
+if (region->kind != 1)

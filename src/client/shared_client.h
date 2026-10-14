@@ -1770,7 +1770,7 @@ void sub_14010E330();
 
 void            sub_14010E370(float *a1, float *a2);
 
-__int64            sub_14010E610(float *a1, char a2);
+__int64            sub_14010E610(float *a1, int a2);
 
 __int64            sub_14010E6C0(_DWORD *a1, int a2, int a3, signed int a4);
 
@@ -15408,7 +15408,7 @@ void            sub_14010E370(float *a1, float *a2)
 ;
 
 //----- (000000014010E610) ----------------------------------------------------
-__int64            sub_14010E610(float *a1, char a2)
+__int64            sub_14010E610(float *a1, int a2)
 ;
 
 //----- (000000014010E6C0) ----------------------------------------------------
