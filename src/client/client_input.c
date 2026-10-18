@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/spawn_console.h"
 
 //----- (000000014007CA90) ----------------------------------------------------
 // Candidate keyboard snapshot wrapper: copies 323 bytes from SDL_GetKeyboardState(NULL) into caller buffer.
@@ -50,9 +51,9 @@ __int64            input_get_mouse_state_candidate(__int64 a1)
 
   v2 = ((unsigned (*)(int *, int *))sub_140198EFF)(&v7, &v8);
   v3 = v2 & 1;
-  *(float *)a1 = (float)((float)v7 * renderer_canvas_width) / (float)(int)dword_140404A6C[137297755];
-  v4 = _mm_cvtsi32_si128(dword_140404A6C[137297756]);
-  v5 = (float)v8 * renderer_canvas_height;
+  *(float *)a1 = (float)((float)v7 * (renderer_canvas_width)) / (float)(int)g_160FC47D8;
+  v4 = _mm_cvtsi32_si128(g_160FC47DC);
+  v5 = (float)v8 * (renderer_canvas_height);
   *(_DWORD *)(a1 + 152) = v2;
   result = (v2 >> 2) & 1;
   *(float *)(a1 + 4) = v5 / SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v4), f32)[0];
@@ -114,11 +115,12 @@ void input_poll_events_candidate()
 
   _Alignas(8) unsigned char sr_event[56];
   void *sr_event_window;
-  memcpy(&sr_event_window, &dword_140404A6C[137297751], 8);
-  dword_140404A6C[468760166] = dword_140404A6C[468760165];
-  dword_140404A6C[137297772] = 0;
+  memcpy(&sr_event_window, &g_160FC47C8, 8);
+  g_1B0032404 = g_1B0032400;
+  g_160FC481C = 0;
   while ( sr_event_poll(sr_event) )
   {
+    if (spawn_console_event(sr_event)) continue;
     memcpy(&v11, sr_event, 4);
     v12 = (char)sr_event[12];
     memcpy(&v13, sr_event + 16, 4);
@@ -126,7 +128,7 @@ void input_poll_events_candidate()
     memcpy(&v15, sr_event + 24, 2);
     if ( v11 == 1027 )
     {
-      dword_140404A6C[137297772] += v14;
+      g_160FC481C += v14;
     }
     else
     {
@@ -136,72 +138,72 @@ void input_poll_events_candidate()
         v1 = v15;
         if ( v13 != 40 || (v15 & 0x300) == 0 )
         {
-          dword_140404A6C[5 * dword_140404A6C[468760165] + 468760167] = 0;
-          dword_140404A6C[5 * dword_140404A6C[468760165] + 468760168] = v0;
+          dword_140404A6C[5 * g_1B0032400 + 468760167] = 0;
+          dword_140404A6C[5 * g_1B0032400 + 468760168] = v0;
           goto LABEL_11;
         }
-        dword_140404A6C[137297766] ^= 1u;
-        sr_recomp_window_toggle(sr_event_window, dword_140404A6C[137297766] ? 0x1001u : 0);
+        g_160FC4804 ^= 1u;
+        sr_recomp_window_toggle(sr_event_window, g_160FC4804 ? 0x1001u : 0);
       }
       if ( v11 == 769 )
       {
         v1 = v15;
-        dword_140404A6C[5 * dword_140404A6C[468760165] + 468760167] = 1;
-        dword_140404A6C[5 * dword_140404A6C[468760165] + 468760168] = v13;
+        dword_140404A6C[5 * g_1B0032400 + 468760167] = 1;
+        dword_140404A6C[5 * g_1B0032400 + 468760168] = v13;
 LABEL_11:
-        dword_140404A6C[5 * dword_140404A6C[468760165] + 468760169] = v14;
-        dword_140404A6C[5 * dword_140404A6C[468760165] + 468760170] = v1;
-        dword_140404A6C[5 * dword_140404A6C[468760165] + 468760171] = 0;
-        dword_140404A6C[468760165] = (LOWORD(dword_140404A6C[468760165]) + 1) & 0x3FF;
+        dword_140404A6C[5 * g_1B0032400 + 468760169] = v14;
+        dword_140404A6C[5 * g_1B0032400 + 468760170] = v1;
+        dword_140404A6C[5 * g_1B0032400 + 468760171] = 0;
+        g_1B0032400 = (LOWORD(g_1B0032400) + 1) & 0x3FF;
         continue;
       }
       if ( v11 != 512 )
         goto LABEL_28;
       if ( v12 != 8 )
         goto LABEL_16;
-      if ( !dword_140404A6C[137297766] )
+      if ( !g_160FC4804 )
       {
         sr_event_restore(sr_event_window);
         sr_recomp_window_toggle(sr_event_window, 0x1001u);
-        dword_140404A6C[137297766] = 1;
+        g_160FC4804 = 1;
 LABEL_16:
         if ( v12 == 6 )
         {
-          sr_event_size(sr_event_window, (int *)&dword_140404A6C[137297755], (int *)&dword_140404A6C[137297756]);
+          sr_event_size(sr_event_window, (int *)&g_160FC47D8, (int *)&g_160FC47DC);
           v2 = 0;
-          *(_QWORD *)&dword_140404A6C[137297759] = *(_QWORD *)&dword_140404A6C[137297755];
+          *(_QWORD *)&g_160FC47E8 = *(_QWORD *)&g_160FC47D8;
           v3 = 0;
-          v4 = (signed int)(16 * dword_140404A6C[137297756]) / 9;
-          if ( (int)dword_140404A6C[137297755] <= v4 )
-            v4 = dword_140404A6C[137297755];
-          dword_140404A6C[137297761] = v4;
+          v4 = (signed int)(16 * g_160FC47DC) / 9;
+          if ( (int)g_160FC47D8 <= v4 )
+            v4 = g_160FC47D8;
+          g_160FC47F0 = v4;
           v5 = (v4 + 8 * (v4 + 1)) / 16;
-          dword_140404A6C[137297762] = v5;
-          if ( (int)dword_140404A6C[137297755] > v4 )
-            v2 = (signed int)(dword_140404A6C[137297755] - v4) / 2;
-          if ( (int)dword_140404A6C[137297756] > v5 )
-            v3 = (signed int)(dword_140404A6C[137297756] - v5) / 2;
-          dword_140404A6C[137297763] = v2;
-          dword_140404A6C[137297764] = v3;
-          dword_140404A6C[137297773] = 1;
-          if ( dword_140404A6C[137297769] )
+          g_160FC47F4 = v5;
+          if ( (int)g_160FC47D8 > v4 )
+            v2 = (signed int)(g_160FC47D8 - v4) / 2;
+          if ( (int)g_160FC47DC > v5 )
+            v3 = (signed int)(g_160FC47DC - v5) / 2;
+          g_160FC47F8 = v2;
+          g_160FC47FC = v3;
+          g_160FC4820 = 1;
+          if ( g_160FC4810 )
           {
-            renderer_canvas_width = (float)(int)dword_140404A6C[137297755];
-            renderer_canvas_height = (float)(int)dword_140404A6C[137297756];
+            (renderer_canvas_width) = (float)(int)g_160FC47D8;
+            (renderer_canvas_height) = (float)(int)g_160FC47DC;
           }
         }
-        if ( v12 == 5 && !dword_140404A6C[137297766] )
+        if ( v12 == 5 && !g_160FC4804 )
         {
           sr_event_size(sr_event_window, &v9, &v10);
-          v9 = (signed int)(dword_140404A6C[137297755] + (signed int)(16 * dword_140404A6C[137297756]) / 9) / 2;
+          v9 = (signed int)(g_160FC47D8 + (signed int)(16 * g_160FC47DC) / 9) / 2;
           v10 = (v9 + 8 * (v9 + 1)) / 16;
           sr_event_set_size(sr_event_window, v9, v10);
         }
 LABEL_28:
-        v6 = dword_140404A6C[137297749];
+        v6 = g_160FC47C0;
         if ( v11 == 256 )
           v6 = 1;
-        dword_140404A6C[137297749] = v6;
+        g_160FC47C0 = v6;
       }
     }
   }

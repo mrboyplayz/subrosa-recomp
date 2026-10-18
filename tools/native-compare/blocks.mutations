@@ -1,0 +1,223 @@
+gone flag not set
+    record->gone[voxel] = gone;
+    record->gone_changed = 1;
+----
+    record->gone[voxel] = gone;
+====
+gone written to the ids
+    record->gone[voxel] = gone;
+----
+    record->ids[voxel] = gone;
+====
+3008 written to 4808
+        record->unknown_3008[voxel] = value;
+----
+        record->unknown_4808[voxel] = value;
+====
+quarter from z
+    int32_t quarter = (int32_t)((y >> 1) & 3);
+----
+    int32_t quarter = (int32_t)((z >> 1) & 3);
+====
+mesh released when there is none
+    if (record->meshes[quarter] >= 0)
+----
+    if (record->meshes[quarter] != -1)
+====
+4808 value not stored
+    record->unknown_4808[voxel] = value;
+    if
+----
+    if
+====
+mark sets the gone flag
+        record->unknown_6024 = 1;
+----
+        record->gone_changed = 1;
+====
+event while disconnected
+    if (!game_connected)
+        return;
+    count = world_event_count;
+----
+    count = world_event_count;
+====
+event type
+    event->type = WORLD_EVENT_BLOCK_GONE;
+----
+    event->type = 16;
+====
+event coordinates swapped
+    event->b = (int32_t)(y + (z << 16));
+----
+    event->b = (int32_t)(z + (y << 16));
+====
+event update dropped
+    event->unknown_2c = (int32_t)update;
+----
+====
+event count kept at 17 bits
+    world_event_count = (int32_t)((uint32_t)count + 1u) & 0xFFFF;
+}
+
+void world_break_blocks(
+----
+    world_event_count = (int32_t)((uint32_t)count + 1u) & 0x1FFFF;
+}
+
+void world_break_blocks(
+====
+layers up to 4
+    if (layer > 3 || (int32_t)x < 0
+----
+    if (layer > 4 || (int32_t)x < 0
+====
+chunk bound along z inclusive
+cz >= level->chunks[2])
+        return -1;
+    return level->chunk_table
+----
+cz > level->chunks[2])
+        return -1;
+    return level->chunk_table
+====
+chunk table with y and z swapped
+    return level->chunk_table[add_int(multiply_int(add_int(multiply_int(level->chunks[2], cy), cz),
+----
+    return level->chunk_table[add_int(multiply_int(add_int(multiply_int(level->chunks[2], cz), cy),
+====
+cell index from the voxel bits
+    return level->slots[slot].cells[WORLD_CELL_INDEX(x >> 3, y >> 3, z >> 3)];
+----
+    return level->slots[slot].cells[WORLD_CELL_INDEX(x, y, z)];
+====
+voxel index with y and z swapped
+    *voxel = WORLD_CELL_INDEX(x, y, z);
+----
+    *voxel = WORLD_CELL_INDEX(x, z, y);
+====
+8 read from 808
+    return record ? record->unknown_8[voxel] : 0;
+----
+    return record ? record->unknown_808[voxel] : 0;
+====
+any tag is a link
+    if ((value & WORLD_BLOCK_LINK_MASK) != WORLD_BLOCK_LINK)
+----
+    if ((value & WORLD_BLOCK_LINK) != WORLD_BLOCK_LINK)
+====
+link offsets of y and z swapped
+    return get(layer, x - (value & 0xFF), y - ((value >> 16) & 0xFF), z - ((value >> 8) & 0xFF));
+----
+    return get(layer, x - (value & 0xFF), y - ((value >> 8) & 0xFF), z - ((value >> 16) & 0xFF));
+====
+link followed from 8 into 3008
+    return follow_link(record->unknown_8[voxel], layer, x, y, z, world_block_unknown_8_at);
+----
+    return follow_link(record->unknown_8[voxel], layer, x, y, z, world_block_unknown_3008_at);
+====
+missing origin reads -1
+    if (!record)
+        return 0;
+    return follow_link(record->unknown_3008[voxel]
+----
+    if (!record)
+        return UINT32_MAX;
+    return follow_link(record->unknown_3008[voxel]
+====
+1008 entry ignored
+    return (&record->unknown_1008[0][0])[add_int(entry, (int32_t)(voxel * 8))];
+----
+    return (&record->unknown_1008[0][0])[(int32_t)(voxel * 8)];
+====
+1008 missing reads 0
+    if (!record)
+        return UINT32_MAX;
+    return (&record->unknown_1008
+----
+    if (!record)
+        return 0;
+    return (&record->unknown_1008
+====
+last entry is 6
+    return record ? record->unknown_1008[voxel][7] : UINT32_MAX;
+----
+    return record ? record->unknown_1008[voxel][6] : UINT32_MAX;
+====
+3808 entries of 4
+    return (&record->unknown_3808[0][0])[add_int(entry, (int32_t)(voxel * 8))];
+----
+    return (&record->unknown_3808[0][0])[add_int(entry, (int32_t)(voxel * 4))];
+====
+last slot never used
+        if (slot == WORLD_CHUNK_SLOT_CAPACITY - 1)
+----
+        if (slot == WORLD_CHUNK_SLOT_CAPACITY - 2)
+====
+slot not marked used
+    level->slots[slot].used = 1;
+----
+====
+slot cells cleared to 0
+    memset(level->slots[slot].cells, 0xFF, sizeof level->slots[slot].cells);
+----
+    memset(level->slots[slot].cells, 0, sizeof level->slots[slot].cells);
+====
+slot chunk bound along y inclusive
+    if (cx >= level->chunks[0] || cy >= level->chunks[1] || cz >= level->chunks[2])
+        return -1;
+    for (slot
+----
+    if (cx >= level->chunks[0] || cy > level->chunks[1] || cz >= level->chunks[2])
+        return -1;
+    for (slot
+====
+slots up to 512
+    if (layer > 3 || slot > WORLD_CHUNK_SLOT_CAPACITY - 1
+----
+    if (layer > 3 || slot > WORLD_CHUNK_SLOT_CAPACITY
+====
+record cell bound in voxels
+    if ((int32_t)((uint32_t)x >> 3) >= level->chunks[0]
+----
+    if ((int32_t)((uint32_t)x >> 6) >= level->chunks[0]
+====
+last record never used
+        if (index == WORLD_BLOCK_RECORD_CAPACITY - 1)
+----
+        if (index == WORLD_BLOCK_RECORD_CAPACITY - 2)
+====
+record layer not kept
+    record->layer = (int32_t)layer;
+----
+====
+record cell z dropped
+    record->cell[2] = z;
+----
+====
+record not entered in its cell
+    level->slots[slot].cells[WORLD_CELL_INDEX(x, y, z)] = index;
+----
+====
+808 not cleared
+    memset(record->unknown_808, 0, sizeof record->unknown_808);
+----
+====
+gone cleared too
+    memset(record->ids, 0, sizeof record->ids);
+----
+    memset(record->ids, 0, sizeof record->ids);
+    memset(record->gone, 0, sizeof record->gone);
+====
+records not counted
+    level->record_count++;
+----
+====
+6030 not cleared
+    record->unknown_6030 = 0;
+----
+====
+only three meshes cleared
+    for (int quarter = 0; quarter < 4; quarter++)
+----
+    for (int quarter = 0; quarter < 3; quarter++)

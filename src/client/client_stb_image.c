@@ -2626,7 +2626,7 @@ char *sub_14015D7E0(char *Block,int source_channels,int channels,int width,int h
                                                unsigned int width, unsigned int height, const char **failure);
   /* src/engine/image_convert.c; the failure reason is the decoder's thread-local one. */
   return (char *)image_convert_channels((unsigned char *)Block, source_channels, channels, width, height,
-      (const char **)(*(_QWORD *)(__readgsqword(0x58)+8LL*dword_140404A6C[19064470])+16));
+      (const char **)(*(_QWORD *)(__readgsqword(0x58)+8LL*g_144CBE4C4)+16));
 }
 
 //----- (000000014015DD00) ----------------------------------------------------
@@ -4227,7 +4227,7 @@ __int64            sub_14015F820(__int64 *a1)
                  0x132Du);
     if ( v3 )
     {
-      if ( dword_140404A6C[18215123] )
+      if ( g_144980DB8 )
       {
         v7 = v2 + 2;
         v8 = v3;
@@ -4840,7 +4840,7 @@ void sub_1401603C0(__m128i *a1, unsigned int *a2, unsigned int *a3, int *a4, int
   if ( *(_DWORD *)(v6 + 8) )
     result = *(unsigned int *)(v6 + 12);
   else
-    result = dword_140404A6C[18215120];
+    result = g_144980DAC;
   if ( (_DWORD)result && a1 )
   {
     v8 = a5;
@@ -9838,7 +9838,7 @@ LABEL_5:
   if ( *(_DWORD *)(v17 + 8) )
     v18 = *(_DWORD *)(v17 + 12);
   else
-    v18 = dword_140404A6C[18215120];
+    v18 = g_144980DAC;
   if ( v18 )
   {
     if ( !a5 )
@@ -9931,10 +9931,10 @@ __m128i *           sub_140166160(__int64 a1, int *a2, int *a3, unsigned int *a4
     free(v10);
     v10 = (__m128i *)v14;
 LABEL_18:
-    v15 = dword_140404A6C[19064470];
+    v15 = g_144CBE4C4;
     goto LABEL_19;
   }
-  v15 = dword_140404A6C[19064470];
+  v15 = g_144CBE4C4;
   *(_QWORD *)(sr_client_static_tls() + 16LL) = (uint64)(uintptr_t)("outofmem");
   v10 = nullptr;
 LABEL_19:
@@ -9942,7 +9942,7 @@ LABEL_19:
   if ( *(_DWORD *)(v29 + 8) )
     v30 = *(_DWORD *)(v29 + 12);
   else
-    v30 = dword_140404A6C[18215120];
+    v30 = g_144980DAC;
   if ( v30 )
   {
     if ( !a5 )
@@ -10378,7 +10378,7 @@ __m128i *           sub_140166D20(__int64 a1, int *a2, int *a3, unsigned int *a4
     if ( v10 )
     {
       v11 = sr_client_static_tls();
-      if ( *(_DWORD *)(v11 + 8) ? *(_DWORD *)(v11 + 12) : dword_140404A6C[18215120] )
+      if ( *(_DWORD *)(v11 + 8) ? *(_DWORD *)(v11 + 12) : g_144980DAC )
       {
         if ( !a5 )
           v9 = *a4;
@@ -11827,7 +11827,7 @@ LABEL_9:
                 }
               }
             }
-            if ( v126 && dword_140404A6C[18215124] && (int)v4[3] > 2 )
+            if ( v126 && g_144980DBC && (int)v4[3] > 2 )
             {
               v93 = *(_BYTE **)(a1 + 24);
               v94 = (unsigned int)(**(_DWORD **)a1 * *(_DWORD *)(*(_QWORD *)a1 + 4LL));
@@ -11857,7 +11857,7 @@ LABEL_9:
                     0x132Du);
                 if ( (_DWORD)v94 )
                 {
-                  if ( dword_140404A6C[18215123] )
+                  if ( g_144980DB8 )
                   {
                     v98 = v93 + 1;
                     do
@@ -19752,7 +19752,7 @@ __int64            sub_140171510(
   if ( *(_DWORD *)(v10 + 8) )
     v11 = *(_DWORD *)(v10 + 12);
   else
-    v11 = dword_140404A6C[18215120];
+    v11 = g_144980DAC;
   if ( v11 )
   {
     v12 = *a4;
@@ -20239,7 +20239,7 @@ __int64            sub_140171DD0(__int64 a1, int a2, int a3, int a4, __int64 a5)
     do
     {
       v13 = v11;
-      if ( dword_140404A6C[18215637] )
+      if ( g_1449815C0 )
         v13 = v12;
       sub_1401772C0(a1, a2, a4, v9, (float *)(a5 + 4LL * a2 * a4 * v13));
       ++v11;
@@ -20744,7 +20744,7 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
                   v148 = j - 8;
                   if ( v146 >= v73 )
                     v147 = v73 - 1;
-                  if ( dword_140404A6C[18215637] )
+                  if ( g_1449815C0 )
                     v147 = v73 - v147 - 1;
                   v149 = a2 * v147;
                   if ( v148 < j )
@@ -20918,7 +20918,7 @@ __int64            sub_140172080(__int64 a1, int a2, int a3, int a4, __int64 a5,
                 v82 = k - 16;
                 if ( v80 >= v73 )
                   v81 = v73 - 1;
-                if ( dword_140404A6C[18215637] )
+                if ( g_1449815C0 )
                   v81 = v73 - v81 - 1;
                 v83 = a2 * v81;
                 if ( v82 < k )

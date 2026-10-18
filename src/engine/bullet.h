@@ -40,4 +40,9 @@ _Static_assert(sizeof(Bullet) == 92, "Bullet size");
    UINT32_MAX when all 16,384 are in flight. 0x14004E8A0 */
 uint32_t world_fire_bullet(int type, const float from[3], const float velocity[3], int player);
 
+/* Counts down every bullet's lifetime (from 0x10000 it never expires) and
+   removes those whose time is up, the last bullet moving into the freed
+   slot. 0x14002CE50 */
+void world_expire_bullets(void);
+
 #endif

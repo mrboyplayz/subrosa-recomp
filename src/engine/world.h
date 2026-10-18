@@ -25,22 +25,73 @@ void world_break_blocks(const int32_t voxel_min[3], const int32_t voxel_max[3]);
 
 /* ---- the level's blocks ------------------------------------------------------------ */
 
-/* Four layers of voxels (layer 0 is the world), each 1,052,016 bytes apart
-   from 0x15ADA9274: the size in 64-voxel chunks along x, y and z, a table of
-   chunk slots (int per chunk, -1: empty; x fastest, then z, then y) and per
-   chunk slot 513 cells of 8x8x8 voxels (x fastest, then z, then y), each the
-   index of a block record or -1. A block record (27,720 bytes from
-   0x15415D1F4) holds at +0x5008 the block id of each of its 512 voxels (bits
-   0-9 the block type) and at +0x5808 a mask of the parts that are gone. */
-#define WORLD_LEVEL_LAYER_STRIDE 0x100D70ULL
-#define world_level_chunks(layer, axis) \
-    SR_GLOBAL(int32_t, 0x15ADA9274ULL + WORLD_LEVEL_LAYER_STRIDE * (uint64_t)(int64_t)(layer) + 4ULL * (uint64_t)(axis))
-#define world_level_chunk_table_address(layer) \
-    (&SR_GLOBAL(uint8_t, 0x15ADA9288ULL + WORLD_LEVEL_LAYER_STRIDE * (uint64_t)(int64_t)(layer)))
-#define world_level_cells(layer, slot) \
-    (&SR_GLOBAL(int32_t, 0x15ADA97B0ULL + WORLD_LEVEL_LAYER_STRIDE * (uint64_t)(int64_t)(layer) + 0x804ULL * (uint64_t)(int64_t)(slot)))
-#define world_block_record_ids(record) (&SR_GLOBAL(uint32_t, 0x154166248ULL + 0x6C48ULL * (uint64_t)(int64_t)(record)))
-#define world_block_record_gone(record) (&SR_GLOBAL(uint32_t, 0x154166A48ULL + 0x6C48ULL * (uint64_t)(int64_t)(record)))
+/* Four layers of voxels (layer 0 is the world). Each is cut into chunks of
+   64 x 64 x 64 voxels, each chunk into 8 x 8 x 8 cells of 8 x 8 x 8 voxels.
+   A chunk that holds anything has a slot; a cell that holds anything has a
+   block record with a word per voxel. Within a chunk slot and within a
+   record x runs fastest, then z, then y; the chunk table runs the same way. */
+
+#define WORLD_LEVEL_LAYER_COUNT 4
+#define WORLD_CHUNK_SLOT_CAPACITY 512        /* per layer */
+#define WORLD_BLOCK_RECORD_CAPACITY 4096     /* shared by the layers */
+
+/* Index of a voxel within its record (or of a cell within its chunk) from
+   the low three bits of each coordinate. */
+#define WORLD_CELL_INDEX(x, y, z) (((x) & 7) + 8 * (((z) & 7) + 8 * ((y) & 7)))
+
+/* A value of WorldBlockRecord.unknown_8 or unknown_3008 tagged so (top three
+   bits 110) stands for the voxel it names: x less bits 0-7, z less bits
+   8-15, y less bits 16-23; the getters with "_origin" follow it once. */
+#define WORLD_BLOCK_LINK_MASK 0xE0000000u
+#define WORLD_BLOCK_LINK      0xC0000000u
+
+typedef struct WorldChunkSlot {
+    int32_t used;
+    int32_t cells[512];                  /* WorldBlockRecord indices, -1: empty */
+} WorldChunkSlot;
+
+/* 0x15ADA9240, 1,052,016 bytes each. */
+typedef struct WorldLevelLayer {
+    uint8_t unknown_0[0x34];
+    int32_t chunks[3];                   /* size in chunks along x, y and z */
+    uint8_t unknown_40[0x48 - 0x40];
+    int32_t *chunk_table;                /* a slot per chunk, -1: empty */
+    uint8_t unknown_50[0x56C - 0x50];
+    WorldChunkSlot slots[WORLD_CHUNK_SLOT_CAPACITY];
+    int32_t record_count;                /* records made in this layer (counted up only) */
+} WorldLevelLayer;
+
+/* 0x154161240, 27,720 bytes each: the voxels of one cell. Several arrays'
+   meanings are not settled; the comments say what is known. */
+typedef struct WorldBlockRecord {
+    int32_t active;
+    int32_t layer;
+    uint32_t unknown_8[512];             /* cleared on creation; may hold a WORLD_BLOCK_LINK */
+    uint32_t unknown_808[512];           /* cleared on creation */
+    uint16_t unknown_1008[512][8];       /* not cleared on creation */
+    uint32_t unknown_3008[512];          /* values tagged 0x80000000 travel in event 16; may hold a WORLD_BLOCK_LINK */
+    uint8_t unknown_3808[512][8];        /* not cleared on creation */
+    uint32_t unknown_4808[512];          /* shapes the record's meshes */
+    uint32_t ids[512];                   /* block id (bits 0-9 the block type) */
+    uint32_t gone[512];                  /* mask of the parts that are gone; not cleared on creation */
+    int32_t meshes[4];                   /* mesh of each quarter (voxels with the same bits 1-2 of y), -1: none */
+    int32_t cell[3];                     /* x, y, z of the cell, in cells */
+    int32_t unknown_6024;                /* a flag (meaning not settled) */
+    int32_t gone_changed;                /* the gone masks changed; 0x140017910 copies them into the meshes */
+    int32_t unknown_602c;
+    int32_t unknown_6030;                /* cleared on creation */
+    uint8_t unknown_6034[0x6C48 - 0x6034];
+} WorldBlockRecord;
+
+_Static_assert(sizeof(WorldLevelLayer) == 0x100D70, "WorldLevelLayer size");
+_Static_assert(__builtin_offsetof(WorldLevelLayer, slots) == 0x56C, "WorldLevelLayer layout");
+_Static_assert(sizeof(WorldBlockRecord) == 0x6C48, "WorldBlockRecord size");
+_Static_assert(__builtin_offsetof(WorldBlockRecord, ids) == 0x5008, "WorldBlockRecord layout");
+_Static_assert(__builtin_offsetof(WorldBlockRecord, meshes) == 0x6008, "WorldBlockRecord layout");
+_Static_assert(__builtin_offsetof(WorldBlockRecord, gone_changed) == 0x6028, "WorldBlockRecord layout");
+
+#define world_level_layers (&SR_GLOBAL(WorldLevelLayer, 0x15ADA9240ULL))
+#define world_block_records (&SR_GLOBAL(WorldBlockRecord, 0x154161240ULL))
 
 /* The block id at voxel x, y, z of a layer (0 outside the level or in an
    empty chunk or cell). 0x140016870 */
@@ -49,6 +100,53 @@ uint32_t world_block_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
 /* The gone-parts mask of the block at voxel x, y, z (0 where
    world_block_at() gives 0). 0x1400169B0 */
 uint32_t world_block_gone_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+
+/* The getters and setters below read 0 (or -1 where noted) and change
+   nothing outside the level or in an empty chunk or cell. */
+
+/* The block record of the cell holding voxel x, y, z, or -1. 0x140013020 */
+int32_t world_block_record_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+
+/* The unknown_8 word of voxel x, y, z: as stored (0x1400129D0), and with a
+   WORLD_BLOCK_LINK followed (0x140012B10). */
+uint32_t world_block_unknown_8_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+uint32_t world_block_unknown_8_origin(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+
+/* The same for unknown_3008: 0x140016450, 0x140016590. */
+uint32_t world_block_unknown_3008_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+uint32_t world_block_unknown_3008_origin(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+
+/* Entry `entry` (0-7, not checked) of voxel x, y, z's unknown_1008
+   (0x140012DE0) and unknown_3808 (0x140016720); -1 where there is none.
+   world_block_unknown_1008_last is entry 7 (0x140012CA0). */
+uint32_t world_block_unknown_1008_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, int entry);
+uint32_t world_block_unknown_1008_last(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+uint32_t world_block_unknown_3808_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, int entry);
+
+/* Sets the gone-parts mask of the block at voxel x, y, z and marks the
+   record's masks changed. 0x140017110 */
+void world_set_block_gone(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t gone);
+
+/* Sets the unknown_3008 word of voxel x, y, z. 0x140016E30 */
+void world_set_block_unknown_3008(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
+
+/* Sets the unknown_4808 word of voxel x, y, z and frees the mesh of its
+   quarter of the record, if it has one (0x140012940). 0x140017260 */
+void world_set_block_unknown_4808(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
+
+/* Sets the unknown_6024 flag of the record holding voxel x, y, z. 0x1400173C0 */
+void world_mark_block_record(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+
+/* Gives chunk cx, cy, cz of a layer the first unused slot, all its cells
+   empty. Returns the slot, or -1 outside the layer or when all 512 are
+   used. 0x140010020 */
+int32_t world_create_chunk_slot(uint32_t layer, int32_t cx, int32_t cy, int32_t cz);
+
+/* Makes the first inactive block record the record of cell x, y, z (in
+   cells) of chunk slot `slot` of a layer, with its words cleared as
+   WorldBlockRecord says and no meshes. Returns it, or -1 outside the layer
+   or when all are active. 0x140012490 */
+int32_t world_create_block_record(uint32_t layer, uint32_t slot, int32_t x, int32_t y, int32_t z);
 
 /* ---- vehicle lifetimes ------------------------------------------------------- */
 
@@ -159,6 +257,12 @@ _Static_assert(sizeof(WorldEvent) == 0x80, "WorldEvent size");
 #define world_events (&SR_GLOBAL(WorldEvent, 0x1873DE460ULL))
 #define world_event_count SR_GLOBAL(int32_t, 0x189C1DC64ULL)
 #define WORLD_EVENT_VEHICLE_REMOVED 4
+#define WORLD_EVENT_BLOCK_GONE 15
+
+/* When connected, records event 15: the gone-parts mask of the block at
+   voxel x, y, z of a layer changed (a: layer | x << 16, b: y | z << 16,
+   c: the mask, unknown_2c: update, 1 from the item routines). 0x1400516B0 */
+void world_event_block_gone(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t gone, uint32_t update);
 
 /* Counts down each vehicle's lifetime and removes the vehicles whose time
    is up: frees their points, wheel and hull bodies, takes humans out, drops

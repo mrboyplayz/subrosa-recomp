@@ -41,24 +41,24 @@ LABEL_51:
     *errno_sr() = 22;
     goto LABEL_52;
   }
-  v9 = *(_QWORD **)&dword_140404A6C[19064863];
+  v9 = *(_QWORD **)&g_144CBEAE8;
   v10 = SR_VEC_PTR_LANES(128, v7, i16)[1];
-  if ( *(_QWORD *)&dword_140404A6C[19064863] == *(_QWORD *)&dword_140404A6C[19064865] )
+  if ( g_144CBEAE8 == g_144CBEAF0 )
   {
-    v9 = (_QWORD *)copy_environment__wchar_t(*(__int64 **)&dword_140404A6C[19064863]);
-    *(_QWORD *)&dword_140404A6C[19064863] = (uint64)(uintptr_t)(v9);
+    v9 = (_QWORD *)copy_environment__wchar_t(*(__int64 **)&g_144CBEAE8);
+    g_144CBEAE8 = (uint64)(uintptr_t)(v9);
   }
   if ( v9 )
     goto LABEL_20;
-  if ( a2 && *(_QWORD *)&dword_140404A6C[19064861] )
+  if ( a2 && g_144CBEAE0 )
   {
     if ( unknown_libname_765() )
     {
-      v9 = *(_QWORD **)&dword_140404A6C[19064863];
-      if ( *(_QWORD *)&dword_140404A6C[19064863] == *(_QWORD *)&dword_140404A6C[19064865] )
+      v9 = *(_QWORD **)&g_144CBEAE8;
+      if ( g_144CBEAE8 == g_144CBEAF0 )
       {
-        v9 = (_QWORD *)copy_environment__wchar_t(*(__int64 **)&dword_140404A6C[19064863]);
-        *(_QWORD *)&dword_140404A6C[19064863] = (uint64)(uintptr_t)(v9);
+        v9 = (_QWORD *)copy_environment__wchar_t(*(__int64 **)&g_144CBEAE8);
+        g_144CBEAE8 = (uint64)(uintptr_t)(v9);
       }
 LABEL_19:
       if ( v9 )
@@ -73,11 +73,11 @@ LABEL_52:
     v11 = v2;
     goto LABEL_53;
   }
-  if ( *(_QWORD *)&dword_140404A6C[19064861] )
+  if ( g_144CBEAE0 )
     goto LABEL_18;
-  *(_QWORD *)&dword_140404A6C[19064861] = calloc_base();
+  g_144CBEAE0 = calloc_base();
   free_base(nullptr);
-  if ( !*(_QWORD *)&dword_140404A6C[19064861] )
+  if ( !g_144CBEAE0 )
   {
 LABEL_16:
     v11 = -1;
@@ -87,13 +87,13 @@ LABEL_54:
     v19 = v2;
     goto LABEL_55;
   }
-  v9 = *(_QWORD **)&dword_140404A6C[19064863];
-  if ( !*(_QWORD *)&dword_140404A6C[19064863] )
+  v9 = *(_QWORD **)&g_144CBEAE8;
+  if ( !g_144CBEAE8 )
   {
 LABEL_18:
-    *(_QWORD *)&dword_140404A6C[19064863] = calloc_base();
+    g_144CBEAE8 = calloc_base();
     free_base(nullptr);
-    v9 = *(_QWORD **)&dword_140404A6C[19064863];
+    v9 = *(_QWORD **)&g_144CBEAE8;
     goto LABEL_19;
   }
 LABEL_20:
@@ -124,7 +124,7 @@ LABEL_28:
       v16 = recalloc_base(v9, v15, 8);
       free_base(nullptr);
       if ( v16 )
-        *(_QWORD *)&dword_140404A6C[19064863] = v16;
+        g_144CBEAE8 = v16;
       goto LABEL_43;
     }
     v9[v15] = (uint64)(uintptr_t)(Block);
@@ -173,7 +173,7 @@ LABEL_43:
     {
       *(_QWORD *)(v20 + 8 * v17) = (uint64)(uintptr_t)(Block);
       *(_QWORD *)(v20 + 8 * v17 + 8) = 0;
-      *(_QWORD *)&dword_140404A6C[19064863] = v20;
+      g_144CBEAE8 = v20;
       goto LABEL_42;
     }
   }
@@ -291,15 +291,15 @@ LABEL_15:
 //----- (0000000140260784) ----------------------------------------------------
 void sub_140260784()
 {
-  if ( *(_QWORD *)&dword_140404A6C[19064861] == *(_QWORD *)&dword_140404A6C[19064867] )
-    *(_QWORD *)&dword_140404A6C[19064861] = copy_environment__char(*(__int64 **)&dword_140404A6C[19064861]);
+  if ( g_144CBEAE0 == g_144CBEAF8 )
+    g_144CBEAE0 = copy_environment__char(*(__int64 **)&g_144CBEAE0);
 }
 
 //----- (00000001402607AC) ----------------------------------------------------
 void sub_1402607AC()
 {
-  if ( *(_QWORD *)&dword_140404A6C[19064863] == *(_QWORD *)&dword_140404A6C[19064865] )
-    *(_QWORD *)&dword_140404A6C[19064863] = copy_environment__wchar_t(*(__int64 **)&dword_140404A6C[19064863]);
+  if ( g_144CBEAE8 == g_144CBEAF0 )
+    g_144CBEAE8 = copy_environment__wchar_t(*(__int64 **)&g_144CBEAE8);
 }
 
 //----- (00000001402607D4) ----------------------------------------------------
@@ -309,9 +309,9 @@ __int64            find_in_environment_nolock__char(__int64 a1, __int64 a2)
   __int64 *v5;
   __int64 i;
 
-  v2 = *(_QWORD *)&dword_140404A6C[19064861];
-  v5 = *(__int64 **)&dword_140404A6C[19064861];
-  for ( i = **(_QWORD **)&dword_140404A6C[19064861]; i; i = *v5 )
+  v2 = g_144CBEAE0;
+  v5 = *(__int64 **)&g_144CBEAE0;
+  for ( i = **(_QWORD **)&g_144CBEAE0; i; i = *v5 )
   {
     if ( !(unsigned int)strnicoll_sr(a1, i, a2) && (*(_BYTE *)(a2 + *v5) == 61 || !*(_BYTE *)(a2 + *v5)) )
       return ((__int64)v5 - v2) >> 3;
@@ -327,9 +327,9 @@ __int64            find_in_environment_nolock__wchar_t(__int64 a1, __int64 a2)
   __int64 *v5;
   __int64 i;
 
-  v2 = *(_QWORD *)&dword_140404A6C[19064863];
-  v5 = *(__int64 **)&dword_140404A6C[19064863];
-  for ( i = **(_QWORD **)&dword_140404A6C[19064863]; i; i = *v5 )
+  v2 = g_144CBEAE8;
+  v5 = *(__int64 **)&g_144CBEAE8;
+  for ( i = **(_QWORD **)&g_144CBEAE8; i; i = *v5 )
   {
     if ( !(unsigned int)wcsnicoll(a1, i, a2) && (*(_WORD *)(*v5 + 2 * a2) == 61 || !*(_WORD *)(*v5 + 2 * a2)) )
       return ((__int64)v5 - v2) >> 3;
@@ -388,8 +388,8 @@ __int64            recalloc_base(void *a1, unsigned __int64 a2, unsigned __int64
 //----- (0000000140260A78) ----------------------------------------------------
 bool sub_140260A78()
 {
-  *(_QWORD *)&dword_140404A6C[19065847] = ((__int64 (*)(void))GetProcessHeap)();
-  return *(_QWORD *)&dword_140404A6C[19065847] != 0;
+  g_144CBFA48 = ((__int64 (*)(void))GetProcessHeap)();
+  return g_144CBFA48 != 0;
 }
 
 // 14026E048: invalid function type 'HANDLE (__stdcall *GetProcessHeap)()' has been ignored
@@ -463,7 +463,7 @@ char *           unknown_libname_918(char *a1, unsigned __int64 a2)
 //----- (0000000140260BDC) ----------------------------------------------------
 void            sub_140260BDC(__int64 a1)
 {
-  *(_QWORD *)&dword_140404A6C[19065849] = a1;
+  g_144CBFA50 = a1;
 }
 
 //----- (0000000140260BE4) ----------------------------------------------------
@@ -483,7 +483,7 @@ __int64 query_new_handler()
   __int64 v0;
 
   crt_lock(0);
-  v0 = __ROR8__(*(_QWORD *)&dword_140404A6C[19065849] ^ _security_cookie, _security_cookie & 0x3F);
+  v0 = __ROR8__(g_144CBFA50 ^ _security_cookie, _security_cookie & 0x3F);
   crt_unlock(0);
   return v0;
 }
@@ -496,8 +496,8 @@ __int64            set_new_handler(__int64 a1)
   __int64 v2;
 
   crt_lock(0);
-  v2 = __ROR8__(*(_QWORD *)&dword_140404A6C[19065849] ^ _security_cookie, _security_cookie & 0x3F);
-  *(_QWORD *)&dword_140404A6C[19065849] = _security_cookie ^ __ROR8__(a1, 64 - (_security_cookie & 0x3Fu));
+  v2 = __ROR8__(g_144CBFA50 ^ _security_cookie, _security_cookie & 0x3F);
+  g_144CBFA50 = _security_cookie ^ __ROR8__(a1, 64 - (_security_cookie & 0x3Fu));
   crt_unlock(0);
   return v2;
 }
@@ -785,7 +785,7 @@ __int64            sub_140260FC0(unsigned int a1)
     v3 = 0;
     crt_lock(7);
     v4 = 0;
-    v5 = dword_140404A6C[19065657];
+    v5 = g_144CBF750;
     while ( (int)a1 >= v5 )
     {
       if ( !*(_QWORD *)&dword_140404A6C[2 * v4 + 19065401] )
@@ -797,8 +797,8 @@ __int64            sub_140260FC0(unsigned int a1)
           v3 = 12;
           break;
         }
-        v5 = dword_140404A6C[19065657] + 64;
-        dword_140404A6C[19065657] += 64;
+        v5 = g_144CBF750 + 64;
+        g_144CBF750 += 64;
       }
       ++v4;
     }
@@ -830,7 +830,7 @@ __int64            sub_140261090(int a1, __int64 a2)
   int v6;
   __int64 v7;
 
-  if ( a1 >= 0 && a1 < dword_140404A6C[19065657] )
+  if ( a1 >= 0 && a1 < g_144CBF750 )
   {
     v4 = (__int64)a1 >> 6;
     v5 = 9LL * (a1 & 0x3F);
@@ -900,7 +900,7 @@ __int64 alloc_osfhnd()
       *(_QWORD *)&dword_140404A6C[2 * i + 19065401] = v3;
       if ( v3 )
       {
-        dword_140404A6C[19065657] += 64;
+        g_144CBF750 += 64;
         v4 = i << 6;
         sub_140261068(v4);
         *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)v4 >> 6) + 19065401] + 56LL) = 1;
@@ -944,7 +944,7 @@ __int64            free_osfhnd(int a1)
   int v5;
   __int64 v6;
 
-  if ( a1 >= 0 && a1 < dword_140404A6C[19065657] )
+  if ( a1 >= 0 && a1 < g_144CBF750 )
   {
     v2 = (__int64)a1 >> 6;
     v3 = 9LL * (a1 & 0x3F);
@@ -996,7 +996,7 @@ __int64            get_osfhandle(int a1)
   }
   else
   {
-    if ( a1 >= 0 && a1 < dword_140404A6C[19065657] )
+    if ( a1 >= 0 && a1 < g_144CBF750 )
     {
       v1 = a1;
       v2 = a1 & 0x3F;
@@ -2067,7 +2067,7 @@ __int64 sub_140262ADC()
   if ( (*(_DWORD *)(v0 + 936) & dword_140302B88) == 0 || (v2 = *v1) == 0 )
   {
     crt_lock(4);
-    v2 = updatetlocinfoEx_nolock(v1, *(__int64 *)&dword_140404A6C[19065667]);
+    v2 = updatetlocinfoEx_nolock(v1, *(__int64 *)&g_144CBF778);
     crt_unlock(4);
     if ( !v2 )
       abort();
@@ -3294,7 +3294,7 @@ LABEL_10:
     while ( 1 )
     {
       result = ((__int64 (           *)(_QWORD, __int64, __int64))HeapAlloc)(
-                 *(_QWORD *)&dword_140404A6C[19065847],
+                 g_144CBFA48,
                  8,
                  v2);
       if ( result )
@@ -3900,7 +3900,7 @@ int         commit(int FileHandle)
   else
   {
     if ( FileHandle >= 0
-      && FileHandle < dword_140404A6C[19065657]
+      && FileHandle < g_144CBF750
       && (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)FileHandle >> 6) + 19065401]
                    + 72LL * (FileHandle & 0x3F)
                    + 56)
@@ -3952,7 +3952,7 @@ __int64            _ascii_wcsnicmp_sr(unsigned __int16 *a1, unsigned __int16 *a2
 //----- (000000014026529C) ----------------------------------------------------
 __int64            wcsnicmp_sr(unsigned __int16 *a1, unsigned __int16 *a2, __int64 a3)
 {
-  if ( dword_140404A6C[19065283] )
+  if ( g_144CBF178 )
     return wcsnicmp_l(a1, a2, a3, 0);
   if ( a1 && a2 )
     return _ascii_wcsnicmp_sr(a1, a2, a3);
@@ -4057,7 +4057,7 @@ __int64            wcsnicmp_l(unsigned __int16 *a1, unsigned __int16 *a2, __int6
 //----- (0000000140265480) ----------------------------------------------------
 __int64            strnicmp_sr(__int64 a1, __int64 a2, unsigned __int64 a3)
 {
-  if ( dword_140404A6C[19065283] )
+  if ( g_144CBF178 )
     return strnicmp_l(a1, a2, a3, 0);
   if ( a1 && a2 && a3 <= 0x7FFFFFFF )
     return sr_client_ascii_strnicmp((const unsigned char *)(uintptr_t)a1, (const unsigned char *)(uintptr_t)a2, a3);
@@ -4735,7 +4735,7 @@ LABEL_22:
 LABEL_39:
       *(_BYTE *)a1 |= 0x80u;
   }
-  if ( (a2 & 0x100) != 0 && (a4 & ~LOBYTE(dword_140404A6C[19065861]) & 0x80u) == 0 )
+  if ( (a2 & 0x100) != 0 && (a4 & ~LOBYTE(g_144CBFA80) & 0x80u) == 0 )
     *(_DWORD *)(a1 + 16) = 1;
   if ( (a2 & 0x40) != 0 )
   {
@@ -5133,7 +5133,7 @@ int         isatty(int FileHandle)
   }
   else
   {
-    if ( FileHandle >= 0 && FileHandle < dword_140404A6C[19065657] )
+    if ( FileHandle >= 0 && FileHandle < g_144CBF750 )
       return *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)FileHandle >> 6) + 19065401]
                       + 72LL * (FileHandle & 0x3F)
                       + 56)
@@ -5367,7 +5367,7 @@ __int64            _mbsrtowcs_helper_sr(sr_anon_49 *a1, sr_anon_49 **a2,      ch
     v12 = 0;
     v10 = 0;
     crt_locale_update((_LocaleUpdate *)&v13, nullptr);
-    v11 = &dword_140404A6C[19065859];
+    v11 = &g_144CBFA78;
     if ( a4 )
       v11 = (unsigned int *)a4;
     if ( *(_DWORD *)(v14 + 12) == 65001 )
@@ -5464,7 +5464,7 @@ __int64            mbrlen_sr(sr_anon_49 *a1,      char *a2, struct _Mbstatet *a3
   int v5;
 
   v5 = -1;
-  v3 = (struct _Mbstatet *)&dword_140404A6C[19065855];
+  v3 = (struct _Mbstatet *)&g_144CBFA68;
   if ( a3 )
     v3 = a3;
   _mbrtowc_s_l_sr(&v5, nullptr, a1, a2, v3, nullptr);
@@ -5481,7 +5481,7 @@ __int64            mbrtowc_sr(__int64 a1, sr_anon_49 *a2, __int64 a3, struct _Mb
   int v8;
 
   v8 = -1;
-  v4 = (struct _Mbstatet *)&dword_140404A6C[19065857];
+  v4 = (struct _Mbstatet *)&g_144CBFA70;
   if ( a4 )
     v4 = a4;
   if ( !a2 )
@@ -8255,7 +8255,7 @@ __int64            _acrt_fenv_set_status(int a1)
 //----- (000000014026A210) ----------------------------------------------------
 __int64            wcsnicoll(unsigned __int16 *a1, unsigned __int16 *a2, unsigned __int64 a3)
 {
-  if ( dword_140404A6C[19065283] )
+  if ( g_144CBF178 )
     return wcsnicoll_l(a1, a2, a3, 0);
   if ( a1 && a2 && a3 <= 0x7FFFFFFF )
     return _ascii_wcsnicmp_sr(a1, a2, a3);
@@ -8323,7 +8323,7 @@ __int64            wcsnicoll_l(
 //----- (000000014026A350) ----------------------------------------------------
 __int64            strnicoll_sr(__int64 a1, __int64 a2, __int64 a3)
 {
-  if ( dword_140404A6C[19065283] )
+  if ( g_144CBF178 )
     return strnicoll_l(a1, a2, a3, 0);
   else
     return strnicmp_sr(a1, a2, a3);
@@ -8907,7 +8907,7 @@ _BOOL8 initialize_multibyte()
 __int64            msize(__int64 a1)
 {
   if ( a1 )
-    return ((__int64 (           *)(_QWORD, _QWORD, __int64))HeapSize)(*(_QWORD *)&dword_140404A6C[19065847], 0, a1);
+    return ((__int64 (           *)(_QWORD, _QWORD, __int64))HeapSize)(g_144CBFA48, 0, a1);
   *errno_sr() = 22;
   crt_invalid_parameter_noinfo();
   return -1;
@@ -8944,7 +8944,7 @@ __int64            _ascii_wcsicmp(unsigned __int16 *a1, unsigned __int16 *a2)
 //----- (000000014026AE18) ----------------------------------------------------
 __int64            sub_14026AE18(unsigned __int16 *a1, unsigned __int16 *a2)
 {
-  if ( dword_140404A6C[19065283] )
+  if ( g_144CBF178 )
     return sub_14026AE60(a1, a2, nullptr);
   if ( a1 && a2 )
     return _ascii_wcsicmp(a1, a2);
@@ -9307,7 +9307,7 @@ __int64            chsize_s(int a1, __int64 a2)
     return 9;
   }
   if ( a1 >= 0
-    && a1 < dword_140404A6C[19065657]
+    && a1 < g_144CBF750
     && (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a1 >> 6) + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) != 0 )
   {
     if ( a2 >= 0 )
@@ -9342,7 +9342,7 @@ __int64            chsize_s(int a1, __int64 a2)
 //----- (000000014026B530) ----------------------------------------------------
 __int64            umask_s(unsigned int a1, _DWORD *a2)
 {
-  if ( !a2 || (*a2 = dword_140404A6C[19065861], (a1 & 0xFFFFFE7F) != 0) )
+  if ( !a2 || (*a2 = g_144CBFA80, (a1 & 0xFFFFFE7F) != 0) )
   {
     *errno_sr() = 22;
     crt_invalid_parameter_noinfo();
@@ -9350,7 +9350,7 @@ __int64            umask_s(unsigned int a1, _DWORD *a2)
   }
   else
   {
-    dword_140404A6C[19065861] = a1;
+    g_144CBFA80 = a1;
     return 0;
   }
 }
@@ -9373,7 +9373,7 @@ __int64            __crt_mbstring____mbrtoc32_utf8(__int64 a1, char *a2, unsigne
   _DWORD v16[12];
   __int64 v17;
 
-  v4 = &dword_140404A6C[19065863];
+  v4 = &g_144CBFA88;
   v5 = Parameters;
   if ( a4 )
     v4 = a4;
@@ -11643,7 +11643,7 @@ uint32_t sub_140205C34(const void *object) {
 
 char initialize_global_variables(void) {
     return (char)sr_client_initialize_global_variables(
-        &dword_140404A6C[19065667], &off_140302420);
+        (unsigned int *)&g_144CBF778, &off_140302420);
 }
 
 uint32_t sub_140247CFC(void) {
@@ -11655,9 +11655,9 @@ size_t sub_1400012A0(FILE *stream, void *destination, int count) {
 }
 
 uint32_t sub_1402370D4(void) {
-    return sr_client_initialize_timezone(&dword_140404A6C[19064597],
-        &dword_140404A6C[19064598], &dword_140404A6C[19064599],
-        (uintptr_t *)&dword_140404A6C[19064601], (uintptr_t)sr_mem_140302270);
+    return sr_client_initialize_timezone(&g_144CBE6C0,
+        &g_144CBE6C4, &g_144CBE6C8,
+        (uintptr_t *)(unsigned int *)&g_144CBE6D0, (uintptr_t)sr_mem_140302270);
 }
 
 uint64_t sr_client_static_tls(void) {

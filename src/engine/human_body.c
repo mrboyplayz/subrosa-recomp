@@ -2,17 +2,50 @@
  * each tick the centre, the mean velocities and the smoothed rotation the
  * walking and balance routines steer by.
  */
+#include <string.h>
 #include "arith.h"
 #include "human.h"
 #include "math3d.h"
-
-/* ---- still recompiled code ------------------------------------------------- */
-
-/* Makes the bond of the joint between two bones of a human, anchored at a
-   point in the parent's axes; -1 when there is no room. */
-extern int sub_140055FA0(int human, int parent_bone, int child_bone, float *anchor);
+#include "physics.h"
 
 enum { HUMAN_BONE_ARM = 4, HUMAN_BONE_LEG = 10 };   /* first bone of the left limb; the right one is 3 on */
+
+int human_create_joint_bond(int human, int parent_bone, int child_bone, const float anchor[3])
+{
+    WorldHuman *h = &world_humans[human];
+    const HumanSkeletonBone *skeleton = &human_skeleton[child_bone - 1];
+    PhysicsBond *bond;
+    HumanBondEntry *entry;
+    int index;
+
+    for (index = 0; physics_bonds[index].active; index++)
+        if (index == PHYSICS_BOND_CAPACITY - 1)
+            return -1;
+
+    entry = &h->bonds[h->bond_count++];
+    entry->bond = index;
+    entry->parent_bone = parent_bone;
+    entry->child_bone = child_bone;
+
+    bond = &physics_bonds[index];
+    memset((uint8_t *)bond + 4, 0, sizeof *bond - 4);
+    bond->active = 1;
+    bond->type = PHYSICS_BOND_JOINT;
+    bond->lifetime = 0x10000;
+    bond->unknown_a0 = human;
+    memset(&physics_constraints[index], 0, sizeof physics_constraints[index]);
+    bond->body = h->bones[parent_bone].body;
+    bond->other_body = h->bones[child_bone].body;
+    bond->stiffness = 0.25f;
+    bond->damping = 0.375f;
+    bond->local_point[0] = anchor[0];
+    bond->local_point[1] = anchor[1];
+    bond->local_point[2] = anchor[2];
+    bond->other_local_point[0] = anchor[0] - skeleton->unknown_28[0];
+    bond->other_local_point[1] = anchor[1] - skeleton->unknown_28[1];
+    bond->other_local_point[2] = anchor[2] - skeleton->unknown_28[2];
+    return index;
+}
 
 /* The joint into child from parent: anchored where the skeleton's record
    before child's says. */
@@ -24,7 +57,7 @@ static void create_joint(int human, int parent, int child)
     anchor[0] = human_skeleton[child - 1].unknown_34[0];
     anchor[1] = human_skeleton[child - 1].unknown_34[1];
     anchor[2] = human_skeleton[child - 1].unknown_34[2];
-    bond = sub_140055FA0(human, parent, child, anchor);
+    bond = human_create_joint_bond(human, parent, child, anchor);
     if (bond != -1)
         world_humans[human].bones[child].bond = bond;
 }

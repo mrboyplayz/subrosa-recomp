@@ -106,6 +106,13 @@ enum {
     HUMAN_INPUT_20 = 0x20,               /* the arm pose follows unknown_70 */
 };
 
+/* A bond the human made, with the bones it joins. */
+typedef struct HumanBondEntry {
+    int32_t bond;                        /* PhysicsBond */
+    int32_t parent_bone;
+    int32_t child_bone;
+} HumanBondEntry;
+
 /* 0x18329E308, 28,664 bytes each. */
 typedef struct WorldHuman {
     int32_t active;
@@ -167,7 +174,12 @@ typedef struct WorldHuman {
     int32_t input_flags;                 /* HUMAN_INPUT_* */
     uint8_t unknown_218[0x220 - 0x218];
     HumanBone bones[HUMAN_BONE_COUNT];
-    uint8_t unknown_15a0[0x6734 - 0x15A0];
+    int32_t unknown_15a0;                /* entries of the list below; their first word is a PhysicsBond */
+    int32_t unknown_15a4[128][12];
+    int32_t bond_count;                  /* entries of bonds[] */
+    HumanBondEntry bonds[128];           /* the human's own bonds, freed with it; the capacity is a guess
+                                            (the list before holds 128) and nothing checks it */
+    uint8_t unknown_33a8[0x6734 - 0x33A8];
     int32_t unknown_6734;                /* above 0: full walking speed and a faster walk_amount (ticks of a jump?) */
     int32_t unknown_6738;
     uint8_t unknown_673c[0x6740 - 0x673C];
@@ -248,8 +260,10 @@ typedef struct HumanSkeletonBone {
     int32_t axis_row;                    /* which row of the bone's rotation runs along it */
     float length;                        /* of the bone's capsule along axis_row (the chest's keeps a held item out) */
     float radius;                        /* of the capsule */
-    uint8_t unknown_24[0x34 - 0x24];
-    float unknown_34[3];                 /* bone 3 + 3 side: where that arm's hand sits; bone 6: the aim point */
+    uint8_t unknown_24[0x28 - 0x24];
+    float unknown_28[3];                 /* the joint into the next bone is anchored at unknown_34 less this on that bone */
+    float unknown_34[3];                 /* bone 3 + 3 side: where that arm's hand sits; bone 6: the aim point;
+                                            the anchor of the joint into the next bone, on its parent */
     uint8_t unknown_40[100 - 0x40];
 } HumanSkeletonBone;
 
@@ -292,6 +306,13 @@ void human_update_walk_point(int human);
    pelvis, at the anchor the skeleton gives; a bone whose joint cannot be
    made keeps its old bond. 0x1400AB7B0 */
 void human_create_joints(int human);
+
+/* Makes the bond of the joint between two bones of a human (type 10,
+   lasting for ever, stiffness 1/4, damping 3/8), anchored at anchor in the
+   parent's axes and at anchor less the skeleton's unknown_28 of the bone
+   before the child in the child's; adds it to the human's bonds and clears
+   its constraint. Returns the bond, or -1 when all are taken. 0x140055FA0 */
+int human_create_joint_bond(int human, int parent_bone, int child_bone, const float anchor[3]);
 
 /* The body's centre and mean velocities for a tick, and the smoothed
    rotation of the pelvis. 0x1400ABB10 */
@@ -473,6 +494,7 @@ _Static_assert(sizeof(HumanSkeletonBone) == 100, "HumanSkeletonBone size");
 _Static_assert(__builtin_offsetof(HumanSkeletonBone, unknown_34) == 0x34, "HumanSkeletonBone layout");
 _Static_assert(sizeof(HumanHand) == 0x28, "HumanHand size");
 _Static_assert(sizeof(WorldHuman) == 0x6FF8, "WorldHuman size");
+_Static_assert(__builtin_offsetof(WorldHuman, bond_count) == 0x2DA4, "WorldHuman layout");
 _Static_assert(__builtin_offsetof(WorldHuman, vehicle) == 0x28, "WorldHuman layout");
 _Static_assert(__builtin_offsetof(WorldHuman, input_yaw) == 0x138, "WorldHuman layout");
 _Static_assert(__builtin_offsetof(WorldHuman, unknown_128) == 0x128, "WorldHuman layout");

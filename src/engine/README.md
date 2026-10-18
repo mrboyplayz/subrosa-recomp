@@ -37,7 +37,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `collision_mesh.c` | contact between two convex meshes (vehicle type 17 against items), with the original's overlapping frame tables; its parts: mesh transform, point sweep against faces, closest points of two edges, edge side test; point sweep against a placed mesh | 0x140048DA0, 0x14004A480, 0x14004A1D0, 0x14008CEB0, 0x140187410, 0x14004A130 |
 | `collision_placed.c`, `collision_placed.h` | item mesh placement and capsule contacts against its grouped triangles and quads | 0x14011BF40, 0x140033BE0 |
 | `world_particles.c`, `particle.h` | particles (pieces thrown off vehicles): spawning one with a random spin; the tick's flight, bounce off the level, landing sound and coming to rest in two static lists; the upload and drawing of those lists | 0x14005F150, 0x140158CD0, 0x1401259B0 |
-| `human_ragdoll.c`, `human.h` | the active ragdoll: target poses of a human's joints (so far the look pose; the per-tick drive 0x1400AD2B0 is next) | 0x1400AD030 |
+| `human_ragdoll.c`, `human.h` | the active ragdoll: target poses of a human's joints (the look pose) and the per-tick drive | 0x1400AD030, 0x1400AD2B0 |
 | `human_walk.c` | walking: the ground probe (level and near vehicles), the ground ahead (how level it is, how it rises, the vehicle stood on), the walk point's height, the walk point's move from the player's input (speed by mode, stamina, leans, the pull of a held item of type 28) | 0x1400B91E0, 0x1400AC890, 0x1400B2440, 0x1400B40B0 |
 | `human_body.c` | the skeleton's joints; per tick the body's centre, mean velocities and the smoothed rotation of the pelvis | 0x1400AB7B0, 0x1400ABB10 |
 | `human_feet.c` | a foot's ground bond for a tick (height, grip, the foot's turn), and the start of a jump from a planted foot | 0x1400B5460 |
@@ -48,6 +48,9 @@ The table records the recovered routines by original address. Recovery is incomp
 | `human_collide.c` | a human's bones against the level's triangles, the items near it and the bones of other humans: a contact for each hit | 0x1400B2E70 |
 | `human_hits.c` | a human struck by a vehicle: contacts of its bones with the hull, the harm of a hard blow, the event and score of a fatal one | 0x1400B3A80 |
 | `human_health.c` | health for a tick: death, the looseness of a hurt body, recovery, bleeding and its event | 0x1400B5E70 |
+| `world_blocks.c` (additions), `world.h` | the level's layers and block records as structs; a voxel's record and its other words (with links to an origin voxel followed); setting a voxel's gone-parts mask, its unknown_3008 and unknown_4808 words (the latter frees its quarter's mesh), a record's unknown_6024 flag; block event 15; creating a chunk slot and a block record | 0x140013020, 0x1400129D0, 0x140012B10, 0x140016450, 0x140016590, 0x140012DE0, 0x140012CA0, 0x140016720, 0x140017110, 0x140016E30, 0x140017260, 0x1400173C0, 0x1400516B0, 0x140010020, 0x140012490 |
+| `world_bullets.c` (additions) | bullet lifetimes and removal | 0x14002CE50 |
+| `human_body.c` (additions) | the bond of a joint between two bones, kept in the human's bond list | 0x140055FA0 |
 | `world_streets.c` (additions) | street triangles near a box: one street's range, and every street filed in the box's cells | 0x140188720, 0x140188900 |
 | `item_tick.c` | item states for a tick: type-26 lists, children following parents, lifetimes, type 27's vehicle, phones, computers, type 40, grenades, radios, type 30, first aid | 0x1400CC610 |
 | `item_phone.c`, `item_carry.c`, `item_grenade.c`, `item_gun.c`, `item_text.c` | a phone's state event; items carried on the body; a grenade going off; guns (loading, firing, recoil); an item's text line linked to a record | 0x140051940, 0x1401380F0, 0x1400A70B0, 0x1400CF670, 0x140050F90 |
@@ -55,28 +58,11 @@ The table records the recovered routines by original address. Recovery is incomp
 | `world_effects.c`, `effect.h` | world effects: adding one (bullet holes, blood drops, sparks, tracers); moving them for a tick (drag, gravity, bouncing off the level, the three-point EFFECT_4 body, drops landing as blood stains, EFFECT_3 marks) | 0x14005EE40, 0x1401597F0 |
 | `world_effects_draw.c` | drawing the world effects in depth order: holes, blood drops and sparks as textured quads, EFFECT_3/EFFECT_4 pieces as a lit mesh, tracers as smooth lines | 0x140125DB0 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
-| `events.c`, `events.h` | 17 event constructors: bullets and hits, messages, sounds, blocks, corporation doors and missions, vehicle removal, player appearance and finance, type 21, stock prices | 0x140051230, 0x1400512D0, 0x140051480, 0x140051560, 0x1400515E0, 0x140051650, 0x1400516B0, 0x140051730, 0x1400518B0, 0x1400519F0, 0x140051B00, 0x140051BD0, 0x140051CF0, 0x140051DC0, 0x140051F50, 0x140051FF0, 0x140052090 |
-| `net_bits.c`, `net_bits.h` | packet bit reads and writes, scaled values, two success-only write adapters, angle serialization | 0x140115AE0, 0x140115C20, 0x140115D90, 0x140115E80, 0x140115E60, 0x140115F70, 0x14010E610 |
-| `disk.c`, `disk.h`, `item_text.c` (addition) | first-free disk allocation and raw item text-record allocation | 0x140050EF0, 0x140051170 |
-| `physics_create.c`, `physics.h` (additions) | first-free bond lookup, rigid bodies, body-point and rotation bonds, point-mass allocation | 0x1400A4440, 0x14005CF80, 0x14004E430, 0x14004E5B0, 0x14005CBB0 |
-| `disk_files.c`, `disk.h` (additions) | resolving an item's disk drive and appending file records | 0x14004C960, 0x140080690 |
-| `net_bytes.c`, `net_bits.h` (additions) | aligned byte-stream reads and writes | 0x14007ADF0, 0x14007B180 |
-| `area_bounds.c`, `area_bounds.h` | corporation interior, vault and world-region point-membership queries | 0x14011B8F0, 0x14011B960, 0x14011B9F0 |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
 
 All of them are in use by the built client except `renderer_batch_vertex2f`
-(0x14007D230), `item_allocate_text_record` (0x140051170) and
-`physics_create_point` (0x14005CBB0), whose restored client entry points
-currently have no recompiled callers.
-
-The 26 routines added on 2026-10-14 are documented in
-[`restoration-20261014.md`](restoration-20261014.md), including their test
-commands, binary fingerprint, and comparison limits.
-
-A second batch of 12 routines is documented in
-[`restoration-20261014-batch2.md`](restoration-20261014-batch2.md), with
-native comparisons, client-adapter checks and mutation tests.
+(0x14007D230), which no recompiled code calls yet.
 
 The rows above added on 2026-10-12/13 were compared against the installed
 Steam build (`cc667f7d…`, see `scripts/client_target.py`) with the rebuilt
@@ -88,7 +74,7 @@ of those, 0x1400A56B0, 0x14007A240, 0x14007B4D0, 0x14006EC40, 0x14007ABA0 and
 ## Rules
 
 1. **A routine moves here only when it is proven equal to the original.**
-   `tools/native-compare/run.py` runs the original executable's routine and the
+   `tools/native-compare/run.sh` runs the original executable's routine and the
    one here with the same inputs and compares results, resulting state and
    every OpenGL call. A port is done when that comparison is identical, and
    changing any single operation of the port makes it differ (unless the
@@ -121,7 +107,7 @@ callers of a wrapper have moved here as well, the wrapper can go.
 
 ## Build
 
-`scripts/build.py` compiles every `*.c` in this directory and links
+`scripts/check-rebuild.py` compiles every `*.c` in this directory and links
 the objects into the client. Unlike the recompiled sources these files are
 built with optimization (`-O2`); they must stay free of undefined behaviour.
 `-fno-strict-aliasing` is required because the shared state is one array

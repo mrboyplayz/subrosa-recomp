@@ -25,6 +25,10 @@ SDL_GetNumAudioDevices
 SDL_GetNumDisplayModes
 SDL_GetPlatform
 SDL_GetRelativeMouseState
+SDL_GetRelativeMouseMode
+SDL_GetWindowGrab
+SDL_SetWindowGrab
+SDL_CaptureMouse
 SDL_GetSystemRAM
 SDL_GetTicks
 SDL_GetVersion
@@ -59,6 +63,8 @@ SDL_SemWait
 SDL_SetClipboardText
 SDL_SetHintWithPriority
 SDL_SetMainReady
+SDL_StartTextInput
+SDL_StopTextInput
 SDL_SetRelativeMouseMode
 SDL_SetWindowBordered
 SDL_SetWindowFullscreen

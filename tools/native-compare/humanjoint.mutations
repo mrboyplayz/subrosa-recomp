@@ -1,0 +1,65 @@
+last bond never taken
+        if (index == PHYSICS_BOND_CAPACITY - 1)
+----
+        if (index == PHYSICS_BOND_CAPACITY - 2)
+====
+not added to the list
+    entry = &h->bonds[h->bond_count++];
+----
+    entry = &h->bonds[h->bond_count];
+====
+bones swapped in the list
+    entry->parent_bone = parent_bone;
+    entry->child_bone = child_bone;
+----
+    entry->parent_bone = child_bone;
+    entry->child_bone = parent_bone;
+====
+bond not cleared
+    memset((uint8_t *)bond + 4, 0, sizeof *bond - 4);
+----
+====
+constraint not cleared
+    memset(&physics_constraints[index], 0, sizeof physics_constraints[index]);
+----
+====
+temporary bond
+    bond->lifetime = 0x10000;
+----
+    bond->lifetime = 0xFFFF;
+====
+human not recorded
+    bond->unknown_a0 = human;
+----
+====
+bodies swapped
+    bond->body = h->bones[parent_bone].body;
+    bond->other_body = h->bones[child_bone].body;
+----
+    bond->body = h->bones[child_bone].body;
+    bond->other_body = h->bones[parent_bone].body;
+====
+stiffness
+    bond->stiffness = 0.25f;
+----
+    bond->stiffness = 0.375f;
+====
+damping
+    bond->damping = 0.375f;
+----
+    bond->damping = 0.25f;
+====
+skeleton of the child
+    const HumanSkeletonBone *skeleton = &human_skeleton[child_bone - 1];
+----
+    const HumanSkeletonBone *skeleton = &human_skeleton[child_bone];
+====
+offset added
+    bond->other_local_point[1] = anchor[1] - skeleton->unknown_28[1];
+----
+    bond->other_local_point[1] = anchor[1] + skeleton->unknown_28[1];
+====
+wrong type
+    bond->type = PHYSICS_BOND_JOINT;
+----
+    bond->type = PHYSICS_BOND_ROTATION;

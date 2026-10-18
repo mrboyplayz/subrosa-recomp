@@ -144,10 +144,10 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
   v2 = (int)dword_140404A6C[v1 + 71856292];
   if ( (_DWORD)v2 != -1 )
     sub_140087810(a1, v2);
-  v3 = dword_140404A6C[282487105];
+  v3 = g_18399EF70;
   v4 = _mm_cvtsi32_si128((int)(0x43800000u));
-  v5 = (LOBYTE(dword_140404A6C[282487105]) + 1) & 0x1F;
-  if ( v5 != (dword_140404A6C[282487105] & 0x1F) )
+  v5 = (LOBYTE(g_18399EF70) + 1) & 0x1F;
+  if ( v5 != (g_18399EF70 & 0x1F) )
   {
     do
     {
@@ -155,7 +155,7 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
       if ( (int)dword_140404A6C[v6 + 282487107] > 0 )
       {
         sr_text_draw_recovered((char *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + v6 * 4 + 1134161792), 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v4))), 24.0, 97, 1.0f, 1.0f, 1.0f, ((float)(int)dword_140404A6C[v6+282487107]*0.005f), NULL);
-        v3 = dword_140404A6C[282487105];
+        v3 = g_18399EF70;
         *(float *)SR_VEC_LANES(128, v4, i32) = *(float *)SR_VEC_LANES(128, v4, i32) + 24.0;
       }
       v5 = ((_BYTE)v5 + 1) & 0x1F;
@@ -164,25 +164,25 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
   }
   if ( game_state == 3 || (_DWORD)v2 == -1 )
     return;
-  if ( dword_140404A6C[284021986] || dword_140404A6C[284021985] && !dword_140404A6C[280649838] )
+  if ( g_183F79DF4 || g_183F79DF0 && !g_18329CC24 )
     sub_140088130(v2);
   v7 = _mm_cvtsi32_si128((int)(0x43900000u));
   v8 = _mm_cvtsi32_si128((int)(0x43C00000u));
   v9 = 7166 * v2;
   if ( (int)dword_140404A6C[7166 * v2 + 280658334] > 0 )
   {
-    qword_140404050(3553, renderer_white_texture);
+    glBindTexture(3553, renderer_white_texture);
     sub_14006CFF0(sr_export_float_lane_container(1136656384), sr_export_float_lane_container(1133510656), 1132462080, 32.0, 0, 1065353216, 1065353216, 1065353216, 1040187392);
     sub_14006CFF0(sr_export_float_lane_container(1136656384), sr_export_float_lane_container(1133510656), sr_text_float_bits((float)(int)dword_140404A6C[v9+280658334]), 32.0, 0, 1065353216, 1065353216, 1065353216, 1063256064);
   }
-  if ( dword_140404A6C[280649843]
+  if ( g_18329CC38
     && ((int)dword_140404A6C[v9 + 280658139] > 0 || (int)dword_140404A6C[v9 + 280658149] > 0) )
   {
-    qword_140404050(3553, renderer_white_texture);
-    *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279430;
-    dword_140404A6C[456217205] = 2;
-    dword_140404A6C[456217207] = 0;
-    dword_140404A6C[456217208] = 9;
+    glBindTexture(3553, renderer_white_texture);
+    g_1AD299450 = xmmword_140279430;
+    g_1AD059440 = 2;
+    g_1AD059448 = 0;
+    g_1AD05944C = 9;
     {
       /* 0x1400862F4..0x14008648E: the positions are constants and the sine/cosine pair left in xmm0
          by each call (0x14008635F, 0x1400863EC, 0x140086452); the C had dropped all of them. */
@@ -192,13 +192,13 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
       sub_14007D420(578.43585f, 327.50827f, 0.0f);
       sub_14007D420(608.0f, 352.0f, 0.0f);
       sub_14007D420(578.43585f, 376.49173f, 0.0f);
-      *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279460;
+      g_1AD299450 = xmmword_140279460;
       sr_pair = sub_1401F8A50((float)(*(float *)&dword_140404A6C[v1 + 71856300] * 15.0), 0, 0.0);
       sub_14007D420(608.0f, 352.0f, 0.0f);
       sr_y = (float)(_mm_cvtsd_f64(sr_pair) * 64.0) + 352.0f;
       sr_x = 608.0f - (float)(_mm_cvtsd_f64(_mm_unpackhi_pd(sr_pair, sr_pair)) * 32.0);
       sub_14007D420(sr_x, sr_y, 0.0f);
-      *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279410;
+      g_1AD299450 = xmmword_140279410;
       sub_14007D420(sr_x, sr_y, 0.0f);
       sr_pair = sub_1401F8A50((float)(*(float *)&dword_140404A6C[v1 + 71856300] * 14.0625), 0, 0.0);
       sr_y = (float)(_mm_cvtsd_f64(sr_pair) * 64.0) + 352.0f;
@@ -274,15 +274,15 @@ void            ui_draw_hud_menu_prompt_candidate(int a1)
 LABEL_41:
     sub_1400A7C70(v2, 512.0, 444.0);
   }
-  qword_140404050(3553, renderer_white_texture);
+  glBindTexture(3553, renderer_white_texture);
   HIDWORD(v58) = 0;
   sub_14006CFF0(sr_export_float_lane_container(1103101952), sr_export_float_lane_container(1141309440), 1103101952, 127.0, 8, 1065353216, 1065353216, 1065353216, 1040187392);
-  qword_140404050(3553, renderer_white_texture);
+  glBindTexture(3553, renderer_white_texture);
   sub_14006CFF0(sr_export_float_lane_container(1103101952), sr_export_float_lane_container(1141309440), 1103101952, (float)(int)dword_140404A6C[v9 + 280651310], 8, 1065353216, 1065353216, 1065353216, 1056964608);
   v61 = dword_140404A6C[v9 + 280651311];
   if ( v61 > 127 )
     v61 = 127;
-  qword_140404050(3553, renderer_white_texture);
+  glBindTexture(3553, renderer_white_texture);
   v62 = 1103101952;
   *(float *)&v58 = 540.0 - (float)v61;
   sub_14006CFF0(sr_export_float_lane_container(1103101952), v58, 1103101952, 8.0, 4, 1065353216, 1065353216, 1065353216, 1063256064);
@@ -310,13 +310,13 @@ LABEL_41:
     sr_text_draw_recovered(v67, 64.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x440F0000u))))), 24.0, 8, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
   }
 LABEL_52:
-  v68 = dword_140404A6C[283785910];
+  v68 = g_183E93544;
   v69 = _mm_cvtsi32_si128((int)(0x44030000u));
-  if ( !dword_140404A6C[283785910] )
+  if ( !g_183E93544 )
   {
     v62 = 1141047296;
     sr_text_draw_recovered("Whisper", 4.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x44030000u))))), 18.0, 8, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
-    v68 = dword_140404A6C[283785910];
+    v68 = g_183E93544;
     v69 = _mm_cvtsi32_si128((int)(0x44030000u));
   }
   if ( v68 == 2 )
@@ -326,7 +326,7 @@ LABEL_52:
   }
   if ( !dword_140404A6C[v1 + 71856342] )
     goto LABEL_67;
-  if ( dword_140404A6C[280649838] )
+  if ( g_18329CC24 )
   {
     if ( game_type == 4 )
       goto LABEL_63;
@@ -359,7 +359,7 @@ LABEL_67:
   if ( (_DWORD)v70 != -1 && !dword_140404A6C[v9 + 280651314] )
   {
     if ( dword_140404A6C[v1 + 71856339] != 3
-      || (qword_140404050(3553, renderer_white_texture),
+      || (((double (*)(_QWORD, _QWORD))glBindTexture)(3553, renderer_white_texture),
           sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container(1138753536), 1098907648, 80.0, 5, 0, 0, 0, 1056964608),
           v62 = 1098907648,
           sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container((unsigned __int64)COERCE_UNSIGNED_INT(
@@ -390,7 +390,7 @@ LABEL_67:
           32.0f,
           (float)((float)((float)(int)dword_140404A6C[5210 * v70 + 129720369] * 0.00019999999) * 3.14159265359)
         - 2.3561944901925);
-        qword_140404050(3553, renderer_white_texture);
+        glBindTexture(3553, renderer_white_texture);
         sub_14006CFF0(sr_export_float_lane_container(1145864192), sr_export_float_lane_container(1138753536), 1090519040, 68.0, 5, 0, 0, 0, 1061158912);
         sub_14006CFF0(sr_export_float_lane_container(1146388480), sr_export_float_lane_container(1138753536), 1090519040, 68.0, 5, 0, 0, 0, 1061158912);
         sub_14006CFF0(sr_export_float_lane_container(1146912768), sr_export_float_lane_container(1138753536), 1090519040, 68.0, 5, 0, 0, 0, 1061158912);
@@ -401,7 +401,7 @@ LABEL_67:
         sr_text_draw_recovered("4", 850.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43EE0000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
         sr_text_draw_recovered("A", 882.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43D20000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
         sr_text_draw_recovered("R", 882.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x43EE0000u))))), 16.0, 5, 1.0f, 1.0f, 1.0f, 0.75f, NULL);
-        qword_140404050(3553, renderer_white_texture);
+        glBindTexture(3553, renderer_white_texture);
         v79 = (float)((float)(*(float *)&dword_140404A6C[v1 + 71856293] * 16.0)
                     + (float)(*(float *)&dword_140404A6C[v1 + 71856293] * 16.0))
             + 818.0;
@@ -409,12 +409,12 @@ LABEL_67:
                     + (float)(*(float *)&dword_140404A6C[v1 + 71856295] * 16.0))
             + 448.0;
         v136 = v79;
-        qword_140404050(3553, renderer_white_texture);
+        glBindTexture(3553, renderer_white_texture);
         v81 = 0.0;
-        *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279470;
-        dword_140404A6C[456217205] = 0;
-        dword_140404A6C[456217207] = 0;
-        dword_140404A6C[456217208] = 9;
+        g_1AD299450 = xmmword_140279470;
+        g_1AD059440 = 0;
+        g_1AD059448 = 0;
+        g_1AD05944C = 9;
         sr_hud_line_point[2] = 0;
         v85 = _mm_castpd_ps(sub_1401F8A50(0.0, v82, 0.0 /* unused native input */));
         *(double *)&v62 = v79;
@@ -451,11 +451,11 @@ LABEL_67:
       (float)(*(float *)&dword_140404A6C[v1 + 71856293] - *(float *)&dword_140404A6C[v1 + 71856297]),
       0,
       0.0);
-    qword_140404050(3553, renderer_white_texture);
-    *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279430;
-    dword_140404A6C[456217205] = 2;
-    dword_140404A6C[456217207] = 0;
-    dword_140404A6C[456217208] = 9;
+    glBindTexture(3553, renderer_white_texture);
+    g_1AD299450 = xmmword_140279430;
+    g_1AD059440 = 2;
+    g_1AD059448 = 0;
+    g_1AD05944C = 9;
     sub_14007D420(512.0f, 336.0f, 0.0f);
     sub_14007D420(
       (float)(_mm_cvtsd_f64(_mm_unpackhi_pd(sr_pair, sr_pair)) * 64.0) + 512.0f,
@@ -468,23 +468,23 @@ LABEL_67:
     if ( (int)dword_140404A6C[v1 + 71857714] <= 0 )
     {
 LABEL_84:
-      qword_140404050(3553, renderer_white_texture);
+      glBindTexture(3553, renderer_white_texture);
       if ( (_DWORD)v70 == -1 )
         sub_14006CFF0(sr_export_float_lane_container(1140850688), *(double *)SR_VEC_LANES(128, v7, i64), 1082130432, 4.0, 5, 1065353216, 1065353216, 1065353216, 1056964608);
       return;
     }
     if ( dword_140404A6C[1268 * LOBYTE(dword_140404A6C[v1 + 71857715]) + 278521289] )
     {
-      qword_140404050(3553, renderer_white_texture);
-      dword_140404A6C[456217205] = 2;
-      dword_140404A6C[456217207] = 0;
-      dword_140404A6C[456217208] = 9;
-      *(_OWORD *)&dword_140404A6C[456807033] = xmmword_140279430;
+      glBindTexture(3553, renderer_white_texture);
+      g_1AD059440 = 2;
+      g_1AD059448 = 0;
+      g_1AD05944C = 9;
+      g_1AD299450 = xmmword_140279430;
       {
         /* 0x140087638..0x14008771A: a cross at (512, 288, 0) (xmm12 0x1400874E4, xmm8 0x1400874ED, xmm14
-           0x140086272) with arms from s to 2s, s = 8.0 (xmm13, 0x140087501) / dword_140404A6C[284024514]
+           0x140086272) with arms from s to 2s, s = 8.0 (xmm13, 0x140087501) / *(unsigned int *)&g_183F7C574
            (0x140087638), 2s = s + s (0x140087676). The C had lost all 24 arguments. */
-        float sr_s = 8.0f / *(float *)&dword_140404A6C[284024514];
+        float sr_s = 8.0f / g_183F7C574;
         float sr_s2 = sr_s + sr_s;
         sub_14007D420(512.0f, 288.0f - sr_s2, 0.0f);
         sub_14007D420(512.0f, 288.0f - sr_s, 0.0f);
@@ -556,12 +556,12 @@ void sub_1400A77C0(float a1, float a2, float a3, float a4, float a5)
     v16 = v11 * (float)(1.0 / v14);
   }
   v17 = 0;
-  dword_140404A6C[456217208] = 9;
+  g_1AD05944C = 9;
   v18 = 0;
-  dword_140404A6C[456217205] = 0;
+  g_1AD059440 = 0;
   (*(int *)(void *)&sr_capsule_vertex[2]) = 0;
   v19 = -v15;
-  dword_140404A6C[456217207] = 0;
+  g_1AD059448 = 0;
   do
   {
     sr_capsule_vertex[0] = v12;
@@ -717,12 +717,12 @@ __int64            sub_1400A7C70(int a1, float a2, float a3)
   v92 = 28664LL * a1;
   sub_14007B2A0((__int64)((__int128 *)(void *)sr_health_basis), (float *)((__int128 *)(void *)sr_health_basis) + 3, v4);
   v3 *= 1376;
-  sub_14007AE70(sr_health_rotations, (float *)((__int128 *)(void *)sr_health_basis), (float *)((char *)&dword_140404A6C[284956347] + v3));
+  sub_14007AE70(sr_health_rotations, (float *)((__int128 *)(void *)sr_health_basis), (float *)((char *)&g_18430A558 + v3));
   v5 = ((intptr_t)dword_140404A6C - 0x404a6cLL) + v3 + 1144038864;
   v6 = (float *)&(*(char *)(void *)(sr_health_positions + 5));
   v7 = 15;
   v8 = (float *)&(*(char *)(void *)(sr_health_rotations + 11));
-  v9 = (float *)&dword_140404A6C[282486075];
+  v9 = (float *)(unsigned int *)&g_18399DF58;
   v10 = &(*(char *)(void *)(sr_health_rotations + 9));
   do
   {
@@ -773,7 +773,7 @@ __int64            sub_1400A7C70(int a1, float a2, float a3)
   }
   while ( v7 );
   v38 = (float *)&(*(int64_t *)(void *)sr_health_positions);
-  v39 = (float *)&dword_140404A6C[282486068];
+  v39 = (float *)&g_18399DF3C;
   *(float *)&v40 = 0.0;
   v41 = 0;
   v84 = 0.0;
@@ -785,29 +785,29 @@ __int64            sub_1400A7C70(int a1, float a2, float a3)
     {
       if ( v40 == 3 )
       {
-        v42 = &dword_140404A6C[280658304];
+        v42 = &g_1832A506C;
       }
       else if ( (unsigned int)(v40 - 4) > 2 )
       {
         if ( (unsigned int)(v40 - 7) > 2 )
         {
-          v42 = &dword_140404A6C[280658310];
+          v42 = &g_1832A5084;
           if ( (unsigned int)(v40 - 10) > 2 )
-            v42 = &dword_140404A6C[280658312];
+            v42 = &g_1832A508C;
         }
         else
         {
-          v42 = &dword_140404A6C[280658308];
+          v42 = &g_1832A507C;
         }
       }
       else
       {
-        v42 = &dword_140404A6C[280658306];
+        v42 = &g_1832A5074;
       }
     }
     else
     {
-      v42 = &dword_140404A6C[280658302];
+      v42 = &g_1832A5064;
     }
     v43 = *v39 * -0.5;
     v44 = *v39 * 0.5;
@@ -828,13 +828,13 @@ __int64            sub_1400A7C70(int a1, float a2, float a3)
       v52 = 0.0;
       v53 = (float)v46 * 0.02f;
     }
-    qword_140404050(3553, renderer_white_texture);
-    *(float *)&dword_140404A6C[456807034] = v53;
-    *(float *)&dword_140404A6C[456807035] = v52;
+    glBindTexture(3553, renderer_white_texture);
+    *(float *)&g_1AD299454 = v53;
+    *(float *)&g_1AD299458 = v52;
     v56 = v51 - v49;
-    dword_140404A6C[456807033] = 1065353216;
+    *(unsigned int *)&g_1AD299450 = 1065353216;
     v57 = v50 - v48;
-    dword_140404A6C[456807036] = 1056964608;
+    g_1AD29945C = 1056964608;
     v58 = fsqrt((float)(v57 * v57) + (float)(v56 * v56));
     if ( v58 == 0.0 )
     {
@@ -846,12 +846,12 @@ __int64            sub_1400A7C70(int a1, float a2, float a3)
       v59 = (float)(1.0 / v58) * v57;
       v60 = (float)(1.0 / v58) * v56;
     }
-    dword_140404A6C[456217205] = 2;
+    g_1AD059440 = 2;
     v61 = -v60;
     v62 = 0;
-    dword_140404A6C[456217207] = 0;
+    g_1AD059448 = 0;
     v63 = 0;
-    dword_140404A6C[456217208] = 9;
+    g_1AD05944C = 9;
     do
     {
       v64 = v47 * *(float *)&dword_140404A6C[2 * v63 + 346696314];
@@ -898,7 +898,7 @@ __int64            sub_1400A7C70(int a1, float a2, float a3)
       float damage_color[4];
       hud_damage_color(v46, dword_140404A6C[v92 / 4 + 280658301] != 0, damage_color);
       if (damage_color[3] > 0.0f) {
-        memcpy(&dword_140404A6C[456807033], damage_color, sizeof(damage_color));
+        memcpy((unsigned int *)&g_1AD299450, damage_color, sizeof(damage_color));
         sub_1400A77C0(v49, v48, v51, v50, v47);
       }
     }

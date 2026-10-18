@@ -1,7 +1,0 @@
-            texture = (int32_t)((((uint32_t)(texture - 1) + (uint32_t)turn) & 3) + 9);
-====
-            texture = (int32_t)((((uint32_t)(texture - 9) + (uint32_t)turn) & 3) + 9);
-----
-    for (int f = 0; f < 6; f++, bit = bit << 1 | bit >> 31) {
-====
-    for (int f = 0; f < 6; f++, bit = bit << 1) {

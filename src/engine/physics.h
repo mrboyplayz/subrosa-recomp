@@ -72,7 +72,6 @@ typedef struct PhysicsPoint {
 } PhysicsPoint;
 
 #define physics_points      (&SR_GLOBAL(PhysicsPoint, 0x151A84920ULL))
-#define PHYSICS_POINT_CAPACITY 0x4000
 #define physics_point_count SR_GLOBAL(int32_t, 0x151E44920ULL)
 /* Set: points get no gravity. 0x16B27ECF4 */
 #define physics_points_no_gravity SR_GLOBAL(int32_t, 0x16B27ECF4ULL)
@@ -181,7 +180,7 @@ typedef struct PhysicsBond {
     int32_t vehicle_count;               /* vehicles whose bond lists hold this bond; their indices start at body */
     int32_t body;
     int32_t other_body;
-    int32_t unknown_a0;
+    int32_t unknown_a0;                  /* joints of a human: the human (human_create_joint_bond) */
     int32_t unknown_a4;                  /* PHYSICS_BOND_TIGHT */
     uint8_t unknown_a8[0xC4 - 0xA8];
     float target_velocity[3];            /* contacts: velocity of the surface touched */
@@ -252,18 +251,6 @@ _Static_assert(__builtin_offsetof(PhysicsPoint, previous_velocity) == 0x38, "Phy
 _Static_assert(__builtin_offsetof(PhysicsPoint, vehicle_count) == 0xD4, "PhysicsPoint layout");
 
 /* ---- functions ----------------------------------------------------------- */
-
-/* Creation returns a zero-extended UINT32_MAX when the pool is full.
- * Body/rotation bonds also clear the corresponding solver constraint. */
-uint32_t physics_find_free_bond(void); /* 0x1400A4440 */
-uint32_t physics_create_body(uint32_t type, const float position[3],
-                             const float rotation[9], const float velocity[3],
-                             float mass, const float inertia[3]); /* 0x14005CF80 */
-uint32_t physics_create_body_bond(uint32_t body, uint32_t other,
-                                  const float point[3], const float other_point[3]); /* 0x14004E430 */
-uint32_t physics_create_rotation_bond(uint32_t body, uint32_t other); /* 0x14004E5B0 */
-uint32_t physics_create_point(uint32_t kind, const float position[3],
-                              const float velocity[3], float mass, uint32_t vehicle); /* 0x14005CBB0 */
 
 /* Adds a contact between two bodies for this tick: a bond of type 6 in the
    first free slot, its constraint filled with the contact points (relative

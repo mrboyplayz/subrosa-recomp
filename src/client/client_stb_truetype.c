@@ -131,7 +131,7 @@ __int64            sub_140174170(__int64 a1, int a2, int a3, int a4, __int64 a5)
              v13,
              8 * v11);
   sub_140177A80(v7, "111 221 2222 11", 0, 0, v12 + 8, 0, 0, 0, 0, 0, a2, a3, v13, 8 * v11);
-  if ( dword_140404A6C[18215637] )
+  if ( g_1449815C0 )
   {
     v15 = 0;
     v16 = 1;
@@ -1913,10 +1913,10 @@ unsigned __int8            sub_140175EB0(__int64 a1, int a2, int a3, int a4, int
     v11 = &unk_140301D80;
   v12 = a4 - a5 - 1;
   v13 = v11[a7];
-  if ( dword_140404A6C[18215637] )
+  if ( g_1449815C0 )
     v8 = v12;
   v14 = (     __m128i *)(a1 + a2 * v8);
-  if ( dword_140404A6C[18215637] )
+  if ( g_1449815C0 )
     a2 = -a2;
   if ( !v13 )
     return (unsigned __int8)crt_memcpy(a8, v14, a6 * a3);
@@ -2773,7 +2773,7 @@ __int64 sub_140176DF0(
   v23[0] = 0;
   if ( a5 > 0 )
   {
-    if ( dword_140404A6C[18215637] )
+    if ( g_1449815C0 )
     {
       v11 = -v11;
       v25 = v11;
@@ -3359,7 +3359,7 @@ __int64            sub_140177890(
   v11 = a3;
   if ( a5 > 0 )
   {
-    if ( dword_140404A6C[18215637] )
+    if ( g_1449815C0 )
     {
       v11 = -a3;
       v23 = -a3;
@@ -13147,7 +13147,7 @@ int sub_140184A70()
 
   result = QueryPerformanceCounter((LARGE_INTEGER *)&PerformanceCount);
   if ( result )
-    return (int)((double)(long long)PerformanceCount * *(double *)&dword_140404A6C[278520505]);
+    return (int)((double)(long long)PerformanceCount * *(double *)&g_182A7D550);
   return result;
 }
 

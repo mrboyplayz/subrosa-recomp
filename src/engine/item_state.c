@@ -6,8 +6,6 @@
    The client wrapper for 0x14007B2A0 reads the float lane in XMM2. */
 extern void sub_14007B2A0(float matrix[9], const float axis[3], float angle);
 extern uint32_t sub_1400169B0(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
-extern void sub_140017110(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t gone);
-extern void sub_1400516B0(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t gone, uint32_t update);
 extern uint64_t sr_CreateItem(int32_t type, const float position[3], const float *velocity, const float rotation[9]);
 extern void sub_1400CA9B0(int item, int parent);
 extern void sub_1400CA7C0(int item, int human, int slot);
@@ -247,8 +245,8 @@ void item_restore_block_part(int index)
         uint32_t vx = (uint32_t)origin->voxel[0], vy = (uint32_t)origin->voxel[1], vz = (uint32_t)origin->voxel[2];
         uint32_t gone = sub_1400169B0((uint32_t)origin->layer, vx, vy, vz);
         gone &= ~(1u << ((uint32_t)origin->part & 31u));
-        sub_140017110((uint32_t)origin->layer, vx, vy, vz, gone);
-        sub_1400516B0((uint32_t)origin->layer, vx, vy, vz, gone, 1u);
+        world_set_block_gone((uint32_t)origin->layer, vx, vy, vz, gone);
+        world_event_block_gone((uint32_t)origin->layer, vx, vy, vz, gone, 1u);
     }
 }
 
@@ -283,8 +281,8 @@ uint64_t item_break_block_part(uint32_t block, int part_index, int layer, int vx
         return UINT32_MAX;
 
     gone = part_bit | sub_1400169B0((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz);
-    sub_140017110((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz, gone);
-    sub_1400516B0((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz, gone, 1u);
+    world_set_block_gone((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz, gone);
+    world_event_block_gone((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz, gone, 1u);
     world_items[index].unknown_318 = 1;
     origin = item_block_origin(index);
     origin->layer = layer;

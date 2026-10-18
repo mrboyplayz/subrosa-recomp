@@ -48,11 +48,24 @@ typedef ptrdiff_t GLintptr;
 #define GL_STREAM_DRAW 0x88E0
 #define GL_STATIC_DRAW 0x88E4
 
-/* Storage of the pointer table. The symbols are defined by the recompiled
-   client's data module; each one holds a single function pointer. */
-extern char qword_140302FE8[], qword_140302FF8[], qword_140404050[], qword_140404170[], unk_140404190[],
-            qword_140404198[], qword_140404230[], qword_140404238[], qword_1404042E0[],
-            qword_140404378[], qword_140404338[], unk_1404043C8[], unk_140404470[], qword_1404044A8[], unk_140404098[];
+/* Storage of the pointer table: the client's pointer variables, named after
+   the function each holds (src/client/client_gl.h). Declared under other C
+   names here because the macros below take the functions' names. */
+extern char slot_glActiveTexture[] __asm__("glActiveTexture");
+extern char slot_glBindBuffer[] __asm__("glBindBuffer");
+extern char slot_glBindTexture[] __asm__("glBindTexture");
+extern char slot_glBufferData[] __asm__("glBufferData");
+extern char slot_glBufferSubData[] __asm__("glBufferSubData");
+extern char slot_glDisableVertexAttribArray[] __asm__("glDisableVertexAttribArray");
+extern char slot_glDrawArrays[] __asm__("glDrawArrays");
+extern char slot_glEnableVertexAttribArray[] __asm__("glEnableVertexAttribArray");
+extern char slot_glUniform3fv[] __asm__("glUniform3fv");
+extern char slot_glUniformMatrix4fv[] __asm__("glUniformMatrix4fv");
+extern char slot_glUseProgram[] __asm__("glUseProgram");
+extern char slot_glVertexAttrib2f[] __asm__("glVertexAttrib2f");
+extern char slot_glVertexAttrib4fv[] __asm__("glVertexAttrib4fv");
+extern char slot_glVertexAttribPointer[] __asm__("glVertexAttribPointer");
+extern char slot_glViewport[] __asm__("glViewport");
 extern float flt_140384000[];
 
 #define SR_GL_SLOT(storage, prototype) ((prototype)(*(void **)(void *)(storage)))
@@ -60,22 +73,22 @@ extern float flt_140384000[];
 /* The OpenGL 1.0 functions live inside the shared state region instead. */
 #define SR_GL_STATE_SLOT(address, prototype) ((prototype)SR_GLOBAL(void *, address))
 
-#define glDrawArrays              SR_GL_SLOT(qword_140302FF8, void (*)(GLenum, GLint, GLsizei))
+#define glDrawArrays              SR_GL_SLOT(slot_glDrawArrays, void (*)(GLenum, GLint, GLsizei))
 #define glDrawElements            SR_GL_SLOT(&flt_140384000[131076], void (*)(GLenum, GLsizei, GLenum, const void *))
-#define glActiveTexture           SR_GL_SLOT(unk_140404098, void (*)(GLenum))
-#define glBindTexture             SR_GL_SLOT(qword_140404050, void (*)(GLenum, GLuint))
-#define glBindBuffer              SR_GL_SLOT(qword_140404170, void (*)(GLenum, GLuint))
-#define glBufferData              SR_GL_SLOT(unk_140404190, void (*)(GLenum, GLsizeiptr, const void *, GLenum))
-#define glBufferSubData           SR_GL_SLOT(qword_140404198, void (*)(GLenum, GLintptr, GLsizeiptr, const void *))
-#define glDisableVertexAttribArray SR_GL_SLOT(qword_140404230, void (*)(GLuint))
-#define glEnableVertexAttribArray SR_GL_SLOT(qword_140404238, void (*)(GLuint))
-#define glUseProgram              SR_GL_SLOT(qword_1404042E0, void (*)(GLuint))
-#define glUniform3fv              SR_GL_SLOT(qword_140404338, void (*)(GLint, GLsizei, const GLfloat *))
-#define glUniformMatrix4fv        SR_GL_SLOT(qword_140404378, void (*)(GLint, GLsizei, GLboolean, const GLfloat *))
-#define glVertexAttrib2f          SR_GL_SLOT(unk_1404043C8, void (*)(GLuint, GLfloat, GLfloat))
-#define glVertexAttrib4fv         SR_GL_SLOT(unk_140404470, void (*)(GLuint, const GLfloat *))
-#define glVertexAttribPointer     SR_GL_SLOT(qword_1404044A8, void (*)(GLuint, GLint, GLenum, GLboolean, GLsizei, const void *))
-#define glViewport                SR_GL_SLOT(qword_140302FE8, void (*)(GLint, GLint, GLsizei, GLsizei))
+#define glActiveTexture           SR_GL_SLOT(slot_glActiveTexture, void (*)(GLenum))
+#define glBindTexture             SR_GL_SLOT(slot_glBindTexture, void (*)(GLenum, GLuint))
+#define glBindBuffer              SR_GL_SLOT(slot_glBindBuffer, void (*)(GLenum, GLuint))
+#define glBufferData              SR_GL_SLOT(slot_glBufferData, void (*)(GLenum, GLsizeiptr, const void *, GLenum))
+#define glBufferSubData           SR_GL_SLOT(slot_glBufferSubData, void (*)(GLenum, GLintptr, GLsizeiptr, const void *))
+#define glDisableVertexAttribArray SR_GL_SLOT(slot_glDisableVertexAttribArray, void (*)(GLuint))
+#define glEnableVertexAttribArray SR_GL_SLOT(slot_glEnableVertexAttribArray, void (*)(GLuint))
+#define glUseProgram              SR_GL_SLOT(slot_glUseProgram, void (*)(GLuint))
+#define glUniform3fv              SR_GL_SLOT(slot_glUniform3fv, void (*)(GLint, GLsizei, const GLfloat *))
+#define glUniformMatrix4fv        SR_GL_SLOT(slot_glUniformMatrix4fv, void (*)(GLint, GLsizei, GLboolean, const GLfloat *))
+#define glVertexAttrib2f          SR_GL_SLOT(slot_glVertexAttrib2f, void (*)(GLuint, GLfloat, GLfloat))
+#define glVertexAttrib4fv         SR_GL_SLOT(slot_glVertexAttrib4fv, void (*)(GLuint, const GLfloat *))
+#define glVertexAttribPointer     SR_GL_SLOT(slot_glVertexAttribPointer, void (*)(GLuint, GLint, GLenum, GLboolean, GLsizei, const void *))
+#define glViewport                SR_GL_SLOT(slot_glViewport, void (*)(GLint, GLint, GLsizei, GLsizei))
 
 #define glScissor                 SR_GL_STATE_SLOT(0x144980CE8ULL, void (*)(GLint, GLint, GLsizei, GLsizei))
 #define glDepthMask               SR_GL_STATE_SLOT(0x144980D58ULL, void (*)(GLboolean))

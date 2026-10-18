@@ -2585,64 +2585,64 @@ sr_storage_window_0:
 .balign 16
 .zero 0
 sr_storage_window_1:
-.globl sr_mem_1402f61e0
-.set sr_mem_1402f61e0, sr_storage_window_1 + 0
-.globl sr_mem_1402f6460
-.set sr_mem_1402f6460, sr_storage_window_1 + 640
-.globl sr_mem_1402f7bb0
-.set sr_mem_1402f7bb0, sr_storage_window_1 + 6608
-.globl sr_mem_1402f7e60
-.set sr_mem_1402f7e60, sr_storage_window_1 + 7296
+.globl world_vertex_source
+.set world_vertex_source, sr_storage_window_1 + 0
+.globl world_fragment_source
+.set world_fragment_source, sr_storage_window_1 + 640
+.globl object_vertex_source
+.set object_vertex_source, sr_storage_window_1 + 6608
+.globl object_fragment_source
+.set object_fragment_source, sr_storage_window_1 + 7296
 .globl sr_mem_1402f9820
 .set sr_mem_1402f9820, sr_storage_window_1 + 13888
-.globl sr_shader_source_4
-.set sr_shader_source_4, sr_mem_1402f9820
+.globl lit_vertex_source
+.set lit_vertex_source, sr_mem_1402f9820
 .globl sr_mem_1402f9a10
 .set sr_mem_1402f9a10, sr_storage_window_1 + 14384
-.globl sr_shader_source_5
-.set sr_shader_source_5, sr_mem_1402f9a10
-.globl sr_mem_1402f9fd0
-.set sr_mem_1402f9fd0, sr_storage_window_1 + 15856
-.globl sr_mem_1402fa480
-.set sr_mem_1402fa480, sr_storage_window_1 + 17056
-.globl sr_mem_1402fb8a0
-.set sr_mem_1402fb8a0, sr_storage_window_1 + 22208
-.globl sr_mem_1402fc010
-.set sr_mem_1402fc010, sr_storage_window_1 + 24112
-.globl sr_mem_1402fc070
-.set sr_mem_1402fc070, sr_storage_window_1 + 24208
-.globl sr_mem_1402fc310
-.set sr_mem_1402fc310, sr_storage_window_1 + 24880
-.globl sr_mem_1402fc620
-.set sr_mem_1402fc620, sr_storage_window_1 + 25664
-.globl sr_mem_1402fc780
-.set sr_mem_1402fc780, sr_storage_window_1 + 26016
-.globl sr_mem_1402fdeb0
-.set sr_mem_1402fdeb0, sr_storage_window_1 + 31952
-.globl sr_mem_1402fdf70
-.set sr_mem_1402fdf70, sr_storage_window_1 + 32144
-.globl sr_mem_1402fe670
-.set sr_mem_1402fe670, sr_storage_window_1 + 33936
-.globl sr_mem_1402fe9a0
-.set sr_mem_1402fe9a0, sr_storage_window_1 + 34752
-.globl sr_mem_1402ff460
-.set sr_mem_1402ff460, sr_storage_window_1 + 37504
-.globl sr_mem_1402ff4e0
-.set sr_mem_1402ff4e0, sr_storage_window_1 + 37632
+.globl lit_fragment_source
+.set lit_fragment_source, sr_mem_1402f9a10
+.globl model_vertex_source
+.set model_vertex_source, sr_storage_window_1 + 15856
+.globl model_fragment_source
+.set model_fragment_source, sr_storage_window_1 + 17056
+.globl skin_vertex_source
+.set skin_vertex_source, sr_storage_window_1 + 22208
+.globl skin_fragment_source
+.set skin_fragment_source, sr_storage_window_1 + 24112
+.globl land_mask_vertex_source
+.set land_mask_vertex_source, sr_storage_window_1 + 24208
+.globl land_mask_fragment_source
+.set land_mask_fragment_source, sr_storage_window_1 + 24880
+.globl sky_vertex_source
+.set sky_vertex_source, sr_storage_window_1 + 25664
+.globl sky_fragment_source
+.set sky_fragment_source, sr_storage_window_1 + 26016
+.globl blur_vertex_source
+.set blur_vertex_source, sr_storage_window_1 + 31952
+.globl blur_fragment_source
+.set blur_fragment_source, sr_storage_window_1 + 32144
+.globl terrain_vertex_source
+.set terrain_vertex_source, sr_storage_window_1 + 33936
+.globl terrain_fragment_source
+.set terrain_fragment_source, sr_storage_window_1 + 34752
+.globl shadow_vertex_source
+.set shadow_vertex_source, sr_storage_window_1 + 37504
+.globl shadow_fragment_source
+.set shadow_fragment_source, sr_storage_window_1 + 37632
 .globl sr_mem_1402ff550
 .set sr_mem_1402ff550, sr_storage_window_1 + 37744
-.globl sr_mem_1403006e0
-.set sr_mem_1403006e0, sr_storage_window_1 + 42240
-.globl sr_mem_140300830
-.set sr_mem_140300830, sr_storage_window_1 + 42576
-.globl sr_mem_140300dd0
-.set sr_mem_140300dd0, sr_storage_window_1 + 44016
-.globl sr_mem_140300ec0
-.set sr_mem_140300ec0, sr_storage_window_1 + 44256
-.globl sr_mem_1403012a0
-.set sr_mem_1403012a0, sr_storage_window_1 + 45248
-.globl sr_mem_140301390
-.set sr_mem_140301390, sr_storage_window_1 + 45488
+.globl texture_lod_vertex_source
+.set texture_lod_vertex_source, sr_storage_window_1 + 42240
+.globl texture_lod_fragment_source
+.set texture_lod_fragment_source, sr_storage_window_1 + 42576
+.globl hdr_vertex_source
+.set hdr_vertex_source, sr_storage_window_1 + 44016
+.globl hdr_fragment_source
+.set hdr_fragment_source, sr_storage_window_1 + 44256
+.globl water_vertex_source
+.set water_vertex_source, sr_storage_window_1 + 45248
+.globl water_fragment_source
+.set water_fragment_source, sr_storage_window_1 + 45488
 .byte 0x23,0x76,0x65,0x72,0x73,0x69,0x6f,0x6e,0x20,0x33,0x33,0x30,0x20,0x63,0x6f,0x72
 .byte 0x65,0x0a,0x0a,0x75,0x6e,0x69,0x66,0x6f,0x72,0x6d,0x20,0x6d,0x61,0x74,0x34,0x20
 .byte 0x6d,0x6f,0x64,0x65,0x6c,0x76,0x69,0x65,0x77,0x70,0x72,0x6f,0x6a,0x65,0x63,0x74

@@ -204,10 +204,10 @@ void item_gun_tick(int item);
 typedef struct ItemLinkRecord {
     int32_t used;
     int32_t unknown_4;                   /* cleared with used */
-    int32_t unknown_8;                   /* 1 for a text/colour link, 0 for a raw text record */
+    int32_t unknown_8;                   /* 1 */
     int32_t tick;                        /* when the record was filled */
     int32_t item, line;
-    int32_t length;                      /* up to 63 for a text/colour link, 64 for a raw record */
+    int32_t length;                      /* up to 63 */
     char text[64];
     uint8_t colours[64];
 } ItemLinkRecord;
@@ -222,15 +222,6 @@ _Static_assert(sizeof(ItemLinkRecord) == 156, "ItemLinkRecord size");
    unmatched old record is freed. Returns the record, or UINT32_MAX when
    none is free. 0x140050F90 */
 uint32_t item_link_text_line(int item, int line);
-
-/* The raw record allocator reads from item +0x368, twelve bytes before
-   item_text_line's +0x374. Its line offset wraps as a signed 32-bit shift. */
-#define item_record_text_chunk(i, line) (&SR_GLOBAL(char, 0x182BBB4E8ULL + 0x1B80ULL * (uint64_t)(int64_t)(i) + (uint64_t)(int64_t)(int32_t)((uint32_t)(line) << 6)))
-/* Allocates the first free text record with at most 64 bytes, leaving
-   colours and unused text bytes intact. Unlike item_link_text_line, the
-   record's +8 word is zero and no item link is registered. Length must be
-   nonnegative. Returns UINT32_MAX when full. 0x140051170 */
-uint32_t item_allocate_text_record(int item, uint32_t line, int length);
 
 /* Recorded with a phone's state; meaning not settled. */
 #define item_unknown_278(i)    SR_GLOBAL(int32_t, 0x182BBB3F8ULL + 0x1B80ULL * (uint64_t)(int64_t)(i))

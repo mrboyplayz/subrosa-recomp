@@ -26,7 +26,8 @@ __int64 sr_path_malloc(unsigned __int64 size);
 
 #include <stdarg.h>
 
-#include "client_names.h"
+#include "client_gl.h"
+#include "client_state.h"
 
 //-------------------------------------------------------------------------
 // Function declarations
@@ -410,7 +411,7 @@ __int64            sub_14004BFC0(__int16 a1, __int64 a2, float *a3, float *a4, f
 
 __int64            sub_14004C4C0(unsigned __int8 *a1, __int64 a2);
 
-__int64            sub_14004C4E0(int a1, __int64 a2, __int64 a3, __int64 a4);
+__int64            shader_compile_program(int a1, __int64 a2, __int64 a3, __int64 a4);
 
 __int64            sub_14004C960(int a1, int a2);
 
@@ -1770,7 +1771,7 @@ void sub_14010E330();
 
 void            sub_14010E370(float *a1, float *a2);
 
-__int64            sub_14010E610(float *a1, int a2);
+__int64            sub_14010E610(float *a1, char a2);
 
 __int64            sub_14010E6C0(_DWORD *a1, int a2, int a3, signed int a4);
 
@@ -10290,717 +10291,377 @@ extern char byte_140302B98;
  // weak
 extern __int64 qword_140302EE0;
  // weak
-extern __int64 qword_140302F40;
  // weak
-extern __int64 (           *qword_140302F48)(_QWORD, _QWORD, _QWORD);
  // weak
-extern __int64 (           *qword_140302F50)(_QWORD, _QWORD, _QWORD);
  // weak
-extern double (           *qword_140302F58)(_QWORD);
  // weak
-extern __int64 qword_140302F60;
  // weak
-extern __int64 qword_140302F68;
  // weak
-extern __int64 (           *qword_140302F70)(_QWORD);
  // weak
-extern __int64 (           *qword_140302F78)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _QWORD);
  // weak
-extern __int64 qword_140302F80;
  // weak
-extern __int64 qword_140302F88;
  // weak
-extern __int64 qword_140302F90;
  // weak
-extern __int64 qword_140302F98;
  // weak
-extern __int64 (           *qword_140302FA0)(_QWORD, _QWORD);
  // weak
-extern __int64 (           *qword_140302FA8)(_QWORD);
  // weak
-extern __int64 qword_140302FB0;
  // weak
-extern __int64 qword_140302FB8;
  // weak
-extern __int64 qword_140302FC0;
  // weak
-extern __int64 qword_140302FC8;
  // weak
-extern __int64 qword_140302FD0;
  // weak
-extern __int64 qword_140302FD8;
  // weak
-extern __int64 qword_140302FE0;
  // weak
-extern __int64 (           *qword_140302FE8)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
 extern int dword_140302FF0;
  // weak
 extern int dword_140302FF4;
  // weak
-extern __int64 (           *qword_140302FF8)(_QWORD, _QWORD, _QWORD);
  // weak
 extern float flt_140384000[131092];
  // weak
-extern double (           *qword_140404050)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404058;
  // weak
-extern __int64 (           *unk_140404060)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404068;
  // weak
-extern _UNKNOWN unk_140404070;
  // weak
-extern double (           *unk_140404078)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
  // weak
-extern __int64 (           *unk_140404080)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404088;
  // weak
 extern _UNKNOWN unk_140404090;
  // weak
 extern _UNKNOWN unk_140404094;
  // weak
-extern double (           *unk_140404098)(_QWORD);
  // weak
-extern _UNKNOWN unk_1404040A0;
  // weak
-extern _UNKNOWN unk_1404040A8;
  // weak
-extern _UNKNOWN unk_1404040B0;
  // weak
-extern _UNKNOWN unk_1404040B8;
  // weak
-extern _UNKNOWN unk_1404040C0;
  // weak
-extern _UNKNOWN unk_1404040C8;
  // weak
-extern _UNKNOWN unk_1404040D0;
  // weak
-extern _UNKNOWN unk_1404040D8;
  // weak
-extern _UNKNOWN unk_1404040E0;
  // weak
-extern _UNKNOWN unk_1404040E8;
  // weak
-extern _UNKNOWN unk_1404040F0;
  // weak
-extern _UNKNOWN unk_1404040F8;
  // weak
-extern _UNKNOWN unk_140404100;
  // weak
-extern _UNKNOWN unk_140404108;
  // weak
-extern _UNKNOWN unk_140404110;
  // weak
-extern _UNKNOWN unk_140404118;
  // weak
-extern _UNKNOWN unk_140404120;
  // weak
 extern _UNKNOWN unk_140404128;
  // weak
 extern _UNKNOWN unk_14040412C;
  // weak
-extern _UNKNOWN unk_140404130;
  // weak
-extern _UNKNOWN unk_140404138;
  // weak
-extern _UNKNOWN unk_140404140;
  // weak
-extern _UNKNOWN unk_140404148;
  // weak
-extern _UNKNOWN unk_140404150;
  // weak
-extern _UNKNOWN unk_140404158;
  // weak
-extern _UNKNOWN unk_140404160;
  // weak
-extern _UNKNOWN unk_140404168;
  // weak
-extern double (           *qword_140404170)(_QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404178;
  // weak
-extern __int64 (           *unk_140404180)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404188;
  // weak
-extern __int64 (           *unk_140404190)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern double (           *qword_140404198)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404041A0;
  // weak
-extern _UNKNOWN unk_1404041A8;
  // weak
-extern _UNKNOWN unk_1404041B0;
  // weak
-extern __int64 (           *unk_1404041B8)(_QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404041C0;
  // weak
-extern _UNKNOWN unk_1404041C8;
  // weak
-extern _UNKNOWN unk_1404041D0;
  // weak
-extern __int64 (           *unk_1404041D8)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_1404041E0)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_1404041E8)(_QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_1404041F0)(_QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404041F8;
  // weak
-extern __int64 (           *unk_140404200)(_QWORD, _QWORD);
  // weak
-extern __int64 (*unk_140404208)(void);
  // weak
-extern __int64 (           *unk_140404210)(_QWORD);
  // weak
-extern _UNKNOWN unk_140404218;
  // weak
-extern _UNKNOWN unk_140404220;
  // weak
-extern _UNKNOWN unk_140404228;
  // weak
-extern double (           *qword_140404230)(_QWORD);
  // weak
-extern __int64 (           *qword_140404238)(_QWORD);
  // weak
-extern _UNKNOWN unk_140404240;
  // weak
-extern _UNKNOWN unk_140404248;
  // weak
-extern _UNKNOWN unk_140404250;
  // weak
-extern _UNKNOWN unk_140404258;
  // weak
-extern _UNKNOWN unk_140404260;
  // weak
-extern __int64 (           *unk_140404268)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404270;
  // weak
-extern _UNKNOWN unk_140404278;
  // weak
-extern _UNKNOWN unk_140404280;
  // weak
-extern __int64 (           *unk_140404288)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404290;
  // weak
-extern _UNKNOWN unk_140404298;
  // weak
-extern _UNKNOWN unk_1404042A0;
  // weak
-extern _UNKNOWN unk_1404042A8;
  // weak
-extern _UNKNOWN unk_1404042B0;
  // weak
-extern _UNKNOWN unk_1404042B8;
  // weak
-extern _UNKNOWN unk_1404042C0;
  // weak
-extern _UNKNOWN unk_1404042C8;
  // weak
-extern __int64 (           *unk_1404042D0)(_QWORD);
  // weak
-extern __int64 (           *unk_1404042D8)(_QWORD, _QWORD, _QWORD);
  // weak
-extern double (           *qword_1404042E0)(_QWORD);
  // weak
-extern __int64 (           *unk_1404042E8)(_QWORD);
  // weak
-extern _UNKNOWN unk_1404042F0;
  // weak
-extern _UNKNOWN unk_1404042F8;
  // weak
-extern _UNKNOWN unk_140404300;
  // weak
-extern __int64 (           *qword_140404308)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404310;
  // weak
-extern _UNKNOWN unk_140404318;
  // weak
-extern _UNKNOWN unk_140404320;
  // weak
-extern _UNKNOWN unk_140404328;
  // weak
-extern __int64 (           *unk_140404330)(_QWORD, _QWORD, _QWORD);
  // weak
-extern double (           *qword_140404338)(_QWORD, _QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_140404340)(_QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404348;
  // weak
-extern _UNKNOWN unk_140404350;
  // weak
-extern _UNKNOWN unk_140404358;
  // weak
-extern _UNKNOWN unk_140404360;
  // weak
-extern _UNKNOWN unk_140404368;
  // weak
-extern __int64 (           *unk_140404370)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern __int64 (           *qword_140404378)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_140404380)(_QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404388;
  // weak
-extern _UNKNOWN unk_140404390;
  // weak
-extern _UNKNOWN unk_140404398;
  // weak
-extern _UNKNOWN unk_1404043A0;
  // weak
-extern _UNKNOWN unk_1404043A8;
  // weak
-extern _UNKNOWN unk_1404043B0;
  // weak
-extern _UNKNOWN unk_1404043B8;
  // weak
-extern _UNKNOWN unk_1404043C0;
  // weak
-extern __int64 (           *unk_1404043C8)(_QWORD);
  // weak
-extern _UNKNOWN unk_1404043D0;
  // weak
-extern _UNKNOWN unk_1404043D8;
  // weak
-extern _UNKNOWN unk_1404043E0;
  // weak
-extern _UNKNOWN unk_1404043E8;
  // weak
-extern _UNKNOWN unk_1404043F0;
  // weak
-extern double (           *unk_1404043F8)(_QWORD);
  // weak
-extern double (           *unk_140404400)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404408;
  // weak
-extern _UNKNOWN unk_140404410;
  // weak
-extern _UNKNOWN unk_140404418;
  // weak
-extern _UNKNOWN unk_140404420;
  // weak
-extern _UNKNOWN unk_140404428;
  // weak
-extern _UNKNOWN unk_140404430;
  // weak
-extern _UNKNOWN unk_140404438;
  // weak
-extern _UNKNOWN unk_140404440;
  // weak
-extern _UNKNOWN unk_140404448;
  // weak
-extern _UNKNOWN unk_140404450;
  // weak
-extern _UNKNOWN unk_140404458;
  // weak
-extern _UNKNOWN unk_140404460;
  // weak
-extern double (           *unk_140404468)(_QWORD);
  // weak
-extern __int64 (           *unk_140404470)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404478;
  // weak
-extern _UNKNOWN unk_140404480;
  // weak
-extern _UNKNOWN unk_140404488;
  // weak
-extern _UNKNOWN unk_140404490;
  // weak
-extern _UNKNOWN unk_140404498;
  // weak
-extern _UNKNOWN unk_1404044A0;
  // weak
-extern double (           *qword_1404044A8)(_QWORD, _QWORD, _QWORD);
  // weak
 extern _UNKNOWN unk_1404044B0;
  // weak
 extern _UNKNOWN unk_1404044B4;
  // weak
-extern _UNKNOWN unk_1404044B8;
  // weak
-extern _UNKNOWN unk_1404044C0;
  // weak
-extern _UNKNOWN unk_1404044C8;
  // weak
-extern _UNKNOWN unk_1404044D0;
  // weak
-extern _UNKNOWN unk_1404044D8;
  // weak
-extern _UNKNOWN unk_1404044E0;
  // weak
-extern _UNKNOWN unk_1404044E8;
  // weak
-extern _UNKNOWN unk_1404044F0;
  // weak
-extern _UNKNOWN unk_1404044F8;
  // weak
-extern _UNKNOWN unk_140404500;
  // weak
-extern _UNKNOWN unk_140404508;
  // weak
-extern _UNKNOWN unk_140404510;
  // weak
-extern __int64 (           *unk_140404518)(_QWORD);
  // weak
-extern __int64 (           *unk_140404520)(_QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_140404528)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_140404530)(_QWORD, _QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_140404538)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404540;
  // weak
-extern _UNKNOWN unk_140404548;
  // weak
-extern _UNKNOWN unk_140404550;
  // weak
-extern _UNKNOWN unk_140404558;
  // weak
-extern __int64 (           *unk_140404560)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404568;
  // weak
-extern _UNKNOWN unk_140404570;
  // weak
-extern _UNKNOWN unk_140404578;
  // weak
-extern _UNKNOWN unk_140404580;
  // weak
-extern _UNKNOWN unk_140404588;
  // weak
-extern _UNKNOWN unk_140404590;
  // weak
-extern _UNKNOWN unk_140404598;
  // weak
-extern _UNKNOWN unk_1404045A0;
  // weak
-extern _UNKNOWN unk_1404045A8;
  // weak
-extern _UNKNOWN unk_1404045B0;
  // weak
-extern _UNKNOWN unk_1404045B8;
  // weak
-extern _UNKNOWN unk_1404045C0;
  // weak
-extern _UNKNOWN unk_1404045C8;
  // weak
-extern _UNKNOWN unk_1404045D0;
  // weak
-extern _UNKNOWN unk_1404045D8;
  // weak
-extern _UNKNOWN unk_1404045E0;
  // weak
-extern _UNKNOWN unk_1404045E8;
  // weak
-extern _UNKNOWN unk_1404045F0;
  // weak
-extern _UNKNOWN unk_1404045F8;
  // weak
-extern _UNKNOWN unk_140404600;
  // weak
-extern _UNKNOWN unk_140404608;
  // weak
-extern _UNKNOWN unk_140404610;
  // weak
-extern _UNKNOWN unk_140404618;
  // weak
-extern _UNKNOWN unk_140404620;
  // weak
-extern _UNKNOWN unk_140404628;
  // weak
-extern _UNKNOWN unk_140404630;
  // weak
-extern _UNKNOWN unk_140404638;
  // weak
-extern _UNKNOWN unk_140404640;
  // weak
-extern _UNKNOWN unk_140404648;
  // weak
-extern _UNKNOWN unk_140404650;
  // weak
-extern _UNKNOWN unk_140404658;
  // weak
-extern _UNKNOWN unk_140404660;
  // weak
-extern _UNKNOWN unk_140404668;
  // weak
-extern _UNKNOWN unk_140404670;
  // weak
-extern _UNKNOWN unk_140404678;
  // weak
-extern _UNKNOWN unk_140404680;
  // weak
-extern _UNKNOWN unk_140404688;
  // weak
-extern _UNKNOWN unk_140404690;
  // weak
-extern _UNKNOWN unk_140404698;
  // weak
-extern _UNKNOWN unk_1404046A0;
  // weak
-extern _UNKNOWN unk_1404046A8;
  // weak
-extern __int64 (           *unk_1404046B0)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404046B8;
  // weak
-extern __int64 (           *unk_1404046C0)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404046C8;
  // weak
-extern __int64 (           *unk_1404046D0)(_QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_1404046D8)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404046E0;
  // weak
-extern _UNKNOWN unk_1404046E8;
  // weak
-extern double (           *unk_1404046F0)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404046F8;
  // weak
-extern __int64 (           *unk_140404700)(_QWORD, _QWORD);
  // weak
-extern __int64 (           *unk_140404708)(_QWORD);
  // weak
-extern _UNKNOWN unk_140404710;
  // weak
-extern __int64 (           *unk_140404718)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
  // weak
-extern _UNKNOWN unk_140404720;
  // weak
-extern __int64 (           *unk_140404728)(_QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404730;
  // weak
-extern double (           *unk_140404738)(_QWORD);
  // weak
-extern __int64 (           *unk_140404740)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404748;
  // weak
-extern __int64 (           *unk_140404750)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD);
  // weak
-extern _UNKNOWN unk_140404758;
  // weak
-extern _UNKNOWN unk_140404760;
  // weak
-extern __int64 (           *unk_140404768)(_QWORD);
  // weak
-extern _UNKNOWN unk_140404770;
  // weak
-extern __int64 (           *unk_140404778)(_QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404780;
  // weak
 extern _UNKNOWN unk_140404788;
  // weak
 extern _UNKNOWN unk_14040478C;
  // weak
-extern _UNKNOWN unk_140404790;
  // weak
-extern _UNKNOWN unk_140404798;
  // weak
-extern _UNKNOWN unk_1404047A0;
  // weak
-extern _UNKNOWN unk_1404047A8;
  // weak
-extern __int64 (           *unk_1404047B0)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404047B8;
  // weak
-extern _UNKNOWN unk_1404047C0;
  // weak
-extern _UNKNOWN unk_1404047C8;
  // weak
-extern _UNKNOWN unk_1404047D0;
  // weak
-extern _UNKNOWN unk_1404047D8;
  // weak
-extern _UNKNOWN unk_1404047E0;
  // weak
-extern _UNKNOWN unk_1404047E8;
  // weak
-extern __int64 (           *unk_1404047F0)(_QWORD, _QWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_1404047F8;
  // weak
-extern _UNKNOWN unk_140404800;
  // weak
 extern __int64 (           *unk_140404808)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _QWORD);
  // weak
-extern _UNKNOWN unk_140404810;
  // weak
-extern _UNKNOWN unk_140404818;
  // weak
-extern _UNKNOWN unk_140404820;
  // weak
-extern _UNKNOWN unk_140404828;
  // weak
-extern _UNKNOWN unk_140404830;
  // weak
-extern _UNKNOWN unk_140404838;
  // weak
-extern _UNKNOWN unk_140404840;
  // weak
-extern _UNKNOWN unk_140404848;
  // weak
-extern _UNKNOWN unk_140404850;
  // weak
-extern _UNKNOWN unk_140404858;
  // weak
-extern _UNKNOWN unk_140404860;
  // weak
-extern _UNKNOWN unk_140404868;
  // weak
-extern _UNKNOWN unk_140404870;
  // weak
-extern _UNKNOWN unk_140404878;
  // weak
-extern _UNKNOWN unk_140404880;
  // weak
 extern _UNKNOWN unk_140404888;
  // weak
 extern _UNKNOWN unk_14040488C;
  // weak
-extern _UNKNOWN unk_140404890;
  // weak
-extern _UNKNOWN unk_140404898;
  // weak
-extern _UNKNOWN unk_1404048A0;
  // weak
-extern _UNKNOWN unk_1404048A8;
  // weak
-extern _UNKNOWN unk_1404048B0;
  // weak
-extern _UNKNOWN unk_1404048B8;
  // weak
-extern _UNKNOWN unk_1404048C0;
  // weak
-extern _UNKNOWN unk_1404048C8;
  // weak
-extern _UNKNOWN unk_1404048D0;
  // weak
-extern _UNKNOWN unk_1404048D8;
  // weak
-extern _UNKNOWN unk_1404048E0;
  // weak
-extern _UNKNOWN unk_1404048E8;
  // weak
-extern _UNKNOWN unk_1404048F0;
  // weak
-extern _UNKNOWN unk_1404048F8;
  // weak
-extern _UNKNOWN unk_140404900;
  // weak
-extern _UNKNOWN unk_140404908;
  // weak
-extern _UNKNOWN unk_140404910;
  // weak
-extern _UNKNOWN unk_140404918;
  // weak
-extern _UNKNOWN unk_140404920;
  // weak
-extern _UNKNOWN unk_140404928;
  // weak
-extern _UNKNOWN unk_140404930;
  // weak
-extern _UNKNOWN unk_140404938;
  // weak
-extern _UNKNOWN unk_140404940;
  // weak
-extern _UNKNOWN unk_140404948;
  // weak
-extern _UNKNOWN unk_140404950;
  // weak
-extern _UNKNOWN unk_140404958;
  // weak
-extern _UNKNOWN unk_140404960;
  // weak
-extern _UNKNOWN unk_140404968;
  // weak
-extern _UNKNOWN unk_140404970;
  // weak
-extern _UNKNOWN unk_140404978;
  // weak
-extern _UNKNOWN unk_140404980;
  // weak
-extern _UNKNOWN unk_140404988;
  // weak
-extern _UNKNOWN unk_140404990;
  // weak
-extern _UNKNOWN unk_140404998;
  // weak
-extern _UNKNOWN unk_1404049A0;
  // weak
-extern _UNKNOWN unk_1404049A8;
  // weak
-extern _UNKNOWN unk_1404049B0;
  // weak
-extern _UNKNOWN unk_1404049B8;
  // weak
-extern _UNKNOWN unk_1404049C0;
  // weak
-extern _UNKNOWN unk_1404049C8;
  // weak
-extern _UNKNOWN unk_1404049D0;
  // weak
-extern _UNKNOWN unk_1404049D8;
  // weak
-extern _UNKNOWN unk_1404049E0;
  // weak
-extern _UNKNOWN unk_1404049E8;
  // weak
-extern _UNKNOWN unk_1404049F0;
  // weak
-extern _UNKNOWN unk_1404049F8;
  // weak
-extern _UNKNOWN unk_140404A00;
  // weak
-extern _UNKNOWN unk_140404A08;
  // weak
-extern _UNKNOWN unk_140404A10;
  // weak
-extern _UNKNOWN unk_140404A18;
  // weak
-extern _UNKNOWN unk_140404A20;
  // weak
-extern _UNKNOWN unk_140404A28;
  // weak
-extern _UNKNOWN unk_140404A30;
  // weak
-extern _UNKNOWN unk_140404A38;
  // weak
-extern _UNKNOWN unk_140404A40;
  // weak
-extern _UNKNOWN unk_140404A48;
  // weak
-extern _UNKNOWN unk_140404A50;
  // weak
-extern _UNKNOWN unk_140404A58;
  // weak
-extern __int64 (           *unk_140404A60)(_QWORD, _QWORD);
  // weak
 extern int dword_140404A68;
  // weak
-extern unsigned int dword_140404A6C[487416165];
+extern unsigned int g_1B475D000;
  // weak
 extern __int128 xmmword_1B476E000;
  // weak
@@ -12270,7 +11931,7 @@ __int64            sub_14004C4C0(unsigned __int8 *a1, __int64 a2)
 ;
 
 //----- (000000014004C4E0) ----------------------------------------------------
-__int64            sub_14004C4E0(int a1, __int64 a2, __int64 a3, __int64 a4)
+__int64            shader_compile_program(int a1, __int64 a2, __int64 a3, __int64 a4)
 ;
 
 //----- (000000014004C960) ----------------------------------------------------
@@ -15408,7 +15069,7 @@ void            sub_14010E370(float *a1, float *a2)
 ;
 
 //----- (000000014010E610) ----------------------------------------------------
-__int64            sub_14010E610(float *a1, int a2)
+__int64            sub_14010E610(float *a1, char a2)
 ;
 
 //----- (000000014010E6C0) ----------------------------------------------------

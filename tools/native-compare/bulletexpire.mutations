@@ -1,0 +1,36 @@
+never-expiring threshold off by one
+        if (lifetime < 0x10000)
+----
+        if (lifetime <= 0x10000)
+====
+expires one tick late
+        if (lifetime > 0) {
+----
+        if (lifetime >= 0) {
+====
+moved bullet skipped
+        if (lifetime > 0) {
+            i++;
+            continue;
+        }
+----
+        if (lifetime > 0) {
+            i++;
+            continue;
+        }
+        i++;
+====
+last bullet not moved into the slot
+        *b = world_bullets[count];
+----
+====
+count not stored
+    world_bullet_count = count;
+}
+----
+}
+====
+lifetime not written back
+            b->lifetime = --lifetime;
+----
+            --lifetime;

@@ -78,20 +78,20 @@ static void install_gl(void)
     /* Anything not listed reports itself. */
     for (uint64_t a = 0x140404000ULL; a < 0x140404500ULL; a += 8)
         *(void **)(uintptr_t)a = (void *)gl_unexpected;
-    install(qword_140302FF8, gl_draw_arrays);
+    install(slot_glDrawArrays, gl_draw_arrays);
     install(&flt_140384000[131076], gl_draw_elements);
-    install(unk_140404098, gl_active_texture);
-    install(qword_140404050, gl_bind_texture);
-    install(qword_140404170, gl_bind_buffer);
-    install(qword_140404198, gl_buffer_sub_data);
-    install(qword_140404230, gl_disable_attrib);
-    install(qword_140404238, gl_enable_attrib);
-    install(qword_1404042E0, gl_use_program);
-    install(qword_140404338, gl_uniform3fv);
-    install(qword_140404378, gl_uniform_matrix4fv);
-    install(unk_1404043C8, gl_vertex_attrib2f);
-    install(unk_140404470, gl_vertex_attrib4fv);
-    install(qword_1404044A8, gl_vertex_attrib_pointer);
+    install(slot_glActiveTexture, gl_active_texture);
+    install(slot_glBindTexture, gl_bind_texture);
+    install(slot_glBindBuffer, gl_bind_buffer);
+    install(slot_glBufferSubData, gl_buffer_sub_data);
+    install(slot_glDisableVertexAttribArray, gl_disable_attrib);
+    install(slot_glEnableVertexAttribArray, gl_enable_attrib);
+    install(slot_glUseProgram, gl_use_program);
+    install(slot_glUniform3fv, gl_uniform3fv);
+    install(slot_glUniformMatrix4fv, gl_uniform_matrix4fv);
+    install(slot_glVertexAttrib2f, gl_vertex_attrib2f);
+    install(slot_glVertexAttrib4fv, gl_vertex_attrib4fv);
+    install(slot_glVertexAttribPointer, gl_vertex_attrib_pointer);
     install(&SR_GLOBAL(void *, 0x144980D58ULL), gl_depth_mask);
     install(&SR_GLOBAL(void *, 0x144980D60ULL), gl_disable);
     install(&SR_GLOBAL(void *, 0x144980D68ULL), gl_enable);

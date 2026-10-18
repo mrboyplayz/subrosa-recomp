@@ -9,14 +9,14 @@ __int64            sub_1400A6700(__int64 (           *a1)(     char *))
   v2 = 0;
   *(_QWORD *)&dword_140404A68 = 0;
   v3 = (__int64 (           *)(_QWORD))a1("glGetString");
-  qword_140302FA8 = v3;
+  glGetString = v3;
   if ( !v3 || !v3(7938) )
     return 0;
   sub_140091880();
   sub_1400E3BC0(a1);
   if ( dword_140302FF0 )
   {
-    qword_140302FF8 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glDrawArrays");
+    glDrawArrays = (PFNGLDRAWARRAYSPROC)a1("glDrawArrays");
     *(_QWORD *)&flt_140384000[131076] = a1("glDrawElements");
     *(_QWORD *)&flt_140384000[131078] = a1("glPolygonOffset");
     *(_QWORD *)&flt_140384000[131080] = a1("glCopyTexImage1D");
@@ -25,122 +25,122 @@ __int64            sub_1400A6700(__int64 (           *a1)(     char *))
     *(_QWORD *)&flt_140384000[131086] = a1("glCopyTexSubImage2D");
     *(_QWORD *)&flt_140384000[131088] = a1("glTexSubImage1D");
     *(_QWORD *)&flt_140384000[131090] = a1("glTexSubImage2D");
-    qword_140404050 = (double (           *)(_QWORD, _QWORD))a1("glBindTexture");
-    unk_140404058 = a1("glDeleteTextures");
-    unk_140404060 = (__int64 (           *)(_QWORD, _QWORD))a1("glGenTextures");
-    unk_140404068 = a1("glIsTexture");
+    glBindTexture = (PFNGLBINDTEXTUREPROC)a1("glBindTexture");
+    glDeleteTextures = (PFNGLDELETETEXTURESPROC)a1("glDeleteTextures");
+    glGenTextures = (PFNGLGENTEXTURESPROC)a1("glGenTextures");
+    glIsTexture = (PFNGLISTEXTUREPROC)a1("glIsTexture");
   }
   if ( dword_140302FF4 )
   {
-    unk_140404070 = a1("glDrawRangeElements");
-    unk_140404078 = (double (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD))a1("glTexImage3D");
-    unk_140404080 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD))a1("glTexSubImage3D");
-    unk_140404088 = a1("glCopyTexSubImage3D");
+    glDrawRangeElements = (PFNGLDRAWRANGEELEMENTSPROC)a1("glDrawRangeElements");
+    glTexImage3D = (PFNGLTEXIMAGE3DPROC)a1("glTexImage3D");
+    glTexSubImage3D = (PFNGLTEXSUBIMAGE3DPROC)a1("glTexSubImage3D");
+    glCopyTexSubImage3D = (PFNGLCOPYTEXSUBIMAGE3DPROC)a1("glCopyTexSubImage3D");
   }
   if ( unk_140404090 )
   {
-    unk_140404098 = (double (           *)(_QWORD))a1("glActiveTexture");
-    unk_1404040A0 = a1("glSampleCoverage");
-    unk_1404040A8 = a1("glCompressedTexImage3D");
-    unk_1404040B0 = a1("glCompressedTexImage2D");
-    unk_1404040B8 = a1("glCompressedTexImage1D");
-    unk_1404040C0 = a1("glCompressedTexSubImage3D");
-    unk_1404040C8 = a1("glCompressedTexSubImage2D");
-    unk_1404040D0 = a1("glCompressedTexSubImage1D");
-    unk_1404040D8 = a1("glGetCompressedTexImage");
+    glActiveTexture = (PFNGLACTIVETEXTUREPROC)a1("glActiveTexture");
+    glSampleCoverage = (PFNGLSAMPLECOVERAGEPROC)a1("glSampleCoverage");
+    glCompressedTexImage3D = (PFNGLCOMPRESSEDTEXIMAGE3DPROC)a1("glCompressedTexImage3D");
+    glCompressedTexImage2D = (PFNGLCOMPRESSEDTEXIMAGE2DPROC)a1("glCompressedTexImage2D");
+    glCompressedTexImage1D = (PFNGLCOMPRESSEDTEXIMAGE1DPROC)a1("glCompressedTexImage1D");
+    glCompressedTexSubImage3D = (PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC)a1("glCompressedTexSubImage3D");
+    glCompressedTexSubImage2D = (PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC)a1("glCompressedTexSubImage2D");
+    glCompressedTexSubImage1D = (PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC)a1("glCompressedTexSubImage1D");
+    glGetCompressedTexImage = (PFNGLGETCOMPRESSEDTEXIMAGEPROC)a1("glGetCompressedTexImage");
   }
   if ( unk_140404094 )
   {
-    unk_1404040E0 = a1("glBlendFuncSeparate");
-    unk_1404040E8 = a1("glMultiDrawArrays");
-    unk_1404040F0 = a1("glMultiDrawElements");
-    unk_1404040F8 = a1("glPointParameterf");
-    unk_140404100 = a1("glPointParameterfv");
-    unk_140404108 = a1("glPointParameteri");
-    unk_140404110 = a1("glPointParameteriv");
-    unk_140404118 = a1("glBlendColor");
-    unk_140404120 = a1("glBlendEquation");
+    glBlendFuncSeparate = (PFNGLBLENDFUNCSEPARATEPROC)a1("glBlendFuncSeparate");
+    glMultiDrawArrays = (PFNGLMULTIDRAWARRAYSPROC)a1("glMultiDrawArrays");
+    glMultiDrawElements = (PFNGLMULTIDRAWELEMENTSPROC)a1("glMultiDrawElements");
+    glPointParameterf = (PFNGLPOINTPARAMETERFPROC)a1("glPointParameterf");
+    glPointParameterfv = (PFNGLPOINTPARAMETERFVPROC)a1("glPointParameterfv");
+    glPointParameteri = (PFNGLPOINTPARAMETERIPROC)a1("glPointParameteri");
+    glPointParameteriv = (PFNGLPOINTPARAMETERIVPROC)a1("glPointParameteriv");
+    glBlendColor = (PFNGLBLENDCOLORPROC)a1("glBlendColor");
+    glBlendEquation = (PFNGLBLENDEQUATIONPROC)a1("glBlendEquation");
   }
   if ( unk_140404128 )
   {
-    unk_140404130 = a1("glGenQueries");
-    unk_140404138 = a1("glDeleteQueries");
-    unk_140404140 = a1("glIsQuery");
-    unk_140404148 = a1("glBeginQuery");
-    unk_140404150 = a1("glEndQuery");
-    unk_140404158 = a1("glGetQueryiv");
-    unk_140404160 = a1("glGetQueryObjectiv");
-    unk_140404168 = a1("glGetQueryObjectuiv");
-    qword_140404170 = (double (           *)(_QWORD, _QWORD, _QWORD))a1("glBindBuffer");
-    unk_140404178 = a1("glDeleteBuffers");
-    unk_140404180 = (__int64 (           *)(_QWORD, _QWORD))a1("glGenBuffers");
-    unk_140404188 = a1("glIsBuffer");
-    unk_140404190 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glBufferData");
-    qword_140404198 = (double (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glBufferSubData");
-    unk_1404041A0 = a1("glGetBufferSubData");
-    unk_1404041A8 = a1("glMapBuffer");
-    unk_1404041B0 = a1("glUnmapBuffer");
-    unk_1404041B8 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glGetBufferParameteriv");
-    unk_1404041C0 = a1("glGetBufferPointerv");
+    glGenQueries = (PFNGLGENQUERIESPROC)a1("glGenQueries");
+    glDeleteQueries = (PFNGLDELETEQUERIESPROC)a1("glDeleteQueries");
+    glIsQuery = (PFNGLISQUERYPROC)a1("glIsQuery");
+    glBeginQuery = (PFNGLBEGINQUERYPROC)a1("glBeginQuery");
+    glEndQuery = (PFNGLENDQUERYPROC)a1("glEndQuery");
+    glGetQueryiv = (PFNGLGETQUERYIVPROC)a1("glGetQueryiv");
+    glGetQueryObjectiv = (PFNGLGETQUERYOBJECTIVPROC)a1("glGetQueryObjectiv");
+    glGetQueryObjectuiv = (PFNGLGETQUERYOBJECTUIVPROC)a1("glGetQueryObjectuiv");
+    glBindBuffer = (PFNGLBINDBUFFERPROC)a1("glBindBuffer");
+    glDeleteBuffers = (PFNGLDELETEBUFFERSPROC)a1("glDeleteBuffers");
+    glGenBuffers = (PFNGLGENBUFFERSPROC)a1("glGenBuffers");
+    glIsBuffer = (PFNGLISBUFFERPROC)a1("glIsBuffer");
+    glBufferData = (PFNGLBUFFERDATAPROC)a1("glBufferData");
+    glBufferSubData = (PFNGLBUFFERSUBDATAPROC)a1("glBufferSubData");
+    glGetBufferSubData = (PFNGLGETBUFFERSUBDATAPROC)a1("glGetBufferSubData");
+    glMapBuffer = (PFNGLMAPBUFFERPROC)a1("glMapBuffer");
+    glUnmapBuffer = (PFNGLUNMAPBUFFERPROC)a1("glUnmapBuffer");
+    glGetBufferParameteriv = (PFNGLGETBUFFERPARAMETERIVPROC)a1("glGetBufferParameteriv");
+    glGetBufferPointerv = (PFNGLGETBUFFERPOINTERVPROC)a1("glGetBufferPointerv");
   }
   sub_1400E42E0(a1);
   if ( unk_1404044B0 )
   {
-    unk_1404044B8 = a1("glUniformMatrix2x3fv");
-    unk_1404044C0 = a1("glUniformMatrix3x2fv");
-    unk_1404044C8 = a1("glUniformMatrix2x4fv");
-    unk_1404044D0 = a1("glUniformMatrix4x2fv");
-    unk_1404044D8 = a1("glUniformMatrix3x4fv");
-    unk_1404044E0 = a1("glUniformMatrix4x3fv");
+    glUniformMatrix2x3fv = (PFNGLUNIFORMMATRIX2X3FVPROC)a1("glUniformMatrix2x3fv");
+    glUniformMatrix3x2fv = (PFNGLUNIFORMMATRIX3X2FVPROC)a1("glUniformMatrix3x2fv");
+    glUniformMatrix2x4fv = (PFNGLUNIFORMMATRIX2X4FVPROC)a1("glUniformMatrix2x4fv");
+    glUniformMatrix4x2fv = (PFNGLUNIFORMMATRIX4X2FVPROC)a1("glUniformMatrix4x2fv");
+    glUniformMatrix3x4fv = (PFNGLUNIFORMMATRIX3X4FVPROC)a1("glUniformMatrix3x4fv");
+    glUniformMatrix4x3fv = (PFNGLUNIFORMMATRIX4X3FVPROC)a1("glUniformMatrix4x3fv");
   }
   sub_1400E4950(a1);
   if ( unk_140404788 )
   {
-    unk_140404790 = a1("glDrawArraysInstanced");
-    unk_140404798 = a1("glDrawElementsInstanced");
-    unk_1404047A0 = a1("glTexBuffer");
-    unk_1404047A8 = a1("glPrimitiveRestartIndex");
-    unk_1404047B0 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))a1("glCopyBufferSubData");
-    unk_1404047B8 = a1("glGetUniformIndices");
-    unk_1404047C0 = a1("glGetActiveUniformsiv");
-    unk_1404047C8 = a1("glGetActiveUniformName");
-    unk_1404047D0 = a1("glGetUniformBlockIndex");
-    unk_1404047D8 = a1("glGetActiveUniformBlockiv");
-    unk_1404047E0 = a1("glGetActiveUniformBlockName");
-    unk_1404047E8 = a1("glUniformBlockBinding");
-    unk_140404528 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))a1("glBindBufferRange");
-    unk_140404530 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glBindBufferBase");
-    unk_1404044F8 = a1("glGetIntegeri_v");
+    glDrawArraysInstanced = (PFNGLDRAWARRAYSINSTANCEDPROC)a1("glDrawArraysInstanced");
+    glDrawElementsInstanced = (PFNGLDRAWELEMENTSINSTANCEDPROC)a1("glDrawElementsInstanced");
+    glTexBuffer = (PFNGLTEXBUFFERPROC)a1("glTexBuffer");
+    glPrimitiveRestartIndex = (PFNGLPRIMITIVERESTARTINDEXPROC)a1("glPrimitiveRestartIndex");
+    glCopyBufferSubData = (PFNGLCOPYBUFFERSUBDATAPROC)a1("glCopyBufferSubData");
+    glGetUniformIndices = (PFNGLGETUNIFORMINDICESPROC)a1("glGetUniformIndices");
+    glGetActiveUniformsiv = (PFNGLGETACTIVEUNIFORMSIVPROC)a1("glGetActiveUniformsiv");
+    glGetActiveUniformName = (PFNGLGETACTIVEUNIFORMNAMEPROC)a1("glGetActiveUniformName");
+    glGetUniformBlockIndex = (PFNGLGETUNIFORMBLOCKINDEXPROC)a1("glGetUniformBlockIndex");
+    glGetActiveUniformBlockiv = (PFNGLGETACTIVEUNIFORMBLOCKIVPROC)a1("glGetActiveUniformBlockiv");
+    glGetActiveUniformBlockName = (PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC)a1("glGetActiveUniformBlockName");
+    glUniformBlockBinding = (PFNGLUNIFORMBLOCKBINDINGPROC)a1("glUniformBlockBinding");
+    glBindBufferRange = (PFNGLBINDBUFFERRANGEPROC)a1("glBindBufferRange");
+    glBindBufferBase = (PFNGLBINDBUFFERBASEPROC)a1("glBindBufferBase");
+    glGetIntegeri_v = (PFNGLGETINTEGERI_VPROC)a1("glGetIntegeri_v");
   }
   if ( unk_14040478C )
   {
-    unk_1404047F0 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glDrawElementsBaseVertex");
-    unk_1404047F8 = a1("glDrawRangeElementsBaseVertex");
-    unk_140404800 = a1("glDrawElementsInstancedBaseVertex");
+    glDrawElementsBaseVertex = (PFNGLDRAWELEMENTSBASEVERTEXPROC)a1("glDrawElementsBaseVertex");
+    glDrawRangeElementsBaseVertex = (PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC)a1("glDrawRangeElementsBaseVertex");
+    glDrawElementsInstancedBaseVertex = (PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC)a1("glDrawElementsInstancedBaseVertex");
     unk_140404808 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _QWORD))a1(
                                                                                               "glMultiDrawElementsBaseVertex");
-    unk_140404810 = a1("glProvokingVertex");
-    unk_140404818 = a1("glFenceSync");
-    unk_140404820 = a1("glIsSync");
-    unk_140404828 = a1("glDeleteSync");
-    unk_140404830 = a1("glClientWaitSync");
-    unk_140404838 = a1("glWaitSync");
-    unk_140404840 = a1("glGetInteger64v");
-    unk_140404848 = a1("glGetSynciv");
-    unk_140404850 = a1("glGetInteger64i_v");
-    unk_140404858 = a1("glGetBufferParameteri64v");
-    unk_140404860 = a1("glFramebufferTexture");
-    unk_140404868 = a1("glTexImage2DMultisample");
-    unk_140404870 = a1("glTexImage3DMultisample");
-    unk_140404878 = a1("glGetMultisamplefv");
-    unk_140404880 = a1("glSampleMaski");
+    glProvokingVertex = (PFNGLPROVOKINGVERTEXPROC)a1("glProvokingVertex");
+    glFenceSync = (PFNGLFENCESYNCPROC)a1("glFenceSync");
+    glIsSync = (PFNGLISSYNCPROC)a1("glIsSync");
+    glDeleteSync = (PFNGLDELETESYNCPROC)a1("glDeleteSync");
+    glClientWaitSync = (PFNGLCLIENTWAITSYNCPROC)a1("glClientWaitSync");
+    glWaitSync = (PFNGLWAITSYNCPROC)a1("glWaitSync");
+    glGetInteger64v = (PFNGLGETINTEGER64VPROC)a1("glGetInteger64v");
+    glGetSynciv = (PFNGLGETSYNCIVPROC)a1("glGetSynciv");
+    glGetInteger64i_v = (PFNGLGETINTEGER64I_VPROC)a1("glGetInteger64i_v");
+    glGetBufferParameteri64v = (PFNGLGETBUFFERPARAMETERI64VPROC)a1("glGetBufferParameteri64v");
+    glFramebufferTexture = (PFNGLFRAMEBUFFERTEXTUREPROC)a1("glFramebufferTexture");
+    glTexImage2DMultisample = (PFNGLTEXIMAGE2DMULTISAMPLEPROC)a1("glTexImage2DMultisample");
+    glTexImage3DMultisample = (PFNGLTEXIMAGE3DMULTISAMPLEPROC)a1("glTexImage3DMultisample");
+    glGetMultisamplefv = (PFNGLGETMULTISAMPLEFVPROC)a1("glGetMultisamplefv");
+    glSampleMaski = (PFNGLSAMPLEMASKIPROC)a1("glSampleMaski");
   }
   sub_1400E5110(a1);
   if ( !(unsigned int)sub_140091BA0() )
     return 0;
   if ( unk_14040488C )
-    unk_140404A60 = (__int64 (           *)(_QWORD, _QWORD))a1("glClipControl");
-  if ( dword_140404A68 || dword_140404A6C[0] )
+    glClipControl = (PFNGLCLIPCONTROLPROC)a1("glClipControl");
+  if ( dword_140404A68 || g_140404A6C )
     return 1;
   return v2;
 }
@@ -148,56 +148,56 @@ __int64            sub_1400A6700(__int64 (           *a1)(     char *))
 //----- (00000001400E3BC0) ----------------------------------------------------
 void            sub_1400E3BC0(__int64 (           *a1)(     char *))
 {
-  if ( dword_140404A6C[18215057] )
+  if ( g_144980CB0 )
   {
-    *(_QWORD *)&dword_140404A6C[18215059] = a1("glCullFace");
-    *(_QWORD *)&dword_140404A6C[18215061] = a1("glFrontFace");
-    *(_QWORD *)&dword_140404A6C[18215063] = a1("glHint");
-    *(_QWORD *)&dword_140404A6C[18215065] = a1("glLineWidth");
-    *(_QWORD *)&dword_140404A6C[18215067] = a1("glPointSize");
-    *(_QWORD *)&dword_140404A6C[18215069] = a1("glPolygonMode");
-    *(_QWORD *)&dword_140404A6C[18215071] = a1("glScissor");
-    *(_QWORD *)&dword_140404A6C[18215073] = a1("glTexParameterf");
-    *(_QWORD *)&dword_140404A6C[18215075] = a1("glTexParameterfv");
-    *(_QWORD *)&dword_140404A6C[18215077] = a1("glTexParameteri");
-    *(_QWORD *)&dword_140404A6C[18215079] = a1("glTexParameteriv");
-    *(_QWORD *)&dword_140404A6C[18215081] = a1("glTexImage1D");
-    *(_QWORD *)&dword_140404A6C[18215083] = a1("glTexImage2D");
-    *(_QWORD *)&dword_140404A6C[18215085] = a1("glDrawBuffer");
-    *(_QWORD *)&dword_140404A6C[18215087] = a1("glClear");
-    *(_QWORD *)&dword_140404A6C[18215089] = a1("glClearColor");
-    *(_QWORD *)&dword_140404A6C[18215091] = a1("glClearStencil");
-    *(_QWORD *)&dword_140404A6C[18215093] = a1("glClearDepth");
-    *(_QWORD *)&dword_140404A6C[18215095] = a1("glStencilMask");
-    *(_QWORD *)&dword_140404A6C[18215097] = a1("glColorMask");
-    *(_QWORD *)&dword_140404A6C[18215099] = a1("glDepthMask");
-    *(_QWORD *)&dword_140404A6C[18215101] = a1("glDisable");
-    *(_QWORD *)&dword_140404A6C[18215103] = a1("glEnable");
-    *(_QWORD *)&dword_140404A6C[18215105] = a1("glFinish");
-    *(_QWORD *)&dword_140404A6C[18215107] = a1("glFlush");
-    *(_QWORD *)&dword_140404A6C[18215109] = a1("glBlendFunc");
-    qword_140302F40 = a1("glLogicOp");
-    qword_140302F48 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glStencilFunc");
-    qword_140302F50 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glStencilOp");
-    qword_140302F58 = (double (           *)(_QWORD))a1("glDepthFunc");
-    qword_140302F60 = a1("glPixelStoref");
-    qword_140302F68 = a1("glPixelStorei");
-    qword_140302F70 = (__int64 (           *)(_QWORD))a1("glReadBuffer");
-    qword_140302F78 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _QWORD))a1("glReadPixels");
-    qword_140302F80 = a1("glGetBooleanv");
-    qword_140302F88 = a1("glGetDoublev");
-    qword_140302F90 = a1("glGetError");
-    qword_140302F98 = a1("glGetFloatv");
-    qword_140302FA0 = (__int64 (           *)(_QWORD, _QWORD))a1("glGetIntegerv");
-    qword_140302FA8 = (__int64 (           *)(_QWORD))a1("glGetString");
-    qword_140302FB0 = a1("glGetTexImage");
-    qword_140302FB8 = a1("glGetTexParameterfv");
-    qword_140302FC0 = a1("glGetTexParameteriv");
-    qword_140302FC8 = a1("glGetTexLevelParameterfv");
-    qword_140302FD0 = a1("glGetTexLevelParameteriv");
-    qword_140302FD8 = a1("glIsEnabled");
-    qword_140302FE0 = a1("glDepthRange");
-    qword_140302FE8 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glViewport");
+    glCullFace = (PFNGLCULLFACEPROC)a1("glCullFace");
+    glFrontFace = (PFNGLFRONTFACEPROC)a1("glFrontFace");
+    glHint = (PFNGLHINTPROC)a1("glHint");
+    glLineWidth = (PFNGLLINEWIDTHPROC)a1("glLineWidth");
+    glPointSize = (PFNGLPOINTSIZEPROC)a1("glPointSize");
+    glPolygonMode = (PFNGLPOLYGONMODEPROC)a1("glPolygonMode");
+    glScissor = (PFNGLSCISSORPROC)a1("glScissor");
+    glTexParameterf = (PFNGLTEXPARAMETERFPROC)a1("glTexParameterf");
+    glTexParameterfv = (PFNGLTEXPARAMETERFVPROC)a1("glTexParameterfv");
+    glTexParameteri = (PFNGLTEXPARAMETERIPROC)a1("glTexParameteri");
+    glTexParameteriv = (PFNGLTEXPARAMETERIVPROC)a1("glTexParameteriv");
+    glTexImage1D = (PFNGLTEXIMAGE1DPROC)a1("glTexImage1D");
+    glTexImage2D = (PFNGLTEXIMAGE2DPROC)a1("glTexImage2D");
+    glDrawBuffer = (PFNGLDRAWBUFFERPROC)a1("glDrawBuffer");
+    glClear = (PFNGLCLEARPROC)a1("glClear");
+    glClearColor = (PFNGLCLEARCOLORPROC)a1("glClearColor");
+    glClearStencil = (PFNGLCLEARSTENCILPROC)a1("glClearStencil");
+    glClearDepth = (PFNGLCLEARDEPTHPROC)a1("glClearDepth");
+    glStencilMask = (PFNGLSTENCILMASKPROC)a1("glStencilMask");
+    glColorMask = (PFNGLCOLORMASKPROC)a1("glColorMask");
+    glDepthMask = (PFNGLDEPTHMASKPROC)a1("glDepthMask");
+    glDisable = (PFNGLDISABLEPROC)a1("glDisable");
+    glEnable = (PFNGLENABLEPROC)a1("glEnable");
+    glFinish = (PFNGLFINISHPROC)a1("glFinish");
+    glFlush = (PFNGLFLUSHPROC)a1("glFlush");
+    glBlendFunc = (PFNGLBLENDFUNCPROC)a1("glBlendFunc");
+    glLogicOp = (PFNGLLOGICOPPROC)a1("glLogicOp");
+    glStencilFunc = (PFNGLSTENCILFUNCPROC)a1("glStencilFunc");
+    glStencilOp = (PFNGLSTENCILOPPROC)a1("glStencilOp");
+    glDepthFunc = (PFNGLDEPTHFUNCPROC)a1("glDepthFunc");
+    glPixelStoref = (PFNGLPIXELSTOREFPROC)a1("glPixelStoref");
+    glPixelStorei = (PFNGLPIXELSTOREIPROC)a1("glPixelStorei");
+    glReadBuffer = (PFNGLREADBUFFERPROC)a1("glReadBuffer");
+    glReadPixels = (PFNGLREADPIXELSPROC)a1("glReadPixels");
+    glGetBooleanv = (PFNGLGETBOOLEANVPROC)a1("glGetBooleanv");
+    glGetDoublev = (PFNGLGETDOUBLEVPROC)a1("glGetDoublev");
+    glGetError = (PFNGLGETERRORPROC)a1("glGetError");
+    glGetFloatv = (PFNGLGETFLOATVPROC)a1("glGetFloatv");
+    glGetIntegerv = (PFNGLGETINTEGERVPROC)a1("glGetIntegerv");
+    glGetString = (PFNGLGETSTRINGPROC)a1("glGetString");
+    glGetTexImage = (PFNGLGETTEXIMAGEPROC)a1("glGetTexImage");
+    glGetTexParameterfv = (PFNGLGETTEXPARAMETERFVPROC)a1("glGetTexParameterfv");
+    glGetTexParameteriv = (PFNGLGETTEXPARAMETERIVPROC)a1("glGetTexParameteriv");
+    glGetTexLevelParameterfv = (PFNGLGETTEXLEVELPARAMETERFVPROC)a1("glGetTexLevelParameterfv");
+    glGetTexLevelParameteriv = (PFNGLGETTEXLEVELPARAMETERIVPROC)a1("glGetTexLevelParameteriv");
+    glIsEnabled = (PFNGLISENABLEDPROC)a1("glIsEnabled");
+    glDepthRange = (PFNGLDEPTHRANGEPROC)a1("glDepthRange");
+    glViewport = (PFNGLVIEWPORTPROC)a1("glViewport");
   }
 }
 
@@ -206,7 +206,7 @@ void            sub_1400E3EE0(__int64 (           *a1)(     char *))
 {
   if ( dword_140302FF0 )
   {
-    qword_140302FF8 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glDrawArrays");
+    glDrawArrays = (PFNGLDRAWARRAYSPROC)a1("glDrawArrays");
     *(_QWORD *)&flt_140384000[131076] = a1("glDrawElements");
     *(_QWORD *)&flt_140384000[131078] = a1("glPolygonOffset");
     *(_QWORD *)&flt_140384000[131080] = a1("glCopyTexImage1D");
@@ -215,10 +215,10 @@ void            sub_1400E3EE0(__int64 (           *a1)(     char *))
     *(_QWORD *)&flt_140384000[131086] = a1("glCopyTexSubImage2D");
     *(_QWORD *)&flt_140384000[131088] = a1("glTexSubImage1D");
     *(_QWORD *)&flt_140384000[131090] = a1("glTexSubImage2D");
-    qword_140404050 = (double (           *)(_QWORD, _QWORD))a1("glBindTexture");
-    unk_140404058 = a1("glDeleteTextures");
-    unk_140404060 = (__int64 (           *)(_QWORD, _QWORD))a1("glGenTextures");
-    unk_140404068 = a1("glIsTexture");
+    glBindTexture = (PFNGLBINDTEXTUREPROC)a1("glBindTexture");
+    glDeleteTextures = (PFNGLDELETETEXTURESPROC)a1("glDeleteTextures");
+    glGenTextures = (PFNGLGENTEXTURESPROC)a1("glGenTextures");
+    glIsTexture = (PFNGLISTEXTUREPROC)a1("glIsTexture");
   }
 }
 
@@ -227,10 +227,10 @@ void            sub_1400E3FD0(__int64 (           *a1)(     char *))
 {
   if ( dword_140302FF4 )
   {
-    unk_140404070 = a1("glDrawRangeElements");
-    unk_140404078 = (double (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD))a1("glTexImage3D");
-    unk_140404080 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _QWORD))a1("glTexSubImage3D");
-    unk_140404088 = a1("glCopyTexSubImage3D");
+    glDrawRangeElements = (PFNGLDRAWRANGEELEMENTSPROC)a1("glDrawRangeElements");
+    glTexImage3D = (PFNGLTEXIMAGE3DPROC)a1("glTexImage3D");
+    glTexSubImage3D = (PFNGLTEXSUBIMAGE3DPROC)a1("glTexSubImage3D");
+    glCopyTexSubImage3D = (PFNGLCOPYTEXSUBIMAGE3DPROC)a1("glCopyTexSubImage3D");
   }
 }
 
@@ -239,15 +239,15 @@ void            sub_1400E4030(__int64 (           *a1)(     char *))
 {
   if ( unk_140404090 )
   {
-    unk_140404098 = (double (           *)(_QWORD))a1("glActiveTexture");
-    unk_1404040A0 = a1("glSampleCoverage");
-    unk_1404040A8 = a1("glCompressedTexImage3D");
-    unk_1404040B0 = a1("glCompressedTexImage2D");
-    unk_1404040B8 = a1("glCompressedTexImage1D");
-    unk_1404040C0 = a1("glCompressedTexSubImage3D");
-    unk_1404040C8 = a1("glCompressedTexSubImage2D");
-    unk_1404040D0 = a1("glCompressedTexSubImage1D");
-    unk_1404040D8 = a1("glGetCompressedTexImage");
+    glActiveTexture = (PFNGLACTIVETEXTUREPROC)a1("glActiveTexture");
+    glSampleCoverage = (PFNGLSAMPLECOVERAGEPROC)a1("glSampleCoverage");
+    glCompressedTexImage3D = (PFNGLCOMPRESSEDTEXIMAGE3DPROC)a1("glCompressedTexImage3D");
+    glCompressedTexImage2D = (PFNGLCOMPRESSEDTEXIMAGE2DPROC)a1("glCompressedTexImage2D");
+    glCompressedTexImage1D = (PFNGLCOMPRESSEDTEXIMAGE1DPROC)a1("glCompressedTexImage1D");
+    glCompressedTexSubImage3D = (PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC)a1("glCompressedTexSubImage3D");
+    glCompressedTexSubImage2D = (PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC)a1("glCompressedTexSubImage2D");
+    glCompressedTexSubImage1D = (PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC)a1("glCompressedTexSubImage1D");
+    glGetCompressedTexImage = (PFNGLGETCOMPRESSEDTEXIMAGEPROC)a1("glGetCompressedTexImage");
   }
 }
 
@@ -256,15 +256,15 @@ void            sub_1400E40E0(__int64 (           *a1)(     char *))
 {
   if ( unk_140404094 )
   {
-    unk_1404040E0 = a1("glBlendFuncSeparate");
-    unk_1404040E8 = a1("glMultiDrawArrays");
-    unk_1404040F0 = a1("glMultiDrawElements");
-    unk_1404040F8 = a1("glPointParameterf");
-    unk_140404100 = a1("glPointParameterfv");
-    unk_140404108 = a1("glPointParameteri");
-    unk_140404110 = a1("glPointParameteriv");
-    unk_140404118 = a1("glBlendColor");
-    unk_140404120 = a1("glBlendEquation");
+    glBlendFuncSeparate = (PFNGLBLENDFUNCSEPARATEPROC)a1("glBlendFuncSeparate");
+    glMultiDrawArrays = (PFNGLMULTIDRAWARRAYSPROC)a1("glMultiDrawArrays");
+    glMultiDrawElements = (PFNGLMULTIDRAWELEMENTSPROC)a1("glMultiDrawElements");
+    glPointParameterf = (PFNGLPOINTPARAMETERFPROC)a1("glPointParameterf");
+    glPointParameterfv = (PFNGLPOINTPARAMETERFVPROC)a1("glPointParameterfv");
+    glPointParameteri = (PFNGLPOINTPARAMETERIPROC)a1("glPointParameteri");
+    glPointParameteriv = (PFNGLPOINTPARAMETERIVPROC)a1("glPointParameteriv");
+    glBlendColor = (PFNGLBLENDCOLORPROC)a1("glBlendColor");
+    glBlendEquation = (PFNGLBLENDEQUATIONPROC)a1("glBlendEquation");
   }
 }
 
@@ -273,25 +273,25 @@ void            sub_1400E4190(__int64 (           *a1)(     char *))
 {
   if ( unk_140404128 )
   {
-    unk_140404130 = a1("glGenQueries");
-    unk_140404138 = a1("glDeleteQueries");
-    unk_140404140 = a1("glIsQuery");
-    unk_140404148 = a1("glBeginQuery");
-    unk_140404150 = a1("glEndQuery");
-    unk_140404158 = a1("glGetQueryiv");
-    unk_140404160 = a1("glGetQueryObjectiv");
-    unk_140404168 = a1("glGetQueryObjectuiv");
-    qword_140404170 = (double (           *)(_QWORD, _QWORD, _QWORD))a1("glBindBuffer");
-    unk_140404178 = a1("glDeleteBuffers");
-    unk_140404180 = (__int64 (           *)(_QWORD, _QWORD))a1("glGenBuffers");
-    unk_140404188 = a1("glIsBuffer");
-    unk_140404190 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glBufferData");
-    qword_140404198 = (double (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glBufferSubData");
-    unk_1404041A0 = a1("glGetBufferSubData");
-    unk_1404041A8 = a1("glMapBuffer");
-    unk_1404041B0 = a1("glUnmapBuffer");
-    unk_1404041B8 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glGetBufferParameteriv");
-    unk_1404041C0 = a1("glGetBufferPointerv");
+    glGenQueries = (PFNGLGENQUERIESPROC)a1("glGenQueries");
+    glDeleteQueries = (PFNGLDELETEQUERIESPROC)a1("glDeleteQueries");
+    glIsQuery = (PFNGLISQUERYPROC)a1("glIsQuery");
+    glBeginQuery = (PFNGLBEGINQUERYPROC)a1("glBeginQuery");
+    glEndQuery = (PFNGLENDQUERYPROC)a1("glEndQuery");
+    glGetQueryiv = (PFNGLGETQUERYIVPROC)a1("glGetQueryiv");
+    glGetQueryObjectiv = (PFNGLGETQUERYOBJECTIVPROC)a1("glGetQueryObjectiv");
+    glGetQueryObjectuiv = (PFNGLGETQUERYOBJECTUIVPROC)a1("glGetQueryObjectuiv");
+    glBindBuffer = (PFNGLBINDBUFFERPROC)a1("glBindBuffer");
+    glDeleteBuffers = (PFNGLDELETEBUFFERSPROC)a1("glDeleteBuffers");
+    glGenBuffers = (PFNGLGENBUFFERSPROC)a1("glGenBuffers");
+    glIsBuffer = (PFNGLISBUFFERPROC)a1("glIsBuffer");
+    glBufferData = (PFNGLBUFFERDATAPROC)a1("glBufferData");
+    glBufferSubData = (PFNGLBUFFERSUBDATAPROC)a1("glBufferSubData");
+    glGetBufferSubData = (PFNGLGETBUFFERSUBDATAPROC)a1("glGetBufferSubData");
+    glMapBuffer = (PFNGLMAPBUFFERPROC)a1("glMapBuffer");
+    glUnmapBuffer = (PFNGLUNMAPBUFFERPROC)a1("glUnmapBuffer");
+    glGetBufferParameteriv = (PFNGLGETBUFFERPARAMETERIVPROC)a1("glGetBufferParameteriv");
+    glGetBufferPointerv = (PFNGLGETBUFFERPOINTERVPROC)a1("glGetBufferPointerv");
   }
 }
 
@@ -300,99 +300,99 @@ void            sub_1400E42E0(__int64 (           *a1)(     char *))
 {
   if ( unk_14040412C )
   {
-    unk_1404041C8 = a1("glBlendEquationSeparate");
-    unk_1404041D0 = a1("glDrawBuffers");
-    unk_1404041D8 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glStencilOpSeparate");
-    unk_1404041E0 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glStencilFuncSeparate");
-    unk_1404041E8 = (__int64 (           *)(_QWORD, _QWORD))a1("glStencilMaskSeparate");
-    unk_1404041F0 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glAttachShader");
-    unk_1404041F8 = a1("glBindAttribLocation");
-    unk_140404200 = (__int64 (           *)(_QWORD, _QWORD))a1("glCompileShader");
-    unk_140404208 = (__int64 (*)(void))a1("glCreateProgram");
-    unk_140404210 = (__int64 (           *)(_QWORD))a1("glCreateShader");
-    unk_140404218 = a1("glDeleteProgram");
-    unk_140404220 = a1("glDeleteShader");
-    unk_140404228 = a1("glDetachShader");
-    qword_140404230 = (double (           *)(_QWORD))a1("glDisableVertexAttribArray");
-    qword_140404238 = (__int64 (           *)(_QWORD))a1("glEnableVertexAttribArray");
-    unk_140404240 = a1("glGetActiveAttrib");
-    unk_140404248 = a1("glGetActiveUniform");
-    unk_140404250 = a1("glGetAttachedShaders");
-    unk_140404258 = a1("glGetAttribLocation");
-    unk_140404260 = a1("glGetProgramiv");
-    unk_140404268 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glGetProgramInfoLog");
-    unk_140404270 = a1("glGetShaderiv");
-    unk_140404278 = a1("glGetShaderInfoLog");
-    unk_140404280 = a1("glGetShaderSource");
-    unk_140404288 = (__int64 (           *)(_QWORD, _QWORD))a1("glGetUniformLocation");
-    unk_140404290 = a1("glGetUniformfv");
-    unk_140404298 = a1("glGetUniformiv");
-    unk_1404042A0 = a1("glGetVertexAttribdv");
-    unk_1404042A8 = a1("glGetVertexAttribfv");
-    unk_1404042B0 = a1("glGetVertexAttribiv");
-    unk_1404042B8 = a1("glGetVertexAttribPointerv");
-    unk_1404042C0 = a1("glIsProgram");
-    unk_1404042C8 = a1("glIsShader");
-    unk_1404042D0 = (__int64 (           *)(_QWORD))a1("glLinkProgram");
-    unk_1404042D8 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glShaderSource");
-    qword_1404042E0 = (double (           *)(_QWORD))a1("glUseProgram");
-    unk_1404042E8 = (__int64 (           *)(_QWORD))a1("glUniform1f");
-    unk_1404042F0 = a1("glUniform2f");
-    unk_1404042F8 = a1("glUniform3f");
-    unk_140404300 = a1("glUniform4f");
-    qword_140404308 = (__int64 (           *)(_QWORD, _QWORD))a1("glUniform1i");
-    unk_140404310 = a1("glUniform2i");
-    unk_140404318 = a1("glUniform3i");
-    unk_140404320 = a1("glUniform4i");
-    unk_140404328 = a1("glUniform1fv");
-    unk_140404330 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glUniform2fv");
-    qword_140404338 = (double (           *)(_QWORD, _QWORD, _QWORD))a1("glUniform3fv");
-    unk_140404340 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glUniform4fv");
-    unk_140404348 = a1("glUniform1iv");
-    unk_140404350 = a1("glUniform2iv");
-    unk_140404358 = a1("glUniform3iv");
-    unk_140404360 = a1("glUniform4iv");
-    unk_140404368 = a1("glUniformMatrix2fv");
-    unk_140404370 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glUniformMatrix3fv");
-    qword_140404378 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glUniformMatrix4fv");
-    unk_140404380 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glValidateProgram");
-    unk_140404388 = a1("glVertexAttrib1d");
-    unk_140404390 = a1("glVertexAttrib1dv");
-    unk_140404398 = a1("glVertexAttrib1f");
-    unk_1404043A0 = a1("glVertexAttrib1fv");
-    unk_1404043A8 = a1("glVertexAttrib1s");
-    unk_1404043B0 = a1("glVertexAttrib1sv");
-    unk_1404043B8 = a1("glVertexAttrib2d");
-    unk_1404043C0 = a1("glVertexAttrib2dv");
-    unk_1404043C8 = (__int64 (           *)(_QWORD))a1("glVertexAttrib2f");
-    unk_1404043D0 = a1("glVertexAttrib2fv");
-    unk_1404043D8 = a1("glVertexAttrib2s");
-    unk_1404043E0 = a1("glVertexAttrib2sv");
-    unk_1404043E8 = a1("glVertexAttrib3d");
-    unk_1404043F0 = a1("glVertexAttrib3dv");
-    unk_1404043F8 = (double (           *)(_QWORD))a1("glVertexAttrib3f");
-    unk_140404400 = (double (           *)(_QWORD, _QWORD))a1("glVertexAttrib3fv");
-    unk_140404408 = a1("glVertexAttrib3s");
-    unk_140404410 = a1("glVertexAttrib3sv");
-    unk_140404418 = a1("glVertexAttrib4Nbv");
-    unk_140404420 = a1("glVertexAttrib4Niv");
-    unk_140404428 = a1("glVertexAttrib4Nsv");
-    unk_140404430 = a1("glVertexAttrib4Nub");
-    unk_140404438 = a1("glVertexAttrib4Nubv");
-    unk_140404440 = a1("glVertexAttrib4Nuiv");
-    unk_140404448 = a1("glVertexAttrib4Nusv");
-    unk_140404450 = a1("glVertexAttrib4bv");
-    unk_140404458 = a1("glVertexAttrib4d");
-    unk_140404460 = a1("glVertexAttrib4dv");
-    unk_140404468 = (double (           *)(_QWORD))a1("glVertexAttrib4f");
-    unk_140404470 = (__int64 (           *)(_QWORD, _QWORD))a1("glVertexAttrib4fv");
-    unk_140404478 = a1("glVertexAttrib4iv");
-    unk_140404480 = a1("glVertexAttrib4s");
-    unk_140404488 = a1("glVertexAttrib4sv");
-    unk_140404490 = a1("glVertexAttrib4ubv");
-    unk_140404498 = a1("glVertexAttrib4uiv");
-    unk_1404044A0 = a1("glVertexAttrib4usv");
-    qword_1404044A8 = (double (           *)(_QWORD, _QWORD, _QWORD))a1("glVertexAttribPointer");
+    glBlendEquationSeparate = (PFNGLBLENDEQUATIONSEPARATEPROC)a1("glBlendEquationSeparate");
+    glDrawBuffers = (PFNGLDRAWBUFFERSPROC)a1("glDrawBuffers");
+    glStencilOpSeparate = (PFNGLSTENCILOPSEPARATEPROC)a1("glStencilOpSeparate");
+    glStencilFuncSeparate = (PFNGLSTENCILFUNCSEPARATEPROC)a1("glStencilFuncSeparate");
+    glStencilMaskSeparate = (PFNGLSTENCILMASKSEPARATEPROC)a1("glStencilMaskSeparate");
+    glAttachShader = (PFNGLATTACHSHADERPROC)a1("glAttachShader");
+    glBindAttribLocation = (PFNGLBINDATTRIBLOCATIONPROC)a1("glBindAttribLocation");
+    glCompileShader = (PFNGLCOMPILESHADERPROC)a1("glCompileShader");
+    glCreateProgram = (PFNGLCREATEPROGRAMPROC)a1("glCreateProgram");
+    glCreateShader = (PFNGLCREATESHADERPROC)a1("glCreateShader");
+    glDeleteProgram = (PFNGLDELETEPROGRAMPROC)a1("glDeleteProgram");
+    glDeleteShader = (PFNGLDELETESHADERPROC)a1("glDeleteShader");
+    glDetachShader = (PFNGLDETACHSHADERPROC)a1("glDetachShader");
+    glDisableVertexAttribArray = (PFNGLDISABLEVERTEXATTRIBARRAYPROC)a1("glDisableVertexAttribArray");
+    glEnableVertexAttribArray = (PFNGLENABLEVERTEXATTRIBARRAYPROC)a1("glEnableVertexAttribArray");
+    glGetActiveAttrib = (PFNGLGETACTIVEATTRIBPROC)a1("glGetActiveAttrib");
+    glGetActiveUniform = (PFNGLGETACTIVEUNIFORMPROC)a1("glGetActiveUniform");
+    glGetAttachedShaders = (PFNGLGETATTACHEDSHADERSPROC)a1("glGetAttachedShaders");
+    glGetAttribLocation = (PFNGLGETATTRIBLOCATIONPROC)a1("glGetAttribLocation");
+    glGetProgramiv = (PFNGLGETPROGRAMIVPROC)a1("glGetProgramiv");
+    glGetProgramInfoLog = (PFNGLGETPROGRAMINFOLOGPROC)a1("glGetProgramInfoLog");
+    glGetShaderiv = (PFNGLGETSHADERIVPROC)a1("glGetShaderiv");
+    glGetShaderInfoLog = (PFNGLGETSHADERINFOLOGPROC)a1("glGetShaderInfoLog");
+    glGetShaderSource = (PFNGLGETSHADERSOURCEPROC)a1("glGetShaderSource");
+    glGetUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC)a1("glGetUniformLocation");
+    glGetUniformfv = (PFNGLGETUNIFORMFVPROC)a1("glGetUniformfv");
+    glGetUniformiv = (PFNGLGETUNIFORMIVPROC)a1("glGetUniformiv");
+    glGetVertexAttribdv = (PFNGLGETVERTEXATTRIBDVPROC)a1("glGetVertexAttribdv");
+    glGetVertexAttribfv = (PFNGLGETVERTEXATTRIBFVPROC)a1("glGetVertexAttribfv");
+    glGetVertexAttribiv = (PFNGLGETVERTEXATTRIBIVPROC)a1("glGetVertexAttribiv");
+    glGetVertexAttribPointerv = (PFNGLGETVERTEXATTRIBPOINTERVPROC)a1("glGetVertexAttribPointerv");
+    glIsProgram = (PFNGLISPROGRAMPROC)a1("glIsProgram");
+    glIsShader = (PFNGLISSHADERPROC)a1("glIsShader");
+    glLinkProgram = (PFNGLLINKPROGRAMPROC)a1("glLinkProgram");
+    glShaderSource = (PFNGLSHADERSOURCEPROC)a1("glShaderSource");
+    glUseProgram = (PFNGLUSEPROGRAMPROC)a1("glUseProgram");
+    glUniform1f = (PFNGLUNIFORM1FPROC)a1("glUniform1f");
+    glUniform2f = (PFNGLUNIFORM2FPROC)a1("glUniform2f");
+    glUniform3f = (PFNGLUNIFORM3FPROC)a1("glUniform3f");
+    glUniform4f = (PFNGLUNIFORM4FPROC)a1("glUniform4f");
+    glUniform1i = (PFNGLUNIFORM1IPROC)a1("glUniform1i");
+    glUniform2i = (PFNGLUNIFORM2IPROC)a1("glUniform2i");
+    glUniform3i = (PFNGLUNIFORM3IPROC)a1("glUniform3i");
+    glUniform4i = (PFNGLUNIFORM4IPROC)a1("glUniform4i");
+    glUniform1fv = (PFNGLUNIFORM1FVPROC)a1("glUniform1fv");
+    glUniform2fv = (PFNGLUNIFORM2FVPROC)a1("glUniform2fv");
+    glUniform3fv = (PFNGLUNIFORM3FVPROC)a1("glUniform3fv");
+    glUniform4fv = (PFNGLUNIFORM4FVPROC)a1("glUniform4fv");
+    glUniform1iv = (PFNGLUNIFORM1IVPROC)a1("glUniform1iv");
+    glUniform2iv = (PFNGLUNIFORM2IVPROC)a1("glUniform2iv");
+    glUniform3iv = (PFNGLUNIFORM3IVPROC)a1("glUniform3iv");
+    glUniform4iv = (PFNGLUNIFORM4IVPROC)a1("glUniform4iv");
+    glUniformMatrix2fv = (PFNGLUNIFORMMATRIX2FVPROC)a1("glUniformMatrix2fv");
+    glUniformMatrix3fv = (PFNGLUNIFORMMATRIX3FVPROC)a1("glUniformMatrix3fv");
+    glUniformMatrix4fv = (PFNGLUNIFORMMATRIX4FVPROC)a1("glUniformMatrix4fv");
+    glValidateProgram = (PFNGLVALIDATEPROGRAMPROC)a1("glValidateProgram");
+    glVertexAttrib1d = (PFNGLVERTEXATTRIB1DPROC)a1("glVertexAttrib1d");
+    glVertexAttrib1dv = (PFNGLVERTEXATTRIB1DVPROC)a1("glVertexAttrib1dv");
+    glVertexAttrib1f = (PFNGLVERTEXATTRIB1FPROC)a1("glVertexAttrib1f");
+    glVertexAttrib1fv = (PFNGLVERTEXATTRIB1FVPROC)a1("glVertexAttrib1fv");
+    glVertexAttrib1s = (PFNGLVERTEXATTRIB1SPROC)a1("glVertexAttrib1s");
+    glVertexAttrib1sv = (PFNGLVERTEXATTRIB1SVPROC)a1("glVertexAttrib1sv");
+    glVertexAttrib2d = (PFNGLVERTEXATTRIB2DPROC)a1("glVertexAttrib2d");
+    glVertexAttrib2dv = (PFNGLVERTEXATTRIB2DVPROC)a1("glVertexAttrib2dv");
+    glVertexAttrib2f = (PFNGLVERTEXATTRIB2FPROC)a1("glVertexAttrib2f");
+    glVertexAttrib2fv = (PFNGLVERTEXATTRIB2FVPROC)a1("glVertexAttrib2fv");
+    glVertexAttrib2s = (PFNGLVERTEXATTRIB2SPROC)a1("glVertexAttrib2s");
+    glVertexAttrib2sv = (PFNGLVERTEXATTRIB2SVPROC)a1("glVertexAttrib2sv");
+    glVertexAttrib3d = (PFNGLVERTEXATTRIB3DPROC)a1("glVertexAttrib3d");
+    glVertexAttrib3dv = (PFNGLVERTEXATTRIB3DVPROC)a1("glVertexAttrib3dv");
+    glVertexAttrib3f = (PFNGLVERTEXATTRIB3FPROC)a1("glVertexAttrib3f");
+    glVertexAttrib3fv = (PFNGLVERTEXATTRIB3FVPROC)a1("glVertexAttrib3fv");
+    glVertexAttrib3s = (PFNGLVERTEXATTRIB3SPROC)a1("glVertexAttrib3s");
+    glVertexAttrib3sv = (PFNGLVERTEXATTRIB3SVPROC)a1("glVertexAttrib3sv");
+    glVertexAttrib4Nbv = (PFNGLVERTEXATTRIB4NBVPROC)a1("glVertexAttrib4Nbv");
+    glVertexAttrib4Niv = (PFNGLVERTEXATTRIB4NIVPROC)a1("glVertexAttrib4Niv");
+    glVertexAttrib4Nsv = (PFNGLVERTEXATTRIB4NSVPROC)a1("glVertexAttrib4Nsv");
+    glVertexAttrib4Nub = (PFNGLVERTEXATTRIB4NUBPROC)a1("glVertexAttrib4Nub");
+    glVertexAttrib4Nubv = (PFNGLVERTEXATTRIB4NUBVPROC)a1("glVertexAttrib4Nubv");
+    glVertexAttrib4Nuiv = (PFNGLVERTEXATTRIB4NUIVPROC)a1("glVertexAttrib4Nuiv");
+    glVertexAttrib4Nusv = (PFNGLVERTEXATTRIB4NUSVPROC)a1("glVertexAttrib4Nusv");
+    glVertexAttrib4bv = (PFNGLVERTEXATTRIB4BVPROC)a1("glVertexAttrib4bv");
+    glVertexAttrib4d = (PFNGLVERTEXATTRIB4DPROC)a1("glVertexAttrib4d");
+    glVertexAttrib4dv = (PFNGLVERTEXATTRIB4DVPROC)a1("glVertexAttrib4dv");
+    glVertexAttrib4f = (PFNGLVERTEXATTRIB4FPROC)a1("glVertexAttrib4f");
+    glVertexAttrib4fv = (PFNGLVERTEXATTRIB4FVPROC)a1("glVertexAttrib4fv");
+    glVertexAttrib4iv = (PFNGLVERTEXATTRIB4IVPROC)a1("glVertexAttrib4iv");
+    glVertexAttrib4s = (PFNGLVERTEXATTRIB4SPROC)a1("glVertexAttrib4s");
+    glVertexAttrib4sv = (PFNGLVERTEXATTRIB4SVPROC)a1("glVertexAttrib4sv");
+    glVertexAttrib4ubv = (PFNGLVERTEXATTRIB4UBVPROC)a1("glVertexAttrib4ubv");
+    glVertexAttrib4uiv = (PFNGLVERTEXATTRIB4UIVPROC)a1("glVertexAttrib4uiv");
+    glVertexAttrib4usv = (PFNGLVERTEXATTRIB4USVPROC)a1("glVertexAttrib4usv");
+    glVertexAttribPointer = (PFNGLVERTEXATTRIBPOINTERPROC)a1("glVertexAttribPointer");
   }
 }
 
@@ -401,12 +401,12 @@ void            sub_1400E48D0(__int64 (           *a1)(     char *))
 {
   if ( unk_1404044B0 )
   {
-    unk_1404044B8 = a1("glUniformMatrix2x3fv");
-    unk_1404044C0 = a1("glUniformMatrix3x2fv");
-    unk_1404044C8 = a1("glUniformMatrix2x4fv");
-    unk_1404044D0 = a1("glUniformMatrix4x2fv");
-    unk_1404044D8 = a1("glUniformMatrix3x4fv");
-    unk_1404044E0 = a1("glUniformMatrix4x3fv");
+    glUniformMatrix2x3fv = (PFNGLUNIFORMMATRIX2X3FVPROC)a1("glUniformMatrix2x3fv");
+    glUniformMatrix3x2fv = (PFNGLUNIFORMMATRIX3X2FVPROC)a1("glUniformMatrix3x2fv");
+    glUniformMatrix2x4fv = (PFNGLUNIFORMMATRIX2X4FVPROC)a1("glUniformMatrix2x4fv");
+    glUniformMatrix4x2fv = (PFNGLUNIFORMMATRIX4X2FVPROC)a1("glUniformMatrix4x2fv");
+    glUniformMatrix3x4fv = (PFNGLUNIFORMMATRIX3X4FVPROC)a1("glUniformMatrix3x4fv");
+    glUniformMatrix4x3fv = (PFNGLUNIFORMMATRIX4X3FVPROC)a1("glUniformMatrix4x3fv");
   }
 }
 
@@ -415,90 +415,90 @@ void            sub_1400E4950(__int64 (           *a1)(     char *))
 {
   if ( unk_1404044B4 )
   {
-    unk_1404044E8 = a1("glColorMaski");
-    unk_1404044F0 = a1("glGetBooleani_v");
-    unk_1404044F8 = a1("glGetIntegeri_v");
-    unk_140404500 = a1("glEnablei");
-    unk_140404508 = a1("glDisablei");
-    unk_140404510 = a1("glIsEnabledi");
-    unk_140404518 = (__int64 (           *)(_QWORD))a1("glBeginTransformFeedback");
-    unk_140404520 = (__int64 (           *)(_QWORD, _QWORD))a1("glEndTransformFeedback");
-    unk_140404528 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))a1("glBindBufferRange");
-    unk_140404530 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glBindBufferBase");
-    unk_140404538 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glTransformFeedbackVaryings");
-    unk_140404540 = a1("glGetTransformFeedbackVarying");
-    unk_140404548 = a1("glClampColor");
-    unk_140404550 = a1("glBeginConditionalRender");
-    unk_140404558 = a1("glEndConditionalRender");
-    unk_140404560 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD))a1("glVertexAttribIPointer");
-    unk_140404568 = a1("glGetVertexAttribIiv");
-    unk_140404570 = a1("glGetVertexAttribIuiv");
-    unk_140404578 = a1("glVertexAttribI1i");
-    unk_140404580 = a1("glVertexAttribI2i");
-    unk_140404588 = a1("glVertexAttribI3i");
-    unk_140404590 = a1("glVertexAttribI4i");
-    unk_140404598 = a1("glVertexAttribI1ui");
-    unk_1404045A0 = a1("glVertexAttribI2ui");
-    unk_1404045A8 = a1("glVertexAttribI3ui");
-    unk_1404045B0 = a1("glVertexAttribI4ui");
-    unk_1404045B8 = a1("glVertexAttribI1iv");
-    unk_1404045C0 = a1("glVertexAttribI2iv");
-    unk_1404045C8 = a1("glVertexAttribI3iv");
-    unk_1404045D0 = a1("glVertexAttribI4iv");
-    unk_1404045D8 = a1("glVertexAttribI1uiv");
-    unk_1404045E0 = a1("glVertexAttribI2uiv");
-    unk_1404045E8 = a1("glVertexAttribI3uiv");
-    unk_1404045F0 = a1("glVertexAttribI4uiv");
-    unk_1404045F8 = a1("glVertexAttribI4bv");
-    unk_140404600 = a1("glVertexAttribI4sv");
-    unk_140404608 = a1("glVertexAttribI4ubv");
-    unk_140404610 = a1("glVertexAttribI4usv");
-    unk_140404618 = a1("glGetUniformuiv");
-    unk_140404620 = a1("glBindFragDataLocation");
-    unk_140404628 = a1("glGetFragDataLocation");
-    unk_140404630 = a1("glUniform1ui");
-    unk_140404638 = a1("glUniform2ui");
-    unk_140404640 = a1("glUniform3ui");
-    unk_140404648 = a1("glUniform4ui");
-    unk_140404650 = a1("glUniform1uiv");
-    unk_140404658 = a1("glUniform2uiv");
-    unk_140404660 = a1("glUniform3uiv");
-    unk_140404668 = a1("glUniform4uiv");
-    unk_140404670 = a1("glTexParameterIiv");
-    unk_140404678 = a1("glTexParameterIuiv");
-    unk_140404680 = a1("glGetTexParameterIiv");
-    unk_140404688 = a1("glGetTexParameterIuiv");
-    unk_140404690 = a1("glClearBufferiv");
-    unk_140404698 = a1("glClearBufferuiv");
-    unk_1404046A0 = a1("glClearBufferfv");
-    unk_1404046A8 = a1("glClearBufferfi");
-    unk_1404046B0 = (__int64 (           *)(_QWORD, _QWORD))a1("glGetStringi");
-    unk_1404046B8 = a1("glIsRenderbuffer");
-    unk_1404046C0 = (__int64 (           *)(_QWORD, _QWORD))a1("glBindRenderbuffer");
-    unk_1404046C8 = a1("glDeleteRenderbuffers");
-    unk_1404046D0 = (__int64 (           *)(_QWORD, _QWORD))a1("glGenRenderbuffers");
-    unk_1404046D8 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glRenderbufferStorage");
-    unk_1404046E0 = a1("glGetRenderbufferParameteriv");
-    unk_1404046E8 = a1("glIsFramebuffer");
-    unk_1404046F0 = (double (           *)(_QWORD, _QWORD))a1("glBindFramebuffer");
-    unk_1404046F8 = a1("glDeleteFramebuffers");
-    unk_140404700 = (__int64 (           *)(_QWORD, _QWORD))a1("glGenFramebuffers");
-    unk_140404708 = (__int64 (           *)(_QWORD))a1("glCheckFramebufferStatus");
-    unk_140404710 = a1("glFramebufferTexture1D");
-    unk_140404718 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD))a1("glFramebufferTexture2D");
-    unk_140404720 = a1("glFramebufferTexture3D");
-    unk_140404728 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))a1("glFramebufferRenderbuffer");
-    unk_140404730 = a1("glGetFramebufferAttachmentParameteriv");
-    unk_140404738 = (double (           *)(_QWORD))a1("glGenerateMipmap");
-    unk_140404740 = (__int64 (           *)(_QWORD, _QWORD))a1("glBlitFramebuffer");
-    unk_140404748 = a1("glRenderbufferStorageMultisample");
-    unk_140404750 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD))a1("glFramebufferTextureLayer");
-    unk_140404758 = a1("glMapBufferRange");
-    unk_140404760 = a1("glFlushMappedBufferRange");
-    unk_140404768 = (__int64 (           *)(_QWORD))a1("glBindVertexArray");
-    unk_140404770 = a1("glDeleteVertexArrays");
-    unk_140404778 = (__int64 (           *)(_QWORD, _QWORD))a1("glGenVertexArrays");
-    unk_140404780 = a1("glIsVertexArray");
+    glColorMaski = (PFNGLCOLORMASKIPROC)a1("glColorMaski");
+    glGetBooleani_v = (PFNGLGETBOOLEANI_VPROC)a1("glGetBooleani_v");
+    glGetIntegeri_v = (PFNGLGETINTEGERI_VPROC)a1("glGetIntegeri_v");
+    glEnablei = (PFNGLENABLEIPROC)a1("glEnablei");
+    glDisablei = (PFNGLDISABLEIPROC)a1("glDisablei");
+    glIsEnabledi = (PFNGLISENABLEDIPROC)a1("glIsEnabledi");
+    glBeginTransformFeedback = (PFNGLBEGINTRANSFORMFEEDBACKPROC)a1("glBeginTransformFeedback");
+    glEndTransformFeedback = (PFNGLENDTRANSFORMFEEDBACKPROC)a1("glEndTransformFeedback");
+    glBindBufferRange = (PFNGLBINDBUFFERRANGEPROC)a1("glBindBufferRange");
+    glBindBufferBase = (PFNGLBINDBUFFERBASEPROC)a1("glBindBufferBase");
+    glTransformFeedbackVaryings = (PFNGLTRANSFORMFEEDBACKVARYINGSPROC)a1("glTransformFeedbackVaryings");
+    glGetTransformFeedbackVarying = (PFNGLGETTRANSFORMFEEDBACKVARYINGPROC)a1("glGetTransformFeedbackVarying");
+    glClampColor = (PFNGLCLAMPCOLORPROC)a1("glClampColor");
+    glBeginConditionalRender = (PFNGLBEGINCONDITIONALRENDERPROC)a1("glBeginConditionalRender");
+    glEndConditionalRender = (PFNGLENDCONDITIONALRENDERPROC)a1("glEndConditionalRender");
+    glVertexAttribIPointer = (PFNGLVERTEXATTRIBIPOINTERPROC)a1("glVertexAttribIPointer");
+    glGetVertexAttribIiv = (PFNGLGETVERTEXATTRIBIIVPROC)a1("glGetVertexAttribIiv");
+    glGetVertexAttribIuiv = (PFNGLGETVERTEXATTRIBIUIVPROC)a1("glGetVertexAttribIuiv");
+    glVertexAttribI1i = (PFNGLVERTEXATTRIBI1IPROC)a1("glVertexAttribI1i");
+    glVertexAttribI2i = (PFNGLVERTEXATTRIBI2IPROC)a1("glVertexAttribI2i");
+    glVertexAttribI3i = (PFNGLVERTEXATTRIBI3IPROC)a1("glVertexAttribI3i");
+    glVertexAttribI4i = (PFNGLVERTEXATTRIBI4IPROC)a1("glVertexAttribI4i");
+    glVertexAttribI1ui = (PFNGLVERTEXATTRIBI1UIPROC)a1("glVertexAttribI1ui");
+    glVertexAttribI2ui = (PFNGLVERTEXATTRIBI2UIPROC)a1("glVertexAttribI2ui");
+    glVertexAttribI3ui = (PFNGLVERTEXATTRIBI3UIPROC)a1("glVertexAttribI3ui");
+    glVertexAttribI4ui = (PFNGLVERTEXATTRIBI4UIPROC)a1("glVertexAttribI4ui");
+    glVertexAttribI1iv = (PFNGLVERTEXATTRIBI1IVPROC)a1("glVertexAttribI1iv");
+    glVertexAttribI2iv = (PFNGLVERTEXATTRIBI2IVPROC)a1("glVertexAttribI2iv");
+    glVertexAttribI3iv = (PFNGLVERTEXATTRIBI3IVPROC)a1("glVertexAttribI3iv");
+    glVertexAttribI4iv = (PFNGLVERTEXATTRIBI4IVPROC)a1("glVertexAttribI4iv");
+    glVertexAttribI1uiv = (PFNGLVERTEXATTRIBI1UIVPROC)a1("glVertexAttribI1uiv");
+    glVertexAttribI2uiv = (PFNGLVERTEXATTRIBI2UIVPROC)a1("glVertexAttribI2uiv");
+    glVertexAttribI3uiv = (PFNGLVERTEXATTRIBI3UIVPROC)a1("glVertexAttribI3uiv");
+    glVertexAttribI4uiv = (PFNGLVERTEXATTRIBI4UIVPROC)a1("glVertexAttribI4uiv");
+    glVertexAttribI4bv = (PFNGLVERTEXATTRIBI4BVPROC)a1("glVertexAttribI4bv");
+    glVertexAttribI4sv = (PFNGLVERTEXATTRIBI4SVPROC)a1("glVertexAttribI4sv");
+    glVertexAttribI4ubv = (PFNGLVERTEXATTRIBI4UBVPROC)a1("glVertexAttribI4ubv");
+    glVertexAttribI4usv = (PFNGLVERTEXATTRIBI4USVPROC)a1("glVertexAttribI4usv");
+    glGetUniformuiv = (PFNGLGETUNIFORMUIVPROC)a1("glGetUniformuiv");
+    glBindFragDataLocation = (PFNGLBINDFRAGDATALOCATIONPROC)a1("glBindFragDataLocation");
+    glGetFragDataLocation = (PFNGLGETFRAGDATALOCATIONPROC)a1("glGetFragDataLocation");
+    glUniform1ui = (PFNGLUNIFORM1UIPROC)a1("glUniform1ui");
+    glUniform2ui = (PFNGLUNIFORM2UIPROC)a1("glUniform2ui");
+    glUniform3ui = (PFNGLUNIFORM3UIPROC)a1("glUniform3ui");
+    glUniform4ui = (PFNGLUNIFORM4UIPROC)a1("glUniform4ui");
+    glUniform1uiv = (PFNGLUNIFORM1UIVPROC)a1("glUniform1uiv");
+    glUniform2uiv = (PFNGLUNIFORM2UIVPROC)a1("glUniform2uiv");
+    glUniform3uiv = (PFNGLUNIFORM3UIVPROC)a1("glUniform3uiv");
+    glUniform4uiv = (PFNGLUNIFORM4UIVPROC)a1("glUniform4uiv");
+    glTexParameterIiv = (PFNGLTEXPARAMETERIIVPROC)a1("glTexParameterIiv");
+    glTexParameterIuiv = (PFNGLTEXPARAMETERIUIVPROC)a1("glTexParameterIuiv");
+    glGetTexParameterIiv = (PFNGLGETTEXPARAMETERIIVPROC)a1("glGetTexParameterIiv");
+    glGetTexParameterIuiv = (PFNGLGETTEXPARAMETERIUIVPROC)a1("glGetTexParameterIuiv");
+    glClearBufferiv = (PFNGLCLEARBUFFERIVPROC)a1("glClearBufferiv");
+    glClearBufferuiv = (PFNGLCLEARBUFFERUIVPROC)a1("glClearBufferuiv");
+    glClearBufferfv = (PFNGLCLEARBUFFERFVPROC)a1("glClearBufferfv");
+    glClearBufferfi = (PFNGLCLEARBUFFERFIPROC)a1("glClearBufferfi");
+    glGetStringi = (PFNGLGETSTRINGIPROC)a1("glGetStringi");
+    glIsRenderbuffer = (PFNGLISRENDERBUFFERPROC)a1("glIsRenderbuffer");
+    glBindRenderbuffer = (PFNGLBINDRENDERBUFFERPROC)a1("glBindRenderbuffer");
+    glDeleteRenderbuffers = (PFNGLDELETERENDERBUFFERSPROC)a1("glDeleteRenderbuffers");
+    glGenRenderbuffers = (PFNGLGENRENDERBUFFERSPROC)a1("glGenRenderbuffers");
+    glRenderbufferStorage = (PFNGLRENDERBUFFERSTORAGEPROC)a1("glRenderbufferStorage");
+    glGetRenderbufferParameteriv = (PFNGLGETRENDERBUFFERPARAMETERIVPROC)a1("glGetRenderbufferParameteriv");
+    glIsFramebuffer = (PFNGLISFRAMEBUFFERPROC)a1("glIsFramebuffer");
+    glBindFramebuffer = (PFNGLBINDFRAMEBUFFERPROC)a1("glBindFramebuffer");
+    glDeleteFramebuffers = (PFNGLDELETEFRAMEBUFFERSPROC)a1("glDeleteFramebuffers");
+    glGenFramebuffers = (PFNGLGENFRAMEBUFFERSPROC)a1("glGenFramebuffers");
+    glCheckFramebufferStatus = (PFNGLCHECKFRAMEBUFFERSTATUSPROC)a1("glCheckFramebufferStatus");
+    glFramebufferTexture1D = (PFNGLFRAMEBUFFERTEXTURE1DPROC)a1("glFramebufferTexture1D");
+    glFramebufferTexture2D = (PFNGLFRAMEBUFFERTEXTURE2DPROC)a1("glFramebufferTexture2D");
+    glFramebufferTexture3D = (PFNGLFRAMEBUFFERTEXTURE3DPROC)a1("glFramebufferTexture3D");
+    glFramebufferRenderbuffer = (PFNGLFRAMEBUFFERRENDERBUFFERPROC)a1("glFramebufferRenderbuffer");
+    glGetFramebufferAttachmentParameteriv = (PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC)a1("glGetFramebufferAttachmentParameteriv");
+    glGenerateMipmap = (PFNGLGENERATEMIPMAPPROC)a1("glGenerateMipmap");
+    glBlitFramebuffer = (PFNGLBLITFRAMEBUFFERPROC)a1("glBlitFramebuffer");
+    glRenderbufferStorageMultisample = (PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC)a1("glRenderbufferStorageMultisample");
+    glFramebufferTextureLayer = (PFNGLFRAMEBUFFERTEXTURELAYERPROC)a1("glFramebufferTextureLayer");
+    glMapBufferRange = (PFNGLMAPBUFFERRANGEPROC)a1("glMapBufferRange");
+    glFlushMappedBufferRange = (PFNGLFLUSHMAPPEDBUFFERRANGEPROC)a1("glFlushMappedBufferRange");
+    glBindVertexArray = (PFNGLBINDVERTEXARRAYPROC)a1("glBindVertexArray");
+    glDeleteVertexArrays = (PFNGLDELETEVERTEXARRAYSPROC)a1("glDeleteVertexArrays");
+    glGenVertexArrays = (PFNGLGENVERTEXARRAYSPROC)a1("glGenVertexArrays");
+    glIsVertexArray = (PFNGLISVERTEXARRAYPROC)a1("glIsVertexArray");
   }
 }
 
@@ -507,21 +507,21 @@ void            sub_1400E4EB0(__int64 (           *a1)(     char *))
 {
   if ( unk_140404788 )
   {
-    unk_140404790 = a1("glDrawArraysInstanced");
-    unk_140404798 = a1("glDrawElementsInstanced");
-    unk_1404047A0 = a1("glTexBuffer");
-    unk_1404047A8 = a1("glPrimitiveRestartIndex");
-    unk_1404047B0 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))a1("glCopyBufferSubData");
-    unk_1404047B8 = a1("glGetUniformIndices");
-    unk_1404047C0 = a1("glGetActiveUniformsiv");
-    unk_1404047C8 = a1("glGetActiveUniformName");
-    unk_1404047D0 = a1("glGetUniformBlockIndex");
-    unk_1404047D8 = a1("glGetActiveUniformBlockiv");
-    unk_1404047E0 = a1("glGetActiveUniformBlockName");
-    unk_1404047E8 = a1("glUniformBlockBinding");
-    unk_140404528 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))a1("glBindBufferRange");
-    unk_140404530 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glBindBufferBase");
-    unk_1404044F8 = a1("glGetIntegeri_v");
+    glDrawArraysInstanced = (PFNGLDRAWARRAYSINSTANCEDPROC)a1("glDrawArraysInstanced");
+    glDrawElementsInstanced = (PFNGLDRAWELEMENTSINSTANCEDPROC)a1("glDrawElementsInstanced");
+    glTexBuffer = (PFNGLTEXBUFFERPROC)a1("glTexBuffer");
+    glPrimitiveRestartIndex = (PFNGLPRIMITIVERESTARTINDEXPROC)a1("glPrimitiveRestartIndex");
+    glCopyBufferSubData = (PFNGLCOPYBUFFERSUBDATAPROC)a1("glCopyBufferSubData");
+    glGetUniformIndices = (PFNGLGETUNIFORMINDICESPROC)a1("glGetUniformIndices");
+    glGetActiveUniformsiv = (PFNGLGETACTIVEUNIFORMSIVPROC)a1("glGetActiveUniformsiv");
+    glGetActiveUniformName = (PFNGLGETACTIVEUNIFORMNAMEPROC)a1("glGetActiveUniformName");
+    glGetUniformBlockIndex = (PFNGLGETUNIFORMBLOCKINDEXPROC)a1("glGetUniformBlockIndex");
+    glGetActiveUniformBlockiv = (PFNGLGETACTIVEUNIFORMBLOCKIVPROC)a1("glGetActiveUniformBlockiv");
+    glGetActiveUniformBlockName = (PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC)a1("glGetActiveUniformBlockName");
+    glUniformBlockBinding = (PFNGLUNIFORMBLOCKBINDINGPROC)a1("glUniformBlockBinding");
+    glBindBufferRange = (PFNGLBINDBUFFERRANGEPROC)a1("glBindBufferRange");
+    glBindBufferBase = (PFNGLBINDBUFFERBASEPROC)a1("glBindBufferBase");
+    glGetIntegeri_v = (PFNGLGETINTEGERI_VPROC)a1("glGetIntegeri_v");
   }
 }
 
@@ -530,26 +530,26 @@ void            sub_1400E4FC0(__int64 (           *a1)(     char *))
 {
   if ( unk_14040478C )
   {
-    unk_1404047F0 = (__int64 (           *)(_QWORD, _QWORD, _QWORD))a1("glDrawElementsBaseVertex");
-    unk_1404047F8 = a1("glDrawRangeElementsBaseVertex");
-    unk_140404800 = a1("glDrawElementsInstancedBaseVertex");
+    glDrawElementsBaseVertex = (PFNGLDRAWELEMENTSBASEVERTEXPROC)a1("glDrawElementsBaseVertex");
+    glDrawRangeElementsBaseVertex = (PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC)a1("glDrawRangeElementsBaseVertex");
+    glDrawElementsInstancedBaseVertex = (PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC)a1("glDrawElementsInstancedBaseVertex");
     unk_140404808 = (__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD, _DWORD, _QWORD))a1(
                                                                                               "glMultiDrawElementsBaseVertex");
-    unk_140404810 = a1("glProvokingVertex");
-    unk_140404818 = a1("glFenceSync");
-    unk_140404820 = a1("glIsSync");
-    unk_140404828 = a1("glDeleteSync");
-    unk_140404830 = a1("glClientWaitSync");
-    unk_140404838 = a1("glWaitSync");
-    unk_140404840 = a1("glGetInteger64v");
-    unk_140404848 = a1("glGetSynciv");
-    unk_140404850 = a1("glGetInteger64i_v");
-    unk_140404858 = a1("glGetBufferParameteri64v");
-    unk_140404860 = a1("glFramebufferTexture");
-    unk_140404868 = a1("glTexImage2DMultisample");
-    unk_140404870 = a1("glTexImage3DMultisample");
-    unk_140404878 = a1("glGetMultisamplefv");
-    unk_140404880 = a1("glSampleMaski");
+    glProvokingVertex = (PFNGLPROVOKINGVERTEXPROC)a1("glProvokingVertex");
+    glFenceSync = (PFNGLFENCESYNCPROC)a1("glFenceSync");
+    glIsSync = (PFNGLISSYNCPROC)a1("glIsSync");
+    glDeleteSync = (PFNGLDELETESYNCPROC)a1("glDeleteSync");
+    glClientWaitSync = (PFNGLCLIENTWAITSYNCPROC)a1("glClientWaitSync");
+    glWaitSync = (PFNGLWAITSYNCPROC)a1("glWaitSync");
+    glGetInteger64v = (PFNGLGETINTEGER64VPROC)a1("glGetInteger64v");
+    glGetSynciv = (PFNGLGETSYNCIVPROC)a1("glGetSynciv");
+    glGetInteger64i_v = (PFNGLGETINTEGER64I_VPROC)a1("glGetInteger64i_v");
+    glGetBufferParameteri64v = (PFNGLGETBUFFERPARAMETERI64VPROC)a1("glGetBufferParameteri64v");
+    glFramebufferTexture = (PFNGLFRAMEBUFFERTEXTUREPROC)a1("glFramebufferTexture");
+    glTexImage2DMultisample = (PFNGLTEXIMAGE2DMULTISAMPLEPROC)a1("glTexImage2DMultisample");
+    glTexImage3DMultisample = (PFNGLTEXIMAGE3DMULTISAMPLEPROC)a1("glTexImage3DMultisample");
+    glGetMultisamplefv = (PFNGLGETMULTISAMPLEFVPROC)a1("glGetMultisamplefv");
+    glSampleMaski = (PFNGLSAMPLEMASKIPROC)a1("glSampleMaski");
   }
 }
 
@@ -558,64 +558,64 @@ void            sub_1400E5110(__int64 (           *a1)(     char *))
 {
   if ( unk_140404888 )
   {
-    unk_140404890 = a1("glBindFragDataLocationIndexed");
-    unk_140404898 = a1("glGetFragDataIndex");
-    unk_1404048A0 = a1("glGenSamplers");
-    unk_1404048A8 = a1("glDeleteSamplers");
-    unk_1404048B0 = a1("glIsSampler");
-    unk_1404048B8 = a1("glBindSampler");
-    unk_1404048C0 = a1("glSamplerParameteri");
-    unk_1404048C8 = a1("glSamplerParameteriv");
-    unk_1404048D0 = a1("glSamplerParameterf");
-    unk_1404048D8 = a1("glSamplerParameterfv");
-    unk_1404048E0 = a1("glSamplerParameterIiv");
-    unk_1404048E8 = a1("glSamplerParameterIuiv");
-    unk_1404048F0 = a1("glGetSamplerParameteriv");
-    unk_1404048F8 = a1("glGetSamplerParameterIiv");
-    unk_140404900 = a1("glGetSamplerParameterfv");
-    unk_140404908 = a1("glGetSamplerParameterIuiv");
-    unk_140404910 = a1("glQueryCounter");
-    unk_140404918 = a1("glGetQueryObjecti64v");
-    unk_140404920 = a1("glGetQueryObjectui64v");
-    unk_140404928 = a1("glVertexAttribDivisor");
-    unk_140404930 = a1("glVertexAttribP1ui");
-    unk_140404938 = a1("glVertexAttribP1uiv");
-    unk_140404940 = a1("glVertexAttribP2ui");
-    unk_140404948 = a1("glVertexAttribP2uiv");
-    unk_140404950 = a1("glVertexAttribP3ui");
-    unk_140404958 = a1("glVertexAttribP3uiv");
-    unk_140404960 = a1("glVertexAttribP4ui");
-    unk_140404968 = a1("glVertexAttribP4uiv");
-    unk_140404970 = a1("glVertexP2ui");
-    unk_140404978 = a1("glVertexP2uiv");
-    unk_140404980 = a1("glVertexP3ui");
-    unk_140404988 = a1("glVertexP3uiv");
-    unk_140404990 = a1("glVertexP4ui");
-    unk_140404998 = a1("glVertexP4uiv");
-    unk_1404049A0 = a1("glTexCoordP1ui");
-    unk_1404049A8 = a1("glTexCoordP1uiv");
-    unk_1404049B0 = a1("glTexCoordP2ui");
-    unk_1404049B8 = a1("glTexCoordP2uiv");
-    unk_1404049C0 = a1("glTexCoordP3ui");
-    unk_1404049C8 = a1("glTexCoordP3uiv");
-    unk_1404049D0 = a1("glTexCoordP4ui");
-    unk_1404049D8 = a1("glTexCoordP4uiv");
-    unk_1404049E0 = a1("glMultiTexCoordP1ui");
-    unk_1404049E8 = a1("glMultiTexCoordP1uiv");
-    unk_1404049F0 = a1("glMultiTexCoordP2ui");
-    unk_1404049F8 = a1("glMultiTexCoordP2uiv");
-    unk_140404A00 = a1("glMultiTexCoordP3ui");
-    unk_140404A08 = a1("glMultiTexCoordP3uiv");
-    unk_140404A10 = a1("glMultiTexCoordP4ui");
-    unk_140404A18 = a1("glMultiTexCoordP4uiv");
-    unk_140404A20 = a1("glNormalP3ui");
-    unk_140404A28 = a1("glNormalP3uiv");
-    unk_140404A30 = a1("glColorP3ui");
-    unk_140404A38 = a1("glColorP3uiv");
-    unk_140404A40 = a1("glColorP4ui");
-    unk_140404A48 = a1("glColorP4uiv");
-    unk_140404A50 = a1("glSecondaryColorP3ui");
-    unk_140404A58 = a1("glSecondaryColorP3uiv");
+    glBindFragDataLocationIndexed = (PFNGLBINDFRAGDATALOCATIONINDEXEDPROC)a1("glBindFragDataLocationIndexed");
+    glGetFragDataIndex = (PFNGLGETFRAGDATAINDEXPROC)a1("glGetFragDataIndex");
+    glGenSamplers = (PFNGLGENSAMPLERSPROC)a1("glGenSamplers");
+    glDeleteSamplers = (PFNGLDELETESAMPLERSPROC)a1("glDeleteSamplers");
+    glIsSampler = (PFNGLISSAMPLERPROC)a1("glIsSampler");
+    glBindSampler = (PFNGLBINDSAMPLERPROC)a1("glBindSampler");
+    glSamplerParameteri = (PFNGLSAMPLERPARAMETERIPROC)a1("glSamplerParameteri");
+    glSamplerParameteriv = (PFNGLSAMPLERPARAMETERIVPROC)a1("glSamplerParameteriv");
+    glSamplerParameterf = (PFNGLSAMPLERPARAMETERFPROC)a1("glSamplerParameterf");
+    glSamplerParameterfv = (PFNGLSAMPLERPARAMETERFVPROC)a1("glSamplerParameterfv");
+    glSamplerParameterIiv = (PFNGLSAMPLERPARAMETERIIVPROC)a1("glSamplerParameterIiv");
+    glSamplerParameterIuiv = (PFNGLSAMPLERPARAMETERIUIVPROC)a1("glSamplerParameterIuiv");
+    glGetSamplerParameteriv = (PFNGLGETSAMPLERPARAMETERIVPROC)a1("glGetSamplerParameteriv");
+    glGetSamplerParameterIiv = (PFNGLGETSAMPLERPARAMETERIIVPROC)a1("glGetSamplerParameterIiv");
+    glGetSamplerParameterfv = (PFNGLGETSAMPLERPARAMETERFVPROC)a1("glGetSamplerParameterfv");
+    glGetSamplerParameterIuiv = (PFNGLGETSAMPLERPARAMETERIUIVPROC)a1("glGetSamplerParameterIuiv");
+    glQueryCounter = (PFNGLQUERYCOUNTERPROC)a1("glQueryCounter");
+    glGetQueryObjecti64v = (PFNGLGETQUERYOBJECTI64VPROC)a1("glGetQueryObjecti64v");
+    glGetQueryObjectui64v = (PFNGLGETQUERYOBJECTUI64VPROC)a1("glGetQueryObjectui64v");
+    glVertexAttribDivisor = (PFNGLVERTEXATTRIBDIVISORPROC)a1("glVertexAttribDivisor");
+    glVertexAttribP1ui = (PFNGLVERTEXATTRIBP1UIPROC)a1("glVertexAttribP1ui");
+    glVertexAttribP1uiv = (PFNGLVERTEXATTRIBP1UIVPROC)a1("glVertexAttribP1uiv");
+    glVertexAttribP2ui = (PFNGLVERTEXATTRIBP2UIPROC)a1("glVertexAttribP2ui");
+    glVertexAttribP2uiv = (PFNGLVERTEXATTRIBP2UIVPROC)a1("glVertexAttribP2uiv");
+    glVertexAttribP3ui = (PFNGLVERTEXATTRIBP3UIPROC)a1("glVertexAttribP3ui");
+    glVertexAttribP3uiv = (PFNGLVERTEXATTRIBP3UIVPROC)a1("glVertexAttribP3uiv");
+    glVertexAttribP4ui = (PFNGLVERTEXATTRIBP4UIPROC)a1("glVertexAttribP4ui");
+    glVertexAttribP4uiv = (PFNGLVERTEXATTRIBP4UIVPROC)a1("glVertexAttribP4uiv");
+    glVertexP2ui = (PFNGLVERTEXP2UIPROC)a1("glVertexP2ui");
+    glVertexP2uiv = (PFNGLVERTEXP2UIVPROC)a1("glVertexP2uiv");
+    glVertexP3ui = (PFNGLVERTEXP3UIPROC)a1("glVertexP3ui");
+    glVertexP3uiv = (PFNGLVERTEXP3UIVPROC)a1("glVertexP3uiv");
+    glVertexP4ui = (PFNGLVERTEXP4UIPROC)a1("glVertexP4ui");
+    glVertexP4uiv = (PFNGLVERTEXP4UIVPROC)a1("glVertexP4uiv");
+    glTexCoordP1ui = (PFNGLTEXCOORDP1UIPROC)a1("glTexCoordP1ui");
+    glTexCoordP1uiv = (PFNGLTEXCOORDP1UIVPROC)a1("glTexCoordP1uiv");
+    glTexCoordP2ui = (PFNGLTEXCOORDP2UIPROC)a1("glTexCoordP2ui");
+    glTexCoordP2uiv = (PFNGLTEXCOORDP2UIVPROC)a1("glTexCoordP2uiv");
+    glTexCoordP3ui = (PFNGLTEXCOORDP3UIPROC)a1("glTexCoordP3ui");
+    glTexCoordP3uiv = (PFNGLTEXCOORDP3UIVPROC)a1("glTexCoordP3uiv");
+    glTexCoordP4ui = (PFNGLTEXCOORDP4UIPROC)a1("glTexCoordP4ui");
+    glTexCoordP4uiv = (PFNGLTEXCOORDP4UIVPROC)a1("glTexCoordP4uiv");
+    glMultiTexCoordP1ui = (PFNGLMULTITEXCOORDP1UIPROC)a1("glMultiTexCoordP1ui");
+    glMultiTexCoordP1uiv = (PFNGLMULTITEXCOORDP1UIVPROC)a1("glMultiTexCoordP1uiv");
+    glMultiTexCoordP2ui = (PFNGLMULTITEXCOORDP2UIPROC)a1("glMultiTexCoordP2ui");
+    glMultiTexCoordP2uiv = (PFNGLMULTITEXCOORDP2UIVPROC)a1("glMultiTexCoordP2uiv");
+    glMultiTexCoordP3ui = (PFNGLMULTITEXCOORDP3UIPROC)a1("glMultiTexCoordP3ui");
+    glMultiTexCoordP3uiv = (PFNGLMULTITEXCOORDP3UIVPROC)a1("glMultiTexCoordP3uiv");
+    glMultiTexCoordP4ui = (PFNGLMULTITEXCOORDP4UIPROC)a1("glMultiTexCoordP4ui");
+    glMultiTexCoordP4uiv = (PFNGLMULTITEXCOORDP4UIVPROC)a1("glMultiTexCoordP4uiv");
+    glNormalP3ui = (PFNGLNORMALP3UIPROC)a1("glNormalP3ui");
+    glNormalP3uiv = (PFNGLNORMALP3UIVPROC)a1("glNormalP3uiv");
+    glColorP3ui = (PFNGLCOLORP3UIPROC)a1("glColorP3ui");
+    glColorP3uiv = (PFNGLCOLORP3UIVPROC)a1("glColorP3uiv");
+    glColorP4ui = (PFNGLCOLORP4UIPROC)a1("glColorP4ui");
+    glColorP4uiv = (PFNGLCOLORP4UIVPROC)a1("glColorP4uiv");
+    glSecondaryColorP3ui = (PFNGLSECONDARYCOLORP3UIPROC)a1("glSecondaryColorP3ui");
+    glSecondaryColorP3uiv = (PFNGLSECONDARYCOLORP3UIVPROC)a1("glSecondaryColorP3uiv");
   }
 }
 

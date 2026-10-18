@@ -124,7 +124,7 @@ __int64            sub_1401982A0(__int64 a1, __int64 a2)
   __int64 result;
 
   result = *(_QWORD *)(a2 + 8);
-  *(_QWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 8LL) = result;
+  *(_QWORD *)(g_144CBDB38 + 8LL) = result;
   return result;
 }
 
@@ -133,8 +133,8 @@ __int64            sub_1401982B0(__int64 a1, _QWORD *a2)
 {
   __int64 result;
 
-  result = *(_QWORD *)&dword_140404A6C[19063859];
-  **(_QWORD **)&dword_140404A6C[19063859] = *a2;
+  result = g_144CBDB38;
+  **(_QWORD **)&g_144CBDB38 = *a2;
   return result;
 }
 
@@ -145,7 +145,7 @@ __int64            sub_1401982C0(__int64 a1, __int64 *a2)
   _QWORD *v3;
 
   v2 = *a2;
-  *(_QWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 16LL) = *a2;
+  *(_QWORD *)(g_144CBDB38 + 16LL) = *a2;
   v3 = (_QWORD *)SteamInternal_ContextInit(&off_140301E70);
   return (*(__int64 (           **)(_QWORD, __int64))(*(_QWORD *)*v3 + 24LL))(*v3, v2);
 }
@@ -160,13 +160,13 @@ void            sub_140198300(__int64 a1, _DWORD *a2)
     v2 = (_QWORD *)SteamInternal_ContextInit(&off_140301E10);
     (*(void (           **)(_QWORD, unsigned int *, __int64, unsigned int *))(*(_QWORD *)*v2 + 168LL))(
       *v2,
-      &dword_140404A6C[19063861],
+      &g_144CBDB40,
       1024,
-      &dword_140404A6C[19064117]);
-    if ( *(_QWORD *)&dword_140404A6C[19064119] )
-      (*(void (           **)(unsigned int *, _QWORD))&dword_140404A6C[19064119])(
-        &dword_140404A6C[19063861],
-        dword_140404A6C[19064117]);
+      &g_144CBDF40);
+    if ( g_144CBDF48 )
+      (*(void (           **)(unsigned int *, _QWORD))(unsigned int *)&g_144CBDF48)(
+        &g_144CBDB40,
+        g_144CBDF40);
   }
 }
 
@@ -338,7 +338,7 @@ void            sub_140198790(__int64 a1)
 {
   _QWORD *v2;
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
   {
     v2 = (_QWORD *)SteamInternal_ContextInit(&off_140301E28);
     (*(void (           **)(_QWORD, __int64))(*(_QWORD *)*v2 + 224LL))(*v2, a1);
@@ -350,7 +350,7 @@ void            sub_1401987E0(unsigned int a1)
 {
   _QWORD *v2;
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
   {
     v2 = (_QWORD *)SteamInternal_ContextInit(&off_140301E40);
     (*(void (           **)(_QWORD, __int64, _QWORD))(*(_QWORD *)*v2 + 104LL))(*v2, 2, a1);
@@ -369,7 +369,7 @@ void            sub_140198820(__int64 *a1, __int64 a2, unsigned int a3, unsigned
   char v14;
   _BYTE v15[24];
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
   {
     v8 = (_QWORD *)SteamInternal_ContextInit(&off_140301E28);
     v9 = (__int64 *)(*(__int64 (           **)(_QWORD, _BYTE *, _QWORD, _QWORD))(*(_QWORD *)*v8 + 32LL))(
@@ -397,7 +397,7 @@ __int64            sub_1401988C0(unsigned int a1)
 {
   _QWORD *v3;
 
-  if ( !dword_140404A6C[19063857] )
+  if ( !g_144CBDB30 )
     return 0;
   v3 = (_QWORD *)SteamInternal_ContextInit(&off_140301E28);
   return (*(__int64 (           **)(_QWORD, _QWORD))(*(_QWORD *)*v3 + 24LL))(*v3, a1);
@@ -414,7 +414,7 @@ void            sub_140198900(__int64 a1, unsigned int a2, unsigned int a3, __in
   char v13;
   _BYTE v14[24];
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
   {
     v8 = (_QWORD *)SteamInternal_ContextInit(&off_140301E28);
     v9 = *(_QWORD *)(*(__int64 (           **)(_QWORD, _BYTE *, _QWORD, _QWORD))(*(_QWORD *)*v8 + 32LL))(
@@ -443,7 +443,7 @@ __int64            sub_1401989A0(unsigned int a1, unsigned int a2)
   _QWORD *v7;
   char v8;
 
-  if ( !dword_140404A6C[19063857] )
+  if ( !g_144CBDB30 )
     return 0;
   v5 = (_QWORD *)SteamInternal_ContextInit(&off_140301E28);
   v6 = *(_QWORD *)(*(__int64 (           **)(_QWORD, char *, _QWORD, _QWORD))(*(_QWORD *)*v5 + 32LL))(*v5, &v8, a1, a2);
@@ -456,7 +456,7 @@ __int64            sub_140198A10(__int64 a1)
 {
   _QWORD *v3;
 
-  if ( !dword_140404A6C[19063857] )
+  if ( !g_144CBDB30 )
     return 0;
   v3 = (_QWORD *)SteamInternal_ContextInit(&off_140301E28);
   return (*(__int64 (           **)(_QWORD, __int64))(*(_QWORD *)*v3 + 48LL))(*v3, a1);
@@ -470,7 +470,7 @@ __int64            sub_140198A50(_QWORD *a1)
   _QWORD *v4;
   char v6;
 
-  if ( !dword_140404A6C[19063857] )
+  if ( !g_144CBDB30 )
     return 0;
   v2 = (_QWORD *)SteamInternal_ContextInit(&off_140301E58);
   v3 = *(_QWORD *)(*(__int64 (           **)(_QWORD, char *))(*(_QWORD *)*v2 + 160LL))(*v2, &v6);
@@ -482,8 +482,8 @@ __int64            sub_140198A50(_QWORD *a1)
   }
   else
   {
-    dword_140404A6C[19063857] = 0;
-    dword_140404A6C[19063858] = 1;
+    g_144CBDB30 = 0;
+    g_144CBDB34 = 1;
     return 0;
   }
 }
@@ -496,7 +496,7 @@ __int64            sub_140198AF0(__int64 a1)
   __int64 v4;
   char v5;
 
-  if ( !dword_140404A6C[19063857] )
+  if ( !g_144CBDB30 )
     return 0;
   v2 = (_QWORD *)SteamInternal_ContextInit(&off_140301E28);
   v3 = (char *)(**(__int64 (           ***)(_QWORD))*v2)(*v2);
@@ -519,13 +519,13 @@ __int64            sub_140198B50(__int64 a1)
   _BYTE v5[24];
   __int64 v6;
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
   {
     v2 = (_QWORD *)SteamInternal_ContextInit(&off_140301E70);
     (*(void (           **)(_QWORD, __int64, _BYTE *))(*(_QWORD *)*v2 + 48LL))(*v2, a1, v5);
-    *(_DWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 28LL) = v5[0];
-    *(_DWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 32LL) = v5[1];
-    *(_DWORD *)(*(_QWORD *)&dword_140404A6C[19063859] + 36LL) = v5[2];
+    *(_DWORD *)(g_144CBDB38 + 28LL) = v5[0];
+    *(_DWORD *)(g_144CBDB38 + 32LL) = v5[1];
+    *(_DWORD *)(g_144CBDB38 + 36LL) = v5[2];
   }
   return 0; /* the function has no caller */
 }
@@ -533,15 +533,15 @@ __int64            sub_140198B50(__int64 a1)
 //----- (0000000140198BD0) ----------------------------------------------------
 __int64            sub_140198BD0(__int64 a1)
 {
-  *(_QWORD *)&dword_140404A6C[19063859] = a1;
+  g_144CBDB38 = a1;
   if ( (unsigned __int8)SteamAPI_Init() )
   {
-    dword_140404A6C[19063857] = 1;
+    g_144CBDB30 = 1;
     return 1;
   }
   else
   {
-    dword_140404A6C[19063858] = 1;
+    g_144CBDB34 = 1;
     return 0;
   }
 }
@@ -551,7 +551,7 @@ void            sub_140198C10(__int64 a1)
 {
   _QWORD *v2;
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
   {
     v2 = (_QWORD *)SteamInternal_ContextInit(&off_140301E28);
     (*(void (           **)(_QWORD, __int64,      char *))(*(_QWORD *)*v2 + 392LL))(*v2, a1, "join it");
@@ -570,7 +570,7 @@ __int64            sub_140198C60(_QWORD *a1, __int64 a2, __int64 a3, unsigned in
   HIWORD(v13) = BYTE6(v13) & 0xF;
   v4 = 0;
   v13 &= 0xFFF0000000000000uLL;
-  if ( !dword_140404A6C[19063857] )
+  if ( !g_144CBDB30 )
     return 0;
   v10 = (_QWORD *)SteamInternal_ContextInit(&off_140301E70);
   if ( (*(unsigned __int8 (           **)(_QWORD, __int64, _QWORD))(*(_QWORD *)*v10 + 8LL))(*v10, a3, 0) )
@@ -596,9 +596,9 @@ void            sub_140198D20(__int64 a1)
   _QWORD *v1;
   __int64 v2;
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
   {
-    *(_QWORD *)&dword_140404A6C[19064119] = a1;
+    g_144CBDF48 = a1;
     v1 = (_QWORD *)SteamInternal_ContextInit(&off_140301E10);
     v2 = (*(__int64 (           **)(_QWORD, _QWORD, _QWORD))(*(_QWORD *)*v1 + 160LL))(*v1, 0, 0);
     if ( qword_140301EA0 )
@@ -616,7 +616,7 @@ void            sub_140198DC0(__int64 a1, __int64 a2, unsigned int a3)
 {
   _QWORD *v6;
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
   {
     v6 = (_QWORD *)SteamInternal_ContextInit(&off_140301E70);
     (**(void (           ***)(_QWORD, __int64, __int64, _QWORD, _DWORD, _DWORD))*v6)(*v6, a1, a2, a3, 0, 0);
@@ -629,7 +629,7 @@ __int64 sub_140198E20()
   __int64 result;
 
   result = SteamAPI_Shutdown();
-  dword_140404A6C[19063857] = 0;
+  g_144CBDB30 = 0;
   return result;
 }
 
@@ -638,7 +638,7 @@ __int64 sub_140198E40()
 {
   __int64 result;
 
-  if ( dword_140404A6C[19063857] )
+  if ( g_144CBDB30 )
     return SteamAPI_RunCallbacks();
   return result;
 }
@@ -852,7 +852,7 @@ __attribute__((naked)) __int64 sub_140198EED()
 
 __int64 sub_140198EF3(void)
 {
- void *window;memcpy(&window,&dword_140404A6C[137297751],8);
+ void *window;memcpy(&window,&g_160FC47C8,8);
  SR_DEBUG_FRAME();
  return sr_swap_window_import(window);
 }
@@ -878,14 +878,15 @@ __attribute__((naked)) __int64 sub_140198EFF()
 /* A jump to SDL_GetRelativeMouseState, as in the original: every argument register passes through. */
 __attribute__((naked)) __int64 sub_140198F05()
 {
-  __asm__("movabs $__imp_SDL_GetRelativeMouseState, %rax\n\tjmp *(%rax)");
+  __asm__("movabs $spawn_console_mouse_state, %rax\n\tjmp *%rax");
 }
 
 //----- (0000000140198F0B) ----------------------------------------------------
 // attributes: thunk
 __int64            sub_140198F0B(__int64 a1, __int64 a2, __int64 a3)
 {
-  return SDL_SetRelativeMouseMode(a1, a2, a3);
+  extern int spawn_console_relative_mode(int);
+  return spawn_console_relative_mode((int)a1);
 }
 
 //----- (0000000140198F11) ----------------------------------------------------
