@@ -1,0 +1,56 @@
+group type
+finish_widget(index, 13, label)
+----
+finish_widget(index, 12, label)
+====
+group XOR low bit
+if (clicked(index)) widget->value_word ^= 1u;
+----
+if (clicked(index)) widget->value_word = !widget->value_word;
+====
+group nesting seed
+menu_layout->id_seed = index;
+----
+menu_layout->id_seed = 0;
+====
+group indentation
+menu_layout->x = menu_layout->x + 16.0f;
+----
+menu_layout->x = menu_layout->x + 8.0f;
+====
+group stack signed bound
+if ((int32_t)menu_group_depth < 16)
+----
+if (menu_group_depth < 16)
+====
+group stack upper bound
+if ((int32_t)menu_group_depth < 16)
+----
+if ((int32_t)menu_group_depth <= 16)
+====
+group stack increment
+++menu_group_depth;
+----
+;
+====
+group returns raw open word
+return widget->value_word;
+----
+return !!widget->value_word;
+====
+toggle mask stored
+widget->option = mask;
+----
+widget->option = 1;
+====
+toggle caller mask
+*value ^= mask;
+----
+*value ^= 1;
+====
+zero mask still reports a click
+*value ^= mask;
+    return 1;
+----
+*value ^= mask;
+    return mask != 0;

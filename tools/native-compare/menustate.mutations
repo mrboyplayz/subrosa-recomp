@@ -1,0 +1,104 @@
+signed push limit
+if ((int32_t)menu_size_depth < 16)
+----
+if (menu_size_depth < 16)
+====
+push upper bound
+if ((int32_t)menu_size_depth < 16)
+----
+if ((int32_t)menu_size_depth <= 16)
+====
+push return sign extension
+memcpy(&menu_layout->width, &width, 4);
+    return result;
+----
+memcpy(&menu_layout->width, &width, 4);
+    return (uint32_t)result;
+====
+save old width
+memcpy(menu_size_slot(menu_size_depth, 0), &menu_layout->width, 4);
+----
+memcpy(menu_size_slot(menu_size_depth, 0), &width, 4);
+====
+save old height
+memcpy(menu_size_slot(menu_size_depth, 1), &menu_layout->height, 4);
+----
+memcpy(menu_size_slot(menu_size_depth, 1), &height, 4);
+====
+push increment rereads aliased depth
+++menu_size_depth;
+----
+menu_size_depth = (uint32_t)result + 1;
+====
+negative pop return zero extension
+uint64_t result = menu_size_depth;
+----
+uint64_t result = (int64_t)(int32_t)menu_size_depth;
+====
+pop positive guard
+if ((int32_t)menu_size_depth > 0)
+----
+if (menu_size_depth != 0)
+====
+pop correct height
+menu_size_slot((uint32_t)result, 1)
+----
+menu_size_slot((uint32_t)result, 0)
+====
+grid last cell
+16 * 16 * sizeof(int32_t)
+----
+(16 * 16 - 1) * sizeof(int32_t)
+====
+grid column reset
+menu_grid_column = 0;
+----
+menu_grid_column = 1;
+====
+reset final widget
+i < MENU_WIDGET_CAPACITY
+----
+i < MENU_WIDGET_CAPACITY - 1
+====
+reset preserves unused widget fields
+menu_widgets[i].unknown_0c = 0;
+----
+menu_widgets[i].unknown_0c = 0;
+        menu_widgets[i].pending = 0;
+====
+reset final parent
+i < 256
+----
+i < 255
+====
+reset shortcut sentinel
+memset(shortcuts, 0xff, 512 * sizeof(uint32_t));
+----
+memset(shortcuts, 0, 512 * sizeof(uint32_t));
+====
+reset original default width
+0x43400000
+----
+0x43800000
+====
+reset original default style
+menu_layout->style = 1095761920;
+----
+menu_layout->style = 1098907648;
+====
+reset leaves hover alone
+menu_keyboard_widget = -1;
+----
+menu_keyboard_widget = -1;
+    menu_hovered_widget = -1;
+====
+reset leaves size stack alone
+menu_group_depth = 0;
+----
+menu_group_depth = 0;
+    menu_size_depth = 0;
+====
+reset returns shortcut table
+return shortcuts;
+----
+return shortcuts + 1;

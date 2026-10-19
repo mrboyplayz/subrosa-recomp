@@ -50,6 +50,10 @@ typedef struct PhysicsBody {
 
 #define physics_bodies (&SR_GLOBAL(PhysicsBody, 0x1449816E0ULL))
 
+/* Active, unsettled bodies: gravity, translation, then their rotation
+   stage. Calls the shared rotation entry point. 0x14012B220 */
+void physics_integrate_bodies(void);
+
 /* ---- points ---------------------------------------------------------------- */
 
 /* Point masses joined by links and contacts (bonds with point[] indices).
@@ -72,6 +76,8 @@ typedef struct PhysicsPoint {
 } PhysicsPoint;
 
 #define physics_points      (&SR_GLOBAL(PhysicsPoint, 0x151A84920ULL))
+#define PHYSICS_POINT_CAPACITY 0x4000
+
 #define physics_point_count SR_GLOBAL(int32_t, 0x151E44920ULL)
 /* Set: points get no gravity. 0x16B27ECF4 */
 #define physics_points_no_gravity SR_GLOBAL(int32_t, 0x16B27ECF4ULL)
@@ -189,6 +195,13 @@ typedef struct PhysicsBond {
 
 #define physics_bonds (&SR_GLOBAL(PhysicsBond, 0x1B4287C80ULL))
 
+/* Body-to-body bond with a caller-supplied rest distance, 0x14004E160;
+   body-local point held to a world point, 0x14004E2E0. */
+uint32_t physics_create_distance_bond(uint32_t body, uint32_t other,
+                                      const float point[3], const float other_point[3],
+                                      float distance);
+uint32_t physics_create_level_bond(uint32_t body, const float point[3], const float world_point[3]);
+
 /* Working data of one bond during a solve, 0x1B4037C40, 144 bytes each, at
    the bond's index. "a" is PhysicsBond.body, "b" its other body. */
 typedef struct PhysicsConstraint {
@@ -251,6 +264,40 @@ _Static_assert(__builtin_offsetof(PhysicsPoint, previous_velocity) == 0x38, "Phy
 _Static_assert(__builtin_offsetof(PhysicsPoint, vehicle_count) == 0xD4, "PhysicsPoint layout");
 
 /* ---- functions ----------------------------------------------------------- */
+
+/* First unused slot, or a zero-extended UINT32_MAX for a full pool.
+   Creation clears the record after its active word. Vector arguments are
+   read after that clear, preserving aliasing with the record being created. */
+uint32_t physics_find_free_bond(void); /* 0x1400A4440 */
+uint32_t physics_create_body(uint32_t type, const float position[3],
+                             const float rotation[9], const float velocity[3],
+                             float mass, const float inertia[3]); /* 0x14005CF80 */
+uint32_t physics_create_body_bond(uint32_t body, uint32_t other,
+                                  const float point[3], const float other_point[3]); /* 0x14004E430 */
+uint32_t physics_create_rotation_bond(uint32_t body, uint32_t other); /* 0x14004E5B0 */
+uint32_t physics_create_point(uint32_t kind, const float position[3],
+                              const float velocity[3], float mass, uint32_t vehicle); /* 0x14005CBB0 */
+
+/* Keeps the component of velocity along normal and limits its tangential
+   speed to length(normal projection) * friction. Returns the sliding work
+   removed, scaled by 480. normal is normally a unit vector; it may overlap
+   velocity. NaN/zero tangential length leaves only the projection.
+   0x14002D820 */
+float physics_limit_slide(float velocity[3], const float normal[3], float friction);
+
+/* The same, with a second limit on tangential speed. 0x14002D9B0 */
+float physics_limit_slide_capped(float velocity[3], const float normal[3],
+                                float friction, float max_slide);
+
+/* Adds change to the body's velocity and offset cross change (with the
+   game's cross-product sign) to its angular momentum. offset is relative
+   to the body in world axes. Inputs may alias body storage. 0x14012B090 */
+PhysicsBody *physics_apply_point_velocity(int body, const float offset[3], const float change[3]);
+
+/* Velocity at offset from the body, including its angular velocity. Output
+   may alias offset or body storage. Both body helpers return physics_bodies
+   to preserve the original RAX value. 0x14012B170 */
+PhysicsBody *physics_point_velocity(float out[3], int body, const float offset[3]);
 
 /* Adds a contact between two bodies for this tick: a bond of type 6 in the
    first free slot, its constraint filled with the contact points (relative

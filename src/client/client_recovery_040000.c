@@ -1,4 +1,10 @@
 #include "shared_client.h"
+#include "../engine/collision.h"
+#include "../engine/text_helpers.h"
+#include "../engine/physics.h"
+#include "../engine/events.h"
+#include "../engine/disk.h"
+#include "../engine/item.h"
 /* 0x1400403F0 is not a routine of its own: it is a patch block that 0x14003B920 jumps to and back from,
    written over the start of a small routine nothing calls. src/engine/frame.c has it as part of game_frame. */
 
@@ -1736,22 +1742,7 @@ LABEL_71:
 //----- (0000000140048090) ----------------------------------------------------
 __int64            sub_140048090(__int64 a1)
 {
-  unsigned int v1;
-  _DWORD *v2;
-  __int64 v3;
-
-  v1 = 0;
-  v2 = (_DWORD *)(a1 + 9740);
-  v3 = 0;
-  while ( *v2 )
-  {
-    ++v1;
-    ++v3;
-    v2 += 18;
-    if ( v3 >= 64 )
-      return 0xFFFFFFFFLL;
-  }
-  return v1;
+  return collision_find_free_contact((const CollisionShapeContacts *)(uintptr_t)a1);
 }
 
 //----- (0000000140048DA0) ----------------------------------------------------
@@ -1766,41 +1757,32 @@ __int64            sub_140048DA0(
         float *a8,
         char a9)
 {
-  extern int collision_mesh_contact(int body_a, int body_b, const void *a, const void *b, const float *position_a,
-                                    const float *rotation_a, const float *position_b, const float *rotation_b,
-                                    unsigned int flags);
   /* src/engine/collision_mesh.c; only bit 0 of the flag is read. */
-  return collision_mesh_contact(a1, a2, (const void *)(uintptr_t)a3, (const void *)(uintptr_t)a4, a5, a6, a7, a8,
+  return collision_mesh_contact(a1, a2, (const CollisionMesh *)(uintptr_t)a3, (const CollisionMesh *)(uintptr_t)a4, a5, a6, a7, a8,
                                 (unsigned char)a9);
 }
 
 //----- (000000014004A130) ----------------------------------------------------
 __int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4, float *a5, float *a6)
 {
-  extern int collision_mesh_point_sweep(void *hit, const void *mesh, const float *position, const float *rotation,
-                                        const float *from, const float *to);
   /* src/engine/collision_mesh.c. Hex-Rays had dropped the last two arguments (the sweep's ends, read from the stack)
      and passed two unset locals instead; no code of the original calls this routine. */
-  return collision_mesh_point_sweep(a1, (const void *)a2, a3, a4, a5, a6);
+  return collision_mesh_point_sweep((CollisionMeshHit *)a1, (const CollisionMesh *)a2, a3, a4, a5, a6);
 }
 
 //----- (000000014004A1D0) ----------------------------------------------------
 _BOOL8            sub_14004A1D0(float *a1, __int64 a2, __int64 a3, __int64 a4, float *a5, float *a6)
 {
-  extern int collision_mesh_point_faces(void *hit, const void *mesh, const float (*points)[3], const float (*normals)[3],
-                                        const float *from, const float *to);
   /* src/engine/collision_mesh.c */
-  return collision_mesh_point_faces(a1, (const void *)a2, (const float (*)[3])a3, (const float (*)[3])a4, a5, a6);
+  return collision_mesh_point_faces((CollisionMeshHit *)a1, (const CollisionMesh *)a2, (const float (*)[3])a3, (const float (*)[3])a4, a5, a6);
 }
 
 //----- (000000014004A480) ----------------------------------------------------
 __int64            sub_14004A480(__int64 a1, __int64 a2, __int64 a3, float *a4, float *a5)
 {
-  extern void collision_mesh_transform(float (*points)[3], float (*normals)[3], const void *mesh, const float *position,
-                                       const float *r);
   /* src/engine/collision_mesh.c; the original returns a leftover pointer; its callers (0x14004A130 and
      0x140048DA0, now in src/engine) do not read it. */
-  collision_mesh_transform((float (*)[3])a1, (float (*)[3])a2, (const void *)a3, a4, a5);
+  collision_mesh_transform((float (*)[3])a1, (float (*)[3])a2, (const CollisionMesh *)a3, a4, a5);
   return 0;
 }
 
@@ -1991,20 +1973,7 @@ __int64            sub_14004BFC0(__int16 a1, __int64 a2, float *a3, float *a4, f
 //----- (000000014004C4C0) ----------------------------------------------------
 __int64            sub_14004C4C0(unsigned __int8 *a1, __int64 a2)
 {
-  __int64 v2;
-  unsigned __int8 v3;
-
-  v2 = a2 - (_QWORD)a1;
-  while ( 1 )
-  {
-    v3 = *a1;
-    if ( *a1 != a1[v2] )
-      break;
-    ++a1;
-    if ( !v3 )
-      return 0;
-  }
-  return v3 < a1[v2] ? -1 : 1;
+  return text_compare_bytes(a1, (const unsigned char *)(uintptr_t)a2);
 }
 
 //----- (000000014004C4E0) ----------------------------------------------------
@@ -2270,16 +2239,7 @@ __int64            shader_compile_program(int a1, __int64 a2, __int64 a3, __int6
 //----- (000000014004C960) ----------------------------------------------------
 __int64            sub_14004C960(int a1, int a2)
 {
-  __int64 v3;
-
-  if ( a2 == 2 )
-    return dword_140404A6C[1760 * a1 + 278846098];
-  if ( a2 )
-    return 0xFFFFFFFFLL;
-  v3 = 1760LL * a1;
-  if ( (int)dword_140404A6C[v3 + 278845906] <= 0 )
-    return 0xFFFFFFFFLL;
-  return dword_140404A6C[1760 * dword_140404A6C[v3 + 278845907] + 278846098];
+  return disk_for_item_drive(a1, a2);
 }
 
 //----- (000000014004C9C0) ----------------------------------------------------
@@ -2539,186 +2499,25 @@ double            sub_14004CE30(int a1)
 //----- (000000014004E160) ----------------------------------------------------
 __int64            sub_14004E160(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4, unsigned int a5)
 {
-  unsigned int *v6;
-  unsigned int v10;
-  __int64 v12;
-  unsigned int *v13;
-
-  v6 = &g_1B4287C80;
-  v10 = 0;
-  while ( *v6 )
-  {
-    ++v10;
-    v6 += 61;
-    if ( (__int64)v6 >= (__int64)&g_1B4657C80 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v10 == -1 )
-    return 0xFFFFFFFFLL;
-  v12 = 61LL * (int)v10;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v12 + 486149254]), 0, 0xF0u);
-  dword_140404A6C[v12 + 486149253] = 1;
-  dword_140404A6C[v12 + 486149254] = 7;
-  *(_QWORD *)&dword_140404A6C[v12 + 486149256] = 0x10000;
-  dword_140404A6C[v12 + 486149292] = a2;
-  dword_140404A6C[v12 + 486149291] = a1;
-  dword_140404A6C[v12 + 486149293] = -1;
-  dword_140404A6C[v12 + 486149281] = 1048576000;
-  dword_140404A6C[v12 + 486149282] = 1052770304;
-  v13 = &dword_140404A6C[36 * v10 + 485543029];
-  *(_OWORD *)v13 = 0;
-  *((_OWORD *)v13 + 1) = 0;
-  *((_OWORD *)v13 + 2) = 0;
-  *((_OWORD *)v13 + 3) = 0;
-  *((_OWORD *)v13 + 4) = 0;
-  *((_OWORD *)v13 + 5) = 0;
-  *((_OWORD *)v13 + 6) = 0;
-  *((_OWORD *)v13 + 7) = 0;
-  *((_OWORD *)v13 + 8) = 0;
-  dword_140404A6C[v12 + 486149278] = a5;
-  dword_140404A6C[v12 + 486149267] = *a3;
-  dword_140404A6C[v12 + 486149268] = a3[1];
-  dword_140404A6C[v12 + 486149269] = a3[2];
-  dword_140404A6C[v12 + 486149270] = *a4;
-  dword_140404A6C[v12 + 486149271] = a4[1];
-  dword_140404A6C[v12 + 486149272] = a4[2];
-  return v10;
+  return physics_create_distance_bond(a1, a2, (const float *)a3, (const float *)a4, COERCE_FLOAT(a5));
 }
 
 //----- (000000014004E2E0) ----------------------------------------------------
 __int64            sub_14004E2E0(unsigned int a1, unsigned int *a2, unsigned int *a3)
 {
-  unsigned int *v4;
-  unsigned int v7;
-  __int64 v9;
-  unsigned int *v10;
-
-  v4 = &g_1B4287C80;
-  v7 = 0;
-  while ( *v4 )
-  {
-    ++v7;
-    v4 += 61;
-    if ( (__int64)v4 >= (__int64)&g_1B4657C80 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v7 == -1 )
-    return 0xFFFFFFFFLL;
-  v9 = 61LL * (int)v7;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v9 + 486149254]), 0, 0xF0u);
-  dword_140404A6C[v9 + 486149253] = 1;
-  dword_140404A6C[v9 + 486149254] = 4;
-  *(_QWORD *)&dword_140404A6C[v9 + 486149256] = 0x10000;
-  dword_140404A6C[v9 + 486149291] = a1;
-  dword_140404A6C[v9 + 486149281] = 1031798784;
-  dword_140404A6C[v9 + 486149282] = 1040187392;
-  v10 = &dword_140404A6C[36 * v7 + 485543029];
-  *(_OWORD *)v10 = 0;
-  *((_OWORD *)v10 + 1) = 0;
-  *((_OWORD *)v10 + 2) = 0;
-  *((_OWORD *)v10 + 3) = 0;
-  *((_OWORD *)v10 + 4) = 0;
-  *((_OWORD *)v10 + 5) = 0;
-  *((_OWORD *)v10 + 6) = 0;
-  *((_OWORD *)v10 + 7) = 0;
-  *((_OWORD *)v10 + 8) = 0;
-  dword_140404A6C[v9 + 486149267] = *a2;
-  dword_140404A6C[v9 + 486149268] = a2[1];
-  dword_140404A6C[v9 + 486149269] = a2[2];
-  dword_140404A6C[v9 + 486149264] = *a3;
-  dword_140404A6C[v9 + 486149265] = a3[1];
-  dword_140404A6C[v9 + 486149266] = a3[2];
-  return v7;
+  return physics_create_level_bond(a1, (const float *)a2, (const float *)a3);
 }
 
 //----- (000000014004E430) ----------------------------------------------------
 __int64            sub_14004E430(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4)
 {
-  unsigned int *v5;
-  unsigned int v9;
-  __int64 v11;
-  unsigned int *v12;
-
-  v5 = &g_1B4287C80;
-  v9 = 0;
-  while ( *v5 )
-  {
-    ++v9;
-    v5 += 61;
-    if ( (__int64)v5 >= (__int64)&g_1B4657C80 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v9 == -1 )
-    return 0xFFFFFFFFLL;
-  v11 = 61LL * (int)v9;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v11 + 486149254]), 0, 0xF0u);
-  dword_140404A6C[v11 + 486149253] = 1;
-  dword_140404A6C[v11 + 486149254] = 7;
-  *(_QWORD *)&dword_140404A6C[v11 + 486149256] = 0x10000;
-  dword_140404A6C[v11 + 486149292] = a2;
-  dword_140404A6C[v11 + 486149291] = a1;
-  dword_140404A6C[v11 + 486149293] = -1;
-  dword_140404A6C[v11 + 486149281] = 1048576000;
-  dword_140404A6C[v11 + 486149282] = 1052770304;
-  v12 = &dword_140404A6C[36 * v9 + 485543029];
-  *(_OWORD *)v12 = 0;
-  *((_OWORD *)v12 + 1) = 0;
-  *((_OWORD *)v12 + 2) = 0;
-  *((_OWORD *)v12 + 3) = 0;
-  *((_OWORD *)v12 + 4) = 0;
-  *((_OWORD *)v12 + 5) = 0;
-  *((_OWORD *)v12 + 6) = 0;
-  *((_OWORD *)v12 + 7) = 0;
-  *((_OWORD *)v12 + 8) = 0;
-  dword_140404A6C[v11 + 486149267] = *a3;
-  dword_140404A6C[v11 + 486149268] = a3[1];
-  dword_140404A6C[v11 + 486149269] = a3[2];
-  dword_140404A6C[v11 + 486149270] = *a4;
-  dword_140404A6C[v11 + 486149271] = a4[1];
-  dword_140404A6C[v11 + 486149272] = a4[2];
-  return v9;
+  return physics_create_body_bond(a1, a2, (const float *)a3, (const float *)a4);
 }
 
 //----- (000000014004E5B0) ----------------------------------------------------
 __int64            sub_14004E5B0(unsigned int a1, unsigned int a2)
 {
-  unsigned int *v3;
-  unsigned int v5;
-  __int64 v7;
-  unsigned int *v8;
-
-  v3 = &g_1B4287C80;
-  v5 = 0;
-  while ( *v3 )
-  {
-    ++v5;
-    v3 += 61;
-    if ( (__int64)v3 >= (__int64)&g_1B4657C80 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v5 == -1 )
-    return 0xFFFFFFFFLL;
-  v7 = 61LL * (int)v5;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v7 + 486149254]), 0, 0xF0u);
-  dword_140404A6C[v7 + 486149253] = 1;
-  dword_140404A6C[v7 + 486149254] = 8;
-  *(_QWORD *)&dword_140404A6C[v7 + 486149256] = 0x10000;
-  dword_140404A6C[v7 + 486149292] = a2;
-  dword_140404A6C[v7 + 486149291] = a1;
-  dword_140404A6C[v7 + 486149293] = -1;
-  v8 = &dword_140404A6C[36 * v5 + 485543029];
-  dword_140404A6C[v7 + 486149281] = 1031798784;
-  dword_140404A6C[v7 + 486149282] = 1040187392;
-  *(_OWORD *)v8 = 0;
-  *((_OWORD *)v8 + 1) = 0;
-  *((_OWORD *)v8 + 2) = 0;
-  *((_OWORD *)v8 + 3) = 0;
-  *((_OWORD *)v8 + 4) = 0;
-  *((_OWORD *)v8 + 5) = 0;
-  *((_OWORD *)v8 + 6) = 0;
-  *((_OWORD *)v8 + 7) = 0;
-  *((_OWORD *)v8 + 8) = 0;
-  return v5;
+  return physics_create_rotation_bond(a1, a2);
 }
 
 //----- (000000014004E6E0) ----------------------------------------------------
@@ -3694,27 +3493,7 @@ double            sub_1400504C0(int a1, float a2, float a3, float a4)
 //----- (0000000140050EF0) ----------------------------------------------------
 __int64            sub_140050EF0(unsigned int a1)
 {
-  unsigned int *v2;
-  unsigned int v3;
-  __int64 v5;
-
-  v2 = &g_181FEEBC0;
-  v3 = 0;
-  while ( *v2 )
-  {
-    ++v3;
-    v2 += 2570;
-    if ( (__int64)v2 >= (__int64)&g_1829F8BC0 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v3 != -1 )
-  {
-    v5 = 2570LL * (int)v3;
-    crt_memset((void *)(uintptr_t)(&dword_140404A6C[v5 + 275753046]), 0, 0x2824u);
-    dword_140404A6C[v5 + 275753045] = 1;
-    dword_140404A6C[v5 + 275753046] = a1;
-  }
-  return v3;
+  return disk_create(a1);
 }
 
 //----- (0000000140050F90) ----------------------------------------------------
@@ -3730,213 +3509,46 @@ __int64            sub_140050F90(int a1, signed int a2)
 //----- (0000000140051170) ----------------------------------------------------
 __int64            sub_140051170(int a1, unsigned int a2, int a3)
 {
-  __int64 v4;
-  unsigned int *v5;
-  unsigned int v6;
-  signed int v8;
-  __int64 v9;
-  unsigned int v10;
-
-  v4 = a1;
-  v5 = &g_1857BD740;
-  v6 = 0;
-  while ( *v5 )
-  {
-    ++v6;
-    v5 += 39;
-    if ( (__int64)v5 >= (__int64)&g_185A2D740 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v6 == -1 )
-    return 0xFFFFFFFFLL;
-  v8 = 64;
-  if ( a3 <= 64 )
-    v8 = a3;
-  v9 = 39LL * (int)v6;
-  v10 = game_tick;
-  dword_140404A6C[v9 + 290382649] = v4;
-  dword_140404A6C[v9 + 290382651] = v8;
-  dword_140404A6C[v9 + 290382650] = a2;
-  dword_140404A6C[v9 + 290382648] = v10;
-  *(_QWORD *)&dword_140404A6C[v9 + 290382645] = 1;
-  dword_140404A6C[v9 + 290382647] = 0;
-  crt_memcpy(
-    (__m128i *)&dword_140404A6C[v9 + 290382652],
-    (     __m128i *)((char *)&dword_140404A6C[1760 * v4 + 278846111] + (int)(a2 << 6)),
-    v8);
-  return v6;
+  return item_allocate_text_record(a1, a2, a3);
 }
 
 //----- (0000000140051230) ----------------------------------------------------
 void            sub_140051230(unsigned int a1, unsigned int *a2, unsigned int *a3, unsigned int a4)
 {
-  unsigned int v4;
-  unsigned int v5;
-  __int64 v6;
-
-  if ( game_connected )
-  {
-    v4 = world_event_count;
-    v5 = game_tick;
-    v6 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v6) = 0;
-    *(unsigned int *)((char *)&g_1873DE464 + v6) = v5;
-    *(unsigned int *)((char *)&g_1873DE468 + v6) = *a2;
-    *(unsigned int *)((char *)&g_1873DE46C + v6) = a2[1];
-    *(unsigned int *)((char *)&g_1873DE470 + v6) = a2[2];
-    *(unsigned int *)((char *)&g_1873DE474 + v6) = *a3;
-    *(unsigned int *)((char *)&g_1873DE478 + v6) = a3[1];
-    *(unsigned int *)((char *)&g_1873DE47C + v6) = a3[2];
-    *(unsigned int *)((char *)&g_1873DE480 + v6) = a1;
-    world_event_count = v4 + 1;
-    *(unsigned int *)((char *)&g_1873DE484 + v6) = a4;
-    HIWORD(world_event_count) = 0;
-  }
+  event_bullet(a1, (const float *)a2, (const float *)a3, a4);
 }
 
 //----- (00000001400512D0) ----------------------------------------------------
 void            sub_1400512D0(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4)
 {
-  unsigned int v4;
-  unsigned int v5;
-  __int64 v6;
-  unsigned int v7;
-
-  if ( game_connected )
-  {
-    v4 = game_tick;
-    v5 = world_event_count;
-    v6 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v6) = 1;
-    *(unsigned int *)((char *)&g_1873DE464 + v6) = v4;
-    *(unsigned int *)((char *)&g_1873DE468 + v6) = *a3;
-    *(unsigned int *)((char *)&g_1873DE46C + v6) = a3[1];
-    *(unsigned int *)((char *)&g_1873DE470 + v6) = a3[2];
-    if ( a4 )
-    {
-      *(unsigned int *)((char *)&g_1873DE474 + v6) = *a4;
-      *(unsigned int *)((char *)&g_1873DE478 + v6) = a4[1];
-      v7 = a4[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&g_1873DE474 + v6) = 0;
-      v7 = 0;
-    }
-    *(unsigned int *)((char *)&g_1873DE47C + v6) = v7;
-    *(unsigned int *)((char *)&g_1873DE480 + v6) = a1;
-    *(unsigned int *)((char *)&g_1873DE484 + v6) = a2;
-    world_event_count = v5 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  event_bullet_hit(a1, a2, (const float *)a3, (const float *)a4);
 }
 
 //----- (0000000140051480) ----------------------------------------------------
 __int64            sub_140051480(unsigned int a1,      __m128i *a2, unsigned int a3, unsigned int a4)
 {
-  __int64 v7;
-  unsigned int v8;
-  unsigned int v9;
-  __int64 v10;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v7 = -1;
-    do
-      ++v7;
-    while ( SR_VEC_PTR_LANES(128, a2, i8)[v7] );
-    v8 = world_event_count;
-    if ( (int)v7 > 63 )
-      LODWORD(v7) = 63;
-    v9 = game_tick;
-    v10 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v10) = 2;
-    *(unsigned int *)((char *)&g_1873DE464 + v10) = v9;
-    crt_memcpy((__m128i *)((char *)&g_1873DE4A0 + v10), a2, (int)v7);
-    *((_BYTE *)&g_1873DE4A0 + v10 + (int)v7) = 0;
-    *(unsigned int *)((char *)&g_1873DE480 + v10) = v7;
-    *(unsigned int *)((char *)&g_1873DE484 + v10) = a1;
-    *(unsigned int *)((char *)&g_1873DE488 + v10) = a3;
-    *(unsigned int *)((char *)&g_1873DE48C + v10) = a4;
-    world_event_count = v8 + 1;
-    HIWORD(world_event_count) = 0;
-    return 0;
-  }
-  return result;
+  event_message(a1, (const char *)a2, a3, a4);
+  return 0;
 }
 
 //----- (0000000140051560) ----------------------------------------------------
 void            sub_140051560(int a1, int a2, int a3, int a4, unsigned int a5)
 {
-  unsigned int v5;
-  __int64 v6;
-  unsigned int v7;
-
-  if ( game_connected )
-  {
-    v5 = game_tick;
-    v6 = (__int64)(int)world_event_count << 7;
-    v7 = world_event_count + 1;
-    *(unsigned int *)((char *)&g_1873DE460 + v6) = 18;
-    *(unsigned int *)((char *)&g_1873DE464 + v6) = v5;
-    *(unsigned int *)((char *)&g_1873DE480 + v6) = a1 + (a2 << 16);
-    *(unsigned int *)((char *)&g_1873DE484 + v6) = a3 + (a4 << 16);
-    *(unsigned int *)((char *)&g_1873DE488 + v6) = a5;
-    world_event_count = v7;
-    HIWORD(world_event_count) = 0;
-  }
+  event_block_update((unsigned int)a1, (unsigned int)a2, (unsigned int)a3, (unsigned int)a4, a5);
 }
 
 //----- (00000001400515E0) ----------------------------------------------------
 __int64            sub_1400515E0(unsigned int a1, unsigned int *a2, float a3, float a4)
 {
-  unsigned int v4;
-  __int64 v5;
-  unsigned int v6;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v4 = game_tick;
-    v5 = (__int64)(int)world_event_count << 7;
-    v6 = world_event_count + 1;
-    *(unsigned int *)((char *)&g_1873DE460 + v5) = 9;
-    *(unsigned int *)((char *)&g_1873DE464 + v5) = v4;
-    *(unsigned int *)((char *)&g_1873DE480 + v5) = a1;
-    *(unsigned int *)((char *)&g_1873DE468 + v5) = *a2;
-    *(unsigned int *)((char *)&g_1873DE46C + v5) = a2[1];
-    *(unsigned int *)((char *)&g_1873DE470 + v5) = a2[2];
-    *(float *)((char *)&g_1873DE490 + v5) = a3;
-    world_event_count = v6;
-    HIWORD(world_event_count) = 0;
-    *(float *)((char *)&g_1873DE494 + v5) = a4;
-    return 0;
-  }
-  return result;
+  event_sound(a1, (const float *)a2, a3, a4);
+  return 0;
 }
 
 //----- (0000000140051650) ----------------------------------------------------
 __int64            sub_140051650(unsigned int a1, unsigned int a2, float a3, float a4)
 {
-  unsigned int v4;
-  __int64 v5;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v4 = game_tick;
-    v5 = (__int64)(int)world_event_count++ << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v5) = 19;
-    *(unsigned int *)((char *)&g_1873DE464 + v5) = v4;
-    *(unsigned int *)((char *)&g_1873DE480 + v5) = a1;
-    *(unsigned int *)((char *)&g_1873DE484 + v5) = a2;
-    *(float *)((char *)&g_1873DE490 + v5) = a3;
-    *(float *)((char *)&g_1873DE494 + v5) = a4;
-    HIWORD(world_event_count) = 0;
-    return 0;
-  }
-  return result;
+  event_item_sound(a1, a2, a3, a4);
+  return 0;
 }
 
 //----- (00000001400516B0) ----------------------------------------------------
@@ -3959,71 +3571,14 @@ void            sub_140051730(
         unsigned int *a7,
         unsigned int *a8)
 {
-  unsigned int v8;
-  unsigned int v9;
-  unsigned int v10;
-  __int64 v11;
-  unsigned int v12;
-
-  if ( game_connected )
-  {
-    v8 = game_tick;
-    v9 = 0;
-    v10 = world_event_count;
-    v11 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v11) = 16;
-    *(unsigned int *)((char *)&g_1873DE464 + v11) = v8;
-    *(unsigned int *)((char *)&g_1873DE480 + v11) = a1 + (a2 << 16);
-    *(unsigned int *)((char *)&g_1873DE484 + v11) = a3 + (a4 << 16);
-    *(unsigned int *)((char *)&g_1873DE488 + v11) = a5;
-    *(unsigned int *)((char *)&g_1873DE48C + v11) = a6;
-    if ( a7 )
-    {
-      *(unsigned int *)((char *)&g_1873DE468 + v11) = *a7;
-      *(unsigned int *)((char *)&g_1873DE46C + v11) = a7[1];
-      v12 = a7[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&g_1873DE468 + v11) = 0;
-      v12 = 0;
-    }
-    *(unsigned int *)((char *)&g_1873DE470 + v11) = v12;
-    if ( a8 )
-    {
-      *(unsigned int *)((char *)&g_1873DE474 + v11) = *a8;
-      *(unsigned int *)((char *)&g_1873DE478 + v11) = a8[1];
-      v9 = a8[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&g_1873DE474 + v11) = 0;
-    }
-    *(unsigned int *)((char *)&g_1873DE47C + v11) = v9;
-    world_event_count = v10 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  event_block_hit((unsigned int)a1, (unsigned int)a2, (unsigned int)a3, (unsigned int)a4, a5, a6, (const float *)a7, (const float *)a8);
 }
 
 //----- (00000001400518B0) ----------------------------------------------------
 __int64            sub_1400518B0(unsigned int a1, unsigned int a2)
 {
-  unsigned int v2;
-  __int64 v3;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v2 = game_tick;
-    v3 = (__int64)(int)world_event_count++ << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v3) = 10;
-    *(unsigned int *)((char *)&g_1873DE464 + v3) = v2;
-    *(unsigned int *)((char *)&g_1873DE480 + v3) = a1;
-    HIWORD(world_event_count) = 0;
-    *(unsigned int *)((char *)&g_1873DE484 + v3) = a2;
-    return 0;
-  }
-  return result;
+  event_corporation_door(a1, a2);
+  return 0;
 }
 
 //----- (0000000140051940) ----------------------------------------------------
@@ -4039,332 +3594,51 @@ __int64            sub_140051940(unsigned int a1)
 //----- (00000001400519F0) ----------------------------------------------------
 void            sub_1400519F0(int a1, int a2)
 {
-  unsigned int v2;
-  __int64 v3;
-  unsigned int v4;
-  __int64 v5;
-  unsigned int v6;
-  unsigned int v7;
-  int v8;
-
-  if ( game_connected )
-  {
-    v2 = game_tick;
-    v3 = (__int64)(int)world_event_count << 7;
-    v4 = world_event_count + 1;
-    *(unsigned int *)((char *)&g_1873DE460 + v3) = 12;
-    *(unsigned int *)((char *)&g_1873DE464 + v3) = v2;
-    world_event_count = v4;
-    v5 = 1116LL * a2 + 23492LL * a1;
-    v6 = (*(unsigned int *)((char *)&g_183EBFF44 + v5) + 1) << 16;
-    v7 = *(unsigned int *)((char *)&g_183EBFF18 + v5)
-       + 16
-       * (*(unsigned int *)((char *)&g_183EBFF1C + v5)
-        + 16 * *(unsigned int *)((char *)&g_183EBFF3C + v5));
-    *(unsigned int *)((char *)&g_1873DE480 + v3) = *(unsigned int *)((char *)&g_183EBFEFC
-                                                                                  + v5)
-                                                                + 2
-                                                                * (a2
-                                                                 + 8
-                                                                 * (a1
-                                                                  + 16
-                                                                  * (*(unsigned int *)((char *)&g_183EBFF08
-                                                                                     + v5)
-                                                                   + (*(unsigned int *)((char *)&g_183EBFF38
-                                                                                      + v5) << 8))));
-    v8 = *(unsigned int *)((char *)&g_183EBFF40 + v5);
-    *(unsigned int *)((char *)&g_1873DE484 + v3) = v7;
-    *(unsigned int *)((char *)&g_1873DE488 + v3) = v8 / 60 + v6;
-    *(unsigned int *)((char *)&g_1873DE48C + v3) = *(unsigned int *)((char *)&g_183EBFF48
-                                                                                  + v5);
-    HIWORD(world_event_count) = 0;
-  }
+  event_mission_update(a1, a2);
 }
 
 //----- (0000000140051B00) ----------------------------------------------------
 void            sub_140051B00(int a1, int a2, unsigned int a3, int a4)
 {
-  unsigned int v4;
-  signed int v5;
-  __int64 v6;
-  __int64 v7;
-
-  if ( game_connected )
-  {
-    v4 = game_tick;
-    v5 = 64;
-    v6 = (int)world_event_count;
-    if ( a4 <= 64 )
-      v5 = a4;
-    v7 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v7) = 22;
-    *(unsigned int *)((char *)&g_1873DE464 + v7) = v4;
-    *(unsigned int *)((char *)&g_1873DE480 + v7) = a1 + (a2 << 8);
-    *(unsigned int *)((char *)&g_1873DE484 + v7) = a3;
-    *(unsigned int *)((char *)&g_1873DE488 + v7) = v5;
-    crt_memcpy(
-      (__m128i *)&dword_140404A6C[32 * v6 + 297756301],
-      (     __m128i *)((char *)&dword_140404A6C[5873 * a1 + 283831611 + 279 * a2] + (int)(a3 << 6)),
-      v5);
-    world_event_count = v6 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  event_mission_text_line(a1, a2, a3, a4);
 }
 
 //----- (0000000140051BD0) ----------------------------------------------------
 void            sub_140051BD0(int a1, int a2)
 {
-  __int64 v2;
-  unsigned int *v3;
-  int v4;
-  signed int v5;
-  unsigned int v6;
-  unsigned int v7;
-  __int64 v8;
-  __int128 v9;
-  __int128 v10;
-  __int128 v11;
-  __int128 v12;
-
-  if ( game_connected )
-  {
-    v2 = -1;
-    v3 = &dword_140404A6C[5873 * a1 + 283831611 + 279 * a2];
-    do
-      ++v2;
-    while ( *((_BYTE *)v3 + v2) );
-    v4 = ((int)v2 + 1) >> 6;
-    v5 = 0;
-    if ( v4 >= 0 )
-    {
-      v6 = game_tick;
-      v7 = (a2 << 8) + a1;
-      do
-      {
-        v8 = (__int64)(int)world_event_count++ << 7;
-        HIWORD(world_event_count) = 0;
-        v9 = *(_OWORD *)v3;
-        *(unsigned int *)((char *)&g_1873DE460 + v8) = 22;
-        *(unsigned int *)((char *)&g_1873DE464 + v8) = v6;
-        *(unsigned int *)((char *)&g_1873DE480 + v8) = v7;
-        *(unsigned int *)((char *)&g_1873DE484 + v8) = v5++;
-        *(unsigned int *)((char *)&g_1873DE488 + v8) = 64;
-        v10 = *((_OWORD *)v3 + 1);
-        v3 += 16;
-        *(_OWORD *)((char *)&g_1873DE4A0 + v8) = v9;
-        v11 = *((_OWORD *)v3 - 2);
-        *(_OWORD *)((char *)&g_1873DE4B0 + v8) = v10;
-        v12 = *((_OWORD *)v3 - 1);
-        *(_OWORD *)((char *)&g_1873DE4C0 + v8) = v11;
-        *(_OWORD *)((char *)&g_1873DE4D0 + v8) = v12;
-      }
-      while ( v5 <= v4 );
-    }
-  }
+  event_mission_text(a1, a2);
 }
 
 //----- (0000000140051CF0) ----------------------------------------------------
 void            sub_140051CF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int *a4, unsigned int *a5)
 {
-  unsigned int v5;
-  unsigned int v6;
-  unsigned int v7;
-  __int64 v8;
-  unsigned int v9;
-
-  if ( game_connected )
-  {
-    v5 = world_event_count;
-    v6 = 0;
-    v7 = game_tick;
-    v8 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v8) = 4;
-    *(unsigned int *)((char *)&g_1873DE464 + v8) = v7;
-    *(unsigned int *)((char *)&g_1873DE480 + v8) = a1;
-    *(unsigned int *)((char *)&g_1873DE484 + v8) = a2;
-    *(unsigned int *)((char *)&g_1873DE488 + v8) = a3;
-    if ( a4 )
-    {
-      *(unsigned int *)((char *)&g_1873DE468 + v8) = *a4;
-      *(unsigned int *)((char *)&g_1873DE46C + v8) = a4[1];
-      v9 = a4[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&g_1873DE468 + v8) = 0;
-      v9 = 0;
-    }
-    *(unsigned int *)((char *)&g_1873DE470 + v8) = v9;
-    if ( a5 )
-    {
-      *(unsigned int *)((char *)&g_1873DE474 + v8) = *a5;
-      *(unsigned int *)((char *)&g_1873DE478 + v8) = a5[1];
-      v6 = a5[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&g_1873DE474 + v8) = 0;
-    }
-    *(unsigned int *)((char *)&g_1873DE47C + v8) = v6;
-    world_event_count = v5 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  event_vehicle_removed(a1, a2, a3, (const float *)a4, (const float *)a5);
 }
 
 //----- (0000000140051DC0) ----------------------------------------------------
 void            sub_140051DC0(int a1)
 {
-  unsigned int v2;
-  __int64 v3;
-  __int64 v4;
-  __int128 v5;
-  unsigned int v6;
-  __int64 v7;
-  unsigned int v8;
-  unsigned int v9;
-  unsigned int v10;
-  unsigned int v11;
-  unsigned int v12;
-
-  if ( game_connected )
-  {
-    v2 = game_tick;
-    v3 = 3597LL * a1;
-    v4 = (__int64)(int)world_event_count++ << 7;
-    v5 = *(_OWORD *)&dword_140404A6C[v3 + 71856254];
-    v6 = dword_140404A6C[v3 + 71856286] + 1;
-    *(unsigned int *)((char *)&g_1873DE460 + v4) = 7;
-    v7 = *(_QWORD *)&dword_140404A6C[v3 + 71856258];
-    *(unsigned int *)((char *)&g_1873DE464 + v4) = v2;
-    v8 = dword_140404A6C[v3 + 71856292];
-    *(unsigned int *)((char *)&g_1873DE480 + v4) = a1
-                                                                + ((dword_140404A6C[v3 + 71859139]
-                                                                  + 2 * (dword_140404A6C[v3 + 71856253] + 2 * v6)) << 8);
-    v9 = dword_140404A6C[v3 + 71859819];
-    *(unsigned int *)((char *)&g_1873DE484 + v4) = v8;
-    v10 = dword_140404A6C[v3 + 71859820];
-    *(unsigned int *)((char *)&g_1873DE488 + v4) = dword_140404A6C[v3 + 71859816]
-                                                                + 2
-                                                                * (dword_140404A6C[v3 + 71859825]
-                                                                 + 32 * (dword_140404A6C[v3 + 71859817] + 8 * v9));
-    v11 = v10
-        + 8
-        * (dword_140404A6C[v3 + 71859818]
-         + 16
-         * (dword_140404A6C[v3 + 71859821]
-          + 32
-          * (dword_140404A6C[v3 + 71859822] + 16
-                                            * (dword_140404A6C[v3 + 71859823] + 16 * dword_140404A6C[v3 + 71859826]))));
-    v12 = dword_140404A6C[v3 + 71856260];
-    *(unsigned int *)((char *)&g_1873DE48C + v4) = v11;
-    *(_OWORD *)((char *)&g_1873DE4A0 + v4) = v5;
-    *(_QWORD *)((char *)&g_1873DE4B0 + v4) = v7;
-    *(unsigned int *)((char *)&g_1873DE4B8 + v4) = v12;
-    *(_WORD *)((char *)&g_1873DE4BC + v4) = dword_140404A6C[v3 + 71856261];
-    *((_BYTE *)&g_1873DE4BC + v4 + 2) = BYTE2(dword_140404A6C[v3 + 71856261]);
-    *((_BYTE *)&g_1873DE4BC + v4 + 3) = 0;
-    HIWORD(world_event_count) = 0;
-  }
+  event_player_update(a1);
 }
 
 //----- (0000000140051F50) ----------------------------------------------------
 __int64            sub_140051F50(signed int a1)
 {
-  unsigned int v1;
-  __int64 v2;
-  __int64 v3;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v1 = game_tick;
-    v2 = (__int64)(int)world_event_count++ << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v2) = 8;
-    *(unsigned int *)((char *)&g_1873DE464 + v2) = v1;
-    *(unsigned int *)((char *)&g_1873DE480 + v2) = a1;
-    v3 = 3597LL * a1;
-    *(unsigned int *)((char *)&g_1873DE484 + v2) = dword_140404A6C[v3 + 71856272];
-    *(unsigned int *)((char *)&g_1873DE488 + v2) = dword_140404A6C[v3 + 71856288];
-    *(unsigned int *)((char *)&g_1873DE48C + v2) = dword_140404A6C[v3 + 71856265];
-    HIWORD(world_event_count) = 0;
-    return 0;
-  }
-  return result;
+  event_player_finance(a1);
+  return 0;
 }
 
 //----- (0000000140051FF0) ----------------------------------------------------
 void            sub_140051FF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int *a5)
 {
-  unsigned int v5;
-  unsigned int v6;
-  __int64 v7;
-  unsigned int v8;
-
-  if ( game_connected )
-  {
-    v5 = world_event_count;
-    v6 = game_tick;
-    v7 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v7) = 21;
-    *(unsigned int *)((char *)&g_1873DE464 + v7) = v6;
-    *(unsigned int *)((char *)&g_1873DE480 + v7) = a1;
-    *(unsigned int *)((char *)&g_1873DE484 + v7) = a2;
-    *(unsigned int *)((char *)&g_1873DE488 + v7) = a3;
-    *(unsigned int *)((char *)&g_1873DE48C + v7) = a4;
-    if ( a5 )
-    {
-      *(unsigned int *)((char *)&g_1873DE468 + v7) = *a5;
-      *(unsigned int *)((char *)&g_1873DE46C + v7) = a5[1];
-      v8 = a5[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&g_1873DE468 + v7) = 0;
-      v8 = 0;
-    }
-    *(unsigned int *)((char *)&g_1873DE470 + v7) = v8;
-    world_event_count = v5 + 1;
-    HIWORD(world_event_count) = 0;
-  }
+  event_type21(a1, a2, a3, a4, (const float *)a5);
 }
 
 //----- (0000000140052090) ----------------------------------------------------
 __int64 sub_140052090()
 {
-  float v0;
-  unsigned int v1;
-  float v2;
-  __int64 v3;
-  unsigned int v4;
-  int v5;
-  unsigned int v6;
-  __int64 result;
-
-  if ( game_connected )
-  {
-    v0 = *(float *)&g_19021F0F4;
-    v1 = world_event_count + 1;
-    v2 = *(float *)&g_19021F0C4 * 10.0;
-    v3 = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + v3) = 13;
-    world_event_count = v1;
-    g_19021F0CC = (int)v2;
-    g_19021F0FC = (int)(float)(v0 * 10.0);
-    g_19021F0E4 = (int)(float)(*(float *)&g_19021F0DC * 10.0);
-    v4 = (int)v2 + (g_19021F0E4 << 16);
-    v5 = (int)(float)(g_19021F124 * 10.0);
-    g_19021F114 = (int)(float)(*(float *)&g_19021F10C * 10.0);
-    v6 = g_19021F0FC + (g_19021F114 << 16);
-    g_19021F12C = v5;
-    g_19021F144 = (int)(float)(g_19021F13C * 10.0);
-    *(unsigned int *)((char *)&g_1873DE464 + v3) = game_tick;
-    *(unsigned int *)((char *)&g_1873DE480 + v3) = v4;
-    *(unsigned int *)((char *)&g_1873DE484 + v3) = v6;
-    *(unsigned int *)((char *)&g_1873DE488 + v3) = v5;
-    HIWORD(world_event_count) = 0;
-    return 0;
-  }
-  return result;
+  event_stock_prices();
+  return 0;
 }
 
 //----- (00000001400521A0) ----------------------------------------------------

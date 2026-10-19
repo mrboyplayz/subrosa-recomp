@@ -1,0 +1,229 @@
+last reusable slot wins
+index = i;
+            previous_status = menu_widgets[i].status;
+----
+index = i;
+            previous_status = menu_widgets[i].status;
+            break;
+====
+status threshold
+menu_widgets[i].status > minimum_status
+----
+menu_widgets[i].status >= minimum_status
+====
+reuse only states below three
+menu_widgets[i].status < 3
+----
+menu_widgets[i].status <= 3
+====
+matching label ID
+&& menu_widgets[i].id == id
+----
+&& menu_widgets[i].id != id
+====
+fresh slot is cleared
+memset(&menu_widgets[index], 0, sizeof(MenuWidget));
+----
+;
+====
+full pool sentinel
+if (++index >= MENU_WIDGET_CAPACITY) return UINT32_MAX;
+----
+if (++index >= MENU_WIDGET_CAPACITY) return 0;
+====
+horizontal center priority
+if (alignment & 1) x = x + width * -0.5f;
+----
+if (alignment & 1) x = x - width;
+====
+vertical center
+if (alignment & 4) y = y + height * -0.5f;
+----
+if (alignment & 4) y = y - height;
+====
+right alignment
+else if (alignment & 2) x = x - width;
+----
+else if (alignment & 2) x = x + width;
+====
+bottom alignment
+else if (alignment & 8) y = y - height;
+----
+else if (alignment & 8) y = y + height;
+====
+consume alignment on full pool
+menu_layout->next_alignment = 0;
+----
+;
+====
+new widget status
+widget->status = 3;
+----
+widget->status = 2;
+====
+visible flag
+widget->visible = 1;
+----
+widget->visible = 0;
+====
+owner word
+widget->unknown_28 = menu_layout->unknown_d4;
+----
+widget->unknown_28 = 0;
+====
+parent transform
+widget->screen[0] = x + *menu_parent_x(menu_parent);
+----
+widget->screen[0] = x;
+====
+parent scroll subtraction
+(*menu_parent_y(menu_parent) - *menu_parent_scroll(menu_parent)) + y
+----
+(*menu_parent_y(menu_parent) + *menu_parent_scroll(menu_parent)) + y
+====
+border fourth component
+for (int k = 0; k < 4; ++k) widget->border[k] = menu_layout->border[k];
+----
+for (int k = 0; k < 3; ++k) widget->border[k] = menu_layout->border[k];
+====
+active focus consumed
+menu_layout->next_active = 0;
+----
+;
+====
+disabled resets on reuse
+widget->disabled = menu_layout->next_disabled ? 1 : 0;
+----
+if (menu_layout->next_disabled) widget->disabled = 1;
+====
+shortcut inclusive upper bound
+key - 1 <= 510
+----
+key - 1 < 510
+====
+shortcut ownership
+*menu_shortcut_slot(key) == -1 || menu_parent == menu_active_parent
+----
+*menu_shortcut_slot(key) == -1
+====
+unknown one shot word
+widget->unknown_2c = menu_layout->next_unknown_100;
+----
+widget->unknown_2c = 0;
+====
+attachment preserved when absent
+if (menu_layout->next_attachment) {
+----
+{
+====
+six neighbor sentinels
+for (int k = 0; k < 6; ++k) widget->neighbors[k] = UINT32_MAX;
+----
+for (int k = 0; k < 5; ++k) widget->neighbors[k] = UINT32_MAX;
+====
+grid signed bounds
+if ((int32_t)column < 16 && (int32_t)row < 16)
+----
+if (column < 16 && row < 16)
+====
+grid column advancement
+else menu_grid_column = column + 1;
+----
+else menu_grid_column = column;
+====
+focus excludes reused state two
+previous_status <= 1
+----
+previous_status <= 2
+====
+button vertical layout
+menu_layout->y = menu_layout->y + (menu_layout->height + 4.0f);
+----
+menu_layout->y = menu_layout->y + menu_layout->height;
+====
+horizontal row height
+menu_layout->row_height = menu_layout->height + 4.0f;
+----
+menu_layout->row_height = menu_layout->width + 4.0f;
+====
+last widget
+menu_layout->last_widget = (int32_t)index;
+----
+menu_layout->last_widget = 0;
+====
+label ID seed
+((uint32_t)menu_parent << 8) + (menu_layout->id_seed << 16)
+----
+((uint32_t)menu_parent << 16) + (menu_layout->id_seed << 8)
+====
+click requires active widget
+&& (int32_t)index == menu_active_widget;
+----
+;
+====
+button disabled gate
+if (widget->disabled) return 0;
+----
+if (0) return 0;
+====
+button consumes pending
+if (widget->pending) { widget->pending = 0; return 1; }
+----
+if (widget->pending) { return 1; }
+====
+keyboard trigger
+return (int32_t)index == menu_keyboard_widget && menu_keyboard_trigger;
+----
+return (int32_t)index == menu_keyboard_widget;
+====
+selectable input source restriction
+menu_input_mode < 2 || widget->input_source == menu_input_source
+----
+menu_input_mode < 2
+====
+selectable stored option
+widget->option = option;
+----
+widget->option = 0;
+====
+toggle ignores disabled flag
+widget->option = 1;
+    if (!clicked(index)) return 0;
+----
+widget->option = 1;
+    if (widget->disabled || !clicked(index)) return 0;
+====
+toggle XOR preserves high bits
+*value ^= 1;
+----
+*value = !*value;
+====
+disabled flag consumed
+menu_layout->next_disabled = 0;
+----
+;
+====
+style word
+widget->style = style;
+----
+widget->style = 0;
+====
+attachment consumed
+menu_layout->next_attachment = 0;
+----
+;
+====
+vertical grid resets column
+menu_grid_column = 0;
+----
+menu_grid_column = 1;
+====
+keyboard focus request consumed
+menu_layout->next_keyboard_focus = 0;
+----
+;
+====
+clicked flag
+return !menu_input_blocked && menu_click &&
+----
+return !menu_input_blocked &&

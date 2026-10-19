@@ -1,0 +1,65 @@
+transpose row and column
+words + column * 3 + row
+----
+words + row * 3 + column
+====
+transpose snapshots overlap
+words + column * 3 + row
+----
+(const uint32_t *)matrix + column * 3 + row
+====
+transpose final column
+column < 3
+----
+column < 2
+====
+rotation sine index
+math_fixed_sine[angle]
+----
+math_fixed_sine[(uint16_t)(angle + 1)]
+====
+rotation cosine quarter turn
+angle + 0x4000
+----
+angle + 0x8000
+====
+negation wraps before multiplication
+int64_t negative_y = subtract_int(0, (int32_t)y);
+----
+int64_t negative_y = -y;
+====
+x cosine rounding bias
+cosine * x + 0x8000
+----
+cosine * x
+====
+x sine rounding bias
+sine * negative_y + 0x8000
+----
+sine * negative_y
+====
+y sine rounding bias
+uint32_t new_y = (uint32_t)((sine * x + 0x8000) >> 16)
+----
+uint32_t new_y = (uint32_t)((sine * x) >> 16)
+====
+y cosine rounding bias
+cosine * y + 0x8000
+----
+cosine * y
+====
+sum rounded products separately
+uint32_t new_x = (uint32_t)((cosine * x + 0x8000) >> 16)
+                   + (uint32_t)((sine * negative_y + 0x8000) >> 16);
+----
+uint32_t new_x = (uint32_t)((cosine * x + sine * negative_y + 0x8000) >> 16);
+====
+y uses original x
+uint32_t new_y = (uint32_t)((sine * x + 0x8000) >> 16)
+----
+uint32_t new_y = (uint32_t)((sine * (int32_t)new_x + 0x8000) >> 16)
+====
+returned coordinate
+return new_y;
+----
+return new_x;

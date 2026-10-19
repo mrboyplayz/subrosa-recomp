@@ -1,0 +1,64 @@
+end distance evaluated with zero start distance
+volatile float end_distance = ((plane[1] - to[1]) * normal[1]
+----
+volatile float end_distance = start_distance == 0.0f ? 0.0f : ((plane[1] - to[1]) * normal[1]
+====
+unordered start side test
+if (!(start_distance > 0.0f))
+----
+if (start_distance <= 0.0f)
+====
+unordered second side test
+!(end_distance >= 0.0f)
+----
+end_distance < 0.0f
+====
+reject positive same side
+else if (end_distance > 0.0f) return 0;
+----
+else if (end_distance < 0.0f) return 0;
+====
+intermediate fraction store
+*fraction = start_distance;
+----
+;
+====
+direction sign
+float dx = to[0] - from[0], dy = to[1] - from[1], dz = to[2] - from[2];
+----
+float dx = from[0] - to[0], dy = from[1] - to[1], dz = from[2] - to[2];
+====
+denominator includes final component
+(dy * normal[1] + dx * normal[0]) + dz * normal[2]
+----
+(dy * normal[1] + dx * normal[0])
+====
+unordered denominator early exit
+is_zero_or_nan_quiet(denominator)
+----
+(denominator == 0.0f)
+====
+fraction numerator
+float t = start_distance / denominator;
+----
+float t = end_distance / denominator;
+====
+fraction result store
+*fraction = t;
+----
+;
+====
+point second coordinate
+point[1] = t * dy + from[1];
+----
+point[1] = t * dy + from[0];
+====
+point third coordinate
+point[2] = t * dz + from[2];
+----
+;
+====
+intersection reports success
+return 1;
+----
+return 0;

@@ -199,21 +199,34 @@ void item_gun_tick(int item);
 #define item_text_line(i, line)   (&SR_GLOBAL(char, 0x182BBB4F4ULL + 0x1B80ULL * (uint64_t)(int64_t)(i) + 64ULL * (uint64_t)(int64_t)(line)))
 #define item_text_colours(i, line) (&SR_GLOBAL(uint8_t, 0x182BBBCF4ULL + 0x1B80ULL * (uint64_t)(int64_t)(i) + 64ULL * (uint64_t)(int64_t)(line)))
 
+/* The raw-record source starts twelve bytes before the screen-text array.
+   Its line offset is shifted as a 32-bit word, then sign-extended. */
+static inline char *item_record_text_chunk(int item, uint32_t line)
+{
+    return &SR_GLOBAL(char, 0x182BBB4E8ULL + 0x1B80ULL * (uint64_t)(int64_t)item
+                            + (int64_t)(int32_t)(line << 6));
+}
+
 /* The shared records items link to (WorldItem.links), 156 bytes from
    0x1857BD740, 16,384 of them: here a line of text being sent. */
 typedef struct ItemLinkRecord {
     int32_t used;
     int32_t unknown_4;                   /* cleared with used */
-    int32_t unknown_8;                   /* 1 */
+    int32_t unknown_8;                   /* 0 raw text, 1 text with colours */
     int32_t tick;                        /* when the record was filled */
     int32_t item, line;
-    int32_t length;                      /* up to 63 */
+    int32_t length;                      /* raw text up to 64, linked screen text up to 63 */
     char text[64];
     uint8_t colours[64];
 } ItemLinkRecord;
 _Static_assert(sizeof(ItemLinkRecord) == 156, "ItemLinkRecord size");
 #define ITEM_LINK_RECORD_CAPACITY 16384
 #define item_link_records (&SR_GLOBAL(ItemLinkRecord, 0x1857BD740ULL))
+
+/* Allocates a raw text record without clearing unused text or colour bytes.
+   length must be nonnegative; it is capped at 64. Returns zero-extended
+   UINT32_MAX for a full pool, before reading the source. 0x140051170 */
+uint32_t item_allocate_text_record(int item, uint32_t line, int length);
 
 /* Keeps line `line` of an item's text linked to a record holding the same
    text and colours: the line's present record when it still matches

@@ -1,0 +1,70 @@
+distance preserved
+memcpy(&physics_bonds[index].distance, &distance, sizeof(distance));
+----
+physics_bonds[index].distance = 0;
+====
+distance bond type
+initialize_body_bond(index, body, other, PHYSICS_BOND_BODIES, 0.25f, 0.375f);
+    memcpy
+----
+initialize_body_bond(index, body, other, PHYSICS_BOND_ROTATION, 0.25f, 0.375f);
+    memcpy
+====
+level bond type
+bond->type = PHYSICS_BOND_LEVEL;
+----
+bond->type = PHYSICS_BOND_BODIES;
+====
+level rest point
+copy_words(bond->world_point, world_point, 3);
+----
+copy_words(bond->world_point, point, 3);
+====
+level local point
+copy_words(bond->local_point, point, 3);
+----
+copy_words(bond->local_point, world_point, 3);
+====
+level stiffness
+bond->stiffness = 0.0625f;
+----
+bond->stiffness = 0.125f;
+====
+level damping
+bond->damping = 0.125f;
+----
+bond->damping = 0.25f;
+====
+scalar vector copy ordering
+for (int i = 0; i < count; ++i) {
+----
+for (int i = count - 1; i >= 0; --i) {
+====
+level other-body remains zero
+bond->body = (int32_t)body;
+    bond->stiffness = 0.0625f;
+----
+bond->body = (int32_t)body;
+    bond->other_body = -1;
+    bond->stiffness = 0.0625f;
+====
+level human word remains zero
+bond->body = (int32_t)body;
+    bond->stiffness = 0.0625f;
+----
+bond->body = (int32_t)body;
+    bond->unknown_a0 = -1;
+    bond->stiffness = 0.0625f;
+====
+level clear constraints
+memset(&physics_constraints[index], 0, sizeof(PhysicsConstraint));
+    copy_words(bond->local_point
+----
+copy_words(bond->local_point
+====
+body lifetime
+bond->lifetime = 65536;
+    bond->pass_mask = 0;
+----
+bond->lifetime = 65535;
+    bond->pass_mask = 0;

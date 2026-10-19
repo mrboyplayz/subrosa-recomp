@@ -1,0 +1,49 @@
+capture disabled guard
+if (!audio_capture_enabled) return 0;
+----
+if (0) return 0;
+====
+half-ring inclusive threshold
+difference >= -131072
+----
+difference > -131072
+====
+capture wrap extent
+(uint32_t)difference + AUDIO_CAPTURE_SAMPLES
+----
+(uint32_t)difference + AUDIO_CAPTURE_SAMPLES / 2
+====
+odd byte count truncation
+int32_t samples = byte_count / 2;
+----
+int32_t samples = (byte_count + 1) / 2;
+====
+exact end does not split
+position + (uint32_t)samples) > AUDIO_CAPTURE_SAMPLES
+----
+position + (uint32_t)samples) >= AUDIO_CAPTURE_SAMPLES
+====
+first copy final sample
+memmove(audio_capture_buffer + 2 * (int64_t)(int32_t)position, source, (size_t)first * 2);
+----
+if (first) memmove(audio_capture_buffer + 2 * (int64_t)(int32_t)position, source, (size_t)(first - 1) * 2);
+====
+split residual samples
+samples = subtract_int(samples, (int32_t)first);
+----
+samples = subtract_int(samples, (int32_t)first + 1);
+====
+second copy source offset
+(const unsigned char *)source + 2 * (int64_t)(int32_t)first
+----
+(const unsigned char *)source
+====
+write cursor ring mask
+& (AUDIO_CAPTURE_SAMPLES - 1)
+----
+& (AUDIO_CAPTURE_SAMPLES * 2 - 1)
+====
+capture return destination
+return out;
+----
+return audio_capture_buffer;

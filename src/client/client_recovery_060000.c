@@ -1,4 +1,10 @@
 #include "shared_client.h"
+#include "../engine/menu.h"
+#include "../engine/audio.h"
+#include "../engine/math3d.h"
+#include "../engine/collision.h"
+#include "../engine/net_bits.h"
+#include "../engine/text_helpers.h"
 
 //----- (0000000140064FF0) ----------------------------------------------------
 double            sub_140064FF0(int a1, int a2)
@@ -1610,14 +1616,7 @@ __int64 sub_140069440()
 //----- (0000000140069580) ----------------------------------------------------
 __int64 sub_140069580()
 {
-  __int64 result;
-
-  if ( !g_1404C4A98 )
-    return 0;
-  result = g_1404C4AA4 - g_1404C4AA8 + 0x40000;
-  if ( (signed int)(g_1404C4AA4 - g_1404C4AA8) >= -131072 )
-    return g_1404C4AA4 - g_1404C4AA8;
-  return result;
+  return audio_capture_available();
 }
 
 //----- (0000000140069630) ----------------------------------------------------
@@ -2033,48 +2032,7 @@ void            sub_140069DE0(unsigned int a1, __int64 a2, float a3)
 //----- (0000000140069FA0) ----------------------------------------------------
 __int64            sub_140069FA0(signed int a1, unsigned int *a2, float a3, float a4, unsigned int a5)
 {
-  __int64 v7;
-  unsigned int *v8;
-  unsigned int v9;
-  __int64 v11;
-
-  if ( !g_140404A88 )
-    return 0xFFFFFFFFLL;
-  v7 = 8LL * a1;
-  if ( !dword_140404A6C[v7 + 18165777] )
-    return 0xFFFFFFFFLL;
-  v8 = &g_140544AB0;
-  v9 = 0;
-  while ( *v8 )
-  {
-    ++v9;
-    v8 += 278720;
-    if ( (__int64)v8 >= (__int64)&g_1440CF2B0 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v9 == -1 )
-    return 0xFFFFFFFFLL;
-  v11 = 278720LL * (int)v9;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v11 + 327698]), 0, 0x1102FCu);
-  *(float *)&dword_140404A6C[v11 + 327699] = a3;
-  *(_QWORD *)&dword_140404A6C[v11 + 327697] = 1;
-  dword_140404A6C[v11 + 327772] = 0;
-  dword_140404A6C[v11 + 589917] = 0;
-  dword_140404A6C[v11 + 327708] = a5;
-  *(float *)&dword_140404A6C[v11 + 327704] = a3;
-  *(float *)&dword_140404A6C[v11 + 327705] = a3;
-  *(float *)&dword_140404A6C[v11 + 327706] = a4;
-  *(float *)&dword_140404A6C[v11 + 327707] = a4;
-  dword_140404A6C[v11 + 327700] = 1;
-  dword_140404A6C[v11 + 327702] = a1;
-  *(_QWORD *)&dword_140404A6C[v7 + 18165781] = 0;
-  dword_140404A6C[v11 + 606302] = *a2;
-  dword_140404A6C[v11 + 606303] = a2[1];
-  dword_140404A6C[v11 + 606304] = a2[2];
-  dword_140404A6C[v11 + 606308] = dword_140404A6C[v7 + 18165783];
-  dword_140404A6C[v11 + 606310] = 1;
-  dword_140404A6C[v11 + 606414] = 0;
-  return v9;
+  return audio_play_at(a1, (const float *)a2, a3, a4, a5);
 }
 
 //----- (000000014006A140) ----------------------------------------------------
@@ -2152,31 +2110,7 @@ __int64            sub_14006A240(int a1, int a2, unsigned int *a3, float a4, uns
 //----- (000000014006A380) ----------------------------------------------------
 __m128i *           sub_14006A380(__int64 a1,      __m128i *a2, int a3)
 {
-  unsigned int v3;
-  unsigned int v5;
-  int v6;
-  __m128i *result;
-
-  v3 = g_1404C4AA4;
-  v5 = 0;
-  v6 = a3 / 2;
-  if ( (signed int)(g_1404C4AA4 + a3 / 2) > 0x40000 )
-  {
-    v5 = 0x40000 - g_1404C4AA4;
-    crt_memcpy(
-      (__m128i *)((char *)&g_1404C4AAC + 2 * (int)g_1404C4AA4),
-      a2,
-      2 * (0x40000 - g_1404C4AA4));
-    v6 -= v5;
-    v3 = 0;
-    g_1404C4AA4 = 0;
-  }
-  result = crt_memcpy(
-             (__m128i *)((char *)&g_1404C4AAC + 2 * (int)v3),
-             (     __m128i *)((char *)a2 + 2 * (int)v5),
-             2 * v6);
-  g_1404C4AA4 = (v6 + g_1404C4AA4) & 0x3FFFF;
-  return result;
+  return (__m128i *)audio_capture_write(a2, a3);
 }
 
 //----- (000000014006A5C0) ----------------------------------------------------
@@ -2675,58 +2609,7 @@ __int64            sub_14006C570(int a1, _DWORD *a2, char a3, int a4)
 // CRC32-style UI label ID helper. Lazily builds 256-entry table with polynomial 0xEDB88320 and returns bitwise-not final CRC.
 __int64            sub_14006C670(unsigned __int8 *a1, unsigned int a2)
 {
-  unsigned __int8 *v2;
-  int v3;
-  unsigned int *v4;
-  unsigned int v5;
-  unsigned int v6;
-  unsigned int v7;
-  unsigned int v8;
-  unsigned int v9;
-  unsigned __int8 v10;
-  __int64 v11;
-
-  v2 = a1;
-  if ( !g_144980DC0 )
-  {
-    v3 = 0;
-    v4 = &g_144980DC0;
-    do
-    {
-      ++v4;
-      v5 = (unsigned int)v3 >> 1;
-      v6 = -(v3++ & 1) & 0xEDB88320;
-      v7 = v5 ^ v6;
-      LOBYTE(v5) = v7;
-      v7 >>= 1;
-      v8 = ((((v7 ^ -(v5 & 1) & 0xEDB88320) >> 1) ^ -(((unsigned __int8)v7 ^ -(v5 & 1) & 0x20) & 1) & 0xEDB88320) >> 1)
-         ^ -(((unsigned __int8)((v7 ^ -(v5 & 1) & 0xEDB88320) >> 1)
-            ^ -(((unsigned __int8)v7 ^ -(v5 & 1) & 0x20) & 1)
-            & 0x20)
-           & 1)
-         & 0xEDB88320;
-      v9 = (((v8 >> 1) ^ -(v8 & 1) & 0xEDB88320) >> 1)
-         ^ -(((unsigned __int8)(v8 >> 1) ^ -(v8 & 1) & 0x20) & 1)
-         & 0xEDB88320;
-      *(v4 - 1) = (((v9 >> 1) ^ -(v9 & 1) & 0xEDB88320) >> 1)
-                ^ -(((unsigned __int8)(v9 >> 1) ^ -(v9 & 1) & 0x20) & 1)
-                & 0xEDB88320;
-    }
-    while ( v3 < 256 );
-  }
-  v10 = *a1;
-  if ( *a1 )
-  {
-    do
-    {
-      ++v2;
-      v11 = v10;
-      v10 = *v2;
-      a2 = (a2 >> 8) ^ dword_140404A6C[(v11 ^ (unsigned __int8)a2) + 18215125];
-    }
-    while ( *v2 );
-  }
-  return ~a2;
+  return text_label_id(a1, a2);
 }
 
 //----- (000000014006C780) ----------------------------------------------------
@@ -2740,50 +2623,13 @@ __int64 sub_14006C780()
 //----- (000000014006C870) ----------------------------------------------------
 __int64            sub_14006C870(_BYTE *a1)
 {
-  int v1;
-  unsigned int v2;
-  int v3;
-  _BYTE *v4;
-
-  v1 = g_15F1D91E0;
-  v2 = 0;
-  v3 = 0;
-  if ( (int)g_15F1D91E0 < (int)g_15F1D91E4 )
-  {
-    v4 = a1;
-    do
-    {
-      if ( !*v4 )
-        break;
-      if ( *v4 != *((_BYTE *)&g_15F1D91E8 + v1) )
-        break;
-      ++v3;
-      ++v1;
-      ++v4;
-    }
-    while ( v1 < (int)g_15F1D91E4 );
-  }
-  LOBYTE(v2) = a1[v3] == 0;
-  return v2;
+  return text_scan_matches(a1);
 }
 
 //----- (000000014006C980) ----------------------------------------------------
 __int64            sub_14006C980(unsigned __int8 *a1, __int64 a2)
 {
-  __int64 v2;
-  unsigned __int8 v3;
-
-  v2 = a2 - (_QWORD)a1;
-  while ( 1 )
-  {
-    v3 = *a1;
-    if ( *a1 != a1[v2] )
-      break;
-    ++a1;
-    if ( !v3 )
-      return 0;
-  }
-  return v3 < a1[v2] ? -1 : 1;
+  return text_compare_bytes(a1, (const unsigned char *)(uintptr_t)a2);
 }
 
 //----- (000000014006CA30) ----------------------------------------------------
@@ -2930,22 +2776,7 @@ void            sub_14006E2D0(__int64 a1, __int64 a2, __int64 a3)
 //----- (000000014006E4C0) ----------------------------------------------------
 _BOOL8            sub_14006E4C0(_BYTE *a1)
 {
-  signed int v1;
-  signed int i;
-  __int64 v4;
-
-  v1 = g_15F1D91E0;
-  for ( i = g_15F1D91E4; v1 < i; g_15F1D91E0 = ++v1 )
-  {
-    if ( (unsigned int)sub_14006C870(a1) )
-      break;
-  }
-  v4 = -1;
-  do
-    ++v4;
-  while ( a1[v4] );
-  g_15F1D91E0 = v4 + v1;
-  return (int)v4 + v1 < i;
+  return text_scan_past(a1);
 }
 
 //----- (000000014006E530) ----------------------------------------------------
@@ -2974,53 +2805,7 @@ float            sub_14006F060(int a1, _BYTE *a2, float a3)
 // UI label copy helper. Copies text to widget label buffer and stops visible label at null or ## hidden-ID marker.
 __int64            sub_14006F120(__int64 a1, char *a2)
 {
-  __int64 v3;
-  char v4;
-  int v5;
-  _BYTE *v6;
-  __int64 v7;
-  char v8;
-  char v9;
-  char v10;
-  char v11;
-
-  v3 = a1 - (_QWORD)a2;
-  do
-  {
-    v4 = *a2;
-    a2[v3] = *a2;
-    ++a2;
-  }
-  while ( v4 );
-  v5 = 0;
-  v6 = (_BYTE *)(a1 + 2);
-  v7 = -2 - a1;
-  do
-  {
-    v8 = *(v6 - 2);
-    if ( !v8 || v8 == 35 && *(v6 - 1) == 35 )
-      break;
-    v9 = *(v6 - 1);
-    ++v5;
-    if ( !v9 || v9 == 35 && *v6 == 35 )
-      break;
-    ++v5;
-    if ( !*v6 || *v6 == 35 && v6[1] == 35 )
-      break;
-    v10 = v6[1];
-    ++v5;
-    if ( !v10 || v10 == 35 && v6[2] == 35 )
-      break;
-    v11 = v6[2];
-    ++v5;
-    if ( !v11 || v11 == 35 && v6[3] == 35 )
-      break;
-    v6 += 5;
-    ++v5;
-  }
-  while ( (__int64)&v6[v7] < 255 );
-  *(_BYTE *)(v5 + a1) = 0;
-  return v5;
+  return text_copy_visible_label((unsigned char *)(uintptr_t)a1, (const unsigned char *)a2);
 }
 
 //----- (000000014006F750) ----------------------------------------------------
@@ -3060,10 +2845,7 @@ __int64            sub_14006F750(
 //----- (0000000140070B90) ----------------------------------------------------
 __int64 sub_140070B90()
 {
-  g_15104AA48 = 1;
-  crt_memset((void *)(uintptr_t)(&g_15104AA4C), 0xFFu, 0x400u);
-  *(_QWORD *)&g_15104AE4C = 0;
-  return 0;
+  return menu_begin_grid();
 }
 
 //----- (0000000140070BD0) ----------------------------------------------------
@@ -3982,214 +3764,43 @@ double sub_1400742F0(int a1,double a2,double a3)
 //----- (0000000140074C50) ----------------------------------------------------
 __int64            sub_140074C50(int a1, float a2)
 {
-  int v2;
-  float v3;
-  unsigned int *v4;
-
-  v2 = 0;
-  v3 = 0.0;
-  if ( LOBYTE(g_151042A40) )
-  {
-    v4 = &g_151042A40;
-    do
-    {
-      if ( v2 >= (int)g_151042A3C )
-        break;
-      v3 = v3
-         + (float)(*(float *)&dword_140404A6C[3592 * dword_140404A6C[122 * a1 + 70087123]
-                                            + 72777093
-                                            + *(unsigned __int8 *)v4]
-                 * *(float *)&dword_140404A6C[122 * a1 + 70087133]);
-      if ( a2 < v3 )
-        break;
-      v4 = (unsigned int *)((char *)v4 + 1);
-      ++v2;
-    }
-    while ( *(_BYTE *)v4 );
-  }
-  return (unsigned int)v2;
+  return menu_text_hit_index(a1, a2);
 }
 
 //----- (0000000140074CE0) ----------------------------------------------------
 float            sub_140074CE0(int a1, int a2)
 {
-  int v2;
-  double v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 i;
-  __int64 v7;
-  float v8;
-
-  v2 = 0;
-  v3 = 0.0;
-  if ( a2 <= 0 )
-    return 0.0f; /* 0x140074D9E: xorps xmm0, xmm0 */
-  v4 = 122LL * a1;
-  v5 = a2;
-  for ( i = 0; i < v5; ++i )
-  {
-    v7 = *((unsigned __int8 *)&g_151042A40 + i);
-    if ( !(_BYTE)v7 || v2 >= (int)g_151042A3C )
-      break;
-    v8 = dword_140404A6C[v4 + 70087124]
-       ? *(float *)&dword_140404A6C[3592 * dword_140404A6C[122 * a1 + 70087123] + 72777135]
-       : *(float *)&dword_140404A6C[3592 * (int)dword_140404A6C[122 * a1 + 70087123] + 72777093 + v7];
-    ++v2;
-    *(float *)&v3 = *(float *)&v3 + (float)(*(float *)&dword_140404A6C[v4 + 70087133] * v8);
-  }
-  return *(float *)&v3; /* 0x140074D7F: addss xmm1, xmm0 */
+  return menu_text_prefix_width(a1, a2);
 }
 
 //----- (0000000140075340) ----------------------------------------------------
-double sub_140075340()
+void sub_140075340()
 {
-  signed int v0;
-  __int64 v1;
-  double result;
-
-  if ( (int)g_15104270C <= 0 )
-    return (*(double (           **)(__int64))(unsigned int *)&glDisable)(3089);
-  v0 = g_15104270C - 1;
-  g_15104270C = v0;
-  if ( v0 <= 0 )
-    return (*(double (           **)(__int64))(unsigned int *)&glDisable)(3089);
-  v1 = 2LL * v0;
-  *(unsigned int *)&g_151042A1C = dword_140404A6C[2 * v1 + 70317861];
-  *(_QWORD *)&result = *(unsigned int *)&g_151042A1C;
-  g_151042A24 = dword_140404A6C[2 * v1 + 70317863];
-  *(unsigned int *)&g_151042A20 = dword_140404A6C[2 * v1 + 70317862];
-  g_151042A28 = dword_140404A6C[2 * v1 + 70317864];
-  sub_14007B7E0(
-    g_151042A1C,
-    g_151042A20,
-    *(float *)&g_151042A24,
-    *(float *)&g_151042A28);
-  return result;
+  menu_pop_clip();
 }
 
 //----- (00000001400753C0) ----------------------------------------------------
 __int64 sub_1400753C0()
 {
-  __int64 result;
-
-  result = g_151042894;
-  if ( (int)g_151042894 > 0 )
-  {
-    --g_151042894;
-    result = (int)result - 1;
-    menu_item_width = dword_140404A6C[2 * (int)result + 70317963];
-    menu_item_height = dword_140404A6C[2 * (int)result + 70317964];
-  }
-  return result;
+  return menu_pop_size();
 }
 
 //----- (0000000140075460) ----------------------------------------------------
 __int64            sub_140075460(float a1, float a2, float a3, float a4)
 {
-  unsigned int v6;
-  float v7;
-  unsigned int v8;
-  float v9;
-  float v10;
-  float v11;
-  float v12;
-  float v13;
-  unsigned int v14;
-  unsigned int v15;
-
-  if ( g_15104270C )
-  {
-    v8 = g_151042A28;
-    v6 = g_151042A24;
-    v9 = g_151042A20;
-    v7 = g_151042A1C;
-  }
-  else
-  {
-    v6 = *(unsigned int *)&renderer_canvas_width;
-    v7 = 0.0;
-    v8 = *(unsigned int *)&renderer_canvas_height;
-    v9 = 0.0;
-    *(unsigned int *)&g_151042A1C = 0;
-    *(unsigned int *)&g_151042A20 = 0;
-    g_151042A24 = *(unsigned int *)&renderer_canvas_width;
-    g_151042A28 = *(unsigned int *)&renderer_canvas_height;
-  }
-  v10 = fmaxf(v7, a1);
-  v11 = fminf(*(float *)&v6 + v7, a1 + a3);
-  v12 = fmaxf(v9, a2);
-  v13 = fminf(*(float *)&v8 + v9, a2 + a4);
-  if ( v10 > v11 || v12 > v13 )
-    return 0;
-  g_151042A1C = v10;
-  g_151042A20 = v12;
-  *(float *)&v14 = v11 - v10;
-  *(float *)&v15 = v13 - v12;
-  g_151042A24 = v14;
-  g_151042A28 = v15;
-  *(float *)&dword_140404A6C[4 * g_15104270C + 70317865] = v10;
-  dword_140404A6C[4 * g_15104270C + 70317867] = v14;
-  *(float *)&dword_140404A6C[4 * g_15104270C + 70317866] = v12;
-  dword_140404A6C[4 * g_15104270C + 70317868] = v15;
-  if ( ++g_15104270C == 1 )
-    glEnable(3089);
-  sub_14007B7E0(
-    g_151042A1C,
-    g_151042A20,
-    *(float *)&g_151042A24,
-    *(float *)&g_151042A28);
-  return 1;
+  return menu_push_clip(a1, a2, a3, a4);
 }
 
 //----- (00000001400755F0) ----------------------------------------------------
 __int64            sub_1400755F0(float a1, float a2)
 {
-  __int64 result;
-
-  result = (int)g_151042894;
-  if ( (int)g_151042894 < 16 )
-  {
-    dword_140404A6C[2 * g_151042894 + 70317963] = menu_item_width;
-    result = (int)g_151042894;
-    dword_140404A6C[2 * g_151042894++ + 70317964] = menu_item_height;
-  }
-  *(float *)&menu_item_height = a2;
-  *(float *)&menu_item_width = a1;
-  return result;
+  return menu_push_size(a1, a2);
 }
 
 //----- (0000000140075930) ----------------------------------------------------
 signed int *           sub_140075930(int a1, float a2)
 {
-  __int64 v2;
-  signed int v3;
-  signed int v4;
-  int v5;
-  int v6;
-  signed int *result;
-
-  v2 = 122LL * a1;
-  v3 = dword_140404A6C[v2 + 70087218];
-  v4 = dword_140404A6C[v2 + 70087217];
-  v5 = (int)(float)((float)((float)((float)(a2 - (float)(*(float *)&dword_140404A6C[v2 + 70087220] * 0.5))
-                                  / (float)(*(float *)&dword_140404A6C[v2 + 70087127]
-                                          - *(float *)&dword_140404A6C[v2 + 70087220]))
-                          * fmaxf((float)(v3 - v4), 1.0))
-                  + 0.5);
-  if ( LOBYTE(g_151041AA0) )
-  {
-    v6 = dword_140404A6C[v2 + 70087219];
-    if ( v6 )
-      v5 = (v6 >> 1) + v5 - ((v6 >> 1) + v5) % v6;
-  }
-  if ( v4 + v5 >= v4 )
-    v4 += v5;
-  result = *(signed int **)&dword_140404A6C[v2 + 70087215];
-  if ( v4 <= v3 )
-    v3 = v4;
-  *result = v3;
-  return result;
+  return menu_slider_from_x(a1, a2);
 }
 
 //----- (0000000140075A40) ----------------------------------------------------
@@ -4774,42 +4385,7 @@ __int64            sub_1400779F0(float *a1, float *a2, float *a3, float *a4, flo
 //----- (0000000140077B30) ----------------------------------------------------
 __int64            sub_140077B30(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6)
 {
-  float v6;
-  float v7;
-  float v8;
-  float v10;
-  float v11;
-  float v12;
-  float v13;
-  float v14;
-
-  v6 = a6[2];
-  v7 = (float)((float)((float)(*a6 - *a4) * *a2) + (float)((float)(a6[1] - a4[1]) * a2[1]))
-     + (float)((float)(v6 - a4[2]) * a2[2]);
-  v8 = (float)((float)((float)(a6[1] - a5[1]) * a2[1]) + (float)((float)(*a6 - *a5) * *a2))
-     + (float)((float)(v6 - a5[2]) * a2[2]);
-  if ( v7 <= 0.0 )
-  {
-    if ( v7 < 0.0 && v8 < 0.0 )
-      return 0;
-  }
-  else if ( v8 > 0.0 )
-  {
-    return 0;
-  }
-  *a3 = v7;
-  v10 = *a5 - *a4;
-  v11 = a5[1] - a4[1];
-  v12 = a5[2] - a4[2];
-  v13 = (float)((float)(v11 * a2[1]) + (float)(v10 * *a2)) + (float)(v12 * a2[2]);
-  if ( v13 == 0.0 )
-    return 0;
-  v14 = v7 / v13;
-  *a3 = v14;
-  *a1 = (float)(v14 * v10) + *a4;
-  a1[1] = (float)(v14 * v11) + a4[1];
-  a1[2] = (float)(v14 * v12) + a4[2];
-  return 1;
+  return collision_segment_plane(a1, a2, a3, a4, a5, a6);
 }
 
 //----- (0000000140077C80) ----------------------------------------------------
@@ -5205,24 +4781,7 @@ float            sub_14007ABA0(float *a1, float *a2, float *a3)
 //----- (000000014007ADF0) ----------------------------------------------------
 __int64            sub_14007ADF0(__m128i *a1, int a2, int a3)
 {
-  signed int v3;
-  int v4;
-
-  v3 = packet_in_byte;
-  if ( (int)packet_in_byte >= 0x10000 )
-    return 0;
-  v4 = a3 * a2;
-  if ( (signed int)(a3 * a2 + packet_in_byte) > (int)packet_in_length )
-    return 0;
-  if ( (int)packet_in_bit > 0 )
-  {
-    v3 = packet_in_byte + 1;
-    packet_in_bit = 0;
-    ++packet_in_byte;
-  }
-  crt_memcpy(a1, (     __m128i *)((char *)&packet_in_data + v3), v4);
-  packet_in_byte += v4;
-  return 1;
+  return net_read_bytes(a1, a2, a3);
 }
 
 // 14007AE70: returning address of temporary local variable '%__return_address'
@@ -5237,22 +4796,7 @@ void            sub_14007B0F0(float *a1, float *a2, float *a3)
 //----- (000000014007B180) ----------------------------------------------------
 __int64            sub_14007B180(     __m128i *a1, int a2, int a3)
 {
-  signed int v3;
-  int v5;
-
-  v3 = packet_out_byte;
-  if ( (int)packet_out_byte >= 0x10000 )
-    return 0;
-  if ( (int)packet_out_bit > 0 )
-  {
-    v3 = packet_out_byte + 1;
-    packet_out_bit = 0;
-    ++packet_out_byte;
-  }
-  v5 = a3 * a2;
-  crt_memcpy((__m128i *)((char *)&packet_out_data + v3), a1, a3 * a2);
-  packet_out_byte += v5;
-  return 1;
+  return net_write_bytes(a1, a2, a3);
 }
 
 //----- (000000014007B4D0) ----------------------------------------------------
@@ -5559,51 +5103,13 @@ __int64 sub_14007C980()
 //----- (000000014007CA00) ----------------------------------------------------
 void            sub_14007CA00(_DWORD *a1, int *a2)
 {
-  int v2;
-  int v3;
-  int v4;
-  int v5;
-  int v6;
-  int v7;
-  int v8;
-  int v9;
-
-  v2 = *a2;
-  v3 = a2[3];
-  v4 = a2[4];
-  v5 = a2[6];
-  v6 = a2[7];
-  v7 = a2[8];
-  v8 = a2[5];
-  v9 = a2[1];
-  a1[6] = a2[2];
-  a1[3] = v9;
-  a1[7] = v8;
-  *a1 = v2;
-  a1[1] = v3;
-  a1[2] = v5;
-  a1[4] = v4;
-  a1[5] = v6;
-  a1[8] = v7;
+  math_mat3_transpose((float *)a1, (const float *)a2);
 }
 
 //----- (000000014007D0B0) ----------------------------------------------------
 __int64            sub_14007D0B0(int *a1, unsigned __int16 a2)
 {
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 result;
-
-  v2 = a1[1];
-  v3 = dword_1402B3840[a2];
-  v4 = dword_1402B3840[(unsigned __int16)(a2 + 0x4000)];
-  v5 = v3 * *a1 + 0x8000;
-  *a1 = ((v4 * *a1 + 0x8000) >> 16) + ((v3 * -(int)v2 + 0x8000) >> 16);
-  result = (unsigned int)(v5 >> 16) + (unsigned int)((v4 * v2 + 0x8000) >> 16);
-  a1[1] = result;
-  return result;
+  return math_fixed_vec2_rotate(a1, a2);
 }
 
 //----- (000000014007D320) ----------------------------------------------------
@@ -5661,17 +5167,7 @@ __int64            sub_14007D610(unsigned int a1, float a2)
 //----- (000000014007D6C0) ----------------------------------------------------
 __int64            sub_14007D6C0(int a1)
 {
-  __int64 v1;
-  unsigned int v2;
-  int v3;
-
-  v1 = 8LL * a1;
-  v2 = dword_140404A6C[v1 + 18165782];
-  v3 = dword_140404A6C[v1 + 18165781] - v2;
-  if ( v3 >= (int)dword_140404A6C[v1 + 18165778] / -2 )
-    return (unsigned int)v3;
-  else
-    return dword_140404A6C[v1 + 18165781] + dword_140404A6C[v1 + 18165778] - v2;
+  return audio_sound_available(a1);
 }
 
 //----- (000000014007D710) ----------------------------------------------------

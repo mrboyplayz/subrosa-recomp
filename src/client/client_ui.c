@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/menu.h"
 
 // 14006D660: inconsistent variable size for 'xmm0_8.8'
 // 14006D660: inconsistent variable size for 'xmm1_8.8'
@@ -23,116 +24,13 @@ void sr_text_draw_recovered(char *text,float x,float y,float size,unsigned flags
 // Immediate-mode button helper. Widget type code 0; returns true on active click/press interaction.
 __int64            sr_DrawMenuButton(unsigned __int8 *a1)
 {
-  unsigned int v2;
-  signed int v3;
-  signed int v4;
-  __int64 v5;
-
-  v2 = sub_14006C670(a1, (g_150F61084 << 8) + (g_150F610CC << 16));
-  v3 = sub_140070380(
-         v2,
-         menu_x,
-         menu_y,
-         *(float *)&menu_item_width,
-         menu_item_height,
-         g_150F610E8);
-  v4 = v3;
-  if ( v3 != -1 )
-  {
-    if ( menu_vertical )
-    {
-      menu_y = menu_y
-                                           + (float)(*(float *)&menu_item_height + 4.0);
-    }
-    else
-    {
-      menu_x = menu_x
-                                           + (float)(*(float *)&menu_item_width + 4.0);
-      menu_row_height = *(float *)&menu_item_height + 4.0;
-    }
-    v5 = 122LL * v3;
-    menu_last_widget = v3;
-    dword_140404A6C[v5 + 70087115] = 0;
-    sub_14006F120((__int64)&dword_140404A6C[v5 + 70087151], (char *)a1);
-    if ( !dword_140404A6C[v5 + 70087119] )
-    {
-      if ( !g_151042650
-        && g_1510426EC
-        && v4 == g_150F61180
-        && v4 == g_150F61174 )
-      {
-        return 1;
-      }
-      if ( dword_140404A6C[v5 + 70087121] )
-      {
-        dword_140404A6C[v5 + 70087121] = 0;
-        return 1;
-      }
-      if ( v4 == g_150F61188 && g_150F6118C )
-        return 1;
-    }
-  }
-  return 0;
+  return menu_button(a1);
 }
 
 //----- (000000014006F5A0) ----------------------------------------------------
 __int64            sr_DrawMenuButtonSelectable(unsigned __int8 *a1, int *a2, int a3)
 {
-  unsigned int v6;
-  signed int v7;
-  signed int v8;
-  __int64 v9;
-  bool v10;
-
-  v6 = sub_14006C670(a1, (g_150F61084 << 8) + (g_150F610CC << 16));
-  v7 = sub_140070380(
-         v6,
-         menu_x,
-         menu_y,
-         *(float *)&menu_item_width,
-         menu_item_height,
-         g_150F610E8);
-  v8 = v7;
-  if ( v7 != -1 )
-  {
-    if ( menu_vertical )
-    {
-      menu_y = menu_y
-                                           + (float)(*(float *)&menu_item_height + 4.0);
-    }
-    else
-    {
-      menu_x = menu_x
-                                           + (float)(*(float *)&menu_item_width + 4.0);
-      menu_row_height = *(float *)&menu_item_height + 4.0;
-    }
-    v9 = 122LL * v7;
-    menu_last_widget = v7;
-    dword_140404A6C[v9 + 70087115] = 2;
-    sub_14006F120((__int64)&dword_140404A6C[v9 + 70087151], (char *)a1);
-    v10 = dword_140404A6C[v9 + 70087119] == 0;
-    *(_QWORD *)&dword_140404A6C[v9 + 70087215] = (uint64)(uintptr_t)(a2);
-    dword_140404A6C[v9 + 70087217] = a3;
-    if ( v10 )
-    {
-      if ( !g_151042650
-        && g_1510426EC
-        && v8 == g_150F61180
-        && v8 == g_150F61174 )
-      {
-        goto LABEL_14;
-      }
-      if ( ((int)g_151040998 < 2 || dword_140404A6C[v9 + 70087122] == g_1510409A0)
-        && dword_140404A6C[v9 + 70087121] )
-      {
-        dword_140404A6C[v9 + 70087121] = 0;
-LABEL_14:
-        *a2 = a3;
-        return 1;
-      }
-    }
-  }
-  return 0;
+  return menu_selectable(a1, a2, a3);
 }
 
 //----- (000000014006F8D0) ----------------------------------------------------
@@ -343,106 +241,14 @@ __int64            sr_DrawMenuTextBox(unsigned __int8 *a1, __int64 a2, unsigned 
 // Immediate-mode integer slider helper. Widget type code 11; stores int pointer, min, max, and step.
 __int64            sr_DrawMenuSlider(unsigned __int8 *a1, int *a2, int a3, signed int a4, int a5)
 {
-  unsigned int v9;
-  signed int v10;
-  unsigned int v11;
-  __int64 v12;
-  int v13;
-
-  v9 = sub_14006C670(a1, (g_150F61084 << 8) + (g_150F610CC << 16));
-  v10 = sub_140070380(
-          v9,
-          menu_x,
-          menu_y,
-          *(float *)&menu_item_width,
-          menu_item_height,
-          g_150F610E8);
-  v11 = v10;
-  if ( menu_vertical )
-  {
-    menu_y = menu_y
-                                         + (float)(*(float *)&menu_item_height + 4.0);
-  }
-  else
-  {
-    menu_x = menu_x
-                                         + (float)(*(float *)&menu_item_width + 4.0);
-    menu_row_height = *(float *)&menu_item_height + 4.0;
-  }
-  v12 = 122LL * v10;
-  menu_last_widget = v10;
-  dword_140404A6C[v12 + 70087115] = 11;
-  sub_14006F120((__int64)&dword_140404A6C[v12 + 70087151], (char *)a1);
-  dword_140404A6C[v12 + 70087219] = a5;
-  *(_QWORD *)&dword_140404A6C[v12 + 70087215] = (uint64)(uintptr_t)(a2);
-  dword_140404A6C[v12 + 70087217] = a3;
-  dword_140404A6C[v12 + 70087218] = a4;
-  dword_140404A6C[v12 + 70087220] = 1098907648;
-  if ( v11 == g_150F61174 )
-  {
-    v13 = (int)(float)((float)((float)((float)((float)(g_1B0032360
-                                                     - *(float *)&dword_140404A6C[v12 + 70087134])
-                                             - 8.0)
-                                     / (float)(*(float *)&dword_140404A6C[v12 + 70087127] - 16.0))
-                             * fmaxf((float)(a4 - a3), 1.0))
-                     + 0.5);
-    if ( LOBYTE(g_151041AA0) && a5 )
-      v13 = (a5 >> 1) + v13 - ((a5 >> 1) + v13) % a5;
-    if ( v13 + a3 >= a3 )
-      a3 += v13;
-    if ( a3 > a4 )
-      a3 = a4;
-    *a2 = a3;
-  }
-  return v11;
+  return menu_slider(a1, a2, a3, a4, a5);
 }
 
 //----- (0000000140071910) ----------------------------------------------------
 // Immediate-mode checkbox helper. Widget type code 1; stores int pointer and toggles value on activation.
 __int64            sr_DrawMenuToggle(unsigned __int8 *a1, _DWORD *a2)
 {
-  unsigned int v4;
-  signed int v5;
-  signed int v6;
-  __int64 v7;
-
-  v4 = sub_14006C670(a1, (g_150F61084 << 8) + (g_150F610CC << 16));
-  v5 = sub_140070380(
-         v4,
-         menu_x,
-         menu_y,
-         *(float *)&menu_item_width,
-         menu_item_height,
-         g_150F610E8);
-  v6 = v5;
-  if ( v5 == -1 )
-    return 0;
-  if ( menu_vertical )
-  {
-    menu_y = menu_y
-                                         + (float)(*(float *)&menu_item_height + 4.0);
-  }
-  else
-  {
-    menu_x = menu_x
-                                         + (float)(*(float *)&menu_item_width + 4.0);
-    menu_row_height = *(float *)&menu_item_height + 4.0;
-  }
-  v7 = 122LL * v5;
-  menu_last_widget = v5;
-  dword_140404A6C[v7 + 70087115] = 1;
-  sub_14006F120((__int64)&dword_140404A6C[v7 + 70087151], (char *)a1);
-  *(_QWORD *)&dword_140404A6C[v7 + 70087215] = (uint64)(uintptr_t)(a2);
-  dword_140404A6C[v7 + 70087217] = 1;
-  if ( g_151042650
-    || !g_1510426EC
-    || v6 != g_150F61180
-    || v6 != g_150F61174 )
-  {
-    return 0;
-  }
-  *a2 ^= 1u;
-  return 1;
+  return menu_toggle(a1, a2);
 }
 
 //----- (0000000140072450) ----------------------------------------------------

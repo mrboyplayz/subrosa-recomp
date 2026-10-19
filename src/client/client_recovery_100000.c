@@ -1,4 +1,7 @@
 #include "shared_client.h"
+#include "../engine/area_bounds.h"
+#include "../engine/net_bits.h"
+#include "../engine/physics_kernels.h"
 
 //----- (0000000140101220) ----------------------------------------------------
 void            sub_140101220(int a1, float *a2)
@@ -3210,20 +3213,9 @@ void            sub_14010E370(float *a1, float *a2)
 }
 
 //----- (000000014010E610) ----------------------------------------------------
-__int64            sub_14010E610(float *a1, char a2)
+__int64            sub_14010E610(float *a1, int a2)
 {
-  signed int v2;
-  float v3;
-  int v4;
-  int v6;
-
-  v2 = (unsigned int)(1 << a2) >> 1;
-  v3 = *a1;
-  v4 = (v2 - 1) & (int)(fabs(*a1) * ((float)v2 * 0.1591549430918849));
-  v6 = v4;
-  if ( v3 < 0.0 )
-    v6 = v2 | v4;
-  return sub_140115D90(&v6, a2);
+  return net_write_angle(a1, a2);
 }
 
 //----- (000000014010E6C0) ----------------------------------------------------
@@ -7041,103 +7033,19 @@ __int64            sub_140114E90(_DWORD *a1, float *a2, char a3)
 //----- (00000001401150E0) ----------------------------------------------------
 void            sub_1401150E0(__int64 a1, float *a2, float a3, signed int a4)
 {
-  signed int v5;
-  float *v6;
-  __int64 v7;
-  __int64 v8;
-  float v9;
-  unsigned int v10;
-  int v11[4];
-
-  v5 = (unsigned int)(1 << a4) >> 1;
-  v6 = a2;
-  v7 = a1 - (_QWORD)a2;
-  v8 = 3;
-  do
-  {
-    v9 = *(float *)((char *)v6 + v7) - *v6;
-    v10 = (int)(float)(fabs(v9) * (float)((float)v5 / a3));
-    v11[0] = v10;
-    if ( v10 > v5 - 1 )
-    {
-      v11[0] = v5 - 1;
-      v10 = v5 - 1;
-    }
-    if ( v9 < 0.0 )
-      v11[0] = v5 | v10;
-    sub_140115D90(v11, a4);
-    ++v6;
-    --v8;
-  }
-  while ( v8 );
+  net_write_vector_delta((const float *)a1, a2, a3, a4);
 }
 
 //----- (00000001401151C0) ----------------------------------------------------
-double            sub_1401151C0(float *a1, float a2, char a3)
+double            sub_1401151C0(float *a1, float a2, int a3)
 {
-  signed int v3;
-  float v4;
-  unsigned int v5;
-  double result;
-  int v7;
-
-  v3 = (unsigned int)(1 << a3) >> 1;
-  v4 = *a1;
-  v5 = (int)(float)(fabs(*a1) * (float)((float)v3 / a2));
-  v7 = v5;
-  if ( v5 > v3 - 1 )
-  {
-    v7 = v3 - 1;
-    v5 = v3 - 1;
-  }
-  result = 0.0;
-  if ( v4 < 0.0 )
-    v7 = v3 | v5;
-  sub_140115D90(&v7, a3);
-  return result;
+  return net_write_magnitude(a1, a2, a3);
 }
 
 //----- (0000000140115230) ----------------------------------------------------
-__int64            sub_140115230(_DWORD *a1, float *a2, char a3)
+__int64            sub_140115230(_DWORD *a1, float *a2, int a3)
 {
-  __int64 v3;
-  __int64 v5;
-  double v6;
-  int v7;
-  __int64 result;
-
-  v3 = 1;
-  v5 = fabs(a2[1]) > fabs(*a2);
-  if ( fabs(a2[2]) > fabs(a2[v5]) )
-    v5 = 2;
-  *a1 = v5;
-  if ( a2[v5] < 0.0 )
-    *a1 = v5 | 4;
-  v6 = (double)((1 << a3) - 1);
-  if ( (_DWORD)v5 )
-  {
-    v7 = 2 * (int)(fabs(*a2 / a2[v5]) * v6);
-    a1[1] = v7;
-    if ( *a2 < 0.0 )
-      a1[1] = v7 | 1;
-    v3 = 2;
-  }
-  if ( (_DWORD)v5 == 1 )
-    goto LABEL_13;
-  result = (unsigned int)(int)(fabs(a2[1] / a2[v5]) * v6);
-  a1[v3] = 2 * result;
-  if ( a2[1] < 0.0 )
-    a1[v3] = (2 * result) | 1;
-  ++v3;
-  if ( (_DWORD)v5 != 2 )
-  {
-LABEL_13:
-    result = (unsigned int)(int)(fabs(a2[2] / a2[v5]) * v6);
-    a1[v3] = 2 * result;
-    if ( a2[2] < 0.0 )
-      a1[v3] = (2 * result) | 1;
-  }
-  return result;
+  return net_encode_direction(a1, a2, a3);
 }
 
 //----- (0000000140115360) ----------------------------------------------------
@@ -7241,50 +7149,7 @@ void sub_140115830()
 //----- (0000000140115AE0) ----------------------------------------------------
 __int64            sub_140115AE0(_DWORD *a1, int a2)
 {
-  signed int v2;
-  char v3;
-  int v4;
-  unsigned int v5;
-  unsigned int v6;
-
-  v2 = packet_in_byte;
-  if ( (int)packet_in_byte >= 0x10000
-    || (signed int)(packet_in_byte + (a2 >> 3)) > (int)packet_in_length )
-  {
-    return 0;
-  }
-  v3 = 0;
-  v4 = 0;
-  if ( a2 > 0 )
-  {
-    v5 = packet_in_bit;
-    while ( 1 )
-    {
-      v6 = 8 - v5;
-      v4 |= (~(-1 << a2)
-           & (*((unsigned __int8 *)&packet_in_data + v2) >> SLOBYTE(packet_in_bit))) << v3;
-      if ( a2 < 8 - v5 )
-        break;
-      if ( a2 == v6 )
-      {
-        packet_in_bit = 0;
-        packet_in_byte = v2 + 1;
-        goto LABEL_11;
-      }
-      ++v2;
-      v5 = 0;
-      a2 -= v6;
-      packet_in_byte = v2;
-      v3 += v6;
-      packet_in_bit = 0;
-      if ( a2 <= 0 )
-        goto LABEL_11;
-    }
-    packet_in_bit = a2 + v5;
-  }
-LABEL_11:
-  *a1 = v4;
-  return 1;
+  return net_read_bits(a1, a2);
 }
 
 //----- (0000000140115BD0) ----------------------------------------------------
@@ -7306,50 +7171,7 @@ __int64            sub_140115BD0(int *a1, int a2)
 //----- (0000000140115C20) ----------------------------------------------------
 __int64            sub_140115C20(_DWORD *a1, int a2, int a3)
 {
-  signed int v3;
-  char v4;
-  int v5;
-  unsigned int v6;
-  unsigned int v7;
-
-  v3 = packet_in_byte;
-  if ( (int)packet_in_byte >= 0x10000
-    || (signed int)(packet_in_byte + (a2 >> 3)) > (int)packet_in_length )
-  {
-    return 0;
-  }
-  v4 = 0;
-  v5 = 0;
-  if ( a2 > 0 )
-  {
-    v6 = packet_in_bit;
-    while ( 1 )
-    {
-      v7 = 8 - v6;
-      v5 |= (~(-1 << a2)
-           & (*((unsigned __int8 *)&packet_in_data + v3) >> SLOBYTE(packet_in_bit))) << v4;
-      if ( a2 < 8 - v6 )
-        break;
-      if ( a2 == v7 )
-      {
-        packet_in_bit = 0;
-        packet_in_byte = v3 + 1;
-        goto LABEL_11;
-      }
-      ++v3;
-      v6 = 0;
-      a2 -= v7;
-      packet_in_byte = v3;
-      v4 += v7;
-      packet_in_bit = 0;
-      if ( a2 <= 0 )
-        goto LABEL_11;
-    }
-    packet_in_bit = a2 + v6;
-  }
-LABEL_11:
-  *a1 = a3 * v5;
-  return 1;
+  return net_read_bits_scaled(a1, a2, (unsigned int)a3);
 }
 
 //----- (0000000140115D20) ----------------------------------------------------
@@ -7372,103 +7194,25 @@ __int64            sub_140115D20(int *a1, int a2)
 //----- (0000000140115D90) ----------------------------------------------------
 __int64            sub_140115D90(_DWORD *a1, signed int a2)
 {
-  signed int v2;
-  unsigned int v4;
-  char v5;
-  unsigned int v6;
-
-  v2 = packet_out_byte;
-  if ( (int)packet_out_byte >= 0x10000 )
-    return 0;
-  v4 = *a1 & ~(-1 << a2);
-  if ( a2 > 0 )
-  {
-    v5 = packet_out_bit;
-    while ( 1 )
-    {
-      *((_BYTE *)&packet_out_data + v2) &= ~(((1 << a2) - 1) << v5);
-      *((_BYTE *)&packet_out_data + (int)packet_out_byte) |= (_BYTE)v4 << SLOBYTE(packet_out_bit);
-      v6 = 8 - packet_out_bit;
-      if ( a2 < 8 - packet_out_bit )
-        break;
-      if ( a2 == v6 )
-      {
-        ++packet_out_byte;
-        packet_out_bit = 0;
-        return 1;
-      }
-      v5 = 0;
-      v2 = packet_out_byte + 1;
-      v4 >>= v6;
-      a2 -= v6;
-      ++packet_out_byte;
-      packet_out_bit = 0;
-      if ( a2 <= 0 )
-        return 1;
-    }
-    packet_out_bit += a2;
-  }
-  return 1;
+  return net_write_bits(a1, a2);
 }
 
 //----- (0000000140115E60) ----------------------------------------------------
 __int64            sub_140115E60(_DWORD *a1, signed int a2)
 {
-  sub_140115D90(a1, a2);
-  return 1;
+  return net_write_bits_e60(a1, a2);
 }
 
 //----- (0000000140115E80) ----------------------------------------------------
 __int64            sub_140115E80(_DWORD *a1, int a2, unsigned int a3)
 {
-  signed int v3;
-  signed int v4;
-  unsigned int v6;
-  unsigned int v7;
-  unsigned int v8;
-
-  v3 = packet_out_byte;
-  v4 = a2;
-  if ( (int)packet_out_byte >= 0x10000 )
-    return 0;
-  v6 = ~(-1 << a2) & (*a1 / a3);
-  if ( a2 > 0 )
-  {
-    v7 = packet_out_bit;
-    while ( 1 )
-    {
-      if ( v7 )
-        *((_BYTE *)&packet_out_data + v3) |= (_BYTE)v6 << v7;
-      else
-        *((_BYTE *)&packet_out_data + v3) = v6;
-      v8 = 8 - packet_out_bit;
-      if ( v4 < 8 - packet_out_bit )
-        break;
-      if ( v4 == v8 )
-      {
-        ++packet_out_byte;
-        packet_out_bit = 0;
-        return 1;
-      }
-      v7 = 0;
-      v3 = packet_out_byte + 1;
-      v6 >>= v8;
-      v4 -= v8;
-      ++packet_out_byte;
-      packet_out_bit = 0;
-      if ( v4 <= 0 )
-        return 1;
-    }
-    packet_out_bit += v4;
-  }
-  return 1;
+  return net_write_bits_scaled(a1, a2, a3);
 }
 
 //----- (0000000140115F70) ----------------------------------------------------
 __int64            sub_140115F70(_DWORD *a1, signed int a2)
 {
-  sub_140115D90(a1, a2);
-  return 1;
+  return net_write_bits_f70(a1, a2);
 }
 
 //----- (0000000140116210) ----------------------------------------------------
@@ -8249,126 +7993,25 @@ __int64            sub_14011B7F0(int a1, int a2)
 //----- (000000014011B8F0) ----------------------------------------------------
 _BOOL8            sub_14011B8F0(float *a1, int a2, float a3)
 {
-  __int64 v3;
-  float v4;
-  _BOOL8 result;
-
-  v3 = 5873LL * a2;
-  result = false;
-  if ( *a1 >= (float)(*(float *)&dword_140404A6C[v3 + 283831485] - a3)
-    && *a1 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831488]) )
-  {
-    v4 = a1[2];
-    if ( v4 >= (float)(*(float *)&dword_140404A6C[v3 + 283831487] - a3)
-      && v4 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831490]) )
-    {
-      return true;
-    }
-  }
-  return result;
+  return corporation_contains_point(a1, a2, a3);
 }
 
 //----- (000000014011B960) ----------------------------------------------------
 _BOOL8            sub_14011B960(float *a1, int a2, float a3)
 {
-  __int64 v3;
-  float v4;
-  float v5;
-  _BOOL8 result;
-
-  v3 = 5873LL * a2;
-  result = false;
-  if ( *a1 >= (float)(*(float *)&dword_140404A6C[v3 + 283831491] - a3)
-    && *a1 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831494]) )
-  {
-    v4 = a1[1];
-    if ( v4 >= (float)(*(float *)&dword_140404A6C[v3 + 283831492] - a3)
-      && v4 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831495]) )
-    {
-      v5 = a1[2];
-      if ( v5 >= (float)(*(float *)&dword_140404A6C[v3 + 283831493] - a3)
-        && v5 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 283831496]) )
-      {
-        return true;
-      }
-    }
-  }
-  return result;
+  return corporation_vault_contains_point(a1, a2, a3);
 }
 
 //----- (000000014011B9F0) ----------------------------------------------------
 _BOOL8            sub_14011B9F0(int a1, float *a2, float a3)
 {
-  __int64 v3;
-  float v4;
-  float v5;
-  _BOOL8 result;
-
-  v3 = 14019LL * a1;
-  result = false;
-  if ( *a2 >= (float)(*(float *)&dword_140404A6C[v3 + 225641219] - a3)
-    && *a2 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 225641222]) )
-  {
-    v4 = a2[1];
-    if ( v4 >= (float)(*(float *)&dword_140404A6C[v3 + 225641220] - a3)
-      && v4 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 225641223]) )
-    {
-      v5 = a2[2];
-      if ( v5 >= (float)(*(float *)&dword_140404A6C[v3 + 225641221] - a3)
-        && v5 < (float)(a3 + *(float *)&dword_140404A6C[v3 + 225641224]) )
-      {
-        return true;
-      }
-    }
-  }
-  return result;
+  return world_region_contains_point(a1, a2, a3);
 }
 
 //----- (000000014011BAD0) ----------------------------------------------------
 _BOOL8            sub_14011BAD0(float *a1)
 {
-  float v1;
-  float v2;
-  float v3;
-  float v4;
-  float v5;
-  float v6;
-  _BOOL8 result;
-
-  v1 = *a1 - g_183F7C544;
-  v2 = a1[1] - g_183F7C548;
-  v3 = a1[2] - g_183F7C54C;
-  result = false;
-  if ( (float)((float)((float)(v2 * g_183F7C56C)
-                     + (float)(v1 * g_183F7C568))
-             + (float)(v3 * g_183F7C570)) <= 0.0 )
-  {
-    v4 = g_183F7C568 * 0.70709997;
-    v5 = g_183F7C56C * 0.70709997;
-    v6 = g_183F7C570 * 0.70709997;
-    if ( (float)((float)((float)((float)((float)(g_183F7C568 * 0.70709997)
-                                       - (float)(g_183F7C550 * 0.70709997))
-                               * v1)
-                       + (float)((float)((float)(g_183F7C56C * 0.70709997)
-                                       - (float)(g_183F7C554 * 0.70709997))
-                               * v2))
-               + (float)((float)((float)(g_183F7C570 * 0.70709997)
-                               - (float)(g_183F7C558 * 0.70709997))
-                       * v3)) <= 0.0
-      && (float)((float)((float)((float)((float)(g_183F7C554 * 0.70709997) + v5) * v2)
-                       + (float)((float)((float)(g_183F7C550 * 0.70709997) + v4) * v1))
-               + (float)((float)((float)(g_183F7C558 * 0.70709997) + v6) * v3)) <= 0.0
-      && (float)((float)((float)((float)(v4 - (float)(g_183F7C55C * 0.70709997)) * v1)
-                       + (float)((float)(v5 - (float)(g_183F7C560 * 0.70709997)) * v2))
-               + (float)((float)(v6 - (float)(g_183F7C564 * 0.70709997)) * v3)) <= 0.0
-      && (float)((float)((float)((float)((float)(g_183F7C560 * 0.70709997) + v5) * v2)
-                       + (float)((float)((float)(g_183F7C55C * 0.70709997) + v4) * v1))
-               + (float)((float)((float)(g_183F7C564 * 0.70709997) + v6) * v3)) <= 0.0 )
-    {
-      return true;
-    }
-  }
-  return result;
+  return area_view_contains_point(a1);
 }
 
 //----- (000000014011BD10) ----------------------------------------------------
@@ -8505,34 +8148,13 @@ void            sub_14011C490(float *a1, float *a2)
 //----- (000000014011C640) ----------------------------------------------------
 float            sub_14011C640(float *a1, float *a2, float a3)
 {
-  float v3;
-
-  v3 = (float)((float)(a1[1] * a2[1]) + (float)(*a1 * *a2)) + (float)(a1[2] * a2[2]);
-  return fsqrt(
-           (float)(a3 * a3)
-         - (float)((float)((float)((float)(*a1 * *a1) + (float)(a1[1] * a1[1])) + (float)(a1[2] * a1[2]))
-                 - (float)(v3 * v3)))
-       - v3;
+  return physics_sphere_exit_distance(a1, a2, a3);
 }
 
 //----- (000000014011C6B0) ----------------------------------------------------
 __m128            sub_14011C6B0(__int64 a1, float *a2, float a3)
 {
-  __m128 v3;
-  __m128 v4;
-
-  v3 = _mm_castsi128_ps(_mm_cvtsi32_si128((int)(*(unsigned int *)(a1 + 4))));
-  SR_VEC_LANES(128, v3, f32)[0] = (float)((float)(SR_VEC_LANES(128, v3, f32)[0] * a2[1]) + (float)(*(float *)a1 * *a2))
-                 + (float)(*(float *)(a1 + 8) * a2[2]);
-  v4 = _mm_xor_ps(v3, ((__m128)_mm_load_si128((const __m128i *)&xmmword_140279870)));
-  SR_VEC_LANES(128, v4, f32)[0] = SR_VEC_LANES(128, v4, f32)[0]
-                 - fsqrt(
-                     (float)(a3 * a3)
-                   - (float)((float)((float)((float)(*(float *)a1 * *(float *)a1)
-                                           + (float)(*(float *)(a1 + 4) * *(float *)(a1 + 4)))
-                                   + (float)(*(float *)(a1 + 8) * *(float *)(a1 + 8)))
-                           - (float)(SR_VEC_LANES(128, v4, f32)[0] * SR_VEC_LANES(128, v4, f32)[0])));
-  return v4;
+  return physics_sphere_entry_distance((const float *)a1, a2, a3);
 }
 
 //----- (000000014011C730) ----------------------------------------------------

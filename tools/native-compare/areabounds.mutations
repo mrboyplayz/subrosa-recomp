@@ -1,0 +1,109 @@
+inclusive lower bound
+if (!(point[axis] >= bounds->lower[axis] - margin))
+----
+if (!(point[axis] > bounds->lower[axis] - margin))
+====
+exclusive upper bound
+if (point[axis] >= margin + bounds->upper[axis])
+----
+if (point[axis] > margin + bounds->upper[axis])
+====
+lower NaN rejection
+if (!(point[axis] >= bounds->lower[axis] - margin))
+----
+if (point[axis] < bounds->lower[axis] - margin)
+====
+upper NaN acceptance
+if (point[axis] >= margin + bounds->upper[axis])
+----
+if (!(point[axis] < margin + bounds->upper[axis]))
+====
+lower margin
+bounds->lower[axis] - margin
+----
+bounds->lower[axis] + margin
+====
+upper margin
+margin + bounds->upper[axis]
+----
+bounds->upper[axis] - margin
+====
+interior ignores height
+contains_point(corporation_interior_bounds(corporation), point, margin, 2)
+----
+contains_point(corporation_interior_bounds(corporation), point, margin, 1)
+====
+vault includes height
+contains_point(corporation_vault_bounds(corporation), point, margin, 1)
+----
+contains_point(corporation_vault_bounds(corporation), point, margin, 2)
+====
+region includes height
+contains_point(world_region_bounds(region), point, margin, 1)
+----
+contains_point(world_region_bounds(region), point, margin, 2)
+====
+interior table
+corporation_interior_bounds(corporation), point
+----
+corporation_vault_bounds(corporation), point
+====
+view origin x
+float x = point[0] - view->origin[0];
+----
+float x = point[0] + view->origin[0];
+====
+view origin y
+float y = point[1] - view->origin[1];
+----
+float y = point[1] + view->origin[1];
+====
+view origin z
+float z = point[2] - view->origin[2];
+----
+float z = point[2] + view->origin[2];
+====
+back plane
+if ((y * by + x * bx) + z * bz > 0.0f)
+----
+if ((y * by + x * bx) + z * bz < 0.0f)
+====
+back plane NaN
+if ((y * by + x * bx) + z * bz > 0.0f)
+----
+if (!((y * by + x * bx) + z * bz <= 0.0f))
+====
+right negative plane
+if (((bx - rx) * x + (by - ry) * y) + (bz - rz) * z > 0.0f)
+----
+if (((bx - rx) * x + (by - ry) * y) + (bz - rz) * z < 0.0f)
+====
+right positive plane
+if (((ry + by) * y + (rx + bx) * x) + (rz + bz) * z > 0.0f)
+----
+if (((ry + by) * y + (rx + bx) * x) + (rz + bz) * z < 0.0f)
+====
+up negative plane
+if (((bx - ux) * x + (by - uy) * y) + (bz - uz) * z > 0.0f)
+----
+if (((bx - ux) * x + (by - uy) * y) + (bz - uz) * z < 0.0f)
+====
+up positive plane
+if (((uy + by) * y + (ux + bx) * x) + (uz + bz) * z > 0.0f)
+----
+if (((uy + by) * y + (ux + bx) * x) + (uz + bz) * z < 0.0f)
+====
+side-plane sum order
+((ry + by) * y + (rx + bx) * x) + (rz + bz) * z
+----
+(ry + by) * y + ((rx + bx) * x + (rz + bz) * z)
+====
+right axis
+float rx = view->right[0] * scale;
+----
+float rx = view->up[0] * scale;
+====
+up axis
+float uy = view->up[1] * scale;
+----
+float uy = view->right[1] * scale;

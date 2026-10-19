@@ -1,0 +1,101 @@
+unsigned byte ordering
+return a < b ? UINT32_MAX : 1u;
+----
+return (signed char)a < (signed char)b ? UINT32_MAX : 1u;
+====
+compare equality
+if (!a)
+            return 0;
+----
+if (!a)
+            return 1;
+====
+compare less word
+return a < b ? UINT32_MAX : 1u;
+----
+return a < b ? UINT32_MAX - 1u : 1u;
+====
+CRC lazy initialization
+if (!table[0]) {
+----
+if (1) {
+====
+CRC entry count
+i < 256
+----
+i < 255
+====
+CRC bit count
+bit < 8
+----
+bit < 7
+====
+CRC polynomial
+0xEDB88320u
+----
+0xEDB88321u
+====
+CRC accumulator shift
+(seed >> 8) ^ table[(uint8_t)seed ^ *text]
+----
+(seed >> 7) ^ table[(uint8_t)seed ^ *text]
+====
+CRC table index
+table[(uint8_t)seed ^ *text]
+----
+table[(uint8_t)seed]
+====
+CRC final complement
+return ~seed;
+----
+return seed;
+====
+prefix exact end
+while (position < text_scan->length && *needle && *needle == text_scan->data[position])
+----
+while (position <= text_scan->length && *needle && *needle == text_scan->data[position])
+====
+prefix equality
+*needle == text_scan->data[position]
+----
+*needle != text_scan->data[position]
+====
+prefix terminator
+return *needle == 0;
+----
+return *needle != 0;
+====
+search advances past needle
+position = add_int(position, (int32_t)needle_length);
+----
+position = add_int(position, (int32_t)needle_length + 1);
+====
+search result before end
+return position < length;
+----
+return position <= length;
+====
+visible length cap
+visible < 255
+----
+visible < 254
+====
+hidden ID needs two hashes
+!(out[visible] == '#' && out[visible + 1] == '#')
+----
+out[visible] != '#'
+====
+hidden ID marker
+out[visible] == '#' && out[visible + 1] == '#'
+----
+out[visible] == '#' && out[visible + 1] == '@'
+====
+visible terminator
+out[visible] = 0;
+----
+out[visible] = ' ';
+====
+full source copy
+} while (byte);
+----
+} while (byte && (size_t)(at - out) < 255);

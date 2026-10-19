@@ -1,0 +1,59 @@
+thumb center
+thumb * 0.5f
+----
+thumb
+====
+slider active width
+widget->local[2] - thumb
+----
+widget->local[2] + thumb
+====
+nonpositive range becomes one
+max_float((float)subtract_int(maximum, minimum), 1.0f)
+----
+max_float((float)subtract_int(maximum, minimum), 0.0f)
+====
+half unit rounding bias
+truncate_float(fraction * range + 0.5f)
+----
+truncate_float(fraction * range)
+====
+truncating conversion
+truncate_float(fraction * range + 0.5f)
+----
+_mm_cvtss_si32(_mm_set_ss(fraction * range + 0.5f))
+====
+step flag
+if (menu_step_enabled)
+----
+if (1)
+====
+step half bias
+add_int(step >> 1, offset)
+----
+add_int(step, offset)
+====
+signed step remainder
+rounded % step
+----
+(int32_t)((uint32_t)rounded % (uint32_t)step)
+====
+lower clamp
+if (candidate >= minimum) minimum = candidate;
+----
+minimum = candidate;
+====
+upper clamp
+if (minimum <= maximum) maximum = minimum;
+----
+maximum = minimum;
+====
+value store
+*out = maximum;
+----
+*out = minimum;
+====
+returned value pointer
+return out;
+----
+return NULL;

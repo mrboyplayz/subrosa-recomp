@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/physics.h"
 
 //----- (00000001400B1450) ----------------------------------------------------
 __int64            sub_1400B1450(
@@ -40,34 +41,7 @@ __int64            sub_1400B2E70(int a1)
 //----- (000000014012B220) ----------------------------------------------------
 void sub_14012B220()
 {
-  float *v0;
-  float *v1;
-  __int64 v2;
-  float v3;
-
-  v0 = (float *)&g_14498174C;
-  v1 = (float *)&g_1449816FC;
-  v2 = 0x2000;
-  do
-  {
-    if ( *((_DWORD *)v1 - 7) )
-    {
-      if ( !*((_DWORD *)v1 - 5) )
-      {
-        v3 = v1[3] - 0.0027222224;
-        v1[3] = v3;
-        *(v1 - 1) = v1[2] + *(v1 - 1);
-        *v1 = v3 + *v1;
-        v1[1] = v1[4] + v1[1];
-        sub_14012B2D0((unsigned int *)v0 - 12, v0 - 3, v0, v0 + 9);
-      }
-    }
-    v0 += 47;
-    v1 += 47;
-    --v2;
-  }
-  while ( v2 );
-  return;
+  physics_integrate_bodies();
 }
 
 //----- (000000014012B2D0) ----------------------------------------------------
@@ -637,91 +611,7 @@ __int64            sub_14005CF80(
         unsigned int a5,
         unsigned int *a6)
 {
-  unsigned int *v7;
-  unsigned int v11;
-  __int64 v13;
-  __int64 v14;
-  float v15;
-  float v16;
-  float v17;
-  float v18;
-  float v19;
-  float v20;
-  unsigned int v21;
-  unsigned int v22;
-  unsigned int v23;
-
-  v7 = &g_1449816E0;
-  v11 = 0;
-  while ( *v7 )
-  {
-    ++v11;
-    v7 += 47;
-    if ( (__int64)v7 >= (__int64)&g_144AF96E0 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( v11 == -1 )
-    return 0xFFFFFFFFLL;
-  v13 = 47LL * (int)v11;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[v13 + 18215710]), 0, 0xB8u);
-  dword_140404A6C[v13 + 18215714] = a5;
-  dword_140404A6C[v13 + 18215709] = 1;
-  dword_140404A6C[v13 + 18215710] = a1;
-  dword_140404A6C[v13 + 18215752] = 1056964608;
-  dword_140404A6C[v13 + 18215753] = 1048576000;
-  dword_140404A6C[v13 + 18215754] = 1056964608;
-  dword_140404A6C[v13 + 18215715] = *a2;
-  dword_140404A6C[v13 + 18215716] = a2[1];
-  dword_140404A6C[v13 + 18215717] = a2[2];
-  dword_140404A6C[v13 + 18215724] = *a3;
-  dword_140404A6C[v13 + 18215725] = a3[1];
-  dword_140404A6C[v13 + 18215726] = a3[2];
-  dword_140404A6C[v13 + 18215727] = a3[3];
-  dword_140404A6C[v13 + 18215728] = a3[4];
-  dword_140404A6C[v13 + 18215729] = a3[5];
-  dword_140404A6C[v13 + 18215730] = a3[6];
-  dword_140404A6C[v13 + 18215731] = a3[7];
-  dword_140404A6C[v13 + 18215732] = a3[8];
-  if ( a4 )
-  {
-    dword_140404A6C[v13 + 18215718] = *a4;
-    dword_140404A6C[v13 + 18215719] = a4[1];
-    dword_140404A6C[v13 + 18215720] = a4[2];
-  }
-  dword_140404A6C[v13 + 18215742] = *a6;
-  dword_140404A6C[v13 + 18215743] = a6[1];
-  dword_140404A6C[v13 + 18215744] = a6[2];
-  v14 = 47LL * (int)v11;
-  v15 = *(float *)&dword_140404A6C[v14 + 18215742];
-  if ( v15 <= 0.0 )
-    v16 = 0.0;
-  else
-    v16 = 1.0 / v15;
-  *(float *)&dword_140404A6C[v14 + 18215745] = v16;
-  v17 = *(float *)&dword_140404A6C[v14 + 18215743];
-  if ( v17 <= 0.0 )
-    v18 = 0.0;
-  else
-    v18 = 1.0 / v17;
-  *(float *)&dword_140404A6C[v14 + 18215746] = v18;
-  v19 = *(float *)&dword_140404A6C[v14 + 18215744];
-  if ( v19 <= 0.0 )
-    v20 = 0.0;
-  else
-    v20 = 1.0 / v19;
-  *(float *)&dword_140404A6C[v14 + 18215747] = v20;
-  v21 = dword_140404A6C[v13 + 18215742];
-  dword_140404A6C[v13 + 18215748] = v21;
-  v22 = dword_140404A6C[v13 + 18215743];
-  if ( *(float *)&v21 > *(float *)&v22 )
-  {
-    dword_140404A6C[v13 + 18215748] = v22;
-    v21 = v22;
-  }
-  v23 = dword_140404A6C[v13 + 18215744];
-  if ( *(float *)&v21 > *(float *)&v23 )
-    dword_140404A6C[v13 + 18215748] = v23;
-  return v11;
+  return physics_create_body(a1, (const float *)a2, (const float *)a3, (const float *)a4, COERCE_FLOAT(a5), (const float *)a6);
 }
 
 //----- (000000014006A5F0) ----------------------------------------------------
@@ -2596,58 +2486,12 @@ void sub_14010D610()
 //----- (000000014012B090) ----------------------------------------------------
 unsigned int *           sub_14012B090(int a1, float *a2, float *a3)
 {
-  __int64 v3;
-  float v5;
-  float v6;
-  float v7;
-  float v8;
-  float v9;
-  float v10;
-  float v11;
-
-  v3 = 47LL * a1;
-  *(float *)&dword_140404A6C[v3 + 18215718] = *(float *)&dword_140404A6C[v3 + 18215718] + *a3;
-  *(float *)&dword_140404A6C[v3 + 18215719] = *(float *)&dword_140404A6C[v3 + 18215719] + a3[1];
-  *(float *)&dword_140404A6C[v3 + 18215720] = *(float *)&dword_140404A6C[v3 + 18215720] + a3[2];
-  v5 = a2[1];
-  v6 = a3[1];
-  v7 = a3[2];
-  v8 = *a3;
-  v9 = a2[2] * *a3;
-  v10 = *a2;
-  v11 = *a2 * v6;
-  *(float *)&dword_140404A6C[v3 + 18215733] = (float)((float)(a2[2] * v6) - (float)(v5 * v7))
-                                            + *(float *)&dword_140404A6C[v3 + 18215733];
-  *(float *)&dword_140404A6C[v3 + 18215734] = (float)((float)(v10 * v7) - v9)
-                                            + *(float *)&dword_140404A6C[v3 + 18215734];
-  *(float *)&dword_140404A6C[v3 + 18215735] = (float)((float)(v5 * v8) - v11)
-                                            + *(float *)&dword_140404A6C[v3 + 18215735];
-  return &g_1449816E0;
+  return (unsigned int *)(void *)physics_apply_point_velocity(a1, a2, a3);
 }
 
 //----- (000000014012B170) ----------------------------------------------------
 unsigned int *           sub_14012B170(float *a1, int a2, float *a3)
 {
-  float v3;
-  float v4;
-  __int64 v5;
-  float v7;
-  float v8;
-  float v9;
-  float v10;
-  float v11;
-
-  v3 = a3[2];
-  v4 = a3[1];
-  v5 = 47LL * a2;
-  v7 = *(float *)&dword_140404A6C[v5 + 18215738];
-  v8 = *(float *)&dword_140404A6C[v5 + 18215736];
-  v9 = *(float *)&dword_140404A6C[v5 + 18215737];
-  v10 = *a3 * v7;
-  v11 = (float)(*a3 * v9) - (float)(v8 * v4);
-  *a1 = (float)((float)(v4 * v7) - (float)(v3 * v9)) + *(float *)&dword_140404A6C[v5 + 18215718];
-  a1[1] = (float)((float)(v8 * v3) - v10) + *(float *)&dword_140404A6C[v5 + 18215719];
-  a1[2] = v11 + *(float *)&dword_140404A6C[v5 + 18215720];
-  return &g_1449816E0;
+  return (unsigned int *)(void *)physics_point_velocity(a1, a2, a3);
 }
 

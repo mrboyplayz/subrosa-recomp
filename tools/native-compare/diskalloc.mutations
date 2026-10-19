@@ -1,0 +1,24 @@
+disk treats negative active as occupied
+if (disk->used) continue;
+----
+if (disk->used > 0) continue;
+====
+disk clear includes last word
+sizeof *disk - sizeof disk->used
+----
+sizeof *disk - sizeof disk->used - 4
+====
+disk sets active flag
+disk->used = 1;
+----
+disk->used = 2;
+====
+disk caller word
+disk->unknown_04 = value;
+----
+disk->unknown_04 = 0;
+====
+disk full sentinel
+return UINT32_MAX;
+----
+return 0;

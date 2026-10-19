@@ -1,0 +1,59 @@
+caret unordered comparison
+if (!(x >= width)) break;
+----
+if (x < width) break;
+====
+caret exact boundary
+if (!(x >= width)) break;
+----
+if (!(x > width)) break;
+====
+caret limit
+if (at >= menu_text_limit) break;
+----
+if (at > menu_text_limit) break;
+====
+unsigned character metrics
+4u * character
+----
+4u * (character & 127)
+====
+caret accumulated widths
+width = width + advance(widget->font, menu_text_buffer[at]) * widget->text_size;
+----
+width = advance(widget->font, menu_text_buffer[at]) * widget->text_size;
+====
+font selection
+text_font_bytes(font)
+----
+text_font_bytes(0)
+====
+password star glyph
+if (widget->password) character = '*';
+----
+if (widget->password) character = '?';
+====
+password enabled test
+if (widget->password) character = '*';
+----
+if (!widget->password) character = '*';
+====
+prefix requested length
+at < count
+----
+at <= count
+====
+prefix text limit
+if (!character || at >= menu_text_limit) break;
+----
+if (!character || at > menu_text_limit) break;
+====
+empty prefix result
+if (count <= 0) return width;
+----
+if (count <= 0) return 1.0f;
+====
+prefix font scale
+width = width + widget->text_size * advance(widget->font, character);
+----
+width = width + advance(widget->font, character);

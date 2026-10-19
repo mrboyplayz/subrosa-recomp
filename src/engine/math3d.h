@@ -38,6 +38,17 @@ void math_mat3_multiply(float out[9], const float a[9], const float b[9]);
 /* out = b * transpose(a). out may be a or b. 0x14007AE70 */
 void math_mat3_multiply_transposed(float out[9], const float a[9], const float b[9]);
 
+/* Transpose as raw words, preserving all float bits; any overlap is valid.
+   0x14007CA00 */
+void math_mat3_transpose(float out[9], const float matrix[9]);
+
+extern int32_t dword_1402B3840[];
+#define math_fixed_sine dword_1402B3840
+/* Rotate signed 16.16 coordinates using the original 65,536-angle table.
+   Each product rounds separately, and final sums wrap at 32 bits.
+   Returns the zero-extended new y word. 0x14007D0B0 */
+uint32_t math_fixed_vec2_rotate(int32_t vector[2], uint16_t angle);
+
 /* out = a * b. out may be a or b. 0x14007A0E0 */
 void math_mat4_multiply(float out[16], const float a[16], const float b[16]);
 

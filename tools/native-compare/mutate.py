@@ -45,12 +45,16 @@ def main():
     args = parser.parse_args()
     source = PROJECT / 'src/engine'
     work = PROJECT / 'build/mutate' / args.suite
+    mutation_root = (PROJECT / 'build/mutate').resolve()
     missed = []
     chosen = {int(x) for x in args.select.split(',')} if args.select else None
     for i, (label, old, new) in enumerate(parse(args.mutations)):
         if chosen is not None and i not in chosen:
             continue
         engine = work / 'engine'
+        target_directory = engine.resolve()
+        if target_directory == mutation_root or not target_directory.is_relative_to(mutation_root):
+            raise SystemExit('mutation engine directory escapes build/mutate: ' + str(target_directory))
         if engine.exists():
             shutil.rmtree(engine)
         shutil.copytree(source, engine)

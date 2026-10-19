@@ -1,0 +1,164 @@
+projection dot product
+(y * normal[1] + normal[0] * x) + z * normal[2]
+----
+(y * normal[1] - normal[0] * x) + z * normal[2]
+====
+projection x
+float px = normal[0] * along;
+----
+float px = normal[0] + along;
+====
+projection y
+float py = along * normal[1];
+----
+float py = along + normal[1];
+====
+projection z
+float pz = along * normal[2];
+----
+float pz = along + normal[2];
+====
+tangent subtraction
+float tx = x - px;
+----
+float tx = x + px;
+====
+tangent length
+sqrt_float((ty * ty + tx * tx) + tz * tz)
+----
+sqrt_float((ty * ty + tx * tx) - tz * tz)
+====
+unordered early return
+if (!(slide > 0.0f))
+----
+if (slide <= 0.0f)
+====
+zero tangent early return
+if (!(slide > 0.0f))
+----
+if (slide < 0.0f)
+====
+tangent normalization
+float reciprocal = 1.0f / slide;
+----
+float reciprocal = slide;
+====
+normal speed
+sqrt_float((px * px + py * py) + pz * pz)
+----
+sqrt_float((px * px + py * py) - pz * pz)
+====
+friction coefficient
+float friction_limit = normal_speed * friction;
+----
+float friction_limit = normal_speed + friction;
+====
+friction branch
+if (slide > friction_limit) {
+----
+if (slide < friction_limit) {
+====
+friction work scale
+work = ((slide - friction_limit) * normal_speed) * 480.0f;
+----
+work = ((slide - friction_limit) * normal_speed) * 240.0f;
+====
+friction clamp
+slide = friction_limit;
+----
+slide = friction_limit * 0.5f;
+====
+uncapped routine gains cap
+return limit_slide(velocity, normal, friction, 0, 0.0f);
+----
+return limit_slide(velocity, normal, friction, 1, 0.0f);
+====
+capped routine loses cap
+return limit_slide(velocity, normal, friction, 1, max_slide);
+----
+return limit_slide(velocity, normal, friction, 0, max_slide);
+====
+cap comparison
+if (capped && slide > max_slide) {
+----
+if (capped && slide < max_slide) {
+====
+cap work accumulation
+work = work + ((slide - max_slide) * normal_speed) * 480.0f;
+----
+work = ((slide - max_slide) * normal_speed) * 480.0f;
+====
+cap clamp
+slide = max_slide;
+----
+slide = -max_slide;
+====
+recompose x
+velocity[0] = tx * slide + px;
+----
+velocity[0] = tx * slide - px;
+====
+recompose y
+velocity[1] = ty * slide + py;
+----
+velocity[1] = ty * slide - py;
+====
+recompose z
+velocity[2] = tz * slide + pz;
+----
+velocity[2] = tz * slide - pz;
+====
+linear change x
+body->velocity[0] = body->velocity[0] + change[0];
+----
+body->velocity[0] = body->velocity[0] - change[0];
+====
+linear change y
+body->velocity[1] = body->velocity[1] + change[1];
+----
+body->velocity[1] = body->velocity[1] - change[1];
+====
+linear change z
+body->velocity[2] = body->velocity[2] + change[2];
+----
+body->velocity[2] = body->velocity[2] - change[2];
+====
+angular change x
+float ax = rz * dy - ry * dz;
+----
+float ax = ry * dz - rz * dy;
+====
+angular change y
+float ay = rx * dz - rz * dx;
+----
+float ay = rz * dx - rx * dz;
+====
+angular change z
+float az = ry * dx - rx * dy;
+----
+float az = rx * dy - ry * dx;
+====
+angular momentum accumulation
+body->angular_momentum[1] = ay + body->angular_momentum[1];
+----
+body->angular_momentum[1] = ay;
+====
+point angular x
+float vx = ry * wz - rz * wy;
+----
+float vx = rz * wy - ry * wz;
+====
+point angular y
+float vy = wx * rz - rx * wz;
+----
+float vy = rx * wz - wx * rz;
+====
+point angular z
+float vz = rx * wy - wx * ry;
+----
+float vz = wx * ry - rx * wy;
+====
+point linear velocity
+out[0] = vx + body->velocity[0];
+----
+out[0] = vx;

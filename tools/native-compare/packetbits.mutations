@@ -1,0 +1,127 @@
+32-bit mask wraps to zero
+return ~(UINT32_MAX << ((uint32_t)bits & 31u));
+----
+return bits == 32 ? UINT32_MAX : ~(UINT32_MAX << ((uint32_t)bits & 31u));
+====
+mask width
+return ~(UINT32_MAX << ((uint32_t)bits & 31u));
+----
+return ~(UINT32_MAX << (((uint32_t)bits + 1u) & 31u));
+====
+byte shift direction
+return (uint8_t)((value & 255u) << (bit & 31u));
+----
+return (uint8_t)((value & 255u) >> (bit & 31u));
+====
+byte shift count
+return (uint8_t)((value & 255u) << (bit & 31u));
+----
+return (uint8_t)((value & 255u) << (bit & 7u));
+====
+read inclusive length end
+add_int(position, bits >> 3) > net_read_length
+----
+add_int(position, bits >> 3) >= net_read_length
+====
+read zero-bit length check
+if (position >= NET_BUFFER_SIZE || add_int(position, bits >> 3) > net_read_length)
+----
+if (bits > 0 && (position >= NET_BUFFER_SIZE || add_int(position, bits >> 3) > net_read_length))
+====
+read failure preserves output
+if (position >= NET_BUFFER_SIZE || add_int(position, bits >> 3) > net_read_length)
+        return 0;
+----
+if (position >= NET_BUFFER_SIZE || add_int(position, bits >> 3) > net_read_length) {
+        *value = 0;
+        return 0;
+    }
+====
+read byte shift
+net_read_buffer[position] >> ((uint32_t)net_read_bit & 31u)
+----
+net_read_buffer[position] >> ((uint32_t)net_read_bit & 7u)
+====
+read output shift
+result |= (part & low_mask(bits)) << (shift & 31u);
+----
+result |= (part & low_mask(bits)) >> (shift & 31u);
+====
+read remaining room
+uint32_t room = 8u - bit;
+----
+uint32_t room = 7u - bit;
+====
+read partial cursor
+net_read_bit = add_int((int32_t)bit, bits);
+----
+net_read_bit = subtract_int((int32_t)bit, bits);
+====
+read advance cursor
+net_read_position = add_int(position, 1);
+----
+net_read_position = add_int(position, 2);
+====
+read shift accumulation
+shift += room;
+----
+shift += 1;
+====
+read scaled wrapping multiplication
+*value = result * scale;
+----
+*value = result + scale;
+====
+basic write clears dirty bits
+net_write_buffer[position] &= (uint8_t)~clear;
+----
+net_write_buffer[position] |= (uint8_t)~clear;
+====
+basic write clears only requested width
+uint8_t clear = (uint8_t)(low_mask(bits) << (bit & 31u));
+----
+uint8_t clear = 255u;
+====
+basic write value mask
+uint32_t remaining = *value & low_mask(bits);
+----
+uint32_t remaining = *value;
+====
+scaled writer unsigned division
+uint32_t remaining = (*value / divisor) & low_mask(bits);
+----
+uint32_t remaining = (*value * divisor) & low_mask(bits);
+====
+scaled writer replaces complete byte
+net_write_buffer[position] = (uint8_t)remaining;
+----
+net_write_buffer[position] |= (uint8_t)remaining;
+====
+scaled writer preserves partial byte
+net_write_buffer[position] |= shifted_byte(remaining, bit);
+----
+net_write_buffer[position] = shifted_byte(remaining, bit);
+====
+e60 success adapter
+int net_write_bits_e60(const uint32_t *value, int bits)
+{
+    net_write_bits(value, bits);
+    return 1;
+}
+----
+int net_write_bits_e60(const uint32_t *value, int bits)
+{
+    return net_write_bits(value, bits);
+}
+====
+f70 success adapter
+int net_write_bits_f70(const uint32_t *value, int bits)
+{
+    net_write_bits(value, bits);
+    return 1;
+}
+----
+int net_write_bits_f70(const uint32_t *value, int bits)
+{
+    return net_write_bits(value, bits);
+}

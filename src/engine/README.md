@@ -21,6 +21,21 @@ The table records the recovered routines by original address. Recovery is incomp
 | `math3d.c` | the frame across a direction (shared by bullets and decals), vector normalize and rotation, angle difference, triangle normal, point-to-segment distance, vector-matrix and matrix products, orthographic matrix, rotation of a basis about an axis | 0x14007A240, 0x14007B4D0, 0x14000B5F0, 0x14006EC40, 0x14007ABA0, 0x14007B0F0, 0x140079D60, 0x14007A010, 0x14007AE70, 0x14007A0E0, 0x140079F00, 0x14007B2A0, quaternion product 0x140105930 |
 | `text.c` | text drawing and measuring | 0x14006D930, 0x14006DB90, 0x14006E530, 0x14006F060 |
 | `physics.c`, `physics_bonds.c` | joint preparation, point and joint impulse kernels, bond expiry and removal, contacts against the level and between two bodies | 0x14001C780, 0x14001CBB0, 0x14001BF70, 0x14001FB90, 0x14007F370, 0x140005160, 0x1400052C0 |
+| `physics_motion.c` | tangential velocity limits and sliding work, a velocity change applied at a body point, and velocity at a body point | 0x14002D820, 0x14002D9B0, 0x14012B090, 0x14012B170 |
+| `area_bounds.c`, `area_bounds.h` | corporation interiors and vaults, world-region membership, and the five-plane camera visibility query | 0x14011B8F0, 0x14011B960, 0x14011B9F0, 0x14011BAD0 |
+| `net_bits.c`, `net_bytes.c`, `net_angle.c` | packet bit reads/writes and scaling, the two always-success write adapters, aligned byte transfers, and signed-magnitude angle encoding | 0x140115AE0, 0x140115C20, 0x140115D90, 0x140115E80, 0x140115E60, 0x140115F70, 0x14007ADF0, 0x14007B180, 0x14010E610 |
+| `text_helpers.c`, `text_helpers.h` | label CRC IDs, the two unsigned-byte comparators, parser prefix/search, and visible-label copying | 0x14004C4C0, 0x14006C980, 0x14006C670, 0x14006C870, 0x14006E4C0, 0x14006F120 |
+| `physics_create.c` | free-bond lookup; body, point, body-bond, rotation-bond, distance-bond and world-anchor creation | 0x1400A4440, 0x14005CF80, 0x14005CBB0, 0x14004E430, 0x14004E5B0, 0x14004E160, 0x14004E2E0 |
+| `events.c`, `events.h` | bullet/hit, message, block-update/hit, sound, corporation door, mission, vehicle removal, player, type-21 and stock-price event constructors; event 15 uses `world_event_block_gone` | 0x140051230, 0x1400512D0, 0x140051480, 0x140051560, 0x1400515E0, 0x140051650, 0x140051730, 0x1400518B0, 0x1400519F0, 0x140051B00, 0x140051BD0, 0x140051CF0, 0x140051DC0, 0x140051F50, 0x140051FF0, 0x140052090 |
+| `disk.c`, `disk_files.c`, `disk.h` | disk allocation, item drive lookup, and file appending | 0x140050EF0, 0x14004C960, 0x140080690 |
+| `physics_kernels.c`, `physics_kernels.h` | scalar/SIMD inverse inertia and sphere intersection roots | 0x14002CF10, 0x14002D2D0, 0x14011C640, 0x14011C6B0 |
+| `physics_body.c` | gravity, translation and the rotation boundary for active unsettled bodies; also used by the full tick | 0x14012B220 |
+| `menu.c`, `menu.h`, `menu_text.c`, `menu_slider.c`, `menu_state.c`, `menu_clip.c` | widget allocation/layout, buttons, selectable buttons, toggles and masks, groups, text caret/measurement, integer sliders, size stack/reset/grid, and nested clipping | 0x140070380, 0x14006F1F0, 0x14006F5A0, 0x140071910, 0x140071AA0, 0x14006FD10, 0x140074C50, 0x140074CE0, 0x140071440, 0x140075930, 0x1400755F0, 0x1400753C0, 0x140070B90, 0x140075650, 0x140075460, 0x140075340 |
+| `net_vector.c` | signed-magnitude scalar encoding, three-component deltas, and compressed direction encoding | 0x1401151C0, 0x1401150E0, 0x140115230 |
+| `menu_labels.c` | queued text at the layout cursor or an explicitly aligned position | 0x140071640, 0x1400764B0 |
+| `audio.c`, `audio.h` | capture ring availability/writes, per-sound buffer availability and positional sound channel allocation | 0x140069580, 0x14006A380, 0x140069FA0, 0x14007D6C0 |
+| `math_integer.c` | raw-word matrix transpose and fixed-point 2D rotation | 0x14007CA00, 0x14007D0B0 |
+| `collision_plane.c`, `collision_contacts.c` | segment/plane intersection and first-free persistent contact lookup | 0x140077B30, 0x140048090 |
 | `physics_points.c` | point masses: movement and gravity, lifetimes (removal with renumbering of bonds, vehicles and humans) | 0x1401154D0, 0x140115830 |
 | `physics_solve.c` | the bond solver of a tick | 0x14001D080 |
 | `physics_rotation.c` | rotation of a body over a tick (fourth-order Runge-Kutta) | 0x14012B2D0 |
@@ -53,7 +68,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `human_body.c` (additions) | the bond of a joint between two bones, kept in the human's bond list | 0x140055FA0 |
 | `world_streets.c` (additions) | street triangles near a box: one street's range, and every street filed in the box's cells | 0x140188720, 0x140188900 |
 | `item_tick.c` | item states for a tick: type-26 lists, children following parents, lifetimes, type 27's vehicle, phones, computers, type 40, grenades, radios, type 30, first aid | 0x1400CC610 |
-| `item_phone.c`, `item_carry.c`, `item_grenade.c`, `item_gun.c`, `item_text.c` | a phone's state event; items carried on the body; a grenade going off; guns (loading, firing, recoil); an item's text line linked to a record | 0x140051940, 0x1401380F0, 0x1400A70B0, 0x1400CF670, 0x140050F90 |
+| `item_phone.c`, `item_carry.c`, `item_grenade.c`, `item_gun.c`, `item_text.c` | a phone's state event; items carried on the body; a grenade going off; guns (loading, firing, recoil); colored and raw item text records | 0x140051940, 0x1401380F0, 0x1400A70B0, 0x1400CF670, 0x140050F90, 0x140051170 |
 | `world_bullets.c`, `bullet.h` | firing a bullet | 0x14004E8A0 |
 | `world_effects.c`, `effect.h` | world effects: adding one (bullet holes, blood drops, sparks, tracers); moving them for a tick (drag, gravity, bouncing off the level, the three-point EFFECT_4 body, drops landing as blood stains, EFFECT_3 marks) | 0x14005EE40, 0x1401597F0 |
 | `world_effects_draw.c` | drawing the world effects in depth order: holes, blood drops and sparks as textured quads, EFFECT_3/EFFECT_4 pieces as a lit mesh, tracers as smooth lines | 0x140125DB0 |
@@ -61,8 +76,9 @@ The table records the recovered routines by original address. Recovery is incomp
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
 
-All of them are in use by the built client except `renderer_batch_vertex2f`
-(0x14007D230), which no recompiled code calls yet.
+The engine objects are linked into the client. Restored routines retain
+their original client entry points, including helpers with no current
+exported callers. `renderer_batch_vertex2f` (0x14007D230) still has no wrapper.
 
 The rows above added on 2026-10-12/13 were compared against the installed
 Steam build (`cc667f7d…`, see `scripts/client_target.py`) with the rebuilt
@@ -128,3 +144,7 @@ viewed through structs.
 The 2026-10-11 item batches are documented in `../../docs/client-itemactions-20261011.md`, `../../docs/client-iteminventory-20261011.md` and `../../docs/client-itemphysics-20261011.md`. Their wrappers are integrated into the combined executable. The existing linked rotation helper has a documented FP-status mismatch; the cash/inventory routines do not use that boundary.
 
 The four collision helpers restored after Claude stopped, and the quiet-NaN FP-status correction in vector normalization, are documented in `../../docs/client-collisionhelpers-20261011.md`.
+
+The four physics helpers added on 2026-10-18 are documented in
+`restoration-20261018.md`. Their native comparisons also exercise the actual
+client wrappers, including the float result carried in a double word.

@@ -1,0 +1,40 @@
+angle sign bit
+uint32_t sign = (1u << ((uint32_t)bits & 31u)) >> 1;
+----
+uint32_t sign = 1u << ((uint32_t)bits & 31u);
+====
+angle double constant
+0.15915494309188485
+----
+0.15915494
+====
+angle magnitude
+double magnitude = (double)fabsf(*angle) * units;
+----
+double magnitude = (double)*angle * units;
+====
+angle 64-bit truncation
+(uint32_t)_mm_cvttsd_si64(_mm_set_sd(magnitude))
+----
+(uint32_t)_mm_cvttsd_si32(_mm_set_sd(magnitude))
+====
+angle magnitude mask
+& (sign - 1u)
+----
+& sign
+====
+angle NaN sign
+if (!(*angle >= 0.0f))
+----
+if (*angle < 0.0f)
+====
+angle sign application
+value |= sign;
+----
+value ^= sign - 1u;
+====
+angle writer return
+return net_write_bits(&value, bits);
+----
+net_write_bits(&value, bits);
+    return 1;

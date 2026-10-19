@@ -8,8 +8,6 @@
    expiry go through their recompiled names too (which forward to
    physics_solve and physics_expire_bonds), so every stage of the tick is
    reached the same way. */
-extern void sub_14012B2D0(float *rotation, float *angular_momentum, float *angular_velocity,
-                          float *inverse_inertia);
 extern int64_t sub_1401069C0(void);          /* vehicle spatial bounds */
 extern void sub_1400B95E0(void);             /* human spatial bounds, world_update_human_bounds */
 extern uint64_t sub_1400C9D20(void);         /* item spatial bounds */
@@ -23,25 +21,6 @@ extern void sub_14007F970(int32_t item);     /* world_remove_item */
 extern void sub_14010BE50(void);             /* world_expire_vehicles */
 extern void sub_140115830(void);             /* physics_expire_points */
 extern void sub_14001FB90(void);             /* physics_expire_bonds */
-
-#define GRAVITY 0.0027222224f   /* per tick, along -y */
-
-static void integrate_body_positions(void)
-{
-    for (int index = 0; index < PHYSICS_BODY_CAPACITY; index++) {
-        PhysicsBody *body = &physics_bodies[index];
-        float vy;
-
-        if (!body->active || body->settled)
-            continue;
-        vy = body->velocity[1] - GRAVITY;
-        body->velocity[1] = vy;
-        body->position[0] = body->velocity[0] + body->position[0];
-        body->position[1] = vy + body->position[1];
-        body->position[2] = body->velocity[2] + body->position[2];
-        sub_14012B2D0(body->rotation, body->angular_momentum, body->angular_velocity, body->inverse_inertia);
-    }
-}
 
 /* Empties layer 0 of the spatial grid. */
 static void clear_grid(void)
@@ -90,7 +69,7 @@ void physics_tick(void)
 {
     for (int index = 0; index < WORLD_HUMAN_CAPACITY; index++)
         world_humans[index].unknown_6ddc = 0;
-    integrate_body_positions();
+    physics_integrate_bodies();
     sub_1401069C0();
     sub_1400B95E0();
     sub_1400C9D20();

@@ -1,20 +1,23 @@
 """Build and run native comparisons (see nc.h).
 
     python tools/native-compare/run.py [suite ...] [--cases N] [--out DIR]
+    python tools/native-compare/run.py physicsmotion --client-wrappers
 
 A suite is tools/native-compare/t_<suite>.c. Each is built as a native
 program (original machine code) and a port program (src/engine/), both are
 run, and their outputs must be identical line for line. Exit status is 0
 only if every suite matched.
 
-The installed game is found through SUBROSA_GAME_DIR (default: the
-repository's parent folder). gcc and nm must be on PATH.
+The installed game is found through SUBROSA_GAME_DIR (default:
+subrosaactual/ in the repository). gcc and nm must be on PATH.
 """
 import argparse
 import difflib
 import hashlib
+import importlib.util
 import os
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -28,6 +31,7 @@ HARNESS_FLAGS = ['-std=gnu11', '-O1', '-msse4.2', '-mcmodel=large', '-fno-strict
                  '-ffp-contract=off', '-Wall', '-Wno-unused-function']
 LINK_FLAGS = ['-Wl,--image-base,0x1B5000000', '-Wl,--disable-dynamicbase',
               '-Wl,--disable-high-entropy-va', '-static', '-lm']
+COMPILER = ['ccache', 'gcc'] if shutil.which('ccache') else ['gcc']
 # Symbols named after an original address resolve to that address.
 ADDRESS_SYMBOL = re.compile(r'^(?:sub|dword|qword|byte|word|flt|dbl|unk|off|xmmword|stru|asc|loc)_(1[0-9A-Fa-f]{8})$')
 
@@ -44,7 +48,7 @@ def compile_objects(sources, flags, directory, defines):
     objects = []
     for source in sources:
         obj = directory / (source.stem + '.o')
-        run(['gcc', '-c', str(source), '-o', str(obj), '-I', str(HERE), '-I', str(PROJECT / 'src/engine')]
+        run(COMPILER + ['-c', str(source), '-o', str(obj), '-I', str(HERE), '-I', str(PROJECT / 'src/engine')]
             + flags + defines)
         objects.append(obj)
     return objects
@@ -97,7 +101,38 @@ def link(objects, program, directory, port):
         raise SystemExit('link failed: ' + program.name)
 
 
-def build(suite, out, engine_dir):
+def compile_client_wrappers(test, directory):
+    """Compile the real client entry points requested by a fixture.
+
+    Select definitions by their original-address comments, as client names
+    may have changed. Keep their includes and use the game's compiler flags.
+    The wrapper bodies themselves are never copied into a maintained fixture.
+    """
+    marker = re.search(r'^// NC_WRAPPERS: (.+)$', test.read_text(encoding='utf-8'), re.M)
+    if not marker:
+        raise SystemExit('suite does not declare NC_WRAPPERS: ' + test.name)
+    sources = [p.read_text(encoding='utf-8') for p in sorted((PROJECT / 'src/client').glob('client_*.c'))]
+    includes, definitions = [], []
+    for address in marker.group(1).split():
+        pattern = re.compile(r'^//----- \(0*' + re.escape(address) + r'\)[^\n]*\n'
+                             r'(?://[^\n]*\n)*([^\n]+(?:\n[ \t]+[^\n]+)*\n\{\n.*?^\})', re.M | re.S)
+        matches = [(source, match) for source in sources for match in pattern.finditer(source)]
+        if len(matches) != 1:
+            raise SystemExit('expected one client definition for ' + address)
+        source, match = matches[0]
+        for include in re.findall(r'^#include [^\n]+', source[:source.index('//-----')], re.M):
+            if include not in includes:
+                includes.append(include)
+        definitions.append(match.group(1))
+    wrapper = directory / 'client_wrappers.c'
+    wrapper.write_text('\n'.join(includes + definitions) + '\n', encoding='utf-8')
+    spec = importlib.util.spec_from_file_location('client_build', PROJECT / 'scripts/build.py')
+    client_build = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(client_build)
+    return compile_objects([wrapper], client_build.CLIENT_FLAGS, directory, [])
+
+
+def build(suite, out, engine_dir, client_wrappers=False):
     test = HERE / ('t_%s.c' % suite)
     define = ['-DNC_GAME_EXE="%s"' % (GAME_DIR / 'subrosa.exe').as_posix()]
     programs = {}
@@ -105,9 +140,13 @@ def build(suite, out, engine_dir):
         directory = out / suite / mode
         directory.mkdir(parents=True, exist_ok=True)
         flags = define + (['-DNC_NATIVE'] if mode == 'native' else [])
+        if client_wrappers and mode == 'port':
+            flags += ['-DNC_CLIENT_WRAPPERS']
         objects = compile_objects([test, HERE / 'nc.c'], HARNESS_FLAGS, directory, flags)
         if mode == 'port':
             objects += compile_objects(sorted(engine_dir.glob('*.c')), ENGINE_FLAGS, directory, [])
+            if client_wrappers:
+                objects += compile_client_wrappers(test, directory)
         program = directory / ('t_%s_%s.exe' % (suite, mode))
         link(objects, program, directory, mode == 'port')
         programs[mode] = program
@@ -120,13 +159,15 @@ def main():
     parser.add_argument('--cases', type=int, default=1000)
     parser.add_argument('--out', type=Path, default=PROJECT / 'build/native-compare')
     parser.add_argument('--engine-dir', type=Path, default=PROJECT / 'src/engine')
+    parser.add_argument('--client-wrappers', action='store_true',
+                        help='compare actual client entry points (suite must declare NC_WRAPPERS)')
     parser.add_argument('--timeout', type=int, default=300, help='seconds per program run')
     args = parser.parse_args()
     suites = args.suites or sorted(p.stem[2:] for p in HERE.glob('t_*.c'))
     env = dict(os.environ, CASES=str(args.cases))
     failed = []
     for suite in suites:
-        programs = build(suite, args.out, args.engine_dir)
+        programs = build(suite, args.out, args.engine_dir, args.client_wrappers)
         outputs = {}
         for mode, program in programs.items():
             try:

@@ -1,0 +1,84 @@
+queue signed count limit
+if ((int32_t)menu_text_record_count >= 1024) return;
+    queue_label
+----
+if (menu_text_record_count >= 1024) return;
+    queue_label
+====
+queue full guard
+if ((int32_t)menu_text_record_count >= 1024) return;
+    float width
+----
+if ((int32_t)menu_text_record_count > 1024) return;
+    float width
+====
+queue entire string
+do { character = *label++; *out++ = character; } while (character);
+----
+int remaining = 255;
+    do { character = *label++; *out++ = character; } while (character && --remaining);
+====
+queue parent
+record->parent = menu_parent;
+----
+record->parent = -1;
+====
+queue font
+record->font = (int32_t)menu_layout->unknown_d4;
+----
+record->font = 0;
+====
+queue size
+record->size = size;
+----
+record->size = 1.0f;
+====
+queue redundant size word
+record->unknown_30 = size;
+----
+record->unknown_30 = 0;
+====
+queue parent scroll
+*menu_parent_y(menu_parent) - *menu_parent_scroll(menu_parent)
+----
+*menu_parent_y(menu_parent) + *menu_parent_scroll(menu_parent)
+====
+queue fourth border word
+k < 4
+----
+k < 3
+====
+queue count increment
+++menu_text_record_count;
+----
+;
+====
+implicit vertical advance
+menu_layout->font_size + 4.0f
+----
+menu_layout->font_size
+====
+implicit horizontal measured advance
+menu_layout->x + (width + 4.0f)
+----
+menu_layout->x + width
+====
+explicit center priority
+if (flags & 1) x = x + width * -0.5f;
+----
+if (flags & 1) x = x - width;
+====
+explicit right alignment
+else if (flags & 2) x = x - width;
+----
+else if (flags & 2) x = x + width;
+====
+explicit vertical centering
+if (flags & 4) y = y + size * -0.5f;
+----
+if (flags & 4) y = y - size;
+====
+explicit bottom alignment
+else if (flags & 8) y = y - size;
+----
+else if (flags & 8) y = y + size;

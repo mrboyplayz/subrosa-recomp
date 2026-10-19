@@ -1,0 +1,19 @@
+last contact slot
+index < 64
+----
+index < 63
+====
+negative contact kind occupied
+!shape->slots[index].kind
+----
+shape->slots[index].kind <= 0
+====
+returned contact index
+return index;
+----
+return index + 1;
+====
+full contact sentinel
+return UINT32_MAX;
+----
+return 0;

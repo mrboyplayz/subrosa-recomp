@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/physics.h"
 
 // 1400A0ABC: conditional instruction was optimized away because rdx.8 is in (1..FF)
 
@@ -1161,19 +1162,7 @@ __int64 sub_1400A3E30()
 //----- (00000001400A4440) ----------------------------------------------------
 __int64 sub_1400A4440()
 {
-  unsigned int v0;
-  unsigned int *v1;
-
-  v0 = 0;
-  v1 = &g_1B4287C80;
-  while ( *v1 )
-  {
-    ++v0;
-    v1 += 61;
-    if ( (__int64)v1 >= (__int64)&g_1B4657C80 )
-      return 0xFFFFFFFFLL;
-  }
-  return v0;
+  return physics_find_free_bond();
 }
 
 //----- (00000001400A4560) ----------------------------------------------------

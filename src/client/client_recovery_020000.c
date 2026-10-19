@@ -1,4 +1,6 @@
 #include "shared_client.h"
+#include "../engine/physics.h"
+#include "../engine/physics_kernels.h"
 
 //----- (0000000140020000) ----------------------------------------------------
 unsigned int *sub_140020000()
@@ -1467,37 +1469,7 @@ __int64 sub_14002CE50()
 //----- (000000014002CF10) ----------------------------------------------------
 float *           sub_14002CF10(__int64 a1, float *a2, __int64 a3, float *a4, float *a5)
 {
-  float v6;
-  float v7;
-  float v8;
-  float v9;
-  float v10;
-  float v11;
-  float v12;
-  float v13;
-  float v14;
-
-  *(_QWORD *)a1 = 0;
-  *(_DWORD *)(a1 + 8) = 0;
-  v6 = (float)((float)((float)(a4[1] * a2[1]) + (float)(*a4 * *a2)) + (float)(a2[2] * a4[2])) * *a5;
-  v7 = *a4 * v6;
-  *(float *)a1 = v7;
-  v8 = v6 * a4[1];
-  *(float *)(a1 + 4) = v8;
-  v9 = v6 * a4[2];
-  *(float *)(a1 + 8) = v9;
-  v10 = (float)((float)((float)(a4[4] * a2[1]) + (float)(a4[3] * *a2)) + (float)(a4[5] * a2[2])) * a5[1];
-  v11 = (float)(a4[3] * v10) + v7;
-  *(float *)a1 = v11;
-  v12 = (float)(v10 * a4[4]) + v8;
-  *(float *)(a1 + 4) = v12;
-  v13 = (float)(v10 * a4[5]) + v9;
-  *(float *)(a1 + 8) = v13;
-  v14 = (float)((float)((float)(a4[7] * a2[1]) + (float)(a4[6] * *a2)) + (float)(a4[8] * a2[2])) * a5[2];
-  *(float *)a1 = (float)(a4[6] * v14) + v11;
-  *(float *)(a1 + 4) = (float)(v14 * a4[7]) + v12;
-  *(float *)(a1 + 8) = (float)(v14 * a4[8]) + v13;
-  return a5;
+  return (float *)(void *)physics_apply_inverse_inertia((float *)a1, a2, a4, a5);
 }
 
 //----- (000000014002D050) ----------------------------------------------------
@@ -1577,25 +1549,7 @@ float            sub_14002D050(float *a1, float *a2, float *a3)
 //----- (000000014002D2D0) ----------------------------------------------------
 __m128 *           sub_14002D2D0(__m128 *a1, __m128 *a2, __int64 a3, __int64 a4, __m128 *a5)
 {
-  __m128 v6;
-  __m128 v7;
-  __m128 v8;
-  __m128 v9;
-
-  v6 = *(__m128_u *)(a4 + 12);
-  v7 = *(__m128_u *)(a4 + 24);
-  v8 = _mm_unpacklo_ps(*(__m128_u *)a4, v6);
-  v9 = _mm_mul_ps(
-         _mm_add_ps(
-           _mm_add_ps(
-             _mm_mul_ps(_mm_shuffle_ps(*a2, *a2, 85), _mm_shuffle_ps(v8, v7, 30)),
-             _mm_mul_ps(_mm_shuffle_ps(*a2, *a2, 0), _mm_movelh_ps(v8, v7))),
-           _mm_mul_ps(_mm_shuffle_ps(*a2, *a2, 170), _mm_shuffle_ps(_mm_unpackhi_ps(*(__m128_u *)a4, v6), v7, 36))),
-         *a5);
-  *a1 = _mm_add_ps(
-          _mm_add_ps(_mm_mul_ps(_mm_shuffle_ps(v9, v9, 85), v6), _mm_mul_ps(_mm_shuffle_ps(v9, v9, 0), *(__m128_u *)a4)),
-          _mm_mul_ps(_mm_shuffle_ps(v9, v9, 170), v7));
-  return a5;
+  return (__m128 *)(void *)physics_apply_inverse_inertia4((float *)a1, (const float *)a2, (const float *)a4, (const float *)a5);
 }
 
 //----- (000000014002D370) ----------------------------------------------------
@@ -1611,114 +1565,16 @@ float *           sub_14002D370(float *a1, float *a2, float *a3, float *a4, floa
 //----- (000000014002D820) ----------------------------------------------------
 double            sub_14002D820(float *a1, float *a2, float a3)
 {
-  float v3;
-  double v4;
-  float v5;
-  float v6;
-  float v7;
-  float v8;
-  float v9;
-  float v10;
-  float v11;
-  float v12;
-  float v13;
-  double v14;
-  float v15;
-  float v16;
-  float v17;
-  float v18;
-
-  v3 = a1[1];
-  v4 = 0.0;
-  v5 = *a1;
-  v6 = a1[2];
-  HIDWORD(v14) = 0;
-  v7 = (float)((float)(v3 * a2[1]) + (float)(*a2 * *a1)) + (float)(v6 * a2[2]);
-  v8 = *a2 * v7;
-  *a1 = v8;
-  v9 = v5 - v8;
-  v10 = v7 * a2[1];
-  v11 = v3 - v10;
-  a1[1] = v10;
-  v12 = v7 * a2[2];
-  v13 = v6 - v12;
-  a1[2] = v12;
-  *(float *)&v14 = fsqrt((float)((float)(v11 * v11) + (float)(v9 * v9)) + (float)(v13 * v13));
-  if ( *(float *)&v14 <= 0.0 )
-    return 0.0;
-  v15 = v9 * (float)(1.0 / *(float *)&v14);
-  v16 = v11 * (float)(1.0 / *(float *)&v14);
-  v17 = v13 * (float)(1.0 / *(float *)&v14);
-  v18 = fsqrt((float)((float)(v8 * v8) + (float)(v10 * v10)) + (float)(v12 * v12));
-  if ( *(float *)&v14 > (float)(v18 * a3) )
-  {
-    v4 = v14;
-    *(float *)&v14 = v18 * a3;
-    *(float *)&v4 = (float)((float)(*(float *)&v4 - (float)(v18 * a3)) * v18) * 480.0;
-  }
-  *a1 = (float)(v15 * *(float *)&v14) + v8;
-  a1[1] = (float)(v16 * *(float *)&v14) + v10;
-  a1[2] = (float)(v17 * *(float *)&v14) + v12;
-  return v4;
+  float work = physics_limit_slide(a1, a2, a3);
+  /* The client carries the native float result in the low word of a double. */
+  return COERCE_DOUBLE((unsigned __int64)COERCE_UNSIGNED_INT(work));
 }
 
 //----- (000000014002D9B0) ----------------------------------------------------
 double            sub_14002D9B0(float *a1, float *a2, float a3, float a4)
 {
-  float v4;
-  double v5;
-  float v6;
-  float v7;
-  float v9;
-  float v10;
-  float v11;
-  float v12;
-  float v13;
-  float v14;
-  float v15;
-  double v16;
-  float v17;
-  float v18;
-  float v19;
-  float v20;
-
-  v4 = *a1;
-  v5 = 0.0;
-  v6 = a1[1];
-  v7 = a1[2];
-  HIDWORD(v16) = 0;
-  v9 = (float)((float)(v6 * a2[1]) + (float)(*a2 * *a1)) + (float)(v7 * a2[2]);
-  v10 = *a2 * v9;
-  *a1 = v10;
-  v11 = v4 - v10;
-  v12 = v9 * a2[1];
-  v13 = v6 - v12;
-  a1[1] = v12;
-  v14 = v9 * a2[2];
-  v15 = v7 - v14;
-  a1[2] = v14;
-  *(float *)&v16 = fsqrt((float)((float)(v13 * v13) + (float)(v11 * v11)) + (float)(v15 * v15));
-  if ( *(float *)&v16 <= 0.0 )
-    return 0.0;
-  v17 = v11 * (float)(1.0 / *(float *)&v16);
-  v18 = v13 * (float)(1.0 / *(float *)&v16);
-  v19 = v15 * (float)(1.0 / *(float *)&v16);
-  v20 = fsqrt((float)((float)(v10 * v10) + (float)(v12 * v12)) + (float)(v14 * v14));
-  if ( *(float *)&v16 > (float)(v20 * a3) )
-  {
-    v5 = v16;
-    *(float *)&v16 = v20 * a3;
-    *(float *)&v5 = (float)((float)(*(float *)&v5 - (float)(v20 * a3)) * v20) * 480.0;
-  }
-  if ( *(float *)&v16 > a4 )
-  {
-    *(float *)&v5 = *(float *)&v5 + (float)((float)((float)(*(float *)&v16 - a4) * v20) * 480.0);
-    *(float *)&v16 = a4;
-  }
-  *a1 = (float)(v17 * *(float *)&v16) + v10;
-  a1[1] = (float)(v18 * *(float *)&v16) + v12;
-  a1[2] = (float)(v19 * *(float *)&v16) + v14;
-  return v5;
+  float work = physics_limit_slide_capped(a1, a2, a3, a4);
+  return COERCE_DOUBLE((unsigned __int64)COERCE_UNSIGNED_INT(work));
 }
 
 //----- (000000014002E730) ----------------------------------------------------

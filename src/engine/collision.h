@@ -8,6 +8,22 @@
  */
 #ifndef SR_ENGINE_COLLISION_H
 #define SR_ENGINE_COLLISION_H
+#include <stdint.h>
+#include <stddef.h>
+
+/* The 64 persistent contact slots in a collision shape. The preceding
+   9,740 bytes and the remaining 68 slot bytes are not named here yet. */
+typedef struct CollisionContactSlot {
+    int32_t kind;
+    uint8_t unknown_04[68];
+} CollisionContactSlot;
+typedef struct CollisionShapeContacts {
+    uint8_t unknown_0000[9740];
+    CollisionContactSlot slots[64];
+} CollisionShapeContacts;
+_Static_assert(offsetof(CollisionShapeContacts,slots) == 9740, "contact slot offset");
+_Static_assert(sizeof(CollisionContactSlot) == 72, "contact slot stride");
+uint32_t collision_find_free_contact(const CollisionShapeContacts *shape); /* 0x140048090 */
 
 /* The closest points of the segments a0-a1 and b0-b1: on_a and on_b, and
    their distance in *distance. True when that distance is below radius.
@@ -20,6 +36,13 @@ int collision_segment_segment(float on_a[3], float on_b[3], float *distance, con
    *point, and *t (the fraction of the way). 0x1400779F0 */
 int collision_line_plane(float point[3], const float normal[3], float *t, const float from[3], const float to[3],
                          const float plane_point[3]);
+
+/* The segment variant rejects endpoints strictly on the same side, using
+   the native unordered branch rules. On a parallel/unordered denominator
+   it leaves *fraction as the start distance and point untouched.
+   Aliased outputs retain the original scalar store order. 0x140077B30 */
+uint32_t collision_segment_plane(float point[3], const float normal[3], float *fraction,
+                                  const float from[3], const float to[3], const float plane[3]);
 
 /* collision_line_plane() against the plane of triangle a b c (normal
    given), true when the point found lies inside the triangle. 0x140077FA0 */

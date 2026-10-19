@@ -1,0 +1,68 @@
+evaluate vertical FP operations on horizontal rejection
+volatile float top = max_float(old_y, y);
+    volatile float bottom = min_float(old_height + old_y, y + height);
+----
+float top = max_float(old_y, y);
+    float bottom = min_float(old_height + old_y, y + height);
+====
+root width comes from canvas
+old_width = renderer_canvas_width; old_height = renderer_canvas_height;
+----
+old_width = menu_clip_rect[2]; old_height = renderer_canvas_height;
+====
+left clamp operand order
+max_float(old_x, x)
+----
+max_float(x, old_x)
+====
+right edge
+min_float(old_width + old_x, x + width)
+----
+min_float(old_width + old_x, x - width)
+====
+top clamp
+max_float(old_y, y)
+----
+min_float(old_y, y)
+====
+bottom edge
+min_float(old_height + old_y, y + height)
+----
+min_float(old_height + old_y, y - height)
+====
+zero area is accepted
+if (left > right || top > bottom) return 0;
+----
+if (left >= right || top >= bottom) return 0;
+====
+computed width
+right - left
+----
+right + left
+====
+computed height
+bottom - top
+----
+bottom + top
+====
+enable only first clip
+if (++menu_clip_depth == 1) glEnable(3089);
+----
+if (++menu_clip_depth) glEnable(3089);
+====
+negative pop depth unchanged
+if ((int32_t)menu_clip_depth <= 0) { glDisable(3089); return; }
+    --menu_clip_depth;
+----
+if (menu_clip_depth == 0) { glDisable(3089); return; }
+    --menu_clip_depth;
+====
+pop restores preceding saved clip
+uint32_t index = menu_clip_depth - 1u;
+----
+uint32_t index = menu_clip_depth;
+====
+pop height coordinate
+menu_clip_slot(index) + 3
+----
+menu_clip_slot(index) + 2

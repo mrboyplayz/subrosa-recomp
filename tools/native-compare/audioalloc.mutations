@@ -1,0 +1,64 @@
+output flag accepts negative words
+!audio_output_enabled ||
+----
+(int32_t)audio_output_enabled <= 0 ||
+====
+loaded flag accepts negative words
+!audio_sounds[sound].loaded
+----
+(int32_t)audio_sounds[sound].loaded <= 0
+====
+negative channels occupied
+while (audio_channels[index].active)
+----
+while ((int32_t)audio_channels[index].active > 0)
+====
+last channel available
+++index >= AUDIO_CHANNEL_CAPACITY
+----
+++index >= AUDIO_CHANNEL_CAPACITY - 1
+====
+clear record tail
+sizeof(*channel) - 4
+----
+sizeof(*channel) - 8
+====
+second gain word
+channel->gain_b = gain;
+----
+channel->gain_b = pitch;
+====
+pitch word
+channel->pitch_b = pitch;
+----
+channel->pitch_b = gain;
+====
+sound counter full width
+audio_sounds[sound].unknown_10 = 0;
+----
+audio_sounds[sound].unknown_10 &= UINT64_C(0xffffffff00000000);
+====
+spatial flag
+channel->spatialized = 1;
+----
+channel->spatialized = 0;
+====
+flags stored
+channel->flags = flags;
+----
+channel->flags = 0;
+====
+source gain bits
+memcpy(&channel->source_gain, &audio_sounds[sound].gain, 4);
+----
+channel->source_gain = 0;
+====
+channel mode
+channel->unknown_0c = 1;
+----
+channel->unknown_0c = 0;
+====
+channel returned index
+return index;
+----
+return index + 1;

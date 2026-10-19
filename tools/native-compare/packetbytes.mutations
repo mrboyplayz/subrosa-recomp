@@ -1,0 +1,73 @@
+read start capacity
+if (position >= NET_BUFFER_SIZE)
+        return 0;
+    int32_t size = multiply_int(count, element_size);
+----
+if (position > NET_BUFFER_SIZE)
+        return 0;
+    int32_t size = multiply_int(count, element_size);
+====
+read extent product
+int32_t size = multiply_int(count, element_size);
+    if (add_int(size, position) > net_read_length)
+----
+int32_t size = count;
+    if (add_int(size, position) > net_read_length)
+====
+read length includes exact end
+if (add_int(size, position) > net_read_length)
+----
+if (add_int(size, position) >= net_read_length)
+====
+read alignment is positive only
+if (net_read_bit > 0) {
+----
+if (net_read_bit != 0) {
+====
+read alignment position
+position = add_int(position, 1);
+        net_read_bit = 0;
+----
+position = add_int(position, 2);
+        net_read_bit = 0;
+====
+read alignment reset
+net_read_bit = 0;
+----
+net_read_bit = 1;
+====
+read cursor after aliased destination
+net_read_position = add_int(net_read_position, size);
+----
+net_read_position = add_int(position, size);
+====
+write start capacity
+if (position >= NET_BUFFER_SIZE)
+        return 0;
+    if (net_write_bit > 0)
+----
+if (position > NET_BUFFER_SIZE)
+        return 0;
+    if (net_write_bit > 0)
+====
+write alignment is positive only
+if (net_write_bit > 0) {
+----
+if (net_write_bit != 0) {
+====
+write alignment reset
+net_write_bit = 0;
+----
+net_write_bit = 1;
+====
+write extent product
+int32_t size = multiply_int(count, element_size);
+    memmove(net_write_buffer + position, source, (size_t)size);
+----
+int32_t size = element_size;
+    memmove(net_write_buffer + position, source, (size_t)size);
+====
+write advances cursor by bytes
+net_write_position = add_int(net_write_position, size);
+----
+net_write_position = add_int(net_write_position, count);

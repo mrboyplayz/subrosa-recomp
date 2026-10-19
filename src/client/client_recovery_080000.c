@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/disk.h"
 
 //----- (00000001400802F0) ----------------------------------------------------
 void            sub_1400802F0(int a1)
@@ -72,29 +73,7 @@ __int64            sub_1400805E0(int a1)
 //----- (0000000140080690) ----------------------------------------------------
 __int64            sub_140080690(int a1, unsigned int a2, char *a3, unsigned int a4)
 {
-  __int64 v4;
-  __int64 v5;
-  __int64 result;
-  unsigned int *v7;
-  char v8;
-
-  v4 = 2570LL * a1;
-  v5 = (int)dword_140404A6C[v4 + 275754072];
-  if ( (int)v5 >= 256 )
-    return 0xFFFFFFFFLL;
-  dword_140404A6C[6 * v5 + 275754073 + v4] = a4;
-  v7 = &dword_140404A6C[6 * (int)dword_140404A6C[v4 + 275754072] + 275754074 + v4];
-  do
-  {
-    v8 = *a3++;
-    *(_BYTE *)v7 = v8;
-    v7 = (unsigned int *)((char *)v7 + 1);
-  }
-  while ( v8 );
-  dword_140404A6C[6 * (int)dword_140404A6C[v4 + 275754072] + 275754078 + v4] = a2;
-  result = dword_140404A6C[v4 + 275754072];
-  dword_140404A6C[v4 + 275754072] = result + 1;
-  return result;
+  return disk_add_file(a1, a2, a3, a4);
 }
 
 //----- (0000000140080720) ----------------------------------------------------

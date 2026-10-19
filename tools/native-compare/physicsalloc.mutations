@@ -1,0 +1,73 @@
+Skip the first free bond
+for (uint32_t i = 0; i < PHYSICS_BOND_CAPACITY; ++i)
+----
+for (uint32_t i = 1; i < PHYSICS_BOND_CAPACITY; ++i)
+====
+Treat negative active bodies as free
+if (!physics_bodies[index].active) break;
+----
+if (physics_bodies[index].active <= 0) break;
+====
+Leave the last body word dirty
+memset((uint8_t *)body + 4, 0, sizeof(*body) - 4);
+----
+memset((uint8_t *)body + 4, 0, sizeof(*body) - 8);
+====
+Invert negative inertia
+moment > 0.0f ? 1.0f / moment : 0.0f
+----
+moment != 0.0f ? 1.0f / moment : 0.0f
+====
+Lose subnormal inertia selection under DAZ
+memcpy(&body->unknown_9c, &least, 4);
+    for (int i = 1;
+----
+body->unknown_9c = min_float(body->unknown_84[0], body->unknown_84[0]);
+    for (int i = 1;
+====
+Do not clear solver constraints
+memset(&physics_constraints[index], 0, sizeof(PhysicsConstraint));
+}
+
+uint32_t physics_create_body_bond
+----
+memset(&physics_constraints[index], 0, sizeof(PhysicsConstraint) - 4);
+}
+
+uint32_t physics_create_body_bond
+====
+Wrong positional-bond damping
+initialize_body_bond(index, body, other, PHYSICS_BOND_BODIES, 0.25f, 0.375f);
+    copy_words(physics_bonds[index].local_point, point, 3);
+----
+initialize_body_bond(index, body, other, PHYSICS_BOND_BODIES, 0.25f, 0.25f);
+    copy_words(physics_bonds[index].local_point, point, 3);
+====
+Wrong rotation-bond stiffness
+PHYSICS_BOND_ROTATION, 0.0625f, 0.125f
+----
+PHYSICS_BOND_ROTATION, 0.125f, 0.125f
+====
+Omit the previous point position
+copy_words(point->previous_position, position, 3);
+----
+(void)position;
+====
+Change point gravity by one bit
+const uint32_t gravity_bits = 993158992;
+----
+const uint32_t gravity_bits = 993158993;
+====
+Omit point vehicle registration
+if (vehicle != UINT32_MAX) point->vehicles[point->vehicle_count++] = (int32_t)vehicle;
+----
+(void)vehicle;
+====
+Bulk vector copy instead of ordered scalar stores
+for (int i = 0; i < count; ++i) {
+        uint32_t word;
+        memcpy(&word, source + i, sizeof(word));
+        memcpy(destination + i, &word, sizeof(word));
+    }
+----
+memmove(destination, source, (size_t)count * sizeof(float));

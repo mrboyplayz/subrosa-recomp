@@ -1,0 +1,101 @@
+clear before aliased inputs
+out[0] = out[1] = out[2] = 0.0f;
+----
+(void)out;
+====
+first inertia scale
+* diagonal[0]
+----
+* diagonal[1]
+====
+first row dot
+(basis[1] * vector[1] + row_x * vector[0])
+----
+(basis[1] * vector[1] - row_x * vector[0])
+====
+second row accumulation
+x = row_x * weight + x;
+----
+x = row_x * weight - x;
+====
+last inertia scale
+* diagonal[2]
+----
+* diagonal[1]
+====
+last y accumulation
+out[1] = weight * basis[7] + y;
+----
+out[1] = weight * basis[7] - y;
+====
+scalar pointer return
+out[2] = weight * basis[8] + z;
+    return diagonal;
+----
+out[2] = weight * basis[8] + z;
+    return vector;
+====
+SIMD second row stride
+_mm_loadu_ps(basis + 3)
+----
+_mm_loadu_ps(basis + 4)
+====
+SIMD third row stride
+_mm_loadu_ps(basis + 6)
+----
+_mm_loadu_ps(basis + 7)
+====
+SIMD transpose low pairs
+_mm_unpacklo_ps(row0, row1)
+----
+_mm_unpackhi_ps(row0, row1)
+====
+SIMD y shuffle
+_mm_shuffle_ps(pair, row2, 30)
+----
+_mm_shuffle_ps(pair, row2, 31)
+====
+SIMD z shuffle
+_mm_shuffle_ps(_mm_unpackhi_ps(row0, row1), row2, 36)
+----
+_mm_shuffle_ps(_mm_unpackhi_ps(row0, row1), row2, 37)
+====
+SIMD diagonal multiplication
+_mm_mul_ps(_mm_add_ps(_mm_add_ps(y, x), z), _mm_load_ps(diagonal))
+----
+_mm_add_ps(_mm_add_ps(y, x), z)
+====
+SIMD projection association
+_mm_add_ps(_mm_add_ps(y, x), z)
+----
+_mm_add_ps(y, _mm_add_ps(x, z))
+====
+SIMD reconstruction third row
+_mm_store_ps(out, _mm_add_ps(_mm_add_ps(b, a), c));
+----
+_mm_store_ps(out, _mm_add_ps(b, a));
+====
+exit root sign
+return sqrt_float(radius * radius - (squared - along * along)) - along;
+----
+return sqrt_float(radius * radius - (squared - along * along)) + along;
+====
+exit discriminant
+return sqrt_float(radius * radius - (squared - along * along)) - along;
+----
+return sqrt_float(radius * radius + (squared - along * along)) - along;
+====
+exit dot association
+float along = (y * direction[1] + x * direction[0]) + z * direction[2];
+----
+float along = y * direction[1] + (x * direction[0] + z * direction[2]);
+====
+entry projection sign
+float along = -((y * direction[1] + x * direction[0]) + z * direction[2]);
+----
+float along = (y * direction[1] + x * direction[0]) + z * direction[2];
+====
+entry higher lanes
+_mm_set1_ps(-0.0f)
+----
+_mm_set1_ps(0.0f)

@@ -1,0 +1,25 @@
+inclusive half-buffer threshold
+difference >= sample->sample_count / -2
+----
+difference > sample->sample_count / -2
+====
+signed half-buffer comparison
+difference >= sample->sample_count / -2
+----
+(uint32_t)difference >= (uint32_t)(sample->sample_count / -2)
+====
+negative odd sample count division
+sample->sample_count / -2
+----
+-(sample->sample_count >> 1)
+====
+wrapped available extent
+sample->write_position + (uint32_t)sample->sample_count - sample->read_position
+----
+sample->write_position - sample->read_position
+====
+no loaded flag guard
+const AudioSound *sample = &audio_sounds[sound];
+----
+const AudioSound *sample = &audio_sounds[sound];
+    if (!sample->loaded) return 0;

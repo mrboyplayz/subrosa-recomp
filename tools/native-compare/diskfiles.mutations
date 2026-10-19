@@ -1,0 +1,44 @@
+direct drive index
+if (drive == 2) return *item_disk_index(item);
+----
+if (drive == 1) return *item_disk_index(item);
+====
+only drive zero uses child
+if (drive != 0) return UINT32_MAX;
+----
+if (drive == 0) return UINT32_MAX;
+====
+negative child count
+if (world_items[item].child_count <= 0) return UINT32_MAX;
+----
+if (world_items[item].child_count == 0) return UINT32_MAX;
+====
+child disk index
+return *item_disk_index(world_items[item].children[0]);
+----
+return *item_disk_index(item);
+====
+file capacity
+if (index >= DISK_ENTRY_CAPACITY) return UINT32_MAX;
+----
+if (index > DISK_ENTRY_CAPACITY) return UINT32_MAX;
+====
+file content
+disk_file(disk, index)->content = content;
+----
+disk_file(disk, index)->content = directory;
+====
+filename unbounded native copy
+} while (byte);
+----
+} while (byte && out - disk_file_name(disk, index) < 16);
+====
+file directory
+disk_file(disk, *count)->directory = directory;
+----
+disk_file(disk, *count)->directory = content;
+====
+file count increment
+*count = add_int(*count, 1);
+----
+*count = add_int(*count, 2);

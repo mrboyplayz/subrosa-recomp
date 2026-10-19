@@ -757,7 +757,7 @@ float            sub_140074CE0(int a1, int a2);
 
 void sub_140074E50();
 
-double sub_140075340();
+void sub_140075340();
 
 __int64 sub_1400753C0();
 
@@ -1771,7 +1771,7 @@ void sub_14010E330();
 
 void            sub_14010E370(float *a1, float *a2);
 
-__int64            sub_14010E610(float *a1, char a2);
+__int64            sub_14010E610(float *a1, int a2);
 
 __int64            sub_14010E6C0(_DWORD *a1, int a2, int a3, signed int a4);
 
@@ -1799,9 +1799,9 @@ __int64            sub_140114E90(_DWORD *a1, float *a2, char a3);
 
 void            sub_1401150E0(__int64 a1, float *a2, float a3, signed int a4);
 
-double            sub_1401151C0(float *a1, float a2, char a3);
+double            sub_1401151C0(float *a1, float a2, int a3);
 
-__int64            sub_140115230(_DWORD *a1, float *a2, char a3);
+__int64            sub_140115230(_DWORD *a1, float *a2, int a3);
 
 __int64 sub_140115360();
 
@@ -12741,7 +12741,7 @@ void sub_140074E50()
 ;
 
 //----- (0000000140075340) ----------------------------------------------------
-double sub_140075340()
+void sub_140075340()
 ;
 
 //----- (00000001400753C0) ----------------------------------------------------
@@ -15069,7 +15069,7 @@ void            sub_14010E370(float *a1, float *a2)
 ;
 
 //----- (000000014010E610) ----------------------------------------------------
-__int64            sub_14010E610(float *a1, char a2)
+__int64            sub_14010E610(float *a1, int a2)
 ;
 
 //----- (000000014010E6C0) ----------------------------------------------------
@@ -15127,11 +15127,11 @@ void            sub_1401150E0(__int64 a1, float *a2, float a3, signed int a4)
 ;
 
 //----- (00000001401151C0) ----------------------------------------------------
-double            sub_1401151C0(float *a1, float a2, char a3)
+double            sub_1401151C0(float *a1, float a2, int a3)
 ;
 
 //----- (0000000140115230) ----------------------------------------------------
-__int64            sub_140115230(_DWORD *a1, float *a2, char a3)
+__int64            sub_140115230(_DWORD *a1, float *a2, int a3)
 ;
 
 //----- (0000000140115360) ----------------------------------------------------

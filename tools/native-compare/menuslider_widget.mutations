@@ -1,0 +1,40 @@
+slider widget type
+finish_widget((int32_t)index, 11, label)
+----
+finish_widget((int32_t)index, 12, label)
+====
+slider failure follows native signed slot
+MenuWidget *widget = finish_widget((int32_t)index, 11, label);
+----
+if (index == UINT32_MAX) return index;
+    MenuWidget *widget = finish_widget((int32_t)index, 11, label);
+====
+slider stored minimum
+widget->slider_min = minimum;
+----
+widget->slider_min = maximum;
+====
+slider stored maximum
+widget->slider_max = maximum;
+----
+widget->slider_max = minimum;
+====
+slider stored step
+widget->slider_step = step;
+----
+widget->slider_step = 0;
+====
+slider fixed thumb width
+widget->slider_thumb = 16.0f;
+----
+widget->slider_thumb = 8.0f;
+====
+slider only edits active control
+if ((int32_t)index == menu_active_widget)
+----
+if (1)
+====
+slider mouse local coordinate
+menu_mouse_x - widget->screen[0]
+----
+menu_mouse_x

@@ -1,0 +1,101 @@
+64 bit magnitude conversion
+_mm_cvttss_si64(_mm_set_ss(magnitude))
+----
+_mm_cvttss_si32(_mm_set_ss(magnitude))
+====
+magnitude unsigned clamp
+if (word > sign - 1u) word = sign - 1u;
+----
+if ((int32_t)word > (int32_t)(sign - 1u)) word = sign - 1u;
+====
+unordered magnitude sign
+if (!(value >= 0.0f)) word |= sign;
+----
+if (value < 0.0f) word |= sign;
+====
+magnitude absolute value
+float magnitude = fabsf(value) * units;
+----
+float magnitude = value * units;
+====
+scalar half range
+float input = *value;
+    float units = (float)(uint64_t)sign / range;
+----
+float input = *value;
+    float units = (float)(uint64_t)sign * range;
+====
+scalar return zero double
+return 0.0;
+----
+return 1.0;
+====
+three delta coordinates
+for (int i = 0; i < 3; ++i) {
+----
+for (int i = 0; i < 2; ++i) {
+====
+delta sign
+float difference = value[i] - reference[i];
+----
+float difference = reference[i] - value[i];
+====
+delta scaling regrouped
+uint32_t word = magnitude_word(difference, units, sign);
+----
+uint32_t word = magnitude_word(difference * (float)(uint64_t)sign, 1.0f / range, sign);
+====
+direction axis ties favor earlier coordinate
+fabsf(value[1]) > fabsf(value[0]) ? 1 : 0
+----
+fabsf(value[1]) >= fabsf(value[0]) ? 1 : 0
+====
+direction last major axis
+if (fabsf(value[2]) > fabsf(value[major])) major = 2;
+----
+if (fabsf(value[2]) > fabsf(value[major])) major = 1;
+====
+direction major sign bit
+if (0.0f > value[major]) out[0] = major | 4u;
+----
+if (0.0f > value[major]) out[0] = major | 1u;
+====
+direction mask
+double units = (double)(int32_t)mask;
+----
+double units = (double)(int32_t)(mask + 1u);
+====
+direction float ratio
+float ratio = value[i] / value[major];
+        double magnitude = (double)fabsf(ratio) * units;
+----
+double ratio = (double)value[i] / (double)value[major];
+        double magnitude = fabs(ratio) * units;
+====
+direction conversion full width
+result = (uint64_t)_mm_cvttsd_si64(_mm_set_sd(magnitude));
+----
+result = (uint32_t)_mm_cvttsd_si32(_mm_set_sd(magnitude));
+====
+direction coordinate shift
+uint32_t word = (uint32_t)result * 2u;
+----
+uint32_t word = (uint32_t)result;
+====
+direction minor signs
+if (0.0f > value[i]) out[at] = word | 1u;
+----
+if (0.0f > value[i]) out[at] = word;
+====
+direction returned conversion
+return result;
+----
+return (uint32_t)result;
+====
+alias stores before minor sign reads
+out[at] = word;
+        if (0.0f > value[i]) out[at] = word | 1u;
+----
+int negative = 0.0f > value[i];
+        out[at] = word;
+        if (negative) out[at] = word | 1u;
