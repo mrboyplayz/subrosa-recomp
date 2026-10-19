@@ -37,3 +37,5 @@ __pycache__/
 *.json
 *.toml
 *.rs
+/tools/ghidra-cli
+tools/ghidra-mcp/
