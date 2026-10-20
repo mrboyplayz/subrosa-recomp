@@ -3,7 +3,7 @@
 #include "collision.h"
 #include "arith.h"
 
-extern long long sub_1400052C0(int body_a, int body_b, const float offset_a[3], const float offset_b[3],
+extern long long sr_physics_add_contact(int body_a, int body_b, const float offset_a[3], const float offset_b[3],
                              const float normal[3], float depth, float friction, float damping, float stiffness);
 
 void item_solve_human_contacts(int index)
@@ -41,7 +41,7 @@ void item_solve_human_contacts(int index)
                 offset_a[axis] = collision_hit.point[axis] - a->position[axis];
                 offset_b[axis] = collision_hit.point[axis] - other->position[axis];
             }
-            sub_1400052C0(bone->body, item->body, offset_a, offset_b, collision_hit.normal,
+            sr_physics_add_contact(bone->body, item->body, offset_a, offset_b, collision_hit.normal,
                          depth, 0.4f, 0.03125f, 0.0625f);
         }
     }
@@ -55,7 +55,7 @@ typedef struct ItemContactCandidates {
     struct { int32_t item; uint32_t unknown_4; } entries[256];
 } ItemContactCandidates;
 
-extern void sub_140038230(void *candidates, const int32_t minimum[3], const int32_t maximum[3]);
+extern void sr_world_grid_query_items(void *candidates, const int32_t minimum[3], const int32_t maximum[3]);
 extern uint32_t sub_14004A7A0(int32_t body_a, int32_t body_b, const void *mesh_a, const void *mesh_b,
                             const float position_a[3], const float rotation_a[9],
                             const float position_b[3], const float rotation_b[9]);
@@ -67,7 +67,7 @@ void item_solve_contacts(int index)
 
     if (!world_item_types[item->type].occupies_space)
         return;
-    sub_140038230(&candidates, item->voxel_min, item->voxel_max);
+    sr_world_grid_query_items(&candidates, item->voxel_min, item->voxel_max);
     for (int n = 0; n < candidates.count; n++) {
         int other_index = candidates.entries[n].item;
         WorldItem *other;

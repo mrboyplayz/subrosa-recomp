@@ -3,209 +3,209 @@
 //----- (00000001400817C0) ----------------------------------------------------
 __int64 sub_1400817C0()
 {
-  __int64 v0;
-  signed int v1;
-  double v2;
-  float v3;
-  float v4;
-  signed int v5;
-  unsigned int *v6;
-  int v7;
-  int v8;
-  int v9;
-  signed int v10;
-  int *v11;
-  signed int v12;
-  int v13;
-  int v14;
-  float v15;
-  int v16;
-  double v17;
-  __int64 v18;
+  __int64 unused_local;
+  signed int float_word;
+  double x;
+  float scaled_ratio;
+  float scaled_ratio_2;
+  signed int iteration_count;
+  unsigned int *state_address;
+  int running_total;
+  int running_total_2;
+  int running_total_3;
+  signed int iteration_count_2;
+  int *saved_state_address;
+  signed int saved_iteration_count;
+  int shifted_bits;
+  int shifted_bits_2;
+  float squared_component;
+  int shifted_bits_3;
+  double x_2;
+  __int64 unused_local_2;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400817C0[16];
-#define v20 (*(signed int (*))(void *)(sr_frame_1400817C0 + 0)) /* [rsp+120h] */
-#define v21 (*(int (*))(void *)(sr_frame_1400817C0 + 8)) /* [rsp+128h] */
+#define saved_iteration_count_2 (*(signed int (*))(void *)(sr_frame_1400817C0 + 0)) /* [rsp+120h] */
+#define saved_running_total (*(int (*))(void *)(sr_frame_1400817C0 + 8)) /* [rsp+128h] */
 
   glBindTexture(3553, renderer_white_texture);
-  v1 = g_18B7D2FC8;
-  *(_QWORD *)&v2 = 1115684864;
-  v3 = 384.0;
-  v4 = 512.0 / (float)(int)g_18B7D2FC8;
+  float_word = g_18B7D2FC8;
+  *(_QWORD *)&x = 1115684864;
+  scaled_ratio = 384.0;
+  scaled_ratio_2 = 512.0 / (float)(int)g_18B7D2FC8;
   if ( (int)g_18B7D2FCC > 0 )
-    v3 = 384.0 / (float)(int)g_18B7D2FCC;
-  v5 = 0;
-  v20 = 0;
+    scaled_ratio = 384.0 / (float)(int)g_18B7D2FCC;
+  iteration_count = 0;
+  saved_iteration_count_2 = 0;
   if ( (int)g_18B7D2FC8 > 0 )
   {
-    v6 = &g_18B7D2FDC;
-    v7 = 57;
-    v8 = 0;
-    v9 = 0;
-    v21 = 0;
+    state_address = &g_18B7D2FDC;
+    running_total = 57;
+    running_total_2 = 0;
+    running_total_3 = 0;
+    saved_running_total = 0;
     do
     {
-      v10 = 0;
-      if ( (int)*(v6 - 1) > 0 )
+      iteration_count_2 = 0;
+      if ( (int)*(state_address - 1) > 0 )
       {
-        v11 = (int *)v6;
-        v12 = v5;
+        saved_state_address = (int *)state_address;
+        saved_iteration_count = iteration_count;
         do
         {
-          v13 = 15731 * (v5 ^ (v5 << 13)) * (v5 ^ (v5 << 13)) + 789221;
-          v14 = 15731 * (((v9 + v10) << 13) ^ (v9 + v10)) * (((v9 + v10) << 13) ^ (v9 + v10)) + 789221;
-          v15 = (float)((v14 * v14 - 771171059) & 0x7FFFFFFF);
-          v16 = (v12 ^ (v12 << 13)) * (v12 ^ (v12 << 13));
-          sub_14006CFF0(
-            v2,
-            sr_export_float_lane_container((unsigned __int64)COERCE_UNSIGNED_INT(512.0f - (float)((float)*v11 * v3))),
-            COERCE_UNSIGNED_INT((float)(v4)) /* native XMM2 width = XMM8 */,
-            (float)v11[1] * v3,
+          shifted_bits = 15731 * (iteration_count ^ (iteration_count << 13)) * (iteration_count ^ (iteration_count << 13)) + 789221;
+          shifted_bits_2 = 15731 * (((running_total_3 + iteration_count_2) << 13) ^ (running_total_3 + iteration_count_2)) * (((running_total_3 + iteration_count_2) << 13) ^ (running_total_3 + iteration_count_2)) + 789221;
+          squared_component = (float)((shifted_bits_2 * shifted_bits_2 - 771171059) & 0x7FFFFFFF);
+          shifted_bits_3 = (saved_iteration_count ^ (saved_iteration_count << 13)) * (saved_iteration_count ^ (saved_iteration_count << 13));
+          sr_renderer_draw_textured_rect(
+            x,
+            sr_export_float_lane_container((unsigned __int64)COERCE_UNSIGNED_INT(512.0f - (float)((float)*saved_state_address * scaled_ratio))),
+            COERCE_UNSIGNED_INT((float)(scaled_ratio_2)) /* native XMM2 width = XMM8 */,
+            (float)saved_state_address[1] * scaled_ratio,
             8,
-            COERCE_INT((float)(0.5 - (float)((float)((v13 * v13 - 771171059) & 0x7FFFFFFF) * 4.6566129e-10)) + 0.5f),
-            COERCE_INT((float)(0.5 - (float)(v15 * 4.6566129e-10)) + 0.5f),
+            COERCE_INT((float)(0.5 - (float)((float)((shifted_bits * shifted_bits - 771171059) & 0x7FFFFFFF) * 4.6566129e-10)) + 0.5f),
+            COERCE_INT((float)(0.5 - (float)(squared_component * 4.6566129e-10)) + 0.5f),
             COERCE_INT(
               (float)(0.5
-                    - (float)((float)(((15731 * v16 + 789221) * (15731 * v16 + 789221) - 771171059) & 0x7FFFFFFF)
+                    - (float)((float)(((15731 * shifted_bits_3 + 789221) * (15731 * shifted_bits_3 + 789221) - 771171059) & 0x7FFFFFFF)
                             * 4.6566129e-10))
             + 0.5f),
             1065353216);
-          ++v10;
-          v5 += v8 + 57;
-          v9 += v8;
-          v12 += v7;
-          v11 += 3;
+          ++iteration_count_2;
+          iteration_count += running_total_2 + 57;
+          running_total_3 += running_total_2;
+          saved_iteration_count += running_total;
+          saved_state_address += 3;
         }
-        while ( v10 < (int)*(v6 - 1) );
-        v1 = g_18B7D2FC8;
-        v5 = v20;
-        v9 = v21;
+        while ( iteration_count_2 < (int)*(state_address - 1) );
+        float_word = g_18B7D2FC8;
+        iteration_count = saved_iteration_count_2;
+        running_total_3 = saved_running_total;
       }
-      ++v5;
-      *(float *)&v2 = *(float *)&v2 + v4;
-      v9 += 57;
-      v20 = v5;
-      v7 += 1684013;
-      v21 = v9;
-      v8 += 54323;
-      v6 += 3074;
+      ++iteration_count;
+      *(float *)&x = *(float *)&x + scaled_ratio_2;
+      running_total_3 += 57;
+      saved_iteration_count_2 = iteration_count;
+      running_total += 1684013;
+      saved_running_total = running_total_3;
+      running_total_2 += 54323;
+      state_address += 3074;
     }
-    while ( v5 < v1 );
+    while ( iteration_count < float_word );
   }
-  sub_14006CFF0(sr_export_float_lane_container(1115684864), sr_export_float_lane_container(1140850688), COERCE_UNSIGNED_INT((float)(v4 + v4)) /* native XMM2 width = XMM8+XMM8 */, 384.0, 8, 1065353216, 0, 0, 1065353216);
-  *(_QWORD *)&v17 = COERCE_UNSIGNED_INT((float)(int)g_18B7D2FC8);
-  *(float *)&v17 = (float)(*(float *)&v17 * v4) + 64.0;
-  return sub_14006CFF0(v17, sr_export_float_lane_container(1140850688), COERCE_UNSIGNED_INT((float)(v4 + v4)) /* native XMM2 width = XMM8+XMM8 */, 384.0, 8, 1065353216, 0, 0, 1065353216);
+  sr_renderer_draw_textured_rect(sr_export_float_lane_container(1115684864), sr_export_float_lane_container(1140850688), COERCE_UNSIGNED_INT((float)(scaled_ratio_2 + scaled_ratio_2)) /* native XMM2 width = XMM8+XMM8 */, 384.0, 8, 1065353216, 0, 0, 1065353216);
+  *(_QWORD *)&x_2 = COERCE_UNSIGNED_INT((float)(int)g_18B7D2FC8);
+  *(float *)&x_2 = (float)(*(float *)&x_2 * scaled_ratio_2) + 64.0;
+  return sr_renderer_draw_textured_rect(x_2, sr_export_float_lane_container(1140850688), COERCE_UNSIGNED_INT((float)(scaled_ratio_2 + scaled_ratio_2)) /* native XMM2 width = XMM8+XMM8 */, 384.0, 8, 1065353216, 0, 0, 1065353216);
 }
-#undef v20
-#undef v21
+#undef saved_iteration_count_2
+#undef saved_running_total
 
 //----- (000000014011E090) ----------------------------------------------------
 void            sub_14011E090(int a1)
 {
-  __int64 v1;
-  unsigned int *v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  __int64 remaining_count;
+  unsigned int *buffer_cursor;
+  __int64 scaled_index;
+  __int64 scaled_index_2;
+  __int64 scaled_index_3;
 
   if ( !g_18AB70F9C && !g_18E95B03C )
   {
-    v1 = 4;
-    v2 = &dword_140404A6C[6930 * a1 + 83200503];
+    remaining_count = 4;
+    buffer_cursor = &dword_140404A6C[6930 * a1 + 83200503];
     do
     {
-      if ( v2[780] )
+      if ( buffer_cursor[780] )
       {
-        v3 = (int)*v2;
-        if ( (int)v3 >= 0 )
+        scaled_index = (int)*buffer_cursor;
+        if ( (int)scaled_index >= 0 )
         {
-          v4 = (int)*v2;
-          v5 = 6 * v3;
-          if ( dword_140404A6C[6 * v3 + 312226123] != -1 )
+          scaled_index_2 = (int)*buffer_cursor;
+          scaled_index_3 = 6 * scaled_index;
+          if ( dword_140404A6C[6 * scaled_index + 312226123] != -1 )
           {
-            glVertexAttribPointer(0,3,5126,0,64,(const void *)((intptr_t)(int32_t)(dword_140404A6C[309078348+3074*((int64_t)(int32_t)dword_140404A6C[6*v3+312226123])+3*((int64_t)(int32_t)dword_140404A6C[(6*v3+312226123)+1])]+(uint32_t)((int64_t)(int32_t)dword_140404A6C[6*v3+312226123])*g_189F0EF8C)));
-            if ( dword_140404A6C[v5 + 328456563] != -1 )
-              (*(void (**)(unsigned,int,unsigned,const void *))&flt_140384000[131076])(12,(int)(uint32_t)(6u*dword_140404A6C[8969*v4+73991665]),5125,(const void *)((intptr_t)(int32_t)(dword_140404A6C[325308788+3074*((int64_t)(int32_t)dword_140404A6C[v5+328456563])+3*((int64_t)(int32_t)dword_140404A6C[(v5+328456563)+1])]+(uint32_t)((int64_t)(int32_t)dword_140404A6C[v5+328456563])*g_18DCF902C)));
+            glVertexAttribPointer(0,3,5126,0,64,(const void *)((intptr_t)(int32_t)(dword_140404A6C[309078348+3074*((int64_t)(int32_t)dword_140404A6C[6*scaled_index+312226123])+3*((int64_t)(int32_t)dword_140404A6C[(6*scaled_index+312226123)+1])]+(uint32_t)((int64_t)(int32_t)dword_140404A6C[6*scaled_index+312226123])*g_189F0EF8C)));
+            if ( dword_140404A6C[scaled_index_3 + 328456563] != -1 )
+              (*(void (**)(unsigned,int,unsigned,const void *))&flt_140384000[131076])(12,(int)(uint32_t)(6u*dword_140404A6C[8969*scaled_index_2+73991665]),5125,(const void *)((intptr_t)(int32_t)(dword_140404A6C[325308788+3074*((int64_t)(int32_t)dword_140404A6C[scaled_index_3+328456563])+3*((int64_t)(int32_t)dword_140404A6C[(scaled_index_3+328456563)+1])]+(uint32_t)((int64_t)(int32_t)dword_140404A6C[scaled_index_3+328456563])*g_18DCF902C)));
           }
         }
       }
-      ++v2;
-      --v1;
+      ++buffer_cursor;
+      --remaining_count;
     }
-    while ( v1 );
+    while ( remaining_count );
   }
 }
 
 //----- (0000000140193FE0) ----------------------------------------------------
 __int64            sub_140193FE0(int a1, int a2, __int64 a3, int a4)
 {
-  __int64 v4;
-  __int64 v6;
-  __int64 v8;
-  __int64 v10;
-  int v11;
-  __int64 v12;
-  _DWORD *v13;
-  __int64 v14;
-  unsigned int *v15;
-  int *v16;
+  __int64 input_value;
+  __int64 record_word_offset;
+  __int64 input_value_2;
+  __int64 scaled_index;
+  int element_index;
+  __int64 integer_difference;
+  _DWORD *state_address;
+  __int64 scaled_index_2;
+  unsigned int *state_address_2;
+  int *state_address_3;
 
-  v4 = a4;
-  v6 = 3246088LL * a1;
-  v8 = a1;
-  if ( dword_140404A6C[v6 + 312324428] )
+  input_value = a4;
+  record_word_offset = 3246088LL * a1;
+  input_value_2 = a1;
+  if ( dword_140404A6C[record_word_offset + 312324428] )
     return 0;
-  v10 = v6 * 4 + 24LL * a2;
-  if ( *(unsigned int *)((char *)&g_18AB10F98 + v10) != -1 )
+  scaled_index = record_word_offset * 4 + 24LL * a2;
+  if ( *(unsigned int *)((char *)&g_18AB10F98 + scaled_index) != -1 )
     sub_1401941F0(a1, a2);
-  if ( !(_DWORD)v4 || (int)v4 >= (int)dword_140404A6C[v6 + 309078344] )
+  if ( !(_DWORD)input_value || (int)input_value >= (int)dword_140404A6C[record_word_offset + 309078344] )
     goto LABEL_16;
-  v11 = 0;
-  v12 = dword_140404A6C[v6 + 309078343] - 1;
-  if ( (int)(dword_140404A6C[v6 + 309078343] - 1) > 0 )
+  element_index = 0;
+  integer_difference = dword_140404A6C[record_word_offset + 309078343] - 1;
+  if ( (int)(dword_140404A6C[record_word_offset + 309078343] - 1) > 0 )
   {
     /* 0x140194083: lea rax, [rdi+0x49f0ef98] is the page's entry count, dword index 309078347. */
-    v13 = &dword_140404A6C[309078347 + v6];
+    state_address = &dword_140404A6C[309078347 + record_word_offset];
     do
     {
-      if ( (int)v4 + *(v13 - 1) < (int)dword_140404A6C[v6 + 309078344]
-        && *v13 < (signed int)dword_140404A6C[v6 + 309078345] )
+      if ( (int)input_value + *(state_address - 1) < (int)dword_140404A6C[record_word_offset + 309078344]
+        && *state_address < (signed int)dword_140404A6C[record_word_offset + 309078345] )
       {
         break;
       }
-      ++v11;
-      v13 += 3074;
+      ++element_index;
+      state_address += 3074;
     }
-    while ( v11 < (int)v12 );
+    while ( element_index < (int)integer_difference );
   }
-  if ( v11 < (int)v12 )
+  if ( element_index < (int)integer_difference )
   {
-    if ( !dword_140404A6C[v6 + 312324428] )
+    if ( !dword_140404A6C[record_word_offset + 312324428] )
     {
-      glBindBuffer(dword_140404A6C[v6 + 309078341],
-        dword_140404A6C[2 * dword_140404A6C[v8 + 283791462] + 283793813]);
-      glBufferSubData(dword_140404A6C[v6 + 309078341],
-        (int)(v11 * dword_140404A6C[v6 + 309078344] + dword_140404A6C[3074 * v11 + 309078346 + v6]),
-        v4,
+      glBindBuffer(dword_140404A6C[record_word_offset + 309078341],
+        dword_140404A6C[2 * dword_140404A6C[input_value_2 + 283791462] + 283793813]);
+      glBufferSubData(dword_140404A6C[record_word_offset + 309078341],
+        (int)(element_index * dword_140404A6C[record_word_offset + 309078344] + dword_140404A6C[3074 * element_index + 309078346 + record_word_offset]),
+        input_value,
         a3);
     }
-    v14 = 3074LL * v11;
-    v15 = &dword_140404A6C[v6 + 309078346 + v14];
-    v16 = (int *)&dword_140404A6C[309078347 + v6 + v14];
-    dword_140404A6C[3 * *v16 + 309078348 + v14 + v6] = *v15;
-    dword_140404A6C[3 * *v16 + 309078349 + v14 + v6] = v4;
-    dword_140404A6C[3 * *v16 + 309078350 + v14 + v6] = a2;
-    *(unsigned int *)((char *)&g_18AB10F98 + v10) = v11;
-    *(unsigned int *)((char *)&g_18AB10F9C + v10) = (*v16)++;
-    *v15 += v4;
-    dword_140404A6C[v6 + 312324427] += v4;
+    scaled_index_2 = 3074LL * element_index;
+    state_address_2 = &dword_140404A6C[record_word_offset + 309078346 + scaled_index_2];
+    state_address_3 = (int *)&dword_140404A6C[309078347 + record_word_offset + scaled_index_2];
+    dword_140404A6C[3 * *state_address_3 + 309078348 + scaled_index_2 + record_word_offset] = *state_address_2;
+    dword_140404A6C[3 * *state_address_3 + 309078349 + scaled_index_2 + record_word_offset] = input_value;
+    dword_140404A6C[3 * *state_address_3 + 309078350 + scaled_index_2 + record_word_offset] = a2;
+    *(unsigned int *)((char *)&g_18AB10F98 + scaled_index) = element_index;
+    *(unsigned int *)((char *)&g_18AB10F9C + scaled_index) = (*state_address_3)++;
+    *state_address_2 += input_value;
+    dword_140404A6C[record_word_offset + 312324427] += input_value;
     return 1;
   }
   else
   {
 LABEL_16:
-    *(_QWORD *)((char *)&g_18AB10F98 + v10) = -1;
+    *(_QWORD *)((char *)&g_18AB10F98 + scaled_index) = -1;
     return 0;
   }
 }
@@ -213,142 +213,142 @@ LABEL_16:
 //----- (00000001401941F0) ----------------------------------------------------
 void            sub_1401941F0(int a1, int a2)
 {
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  int v10;
-  bool v11;
-  unsigned int v12;
-  int v13;
-  unsigned int v14;
-  __int64 v15;
-  int v16;
-  unsigned int *v17;
-  __int64 v18;
-  __int64 v19;
-  unsigned int v20;
-  __int64 v21;
-  unsigned int v22;
-  unsigned int v23;
-  unsigned int *v24;
-  __int64 v25;
-  __int64 v26;
-  unsigned int v27;
+  __int64 input_value;
+  __int64 record_word_offset;
+  __int64 scaled_index;
+  __int64 masked_bits;
+  __int64 masked_bits_2;
+  __int64 scaled_index_2;
+  __int64 scaled_index_3;
+  __int64 scaled_index_4;
+  int masked_bits_3;
+  bool state_address;
+  unsigned int masked_bits_4;
+  int running_total;
+  unsigned int masked_bits_5;
+  __int64 unused_local;
+  int masked_bits_6;
+  unsigned int *state_address_2;
+  __int64 table_value;
+  __int64 scaled_index_5;
+  unsigned int saved_masked_bits;
+  __int64 unused_local_2;
+  unsigned int table_value_2;
+  unsigned int scaled_index_6;
+  unsigned int *state_address_3;
+  __int64 packed_word_bits;
+  __int64 saved_masked_bits_2;
+  unsigned int loaded_word;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1401941F0[32];
-#define v28 (*(unsigned int (*))(void *)(sr_frame_1401941F0 + 0)) /* [rsp+70h] */
-#define v29 (*(__int64 (*))(void *)(sr_frame_1401941F0 + 16)) /* [rsp+80h] */
+#define saved_masked_bits_3 (*(unsigned int (*))(void *)(sr_frame_1401941F0 + 0)) /* [rsp+70h] */
+#define scaled_index_7 (*(__int64 (*))(void *)(sr_frame_1401941F0 + 16)) /* [rsp+80h] */
 
-  v2 = a1;
-  v3 = 3246088LL * a1;
-  if ( !dword_140404A6C[v3 + 312324428] )
+  input_value = a1;
+  record_word_offset = 3246088LL * a1;
+  if ( !dword_140404A6C[record_word_offset + 312324428] )
   {
-    v4 = v3 * 4 + 24LL * a2;
-    v5 = *(int *)((char *)&g_18AB10F9C + v4);
-    v6 = *(int *)((char *)&g_18AB10F98 + v4);
-    if ( (int)v6 >= 0
-      && (int)v6 < (int)(dword_140404A6C[v3 + 309078343] - 1)
-      && (int)v5 >= 0
-      && (int)v5 < (int)dword_140404A6C[v3 + 309078345] )
+    scaled_index = record_word_offset * 4 + 24LL * a2;
+    masked_bits = *(int *)((char *)&g_18AB10F9C + scaled_index);
+    masked_bits_2 = *(int *)((char *)&g_18AB10F98 + scaled_index);
+    if ( (int)masked_bits_2 >= 0
+      && (int)masked_bits_2 < (int)(dword_140404A6C[record_word_offset + 309078343] - 1)
+      && (int)masked_bits >= 0
+      && (int)masked_bits < (int)dword_140404A6C[record_word_offset + 309078345] )
     {
-      v7 = 3074 * v6;
-      v8 = 12296 * v6 + v3 * 4;
-      if ( *(int *)((char *)&g_189F0EF98 + v8) > 0 )
+      scaled_index_2 = 3074 * masked_bits_2;
+      scaled_index_3 = 12296 * masked_bits_2 + record_word_offset * 4;
+      if ( *(int *)((char *)&g_189F0EF98 + scaled_index_3) > 0 )
       {
-        *(unsigned int *)((char *)&g_18AB10F98 + v4) = -1;
-        *(unsigned int *)((char *)&g_18AB10F9C + v4) = -1;
-        --*(unsigned int *)((char *)&g_189F0EF98 + v8);
-        v9 = 12 * v5 + v8;
-        v29 = 3 * v5;
-        v10 = *(unsigned int *)((char *)&g_189F0EFA0 + v9);
-        v11 = (int)(*(unsigned int *)((char *)&g_189F0EF94 + v8) - v10) < 0;
-        *(unsigned int *)((char *)&g_189F0EF94 + v8) -= v10;
-        v12 = *(unsigned int *)((char *)&g_189F0EF94 + v8);
-        v13 = 0;
-        if ( v11 )
-          v12 = 0;
-        *(unsigned int *)((char *)&g_189F0EF94 + v8) = v12;
-        dword_140404A6C[v3 + 312324427] -= *(unsigned int *)((char *)&g_189F0EFA0 + v9);
-        v14 = *(unsigned int *)((char *)&g_189F0EF9C + v9);
-        glBindBuffer(dword_140404A6C[v3 + 309078341],
-          dword_140404A6C[2 * dword_140404A6C[v2 + 283791462] + 283793813]);
-        v16 = *(unsigned int *)((char *)&g_189F0EF98 + v8);
+        *(unsigned int *)((char *)&g_18AB10F98 + scaled_index) = -1;
+        *(unsigned int *)((char *)&g_18AB10F9C + scaled_index) = -1;
+        --*(unsigned int *)((char *)&g_189F0EF98 + scaled_index_3);
+        scaled_index_4 = 12 * masked_bits + scaled_index_3;
+        scaled_index_7 = 3 * masked_bits;
+        masked_bits_3 = *(unsigned int *)((char *)&g_189F0EFA0 + scaled_index_4);
+        state_address = (int)(*(unsigned int *)((char *)&g_189F0EF94 + scaled_index_3) - masked_bits_3) < 0;
+        *(unsigned int *)((char *)&g_189F0EF94 + scaled_index_3) -= masked_bits_3;
+        masked_bits_4 = *(unsigned int *)((char *)&g_189F0EF94 + scaled_index_3);
+        running_total = 0;
+        if ( state_address )
+          masked_bits_4 = 0;
+        *(unsigned int *)((char *)&g_189F0EF94 + scaled_index_3) = masked_bits_4;
+        dword_140404A6C[record_word_offset + 312324427] -= *(unsigned int *)((char *)&g_189F0EFA0 + scaled_index_4);
+        masked_bits_5 = *(unsigned int *)((char *)&g_189F0EF9C + scaled_index_4);
+        glBindBuffer(dword_140404A6C[record_word_offset + 309078341],
+          dword_140404A6C[2 * dword_140404A6C[input_value + 283791462] + 283793813]);
+        masked_bits_6 = *(unsigned int *)((char *)&g_189F0EF98 + scaled_index_3);
         if ( g_183F7CBF4 )
         {
-          if ( (int)v5 < v16 )
+          if ( (int)masked_bits < masked_bits_6 )
           {
-            v17 = &dword_140404A6C[v3 + 309078349 + v7 + v29];
+            state_address_2 = &dword_140404A6C[record_word_offset + 309078349 + scaled_index_2 + scaled_index_7];
             do
             {
-              v18 = (int)v17[4];
-              v17 += 3;
-              v19 = (int)*v17;
-              v20 = v5;
-              LODWORD(v5) = v5 + 1;
-              dword_140404A6C[6 * v18 + 312226124 + v3] = v20;
+              table_value = (int)state_address_2[4];
+              state_address_2 += 3;
+              scaled_index_5 = (int)*state_address_2;
+              saved_masked_bits = masked_bits;
+              LODWORD(masked_bits) = masked_bits + 1;
+              dword_140404A6C[6 * table_value + 312226124 + record_word_offset] = saved_masked_bits;
               glBindBuffer(36663, dword_140404A6C[2 * g_183E98C20 + 283793813]);
-              glCopyBufferSubData(dword_140404A6C[v3 + 309078341],
+              glCopyBufferSubData(dword_140404A6C[record_word_offset + 309078341],
                 36663,
-                (int)(*(v17 - 1) + dword_140404A6C[v3 + 309078344] * v6),
+                (int)(*(state_address_2 - 1) + dword_140404A6C[record_word_offset + 309078344] * masked_bits_2),
                 0,
-                v19);
+                scaled_index_5);
               glBindBuffer(36662, dword_140404A6C[2 * g_183E98C20 + 283793813]);
               glCopyBufferSubData(36662,
-                dword_140404A6C[v3 + 309078341],
+                dword_140404A6C[record_word_offset + 309078341],
                 0,
-                (int)(v14 + dword_140404A6C[v3 + 309078344] * v6),
-                v19);
-              *(v17 - 3) = *v17;
-              v22 = v17[1];
-              *(v17 - 4) = v14;
-              v14 += v19;
-              *(v17 - 2) = v22;
+                (int)(masked_bits_5 + dword_140404A6C[record_word_offset + 309078344] * masked_bits_2),
+                scaled_index_5);
+              *(state_address_2 - 3) = *state_address_2;
+              table_value_2 = state_address_2[1];
+              *(state_address_2 - 4) = masked_bits_5;
+              masked_bits_5 += scaled_index_5;
+              *(state_address_2 - 2) = table_value_2;
             }
-            while ( (int)v5 < *(int *)((char *)&g_189F0EF98 + v8) );
+            while ( (int)masked_bits < *(int *)((char *)&g_189F0EF98 + scaled_index_3) );
           }
         }
-        else if ( (int)v5 < v16 )
+        else if ( (int)masked_bits < masked_bits_6 )
         {
-          v28 = v14;
-          v23 = dword_140404A6C[3 * v5 + 309078351 + v3 + v7];
-          v24 = &dword_140404A6C[v3 + 309078349 + v7 + v29];
+          saved_masked_bits_3 = masked_bits_5;
+          scaled_index_6 = dword_140404A6C[3 * masked_bits + 309078351 + record_word_offset + scaled_index_2];
+          state_address_3 = &dword_140404A6C[record_word_offset + 309078349 + scaled_index_2 + scaled_index_7];
           do
           {
-            v25 = (int)v24[4];
-            v24 += 3;
-            v13 += *v24;
-            v26 = (unsigned int)v5;
-            LODWORD(v5) = v5 + 1;
-            dword_140404A6C[6 * v25 + 312226124 + v3] = v26;
-            v27 = *v24;
-            LODWORD(v25) = v24[1];
-            *(v24 - 4) = v14;
-            v14 += v27;
-            *(v24 - 3) = v27;
-            *(v24 - 2) = v25;
+            packed_word_bits = (int)state_address_3[4];
+            state_address_3 += 3;
+            running_total += *state_address_3;
+            saved_masked_bits_2 = (unsigned int)masked_bits;
+            LODWORD(masked_bits) = masked_bits + 1;
+            dword_140404A6C[6 * packed_word_bits + 312226124 + record_word_offset] = saved_masked_bits_2;
+            loaded_word = *state_address_3;
+            LODWORD(packed_word_bits) = state_address_3[1];
+            *(state_address_3 - 4) = masked_bits_5;
+            masked_bits_5 += loaded_word;
+            *(state_address_3 - 3) = loaded_word;
+            *(state_address_3 - 2) = packed_word_bits;
           }
-          while ( (int)v5 < *(int *)((char *)&g_189F0EF98 + v8) );
+          while ( (int)masked_bits < *(int *)((char *)&g_189F0EF98 + scaled_index_3) );
           glBindBuffer(36663, dword_140404A6C[2 * g_183E98C20 + 283793813]);
-          glCopyBufferSubData(dword_140404A6C[v3 + 309078341],
+          glCopyBufferSubData(dword_140404A6C[record_word_offset + 309078341],
             36663,
-            (int)(v23 + dword_140404A6C[v3 + 309078344] * v6),
+            (int)(scaled_index_6 + dword_140404A6C[record_word_offset + 309078344] * masked_bits_2),
             0,
-            v13);
+            running_total);
           glCopyBufferSubData(36663,
-            dword_140404A6C[v3 + 309078341],
+            dword_140404A6C[record_word_offset + 309078341],
             0,
-            (int)(v28 + dword_140404A6C[v3 + 309078344] * v6),
-            v13);
+            (int)(saved_masked_bits_3 + dword_140404A6C[record_word_offset + 309078344] * masked_bits_2),
+            running_total);
         }
       }
     }
   }
 }
-#undef v28
-#undef v29
+#undef saved_masked_bits_3
+#undef scaled_index_7
 

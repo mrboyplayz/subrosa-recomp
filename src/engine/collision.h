@@ -49,6 +49,16 @@ uint32_t collision_segment_plane(float point[3], const float normal[3], float *f
 int collision_line_triangle(float point[3], const float normal[3], float *t, const float from[3], const float to[3],
                             const float a[3], const float b[3], const float c[3]);
 
+/* Face tests retain the plane query's point/fraction writes even when an
+   edge rejects the hit. Inputs and outputs may overlap. All edge comparisons
+   require >= zero, rejecting unordered values as the native COMISS/JB does. */
+int collision_line_quad(float point[3], const float normal[3], float *fraction,
+                        const float from[3], const float to[3],
+                        const float a[3], const float b[3], const float c[3], const float d[3]); /* 0x140077C80 */
+int collision_segment_triangle(float point[3], const float normal[3], float *fraction,
+                               const float from[3], const float to[3],
+                               const float a[3], const float b[3], const float c[3]); /* 0x140078230 */
+
 /* Sweeps a sphere against triangle a b c. On a hit: *point is where it
    touches, normal the direction to push it out, *distance how far along the
    sweep. normal is also overwritten with the face normal on a miss.

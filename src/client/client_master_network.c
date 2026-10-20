@@ -3,23 +3,23 @@
 //----- (000000014006BED0) ----------------------------------------------------
 void               sub_14006BED0()
 {
-  unsigned int v0;
-  char v1;
-  int v2;
-  int v3;
-  unsigned int v4;
-  int v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  unsigned int v9;
-  __int64 v10;
+  unsigned int state_word;
+  char masked_bits;
+  int masked_bits_2;
+  int cached_packet_in_byte;
+  unsigned int integer_sum;
+  int cached_packet_in_bit;
+  __int64 integer_sum_2;
+  __int64 saved_cached_packet_in_byte;
+  __int64 saved_cached_packet_in_byte_2;
+  unsigned int masked_bits_3;
+  __int64 saved_cached_packet_in_byte_3;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14006BED0[48];
-#define v12 (*(__int64 (*))(void *)(sr_frame_14006BED0 + 0)) /* [rsp+0h] */
-#define v13 (*(char (*))(void *)(sr_frame_14006BED0 + 32)) /* [rsp+20h] */
-#define v14 (*(int (*))(void *)(sr_frame_14006BED0 + 36)) /* [rsp+24h] */
-#define v15 (*(__int64 (*))(void *)(sr_frame_14006BED0 + 40)) /* [rsp+28h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_14006BED0 + 0)) /* [rsp+0h] */
+#define frame_word_at_32 (*(char (*))(void *)(sr_frame_14006BED0 + 32)) /* [rsp+20h] */
+#define frame_word_at_36 (*(int (*))(void *)(sr_frame_14006BED0 + 36)) /* [rsp+24h] */
+#define unused_frame_slot_40 (*(__int64 (*))(void *)(sr_frame_14006BED0 + 40)) /* [rsp+28h] */
 
   if ( g_16B165F40 > 1 )
     return; /* native master auth updates state and returns void */
@@ -44,19 +44,19 @@ void               sub_14006BED0()
   if ( (unsigned int)sub_140198F9B() - g_16B165F44 > 0x3E8 )
   {
     g_16B165F44 = sub_140198F9B();
-    v0 = g_16B165F40;
+    state_word = g_16B165F40;
     if ( g_16B165F40 )
     {
-      v1 = v13;
+      masked_bits = frame_word_at_32;
 LABEL_16:
-      if ( v0 == 1 )
+      if ( state_word == 1 )
       {
         *(_QWORD *)&packet_out_byte = 5;
-        v1 = 73;
+        masked_bits = 73;
         packet_out_data = dword_1402B2658;
         LOBYTE(g_18539D408) = 73;
-        sub_14007B180((     __m128i *)&g_1603612E4, 4, 1);
-        sub_14007B180((     __m128i *)&g_1603612F4, 4, 1);
+        sr_net_write_bytes((     __m128i *)&g_1603612E4, 4, 1);
+        sr_net_write_bytes((     __m128i *)&g_1603612F4, 4, 1);
         sub_140130350(g_18329C1E0, g_18329C1E4, 0);
       }
       goto LABEL_19;
@@ -64,95 +64,95 @@ LABEL_16:
     if ( g_1829F8FD8 && (int)g_1829F8BD4 < 1024 )
     {
       *(_QWORD *)&packet_out_byte = 5;
-      v1 = 72;
+      masked_bits = 72;
       packet_out_data = dword_1402B2658;
       LOBYTE(g_18539D408) = 72;
-      sub_14007B180((     __m128i *)(unsigned int *)&g_151E4594C, 1, 32);
-      sub_14007B180((     __m128i *)&g_1829F8BD4, 4, 1);
-      sub_14007B180((     __m128i *)&g_1829F8BD8, 1, g_1829F8BD4);
+      sr_net_write_bytes((     __m128i *)(unsigned int *)&g_151E4594C, 1, 32);
+      sr_net_write_bytes((     __m128i *)&g_1829F8BD4, 4, 1);
+      sr_net_write_bytes((     __m128i *)&g_1829F8BD8, 1, g_1829F8BD4);
       sub_140130350(g_18329C1E0, g_18329C1E4, 0);
-      v0 = g_16B165F40;
+      state_word = g_16B165F40;
       goto LABEL_16;
     }
   }
-  v1 = v13;
+  masked_bits = frame_word_at_32;
 LABEL_19:
   if ( (int)sub_14011C760() > 0 )
   {
-    v2 = v14;
+    masked_bits_2 = frame_word_at_36;
     do
     {
-      v3 = packet_in_byte;
+      cached_packet_in_byte = packet_in_byte;
       if ( (int)packet_in_byte >= 0x10000
-        || (v4 = packet_in_byte + 1,
+        || (integer_sum = packet_in_byte + 1,
             (signed int)(packet_in_byte + 1) > (int)packet_in_length) )
       {
-        v5 = packet_in_bit;
+        cached_packet_in_bit = packet_in_bit;
       }
       else
       {
-        v5 = packet_in_bit;
+        cached_packet_in_bit = packet_in_bit;
         if ( (int)packet_in_bit > 0 )
         {
-          v5 = 0;
+          cached_packet_in_bit = 0;
           ++packet_in_byte;
           packet_in_bit = 0;
-          v3 = v4;
+          cached_packet_in_byte = integer_sum;
         }
-        v6 = v3++;
-        v1 = *((_BYTE *)&packet_in_data + v6);
-        packet_in_byte = v3;
+        integer_sum_2 = cached_packet_in_byte++;
+        masked_bits = *((_BYTE *)&packet_in_data + integer_sum_2);
+        packet_in_byte = cached_packet_in_byte;
       }
-      if ( v1 == 72 )
+      if ( masked_bits == 72 )
       {
-        if ( v3 >= 0x10000 )
+        if ( cached_packet_in_byte >= 0x10000 )
           goto LABEL_38;
-        if ( v3 + 4 <= (int)packet_in_length )
+        if ( cached_packet_in_byte + 4 <= (int)packet_in_length )
         {
-          if ( v5 > 0 )
+          if ( cached_packet_in_bit > 0 )
           {
-            ++v3;
-            v5 = 0;
-            packet_in_byte = v3;
+            ++cached_packet_in_byte;
+            cached_packet_in_bit = 0;
+            packet_in_byte = cached_packet_in_byte;
             packet_in_bit = 0;
           }
-          v7 = v3;
-          v3 += 4;
-          g_1603612E4 = *(unsigned int *)((char *)&packet_in_data + v7);
-          packet_in_byte = v3;
+          saved_cached_packet_in_byte = cached_packet_in_byte;
+          cached_packet_in_byte += 4;
+          g_1603612E4 = *(unsigned int *)((char *)&packet_in_data + saved_cached_packet_in_byte);
+          packet_in_byte = cached_packet_in_byte;
         }
-        if ( v3 >= 0x10000 || v3 + 4 > (int)packet_in_length )
+        if ( cached_packet_in_byte >= 0x10000 || cached_packet_in_byte + 4 > (int)packet_in_length )
         {
 LABEL_38:
-          v9 = g_1603612F4;
+          masked_bits_3 = g_1603612F4;
         }
         else
         {
-          if ( v5 > 0 )
+          if ( cached_packet_in_bit > 0 )
           {
-            ++v3;
-            v5 = 0;
-            packet_in_byte = v3;
+            ++cached_packet_in_byte;
+            cached_packet_in_bit = 0;
+            packet_in_byte = cached_packet_in_byte;
             packet_in_bit = 0;
           }
-          v8 = v3;
-          v3 += 4;
-          v9 = *(unsigned int *)((char *)&packet_in_data + v8);
-          g_1603612F4 = v9;
-          packet_in_byte = v3;
+          saved_cached_packet_in_byte_2 = cached_packet_in_byte;
+          cached_packet_in_byte += 4;
+          masked_bits_3 = *(unsigned int *)((char *)&packet_in_data + saved_cached_packet_in_byte_2);
+          g_1603612F4 = masked_bits_3;
+          packet_in_byte = cached_packet_in_byte;
         }
-        if ( v9 )
+        if ( masked_bits_3 )
         {
-          if ( v3 < 0x10000 && v3 + 4 <= (int)packet_in_length )
+          if ( cached_packet_in_byte < 0x10000 && cached_packet_in_byte + 4 <= (int)packet_in_length )
           {
-            if ( v5 > 0 )
+            if ( cached_packet_in_bit > 0 )
             {
-              ++v3;
+              ++cached_packet_in_byte;
               packet_in_bit = 0;
-              packet_in_byte = v3;
+              packet_in_byte = cached_packet_in_byte;
             }
-            g_1603612F0 = *(unsigned int *)((char *)&packet_in_data + v3);
-            packet_in_byte = v3 + 4;
+            g_1603612F0 = *(unsigned int *)((char *)&packet_in_data + cached_packet_in_byte);
+            packet_in_byte = cached_packet_in_byte + 4;
           }
           g_16B165F40 = 1;
         }
@@ -164,34 +164,34 @@ LABEL_38:
         crt_chdir(&g_182A7D140);
         g_16B165F44 = sub_140198F9B() - 1000;
       }
-      else if ( v1 == 73 )
+      else if ( masked_bits == 73 )
       {
-        if ( v3 < 0x10000 && v3 + 4 <= (int)packet_in_length )
+        if ( cached_packet_in_byte < 0x10000 && cached_packet_in_byte + 4 <= (int)packet_in_length )
         {
-          if ( v5 > 0 )
+          if ( cached_packet_in_bit > 0 )
           {
-            ++v3;
-            v5 = 0;
-            packet_in_byte = v3;
+            ++cached_packet_in_byte;
+            cached_packet_in_bit = 0;
+            packet_in_byte = cached_packet_in_byte;
             packet_in_bit = 0;
           }
-          v10 = v3;
-          v3 += 4;
-          v2 = *(unsigned int *)((char *)&packet_in_data + v10);
-          packet_in_byte = v3;
+          saved_cached_packet_in_byte_3 = cached_packet_in_byte;
+          cached_packet_in_byte += 4;
+          masked_bits_2 = *(unsigned int *)((char *)&packet_in_data + saved_cached_packet_in_byte_3);
+          packet_in_byte = cached_packet_in_byte;
         }
-        if ( v2 == 1 )
+        if ( masked_bits_2 == 1 )
         {
-          if ( v3 < 0x10000 && v3 + 4 <= (int)packet_in_length )
+          if ( cached_packet_in_byte < 0x10000 && cached_packet_in_byte + 4 <= (int)packet_in_length )
           {
-            if ( v5 > 0 )
+            if ( cached_packet_in_bit > 0 )
             {
-              ++v3;
+              ++cached_packet_in_byte;
               packet_in_bit = 0;
-              packet_in_byte = v3;
+              packet_in_byte = cached_packet_in_byte;
             }
-            g_1603612F0 = *(unsigned int *)((char *)&packet_in_data + v3);
-            packet_in_byte = v3 + 4;
+            g_1603612F0 = *(unsigned int *)((char *)&packet_in_data + cached_packet_in_byte);
+            packet_in_byte = cached_packet_in_byte + 4;
           }
           g_16B165F40 = 2;
         }
@@ -206,56 +206,56 @@ LABEL_38:
   }
   return; /* native master auth updates state and returns void */
 }
-#undef v12
-#undef v13
-#undef v14
-#undef v15
+#undef unused_frame_slot_0
+#undef frame_word_at_32
+#undef frame_word_at_36
+#undef unused_frame_slot_40
 
 //----- (00000001400A3F30) ----------------------------------------------------
 __int64 sr_ConnectMasterServer()
 {
   unsigned int sr_connected = 0;
-  int v0;
-  struct hostent *v1;
-  struct servent *v2;
-  __int16 v3;
-  char *v4;
-  __int128 *v5;
-  __int64 v6;
-  __int128 v7;
-  __int128 v8;
-  __int128 v9;
-  __int128 v10;
-  __int128 v11;
-  __int128 v12;
-  __int128 v13;
-  __int128 v14;
-  __int64 v15;
-  __int64 v17;
-  int v18;
-  int v19;
-  __int64 v20;
-  int v21;
-  int v22;
-  __int64 v23;
-  char v24;
-  __int64 v25;
-  unsigned int v26;
-  __int64 v27;
-  int v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
+  int socket_handle;
+  struct hostent *returned_pointer;
+  struct servent *returned_pointer_2;
+  __int16 htons_sr_result;
+  char *unused_frame_slot_1184;
+  __int128 *unused_local;
+  __int64 unused_local_2;
+  __int128 unused_local_3;
+  __int128 unused_local_4;
+  __int128 unused_local_5;
+  __int128 unused_local_6;
+  __int128 unused_local_7;
+  __int128 unused_local_8;
+  __int128 unused_local_9;
+  __int128 unused_local_10;
+  __int64 iteration_count;
+  __int64 element_index;
+  int record_byte_offset;
+  int iteration_count_2;
+  __int64 iteration_count_3;
+  int iteration_count_4;
+  int element_index_2;
+  __int64 iteration_count_5;
+  char masked_bits;
+  __int64 saved_element_index;
+  unsigned int inet_addr_sr_result;
+  __int64 iteration_count_6;
+  int iteration_count_7;
+  __int64 iteration_count_8;
+  __int64 record_byte_offset_2;
+  __int64 iteration_count_9;
+  __int64 remaining_count;
   __int64 i;
-  char v34;
-  __int64 v35;
-  __int64 v36;
+  char masked_bits_2;
+  __int64 integer_sum;
+  __int64 integer_sum_2;
   _Alignas(4) _WORD name[8];
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400A3F30[1200];
-#define v37 (*(__int64 (*))(void *)(sr_frame_1400A3F30 + 0)) /* [rsp+0h] */
-#define v38 (*(int (*))(void *)(sr_frame_1400A3F30 + 48)) /* [rsp+30h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_1400A3F30 + 0)) /* [rsp+0h] */
+#define iteration_count_10 (*(int (*))(void *)(sr_frame_1400A3F30 + 48)) /* [rsp+30h] */
 #define argp (*(int (*))(void *)(sr_frame_1400A3F30 + 52)) /* [rsp+34h] */
 #define optlen (*(int (*))(void *)(sr_frame_1400A3F30 + 56)) /* [rsp+38h] */
 #define optval (*(char (*)[4])(void *)(sr_frame_1400A3F30 + 60)) /* [rsp+3Ch] */
@@ -263,202 +263,202 @@ __int64 sr_ConnectMasterServer()
 #define readfds (*(_QWORD (*)[66])(void *)(sr_frame_1400A3F30 + 80)) /* [rsp+50h] */
 #define writefds (*(char (*)[528])(void *)(sr_frame_1400A3F30 + 624)) /* [rsp+270h] */
 #define cp (*(char (*)[32])(void *)(sr_frame_1400A3F30 + 1152)) /* [rsp+480h] */
-#define v48 (*(__int64 (*))(void *)(sr_frame_1400A3F30 + 1184)) /* [rsp+4A0h] */
+#define unused_frame_slot_1184_2 (*(__int64 (*))(void *)(sr_frame_1400A3F30 + 1184)) /* [rsp+4A0h] */
 
   g_18329C1E0 = 0;
-  v0 = socket_sr(2, 1, 6);
-  if ( v0 != -1 )
+  socket_handle = socket_sr(2, 1, 6);
+  if ( socket_handle != -1 )
   {
-    v1 = sub_140199031("www.crypticsea.com");
-    if ( v1 )
+    returned_pointer = sub_140199031("www.crypticsea.com");
+    if ( returned_pointer )
     {
-      v2 = sub_14019903D("http", "tcp");
+      returned_pointer_2 = sub_14019903D("http", "tcp");
       name[0] = 2;
-      *(_DWORD *)&name[2] = ***((_DWORD ***)v1 + 3);
-      v3 = v2 ? *((_WORD *)v2 + 12) : htons_sr(80);
-      name[1] = v3;
+      *(_DWORD *)&name[2] = ***((_DWORD ***)returned_pointer + 3);
+      htons_sr_result = returned_pointer_2 ? *((_WORD *)returned_pointer_2 + 12) : htons_sr(80);
+      name[1] = htons_sr_result;
       crt_sprintf(
         &packet_out_data,
         "GET /anewzero/serverinfo.php HTTP/1.1\r\nHost:www.crypticsea.com\r\n\r\n");
       argp = 1;
-      ioctlsocket_sr(v0, 2147772030LL, &argp);
-      if ( (unsigned int)connect_sr(v0, name, 16) == -1 )
+      ioctlsocket_sr(socket_handle, 2147772030LL, &argp);
+      if ( (unsigned int)connect_sr(socket_handle, name, 16) == -1 )
       {
-        readfds[1] = v0;
+        readfds[1] = socket_handle;
         LODWORD(readfds[0]) = 1;
         memcpy(writefds, readfds, 520); /* native MOVUPS copy of Win64 fd_set */
         *(_QWORD *)&timeout = 3;
-        if ( select_sr(v0 + 1, (fd_set *)readfds, (fd_set *)writefds, nullptr, (     struct timeval *)&timeout) )
+        if ( select_sr(socket_handle + 1, (fd_set *)readfds, (fd_set *)writefds, nullptr, (     struct timeval *)&timeout) )
         {
-          if ( (unsigned int)_WSAFDIsSet_sr(v0, readfds) || (unsigned int)_WSAFDIsSet_sr(v0, writefds) )
+          if ( (unsigned int)_WSAFDIsSet_sr(socket_handle, readfds) || (unsigned int)_WSAFDIsSet_sr(socket_handle, writefds) )
           {
             optlen = 4;
-            if ( !(unsigned int)getsockopt_sr(v0, 0xFFFF, 4103, optval, &optlen) && !*(_DWORD *)optval )
+            if ( !(unsigned int)getsockopt_sr(socket_handle, 0xFFFF, 4103, optval, &optlen) && !*(_DWORD *)optval )
               goto LABEL_15;
           }
         }
       }
-      if ( v38 >= 1000 )
+      if ( iteration_count_10 >= 1000 )
       {
 LABEL_15:
-        v38 = 0;
+        iteration_count_10 = 0;
         while ( 1 )
         {
           sub_140198FA1(100);
-          ++v38;
-          v15 = -1;
+          ++iteration_count_10;
+          iteration_count = -1;
           do
-            ++v15;
-          while ( *((_BYTE *)&packet_out_data + v15) );
-          if ( (int)send_sr(v0, &packet_out_data, v15, 0) > 0 )
+            ++iteration_count;
+          while ( *((_BYTE *)&packet_out_data + iteration_count) );
+          if ( (int)send_sr(socket_handle, &packet_out_data, iteration_count, 0) > 0 )
             break;
-          if ( v38 >= 30 )
+          if ( iteration_count_10 >= 30 )
           {
-            if ( v38 < 1000 )
+            if ( iteration_count_10 < 1000 )
               return 0;
             break;
           }
         }
-        v38 = 0;
+        iteration_count_10 = 0;
         do
         {
           sub_140198FA1(100);
-          ++v38;
-          if ( (int)recv_sr(v0, &packet_in_data, 0x2000, 0) > 0 )
+          ++iteration_count_10;
+          if ( (int)recv_sr(socket_handle, &packet_in_data, 0x2000, 0) > 0 )
           {
-            v38 = 1000;
+            iteration_count_10 = 1000;
             goto LABEL_27;
           }
         }
-        while ( v38 < 30 );
-        if ( v38 < 1000 )
+        while ( iteration_count_10 < 30 );
+        if ( iteration_count_10 < 1000 )
           return 0;
 LABEL_27:
-        closesocket_sr(v0);
-        v17 = 0;
-        v18 = 0;
-        while ( LOBYTE(dword_140404A6C[v17 + 289317486]) != 9 )
+        closesocket_sr(socket_handle);
+        element_index = 0;
+        record_byte_offset = 0;
+        while ( LOBYTE(dword_140404A6C[element_index + 289317486]) != 9 )
         {
-          if ( BYTE1(dword_140404A6C[v17 + 289317486]) == 9 )
+          if ( BYTE1(dword_140404A6C[element_index + 289317486]) == 9 )
           {
-            ++v18;
+            ++record_byte_offset;
             break;
           }
-          if ( BYTE2(dword_140404A6C[v17 + 289317486]) == 9 )
+          if ( BYTE2(dword_140404A6C[element_index + 289317486]) == 9 )
           {
-            v18 += 2;
+            record_byte_offset += 2;
             break;
           }
-          if ( HIBYTE(dword_140404A6C[v17 + 289317486]) == 9 )
+          if ( HIBYTE(dword_140404A6C[element_index + 289317486]) == 9 )
           {
-            v18 += 3;
+            record_byte_offset += 3;
             break;
           }
-          ++v17;
-          v18 += 4;
-          if ( v17 >= 2048 )
+          ++element_index;
+          record_byte_offset += 4;
+          if ( element_index >= 2048 )
             break;
         }
-        v19 = v18 + 1;
-        v20 = v19;
-        crt_sscanf((__int64)&packet_in_data + v19, "%d", (uintptr_t)&v38);
-        if ( v19 < 0x2000LL )
+        iteration_count_2 = record_byte_offset + 1;
+        iteration_count_3 = iteration_count_2;
+        crt_sscanf((__int64)&packet_in_data + iteration_count_2, "%d", (uintptr_t)&iteration_count_10);
+        if ( iteration_count_2 < 0x2000LL )
         {
           do
           {
-            if ( *((_BYTE *)&packet_in_data + v20) == 9 )
+            if ( *((_BYTE *)&packet_in_data + iteration_count_3) == 9 )
               break;
-            ++v19;
-            ++v20;
+            ++iteration_count_2;
+            ++iteration_count_3;
           }
-          while ( v20 < 0x2000 );
+          while ( iteration_count_3 < 0x2000 );
         }
-        v21 = v19 + 1;
-        v22 = 0;
-        v38 = 0;
-        v23 = v21;
+        iteration_count_4 = iteration_count_2 + 1;
+        element_index_2 = 0;
+        iteration_count_10 = 0;
+        iteration_count_5 = iteration_count_4;
         do
         {
-          if ( v23 >= 0x2000 )
+          if ( iteration_count_5 >= 0x2000 )
             break;
-          v24 = *((_BYTE *)&packet_in_data + v23);
-          if ( v24 == 9 )
+          masked_bits = *((_BYTE *)&packet_in_data + iteration_count_5);
+          if ( masked_bits == 9 )
             break;
-          v25 = v22;
-          ++v21;
-          ++v22;
-          ++v23;
-          cp[v25] = v24;
+          saved_element_index = element_index_2;
+          ++iteration_count_4;
+          ++element_index_2;
+          ++iteration_count_5;
+          cp[saved_element_index] = masked_bits;
         }
-        while ( v22 < 32 );
-        v38 = v22;
-        if ( (unsigned __int64)v22 >= 0x20 )
+        while ( element_index_2 < 32 );
+        iteration_count_10 = element_index_2;
+        if ( (unsigned __int64)element_index_2 >= 0x20 )
           sub_1401F8694();
-        cp[v22] = 0;
-        v26 = inet_addr_sr(cp);
-        g_18329C1E0 = ntohl_sr(v26);
-        v27 = v21;
-        if ( v21 < 0x2000LL )
+        cp[element_index_2] = 0;
+        inet_addr_sr_result = inet_addr_sr(cp);
+        g_18329C1E0 = ntohl_sr(inet_addr_sr_result);
+        iteration_count_6 = iteration_count_4;
+        if ( iteration_count_4 < 0x2000LL )
         {
           do
           {
-            if ( *((_BYTE *)&packet_in_data + v27) == 9 )
+            if ( *((_BYTE *)&packet_in_data + iteration_count_6) == 9 )
               break;
-            ++v21;
-            ++v27;
+            ++iteration_count_4;
+            ++iteration_count_6;
           }
-          while ( v27 < 0x2000 );
+          while ( iteration_count_6 < 0x2000 );
         }
-        v28 = v21 + 1;
-        v29 = v28;
-        crt_sscanf((__int64)&packet_in_data + v28, "%d", (uintptr_t)&v38);
-        LOWORD(g_18329C1E4) = v38;
+        iteration_count_7 = iteration_count_4 + 1;
+        iteration_count_8 = iteration_count_7;
+        crt_sscanf((__int64)&packet_in_data + iteration_count_7, "%d", (uintptr_t)&iteration_count_10);
+        LOWORD(g_18329C1E4) = iteration_count_10;
         if ( g_18329C1E0 != -1 )
         {
           sr_connected = 1;
-          LOWORD(g_18329C1E4) = v38 + 2;
-          if ( v28 < 0x2000LL )
+          LOWORD(g_18329C1E4) = iteration_count_10 + 2;
+          if ( iteration_count_7 < 0x2000LL )
           {
             do
             {
-              if ( *((_BYTE *)&packet_in_data + v29) == 9 )
+              if ( *((_BYTE *)&packet_in_data + iteration_count_8) == 9 )
                 break;
-              ++v28;
-              ++v29;
+              ++iteration_count_7;
+              ++iteration_count_8;
             }
-            while ( v29 < 0x2000 );
+            while ( iteration_count_8 < 0x2000 );
           }
-          v30 = 0;
-          v31 = v28 + 1;
-          v32 = 8;
+          record_byte_offset_2 = 0;
+          iteration_count_9 = iteration_count_7 + 1;
+          remaining_count = 8;
           do
           {
             for ( i = 0; i < 32; ++i )
             {
-              if ( v31 >= 0x2000 )
+              if ( iteration_count_9 >= 0x2000 )
                 break;
-              v34 = *((_BYTE *)&packet_in_data + v31);
-              if ( v34 == 9 )
+              masked_bits_2 = *((_BYTE *)&packet_in_data + iteration_count_9);
+              if ( masked_bits_2 == 9 )
                 break;
-              v35 = v30 + i;
-              ++v31;
-              *((_BYTE *)&g_18329C1E4 + v35 + 2) = v34;
+              integer_sum = record_byte_offset_2 + i;
+              ++iteration_count_9;
+              *((_BYTE *)&g_18329C1E4 + integer_sum + 2) = masked_bits_2;
             }
-            v36 = v30 + i;
-            ++v31;
-            v30 += 64;
-            *((_BYTE *)&g_18329C1E4 + v36 + 2) = 0;
-            --v32;
+            integer_sum_2 = record_byte_offset_2 + i;
+            ++iteration_count_9;
+            record_byte_offset_2 += 64;
+            *((_BYTE *)&g_18329C1E4 + integer_sum_2 + 2) = 0;
+            --remaining_count;
           }
-          while ( v32 );
+          while ( remaining_count );
         }
       }
     }
   }
   return sr_connected;
 }
-#undef v37
-#undef v38
+#undef unused_frame_slot_0
+#undef iteration_count_10
 #undef argp
 #undef optlen
 #undef optval
@@ -466,21 +466,21 @@ LABEL_27:
 #undef readfds
 #undef writefds
 #undef cp
-#undef v48
+#undef unused_frame_slot_1184_2
 
 //----- (000000014011C760) ----------------------------------------------------
 __int64 sub_14011C760()
 {
-  signed int v0;
+  signed int received_byte_count;
   __int64 result;
-  int v2;
+  int callee_output_word;
 
   while ( 1 )
   {
-    v0 = 0;
+    received_byte_count = 0;
     g_18539D3E8 = 0;
     if ( !dword_140404A6C[g_18539D3A0 + 289301070]
-      || (v0 = recvfrom_sr(
+      || (received_byte_count = recvfrom_sr(
                  (int)dword_140404A6C[g_18539D3A0 + 289301078],
                  &packet_in_data,
                  0x10000,
@@ -490,18 +490,18 @@ __int64 sub_14011C760()
           g_1853AD404 = ntohl_sr(g_18539D3E8),
           LOWORD(g_1853AD408) = ntohs_sr(HIWORD(g_18539D3E4)),
           g_1853AD410 = 0,
-          v0 <= 0) )
+          received_byte_count <= 0) )
     {
       if ( !(unsigned int)sub_140198C60(
                             (unsigned int *)&g_1853AD410,
                             (__int64)&packet_in_data,
-                            (__int64)&v2,
+                            (__int64)&callee_output_word,
                             0x10000u) )
         break;
-      v0 = v2;
+      received_byte_count = callee_output_word;
       g_1853AD404 = 0;
       LOWORD(g_1853AD408) = 0;
-      if ( v2 <= 0 )
+      if ( callee_output_word <= 0 )
         break;
     }
     if ( LOBYTE(packet_in_data) == (char)dword_1402B2658
@@ -515,7 +515,7 @@ __int64 sub_14011C760()
       }
       if ( HIBYTE(packet_in_data) == byte_1402B26C3 )
       {
-        result = sub_14011BD70(v0);
+        result = sub_14011BD70(received_byte_count);
         if ( (_DWORD)result )
         {
           packet_in_length = result;
@@ -524,6 +524,6 @@ __int64 sub_14011C760()
       }
     }
   }
-  packet_in_length = v0;
-  return (unsigned int)v0;
+  packet_in_length = received_byte_count;
+  return (unsigned int)received_byte_count;
 }

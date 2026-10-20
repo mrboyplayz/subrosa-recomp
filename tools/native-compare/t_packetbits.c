@@ -13,25 +13,25 @@
 #define write_e60(v,b) ((uint64_t (*)(const uint32_t *, int))NC_ADDR(0x140115E60))(v,b)
 #define write_f70(v,b) ((uint64_t (*)(const uint32_t *, int))NC_ADDR(0x140115F70))(v,b)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140115AE0(uint32_t *, int);
-long long sub_140115C20(uint32_t *, int, int);
-long long sub_140115D90(uint32_t *, int);
-long long sub_140115E80(uint32_t *, int, uint32_t);
-long long sub_140115E60(uint32_t *, int);
-long long sub_140115F70(uint32_t *, int);
-#define read_bits sub_140115AE0
-#define read_scaled sub_140115C20
-#define write_bits sub_140115D90
-#define write_scaled sub_140115E80
-#define write_e60 sub_140115E60
-#define write_f70 sub_140115F70
+long long sr_net_read_bits(uint32_t *, int);
+long long sr_net_read_bits_scaled(uint32_t *, int, int);
+long long sr_net_write_bits(uint32_t *, int);
+long long sr_net_write_bits_scaled(uint32_t *, int, uint32_t);
+long long sr_net_write_bits_always_success(uint32_t *, int);
+long long sr_net_write_bits_always_success_alt(uint32_t *, int);
+#define read_bits sr_net_read_bits
+#define read_scaled sr_net_read_bits_scaled
+#define write_bits sr_net_write_bits
+#define write_scaled sr_net_write_bits_scaled
+#define write_e60 sr_net_write_bits_always_success
+#define write_f70 sr_net_write_bits_always_success_alt
 #else
 #define read_bits net_read_bits
 #define read_scaled net_read_bits_scaled
 #define write_bits net_write_bits
 #define write_scaled net_write_bits_scaled
-#define write_e60 net_write_bits_e60
-#define write_f70 net_write_bits_f70
+#define write_e60 net_write_bits_always_success
+#define write_f70 net_write_bits_always_success_alt
 #endif
 
 static void run_case(int op, int n)

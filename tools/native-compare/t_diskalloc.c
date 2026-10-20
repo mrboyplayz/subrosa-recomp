@@ -6,8 +6,8 @@
 #ifdef NC_NATIVE
 #define create(v) ((uint64_t (*)(uint32_t))NC_ADDR(0x140050EF0))(v)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140050EF0(uint32_t);
-#define create sub_140050EF0
+long long sr_disk_create(uint32_t);
+#define create sr_disk_create
 #else
 #define create disk_create
 #endif

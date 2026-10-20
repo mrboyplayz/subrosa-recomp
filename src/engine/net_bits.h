@@ -21,8 +21,8 @@ int net_write_bits(const uint32_t *value, int bits); /* 0x140115D90 */
 /* Divisor must be nonzero unless the initial buffer-full check fails. */
 int net_write_bits_scaled(const uint32_t *value, int bits, uint32_t divisor); /* 0x140115E80 */
 /* Original adapters always report success, including for a full buffer. */
-int net_write_bits_e60(const uint32_t *value, int bits); /* 0x140115E60 */
-int net_write_bits_f70(const uint32_t *value, int bits); /* 0x140115F70 */
+int net_write_bits_always_success(const uint32_t *value, int bits); /* 0x140115E60 */
+int net_write_bits_always_success_alt(const uint32_t *value, int bits); /* 0x140115F70 */
 
 /* Byte transfers align a positive bit cursor before copying. The read
    length check precedes alignment. The wrapped product size*count must be

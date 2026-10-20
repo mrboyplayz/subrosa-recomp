@@ -5,8 +5,8 @@
 #ifdef NC_NATIVE
 #define free_slot(p) ((uint64_t (*)(const CollisionShapeContacts *))NC_ADDR(0x140048090))(p)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140048090(long long);
-#define free_slot(p) sub_140048090((long long)(uintptr_t)(p))
+long long sr_collision_find_free_contact(long long);
+#define free_slot(p) sr_collision_find_free_contact((long long)(uintptr_t)(p))
 #else
 #define free_slot collision_find_free_contact
 #endif

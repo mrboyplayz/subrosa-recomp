@@ -8,19 +8,19 @@
    expiry go through their recompiled names too (which forward to
    physics_solve and physics_expire_bonds), so every stage of the tick is
    reached the same way. */
-extern int64_t sub_1401069C0(void);          /* vehicle spatial bounds */
-extern void sub_1400B95E0(void);             /* human spatial bounds, world_update_human_bounds */
-extern uint64_t sub_1400C9D20(void);         /* item spatial bounds */
+extern int64_t sr_world_update_vehicle_bounds(void);          /* vehicle spatial bounds */
+extern void sr_world_update_human_bounds(void);             /* human spatial bounds, world_update_human_bounds */
+extern uint64_t sr_world_update_item_bounds(void);         /* item spatial bounds */
 extern void sub_140037DE0(int32_t layer, int32_t x, uint32_t y, uint32_t z, uint16_t object);   /* world_grid_insert */
-extern int64_t sub_1401154D0(void);          /* physics_integrate_points */
+extern int64_t sr_physics_integrate_points(void);          /* physics_integrate_points */
 extern int64_t sub_140108930(void);
 extern int64_t sub_1400BE010(void);          /* humans and their pose targets */
-extern int64_t sub_1400CE370(void);
-extern unsigned int *sub_14001D080(void);    /* physics_solve */
-extern void sub_14007F970(int32_t item);     /* world_remove_item */
-extern void sub_14010BE50(void);             /* world_expire_vehicles */
-extern void sub_140115830(void);             /* physics_expire_points */
-extern void sub_14001FB90(void);             /* physics_expire_bonds */
+extern int64_t sr_item_update_physics(void);
+extern unsigned int *sr_physics_solve(void);    /* physics_solve */
+extern void sr_world_remove_item(int32_t item);     /* world_remove_item */
+extern void sr_world_expire_vehicles(void);             /* world_expire_vehicles */
+extern void sr_physics_expire_points(void);             /* physics_expire_points */
+extern void sr_physics_expire_bonds(void);             /* physics_expire_bonds */
 
 /* Empties layer 0 of the spatial grid. */
 static void clear_grid(void)
@@ -61,7 +61,7 @@ static void expire_items(void)
         if (ticks < 0xFFFF)
             item->lifetime = --ticks;
         if (ticks <= 0)
-            sub_14007F970(index);
+            sr_world_remove_item(index);
     }
 }
 
@@ -70,20 +70,20 @@ void physics_tick(void)
     for (int index = 0; index < WORLD_HUMAN_CAPACITY; index++)
         world_humans[index].unknown_6ddc = 0;
     physics_integrate_bodies();
-    sub_1401069C0();
-    sub_1400B95E0();
-    sub_1400C9D20();
+    sr_world_update_vehicle_bounds();
+    sr_world_update_human_bounds();
+    sr_world_update_item_bounds();
     clear_grid();
     world_grid_leaf_count = 0;
     place_items_in_voxels();
-    sub_1401154D0();
+    sr_physics_integrate_points();
     sub_140108930();
     sub_1400BE010();
-    sub_1400CE370();
+    sr_item_update_physics();
     item_tick_states();
-    sub_14001D080();
+    sr_physics_solve();
     expire_items();
-    sub_14010BE50();
-    sub_140115830();
-    sub_14001FB90();
+    sr_world_expire_vehicles();
+    sr_physics_expire_points();
+    sr_physics_expire_bonds();
 }

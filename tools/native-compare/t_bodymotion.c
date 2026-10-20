@@ -59,7 +59,7 @@ int main(void)
 #ifdef NC_NATIVE
         ((void (*)(void))NC_ADDR(0x14012B220))();
 #elif defined(NC_CLIENT_WRAPPERS)
-        extern void sub_14012B220(void);sub_14012B220();
+        extern void sr_physics_integrate_bodies(void);sr_physics_integrate_bodies();
 #else
         physics_integrate_bodies();
 #endif

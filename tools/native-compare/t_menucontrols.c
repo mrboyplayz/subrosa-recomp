@@ -8,10 +8,10 @@
 #define group(t) ((uint64_t (*)(const unsigned char *))NC_ADDR(0x14006FD10))(t)
 #define toggle_mask(t,p,m) ((uint64_t (*)(const unsigned char *,uint32_t *,uint32_t))NC_ADDR(0x140071AA0))(t,p,m)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_14006FD10(unsigned char *);
-long long sub_140071AA0(unsigned char *,uint32_t *,uint32_t);
-#define group sub_14006FD10
-#define toggle_mask sub_140071AA0
+long long sr_menu_group(unsigned char *);
+long long sr_menu_toggle_mask(unsigned char *,uint32_t *,uint32_t);
+#define group sr_menu_group
+#define toggle_mask sr_menu_toggle_mask
 #else
 #define group menu_group
 #define toggle_mask menu_toggle_mask

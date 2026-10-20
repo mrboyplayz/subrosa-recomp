@@ -3,68 +3,68 @@
 //----- (00000001400D12E0) ----------------------------------------------------
 unsigned int *sub_1400D12E0()
 {
-  unsigned int *v0;
-  int v1;
+  unsigned int *state_address;
+  int iteration_count;
   int i;
-  int v3;
-  float *v4;
-  float v5;
-  int v6;
-  float v7;
-  float v8;
-  float v9;
+  int record_byte_offset;
+  float *buffer_cursor;
+  float product_difference;
+  int iteration_count_2;
+  float source_float_2048;
+  float scaled_value;
+  float source_float_2049;
   int j;
   int k;
-  unsigned int *v12;
-  unsigned int *v13;
-  __int64 v14;
-  __int64 v15;
-  int v16;
-  unsigned int *v17;
-  int v18;
-  unsigned int *v19;
-  int v20;
-  unsigned int *v21;
-  int v22;
-  unsigned int *v23;
-  int v24;
-  unsigned int *v25;
+  unsigned int *state_address_2;
+  unsigned int *saved_state_address;
+  __int64 remaining_count;
+  __int64 remaining_count_2;
+  int iteration_count_3;
+  unsigned int *state_address_3;
+  int iteration_count_4;
+  unsigned int *state_address_4;
+  int iteration_count_5;
+  unsigned int *state_address_5;
+  int iteration_count_6;
+  unsigned int *state_address_6;
+  int iteration_count_7;
+  unsigned int *state_address_7;
   unsigned int *result;
-  unsigned int *v27;
+  unsigned int *state_address_8;
 
-  v0 = &g_16D482830;
-  v1 = 0;
+  state_address = &g_16D482830;
+  iteration_count = 0;
   for ( i = 0; i < 0x4000; i += 8 )
   {
-    v3 = 0;
-    v4 = (float *)v0;
+    record_byte_offset = 0;
+    buffer_cursor = (float *)state_address;
     do
     {
-      v5 = *(v4 - 1);
-      v6 = 0;
-      v7 = v4[2048];
-      v8 = *v4;
-      v9 = v4[2049];
+      product_difference = *(buffer_cursor - 1);
+      iteration_count_2 = 0;
+      source_float_2048 = buffer_cursor[2048];
+      scaled_value = *buffer_cursor;
+      source_float_2049 = buffer_cursor[2049];
       do
       {
         for ( j = 0; j < 8; ++j )
           sub_1400D2DB0(
-            v3 + j,
-            i + v6,
+            record_byte_offset + j,
+            i + iteration_count_2,
             (float)((float)(1.0 - (float)((float)j * 0.125))
-                  * (float)((float)((float)(1.0 - (float)((float)v6 * 0.125)) * v5)
-                          + (float)(v7 * (float)((float)v6 * 0.125))))
-          + (float)((float)((float)((float)(1.0 - (float)((float)v6 * 0.125)) * v8)
-                          + (float)(v9 * (float)((float)v6 * 0.125)))
+                  * (float)((float)((float)(1.0 - (float)((float)iteration_count_2 * 0.125)) * product_difference)
+                          + (float)(source_float_2048 * (float)((float)iteration_count_2 * 0.125))))
+          + (float)((float)((float)((float)(1.0 - (float)((float)iteration_count_2 * 0.125)) * scaled_value)
+                          + (float)(source_float_2049 * (float)((float)iteration_count_2 * 0.125)))
                   * (float)((float)j * 0.125)));
-        ++v6;
+        ++iteration_count_2;
       }
-      while ( v6 < 8 );
-      v3 += 8;
-      ++v4;
+      while ( iteration_count_2 < 8 );
+      record_byte_offset += 8;
+      ++buffer_cursor;
     }
-    while ( v3 < 0x4000 );
-    v0 += 2049;
+    while ( record_byte_offset < 0x4000 );
+    state_address += 2049;
   }
   if ( !g_183F7CB60 )
   {
@@ -99,104 +99,104 @@ unsigned int *sub_1400D12E0()
   }
   for ( k = 0; k < 64; ++k )
     sub_1400D00F0(k);
-  v12 = &g_1811BF878;
+  state_address_2 = &g_1811BF878;
   do
   {
-    v13 = v12;
-    v14 = 16;
+    saved_state_address = state_address_2;
+    remaining_count = 16;
     do
     {
-      v15 = 16;
+      remaining_count_2 = 16;
       do
       {
-        *(_QWORD *)(v13 - 1) = -1;
-        *(_QWORD *)(v13 + 1) = -1;
-        *(_QWORD *)(v13 + 3) = -1;
-        v13[5] = -1;
-        v13 += 13;
-        --v15;
+        *(_QWORD *)(saved_state_address - 1) = -1;
+        *(_QWORD *)(saved_state_address + 1) = -1;
+        *(_QWORD *)(saved_state_address + 3) = -1;
+        saved_state_address[5] = -1;
+        saved_state_address += 13;
+        --remaining_count_2;
       }
-      while ( v15 );
-      --v14;
+      while ( remaining_count_2 );
+      --remaining_count;
     }
-    while ( v14 );
-    v12 += 3336;
+    while ( remaining_count );
+    state_address_2 += 3336;
   }
-  while ( (__int64)v12 < (__int64)&g_181290078 );
-  v16 = 0;
+  while ( (__int64)state_address_2 < (__int64)&g_181290078 );
+  iteration_count_3 = 0;
   g_1810FF794 = 0;
   if ( (int)g_1810FF788 > 0 )
   {
-    v17 = &g_1810FF798;
+    state_address_3 = &g_1810FF798;
     do
     {
-      *v17 = -1;
-      v17 += 3;
-      ++v16;
+      *state_address_3 = -1;
+      state_address_3 += 3;
+      ++iteration_count_3;
     }
-    while ( v16 < (int)g_1810FF788 );
+    while ( iteration_count_3 < (int)g_1810FF788 );
   }
-  v18 = 0;
+  iteration_count_4 = 0;
   g_1811177AC = 0;
   if ( (int)g_1811177A0 > 0 )
   {
-    v19 = &g_1811177B0;
+    state_address_4 = &g_1811177B0;
     do
     {
-      *v19 = -1;
-      v19 += 3;
-      ++v18;
+      *state_address_4 = -1;
+      state_address_4 += 3;
+      ++iteration_count_4;
     }
-    while ( v18 < (int)g_1811177A0 );
+    while ( iteration_count_4 < (int)g_1811177A0 );
   }
-  v20 = 0;
+  iteration_count_5 = 0;
   g_18112F7C4 = 0;
   if ( (int)g_18112F7B8 > 0 )
   {
-    v21 = &g_18112F7C8;
+    state_address_5 = &g_18112F7C8;
     do
     {
-      *v21 = -1;
-      v21 += 3;
-      ++v20;
+      *state_address_5 = -1;
+      state_address_5 += 3;
+      ++iteration_count_5;
     }
-    while ( v20 < (int)g_18112F7B8 );
+    while ( iteration_count_5 < (int)g_18112F7B8 );
   }
-  v22 = 0;
+  iteration_count_6 = 0;
   g_1811477DC = 0;
   if ( (int)g_1811477D0 > 0 )
   {
-    v23 = &g_1811477E0;
+    state_address_6 = &g_1811477E0;
     do
     {
-      *v23 = -1;
-      v23 += 3;
-      ++v22;
+      *state_address_6 = -1;
+      state_address_6 += 3;
+      ++iteration_count_6;
     }
-    while ( v22 < (int)g_1811477D0 );
+    while ( iteration_count_6 < (int)g_1811477D0 );
   }
-  v24 = 0;
+  iteration_count_7 = 0;
   g_18115F7F4 = 0;
   if ( (int)g_18115F7E8 > 0 )
   {
-    v25 = &g_18115F7F8;
+    state_address_7 = &g_18115F7F8;
     do
     {
-      *v25 = -1;
-      v25 += 3;
-      ++v24;
+      *state_address_7 = -1;
+      state_address_7 += 3;
+      ++iteration_count_7;
     }
-    while ( v24 < (int)g_18115F7E8 );
+    while ( iteration_count_7 < (int)g_18115F7E8 );
   }
   result = nullptr;
   g_18117780C = 0;
   if ( (int)g_181177800 > 0 )
   {
-    v27 = &g_181177810;
+    state_address_8 = &g_181177810;
     do
     {
-      *v27 = -1;
-      v27 += 3;
+      *state_address_8 = -1;
+      state_address_8 += 3;
       result = (unsigned int *)(unsigned int)((_DWORD)result + 1);
     }
     while ( (int)result < (int)g_181177800 );
@@ -209,9 +209,9 @@ unsigned int *sub_1400D12E0()
     {
       *result = -1;
       result += 3;
-      ++v1;
+      ++iteration_count;
     }
-    while ( v1 < (int)g_18118F818 );
+    while ( iteration_count < (int)g_18118F818 );
   }
   return result;
 }
@@ -229,482 +229,482 @@ int                sub_1400D1830(unsigned __int64 a1, float *a2, float *a3)
   int sr_end[3];
   int sr_start[3];
   int sr_direction[3];
-  float *v3;
-  signed __int64 v5;
-  int v6;
-  signed __int64 v7;
-  signed __int64 v8;
-  signed __int64 v9;
-  signed __int64 v10;
-  signed __int64 v11;
-  signed __int64 v12;
-  signed __int64 v13;
-  signed __int64 v14;
-  signed __int64 v15;
-  float v16;
-  float v17;
-  bool v18;
-  int v19;
-  float v20;
-  float v21;
-  signed __int64 v22;
-  float v23;
-  float v24;
-  float v25;
-  float v26;
-  int v27;
-  float v28;
-  signed __int64 v29;
-  float v30;
-  signed __int64 v31;
-  signed __int64 v32;
-  float v33;
-  float v34;
-  float v35;
-  signed __int64 v36;
-  int v37;
-  float v38;
-  float *v39;
-  unsigned __int64 v40;
-  __m128d v41;
-  double v42;
-  float v43;
-  float v44;
-  float v45;
-  float v46;
-  __m128d v47;
-  float v48;
-  double v49;
-  int v50;
-  float v51;
-  float v52;
-  float v53;
-  float v54;
-  float v55;
-  __m128d v56;
-  double v57;
-  int v58;
-  float v59;
-  int v60;
-  int v61;
-  float v62;
-  int v63;
-  int v64;
-  signed int v65;
-  float v66;
-  int v67;
-  float v68;
-  float v69;
-  float v70;
-  float v71;
-  float v72;
-  unsigned int v73;
-  unsigned int v74;
-  int v75;
-  __int64 v76;
-  float v77;
-  __int64 v78;
-  float v79;
-  float v80;
-  float v81;
-  __int64 v82;
-  float v83;
-  float v84;
-  float v85;
-  float v86;
-  float v87;
-  float v88;
-  float v89;
-  float v90;
-  float v91;
-  float v92;
-  float v93;
-  float v94;
-  int v95;
-  float v96;
-  float v97;
-  float v98;
-  __int64 v99;
-  float v100;
-  float v101;
-  float v102;
-  float v103;
-  float v104;
-  float v105;
-  float v106;
-  float v107;
-  float v108;
-  float v109;
-  float v110;
-  float v111;
-  float v112;
-  float v113;
-  float v114;
-  float v115;
-  BOOL v116;
-  int v117;
-  float v118;
-  _BOOL8 v119;
+  float *running_total;
+  signed __int64 state_address;
+  int running_total_2;
+  signed __int64 bit_mask;
+  signed __int64 state_address_2;
+  signed __int64 scaled_index;
+  signed __int64 state_address_3;
+  signed __int64 state_address_4;
+  signed __int64 state_address_5;
+  signed __int64 state_address_6;
+  signed __int64 state_address_7;
+  signed __int64 state_address_8;
+  float combined_products;
+  float product_difference;
+  bool comparison_result;
+  int saved_t;
+  float absolute_value;
+  float scaled_value;
+  signed __int64 saved_state_address;
+  float scaled_value_2;
+  float combined_products_2;
+  float weighted_sum;
+  float component_delta;
+  int integer_difference;
+  float absolute_value_2;
+  signed __int64 saved_state_address_2;
+  float source_component_y;
+  signed __int64 saved_state_address_3;
+  signed __int64 saved_state_address_4;
+  float weighted_sum_2;
+  float weighted_sum_3;
+  float component_delta_2;
+  signed __int64 saved_state_address_5;
+  int saved_t_2;
+  float absolute_value_3;
+  float *cached_saved;
+  unsigned __int64 table_value;
+  __m128d vector_result;
+  double lane_mask;
+  float component_delta_3;
+  float source_component_y_2;
+  float component_sum;
+  float source_component_z;
+  __m128d vector_result_2;
+  float scaled_value_3;
+  double lane_mask_2;
+  int table_value_2;
+  float component_delta_4;
+  float source_component_x;
+  float component_sum_2;
+  float scaled_value_4;
+  float product_difference_2;
+  __m128d vector_result_3;
+  double lane_mask_3;
+  int table_value_3;
+  float component_delta_5;
+  int table_value_4;
+  int table_value_5;
+  float component_sum_3;
+  int table_value_6;
+  int running_total_3;
+  signed int abs32_result;
+  float source_component_x_2;
+  int iteration_count;
+  float source_component_z_2;
+  float source_component_y_3;
+  float source_component_x_3;
+  float source_component_z_3;
+  float source_component_y_4;
+  unsigned int shifted_bits;
+  unsigned int shifted_bits_2;
+  int bit_mask_2;
+  __int64 shifted_bits_3;
+  float weighted_sum_4;
+  __int64 masked_bits;
+  float weighted_sum_5;
+  float weighted_sum_6;
+  float weighted_sum_7;
+  __int64 masked_bits_2;
+  float weighted_sum_8;
+  float weighted_sum_9;
+  float weighted_sum_10;
+  float component_delta_6;
+  float combined_products_3;
+  float product_difference_3;
+  float combined_products_4;
+  float combined_products_5;
+  float square_root;
+  float scaled_ratio;
+  float scaled_ratio_2;
+  float scaled_ratio_3;
+  int saved_t_3;
+  float source_component_y_5;
+  float weighted_sum_11;
+  float weighted_sum_12;
+  __int64 masked_bits_3;
+  float weighted_sum_13;
+  float weighted_sum_14;
+  float weighted_sum_15;
+  float weighted_sum_16;
+  float weighted_sum_17;
+  float weighted_sum_18;
+  float component_delta_7;
+  float component_delta_8;
+  float combined_products_6;
+  float product_difference_4;
+  float product_difference_5;
+  float scaled_value_5;
+  float square_root_2;
+  float scaled_ratio_4;
+  float scaled_ratio_5;
+  float scaled_ratio_6;
+  BOOL collision_line_triangle_result;
+  int saved_t_4;
+  float source_component_y_6;
+  _BOOL8 comparison_result_2;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400D1830[304];
-#define v121 (*(__int64 (*))(void *)(sr_frame_1400D1830 + 8)) /* [rsp+8h] */
-#define v122 (*(__int64 (*))(void *)(sr_frame_1400D1830 + 72)) /* [rsp+48h] */
-#define v125 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 96)) /* [rsp+60h] */
-#define v133 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 152)) /* [rsp+98h] */
-#define v134 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 160)) /* [rsp+A0h] */
-#define v135 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 168)) /* [rsp+A8h] */
-#define v136 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 176)) /* [rsp+B0h] */
-#define v137 (*(float (*))(void *)(sr_frame_1400D1830 + 184)) /* [rsp+B8h] */
-#define v138 (*(float * (*))(void *)(sr_frame_1400D1830 + 192)) /* [rsp+C0h] */
-#define v157 (*(__int128 (*))(void *)(sr_frame_1400D1830 + 288)) /* [rsp+120h] */
+#define unused_frame_slot_8 (*(__int64 (*))(void *)(sr_frame_1400D1830 + 8)) /* [rsp+8h] */
+#define t (*(__int64 (*))(void *)(sr_frame_1400D1830 + 72)) /* [rsp+48h] */
+#define saved_source_component_x (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 96)) /* [rsp+60h] */
+#define state_address_9 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 152)) /* [rsp+98h] */
+#define state_address_10 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 160)) /* [rsp+A0h] */
+#define state_address_11 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 168)) /* [rsp+A8h] */
+#define state_address_12 (*(signed __int64 (*))(void *)(sr_frame_1400D1830 + 176)) /* [rsp+B0h] */
+#define component_sum_4 (*(float (*))(void *)(sr_frame_1400D1830 + 184)) /* [rsp+B8h] */
+#define to (*(float * (*))(void *)(sr_frame_1400D1830 + 192)) /* [rsp+C0h] */
+#define unused_frame_slot_288 (*(__int128 (*))(void *)(sr_frame_1400D1830 + 288)) /* [rsp+120h] */
 
-  v3 = a2 + 1;
+  running_total = a2 + 1;
   sr_triangle_c.saved = a2;
-  v138 = a3;
+  to = a3;
   sr_normal[0] = a1;
-  v136 = (char *)&sr_walk_a[2] - (char *)a2;
-  v5 = (char *)&sr_walk_a[1] - (char *)a2;
-  LODWORD(v122) = -1;
-  v6 = 0;
-  v135 = (char *)&sr_walk_b[0] - (char *)a2;
-  v7 = (char *)&sr_walk_b[1] - (char *)a2;
-  v133 = (char *)&g_181290044 - (char *)a2;
-  v8 = (char *)&sr_start[0] - (char *)a2;
-  v125 = (char *)&sr_start[1] - (char *)a2;
+  state_address_12 = (char *)&sr_walk_a[2] - (char *)a2;
+  state_address = (char *)&sr_walk_a[1] - (char *)a2;
+  LODWORD(t) = -1;
+  running_total_2 = 0;
+  state_address_11 = (char *)&sr_walk_b[0] - (char *)a2;
+  bit_mask = (char *)&sr_walk_b[1] - (char *)a2;
+  state_address_9 = (char *)&g_181290044 - (char *)a2;
+  state_address_2 = (char *)&sr_start[0] - (char *)a2;
+  saved_source_component_x = (char *)&sr_start[1] - (char *)a2;
   sr_triangle_b[0] = ((_BYTE *)&sr_end[1]) - (_BYTE *)a2;
-  v9 = (char *)a3 - (char *)a2;
-  v10 = (char *)(unsigned int *)&g_181290040 - (char *)a2;
-  v11 = (char *)&sr_end[0] - (char *)a2;
-  v134 = (char *)&sr_weight[1] - (char *)a2;
-  v12 = (char *)&sr_direction[0] - (char *)a2;
-  v13 = (char *)&sr_walk_a[0] - (char *)a2;
-  v14 = (char *)&sr_weight[0] - (char *)a2;
-  v15 = (char *)&sr_direction[1] - (char *)a2;
+  scaled_index = (char *)a3 - (char *)a2;
+  state_address_3 = (char *)(unsigned int *)&g_181290040 - (char *)a2;
+  state_address_4 = (char *)&sr_end[0] - (char *)a2;
+  state_address_10 = (char *)&sr_weight[1] - (char *)a2;
+  state_address_5 = (char *)&sr_direction[0] - (char *)a2;
+  state_address_6 = (char *)&sr_walk_a[0] - (char *)a2;
+  state_address_7 = (char *)&sr_weight[0] - (char *)a2;
+  state_address_8 = (char *)&sr_direction[1] - (char *)a2;
   do
   {
-    v16 = *(float *)((char *)v3 + v9 - 4);
-    v17 = v16 - *(v3 - 1);
-    *(_DWORD *)((char *)v3 + v8 - 4) = (int)(float)(*(v3 - 1) - *(float *)((char *)v3 + v10 - 4));
-    *(_DWORD *)((char *)v3 + v11 - 4) = (int)(float)(v16 - *(float *)((char *)v3 + v10 - 4));
-    if ( v6 == 1 )
-      v17 = 0.0;
-    v18 = v17 <= 0.0;
-    v19 = 1;
-    v20 = fabs(v17);
-    if ( v18 )
-      v19 = v122;
-    *(_DWORD *)((char *)v3 + v12 - 4) = v19;
-    v21 = *v3;
-    v22 = v136;
-    v23 = *v3;
-    *(float *)((char *)v3 + v13 - 4) = v20;
-    *(float *)((char *)v3 + v14 - 4) = v20;
-    v24 = v23 - *(float *)((char *)v3 + v10);
-    *(float *)((char *)v3 + v22) = v20;
-    LODWORD(v22) = (int)v24;
-    v25 = *(float *)((char *)v3 + v9);
-    v26 = v25 - v21;
-    *(_DWORD *)((char *)v3 + v8) = v22;
-    *(_DWORD *)((char *)v3 + v11) = (int)(float)(v25 - *(float *)((char *)v3 + v10));
-    if ( !v6 )
-      v26 = 0.0;
-    v18 = v26 <= 0.0;
-    v27 = 1;
-    v28 = fabs(v26);
-    if ( v18 )
-      v27 = -1;
-    *(_DWORD *)((char *)v3 + v12) = v27;
-    v29 = v135;
-    v30 = v3[1];
-    v31 = v125;
-    *(float *)((char *)v3 + v13) = v28;
-    *(float *)((char *)v3 + v29) = v28;
-    v32 = v133;
-    *(float *)((char *)v3 + v14) = v28;
-    v33 = *(float *)((char *)v3 + v32);
-    v34 = *(float *)((char *)v3 + v9 + 4);
-    v35 = v34 - v30;
-    *(_DWORD *)((char *)v3 + v31) = (int)(float)(v30 - v33);
-    *(_DWORD *)((char *)v3 + sr_triangle_b[0]) = (int)(float)(v34 - v33);
-    v36 = v134;
-    if ( v6 == -1 )
-      v35 = 0.0;
-    v18 = v35 <= 0.0;
-    v37 = 1;
-    v38 = fabs(v35);
-    if ( v18 )
-      v37 = v122;
-    v6 += 3;
-    *(_DWORD *)((char *)v3 + v15) = v37;
-    *(float *)((char *)v3 + v5) = v38;
-    *(float *)((char *)v3 + v7) = v38;
-    *(float *)((char *)v3 + v36) = v38;
-    v3 += 3;
+    combined_products = *(float *)((char *)running_total + scaled_index - 4);
+    product_difference = combined_products - *(running_total - 1);
+    *(_DWORD *)((char *)running_total + state_address_2 - 4) = (int)(float)(*(running_total - 1) - *(float *)((char *)running_total + state_address_3 - 4));
+    *(_DWORD *)((char *)running_total + state_address_4 - 4) = (int)(float)(combined_products - *(float *)((char *)running_total + state_address_3 - 4));
+    if ( running_total_2 == 1 )
+      product_difference = 0.0;
+    comparison_result = product_difference <= 0.0;
+    saved_t = 1;
+    absolute_value = fabs(product_difference);
+    if ( comparison_result )
+      saved_t = t;
+    *(_DWORD *)((char *)running_total + state_address_5 - 4) = saved_t;
+    scaled_value = *running_total;
+    saved_state_address = state_address_12;
+    scaled_value_2 = *running_total;
+    *(float *)((char *)running_total + state_address_6 - 4) = absolute_value;
+    *(float *)((char *)running_total + state_address_7 - 4) = absolute_value;
+    combined_products_2 = scaled_value_2 - *(float *)((char *)running_total + state_address_3);
+    *(float *)((char *)running_total + saved_state_address) = absolute_value;
+    LODWORD(saved_state_address) = (int)combined_products_2;
+    weighted_sum = *(float *)((char *)running_total + scaled_index);
+    component_delta = weighted_sum - scaled_value;
+    *(_DWORD *)((char *)running_total + state_address_2) = saved_state_address;
+    *(_DWORD *)((char *)running_total + state_address_4) = (int)(float)(weighted_sum - *(float *)((char *)running_total + state_address_3));
+    if ( !running_total_2 )
+      component_delta = 0.0;
+    comparison_result = component_delta <= 0.0;
+    integer_difference = 1;
+    absolute_value_2 = fabs(component_delta);
+    if ( comparison_result )
+      integer_difference = -1;
+    *(_DWORD *)((char *)running_total + state_address_5) = integer_difference;
+    saved_state_address_2 = state_address_11;
+    source_component_y = running_total[1];
+    saved_state_address_3 = saved_source_component_x;
+    *(float *)((char *)running_total + state_address_6) = absolute_value_2;
+    *(float *)((char *)running_total + saved_state_address_2) = absolute_value_2;
+    saved_state_address_4 = state_address_9;
+    *(float *)((char *)running_total + state_address_7) = absolute_value_2;
+    weighted_sum_2 = *(float *)((char *)running_total + saved_state_address_4);
+    weighted_sum_3 = *(float *)((char *)running_total + scaled_index + 4);
+    component_delta_2 = weighted_sum_3 - source_component_y;
+    *(_DWORD *)((char *)running_total + saved_state_address_3) = (int)(float)(source_component_y - weighted_sum_2);
+    *(_DWORD *)((char *)running_total + sr_triangle_b[0]) = (int)(float)(weighted_sum_3 - weighted_sum_2);
+    saved_state_address_5 = state_address_10;
+    if ( running_total_2 == -1 )
+      component_delta_2 = 0.0;
+    comparison_result = component_delta_2 <= 0.0;
+    saved_t_2 = 1;
+    absolute_value_3 = fabs(component_delta_2);
+    if ( comparison_result )
+      saved_t_2 = t;
+    running_total_2 += 3;
+    *(_DWORD *)((char *)running_total + state_address_8) = saved_t_2;
+    *(float *)((char *)running_total + state_address) = absolute_value_3;
+    *(float *)((char *)running_total + bit_mask) = absolute_value_3;
+    *(float *)((char *)running_total + saved_state_address_5) = absolute_value_3;
+    running_total += 3;
   }
-  while ( v6 < 3 );
-  v39 = sr_triangle_c.saved;
-  v40 = sr_normal[0];
-  v41 = _mm_cvtps_pd(_mm_castsi128_ps(_mm_cvtsi32_si128((int)(*(unsigned int *)sr_triangle_c.saved))));
-  v42 = SR_VEC_LANES(128, v41, f64)[0];
-  if ( (double)(int)SR_VEC_LANES(128, v41, f64)[0] != SR_VEC_LANES(128, v41, f64)[0] )
-    v42 = (double)((int)SR_VEC_LANES(128, v41, f64)[0] - (_mm_movemask_pd(_mm_unpacklo_pd(v41, v41)) & 1));
-  v43 = SR_VEC_LANES(128, v41, f64)[0] - (v42 + 0.5);
+  while ( running_total_2 < 3 );
+  cached_saved = sr_triangle_c.saved;
+  table_value = sr_normal[0];
+  vector_result = _mm_cvtps_pd(_mm_castsi128_ps(_mm_cvtsi32_si128((int)(*(unsigned int *)sr_triangle_c.saved))));
+  lane_mask = SR_VEC_LANES(128, vector_result, f64)[0];
+  if ( (double)(int)SR_VEC_LANES(128, vector_result, f64)[0] != SR_VEC_LANES(128, vector_result, f64)[0] )
+    lane_mask = (double)((int)SR_VEC_LANES(128, vector_result, f64)[0] - (_mm_movemask_pd(_mm_unpacklo_pd(vector_result, vector_result)) & 1));
+  component_delta_3 = SR_VEC_LANES(128, vector_result, f64)[0] - (lane_mask + 0.5);
   if ( sr_direction[0] > 0 )
-    v43 = -v43;
-  v44 = sr_weight[1];
-  v45 = v43 + v43;
-  v46 = sr_weight[2];
-  v47 = _mm_cvtps_pd(_mm_castsi128_ps(_mm_cvtsi32_si128((int)(*((unsigned int *)sr_triangle_c.saved + 1)))));
-  sr_walk_a[0] = (float)(sr_weight[1] * v45) - sr_walk_a[0];
-  v48 = sr_weight[2] * v45;
-  v49 = SR_VEC_LANES(128, v47, f64)[0];
-  sr_walk_b[0] = v48 - sr_walk_b[0];
-  if ( (double)(int)SR_VEC_LANES(128, v47, f64)[0] != SR_VEC_LANES(128, v47, f64)[0] )
-    v49 = (double)((int)SR_VEC_LANES(128, v47, f64)[0] - (_mm_movemask_pd(_mm_unpacklo_pd(v47, v47)) & 1));
-  v50 = sr_direction[1];
-  v51 = SR_VEC_LANES(128, v47, f64)[0] - (v49 + 0.5);
+    component_delta_3 = -component_delta_3;
+  source_component_y_2 = sr_weight[1];
+  component_sum = component_delta_3 + component_delta_3;
+  source_component_z = sr_weight[2];
+  vector_result_2 = _mm_cvtps_pd(_mm_castsi128_ps(_mm_cvtsi32_si128((int)(*((unsigned int *)sr_triangle_c.saved + 1)))));
+  sr_walk_a[0] = (float)(sr_weight[1] * component_sum) - sr_walk_a[0];
+  scaled_value_3 = sr_weight[2] * component_sum;
+  lane_mask_2 = SR_VEC_LANES(128, vector_result_2, f64)[0];
+  sr_walk_b[0] = scaled_value_3 - sr_walk_b[0];
+  if ( (double)(int)SR_VEC_LANES(128, vector_result_2, f64)[0] != SR_VEC_LANES(128, vector_result_2, f64)[0] )
+    lane_mask_2 = (double)((int)SR_VEC_LANES(128, vector_result_2, f64)[0] - (_mm_movemask_pd(_mm_unpacklo_pd(vector_result_2, vector_result_2)) & 1));
+  table_value_2 = sr_direction[1];
+  component_delta_4 = SR_VEC_LANES(128, vector_result_2, f64)[0] - (lane_mask_2 + 0.5);
   if ( sr_direction[1] > 0 )
-    v51 = -v51;
-  v52 = sr_weight[0];
-  v53 = v51 + v51;
-  v54 = sr_weight[2] * v53;
-  v55 = (float)(sr_weight[0] * v53) - sr_walk_a[1];
-  v56 = _mm_cvtps_pd(_mm_castsi128_ps(_mm_cvtsi32_si128((int)(*((unsigned int *)sr_triangle_c.saved + 2)))));
-  sr_walk_a[1] = v55;
-  sr_walk_b[1] = v54 - sr_walk_b[1];
-  v57 = SR_VEC_LANES(128, v56, f64)[0];
-  if ( (double)(int)SR_VEC_LANES(128, v56, f64)[0] != SR_VEC_LANES(128, v56, f64)[0] )
-    v57 = (double)((int)SR_VEC_LANES(128, v56, f64)[0] - (_mm_movemask_pd(_mm_unpacklo_pd(v56, v56)) & 1));
-  v58 = sr_direction[2];
-  v59 = SR_VEC_LANES(128, v56, f64)[0] - (v57 + 0.5);
+    component_delta_4 = -component_delta_4;
+  source_component_x = sr_weight[0];
+  component_sum_2 = component_delta_4 + component_delta_4;
+  scaled_value_4 = sr_weight[2] * component_sum_2;
+  product_difference_2 = (float)(sr_weight[0] * component_sum_2) - sr_walk_a[1];
+  vector_result_3 = _mm_cvtps_pd(_mm_castsi128_ps(_mm_cvtsi32_si128((int)(*((unsigned int *)sr_triangle_c.saved + 2)))));
+  sr_walk_a[1] = product_difference_2;
+  sr_walk_b[1] = scaled_value_4 - sr_walk_b[1];
+  lane_mask_3 = SR_VEC_LANES(128, vector_result_3, f64)[0];
+  if ( (double)(int)SR_VEC_LANES(128, vector_result_3, f64)[0] != SR_VEC_LANES(128, vector_result_3, f64)[0] )
+    lane_mask_3 = (double)((int)SR_VEC_LANES(128, vector_result_3, f64)[0] - (_mm_movemask_pd(_mm_unpacklo_pd(vector_result_3, vector_result_3)) & 1));
+  table_value_3 = sr_direction[2];
+  component_delta_5 = SR_VEC_LANES(128, vector_result_3, f64)[0] - (lane_mask_3 + 0.5);
   if ( sr_direction[2] > 0 )
-    v59 = -v59;
-  v60 = sr_end[0];
-  v61 = sr_start[0];
-  v62 = v59 + v59;
-  v63 = sr_end[2];
-  v64 = sr_start[2];
+    component_delta_5 = -component_delta_5;
+  table_value_4 = sr_end[0];
+  table_value_5 = sr_start[0];
+  component_sum_3 = component_delta_5 + component_delta_5;
+  table_value_6 = sr_end[2];
+  running_total_3 = sr_start[2];
   *(_DWORD *)(sr_normal[0] + 24) = 1065353216;
-  sr_walk_a[2] = (float)(v52 * v62) - sr_walk_a[2];
-  sr_walk_b[2] = (float)(v44 * v62) - sr_walk_b[2];
-  v65 = abs32(v63 - v64) + abs32(v60 - v61);
-  LODWORD(v133) = 0x4000;
-  if ( v65 > 0x4000 || (LODWORD(v133) = v65, v65 >= 0) )
+  sr_walk_a[2] = (float)(source_component_x * component_sum_3) - sr_walk_a[2];
+  sr_walk_b[2] = (float)(source_component_y_2 * component_sum_3) - sr_walk_b[2];
+  abs32_result = abs32(table_value_6 - running_total_3) + abs32(table_value_4 - table_value_5);
+  LODWORD(state_address_9) = 0x4000;
+  if ( abs32_result > 0x4000 || (LODWORD(state_address_9) = abs32_result, abs32_result >= 0) )
   {
-    v66 = sr_walk_a[0];
-    v67 = 0;
-    v68 = sr_walk_b[2];
-    v69 = sr_walk_b[1];
-    v70 = sr_walk_b[0];
-    v71 = sr_walk_a[2];
-    v72 = sr_walk_a[1];
-    *(float *)&v125 = sr_walk_a[0];
+    source_component_x_2 = sr_walk_a[0];
+    iteration_count = 0;
+    source_component_z_2 = sr_walk_b[2];
+    source_component_y_3 = sr_walk_b[1];
+    source_component_x_3 = sr_walk_b[0];
+    source_component_z_3 = sr_walk_a[2];
+    source_component_y_4 = sr_walk_a[1];
+    *(float *)&saved_source_component_x = sr_walk_a[0];
     while ( 1 )
     {
-      v73 = v64 >> 11;
-      if ( (unsigned int)(v61 >> 11) <= 7 && v73 <= 7 )
+      shifted_bits = running_total_3 >> 11;
+      if ( (unsigned int)(table_value_5 >> 11) <= 7 && shifted_bits <= 7 )
       {
-        v74 = v64 >> 2;
-        if ( (unsigned int)(v61 >> 2) <= 0xFFF && v74 <= 0xFFF )
+        shifted_bits_2 = running_total_3 >> 2;
+        if ( (unsigned int)(table_value_5 >> 2) <= 0xFFF && shifted_bits_2 <= 0xFFF )
         {
-          v75 = *(unsigned __int16 *)(g_181290050 + 2LL * ((v61 >> 4) + (v64 >> 4 << 10)));
-          if ( _bittest(&v75, (unsigned __int8)(((v61 >> 2) & 3) + 4 * (v74 & 3))) )
+          bit_mask_2 = *(unsigned __int16 *)(g_181290050 + 2LL * ((table_value_5 >> 4) + (running_total_3 >> 4 << 10)));
+          if ( _bittest(&bit_mask_2, (unsigned __int8)(((table_value_5 >> 2) & 3) + 4 * (shifted_bits_2 & 3))) )
           {
-            v76 = 3336LL * (int)((v61 >> 11) + 8 * v73);
-            *(float *)&v135 = (float)(v61 & 0x7FF);
-            v77 = *(float *)&dword_140404A6C[v76 + 272034677];
-            v78 = *(_QWORD *)&dword_140404A6C[v76 + 272034683];
-            v79 = *(float *)&v135 + v77;
-            v80 = *(float *)&dword_140404A6C[v76 + 272034678];
-            v81 = *(float *)&dword_140404A6C[v76 + 272034679];
-            v82 = (v61 & 0x7FF) + 2049 * (v64 & 0x7FFu);
-            v83 = v80 + *(float *)(v78 + 4 * v82);
-            v137 = (float)((v61 & 0x7FF) + 1);
-            *(float *)&v136 = (float)(v64 & 0x7FF);
-            v84 = v80 + *(float *)(v78 + 4 * v82 + 4);
-            v85 = v80 + *(float *)(v78 + 4 * v82 + 8200);
-            *((float *)&sr_triangle_b[0] + 1) = v84;
-            v86 = v84 - v83;
-            *(float *)&v134 = (float)((v64 & 0x7FF) + 1);
-            *(float *)&sr_triangle_b[0] = v77 + v137;
-            *(float *)&sr_triangle_c.saved = v77 + v137;
-            v87 = (float)(v77 + v137) - (float)(*(float *)&v135 + v77);
-            *((float *)&sr_triangle_c.saved + 1) = v85;
-            sr_triangle_a[2] = v81 + *(float *)&v136;
-            *(float *)&sr_triangle_b[1] = v81 + *(float *)&v136;
-            sr_triangle_a[0] = v79;
-            sr_triangle_c.coordinates[2] = v81 + *(float *)&v134;
-            sr_triangle_a[1] = v83;
-            v88 = (float)(v87 * v86) - (float)((float)(v85 - v83) * v87);
-            v89 = -(float)(v86 * (float)((float)(v81 + *(float *)&v134) - (float)(v81 + *(float *)&v136)));
-            v90 = v87 * (float)((float)(v81 + *(float *)&v134) - (float)(v81 + *(float *)&v136));
-            v91 = fsqrt((float)((float)(v90 * v90) + (float)(v89 * v89)) + (float)(v88 * v88));
-            if ( v91 == 0.0 )
+            shifted_bits_3 = 3336LL * (int)((table_value_5 >> 11) + 8 * shifted_bits);
+            *(float *)&state_address_11 = (float)(table_value_5 & 0x7FF);
+            weighted_sum_4 = *(float *)&dword_140404A6C[shifted_bits_3 + 272034677];
+            masked_bits = *(_QWORD *)&dword_140404A6C[shifted_bits_3 + 272034683];
+            weighted_sum_5 = *(float *)&state_address_11 + weighted_sum_4;
+            weighted_sum_6 = *(float *)&dword_140404A6C[shifted_bits_3 + 272034678];
+            weighted_sum_7 = *(float *)&dword_140404A6C[shifted_bits_3 + 272034679];
+            masked_bits_2 = (table_value_5 & 0x7FF) + 2049 * (running_total_3 & 0x7FFu);
+            weighted_sum_8 = weighted_sum_6 + *(float *)(masked_bits + 4 * masked_bits_2);
+            component_sum_4 = (float)((table_value_5 & 0x7FF) + 1);
+            *(float *)&state_address_12 = (float)(running_total_3 & 0x7FF);
+            weighted_sum_9 = weighted_sum_6 + *(float *)(masked_bits + 4 * masked_bits_2 + 4);
+            weighted_sum_10 = weighted_sum_6 + *(float *)(masked_bits + 4 * masked_bits_2 + 8200);
+            *((float *)&sr_triangle_b[0] + 1) = weighted_sum_9;
+            component_delta_6 = weighted_sum_9 - weighted_sum_8;
+            *(float *)&state_address_10 = (float)((running_total_3 & 0x7FF) + 1);
+            *(float *)&sr_triangle_b[0] = weighted_sum_4 + component_sum_4;
+            *(float *)&sr_triangle_c.saved = weighted_sum_4 + component_sum_4;
+            combined_products_3 = (float)(weighted_sum_4 + component_sum_4) - (float)(*(float *)&state_address_11 + weighted_sum_4);
+            *((float *)&sr_triangle_c.saved + 1) = weighted_sum_10;
+            sr_triangle_a[2] = weighted_sum_7 + *(float *)&state_address_12;
+            *(float *)&sr_triangle_b[1] = weighted_sum_7 + *(float *)&state_address_12;
+            sr_triangle_a[0] = weighted_sum_5;
+            sr_triangle_c.coordinates[2] = weighted_sum_7 + *(float *)&state_address_10;
+            sr_triangle_a[1] = weighted_sum_8;
+            product_difference_3 = (float)(combined_products_3 * component_delta_6) - (float)((float)(weighted_sum_10 - weighted_sum_8) * combined_products_3);
+            combined_products_4 = -(float)(component_delta_6 * (float)((float)(weighted_sum_7 + *(float *)&state_address_10) - (float)(weighted_sum_7 + *(float *)&state_address_12)));
+            combined_products_5 = combined_products_3 * (float)((float)(weighted_sum_7 + *(float *)&state_address_10) - (float)(weighted_sum_7 + *(float *)&state_address_12));
+            square_root = fsqrt((float)((float)(combined_products_5 * combined_products_5) + (float)(combined_products_4 * combined_products_4)) + (float)(product_difference_3 * product_difference_3));
+            if ( square_root == 0.0 )
             {
               sr_normal[0] = 0;
-              v92 = 0.0;
-              v93 = 0.0;
+              scaled_ratio = 0.0;
+              scaled_ratio_2 = 0.0;
               LODWORD(sr_normal[1]) = 0;
-              v94 = 0.0;
+              scaled_ratio_3 = 0.0;
             }
             else
             {
-              v92 = v89 * (float)(1.0 / v91);
-              v93 = v90 * (float)(1.0 / v91);
-              v94 = v88 * (float)(1.0 / v91);
-              sr_normal[0] = __PAIR64__(LODWORD(v93), LODWORD(v92));
-              *(float *)&sr_normal[1] = v94;
+              scaled_ratio = combined_products_4 * (float)(1.0 / square_root);
+              scaled_ratio_2 = combined_products_5 * (float)(1.0 / square_root);
+              scaled_ratio_3 = product_difference_3 * (float)(1.0 / square_root);
+              sr_normal[0] = __PAIR64__(LODWORD(scaled_ratio_2), LODWORD(scaled_ratio));
+              *(float *)&sr_normal[1] = scaled_ratio_3;
             }
-            if ( sub_140077FA0(&sr_walk_a[0], (float *)&sr_normal[0], (float *)&v122, v39, v138, &sr_triangle_a[0], (float *)&sr_triangle_b[0], (float *)&sr_triangle_c.saved) )
+            if ( sr_collision_line_triangle(&sr_walk_a[0], (float *)&sr_normal[0], (float *)&t, cached_saved, to, &sr_triangle_a[0], (float *)&sr_triangle_b[0], (float *)&sr_triangle_c.saved) )
             {
-              v95 = v122;
-              if ( *(float *)&v122 < *(float *)(v40 + 24) )
+              saved_t_3 = t;
+              if ( *(float *)&t < *(float *)(table_value + 24) )
               {
-                v96 = sr_walk_a[1];
-                *(float *)v40 = sr_walk_a[0];
-                *(float *)(v40 + 8) = sr_walk_a[2];
-                *(float *)(v40 + 4) = v96;
-                *(float *)(v40 + 12) = v92;
-                *(float *)(v40 + 16) = v93;
-                *(float *)(v40 + 20) = v94;
-                *(_DWORD *)(v40 + 24) = v95;
+                source_component_y_5 = sr_walk_a[1];
+                *(float *)table_value = sr_walk_a[0];
+                *(float *)(table_value + 8) = sr_walk_a[2];
+                *(float *)(table_value + 4) = source_component_y_5;
+                *(float *)(table_value + 12) = scaled_ratio;
+                *(float *)(table_value + 16) = scaled_ratio_2;
+                *(float *)(table_value + 20) = scaled_ratio_3;
+                *(_DWORD *)(table_value + 24) = saved_t_3;
               }
             }
-            v97 = *(float *)&dword_140404A6C[v76 + 272034678];
-            v98 = *(float *)&dword_140404A6C[v76 + 272034677];
-            v99 = *(_QWORD *)&dword_140404A6C[v76 + 272034683];
-            v100 = *(float *)&dword_140404A6C[v76 + 272034679];
-            v101 = v97 + *(float *)(v99 + 4 * v82);
-            v102 = v97 + *(float *)(v99 + 4 * v82 + 8196);
-            v103 = *(float *)&dword_140404A6C[v76 + 272034678] + *(float *)(v99 + 4 * v82 + 8200);
-            v104 = v100 + *(float *)&v134;
-            v105 = v100 + *(float *)&v136;
-            sr_triangle_a[1] = v101;
-            *((float *)&sr_triangle_c.saved + 1) = v102;
-            v106 = v102 - v101;
-            *((float *)&sr_triangle_b[0] + 1) = v103;
-            *(float *)&sr_triangle_b[1] = v104;
-            sr_triangle_c.coordinates[2] = v104;
-            v107 = v104 - v105;
-            *(float *)&sr_triangle_b[0] = v98 + v137;
-            sr_triangle_a[2] = v105;
-            sr_triangle_a[0] = *(float *)&v135 + v98;
-            *(float *)&sr_triangle_c.saved = *(float *)&v135 + v98;
-            v108 = (float)(v98 + v137) - (float)(*(float *)&v135 + v98);
-            v109 = (float)(v106 * v107) - (float)((float)(v103 - v101) * v107);
-            v110 = -(float)(v106 * v108);
-            v111 = v108 * v107;
-            v112 = fsqrt((float)((float)(v111 * v111) + (float)(v109 * v109)) + (float)(v110 * v110));
-            if ( v112 == 0.0 )
+            weighted_sum_11 = *(float *)&dword_140404A6C[shifted_bits_3 + 272034678];
+            weighted_sum_12 = *(float *)&dword_140404A6C[shifted_bits_3 + 272034677];
+            masked_bits_3 = *(_QWORD *)&dword_140404A6C[shifted_bits_3 + 272034683];
+            weighted_sum_13 = *(float *)&dword_140404A6C[shifted_bits_3 + 272034679];
+            weighted_sum_14 = weighted_sum_11 + *(float *)(masked_bits_3 + 4 * masked_bits_2);
+            weighted_sum_15 = weighted_sum_11 + *(float *)(masked_bits_3 + 4 * masked_bits_2 + 8196);
+            weighted_sum_16 = *(float *)&dword_140404A6C[shifted_bits_3 + 272034678] + *(float *)(masked_bits_3 + 4 * masked_bits_2 + 8200);
+            weighted_sum_17 = weighted_sum_13 + *(float *)&state_address_10;
+            weighted_sum_18 = weighted_sum_13 + *(float *)&state_address_12;
+            sr_triangle_a[1] = weighted_sum_14;
+            *((float *)&sr_triangle_c.saved + 1) = weighted_sum_15;
+            component_delta_7 = weighted_sum_15 - weighted_sum_14;
+            *((float *)&sr_triangle_b[0] + 1) = weighted_sum_16;
+            *(float *)&sr_triangle_b[1] = weighted_sum_17;
+            sr_triangle_c.coordinates[2] = weighted_sum_17;
+            component_delta_8 = weighted_sum_17 - weighted_sum_18;
+            *(float *)&sr_triangle_b[0] = weighted_sum_12 + component_sum_4;
+            sr_triangle_a[2] = weighted_sum_18;
+            sr_triangle_a[0] = *(float *)&state_address_11 + weighted_sum_12;
+            *(float *)&sr_triangle_c.saved = *(float *)&state_address_11 + weighted_sum_12;
+            combined_products_6 = (float)(weighted_sum_12 + component_sum_4) - (float)(*(float *)&state_address_11 + weighted_sum_12);
+            product_difference_4 = (float)(component_delta_7 * component_delta_8) - (float)((float)(weighted_sum_16 - weighted_sum_14) * component_delta_8);
+            product_difference_5 = -(float)(component_delta_7 * combined_products_6);
+            scaled_value_5 = combined_products_6 * component_delta_8;
+            square_root_2 = fsqrt((float)((float)(scaled_value_5 * scaled_value_5) + (float)(product_difference_4 * product_difference_4)) + (float)(product_difference_5 * product_difference_5));
+            if ( square_root_2 == 0.0 )
             {
               sr_normal[0] = 0;
-              v113 = 0.0;
-              v114 = 0.0;
+              scaled_ratio_4 = 0.0;
+              scaled_ratio_5 = 0.0;
               LODWORD(sr_normal[1]) = 0;
-              v115 = 0.0;
+              scaled_ratio_6 = 0.0;
             }
             else
             {
-              v113 = v109 * (float)(1.0 / v112);
-              v114 = v111 * (float)(1.0 / v112);
-              v115 = v110 * (float)(1.0 / v112);
-              sr_normal[0] = __PAIR64__(LODWORD(v114), LODWORD(v113));
-              *(float *)&sr_normal[1] = v115;
+              scaled_ratio_4 = product_difference_4 * (float)(1.0 / square_root_2);
+              scaled_ratio_5 = scaled_value_5 * (float)(1.0 / square_root_2);
+              scaled_ratio_6 = product_difference_5 * (float)(1.0 / square_root_2);
+              sr_normal[0] = __PAIR64__(LODWORD(scaled_ratio_5), LODWORD(scaled_ratio_4));
+              *(float *)&sr_normal[1] = scaled_ratio_6;
             }
-            v116 = sub_140077FA0(
+            collision_line_triangle_result = sr_collision_line_triangle(
                      &sr_walk_a[0],
                      (float *)&sr_normal[0],
-                     (float *)&v122,
-                     v39,
-                     v138,
+                     (float *)&t,
+                     cached_saved,
+                     to,
                      &sr_triangle_a[0],
                      (float *)&sr_triangle_b[0],
                      (float *)&sr_triangle_c.saved);
-            v52 = sr_weight[0];
-            v44 = sr_weight[1];
-            v60 = sr_end[0];
-            v63 = sr_end[2];
-            if ( v116 )
+            source_component_x = sr_weight[0];
+            source_component_y_2 = sr_weight[1];
+            table_value_4 = sr_end[0];
+            table_value_6 = sr_end[2];
+            if ( collision_line_triangle_result )
             {
-              v117 = v122;
-              v58 = sr_direction[2];
-              v50 = sr_direction[1];
-              if ( *(float *)&v122 < *(float *)(v40 + 24) )
+              saved_t_4 = t;
+              table_value_3 = sr_direction[2];
+              table_value_2 = sr_direction[1];
+              if ( *(float *)&t < *(float *)(table_value + 24) )
               {
-                v118 = sr_walk_a[1];
-                *(float *)v40 = sr_walk_a[0];
-                *(float *)(v40 + 8) = sr_walk_a[2];
-                *(float *)(v40 + 4) = v118;
-                *(float *)(v40 + 12) = v113;
-                *(float *)(v40 + 16) = v114;
-                *(float *)(v40 + 20) = v115;
-                *(_DWORD *)(v40 + 24) = v117;
+                source_component_y_6 = sr_walk_a[1];
+                *(float *)table_value = sr_walk_a[0];
+                *(float *)(table_value + 8) = sr_walk_a[2];
+                *(float *)(table_value + 4) = source_component_y_6;
+                *(float *)(table_value + 12) = scaled_ratio_4;
+                *(float *)(table_value + 16) = scaled_ratio_5;
+                *(float *)(table_value + 20) = scaled_ratio_6;
+                *(_DWORD *)(table_value + 24) = saved_t_4;
               }
-              v66 = *(float *)&v125;
-              v46 = sr_weight[2];
+              source_component_x_2 = *(float *)&saved_source_component_x;
+              source_component_z = sr_weight[2];
               goto LABEL_50;
             }
-            v66 = *(float *)&v125;
-            v46 = sr_weight[2];
+            source_component_x_2 = *(float *)&saved_source_component_x;
+            source_component_z = sr_weight[2];
           }
         }
-        v50 = sr_direction[1];
-        v58 = sr_direction[2];
+        table_value_2 = sr_direction[1];
+        table_value_3 = sr_direction[2];
       }
 LABEL_50:
-      if ( *(float *)(v40 + 24) >= 1.0 && (v61 != v60 || v64 != v63) )
+      if ( *(float *)(table_value + 24) >= 1.0 && (table_value_5 != table_value_4 || running_total_3 != table_value_6) )
       {
-        v119 = v66 >= v72;
-        if ( v71 <= v70 || v119 )
+        comparison_result_2 = source_component_x_2 >= source_component_y_4;
+        if ( source_component_z_3 <= source_component_x_3 || comparison_result_2 )
         {
-          if ( v69 > v68 )
+          if ( source_component_y_3 > source_component_z_2 )
           {
-            v64 += v58;
-            v71 = v71 + v52;
-            sr_start[2] = v64;
-            v70 = v70 - v52;
-            v69 = v69 - v44;
-            v68 = v68 + v44;
+            running_total_3 += table_value_3;
+            source_component_z_3 = source_component_z_3 + source_component_x;
+            sr_start[2] = running_total_3;
+            source_component_x_3 = source_component_x_3 - source_component_x;
+            source_component_y_3 = source_component_y_3 - source_component_y_2;
+            source_component_z_2 = source_component_z_2 + source_component_y_2;
           }
           else
           {
-            sr_start[1] += v50;
-            v66 = v66 - v52;
-            v72 = v72 + v52;
-            v69 = v69 + v46;
-            v68 = v68 - v46;
-            *(float *)&v125 = v66;
+            sr_start[1] += table_value_2;
+            source_component_x_2 = source_component_x_2 - source_component_x;
+            source_component_y_4 = source_component_y_4 + source_component_x;
+            source_component_y_3 = source_component_y_3 + source_component_z;
+            source_component_z_2 = source_component_z_2 - source_component_z;
+            *(float *)&saved_source_component_x = source_component_x_2;
           }
         }
         else
         {
-          *(&sr_start[0] + v119) += *(&sr_direction[0] + v119);
-          v64 = sr_start[2];
-          v61 = sr_start[0];
-          v66 = v66 + v44;
-          v72 = v72 - v44;
-          v71 = v71 - v46;
-          v70 = v70 + v46;
-          *(float *)&v125 = v66;
+          *(&sr_start[0] + comparison_result_2) += *(&sr_direction[0] + comparison_result_2);
+          running_total_3 = sr_start[2];
+          table_value_5 = sr_start[0];
+          source_component_x_2 = source_component_x_2 + source_component_y_2;
+          source_component_y_4 = source_component_y_4 - source_component_y_2;
+          source_component_z_3 = source_component_z_3 - source_component_z;
+          source_component_x_3 = source_component_x_3 + source_component_z;
+          *(float *)&saved_source_component_x = source_component_x_2;
         }
-        if ( ++v67 <= (int)v133 )
+        if ( ++iteration_count <= (int)state_address_9 )
           continue;
       }
-      return *(float *)(v40 + 24) < 1.0f;
+      return *(float *)(table_value + 24) < 1.0f;
     }
   }
   return 0;
 }
-#undef v121
-#undef v122
-#undef v125
-#undef v133
-#undef v134
-#undef v135
-#undef v136
-#undef v137
-#undef v138
-#undef v157
+#undef unused_frame_slot_8
+#undef t
+#undef saved_source_component_x
+#undef state_address_9
+#undef state_address_10
+#undef state_address_11
+#undef state_address_12
+#undef component_sum_4
+#undef to
+#undef unused_frame_slot_288
 
 // 1400D1AB0: conditional instruction was optimized away because rcx.8<100000000u
 // 1400D1B49: conditional instruction was optimized away because rcx.8<100000000u
@@ -714,22 +714,22 @@ LABEL_50:
 //----- (00000001400D22E0) ----------------------------------------------------
 double            sub_1400D22E0(int a1)
 {
-  __int64 v1;
-  int v2;
-  unsigned int *v3;
-  __int64 v4;
-  unsigned int *v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
+  __int64 unused_frame_slot_0;
+  int integer_sum;
+  unsigned int *state_address;
+  __int64 integer_sum_2;
+  unsigned int *buffer_cursor;
+  __int64 running_total;
+  __int64 remaining_count;
+  __int64 remaining_count_2;
+  __int64 scaled_index;
+  __int64 table_value;
+  __int64 unused_local;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400D22E0[32];
-#define v14 (*(int (*))(void *)(sr_frame_1400D22E0 + 0)) /* [rsp+88h] */
-#define v15 (*(__int64 (*))(void *)(sr_frame_1400D22E0 + 8)) /* [rsp+90h] */
-#define v16 (*(unsigned int * (*))(void *)(sr_frame_1400D22E0 + 16)) /* [rsp+98h] */
+#define cached_integer_sum (*(int (*))(void *)(sr_frame_1400D22E0 + 0)) /* [rsp+88h] */
+#define running_total_2 (*(__int64 (*))(void *)(sr_frame_1400D22E0 + 8)) /* [rsp+90h] */
+#define state_address_2 (*(unsigned int * (*))(void *)(sr_frame_1400D22E0 + 16)) /* [rsp+98h] */
 
   if ( !a1 )
   {
@@ -755,57 +755,57 @@ double            sub_1400D22E0(int a1)
   glActiveTexture(33984);
   glEnableVertexAttribArray(0);
   glEnableVertexAttribArray(1);
-  v2 = 0;
-  v3 = &g_180E6F624;
-  v4 = 0;
-  v14 = 0;
-  v15 = 0;
-  v16 = &g_180E6F624;
+  integer_sum = 0;
+  state_address = &g_180E6F624;
+  integer_sum_2 = 0;
+  cached_integer_sum = 0;
+  running_total_2 = 0;
+  state_address_2 = &g_180E6F624;
   do
   {
-    if ( *(v3 - 1) )
+    if ( *(state_address - 1) )
     {
-      v5 = v3;
-      v6 = v4;
-      v7 = 16;
+      buffer_cursor = state_address;
+      running_total = integer_sum_2;
+      remaining_count = 16;
       do
       {
-        v8 = 16;
+        remaining_count_2 = 16;
         do
         {
-          v9 = (int)*v5;
-          v10 = (int)dword_140404A6C[v9 + 272034690 + v6];
-          if ( (_DWORD)v10 != -1 )
+          scaled_index = (int)*buffer_cursor;
+          table_value = (int)dword_140404A6C[scaled_index + 272034690 + running_total];
+          if ( (_DWORD)table_value != -1 )
           {
-            glBindBuffer(34963, dword_140404A6C[2 * dword_140404A6C[v9 + 283791480] + 283793814]);
-            glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[v9 + 283791752] + 283793813]);
-            glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*v9+271838021]),(const void *)(intptr_t)(0));
-            glVertexAttribPointer(1, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*v9+271838021]),(const void *)(intptr_t)(12));
-            glDrawElementsBaseVertex(4,(int32_t)(3u*dword_140404A6C[24582*v9+271838022]),5125,NULL,(int32_t)(dword_140404A6C[24582*v9+271838024]*(uint32_t)v10));
-            dword_140404A6C[24582 * v9 + 271838029 + 3 * v10] = 4;
+            glBindBuffer(34963, dword_140404A6C[2 * dword_140404A6C[scaled_index + 283791480] + 283793814]);
+            glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[scaled_index + 283791752] + 283793813]);
+            glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*scaled_index+271838021]),(const void *)(intptr_t)(0));
+            glVertexAttribPointer(1, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*scaled_index+271838021]),(const void *)(intptr_t)(12));
+            glDrawElementsBaseVertex(4,(int32_t)(3u*dword_140404A6C[24582*scaled_index+271838022]),5125,NULL,(int32_t)(dword_140404A6C[24582*scaled_index+271838024]*(uint32_t)table_value));
+            dword_140404A6C[24582 * scaled_index + 271838029 + 3 * table_value] = 4;
           }
-          v6 += 13;
-          ++v5;
-          --v8;
+          running_total += 13;
+          ++buffer_cursor;
+          --remaining_count_2;
         }
-        while ( v8 );
-        --v7;
+        while ( remaining_count_2 );
+        --remaining_count;
       }
-      while ( v7 );
-      v3 = v16;
+      while ( remaining_count );
+      state_address = state_address_2;
     }
     else
     {
-      sub_1400D2B90(v2);
+      sub_1400D2B90(integer_sum);
     }
-    v3 += 257;
-    v2 = v14 + 1;
-    v4 = v15 + 3336;
-    v14 = v2;
-    v15 += 3336;
-    v16 = v3;
+    state_address += 257;
+    integer_sum = cached_integer_sum + 1;
+    integer_sum_2 = running_total_2 + 3336;
+    cached_integer_sum = integer_sum;
+    running_total_2 += 3336;
+    state_address_2 = state_address;
   }
-  while ( v2 < 64 );
+  while ( integer_sum < 64 );
   if ( a1 )
   {
     glDisableVertexAttribArray(0);
@@ -819,31 +819,31 @@ double            sub_1400D22E0(int a1)
     return ((double (*)(_QWORD))glUseProgram)(0);
   }
 }
-#undef v14
-#undef v15
-#undef v16
+#undef cached_integer_sum
+#undef running_total_2
+#undef state_address_2
 
 //----- (00000001400D2C90) ----------------------------------------------------
 __int64            sub_1400D2C90(int a1, int a2, __int64 a3)
 {
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
+  __int64 input_value;
+  __int64 input_value_2;
+  __int64 unused_local;
+  __int64 record_pointer;
   __int64 result;
 
-  v3 = a1;
+  input_value = a1;
   if ( a1 != -1 )
   {
-    v4 = a2;
+    input_value_2 = a2;
     glBindBuffer(34963, dword_140404A6C[2 * dword_140404A6C[a2 + 283791480] + 283793814]);
-    glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[v4 + 283791752] + 283793813]);
-    glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*v4+271838021]),(const void *)(intptr_t)(0));
-    glVertexAttribPointer(1, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*v4+271838021]),(const void *)(intptr_t)(12));
-    glDrawElementsBaseVertex(4,(int32_t)(3u*dword_140404A6C[24582*v4+271838022]),5125,NULL,(int32_t)(dword_140404A6C[24582*v4+271838024]*(uint32_t)v3));
-    v6 = v3 + 8194 * v4;
-    dword_140404A6C[3 * v6 + 271838029] = 4;
-    return 3 * v6;
+    glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[input_value_2 + 283791752] + 283793813]);
+    glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*input_value_2+271838021]),(const void *)(intptr_t)(0));
+    glVertexAttribPointer(1, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*input_value_2+271838021]),(const void *)(intptr_t)(12));
+    glDrawElementsBaseVertex(4,(int32_t)(3u*dword_140404A6C[24582*input_value_2+271838022]),5125,NULL,(int32_t)(dword_140404A6C[24582*input_value_2+271838024]*(uint32_t)input_value));
+    record_pointer = input_value + 8194 * input_value_2;
+    dword_140404A6C[3 * record_pointer + 271838029] = 4;
+    return 3 * record_pointer;
   }
   return result;
 }
@@ -851,44 +851,44 @@ __int64            sub_1400D2C90(int a1, int a2, __int64 a3)
 //----- (00000001400D2DB0) ----------------------------------------------------
 void            sub_1400D2DB0(int a1, int a2, float a3)
 {
-  int v3;
-  int v4;
-  __int64 v5;
-  int v6;
-  __int64 v7;
-  __int64 v8;
+  int shifted_bits;
+  int shifted_bits_2;
+  __int64 scaled_index;
+  int masked_bits;
+  __int64 scaled_index_2;
+  __int64 masked_bits_2;
 
-  v3 = a1 >> 11;
-  v4 = a2 >> 11;
-  if ( (unsigned int)(a1 >> 11) <= 7 && (unsigned int)v4 <= 7 )
+  shifted_bits = a1 >> 11;
+  shifted_bits_2 = a2 >> 11;
+  if ( (unsigned int)(a1 >> 11) <= 7 && (unsigned int)shifted_bits_2 <= 7 )
   {
-    v5 = v3 + 8 * v4;
-    v6 = a2 & 0x7FF;
-    v7 = (unsigned int)(2049 * v6);
-    v8 = a1 & 0x7FF;
-    *(float *)(*(_QWORD *)&dword_140404A6C[3336 * v5 + 272034683] + 4LL * (unsigned int)(v7 + v8)) = a3;
+    scaled_index = shifted_bits + 8 * shifted_bits_2;
+    masked_bits = a2 & 0x7FF;
+    scaled_index_2 = (unsigned int)(2049 * masked_bits);
+    masked_bits_2 = a1 & 0x7FF;
+    *(float *)(*(_QWORD *)&dword_140404A6C[3336 * scaled_index + 272034683] + 4LL * (unsigned int)(scaled_index_2 + masked_bits_2)) = a3;
     if ( (a1 & 0x7FF) == 0 )
     {
-      if ( v6 )
+      if ( masked_bits )
       {
-        if ( v3 <= 0 )
+        if ( shifted_bits <= 0 )
           return;
       }
       else
       {
-        if ( v3 <= 0 )
+        if ( shifted_bits <= 0 )
         {
 LABEL_11:
-          if ( v4 > 0 )
-            *(float *)(*(_QWORD *)&dword_140404A6C[3336 * v5 + 272007995] + 4 * v8 + 16785408) = a3;
+          if ( shifted_bits_2 > 0 )
+            *(float *)(*(_QWORD *)&dword_140404A6C[3336 * scaled_index + 272007995] + 4 * masked_bits_2 + 16785408) = a3;
           return;
         }
-        if ( v4 > 0 )
-          *(float *)(*(_QWORD *)&dword_140404A6C[3336 * v5 + 272004659] + 16793600LL) = a3;
+        if ( shifted_bits_2 > 0 )
+          *(float *)(*(_QWORD *)&dword_140404A6C[3336 * scaled_index + 272004659] + 16793600LL) = a3;
       }
-      *(float *)(*(_QWORD *)&dword_140404A6C[3336 * v5 + 272031347] + 4 * v7 + 0x2000) = a3;
+      *(float *)(*(_QWORD *)&dword_140404A6C[3336 * scaled_index + 272031347] + 4 * scaled_index_2 + 0x2000) = a3;
     }
-    if ( v6 )
+    if ( masked_bits )
       return;
     goto LABEL_11;
   }

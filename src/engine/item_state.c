@@ -4,11 +4,11 @@
 
 /* Original callees retained at the boundary, with their machine-code ABI.
    The client wrapper for 0x14007B2A0 reads the float lane in XMM2. */
-extern void sub_14007B2A0(float matrix[9], const float axis[3], float angle);
-extern uint32_t sub_1400169B0(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
+extern void sr_math_mat3_rotate_rows(float matrix[9], const float axis[3], float angle);
+extern uint32_t sr_world_block_gone_at(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
 extern uint64_t sr_CreateItem(int32_t type, const float position[3], const float *velocity, const float rotation[9]);
-extern void sub_1400CA9B0(int item, int parent);
-extern void sub_1400CA7C0(int item, int human, int slot);
+extern void sr_world_detach_item(int item, int parent);
+extern void sr_world_take_item(int item, int human, int slot);
 
 uintptr_t item_register_link(int index, uint32_t link, int32_t slot)
 {
@@ -126,9 +126,9 @@ uint64_t item_transfer(int index, int child_index, int human, int slot)
     if (child_index == -1) {
         if (human == -1) {
             if (item->parent != -1)
-                sub_1400CA9B0(index, item->parent);
+                sr_world_detach_item(index, item->parent);
             else if (item->holder != -1)
-                sub_1400CA7C0(index, item->holder, item->slot);
+                sr_world_take_item(index, item->holder, item->slot);
             else
                 return 0;
         } else {
@@ -140,11 +140,11 @@ uint64_t item_transfer(int index, int child_index, int human, int slot)
                 (slot > 2 && item_type_is_gun(item->type)))
                 return 0;
             if (item->parent != -1) {
-                sub_1400CA9B0(index, item->parent);
+                sr_world_detach_item(index, item->parent);
                 item->parent = -1;
             }
             if (item->holder != -1)
-                sub_1400CA7C0(index, item->holder, item->slot);
+                sr_world_take_item(index, item->holder, item->slot);
             /* Detaching from the same inventory may change its count. */
             count = inventory->count;
             if (count < 8) {
@@ -170,7 +170,7 @@ uint64_t item_transfer(int index, int child_index, int human, int slot)
         child->parent = index;
         child->slot = count;
         if (holder != -1)
-            sub_1400CA7C0(child_index, holder, old_slot);
+            sr_world_take_item(child_index, holder, old_slot);
         if (game_connected) {
             world_item_change_count(index) = add_int(world_item_change_count(index), 1);
             if ((uint32_t)child_index < WORLD_ITEM_CAPACITY)
@@ -221,7 +221,7 @@ void item_restore_block_part(int index)
     float part_rotation[9];
     float x, y, z, px, py, pz;
 
-    sub_14007B2A0(basis, up, angle);
+    sr_math_mat3_rotate_rows(basis, up, angle);
     part = item_block_part(block, origin->part);
     px = part->position[0];
     py = part->position[1];
@@ -233,7 +233,7 @@ void item_restore_block_part(int index)
        resulting matrix is not used in the distance calculation. */
     for (int k = 0; k < 9; k++)
         part_rotation[k] = part->rotation[k];
-    sub_14007B2A0(part_rotation, up, angle);
+    sr_math_mat3_rotate_rows(part_rotation, up, angle);
 
     x = ((((float)voxel_x + 0.5f) * size + x) + py * basis[3]) + pz * basis[6];
     y = (((float)voxel_y * size + y) + py * basis[4]) + pz * basis[7];
@@ -243,7 +243,7 @@ void item_restore_block_part(int index)
     z -= world_items[index].position[2];
     if (!(sqrt_float((y * y + x * x) + z * z) >= 0.125f)) {
         uint32_t vx = (uint32_t)origin->voxel[0], vy = (uint32_t)origin->voxel[1], vz = (uint32_t)origin->voxel[2];
-        uint32_t gone = sub_1400169B0((uint32_t)origin->layer, vx, vy, vz);
+        uint32_t gone = sr_world_block_gone_at((uint32_t)origin->layer, vx, vy, vz);
         gone &= ~(1u << ((uint32_t)origin->part & 31u));
         world_set_block_gone((uint32_t)origin->layer, vx, vy, vz, gone);
         world_event_block_gone((uint32_t)origin->layer, vx, vy, vz, gone, 1u);
@@ -253,7 +253,7 @@ void item_restore_block_part(int index)
 uint64_t item_break_block_part(uint32_t block, int part_index, int layer, int vx, int vy, int vz)
 {
     uint32_t part_bit = 1u << ((uint32_t)part_index & 31u);
-    uint32_t gone = sub_1400169B0((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz);
+    uint32_t gone = sr_world_block_gone_at((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz);
     const ItemBlockPart *part;
     float angle, size, position[3], rotation[9];
     const float up[3] = {0.0f, 1.0f, 0.0f};
@@ -265,7 +265,7 @@ uint64_t item_break_block_part(uint32_t block, int part_index, int layer, int vx
         return UINT32_MAX;
     angle = (float)((double)((block >> 24) & 3u) * 1.570796326795);
     size = item_layer_voxel_size(layer);
-    sub_14007B2A0(basis, up, angle);
+    sr_math_mat3_rotate_rows(basis, up, angle);
     part = item_block_part(block, part_index);
     position[0] = ((((float)vx + 0.5f) * size + basis[0] * part->position[0])
                    + basis[3] * part->position[1]) + basis[6] * part->position[2];
@@ -275,12 +275,12 @@ uint64_t item_break_block_part(uint32_t block, int part_index, int layer, int vx
                    + basis[5] * part->position[1]) + basis[8] * part->position[2];
     for (int k = 0; k < 9; k++)
         rotation[k] = part->rotation[k];
-    sub_14007B2A0(rotation, up, angle);
+    sr_math_mat3_rotate_rows(rotation, up, angle);
     index = (int32_t)sr_CreateItem(part->item_type, position, 0, rotation);
     if (index == -1)
         return UINT32_MAX;
 
-    gone = part_bit | sub_1400169B0((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz);
+    gone = part_bit | sr_world_block_gone_at((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz);
     world_set_block_gone((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz, gone);
     world_event_block_gone((uint32_t)layer, (uint32_t)vx, (uint32_t)vy, (uint32_t)vz, gone, 1u);
     world_items[index].unknown_318 = 1;

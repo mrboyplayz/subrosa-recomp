@@ -7,10 +7,10 @@
 #define transpose(o,m) ((void (*)(float *,const float *))NC_ADDR(0x14007CA00))(o,m)
 #define rotate(v,a) ((uint64_t (*)(int32_t *,uint16_t))NC_ADDR(0x14007D0B0))(v,a)
 #elif defined(NC_CLIENT_WRAPPERS)
-void sub_14007CA00(uint32_t *,int32_t *);
-long long sub_14007D0B0(int32_t *,uint16_t);
-#define transpose(o,m) sub_14007CA00((uint32_t *)(o),(int32_t *)(m))
-#define rotate sub_14007D0B0
+void sr_math_mat3_transpose(uint32_t *,int32_t *);
+long long sr_math_fixed_vec2_rotate(int32_t *,uint16_t);
+#define transpose(o,m) sr_math_mat3_transpose((uint32_t *)(o),(int32_t *)(m))
+#define rotate sr_math_fixed_vec2_rotate
 #else
 #define transpose math_mat3_transpose
 #define rotate math_fixed_vec2_rotate

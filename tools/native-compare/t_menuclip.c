@@ -9,10 +9,10 @@
 #define push(x,y,w,h) ((uint64_t (*)(float,float,float,float))NC_ADDR(0x140075460))(x,y,w,h)
 #define pop() ((void (*)(void))NC_ADDR(0x140075340))()
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140075460(float,float,float,float);
-void sub_140075340(void);
-#define push sub_140075460
-#define pop sub_140075340
+long long sr_menu_push_clip(float,float,float,float);
+void sr_menu_pop_clip(void);
+#define push sr_menu_push_clip
+#define pop sr_menu_pop_clip
 #else
 #define push menu_push_clip
 #define pop menu_pop_clip

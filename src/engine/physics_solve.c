@@ -4,8 +4,8 @@
 #include "physics.h"
 
 /* Vehicle wheel solvers run in every iteration (still recompiled code). */
-extern void sub_14010D610(void);
-extern void sub_140107ED0(void);
+extern void sr_world_solve_vehicle_wheels(void);
+extern void sr_world_drive_vehicles(void);
 
 /* Points closer than this have no direction. */
 #define POINT_EPSILON 0.000015258789f   /* 1/65536 */
@@ -701,7 +701,7 @@ void physics_solve(void)
                 memset(body->angular_velocity_change, 0, sizeof body->angular_velocity_change);
             }
         }
-        sub_14010D610();
+        sr_world_solve_vehicle_wheels();
 
         for (int index = 0; index <= last_active; index++) {
             const PhysicsBond *bond = &physics_bonds[index];
@@ -746,7 +746,7 @@ void physics_solve(void)
             if (bond->type == PHYSICS_BOND_BODY_SURFACE)
                 solve_body_surface(bond);
         }
-        sub_140107ED0();
+        sr_world_drive_vehicles();
 
         count = physics_point_count;
         integrate_points(count);

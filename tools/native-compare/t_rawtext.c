@@ -7,8 +7,8 @@
 #ifdef NC_NATIVE
 #define allocate(i,l,n) ((uint64_t (*)(int,uint32_t,int))NC_ADDR(0x140051170))(i,l,n)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140051170(int,uint32_t,int);
-#define allocate sub_140051170
+long long sr_item_allocate_text_record(int,uint32_t,int);
+#define allocate sr_item_allocate_text_record
 #else
 #define allocate item_allocate_text_record
 #endif

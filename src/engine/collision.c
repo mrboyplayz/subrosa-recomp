@@ -69,12 +69,15 @@ int collision_line_plane(float point[3], const float normal[3], float *t, const 
     d[Y] = to[Y] - from[Y];
     d[Z] = to[Z] - from[Z];
     along = (d[Y] * normal[Y] + d[X] * normal[X]) + d[Z] * normal[Z];
-    if (is_zero_or_nan(along))
+    if (is_zero_or_nan_quiet(along))
         return 0;
-    *t = ahead / along;
-    point[X] = *t * d[X] + from[X];
-    point[Y] = *t * d[Y] + from[Y];
-    point[Z] = *t * d[Z] + from[Z];
+    /* The fraction stays in a register while the outputs are written.
+       Reloading *t would change later coordinates when t aliases point. */
+    float fraction = ahead / along;
+    *t = fraction;
+    point[X] = fraction * d[X] + from[X];
+    point[Y] = fraction * d[Y] + from[Y];
+    point[Z] = fraction * d[Z] + from[Z];
     return 1;
 }
 

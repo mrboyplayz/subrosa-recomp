@@ -1,16 +1,20 @@
 #include "shared_client.h"
 
+#include "../engine/area_bounds.h"
+#include "../engine/net_bits.h"
+#include "../engine/physics_kernels.h"
+
 //----- (00000001400A6700) ----------------------------------------------------
 __int64            sub_1400A6700(__int64 (           *a1)(     char *))
 {
-  unsigned int v2;
-  __int64 (           *v3)(_QWORD);
+  unsigned int unused_written_slot;
+  __int64 (           *callback_function)(_QWORD);
 
-  v2 = 0;
+  unused_written_slot = 0;
   *(_QWORD *)&dword_140404A68 = 0;
-  v3 = (__int64 (           *)(_QWORD))a1("glGetString");
-  glGetString = v3;
-  if ( !v3 || !v3(7938) )
+  callback_function = (__int64 (           *)(_QWORD))a1("glGetString");
+  glGetString = callback_function;
+  if ( !callback_function || !callback_function(7938) )
     return 0;
   sub_140091880();
   sub_1400E3BC0(a1);
@@ -142,7 +146,7 @@ __int64            sub_1400A6700(__int64 (           *a1)(     char *))
     glClipControl = (PFNGLCLIPCONTROLPROC)a1("glClipControl");
   if ( dword_140404A68 || g_140404A6C )
     return 1;
-  return v2;
+  return unused_written_slot;
 }
 
 //----- (00000001400E3BC0) ----------------------------------------------------
@@ -618,4 +622,24 @@ void            sub_1400E5110(__int64 (           *a1)(     char *))
     glSecondaryColorP3uiv = (PFNGLSECONDARYCOLORP3UIVPROC)a1("glSecondaryColorP3uiv");
   }
 }
+
+//----- (000000014010E030) ----------------------------------------------------
+__int64 sr_gl_resolve_proc_loader()
+{
+  __int64 result;
+
+  result = ((__int64 (           *)(     __int16 *))LoadLibraryW)(L"opengl32.dll");
+  g_144980D88 = result;
+  if ( result )
+  {
+    g_144980D90 = ((__int64 (           *)(__int64,      char *))GetProcAddress)(
+                                              result,
+                                              "wglGetProcAddress");
+    return g_144980D90 != 0;
+  }
+  return result;
+}
+
+// 14026E2F8: invalid function type 'HMODULE (__stdcall *LoadLibraryW)(LPCWSTR lpLibFileName)' has been ignored
+// 14026E300: invalid function type 'FARPROC (__stdcall *GetProcAddress)(HMODULE hModule, LPCSTR lpProcName)' has been ignored
 

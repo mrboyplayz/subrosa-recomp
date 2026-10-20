@@ -8,12 +8,12 @@
 #define delta_write(v,p,r,b) ((void (*)(const float *,const float *,float,int))NC_ADDR(0x1401150E0))(v,p,r,b)
 #define direction_encode(o,v,b) ((uint64_t (*)(uint32_t *,const float *,int))NC_ADDR(0x140115230))(o,v,b)
 #elif defined(NC_CLIENT_WRAPPERS)
-void sub_1401150E0(long long,float *,float,int);
-double sub_1401151C0(float *,float,int);
-long long sub_140115230(uint32_t *,float *,int);
-#define magnitude_write sub_1401151C0
-#define delta_write(v,p,r,b) sub_1401150E0((long long)(uintptr_t)(v),p,r,b)
-#define direction_encode sub_140115230
+void sr_net_write_vector_delta(long long,float *,float,int);
+double sr_net_write_magnitude(float *,float,int);
+long long sr_net_encode_direction(uint32_t *,float *,int);
+#define magnitude_write sr_net_write_magnitude
+#define delta_write(v,p,r,b) sr_net_write_vector_delta((long long)(uintptr_t)(v),p,r,b)
+#define direction_encode sr_net_encode_direction
 #else
 #define magnitude_write net_write_magnitude
 #define delta_write net_write_vector_delta

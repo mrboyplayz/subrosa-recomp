@@ -9,14 +9,14 @@
 #define exit_distance(o,d,r) ((float (*)(const float *,const float *,float))NC_ADDR(0x14011C640))(o,d,r)
 #define entry_distance(o,d,r) ((__m128 (*)(const float *,const float *,float))NC_ADDR(0x14011C6B0))(o,d,r)
 #elif defined(NC_CLIENT_WRAPPERS)
-float *sub_14002CF10(long long,float *,long long,float *,float *);
-__m128 *sub_14002D2D0(__m128 *,__m128 *,long long,long long,__m128 *);
-float sub_14011C640(float *,float *,float);
-__m128 sub_14011C6B0(long long,float *,float);
-#define inertia(o,v,b,d) sub_14002CF10((long long)(uintptr_t)(o),(v),0,(b),(d))
-#define inertia4(o,v,b,d) ((const float *)(void *)sub_14002D2D0((__m128 *)(o),(__m128 *)(v),0,(long long)(uintptr_t)(b),(__m128 *)(d)))
-#define exit_distance sub_14011C640
-#define entry_distance(o,d,r) sub_14011C6B0((long long)(uintptr_t)(o),(d),(r))
+float *sr_physics_apply_inverse_inertia(long long,float *,long long,float *,float *);
+__m128 *sr_physics_apply_inverse_inertia4(__m128 *,__m128 *,long long,long long,__m128 *);
+float sr_physics_sphere_exit_distance(float *,float *,float);
+__m128 sr_physics_sphere_entry_distance(long long,float *,float);
+#define inertia(o,v,b,d) sr_physics_apply_inverse_inertia((long long)(uintptr_t)(o),(v),0,(b),(d))
+#define inertia4(o,v,b,d) ((const float *)(void *)sr_physics_apply_inverse_inertia4((__m128 *)(o),(__m128 *)(v),0,(long long)(uintptr_t)(b),(__m128 *)(d)))
+#define exit_distance sr_physics_sphere_exit_distance
+#define entry_distance(o,d,r) sr_physics_sphere_entry_distance((long long)(uintptr_t)(o),(d),(r))
 #else
 #define inertia physics_apply_inverse_inertia
 #define inertia4 physics_apply_inverse_inertia4

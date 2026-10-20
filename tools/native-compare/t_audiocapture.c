@@ -7,10 +7,10 @@
 #define available() ((uint64_t (*)(void))NC_ADDR(0x140069580))()
 #define append(p,n) ((void *(*)(uint64_t,const void *,int))NC_ADDR(0x14006A380))(0,p,n)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140069580(void);
-void *sub_14006A380(long long,const void *,int);
-#define available sub_140069580
-#define append(p,n) sub_14006A380(0,p,n)
+long long sr_audio_capture_available(void);
+void *sr_audio_capture_write(long long,const void *,int);
+#define available sr_audio_capture_available
+#define append(p,n) sr_audio_capture_write(0,p,n)
 #else
 #define available audio_capture_available
 #define append audio_capture_write

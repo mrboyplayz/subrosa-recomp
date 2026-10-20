@@ -7,10 +7,10 @@
 #define read_bytes(p,s,n) ((uint64_t (*)(void *, int, int))NC_ADDR(0x14007ADF0))(p,s,n)
 #define write_bytes(p,s,n) ((uint64_t (*)(const void *, int, int))NC_ADDR(0x14007B180))(p,s,n)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_14007ADF0(void *, int, int);
-long long sub_14007B180(void *, int, int);
-#define read_bytes sub_14007ADF0
-#define write_bytes sub_14007B180
+long long sr_net_read_bytes(void *, int, int);
+long long sr_net_write_bytes(void *, int, int);
+#define read_bytes sr_net_read_bytes
+#define write_bytes sr_net_write_bytes
 #else
 #define read_bytes net_read_bytes
 #define write_bytes net_write_bytes

@@ -1,0 +1,19 @@
+fraction alias y
+point[Y] = fraction * d[Y] + from[Y];
+----
+point[Y] = *t * d[Y] + from[Y];
+====
+fraction alias z
+point[Z] = fraction * d[Z] + from[Z];
+----
+point[Z] = *t * d[Z] + from[Z];
+====
+denominator zero rejection
+if (is_zero_or_nan_quiet(along))
+----
+if (along == 1.0f)
+====
+preliminary fraction store
+*t = ahead;
+----
+*t = 0.0f;

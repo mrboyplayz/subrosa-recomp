@@ -8,9 +8,9 @@
 /* ---- still recompiled code ------------------------------------------------- */
 
 /* A random vector within `spread` (the second value is 0 here). */
-extern void sub_1400A56B0(float *out, float spread, float unknown);
+extern void sr_human_random_direction(float *out, float spread, float unknown);
 /* Spawns a bullet of a type at a point with a velocity, fired by a player. */
-extern void sub_14004E8A0(int bullet, float *from, float *velocity, int player);
+extern void sr_world_fire_bullet(int bullet, float *from, float *velocity, int player);
 
 /* An empty gun takes a round from the magazine attached to it. */
 static void load_round(int index, WorldItem *item)
@@ -30,14 +30,14 @@ static void fire(int index, WorldItem *item, int32_t type, int32_t holder, int32
     float fy = body->rotation[7], fz = body->rotation[8], fx = body->rotation[6];
     float spread[3], from[3], velocity[3];
 
-    sub_1400A56B0(spread, item_type_spread(type), 0.0f);
+    sr_human_random_direction(spread, item_type_spread(type), 0.0f);
     velocity[0] = (fx * speed + vx) + spread[0];
     velocity[1] = (fy * speed + vy) + spread[1];
     velocity[2] = (fz * speed + vz) + spread[2];
     from[0] = body->position[0];
     from[1] = body->position[1];
     from[2] = body->position[2];
-    sub_14004E8A0(item_type_bullet(type), from, velocity, world_humans[holder].player);
+    sr_world_fire_bullet(item_type_bullet(type), from, velocity, world_humans[holder].player);
 
     /* (The original passes the same buffer to the next spread, holding this.) */
     spread[0] = body->position[0] - body->velocity[0];
@@ -60,7 +60,7 @@ static void fire(int index, WorldItem *item, int32_t type, int32_t holder, int32
     /* Recoil: twice the bullet's momentum (its velocity with a second spread,
        twice as wide) over the gun's mass, pushing back through a lever 1/32
        along the gun's second row and 5/8 back along its third. */
-    sub_1400A56B0(spread, item_type_spread(type) + item_type_spread(type), 0.0f);
+    sr_human_random_direction(spread, item_type_spread(type) + item_type_spread(type), 0.0f);
     float ry = velocity[1] + spread[1];
     float rz = velocity[2] + spread[2];
     int32_t charges = item_charges(index);

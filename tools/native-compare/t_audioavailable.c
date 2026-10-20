@@ -5,8 +5,8 @@
 #ifdef NC_NATIVE
 #define available(s) ((uint64_t (*)(int))NC_ADDR(0x14007D6C0))(s)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_14007D6C0(int);
-#define available sub_14007D6C0
+long long sr_audio_sound_available(int);
+#define available sr_audio_sound_available
 #else
 #define available audio_sound_available
 #endif

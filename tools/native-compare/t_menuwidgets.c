@@ -10,12 +10,12 @@
 #define selectable(t,p,o) ((uint64_t (*)(const unsigned char *,int32_t *,uint32_t))NC_ADDR(0x14006F5A0))(t,p,o)
 #define toggle(t,p) ((uint64_t (*)(const unsigned char *,uint32_t *))NC_ADDR(0x140071910))(t,p)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140070380(uint32_t,float,float,float,uint32_t,uint32_t);
+long long sr_menu_allocate_widget(uint32_t,float,float,float,uint32_t,uint32_t);
 long long sr_DrawMenuButton(unsigned char *);
 long long sr_DrawMenuButtonSelectable(unsigned char *,int32_t *,int);
 long long sr_DrawMenuToggle(unsigned char *,uint32_t *);
 static uint64_t allocate(uint32_t id,float x,float y,float w,float h,uint32_t s) {
-    uint32_t bits; memcpy(&bits,&h,4); return sub_140070380(id,x,y,w,bits,s);
+    uint32_t bits; memcpy(&bits,&h,4); return sr_menu_allocate_widget(id,x,y,w,bits,s);
 }
 #define button sr_DrawMenuButton
 #define selectable sr_DrawMenuButtonSelectable

@@ -5,14 +5,14 @@
 #include "collision.h"
 #include "frame.h"
 
-extern void sub_1400CA1C0(int item);
-extern void sub_1400CA430(int item);
+extern void sr_item_solve_contacts(int item);
+extern void sr_item_solve_human_contacts(int item);
 extern int sub_140151190(float point[3], float normal[3], float *distance, int layer,
                        const float centre[3], float radius);
 extern uint32_t sub_1400DC050(const float from[3], const float to[3], int mode);
-extern void sub_140005160(int16_t body, const float offset[3], const float normal[3], float depth,
+extern void sr_physics_add_world_contact(int16_t body, const float offset[3], const float normal[3], float depth,
                          float friction, float damping, float stiffness);
-extern uint64_t sub_1400CDBD0(uint32_t block, int part, int layer, int x, int y, int z);
+extern uint64_t sr_item_break_block_part(uint32_t block, int part, int layer, int x, int y, int z);
 
 static void freeze_body(PhysicsBody *body)
 {
@@ -32,7 +32,7 @@ static void break_hit_block_parts(void)
        every part and for the loop's limit. */
     for (int part = 0; part < item_block_part_count(item_hit_block); part++) {
         uint32_t block = item_hit_block + (item_hit_block_turn << 24);
-        sub_1400CDBD0(block, part, item_hit_layer, item_hit_voxel[0], item_hit_voxel[1], item_hit_voxel[2]);
+        sr_item_break_block_part(block, part, item_hit_layer, item_hit_voxel[0], item_hit_voxel[1], item_hit_voxel[2]);
     }
 }
 
@@ -48,14 +48,14 @@ static void solve_world_point(int body_index, PhysicsBody *body, const float end
     float offset[3];
     for (int axis = 0; axis < 3; axis++)
         offset[axis] = collision_hit.point[axis] - body->position[axis];
-    sub_140005160((int16_t)body_index, offset, collision_hit.normal, depth, 0.6f, 0.015625f, 0.03125f);
+    sr_physics_add_world_contact((int16_t)body_index, offset, collision_hit.normal, depth, 0.6f, 0.015625f, 0.03125f);
     break_hit_block_parts();
 }
 
 static void solve_sphere(int index, int body_index, PhysicsBody *body)
 {
     float point[3], normal[3], distance;
-    sub_1400CA430(index);
+    sr_item_solve_human_contacts(index);
     collision_hit.fraction = 1.0f;
     collision_hit.distance = 65536.0f;
     item_hit_unknown_7c = -1;
@@ -82,7 +82,7 @@ static void solve_sphere(int index, int body_index, PhysicsBody *body)
         for (int axis = 0; axis < 3; axis++)
             offset[axis] = collision_hit.point[axis] - body->position[axis];
         float depth = 0.11f - closest;
-        sub_140005160((int16_t)body_index, offset, collision_hit.normal, depth, 0.6f, 0.015625f, 0.03125f);
+        sr_physics_add_world_contact((int16_t)body_index, offset, collision_hit.normal, depth, 0.6f, 0.015625f, 0.03125f);
         for (int axis = 0; axis < 3; axis++)
             body->angular_momentum[axis] *= 0.9375f;
     }
@@ -161,7 +161,7 @@ void item_update_physics(void)
                 body->settled = 0;
                 const WorldItemType *definition = &world_item_types[type];
                 if (definition->occupies_space)
-                    sub_1400CA1C0(index);
+                    sr_item_solve_contacts(index);
                 if (item->type == 35)
                     solve_sphere(index, body_index, body);
                 if (item->type == 44) {

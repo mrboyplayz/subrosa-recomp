@@ -22,19 +22,19 @@ typedef struct LevelTriangles {
     float triangles[1024][12];
     int32_t unknown_c004;
 } LevelTriangles;
-extern long long sub_140188900(int *triangles, float *box_min, float *box_max, int unknown);
+extern long long sr_world_streets_triangles_in_box(int *triangles, float *box_min, float *box_max, int unknown);
 /* A contact between a body and the level. */
-extern long long sub_140005160(short body, unsigned int *offset, unsigned int *normal, float depth,
+extern long long sr_physics_add_world_contact(short body, unsigned int *offset, unsigned int *normal, float depth,
                                unsigned int friction_bits, float depth_scale, unsigned int stiffness_bits);
 /* The items listed in a box of voxels: a count in the first eight bytes,
    then eight bytes per item whose first word is the item. */
-extern void sub_140038230(int *list, int *voxel_min, int *voxel_max);
+extern void sr_world_grid_query_items(int *list, int *voxel_min, int *voxel_max);
 /* Places an item type's collision mesh at a position and rotation, into
    the buffer the triangles use. */
-extern long long sub_14011BF40(long long placed, long long mesh, float *position, float *rotation);
+extern long long sr_collision_place_mesh(long long placed, long long mesh, float *position, float *rotation);
 /* Sweeps a capsule against a placed mesh: point (3), normal (3), a word
    not used here, and the distance. The radius is passed as its bits. */
-extern long long sub_140033BE0(float *hit, long long mesh, long long placed, float *from, float *to, int radius_bits);
+extern long long sr_collision_capsule_placed_mesh(float *hit, long long mesh, long long placed, float *from, float *to, int radius_bits);
 
 /* The collision mesh of an item type. Item type + 0xF08 */
 #define item_type_mesh(type) ((long long)(intptr_t)&SR_GLOBAL(uint8_t, 0x182A7F088ULL + 0x13D0ULL * (uint64_t)(int64_t)(type)))
@@ -95,7 +95,7 @@ static void collide_level(WorldHuman *h, LevelTriangles *level)
             offset[0] = point[0] - body->position[0];
             offset[1] = point[1] - body->position[1];
             offset[2] = point[2] - body->position[2];
-            sub_140005160((short)bone->body, (unsigned int *)(void *)offset, (unsigned int *)(void *)normal,
+            sr_physics_add_world_contact((short)bone->body, (unsigned int *)(void *)offset, (unsigned int *)(void *)normal,
                           human_skeleton[i].radius - nearest, 0x3ECCCCCDu, 0.03125f, 0x3D800000u);
         }
     }
@@ -113,7 +113,7 @@ static void collide_items(WorldHuman *h, LevelTriangles *scratch)
 {
     int32_t list[516];
 
-    sub_140038230(list, h->voxel_min, h->voxel_max);
+    sr_world_grid_query_items(list, h->voxel_min, h->voxel_max);
     for (int n = 0; n < list[0]; n++) {
         int item = list[2 + 2 * n];
         WorldItem *it = &world_items[item];
@@ -129,9 +129,9 @@ static void collide_items(WorldHuman *h, LevelTriangles *scratch)
                 continue;
             radius = human_skeleton[i].radius;
             mesh = item_type_mesh(it->type);
-            sub_14011BF40((long long)(intptr_t)scratch, mesh, physics_bodies[it->body].position,
+            sr_collision_place_mesh((long long)(intptr_t)scratch, mesh, physics_bodies[it->body].position,
                           physics_bodies[it->body].rotation);
-            if (sub_140033BE0(hit, mesh, (long long)(intptr_t)scratch, bone->segment[0], bone->segment[1],
+            if (sr_collision_capsule_placed_mesh(hit, mesh, (long long)(intptr_t)scratch, bone->segment[0], bone->segment[1],
                               (int)float_bits(radius))) {
                 int body = bone->body, item_body = it->body;
                 float normal[3], offset[3], item_offset[3];
@@ -236,7 +236,7 @@ void human_collide(int human)
 
     scratch.count = 0;
     scratch.unknown_c004 = 0;
-    sub_140188900((int *)(void *)&scratch, h->bounds_min, h->bounds_max, 4);
+    sr_world_streets_triangles_in_box((int *)(void *)&scratch, h->bounds_min, h->bounds_max, 4);
     collide_level(h, &scratch);
     collide_items(h, &scratch);
     collide_humans(human);

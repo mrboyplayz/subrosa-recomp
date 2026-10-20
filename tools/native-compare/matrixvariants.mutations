@@ -1,0 +1,19 @@
+mat3 first column
+a[row * 3] * b[column]
+----
+a[row * 3] * b[(column + 1) % 3]
+====
+mat3 last product
++ a[row * 3 + 2] * b[column + 6];
+----
+- a[row * 3 + 2] * b[column + 6];
+====
+mat4 first column
+a[row * 4] * b[column]
+----
+a[row * 4] * b[(column + 1) % 4]
+====
+mat4 last product
++ a[row * 4 + 3] * b[column + 12];
+----
+- a[row * 4 + 3] * b[column + 12];

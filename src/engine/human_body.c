@@ -83,14 +83,14 @@ void human_create_joints(int human)
 static void trunk_mean(const WorldHuman *h, int offset, float mean[3])
 {
     const HumanBone *b = h->bones;
-    const float *v0 = (const float *)(const void *)((const uint8_t *)&b[0] + offset);
-    const float *v1 = (const float *)(const void *)((const uint8_t *)&b[1] + offset);
-    const float *v2 = (const float *)(const void *)((const uint8_t *)&b[2] + offset);
+    const float *pelvis_vector = (const float *)(const void *)((const uint8_t *)&b[0] + offset);
+    const float *stomach_vector = (const float *)(const void *)((const uint8_t *)&b[1] + offset);
+    const float *chest_vector = (const float *)(const void *)((const uint8_t *)&b[2] + offset);
     float total = (b[0].mass + b[1].mass) + b[2].mass;
 
-    mean[0] = b[2].mass * v2[0] + (v1[0] * b[1].mass + v0[0] * b[0].mass);
-    mean[1] = b[2].mass * v2[1] + (b[1].mass * v1[1] + b[0].mass * v0[1]);
-    mean[2] = b[2].mass * v2[2] + (b[1].mass * v1[2] + b[0].mass * v0[2]);
+    mean[0] = b[2].mass * chest_vector[0] + (stomach_vector[0] * b[1].mass + pelvis_vector[0] * b[0].mass);
+    mean[1] = b[2].mass * chest_vector[1] + (b[1].mass * stomach_vector[1] + b[0].mass * pelvis_vector[1]);
+    mean[2] = b[2].mass * chest_vector[2] + (b[1].mass * stomach_vector[2] + b[0].mass * pelvis_vector[2]);
     if (total > 0.0f) {
         float scale = 1.0f / total;
         mean[0] = mean[0] * scale;

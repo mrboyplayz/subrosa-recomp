@@ -11,14 +11,14 @@
 #define region(i, p, m) ((uint64_t (*)(int, const float *, float))NC_ADDR(0x14011B9F0))(i, p, m)
 #define visible(p) ((uint64_t (*)(const float *))NC_ADDR(0x14011BAD0))(p)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_14011B8F0(float *, int, float);
-long long sub_14011B960(float *, int, float);
-long long sub_14011B9F0(int, float *, float);
-long long sub_14011BAD0(float *);
-#define interior sub_14011B8F0
-#define vault sub_14011B960
-#define region sub_14011B9F0
-#define visible sub_14011BAD0
+long long sr_corporation_contains_point(float *, int, float);
+long long sr_corporation_vault_contains_point(float *, int, float);
+long long sr_world_region_contains_point(int, float *, float);
+long long sr_area_view_contains_point(float *);
+#define interior sr_corporation_contains_point
+#define vault sr_corporation_vault_contains_point
+#define region sr_world_region_contains_point
+#define visible sr_area_view_contains_point
 #else
 #define interior corporation_contains_point
 #define vault corporation_vault_contains_point

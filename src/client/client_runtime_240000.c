@@ -23,103 +23,103 @@ int abs(int Number)
 //----- (000000014024502C) ----------------------------------------------------
 int         sub_14024502C(unsigned int ExceptionNum, struct sr_anon_67 *ExceptionPtr)
 {
-  _QWORD *v4;
-  _QWORD *v5;
-  __int64 v6;
-  __int64 v7;
-  void (           *v8)(__int64);
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  unsigned int v13;
-  __int64 v14;
-  __int64 v15;
+  _QWORD *returned_pointer;
+  _QWORD *record_pointer;
+  __int64 loaded_word;
+  __int64 record_byte_offset;
+  void (           *callback_function)(__int64);
+  __int64 table_value;
+  __int64 record_byte_offset_2;
+  __int64 integer_sum;
+  unsigned int loaded_word_2;
+  __int64 saved_loaded_word;
+  __int64 loaded_word_3;
 
-  v4 = (_QWORD *)sub_140255BEC();
-  v5 = v4;
-  if ( v4 )
+  returned_pointer = (_QWORD *)sub_140255BEC();
+  record_pointer = returned_pointer;
+  if ( returned_pointer )
   {
-    v6 = *v4;
-    v7 = *v4;
-    while ( *(_DWORD *)v7 != ExceptionNum )
+    loaded_word = *returned_pointer;
+    record_byte_offset = *returned_pointer;
+    while ( *(_DWORD *)record_byte_offset != ExceptionNum )
     {
-      v7 += 16;
-      if ( v7 == v6 + 192 )
+      record_byte_offset += 16;
+      if ( record_byte_offset == loaded_word + 192 )
       {
-        v7 = 0;
+        record_byte_offset = 0;
         break;
       }
     }
-    if ( v7 )
+    if ( record_byte_offset )
     {
-      v8 = *(void (           **)(__int64))(v7 + 8);
-      if ( v8 )
+      callback_function = *(void (           **)(__int64))(record_byte_offset + 8);
+      if ( callback_function )
       {
-        if ( v8 == (void (           *)(__int64))5 )
+        if ( callback_function == (void (           *)(__int64))5 )
         {
-          *(_QWORD *)(v7 + 8) = 0;
+          *(_QWORD *)(record_byte_offset + 8) = 0;
           return 1;
         }
-        if ( v8 == (void (           *)(__int64))1 )
+        if ( callback_function == (void (           *)(__int64))1 )
           return -1;
-        v10 = v5[1];
-        v5[1] = (uint64)(uintptr_t)(ExceptionPtr);
-        if ( *(_DWORD *)(v7 + 4) != 8 )
+        table_value = record_pointer[1];
+        record_pointer[1] = (uint64)(uintptr_t)(ExceptionPtr);
+        if ( *(_DWORD *)(record_byte_offset + 4) != 8 )
         {
-          v15 = *(unsigned int *)(v7 + 4);
-          *(_QWORD *)(v7 + 8) = 0;
-          v8(v15);
+          loaded_word_3 = *(unsigned int *)(record_byte_offset + 4);
+          *(_QWORD *)(record_byte_offset + 8) = 0;
+          callback_function(loaded_word_3);
           goto LABEL_37;
         }
-        v11 = v6 + 48;
-        v12 = v11 + 144;
-        while ( v11 != v12 )
+        record_byte_offset_2 = loaded_word + 48;
+        integer_sum = record_byte_offset_2 + 144;
+        while ( record_byte_offset_2 != integer_sum )
         {
-          *(_QWORD *)(v11 + 8) = 0;
-          v11 += 16;
+          *(_QWORD *)(record_byte_offset_2 + 8) = 0;
+          record_byte_offset_2 += 16;
         }
-        v13 = *((_DWORD *)v5 + 4);
-        switch ( *(_DWORD *)v7 )
+        loaded_word_2 = *((_DWORD *)record_pointer + 4);
+        switch ( *(_DWORD *)record_byte_offset )
         {
           case 0xC000008D:
-            v14 = 130;
+            saved_loaded_word = 130;
             break;
           case 0xC000008E:
-            v14 = 131;
+            saved_loaded_word = 131;
             break;
           case 0xC000008F:
-            v14 = 134;
+            saved_loaded_word = 134;
             break;
           case 0xC0000090:
-            v14 = 129;
+            saved_loaded_word = 129;
             break;
           case 0xC0000091:
-            v14 = 132;
+            saved_loaded_word = 132;
             break;
           case 0xC0000092:
-            v14 = 138;
+            saved_loaded_word = 138;
             break;
           case 0xC0000093:
-            v14 = 133;
+            saved_loaded_word = 133;
             break;
           case 0xC00002B4:
-            v14 = 142;
+            saved_loaded_word = 142;
             break;
           default:
-            v14 = v13;
-            if ( *(_DWORD *)v7 != -1073741131 )
+            saved_loaded_word = loaded_word_2;
+            if ( *(_DWORD *)record_byte_offset != -1073741131 )
             {
 LABEL_35:
-              ((void (           *)(__int64, __int64, void (           *)(__int64), _QWORD))v8)(8, v14, v8, 0);
-              *((_DWORD *)v5 + 4) = v13;
+              ((void (           *)(__int64, __int64, void (           *)(__int64), _QWORD))callback_function)(8, saved_loaded_word, callback_function, 0);
+              *((_DWORD *)record_pointer + 4) = loaded_word_2;
 LABEL_37:
-              v5[1] = v10;
+              record_pointer[1] = table_value;
               return -1;
             }
-            v14 = 141;
+            saved_loaded_word = 141;
             break;
         }
-        *((_DWORD *)v5 + 4) = v14;
+        *((_DWORD *)record_pointer + 4) = saved_loaded_word;
         goto LABEL_35;
       }
     }
@@ -138,13 +138,13 @@ __int64            sub_1402451B8(__int64 a1, unsigned int *a2, int **a3, unsigne
 //----- (00000001402451F0) ----------------------------------------------------
 __int64            sub_1402451F0(unsigned int a1, int **a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_1402451B8((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_1402451B8((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (0000000140245280) ----------------------------------------------------
@@ -152,13 +152,13 @@ __int64            Concurrency__details___Release_chore(
         Concurrency__details *this,
         struct Concurrency__details___Threadpool_chore *a2)
 {
-  __int64 v3;
+  __int64 loaded_word;
   __int64 result;
 
-  v3 = *(_QWORD *)this;
-  if ( v3 )
+  loaded_word = *(_QWORD *)this;
+  if ( loaded_word )
   {
-    result = ((__int64 (           *)(__int64, struct Concurrency__details___Threadpool_chore *))FreeLibrary)(v3, a2);
+    result = ((__int64 (           *)(__int64, struct Concurrency__details___Threadpool_chore *))FreeLibrary)(loaded_word, a2);
     *(_QWORD *)this = 0;
   }
   return result;
@@ -169,15 +169,15 @@ __int64            Concurrency__details___Release_chore(
 //----- (00000001402452AC) ----------------------------------------------------
 int *           _lambda_6e4b09c48022b2350581041d5f6b0c4c___operator_call(int **a1)
 {
-  int v2;
-  unsigned int *v3;
+  int scaled_index;
+  unsigned int *state_address;
   int *result;
 
   if ( LOBYTE(g_144CBE7B0) )
     return result;
   _InterlockedExchange((volatile __int32 *)&g_144CBE7A0, 1);
-  v2 = **a1;
-  if ( !v2 )
+  scaled_index = **a1;
+  if ( !scaled_index )
   {
     if ( g_144CBE7A8 != _security_cookie )
       ((void (           *)(_QWORD, _QWORD, _QWORD))__ROR8__(
@@ -186,14 +186,14 @@ int *           _lambda_6e4b09c48022b2350581041d5f6b0c4c___operator_call(int **a
         0,
         0,
         0);
-    v3 = &g_144CBEB00;
+    state_address = &g_144CBEB00;
     goto LABEL_8;
   }
-  if ( v2 == 1 )
+  if ( scaled_index == 1 )
   {
-    v3 = &g_144CBEB18;
+    state_address = &g_144CBEB18;
 LABEL_8:
-    sub_14024719C((_onexit_table_t *)v3);
+    sub_14024719C((_onexit_table_t *)state_address);
   }
   if ( !**a1 )
     sub_140247A00((sr_anon_92 *)&unk_14026E720, (sr_anon_92 *)&unk_14026E740);
@@ -219,13 +219,13 @@ __int64            Concurrency__details___Release_chore_dup2(
         Concurrency__details *this,
         struct Concurrency__details___Threadpool_chore *a2)
 {
-  __int64 v3;
+  __int64 loaded_word;
   __int64 result;
 
-  v3 = *(_QWORD *)this;
-  if ( v3 )
+  loaded_word = *(_QWORD *)this;
+  if ( loaded_word )
   {
-    result = ((__int64 (           *)(__int64, struct Concurrency__details___Threadpool_chore *))FreeLibrary)(v3, a2);
+    result = ((__int64 (           *)(__int64, struct Concurrency__details___Threadpool_chore *))FreeLibrary)(loaded_word, a2);
     *(_QWORD *)this = 0;
   }
   return result;
@@ -244,45 +244,45 @@ bool sub_1402453C4()
 //----- (00000001402453D8) ----------------------------------------------------
 __int64            sub_1402453D8(unsigned int a1, int a2, int a3)
 {
-  __int64 v4;
-  __int64 v5;
+  __int64 int64_result;
+  __int64 loaded_word;
   __int64 result;
-  _BYTE v7[4];
-  unsigned int v8;
-  unsigned int v9;
-  int *v10[4];
-  int v11;
-  int v12;
-  char v13;
+  _BYTE scratch_buffer[4];
+  unsigned int selection_code;
+  unsigned int selection_code_2;
+  int *scratch_buffer_2[4];
+  int input_value;
+  int input_value_2;
+  char selection_flag;
 
-  v12 = a3;
-  v11 = a2;
+  input_value_2 = a3;
+  input_value = a2;
   if ( !a3 )
   {
-    v4 = ((__int64 (           *)(_QWORD))GetModuleHandleW)(0);
-    if ( v4 )
+    int64_result = ((__int64 (           *)(_QWORD))GetModuleHandleW)(0);
+    if ( int64_result )
     {
-      if ( *(_WORD *)v4 == 23117 )
+      if ( *(_WORD *)int64_result == 23117 )
       {
-        v5 = v4 + *(int *)(v4 + 60);
-        if ( *(_DWORD *)v5 == 17744
-          && *(_WORD *)(v5 + 24) == 523
-          && *(_DWORD *)(v5 + 132) > 0xEu
-          && *(_DWORD *)(v5 + 248) )
+        loaded_word = int64_result + *(int *)(int64_result + 60);
+        if ( *(_DWORD *)loaded_word == 17744
+          && *(_WORD *)(loaded_word + 24) == 523
+          && *(_DWORD *)(loaded_word + 132) > 0xEu
+          && *(_DWORD *)(loaded_word + 248) )
         {
           try_cor_exit_process(a1);
         }
       }
     }
   }
-  v13 = 0;
-  v10[0] = &v11;
-  v10[1] = &v12;
-  v10[2] = (int *)&v13;
-  v8 = 2;
-  v9 = 2;
-  result = sub_1402451B8((__int64)v7, &v9, v10, &v8);
-  if ( !v12 )
+  selection_flag = 0;
+  scratch_buffer_2[0] = &input_value;
+  scratch_buffer_2[1] = &input_value_2;
+  scratch_buffer_2[2] = (int *)&selection_flag;
+  selection_code = 2;
+  selection_code_2 = 2;
+  result = sub_1402451B8((__int64)scratch_buffer, &selection_code_2, scratch_buffer_2, &selection_code);
+  if ( !input_value_2 )
     exit_or_terminate_process(a1);
   return result;
 }
@@ -292,12 +292,12 @@ __int64            sub_1402453D8(unsigned int a1, int a2, int a3)
 //----- (0000000140245494) ----------------------------------------------------
 void            __attribute__((noreturn)) exit_or_terminate_process(unsigned int a1)
 {
-  __int64 v2;
+  __int64 int64_result;
 
   if ( (unsigned int)sub_14025A388() != 1 && (*(_DWORD *)(__readgsqword(0x60u) + 188) & 0x100) == 0 )
   {
-    v2 = ((__int64 (*)(void))GetCurrentProcess)();
-    ((void (           *)(__int64, _QWORD))TerminateProcess)(v2, a1);
+    int64_result = ((__int64 (*)(void))GetCurrentProcess)();
+    ((void (           *)(__int64, _QWORD))TerminateProcess)(int64_result, a1);
   }
   try_cor_exit_process(a1);
   ((void (           __attribute__((noreturn)) *)(_QWORD))ExitProcess)(a1);
@@ -310,18 +310,18 @@ void            __attribute__((noreturn)) exit_or_terminate_process(unsigned int
 //----- (00000001402454EC) ----------------------------------------------------
 bool is_managed_app_dup2()
 {
-  __int64 v0;
-  __int64 v1;
+  __int64 int64_result;
+  __int64 loaded_word;
   bool result;
 
-  v0 = ((__int64 (           *)(_QWORD))GetModuleHandleW)(0);
+  int64_result = ((__int64 (           *)(_QWORD))GetModuleHandleW)(0);
   result = false;
-  if ( v0 )
+  if ( int64_result )
   {
-    if ( *(_WORD *)v0 == 23117 )
+    if ( *(_WORD *)int64_result == 23117 )
     {
-      v1 = v0 + *(int *)(v0 + 60);
-      if ( *(_DWORD *)v1 == 17744 && *(_WORD *)(v1 + 24) == 523 && *(_DWORD *)(v1 + 132) > 0xEu && *(_DWORD *)(v1 + 248) )
+      loaded_word = int64_result + *(int *)(int64_result + 60);
+      if ( *(_DWORD *)loaded_word == 17744 && *(_WORD *)(loaded_word + 24) == 523 && *(_DWORD *)(loaded_word + 132) > 0xEu && *(_DWORD *)(loaded_word + 248) )
         return true;
     }
   }
@@ -409,20 +409,20 @@ void         __attribute__((noreturn)) exit(int Code)
 //----- (0000000140245678) ----------------------------------------------------
 __int64            sub_140245678(int a1)
 {
-  int v1;
-  char *v4;
-  unsigned __int64 v5;
-       char **v6;
-       char **v7;
-  unsigned int v8;
-  void *v9;
-  unsigned int v10;
+  int selection_code;
+  char *state_address;
+  unsigned __int64 lookup_index;
+       char **returned_pointer;
+       char **byte_cursor;
+  unsigned int named_call_result;
+  void *record_pointer;
+  unsigned int iteration_count;
   _QWORD *i;
-  void *v12;
-  unsigned __int64 v13;
-  unsigned __int64 v14;
+  void *record_pointer_2;
+  unsigned __int64 selection_flag;
+  unsigned __int64 selection_flag_2;
 
-  v1 = 0;
+  selection_code = 0;
   if ( !a1 )
     return 0;
   if ( (unsigned int)(a1 - 1) > 1 )
@@ -433,74 +433,74 @@ __int64            sub_140245678(int a1)
   }
   sub_14025F520();
   sub_14025B344(0, (__int64)&g_144CBE7C0, 0x104u);
-  v4 = *(char **)&g_144CBFA38;
+  state_address = *(char **)&g_144CBFA38;
   g_144CBFA10 = (uint64)(uintptr_t)(&g_144CBE7C0);
   if ( !g_144CBFA38 || !**(_BYTE **)&g_144CBFA38 )
-    v4 = (char *)&g_144CBE7C0;
-  v13 = 0;
-  v14 = 0;
-  sub_140245980(v4, nullptr, nullptr, &v13, &v14);
-  v5 = v13;
-  v6 = (     char **)sub_140245E48(v13, v14, 1u);
-  v7 = v6;
-  if ( v6 )
+    state_address = (char *)&g_144CBE7C0;
+  selection_flag = 0;
+  selection_flag_2 = 0;
+  sub_140245980(state_address, nullptr, nullptr, &selection_flag, &selection_flag_2);
+  lookup_index = selection_flag;
+  returned_pointer = (     char **)sub_140245E48(selection_flag, selection_flag_2, 1u);
+  byte_cursor = returned_pointer;
+  if ( returned_pointer )
   {
-    sub_140245980(v4, v6, &v6[v5], &v13, &v14);
+    sub_140245980(state_address, returned_pointer, &returned_pointer[lookup_index], &selection_flag, &selection_flag_2);
     if ( a1 != 1 )
     {
-      v12 = nullptr;
-      v8 = common_expand_argv_wildcards__char(v7, (__int64 *)&v12);
-      if ( v8 )
+      record_pointer_2 = nullptr;
+      named_call_result = common_expand_argv_wildcards__char(byte_cursor, (__int64 *)&record_pointer_2);
+      if ( named_call_result )
       {
-        v9 = v12;
+        record_pointer = record_pointer_2;
       }
       else
       {
-        v10 = 0;
-        for ( i = v12; *i; ++v10 )
+        iteration_count = 0;
+        for ( i = record_pointer_2; *i; ++iteration_count )
           ++i;
-        g_144CBFA20 = v10;
-        v8 = 0;
-        v9 = nullptr;
-        g_144CBFA28 = (uint64)(uintptr_t)(v12);
-        v12 = nullptr;
+        g_144CBFA20 = iteration_count;
+        named_call_result = 0;
+        record_pointer = nullptr;
+        g_144CBFA28 = (uint64)(uintptr_t)(record_pointer_2);
+        record_pointer_2 = nullptr;
       }
-      free_base(v9);
-      v12 = nullptr;
+      free_base(record_pointer);
+      record_pointer_2 = nullptr;
       goto LABEL_19;
     }
-    g_144CBFA20 = v13 - 1;
-    g_144CBFA28 = (uint64)(uintptr_t)(v7);
-    v7 = nullptr;
+    g_144CBFA20 = selection_flag - 1;
+    g_144CBFA28 = (uint64)(uintptr_t)(byte_cursor);
+    byte_cursor = nullptr;
   }
   else
   {
-    v1 = 12;
+    selection_code = 12;
     *errno_sr() = 12;
   }
-  v8 = v1;
+  named_call_result = selection_code;
 LABEL_19:
-  free_base(v7);
-  return v8;
+  free_base(byte_cursor);
+  return named_call_result;
 }
 
 //----- (00000001402457F0) ----------------------------------------------------
 __int64            sub_1402457F0(int a1)
 {
-  int v1;
-  __int16 *v4;
-  unsigned __int64 v5;
-  __int16 **v6;
-       sr_anon_49 **v7;
-  unsigned int v8;
-  void *v9;
-  unsigned int v10;
+  int selection_code;
+  __int16 *state_address;
+  unsigned __int64 lookup_index;
+  __int16 **returned_pointer;
+       sr_anon_49 **record_pointer;
+  unsigned int named_call_result;
+  void *record_pointer_2;
+  unsigned int iteration_count;
   _QWORD *i;
-  void *v12;
-  unsigned __int64 v13;
-  unsigned __int64 v14;
+  void *record_pointer_3;
+  unsigned __int64 selection_flag;
+  unsigned __int64 selection_flag_2;
 
-  v1 = 0;
+  selection_code = 0;
   if ( !a1 )
     return 0;
   if ( (unsigned int)(a1 - 1) > 1 )
@@ -510,55 +510,55 @@ __int64            sub_1402457F0(int a1)
     return 22;
   }
   ((void (           *)(_QWORD, unsigned int *, __int64))GetModuleFileNameW)(0, &g_144CBE8D0, 260);
-  v4 = *(__int16 **)&g_144CBFA40;
+  state_address = *(__int16 **)&g_144CBFA40;
   g_144CBFA18 = (uint64)(uintptr_t)(&g_144CBE8D0);
   if ( !g_144CBFA40 || !**(_WORD **)&g_144CBFA40 )
-    v4 = (__int16 *)&g_144CBE8D0;
-  v13 = 0;
-  v14 = 0;
-  sub_140245B44(v4, nullptr, nullptr, &v13, &v14);
-  v5 = v13;
-  v6 = (__int16 **)sub_140245E48(v13, v14, 2u);
-  v7 = (     sr_anon_49 **)v6;
-  if ( v6 )
+    state_address = (__int16 *)&g_144CBE8D0;
+  selection_flag = 0;
+  selection_flag_2 = 0;
+  sub_140245B44(state_address, nullptr, nullptr, &selection_flag, &selection_flag_2);
+  lookup_index = selection_flag;
+  returned_pointer = (__int16 **)sub_140245E48(selection_flag, selection_flag_2, 2u);
+  record_pointer = (     sr_anon_49 **)returned_pointer;
+  if ( returned_pointer )
   {
-    sub_140245B44(v4, v6, (__int16 *)&v6[v5], &v13, &v14);
+    sub_140245B44(state_address, returned_pointer, (__int16 *)&returned_pointer[lookup_index], &selection_flag, &selection_flag_2);
     if ( a1 != 1 )
     {
-      v12 = nullptr;
-      v8 = common_expand_argv_wildcards__wchar_t(v7, (__int64 *)&v12);
-      if ( v8 )
+      record_pointer_3 = nullptr;
+      named_call_result = common_expand_argv_wildcards__wchar_t(record_pointer, (__int64 *)&record_pointer_3);
+      if ( named_call_result )
       {
-        v9 = v12;
+        record_pointer_2 = record_pointer_3;
       }
       else
       {
-        v10 = 0;
-        for ( i = v12; *i; ++v10 )
+        iteration_count = 0;
+        for ( i = record_pointer_3; *i; ++iteration_count )
           ++i;
-        g_144CBFA20 = v10;
-        v8 = 0;
-        v9 = nullptr;
-        g_144CBFA30 = (uint64)(uintptr_t)(v12);
-        v12 = nullptr;
+        g_144CBFA20 = iteration_count;
+        named_call_result = 0;
+        record_pointer_2 = nullptr;
+        g_144CBFA30 = (uint64)(uintptr_t)(record_pointer_3);
+        record_pointer_3 = nullptr;
       }
-      free_base(v9);
-      v12 = nullptr;
+      free_base(record_pointer_2);
+      record_pointer_3 = nullptr;
       goto LABEL_19;
     }
-    g_144CBFA20 = v13 - 1;
-    g_144CBFA30 = (uint64)(uintptr_t)(v7);
-    v7 = nullptr;
+    g_144CBFA20 = selection_flag - 1;
+    g_144CBFA30 = (uint64)(uintptr_t)(record_pointer);
+    record_pointer = nullptr;
   }
   else
   {
-    v1 = 12;
+    selection_code = 12;
     *errno_sr() = 12;
   }
-  v8 = v1;
+  named_call_result = selection_code;
 LABEL_19:
-  free_base(v7);
-  return v8;
+  free_base(record_pointer);
+  return named_call_result;
 }
 
 // 14026E178: invalid function type 'DWORD (__stdcall *GetModuleFileNameW)(HMODULE hModule, LPWSTR lpFilename, DWORD nSize)' has been ignored
@@ -566,59 +566,59 @@ LABEL_19:
 //----- (0000000140245980) ----------------------------------------------------
 char            sub_140245980(char *a1, _QWORD *a2, _BYTE *a3, _QWORD *a4, _QWORD *a5)
 {
-  _BYTE *v6;
-  _QWORD *v7;
-  bool v9;
-  unsigned int v10;
-  bool v11;
+  _BYTE *buffer_cursor;
+  _QWORD *buffer_cursor_2;
+  bool condition_flag;
+  unsigned int loaded_word;
+  bool condition_flag_2;
   char result;
-  int v13;
-  unsigned int v14;
-  char v15;
+  int selection_flag;
+  unsigned int remaining_count;
+  char input_byte;
 
-  v6 = a3;
-  v7 = a2;
+  buffer_cursor = a3;
+  buffer_cursor_2 = a2;
   *a5 = 0;
   *a4 = 1;
   if ( a2 )
   {
     *a2 = (uint64)(uintptr_t)(a3);
-    v7 = a2 + 1;
+    buffer_cursor_2 = a2 + 1;
   }
-  v9 = 0;
+  condition_flag = 0;
   do
   {
     if ( *a1 == 34 )
     {
-      LOBYTE(v10) = 34;
-      v9 = !v9;
+      LOBYTE(loaded_word) = 34;
+      condition_flag = !condition_flag;
       ++a1;
     }
     else
     {
       ++*a5;
-      if ( v6 )
-        *v6++ = *a1;
-      v10 = *a1++;
-      if ( ismbblead(v10) )
+      if ( buffer_cursor )
+        *buffer_cursor++ = *a1;
+      loaded_word = *a1++;
+      if ( ismbblead(loaded_word) )
       {
         ++*a5;
-        if ( v6 )
-          *v6++ = *a1;
+        if ( buffer_cursor )
+          *buffer_cursor++ = *a1;
         ++a1;
       }
-      if ( !(_BYTE)v10 )
+      if ( !(_BYTE)loaded_word )
       {
         --a1;
         goto LABEL_19;
       }
     }
   }
-  while ( v9 || (_BYTE)v10 != 32 && (_BYTE)v10 != 9 );
-  if ( v6 )
-    *(v6 - 1) = 0;
+  while ( condition_flag || (_BYTE)loaded_word != 32 && (_BYTE)loaded_word != 9 );
+  if ( buffer_cursor )
+    *(buffer_cursor - 1) = 0;
 LABEL_19:
-  v11 = 0;
+  condition_flag_2 = 0;
   while ( 1 )
   {
     result = *a1;
@@ -628,68 +628,68 @@ LABEL_19:
       result = *++a1;
     if ( !result )
       break;
-    if ( v7 )
-      *v7++ = (uint64)(uintptr_t)(v6);
+    if ( buffer_cursor_2 )
+      *buffer_cursor_2++ = (uint64)(uintptr_t)(buffer_cursor);
     ++*a4;
     while ( 1 )
     {
-      v13 = 1;
-      v14 = 0;
+      selection_flag = 1;
+      remaining_count = 0;
       while ( *a1 == 92 )
       {
         ++a1;
-        ++v14;
+        ++remaining_count;
       }
       if ( *a1 == 34 )
       {
-        if ( (v14 & 1) == 0 )
+        if ( (remaining_count & 1) == 0 )
         {
-          if ( v11 && a1[1] == 34 )
+          if ( condition_flag_2 && a1[1] == 34 )
           {
             ++a1;
           }
           else
           {
-            v13 = 0;
-            v11 = !v11;
+            selection_flag = 0;
+            condition_flag_2 = !condition_flag_2;
           }
         }
-        v14 >>= 1;
+        remaining_count >>= 1;
       }
-      while ( v14 )
+      while ( remaining_count )
       {
-        --v14;
-        if ( v6 )
-          *v6++ = 92;
+        --remaining_count;
+        if ( buffer_cursor )
+          *buffer_cursor++ = 92;
         ++*a5;
       }
-      v15 = *a1;
-      if ( !*a1 || !v11 && (v15 == 32 || v15 == 9) )
+      input_byte = *a1;
+      if ( !*a1 || !condition_flag_2 && (input_byte == 32 || input_byte == 9) )
         break;
-      if ( v13 )
+      if ( selection_flag )
       {
-        if ( v6 )
+        if ( buffer_cursor )
         {
-          *v6++ = v15;
-          v15 = *a1;
+          *buffer_cursor++ = input_byte;
+          input_byte = *a1;
         }
-        if ( ismbblead(v15) )
+        if ( ismbblead(input_byte) )
         {
           ++*a5;
           ++a1;
-          if ( v6 )
-            *v6++ = *a1;
+          if ( buffer_cursor )
+            *buffer_cursor++ = *a1;
         }
         ++*a5;
       }
       ++a1;
     }
-    if ( v6 )
-      *v6++ = 0;
+    if ( buffer_cursor )
+      *buffer_cursor++ = 0;
     ++*a5;
   }
-  if ( v7 )
-    *v7 = 0;
+  if ( buffer_cursor_2 )
+    *buffer_cursor_2 = 0;
   ++*a4;
   return result;
 }
@@ -697,25 +697,25 @@ LABEL_19:
 //----- (0000000140245B44) ----------------------------------------------------
 __int64            sub_140245B44(__int16 *a1, __int16 **a2, __int16 *a3, _QWORD *a4, _QWORD *a5)
 {
-  bool v6;
-  __int16 v7;
-  bool v8;
+  bool condition_flag;
+  __int16 loaded_word;
+  bool condition_flag_2;
   __int64 result;
-  int v10;
-  unsigned int v11;
-  __int16 v12;
+  int selection_flag;
+  unsigned int remaining_count;
+  __int16 loaded_word_2;
 
   *a5 = 0;
   *a4 = 1;
   if ( a2 )
     *a2++ = a3;
-  v6 = 0;
+  condition_flag = 0;
   do
   {
     if ( *a1 == 34 )
     {
-      v7 = 34;
-      v6 = !v6;
+      loaded_word = 34;
+      condition_flag = !condition_flag;
       ++a1;
     }
     else
@@ -723,19 +723,19 @@ __int64            sub_140245B44(__int16 *a1, __int16 **a2, __int16 *a3, _QWORD 
       ++*a5;
       if ( a3 )
         *a3++ = *a1;
-      v7 = *a1++;
-      if ( !v7 )
+      loaded_word = *a1++;
+      if ( !loaded_word )
       {
         --a1;
         goto LABEL_15;
       }
     }
   }
-  while ( v6 || v7 != 32 && v7 != 9 );
+  while ( condition_flag || loaded_word != 32 && loaded_word != 9 );
   if ( a3 )
     *(a3 - 1) = 0;
 LABEL_15:
-  v8 = 0;
+  condition_flag_2 = 0;
   while ( 1 )
   {
     result = (unsigned __int16)*a1;
@@ -750,43 +750,43 @@ LABEL_15:
     ++*a4;
     while ( 1 )
     {
-      v10 = 1;
-      v11 = 0;
+      selection_flag = 1;
+      remaining_count = 0;
       while ( *a1 == 92 )
       {
         ++a1;
-        ++v11;
+        ++remaining_count;
       }
       if ( *a1 == 34 )
       {
-        if ( (v11 & 1) == 0 )
+        if ( (remaining_count & 1) == 0 )
         {
-          if ( v8 && a1[1] == 34 )
+          if ( condition_flag_2 && a1[1] == 34 )
           {
             ++a1;
           }
           else
           {
-            v10 = 0;
-            v8 = !v8;
+            selection_flag = 0;
+            condition_flag_2 = !condition_flag_2;
           }
         }
-        v11 >>= 1;
+        remaining_count >>= 1;
       }
-      while ( v11 )
+      while ( remaining_count )
       {
-        --v11;
+        --remaining_count;
         if ( a3 )
           *a3++ = 92;
         ++*a5;
       }
-      v12 = *a1;
-      if ( !*a1 || !v8 && (v12 == 32 || v12 == 9) )
+      loaded_word_2 = *a1;
+      if ( !*a1 || !condition_flag_2 && (loaded_word_2 == 32 || loaded_word_2 == 9) )
         break;
-      if ( v10 )
+      if ( selection_flag )
       {
         if ( a3 )
-          *a3++ = v12;
+          *a3++ = loaded_word_2;
         ++*a5;
       }
       ++a1;
@@ -850,186 +850,186 @@ bool            needs_trail_byte(char a1)
 //----- (0000000140245E48) ----------------------------------------------------
 __int64            sub_140245E48(unsigned __int64 a1, unsigned __int64 a2, unsigned __int64 a3)
 {
-  __int64 v3;
-  __int64 v4;
+  __int64 record_word_offset;
+  __int64 unused_written_slot;
 
   if ( a1 >= 0x1FFFFFFFFFFFFFFFLL )
     return 0;
   if ( a2 >= 0xFFFFFFFFFFFFFFFFuLL / a3 )
     return 0;
-  v3 = 8 * a1;
-  if ( ~v3 <= a3 * a2 )
+  record_word_offset = 8 * a1;
+  if ( ~record_word_offset <= a3 * a2 )
     return 0;
-  v4 = calloc_base(a3 * a2 + v3, 1);
+  unused_written_slot = calloc_base(a3 * a2 + record_word_offset, 1);
   free_base(nullptr);
-  return v4;
+  return unused_written_slot;
 }
 
 //----- (0000000140245EA8) ----------------------------------------------------
 __int64            sub_140245EA8(int a1)
 {
-  unsigned int v1;
-  unsigned int v3;
-  char *v4;
-  unsigned __int64 v5;
-       char **v6;
-       char **v7;
-       char **v8;
-  unsigned int v9;
-  void *v10;
-  unsigned int v11;
+  unsigned int unused_written_slot;
+  unsigned int unused_written_slot_2;
+  char *state_address;
+  unsigned __int64 lookup_index;
+       char **returned_pointer;
+       char **byte_cursor;
+       char **byte_cursor_2;
+  unsigned int named_call_result;
+  void *cached_block;
+  unsigned int iteration_count;
   _QWORD *i;
   void *Block;
-  unsigned __int64 v15;
-  unsigned __int64 v16;
+  unsigned __int64 selection_flag;
+  unsigned __int64 selection_flag_2;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( a1 )
   {
     if ( (unsigned int)(a1 - 1) <= 1 )
     {
       sub_14025F520();
       sub_14025B344(0, (__int64)&g_144CBE7C0, 0x104u);
-      v4 = *(char **)&g_144CBFA38;
+      state_address = *(char **)&g_144CBFA38;
       g_144CBFA10 = (uint64)(uintptr_t)(&g_144CBE7C0);
       if ( !g_144CBFA38 || !**(_BYTE **)&g_144CBFA38 )
-        v4 = (char *)&g_144CBE7C0;
-      v15 = 0;
-      v16 = 0;
-      sub_140245980(v4, nullptr, nullptr, &v15, &v16);
-      v5 = v15;
-      v6 = (     char **)sub_140245E48(v15, v16, 1u);
-      v7 = v6;
-      if ( v6 )
+        state_address = (char *)&g_144CBE7C0;
+      selection_flag = 0;
+      selection_flag_2 = 0;
+      sub_140245980(state_address, nullptr, nullptr, &selection_flag, &selection_flag_2);
+      lookup_index = selection_flag;
+      returned_pointer = (     char **)sub_140245E48(selection_flag, selection_flag_2, 1u);
+      byte_cursor = returned_pointer;
+      if ( returned_pointer )
       {
-        sub_140245980(v4, v6, &v6[v5], &v15, &v16);
+        sub_140245980(state_address, returned_pointer, &returned_pointer[lookup_index], &selection_flag, &selection_flag_2);
         if ( a1 == 1 )
         {
-          g_144CBFA28 = (uint64)(uintptr_t)(v7);
-          g_144CBFA20 = v15 - 1;
-          v8 = nullptr;
+          g_144CBFA28 = (uint64)(uintptr_t)(byte_cursor);
+          g_144CBFA20 = selection_flag - 1;
+          byte_cursor_2 = nullptr;
         }
         else
         {
           Block = nullptr;
-          v9 = common_expand_argv_wildcards__char(v7, (__int64 *)&Block);
-          if ( v9 )
+          named_call_result = common_expand_argv_wildcards__char(byte_cursor, (__int64 *)&Block);
+          if ( named_call_result )
           {
             free_base(Block);
             Block = nullptr;
-            free_base(v7);
-            return v9;
+            free_base(byte_cursor);
+            return named_call_result;
           }
-          v10 = Block;
-          v11 = 0;
-          for ( i = Block; *i; ++v11 )
+          cached_block = Block;
+          iteration_count = 0;
+          for ( i = Block; *i; ++iteration_count )
             ++i;
-          g_144CBFA20 = v11;
+          g_144CBFA20 = iteration_count;
           Block = nullptr;
-          g_144CBFA28 = (uint64)(uintptr_t)(v10);
+          g_144CBFA28 = (uint64)(uintptr_t)(cached_block);
           free_base(nullptr);
-          v8 = v7;
+          byte_cursor_2 = byte_cursor;
           Block = nullptr;
         }
-        free_base(v8);
-        return v1;
+        free_base(byte_cursor_2);
+        return unused_written_slot;
       }
-      v3 = 12;
+      unused_written_slot_2 = 12;
       *errno_sr() = 12;
       free_base(nullptr);
     }
     else
     {
-      v3 = 22;
+      unused_written_slot_2 = 22;
       *errno_sr() = 22;
       crt_invalid_parameter_noinfo();
     }
-    return v3;
+    return unused_written_slot_2;
   }
-  return v1;
+  return unused_written_slot;
 }
 
 //----- (0000000140246030) ----------------------------------------------------
 __int64            sub_140246030(int a1)
 {
-  unsigned int v1;
-  unsigned int v3;
-  __int16 *v4;
-  unsigned __int64 v5;
-  __int16 **v6;
-       sr_anon_49 **v7;
-       sr_anon_49 **v8;
-  unsigned int v9;
-  void *v10;
-  unsigned int v11;
+  unsigned int unused_written_slot;
+  unsigned int unused_written_slot_2;
+  __int16 *state_address;
+  unsigned __int64 lookup_index;
+  __int16 **returned_pointer;
+       sr_anon_49 **record_pointer;
+       sr_anon_49 **record_pointer_2;
+  unsigned int named_call_result;
+  void *cached_block;
+  unsigned int iteration_count;
   _QWORD *i;
   void *Block;
-  unsigned __int64 v15;
-  unsigned __int64 v16;
+  unsigned __int64 selection_flag;
+  unsigned __int64 selection_flag_2;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( a1 )
   {
     if ( (unsigned int)(a1 - 1) <= 1 )
     {
       ((void (           *)(_QWORD, unsigned int *, __int64))GetModuleFileNameW)(0, &g_144CBE8D0, 260);
-      v4 = *(__int16 **)&g_144CBFA40;
+      state_address = *(__int16 **)&g_144CBFA40;
       g_144CBFA18 = (uint64)(uintptr_t)(&g_144CBE8D0);
       if ( !g_144CBFA40 || !**(_WORD **)&g_144CBFA40 )
-        v4 = (__int16 *)&g_144CBE8D0;
-      v15 = 0;
-      v16 = 0;
-      sub_140245B44(v4, nullptr, nullptr, &v15, &v16);
-      v5 = v15;
-      v6 = (__int16 **)sub_140245E48(v15, v16, 2u);
-      v7 = (     sr_anon_49 **)v6;
-      if ( v6 )
+        state_address = (__int16 *)&g_144CBE8D0;
+      selection_flag = 0;
+      selection_flag_2 = 0;
+      sub_140245B44(state_address, nullptr, nullptr, &selection_flag, &selection_flag_2);
+      lookup_index = selection_flag;
+      returned_pointer = (__int16 **)sub_140245E48(selection_flag, selection_flag_2, 2u);
+      record_pointer = (     sr_anon_49 **)returned_pointer;
+      if ( returned_pointer )
       {
-        sub_140245B44(v4, v6, (__int16 *)&v6[v5], &v15, &v16);
+        sub_140245B44(state_address, returned_pointer, (__int16 *)&returned_pointer[lookup_index], &selection_flag, &selection_flag_2);
         if ( a1 == 1 )
         {
-          g_144CBFA30 = (uint64)(uintptr_t)(v7);
-          g_144CBFA20 = v15 - 1;
-          v8 = nullptr;
+          g_144CBFA30 = (uint64)(uintptr_t)(record_pointer);
+          g_144CBFA20 = selection_flag - 1;
+          record_pointer_2 = nullptr;
         }
         else
         {
           Block = nullptr;
-          v9 = common_expand_argv_wildcards__wchar_t(v7, (__int64 *)&Block);
-          if ( v9 )
+          named_call_result = common_expand_argv_wildcards__wchar_t(record_pointer, (__int64 *)&Block);
+          if ( named_call_result )
           {
             free_base(Block);
             Block = nullptr;
-            free_base(v7);
-            return v9;
+            free_base(record_pointer);
+            return named_call_result;
           }
-          v10 = Block;
-          v11 = 0;
-          for ( i = Block; *i; ++v11 )
+          cached_block = Block;
+          iteration_count = 0;
+          for ( i = Block; *i; ++iteration_count )
             ++i;
-          g_144CBFA20 = v11;
+          g_144CBFA20 = iteration_count;
           Block = nullptr;
-          g_144CBFA30 = (uint64)(uintptr_t)(v10);
+          g_144CBFA30 = (uint64)(uintptr_t)(cached_block);
           free_base(nullptr);
-          v8 = v7;
+          record_pointer_2 = record_pointer;
           Block = nullptr;
         }
-        free_base(v8);
-        return v1;
+        free_base(record_pointer_2);
+        return unused_written_slot;
       }
-      v3 = 12;
+      unused_written_slot_2 = 12;
       *errno_sr() = 12;
       free_base(nullptr);
     }
     else
     {
-      v3 = 22;
+      unused_written_slot_2 = 22;
       *errno_sr() = 22;
       crt_invalid_parameter_noinfo();
     }
-    return v3;
+    return unused_written_slot_2;
   }
-  return v1;
+  return unused_written_slot;
 }
 
 // 14026E178: invalid function type 'DWORD (__stdcall *GetModuleFileNameW)(HMODULE hModule, LPWSTR lpFilename, DWORD nSize)' has been ignored
@@ -1125,143 +1125,143 @@ __int64 sub_1402462A8()
 //----- (00000001402462E4) ----------------------------------------------------
 __int64 initialize_narrow_environment_0()
 {
-  unsigned int v0;
-  char *v2;
-  char *v3;
-  void **v4;
+  unsigned int unused_written_slot;
+  char *returned_pointer;
+  char *byte_cursor;
+  void **returned_pointer_2;
 
-  v0 = 0;
+  unused_written_slot = 0;
   if ( g_144CBEAE0 )
     return 0;
   sub_14025F520();
-  v2 = (char *)sub_14025FDC4();
-  v3 = v2;
-  if ( v2 )
+  returned_pointer = (char *)sub_14025FDC4();
+  byte_cursor = returned_pointer;
+  if ( returned_pointer )
   {
-    v4 = sub_140246428(v2);
-    if ( v4 )
+    returned_pointer_2 = sub_140246428(returned_pointer);
+    if ( returned_pointer_2 )
     {
-      g_144CBEAF8 = (uint64)(uintptr_t)(v4);
-      g_144CBEAE0 = (uint64)(uintptr_t)(v4);
+      g_144CBEAF8 = (uint64)(uintptr_t)(returned_pointer_2);
+      g_144CBEAE0 = (uint64)(uintptr_t)(returned_pointer_2);
     }
     else
     {
-      v0 = -1;
+      unused_written_slot = -1;
     }
     free_base(nullptr);
   }
   else
   {
-    v0 = -1;
+    unused_written_slot = -1;
   }
-  free_base(v3);
-  return v0;
+  free_base(byte_cursor);
+  return unused_written_slot;
 }
 
 //----- (0000000140246350) ----------------------------------------------------
 __int64 sub_140246350()
 {
-  unsigned int v0;
-  __m128i *v2;
-  __m128i *v3;
-  void **v4;
+  unsigned int unused_written_slot;
+  __m128i *returned_pointer;
+  __m128i *packed_vector;
+  void **returned_pointer_2;
 
-  v0 = 0;
+  unused_written_slot = 0;
   if ( g_144CBEAE8 )
     return 0;
-  v2 = sub_14025FEC8();
-  v3 = v2;
-  if ( v2 )
+  returned_pointer = sub_14025FEC8();
+  packed_vector = returned_pointer;
+  if ( returned_pointer )
   {
-    v4 = sub_140246530(SR_VEC_PTR_LANES(128, v2, i16));
-    if ( v4 )
+    returned_pointer_2 = sub_140246530(SR_VEC_PTR_LANES(128, returned_pointer, i16));
+    if ( returned_pointer_2 )
     {
-      g_144CBEAF0 = (uint64)(uintptr_t)(v4);
-      g_144CBEAE8 = (uint64)(uintptr_t)(v4);
+      g_144CBEAF0 = (uint64)(uintptr_t)(returned_pointer_2);
+      g_144CBEAE8 = (uint64)(uintptr_t)(returned_pointer_2);
     }
     else
     {
-      v0 = -1;
+      unused_written_slot = -1;
     }
     free_base(nullptr);
   }
   else
   {
-    v0 = -1;
+    unused_written_slot = -1;
   }
-  free_base(v3);
-  return v0;
+  free_base(packed_vector);
+  return unused_written_slot;
 }
 
 //----- (0000000140246428) ----------------------------------------------------
 void **           sub_140246428(char *Source)
 {
-  void **v2;
-  __int64 v3;
-  char *v4;
+  void **unused_written_slot;
+  __int64 cached_integer_sum;
+  char *cached_source;
   char i;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  void **v9;
-  __int64 *v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
+  __int64 integer_sum;
+  __int64 element_index;
+  __int64 calloc_base_result;
+  void **saved_calloc_base_result;
+  __int64 *buffer_cursor;
+  __int64 element_index_2;
+  __int64 integer_sum_2;
+  __int64 calloc_base_result_2;
+  __int64 saved_calloc_base_result_2;
 
-  v2 = nullptr;
-  v3 = 0;
-  v4 = Source;
-  for ( i = *Source; i; i = *v4 )
+  unused_written_slot = nullptr;
+  cached_integer_sum = 0;
+  cached_source = Source;
+  for ( i = *Source; i; i = *cached_source )
   {
-    v6 = v3 + 1;
+    integer_sum = cached_integer_sum + 1;
     if ( i == 61 )
-      v6 = v3;
-    v3 = v6;
-    v7 = -1;
+      integer_sum = cached_integer_sum;
+    cached_integer_sum = integer_sum;
+    element_index = -1;
     do
-      ++v7;
-    while ( v4[v7] );
-    v4 += v7 + 1;
+      ++element_index;
+    while ( cached_source[element_index] );
+    cached_source += element_index + 1;
   }
-  v8 = calloc_base(v3 + 1, 8);
-  v9 = (void **)v8;
-  if ( v8 )
+  calloc_base_result = calloc_base(cached_integer_sum + 1, 8);
+  saved_calloc_base_result = (void **)calloc_base_result;
+  if ( calloc_base_result )
   {
-    v10 = (__int64 *)v8;
+    buffer_cursor = (__int64 *)calloc_base_result;
     while ( *Source )
     {
-      v11 = -1;
+      element_index_2 = -1;
       do
-        ++v11;
-      while ( Source[v11] );
-      v12 = v11 + 1;
+        ++element_index_2;
+      while ( Source[element_index_2] );
+      integer_sum_2 = element_index_2 + 1;
       if ( *Source != 61 )
       {
-        v13 = calloc_base(v12, 1);
-        v14 = v13;
-        if ( !v13 )
+        calloc_base_result_2 = calloc_base(integer_sum_2, 1);
+        saved_calloc_base_result_2 = calloc_base_result_2;
+        if ( !calloc_base_result_2 )
         {
-          unknown_libname_753(v9);
+          unknown_libname_753(saved_calloc_base_result);
           free_base(nullptr);
           goto LABEL_20;
         }
-        if ( (unsigned int)strcpy_s_sr(v13, v12, Source) )
+        if ( (unsigned int)strcpy_s_sr(calloc_base_result_2, integer_sum_2, Source) )
         {
           crt_invoke_watson();
           do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
         }
-        *v10++ = v14;
+        *buffer_cursor++ = saved_calloc_base_result_2;
         free_base(nullptr);
       }
-      Source += v12;
+      Source += integer_sum_2;
     }
-    v2 = v9;
+    unused_written_slot = saved_calloc_base_result;
   }
 LABEL_20:
   free_base(nullptr);
-  return v2;
+  return unused_written_slot;
 }
 
 // 140246528: control flows out of bounds to 14024652D
@@ -1269,72 +1269,72 @@ LABEL_20:
 //----- (0000000140246530) ----------------------------------------------------
 void **           sub_140246530(__int16 *a1)
 {
-  void **v2;
-  __int64 v3;
-  __int16 *v4;
+  void **unused_written_slot;
+  __int64 cached_integer_sum;
+  __int16 *running_total;
   __int16 i;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  void **v9;
-  _QWORD *v10;
-  __int64 v11;
-  __int64 v12;
-  _WORD *v13;
-  _WORD *v14;
+  __int64 integer_sum;
+  __int64 element_index;
+  __int64 calloc_base_result;
+  void **saved_calloc_base_result;
+  _QWORD *buffer_cursor;
+  __int64 element_index_2;
+  __int64 integer_sum_2;
+  _WORD *calloc_base_result_2;
+  _WORD *saved_calloc_base_result_2;
 
-  v2 = nullptr;
-  v3 = 0;
-  v4 = a1;
-  for ( i = *a1; i; i = *v4 )
+  unused_written_slot = nullptr;
+  cached_integer_sum = 0;
+  running_total = a1;
+  for ( i = *a1; i; i = *running_total )
   {
-    v6 = v3 + 1;
+    integer_sum = cached_integer_sum + 1;
     if ( i == 61 )
-      v6 = v3;
-    v3 = v6;
-    v7 = -1;
+      integer_sum = cached_integer_sum;
+    cached_integer_sum = integer_sum;
+    element_index = -1;
     do
-      ++v7;
-    while ( v4[v7] );
-    v4 += v7 + 1;
+      ++element_index;
+    while ( running_total[element_index] );
+    running_total += element_index + 1;
   }
-  v8 = calloc_base(v3 + 1, 8);
-  v9 = (void **)v8;
-  if ( v8 )
+  calloc_base_result = calloc_base(cached_integer_sum + 1, 8);
+  saved_calloc_base_result = (void **)calloc_base_result;
+  if ( calloc_base_result )
   {
-    v10 = (_QWORD *)v8;
+    buffer_cursor = (_QWORD *)calloc_base_result;
     while ( *a1 )
     {
-      v11 = -1;
+      element_index_2 = -1;
       do
-        ++v11;
-      while ( a1[v11] );
-      v12 = v11 + 1;
+        ++element_index_2;
+      while ( a1[element_index_2] );
+      integer_sum_2 = element_index_2 + 1;
       if ( *a1 != 61 )
       {
-        v13 = (_WORD *)calloc_base(v12, 2);
-        v14 = v13;
-        if ( !v13 )
+        calloc_base_result_2 = (_WORD *)calloc_base(integer_sum_2, 2);
+        saved_calloc_base_result_2 = calloc_base_result_2;
+        if ( !calloc_base_result_2 )
         {
-          unknown_libname_754(v9);
+          unknown_libname_754(saved_calloc_base_result);
           free_base(nullptr);
           goto LABEL_20;
         }
-        if ( (unsigned int)sub_140259444(v13, v12, (__int64)a1) )
+        if ( (unsigned int)sub_140259444(calloc_base_result_2, integer_sum_2, (__int64)a1) )
         {
           crt_invoke_watson();
           do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
         }
-        *v10++ = (uint64)(uintptr_t)(v14);
+        *buffer_cursor++ = (uint64)(uintptr_t)(saved_calloc_base_result_2);
         free_base(nullptr);
       }
-      a1 += v12;
+      a1 += integer_sum_2;
     }
-    v2 = v9;
+    unused_written_slot = saved_calloc_base_result;
   }
 LABEL_20:
   free_base(nullptr);
-  return v2;
+  return unused_written_slot;
 }
 
 // 14024663D: control flows out of bounds to 140246642
@@ -1344,17 +1344,17 @@ LABEL_20:
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_753(void **Block)
 {
-  void *v1;
-  void **v3;
+  void *record_pointer;
+  void **cached_block;
 
   if ( Block )
   {
-    v1 = *Block;
-    v3 = Block;
-    while ( v1 )
+    record_pointer = *Block;
+    cached_block = Block;
+    while ( record_pointer )
     {
-      free_base(v1);
-      v1 = *++v3;
+      free_base(record_pointer);
+      record_pointer = *++cached_block;
     }
     free_base(Block);
   }
@@ -1365,17 +1365,17 @@ void            unknown_libname_753(void **Block)
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_754(void **Block)
 {
-  void *v1;
-  void **v3;
+  void *record_pointer;
+  void **cached_block;
 
   if ( Block )
   {
-    v1 = *Block;
-    v3 = Block;
-    while ( v1 )
+    record_pointer = *Block;
+    cached_block = Block;
+    while ( record_pointer )
     {
-      free_base(v1);
-      v1 = *++v3;
+      free_base(record_pointer);
+      record_pointer = *++cached_block;
     }
     free_base(Block);
   }
@@ -1384,38 +1384,38 @@ void            unknown_libname_754(void **Block)
 //----- (00000001402466DC) ----------------------------------------------------
 __int64 sub_1402466DC()
 {
-  __int64 *v0;
+  __int64 *buffer_cursor;
   __int64 result;
-  int v2;
-  int v3;
-  __int64 v4;
-  _BYTE *v5;
-  __int64 v6;
-  __int64 v7;
+  int wide_char_to_multi_byte_result;
+  int saved_wide_char_to_multi_byte_result;
+  __int64 calloc_base_result;
+  _BYTE *saved_calloc_base_result;
+  __int64 packed_word_bits;
+  __int64 packed_word_bits_2;
 
-  v0 = *(__int64 **)&g_144CBEAE8;
+  buffer_cursor = *(__int64 **)&g_144CBEAE8;
   if ( !g_144CBEAE8 )
     return 0xFFFFFFFFLL;
   while ( 1 )
   {
-    result = *v0;
-    if ( !*v0 )
+    result = *buffer_cursor;
+    if ( !*buffer_cursor )
       break;
-    LODWORD(v6) = 0;
-    v2 = crt_wide_char_to_multi_byte(0, 0, result, 0xFFFFFFFFLL, 0, v6, 0, 0);
-    v3 = v2;
-    if ( !v2 )
+    LODWORD(packed_word_bits) = 0;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(0, 0, result, 0xFFFFFFFFLL, 0, packed_word_bits, 0, 0);
+    saved_wide_char_to_multi_byte_result = wide_char_to_multi_byte_result;
+    if ( !wide_char_to_multi_byte_result )
       return 0xFFFFFFFFLL;
-    v4 = calloc_base(v2, 1);
-    v5 = (_BYTE *)v4;
-    if ( !v4 || (LODWORD(v7) = v3, !(unsigned int)crt_wide_char_to_multi_byte(0, 0, *v0, 0xFFFFFFFFLL, v4, v7, 0, 0)) )
+    calloc_base_result = calloc_base(wide_char_to_multi_byte_result, 1);
+    saved_calloc_base_result = (_BYTE *)calloc_base_result;
+    if ( !calloc_base_result || (LODWORD(packed_word_bits_2) = saved_wide_char_to_multi_byte_result, !(unsigned int)crt_wide_char_to_multi_byte(0, 0, *buffer_cursor, 0xFFFFFFFFLL, calloc_base_result, packed_word_bits_2, 0, 0)) )
     {
-      free_base(v5);
+      free_base(saved_calloc_base_result);
       return 0xFFFFFFFFLL;
     }
-    _dcrt_set_variable_in_narrow_environment_nolock_sr(v5, 0);
+    _dcrt_set_variable_in_narrow_environment_nolock_sr(saved_calloc_base_result, 0);
     free_base(nullptr);
-    ++v0;
+    ++buffer_cursor;
   }
   return result;
 }
@@ -1423,31 +1423,31 @@ __int64 sub_1402466DC()
 //----- (00000001402467B0) ----------------------------------------------------
 __int64 sub_1402467B0()
 {
-  __int64 *v0;
+  __int64 *buffer_cursor;
   __int64 result;
-  int v2;
-  _WORD *v3;
+  int multi_byte_to_wide_char_result;
+  _WORD *calloc_base_result;
 
-  v0 = *(__int64 **)&g_144CBEAE0;
+  buffer_cursor = *(__int64 **)&g_144CBEAE0;
   if ( !g_144CBEAE0 )
     return 0xFFFFFFFFLL;
   while ( 1 )
   {
-    result = *v0;
-    if ( !*v0 )
+    result = *buffer_cursor;
+    if ( !*buffer_cursor )
       break;
-    v2 = crt_multi_byte_to_wide_char();
-    if ( !v2 )
+    multi_byte_to_wide_char_result = crt_multi_byte_to_wide_char();
+    if ( !multi_byte_to_wide_char_result )
       return 0xFFFFFFFFLL;
-    v3 = (_WORD *)calloc_base(v2, 2);
-    if ( !v3 || !(unsigned int)crt_multi_byte_to_wide_char() )
+    calloc_base_result = (_WORD *)calloc_base(multi_byte_to_wide_char_result, 2);
+    if ( !calloc_base_result || !(unsigned int)crt_multi_byte_to_wide_char() )
     {
-      free_base(v3);
+      free_base(calloc_base_result);
       return 0xFFFFFFFFLL;
     }
-    common_set_variable_in_environment_nolock__wchar_t(v3, 0);
+    common_set_variable_in_environment_nolock__wchar_t(calloc_base_result, 0);
     free_base(nullptr);
-    ++v0;
+    ++buffer_cursor;
   }
   return result;
 }
@@ -1457,18 +1457,18 @@ __int64 sub_1402467B0()
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_757(__int64 a1, __int64 (           *a2)(__int64))
 {
-  __int64 v2;
-  __int64 v4;
+  __int64 integer_sum;
+  __int64 record_byte_offset;
   __int64 result;
 
-  v2 = a1 + 8;
-  v4 = a1;
+  integer_sum = a1 + 8;
+  record_byte_offset = a1;
   do
   {
-    result = a2(v4);
-    v4 += 8;
+    result = a2(record_byte_offset);
+    record_byte_offset += 8;
   }
-  while ( v4 != v2 );
+  while ( record_byte_offset != integer_sum );
   return result;
 }
 
@@ -1477,39 +1477,39 @@ __int64            unknown_libname_757(__int64 a1, __int64 (           *a2)(__in
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_758(__int64 a1, __int64 (           *a2)(__int64))
 {
-  __int64 v2;
-  __int64 v4;
+  __int64 integer_sum;
+  __int64 record_byte_offset;
   __int64 result;
 
-  v2 = a1 + 8;
-  v4 = a1;
+  integer_sum = a1 + 8;
+  record_byte_offset = a1;
   do
   {
-    result = a2(v4);
-    v4 += 8;
+    result = a2(record_byte_offset);
+    record_byte_offset += 8;
   }
-  while ( v4 != v2 );
+  while ( record_byte_offset != integer_sum );
   return result;
 }
 
 //----- (000000014024694C) ----------------------------------------------------
 void            sub_14024694C(void ***a1)
 {
-  void **v1;
+  void **loaded_word;
 
-  v1 = *a1;
-  if ( v1 != *(void ***)&g_144CBEAF8 )
-    unknown_libname_753(v1);
+  loaded_word = *a1;
+  if ( loaded_word != *(void ***)&g_144CBEAF8 )
+    unknown_libname_753(loaded_word);
 }
 
 //----- (0000000140246968) ----------------------------------------------------
 void            sub_140246968(void ***a1)
 {
-  void **v1;
+  void **loaded_word;
 
-  v1 = *a1;
-  if ( v1 != *(void ***)&g_144CBEAF0 )
-    unknown_libname_754(v1);
+  loaded_word = *a1;
+  if ( loaded_word != *(void ***)&g_144CBEAF0 )
+    unknown_libname_754(loaded_word);
 }
 
 //----- (000000014024698C) ----------------------------------------------------
@@ -1531,10 +1531,10 @@ __int64            sub_1402469C0(__int64 a1,      char *a2)
 //----- (00000001402469E4) ----------------------------------------------------
 __int64            sub_1402469E4(unsigned int a1, __int64 a2)
 {
-  __int64 v3;
+  __int64 packed_word_bits;
 
-  LODWORD(v3) = 0;
-  return (int)crt_wide_char_to_multi_byte(a1, 0, a2, 0xFFFFFFFFLL, 0, v3, 0, 0);
+  LODWORD(packed_word_bits) = 0;
+  return (int)crt_wide_char_to_multi_byte(a1, 0, a2, 0xFFFFFFFFLL, 0, packed_word_bits, 0, 0);
 }
 
 //----- (0000000140246A14) ----------------------------------------------------
@@ -1546,10 +1546,10 @@ __int64            sub_140246A14()
 //----- (0000000140246A38) ----------------------------------------------------
 __int64            sub_140246A38(unsigned int a1, __int64 a2, __int64 a3, int a4)
 {
-  __int64 v5;
+  __int64 packed_word_bits;
 
-  LODWORD(v5) = a4;
-  return (int)crt_wide_char_to_multi_byte(a1, 0, a2, 0xFFFFFFFFLL, a3, v5, 0, 0);
+  LODWORD(packed_word_bits) = a4;
+  return (int)crt_wide_char_to_multi_byte(a1, 0, a2, 0xFFFFFFFFLL, a3, packed_word_bits, 0, 0);
 }
 
 //----- (0000000140246AA4) ----------------------------------------------------
@@ -1723,25 +1723,25 @@ __int64            sub_140246CFC(__int64 a1, unsigned int *a2, _QWORD **a3, unsi
 //----- (0000000140246D38) ----------------------------------------------------
 __int64            sub_140246D38(unsigned int a1, _QWORD **a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_140246CC0((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_140246CC0((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (0000000140246D60) ----------------------------------------------------
 __int64            sub_140246D60(unsigned int a1, _QWORD **a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_140246CFC((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_140246CFC((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (0000000140246E54) ----------------------------------------------------
@@ -1756,58 +1756,58 @@ void            unknown_libname_1025(void **a1)
 //----- (0000000140246E70) ----------------------------------------------------
 __int64            _lambda_22ebabd17bc4fa466a2aca6d8deb888d___operator_call(_QWORD **a1)
 {
-  _QWORD *v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  char *v6;
-  __int64 v7;
-  char *v8;
-  unsigned __int64 v9;
-  __int64 v10;
-  unsigned __int64 v11;
-  __int64 v12;
-  unsigned __int64 v13;
+  _QWORD *record_pointer;
+  __int64 cached_security_cookie;
+  __int64 xor_value;
+  __int64 xor_value_2;
+  char *ror8_result;
+  __int64 ror8_result_2;
+  char *ror8_result_3;
+  unsigned __int64 state_address;
+  __int64 saved_state_address;
+  unsigned __int64 integer_sum;
+  __int64 recalloc_base_result;
+  unsigned __int64 shifted_bits;
 
-  v2 = (_QWORD *)**a1;
-  if ( v2 )
+  record_pointer = (_QWORD *)**a1;
+  if ( record_pointer )
   {
-    v3 = _security_cookie;
-    v4 = *v2 ^ _security_cookie;
-    v5 = _security_cookie ^ v2[1];
-    v6 = (char *)__ROR8__(_security_cookie ^ v2[2], _security_cookie & 0x3F);
-    v7 = __ROR8__(v4, _security_cookie & 0x3F);
-    v8 = (char *)__ROR8__(v5, _security_cookie & 0x3F);
-    if ( v8 != v6 )
+    cached_security_cookie = _security_cookie;
+    xor_value = *record_pointer ^ _security_cookie;
+    xor_value_2 = _security_cookie ^ record_pointer[1];
+    ror8_result = (char *)__ROR8__(_security_cookie ^ record_pointer[2], _security_cookie & 0x3F);
+    ror8_result_2 = __ROR8__(xor_value, _security_cookie & 0x3F);
+    ror8_result_3 = (char *)__ROR8__(xor_value_2, _security_cookie & 0x3F);
+    if ( ror8_result_3 != ror8_result )
     {
 LABEL_14:
-      *(_QWORD *)v8 = v3 ^ __ROR8__(*a1[1], 64 - ((unsigned __int8)v3 & 0x3Fu));
-      *(_QWORD *)**a1 = _security_cookie ^ __ROR8__(v7, 64 - (_security_cookie & 0x3Fu));
-      *(_QWORD *)(**a1 + 8LL) = _security_cookie ^ __ROR8__(v8 + 8, 64 - (_security_cookie & 0x3Fu));
-      *(_QWORD *)(**a1 + 16LL) = _security_cookie ^ __ROR8__(v6, 64 - (_security_cookie & 0x3Fu));
+      *(_QWORD *)ror8_result_3 = cached_security_cookie ^ __ROR8__(*a1[1], 64 - ((unsigned __int8)cached_security_cookie & 0x3Fu));
+      *(_QWORD *)**a1 = _security_cookie ^ __ROR8__(ror8_result_2, 64 - (_security_cookie & 0x3Fu));
+      *(_QWORD *)(**a1 + 8LL) = _security_cookie ^ __ROR8__(ror8_result_3 + 8, 64 - (_security_cookie & 0x3Fu));
+      *(_QWORD *)(**a1 + 16LL) = _security_cookie ^ __ROR8__(ror8_result, 64 - (_security_cookie & 0x3Fu));
       return 0;
     }
-    v9 = (__int64)&v6[-v7] >> 3;
-    v10 = v9;
-    if ( v9 > 0x200 )
-      v10 = 512;
-    v11 = v9 + v10;
-    if ( !v11 )
-      v11 = 32;
-    if ( v11 >= v9 && (v12 = recalloc_base(v7, v11, 8), free_base(nullptr), v12)
-      || (v11 = v9 + 4, v12 = recalloc_base(v7, v9 + 4, 8), free_base(nullptr), v12) )
+    state_address = (__int64)&ror8_result[-ror8_result_2] >> 3;
+    saved_state_address = state_address;
+    if ( state_address > 0x200 )
+      saved_state_address = 512;
+    integer_sum = state_address + saved_state_address;
+    if ( !integer_sum )
+      integer_sum = 32;
+    if ( integer_sum >= state_address && (recalloc_base_result = recalloc_base(ror8_result_2, integer_sum, 8), free_base(nullptr), recalloc_base_result)
+      || (integer_sum = state_address + 4, recalloc_base_result = recalloc_base(ror8_result_2, state_address + 4, 8), free_base(nullptr), recalloc_base_result) )
     {
-      v3 = _security_cookie;
-      v8 = (char *)(v12 + 8 * v9);
-      v6 = (char *)(v12 + 8 * v11);
-      v7 = v12;
-      v13 = (unsigned __int64)(v6 - v8 + 7) >> 3;
-      if ( v8 > v6 )
-        v13 = 0;
-      if ( v13 )
+      cached_security_cookie = _security_cookie;
+      ror8_result_3 = (char *)(recalloc_base_result + 8 * state_address);
+      ror8_result = (char *)(recalloc_base_result + 8 * integer_sum);
+      ror8_result_2 = recalloc_base_result;
+      shifted_bits = (unsigned __int64)(ror8_result - ror8_result_3 + 7) >> 3;
+      if ( ror8_result_3 > ror8_result )
+        shifted_bits = 0;
+      if ( shifted_bits )
       {
-        memset64(v8, _security_cookie, v13);
-        v3 = _security_cookie;
+        memset64(ror8_result_3, _security_cookie, shifted_bits);
+        cached_security_cookie = _security_cookie;
       }
       goto LABEL_14;
     }
@@ -1818,60 +1818,60 @@ LABEL_14:
 //----- (0000000140247040) ----------------------------------------------------
 __int64            _lambda_f03950bc5685219e0bcd2087efbe011e___operator_call(_QWORD **a1)
 {
-  _QWORD *v2;
-  __int64 v4;
-  char *v5;
-  _QWORD *v6;
-  __int64 v7;
-  char v8;
-  char *v9;
-  _QWORD *v10;
-  __int64 v11;
-  _QWORD *v12;
-  char *v13;
-  _QWORD *v14;
+  _QWORD *record_pointer;
+  __int64 cached_security_cookie;
+  char *ror8_result;
+  _QWORD *ror8_result_2;
+  __int64 cached_security_cookie_2;
+  char masked_bits;
+  char *saved_ror8_result;
+  _QWORD *saved_ror8_result_2;
+  __int64 loaded_word;
+  _QWORD *record_pointer_2;
+  char *ror8_result_3;
+  _QWORD *ror8_result_4;
 
-  v2 = (_QWORD *)**a1;
-  if ( !v2 )
+  record_pointer = (_QWORD *)**a1;
+  if ( !record_pointer )
     return 0xFFFFFFFFLL;
-  v4 = _security_cookie;
-  v5 = (char *)__ROR8__(*v2 ^ _security_cookie, _security_cookie & 0x3F);
-  v6 = (_QWORD *)__ROR8__(_security_cookie ^ v2[1], _security_cookie & 0x3F);
-  if ( (unsigned __int64)(v5 - 1) <= 0xFFFFFFFFFFFFFFFDuLL )
+  cached_security_cookie = _security_cookie;
+  ror8_result = (char *)__ROR8__(*record_pointer ^ _security_cookie, _security_cookie & 0x3F);
+  ror8_result_2 = (_QWORD *)__ROR8__(_security_cookie ^ record_pointer[1], _security_cookie & 0x3F);
+  if ( (unsigned __int64)(ror8_result - 1) <= 0xFFFFFFFFFFFFFFFDuLL )
   {
-    v7 = _security_cookie;
-    v8 = _security_cookie & 0x3F;
-    v9 = v5;
-    v10 = v6;
-    while ( --v6 >= (_QWORD *)v5 )
+    cached_security_cookie_2 = _security_cookie;
+    masked_bits = _security_cookie & 0x3F;
+    saved_ror8_result = ror8_result;
+    saved_ror8_result_2 = ror8_result_2;
+    while ( --ror8_result_2 >= (_QWORD *)ror8_result )
     {
-      v11 = *v6;
-      if ( *v6 != v7 )
+      loaded_word = *ror8_result_2;
+      if ( *ror8_result_2 != cached_security_cookie_2 )
       {
-        *v6 = v7;
-        ((void (*)(void))__ROR8__(v4 ^ v11, v8))();
-        v4 = _security_cookie;
-        v8 = _security_cookie & 0x3F;
-        v12 = (_QWORD *)**a1;
-        v13 = (char *)__ROR8__(_security_cookie ^ *v12, _security_cookie & 0x3F);
-        v14 = (_QWORD *)__ROR8__(_security_cookie ^ v12[1], _security_cookie & 0x3F);
-        if ( v13 != v9 || v14 != v10 )
+        *ror8_result_2 = cached_security_cookie_2;
+        ((void (*)(void))__ROR8__(cached_security_cookie ^ loaded_word, masked_bits))();
+        cached_security_cookie = _security_cookie;
+        masked_bits = _security_cookie & 0x3F;
+        record_pointer_2 = (_QWORD *)**a1;
+        ror8_result_3 = (char *)__ROR8__(_security_cookie ^ *record_pointer_2, _security_cookie & 0x3F);
+        ror8_result_4 = (_QWORD *)__ROR8__(_security_cookie ^ record_pointer_2[1], _security_cookie & 0x3F);
+        if ( ror8_result_3 != saved_ror8_result || ror8_result_4 != saved_ror8_result_2 )
         {
-          v9 = v13;
-          v5 = v13;
-          v10 = v14;
-          v6 = v14;
+          saved_ror8_result = ror8_result_3;
+          ror8_result = ror8_result_3;
+          saved_ror8_result_2 = ror8_result_4;
+          ror8_result_2 = ror8_result_4;
         }
       }
     }
-    if ( v5 != (char *)-1LL )
+    if ( ror8_result != (char *)-1LL )
     {
-      free_base(v5);
-      v4 = _security_cookie;
+      free_base(ror8_result);
+      cached_security_cookie = _security_cookie;
     }
-    *(_QWORD *)**a1 = v4;
-    *(_QWORD *)(**a1 + 8LL) = v4;
-    *(_QWORD *)(**a1 + 16LL) = v4;
+    *(_QWORD *)**a1 = cached_security_cookie;
+    *(_QWORD *)(**a1 + 8LL) = cached_security_cookie;
+    *(_QWORD *)(**a1 + 16LL) = cached_security_cookie;
   }
   return 0;
 }
@@ -1894,32 +1894,32 @@ __int64            sub_14024718C(__int64 a1)
 //----- (000000014024719C) ----------------------------------------------------
 int         sub_14024719C(_onexit_table_t *Table)
 {
-  _onexit_table_t **v2;
-  _onexit_table_t *v3;
-  __int64 v4;
-  unsigned int v5;
-  unsigned int v6;
+  _onexit_table_t **state_address;
+  _onexit_table_t *cached_table;
+  __int64 callee_output_word;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
 
-  v3 = Table;
-  v2 = &v3;
-  v5 = 2;
-  v6 = 2;
-  return sub_140246CFC((__int64)&v4, &v6, &v2, &v5);
+  cached_table = Table;
+  state_address = &cached_table;
+  selection_code = 2;
+  selection_code_2 = 2;
+  return sub_140246CFC((__int64)&callee_output_word, &selection_code_2, &state_address, &selection_code);
 }
 
 //----- (00000001402471D8) ----------------------------------------------------
 int         sub_1402471D8(sr_anon_91 *Table)
 {
-  __int64 v2;
+  __int64 cached_security_cookie;
 
   if ( !Table )
     return -1;
   if ( *(_QWORD *)Table == *((_QWORD *)Table + 2) )
   {
-    v2 = _security_cookie;
+    cached_security_cookie = _security_cookie;
     *(_QWORD *)Table = _security_cookie;
-    *((_QWORD *)Table + 1) = v2;
-    *((_QWORD *)Table + 2) = v2;
+    *((_QWORD *)Table + 1) = cached_security_cookie;
+    *((_QWORD *)Table + 2) = cached_security_cookie;
   }
   return 0;
 }
@@ -1927,20 +1927,20 @@ int         sub_1402471D8(sr_anon_91 *Table)
 //----- (0000000140247200) ----------------------------------------------------
 __int64            sub_140247200(__int64 a1, __int64 a2)
 {
-  unsigned int v3;
-  _QWORD *v4[3];
-  __int64 v5;
-  __int64 v6;
-  char v7;
-  unsigned int v8;
+  unsigned int selection_code;
+  _QWORD *scratch_buffer[3];
+  __int64 input_value;
+  __int64 input_value_2;
+  char callee_output_word;
+  unsigned int selection_code_2;
 
-  v6 = a2;
-  v5 = a1;
-  v4[0] = &v5;
-  v4[1] = &v6;
-  v8 = 2;
-  v3 = 2;
-  return sub_140246CC0((__int64)&v7, &v3, v4, &v8);
+  input_value_2 = a2;
+  input_value = a1;
+  scratch_buffer[0] = &input_value;
+  scratch_buffer[1] = &input_value_2;
+  selection_code_2 = 2;
+  selection_code = 2;
+  return sub_140246CC0((__int64)&callee_output_word, &selection_code, scratch_buffer, &selection_code_2);
 }
 
 // 140247200: invalid function type 'int __cdecl sub_140247200(#91 *Table, _onexit_t Function)' has been ignored
@@ -1963,14 +1963,14 @@ char uninitialize_environment()
 //----- (00000001402472A0) ----------------------------------------------------
 char initialize_pointers()
 {
-  __int64 v0;
+  __int64 cached_security_cookie;
 
-  v0 = _security_cookie;
+  cached_security_cookie = _security_cookie;
   sub_14024CE80(_security_cookie);
-  sub_140260BDC(v0);
-  sub_14025BC1C(v0);
-  sub_1402477E0(v0);
-  sub_1402455D8(v0);
+  sub_140260BDC(cached_security_cookie);
+  sub_14025BC1C(cached_security_cookie);
+  sub_1402477E0(cached_security_cookie);
+  sub_1402455D8(cached_security_cookie);
   return 1;
 }
 
@@ -2003,26 +2003,26 @@ char uninitialize_allocated_io_buffers()
 //----- (00000001402473B0) ----------------------------------------------------
 void            sub_1402473B0(void **a1)
 {
-  __int64 v1;
-  void **v2;
-  __int64 v3;
+  __int64 iteration_count;
+  void **buffer_cursor;
+  __int64 comparison_result;
 
-  v1 = 0;
-  v2 = a1;
-  v3 = a1 < a1 + 1;
+  iteration_count = 0;
+  buffer_cursor = a1;
+  comparison_result = a1 < a1 + 1;
   if ( a1 < a1 + 1 )
   {
     do
     {
-      if ( _InterlockedExchangeAdd((volatile signed __int32 *)*v2, 0xFFFFFFFF) == 1 && *v2 != &unk_1403025A0 )
+      if ( _InterlockedExchangeAdd((volatile signed __int32 *)*buffer_cursor, 0xFFFFFFFF) == 1 && *buffer_cursor != &unk_1403025A0 )
       {
-        free_base(*v2);
-        *v2 = &unk_1403025A0;
+        free_base(*buffer_cursor);
+        *buffer_cursor = &unk_1403025A0;
       }
-      ++v2;
-      ++v1;
+      ++buffer_cursor;
+      ++iteration_count;
     }
-    while ( v1 != v3 );
+    while ( iteration_count != comparison_result );
   }
 }
 
@@ -2099,43 +2099,43 @@ char ATL__CAtlStringMgr__StaticInitialize()
 //----- (0000000140247518) ----------------------------------------------------
 bool should_write_error_to_console()
 {
-  int v0;
+  int set_error_mode_result;
 
-  v0 = set_error_mode(3);
-  return v0 == 1 || !v0 && g_144CBEB30 == 1;
+  set_error_mode_result = set_error_mode(3);
+  return set_error_mode_result == 1 || !set_error_mode_result && g_144CBEB30 == 1;
 }
 
 //----- (0000000140247544) ----------------------------------------------------
 __int64            write_string_to_console(char *a1)
 {
-  __int64 v2;
-  char *v3;
-  __int16 v4;
-  __int64 v6;
+  __int64 int64_result;
+  char *cached_buffer;
+  __int16 loaded_word;
+  __int64 unused_local;
   __int128 NumberOfBytesWritten;
   _BYTE Buffer[500];
-  char v9;
-  __int64 v10;
+  char callee_output_word;
+  __int64 unused_local_2;
 
-  v2 = ((__int64 (           *)(__int64))GetStdHandle)(4294967284LL);
-  if ( (unsigned __int64)(v2 - 1) <= 0xFFFFFFFFFFFFFFFDuLL )
+  int64_result = ((__int64 (           *)(__int64))GetStdHandle)(4294967284LL);
+  if ( (unsigned __int64)(int64_result - 1) <= 0xFFFFFFFFFFFFFFFDuLL )
   {
-    v3 = Buffer;
+    cached_buffer = Buffer;
     do
     {
-      *v3++ = *a1;
-      if ( v3 == &v9 )
+      *cached_buffer++ = *a1;
+      if ( cached_buffer == &callee_output_word )
         break;
-      v4 = *(_WORD *)a1;
+      loaded_word = *(_WORD *)a1;
       a1 += 2;
     }
-    while ( v4 );
+    while ( loaded_word );
     Buffer[499] = 0;
     LODWORD(NumberOfBytesWritten) = 0;
     ((void (           *)(__int64, _BYTE *, _QWORD, __int128 *, _QWORD))WriteFile)(
-      v2,
+      int64_result,
       Buffer,
-      (unsigned int)v3 - (unsigned int)Buffer - 1,
+      (unsigned int)cached_buffer - (unsigned int)Buffer - 1,
       &NumberOfBytesWritten,
       0);
   }
@@ -2148,11 +2148,11 @@ __int64            write_string_to_console(char *a1)
 //----- (00000001402475EC) ----------------------------------------------------
 __int64            sub_1402475EC(char *a1)
 {
-  int v2;
-  __int64 v3;
+  int set_error_mode_result;
+  __int64 iteration_count;
 
-  v2 = set_error_mode(3);
-  if ( v2 == 1 || !v2 && g_144CBEB30 == 1 )
+  set_error_mode_result = set_error_mode(3);
+  if ( set_error_mode_result == 1 || !set_error_mode_result && g_144CBEB30 == 1 )
     return write_string_to_console(a1);
   if ( (unsigned int)sub_140259444(&g_144CBEB40, 788, (__int64)L"Runtime Error!\n\nProgram: ") )
     goto LABEL_15;
@@ -2165,12 +2165,12 @@ __int64            sub_1402475EC(char *a1)
     if ( (unsigned int)sub_140259444((_WORD *)&g_144CBEB70 + 1, 763, (__int64)L"<program name unknown>") )
       goto LABEL_15;
   }
-  v3 = -1;
+  iteration_count = -1;
   do
-    ++v3;
-  while ( *((_WORD *)&g_144CBEB70 + v3 + 1) );
-  if ( (unsigned __int64)(v3 + 1) > 0x3C
-    && (unsigned int)sub_140260D80((_WORD *)&g_144CBEAFC + v3, 763 - (v3 - 59), (__int64)asc_140285E10, 3)
+    ++iteration_count;
+  while ( *((_WORD *)&g_144CBEB70 + iteration_count + 1) );
+  if ( (unsigned __int64)(iteration_count + 1) > 0x3C
+    && (unsigned int)sub_140260D80((_WORD *)&g_144CBEAFC + iteration_count, 763 - (iteration_count - 59), (__int64)asc_140285E10, 3)
     || (unsigned int)sub_14025ACB4(&g_144CBEB40, 788, (__int64)L"\n\n")
     || (unsigned int)sub_14025ACB4(&g_144CBEB40, 788, (__int64)a1) )
   {
@@ -2229,13 +2229,13 @@ void            sub_1402477E0(__int64 a1)
 //----- (00000001402477E8) ----------------------------------------------------
 __int64            sub_1402477E8(__int64 a1)
 {
-  __int64 (           *v1)(__int64);
+  __int64 (           *callback_function)(__int64);
 
-  v1 = (__int64 (           *)(__int64))__ROR8__(
+  callback_function = (__int64 (           *)(__int64))__ROR8__(
                                           g_144CBF168 ^ _security_cookie,
                                           _security_cookie & 0x3F);
-  if ( v1 )
-    return v1(a1);
+  if ( callback_function )
+    return callback_function(a1);
   else
     return 0;
 }
@@ -2250,77 +2250,77 @@ void            sub_140247818(__int64 a1)
 // Microsoft VisualC 64bit universal runtime
 unsigned int *unknown_libname_783()
 {
-  unsigned int *v0;
-  bool v1;
-  unsigned __int8 v2;
+  unsigned int *state_address;
+  bool condition_flag;
+  unsigned __int8 loaded_word;
 
   sub_14025F520();
-  v0 = &g_144CBF170;
+  state_address = &g_144CBF170;
   if ( g_144CBFA38 )
-    v0 = *(unsigned int **)&g_144CBFA38;
-  v1 = 0;
+    state_address = *(unsigned int **)&g_144CBFA38;
+  condition_flag = 0;
   while ( 1 )
   {
-    v2 = *(_BYTE *)v0;
-    if ( *(_BYTE *)v0 <= 0x20u )
+    loaded_word = *(_BYTE *)state_address;
+    if ( *(_BYTE *)state_address <= 0x20u )
     {
-      if ( !v2 )
-        return v0;
-      if ( !v1 )
+      if ( !loaded_word )
+        return state_address;
+      if ( !condition_flag )
         break;
     }
-    if ( v2 == 34 )
-      v1 = !v1;
-    if ( ismbblead(v2) )
-      v0 = (unsigned int *)((char *)v0 + 1);
-    v0 = (unsigned int *)((char *)v0 + 1);
+    if ( loaded_word == 34 )
+      condition_flag = !condition_flag;
+    if ( ismbblead(loaded_word) )
+      state_address = (unsigned int *)((char *)state_address + 1);
+    state_address = (unsigned int *)((char *)state_address + 1);
   }
   do
   {
-    if ( v2 > 0x20u )
+    if ( loaded_word > 0x20u )
       break;
-    v0 = (unsigned int *)((char *)v0 + 1);
-    v2 = *(_BYTE *)v0;
+    state_address = (unsigned int *)((char *)state_address + 1);
+    loaded_word = *(_BYTE *)state_address;
   }
-  while ( *(_BYTE *)v0 );
-  return v0;
+  while ( *(_BYTE *)state_address );
+  return state_address;
 }
 
 //----- (00000001402478B0) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 unsigned int *unknown_libname_784()
 {
-  unsigned int *v0;
-  bool v1;
-  unsigned __int16 v2;
+  unsigned int *state_address;
+  bool condition_flag;
+  unsigned __int16 loaded_word;
 
-  v0 = &g_144CBF174;
-  v1 = 0;
+  state_address = &g_144CBF174;
+  condition_flag = 0;
   if ( g_144CBFA40 )
-    v0 = *(unsigned int **)&g_144CBFA40;
+    state_address = *(unsigned int **)&g_144CBFA40;
   while ( 1 )
   {
-    v2 = *(_WORD *)v0;
-    if ( *(_WORD *)v0 <= 0x20u )
+    loaded_word = *(_WORD *)state_address;
+    if ( *(_WORD *)state_address <= 0x20u )
     {
-      if ( !v2 )
-        return v0;
-      if ( !v1 )
+      if ( !loaded_word )
+        return state_address;
+      if ( !condition_flag )
         break;
     }
-    if ( v2 == 34 )
-      v1 = !v1;
-    v0 = (unsigned int *)((char *)v0 + 2);
+    if ( loaded_word == 34 )
+      condition_flag = !condition_flag;
+    state_address = (unsigned int *)((char *)state_address + 2);
   }
   do
   {
-    if ( v2 > 0x20u )
+    if ( loaded_word > 0x20u )
       break;
-    v0 = (unsigned int *)((char *)v0 + 2);
-    v2 = *(_WORD *)v0;
+    state_address = (unsigned int *)((char *)state_address + 2);
+    loaded_word = *(_WORD *)state_address;
   }
-  while ( *(_WORD *)v0 );
-  return v0;
+  while ( *(_WORD *)state_address );
+  return state_address;
 }
 
 //----- (0000000140247920) ----------------------------------------------------
@@ -2333,121 +2333,121 @@ bool            should_copy_another_character(unsigned __int8 a1)
 // Microsoft VisualC 64bit universal runtime
 unsigned int *unknown_libname_785()
 {
-  unsigned int *v0;
-  bool v1;
-  unsigned __int8 v2;
+  unsigned int *state_address;
+  bool condition_flag;
+  unsigned __int8 loaded_word;
 
   sub_14025F520();
-  v0 = &g_144CBF170;
+  state_address = &g_144CBF170;
   if ( g_144CBFA38 )
-    v0 = *(unsigned int **)&g_144CBFA38;
-  v1 = 0;
+    state_address = *(unsigned int **)&g_144CBFA38;
+  condition_flag = 0;
   while ( 1 )
   {
-    v2 = *(_BYTE *)v0;
-    if ( *(_BYTE *)v0 <= 0x20u )
+    loaded_word = *(_BYTE *)state_address;
+    if ( *(_BYTE *)state_address <= 0x20u )
     {
-      if ( !v2 )
-        return v0;
-      if ( !v1 )
+      if ( !loaded_word )
+        return state_address;
+      if ( !condition_flag )
         break;
     }
-    if ( v2 == 34 )
-      v1 = !v1;
-    if ( ismbblead(v2) )
-      v0 = (unsigned int *)((char *)v0 + 1);
-    v0 = (unsigned int *)((char *)v0 + 1);
+    if ( loaded_word == 34 )
+      condition_flag = !condition_flag;
+    if ( ismbblead(loaded_word) )
+      state_address = (unsigned int *)((char *)state_address + 1);
+    state_address = (unsigned int *)((char *)state_address + 1);
   }
   do
   {
-    if ( v2 > 0x20u )
+    if ( loaded_word > 0x20u )
       break;
-    v0 = (unsigned int *)((char *)v0 + 1);
-    v2 = *(_BYTE *)v0;
+    state_address = (unsigned int *)((char *)state_address + 1);
+    loaded_word = *(_BYTE *)state_address;
   }
-  while ( *(_BYTE *)v0 );
-  return v0;
+  while ( *(_BYTE *)state_address );
+  return state_address;
 }
 
 //----- (00000001402479AC) ----------------------------------------------------
 // Microsoft VisualC 64bit universal runtime
 unsigned int *unknown_libname_786()
 {
-  unsigned int *v0;
-  bool v1;
-  unsigned __int16 v2;
+  unsigned int *state_address;
+  bool condition_flag;
+  unsigned __int16 loaded_word;
 
-  v0 = &g_144CBF174;
-  v1 = 0;
+  state_address = &g_144CBF174;
+  condition_flag = 0;
   if ( g_144CBFA40 )
-    v0 = *(unsigned int **)&g_144CBFA40;
+    state_address = *(unsigned int **)&g_144CBFA40;
   while ( 1 )
   {
-    v2 = *(_WORD *)v0;
-    if ( *(_WORD *)v0 <= 0x20u )
+    loaded_word = *(_WORD *)state_address;
+    if ( *(_WORD *)state_address <= 0x20u )
     {
-      if ( !v2 )
-        return v0;
-      if ( !v1 )
+      if ( !loaded_word )
+        return state_address;
+      if ( !condition_flag )
         break;
     }
-    if ( v2 == 34 )
-      v1 = !v1;
-    v0 = (unsigned int *)((char *)v0 + 2);
+    if ( loaded_word == 34 )
+      condition_flag = !condition_flag;
+    state_address = (unsigned int *)((char *)state_address + 2);
   }
   do
   {
-    if ( v2 > 0x20u )
+    if ( loaded_word > 0x20u )
       break;
-    v0 = (unsigned int *)((char *)v0 + 2);
-    v2 = *(_WORD *)v0;
+    state_address = (unsigned int *)((char *)state_address + 2);
+    loaded_word = *(_WORD *)state_address;
   }
-  while ( *(_WORD *)v0 );
-  return v0;
+  while ( *(_WORD *)state_address );
+  return state_address;
 }
 
 //----- (0000000140247A00) ----------------------------------------------------
 void         sub_140247A00(sr_anon_92 *First, sr_anon_92 *Last)
 {
-  sr_anon_92 *v2;
-  __int64 v3;
-  unsigned __int64 v4;
+  sr_anon_92 *cached_first;
+  __int64 iteration_count;
+  unsigned __int64 shifted_bits;
 
-  v2 = First;
-  v3 = 0;
-  v4 = (unsigned __int64)((intptr_t)((uintptr_t)Last - (uintptr_t)First) + 7) >> 3;
+  cached_first = First;
+  iteration_count = 0;
+  shifted_bits = (unsigned __int64)((intptr_t)((uintptr_t)Last - (uintptr_t)First) + 7) >> 3;
   if ( First > Last )
-    v4 = 0;
-  if ( v4 )
+    shifted_bits = 0;
+  if ( shifted_bits )
   {
     do
     {
-      if ( *(_QWORD *)v2 )
-        (*(void (**)(void))v2)();
-      v2 = (sr_anon_92 *)((char *)v2 + 8);
-      ++v3;
+      if ( *(_QWORD *)cached_first )
+        (*(void (**)(void))cached_first)();
+      cached_first = (sr_anon_92 *)((char *)cached_first + 8);
+      ++iteration_count;
     }
-    while ( v3 != v4 );
+    while ( iteration_count != shifted_bits );
   }
 }
 
 //----- (0000000140247A64) ----------------------------------------------------
 int         sub_140247A64(_PIFV *First, _PIFV *Last)
 {
-  _PIFV *v3;
+  _PIFV *cached_first;
   bool i;
   int result;
 
-  v3 = First;
-  for ( i = First == Last; !i; i = v3 == Last )
+  cached_first = First;
+  for ( i = First == Last; !i; i = cached_first == Last )
   {
-    if ( *(_QWORD *)v3 )
+    if ( *(_QWORD *)cached_first )
     {
-      result = (*(__int64 (**)(void))v3)();
+      result = (*(__int64 (**)(void))cached_first)();
       if ( result )
         return result;
     }
-    v3 = (_PIFV *)((char *)v3 + 8);
+    cached_first = (_PIFV *)((char *)cached_first + 8);
   }
   return 0;
 }
@@ -2489,8 +2489,8 @@ __int64            sub_140247AD8(__int32 a1)
 //----- (0000000140247B18) ----------------------------------------------------
 int         sub_140247B18(int FileHandle, int Mode)
 {
-  __int64 v4;
-  int v5;
+  __int64 shifted_bits;
+  int unused_written_slot;
 
   if ( Mode != 0x4000 && Mode != 0x8000 && Mode != 0x10000 && Mode != 0x40000 && Mode != 0x20000 )
   {
@@ -2506,65 +2506,65 @@ LABEL_17:
   }
   if ( FileHandle < 0
     || FileHandle >= g_144CBF750
-    || (v4 = (__int64)FileHandle >> 6,
-        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v4 + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) == 0) )
+    || (shifted_bits = (__int64)FileHandle >> 6,
+        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) == 0) )
   {
     *errno_sr() = 9;
     goto LABEL_17;
   }
   sub_140261068(FileHandle);
-  v5 = -1;
-  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v4 + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) != 0 )
-    v5 = sub_140247C1C(FileHandle, Mode);
+  unused_written_slot = -1;
+  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) != 0 )
+    unused_written_slot = sub_140247C1C(FileHandle, Mode);
   else
     *errno_sr() = 9;
   sub_140261150(FileHandle);
-  return v5;
+  return unused_written_slot;
 }
 
 //----- (0000000140247C1C) ----------------------------------------------------
 __int64            sub_140247C1C(int a1, int a2)
 {
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  char v5;
-  char v6;
+  __int64 shifted_bits;
+  __int64 masked_bits;
+  __int64 masked_bits_2;
+  char loaded_word;
+  char loaded_word_2;
   __int64 result;
 
-  v2 = (__int64)a1 >> 6;
-  v3 = a1 & 0x3F;
-  v4 = *(_QWORD *)&dword_140404A6C[2 * v2 + 19065401];
-  v5 = *(_BYTE *)(v4 + 72 * v3 + 56);
-  v6 = *(_BYTE *)(v4 + 72 * v3 + 57);
+  shifted_bits = (__int64)a1 >> 6;
+  masked_bits = a1 & 0x3F;
+  masked_bits_2 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+  loaded_word = *(_BYTE *)(masked_bits_2 + 72 * masked_bits + 56);
+  loaded_word_2 = *(_BYTE *)(masked_bits_2 + 72 * masked_bits + 57);
   if ( a2 == 0x4000 )
   {
-    *(_BYTE *)(v4 + 72 * v3 + 56) = v5 | 0x80;
-    *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v2 + 19065401] + 72 * v3 + 57) = 0;
+    *(_BYTE *)(masked_bits_2 + 72 * masked_bits + 56) = loaded_word | 0x80;
+    *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72 * masked_bits + 57) = 0;
   }
   else if ( a2 == 0x8000 )
   {
-    *(_BYTE *)(v4 + 72 * v3 + 56) = v5 & 0x7F;
+    *(_BYTE *)(masked_bits_2 + 72 * masked_bits + 56) = loaded_word & 0x7F;
   }
   else if ( ((a2 - 0x10000) & 0xFFFEFFFF) != 0 )
   {
     if ( a2 == 0x40000 )
     {
-      *(_BYTE *)(v4 + 72 * v3 + 56) = v5 | 0x80;
-      *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v2 + 19065401] + 72 * v3 + 57) = 1;
+      *(_BYTE *)(masked_bits_2 + 72 * masked_bits + 56) = loaded_word | 0x80;
+      *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72 * masked_bits + 57) = 1;
     }
   }
   else
   {
-    *(_BYTE *)(v4 + 72 * v3 + 56) = v5 | 0x80;
-    *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v2 + 19065401] + 72 * v3 + 57) = 2;
+    *(_BYTE *)(masked_bits_2 + 72 * masked_bits + 56) = loaded_word | 0x80;
+    *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72 * masked_bits + 57) = 2;
   }
-  if ( (v5 & 0x80) == 0 )
+  if ( (loaded_word & 0x80) == 0 )
     return 0x8000;
-  if ( !v6 )
+  if ( !loaded_word_2 )
     return 0x4000;
   result = 0x10000;
-  if ( v6 == 1 )
+  if ( loaded_word_2 == 1 )
     return 0x40000;
   return result;
 }
@@ -2580,41 +2580,41 @@ __int64            sub_140247D18(__int64 a1, unsigned int *a2, __int64 ***a3, un
 //----- (0000000140247D58) ----------------------------------------------------
 __int64            sub_140247D58(__int64 a1, unsigned int *a2, __int64 **a3, unsigned int *a4)
 {
-  __int64 v6;
-  void *v7;
-  char *v8;
-  int v9;
-  int v10;
-  __int64 *v11;
+  __int64 loaded_word;
+  void *table_value;
+  char *byte_cursor;
+  int masked_bits;
+  int loaded_word_2;
+  __int64 *table_value_2;
 
   crt_lock(*a2);
   sub_140248950(**a3, *(_OWORD **)(*a3[1] + 144));
-  v6 = sub_1402494A8((_DWORD *)**a3, *(_DWORD *)a3[3], *a3[4]);
-  *a3[2] = v6;
-  if ( v6 )
+  loaded_word = sub_1402494A8((_DWORD *)**a3, *(_DWORD *)a3[3], *a3[4]);
+  *a3[2] = loaded_word;
+  if ( loaded_word )
   {
-    v7 = (void *)*a3[4];
-    if ( v7 )
+    table_value = (void *)*a3[4];
+    if ( table_value )
     {
-      v8 = (char *)(&unk_140302588 - (_UNKNOWN *)v7);
+      byte_cursor = (char *)(&unk_140302588 - (_UNKNOWN *)table_value);
       do
       {
-        v9 = *(unsigned __int16 *)&v8[(_QWORD)v7];
-        v10 = *(unsigned __int16 *)v7 - v9;
-        if ( v10 )
+        masked_bits = *(unsigned __int16 *)&byte_cursor[(_QWORD)table_value];
+        loaded_word_2 = *(unsigned __int16 *)table_value - masked_bits;
+        if ( loaded_word_2 )
           break;
-        v7 = (char *)v7 + 2;
+        table_value = (char *)table_value + 2;
       }
-      while ( v9 );
-      if ( v10 )
+      while ( masked_bits );
+      if ( loaded_word_2 )
         _InterlockedExchange((volatile __int32 *)&g_144CBF178, 1);
     }
     updatetlocinfoEx_nolock((__int64 *)(*a3[1] + 144), **a3);
     sub_140262A34(**a3);
-    v11 = a3[1];
-    if ( (*(_BYTE *)(*v11 + 936) & 2) == 0 && (dword_140302B88 & 1) == 0 )
+    table_value_2 = a3[1];
+    if ( (*(_BYTE *)(*table_value_2 + 936) & 2) == 0 && (dword_140302B88 & 1) == 0 )
     {
-      updatetlocinfoEx_nolock((__int64 *)(unsigned int *)&g_144CBF778, *(_QWORD *)(*v11 + 144));
+      updatetlocinfoEx_nolock((__int64 *)(unsigned int *)&g_144CBF778, *(_QWORD *)(*table_value_2 + 144));
       off_140302B78 = *(_UNKNOWN ***)(g_144CBF778 + 248LL);
       off_140302590 = **(__int16 ***)&g_144CBF778;
       dword_14030258C = *(_DWORD *)(g_144CBF778 + 8LL);
@@ -2664,66 +2664,66 @@ __int64            sub_140247F30(__int64 a1, unsigned int *a2, __int64 a3, unsig
 //----- (0000000140247F74) ----------------------------------------------------
 __int64            sub_140247F74(unsigned int a1, __int64 a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_140247E94((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_140247E94((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (0000000140247F9C) ----------------------------------------------------
 __int64            sub_140247F9C(unsigned int a1, __int64 ***a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_140247D18((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_140247D18((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (0000000140247FC4) ----------------------------------------------------
 __int64            sub_140247FC4(unsigned int a1, __int64 a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_140247F30((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_140247F30((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (0000000140247FEC) ----------------------------------------------------
 __int64            sub_140247FEC(unsigned int a1, __int64 **a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_140247D58((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_140247D58((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014024802C) ----------------------------------------------------
 void            sub_14024802C(__int16 ***a1)
 {
-  __int16 ***v1;
-  __int64 *v2;
+  __int16 ***record_pointer;
+  __int64 *updatetlocinfoex_nolock_result;
 
-  v1 = a1 + 1;
-  v2 = (__int64 *)a1;
+  record_pointer = a1 + 1;
+  updatetlocinfoex_nolock_result = (__int64 *)a1;
   do
   {
-    if ( (__int16 **)*v2 != &off_140302420 )
-      *v2 = updatetlocinfoEx_nolock(v2, (__int64)&off_140302420);
-    ++v2;
+    if ( (__int16 **)*updatetlocinfoex_nolock_result != &off_140302420 )
+      *updatetlocinfoex_nolock_result = updatetlocinfoEx_nolock(updatetlocinfoex_nolock_result, (__int64)&off_140302420);
+    ++updatetlocinfoex_nolock_result;
   }
-  while ( v2 != (__int64 *)v1 );
+  while ( updatetlocinfoex_nolock_result != (__int64 *)record_pointer );
 }
 
 //----- (0000000140248134) ----------------------------------------------------
@@ -2797,25 +2797,25 @@ void            sub_1402481E4(sr_anon_128 *this)
 //----- (000000014024825C) ----------------------------------------------------
 void            _lambda_2a444430fde8c29194d880d93eed5e8f___operator_call(__int64 **a1)
 {
-  __int64 v2;
-  __int64 *v3[7];
-  char v4;
-  unsigned int v5;
-  unsigned int v6;
+  __int64 calloc_base_result;
+  __int64 *scratch_buffer[7];
+  char callee_output_word;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
 
-  v2 = calloc_base(1, 344);
-  **a1 = v2;
+  calloc_base_result = calloc_base(1, 344);
+  **a1 = calloc_base_result;
   free_base(nullptr);
-  if ( v2 )
+  if ( calloc_base_result )
   {
-    v3[0] = *a1;
-    v3[1] = a1[1];
-    v3[2] = a1[2];
-    v3[3] = a1[3];
-    v3[4] = a1[4];
-    v5 = 4;
-    v6 = 4;
-    sub_140247D58((__int64)&v4, &v6, v3, &v5);
+    scratch_buffer[0] = *a1;
+    scratch_buffer[1] = a1[1];
+    scratch_buffer[2] = a1[2];
+    scratch_buffer[3] = a1[3];
+    scratch_buffer[4] = a1[4];
+    selection_code = 4;
+    selection_code_2 = 4;
+    sub_140247D58((__int64)&callee_output_word, &selection_code_2, scratch_buffer, &selection_code);
   }
 }
 
@@ -2844,40 +2844,40 @@ void unknown_libname_793()
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_797(__int64 **a1)
 {
-  __int64 v2;
-  void *v3;
-  char *v4;
-  int v5;
-  int v6;
-  __int64 *v7;
+  __int64 loaded_word;
+  void *table_value;
+  char *byte_cursor;
+  int masked_bits;
+  int loaded_word_2;
+  __int64 *table_value_2;
 
   sub_140248950(**a1, *(_OWORD **)(*a1[1] + 144));
-  v2 = sub_1402494A8((_DWORD *)**a1, *(_DWORD *)a1[3], *a1[4]);
-  *a1[2] = v2;
-  if ( v2 )
+  loaded_word = sub_1402494A8((_DWORD *)**a1, *(_DWORD *)a1[3], *a1[4]);
+  *a1[2] = loaded_word;
+  if ( loaded_word )
   {
-    v3 = (void *)*a1[4];
-    if ( v3 )
+    table_value = (void *)*a1[4];
+    if ( table_value )
     {
-      v4 = (char *)(&unk_140302588 - (_UNKNOWN *)v3);
+      byte_cursor = (char *)(&unk_140302588 - (_UNKNOWN *)table_value);
       do
       {
-        v5 = *(unsigned __int16 *)&v4[(_QWORD)v3];
-        v6 = *(unsigned __int16 *)v3 - v5;
-        if ( v6 )
+        masked_bits = *(unsigned __int16 *)&byte_cursor[(_QWORD)table_value];
+        loaded_word_2 = *(unsigned __int16 *)table_value - masked_bits;
+        if ( loaded_word_2 )
           break;
-        v3 = (char *)v3 + 2;
+        table_value = (char *)table_value + 2;
       }
-      while ( v5 );
-      if ( v6 )
+      while ( masked_bits );
+      if ( loaded_word_2 )
         _InterlockedExchange((volatile __int32 *)&g_144CBF178, 1);
     }
     updatetlocinfoEx_nolock((__int64 *)(*a1[1] + 144), **a1);
     sub_140262A34(**a1);
-    v7 = a1[1];
-    if ( (*(_BYTE *)(*v7 + 936) & 2) == 0 && (dword_140302B88 & 1) == 0 )
+    table_value_2 = a1[1];
+    if ( (*(_BYTE *)(*table_value_2 + 936) & 2) == 0 && (dword_140302B88 & 1) == 0 )
     {
-      updatetlocinfoEx_nolock((__int64 *)(unsigned int *)&g_144CBF778, *(_QWORD *)(*v7 + 144));
+      updatetlocinfoEx_nolock((__int64 *)(unsigned int *)&g_144CBF778, *(_QWORD *)(*table_value_2 + 144));
       off_140302B78 = *(_UNKNOWN ***)(g_144CBF778 + 248LL);
       off_140302590 = **(__int16 ***)&g_144CBF778;
       dword_14030258C = *(_DWORD *)(g_144CBF778 + 8LL);
@@ -2957,25 +2957,25 @@ void            unknown_libname_1032(void **a1)
 //----- (0000000140248608) ----------------------------------------------------
 _WORD *           sub_140248608(__m128i *a1)
 {
-  unsigned __int64 v2;
-  _WORD *v3;
-  _WORD *v4;
+  unsigned __int64 call_result;
+  _WORD *malloc_base_result;
+  _WORD *unused_written_slot;
 
   if ( !a1 )
     return nullptr;
-  v2 = sub_140254F48(a1, 0x55u);
-  if ( v2 >= 0x55 )
+  call_result = sub_140254F48(a1, 0x55u);
+  if ( call_result >= 0x55 )
     return nullptr;
-  v3 = (_WORD *)malloc_base();
-  v4 = v3;
-  if ( !v3 )
+  malloc_base_result = (_WORD *)malloc_base();
+  unused_written_slot = malloc_base_result;
+  if ( !malloc_base_result )
     return nullptr;
-  if ( (unsigned int)sub_140260D80(v3, v2 + 1, (__int64)a1, v2 + 1) )
+  if ( (unsigned int)sub_140260D80(malloc_base_result, call_result + 1, (__int64)a1, call_result + 1) )
   {
     crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
-  return v4;
+  return unused_written_slot;
 }
 
 // 140248684: control flows out of bounds to 140248689
@@ -2989,13 +2989,13 @@ __int64 sub_14024868C()
 //----- (0000000140248698) ----------------------------------------------------
 __int64 sub_140248698()
 {
-  __int64 v1;
-  unsigned int v2;
-  unsigned int v3;
+  __int64 callee_output_word;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
 
-  v2 = 4;
-  v3 = 4;
-  return sub_140247E94((__int64)&v1, &v3, (__int64)&v1, &v2);
+  selection_code = 4;
+  selection_code_2 = 4;
+  return sub_140247E94((__int64)&callee_output_word, &selection_code_2, (__int64)&callee_output_word, &selection_code);
 }
 
 //----- (00000001402486D8) ----------------------------------------------------
@@ -3018,11 +3018,11 @@ void            sub_1402486D8(_WORD *a1, __int64 a2, __int64 a3)
 __int64            sub_14024877C(_WORD *a1, _WORD *a2)
 {
   int i;
-  __int16 *v6;
-  __int16 v7;
-  _WORD *v8;
-  __int64 v9;
-  unsigned __int64 v10;
+  __int16 *state_address;
+  __int16 loaded_word;
+  _WORD *record_pointer;
+  __int64 selection_code;
+  unsigned __int64 call_result;
 
   crt_memset((void *)(uintptr_t)(a1), 0, 0x1CAu);
   if ( !*a2 )
@@ -3040,41 +3040,41 @@ LABEL_27:
   }
   for ( i = 0; ; ++i )
   {
-    v10 = sub_1402625A4(a2, L"_.,");
-    if ( !v10 )
+    call_result = sub_1402625A4(a2, L"_.,");
+    if ( !call_result )
       break;
-    v6 = &a2[v10];
-    v7 = *v6;
+    state_address = &a2[call_result];
+    loaded_word = *state_address;
     if ( i )
     {
       if ( i == 1 )
       {
-        if ( v10 >= 0x40 || v7 == 95 )
+        if ( call_result >= 0x40 || loaded_word == 95 )
           return 0xFFFFFFFFLL;
-        v8 = a1 + 64;
-        v9 = 64;
+        record_pointer = a1 + 64;
+        selection_code = 64;
       }
       else
       {
-        if ( i != 2 || v10 >= 0x10 || v7 && v7 != 44 )
+        if ( i != 2 || call_result >= 0x10 || loaded_word && loaded_word != 44 )
           return 0xFFFFFFFFLL;
-        v8 = a1 + 128;
-        v9 = 16;
+        record_pointer = a1 + 128;
+        selection_code = 16;
       }
-      if ( (unsigned int)sub_140260D80(v8, v9, (__int64)a2, v10) )
+      if ( (unsigned int)sub_140260D80(record_pointer, selection_code, (__int64)a2, call_result) )
         goto LABEL_27;
     }
     else
     {
-      if ( v10 >= 0x40 )
+      if ( call_result >= 0x40 )
         return 0xFFFFFFFFLL;
-      if ( (unsigned int)sub_140260D80(a1, 64, (__int64)a2, v10) )
+      if ( (unsigned int)sub_140260D80(a1, 64, (__int64)a2, call_result) )
         goto LABEL_27;
-      i = v7 == 46;
+      i = loaded_word == 46;
     }
-    if ( v7 == 44 || !v7 )
+    if ( loaded_word == 44 || !loaded_word )
       return 0;
-    a2 = v6 + 1;
+    a2 = state_address + 1;
   }
   return 0xFFFFFFFFLL;
 }
@@ -3084,14 +3084,14 @@ LABEL_27:
 //----- (00000001402488E4) ----------------------------------------------------
 int         sub_1402488E4(int Flag)
 {
-  unsigned __int64 v2;
-  int v3;
-  int v4;
-  unsigned int v6;
+  unsigned __int64 call_result;
+  int loaded_word;
+  int comparison_result;
+  unsigned int masked_bits;
 
-  v2 = sub_140255A70();
-  v3 = *(_DWORD *)(v2 + 936);
-  v4 = -((v3 & 2) != 0);
+  call_result = sub_140255A70();
+  loaded_word = *(_DWORD *)(call_result + 936);
+  comparison_result = -((loaded_word & 2) != 0);
   if ( Flag == -1 )
   {
     dword_140302B88 = -1;
@@ -3100,7 +3100,7 @@ int         sub_1402488E4(int Flag)
   {
     if ( Flag == 1 )
     {
-      v6 = v3 | 2;
+      masked_bits = loaded_word | 2;
     }
     else
     {
@@ -3110,46 +3110,46 @@ int         sub_1402488E4(int Flag)
         crt_invalid_parameter_noinfo();
         return -1;
       }
-      v6 = v3 & 0xFFFFFFFD;
+      masked_bits = loaded_word & 0xFFFFFFFD;
     }
-    *(_DWORD *)(v2 + 936) = v6;
+    *(_DWORD *)(call_result + 936) = masked_bits;
   }
-  return v4 + 2;
+  return comparison_result + 2;
 }
 
 //----- (0000000140248950) ----------------------------------------------------
 void            sub_140248950(__int64 a1, _OWORD *a2)
 {
-  __int64 v2;
-  _OWORD *v3;
-  __int128 v4;
+  __int64 remaining_count;
+  _OWORD *record_byte_offset;
+  __int128 table_value;
 
   if ( a2 && a1 && (_OWORD *)a1 != a2 )
   {
-    v2 = 2;
-    v3 = (_OWORD *)a1;
+    remaining_count = 2;
+    record_byte_offset = (_OWORD *)a1;
     do
     {
-      *v3 = *a2;
-      v3[1] = a2[1];
-      v3[2] = a2[2];
-      v3[3] = a2[3];
-      v3[4] = a2[4];
-      v3[5] = a2[5];
-      v3[6] = a2[6];
-      v3 += 8;
-      v4 = a2[7];
+      *record_byte_offset = *a2;
+      record_byte_offset[1] = a2[1];
+      record_byte_offset[2] = a2[2];
+      record_byte_offset[3] = a2[3];
+      record_byte_offset[4] = a2[4];
+      record_byte_offset[5] = a2[5];
+      record_byte_offset[6] = a2[6];
+      record_byte_offset += 8;
+      table_value = a2[7];
       a2 += 8;
-      *(v3 - 1) = v4;
-      --v2;
+      *(record_byte_offset - 1) = table_value;
+      --remaining_count;
     }
-    while ( v2 );
-    *v3 = *a2;
-    v3[1] = a2[1];
-    v3[2] = a2[2];
-    v3[3] = a2[3];
-    v3[4] = a2[4];
-    *((_QWORD *)v3 + 10) = *((_QWORD *)a2 + 10);
+    while ( remaining_count );
+    *record_byte_offset = *a2;
+    record_byte_offset[1] = a2[1];
+    record_byte_offset[2] = a2[2];
+    record_byte_offset[3] = a2[3];
+    record_byte_offset[4] = a2[4];
+    *((_QWORD *)record_byte_offset + 10) = *((_QWORD *)a2 + 10);
     *(_DWORD *)(a1 + 16) = 0;
     sub_1402627A8(a1);
   }
@@ -3158,17 +3158,17 @@ void            sub_140248950(__int64 a1, _OWORD *a2)
 //----- (0000000140248A10) ----------------------------------------------------
 __int64            sub_140248A10(unsigned int a1, __int64 a2)
 {
-  _QWORD v4[5];
-  int v5;
+  _QWORD scratch_buffer[5];
+  int unused_written_slot;
   _BYTE Locale[272];
-  __int64 v7;
+  __int64 unused_local;
 
   if ( a1 <= 5 )
   {
     if ( a2 )
     {
-      v5 = 131;
-      v4[4] = (uint64)(uintptr_t)(Locale);
+      unused_written_slot = 131;
+      scratch_buffer[4] = (uint64)(uintptr_t)(Locale);
       if ( (unsigned int)crt_multi_byte_to_wide_char() )
         sub_140249068(a1, Locale);
     }
@@ -3181,55 +3181,55 @@ __int64            sub_140248A10(unsigned int a1, __int64 a2)
 //----- (0000000140248A88) ----------------------------------------------------
 __int64            sub_140248A88(char *a1, sr_anon_57 *a2, __int64 a3, sr_anon_44 *a4, __int64 a5, _DWORD *a6)
 {
-  unsigned __int64 v9;
-  char v10;
-  char *v11;
-  __int64 v12;
-  unsigned __int64 v13;
-  int v14;
-  unsigned __int16 *v15;
-  int v16;
-  int v17;
-  sr_anon_44 *v18;
-  int v19;
-  int v20;
-  bool v21;
-  signed int *v22;
+  unsigned __int64 call_result;
+  char cached_selection_flag;
+  char *byte_cursor;
+  __int64 element_index;
+  unsigned __int64 element_index_2;
+  int selection_flag;
+  unsigned __int16 *buffer_cursor;
+  int loaded_word;
+  int scaled_index;
+  sr_anon_44 *record_pointer;
+  int loaded_word_2;
+  int loaded_word_3;
+  bool comparison_result;
+  signed int *unused_written_slot;
   int qualified_locale_downlevel;
-  __int64 v24;
-  unsigned __int16 v25;
-  __int64 v26;
-  char *v27;
-  int v28;
-  int v29;
-  int v30;
-  unsigned __int16 v31;
-  __int64 v32;
-  __int64 v33;
+  __int64 integer_sum;
+  unsigned __int16 saved_packed_word_bits;
+  __int64 integer_sum_2;
+  char *cached_source;
+  int integer_sum_3;
+  int integer_sum_4;
+  int integer_sum_5;
+  unsigned __int16 saved_packed_word_bits_2;
+  __int64 cached_sizeinwords;
+  __int64 unused_local;
   __int128 Reserved;
-  __int64 v35;
-  signed int *v36;
-  sr_anon_44 *v37;
-  sr_anon_44 *v38;
+  __int64 packed_word_bits;
+  signed int *record_pointer_2;
+  sr_anon_44 *record_pointer_3;
+  sr_anon_44 *input_cursor;
   __int64 MaxCount;
-  unsigned __int64 v40;
-  char v41;
-  _DWORD *v42;
+  unsigned __int64 integer_sum_6;
+  char selection_flag_2;
+  _DWORD *unused_written_slot_2;
   __int64 SizeInWords;
   sr_anon_57 *Destination;
-  _WORD v45[128];
-  unsigned __int16 v46;
-  unsigned __int16 v47;
-  unsigned __int16 v48;
-  __int16 v49;
-  __int64 v50;
+  _WORD scratch_buffer[128];
+  unsigned __int16 unrecovered_register_value;
+  unsigned __int16 unrecovered_register_value_2;
+  unsigned __int16 unrecovered_register_value_3;
+  __int16 unrecovered_register_value_4;
+  __int64 unrecovered_register_value_5;
   _WORD Source[88];
-  __int64 v52;
+  __int64 unused_local_2;
 
   SizeInWords = a3;
   Destination = a2;
-  v35 = a5;
-  v42 = a6;
+  packed_word_bits = a5;
+  unused_written_slot_2 = a6;
   if ( a1 )
   {
     if ( *(_WORD *)a1 == 67 && !*((_WORD *)a1 + 1) )
@@ -3241,160 +3241,160 @@ __int64            sub_140248A88(char *a1, sr_anon_57 *a2, __int64 a3, sr_anon_4
       }
       goto LABEL_67;
     }
-    v9 = sub_140255A70();
-    v38 = a4;
+    call_result = sub_140255A70();
+    input_cursor = a4;
     MaxCount = a5;
-    v40 = v9 + 152;
-    v10 = 0;
-    v41 = 0;
-    v36 = (signed int *)(v9 + 184);
-    v37 = (sr_anon_44 *)(v9 + 188);
-    v11 = (char *)(v9 + 450);
-    if ( (unsigned int)sub_140260D80(a4, a5, v9 + 752, 85) )
+    integer_sum_6 = call_result + 152;
+    cached_selection_flag = 0;
+    selection_flag_2 = 0;
+    record_pointer_2 = (signed int *)(call_result + 184);
+    record_pointer_3 = (sr_anon_44 *)(call_result + 188);
+    byte_cursor = (char *)(call_result + 450);
+    if ( (unsigned int)sub_140260D80(a4, a5, call_result + 752, 85) )
       goto LABEL_67;
-    v12 = -1;
-    v13 = -1;
-    v14 = 0;
+    element_index = -1;
+    element_index_2 = -1;
+    selection_flag = 0;
     do
-      ++v13;
-    while ( *(_WORD *)&a1[2 * v13] );
-    if ( v13 < 0x83 )
+      ++element_index_2;
+    while ( *(_WORD *)&a1[2 * element_index_2] );
+    if ( element_index_2 < 0x83 )
     {
-      v15 = (unsigned __int16 *)v11;
+      buffer_cursor = (unsigned __int16 *)byte_cursor;
       do
       {
-        v16 = *(unsigned __int16 *)((uintptr_t)v15 + (uintptr_t)a1 - (uintptr_t)v11);
-        v17 = *v15 - v16;
-        if ( v17 )
+        loaded_word = *(unsigned __int16 *)((uintptr_t)buffer_cursor + (uintptr_t)a1 - (uintptr_t)byte_cursor);
+        scaled_index = *buffer_cursor - loaded_word;
+        if ( scaled_index )
           break;
-        ++v15;
+        ++buffer_cursor;
       }
-      while ( v16 );
-      if ( !v17 )
+      while ( loaded_word );
+      if ( !scaled_index )
         goto LABEL_66;
-      v18 = v37;
+      record_pointer = record_pointer_3;
       do
       {
-        v19 = *(unsigned __int16 *)((uintptr_t)v18 + (uintptr_t)a1 - (uintptr_t)v37);
-        v20 = *(unsigned __int16 *)v18 - v19;
-        if ( v20 )
+        loaded_word_2 = *(unsigned __int16 *)((uintptr_t)record_pointer + (uintptr_t)a1 - (uintptr_t)record_pointer_3);
+        loaded_word_3 = *(unsigned __int16 *)record_pointer - loaded_word_2;
+        if ( loaded_word_3 )
           break;
-        v18 = (sr_anon_44 *)((char *)v18 + 2);
+        record_pointer = (sr_anon_44 *)((char *)record_pointer + 2);
       }
-      while ( v19 );
-      if ( !v20 )
+      while ( loaded_word_2 );
+      if ( !loaded_word_3 )
         goto LABEL_66;
     }
-    LOBYTE(v14) = !sub_14024F8BC();
-    if ( (unsigned int)sub_14024877C(v45, a1) )
+    LOBYTE(selection_flag) = !sub_14024F8BC();
+    if ( (unsigned int)sub_14024877C(scratch_buffer, a1) )
     {
-      v22 = v36;
+      unused_written_slot = record_pointer_2;
     }
     else
     {
-      v21 = v14 == 0;
-      v22 = v36;
-      if ( v21 )
-        qualified_locale_downlevel = sub_14026340C(v45, v36, (__int64)v45);
+      comparison_result = selection_flag == 0;
+      unused_written_slot = record_pointer_2;
+      if ( comparison_result )
+        qualified_locale_downlevel = sub_14026340C(scratch_buffer, record_pointer_2, (__int64)scratch_buffer);
       else
-        qualified_locale_downlevel = _acrt_get_qualified_locale_downlevel((__int64)v45, v36, (__int64)v45);
+        qualified_locale_downlevel = _acrt_get_qualified_locale_downlevel((__int64)scratch_buffer, record_pointer_2, (__int64)scratch_buffer);
       if ( qualified_locale_downlevel )
       {
-        sub_1402486D8(v11, 131, (__int64)v45);
+        sub_1402486D8(byte_cursor, 131, (__int64)scratch_buffer);
         do
-          ++v12;
-        while ( Source[v12] );
-        v10 = 1;
-        if ( (unsigned int)sub_140260D80(a4, v35, (__int64)Source, v12 + 1) )
+          ++element_index;
+        while ( Source[element_index] );
+        cached_selection_flag = 1;
+        if ( (unsigned int)sub_140260D80(a4, packed_word_bits, (__int64)Source, element_index + 1) )
           goto LABEL_68;
-        v24 = v13 + 1;
+        integer_sum = element_index_2 + 1;
         goto LABEL_61;
       }
     }
     if ( (unsigned int)sub_14024F408((__int64)a1) )
     {
-      LODWORD(v35) = 0;
-      if ( !(unsigned int)sub_14024F174((__int64)a1, 0x20001004u, (__int64)&v35, 2u) || (v25 = v35, !(_DWORD)v35) )
-        v25 = -535;
-      *v22 = v25;
-      v24 = v13 + 1;
-      if ( (unsigned int)sub_140260D80(v11, 131, (__int64)a1, v13 + 1) )
+      LODWORD(packed_word_bits) = 0;
+      if ( !(unsigned int)sub_14024F174((__int64)a1, 0x20001004u, (__int64)&packed_word_bits, 2u) || (saved_packed_word_bits = packed_word_bits, !(_DWORD)packed_word_bits) )
+        saved_packed_word_bits = -535;
+      *unused_written_slot = saved_packed_word_bits;
+      integer_sum = element_index_2 + 1;
+      if ( (unsigned int)sub_140260D80(byte_cursor, 131, (__int64)a1, element_index_2 + 1) )
         goto LABEL_68;
-      v26 = v13 + 1;
-      v27 = a1;
+      integer_sum_2 = element_index_2 + 1;
+      cached_source = a1;
       goto LABEL_60;
     }
-    if ( !(unsigned __int8)parse_bcp47(v45, (unsigned __int16 *)a1) || !(unsigned int)sub_14024F408((__int64)Source) )
+    if ( !(unsigned __int8)parse_bcp47(scratch_buffer, (unsigned __int16 *)a1) || !(unsigned int)sub_14024F408((__int64)Source) )
     {
 LABEL_51:
-      if ( v10 || !(unsigned int)sub_140260D80((_WORD *)(v40 + 600), 85, (__int64)v38, MaxCount) )
+      if ( cached_selection_flag || !(unsigned int)sub_140260D80((_WORD *)(integer_sum_6 + 600), 85, (__int64)input_cursor, MaxCount) )
         return 0; /* 0x140248DBA: mov r12, r13 (0); 0x140248DEA: mov rax, r12 */
 LABEL_67:
       *(_QWORD *)&Reserved = 0;
       crt_invoke_watson();
       __debugbreak();
     }
-    if ( v46 )
+    if ( unrecovered_register_value )
     {
-      v28 = v46 + 32;
-      if ( (unsigned int)v46 - 65 > 0x19 )
-        v28 = v46;
-      if ( v28 != 117 )
+      integer_sum_3 = unrecovered_register_value + 32;
+      if ( (unsigned int)unrecovered_register_value - 65 > 0x19 )
+        integer_sum_3 = unrecovered_register_value;
+      if ( integer_sum_3 != 117 )
         goto LABEL_50;
-      v29 = v47 + 32;
-      if ( (unsigned int)v47 - 65 > 0x19 )
-        v29 = v47;
-      if ( v29 != 116 )
+      integer_sum_4 = unrecovered_register_value_2 + 32;
+      if ( (unsigned int)unrecovered_register_value_2 - 65 > 0x19 )
+        integer_sum_4 = unrecovered_register_value_2;
+      if ( integer_sum_4 != 116 )
         goto LABEL_50;
-      v30 = v48 + 32;
-      if ( (unsigned int)v48 - 65 > 0x19 )
-        v30 = v48;
-      if ( v30 != 102 || v49 != 56 || (_WORD)v50 )
+      integer_sum_5 = unrecovered_register_value_3 + 32;
+      if ( (unsigned int)unrecovered_register_value_3 - 65 > 0x19 )
+        integer_sum_5 = unrecovered_register_value_3;
+      if ( integer_sum_5 != 102 || unrecovered_register_value_4 != 56 || (_WORD)unrecovered_register_value_5 )
       {
 LABEL_50:
-        if ( v49 != 45 || (_DWORD)v50 != 56 )
+        if ( unrecovered_register_value_4 != 45 || (_DWORD)unrecovered_register_value_5 != 56 )
           goto LABEL_51;
       }
     }
     else
     {
-      LODWORD(v35) = 0;
-      if ( (unsigned int)sub_14024F174((__int64)Source, 0x20001004u, (__int64)&v35, 2u) )
+      LODWORD(packed_word_bits) = 0;
+      if ( (unsigned int)sub_14024F174((__int64)Source, 0x20001004u, (__int64)&packed_word_bits, 2u) )
       {
-        v31 = v35;
-        if ( (_DWORD)v35 )
+        saved_packed_word_bits_2 = packed_word_bits;
+        if ( (_DWORD)packed_word_bits )
           goto LABEL_57;
       }
     }
-    v31 = -535;
+    saved_packed_word_bits_2 = -535;
 LABEL_57:
-    *v22 = v31;
-    v24 = v13 + 1;
-    if ( (unsigned int)sub_140260D80(v11, 131, (__int64)a1, v13 + 1) )
+    *unused_written_slot = saved_packed_word_bits_2;
+    integer_sum = element_index_2 + 1;
+    if ( (unsigned int)sub_140260D80(byte_cursor, 131, (__int64)a1, element_index_2 + 1) )
       goto LABEL_68;
     do
-      ++v12;
-    while ( Source[v12] );
-    v27 = (char *)Source;
-    v26 = v12 + 1;
+      ++element_index;
+    while ( Source[element_index] );
+    cached_source = (char *)Source;
+    integer_sum_2 = element_index + 1;
 LABEL_60:
-    sub_1402484BC((__int64)&v38, (__int64)v27, v26);
-    v10 = v41;
+    sub_1402484BC((__int64)&input_cursor, (__int64)cached_source, integer_sum_2);
+    cached_selection_flag = selection_flag_2;
 LABEL_61:
-    if ( !*(_WORD *)a1 || v13 >= 0x83 )
+    if ( !*(_WORD *)a1 || element_index_2 >= 0x83 )
     {
-      *(_WORD *)v37 = 0;
+      *(_WORD *)record_pointer_3 = 0;
       goto LABEL_66;
     }
-    if ( !(unsigned int)sub_140260D80(v37, 131, (__int64)a1, v24) )
+    if ( !(unsigned int)sub_140260D80(record_pointer_3, 131, (__int64)a1, integer_sum) )
     {
 LABEL_66:
-      v32 = SizeInWords;
-      *v42 = *v36;
-      if ( (unsigned int)sub_140259444(Destination, v32, (__int64)v11) )
+      cached_sizeinwords = SizeInWords;
+      *unused_written_slot_2 = *record_pointer_2;
+      if ( (unsigned int)sub_140259444(Destination, cached_sizeinwords, (__int64)byte_cursor) )
         goto LABEL_67;
-      if ( v10 || !(unsigned int)sub_140260D80((_WORD *)(v40 + 600), 85, (__int64)v38, MaxCount) )
-        return (__int64)v11; /* 0x140248ED5 -> 0x140248DBD: r12 keeps the expanded name; 0x140248DEA mov rax, r12 */
+      if ( cached_selection_flag || !(unsigned int)sub_140260D80((_WORD *)(integer_sum_6 + 600), 85, (__int64)input_cursor, MaxCount) )
+        return (__int64)byte_cursor; /* 0x140248ED5 -> 0x140248DBD: r12 keeps the expanded name; 0x140248DEA mov rax, r12 */
       goto LABEL_67;
     }
 LABEL_68:
@@ -3410,21 +3410,21 @@ LABEL_68:
 //----- (0000000140248F08) ----------------------------------------------------
 void            sub_140248F08(__int64 *Block)
 {
-  volatile signed __int32 *v2;
-  void *v3;
-  __int64 v4;
+  volatile signed __int32 *table_value;
+  void *table_value_2;
+  __int64 scaled_index;
 
   if ( Block )
   {
     crt_lock(5);
-    v2 = (volatile signed __int32 *)Block[1];
-    if ( v2 )
+    table_value = (volatile signed __int32 *)Block[1];
+    if ( table_value )
     {
-      if ( _InterlockedExchangeAdd(v2, 0xFFFFFFFF) == 1 )
+      if ( _InterlockedExchangeAdd(table_value, 0xFFFFFFFF) == 1 )
       {
-        v3 = (void *)Block[1];
-        if ( v3 != &unk_1403025A0 )
-          free_base(v3);
+        table_value_2 = (void *)Block[1];
+        if ( table_value_2 != &unk_1403025A0 )
+          free_base(table_value_2);
       }
     }
     crt_unlock(5);
@@ -3432,9 +3432,9 @@ void            sub_140248F08(__int64 *Block)
     {
       crt_lock(4);
       sub_140262A34(*Block);
-      v4 = *Block;
-      if ( *Block && !*(_DWORD *)(v4 + 16) && (__int16 **)v4 != &off_140302420 )
-        sub_140262834(v4);
+      scaled_index = *Block;
+      if ( *Block && !*(_DWORD *)(scaled_index + 16) && (__int16 **)scaled_index != &off_140302420 )
+        sub_140262834(scaled_index);
       crt_unlock(4);
     }
     free_base(Block);
@@ -3446,38 +3446,38 @@ void            sub_140248F08(__int64 *Block)
 //----- (0000000140248FAC) ----------------------------------------------------
 _QWORD *sub_140248FAC()
 {
-  unsigned __int64 v0;
-  _QWORD *v1;
-  _QWORD *v2;
-  __int64 **v4[2];
-  char v5;
-  unsigned int v6;
-  unsigned int v7;
-  _QWORD *v8;
+  unsigned __int64 call_result;
+  _QWORD *unused_written_slot;
+  _QWORD *saved_calloc_base_result;
+  __int64 **scratch_buffer[2];
+  char callee_output_word;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
+  _QWORD *calloc_base_result;
 
-  v0 = sub_140255A70();
-  v1 = nullptr;
-  v8 = (_QWORD *)calloc_base(1, 16);
-  if ( v8 )
+  call_result = sub_140255A70();
+  unused_written_slot = nullptr;
+  calloc_base_result = (_QWORD *)calloc_base(1, 16);
+  if ( calloc_base_result )
   {
     sub_140262ADC();
     sub_14025F580();
-    *v8 = *(_QWORD *)(v0 + 144);
-    v8[1] = *(_QWORD *)(v0 + 136);
-    v4[0] = &v8;
-    v6 = 4;
-    v7 = 4;
-    sub_140247D18((__int64)&v5, &v7, v4, &v6);
-    v4[0] = &v8;
-    v6 = 5;
-    v7 = 5;
-    sub_140247F30((__int64)&v5, &v7, (__int64)v4, &v6);
-    v2 = v8;
-    v8 = nullptr;
-    v1 = v2;
+    *calloc_base_result = *(_QWORD *)(call_result + 144);
+    calloc_base_result[1] = *(_QWORD *)(call_result + 136);
+    scratch_buffer[0] = &calloc_base_result;
+    selection_code = 4;
+    selection_code_2 = 4;
+    sub_140247D18((__int64)&callee_output_word, &selection_code_2, scratch_buffer, &selection_code);
+    scratch_buffer[0] = &calloc_base_result;
+    selection_code = 5;
+    selection_code_2 = 5;
+    sub_140247F30((__int64)&callee_output_word, &selection_code_2, (__int64)scratch_buffer, &selection_code);
+    saved_calloc_base_result = calloc_base_result;
+    calloc_base_result = nullptr;
+    unused_written_slot = saved_calloc_base_result;
   }
   free_base(nullptr);
-  return v1;
+  return unused_written_slot;
 }
 
 // 140248FAC: invalid function type '#86 __cdecl sub_140248FAC()' has been ignored
@@ -3485,67 +3485,67 @@ _QWORD *sub_140248FAC()
 //----- (0000000140249068) ----------------------------------------------------
 _QWORD *           sub_140249068(unsigned int a1, __int64 a2)
 {
-  _QWORD *v4;
-  _QWORD *v5;
-  _DWORD *v6;
-  _DWORD *v7;
-  _DWORD *v8;
-  _QWORD *v9;
-  __int64 v10;
+  _QWORD *unused_written_slot;
+  _QWORD *calloc_base_result;
+  _DWORD *calloc_base_result_2;
+  _DWORD *calloc_base_result_3;
+  _DWORD *saved_calloc_base_result;
+  _QWORD *saved_calloc_base_result_2;
+  __int64 saved_calloc_base_result_3;
 
   if ( a1 > 5 )
     return nullptr;
-  v4 = nullptr;
+  unused_written_slot = nullptr;
   if ( !a2 )
     return nullptr;
-  v5 = (_QWORD *)calloc_base(1, 16);
-  if ( v5 )
+  calloc_base_result = (_QWORD *)calloc_base(1, 16);
+  if ( calloc_base_result )
   {
-    v6 = (_DWORD *)calloc_base(1, 344);
-    if ( v6 )
+    calloc_base_result_2 = (_DWORD *)calloc_base(1, 344);
+    if ( calloc_base_result_2 )
     {
-      v7 = (_DWORD *)calloc_base(1, 552);
-      if ( v7 )
+      calloc_base_result_3 = (_DWORD *)calloc_base(1, 552);
+      if ( calloc_base_result_3 )
       {
-        sub_140248950((__int64)v6, &off_140302420);
-        if ( !sub_1402494A8(v6, a1, a2) || (unsigned int)setmbcp_nolock(v6[3], (__int64)v7) )
+        sub_140248950((__int64)calloc_base_result_2, &off_140302420);
+        if ( !sub_1402494A8(calloc_base_result_2, a1, a2) || (unsigned int)setmbcp_nolock(calloc_base_result_2[3], (__int64)calloc_base_result_3) )
         {
-          sub_140262A34((__int64)v6);
-          v10 = (__int64)v6;
-          v6 = nullptr;
-          sub_140262834(v10);
+          sub_140262A34((__int64)calloc_base_result_2);
+          saved_calloc_base_result_3 = (__int64)calloc_base_result_2;
+          calloc_base_result_2 = nullptr;
+          sub_140262834(saved_calloc_base_result_3);
         }
         else
         {
-          *v7 = 1;
-          *v5 = (uint64)(uintptr_t)(v6);
-          v6 = nullptr;
-          v8 = v7;
-          v7 = nullptr;
-          v5[1] = (uint64)(uintptr_t)(v8);
-          v9 = v5;
-          v5 = nullptr;
-          v4 = v9;
+          *calloc_base_result_3 = 1;
+          *calloc_base_result = (uint64)(uintptr_t)(calloc_base_result_2);
+          calloc_base_result_2 = nullptr;
+          saved_calloc_base_result = calloc_base_result_3;
+          calloc_base_result_3 = nullptr;
+          calloc_base_result[1] = (uint64)(uintptr_t)(saved_calloc_base_result);
+          saved_calloc_base_result_2 = calloc_base_result;
+          calloc_base_result = nullptr;
+          unused_written_slot = saved_calloc_base_result_2;
         }
       }
       else
       {
         *errno_sr() = 12;
       }
-      free_base(v7);
+      free_base(calloc_base_result_3);
     }
     else
     {
       *errno_sr() = 12;
     }
-    free_base(v6);
+    free_base(calloc_base_result_2);
   }
   else
   {
     *errno_sr() = 12;
   }
-  free_base(v5);
-  return v4;
+  free_base(calloc_base_result);
+  return unused_written_slot;
 }
 
 // 140249068: invalid function type '#86 __cdecl sub_140249068(int Category, const #57 *Locale)' has been ignored
@@ -3553,25 +3553,25 @@ _QWORD *           sub_140249068(unsigned int a1, __int64 a2)
 //----- (00000001402491B0) ----------------------------------------------------
 void            sub_1402491B0(_WORD *a1, __int64 a2, int a3)
 {
-  int v3;
-  __int64 *v4;
-  _QWORD v7[11];
+  int iteration_count;
+  __int64 *buffer_cursor;
+  _QWORD callee_output_word[11];
 
   if ( a3 > 0 )
   {
-    v3 = 0;
-    v4 = &v7[14];
+    iteration_count = 0;
+    buffer_cursor = &callee_output_word[14];
     do
     {
-      if ( (unsigned int)sub_14025ACB4(a1, a2, *++v4) )
+      if ( (unsigned int)sub_14025ACB4(a1, a2, *++buffer_cursor) )
       {
-        v7[4] = 0;
+        callee_output_word[4] = 0;
         crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
-      ++v3;
+      ++iteration_count;
     }
-    while ( v3 < a3 );
+    while ( iteration_count < a3 );
   }
 }
 
@@ -3580,33 +3580,33 @@ void            sub_1402491B0(_WORD *a1, __int64 a2, int a3)
 //----- (0000000140249218) ----------------------------------------------------
 __int64            sub_140249218(unsigned int a1, __int64 a2)
 {
-  __int64 v3;
-  __int64 v4;
-  unsigned __int64 *v5;
-  __int64 *v6[5];
-  unsigned int v7;
-  __int64 v8;
-  char v9;
-  unsigned __int64 v10;
+  __int64 selection_flag;
+  __int64 selection_flag_2;
+  unsigned __int64 *state_address;
+  __int64 *scratch_buffer[5];
+  unsigned int input_value;
+  __int64 input_value_2;
+  char callee_output_word;
+  unsigned __int64 call_result;
 
-  v8 = a2;
-  v7 = a1;
-  v3 = 0;
-  v4 = 0;
+  input_value_2 = a2;
+  input_value = a1;
+  selection_flag = 0;
+  selection_flag_2 = 0;
   if ( a1 <= 5 )
   {
-    v10 = sub_140255A70();
+    call_result = sub_140255A70();
     sub_14024F91C();
     sub_140262ADC();
-    *(_DWORD *)(v10 + 936) |= 0x10u;
-    v5 = &v10;
-    v6[0] = &v4;
-    v6[1] = (__int64 *)&v10;
-    v6[2] = &v3;
-    v6[3] = (__int64 *)&v7;
-    v6[4] = &v8;
-    sub_140247F04((__int64)&v9, (__int64)&v9, v6, (__int64 *)&v5);
-    return v3;
+    *(_DWORD *)(call_result + 936) |= 0x10u;
+    state_address = &call_result;
+    scratch_buffer[0] = &selection_flag_2;
+    scratch_buffer[1] = (__int64 *)&call_result;
+    scratch_buffer[2] = &selection_flag;
+    scratch_buffer[3] = (__int64 *)&input_value;
+    scratch_buffer[4] = &input_value_2;
+    sub_140247F04((__int64)&callee_output_word, (__int64)&callee_output_word, scratch_buffer, (__int64 *)&state_address);
+    return selection_flag;
   }
   else
   {
@@ -3619,66 +3619,66 @@ __int64            sub_140249218(unsigned int a1, __int64 a2)
 //----- (00000001402492BC) ----------------------------------------------------
 _WORD *           sub_1402492BC(__int64 a1)
 {
-  int v2;
+  int selected_word;
   _WORD *result;
-  _WORD *v4;
-  _WORD *v5;
-  char **v6;
-  __int16 **v7;
-  unsigned __int16 *v8;
-  int v9;
-  int v10;
-  int v11;
-  volatile signed __int32 *v12;
-  volatile signed __int32 *v13;
-  volatile signed __int32 *v14;
-  volatile signed __int32 *v15;
+  _WORD *saved_call_status;
+  _WORD *integer_sum;
+  char **record_byte_offset;
+  __int16 **state_address;
+  unsigned __int16 *buffer_cursor;
+  int loaded_word;
+  int scaled_index;
+  int selected_word_2;
+  volatile signed __int32 *loaded_record_pointer;
+  volatile signed __int32 *loaded_record_pointer_2;
+  volatile signed __int32 *loaded_record_pointer_3;
+  volatile signed __int32 *loaded_record_pointer_4;
 
-  v2 = 1;
+  selected_word = 1;
   result = (_WORD *)malloc_base();
-  v4 = result;
+  saved_call_status = result;
   if ( result )
   {
-    v5 = result + 2;
+    integer_sum = result + 2;
     result[2] = 0;
-    v6 = (char **)(a1 + 72);
+    record_byte_offset = (char **)(a1 + 72);
     *(_DWORD *)result = 1;
     sub_1402491B0(result + 2, 849, 3);
-    v7 = &off_14028A188;
+    state_address = &off_14028A188;
     do
     {
-      if ( (unsigned int)sub_14025ACB4(v5, 849, (__int64)L";") )
+      if ( (unsigned int)sub_14025ACB4(integer_sum, 849, (__int64)L";") )
       {
         crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
-      v8 = (unsigned __int16 *)*v6;
+      buffer_cursor = (unsigned __int16 *)*record_byte_offset;
       do
       {
-        v9 = *(unsigned __int16 *)((uintptr_t)v8 + (uintptr_t)v6[4] - (uintptr_t)*v6);
-        v10 = *v8 - v9;
-        if ( v10 )
+        loaded_word = *(unsigned __int16 *)((uintptr_t)buffer_cursor + (uintptr_t)record_byte_offset[4] - (uintptr_t)*record_byte_offset);
+        scaled_index = *buffer_cursor - loaded_word;
+        if ( scaled_index )
           break;
-        ++v8;
+        ++buffer_cursor;
       }
-      while ( v9 );
-      v11 = 0;
-      if ( !v10 )
-        v11 = v2;
-      v2 = v11;
-      v7 += 3;
-      v6 += 4;
-      sub_1402491B0(v5, 849, 3);
+      while ( loaded_word );
+      selected_word_2 = 0;
+      if ( !scaled_index )
+        selected_word_2 = selected_word;
+      selected_word = selected_word_2;
+      state_address += 3;
+      record_byte_offset += 4;
+      sub_1402491B0(integer_sum, 849, 3);
     }
-    while ( (__int64)v7 < (__int64)&off_14028A1E8 );
-    if ( v2 )
+    while ( (__int64)state_address < (__int64)&off_14028A1E8 );
+    if ( selected_word )
     {
-      free_base(v4);
-      v14 = *(volatile signed __int32 **)(a1 + 56);
-      if ( v14 && _InterlockedExchangeAdd(v14, 0xFFFFFFFF) == 1 )
+      free_base(saved_call_status);
+      loaded_record_pointer_3 = *(volatile signed __int32 **)(a1 + 56);
+      if ( loaded_record_pointer_3 && _InterlockedExchangeAdd(loaded_record_pointer_3, 0xFFFFFFFF) == 1 )
         free_base(*(void **)(a1 + 56));
-      v15 = *(volatile signed __int32 **)(a1 + 48);
-      if ( v15 && _InterlockedExchangeAdd(v15, 0xFFFFFFFF) == 1 )
+      loaded_record_pointer_4 = *(volatile signed __int32 **)(a1 + 48);
+      if ( loaded_record_pointer_4 && _InterlockedExchangeAdd(loaded_record_pointer_4, 0xFFFFFFFF) == 1 )
         free_base(*(void **)(a1 + 48));
       result = *(_WORD **)(a1 + 104);
       *(_QWORD *)(a1 + 48) = 0;
@@ -3688,20 +3688,20 @@ _WORD *           sub_1402492BC(__int64 a1)
     }
     else
     {
-      v12 = *(volatile signed __int32 **)(a1 + 56);
-      if ( v12 && _InterlockedExchangeAdd(v12, 0xFFFFFFFF) == 1 )
+      loaded_record_pointer = *(volatile signed __int32 **)(a1 + 56);
+      if ( loaded_record_pointer && _InterlockedExchangeAdd(loaded_record_pointer, 0xFFFFFFFF) == 1 )
         free_base(*(void **)(a1 + 56));
-      v13 = *(volatile signed __int32 **)(a1 + 48);
-      if ( v13 )
+      loaded_record_pointer_2 = *(volatile signed __int32 **)(a1 + 48);
+      if ( loaded_record_pointer_2 )
       {
-        if ( _InterlockedExchangeAdd(v13, 0xFFFFFFFF) == 1 )
+        if ( _InterlockedExchangeAdd(loaded_record_pointer_2, 0xFFFFFFFF) == 1 )
           free_base(*(void **)(a1 + 48));
       }
       *(_QWORD *)(a1 + 48) = 0;
       *(_QWORD *)(a1 + 32) = 0;
-      *(_QWORD *)(a1 + 56) = (uint64)(uintptr_t)(v4);
-      *(_QWORD *)(a1 + 40) = (uint64)(uintptr_t)(v5);
-      return v5;
+      *(_QWORD *)(a1 + 56) = (uint64)(uintptr_t)(saved_call_status);
+      *(_QWORD *)(a1 + 40) = (uint64)(uintptr_t)(integer_sum);
+      return integer_sum;
     }
   }
   return result;
@@ -3712,42 +3712,42 @@ _WORD *           sub_1402492BC(__int64 a1)
 //----- (00000001402494A8) ----------------------------------------------------
 __int64            sub_1402494A8(_DWORD *a1, int a2, __int64 a3)
 {
-       sr_anon_49 *v3;
-  _DWORD *v4;
-  int v5;
-  int v6;
-  sr_anon_49 *v7;
-  sr_anon_49 *v8;
-  __int64 v9;
-  int v10;
-  __int16 **v11;
-  __int64 v12;
-  _WORD *v13;
-  __int64 v14;
-  __int64 v15;
-  _WORD *v16;
-  __int16 v17;
-  int v19;
-  _QWORD *v20;
-  unsigned __int16 *v21;
-  int v22;
-  int v23;
-  _QWORD v24[5];
-  _DWORD v25[4];
-  _WORD v26[136];
-  _BYTE v27[176];
-  __int64 v28;
+       sr_anon_49 *saved_state_address;
+  _DWORD *input_cursor;
+  int selection_flag;
+  int iteration_count;
+  sr_anon_49 *wcspbrk_sr_result;
+  sr_anon_49 *saved_wcspbrk_sr_result;
+  __int64 shifted_bits;
+  int iteration_count_2;
+  __int16 **state_address;
+  __int64 element_index;
+  _WORD *record_pointer;
+  __int64 call_result;
+  __int64 lookup_index;
+  _WORD *state_address_2;
+  __int16 loaded_word;
+  int iteration_count_3;
+  _QWORD *record_byte_offset;
+  unsigned __int16 *buffer_cursor;
+  int loaded_word_2;
+  int scaled_index;
+  _QWORD scratch_buffer[5];
+  _DWORD scratch_buffer_2[4];
+  _WORD scratch_buffer_3[136];
+  _BYTE scratch_buffer_4[176];
+  __int64 unused_local;
 
-  v3 = (     sr_anon_49 *)a3;
-  v4 = a1;
+  saved_state_address = (     sr_anon_49 *)a3;
+  input_cursor = a1;
   if ( a2 )
   {
     if ( a3 )
       return sub_140249740(a1, a2, (char *)a3); /* 0x1402494E3: the call's result stays in rax */
     return *(_QWORD *)((char *)a1 + 32LL * a2 + 40); /* 0x1402494F4: mov rax, qword ptr [rax + rcx + 0x28] */
   }
-  v5 = 1;
-  v6 = 0;
+  selection_flag = 1;
+  iteration_count = 0;
   if ( !a3 )
   {
 LABEL_32:
@@ -3755,95 +3755,95 @@ LABEL_32:
   }
   if ( *(_WORD *)a3 != 76 || *(_WORD *)(a3 + 2) != 67 || *(_WORD *)(a3 + 4) != 95 )
   {
-    if ( !sub_140248A88((char *)a3, (sr_anon_57 *)v26, 131, (sr_anon_44 *)v27, 85, v25) )
+    if ( !sub_140248A88((char *)a3, (sr_anon_57 *)scratch_buffer_3, 131, (sr_anon_44 *)scratch_buffer_4, 85, scratch_buffer_2) )
       return 0; /* 0x140249681: xor eax, eax / 0x14024971B: mov rax, r13 (0) */
-    v19 = 0;
-    v20 = v4 + 10;
+    iteration_count_3 = 0;
+    record_byte_offset = input_cursor + 10;
     do
     {
-      if ( v19 )
+      if ( iteration_count_3 )
       {
-        v21 = v26;
+        buffer_cursor = scratch_buffer_3;
         do
         {
-          v22 = *(unsigned __int16 *)((char *)v21 + *v20 - (_QWORD)v26);
-          v23 = *v21 - v22;
-          if ( v23 )
+          loaded_word_2 = *(unsigned __int16 *)((char *)buffer_cursor + *record_byte_offset - (_QWORD)scratch_buffer_3);
+          scaled_index = *buffer_cursor - loaded_word_2;
+          if ( scaled_index )
             break;
-          ++v21;
+          ++buffer_cursor;
         }
-        while ( v22 );
-        if ( !v23 || sub_140249740(v4, v19, (char *)v26) )
-          ++v6;
+        while ( loaded_word_2 );
+        if ( !scaled_index || sub_140249740(input_cursor, iteration_count_3, (char *)scratch_buffer_3) )
+          ++iteration_count;
         else
-          v5 = 0;
+          selection_flag = 0;
       }
-      ++v19;
-      v20 += 4;
+      ++iteration_count_3;
+      record_byte_offset += 4;
     }
-    while ( v19 <= 5 );
-    if ( !v5 )
+    while ( iteration_count_3 <= 5 );
+    if ( !selection_flag )
     {
 LABEL_30:
-      if ( !v6 )
+      if ( !iteration_count )
         return 0; /* 0x140249681: xor eax, eax / 0x14024971B: mov rax, r13 (0) */
     }
-    a1 = v4;
+    a1 = input_cursor;
     goto LABEL_32;
   }
   while ( 1 )
   {
-    v7 = wcspbrk_sr(v3, (     sr_anon_49 *)L"=;");
-    v8 = v7;
-    if ( !v7 )
+    wcspbrk_sr_result = wcspbrk_sr(saved_state_address, (     sr_anon_49 *)L"=;");
+    saved_wcspbrk_sr_result = wcspbrk_sr_result;
+    if ( !wcspbrk_sr_result )
       break;
-    v9 = ((intptr_t)((uintptr_t)v7 - (uintptr_t)v3)) >> 1;
-    if ( !v9 || *(_WORD *)v7 == 59 )
+    shifted_bits = ((intptr_t)((uintptr_t)wcspbrk_sr_result - (uintptr_t)saved_state_address)) >> 1;
+    if ( !shifted_bits || *(_WORD *)wcspbrk_sr_result == 59 )
       break;
-    v10 = 1;
-    v11 = &off_14028A188;
+    iteration_count_2 = 1;
+    state_address = &off_14028A188;
     do
     {
-      if ( !(unsigned int)wcsncmp_sr(*v11, v3, v9) )
+      if ( !(unsigned int)wcsncmp_sr(*state_address, saved_state_address, shifted_bits) )
       {
-        v12 = -1;
+        element_index = -1;
         do
-          ++v12;
-        while ( (*v11)[v12] );
-        if ( v9 == v12 )
+          ++element_index;
+        while ( (*state_address)[element_index] );
+        if ( shifted_bits == element_index )
           break;
       }
-      ++v10;
-      v11 += 3;
+      ++iteration_count_2;
+      state_address += 3;
     }
-    while ( (__int64)v11 <= (__int64)&off_14028A1E8 );
-    v13 = (_WORD *)((char *)v8 + 2);
-    v14 = sub_1402625A4(v13, L";");
-    v15 = v14;
-    if ( !v14 && *v13 != 59 )
+    while ( (__int64)state_address <= (__int64)&off_14028A1E8 );
+    record_pointer = (_WORD *)((char *)saved_wcspbrk_sr_result + 2);
+    call_result = sub_1402625A4(record_pointer, L";");
+    lookup_index = call_result;
+    if ( !call_result && *record_pointer != 59 )
       break;
-    if ( v10 <= 5 )
+    if ( iteration_count_2 <= 5 )
     {
-      if ( (unsigned int)sub_140260D80(v26, 131, (__int64)v13, v14) )
+      if ( (unsigned int)sub_140260D80(scratch_buffer_3, 131, (__int64)record_pointer, call_result) )
       {
-        v24[4] = 0;
+        scratch_buffer[4] = 0;
         crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
       }
-      if ( (unsigned __int64)(2 * v15) >= 0x106 )
+      if ( (unsigned __int64)(2 * lookup_index) >= 0x106 )
         sub_1401F8694();
-      v26[v15] = 0;
-      if ( sub_140249740(v4, v10, (char *)v26) )
-        ++v6;
+      scratch_buffer_3[lookup_index] = 0;
+      if ( sub_140249740(input_cursor, iteration_count_2, (char *)scratch_buffer_3) )
+        ++iteration_count;
     }
-    v16 = &v13[v15];
-    v17 = *v16;
-    if ( *v16 )
-      v17 = v16[1];
-    v3 = (     sr_anon_49 *)(v16 + 1);
-    if ( !*v16 )
-      v3 = (     sr_anon_49 *)v16;
-    if ( !v17 )
+    state_address_2 = &record_pointer[lookup_index];
+    loaded_word = *state_address_2;
+    if ( *state_address_2 )
+      loaded_word = state_address_2[1];
+    saved_state_address = (     sr_anon_49 *)(state_address_2 + 1);
+    if ( !*state_address_2 )
+      saved_state_address = (     sr_anon_49 *)state_address_2;
+    if ( !loaded_word )
       goto LABEL_30;
   }
   return 0; /* 0x140249681: xor eax, eax / 0x14024971B: mov rax, r13 (0) */
@@ -3854,147 +3854,147 @@ LABEL_30:
 //----- (0000000140249740) ----------------------------------------------------
 __int64            sub_140249740(_DWORD *a1, int a2, char *a3)
 {
-  __int64 v4;
-  unsigned __int64 v6;
-  unsigned __int16 *v7;
-  __int64 v8;
-  int v9;
-  int v10;
-  __int64 v11;
-  __int64 v12;
-  _DWORD *v13;
-  bool v14;
-  _WORD *v15;
-  int v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  int v20;
-  unsigned int v21;
-  unsigned __int64 *v22;
-  _QWORD v24[5];
-  int v25;
-  int v26;
-  void *v27;
-  __int64 v28;
-  _WORD v29[136];
-  __m128i v30[11];
-  unsigned __int64 v31[40];
+  __int64 input_value;
+  unsigned __int64 call_result;
+  unsigned __int16 *buffer_cursor;
+  __int64 scaled_index;
+  int masked_bits;
+  int scaled_index_2;
+  __int64 element_index;
+  __int64 malloc_base_result;
+  _DWORD *saved_malloc_base_result;
+  bool comparison_result;
+  _WORD *returned_pointer;
+  int iteration_count;
+  __int64 iteration_count_2;
+  __int64 loaded_word;
+  __int64 loaded_word_2;
+  int masked_bits_2;
+  unsigned int iteration_count_3;
+  unsigned __int64 *option_flags;
+  _QWORD scratch_buffer[5];
+  int callee_output_word;
+  int table_value;
+  void *loaded_record_pointer;
+  __int64 masked_bits_3;
+  _WORD scratch_buffer_2[136];
+  __m128i scratch_buffer_3[11];
+  unsigned __int64 scratch_buffer_4[40];
 
-  v4 = a2;
-  v6 = sub_140255A70();
-  if ( sub_140248A88(a3, (sr_anon_57 *)v29, 131, (sr_anon_44 *)v30, 85, &v25) )
+  input_value = a2;
+  call_result = sub_140255A70();
+  if ( sub_140248A88(a3, (sr_anon_57 *)scratch_buffer_2, 131, (sr_anon_44 *)scratch_buffer_3, 85, &callee_output_word) )
   {
-    v7 = v29;
-    v8 = 8 * v4;
+    buffer_cursor = scratch_buffer_2;
+    scaled_index = 8 * input_value;
     do
     {
-      v9 = *(unsigned __int16 *)((char *)v7 + *(_QWORD *)&a1[8 * v4 + 10] - (_QWORD)v29);
-      v10 = *v7 - v9;
-      if ( v10 )
+      masked_bits = *(unsigned __int16 *)((char *)buffer_cursor + *(_QWORD *)&a1[8 * input_value + 10] - (_QWORD)scratch_buffer_2);
+      scaled_index_2 = *buffer_cursor - masked_bits;
+      if ( scaled_index_2 )
         break;
-      ++v7;
+      ++buffer_cursor;
     }
-    while ( v9 );
-    if ( !v10 )
-      return *(_QWORD *)&a1[v8 + 10]; /* 0x1402497C3: mov rax, qword ptr [rbx + rdi + 0x28]; 0x1402497E6: je to the exit */
+    while ( masked_bits );
+    if ( !scaled_index_2 )
+      return *(_QWORD *)&a1[scaled_index + 10]; /* 0x1402497C3: mov rax, qword ptr [rbx + rdi + 0x28]; 0x1402497E6: je to the exit */
     {
-      v11 = -1;
+      element_index = -1;
       do
-        ++v11;
-      while ( v29[v11] );
-      v12 = malloc_base();
-      v13 = (_DWORD *)v12;
-      if ( v12 )
+        ++element_index;
+      while ( scratch_buffer_2[element_index] );
+      malloc_base_result = malloc_base();
+      saved_malloc_base_result = (_DWORD *)malloc_base_result;
+      if ( malloc_base_result )
       {
-        v27 = *(void **)&a1[v8 + 10];
-        v28 = *(_QWORD *)&a1[2 * v4 + 74];
-        v26 = a1[3];
-        if ( (unsigned int)sub_140259444((_WORD *)(v12 + 4), v11 + 1, (__int64)v29) )
+        loaded_record_pointer = *(void **)&a1[scaled_index + 10];
+        masked_bits_3 = *(_QWORD *)&a1[2 * input_value + 74];
+        table_value = a1[3];
+        if ( (unsigned int)sub_140259444((_WORD *)(malloc_base_result + 4), element_index + 1, (__int64)scratch_buffer_2) )
         {
-          v24[4] = 0;
+          scratch_buffer[4] = 0;
           crt_invoke_watson();
           do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
         }
-        v14 = v29[0] == 67;
-        *(_QWORD *)&a1[v8 + 10] = (uint64)(uintptr_t)(v13 + 1);
-        if ( !v14 || v29[1] )
-          v15 = sub_140248608(v30);
+        comparison_result = scratch_buffer_2[0] == 67;
+        *(_QWORD *)&a1[scaled_index + 10] = (uint64)(uintptr_t)(saved_malloc_base_result + 1);
+        if ( !comparison_result || scratch_buffer_2[1] )
+          returned_pointer = sub_140248608(scratch_buffer_3);
         else
-          v15 = nullptr;
-        *(_QWORD *)&a1[2 * v4 + 74] = (uint64)(uintptr_t)(v15);
-        switch ( (_DWORD)v4 )
+          returned_pointer = nullptr;
+        *(_QWORD *)&a1[2 * input_value + 74] = (uint64)(uintptr_t)(returned_pointer);
+        switch ( (_DWORD)input_value )
         {
           case 2:
-            v16 = 0;
-            a1[3] = v25;
-            v17 = 0;
-            v18 = *(_QWORD *)(v6 + 744);
-            while ( a1[3] != *(_DWORD *)(v6 + 8 * v17 + 712) )
+            iteration_count = 0;
+            a1[3] = callee_output_word;
+            iteration_count_2 = 0;
+            loaded_word = *(_QWORD *)(call_result + 744);
+            while ( a1[3] != *(_DWORD *)(call_result + 8 * iteration_count_2 + 712) )
             {
-              v19 = *(_QWORD *)(v6 + 8 * v17 + 712);
-              ++v16;
-              *(_QWORD *)(v6 + 8 * v17++ + 712) = v18;
-              v18 = v19;
-              if ( v17 >= 5 )
+              loaded_word_2 = *(_QWORD *)(call_result + 8 * iteration_count_2 + 712);
+              ++iteration_count;
+              *(_QWORD *)(call_result + 8 * iteration_count_2++ + 712) = loaded_word;
+              loaded_word = loaded_word_2;
+              if ( iteration_count_2 >= 5 )
                 goto LABEL_21;
             }
-            if ( v16 )
+            if ( iteration_count )
             {
-              *(_QWORD *)(v6 + 712) = *(_QWORD *)(v6 + 8LL * v16 + 712);
-              *(_QWORD *)(v6 + 8LL * v16 + 712) = v18;
+              *(_QWORD *)(call_result + 712) = *(_QWORD *)(call_result + 8LL * iteration_count + 712);
+              *(_QWORD *)(call_result + 8LL * iteration_count + 712) = loaded_word;
             }
 LABEL_21:
-            if ( v16 == 5 )
+            if ( iteration_count == 5 )
             {
-              v20 = sub_140262618(nullptr, 1u, (__int64)&unk_14028A0F0, 127, (__int64)v31, a1[3], 1);
-              v21 = 0;
-              if ( v20 )
+              masked_bits_2 = sub_140262618(nullptr, 1u, (__int64)&unk_14028A0F0, 127, (__int64)scratch_buffer_4, a1[3], 1);
+              iteration_count_3 = 0;
+              if ( masked_bits_2 )
               {
-                v22 = v31;
+                option_flags = scratch_buffer_4;
                 do
                 {
-                  ++v21;
-                  *(_WORD *)v22 &= 0x1FFu;
-                  v22 = (unsigned __int64 *)((char *)v22 + 2);
+                  ++iteration_count_3;
+                  *(_WORD *)option_flags &= 0x1FFu;
+                  option_flags = (unsigned __int64 *)((char *)option_flags + 2);
                 }
-                while ( v21 < 0x7F );
-                v21 = sub_1401FC820(v31, (__int64)(*(unsigned __int64 *)&sr_mem_1403022a0[0]), 0xFEu) == 0;
+                while ( iteration_count_3 < 0x7F );
+                iteration_count_3 = sub_1401FC820(scratch_buffer_4, (__int64)(*(unsigned __int64 *)&sr_mem_1403022a0[0]), 0xFEu) == 0;
               }
-              *(_DWORD *)(v6 + 716) = v21;
-              *(_DWORD *)(v6 + 712) = a1[3];
+              *(_DWORD *)(call_result + 716) = iteration_count_3;
+              *(_DWORD *)(call_result + 712) = a1[3];
             }
-            a1[7] = *(_DWORD *)(v6 + 716);
+            a1[7] = *(_DWORD *)(call_result + 716);
             break;
           case 1:
-            a1[5] = v25;
+            a1[5] = callee_output_word;
             break;
           case 5:
-            a1[6] = v25;
+            a1[6] = callee_output_word;
             break;
         }
-        if ( ((unsigned int (           *)(_DWORD *))*(&off_14028A180 + 3 * v4))(a1) )
+        if ( ((unsigned int (           *)(_DWORD *))*(&off_14028A180 + 3 * input_value))(a1) )
         {
-          *(_QWORD *)&a1[v8 + 10] = (uint64)(uintptr_t)(v27);
-          free_base(*(void **)&a1[2 * v4 + 74]);
-          *(_QWORD *)&a1[2 * v4 + 74] = v28;
-          free_base(v13);
-          a1[3] = v26;
+          *(_QWORD *)&a1[scaled_index + 10] = (uint64)(uintptr_t)(loaded_record_pointer);
+          free_base(*(void **)&a1[2 * input_value + 74]);
+          *(_QWORD *)&a1[2 * input_value + 74] = masked_bits_3;
+          free_base(saved_malloc_base_result);
+          a1[3] = table_value;
         }
         else
         {
-          if ( v27 != &unk_140302588
-            && _InterlockedExchangeAdd(*(volatile signed __int32 **)&a1[v8 + 14], 0xFFFFFFFF) == 1 )
+          if ( loaded_record_pointer != &unk_140302588
+            && _InterlockedExchangeAdd(*(volatile signed __int32 **)&a1[scaled_index + 14], 0xFFFFFFFF) == 1 )
           {
-            free_base(*(void **)&a1[v8 + 14]);
-            free_base(*(void **)&a1[v8 + 12]);
-            free_base(*(void **)&a1[2 * v4 + 74]);
-            *(_QWORD *)&a1[v8 + 10] = 0;
-            *(_QWORD *)&a1[2 * v4 + 74] = 0;
+            free_base(*(void **)&a1[scaled_index + 14]);
+            free_base(*(void **)&a1[scaled_index + 12]);
+            free_base(*(void **)&a1[2 * input_value + 74]);
+            *(_QWORD *)&a1[scaled_index + 10] = 0;
+            *(_QWORD *)&a1[2 * input_value + 74] = 0;
           }
-          *v13 = 1;
-          *(_QWORD *)&a1[v8 + 14] = (uint64)(uintptr_t)(v13);
-          return *(_QWORD *)&a1[v8 + 10]; /* 0x140249A6E: mov rax, qword ptr [rbx + rdi + 0x28] */
+          *saved_malloc_base_result = 1;
+          *(_QWORD *)&a1[scaled_index + 14] = (uint64)(uintptr_t)(saved_malloc_base_result);
+          return *(_QWORD *)&a1[scaled_index + 10]; /* 0x140249A6E: mov rax, qword ptr [rbx + rdi + 0x28] */
         }
       }
     }
@@ -4008,13 +4008,13 @@ LABEL_21:
 __int64            get_default_code_page(__int64 a1)
 {
   __int64 result;
-  unsigned int v2;
+  unsigned int selection_flag;
 
-  v2 = 0;
-  if ( !(unsigned int)sub_14024F174(a1, 0x20001004u, (__int64)&v2, 2u) )
+  selection_flag = 0;
+  if ( !(unsigned int)sub_14024F174(a1, 0x20001004u, (__int64)&selection_flag, 2u) )
     return 65001;
-  result = v2;
-  if ( !v2 )
+  result = selection_flag;
+  if ( !selection_flag )
     return 65001;
   return result;
 }
@@ -4022,99 +4022,99 @@ __int64            get_default_code_page(__int64 a1)
 //----- (0000000140249AEC) ----------------------------------------------------
 __int64            parse_bcp47(_WORD *a1, unsigned __int16 *a2)
 {
-  char *v4;
-  unsigned __int64 v5;
-  int v6;
-  __int64 v7;
-  unsigned __int16 *v8;
-  int v9;
-  int v10;
-  int v11;
-  unsigned __int64 v12;
-  unsigned __int64 v13;
-  unsigned __int64 v14;
-  char *v15;
-  __int64 v17;
-  char v18[8];
-  char v19;
-  _QWORD v20[3];
-  _QWORD v21[3];
-  char v22;
-  __int64 v23;
+  char *record_byte_offset;
+  unsigned __int64 iteration_count;
+  int selection_code;
+  __int64 element_index;
+  unsigned __int16 *state_address;
+  int loaded_word;
+  int integer_difference;
+  int integer_difference_2;
+  unsigned __int64 integer_difference_3;
+  unsigned __int64 unused_local;
+  unsigned __int64 unused_local_2;
+  char *unused_local_3;
+  __int64 unused_local_4;
+  char scratch_buffer[8];
+  char callee_output_word;
+  _QWORD scratch_buffer_2[3];
+  _QWORD scratch_buffer_3[3];
+  char callee_output_word_2;
+  __int64 unused_local_5;
 
   crt_memset((void *)(uintptr_t)(a1), 0, 0x1CAu);
-  v4 = &v19;
-  v5 = 0;
-  v6 = 0;
+  record_byte_offset = &callee_output_word;
+  iteration_count = 0;
+  selection_code = 0;
   do
   {
-    if ( v5 >= 4 )
+    if ( iteration_count >= 4 )
       return 0; /* 0x140249B3E: jae -> xor al, al */
-    if ( v6 == 2 )
+    if ( selection_code == 2 )
     {
-      v7 = -1;
+      element_index = -1;
       do
-        ++v7;
-      while ( a2[v7] );
+        ++element_index;
+      while ( a2[element_index] );
     }
     else
     {
-      v7 = sub_1402625A4(a2, L"-_.");
+      element_index = sub_1402625A4(a2, L"-_.");
     }
-    *((_QWORD *)v4 - 1) = (uint64)(uintptr_t)(a2);
-    ++v5;
-    v8 = &a2[v7];
-    *(_QWORD *)v4 = v7;
-    v9 = *v8;
-    *((_DWORD *)v4 + 2) = v6;
-    v4 += 24;
-    v10 = v9 - 45;
-    if ( v10 )
+    *((_QWORD *)record_byte_offset - 1) = (uint64)(uintptr_t)(a2);
+    ++iteration_count;
+    state_address = &a2[element_index];
+    *(_QWORD *)record_byte_offset = element_index;
+    loaded_word = *state_address;
+    *((_DWORD *)record_byte_offset + 2) = selection_code;
+    record_byte_offset += 24;
+    integer_difference = loaded_word - 45;
+    if ( integer_difference )
     {
-      v11 = v10 - 1;
-      if ( !v11 )
+      integer_difference_2 = integer_difference - 1;
+      if ( !integer_difference_2 )
       {
-        v6 = 2;
+        selection_code = 2;
         goto LABEL_13;
       }
-      if ( v11 != 49 )
+      if ( integer_difference_2 != 49 )
       {
-        v6 = 1;
+        selection_code = 1;
         goto LABEL_13;
       }
     }
-    v6 = 0;
+    selection_code = 0;
 LABEL_13:
-    a2 = v8 + 1;
+    a2 = state_address + 1;
   }
-  while ( v6 != 1 );
-  v12 = v5 - 1;
-  if ( !v12 )
-    return parse_bcp47_language(a1, v18); /* 0x140249CBB: the call's result stays in al */
-  if ( v12 == 1 )
+  while ( selection_code != 1 );
+  integer_difference_3 = iteration_count - 1;
+  if ( !integer_difference_3 )
+    return parse_bcp47_language(a1, scratch_buffer); /* 0x140249CBB: the call's result stays in al */
+  if ( integer_difference_3 == 1 )
   {
-    if ( !parse_bcp47_language(a1, v18) )
+    if ( !parse_bcp47_language(a1, scratch_buffer) )
       return 0; /* 0x140249C7A: je -> mov sil, r13b */
-    if ( parse_bcp47_script((__int64)a1, v20) || sub_140249DC0((__int64)a1, v20) )
+    if ( parse_bcp47_script((__int64)a1, scratch_buffer_2) || sub_140249DC0((__int64)a1, scratch_buffer_2) )
       return 1; /* 0x140249C8A / 0x140249C9A: jne -> mov al, sil */
-    return parse_bcp47_code_page((__int64)a1, (__int64)v20) != 0; /* 0x140249CA3 */
+    return parse_bcp47_code_page((__int64)a1, (__int64)scratch_buffer_2) != 0; /* 0x140249CA3 */
   }
-  if ( v12 == 2 )
+  if ( integer_difference_3 == 2 )
   {
-    if ( !parse_bcp47_language(a1, v18) )
+    if ( !parse_bcp47_language(a1, scratch_buffer) )
       return 0; /* 0x140249C20 */
-    if ( parse_bcp47_script((__int64)a1, v20)
-      && (sub_140249DC0((__int64)a1, v21) || parse_bcp47_code_page((__int64)a1, (__int64)v21)) )
+    if ( parse_bcp47_script((__int64)a1, scratch_buffer_2)
+      && (sub_140249DC0((__int64)a1, scratch_buffer_3) || parse_bcp47_code_page((__int64)a1, (__int64)scratch_buffer_3)) )
       return 1; /* 0x140249C44 / 0x140249C54: jne -> mov al, sil */
-    if ( !sub_140249DC0((__int64)a1, v20) )
+    if ( !sub_140249DC0((__int64)a1, scratch_buffer_2) )
       return 0; /* 0x140249C64 */
-    return parse_bcp47_code_page((__int64)a1, (__int64)v21) != 0; /* 0x140249C6A -> 0x140249CA0 */
+    return parse_bcp47_code_page((__int64)a1, (__int64)scratch_buffer_3) != 0; /* 0x140249C6A -> 0x140249CA0 */
   }
-  if ( v12 == 3 )
+  if ( integer_difference_3 == 3 )
   {
-    if ( !parse_bcp47_language(a1, v18) || !parse_bcp47_script((__int64)a1, v20) || !sub_140249DC0((__int64)a1, v21) )
+    if ( !parse_bcp47_language(a1, scratch_buffer) || !parse_bcp47_script((__int64)a1, scratch_buffer_2) || !sub_140249DC0((__int64)a1, scratch_buffer_3) )
       return 0; /* 0x140249BDB / 0x140249BEF / 0x140249C03 */
-    return parse_bcp47_code_page((__int64)a1, (__int64)&v22) != 0; /* 0x140249C0D -> 0x140249CA0 */
+    return parse_bcp47_code_page((__int64)a1, (__int64)&callee_output_word_2) != 0; /* 0x140249C0D -> 0x140249CA0 */
   }
   return 0; /* 0x140249BC7: jne -> xor al, al */
 }
@@ -4137,12 +4137,12 @@ char            parse_bcp47_code_page(__int64 a1, __int64 a2)
 //----- (0000000140249D34) ----------------------------------------------------
 char            parse_bcp47_language(_WORD *a1, _QWORD *a2)
 {
-  unsigned __int64 v4;
+  unsigned __int64 table_value;
 
   if ( *((_DWORD *)a2 + 4) )
     return 0;
-  v4 = a2[1];
-  if ( v4 - 2 > 1 || !sub_140249F5C(*a2, v4) )
+  table_value = a2[1];
+  if ( table_value - 2 > 1 || !sub_140249F5C(*a2, table_value) )
     return 0;
   if ( (unsigned int)sub_140260D80(a1, 64, *a2, a2[1]) || (unsigned int)sub_140260D80(a1 + 144, 85, *a2, a2[1]) )
   {
@@ -4157,10 +4157,10 @@ char            parse_bcp47_language(_WORD *a1, _QWORD *a2)
 //----- (0000000140249DC0) ----------------------------------------------------
 char            sub_140249DC0(__int64 a1, _QWORD *a2)
 {
-  __int64 v4;
-  __int64 v5;
-  unsigned __int16 v6;
-       unsigned __int16 *v7;
+  __int64 loaded_word;
+  __int64 iteration_count;
+  unsigned __int16 loaded_word_2;
+       unsigned __int16 *returned_pointer;
 
   if ( *((_DWORD *)a2 + 4) )
     return 0;
@@ -4168,15 +4168,15 @@ char            sub_140249DC0(__int64 a1, _QWORD *a2)
   {
     if ( a2[1] == 3 )
     {
-      v4 = *a2;
-      v5 = 0;
+      loaded_word = *a2;
+      iteration_count = 0;
       while ( 1 )
       {
-        v6 = *(_WORD *)(v4 + 2 * v5);
-        v7 = sub_140256DC0();
-        if ( !(v6 > 0xFFu ? 0 : v7[v6] & 4) )
+        loaded_word_2 = *(_WORD *)(loaded_word + 2 * iteration_count);
+        returned_pointer = sub_140256DC0();
+        if ( !(loaded_word_2 > 0xFFu ? 0 : returned_pointer[loaded_word_2] & 4) )
           break;
-        if ( (unsigned __int64)++v5 >= 3 )
+        if ( (unsigned __int64)++iteration_count >= 3 )
           goto LABEL_11;
       }
     }
@@ -4214,20 +4214,20 @@ char            parse_bcp47_script(__int64 a1, _QWORD *a2)
 //----- (0000000140249F5C) ----------------------------------------------------
 char            sub_140249F5C(__int64 a1, unsigned __int64 a2)
 {
-  __int64 v2;
-  unsigned __int16 v5;
-       unsigned __int16 *v6;
+  __int64 iteration_count;
+  unsigned __int16 loaded_word;
+       unsigned __int16 *returned_pointer;
 
-  v2 = 0;
+  iteration_count = 0;
   if ( !a2 )
     return 1;
   while ( 1 )
   {
-    v5 = *(_WORD *)(a1 + 2 * v2);
-    v6 = sub_140256DC0();
-    if ( !(v5 > 0xFFu ? 0 : v6[v5] & 0x103) )
+    loaded_word = *(_WORD *)(a1 + 2 * iteration_count);
+    returned_pointer = sub_140256DC0();
+    if ( !(loaded_word > 0xFFu ? 0 : returned_pointer[loaded_word] & 0x103) )
       break;
-    if ( ++v2 >= a2 )
+    if ( ++iteration_count >= a2 )
       return 1;
   }
   return 0;
@@ -4236,20 +4236,20 @@ char            sub_140249F5C(__int64 a1, unsigned __int64 a2)
 //----- (0000000140249FD0) ----------------------------------------------------
 char            string_is_alpha(__int64 a1, unsigned __int64 a2)
 {
-  __int64 v2;
-  unsigned __int16 v5;
-       unsigned __int16 *v6;
+  __int64 iteration_count;
+  unsigned __int16 loaded_word;
+       unsigned __int16 *returned_pointer;
 
-  v2 = 0;
+  iteration_count = 0;
   if ( !a2 )
     return 1;
   while ( 1 )
   {
-    v5 = *(_WORD *)(a1 + 2 * v2);
-    v6 = sub_140256DC0();
-    if ( !(v5 > 0xFFu ? 0 : v6[v5] & 4) )
+    loaded_word = *(_WORD *)(a1 + 2 * iteration_count);
+    returned_pointer = sub_140256DC0();
+    if ( !(loaded_word > 0xFFu ? 0 : returned_pointer[loaded_word] & 4) )
       break;
-    if ( ++v2 >= a2 )
+    if ( ++iteration_count >= a2 )
       return 1;
   }
   return 0;
@@ -4280,54 +4280,54 @@ unsigned int *sub_14024A0A0()
 //----- (000000014024A0BC) ----------------------------------------------------
 void (        __attribute__((noreturn)) *sub_14024A0BC())()
 {
-  unsigned __int64 v0;
-  void (        __attribute__((noreturn)) *v1)();
+  unsigned __int64 call_result;
+  void (        __attribute__((noreturn)) *cached_abort)();
 
-  v0 = sub_140255A70();
-  v1 = abort;
-  if ( *(_QWORD *)(v0 + 24) )
-    return *(void (        __attribute__((noreturn)) **)())(v0 + 24);
-  return v1;
+  call_result = sub_140255A70();
+  cached_abort = abort;
+  if ( *(_QWORD *)(call_result + 24) )
+    return *(void (        __attribute__((noreturn)) **)())(call_result + 24);
+  return cached_abort;
 }
 
 //----- (000000014024A0E0) ----------------------------------------------------
 void (        __attribute__((noreturn)) *           set_terminate(__int64 a1))()
 {
-  unsigned __int64 v2;
+  unsigned __int64 call_result;
   void (        __attribute__((noreturn)) *result)();
 
-  v2 = sub_140255A70();
+  call_result = sub_140255A70();
   result = abort;
-  if ( *(_QWORD *)(v2 + 24) )
-    result = *(void (        __attribute__((noreturn)) **)())(v2 + 24);
-  *(_QWORD *)(v2 + 24) = a1;
+  if ( *(_QWORD *)(call_result + 24) )
+    result = *(void (        __attribute__((noreturn)) **)())(call_result + 24);
+  *(_QWORD *)(call_result + 24) = a1;
   return result;
 }
 
 //----- (000000014024A10C) ----------------------------------------------------
 void __attribute__((noreturn)) terminate_sr()
 {
-  void (*v0)(void);
+  void (*callback_function)(void);
 
-  v0 = *(void (**)(void))(sub_140255A70() + 24);
-  if ( v0 )
-    v0();
+  callback_function = *(void (**)(void))(sub_140255A70() + 24);
+  if ( callback_function )
+    callback_function();
   abort();
 }
 
 //----- (000000014024A150) ----------------------------------------------------
 __int64            sub_14024A150(_BYTE *a1, __int64 a2)
 {
-  __int64 v3;
+  __int64 malloc_base_result;
   __int64 result;
-  int v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  unsigned int v9;
-  __int64 v10;
-  __int64 v11;
-  int v12;
+  int multi_byte_to_wide_char_result;
+  __int64 unrecovered_register_value;
+  __int64 unrecovered_register_value_2;
+  __int64 saved_multi_byte_to_wide_char_result;
+  unsigned int int64_result;
+  __int64 malloc_base_result_2;
+  __int64 cached_multi_byte_to_wide_char_result;
+  int multi_byte_to_wide_char_result_2;
 
   if ( !a1 )
   {
@@ -4342,37 +4342,37 @@ __int64            sub_14024A150(_BYTE *a1, __int64 a2)
   }
   if ( *a1 )
   {
-    v5 = crt_multi_byte_to_wide_char();
-    v8 = v5;
-    if ( v5 )
+    multi_byte_to_wide_char_result = crt_multi_byte_to_wide_char();
+    saved_multi_byte_to_wide_char_result = multi_byte_to_wide_char_result;
+    if ( multi_byte_to_wide_char_result )
     {
-      if ( (unsigned __int64)v5 > *(_QWORD *)(a2 + 24) )
+      if ( (unsigned __int64)multi_byte_to_wide_char_result > *(_QWORD *)(a2 + 24) )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free_base(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v10 = malloc_base();
-        *(_QWORD *)(a2 + 16) = v10;
-        v11 = 0;
-        result = v10 == 0 ? 0xC : 0;
+        malloc_base_result_2 = malloc_base();
+        *(_QWORD *)(a2 + 16) = malloc_base_result_2;
+        cached_multi_byte_to_wide_char_result = 0;
+        result = malloc_base_result_2 == 0 ? 0xC : 0;
         if ( !(_DWORD)result )
-          v11 = v8;
+          cached_multi_byte_to_wide_char_result = saved_multi_byte_to_wide_char_result;
         *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
-        *(_QWORD *)(a2 + 24) = v11;
+        *(_QWORD *)(a2 + 24) = cached_multi_byte_to_wide_char_result;
         if ( (_DWORD)result )
           return result;
       }
-      v12 = crt_multi_byte_to_wide_char();
-      if ( v12 )
+      multi_byte_to_wide_char_result_2 = crt_multi_byte_to_wide_char();
+      if ( multi_byte_to_wide_char_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v12 - 1LL;
+        *(_QWORD *)(a2 + 32) = multi_byte_to_wide_char_result_2 - 1LL;
         return 0;
       }
     }
-    v9 = ((__int64 (           *)(__int64, __int64))GetLastError)(v7, v6);
-    crt_errno_map_os_error(v9);
+    int64_result = ((__int64 (           *)(__int64, __int64))GetLastError)(unrecovered_register_value_2, unrecovered_register_value);
+    crt_errno_map_os_error(int64_result);
     return (unsigned int)*errno_sr();
   }
   if ( *(_QWORD *)(a2 + 24) )
@@ -4382,9 +4382,9 @@ __int64            sub_14024A150(_BYTE *a1, __int64 a2)
     free_base(*(void **)(a2 + 16));
     *(_BYTE *)(a2 + 40) = 0;
   }
-  v3 = malloc_base();
-  *(_QWORD *)(a2 + 16) = v3;
-  result = v3 == 0 ? 0xC : 0;
+  malloc_base_result = malloc_base();
+  *(_QWORD *)(a2 + 16) = malloc_base_result;
+  result = malloc_base_result == 0 ? 0xC : 0;
   *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
   *(_QWORD *)(a2 + 24) = (_DWORD)result == 0;
   if ( !(_DWORD)result )
@@ -4407,16 +4407,16 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_0952d770c47
         __int64 a3,
         unsigned int a4)
 {
-  __int64 v7;
+  __int64 call_result;
   __int64 result;
-  int v9;
-  unsigned __int64 v10;
-  unsigned int v11;
-  unsigned __int64 v12;
-  __int64 v13;
-  int v14;
-  __int64 v15;
-  __int64 v16;
+  int wide_char_to_multi_byte_result;
+  unsigned __int64 saved_wide_char_to_multi_byte_result;
+  unsigned int int64_result;
+  unsigned __int64 loaded_word;
+  __int64 call_result_2;
+  int wide_char_to_multi_byte_result_2;
+  __int64 packed_word_bits;
+  __int64 packed_word_bits_2;
 
   if ( !a1 )
   {
@@ -4431,40 +4431,40 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_0952d770c47
   }
   if ( *a1 )
   {
-    LODWORD(v15) = 0;
-    v9 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v15, 0, 0);
-    v10 = v9;
-    if ( v9 )
+    LODWORD(packed_word_bits) = 0;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, packed_word_bits, 0, 0);
+    saved_wide_char_to_multi_byte_result = wide_char_to_multi_byte_result;
+    if ( wide_char_to_multi_byte_result )
     {
-      v12 = *(_QWORD *)(a2 + 24);
-      if ( v9 > v12 )
+      loaded_word = *(_QWORD *)(a2 + 24);
+      if ( wide_char_to_multi_byte_result > loaded_word )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v13 = j__malloc_base();
-        *(_QWORD *)(a2 + 16) = v13;
-        v12 = 0;
-        result = v13 == 0 ? 0xC : 0;
+        call_result_2 = j__malloc_base();
+        *(_QWORD *)(a2 + 16) = call_result_2;
+        loaded_word = 0;
+        result = call_result_2 == 0 ? 0xC : 0;
         if ( !(_DWORD)result )
-          v12 = v10;
+          loaded_word = saved_wide_char_to_multi_byte_result;
         *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
-        *(_QWORD *)(a2 + 24) = v12;
+        *(_QWORD *)(a2 + 24) = loaded_word;
         if ( (_DWORD)result )
           return result;
       }
-      LODWORD(v16) = v12;
-      v14 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v16, 0, 0);
-      if ( v14 )
+      LODWORD(packed_word_bits_2) = loaded_word;
+      wide_char_to_multi_byte_result_2 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), packed_word_bits_2, 0, 0);
+      if ( wide_char_to_multi_byte_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v14 - 1LL;
+        *(_QWORD *)(a2 + 32) = wide_char_to_multi_byte_result_2 - 1LL;
         return 0;
       }
     }
-    v11 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v11);
+    int64_result = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result);
     return (unsigned int)*errno_sr();
   }
   if ( *(_QWORD *)(a2 + 24) )
@@ -4474,9 +4474,9 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_0952d770c47
     free(*(void **)(a2 + 16));
     *(_BYTE *)(a2 + 40) = 0;
   }
-  v7 = j__malloc_base();
-  *(_QWORD *)(a2 + 16) = v7;
-  result = v7 == 0 ? 0xC : 0;
+  call_result = j__malloc_base();
+  *(_QWORD *)(a2 + 16) = call_result;
+  result = call_result == 0 ? 0xC : 0;
   *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
   *(_QWORD *)(a2 + 24) = (_DWORD)result == 0;
   if ( !(_DWORD)result )
@@ -4499,13 +4499,13 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_f788ae46380
         __int64 a3,
         unsigned int a4)
 {
-  int v8;
-  __int64 v9;
-  __int64 v10;
-  unsigned int v11;
-  int v12;
-  __int64 v13;
-  __int64 v14;
+  int allocated_buffer_2;
+  __int64 saved_path_mb_convert_result;
+  __int64 error_code_2;
+  unsigned int int64_result;
+  int wide_char_to_multi_byte_result;
+  __int64 packed_word_bits;
+  __int64 path_mb_convert_result_2;
 
   if ( !a1 )
   {
@@ -4517,27 +4517,27 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_f788ae46380
   }
   if ( *a1 )
   {
-    LODWORD(v13) = 0;
-    v8 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v13, 0, 0);
-    v10 = v8;
-    if ( v8 )
+    LODWORD(packed_word_bits) = 0;
+    allocated_buffer_2 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, packed_word_bits, 0, 0);
+    error_code_2 = allocated_buffer_2;
+    if ( allocated_buffer_2 )
     {
-      if ( (unsigned __int64)v8 > *(_QWORD *)(a2 + 24) )
+      if ( (unsigned __int64)allocated_buffer_2 > *(_QWORD *)(a2 + 24) )
       {
         if ( *(_BYTE *)(a2 + 40) )
           *(_BYTE *)(a2 + 40) = 0;
         goto LABEL_10;
       }
-      LODWORD(v14) = *(_QWORD *)(a2 + 24);
-      v12 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v14, 0, 0);
-      if ( v12 )
+      LODWORD(path_mb_convert_result_2) = *(_QWORD *)(a2 + 24);
+      wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), path_mb_convert_result_2, 0, 0);
+      if ( wide_char_to_multi_byte_result )
       {
-        *(_QWORD *)(a2 + 32) = v12 - 1LL;
+        *(_QWORD *)(a2 + 32) = wide_char_to_multi_byte_result - 1LL;
         return 0;
       }
     }
-    v11 = ((__int64 (           *)(__int64, __int64))GetLastError)(v9, v10);
-    crt_errno_map_os_error(v11);
+    int64_result = ((__int64 (           *)(__int64, __int64))GetLastError)(saved_path_mb_convert_result, error_code_2);
+    crt_errno_map_os_error(int64_result);
     return (unsigned int)*errno_sr();
   }
   if ( !*(_QWORD *)(a2 + 24) )
@@ -4564,13 +4564,13 @@ int sr_path_mb_convert(unsigned int cp, const char *input, wchar_t *output, int 
   return MultiByteToWideChar(cp,flags,input,-1,output,capacity);
 }
 
-__int64            sr_path_malloc(unsigned __int64 v0)
+__int64            sr_path_malloc(unsigned __int64 requested_allocation_bytes)
 {
-  __int64 v1;
+  __int64 allocation_byte_count;
   __int64 result;
 
-  v1 = v0;
-  if ( v0 > 0xFFFFFFFFFFFFFFE0uLL )
+  allocation_byte_count = requested_allocation_bytes;
+  if ( requested_allocation_bytes > 0xFFFFFFFFFFFFFFE0uLL )
   {
 LABEL_9:
     *errno_sr() = 12;
@@ -4578,17 +4578,17 @@ LABEL_9:
   }
   else
   {
-    if ( !v0 )
-      v1 = 1;
+    if ( !requested_allocation_bytes )
+      allocation_byte_count = 1;
     while ( 1 )
     {
       result = ((__int64 (           *)(_QWORD, _QWORD, __int64))HeapAlloc)(
                  g_144CBFA48,
                  0,
-                 v1);
+                 allocation_byte_count);
       if ( result )
         break;
-      if ( !(unsigned int)sub_14024A06C() || !(unsigned int)callnewh(v1) )
+      if ( !(unsigned int)sub_14024A06C() || !(unsigned int)callnewh(allocation_byte_count) )
         goto LABEL_9;
     }
   }
@@ -4599,20 +4599,20 @@ LABEL_9:
 
 __int64            sr_path_mbs(_BYTE *a1, __int64 a2, unsigned int codepage)
 {
-  unsigned int v2;
-  __int64 v4;
-  unsigned int v5;
-  int v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  unsigned int v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  int v14;
+  unsigned int unused_written_slot;
+  __int64 allocated_buffer;
+  unsigned int comparison_result;
+  int path_mb_convert_result;
+  __int64 error_code;
+  __int64 allocated_buffer_2;
+  __int64 saved_path_mb_convert_result;
+  unsigned int error_code_2;
+  __int64 int64_result;
+  __int64 wide_char_to_multi_byte_result;
+  __int64 packed_word_bits;
+  int path_mb_convert_result_2;
 
-  v2 = 0;
+  unused_written_slot = 0;
   if ( !a1 )
   {
     if ( *(_BYTE *)(a2 + 40) )
@@ -4626,39 +4626,39 @@ __int64            sr_path_mbs(_BYTE *a1, __int64 a2, unsigned int codepage)
   }
   if ( *a1 )
   {
-    v6 = sr_path_mb_convert(codepage,(const char *)a1,NULL,0);
-    v9 = v6;
-    if ( v6 )
+    path_mb_convert_result = sr_path_mb_convert(codepage,(const char *)a1,NULL,0);
+    saved_path_mb_convert_result = path_mb_convert_result;
+    if ( path_mb_convert_result )
     {
-      if ( (unsigned __int64)v6 > *(_QWORD *)(a2 + 24) )
+      if ( (unsigned __int64)path_mb_convert_result > *(_QWORD *)(a2 + 24) )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free_base(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v11 = sr_path_malloc(2 * v9);
-        *(_QWORD *)(a2 + 16) = v11;
-        v12 = 0;
-        v13 = -v11;
-        v5 = v13 == 0 ? 0xC : 0;
-        if ( (v13 == 0 ? 0xC : 0) == 0 )
-          v12 = v9;
-        *(_BYTE *)(a2 + 40) = v5 == 0;
-        *(_QWORD *)(a2 + 24) = v12;
-        if ( (v13 == 0 ? 0xC : 0) != 0 )
-          return v5;
+        int64_result = sr_path_malloc(2 * saved_path_mb_convert_result);
+        *(_QWORD *)(a2 + 16) = int64_result;
+        wide_char_to_multi_byte_result = 0;
+        packed_word_bits = -int64_result;
+        comparison_result = packed_word_bits == 0 ? 0xC : 0;
+        if ( (packed_word_bits == 0 ? 0xC : 0) == 0 )
+          wide_char_to_multi_byte_result = saved_path_mb_convert_result;
+        *(_BYTE *)(a2 + 40) = comparison_result == 0;
+        *(_QWORD *)(a2 + 24) = wide_char_to_multi_byte_result;
+        if ( (packed_word_bits == 0 ? 0xC : 0) != 0 )
+          return comparison_result;
       }
-      v14 = sr_path_mb_convert(codepage,(const char *)a1,(wchar_t *)(uintptr_t)*(_QWORD *)(a2+16),(int)*(_QWORD *)(a2+24));
-      v8 = v14;
-      if ( v14 )
+      path_mb_convert_result_2 = sr_path_mb_convert(codepage,(const char *)a1,(wchar_t *)(uintptr_t)*(_QWORD *)(a2+16),(int)*(_QWORD *)(a2+24));
+      allocated_buffer_2 = path_mb_convert_result_2;
+      if ( path_mb_convert_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v14 - 1LL;
-        return v2;
+        *(_QWORD *)(a2 + 32) = path_mb_convert_result_2 - 1LL;
+        return unused_written_slot;
       }
     }
-    v10 = GetLastError();
-    crt_errno_map_os_error(v10);
+    error_code_2 = GetLastError();
+    crt_errno_map_os_error(error_code_2);
     return (unsigned int)*errno_sr();
   }
   if ( !*(_QWORD *)(a2 + 24) )
@@ -4668,67 +4668,67 @@ __int64            sr_path_mbs(_BYTE *a1, __int64 a2, unsigned int codepage)
       free_base(*(void **)(a2 + 16));
       *(_BYTE *)(a2 + 40) = 0;
     }
-    v4 = sr_path_malloc(2);
-    *(_QWORD *)(a2 + 16) = v4;
-    v5 = v4 == 0 ? 0xC : 0;
-    *(_BYTE *)(a2 + 40) = v5 == 0;
-    *(_QWORD *)(a2 + 24) = v5 == 0;
-    if ( (v4 == 0 ? 0xC : 0) != 0 )
-      return v5;
+    allocated_buffer = sr_path_malloc(2);
+    *(_QWORD *)(a2 + 16) = allocated_buffer;
+    comparison_result = allocated_buffer == 0 ? 0xC : 0;
+    *(_BYTE *)(a2 + 40) = comparison_result == 0;
+    *(_QWORD *)(a2 + 24) = comparison_result == 0;
+    if ( (allocated_buffer == 0 ? 0xC : 0) != 0 )
+      return comparison_result;
   }
   **(_WORD **)(a2 + 16) = 0;
 LABEL_5:
   *(_QWORD *)(a2 + 32) = 0;
-  return v2;
+  return unused_written_slot;
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
 
 __int64            sr_path_wide(__int64 a1, __int64 a2)
 {
-  unsigned int v4;
-  unsigned int v5;
-  __int64 v6;
-  unsigned int v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  unsigned int v11;
+  unsigned int allocated_buffer;
+  unsigned int comparison_result;
+  __int64 path_mb_convert_result;
+  unsigned int error_code;
+  __int64 allocated_buffer_2;
+  __int64 saved_path_mb_convert_result;
+  __int64 error_code_2;
+  unsigned int int64_result;
 
-  v4 = GetFullPathNameW((const wchar_t *)(uintptr_t)a1,(DWORD)(*(unsigned int *)(a2 + 24)),(wchar_t *)(uintptr_t)*(_QWORD *)(a2+16),NULL);
-  v5 = 0;
-  v6 = v4;
-  if ( v4 )
+  allocated_buffer = GetFullPathNameW((const wchar_t *)(uintptr_t)a1,(DWORD)(*(unsigned int *)(a2 + 24)),(wchar_t *)(uintptr_t)*(_QWORD *)(a2+16),NULL);
+  comparison_result = 0;
+  path_mb_convert_result = allocated_buffer;
+  if ( allocated_buffer )
   {
-    if ( (unsigned __int64)v4 <= *(_QWORD *)(a2 + 24) )
+    if ( (unsigned __int64)allocated_buffer <= *(_QWORD *)(a2 + 24) )
     {
-      *(_QWORD *)(a2 + 32) = v4;
-      return v5;
+      *(_QWORD *)(a2 + 32) = allocated_buffer;
+      return comparison_result;
     }
     if ( *(_BYTE *)(a2 + 40) )
     {
       free_base(*(void **)(a2 + 16));
       *(_BYTE *)(a2 + 40) = 0;
     }
-    v8 = sr_path_malloc(2*(v6+1));
-    *(_QWORD *)(a2 + 16) = v8;
-    v9 = 0;
-    v10 = -v8;
-    if ( (v10 == 0 ? 0xC : 0) == 0 )
-      v9 = v6 + 1;
-    *(_BYTE *)(a2 + 40) = (v10 == 0 ? 0xC : 0) == 0;
-    *(_QWORD *)(a2 + 24) = v9;
-    if ( (v10 == 0 ? 0xC : 0) != 0 )
-      return v10 == 0 ? 0xC : 0;
-    v11 = GetFullPathNameW((const wchar_t *)(uintptr_t)a1,(DWORD)((unsigned int)v9),(wchar_t *)(uintptr_t)*(_QWORD *)(a2+16),NULL);
-    if ( v11 )
+    allocated_buffer_2 = sr_path_malloc(2*(path_mb_convert_result+1));
+    *(_QWORD *)(a2 + 16) = allocated_buffer_2;
+    saved_path_mb_convert_result = 0;
+    error_code_2 = -allocated_buffer_2;
+    if ( (error_code_2 == 0 ? 0xC : 0) == 0 )
+      saved_path_mb_convert_result = path_mb_convert_result + 1;
+    *(_BYTE *)(a2 + 40) = (error_code_2 == 0 ? 0xC : 0) == 0;
+    *(_QWORD *)(a2 + 24) = saved_path_mb_convert_result;
+    if ( (error_code_2 == 0 ? 0xC : 0) != 0 )
+      return error_code_2 == 0 ? 0xC : 0;
+    int64_result = GetFullPathNameW((const wchar_t *)(uintptr_t)a1,(DWORD)((unsigned int)saved_path_mb_convert_result),(wchar_t *)(uintptr_t)*(_QWORD *)(a2+16),NULL);
+    if ( int64_result )
     {
-      *(_QWORD *)(a2 + 32) = v11;
-      return v5;
+      *(_QWORD *)(a2 + 32) = int64_result;
+      return comparison_result;
     }
   }
-  v7 = GetLastError();
-  crt_errno_map_os_error(v7);
+  error_code = GetLastError();
+  crt_errno_map_os_error(error_code);
   return (unsigned int)*errno_sr();
 }
 
@@ -4767,130 +4767,130 @@ __int64            __acrt_get_full_path_name_narrow_acp_or_utf8____crt_win32_buf
         _BYTE *a1,
         __int64 a2)
 {
-  _BYTE *v2;
-  unsigned int v5;
+  _BYTE *byte_cursor;
+  unsigned int selection_code;
   int full_path_name;
-  __int64 v8;
-  _QWORD v9[3];
-  char v10;
-  _QWORD v11[2];
+  __int64 unused_local;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
+  _QWORD scratch_buffer_2[2];
   void *Block;
-  __int64 v13;
-  __int64 v14;
-  char v15;
-  _QWORD v16[2];
-  _WORD *v17;
-  __int64 v18;
-  __int64 v19;
-  char v20;
-  _BYTE v21[528];
-  _BYTE v22[528];
-  __int64 v23;
+  __int64 unused_written_slot;
+  __int64 unused_written_slot_2;
+  char selection_flag;
+  _QWORD scratch_buffer_3[2];
+  _WORD *record_pointer;
+  __int64 unused_written_slot_3;
+  __int64 unused_written_slot_4;
+  char selection_flag_2;
+  _BYTE scratch_buffer_4[528];
+  _BYTE scratch_buffer_5[528];
+  __int64 unused_local_2;
 
-  v19 = 0;
-  v14 = 0;
-  v2 = v21;
-  v16[0] = (uint64)(uintptr_t)(v21);
-  v17 = v21;
-  v16[1] = 260;
-  v11[0] = (uint64)(uintptr_t)(v22);
-  v18 = 260;
-  v11[1] = 260;
-  v13 = 260;
-  Block = v22;
-  v20 = 0;
-  v15 = 0;
-  crt_locale_update((_LocaleUpdate *)v9, nullptr);
-  v5 = 65001;
-  if ( *(_DWORD *)(v9[1] + 12LL) == 65001 )
+  unused_written_slot_4 = 0;
+  unused_written_slot_2 = 0;
+  byte_cursor = scratch_buffer_4;
+  scratch_buffer_3[0] = (uint64)(uintptr_t)(scratch_buffer_4);
+  record_pointer = scratch_buffer_4;
+  scratch_buffer_3[1] = 260;
+  scratch_buffer_2[0] = (uint64)(uintptr_t)(scratch_buffer_5);
+  unused_written_slot_3 = 260;
+  scratch_buffer_2[1] = 260;
+  unused_written_slot = 260;
+  Block = scratch_buffer_5;
+  selection_flag_2 = 0;
+  selection_flag = 0;
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, nullptr);
+  selection_code = 65001;
+  if ( *(_DWORD *)(scratch_buffer[1] + 12LL) == 65001 )
   {
-    if ( v10 )
-      *(_DWORD *)(v9[0] + 936LL) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   }
   else if ( (unsigned int)sub_14024EDA4() )
   {
-    if ( v10 )
-      *(_DWORD *)(v9[0] + 936LL) &= ~2u;
-    v5 = 0;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
+    selection_code = 0;
   }
   else
   {
-    if ( v10 )
-      *(_DWORD *)(v9[0] + 936LL) &= ~2u;
-    v5 = 1;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
+    selection_code = 1;
   }
-  int sr_status = (int)sub_140238394(a1, (__int64)v11); /* 0x14024A7EC: mov ebx, eax */
+  int sr_status = (int)sub_140238394(a1, (__int64)scratch_buffer_2); /* 0x14024A7EC: mov ebx, eax */
   if ( !sr_status )
   {
     full_path_name = __acrt_get_full_path_name_wide____crt_win32_buffer_internal_dynamic_resizing(
                        (__int64)Block,
-                       (__int64)v16);
-    v2 = v17;
+                       (__int64)scratch_buffer_3);
+    byte_cursor = record_pointer;
     sr_status = (int)full_path_name; /* 0x14024A805: mov ebx, eax */
     if ( !full_path_name )
-      sr_status = (int)__acrt_wcs_to_mbs_cp____crt_win32_buffer_public_dynamic_resizing(v17, a2, v5); /* 0x14024A819: mov ebx, eax */
+      sr_status = (int)__acrt_wcs_to_mbs_cp____crt_win32_buffer_public_dynamic_resizing(record_pointer, a2, selection_code); /* 0x14024A819: mov ebx, eax */
   }
-  if ( v15 )
+  if ( selection_flag )
     free_base(Block);
-  if ( v20 )
-    free_base(v2);
+  if ( selection_flag_2 )
+    free_base(byte_cursor);
   return (unsigned int)sr_status; /* 0x14024A83A: mov eax, ebx */
 }
 
 //----- (000000014024A864) ----------------------------------------------------
 __int64            __acrt_get_full_path_name_wide____crt_win32_buffer_internal_dynamic_resizing(__int64 a1, __int64 a2)
 {
-  unsigned int v4;
-  unsigned int v5;
-  __int64 v6;
-  unsigned int v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  unsigned int v11;
+  unsigned int int64_result;
+  unsigned int unused_written_slot;
+  __int64 saved_int64_result;
+  unsigned int int64_result_2;
+  __int64 malloc_base_result;
+  __int64 integer_sum;
+  __int64 integer_difference;
+  unsigned int int64_result_3;
 
-  v4 = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
+  int64_result = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
          a1,
          *(unsigned int *)(a2 + 24),
          *(_QWORD *)(a2 + 16),
          0);
-  v5 = 0;
-  v6 = v4;
-  if ( v4 )
+  unused_written_slot = 0;
+  saved_int64_result = int64_result;
+  if ( int64_result )
   {
-    if ( (unsigned __int64)v4 <= *(_QWORD *)(a2 + 24) )
+    if ( (unsigned __int64)int64_result <= *(_QWORD *)(a2 + 24) )
     {
-      *(_QWORD *)(a2 + 32) = v4;
-      return v5;
+      *(_QWORD *)(a2 + 32) = int64_result;
+      return unused_written_slot;
     }
     if ( *(_BYTE *)(a2 + 40) )
     {
       free_base(*(void **)(a2 + 16));
       *(_BYTE *)(a2 + 40) = 0;
     }
-    v8 = malloc_base();
-    *(_QWORD *)(a2 + 16) = v8;
-    v9 = 0;
-    v10 = -v8;
-    if ( (v10 == 0 ? 0xC : 0) == 0 )
-      v9 = v6 + 1;
-    *(_BYTE *)(a2 + 40) = (v10 == 0 ? 0xC : 0) == 0;
-    *(_QWORD *)(a2 + 24) = v9;
-    if ( (v10 == 0 ? 0xC : 0) != 0 )
-      return v10 == 0 ? 0xC : 0;
-    v11 = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
+    malloc_base_result = malloc_base();
+    *(_QWORD *)(a2 + 16) = malloc_base_result;
+    integer_sum = 0;
+    integer_difference = -malloc_base_result;
+    if ( (integer_difference == 0 ? 0xC : 0) == 0 )
+      integer_sum = saved_int64_result + 1;
+    *(_BYTE *)(a2 + 40) = (integer_difference == 0 ? 0xC : 0) == 0;
+    *(_QWORD *)(a2 + 24) = integer_sum;
+    if ( (integer_difference == 0 ? 0xC : 0) != 0 )
+      return integer_difference == 0 ? 0xC : 0;
+    int64_result_3 = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
             a1,
-            (unsigned int)v9,
+            (unsigned int)integer_sum,
             *(_QWORD *)(a2 + 16),
             0);
-    if ( v11 )
+    if ( int64_result_3 )
     {
-      *(_QWORD *)(a2 + 32) = v11;
-      return v5;
+      *(_QWORD *)(a2 + 32) = int64_result_3;
+      return unused_written_slot;
     }
   }
-  v7 = ((__int64 (*)(void))GetLastError)();
-  crt_errno_map_os_error(v7);
+  int64_result_2 = ((__int64 (*)(void))GetLastError)();
+  crt_errno_map_os_error(int64_result_2);
   return (unsigned int)*errno_sr();
 }
 
@@ -4902,19 +4902,19 @@ __int64            __acrt_get_full_path_name_wide____crt_win32_buffer_internal_d
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_805(__int64 a1, __int64 a2)
 {
-  unsigned int v3;
-  unsigned int v4;
-  unsigned int v5;
+  unsigned int int64_result;
+  unsigned int unused_written_slot;
+  unsigned int int64_result_2;
 
-  v3 = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
+  int64_result = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
          a1,
          *(unsigned int *)(a2 + 24),
          *(_QWORD *)(a2 + 16),
          0);
-  v4 = 0;
-  if ( v3 )
+  unused_written_slot = 0;
+  if ( int64_result )
   {
-    if ( (unsigned __int64)v3 > *(_QWORD *)(a2 + 24) )
+    if ( (unsigned __int64)int64_result > *(_QWORD *)(a2 + 24) )
     {
       if ( *(_BYTE *)(a2 + 40) )
         *(_BYTE *)(a2 + 40) = 0;
@@ -4925,16 +4925,16 @@ __int64            unknown_libname_805(__int64 a1, __int64 a2)
     }
     else
     {
-      *(_QWORD *)(a2 + 32) = v3;
+      *(_QWORD *)(a2 + 32) = int64_result;
     }
   }
   else
   {
-    v5 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v5);
+    int64_result_2 = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result_2);
     return (unsigned int)*errno_sr();
   }
-  return v4;
+  return unused_written_slot;
 }
 
 // 14026E150: invalid function type 'DWORD (__stdcall *GetFullPathNameW)(LPCWSTR lpFileName, DWORD nBufferLength, LPWSTR lpBuffer, LPWSTR *lpFilePart)' has been ignored
@@ -4943,57 +4943,57 @@ __int64            unknown_libname_805(__int64 a1, __int64 a2)
 //----- (000000014024A9BC) ----------------------------------------------------
 __int64            __acrt_get_full_path_name_wide____crt_win32_buffer_public_dynamic_resizing(__int64 a1, __int64 a2)
 {
-  unsigned int v4;
-  unsigned int v5;
-  __int64 v6;
-  unsigned int v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  unsigned int v11;
+  unsigned int int64_result;
+  unsigned int unused_written_slot;
+  __int64 saved_int64_result;
+  unsigned int int64_result_2;
+  __int64 call_result;
+  __int64 integer_sum;
+  __int64 integer_difference;
+  unsigned int int64_result_3;
 
-  v4 = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
+  int64_result = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
          a1,
          *(unsigned int *)(a2 + 24),
          *(_QWORD *)(a2 + 16),
          0);
-  v5 = 0;
-  v6 = v4;
-  if ( v4 )
+  unused_written_slot = 0;
+  saved_int64_result = int64_result;
+  if ( int64_result )
   {
-    if ( (unsigned __int64)v4 <= *(_QWORD *)(a2 + 24) )
+    if ( (unsigned __int64)int64_result <= *(_QWORD *)(a2 + 24) )
     {
-      *(_QWORD *)(a2 + 32) = v4;
-      return v5;
+      *(_QWORD *)(a2 + 32) = int64_result;
+      return unused_written_slot;
     }
     if ( *(_BYTE *)(a2 + 40) )
     {
       free(*(void **)(a2 + 16));
       *(_BYTE *)(a2 + 40) = 0;
     }
-    v8 = j__malloc_base();
-    *(_QWORD *)(a2 + 16) = v8;
-    v9 = 0;
-    v10 = -v8;
-    if ( (v10 == 0 ? 0xC : 0) == 0 )
-      v9 = v6 + 1;
-    *(_BYTE *)(a2 + 40) = (v10 == 0 ? 0xC : 0) == 0;
-    *(_QWORD *)(a2 + 24) = v9;
-    if ( (v10 == 0 ? 0xC : 0) != 0 )
-      return v10 == 0 ? 0xC : 0;
-    v11 = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
+    call_result = j__malloc_base();
+    *(_QWORD *)(a2 + 16) = call_result;
+    integer_sum = 0;
+    integer_difference = -call_result;
+    if ( (integer_difference == 0 ? 0xC : 0) == 0 )
+      integer_sum = saved_int64_result + 1;
+    *(_BYTE *)(a2 + 40) = (integer_difference == 0 ? 0xC : 0) == 0;
+    *(_QWORD *)(a2 + 24) = integer_sum;
+    if ( (integer_difference == 0 ? 0xC : 0) != 0 )
+      return integer_difference == 0 ? 0xC : 0;
+    int64_result_3 = ((__int64 (           *)(__int64, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
             a1,
-            (unsigned int)v9,
+            (unsigned int)integer_sum,
             *(_QWORD *)(a2 + 16),
             0);
-    if ( v11 )
+    if ( int64_result_3 )
     {
-      *(_QWORD *)(a2 + 32) = v11;
-      return v5;
+      *(_QWORD *)(a2 + 32) = int64_result_3;
+      return unused_written_slot;
     }
   }
-  v7 = ((__int64 (*)(void))GetLastError)();
-  crt_errno_map_os_error(v7);
+  int64_result_2 = ((__int64 (*)(void))GetLastError)();
+  crt_errno_map_os_error(int64_result_2);
   return (unsigned int)*errno_sr();
 }
 
@@ -5003,16 +5003,16 @@ __int64            __acrt_get_full_path_name_wide____crt_win32_buffer_public_dyn
 //----- (000000014024AAA0) ----------------------------------------------------
 __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_no_resizing(_WORD *a1, __int64 a2, unsigned int a3)
 {
-  unsigned int v3;
-  int v7;
-  __int64 v8;
-  __int64 v9;
-  unsigned int v10;
-  int v11;
-  __int64 v13 = 0;
-  __int64 v14 = 0;
+  unsigned int unused_written_slot;
+  int wide_char_to_multi_byte_result;
+  __int64 unused_written_slot_2;
+  __int64 unused_written_slot_3;
+  unsigned int error_code;
+  int wide_char_to_multi_byte_result_2;
+  __int64 packed_word_bits = 0;
+  __int64 packed_word_bits_2 = 0;
 
-  v3 = 0;
+  unused_written_slot = 0;
   if ( !a1 )
   {
     if ( *(_BYTE *)(a2 + 40) )
@@ -5023,28 +5023,28 @@ __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_no_resizing(_WORD *a
   }
   if ( *a1 )
   {
-    LODWORD(v13) = 0;
-    v7 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v13, 0, 0);
-    v9 = v7;
-    if ( v7 )
+    LODWORD(packed_word_bits) = 0;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, 0, packed_word_bits, 0, 0);
+    unused_written_slot_3 = wide_char_to_multi_byte_result;
+    if ( wide_char_to_multi_byte_result )
     {
-      if ( (unsigned __int64)v7 > *(_QWORD *)(a2 + 24) )
+      if ( (unsigned __int64)wide_char_to_multi_byte_result > *(_QWORD *)(a2 + 24) )
       {
         if ( *(_BYTE *)(a2 + 40) )
           *(_BYTE *)(a2 + 40) = 0;
         goto LABEL_10;
       }
-      LODWORD(v14) = *(_QWORD *)(a2 + 24);
-      v11 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v14, 0, 0);
-      v8 = v11;
-      if ( v11 )
+      LODWORD(packed_word_bits_2) = *(_QWORD *)(a2 + 24);
+      wide_char_to_multi_byte_result_2 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), packed_word_bits_2, 0, 0);
+      unused_written_slot_2 = wide_char_to_multi_byte_result_2;
+      if ( wide_char_to_multi_byte_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v11 - 1LL;
-        return v3;
+        *(_QWORD *)(a2 + 32) = wide_char_to_multi_byte_result_2 - 1LL;
+        return unused_written_slot;
       }
     }
-    v10 = GetLastError();
-    crt_errno_map_os_error(v10);
+    error_code = GetLastError();
+    crt_errno_map_os_error(error_code);
     return (unsigned int)*errno_sr();
   }
   if ( !*(_QWORD *)(a2 + 24) )
@@ -5060,7 +5060,7 @@ LABEL_10:
   **(_BYTE **)(a2 + 16) = 0;
 LABEL_5:
   *(_QWORD *)(a2 + 32) = 0;
-  return v3;
+  return unused_written_slot;
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
@@ -5071,20 +5071,20 @@ __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_public_dynamic_resiz
         __int64 a2,
         unsigned int a3)
 {
-  unsigned int v3;
-  __int64 v7;
-  unsigned int v8;
-  int v9;
-  unsigned __int64 v10;
-  unsigned int v11;
-  unsigned __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  int v15;
-  __int64 v17;
-  __int64 v18;
+  unsigned int unused_written_slot;
+  __int64 call_result;
+  unsigned int comparison_result;
+  int wide_char_to_multi_byte_result;
+  unsigned __int64 saved_wide_char_to_multi_byte_result;
+  unsigned int int64_result;
+  unsigned __int64 loaded_word;
+  __int64 call_result_2;
+  __int64 integer_difference;
+  int wide_char_to_multi_byte_result_2;
+  __int64 packed_word_bits;
+  __int64 packed_word_bits_2;
 
-  v3 = 0;
+  unused_written_slot = 0;
   if ( !a1 )
   {
     if ( *(_BYTE *)(a2 + 40) )
@@ -5098,41 +5098,41 @@ __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_public_dynamic_resiz
   }
   if ( *a1 )
   {
-    LODWORD(v17) = 0;
-    v9 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v17, 0, 0);
-    v10 = v9;
-    if ( v9 )
+    LODWORD(packed_word_bits) = 0;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, 0, packed_word_bits, 0, 0);
+    saved_wide_char_to_multi_byte_result = wide_char_to_multi_byte_result;
+    if ( wide_char_to_multi_byte_result )
     {
-      v12 = *(_QWORD *)(a2 + 24);
-      if ( v9 > v12 )
+      loaded_word = *(_QWORD *)(a2 + 24);
+      if ( wide_char_to_multi_byte_result > loaded_word )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v13 = j__malloc_base();
-        *(_QWORD *)(a2 + 16) = v13;
-        v12 = 0;
-        v14 = -v13;
-        v8 = v14 == 0 ? 0xC : 0;
-        if ( (v14 == 0 ? 0xC : 0) == 0 )
-          v12 = v10;
-        *(_BYTE *)(a2 + 40) = v8 == 0;
-        *(_QWORD *)(a2 + 24) = v12;
-        if ( (v14 == 0 ? 0xC : 0) != 0 )
-          return v8;
+        call_result_2 = j__malloc_base();
+        *(_QWORD *)(a2 + 16) = call_result_2;
+        loaded_word = 0;
+        integer_difference = -call_result_2;
+        comparison_result = integer_difference == 0 ? 0xC : 0;
+        if ( (integer_difference == 0 ? 0xC : 0) == 0 )
+          loaded_word = saved_wide_char_to_multi_byte_result;
+        *(_BYTE *)(a2 + 40) = comparison_result == 0;
+        *(_QWORD *)(a2 + 24) = loaded_word;
+        if ( (integer_difference == 0 ? 0xC : 0) != 0 )
+          return comparison_result;
       }
-      LODWORD(v18) = v12;
-      v15 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v18, 0, 0);
-      if ( v15 )
+      LODWORD(packed_word_bits_2) = loaded_word;
+      wide_char_to_multi_byte_result_2 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), packed_word_bits_2, 0, 0);
+      if ( wide_char_to_multi_byte_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v15 - 1LL;
-        return v3;
+        *(_QWORD *)(a2 + 32) = wide_char_to_multi_byte_result_2 - 1LL;
+        return unused_written_slot;
       }
     }
-    v11 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v11);
+    int64_result = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result);
     return (unsigned int)*errno_sr();
   }
   if ( !*(_QWORD *)(a2 + 24) )
@@ -5142,18 +5142,18 @@ __int64            __acrt_wcs_to_mbs_cp____crt_win32_buffer_public_dynamic_resiz
       free(*(void **)(a2 + 16));
       *(_BYTE *)(a2 + 40) = 0;
     }
-    v7 = j__malloc_base();
-    *(_QWORD *)(a2 + 16) = v7;
-    v8 = v7 == 0 ? 0xC : 0;
-    *(_BYTE *)(a2 + 40) = v8 == 0;
-    *(_QWORD *)(a2 + 24) = v8 == 0;
-    if ( (v7 == 0 ? 0xC : 0) != 0 )
-      return v8;
+    call_result = j__malloc_base();
+    *(_QWORD *)(a2 + 16) = call_result;
+    comparison_result = call_result == 0 ? 0xC : 0;
+    *(_BYTE *)(a2 + 40) = comparison_result == 0;
+    *(_QWORD *)(a2 + 24) = comparison_result == 0;
+    if ( (call_result == 0 ? 0xC : 0) != 0 )
+      return comparison_result;
   }
   **(_BYTE **)(a2 + 16) = 0;
 LABEL_5:
   *(_QWORD *)(a2 + 32) = 0;
-  return v3;
+  return unused_written_slot;
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
@@ -5163,17 +5163,17 @@ __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_no_resizing__
         __int64 a1,
         _QWORD *a2)
 {
-  unsigned int v3;
-  unsigned int v4;
+  unsigned int int64_result;
+  unsigned int int64_result_2;
 
-  v3 = ((__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
+  int64_result = ((__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
          *a2,
          *(unsigned int *)(a1 + 24),
          *(_QWORD *)(a1 + 16),
          0);
-  if ( v3 )
+  if ( int64_result )
   {
-    if ( (unsigned __int64)v3 > *(_QWORD *)(a1 + 24) )
+    if ( (unsigned __int64)int64_result > *(_QWORD *)(a1 + 24) )
     {
       if ( *(_BYTE *)(a1 + 40) )
         *(_BYTE *)(a1 + 40) = 0;
@@ -5184,14 +5184,14 @@ __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_no_resizing__
     }
     else
     {
-      *(_QWORD *)(a1 + 32) = v3;
+      *(_QWORD *)(a1 + 32) = int64_result;
       return 0;
     }
   }
   else
   {
-    v4 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v4);
+    int64_result_2 = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result_2);
     return (unsigned int)*errno_sr();
   }
 }
@@ -5204,25 +5204,25 @@ __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_public_dynami
         __int64 a1,
         _QWORD *a2)
 {
-  unsigned int v4;
-  __int64 v5;
-  unsigned int v6;
+  unsigned int int64_result;
+  __int64 saved_int64_result;
+  unsigned int int64_result_2;
   __int64 result;
-  __int64 v8;
-  __int64 v9;
-  unsigned int v10;
+  __int64 call_result;
+  __int64 integer_sum;
+  unsigned int int64_result_3;
 
-  v4 = ((__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
+  int64_result = ((__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
          *a2,
          *(unsigned int *)(a1 + 24),
          *(_QWORD *)(a1 + 16),
          0);
-  v5 = v4;
-  if ( !v4 )
+  saved_int64_result = int64_result;
+  if ( !int64_result )
     goto LABEL_2;
-  if ( (unsigned __int64)v4 <= *(_QWORD *)(a1 + 24) )
+  if ( (unsigned __int64)int64_result <= *(_QWORD *)(a1 + 24) )
   {
-    *(_QWORD *)(a1 + 32) = v4;
+    *(_QWORD *)(a1 + 32) = int64_result;
     return 0;
   }
   if ( *(_BYTE *)(a1 + 40) )
@@ -5230,25 +5230,25 @@ __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_public_dynami
     free(*(void **)(a1 + 16));
     *(_BYTE *)(a1 + 40) = 0;
   }
-  v8 = j__malloc_base();
-  *(_QWORD *)(a1 + 16) = v8;
-  v9 = 0;
-  result = v8 == 0 ? 0xC : 0;
+  call_result = j__malloc_base();
+  *(_QWORD *)(a1 + 16) = call_result;
+  integer_sum = 0;
+  result = call_result == 0 ? 0xC : 0;
   if ( !(_DWORD)result )
-    v9 = v5 + 1;
+    integer_sum = saved_int64_result + 1;
   *(_BYTE *)(a1 + 40) = (_DWORD)result == 0;
-  *(_QWORD *)(a1 + 24) = v9;
+  *(_QWORD *)(a1 + 24) = integer_sum;
   if ( !(_DWORD)result )
   {
-    v10 = ((__int64 (           *)(_QWORD, __int64, _QWORD, _QWORD))GetFullPathNameW)(*a2, v9, *(_QWORD *)(a1 + 16), 0);
-    if ( !v10 )
+    int64_result_3 = ((__int64 (           *)(_QWORD, __int64, _QWORD, _QWORD))GetFullPathNameW)(*a2, integer_sum, *(_QWORD *)(a1 + 16), 0);
+    if ( !int64_result_3 )
     {
 LABEL_2:
-      v6 = ((__int64 (*)(void))GetLastError)();
-      crt_errno_map_os_error(v6);
+      int64_result_2 = ((__int64 (*)(void))GetLastError)();
+      crt_errno_map_os_error(int64_result_2);
       return (unsigned int)*errno_sr();
     }
-    *(_QWORD *)(a1 + 32) = v10;
+    *(_QWORD *)(a1 + 32) = int64_result_3;
     return 0;
   }
   return result;
@@ -5262,25 +5262,25 @@ __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_internal_dyna
         __int64 a1,
         _QWORD *a2)
 {
-  unsigned int v4;
-  __int64 v5;
-  unsigned int v6;
+  unsigned int int64_result;
+  __int64 saved_int64_result;
+  unsigned int int64_result_2;
   __int64 result;
-  __int64 v8;
-  __int64 v9;
-  unsigned int v10;
+  __int64 malloc_base_result;
+  __int64 integer_sum;
+  unsigned int int64_result_3;
 
-  v4 = ((__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
+  int64_result = ((__int64 (           *)(_QWORD, _QWORD, _QWORD, _QWORD))GetFullPathNameW)(
          *a2,
          *(unsigned int *)(a1 + 24),
          *(_QWORD *)(a1 + 16),
          0);
-  v5 = v4;
-  if ( !v4 )
+  saved_int64_result = int64_result;
+  if ( !int64_result )
     goto LABEL_2;
-  if ( (unsigned __int64)v4 <= *(_QWORD *)(a1 + 24) )
+  if ( (unsigned __int64)int64_result <= *(_QWORD *)(a1 + 24) )
   {
-    *(_QWORD *)(a1 + 32) = v4;
+    *(_QWORD *)(a1 + 32) = int64_result;
     return 0;
   }
   if ( *(_BYTE *)(a1 + 40) )
@@ -5288,25 +5288,25 @@ __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_internal_dyna
     free_base(*(void **)(a1 + 16));
     *(_BYTE *)(a1 + 40) = 0;
   }
-  v8 = malloc_base();
-  *(_QWORD *)(a1 + 16) = v8;
-  v9 = 0;
-  result = v8 == 0 ? 0xC : 0;
+  malloc_base_result = malloc_base();
+  *(_QWORD *)(a1 + 16) = malloc_base_result;
+  integer_sum = 0;
+  result = malloc_base_result == 0 ? 0xC : 0;
   if ( !(_DWORD)result )
-    v9 = v5 + 1;
+    integer_sum = saved_int64_result + 1;
   *(_BYTE *)(a1 + 40) = (_DWORD)result == 0;
-  *(_QWORD *)(a1 + 24) = v9;
+  *(_QWORD *)(a1 + 24) = integer_sum;
   if ( !(_DWORD)result )
   {
-    v10 = ((__int64 (           *)(_QWORD, __int64, _QWORD, _QWORD))GetFullPathNameW)(*a2, v9, *(_QWORD *)(a1 + 16), 0);
-    if ( !v10 )
+    int64_result_3 = ((__int64 (           *)(_QWORD, __int64, _QWORD, _QWORD))GetFullPathNameW)(*a2, integer_sum, *(_QWORD *)(a1 + 16), 0);
+    if ( !int64_result_3 )
     {
 LABEL_2:
-      v6 = ((__int64 (*)(void))GetLastError)();
-      crt_errno_map_os_error(v6);
+      int64_result_2 = ((__int64 (*)(void))GetLastError)();
+      crt_errno_map_os_error(int64_result_2);
       return (unsigned int)*errno_sr();
     }
-    *(_QWORD *)(a1 + 32) = v10;
+    *(_QWORD *)(a1 + 32) = int64_result_3;
     return 0;
   }
   return result;
@@ -5318,14 +5318,14 @@ LABEL_2:
 //----- (000000014024AF64) ----------------------------------------------------
 __m128i *           sub_14024AF64(unsigned int a1, _BYTE *a2, int a3)
 {
-  __int64 v3;
-  int v5;
-  __m128i *v7;
+  __int64 allocation_size;
+  int getdrive_result;
+  __m128i *unused_written_slot;
   sr_path_buffer path_buffer;
-  _BYTE v14[8];
+  _BYTE destination_text[8];
 
-  v3 = a3;
-  v5 = a1;
+  allocation_size = a3;
+  getdrive_result = a1;
   if ( a3 < 0 )
     goto LABEL_2;
   if ( a1 )
@@ -5339,20 +5339,20 @@ __m128i *           sub_14024AF64(unsigned int a1, _BYTE *a2, int a3)
   }
   else
   {
-    v5 = getdrive();
+    getdrive_result = getdrive();
   }
-  if ( v5 )
+  if ( getdrive_result )
   {
-    strcpy(&v14[1], ":.");
-    v14[0] = v5 + 64;
+    strcpy(&destination_text[1], ":.");
+    destination_text[0] = getdrive_result + 64;
   }
   else
   {
-    strcpy(v14, ".");
+    strcpy(destination_text, ".");
   }
   if ( a2 )
   {
-    if ( (int)v3 <= 0 )
+    if ( (int)allocation_size <= 0 )
     {
 LABEL_2:
       *errno_sr() = 22;
@@ -5361,13 +5361,13 @@ LABEL_3:
       return nullptr;
     }
     *a2 = 0;
-    path_buffer.initial_capacity = v3;
-    path_buffer.capacity = v3;
+    path_buffer.initial_capacity = allocation_size;
+    path_buffer.capacity = allocation_size;
     path_buffer.initial = a2;
     path_buffer.buffer = a2;
     path_buffer.size = 0;
     path_buffer.owned = 0;
-    if ( (unsigned int)__acrt_get_full_path_name_narrow_acp_or_utf8____crt_win32_buffer_no_resizing(v14, (__int64)&path_buffer.initial) )
+    if ( (unsigned int)__acrt_get_full_path_name_narrow_acp_or_utf8____crt_win32_buffer_no_resizing(destination_text, (__int64)&path_buffer.initial) )
       return nullptr;
     return (__m128i *)a2;
   }
@@ -5376,11 +5376,11 @@ LABEL_3:
     path_buffer.initial = nullptr;
     path_buffer.initial_capacity = 0;
     path_buffer.size = 0;
-    path_buffer.buffer = (void *)sr_path_malloc(v3);
+    path_buffer.buffer = (void *)sr_path_malloc(allocation_size);
     if ( path_buffer.buffer )
     {
       path_buffer.owned = 1;
-      path_buffer.capacity = v3;
+      path_buffer.capacity = allocation_size;
     }
     else
     {
@@ -5388,38 +5388,38 @@ LABEL_3:
       path_buffer.capacity = 0;
     }
     if ( (unsigned int)__acrt_get_full_path_name_narrow_acp_or_utf8____crt_win32_buffer_public_dynamic_resizing(
-                         v14,
+                         destination_text,
                          (__int64)&path_buffer.initial) )
     {
       if ( path_buffer.owned )
         free(path_buffer.buffer);
       return nullptr;
     }
-    v7 = sub_14024B62C((__int64 *)&path_buffer.initial);
+    unused_written_slot = sub_14024B62C((__int64 *)&path_buffer.initial);
     if ( path_buffer.owned )
       free(path_buffer.buffer);
-    return v7;
+    return unused_written_slot;
   }
 }
 
 //----- (000000014024B0BC) ----------------------------------------------------
 __int64            sub_14024B0BC(unsigned int a1, _WORD *a2, int a3)
 {
-  __int64 v3;
-  int v5;
-  __int64 v7;
-  _WORD *v8;
-  __int64 v9;
+  __int64 input_value;
+  int getdrive_result;
+  __int64 unused_local;
+  _WORD *input_cursor;
+  __int64 unused_written_slot;
   void *Block;
-  __int64 v11;
-  __int64 v12;
-  char v13;
-  _BYTE v14[6];
-  __int16 v15;
-  __int64 v16;
+  __int64 unused_written_slot_2;
+  __int64 unused_written_slot_3;
+  char selection_flag;
+  _BYTE integer_sum[6];
+  __int16 unused_written_slot_4;
+  __int64 unused_local_2;
 
-  v3 = a3;
-  v5 = a1;
+  input_value = a3;
+  getdrive_result = a1;
   if ( a3 < 0 )
   {
 LABEL_2:
@@ -5439,58 +5439,58 @@ LABEL_3:
   }
   else
   {
-    v5 = getdrive();
+    getdrive_result = getdrive();
   }
-  if ( v5 )
+  if ( getdrive_result )
   {
-    *(_DWORD *)&v14[2] = 3014714;
-    *(_WORD *)v14 = v5 + 64;
-    v15 = 0;
+    *(_DWORD *)&integer_sum[2] = 3014714;
+    *(_WORD *)integer_sum = getdrive_result + 64;
+    unused_written_slot_4 = 0;
   }
   else
   {
-    *(_DWORD *)v14 = 46;
+    *(_DWORD *)integer_sum = 46;
   }
   if ( a2 )
   {
-    if ( (int)v3 > 0 )
+    if ( (int)input_value > 0 )
     {
       *a2 = 0;
-      v9 = v3;
-      v11 = v3;
-      v8 = a2;
+      unused_written_slot = input_value;
+      unused_written_slot_2 = input_value;
+      input_cursor = a2;
       Block = a2;
-      v12 = 0;
-      v13 = 0;
-      return (unsigned int)unknown_libname_805((__int64)v14, (__int64)&v8) ? 0 : (__int64)a2; /* 0x14024B213: test eax, eax; jne -> xor eax, eax; else 0x14024B21B: mov rax, rdi */
+      unused_written_slot_3 = 0;
+      selection_flag = 0;
+      return (unsigned int)unknown_libname_805((__int64)integer_sum, (__int64)&input_cursor) ? 0 : (__int64)a2; /* 0x14024B213: test eax, eax; jne -> xor eax, eax; else 0x14024B21B: mov rax, rdi */
     }
     goto LABEL_2;
   }
-  v8 = nullptr;
-  v9 = 0;
-  v12 = 0;
+  input_cursor = nullptr;
+  unused_written_slot = 0;
+  unused_written_slot_3 = 0;
   Block = (void *)j__malloc_base();
   if ( Block )
   {
-    v13 = 1;
-    v11 = v3;
+    selection_flag = 1;
+    unused_written_slot_2 = input_value;
   }
   else
   {
-    v13 = 0;
-    v11 = 0;
+    selection_flag = 0;
+    unused_written_slot_2 = 0;
   }
   if ( (unsigned int)__acrt_get_full_path_name_wide____crt_win32_buffer_public_dynamic_resizing(
-                       (__int64)v14,
-                       (__int64)&v8) )
+                       (__int64)integer_sum,
+                       (__int64)&input_cursor) )
   {
-    if ( v13 )
+    if ( selection_flag )
       free(Block);
   }
   else
   {
-    __int64 sr_result = (__int64)sub_14024B710((__int64 *)&v8); /* 0x14024B1AD: mov rbx, rax */
-    if ( v13 )
+    __int64 sr_result = (__int64)sub_14024B710((__int64 *)&input_cursor); /* 0x14024B1AD: mov rbx, rax */
+    if ( selection_flag )
       free(Block);
     return sr_result; /* 0x14024B1BF: mov rax, rbx */
   }
@@ -5526,10 +5526,10 @@ void            unknown_libname_813(__int64 a1)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_814(__int64 a1, unsigned int a2, __int64 a3, __int64 a4, int a5)
 {
-  __int64 v6;
+  __int64 packed_word_bits;
 
-  LODWORD(v6) = a5;
-  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, v6, 0, 0);
+  LODWORD(packed_word_bits) = a5;
+  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, packed_word_bits, 0, 0);
 }
 
 //----- (000000014024B3B4) ----------------------------------------------------
@@ -5545,10 +5545,10 @@ __int64            unknown_libname_818()
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_819(__int64 a1, unsigned int a2, __int64 a3, __int64 a4, int a5)
 {
-  __int64 v6;
+  __int64 packed_word_bits;
 
-  LODWORD(v6) = a5;
-  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, v6, 0, 0);
+  LODWORD(packed_word_bits) = a5;
+  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, packed_word_bits, 0, 0);
 }
 
 //----- (000000014024B418) ----------------------------------------------------
@@ -5591,7 +5591,7 @@ __int64            unknown_libname_826(__int64 a1)
 //----- (000000014024B4CC) ----------------------------------------------------
 __int64            sub_14024B4CC(__int64 a1, __int64 a2)
 {
-  __int64 v4;
+  __int64 call_result;
   __int64 result;
 
   if ( *(_BYTE *)(a1 + 40) )
@@ -5599,9 +5599,9 @@ __int64            sub_14024B4CC(__int64 a1, __int64 a2)
     free(*(void **)(a1 + 16));
     *(_BYTE *)(a1 + 40) = 0;
   }
-  v4 = j__malloc_base();
-  *(_QWORD *)(a1 + 16) = v4;
-  result = v4 == 0 ? 0xC : 0;
+  call_result = j__malloc_base();
+  *(_QWORD *)(a1 + 16) = call_result;
+  result = call_result == 0 ? 0xC : 0;
   if ( (_DWORD)result )
   {
     *(_QWORD *)(a1 + 24) = 0;
@@ -5632,7 +5632,7 @@ __int64            unknown_libname_827(__int64 a1)
 //----- (000000014024B558) ----------------------------------------------------
 __int64            sub_14024B558(__int64 a1, __int64 a2)
 {
-  __int64 v4;
+  __int64 call_result;
   __int64 result;
 
   if ( *(_BYTE *)(a1 + 40) )
@@ -5640,9 +5640,9 @@ __int64            sub_14024B558(__int64 a1, __int64 a2)
     free(*(void **)(a1 + 16));
     *(_BYTE *)(a1 + 40) = 0;
   }
-  v4 = j__malloc_base();
-  *(_QWORD *)(a1 + 16) = v4;
-  result = v4 == 0 ? 0xC : 0;
+  call_result = j__malloc_base();
+  *(_QWORD *)(a1 + 16) = call_result;
+  result = call_result == 0 ? 0xC : 0;
   if ( (_DWORD)result )
   {
     *(_QWORD *)(a1 + 24) = 0;
@@ -5670,45 +5670,45 @@ __int64            __crt_win32_buffer_internal_dynamic_resizing__allocate(
         __int64 a2,
              struct __crt_win32_buffer_empty_debug_info *a3)
 {
-  void *v4;
+  void *returned_pointer;
 
-  v4 = (void *)j__malloc_base();
-  *a1 = v4;
-  return v4 == nullptr ? 0xC : 0;
+  returned_pointer = (void *)j__malloc_base();
+  *a1 = returned_pointer;
+  return returned_pointer == nullptr ? 0xC : 0;
 }
 
 //----- (000000014024B62C) ----------------------------------------------------
 __m128i *           sub_14024B62C(__int64 *a1)
 {
-  __int64 v1;
-  __m128i *v3;
-  unsigned __int64 v4;
-  __int64 v5;
-  unsigned __int64 v6;
-  __int64 v7;
+  __int64 saved_destination_buffer;
+  __m128i *destination_buffer;
+  unsigned __int64 table_value;
+  __int64 table_value_2;
+  unsigned __int64 table_value_3;
+  __int64 loaded_word;
 
-  v1 = a1[2];
-  if ( v1 && a1[4] )
+  saved_destination_buffer = a1[2];
+  if ( saved_destination_buffer && a1[4] )
   {
     if ( *((_BYTE *)a1 + 40) )
       goto LABEL_14;
-    v3 = (__m128i *)j__malloc_base();
-    v4 = a1[3];
-    v1 = (__int64)v3;
-    v5 = a1[2];
-    v6 = a1[4];
-    if ( !v4 )
+    destination_buffer = (__m128i *)j__malloc_base();
+    table_value = a1[3];
+    saved_destination_buffer = (__int64)destination_buffer;
+    table_value_2 = a1[2];
+    table_value_3 = a1[4];
+    if ( !table_value )
       goto LABEL_14;
-    if ( !v3 )
+    if ( !destination_buffer )
       goto LABEL_6;
-    if ( v5 && v6 >= v4 )
+    if ( table_value_2 && table_value_3 >= table_value )
     {
-      crt_memcpy(v3, (     __m128i *)a1[2], a1[3]);
+      crt_memcpy(destination_buffer, (     __m128i *)a1[2], a1[3]);
     }
     else
     {
-      crt_memset((void *)(uintptr_t)(v3), 0, a1[4]);
-      if ( !v5 )
+      crt_memset((void *)(uintptr_t)(destination_buffer), 0, a1[4]);
+      if ( !table_value_2 )
       {
 LABEL_6:
         *errno_sr() = 22;
@@ -5716,18 +5716,18 @@ LABEL_13:
         crt_invalid_parameter_noinfo();
         goto LABEL_14;
       }
-      if ( v6 < v4 )
+      if ( table_value_3 < table_value )
       {
         *errno_sr() = 34;
         goto LABEL_13;
       }
     }
 LABEL_14:
-    v7 = *a1;
+    loaded_word = *a1;
     a1[4] = 0;
-    a1[2] = v7;
+    a1[2] = loaded_word;
     a1[3] = a1[1];
-    return (__m128i *)v1;
+    return (__m128i *)saved_destination_buffer;
   }
   return nullptr;
 }
@@ -5737,35 +5737,35 @@ LABEL_14:
 //----- (000000014024B710) ----------------------------------------------------
 __m128i *           sub_14024B710(__int64 *a1)
 {
-  __int64 v1;
-  __m128i *v3;
-  unsigned __int64 v4;
-  __int64 v5;
-  unsigned __int64 v6;
-  __int64 v7;
+  __int64 saved_destination_buffer;
+  __m128i *destination_buffer;
+  unsigned __int64 table_value;
+  __int64 table_value_2;
+  unsigned __int64 table_value_3;
+  __int64 loaded_word;
 
-  v1 = a1[2];
-  if ( v1 && a1[4] )
+  saved_destination_buffer = a1[2];
+  if ( saved_destination_buffer && a1[4] )
   {
     if ( *((_BYTE *)a1 + 40) )
       goto LABEL_14;
-    v3 = (__m128i *)j__malloc_base();
-    v4 = a1[3];
-    v1 = (__int64)v3;
-    v5 = a1[2];
-    v6 = a1[4];
-    if ( !v4 )
+    destination_buffer = (__m128i *)j__malloc_base();
+    table_value = a1[3];
+    saved_destination_buffer = (__int64)destination_buffer;
+    table_value_2 = a1[2];
+    table_value_3 = a1[4];
+    if ( !table_value )
       goto LABEL_14;
-    if ( !v3 )
+    if ( !destination_buffer )
       goto LABEL_6;
-    if ( v5 && v6 >= v4 )
+    if ( table_value_2 && table_value_3 >= table_value )
     {
-      crt_memcpy(v3, (     __m128i *)a1[2], a1[3]);
+      crt_memcpy(destination_buffer, (     __m128i *)a1[2], a1[3]);
     }
     else
     {
-      crt_memset((void *)(uintptr_t)(v3), 0, a1[4]);
-      if ( !v5 )
+      crt_memset((void *)(uintptr_t)(destination_buffer), 0, a1[4]);
+      if ( !table_value_2 )
       {
 LABEL_6:
         *errno_sr() = 22;
@@ -5773,18 +5773,18 @@ LABEL_13:
         crt_invalid_parameter_noinfo();
         goto LABEL_14;
       }
-      if ( v6 < v4 )
+      if ( table_value_3 < table_value )
       {
         *errno_sr() = 34;
         goto LABEL_13;
       }
     }
 LABEL_14:
-    v7 = *a1;
+    loaded_word = *a1;
     a1[4] = 0;
-    a1[2] = v7;
+    a1[2] = loaded_word;
     a1[3] = a1[1];
-    return (__m128i *)v1;
+    return (__m128i *)saved_destination_buffer;
   }
   return nullptr;
 }
@@ -5794,19 +5794,19 @@ LABEL_14:
 //----- (000000014024B7F8) ----------------------------------------------------
 __int64            is_valid_drive(unsigned int a1)
 {
-  __int64 v2;
+  __int64 unused_local;
   __int16 RootPathName;
-  int v4;
-  __int16 v5;
-  __int64 v6;
+  int unused_written_slot;
+  __int16 unused_written_slot_2;
+  __int64 unused_local_2;
 
   if ( a1 <= 0x1A )
   {
     if ( a1 )
     {
-      v4 = 6029370;
+      unused_written_slot = 6029370;
       RootPathName = a1 + 64;
-      v5 = 0;
+      unused_written_slot_2 = 0;
       return ((unsigned int (           *)(__int16 *))GetDriveTypeW)(&RootPathName) >= 2; /* 0x14024B85D: cmp eax, 2; setae bl; mov eax, ebx */
     }
     return 1; /* 0x14024B837: lea eax, [rbx + 1] (rbx = 0) */
@@ -5862,8 +5862,8 @@ __int64            sub_14024B944(unsigned int a1, _WORD *a2, int a3)
 //----- (000000014024B964) ----------------------------------------------------
 __int64            sub_14024B964(__m128i *a1, unsigned __int64 a2,      __m128i *a3, unsigned __int64 a4)
 {
-  int *v8;
-  unsigned int v9;
+  int *unused_written_slot;
+  unsigned int selection_code;
 
   if ( !a4 )
     return 0;
@@ -5878,17 +5878,17 @@ __int64            sub_14024B964(__m128i *a1, unsigned __int64 a2,      __m128i 
   if ( !a3 )
   {
 LABEL_4:
-    v8 = errno_sr();
-    v9 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_5:
-    *v8 = v9;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v9;
+    return selection_code;
   }
   if ( a2 < a4 )
   {
-    v8 = errno_sr();
-    v9 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_5;
   }
   return 22;
@@ -5903,16 +5903,16 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
         __int64 a3,
         unsigned int a4)
 {
-  __int64 v7;
+  __int64 allocated_buffer_2;
   __int64 result;
-  int v9;
-  unsigned __int64 v10;
-  unsigned int v11;
-  unsigned __int64 v12;
-  __int64 v13;
-  int v14;
-  __int64 v15;
-  __int64 v16;
+  int int64_result_2;
+  unsigned __int64 allocation_size;
+  unsigned int error_code_2;
+  unsigned __int64 saved_allocation_size;
+  __int64 allocated_buffer_3;
+  int wide_char_to_multi_byte_result;
+  __int64 wide_char_to_multi_byte_result_2;
+  __int64 packed_word_bits;
 
   if ( !a1 )
   {
@@ -5927,40 +5927,40 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
   }
   if ( *a1 )
   {
-    LODWORD(v15) = 0;
-    v9 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v15, 0, 0);
-    v10 = v9;
-    if ( v9 )
+    LODWORD(wide_char_to_multi_byte_result_2) = 0;
+    int64_result_2 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, wide_char_to_multi_byte_result_2, 0, 0);
+    allocation_size = int64_result_2;
+    if ( int64_result_2 )
     {
-      v12 = *(_QWORD *)(a2 + 24);
-      if ( v9 > v12 )
+      saved_allocation_size = *(_QWORD *)(a2 + 24);
+      if ( int64_result_2 > saved_allocation_size )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free_base(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v13 = malloc_base();
-        *(_QWORD *)(a2 + 16) = v13;
-        v12 = 0;
-        result = v13 == 0 ? 0xC : 0;
+        allocated_buffer_3 = malloc_base();
+        *(_QWORD *)(a2 + 16) = allocated_buffer_3;
+        saved_allocation_size = 0;
+        result = allocated_buffer_3 == 0 ? 0xC : 0;
         if ( !(_DWORD)result )
-          v12 = v10;
+          saved_allocation_size = allocation_size;
         *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
-        *(_QWORD *)(a2 + 24) = v12;
+        *(_QWORD *)(a2 + 24) = saved_allocation_size;
         if ( (_DWORD)result )
           return result;
       }
-      LODWORD(v16) = v12;
-      v14 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v16, 0, 0);
-      if ( v14 )
+      LODWORD(packed_word_bits) = saved_allocation_size;
+      wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), packed_word_bits, 0, 0);
+      if ( wide_char_to_multi_byte_result )
       {
-        *(_QWORD *)(a2 + 32) = v14 - 1LL;
+        *(_QWORD *)(a2 + 32) = wide_char_to_multi_byte_result - 1LL;
         return 0;
       }
     }
-    v11 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v11);
+    error_code_2 = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(error_code_2);
     return (unsigned int)*errno_sr();
   }
   if ( *(_QWORD *)(a2 + 24) )
@@ -5970,9 +5970,9 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
     free_base(*(void **)(a2 + 16));
     *(_BYTE *)(a2 + 40) = 0;
   }
-  v7 = malloc_base();
-  *(_QWORD *)(a2 + 16) = v7;
-  result = v7 == 0 ? 0xC : 0;
+  allocated_buffer_2 = malloc_base();
+  *(_QWORD *)(a2 + 16) = allocated_buffer_2;
+  result = allocated_buffer_2 == 0 ? 0xC : 0;
   *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
   *(_QWORD *)(a2 + 24) = (_DWORD)result == 0;
   if ( !(_DWORD)result )
@@ -6000,49 +6000,49 @@ unsigned int sr_chdir_codepage(void) {
 
 __int64            sr_chdir_current_wide(__int64 a1)
 {
-  unsigned int v2;
-  unsigned int v3;
-  __int64 v4;
-  unsigned int v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  unsigned int v9;
+  unsigned int int64_result;
+  unsigned int unused_written_slot;
+  __int64 saved_int64_result;
+  unsigned int error_code;
+  __int64 allocated_buffer;
+  __int64 allocated_buffer_2;
+  __int64 comparison_result;
+  unsigned int int64_result_2;
 
-  v2 = ((__int64 (           *)(_QWORD, _QWORD))GetCurrentDirectoryW)(*(unsigned int *)(a1 + 24), *(_QWORD *)(a1 + 16));
-  v3 = 0;
-  v4 = v2;
-  if ( v2 )
+  int64_result = ((__int64 (           *)(_QWORD, _QWORD))GetCurrentDirectoryW)(*(unsigned int *)(a1 + 24), *(_QWORD *)(a1 + 16));
+  unused_written_slot = 0;
+  saved_int64_result = int64_result;
+  if ( int64_result )
   {
-    if ( (unsigned __int64)v2 <= *(_QWORD *)(a1 + 24) )
+    if ( (unsigned __int64)int64_result <= *(_QWORD *)(a1 + 24) )
     {
-      *(_QWORD *)(a1 + 32) = v2;
-      return v3;
+      *(_QWORD *)(a1 + 32) = int64_result;
+      return unused_written_slot;
     }
     if ( *(_BYTE *)(a1 + 40) )
     {
       free_base(*(void **)(a1 + 16));
       *(_BYTE *)(a1 + 40) = 0;
     }
-    v6 = sr_path_malloc(2*(v4+1));
-    *(_QWORD *)(a1 + 16) = v6;
-    v7 = 0;
-    v8 = -v6;
-    if ( (v8 == 0 ? 0xC : 0) == 0 )
-      v7 = v4 + 1;
-    *(_BYTE *)(a1 + 40) = (v8 == 0 ? 0xC : 0) == 0;
-    *(_QWORD *)(a1 + 24) = v7;
-    if ( (v8 == 0 ? 0xC : 0) != 0 )
-      return v8 == 0 ? 0xC : 0;
-    v9 = ((__int64 (           *)(__int64, _QWORD))GetCurrentDirectoryW)(v7, *(_QWORD *)(a1 + 16));
-    if ( v9 )
+    allocated_buffer = sr_path_malloc(2*(saved_int64_result+1));
+    *(_QWORD *)(a1 + 16) = allocated_buffer;
+    allocated_buffer_2 = 0;
+    comparison_result = -allocated_buffer;
+    if ( (comparison_result == 0 ? 0xC : 0) == 0 )
+      allocated_buffer_2 = saved_int64_result + 1;
+    *(_BYTE *)(a1 + 40) = (comparison_result == 0 ? 0xC : 0) == 0;
+    *(_QWORD *)(a1 + 24) = allocated_buffer_2;
+    if ( (comparison_result == 0 ? 0xC : 0) != 0 )
+      return comparison_result == 0 ? 0xC : 0;
+    int64_result_2 = ((__int64 (           *)(__int64, _QWORD))GetCurrentDirectoryW)(allocated_buffer_2, *(_QWORD *)(a1 + 16));
+    if ( int64_result_2 )
     {
-      *(_QWORD *)(a1 + 32) = v9;
-      return v3;
+      *(_QWORD *)(a1 + 32) = int64_result_2;
+      return unused_written_slot;
     }
   }
-  v5 = GetLastError();
-  crt_errno_map_os_error(v5);
+  error_code = GetLastError();
+  crt_errno_map_os_error(error_code);
   return (unsigned int)*errno_sr();
 }
 
@@ -6054,20 +6054,20 @@ __int64            sr_chdir_wcs(
         __int64 a2,
         unsigned int a3)
 {
-  unsigned int v3;
-  __int64 v7;
-  unsigned int v8;
-  int v9;
-  unsigned __int64 v10;
-  unsigned int v11;
-  unsigned __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  int v15;
-  __int64 v17 = 0;
-  __int64 v18 = 0;
+  unsigned int unused_written_slot;
+  __int64 allocated_buffer_2;
+  unsigned int comparison_result;
+  int int64_result_2;
+  unsigned __int64 allocation_size;
+  unsigned int error_code_2;
+  unsigned __int64 saved_allocation_size;
+  __int64 allocated_buffer_3;
+  __int64 wide_char_to_multi_byte_result;
+  int wide_char_to_multi_byte_result_2;
+  __int64 packed_word_bits_2 = 0;
+  __int64 packed_word_bits_3 = 0;
 
-  v3 = 0;
+  unused_written_slot = 0;
   if ( !a1 )
   {
     if ( *(_BYTE *)(a2 + 40) )
@@ -6081,41 +6081,41 @@ __int64            sr_chdir_wcs(
   }
   if ( *a1 )
   {
-    LODWORD(v17) = 0;
-    v9 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v17, 0, 0);
-    v10 = v9;
-    if ( v9 )
+    LODWORD(packed_word_bits_2) = 0;
+    int64_result_2 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, 0, packed_word_bits_2, 0, 0);
+    allocation_size = int64_result_2;
+    if ( int64_result_2 )
     {
-      v12 = *(_QWORD *)(a2 + 24);
-      if ( v9 > v12 )
+      saved_allocation_size = *(_QWORD *)(a2 + 24);
+      if ( int64_result_2 > saved_allocation_size )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free_base(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v13 = sr_path_malloc(v10);
-        *(_QWORD *)(a2 + 16) = v13;
-        v12 = 0;
-        v14 = -v13;
-        v8 = v14 == 0 ? 0xC : 0;
-        if ( (v14 == 0 ? 0xC : 0) == 0 )
-          v12 = v10;
-        *(_BYTE *)(a2 + 40) = v8 == 0;
-        *(_QWORD *)(a2 + 24) = v12;
-        if ( (v14 == 0 ? 0xC : 0) != 0 )
-          return v8;
+        allocated_buffer_3 = sr_path_malloc(allocation_size);
+        *(_QWORD *)(a2 + 16) = allocated_buffer_3;
+        saved_allocation_size = 0;
+        wide_char_to_multi_byte_result = -allocated_buffer_3;
+        comparison_result = wide_char_to_multi_byte_result == 0 ? 0xC : 0;
+        if ( (wide_char_to_multi_byte_result == 0 ? 0xC : 0) == 0 )
+          saved_allocation_size = allocation_size;
+        *(_BYTE *)(a2 + 40) = comparison_result == 0;
+        *(_QWORD *)(a2 + 24) = saved_allocation_size;
+        if ( (wide_char_to_multi_byte_result == 0 ? 0xC : 0) != 0 )
+          return comparison_result;
       }
-      LODWORD(v18) = v12;
-      v15 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v18, 0, 0);
-      if ( v15 )
+      LODWORD(packed_word_bits_3) = saved_allocation_size;
+      wide_char_to_multi_byte_result_2 = crt_wide_char_to_multi_byte(a3, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), packed_word_bits_3, 0, 0);
+      if ( wide_char_to_multi_byte_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v15 - 1LL;
-        return v3;
+        *(_QWORD *)(a2 + 32) = wide_char_to_multi_byte_result_2 - 1LL;
+        return unused_written_slot;
       }
     }
-    v11 = GetLastError();
-    crt_errno_map_os_error(v11);
+    error_code_2 = GetLastError();
+    crt_errno_map_os_error(error_code_2);
     return (unsigned int)*errno_sr();
   }
   if ( !*(_QWORD *)(a2 + 24) )
@@ -6125,18 +6125,18 @@ __int64            sr_chdir_wcs(
       free_base(*(void **)(a2 + 16));
       *(_BYTE *)(a2 + 40) = 0;
     }
-    v7 = sr_path_malloc(1);
-    *(_QWORD *)(a2 + 16) = v7;
-    v8 = v7 == 0 ? 0xC : 0;
-    *(_BYTE *)(a2 + 40) = v8 == 0;
-    *(_QWORD *)(a2 + 24) = v8 == 0;
-    if ( (v7 == 0 ? 0xC : 0) != 0 )
-      return v8;
+    allocated_buffer_2 = sr_path_malloc(1);
+    *(_QWORD *)(a2 + 16) = allocated_buffer_2;
+    comparison_result = allocated_buffer_2 == 0 ? 0xC : 0;
+    *(_BYTE *)(a2 + 40) = comparison_result == 0;
+    *(_QWORD *)(a2 + 24) = comparison_result == 0;
+    if ( (allocated_buffer_2 == 0 ? 0xC : 0) != 0 )
+      return comparison_result;
   }
   **(_BYTE **)(a2 + 16) = 0;
 LABEL_5:
   *(_QWORD *)(a2 + 32) = 0;
-  return v3;
+  return unused_written_slot;
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
@@ -6155,49 +6155,49 @@ __int64 __acrt_get_current_directory_narrow_acp_or_utf8____crt_win32_buffer_inte
 //----- (000000014024BCDC) ----------------------------------------------------
 __int64            __acrt_get_current_directory_wide____crt_win32_buffer_internal_dynamic_resizing(__int64 a1)
 {
-  unsigned int v2;
-  unsigned int v3;
-  __int64 v4;
-  unsigned int v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  unsigned int v9;
+  unsigned int int64_result;
+  unsigned int unused_written_slot;
+  __int64 saved_int64_result;
+  unsigned int int64_result_2;
+  __int64 malloc_base_result;
+  __int64 integer_sum;
+  __int64 integer_difference;
+  unsigned int int64_result_3;
 
-  v2 = ((__int64 (           *)(_QWORD, _QWORD))GetCurrentDirectoryW)(*(unsigned int *)(a1 + 24), *(_QWORD *)(a1 + 16));
-  v3 = 0;
-  v4 = v2;
-  if ( v2 )
+  int64_result = ((__int64 (           *)(_QWORD, _QWORD))GetCurrentDirectoryW)(*(unsigned int *)(a1 + 24), *(_QWORD *)(a1 + 16));
+  unused_written_slot = 0;
+  saved_int64_result = int64_result;
+  if ( int64_result )
   {
-    if ( (unsigned __int64)v2 <= *(_QWORD *)(a1 + 24) )
+    if ( (unsigned __int64)int64_result <= *(_QWORD *)(a1 + 24) )
     {
-      *(_QWORD *)(a1 + 32) = v2;
-      return v3;
+      *(_QWORD *)(a1 + 32) = int64_result;
+      return unused_written_slot;
     }
     if ( *(_BYTE *)(a1 + 40) )
     {
       free_base(*(void **)(a1 + 16));
       *(_BYTE *)(a1 + 40) = 0;
     }
-    v6 = malloc_base();
-    *(_QWORD *)(a1 + 16) = v6;
-    v7 = 0;
-    v8 = -v6;
-    if ( (v8 == 0 ? 0xC : 0) == 0 )
-      v7 = v4 + 1;
-    *(_BYTE *)(a1 + 40) = (v8 == 0 ? 0xC : 0) == 0;
-    *(_QWORD *)(a1 + 24) = v7;
-    if ( (v8 == 0 ? 0xC : 0) != 0 )
-      return v8 == 0 ? 0xC : 0;
-    v9 = ((__int64 (           *)(__int64, _QWORD))GetCurrentDirectoryW)(v7, *(_QWORD *)(a1 + 16));
-    if ( v9 )
+    malloc_base_result = malloc_base();
+    *(_QWORD *)(a1 + 16) = malloc_base_result;
+    integer_sum = 0;
+    integer_difference = -malloc_base_result;
+    if ( (integer_difference == 0 ? 0xC : 0) == 0 )
+      integer_sum = saved_int64_result + 1;
+    *(_BYTE *)(a1 + 40) = (integer_difference == 0 ? 0xC : 0) == 0;
+    *(_QWORD *)(a1 + 24) = integer_sum;
+    if ( (integer_difference == 0 ? 0xC : 0) != 0 )
+      return integer_difference == 0 ? 0xC : 0;
+    int64_result_3 = ((__int64 (           *)(__int64, _QWORD))GetCurrentDirectoryW)(integer_sum, *(_QWORD *)(a1 + 16));
+    if ( int64_result_3 )
     {
-      *(_QWORD *)(a1 + 32) = v9;
-      return v3;
+      *(_QWORD *)(a1 + 32) = int64_result_3;
+      return unused_written_slot;
     }
   }
-  v5 = ((__int64 (*)(void))GetLastError)();
-  crt_errno_map_os_error(v5);
+  int64_result_2 = ((__int64 (*)(void))GetLastError)();
+  crt_errno_map_os_error(int64_result_2);
   return (unsigned int)*errno_sr();
 }
 
@@ -6208,21 +6208,21 @@ __int64            __acrt_get_current_directory_wide____crt_win32_buffer_interna
 __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_internal_dynamic_resizing__call_win32_function___lambda_31b6d45744ab507ef0f4bc45493ab729_(
         __int64 a1)
 {
-  unsigned int v2;
-  __int64 v3;
-  unsigned int v4;
+  unsigned int int64_result;
+  __int64 saved_int64_result;
+  unsigned int int64_result_2;
   __int64 result;
-  __int64 v6;
-  __int64 v7;
-  unsigned int v8;
+  __int64 malloc_base_result;
+  __int64 integer_sum;
+  unsigned int int64_result_3;
 
-  v2 = ((__int64 (           *)(_QWORD, _QWORD))GetCurrentDirectoryW)(*(unsigned int *)(a1 + 24), *(_QWORD *)(a1 + 16));
-  v3 = v2;
-  if ( !v2 )
+  int64_result = ((__int64 (           *)(_QWORD, _QWORD))GetCurrentDirectoryW)(*(unsigned int *)(a1 + 24), *(_QWORD *)(a1 + 16));
+  saved_int64_result = int64_result;
+  if ( !int64_result )
     goto LABEL_2;
-  if ( (unsigned __int64)v2 <= *(_QWORD *)(a1 + 24) )
+  if ( (unsigned __int64)int64_result <= *(_QWORD *)(a1 + 24) )
   {
-    *(_QWORD *)(a1 + 32) = v2;
+    *(_QWORD *)(a1 + 32) = int64_result;
     return 0;
   }
   if ( *(_BYTE *)(a1 + 40) )
@@ -6230,27 +6230,27 @@ __int64            __crt_win32_buffer__wchar_t____crt_win32_buffer_internal_dyna
     free_base(*(void **)(a1 + 16));
     *(_BYTE *)(a1 + 40) = 0;
   }
-  v6 = malloc_base();
-  *(_QWORD *)(a1 + 16) = v6;
-  v7 = 0;
-  result = v6 == 0 ? 0xC : 0;
+  malloc_base_result = malloc_base();
+  *(_QWORD *)(a1 + 16) = malloc_base_result;
+  integer_sum = 0;
+  result = malloc_base_result == 0 ? 0xC : 0;
   if ( !(_DWORD)result )
-    v7 = v3 + 1;
+    integer_sum = saved_int64_result + 1;
   *(_BYTE *)(a1 + 40) = (_DWORD)result == 0;
-  *(_QWORD *)(a1 + 24) = v7;
+  *(_QWORD *)(a1 + 24) = integer_sum;
   if ( !(_DWORD)result )
   {
-    v8 = ((__int64 (           *)(_QWORD, _QWORD))GetCurrentDirectoryW)(
+    int64_result_3 = ((__int64 (           *)(_QWORD, _QWORD))GetCurrentDirectoryW)(
            *(unsigned int *)(a1 + 24),
            *(_QWORD *)(a1 + 16));
-    if ( !v8 )
+    if ( !int64_result_3 )
     {
 LABEL_2:
-      v4 = ((__int64 (*)(void))GetLastError)();
-      crt_errno_map_os_error(v4);
+      int64_result_2 = ((__int64 (*)(void))GetLastError)();
+      crt_errno_map_os_error(int64_result_2);
       return (unsigned int)*errno_sr();
     }
-    *(_QWORD *)(a1 + 32) = v8;
+    *(_QWORD *)(a1 + 32) = int64_result_3;
     return 0;
   }
   return result;
@@ -6262,55 +6262,55 @@ LABEL_2:
 //----- (000000014024BE64) ----------------------------------------------------
 __int64            common_chdir__char(_BYTE *a1)
 {
-  unsigned int v1;
+  unsigned int int64_result;
   int current_directory_narrow_acp_or;
-  _BYTE *v3;
-  char v4;
-  unsigned int v5;
-  __int64 v7;
-  _BYTE v8[2];
-  __int16 v9;
-  _QWORD v10[2];
+  _BYTE *cached_block;
+  char loaded_word;
+  unsigned int int64_result_2;
+  __int64 unused_local;
+  _BYTE scratch_buffer[2];
+  __int16 unused_written_slot;
+  _QWORD scratch_buffer_2[2];
   void *Block;
-  __int64 v12;
-  __int64 v13;
-  int v14;
-  _DWORD v15[34];
-  __int64 v16;
+  __int64 unused_written_slot_2;
+  __int64 unused_written_slot_3;
+  int unrecovered_register_value;
+  _DWORD scratch_buffer_3[34];
+  __int64 unused_local_2;
 
   if ( a1 )
   {
     if ( (unsigned int)_acrt_SetCurrentDirectoryA(a1) )
     {
-      v13 = 0;
-      v10[0] = (uint64)(uintptr_t)(v15);
-      v10[1] = 261;
-      v12 = 261;
-      Block = v15;
-      LOBYTE(v14) = 0;
-      current_directory_narrow_acp_or = __acrt_get_current_directory_narrow_acp_or_utf8____crt_win32_buffer_internal_dynamic_resizing((__int64)v10);
-      v3 = Block;
+      unused_written_slot_3 = 0;
+      scratch_buffer_2[0] = (uint64)(uintptr_t)(scratch_buffer_3);
+      scratch_buffer_2[1] = 261;
+      unused_written_slot_2 = 261;
+      Block = scratch_buffer_3;
+      LOBYTE(unrecovered_register_value) = 0;
+      current_directory_narrow_acp_or = __acrt_get_current_directory_narrow_acp_or_utf8____crt_win32_buffer_internal_dynamic_resizing((__int64)scratch_buffer_2);
+      cached_block = Block;
       if ( !current_directory_narrow_acp_or )
       {
-        if ( (v4 = *(_BYTE *)Block, *(_BYTE *)Block != 92) && v4 != 47 || v4 != *((_BYTE *)Block + 1) )
+        if ( (loaded_word = *(_BYTE *)Block, *(_BYTE *)Block != 92) && loaded_word != 47 || loaded_word != *((_BYTE *)Block + 1) )
         {
-          v8[0] = 61;
-          v8[1] = toupper(v4);
-          v9 = 58;
-          if ( !(unsigned int)_acrt_SetEnvironmentVariableA(v8, v3) )
+          scratch_buffer[0] = 61;
+          scratch_buffer[1] = toupper(loaded_word);
+          unused_written_slot = 58;
+          if ( !(unsigned int)_acrt_SetEnvironmentVariableA(scratch_buffer, cached_block) )
           {
-            v5 = ((__int64 (*)(void))GetLastError)();
-            crt_errno_map_os_error(v5);
+            int64_result_2 = ((__int64 (*)(void))GetLastError)();
+            crt_errno_map_os_error(int64_result_2);
           }
         }
       }
-      if ( (_BYTE)v14 )
-        free_base(v3);
+      if ( (_BYTE)unrecovered_register_value )
+        free_base(cached_block);
     }
     else
     {
-      v1 = ((__int64 (*)(void))GetLastError)();
-      crt_errno_map_os_error(v1);
+      int64_result = ((__int64 (*)(void))GetLastError)();
+      crt_errno_map_os_error(int64_result);
     }
   }
   else
@@ -6327,55 +6327,55 @@ __int64            common_chdir__char(_BYTE *a1)
 //----- (000000014024BF88) ----------------------------------------------------
 __int64            common_chdir__wchar_t(__int64 a1)
 {
-  unsigned int v1;
+  unsigned int int64_result;
   int current_directory;
-  void *v3;
-  __int16 v4;
-  unsigned int v5;
-  __int64 v7;
-  _QWORD v8[2];
+  void *cached_lpvalue;
+  __int16 loaded_word;
+  unsigned int int64_result_2;
+  __int64 unused_local;
+  _QWORD scratch_buffer[2];
   char *lpValue;
-  __int64 v10;
-  __int64 v11;
-  __int16 v12;
+  __int64 unused_written_slot;
+  __int64 unused_written_slot_2;
+  __int16 unrecovered_register_value;
   _WORD Name[2];
-  int v14;
-  _BYTE v15[528];
-  __int64 v16;
+  int unused_written_slot_3;
+  _BYTE scratch_buffer_2[528];
+  __int64 unused_local_2;
 
   if ( a1 )
   {
     if ( (unsigned int)((__int64 (*)(void))SetCurrentDirectoryW)() )
     {
-      v11 = 0;
-      v8[1] = 261;
-      v8[0] = (uint64)(uintptr_t)(v15);
-      v10 = 261;
-      lpValue = v15;
-      LOBYTE(v12) = 0;
-      current_directory = __acrt_get_current_directory_wide____crt_win32_buffer_internal_dynamic_resizing((__int64)v8);
-      v3 = lpValue;
+      unused_written_slot_2 = 0;
+      scratch_buffer[1] = 261;
+      scratch_buffer[0] = (uint64)(uintptr_t)(scratch_buffer_2);
+      unused_written_slot = 261;
+      lpValue = scratch_buffer_2;
+      LOBYTE(unrecovered_register_value) = 0;
+      current_directory = __acrt_get_current_directory_wide____crt_win32_buffer_internal_dynamic_resizing((__int64)scratch_buffer);
+      cached_lpvalue = lpValue;
       if ( !current_directory )
       {
-        if ( (v4 = *(_WORD *)lpValue, *(_WORD *)lpValue != 92) && v4 != 47 || v4 != *((_WORD *)lpValue + 1) )
+        if ( (loaded_word = *(_WORD *)lpValue, *(_WORD *)lpValue != 92) && loaded_word != 47 || loaded_word != *((_WORD *)lpValue + 1) )
         {
           Name[1] = toupper(*lpValue);
           Name[0] = 61;
-          v14 = 58;
-          if ( !(unsigned int)((__int64 (           *)(_WORD *, void *))SetEnvironmentVariableW)(Name, v3) )
+          unused_written_slot_3 = 58;
+          if ( !(unsigned int)((__int64 (           *)(_WORD *, void *))SetEnvironmentVariableW)(Name, cached_lpvalue) )
           {
-            v5 = ((__int64 (*)(void))GetLastError)();
-            crt_errno_map_os_error(v5);
+            int64_result_2 = ((__int64 (*)(void))GetLastError)();
+            crt_errno_map_os_error(int64_result_2);
           }
         }
       }
-      if ( (_BYTE)v12 )
-        free_base(v3);
+      if ( (_BYTE)unrecovered_register_value )
+        free_base(cached_lpvalue);
     }
     else
     {
-      v1 = ((__int64 (*)(void))GetLastError)();
-      crt_errno_map_os_error(v1);
+      int64_result = ((__int64 (*)(void))GetLastError)();
+      crt_errno_map_os_error(int64_result);
     }
   }
   else
@@ -6394,24 +6394,24 @@ __int64            common_chdir__wchar_t(__int64 a1)
 //----- (000000014024C0F0) ----------------------------------------------------
 __int64            sub_14024C0F0(char *a1)
 {
-  char v1;
-  char v3;
-  unsigned int v4;
-  char v6;
-  char v7;
-  __int16 v8;
+  char input_byte;
+  char toupper_result;
+  unsigned int int64_result;
+  char selection_code;
+  char unused_written_slot;
+  __int16 unused_written_slot_2;
 
-  v1 = *a1;
-  if ( (*a1 == 92 || v1 == 47) && v1 == a1[1] )
+  input_byte = *a1;
+  if ( (*a1 == 92 || input_byte == 47) && input_byte == a1[1] )
     return 0;
-  v3 = toupper(v1);
-  v6 = 61;
-  v7 = v3;
-  v8 = 58;
-  if ( (unsigned int)_acrt_SetEnvironmentVariableA(&v6, a1) )
+  toupper_result = toupper(input_byte);
+  selection_code = 61;
+  unused_written_slot = toupper_result;
+  unused_written_slot_2 = 58;
+  if ( (unsigned int)_acrt_SetEnvironmentVariableA(&selection_code, a1) )
     return 0;
-  v4 = ((__int64 (*)(void))GetLastError)();
-  crt_errno_map_os_error(v4);
+  int64_result = ((__int64 (*)(void))GetLastError)();
+  crt_errno_map_os_error(int64_result);
   return 0xFFFFFFFFLL;
 }
 
@@ -6420,23 +6420,23 @@ __int64            sub_14024C0F0(char *a1)
 //----- (000000014024C14C) ----------------------------------------------------
 __int64            set_cwd_environment_variable__wchar_t(__int16 *a1)
 {
-  __int16 v1;
-  unsigned int v3;
-  __int64 v5;
+  __int16 loaded_word;
+  unsigned int int64_result;
+  __int64 unused_local;
   _WORD Name[2];
-  int v7;
-  __int64 v8;
+  int unused_written_slot;
+  __int64 unused_local_2;
 
-  v1 = *a1;
-  if ( *a1 != 92 && v1 != 47 || v1 != a1[1] )
+  loaded_word = *a1;
+  if ( *a1 != 92 && loaded_word != 47 || loaded_word != a1[1] )
   {
     Name[1] = toupper(*(char *)a1);
     Name[0] = 61;
-    v7 = 58;
+    unused_written_slot = 58;
     if ( !(unsigned int)((__int64 (           *)(_WORD *, __int16 *))SetEnvironmentVariableW)(Name, a1) )
     {
-      v3 = ((__int64 (*)(void))GetLastError)();
-      crt_errno_map_os_error(v3);
+      int64_result = ((__int64 (*)(void))GetLastError)();
+      crt_errno_map_os_error(int64_result);
     }
   }
   return 0; /* the function has no caller */
@@ -6450,10 +6450,10 @@ __int64            set_cwd_environment_variable__wchar_t(__int16 *a1)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_830(__int64 a1, unsigned int a2, __int64 a3, __int64 a4, int a5)
 {
-  __int64 v6;
+  __int64 packed_word_bits;
 
-  LODWORD(v6) = a5;
-  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, v6, 0, 0);
+  LODWORD(packed_word_bits) = a5;
+  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, packed_word_bits, 0, 0);
 }
 
 //----- (000000014024C22C) ----------------------------------------------------
@@ -6489,59 +6489,59 @@ __int64 crt_chdir(_BYTE *path) {
 //----- (000000014024C360) ----------------------------------------------------
 void            AFX_MODULE_STATE__CreateActivationContext(sr_anon_129 *this)
 {
-  unsigned int v1;
-  void *v2;
-  __int16 v3;
-  unsigned int v4;
-  __int64 v5;
-  _QWORD v6[2];
+  unsigned int int64_result;
+  void *cached_lpvalue;
+  __int16 loaded_word;
+  unsigned int int64_result_2;
+  __int64 unused_local;
+  _QWORD scratch_buffer[2];
   char *lpValue;
-  __int64 v8;
-  __int64 v9;
-  __int16 v10;
+  __int64 unused_written_slot;
+  __int64 unused_written_slot_2;
+  __int16 unrecovered_register_value;
   _WORD Name[2];
-  int v12;
-  _BYTE v13[528];
-  __int64 v14;
+  int unused_written_slot_3;
+  _BYTE scratch_buffer_2[528];
+  __int64 unused_local_2;
 
   if ( this )
   {
     if ( (unsigned int)((__int64 (*)(void))SetCurrentDirectoryW)() )
     {
-      v9 = 0;
-      v6[1] = 261;
-      v6[0] = (uint64)(uintptr_t)(v13);
-      v8 = 261;
-      lpValue = v13;
-      LOBYTE(v10) = 0;
-      if ( (unsigned int)__acrt_get_current_directory_wide____crt_win32_buffer_internal_dynamic_resizing((__int64)v6) )
+      unused_written_slot_2 = 0;
+      scratch_buffer[1] = 261;
+      scratch_buffer[0] = (uint64)(uintptr_t)(scratch_buffer_2);
+      unused_written_slot = 261;
+      lpValue = scratch_buffer_2;
+      LOBYTE(unrecovered_register_value) = 0;
+      if ( (unsigned int)__acrt_get_current_directory_wide____crt_win32_buffer_internal_dynamic_resizing((__int64)scratch_buffer) )
       {
-        if ( (_BYTE)v10 )
+        if ( (_BYTE)unrecovered_register_value )
           free_base(lpValue);
       }
       else
       {
-        v2 = lpValue;
-        v3 = *(_WORD *)lpValue;
-        if ( *(_WORD *)lpValue != 92 && v3 != 47 || v3 != *((_WORD *)lpValue + 1) )
+        cached_lpvalue = lpValue;
+        loaded_word = *(_WORD *)lpValue;
+        if ( *(_WORD *)lpValue != 92 && loaded_word != 47 || loaded_word != *((_WORD *)lpValue + 1) )
         {
           Name[1] = toupper(*lpValue);
           Name[0] = 61;
-          v12 = 58;
-          if ( !(unsigned int)((__int64 (           *)(_WORD *, void *))SetEnvironmentVariableW)(Name, v2) )
+          unused_written_slot_3 = 58;
+          if ( !(unsigned int)((__int64 (           *)(_WORD *, void *))SetEnvironmentVariableW)(Name, cached_lpvalue) )
           {
-            v4 = ((__int64 (*)(void))GetLastError)();
-            crt_errno_map_os_error(v4);
+            int64_result_2 = ((__int64 (*)(void))GetLastError)();
+            crt_errno_map_os_error(int64_result_2);
           }
         }
-        if ( (_BYTE)v10 )
-          free_base(v2);
+        if ( (_BYTE)unrecovered_register_value )
+          free_base(cached_lpvalue);
       }
     }
     else
     {
-      v1 = ((__int64 (*)(void))GetLastError)();
-      crt_errno_map_os_error(v1);
+      int64_result = ((__int64 (*)(void))GetLastError)();
+      crt_errno_map_os_error(int64_result);
     }
   }
   else
@@ -6561,16 +6561,16 @@ __int64            __acrt_convert_wcs_mbs_cp__char__wchar_t___lambda_7c9dea7b4ca
         _BYTE *a1,
         __int64 a2)
 {
-  __int64 v3;
+  __int64 malloc_base_result;
   __int64 result;
-  int v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  unsigned int v9;
-  __int64 v10;
-  __int64 v11;
-  int v12;
+  int multi_byte_to_wide_char_result;
+  __int64 unrecovered_register_value;
+  __int64 unrecovered_register_value_2;
+  __int64 saved_multi_byte_to_wide_char_result;
+  unsigned int int64_result;
+  __int64 malloc_base_result_2;
+  __int64 cached_multi_byte_to_wide_char_result;
+  int multi_byte_to_wide_char_result_2;
 
   if ( !a1 )
   {
@@ -6585,37 +6585,37 @@ __int64            __acrt_convert_wcs_mbs_cp__char__wchar_t___lambda_7c9dea7b4ca
   }
   if ( *a1 )
   {
-    v5 = crt_multi_byte_to_wide_char();
-    v8 = v5;
-    if ( v5 )
+    multi_byte_to_wide_char_result = crt_multi_byte_to_wide_char();
+    saved_multi_byte_to_wide_char_result = multi_byte_to_wide_char_result;
+    if ( multi_byte_to_wide_char_result )
     {
-      if ( (unsigned __int64)v5 > *(_QWORD *)(a2 + 24) )
+      if ( (unsigned __int64)multi_byte_to_wide_char_result > *(_QWORD *)(a2 + 24) )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free_base(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v10 = malloc_base();
-        *(_QWORD *)(a2 + 16) = v10;
-        v11 = 0;
-        result = v10 == 0 ? 0xC : 0;
+        malloc_base_result_2 = malloc_base();
+        *(_QWORD *)(a2 + 16) = malloc_base_result_2;
+        cached_multi_byte_to_wide_char_result = 0;
+        result = malloc_base_result_2 == 0 ? 0xC : 0;
         if ( !(_DWORD)result )
-          v11 = v8;
+          cached_multi_byte_to_wide_char_result = saved_multi_byte_to_wide_char_result;
         *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
-        *(_QWORD *)(a2 + 24) = v11;
+        *(_QWORD *)(a2 + 24) = cached_multi_byte_to_wide_char_result;
         if ( (_DWORD)result )
           return result;
       }
-      v12 = crt_multi_byte_to_wide_char();
-      if ( v12 )
+      multi_byte_to_wide_char_result_2 = crt_multi_byte_to_wide_char();
+      if ( multi_byte_to_wide_char_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v12 - 1LL;
+        *(_QWORD *)(a2 + 32) = multi_byte_to_wide_char_result_2 - 1LL;
         return 0;
       }
     }
-    v9 = ((__int64 (           *)(__int64, __int64))GetLastError)(v7, v6);
-    crt_errno_map_os_error(v9);
+    int64_result = ((__int64 (           *)(__int64, __int64))GetLastError)(unrecovered_register_value_2, unrecovered_register_value);
+    crt_errno_map_os_error(int64_result);
     return (unsigned int)*errno_sr();
   }
   if ( *(_QWORD *)(a2 + 24) )
@@ -6625,9 +6625,9 @@ __int64            __acrt_convert_wcs_mbs_cp__char__wchar_t___lambda_7c9dea7b4ca
     free_base(*(void **)(a2 + 16));
     *(_BYTE *)(a2 + 40) = 0;
   }
-  v3 = malloc_base();
-  *(_QWORD *)(a2 + 16) = v3;
-  result = v3 == 0 ? 0xC : 0;
+  malloc_base_result = malloc_base();
+  *(_QWORD *)(a2 + 16) = malloc_base_result;
+  result = malloc_base_result == 0 ? 0xC : 0;
   *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
   *(_QWORD *)(a2 + 24) = (_DWORD)result == 0;
   if ( !(_DWORD)result )
@@ -6654,45 +6654,45 @@ __int64            unknown_libname_831()
 //----- (000000014024C658) ----------------------------------------------------
 int         mkdir(     char *Path)
 {
-  int v3;
-  _QWORD v4[3];
-  char v5;
-  _QWORD v6[2];
+  int unused_written_slot;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
+  _QWORD scratch_buffer_2[2];
   void *Block;
-  __int64 v8;
-  __int64 v9;
-  char v10;
+  __int64 unused_written_slot_2;
+  __int64 unused_written_slot_3;
+  char selection_flag;
 
   if ( !Path )
     return wmkdir(nullptr);
-  v6[0] = 0;
-  v6[1] = 0;
+  scratch_buffer_2[0] = 0;
+  scratch_buffer_2[1] = 0;
   Block = nullptr;
-  v8 = 0;
-  v9 = 0;
-  v10 = 0;
-  crt_locale_update((_LocaleUpdate *)v4, nullptr);
-  if ( *(_DWORD *)(v4[1] + 12LL) == 65001 )
+  unused_written_slot_2 = 0;
+  unused_written_slot_3 = 0;
+  selection_flag = 0;
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, nullptr);
+  if ( *(_DWORD *)(scratch_buffer[1] + 12LL) == 65001 )
   {
-    if ( v5 )
-      *(_DWORD *)(v4[0] + 936LL) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   }
   else if ( (unsigned int)sub_14024EDA4() )
   {
-    if ( v5 )
-      *(_DWORD *)(v4[0] + 936LL) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   }
-  else if ( v5 )
+  else if ( unrecovered_register_value )
   {
-    *(_DWORD *)(v4[0] + 936LL) &= ~2u;
+    *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   }
-  if ( (unsigned int)sub_140238394(Path, (__int64)v6) )
-    v3 = -1;
+  if ( (unsigned int)sub_140238394(Path, (__int64)scratch_buffer_2) )
+    unused_written_slot = -1;
   else
-    v3 = wmkdir((     sr_anon_49 *)Block);
-  if ( v10 )
+    unused_written_slot = wmkdir((     sr_anon_49 *)Block);
+  if ( selection_flag )
     free_base(Block);
-  return v3;
+  return unused_written_slot;
 }
 
 //----- (000000014024C754) ----------------------------------------------------
@@ -6716,11 +6716,11 @@ void         __attribute__((noreturn)) abort()
 //----- (000000014024C7AC) ----------------------------------------------------
 __int64            sub_14024C7AC(_BYTE *a1, __int64 a2, __int64 a3)
 {
-  int *v3;
-  unsigned int v4;
-  _BYTE *v6;
-  __int64 v7;
-  char v8;
+  int *unused_written_slot;
+  unsigned int selection_code;
+  _BYTE *buffer_cursor;
+  __int64 integer_difference;
+  char table_value;
 
   if ( !a1 || !a2 )
     goto LABEL_5;
@@ -6728,20 +6728,20 @@ __int64            sub_14024C7AC(_BYTE *a1, __int64 a2, __int64 a3)
   {
     *a1 = 0;
 LABEL_5:
-    v3 = errno_sr();
-    v4 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_6:
-    *v3 = v4;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v4;
+    return selection_code;
   }
-  v6 = a1;
-  v7 = a3 - (_QWORD)a1;
+  buffer_cursor = a1;
+  integer_difference = a3 - (_QWORD)a1;
   do
   {
-    v8 = v6[v7];
-    *v6++ = v8;
-    if ( !v8 )
+    table_value = buffer_cursor[integer_difference];
+    *buffer_cursor++ = table_value;
+    if ( !table_value )
       break;
     --a2;
   }
@@ -6749,8 +6749,8 @@ LABEL_6:
   if ( !a2 )
   {
     *a1 = 0;
-    v3 = errno_sr();
-    v4 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_6;
   }
   return 0;
@@ -6759,33 +6759,33 @@ LABEL_6:
 //----- (000000014024C810) ----------------------------------------------------
 __int64            strcpy_s_sr(_BYTE *a1, __int64 a2, __int64 a3)
 {
-  unsigned int v3;
-  int *v4;
-  _BYTE *v6;
-  __int64 v7;
-  char v8;
+  unsigned int selection_code;
+  int *unused_written_slot;
+  _BYTE *buffer_cursor;
+  __int64 integer_difference;
+  char table_value;
 
-  v3 = 0;
+  selection_code = 0;
   if ( !a1 || !a2 )
     goto LABEL_5;
   if ( !a3 )
   {
     *a1 = 0;
 LABEL_5:
-    v4 = errno_sr();
-    v3 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_6:
-    *v4 = v3;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v3;
+    return selection_code;
   }
-  v6 = a1;
-  v7 = a3 - (_QWORD)a1;
+  buffer_cursor = a1;
+  integer_difference = a3 - (_QWORD)a1;
   do
   {
-    v8 = v6[v7];
-    *v6++ = v8;
-    if ( !v8 )
+    table_value = buffer_cursor[integer_difference];
+    *buffer_cursor++ = table_value;
+    if ( !table_value )
       break;
     --a2;
   }
@@ -6793,11 +6793,11 @@ LABEL_6:
   if ( !a2 )
   {
     *a1 = 0;
-    v4 = errno_sr();
-    v3 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_6;
   }
-  return v3;
+  return selection_code;
 }
 
 // 14024C810: invalid function type 'errno_t __cdecl strcpy_s(char *Destination, rsize_t SizeInBytes, const char *Source)' has been ignored
@@ -6814,13 +6814,13 @@ __int64 j__calloc_base()
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_834(__int64 a1, __int64 *a2, unsigned int a3, struct __crt_locale_pointers *a4)
 {
-  __int64 v5[3];
+  __int64 scratch_buffer[3];
 
-  v5[0] = a1;
-  v5[1] = (__int64)a2;
+  scratch_buffer[0] = a1;
+  scratch_buffer[1] = (__int64)a2;
   if ( a2 )
     *a2 = a1;
-  return sub_14023B240(a4, v5, a3, 1);
+  return sub_14023B240(a4, scratch_buffer, a3, 1);
 }
 
 //----- (000000014024C8D0) ----------------------------------------------------
@@ -6832,13 +6832,13 @@ __int64            unknown_libname_835(
         unsigned int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v5[0] = a1;
-  v5[1] = a2;
+  scratch_buffer[0] = a1;
+  scratch_buffer[1] = a2;
   if ( a2 )
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
-  return sub_14023B548(a4, v5, a3, 1);
+  return sub_14023B548(a4, scratch_buffer, a3, 1);
 }
 
 //----- (000000014024C900) ----------------------------------------------------
@@ -6846,13 +6846,13 @@ __int64            unknown_libname_835(
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_836(char *a1, char *a2, signed int a3, struct __crt_locale_pointers *a4)
 {
-  char *v5[3];
+  char *scratch_buffer[3];
 
-  v5[0] = a1;
-  v5[1] = a2;
+  scratch_buffer[0] = a1;
+  scratch_buffer[1] = a2;
   if ( a2 )
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
-  return sub_14023BBF0(a4, v5, a3, 1u);
+  return sub_14023BBF0(a4, scratch_buffer, a3, 1u);
 }
 
 //----- (000000014024C930) ----------------------------------------------------
@@ -6864,13 +6864,13 @@ unsigned __int64            unknown_libname_837(
         signed int a3,
         struct __crt_locale_pointers *a4)
 {
-  unsigned __int16 *v5[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v5[0] = a1;
-  v5[1] = a2;
+  scratch_buffer[0] = a1;
+  scratch_buffer[1] = a2;
   if ( a2 )
     *(_QWORD *)a2 = (uint64)(uintptr_t)(a1);
-  return sub_14023BEE0(a4, v5, a3, 1u);
+  return sub_14023BEE0(a4, scratch_buffer, a3, 1u);
 }
 
 //----- (000000014024C960) ----------------------------------------------------
@@ -6878,11 +6878,11 @@ unsigned __int64            unknown_libname_837(
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_838(char *a1)
 {
-  char *v2[3];
+  char *scratch_buffer[3];
 
-  v2[1] = nullptr;
-  v2[0] = a1;
-  return sub_14023BBF0(nullptr, v2, 10, 1u);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023BBF0(nullptr, scratch_buffer, 10, 1u);
 }
 
 //----- (000000014024C98C) ----------------------------------------------------
@@ -6890,11 +6890,11 @@ unsigned __int64            unknown_libname_838(char *a1)
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_839(char *a1, struct __crt_locale_pointers *a2)
 {
-  char *v3[3];
+  char *scratch_buffer[3];
 
-  v3[1] = nullptr;
-  v3[0] = a1;
-  return sub_14023BBF0(a2, v3, 10, 1u);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023BBF0(a2, scratch_buffer, 10, 1u);
 }
 
 //----- (000000014024C9BC) ----------------------------------------------------
@@ -6902,11 +6902,11 @@ unsigned __int64            unknown_libname_839(char *a1, struct __crt_locale_po
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_840(__int64 a1, struct __crt_locale_pointers *a2)
 {
-  __int64 v3[3];
+  __int64 scratch_buffer[3];
 
-  v3[1] = 0;
-  v3[0] = a1;
-  return sub_14023B240(a2, v3, 0xAu, 1);
+  scratch_buffer[1] = 0;
+  scratch_buffer[0] = a1;
+  return sub_14023B240(a2, scratch_buffer, 0xAu, 1);
 }
 
 //----- (000000014024C9EC) ----------------------------------------------------
@@ -6914,11 +6914,11 @@ __int64            unknown_libname_840(__int64 a1, struct __crt_locale_pointers 
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_841(__int64 a1, struct __crt_locale_pointers *a2)
 {
-  __int64 v3[3];
+  __int64 scratch_buffer[3];
 
-  v3[1] = 0;
-  v3[0] = a1;
-  return sub_14023B240(a2, v3, 0xAu, 1);
+  scratch_buffer[1] = 0;
+  scratch_buffer[0] = a1;
+  return sub_14023B240(a2, scratch_buffer, 0xAu, 1);
 }
 
 //----- (000000014024CA1C) ----------------------------------------------------
@@ -6926,11 +6926,11 @@ __int64            unknown_libname_841(__int64 a1, struct __crt_locale_pointers 
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_842(char *a1, struct __crt_locale_pointers *a2)
 {
-  char *v3[3];
+  char *scratch_buffer[3];
 
-  v3[1] = nullptr;
-  v3[0] = a1;
-  return sub_14023BBF0(a2, v3, 10, 1u);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023BBF0(a2, scratch_buffer, 10, 1u);
 }
 
 //----- (000000014024CA4C) ----------------------------------------------------
@@ -6938,11 +6938,11 @@ unsigned __int64            unknown_libname_842(char *a1, struct __crt_locale_po
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_843(unsigned __int16 *a1)
 {
-  unsigned __int16 *v2[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v2[1] = nullptr;
-  v2[0] = a1;
-  return sub_14023B548(nullptr, v2, 0xAu, 1);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023B548(nullptr, scratch_buffer, 0xAu, 1);
 }
 
 //----- (000000014024CA78) ----------------------------------------------------
@@ -6950,11 +6950,11 @@ __int64            unknown_libname_843(unsigned __int16 *a1)
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_844(unsigned __int16 *a1)
 {
-  unsigned __int16 *v2[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v2[1] = nullptr;
-  v2[0] = a1;
-  return sub_14023BEE0(nullptr, v2, 10, 1u);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023BEE0(nullptr, scratch_buffer, 10, 1u);
 }
 
 //----- (000000014024CAA4) ----------------------------------------------------
@@ -6962,11 +6962,11 @@ unsigned __int64            unknown_libname_844(unsigned __int16 *a1)
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_845(unsigned __int16 *a1, struct __crt_locale_pointers *a2)
 {
-  unsigned __int16 *v3[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v3[1] = nullptr;
-  v3[0] = a1;
-  return sub_14023BEE0(a2, v3, 10, 1u);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023BEE0(a2, scratch_buffer, 10, 1u);
 }
 
 //----- (000000014024CAD4) ----------------------------------------------------
@@ -6974,11 +6974,11 @@ unsigned __int64            unknown_libname_845(unsigned __int16 *a1, struct __c
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_846(unsigned __int16 *a1, struct __crt_locale_pointers *a2)
 {
-  unsigned __int16 *v3[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v3[1] = nullptr;
-  v3[0] = a1;
-  return sub_14023B548(a2, v3, 0xAu, 1);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023B548(a2, scratch_buffer, 0xAu, 1);
 }
 
 //----- (000000014024CB04) ----------------------------------------------------
@@ -6986,11 +6986,11 @@ __int64            unknown_libname_846(unsigned __int16 *a1, struct __crt_locale
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_847(unsigned __int16 *a1)
 {
-  unsigned __int16 *v2[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v2[1] = nullptr;
-  v2[0] = a1;
-  return sub_14023B548(nullptr, v2, 0xAu, 1);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023B548(nullptr, scratch_buffer, 0xAu, 1);
 }
 
 //----- (000000014024CB30) ----------------------------------------------------
@@ -6998,11 +6998,11 @@ __int64            unknown_libname_847(unsigned __int16 *a1)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_848(unsigned __int16 *a1, struct __crt_locale_pointers *a2)
 {
-  unsigned __int16 *v3[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v3[1] = nullptr;
-  v3[0] = a1;
-  return sub_14023B548(a2, v3, 0xAu, 1);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023B548(a2, scratch_buffer, 0xAu, 1);
 }
 
 //----- (000000014024CB60) ----------------------------------------------------
@@ -7010,11 +7010,11 @@ __int64            unknown_libname_848(unsigned __int16 *a1, struct __crt_locale
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_849(unsigned __int16 *a1)
 {
-  unsigned __int16 *v2[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v2[1] = nullptr;
-  v2[0] = a1;
-  return sub_14023BEE0(nullptr, v2, 10, 1u);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023BEE0(nullptr, scratch_buffer, 10, 1u);
 }
 
 //----- (000000014024CB8C) ----------------------------------------------------
@@ -7022,11 +7022,11 @@ unsigned __int64            unknown_libname_849(unsigned __int16 *a1)
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_850(unsigned __int16 *a1, struct __crt_locale_pointers *a2)
 {
-  unsigned __int16 *v3[3];
+  unsigned __int16 *scratch_buffer[3];
 
-  v3[1] = nullptr;
-  v3[0] = a1;
-  return sub_14023BEE0(a2, v3, 10, 1u);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023BEE0(a2, scratch_buffer, 10, 1u);
 }
 
 //----- (000000014024CBBC) ----------------------------------------------------
@@ -7034,11 +7034,11 @@ unsigned __int64            unknown_libname_850(unsigned __int16 *a1, struct __c
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_851(__int64 a1)
 {
-  __int64 v2[3];
+  __int64 scratch_buffer[3];
 
-  v2[1] = 0;
-  v2[0] = a1;
-  return sub_14023B240(nullptr, v2, 0xAu, 1);
+  scratch_buffer[1] = 0;
+  scratch_buffer[0] = a1;
+  return sub_14023B240(nullptr, scratch_buffer, 0xAu, 1);
 }
 
 //----- (000000014024CBE8) ----------------------------------------------------
@@ -7046,11 +7046,11 @@ __int64            unknown_libname_851(__int64 a1)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_852(__int64 a1)
 {
-  __int64 v2[3];
+  __int64 scratch_buffer[3];
 
-  v2[1] = 0;
-  v2[0] = a1;
-  return sub_14023B240(nullptr, v2, 0xAu, 1);
+  scratch_buffer[1] = 0;
+  scratch_buffer[0] = a1;
+  return sub_14023B240(nullptr, scratch_buffer, 0xAu, 1);
 }
 
 //----- (000000014024CC14) ----------------------------------------------------
@@ -7058,11 +7058,11 @@ __int64            unknown_libname_852(__int64 a1)
 // Microsoft VisualC 64bit universal runtime
 unsigned __int64            unknown_libname_853(char *a1)
 {
-  char *v2[3];
+  char *scratch_buffer[3];
 
-  v2[1] = nullptr;
-  v2[0] = a1;
-  return sub_14023BBF0(nullptr, v2, 10, 1u);
+  scratch_buffer[1] = nullptr;
+  scratch_buffer[0] = a1;
+  return sub_14023BBF0(nullptr, scratch_buffer, 10, 1u);
 }
 
 //----- (000000014024CC40) ----------------------------------------------------
@@ -7081,24 +7081,24 @@ __int64            wcsncmp_sr(_WORD *a1, _WORD *a2, __int64 a3)
 //----- (000000014024CCAC) ----------------------------------------------------
 __int64            capture_current_context_0(__m128i *ContextRecord)
 {
-  __int64 v2;
+  __int64 table_value;
   __int64 result;
   unsigned __int64 ImageBase;
-  unsigned __int64 v5;
-  __int64 v6;
+  unsigned __int64 callee_output_word;
+  __int64 callee_output_word_2;
 
   ((void (*)(void))RtlCaptureContext)();
-  v2 = SR_VEC_LANES(128, ContextRecord[15], i64)[1];
-  result = ((__int64 (           *)(__int64, unsigned __int64 *, _QWORD))RtlLookupFunctionEntry)(v2, &ImageBase, 0);
+  table_value = SR_VEC_LANES(128, ContextRecord[15], i64)[1];
+  result = ((__int64 (           *)(__int64, unsigned __int64 *, _QWORD))RtlLookupFunctionEntry)(table_value, &ImageBase, 0);
   if ( result )
     return ((__int64 (           *)(_QWORD, unsigned __int64, __int64, __int64, __m128i *, __int64 *, unsigned __int64 *, _QWORD))RtlVirtualUnwind)(
              0,
              ImageBase,
-             v2,
+             table_value,
              result,
              ContextRecord,
-             &v6,
-             &v5,
+             &callee_output_word_2,
+             &callee_output_word,
              0);
   return result;
 }
@@ -7110,50 +7110,50 @@ __int64            capture_current_context_0(__m128i *ContextRecord)
 //----- (000000014024CD24) ----------------------------------------------------
 __int64            sub_14024CD24(int a1, int a2, int a3)
 {
-  __int64 v6;
-  __int64 v7;
-  BOOL v8;
-  __int64 v10;
+  __int64 table_value;
+  __int64 int64_result;
+  BOOL isdebuggerpresent_result;
+  __int64 unused_local;
   unsigned __int64 ImageBase;
   _QWORD ExceptionInfo[2];
-  unsigned __int64 v13;
-  __int128 v14;
-  _DWORD v15[4];
-  void *v16;
+  unsigned __int64 callee_output_word;
+  __int128 packed_vector;
+  _DWORD scratch_buffer[4];
+  void *unused_written_slot;
   _QWORD ContextRecord[156];
   void *retaddr;
-  __int64 v19;
+  __int64 callee_output_word_2;
 
   if ( a1 != -1 )
     sub_1401FBFB0();
-  crt_memset((void *)(uintptr_t)(v15), 0, 0x98u);
+  crt_memset((void *)(uintptr_t)(scratch_buffer), 0, 0x98u);
   crt_memset((void *)(uintptr_t)(ContextRecord), 0, 0x4D0u);
-  ExceptionInfo[0] = (uint64)(uintptr_t)(v15);
+  ExceptionInfo[0] = (uint64)(uintptr_t)(scratch_buffer);
   ExceptionInfo[1] = (uint64)(uintptr_t)(ContextRecord);
   ((void (           *)(_QWORD *))RtlCaptureContext)(ContextRecord);
-  v6 = ContextRecord[31];
-  v7 = ((__int64 (           *)(_QWORD, unsigned __int64 *, _QWORD))RtlLookupFunctionEntry)(
+  table_value = ContextRecord[31];
+  int64_result = ((__int64 (           *)(_QWORD, unsigned __int64 *, _QWORD))RtlLookupFunctionEntry)(
          ContextRecord[31],
          &ImageBase,
          0);
-  if ( v7 )
+  if ( int64_result )
     ((void (           *)(_QWORD, unsigned __int64, __int64, __int64, _QWORD *, __int128 *, unsigned __int64 *, _QWORD))RtlVirtualUnwind)(
       0,
       ImageBase,
-      v6,
-      v7,
+      table_value,
+      int64_result,
       ContextRecord,
-      &v14,
-      &v13,
+      &packed_vector,
+      &callee_output_word,
       0);
   ContextRecord[31] = (uint64)(uintptr_t)(retaddr);
-  v15[0] = a2;
-  ContextRecord[19] = (uint64)(uintptr_t)(&v19);
-  v16 = retaddr;
-  v15[1] = a3;
-  v8 = IsDebuggerPresent();
+  scratch_buffer[0] = a2;
+  ContextRecord[19] = (uint64)(uintptr_t)(&callee_output_word_2);
+  unused_written_slot = retaddr;
+  scratch_buffer[1] = a3;
+  isdebuggerpresent_result = IsDebuggerPresent();
   ((void (           *)(_QWORD))SetUnhandledExceptionFilter)(0);
-  if ( !(unsigned int)((__int64 (           *)(_QWORD *))UnhandledExceptionFilter)(ExceptionInfo) && !v8 && a1 != -1 )
+  if ( !(unsigned int)((__int64 (           *)(_QWORD *))UnhandledExceptionFilter)(ExceptionInfo) && !isdebuggerpresent_result && a1 != -1 )
     sub_1401FBFB0();
   return 0; /* no caller reads the result */
 }
@@ -7184,27 +7184,27 @@ unsigned __int64 sub_14024CEA0()
 //----- (000000014024CEBC) ----------------------------------------------------
 __int64            crt_invalid_parameter(__int64 a1, __int64 a2, __int64 a3, unsigned int a4, __int64 a5)
 {
-  unsigned __int64 v9;
-  __int64 (           *v10)(__int64, __int64, __int64, _QWORD, __int64);
-  __int64 (           *v12)(__int64, __int64, __int64, _QWORD, __int64);
+  unsigned __int64 call_result;
+  __int64 (           *callback_function)(__int64, __int64, __int64, _QWORD, __int64);
+  __int64 (           *callback_function_2)(__int64, __int64, __int64, _QWORD, __int64);
 
-  v9 = sub_140255BEC();
-  if ( v9 )
+  call_result = sub_140255BEC();
+  if ( call_result )
   {
-    v10 = *(__int64 (           **)(__int64, __int64, __int64, _QWORD, __int64))(v9 + 952);
-    if ( v10 )
-      return v10(a1, a2, a3, a4, a5);
+    callback_function = *(__int64 (           **)(__int64, __int64, __int64, _QWORD, __int64))(call_result + 952);
+    if ( callback_function )
+      return callback_function(a1, a2, a3, a4, a5);
   }
-  v12 = (__int64 (           *)(__int64, __int64, __int64, _QWORD, __int64))__ROR8__(
+  callback_function_2 = (__int64 (           *)(__int64, __int64, __int64, _QWORD, __int64))__ROR8__(
                                                                               g_144CBF188
                                                                             ^ _security_cookie,
                                                                               _security_cookie & 0x3F);
-  if ( !v12 )
+  if ( !callback_function_2 )
   {
     crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
-  return v12(a1, a2, a3, a4, a5);
+  return callback_function_2(a1, a2, a3, a4, a5);
 }
 
 // 14024CF64: control flows out of bounds to 14024CF69
@@ -7228,13 +7228,13 @@ void __attribute__((noreturn)) sub_14024CF8C()
 //----- (000000014024CFBC) ----------------------------------------------------
 __int64 crt_invoke_watson()
 {
-  __int64 v0;
+  __int64 int64_result;
 
   if ( (unsigned int)((__int64 (           *)(__int64))IsProcessorFeaturePresent)(23) )
     __fastfail(5u);
   sub_14024CD24(2, -1073740777, 1);
-  v0 = ((__int64 (*)(void))GetCurrentProcess)();
-  return ((__int64 (           *)(__int64, __int64))TerminateProcess)(v0, 3221226519LL);
+  int64_result = ((__int64 (*)(void))GetCurrentProcess)();
+  return ((__int64 (           *)(__int64, __int64))TerminateProcess)(int64_result, 3221226519LL);
 }
 
 // 14026E2B0: invalid function type 'BOOL (__stdcall *IsProcessorFeaturePresent)(DWORD ProcessorFeature)' has been ignored
@@ -7244,12 +7244,12 @@ __int64 crt_invoke_watson()
 //----- (000000014024D038) ----------------------------------------------------
 __int64            sub_14024D038(__int64 a1)
 {
-  unsigned __int64 v2;
+  unsigned __int64 call_result;
   __int64 result;
 
-  v2 = sub_140255A70();
-  result = *(_QWORD *)(v2 + 952);
-  *(_QWORD *)(v2 + 952) = a1;
+  call_result = sub_140255A70();
+  result = *(_QWORD *)(call_result + 952);
+  *(_QWORD *)(call_result + 952) = a1;
   return result;
 }
 
@@ -7265,20 +7265,20 @@ __int16         dclass(double X)
 //----- (000000014024D07C) ----------------------------------------------------
 int         dpcomp(double X, double Y)
 {
-  int v2;
+  int unused_written_slot;
   double Px;
-  double v5;
+  double cached_y;
 
-  v5 = Y;
+  cached_y = Y;
   Px = X;
-  v2 = 2;
-  if ( dtest_sr(&Px) == 2 || dtest_sr(&v5) == 2 )
+  unused_written_slot = 2;
+  if ( dtest_sr(&Px) == 2 || dtest_sr(&cached_y) == 2 )
     return 0;
-  if ( v5 > Px )
+  if ( cached_y > Px )
     return 1;
-  if ( Px > v5 )
+  if ( Px > cached_y )
     return 4;
-  return v2;
+  return unused_written_slot;
 }
 
 //----- (000000014024D0E0) ----------------------------------------------------
@@ -7290,20 +7290,20 @@ __int64            sub_14024D0E0(double a1)
 //----- (000000014024D104) ----------------------------------------------------
 __int64            sub_14024D104(int a1)
 {
-  __int64 v1;
-  unsigned int *v2;
+  __int64 integer_sum;
+  unsigned int *running_total;
   __int64 result;
 
-  v1 = 0;
-  v2 = dword_14028A2C0;
+  integer_sum = 0;
+  running_total = dword_14028A2C0;
   do
   {
-    if ( a1 == *v2 )
-      return dword_14028A2C0[2 * v1 + 1];
-    v1 = (unsigned int)(v1 + 1);
-    v2 += 2;
+    if ( a1 == *running_total )
+      return dword_14028A2C0[2 * integer_sum + 1];
+    integer_sum = (unsigned int)(integer_sum + 1);
+    running_total += 2;
   }
-  while ( (unsigned int)v1 < 0x2D );
+  while ( (unsigned int)integer_sum < 0x2D );
   if ( (unsigned int)(a1 - 19) <= 0x11 )
     return 13;
   result = 22;
@@ -7315,35 +7315,35 @@ __int64            sub_14024D104(int a1)
 //----- (000000014024D14C) ----------------------------------------------------
 __int64            crt_errno_map_os_error(int a1)
 {
-  unsigned __int64 v2;
-  int *v3;
-  unsigned __int64 v4;
-  _DWORD *v5;
+  unsigned __int64 call_result;
+  int *unused_written_slot;
+  unsigned __int64 call_result_2;
+  _DWORD *unused_written_slot_2;
   __int64 result;
 
-  v2 = sub_140255BEC();
-  if ( v2 )
-    v3 = (int *)(v2 + 36);
+  call_result = sub_140255BEC();
+  if ( call_result )
+    unused_written_slot = (int *)(call_result + 36);
   else
-    v3 = (int *)&unk_1403022B0;
-  *v3 = a1;
-  v4 = sub_140255BEC();
-  v5 = &unk_1403022AC;
-  if ( v4 )
-    v5 = (_DWORD *)(v4 + 32);
+    unused_written_slot = (int *)&unk_1403022B0;
+  *unused_written_slot = a1;
+  call_result_2 = sub_140255BEC();
+  unused_written_slot_2 = &unk_1403022AC;
+  if ( call_result_2 )
+    unused_written_slot_2 = (_DWORD *)(call_result_2 + 32);
   result = sub_14024D104(a1);
-  *v5 = result;
+  *unused_written_slot_2 = result;
   return result;
 }
 
 //----- (000000014024D19C) ----------------------------------------------------
 void *crt_doserrno()
 {
-  unsigned __int64 v0;
+  unsigned __int64 call_result;
 
-  v0 = sub_140255BEC();
-  if ( v0 )
-    return (void *)(v0 + 36);
+  call_result = sub_140255BEC();
+  if ( call_result )
+    return (void *)(call_result + 36);
   else
     return &unk_1403022B0;
 }
@@ -7351,11 +7351,11 @@ void *crt_doserrno()
 //----- (000000014024D1BC) ----------------------------------------------------
 int *        errno_sr()
 {
-  unsigned __int64 v0;
+  unsigned __int64 call_result;
 
-  v0 = sub_140255BEC();
-  if ( v0 )
-    return (int *)(v0 + 32);
+  call_result = sub_140255BEC();
+  if ( call_result )
+    return (int *)(call_result + 32);
   else
     return (int *)&unk_1403022AC;
 }
@@ -7363,17 +7363,17 @@ int *        errno_sr()
 //----- (000000014024D1DC) ----------------------------------------------------
 __int64            get_doserrno(_DWORD *a1)
 {
-  unsigned __int64 v3;
-  _DWORD *v4;
+  unsigned __int64 call_result;
+  _DWORD *state_address;
 
   if ( a1 )
   {
-    v3 = sub_140255BEC();
-    if ( v3 )
-      v4 = (_DWORD *)(v3 + 36);
+    call_result = sub_140255BEC();
+    if ( call_result )
+      state_address = (_DWORD *)(call_result + 36);
     else
-      v4 = &unk_1403022B0;
-    *a1 = *v4;
+      state_address = &unk_1403022B0;
+    *a1 = *state_address;
     return 0;
   }
   else
@@ -7388,17 +7388,17 @@ __int64            get_doserrno(_DWORD *a1)
 //----- (000000014024D218) ----------------------------------------------------
 __int64            get_errno(_DWORD *a1)
 {
-  unsigned __int64 v3;
-  _DWORD *v4;
+  unsigned __int64 call_result;
+  _DWORD *state_address;
 
   if ( a1 )
   {
-    v3 = sub_140255BEC();
-    if ( v3 )
-      v4 = (_DWORD *)(v3 + 32);
+    call_result = sub_140255BEC();
+    if ( call_result )
+      state_address = (_DWORD *)(call_result + 32);
     else
-      v4 = &unk_1403022AC;
-    *a1 = *v4;
+      state_address = &unk_1403022AC;
+    *a1 = *state_address;
     return 0;
   }
   else
@@ -7413,17 +7413,17 @@ __int64            get_errno(_DWORD *a1)
 //----- (000000014024D254) ----------------------------------------------------
 __int64            set_doserrno(int a1)
 {
-  unsigned __int64 v3;
-  _DWORD *v4;
+  unsigned __int64 call_result;
+  _DWORD *unused_written_slot;
 
   if ( !sub_140255BEC() )
     return 12;
-  v3 = sub_140255BEC();
-  if ( v3 )
-    v4 = (_DWORD *)(v3 + 36);
+  call_result = sub_140255BEC();
+  if ( call_result )
+    unused_written_slot = (_DWORD *)(call_result + 36);
   else
-    v4 = &unk_1403022B0;
-  *v4 = a1;
+    unused_written_slot = &unk_1403022B0;
+  *unused_written_slot = a1;
   return 0;
 }
 
@@ -7432,17 +7432,17 @@ __int64            set_doserrno(int a1)
 //----- (000000014024D290) ----------------------------------------------------
 __int64            set_errno(int a1)
 {
-  unsigned __int64 v3;
-  _DWORD *v4;
+  unsigned __int64 call_result;
+  _DWORD *unused_written_slot;
 
   if ( !sub_140255BEC() )
     return 12;
-  v3 = sub_140255BEC();
-  if ( v3 )
-    v4 = (_DWORD *)(v3 + 32);
+  call_result = sub_140255BEC();
+  if ( call_result )
+    unused_written_slot = (_DWORD *)(call_result + 32);
   else
-    v4 = &unk_1403022AC;
-  *v4 = a1;
+    unused_written_slot = &unk_1403022AC;
+  *unused_written_slot = a1;
   return 0;
 }
 
@@ -7476,71 +7476,71 @@ __int64            errcode(char a1)
 //----- (000000014024D310) ----------------------------------------------------
 double            except1(unsigned int a1, int a2, double a3, double a4, __int64 a5)
 {
-  __int64 v5;
-  char v7;
-  int v8;
-  __int64 v10;
-  double v11;
-  double v12;
-  _DWORD v13[16];
-  int v14;
-  __int64 v15;
+  __int64 input_value;
+  char input_value_2;
+  int errcode_result;
+  __int64 unused_local;
+  double input_value_3;
+  double input_value_4;
+  _DWORD scratch_buffer[16];
+  int option_flags;
+  __int64 unused_local_2;
 
-  v5 = a5;
-  v12 = a3;
-  v11 = a4;
-  v7 = a1;
-  if ( !(unsigned int)handle_exc(a1, &v11, a5) )
+  input_value = a5;
+  input_value_4 = a3;
+  input_value_3 = a4;
+  input_value_2 = a1;
+  if ( !(unsigned int)handle_exc(a1, &input_value_3, a5) )
   {
-    v14 &= ~1u;
-    raise_exc_ex(v13, &a5, v7, a2, &v12, &v11, 0);
-    v5 = a5;
+    option_flags &= ~1u;
+    raise_exc_ex(scratch_buffer, &a5, input_value_2, a2, &input_value_4, &input_value_3, 0);
+    input_value = a5;
   }
-  v8 = errcode(v7);
-  if ( sub_1402477C0() && v8 )
+  errcode_result = errcode(input_value_2);
+  if ( sub_1402477C0() && errcode_result )
   {
-    return umatherr(v8, a2, a3, 0.0, v11, v5); /* 0x14024D3BD: its result stays in xmm0 */
+    return umatherr(errcode_result, a2, a3, 0.0, input_value_3, input_value); /* 0x14024D3BD: its result stays in xmm0 */
   }
   else
   {
-    set_errno_from_matherr(v8);
-    ctrlfp(v5, 65472);
+    set_errno_from_matherr(errcode_result);
+    ctrlfp(input_value, 65472);
   }
-  return v11; /* 0x14024D3D8: movsd xmm0, qword ptr [rbp - 0x61] */
+  return input_value_3; /* 0x14024D3D8: movsd xmm0, qword ptr [rbp - 0x61] */
 }
 
 //----- (000000014024D404) ----------------------------------------------------
 double            except2(unsigned int a1, int a2, double a3, double a4, double a5, __int64 a6)
 {
-  __int64 v6;
-  char v8;
-  int v9;
-  __int64 v11;
-  double v12[2];
-  _DWORD v13[12];
-  double v14;
-  unsigned int v15;
-  __int64 v16;
+  __int64 input_value;
+  char input_value_2;
+  int errcode_result;
+  __int64 unused_local;
+  double float_buffer[2];
+  _DWORD scratch_buffer[12];
+  double unused_written_slot;
+  unsigned int masked_bits;
+  __int64 unused_local_2;
 
-  v6 = a6;
-  v12[0] = a3;
-  v8 = a1;
+  input_value = a6;
+  float_buffer[0] = a3;
+  input_value_2 = a1;
   if ( !(unsigned int)handle_exc(a1, &a5, a6) )
   {
-    v14 = a4;
-    v15 = v15 & 0xFFFFFFE0 | 3;
-    raise_exc_ex(v13, &a6, v8, a2, v12, &a5, 0);
-    v6 = a6;
+    unused_written_slot = a4;
+    masked_bits = masked_bits & 0xFFFFFFE0 | 3;
+    raise_exc_ex(scratch_buffer, &a6, input_value_2, a2, float_buffer, &a5, 0);
+    input_value = a6;
   }
-  v9 = errcode(v8);
-  if ( sub_1402477C0() && v9 )
+  errcode_result = errcode(input_value_2);
+  if ( sub_1402477C0() && errcode_result )
   {
-    return umatherr(v9, a2, a3, a4, a5, v6); /* 0x14024D4C1: its result stays in xmm0 */
+    return umatherr(errcode_result, a2, a3, a4, a5, input_value); /* 0x14024D4C1: its result stays in xmm0 */
   }
   else
   {
-    set_errno_from_matherr(v9);
-    ctrlfp(v6, 65472);
+    set_errno_from_matherr(errcode_result);
+    ctrlfp(input_value, 65472);
   }
   return a5; /* 0x14024D4DC: movsd xmm0, qword ptr [rbp + 0x77] */
 }
@@ -7548,74 +7548,74 @@ double            except2(unsigned int a1, int a2, double a3, double a4, double 
 //----- (000000014024D540) ----------------------------------------------------
 __int64            handle_exc(unsigned int a1, double *a2, __int16 a3)
 {
-  unsigned int v3;
-  int v5;
-  char v7;
-  __int64 v8;
-  double v9;
-  double v10;
-  int v11;
-  int v12;
-  double v13;
-  int v14;
-  unsigned int v15;
-  __int64 v16;
-  unsigned int v17;
-  int v19;
-  double v20;
+  unsigned int selection_flag;
+  int option_flags;
+  char input_value;
+  __int64 masked_bits;
+  double cached_infinity;
+  double scaled_value;
+  int state_address;
+  int integer_difference;
+  double saved_decomp_sr_result;
+  int selection_flag_2;
+  unsigned int remaining_bits;
+  __int64 remaining_count;
+  unsigned int remaining_bits_2;
+  int callee_output_word;
+  double decomp_sr_result;
 
-  v3 = 0;
-  v5 = a1 & 0x1F;
-  v7 = a1;
+  selection_flag = 0;
+  option_flags = a1 & 0x1F;
+  input_value = a1;
   if ( (a1 & 8) != 0 && (a3 & 0x80u) != 0 )
   {
     set_statfp(1);
-    v5 &= ~8u;
+    option_flags &= ~8u;
     goto LABEL_46;
   }
   if ( (a1 & 4) != 0 && (a3 & 0x200) != 0 )
   {
     set_statfp(4);
-    v5 &= ~4u;
+    option_flags &= ~4u;
     goto LABEL_46;
   }
   if ( (a1 & 1) != 0 && (a3 & 0x400) != 0 )
   {
     set_statfp(8);
-    v8 = a3 & 0x6000;
+    masked_bits = a3 & 0x6000;
     if ( (a3 & 0x6000) != 0 )
     {
-      if ( v8 != 0x2000 )
+      if ( masked_bits != 0x2000 )
       {
-        if ( v8 != 0x4000 )
+        if ( masked_bits != 0x4000 )
         {
-          if ( v8 != 24576 )
+          if ( masked_bits != 24576 )
           {
 LABEL_24:
-            v5 &= ~1u;
+            option_flags &= ~1u;
             goto LABEL_46;
           }
-          v9 = 1.797693134862316e308;
+          cached_infinity = 1.797693134862316e308;
           if ( *a2 <= 0.0 )
             goto LABEL_22;
 LABEL_23:
-          *a2 = v9;
+          *a2 = cached_infinity;
           goto LABEL_24;
         }
         if ( *a2 <= 0.0 )
         {
-          v9 = 1.797693134862316e308;
+          cached_infinity = 1.797693134862316e308;
 LABEL_22:
-          v9 = -v9;
+          cached_infinity = -cached_infinity;
           goto LABEL_23;
         }
 LABEL_20:
-        v9 = INFINITY;
+        cached_infinity = INFINITY;
         goto LABEL_23;
       }
       if ( *a2 > 0.0 )
       {
-        v9 = 1.797693134862316e308;
+        cached_infinity = 1.797693134862316e308;
         goto LABEL_23;
       }
     }
@@ -7623,71 +7623,71 @@ LABEL_20:
     {
       goto LABEL_20;
     }
-    v9 = INFINITY;
+    cached_infinity = INFINITY;
     goto LABEL_22;
   }
   if ( (a1 & 2) != 0 && (a3 & 0x800) != 0 )
   {
-    v10 = *a2;
-    v11 = (a1 >> 4) & 1;
+    scaled_value = *a2;
+    state_address = (a1 >> 4) & 1;
     if ( *a2 == 0.0 )
     {
-      v11 = 1;
+      state_address = 1;
     }
     else
     {
-      v20 = decomp_sr(v10, &v19); /* 0x14024D6B1: movsd qword ptr [rsp + 0x88], xmm0 */
-      v12 = v19 - 1536;
-      if ( v19 - 1536 >= -1074 )
+      decomp_sr_result = decomp_sr(scaled_value, &callee_output_word); /* 0x14024D6B1: movsd qword ptr [rsp + 0x88], xmm0 */
+      integer_difference = callee_output_word - 1536;
+      if ( callee_output_word - 1536 >= -1074 )
       {
-        v14 = 0;
-        LOBYTE(v14) = v10 < 0.0;
-        HIWORD(v20) = BYTE6(v20) & 0xF | 0x10;
-        if ( v12 < -1021 )
+        selection_flag_2 = 0;
+        LOBYTE(selection_flag_2) = scaled_value < 0.0;
+        HIWORD(decomp_sr_result) = BYTE6(decomp_sr_result) & 0xF | 0x10;
+        if ( integer_difference < -1021 )
         {
-          v15 = LODWORD(v20);
-          v16 = (unsigned int)(-1021 - v12);
-          v17 = HIDWORD(v20);
+          remaining_bits = LODWORD(decomp_sr_result);
+          remaining_count = (unsigned int)(-1021 - integer_difference);
+          remaining_bits_2 = HIDWORD(decomp_sr_result);
           do
           {
-            if ( (v15 & 1) != 0 && !v11 )
-              v11 = 1;
-            v15 >>= 1;
-            LODWORD(v20) = v15;
-            if ( (v17 & 1) != 0 )
+            if ( (remaining_bits & 1) != 0 && !state_address )
+              state_address = 1;
+            remaining_bits >>= 1;
+            LODWORD(decomp_sr_result) = remaining_bits;
+            if ( (remaining_bits_2 & 1) != 0 )
             {
-              v15 |= 0x80000000;
-              LODWORD(v20) = v15;
+              remaining_bits |= 0x80000000;
+              LODWORD(decomp_sr_result) = remaining_bits;
             }
-            v17 >>= 1;
-            --v16;
+            remaining_bits_2 >>= 1;
+            --remaining_count;
           }
-          while ( v16 );
-          HIDWORD(v20) = v17;
+          while ( remaining_count );
+          HIDWORD(decomp_sr_result) = remaining_bits_2;
         }
-        v13 = v20;
-        if ( v14 )
-          v13 = -v20;
+        saved_decomp_sr_result = decomp_sr_result;
+        if ( selection_flag_2 )
+          saved_decomp_sr_result = -decomp_sr_result;
       }
       else
       {
-        v13 = v20 * 0.0; /* 0x14024D6C2: mulsd xmm0, xmm6 */
-        v11 = 1;
+        saved_decomp_sr_result = decomp_sr_result * 0.0; /* 0x14024D6C2: mulsd xmm0, xmm6 */
+        state_address = 1;
       }
-      *a2 = v13;
+      *a2 = saved_decomp_sr_result;
     }
-    if ( v11 )
+    if ( state_address )
       set_statfp(16);
-    v5 &= ~2u;
+    option_flags &= ~2u;
   }
 LABEL_46:
-  if ( (v7 & 0x10) != 0 && (a3 & 0x1000) != 0 )
+  if ( (input_value & 0x10) != 0 && (a3 & 0x1000) != 0 )
   {
     set_statfp(32);
-    v5 &= ~0x10u;
+    option_flags &= ~0x10u;
   }
-  LOBYTE(v3) = v5 == 0;
-  return v3;
+  LOBYTE(selection_flag) = option_flags == 0;
+  return selection_flag;
 }
 
 //----- (000000014024D7A8) ----------------------------------------------------
@@ -7705,43 +7705,43 @@ __int64            raise_exc(_DWORD *a1, _QWORD *a2, char a3, __int16 a4, _DWORD
 //----- (000000014024D7D8) ----------------------------------------------------
 __int64            raise_exc_ex(_DWORD *a1, _QWORD *a2, char a3, __int16 a4, _DWORD *a5, _DWORD *a6, int a7)
 {
-  unsigned int v9;
-  char v10;
-  __int64 v11;
-  _DWORD *v12;
-  _DWORD *v13;
-  int v14;
+  unsigned int integer_difference;
+  char statfp_result;
+  __int64 masked_bits;
+  _DWORD *saved_call_status;
+  _DWORD *cached_arguments;
+  int table_value;
   __int64 result;
   _DWORD *Arguments;
 
   Arguments = a1;
-  v9 = -1073741811;
+  integer_difference = -1073741811;
   a1[1] = 0;
   Arguments[2] = 0;
   Arguments[3] = 0;
   if ( (a3 & 0x10) != 0 )
   {
-    v9 = -1073741681;
+    integer_difference = -1073741681;
     Arguments[1] |= 1u;
   }
   if ( (a3 & 2) != 0 )
   {
-    v9 = -1073741677;
+    integer_difference = -1073741677;
     Arguments[1] |= 2u;
   }
   if ( (a3 & 1) != 0 )
   {
-    v9 = -1073741679;
+    integer_difference = -1073741679;
     Arguments[1] |= 4u;
   }
   if ( (a3 & 4) != 0 )
   {
-    v9 = -1073741682;
+    integer_difference = -1073741682;
     Arguments[1] |= 8u;
   }
   if ( (a3 & 8) != 0 )
   {
-    v9 = -1073741680;
+    integer_difference = -1073741680;
     Arguments[1] |= 0x10u;
   }
   Arguments[2] ^= (Arguments[2] ^ ~(16 * (*a2 >> 7))) & 0x10;
@@ -7749,21 +7749,21 @@ __int64            raise_exc_ex(_DWORD *a1, _QWORD *a2, char a3, __int16 a4, _DW
   Arguments[2] ^= (Arguments[2] ^ ~(4 * (*a2 >> 10))) & 4;
   Arguments[2] ^= (Arguments[2] ^ ~(2 * (*a2 >> 11))) & 2;
   Arguments[2] ^= (Arguments[2] ^ ~(*(_DWORD *)a2 >> 12)) & 1;
-  v10 = statfp();
-  if ( (v10 & 1) != 0 )
+  statfp_result = statfp();
+  if ( (statfp_result & 1) != 0 )
     Arguments[3] |= 0x10u;
-  if ( (v10 & 4) != 0 )
+  if ( (statfp_result & 4) != 0 )
     Arguments[3] |= 8u;
-  if ( (v10 & 8) != 0 )
+  if ( (statfp_result & 8) != 0 )
     Arguments[3] |= 4u;
-  if ( (v10 & 0x10) != 0 )
+  if ( (statfp_result & 0x10) != 0 )
     Arguments[3] |= 2u;
-  if ( (v10 & 0x20) != 0 )
+  if ( (statfp_result & 0x20) != 0 )
     Arguments[3] |= 1u;
-  v11 = *(_DWORD *)a2 & 0x6000LL;
-  if ( v11 )
+  masked_bits = *(_DWORD *)a2 & 0x6000LL;
+  if ( masked_bits )
   {
-    switch ( v11 )
+    switch ( masked_bits )
     {
       case 8192LL:
         *Arguments &= ~2u;
@@ -7784,7 +7784,7 @@ __int64            raise_exc_ex(_DWORD *a1, _QWORD *a2, char a3, __int16 a4, _DW
   }
   *Arguments &= 0xFFFE001F;
   *Arguments |= 32 * (a4 & 0xFFF);
-  v12 = a6;
+  saved_call_status = a6;
   Arguments[8] |= 1u;
   if ( a7 )
   {
@@ -7792,7 +7792,7 @@ __int64            raise_exc_ex(_DWORD *a1, _QWORD *a2, char a3, __int16 a4, _DW
     Arguments[4] = *a5;
     Arguments[24] |= 1u;
     Arguments[24] &= 0xFFFFFFE1;
-    Arguments[20] = *v12;
+    Arguments[20] = *saved_call_status;
   }
   else
   {
@@ -7800,37 +7800,37 @@ __int64            raise_exc_ex(_DWORD *a1, _QWORD *a2, char a3, __int16 a4, _DW
     *((_QWORD *)Arguments + 2) = *(_QWORD *)a5;
     Arguments[24] |= 1u;
     Arguments[24] = Arguments[24] & 0xFFFFFFE1 | 2;
-    *((_QWORD *)Arguments + 10) = *(_QWORD *)v12;
+    *((_QWORD *)Arguments + 10) = *(_QWORD *)saved_call_status;
   }
   clrfp();
-  ((void (           *)(_QWORD, _QWORD, __int64, _DWORD **))RaiseException)(v9, 0, 1, &Arguments);
-  v13 = Arguments;
-  v14 = Arguments[2];
-  if ( (v14 & 0x10) != 0 )
+  ((void (           *)(_QWORD, _QWORD, __int64, _DWORD **))RaiseException)(integer_difference, 0, 1, &Arguments);
+  cached_arguments = Arguments;
+  table_value = Arguments[2];
+  if ( (table_value & 0x10) != 0 )
   {
     *a2 &= ~0x80uLL;
-    v14 = v13[2];
+    table_value = cached_arguments[2];
   }
-  if ( (v14 & 8) != 0 )
+  if ( (table_value & 8) != 0 )
   {
     *a2 &= ~0x200uLL;
-    v14 = v13[2];
+    table_value = cached_arguments[2];
   }
-  if ( (v14 & 4) != 0 )
+  if ( (table_value & 4) != 0 )
   {
     *a2 &= ~0x400uLL;
-    v14 = v13[2];
+    table_value = cached_arguments[2];
   }
-  if ( (v14 & 2) != 0 )
+  if ( (table_value & 2) != 0 )
   {
     *a2 &= ~0x800uLL;
-    v14 = v13[2];
+    table_value = cached_arguments[2];
   }
-  if ( (v14 & 1) != 0 )
+  if ( (table_value & 1) != 0 )
     *a2 &= ~0x1000uLL;
-  if ( (*v13 & 3) != 0 )
+  if ( (*cached_arguments & 3) != 0 )
   {
-    switch ( *v13 & 3 )
+    switch ( *cached_arguments & 3 )
     {
       case 1:
         *a2 &= ~0x4000uLL;
@@ -7851,13 +7851,13 @@ __int64            raise_exc_ex(_DWORD *a1, _QWORD *a2, char a3, __int16 a4, _DW
   }
   if ( a7 )
   {
-    result = (unsigned int)v13[20];
-    *v12 = result;
+    result = (unsigned int)cached_arguments[20];
+    *saved_call_status = result;
   }
   else
   {
-    result = *((_QWORD *)v13 + 10);
-    *(_QWORD *)v12 = result;
+    result = *((_QWORD *)cached_arguments + 10);
+    *(_QWORD *)saved_call_status = result;
   }
   return result;
 }
@@ -7895,40 +7895,40 @@ int *           set_errno_from_matherr(int a1)
 //----- (000000014024DB44) ----------------------------------------------------
 double            umatherr(int a1, int a2, double a3, double a4, double a5, __int64 a6)
 {
-  _DWORD *v7;
-  int v8;
-  __int64 v9;
-  int v11;
-  __int64 v12;
-  double v13;
-  double v14;
-  double v15;
+  _DWORD *record_byte_offset;
+  int iteration_count;
+  __int64 masked_bits;
+  int input_value;
+  __int64 unused_written_slot;
+  double unused_written_slot_2;
+  double unused_written_slot_3;
+  double unused_written_slot_4;
 
-  v7 = &unk_14028A430;
-  v8 = 0;
-  while ( *v7 != a2 )
+  record_byte_offset = &unk_14028A430;
+  iteration_count = 0;
+  while ( *record_byte_offset != a2 )
   {
-    ++v8;
-    v7 += 4;
-    if ( (__int64)v7 >= (__int64)&dword_14028A600 )
+    ++iteration_count;
+    record_byte_offset += 4;
+    if ( (__int64)record_byte_offset >= (__int64)&dword_14028A600 )
     {
-      v9 = 0;
+      masked_bits = 0;
       goto LABEL_6;
     }
   }
-  v9 = *((_QWORD *)&unk_14028A430 + 2 * v8 + 1);
+  masked_bits = *((_QWORD *)&unk_14028A430 + 2 * iteration_count + 1);
 LABEL_6:
-  v12 = v9;
-  if ( v9 )
+  unused_written_slot = masked_bits;
+  if ( masked_bits )
   {
-    v13 = a3;
-    v14 = a4;
-    v15 = a5;
-    v11 = a1;
+    unused_written_slot_2 = a3;
+    unused_written_slot_3 = a4;
+    unused_written_slot_4 = a5;
+    input_value = a1;
     ctrlfp(a6, 65472);
-    if ( !(unsigned int)sub_1402477E8((__int64)&v11) )
+    if ( !(unsigned int)sub_1402477E8((__int64)&input_value) )
       set_errno_from_matherr(a1);
-    return v15;
+    return unused_written_slot_4;
   }
   else
   {
@@ -7943,58 +7943,58 @@ double            decomp_sr(double a1, int *a2)
 {
   /* The result in xmm0 is the argument with its exponent field replaced by 0x3FE (a value in
      [0.5, 1)); Hex-Rays typed the function void and dropped it. Written out from 0x14024DC68. */
-  int v3;
-  unsigned int v4;
-  unsigned int v5;
-  int v7;
-  unsigned __int64 v8;
+  int remaining_count;
+  unsigned int saved_option_flags;
+  unsigned int option_flags;
+  int comparison_result;
+  unsigned __int64 option_flags_2;
 
-  v8 = *(unsigned __int64 *)&a1;
+  option_flags_2 = *(unsigned __int64 *)&a1;
   if ( a1 == 0.0 )
   {
     *a2 = 0;
     return 0.0; /* 0x14024DC71: xorps xmm0, xmm0 */
   }
-  if ( ((v8 >> 48) & 0x7FF0) == 0 && ((v4 = (unsigned int)v8, ((v8 >> 32) & 0xFFFFF) != 0) || (unsigned int)v8) )
+  if ( ((option_flags_2 >> 48) & 0x7FF0) == 0 && ((saved_option_flags = (unsigned int)option_flags_2, ((option_flags_2 >> 32) & 0xFFFFF) != 0) || (unsigned int)option_flags_2) )
   {
-    v7 = 0.0 > a1; /* 0x14024DCC0: comisd xmm0, xmm1; seta r9b */
-    v3 = -1021;
-    if ( ((v8 >> 48) & 0x10) == 0 )
+    comparison_result = 0.0 > a1; /* 0x14024DCC0: comisd xmm0, xmm1; seta r9b */
+    remaining_count = -1021;
+    if ( ((option_flags_2 >> 48) & 0x10) == 0 )
     {
-      v5 = (unsigned int)(v8 >> 32);
+      option_flags = (unsigned int)(option_flags_2 >> 32);
       do
       {
-        v5 *= 2;
-        if ( (int)v4 < 0 )
-          v5 |= 1u;
-        v4 *= 2;
-        --v3;
+        option_flags *= 2;
+        if ( (int)saved_option_flags < 0 )
+          option_flags |= 1u;
+        saved_option_flags *= 2;
+        --remaining_count;
       }
-      while ( ((v5 >> 16) & 0x10) == 0 );
-      v8 = ((unsigned __int64)v5 << 32) | v4; /* 0x14024DCD4/0x14024DCEE */
+      while ( ((option_flags >> 16) & 0x10) == 0 );
+      option_flags_2 = ((unsigned __int64)option_flags << 32) | saved_option_flags; /* 0x14024DCD4/0x14024DCEE */
     }
-    v8 &= 0xFFEFFFFFFFFFFFFFuLL; /* 0x14024DCFC: and ax, 0xffef */
-    if ( v7 )
-      v8 |= 0x8000000000000000uLL;
+    option_flags_2 &= 0xFFEFFFFFFFFFFFFFuLL; /* 0x14024DCFC: and ax, 0xffef */
+    if ( comparison_result )
+      option_flags_2 |= 0x8000000000000000uLL;
   }
   else
   {
-    v3 = (int)((v8 >> 52) & 0x7FF) - 1022;
+    remaining_count = (int)((option_flags_2 >> 52) & 0x7FF) - 1022;
   }
   /* 0x14024DD30 / 0x14024DD76: and ax, 0xbfef; or ax, 0x3fe0 on the top word */
-  v8 = (v8 & 0xBFEFFFFFFFFFFFFFuLL) | 0x3FE0000000000000uLL;
-  *a2 = v3;
-  return *(double *)&v8; /* 0x14024DD46 / 0x14024DD8C: movsd xmm0, [rsp+..] */
+  option_flags_2 = (option_flags_2 & 0xBFEFFFFFFFFFFFFFuLL) | 0x3FE0000000000000uLL;
+  *a2 = remaining_count;
+  return *(double *)&option_flags_2; /* 0x14024DD46 / 0x14024DD8C: movsd xmm0, [rsp+..] */
 }
 
 //----- (000000014024DDE8) ----------------------------------------------------
 double            set_exp_sr(double a1, __int16 a2)
 {
-  double v3;
+  double input_value;
 
-  v3 = a1;
-  HIWORD(v3) = (16 * (a2 + 1022)) | HIWORD(a1) & 0x800F;
-  return v3;
+  input_value = a1;
+  HIWORD(input_value) = (16 * (a2 + 1022)) | HIWORD(a1) & 0x800F;
+  return input_value;
 }
 
 //----- (000000014024DE20) ----------------------------------------------------
@@ -8014,25 +8014,25 @@ __int64            sptype_sr(double a1)
 //----- (000000014024DE94) ----------------------------------------------------
 __int64 clrfp()
 {
-  unsigned int v0;
+  unsigned int unused_written_slot;
 
-  v0 = get_fpsr() & 0x3F;
+  unused_written_slot = get_fpsr() & 0x3F;
   fclrf_sr();
-  return v0;
+  return unused_written_slot;
 }
 
 //----- (000000014024DEB4) ----------------------------------------------------
 __int64            ctrlfp(int a1, int a2)
 {
   unsigned int fpsr;
-  unsigned int v5;
+  unsigned int masked_bits;
 
   fpsr = get_fpsr();
-  v5 = a2 & a1 | fpsr & (~(_WORD)a2 | 0xFFFF807F);
-  if ( byte_1403022B4 && (v5 & 0x40) != 0 )
-    set_fpsr_sr(v5);
+  masked_bits = a2 & a1 | fpsr & (~(_WORD)a2 | 0xFFFF807F);
+  if ( byte_1403022B4 && (masked_bits & 0x40) != 0 )
+    set_fpsr_sr(masked_bits);
   else
-    set_fpsr_sr(v5 & 0xFFFFFFBF);
+    set_fpsr_sr(masked_bits & 0xFFFFFFBF);
   return fpsr;
 }
 
@@ -8062,12 +8062,12 @@ double         copysign(double Number, double Sign)
 //----- (000000014024DF98) ----------------------------------------------------
 __int64            calloc_base()
 {
-  unsigned __int64 v0;
-  unsigned __int64 v1;
-  __int64 v2;
+  unsigned __int64 unrecovered_register_value;
+  unsigned __int64 unrecovered_register_value_2;
+  __int64 scaled_index;
   __int64 result;
 
-  if ( v1 && 0xFFFFFFFFFFFFFFE0uLL / v1 < v0 )
+  if ( unrecovered_register_value_2 && 0xFFFFFFFFFFFFFFE0uLL / unrecovered_register_value_2 < unrecovered_register_value )
   {
 LABEL_10:
     *errno_sr() = 12;
@@ -8075,18 +8075,18 @@ LABEL_10:
   }
   else
   {
-    v2 = v0 * v1;
-    if ( !(v0 * v1) )
-      v2 = 1;
+    scaled_index = unrecovered_register_value * unrecovered_register_value_2;
+    if ( !(unrecovered_register_value * unrecovered_register_value_2) )
+      scaled_index = 1;
     while ( 1 )
     {
       result = ((__int64 (           *)(_QWORD, __int64, __int64))HeapAlloc)(
                  g_144CBFA48,
                  8,
-                 v2);
+                 scaled_index);
       if ( result )
         break;
-      if ( !(unsigned int)sub_14024A06C() || !(unsigned int)callnewh(v2) )
+      if ( !(unsigned int)sub_14024A06C() || !(unsigned int)callnewh(scaled_index) )
         goto LABEL_10;
     }
   }
@@ -8098,8 +8098,8 @@ LABEL_10:
 //----- (000000014024E018) ----------------------------------------------------
 void         free_base(void *Block)
 {
-  int *v1;
-  int v2;
+  int *unused_written_slot;
+  int int64_result;
 
   if ( Block )
   {
@@ -8108,9 +8108,9 @@ void         free_base(void *Block)
                           0,
                           Block) )
     {
-      v1 = errno_sr();
-      v2 = ((__int64 (*)(void))GetLastError)();
-      *v1 = sub_14024D104(v2);
+      unused_written_slot = errno_sr();
+      int64_result = ((__int64 (*)(void))GetLastError)();
+      *unused_written_slot = sub_14024D104(int64_result);
     }
   }
 }
@@ -8147,13 +8147,13 @@ __int64            sub_14024E088(__int64 a1, unsigned int *a2, _QWORD **a3, unsi
 //----- (000000014024E104) ----------------------------------------------------
 __int64            sub_14024E104(unsigned int a1, _QWORD **a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_14024E088((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_14024E088((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014024E1AC) ----------------------------------------------------
@@ -8189,49 +8189,49 @@ __int64            enum_system_locales_ex_nolock(__int64 a1)
 //----- (000000014024E6BC) ----------------------------------------------------
 __int64            try_get_first_available_module(unsigned int *a1, unsigned int *a2)
 {
-  unsigned int *v3;
-  __int64 v4;
-  __int64 v5;
-  __int16 *v6;
+  unsigned int *buffer_cursor;
+  __int64 loaded_word;
+  __int64 int64_result;
+  __int16 *table_value;
 
-  v3 = a1;
+  buffer_cursor = a1;
   if ( a1 == a2 )
     return 0;
   while ( 1 )
   {
-    v4 = *v3;
-    v5 = *(_QWORD *)&dword_140404A6C[2 * v4 + 19065289];
-    if ( !v5 )
+    loaded_word = *buffer_cursor;
+    int64_result = *(_QWORD *)&dword_140404A6C[2 * loaded_word + 19065289];
+    if ( !int64_result )
       break;
-    if ( v5 != -1 )
-      return v5;
+    if ( int64_result != -1 )
+      return int64_result;
 LABEL_16:
-    if ( ++v3 == a2 )
+    if ( ++buffer_cursor == a2 )
       return 0;
   }
-  v6 = off_14028A6F0[v4];
-  v5 = ((__int64 (           *)(__int16 *, _QWORD, __int64))LoadLibraryExW)(v6, 0, 2048);
-  if ( !v5 )
+  table_value = off_14028A6F0[loaded_word];
+  int64_result = ((__int64 (           *)(__int16 *, _QWORD, __int64))LoadLibraryExW)(table_value, 0, 2048);
+  if ( !int64_result )
   {
     if ( (unsigned int)((__int64 (*)(void))GetLastError)() != 87
-      || !(unsigned int)wcsncmp_sr(v6, L"api-ms-", 7)
-      || !(unsigned int)wcsncmp_sr(v6, L"ext-ms-", 7) )
+      || !(unsigned int)wcsncmp_sr(table_value, L"api-ms-", 7)
+      || !(unsigned int)wcsncmp_sr(table_value, L"ext-ms-", 7) )
     {
-      v5 = 0;
+      int64_result = 0;
     }
     else
     {
-      v5 = ((__int64 (           *)(__int16 *, _QWORD, _QWORD))LoadLibraryExW)(v6, 0, 0);
+      int64_result = ((__int64 (           *)(__int16 *, _QWORD, _QWORD))LoadLibraryExW)(table_value, 0, 0);
     }
   }
-  if ( !v5 )
+  if ( !int64_result )
   {
-    _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * v4 + 19065289], -1);
+    _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * loaded_word + 19065289], -1);
     goto LABEL_16;
   }
-  if ( _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * v4 + 19065289], v5) )
-    ((void (           *)(__int64))FreeLibrary)(v5);
-  return v5;
+  if ( _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * loaded_word + 19065289], int64_result) )
+    ((void (           *)(__int64))FreeLibrary)(int64_result);
+  return int64_result;
 }
 
 // 14026E210: invalid function type 'HMODULE (__stdcall *LoadLibraryExW)(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFlags)' has been ignored
@@ -8242,84 +8242,84 @@ LABEL_16:
 //----- (000000014024E7D8) ----------------------------------------------------
 __int64            try_get_function(unsigned int a1, __int64 a2, unsigned int *a3, unsigned int *a4)
 {
-  __int64 v4;
-  unsigned int *v6;
-  __int64 v8;
-  __int64 v9;
+  __int64 input_value;
+  unsigned int *buffer_cursor;
+  __int64 cached_security_cookie;
+  __int64 ror8_result;
   __int64 result;
-  __int64 v11;
-  __int64 v12;
-  __int16 *v13;
+  __int64 loaded_word;
+  __int64 int64_result;
+  __int16 *table_value;
 
-  v4 = a1;
-  v6 = a3;
-  v8 = _security_cookie;
-  v9 = __ROR8__(*(_QWORD *)&dword_140404A6C[2 * a1 + 19065329] ^ _security_cookie, _security_cookie & 0x3F);
-  if ( v9 == -1 )
+  input_value = a1;
+  buffer_cursor = a3;
+  cached_security_cookie = _security_cookie;
+  ror8_result = __ROR8__(*(_QWORD *)&dword_140404A6C[2 * a1 + 19065329] ^ _security_cookie, _security_cookie & 0x3F);
+  if ( ror8_result == -1 )
     return 0;
-  if ( v9 )
-    return v9;
+  if ( ror8_result )
+    return ror8_result;
   if ( a3 == a4 )
   {
 LABEL_21:
-    v12 = 0;
+    int64_result = 0;
     goto LABEL_22;
   }
   while ( 1 )
   {
-    v11 = *v6;
-    v12 = *(_QWORD *)&dword_140404A6C[2 * v11 + 19065289];
-    if ( !v12 )
+    loaded_word = *buffer_cursor;
+    int64_result = *(_QWORD *)&dword_140404A6C[2 * loaded_word + 19065289];
+    if ( !int64_result )
       break;
-    if ( v12 != -1 )
+    if ( int64_result != -1 )
       goto LABEL_25;
 LABEL_19:
-    if ( ++v6 == a4 )
+    if ( ++buffer_cursor == a4 )
     {
-      v8 = _security_cookie;
+      cached_security_cookie = _security_cookie;
       goto LABEL_21;
     }
   }
-  v13 = off_14028A6F0[v11];
-  v12 = ((__int64 (           *)(__int16 *, _QWORD, __int64))LoadLibraryExW)(v13, 0, 2048);
-  if ( !v12 )
+  table_value = off_14028A6F0[loaded_word];
+  int64_result = ((__int64 (           *)(__int16 *, _QWORD, __int64))LoadLibraryExW)(table_value, 0, 2048);
+  if ( !int64_result )
   {
     if ( (unsigned int)((__int64 (*)(void))GetLastError)() != 87
-      || !(unsigned int)wcsncmp_sr(v13, L"api-ms-", 7)
-      || !(unsigned int)wcsncmp_sr(v13, L"ext-ms-", 7) )
+      || !(unsigned int)wcsncmp_sr(table_value, L"api-ms-", 7)
+      || !(unsigned int)wcsncmp_sr(table_value, L"ext-ms-", 7) )
     {
-      v12 = 0;
+      int64_result = 0;
     }
     else
     {
-      v12 = ((__int64 (           *)(__int16 *, _QWORD, _QWORD))LoadLibraryExW)(v13, 0, 0);
+      int64_result = ((__int64 (           *)(__int16 *, _QWORD, _QWORD))LoadLibraryExW)(table_value, 0, 0);
     }
   }
-  if ( !v12 )
+  if ( !int64_result )
   {
-    _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * v11 + 19065289], -1);
+    _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * loaded_word + 19065289], -1);
     goto LABEL_19;
   }
-  if ( _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * v11 + 19065289], v12) )
-    ((void (           *)(__int64))FreeLibrary)(v12);
+  if ( _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * loaded_word + 19065289], int64_result) )
+    ((void (           *)(__int64))FreeLibrary)(int64_result);
 LABEL_25:
-  v8 = _security_cookie;
+  cached_security_cookie = _security_cookie;
 LABEL_22:
-  if ( v12 )
+  if ( int64_result )
   {
-    result = ((__int64 (           *)(__int64, __int64))GetProcAddress)(v12, a2);
+    result = ((__int64 (           *)(__int64, __int64))GetProcAddress)(int64_result, a2);
     if ( result )
     {
       _InterlockedExchange64(
-        (volatile __int64 *)&dword_140404A6C[2 * v4 + 19065329],
+        (volatile __int64 *)&dword_140404A6C[2 * input_value + 19065329],
         _security_cookie ^ __ROR8__(result, 64 - (_security_cookie & 0x3Fu)));
       return result;
     }
-    v8 = _security_cookie;
+    cached_security_cookie = _security_cookie;
   }
   _InterlockedExchange64(
-    (volatile __int64 *)&dword_140404A6C[2 * v4 + 19065329],
-    v8 ^ __ROR8__(-1, 64 - ((unsigned __int8)v8 & 0x3Fu)));
+    (volatile __int64 *)&dword_140404A6C[2 * input_value + 19065329],
+    cached_security_cookie ^ __ROR8__(-1, 64 - ((unsigned __int8)cached_security_cookie & 0x3Fu)));
   return 0;
 }
 
@@ -8332,12 +8332,12 @@ LABEL_22:
 //----- (000000014024E9B0) ----------------------------------------------------
 __int64            try_get_module(unsigned int a1)
 {
-  __int64 v1;
+  __int64 input_value;
   __int64 result;
-  __int16 *v3;
-  __int64 v4;
+  __int16 *table_value;
+  __int64 int64_result;
 
-  v1 = a1;
+  input_value = a1;
   result = *(_QWORD *)&dword_140404A6C[2 * a1 + 19065289];
   if ( result )
   {
@@ -8346,30 +8346,30 @@ __int64            try_get_module(unsigned int a1)
   }
   else
   {
-    v3 = off_14028A6F0[a1];
-    v4 = ((__int64 (           *)(__int16 *, _QWORD, __int64))LoadLibraryExW)(v3, 0, 2048);
-    if ( !v4 )
+    table_value = off_14028A6F0[a1];
+    int64_result = ((__int64 (           *)(__int16 *, _QWORD, __int64))LoadLibraryExW)(table_value, 0, 2048);
+    if ( !int64_result )
     {
       if ( (unsigned int)((__int64 (*)(void))GetLastError)() != 87
-        || !(unsigned int)wcsncmp_sr(v3, L"api-ms-", 7)
-        || !(unsigned int)wcsncmp_sr(v3, L"ext-ms-", 7) )
+        || !(unsigned int)wcsncmp_sr(table_value, L"api-ms-", 7)
+        || !(unsigned int)wcsncmp_sr(table_value, L"ext-ms-", 7) )
       {
-        v4 = 0;
+        int64_result = 0;
       }
       else
       {
-        v4 = ((__int64 (           *)(__int16 *, _QWORD, _QWORD))LoadLibraryExW)(v3, 0, 0);
+        int64_result = ((__int64 (           *)(__int16 *, _QWORD, _QWORD))LoadLibraryExW)(table_value, 0, 0);
       }
     }
-    if ( v4 )
+    if ( int64_result )
     {
-      if ( _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * v1 + 19065289], v4) )
-        ((void (           *)(__int64))FreeLibrary)(v4);
-      return v4;
+      if ( _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * input_value + 19065289], int64_result) )
+        ((void (           *)(__int64))FreeLibrary)(int64_result);
+      return int64_result;
     }
     else
     {
-      _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * v1 + 19065289], -1);
+      _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * input_value + 19065289], -1);
       return 0;
     }
   }
@@ -8383,49 +8383,49 @@ __int64            try_get_module(unsigned int a1)
 //----- (000000014024EAB0) ----------------------------------------------------
 __int64            try_get_proc_address_from_first_available_module(__int64 a1, unsigned int *a2, unsigned int *a3)
 {
-  unsigned int *v4;
-  __int64 v6;
-  __int64 v7;
-  __int16 *v8;
+  unsigned int *buffer_cursor;
+  __int64 loaded_word;
+  __int64 int64_result;
+  __int16 *table_value;
 
-  v4 = a2;
+  buffer_cursor = a2;
   if ( a2 == a3 )
     return 0;
   while ( 1 )
   {
-    v6 = *v4;
-    v7 = *(_QWORD *)&dword_140404A6C[2 * v6 + 19065289];
-    if ( !v7 )
+    loaded_word = *buffer_cursor;
+    int64_result = *(_QWORD *)&dword_140404A6C[2 * loaded_word + 19065289];
+    if ( !int64_result )
       break;
-    if ( v7 != -1 )
-      return ((__int64 (           *)(__int64, __int64))GetProcAddress)(v7, a1);
+    if ( int64_result != -1 )
+      return ((__int64 (           *)(__int64, __int64))GetProcAddress)(int64_result, a1);
 LABEL_16:
-    if ( ++v4 == a3 )
+    if ( ++buffer_cursor == a3 )
       return 0;
   }
-  v8 = off_14028A6F0[v6];
-  v7 = ((__int64 (           *)(__int16 *, _QWORD, __int64))LoadLibraryExW)(v8, 0, 2048);
-  if ( !v7 )
+  table_value = off_14028A6F0[loaded_word];
+  int64_result = ((__int64 (           *)(__int16 *, _QWORD, __int64))LoadLibraryExW)(table_value, 0, 2048);
+  if ( !int64_result )
   {
     if ( (unsigned int)((__int64 (*)(void))GetLastError)() != 87
-      || !(unsigned int)wcsncmp_sr(v8, L"api-ms-", 7)
-      || !(unsigned int)wcsncmp_sr(v8, L"ext-ms-", 7) )
+      || !(unsigned int)wcsncmp_sr(table_value, L"api-ms-", 7)
+      || !(unsigned int)wcsncmp_sr(table_value, L"ext-ms-", 7) )
     {
-      v7 = 0;
+      int64_result = 0;
     }
     else
     {
-      v7 = ((__int64 (           *)(__int16 *, _QWORD, _QWORD))LoadLibraryExW)(v8, 0, 0);
+      int64_result = ((__int64 (           *)(__int16 *, _QWORD, _QWORD))LoadLibraryExW)(table_value, 0, 0);
     }
   }
-  if ( !v7 )
+  if ( !int64_result )
   {
-    _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * v6 + 19065289], -1);
+    _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * loaded_word + 19065289], -1);
     goto LABEL_16;
   }
-  if ( _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * v6 + 19065289], v7) )
-    ((void (           *)(__int64))FreeLibrary)(v7);
-  return ((__int64 (           *)(__int64, __int64))GetProcAddress)(v7, a1);
+  if ( _InterlockedExchange64((volatile __int64 *)&dword_140404A6C[2 * loaded_word + 19065289], int64_result) )
+    ((void (           *)(__int64))FreeLibrary)(int64_result);
+  return ((__int64 (           *)(__int64, __int64))GetProcAddress)(int64_result, a1);
 }
 
 // 14026E210: invalid function type 'HMODULE (__stdcall *LoadLibraryExW)(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFlags)' has been ignored
@@ -8546,14 +8546,14 @@ __int64            sub_14024EDE0(
 {
   static unsigned int sr_api_modules_24ede0_0[] = {6,16};
   __int64 (           *function)(__int64, _QWORD, __int64, _QWORD, __int64, int, __int64, __int64, __int64);
-  unsigned int v15;
+  unsigned int call_result;
 
   function = (__int64 (           *)(__int64, _QWORD, __int64, _QWORD, __int64, int, __int64, __int64, __int64))try_get_function(1u, (__int64)"CompareStringEx", sr_api_modules_24ede0_0, sr_api_modules_24ede0_0 + 2);
   if ( function )
     return function(a1, a2, a3, a4, a5, a6, a7, a8, a9);
-  v15 = sub_14024F5AC(a1, 0);
+  call_result = sub_14024F5AC(a1, 0);
   return ((__int64 (           *)(_QWORD, _QWORD, __int64, _QWORD, __int64, int))CompareStringW)(
-           v15,
+           call_result,
            a2,
            a3,
            a4,
@@ -8568,22 +8568,22 @@ __int64            sub_14024EEBC(__int64 a1, unsigned int a2, __int64 a3, __int6
 {
   static unsigned int sr_api_modules_24eebc_0[] = {3,16};
   __int64 (           *function)(__int64, _QWORD, __int64, __int64);
-  _BYTE v9[4];
-  unsigned int v10;
-  unsigned int v11;
-  __int64 *v12;
-  __int64 v13;
+  _BYTE scratch_buffer[4];
+  unsigned int selection_code;
+  unsigned int selection_code_2;
+  __int64 *state_address;
+  __int64 input_value;
 
-  v13 = a1;
+  input_value = a1;
   function = (__int64 (           *)(__int64, _QWORD, __int64, __int64))try_get_function(
                                                                           2u,
                                                                           (__int64)"EnumSystemLocalesEx", sr_api_modules_24eebc_0, sr_api_modules_24eebc_0 + 2);
   if ( function )
-    return function(v13, a2, a3, a4);
-  v12 = &v13;
-  v10 = 4;
-  v11 = 4;
-  return sub_14024E088((__int64)v9, &v11, &v12, &v10);
+    return function(input_value, a2, a3, a4);
+  state_address = &input_value;
+  selection_code = 4;
+  selection_code_2 = 4;
+  return sub_14024E088((__int64)scratch_buffer, &selection_code_2, &state_address, &selection_code);
 }
 
 //----- (000000014024EF54) ----------------------------------------------------
@@ -8659,16 +8659,16 @@ __int64            sub_14024F080(__int64 a1, unsigned int a2, __int64 a3, __int6
 {
   static unsigned int sr_api_modules_24f080_0[] = {0,16};
   __int64 (           *function)(__int64, _QWORD, __int64, __int64, __int64, int, __int64);
-  unsigned int v13;
+  unsigned int call_result;
 
   function = (__int64 (           *)(__int64, _QWORD, __int64, __int64, __int64, int, __int64))try_get_function(
                                                                                                  8u,
                                                                                                  (__int64)"GetDateFormatEx", sr_api_modules_24f080_0, sr_api_modules_24f080_0 + 2);
   if ( function )
     return function(a1, a2, a3, a4, a5, a6, a7);
-  v13 = sub_14024F5AC(a1, 0);
+  call_result = sub_14024F5AC(a1, 0);
   return ((__int64 (           *)(_QWORD, _QWORD, __int64, __int64, __int64, int))GetDateFormatW)(
-           v13,
+           call_result,
            a2,
            a3,
            a4,
@@ -8697,15 +8697,15 @@ __int64            sub_14024F174(__int64 a1, unsigned int a2, __int64 a3, unsign
 {
   static unsigned int sr_api_modules_24f174_0[] = {3,16};
   __int64 (           *function)(__int64, _QWORD, __int64, _QWORD);
-  unsigned int v10;
+  unsigned int call_result;
 
   function = (__int64 (           *)(__int64, _QWORD, __int64, _QWORD))try_get_function(
                                                                          0xBu,
                                                                          (__int64)"GetLocaleInfoEx", sr_api_modules_24f174_0, sr_api_modules_24f174_0 + 2);
   if ( function )
     return function(a1, a2, a3, a4);
-  v10 = sub_14024F5AC(a1, 0);
-  return ((__int64 (           *)(_QWORD, _QWORD, __int64, _QWORD))GetLocaleInfoW)(v10, a2, a3, a4);
+  call_result = sub_14024F5AC(a1, 0);
+  return ((__int64 (           *)(_QWORD, _QWORD, __int64, _QWORD))GetLocaleInfoW)(call_result, a2, a3, a4);
 }
 
 // 14026E100: invalid function type 'int (__stdcall *GetLocaleInfoW)(LCID Locale, LCTYPE LCType, LPWSTR lpLCData, int cchData)' has been ignored
@@ -8732,16 +8732,16 @@ __int64            sub_14024F240(__int64 a1, unsigned int a2, __int64 a3, __int6
 {
   static unsigned int sr_api_modules_24f240_0[] = {0,16};
   __int64 (           *function)(__int64, _QWORD, __int64, __int64, __int64, int);
-  unsigned int v12;
+  unsigned int call_result;
 
   function = (__int64 (           *)(__int64, _QWORD, __int64, __int64, __int64, int))try_get_function(
                                                                                         0xEu,
                                                                                         (__int64)"GetTimeFormatEx", sr_api_modules_24f240_0, sr_api_modules_24f240_0 + 2);
   if ( function )
     return function(a1, a2, a3, a4, a5, a6);
-  v12 = sub_14024F5AC(a1, 0);
+  call_result = sub_14024F5AC(a1, 0);
   return ((__int64 (           *)(_QWORD, _QWORD, __int64, __int64, __int64, int))GetTimeFormatW)(
-           v12,
+           call_result,
            a2,
            a3,
            a4,
@@ -8756,15 +8756,15 @@ __int64            sub_14024F2EC(_WORD *a1, unsigned int a2)
 {
   static unsigned int sr_api_modules_24f2ec_0[] = {3,16};
   __int64 (           *function)(_WORD *, _QWORD);
-  unsigned int v6;
+  unsigned int int64_result;
 
   function = (__int64 (           *)(_WORD *, _QWORD))try_get_function(
                                                         0xFu,
                                                         (__int64)"GetUserDefaultLocaleName", sr_api_modules_24f2ec_0, sr_api_modules_24f2ec_0 + 2);
   if ( function )
     return function(a1, a2);
-  v6 = ((__int64 (*)(void))GetUserDefaultLCID)();
-  return sub_14024F460(v6, a1, a2, 0);
+  int64_result = ((__int64 (*)(void))GetUserDefaultLCID)();
+  return sub_14024F460(int64_result, a1, a2, 0);
 }
 
 // 14026E0F0: invalid function type 'LCID (__stdcall *GetUserDefaultLCID)()' has been ignored
@@ -8805,15 +8805,15 @@ __int64            sub_14024F408(__int64 a1)
 {
   static unsigned int sr_api_modules_24f408_0[] = {3,16};
   __int64 (           *function)(__int64);
-  unsigned int v4;
+  unsigned int call_result;
 
   function = (__int64 (           *)(__int64))try_get_function(
                                                 0x13u,
                                                 (__int64)"IsValidLocaleName", sr_api_modules_24f408_0, sr_api_modules_24f408_0 + 2);
   if ( function )
     return function(a1);
-  v4 = sub_14024F5AC(a1, 0);
-  return ((__int64 (           *)(_QWORD, __int64))IsValidLocale)(v4, 1);
+  call_result = sub_14024F5AC(a1, 0);
+  return ((__int64 (           *)(_QWORD, __int64))IsValidLocale)(call_result, 1);
 }
 
 // 14026E0F8: invalid function type 'BOOL (__stdcall *IsValidLocale)(LCID Locale, DWORD dwFlags)' has been ignored
@@ -8847,13 +8847,13 @@ __int64            sub_14024F4D0(
 {
   static unsigned int sr_api_modules_24f4d0_0[] = {3,16};
   __int64 (           *function)(__int64, _QWORD, __int64, _QWORD, __int64, int, __int64, __int64, __int64);
-  unsigned int v15;
+  unsigned int call_result;
 
   function = (__int64 (           *)(__int64, _QWORD, __int64, _QWORD, __int64, int, __int64, __int64, __int64))try_get_function(0x14u, (__int64)"LCMapStringEx", sr_api_modules_24f4d0_0, sr_api_modules_24f4d0_0 + 2);
   if ( function )
     return function(a1, a2, a3, a4, a5, a6, a7, a8, a9);
-  v15 = sub_14024F5AC(a1, 0);
-  return ((__int64 (           *)(_QWORD, _QWORD, __int64, _QWORD, __int64, int))LCMapStringW)(v15, a2, a3, a4, a5, a6);
+  call_result = sub_14024F5AC(a1, 0);
+  return ((__int64 (           *)(_QWORD, _QWORD, __int64, _QWORD, __int64, int))LCMapStringW)(call_result, a2, a3, a4, a5, a6);
 }
 
 // 14026E108: invalid function type 'int (__stdcall *LCMapStringW)(LCID Locale, DWORD dwMapFlags, LPCWSTR lpSrcStr, int cchSrc, LPWSTR lpDestStr, int cchDest)' has been ignored
@@ -8974,15 +8974,15 @@ bool sub_14024F84C()
 {
   static unsigned int sr_api_modules_24f84c_0[] = {13,19};
   static unsigned int sr_api_modules_24f84c_1[] = {13,19};
-  char v0;
+  char unused_written_slot;
 
-  v0 = 0;
+  unused_written_slot = 0;
   if ( (unsigned int)sub_14025A3C4() == 1
     && try_get_function(0x18u, (__int64)"MessageBoxA", sr_api_modules_24f84c_0, sr_api_modules_24f84c_0 + 2) )
   {
     return try_get_function(0x19u, (__int64)"MessageBoxW", sr_api_modules_24f84c_1, sr_api_modules_24f84c_1 + 2) != 0;
   }
-  return v0;
+  return unused_written_slot;
 }
 
 //----- (000000014024F8BC) ----------------------------------------------------
@@ -9046,24 +9046,24 @@ __int64 sub_14024FA78()
   static unsigned int sr_api_modules_24fa78_0[] = {11,19};
   static unsigned int sr_api_modules_24fa78_1[] = {13,19};
   __int64 (*function)(void);
-  __int64 v1;
-  __int64 (           *v2)(__int64);
+  __int64 function_result;
+  __int64 (           *callback_function)(__int64);
 
   function = (__int64 (*)(void))try_get_function(
                                   7u,
                                   (__int64)"GetActiveWindow", sr_api_modules_24fa78_0, sr_api_modules_24fa78_0 + 2);
   if ( !function )
     return 0;
-  v1 = function();
-  if ( !v1 )
+  function_result = function();
+  if ( !function_result )
     return 0;
-  v2 = (__int64 (           *)(__int64))try_get_function(
+  callback_function = (__int64 (           *)(__int64))try_get_function(
                                           0xAu,
                                           (__int64)"GetLastActivePopup", sr_api_modules_24fa78_1, sr_api_modules_24fa78_1 + 2);
-  if ( v2 )
-    return v2(v1);
+  if ( callback_function )
+    return callback_function(function_result);
   else
-    return v1;
+    return function_result;
 }
 
 //----- (000000014024FAF0) ----------------------------------------------------
@@ -9082,29 +9082,29 @@ __int64 sub_14024FB24()
   static unsigned int sr_api_modules_24fb24_0[] = {14,19};
   static unsigned int sr_api_modules_24fb24_1[] = {14,19};
   __int64 (*function)(void);
-  void (           *v1)(__int64, __int64, __int64 *, __int64, _QWORD);
-  __int64 v2;
-  __int64 v4;
-  __int64 v5;
-  int v6;
-  __int64 v7;
+  void (           *callback_function)(__int64, __int64, __int64 *, __int64, _QWORD);
+  __int64 function_result;
+  __int64 unused_local;
+  __int64 selection_flag;
+  int selection_flag_2;
+  __int64 unused_local_2;
 
   function = (__int64 (*)(void))try_get_function(
                                   0xCu,
                                   (__int64)"GetProcessWindowStation", sr_api_modules_24fb24_0, sr_api_modules_24fb24_0 + 2);
   if ( function )
   {
-    v1 = (void (           *)(__int64, __int64, __int64 *, __int64, _QWORD))try_get_function(
+    callback_function = (void (           *)(__int64, __int64, __int64 *, __int64, _QWORD))try_get_function(
                                                                               0x10u,
                                                                               (__int64)"GetUserObjectInformationW", sr_api_modules_24fb24_1, sr_api_modules_24fb24_1 + 2);
-    if ( v1 )
+    if ( callback_function )
     {
-      v2 = function();
-      if ( v2 )
+      function_result = function();
+      if ( function_result )
       {
-        v5 = 0;
-        v6 = 0;
-        return ((unsigned int (*)(__int64, __int64, __int64 *, __int64, _QWORD))v1)(v2, 1, &v5, 12, 0) && (v6 & 1); /* 0x14024FBC1: test eax, eax; 0x14024FBC5: test byte ptr [rsp + 0x38], 1 */
+        selection_flag = 0;
+        selection_flag_2 = 0;
+        return ((unsigned int (*)(__int64, __int64, __int64 *, __int64, _QWORD))callback_function)(function_result, 1, &selection_flag, 12, 0) && (selection_flag_2 & 1); /* 0x14024FBC1: test eax, eax; 0x14024FBC5: test byte ptr [rsp + 0x38], 1 */
       }
       return 0; /* 0x14024FB97: je -> xor al, al */
     }
@@ -9115,22 +9115,22 @@ __int64 sub_14024FB24()
 //----- (000000014024FBEC) ----------------------------------------------------
 char            sub_14024FBEC(char a1)
 {
-  unsigned int *v1;
+  unsigned int *state_address;
 
   if ( !a1 )
   {
-    v1 = &g_144CBF190;
+    state_address = &g_144CBF190;
     do
     {
-      if ( *(_QWORD *)v1 )
+      if ( *(_QWORD *)state_address )
       {
-        if ( *(_QWORD *)v1 != -1 )
+        if ( *(_QWORD *)state_address != -1 )
           ((void (*)(void))FreeLibrary)();
-        *(_QWORD *)v1 = 0;
+        *(_QWORD *)state_address = 0;
       }
-      v1 += 2;
+      state_address += 2;
     }
-    while ( v1 != &g_144CBF230 );
+    while ( state_address != &g_144CBF230 );
   }
   return 1;
 }
@@ -9141,20 +9141,20 @@ char            sub_14024FBEC(char a1)
 int         fcloseall()
 {
   int i;
-  __int64 v1;
-  int v3;
+  __int64 loaded_word;
+  int iteration_count;
 
-  v3 = 0;
+  iteration_count = 0;
   crt_lock(8);
   for ( i = 3; i != g_144CBE6A8; ++i )
   {
-    v1 = *(_QWORD *)(g_144CBE6B0 + 8LL * i);
-    if ( v1 )
+    loaded_word = *(_QWORD *)(g_144CBE6B0 + 8LL * i);
+    if ( loaded_word )
     {
-      if ( (*(_DWORD *)(v1 + 20) & 0x2000) != 0
+      if ( (*(_DWORD *)(loaded_word + 20) & 0x2000) != 0
         && (unsigned int)crt_fclose(*(_QWORD *)(g_144CBE6B0 + 8LL * i)) != -1 )
       {
-        ++v3;
+        ++iteration_count;
       }
       ((void (           *)(__int64))DeleteCriticalSection)(*(_QWORD *)(g_144CBE6B0 + 8LL * i) + 48LL);
       free_base(*(void **)(g_144CBE6B0 + 8LL * i));
@@ -9162,7 +9162,7 @@ int         fcloseall()
     }
   }
   crt_unlock(8);
-  return v3;
+  return iteration_count;
 }
 
 // 14026E240: invalid function type 'void (__stdcall *DeleteCriticalSection)(LPCRITICAL_SECTION lpCriticalSection)' has been ignored
@@ -9170,17 +9170,17 @@ int         fcloseall()
 //----- (000000014024FCEC) ----------------------------------------------------
 __int64            sub_14024FCEC(__int64 a1, __int64 *a2, FILE ***a3, __int64 *a4)
 {
-  __int64 v6;
-  int v7;
+  __int64 scaled_index;
+  int loaded_word;
 
   crt_lock_file(*a2);
-  v6 = (__int64)**a3;
-  if ( v6 )
+  scaled_index = (__int64)**a3;
+  if ( scaled_index )
   {
-    v7 = *(_DWORD *)(v6 + 20);
-    if ( (v7 & 0x2000) != 0 )
+    loaded_word = *(_DWORD *)(scaled_index + 20);
+    if ( (loaded_word & 0x2000) != 0 )
     {
-      if ( (v7 & 3) == 2 && (v7 & 0xC0) != 0 || (v7 & 0x800) != 0 )
+      if ( (loaded_word & 3) == 2 && (loaded_word & 0xC0) != 0 || (loaded_word & 0x800) != 0 )
       {
         if ( *(_BYTE *)a3[2] || (*((_DWORD *)**a3 + 5) & 2) != 0 )
         {
@@ -9202,48 +9202,48 @@ __int64            sub_14024FCEC(__int64 a1, __int64 *a2, FILE ***a3, __int64 *a
 //----- (000000014024FD88) ----------------------------------------------------
 __int64            sub_14024FD88(__int64 a1, unsigned int *a2, FILE ***a3, unsigned int *a4)
 {
-  __int64 *v6;
-  __int64 v7;
-  __int64 v8;
-  int v9;
-  FILE **v10;
-  FILE **v11;
-  FILE **v12;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16[2];
-  FILE **v17[7];
-  char v18;
-  unsigned int *v19;
+  __int64 *buffer_cursor;
+  __int64 scaled_index;
+  __int64 loaded_word;
+  int loaded_word_2;
+  FILE **table_value;
+  FILE **table_value_2;
+  FILE **loaded_word_3;
+  __int64 saved_loaded_word;
+  __int64 callee_output_word;
+  __int64 scratch_buffer[2];
+  FILE **scratch_buffer_2[7];
+  char callee_output_word_2;
+  unsigned int *unused_written_slot;
 
-  v19 = a4;
+  unused_written_slot = a4;
   crt_lock(*a2);
-  v6 = *(__int64 **)&g_144CBE6B0;
-  v7 = g_144CBE6B0 + 8LL * (int)g_144CBE6A8;
+  buffer_cursor = *(__int64 **)&g_144CBE6B0;
+  scaled_index = g_144CBE6B0 + 8LL * (int)g_144CBE6A8;
   while ( 1 )
   {
-    v16[1] = (__int64)v6;
-    if ( v6 == (__int64 *)v7 )
+    scratch_buffer[1] = (__int64)buffer_cursor;
+    if ( buffer_cursor == (__int64 *)scaled_index )
       break;
-    v8 = *v6;
-    v14 = v8;
-    if ( v8 )
+    loaded_word = *buffer_cursor;
+    saved_loaded_word = loaded_word;
+    if ( loaded_word )
     {
-      v9 = *(_DWORD *)(v8 + 20);
-      if ( (v9 & 0x2000) != 0 )
+      loaded_word_2 = *(_DWORD *)(loaded_word + 20);
+      if ( (loaded_word_2 & 0x2000) != 0 )
       {
-        if ( (v9 & 3) == 2 && (v9 & 0xC0) != 0 || (v9 & 0x800) != 0 )
+        if ( (loaded_word_2 & 3) == 2 && (loaded_word_2 & 0xC0) != 0 || (loaded_word_2 & 0x800) != 0 )
         {
-          v10 = a3[2];
-          v11 = a3[1];
-          v12 = *a3;
-          v17[0] = (FILE **)&v14;
-          v17[1] = v12;
-          v17[2] = v11;
-          v17[3] = v10;
-          v15 = v14;
-          v16[0] = v14;
-          sub_14024FCEC((__int64)&v18, v16, v17, &v15);
+          table_value = a3[2];
+          table_value_2 = a3[1];
+          loaded_word_3 = *a3;
+          scratch_buffer_2[0] = (FILE **)&saved_loaded_word;
+          scratch_buffer_2[1] = loaded_word_3;
+          scratch_buffer_2[2] = table_value_2;
+          scratch_buffer_2[3] = table_value;
+          callee_output_word = saved_loaded_word;
+          scratch_buffer[0] = saved_loaded_word;
+          sub_14024FCEC((__int64)&callee_output_word_2, scratch_buffer, scratch_buffer_2, &callee_output_word);
         }
         else
         {
@@ -9251,7 +9251,7 @@ __int64            sub_14024FD88(__int64 a1, unsigned int *a2, FILE ***a3, unsig
         }
       }
     }
-    ++v6;
+    ++buffer_cursor;
   }
   return crt_unlock(*a4);
 }
@@ -9268,177 +9268,177 @@ __int64            sub_14024FE68(__int64 a1, __int64 *a2, FILE ***a3, __int64 *a
 //----- (000000014024FEA8) ----------------------------------------------------
 __int64            sub_14024FEA8(unsigned int a1, FILE ***a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_14024FD88((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_14024FD88((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014024FED0) ----------------------------------------------------
 __int64            sub_14024FED0(__int64 a1, FILE ***a2)
 {
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  __int64 callee_output_word;
+  __int64 input_value;
+  __int64 input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_14024FE68((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_14024FE68((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014024FEF8) ----------------------------------------------------
 __int64            sub_14024FEF8(__int64 a1, FILE ***a2)
 {
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  __int64 callee_output_word;
+  __int64 input_value;
+  __int64 input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_14024FCEC((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_14024FCEC((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014024FFB4) ----------------------------------------------------
 char            _lambda_ab61a845afdef5b7c387490eaf3616ee___operator_call(FILE ***a1)
 {
-  __int64 *v1;
-  __int64 v3;
-  __int64 v4;
-  FILE **v5;
-  unsigned int v6;
-  __int64 v8;
-  FILE **v9[5];
-  char v10;
-  __int64 v11;
-  __int64 v12;
+  __int64 *buffer_cursor;
+  __int64 packed_word_bits;
+  __int64 scaled_index;
+  FILE **loaded_word;
+  unsigned int loaded_word_2;
+  __int64 callee_output_word;
+  FILE **scratch_buffer[5];
+  char callee_output_word_2;
+  __int64 saved_packed_word_bits;
+  __int64 callee_output_word_3;
 
-  v1 = *(__int64 **)&g_144CBE6B0;
-  LOBYTE(v3) = g_144CBE6A8;
-  v4 = g_144CBE6B0 + 8LL * (int)g_144CBE6A8;
-  while ( v1 != (__int64 *)v4 )
+  buffer_cursor = *(__int64 **)&g_144CBE6B0;
+  LOBYTE(packed_word_bits) = g_144CBE6A8;
+  scaled_index = g_144CBE6B0 + 8LL * (int)g_144CBE6A8;
+  while ( buffer_cursor != (__int64 *)scaled_index )
   {
-    v3 = *v1;
-    v5 = *a1;
-    v11 = v3;
-    if ( v3 )
+    packed_word_bits = *buffer_cursor;
+    loaded_word = *a1;
+    saved_packed_word_bits = packed_word_bits;
+    if ( packed_word_bits )
     {
-      v6 = *(_DWORD *)(v3 + 20);
-      LODWORD(v3) = v6 >> 13;
-      if ( (v6 & 0x2000) != 0 )
+      loaded_word_2 = *(_DWORD *)(packed_word_bits + 20);
+      LODWORD(packed_word_bits) = loaded_word_2 >> 13;
+      if ( (loaded_word_2 & 0x2000) != 0 )
       {
-        LOBYTE(v3) = v6 & 3;
-        if ( (v6 & 3) == 2 && (v6 & 0xC0) != 0 || (v6 & 0x800) != 0 )
+        LOBYTE(packed_word_bits) = loaded_word_2 & 3;
+        if ( (loaded_word_2 & 3) == 2 && (loaded_word_2 & 0xC0) != 0 || (loaded_word_2 & 0x800) != 0 )
         {
-          v9[0] = (FILE **)&v11;
-          v9[1] = *a1;
-          v9[2] = a1[1];
-          v9[3] = a1[2];
-          v12 = v11;
-          v8 = v11;
-          LOBYTE(v3) = sub_14024FCEC((__int64)&v10, &v8, v9, &v12);
+          scratch_buffer[0] = (FILE **)&saved_packed_word_bits;
+          scratch_buffer[1] = *a1;
+          scratch_buffer[2] = a1[1];
+          scratch_buffer[3] = a1[2];
+          callee_output_word_3 = saved_packed_word_bits;
+          callee_output_word = saved_packed_word_bits;
+          LOBYTE(packed_word_bits) = sub_14024FCEC((__int64)&callee_output_word_2, &callee_output_word, scratch_buffer, &callee_output_word_3);
         }
         else
         {
-          ++*(_DWORD *)v5;
+          ++*(_DWORD *)loaded_word;
         }
       }
     }
-    ++v1;
+    ++buffer_cursor;
   }
-  return v3;
+  return packed_word_bits;
 }
 
 //----- (000000014025006C) ----------------------------------------------------
 char            _lambda_c5860995281e5c4ce005b3de8f5874ee___operator_call(FILE *******a1)
 {
-  FILE *****v2;
-  FILE *****v3;
-  unsigned int v4;
-  FILE *****v5;
+  FILE *****table_value;
+  FILE *****packed_word_bits;
+  unsigned int loaded_word;
+  FILE *****file_handle;
 
-  v2 = (FILE *****)a1[1];
-  v3 = **a1;
-  if ( v3 )
+  table_value = (FILE *****)a1[1];
+  packed_word_bits = **a1;
+  if ( packed_word_bits )
   {
-    v4 = *((_DWORD *)v3 + 5);
-    LODWORD(v3) = v4 >> 13;
-    if ( (v4 & 0x2000) != 0 )
+    loaded_word = *((_DWORD *)packed_word_bits + 5);
+    LODWORD(packed_word_bits) = loaded_word >> 13;
+    if ( (loaded_word & 0x2000) != 0 )
     {
-      LOBYTE(v3) = v4 & 3;
-      if ( (v4 & 3) == 2 && (v4 & 0xC0) != 0 || (v4 & 0x800) != 0 )
+      LOBYTE(packed_word_bits) = loaded_word & 3;
+      if ( (loaded_word & 3) == 2 && (loaded_word & 0xC0) != 0 || (loaded_word & 0x800) != 0 )
       {
-        if ( *(_BYTE *)a1[2] || (v5 = **a1, LODWORD(v3) = *((_DWORD *)v5 + 5) >> 1, (*((_DWORD *)v5 + 5) & 2) != 0) )
+        if ( *(_BYTE *)a1[2] || (file_handle = **a1, LODWORD(packed_word_bits) = *((_DWORD *)file_handle + 5) >> 1, (*((_DWORD *)file_handle + 5) & 2) != 0) )
         {
           if ( (unsigned int)unknown_libname_861((FILE *)**a1) == -1 )
           {
-            v3 = (FILE *****)a1[3];
-            *(_DWORD *)v3 = -1;
+            packed_word_bits = (FILE *****)a1[3];
+            *(_DWORD *)packed_word_bits = -1;
           }
           else
           {
-            v3 = (FILE *****)a1[1];
-            ++*(_DWORD *)v3;
+            packed_word_bits = (FILE *****)a1[1];
+            ++*(_DWORD *)packed_word_bits;
           }
         }
       }
       else
       {
-        ++*(_DWORD *)v2;
+        ++*(_DWORD *)table_value;
       }
     }
   }
-  return (char)v3;
+  return (char)packed_word_bits;
 }
 
 //----- (00000001402500F4) ----------------------------------------------------
 __int64            sub_1402500F4(char a1)
 {
   __int64 result;
-  unsigned int v2;
-  unsigned int v3;
-  FILE **v4[3];
-  char v5;
-  char v6;
-  unsigned int v7;
-  unsigned int v8;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
+  FILE **scratch_buffer[3];
+  char input_value;
+  char callee_output_word;
+  unsigned int selection_flag;
+  unsigned int selection_flag_2;
 
-  v5 = a1;
-  v8 = 0;
-  v7 = 0;
-  v4[0] = (FILE **)&v8;
-  v4[1] = (FILE **)&v5;
-  v4[2] = (FILE **)&v7;
-  v2 = 8;
-  v3 = 8;
-  sub_14024FD88((__int64)&v6, &v3, v4, &v2);
-  result = v7;
-  if ( v5 )
-    return v8;
+  input_value = a1;
+  selection_flag_2 = 0;
+  selection_flag = 0;
+  scratch_buffer[0] = (FILE **)&selection_flag_2;
+  scratch_buffer[1] = (FILE **)&input_value;
+  scratch_buffer[2] = (FILE **)&selection_flag;
+  selection_code = 8;
+  selection_code_2 = 8;
+  sub_14024FD88((__int64)&callee_output_word, &selection_code_2, scratch_buffer, &selection_code);
+  result = selection_flag;
+  if ( input_value )
+    return selection_flag_2;
   return result;
 }
 
 //----- (00000001402501C4) ----------------------------------------------------
 __int64            sub_1402501C4(FILE *Stream)
 {
-  int v2;
-  signed int v3;
-       void *v4;
-  int v5;
+  int loaded_word;
+  signed int loaded_word_2;
+       void *loaded_record_pointer;
+  int fileno_result;
 
-  v2 = *((_DWORD *)Stream + 5);
-  if ( (v2 & 3) == 2 && (v2 & 0xC0) != 0 )
+  loaded_word = *((_DWORD *)Stream + 5);
+  if ( (loaded_word & 3) == 2 && (loaded_word & 0xC0) != 0 )
   {
-    v3 = *(_DWORD *)Stream - *((_DWORD *)Stream + 2);
+    loaded_word_2 = *(_DWORD *)Stream - *((_DWORD *)Stream + 2);
     *((_DWORD *)Stream + 4) = 0;
-    v4 = *((     void **)Stream + 1);
-    *(_QWORD *)Stream = (uint64)(uintptr_t)(v4);
-    if ( v3 > 0 )
+    loaded_record_pointer = *((     void **)Stream + 1);
+    *(_QWORD *)Stream = (uint64)(uintptr_t)(loaded_record_pointer);
+    if ( loaded_word_2 > 0 )
     {
-      v5 = fileno(Stream);
-      if ( v3 != write(v5, v4, v3) )
+      fileno_result = fileno(Stream);
+      if ( loaded_word_2 != write(fileno_result, loaded_record_pointer, loaded_word_2) )
       {
         _InterlockedOr((volatile signed __int32 *)Stream + 5, 0x10u);
         return 0xFFFFFFFFLL;
@@ -9455,7 +9455,7 @@ __int64            sub_1402501C4(FILE *Stream)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_861(FILE *Stream)
 {
-  int v3;
+  int fileno_result;
 
   if ( !Stream )
     return sub_1402500F4(0);
@@ -9463,8 +9463,8 @@ __int64            unknown_libname_861(FILE *Stream)
     return 0xFFFFFFFFLL;
   if ( (*((_DWORD *)Stream + 5) & 0x800) != 0 )
   {
-    v3 = fileno(Stream);
-    if ( commit(v3) )
+    fileno_result = fileno(Stream);
+    if ( commit(fileno_result) )
       return 0xFFFFFFFFLL;
   }
   return 0;
@@ -9479,23 +9479,23 @@ int         flushall()
 //----- (0000000140250294) ----------------------------------------------------
 int         fflush(FILE *Stream)
 {
-  int v2;
-  FILE *v3;
-  char v4;
-  FILE *v5;
-  FILE *v6;
-  FILE **v7;
+  int loaded_word;
+  FILE *saved_cached_stream;
+  char callee_output_word;
+  FILE *cached_stream;
+  FILE *saved_cached_stream_2;
+  FILE **state_address;
 
-  v5 = Stream;
+  cached_stream = Stream;
   if ( !Stream )
     return sub_1402500F4(0);
-  v2 = *((_DWORD *)Stream + 5);
-  if ( ((v2 & 3) != 2 || (v2 & 0xC0) == 0) && (v2 & 0x800) == 0 )
+  loaded_word = *((_DWORD *)Stream + 5);
+  if ( ((loaded_word & 3) != 2 || (loaded_word & 0xC0) == 0) && (loaded_word & 0x800) == 0 )
     return 0;
-  v7 = &v5;
-  v6 = v5;
-  v3 = v5;
-  return sub_14024FE68((__int64)&v4, (__int64 *)&v3, &v7, (__int64 *)&v6);
+  state_address = &cached_stream;
+  saved_cached_stream_2 = cached_stream;
+  saved_cached_stream = cached_stream;
+  return sub_14024FE68((__int64)&callee_output_word, (__int64 *)&saved_cached_stream, &state_address, (__int64 *)&saved_cached_stream_2);
 }
 
 //----- (00000001402502FC) ----------------------------------------------------
@@ -9523,57 +9523,57 @@ __int64            sub_1402502FC(__int64 a1)
 //----- (0000000140250358) ----------------------------------------------------
 char initialize_inherited_file_handles_nolock()
 {
-  int v0;
-  _BYTE *v1;
-  __int64 v2;
-  _QWORD *v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
-  _WORD v8[52];
-  int *v9;
+  int int64_result;
+  _BYTE *buffer_cursor;
+  __int64 remaining_count;
+  _QWORD *buffer_cursor_2;
+  __int64 element_index;
+  __int64 shifted_bits;
+  __int64 masked_bits;
+  _WORD scratch_buffer[52];
+  int *loaded_record_pointer;
 
-  LOBYTE(v0) = ((__int64 (           *)(_WORD *))GetStartupInfoW)(v8);
-  v9=*(int **)((unsigned char *)v8+72);
-  if ( v8[33] )
+  LOBYTE(int64_result) = ((__int64 (           *)(_WORD *))GetStartupInfoW)(scratch_buffer);
+  loaded_record_pointer=*(int **)((unsigned char *)scratch_buffer+72);
+  if ( scratch_buffer[33] )
   {
-    LOBYTE(v0) = (_BYTE)v9;
-    if ( v9 )
+    LOBYTE(int64_result) = (_BYTE)loaded_record_pointer;
+    if ( loaded_record_pointer )
     {
-      v1 = v9 + 1;
-      v2 = 0x2000;
-      v3 = (_QWORD *)((char *)v9 + *v9 + 4);
-      if ( *v9 < 0x2000 )
-        v2 = (unsigned int)*v9;
-      LOBYTE(v0) = sub_140260FC0(v2);
-      if ( (int)v2 > (int)g_144CBF750 )
-        v2 = g_144CBF750;
-      if ( (_DWORD)v2 )
+      buffer_cursor = loaded_record_pointer + 1;
+      remaining_count = 0x2000;
+      buffer_cursor_2 = (_QWORD *)((char *)loaded_record_pointer + *loaded_record_pointer + 4);
+      if ( *loaded_record_pointer < 0x2000 )
+        remaining_count = (unsigned int)*loaded_record_pointer;
+      LOBYTE(int64_result) = sub_140260FC0(remaining_count);
+      if ( (int)remaining_count > (int)g_144CBF750 )
+        remaining_count = g_144CBF750;
+      if ( (_DWORD)remaining_count )
       {
-        v4 = 0;
+        element_index = 0;
         do
         {
-          if ( *v3 != -1
-            && *v3 != -2
-            && (*v1 & 1) != 0
-            && ((*v1 & 8) != 0 || (v0 = ((__int64 (           *)(_QWORD))GetFileType)(*v3)) != 0) )
+          if ( *buffer_cursor_2 != -1
+            && *buffer_cursor_2 != -2
+            && (*buffer_cursor & 1) != 0
+            && ((*buffer_cursor & 8) != 0 || (int64_result = ((__int64 (           *)(_QWORD))GetFileType)(*buffer_cursor_2)) != 0) )
           {
-            v5 = *(_QWORD *)&dword_140404A6C[2 * (v4 >> 6) + 19065401];
-            v6 = 9 * (v4 & 0x3F);
-            *(_QWORD *)(v5 + 8 * v6 + 40) = *v3;
-            LOBYTE(v0) = *v1;
-            *(_BYTE *)(v5 + 8 * v6 + 56) = *v1;
+            shifted_bits = *(_QWORD *)&dword_140404A6C[2 * (element_index >> 6) + 19065401];
+            masked_bits = 9 * (element_index & 0x3F);
+            *(_QWORD *)(shifted_bits + 8 * masked_bits + 40) = *buffer_cursor_2;
+            LOBYTE(int64_result) = *buffer_cursor;
+            *(_BYTE *)(shifted_bits + 8 * masked_bits + 56) = *buffer_cursor;
           }
-          ++v4;
-          ++v1;
-          ++v3;
-          --v2;
+          ++element_index;
+          ++buffer_cursor;
+          ++buffer_cursor_2;
+          --remaining_count;
         }
-        while ( v2 );
+        while ( remaining_count );
       }
     }
   }
-  return v0;
+  return int64_result;
 }
 
 // 14026E2A0: invalid function type 'void (__stdcall *GetStartupInfoW)(LPSTARTUPINFOW lpStartupInfo)' has been ignored
@@ -9582,80 +9582,80 @@ char initialize_inherited_file_handles_nolock()
 //----- (0000000140250448) ----------------------------------------------------
 __int64 initialize_stdio_handles_nolock()
 {
-  int v0;
-  __int64 v1;
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  int element_index;
+  __int64 record_byte_offset;
+  __int64 masked_bits;
+  __int64 scaled_index;
+  __int64 shifted_bits;
+  __int64 loaded_word;
   __int64 result;
-  bool v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
+  bool comparison_result;
+  __int64 selection_code;
+  __int64 int64_result;
+  __int64 saved_int64_result;
 
-  v0 = 0;
-  v1 = 0;
+  element_index = 0;
+  record_byte_offset = 0;
   do
   {
-    v2 = v0 & 0x3F;
-    v3 = 9 * v2;
-    v4 = *(_QWORD *)&dword_140404A6C[2 * ((__int64)v0 >> 6) + 19065401];
-    v5 = *(_QWORD *)(v4 + 72 * v2 + 40);
-    v7 = v5 == -2;
-    result = v5 + 2;
-    if ( v7 || result == 1 )
+    masked_bits = element_index & 0x3F;
+    scaled_index = 9 * masked_bits;
+    shifted_bits = *(_QWORD *)&dword_140404A6C[2 * ((__int64)element_index >> 6) + 19065401];
+    loaded_word = *(_QWORD *)(shifted_bits + 72 * masked_bits + 40);
+    comparison_result = loaded_word == -2;
+    result = loaded_word + 2;
+    if ( comparison_result || result == 1 )
     {
-      *(_BYTE *)(v4 + 72 * v2 + 56) = -127;
-      if ( v0 )
+      *(_BYTE *)(shifted_bits + 72 * masked_bits + 56) = -127;
+      if ( element_index )
       {
-        if ( v0 == 1 )
-          v8 = 4294967285LL;
+        if ( element_index == 1 )
+          selection_code = 4294967285LL;
         else
-          v8 = 4294967284LL;
+          selection_code = 4294967284LL;
       }
       else
       {
-        v8 = 4294967286LL;
+        selection_code = 4294967286LL;
       }
-      v9 = ((__int64 (           *)(__int64))GetStdHandle)(v8);
-      v10 = v9;
-      if ( (unsigned __int64)(v9 + 1) <= 1 )
+      int64_result = ((__int64 (           *)(__int64))GetStdHandle)(selection_code);
+      saved_int64_result = int64_result;
+      if ( (unsigned __int64)(int64_result + 1) <= 1 )
         result = 0;
       else
-        result = ((__int64 (           *)(__int64))GetFileType)(v9);
+        result = ((__int64 (           *)(__int64))GetFileType)(int64_result);
       if ( (_DWORD)result )
       {
-        *(_QWORD *)(v4 + 8 * v3 + 40) = v10;
+        *(_QWORD *)(shifted_bits + 8 * scaled_index + 40) = saved_int64_result;
         if ( (unsigned __int8)result == 2 )
         {
-          *(_BYTE *)(v4 + 8 * v3 + 56) |= 0x40u;
+          *(_BYTE *)(shifted_bits + 8 * scaled_index + 56) |= 0x40u;
         }
         else if ( (unsigned __int8)result == 3 )
         {
-          *(_BYTE *)(v4 + 8 * v3 + 56) |= 8u;
+          *(_BYTE *)(shifted_bits + 8 * scaled_index + 56) |= 8u;
         }
       }
       else
       {
-        *(_BYTE *)(v4 + 8 * v3 + 56) |= 0x40u;
-        *(_QWORD *)(v4 + 8 * v3 + 40) = -2;
+        *(_BYTE *)(shifted_bits + 8 * scaled_index + 56) |= 0x40u;
+        *(_QWORD *)(shifted_bits + 8 * scaled_index + 40) = -2;
         result = g_144CBE6B0;
         if ( g_144CBE6B0 )
         {
-          result = *(_QWORD *)(v1 + g_144CBE6B0);
+          result = *(_QWORD *)(record_byte_offset + g_144CBE6B0);
           *(_DWORD *)(result + 24) = -2;
         }
       }
     }
     else
     {
-      *(_BYTE *)(v4 + 72 * v2 + 56) |= 0x80u;
+      *(_BYTE *)(shifted_bits + 72 * masked_bits + 56) |= 0x80u;
     }
-    ++v0;
-    v1 += 8;
+    ++element_index;
+    record_byte_offset += 8;
   }
-  while ( v0 != 3 );
+  while ( element_index != 3 );
   return result;
 }
 
@@ -9665,32 +9665,32 @@ __int64 initialize_stdio_handles_nolock()
 //----- (0000000140250554) ----------------------------------------------------
 char sub_140250554()
 {
-  char v0;
+  char unused_written_slot;
 
   crt_lock(7);
-  v0 = 0;
+  unused_written_slot = 0;
   if ( !(unsigned int)sub_140260FC0(0) )
   {
     initialize_inherited_file_handles_nolock();
     initialize_stdio_handles_nolock();
-    v0 = 1;
+    unused_written_slot = 1;
   }
   crt_unlock(7);
-  return v0;
+  return unused_written_slot;
 }
 
 //----- (0000000140250590) ----------------------------------------------------
 char sub_140250590()
 {
   unsigned __int64 i;
-  char *v1;
+  char *loaded_record_pointer;
 
   for ( i = 0; i < 256; i += 2LL )
   {
-    v1 = *(char **)&dword_140404A6C[i + 19065401];
-    if ( v1 )
+    loaded_record_pointer = *(char **)&dword_140404A6C[i + 19065401];
+    if ( loaded_record_pointer )
     {
-      sub_140260F70(v1);
+      sub_140260F70(loaded_record_pointer);
       *(_QWORD *)&dword_140404A6C[i + 19065401] = 0;
     }
   }
@@ -9710,22 +9710,22 @@ void            unknown_libname_1033(void **a1)
 //----- (0000000140250604) ----------------------------------------------------
 __int64 *           sub_140250604(__int64 *a1)
 {
-  __int64 *v2;
-  __int64 v3;
-  __int64 v5;
+  __int64 *or_allocate_unused_stream_nolock_result;
+  __int64 loaded_word;
+  __int64 callee_output_word;
 
   *a1 = 0;
   crt_lock(8);
-  v2 = find_or_allocate_unused_stream_nolock(&v5);
-  v3 = *v2;
-  *a1 = *v2;
-  if ( v3 )
+  or_allocate_unused_stream_nolock_result = find_or_allocate_unused_stream_nolock(&callee_output_word);
+  loaded_word = *or_allocate_unused_stream_nolock_result;
+  *a1 = *or_allocate_unused_stream_nolock_result;
+  if ( loaded_word )
   {
-    *(_DWORD *)(v3 + 16) = 0;
-    *(_QWORD *)(v3 + 40) = 0;
-    *(_QWORD *)v3 = 0;
-    *(_QWORD *)(v3 + 8) = 0;
-    *(_DWORD *)(v3 + 24) = -1;
+    *(_DWORD *)(loaded_word + 16) = 0;
+    *(_QWORD *)(loaded_word + 40) = 0;
+    *(_QWORD *)loaded_word = 0;
+    *(_QWORD *)(loaded_word + 8) = 0;
+    *(_DWORD *)(loaded_word + 24) = -1;
   }
   crt_unlock(8);
   return a1;
@@ -9746,50 +9746,50 @@ __int64            sub_14025065C(__int64 a1)
 //----- (000000014025068C) ----------------------------------------------------
 __int64 *           find_or_allocate_unused_stream_nolock(__int64 *a1)
 {
-  __int64 *v2;
-  __int64 v3;
-  __int64 v4;
-  signed __int32 v5;
-  signed __int32 v6;
+  __int64 *allocated_buffer;
+  __int64 scaled_index;
+  __int64 loaded_word;
+  signed __int32 interlockedcompareexchange_result;
+  signed __int32 saved_interlockedcompareexchange_result;
 
-  v2 = (__int64 *)(g_144CBE6B0 + 24LL);
-  v3 = g_144CBE6B0 + 24LL + 8 * ((int)g_144CBE6A8 - 3LL);
-  while ( v2 != (__int64 *)v3 )
+  allocated_buffer = (__int64 *)(g_144CBE6B0 + 24LL);
+  scaled_index = g_144CBE6B0 + 24LL + 8 * ((int)g_144CBE6A8 - 3LL);
+  while ( allocated_buffer != (__int64 *)scaled_index )
   {
-    v4 = *v2;
-    if ( !*v2 )
+    loaded_word = *allocated_buffer;
+    if ( !*allocated_buffer )
     {
-      *v2 = sr_directory_calloc(1, 88);
+      *allocated_buffer = sr_directory_calloc(1, 88);
       free_base(nullptr);
-      if ( *v2 )
+      if ( *allocated_buffer )
       {
-        *(_DWORD *)(*v2 + 24) = -1;
-        _acrt_InitializeCriticalSectionEx(*v2 + 48, 0xFA0u, 0);
-        v4 = *v2;
-        _InterlockedOr((volatile signed __int32 *)(*v2 + 20), 0x2000u);
-        crt_lock_file(v4);
+        *(_DWORD *)(*allocated_buffer + 24) = -1;
+        _acrt_InitializeCriticalSectionEx(*allocated_buffer + 48, 0xFA0u, 0);
+        loaded_word = *allocated_buffer;
+        _InterlockedOr((volatile signed __int32 *)(*allocated_buffer + 20), 0x2000u);
+        crt_lock_file(loaded_word);
 LABEL_12:
-        *a1 = v4;
+        *a1 = loaded_word;
         return a1;
       }
       break;
     }
-    if ( (*(_DWORD *)(v4 + 20) & 0x2000) == 0 )
+    if ( (*(_DWORD *)(loaded_word + 20) & 0x2000) == 0 )
     {
-      crt_lock_file(*v2);
-      _m_prefetchw((     void *)(v4 + 20));
-      v5 = *(_DWORD *)(v4 + 20);
+      crt_lock_file(*allocated_buffer);
+      _m_prefetchw((     void *)(loaded_word + 20));
+      interlockedcompareexchange_result = *(_DWORD *)(loaded_word + 20);
       do
       {
-        v6 = v5;
-        v5 = _InterlockedCompareExchange((volatile signed __int32 *)(v4 + 20), v5 | 0x2000, v5);
+        saved_interlockedcompareexchange_result = interlockedcompareexchange_result;
+        interlockedcompareexchange_result = _InterlockedCompareExchange((volatile signed __int32 *)(loaded_word + 20), interlockedcompareexchange_result | 0x2000, interlockedcompareexchange_result);
       }
-      while ( v6 != v5 );
-      if ( (v5 & 0x2000) == 0 )
+      while ( saved_interlockedcompareexchange_result != interlockedcompareexchange_result );
+      if ( (interlockedcompareexchange_result & 0x2000) == 0 )
         goto LABEL_12;
-      crt_unlock_file(v4);
+      crt_unlock_file(loaded_word);
     }
-    ++v2;
+    ++allocated_buffer;
   }
   *a1 = 0;
   return a1;
@@ -9808,38 +9808,38 @@ void            unknown_libname_1034(void **a1)
 //----- (00000001402507BC) ----------------------------------------------------
 __int64            sub_1402507BC(__int64 a1, char *a2)
 {
-  char *v2;
+  char *text_cursor;
   char i;
-  _BYTE *v5;
-  char v6;
-  char v7;
-  char v8;
-  char v9;
-  char v10;
-  int v11;
-  int v12;
-  int v13;
-  int v14;
-  int v15;
-  int v16;
-  int v17;
-  int v18;
-  int v19;
-  int v20;
-  int v21;
-  int v22;
-  _QWORD *v23;
-  bool v24;
+  _BYTE *running_total;
+  char selection_flag;
+  char selection_flag_2;
+  char selection_flag_3;
+  char selection_flag_4;
+  char selection_flag_5;
+  int scaled_index;
+  int integer_difference;
+  int integer_difference_2;
+  int integer_difference_3;
+  int integer_difference_4;
+  int integer_difference_5;
+  int loaded_word;
+  int integer_difference_6;
+  int integer_difference_7;
+  int integer_difference_8;
+  int integer_difference_9;
+  int integer_difference_10;
+  _QWORD *saved_running_total;
+  bool comparison_result;
   _BYTE *j;
-  __int64 v26;
+  __int64 selection_code;
   _BYTE *k;
 
-  v2 = a2;
+  text_cursor = a2;
   *(_QWORD *)a1 = 0;
   *(_DWORD *)(a1 + 8) = 0;
   *(_DWORD *)(a1 + 4) = g_144CBF180;
-  for ( i = *a2; i == 32; i = *v2 )
-    ++v2;
+  for ( i = *a2; i == 32; i = *text_cursor )
+    ++text_cursor;
   if ( i == 97 )
   {
     *(_DWORD *)a1 = 265;
@@ -9856,97 +9856,97 @@ LABEL_10:
   }
   *(_DWORD *)(a1 + 4) = 1;
 LABEL_11:
-  v5 = v2 + 1;
-  v6 = 0;
-  v7 = 0;
-  v8 = 0;
-  v9 = 0;
-  v10 = 1;
-  while ( *v5 )
+  running_total = text_cursor + 1;
+  selection_flag = 0;
+  selection_flag_2 = 0;
+  selection_flag_3 = 0;
+  selection_flag_4 = 0;
+  selection_flag_5 = 1;
+  while ( *running_total )
   {
-    v11 = (char)*v5;
-    if ( v11 > 83 )
+    scaled_index = (char)*running_total;
+    if ( scaled_index > 83 )
     {
-      v18 = v11 - 84;
-      if ( !v18 )
+      integer_difference_6 = scaled_index - 84;
+      if ( !integer_difference_6 )
       {
         if ( (*(_DWORD *)a1 & 0x1000) == 0 )
         {
-          v17 = *(_DWORD *)a1 | 0x1000;
+          loaded_word = *(_DWORD *)a1 | 0x1000;
           goto LABEL_53;
         }
         goto LABEL_51;
       }
-      v19 = v18 - 14;
-      if ( !v19 )
+      integer_difference_7 = integer_difference_6 - 14;
+      if ( !integer_difference_7 )
       {
         if ( (*(_DWORD *)a1 & 0xC000) == 0 )
         {
-          v17 = *(_DWORD *)a1 | 0x8000;
+          loaded_word = *(_DWORD *)a1 | 0x8000;
           goto LABEL_53;
         }
         goto LABEL_51;
       }
-      v20 = v19 - 1;
-      if ( v20 )
+      integer_difference_8 = integer_difference_7 - 1;
+      if ( integer_difference_8 )
       {
-        v21 = v20 - 11;
-        if ( v21 )
+        integer_difference_9 = integer_difference_8 - 11;
+        if ( integer_difference_9 )
         {
-          v22 = v21 - 6;
-          if ( v22 )
+          integer_difference_10 = integer_difference_9 - 6;
+          if ( integer_difference_10 )
           {
-            if ( v22 != 4 )
+            if ( integer_difference_10 != 4 )
               goto LABEL_81;
             if ( (*(_DWORD *)a1 & 0x200) != 0 )
             {
-              v17 = *(_DWORD *)a1 | 0x400;
+              loaded_word = *(_DWORD *)a1 | 0x400;
               goto LABEL_53;
             }
           }
           else if ( (*(_DWORD *)a1 & 0xC000) == 0 )
           {
-            v17 = *(_DWORD *)a1 | 0x4000;
+            loaded_word = *(_DWORD *)a1 | 0x4000;
 LABEL_53:
-            *(_DWORD *)a1 = v17;
+            *(_DWORD *)a1 = loaded_word;
             goto LABEL_54;
           }
           goto LABEL_51;
         }
-        if ( v6 )
+        if ( selection_flag )
           goto LABEL_51;
         *(_DWORD *)(a1 + 4) &= ~0x800u;
       }
       else
       {
-        if ( v6 )
+        if ( selection_flag )
           goto LABEL_51;
         *(_DWORD *)(a1 + 4) |= 0x800u;
       }
-      v6 = 1;
-      v10 = 1;
+      selection_flag = 1;
+      selection_flag_5 = 1;
     }
     else
     {
-      if ( v11 == 83 )
+      if ( scaled_index == 83 )
       {
-        if ( v8 )
+        if ( selection_flag_3 )
           goto LABEL_51;
         *(_DWORD *)a1 |= 0x20u;
 LABEL_32:
-        v8 = 1;
-        v10 = 1;
+        selection_flag_3 = 1;
+        selection_flag_5 = 1;
         goto LABEL_55;
       }
-      v12 = v11 - 32;
-      if ( v12 )
+      integer_difference = scaled_index - 32;
+      if ( integer_difference )
       {
-        v13 = v12 - 11;
-        if ( !v13 )
+        integer_difference_2 = integer_difference - 11;
+        if ( !integer_difference_2 )
         {
-          if ( !v7 )
+          if ( !selection_flag_2 )
           {
-            v7 = 1;
+            selection_flag_2 = 1;
             if ( (*(_DWORD *)a1 & 2) == 0 )
             {
               *(_DWORD *)a1 = *(_DWORD *)a1 & 0xFFFFFFFC | 2;
@@ -9956,86 +9956,86 @@ LABEL_32:
           }
           goto LABEL_51;
         }
-        v14 = v13 - 1;
-        if ( !v14 )
+        integer_difference_3 = integer_difference_2 - 1;
+        if ( !integer_difference_3 )
         {
-          v9 = 1;
+          selection_flag_4 = 1;
 LABEL_51:
-          v10 = 0;
+          selection_flag_5 = 0;
           goto LABEL_55;
         }
-        v15 = v14 - 24;
-        if ( !v15 )
+        integer_difference_4 = integer_difference_3 - 24;
+        if ( !integer_difference_4 )
         {
           if ( (*(_DWORD *)a1 & 0x40) == 0 )
           {
-            v17 = *(_DWORD *)a1 | 0x40;
+            loaded_word = *(_DWORD *)a1 | 0x40;
             goto LABEL_53;
           }
           goto LABEL_51;
         }
-        v16 = v15 - 10;
-        if ( !v16 )
+        integer_difference_5 = integer_difference_4 - 10;
+        if ( !integer_difference_5 )
         {
           *(_DWORD *)a1 |= 0x80u;
 LABEL_54:
-          v10 = 1;
+          selection_flag_5 = 1;
           goto LABEL_55;
         }
-        if ( v16 != 4 )
+        if ( integer_difference_5 != 4 )
           goto LABEL_81;
-        if ( v8 )
+        if ( selection_flag_3 )
           goto LABEL_51;
         *(_DWORD *)a1 |= 0x10u;
         goto LABEL_32;
       }
     }
 LABEL_55:
-    v5 += v10 != 0;
-    if ( !v10 )
+    running_total += selection_flag_5 != 0;
+    if ( !selection_flag_5 )
       break;
   }
-  v23 = v5 + 1;
-  if ( !v9 )
-    v23 = v5;
-  while ( *(_BYTE *)v23 == 32 )
-    v23 = (_QWORD *)((char *)v23 + 1);
-  if ( !v9 )
+  saved_running_total = running_total + 1;
+  if ( !selection_flag_4 )
+    saved_running_total = running_total;
+  while ( *(_BYTE *)saved_running_total == 32 )
+    saved_running_total = (_QWORD *)((char *)saved_running_total + 1);
+  if ( !selection_flag_4 )
   {
-    v24 = *(_BYTE *)v23 == 0;
+    comparison_result = *(_BYTE *)saved_running_total == 0;
     goto LABEL_63;
   }
-  if ( (unsigned int)strncmp_sr((const char *)(uintptr_t)(v23), (const char *)(uintptr_t)((__int64)"ccs"), 3u) )
+  if ( (unsigned int)strncmp_sr((const char *)(uintptr_t)(saved_running_total), (const char *)(uintptr_t)((__int64)"ccs"), 3u) )
     goto LABEL_81;
-  for ( j = (char *)v23 + 3; *j == 32; ++j )
+  for ( j = (char *)saved_running_total + 3; *j == 32; ++j )
     ;
   if ( *j != 61 )
     goto LABEL_81;
   do
     ++j;
   while ( *j == 32 );
-  v26 = 5;
+  selection_code = 5;
   if ( !(unsigned int)strnicmp_sr(j, "UTF-8", 5) )
   {
     *(_DWORD *)a1 |= 0x40000u;
     goto LABEL_77;
   }
-  v26 = 8;
+  selection_code = 8;
   if ( !(unsigned int)strnicmp_sr(j, "UTF-16LEUNICODE", 8) )
   {
     *(_DWORD *)a1 |= 0x20000u;
     goto LABEL_77;
   }
-  v26 = 7;
+  selection_code = 7;
   if ( (unsigned int)strnicmp_sr(j, "UNICODE", 7) )
     goto LABEL_81;
   *(_DWORD *)a1 |= 0x10000u;
 LABEL_77:
-  for ( k = &j[v26]; *k == 32; ++k )
+  for ( k = &j[selection_code]; *k == 32; ++k )
     ;
-  v24 = *k == 0;
+  comparison_result = *k == 0;
 LABEL_63:
-  if ( !v24 )
+  if ( !comparison_result )
   {
 LABEL_81:
     *errno_sr() = 22;
@@ -10049,38 +10049,38 @@ LABEL_81:
 //----- (0000000140250A7C) ----------------------------------------------------
 __int64            __acrt_stdio_parse_mode__wchar_t(__int64 a1, __int16 *a2)
 {
-  __int16 *v2;
+  __int16 *buffer_cursor;
   __int16 i;
-  _WORD *v5;
-  char v6;
-  char v7;
-  char v8;
-  char v9;
-  char v10;
-  __int64 v11;
-  unsigned int v12;
-  unsigned int v13;
-  unsigned int v14;
-  unsigned int v15;
-  unsigned int v16;
-  unsigned int v17;
-  int v18;
-  unsigned int v19;
-  unsigned int v20;
-  unsigned int v21;
-  unsigned int v22;
-  unsigned int v23;
-  _WORD *v24;
-  bool v25;
+  _WORD *comparison_result;
+  char selection_flag;
+  char selection_flag_2;
+  char selection_flag_3;
+  char selection_flag_4;
+  char selection_flag_5;
+  __int64 selection_code;
+  unsigned int scaled_index;
+  unsigned int integer_difference;
+  unsigned int integer_difference_2;
+  unsigned int integer_difference_3;
+  unsigned int integer_difference_4;
+  unsigned int integer_difference_5;
+  int loaded_word;
+  unsigned int integer_difference_6;
+  unsigned int integer_difference_7;
+  unsigned int integer_difference_8;
+  unsigned int integer_difference_9;
+  unsigned int integer_difference_10;
+  _WORD *buffer_cursor_2;
+  bool comparison_result_2;
   _WORD *j;
   _WORD *k;
 
-  v2 = a2;
+  buffer_cursor = a2;
   *(_QWORD *)a1 = 0;
   *(_DWORD *)(a1 + 8) = 0;
   *(_DWORD *)(a1 + 4) = g_144CBF180;
-  for ( i = *a2; i == 32; i = *v2 )
-    ++v2;
+  for ( i = *a2; i == 32; i = *buffer_cursor )
+    ++buffer_cursor;
   if ( i == 97 )
   {
     *(_DWORD *)a1 = 265;
@@ -10097,98 +10097,98 @@ LABEL_10:
   }
   *(_DWORD *)(a1 + 4) = 1;
 LABEL_11:
-  v5 = v2 + 1;
-  v6 = 1;
-  v7 = 0;
-  v8 = 0;
-  v9 = 0;
-  v10 = 0;
-  v11 = 5;
-  while ( *v5 )
+  comparison_result = buffer_cursor + 1;
+  selection_flag = 1;
+  selection_flag_2 = 0;
+  selection_flag_3 = 0;
+  selection_flag_4 = 0;
+  selection_flag_5 = 0;
+  selection_code = 5;
+  while ( *comparison_result )
   {
-    v12 = (unsigned __int16)*v5;
-    if ( v12 > 0x53 )
+    scaled_index = (unsigned __int16)*comparison_result;
+    if ( scaled_index > 0x53 )
     {
-      v19 = v12 - 84;
-      if ( !v19 )
+      integer_difference_6 = scaled_index - 84;
+      if ( !integer_difference_6 )
       {
         if ( (*(_DWORD *)a1 & 0x1000) == 0 )
         {
-          v18 = *(_DWORD *)a1 | 0x1000;
+          loaded_word = *(_DWORD *)a1 | 0x1000;
           goto LABEL_53;
         }
         goto LABEL_51;
       }
-      v20 = v19 - 14;
-      if ( !v20 )
+      integer_difference_7 = integer_difference_6 - 14;
+      if ( !integer_difference_7 )
       {
         if ( (*(_DWORD *)a1 & 0xC000) == 0 )
         {
-          v18 = *(_DWORD *)a1 | 0x8000;
+          loaded_word = *(_DWORD *)a1 | 0x8000;
           goto LABEL_53;
         }
         goto LABEL_51;
       }
-      v21 = v20 - 1;
-      if ( v21 )
+      integer_difference_8 = integer_difference_7 - 1;
+      if ( integer_difference_8 )
       {
-        v22 = v21 - 11;
-        if ( v22 )
+        integer_difference_9 = integer_difference_8 - 11;
+        if ( integer_difference_9 )
         {
-          v23 = v22 - 6;
-          if ( v23 )
+          integer_difference_10 = integer_difference_9 - 6;
+          if ( integer_difference_10 )
           {
-            if ( v23 != 4 )
+            if ( integer_difference_10 != 4 )
               goto LABEL_81;
             if ( (*(_DWORD *)a1 & 0x200) != 0 )
             {
-              v18 = *(_DWORD *)a1 | 0x400;
+              loaded_word = *(_DWORD *)a1 | 0x400;
               goto LABEL_53;
             }
           }
           else if ( (*(_DWORD *)a1 & 0xC000) == 0 )
           {
-            v18 = *(_DWORD *)a1 | 0x4000;
+            loaded_word = *(_DWORD *)a1 | 0x4000;
 LABEL_53:
-            *(_DWORD *)a1 = v18;
+            *(_DWORD *)a1 = loaded_word;
             goto LABEL_54;
           }
           goto LABEL_51;
         }
-        if ( v7 )
+        if ( selection_flag_2 )
           goto LABEL_51;
         *(_DWORD *)(a1 + 4) &= ~0x800u;
       }
       else
       {
-        if ( v7 )
+        if ( selection_flag_2 )
           goto LABEL_51;
         *(_DWORD *)(a1 + 4) |= 0x800u;
       }
-      v7 = 1;
-      v6 = 1;
+      selection_flag_2 = 1;
+      selection_flag = 1;
     }
     else
     {
-      if ( v12 == 83 )
+      if ( scaled_index == 83 )
       {
-        if ( v9 )
+        if ( selection_flag_4 )
           goto LABEL_51;
         *(_DWORD *)a1 |= 0x20u;
 LABEL_32:
-        v9 = 1;
-        v6 = 1;
+        selection_flag_4 = 1;
+        selection_flag = 1;
         goto LABEL_55;
       }
-      v13 = v12 - 32;
-      if ( v13 )
+      integer_difference = scaled_index - 32;
+      if ( integer_difference )
       {
-        v14 = v13 - 11;
-        if ( !v14 )
+        integer_difference_2 = integer_difference - 11;
+        if ( !integer_difference_2 )
         {
-          if ( !v8 )
+          if ( !selection_flag_3 )
           {
-            v8 = 1;
+            selection_flag_3 = 1;
             if ( (*(_DWORD *)a1 & 2) == 0 )
             {
               *(_DWORD *)a1 = *(_DWORD *)a1 & 0xFFFFFFFC | 2;
@@ -10198,58 +10198,58 @@ LABEL_32:
           }
           goto LABEL_51;
         }
-        v15 = v14 - 1;
-        if ( !v15 )
+        integer_difference_3 = integer_difference_2 - 1;
+        if ( !integer_difference_3 )
         {
-          v10 = 1;
+          selection_flag_5 = 1;
 LABEL_51:
-          v6 = 0;
+          selection_flag = 0;
           goto LABEL_55;
         }
-        v16 = v15 - 24;
-        if ( !v16 )
+        integer_difference_4 = integer_difference_3 - 24;
+        if ( !integer_difference_4 )
         {
           if ( (*(_DWORD *)a1 & 0x40) == 0 )
           {
-            v18 = *(_DWORD *)a1 | 0x40;
+            loaded_word = *(_DWORD *)a1 | 0x40;
             goto LABEL_53;
           }
           goto LABEL_51;
         }
-        v17 = v16 - 10;
-        if ( !v17 )
+        integer_difference_5 = integer_difference_4 - 10;
+        if ( !integer_difference_5 )
         {
           *(_DWORD *)a1 |= 0x80u;
 LABEL_54:
-          v6 = 1;
+          selection_flag = 1;
           goto LABEL_55;
         }
-        if ( v17 != 4 )
+        if ( integer_difference_5 != 4 )
           goto LABEL_81;
-        if ( v9 )
+        if ( selection_flag_4 )
           goto LABEL_51;
         *(_DWORD *)a1 |= 0x10u;
         goto LABEL_32;
       }
     }
 LABEL_55:
-    v5 = (_WORD *)((char *)v5 + (v6 != 0 ? 2 : 0));
-    if ( !v6 )
+    comparison_result = (_WORD *)((char *)comparison_result + (selection_flag != 0 ? 2 : 0));
+    if ( !selection_flag )
       break;
   }
-  v24 = v5 + 1;
-  if ( !v10 )
-    v24 = v5;
-  while ( *v24 == 32 )
-    ++v24;
-  if ( !v10 )
+  buffer_cursor_2 = comparison_result + 1;
+  if ( !selection_flag_5 )
+    buffer_cursor_2 = comparison_result;
+  while ( *buffer_cursor_2 == 32 )
+    ++buffer_cursor_2;
+  if ( !selection_flag_5 )
   {
-    v25 = *v24 == 0;
+    comparison_result_2 = *buffer_cursor_2 == 0;
     goto LABEL_63;
   }
-  if ( (unsigned int)wcsncmp_sr(v24, L"ccs", 3) )
+  if ( (unsigned int)wcsncmp_sr(buffer_cursor_2, L"ccs", 3) )
     goto LABEL_81;
-  for ( j = v24 + 3; *j == 32; ++j )
+  for ( j = buffer_cursor_2 + 3; *j == 32; ++j )
     ;
   if ( *j != 61 )
     goto LABEL_81;
@@ -10264,19 +10264,19 @@ LABEL_55:
   if ( !(unsigned int)wcsnicmp_sr(j, L"UTF-16LEUNICODE", 8) )
   {
     *(_DWORD *)a1 |= 0x20000u;
-    v11 = 8;
+    selection_code = 8;
     goto LABEL_77;
   }
   if ( (unsigned int)wcsnicmp_sr(j, L"UNICODE", 7) )
     goto LABEL_81;
   *(_DWORD *)a1 |= 0x10000u;
-  v11 = 7;
+  selection_code = 7;
 LABEL_77:
-  for ( k = &j[v11]; *k == 32; ++k )
+  for ( k = &j[selection_code]; *k == 32; ++k )
     ;
-  v25 = *k == 0;
+  comparison_result_2 = *k == 0;
 LABEL_63:
-  if ( !v25 )
+  if ( !comparison_result_2 )
   {
 LABEL_81:
     *errno_sr() = 22;
@@ -10290,62 +10290,62 @@ LABEL_81:
 //----- (0000000140250D7C) ----------------------------------------------------
 __int64            sub_140250D7C(char *FileName, char *a2, int a3, __int64 a4)
 {
-  int v4;
-  __int64 v7;
-  __int64 v8;
-  int v9;
+  int cached_filename;
+  __int64 packed_word_bits;
+  __int64 loaded_word;
+  int cached_filehandle;
   int FileHandle;
   int OpenFlag[2];
-  int v13;
-  _BYTE v14[32];
+  int unused_written_slot;
+  _BYTE scratch_buffer[32];
 
-  v4 = (int)FileName;
-  v7 = sub_1402507BC((__int64)v14, a2);
-  v8 = *(_QWORD *)v7;
-  LODWORD(v7) = *(_DWORD *)(v7 + 8);
-  *(_QWORD *)OpenFlag = v8;
-  v13 = v7;
-  if ( !(_BYTE)v7 || (unsigned int)sopen_s((unsigned int)&FileHandle, v4, OpenFlag[0], a3, 384) )
+  cached_filename = (int)FileName;
+  packed_word_bits = sub_1402507BC((__int64)scratch_buffer, a2);
+  loaded_word = *(_QWORD *)packed_word_bits;
+  LODWORD(packed_word_bits) = *(_DWORD *)(packed_word_bits + 8);
+  *(_QWORD *)OpenFlag = loaded_word;
+  unused_written_slot = packed_word_bits;
+  if ( !(_BYTE)packed_word_bits || (unsigned int)sopen_s((unsigned int)&FileHandle, cached_filename, OpenFlag[0], a3, 384) )
     return 0;
   ++g_144CBE6B8;
   _InterlockedOr((volatile signed __int32 *)(a4 + 20), OpenFlag[1]);
-  v9 = FileHandle;
+  cached_filehandle = FileHandle;
   *(_DWORD *)(a4 + 16) = 0;
   *(_QWORD *)(a4 + 40) = 0;
   *(_QWORD *)(a4 + 8) = 0;
   *(_QWORD *)a4 = 0;
-  *(_DWORD *)(a4 + 24) = v9;
+  *(_DWORD *)(a4 + 24) = cached_filehandle;
   return a4;
 }
 
 //----- (0000000140250E14) ----------------------------------------------------
 __int64            sub_140250E14(sr_anon_49 *FileName, __int16 *a2, int a3, __int64 a4)
 {
-  int v4;
-  __int64 v7;
-  __int64 v8;
-  int v9;
+  int cached_filename;
+  __int64 acrt_stdio_parse_mode_wchar_t_result;
+  __int64 loaded_word;
+  int cached_filehandle;
   int FileHandle;
   int OpenFlag[2];
-  int v13;
-  _BYTE v14[32];
+  int unused_written_slot;
+  _BYTE scratch_buffer[32];
 
-  v4 = (int)FileName;
-  v7 = __acrt_stdio_parse_mode__wchar_t((__int64)v14, a2);
-  v8 = *(_QWORD *)v7;
-  LODWORD(v7) = *(_DWORD *)(v7 + 8);
-  *(_QWORD *)OpenFlag = v8;
-  v13 = v7;
-  if ( !(_BYTE)v7 || (unsigned int)wsopen_s((unsigned int)&FileHandle, v4, OpenFlag[0], a3, 384) )
+  cached_filename = (int)FileName;
+  acrt_stdio_parse_mode_wchar_t_result = __acrt_stdio_parse_mode__wchar_t((__int64)scratch_buffer, a2);
+  loaded_word = *(_QWORD *)acrt_stdio_parse_mode_wchar_t_result;
+  LODWORD(acrt_stdio_parse_mode_wchar_t_result) = *(_DWORD *)(acrt_stdio_parse_mode_wchar_t_result + 8);
+  *(_QWORD *)OpenFlag = loaded_word;
+  unused_written_slot = acrt_stdio_parse_mode_wchar_t_result;
+  if ( !(_BYTE)acrt_stdio_parse_mode_wchar_t_result || (unsigned int)wsopen_s((unsigned int)&FileHandle, cached_filename, OpenFlag[0], a3, 384) )
     return 0;
   ++g_144CBE6B8;
   _InterlockedOr((volatile signed __int32 *)(a4 + 20), OpenFlag[1]);
-  v9 = FileHandle;
+  cached_filehandle = FileHandle;
   *(_DWORD *)(a4 + 16) = 0;
   *(_QWORD *)(a4 + 40) = 0;
   *(_QWORD *)(a4 + 8) = 0;
   *(_QWORD *)a4 = 0;
-  *(_DWORD *)(a4 + 24) = v9;
+  *(_DWORD *)(a4 + 24) = cached_filehandle;
   return a4;
 }
 
@@ -10373,73 +10373,73 @@ __int64 sub_140251044(char *filename,char *mode,int sharing,__int64 stream)
 //----- (00000001402510E0) ----------------------------------------------------
 __int64            wopenfile(sr_anon_49 *FileName, __int16 *a2, int a3, __int64 a4)
 {
-  int v4;
-  __int64 v7;
-  __int64 v8;
-  int v9;
+  int cached_filename;
+  __int64 acrt_stdio_parse_mode_wchar_t_result;
+  __int64 unused_written_slot;
+  int cached_filehandle;
   int OpenFlag[2];
-  __int64 v12;
+  __int64 callee_output_word;
   int FileHandle;
 
-  v4 = (int)FileName;
-  v7 = __acrt_stdio_parse_mode__wchar_t((__int64)&v12, a2);
-  v8 = 0;
-  *(_QWORD *)OpenFlag = *(_QWORD *)v7;
-  if ( (unsigned __int8)*(_DWORD *)(v7 + 8)
-    && !(unsigned int)wsopen_s((unsigned int)&FileHandle, v4, OpenFlag[0], a3, 384) )
+  cached_filename = (int)FileName;
+  acrt_stdio_parse_mode_wchar_t_result = __acrt_stdio_parse_mode__wchar_t((__int64)&callee_output_word, a2);
+  unused_written_slot = 0;
+  *(_QWORD *)OpenFlag = *(_QWORD *)acrt_stdio_parse_mode_wchar_t_result;
+  if ( (unsigned __int8)*(_DWORD *)(acrt_stdio_parse_mode_wchar_t_result + 8)
+    && !(unsigned int)wsopen_s((unsigned int)&FileHandle, cached_filename, OpenFlag[0], a3, 384) )
   {
     ++g_144CBE6B8;
     _InterlockedOr((volatile signed __int32 *)(a4 + 20), OpenFlag[1]);
-    v9 = FileHandle;
+    cached_filehandle = FileHandle;
     *(_DWORD *)(a4 + 16) = 0;
     *(_QWORD *)(a4 + 40) = 0;
     *(_QWORD *)(a4 + 8) = 0;
     *(_QWORD *)a4 = 0;
-    v8 = a4;
-    *(_DWORD *)(a4 + 24) = v9;
+    unused_written_slot = a4;
+    *(_DWORD *)(a4 + 24) = cached_filehandle;
   }
-  return v8;
+  return unused_written_slot;
 }
 
 //----- (000000014025117C) ----------------------------------------------------
 __int64            sub_14025117C(__int64 a1, unsigned int *a2, unsigned int **a3, unsigned int *a4)
 {
-  unsigned int v6;
+  unsigned int unused_written_slot;
 
   sub_140261068(*a2);
   if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)(int)**a3 >> 6) + 19065401] + 72LL * (**a3 & 0x3F) + 56) & 1) != 0 )
   {
-    v6 = close_nolock(**a3);
+    unused_written_slot = close_nolock(**a3);
   }
   else
   {
     *errno_sr() = 9;
-    v6 = -1;
+    unused_written_slot = -1;
   }
   sub_140261150(*a4);
-  return v6;
+  return unused_written_slot;
 }
 
 //----- (00000001402511F0) ----------------------------------------------------
 __int64            sub_1402511F0(unsigned int a1, unsigned int **a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_14025117C((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_14025117C((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (0000000140251230) ----------------------------------------------------
 __int64            _lambda_628dfdc04ba53c8bfc02c9951375f3f5___operator_call(int **a1)
 {
-  __int64 v1;
+  __int64 scaled_index;
 
-  v1 = **a1;
-  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (v1 >> 6) + 19065401] + 72 * (v1 & 0x3F) + 56) & 1) != 0 )
-    return close_nolock(v1);
+  scaled_index = **a1;
+  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (scaled_index >> 6) + 19065401] + 72 * (scaled_index & 0x3F) + 56) & 1) != 0 )
+    return close_nolock(scaled_index);
   *errno_sr() = 9;
   return 0xFFFFFFFFLL;
 }
@@ -10448,7 +10448,7 @@ __int64            _lambda_628dfdc04ba53c8bfc02c9951375f3f5___operator_call(int 
 __int64            sub_14025128C(unsigned int FileHandle)
 {
   __int64 osfhandle;
-  __int64 v3;
+  __int64 osfhandle_result;
 
   if ( ((__int64 (*)(void))get_osfhandle)() == -1 )
     return 0;
@@ -10459,8 +10459,8 @@ __int64            sub_14025128C(unsigned int FileHandle)
     if ( get_osfhandle(1) == osfhandle )
       return 0;
   }
-  v3 = get_osfhandle(FileHandle);
-  if ( (unsigned int)((__int64 (           *)(__int64))CloseHandle)(v3) )
+  osfhandle_result = get_osfhandle(FileHandle);
+  if ( (unsigned int)((__int64 (           *)(__int64))CloseHandle)(osfhandle_result) )
     return 0;
   else
     return ((__int64 (*)(void))GetLastError)();
@@ -10472,13 +10472,13 @@ __int64            sub_14025128C(unsigned int FileHandle)
 //----- (000000014025130C) ----------------------------------------------------
 __int64            sub_14025130C(int a1)
 {
-  unsigned int *v2;
-  int v3;
-  char v4;
-  int v5;
-  int v6;
+  unsigned int *state_address;
+  int input_value;
+  char callee_output_word;
+  int input_value_2;
+  int input_value_3;
 
-  v3 = a1;
+  input_value = a1;
   if ( a1 == -2 )
   {
     *(_DWORD *)crt_doserrno() = 0;
@@ -10490,10 +10490,10 @@ __int64            sub_14025130C(int a1)
       && a1 < g_144CBF750
       && (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a1 >> 6) + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) != 0 )
     {
-      v5 = a1;
-      v6 = a1;
-      v2 = (unsigned int *)&v3;
-      return sub_14025117C((__int64)&v4, (unsigned int *)&v6, &v2, (unsigned int *)&v5);
+      input_value_2 = a1;
+      input_value_3 = a1;
+      state_address = (unsigned int *)&input_value;
+      return sub_14025117C((__int64)&callee_output_word, (unsigned int *)&input_value_3, &state_address, (unsigned int *)&input_value_2);
     }
     *(_DWORD *)crt_doserrno() = 0;
     *errno_sr() = 9;
@@ -10505,29 +10505,29 @@ __int64            sub_14025130C(int a1)
 //----- (00000001402513B0) ----------------------------------------------------
 __int64            close_nolock(unsigned int a1)
 {
-  __int64 v1;
-  int v2;
+  __int64 input_value;
+  int int64_result;
   __int64 osfhandle;
-  __int64 v4;
+  __int64 osfhandle_result;
 
-  v1 = (int)a1;
+  input_value = (int)a1;
   if ( get_osfhandle(a1) == -1
-    || ((_DWORD)v1 == 1 && (*(_BYTE *)(g_144CBF350 + 200LL) & 1) != 0
-     || (_DWORD)v1 == 2 && (*(_BYTE *)(g_144CBF350 + 128LL) & 1) != 0)
+    || ((_DWORD)input_value == 1 && (*(_BYTE *)(g_144CBF350 + 200LL) & 1) != 0
+     || (_DWORD)input_value == 2 && (*(_BYTE *)(g_144CBF350 + 128LL) & 1) != 0)
     && (osfhandle = get_osfhandle(2), get_osfhandle(1) == osfhandle)
-    || (v4 = get_osfhandle((unsigned int)v1), (unsigned int)((__int64 (           *)(__int64))CloseHandle)(v4)) )
+    || (osfhandle_result = get_osfhandle((unsigned int)input_value), (unsigned int)((__int64 (           *)(__int64))CloseHandle)(osfhandle_result)) )
   {
-    v2 = 0;
+    int64_result = 0;
   }
   else
   {
-    v2 = ((__int64 (*)(void))GetLastError)();
+    int64_result = ((__int64 (*)(void))GetLastError)();
   }
-  free_osfhnd(v1);
-  *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (v1 >> 6) + 19065401] + 72 * (v1 & 0x3F) + 56) = 0;
-  if ( !v2 )
+  free_osfhnd(input_value);
+  *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (input_value >> 6) + 19065401] + 72 * (input_value & 0x3F) + 56) = 0;
+  if ( !int64_result )
     return 0;
-  crt_errno_map_os_error(v2);
+  crt_errno_map_os_error(int64_result);
   return 0xFFFFFFFFLL;
 }
 
@@ -10547,11 +10547,11 @@ int         fileno(FILE *Stream)
 //----- (0000000140251498) ----------------------------------------------------
 __int64            sub_140251498(FILE *Stream)
 {
-  void *v2;
-  int v3;
-  int v4;
-  __int64 v5;
-  _BYTE *v6;
+  void *loaded_record_pointer;
+  int fileno_result;
+  int read_result;
+  __int64 fileno_result_2;
+  _BYTE *fileno_result_3;
 
   if ( !Stream )
   {
@@ -10569,14 +10569,14 @@ __int64            sub_140251498(FILE *Stream)
   _InterlockedOr((volatile signed __int32 *)Stream + 5, 1u);
   if ( (*((_DWORD *)Stream + 5) & 0x4C0) == 0 )
     sub_140253EF8((__int64)Stream);
-  v2 = *((void **)Stream + 1);
-  *(_QWORD *)Stream = (uint64)(uintptr_t)(v2);
-  v3 = fileno(Stream);
-  v4 = read(v3, v2, *((_DWORD *)Stream + 8));
-  *((_DWORD *)Stream + 4) = v4;
-  if ( (unsigned int)(v4 + 1) <= 1 )
+  loaded_record_pointer = *((void **)Stream + 1);
+  *(_QWORD *)Stream = (uint64)(uintptr_t)(loaded_record_pointer);
+  fileno_result = fileno(Stream);
+  read_result = read(fileno_result, loaded_record_pointer, *((_DWORD *)Stream + 8));
+  *((_DWORD *)Stream + 4) = read_result;
+  if ( (unsigned int)(read_result + 1) <= 1 )
   {
-    _InterlockedOr((volatile signed __int32 *)Stream + 5, v4 != 0 ? 16 : 8);
+    _InterlockedOr((volatile signed __int32 *)Stream + 5, read_result != 0 ? 16 : 8);
     *((_DWORD *)Stream + 4) = 0;
     return 0xFFFFFFFFLL;
   }
@@ -10584,14 +10584,14 @@ __int64            sub_140251498(FILE *Stream)
   {
     if ( fileno(Stream) == -1 || fileno(Stream) == -2 )
     {
-      v6 = &unk_1403022C0;
+      fileno_result_3 = &unk_1403022C0;
     }
     else
     {
-      v5 = (__int64)fileno(Stream) >> 6;
-      v6 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v5 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
+      fileno_result_2 = (__int64)fileno(Stream) >> 6;
+      fileno_result_3 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result_2 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
     }
-    if ( (v6[56] & 0x82) == 0x82 )
+    if ( (fileno_result_3[56] & 0x82) == 0x82 )
       _InterlockedOr((volatile signed __int32 *)Stream + 5, 0x20u);
   }
   if ( *((_DWORD *)Stream + 8) == 512 && (*((_DWORD *)Stream + 5) & 0x40) != 0 && (*((_DWORD *)Stream + 5) & 0x100) == 0 )
@@ -10603,16 +10603,16 @@ __int64            sub_140251498(FILE *Stream)
 //----- (00000001402515F4) ----------------------------------------------------
 __int64            _acrt_stdio_refill_and_read_wide_nolock_0(FILE *Stream)
 {
-  int v2;
-  unsigned __int8 v3;
-  void *v4;
-  int v5;
-  int v6;
-  __int64 v7;
-  _BYTE *v8;
-  unsigned __int8 *v9;
-  __int16 v10;
-  unsigned __int16 v11;
+  int loaded_word;
+  unsigned __int8 loaded_word_2;
+  void *loaded_record_pointer;
+  int fileno_result;
+  int read_result;
+  __int64 fileno_result_2;
+  _BYTE *fileno_result_3;
+  unsigned __int8 *loaded_record_pointer_2;
+  __int16 loaded_word_3;
+  unsigned __int16 unused_written_slot;
 
   if ( !Stream )
   {
@@ -10630,19 +10630,19 @@ __int64            _acrt_stdio_refill_and_read_wide_nolock_0(FILE *Stream)
   _InterlockedOr((volatile signed __int32 *)Stream + 5, 1u);
   if ( (*((_DWORD *)Stream + 5) & 0x4C0) == 0 )
     sub_140253EF8((__int64)Stream);
-  v2 = *((_DWORD *)Stream + 4);
-  if ( v2 == 1 )
-    v3 = **(_BYTE **)Stream;
+  loaded_word = *((_DWORD *)Stream + 4);
+  if ( loaded_word == 1 )
+    loaded_word_2 = **(_BYTE **)Stream;
   else
-    v3 = 0;
-  v4 = *((void **)Stream + 1);
-  *(_QWORD *)Stream = (uint64)(uintptr_t)(v4);
-  v5 = fileno(Stream);
-  v6 = read(v5, v4, *((_DWORD *)Stream + 8));
-  *((_DWORD *)Stream + 4) = v6;
-  if ( (unsigned int)(v6 + 1) <= 2 )
+    loaded_word_2 = 0;
+  loaded_record_pointer = *((void **)Stream + 1);
+  *(_QWORD *)Stream = (uint64)(uintptr_t)(loaded_record_pointer);
+  fileno_result = fileno(Stream);
+  read_result = read(fileno_result, loaded_record_pointer, *((_DWORD *)Stream + 8));
+  *((_DWORD *)Stream + 4) = read_result;
+  if ( (unsigned int)(read_result + 1) <= 2 )
   {
-    _InterlockedOr((volatile signed __int32 *)Stream + 5, v6 != 0 ? 16 : 8);
+    _InterlockedOr((volatile signed __int32 *)Stream + 5, read_result != 0 ? 16 : 8);
     *((_DWORD *)Stream + 4) = 0;
     return 0xFFFF;
   }
@@ -10650,43 +10650,43 @@ __int64            _acrt_stdio_refill_and_read_wide_nolock_0(FILE *Stream)
   {
     if ( fileno(Stream) == -1 || fileno(Stream) == -2 )
     {
-      v8 = &unk_1403022C0;
+      fileno_result_3 = &unk_1403022C0;
     }
     else
     {
-      v7 = (__int64)fileno(Stream) >> 6;
-      v8 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v7 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
+      fileno_result_2 = (__int64)fileno(Stream) >> 6;
+      fileno_result_3 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result_2 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
     }
-    if ( (v8[56] & 0x82) == 0x82 )
+    if ( (fileno_result_3[56] & 0x82) == 0x82 )
       _InterlockedOr((volatile signed __int32 *)Stream + 5, 0x20u);
   }
   if ( *((_DWORD *)Stream + 8) == 512 && (*((_DWORD *)Stream + 5) & 0x40) != 0 && (*((_DWORD *)Stream + 5) & 0x100) == 0 )
     *((_DWORD *)Stream + 8) = 4096;
-  v9 = *(unsigned __int8 **)Stream;
-  if ( v2 == 1 )
+  loaded_record_pointer_2 = *(unsigned __int8 **)Stream;
+  if ( loaded_word == 1 )
   {
-    v10 = *v9;
+    loaded_word_3 = *loaded_record_pointer_2;
     --*((_DWORD *)Stream + 4);
-    v11 = v3 | (unsigned __int16)(v10 << 8);
+    unused_written_slot = loaded_word_2 | (unsigned __int16)(loaded_word_3 << 8);
     ++*(_QWORD *)Stream;
   }
   else
   {
-    v11 = *(_WORD *)v9;
+    unused_written_slot = *(_WORD *)loaded_record_pointer_2;
     *((_DWORD *)Stream + 4) -= 2;
     *(_QWORD *)Stream += 2LL;
   }
-  return v11;
+  return unused_written_slot;
 }
 
 //----- (0000000140251818) ----------------------------------------------------
 __int64            sub_140251818(FILE *Stream)
 {
-  void *v2;
-  int v3;
-  int v4;
-  __int64 v5;
-  _BYTE *v6;
+  void *loaded_record_pointer;
+  int fileno_result;
+  int read_result;
+  __int64 fileno_result_2;
+  _BYTE *fileno_result_3;
 
   if ( !Stream )
   {
@@ -10704,14 +10704,14 @@ __int64            sub_140251818(FILE *Stream)
   _InterlockedOr((volatile signed __int32 *)Stream + 5, 1u);
   if ( (*((_DWORD *)Stream + 5) & 0x4C0) == 0 )
     sub_140253EF8((__int64)Stream);
-  v2 = *((void **)Stream + 1);
-  *(_QWORD *)Stream = (uint64)(uintptr_t)(v2);
-  v3 = fileno(Stream);
-  v4 = read(v3, v2, *((_DWORD *)Stream + 8));
-  *((_DWORD *)Stream + 4) = v4;
-  if ( (unsigned int)(v4 + 1) <= 1 )
+  loaded_record_pointer = *((void **)Stream + 1);
+  *(_QWORD *)Stream = (uint64)(uintptr_t)(loaded_record_pointer);
+  fileno_result = fileno(Stream);
+  read_result = read(fileno_result, loaded_record_pointer, *((_DWORD *)Stream + 8));
+  *((_DWORD *)Stream + 4) = read_result;
+  if ( (unsigned int)(read_result + 1) <= 1 )
   {
-    _InterlockedOr((volatile signed __int32 *)Stream + 5, v4 != 0 ? 16 : 8);
+    _InterlockedOr((volatile signed __int32 *)Stream + 5, read_result != 0 ? 16 : 8);
     *((_DWORD *)Stream + 4) = 0;
     return (unsigned int)-1;
   }
@@ -10719,14 +10719,14 @@ __int64            sub_140251818(FILE *Stream)
   {
     if ( fileno(Stream) == -1 || fileno(Stream) == -2 )
     {
-      v6 = &unk_1403022C0;
+      fileno_result_3 = &unk_1403022C0;
     }
     else
     {
-      v5 = (__int64)fileno(Stream) >> 6;
-      v6 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v5 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
+      fileno_result_2 = (__int64)fileno(Stream) >> 6;
+      fileno_result_3 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result_2 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
     }
-    if ( (v6[56] & 0x82) == 0x82 )
+    if ( (fileno_result_3[56] & 0x82) == 0x82 )
       _InterlockedOr((volatile signed __int32 *)Stream + 5, 0x20u);
   }
   if ( *((_DWORD *)Stream + 8) == 512 && (*((_DWORD *)Stream + 5) & 0x40) != 0 && (*((_DWORD *)Stream + 5) & 0x100) == 0 )
@@ -10745,10 +10745,10 @@ __int64            _acrt_stdio_refill_and_read_wide_nolock(FILE *Stream)
 //----- (000000014025198C) ----------------------------------------------------
 __int64            common_flush_and_write_nolock__char(unsigned __int8 a1, __int64 a2)
 {
-  int v4;
-  bool v6;
+  int fileno_result;
+  bool stream_is_at_end_of_file_nolock_result;
 
-  v4 = fileno((FILE *)a2);
+  fileno_result = fileno((FILE *)a2);
   if ( (*(_DWORD *)(a2 + 20) & 6) == 0 )
   {
     *errno_sr() = 9;
@@ -10763,9 +10763,9 @@ LABEL_3:
   }
   if ( (*(_DWORD *)(a2 + 20) & 1) != 0 )
   {
-    v6 = stream_is_at_end_of_file_nolock(a2);
+    stream_is_at_end_of_file_nolock_result = stream_is_at_end_of_file_nolock(a2);
     *(_DWORD *)(a2 + 16) = 0;
-    if ( !v6 )
+    if ( !stream_is_at_end_of_file_nolock_result )
       goto LABEL_3;
     *(_QWORD *)a2 = *(_QWORD *)(a2 + 8);
     _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFFE);
@@ -10774,7 +10774,7 @@ LABEL_3:
   _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFF7);
   *(_DWORD *)(a2 + 16) = 0;
   if ( (*(_DWORD *)(a2 + 20) & 0x4C0) == 0
-    && ((char *)a2 != sub_14020B528(1u) && (char *)a2 != sub_14020B528(2u) || !isatty(v4)) )
+    && ((char *)a2 != sub_14020B528(1u) && (char *)a2 != sub_14020B528(2u) || !isatty(fileno_result)) )
   {
     sub_140253EF8(a2);
   }
@@ -10786,10 +10786,10 @@ LABEL_3:
 //----- (0000000140251A74) ----------------------------------------------------
 __int64            common_flush_and_write_nolock__wchar_t(unsigned __int16 a1, __int64 a2)
 {
-  int v4;
-  bool v6;
+  int fileno_result;
+  bool stream_is_at_end_of_file_nolock_result;
 
-  v4 = fileno((FILE *)a2);
+  fileno_result = fileno((FILE *)a2);
   if ( (*(_DWORD *)(a2 + 20) & 6) == 0 )
   {
     *errno_sr() = 9;
@@ -10804,9 +10804,9 @@ LABEL_3:
   }
   if ( (*(_DWORD *)(a2 + 20) & 1) != 0 )
   {
-    v6 = stream_is_at_end_of_file_nolock(a2);
+    stream_is_at_end_of_file_nolock_result = stream_is_at_end_of_file_nolock(a2);
     *(_DWORD *)(a2 + 16) = 0;
-    if ( !v6 )
+    if ( !stream_is_at_end_of_file_nolock_result )
       goto LABEL_3;
     *(_QWORD *)a2 = *(_QWORD *)(a2 + 8);
     _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFFE);
@@ -10815,7 +10815,7 @@ LABEL_3:
   _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFF7);
   *(_DWORD *)(a2 + 16) = 0;
   if ( (*(_DWORD *)(a2 + 20) & 0x4C0) == 0
-    && ((char *)a2 != sub_14020B528(1u) && (char *)a2 != sub_14020B528(2u) || !isatty(v4)) )
+    && ((char *)a2 != sub_14020B528(1u) && (char *)a2 != sub_14020B528(2u) || !isatty(fileno_result)) )
   {
     sub_140253EF8(a2);
   }
@@ -10827,30 +10827,30 @@ LABEL_3:
 //----- (0000000140251B60) ----------------------------------------------------
 bool            sub_140251B60(char a1, __int64 a2)
 {
-  int v3;
-  int v4;
-  char *v5;
-  signed int v6;
-  bool v7;
-  _BYTE *v8;
+  int fileno_result;
+  int write_result;
+  char *loaded_record_pointer;
+  signed int loaded_word;
+  bool unused_written_slot;
+  _BYTE *state_address;
   char Buf;
 
   Buf = a1;
-  v3 = fileno((FILE *)a2);
+  fileno_result = fileno((FILE *)a2);
   if ( (*(_DWORD *)(a2 + 20) & 0xC0) == 0 )
-    return write(v3, &Buf, 1u) == 1;
-  v4 = 0;
-  v5 = *(char **)(a2 + 8);
-  v6 = *(_DWORD *)a2 - *(_DWORD *)(a2 + 8);
-  *(_QWORD *)a2 = (uint64)(uintptr_t)(v5 + 1);
+    return write(fileno_result, &Buf, 1u) == 1;
+  write_result = 0;
+  loaded_record_pointer = *(char **)(a2 + 8);
+  loaded_word = *(_DWORD *)a2 - *(_DWORD *)(a2 + 8);
+  *(_QWORD *)a2 = (uint64)(uintptr_t)(loaded_record_pointer + 1);
   *(_DWORD *)(a2 + 16) = *(_DWORD *)(a2 + 32) - 1;
-  if ( v6 <= 0 )
+  if ( loaded_word <= 0 )
   {
-    if ( (unsigned int)(v3 + 2) <= 1 )
-      v8 = &unk_1403022C0;
+    if ( (unsigned int)(fileno_result + 2) <= 1 )
+      state_address = &unk_1403022C0;
     else
-      v8 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)v3 >> 6) + 19065401] + 72LL * (v3 & 0x3F));
-    if ( (v8[56] & 0x20) != 0 && lseeki64_sr(v3, 0, 2) == -1 )
+      state_address = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)fileno_result >> 6) + 19065401] + 72LL * (fileno_result & 0x3F));
+    if ( (state_address[56] & 0x20) != 0 && lseeki64_sr(fileno_result, 0, 2) == -1 )
     {
       _InterlockedOr((volatile signed __int32 *)(a2 + 20), 0x10u);
       return 1;
@@ -10858,40 +10858,40 @@ bool            sub_140251B60(char a1, __int64 a2)
   }
   else
   {
-    v4 = write(v3, v5, v6);
+    write_result = write(fileno_result, loaded_record_pointer, loaded_word);
   }
-  v7 = v4 == v6;
+  unused_written_slot = write_result == loaded_word;
   **(_BYTE **)(a2 + 8) = Buf;
-  return v7;
+  return unused_written_slot;
 }
 
 //----- (0000000140251C44) ----------------------------------------------------
 bool            sub_140251C44(__int16 a1, __int64 a2)
 {
-  int v3;
-  int v4;
-  char *v5;
-  signed int v6;
-  bool v7;
-  _BYTE *v8;
+  int fileno_result;
+  int write_result;
+  char *loaded_record_pointer;
+  signed int loaded_word;
+  bool unused_written_slot;
+  _BYTE *state_address;
   __int16 Buf;
 
   Buf = a1;
-  v3 = fileno((FILE *)a2);
+  fileno_result = fileno((FILE *)a2);
   if ( (*(_DWORD *)(a2 + 20) & 0xC0) == 0 )
-    return write(v3, &Buf, 2u) == 2;
-  v4 = 0;
-  v5 = *(char **)(a2 + 8);
-  v6 = *(_DWORD *)a2 - *(_DWORD *)(a2 + 8);
-  *(_QWORD *)a2 = (uint64)(uintptr_t)(v5 + 2);
+    return write(fileno_result, &Buf, 2u) == 2;
+  write_result = 0;
+  loaded_record_pointer = *(char **)(a2 + 8);
+  loaded_word = *(_DWORD *)a2 - *(_DWORD *)(a2 + 8);
+  *(_QWORD *)a2 = (uint64)(uintptr_t)(loaded_record_pointer + 2);
   *(_DWORD *)(a2 + 16) = *(_DWORD *)(a2 + 32) - 2;
-  if ( v6 <= 0 )
+  if ( loaded_word <= 0 )
   {
-    if ( (unsigned int)(v3 + 2) <= 1 )
-      v8 = &unk_1403022C0;
+    if ( (unsigned int)(fileno_result + 2) <= 1 )
+      state_address = &unk_1403022C0;
     else
-      v8 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)v3 >> 6) + 19065401] + 72LL * (v3 & 0x3F));
-    if ( (v8[56] & 0x20) != 0 && lseeki64_sr(v3, 0, 2) == -1 )
+      state_address = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)fileno_result >> 6) + 19065401] + 72LL * (fileno_result & 0x3F));
+    if ( (state_address[56] & 0x20) != 0 && lseeki64_sr(fileno_result, 0, 2) == -1 )
     {
       _InterlockedOr((volatile signed __int32 *)(a2 + 20), 0x10u);
       return 1;
@@ -10899,18 +10899,18 @@ bool            sub_140251C44(__int16 a1, __int64 a2)
   }
   else
   {
-    v4 = write(v3, v5, v6);
+    write_result = write(fileno_result, loaded_record_pointer, loaded_word);
   }
-  v7 = v4 == v6;
+  unused_written_slot = write_result == loaded_word;
   **(_WORD **)(a2 + 8) = Buf;
-  return v7;
+  return unused_written_slot;
 }
 
 //----- (0000000140251D2C) ----------------------------------------------------
 bool            stream_is_at_end_of_file_nolock(__int64 a1)
 {
   __int64 osfhandle;
-  __int64 v3;
+  __int64 cached_osfhandle;
   __int64 FileSize;
   __int64 NewFilePointer;
 
@@ -10919,14 +10919,14 @@ bool            stream_is_at_end_of_file_nolock(__int64 a1)
   if ( (*(_DWORD *)(a1 + 20) & 0xC0) != 0 && *(_QWORD *)a1 == *(_QWORD *)(a1 + 8) )
     return 0;
   osfhandle = get_osfhandle(*(unsigned int *)(a1 + 24));
-  v3 = osfhandle;
+  cached_osfhandle = osfhandle;
   if ( osfhandle == -1
     || !(unsigned int)((__int64 (           *)(__int64, _QWORD, __int64 *, __int64))SetFilePointerEx)(
                         osfhandle,
                         0,
                         &NewFilePointer,
                         1)
-    || !(unsigned int)((__int64 (           *)(__int64, __int64 *))GetFileSizeEx)(v3, &FileSize) )
+    || !(unsigned int)((__int64 (           *)(__int64, __int64 *))GetFileSizeEx)(cached_osfhandle, &FileSize) )
   {
     return 0;
   }
@@ -10939,10 +10939,10 @@ bool            stream_is_at_end_of_file_nolock(__int64 a1)
 //----- (0000000140251DA8) ----------------------------------------------------
 __int64            sub_140251DA8(unsigned __int8 a1, __int64 a2)
 {
-  int v4;
-  bool v6;
+  int fileno_result;
+  bool stream_is_at_end_of_file_nolock_result;
 
-  v4 = fileno((FILE *)a2);
+  fileno_result = fileno((FILE *)a2);
   if ( (*(_DWORD *)(a2 + 20) & 6) == 0 )
   {
     *errno_sr() = 9;
@@ -10957,9 +10957,9 @@ LABEL_3:
   }
   if ( (*(_DWORD *)(a2 + 20) & 1) != 0 )
   {
-    v6 = stream_is_at_end_of_file_nolock(a2);
+    stream_is_at_end_of_file_nolock_result = stream_is_at_end_of_file_nolock(a2);
     *(_DWORD *)(a2 + 16) = 0;
-    if ( !v6 )
+    if ( !stream_is_at_end_of_file_nolock_result )
       goto LABEL_3;
     *(_QWORD *)a2 = *(_QWORD *)(a2 + 8);
     _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFFE);
@@ -10968,7 +10968,7 @@ LABEL_3:
   _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFF7);
   *(_DWORD *)(a2 + 16) = 0;
   if ( (*(_DWORD *)(a2 + 20) & 0x4C0) == 0
-    && ((char *)a2 != sub_14020B528(1u) && (char *)a2 != sub_14020B528(2u) || !isatty(v4)) )
+    && ((char *)a2 != sub_14020B528(1u) && (char *)a2 != sub_14020B528(2u) || !isatty(fileno_result)) )
   {
     sub_140253EF8(a2);
   }
@@ -10980,10 +10980,10 @@ LABEL_3:
 //----- (0000000140251E94) ----------------------------------------------------
 __int64            sub_140251E94(unsigned __int16 a1, __int64 a2)
 {
-  int v4;
-  bool v6;
+  int fileno_result;
+  bool stream_is_at_end_of_file_nolock_result;
 
-  v4 = fileno((FILE *)a2);
+  fileno_result = fileno((FILE *)a2);
   if ( (*(_DWORD *)(a2 + 20) & 6) == 0 )
   {
     *errno_sr() = 9;
@@ -10998,9 +10998,9 @@ LABEL_3:
   }
   if ( (*(_DWORD *)(a2 + 20) & 1) != 0 )
   {
-    v6 = stream_is_at_end_of_file_nolock(a2);
+    stream_is_at_end_of_file_nolock_result = stream_is_at_end_of_file_nolock(a2);
     *(_DWORD *)(a2 + 16) = 0;
-    if ( !v6 )
+    if ( !stream_is_at_end_of_file_nolock_result )
       goto LABEL_3;
     *(_QWORD *)a2 = *(_QWORD *)(a2 + 8);
     _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFFE);
@@ -11009,7 +11009,7 @@ LABEL_3:
   _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFF7);
   *(_DWORD *)(a2 + 16) = 0;
   if ( (*(_DWORD *)(a2 + 20) & 0x4C0) == 0
-    && ((char *)a2 != sub_14020B528(1u) && (char *)a2 != sub_14020B528(2u) || !isatty(v4)) )
+    && ((char *)a2 != sub_14020B528(1u) && (char *)a2 != sub_14020B528(2u) || !isatty(fileno_result)) )
   {
     sub_140253EF8(a2);
   }
@@ -11021,116 +11021,116 @@ LABEL_3:
 //----- (0000000140251F80) ----------------------------------------------------
 __int64            sub_140251F80(int a1, char *a2, __int64 a3)
 {
-  __int64 v3;
-  __int64 v4;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  char *v9;
-  char *v10;
-  char *v11;
-  char v12;
-  char *v13;
-  char v14;
-  bool v15;
-  char v16;
-  __int64 v17;
-  char v18;
+  __int64 input_value;
+  __int64 shifted_bits;
+  __int64 masked_bits;
+  __int64 masked_bits_2;
+  __int64 masked_bits_3;
+  char *state_address;
+  char *text_cursor;
+  char *text_cursor_2;
+  char input_byte;
+  char *byte_cursor;
+  char selection_code;
+  bool comparison_result;
+  char cached_buffer;
+  __int64 masked_bits_4;
+  char loaded_word;
   char Buffer;
   __int64 NumberOfBytesRead;
-  __int64 v22;
+  __int64 saved_masked_bits;
 
-  v3 = a1;
-  v4 = (__int64)a1 >> 6;
-  v6 = 9LL * (a1 & 0x3F);
-  v7 = *(_QWORD *)&dword_140404A6C[2 * v4 + 19065401];
-  v8 = *(_QWORD *)(v7 + 72LL * (a1 & 0x3F) + 40);
-  v22 = v8;
+  input_value = a1;
+  shifted_bits = (__int64)a1 >> 6;
+  masked_bits = 9LL * (a1 & 0x3F);
+  masked_bits_2 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+  masked_bits_3 = *(_QWORD *)(masked_bits_2 + 72LL * (a1 & 0x3F) + 40);
+  saved_masked_bits = masked_bits_3;
   if ( a3 && *a2 == 10 )
-    *(_BYTE *)(v7 + 8 * v6 + 56) |= 4u;
+    *(_BYTE *)(masked_bits_2 + 8 * masked_bits + 56) |= 4u;
   else
-    *(_BYTE *)(v7 + 8 * v6 + 56) &= ~4u;
-  v9 = &a2[a3];
-  v10 = a2;
-  v11 = a2;
+    *(_BYTE *)(masked_bits_2 + 8 * masked_bits + 56) &= ~4u;
+  state_address = &a2[a3];
+  text_cursor = a2;
+  text_cursor_2 = a2;
   if ( a2 < &a2[a3] )
   {
     while ( 1 )
     {
-      v12 = *v10;
-      if ( *v10 == 26 )
+      input_byte = *text_cursor;
+      if ( *text_cursor == 26 )
       {
-        v17 = *(_QWORD *)&dword_140404A6C[2 * v4 + 19065401];
-        v18 = *(_BYTE *)(v17 + 8 * v6 + 56);
-        if ( (v18 & 0x40) != 0 )
+        masked_bits_4 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+        loaded_word = *(_BYTE *)(masked_bits_4 + 8 * masked_bits + 56);
+        if ( (loaded_word & 0x40) != 0 )
         {
-          *v11 = 26;
-          LODWORD(v11) = (_DWORD)v11 + 1;
+          *text_cursor_2 = 26;
+          LODWORD(text_cursor_2) = (_DWORD)text_cursor_2 + 1;
         }
         else
         {
-          *(_BYTE *)(v17 + 8 * v6 + 56) = v18 | 2;
+          *(_BYTE *)(masked_bits_4 + 8 * masked_bits + 56) = loaded_word | 2;
         }
-        return (unsigned int)((_DWORD)v11 - (_DWORD)a2);
+        return (unsigned int)((_DWORD)text_cursor_2 - (_DWORD)a2);
       }
-      v13 = v10 + 1;
-      if ( v12 == 13 )
+      byte_cursor = text_cursor + 1;
+      if ( input_byte == 13 )
         break;
-      *v11 = v12;
-      ++v10;
-      ++v11;
+      *text_cursor_2 = input_byte;
+      ++text_cursor;
+      ++text_cursor_2;
 LABEL_25:
-      if ( v10 >= v9 )
-        return (unsigned int)((_DWORD)v11 - (_DWORD)a2);
+      if ( text_cursor >= state_address )
+        return (unsigned int)((_DWORD)text_cursor_2 - (_DWORD)a2);
     }
-    if ( v13 < v9 )
+    if ( byte_cursor < state_address )
     {
-      v14 = 13;
-      if ( *v13 == 10 )
-        v14 = 10;
-      v15 = *v13 == 10;
-      *v11 = v14;
-      v10 += v15 + 1;
+      selection_code = 13;
+      if ( *byte_cursor == 10 )
+        selection_code = 10;
+      comparison_result = *byte_cursor == 10;
+      *text_cursor_2 = selection_code;
+      text_cursor += comparison_result + 1;
       goto LABEL_23;
     }
-    ++v10;
+    ++text_cursor;
     if ( (unsigned int)((__int64 (           *)(__int64, char *, __int64, __int64 *, _QWORD))ReadFile)(
-                         v8,
+                         masked_bits_3,
                          &Buffer,
                          1,
                          &NumberOfBytesRead,
                          0)
       && (_DWORD)NumberOfBytesRead )
     {
-      if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (v3 >> 6) + 19065401] + 72 * (v3 & 0x3F) + 56) & 0x48) != 0 )
+      if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (input_value >> 6) + 19065401] + 72 * (input_value & 0x3F) + 56) & 0x48) != 0 )
       {
-        v16 = Buffer;
+        cached_buffer = Buffer;
         if ( Buffer != 10 )
         {
-          *v11 = 13;
-          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (v3 >> 6) + 19065401] + 72 * (v3 & 0x3F) + 58) = v16;
+          *text_cursor_2 = 13;
+          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (input_value >> 6) + 19065401] + 72 * (input_value & 0x3F) + 58) = cached_buffer;
           goto LABEL_23;
         }
 LABEL_17:
-        *v11 = 10;
+        *text_cursor_2 = 10;
 LABEL_23:
-        ++v11;
+        ++text_cursor_2;
         goto LABEL_24;
       }
-      if ( Buffer == 10 && v11 == a2 )
+      if ( Buffer == 10 && text_cursor_2 == a2 )
         goto LABEL_17;
-      lseeki64_nolock(v3, -1, 1u);
+      lseeki64_nolock(input_value, -1, 1u);
       if ( Buffer == 10 )
       {
 LABEL_24:
-        v8 = v22;
+        masked_bits_3 = saved_masked_bits;
         goto LABEL_25;
       }
     }
-    *v11 = 13;
+    *text_cursor_2 = 13;
     goto LABEL_23;
   }
-  return (unsigned int)((_DWORD)v11 - (_DWORD)a2);
+  return (unsigned int)((_DWORD)text_cursor_2 - (_DWORD)a2);
 }
 
 // 14026E1F0: invalid function type 'BOOL (__stdcall *ReadFile)(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead, LPOVERLAPPED lpOverlapped)' has been ignored
@@ -11138,123 +11138,123 @@ LABEL_24:
 //----- (0000000140252140) ----------------------------------------------------
 __int64            sub_140252140(int a1, __int16 *a2, __int64 a3)
 {
-  __int64 v3;
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int16 *v9;
-  __int16 *v10;
-  __int16 *v11;
-  __int16 v12;
-  __int16 *v13;
-  __int16 v14;
-  __int64 v15;
-  __int64 v16;
+  __int64 input_value;
+  __int64 shifted_bits;
+  __int64 masked_bits;
+  __int64 masked_bits_2;
+  __int64 masked_bits_3;
+  __int16 *state_address;
+  __int16 *buffer_cursor;
+  __int16 *buffer_cursor_2;
+  __int16 loaded_word;
+  __int16 *record_pointer;
+  __int16 loaded_word_2;
+  __int64 selection_code;
+  __int64 shifted_bits_2;
   __int64 i;
-  __int64 v18;
-  char v19;
+  __int64 masked_bits_4;
+  char loaded_word_3;
   __int16 Buffer;
-  __int16 v22;
+  __int16 cached_buffer;
   __int64 NumberOfBytesRead;
-  __int64 v24;
+  __int64 saved_masked_bits;
 
-  v3 = a1;
-  v5 = (__int64)a1 >> 6;
-  v6 = 9LL * (a1 & 0x3F);
-  v7 = *(_QWORD *)&dword_140404A6C[2 * v5 + 19065401];
-  v8 = *(_QWORD *)(v7 + 72LL * (a1 & 0x3F) + 40);
-  v24 = v8;
+  input_value = a1;
+  shifted_bits = (__int64)a1 >> 6;
+  masked_bits = 9LL * (a1 & 0x3F);
+  masked_bits_2 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+  masked_bits_3 = *(_QWORD *)(masked_bits_2 + 72LL * (a1 & 0x3F) + 40);
+  saved_masked_bits = masked_bits_3;
   if ( a3 && *a2 == 10 )
-    *(_BYTE *)(v7 + 72LL * (a1 & 0x3F) + 56) |= 4u;
+    *(_BYTE *)(masked_bits_2 + 72LL * (a1 & 0x3F) + 56) |= 4u;
   else
-    *(_BYTE *)(v7 + 72LL * (a1 & 0x3F) + 56) &= ~4u;
-  v9 = &a2[a3];
-  v10 = a2;
-  v11 = a2;
-  while ( v10 < v9 )
+    *(_BYTE *)(masked_bits_2 + 72LL * (a1 & 0x3F) + 56) &= ~4u;
+  state_address = &a2[a3];
+  buffer_cursor = a2;
+  buffer_cursor_2 = a2;
+  while ( buffer_cursor < state_address )
   {
-    v12 = *v10;
-    if ( *v10 == 26 )
+    loaded_word = *buffer_cursor;
+    if ( *buffer_cursor == 26 )
     {
-      v18 = *(_QWORD *)&dword_140404A6C[2 * v5 + 19065401];
-      v19 = *(_BYTE *)(v18 + 8 * v6 + 56);
-      if ( (v19 & 0x40) != 0 )
-        *v11++ = 26;
+      masked_bits_4 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+      loaded_word_3 = *(_BYTE *)(masked_bits_4 + 8 * masked_bits + 56);
+      if ( (loaded_word_3 & 0x40) != 0 )
+        *buffer_cursor_2++ = 26;
       else
-        *(_BYTE *)(v18 + 8 * v6 + 56) = v19 | 2;
-      return 2 * (unsigned int)(v11 - a2);
+        *(_BYTE *)(masked_bits_4 + 8 * masked_bits + 56) = loaded_word_3 | 2;
+      return 2 * (unsigned int)(buffer_cursor_2 - a2);
     }
-    v13 = v10 + 1;
-    if ( v12 == 13 )
+    record_pointer = buffer_cursor + 1;
+    if ( loaded_word == 13 )
     {
-      if ( v13 < v9 )
+      if ( record_pointer < state_address )
       {
-        v14 = *v13;
-        if ( *v13 == 10 )
-          v12 = 10;
-        *v11 = v12;
-        v15 = 4;
-        if ( v14 != 10 )
-          v15 = 2;
-        v10 = (__int16 *)((char *)v10 + v15);
-        ++v11;
+        loaded_word_2 = *record_pointer;
+        if ( *record_pointer == 10 )
+          loaded_word = 10;
+        *buffer_cursor_2 = loaded_word;
+        selection_code = 4;
+        if ( loaded_word_2 != 10 )
+          selection_code = 2;
+        buffer_cursor = (__int16 *)((char *)buffer_cursor + selection_code);
+        ++buffer_cursor_2;
         continue;
       }
-      ++v10;
+      ++buffer_cursor;
       if ( !(unsigned int)((__int64 (           *)(__int64, __int16 *, __int64, __int64 *, _QWORD))ReadFile)(
-                            v8,
+                            masked_bits_3,
                             &Buffer,
                             2,
                             &NumberOfBytesRead,
                             0)
         || !(_DWORD)NumberOfBytesRead )
       {
-        v8 = v24;
-        *v11++ = 13;
+        masked_bits_3 = saved_masked_bits;
+        *buffer_cursor_2++ = 13;
         continue;
       }
-      v16 = v3 >> 6;
-      if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (v3 >> 6) + 19065401] + 72 * (v3 & 0x3F) + 56) & 0x48) != 0 )
+      shifted_bits_2 = input_value >> 6;
+      if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (input_value >> 6) + 19065401] + 72 * (input_value & 0x3F) + 56) & 0x48) != 0 )
       {
         if ( Buffer == 10 )
         {
-          *v11 = 10;
+          *buffer_cursor_2 = 10;
         }
         else
         {
-          v22 = Buffer;
-          *v11 = 13;
+          cached_buffer = Buffer;
+          *buffer_cursor_2 = 13;
           for ( i = 0; i < 2; ++i )
-            *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v16 + 19065401] + 72 * (v3 & 0x3F) + i + 58) = *((_BYTE *)&v22 + i);
-          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v16 + 19065401] + 72 * (v3 & 0x3F) + 60) = 10;
+            *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits_2 + 19065401] + 72 * (input_value & 0x3F) + i + 58) = *((_BYTE *)&cached_buffer + i);
+          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits_2 + 19065401] + 72 * (input_value & 0x3F) + 60) = 10;
         }
-        ++v11;
+        ++buffer_cursor_2;
       }
-      else if ( Buffer == 10 && v11 == a2 )
+      else if ( Buffer == 10 && buffer_cursor_2 == a2 )
       {
-        *v11++ = 10;
+        *buffer_cursor_2++ = 10;
       }
       else
       {
-        lseeki64_nolock(v3, -2, 1u);
+        lseeki64_nolock(input_value, -2, 1u);
         if ( Buffer != 10 )
         {
-          v8 = v24;
-          *v11++ = 13;
+          masked_bits_3 = saved_masked_bits;
+          *buffer_cursor_2++ = 13;
           continue;
         }
       }
-      v8 = v24;
+      masked_bits_3 = saved_masked_bits;
     }
     else
     {
-      *v11 = v12;
-      ++v10;
-      ++v11;
+      *buffer_cursor_2 = loaded_word;
+      ++buffer_cursor;
+      ++buffer_cursor_2;
     }
   }
-  return 2 * (unsigned int)(v11 - a2);
+  return 2 * (unsigned int)(buffer_cursor_2 - a2);
 }
 
 // 14026E1F0: invalid function type 'BOOL (__stdcall *ReadFile)(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead, LPOVERLAPPED lpOverlapped)' has been ignored
@@ -11262,88 +11262,88 @@ __int64            sub_140252140(int a1, __int16 *a2, __int64 a3)
 //----- (0000000140252424) ----------------------------------------------------
 __int64            translate_ansi_or_utf8_nolock(int a1, char *a2, __int64 a3)
 {
-  __int64 v3;
+  __int64 input_value;
   __int64 result;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  char *v11;
+  __int64 saved_call_status;
+  __int64 masked_bits;
+  __int64 shifted_bits;
+  __int64 scaled_index;
+  __int64 shifted_bits_2;
+  char *text_cursor;
   unsigned int i;
-  __int64 v13;
-  char v14;
-  char v15;
-  int v16;
-  int v17;
-  __int64 v18;
-  int v19;
-  __int64 v20;
+  __int64 scaled_index_2;
+  char input_byte;
+  char input_byte_2;
+  int integer_difference;
+  int multi_byte_to_wide_char_result;
+  __int64 unrecovered_register_value;
+  int int64_result;
+  __int64 masked_bits_2;
 
-  v3 = a1;
+  input_value = a1;
   result = sub_140251F80(a1, a2, a3);
-  v6 = (int)result;
+  saved_call_status = (int)result;
   if ( (_DWORD)result )
   {
-    v7 = v3 & 0x3F;
-    v8 = v3 >> 6;
-    v9 = 9 * v7;
-    v10 = *(_QWORD *)&dword_140404A6C[2 * (v3 >> 6) + 19065401];
-    if ( !*(_BYTE *)(v10 + 72 * v7 + 57) )
-      return (unsigned int)v6;
-    v11 = &a2[v6 - 1];
-    if ( *v11 < 0 )
+    masked_bits = input_value & 0x3F;
+    shifted_bits = input_value >> 6;
+    scaled_index = 9 * masked_bits;
+    shifted_bits_2 = *(_QWORD *)&dword_140404A6C[2 * (input_value >> 6) + 19065401];
+    if ( !*(_BYTE *)(shifted_bits_2 + 72 * masked_bits + 57) )
+      return (unsigned int)saved_call_status;
+    text_cursor = &a2[saved_call_status - 1];
+    if ( *text_cursor < 0 )
     {
-      for ( i = 1; !byte_140302310[(unsigned __int8)*v11] && i <= 4 && v11 >= a2; ++i )
-        --v11;
-      v13 = (unsigned __int8)*v11;
-      if ( !byte_140302310[v13] )
+      for ( i = 1; !byte_140302310[(unsigned __int8)*text_cursor] && i <= 4 && text_cursor >= a2; ++i )
+        --text_cursor;
+      scaled_index_2 = (unsigned __int8)*text_cursor;
+      if ( !byte_140302310[scaled_index_2] )
       {
         *errno_sr() = 42;
         return 0xFFFFFFFFLL;
       }
-      if ( byte_140302310[v13] + 1 == i )
+      if ( byte_140302310[scaled_index_2] + 1 == i )
       {
-        LODWORD(v11) = i + (_DWORD)v11;
+        LODWORD(text_cursor) = i + (_DWORD)text_cursor;
       }
-      else if ( (*(_BYTE *)(v10 + 72 * v7 + 56) & 0x48) != 0 )
+      else if ( (*(_BYTE *)(shifted_bits_2 + 72 * masked_bits + 56) & 0x48) != 0 )
       {
-        ++v11;
-        *(_BYTE *)(v10 + 72 * v7 + 58) = v13;
+        ++text_cursor;
+        *(_BYTE *)(shifted_bits_2 + 72 * masked_bits + 58) = scaled_index_2;
         if ( i >= 2 )
         {
-          v14 = *v11++;
-          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v8 + 19065401] + 8 * v9 + 59) = v14;
+          input_byte = *text_cursor++;
+          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 59) = input_byte;
         }
         if ( i == 3 )
         {
-          v15 = *v11;
-          LODWORD(v11) = (_DWORD)v11 + 1;
-          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v8 + 19065401] + 8 * v9 + 60) = v15;
+          input_byte_2 = *text_cursor;
+          LODWORD(text_cursor) = (_DWORD)text_cursor + 1;
+          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 60) = input_byte_2;
         }
-        LODWORD(v11) = (_DWORD)v11 - i;
+        LODWORD(text_cursor) = (_DWORD)text_cursor - i;
       }
       else
       {
-        lseeki64_nolock(v3, -i, 1u);
+        lseeki64_nolock(input_value, -i, 1u);
       }
     }
     else
     {
-      LODWORD(v11) = v6 + (_DWORD)a2;
+      LODWORD(text_cursor) = saved_call_status + (_DWORD)a2;
     }
-    v16 = (_DWORD)v11 - (_DWORD)a2;
-    v17 = crt_multi_byte_to_wide_char();
-    if ( !v17 )
+    integer_difference = (_DWORD)text_cursor - (_DWORD)a2;
+    multi_byte_to_wide_char_result = crt_multi_byte_to_wide_char();
+    if ( !multi_byte_to_wide_char_result )
     {
-      v19 = ((__int64 (           *)(__int64, _QWORD))GetLastError)(v18, 0);
-      crt_errno_map_os_error(v19);
+      int64_result = ((__int64 (           *)(__int64, _QWORD))GetLastError)(unrecovered_register_value, 0);
+      crt_errno_map_os_error(int64_result);
       return 0xFFFFFFFFLL;
     }
-    v20 = *(_QWORD *)&dword_140404A6C[2 * v8 + 19065401];
-    *(_BYTE *)(v20 + 8 * v9 + 61) &= ~2u;
-    *(_BYTE *)(v20 + 8 * v9 + 61) |= v16 != v17 ? 2 : 0;
-    return (unsigned int)(2 * v17);
+    masked_bits_2 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+    *(_BYTE *)(masked_bits_2 + 8 * scaled_index + 61) &= ~2u;
+    *(_BYTE *)(masked_bits_2 + 8 * scaled_index + 61) |= integer_difference != multi_byte_to_wide_char_result ? 2 : 0;
+    return (unsigned int)(2 * multi_byte_to_wide_char_result);
   }
   return result;
 }
@@ -11353,47 +11353,47 @@ __int64            translate_ansi_or_utf8_nolock(int a1, char *a2, __int64 a3)
 //----- (00000001402525C0) ----------------------------------------------------
 __int64            translate_utf16_from_console_nolock(int a1, __int16 *a2, __int64 a3)
 {
-  __int16 *v3;
-  __int64 v4;
-  __int16 *v6;
-  __int16 *v7;
-  __int16 v8;
-  __int64 v9;
+  __int16 *state_address;
+  __int64 input_value;
+  __int16 *input_cursor;
+  __int16 *buffer_cursor;
+  __int16 loaded_word;
+  __int64 selection_code;
 
-  v3 = &a2[a3];
-  v4 = a1;
-  v6 = a2;
-  v7 = a2;
-  if ( a2 < v3 )
+  state_address = &a2[a3];
+  input_value = a1;
+  input_cursor = a2;
+  buffer_cursor = a2;
+  if ( a2 < state_address )
   {
     while ( 1 )
     {
-      v8 = *v6;
-      if ( *v6 == 26 )
+      loaded_word = *input_cursor;
+      if ( *input_cursor == 26 )
         break;
-      if ( v8 == 13 && v6 + 1 < v3 && v6[1] == 10 )
+      if ( loaded_word == 13 && input_cursor + 1 < state_address && input_cursor[1] == 10 )
       {
-        v8 = 10;
-        v9 = 4;
+        loaded_word = 10;
+        selection_code = 4;
       }
       else
       {
-        v9 = 2;
+        selection_code = 2;
       }
-      v6 = (__int16 *)((char *)v6 + v9);
-      *v7++ = v8;
-      if ( v6 >= v3 )
-        return 2 * (unsigned int)(v7 - a2);
+      input_cursor = (__int16 *)((char *)input_cursor + selection_code);
+      *buffer_cursor++ = loaded_word;
+      if ( input_cursor >= state_address )
+        return 2 * (unsigned int)(buffer_cursor - a2);
     }
-    *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (v4 >> 6) + 19065401] + 72 * (v4 & 0x3F) + 56) |= 2u;
+    *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (input_value >> 6) + 19065401] + 72 * (input_value & 0x3F) + 56) |= 2u;
   }
-  return 2 * (unsigned int)(v7 - a2);
+  return 2 * (unsigned int)(buffer_cursor - a2);
 }
 
 //----- (0000000140252650) ----------------------------------------------------
 int         read(int FileHandle, void *DstBuf, unsigned int MaxCharCount)
 {
-  __int64 v6;
+  __int64 shifted_bits;
   int nolock;
 
   if ( FileHandle == -2 )
@@ -11404,8 +11404,8 @@ int         read(int FileHandle, void *DstBuf, unsigned int MaxCharCount)
   }
   if ( FileHandle < 0
     || FileHandle >= g_144CBF750
-    || (v6 = (__int64)FileHandle >> 6,
-        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) == 0) )
+    || (shifted_bits = (__int64)FileHandle >> 6,
+        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) == 0) )
   {
     *(_DWORD *)crt_doserrno() = 0;
     *errno_sr() = 9;
@@ -11421,7 +11421,7 @@ LABEL_13:
   }
   sub_140261068(FileHandle);
   nolock = -1;
-  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) != 0 )
+  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) != 0 )
   {
     nolock = read_nolock(FileHandle, (__int16 *)DstBuf, MaxCharCount);
   }
@@ -11437,64 +11437,64 @@ LABEL_13:
 //----- (000000014025276C) ----------------------------------------------------
 __int64            read_nolock(int a1, __int16 *a2, unsigned int a3)
 {
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  char v9;
-  int v10;
-  __int16 *v11;
-  unsigned int v12;
-  __int16 *v13;
-  __int64 v14;
-  bool v15;
-  int v16;
-  char v17;
-  char v18;
-  char v19;
-  int v20;
-  int v21;
-  __int64 v23;
-  int v24;
-  unsigned __int64 v25;
-  __int16 *v26;
-  __int16 *v27;
-  __int16 *v28;
-  __int16 *v29;
-  __int16 v30;
-  __int64 v31;
+  __int64 masked_bits;
+  __int64 shifted_bits;
+  __int64 scaled_index;
+  __int64 masked_bits_2;
+  char loaded_word;
+  int loaded_word_2;
+  __int16 *malloc_base_result;
+  unsigned int remaining_count;
+  __int16 *saved_malloc_base_result;
+  __int64 lseeki64_nolock_result;
+  bool state_address;
+  int selection_code;
+  char loaded_word_3;
+  char masked_bits_3;
+  char masked_bits_4;
+  int int64_result;
+  int saved_translate_ansi_or_utf8_nolock_result;
+  __int64 lookup_index;
+  int translate_ansi_or_utf8_nolock_result;
+  unsigned __int64 shifted_bits_2;
+  __int16 *record_pointer;
+  __int16 *record_pointer_2;
+  __int16 *buffer_cursor;
+  __int16 *state_address_2;
+  __int16 loaded_word_4;
+  __int64 selection_code_2;
   __int64 Mode;
   __int64 hConsoleHandle;
-  __int64 v34;
-  __int64 v35;
-  __int16 *v36;
-  char v37;
+  __int64 saved_shifted_bits;
+  __int64 selection_flag;
+  __int16 *record_pointer_3;
+  char saved_loaded_word;
   unsigned int NumberOfCharsRead;
 
   if ( a1 != -2 )
   {
     if ( a1 >= 0
       && a1 < g_144CBF750
-      && (v5 = a1 & 0x3F,
-          v35 = 1,
-          v6 = (__int64)a1 >> 6,
-          v34 = v6,
-          v7 = 9 * v5,
-          v8 = *(_QWORD *)&dword_140404A6C[2 * v6 + 19065401],
-          v9 = *(_BYTE *)(v8 + 72 * v5 + 56),
-          (v9 & 1) != 0) )
+      && (masked_bits = a1 & 0x3F,
+          selection_flag = 1,
+          shifted_bits = (__int64)a1 >> 6,
+          saved_shifted_bits = shifted_bits,
+          scaled_index = 9 * masked_bits,
+          masked_bits_2 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401],
+          loaded_word = *(_BYTE *)(masked_bits_2 + 72 * masked_bits + 56),
+          (loaded_word & 1) != 0) )
     {
       if ( a3 <= 0x7FFFFFFF )
       {
-        if ( !a3 || (v9 & 2) != 0 )
+        if ( !a3 || (loaded_word & 2) != 0 )
           return 0;
         if ( a2 )
         {
-          v10 = *(char *)(v8 + 8 * v7 + 57);
-          v11 = nullptr;
-          hConsoleHandle = *(_QWORD *)(v8 + 8 * v7 + 40);
-          v37 = v10;
-          if ( v10 == 1 )
+          loaded_word_2 = *(char *)(masked_bits_2 + 8 * scaled_index + 57);
+          malloc_base_result = nullptr;
+          hConsoleHandle = *(_QWORD *)(masked_bits_2 + 8 * scaled_index + 40);
+          saved_loaded_word = loaded_word_2;
+          if ( loaded_word_2 == 1 )
           {
             if ( (a3 & 1) != 0 )
             {
@@ -11503,72 +11503,72 @@ LABEL_14:
               *errno_sr() = 22;
               crt_invalid_parameter_noinfo();
 LABEL_38:
-              v21 = -1;
+              saved_translate_ansi_or_utf8_nolock_result = -1;
               goto LABEL_39;
             }
-            v12 = a3 >> 1;
+            remaining_count = a3 >> 1;
             if ( a3 >> 1 < 4 )
-              v12 = 4;
-            v11 = (__int16 *)malloc_base();
+              remaining_count = 4;
+            malloc_base_result = (__int16 *)malloc_base();
             free_base(nullptr);
             free_base(nullptr);
-            v13 = v11;
-            if ( !v11 )
+            saved_malloc_base_result = malloc_base_result;
+            if ( !malloc_base_result )
             {
               *errno_sr() = 12;
               *(_DWORD *)crt_doserrno() = 8;
               goto LABEL_38;
             }
-            v14 = lseeki64_nolock(a1, 0, 1u);
-            v6 = v34;
-            LOBYTE(v10) = v37;
-            *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * v34 + 19065401] + 8 * v7 + 48) = v14;
-            v8 = *(_QWORD *)&dword_140404A6C[2 * v6 + 19065401];
+            lseeki64_nolock_result = lseeki64_nolock(a1, 0, 1u);
+            shifted_bits = saved_shifted_bits;
+            LOBYTE(loaded_word_2) = saved_loaded_word;
+            *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * saved_shifted_bits + 19065401] + 8 * scaled_index + 48) = lseeki64_nolock_result;
+            masked_bits_2 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
           }
           else
           {
-            if ( v10 == 2 && (a3 & 1) != 0 )
+            if ( loaded_word_2 == 2 && (a3 & 1) != 0 )
               goto LABEL_14;
-            v12 = a3;
-            v13 = a2;
+            remaining_count = a3;
+            saved_malloc_base_result = a2;
           }
-          v15 = (*(_BYTE *)(v8 + 8 * v7 + 56) & 0x48) == 0;
-          v16 = 0;
-          v36 = v13;
-          if ( !v15 )
+          state_address = (*(_BYTE *)(masked_bits_2 + 8 * scaled_index + 56) & 0x48) == 0;
+          selection_code = 0;
+          record_pointer_3 = saved_malloc_base_result;
+          if ( !state_address )
           {
-            v17 = *(_BYTE *)(v8 + 8 * v7 + 58);
-            if ( v17 != 10 )
+            loaded_word_3 = *(_BYTE *)(masked_bits_2 + 8 * scaled_index + 58);
+            if ( loaded_word_3 != 10 )
             {
-              *(_BYTE *)v13 = v17;
-              --v12;
-              v13 = (__int16 *)((char *)v13 + 1);
-              v16 = 1;
-              *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 8 * v7 + 58) = 10;
-              if ( (_BYTE)v10 )
+              *(_BYTE *)saved_malloc_base_result = loaded_word_3;
+              --remaining_count;
+              saved_malloc_base_result = (__int16 *)((char *)saved_malloc_base_result + 1);
+              selection_code = 1;
+              *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 58) = 10;
+              if ( (_BYTE)loaded_word_2 )
               {
-                v18 = *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 8 * v7 + 59);
-                if ( v18 != 10 )
+                masked_bits_3 = *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 59);
+                if ( masked_bits_3 != 10 )
                 {
-                  if ( v12 )
+                  if ( remaining_count )
                   {
-                    *(_BYTE *)v13 = v18;
-                    v16 = 2;
-                    v13 = (__int16 *)((char *)v13 + 1);
-                    --v12;
-                    *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 8 * v7 + 59) = 10;
-                    if ( (_BYTE)v10 == 1 )
+                    *(_BYTE *)saved_malloc_base_result = masked_bits_3;
+                    selection_code = 2;
+                    saved_malloc_base_result = (__int16 *)((char *)saved_malloc_base_result + 1);
+                    --remaining_count;
+                    *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 59) = 10;
+                    if ( (_BYTE)loaded_word_2 == 1 )
                     {
-                      v19 = *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 8 * v7 + 60);
-                      if ( v19 != 10 )
+                      masked_bits_4 = *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 60);
+                      if ( masked_bits_4 != 10 )
                       {
-                        if ( v12 )
+                        if ( remaining_count )
                         {
-                          *(_BYTE *)v13 = v19;
-                          v16 = 3;
-                          v13 = (__int16 *)((char *)v13 + 1);
-                          --v12;
-                          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 8 * v7 + 60) = 10;
+                          *(_BYTE *)saved_malloc_base_result = masked_bits_4;
+                          selection_code = 3;
+                          saved_malloc_base_result = (__int16 *)((char *)saved_malloc_base_result + 1);
+                          --remaining_count;
+                          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 60) = 10;
                         }
                       }
                     }
@@ -11578,105 +11578,105 @@ LABEL_38:
             }
           }
           if ( isatty(a1)
-            && *(char *)(*(_QWORD *)&dword_140404A6C[2 * v34 + 19065401] + 8 * v7 + 56) < 0
+            && *(char *)(*(_QWORD *)&dword_140404A6C[2 * saved_shifted_bits + 19065401] + 8 * scaled_index + 56) < 0
             && (unsigned int)((__int64 (           *)(__int64, __int64 *))GetConsoleMode)(hConsoleHandle, &Mode) )
           {
-            if ( v37 == 2 )
+            if ( saved_loaded_word == 2 )
             {
               if ( !(unsigned int)((__int64 (           *)(__int64, __int16 *, _QWORD, unsigned int *, _QWORD))ReadConsoleW)(
                                     hConsoleHandle,
-                                    v13,
-                                    v12 >> 1,
+                                    saved_malloc_base_result,
+                                    remaining_count >> 1,
                                     &NumberOfCharsRead,
                                     0) )
               {
-                v20 = ((__int64 (*)(void))GetLastError)();
+                int64_result = ((__int64 (*)(void))GetLastError)();
 LABEL_37:
-                crt_errno_map_os_error(v20);
+                crt_errno_map_os_error(int64_result);
                 goto LABEL_38;
               }
-              v21 = v16 + 2 * NumberOfCharsRead;
+              saved_translate_ansi_or_utf8_nolock_result = selection_code + 2 * NumberOfCharsRead;
               goto LABEL_45;
             }
           }
           else
           {
-            LOBYTE(v35) = 0;
+            LOBYTE(selection_flag) = 0;
           }
           if ( !(unsigned int)((__int64 (           *)(__int64, __int16 *, _QWORD, unsigned int *, _QWORD))ReadFile)(
                                 hConsoleHandle,
-                                v13,
-                                v12,
+                                saved_malloc_base_result,
+                                remaining_count,
                                 &NumberOfCharsRead,
                                 0)
             || NumberOfCharsRead > a3 )
           {
-            v20 = ((__int64 (*)(void))GetLastError)();
-            if ( v20 == 5 )
+            int64_result = ((__int64 (*)(void))GetLastError)();
+            if ( int64_result == 5 )
             {
               *errno_sr() = 9;
               *(_DWORD *)crt_doserrno() = 5;
               goto LABEL_38;
             }
-            if ( v20 == 109 )
+            if ( int64_result == 109 )
             {
-              v21 = 0;
+              saved_translate_ansi_or_utf8_nolock_result = 0;
               goto LABEL_39;
             }
             goto LABEL_37;
           }
-          v21 = NumberOfCharsRead + v16;
+          saved_translate_ansi_or_utf8_nolock_result = NumberOfCharsRead + selection_code;
 LABEL_45:
-          v23 = v34;
-          if ( *(char *)(*(_QWORD *)&dword_140404A6C[2 * v34 + 19065401] + 8 * v7 + 56) < 0 )
+          lookup_index = saved_shifted_bits;
+          if ( *(char *)(*(_QWORD *)&dword_140404A6C[2 * saved_shifted_bits + 19065401] + 8 * scaled_index + 56) < 0 )
           {
-            if ( v37 == 2 )
+            if ( saved_loaded_word == 2 )
             {
-              v25 = (unsigned __int64)v21 >> 1;
-              if ( (_BYTE)v35 )
+              shifted_bits_2 = (unsigned __int64)saved_translate_ansi_or_utf8_nolock_result >> 1;
+              if ( (_BYTE)selection_flag )
               {
-                v26 = v36;
-                v27 = v36;
-                v28 = v36;
-                v29 = &v36[v25];
-                if ( v36 < v29 )
+                record_pointer = record_pointer_3;
+                record_pointer_2 = record_pointer_3;
+                buffer_cursor = record_pointer_3;
+                state_address_2 = &record_pointer_3[shifted_bits_2];
+                if ( record_pointer_3 < state_address_2 )
                 {
                   while ( 1 )
                   {
-                    v30 = *v27;
-                    if ( *v27 == 26 )
+                    loaded_word_4 = *record_pointer_2;
+                    if ( *record_pointer_2 == 26 )
                       break;
-                    if ( v30 == 13 && v27 + 1 < v29 && v27[1] == 10 )
+                    if ( loaded_word_4 == 13 && record_pointer_2 + 1 < state_address_2 && record_pointer_2[1] == 10 )
                     {
-                      v30 = 10;
-                      v31 = 4;
+                      loaded_word_4 = 10;
+                      selection_code_2 = 4;
                     }
                     else
                     {
-                      v31 = 2;
+                      selection_code_2 = 2;
                     }
-                    v27 = (__int16 *)((char *)v27 + v31);
-                    *v28++ = v30;
-                    if ( v27 >= v29 )
+                    record_pointer_2 = (__int16 *)((char *)record_pointer_2 + selection_code_2);
+                    *buffer_cursor++ = loaded_word_4;
+                    if ( record_pointer_2 >= state_address_2 )
                       goto LABEL_60;
                   }
-                  *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v23 + 19065401] + 8 * v7 + 56) |= 2u;
+                  *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * lookup_index + 19065401] + 8 * scaled_index + 56) |= 2u;
                 }
 LABEL_60:
-                v21 = 2 * (v28 - v26);
+                saved_translate_ansi_or_utf8_nolock_result = 2 * (buffer_cursor - record_pointer);
                 goto LABEL_39;
               }
-              v24 = sub_140252140(a1, v36, v25);
+              translate_ansi_or_utf8_nolock_result = sub_140252140(a1, record_pointer_3, shifted_bits_2);
             }
             else
             {
-              v24 = translate_ansi_or_utf8_nolock(a1, (char *)v13, v21);
+              translate_ansi_or_utf8_nolock_result = translate_ansi_or_utf8_nolock(a1, (char *)saved_malloc_base_result, saved_translate_ansi_or_utf8_nolock_result);
             }
-            v21 = v24;
+            saved_translate_ansi_or_utf8_nolock_result = translate_ansi_or_utf8_nolock_result;
           }
 LABEL_39:
-          free_base(v11);
-          return (unsigned int)v21;
+          free_base(malloc_base_result);
+          return (unsigned int)saved_translate_ansi_or_utf8_nolock_result;
         }
       }
       *(_DWORD *)crt_doserrno() = 0;
@@ -11704,8 +11704,8 @@ LABEL_39:
 //----- (0000000140252BC4) ----------------------------------------------------
 __int64            sub_140252BC4(int a1, int a2, unsigned int a3)
 {
-  __int64 v6;
-  unsigned int v7;
+  __int64 shifted_bits;
+  unsigned int unused_written_slot;
 
   if ( a1 == -2 )
   {
@@ -11715,8 +11715,8 @@ __int64            sub_140252BC4(int a1, int a2, unsigned int a3)
   }
   if ( a1 < 0
     || a1 >= g_144CBF750
-    || (v6 = (__int64)a1 >> 6,
-        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) == 0) )
+    || (shifted_bits = (__int64)a1 >> 6,
+        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) == 0) )
   {
     *(_DWORD *)crt_doserrno() = 0;
     *errno_sr() = 9;
@@ -11724,10 +11724,10 @@ __int64            sub_140252BC4(int a1, int a2, unsigned int a3)
     return 0xFFFFFFFFLL;
   }
   sub_140261068(a1);
-  v7 = -1;
-  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) != 0 )
+  unused_written_slot = -1;
+  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) != 0 )
   {
-    v7 = sub_140252DA0(a1, a2, a3);
+    unused_written_slot = sub_140252DA0(a1, a2, a3);
   }
   else
   {
@@ -11735,14 +11735,14 @@ __int64            sub_140252BC4(int a1, int a2, unsigned int a3)
     *(_DWORD *)crt_doserrno() = 0;
   }
   sub_140261150(a1);
-  return v7;
+  return unused_written_slot;
 }
 
 //----- (0000000140252CB0) ----------------------------------------------------
 __int64            lseeki64_sr(int a1, __int64 a2, unsigned int a3)
 {
-  __int64 v6;
-  __int64 v7;
+  __int64 shifted_bits;
+  __int64 unused_written_slot;
 
   if ( a1 == -2 )
   {
@@ -11752,8 +11752,8 @@ __int64            lseeki64_sr(int a1, __int64 a2, unsigned int a3)
   }
   if ( a1 < 0
     || a1 >= g_144CBF750
-    || (v6 = (__int64)a1 >> 6,
-        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) == 0) )
+    || (shifted_bits = (__int64)a1 >> 6,
+        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) == 0) )
   {
     *(_DWORD *)crt_doserrno() = 0;
     *errno_sr() = 9;
@@ -11761,10 +11761,10 @@ __int64            lseeki64_sr(int a1, __int64 a2, unsigned int a3)
     return -1;
   }
   sub_140261068(a1);
-  v7 = -1;
-  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) != 0 )
+  unused_written_slot = -1;
+  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (a1 & 0x3F) + 56) & 1) != 0 )
   {
-    v7 = lseeki64_nolock(a1, a2, a3);
+    unused_written_slot = lseeki64_nolock(a1, a2, a3);
   }
   else
   {
@@ -11772,25 +11772,25 @@ __int64            lseeki64_sr(int a1, __int64 a2, unsigned int a3)
     *(_DWORD *)crt_doserrno() = 0;
   }
   sub_140261150(a1);
-  return v7;
+  return unused_written_slot;
 }
 
 //----- (0000000140252DA0) ----------------------------------------------------
 __int64            sub_140252DA0(unsigned int a1, int a2, unsigned int a3)
 {
-  __int64 v3;
-  __int64 v5;
+  __int64 input_value;
+  __int64 input_value_2;
   __int64 osfhandle;
-  __int64 v7;
+  __int64 cached_osfhandle;
   __int64 result;
-  int v9;
+  int int64_result;
   __m128d NewFilePointer;
-  __int64 v11;
+  __int64 selection_flag;
 
-  v3 = (int)a1;
-  v5 = a2;
+  input_value = (int)a1;
+  input_value_2 = a2;
   osfhandle = get_osfhandle(a1);
-  v7 = osfhandle;
+  cached_osfhandle = osfhandle;
   if ( osfhandle == -1 )
   {
     *errno_sr() = 9;
@@ -11801,27 +11801,27 @@ __int64            sub_140252DA0(unsigned int a1, int a2, unsigned int a3)
                         0,
                         &NewFilePointer,
                         1)
-    || (v11 = 0,
-        !(unsigned int)((__int64 (           *)(__int64, __int64, __int64 *, _QWORD))SetFilePointerEx)(v7, v5, &v11, a3)) )
+    || (selection_flag = 0,
+        !(unsigned int)((__int64 (           *)(__int64, __int64, __int64 *, _QWORD))SetFilePointerEx)(cached_osfhandle, input_value_2, &selection_flag, a3)) )
   {
-    v9 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v9);
+    int64_result = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result);
     return 0xFFFFFFFFLL;
   }
-  result = v11;
-  if ( v11 > 0x7FFFFFFF )
+  result = selection_flag;
+  if ( selection_flag > 0x7FFFFFFF )
   {
     ((void (           *)(__int64, _QWORD, _QWORD, _QWORD))SetFilePointerEx)(
-      v7,
+      cached_osfhandle,
       *(_QWORD *)&SR_VEC_LANES(128, NewFilePointer, f64)[0],
       0,
       0);
     *errno_sr() = 22;
     return 0xFFFFFFFFLL;
   }
-  if ( (_DWORD)v11 == -1 )
+  if ( (_DWORD)selection_flag == -1 )
     return 0xFFFFFFFFLL;
-  *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (v3 >> 6) + 19065401] + 72 * (v3 & 0x3F) + 56) &= ~2u;
+  *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (input_value >> 6) + 19065401] + 72 * (input_value & 0x3F) + 56) &= ~2u;
   return result;
 }
 
@@ -11831,13 +11831,13 @@ __int64            sub_140252DA0(unsigned int a1, int a2, unsigned int a3)
 //----- (0000000140252E94) ----------------------------------------------------
 __int64            lseeki64_nolock(unsigned int a1, __int64 a2, unsigned int a3)
 {
-  __int64 v3;
+  __int64 input_value;
   __int64 osfhandle;
   __int64 result;
-  int v8;
+  int int64_result;
   __int64 NewFilePointer;
 
-  v3 = (int)a1;
+  input_value = (int)a1;
   osfhandle = get_osfhandle(a1);
   if ( osfhandle == -1 )
   {
@@ -11850,14 +11850,14 @@ __int64            lseeki64_nolock(unsigned int a1, __int64 a2, unsigned int a3)
                         &NewFilePointer,
                         a3) )
   {
-    v8 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v8);
+    int64_result = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result);
     return -1;
   }
   result = NewFilePointer;
   if ( NewFilePointer == -1 )
     return -1;
-  *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (v3 >> 6) + 19065401] + 72 * (v3 & 0x3F) + 56) &= ~2u;
+  *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * (input_value >> 6) + 19065401] + 72 * (input_value & 0x3F) + 56) &= ~2u;
   return result;
 }
 
@@ -11867,25 +11867,25 @@ __int64            lseeki64_nolock(unsigned int a1, __int64 a2, unsigned int a3)
 //----- (0000000140252F30) ----------------------------------------------------
 __int64            sub_140252F30(__int64 a1, int a2, unsigned int a3)
 {
-  __int64 v3;
-  int v6;
+  __int64 input_value;
+  int int64_result;
   __m128d NewFilePointer;
-  __int64 v9;
+  __int64 selection_flag;
 
-  v3 = a2;
+  input_value = a2;
   if ( !(unsigned int)((__int64 (           *)(__int64, _QWORD, __m128d *, __int64))SetFilePointerEx)(
                         a1,
                         0,
                         &NewFilePointer,
                         1)
-    || (v9 = 0,
-        !(unsigned int)((__int64 (           *)(__int64, __int64, __int64 *, _QWORD))SetFilePointerEx)(a1, v3, &v9, a3)) )
+    || (selection_flag = 0,
+        !(unsigned int)((__int64 (           *)(__int64, __int64, __int64 *, _QWORD))SetFilePointerEx)(a1, input_value, &selection_flag, a3)) )
   {
-    v6 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v6);
+    int64_result = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result);
     return 0xFFFFFFFFLL;
   }
-  if ( v9 > 0x7FFFFFFF )
+  if ( selection_flag > 0x7FFFFFFF )
   {
     ((void (           *)(__int64, _QWORD, _QWORD, _QWORD))SetFilePointerEx)(
       a1,
@@ -11895,7 +11895,7 @@ __int64            sub_140252F30(__int64 a1, int a2, unsigned int a3)
     *errno_sr() = 22;
     return 0xFFFFFFFFLL;
   }
-  return (unsigned int)v9;
+  return (unsigned int)selection_flag;
 }
 
 // 14026E0D8: invalid function type 'BOOL (__stdcall *SetFilePointerEx)(HANDLE hFile, LARGE_INTEGER liDistanceToMove, PLARGE_INTEGER lpNewFilePointer, DWORD dwMoveMethod)' has been ignored
@@ -11904,7 +11904,7 @@ __int64            sub_140252F30(__int64 a1, int a2, unsigned int a3)
 //----- (0000000140252FD0) ----------------------------------------------------
 __int64            sub_140252FD0(void *     a1, __int64 a2, unsigned int a3)
 {
-  int v3;
+  int int64_result;
   __int64 NewFilePointer;
 
   if ( (unsigned int)((__int64 (           *)(void *    , __int64, __int64 *, _QWORD))SetFilePointerEx)(
@@ -11913,8 +11913,8 @@ __int64            sub_140252FD0(void *     a1, __int64 a2, unsigned int a3)
                        &NewFilePointer,
                        a3) )
     return NewFilePointer;
-  v3 = ((__int64 (*)(void))GetLastError)();
-  crt_errno_map_os_error(v3);
+  int64_result = ((__int64 (*)(void))GetLastError)();
+  crt_errno_map_os_error(int64_result);
   return -1;
 }
 
@@ -11938,14 +11938,14 @@ __int64            lseeki64_nolock_dup2(unsigned int a1, __int64 a2, unsigned in
 //----- (0000000140253024) ----------------------------------------------------
 __int64            write_binary_nolock(__int64 a1, int a2, __int64 a3, unsigned int a4)
 {
-  __int64 v6;
-  __int64 v7;
+  __int64 integer_sum;
+  __int64 shifted_bits;
 
-  v6 = a1 + 4;
-  v7 = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a2 >> 6) + 19065401] + 72LL * (a2 & 0x3F) + 40);
+  integer_sum = a1 + 4;
+  shifted_bits = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a2 >> 6) + 19065401] + 72LL * (a2 & 0x3F) + 40);
   *(_QWORD *)a1 = 0;
   *(_DWORD *)(a1 + 8) = 0;
-  if ( !(unsigned int)((__int64 (           *)(__int64, __int64, _QWORD, __int64, _QWORD))WriteFile)(v7, a3, a4, v6, 0) )
+  if ( !(unsigned int)((__int64 (           *)(__int64, __int64, _QWORD, __int64, _QWORD))WriteFile)(shifted_bits, a3, a4, integer_sum, 0) )
     *(_DWORD *)a1 = ((__int64 (*)(void))GetLastError)();
   return a1;
 }
@@ -11956,304 +11956,304 @@ __int64            write_binary_nolock(__int64 a1, int a2, __int64 a3, unsigned 
 //----- (0000000140253090) ----------------------------------------------------
 __int64            write_double_translated_ansi_nolock(_QWORD *a1, int a2,      __m128i *a3, unsigned int a4)
 {
-  __int64 v4;
-       __m128i *v5;
-       __m128i *v6;
-  __int64 v7;
-  __int64 v8;
-       __m128i *v9;
-  int v10;
-  __int64 v11;
-  int v12;
-  __int64 v13;
-       char **v14;
-  int v15;
-  __int64 v16;
+  __int64 input_value;
+       __m128i *saved_source_buffer;
+       __m128i *packed_vector;
+  __int64 masked_bits;
+  __int64 shifted_bits;
+       __m128i *source_buffer;
+  int loaded_word;
+  __int64 cached_input_value;
+  int iteration_count;
+  __int64 shifted_bits_2;
+       char **comparison_result;
+  int iteration_count_2;
+  __int64 masked_bits_2;
   __int64 i;
-  __int64 v18;
-  int v19;
-  int v20;
-  __int64 v21;
-  __int64 v22;
-  _BYTE *v23;
+  __int64 scaled_index;
+  int masked_bits_3;
+  int byte_count;
+  __int64 element_index;
+  __int64 integer_difference;
+  _BYTE *state_address;
   __int64 j;
-  __int64 v25;
-  int v26;
-  __int64 v27;
-  __int64 v28;
-       char **v29;
-  __int64 v30;
-  char v31;
-  __int64 v32;
-  __int8 v33;
-  sr_anon_49 *v34;
-  unsigned int v35;
-  unsigned int v36;
-  int v37;
-  int v38;
-  __int8 *v39;
-  char v40;
-  __int64 v41;
-  int v42;
-  bool v43;
-  _QWORD *v44;
-  int v45;
-  int v47;
-  __int64 v48;
-  __int64 v49;
-  __int64 v50;
-  __int8 v51;
-  __int64 v52;
-  __int8 v53;
-  __int64 v54;
-  __int64 v55;
-  __int64 v56;
-  __int16 v57[2];
+  __int64 masked_bits_4;
+  int integer_difference_2;
+  __int64 scaled_index_2;
+  __int64 table_value;
+       char **comparison_result_2;
+  __int64 masked_bits_5;
+  char loaded_word_2;
+  __int64 selection_code;
+  __int8 table_value_2;
+  sr_anon_49 *saved_source_buffer_2;
+  unsigned int wide_char_to_multi_byte_result;
+  unsigned int saved_wide_char_to_multi_byte_result;
+  int cached_integer_sum;
+  int iteration_count_3;
+  __int8 *state_address_2;
+  char table_value_3;
+  __int64 masked_bits_6;
+  int integer_sum;
+  bool comparison_result_3;
+  _QWORD *record_pointer;
+  int cached_integer_sum_2;
+  int iteration_count_4;
+  __int64 element_index_2;
+  __int64 masked_bits_7;
+  __int64 shifted_bits_3;
+  __int8 table_value_4;
+  __int64 masked_bits_8;
+  __int8 table_value_5;
+  __int64 masked_bits_9;
+  __int64 unused_local;
+  __int64 packed_word_bits;
+  __int16 scratch_buffer[2];
   int DstCh;
   __int64 NumberOfBytesWritten;
-  _QWORD v60[3];
-  char v61;
-  __int64 v62;
-  unsigned int v63;
-  int v64;
-  __int64 v65;
-       __m128i *v66;
+  _QWORD scratch_buffer_2[3];
+  char unrecovered_register_value;
+  __int64 packed_word_bits_2;
+  unsigned int int64_result;
+  int saved_loaded_word;
+  __int64 integer_sum_2;
+       __m128i *packed_vector_2;
   __int64 hFile;
-  unsigned __int64 v68;
-  char *v69;
-  unsigned __int64 v70;
-       __m128i *v71;
-       __m128i *v72;
-  __int64 v73;
-  __int64 v74;
-  _QWORD *v75;
-  _BYTE v76[8];
-  _BYTE v77[8];
+  unsigned __int64 selection_flag;
+  char *byte_cursor;
+  unsigned __int64 selection_flag_2;
+       __m128i *saved_source_buffer_3;
+       __m128i *input_cursor;
+  __int64 saved_shifted_bits;
+  __int64 input_value_2;
+  _QWORD *saved_packed_word_bits;
+  _BYTE callee_output_word[8];
+  _BYTE scratch_buffer_3[8];
   char Buffer;
-  __int64 v79;
+  __int64 unused_local_2;
 
-  v4 = a2;
-  v5 = a3;
-  v75 = a1;
-  v72 = a3;
-  v6 = (     __m128i *)((char *)a3 + a4);
-  v74 = a2;
-  v66 = v6;
-  v7 = 9LL * (a2 & 0x3F);
-  v8 = (__int64)a2 >> 6;
-  hFile = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * v8 + 19065401] + 72LL * (a2 & 0x3F) + 40);
-  v63 = ((__int64 (*)(void))GetConsoleCP)();
-  crt_locale_update((_LocaleUpdate *)v60, nullptr);
-  v65 = 0;
-  v62 = 0;
-  v9 = v5;
-  v10 = *(_DWORD *)(v60[1] + 12LL);
-  v64 = v10;
-  if ( v5 >= v6 )
+  input_value = a2;
+  saved_source_buffer = a3;
+  saved_packed_word_bits = a1;
+  input_cursor = a3;
+  packed_vector = (     __m128i *)((char *)a3 + a4);
+  input_value_2 = a2;
+  packed_vector_2 = packed_vector;
+  masked_bits = 9LL * (a2 & 0x3F);
+  shifted_bits = (__int64)a2 >> 6;
+  hFile = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (a2 & 0x3F) + 40);
+  int64_result = ((__int64 (*)(void))GetConsoleCP)();
+  crt_locale_update((_LocaleUpdate *)scratch_buffer_2, nullptr);
+  integer_sum_2 = 0;
+  packed_word_bits_2 = 0;
+  source_buffer = saved_source_buffer;
+  loaded_word = *(_DWORD *)(scratch_buffer_2[1] + 12LL);
+  saved_loaded_word = loaded_word;
+  if ( saved_source_buffer >= packed_vector )
   {
 LABEL_44:
-    v43 = v61 == 0;
+    comparison_result_3 = unrecovered_register_value == 0;
     goto LABEL_45;
   }
-  v11 = v4;
-  v12 = HIDWORD(v62);
-  v13 = v11 >> 6;
-  v73 = v13;
+  cached_input_value = input_value;
+  iteration_count = HIDWORD(packed_word_bits_2);
+  shifted_bits_2 = cached_input_value >> 6;
+  saved_shifted_bits = shifted_bits_2;
   while ( 1 )
   {
-    LODWORD(v14) = 1;
-    LOBYTE(v57[0]) = SR_VEC_PTR_LANES(128, v9, i8)[0];
+    LODWORD(comparison_result) = 1;
+    LOBYTE(scratch_buffer[0]) = SR_VEC_PTR_LANES(128, source_buffer, i8)[0];
     DstCh = 0;
-    if ( v10 == 65001 )
+    if ( loaded_word == 65001 )
     {
-      v15 = 0;
-      v16 = *(_QWORD *)&dword_140404A6C[2 * v13 + 19065401];
+      iteration_count_2 = 0;
+      masked_bits_2 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits_2 + 19065401];
       for ( i = 0; i < 5; ++i )
       {
-        if ( !*(_BYTE *)(v16 + 8 * v7 + i + 62) )
+        if ( !*(_BYTE *)(masked_bits_2 + 8 * masked_bits + i + 62) )
           break;
-        ++v15;
+        ++iteration_count_2;
       }
       if ( i <= 0 )
       {
-        v27 = (char *)v6 - (char *)v9;
-        v28 = byte_140302310[SR_VEC_PTR_LANES(128, v9, u8)[0]];
-        if ( (int)v28 + 1 <= (char *)v6 - (char *)v9 )
+        scaled_index_2 = (char *)packed_vector - (char *)source_buffer;
+        table_value = byte_140302310[SR_VEC_PTR_LANES(128, source_buffer, u8)[0]];
+        if ( (int)table_value + 1 <= (char *)packed_vector - (char *)source_buffer )
         {
-          v70 = 0;
-          v71 = v9;
-          v29 = (     char **)((unsigned int)((_DWORD)v28 == 3) + 1);
-          if ( __crt_mbstring____mbsrtowcs_utf8((sr_anon_115 *)&DstCh, (char **)&v71, v29, (unsigned int *)&v70) == -1 )
+          selection_flag_2 = 0;
+          saved_source_buffer_3 = source_buffer;
+          comparison_result_2 = (     char **)((unsigned int)((_DWORD)table_value == 3) + 1);
+          if ( __crt_mbstring____mbsrtowcs_utf8((sr_anon_115 *)&DstCh, (char **)&saved_source_buffer_3, comparison_result_2, (unsigned int *)&selection_flag_2) == -1 )
             goto LABEL_54;
-          v5 = (     __m128i *)((char *)v9 + v28);
-          LODWORD(v14) = (_DWORD)v29;
+          saved_source_buffer = (     __m128i *)((char *)source_buffer + table_value);
+          LODWORD(comparison_result) = (_DWORD)comparison_result_2;
           goto LABEL_29;
         }
-        v47 = 0;
-        if ( v27 > 0 )
+        iteration_count_4 = 0;
+        if ( scaled_index_2 > 0 )
         {
-          v48 = 0;
-          v49 = v74 & 0x3F;
-          v50 = v74 >> 6;
+          element_index_2 = 0;
+          masked_bits_7 = input_value_2 & 0x3F;
+          shifted_bits_3 = input_value_2 >> 6;
           do
           {
-            v51 = SR_VEC_PTR_LANES(128, v9, i8)[v48];
-            ++v47;
-            v52 = v48 + *(_QWORD *)&dword_140404A6C[2 * v50 + 19065401];
-            ++v48;
-            *(_BYTE *)(v52 + 72 * v49 + 62) = v51;
+            table_value_4 = SR_VEC_PTR_LANES(128, source_buffer, i8)[element_index_2];
+            ++iteration_count_4;
+            masked_bits_8 = element_index_2 + *(_QWORD *)&dword_140404A6C[2 * shifted_bits_3 + 19065401];
+            ++element_index_2;
+            *(_BYTE *)(masked_bits_8 + 72 * masked_bits_7 + 62) = table_value_4;
           }
-          while ( v47 < v27 );
+          while ( iteration_count_4 < scaled_index_2 );
         }
-        v42 = v27 + v12;
+        integer_sum = scaled_index_2 + iteration_count;
       }
       else
       {
-        v18 = (char *)v66 - (char *)v9;
-        v19 = byte_140302310[*(unsigned __int8 *)(*(_QWORD *)&dword_140404A6C[2 * v8 + 19065401] + 8 * v7 + 62)] + 1;
-        v20 = v19 - v15;
-        if ( v19 - v15 <= (char *)v66 - (char *)v9 )
+        scaled_index = (char *)packed_vector_2 - (char *)source_buffer;
+        masked_bits_3 = byte_140302310[*(unsigned __int8 *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * masked_bits + 62)] + 1;
+        byte_count = masked_bits_3 - iteration_count_2;
+        if ( masked_bits_3 - iteration_count_2 <= (char *)packed_vector_2 - (char *)source_buffer )
         {
-          v21 = 0;
-          v22 = v16 - (_QWORD)v76;
+          element_index = 0;
+          integer_difference = masked_bits_2 - (_QWORD)callee_output_word;
           do
           {
-            v23 = &v76[v21++];
-            *v23 = v23[8 * v7 + 62 + v22];
+            state_address = &callee_output_word[element_index++];
+            *state_address = state_address[8 * masked_bits + 62 + integer_difference];
           }
-          while ( v21 < i );
-          if ( v20 > 0 )
-            crt_memcpy((__m128i *)&v76[i], v9, v20);
+          while ( element_index < i );
+          if ( byte_count > 0 )
+            crt_memcpy((__m128i *)&callee_output_word[i], source_buffer, byte_count);
           for ( j = 0; j < i; ++j )
           {
-            v25 = j + *(_QWORD *)&dword_140404A6C[2 * v8 + 19065401];
-            *(_BYTE *)(v25 + 8 * v7 + 62) = 0;
+            masked_bits_4 = j + *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+            *(_BYTE *)(masked_bits_4 + 8 * masked_bits + 62) = 0;
           }
-          v68 = 0;
-          v69 = v76;
-          v14 = (     char **)((unsigned int)(v19 == 4) + 1);
-          if ( __crt_mbstring____mbsrtowcs_utf8((sr_anon_115 *)&DstCh, &v69, v14, (unsigned int *)&v68) == -1 )
+          selection_flag = 0;
+          byte_cursor = callee_output_word;
+          comparison_result = (     char **)((unsigned int)(masked_bits_3 == 4) + 1);
+          if ( __crt_mbstring____mbsrtowcs_utf8((sr_anon_115 *)&DstCh, &byte_cursor, comparison_result, (unsigned int *)&selection_flag) == -1 )
             goto LABEL_54;
-          v26 = v20 - 1;
-          v6 = v66;
-          v5 = (     __m128i *)((char *)v9 + v26);
+          integer_difference_2 = byte_count - 1;
+          packed_vector = packed_vector_2;
+          saved_source_buffer = (     __m128i *)((char *)source_buffer + integer_difference_2);
           goto LABEL_29;
         }
-        v38 = 0;
-        if ( v18 > 0 )
+        iteration_count_3 = 0;
+        if ( scaled_index > 0 )
         {
-          v39 = &SR_VEC_PTR_LANES(128, v9, i8)[-i];
+          state_address_2 = &SR_VEC_PTR_LANES(128, source_buffer, i8)[-i];
           do
           {
-            v40 = v39[i];
-            ++v38;
-            v41 = i + *(_QWORD *)&dword_140404A6C[2 * v8 + 19065401];
+            table_value_3 = state_address_2[i];
+            ++iteration_count_3;
+            masked_bits_6 = i + *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
             ++i;
-            *(_BYTE *)(v41 + 8 * v7 + 62) = v40;
+            *(_BYTE *)(masked_bits_6 + 8 * masked_bits + 62) = table_value_3;
           }
-          while ( v38 < v18 );
-          v12 = HIDWORD(v62);
+          while ( iteration_count_3 < scaled_index );
+          iteration_count = HIDWORD(packed_word_bits_2);
         }
-        v42 = v18 + v12;
+        integer_sum = scaled_index + iteration_count;
       }
-      HIDWORD(v62) = v42;
+      HIDWORD(packed_word_bits_2) = integer_sum;
       goto LABEL_44;
     }
-    v30 = *(_QWORD *)&dword_140404A6C[2 * v8 + 19065401];
-    v31 = *(_BYTE *)(v30 + 8 * v7 + 61);
-    if ( (v31 & 4) != 0 )
+    masked_bits_5 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+    loaded_word_2 = *(_BYTE *)(masked_bits_5 + 8 * masked_bits + 61);
+    if ( (loaded_word_2 & 4) != 0 )
     {
-      v77[0] = *(_BYTE *)(v30 + 8 * v7 + 62);
-      v32 = 2;
-      v33 = SR_VEC_PTR_LANES(128, v9, i8)[0];
-      *(_BYTE *)(v30 + 8 * v7 + 61) = v31 & 0xFB;
-      v34 = (sr_anon_49 *)v77;
-      v77[1] = v33;
+      scratch_buffer_3[0] = *(_BYTE *)(masked_bits_5 + 8 * masked_bits + 62);
+      selection_code = 2;
+      table_value_2 = SR_VEC_PTR_LANES(128, source_buffer, i8)[0];
+      *(_BYTE *)(masked_bits_5 + 8 * masked_bits + 61) = loaded_word_2 & 0xFB;
+      saved_source_buffer_2 = (sr_anon_49 *)scratch_buffer_3;
+      scratch_buffer_3[1] = table_value_2;
     }
     else
     {
-      if ( (sub_140256DC0()[SR_VEC_PTR_LANES(128, v9, u8)[0]] & 0x8000u) == 0 )
+      if ( (sub_140256DC0()[SR_VEC_PTR_LANES(128, source_buffer, u8)[0]] & 0x8000u) == 0 )
       {
-        v32 = 1;
+        selection_code = 1;
       }
       else
       {
-        v5 = (     __m128i *)((char *)v5 + 1);
-        if ( v5 >= v6 )
+        saved_source_buffer = (     __m128i *)((char *)saved_source_buffer + 1);
+        if ( saved_source_buffer >= packed_vector )
         {
-          v53 = SR_VEC_PTR_LANES(128, v9, i8)[0];
-          v54 = *(_QWORD *)&dword_140404A6C[2 * v8 + 19065401];
-          HIDWORD(v62) = v12 + 1;
-          *(_BYTE *)(v54 + 8 * v7 + 62) = v53;
-          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v8 + 19065401] + 8 * v7 + 61) |= 4u;
-          v43 = v61 == 0;
+          table_value_5 = SR_VEC_PTR_LANES(128, source_buffer, i8)[0];
+          masked_bits_9 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+          HIDWORD(packed_word_bits_2) = iteration_count + 1;
+          *(_BYTE *)(masked_bits_9 + 8 * masked_bits + 62) = table_value_5;
+          *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * masked_bits + 61) |= 4u;
+          comparison_result_3 = unrecovered_register_value == 0;
           goto LABEL_45;
         }
-        v32 = 2;
+        selection_code = 2;
       }
-      v34 = (sr_anon_49 *)v9;
+      saved_source_buffer_2 = (sr_anon_49 *)source_buffer;
     }
-    if ( (unsigned int)sub_140254140((sr_anon_115 *)&DstCh, v34, (char *)v32) == -1 )
+    if ( (unsigned int)sub_140254140((sr_anon_115 *)&DstCh, saved_source_buffer_2, (char *)selection_code) == -1 )
       goto LABEL_54;
 LABEL_29:
-    v9 = (     __m128i *)&SR_VEC_PTR_LANES(128, v5, i8)[1];
-    LODWORD(v56) = 5;
-    v35 = crt_wide_char_to_multi_byte(v63, 0, (__int64)&DstCh, (unsigned int)v14, (__int64)&Buffer, v56, 0, 0);
-    v36 = v35;
-    if ( !v35 )
+    source_buffer = (     __m128i *)&SR_VEC_PTR_LANES(128, saved_source_buffer, i8)[1];
+    LODWORD(packed_word_bits) = 5;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(int64_result, 0, (__int64)&DstCh, (unsigned int)comparison_result, (__int64)&Buffer, packed_word_bits, 0, 0);
+    saved_wide_char_to_multi_byte_result = wide_char_to_multi_byte_result;
+    if ( !wide_char_to_multi_byte_result )
       goto LABEL_56;
     if ( !(unsigned int)((__int64 (           *)(__int64, char *, _QWORD, __int64 *, _QWORD))WriteFile)(
                           hFile,
                           &Buffer,
-                          v35,
+                          wide_char_to_multi_byte_result,
                           &NumberOfBytesWritten,
                           0) )
     {
-      LODWORD(v62) = ((__int64 (*)(void))GetLastError)();
+      LODWORD(packed_word_bits_2) = ((__int64 (*)(void))GetLastError)();
 LABEL_56:
-      v43 = v61 == 0;
+      comparison_result_3 = unrecovered_register_value == 0;
       goto LABEL_45;
     }
-    v37 = v65;
-    v12 = (_DWORD)v9 - (_DWORD)v72 + v65;
-    HIDWORD(v62) = v12;
-    if ( (unsigned int)NumberOfBytesWritten < v36 )
+    cached_integer_sum = integer_sum_2;
+    iteration_count = (_DWORD)source_buffer - (_DWORD)input_cursor + integer_sum_2;
+    HIDWORD(packed_word_bits_2) = iteration_count;
+    if ( (unsigned int)NumberOfBytesWritten < saved_wide_char_to_multi_byte_result )
       goto LABEL_44;
-    if ( LOBYTE(v57[0]) == 10 )
+    if ( LOBYTE(scratch_buffer[0]) == 10 )
       break;
 LABEL_36:
-    v5 = v9;
-    if ( v9 >= v6 )
+    saved_source_buffer = source_buffer;
+    if ( source_buffer >= packed_vector )
       goto LABEL_44;
-    v13 = v73;
-    v10 = v64;
+    shifted_bits_2 = saved_shifted_bits;
+    loaded_word = saved_loaded_word;
   }
-  v57[0] = 13;
+  scratch_buffer[0] = 13;
   if ( (unsigned int)((__int64 (           *)(__int64, __int16 *, __int64, __int64 *, _QWORD))WriteFile)(
                        hFile,
-                       v57,
+                       scratch_buffer,
                        1,
                        &NumberOfBytesWritten,
                        0) )
   {
     if ( !(_DWORD)NumberOfBytesWritten )
       goto LABEL_44;
-    ++v12;
-    v65 = (unsigned int)(v37 + 1);
-    HIDWORD(v62) = v12;
+    ++iteration_count;
+    integer_sum_2 = (unsigned int)(cached_integer_sum + 1);
+    HIDWORD(packed_word_bits_2) = iteration_count;
     goto LABEL_36;
   }
-  LODWORD(v62) = ((__int64 (*)(void))GetLastError)();
+  LODWORD(packed_word_bits_2) = ((__int64 (*)(void))GetLastError)();
 LABEL_54:
-  v43 = v61 == 0;
+  comparison_result_3 = unrecovered_register_value == 0;
 LABEL_45:
-  if ( !v43 )
-    *(_DWORD *)(v60[0] + 936LL) &= ~2u;
-  v44 = v75;
-  v45 = v65;
-  *v75 = v62;
-  *((_DWORD *)v44 + 2) = v45;
-  return v75; /* 0x140253480: mov rax, qword ptr [rbp - 1] */
+  if ( !comparison_result_3 )
+    *(_DWORD *)(scratch_buffer_2[0] + 936LL) &= ~2u;
+  record_pointer = saved_packed_word_bits;
+  cached_integer_sum_2 = integer_sum_2;
+  *saved_packed_word_bits = packed_word_bits_2;
+  *((_DWORD *)record_pointer + 2) = cached_integer_sum_2;
+  return saved_packed_word_bits; /* 0x140253480: mov rax, qword ptr [rbp - 1] */
 }
 
 // 14026E0C0: invalid function type 'UINT (__stdcall *GetConsoleCP)()' has been ignored
@@ -12265,30 +12265,30 @@ LABEL_45:
 //----- (0000000140253560) ----------------------------------------------------
 __int64            sub_140253560(__int64 a1, unsigned __int16 *a2, unsigned int a3)
 {
-  unsigned __int16 *v3;
-  unsigned __int16 *v4;
-  unsigned __int16 v6;
+  unsigned __int16 *record_pointer;
+  unsigned __int16 *buffer_cursor;
+  unsigned __int16 loaded_word;
 
-  v3 = (unsigned __int16 *)((char *)a2 + a3);
+  record_pointer = (unsigned __int16 *)((char *)a2 + a3);
   *(_QWORD *)a1 = 0;
   *(_DWORD *)(a1 + 8) = 0;
-  v4 = a2;
-  if ( a2 < v3 )
+  buffer_cursor = a2;
+  if ( a2 < record_pointer )
   {
     while ( 1 )
     {
-      v6 = *v4;
-      if ( (unsigned __int16)putwch_nolock(*v4) != v6 )
+      loaded_word = *buffer_cursor;
+      if ( (unsigned __int16)putwch_nolock(*buffer_cursor) != loaded_word )
         break;
       *(_DWORD *)(a1 + 4) += 2;
-      if ( v6 == 10 )
+      if ( loaded_word == 10 )
       {
         if ( (unsigned __int16)putwch_nolock(13) != 13 )
           break;
         ++*(_DWORD *)(a1 + 4);
         ++*(_DWORD *)(a1 + 8);
       }
-      if ( ++v4 >= v3 )
+      if ( ++buffer_cursor >= record_pointer )
         return a1;
     }
     *(_DWORD *)a1 = ((__int64 (*)(void))GetLastError)();
@@ -12301,23 +12301,23 @@ __int64            sub_140253560(__int64 a1, unsigned __int16 *a2, unsigned int 
 //----- (00000001402535F8) ----------------------------------------------------
 bool            write_requires_double_translation_nolock(int a1)
 {
-  __int64 v1;
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
+  __int64 input_value;
+  __int64 masked_bits;
+  __int64 shifted_bits;
+  __int64 scaled_index;
   bool result;
   __int64 Mode;
 
-  v1 = a1;
+  input_value = a1;
   result = isatty(a1)
-        && (v2 = v1 & 0x3F,
-            v3 = v1 >> 6,
-            v4 = 9 * v2,
-            *(char *)(*(_QWORD *)&dword_140404A6C[2 * v3 + 19065401] + 72 * v2 + 56) < 0)
+        && (masked_bits = input_value & 0x3F,
+            shifted_bits = input_value >> 6,
+            scaled_index = 9 * masked_bits,
+            *(char *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72 * masked_bits + 56) < 0)
         && (*(_QWORD *)(*(_QWORD *)(sub_140255A70() + 144) + 312LL)
-         || *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v3 + 19065401] + 8 * v4 + 57))
+         || *(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 57))
         && (unsigned int)((__int64 (           *)(_QWORD, __int64 *))GetConsoleMode)(
-                           *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * v3 + 19065401] + 8 * v4 + 40),
+                           *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * scaled_index + 40),
                            &Mode);
   return result;
 }
@@ -12327,53 +12327,53 @@ bool            write_requires_double_translation_nolock(int a1)
 //----- (0000000140253688) ----------------------------------------------------
 __int64 write_text_ansi_nolock(__int64 a1, int a2, char *a3, int a4, ...)
 {
-  char *v5;
-  char *v6;
-  __int64 v7;
-  char *v8;
-  char v9;
-  unsigned int v10;
-  unsigned int v11;
-  __int64 v13;
-  unsigned int v14[4];
-  _BYTE v15[5119];
-  char v16;
-  __int64 v17;
+  char *state_address;
+  char *text_cursor;
+  __int64 shifted_bits;
+  char *text_cursor_2;
+  char input_byte;
+  unsigned int integer_difference;
+  unsigned int table_value;
+  __int64 unused_local;
+  unsigned int scratch_buffer[4];
+  _BYTE scratch_buffer_2[5119];
+  char callee_output_word;
+  __int64 unused_local_2;
 
-  v5 = &a3[a4];
-  v6 = a3;
-  v7 = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a2 >> 6) + 19065401] + 72LL * (a2 & 0x3F) + 40);
+  state_address = &a3[a4];
+  text_cursor = a3;
+  shifted_bits = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a2 >> 6) + 19065401] + 72LL * (a2 & 0x3F) + 40);
   *(_QWORD *)a1 = 0;
   *(_DWORD *)(a1 + 8) = 0;
-  if ( a3 < v5 )
+  if ( a3 < state_address )
   {
     while ( 1 )
     {
-      v8 = v15;
+      text_cursor_2 = scratch_buffer_2;
       do
       {
-        if ( v6 >= v5 )
+        if ( text_cursor >= state_address )
           break;
-        v9 = *v6++;
-        if ( v9 == 10 )
+        input_byte = *text_cursor++;
+        if ( input_byte == 10 )
         {
           ++*(_DWORD *)(a1 + 8);
-          *v8++ = 13;
+          *text_cursor_2++ = 13;
         }
-        *v8++ = v9;
+        *text_cursor_2++ = input_byte;
       }
-      while ( v8 < &v16 );
-      v10 = (_DWORD)v8 - (unsigned int)v15;
+      while ( text_cursor_2 < &callee_output_word );
+      integer_difference = (_DWORD)text_cursor_2 - (unsigned int)scratch_buffer_2;
       if ( !(unsigned int)((__int64 (           *)(__int64, _BYTE *, _QWORD, unsigned int *, _QWORD))WriteFile)(
-                            v7,
-                            v15,
-                            v10,
-                            v14,
+                            shifted_bits,
+                            scratch_buffer_2,
+                            integer_difference,
+                            scratch_buffer,
                             0) )
         break;
-      v11 = v14[0];
-      *(_DWORD *)(a1 + 4) += v14[0];
-      if ( v11 < v10 || v6 >= v5 )
+      table_value = scratch_buffer[0];
+      *(_DWORD *)(a1 + 4) += scratch_buffer[0];
+      if ( table_value < integer_difference || text_cursor >= state_address )
         return a1; /* 0x14025375F: mov rax, rdi */
     }
     *(_DWORD *)a1 = ((__int64 (*)(void))GetLastError)();
@@ -12387,55 +12387,55 @@ __int64 write_text_ansi_nolock(__int64 a1, int a2, char *a3, int a4, ...)
 //----- (000000014025378C) ----------------------------------------------------
 __int64 write_text_utf16le_nolock(__int64 a1, int a2, __int16 *a3, unsigned int a4, ...)
 {
-  __int16 *v5;
-  __int16 *v6;
-  __int64 v7;
-  char *v8;
-  __int16 v9;
-  unsigned int v10;
-  unsigned int v11;
-  __int64 v13;
-  _DWORD v14[4];
-  _BYTE v15[5118];
-  __int16 v16;
-  __int64 v17;
+  __int16 *record_pointer;
+  __int16 *buffer_cursor;
+  __int64 shifted_bits;
+  char *running_total;
+  __int16 loaded_word;
+  unsigned int shifted_bits_2;
+  unsigned int table_value;
+  __int64 unused_local;
+  _DWORD scratch_buffer[4];
+  _BYTE scratch_buffer_2[5118];
+  __int16 callee_output_word;
+  __int64 unused_local_2;
 
-  v5 = (__int16 *)((char *)a3 + a4);
-  v6 = a3;
-  v7 = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a2 >> 6) + 19065401] + 72LL * (a2 & 0x3F) + 40);
+  record_pointer = (__int16 *)((char *)a3 + a4);
+  buffer_cursor = a3;
+  shifted_bits = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a2 >> 6) + 19065401] + 72LL * (a2 & 0x3F) + 40);
   *(_QWORD *)a1 = 0;
   *(_DWORD *)(a1 + 8) = 0;
-  if ( a3 < v5 )
+  if ( a3 < record_pointer )
   {
     while ( 1 )
     {
-      v8 = v15;
+      running_total = scratch_buffer_2;
       do
       {
-        if ( v6 >= v5 )
+        if ( buffer_cursor >= record_pointer )
           break;
-        v9 = *v6++;
-        if ( v9 == 10 )
+        loaded_word = *buffer_cursor++;
+        if ( loaded_word == 10 )
         {
           *(_DWORD *)(a1 + 8) += 2;
-          *(_WORD *)v8 = 13;
-          v8 += 2;
+          *(_WORD *)running_total = 13;
+          running_total += 2;
         }
-        *(_WORD *)v8 = v9;
-        v8 += 2;
+        *(_WORD *)running_total = loaded_word;
+        running_total += 2;
       }
-      while ( v8 < (char *)&v16 );
-      v10 = 2 * (((intptr_t)((uintptr_t)(v8) - (uintptr_t)(v15))) >> 1);
+      while ( running_total < (char *)&callee_output_word );
+      shifted_bits_2 = 2 * (((intptr_t)((uintptr_t)(running_total) - (uintptr_t)(scratch_buffer_2))) >> 1);
       if ( !(unsigned int)((__int64 (           *)(__int64, _BYTE *, _QWORD, _DWORD *, _QWORD))WriteFile)(
-                            v7,
-                            v15,
-                            v10,
-                            v14,
+                            shifted_bits,
+                            scratch_buffer_2,
+                            shifted_bits_2,
+                            scratch_buffer,
                             0) )
         break;
-      v11 = v14[0];
-      *(_DWORD *)(a1 + 4) += v14[0];
-      if ( v11 < v10 || v6 >= v5 )
+      table_value = scratch_buffer[0];
+      *(_DWORD *)(a1 + 4) += scratch_buffer[0];
+      if ( table_value < shifted_bits_2 || buffer_cursor >= record_pointer )
         return a1; /* 0x14025387A: mov rax, rdi */
     }
     *(_DWORD *)a1 = ((__int64 (*)(void))GetLastError)();
@@ -12449,65 +12449,65 @@ __int64 write_text_utf16le_nolock(__int64 a1, int a2, __int16 *a3, unsigned int 
 //----- (00000001402538A8) ----------------------------------------------------
 __int64            write_text_utf8_nolock(__int64 a1, int a2, __int16 *a3, unsigned int a4)
 {
-  __int16 *v5;
-  int v6;
-  __int16 *v7;
-  __int64 v8;
-  bool v9;
-  char *v10;
-  __int16 v11;
-  unsigned int v12;
-  unsigned int v13;
-  __int64 v15;
-  __int64 v16;
-  _DWORD v17[4];
-  _BYTE v18[1704];
-  char v19;
-  _BYTE v20[3424];
-  __int64 v21;
+  __int16 *record_pointer;
+  int input_value;
+  __int16 *buffer_cursor;
+  __int64 shifted_bits;
+  bool comparison_result;
+  char *running_total;
+  __int16 loaded_word;
+  unsigned int wide_char_to_multi_byte_result;
+  unsigned int running_total_2;
+  __int64 unused_local;
+  __int64 packed_word_bits;
+  _DWORD scratch_buffer[4];
+  _BYTE scratch_buffer_2[1704];
+  char callee_output_word;
+  _BYTE callee_output_word_2[3424];
+  __int64 unused_local_2;
 
-  v5 = (__int16 *)((char *)a3 + a4);
-  v6 = (int)a3;
-  v7 = a3;
-  v8 = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a2 >> 6) + 19065401] + 72LL * (a2 & 0x3F) + 40);
+  record_pointer = (__int16 *)((char *)a3 + a4);
+  input_value = (int)a3;
+  buffer_cursor = a3;
+  shifted_bits = *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * ((__int64)a2 >> 6) + 19065401] + 72LL * (a2 & 0x3F) + 40);
   *(_QWORD *)a1 = 0;
-  v9 = a3 < v5;
+  comparison_result = a3 < record_pointer;
   *(_DWORD *)(a1 + 8) = 0;
 LABEL_2:
-  if ( v9 )
+  if ( comparison_result )
   {
-    v10 = v18;
+    running_total = scratch_buffer_2;
     do
     {
-      if ( v7 >= v5 )
+      if ( buffer_cursor >= record_pointer )
         break;
-      v11 = *v7++;
-      if ( v11 == 10 )
+      loaded_word = *buffer_cursor++;
+      if ( loaded_word == 10 )
       {
-        *(_WORD *)v10 = 13;
-        v10 += 2;
+        *(_WORD *)running_total = 13;
+        running_total += 2;
       }
-      *(_WORD *)v10 = v11;
-      v10 += 2;
+      *(_WORD *)running_total = loaded_word;
+      running_total += 2;
     }
-    while ( v10 < &v19 );
-    LODWORD(v16) = 3413;
-    v12 = crt_wide_char_to_multi_byte(0xFDE9u, 0, (__int64)v18, (unsigned int)(((intptr_t)((uintptr_t)(v10) - (uintptr_t)(v18))) >> 1), (__int64)v20, v16, 0, 0);
-    if ( v12 )
+    while ( running_total < &callee_output_word );
+    LODWORD(packed_word_bits) = 3413;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(0xFDE9u, 0, (__int64)scratch_buffer_2, (unsigned int)(((intptr_t)((uintptr_t)(running_total) - (uintptr_t)(scratch_buffer_2))) >> 1), (__int64)callee_output_word_2, packed_word_bits, 0, 0);
+    if ( wide_char_to_multi_byte_result )
     {
-      v13 = 0;
+      running_total_2 = 0;
       while ( (unsigned int)((__int64 (           *)(__int64, _BYTE *, _QWORD, _DWORD *, _QWORD))WriteFile)(
-                              v8,
-                              &v20[v13],
-                              v12 - v13,
-                              v17,
+                              shifted_bits,
+                              &callee_output_word_2[running_total_2],
+                              wide_char_to_multi_byte_result - running_total_2,
+                              scratch_buffer,
                               0) )
       {
-        v13 += v17[0];
-        if ( v13 >= v12 )
+        running_total_2 += scratch_buffer[0];
+        if ( running_total_2 >= wide_char_to_multi_byte_result )
         {
-          *(_DWORD *)(a1 + 4) = (_DWORD)v7 - v6;
-          v9 = v7 < v5;
+          *(_DWORD *)(a1 + 4) = (_DWORD)buffer_cursor - input_value;
+          comparison_result = buffer_cursor < record_pointer;
           goto LABEL_2;
         }
       }
@@ -12523,8 +12523,8 @@ LABEL_2:
 //----- (0000000140253A18) ----------------------------------------------------
 int         write(int FileHandle,      void *Buf, unsigned int MaxCharCount)
 {
-  __int64 v6;
-  int v7;
+  __int64 shifted_bits;
+  int unused_written_slot;
 
   if ( FileHandle == -2 )
   {
@@ -12534,8 +12534,8 @@ int         write(int FileHandle,      void *Buf, unsigned int MaxCharCount)
   }
   if ( FileHandle < 0
     || FileHandle >= g_144CBF750
-    || (v6 = (__int64)FileHandle >> 6,
-        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) == 0) )
+    || (shifted_bits = (__int64)FileHandle >> 6,
+        (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) == 0) )
   {
     *(_DWORD *)crt_doserrno() = 0;
     *errno_sr() = 9;
@@ -12543,10 +12543,10 @@ int         write(int FileHandle,      void *Buf, unsigned int MaxCharCount)
     return -1;
   }
   sub_140261068(FileHandle);
-  v7 = -1;
-  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) != 0 )
+  unused_written_slot = -1;
+  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (FileHandle & 0x3F) + 56) & 1) != 0 )
   {
-    v7 = sub_140253B04(FileHandle, (__m128i *)Buf, MaxCharCount);
+    unused_written_slot = sub_140253B04(FileHandle, (__m128i *)Buf, MaxCharCount);
   }
   else
   {
@@ -12554,40 +12554,40 @@ int         write(int FileHandle,      void *Buf, unsigned int MaxCharCount)
     *(_DWORD *)crt_doserrno() = 0;
   }
   sub_140261150(FileHandle);
-  return v7;
+  return unused_written_slot;
 }
 
 //----- (0000000140253B04) ----------------------------------------------------
 __int64            sub_140253B04(signed int a1, __m128i *a2, unsigned int a3)
 {
-  __int64 v3;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  char v10;
-  int v11;
-  int v12;
-  __m128i *v13;
-  __m128i *v14;
-  int v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
+  __int64 input_value;
+  __int64 shifted_bits;
+  __int64 masked_bits;
+  __int64 masked_bits_2;
+  char masked_bits_3;
+  int saved_iteration_count;
+  int iteration_count;
+  __m128i *packed_vector;
+  __m128i *input_cursor;
+  int iteration_count_2;
+  __int64 named_call_result;
+  __int64 cached_numberofbyteswritten;
+  __int64 masked_bits_4;
+  __int64 masked_bits_5;
   __int64 NumberOfBytesWritten;
-  int v21;
-  __int64 v22;
+  int selection_flag;
+  __int64 saved_cached_numberofbyteswritten;
   __int128 Mode;
 
-  v3 = a3;
+  input_value = a3;
   if ( !a3 )
     return 0;
   if ( !a2
-    || (v7 = (__int64)a1 >> 6,
-        v8 = 9LL * (a1 & 0x3F),
-        v9 = *(_QWORD *)&dword_140404A6C[2 * v7 + 19065401],
-        v10 = *(_BYTE *)(v9 + 72LL * (a1 & 0x3F) + 57),
-        (unsigned __int8)(v10 - 1) <= 1u)
+    || (shifted_bits = (__int64)a1 >> 6,
+        masked_bits = 9LL * (a1 & 0x3F),
+        masked_bits_2 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401],
+        masked_bits_3 = *(_BYTE *)(masked_bits_2 + 72LL * (a1 & 0x3F) + 57),
+        (unsigned __int8)(masked_bits_3 - 1) <= 1u)
     && (a3 & 1) != 0 )
   {
     *(_DWORD *)crt_doserrno() = 0;
@@ -12595,115 +12595,115 @@ __int64            sub_140253B04(signed int a1, __m128i *a2, unsigned int a3)
     crt_invalid_parameter_noinfo();
     return 0xFFFFFFFFLL;
   }
-  if ( (*(_BYTE *)(v9 + 72LL * (a1 & 0x3F) + 56) & 0x20) != 0 )
+  if ( (*(_BYTE *)(masked_bits_2 + 72LL * (a1 & 0x3F) + 56) & 0x20) != 0 )
     lseeki64_nolock(a1, 0, 2u);
-  v11 = 0;
-  v22 = 0;
+  saved_iteration_count = 0;
+  saved_cached_numberofbyteswritten = 0;
   if ( !isatty(a1)
-    || *(char *)(*(_QWORD *)&dword_140404A6C[2 * v7 + 19065401] + 72LL * (a1 & 0x3F) + 56) >= 0
+    || *(char *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (a1 & 0x3F) + 56) >= 0
     || !*(_QWORD *)(*(_QWORD *)(sub_140255A70() + 144) + 312LL)
-    && !*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v7 + 19065401] + 72LL * (a1 & 0x3F) + 57)
+    && !*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (a1 & 0x3F) + 57)
     || !(unsigned int)((__int64 (           *)(_QWORD, __int128 *))GetConsoleMode)(
-                        *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * v7 + 19065401] + 72LL * (a1 & 0x3F) + 40),
+                        *(_QWORD *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 72LL * (a1 & 0x3F) + 40),
                         &Mode) )
   {
-    v18 = *(_QWORD *)&dword_140404A6C[2 * v7 + 19065401];
-    if ( *(char *)(v18 + 72LL * (a1 & 0x3F) + 56) >= 0 )
+    masked_bits_4 = *(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401];
+    if ( *(char *)(masked_bits_4 + 72LL * (a1 & 0x3F) + 56) >= 0 )
     {
-      v19 = *(_QWORD *)(v18 + 72LL * (a1 & 0x3F) + 40);
+      masked_bits_5 = *(_QWORD *)(masked_bits_4 + 72LL * (a1 & 0x3F) + 40);
       NumberOfBytesWritten = 0;
-      v21 = 0;
+      selection_flag = 0;
       if ( !(unsigned int)((__int64 (           *)(__int64, __m128i *, _QWORD, char *, _QWORD))WriteFile)(
-                            v19,
+                            masked_bits_5,
                             a2,
-                            (unsigned int)v3,
+                            (unsigned int)input_value,
                             (char *)&NumberOfBytesWritten + 4,
                             0) )
         LODWORD(NumberOfBytesWritten) = ((__int64 (*)(void))GetLastError)();
-      v11 = v21;
+      saved_iteration_count = selection_flag;
 LABEL_38:
-      v17 = NumberOfBytesWritten;
+      cached_numberofbyteswritten = NumberOfBytesWritten;
       goto LABEL_39;
     }
-    if ( v10 )
+    if ( masked_bits_3 )
     {
-      if ( v10 == 1 )
+      if ( masked_bits_3 == 1 )
       {
-        v16 = write_text_utf8_nolock((__int64)&NumberOfBytesWritten, a1, SR_VEC_PTR_LANES(128, a2, i16), v3);
+        named_call_result = write_text_utf8_nolock((__int64)&NumberOfBytesWritten, a1, SR_VEC_PTR_LANES(128, a2, i16), input_value);
       }
       else
       {
-        if ( v10 != 2 )
+        if ( masked_bits_3 != 2 )
           goto LABEL_40;
-        v16 = write_text_utf16le_nolock((__int64)&NumberOfBytesWritten, a1, SR_VEC_PTR_LANES(128, a2, i16), v3);
+        named_call_result = write_text_utf16le_nolock((__int64)&NumberOfBytesWritten, a1, SR_VEC_PTR_LANES(128, a2, i16), input_value);
       }
     }
     else
     {
-      v16 = write_text_ansi_nolock((__int64)&NumberOfBytesWritten, a1, SR_VEC_PTR_LANES(128, a2, i8), v3);
+      named_call_result = write_text_ansi_nolock((__int64)&NumberOfBytesWritten, a1, SR_VEC_PTR_LANES(128, a2, i8), input_value);
     }
 LABEL_27:
-    v17 = *(_QWORD *)v16;
-    v11 = *(_DWORD *)(v16 + 8);
+    cached_numberofbyteswritten = *(_QWORD *)named_call_result;
+    saved_iteration_count = *(_DWORD *)(named_call_result + 8);
 LABEL_39:
-    v22 = v17;
+    saved_cached_numberofbyteswritten = cached_numberofbyteswritten;
     goto LABEL_40;
   }
-  if ( !v10 )
+  if ( !masked_bits_3 )
   {
-    v16 = write_double_translated_ansi_nolock(&NumberOfBytesWritten, a1, a2, v3);
+    named_call_result = write_double_translated_ansi_nolock(&NumberOfBytesWritten, a1, a2, input_value);
     goto LABEL_27;
   }
-  if ( (unsigned __int8)(v10 - 1) <= 1u )
+  if ( (unsigned __int8)(masked_bits_3 - 1) <= 1u )
   {
-    v12 = 0;
-    v13 = (__m128i *)((char *)a2 + v3);
+    iteration_count = 0;
+    packed_vector = (__m128i *)((char *)a2 + input_value);
     NumberOfBytesWritten = 0;
-    v14 = a2;
-    if ( a2 < v13 )
+    input_cursor = a2;
+    if ( a2 < packed_vector )
     {
-      v15 = HIDWORD(NumberOfBytesWritten);
+      iteration_count_2 = HIDWORD(NumberOfBytesWritten);
       while ( 1 )
       {
-        LOWORD(Mode) = SR_VEC_PTR_LANES(128, v14, i16)[0];
+        LOWORD(Mode) = SR_VEC_PTR_LANES(128, input_cursor, i16)[0];
         if ( (unsigned __int16)putwch_nolock((unsigned __int16)Mode) != (_WORD)Mode )
           break;
-        v15 += 2;
-        HIDWORD(NumberOfBytesWritten) = v15;
+        iteration_count_2 += 2;
+        HIDWORD(NumberOfBytesWritten) = iteration_count_2;
         if ( (_WORD)Mode == 10 )
         {
           if ( (unsigned __int16)putwch_nolock(13) != 13 )
             break;
-          HIDWORD(NumberOfBytesWritten) = ++v15;
-          ++v12;
+          HIDWORD(NumberOfBytesWritten) = ++iteration_count_2;
+          ++iteration_count;
         }
-        v14 = (__m128i *)((char *)v14 + 2);
-        if ( v14 >= v13 )
+        input_cursor = (__m128i *)((char *)input_cursor + 2);
+        if ( input_cursor >= packed_vector )
           goto LABEL_25;
       }
       LODWORD(NumberOfBytesWritten) = ((__int64 (*)(void))GetLastError)();
     }
 LABEL_25:
-    v11 = v12;
+    saved_iteration_count = iteration_count;
     goto LABEL_38;
   }
 LABEL_40:
-  if ( HIDWORD(v22) )
-    return (unsigned int)(HIDWORD(v22) - v11);
-  if ( (_DWORD)v22 )
+  if ( HIDWORD(saved_cached_numberofbyteswritten) )
+    return (unsigned int)(HIDWORD(saved_cached_numberofbyteswritten) - saved_iteration_count);
+  if ( (_DWORD)saved_cached_numberofbyteswritten )
   {
-    if ( (_DWORD)v22 == 5 )
+    if ( (_DWORD)saved_cached_numberofbyteswritten == 5 )
     {
       *errno_sr() = 9;
       *(_DWORD *)crt_doserrno() = 5;
     }
     else
     {
-      crt_errno_map_os_error(v22);
+      crt_errno_map_os_error(saved_cached_numberofbyteswritten);
     }
     return 0xFFFFFFFFLL;
   }
-  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v7 + 19065401] + 8 * v8 + 56) & 0x40) == 0 || SR_VEC_PTR_LANES(128, a2, i8)[0] != 26 )
+  if ( (*(_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * shifted_bits + 19065401] + 8 * masked_bits + 56) & 0x40) == 0 || SR_VEC_PTR_LANES(128, a2, i8)[0] != 26 )
   {
     *errno_sr() = 28;
     *(_DWORD *)crt_doserrno() = 0;
@@ -12719,32 +12719,32 @@ LABEL_40:
 //----- (0000000140253DEC) ----------------------------------------------------
 char            sub_140253DEC(__int64 a1)
 {
-  int v2;
-  unsigned int *v3;
-  __int64 v4;
+  int fileno_result;
+  unsigned int *malloc_base_result;
+  __int64 loaded_word;
 
-  v2 = fileno((FILE *)a1);
-  if ( !isatty(v2) )
+  fileno_result = fileno((FILE *)a1);
+  if ( !isatty(fileno_result) )
     return 0;
   if ( (char *)a1 == sub_14020B528(1u) )
   {
-    v3 = (unsigned int *)&g_144CBF758;
+    malloc_base_result = (unsigned int *)&g_144CBF758;
   }
   else
   {
     if ( (char *)a1 != sub_14020B528(2u) )
       return 0;
-    v3 = (unsigned int *)&g_144CBF760;
+    malloc_base_result = (unsigned int *)&g_144CBF760;
   }
   ++g_144CBE6B8;
   if ( (*(_DWORD *)(a1 + 20) & 0x4C0) != 0 )
     return 0;
   _InterlockedOr((volatile signed __int32 *)(a1 + 20), 0x282u);
-  v4 = *(_QWORD *)v3;
-  if ( *(_QWORD *)v3 || (*(_QWORD *)v3 = malloc_base(), free_base(nullptr), (v4 = *(_QWORD *)v3) != 0) )
+  loaded_word = *(_QWORD *)malloc_base_result;
+  if ( *(_QWORD *)malloc_base_result || (*(_QWORD *)malloc_base_result = malloc_base(), free_base(nullptr), (loaded_word = *(_QWORD *)malloc_base_result) != 0) )
   {
-    *(_QWORD *)(a1 + 8) = v4;
-    *(_QWORD *)a1 = *(_QWORD *)v3;
+    *(_QWORD *)(a1 + 8) = loaded_word;
+    *(_QWORD *)a1 = *(_QWORD *)malloc_base_result;
     *(_DWORD *)(a1 + 16) = 4096;
     *(_DWORD *)(a1 + 32) = 4096;
   }
@@ -12781,11 +12781,11 @@ __int64            sub_140253EBC(char a1, __int64 a2)
 //----- (0000000140253EF8) ----------------------------------------------------
 __int64            sub_140253EF8(__int64 a1)
 {
-  int v2;
+  int selection_code;
   __int64 result;
 
   ++g_144CBE6B8;
-  v2 = 4096;
+  selection_code = 4096;
   *(_QWORD *)(a1 + 8) = sr_path_malloc(4096);
   free_base(nullptr);
   if ( *(_QWORD *)(a1 + 8) )
@@ -12795,10 +12795,10 @@ __int64            sub_140253EF8(__int64 a1)
   else
   {
     _InterlockedOr((volatile signed __int32 *)(a1 + 20), 0x400u);
-    v2 = 2;
+    selection_code = 2;
     *(_QWORD *)(a1 + 8) = a1 + 28;
   }
-  *(_DWORD *)(a1 + 32) = v2;
+  *(_DWORD *)(a1 + 32) = selection_code;
   result = *(_QWORD *)(a1 + 8);
   *(_DWORD *)(a1 + 16) = 0;
   *(_QWORD *)a1 = result;
@@ -12808,12 +12808,12 @@ __int64            sub_140253EF8(__int64 a1)
 //----- (0000000140253F60) ----------------------------------------------------
 __int64            malloc_base()
 {
-  unsigned __int64 v0;
-  __int64 v1;
+  unsigned __int64 unrecovered_register_value;
+  __int64 cached_unrecovered_register_value;
   __int64 result;
 
-  v1 = v0;
-  if ( v0 > 0xFFFFFFFFFFFFFFE0uLL )
+  cached_unrecovered_register_value = unrecovered_register_value;
+  if ( unrecovered_register_value > 0xFFFFFFFFFFFFFFE0uLL )
   {
 LABEL_9:
     *errno_sr() = 12;
@@ -12821,17 +12821,17 @@ LABEL_9:
   }
   else
   {
-    if ( !v0 )
-      v1 = 1;
+    if ( !unrecovered_register_value )
+      cached_unrecovered_register_value = 1;
     while ( 1 )
     {
       result = ((__int64 (           *)(_QWORD, _QWORD, __int64))HeapAlloc)(
                  g_144CBFA48,
                  0,
-                 v1);
+                 cached_unrecovered_register_value);
       if ( result )
         break;
-      if ( !(unsigned int)sub_14024A06C() || !(unsigned int)callnewh(v1) )
+      if ( !(unsigned int)sub_14024A06C() || !(unsigned int)callnewh(cached_unrecovered_register_value) )
         goto LABEL_9;
     }
   }
@@ -12843,14 +12843,14 @@ LABEL_9:
 //----- (0000000140253FC0) ----------------------------------------------------
 __int64            mbtowc_l(sr_anon_115 *this, sr_anon_49 *a2, char *a3, struct __crt_locale_pointers *a4)
 {
-  int v7;
-  __int64 v9;
-  int v10;
-  int v11;
-  int *v12;
-  __int64 v13;
-  __int64 v14;
-  char v15;
+  int crt_mbstring_mbrtowc_utf8_result;
+  __int64 cached_callee_output_word;
+  int loaded_word;
+  int multi_byte_to_wide_char_result;
+  int *unused_written_slot;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
   if ( !a2 || !a3 )
   {
@@ -12863,44 +12863,44 @@ __int64            mbtowc_l(sr_anon_115 *this, sr_anon_49 *a2, char *a3, struct 
       *(_WORD *)this = 0;
     return 0;
   }
-  crt_locale_update((_LocaleUpdate *)&v13, a4);
-  if ( *(_DWORD *)(v14 + 12) == 65001 )
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a4);
+  if ( *(_DWORD *)(callee_output_word_2 + 12) == 65001 )
   {
-    v7 = __crt_mbstring____mbrtowc_utf8(this, a2, a3, (unsigned int *)&g_144CBF768);
-    if ( v7 < 0 )
-      v7 = -1;
+    crt_mbstring_mbrtowc_utf8_result = __crt_mbstring____mbrtowc_utf8(this, a2, a3, (unsigned int *)&g_144CBF768);
+    if ( crt_mbstring_mbrtowc_utf8_result < 0 )
+      crt_mbstring_mbrtowc_utf8_result = -1;
     goto LABEL_14;
   }
-  if ( !*(_QWORD *)(v14 + 312) )
+  if ( !*(_QWORD *)(callee_output_word_2 + 312) )
   {
     if ( this )
       *(_WORD *)this = *(unsigned __int8 *)a2;
     goto LABEL_13;
   }
-  if ( (unsigned int)isleadbyte_l(*(unsigned __int8 *)a2, &v14) )
+  if ( (unsigned int)isleadbyte_l(*(unsigned __int8 *)a2, &callee_output_word_2) )
   {
-    v9 = v14;
-    v10 = *(_DWORD *)(v14 + 8);
-    if ( v10 > 1 && (int)a3 >= v10 && (v11 = crt_multi_byte_to_wide_char(), v9 = v14, v11)
-      || (unsigned __int64)a3 >= *(int *)(v9 + 8) && *((_BYTE *)a2 + 1) )
+    cached_callee_output_word = callee_output_word_2;
+    loaded_word = *(_DWORD *)(callee_output_word_2 + 8);
+    if ( loaded_word > 1 && (int)a3 >= loaded_word && (multi_byte_to_wide_char_result = crt_multi_byte_to_wide_char(), cached_callee_output_word = callee_output_word_2, multi_byte_to_wide_char_result)
+      || (unsigned __int64)a3 >= *(int *)(cached_callee_output_word + 8) && *((_BYTE *)a2 + 1) )
     {
-      v7 = *(_DWORD *)(v9 + 8);
+      crt_mbstring_mbrtowc_utf8_result = *(_DWORD *)(cached_callee_output_word + 8);
       goto LABEL_14;
     }
 LABEL_25:
-    v12 = errno_sr();
-    v7 = -1;
-    *v12 = 42;
+    unused_written_slot = errno_sr();
+    crt_mbstring_mbrtowc_utf8_result = -1;
+    *unused_written_slot = 42;
     goto LABEL_14;
   }
   if ( !(unsigned int)crt_multi_byte_to_wide_char() )
     goto LABEL_25;
 LABEL_13:
-  v7 = 1;
+  crt_mbstring_mbrtowc_utf8_result = 1;
 LABEL_14:
-  if ( v15 )
-    *(_DWORD *)(v13 + 936) &= ~2u;
-  return (unsigned int)v7;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
+  return (unsigned int)crt_mbstring_mbrtowc_utf8_result;
 }
 
 // 140253FC0: invalid function type 'int __cdecl mbtowc_l(#57 *DstCh, const char *SrcCh, #81 SrcSizeInBytes, #86 Locale)' has been ignored
@@ -12914,22 +12914,22 @@ __int64            sub_140254140(sr_anon_115 *a1, sr_anon_49 *a2, char *a3)
 //----- (0000000140254148) ----------------------------------------------------
 __int64            wctomb_l(__int64 a1, unsigned __int16 a2, struct __crt_locale_pointers *a3)
 {
-  int v5;
-  unsigned int v6;
-  __int64 v8;
-  __int128 v9;
-  char v10;
+  int wctomb_s_l_result;
+  unsigned int unused_written_slot;
+  __int64 callee_output_word;
+  __int128 packed_vector;
+  char unrecovered_register_value;
   int SizeConverted;
 
-  crt_locale_update((_LocaleUpdate *)&v8, a3);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a3);
   SizeConverted = 0;
-  v5 = wctomb_s_l(&SizeConverted, a1, *(int *)(v9 + 8), a2, &v9);
-  v6 = SizeConverted;
-  if ( v5 )
-    v6 = -1;
-  if ( v10 )
-    *(_DWORD *)(v8 + 936) &= ~2u;
-  return v6;
+  wctomb_s_l_result = wctomb_s_l(&SizeConverted, a1, *(int *)(packed_vector + 8), a2, &packed_vector);
+  unused_written_slot = SizeConverted;
+  if ( wctomb_s_l_result )
+    unused_written_slot = -1;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
+  return unused_written_slot;
 }
 
 // 140254148: invalid function type 'int __cdecl wctomb_l(char *MbCh, #57 WCh, #86 Locale)' has been ignored
@@ -12942,47 +12942,47 @@ __int64            wctomb_s_l(
         unsigned __int16 a4,
         struct __crt_locale_pointers *Locale)
 {
-  unsigned int v9;
-  unsigned int v10;
-  int v11;
-  int v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  char v16;
-  __int128 v17;
-  unsigned __int16 v18;
+  unsigned int unused_written_slot;
+  unsigned int loaded_word;
+  int crt_mbstring_c32rtomb_utf8_result;
+  int wide_char_to_multi_byte_result;
+  __int64 packed_word_bits;
+  __int64 callee_output_word;
+  __int64 unrecovered_register_value;
+  char unrecovered_register_value_2;
+  __int128 packed_word_bits_2;
+  unsigned __int16 input_value;
 
-  v18 = a4;
+  input_value = a4;
   if ( a2 || !a3 )
   {
     if ( a1 )
       *a1 = -1;
     if ( a3 > 0x7FFFFFFF )
     {
-      v9 = 22;
+      unused_written_slot = 22;
       *errno_sr() = 22;
       crt_invalid_parameter_noinfo();
-      return v9;
+      return unused_written_slot;
     }
-    crt_locale_update((_LocaleUpdate *)&v14, Locale);
-    v10 = *(_DWORD *)(v15 + 12);
-    if ( v10 == 65001 )
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, Locale);
+    loaded_word = *(_DWORD *)(unrecovered_register_value + 12);
+    if ( loaded_word == 65001 )
     {
-      *(_QWORD *)&v17 = 0;
-      v11 = __crt_mbstring____c32rtomb_utf8(a2, v18, &v17);
+      *(_QWORD *)&packed_word_bits_2 = 0;
+      crt_mbstring_c32rtomb_utf8_result = __crt_mbstring____c32rtomb_utf8(a2, input_value, &packed_word_bits_2);
       if ( a1 )
-        *a1 = v11;
-      if ( v11 > 4 )
+        *a1 = crt_mbstring_c32rtomb_utf8_result;
+      if ( crt_mbstring_c32rtomb_utf8_result > 4 )
       {
-        v9 = *errno_sr();
+        unused_written_slot = *errno_sr();
         goto LABEL_21;
       }
       goto LABEL_33;
     }
-    if ( !*(_QWORD *)(v15 + 312) )
+    if ( !*(_QWORD *)(unrecovered_register_value + 312) )
     {
-      if ( v18 > 0xFFu )
+      if ( input_value > 0xFFu )
       {
         if ( a2 && a3 )
           crt_memset((void *)(uintptr_t)(a2), 0, a3);
@@ -12992,32 +12992,32 @@ __int64            wctomb_s_l(
         goto LABEL_27;
       if ( a3 )
       {
-        *a2 = v18;
+        *a2 = input_value;
 LABEL_27:
         if ( a1 )
           *a1 = 1;
 LABEL_33:
-        v9 = 0;
+        unused_written_slot = 0;
         goto LABEL_21;
       }
 LABEL_38:
-      v9 = 34;
+      unused_written_slot = 34;
       *errno_sr() = 34;
       crt_invalid_parameter_noinfo();
 LABEL_21:
-      if ( v16 )
-        *(_DWORD *)(v14 + 936) &= ~2u;
-      return v9;
+      if ( unrecovered_register_value_2 )
+        *(_DWORD *)(callee_output_word + 936) &= ~2u;
+      return unused_written_slot;
     }
-    LODWORD(v17) = 0;
-    LODWORD(v13) = a3;
-    v12 = crt_wide_char_to_multi_byte(v10, 0, (__int64)&v18, 1, (__int64)a2, v13, 0, (__int64)&v17);
-    if ( v12 )
+    LODWORD(packed_word_bits_2) = 0;
+    LODWORD(packed_word_bits) = a3;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(loaded_word, 0, (__int64)&input_value, 1, (__int64)a2, packed_word_bits, 0, (__int64)&packed_word_bits_2);
+    if ( wide_char_to_multi_byte_result )
     {
-      if ( !(_DWORD)v17 )
+      if ( !(_DWORD)packed_word_bits_2 )
       {
         if ( a1 )
-          *a1 = v12;
+          *a1 = wide_char_to_multi_byte_result;
         goto LABEL_33;
       }
     }
@@ -13028,7 +13028,7 @@ LABEL_21:
       goto LABEL_38;
     }
 LABEL_20:
-    v9 = 42;
+    unused_written_slot = 42;
     *errno_sr() = 42;
     goto LABEL_21;
   }
@@ -13043,18 +13043,18 @@ LABEL_20:
 //----- (0000000140254358) ----------------------------------------------------
 __int64            wctomb_sr(_BYTE *a1, unsigned __int16 a2)
 {
-  int v4;
-  int v5;
-  unsigned int v6;
+  int call_result;
+  int wctomb_s_l_result;
+  unsigned int unused_written_slot;
   int SizeConverted;
 
   SizeConverted = 0;
-  v4 = sub_140258D34();
-  v5 = wctomb_s_l(&SizeConverted, a1, v4, a2, nullptr);
-  v6 = SizeConverted;
-  if ( v5 )
+  call_result = sub_140258D34();
+  wctomb_s_l_result = wctomb_s_l(&SizeConverted, a1, call_result, a2, nullptr);
+  unused_written_slot = SizeConverted;
+  if ( wctomb_s_l_result )
     return (unsigned int)-1;
-  return v6;
+  return unused_written_slot;
 }
 
 // 140254358: invalid function type 'int __cdecl wctomb(char *MbCh, #57 WCh)' has been ignored
@@ -13112,61 +13112,61 @@ __int64            sub_1402551A8(__int64 a1, unsigned int *a2, __int64 a3, unsig
 //----- (00000001402551F0) ----------------------------------------------------
 __int64            sub_1402551F0(__int64 a1, unsigned int *a2, __int64 a3, unsigned int *a4)
 {
-  void *v6;
+  void *loaded_record_pointer;
 
   crt_lock(*a2);
-  v6 = *(void **)(**(_QWORD **)a3 + 136LL);
-  if ( v6 && _InterlockedExchangeAdd((volatile signed __int32 *)v6, 0xFFFFFFFF) == 1 && v6 != &unk_1403025A0 )
-    free_base(v6);
+  loaded_record_pointer = *(void **)(**(_QWORD **)a3 + 136LL);
+  if ( loaded_record_pointer && _InterlockedExchangeAdd((volatile signed __int32 *)loaded_record_pointer, 0xFFFFFFFF) == 1 && loaded_record_pointer != &unk_1403025A0 )
+    free_base(loaded_record_pointer);
   return crt_unlock(*a4);
 }
 
 //----- (0000000140255250) ----------------------------------------------------
 __int64            sub_140255250(unsigned int a1, __int64 a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_1402551F0((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_1402551F0((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (0000000140255278) ----------------------------------------------------
 __int64            sub_140255278(unsigned int a1, __int64 a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_140255128((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_140255128((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (00000001402552A0) ----------------------------------------------------
 __int64            sub_1402552A0(unsigned int a1, struct __acrt_ptd *     **a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_140255168((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_140255168((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (00000001402552C8) ----------------------------------------------------
 __int64            sub_1402552C8(unsigned int a1, __int64 a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_1402551A8((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_1402551A8((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014025535C) ----------------------------------------------------
@@ -13194,74 +13194,74 @@ void            unknown_libname_1035(void **a1)
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_871(__int64 a1)
 {
-  void *v1;
+  void *loaded_record_pointer;
 
-  v1 = *(void **)(**(_QWORD **)a1 + 136LL);
-  if ( v1 && _InterlockedExchangeAdd((volatile signed __int32 *)v1, 0xFFFFFFFF) == 1 && v1 != &unk_1403025A0 )
-    free_base(v1);
+  loaded_record_pointer = *(void **)(**(_QWORD **)a1 + 136LL);
+  if ( loaded_record_pointer && _InterlockedExchangeAdd((volatile signed __int32 *)loaded_record_pointer, 0xFFFFFFFF) == 1 && loaded_record_pointer != &unk_1403025A0 )
+    free_base(loaded_record_pointer);
 }
 
 //----- (000000014025545C) ----------------------------------------------------
 __int64            sub_14025545C(struct __acrt_ptd *     a1, struct __crt_locale_data **     a2)
 {
-  unsigned int v3;
-  _QWORD v4[3];
-  struct __acrt_ptd *v5;
-  struct __crt_locale_data **v6;
-  char v7;
-  unsigned int v8;
+  unsigned int selection_code;
+  _QWORD scratch_buffer[3];
+  struct __acrt_ptd *input_cursor;
+  struct __crt_locale_data **input_cursor_2;
+  char callee_output_word;
+  unsigned int selection_code_2;
 
-  v6 = a2;
-  v5 = a1;
+  input_cursor_2 = a2;
+  input_cursor = a1;
   *((_DWORD *)a1 + 10) = 1;
-  *(_QWORD *)v5 = (uint64)(uintptr_t)(xmmword_140289E60);
-  *((_DWORD *)v5 + 234) = 1;
-  *((_QWORD *)v5 + 17) = (uint64)(uintptr_t)(&unk_1403025A0);
-  *((_WORD *)v5 + 94) = 67;
-  *((_WORD *)v5 + 225) = 67;
-  *((_QWORD *)v5 + 116) = 0;
-  v4[0] = (uint64)(uintptr_t)(&v5);
-  v8 = 5;
-  v3 = 5;
-  sub_140255128((__int64)&v7, &v3, (__int64)v4, &v8);
-  v4[0] = (uint64)(uintptr_t)(&v5);
-  v4[1] = (uint64)(uintptr_t)(&v6);
-  v8 = 4;
-  v3 = 4;
-  return sub_1402551A8((__int64)&v7, &v3, (__int64)v4, &v8);
+  *(_QWORD *)input_cursor = (uint64)(uintptr_t)(xmmword_140289E60);
+  *((_DWORD *)input_cursor + 234) = 1;
+  *((_QWORD *)input_cursor + 17) = (uint64)(uintptr_t)(&unk_1403025A0);
+  *((_WORD *)input_cursor + 94) = 67;
+  *((_WORD *)input_cursor + 225) = 67;
+  *((_QWORD *)input_cursor + 116) = 0;
+  scratch_buffer[0] = (uint64)(uintptr_t)(&input_cursor);
+  selection_code_2 = 5;
+  selection_code = 5;
+  sub_140255128((__int64)&callee_output_word, &selection_code, (__int64)scratch_buffer, &selection_code_2);
+  scratch_buffer[0] = (uint64)(uintptr_t)(&input_cursor);
+  scratch_buffer[1] = (uint64)(uintptr_t)(&input_cursor_2);
+  selection_code_2 = 4;
+  selection_code = 4;
+  return sub_1402551A8((__int64)&callee_output_word, &selection_code, (__int64)scratch_buffer, &selection_code_2);
 }
 
 //----- (0000000140255524) ----------------------------------------------------
 __int64            sub_140255524(struct __acrt_ptd *     a1)
 {
-  unsigned int v2;
-  unsigned int v3;
-  struct __acrt_ptd *v4;
-  unsigned int *v5;
-  struct __acrt_ptd **v6;
-  _QWORD v7[2];
-  char v8;
-  unsigned int v9;
-  unsigned int v10;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
+  struct __acrt_ptd *input_cursor;
+  unsigned int *state_address;
+  struct __acrt_ptd **state_address_2;
+  _QWORD scratch_buffer[2];
+  char callee_output_word;
+  unsigned int selection_code_3;
+  unsigned int selection_code_4;
 
-  v4 = a1;
-  v6 = &v4;
-  v9 = 5;
-  v10 = 5;
-  v7[0] = (uint64)(uintptr_t)(&v4);
-  v7[1] = (uint64)(uintptr_t)(&v5);
-  v2 = 4;
-  v3 = 4;
-  v5 = (unsigned int *)&g_144CBF778;
+  input_cursor = a1;
+  state_address_2 = &input_cursor;
+  selection_code_3 = 5;
+  selection_code_4 = 5;
+  scratch_buffer[0] = (uint64)(uintptr_t)(&input_cursor);
+  scratch_buffer[1] = (uint64)(uintptr_t)(&state_address);
+  selection_code = 4;
+  selection_code_2 = 4;
+  state_address = (unsigned int *)&g_144CBF778;
   *((_DWORD *)a1 + 10) = 1;
-  *(_QWORD *)v4 = (uint64)(uintptr_t)(xmmword_140289E60);
-  *((_DWORD *)v4 + 234) = 1;
-  *((_QWORD *)v4 + 17) = (uint64)(uintptr_t)(&unk_1403025A0);
-  *((_WORD *)v4 + 94) = 67;
-  *((_WORD *)v4 + 225) = 67;
-  *((_QWORD *)v4 + 116) = 0;
-  sub_140255128((__int64)&v8, &v10, (__int64)&v6, &v9);
-  return sub_1402551A8((__int64)&v8, &v3, (__int64)v7, &v2);
+  *(_QWORD *)input_cursor = (uint64)(uintptr_t)(xmmword_140289E60);
+  *((_DWORD *)input_cursor + 234) = 1;
+  *((_QWORD *)input_cursor + 17) = (uint64)(uintptr_t)(&unk_1403025A0);
+  *((_WORD *)input_cursor + 94) = 67;
+  *((_WORD *)input_cursor + 225) = 67;
+  *((_QWORD *)input_cursor + 116) = 0;
+  sub_140255128((__int64)&callee_output_word, &selection_code_4, (__int64)&state_address_2, &selection_code_3);
+  return sub_1402551A8((__int64)&callee_output_word, &selection_code_2, (__int64)scratch_buffer, &selection_code);
 }
 
 //----- (00000001402555F8) ----------------------------------------------------
@@ -13277,116 +13277,116 @@ void            sub_1402555F8(void **Block)
 //----- (0000000140255618) ----------------------------------------------------
 __int64            sub_140255618(void **a1)
 {
-  struct __acrt_ptd *     *v2[2];
-  void **v3;
-  char v4;
-  unsigned int v5;
-  unsigned int v6;
+  struct __acrt_ptd *     *scratch_buffer[2];
+  void **input_cursor;
+  char callee_output_word;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
 
-  v3 = a1;
+  input_cursor = a1;
   if ( *a1 != xmmword_140289E60 )
   {
     free_base(*a1);
-    a1 = v3;
+    a1 = input_cursor;
   }
   free_base(a1[14]);
-  free_base(v3[11]);
-  free_base(v3[12]);
-  free_base(v3[13]);
-  free_base(v3[9]);
-  free_base(v3[10]);
-  free_base(v3[15]);
-  free_base(v3[16]);
-  free_base(v3[120]);
-  v2[0] = (struct __acrt_ptd *     *)&v3;
-  v5 = 5;
-  v6 = 5;
-  sub_1402551F0((__int64)&v4, &v6, (__int64)v2, &v5);
-  v2[0] = (struct __acrt_ptd *     *)&v3;
-  v5 = 4;
-  v6 = 4;
-  return sub_140255168((__int64)&v4, &v6, v2, &v5);
+  free_base(input_cursor[11]);
+  free_base(input_cursor[12]);
+  free_base(input_cursor[13]);
+  free_base(input_cursor[9]);
+  free_base(input_cursor[10]);
+  free_base(input_cursor[15]);
+  free_base(input_cursor[16]);
+  free_base(input_cursor[120]);
+  scratch_buffer[0] = (struct __acrt_ptd *     *)&input_cursor;
+  selection_code = 5;
+  selection_code_2 = 5;
+  sub_1402551F0((__int64)&callee_output_word, &selection_code_2, (__int64)scratch_buffer, &selection_code);
+  scratch_buffer[0] = (struct __acrt_ptd *     *)&input_cursor;
+  selection_code = 4;
+  selection_code_2 = 4;
+  return sub_140255168((__int64)&callee_output_word, &selection_code_2, scratch_buffer, &selection_code);
 }
 
 //----- (0000000140255710) ----------------------------------------------------
 __int64            sub_140255710(void **a1)
 {
-  unsigned int v2;
-  unsigned int v3;
-  void **v4;
-  void ***v5;
-  void ***v6;
-  char v7;
-  unsigned int v8;
-  unsigned int v9;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
+  void **input_cursor;
+  void ***state_address;
+  void ***state_address_2;
+  char callee_output_word;
+  unsigned int selection_code_3;
+  unsigned int selection_code_4;
 
-  v4 = a1;
-  v5 = &v4;
-  v8 = 5;
-  v9 = 5;
-  v6 = &v4;
-  v2 = 4;
-  v3 = 4;
+  input_cursor = a1;
+  state_address = &input_cursor;
+  selection_code_3 = 5;
+  selection_code_4 = 5;
+  state_address_2 = &input_cursor;
+  selection_code = 4;
+  selection_code_2 = 4;
   if ( *a1 != xmmword_140289E60 )
   {
     free_base(*a1);
-    a1 = v4;
+    a1 = input_cursor;
   }
   free_base(a1[14]);
-  free_base(v4[11]);
-  free_base(v4[12]);
-  free_base(v4[13]);
-  free_base(v4[9]);
-  free_base(v4[10]);
-  free_base(v4[15]);
-  free_base(v4[16]);
-  free_base(v4[120]);
-  sub_1402551F0((__int64)&v7, &v9, (__int64)&v5, &v8);
-  return sub_140255168((__int64)&v7, &v3, (struct __acrt_ptd *     **)&v6, &v2);
+  free_base(input_cursor[11]);
+  free_base(input_cursor[12]);
+  free_base(input_cursor[13]);
+  free_base(input_cursor[9]);
+  free_base(input_cursor[10]);
+  free_base(input_cursor[15]);
+  free_base(input_cursor[16]);
+  free_base(input_cursor[120]);
+  sub_1402551F0((__int64)&callee_output_word, &selection_code_4, (__int64)&state_address, &selection_code_3);
+  return sub_140255168((__int64)&callee_output_word, &selection_code_2, (struct __acrt_ptd *     **)&state_address_2, &selection_code);
 }
 
 //----- (0000000140255818) ----------------------------------------------------
 struct __acrt_ptd *internal_get_ptd_head()
 {
-  unsigned int v0;
-  struct __acrt_ptd *v1;
+  unsigned int state_word;
+  struct __acrt_ptd *unused_written_slot;
   struct __acrt_ptd *result;
-  __int64 v3;
-  unsigned int v4;
-  struct __acrt_ptd *v5;
-  struct __acrt_ptd *v6;
+  __int64 allocated_buffer;
+  unsigned int state_word_2;
+  struct __acrt_ptd *saved_allocated_buffer;
+  struct __acrt_ptd *record_pointer;
 
-  v0 = dword_140302410;
-  v1 = nullptr;
+  state_word = dword_140302410;
+  unused_written_slot = nullptr;
   if ( dword_140302410 == -1 )
   {
 LABEL_6:
-    if ( !(unsigned int)sub_14024F02C(v0, -1) )
+    if ( !(unsigned int)sub_14024F02C(state_word, -1) )
       return nullptr;
-    v3 = sr_directory_calloc(1, 0x3C8);
-    v4 = dword_140302410;
-    v5 = (struct __acrt_ptd *)v3;
-    if ( v3 )
+    allocated_buffer = sr_directory_calloc(1, 0x3C8);
+    state_word_2 = dword_140302410;
+    saved_allocated_buffer = (struct __acrt_ptd *)allocated_buffer;
+    if ( allocated_buffer )
     {
-      if ( (unsigned int)sub_14024F02C(dword_140302410, v3) )
+      if ( (unsigned int)sub_14024F02C(dword_140302410, allocated_buffer) )
       {
-        sub_140255524(v5);
-        v6 = v5;
-        v5 = nullptr;
-        v1 = v6;
+        sub_140255524(saved_allocated_buffer);
+        record_pointer = saved_allocated_buffer;
+        saved_allocated_buffer = nullptr;
+        unused_written_slot = record_pointer;
         goto LABEL_13;
       }
-      v4 = dword_140302410;
+      state_word_2 = dword_140302410;
     }
-    sub_14024F02C(v4, 0);
+    sub_14024F02C(state_word_2, 0);
 LABEL_13:
-    free_base(v5);
-    return v1;
+    free_base(saved_allocated_buffer);
+    return unused_written_slot;
   }
   result = (struct __acrt_ptd *)sub_14024EFE4(dword_140302410);
   if ( !result )
   {
-    v0 = dword_140302410;
+    state_word = dword_140302410;
     goto LABEL_6;
   }
   if ( result == (struct __acrt_ptd *)-1LL )
@@ -13399,55 +13399,55 @@ LABEL_13:
 // Microsoft VisualC 64bit universal runtime
 struct __acrt_ptd *unknown_libname_876()
 {
-  unsigned int v0;
-  unsigned int v1;
-  unsigned int v2;
-  __int64 v3;
-  struct __acrt_ptd *v4;
-  __int64 v5;
-  struct __acrt_ptd *v6;
+  unsigned int int64_result;
+  unsigned int state_word;
+  unsigned int saved_int64_result;
+  __int64 call_result;
+  struct __acrt_ptd *saved_allocated_buffer;
+  __int64 allocated_buffer;
+  struct __acrt_ptd *record_pointer;
 
-  v0 = ((__int64 (*)(void))GetLastError)();
-  v1 = dword_140302410;
-  v2 = v0;
+  int64_result = ((__int64 (*)(void))GetLastError)();
+  state_word = dword_140302410;
+  saved_int64_result = int64_result;
   if ( dword_140302410 != -1 )
   {
-    v3 = sub_14024EFE4(dword_140302410);
-    v4 = (struct __acrt_ptd *)v3;
-    if ( v3 )
+    call_result = sub_14024EFE4(dword_140302410);
+    saved_allocated_buffer = (struct __acrt_ptd *)call_result;
+    if ( call_result )
     {
-      if ( v3 == -1 )
-        v4 = nullptr;
+      if ( call_result == -1 )
+        saved_allocated_buffer = nullptr;
       goto LABEL_15;
     }
-    v1 = dword_140302410;
+    state_word = dword_140302410;
   }
-  if ( (unsigned int)sub_14024F02C(v1, -1) )
+  if ( (unsigned int)sub_14024F02C(state_word, -1) )
   {
-    v5 = sr_directory_calloc(1, 0x3C8);
-    v4 = (struct __acrt_ptd *)v5;
-    if ( v5 )
+    allocated_buffer = sr_directory_calloc(1, 0x3C8);
+    saved_allocated_buffer = (struct __acrt_ptd *)allocated_buffer;
+    if ( allocated_buffer )
     {
-      if ( (unsigned int)sub_14024F02C(dword_140302410, v5) )
+      if ( (unsigned int)sub_14024F02C(dword_140302410, allocated_buffer) )
       {
-        sub_140255524(v4);
+        sub_140255524(saved_allocated_buffer);
         free_base(nullptr);
         goto LABEL_15;
       }
       sub_14024F02C(dword_140302410, 0);
-      v6 = v4;
+      record_pointer = saved_allocated_buffer;
     }
     else
     {
       sub_14024F02C(dword_140302410, 0);
-      v6 = nullptr;
+      record_pointer = nullptr;
     }
-    free_base(v6);
+    free_base(record_pointer);
   }
-  v4 = nullptr;
+  saved_allocated_buffer = nullptr;
 LABEL_15:
-  ((void (           *)(_QWORD))SetLastError)(v2);
-  return v4;
+  ((void (           *)(_QWORD))SetLastError)(saved_int64_result);
+  return saved_allocated_buffer;
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
@@ -13466,16 +13466,16 @@ void            unknown_libname_1036(void **a1)
 //----- (00000001402559A4) ----------------------------------------------------
 void            replace_current_thread_locale_nolock_sr(struct __acrt_ptd *     a1, struct __crt_locale_data *     a2)
 {
-  __int64 v4;
-  __int64 v5;
+  __int64 loaded_word;
+  __int64 loaded_word_2;
 
-  v4 = *((_QWORD *)a1 + 18);
-  if ( v4 )
+  loaded_word = *((_QWORD *)a1 + 18);
+  if ( loaded_word )
   {
-    sub_140262A34(v4);
-    v5 = *((_QWORD *)a1 + 18);
-    if ( v5 != g_144CBF778 && (__int16 **)v5 != &off_140302420 && !*(_DWORD *)(v5 + 16) )
-      sub_140262834(v5);
+    sub_140262A34(loaded_word);
+    loaded_word_2 = *((_QWORD *)a1 + 18);
+    if ( loaded_word_2 != g_144CBF778 && (__int16 **)loaded_word_2 != &off_140302420 && !*(_DWORD *)(loaded_word_2 + 16) )
+      sub_140262834(loaded_word_2);
   }
   *((_QWORD *)a1 + 18) = (uint64)(uintptr_t)(a2);
   if ( a2 )
@@ -13498,16 +13498,16 @@ __int64 try_get_ptd_head()
 //----- (0000000140255A2C) ----------------------------------------------------
 void sub_140255A2C()
 {
-  void **v0;
+  void **returned_pointer;
 
   if ( dword_140302410 != -1 )
   {
-    v0 = (void **)sub_14024EFE4(dword_140302410);
-    if ( v0 )
+    returned_pointer = (void **)sub_14024EFE4(dword_140302410);
+    if ( returned_pointer )
     {
       sub_14024F02C(dword_140302410, 0);
-      sub_140255710(v0);
-      free_base(v0);
+      sub_140255710(returned_pointer);
+      free_base(returned_pointer);
     }
   }
 }
@@ -13515,64 +13515,64 @@ void sub_140255A2C()
 //----- (0000000140255A70) ----------------------------------------------------
 __int64 sub_140255A70()
 {
-  unsigned int v0;
-  unsigned int v1;
-  unsigned int v2;
-  __int64 v3;
-  struct __acrt_ptd *v4;
-  struct __acrt_ptd *v5;
-  __int64 v6;
-  struct __acrt_ptd *v7;
+  unsigned int int64_result;
+  unsigned int state_word;
+  unsigned int saved_int64_result;
+  __int64 call_result;
+  struct __acrt_ptd *saved_allocated_buffer;
+  struct __acrt_ptd *record_pointer;
+  __int64 allocated_buffer;
+  struct __acrt_ptd *record_pointer_2;
   __int64 result;
 
-  v0 = ((__int64 (*)(void))GetLastError)();
-  v1 = dword_140302410;
-  v2 = v0;
+  int64_result = ((__int64 (*)(void))GetLastError)();
+  state_word = dword_140302410;
+  saved_int64_result = int64_result;
   if ( dword_140302410 == -1 )
   {
 LABEL_6:
-    if ( !(unsigned int)sub_14024F02C(v1, -1) )
+    if ( !(unsigned int)sub_14024F02C(state_word, -1) )
       goto LABEL_4;
-    v6 = sr_directory_calloc(1, 0x3C8);
-    v4 = (struct __acrt_ptd *)v6;
-    if ( v6 )
+    allocated_buffer = sr_directory_calloc(1, 0x3C8);
+    saved_allocated_buffer = (struct __acrt_ptd *)allocated_buffer;
+    if ( allocated_buffer )
     {
-      if ( (unsigned int)sub_14024F02C(dword_140302410, v6) )
+      if ( (unsigned int)sub_14024F02C(dword_140302410, allocated_buffer) )
       {
-        sub_140255524(v4);
+        sub_140255524(saved_allocated_buffer);
         free_base(nullptr);
         goto LABEL_13;
       }
       sub_14024F02C(dword_140302410, 0);
-      v7 = v4;
+      record_pointer_2 = saved_allocated_buffer;
     }
     else
     {
       sub_14024F02C(dword_140302410, 0);
-      v7 = nullptr;
+      record_pointer_2 = nullptr;
     }
-    free_base(v7);
+    free_base(record_pointer_2);
     goto LABEL_4;
   }
-  v3 = sub_14024EFE4(dword_140302410);
-  v4 = (struct __acrt_ptd *)v3;
-  if ( !v3 )
+  call_result = sub_14024EFE4(dword_140302410);
+  saved_allocated_buffer = (struct __acrt_ptd *)call_result;
+  if ( !call_result )
   {
-    v1 = dword_140302410;
+    state_word = dword_140302410;
     goto LABEL_6;
   }
-  if ( v3 == -1 )
+  if ( call_result == -1 )
   {
 LABEL_4:
-    v4 = nullptr;
-    v5 = nullptr;
+    saved_allocated_buffer = nullptr;
+    record_pointer = nullptr;
     goto LABEL_14;
   }
 LABEL_13:
-  v5 = v4;
+  record_pointer = saved_allocated_buffer;
 LABEL_14:
-  ((void (           *)(_QWORD))SetLastError)(v2);
-  result = (unsigned __int64)v5 & -(__int64)(v4 != nullptr);
+  ((void (           *)(_QWORD))SetLastError)(saved_int64_result);
+  result = (unsigned __int64)record_pointer & -(__int64)(saved_allocated_buffer != nullptr);
   if ( !result )
     abort();
   return result;
@@ -13584,115 +13584,115 @@ LABEL_14:
 //----- (0000000140255B44) ----------------------------------------------------
 struct __acrt_ptd *sub_140255B44()
 {
-  unsigned int v0;
-  __int64 v1;
-  struct __acrt_ptd *v2;
-  __int64 v3;
-  struct __acrt_ptd *v4;
+  unsigned int state_word;
+  __int64 call_result;
+  struct __acrt_ptd *saved_allocated_buffer;
+  __int64 allocated_buffer;
+  struct __acrt_ptd *record_pointer;
 
-  v0 = dword_140302410;
+  state_word = dword_140302410;
   if ( dword_140302410 == -1 )
   {
 LABEL_6:
-    if ( !(unsigned int)sub_14024F02C(v0, -1) )
+    if ( !(unsigned int)sub_14024F02C(state_word, -1) )
       goto LABEL_15;
-    v3 = sr_directory_calloc(1, 0x3C8);
-    v2 = (struct __acrt_ptd *)v3;
-    if ( v3 )
+    allocated_buffer = sr_directory_calloc(1, 0x3C8);
+    saved_allocated_buffer = (struct __acrt_ptd *)allocated_buffer;
+    if ( allocated_buffer )
     {
-      if ( (unsigned int)sub_14024F02C(dword_140302410, v3) )
+      if ( (unsigned int)sub_14024F02C(dword_140302410, allocated_buffer) )
       {
-        sub_140255524(v2);
+        sub_140255524(saved_allocated_buffer);
         free_base(nullptr);
         goto LABEL_13;
       }
       sub_14024F02C(dword_140302410, 0);
-      v4 = v2;
+      record_pointer = saved_allocated_buffer;
     }
     else
     {
       sub_14024F02C(dword_140302410, 0);
-      v4 = nullptr;
+      record_pointer = nullptr;
     }
-    free_base(v4);
+    free_base(record_pointer);
     goto LABEL_15;
   }
-  v1 = sub_14024EFE4(dword_140302410);
-  v2 = (struct __acrt_ptd *)v1;
-  if ( !v1 )
+  call_result = sub_14024EFE4(dword_140302410);
+  saved_allocated_buffer = (struct __acrt_ptd *)call_result;
+  if ( !call_result )
   {
-    v0 = dword_140302410;
+    state_word = dword_140302410;
     goto LABEL_6;
   }
-  if ( v1 == -1 )
+  if ( call_result == -1 )
     goto LABEL_15;
 LABEL_13:
-  if ( !v2 )
+  if ( !saved_allocated_buffer )
 LABEL_15:
     abort();
-  return v2;
+  return saved_allocated_buffer;
 }
 
 //----- (0000000140255BEC) ----------------------------------------------------
 __int64 sub_140255BEC()
 {
-  unsigned int v0;
-  unsigned int v1;
-  unsigned int v2;
-  __int64 v3;
-  struct __acrt_ptd *v4;
-  struct __acrt_ptd *v5;
-  __int64 v6;
-  struct __acrt_ptd *v7;
+  unsigned int int64_result;
+  unsigned int state_word;
+  unsigned int saved_int64_result;
+  __int64 call_result;
+  struct __acrt_ptd *saved_allocated_buffer;
+  struct __acrt_ptd *record_pointer;
+  __int64 allocated_buffer;
+  struct __acrt_ptd *record_pointer_2;
 
-  v0 = ((__int64 (*)(void))GetLastError)();
-  v1 = dword_140302410;
-  v2 = v0;
+  int64_result = ((__int64 (*)(void))GetLastError)();
+  state_word = dword_140302410;
+  saved_int64_result = int64_result;
   if ( dword_140302410 == -1 )
   {
 LABEL_6:
-    if ( !(unsigned int)sub_14024F02C(v1, -1) )
+    if ( !(unsigned int)sub_14024F02C(state_word, -1) )
       goto LABEL_4;
-    v6 = sr_directory_calloc(1, 0x3C8);
-    v4 = (struct __acrt_ptd *)v6;
-    if ( v6 )
+    allocated_buffer = sr_directory_calloc(1, 0x3C8);
+    saved_allocated_buffer = (struct __acrt_ptd *)allocated_buffer;
+    if ( allocated_buffer )
     {
-      if ( (unsigned int)sub_14024F02C(dword_140302410, v6) )
+      if ( (unsigned int)sub_14024F02C(dword_140302410, allocated_buffer) )
       {
-        sub_140255524(v4);
+        sub_140255524(saved_allocated_buffer);
         free_base(nullptr);
         goto LABEL_13;
       }
       sub_14024F02C(dword_140302410, 0);
-      v7 = v4;
+      record_pointer_2 = saved_allocated_buffer;
     }
     else
     {
       sub_14024F02C(dword_140302410, 0);
-      v7 = nullptr;
+      record_pointer_2 = nullptr;
     }
-    free_base(v7);
+    free_base(record_pointer_2);
     goto LABEL_4;
   }
-  v3 = sub_14024EFE4(dword_140302410);
-  v4 = (struct __acrt_ptd *)v3;
-  if ( !v3 )
+  call_result = sub_14024EFE4(dword_140302410);
+  saved_allocated_buffer = (struct __acrt_ptd *)call_result;
+  if ( !call_result )
   {
-    v1 = dword_140302410;
+    state_word = dword_140302410;
     goto LABEL_6;
   }
-  if ( v3 != -1 )
+  if ( call_result != -1 )
   {
 LABEL_13:
-    v5 = v4;
+    record_pointer = saved_allocated_buffer;
     goto LABEL_14;
   }
 LABEL_4:
-  v4 = nullptr;
-  v5 = nullptr;
+  saved_allocated_buffer = nullptr;
+  record_pointer = nullptr;
 LABEL_14:
-  ((void (           *)(_QWORD))SetLastError)(v2);
-  return (unsigned __int64)v5 & -(__int64)(v4 != nullptr);
+  ((void (           *)(_QWORD))SetLastError)(saved_int64_result);
+  return (unsigned __int64)record_pointer & -(__int64)(saved_allocated_buffer != nullptr);
 }
 
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
@@ -13771,167 +13771,167 @@ __int64            fp_format_a(
         unsigned int a8,
         struct __crt_locale_pointers *     a9)
 {
-  __m128i *v9;
-  int v11;
-  unsigned int v14;
-  __int64 v15;
-  __m128i *v16;
-  __int8 *v17;
-  __int64 v18;
-  __int16 *v19;
-  __int8 v20;
-  __int16 v21;
-  unsigned __int64 v22;
-  unsigned __int16 v23;
+  __m128i *input_cursor;
+  int byte_count;
+  unsigned int fp_format_e_result;
+  __int64 loaded_word;
+  __m128i *returned_pointer;
+  __int8 *state_address;
+  __int64 comparison_result;
+  __int16 *state_address_2;
+  __int8 loaded_word_2;
+  __int16 remaining_amount;
+  unsigned __int64 remaining_bits;
+  unsigned __int16 shifted_bits;
   __int8 *i;
-  __int8 v25;
-  __int8 v26;
-  _BYTE *v27;
-  __int64 v28;
-  __int64 v29;
-  char v30;
-  _BYTE *v31;
-  _QWORD v33[3];
-  char v34;
+  __int8 scaled_index;
+  __int8 scaled_index_2;
+  _BYTE *byte_cursor;
+  __int64 shifted_bits_2;
+  __int64 saved_shifted_bits;
+  char selection_code;
+  _BYTE *buffer_cursor;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
   SR_VEC_PTR_LANES(128, a2, i8)[0] = 0;
-  v9 = a2;
-  v11 = 0;
+  input_cursor = a2;
+  byte_count = 0;
   if ( a6 >= 0 )
-    v11 = a6;
-  crt_locale_update((_LocaleUpdate *)v33, a9);
-  if ( a3 <= v11 + 11 )
+    byte_count = a6;
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, a9);
+  if ( a3 <= byte_count + 11 )
   {
-    v14 = 34;
+    fp_format_e_result = 34;
     *errno_sr() = 34;
     crt_invalid_parameter_noinfo();
     goto LABEL_53;
   }
-  v15 = *(_QWORD *)a1;
+  loaded_word = *(_QWORD *)a1;
   if ( ((*(_QWORD *)a1 >> 52) & 0x7FFLL) == 0x7FF )
   {
-    v14 = fp_format_e(a1, SR_VEC_PTR_LANES(128, v9, i8), a3, a4, a5, v11, 0, a8, nullptr);
-    if ( v14 )
+    fp_format_e_result = fp_format_e(a1, SR_VEC_PTR_LANES(128, input_cursor, i8), a3, a4, a5, byte_count, 0, a8, nullptr);
+    if ( fp_format_e_result )
     {
-      SR_VEC_PTR_LANES(128, v9, i8)[0] = 0;
+      SR_VEC_PTR_LANES(128, input_cursor, i8)[0] = 0;
       goto LABEL_53;
     }
-    v16 = sub_14026CD4C(v9, 101);
-    if ( v16 )
+    returned_pointer = sub_14026CD4C(input_cursor, 101);
+    if ( returned_pointer )
     {
-      SR_VEC_PTR_LANES(128, v16, i8)[0] = 32 * !a7 + 80;
-      SR_VEC_PTR_LANES(128, v16, i8)[3] = 0;
+      SR_VEC_PTR_LANES(128, returned_pointer, i8)[0] = 32 * !a7 + 80;
+      SR_VEC_PTR_LANES(128, returned_pointer, i8)[3] = 0;
     }
   }
   else
   {
-    if ( v15 < 0 )
+    if ( loaded_word < 0 )
     {
-      SR_VEC_PTR_LANES(128, v9, i8)[0] = 45;
-      v9 = (__m128i *)((char *)v9 + 1);
-      v15 = *(_QWORD *)a1;
+      SR_VEC_PTR_LANES(128, input_cursor, i8)[0] = 45;
+      input_cursor = (__m128i *)((char *)input_cursor + 1);
+      loaded_word = *(_QWORD *)a1;
     }
-    v17 = &SR_VEC_PTR_LANES(128, v9, i8)[1];
-    v18 = 1023;
-    if ( (v15 & 0x7FF0000000000000LL) != 0 )
+    state_address = &SR_VEC_PTR_LANES(128, input_cursor, i8)[1];
+    comparison_result = 1023;
+    if ( (loaded_word & 0x7FF0000000000000LL) != 0 )
     {
-      SR_VEC_PTR_LANES(128, v9, i8)[0] = 49;
+      SR_VEC_PTR_LANES(128, input_cursor, i8)[0] = 49;
     }
     else
     {
-      SR_VEC_PTR_LANES(128, v9, i8)[0] = 48;
-      v18 = (*(_QWORD *)a1 & 0xFFFFFFFFFFFFFLL) != 0 ? 0x3FE : 0;
+      SR_VEC_PTR_LANES(128, input_cursor, i8)[0] = 48;
+      comparison_result = (*(_QWORD *)a1 & 0xFFFFFFFFFFFFFLL) != 0 ? 0x3FE : 0;
     }
-    v19 = &SR_VEC_PTR_LANES(128, v9, i16)[1];
-    if ( v11 )
-      v20 = ***(_BYTE ***)(v33[1] + 248LL);
+    state_address_2 = &SR_VEC_PTR_LANES(128, input_cursor, i16)[1];
+    if ( byte_count )
+      loaded_word_2 = ***(_BYTE ***)(scratch_buffer[1] + 248LL);
     else
-      v20 = 0;
-    *v17 = v20;
+      loaded_word_2 = 0;
+    *state_address = loaded_word_2;
     if ( (*(_QWORD *)a1 & 0xFFFFFFFFFFFFFLL) != 0 )
     {
-      v21 = 48;
-      v22 = 0xF000000000000LL;
+      remaining_amount = 48;
+      remaining_bits = 0xF000000000000LL;
       do
       {
-        if ( v11 <= 0 )
+        if ( byte_count <= 0 )
           break;
-        v23 = ((v22 & *(_QWORD *)a1 & 0xFFFFFFFFFFFFFLL) >> v21) + 48;
-        if ( v23 > 0x39u )
-          LOBYTE(v23) = 32 * !a7 + 7 + v23;
-        *(_BYTE *)v19 = v23;
-        --v11;
-        v19 = (__int16 *)((char *)v19 + 1);
-        v22 >>= 4;
-        v21 -= 4;
+        shifted_bits = ((remaining_bits & *(_QWORD *)a1 & 0xFFFFFFFFFFFFFLL) >> remaining_amount) + 48;
+        if ( shifted_bits > 0x39u )
+          LOBYTE(shifted_bits) = 32 * !a7 + 7 + shifted_bits;
+        *(_BYTE *)state_address_2 = shifted_bits;
+        --byte_count;
+        state_address_2 = (__int16 *)((char *)state_address_2 + 1);
+        remaining_bits >>= 4;
+        remaining_amount -= 4;
       }
-      while ( v21 >= 0 );
-      if ( v21 >= 0 && (unsigned __int16)((v22 & *(_QWORD *)a1 & 0xFFFFFFFFFFFFFLL) >> v21) > 8u )
+      while ( remaining_amount >= 0 );
+      if ( remaining_amount >= 0 && (unsigned __int16)((remaining_bits & *(_QWORD *)a1 & 0xFFFFFFFFFFFFFLL) >> remaining_amount) > 8u )
       {
-        for ( i = (char *)v19 - 1; ; --i )
+        for ( i = (char *)state_address_2 - 1; ; --i )
         {
-          v25 = *i;
+          scaled_index = *i;
           if ( ((*i - 70) & 0xDF) != 0 )
             break;
           *i = 48;
         }
-        if ( i == v17 )
+        if ( i == state_address )
         {
           ++*(i - 1);
         }
         else
         {
-          if ( v25 == 57 )
-            v26 = 32 * !a7 + 65;
+          if ( scaled_index == 57 )
+            scaled_index_2 = 32 * !a7 + 65;
           else
-            v26 = v25 + 1;
-          *i = v26;
+            scaled_index_2 = scaled_index + 1;
+          *i = scaled_index_2;
         }
       }
     }
-    if ( v11 > 0 )
+    if ( byte_count > 0 )
     {
-      crt_memset((void *)(uintptr_t)(v19), 0x30u, (unsigned int)v11);
-      v19 = (__int16 *)((char *)v19 + (unsigned int)v11);
+      crt_memset((void *)(uintptr_t)(state_address_2), 0x30u, (unsigned int)byte_count);
+      state_address_2 = (__int16 *)((char *)state_address_2 + (unsigned int)byte_count);
     }
-    if ( *v17 )
-      v17 = (__int8 *)v19;
-    *v17 = 32 * !a7 + 80;
-    v27 = v17 + 2;
-    v28 = ((*(_QWORD *)a1 >> 52) & 0x7FFLL) - v18;
-    v29 = v28;
-    if ( v28 < 0 )
-      v28 = v18 - ((*(_QWORD *)a1 >> 52) & 0x7FFLL);
-    v30 = 43;
-    v31 = v17 + 2;
-    if ( v29 < 0 )
-      v30 = 45;
-    v17[1] = v30;
-    *v27 = 48;
-    if ( v28 >= 1000 )
+    if ( *state_address )
+      state_address = (__int8 *)state_address_2;
+    *state_address = 32 * !a7 + 80;
+    byte_cursor = state_address + 2;
+    shifted_bits_2 = ((*(_QWORD *)a1 >> 52) & 0x7FFLL) - comparison_result;
+    saved_shifted_bits = shifted_bits_2;
+    if ( shifted_bits_2 < 0 )
+      shifted_bits_2 = comparison_result - ((*(_QWORD *)a1 >> 52) & 0x7FFLL);
+    selection_code = 43;
+    buffer_cursor = state_address + 2;
+    if ( saved_shifted_bits < 0 )
+      selection_code = 45;
+    state_address[1] = selection_code;
+    *byte_cursor = 48;
+    if ( shifted_bits_2 >= 1000 )
     {
-      v31 = v17 + 3;
-      *v27 = v28 / 1000 + 48;
-      v28 %= 1000;
+      buffer_cursor = state_address + 3;
+      *byte_cursor = shifted_bits_2 / 1000 + 48;
+      shifted_bits_2 %= 1000;
     }
-    if ( v31 != v27 || v28 >= 100 )
+    if ( buffer_cursor != byte_cursor || shifted_bits_2 >= 100 )
     {
-      *v31++ = v28 / 100 + 48;
-      v28 %= 100;
+      *buffer_cursor++ = shifted_bits_2 / 100 + 48;
+      shifted_bits_2 %= 100;
     }
-    if ( v31 != v27 || v28 >= 10 )
+    if ( buffer_cursor != byte_cursor || shifted_bits_2 >= 10 )
     {
-      *v31++ = v28 / 10 + 48;
-      v28 %= 10;
+      *buffer_cursor++ = shifted_bits_2 / 10 + 48;
+      shifted_bits_2 %= 10;
     }
-    *v31 = v28 + 48;
-    v31[1] = 0;
+    *buffer_cursor = shifted_bits_2 + 48;
+    buffer_cursor[1] = 0;
   }
-  v14 = 0;
+  fp_format_e_result = 0;
 LABEL_53:
-  if ( v34 )
-    *(_DWORD *)(v33[0] + 936LL) &= ~2u;
-  return v14;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
+  return fp_format_e_result;
 }
 
 //----- (0000000140256168) ----------------------------------------------------
@@ -13946,27 +13946,27 @@ __int64            fp_format_e(
         unsigned int a8,
         struct __crt_locale_pointers *     a9)
 {
-  __int64 v10;
-  __int64 v11;
-  _BOOL8 v13;
-  _BOOL8 v14;
-  unsigned __int64 v15;
+  __int64 integer_sum;
+  __int64 loaded_word;
+  _BOOL8 comparison_result;
+  _BOOL8 comparison_result_2;
+  unsigned __int64 integer_difference;
   __int64 result;
-  _DWORD v17[6];
+  _DWORD scratch_buffer[6];
 
-  v10 = a5;
-  v11 = *(_QWORD *)a1;
+  integer_sum = a5;
+  loaded_word = *(_QWORD *)a1;
   if ( (unsigned __int64)(unsigned int)(a6 + 2) + 1 < a5 )
-    v10 = (unsigned int)(a6 + 2) + 1LL;
-  _acrt_fltout(v11, a6 + 1, (__int64)v17, a4, v10);
-  v13 = v17[0] == 45;
-  v14 = a6 > 0;
-  v15 = a3 - v14 - v13;
+    integer_sum = (unsigned int)(a6 + 2) + 1LL;
+  _acrt_fltout(loaded_word, a6 + 1, (__int64)scratch_buffer, a4, integer_sum);
+  comparison_result = scratch_buffer[0] == 45;
+  comparison_result_2 = a6 > 0;
+  integer_difference = a3 - comparison_result_2 - comparison_result;
   if ( a3 == -1 )
-    v15 = -1;
-  result = _acrt_fp_strflt_to_string((__int64)&a2[v14 + v13], v15, a6 + 1, (__int64)v17);
+    integer_difference = -1;
+  result = _acrt_fp_strflt_to_string((__int64)&a2[comparison_result_2 + comparison_result], integer_difference, a6 + 1, (__int64)scratch_buffer);
   if ( !(_DWORD)result )
-    return fp_format_e_internal(a2, a3, a6, a7, a8, (struct _strflt *    )v17, 0, a9);
+    return fp_format_e_internal(a2, a3, a6, a7, a8, (struct _strflt *    )scratch_buffer, 0, a9);
   *a2 = 0;
   return result;
 }
@@ -13982,84 +13982,84 @@ __int64            fp_format_e_internal(
         bool a7,
         struct __crt_locale_pointers *     a8)
 {
-  int v8;
-  __int64 v9;
-  char *v14;
-  __int64 v15;
-  char *v16;
-  char *v17;
-  __int64 v18;
-  __m128i *v19;
-  int v20;
-  _QWORD v21[3];
-  char v22;
+  int input_value;
+  __int64 input_value_2;
+  char *source_buffer;
+  __int64 element_index;
+  char *text_cursor;
+  char *state_address;
+  __int64 integer_difference;
+  __m128i *destination_buffer;
+  int loaded_word;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
-  v8 = 0;
-  v9 = a3;
+  input_value = 0;
+  input_value_2 = a3;
   if ( a3 > 0 )
-    v8 = a3;
-  if ( a2 > v8 + 9 )
+    input_value = a3;
+  if ( a2 > input_value + 9 )
   {
-    crt_locale_update((_LocaleUpdate *)v21, a8);
+    crt_locale_update((_LocaleUpdate *)scratch_buffer, a8);
     if ( a7 )
     {
-      v14 = &a1[*(_DWORD *)a6 == 45];
-      if ( (int)v9 > 0 )
+      source_buffer = &a1[*(_DWORD *)a6 == 45];
+      if ( (int)input_value_2 > 0 )
       {
-        v15 = -1;
+        element_index = -1;
         do
-          ++v15;
-        while ( v14[v15] );
-        crt_memcpy((__m128i *)(v14 + 1), (     __m128i *)v14, v15 + 1);
+          ++element_index;
+        while ( source_buffer[element_index] );
+        crt_memcpy((__m128i *)(source_buffer + 1), (     __m128i *)source_buffer, element_index + 1);
       }
     }
-    v16 = a1;
+    text_cursor = a1;
     if ( *(_DWORD *)a6 == 45 )
     {
       *a1 = 45;
-      v16 = a1 + 1;
+      text_cursor = a1 + 1;
     }
-    if ( (int)v9 > 0 )
+    if ( (int)input_value_2 > 0 )
     {
-      *v16 = v16[1];
-      *++v16 = ***(_BYTE ***)(v21[1] + 248LL);
+      *text_cursor = text_cursor[1];
+      *++text_cursor = ***(_BYTE ***)(scratch_buffer[1] + 248LL);
     }
-    v17 = &v16[v9 + !a7];
-    v18 = a1 - v17 + a2;
+    state_address = &text_cursor[input_value_2 + !a7];
+    integer_difference = a1 - state_address + a2;
     if ( a2 == -1 )
-      v18 = -1;
-    if ( (unsigned int)strcpy_s_sr(v17, v18, (__int64)"e+000") )
+      integer_difference = -1;
+    if ( (unsigned int)strcpy_s_sr(state_address, integer_difference, (__int64)"e+000") )
     {
       crt_invoke_watson();
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
-    v19 = (__m128i *)(v17 + 2);
+    destination_buffer = (__m128i *)(state_address + 2);
     if ( a4 )
-      *v17 = 69;
+      *state_address = 69;
     if ( **((_BYTE **)a6 + 1) != 48 )
     {
-      v20 = *((_DWORD *)a6 + 1) - 1;
-      if ( v20 < 0 )
+      loaded_word = *((_DWORD *)a6 + 1) - 1;
+      if ( loaded_word < 0 )
       {
-        v20 = 1 - *((_DWORD *)a6 + 1);
-        v17[1] = 45;
+        loaded_word = 1 - *((_DWORD *)a6 + 1);
+        state_address[1] = 45;
       }
-      if ( v20 >= 100 )
+      if ( loaded_word >= 100 )
       {
-        v17[2] += v20 / 100;
-        v20 %= 100;
+        state_address[2] += loaded_word / 100;
+        loaded_word %= 100;
       }
-      if ( v20 >= 10 )
+      if ( loaded_word >= 10 )
       {
-        v17[3] += v20 / 10;
-        LOBYTE(v20) = v20 % 10;
+        state_address[3] += loaded_word / 10;
+        LOBYTE(loaded_word) = loaded_word % 10;
       }
-      v17[4] += v20;
+      state_address[4] += loaded_word;
     }
-    if ( a5 == 2 && SR_VEC_PTR_LANES(128, v19, i8)[0] == 48 )
-      crt_memcpy(v19, (     __m128i *)(v17 + 3), 3u);
-    if ( v22 )
-      *(_DWORD *)(v21[0] + 936LL) &= ~2u;
+    if ( a5 == 2 && SR_VEC_PTR_LANES(128, destination_buffer, i8)[0] == 48 )
+      crt_memcpy(destination_buffer, (     __m128i *)(state_address + 3), 3u);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
     return 0;
   }
   else
@@ -14082,23 +14082,23 @@ __int64            fp_format_f(
         int a6,
         struct __crt_locale_pointers *     a7)
 {
-  __int64 v7;
-  _BOOL8 v10;
-  unsigned __int64 v11;
+  __int64 loaded_word;
+  _BOOL8 table_value;
+  unsigned __int64 integer_difference;
   __int64 result;
-  _QWORD v13[3];
+  _QWORD scratch_buffer[3];
 
-  v7 = *(_QWORD *)a1;
-  v13[0] = 0;
-  v13[1] = 0;
-  _acrt_fltout(v7, a6, (__int64)v13, a4, a5);
-  v10 = LODWORD(v13[0]) == 45;
-  v11 = a3 - v10;
+  loaded_word = *(_QWORD *)a1;
+  scratch_buffer[0] = 0;
+  scratch_buffer[1] = 0;
+  _acrt_fltout(loaded_word, a6, (__int64)scratch_buffer, a4, a5);
+  table_value = LODWORD(scratch_buffer[0]) == 45;
+  integer_difference = a3 - table_value;
   if ( a3 == -1 )
-    v11 = -1;
-  result = _acrt_fp_strflt_to_string((__int64)&a2[v10], v11, a6 + HIDWORD(v13[0]), (__int64)v13);
+    integer_difference = -1;
+  result = _acrt_fp_strflt_to_string((__int64)&a2[table_value], integer_difference, a6 + HIDWORD(scratch_buffer[0]), (__int64)scratch_buffer);
   if ( !(_DWORD)result )
-    return fp_format_f_internal(a2, a3, a6, (struct _strflt *    )v13, 0, a7);
+    return fp_format_f_internal(a2, a3, a6, (struct _strflt *    )scratch_buffer, 0, a7);
   *a2 = 0;
   return result;
 }
@@ -14112,65 +14112,65 @@ __int64            fp_format_f_internal(
         bool a5,
         struct __crt_locale_pointers *     a6)
 {
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  char *v12;
-  char *v13;
-  __int64 v14;
-  int v15;
-  int v16;
-  _QWORD v18[3];
-  char v19;
+  __int64 loaded_word;
+  __int64 element_index;
+  __int64 element_index_2;
+  char *source_buffer;
+  char *byte_cursor;
+  __int64 element_index_3;
+  int loaded_word_2;
+  int integer_difference;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)v18, a6);
-  v9 = *((int *)a4 + 1);
-  if ( a5 && (_DWORD)v9 - 1 == a3 )
-    *(_WORD *)&a1[(*(_DWORD *)a4 == 45) - 1 + v9] = 48;
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, a6);
+  loaded_word = *((int *)a4 + 1);
+  if ( a5 && (_DWORD)loaded_word - 1 == a3 )
+    *(_WORD *)&a1[(*(_DWORD *)a4 == 45) - 1 + loaded_word] = 48;
   if ( *(_DWORD *)a4 == 45 )
     *a1++ = 45;
-  v10 = -1;
+  element_index = -1;
   if ( *((int *)a4 + 1) > 0 )
   {
-    v12 = &a1[*((int *)a4 + 1)];
+    source_buffer = &a1[*((int *)a4 + 1)];
   }
   else
   {
-    v11 = -1;
+    element_index_2 = -1;
     do
-      ++v11;
-    while ( a1[v11] );
-    crt_memcpy((__m128i *)(a1 + 1), (     __m128i *)a1, v11 + 1);
+      ++element_index_2;
+    while ( a1[element_index_2] );
+    crt_memcpy((__m128i *)(a1 + 1), (     __m128i *)a1, element_index_2 + 1);
     *a1 = 48;
-    v12 = a1 + 1;
+    source_buffer = a1 + 1;
   }
   if ( a3 > 0 )
   {
-    v13 = v12 + 1;
-    v14 = -1;
+    byte_cursor = source_buffer + 1;
+    element_index_3 = -1;
     do
-      ++v14;
-    while ( v12[v14] );
-    crt_memcpy((__m128i *)(v12 + 1), (     __m128i *)v12, v14 + 1);
-    *v12 = ***(_BYTE ***)(v18[1] + 248LL);
-    v15 = *((_DWORD *)a4 + 1);
-    if ( v15 < 0 )
+      ++element_index_3;
+    while ( source_buffer[element_index_3] );
+    crt_memcpy((__m128i *)(source_buffer + 1), (     __m128i *)source_buffer, element_index_3 + 1);
+    *source_buffer = ***(_BYTE ***)(scratch_buffer[1] + 248LL);
+    loaded_word_2 = *((_DWORD *)a4 + 1);
+    if ( loaded_word_2 < 0 )
     {
-      v16 = -v15;
-      if ( a5 || v16 < a3 )
-        a3 = v16;
+      integer_difference = -loaded_word_2;
+      if ( a5 || integer_difference < a3 )
+        a3 = integer_difference;
       if ( a3 )
       {
         do
-          ++v10;
-        while ( v13[v10] );
-        crt_memcpy((__m128i *)&v13[a3], (     __m128i *)(v12 + 1), v10 + 1);
+          ++element_index;
+        while ( byte_cursor[element_index] );
+        crt_memcpy((__m128i *)&byte_cursor[a3], (     __m128i *)(source_buffer + 1), element_index + 1);
       }
-      crt_memset((void *)(uintptr_t)(v12 + 1), 0x30u, a3);
+      crt_memset((void *)(uintptr_t)(source_buffer + 1), 0x30u, a3);
     }
   }
-  if ( v19 )
-    *(_DWORD *)(v18[0] + 936LL) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   return 0;
 }
 
@@ -14186,46 +14186,46 @@ __int64            sub_140256604(
         unsigned int a8,
         struct sr_anon_68 *a9)
 {
-  __int64 v9;
-  _BOOL8 v12;
-  int v13;
-  unsigned __int64 v14;
-  char *v15;
+  __int64 loaded_word;
+  _BOOL8 table_value;
+  int integer_difference;
+  unsigned __int64 integer_difference_2;
+  char *text_cursor;
   __int64 result;
-  int v17;
-  _QWORD v19[3];
+  int integer_difference_3;
+  _QWORD scratch_buffer[3];
 
-  v9 = *a1;
-  v19[0] = 0;
-  v19[1] = 0;
-  _acrt_fltout(v9, a6, (__int64)v19, a4, a5);
-  v12 = LODWORD(v19[0]) == 45;
-  v13 = HIDWORD(v19[0]) - 1;
-  v14 = a3 - v12;
-  v15 = &a2[v12];
+  loaded_word = *a1;
+  scratch_buffer[0] = 0;
+  scratch_buffer[1] = 0;
+  _acrt_fltout(loaded_word, a6, (__int64)scratch_buffer, a4, a5);
+  table_value = LODWORD(scratch_buffer[0]) == 45;
+  integer_difference = HIDWORD(scratch_buffer[0]) - 1;
+  integer_difference_2 = a3 - table_value;
+  text_cursor = &a2[table_value];
   if ( a3 == -1 )
-    v14 = -1;
-  result = _acrt_fp_strflt_to_string((__int64)&a2[v12], v14, a6, (__int64)v19);
+    integer_difference_2 = -1;
+  result = _acrt_fp_strflt_to_string((__int64)&a2[table_value], integer_difference_2, a6, (__int64)scratch_buffer);
   if ( (_DWORD)result )
   {
     *a2 = 0;
   }
   else
   {
-    v17 = HIDWORD(v19[0]) - 1;
-    if ( HIDWORD(v19[0]) - 1 < -4 || v17 >= a6 )
+    integer_difference_3 = HIDWORD(scratch_buffer[0]) - 1;
+    if ( HIDWORD(scratch_buffer[0]) - 1 < -4 || integer_difference_3 >= a6 )
     {
-      return fp_format_e_internal(a2, a3, a6, a7, a8, (struct _strflt *    )v19, 1, a9);
+      return fp_format_e_internal(a2, a3, a6, a7, a8, (struct _strflt *    )scratch_buffer, 1, a9);
     }
     else
     {
-      if ( v13 < v17 )
+      if ( integer_difference < integer_difference_3 )
       {
-        while ( *v15++ )
+        while ( *text_cursor++ )
           ;
-        *(v15 - 2) = 0;
+        *(text_cursor - 2) = 0;
       }
-      return fp_format_f_internal(a2, a3, a6, (struct _strflt *    )v19, 1, a9);
+      return fp_format_f_internal(a2, a3, a6, (struct _strflt *    )scratch_buffer, 1, a9);
     }
   }
   return result;
@@ -14240,12 +14240,12 @@ __int64            fp_format_nan_or_infinity(
         unsigned __int8 a5)
 {
   __int64 result;
-  unsigned __int64 v8;
-  __int64 v9;
+  unsigned __int64 iteration_count;
+  __int64 scaled_index;
 
   if ( a4 >= (unsigned __int64)a2 + 4 )
   {
-    v8 = -1;
+    iteration_count = -1;
     if ( a2 )
     {
       *a3++ = 45;
@@ -14253,11 +14253,11 @@ __int64            fp_format_nan_or_infinity(
       if ( a4 != -1 )
         --a4;
     }
-    v9 = 4LL * (unsigned int)(a1 - 1);
+    scaled_index = 4LL * (unsigned int)(a1 - 1);
     do
-      ++v8;
-    while ( *((_BYTE *)*(off_14028B000 + 2 * (a5 ^ 1u) + v9) + v8) );
-    result = strcpy_s_sr(a3, a4, (__int64)*(off_14028B000 + 2 * (a5 ^ 1) + v9 + (a4 <= v8)));
+      ++iteration_count;
+    while ( *((_BYTE *)*(off_14028B000 + 2 * (a5 ^ 1u) + scaled_index) + iteration_count) );
+    result = strcpy_s_sr(a3, a4, (__int64)*(off_14028B000 + 2 * (a5 ^ 1) + scaled_index + (a4 <= iteration_count)));
     if ( (_DWORD)result )
     {
       crt_invoke_watson();
@@ -14277,15 +14277,15 @@ __int64            fp_format_nan_or_infinity(
 //----- (00000001402567E0) ----------------------------------------------------
 void            shift_bytes(char *     a1, __int64 a2,      __m128i *a3, int a4)
 {
-  __int64 v5;
+  __int64 element_index;
 
   if ( a4 )
   {
-    v5 = -1;
+    element_index = -1;
     do
-      ++v5;
-    while ( SR_VEC_PTR_LANES(128, a3, i8)[v5] );
-    crt_memcpy((__m128i *)((char *)a3 + a4), a3, v5 + 1);
+      ++element_index;
+    while ( SR_VEC_PTR_LANES(128, a3, i8)[element_index] );
+    crt_memcpy((__m128i *)((char *)a3 + a4), a3, element_index + 1);
   }
 }
 
@@ -14301,63 +14301,63 @@ __int64            sub_140256818(
         unsigned __int64 a8,
         struct sr_anon_68 *a9)
 {
-  unsigned __int64 v9;
-  __m128i *v10;
+  unsigned __int64 remaining_count;
+  __m128i *input_cursor;
   __int64 result;
-  bool v12;
-  __int64 v13;
-  unsigned int v14;
-  unsigned __int64 v15;
-  unsigned __int64 v16;
-  unsigned __int64 v17;
-  unsigned int v18;
-  __int64 v19;
-  _BOOL8 v20;
-  unsigned __int64 v21;
-  _QWORD v22[2];
+  bool comparison_result;
+  __int64 loaded_word;
+  unsigned int unused_written_slot;
+  unsigned __int64 comparison_result_2;
+  unsigned __int64 shifted_bits;
+  unsigned __int64 iteration_count;
+  unsigned int state_address;
+  __int64 loaded_word_2;
+  _BOOL8 table_value;
+  unsigned __int64 integer_difference;
+  _QWORD scratch_buffer[2];
 
-  v9 = a3;
-  v10 = a2;
+  remaining_count = a3;
+  input_cursor = a2;
   if ( !a2 || !a3 || !a4 || !a5 )
   {
     *errno_sr() = 22;
     crt_invalid_parameter_noinfo();
     return 22;
   }
-  v12 = a6 == 65 || (unsigned int)(a6 - 69) <= 2;
+  comparison_result = a6 == 65 || (unsigned int)(a6 - 69) <= 2;
   if ( (a8 & 8) == 0 )
   {
-    v13 = *(_QWORD *)a1;
+    loaded_word = *(_QWORD *)a1;
     if ( ((*(_QWORD *)a1 >> 52) & 0x7FFLL) == 0x7FF )
     {
-      v14 = 12;
-      if ( (v13 & 0xFFFFFFFFFFFFFLL) != 0 )
+      unused_written_slot = 12;
+      if ( (loaded_word & 0xFFFFFFFFFFFFFLL) != 0 )
       {
-        if ( v13 < 0 && (v13 & 0xFFFFFFFFFFFFFLL) == 0x8000000000000LL )
-          v15 = 12;
+        if ( loaded_word < 0 && (loaded_word & 0xFFFFFFFFFFFFFLL) == 0x8000000000000LL )
+          comparison_result_2 = 12;
         else
-          v15 = (-(__int64)((v13 & 0x8000000000000LL) != 0) & 0xFFFFFFFFFFFFFFFCuLL) + 8;
+          comparison_result_2 = (-(__int64)((loaded_word & 0x8000000000000LL) != 0) & 0xFFFFFFFFFFFFFFFCuLL) + 8;
       }
       else
       {
-        v15 = 0;
+        comparison_result_2 = 0;
       }
-      v16 = (unsigned __int64)v13 >> 63;
-      if ( v9 >= v16 + 4 )
+      shifted_bits = (unsigned __int64)loaded_word >> 63;
+      if ( remaining_count >= shifted_bits + 4 )
       {
-        v17 = -1;
-        if ( (_BYTE)v16 )
+        iteration_count = -1;
+        if ( (_BYTE)shifted_bits )
         {
-          SR_VEC_PTR_LANES(128, v10, i8)[0] = 45;
-          v10 = (__m128i *)((char *)v10 + 1);
-          SR_VEC_PTR_LANES(128, v10, i8)[0] = 0;
-          if ( v9 != -1 )
-            --v9;
+          SR_VEC_PTR_LANES(128, input_cursor, i8)[0] = 45;
+          input_cursor = (__m128i *)((char *)input_cursor + 1);
+          SR_VEC_PTR_LANES(128, input_cursor, i8)[0] = 0;
+          if ( remaining_count != -1 )
+            --remaining_count;
         }
         do
-          ++v17;
-        while ( *((_BYTE *)*(off_14028B000 + 2 * !v12 + v15) + v17) );
-        if ( (unsigned int)strcpy_s_sr(v10, v9, (__int64)*(off_14028B000 + 2 * !v12 + v15 + (v9 <= v17))) )
+          ++iteration_count;
+        while ( *((_BYTE *)*(off_14028B000 + 2 * !comparison_result + comparison_result_2) + iteration_count) );
+        if ( (unsigned int)strcpy_s_sr(input_cursor, remaining_count, (__int64)*(off_14028B000 + 2 * !comparison_result + comparison_result_2 + (remaining_count <= iteration_count))) )
         {
           crt_invoke_watson();
           __debugbreak();
@@ -14366,42 +14366,42 @@ __int64            sub_140256818(
       }
       else
       {
-        SR_VEC_PTR_LANES(128, v10, i8)[0] = 0;
+        SR_VEC_PTR_LANES(128, input_cursor, i8)[0] = 0;
       }
-      return v14;
+      return unused_written_slot;
     }
   }
-  v18 = (a8 >> 4) & 1 | 2;
+  state_address = (a8 >> 4) & 1 | 2;
   switch ( a6 )
   {
     case 'A':
-      return fp_format_a(a1, v10, v9, a4, a5, a7, v12, v18, a9);
+      return fp_format_a(a1, input_cursor, remaining_count, a4, a5, a7, comparison_result, state_address, a9);
     case 'E':
-      return fp_format_e(a1, SR_VEC_PTR_LANES(128, v10, i8), v9, a4, a5, a7, v12, v18, a9);
+      return fp_format_e(a1, SR_VEC_PTR_LANES(128, input_cursor, i8), remaining_count, a4, a5, a7, comparison_result, state_address, a9);
     case 'F':
       goto LABEL_35;
     case 'G':
-      return sub_140256604((__int64 *)a1, SR_VEC_PTR_LANES(128, v10, i8), v9, a4, a5, a7, v12, v18, a9);
+      return sub_140256604((__int64 *)a1, SR_VEC_PTR_LANES(128, input_cursor, i8), remaining_count, a4, a5, a7, comparison_result, state_address, a9);
     case 'a':
-      return fp_format_a(a1, v10, v9, a4, a5, a7, v12, v18, a9);
+      return fp_format_a(a1, input_cursor, remaining_count, a4, a5, a7, comparison_result, state_address, a9);
     case 'e':
-      return fp_format_e(a1, SR_VEC_PTR_LANES(128, v10, i8), v9, a4, a5, a7, v12, v18, a9);
+      return fp_format_e(a1, SR_VEC_PTR_LANES(128, input_cursor, i8), remaining_count, a4, a5, a7, comparison_result, state_address, a9);
   }
   if ( a6 != 102 )
-    return sub_140256604((__int64 *)a1, SR_VEC_PTR_LANES(128, v10, i8), v9, a4, a5, a7, v12, v18, a9);
+    return sub_140256604((__int64 *)a1, SR_VEC_PTR_LANES(128, input_cursor, i8), remaining_count, a4, a5, a7, comparison_result, state_address, a9);
 LABEL_35:
-  v19 = *(_QWORD *)a1;
-  v22[0] = 0;
-  v22[1] = 0;
-  _acrt_fltout(v19, a7, (__int64)v22, a4, a5);
-  v20 = LODWORD(v22[0]) == 45;
-  v21 = v9 - v20;
-  if ( v9 == -1 )
-    v21 = -1;
-  result = _acrt_fp_strflt_to_string((__int64)SR_VEC_PTR_LANES(128, v10, i64) + v20, v21, a7 + HIDWORD(v22[0]), (__int64)v22);
+  loaded_word_2 = *(_QWORD *)a1;
+  scratch_buffer[0] = 0;
+  scratch_buffer[1] = 0;
+  _acrt_fltout(loaded_word_2, a7, (__int64)scratch_buffer, a4, a5);
+  table_value = LODWORD(scratch_buffer[0]) == 45;
+  integer_difference = remaining_count - table_value;
+  if ( remaining_count == -1 )
+    integer_difference = -1;
+  result = _acrt_fp_strflt_to_string((__int64)SR_VEC_PTR_LANES(128, input_cursor, i64) + table_value, integer_difference, a7 + HIDWORD(scratch_buffer[0]), (__int64)scratch_buffer);
   if ( !(_DWORD)result )
-    return fp_format_f_internal(SR_VEC_PTR_LANES(128, v10, i8), v9, a7, (struct _strflt *    )v22, 0, a9);
-  SR_VEC_PTR_LANES(128, v10, i8)[0] = 0;
+    return fp_format_f_internal(SR_VEC_PTR_LANES(128, input_cursor, i8), remaining_count, a7, (struct _strflt *    )scratch_buffer, 0, a9);
+  SR_VEC_PTR_LANES(128, input_cursor, i8)[0] = 0;
   return result;
 }
 
@@ -14409,11 +14409,11 @@ LABEL_35:
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_878(unsigned __int16 a1, __int64 a2)
 {
-  bool v2;
+  bool comparison_result;
 
-  v2 = *(_DWORD *)(a2 + 16) - 2 < 0;
+  comparison_result = *(_DWORD *)(a2 + 16) - 2 < 0;
   *(_DWORD *)(a2 + 16) -= 2;
-  if ( v2 )
+  if ( comparison_result )
     return sub_140251E94(a1, a2);
   **(_WORD **)a2 = a1;
   *(_QWORD *)a2 += 2LL;
@@ -14423,25 +14423,25 @@ __int64            unknown_libname_878(unsigned __int16 a1, __int64 a2)
 //----- (0000000140256B38) ----------------------------------------------------
 __int64            sub_140256B38(unsigned __int16 a1, __int64 a2)
 {
-  __int64 v2;
-  bool v4;
-  char *v5;
-  __int64 v6;
-  _BYTE *v7;
-  __int64 v8;
-  int v9;
-  unsigned __int8 *v10;
-  __int64 v12;
-  int v13;
-  _BYTE v14[12];
-  __int64 v15;
+  __int64 running_total;
+  bool comparison_result;
+  char *fileno_result;
+  __int64 fileno_result_2;
+  _BYTE *fileno_result_3;
+  __int64 fileno_result_4;
+  int iteration_count;
+  unsigned __int8 *buffer_cursor;
+  __int64 unused_local;
+  int callee_output_word;
+  _BYTE scratch_buffer[12];
+  __int64 unused_local_2;
 
-  v2 = a2;
+  running_total = a2;
   if ( (*(_DWORD *)(a2 + 20) & 0x1000) != 0 )
   {
-    v4 = *(_DWORD *)(a2 + 16) - 2 < 0;
+    comparison_result = *(_DWORD *)(a2 + 16) - 2 < 0;
     *(_DWORD *)(a2 + 16) -= 2;
-    if ( !v4 )
+    if ( !comparison_result )
     {
       **(_WORD **)a2 = a1;
       *(_QWORD *)a2 += 2LL;
@@ -14450,55 +14450,55 @@ __int64            sub_140256B38(unsigned __int16 a1, __int64 a2)
 LABEL_22:
     return sub_140251E94(a1, a2); /* 0x140256C80: the call's result stays in rax */
   }
-  v5 = (char *)&unk_1403022C0;
-  if ( fileno((FILE *)a2) == -1 || fileno((FILE *)v2) == -2 )
+  fileno_result = (char *)&unk_1403022C0;
+  if ( fileno((FILE *)a2) == -1 || fileno((FILE *)running_total) == -2 )
   {
-    v7 = &unk_1403022C0;
+    fileno_result_3 = &unk_1403022C0;
   }
   else
   {
-    v6 = (__int64)fileno((FILE *)v2) >> 6;
-    v7 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (fileno((FILE *)v2) & 0x3F));
+    fileno_result_2 = (__int64)fileno((FILE *)running_total) >> 6;
+    fileno_result_3 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result_2 + 19065401] + 72LL * (fileno((FILE *)running_total) & 0x3F));
   }
-  if ( (unsigned __int8)(v7[57] - 1) <= 1u )
+  if ( (unsigned __int8)(fileno_result_3[57] - 1) <= 1u )
     goto LABEL_20;
-  if ( fileno((FILE *)v2) != -1 && fileno((FILE *)v2) != -2 )
+  if ( fileno((FILE *)running_total) != -1 && fileno((FILE *)running_total) != -2 )
   {
-    v8 = (__int64)fileno((FILE *)v2) >> 6;
-    v5 = (char *)(*(_QWORD *)&dword_140404A6C[2 * v8 + 19065401] + 72LL * (fileno((FILE *)v2) & 0x3F));
+    fileno_result_4 = (__int64)fileno((FILE *)running_total) >> 6;
+    fileno_result = (char *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result_4 + 19065401] + 72LL * (fileno((FILE *)running_total) & 0x3F));
   }
-  v9 = 0;
-  if ( v5[56] >= 0 )
+  iteration_count = 0;
+  if ( fileno_result[56] >= 0 )
   {
 LABEL_20:
-    v4 = *(_DWORD *)(v2 + 16) - 2 < 0;
-    *(_DWORD *)(v2 + 16) -= 2;
-    if ( !v4 )
+    comparison_result = *(_DWORD *)(running_total + 16) - 2 < 0;
+    *(_DWORD *)(running_total + 16) -= 2;
+    if ( !comparison_result )
     {
-      **(_WORD **)v2 = a1;
-      *(_QWORD *)v2 += 2LL;
+      **(_WORD **)running_total = a1;
+      *(_QWORD *)running_total += 2LL;
       return a1; /* 0x140256C91: movzx eax, si */
     }
-    a2 = v2;
+    a2 = running_total;
     goto LABEL_22;
   }
   int sr_failed;
   if ( !(sr_failed = (int)CDialog__CreateIndirect(
-                        (CDialog *)&v13,
-                        (     struct DLGTEMPLATE *)v14,
+                        (CDialog *)&callee_output_word,
+                        (     struct DLGTEMPLATE *)scratch_buffer,
                         (struct CWnd *)5,
                         (void *)a1))
-    && v13 > 0 )
+    && callee_output_word > 0 )
   {
-    v10 = v14;
+    buffer_cursor = scratch_buffer;
     do
     {
-      if ( (unsigned int)unknown_libname_207(*v10, v2) == -1 )
+      if ( (unsigned int)unknown_libname_207(*buffer_cursor, running_total) == -1 )
         return 0xFFFF; /* 0x140256C5E: je -> mov eax, 0xffff */
-      ++v9;
-      ++v10;
+      ++iteration_count;
+      ++buffer_cursor;
     }
-    while ( v9 < v13 );
+    while ( iteration_count < callee_output_word );
   }
   return sr_failed ? 0xFFFF : a1; /* 0x140256C42: -> mov eax, 0xffff when the conversion failed; else 0x140256C91: movzx eax, si */
 }
@@ -14506,10 +14506,10 @@ LABEL_20:
 //----- (0000000140256CB4) ----------------------------------------------------
 __int64            fputwchar(unsigned __int16 a1)
 {
-  char *v2;
+  char *returned_pointer;
 
-  v2 = sub_14020B528(1u);
-  return sub_140256CE0(a1, (__int64)v2);
+  returned_pointer = sub_14020B528(1u);
+  return sub_140256CE0(a1, (__int64)returned_pointer);
 }
 
 // 140256CB4: invalid function type 'wint_t __cdecl fputwchar(#57 Character)' has been ignored
@@ -14517,14 +14517,14 @@ __int64            fputwchar(unsigned __int16 a1)
 //----- (0000000140256CE0) ----------------------------------------------------
 __int64            sub_140256CE0(unsigned __int16 a1, __int64 a2)
 {
-  unsigned __int16 v5;
+  unsigned __int16 unused_written_slot;
 
   if ( a2 )
   {
     crt_lock_file(a2);
-    v5 = sub_140256B38(a1, a2);
+    unused_written_slot = sub_140256B38(a1, a2);
     crt_unlock_file(a2);
-    return v5;
+    return unused_written_slot;
   }
   else
   {
@@ -14543,43 +14543,43 @@ int         get_printf_count_output()
 //----- (0000000140256D90) ----------------------------------------------------
 __int64 sub_140256D90()
 {
-  __int64 v0;
-  __int64 v2;
+  __int64 call_result;
+  __int64 loaded_word;
 
-  v0 = sub_140255A70();
-  v2 = *(_QWORD *)(v0 + 144);
-  sub_140255D2C(v0, &v2);
-  return v2 + 8;
+  call_result = sub_140255A70();
+  loaded_word = *(_QWORD *)(call_result + 144);
+  sub_140255D2C(call_result, &loaded_word);
+  return loaded_word + 8;
 }
 
 //----- (0000000140256DC0) ----------------------------------------------------
      unsigned __int16 *        sub_140256DC0()
 {
-  __int64 v0;
-       unsigned __int16 **v2;
+  __int64 call_result;
+       unsigned __int16 **loaded_record_pointer;
 
-  v0 = sub_140255A70();
-  v2 = *(     unsigned __int16 ***)(v0 + 144);
-  sub_140255D2C(v0, (__int64 *)&v2);
-  return *v2;
+  call_result = sub_140255A70();
+  loaded_record_pointer = *(     unsigned __int16 ***)(call_result + 144);
+  sub_140255D2C(call_result, (__int64 *)&loaded_record_pointer);
+  return *loaded_record_pointer;
 }
 
 //----- (0000000140256E00) ----------------------------------------------------
 __int64            sub_140256E00(unsigned __int16 a1, __int16 a2)
 {
-  __int16 v3;
+  __int16 masked_bits;
 
   if ( a1 != 0xFFFF )
   {
     if ( a1 < 0x100u )
     {
-      v3 = *(_WORD *)&off_140302598[a1][0];
-      return (unsigned __int16)(a2 & v3);
+      masked_bits = *(_WORD *)&off_140302598[a1][0];
+      return (unsigned __int16)(a2 & masked_bits);
     }
     if ( (unsigned int)sub_140269844() )
     {
-      v3 = 0;
-      return (unsigned __int16)(a2 & v3);
+      masked_bits = 0;
+      return (unsigned __int16)(a2 & masked_bits);
     }
   }
   return 0;
@@ -14588,57 +14588,57 @@ __int64            sub_140256E00(unsigned __int16 a1, __int16 a2)
 //----- (0000000140256EA0) ----------------------------------------------------
 __int64            isctype_l(int a1, __int64 a2, struct __crt_locale_pointers *a3)
 {
-  __int64 v4;
-  __int64 v6;
-  char v7;
-  char v8;
-  char v9;
-  __int64 v10;
-  __int64 v11;
-  char v12;
-  int v13;
-  __int16 v14;
-  __int64 v15;
+  __int64 selection_code;
+  __int64 unused_local;
+  char byte1_result;
+  char unused_written_slot;
+  char unused_written_slot_2;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
+  int selection_flag;
+  __int16 unused_written_slot_3;
+  __int64 unused_local_2;
 
   unsigned int sr_result = 0; /* 0x140256F69: xor eax, eax */
-  crt_locale_update((_LocaleUpdate *)&v10, a3);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a3);
   if ( (unsigned int)(a1 + 1) <= 0x100 )
   {
-    sr_result = *(unsigned __int16 *)(*(_QWORD *)v11 + 2LL * a1) & (unsigned int)a2; /* 0x140256EEC: movzx eax, word ptr [rcx + rdi*2]; and eax, esi */
+    sr_result = *(unsigned __int16 *)(*(_QWORD *)callee_output_word_2 + 2LL * a1) & (unsigned int)a2; /* 0x140256EEC: movzx eax, word ptr [rcx + rdi*2]; and eax, esi */
     goto LABEL_9;
   }
-  if ( *(__int16 *)(*(_QWORD *)v11 + 2LL * BYTE1(a1)) >= 0 )
+  if ( *(__int16 *)(*(_QWORD *)callee_output_word_2 + 2LL * BYTE1(a1)) >= 0 )
   {
-    v7 = a1;
-    v4 = 1;
-    v8 = 0;
+    byte1_result = a1;
+    selection_code = 1;
+    unused_written_slot = 0;
   }
   else
   {
-    v7 = BYTE1(a1);
-    v4 = 2;
-    v8 = a1;
-    v9 = 0;
+    byte1_result = BYTE1(a1);
+    selection_code = 2;
+    unused_written_slot = a1;
+    unused_written_slot_2 = 0;
   }
-  v13 = 0;
-  v14 = 0;
+  selection_flag = 0;
+  unused_written_slot_3 = 0;
   if ( (unsigned int)sub_140262618(
-                       (struct __crt_locale_pointers *)&v11,
+                       (struct __crt_locale_pointers *)&callee_output_word_2,
                        1u,
-                       (__int64)&v7,
-                       v4,
-                       (__int64)&v13,
-                       *(_DWORD *)(v11 + 12),
+                       (__int64)&byte1_result,
+                       selection_code,
+                       (__int64)&selection_flag,
+                       *(_DWORD *)(callee_output_word_2 + 12),
                        1) )
   {
-    sr_result = (unsigned __int16)v13 & (unsigned int)a2; /* 0x140256F6D: movzx eax, word ptr [rbp - 0x18]; and eax, esi */
+    sr_result = (unsigned __int16)selection_flag & (unsigned int)a2; /* 0x140256F6D: movzx eax, word ptr [rbp - 0x18]; and eax, esi */
 LABEL_9:
-    if ( v12 )
-      *(_DWORD *)(v10 + 936) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
-  else if ( v12 )
+  else if ( unrecovered_register_value )
   {
-    *(_DWORD *)(v10 + 936) &= ~2u;
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   return sr_result; /* 0x140256F71: and eax, esi */
 }
@@ -14648,41 +14648,41 @@ LABEL_9:
 //----- (0000000140256FEC) ----------------------------------------------------
 __int64            sub_140256FEC(unsigned __int8 a1)
 {
-  int v2;
-  unsigned int v3;
+  int call_result;
+  unsigned int unused_written_slot;
 
-  v2 = sub_1402573C0(a1);
-  v3 = 0;
-  if ( v2 || a1 == 95 )
+  call_result = sub_1402573C0(a1);
+  unused_written_slot = 0;
+  if ( call_result || a1 == 95 )
     return 1;
-  return v3;
+  return unused_written_slot;
 }
 
 //----- (0000000140257014) ----------------------------------------------------
 __int64            sub_140257014(unsigned int a1)
 {
-  int v2;
-  unsigned int v3;
+  int call_result;
+  unsigned int unused_written_slot;
 
-  v2 = sub_140257430(a1);
-  v3 = 0;
-  if ( v2 || a1 == 95 )
+  call_result = sub_140257430(a1);
+  unused_written_slot = 0;
+  if ( call_result || a1 == 95 )
     return 1;
-  return v3;
+  return unused_written_slot;
 }
 
 //----- (0000000140257044) ----------------------------------------------------
 __int64            sub_140257044(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
   result = crt_isctype_l(a1, 263, (struct __crt_locale_pointers *)&Locale);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14690,14 +14690,14 @@ __int64            sub_140257044(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_140257080(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
   result = crt_isctype_l(a1, 259, (struct __crt_locale_pointers *)&Locale);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14705,17 +14705,17 @@ __int64            sub_140257080(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_1402570BC(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
   if ( a1 == 9 )
     result = 64;
   else
     result = crt_isctype_l(a1, 64, (struct __crt_locale_pointers *)&Locale);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14723,32 +14723,32 @@ __int64            sub_1402570BC(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_140257104(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
   result = crt_isctype_l(a1, 32, (struct __crt_locale_pointers *)&Locale);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
 //----- (0000000140257140) ----------------------------------------------------
 __int64            sub_140257140(unsigned int a1, struct __crt_locale_pointers *a2)
 {
-  int v3;
+  int isctype_l_result;
   __int64 result;
-  __int64 v5;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v7;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v5, a2);
-  v3 = crt_isctype_l(a1, 263, (struct __crt_locale_pointers *)&Locale);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
+  isctype_l_result = crt_isctype_l(a1, 263, (struct __crt_locale_pointers *)&Locale);
   result = 0;
-  if ( v7 )
-    *(_DWORD *)(v5 + 936) &= ~2u;
-  if ( v3 || a1 == 95 )
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
+  if ( isctype_l_result || a1 == 95 )
     return 1;
   return result;
 }
@@ -14756,18 +14756,18 @@ __int64            sub_140257140(unsigned int a1, struct __crt_locale_pointers *
 //----- (0000000140257190) ----------------------------------------------------
 __int64            sub_140257190(unsigned int a1, struct __crt_locale_pointers *a2)
 {
-  int v3;
+  int isctype_l_result;
   __int64 result;
-  __int64 v5;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v7;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v5, a2);
-  v3 = crt_isctype_l(a1, 259, (struct __crt_locale_pointers *)&Locale);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
+  isctype_l_result = crt_isctype_l(a1, 259, (struct __crt_locale_pointers *)&Locale);
   result = 0;
-  if ( v7 )
-    *(_DWORD *)(v5 + 936) &= ~2u;
-  if ( v3 || a1 == 95 )
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
+  if ( isctype_l_result || a1 == 95 )
     return 1;
   return result;
 }
@@ -14776,14 +14776,14 @@ __int64            sub_140257190(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_1402571E0(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
   result = crt_isctype_l(a1, 4, (struct __crt_locale_pointers *)&Locale);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14791,14 +14791,14 @@ __int64            sub_1402571E0(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_14025721C(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
   result = crt_isctype_l(a1, 279, (struct __crt_locale_pointers *)&Locale);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14806,14 +14806,14 @@ __int64            sub_14025721C(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_140257258(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
   result = crt_isctype_l(a1, 2, (struct __crt_locale_pointers *)&Locale);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14821,14 +14821,14 @@ __int64            sub_140257258(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_140257294(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
-  result = crt_isctype_l(a1, 343, (struct __crt_locale_pointers *)&v5);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
+  result = crt_isctype_l(a1, 343, (struct __crt_locale_pointers *)&callee_output_word_2);
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14836,14 +14836,14 @@ __int64            sub_140257294(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_1402572D0(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
-  result = crt_isctype_l(a1, 16, (struct __crt_locale_pointers *)&v5);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
+  result = crt_isctype_l(a1, 16, (struct __crt_locale_pointers *)&callee_output_word_2);
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14851,14 +14851,14 @@ __int64            sub_1402572D0(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_14025730C(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
-  result = crt_isctype_l(a1, 8, (struct __crt_locale_pointers *)&v5);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
+  result = crt_isctype_l(a1, 8, (struct __crt_locale_pointers *)&callee_output_word_2);
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14866,14 +14866,14 @@ __int64            sub_14025730C(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_140257348(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
-  result = crt_isctype_l(a1, 1, (struct __crt_locale_pointers *)&v5);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
+  result = crt_isctype_l(a1, 1, (struct __crt_locale_pointers *)&callee_output_word_2);
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
@@ -14881,39 +14881,39 @@ __int64            sub_140257348(unsigned int a1, struct __crt_locale_pointers *
 __int64            sub_140257384(unsigned int a1, struct __crt_locale_pointers *a2)
 {
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)&v4, a2);
-  result = crt_isctype_l(a1, 128, (struct __crt_locale_pointers *)&v5);
-  if ( v6 )
-    *(_DWORD *)(v4 + 936) &= ~2u;
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
+  result = crt_isctype_l(a1, 128, (struct __crt_locale_pointers *)&callee_output_word_2);
+  if ( unrecovered_register_value )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
 //----- (00000001402573C0) ----------------------------------------------------
 __int64            sub_1402573C0(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 263, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 263, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 0x107;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -14921,25 +14921,25 @@ __int64            sub_1402573C0(unsigned int a1)
 //----- (0000000140257430) ----------------------------------------------------
 __int64            sub_140257430(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 259, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 259, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 0x103;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -14947,22 +14947,22 @@ __int64            sub_140257430(unsigned int a1)
 //----- (00000001402574A0) ----------------------------------------------------
 __int64            sub_1402574A0(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
     if ( a1 == 9 )
       result = 64;
     else
-      result = crt_isctype_l(a1, 64, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+      result = crt_isctype_l(a1, 64, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else if ( a1 == 9 )
   {
@@ -14972,7 +14972,7 @@ __int64            sub_1402574A0(unsigned int a1)
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 0x40;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -14980,25 +14980,25 @@ __int64            sub_1402574A0(unsigned int a1)
 //----- (0000000140257524) ----------------------------------------------------
 __int64            sub_140257524(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 32, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 32, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 0x20;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15006,25 +15006,25 @@ __int64            sub_140257524(unsigned int a1)
 //----- (0000000140257590) ----------------------------------------------------
 __int64            sub_140257590(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 4, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 4, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 4;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15032,25 +15032,25 @@ __int64            sub_140257590(unsigned int a1)
 //----- (00000001402575FC) ----------------------------------------------------
 __int64            sub_1402575FC(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 279, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 279, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 0x117;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15058,25 +15058,25 @@ __int64            sub_1402575FC(unsigned int a1)
 //----- (000000014025766C) ----------------------------------------------------
 __int64            sub_14025766C(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 2, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 2, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 2;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15084,25 +15084,25 @@ __int64            sub_14025766C(unsigned int a1)
 //----- (00000001402576D8) ----------------------------------------------------
 __int64            sub_1402576D8(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 343, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 343, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 0x157;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15110,25 +15110,25 @@ __int64            sub_1402576D8(unsigned int a1)
 //----- (0000000140257748) ----------------------------------------------------
 __int64            sub_140257748(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 16, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 16, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 0x10;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15136,25 +15136,25 @@ __int64            sub_140257748(unsigned int a1)
 //----- (00000001402577B4) ----------------------------------------------------
 __int64            sub_1402577B4(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
-  __int64 v5;
-  char v6;
+  __int64 callee_output_word;
+  __int64 callee_output_word_2;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
-    result = crt_isctype_l(a1, 8, (struct __crt_locale_pointers *)&v5);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+    result = crt_isctype_l(a1, 8, (struct __crt_locale_pointers *)&callee_output_word_2);
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 8;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15162,25 +15162,25 @@ __int64            sub_1402577B4(unsigned int a1)
 //----- (0000000140257820) ----------------------------------------------------
 __int64            sub_140257820(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
     result = crt_isctype_l(a1, 1, (struct __crt_locale_pointers *)&Locale);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 1;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15188,25 +15188,25 @@ __int64            sub_140257820(unsigned int a1)
 //----- (000000014025788C) ----------------------------------------------------
 __int64            sub_14025788C(unsigned int a1)
 {
-  unsigned int v1;
+  unsigned int unused_written_slot;
   __int64 result;
-  __int64 v4;
+  __int64 callee_output_word;
   __int128 Locale;
-  char v6;
+  char unrecovered_register_value;
 
-  v1 = 0;
+  unused_written_slot = 0;
   if ( g_144CBF178 )
   {
-    crt_locale_update((_LocaleUpdate *)&v4, nullptr);
+    crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
     result = crt_isctype_l(a1, 128, (struct __crt_locale_pointers *)&Locale);
-    if ( v6 )
-      *(_DWORD *)(v4 + 936) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(callee_output_word + 936) &= ~2u;
   }
   else
   {
     if ( a1 + 1 <= 0x100 )
       return off_140302420[a1] & 0x80;
-    return v1;
+    return unused_written_slot;
   }
   return result;
 }
@@ -15214,48 +15214,48 @@ __int64            sub_14025788C(unsigned int a1)
 //----- (00000001402578FC) ----------------------------------------------------
 __int64            fgetwc_nolock(FILE *Stream)
 {
-  __int64 v2;
-  char *v3;
-  __int64 v4;
-  _BYTE *v5;
-  unsigned __int16 *v6;
-  int v7;
+  __int64 selection_code;
+  char *fileno_result;
+  __int64 fileno_result_2;
+  _BYTE *fileno_result_3;
+  unsigned __int16 *saved_getc_nolock_result;
+  int getc_nolock_result;
   __int64 result;
-  __int64 v9;
-  int v10;
-  int v11;
-  int v12;
-  unsigned __int16 v13;
-  char v14;
+  __int64 fileno_result_4;
+  int getc_nolock_result_2;
+  int getc_nolock_result_3;
+  int loaded_word;
+  unsigned __int16 callee_output_word;
+  char callee_output_word_2;
   __int64 DstCh;
   char SrcCh;
-  char v17;
+  char unused_written_slot;
 
-  v2 = 1;
-  v3 = (char *)&unk_1403022C0;
+  selection_code = 1;
+  fileno_result = (char *)&unk_1403022C0;
   if ( (*((_DWORD *)Stream + 5) & 0x1000) == 0 )
   {
     if ( fileno(Stream) == -1 || fileno(Stream) == -2 )
     {
-      v5 = &unk_1403022C0;
+      fileno_result_3 = &unk_1403022C0;
     }
     else
     {
-      v4 = (__int64)fileno(Stream) >> 6;
-      v5 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v4 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
+      fileno_result_2 = (__int64)fileno(Stream) >> 6;
+      fileno_result_3 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result_2 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
     }
-    if ( v5[57] )
+    if ( fileno_result_3[57] )
     {
-      v6 = &v13;
+      saved_getc_nolock_result = &callee_output_word;
       while ( 1 )
       {
-        v7 = getc_nolock(Stream);
-        if ( v7 == -1 )
+        getc_nolock_result = getc_nolock(Stream);
+        if ( getc_nolock_result == -1 )
           break;
-        *(_BYTE *)v6 = v7;
-        v6 = (unsigned __int16 *)((char *)v6 + 1);
-        if ( v6 == (unsigned __int16 *)&v14 )
-          return v13;
+        *(_BYTE *)saved_getc_nolock_result = getc_nolock_result;
+        saved_getc_nolock_result = (unsigned __int16 *)((char *)saved_getc_nolock_result + 1);
+        if ( saved_getc_nolock_result == (unsigned __int16 *)&callee_output_word_2 )
+          return callee_output_word;
       }
       return 0xFFFF;
     }
@@ -15264,42 +15264,42 @@ __int64            fgetwc_nolock(FILE *Stream)
     goto LABEL_25;
   if ( fileno(Stream) != -1 && fileno(Stream) != -2 )
   {
-    v9 = (__int64)fileno(Stream) >> 6;
-    v3 = (char *)(*(_QWORD *)&dword_140404A6C[2 * v9 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
+    fileno_result_4 = (__int64)fileno(Stream) >> 6;
+    fileno_result = (char *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result_4 + 19065401] + 72LL * (fileno(Stream) & 0x3F));
   }
-  if ( v3[56] >= 0 )
+  if ( fileno_result[56] >= 0 )
   {
 LABEL_25:
-    v12 = *((_DWORD *)Stream + 4);
-    if ( v12 < 2 )
+    loaded_word = *((_DWORD *)Stream + 4);
+    if ( loaded_word < 2 )
     {
       return _acrt_stdio_refill_and_read_wide_nolock(Stream);
     }
     else
     {
-      *((_DWORD *)Stream + 4) = v12 - 2;
+      *((_DWORD *)Stream + 4) = loaded_word - 2;
       result = **(unsigned __int16 **)Stream;
       *(_QWORD *)Stream += 2LL;
     }
   }
   else
   {
-    v10 = getc_nolock(Stream);
-    if ( v10 == -1 )
+    getc_nolock_result_2 = getc_nolock(Stream);
+    if ( getc_nolock_result_2 == -1 )
       return 0xFFFF;
-    SrcCh = v10;
-    if ( (sub_140256DC0()[(unsigned __int8)v10] & 0x8000u) != 0 )
+    SrcCh = getc_nolock_result_2;
+    if ( (sub_140256DC0()[(unsigned __int8)getc_nolock_result_2] & 0x8000u) != 0 )
     {
-      v11 = getc_nolock(Stream);
-      if ( v11 == -1 )
+      getc_nolock_result_3 = getc_nolock(Stream);
+      if ( getc_nolock_result_3 == -1 )
       {
         sub_14020CFB8(SrcCh, Stream);
         return 0xFFFF;
       }
-      v17 = v11;
-      v2 = 2;
+      unused_written_slot = getc_nolock_result_3;
+      selection_code = 2;
     }
-    if ( (unsigned int)sub_140254140((sr_anon_115 *)&DstCh, (sr_anon_49 *)&SrcCh, (char *)v2) == -1 )
+    if ( (unsigned int)sub_140254140((sr_anon_115 *)&DstCh, (sr_anon_49 *)&SrcCh, (char *)selection_code) == -1 )
     {
       *errno_sr() = 42;
       return 0xFFFF;
@@ -15314,10 +15314,10 @@ LABEL_25:
 //----- (0000000140257AA0) ----------------------------------------------------
 __int64 sub_140257AA0()
 {
-  char *v0;
+  char *returned_pointer;
 
-  v0 = sub_14020B528(0);
-  return fgetwc_sr((FILE *)v0);
+  returned_pointer = sub_14020B528(0);
+  return fgetwc_sr((FILE *)returned_pointer);
 }
 
 //----- (0000000140257AB8) ----------------------------------------------------
@@ -15330,14 +15330,14 @@ __int64            j__fgetwc_nolock(FILE *Stream)
 //----- (0000000140257AC0) ----------------------------------------------------
 __int64            fgetwc_sr(FILE *Stream)
 {
-  unsigned __int16 v3;
+  unsigned __int16 unused_written_slot;
 
   if ( Stream )
   {
     crt_lock_file((__int64)Stream);
-    v3 = fgetwc_nolock(Stream);
+    unused_written_slot = fgetwc_nolock(Stream);
     crt_unlock_file((__int64)Stream);
-    return v3;
+    return unused_written_slot;
   }
   else
   {
@@ -15352,10 +15352,10 @@ __int64            fgetwc_sr(FILE *Stream)
 //----- (0000000140257B20) ----------------------------------------------------
 __int64 sub_140257B20()
 {
-  char *v0;
+  char *returned_pointer;
 
-  v0 = sub_14020B528(0);
-  return fgetwc_sr((FILE *)v0);
+  returned_pointer = sub_14020B528(0);
+  return fgetwc_sr((FILE *)returned_pointer);
 }
 
 // 140257B20: invalid function type 'wint_t __cdecl sub_140257B20()' has been ignored
@@ -15363,38 +15363,38 @@ __int64 sub_140257B20()
 //----- (0000000140257B98) ----------------------------------------------------
 __int64            ungetwc_text_mode_nolock(unsigned __int16 a1, __int64 a2)
 {
-  __int64 v4;
-  _BYTE *v5;
-  char v6;
-  int v7;
-  unsigned __int64 v8;
-  __int64 v9;
-  char v10;
-  __int64 v12;
-  unsigned __int16 v13;
+  __int64 fileno_result;
+  _BYTE *fileno_result_2;
+  char table_value;
+  int cached_sizeconverted;
+  unsigned __int64 loaded_word;
+  __int64 remaining_count;
+  char integer_difference;
+  __int64 unused_local;
+  unsigned __int16 input_value;
   int SizeConverted;
   char MbCh[4];
-  char v16;
-  __int64 v17;
+  char unused_written_slot;
+  __int64 unused_local_2;
 
-  v13 = a1;
+  input_value = a1;
   if ( fileno((FILE *)a2) == -1 || fileno((FILE *)a2) == -2 )
   {
-    v5 = &unk_1403022C0;
+    fileno_result_2 = &unk_1403022C0;
   }
   else
   {
-    v4 = (__int64)fileno((FILE *)a2) >> 6;
-    v5 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * v4 + 19065401] + 72LL * (fileno((FILE *)a2) & 0x3F));
+    fileno_result = (__int64)fileno((FILE *)a2) >> 6;
+    fileno_result_2 = (_BYTE *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result + 19065401] + 72LL * (fileno((FILE *)a2) & 0x3F));
   }
-  v6 = v5[57];
+  table_value = fileno_result_2[57];
   SizeConverted = 0;
   *(_DWORD *)MbCh = 0;
-  v16 = 0;
-  if ( v6 )
+  unused_written_slot = 0;
+  if ( table_value )
   {
-    v7 = 2;
-    MbCh[1] = HIBYTE(v13);
+    cached_sizeconverted = 2;
+    MbCh[1] = HIBYTE(input_value);
     SizeConverted = 2;
     MbCh[0] = a1;
   }
@@ -15406,84 +15406,84 @@ __int64            ungetwc_text_mode_nolock(unsigned __int16 a1, __int64 a2)
                          (struct CWnd *)5,
                          (void *)a1) )
       return 0xFFFF; /* 0x140257CC9: mov eax, 0xffff */
-    v7 = SizeConverted;
+    cached_sizeconverted = SizeConverted;
   }
-  v8 = v7 + *(_QWORD *)(a2 + 8);
-  if ( *(_QWORD *)a2 < v8 )
+  loaded_word = cached_sizeconverted + *(_QWORD *)(a2 + 8);
+  if ( *(_QWORD *)a2 < loaded_word )
   {
-    if ( *(_DWORD *)(a2 + 16) || v7 > *(_DWORD *)(a2 + 32) )
+    if ( *(_DWORD *)(a2 + 16) || cached_sizeconverted > *(_DWORD *)(a2 + 32) )
       return 0xFFFF; /* 0x140257CC9: mov eax, 0xffff */
-    *(_QWORD *)a2 = v8;
+    *(_QWORD *)a2 = loaded_word;
   }
-  v9 = v7 - 1;
-  if ( v7 - 1 >= 0 )
+  remaining_count = cached_sizeconverted - 1;
+  if ( cached_sizeconverted - 1 >= 0 )
   {
     do
     {
       --*(_QWORD *)a2;
-      v10 = MbCh[v9--];
-      **(_BYTE **)a2 = v10;
+      integer_difference = MbCh[remaining_count--];
+      **(_BYTE **)a2 = integer_difference;
     }
-    while ( v9 >= 0 );
-    v7 = SizeConverted;
+    while ( remaining_count >= 0 );
+    cached_sizeconverted = SizeConverted;
   }
-  *(_DWORD *)(a2 + 16) += v7;
+  *(_DWORD *)(a2 + 16) += cached_sizeconverted;
   _InterlockedAnd((volatile signed __int32 *)(a2 + 20), 0xFFFFFFF7);
   _InterlockedOr((volatile signed __int32 *)(a2 + 20), 1u);
-  return v13; /* 0x140257CA6: movzx eax, word ptr [rbp - 0x20] */
+  return input_value; /* 0x140257CA6: movzx eax, word ptr [rbp - 0x20] */
 }
 
 //----- (0000000140257CD0) ----------------------------------------------------
 __int64            ungetwc_nolock(unsigned __int16 a1, __int64 a2, ...)
 {
-  unsigned __int16 v2;
-  int v5;
-  __int64 v6;
-  char *v7;
-  unsigned __int64 v9;
-  __int64 v10;
-  int v11;
-  unsigned __int16 *v12;
+  unsigned __int16 unused_written_slot;
+  int loaded_word;
+  __int64 fileno_result;
+  char *fileno_result_2;
+  unsigned __int64 loaded_word_2;
+  __int64 loaded_word_3;
+  int shifted_bits;
+  unsigned __int16 *loaded_record_pointer;
 
-  v2 = -1;
+  unused_written_slot = -1;
   if ( a1 == 0xFFFF )
-    return v2;
-  v5 = *(_DWORD *)(a2 + 20);
-  if ( (v5 & 1) == 0 && ((v5 & 4) == 0 || (*(_DWORD *)(a2 + 20) & 2) != 0) )
-    return v2;
+    return unused_written_slot;
+  loaded_word = *(_DWORD *)(a2 + 20);
+  if ( (loaded_word & 1) == 0 && ((loaded_word & 4) == 0 || (*(_DWORD *)(a2 + 20) & 2) != 0) )
+    return unused_written_slot;
   if ( !*(_QWORD *)(a2 + 8) )
     sub_140253EF8(a2);
   if ( (*(_DWORD *)(a2 + 20) & 0x1000) == 0 )
   {
     if ( fileno((FILE *)a2) == -1 || fileno((FILE *)a2) == -2 )
     {
-      v7 = (char *)&unk_1403022C0;
+      fileno_result_2 = (char *)&unk_1403022C0;
     }
     else
     {
-      v6 = (__int64)fileno((FILE *)a2) >> 6;
-      v7 = (char *)(*(_QWORD *)&dword_140404A6C[2 * v6 + 19065401] + 72LL * (fileno((FILE *)a2) & 0x3F));
+      fileno_result = (__int64)fileno((FILE *)a2) >> 6;
+      fileno_result_2 = (char *)(*(_QWORD *)&dword_140404A6C[2 * fileno_result + 19065401] + 72LL * (fileno((FILE *)a2) & 0x3F));
     }
-    if ( v7[56] < 0 )
+    if ( fileno_result_2[56] < 0 )
       return ungetwc_text_mode_nolock(a1, a2);
   }
-  v9 = *(_QWORD *)(a2 + 8) + 2LL;
-  if ( *(_QWORD *)a2 < v9 )
+  loaded_word_2 = *(_QWORD *)(a2 + 8) + 2LL;
+  if ( *(_QWORD *)a2 < loaded_word_2 )
   {
     if ( *(_DWORD *)(a2 + 16) || *(_DWORD *)(a2 + 32) < 2u )
-      return v2;
-    *(_QWORD *)a2 = v9;
+      return unused_written_slot;
+    *(_QWORD *)a2 = loaded_word_2;
   }
-  v10 = *(_QWORD *)a2;
-  v11 = *(_DWORD *)(a2 + 20) >> 12;
-  v12 = (unsigned __int16 *)(*(_QWORD *)a2 - 2LL);
-  *(_QWORD *)a2 = (uint64)(uintptr_t)(v12);
-  if ( (v11 & 1) == 0 )
+  loaded_word_3 = *(_QWORD *)a2;
+  shifted_bits = *(_DWORD *)(a2 + 20) >> 12;
+  loaded_record_pointer = (unsigned __int16 *)(*(_QWORD *)a2 - 2LL);
+  *(_QWORD *)a2 = (uint64)(uintptr_t)(loaded_record_pointer);
+  if ( (shifted_bits & 1) == 0 )
   {
-    *v12 = a1;
+    *loaded_record_pointer = a1;
     goto LABEL_22;
   }
-  if ( *v12 == a1 )
+  if ( *loaded_record_pointer == a1 )
   {
 LABEL_22:
     *(_DWORD *)(a2 + 16) += 2;
@@ -15491,8 +15491,8 @@ LABEL_22:
     _InterlockedOr((volatile signed __int32 *)(a2 + 20), 1u);
     return a1;
   }
-  *(_QWORD *)a2 = v10;
-  return v2;
+  *(_QWORD *)a2 = loaded_word_3;
+  return unused_written_slot;
 }
 
 // 140257CD0: invalid function type 'wint_t __cdecl ungetwc_nolock(wint_t Character, FILE *Stream)' has been ignored
@@ -15500,14 +15500,14 @@ LABEL_22:
 //----- (0000000140257E0C) ----------------------------------------------------
 __int64            ungetwc_sr(unsigned __int16 a1, __int64 a2)
 {
-  unsigned __int16 v5;
+  unsigned __int16 unused_written_slot;
 
   if ( a2 )
   {
     crt_lock_file(a2);
-    v5 = ungetwc_nolock(a1, a2);
+    unused_written_slot = ungetwc_nolock(a1, a2);
     crt_unlock_file(a2);
-    return v5;
+    return unused_written_slot;
   }
   else
   {
@@ -15551,15 +15551,15 @@ int         fegetround_0()
 //----- (0000000140257EC8) ----------------------------------------------------
 __int64            common_dupenv_s__char(_QWORD *a1, __int64 *a2, __int64 a3)
 {
-  unsigned int v6;
-  unsigned __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  _BYTE *v11;
+  unsigned int unused_written_slot;
+  unsigned __int64 call_result;
+  __int64 cached_call_result;
+  __int64 iteration_count;
+  __int64 integer_sum;
+  _BYTE *returned_pointer;
 
   crt_lock(11);
-  v6 = 0;
+  unused_written_slot = 0;
   if ( !a1 )
     goto LABEL_2;
   *a1 = 0;
@@ -15567,44 +15567,44 @@ __int64            common_dupenv_s__char(_QWORD *a1, __int64 *a2, __int64 a3)
     *a2 = 0;
   if ( a3 )
   {
-    v7 = sub_140258328(a3);
-    v8 = v7;
-    if ( v7 )
+    call_result = sub_140258328(a3);
+    cached_call_result = call_result;
+    if ( call_result )
     {
-      v9 = -1;
+      iteration_count = -1;
       do
-        ++v9;
-      while ( *(_BYTE *)(v7 + v9) );
-      v10 = v9 + 1;
-      v11 = (_BYTE *)j__calloc_base();
-      *a1 = (uint64)(uintptr_t)(v11);
-      if ( v11 )
+        ++iteration_count;
+      while ( *(_BYTE *)(call_result + iteration_count) );
+      integer_sum = iteration_count + 1;
+      returned_pointer = (_BYTE *)j__calloc_base();
+      *a1 = (uint64)(uintptr_t)(returned_pointer);
+      if ( returned_pointer )
       {
-        if ( (unsigned int)strcpy_s_sr(v11, v10, v8) )
+        if ( (unsigned int)strcpy_s_sr(returned_pointer, integer_sum, cached_call_result) )
         {
           crt_invoke_watson();
           __debugbreak();
           do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
         }
         if ( a2 )
-          *a2 = v10;
+          *a2 = integer_sum;
       }
       else
       {
         *errno_sr() = 12;
-        v6 = 12;
+        unused_written_slot = 12;
       }
     }
   }
   else
   {
 LABEL_2:
-    v6 = 22;
+    unused_written_slot = 22;
     *errno_sr() = 22;
     crt_invalid_parameter_noinfo();
   }
   crt_unlock(11);
-  return v6;
+  return unused_written_slot;
 }
 
 // 140257FB9: control flows out of bounds to 140257FBA
@@ -15612,15 +15612,15 @@ LABEL_2:
 //----- (0000000140257FBC) ----------------------------------------------------
 __int64            common_dupenv_s__wchar_t(__int64 *a1, __int64 *a2, __int64 a3)
 {
-  unsigned int v6;
-  unsigned __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  _WORD *v11;
+  unsigned int unused_written_slot;
+  unsigned __int64 call_result;
+  __int64 cached_call_result;
+  __int64 iteration_count;
+  __int64 integer_sum;
+  _WORD *returned_pointer;
 
   crt_lock(11);
-  v6 = 0;
+  unused_written_slot = 0;
   if ( !a1 )
     goto LABEL_2;
   *a1 = 0;
@@ -15628,44 +15628,44 @@ __int64            common_dupenv_s__wchar_t(__int64 *a1, __int64 *a2, __int64 a3
     *a2 = 0;
   if ( a3 )
   {
-    v7 = sub_1402583B4(a3);
-    v8 = v7;
-    if ( v7 )
+    call_result = sub_1402583B4(a3);
+    cached_call_result = call_result;
+    if ( call_result )
     {
-      v9 = -1;
+      iteration_count = -1;
       do
-        ++v9;
-      while ( *(_WORD *)(v7 + 2 * v9) );
-      v10 = v9 + 1;
-      v11 = (_WORD *)j__calloc_base();
-      *a1 = (__int64)v11;
-      if ( v11 )
+        ++iteration_count;
+      while ( *(_WORD *)(call_result + 2 * iteration_count) );
+      integer_sum = iteration_count + 1;
+      returned_pointer = (_WORD *)j__calloc_base();
+      *a1 = (__int64)returned_pointer;
+      if ( returned_pointer )
       {
-        if ( (unsigned int)sub_140259444(v11, v10, v8) )
+        if ( (unsigned int)sub_140259444(returned_pointer, integer_sum, cached_call_result) )
         {
           crt_invoke_watson();
           __debugbreak();
           do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
         }
         if ( a2 )
-          *a2 = v10;
+          *a2 = integer_sum;
       }
       else
       {
         *errno_sr() = 12;
-        v6 = 12;
+        unused_written_slot = 12;
       }
     }
   }
   else
   {
 LABEL_2:
-    v6 = 22;
+    unused_written_slot = 22;
     *errno_sr() = 22;
     crt_invalid_parameter_noinfo();
   }
   crt_unlock(11);
-  return v6;
+  return unused_written_slot;
 }
 
 // 1402580AE: control flows out of bounds to 1402580AF
@@ -15673,11 +15673,11 @@ LABEL_2:
 //----- (00000001402580B0) ----------------------------------------------------
 __int64            common_dupenv_s_nolock__char(_QWORD *a1, __int64 *a2, __int64 a3)
 {
-  unsigned __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  _BYTE *v10;
+  unsigned __int64 call_result;
+  __int64 cached_call_result;
+  __int64 iteration_count;
+  __int64 integer_sum;
+  _BYTE *returned_pointer;
 
   if ( !a1 )
     goto LABEL_2;
@@ -15691,26 +15691,26 @@ LABEL_2:
     crt_invalid_parameter_noinfo();
     return 22;
   }
-  v6 = sub_140258328(a3);
-  v7 = v6;
-  if ( !v6 )
+  call_result = sub_140258328(a3);
+  cached_call_result = call_result;
+  if ( !call_result )
     return 0;
-  v8 = -1;
+  iteration_count = -1;
   do
-    ++v8;
-  while ( *(_BYTE *)(v6 + v8) );
-  v9 = v8 + 1;
-  v10 = (_BYTE *)j__calloc_base();
-  *a1 = (uint64)(uintptr_t)(v10);
-  if ( v10 )
+    ++iteration_count;
+  while ( *(_BYTE *)(call_result + iteration_count) );
+  integer_sum = iteration_count + 1;
+  returned_pointer = (_BYTE *)j__calloc_base();
+  *a1 = (uint64)(uintptr_t)(returned_pointer);
+  if ( returned_pointer )
   {
-    if ( (unsigned int)strcpy_s_sr(v10, v9, v7) )
+    if ( (unsigned int)strcpy_s_sr(returned_pointer, integer_sum, cached_call_result) )
     {
       crt_invoke_watson();
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
     if ( a2 )
-      *a2 = v9;
+      *a2 = integer_sum;
     return 0;
   }
   *errno_sr() = 12;
@@ -15722,11 +15722,11 @@ LABEL_2:
 //----- (0000000140258188) ----------------------------------------------------
 __int64            common_dupenv_s_nolock__wchar_t(__int64 *a1, __int64 *a2, __int64 a3)
 {
-  unsigned __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  _WORD *v10;
+  unsigned __int64 call_result;
+  __int64 cached_call_result;
+  __int64 iteration_count;
+  __int64 integer_sum;
+  _WORD *returned_pointer;
 
   if ( !a1 )
     goto LABEL_2;
@@ -15740,26 +15740,26 @@ LABEL_2:
     crt_invalid_parameter_noinfo();
     return 22;
   }
-  v6 = sub_1402583B4(a3);
-  v7 = v6;
-  if ( !v6 )
+  call_result = sub_1402583B4(a3);
+  cached_call_result = call_result;
+  if ( !call_result )
     return 0;
-  v8 = -1;
+  iteration_count = -1;
   do
-    ++v8;
-  while ( *(_WORD *)(v6 + 2 * v8) );
-  v9 = v8 + 1;
-  v10 = (_WORD *)j__calloc_base();
-  *a1 = (__int64)v10;
-  if ( v10 )
+    ++iteration_count;
+  while ( *(_WORD *)(call_result + 2 * iteration_count) );
+  integer_sum = iteration_count + 1;
+  returned_pointer = (_WORD *)j__calloc_base();
+  *a1 = (__int64)returned_pointer;
+  if ( returned_pointer )
   {
-    if ( (unsigned int)sub_140259444(v10, v9, v7) )
+    if ( (unsigned int)sub_140259444(returned_pointer, integer_sum, cached_call_result) )
     {
       crt_invoke_watson();
       do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
     }
     if ( a2 )
-      *a2 = v9;
+      *a2 = integer_sum;
     return 0;
   }
   *errno_sr() = 12;
@@ -15771,14 +15771,14 @@ LABEL_2:
 //----- (0000000140258268) ----------------------------------------------------
 unsigned __int64            sub_140258268(__m128i *a1)
 {
-  unsigned __int64 v3;
+  unsigned __int64 unused_written_slot;
 
   if ( a1 && (unsigned __int64)strnlen_sr(a1, 0x7FFFu) < 0x7FFF )
   {
     crt_lock(11);
-    v3 = sub_140258328((__int64)a1);
+    unused_written_slot = sub_140258328((__int64)a1);
     crt_unlock(11);
-    return v3;
+    return unused_written_slot;
   }
   else
   {
@@ -15791,14 +15791,14 @@ unsigned __int64            sub_140258268(__m128i *a1)
 //----- (00000001402582C8) ----------------------------------------------------
 unsigned __int64            sub_1402582C8(__m128i *a1)
 {
-  unsigned __int64 v3;
+  unsigned __int64 unused_written_slot;
 
   if ( a1 && (unsigned __int64)sub_140254F48(a1, 0x7FFFu) < 0x7FFF )
   {
     crt_lock(11);
-    v3 = sub_1402583B4((__int64)a1);
+    unused_written_slot = sub_1402583B4((__int64)a1);
     crt_unlock(11);
-    return v3;
+    return unused_written_slot;
   }
   else
   {
@@ -15811,29 +15811,29 @@ unsigned __int64            sub_1402582C8(__m128i *a1)
 //----- (0000000140258328) ----------------------------------------------------
 unsigned __int64            sub_140258328(__int64 a1)
 {
-  __int64 *v2;
-  __int64 *v3;
-  unsigned __int64 v4;
+  __int64 *unknown_libname_764_result;
+  __int64 *buffer_cursor;
+  unsigned __int64 iteration_count;
   __int64 i;
-  unsigned __int64 v6;
+  unsigned __int64 iteration_count_2;
 
-  v2 = (__int64 *)unknown_libname_764();
-  v3 = v2;
-  if ( v2 && a1 )
+  unknown_libname_764_result = (__int64 *)unknown_libname_764();
+  buffer_cursor = unknown_libname_764_result;
+  if ( unknown_libname_764_result && a1 )
   {
-    v4 = -1;
+    iteration_count = -1;
     do
-      ++v4;
-    while ( *(_BYTE *)(a1 + v4) );
-    for ( i = *v2; i; i = *v3 )
+      ++iteration_count;
+    while ( *(_BYTE *)(a1 + iteration_count) );
+    for ( i = *unknown_libname_764_result; i; i = *buffer_cursor )
     {
-      v6 = -1;
+      iteration_count_2 = -1;
       do
-        ++v6;
-      while ( *(_BYTE *)(i + v6) );
-      if ( v6 > v4 && *(_BYTE *)(i + v4) == 61 && !(unsigned int)strnicoll_sr(i, a1, v4) )
-        return v4 + *v3 + 1;
-      ++v3;
+        ++iteration_count_2;
+      while ( *(_BYTE *)(i + iteration_count_2) );
+      if ( iteration_count_2 > iteration_count && *(_BYTE *)(i + iteration_count) == 61 && !(unsigned int)strnicoll_sr(i, a1, iteration_count) )
+        return iteration_count + *buffer_cursor + 1;
+      ++buffer_cursor;
     }
   }
   return 0;
@@ -15842,29 +15842,29 @@ unsigned __int64            sub_140258328(__int64 a1)
 //----- (00000001402583B4) ----------------------------------------------------
 __int64            sub_1402583B4(__int64 a1)
 {
-  __int64 *v2;
-  __int64 *v3;
-  unsigned __int64 v4;
+  __int64 *unknown_libname_765_result;
+  __int64 *buffer_cursor;
+  unsigned __int64 iteration_count;
   __int64 i;
-  unsigned __int64 v6;
+  unsigned __int64 iteration_count_2;
 
-  v2 = (__int64 *)unknown_libname_765();
-  v3 = v2;
-  if ( v2 && a1 )
+  unknown_libname_765_result = (__int64 *)unknown_libname_765();
+  buffer_cursor = unknown_libname_765_result;
+  if ( unknown_libname_765_result && a1 )
   {
-    v4 = -1;
+    iteration_count = -1;
     do
-      ++v4;
-    while ( *(_WORD *)(a1 + 2 * v4) );
-    for ( i = *v2; i; i = *v3 )
+      ++iteration_count;
+    while ( *(_WORD *)(a1 + 2 * iteration_count) );
+    for ( i = *unknown_libname_765_result; i; i = *buffer_cursor )
     {
-      v6 = -1;
+      iteration_count_2 = -1;
       do
-        ++v6;
-      while ( *(_WORD *)(i + 2 * v6) );
-      if ( v6 > v4 && *(_WORD *)(i + 2 * v4) == 61 && !(unsigned int)wcsnicoll(i, a1, v4) )
-        return *v3 + 2 * v4 + 2;
-      ++v3;
+        ++iteration_count_2;
+      while ( *(_WORD *)(i + 2 * iteration_count_2) );
+      if ( iteration_count_2 > iteration_count && *(_WORD *)(i + 2 * iteration_count) == 61 && !(unsigned int)wcsnicoll(i, a1, iteration_count) )
+        return *buffer_cursor + 2 * iteration_count + 2;
+      ++buffer_cursor;
     }
   }
   return 0;
@@ -15873,14 +15873,14 @@ __int64            sub_1402583B4(__int64 a1)
 //----- (000000014025844C) ----------------------------------------------------
 __int64            getenv_s_0(unsigned __int64 *a1, _BYTE *a2, unsigned __int64 a3, __int64 a4)
 {
-  unsigned int v8;
-  int v9;
-  unsigned __int64 v10;
-  __int64 v11;
-  unsigned __int64 v12;
+  unsigned int unused_written_slot;
+  int selection_flag;
+  unsigned __int64 call_result;
+  __int64 iteration_count;
+  unsigned __int64 integer_sum;
 
   crt_lock(11);
-  v8 = 0;
+  unused_written_slot = 0;
   if ( !a1 )
     goto LABEL_2;
   *a1 = 0;
@@ -15889,38 +15889,38 @@ __int64            getenv_s_0(unsigned __int64 *a1, _BYTE *a2, unsigned __int64 
     if ( !a3 )
       goto LABEL_8;
 LABEL_7:
-    v9 = 1;
+    selection_flag = 1;
     goto LABEL_9;
   }
   if ( !a3 )
     goto LABEL_7;
 LABEL_8:
-  v9 = 0;
+  selection_flag = 0;
 LABEL_9:
-  if ( !v9 )
+  if ( !selection_flag )
   {
 LABEL_2:
-    v8 = 22;
+    unused_written_slot = 22;
     *errno_sr() = 22;
     crt_invalid_parameter_noinfo();
     goto LABEL_19;
   }
   if ( a2 )
     *a2 = 0;
-  v10 = sub_140258328(a4);
-  if ( v10 )
+  call_result = sub_140258328(a4);
+  if ( call_result )
   {
-    v11 = -1;
+    iteration_count = -1;
     do
-      ++v11;
-    while ( *(_BYTE *)(v10 + v11) );
-    v12 = v11 + 1;
-    *a1 = v12;
+      ++iteration_count;
+    while ( *(_BYTE *)(call_result + iteration_count) );
+    integer_sum = iteration_count + 1;
+    *a1 = integer_sum;
     if ( a3 )
     {
-      if ( v12 <= a3 )
+      if ( integer_sum <= a3 )
       {
-        if ( (unsigned int)strcpy_s_sr(a2, a3, v10) )
+        if ( (unsigned int)strcpy_s_sr(a2, a3, call_result) )
         {
           crt_invoke_watson();
           __debugbreak();
@@ -15929,13 +15929,13 @@ LABEL_2:
       }
       else
       {
-        v8 = 34;
+        unused_written_slot = 34;
       }
     }
   }
 LABEL_19:
   crt_unlock(11);
-  return v8;
+  return unused_written_slot;
 }
 
 // 140258540: control flows out of bounds to 140258541
@@ -15944,14 +15944,14 @@ LABEL_19:
 //----- (0000000140258544) ----------------------------------------------------
 __int64            sub_140258544(unsigned __int64 *a1, _WORD *a2, unsigned __int64 a3, __int64 a4)
 {
-  unsigned int v8;
-  int v9;
-  __int64 v10;
-  __int64 v11;
-  unsigned __int64 v12;
+  unsigned int unused_written_slot;
+  int selection_flag;
+  __int64 call_result;
+  __int64 iteration_count;
+  unsigned __int64 integer_sum;
 
   crt_lock(11);
-  v8 = 0;
+  unused_written_slot = 0;
   if ( !a1 )
     goto LABEL_2;
   *a1 = 0;
@@ -15960,38 +15960,38 @@ __int64            sub_140258544(unsigned __int64 *a1, _WORD *a2, unsigned __int
     if ( !a3 )
       goto LABEL_8;
 LABEL_7:
-    v9 = 1;
+    selection_flag = 1;
     goto LABEL_9;
   }
   if ( !a3 )
     goto LABEL_7;
 LABEL_8:
-  v9 = 0;
+  selection_flag = 0;
 LABEL_9:
-  if ( !v9 )
+  if ( !selection_flag )
   {
 LABEL_2:
-    v8 = 22;
+    unused_written_slot = 22;
     *errno_sr() = 22;
     crt_invalid_parameter_noinfo();
     goto LABEL_19;
   }
   if ( a2 )
     *a2 = 0;
-  v10 = sub_1402583B4(a4);
-  if ( v10 )
+  call_result = sub_1402583B4(a4);
+  if ( call_result )
   {
-    v11 = -1;
+    iteration_count = -1;
     do
-      ++v11;
-    while ( *(_WORD *)(v10 + 2 * v11) );
-    v12 = v11 + 1;
-    *a1 = v12;
+      ++iteration_count;
+    while ( *(_WORD *)(call_result + 2 * iteration_count) );
+    integer_sum = iteration_count + 1;
+    *a1 = integer_sum;
     if ( a3 )
     {
-      if ( v12 <= a3 )
+      if ( integer_sum <= a3 )
       {
-        if ( (unsigned int)sub_140259444(a2, a3, v10) )
+        if ( (unsigned int)sub_140259444(a2, a3, call_result) )
         {
           crt_invoke_watson();
           __debugbreak();
@@ -16000,13 +16000,13 @@ LABEL_2:
       }
       else
       {
-        v8 = 34;
+        unused_written_slot = 34;
       }
     }
   }
 LABEL_19:
   crt_unlock(11);
-  return v8;
+  return unused_written_slot;
 }
 
 // 14025863A: control flows out of bounds to 14025863B
@@ -16015,9 +16015,9 @@ LABEL_19:
 //----- (000000014025863C) ----------------------------------------------------
 __int64            sub_14025863C(unsigned __int64 *a1, _BYTE *a2, unsigned __int64 a3, __int64 a4)
 {
-  unsigned __int64 v8;
-  __int64 v9;
-  unsigned __int64 v10;
+  unsigned __int64 call_result;
+  __int64 iteration_count;
+  unsigned __int64 integer_sum;
 
   if ( !a1 )
     goto LABEL_2;
@@ -16036,20 +16036,20 @@ LABEL_2:
   }
   if ( a2 )
     *a2 = 0;
-  v8 = sub_140258328(a4);
-  if ( v8 )
+  call_result = sub_140258328(a4);
+  if ( call_result )
   {
-    v9 = -1;
+    iteration_count = -1;
     do
-      ++v9;
-    while ( *(_BYTE *)(v8 + v9) );
-    v10 = v9 + 1;
-    *a1 = v10;
+      ++iteration_count;
+    while ( *(_BYTE *)(call_result + iteration_count) );
+    integer_sum = iteration_count + 1;
+    *a1 = integer_sum;
     if ( a3 )
     {
-      if ( v10 > a3 )
+      if ( integer_sum > a3 )
         return 34;
-      if ( (unsigned int)strcpy_s_sr(a2, a3, v8) )
+      if ( (unsigned int)strcpy_s_sr(a2, a3, call_result) )
       {
         crt_invoke_watson();
         do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
@@ -16064,9 +16064,9 @@ LABEL_2:
 //----- (00000001402586F8) ----------------------------------------------------
 __int64            sub_1402586F8(unsigned __int64 *a1, _WORD *a2, unsigned __int64 a3, __int64 a4)
 {
-  __int64 v8;
-  __int64 v9;
-  unsigned __int64 v10;
+  __int64 call_result;
+  __int64 iteration_count;
+  unsigned __int64 integer_sum;
 
   if ( !a1 )
     goto LABEL_2;
@@ -16085,20 +16085,20 @@ LABEL_2:
   }
   if ( a2 )
     *a2 = 0;
-  v8 = sub_1402583B4(a4);
-  if ( v8 )
+  call_result = sub_1402583B4(a4);
+  if ( call_result )
   {
-    v9 = -1;
+    iteration_count = -1;
     do
-      ++v9;
-    while ( *(_WORD *)(v8 + 2 * v9) );
-    v10 = v9 + 1;
-    *a1 = v10;
+      ++iteration_count;
+    while ( *(_WORD *)(call_result + 2 * iteration_count) );
+    integer_sum = iteration_count + 1;
+    *a1 = integer_sum;
     if ( a3 )
     {
-      if ( v10 > a3 )
+      if ( integer_sum > a3 )
         return 34;
-      if ( (unsigned int)sub_140259444(a2, a3, v8) )
+      if ( (unsigned int)sub_140259444(a2, a3, call_result) )
       {
         crt_invoke_watson();
         __debugbreak();
@@ -16130,14 +16130,14 @@ __int64            getenv_s_sr(unsigned __int64 *a1, _BYTE *a2, unsigned __int64
 //----- (00000001402588A4) ----------------------------------------------------
 __int64            sub_1402588A4(_BYTE *a1, __int64 a2, __int64 a3, __int64 a4)
 {
-  int *v5;
-  unsigned int v6;
-  __int64 v8;
-  _BYTE *v9;
-  __int64 v10;
-  __int64 v11;
-  char v12;
-  char v13;
+  int *unused_written_slot;
+  unsigned int selection_code;
+  __int64 integer_difference;
+  _BYTE *buffer_cursor;
+  __int64 remaining_count;
+  __int64 remaining_count_2;
+  char table_value;
+  char table_value_2;
 
   if ( a4 )
   {
@@ -16149,12 +16149,12 @@ __int64            sub_1402588A4(_BYTE *a1, __int64 a2, __int64 a3, __int64 a4)
     if ( a2 )
     {
 LABEL_4:
-      v5 = errno_sr();
-      v6 = 22;
+      unused_written_slot = errno_sr();
+      selection_code = 22;
 LABEL_5:
-      *v5 = v6;
+      *unused_written_slot = selection_code;
       crt_invalid_parameter_noinfo();
-      return v6;
+      return selection_code;
     }
     return 0;
   }
@@ -16170,45 +16170,45 @@ LABEL_5:
     *a1 = 0;
     goto LABEL_4;
   }
-  v8 = a3 - (_QWORD)a1;
-  v9 = a1;
-  v10 = a2;
-  v11 = a4;
+  integer_difference = a3 - (_QWORD)a1;
+  buffer_cursor = a1;
+  remaining_count = a2;
+  remaining_count_2 = a4;
   if ( a4 == -1 )
   {
     do
     {
-      v12 = v9[v8];
-      *v9++ = v12;
-      if ( !v12 )
+      table_value = buffer_cursor[integer_difference];
+      *buffer_cursor++ = table_value;
+      if ( !table_value )
         break;
-      --v10;
+      --remaining_count;
     }
-    while ( v10 );
+    while ( remaining_count );
   }
   else
   {
     do
     {
-      v13 = v9[v8];
-      *v9++ = v13;
-      if ( !v13 )
+      table_value_2 = buffer_cursor[integer_difference];
+      *buffer_cursor++ = table_value_2;
+      if ( !table_value_2 )
         break;
-      if ( !--v10 )
+      if ( !--remaining_count )
         break;
-      --v11;
+      --remaining_count_2;
     }
-    while ( v11 );
-    if ( !v11 )
-      *v9 = 0;
+    while ( remaining_count_2 );
+    if ( !remaining_count_2 )
+      *buffer_cursor = 0;
   }
-  if ( v10 )
+  if ( remaining_count )
     return 0;
   if ( a4 != -1 )
   {
     *a1 = 0;
-    v5 = errno_sr();
-    v6 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_5;
   }
   a1[a2 - 1] = 0;
@@ -16218,17 +16218,17 @@ LABEL_5:
 //----- (000000014025896C) ----------------------------------------------------
 __int64            strncpy_s_sr(_BYTE *a1, __int64 a2, __int64 a3, __int64 a4)
 {
-  unsigned int v4;
-  int *v6;
-  unsigned int v7;
-  __int64 v9;
-  _BYTE *v10;
-  __int64 v11;
-  __int64 v12;
-  char v13;
-  char v14;
+  unsigned int unused_written_slot;
+  int *unused_written_slot_2;
+  unsigned int selection_code;
+  __int64 integer_difference;
+  _BYTE *buffer_cursor;
+  __int64 remaining_count;
+  __int64 remaining_count_2;
+  char table_value;
+  char table_value_2;
 
-  v4 = 0;
+  unused_written_slot = 0;
   if ( a4 )
   {
     if ( !a1 )
@@ -16243,46 +16243,46 @@ LABEL_8:
     if ( !a4 )
     {
       *a1 = 0;
-      return v4;
+      return unused_written_slot;
     }
     if ( !a3 )
     {
       *a1 = 0;
       goto LABEL_4;
     }
-    v9 = a3 - (_QWORD)a1;
-    v10 = a1;
-    v11 = a2;
-    v12 = a4;
+    integer_difference = a3 - (_QWORD)a1;
+    buffer_cursor = a1;
+    remaining_count = a2;
+    remaining_count_2 = a4;
     if ( a4 == -1 )
     {
       do
       {
-        v13 = v10[v9];
-        *v10++ = v13;
-        if ( !v13 )
+        table_value = buffer_cursor[integer_difference];
+        *buffer_cursor++ = table_value;
+        if ( !table_value )
           break;
-        --v11;
+        --remaining_count;
       }
-      while ( v11 );
+      while ( remaining_count );
     }
     else
     {
       do
       {
-        v14 = v10[v9];
-        *v10++ = v14;
-        if ( !v14 )
+        table_value_2 = buffer_cursor[integer_difference];
+        *buffer_cursor++ = table_value_2;
+        if ( !table_value_2 )
           break;
-        if ( !--v11 )
+        if ( !--remaining_count )
           break;
-        --v12;
+        --remaining_count_2;
       }
-      while ( v12 );
-      if ( !v12 )
-        *v10 = 0;
+      while ( remaining_count_2 );
+      if ( !remaining_count_2 )
+        *buffer_cursor = 0;
     }
-    if ( !v11 )
+    if ( !remaining_count )
     {
       if ( a4 == -1 )
       {
@@ -16290,23 +16290,23 @@ LABEL_8:
         return 80;
       }
       *a1 = 0;
-      v6 = errno_sr();
-      v7 = 34;
+      unused_written_slot_2 = errno_sr();
+      selection_code = 34;
       goto LABEL_5;
     }
-    return v4;
+    return unused_written_slot;
   }
   if ( a2 )
   {
 LABEL_4:
-    v6 = errno_sr();
-    v7 = 22;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 22;
 LABEL_5:
-    *v6 = v7;
+    *unused_written_slot_2 = selection_code;
     crt_invalid_parameter_noinfo();
-    return v7;
+    return selection_code;
   }
-  return v4;
+  return unused_written_slot;
 }
 
 // 14025896C: invalid function type 'errno_t __cdecl strncpy_s(char *Destination, #65 SizeInBytes, const char *Source, #65 MaxCount)' has been ignored
@@ -16322,20 +16322,20 @@ __int64            crt_wide_char_to_multi_byte(
         __int64 a7,
         __int64 a8)
 {
-  unsigned int v9;
-  long v10;
-  bool v11;
+  unsigned int integer_difference;
+  long bit_mask;
+  bool comparison_result;
 
   if ( a1 <= 0xC435 )
   {
-    v9 = a1 - 50220;
+    integer_difference = a1 - 50220;
     if ( a1 - 50220 <= 9 )
     {
-      v10 = 679;
-      if ( _bittest(&v10, v9) )
+      bit_mask = 679;
+      if ( _bittest(&bit_mask, integer_difference) )
         goto LABEL_12;
     }
-    v11 = a1 == 42;
+    comparison_result = a1 == 42;
     goto LABEL_10;
   }
   if ( a1 == 54936 )
@@ -16344,9 +16344,9 @@ __int64            crt_wide_char_to_multi_byte(
   {
     if ( a1 <= 0xDEB3 || a1 == 65000 )
       goto LABEL_12;
-    v11 = a1 == 65001;
+    comparison_result = a1 == 65001;
 LABEL_10:
-    if ( !v11 )
+    if ( !comparison_result )
       goto LABEL_11;
 LABEL_12:
     a2 = 0;
@@ -16362,14 +16362,14 @@ LABEL_11:
 //----- (0000000140258B1C) ----------------------------------------------------
 char _acrt_initialize_locks()
 {
-  __int64 v0;
+  __int64 integer_sum;
 
-  v0 = 0;
-  while ( (unsigned int)_acrt_InitializeCriticalSectionEx((__int64)&dword_140404A6C[10 * v0 + 19065669], 0xFA0u, 0) )
+  integer_sum = 0;
+  while ( (unsigned int)_acrt_InitializeCriticalSectionEx((__int64)&dword_140404A6C[10 * integer_sum + 19065669], 0xFA0u, 0) )
   {
     ++g_144CBF9B0;
-    v0 = (unsigned int)(v0 + 1);
-    if ( (unsigned int)v0 >= 0xE )
+    integer_sum = (unsigned int)(integer_sum + 1);
+    if ( (unsigned int)integer_sum >= 0xE )
       return 1;
   }
   _acrt_uninitialize_locks_0();
@@ -16387,12 +16387,12 @@ __int64            crt_lock(int a1)
 //----- (0000000140258B80) ----------------------------------------------------
 char _acrt_uninitialize_locks_0()
 {
-  unsigned int v0;
+  unsigned int remaining_count;
 
-  v0 = g_144CBF9B0;
-  while ( v0 )
+  remaining_count = g_144CBF9B0;
+  while ( remaining_count )
   {
-    ((void (           *)(unsigned int *))DeleteCriticalSection)(&dword_140404A6C[10 * --v0 + 19065669]);
+    ((void (           *)(unsigned int *))DeleteCriticalSection)(&dword_140404A6C[10 * --remaining_count + 19065669]);
     --g_144CBF9B0;
   }
   return 1;
@@ -16460,157 +16460,157 @@ void            unknown_libname_1040(void **a1)
 //----- (0000000140258CA0) ----------------------------------------------------
 __int64 sub_140258CA0()
 {
-  __int64 v0;
-  __int64 v2;
+  __int64 call_result;
+  __int64 loaded_word;
 
-  v0 = sub_140255A70();
-  v2 = *(_QWORD *)(v0 + 144);
-  sub_140255D2C(v0, &v2);
-  return *(unsigned int *)(v2 + 12);
+  call_result = sub_140255A70();
+  loaded_word = *(_QWORD *)(call_result + 144);
+  sub_140255D2C(call_result, &loaded_word);
+  return *(unsigned int *)(loaded_word + 12);
 }
 
 //----- (0000000140258CD0) ----------------------------------------------------
 __int64 sub_140258CD0()
 {
-  __int64 v0;
-  __int64 v2;
+  __int64 call_result;
+  __int64 loaded_word;
 
-  v0 = sub_140255A70();
-  v2 = *(_QWORD *)(v0 + 144);
-  sub_140255D2C(v0, &v2);
-  return *(unsigned int *)(v2 + 20);
+  call_result = sub_140255A70();
+  loaded_word = *(_QWORD *)(call_result + 144);
+  sub_140255D2C(call_result, &loaded_word);
+  return *(unsigned int *)(loaded_word + 20);
 }
 
 //----- (0000000140258D00) ----------------------------------------------------
 __int64 sub_140258D00()
 {
-  __int64 v0;
-  __int64 v2;
+  __int64 call_result;
+  __int64 loaded_word;
 
-  v0 = sub_140255A70();
-  v2 = *(_QWORD *)(v0 + 144);
-  sub_140255D2C(v0, &v2);
-  return v2 + 296;
+  call_result = sub_140255A70();
+  loaded_word = *(_QWORD *)(call_result + 144);
+  sub_140255D2C(call_result, &loaded_word);
+  return loaded_word + 296;
 }
 
 //----- (0000000140258D34) ----------------------------------------------------
 __int64 sub_140258D34()
 {
-  __int64 v0;
-  __int64 v2;
+  __int64 call_result;
+  __int64 loaded_word;
 
-  v0 = sub_140255A70();
-  v2 = *(_QWORD *)(v0 + 144);
-  sub_140255D2C(v0, &v2);
-  return *(unsigned int *)(v2 + 8);
+  call_result = sub_140255A70();
+  loaded_word = *(_QWORD *)(call_result + 144);
+  sub_140255D2C(call_result, &loaded_word);
+  return *(unsigned int *)(loaded_word + 8);
 }
 
 //----- (0000000140258D74) ----------------------------------------------------
 __int64            sub_140258D74(__int64 a1)
 {
-       sr_anon_49 *v1;
-  _WORD *v3;
-  __int64 v4;
-  __int64 v5;
-  _WORD *v6;
-  unsigned int *v7;
-  _BYTE *v8;
+       sr_anon_49 *loaded_record_pointer;
+  _WORD *calloc_base_result;
+  __int64 calloc_base_result_2;
+  __int64 calloc_base_result_3;
+  _WORD *calloc_base_result_4;
+  unsigned int *record_pointer;
+  _BYTE *buffer_cursor;
   int i;
   _BYTE *j;
-  int v11;
-  __int64 v12;
-  unsigned int v13;
-  _BYTE *v14;
-  __int16 *v15;
+  int iteration_count;
+  __int64 integer_sum;
+  unsigned int loaded_word;
+  _BYTE *buffer_cursor_2;
+  __int16 *buffer_cursor_3;
   int k;
-  __int16 v17;
+  __int16 selection_code;
   _BYTE *m;
-  int v19;
-  __int128 v20;
-  char *v21;
-  __int64 v22;
-  __int128 v23;
-  __int128 v24;
-  __int128 v25;
-  char *v26;
-  __int128 v27;
-  __int128 v28;
-  __int128 v29;
-  __int128 v30;
-  __int128 v31;
-  __int128 v32;
-  __int128 v33;
-  __int128 v34;
-  __int128 v35;
-  __int128 v36;
-  __int128 v37;
-  __int128 v38;
-  __int128 v39;
-  __int128 v40;
-  __int128 v41;
-  __int128 v42;
-  __int128 v43;
-  __int128 v44;
-  __int128 v45;
-  volatile signed __int32 *v46;
-  void *v47;
-  volatile signed __int32 *v48;
-  __int64 v50;
-  unsigned int v51;
+  int element_index;
+  __int128 loaded_word_2;
+  char *byte_cursor;
+  __int64 packed_word_bits;
+  __int128 loaded_word_3;
+  __int128 loaded_word_4;
+  __int128 loaded_word_5;
+  char *saved_loaded_word;
+  __int128 loaded_word_6;
+  __int128 loaded_word_7;
+  __int128 loaded_word_8;
+  __int128 loaded_word_9;
+  __int128 loaded_word_10;
+  __int128 loaded_word_11;
+  __int128 loaded_word_12;
+  __int128 loaded_word_13;
+  __int128 loaded_word_14;
+  __int128 loaded_word_15;
+  __int128 loaded_word_16;
+  __int128 loaded_word_17;
+  __int128 loaded_word_18;
+  __int128 loaded_word_19;
+  __int128 loaded_word_20;
+  __int128 loaded_word_21;
+  __int128 loaded_word_22;
+  __int128 loaded_word_23;
+  __int128 loaded_word_24;
+  volatile signed __int32 *loaded_record_pointer_2;
+  void *cached_block;
+  volatile signed __int32 *loaded_record_pointer_3;
+  __int64 unused_local;
+  unsigned int loword_result;
   void *Block;
-  char *v53;
-  char *v54;
-  _QWORD v55[2];
+  char *byte_cursor_2;
+  char *byte_cursor_3;
+  _QWORD scratch_buffer[2];
   _DWORD CPInfo[6];
-  __int64 v57;
+  __int64 unused_local_2;
 
-  v1 = *(     sr_anon_49 **)(a1 + 312);
-  v55[0] = a1;
-  v55[1] = 0;
-  v3 = nullptr;
-  v4 = 0;
-  v5 = 0;
-  v6 = nullptr;
-  if ( v1 )
+  loaded_record_pointer = *(     sr_anon_49 **)(a1 + 312);
+  scratch_buffer[0] = a1;
+  scratch_buffer[1] = 0;
+  calloc_base_result = nullptr;
+  calloc_base_result_2 = 0;
+  calloc_base_result_3 = 0;
+  calloc_base_result_4 = nullptr;
+  if ( loaded_record_pointer )
   {
-    v7 = (unsigned int *)(a1 + 12);
+    record_pointer = (unsigned int *)(a1 + 12);
     Block = nullptr;
     if ( !*(_DWORD *)(a1 + 12)
-      && (unsigned int)_acrt_GetLocaleInfoA_sr((struct sr_anon_68 *)v55, 0, v1, 0x1004u, (__int64 *)(a1 + 12)) )
+      && (unsigned int)_acrt_GetLocaleInfoA_sr((struct sr_anon_68 *)scratch_buffer, 0, loaded_record_pointer, 0x1004u, (__int64 *)(a1 + 12)) )
     {
       goto LABEL_40;
     }
     Block = (void *)calloc_base();
     free_base(nullptr);
-    v3 = (_WORD *)calloc_base();
+    calloc_base_result = (_WORD *)calloc_base();
     free_base(nullptr);
-    v4 = calloc_base();
+    calloc_base_result_2 = calloc_base();
     free_base(nullptr);
-    v5 = calloc_base();
+    calloc_base_result_3 = calloc_base();
     free_base(nullptr);
-    v6 = (_WORD *)calloc_base();
+    calloc_base_result_4 = (_WORD *)calloc_base();
     free_base(nullptr);
     if ( !Block )
       goto LABEL_40;
-    if ( !v3 )
+    if ( !calloc_base_result )
       goto LABEL_40;
-    if ( !v6 )
+    if ( !calloc_base_result_4 )
       goto LABEL_40;
-    if ( !v4 )
+    if ( !calloc_base_result_2 )
       goto LABEL_40;
-    if ( !v5 )
+    if ( !calloc_base_result_3 )
       goto LABEL_40;
-    v8 = v6;
+    buffer_cursor = calloc_base_result_4;
     for ( i = 0; i < 256; ++i )
-      *v8++ = i;
-    if ( !(unsigned int)((__int64 (           *)(_QWORD, _DWORD *))GetCPInfo)(*v7, CPInfo) || CPInfo[0] > 5u )
+      *buffer_cursor++ = i;
+    if ( !(unsigned int)((__int64 (           *)(_QWORD, _DWORD *))GetCPInfo)(*record_pointer, CPInfo) || CPInfo[0] > 5u )
       goto LABEL_40;
-    v51 = LOWORD(CPInfo[0]);
+    loword_result = LOWORD(CPInfo[0]);
     if ( LOWORD(CPInfo[0]) > 1u )
     {
-      if ( *v7 == 65001 )
+      if ( *record_pointer == 65001 )
       {
-        crt_memset((void *)(uintptr_t)(v6 + 64), 0x20u, 0x80u);
+        crt_memset((void *)(uintptr_t)(calloc_base_result_4 + 64), 0x20u, 0x80u);
       }
       else
       {
@@ -16618,15 +16618,15 @@ __int64            sub_140258D74(__int64 a1)
         {
           if ( !j[1] )
             break;
-          v11 = (unsigned __int8)*j;
-          if ( v11 <= (unsigned int)(unsigned __int8)j[1] )
+          iteration_count = (unsigned __int8)*j;
+          if ( iteration_count <= (unsigned int)(unsigned __int8)j[1] )
           {
             do
             {
-              v12 = v11++;
-              *((_BYTE *)v6 + v12) = 32;
+              integer_sum = iteration_count++;
+              *((_BYTE *)calloc_base_result_4 + integer_sum) = 32;
             }
-            while ( v11 <= (unsigned __int8)j[1] );
+            while ( iteration_count <= (unsigned __int8)j[1] );
           }
         }
       }
@@ -16635,46 +16635,46 @@ __int64            sub_140258D74(__int64 a1)
                          nullptr,
                          *(_QWORD *)(a1 + 312),
                          0x100u,
-                         (__int64)v6 + 1,
+                         (__int64)calloc_base_result_4 + 1,
                          255,
-                         (__int64 *)(v4 + 129),
+                         (__int64 *)(calloc_base_result_2 + 129),
                          255,
-                         *v7,
+                         *record_pointer,
                          0)
       && (unsigned int)sub_14025A004(
                          nullptr,
                          *(_QWORD *)(a1 + 312),
                          0x200u,
-                         (__int64)v6 + 1,
+                         (__int64)calloc_base_result_4 + 1,
                          255,
-                         (__int64 *)(v5 + 129),
+                         (__int64 *)(calloc_base_result_3 + 129),
                          255,
-                         *v7,
+                         *record_pointer,
                          0)
-      && (v13 = *v7,
-          v53 = (char *)(v3 + 128),
-          (unsigned int)sub_140262618(nullptr, 1u, (__int64)v6, 256, (__int64)(v3 + 128), v13, 0)) )
+      && (loaded_word = *record_pointer,
+          byte_cursor_2 = (char *)(calloc_base_result + 128),
+          (unsigned int)sub_140262618(nullptr, 1u, (__int64)calloc_base_result_4, 256, (__int64)(calloc_base_result + 128), loaded_word, 0)) )
     {
-      v3[127] = 0;
-      *(_BYTE *)(v4 + 127) = 0;
-      *(_BYTE *)(v5 + 127) = 0;
-      *(_BYTE *)(v4 + 128) = 0;
-      *(_BYTE *)(v5 + 128) = 0;
-      v54 = (char *)(v3 + 127);
-      if ( v51 > 1 )
+      calloc_base_result[127] = 0;
+      *(_BYTE *)(calloc_base_result_2 + 127) = 0;
+      *(_BYTE *)(calloc_base_result_3 + 127) = 0;
+      *(_BYTE *)(calloc_base_result_2 + 128) = 0;
+      *(_BYTE *)(calloc_base_result_3 + 128) = 0;
+      byte_cursor_3 = (char *)(calloc_base_result + 127);
+      if ( loword_result > 1 )
       {
-        if ( *v7 == 65001 )
+        if ( *record_pointer == 65001 )
         {
-          v14 = (_BYTE *)(v5 + 256);
-          v15 = v3 + 256;
+          buffer_cursor_2 = (_BYTE *)(calloc_base_result_3 + 256);
+          buffer_cursor_3 = calloc_base_result + 256;
           for ( k = 128; k <= 255; ++k )
           {
-            v17 = 0x8000;
+            selection_code = 0x8000;
             if ( (unsigned int)(k - 194) > 0x32 )
-              v17 = 0;
-            *v15++ = v17;
-            v14[v4 - v5] = k;
-            *v14++ = k;
+              selection_code = 0;
+            *buffer_cursor_3++ = selection_code;
+            buffer_cursor_2[calloc_base_result_2 - calloc_base_result_3] = k;
+            *buffer_cursor_2++ = k;
           }
         }
         else
@@ -16683,123 +16683,123 @@ __int64            sub_140258D74(__int64 a1)
           {
             if ( !m[1] )
               break;
-            v19 = (unsigned __int8)*m;
-            if ( v19 <= (unsigned int)(unsigned __int8)m[1] )
+            element_index = (unsigned __int8)*m;
+            if ( element_index <= (unsigned int)(unsigned __int8)m[1] )
             {
               do
               {
-                v3[v19 + 128] = 0x8000;
-                *(_BYTE *)(v19 + v4 + 128) = v19;
-                *(_BYTE *)(v19 + v5 + 128) = v19;
-                ++v19;
+                calloc_base_result[element_index + 128] = 0x8000;
+                *(_BYTE *)(element_index + calloc_base_result_2 + 128) = element_index;
+                *(_BYTE *)(element_index + calloc_base_result_3 + 128) = element_index;
+                ++element_index;
               }
-              while ( v19 <= (unsigned __int8)m[1] );
+              while ( element_index <= (unsigned __int8)m[1] );
             }
           }
         }
       }
-      v20 = *((_OWORD *)v3 + 33);
-      v21 = (char *)(v3 + 320);
-      *(_OWORD *)v3 = *((_OWORD *)v3 + 32);
-      v22 = *((_QWORD *)v3 + 94);
-      *((_OWORD *)v3 + 1) = v20;
-      v23 = *((_OWORD *)v3 + 35);
-      *((_OWORD *)v3 + 2) = *((_OWORD *)v3 + 34);
-      *((_OWORD *)v3 + 3) = v23;
-      v24 = *((_OWORD *)v3 + 37);
-      *((_OWORD *)v3 + 4) = *((_OWORD *)v3 + 36);
-      *((_OWORD *)v3 + 5) = v24;
-      v25 = *((_OWORD *)v3 + 39);
-      *((_OWORD *)v3 + 6) = *((_OWORD *)v3 + 38);
-      v26 = (char *)(v3 + 64);
-      v27 = *(_OWORD *)v21;
-      *((_OWORD *)v26 - 1) = v25;
-      v28 = *((_OWORD *)v21 + 1);
-      *(_OWORD *)v26 = v27;
-      v29 = *((_OWORD *)v21 + 2);
-      *((_OWORD *)v26 + 1) = v28;
-      v30 = *((_OWORD *)v21 + 3);
-      *((_OWORD *)v26 + 2) = v29;
-      v31 = *((_OWORD *)v21 + 4);
-      *((_OWORD *)v26 + 3) = v30;
-      v32 = *((_OWORD *)v21 + 5);
-      *((_OWORD *)v26 + 4) = v31;
-      v33 = *((_OWORD *)v21 + 6);
-      *((_OWORD *)v26 + 5) = v32;
-      *((_OWORD *)v26 + 6) = v33;
-      *((_QWORD *)v26 + 14) = v22;
-      *((_DWORD *)v26 + 30) = *((_DWORD *)v21 + 30);
-      *((_WORD *)v26 + 62) = *((_WORD *)v21 + 62);
-      LODWORD(v22) = *(_DWORD *)(v4 + 376);
-      v34 = *(_OWORD *)(v4 + 272);
-      *(_OWORD *)v4 = *(_OWORD *)(v4 + 256);
-      v35 = *(_OWORD *)(v4 + 288);
-      *(_OWORD *)(v4 + 16) = v34;
-      v36 = *(_OWORD *)(v4 + 304);
-      *(_OWORD *)(v4 + 32) = v35;
-      v37 = *(_OWORD *)(v4 + 320);
-      *(_OWORD *)(v4 + 48) = v36;
-      v38 = *(_OWORD *)(v4 + 336);
-      *(_OWORD *)(v4 + 64) = v37;
-      v39 = *(_OWORD *)(v4 + 352);
-      *(_OWORD *)(v4 + 80) = v38;
-      *(_QWORD *)&v38 = *(_QWORD *)(v4 + 368);
-      *(_OWORD *)(v4 + 96) = v39;
-      *(_QWORD *)(v4 + 112) = v38;
-      *(_DWORD *)(v4 + 120) = v22;
-      *(_WORD *)(v4 + 124) = *(_WORD *)(v4 + 380);
-      *(_BYTE *)(v4 + 126) = *(_BYTE *)(v4 + 382);
-      LODWORD(v22) = *(_DWORD *)(v5 + 376);
-      v40 = *(_OWORD *)(v5 + 272);
-      *(_OWORD *)v5 = *(_OWORD *)(v5 + 256);
-      v41 = *(_OWORD *)(v5 + 288);
-      *(_OWORD *)(v5 + 16) = v40;
-      v42 = *(_OWORD *)(v5 + 304);
-      *(_OWORD *)(v5 + 32) = v41;
-      v43 = *(_OWORD *)(v5 + 320);
-      *(_OWORD *)(v5 + 48) = v42;
-      v44 = *(_OWORD *)(v5 + 336);
-      *(_OWORD *)(v5 + 64) = v43;
-      v45 = *(_OWORD *)(v5 + 352);
-      *(_OWORD *)(v5 + 80) = v44;
-      *(_QWORD *)&v44 = *(_QWORD *)(v5 + 368);
-      *(_OWORD *)(v5 + 96) = v45;
-      *(_QWORD *)(v5 + 112) = v44;
-      *(_DWORD *)(v5 + 120) = v22;
-      *(_WORD *)(v5 + 124) = *(_WORD *)(v5 + 380);
-      *(_BYTE *)(v5 + 126) = *(_BYTE *)(v5 + 382);
-      v46 = *(volatile signed __int32 **)(a1 + 256);
-      if ( v46 && _InterlockedExchangeAdd(v46, 0xFFFFFFFF) == 1 )
+      loaded_word_2 = *((_OWORD *)calloc_base_result + 33);
+      byte_cursor = (char *)(calloc_base_result + 320);
+      *(_OWORD *)calloc_base_result = *((_OWORD *)calloc_base_result + 32);
+      packed_word_bits = *((_QWORD *)calloc_base_result + 94);
+      *((_OWORD *)calloc_base_result + 1) = loaded_word_2;
+      loaded_word_3 = *((_OWORD *)calloc_base_result + 35);
+      *((_OWORD *)calloc_base_result + 2) = *((_OWORD *)calloc_base_result + 34);
+      *((_OWORD *)calloc_base_result + 3) = loaded_word_3;
+      loaded_word_4 = *((_OWORD *)calloc_base_result + 37);
+      *((_OWORD *)calloc_base_result + 4) = *((_OWORD *)calloc_base_result + 36);
+      *((_OWORD *)calloc_base_result + 5) = loaded_word_4;
+      loaded_word_5 = *((_OWORD *)calloc_base_result + 39);
+      *((_OWORD *)calloc_base_result + 6) = *((_OWORD *)calloc_base_result + 38);
+      saved_loaded_word = (char *)(calloc_base_result + 64);
+      loaded_word_6 = *(_OWORD *)byte_cursor;
+      *((_OWORD *)saved_loaded_word - 1) = loaded_word_5;
+      loaded_word_7 = *((_OWORD *)byte_cursor + 1);
+      *(_OWORD *)saved_loaded_word = loaded_word_6;
+      loaded_word_8 = *((_OWORD *)byte_cursor + 2);
+      *((_OWORD *)saved_loaded_word + 1) = loaded_word_7;
+      loaded_word_9 = *((_OWORD *)byte_cursor + 3);
+      *((_OWORD *)saved_loaded_word + 2) = loaded_word_8;
+      loaded_word_10 = *((_OWORD *)byte_cursor + 4);
+      *((_OWORD *)saved_loaded_word + 3) = loaded_word_9;
+      loaded_word_11 = *((_OWORD *)byte_cursor + 5);
+      *((_OWORD *)saved_loaded_word + 4) = loaded_word_10;
+      loaded_word_12 = *((_OWORD *)byte_cursor + 6);
+      *((_OWORD *)saved_loaded_word + 5) = loaded_word_11;
+      *((_OWORD *)saved_loaded_word + 6) = loaded_word_12;
+      *((_QWORD *)saved_loaded_word + 14) = packed_word_bits;
+      *((_DWORD *)saved_loaded_word + 30) = *((_DWORD *)byte_cursor + 30);
+      *((_WORD *)saved_loaded_word + 62) = *((_WORD *)byte_cursor + 62);
+      LODWORD(packed_word_bits) = *(_DWORD *)(calloc_base_result_2 + 376);
+      loaded_word_13 = *(_OWORD *)(calloc_base_result_2 + 272);
+      *(_OWORD *)calloc_base_result_2 = *(_OWORD *)(calloc_base_result_2 + 256);
+      loaded_word_14 = *(_OWORD *)(calloc_base_result_2 + 288);
+      *(_OWORD *)(calloc_base_result_2 + 16) = loaded_word_13;
+      loaded_word_15 = *(_OWORD *)(calloc_base_result_2 + 304);
+      *(_OWORD *)(calloc_base_result_2 + 32) = loaded_word_14;
+      loaded_word_16 = *(_OWORD *)(calloc_base_result_2 + 320);
+      *(_OWORD *)(calloc_base_result_2 + 48) = loaded_word_15;
+      loaded_word_17 = *(_OWORD *)(calloc_base_result_2 + 336);
+      *(_OWORD *)(calloc_base_result_2 + 64) = loaded_word_16;
+      loaded_word_18 = *(_OWORD *)(calloc_base_result_2 + 352);
+      *(_OWORD *)(calloc_base_result_2 + 80) = loaded_word_17;
+      *(_QWORD *)&loaded_word_17 = *(_QWORD *)(calloc_base_result_2 + 368);
+      *(_OWORD *)(calloc_base_result_2 + 96) = loaded_word_18;
+      *(_QWORD *)(calloc_base_result_2 + 112) = loaded_word_17;
+      *(_DWORD *)(calloc_base_result_2 + 120) = packed_word_bits;
+      *(_WORD *)(calloc_base_result_2 + 124) = *(_WORD *)(calloc_base_result_2 + 380);
+      *(_BYTE *)(calloc_base_result_2 + 126) = *(_BYTE *)(calloc_base_result_2 + 382);
+      LODWORD(packed_word_bits) = *(_DWORD *)(calloc_base_result_3 + 376);
+      loaded_word_19 = *(_OWORD *)(calloc_base_result_3 + 272);
+      *(_OWORD *)calloc_base_result_3 = *(_OWORD *)(calloc_base_result_3 + 256);
+      loaded_word_20 = *(_OWORD *)(calloc_base_result_3 + 288);
+      *(_OWORD *)(calloc_base_result_3 + 16) = loaded_word_19;
+      loaded_word_21 = *(_OWORD *)(calloc_base_result_3 + 304);
+      *(_OWORD *)(calloc_base_result_3 + 32) = loaded_word_20;
+      loaded_word_22 = *(_OWORD *)(calloc_base_result_3 + 320);
+      *(_OWORD *)(calloc_base_result_3 + 48) = loaded_word_21;
+      loaded_word_23 = *(_OWORD *)(calloc_base_result_3 + 336);
+      *(_OWORD *)(calloc_base_result_3 + 64) = loaded_word_22;
+      loaded_word_24 = *(_OWORD *)(calloc_base_result_3 + 352);
+      *(_OWORD *)(calloc_base_result_3 + 80) = loaded_word_23;
+      *(_QWORD *)&loaded_word_23 = *(_QWORD *)(calloc_base_result_3 + 368);
+      *(_OWORD *)(calloc_base_result_3 + 96) = loaded_word_24;
+      *(_QWORD *)(calloc_base_result_3 + 112) = loaded_word_23;
+      *(_DWORD *)(calloc_base_result_3 + 120) = packed_word_bits;
+      *(_WORD *)(calloc_base_result_3 + 124) = *(_WORD *)(calloc_base_result_3 + 380);
+      *(_BYTE *)(calloc_base_result_3 + 126) = *(_BYTE *)(calloc_base_result_3 + 382);
+      loaded_record_pointer_2 = *(volatile signed __int32 **)(a1 + 256);
+      if ( loaded_record_pointer_2 && _InterlockedExchangeAdd(loaded_record_pointer_2, 0xFFFFFFFF) == 1 )
       {
         free_base((void *)(*(_QWORD *)(a1 + 264) - 254LL));
         free_base((void *)(*(_QWORD *)(a1 + 272) - 128LL));
         free_base((void *)(*(_QWORD *)(a1 + 280) - 128LL));
         free_base(*(void **)(a1 + 256));
       }
-      v47 = Block;
+      cached_block = Block;
       *(_DWORD *)Block = 1;
-      *(_QWORD *)(a1 + 256) = (uint64)(uintptr_t)(v47);
-      *(_QWORD *)a1 = (uint64)(uintptr_t)(v53);
-      *(_QWORD *)(a1 + 264) = (uint64)(uintptr_t)(v54);
-      *(_QWORD *)(a1 + 272) = v4 + 128;
-      *(_QWORD *)(a1 + 280) = v5 + 128;
-      *(_DWORD *)(a1 + 8) = v51;
+      *(_QWORD *)(a1 + 256) = (uint64)(uintptr_t)(cached_block);
+      *(_QWORD *)a1 = (uint64)(uintptr_t)(byte_cursor_2);
+      *(_QWORD *)(a1 + 264) = (uint64)(uintptr_t)(byte_cursor_3);
+      *(_QWORD *)(a1 + 272) = calloc_base_result_2 + 128;
+      *(_QWORD *)(a1 + 280) = calloc_base_result_3 + 128;
+      *(_DWORD *)(a1 + 8) = loword_result;
     }
     else
     {
 LABEL_40:
       free_base(Block);
-      free_base(v3);
-      free_base((void *)v4);
-      free_base((void *)v5);
+      free_base(calloc_base_result);
+      free_base((void *)calloc_base_result_2);
+      free_base((void *)calloc_base_result_3);
     }
-    free_base(v6);
+    free_base(calloc_base_result_4);
   }
   else
   {
-    v48 = *(volatile signed __int32 **)(a1 + 256);
-    if ( v48 )
-      _InterlockedDecrement(v48);
+    loaded_record_pointer_3 = *(volatile signed __int32 **)(a1 + 256);
+    if ( loaded_record_pointer_3 )
+      _InterlockedDecrement(loaded_record_pointer_3);
     *(_QWORD *)(a1 + 256) = 0;
     *(_QWORD *)a1 = (uint64)(uintptr_t)(asc_14028B810);
     *(_QWORD *)(a1 + 264) = 0;
@@ -16815,11 +16815,11 @@ LABEL_40:
 //----- (00000001402593D8) ----------------------------------------------------
 __int64            sub_1402593D8(_WORD *a1, __int64 a2, __int64 a3)
 {
-  int *v3;
-  unsigned int v4;
-  _WORD *v6;
-  __int64 v7;
-  __int16 v8;
+  int *unused_written_slot;
+  unsigned int selection_code;
+  _WORD *buffer_cursor;
+  __int64 integer_difference;
+  __int16 loaded_word;
 
   if ( !a1 || !a2 )
     goto LABEL_5;
@@ -16827,20 +16827,20 @@ __int64            sub_1402593D8(_WORD *a1, __int64 a2, __int64 a3)
   {
     *a1 = 0;
 LABEL_5:
-    v3 = errno_sr();
-    v4 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_6:
-    *v3 = v4;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v4;
+    return selection_code;
   }
-  v6 = a1;
-  v7 = a3 - (_QWORD)a1;
+  buffer_cursor = a1;
+  integer_difference = a3 - (_QWORD)a1;
   do
   {
-    v8 = *(_WORD *)((char *)v6 + v7);
-    *v6++ = v8;
-    if ( !v8 )
+    loaded_word = *(_WORD *)((char *)buffer_cursor + integer_difference);
+    *buffer_cursor++ = loaded_word;
+    if ( !loaded_word )
       break;
     --a2;
   }
@@ -16848,8 +16848,8 @@ LABEL_6:
   if ( !a2 )
   {
     *a1 = 0;
-    v3 = errno_sr();
-    v4 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_6;
   }
   return 0;
@@ -16858,33 +16858,33 @@ LABEL_6:
 //----- (0000000140259444) ----------------------------------------------------
 __int64            sub_140259444(_WORD *a1, __int64 a2, __int64 a3)
 {
-  unsigned int v3;
-  int *v4;
-  _WORD *v6;
-  __int64 v7;
-  __int16 v8;
+  unsigned int selection_code;
+  int *unused_written_slot;
+  _WORD *buffer_cursor;
+  __int64 integer_difference;
+  __int16 loaded_word;
 
-  v3 = 0;
+  selection_code = 0;
   if ( !a1 || !a2 )
     goto LABEL_5;
   if ( !a3 )
   {
     *a1 = 0;
 LABEL_5:
-    v4 = errno_sr();
-    v3 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_6:
-    *v4 = v3;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v3;
+    return selection_code;
   }
-  v6 = a1;
-  v7 = a3 - (_QWORD)a1;
+  buffer_cursor = a1;
+  integer_difference = a3 - (_QWORD)a1;
   do
   {
-    v8 = *(_WORD *)((char *)v6 + v7);
-    *v6++ = v8;
-    if ( !v8 )
+    loaded_word = *(_WORD *)((char *)buffer_cursor + integer_difference);
+    *buffer_cursor++ = loaded_word;
+    if ( !loaded_word )
       break;
     --a2;
   }
@@ -16892,11 +16892,11 @@ LABEL_6:
   if ( !a2 )
   {
     *a1 = 0;
-    v4 = errno_sr();
-    v3 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_6;
   }
-  return v3;
+  return selection_code;
 }
 
 //----- (0000000140259504) ----------------------------------------------------
@@ -16910,60 +16910,60 @@ __int64 crt_multi_byte_to_wide_char()
 //----- (0000000140259560) ----------------------------------------------------
 __int64            _loctotime32_t_0(int a1, int a2, int a3, unsigned int a4, unsigned int a5, unsigned int a6, int a7)
 {
-  unsigned int v7;
-  __int64 v9;
-  int v10;
-  _QWORD v12[6];
-  unsigned int v13;
-  int v14;
-  int v15;
-  int v16;
-  _DWORD v17[10];
-  __int64 v18;
+  unsigned int integer_difference;
+  __int64 input_value;
+  int iteration_count;
+  _QWORD scratch_buffer[6];
+  unsigned int input_value_2;
+  int selection_flag;
+  int selection_flag_2;
+  int selection_flag_3;
+  _DWORD scratch_buffer_2[10];
+  __int64 unused_local;
 
-  v7 = a1 - 1900;
-  v13 = a4;
-  v9 = a2;
+  integer_difference = a1 - 1900;
+  input_value_2 = a4;
+  input_value = a2;
   if ( a1 - 1900 >= 70
-    && v7 <= 0x8A
+    && integer_difference <= 0x8A
     && (unsigned int)(a2 - 1) <= 0xB
     && a3 > 0
-    && (a3 <= dword_14028BF18[a2] - dword_14028BF18[a2 - 1] || sub_1402374E4(v7) && (_DWORD)v9 == 2 && a3 <= 29)
-    && v13 <= 0x17
+    && (a3 <= dword_14028BF18[a2] - dword_14028BF18[a2 - 1] || sub_1402374E4(integer_difference) && (_DWORD)input_value == 2 && a3 <= 29)
+    && input_value_2 <= 0x17
     && a5 <= 0x3B
     && a6 <= 0x3B )
   {
-    v10 = dword_14028BF18[v9 - 1] + a3;
-    if ( sub_1402374E4(v7) && (int)v9 > 2 )
-      ++v10;
+    iteration_count = dword_14028BF18[input_value - 1] + a3;
+    if ( sub_1402374E4(integer_difference) && (int)input_value > 2 )
+      ++iteration_count;
     sub_140237FC0();
-    v16 = 0;
-    v15 = 0;
-    v14 = 0;
-    if ( (unsigned int)sub_140237138(&v16) || (unsigned int)sub_140237168(&v15) || (unsigned int)sub_140237198(&v14) )
+    selection_flag_3 = 0;
+    selection_flag_2 = 0;
+    selection_flag = 0;
+    if ( (unsigned int)sub_140237138(&selection_flag_3) || (unsigned int)sub_140237168(&selection_flag_2) || (unsigned int)sub_140237198(&selection_flag) )
     {
-      v12[4] = 0;
+      scratch_buffer[4] = 0;
       crt_invoke_watson();
       __debugbreak();
     }
-    unsigned int sr_t = ((((unsigned int)v7 * 365u
-                         + (unsigned int)((int)(v7 - 1) / 4 - (int)(v7 - 1) / 100 + (int)(v7 + 299) / 400 + v10)) * 24u
-                        + v13) * 60u
+    unsigned int sr_t = ((((unsigned int)integer_difference * 365u
+                         + (unsigned int)((int)(integer_difference - 1) / 4 - (int)(integer_difference - 1) / 100 + (int)(integer_difference + 299) / 400 + iteration_count)) * 24u
+                        + input_value_2) * 60u
                        + a5) * 60u
-                     + (unsigned int)v14 + a6 + 0x7C558180u; /* 0x14025967C..0x1402596EE: edi */
+                     + (unsigned int)selection_flag + a6 + 0x7C558180u; /* 0x14025967C..0x1402596EE: edi */
     if ( a7 == 1 )
-      return sr_t + (unsigned int)v15; /* 0x1402596F7: je -> 0x14025972B: mov eax, r14d */
+      return sr_t + (unsigned int)selection_flag_2; /* 0x1402596F7: je -> 0x14025972B: mov eax, r14d */
     {
-      v17[7] = v10;
-      v17[5] = v7;
-      v17[4] = v9 - 1;
-      v17[2] = v13;
-      v17[1] = a5;
-      v17[0] = a6;
+      scratch_buffer_2[7] = iteration_count;
+      scratch_buffer_2[5] = integer_difference;
+      scratch_buffer_2[4] = input_value - 1;
+      scratch_buffer_2[2] = input_value_2;
+      scratch_buffer_2[1] = a5;
+      scratch_buffer_2[0] = a6;
       if ( a7 == -1 )
       {
-        if ( v16 && (unsigned int)sub_140238034((struct tm *)v17) )
-          return sr_t + (unsigned int)v15; /* 0x140259725: jne -> mov eax, r14d */
+        if ( selection_flag_3 && (unsigned int)sub_140238034((struct tm *)scratch_buffer_2) )
+          return sr_t + (unsigned int)selection_flag_2; /* 0x140259725: jne -> mov eax, r14d */
       }
     }
     return sr_t; /* 0x140259727: mov eax, edi */
@@ -17028,14 +17028,14 @@ __int64            _loctotime64_t_sr(int a1, int a2, int a3, unsigned int a4, un
 //----- (00000001402599F8) ----------------------------------------------------
 __int64            sub_1402599F8(unsigned __int16 a1)
 {
-  int v2;
-  unsigned int v3;
+  int call_result;
+  unsigned int unused_written_slot;
 
-  v2 = sub_140256E00(a1, 263);
-  v3 = 0;
-  if ( v2 || a1 == 95 )
+  call_result = sub_140256E00(a1, 263);
+  unused_written_slot = 0;
+  if ( call_result || a1 == 95 )
     return 1;
-  return v3;
+  return unused_written_slot;
 }
 
 // 1402599F8: invalid function type 'int __cdecl sub_1402599F8(wint_t C)' has been ignored
@@ -17043,14 +17043,14 @@ __int64            sub_1402599F8(unsigned __int16 a1)
 //----- (0000000140259A24) ----------------------------------------------------
 __int64            sub_140259A24(unsigned __int16 a1)
 {
-  int v2;
-  unsigned int v3;
+  int call_result;
+  unsigned int unused_written_slot;
 
-  v2 = sub_140256E00(a1, 259);
-  v3 = 0;
-  if ( v2 || a1 == 95 )
+  call_result = sub_140256E00(a1, 259);
+  unused_written_slot = 0;
+  if ( call_result || a1 == 95 )
     return 1;
-  return v3;
+  return unused_written_slot;
 }
 
 // 140259A24: invalid function type 'int __cdecl sub_140259A24(wint_t C)' has been ignored
@@ -17058,19 +17058,19 @@ __int64            sub_140259A24(unsigned __int16 a1)
 //----- (0000000140259A50) ----------------------------------------------------
 __int64            isleadbyte_l(int a1, struct __crt_locale_pointers *a2)
 {
-  __int64 v2;
+  __int64 input_value;
   __int64 result;
-  _QWORD v4[3];
-  char v5;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
-  v2 = a1;
-  crt_locale_update((_LocaleUpdate *)v4, a2);
-  if ( (unsigned int)(v2 + 1) > 0x100 )
+  input_value = a1;
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, a2);
+  if ( (unsigned int)(input_value + 1) > 0x100 )
     result = 0;
   else
-    result = *(_WORD *)(*(_QWORD *)v4[1] + 2 * v2) & 0x8000;
-  if ( v5 )
-    *(_DWORD *)(v4[0] + 936LL) &= ~2u;
+    result = *(_WORD *)(*(_QWORD *)scratch_buffer[1] + 2 * input_value) & 0x8000;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   return result;
 }
 
@@ -17079,14 +17079,14 @@ __int64            isleadbyte_l(int a1, struct __crt_locale_pointers *a2)
 //----- (0000000140259AD8) ----------------------------------------------------
 __int64            sub_140259AD8(unsigned __int16 a1)
 {
-  int v2;
-  unsigned int v3;
+  int call_result;
+  unsigned int unused_written_slot;
 
-  v2 = sub_140256E00(a1, 263);
-  v3 = 0;
-  if ( v2 || a1 == 95 )
+  call_result = sub_140256E00(a1, 263);
+  unused_written_slot = 0;
+  if ( call_result || a1 == 95 )
     return 1;
-  return v3;
+  return unused_written_slot;
 }
 
 // 140259AD8: invalid function type 'int __cdecl sub_140259AD8(wint_t C)' has been ignored
@@ -17094,14 +17094,14 @@ __int64            sub_140259AD8(unsigned __int16 a1)
 //----- (0000000140259B04) ----------------------------------------------------
 __int64            sub_140259B04(unsigned __int16 a1)
 {
-  int v2;
-  unsigned int v3;
+  int call_result;
+  unsigned int unused_written_slot;
 
-  v2 = sub_140256E00(a1, 259);
-  v3 = 0;
-  if ( v2 || a1 == 95 )
+  call_result = sub_140256E00(a1, 259);
+  unused_written_slot = 0;
+  if ( call_result || a1 == 95 )
     return 1;
-  return v3;
+  return unused_written_slot;
 }
 
 // 140259B04: invalid function type 'int __cdecl sub_140259B04(wint_t C)' has been ignored
@@ -17109,19 +17109,19 @@ __int64            sub_140259B04(unsigned __int16 a1)
 //----- (0000000140259B90) ----------------------------------------------------
 int         isleadbyte(int C)
 {
-  __int64 v1;
+  __int64 cached_c;
   int result;
-  _QWORD v3[3];
-  char v4;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
-  v1 = C;
-  crt_locale_update((_LocaleUpdate *)v3, nullptr);
-  if ( (unsigned int)(v1 + 1) > 0x100 )
+  cached_c = C;
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, nullptr);
+  if ( (unsigned int)(cached_c + 1) > 0x100 )
     result = 0;
   else
-    result = *(_WORD *)(*(_QWORD *)v3[1] + 2 * v1) & 0x8000;
-  if ( v4 )
-    *(_DWORD *)(v3[0] + 936LL) &= ~2u;
+    result = *(_WORD *)(*(_QWORD *)scratch_buffer[1] + 2 * cached_c) & 0x8000;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   return result;
 }
 
@@ -17129,15 +17129,15 @@ int         isleadbyte(int C)
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_885(__int64 *a1)
 {
-  __int64 v1;
-  _DWORD *v2;
+  __int64 loaded_word;
+  _DWORD *record_pointer;
 
-  v1 = *a1;
-  if ( v1 )
+  loaded_word = *a1;
+  if ( loaded_word )
   {
-    v2 = (_DWORD *)(v1 - 16);
-    if ( *v2 == 56797 )
-      free_base(v2);
+    record_pointer = (_DWORD *)(loaded_word - 16);
+    if ( *record_pointer == 56797 )
+      free_base(record_pointer);
   }
 }
 
@@ -17152,150 +17152,150 @@ __int64            sub_140259CC8(
         int a7,
         unsigned int a8)
 {
-  unsigned int v10;
-  signed int v11;
-  unsigned int v12;
-  unsigned __int64 v13;
-  __int64 v14;
-  void *v15;
-  __int64 *v16;
-  __int64 *v17;
-  __int64 v18;
-  int v19;
-  unsigned int v20;
-  unsigned __int64 v21;
-  __int64 v22;
-  void *v23;
-  __int64 *v24;
-  __int64 *v25;
-  _BYTE v27[32];
-  __int64 *v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32[6];
+  unsigned int loaded_word;
+  signed int multi_byte_to_wide_char_result;
+  unsigned int saved_multi_byte_to_wide_char_result;
+  unsigned __int64 comparison_result;
+  __int64 integer_sum;
+  void *alloca_result;
+  __int64 *saved_alloca_result;
+  __int64 *malloc_base_result;
+  __int64 table_value;
+  int call_result;
+  unsigned int cached_call_result;
+  unsigned __int64 comparison_result_2;
+  __int64 integer_sum_2;
+  void *alloca_result_2;
+  __int64 *saved_alloca_result_2;
+  __int64 *malloc_base_result_2;
+  _BYTE scratch_buffer[32];
+  __int64 *saved_running_total;
+  __int64 packed_word_bits;
+  __int64 selection_flag;
+  __int64 selection_flag_2;
+  __int64 scratch_buffer_2[6];
 
-  v32[0] = a2;
+  scratch_buffer_2[0] = a2;
   if ( a5 > 0 )
     _strncnt_sr(a4, a5);
-  v10 = a8;
+  loaded_word = a8;
   if ( !a8 )
-    v10 = *(_DWORD *)(*(_QWORD *)a1 + 12LL);
-  LODWORD(v29) = 0;
-  v28 = nullptr;
+    loaded_word = *(_DWORD *)(*(_QWORD *)a1 + 12LL);
+  LODWORD(packed_word_bits) = 0;
+  saved_running_total = nullptr;
   unsigned int sr_ret = 0; /* edi: 0x140259F7B xor edi, edi on every failure */
-  v11 = crt_multi_byte_to_wide_char();
-  v12 = v11;
-  if ( v11 )
+  multi_byte_to_wide_char_result = crt_multi_byte_to_wide_char();
+  saved_multi_byte_to_wide_char_result = multi_byte_to_wide_char_result;
+  if ( multi_byte_to_wide_char_result )
   {
-    v13 = (2LL * v11 + 16) & -(__int64)(2LL * v11 < (unsigned __int64)(2LL * v11 + 16));
-    if ( !v13 )
+    comparison_result = (2LL * multi_byte_to_wide_char_result + 16) & -(__int64)(2LL * multi_byte_to_wide_char_result < (unsigned __int64)(2LL * multi_byte_to_wide_char_result + 16));
+    if ( !comparison_result )
     {
-      v16 = nullptr;
+      saved_alloca_result = nullptr;
       goto LABEL_16;
     }
-    if ( v13 > 0x400 )
+    if ( comparison_result > 0x400 )
     {
-      v17 = (__int64 *)malloc_base();
-      v16 = v17;
-      if ( !v17 )
+      malloc_base_result = (__int64 *)malloc_base();
+      saved_alloca_result = malloc_base_result;
+      if ( !malloc_base_result )
       {
 LABEL_16:
-        if ( !v16 )
+        if ( !saved_alloca_result )
           goto LABEL_40;
-        LODWORD(v29) = v12;
-        v28 = v16;
+        LODWORD(packed_word_bits) = saved_multi_byte_to_wide_char_result;
+        saved_running_total = saved_alloca_result;
         if ( !(unsigned int)crt_multi_byte_to_wide_char() )
           goto LABEL_40;
-        v18 = v32[0];
-        v19 = sub_14024F4D0(v32[0], a3, (__int64)v16, v12, 0, 0, 0, 0, 0);
-        v20 = v19;
-        if ( !v19 )
+        table_value = scratch_buffer_2[0];
+        call_result = sub_14024F4D0(scratch_buffer_2[0], a3, (__int64)saved_alloca_result, saved_multi_byte_to_wide_char_result, 0, 0, 0, 0, 0);
+        cached_call_result = call_result;
+        if ( !call_result )
           goto LABEL_40;
         if ( (a3 & 0x400) != 0 )
         {
           if ( !a7 )
-            sr_ret = v20; /* 0x140259E4D: je with edi = the size */
-          else if ( v19 <= a7 )
-            sr_ret = (unsigned int)sub_14024F4D0(v18, a3, (__int64)v16, v12, (__int64)a6, a7, 0, 0, 0); /* 0x140259E8B: mov edi, eax */
+            sr_ret = cached_call_result; /* 0x140259E4D: je with edi = the size */
+          else if ( call_result <= a7 )
+            sr_ret = (unsigned int)sub_14024F4D0(table_value, a3, (__int64)saved_alloca_result, saved_multi_byte_to_wide_char_result, (__int64)a6, a7, 0, 0, 0); /* 0x140259E8B: mov edi, eax */
           goto LABEL_40;
         }
-        v21 = (2LL * v19 + 16) & -(__int64)(2LL * v19 < (unsigned __int64)(2LL * v19 + 16));
-        if ( v21 )
+        comparison_result_2 = (2LL * call_result + 16) & -(__int64)(2LL * call_result < (unsigned __int64)(2LL * call_result + 16));
+        if ( comparison_result_2 )
         {
-          if ( v21 > 0x400 )
+          if ( comparison_result_2 > 0x400 )
           {
-            v25 = (__int64 *)malloc_base();
-            v24 = v25;
-            if ( !v25 )
+            malloc_base_result_2 = (__int64 *)malloc_base();
+            saved_alloca_result_2 = malloc_base_result_2;
+            if ( !malloc_base_result_2 )
               goto LABEL_33;
-            *(_DWORD *)v25 = 56797;
+            *(_DWORD *)malloc_base_result_2 = 56797;
           }
           else
           {
-            v22 = v21 + 15;
-            if ( v21 + 15 < v21 )
-              v22 = 0xFFFFFFFFFFFFFF0LL;
-            v23 = alloca(v22 & 0xFFFFFFFFFFFFFFF0uLL);
-            v24 = v23;
-            if ( v27 == (_BYTE *)-80LL )
+            integer_sum_2 = comparison_result_2 + 15;
+            if ( comparison_result_2 + 15 < comparison_result_2 )
+              integer_sum_2 = 0xFFFFFFFFFFFFFF0LL;
+            alloca_result_2 = alloca(integer_sum_2 & 0xFFFFFFFFFFFFFFF0uLL);
+            saved_alloca_result_2 = alloca_result_2;
+            if ( scratch_buffer == (_BYTE *)-80LL )
               goto LABEL_40;
-            LODWORD(v32[0]) = 52428;
+            LODWORD(scratch_buffer_2[0]) = 52428;
           }
-          v24 += 2;
+          saved_alloca_result_2 += 2;
         }
         else
         {
-          v24 = nullptr;
+          saved_alloca_result_2 = nullptr;
         }
 LABEL_33:
-        if ( v24 )
+        if ( saved_alloca_result_2 )
         {
-          if ( (unsigned int)sub_14024F4D0(v18, a3, (__int64)v16, v12, (__int64)v24, v20, 0, 0, 0) )
+          if ( (unsigned int)sub_14024F4D0(table_value, a3, (__int64)saved_alloca_result, saved_multi_byte_to_wide_char_result, (__int64)saved_alloca_result_2, cached_call_result, 0, 0, 0) )
           {
-            v31 = 0;
-            v30 = 0;
+            selection_flag_2 = 0;
+            selection_flag = 0;
             if ( a7 )
             {
-              LODWORD(v29) = a7;
-              v28 = a6;
+              LODWORD(packed_word_bits) = a7;
+              saved_running_total = a6;
             }
             else
             {
-              LODWORD(v29) = 0;
-              v28 = nullptr;
+              LODWORD(packed_word_bits) = 0;
+              saved_running_total = nullptr;
             }
-            sr_ret = (unsigned int)crt_wide_char_to_multi_byte(v10, 0, (__int64)v24, v20, (__int64)v28, v29, v30, v31); /* 0x140259F64: mov edi, eax */
+            sr_ret = (unsigned int)crt_wide_char_to_multi_byte(loaded_word, 0, (__int64)saved_alloca_result_2, cached_call_result, (__int64)saved_running_total, packed_word_bits, selection_flag, selection_flag_2); /* 0x140259F64: mov edi, eax */
             if ( sr_ret )
             {
-              if ( *((_DWORD *)v24 - 4) != 56797 )
+              if ( *((_DWORD *)saved_alloca_result_2 - 4) != 56797 )
                 goto LABEL_40;
               goto LABEL_39;
             }
           }
-          if ( *((_DWORD *)v24 - 4) == 56797 )
+          if ( *((_DWORD *)saved_alloca_result_2 - 4) == 56797 )
 LABEL_39:
-            free_base(v24 - 2);
+            free_base(saved_alloca_result_2 - 2);
         }
 LABEL_40:
-        if ( v16 && *((_DWORD *)v16 - 4) == 56797 )
-          free_base(v16 - 2);
+        if ( saved_alloca_result && *((_DWORD *)saved_alloca_result - 4) == 56797 )
+          free_base(saved_alloca_result - 2);
         return sr_ret; /* 0x140259F93: mov eax, edi */
       }
-      *(_DWORD *)v17 = 56797;
+      *(_DWORD *)malloc_base_result = 56797;
     }
     else
     {
-      v14 = v13 + 15;
-      if ( v13 + 15 < v13 )
-        v14 = 0xFFFFFFFFFFFFFF0LL;
-      v15 = alloca(v14 & 0xFFFFFFFFFFFFFFF0uLL);
-      v16 = v15;
-      if ( v27 == (_BYTE *)-80LL )
+      integer_sum = comparison_result + 15;
+      if ( comparison_result + 15 < comparison_result )
+        integer_sum = 0xFFFFFFFFFFFFFF0LL;
+      alloca_result = alloca(integer_sum & 0xFFFFFFFFFFFFFFF0uLL);
+      saved_alloca_result = alloca_result;
+      if ( scratch_buffer == (_BYTE *)-80LL )
         goto LABEL_40;
-      LODWORD(v32[0]) = 52428;
+      LODWORD(scratch_buffer_2[0]) = 52428;
     }
-    v16 += 2;
+    saved_alloca_result += 2;
     goto LABEL_16;
   }
   return 0; /* 0x140259D59: je with eax = 0 */
@@ -17313,26 +17313,26 @@ __int64            sub_14025A004(
         unsigned int a8, ...)
 {
   __int64 result;
-  __int64 v12;
-  _BYTE v13[24];
+  __int64 callee_output_word;
+  _BYTE scratch_buffer[24];
 
-  crt_locale_update((_LocaleUpdate *)&v12, a1);
-  result = sub_140259CC8((__int64)v13, a2, a3, a4, a5, a6, a7, a8);
-  if ( v13[16] )
-    *(_DWORD *)(v12 + 936) &= ~2u;
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a1);
+  result = sub_140259CC8((__int64)scratch_buffer, a2, a3, a4, a5, a6, a7, a8);
+  if ( scratch_buffer[16] )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
 //----- (000000014025A09C) ----------------------------------------------------
 void         freea(void *Memory)
 {
-  _DWORD *v1;
+  _DWORD *record_pointer;
 
   if ( Memory )
   {
-    v1 = (char *)Memory - 16;
-    if ( *v1 == 56797 )
-      free_base(v1);
+    record_pointer = (char *)Memory - 16;
+    if ( *record_pointer == 56797 )
+      free_base(record_pointer);
   }
 }
 
@@ -17375,19 +17375,19 @@ LABEL_6:
 __int64            sub_14025A138(int a1)
 {
   __int64 result;
-  int v2;
-  int v3;
+  int selection_flag;
+  int input_value;
 
   result = g_144CBF9B4;
-  v2 = 0;
+  selection_flag = 0;
   if ( !g_144CBF9B4 )
   {
-    v3 = a1;
+    input_value = a1;
     if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) >= 0 )
-      sub_14024ED04((__int64)&v3);
-    LOBYTE(v2) = v3 == 1;
-    _InterlockedExchange((volatile __int32 *)&g_144CBF9B4, v2 + 1);
-    return (unsigned int)(v2 + 1);
+      sub_14024ED04((__int64)&input_value);
+    LOBYTE(selection_flag) = input_value == 1;
+    _InterlockedExchange((volatile __int32 *)&g_144CBF9B4, selection_flag + 1);
+    return (unsigned int)(selection_flag + 1);
   }
   return result;
 }
@@ -17396,19 +17396,19 @@ __int64            sub_14025A138(int a1)
 __int64            sub_14025A184(int a1)
 {
   __int64 result;
-  int v2;
-  int v3;
+  int selection_flag;
+  int input_value;
 
   result = g_144CBF9B8;
-  v2 = 0;
+  selection_flag = 0;
   if ( !g_144CBF9B8 )
   {
-    v3 = a1;
+    input_value = a1;
     if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) >= 0 )
-      sub_14024ECB4((__int64)&v3);
-    LOBYTE(v2) = v3 == 1;
-    _InterlockedExchange((volatile __int32 *)&g_144CBF9B8, v2 + 1);
-    return (unsigned int)(v2 + 1);
+      sub_14024ECB4((__int64)&input_value);
+    LOBYTE(selection_flag) = input_value == 1;
+    _InterlockedExchange((volatile __int32 *)&g_144CBF9B8, selection_flag + 1);
+    return (unsigned int)(selection_flag + 1);
   }
   return result;
 }
@@ -17417,15 +17417,15 @@ __int64            sub_14025A184(int a1)
 __int64            sub_14025A1D0(int a1)
 {
   __int64 result;
-  int v2;
+  int input_value;
 
   result = g_144CBF9BC;
   if ( !g_144CBF9BC )
   {
-    v2 = a1;
+    input_value = a1;
     if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) >= 0 )
-      sub_14024ED54((__int64)&v2);
-    switch ( v2 )
+      sub_14024ED54((__int64)&input_value);
+    switch ( input_value )
     {
       case 1:
         result = 2;
@@ -17448,154 +17448,154 @@ __int64            sub_14025A1D0(int a1)
 //----- (000000014025A23C) ----------------------------------------------------
 __int64            sub_14025A23C(int a1)
 {
-  unsigned int v1;
-  int v3;
+  unsigned int selection_flag;
+  int input_value;
 
-  v3 = a1;
-  v1 = 0;
+  input_value = a1;
+  selection_flag = 0;
   if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) >= 0 )
-    sub_14024EC64((__int64)&v3);
-  LOBYTE(v1) = v3 != 1;
-  return v1;
+    sub_14024EC64((__int64)&input_value);
+  LOBYTE(selection_flag) = input_value != 1;
+  return selection_flag;
 }
 
 //----- (000000014025A2E0) ----------------------------------------------------
 __int64 sub_14025A2E0()
 {
-  unsigned __int32 v0;
-  int v2;
+  unsigned __int32 state_word;
+  int selection_flag;
 
-  v0 = g_144CBF9B4;
+  state_word = g_144CBF9B4;
   if ( !g_144CBF9B4 )
   {
-    v2 = 0;
-    v0 = 1;
+    selection_flag = 0;
+    state_word = 1;
     if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) >= 0 )
     {
-      sub_14024ED04((__int64)&v2);
-      if ( v2 == 1 )
-        v0 = 2;
+      sub_14024ED04((__int64)&selection_flag);
+      if ( selection_flag == 1 )
+        state_word = 2;
     }
-    _InterlockedExchange((volatile __int32 *)&g_144CBF9B4, v0);
+    _InterlockedExchange((volatile __int32 *)&g_144CBF9B4, state_word);
   }
-  return v0;
+  return state_word;
 }
 
 //----- (000000014025A334) ----------------------------------------------------
 __int64 sub_14025A334()
 {
-  unsigned __int32 v0;
-  int v2;
+  unsigned __int32 state_word;
+  int selection_flag;
 
-  v0 = g_144CBF9B8;
+  state_word = g_144CBF9B8;
   if ( !g_144CBF9B8 )
   {
-    v0 = 1;
-    v2 = 1;
-    if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) < 0 || (sub_14024ECB4((__int64)&v2), v2 == 1) )
-      v0 = 2;
-    _InterlockedExchange((volatile __int32 *)&g_144CBF9B8, v0);
+    state_word = 1;
+    selection_flag = 1;
+    if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) < 0 || (sub_14024ECB4((__int64)&selection_flag), selection_flag == 1) )
+      state_word = 2;
+    _InterlockedExchange((volatile __int32 *)&g_144CBF9B8, state_word);
   }
-  return v0;
+  return state_word;
 }
 
 //----- (000000014025A388) ----------------------------------------------------
 __int64 sub_14025A388()
 {
-  unsigned int v0;
-  int v2;
+  unsigned int unused_written_slot;
+  int selection_flag;
 
-  v0 = 0;
-  v2 = 0;
+  unused_written_slot = 0;
+  selection_flag = 0;
   if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) < 0 )
     return 1;
-  sub_14024EC64((__int64)&v2);
-  if ( v2 != 1 )
+  sub_14024EC64((__int64)&selection_flag);
+  if ( selection_flag != 1 )
     return 1;
-  return v0;
+  return unused_written_slot;
 }
 
 //----- (000000014025A3C4) ----------------------------------------------------
 __int64 sub_14025A3C4()
 {
-  unsigned __int32 v0;
-  int v2;
+  unsigned __int32 state_word;
+  int selection_code;
 
-  v0 = g_144CBF9BC;
+  state_word = g_144CBF9BC;
   if ( !g_144CBF9BC )
   {
-    v0 = 2;
-    v2 = 2;
+    state_word = 2;
+    selection_code = 2;
     if ( *(int *)(*(_QWORD *)(__readgsqword(0x60u) + 32) + 8LL) >= 0 )
-      sub_14024ED54((__int64)&v2);
-    if ( v2 != 1 )
+      sub_14024ED54((__int64)&selection_code);
+    if ( selection_code != 1 )
     {
-      if ( v2 == 2 )
+      if ( selection_code == 2 )
       {
-        v0 = 1;
+        state_word = 1;
       }
-      else if ( v2 == 3 )
+      else if ( selection_code == 3 )
       {
-        v0 = 3;
+        state_word = 3;
       }
       else
       {
-        v0 = 4;
+        state_word = 4;
       }
     }
-    _InterlockedExchange((volatile __int32 *)&g_144CBF9BC, v0);
+    _InterlockedExchange((volatile __int32 *)&g_144CBF9BC, state_word);
   }
-  return v0;
+  return state_word;
 }
 
 //----- (000000014025A430) ----------------------------------------------------
 __int64            sub_14025A430(unsigned int a1, char *a2, unsigned __int64 a3, unsigned int a4, char a5)
 {
-  unsigned __int64 v5;
-  char *v9;
-  char *v10;
-  _BYTE *v11;
-  char *v12;
-  unsigned int v13;
-  char v14;
-  char v16;
+  unsigned __int64 iteration_count;
+  char *text_cursor;
+  char *text_cursor_2;
+  _BYTE *unused_written_slot;
+  char *text_cursor_3;
+  unsigned int comparison_operand;
+  char selection_code;
+  char input_byte;
 
-  v5 = 0;
-  v9 = a2;
+  iteration_count = 0;
+  text_cursor = a2;
   if ( a5 )
   {
     *a2 = 45;
-    v9 = a2 + 1;
-    v5 = 1;
+    text_cursor = a2 + 1;
+    iteration_count = 1;
     a1 = -a1;
   }
-  v10 = v9;
+  text_cursor_2 = text_cursor;
   do
   {
-    v11 = v9 + 1;
-    v12 = v9;
-    v13 = a1 % a4;
+    unused_written_slot = text_cursor + 1;
+    text_cursor_3 = text_cursor;
+    comparison_operand = a1 % a4;
     a1 /= a4;
-    v14 = 87;
-    if ( v13 <= 9 )
-      v14 = 48;
-    ++v5;
-    *v9 = v13 + v14;
+    selection_code = 87;
+    if ( comparison_operand <= 9 )
+      selection_code = 48;
+    ++iteration_count;
+    *text_cursor = comparison_operand + selection_code;
     if ( !a1 )
       break;
-    ++v9;
+    ++text_cursor;
   }
-  while ( v5 < a3 );
-  if ( v5 < a3 )
+  while ( iteration_count < a3 );
+  if ( iteration_count < a3 )
   {
-    *v11 = 0;
+    *unused_written_slot = 0;
     do
     {
-      v16 = *v12;
-      *v12-- = *v10;
-      *v10++ = v16;
+      input_byte = *text_cursor_3;
+      *text_cursor_3-- = *text_cursor_2;
+      *text_cursor_2++ = input_byte;
     }
-    while ( v10 < v12 );
+    while ( text_cursor_2 < text_cursor_3 );
     return 0;
   }
   else
@@ -17610,51 +17610,51 @@ __int64            sub_14025A430(unsigned int a1, char *a2, unsigned __int64 a3,
 //----- (000000014025A4F8) ----------------------------------------------------
 __int64            sub_14025A4F8(unsigned int a1, __int16 *a2, unsigned __int64 a3, unsigned int a4, char a5)
 {
-  __int16 *v8;
-  unsigned __int64 v9;
-  __int16 *v10;
-  _WORD *v11;
-  __int16 *v12;
-  unsigned int v13;
-  __int16 v14;
-  __int16 v16;
+  __int16 *buffer_cursor;
+  unsigned __int64 iteration_count;
+  __int16 *buffer_cursor_2;
+  _WORD *unused_written_slot;
+  __int16 *buffer_cursor_3;
+  unsigned int comparison_operand;
+  __int16 selection_code;
+  __int16 loaded_word;
 
-  v8 = a2;
-  v9 = 0;
+  buffer_cursor = a2;
+  iteration_count = 0;
   if ( a5 )
   {
     a1 = -a1;
     *a2 = 45;
-    v9 = 1;
-    v8 = a2 + 1;
+    iteration_count = 1;
+    buffer_cursor = a2 + 1;
   }
-  v10 = v8;
+  buffer_cursor_2 = buffer_cursor;
   do
   {
-    v11 = v8 + 1;
-    v12 = v8;
-    v13 = a1 % a4;
+    unused_written_slot = buffer_cursor + 1;
+    buffer_cursor_3 = buffer_cursor;
+    comparison_operand = a1 % a4;
     a1 /= a4;
-    v14 = 87;
-    if ( v13 <= 9 )
-      v14 = 48;
-    ++v9;
-    *v8 = v13 + v14;
+    selection_code = 87;
+    if ( comparison_operand <= 9 )
+      selection_code = 48;
+    ++iteration_count;
+    *buffer_cursor = comparison_operand + selection_code;
     if ( !a1 )
       break;
-    ++v8;
+    ++buffer_cursor;
   }
-  while ( v9 < a3 );
-  if ( v9 < a3 )
+  while ( iteration_count < a3 );
+  if ( iteration_count < a3 )
   {
-    *v11 = 0;
+    *unused_written_slot = 0;
     do
     {
-      v16 = *v12;
-      *v12-- = *v10;
-      *v10++ = v16;
+      loaded_word = *buffer_cursor_3;
+      *buffer_cursor_3-- = *buffer_cursor_2;
+      *buffer_cursor_2++ = loaded_word;
     }
-    while ( v10 < v12 );
+    while ( buffer_cursor_2 < buffer_cursor_3 );
     return 0;
   }
   else
@@ -17669,53 +17669,53 @@ __int64            sub_14025A4F8(unsigned int a1, __int16 *a2, unsigned __int64 
 //----- (000000014025A5CC) ----------------------------------------------------
 __int64            sub_14025A5CC(unsigned __int64 a1, char *a2, unsigned __int64 a3, unsigned int a4, char a5)
 {
-  unsigned __int64 v5;
-  char *v8;
-  char *v9;
-  unsigned __int64 v10;
-  _BYTE *v11;
-  char *v12;
-  unsigned __int64 v13;
-  char v14;
-  char v16;
+  unsigned __int64 iteration_count;
+  char *text_cursor;
+  char *text_cursor_2;
+  unsigned __int64 input_value;
+  _BYTE *unused_written_slot;
+  char *text_cursor_3;
+  unsigned __int64 comparison_operand;
+  char selection_code;
+  char input_byte;
 
-  v5 = 0;
-  v8 = a2;
+  iteration_count = 0;
+  text_cursor = a2;
   if ( a5 )
   {
     *a2 = 45;
-    v8 = a2 + 1;
-    v5 = 1;
+    text_cursor = a2 + 1;
+    iteration_count = 1;
     a1 = -(__int64)a1;
   }
-  v9 = v8;
-  v10 = a4;
+  text_cursor_2 = text_cursor;
+  input_value = a4;
   do
   {
-    v11 = v8 + 1;
-    v12 = v8;
-    v13 = a1 % v10;
-    a1 /= v10;
-    v14 = 87;
-    if ( (unsigned int)v13 <= 9 )
-      v14 = 48;
-    ++v5;
-    *v8 = v13 + v14;
+    unused_written_slot = text_cursor + 1;
+    text_cursor_3 = text_cursor;
+    comparison_operand = a1 % input_value;
+    a1 /= input_value;
+    selection_code = 87;
+    if ( (unsigned int)comparison_operand <= 9 )
+      selection_code = 48;
+    ++iteration_count;
+    *text_cursor = comparison_operand + selection_code;
     if ( !a1 )
       break;
-    ++v8;
+    ++text_cursor;
   }
-  while ( v5 < a3 );
-  if ( v5 < a3 )
+  while ( iteration_count < a3 );
+  if ( iteration_count < a3 )
   {
-    *v11 = 0;
+    *unused_written_slot = 0;
     do
     {
-      v16 = *v12;
-      *v12-- = *v9;
-      *v9++ = v16;
+      input_byte = *text_cursor_3;
+      *text_cursor_3-- = *text_cursor_2;
+      *text_cursor_2++ = input_byte;
     }
-    while ( v9 < v12 );
+    while ( text_cursor_2 < text_cursor_3 );
     return 0;
   }
   else
@@ -17730,53 +17730,53 @@ __int64            sub_14025A5CC(unsigned __int64 a1, char *a2, unsigned __int64
 //----- (000000014025A698) ----------------------------------------------------
 __int64            sub_14025A698(unsigned __int64 a1, __int16 *a2, unsigned __int64 a3, unsigned int a4, char a5)
 {
-  __int16 *v7;
-  unsigned __int64 v8;
-  __int16 *v9;
-  unsigned __int64 v10;
-  _WORD *v11;
-  __int16 *v12;
-  unsigned __int64 v13;
-  __int16 v14;
-  __int16 v16;
+  __int16 *buffer_cursor;
+  unsigned __int64 iteration_count;
+  __int16 *buffer_cursor_2;
+  unsigned __int64 input_value;
+  _WORD *unused_written_slot;
+  __int16 *buffer_cursor_3;
+  unsigned __int64 comparison_operand;
+  __int16 selection_code;
+  __int16 loaded_word;
 
-  v7 = a2;
-  v8 = 0;
+  buffer_cursor = a2;
+  iteration_count = 0;
   if ( a5 )
   {
     a1 = -(__int64)a1;
     *a2 = 45;
-    v8 = 1;
-    v7 = a2 + 1;
+    iteration_count = 1;
+    buffer_cursor = a2 + 1;
   }
-  v9 = v7;
-  v10 = a4;
+  buffer_cursor_2 = buffer_cursor;
+  input_value = a4;
   do
   {
-    v11 = v7 + 1;
-    v12 = v7;
-    v13 = a1 % v10;
-    a1 /= v10;
-    v14 = 87;
-    if ( (unsigned int)v13 <= 9 )
-      v14 = 48;
-    ++v8;
-    *v7 = v13 + v14;
+    unused_written_slot = buffer_cursor + 1;
+    buffer_cursor_3 = buffer_cursor;
+    comparison_operand = a1 % input_value;
+    a1 /= input_value;
+    selection_code = 87;
+    if ( (unsigned int)comparison_operand <= 9 )
+      selection_code = 48;
+    ++iteration_count;
+    *buffer_cursor = comparison_operand + selection_code;
     if ( !a1 )
       break;
-    ++v7;
+    ++buffer_cursor;
   }
-  while ( v8 < a3 );
-  if ( v8 < a3 )
+  while ( iteration_count < a3 );
+  if ( iteration_count < a3 )
   {
-    *v11 = 0;
+    *unused_written_slot = 0;
     do
     {
-      v16 = *v12;
-      *v12-- = *v9;
-      *v9++ = v16;
+      loaded_word = *buffer_cursor_3;
+      *buffer_cursor_3-- = *buffer_cursor_2;
+      *buffer_cursor_2++ = loaded_word;
     }
-    while ( v9 < v12 );
+    while ( buffer_cursor_2 < buffer_cursor_3 );
     return 0;
   }
   else
@@ -17791,27 +17791,27 @@ __int64            sub_14025A698(unsigned __int64 a1, __int16 *a2, unsigned __in
 //----- (000000014025A774) ----------------------------------------------------
 __int64            sub_14025A774(unsigned int a1, char *a2, unsigned __int64 a3, unsigned int a4, unsigned __int8 a5)
 {
-  int *v5;
-  unsigned int v6;
+  int *unused_written_slot;
+  unsigned int selection_code;
 
   if ( !a2 || !a3 )
     goto LABEL_2;
   *a2 = 0;
   if ( a3 <= (unsigned __int64)a5 + 1 )
   {
-    v5 = errno_sr();
-    v6 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_3;
   }
   if ( a4 - 2 > 0x22 )
   {
 LABEL_2:
-    v5 = errno_sr();
-    v6 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_3:
-    *v5 = v6;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v6;
+    return selection_code;
   }
   return sub_14025A430(a1, a2, a3, a4, a5);
 }
@@ -17824,27 +17824,27 @@ __int64            sub_14025A7DC(
         unsigned int a4,
         unsigned __int8 a5)
 {
-  int *v5;
-  unsigned int v6;
+  int *unused_written_slot;
+  unsigned int selection_code;
 
   if ( !a2 || !a3 )
     goto LABEL_2;
   *a2 = 0;
   if ( a3 <= (unsigned __int64)a5 + 1 )
   {
-    v5 = errno_sr();
-    v6 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_3;
   }
   if ( a4 - 2 > 0x22 )
   {
 LABEL_2:
-    v5 = errno_sr();
-    v6 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_3:
-    *v5 = v6;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v6;
+    return selection_code;
   }
   return sub_14025A4F8(a1, a2, a3, a4, a5);
 }
@@ -17857,27 +17857,27 @@ __int64            sub_14025A848(
         unsigned int a4,
         unsigned __int8 a5)
 {
-  int *v5;
-  unsigned int v6;
+  int *unused_written_slot;
+  unsigned int selection_code;
 
   if ( !a2 || !a3 )
     goto LABEL_2;
   *a2 = 0;
   if ( a3 <= (unsigned __int64)a5 + 1 )
   {
-    v5 = errno_sr();
-    v6 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_3;
   }
   if ( a4 - 2 > 0x22 )
   {
 LABEL_2:
-    v5 = errno_sr();
-    v6 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_3:
-    *v5 = v6;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v6;
+    return selection_code;
   }
   return sub_14025A5CC(a1, a2, a3, a4, a5);
 }
@@ -17890,27 +17890,27 @@ __int64            sub_14025A8B0(
         unsigned int a4,
         unsigned __int8 a5)
 {
-  int *v5;
-  unsigned int v6;
+  int *unused_written_slot;
+  unsigned int selection_code;
 
   if ( !a2 || !a3 )
     goto LABEL_2;
   *a2 = 0;
   if ( a3 <= (unsigned __int64)a5 + 1 )
   {
-    v5 = errno_sr();
-    v6 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_3;
   }
   if ( a4 - 2 > 0x22 )
   {
 LABEL_2:
-    v5 = errno_sr();
-    v6 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_3:
-    *v5 = v6;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v6;
+    return selection_code;
   }
   return sub_14025A698(a1, a2, a3, a4, a5);
 }
@@ -17918,24 +17918,24 @@ LABEL_3:
 //----- (000000014025A91C) ----------------------------------------------------
 char *        i64toa(__int64 Value, char *Buffer, int Radix)
 {
-  char v3;
+  char comparison_result;
 
-  v3 = 0;
+  comparison_result = 0;
   if ( Radix == 10 )
-    v3 = Value < 0;
-  sub_14025A5CC(Value, Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, v3);
+    comparison_result = Value < 0;
+  sub_14025A5CC(Value, Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, comparison_result);
   return Buffer;
 }
 
 //----- (000000014025A950) ----------------------------------------------------
 __int64            i64toa_s(signed __int64 a1, char *a2, unsigned __int64 a3, unsigned int a4)
 {
-  unsigned __int8 v4;
+  unsigned __int8 comparison_result;
 
-  v4 = 0;
+  comparison_result = 0;
   if ( a4 == 10 )
-    v4 = a1 < 0;
-  return sub_14025A848(a1, a2, a3, a4, v4);
+    comparison_result = a1 < 0;
+  return sub_14025A848(a1, a2, a3, a4, comparison_result);
 }
 
 // 14025A950: invalid function type 'errno_t __cdecl i64toa_s(__int64 Value, char *Buffer, #66 BufferCount, int Radix)' has been ignored
@@ -17943,24 +17943,24 @@ __int64            i64toa_s(signed __int64 a1, char *a2, unsigned __int64 a3, un
 //----- (000000014025A974) ----------------------------------------------------
 sr_anon_49 *        i64tow(__int64 Value, sr_anon_49 *Buffer, int Radix)
 {
-  char v3;
+  char comparison_result;
 
-  v3 = 0;
+  comparison_result = 0;
   if ( Radix == 10 )
-    v3 = Value < 0;
-  sub_14025A698(Value, (__int16 *)Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, v3);
+    comparison_result = Value < 0;
+  sub_14025A698(Value, (__int16 *)Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, comparison_result);
   return Buffer;
 }
 
 //----- (000000014025A9A8) ----------------------------------------------------
 __int64            i64tow_s(signed __int64 a1, __int16 *a2, unsigned __int64 a3, unsigned int a4)
 {
-  unsigned __int8 v4;
+  unsigned __int8 comparison_result;
 
-  v4 = 0;
+  comparison_result = 0;
   if ( a4 == 10 )
-    v4 = a1 < 0;
-  return sub_14025A8B0(a1, a2, a3, a4, v4);
+    comparison_result = a1 < 0;
+  return sub_14025A8B0(a1, a2, a3, a4, comparison_result);
 }
 
 // 14025A9A8: invalid function type 'errno_t __cdecl i64tow_s(__int64 Value, #49 *Buffer, #66 BufferCount, int Radix)' has been ignored
@@ -17968,24 +17968,24 @@ __int64            i64tow_s(signed __int64 a1, __int16 *a2, unsigned __int64 a3,
 //----- (000000014025A9CC) ----------------------------------------------------
 char *        itoa(int Value, char *Buffer, int Radix)
 {
-  char v3;
+  char comparison_result;
 
-  v3 = 0;
+  comparison_result = 0;
   if ( Radix == 10 )
-    v3 = Value < 0;
-  sub_14025A430(Value, Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, v3);
+    comparison_result = Value < 0;
+  sub_14025A430(Value, Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, comparison_result);
   return Buffer;
 }
 
 //----- (000000014025A9FC) ----------------------------------------------------
 __int64            itoa_s(signed int a1, char *a2, unsigned __int64 a3, unsigned int a4)
 {
-  unsigned __int8 v4;
+  unsigned __int8 comparison_result;
 
-  v4 = 0;
+  comparison_result = 0;
   if ( a4 == 10 )
-    v4 = a1 < 0;
-  return sub_14025A774(a1, a2, a3, a4, v4);
+    comparison_result = a1 < 0;
+  return sub_14025A774(a1, a2, a3, a4, comparison_result);
 }
 
 // 14025A9FC: invalid function type 'errno_t __cdecl itoa_s(int Value, char *Buffer, #66 BufferCount, int Radix)' has been ignored
@@ -17993,24 +17993,24 @@ __int64            itoa_s(signed int a1, char *a2, unsigned __int64 a3, unsigned
 //----- (000000014025AA1C) ----------------------------------------------------
 sr_anon_49 *        itow(int Value, sr_anon_49 *Buffer, int Radix)
 {
-  char v3;
+  char comparison_result;
 
-  v3 = 0;
+  comparison_result = 0;
   if ( Radix == 10 )
-    v3 = Value < 0;
-  sub_14025A4F8(Value, (__int16 *)Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, v3);
+    comparison_result = Value < 0;
+  sub_14025A4F8(Value, (__int16 *)Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, comparison_result);
   return Buffer;
 }
 
 //----- (000000014025AA4C) ----------------------------------------------------
 __int64            itow_s(signed int a1, __int16 *a2, unsigned __int64 a3, unsigned int a4)
 {
-  unsigned __int8 v4;
+  unsigned __int8 comparison_result;
 
-  v4 = 0;
+  comparison_result = 0;
   if ( a4 == 10 )
-    v4 = a1 < 0;
-  return sub_14025A7DC(a1, a2, a3, a4, v4);
+    comparison_result = a1 < 0;
+  return sub_14025A7DC(a1, a2, a3, a4, comparison_result);
 }
 
 // 14025AA4C: invalid function type 'errno_t __cdecl itow_s(int Value, #49 *Buffer, #66 BufferCount, int Radix)' has been ignored
@@ -18018,24 +18018,24 @@ __int64            itow_s(signed int a1, __int16 *a2, unsigned __int64 a3, unsig
 //----- (000000014025AA6C) ----------------------------------------------------
 char *        itoa_0(int Value, char *Buffer, int Radix)
 {
-  char v3;
+  char comparison_result;
 
-  v3 = 0;
+  comparison_result = 0;
   if ( Radix == 10 )
-    v3 = Value < 0;
-  sub_14025A430(Value, Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, v3);
+    comparison_result = Value < 0;
+  sub_14025A430(Value, Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, comparison_result);
   return Buffer;
 }
 
 //----- (000000014025AA9C) ----------------------------------------------------
 __int64            itoa_s_0(signed int a1, char *a2, unsigned __int64 a3, unsigned int a4)
 {
-  unsigned __int8 v4;
+  unsigned __int8 comparison_result;
 
-  v4 = 0;
+  comparison_result = 0;
   if ( a4 == 10 )
-    v4 = a1 < 0;
-  return sub_14025A774(a1, a2, a3, a4, v4);
+    comparison_result = a1 < 0;
+  return sub_14025A774(a1, a2, a3, a4, comparison_result);
 }
 
 // 14025AA9C: invalid function type 'errno_t __cdecl itoa_s_0(int Value, char *Buffer, #66 BufferCount, int Radix)' has been ignored
@@ -18043,24 +18043,24 @@ __int64            itoa_s_0(signed int a1, char *a2, unsigned __int64 a3, unsign
 //----- (000000014025AABC) ----------------------------------------------------
 sr_anon_49 *        itow_0(int Value, sr_anon_49 *Buffer, int Radix)
 {
-  char v3;
+  char comparison_result;
 
-  v3 = 0;
+  comparison_result = 0;
   if ( Radix == 10 )
-    v3 = Value < 0;
-  sub_14025A4F8(Value, (__int16 *)Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, v3);
+    comparison_result = Value < 0;
+  sub_14025A4F8(Value, (__int16 *)Buffer, 0xFFFFFFFFFFFFFFFFuLL, Radix, comparison_result);
   return Buffer;
 }
 
 //----- (000000014025AAEC) ----------------------------------------------------
 __int64            itow_s_0(signed int a1, __int16 *a2, unsigned __int64 a3, unsigned int a4)
 {
-  unsigned __int8 v4;
+  unsigned __int8 comparison_result;
 
-  v4 = 0;
+  comparison_result = 0;
   if ( a4 == 10 )
-    v4 = a1 < 0;
-  return sub_14025A7DC(a1, a2, a3, a4, v4);
+    comparison_result = a1 < 0;
+  return sub_14025A7DC(a1, a2, a3, a4, comparison_result);
 }
 
 // 14025AAEC: invalid function type 'errno_t __cdecl itow_s_0(int Value, #49 *Buffer, #66 BufferCount, int Radix)' has been ignored
@@ -18141,25 +18141,25 @@ int         set_error_mode(int Mode)
 //----- (000000014025AC2C) ----------------------------------------------------
 __int64            sub_14025AC2C(_WORD *a1, __int64 a2, __int64 a3)
 {
-  _WORD *v3;
-  int *v4;
-  unsigned int v5;
-  __int64 v7;
-  __int16 v8;
+  _WORD *unused_written_slot;
+  int *unused_written_slot_2;
+  unsigned int selection_code;
+  __int64 integer_difference;
+  __int16 loaded_word;
 
-  v3 = a1;
+  unused_written_slot = a1;
   if ( !a1 || !a2 )
     goto LABEL_5;
   if ( !a3 )
   {
     *a1 = 0;
 LABEL_5:
-    v4 = errno_sr();
-    v5 = 22;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 22;
 LABEL_6:
-    *v4 = v5;
+    *unused_written_slot_2 = selection_code;
     crt_invalid_parameter_noinfo();
-    return v5;
+    return selection_code;
   }
   do
   {
@@ -18171,24 +18171,24 @@ LABEL_6:
   while ( a2 );
   if ( !a2 )
   {
-    *v3 = 0;
+    *unused_written_slot = 0;
     goto LABEL_5;
   }
-  v7 = a3 - (_QWORD)a1;
+  integer_difference = a3 - (_QWORD)a1;
   do
   {
-    v8 = *(_WORD *)((char *)a1 + v7);
-    *a1++ = v8;
-    if ( !v8 )
+    loaded_word = *(_WORD *)((char *)a1 + integer_difference);
+    *a1++ = loaded_word;
+    if ( !loaded_word )
       break;
     --a2;
   }
   while ( a2 );
   if ( !a2 )
   {
-    *v3 = 0;
-    v4 = errno_sr();
-    v5 = 34;
+    *unused_written_slot = 0;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 34;
     goto LABEL_6;
   }
   return 0;
@@ -18197,26 +18197,26 @@ LABEL_6:
 //----- (000000014025ACB4) ----------------------------------------------------
 __int64            sub_14025ACB4(_WORD *a1, __int64 a2, __int64 a3)
 {
-  unsigned int v3;
-  _WORD *v4;
-  int *v5;
-  __int64 v7;
-  __int16 v8;
+  unsigned int selection_code;
+  _WORD *unused_written_slot;
+  int *unused_written_slot_2;
+  __int64 integer_difference;
+  __int16 loaded_word;
 
-  v3 = 0;
-  v4 = a1;
+  selection_code = 0;
+  unused_written_slot = a1;
   if ( !a1 || !a2 )
     goto LABEL_5;
   if ( !a3 )
   {
     *a1 = 0;
 LABEL_5:
-    v5 = errno_sr();
-    v3 = 22;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 22;
 LABEL_6:
-    *v5 = v3;
+    *unused_written_slot_2 = selection_code;
     crt_invalid_parameter_noinfo();
-    return v3;
+    return selection_code;
   }
   do
   {
@@ -18228,54 +18228,54 @@ LABEL_6:
   while ( a2 );
   if ( !a2 )
   {
-    *v4 = 0;
+    *unused_written_slot = 0;
     goto LABEL_5;
   }
-  v7 = a3 - (_QWORD)a1;
+  integer_difference = a3 - (_QWORD)a1;
   do
   {
-    v8 = *(_WORD *)((char *)a1 + v7);
-    *a1++ = v8;
-    if ( !v8 )
+    loaded_word = *(_WORD *)((char *)a1 + integer_difference);
+    *a1++ = loaded_word;
+    if ( !loaded_word )
       break;
     --a2;
   }
   while ( a2 );
   if ( !a2 )
   {
-    *v4 = 0;
-    v5 = errno_sr();
-    v3 = 34;
+    *unused_written_slot = 0;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 34;
     goto LABEL_6;
   }
-  return v3;
+  return selection_code;
 }
 
 //----- (000000014025AD34) ----------------------------------------------------
 __int64            sub_14025AD34(char *a1, __int64 a2, char *a3, __int64 a4)
 {
-  __int64 v4;
-  char *v5;
-  int *v7;
-  unsigned int v8;
-  __int64 v9;
-  __int64 v10;
-  __int16 v11;
-  __int16 v12;
+  __int64 input_value;
+  char *input_cursor;
+  int *unused_written_slot;
+  unsigned int selection_code;
+  __int64 remaining_count;
+  __int64 integer_difference;
+  __int16 masked_bits;
+  __int16 loaded_word;
 
-  v4 = a2;
-  v5 = a1;
+  input_value = a2;
+  input_cursor = a1;
   if ( a4 )
   {
     if ( !a1 )
     {
 LABEL_10:
-      v7 = errno_sr();
-      v8 = 22;
+      unused_written_slot = errno_sr();
+      selection_code = 22;
 LABEL_11:
-      *v7 = v8;
+      *unused_written_slot = selection_code;
       crt_invalid_parameter_noinfo();
-      return v8;
+      return selection_code;
     }
   }
   else if ( !a1 )
@@ -18291,7 +18291,7 @@ LABEL_11:
     *(_WORD *)a1 = 0;
     goto LABEL_10;
   }
-  v9 = a4;
+  remaining_count = a4;
   do
   {
     if ( !*(_WORD *)a1 )
@@ -18302,18 +18302,18 @@ LABEL_11:
   while ( a2 );
   if ( !a2 )
   {
-    *(_WORD *)v5 = 0;
+    *(_WORD *)input_cursor = 0;
     goto LABEL_10;
   }
   if ( a4 == -1 )
   {
-    v10 = a3 - a1;
+    integer_difference = a3 - a1;
     do
     {
-      v11 = *(_WORD *)&a1[v10];
-      *(_WORD *)a1 = v11;
+      masked_bits = *(_WORD *)&a1[integer_difference];
+      *(_WORD *)a1 = masked_bits;
       a1 += 2;
-      if ( !v11 )
+      if ( !masked_bits )
         break;
       --a2;
     }
@@ -18325,50 +18325,50 @@ LABEL_11:
     {
       do
       {
-        v12 = *(_WORD *)a3;
+        loaded_word = *(_WORD *)a3;
         a3 += 2;
-        *(_WORD *)a1 = v12;
+        *(_WORD *)a1 = loaded_word;
         a1 += 2;
-        if ( !v12 )
+        if ( !loaded_word )
           break;
         if ( !--a2 )
           break;
-        --v9;
+        --remaining_count;
       }
-      while ( v9 );
+      while ( remaining_count );
     }
-    if ( !v9 )
+    if ( !remaining_count )
       *(_WORD *)a1 = 0;
   }
   if ( a2 )
     return 0;
   if ( a4 != -1 )
   {
-    *(_WORD *)v5 = 0;
-    v7 = errno_sr();
-    v8 = 34;
+    *(_WORD *)input_cursor = 0;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_11;
   }
-  *(_WORD *)&v5[2 * v4 - 2] = 0;
+  *(_WORD *)&input_cursor[2 * input_value - 2] = 0;
   return 80;
 }
 
 //----- (000000014025AE2C) ----------------------------------------------------
 __int64            sub_14025AE2C(char *a1, __int64 a2, char *a3, __int64 a4)
 {
-  unsigned int v4;
-  __int64 v5;
-  char *v6;
-  int *v7;
-  unsigned int v8;
-  __int64 v10;
-  __int64 v11;
-  __int16 v12;
-  __int16 v13;
+  unsigned int unused_written_slot;
+  __int64 input_value;
+  char *input_cursor;
+  int *unused_written_slot_2;
+  unsigned int selection_code;
+  __int64 remaining_count;
+  __int64 integer_difference;
+  __int16 masked_bits;
+  __int16 loaded_word;
 
-  v4 = 0;
-  v5 = a2;
-  v6 = a1;
+  unused_written_slot = 0;
+  input_value = a2;
+  input_cursor = a1;
   if ( a4 )
   {
     if ( !a1 )
@@ -18385,7 +18385,7 @@ LABEL_8:
       *(_WORD *)a1 = 0;
       goto LABEL_4;
     }
-    v10 = a4;
+    remaining_count = a4;
     do
     {
       if ( !*(_WORD *)a1 )
@@ -18396,18 +18396,18 @@ LABEL_8:
     while ( a2 );
     if ( !a2 )
     {
-      *(_WORD *)v6 = 0;
+      *(_WORD *)input_cursor = 0;
       goto LABEL_4;
     }
     if ( a4 == -1 )
     {
-      v11 = a3 - a1;
+      integer_difference = a3 - a1;
       do
       {
-        v12 = *(_WORD *)&a1[v11];
-        *(_WORD *)a1 = v12;
+        masked_bits = *(_WORD *)&a1[integer_difference];
+        *(_WORD *)a1 = masked_bits;
         a1 += 2;
-        if ( !v12 )
+        if ( !masked_bits )
           break;
         --a2;
       }
@@ -18419,70 +18419,70 @@ LABEL_8:
       {
         do
         {
-          v13 = *(_WORD *)a3;
+          loaded_word = *(_WORD *)a3;
           a3 += 2;
-          *(_WORD *)a1 = v13;
+          *(_WORD *)a1 = loaded_word;
           a1 += 2;
-          if ( !v13 )
+          if ( !loaded_word )
             break;
           if ( !--a2 )
             break;
-          --v10;
+          --remaining_count;
         }
-        while ( v10 );
+        while ( remaining_count );
       }
-      if ( !v10 )
+      if ( !remaining_count )
         *(_WORD *)a1 = 0;
     }
     if ( !a2 )
     {
       if ( a4 == -1 )
       {
-        *(_WORD *)&v6[2 * v5 - 2] = 0;
+        *(_WORD *)&input_cursor[2 * input_value - 2] = 0;
         return 80;
       }
-      *(_WORD *)v6 = 0;
-      v7 = errno_sr();
-      v8 = 34;
+      *(_WORD *)input_cursor = 0;
+      unused_written_slot_2 = errno_sr();
+      selection_code = 34;
       goto LABEL_5;
     }
-    return v4;
+    return unused_written_slot;
   }
   if ( a2 )
   {
 LABEL_4:
-    v7 = errno_sr();
-    v8 = 22;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 22;
 LABEL_5:
-    *v7 = v8;
+    *unused_written_slot_2 = selection_code;
     crt_invalid_parameter_noinfo();
-    return v8;
+    return selection_code;
   }
-  return v4;
+  return unused_written_slot;
 }
 
 //----- (000000014025AF2C) ----------------------------------------------------
 __int64            sub_14025AF2C(_BYTE *a1, __int64 a2, __int64 a3)
 {
-  _BYTE *v3;
-  int *v4;
-  unsigned int v5;
-  __int64 v7;
-  char v8;
+  _BYTE *unused_written_slot;
+  int *unused_written_slot_2;
+  unsigned int selection_code;
+  __int64 integer_difference;
+  char table_value;
 
-  v3 = a1;
+  unused_written_slot = a1;
   if ( !a1 || !a2 )
     goto LABEL_5;
   if ( !a3 )
   {
     *a1 = 0;
 LABEL_5:
-    v4 = errno_sr();
-    v5 = 22;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 22;
 LABEL_6:
-    *v4 = v5;
+    *unused_written_slot_2 = selection_code;
     crt_invalid_parameter_noinfo();
-    return v5;
+    return selection_code;
   }
   do
   {
@@ -18494,24 +18494,24 @@ LABEL_6:
   while ( a2 );
   if ( !a2 )
   {
-    *v3 = 0;
+    *unused_written_slot = 0;
     goto LABEL_5;
   }
-  v7 = a3 - (_QWORD)a1;
+  integer_difference = a3 - (_QWORD)a1;
   do
   {
-    v8 = a1[v7];
-    *a1++ = v8;
-    if ( !v8 )
+    table_value = a1[integer_difference];
+    *a1++ = table_value;
+    if ( !table_value )
       break;
     --a2;
   }
   while ( a2 );
   if ( !a2 )
   {
-    *v3 = 0;
-    v4 = errno_sr();
-    v5 = 34;
+    *unused_written_slot = 0;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 34;
     goto LABEL_6;
   }
   return 0;
@@ -18520,26 +18520,26 @@ LABEL_6:
 //----- (000000014025AFAC) ----------------------------------------------------
 __int64            strcat_s_sr(_BYTE *a1, __int64 a2, __int64 a3)
 {
-  unsigned int v3;
-  _BYTE *v4;
-  int *v5;
-  __int64 v7;
-  char v8;
+  unsigned int selection_code;
+  _BYTE *unused_written_slot;
+  int *unused_written_slot_2;
+  __int64 integer_difference;
+  char table_value;
 
-  v3 = 0;
-  v4 = a1;
+  selection_code = 0;
+  unused_written_slot = a1;
   if ( !a1 || !a2 )
     goto LABEL_5;
   if ( !a3 )
   {
     *a1 = 0;
 LABEL_5:
-    v5 = errno_sr();
-    v3 = 22;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 22;
 LABEL_6:
-    *v5 = v3;
+    *unused_written_slot_2 = selection_code;
     crt_invalid_parameter_noinfo();
-    return v3;
+    return selection_code;
   }
   do
   {
@@ -18551,27 +18551,27 @@ LABEL_6:
   while ( a2 );
   if ( !a2 )
   {
-    *v4 = 0;
+    *unused_written_slot = 0;
     goto LABEL_5;
   }
-  v7 = a3 - (_QWORD)a1;
+  integer_difference = a3 - (_QWORD)a1;
   do
   {
-    v8 = a1[v7];
-    *a1++ = v8;
-    if ( !v8 )
+    table_value = a1[integer_difference];
+    *a1++ = table_value;
+    if ( !table_value )
       break;
     --a2;
   }
   while ( a2 );
   if ( !a2 )
   {
-    *v4 = 0;
-    v5 = errno_sr();
-    v3 = 34;
+    *unused_written_slot = 0;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 34;
     goto LABEL_6;
   }
-  return v3;
+  return selection_code;
 }
 
 // 14025AFAC: invalid function type 'errno_t __cdecl strcat_s(char *Destination, #65 SizeInBytes, const char *Source)' has been ignored
@@ -18579,28 +18579,28 @@ LABEL_6:
 //----- (000000014025B024) ----------------------------------------------------
 __int64            sub_14025B024(_BYTE *a1, __int64 a2, char *a3, __int64 a4)
 {
-  __int64 v4;
-  _BYTE *v5;
-  int *v7;
-  unsigned int v8;
-  __int64 v9;
-  __int64 v10;
-  char v11;
-  char v12;
+  __int64 input_value;
+  _BYTE *input_cursor;
+  int *unused_written_slot;
+  unsigned int selection_code;
+  __int64 remaining_count;
+  __int64 integer_difference;
+  char table_value;
+  char input_byte;
 
-  v4 = a2;
-  v5 = a1;
+  input_value = a2;
+  input_cursor = a1;
   if ( a4 )
   {
     if ( !a1 )
     {
 LABEL_10:
-      v7 = errno_sr();
-      v8 = 22;
+      unused_written_slot = errno_sr();
+      selection_code = 22;
 LABEL_11:
-      *v7 = v8;
+      *unused_written_slot = selection_code;
       crt_invalid_parameter_noinfo();
-      return v8;
+      return selection_code;
     }
   }
   else if ( !a1 )
@@ -18616,7 +18616,7 @@ LABEL_11:
     *a1 = 0;
     goto LABEL_10;
   }
-  v9 = a4;
+  remaining_count = a4;
   do
   {
     if ( !*a1 )
@@ -18627,17 +18627,17 @@ LABEL_11:
   while ( a2 );
   if ( !a2 )
   {
-    *v5 = 0;
+    *input_cursor = 0;
     goto LABEL_10;
   }
   if ( a4 == -1 )
   {
-    v10 = (intptr_t)((uintptr_t)(a3) - (uintptr_t)(a1));
+    integer_difference = (intptr_t)((uintptr_t)(a3) - (uintptr_t)(a1));
     do
     {
-      v11 = a1[v10];
-      *a1++ = v11;
-      if ( !v11 )
+      table_value = a1[integer_difference];
+      *a1++ = table_value;
+      if ( !table_value )
         break;
       --a2;
     }
@@ -18649,48 +18649,48 @@ LABEL_11:
     {
       do
       {
-        v12 = *a3++;
-        *a1++ = v12;
-        if ( !v12 )
+        input_byte = *a3++;
+        *a1++ = input_byte;
+        if ( !input_byte )
           break;
         if ( !--a2 )
           break;
-        --v9;
+        --remaining_count;
       }
-      while ( v9 );
+      while ( remaining_count );
     }
-    if ( !v9 )
+    if ( !remaining_count )
       *a1 = 0;
   }
   if ( a2 )
     return 0;
   if ( a4 != -1 )
   {
-    *v5 = 0;
-    v7 = errno_sr();
-    v8 = 34;
+    *input_cursor = 0;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_11;
   }
-  v5[v4 - 1] = 0;
+  input_cursor[input_value - 1] = 0;
   return 80;
 }
 
 //----- (000000014025B100) ----------------------------------------------------
 __int64            strncat_s_sr(_BYTE *a1, __int64 a2, char *a3, __int64 a4)
 {
-  unsigned int v4;
-  __int64 v5;
-  _BYTE *v6;
-  int *v7;
-  unsigned int v8;
-  __int64 v10;
-  __int64 v11;
-  char v12;
-  char v13;
+  unsigned int unused_written_slot;
+  __int64 input_value;
+  _BYTE *input_cursor;
+  int *unused_written_slot_2;
+  unsigned int selection_code;
+  __int64 remaining_count;
+  __int64 integer_difference;
+  char table_value;
+  char input_byte;
 
-  v4 = 0;
-  v5 = a2;
-  v6 = a1;
+  unused_written_slot = 0;
+  input_value = a2;
+  input_cursor = a1;
   if ( a4 )
   {
     if ( !a1 )
@@ -18707,7 +18707,7 @@ LABEL_8:
       *a1 = 0;
       goto LABEL_4;
     }
-    v10 = a4;
+    remaining_count = a4;
     do
     {
       if ( !*a1 )
@@ -18718,17 +18718,17 @@ LABEL_8:
     while ( a2 );
     if ( !a2 )
     {
-      *v6 = 0;
+      *input_cursor = 0;
       goto LABEL_4;
     }
     if ( a4 == -1 )
     {
-      v11 = (intptr_t)((uintptr_t)(a3) - (uintptr_t)(a1));
+      integer_difference = (intptr_t)((uintptr_t)(a3) - (uintptr_t)(a1));
       do
       {
-        v12 = a1[v11];
-        *a1++ = v12;
-        if ( !v12 )
+        table_value = a1[integer_difference];
+        *a1++ = table_value;
+        if ( !table_value )
           break;
         --a2;
       }
@@ -18740,44 +18740,44 @@ LABEL_8:
       {
         do
         {
-          v13 = *a3++;
-          *a1++ = v13;
-          if ( !v13 )
+          input_byte = *a3++;
+          *a1++ = input_byte;
+          if ( !input_byte )
             break;
           if ( !--a2 )
             break;
-          --v10;
+          --remaining_count;
         }
-        while ( v10 );
+        while ( remaining_count );
       }
-      if ( !v10 )
+      if ( !remaining_count )
         *a1 = 0;
     }
     if ( !a2 )
     {
       if ( a4 == -1 )
       {
-        v6[v5 - 1] = 0;
+        input_cursor[input_value - 1] = 0;
         return 80;
       }
-      *v6 = 0;
-      v7 = errno_sr();
-      v8 = 34;
+      *input_cursor = 0;
+      unused_written_slot_2 = errno_sr();
+      selection_code = 34;
       goto LABEL_5;
     }
-    return v4;
+    return unused_written_slot;
   }
   if ( a2 )
   {
 LABEL_4:
-    v7 = errno_sr();
-    v8 = 22;
+    unused_written_slot_2 = errno_sr();
+    selection_code = 22;
 LABEL_5:
-    *v7 = v8;
+    *unused_written_slot_2 = selection_code;
     crt_invalid_parameter_noinfo();
-    return v8;
+    return selection_code;
   }
-  return v4;
+  return unused_written_slot;
 }
 
 // 14025B100: invalid function type 'errno_t __cdecl strncat_s(char *Destination, #65 SizeInBytes, const char *Source, #65 MaxCount)' has been ignored
@@ -18789,13 +18789,13 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_f788ae46380
         __int64 a3,
         unsigned int a4)
 {
-  int v8;
-  __int64 v9;
-  __int64 v10;
-  int v11;
-  int v12;
-  __int64 v13;
-  __int64 v14;
+  int wide_char_to_multi_byte_result;
+  __int64 unrecovered_register_value;
+  __int64 saved_wide_char_to_multi_byte_result;
+  int int64_result;
+  int wide_char_to_multi_byte_result_2;
+  __int64 packed_word_bits;
+  __int64 packed_word_bits_2;
 
   if ( !a1 )
   {
@@ -18807,27 +18807,27 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_f788ae46380
   }
   if ( *a1 )
   {
-    LODWORD(v13) = 0;
-    v8 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v13, 0, 0);
-    v10 = v8;
-    if ( v8 )
+    LODWORD(packed_word_bits) = 0;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, packed_word_bits, 0, 0);
+    saved_wide_char_to_multi_byte_result = wide_char_to_multi_byte_result;
+    if ( wide_char_to_multi_byte_result )
     {
-      if ( (unsigned __int64)v8 > *(_QWORD *)(a2 + 24) )
+      if ( (unsigned __int64)wide_char_to_multi_byte_result > *(_QWORD *)(a2 + 24) )
       {
         if ( *(_BYTE *)(a2 + 40) )
           *(_BYTE *)(a2 + 40) = 0;
         goto LABEL_10;
       }
-      LODWORD(v14) = *(_QWORD *)(a2 + 24);
-      v12 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v14, 0, 0);
-      if ( v12 )
+      LODWORD(packed_word_bits_2) = *(_QWORD *)(a2 + 24);
+      wide_char_to_multi_byte_result_2 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), packed_word_bits_2, 0, 0);
+      if ( wide_char_to_multi_byte_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v12 - 1LL;
+        *(_QWORD *)(a2 + 32) = wide_char_to_multi_byte_result_2 - 1LL;
         return 0;
       }
     }
-    v11 = ((__int64 (           *)(__int64, __int64))GetLastError)(v9, v10);
-    crt_errno_map_os_error(v11);
+    int64_result = ((__int64 (           *)(__int64, __int64))GetLastError)(unrecovered_register_value, saved_wide_char_to_multi_byte_result);
+    crt_errno_map_os_error(int64_result);
     return (unsigned int)*errno_sr();
   }
   if ( !*(_QWORD *)(a2 + 24) )
@@ -18853,63 +18853,63 @@ LABEL_5:
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_888(__int64 a1, unsigned int a2, __int64 a3, __int64 a4, int a5)
 {
-  __int64 v6;
+  __int64 packed_word_bits;
 
-  LODWORD(v6) = a5;
-  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, v6, 0, 0);
+  LODWORD(packed_word_bits) = a5;
+  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, packed_word_bits, 0, 0);
 }
 
 //----- (000000014025B344) ----------------------------------------------------
 __int64            sub_14025B344(__int64 a1, __int64 a2, unsigned int a3)
 {
-  __int64 v3;
-  int v5;
-  unsigned int v6;
-  __int64 v8;
-  _QWORD v9[3];
-  char v10;
-  _QWORD v11[5];
-  char v12;
+  __int64 input_value;
+  int int64_result;
+  unsigned int selection_code;
+  __int64 unused_local;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
+  _QWORD scratch_buffer_2[5];
+  char unused_written_slot;
   _WORD Filename[264];
-  __int64 v14;
+  __int64 unused_local_2;
 
-  v3 = a3;
+  input_value = a3;
   if ( (unsigned int)((__int64 (           *)(__int64, _WORD *, __int64))GetModuleFileNameW)(a1, Filename, 261) )
   {
-    v11[4] = 0;
-    v11[0] = a2;
-    v11[1] = v3;
-    v11[3] = v3;
-    v11[2] = a2;
-    v12 = 0;
-    crt_locale_update((_LocaleUpdate *)v9, nullptr);
-    v6 = 65001;
-    if ( *(_DWORD *)(v9[1] + 12LL) == 65001 )
+    scratch_buffer_2[4] = 0;
+    scratch_buffer_2[0] = a2;
+    scratch_buffer_2[1] = input_value;
+    scratch_buffer_2[3] = input_value;
+    scratch_buffer_2[2] = a2;
+    unused_written_slot = 0;
+    crt_locale_update((_LocaleUpdate *)scratch_buffer, nullptr);
+    selection_code = 65001;
+    if ( *(_DWORD *)(scratch_buffer[1] + 12LL) == 65001 )
     {
-      if ( v10 )
-        *(_DWORD *)(v9[0] + 936LL) &= ~2u;
+      if ( unrecovered_register_value )
+        *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
     }
     else if ( (unsigned int)sub_14024EDA4() )
     {
-      if ( v10 )
-        *(_DWORD *)(v9[0] + 936LL) &= ~2u;
-      v6 = 0;
+      if ( unrecovered_register_value )
+        *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
+      selection_code = 0;
     }
     else
     {
-      if ( v10 )
-        *(_DWORD *)(v9[0] + 936LL) &= ~2u;
-      v6 = 1;
+      if ( unrecovered_register_value )
+        *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
+      selection_code = 1;
     }
-    __acrt_wcs_to_mbs_cp____crt_win32_buffer_no_resizing(Filename, (__int64)v11, v6);
+    __acrt_wcs_to_mbs_cp____crt_win32_buffer_no_resizing(Filename, (__int64)scratch_buffer_2, selection_code);
   }
   else
   {
-    v5 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v5);
+    int64_result = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result);
     return 0; /* 0x14025B397: xor eax, eax */
   }
-  return (unsigned int)v11[4]; /* 0x14025B43A: mov eax, dword ptr [rsp + 0x60] */
+  return (unsigned int)scratch_buffer_2[4]; /* 0x14025B43A: mov eax, dword ptr [rsp + 0x60] */
 }
 
 // 14026E178: invalid function type 'DWORD (__stdcall *GetModuleFileNameW)(HMODULE hModule, LPWSTR lpFilename, DWORD nSize)' has been ignored
@@ -18920,13 +18920,13 @@ __int64            sub_14025B344(__int64 a1, __int64 a2, unsigned int a3)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_889(__int64 a1, __int64 a2, unsigned int a3)
 {
-  BOOL v6;
-  bool v7;
-  __int64 v9;
+  BOOL isdebuggerpresent_result;
+  bool saved_isdebuggerpresent_result;
+  __int64 call_result;
 
-  v6 = IsDebuggerPresent();
-  v7 = v6;
-  if ( v6 )
+  isdebuggerpresent_result = IsDebuggerPresent();
+  saved_isdebuggerpresent_result = isdebuggerpresent_result;
+  if ( isdebuggerpresent_result )
   {
     if ( a1 )
       _acrt_OutputDebugStringA(a1);
@@ -18934,17 +18934,17 @@ __int64            unknown_libname_889(__int64 a1, __int64 a2, unsigned int a3)
       return 4;
   }
   if ( (unsigned int)sub_14025A334() != 2 || !sub_14024F84C() )
-    return (unsigned int)v7 + 3;
+    return (unsigned int)saved_isdebuggerpresent_result + 3;
   if ( (unsigned __int8)sub_14024FB24() )
   {
-    v9 = sub_14024FA78();
+    call_result = sub_14024FA78();
   }
   else
   {
     a3 |= 0x200000u;
-    v9 = 0;
+    call_result = 0;
   }
-  return sub_14024F65C(v9, a1, a2, a3);
+  return sub_14024F65C(call_result, a1, a2, a3);
 }
 
 //----- (000000014025B508) ----------------------------------------------------
@@ -18952,13 +18952,13 @@ __int64            unknown_libname_889(__int64 a1, __int64 a2, unsigned int a3)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_890(__int64 a1, __int64 a2, unsigned int a3)
 {
-  BOOL v6;
-  bool v7;
-  __int64 v9;
+  BOOL isdebuggerpresent_result;
+  bool saved_isdebuggerpresent_result;
+  __int64 call_result;
 
-  v6 = IsDebuggerPresent();
-  v7 = v6;
-  if ( v6 )
+  isdebuggerpresent_result = IsDebuggerPresent();
+  saved_isdebuggerpresent_result = isdebuggerpresent_result;
+  if ( isdebuggerpresent_result )
   {
     if ( a1 )
       ((void (           *)(__int64))OutputDebugStringW)(a1);
@@ -18966,17 +18966,17 @@ __int64            unknown_libname_890(__int64 a1, __int64 a2, unsigned int a3)
       return 4;
   }
   if ( (unsigned int)sub_14025A334() != 2 || !sub_14024F84C() )
-    return (unsigned int)v7 + 3;
+    return (unsigned int)saved_isdebuggerpresent_result + 3;
   if ( (unsigned __int8)sub_14024FB24() )
   {
-    v9 = sub_14024FA78();
+    call_result = sub_14024FA78();
   }
   else
   {
     a3 |= 0x200000u;
-    v9 = 0;
+    call_result = 0;
   }
-  return sub_14024F6D0(v9, a1, a2, a3);
+  return sub_14024F6D0(call_result, a1, a2, a3);
 }
 
 // 14026E090: invalid function type 'void (__stdcall *OutputDebugStringW)(LPCWSTR lpOutputString)' has been ignored
@@ -18986,13 +18986,13 @@ __int64            unknown_libname_890(__int64 a1, __int64 a2, unsigned int a3)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_891(__int64 a1, __int64 a2, unsigned int a3)
 {
-  BOOL v6;
-  bool v7;
-  __int64 v9;
+  BOOL isdebuggerpresent_result;
+  bool saved_isdebuggerpresent_result;
+  __int64 call_result;
 
-  v6 = IsDebuggerPresent();
-  v7 = v6;
-  if ( v6 )
+  isdebuggerpresent_result = IsDebuggerPresent();
+  saved_isdebuggerpresent_result = isdebuggerpresent_result;
+  if ( isdebuggerpresent_result )
   {
     if ( a1 )
       _acrt_OutputDebugStringA(a1);
@@ -19000,17 +19000,17 @@ __int64            unknown_libname_891(__int64 a1, __int64 a2, unsigned int a3)
       return 4;
   }
   if ( (unsigned int)sub_14025A334() != 2 || !sub_14024F84C() )
-    return (unsigned int)v7 + 3;
+    return (unsigned int)saved_isdebuggerpresent_result + 3;
   if ( (unsigned __int8)sub_14024FB24() )
   {
-    v9 = sub_14024FA78();
+    call_result = sub_14024FA78();
   }
   else
   {
     a3 |= 0x200000u;
-    v9 = 0;
+    call_result = 0;
   }
-  return sub_14024F65C(v9, a1, a2, a3);
+  return sub_14024F65C(call_result, a1, a2, a3);
 }
 
 //----- (000000014025B6B4) ----------------------------------------------------
@@ -19018,13 +19018,13 @@ __int64            unknown_libname_891(__int64 a1, __int64 a2, unsigned int a3)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_892(__int64 a1, __int64 a2, unsigned int a3)
 {
-  BOOL v6;
-  bool v7;
-  __int64 v9;
+  BOOL isdebuggerpresent_result;
+  bool saved_isdebuggerpresent_result;
+  __int64 call_result;
 
-  v6 = IsDebuggerPresent();
-  v7 = v6;
-  if ( v6 )
+  isdebuggerpresent_result = IsDebuggerPresent();
+  saved_isdebuggerpresent_result = isdebuggerpresent_result;
+  if ( isdebuggerpresent_result )
   {
     if ( a1 )
       ((void (           *)(__int64))OutputDebugStringW)(a1);
@@ -19032,17 +19032,17 @@ __int64            unknown_libname_892(__int64 a1, __int64 a2, unsigned int a3)
       return 4;
   }
   if ( (unsigned int)sub_14025A334() != 2 || !sub_14024F84C() )
-    return (unsigned int)v7 + 3;
+    return (unsigned int)saved_isdebuggerpresent_result + 3;
   if ( (unsigned __int8)sub_14024FB24() )
   {
-    v9 = sub_14024FA78();
+    call_result = sub_14024FA78();
   }
   else
   {
     a3 |= 0x200000u;
-    v9 = 0;
+    call_result = 0;
   }
-  return sub_14024F6D0(v9, a1, a2, a3);
+  return sub_14024F6D0(call_result, a1, a2, a3);
 }
 
 // 14026E090: invalid function type 'void (__stdcall *OutputDebugStringW)(LPCWSTR lpOutputString)' has been ignored
@@ -19059,79 +19059,79 @@ __int64            sub_14025B758(__int64 a1, __int64 *a2, __int64 a3, __int64 *a
 //----- (000000014025B798) ----------------------------------------------------
 __int64            sub_14025B798(__int64 a1, __int64 a2)
 {
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  __int64 callee_output_word;
+  __int64 input_value;
+  __int64 input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_14025B758((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_14025B758((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014025B800) ----------------------------------------------------
 __int64            sub_14025B800(__int64 a1)
 {
-  unsigned __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
+  unsigned __int64 masked_bits;
+  __int64 saved_malloc_base_result;
+  __int64 loaded_word;
+  __int64 malloc_base_result;
 
-  v2 = **(_QWORD **)a1 & 0xFFFFFFFFFFFFFFFEuLL;
+  masked_bits = **(_QWORD **)a1 & 0xFFFFFFFFFFFFFFFEuLL;
   sub_1402501C4(**(FILE ***)(a1 + 8));
   sub_1402502FC(**(_QWORD **)(a1 + 8));
   _InterlockedAnd((volatile signed __int32 *)(**(_QWORD **)(a1 + 8) + 20LL), 0xFFFFF81F);
   if ( (**(_BYTE **)(a1 + 16) & 4) != 0 )
   {
-    v3 = **(_QWORD **)(a1 + 8);
-    v4 = v3 + 28;
-    _InterlockedOr((volatile signed __int32 *)(v3 + 20), 0x400u);
-    *(_DWORD *)(v3 + 32) = 2;
+    saved_malloc_base_result = **(_QWORD **)(a1 + 8);
+    loaded_word = saved_malloc_base_result + 28;
+    _InterlockedOr((volatile signed __int32 *)(saved_malloc_base_result + 20), 0x400u);
+    *(_DWORD *)(saved_malloc_base_result + 32) = 2;
 LABEL_8:
-    *(_QWORD *)v3 = v4;
-    *(_QWORD *)(v3 + 8) = v4;
+    *(_QWORD *)saved_malloc_base_result = loaded_word;
+    *(_QWORD *)(saved_malloc_base_result + 8) = loaded_word;
     goto LABEL_9;
   }
-  v4 = **(_QWORD **)(a1 + 24);
-  if ( v4 )
+  loaded_word = **(_QWORD **)(a1 + 24);
+  if ( loaded_word )
   {
-    v3 = **(_QWORD **)(a1 + 8);
-    _InterlockedOr((volatile signed __int32 *)(v3 + 20), 0x180u);
-    *(_DWORD *)(v3 + 32) = v2;
+    saved_malloc_base_result = **(_QWORD **)(a1 + 8);
+    _InterlockedOr((volatile signed __int32 *)(saved_malloc_base_result + 20), 0x180u);
+    *(_DWORD *)(saved_malloc_base_result + 32) = masked_bits;
     goto LABEL_8;
   }
-  v5 = malloc_base();
+  malloc_base_result = malloc_base();
   free_base(nullptr);
-  if ( !v5 )
+  if ( !malloc_base_result )
   {
     ++g_144CBE6B8;
     return 0xFFFFFFFFLL;
   }
-  v3 = **(_QWORD **)(a1 + 8);
-  _InterlockedOr((volatile signed __int32 *)(v3 + 20), 0x140u);
-  *(_DWORD *)(v3 + 32) = v2;
-  *(_QWORD *)v3 = v5;
-  *(_QWORD *)(v3 + 8) = v5;
+  saved_malloc_base_result = **(_QWORD **)(a1 + 8);
+  _InterlockedOr((volatile signed __int32 *)(saved_malloc_base_result + 20), 0x140u);
+  *(_DWORD *)(saved_malloc_base_result + 32) = masked_bits;
+  *(_QWORD *)saved_malloc_base_result = malloc_base_result;
+  *(_QWORD *)(saved_malloc_base_result + 8) = malloc_base_result;
 LABEL_9:
-  *(_DWORD *)(v3 + 16) = 0;
+  *(_DWORD *)(saved_malloc_base_result + 16) = 0;
   return 0;
 }
 
 //----- (000000014025B8F8) ----------------------------------------------------
 __int64            setvbuf_sr(__int64 a1, __int64 a2, int a3, __int64 a4)
 {
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  _QWORD v8[5];
-  char v9;
-  __int64 v10;
-  int v11;
-  __int64 v12;
+  __int64 input_value;
+  __int64 input_value_2;
+  __int64 input_value_3;
+  _QWORD scratch_buffer[5];
+  char callee_output_word;
+  __int64 input_value_4;
+  int input_value_5;
+  __int64 input_value_6;
 
-  v12 = a4;
-  v11 = a3;
-  v10 = a2;
-  v5 = a1;
+  input_value_6 = a4;
+  input_value_5 = a3;
+  input_value_4 = a2;
+  input_value = a1;
   if ( !a1 || (a3 & 0xFFFFFFBB) != 0 || a3 == 68 || (a3 & 0xFFFFFFBF) == 0 && (unsigned __int64)(a4 - 2) > 0x7FFFFFFD )
   {
     *errno_sr() = 22;
@@ -19140,13 +19140,13 @@ __int64            setvbuf_sr(__int64 a1, __int64 a2, int a3, __int64 a4)
   }
   else
   {
-    v6 = a1;
-    v8[0] = (uint64)(uintptr_t)(&v12);
-    v7 = a1;
-    v8[1] = (uint64)(uintptr_t)(&v5);
-    v8[2] = (uint64)(uintptr_t)(&v11);
-    v8[3] = (uint64)(uintptr_t)(&v10);
-    return sub_14025B758((__int64)&v9, &v7, (__int64)v8, &v6);
+    input_value_2 = a1;
+    scratch_buffer[0] = (uint64)(uintptr_t)(&input_value_6);
+    input_value_3 = a1;
+    scratch_buffer[1] = (uint64)(uintptr_t)(&input_value);
+    scratch_buffer[2] = (uint64)(uintptr_t)(&input_value_5);
+    scratch_buffer[3] = (uint64)(uintptr_t)(&input_value_4);
+    return sub_14025B758((__int64)&callee_output_word, &input_value_3, (__int64)scratch_buffer, &input_value_2);
   }
 }
 
@@ -19155,81 +19155,81 @@ __int64            setvbuf_sr(__int64 a1, __int64 a2, int a3, __int64 a4)
 //----- (000000014025B99C) ----------------------------------------------------
 __int64            sub_14025B99C(__int64 a1, unsigned int *a2, __int64 a3, unsigned int *a4)
 {
-  __int64 v5;
+  __int64 unused_written_slot;
 
   crt_lock(*a2);
-  v5 = __ROR8__(g_144CBF9D8 ^ _security_cookie, _security_cookie & 0x3F);
+  unused_written_slot = __ROR8__(g_144CBF9D8 ^ _security_cookie, _security_cookie & 0x3F);
   crt_unlock(*a4);
-  return v5;
+  return unused_written_slot;
 }
 
 //----- (000000014025B9E4) ----------------------------------------------------
 __int64            sub_14025B9E4(unsigned int a1, __int64 a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_14025B99C((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_14025B99C((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014025BA7C) ----------------------------------------------------
 __int64            HandlerRoutine(__m256 *CtrlType)
 {
-  int v1;
-  unsigned int *v2;
-  __int64 v3;
-  unsigned int v4;
-  void (           *v5)(_QWORD);
+  int cached_ctrltype;
+  unsigned int *unused_written_slot;
+  __int64 xor_value;
+  unsigned int selection_code;
+  void (           *callback_function)(_QWORD);
 
-  v1 = (int)CtrlType;
+  cached_ctrltype = (int)CtrlType;
   crt_lock(3);
-  if ( v1 )
+  if ( cached_ctrltype )
   {
-    v2 = (unsigned int *)&g_144CBF9D0;
-    v3 = g_144CBF9D0 ^ _security_cookie;
-    v4 = 21;
+    unused_written_slot = (unsigned int *)&g_144CBF9D0;
+    xor_value = g_144CBF9D0 ^ _security_cookie;
+    selection_code = 21;
   }
   else
   {
-    v2 = (unsigned int *)&g_144CBF9C8;
-    v3 = g_144CBF9C8 ^ _security_cookie;
-    v4 = 2;
+    unused_written_slot = (unsigned int *)&g_144CBF9C8;
+    xor_value = g_144CBF9C8 ^ _security_cookie;
+    selection_code = 2;
   }
-  v5 = (void (           *)(_QWORD))__ROR8__(v3, _security_cookie & 0x3F);
-  if ( (unsigned __int64)v5 >= 2 )
-    *(_QWORD *)v2 = _security_cookie;
+  callback_function = (void (           *)(_QWORD))__ROR8__(xor_value, _security_cookie & 0x3F);
+  if ( (unsigned __int64)callback_function >= 2 )
+    *(_QWORD *)unused_written_slot = _security_cookie;
   crt_unlock(3);
-  if ( !v5 )
+  if ( !callback_function )
     return 0;
-  if ( v5 != (void (           *)(_QWORD))1 )
-    v5(v4);
+  if ( callback_function != (void (           *)(_QWORD))1 )
+    callback_function(selection_code);
   return 1;
 }
 
 //----- (000000014025BB10) ----------------------------------------------------
 unsigned int *           get_global_action_nolock(int a1)
 {
-  int v1;
-  int v2;
-  int v3;
-  int v4;
+  int integer_difference;
+  int integer_difference_2;
+  int integer_difference_3;
+  int integer_difference_4;
 
-  v1 = a1 - 2;
-  if ( !v1 )
+  integer_difference = a1 - 2;
+  if ( !integer_difference )
     return (unsigned int *)&g_144CBF9C8;
-  v2 = v1 - 4;
-  if ( v2 )
+  integer_difference_2 = integer_difference - 4;
+  if ( integer_difference_2 )
   {
-    v3 = v2 - 9;
-    if ( !v3 )
+    integer_difference_3 = integer_difference_2 - 9;
+    if ( !integer_difference_3 )
       return (unsigned int *)&g_144CBF9E0;
-    v4 = v3 - 6;
-    if ( !v4 )
+    integer_difference_4 = integer_difference_3 - 6;
+    if ( !integer_difference_4 )
       return (unsigned int *)&g_144CBF9D0;
-    if ( v4 != 1 )
+    if ( integer_difference_4 != 1 )
       return nullptr;
   }
   return (unsigned int *)&g_144CBF9D8;
@@ -19254,9 +19254,9 @@ char *           unknown_libname_896(char *a1, unsigned __int64 a2)
 //----- (000000014025BBC0) ----------------------------------------------------
 __int64            signal_failed(unsigned int a1)
 {
-  int v1;
+  int bit_mask;
 
-  if ( a1 > 0x11 || (v1 = 204810, !_bittest(&v1, a1)) )
+  if ( a1 > 0x11 || (bit_mask = 204810, !_bittest(&bit_mask, a1)) )
     *errno_sr() = 22;
   return -1;
 }
@@ -19264,13 +19264,13 @@ __int64            signal_failed(unsigned int a1)
 //----- (000000014025BBEC) ----------------------------------------------------
 __int64 sub_14025BBEC()
 {
-  __int64 v1;
-  unsigned int v2;
-  unsigned int v3;
+  __int64 callee_output_word;
+  unsigned int selection_code;
+  unsigned int selection_code_2;
 
-  v2 = 3;
-  v3 = 3;
-  return sub_14025B99C((__int64)&v1, &v3, (__int64)&v1, &v2);
+  selection_code = 3;
+  selection_code_2 = 3;
+  return sub_14025B99C((__int64)&callee_output_word, &selection_code_2, (__int64)&callee_output_word, &selection_code);
 }
 
 //----- (000000014025BC1C) ----------------------------------------------------
@@ -19297,26 +19297,26 @@ __int64 sub_14025BC50()
 //----- (000000014025BC64) ----------------------------------------------------
 __int64            sub_14025BC64(unsigned int a1)
 {
-  _QWORD *v2;
-  char v3;
-  unsigned int v4;
-  unsigned int v5;
-  unsigned int v6;
-  unsigned int v7;
-  unsigned int *v8;
-  _QWORD *v9;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  int v14;
-  __int64 v15;
-  __int64 v16;
-  int v17;
-  __int64 v18;
+  _QWORD *record_pointer;
+  char selection_flag;
+  unsigned int integer_difference;
+  unsigned int integer_difference_2;
+  unsigned int integer_difference_3;
+  unsigned int integer_difference_4;
+  unsigned int *cached_security_cookie;
+  _QWORD *returned_pointer;
+  __int64 record_byte_offset;
+  __int64 integer_sum;
+  __int64 ror8_result;
+  int bit_mask;
+  __int64 record_byte_offset_2;
+  __int64 scaled_index;
+  int loaded_word;
+  __int64 table_value;
 
-  v2 = nullptr;
-  v17 = 0;
-  v3 = 1;
+  record_pointer = nullptr;
+  loaded_word = 0;
+  selection_flag = 1;
   if ( a1 != 2 )
   {
     switch ( a1 )
@@ -19328,24 +19328,24 @@ __int64            sub_14025BC64(unsigned int a1)
       case 8u:
       case 0xBu:
 LABEL_14:
-        v9 = (_QWORD *)sub_140255BEC();
-        v2 = v9;
-        if ( !v9 )
+        returned_pointer = (_QWORD *)sub_140255BEC();
+        record_pointer = returned_pointer;
+        if ( !returned_pointer )
           return 0xFFFFFFFFLL;
-        v11 = *v9;
-        v12 = v11 + 192;
-        while ( v11 != v12 )
+        record_byte_offset = *returned_pointer;
+        integer_sum = record_byte_offset + 192;
+        while ( record_byte_offset != integer_sum )
         {
-          if ( *(_DWORD *)(v11 + 4) == a1 )
+          if ( *(_DWORD *)(record_byte_offset + 4) == a1 )
             goto LABEL_21;
-          v11 += 16;
+          record_byte_offset += 16;
         }
-        v11 = 0;
+        record_byte_offset = 0;
 LABEL_21:
-        if ( v11 )
+        if ( record_byte_offset )
         {
-          v8 = (unsigned int *)(v11 + 8);
-          v3 = 0;
+          cached_security_cookie = (unsigned int *)(record_byte_offset + 8);
+          selection_flag = 0;
           goto LABEL_28;
         }
         break;
@@ -19359,71 +19359,71 @@ LABEL_21:
     return 0xFFFFFFFFLL;
   }
 LABEL_8:
-  v4 = a1 - 2;
-  if ( v4 )
+  integer_difference = a1 - 2;
+  if ( integer_difference )
   {
-    v5 = v4 - 4;
-    if ( !v5 )
+    integer_difference_2 = integer_difference - 4;
+    if ( !integer_difference_2 )
     {
 LABEL_24:
-      v8 = (unsigned int *)&g_144CBF9D8;
+      cached_security_cookie = (unsigned int *)&g_144CBF9D8;
       goto LABEL_28;
     }
-    v6 = v5 - 9;
-    if ( v6 )
+    integer_difference_3 = integer_difference_2 - 9;
+    if ( integer_difference_3 )
     {
-      v7 = v6 - 6;
-      if ( v7 )
+      integer_difference_4 = integer_difference_3 - 6;
+      if ( integer_difference_4 )
       {
-        if ( v7 != 1 )
+        if ( integer_difference_4 != 1 )
         {
-          v8 = nullptr;
+          cached_security_cookie = nullptr;
           goto LABEL_28;
         }
         goto LABEL_24;
       }
-      v8 = (unsigned int *)&g_144CBF9D0;
+      cached_security_cookie = (unsigned int *)&g_144CBF9D0;
     }
     else
     {
-      v8 = (unsigned int *)&g_144CBF9E0;
+      cached_security_cookie = (unsigned int *)&g_144CBF9E0;
     }
   }
   else
   {
-    v8 = (unsigned int *)&g_144CBF9C8;
+    cached_security_cookie = (unsigned int *)&g_144CBF9C8;
   }
 LABEL_28:
-  v18 = 0;
-  if ( v3 )
+  table_value = 0;
+  if ( selection_flag )
   {
     crt_lock(3);
-    v13 = __ROR8__(*(_QWORD *)v8 ^ _security_cookie, _security_cookie & 0x3F);
+    ror8_result = __ROR8__(*(_QWORD *)cached_security_cookie ^ _security_cookie, _security_cookie & 0x3F);
   }
   else
   {
-    v13 = *(_QWORD *)v8;
+    ror8_result = *(_QWORD *)cached_security_cookie;
   }
-  if ( v13 == 1 )
+  if ( ror8_result == 1 )
   {
-    v14 = 2320;
+    bit_mask = 2320;
     goto LABEL_43;
   }
-  if ( v13 )
+  if ( ror8_result )
   {
-    v14 = 2320;
-    if ( a1 <= 0xB && _bittest(&v14, a1) )
+    bit_mask = 2320;
+    if ( a1 <= 0xB && _bittest(&bit_mask, a1) )
     {
-      v18 = v2[1];
-      v2[1] = 0;
+      table_value = record_pointer[1];
+      record_pointer[1] = 0;
       if ( a1 != 8 )
       {
 LABEL_41:
-        *(_QWORD *)v8 = _security_cookie;
+        *(_QWORD *)cached_security_cookie = _security_cookie;
 LABEL_43:
-        if ( v3 )
+        if ( selection_flag )
           crt_unlock(3);
-        if ( v13 != 1 )
+        if ( ror8_result != 1 )
         {
           if ( a1 == 8 )
           {
@@ -19434,32 +19434,32 @@ LABEL_43:
           {
             _guard_dispatch_icall_fptr(a1);
           }
-          if ( a1 <= 0xB && _bittest(&v14, a1) )
+          if ( a1 <= 0xB && _bittest(&bit_mask, a1) )
           {
-            v2[1] = v18;
+            record_pointer[1] = table_value;
             if ( a1 == 8 )
-              *(_DWORD *)(sub_140255A70() + 16) = v17;
+              *(_DWORD *)(sub_140255A70() + 16) = loaded_word;
           }
         }
         return 0;
       }
-      v17 = *(_DWORD *)(sub_140255A70() + 16);
+      loaded_word = *(_DWORD *)(sub_140255A70() + 16);
       *(_DWORD *)(sub_140255A70() + 16) = 140;
     }
     if ( a1 == 8 )
     {
-      v15 = *v2 + 48LL;
-      v16 = *v2 + 192LL;
-      while ( v15 != v16 )
+      record_byte_offset_2 = *record_pointer + 48LL;
+      scaled_index = *record_pointer + 192LL;
+      while ( record_byte_offset_2 != scaled_index )
       {
-        *(_QWORD *)(v15 + 8) = 0;
-        v15 += 16;
+        *(_QWORD *)(record_byte_offset_2 + 8) = 0;
+        record_byte_offset_2 += 16;
       }
       goto LABEL_43;
     }
     goto LABEL_41;
   }
-  if ( v3 )
+  if ( selection_flag )
     crt_unlock(3);
   COleServerDoc__NotifyClosed((COleServerDoc *)3);
   __debugbreak();
@@ -19469,31 +19469,31 @@ LABEL_43:
 //----- (000000014025BED0) ----------------------------------------------------
 __int64            signal(unsigned int a1, __int64 a2)
 {
-  int v4;
-  char v5;
-  __int64 v6;
-  _DWORD *v7;
+  int bit_mask;
+  char selection_flag;
+  __int64 unused_written_slot;
+  _DWORD *unused_written_slot_2;
   unsigned int *global_action_nolock;
-  int v10;
-  __m128i **v11;
-  __m128i **v12;
-  __m128i *v13;
-  __m128i *v14;
-  __m128i *v15;
-  __m128i *v16;
-  __int64 *v17;
-  __int64 v18;
-  int v19;
+  int bit_mask_2;
+  __m128i **returned_pointer;
+  __m128i **saved_malloc_base_result;
+  __m128i *loaded_word;
+  __m128i *buffer_cursor;
+  __m128i *malloc_base_result;
+  __m128i *packed_vector;
+  __int64 *state_address;
+  __int64 unused_written_slot_3;
+  int bit_mask_3;
 
   if ( (unsigned __int64)(a2 - 3) <= 1 )
     goto LABEL_32;
   if ( a1 <= 0x16 )
   {
-    v4 = 6324292;
-    if ( _bittest(&v4, a1) )
+    bit_mask = 6324292;
+    if ( _bittest(&bit_mask, a1) )
     {
-      v5 = 0;
-      v6 = 0;
+      selection_flag = 0;
+      unused_written_slot = 0;
       crt_lock(3);
       if ( (a1 == 2 || a1 == 21) && !LOBYTE(g_144CBF9C4) )
       {
@@ -19505,77 +19505,77 @@ __int64            signal(unsigned int a1, __int64 a2)
         }
         else
         {
-          v7 = crt_doserrno();
-          *v7 = ((__int64 (*)(void))GetLastError)();
-          v5 = 1;
+          unused_written_slot_2 = crt_doserrno();
+          *unused_written_slot_2 = ((__int64 (*)(void))GetLastError)();
+          selection_flag = 1;
         }
       }
       global_action_nolock = get_global_action_nolock(a1);
       if ( global_action_nolock )
       {
-        v6 = __ROR8__(*(_QWORD *)global_action_nolock ^ _security_cookie, _security_cookie & 0x3F);
+        unused_written_slot = __ROR8__(*(_QWORD *)global_action_nolock ^ _security_cookie, _security_cookie & 0x3F);
         if ( a2 != 2 )
           *(_QWORD *)global_action_nolock = _security_cookie ^ __ROR8__(a2, 64 - (_security_cookie & 0x3Fu));
       }
       crt_unlock(3);
-      if ( !v5 )
-        return v6;
+      if ( !selection_flag )
+        return unused_written_slot;
       goto LABEL_32;
     }
   }
   if ( a1 > 0xB )
     goto LABEL_32;
-  v10 = 2320;
-  if ( !_bittest(&v10, a1) )
+  bit_mask_2 = 2320;
+  if ( !_bittest(&bit_mask_2, a1) )
     goto LABEL_32;
-  v11 = (__m128i **)sub_140255BEC();
-  v12 = v11;
-  if ( !v11 )
+  returned_pointer = (__m128i **)sub_140255BEC();
+  saved_malloc_base_result = returned_pointer;
+  if ( !returned_pointer )
     goto LABEL_32;
-  v13 = *v11;
-  v14 = v13;
-  if ( v13 == xmmword_140289E60 )
+  loaded_word = *returned_pointer;
+  buffer_cursor = loaded_word;
+  if ( loaded_word == xmmword_140289E60 )
   {
-    v15 = (__m128i *)malloc_base();
-    *v12 = v15;
-    if ( v15 )
+    malloc_base_result = (__m128i *)malloc_base();
+    *saved_malloc_base_result = malloc_base_result;
+    if ( malloc_base_result )
     {
-      crt_memcpy(v15, xmmword_140289E60, 0xC0u);
-      v13 = *v12;
-      v14 = *v12;
+      crt_memcpy(malloc_base_result, xmmword_140289E60, 0xC0u);
+      loaded_word = *saved_malloc_base_result;
+      buffer_cursor = *saved_malloc_base_result;
       goto LABEL_21;
     }
 LABEL_32:
-    if ( a1 > 0x11 || (v19 = 204810, !_bittest(&v19, a1)) )
+    if ( a1 > 0x11 || (bit_mask_3 = 204810, !_bittest(&bit_mask_3, a1)) )
       *errno_sr() = 22;
     return -1;
   }
 LABEL_21:
-  v16 = v14 + 12;
-  while ( v14 != v16 )
+  packed_vector = buffer_cursor + 12;
+  while ( buffer_cursor != packed_vector )
   {
-    if ( SR_VEC_PTR_LANES(128, v14, i32)[1] == a1 )
+    if ( SR_VEC_PTR_LANES(128, buffer_cursor, i32)[1] == a1 )
       goto LABEL_26;
-    ++v14;
+    ++buffer_cursor;
   }
-  v14 = nullptr;
+  buffer_cursor = nullptr;
 LABEL_26:
-  if ( !v14 )
+  if ( !buffer_cursor )
     goto LABEL_32;
-  v17 = &SR_VEC_PTR_LANES(128, v14, i64)[1];
-  v18 = SR_VEC_PTR_LANES(128, v14, i64)[1];
-  if ( a2 != 2 && v14 != &v13[12] )
+  state_address = &SR_VEC_PTR_LANES(128, buffer_cursor, i64)[1];
+  unused_written_slot_3 = SR_VEC_PTR_LANES(128, buffer_cursor, i64)[1];
+  if ( a2 != 2 && buffer_cursor != &loaded_word[12] )
   {
     do
     {
-      if ( *((_DWORD *)v17 - 1) != a1 )
+      if ( *((_DWORD *)state_address - 1) != a1 )
         break;
-      *v17 = a2;
-      v17 += 2;
+      *state_address = a2;
+      state_address += 2;
     }
-    while ( v17 - 1 != (__int64 *)&v13[12] );
+    while ( state_address - 1 != (__int64 *)&loaded_word[12] );
   }
-  return v18;
+  return unused_written_slot_3;
 }
 
 // 14025BED0: invalid function type '_crt_signal_t __cdecl signal(int Signal, _crt_signal_t Function)' has been ignored
@@ -19585,56 +19585,56 @@ LABEL_26:
 //----- (000000014025C0AC) ----------------------------------------------------
 double            call_matherr(int a1, __int64 a2, __int64 a3, double a4, __int64 a5, double a6, __int64 a7)
 {
-  int v9;
-  __int64 v10;
-  double v11;
-  __int64 v12;
-  double v13;
+  int input_value;
+  __int64 unused_written_slot;
+  double unused_written_slot_2;
+  __int64 unused_written_slot_3;
+  double unused_written_slot_4;
 
-  v9 = a1;
-  v12 = a5;
-  v13 = a6;
-  v11 = a4;
-  v10 = a3;
+  input_value = a1;
+  unused_written_slot_3 = a5;
+  unused_written_slot_4 = a6;
+  unused_written_slot_2 = a4;
+  unused_written_slot = a3;
   ctrlfp(a7, 65472);
-  if ( !(unsigned int)sub_1402477E8((__int64)&v9) )
+  if ( !(unsigned int)sub_1402477E8((__int64)&input_value) )
     set_errno_from_matherr(a1);
-  return v13;
+  return unused_written_slot_4;
 }
 
 //----- (000000014025C114) ----------------------------------------------------
 _BOOL8            exception_enabled(char a1, __int16 a2)
 {
-  int v3;
+  int option_flags;
 
-  v3 = a1 & 0x1F;
+  option_flags = a1 & 0x1F;
   if ( (a1 & 8) != 0 && (a2 & 0x80u) != 0 )
   {
     set_statfp(1);
-    v3 &= ~8u;
+    option_flags &= ~8u;
   }
   else if ( (a1 & 4) != 0 && (a2 & 0x200) != 0 )
   {
     set_statfp(4);
-    v3 &= ~4u;
+    option_flags &= ~4u;
   }
   else if ( (a1 & 1) != 0 && (a2 & 0x400) != 0 )
   {
     set_statfp(8);
-    v3 &= ~1u;
+    option_flags &= ~1u;
   }
   else if ( (a1 & 2) != 0 && (a2 & 0x800) != 0 )
   {
     if ( (a1 & 0x10) != 0 )
       set_statfp(16);
-    v3 &= ~2u;
+    option_flags &= ~2u;
   }
   if ( (a1 & 0x10) != 0 && (a2 & 0x1000) != 0 )
   {
     set_statfp(32);
-    v3 &= ~0x10u;
+    option_flags &= ~0x10u;
   }
-  return v3 == 0;
+  return option_flags == 0;
 }
 
 //----- (000000014025C1D0) ----------------------------------------------------
@@ -19649,40 +19649,40 @@ double            handle_error(
         __int64 a8,
         int a9)
 {
-  BOOL v13;
-  __int64 v14;
-  __int64 v16;
-  __int64 v17;
-  double v18[2];
-  _DWORD v19[12];
-  __int64 v20;
-  unsigned int v21;
-  __int64 v22;
+  BOOL exception_enabled_result;
+  __int64 input_value;
+  __int64 unused_local;
+  __int64 ctrlfp_result;
+  double callee_output_word[2];
+  _DWORD scratch_buffer[12];
+  __int64 unused_written_slot;
+  unsigned int masked_bits;
+  __int64 unused_local_2;
 
-  v17 = ctrlfp(8064, 65472);
-  *(_QWORD *)&v18[1] = a3;
-  *(_QWORD *)&v18[0] = a3;
-  v13 = exception_enabled(a5, v17);
-  v14 = a8;
-  if ( !v13 )
+  ctrlfp_result = ctrlfp(8064, 65472);
+  *(_QWORD *)&callee_output_word[1] = a3;
+  *(_QWORD *)&callee_output_word[0] = a3;
+  exception_enabled_result = exception_enabled(a5, ctrlfp_result);
+  input_value = a8;
+  if ( !exception_enabled_result )
   {
     if ( a9 == 2 )
     {
-      v20 = a8;
-      v21 = v21 & 0xFFFFFFE0 | 3;
+      unused_written_slot = a8;
+      masked_bits = masked_bits & 0xFFFFFFE0 | 3;
     }
-    raise_exc(v19, &v17, a5, a2, &a7, v18);
+    raise_exc(scratch_buffer, &ctrlfp_result, a5, a2, &a7, callee_output_word);
   }
   if ( sub_1402477C0() && a4 )
   {
-    return call_matherr(a4, a6, a1, a7, v14, v18[0], v17); /* 0x14025C2B2: its result stays in xmm0 */
+    return call_matherr(a4, a6, a1, a7, input_value, callee_output_word[0], ctrlfp_result); /* 0x14025C2B2: its result stays in xmm0 */
   }
   else
   {
     set_errno_from_matherr(a4);
-    ctrlfp(v17, 65472);
+    ctrlfp(ctrlfp_result, 65472);
   }
-  return v18[0]; /* 0x14025C2CF: movsd xmm0, qword ptr [rsp + 0x48] */
+  return callee_output_word[0]; /* 0x14025C2CF: movsd xmm0, qword ptr [rsp + 0x48] */
 }
 
 //----- (000000014025C2F8) ----------------------------------------------------
@@ -19697,40 +19697,40 @@ float            handle_errorf(
         float a8,
         int a9)
 {
-  BOOL v13;
-  float v14;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  int v19;
-  _DWORD v20[16];
-  unsigned int v21;
-  __int64 v22;
+  BOOL exception_enabled_result;
+  float input_value;
+  __int64 unused_local;
+  __int64 float_word;
+  __int64 ctrlfp_result;
+  int unused_written_slot;
+  _DWORD float_word_2[16];
+  unsigned int masked_bits;
+  __int64 unused_local_2;
 
-  v18 = ctrlfp(8064, 65472);
-  v19 = a3;
-  LODWORD(v17) = a3;
-  v13 = exception_enabled(a5, v18);
-  v14 = a8;
-  if ( !v13 )
+  ctrlfp_result = ctrlfp(8064, 65472);
+  unused_written_slot = a3;
+  LODWORD(float_word) = a3;
+  exception_enabled_result = exception_enabled(a5, ctrlfp_result);
+  input_value = a8;
+  if ( !exception_enabled_result )
   {
     if ( a9 == 2 )
     {
-      *(float *)&v20[12] = a8;
-      v21 = v21 & 0xFFFFFFE0 | 1;
+      *(float *)&float_word_2[12] = a8;
+      masked_bits = masked_bits & 0xFFFFFFE0 | 1;
     }
-    raise_excf(v20, &v18, a5, a2, &a7, &v17);
+    raise_excf(float_word_2, &ctrlfp_result, a5, a2, &a7, &float_word);
   }
   if ( sub_1402477C0() && a4 )
   {
-    return (float)call_matherr(a4, a6, a1, a7, COERCE__INT64((double)v14), *(float *)&v17, v18); /* 0x14025C3E7: cvtsd2ss xmm0, xmm0 */
+    return (float)call_matherr(a4, a6, a1, a7, COERCE__INT64((double)input_value), *(float *)&float_word, ctrlfp_result); /* 0x14025C3E7: cvtsd2ss xmm0, xmm0 */
   }
   else
   {
     set_errno_from_matherr(a4);
-    ctrlfp(v18, 65472);
+    ctrlfp(ctrlfp_result, 65472);
   }
-  return *(float *)&v17; /* 0x14025C403: movss xmm0, dword ptr [rsp + 0x40] */
+  return *(float *)&float_word; /* 0x14025C403: movss xmm0, dword ptr [rsp + 0x40] */
 }
 
 //----- (000000014025C42C) ----------------------------------------------------
@@ -19768,29 +19768,29 @@ __m128            logf_special(float a1, double a2, int a3)
 // local variable allocation has failed, the output may be wrong!
 __m128            logf_special_common(float a1, double a2, int a3, __int16 a4, __int64 a5)
 {
-  int v6;
-  int v7;
-  char v9;
-  unsigned int v10;
-  float v11;
+  int integer_difference;
+  int selection_code;
+  char selection_code_2;
+  unsigned int selection_code_3;
+  float argument;
 
-  v6 = a3 - 1;
-  if ( !v6 )
+  integer_difference = a3 - 1;
+  if ( !integer_difference )
   {
-    v7 = 2;
-    v11 = a1;
-    v10 = 34;
-    v9 = 4;
+    selection_code = 2;
+    argument = a1;
+    selection_code_3 = 34;
+    selection_code_2 = 4;
     goto LABEL_5;
   }
-  if ( v6 == 1 )
+  if ( integer_difference == 1 )
   {
-    v7 = 1;
-    v11 = a1;
-    v10 = 33;
-    v9 = 8;
+    selection_code = 1;
+    argument = a1;
+    selection_code_3 = 33;
+    selection_code_2 = 8;
 LABEL_5:
-    handle_errorf(a5, a4, SLODWORD(a2), v7, v9, v10, v11, 0.0, 1);
+    handle_errorf(a5, a4, SLODWORD(a2), selection_code, selection_code_2, selection_code_3, argument, 0.0, 1);
   }
   return *(__m128_u *)&a2;
 }
@@ -19823,16 +19823,16 @@ __int64            __acrt_convert_wcs_mbs_cp__char__wchar_t___lambda_7c9dea7b4ca
         _BYTE *a1,
         __int64 a2)
 {
-  __int64 v3;
+  __int64 malloc_base_result;
   __int64 result;
-  int v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  int v9;
-  __int64 v10;
-  __int64 v11;
-  int v12;
+  int multi_byte_to_wide_char_result;
+  __int64 unrecovered_register_value;
+  __int64 unrecovered_register_value_2;
+  __int64 saved_multi_byte_to_wide_char_result;
+  int int64_result;
+  __int64 malloc_base_result_2;
+  __int64 cached_multi_byte_to_wide_char_result;
+  int multi_byte_to_wide_char_result_2;
 
   if ( !a1 )
   {
@@ -19847,37 +19847,37 @@ __int64            __acrt_convert_wcs_mbs_cp__char__wchar_t___lambda_7c9dea7b4ca
   }
   if ( *a1 )
   {
-    v5 = crt_multi_byte_to_wide_char();
-    v8 = v5;
-    if ( v5 )
+    multi_byte_to_wide_char_result = crt_multi_byte_to_wide_char();
+    saved_multi_byte_to_wide_char_result = multi_byte_to_wide_char_result;
+    if ( multi_byte_to_wide_char_result )
     {
-      if ( (unsigned __int64)v5 > *(_QWORD *)(a2 + 24) )
+      if ( (unsigned __int64)multi_byte_to_wide_char_result > *(_QWORD *)(a2 + 24) )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free_base(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v10 = malloc_base();
-        *(_QWORD *)(a2 + 16) = v10;
-        v11 = 0;
-        result = v10 == 0 ? 0xC : 0;
+        malloc_base_result_2 = malloc_base();
+        *(_QWORD *)(a2 + 16) = malloc_base_result_2;
+        cached_multi_byte_to_wide_char_result = 0;
+        result = malloc_base_result_2 == 0 ? 0xC : 0;
         if ( !(_DWORD)result )
-          v11 = v8;
+          cached_multi_byte_to_wide_char_result = saved_multi_byte_to_wide_char_result;
         *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
-        *(_QWORD *)(a2 + 24) = v11;
+        *(_QWORD *)(a2 + 24) = cached_multi_byte_to_wide_char_result;
         if ( (_DWORD)result )
           return result;
       }
-      v12 = crt_multi_byte_to_wide_char();
-      if ( v12 )
+      multi_byte_to_wide_char_result_2 = crt_multi_byte_to_wide_char();
+      if ( multi_byte_to_wide_char_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v12 - 1LL;
+        *(_QWORD *)(a2 + 32) = multi_byte_to_wide_char_result_2 - 1LL;
         return 0;
       }
     }
-    v9 = ((__int64 (           *)(__int64, __int64))GetLastError)(v7, v6);
-    crt_errno_map_os_error(v9);
+    int64_result = ((__int64 (           *)(__int64, __int64))GetLastError)(unrecovered_register_value_2, unrecovered_register_value);
+    crt_errno_map_os_error(int64_result);
     return (unsigned int)*errno_sr();
   }
   if ( *(_QWORD *)(a2 + 24) )
@@ -19887,9 +19887,9 @@ __int64            __acrt_convert_wcs_mbs_cp__char__wchar_t___lambda_7c9dea7b4ca
     free_base(*(void **)(a2 + 16));
     *(_BYTE *)(a2 + 40) = 0;
   }
-  v3 = malloc_base();
-  *(_QWORD *)(a2 + 16) = v3;
-  result = v3 == 0 ? 0xC : 0;
+  malloc_base_result = malloc_base();
+  *(_QWORD *)(a2 + 16) = malloc_base_result;
+  result = malloc_base_result == 0 ? 0xC : 0;
   *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
   *(_QWORD *)(a2 + 24) = (_DWORD)result == 0;
   if ( !(_DWORD)result )
@@ -19912,16 +19912,16 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
         __int64 a3,
         unsigned int a4)
 {
-  __int64 v7;
+  __int64 malloc_base_result;
   __int64 result;
-  int v9;
-  unsigned __int64 v10;
-  int v11;
-  unsigned __int64 v12;
-  __int64 v13;
-  int v14;
-  __int64 v15;
-  __int64 v16;
+  int wide_char_to_multi_byte_result;
+  unsigned __int64 saved_wide_char_to_multi_byte_result;
+  int int64_result;
+  unsigned __int64 loaded_word;
+  __int64 malloc_base_result_2;
+  int wide_char_to_multi_byte_result_2;
+  __int64 packed_word_bits;
+  __int64 packed_word_bits_2;
 
   if ( !a1 )
   {
@@ -19936,40 +19936,40 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
   }
   if ( *a1 )
   {
-    LODWORD(v15) = 0;
-    v9 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, v15, 0, 0);
-    v10 = v9;
-    if ( v9 )
+    LODWORD(packed_word_bits) = 0;
+    wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, 0, packed_word_bits, 0, 0);
+    saved_wide_char_to_multi_byte_result = wide_char_to_multi_byte_result;
+    if ( wide_char_to_multi_byte_result )
     {
-      v12 = *(_QWORD *)(a2 + 24);
-      if ( v9 > v12 )
+      loaded_word = *(_QWORD *)(a2 + 24);
+      if ( wide_char_to_multi_byte_result > loaded_word )
       {
         if ( *(_BYTE *)(a2 + 40) )
         {
           free_base(*(void **)(a2 + 16));
           *(_BYTE *)(a2 + 40) = 0;
         }
-        v13 = malloc_base();
-        *(_QWORD *)(a2 + 16) = v13;
-        v12 = 0;
-        result = v13 == 0 ? 0xC : 0;
+        malloc_base_result_2 = malloc_base();
+        *(_QWORD *)(a2 + 16) = malloc_base_result_2;
+        loaded_word = 0;
+        result = malloc_base_result_2 == 0 ? 0xC : 0;
         if ( !(_DWORD)result )
-          v12 = v10;
+          loaded_word = saved_wide_char_to_multi_byte_result;
         *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
-        *(_QWORD *)(a2 + 24) = v12;
+        *(_QWORD *)(a2 + 24) = loaded_word;
         if ( (_DWORD)result )
           return result;
       }
-      LODWORD(v16) = v12;
-      v14 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), v16, 0, 0);
-      if ( v14 )
+      LODWORD(packed_word_bits_2) = loaded_word;
+      wide_char_to_multi_byte_result_2 = crt_wide_char_to_multi_byte(a4, 0, (__int64)a1, 0xFFFFFFFFLL, *(_QWORD *)(a2 + 16), packed_word_bits_2, 0, 0);
+      if ( wide_char_to_multi_byte_result_2 )
       {
-        *(_QWORD *)(a2 + 32) = v14 - 1LL;
+        *(_QWORD *)(a2 + 32) = wide_char_to_multi_byte_result_2 - 1LL;
         return 0;
       }
     }
-    v11 = ((__int64 (*)(void))GetLastError)();
-    crt_errno_map_os_error(v11);
+    int64_result = ((__int64 (*)(void))GetLastError)();
+    crt_errno_map_os_error(int64_result);
     return (unsigned int)*errno_sr();
   }
   if ( *(_QWORD *)(a2 + 24) )
@@ -19979,9 +19979,9 @@ __int64            __acrt_convert_wcs_mbs_cp__wchar_t__char___lambda_d8593a27d1a
     free_base(*(void **)(a2 + 16));
     *(_BYTE *)(a2 + 40) = 0;
   }
-  v7 = malloc_base();
-  *(_QWORD *)(a2 + 16) = v7;
-  result = v7 == 0 ? 0xC : 0;
+  malloc_base_result = malloc_base();
+  *(_QWORD *)(a2 + 16) = malloc_base_result;
+  result = malloc_base_result == 0 ? 0xC : 0;
   *(_BYTE *)(a2 + 40) = (_DWORD)result == 0;
   *(_QWORD *)(a2 + 24) = (_DWORD)result == 0;
   if ( !(_DWORD)result )
@@ -20000,138 +20000,138 @@ LABEL_5:
 //----- (000000014025D680) ----------------------------------------------------
 __int64            common_expand_argv_wildcards__char(     char **a1, __int64 *a2)
 {
-  __int64 v2;
-  unsigned __int8 **v3;
-       char *v5;
-  unsigned __int8 *v6;
-  unsigned __int8 *v7;
-  unsigned int v8;
-  unsigned int v9;
-  __int64 *v10;
-  __int64 *v11;
-  unsigned __int64 v12;
-  _QWORD *v13;
-  __int64 v14;
-  signed __int64 v15;
-  unsigned __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  _BYTE *v20;
-  __int64 *v21;
-  _BYTE *v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  _BYTE *v26;
-  void **v27;
-  unsigned __int64 v28;
-  _BYTE *v29;
+  __int64 iteration_count;
+  unsigned __int8 **buffer_cursor;
+       char *input_byte;
+  unsigned __int8 *strpbrk_sr_result;
+  unsigned __int8 *loaded_word;
+  unsigned int call_result;
+  unsigned int unused_written_slot;
+  __int64 *table_value;
+  __int64 *table_value_2;
+  unsigned __int64 running_total;
+  _QWORD *buffer_cursor_2;
+  __int64 iteration_count_2;
+  signed __int64 shifted_bits;
+  unsigned __int64 shifted_bits_2;
+  __int64 iteration_count_3;
+  __int64 shifted_bits_3;
+  __int64 saved_shifted_bits;
+  _BYTE *byte_cursor;
+  __int64 *buffer_cursor_3;
+  _BYTE *state_address;
+  __int64 loaded_word_2;
+  __int64 iteration_count_4;
+  __int64 integer_sum;
+  _BYTE *cached_i;
+  void **buffer_cursor_4;
+  unsigned __int64 shifted_bits_4;
+  _BYTE *byte_cursor_2;
   void *Block[2];
-  __int64 v31;
+  __int64 unused_written_slot_2;
   unsigned __int64 Control;
   _BYTE *i;
 
-  v2 = 0;
-  v3 = (unsigned __int8 **)a1;
+  iteration_count = 0;
+  buffer_cursor = (unsigned __int8 **)a1;
   if ( a2 )
   {
     *a2 = 0;
-    v5 = *a1;
+    input_byte = *a1;
     *(_OWORD *)Block = 0;
-    v31 = 0;
-    while ( v5 )
+    unused_written_slot_2 = 0;
+    while ( input_byte )
     {
       strcpy((char *)&Control, "*?");
-      v6 = (unsigned __int8 *)strpbrk_sr(v5, (     char *)&Control);
-      v7 = *v3;
-      if ( v6 )
-        v8 = sub_14025DF6C(v7, v6, (__int64 *)Block);
+      strpbrk_sr_result = (unsigned __int8 *)strpbrk_sr(input_byte, (     char *)&Control);
+      loaded_word = *buffer_cursor;
+      if ( strpbrk_sr_result )
+        call_result = sub_14025DF6C(loaded_word, strpbrk_sr_result, (__int64 *)Block);
       else
-        v8 = sub_14025DC58((__int64)v7, 0, 0, (__int64 *)Block);
-      v9 = v8;
-      if ( v8 )
+        call_result = sub_14025DC58((__int64)loaded_word, 0, 0, (__int64 *)Block);
+      unused_written_slot = call_result;
+      if ( call_result )
       {
-        v10 = (__int64 *)Block[1];
-        v11 = (__int64 *)Block[0];
+        table_value = (__int64 *)Block[1];
+        table_value_2 = (__int64 *)Block[0];
         goto LABEL_26;
       }
-      v5 = (     char *)*++v3;
+      input_byte = (     char *)*++buffer_cursor;
     }
-    v11 = (__int64 *)Block[0];
-    v12 = 0;
-    v10 = (__int64 *)Block[1];
-    v13 = Block[0];
+    table_value_2 = (__int64 *)Block[0];
+    running_total = 0;
+    table_value = (__int64 *)Block[1];
+    buffer_cursor_2 = Block[0];
     Control = 0;
-    v14 = 0;
-    v15 = (((char *)Block[1] - (char *)Block[0]) >> 3) + 1;
-    v16 = (unsigned __int64)((char *)Block[1] - (char *)Block[0] + 7) >> 3;
+    iteration_count_2 = 0;
+    shifted_bits = (((char *)Block[1] - (char *)Block[0]) >> 3) + 1;
+    shifted_bits_2 = (unsigned __int64)((char *)Block[1] - (char *)Block[0] + 7) >> 3;
     if ( Block[0] > Block[1] )
-      v16 = 0;
-    v9 = -1;
-    if ( v16 )
+      shifted_bits_2 = 0;
+    unused_written_slot = -1;
+    if ( shifted_bits_2 )
     {
       do
       {
-        v17 = -1;
+        iteration_count_3 = -1;
         do
-          ++v17;
-        while ( *(_BYTE *)(*v13 + v17) );
-        ++v13;
-        v12 += v17 + 1;
-        ++v14;
+          ++iteration_count_3;
+        while ( *(_BYTE *)(*buffer_cursor_2 + iteration_count_3) );
+        ++buffer_cursor_2;
+        running_total += iteration_count_3 + 1;
+        ++iteration_count_2;
       }
-      while ( v14 != v16 );
-      Control = v12;
+      while ( iteration_count_2 != shifted_bits_2 );
+      Control = running_total;
     }
-    v18 = sub_140245E48((((char *)Block[1] - (char *)Block[0]) >> 3) + 1, v12, 1u);
-    v19 = v18;
-    if ( v18 )
+    shifted_bits_3 = sub_140245E48((((char *)Block[1] - (char *)Block[0]) >> 3) + 1, running_total, 1u);
+    saved_shifted_bits = shifted_bits_3;
+    if ( shifted_bits_3 )
     {
-      v20 = (_BYTE *)(v18 + 8 * v15);
-      v21 = v11;
-      v29 = v20;
-      v22 = v20;
-      for ( i = v20; v21 != v10; i = v22 )
+      byte_cursor = (_BYTE *)(shifted_bits_3 + 8 * shifted_bits);
+      buffer_cursor_3 = table_value_2;
+      byte_cursor_2 = byte_cursor;
+      state_address = byte_cursor;
+      for ( i = byte_cursor; buffer_cursor_3 != table_value; i = state_address )
       {
-        v23 = *v21;
-        v24 = -1;
+        loaded_word_2 = *buffer_cursor_3;
+        iteration_count_4 = -1;
         do
-          ++v24;
-        while ( *(_BYTE *)(v23 + v24) );
-        v25 = v24 + 1;
-        if ( (unsigned int)strncpy_s_sr(v22, Control + v20 - v22, v23, v25) )
+          ++iteration_count_4;
+        while ( *(_BYTE *)(loaded_word_2 + iteration_count_4) );
+        integer_sum = iteration_count_4 + 1;
+        if ( (unsigned int)strncpy_s_sr(state_address, Control + byte_cursor - state_address, loaded_word_2, integer_sum) )
         {
           crt_invoke_watson();
           do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
         }
-        v26 = i;
-        v20 = v29;
-        *(__int64 *)((char *)v21 + v19 - (_QWORD)v11) = (__int64)i;
-        v22 = &v26[v25];
-        ++v21;
+        cached_i = i;
+        byte_cursor = byte_cursor_2;
+        *(__int64 *)((char *)buffer_cursor_3 + saved_shifted_bits - (_QWORD)table_value_2) = (__int64)i;
+        state_address = &cached_i[integer_sum];
+        ++buffer_cursor_3;
       }
-      v9 = 0;
-      *a2 = v19;
+      unused_written_slot = 0;
+      *a2 = saved_shifted_bits;
     }
     free_base(nullptr);
 LABEL_26:
-    v27 = (void **)v11;
-    v28 = (unsigned __int64)((char *)v10 - (char *)v11 + 7) >> 3;
-    if ( v11 > v10 )
-      v28 = 0;
-    if ( v28 )
+    buffer_cursor_4 = (void **)table_value_2;
+    shifted_bits_4 = (unsigned __int64)((char *)table_value - (char *)table_value_2 + 7) >> 3;
+    if ( table_value_2 > table_value )
+      shifted_bits_4 = 0;
+    if ( shifted_bits_4 )
     {
       do
       {
-        free_base(*v27);
-        ++v2;
-        ++v27;
+        free_base(*buffer_cursor_4);
+        ++iteration_count;
+        ++buffer_cursor_4;
       }
-      while ( v2 != v28 );
+      while ( iteration_count != shifted_bits_4 );
     }
-    free_base(v11);
-    return v9;
+    free_base(table_value_2);
+    return unused_written_slot;
   }
   else
   {
@@ -20146,209 +20146,209 @@ LABEL_26:
 //----- (000000014025D88C) ----------------------------------------------------
 __int64            common_expand_argv_wildcards__wchar_t(     sr_anon_49 **a1, __int64 *a2)
 {
-  __int64 v2;
-  __int64 *v3;
-       sr_anon_49 *v4;
-  __int64 *v5;
-  __int64 *v6;
-  __int64 v7;
-  sr_anon_49 *v8;
-  __int64 v9;
-  sr_anon_49 *v10;
-  int v11;
-  bool v12;
-  unsigned __int16 v13;
-  int v14;
-  unsigned __int16 v15;
-  char v16;
-  __int64 v17;
-  __int64 v18;
-  signed __int64 v19;
-  unsigned __int64 v20;
-  __int64 *v21;
-  __int64 v22;
-  unsigned __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  _WORD *v27;
-  __int64 *v28;
-  _WORD *v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  void **v33;
-  unsigned __int64 v34;
-  _QWORD v36[5];
+  __int64 iteration_count;
+  __int64 *buffer_cursor;
+       sr_anon_49 *loaded_word;
+  __int64 *table_value;
+  __int64 *table_value_2;
+  __int64 selection_code;
+  sr_anon_49 *wcspbrk_sr_result;
+  __int64 loaded_word_2;
+  sr_anon_49 *saved_wcspbrk_sr_result;
+  int call_result;
+  bool comparison_result;
+  unsigned __int16 loaded_word_3;
+  int masked_bits;
+  unsigned __int16 loaded_word_4;
+  char selection_flag;
+  __int64 comparison_result_2;
+  __int64 int64_result;
+  signed __int64 shifted_bits;
+  unsigned __int64 running_total;
+  __int64 *buffer_cursor_2;
+  __int64 iteration_count_2;
+  unsigned __int64 shifted_bits_2;
+  __int64 iteration_count_3;
+  __int64 call_result_2;
+  __int64 cached_call_result;
+  _WORD *record_pointer;
+  __int64 *buffer_cursor_3;
+  _WORD *running_total_2;
+  __int64 loaded_word_5;
+  __int64 iteration_count_4;
+  __int64 integer_sum;
+  void **buffer_cursor_4;
+  unsigned __int64 shifted_bits_3;
+  _QWORD scratch_buffer[5];
   void *Block[2];
-  __int64 v38;
-  __int64 v39;
-  __int64 v40;
-  __int64 *v41;
+  __int64 unused_written_slot;
+  __int64 saved_comparison_result;
+  __int64 integer_difference;
+  __int64 *unused_written_slot_2;
   _BYTE FindFileData[44];
-  __int16 v43;
-  __int16 v44;
-  __int16 v45;
+  __int16 callee_output_word;
+  __int16 unrecovered_register_value;
+  __int16 unrecovered_register_value_2;
   _QWORD Control[8];
 
   int sr_ret = 0; /* r15d */
-  v2 = 0;
-  v41 = a2;
-  v3 = (__int64 *)a1;
+  iteration_count = 0;
+  unused_written_slot_2 = a2;
+  buffer_cursor = (__int64 *)a1;
   if ( a2 )
   {
     *a2 = 0;
-    v4 = *a1;
+    loaded_word = *a1;
     *(_OWORD *)Block = 0;
-    v5 = nullptr;
-    v6 = nullptr;
-    v38 = 0;
-    while ( v4 )
+    table_value = nullptr;
+    table_value_2 = nullptr;
+    unused_written_slot = 0;
+    while ( loaded_word )
     {
       LODWORD(Control[0]) = 4128810;
       WORD2(Control[0]) = 0;
-      v7 = 0x200000000801LL;
-      v8 = wcspbrk_sr(v4, (     sr_anon_49 *)Control);
-      v9 = *v3;
-      v10 = v8;
-      if ( v8 )
+      selection_code = 0x200000000801LL;
+      wcspbrk_sr_result = wcspbrk_sr(loaded_word, (     sr_anon_49 *)Control);
+      loaded_word_2 = *buffer_cursor;
+      saved_wcspbrk_sr_result = wcspbrk_sr_result;
+      if ( wcspbrk_sr_result )
       {
-        if ( v8 != (sr_anon_49 *)v9 )
+        if ( wcspbrk_sr_result != (sr_anon_49 *)loaded_word_2 )
         {
           do
           {
-            v13 = *(_WORD *)v10 - 47;
-            if ( v13 <= 0x2Du && _bittest64(&v7, v13) )
+            loaded_word_3 = *(_WORD *)saved_wcspbrk_sr_result - 47;
+            if ( loaded_word_3 <= 0x2Du && _bittest64(&selection_code, loaded_word_3) )
               break;
-            v10 = (sr_anon_49 *)((char *)v10 - 2);
+            saved_wcspbrk_sr_result = (sr_anon_49 *)((char *)saved_wcspbrk_sr_result - 2);
           }
-          while ( v10 != (sr_anon_49 *)v9 );
+          while ( saved_wcspbrk_sr_result != (sr_anon_49 *)loaded_word_2 );
         }
-        if ( *(_WORD *)v10 == 58 && v10 != (sr_anon_49 *)(v9 + 2) )
+        if ( *(_WORD *)saved_wcspbrk_sr_result == 58 && saved_wcspbrk_sr_result != (sr_anon_49 *)(loaded_word_2 + 2) )
           goto LABEL_13;
-        v15 = *(_WORD *)v10 - 47;
-        if ( v15 > 0x2Du || (v16 = 1, !_bittest64(&v7, v15)) )
-          v16 = 0;
-        v17 = ((((__int64)v10 - v9) >> 1) + 1) & -(__int64)(v16 != 0);
-        v39 = v17;
-        v18 = ((__int64 (           *)(__int64, _QWORD, _BYTE *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
-                v9,
+        loaded_word_4 = *(_WORD *)saved_wcspbrk_sr_result - 47;
+        if ( loaded_word_4 > 0x2Du || (selection_flag = 1, !_bittest64(&selection_code, loaded_word_4)) )
+          selection_flag = 0;
+        comparison_result_2 = ((((__int64)saved_wcspbrk_sr_result - loaded_word_2) >> 1) + 1) & -(__int64)(selection_flag != 0);
+        saved_comparison_result = comparison_result_2;
+        int64_result = ((__int64 (           *)(__int64, _QWORD, _BYTE *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
+                loaded_word_2,
                 0,
                 FindFileData,
                 0,
                 0,
                 0);
-        if ( v18 == -1 )
+        if ( int64_result == -1 )
         {
 LABEL_13:
-          v14 = sub_14025DDE0(v9, 0, 0, (__int64 *)Block);
+          masked_bits = sub_14025DDE0(loaded_word_2, 0, 0, (__int64 *)Block);
 LABEL_30:
-          v5 = (__int64 *)Block[1];
-          v6 = (__int64 *)Block[0];
+          table_value = (__int64 *)Block[1];
+          table_value_2 = (__int64 *)Block[0];
         }
         else
         {
-          v40 = v5 - v6;
+          integer_difference = table_value - table_value_2;
           do
           {
-            if ( v43 != 46 || v44 && (v44 != 46 || v45) )
+            if ( callee_output_word != 46 || unrecovered_register_value && (unrecovered_register_value != 46 || unrecovered_register_value_2) )
             {
-              v14 = sub_14025DDE0((__int64)&v43, v9, v17, (__int64 *)Block);
-              if ( v14 )
+              masked_bits = sub_14025DDE0((__int64)&callee_output_word, loaded_word_2, comparison_result_2, (__int64 *)Block);
+              if ( masked_bits )
               {
-                ((void (           *)(__int64))FindClose)(v18);
+                ((void (           *)(__int64))FindClose)(int64_result);
                 goto LABEL_30;
               }
-              v17 = v39;
+              comparison_result_2 = saved_comparison_result;
             }
           }
-          while ( (unsigned int)((__int64 (           *)(__int64, _BYTE *))FindNextFileW)(v18, FindFileData) );
-          v5 = (__int64 *)Block[1];
-          v6 = (__int64 *)Block[0];
-          v19 = ((char *)Block[1] - (char *)Block[0]) >> 3;
-          if ( v40 == v19 )
+          while ( (unsigned int)((__int64 (           *)(__int64, _BYTE *))FindNextFileW)(int64_result, FindFileData) );
+          table_value = (__int64 *)Block[1];
+          table_value_2 = (__int64 *)Block[0];
+          shifted_bits = ((char *)Block[1] - (char *)Block[0]) >> 3;
+          if ( integer_difference == shifted_bits )
           {
-            ((void (           *)(__int64))FindClose)(v18);
+            ((void (           *)(__int64))FindClose)(int64_result);
             goto LABEL_33;
           }
           sub_14023AE00(
-            (unsigned __int64)Block[0] + 8 * v40,
-            v19 - v40,
+            (unsigned __int64)Block[0] + 8 * integer_difference,
+            shifted_bits - integer_difference,
             8u,
             (int (           *)(unsigned __int64, _BYTE *))unknown_libname_897);
-          ((void (           *)(__int64))FindClose)(v18);
-          v14 = 0;
+          ((void (           *)(__int64))FindClose)(int64_result);
+          masked_bits = 0;
         }
-        sr_ret = (int)v14; /* r15d */
-        v12 = v14 == 0;
+        sr_ret = (int)masked_bits; /* r15d */
+        comparison_result = masked_bits == 0;
       }
       else
       {
-        v11 = sub_14025DDE0(*v3, 0, 0, (__int64 *)Block);
-        v5 = (__int64 *)Block[1];
-        v6 = (__int64 *)Block[0];
-        sr_ret = (int)v11; /* 0x14025D955: mov r15d, eax */
-        v12 = v11 == 0;
+        call_result = sub_14025DDE0(*buffer_cursor, 0, 0, (__int64 *)Block);
+        table_value = (__int64 *)Block[1];
+        table_value_2 = (__int64 *)Block[0];
+        sr_ret = (int)call_result; /* 0x14025D955: mov r15d, eax */
+        comparison_result = call_result == 0;
       }
-      if ( !v12 )
+      if ( !comparison_result )
         goto LABEL_50;
 LABEL_33:
-      v4 = (     sr_anon_49 *)*++v3;
+      loaded_word = (     sr_anon_49 *)*++buffer_cursor;
     }
     Control[0] = 0;
-    v20 = 0;
-    v21 = v6;
-    v22 = 0;
-    v23 = (unsigned __int64)((char *)v5 - (char *)v6 + 7) >> 3;
-    if ( v6 > v5 )
-      v23 = 0;
-    if ( v23 )
+    running_total = 0;
+    buffer_cursor_2 = table_value_2;
+    iteration_count_2 = 0;
+    shifted_bits_2 = (unsigned __int64)((char *)table_value - (char *)table_value_2 + 7) >> 3;
+    if ( table_value_2 > table_value )
+      shifted_bits_2 = 0;
+    if ( shifted_bits_2 )
     {
       do
       {
-        v24 = -1;
+        iteration_count_3 = -1;
         do
-          ++v24;
-        while ( *(_WORD *)(*v21 + 2 * v24) );
-        ++v21;
-        v20 += v24 + 1;
-        ++v22;
+          ++iteration_count_3;
+        while ( *(_WORD *)(*buffer_cursor_2 + 2 * iteration_count_3) );
+        ++buffer_cursor_2;
+        running_total += iteration_count_3 + 1;
+        ++iteration_count_2;
       }
-      while ( v22 != v23 );
-      Control[0] = v20;
+      while ( iteration_count_2 != shifted_bits_2 );
+      Control[0] = running_total;
     }
-    v25 = sub_140245E48(v5 - v6 + 1, v20, 2u);
-    v26 = v25;
-    if ( v25 )
+    call_result_2 = sub_140245E48(table_value - table_value_2 + 1, running_total, 2u);
+    cached_call_result = call_result_2;
+    if ( call_result_2 )
     {
-      v27 = (_WORD *)(v25 + 8 * (v5 - v6 + 1));
-      v28 = v6;
-      v39 = (__int64)v27;
-      v29 = v27;
-      if ( v6 != v5 )
+      record_pointer = (_WORD *)(call_result_2 + 8 * (table_value - table_value_2 + 1));
+      buffer_cursor_3 = table_value_2;
+      saved_comparison_result = (__int64)record_pointer;
+      running_total_2 = record_pointer;
+      if ( table_value_2 != table_value )
       {
-        v40 = v25 - (_QWORD)v6;
+        integer_difference = call_result_2 - (_QWORD)table_value_2;
         do
         {
-          v30 = *v28;
-          v31 = -1;
+          loaded_word_5 = *buffer_cursor_3;
+          iteration_count_4 = -1;
           do
-            ++v31;
-          while ( *(_WORD *)(v30 + 2 * v31) );
-          v32 = v31 + 1;
-          if ( (unsigned int)sub_140260D80(v29, Control[0] - (v29 - v27), v30, v32) )
+            ++iteration_count_4;
+          while ( *(_WORD *)(loaded_word_5 + 2 * iteration_count_4) );
+          integer_sum = iteration_count_4 + 1;
+          if ( (unsigned int)sub_140260D80(running_total_2, Control[0] - (running_total_2 - record_pointer), loaded_word_5, integer_sum) )
           {
-            v36[4] = 0;
+            scratch_buffer[4] = 0;
             crt_invoke_watson();
             do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
           }
-          v27 = (_WORD *)v39;
-          *(__int64 *)((char *)v28++ + v40) = (__int64)v29;
-          v29 += v32;
+          record_pointer = (_WORD *)saved_comparison_result;
+          *(__int64 *)((char *)buffer_cursor_3++ + integer_difference) = (__int64)running_total_2;
+          running_total_2 += integer_sum;
         }
-        while ( v28 != v5 );
+        while ( buffer_cursor_3 != table_value );
       }
-      *v41 = v26;
+      *unused_written_slot_2 = cached_call_result;
     }
     else
     {
@@ -20356,21 +20356,21 @@ LABEL_33:
     }
     free_base(nullptr);
 LABEL_50:
-    v33 = (void **)v6;
-    v34 = (unsigned __int64)((char *)v5 - (char *)v6 + 7) >> 3;
-    if ( v6 > v5 )
-      v34 = 0;
-    if ( v34 )
+    buffer_cursor_4 = (void **)table_value_2;
+    shifted_bits_3 = (unsigned __int64)((char *)table_value - (char *)table_value_2 + 7) >> 3;
+    if ( table_value_2 > table_value )
+      shifted_bits_3 = 0;
+    if ( shifted_bits_3 )
     {
       do
       {
-        free_base(*v33);
-        ++v2;
-        ++v33;
+        free_base(*buffer_cursor_4);
+        ++iteration_count;
+        ++buffer_cursor_4;
       }
-      while ( v2 != v34 );
+      while ( iteration_count != shifted_bits_3 );
     }
-    free_base(v6);
+    free_base(table_value_2);
   }
   else
   {
@@ -20389,50 +20389,50 @@ LABEL_50:
 //----- (000000014025DC58) ----------------------------------------------------
 __int64            sub_14025DC58(__int64 a1, __int64 a2, __int64 a3, __int64 *a4)
 {
-  __int64 v4;
-  unsigned int v6;
-  unsigned __int64 v10;
-  __int64 v12;
-  _BYTE *v13;
-  _BYTE *v14;
-  _QWORD *v15;
-  __int64 v16;
-  unsigned __int64 v17;
-  __int64 v18;
+  __int64 iteration_count;
+  unsigned int unused_written_slot;
+  unsigned __int64 integer_sum;
+  __int64 integer_sum_2;
+  _BYTE *calloc_base_result;
+  _BYTE *saved_calloc_base_result;
+  _QWORD *table_value;
+  __int64 table_value_2;
+  unsigned __int64 shifted_bits;
+  __int64 recalloc_base_result;
 
-  v4 = -1;
-  v6 = 0;
+  iteration_count = -1;
+  unused_written_slot = 0;
   do
-    ++v4;
-  while ( *(_BYTE *)(a1 + v4) );
-  v10 = v4 + 1;
-  if ( v10 > ~a3 )
+    ++iteration_count;
+  while ( *(_BYTE *)(a1 + iteration_count) );
+  integer_sum = iteration_count + 1;
+  if ( integer_sum > ~a3 )
     return 12;
-  v12 = v10 + a3 + 1;
-  v13 = (_BYTE *)calloc_base();
-  v14 = v13;
-  if ( a3 && (unsigned int)strncpy_s_sr(v13, v12, a2, a3) || (unsigned int)strncpy_s_sr(&v14[a3], v12 - a3, a1, v10) )
+  integer_sum_2 = integer_sum + a3 + 1;
+  calloc_base_result = (_BYTE *)calloc_base();
+  saved_calloc_base_result = calloc_base_result;
+  if ( a3 && (unsigned int)strncpy_s_sr(calloc_base_result, integer_sum_2, a2, a3) || (unsigned int)strncpy_s_sr(&saved_calloc_base_result[a3], integer_sum_2 - a3, a1, integer_sum) )
   {
     crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
-  v15 = (_QWORD *)a4[1];
-  v16 = a4[2];
-  if ( v15 != (_QWORD *)v16 )
+  table_value = (_QWORD *)a4[1];
+  table_value_2 = a4[2];
+  if ( table_value != (_QWORD *)table_value_2 )
     goto LABEL_18;
   if ( *a4 )
   {
-    v17 = (v16 - *a4) >> 3;
-    if ( v17 <= 0x7FFFFFFFFFFFFFFFLL )
+    shifted_bits = (table_value_2 - *a4) >> 3;
+    if ( shifted_bits <= 0x7FFFFFFFFFFFFFFFLL )
     {
-      v18 = recalloc_base(*a4, 2 * v17, 8);
-      if ( v18 )
+      recalloc_base_result = recalloc_base(*a4, 2 * shifted_bits, 8);
+      if ( recalloc_base_result )
       {
-        *a4 = v18;
-        a4[1] = v18 + 8 * v17;
-        a4[2] = v18 + 16 * v17;
+        *a4 = recalloc_base_result;
+        a4[1] = recalloc_base_result + 8 * shifted_bits;
+        a4[2] = recalloc_base_result + 16 * shifted_bits;
         free_base(nullptr);
-        v15 = (_QWORD *)a4[1];
+        table_value = (_QWORD *)a4[1];
         goto LABEL_18;
       }
       free_base(nullptr);
@@ -20442,22 +20442,22 @@ __int64            sub_14025DC58(__int64 a1, __int64 a2, __int64 a3, __int64 *a4
   {
     *a4 = calloc_base();
     free_base(nullptr);
-    v15 = (_QWORD *)*a4;
+    table_value = (_QWORD *)*a4;
     if ( *a4 )
     {
-      a4[1] = (__int64)v15;
-      a4[2] = (__int64)(v15 + 4);
+      a4[1] = (__int64)table_value;
+      a4[2] = (__int64)(table_value + 4);
 LABEL_18:
-      *v15 = (uint64)(uintptr_t)(v14);
+      *table_value = (uint64)(uintptr_t)(saved_calloc_base_result);
       a4[1] += 8;
       goto LABEL_16;
     }
   }
-  free_base(v14);
-  v6 = 12;
+  free_base(saved_calloc_base_result);
+  unused_written_slot = 12;
 LABEL_16:
   free_base(nullptr);
-  return v6;
+  return unused_written_slot;
 }
 
 // 14025DDD9: control flows out of bounds to 14025DDDE
@@ -20465,50 +20465,50 @@ LABEL_16:
 //----- (000000014025DDE0) ----------------------------------------------------
 __int64            sub_14025DDE0(__int64 a1, __int64 a2, __int64 a3, __int64 *a4)
 {
-  __int64 v4;
-  unsigned int v6;
-  unsigned __int64 v10;
-  __int64 v12;
-  _WORD *v13;
-  _WORD *v14;
-  _QWORD *v15;
-  __int64 v16;
-  unsigned __int64 v17;
-  __int64 v18;
+  __int64 iteration_count;
+  unsigned int unused_written_slot;
+  unsigned __int64 integer_sum;
+  __int64 integer_sum_2;
+  _WORD *calloc_base_result;
+  _WORD *saved_calloc_base_result;
+  _QWORD *table_value;
+  __int64 table_value_2;
+  unsigned __int64 shifted_bits;
+  __int64 recalloc_base_result;
 
-  v4 = -1;
-  v6 = 0;
+  iteration_count = -1;
+  unused_written_slot = 0;
   do
-    ++v4;
-  while ( *(_WORD *)(a1 + 2 * v4) );
-  v10 = v4 + 1;
-  if ( v10 > ~a3 )
+    ++iteration_count;
+  while ( *(_WORD *)(a1 + 2 * iteration_count) );
+  integer_sum = iteration_count + 1;
+  if ( integer_sum > ~a3 )
     return 12;
-  v12 = v10 + a3 + 1;
-  v13 = (_WORD *)calloc_base();
-  v14 = v13;
-  if ( a3 && (unsigned int)sub_140260D80(v13, v12, a2, a3) || (unsigned int)sub_140260D80(&v14[a3], v12 - a3, a1, v10) )
+  integer_sum_2 = integer_sum + a3 + 1;
+  calloc_base_result = (_WORD *)calloc_base();
+  saved_calloc_base_result = calloc_base_result;
+  if ( a3 && (unsigned int)sub_140260D80(calloc_base_result, integer_sum_2, a2, a3) || (unsigned int)sub_140260D80(&saved_calloc_base_result[a3], integer_sum_2 - a3, a1, integer_sum) )
   {
     crt_invoke_watson();
     do { __asm__ volatile("int3"); __builtin_unreachable(); } while (0);
   }
-  v15 = (_QWORD *)a4[1];
-  v16 = a4[2];
-  if ( v15 != (_QWORD *)v16 )
+  table_value = (_QWORD *)a4[1];
+  table_value_2 = a4[2];
+  if ( table_value != (_QWORD *)table_value_2 )
     goto LABEL_18;
   if ( *a4 )
   {
-    v17 = (v16 - *a4) >> 3;
-    if ( v17 <= 0x7FFFFFFFFFFFFFFFLL )
+    shifted_bits = (table_value_2 - *a4) >> 3;
+    if ( shifted_bits <= 0x7FFFFFFFFFFFFFFFLL )
     {
-      v18 = recalloc_base(*a4, 2 * v17, 8);
-      if ( v18 )
+      recalloc_base_result = recalloc_base(*a4, 2 * shifted_bits, 8);
+      if ( recalloc_base_result )
       {
-        *a4 = v18;
-        a4[1] = v18 + 8 * v17;
-        a4[2] = v18 + 16 * v17;
+        *a4 = recalloc_base_result;
+        a4[1] = recalloc_base_result + 8 * shifted_bits;
+        a4[2] = recalloc_base_result + 16 * shifted_bits;
         free_base(nullptr);
-        v15 = (_QWORD *)a4[1];
+        table_value = (_QWORD *)a4[1];
         goto LABEL_18;
       }
       free_base(nullptr);
@@ -20518,22 +20518,22 @@ __int64            sub_14025DDE0(__int64 a1, __int64 a2, __int64 a3, __int64 *a4
   {
     *a4 = calloc_base();
     free_base(nullptr);
-    v15 = (_QWORD *)*a4;
+    table_value = (_QWORD *)*a4;
     if ( *a4 )
     {
-      a4[1] = (__int64)v15;
-      a4[2] = (__int64)(v15 + 4);
+      a4[1] = (__int64)table_value;
+      a4[2] = (__int64)(table_value + 4);
 LABEL_18:
-      *v15 = (uint64)(uintptr_t)(v14);
+      *table_value = (uint64)(uintptr_t)(saved_calloc_base_result);
       a4[1] += 8;
       goto LABEL_16;
     }
   }
-  free_base(v14);
-  v6 = 12;
+  free_base(saved_calloc_base_result);
+  unused_written_slot = 12;
 LABEL_16:
   free_base(nullptr);
-  return v6;
+  return unused_written_slot;
 }
 
 // 14025DF63: control flows out of bounds to 14025DF68
@@ -20542,154 +20542,154 @@ LABEL_16:
 __int64            sub_14025DF6C(unsigned __int8 *Start, unsigned __int8 *a2, __int64 *a3)
 {
   __int64 i;
-  unsigned __int8 v6;
-  unsigned __int8 v7;
-  char v8;
-  signed __int64 v9;
-  int v10;
-  void *v11;
-  __int64 v12;
-  __int64 v13;
-  unsigned int v14;
-  int v15;
-  void *v16;
-  _BYTE *v17;
-  char v18;
-  __int64 v19;
-  __int64 v21;
+  unsigned __int8 scaled_index;
+  unsigned __int8 scaled_index_2;
+  char selection_flag;
+  signed __int64 comparison_result;
+  int call_result;
+  void *record_pointer;
+  __int64 int64_result;
+  __int64 shifted_bits;
+  unsigned int selection_code;
+  int named_call_result;
+  void *cached_block;
+  _BYTE *cached_block_2;
+  char table_value;
+  __int64 shifted_bits_2;
+  __int64 unused_local;
   __int64 lpSearchFilter;
   __int64 dwAdditionalFlags;
-  _QWORD v24[3];
-  char v25;
-  _QWORD v26[3];
-  char v27;
-  _QWORD v28[2];
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
+  _QWORD scratch_buffer_2[3];
+  char unrecovered_register_value_2;
+  _QWORD scratch_buffer_3[2];
   void *Block;
-  __int64 v30;
-  __int64 v31;
-  char v32;
-  _QWORD v33[2];
-  void *v34;
-  __int64 v35;
-  __int64 v36;
-  char v37;
+  __int64 unused_written_slot;
+  __int64 unused_written_slot_2;
+  char selection_flag_2;
+  _QWORD scratch_buffer_4[2];
+  void *record_pointer_2;
+  __int64 unused_written_slot_3;
+  __int64 unused_written_slot_4;
+  char selection_flag_3;
   _BYTE FindFileData[44];
-  _WORD v39[274];
-  __int64 v40;
+  _WORD scratch_buffer_5[274];
+  __int64 unused_local_2;
 
   int sr_ret = 0; /* edi: 0x14025DFFE xor edi, edi */
   for ( i = 0x200000000801LL; a2 != Start; a2 = mbsdec_sr(Start, a2) )
   {
-    v6 = *a2 - 47;
-    if ( v6 <= 0x2Du && _bittest64(&i, (char)v6) )
+    scaled_index = *a2 - 47;
+    if ( scaled_index <= 0x2Du && _bittest64(&i, (char)scaled_index) )
       break;
   }
   if ( *a2 != 58 || a2 == Start + 1 )
   {
-    v7 = *a2 - 47;
-    if ( v7 > 0x2Du || (v8 = 1, !_bittest64(&i, (char)v7)) )
-      v8 = 0;
-    v33[0] = 0;
-    v33[1] = 0;
-    v34 = nullptr;
-    v35 = 0;
-    v36 = 0;
-    v9 = (a2 - Start + 1) & -(__int64)(v8 != 0);
-    v37 = 0;
-    crt_locale_update((_LocaleUpdate *)v24, nullptr);
-    if ( *(_DWORD *)(v24[1] + 12LL) == 65001 )
+    scaled_index_2 = *a2 - 47;
+    if ( scaled_index_2 > 0x2Du || (selection_flag = 1, !_bittest64(&i, (char)scaled_index_2)) )
+      selection_flag = 0;
+    scratch_buffer_4[0] = 0;
+    scratch_buffer_4[1] = 0;
+    record_pointer_2 = nullptr;
+    unused_written_slot_3 = 0;
+    unused_written_slot_4 = 0;
+    comparison_result = (a2 - Start + 1) & -(__int64)(selection_flag != 0);
+    selection_flag_3 = 0;
+    crt_locale_update((_LocaleUpdate *)scratch_buffer, nullptr);
+    if ( *(_DWORD *)(scratch_buffer[1] + 12LL) == 65001 )
     {
-      if ( v25 )
-        *(_DWORD *)(v24[0] + 936LL) &= ~2u;
+      if ( unrecovered_register_value )
+        *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
     }
     else if ( (unsigned int)sub_14024EDA4() )
     {
-      if ( v25 )
-        *(_DWORD *)(v24[0] + 936LL) &= ~2u;
+      if ( unrecovered_register_value )
+        *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
     }
-    else if ( v25 )
+    else if ( unrecovered_register_value )
     {
-      *(_DWORD *)(v24[0] + 936LL) &= ~2u;
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
     }
-    v10 = sub_140238394(Start, (__int64)v33);
-    v11 = v34;
+    call_result = sub_140238394(Start, (__int64)scratch_buffer_4);
+    record_pointer = record_pointer_2;
     LODWORD(dwAdditionalFlags) = 0;
     lpSearchFilter = 0;
-    if ( v10 )
-      v11 = nullptr;
-    v12 = ((__int64 (           *)(void *, _QWORD, _BYTE *, _QWORD, __int64, _DWORD))FindFirstFileExW)(
-            v11,
+    if ( call_result )
+      record_pointer = nullptr;
+    int64_result = ((__int64 (           *)(void *, _QWORD, _BYTE *, _QWORD, __int64, _DWORD))FindFirstFileExW)(
+            record_pointer,
             0,
             FindFileData,
             0,
             lpSearchFilter,
             dwAdditionalFlags);
-    if ( v12 == -1 )
+    if ( int64_result == -1 )
     {
       sr_ret = (int)sub_14025DC58((__int64)Start, 0, 0, a3); /* 0x14025E0F1: mov edi, eax */
     }
     else
     {
-      v13 = (a3[1] - *a3) >> 3;
+      shifted_bits = (a3[1] - *a3) >> 3;
       while ( 1 )
       {
-        v28[0] = 0;
-        v28[1] = 0;
+        scratch_buffer_3[0] = 0;
+        scratch_buffer_3[1] = 0;
         Block = nullptr;
-        v30 = 0;
-        v31 = 0;
-        v32 = 0;
-        crt_locale_update((_LocaleUpdate *)v26, nullptr);
-        if ( *(_DWORD *)(v26[1] + 12LL) == 65001 )
+        unused_written_slot = 0;
+        unused_written_slot_2 = 0;
+        selection_flag_2 = 0;
+        crt_locale_update((_LocaleUpdate *)scratch_buffer_2, nullptr);
+        if ( *(_DWORD *)(scratch_buffer_2[1] + 12LL) == 65001 )
         {
-          if ( v27 )
-            *(_DWORD *)(v26[0] + 936LL) &= ~2u;
-          v14 = 65001;
+          if ( unrecovered_register_value_2 )
+            *(_DWORD *)(scratch_buffer_2[0] + 936LL) &= ~2u;
+          selection_code = 65001;
         }
         else if ( (unsigned int)sub_14024EDA4() )
         {
-          if ( v27 )
-            *(_DWORD *)(v26[0] + 936LL) &= ~2u;
-          v14 = 0;
+          if ( unrecovered_register_value_2 )
+            *(_DWORD *)(scratch_buffer_2[0] + 936LL) &= ~2u;
+          selection_code = 0;
         }
         else
         {
-          if ( v27 )
-            *(_DWORD *)(v26[0] + 936LL) &= ~2u;
-          v14 = 1;
+          if ( unrecovered_register_value_2 )
+            *(_DWORD *)(scratch_buffer_2[0] + 936LL) &= ~2u;
+          selection_code = 1;
         }
-        v15 = __acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_resizing(v39, (__int64)v28, v14);
-        v16 = Block;
-        v17 = Block;
-        if ( v15 )
-          v17 = nullptr;
-        if ( *v17 != 46 || (v18 = v17[1]) != 0 && (v18 != 46 || v17[2]) )
+        named_call_result = __acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_resizing(scratch_buffer_5, (__int64)scratch_buffer_3, selection_code);
+        cached_block = Block;
+        cached_block_2 = Block;
+        if ( named_call_result )
+          cached_block_2 = nullptr;
+        if ( *cached_block_2 != 46 || (table_value = cached_block_2[1]) != 0 && (table_value != 46 || cached_block_2[2]) )
         {
-          sr_ret = (int)sub_14025DC58((__int64)v17, (__int64)Start, v9, a3); /* 0x14025E1C7: mov edi, eax */
+          sr_ret = (int)sub_14025DC58((__int64)cached_block_2, (__int64)Start, comparison_result, a3); /* 0x14025E1C7: mov edi, eax */
           if ( sr_ret )
             break;
         }
-        if ( v32 )
-          free_base(v16);
-        if ( !(unsigned int)((__int64 (           *)(__int64, _BYTE *))FindNextFileW)(v12, FindFileData) )
+        if ( selection_flag_2 )
+          free_base(cached_block);
+        if ( !(unsigned int)((__int64 (           *)(__int64, _BYTE *))FindNextFileW)(int64_result, FindFileData) )
         {
-          v19 = (a3[1] - *a3) >> 3;
-          if ( v13 != v19 )
+          shifted_bits_2 = (a3[1] - *a3) >> 3;
+          if ( shifted_bits != shifted_bits_2 )
             sub_14023AE00(
-              *a3 + 8 * v13,
-              v19 - v13,
+              *a3 + 8 * shifted_bits,
+              shifted_bits_2 - shifted_bits,
               8u,
               (int (           *)(unsigned __int64, _BYTE *))unknown_libname_898);
           goto LABEL_51;
         }
       }
-      if ( v32 )
-        free_base(v16);
+      if ( selection_flag_2 )
+        free_base(cached_block);
 LABEL_51:
-      ((void (           *)(__int64))FindClose)(v12);
+      ((void (           *)(__int64))FindClose)(int64_result);
     }
-    if ( v37 )
-      free_base(v34);
+    if ( selection_flag_3 )
+      free_base(record_pointer_2);
   }
   else
   {
@@ -20706,62 +20706,62 @@ LABEL_51:
 __int64            sub_14025E27C(_WORD *a1, _WORD *a2, __int64 *a3)
 {
   __int64 i;
-  unsigned __int16 v6;
-  unsigned __int16 v7;
-  char v8;
-  signed __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v14;
+  unsigned __int16 scaled_index;
+  unsigned __int16 scaled_index_2;
+  char selection_flag;
+  signed __int64 comparison_result;
+  __int64 int64_result;
+  __int64 shifted_bits;
+  __int64 shifted_bits_2;
+  __int64 unused_local;
   _BYTE FindFileData[44];
-  __int16 v16;
-  __int16 v17;
-  __int16 v18;
-  __int64 v19;
+  __int16 callee_output_word;
+  __int16 unrecovered_register_value;
+  __int16 unrecovered_register_value_2;
+  __int64 unused_local_2;
 
   for ( i = 0x200000000801LL; a2 != a1; --a2 )
   {
-    v6 = *a2 - 47;
-    if ( v6 <= 0x2Du && _bittest64(&i, v6) )
+    scaled_index = *a2 - 47;
+    if ( scaled_index <= 0x2Du && _bittest64(&i, scaled_index) )
       break;
   }
   if ( *a2 != 58 || a2 == a1 + 1 )
   {
-    v7 = *a2 - 47;
-    if ( v7 > 0x2Du || (v8 = 1, !_bittest64(&i, v7)) )
-      v8 = 0;
-    v9 = (a2 - a1 + 1) & -(__int64)(v8 != 0);
-    v10 = ((__int64 (           *)(_WORD *, _QWORD, _BYTE *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
+    scaled_index_2 = *a2 - 47;
+    if ( scaled_index_2 > 0x2Du || (selection_flag = 1, !_bittest64(&i, scaled_index_2)) )
+      selection_flag = 0;
+    comparison_result = (a2 - a1 + 1) & -(__int64)(selection_flag != 0);
+    int64_result = ((__int64 (           *)(_WORD *, _QWORD, _BYTE *, _QWORD, _QWORD, _DWORD))FindFirstFileExW)(
             a1,
             0,
             FindFileData,
             0,
             0,
             0);
-    if ( v10 == -1 )
+    if ( int64_result == -1 )
     {
       sub_14025DDE0((__int64)a1, 0, 0, a3);
     }
     else
     {
-      v11 = (a3[1] - *a3) >> 3;
-      while ( v16 == 46 && (!v17 || v17 == 46 && !v18)
-           || !(unsigned int)sub_14025DDE0((__int64)&v16, (__int64)a1, v9, a3) )
+      shifted_bits = (a3[1] - *a3) >> 3;
+      while ( callee_output_word == 46 && (!unrecovered_register_value || unrecovered_register_value == 46 && !unrecovered_register_value_2)
+           || !(unsigned int)sub_14025DDE0((__int64)&callee_output_word, (__int64)a1, comparison_result, a3) )
       {
-        if ( !(unsigned int)((__int64 (           *)(__int64, _BYTE *))FindNextFileW)(v10, FindFileData) )
+        if ( !(unsigned int)((__int64 (           *)(__int64, _BYTE *))FindNextFileW)(int64_result, FindFileData) )
         {
-          v12 = (a3[1] - *a3) >> 3;
-          if ( v11 != v12 )
+          shifted_bits_2 = (a3[1] - *a3) >> 3;
+          if ( shifted_bits != shifted_bits_2 )
             sub_14023AE00(
-              *a3 + 8 * v11,
-              v12 - v11,
+              *a3 + 8 * shifted_bits,
+              shifted_bits_2 - shifted_bits,
               8u,
               (int (           *)(unsigned __int64, _BYTE *))unknown_libname_897);
           break;
         }
       }
-      ((void (           *)(__int64))FindClose)(v10);
+      ((void (           *)(__int64))FindClose)(int64_result);
     }
   }
   else
@@ -20797,17 +20797,17 @@ __int64            unknown_libname_901(_QWORD *a1)
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_902(void ***a1)
 {
-  void **v1;
+  void **buffer_cursor;
 
-  v1 = *a1;
+  buffer_cursor = *a1;
   if ( *a1 != a1[1] )
   {
     do
-      free_base(*v1++);
-    while ( v1 != a1[1] );
-    v1 = *a1;
+      free_base(*buffer_cursor++);
+    while ( buffer_cursor != a1[1] );
+    buffer_cursor = *a1;
   }
-  free_base(v1);
+  free_base(buffer_cursor);
 }
 
 //----- (000000014025E534) ----------------------------------------------------
@@ -20815,17 +20815,17 @@ void            unknown_libname_902(void ***a1)
 // Microsoft VisualC 64bit universal runtime
 void            unknown_libname_903(void ***a1)
 {
-  void **v1;
+  void **buffer_cursor;
 
-  v1 = *a1;
+  buffer_cursor = *a1;
   if ( *a1 != a1[1] )
   {
     do
-      free_base(*v1++);
-    while ( v1 != a1[1] );
-    v1 = *a1;
+      free_base(*buffer_cursor++);
+    while ( buffer_cursor != a1[1] );
+    buffer_cursor = *a1;
   }
-  free_base(v1);
+  free_base(buffer_cursor);
 }
 
 //----- (000000014025E584) ----------------------------------------------------
@@ -20841,10 +20841,10 @@ __int64            unknown_libname_904()
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_905(__int64 a1, unsigned int a2, __int64 a3, __int64 a4, int a5)
 {
-  __int64 v6;
+  __int64 packed_word_bits;
 
-  LODWORD(v6) = a5;
-  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, v6, 0, 0);
+  LODWORD(packed_word_bits) = a5;
+  return crt_wide_char_to_multi_byte(a2, 0, a3, 0xFFFFFFFFLL, a4, packed_word_bits, 0, 0);
 }
 
 //----- (000000014025E64C) ----------------------------------------------------
@@ -20852,30 +20852,30 @@ __int64            unknown_libname_905(__int64 a1, unsigned int a2, __int64 a3, 
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_906(__int64 *a1, void *a2)
 {
-  _QWORD *v4;
-  __int64 v5;
-  _QWORD *v6;
-  unsigned __int64 v7;
-  __int64 v8;
+  _QWORD *table_value;
+  __int64 table_value_2;
+  _QWORD *record_pointer;
+  unsigned __int64 shifted_bits;
+  __int64 recalloc_base_result;
 
-  v4 = (_QWORD *)a1[1];
-  v5 = a1[2];
-  if ( v4 != (_QWORD *)v5 )
+  table_value = (_QWORD *)a1[1];
+  table_value_2 = a1[2];
+  if ( table_value != (_QWORD *)table_value_2 )
     goto LABEL_10;
-  v6 = (_QWORD *)*a1;
+  record_pointer = (_QWORD *)*a1;
   if ( *a1 )
   {
-    v7 = (v5 - (__int64)v6) >> 3;
-    if ( v7 <= 0x7FFFFFFFFFFFFFFFLL )
+    shifted_bits = (table_value_2 - (__int64)record_pointer) >> 3;
+    if ( shifted_bits <= 0x7FFFFFFFFFFFFFFFLL )
     {
-      v8 = recalloc_base(v6, 2 * v7, 8);
-      if ( v8 )
+      recalloc_base_result = recalloc_base(record_pointer, 2 * shifted_bits, 8);
+      if ( recalloc_base_result )
       {
-        *a1 = v8;
-        a1[1] = v8 + 8 * v7;
-        a1[2] = v8 + 16 * v7;
+        *a1 = recalloc_base_result;
+        a1[1] = recalloc_base_result + 8 * shifted_bits;
+        a1[2] = recalloc_base_result + 16 * shifted_bits;
         free_base(nullptr);
-        v4 = (_QWORD *)a1[1];
+        table_value = (_QWORD *)a1[1];
         goto LABEL_10;
       }
       free_base(nullptr);
@@ -20886,13 +20886,13 @@ LABEL_8:
   }
   *a1 = calloc_base();
   free_base(nullptr);
-  v4 = (_QWORD *)*a1;
+  table_value = (_QWORD *)*a1;
   if ( !*a1 )
     goto LABEL_8;
-  a1[1] = (__int64)v4;
-  a1[2] = (__int64)(v4 + 4);
+  a1[1] = (__int64)table_value;
+  a1[2] = (__int64)(table_value + 4);
 LABEL_10:
-  *v4 = (uint64)(uintptr_t)(a2);
+  *table_value = (uint64)(uintptr_t)(a2);
   a1[1] += 8;
   return 0;
 }
@@ -20902,30 +20902,30 @@ LABEL_10:
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_907(__int64 *a1, void *a2)
 {
-  _QWORD *v4;
-  __int64 v5;
-  _QWORD *v6;
-  unsigned __int64 v7;
-  __int64 v8;
+  _QWORD *table_value;
+  __int64 table_value_2;
+  _QWORD *record_pointer;
+  unsigned __int64 shifted_bits;
+  __int64 recalloc_base_result;
 
-  v4 = (_QWORD *)a1[1];
-  v5 = a1[2];
-  if ( v4 != (_QWORD *)v5 )
+  table_value = (_QWORD *)a1[1];
+  table_value_2 = a1[2];
+  if ( table_value != (_QWORD *)table_value_2 )
     goto LABEL_10;
-  v6 = (_QWORD *)*a1;
+  record_pointer = (_QWORD *)*a1;
   if ( *a1 )
   {
-    v7 = (v5 - (__int64)v6) >> 3;
-    if ( v7 <= 0x7FFFFFFFFFFFFFFFLL )
+    shifted_bits = (table_value_2 - (__int64)record_pointer) >> 3;
+    if ( shifted_bits <= 0x7FFFFFFFFFFFFFFFLL )
     {
-      v8 = recalloc_base(v6, 2 * v7, 8);
-      if ( v8 )
+      recalloc_base_result = recalloc_base(record_pointer, 2 * shifted_bits, 8);
+      if ( recalloc_base_result )
       {
-        *a1 = v8;
-        a1[1] = v8 + 8 * v7;
-        a1[2] = v8 + 16 * v7;
+        *a1 = recalloc_base_result;
+        a1[1] = recalloc_base_result + 8 * shifted_bits;
+        a1[2] = recalloc_base_result + 16 * shifted_bits;
         free_base(nullptr);
-        v4 = (_QWORD *)a1[1];
+        table_value = (_QWORD *)a1[1];
         goto LABEL_10;
       }
       free_base(nullptr);
@@ -20936,13 +20936,13 @@ LABEL_8:
   }
   *a1 = calloc_base();
   free_base(nullptr);
-  v4 = (_QWORD *)*a1;
+  table_value = (_QWORD *)*a1;
   if ( !*a1 )
     goto LABEL_8;
-  a1[1] = (__int64)v4;
-  a1[2] = (__int64)(v4 + 4);
+  a1[1] = (__int64)table_value;
+  a1[2] = (__int64)(table_value + 4);
 LABEL_10:
-  *v4 = (uint64)(uintptr_t)(a2);
+  *table_value = (uint64)(uintptr_t)(a2);
   a1[1] += 8;
   return 0;
 }
@@ -20977,45 +20977,45 @@ bool sub_14025E838()
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_909(__int64 *a1)
 {
-  __int64 v1;
-  unsigned int v4;
-  __int64 v5;
-  unsigned __int64 v6;
-  __int64 v7;
+  __int64 table_value;
+  unsigned int unused_written_slot;
+  __int64 loaded_word;
+  unsigned __int64 shifted_bits;
+  __int64 recalloc_base_result;
 
-  v1 = a1[2];
-  if ( a1[1] != v1 )
+  table_value = a1[2];
+  if ( a1[1] != table_value )
     return 0;
-  v4 = 0;
+  unused_written_slot = 0;
   if ( !*a1 )
   {
     *a1 = calloc_base();
     free_base(nullptr);
-    v5 = *a1;
+    loaded_word = *a1;
     if ( *a1 )
     {
-      a1[1] = v5;
-      a1[2] = v5 + 32;
+      a1[1] = loaded_word;
+      a1[2] = loaded_word + 32;
       return 0;
     }
     return 12;
   }
-  v6 = (v1 - *a1) >> 3;
-  if ( v6 > 0x7FFFFFFFFFFFFFFFLL )
+  shifted_bits = (table_value - *a1) >> 3;
+  if ( shifted_bits > 0x7FFFFFFFFFFFFFFFLL )
     return 12;
-  v7 = recalloc_base(*a1, 2 * v6, 8);
-  if ( v7 )
+  recalloc_base_result = recalloc_base(*a1, 2 * shifted_bits, 8);
+  if ( recalloc_base_result )
   {
-    *a1 = v7;
-    a1[1] = v7 + 8 * v6;
-    a1[2] = v7 + 16 * v6;
+    *a1 = recalloc_base_result;
+    a1[1] = recalloc_base_result + 8 * shifted_bits;
+    a1[2] = recalloc_base_result + 16 * shifted_bits;
   }
   else
   {
-    v4 = 12;
+    unused_written_slot = 12;
   }
   free_base(nullptr);
-  return v4;
+  return unused_written_slot;
 }
 
 //----- (000000014025E924) ----------------------------------------------------
@@ -21023,74 +21023,74 @@ __int64            unknown_libname_909(__int64 *a1)
 // Microsoft VisualC 64bit universal runtime
 __int64            unknown_libname_910(__int64 *a1)
 {
-  __int64 v1;
-  unsigned int v4;
-  __int64 v5;
-  unsigned __int64 v6;
-  __int64 v7;
+  __int64 table_value;
+  unsigned int unused_written_slot;
+  __int64 loaded_word;
+  unsigned __int64 shifted_bits;
+  __int64 recalloc_base_result;
 
-  v1 = a1[2];
-  if ( a1[1] != v1 )
+  table_value = a1[2];
+  if ( a1[1] != table_value )
     return 0;
-  v4 = 0;
+  unused_written_slot = 0;
   if ( !*a1 )
   {
     *a1 = calloc_base();
     free_base(nullptr);
-    v5 = *a1;
+    loaded_word = *a1;
     if ( *a1 )
     {
-      a1[1] = v5;
-      a1[2] = v5 + 32;
+      a1[1] = loaded_word;
+      a1[2] = loaded_word + 32;
       return 0;
     }
     return 12;
   }
-  v6 = (v1 - *a1) >> 3;
-  if ( v6 > 0x7FFFFFFFFFFFFFFFLL )
+  shifted_bits = (table_value - *a1) >> 3;
+  if ( shifted_bits > 0x7FFFFFFFFFFFFFFFLL )
     return 12;
-  v7 = recalloc_base(*a1, 2 * v6, 8);
-  if ( v7 )
+  recalloc_base_result = recalloc_base(*a1, 2 * shifted_bits, 8);
+  if ( recalloc_base_result )
   {
-    *a1 = v7;
-    a1[1] = v7 + 8 * v6;
-    a1[2] = v7 + 16 * v6;
+    *a1 = recalloc_base_result;
+    a1[1] = recalloc_base_result + 8 * shifted_bits;
+    a1[2] = recalloc_base_result + 16 * shifted_bits;
   }
   else
   {
-    v4 = 12;
+    unused_written_slot = 12;
   }
   free_base(nullptr);
-  return v4;
+  return unused_written_slot;
 }
 
 //----- (000000014025E9F0) ----------------------------------------------------
 __int64            get_file_name(__int64 a1, _WORD *a2)
 {
-  unsigned int v4;
-  _QWORD v6[3];
-  char v7;
+  unsigned int selection_code;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)v6, nullptr);
-  v4 = 65001;
-  if ( *(_DWORD *)(v6[1] + 12LL) == 65001 )
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, nullptr);
+  selection_code = 65001;
+  if ( *(_DWORD *)(scratch_buffer[1] + 12LL) == 65001 )
   {
-    if ( v7 )
-      *(_DWORD *)(v6[0] + 936LL) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   }
   else if ( (unsigned int)sub_14024EDA4() )
   {
-    if ( v7 )
-      *(_DWORD *)(v6[0] + 936LL) &= ~2u;
-    v4 = 0;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
+    selection_code = 0;
   }
   else
   {
-    if ( v7 )
-      *(_DWORD *)(v6[0] + 936LL) &= ~2u;
-    v4 = 1;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
+    selection_code = 1;
   }
-  if ( (unsigned int)__acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_resizing(a2, a1, v4) )
+  if ( (unsigned int)__acrt_wcs_to_mbs_cp____crt_win32_buffer_internal_dynamic_resizing(a2, a1, selection_code) )
     return 0;
   else
     return *(_QWORD *)(a1 + 16);
@@ -21099,23 +21099,23 @@ __int64            get_file_name(__int64 a1, _WORD *a2)
 //----- (000000014025EAA0) ----------------------------------------------------
 __int64            get_wide(__int64 a1, _BYTE *a2)
 {
-  _QWORD v5[3];
-  char v6;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)v5, nullptr);
-  if ( *(_DWORD *)(v5[1] + 12LL) == 65001 )
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, nullptr);
+  if ( *(_DWORD *)(scratch_buffer[1] + 12LL) == 65001 )
   {
-    if ( v6 )
-      *(_DWORD *)(v5[0] + 936LL) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   }
   else if ( (unsigned int)sub_14024EDA4() )
   {
-    if ( v6 )
-      *(_DWORD *)(v5[0] + 936LL) &= ~2u;
+    if ( unrecovered_register_value )
+      *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   }
-  else if ( v6 )
+  else if ( unrecovered_register_value )
   {
-    *(_DWORD *)(v5[0] + 936LL) &= ~2u;
+    *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   }
   if ( (unsigned int)sub_140238394(a2, a1) )
     return 0;
@@ -21140,17 +21140,17 @@ __int64            common_expand_argv_wildcards__wchar_t_dup2(     sr_anon_49 **
 //----- (000000014025EB88) ----------------------------------------------------
 __int64            sub_14025EB88(__int64 a1, unsigned int *a2, volatile signed __int32 ****a3, unsigned int *a4)
 {
-  volatile signed __int32 *v6;
-  _OWORD *v7;
-  __int64 v8;
-  __int64 v9;
-  _OWORD *v10;
-  _OWORD *v11;
-  void **v12;
+  volatile signed __int32 *record_byte_offset;
+  _OWORD *record_byte_offset_2;
+  __int64 remaining_count;
+  __int64 remaining_count_2;
+  _OWORD *record_byte_offset_3;
+  _OWORD *record_byte_offset_4;
+  void **table_value;
 
   crt_lock(*a2);
-  v6 = (**a3)[17] + 6;
-  v7 = *(_OWORD **)&g_144CBF9F0;
+  record_byte_offset = (**a3)[17] + 6;
+  record_byte_offset_2 = *(_OWORD **)&g_144CBF9F0;
   if ( !g_144CBF9F0 )
     goto LABEL_7;
   if ( (**a3)[17] == (volatile signed __int32 *)-24LL )
@@ -21159,30 +21159,30 @@ __int64            sub_14025EB88(__int64 a1, unsigned int *a2, volatile signed _
 LABEL_7:
     *errno_sr() = 22;
     crt_invalid_parameter_noinfo();
-    v8 = 2;
+    remaining_count = 2;
     goto LABEL_8;
   }
-  v8 = 2;
-  v9 = 2;
+  remaining_count = 2;
+  remaining_count_2 = 2;
   do
   {
-    *v7 = *(_OWORD *)v6;
-    v7[1] = *((_OWORD *)v6 + 1);
-    v7[2] = *((_OWORD *)v6 + 2);
-    v7[3] = *((_OWORD *)v6 + 3);
-    v7[4] = *((_OWORD *)v6 + 4);
-    v7[5] = *((_OWORD *)v6 + 5);
-    v7[6] = *((_OWORD *)v6 + 6);
-    v7 += 8;
-    *(v7 - 1) = *((_OWORD *)v6 + 7);
-    v6 += 32;
-    --v9;
+    *record_byte_offset_2 = *(_OWORD *)record_byte_offset;
+    record_byte_offset_2[1] = *((_OWORD *)record_byte_offset + 1);
+    record_byte_offset_2[2] = *((_OWORD *)record_byte_offset + 2);
+    record_byte_offset_2[3] = *((_OWORD *)record_byte_offset + 3);
+    record_byte_offset_2[4] = *((_OWORD *)record_byte_offset + 4);
+    record_byte_offset_2[5] = *((_OWORD *)record_byte_offset + 5);
+    record_byte_offset_2[6] = *((_OWORD *)record_byte_offset + 6);
+    record_byte_offset_2 += 8;
+    *(record_byte_offset_2 - 1) = *((_OWORD *)record_byte_offset + 7);
+    record_byte_offset += 32;
+    --remaining_count_2;
   }
-  while ( v9 );
-  *(_BYTE *)v7 = *(_BYTE *)v6;
+  while ( remaining_count_2 );
+  *(_BYTE *)record_byte_offset_2 = *(_BYTE *)record_byte_offset;
 LABEL_8:
-  v10 = (_OWORD *)((char *)(**a3)[17] + 281);
-  v11 = *(_OWORD **)&g_144CBF9F8;
+  record_byte_offset_3 = (_OWORD *)((char *)(**a3)[17] + 281);
+  record_byte_offset_4 = *(_OWORD **)&g_144CBF9F8;
   if ( !g_144CBF9F8 )
   {
 LABEL_13:
@@ -21197,25 +21197,25 @@ LABEL_13:
   }
   do
   {
-    *v11 = *v10;
-    v11[1] = v10[1];
-    v11[2] = v10[2];
-    v11[3] = v10[3];
-    v11[4] = v10[4];
-    v11[5] = v10[5];
-    v11[6] = v10[6];
-    v11 += 8;
-    *(v11 - 1) = v10[7];
-    v10 += 8;
-    --v8;
+    *record_byte_offset_4 = *record_byte_offset_3;
+    record_byte_offset_4[1] = record_byte_offset_3[1];
+    record_byte_offset_4[2] = record_byte_offset_3[2];
+    record_byte_offset_4[3] = record_byte_offset_3[3];
+    record_byte_offset_4[4] = record_byte_offset_3[4];
+    record_byte_offset_4[5] = record_byte_offset_3[5];
+    record_byte_offset_4[6] = record_byte_offset_3[6];
+    record_byte_offset_4 += 8;
+    *(record_byte_offset_4 - 1) = record_byte_offset_3[7];
+    record_byte_offset_3 += 8;
+    --remaining_count;
   }
-  while ( v8 );
+  while ( remaining_count );
 LABEL_14:
   if ( _InterlockedExchangeAdd(**a3[1], 0xFFFFFFFF) == 1 )
   {
-    v12 = (void **)*a3[1];
-    if ( *v12 != &unk_1403025A0 )
-      free_base(*v12);
+    table_value = (void **)*a3[1];
+    if ( *table_value != &unk_1403025A0 )
+      free_base(*table_value);
   }
   **a3[1] = (**a3)[17];
   _InterlockedIncrement((**a3)[17]);
@@ -21225,13 +21225,13 @@ LABEL_14:
 //----- (000000014025ED44) ----------------------------------------------------
 __int64            sub_14025ED44(unsigned int a1, volatile signed __int32 ****a2)
 {
-  __int64 v3;
-  unsigned int v4;
-  unsigned int v5;
+  __int64 callee_output_word;
+  unsigned int input_value;
+  unsigned int input_value_2;
 
-  v4 = a1;
-  v5 = a1;
-  return sub_14025EB88((__int64)&v3, &v5, a2, &v4);
+  input_value = a1;
+  input_value_2 = a1;
+  return sub_14025EB88((__int64)&callee_output_word, &input_value_2, a2, &input_value);
 }
 
 //----- (000000014025ED98) ----------------------------------------------------
@@ -21239,25 +21239,25 @@ __int64            sub_14025ED44(unsigned int a1, volatile signed __int32 ****a2
 // Microsoft VisualC 64bit universal runtime
 volatile signed __int32 *           unknown_libname_914(volatile signed __int32 ****a1)
 {
-  __int64 v1;
-  __int64 v2;
-  _OWORD *v4;
-  _OWORD *v5;
-  __int64 v6;
-  __int128 v7;
-  _OWORD *v8;
-  _OWORD *v9;
-  __int128 v10;
-  void **v11;
+  __int64 scaled_index;
+  __int64 remaining_count;
+  _OWORD *record_byte_offset;
+  _OWORD *record_byte_offset_2;
+  __int64 remaining_count_2;
+  __int128 table_value;
+  _OWORD *record_byte_offset_3;
+  _OWORD *record_byte_offset_4;
+  __int128 table_value_2;
+  void **table_value_3;
   volatile signed __int32 *result;
 
-  v1 = (__int64)*a1;
-  v2 = 2;
-  v4 = *(_OWORD **)&g_144CBF9F0;
-  v5 = (_OWORD *)(*(_QWORD *)(*(_QWORD *)v1 + 136LL) + 24LL);
+  scaled_index = (__int64)*a1;
+  remaining_count = 2;
+  record_byte_offset = *(_OWORD **)&g_144CBF9F0;
+  record_byte_offset_2 = (_OWORD *)(*(_QWORD *)(*(_QWORD *)scaled_index + 136LL) + 24LL);
   if ( !g_144CBF9F0 )
     goto LABEL_7;
-  if ( !v5 )
+  if ( !record_byte_offset_2 )
   {
     crt_memset((void *)(uintptr_t)(*(_WORD **)&g_144CBF9F0), 0, 0x101u);
 LABEL_7:
@@ -21265,27 +21265,27 @@ LABEL_7:
     crt_invalid_parameter_noinfo();
     goto LABEL_8;
   }
-  v6 = 2;
+  remaining_count_2 = 2;
   do
   {
-    *v4 = *v5;
-    v4[1] = v5[1];
-    v4[2] = v5[2];
-    v4[3] = v5[3];
-    v4[4] = v5[4];
-    v4[5] = v5[5];
-    v4[6] = v5[6];
-    v4 += 8;
-    v7 = v5[7];
-    v5 += 8;
-    *(v4 - 1) = v7;
-    --v6;
+    *record_byte_offset = *record_byte_offset_2;
+    record_byte_offset[1] = record_byte_offset_2[1];
+    record_byte_offset[2] = record_byte_offset_2[2];
+    record_byte_offset[3] = record_byte_offset_2[3];
+    record_byte_offset[4] = record_byte_offset_2[4];
+    record_byte_offset[5] = record_byte_offset_2[5];
+    record_byte_offset[6] = record_byte_offset_2[6];
+    record_byte_offset += 8;
+    table_value = record_byte_offset_2[7];
+    record_byte_offset_2 += 8;
+    *(record_byte_offset - 1) = table_value;
+    --remaining_count_2;
   }
-  while ( v6 );
-  *(_BYTE *)v4 = *(_BYTE *)v5;
+  while ( remaining_count_2 );
+  *(_BYTE *)record_byte_offset = *(_BYTE *)record_byte_offset_2;
 LABEL_8:
-  v8 = *(_OWORD **)&g_144CBF9F8;
-  v9 = (_OWORD *)((char *)(**a1)[17] + 281);
+  record_byte_offset_3 = *(_OWORD **)&g_144CBF9F8;
+  record_byte_offset_4 = (_OWORD *)((char *)(**a1)[17] + 281);
   if ( !g_144CBF9F8 )
   {
 LABEL_13:
@@ -21300,26 +21300,26 @@ LABEL_13:
   }
   do
   {
-    *v8 = *v9;
-    v8[1] = v9[1];
-    v8[2] = v9[2];
-    v8[3] = v9[3];
-    v8[4] = v9[4];
-    v8[5] = v9[5];
-    v8[6] = v9[6];
-    v8 += 8;
-    v10 = v9[7];
-    v9 += 8;
-    *(v8 - 1) = v10;
-    --v2;
+    *record_byte_offset_3 = *record_byte_offset_4;
+    record_byte_offset_3[1] = record_byte_offset_4[1];
+    record_byte_offset_3[2] = record_byte_offset_4[2];
+    record_byte_offset_3[3] = record_byte_offset_4[3];
+    record_byte_offset_3[4] = record_byte_offset_4[4];
+    record_byte_offset_3[5] = record_byte_offset_4[5];
+    record_byte_offset_3[6] = record_byte_offset_4[6];
+    record_byte_offset_3 += 8;
+    table_value_2 = record_byte_offset_4[7];
+    record_byte_offset_4 += 8;
+    *(record_byte_offset_3 - 1) = table_value_2;
+    --remaining_count;
   }
-  while ( v2 );
+  while ( remaining_count );
 LABEL_14:
   if ( _InterlockedExchangeAdd(**a1[1], 0xFFFFFFFF) == 1 )
   {
-    v11 = (void **)*a1[1];
-    if ( *v11 != &unk_1403025A0 )
-      free_base(*v11);
+    table_value_3 = (void **)*a1[1];
+    if ( *table_value_3 != &unk_1403025A0 )
+      free_base(*table_value_3);
   }
   **a1[1] = (**a1)[17];
   result = (**a1)[17];
@@ -21330,31 +21330,31 @@ LABEL_14:
 //----- (000000014025EF84) ----------------------------------------------------
 __int64            getSystemCP(unsigned int a1)
 {
-  unsigned int v2;
-  _QWORD v4[3];
-  char v5;
+  unsigned int int64_result;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)v4, nullptr);
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, nullptr);
   g_144CBFA08 = 0;
   switch ( a1 )
   {
     case 0xFFFFFFFE:
       g_144CBFA08 = 1;
-      v2 = ((__int64 (*)(void))GetOEMCP)();
+      int64_result = ((__int64 (*)(void))GetOEMCP)();
 LABEL_5:
-      a1 = v2;
+      a1 = int64_result;
       break;
     case 0xFFFFFFFD:
       g_144CBFA08 = 1;
-      v2 = ((__int64 (*)(void))GetACP)();
+      int64_result = ((__int64 (*)(void))GetACP)();
       goto LABEL_5;
     case 0xFFFFFFFC:
       g_144CBFA08 = 1;
-      a1 = *(_DWORD *)(v4[1] + 12LL);
+      a1 = *(_DWORD *)(scratch_buffer[1] + 12LL);
       break;
   }
-  if ( v5 )
-    *(_DWORD *)(v4[0] + 936LL) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   return a1;
 }
 
@@ -21380,149 +21380,149 @@ char *           unknown_libname_915(char *a1, unsigned __int64 a2)
 //----- (000000014025F02C) ----------------------------------------------------
 void            setSBCS_sr(struct __crt_multibyte_data *a1)
 {
-  _BYTE *v1;
-  __int64 v3;
-  _WORD *v4;
-  __int64 v5;
-  signed __int64 v6;
-  _BYTE *v7;
-  __int64 v8;
+  _BYTE *buffer_cursor;
+  __int64 remaining_count;
+  _WORD *buffer_cursor_2;
+  __int64 remaining_count_2;
+  signed __int64 state_address;
+  _BYTE *buffer_cursor_3;
+  __int64 remaining_count_3;
 
-  v1 = (char *)a1 + 24;
-  v3 = 257;
+  buffer_cursor = (char *)a1 + 24;
+  remaining_count = 257;
   crt_memset((void *)(uintptr_t)((_WORD *)a1 + 12), 0, 0x101u);
-  v4 = (_WORD *)((char *)a1 + 12);
+  buffer_cursor_2 = (_WORD *)((char *)a1 + 12);
   *(_QWORD *)((char *)a1 + 4) = 0;
-  v5 = 6;
+  remaining_count_2 = 6;
   *((_QWORD *)a1 + 68) = 0;
-  while ( v5 )
+  while ( remaining_count_2 )
   {
-    *v4++ = 0;
-    --v5;
+    *buffer_cursor_2++ = 0;
+    --remaining_count_2;
   }
-  v6 = &unk_1403025A0 - (_UNKNOWN *)a1;
+  state_address = &unk_1403025A0 - (_UNKNOWN *)a1;
   do
   {
-    *v1 = v1[v6];
-    ++v1;
-    --v3;
+    *buffer_cursor = buffer_cursor[state_address];
+    ++buffer_cursor;
+    --remaining_count;
   }
-  while ( v3 );
-  v7 = (char *)a1 + 281;
-  v8 = 256;
+  while ( remaining_count );
+  buffer_cursor_3 = (char *)a1 + 281;
+  remaining_count_3 = 256;
   do
   {
-    *v7 = v7[v6];
-    ++v7;
-    --v8;
+    *buffer_cursor_3 = buffer_cursor_3[state_address];
+    ++buffer_cursor_3;
+    --remaining_count_3;
   }
-  while ( v8 );
+  while ( remaining_count_3 );
 }
 
 //----- (000000014025F0BC) ----------------------------------------------------
 __int64            setSBUpLow_sr(struct __crt_multibyte_data *a1)
 {
-  __int64 v2;
-  unsigned int v3;
-  char *v4;
-  __int64 v5;
-  unsigned __int8 v6;
-  unsigned __int8 *v7;
-  unsigned int v8;
+  __int64 loaded_word;
+  unsigned int iteration_count;
+  char *text_cursor;
+  __int64 remaining_count;
+  unsigned __int8 loaded_word_2;
+  unsigned __int8 *state_address;
+  unsigned int table_value;
   __int64 i;
-  __int64 v10;
-  _BYTE *v11;
-  char v12;
-  unsigned int v13;
-  __int64 v14;
-  char v15;
-  __int64 v17;
-  int v18;
+  __int64 element_index;
+  _BYTE *running_total;
+  char table_value_2;
+  unsigned int iteration_count_2;
+  __int64 iteration_count_3;
+  char integer_difference;
+  __int64 unused_local;
+  int unused_written_slot;
   _BYTE CPInfo[32];
-  char v20[256];
-  char v21[256];
-  char v22[256];
-  _BYTE v23[1024];
-  __int64 v24;
+  char scratch_buffer[256];
+  char scratch_buffer_2[256];
+  char scratch_buffer_3[256];
+  _BYTE scratch_buffer_4[1024];
+  __int64 unused_local_2;
 
-  v2 = *((unsigned int *)a1 + 1);
-  if ( (_DWORD)v2 == 65001 || !(unsigned int)((__int64 (           *)(__int64, _BYTE *))GetCPInfo)(v2, CPInfo) )
+  loaded_word = *((unsigned int *)a1 + 1);
+  if ( (_DWORD)loaded_word == 65001 || !(unsigned int)((__int64 (           *)(__int64, _BYTE *))GetCPInfo)(loaded_word, CPInfo) )
   {
-    v13 = 0;
-    v14 = 1;
+    iteration_count_2 = 0;
+    iteration_count_3 = 1;
     do
     {
-      if ( v13 - 97 + 32 > 0x19 )
+      if ( iteration_count_2 - 97 + 32 > 0x19 )
       {
-        if ( v13 - 97 > 0x19 )
+        if ( iteration_count_2 - 97 > 0x19 )
         {
-          v15 = 0;
+          integer_difference = 0;
         }
         else
         {
-          *((_BYTE *)a1 + v14 + 24) |= 0x20u;
-          v15 = v13 - 32;
+          *((_BYTE *)a1 + iteration_count_3 + 24) |= 0x20u;
+          integer_difference = iteration_count_2 - 32;
         }
       }
       else
       {
-        *((_BYTE *)a1 + v14 + 24) |= 0x10u;
-        v15 = v13 + 32;
+        *((_BYTE *)a1 + iteration_count_3 + 24) |= 0x10u;
+        integer_difference = iteration_count_2 + 32;
       }
-      *((_BYTE *)a1 + v14 + 280) = v15;
-      ++v13;
-      ++v14;
+      *((_BYTE *)a1 + iteration_count_3 + 280) = integer_difference;
+      ++iteration_count_2;
+      ++iteration_count_3;
     }
-    while ( v13 < 0x100 );
+    while ( iteration_count_2 < 0x100 );
   }
   else
   {
-    v3 = 0;
-    v4 = v20;
-    v5 = 256;
+    iteration_count = 0;
+    text_cursor = scratch_buffer;
+    remaining_count = 256;
     do
-      *v4++ = v3++;
-    while ( v3 < 0x100 );
-    v6 = CPInfo[6];
-    v7 = &CPInfo[6];
-    v20[0] = 32;
-    while ( v6 )
+      *text_cursor++ = iteration_count++;
+    while ( iteration_count < 0x100 );
+    loaded_word_2 = CPInfo[6];
+    state_address = &CPInfo[6];
+    scratch_buffer[0] = 32;
+    while ( loaded_word_2 )
     {
-      v8 = v7[1];
-      for ( i = v6; (unsigned int)i <= v8 && (unsigned int)i < 0x100; i = (unsigned int)(i + 1) )
-        v20[i] = 32;
-      v7 += 2;
-      v6 = *v7;
+      table_value = state_address[1];
+      for ( i = loaded_word_2; (unsigned int)i <= table_value && (unsigned int)i < 0x100; i = (unsigned int)(i + 1) )
+        scratch_buffer[i] = 32;
+      state_address += 2;
+      loaded_word_2 = *state_address;
     }
-    sub_140262618(nullptr, 1u, (__int64)v20, 256, (__int64)v23, *((_DWORD *)a1 + 1), 0);
-    v18 = 0;
-    sub_14025A004(nullptr, *((_QWORD *)a1 + 68), 0x100u, v20, 256, (__int64 *)v21, 256, *((_DWORD *)a1 + 1));
-    v18 = 0;
-    sub_14025A004(nullptr, *((_QWORD *)a1 + 68), 0x200u, v20, 256, (__int64 *)v22, 256, *((_DWORD *)a1 + 1));
-    v10 = 1;
-    v11 = v23;
+    sub_140262618(nullptr, 1u, (__int64)scratch_buffer, 256, (__int64)scratch_buffer_4, *((_DWORD *)a1 + 1), 0);
+    unused_written_slot = 0;
+    sub_14025A004(nullptr, *((_QWORD *)a1 + 68), 0x100u, scratch_buffer, 256, (__int64 *)scratch_buffer_2, 256, *((_DWORD *)a1 + 1));
+    unused_written_slot = 0;
+    sub_14025A004(nullptr, *((_QWORD *)a1 + 68), 0x200u, scratch_buffer, 256, (__int64 *)scratch_buffer_3, 256, *((_DWORD *)a1 + 1));
+    element_index = 1;
+    running_total = scratch_buffer_4;
     do
     {
-      if ( (*v11 & 1) != 0 )
+      if ( (*running_total & 1) != 0 )
       {
-        *((_BYTE *)a1 + v10 + 24) |= 0x10u;
-        v12 = v20[v10 + 255];
+        *((_BYTE *)a1 + element_index + 24) |= 0x10u;
+        table_value_2 = scratch_buffer[element_index + 255];
       }
-      else if ( (*v11 & 2) != 0 )
+      else if ( (*running_total & 2) != 0 )
       {
-        *((_BYTE *)a1 + v10 + 24) |= 0x20u;
-        v12 = v21[v10 + 255];
+        *((_BYTE *)a1 + element_index + 24) |= 0x20u;
+        table_value_2 = scratch_buffer_2[element_index + 255];
       }
       else
       {
-        v12 = 0;
+        table_value_2 = 0;
       }
-      *((_BYTE *)a1 + v10 + 280) = v12;
-      v11 += 2;
-      ++v10;
-      --v5;
+      *((_BYTE *)a1 + element_index + 280) = table_value_2;
+      running_total += 2;
+      ++element_index;
+      --remaining_count;
     }
-    while ( v5 );
+    while ( remaining_count );
   }
   return 0; /* no caller reads the result */
 }
@@ -21537,88 +21537,88 @@ __int64            setmbcp_internal(
         struct __crt_multibyte_data **     a4)
 {
   unsigned int SystemCP;
-  __int64 v8;
-  _DWORD *v9;
-  __int64 v10;
-  _OWORD *v11;
-  _OWORD *v12;
-  __int128 v13;
-  unsigned int v14;
-  void *v15;
-  _DWORD *v16;
-  _BYTE v17[4];
-  unsigned int v18;
-  unsigned int v19;
-  volatile signed __int32 ***v20[2];
-  struct __acrt_ptd *v21;
-  void **v22;
+  __int64 malloc_base_result;
+  _DWORD *saved_malloc_base_result;
+  __int64 remaining_count;
+  _OWORD *record_byte_offset;
+  _OWORD *record_byte_offset_2;
+  __int128 table_value;
+  unsigned int setmbcp_nolock_result;
+  void *loaded_record_pointer;
+  _DWORD *record_pointer;
+  _BYTE scratch_buffer[4];
+  unsigned int selection_code;
+  unsigned int selection_code_2;
+  volatile signed __int32 ***scratch_buffer_2[2];
+  struct __acrt_ptd *input_cursor;
+  void **input_cursor_2;
 
-  v22 = (void **)a4;
-  v21 = a3;
+  input_cursor_2 = (void **)a4;
+  input_cursor = a3;
   update_thread_multibyte_data_internal(a3, a4);
   SystemCP = getSystemCP(a1);
-  if ( SystemCP == *(_DWORD *)(*((_QWORD *)v21 + 17) + 4LL) )
+  if ( SystemCP == *(_DWORD *)(*((_QWORD *)input_cursor + 17) + 4LL) )
     return 0;
-  v8 = malloc_base();
-  v9 = (_DWORD *)v8;
-  if ( v8 )
+  malloc_base_result = malloc_base();
+  saved_malloc_base_result = (_DWORD *)malloc_base_result;
+  if ( malloc_base_result )
   {
-    v10 = 4;
-    v11 = (_OWORD *)v8;
-    v12 = *((_OWORD **)v21 + 17);
+    remaining_count = 4;
+    record_byte_offset = (_OWORD *)malloc_base_result;
+    record_byte_offset_2 = *((_OWORD **)input_cursor + 17);
     do
     {
-      *v11 = *v12;
-      v11[1] = v12[1];
-      v11[2] = v12[2];
-      v11[3] = v12[3];
-      v11[4] = v12[4];
-      v11[5] = v12[5];
-      v11[6] = v12[6];
-      v11 += 8;
-      v13 = v12[7];
-      v12 += 8;
-      *(v11 - 1) = v13;
-      --v10;
+      *record_byte_offset = *record_byte_offset_2;
+      record_byte_offset[1] = record_byte_offset_2[1];
+      record_byte_offset[2] = record_byte_offset_2[2];
+      record_byte_offset[3] = record_byte_offset_2[3];
+      record_byte_offset[4] = record_byte_offset_2[4];
+      record_byte_offset[5] = record_byte_offset_2[5];
+      record_byte_offset[6] = record_byte_offset_2[6];
+      record_byte_offset += 8;
+      table_value = record_byte_offset_2[7];
+      record_byte_offset_2 += 8;
+      *(record_byte_offset - 1) = table_value;
+      --remaining_count;
     }
-    while ( v10 );
-    *v11 = *v12;
-    v11[1] = v12[1];
-    *((_QWORD *)v11 + 4) = *((_QWORD *)v12 + 4);
-    *v9 = 0;
-    v14 = setmbcp_nolock(SystemCP, (__int64)v9);
-    if ( v14 != -1 )
+    while ( remaining_count );
+    *record_byte_offset = *record_byte_offset_2;
+    record_byte_offset[1] = record_byte_offset_2[1];
+    *((_QWORD *)record_byte_offset + 4) = *((_QWORD *)record_byte_offset_2 + 4);
+    *saved_malloc_base_result = 0;
+    setmbcp_nolock_result = setmbcp_nolock(SystemCP, (__int64)saved_malloc_base_result);
+    if ( setmbcp_nolock_result != -1 )
     {
       if ( !a2 )
         sub_14024868C();
-      if ( _InterlockedExchangeAdd(*((volatile signed __int32 **)v21 + 17), 0xFFFFFFFF) == 1 )
+      if ( _InterlockedExchangeAdd(*((volatile signed __int32 **)input_cursor + 17), 0xFFFFFFFF) == 1 )
       {
-        v15 = *((void **)v21 + 17);
-        if ( v15 != &unk_1403025A0 )
-          free_base(v15);
+        loaded_record_pointer = *((void **)input_cursor + 17);
+        if ( loaded_record_pointer != &unk_1403025A0 )
+          free_base(loaded_record_pointer);
       }
-      *v9 = 1;
-      v16 = v9;
-      v9 = nullptr;
-      *((_QWORD *)v21 + 17) = (uint64)(uintptr_t)(v16);
-      if ( (*((_BYTE *)v21 + 936) & 2) == 0 && (dword_140302B88 & 1) == 0 )
+      *saved_malloc_base_result = 1;
+      record_pointer = saved_malloc_base_result;
+      saved_malloc_base_result = nullptr;
+      *((_QWORD *)input_cursor + 17) = (uint64)(uintptr_t)(record_pointer);
+      if ( (*((_BYTE *)input_cursor + 936) & 2) == 0 && (dword_140302B88 & 1) == 0 )
       {
-        v20[0] = (volatile signed __int32 ***)&v21;
-        v20[1] = (volatile signed __int32 ***)&v22;
-        v18 = 5;
-        v19 = 5;
-        sub_14025EB88((__int64)v17, &v19, v20, &v18);
+        scratch_buffer_2[0] = (volatile signed __int32 ***)&input_cursor;
+        scratch_buffer_2[1] = (volatile signed __int32 ***)&input_cursor_2;
+        selection_code = 5;
+        selection_code_2 = 5;
+        sub_14025EB88((__int64)scratch_buffer, &selection_code_2, scratch_buffer_2, &selection_code);
         if ( a2 )
-          off_140302580 = *v22;
+          off_140302580 = *input_cursor_2;
       }
       goto LABEL_9;
     }
     *errno_sr() = 22;
   }
-  v14 = -1;
+  setmbcp_nolock_result = -1;
 LABEL_9:
-  free_base(v9);
-  return v14;
+  free_base(saved_malloc_base_result);
+  return setmbcp_nolock_result;
 }
 
 //----- (000000014025F464) ----------------------------------------------------
@@ -21626,45 +21626,45 @@ struct __crt_multibyte_data *           update_thread_multibyte_data_internal(
         struct __acrt_ptd *     a1,
         struct __crt_multibyte_data **     a2)
 {
-  volatile signed __int32 *v4;
-  volatile signed __int32 *v5;
+  volatile signed __int32 *loaded_record_pointer;
+  volatile signed __int32 *record_pointer;
 
   if ( (dword_140302B88 & *((_DWORD *)a1 + 234)) != 0 && *((_QWORD *)a1 + 18) )
   {
-    v4 = *((volatile signed __int32 **)a1 + 17);
+    loaded_record_pointer = *((volatile signed __int32 **)a1 + 17);
   }
   else
   {
     crt_lock(5);
-    v4 = *((volatile signed __int32 **)a1 + 17);
-    if ( v4 != (volatile signed __int32 *)*a2 )
+    loaded_record_pointer = *((volatile signed __int32 **)a1 + 17);
+    if ( loaded_record_pointer != (volatile signed __int32 *)*a2 )
     {
-      if ( v4 && _InterlockedExchangeAdd(v4, 0xFFFFFFFF) == 1 && v4 != (volatile signed __int32 *)&unk_1403025A0 )
-        free_base((void *)v4);
-      v5 = (volatile signed __int32 *)*a2;
+      if ( loaded_record_pointer && _InterlockedExchangeAdd(loaded_record_pointer, 0xFFFFFFFF) == 1 && loaded_record_pointer != (volatile signed __int32 *)&unk_1403025A0 )
+        free_base((void *)loaded_record_pointer);
+      record_pointer = (volatile signed __int32 *)*a2;
       *((_QWORD *)a1 + 17) = (uint64)(uintptr_t)(*a2);
-      _InterlockedIncrement(v5);
-      v4 = v5;
+      _InterlockedIncrement(record_pointer);
+      loaded_record_pointer = record_pointer;
     }
     crt_unlock(5);
   }
-  if ( !v4 )
+  if ( !loaded_record_pointer )
     abort();
-  return (struct __crt_multibyte_data *)v4;
+  return (struct __crt_multibyte_data *)loaded_record_pointer;
 }
 
 //----- (000000014025F520) ----------------------------------------------------
 char sub_14025F520()
 {
-  struct __acrt_ptd *v0;
+  struct __acrt_ptd *returned_pointer;
 
   if ( !LOBYTE(g_144CBFA0C) )
   {
     g_144CBF9F8 = (uint64)(uintptr_t)(&unk_1403028E0);
     g_144CBFA00 = (uint64)(uintptr_t)(&unk_1403025A0);
     g_144CBF9F0 = (uint64)(uintptr_t)(&unk_1403027D0);
-    v0 = sub_140255B44();
-    setmbcp_internal(0xFFFFFFFD, 1, v0, (struct __crt_multibyte_data **    )(unsigned int *)&g_144CBFA00);
+    returned_pointer = sub_140255B44();
+    setmbcp_internal(0xFFFFFFFD, 1, returned_pointer, (struct __crt_multibyte_data **    )(unsigned int *)&g_144CBFA00);
     LOBYTE(g_144CBFA0C) = 1;
   }
   return 1;
@@ -21673,166 +21673,166 @@ char sub_14025F520()
 //----- (000000014025F580) ----------------------------------------------------
 struct __crt_multibyte_data *sub_14025F580()
 {
-  struct __acrt_ptd *v0;
+  struct __acrt_ptd *returned_pointer;
 
-  v0 = (struct __acrt_ptd *)sub_140255A70();
-  return update_thread_multibyte_data_internal(v0, (struct __crt_multibyte_data **    )(unsigned int *)&g_144CBFA00);
+  returned_pointer = (struct __acrt_ptd *)sub_140255A70();
+  return update_thread_multibyte_data_internal(returned_pointer, (struct __crt_multibyte_data **    )(unsigned int *)&g_144CBFA00);
 }
 
 //----- (000000014025F5AC) ----------------------------------------------------
 int         getmbcp()
 {
   int result;
-  __int64 v1;
-  __int64 v2;
-  char v3;
+  __int64 callee_output_word;
+  __int64 unrecovered_register_value;
+  char unrecovered_register_value_2;
 
-  crt_locale_update((_LocaleUpdate *)&v1, nullptr);
-  if ( *(_DWORD *)(v2 + 8) )
-    result = *(_DWORD *)(v2 + 4);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, nullptr);
+  if ( *(_DWORD *)(unrecovered_register_value + 8) )
+    result = *(_DWORD *)(unrecovered_register_value + 4);
   else
     result = 0;
-  if ( v3 )
-    *(_DWORD *)(v1 + 936) &= ~2u;
+  if ( unrecovered_register_value_2 )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
   return result;
 }
 
 //----- (000000014025F5E8) ----------------------------------------------------
 int         setmbcp(int CodePage)
 {
-  struct __acrt_ptd *v2;
+  struct __acrt_ptd *returned_pointer;
 
-  v2 = (struct __acrt_ptd *)sub_140255A70();
-  return setmbcp_internal(CodePage, 0, v2, (struct __crt_multibyte_data **    )(unsigned int *)&g_144CBFA00);
+  returned_pointer = (struct __acrt_ptd *)sub_140255A70();
+  return setmbcp_internal(CodePage, 0, returned_pointer, (struct __crt_multibyte_data **    )(unsigned int *)&g_144CBFA00);
 }
 
 //----- (000000014025F610) ----------------------------------------------------
 __int64            setmbcp_nolock(unsigned int a1, __int64 a2)
 {
-       __int16 *v3;
+       __int16 *literal_text;
   unsigned int SystemCP;
-  unsigned int v5;
-  _DWORD *v6;
-  int v7;
-  _WORD *v8;
+  unsigned int iteration_count;
+  _DWORD *record_byte_offset;
+  int selection_flag;
+  _WORD *buffer_cursor;
   __int64 j;
-  bool v10;
+  bool comparison_result;
   _BYTE *i;
-  unsigned int v12;
-  unsigned int v13;
-  __int64 v14;
-  __int64 v15;
-  _BYTE *v16;
-  __int64 v17;
-       __int16 *v18;
-  __int64 v19;
-  _BYTE *v20;
-  __int64 v21;
-  char *v22;
-  unsigned __int8 *v23;
-  unsigned int v24;
-  __int64 v25;
-  unsigned int v26;
-  unsigned int v27;
-  unsigned int v28;
-  _WORD *v29;
-  __int64 v30;
-  __int64 v32;
+  unsigned int table_value;
+  unsigned int scaled_index;
+  __int64 integer_sum;
+  __int64 remaining_count;
+  _BYTE *buffer_cursor_2;
+  __int64 remaining_count_2;
+       __int16 *literal_text_2;
+  __int64 saved_iteration_count;
+  _BYTE *buffer_cursor_3;
+  __int64 remaining_count_3;
+  char *record_byte_offset_2;
+  unsigned __int8 *saved_record_byte_offset;
+  unsigned int iteration_count_2;
+  __int64 integer_sum_2;
+  unsigned int integer_difference;
+  unsigned int integer_difference_2;
+  unsigned int integer_difference_3;
+  _WORD *buffer_cursor_4;
+  __int64 remaining_count_4;
+  __int64 unused_local;
   _DWORD CPInfo[6];
-  __int64 v34;
+  __int64 unused_local_2;
 
-  v3 = nullptr;
+  literal_text = nullptr;
   SystemCP = getSystemCP(a1);
   if ( !SystemCP )
     goto LABEL_57;
-  v5 = 0;
-  v6 = &unk_1403029F0;
-  v7 = 1;
+  iteration_count = 0;
+  record_byte_offset = &unk_1403029F0;
+  selection_flag = 1;
   do
   {
-    if ( *v6 == SystemCP )
+    if ( *record_byte_offset == SystemCP )
     {
       crt_memset((void *)(uintptr_t)((_WORD *)(a2 + 24)), 0, 0x101u);
-      v19 = v5;
-      v20 = &unk_1403029E0;
-      v21 = 4;
-      v22 = (char *)&unk_140302A00 + 48 * v19;
+      saved_iteration_count = iteration_count;
+      buffer_cursor_3 = &unk_1403029E0;
+      remaining_count_3 = 4;
+      record_byte_offset_2 = (char *)&unk_140302A00 + 48 * saved_iteration_count;
       do
       {
-        v23 = (unsigned __int8 *)v22;
-        if ( *v22 )
+        saved_record_byte_offset = (unsigned __int8 *)record_byte_offset_2;
+        if ( *record_byte_offset_2 )
         {
           do
           {
-            if ( !v23[1] )
+            if ( !saved_record_byte_offset[1] )
               break;
-            v24 = *v23;
-            if ( v24 <= v23[1] )
+            iteration_count_2 = *saved_record_byte_offset;
+            if ( iteration_count_2 <= saved_record_byte_offset[1] )
             {
-              v25 = v24 + 1;
+              integer_sum_2 = iteration_count_2 + 1;
               do
               {
-                if ( (unsigned int)v25 >= 0x101 )
+                if ( (unsigned int)integer_sum_2 >= 0x101 )
                   break;
-                ++v24;
-                *(_BYTE *)(v25 + a2 + 24) |= *v20;
-                v25 = (unsigned int)(v25 + 1);
+                ++iteration_count_2;
+                *(_BYTE *)(integer_sum_2 + a2 + 24) |= *buffer_cursor_3;
+                integer_sum_2 = (unsigned int)(integer_sum_2 + 1);
               }
-              while ( v24 <= v23[1] );
+              while ( iteration_count_2 <= saved_record_byte_offset[1] );
             }
-            v23 += 2;
+            saved_record_byte_offset += 2;
           }
-          while ( *v23 );
+          while ( *saved_record_byte_offset );
         }
-        v22 += 8;
-        ++v20;
-        --v21;
+        record_byte_offset_2 += 8;
+        ++buffer_cursor_3;
+        --remaining_count_3;
       }
-      while ( v21 );
+      while ( remaining_count_3 );
       *(_DWORD *)(a2 + 4) = SystemCP;
       *(_DWORD *)(a2 + 8) = 1;
-      v26 = SystemCP - 932;
-      if ( v26 )
+      integer_difference = SystemCP - 932;
+      if ( integer_difference )
       {
-        v27 = v26 - 4;
-        if ( v27 )
+        integer_difference_2 = integer_difference - 4;
+        if ( integer_difference_2 )
         {
-          v28 = v27 - 13;
-          if ( v28 )
+          integer_difference_3 = integer_difference_2 - 13;
+          if ( integer_difference_3 )
           {
-            if ( v28 == 1 )
-              v3 = L"zh-TW";
+            if ( integer_difference_3 == 1 )
+              literal_text = L"zh-TW";
           }
           else
           {
-            v3 = L"ko-KR";
+            literal_text = L"ko-KR";
           }
         }
         else
         {
-          v3 = (     __int16 *)off_14028F270;
+          literal_text = (     __int16 *)off_14028F270;
         }
       }
       else
       {
-        v3 = L"ja-JP";
+        literal_text = L"ja-JP";
       }
-      *(_QWORD *)(a2 + 544) = (uint64)(uintptr_t)(v3);
-      v29 = (_WORD *)(a2 + 12);
-      v30 = 6;
+      *(_QWORD *)(a2 + 544) = (uint64)(uintptr_t)(literal_text);
+      buffer_cursor_4 = (_WORD *)(a2 + 12);
+      remaining_count_4 = 6;
       do
       {
-        *v29 = *(_WORD *)((char *)v29 + (_QWORD)&unk_1403029F0 + 48 * v19 - a2 - 8);
-        ++v29;
-        --v30;
+        *buffer_cursor_4 = *(_WORD *)((char *)buffer_cursor_4 + (_QWORD)&unk_1403029F0 + 48 * saved_iteration_count - a2 - 8);
+        ++buffer_cursor_4;
+        --remaining_count_4;
       }
-      while ( v30 );
+      while ( remaining_count_4 );
       goto LABEL_12;
     }
-    ++v5;
-    v6 += 12;
+    ++iteration_count;
+    record_byte_offset += 12;
   }
-  while ( v5 < 5 );
+  while ( iteration_count < 5 );
   if ( SystemCP != 65000 && (unsigned int)((__int64 (           *)(_QWORD))IsValidCodePage)((unsigned __int16)SystemCP) )
   {
     if ( SystemCP == 65001 )
@@ -21846,67 +21846,67 @@ __int64            setmbcp_nolock(unsigned int a1, __int64 a2)
     if ( (unsigned int)((__int64 (           *)(_QWORD, _DWORD *))GetCPInfo)(SystemCP, CPInfo) )
     {
       crt_memset((void *)(uintptr_t)((_WORD *)(a2 + 24)), 0, 0x101u);
-      v10 = CPInfo[0] == 2;
+      comparison_result = CPInfo[0] == 2;
       *(_DWORD *)(a2 + 4) = SystemCP;
       *(_QWORD *)(a2 + 544) = 0;
-      if ( v10 )
+      if ( comparison_result )
       {
         for ( i = (char *)&CPInfo[1] + 2; *i; i += 2 )
         {
           if ( !i[1] )
             break;
-          v12 = (unsigned __int8)i[1];
-          v13 = (unsigned __int8)*i;
-          if ( v13 <= v12 )
+          table_value = (unsigned __int8)i[1];
+          scaled_index = (unsigned __int8)*i;
+          if ( scaled_index <= table_value )
           {
-            v14 = v13 + 1;
-            v15 = v12 - v13 + 1;
+            integer_sum = scaled_index + 1;
+            remaining_count = table_value - scaled_index + 1;
             do
             {
-              *(_BYTE *)(v14 + a2 + 24) |= 4u;
-              v14 = (unsigned int)(v14 + 1);
-              --v15;
+              *(_BYTE *)(integer_sum + a2 + 24) |= 4u;
+              integer_sum = (unsigned int)(integer_sum + 1);
+              --remaining_count;
             }
-            while ( v15 );
+            while ( remaining_count );
           }
         }
-        v16 = (_BYTE *)(a2 + 26);
-        v17 = 254;
+        buffer_cursor_2 = (_BYTE *)(a2 + 26);
+        remaining_count_2 = 254;
         do
         {
-          *v16++ |= 8u;
-          --v17;
+          *buffer_cursor_2++ |= 8u;
+          --remaining_count_2;
         }
-        while ( v17 );
+        while ( remaining_count_2 );
         switch ( *(_DWORD *)(a2 + 4) )
         {
           case 0x3A4:
-            v18 = L"ja-JP";
+            literal_text_2 = L"ja-JP";
             break;
           case 0x3A8:
-            v18 = (     __int16 *)off_14028F270;
+            literal_text_2 = (     __int16 *)off_14028F270;
             break;
           case 0x3B5:
-            v18 = L"ko-KR";
+            literal_text_2 = L"ko-KR";
             break;
           case 0x3B6:
-            v18 = L"zh-TW";
+            literal_text_2 = L"zh-TW";
             break;
           default:
-            v18 = nullptr;
+            literal_text_2 = nullptr;
             break;
         }
-        *(_QWORD *)(a2 + 544) = (uint64)(uintptr_t)(v18);
+        *(_QWORD *)(a2 + 544) = (uint64)(uintptr_t)(literal_text_2);
       }
       else
       {
-        v7 = 0;
+        selection_flag = 0;
       }
-      *(_DWORD *)(a2 + 8) = v7;
+      *(_DWORD *)(a2 + 8) = selection_flag;
 LABEL_9:
-      v8 = (_WORD *)(a2 + 12);
+      buffer_cursor = (_WORD *)(a2 + 12);
       for ( j = 6; j; --j )
-        *v8++ = 0;
+        *buffer_cursor++ = 0;
 LABEL_12:
       setSBUpLow_sr((struct __crt_multibyte_data *)a2);
       return 0; /* 0x14025F6BB: -> xor eax, eax */
@@ -21927,8 +21927,8 @@ LABEL_57:
 //----- (000000014025F8CC) ----------------------------------------------------
 __int64            sub_14025F8CC(__m128i *a1, unsigned __int64 a2,      __m128i *a3, unsigned __int64 a4)
 {
-  int *v8;
-  unsigned int v9;
+  int *unused_written_slot;
+  unsigned int selection_code;
 
   if ( !a4 )
     return 0;
@@ -21943,17 +21943,17 @@ __int64            sub_14025F8CC(__m128i *a1, unsigned __int64 a2,      __m128i 
   if ( !a3 )
   {
 LABEL_4:
-    v8 = errno_sr();
-    v9 = 22;
+    unused_written_slot = errno_sr();
+    selection_code = 22;
 LABEL_5:
-    *v8 = v9;
+    *unused_written_slot = selection_code;
     crt_invalid_parameter_noinfo();
-    return v9;
+    return selection_code;
   }
   if ( a2 < a4 )
   {
-    v8 = errno_sr();
-    v9 = 34;
+    unused_written_slot = errno_sr();
+    selection_code = 34;
     goto LABEL_5;
   }
   return 22;
@@ -21965,36 +21965,36 @@ LABEL_5:
 __int64            x_ismbbtype_l(struct __crt_locale_pointers *a1, unsigned __int8 a2, int a3, unsigned __int8 a4)
 {
   __int64 result;
-  _QWORD v8[3];
-  char v9;
+  _QWORD scratch_buffer[3];
+  char unrecovered_register_value;
 
-  crt_locale_update((_LocaleUpdate *)v8, a1);
-  if ( (a4 & *(_BYTE *)(a2 + v8[2] + 25LL)) != 0
-    || (!a3 ? (result = 0) : (result = (unsigned __int16)(a3 & *(_WORD *)(*(_QWORD *)v8[1] + 2LL * a2))), (_DWORD)result) )
+  crt_locale_update((_LocaleUpdate *)scratch_buffer, a1);
+  if ( (a4 & *(_BYTE *)(a2 + scratch_buffer[2] + 25LL)) != 0
+    || (!a3 ? (result = 0) : (result = (unsigned __int16)(a3 & *(_WORD *)(*(_QWORD *)scratch_buffer[1] + 2LL * a2))), (_DWORD)result) )
   {
     result = 1;
   }
-  if ( v9 )
-    *(_DWORD *)(v8[0] + 936LL) &= ~2u;
+  if ( unrecovered_register_value )
+    *(_DWORD *)(scratch_buffer[0] + 936LL) &= ~2u;
   return result;
 }
 
 //----- (000000014025FAD8) ----------------------------------------------------
 __int64            ismbbkana_l(unsigned __int8 a1, struct __crt_locale_pointers *a2)
 {
-  unsigned int v4;
-  __int64 v6;
-  __int64 v7;
-  char v8;
+  unsigned int unused_written_slot;
+  __int64 callee_output_word;
+  __int64 unrecovered_register_value;
+  char unrecovered_register_value_2;
 
-  crt_locale_update((_LocaleUpdate *)&v6, a2);
-  if ( v7 && *(_DWORD *)(v7 + 4) == 932 )
-    v4 = x_ismbbtype_l(a2, a1, 0, 3u);
+  crt_locale_update((_LocaleUpdate *)&callee_output_word, a2);
+  if ( unrecovered_register_value && *(_DWORD *)(unrecovered_register_value + 4) == 932 )
+    unused_written_slot = x_ismbbtype_l(a2, a1, 0, 3u);
   else
-    v4 = 0;
-  if ( v8 )
-    *(_DWORD *)(v6 + 936) &= ~2u;
-  return v4;
+    unused_written_slot = 0;
+  if ( unrecovered_register_value_2 )
+    *(_DWORD *)(callee_output_word + 936) &= ~2u;
+  return unused_written_slot;
 }
 
 // 14025FAD8: invalid function type 'int __cdecl ismbbkana_l(unsigned int C, _locale_t Locale)' has been ignored
@@ -22053,14 +22053,14 @@ __int64            Concurrency__details___Release_chore_dup3(
         Concurrency__details *this,
         struct Concurrency__details___Threadpool_chore *a2)
 {
-  __int64 v3;
+  __int64 loaded_word;
   __int64 result;
 
-  v3 = *(_QWORD *)this;
-  if ( v3 )
+  loaded_word = *(_QWORD *)this;
+  if ( loaded_word )
   {
     result = ((__int64 (           *)(__int64, struct Concurrency__details___Threadpool_chore *))FreeEnvironmentStringsW)(
-               v3,
+               loaded_word,
                a2);
     *(_QWORD *)this = 0;
   }
@@ -22074,14 +22074,14 @@ __int64            Concurrency__details___Release_chore_dup4(
         Concurrency__details *this,
         struct Concurrency__details___Threadpool_chore *a2)
 {
-  __int64 v3;
+  __int64 loaded_word;
   __int64 result;
 
-  v3 = *(_QWORD *)this;
-  if ( v3 )
+  loaded_word = *(_QWORD *)this;
+  if ( loaded_word )
   {
     result = ((__int64 (           *)(__int64, struct Concurrency__details___Threadpool_chore *))FreeEnvironmentStringsW)(
-               v3,
+               loaded_word,
                a2);
     *(_QWORD *)this = 0;
   }
@@ -22102,55 +22102,55 @@ char sub_14025FD7C()
 //----- (000000014025FDC4) ----------------------------------------------------
 void *sub_14025FDC4()
 {
-  __int64 v0;
-  __int64 v1;
+  __int64 int64_result;
+  __int64 saved_int64_result;
   _WORD *i;
-  __int64 v3;
-  __int64 v4;
-  int v5;
-  __int64 v6;
-  void *v7;
-  void *v8;
-  __int64 v10;
-  __int64 v11;
+  __int64 element_index;
+  __int64 shifted_bits;
+  int wide_char_to_multi_byte_result;
+  __int64 malloc_base_result;
+  void *saved_malloc_base_result;
+  void *unused_written_slot;
+  __int64 packed_word_bits;
+  __int64 packed_word_bits_2;
 
-  v0 = ((__int64 (*)(void))GetEnvironmentStringsW)();
-  v1 = v0;
-  if ( !v0 )
+  int64_result = ((__int64 (*)(void))GetEnvironmentStringsW)();
+  saved_int64_result = int64_result;
+  if ( !int64_result )
     goto LABEL_12;
-  for ( i = (_WORD *)v0; *i; i += v3 + 1 )
+  for ( i = (_WORD *)int64_result; *i; i += element_index + 1 )
   {
-    v3 = -1;
+    element_index = -1;
     do
-      ++v3;
-    while ( i[v3] );
+      ++element_index;
+    while ( i[element_index] );
   }
-  v4 = ((__int64)i - v1 + 2) >> 1;
-  LODWORD(v10) = 0;
-  v5 = crt_wide_char_to_multi_byte(0, 0, v1, (unsigned int)v4, 0, v10, 0, 0);
-  if ( v5 )
+  shifted_bits = ((__int64)i - saved_int64_result + 2) >> 1;
+  LODWORD(packed_word_bits) = 0;
+  wide_char_to_multi_byte_result = crt_wide_char_to_multi_byte(0, 0, saved_int64_result, (unsigned int)shifted_bits, 0, packed_word_bits, 0, 0);
+  if ( wide_char_to_multi_byte_result )
   {
-    v6 = malloc_base();
-    v7 = (void *)v6;
-    if ( v6 && (LODWORD(v11) = v5, (unsigned int)crt_wide_char_to_multi_byte(0, 0, v1, (unsigned int)v4, v6, v11, 0, 0)) )
+    malloc_base_result = malloc_base();
+    saved_malloc_base_result = (void *)malloc_base_result;
+    if ( malloc_base_result && (LODWORD(packed_word_bits_2) = wide_char_to_multi_byte_result, (unsigned int)crt_wide_char_to_multi_byte(0, 0, saved_int64_result, (unsigned int)shifted_bits, malloc_base_result, packed_word_bits_2, 0, 0)) )
     {
-      v8 = v7;
-      v7 = nullptr;
+      unused_written_slot = saved_malloc_base_result;
+      saved_malloc_base_result = nullptr;
     }
     else
     {
-      v8 = nullptr;
+      unused_written_slot = nullptr;
     }
-    free_base(v7);
+    free_base(saved_malloc_base_result);
   }
   else
   {
 LABEL_12:
-    v8 = nullptr;
+    unused_written_slot = nullptr;
   }
-  if ( v1 )
-    ((void (           *)(__int64))FreeEnvironmentStringsW)(v1);
-  return v8;
+  if ( saved_int64_result )
+    ((void (           *)(__int64))FreeEnvironmentStringsW)(saved_int64_result);
+  return unused_written_slot;
 }
 
 // 14026E058: invalid function type 'LPWCH (__stdcall *GetEnvironmentStringsW)()' has been ignored
@@ -22159,45 +22159,45 @@ LABEL_12:
 //----- (000000014025FEC8) ----------------------------------------------------
 __m128i *sub_14025FEC8()
 {
-  __int64 v0;
-  __m128i *v1;
-       __m128i *v2;
-  char *v3;
-  __int64 v4;
-  unsigned __int64 v5;
-  __m128i *v6;
-  __m128i *v7;
+  __int64 int64_result;
+  __m128i *unused_written_slot;
+       __m128i *source_buffer;
+  char *saved_int64_result;
+  __int64 element_index;
+  unsigned __int64 byte_count;
+  __m128i *malloc_base_result;
+  __m128i *saved_malloc_base_result;
 
-  v0 = ((__int64 (*)(void))GetEnvironmentStringsW)();
-  v1 = nullptr;
-  v2 = (     __m128i *)v0;
-  if ( v0 )
+  int64_result = ((__int64 (*)(void))GetEnvironmentStringsW)();
+  unused_written_slot = nullptr;
+  source_buffer = (     __m128i *)int64_result;
+  if ( int64_result )
   {
-    v3 = (char *)v0;
-    if ( *(_WORD *)v0 )
+    saved_int64_result = (char *)int64_result;
+    if ( *(_WORD *)int64_result )
     {
       do
       {
-        v4 = -1;
+        element_index = -1;
         do
-          ++v4;
-        while ( *(_WORD *)&v3[2 * v4] );
-        v3 += 2 * v4 + 2;
+          ++element_index;
+        while ( *(_WORD *)&saved_int64_result[2 * element_index] );
+        saved_int64_result += 2 * element_index + 2;
       }
-      while ( *(_WORD *)v3 );
+      while ( *(_WORD *)saved_int64_result );
     }
-    v5 = 2 * ((v3 - (char *)v2 + 2) >> 1);
-    v6 = (__m128i *)malloc_base();
-    v7 = v6;
-    if ( v6 )
+    byte_count = 2 * ((saved_int64_result - (char *)source_buffer + 2) >> 1);
+    malloc_base_result = (__m128i *)malloc_base();
+    saved_malloc_base_result = malloc_base_result;
+    if ( malloc_base_result )
     {
-      crt_memcpy(v6, v2, v5);
-      v1 = v7;
+      crt_memcpy(malloc_base_result, source_buffer, byte_count);
+      unused_written_slot = saved_malloc_base_result;
     }
     free_base(nullptr);
-    ((void (           *)(     __m128i *))FreeEnvironmentStringsW)(v2);
+    ((void (           *)(     __m128i *))FreeEnvironmentStringsW)(source_buffer);
   }
-  return v1;
+  return unused_written_slot;
 }
 
 // 14026E058: invalid function type 'LPWCH (__stdcall *GetEnvironmentStringsW)()' has been ignored
@@ -22206,75 +22206,75 @@ __m128i *sub_14025FEC8()
 //----- (000000014025FF68) ----------------------------------------------------
 __int64            _dcrt_set_variable_in_narrow_environment_nolock_0(__int8 *Block, int a2)
 {
-  unsigned int v2;
-  __int8 *v6;
-  __int8 *v7;
-  __int8 *v8;
-  __int64 *v9;
-  __int8 v10;
-  int v11;
-  __int64 v12;
-  signed __int64 v13;
-  __int64 *v14;
-  __int64 v15;
-  __int64 v16;
-  unsigned __int64 v17;
-  unsigned __int64 v18;
-  int v19;
-  __int64 v20;
-  __int64 v21;
-  _BYTE *v22;
-  _BYTE *v23;
-  __int64 v24;
+  unsigned int integer_difference;
+  __int8 *cached_block;
+  __int8 *returned_pointer;
+  __int8 *record_pointer;
+  __int64 *copy_environment_char_result;
+  __int8 table_value;
+  int integer_difference_2;
+  __int64 loaded_word;
+  signed __int64 integer_difference_3;
+  __int64 *buffer_cursor;
+  __int64 element_index;
+  __int64 recalloc_base_result;
+  unsigned __int64 integer_difference_4;
+  unsigned __int64 integer_sum;
+  int integer_difference_5;
+  __int64 recalloc_base_result_2;
+  __int64 element_index_2;
+  _BYTE *calloc_base_result;
+  _BYTE *saved_calloc_base_result;
+  __int64 state_address;
 
-  v2 = 0;
+  integer_difference = 0;
   if ( !Block )
   {
     *errno_sr() = 22;
     return -1;
   }
-  v6 = Block;
-  v7 = sub_14026CE7C((__int64)Block, 0x3Du);
-  v8 = v7;
-  if ( !v7 || v7 == Block )
+  cached_block = Block;
+  returned_pointer = sub_14026CE7C((__int64)Block, 0x3Du);
+  record_pointer = returned_pointer;
+  if ( !returned_pointer || returned_pointer == Block )
   {
 LABEL_51:
-    v2 = -1;
+    integer_difference = -1;
     *errno_sr() = 22;
     goto LABEL_52;
   }
-  v9 = *(__int64 **)&g_144CBEAE0;
-  v10 = v7[1];
+  copy_environment_char_result = *(__int64 **)&g_144CBEAE0;
+  table_value = returned_pointer[1];
   if ( g_144CBEAE0 == g_144CBEAF8 )
   {
-    v9 = (__int64 *)copy_environment__char(*(__int64 **)&g_144CBEAE0);
-    g_144CBEAE0 = (uint64)(uintptr_t)(v9);
+    copy_environment_char_result = (__int64 *)copy_environment__char(*(__int64 **)&g_144CBEAE0);
+    g_144CBEAE0 = (uint64)(uintptr_t)(copy_environment_char_result);
   }
-  if ( v9 )
+  if ( copy_environment_char_result )
     goto LABEL_20;
   if ( a2 && g_144CBEAE8 )
   {
     if ( unknown_libname_764() )
     {
-      v9 = *(__int64 **)&g_144CBEAE0;
+      copy_environment_char_result = *(__int64 **)&g_144CBEAE0;
       if ( g_144CBEAE0 == g_144CBEAF8 )
       {
-        v9 = (__int64 *)copy_environment__char(*(__int64 **)&g_144CBEAE0);
-        g_144CBEAE0 = (uint64)(uintptr_t)(v9);
+        copy_environment_char_result = (__int64 *)copy_environment__char(*(__int64 **)&g_144CBEAE0);
+        g_144CBEAE0 = (uint64)(uintptr_t)(copy_environment_char_result);
       }
       goto LABEL_19;
     }
     goto LABEL_51;
   }
-  if ( !v10 )
+  if ( !table_value )
   {
 LABEL_52:
-    v11 = v2;
+    integer_difference_2 = integer_difference;
     goto LABEL_53;
   }
   g_144CBEAE0 = calloc_base();
   free_base(nullptr);
-  v9 = *(__int64 **)&g_144CBEAE0;
+  copy_environment_char_result = *(__int64 **)&g_144CBEAE0;
   if ( !g_144CBEAE0 )
     goto LABEL_15;
   if ( g_144CBEAE8 )
@@ -22284,100 +22284,100 @@ LABEL_52:
   if ( !g_144CBEAE8 )
   {
 LABEL_15:
-    v11 = -1;
+    integer_difference_2 = -1;
 LABEL_53:
-    v2 = v11;
+    integer_difference = integer_difference_2;
 LABEL_54:
-    v19 = v2;
+    integer_difference_5 = integer_difference;
     goto LABEL_55;
   }
-  v9 = *(__int64 **)&g_144CBEAE0;
+  copy_environment_char_result = *(__int64 **)&g_144CBEAE0;
 LABEL_19:
-  if ( !v9 )
+  if ( !copy_environment_char_result )
     goto LABEL_15;
 LABEL_20:
-  v12 = *v9;
-  v13 = v8 - Block;
-  v14 = v9;
-  while ( v12 )
+  loaded_word = *copy_environment_char_result;
+  integer_difference_3 = record_pointer - Block;
+  buffer_cursor = copy_environment_char_result;
+  while ( loaded_word )
   {
-    if ( !(unsigned int)strnicoll_sr((__int64)Block, v12, v8 - Block)
-      && (*(_BYTE *)(v13 + *v14) == 61 || !*(_BYTE *)(v13 + *v14)) )
+    if ( !(unsigned int)strnicoll_sr((__int64)Block, loaded_word, record_pointer - Block)
+      && (*(_BYTE *)(integer_difference_3 + *buffer_cursor) == 61 || !*(_BYTE *)(integer_difference_3 + *buffer_cursor)) )
     {
-      v15 = v14 - v9;
+      element_index = buffer_cursor - copy_environment_char_result;
       goto LABEL_28;
     }
-    v12 = *++v14;
+    loaded_word = *++buffer_cursor;
   }
-  v15 = -(v14 - v9);
+  element_index = -(buffer_cursor - copy_environment_char_result);
 LABEL_28:
-  if ( v15 >= 0 && *v9 )
+  if ( element_index >= 0 && *copy_environment_char_result )
   {
-    free_base((void *)v9[v15]);
-    if ( !v10 )
+    free_base((void *)copy_environment_char_result[element_index]);
+    if ( !table_value )
     {
-      while ( v9[v15] )
+      while ( copy_environment_char_result[element_index] )
       {
-        v9[v15] = v9[v15 + 1];
-        ++v15;
+        copy_environment_char_result[element_index] = copy_environment_char_result[element_index + 1];
+        ++element_index;
       }
-      v16 = recalloc_base(v9, v15, 8);
+      recalloc_base_result = recalloc_base(copy_environment_char_result, element_index, 8);
       free_base(nullptr);
-      if ( v16 )
-        g_144CBEAE0 = v16;
+      if ( recalloc_base_result )
+        g_144CBEAE0 = recalloc_base_result;
       goto LABEL_43;
     }
-    v9[v15] = (__int64)Block;
+    copy_environment_char_result[element_index] = (__int64)Block;
 LABEL_42:
-    v6 = nullptr;
+    cached_block = nullptr;
 LABEL_43:
     if ( a2 )
     {
-      v21 = -1;
+      element_index_2 = -1;
       do
-        ++v21;
-      while ( Block[v21] );
-      v22 = (_BYTE *)calloc_base();
-      v23 = v22;
-      if ( v22 )
+        ++element_index_2;
+      while ( Block[element_index_2] );
+      calloc_base_result = (_BYTE *)calloc_base();
+      saved_calloc_base_result = calloc_base_result;
+      if ( calloc_base_result )
       {
-        if ( (unsigned int)strcpy_s_sr(v22, v21 + 2, (__int64)Block) )
+        if ( (unsigned int)strcpy_s_sr(calloc_base_result, element_index_2 + 2, (__int64)Block) )
         {
           crt_invoke_watson();
           __debugbreak();
         }
-        v24 = (__int64)&v8[(intptr_t)((uintptr_t)(v23) - (uintptr_t)(Block)) + 1];
-        *(_BYTE *)(v24 - 1) = 0;
-        if ( !(unsigned int)_acrt_SetEnvironmentVariableA(v23, (_BYTE *)(v24 & -(__int64)(v10 != 0))) )
+        state_address = (__int64)&record_pointer[(intptr_t)((uintptr_t)(saved_calloc_base_result) - (uintptr_t)(Block)) + 1];
+        *(_BYTE *)(state_address - 1) = 0;
+        if ( !(unsigned int)_acrt_SetEnvironmentVariableA(saved_calloc_base_result, (_BYTE *)(state_address & -(__int64)(table_value != 0))) )
         {
-          v2 = -1;
+          integer_difference = -1;
           *errno_sr() = 42;
         }
       }
-      free_base(v23);
+      free_base(saved_calloc_base_result);
     }
     goto LABEL_56;
   }
-  if ( !v10 )
+  if ( !table_value )
     goto LABEL_54;
-  v17 = -v15;
-  v18 = v17 + 2;
-  if ( v17 + 2 >= v17 && v18 < 0x1FFFFFFFFFFFFFFFLL )
+  integer_difference_4 = -element_index;
+  integer_sum = integer_difference_4 + 2;
+  if ( integer_difference_4 + 2 >= integer_difference_4 && integer_sum < 0x1FFFFFFFFFFFFFFFLL )
   {
-    v20 = recalloc_base(v9, v18, 8);
+    recalloc_base_result_2 = recalloc_base(copy_environment_char_result, integer_sum, 8);
     free_base(nullptr);
-    if ( v20 )
+    if ( recalloc_base_result_2 )
     {
-      *(_QWORD *)(v20 + 8 * v17) = (uint64)(uintptr_t)(Block);
-      *(_QWORD *)(v20 + 8 * v17 + 8) = 0;
-      g_144CBEAE0 = v20;
+      *(_QWORD *)(recalloc_base_result_2 + 8 * integer_difference_4) = (uint64)(uintptr_t)(Block);
+      *(_QWORD *)(recalloc_base_result_2 + 8 * integer_difference_4 + 8) = 0;
+      g_144CBEAE0 = recalloc_base_result_2;
       goto LABEL_42;
     }
   }
-  v19 = -1;
+  integer_difference_5 = -1;
 LABEL_55:
-  v2 = v19;
+  integer_difference = integer_difference_5;
 LABEL_56:
-  free_base(v6);
-  return v2;
+  free_base(cached_block);
+  return integer_difference;
 }

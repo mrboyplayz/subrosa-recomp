@@ -11,18 +11,18 @@
 #define past(n) ((uint64_t (*)(const unsigned char *))NC_ADDR(0x14006E4C0))(n)
 #define label_copy(o,s) ((uint64_t (*)(unsigned char *,const unsigned char *))NC_ADDR(0x14006F120))(o,s)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_14004C4C0(unsigned char *,long long);
-long long sub_14006C980(unsigned char *,long long);
-long long sub_14006C670(unsigned char *,unsigned int);
-long long sub_14006C870(unsigned char *);
-long long sub_14006E4C0(unsigned char *);
-long long sub_14006F120(long long,char *);
-#define compare1(a,b) sub_14004C4C0(a,(long long)(uintptr_t)b)
-#define compare2(a,b) sub_14006C980(a,(long long)(uintptr_t)b)
-#define label_id sub_14006C670
-#define matches sub_14006C870
-#define past sub_14006E4C0
-#define label_copy(o,s) sub_14006F120((long long)(uintptr_t)o,(char *)s)
+long long sr_text_compare_bytes(unsigned char *,long long);
+long long sr_text_compare_bytes_alt(unsigned char *,long long);
+long long sr_text_label_id(unsigned char *,unsigned int);
+long long sr_text_scan_matches(unsigned char *);
+long long sr_text_scan_past(unsigned char *);
+long long sr_text_copy_visible_label(long long,char *);
+#define compare1(a,b) sr_text_compare_bytes(a,(long long)(uintptr_t)b)
+#define compare2(a,b) sr_text_compare_bytes_alt(a,(long long)(uintptr_t)b)
+#define label_id sr_text_label_id
+#define matches sr_text_scan_matches
+#define past sr_text_scan_past
+#define label_copy(o,s) sr_text_copy_visible_label((long long)(uintptr_t)o,(char *)s)
 #else
 #define compare1 text_compare_bytes
 #define compare2 text_compare_bytes

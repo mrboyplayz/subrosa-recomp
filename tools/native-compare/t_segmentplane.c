@@ -5,8 +5,8 @@
 #ifdef NC_NATIVE
 #define intersect(p,n,t,a,b,c) ((uint64_t (*)(float *,const float *,float *,const float *,const float *,const float *))NC_ADDR(0x140077B30))(p,n,t,a,b,c)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140077B30(float *,float *,float *,float *,float *,float *);
-#define intersect sub_140077B30
+long long sr_collision_segment_plane(float *,float *,float *,float *,float *,float *);
+#define intersect sr_collision_segment_plane
 #else
 #define intersect collision_segment_plane
 #endif

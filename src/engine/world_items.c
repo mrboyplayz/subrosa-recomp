@@ -80,7 +80,7 @@ void world_update_item_bounds(void)
 }
 
 /* Still recompiled code, run when an item is removed. */
-extern long long sub_1400CDFF0(int item);
+extern long long sr_item_restore_block_part(int item);
 
 void world_remove_item(int index)
 {
@@ -91,7 +91,7 @@ void world_remove_item(int index)
         return;
     item = &world_items[index];
     if (item->unknown_318 && item->unknown_138 > 0)
-        sub_1400CDFF0(index);
+        sr_item_restore_block_part(index);
     if (item->type == WORLD_ITEM_TYPE_29)
         world_item_29_count = subtract_int(world_item_29_count, 1);
     if (item->holder != -1)

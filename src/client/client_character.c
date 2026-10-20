@@ -4,353 +4,353 @@
 // Candidate .cmc character clothing/config loader: formats data/model/%s.cmc.
 void            asset_load_character_cmc_candidate(int a1,      char *a2)
 {
-  int v2;
-  __int64 v3;
-  __int64 v4;
-  unsigned int *v5;
-  int v6;
-  unsigned int *v7;
-  float v8;
-  int v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  unsigned int *v14;
-  __int64 v15;
-  int v16;
-  float *v17;
-  signed int v18;
-  __int64 v19;
-  unsigned int v20;
-  __int64 v21;
-  signed int v22;
-  __int64 v23;
-  float v24;
-  __int64 v25;
-  float *v26;
-  signed int v27;
-  float v28;
-  float *v29;
-  float v30;
+  int input_value;
+  __int64 file_handle;
+  __int64 file_handle_2;
+  unsigned int *state_address;
+  int element_index;
+  unsigned int *state_address_2;
+  float product_difference;
+  int integer_sum;
+  __int64 running_total;
+  __int64 running_total_2;
+  __int64 running_total_3;
+  __int64 running_total_4;
+  unsigned int *state_address_3;
+  __int64 lookup_index;
+  int element_index_2;
+  float *weighted_sum;
+  signed int iteration_count;
+  __int64 element_index_3;
+  unsigned int saved_masked_bits;
+  __int64 masked_bits;
+  signed int state_word;
+  __int64 masked_bits_2;
+  float weighted_sum_2;
+  __int64 remaining_count;
+  float *buffer_cursor;
+  signed int iteration_count_2;
+  float scaled_ratio;
+  float *buffer_cursor_2;
+  float weighted_sum_3;
   int i;
-  __int64 v32;
-  unsigned int *v33;
-  __int64 v34;
-  unsigned int v35;
-  unsigned int v36;
-  unsigned int v37;
-  __int64 v38;
-  __int64 v39;
-  unsigned int v40;
-  float v41;
-  float v42;
-  float v43;
-  float v44;
-  float v45;
-  float v46;
-  float v47;
-  __int64 v48;
-  float v49;
-  float v50;
-  float v51;
-  float v52;
-  float v53;
-  float v54;
-  int v55;
-  int v56;
-  __int64 v57;
-  unsigned int *v58;
-  int v59;
-  float v60;
-  float v61;
-  float v62;
-  float *v63;
-  __int64 v64;
-  float *v65;
-  float v66;
-  float v67;
-  float v68;
-  float v69;
-  __int64 v70;
-  float v71;
-  unsigned int *v72;
-  unsigned int v73;
-  signed int v74;
-  signed int v75;
-  unsigned int *v76;
-  __int64 v77;
-  unsigned int *v78;
-  __int64 v79;
-  __int64 v80;
-  __int64 v81;
-  __int64 v82;
-  __int64 v83;
-  unsigned int *v84;
-  unsigned int *v85;
-  unsigned __int64 v86;
-  unsigned int v87;
-  unsigned int v88;
-  int v89;
-  unsigned int *v90;
-  __int64 v91;
-  __int64 v92;
-  __int64 v93;
-  float *v94;
-  float v95;
-  float v96;
-  float v97;
-  float v98;
-  float v99;
-  float v100;
-  float v101;
-  float v102;
-  float v103;
-  float v104;
-  float v105;
-  float v106;
-  float v107;
-  __int64 v108;
-  __int64 v109;
-  __int64 v110;
-  __int64 v111;
-  __int64 v112;
-  __int64 v113;
-  unsigned int v114;
-  unsigned int v115;
-  __int64 v116;
-  float v117;
-  __int64 v118;
-  float v119;
-  unsigned int v120;
-  unsigned int v121;
-  __int64 v122;
-  float v123;
-  __int64 v124;
-  float v125;
-  int v126;
-  __int64 v127;
-  unsigned int *v128;
-  signed int v129;
-  __int64 v130;
+  __int64 remaining_count_2;
+  unsigned int *buffer_cursor_3;
+  __int64 element_index_4;
+  unsigned int scaled_index;
+  unsigned int scaled_index_2;
+  unsigned int scaled_index_3;
+  __int64 scaled_index_4;
+  __int64 scaled_index_5;
+  unsigned int scaled_index_6;
+  float weighted_sum_4;
+  float weighted_sum_5;
+  float weighted_sum_6;
+  float square_root;
+  float scaled_ratio_2;
+  float scaled_ratio_3;
+  float scaled_ratio_4;
+  __int64 scaled_index_7;
+  float weighted_sum_7;
+  float weighted_sum_8;
+  float weighted_sum_9;
+  float weighted_sum_10;
+  float weighted_sum_11;
+  float weighted_sum_12;
+  int state_word_2;
+  int iteration_count_3;
+  __int64 remaining_count_3;
+  unsigned int *state_address_4;
+  int table_value;
+  float weighted_sum_13;
+  float weighted_sum_14;
+  float weighted_sum_15;
+  float *buffer_cursor_4;
+  __int64 remaining_count_4;
+  float *weighted_sum_16;
+  float product_difference_2;
+  float product_difference_3;
+  float scaled_value;
+  float scaled_value_2;
+  __int64 loaded_word;
+  float scaled_value_3;
+  unsigned int *state_address_5;
+  unsigned int scaled_index_8;
+  signed int state_word_3;
+  signed int iteration_count_4;
+  unsigned int *state_address_6;
+  __int64 running_total_5;
+  unsigned int *buffer_cursor_5;
+  __int64 table_value_2;
+  __int64 table_value_3;
+  __int64 table_value_4;
+  __int64 lookup_index_2;
+  __int64 scaled_index_9;
+  unsigned int *record_byte_offset;
+  unsigned int *state_address_7;
+  unsigned __int64 state_address_8;
+  unsigned int table_value_5;
+  unsigned int table_value_6;
+  int iteration_count_5;
+  unsigned int *buffer_cursor_6;
+  __int64 scaled_index_10;
+  __int64 scaled_index_11;
+  __int64 scaled_index_12;
+  float *state_address_9;
+  float combined_products;
+  float combined_products_2;
+  float combined_products_3;
+  float combined_products_4;
+  float combined_products_5;
+  float combined_products_6;
+  float product_difference_4;
+  float product_difference_5;
+  float product_difference_6;
+  float square_root_2;
+  float scaled_ratio_5;
+  float scaled_ratio_6;
+  float scaled_ratio_7;
+  __int64 remaining_count_5;
+  __int64 scaled_index_13;
+  __int64 scaled_index_14;
+  __int64 scaled_index_15;
+  __int64 scaled_index_16;
+  __int64 scaled_index_17;
+  unsigned int table_value_7;
+  unsigned int table_value_8;
+  __int64 scaled_index_18;
+  float weighted_sum_17;
+  __int64 scaled_index_19;
+  float weighted_sum_18;
+  unsigned int table_value_9;
+  unsigned int table_value_10;
+  __int64 scaled_index_20;
+  float weighted_sum_19;
+  __int64 scaled_index_21;
+  float weighted_sum_20;
+  int table_value_11;
+  __int64 scaled_index_22;
+  unsigned int *buffer_cursor_7;
+  signed int scaled_index_23;
+  __int64 unused_local;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400E8580[896];
-#define v132 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 0)) /* [rsp+0h] */
-#define v133 (*(int (*))(void *)(sr_frame_1400E8580 + 32)) /* [rsp+20h] */
-#define v134 (*(int (*))(void *)(sr_frame_1400E8580 + 36)) /* [rsp+24h] */
-#define v135 (*(int (*))(void *)(sr_frame_1400E8580 + 40)) /* [rsp+28h] */
-#define v136 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 48)) /* [rsp+30h] */
-#define v137 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 56)) /* [rsp+38h] */
-#define v138 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 64)) /* [rsp+40h] */
-#define v139 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 72)) /* [rsp+48h] */
-#define v140 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 80)) /* [rsp+50h] */
-#define v141 (*(unsigned __int64 (*))(void *)(sr_frame_1400E8580 + 96)) /* [rsp+60h] */
-#define v142 (*(char (*)[256])(void *)(sr_frame_1400E8580 + 112)) /* [rsp+70h] */
-#define v143 (*(char (*)[512])(void *)(sr_frame_1400E8580 + 368)) /* [rsp+170h] */
-#define v144 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 880)) /* [rsp+370h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 0)) /* [rsp+0h] */
+#define cached_integer_sum (*(int (*))(void *)(sr_frame_1400E8580 + 32)) /* [rsp+20h] */
+#define callee_output_word (*(int (*))(void *)(sr_frame_1400E8580 + 36)) /* [rsp+24h] */
+#define input_value_2 (*(int (*))(void *)(sr_frame_1400E8580 + 40)) /* [rsp+28h] */
+#define saved_file_handle (*(__int64 (*))(void *)(sr_frame_1400E8580 + 48)) /* [rsp+30h] */
+#define saved_running_total (*(__int64 (*))(void *)(sr_frame_1400E8580 + 56)) /* [rsp+38h] */
+#define saved_running_total_2 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 64)) /* [rsp+40h] */
+#define saved_running_total_3 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 72)) /* [rsp+48h] */
+#define saved_running_total_4 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 80)) /* [rsp+50h] */
+#define scaled_index_24 (*(unsigned __int64 (*))(void *)(sr_frame_1400E8580 + 96)) /* [rsp+60h] */
+#define scratch_buffer (*(char (*)[256])(void *)(sr_frame_1400E8580 + 112)) /* [rsp+70h] */
+#define scratch_buffer_2 (*(char (*)[512])(void *)(sr_frame_1400E8580 + 368)) /* [rsp+170h] */
+#define unused_frame_slot_880 (*(__int64 (*))(void *)(sr_frame_1400E8580 + 880)) /* [rsp+370h] */
 
-  v2 = a1;
-  v135 = a1;
-  crt_sprintf(v143, "data/model/%s.cmc", a2);
-  v3 = crt_fopen(v143, "rb");
-  v4 = v3;
-  v136 = v3;
-  v5 = &g_1699AACCC;
-  if ( v3 )
+  input_value = a1;
+  input_value_2 = a1;
+  crt_sprintf(scratch_buffer_2, "data/model/%s.cmc", a2);
+  file_handle = crt_fopen(scratch_buffer_2, "rb");
+  file_handle_2 = file_handle;
+  saved_file_handle = file_handle;
+  state_address = &g_1699AACCC;
+  if ( file_handle )
   {
-    (*(void (           **)(char *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(v142, 1, 4, v3);
-    (*(void (           **)(int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(&v134, 4, 1, v4);
-    if ( v134 != 2 )
+    (*(void (           **)(char *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(scratch_buffer, 1, 4, file_handle);
+    (*(void (           **)(int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(&callee_output_word, 4, 1, file_handle_2);
+    if ( callee_output_word != 2 )
     {
-      crt_fclose(v4);
+      crt_fclose(file_handle_2);
       return;
     }
     (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
       &g_169CBACC8,
       4,
       1,
-      v4);
-    v6 = 0;
+      file_handle_2);
+    element_index = 0;
     if ( (int)g_169CBACC8 > 0 )
     {
-      v7 = &g_169CBACD4;
+      state_address_2 = &g_169CBACD4;
       do
       {
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[18 * v6 + 174250136],
+          &dword_140404A6C[18 * element_index + 174250136],
           4,
           3,
-          v4);
-        v8 = *((float *)v7 - 2);
-        v7 += 18;
-        ++v6;
-        *((float *)v7 - 20) = v8 * 1.125;
-        *((float *)v7 - 19) = *((float *)v7 - 19) * 1.125;
-        *((float *)v7 - 18) = *((float *)v7 - 18) * 1.125;
+          file_handle_2);
+        product_difference = *((float *)state_address_2 - 2);
+        state_address_2 += 18;
+        ++element_index;
+        *((float *)state_address_2 - 20) = product_difference * 1.125;
+        *((float *)state_address_2 - 19) = *((float *)state_address_2 - 19) * 1.125;
+        *((float *)state_address_2 - 18) = *((float *)state_address_2 - 18) * 1.125;
       }
-      while ( v6 < (int)g_169CBACC8 );
+      while ( element_index < (int)g_169CBACC8 );
     }
     (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
       &g_1699AACC0,
       4,
       1,
-      v4);
-    v9 = 0;
-    v133 = 0;
+      file_handle_2);
+    integer_sum = 0;
+    cached_integer_sum = 0;
     if ( (int)g_1699AACC0 > 0 )
     {
-      v10 = 0;
-      v11 = 0;
-      v12 = 0;
-      v140 = 0;
-      v13 = 0;
-      v139 = 0;
-      v137 = 0;
-      v14 = &g_1699AACCC;
-      v138 = 0;
+      running_total = 0;
+      running_total_2 = 0;
+      running_total_3 = 0;
+      saved_running_total_4 = 0;
+      running_total_4 = 0;
+      saved_running_total_3 = 0;
+      saved_running_total = 0;
+      state_address_3 = &g_1699AACCC;
+      saved_running_total_2 = 0;
       do
       {
-        v15 = v9;
-        v141 = 276LL * v9;
+        lookup_index = integer_sum;
+        scaled_index_24 = 276LL * integer_sum;
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[v141 / 4 + 173447318],
+          &dword_140404A6C[scaled_index_24 / 4 + 173447318],
           4,
           3,
-          v4);
-        v16 = 0;
+          file_handle_2);
+        element_index_2 = 0;
         if ( (int)g_169CBACC8 > 0 )
         {
-          v17 = (float *)(v14 + 3);
+          weighted_sum = (float *)(state_address_3 + 3);
           do
           {
             (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-              &dword_140404A6C[46 * v15 + 173447321 + 23 * v15 + 2 * v16 + v16],
+              &dword_140404A6C[46 * lookup_index + 173447321 + 23 * lookup_index + 2 * element_index_2 + element_index_2],
               4,
               3,
-              v4);
-            *(v17 - 2) = *(v17 - 2) * 1.125;
-            *(v17 - 1) = *(v17 - 1) * 1.125;
-            *v17 = *v17 * 1.125;
+              file_handle_2);
+            *(weighted_sum - 2) = *(weighted_sum - 2) * 1.125;
+            *(weighted_sum - 1) = *(weighted_sum - 1) * 1.125;
+            *weighted_sum = *weighted_sum * 1.125;
             (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-              &dword_140404A6C[69 * v15 + 173447369 + v16++],
+              &dword_140404A6C[69 * lookup_index + 173447369 + element_index_2++],
               4,
               1,
-              v4);
-            v17 += 3;
+              file_handle_2);
+            weighted_sum += 3;
           }
-          while ( v16 < (int)g_169CBACC8 );
-          v10 = v140;
-          v11 = v139;
-          v12 = v138;
-          v13 = v137;
+          while ( element_index_2 < (int)g_169CBACC8 );
+          running_total = saved_running_total_4;
+          running_total_2 = saved_running_total_3;
+          running_total_3 = saved_running_total_2;
+          running_total_4 = saved_running_total;
         }
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[v141 / 4 + 173447385],
+          &dword_140404A6C[scaled_index_24 / 4 + 173447385],
           4,
           2,
-          v4);
-        v18 = 0;
-        *(unsigned int *)((char *)&g_169BD2CC4 + v10) = *(v14 - 2);
-        v19 = 0;
-        v20 = 0;
-        *(unsigned int *)((char *)&g_169BD2CC8 + v10) = *(v14 - 1);
-        *(unsigned int *)((char *)&g_169BD2CCC + v10) = *v14;
-        *(unsigned int *)((char *)&g_169BD2D24 + v10) = v14[65];
-        *(unsigned int *)((char *)&g_169BD2D28 + v10) = v14[66];
-        LODWORD(v21) = 0;
-        *(unsigned int *)((char *)&g_169BD2CD0 + v10) = 0;
-        v22 = g_169CBACC8;
+          file_handle_2);
+        iteration_count = 0;
+        *(unsigned int *)((char *)&g_169BD2CC4 + running_total) = *(state_address_3 - 2);
+        element_index_3 = 0;
+        saved_masked_bits = 0;
+        *(unsigned int *)((char *)&g_169BD2CC8 + running_total) = *(state_address_3 - 1);
+        *(unsigned int *)((char *)&g_169BD2CCC + running_total) = *state_address_3;
+        *(unsigned int *)((char *)&g_169BD2D24 + running_total) = state_address_3[65];
+        *(unsigned int *)((char *)&g_169BD2D28 + running_total) = state_address_3[66];
+        LODWORD(masked_bits) = 0;
+        *(unsigned int *)((char *)&g_169BD2CD0 + running_total) = 0;
+        state_word = g_169CBACC8;
         if ( (int)g_169CBACC8 > 0 )
         {
           do
           {
-            v21 = *(int *)((char *)&g_169BD2CD0 + v10);
-            v20 = v21;
-            if ( (int)v21 < 4 && *(float *)&dword_140404A6C[v12 + 173447369 + v19] > 0.0 )
+            masked_bits = *(int *)((char *)&g_169BD2CD0 + running_total);
+            saved_masked_bits = masked_bits;
+            if ( (int)masked_bits < 4 && *(float *)&dword_140404A6C[running_total_3 + 173447369 + element_index_3] > 0.0 )
             {
-              dword_140404A6C[v11 + 174012570 + v21] = v18;
-              v23 = v10 + 12LL * *(int *)((char *)&g_169BD2CD0 + v10);
-              *(unsigned int *)((char *)&g_169BD2CE4 + v23) = dword_140404A6C[3 * v19
+              dword_140404A6C[running_total_2 + 174012570 + masked_bits] = iteration_count;
+              masked_bits_2 = running_total + 12LL * *(int *)((char *)&g_169BD2CD0 + running_total);
+              *(unsigned int *)((char *)&g_169BD2CE4 + masked_bits_2) = dword_140404A6C[3 * element_index_3
                                                                                            + 173447321
-                                                                                           + 3 * v13];
-              *(unsigned int *)((char *)&g_169BD2CE8 + v23) = dword_140404A6C[3 * v19
+                                                                                           + 3 * running_total_4];
+              *(unsigned int *)((char *)&g_169BD2CE8 + masked_bits_2) = dword_140404A6C[3 * element_index_3
                                                                                            + 173447322
-                                                                                           + 3 * v13];
-              *(unsigned int *)((char *)&g_169BD2CEC + v23) = dword_140404A6C[3 * v19
+                                                                                           + 3 * running_total_4];
+              *(unsigned int *)((char *)&g_169BD2CEC + masked_bits_2) = dword_140404A6C[3 * element_index_3
                                                                                            + 173447323
-                                                                                           + 3 * v13];
-              dword_140404A6C[v11 + 174012586 + (int)(*(unsigned int *)((char *)&g_169BD2CD0 + v10))++] = dword_140404A6C[v12 + 173447369 + v19];
-              LODWORD(v21) = *(unsigned int *)((char *)&g_169BD2CD0 + v10);
-              v20 = v21;
-              v22 = g_169CBACC8;
+                                                                                           + 3 * running_total_4];
+              dword_140404A6C[running_total_2 + 174012586 + (int)(*(unsigned int *)((char *)&g_169BD2CD0 + running_total))++] = dword_140404A6C[running_total_3 + 173447369 + element_index_3];
+              LODWORD(masked_bits) = *(unsigned int *)((char *)&g_169BD2CD0 + running_total);
+              saved_masked_bits = masked_bits;
+              state_word = g_169CBACC8;
             }
-            ++v18;
-            ++v19;
+            ++iteration_count;
+            ++element_index_3;
           }
-          while ( v18 < v22 );
-          v4 = v136;
+          while ( iteration_count < state_word );
+          file_handle_2 = saved_file_handle;
         }
-        v24 = 0.0;
-        if ( (int)v21 > 0 )
+        weighted_sum_2 = 0.0;
+        if ( (int)masked_bits > 0 )
         {
-          v25 = v20;
-          v26 = (float *)((char *)&g_169BD2D14 + v10);
+          remaining_count = saved_masked_bits;
+          buffer_cursor = (float *)((char *)&g_169BD2D14 + running_total);
           do
           {
-            v24 = v24 + *v26++;
-            --v25;
+            weighted_sum_2 = weighted_sum_2 + *buffer_cursor++;
+            --remaining_count;
           }
-          while ( v25 );
-          LODWORD(v21) = v20;
+          while ( remaining_count );
+          LODWORD(masked_bits) = saved_masked_bits;
         }
-        v27 = 0;
-        if ( (int)v21 > 0 )
+        iteration_count_2 = 0;
+        if ( (int)masked_bits > 0 )
         {
-          v28 = 1.0 / v24;
-          v29 = (float *)((char *)&g_169BD2D14 + v10);
+          scaled_ratio = 1.0 / weighted_sum_2;
+          buffer_cursor_2 = (float *)((char *)&g_169BD2D14 + running_total);
           do
           {
-            ++v27;
-            v30 = v28 * *v29++;
-            *(v29 - 1) = v30;
+            ++iteration_count_2;
+            weighted_sum_3 = scaled_ratio * *buffer_cursor_2++;
+            *(buffer_cursor_2 - 1) = weighted_sum_3;
           }
-          while ( v27 < *(int *)((char *)&g_169BD2CD0 + v10) );
+          while ( iteration_count_2 < *(int *)((char *)&g_169BD2CD0 + running_total) );
         }
-        v13 += 23;
-        v9 = v133 + 1;
-        v137 = v13;
-        v12 += 69;
-        v133 = v9;
-        v11 += 26;
-        v138 = v12;
-        v10 += 104;
-        v139 = v11;
-        v14 += 69;
-        v140 = v10;
+        running_total_4 += 23;
+        integer_sum = cached_integer_sum + 1;
+        saved_running_total = running_total_4;
+        running_total_3 += 69;
+        cached_integer_sum = integer_sum;
+        running_total_2 += 26;
+        saved_running_total_2 = running_total_3;
+        running_total += 104;
+        saved_running_total_3 = running_total_2;
+        state_address_3 += 69;
+        saved_running_total_4 = running_total;
       }
-      while ( v9 < (int)g_1699AACC0 );
-      v2 = v135;
+      while ( integer_sum < (int)g_1699AACC0 );
+      input_value = input_value_2;
     }
     (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
       &g_169CA2CC4,
       4,
       1,
-      v4);
+      file_handle_2);
     for ( i = 0; i < (int)g_169CA2CC4; ++i )
     {
-      v32 = 3;
-      v33 = &dword_140404A6C[3 * i + 174225559];
+      remaining_count_2 = 3;
+      buffer_cursor_3 = &dword_140404A6C[3 * i + 174225559];
       do
       {
-        (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(v33++, 4, 1, v4);
-        --v32;
+        (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(buffer_cursor_3++, 4, 1, file_handle_2);
+        --remaining_count_2;
       }
-      while ( v32 );
+      while ( remaining_count_2 );
     }
-    crt_fclose(v4);
-    v5 = &g_1699AACCC;
+    crt_fclose(file_handle_2);
+    state_address = &g_1699AACCC;
   }
-  v34 = 0;
+  element_index_4 = 0;
   g_18329E55C = xmmword_140278D30;
   g_18329E57C = 1065353216;
   g_18329E56C = xmmword_140278D30;
@@ -404,437 +404,437 @@ void            asset_load_character_cmc_candidate(int a1,      char *a2)
   g_169CBACE0 = 1031798784;
   do
   {
-    v35 = dword_140404A6C[78 * v34 + 280651455];
-    v36 = dword_140404A6C[78 * v34 + 280651456];
-    v37 = dword_140404A6C[78 * v34 + 280651457];
-    v38 = 9 * v34;
-    v39 = (int)dword_140404A6C[25 * v34 + 282486045];
-    dword_140404A6C[2 * v38 + 174250145] = dword_140404A6C[78 * v34 + 280651452];
-    dword_140404A6C[2 * v38 + 174250146] = dword_140404A6C[78 * v34 + 280651453];
-    dword_140404A6C[2 * v38 + 174250147] = dword_140404A6C[78 * v34 + 280651454];
-    v40 = dword_140404A6C[78 * v34 + 280651458];
-    dword_140404A6C[2 * v38 + 174250148] = v35;
-    dword_140404A6C[2 * v38 + 174250149] = v36;
-    dword_140404A6C[2 * v38 + 174250150] = v37;
-    dword_140404A6C[2 * v38 + 174250151] = v40;
-    dword_140404A6C[2 * v38 + 174250152] = dword_140404A6C[78 * v34 + 280651459];
-    dword_140404A6C[2 * v38 + 174250153] = dword_140404A6C[78 * v34 + 280651460];
-    if ( v34 )
+    scaled_index = dword_140404A6C[78 * element_index_4 + 280651455];
+    scaled_index_2 = dword_140404A6C[78 * element_index_4 + 280651456];
+    scaled_index_3 = dword_140404A6C[78 * element_index_4 + 280651457];
+    scaled_index_4 = 9 * element_index_4;
+    scaled_index_5 = (int)dword_140404A6C[25 * element_index_4 + 282486045];
+    dword_140404A6C[2 * scaled_index_4 + 174250145] = dword_140404A6C[78 * element_index_4 + 280651452];
+    dword_140404A6C[2 * scaled_index_4 + 174250146] = dword_140404A6C[78 * element_index_4 + 280651453];
+    dword_140404A6C[2 * scaled_index_4 + 174250147] = dword_140404A6C[78 * element_index_4 + 280651454];
+    scaled_index_6 = dword_140404A6C[78 * element_index_4 + 280651458];
+    dword_140404A6C[2 * scaled_index_4 + 174250148] = scaled_index;
+    dword_140404A6C[2 * scaled_index_4 + 174250149] = scaled_index_2;
+    dword_140404A6C[2 * scaled_index_4 + 174250150] = scaled_index_3;
+    dword_140404A6C[2 * scaled_index_4 + 174250151] = scaled_index_6;
+    dword_140404A6C[2 * scaled_index_4 + 174250152] = dword_140404A6C[78 * element_index_4 + 280651459];
+    dword_140404A6C[2 * scaled_index_4 + 174250153] = dword_140404A6C[78 * element_index_4 + 280651460];
+    if ( element_index_4 )
     {
-      v41 = *(float *)&dword_140404A6C[18 * v34 + 174250136];
-      v42 = *(float *)&dword_140404A6C[18 * v34 + 174250137];
-      v43 = *(float *)&dword_140404A6C[18 * v34 + 174250138];
-      if ( (unsigned __int64)(v34 - 5) <= 1 || (unsigned __int64)(v34 - 8) <= 1 )
+      weighted_sum_4 = *(float *)&dword_140404A6C[18 * element_index_4 + 174250136];
+      weighted_sum_5 = *(float *)&dword_140404A6C[18 * element_index_4 + 174250137];
+      weighted_sum_6 = *(float *)&dword_140404A6C[18 * element_index_4 + 174250138];
+      if ( (unsigned __int64)(element_index_4 - 5) <= 1 || (unsigned __int64)(element_index_4 - 8) <= 1 )
       {
-        v44 = fsqrt((float)((float)(v42 * v42) + (float)(v41 * v41)) + (float)(v43 * v43));
-        if ( v44 == 0.0 )
+        square_root = fsqrt((float)((float)(weighted_sum_5 * weighted_sum_5) + (float)(weighted_sum_4 * weighted_sum_4)) + (float)(weighted_sum_6 * weighted_sum_6));
+        if ( square_root == 0.0 )
         {
-          v45 = 0.0;
-          v46 = 0.0;
-          v47 = 0.0;
+          scaled_ratio_2 = 0.0;
+          scaled_ratio_3 = 0.0;
+          scaled_ratio_4 = 0.0;
         }
         else
         {
-          v45 = (float)(1.0 / v44) * v41;
-          v46 = (float)(1.0 / v44) * v42;
-          v47 = (float)(1.0 / v44) * v43;
+          scaled_ratio_2 = (float)(1.0 / square_root) * weighted_sum_4;
+          scaled_ratio_3 = (float)(1.0 / square_root) * weighted_sum_5;
+          scaled_ratio_4 = (float)(1.0 / square_root) * weighted_sum_6;
         }
-        v41 = v45 * 0.328125;
-        v42 = v46 * 0.328125;
-        v43 = v47 * 0.328125;
+        weighted_sum_4 = scaled_ratio_2 * 0.328125;
+        weighted_sum_5 = scaled_ratio_3 * 0.328125;
+        weighted_sum_6 = scaled_ratio_4 * 0.328125;
       }
-      v48 = 9 * v39;
-      v49 = *(float *)&dword_140404A6C[2 * v48 + 174250149];
-      v50 = *(float *)&dword_140404A6C[2 * v48 + 174250146];
-      v51 = *(float *)&dword_140404A6C[2 * v48 + 174250150];
-      v52 = *(float *)&dword_140404A6C[2 * v48 + 174250147];
-      v53 = *(float *)&dword_140404A6C[2 * v48 + 174250152] * v43;
-      v54 = *(float *)&dword_140404A6C[2 * v48 + 174250153] * v43;
-      *(float *)&dword_140404A6C[18 * v34 + 174250139] = (float)((float)(v43
-                                                                       * *(float *)&dword_140404A6C[2 * v48 + 174250151])
-                                                               + (float)(v41
-                                                                       * *(float *)&dword_140404A6C[2 * v48 + 174250145]))
-                                                       + (float)((float)(v42
-                                                                       * *(float *)&dword_140404A6C[2 * v48 + 174250148])
-                                                               + *(float *)&dword_140404A6C[2 * v48 + 174250139]);
-      *(float *)&dword_140404A6C[18 * v34 + 174250140] = (float)((float)(v50 * v41) + v53)
-                                                       + (float)((float)(v49 * v42)
-                                                               + *(float *)&dword_140404A6C[2 * v48 + 174250140]);
-      *(float *)&dword_140404A6C[18 * v34 + 174250141] = (float)((float)(v52 * v41) + v54)
-                                                       + (float)((float)(v51 * v42)
-                                                               + *(float *)&dword_140404A6C[2 * v48 + 174250141]);
+      scaled_index_7 = 9 * scaled_index_5;
+      weighted_sum_7 = *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250149];
+      weighted_sum_8 = *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250146];
+      weighted_sum_9 = *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250150];
+      weighted_sum_10 = *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250147];
+      weighted_sum_11 = *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250152] * weighted_sum_6;
+      weighted_sum_12 = *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250153] * weighted_sum_6;
+      *(float *)&dword_140404A6C[18 * element_index_4 + 174250139] = (float)((float)(weighted_sum_6
+                                                                       * *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250151])
+                                                               + (float)(weighted_sum_4
+                                                                       * *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250145]))
+                                                       + (float)((float)(weighted_sum_5
+                                                                       * *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250148])
+                                                               + *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250139]);
+      *(float *)&dword_140404A6C[18 * element_index_4 + 174250140] = (float)((float)(weighted_sum_8 * weighted_sum_4) + weighted_sum_11)
+                                                       + (float)((float)(weighted_sum_7 * weighted_sum_5)
+                                                               + *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250140]);
+      *(float *)&dword_140404A6C[18 * element_index_4 + 174250141] = (float)((float)(weighted_sum_10 * weighted_sum_4) + weighted_sum_12)
+                                                       + (float)((float)(weighted_sum_9 * weighted_sum_5)
+                                                               + *(float *)&dword_140404A6C[2 * scaled_index_7 + 174250141]);
     }
-    ++v34;
-    dword_140404A6C[2 * v38 + 174250142] = dword_140404A6C[2 * v38 + 174250139];
-    dword_140404A6C[2 * v38 + 174250143] = dword_140404A6C[2 * v38 + 174250140];
-    dword_140404A6C[2 * v38 + 174250144] = dword_140404A6C[2 * v38 + 174250141];
+    ++element_index_4;
+    dword_140404A6C[2 * scaled_index_4 + 174250142] = dword_140404A6C[2 * scaled_index_4 + 174250139];
+    dword_140404A6C[2 * scaled_index_4 + 174250143] = dword_140404A6C[2 * scaled_index_4 + 174250140];
+    dword_140404A6C[2 * scaled_index_4 + 174250144] = dword_140404A6C[2 * scaled_index_4 + 174250141];
   }
-  while ( v34 < 16 );
-  v55 = g_1699AACC0;
-  v56 = 0;
-  v57 = g_1699AACC0;
+  while ( element_index_4 < 16 );
+  state_word_2 = g_1699AACC0;
+  iteration_count_3 = 0;
+  remaining_count_3 = g_1699AACC0;
   if ( (int)g_1699AACC0 > 0 )
   {
-    v58 = &g_169BD2CCC;
+    state_address_4 = &g_169BD2CCC;
     do
     {
-      v59 = v58[1];
-      v60 = 0.0;
-      v61 = 0.0;
-      v62 = 0.0;
-      if ( v59 > 0 )
+      table_value = state_address_4[1];
+      weighted_sum_13 = 0.0;
+      weighted_sum_14 = 0.0;
+      weighted_sum_15 = 0.0;
+      if ( table_value > 0 )
       {
-        v63 = (float *)(v58 + 18);
-        v64 = (unsigned int)v59;
-        v65 = (float *)(v58 + 8);
+        buffer_cursor_4 = (float *)(state_address_4 + 18);
+        remaining_count_4 = (unsigned int)table_value;
+        weighted_sum_16 = (float *)(state_address_4 + 8);
         do
         {
-          v66 = *(v65 - 2);
-          v67 = *(v65 - 1);
-          v68 = *v65;
-          v69 = *v63;
-          v70 = *((int *)v63 - 16);
-          v71 = *v65;
-          ++v63;
-          v65 += 3;
-          v60 = v60
-              + (float)((float)((float)((float)(v71 * *(float *)&dword_140404A6C[18 * v70 + 174250151])
-                                      + (float)(v66 * *(float *)&dword_140404A6C[18 * v70 + 174250145]))
-                              + (float)((float)(v67 * *(float *)&dword_140404A6C[18 * v70 + 174250148])
-                                      + *(float *)&dword_140404A6C[18 * v70 + 174250139]))
-                      * v69);
-          v61 = v61
-              + (float)((float)((float)((float)(v66 * *(float *)&dword_140404A6C[18 * v70 + 174250146])
-                                      + (float)(v68 * *(float *)&dword_140404A6C[18 * v70 + 174250152]))
-                              + (float)((float)(v67 * *(float *)&dword_140404A6C[18 * v70 + 174250149])
-                                      + *(float *)&dword_140404A6C[18 * v70 + 174250140]))
-                      * v69);
-          v62 = v62
-              + (float)((float)((float)((float)(v66 * *(float *)&dword_140404A6C[18 * v70 + 174250147])
-                                      + (float)(v68 * *(float *)&dword_140404A6C[18 * v70 + 174250153]))
-                              + (float)((float)(v67 * *(float *)&dword_140404A6C[18 * v70 + 174250150])
-                                      + *(float *)&dword_140404A6C[18 * v70 + 174250141]))
-                      * v69);
-          --v64;
+          product_difference_2 = *(weighted_sum_16 - 2);
+          product_difference_3 = *(weighted_sum_16 - 1);
+          scaled_value = *weighted_sum_16;
+          scaled_value_2 = *buffer_cursor_4;
+          loaded_word = *((int *)buffer_cursor_4 - 16);
+          scaled_value_3 = *weighted_sum_16;
+          ++buffer_cursor_4;
+          weighted_sum_16 += 3;
+          weighted_sum_13 = weighted_sum_13
+              + (float)((float)((float)((float)(scaled_value_3 * *(float *)&dword_140404A6C[18 * loaded_word + 174250151])
+                                      + (float)(product_difference_2 * *(float *)&dword_140404A6C[18 * loaded_word + 174250145]))
+                              + (float)((float)(product_difference_3 * *(float *)&dword_140404A6C[18 * loaded_word + 174250148])
+                                      + *(float *)&dword_140404A6C[18 * loaded_word + 174250139]))
+                      * scaled_value_2);
+          weighted_sum_14 = weighted_sum_14
+              + (float)((float)((float)((float)(product_difference_2 * *(float *)&dword_140404A6C[18 * loaded_word + 174250146])
+                                      + (float)(scaled_value * *(float *)&dword_140404A6C[18 * loaded_word + 174250152]))
+                              + (float)((float)(product_difference_3 * *(float *)&dword_140404A6C[18 * loaded_word + 174250149])
+                                      + *(float *)&dword_140404A6C[18 * loaded_word + 174250140]))
+                      * scaled_value_2);
+          weighted_sum_15 = weighted_sum_15
+              + (float)((float)((float)((float)(product_difference_2 * *(float *)&dword_140404A6C[18 * loaded_word + 174250147])
+                                      + (float)(scaled_value * *(float *)&dword_140404A6C[18 * loaded_word + 174250153]))
+                              + (float)((float)(product_difference_3 * *(float *)&dword_140404A6C[18 * loaded_word + 174250150])
+                                      + *(float *)&dword_140404A6C[18 * loaded_word + 174250141]))
+                      * scaled_value_2);
+          --remaining_count_4;
         }
-        while ( v64 );
+        while ( remaining_count_4 );
       }
-      *((float *)v58 - 2) = v60;
-      ++v56;
-      *((float *)v58 - 1) = v61;
-      *(float *)v58 = v62;
-      v58 += 26;
-      v55 = g_1699AACC0;
-      v57 = g_1699AACC0;
+      *((float *)state_address_4 - 2) = weighted_sum_13;
+      ++iteration_count_3;
+      *((float *)state_address_4 - 1) = weighted_sum_14;
+      *(float *)state_address_4 = weighted_sum_15;
+      state_address_4 += 26;
+      state_word_2 = g_1699AACC0;
+      remaining_count_3 = g_1699AACC0;
     }
-    while ( v56 < (int)g_1699AACC0 );
+    while ( iteration_count_3 < (int)g_1699AACC0 );
   }
-  mesh_vertex_count = v55;
-  if ( v55 > 0 )
+  mesh_vertex_count = state_word_2;
+  if ( state_word_2 > 0 )
   {
-    v72 = (unsigned int *)&g_16A7DBDB0;
+    state_address_5 = (unsigned int *)&g_16A7DBDB0;
     do
     {
-      v73 = *(v5 - 2);
-      v5 += 69;
-      *(v72 - 2) = v73;
-      v72 += 3;
-      *(v72 - 4) = *(v5 - 70);
-      *(v72 - 3) = *(v5 - 69);
-      --v57;
+      scaled_index_8 = *(state_address - 2);
+      state_address += 69;
+      *(state_address_5 - 2) = scaled_index_8;
+      state_address_5 += 3;
+      *(state_address_5 - 4) = *(state_address - 70);
+      *(state_address_5 - 3) = *(state_address - 69);
+      --remaining_count_3;
     }
-    while ( v57 );
+    while ( remaining_count_3 );
   }
-  v74 = g_169CA2CC4;
-  v75 = 0;
+  state_word_3 = g_169CA2CC4;
+  iteration_count_4 = 0;
   mesh_triangle_count = g_169CA2CC4;
   if ( (int)g_169CA2CC4 > 0 )
   {
-    v76 = &g_16AB13DB4;
-    v77 = 0;
-    v78 = &g_16ABD3DB0;
+    state_address_6 = &g_16AB13DB4;
+    running_total_5 = 0;
+    buffer_cursor_5 = &g_16ABD3DB0;
     do
     {
-      v79 = (int)dword_140404A6C[v77 + 174225559];
-      v76 += 6;
-      v80 = (int)dword_140404A6C[v77 + 174225560];
-      ++v75;
-      v81 = (int)dword_140404A6C[v77 + 174225561];
-      ++v78;
-      dword_140404A6C[v77 + 177495248] = v79;
-      dword_140404A6C[v77 + 177495249] = v80;
-      dword_140404A6C[v77 + 177495250] = v81;
-      v77 += 3;
-      *(v78 - 1) = -2;
-      *(v76 - 7) = dword_140404A6C[69 * v79 + 173447385];
-      *(v76 - 6) = dword_140404A6C[69 * v79 + 173447386];
-      *(v76 - 5) = dword_140404A6C[69 * v80 + 173447385];
-      *(v76 - 4) = dword_140404A6C[69 * v80 + 173447386];
-      *(v76 - 3) = dword_140404A6C[69 * v81 + 173447385];
-      *(v76 - 2) = dword_140404A6C[69 * v81 + 173447386];
+      table_value_2 = (int)dword_140404A6C[running_total_5 + 174225559];
+      state_address_6 += 6;
+      table_value_3 = (int)dword_140404A6C[running_total_5 + 174225560];
+      ++iteration_count_4;
+      table_value_4 = (int)dword_140404A6C[running_total_5 + 174225561];
+      ++buffer_cursor_5;
+      dword_140404A6C[running_total_5 + 177495248] = table_value_2;
+      dword_140404A6C[running_total_5 + 177495249] = table_value_3;
+      dword_140404A6C[running_total_5 + 177495250] = table_value_4;
+      running_total_5 += 3;
+      *(buffer_cursor_5 - 1) = -2;
+      *(state_address_6 - 7) = dword_140404A6C[69 * table_value_2 + 173447385];
+      *(state_address_6 - 6) = dword_140404A6C[69 * table_value_2 + 173447386];
+      *(state_address_6 - 5) = dword_140404A6C[69 * table_value_3 + 173447385];
+      *(state_address_6 - 4) = dword_140404A6C[69 * table_value_3 + 173447386];
+      *(state_address_6 - 3) = dword_140404A6C[69 * table_value_4 + 173447385];
+      *(state_address_6 - 2) = dword_140404A6C[69 * table_value_4 + 173447386];
     }
-    while ( v75 < v74 );
+    while ( iteration_count_4 < state_word_3 );
   }
-  v82 = v2;
-  v136 = v2;
-  sub_1401449C0(dword_140404A6C[v2 + 283827638], 0);
-  v83 = 196707LL * v2;
-  v84 = &dword_140404A6C[v83 + 161054682];
-  v85 = &g_169CBACEC;
-  v86 = (unsigned __int64)&g_169CBB16C;
+  lookup_index_2 = input_value;
+  saved_file_handle = input_value;
+  sub_1401449C0(dword_140404A6C[input_value + 283827638], 0);
+  scaled_index_9 = 196707LL * input_value;
+  record_byte_offset = &dword_140404A6C[scaled_index_9 + 161054682];
+  state_address_7 = &g_169CBACEC;
+  state_address_8 = (unsigned __int64)&g_169CBB16C;
   do
   {
-    *(v84 - 2) = *(v85 - 2);
-    *(v84 - 1) = *(v85 - 1);
-    *v84 = *v85;
-    v84[1] = *(v85 - 8);
-    v84[2] = *(v85 - 7);
-    v84[3] = *(v85 - 6);
-    v84[4] = v85[16];
-    v84[5] = v85[17];
-    v84[6] = v85[18];
-    v84[7] = v85[10];
-    v84[8] = v85[11];
-    v84[9] = v85[12];
-    v84[10] = v85[34];
-    v84[11] = v85[35];
-    v84[12] = v85[36];
-    v84[13] = v85[28];
-    v84[14] = v85[29];
-    v84[15] = v85[30];
-    v84[16] = v85[52];
-    v84[17] = v85[53];
-    v84[18] = v85[54];
-    v84[19] = v85[46];
-    v84[20] = v85[47];
-    v84[21] = v85[48];
-    v84[22] = v85[70];
-    v84[23] = v85[71];
-    v84[24] = v85[72];
-    v84[25] = v85[64];
-    v84[26] = v85[65];
-    v84[27] = v85[66];
-    v84[28] = v85[88];
-    v84[29] = v85[89];
-    v84[30] = v85[90];
-    v84[31] = v85[82];
-    v84[32] = v85[83];
-    v84[33] = v85[84];
-    v84[34] = v85[106];
-    v84[35] = v85[107];
-    v84[36] = v85[108];
-    v84[37] = v85[100];
-    v84[38] = v85[101];
-    v84 += 48;
-    *(v84 - 9) = v85[102];
-    *(v84 - 8) = v85[124];
-    *(v84 - 7) = v85[125];
-    *(v84 - 6) = v85[126];
-    *(v84 - 5) = v85[118];
-    *(v84 - 4) = v85[119];
-    v87 = v85[120];
-    v85 += 144;
-    *(v84 - 3) = v87;
+    *(record_byte_offset - 2) = *(state_address_7 - 2);
+    *(record_byte_offset - 1) = *(state_address_7 - 1);
+    *record_byte_offset = *state_address_7;
+    record_byte_offset[1] = *(state_address_7 - 8);
+    record_byte_offset[2] = *(state_address_7 - 7);
+    record_byte_offset[3] = *(state_address_7 - 6);
+    record_byte_offset[4] = state_address_7[16];
+    record_byte_offset[5] = state_address_7[17];
+    record_byte_offset[6] = state_address_7[18];
+    record_byte_offset[7] = state_address_7[10];
+    record_byte_offset[8] = state_address_7[11];
+    record_byte_offset[9] = state_address_7[12];
+    record_byte_offset[10] = state_address_7[34];
+    record_byte_offset[11] = state_address_7[35];
+    record_byte_offset[12] = state_address_7[36];
+    record_byte_offset[13] = state_address_7[28];
+    record_byte_offset[14] = state_address_7[29];
+    record_byte_offset[15] = state_address_7[30];
+    record_byte_offset[16] = state_address_7[52];
+    record_byte_offset[17] = state_address_7[53];
+    record_byte_offset[18] = state_address_7[54];
+    record_byte_offset[19] = state_address_7[46];
+    record_byte_offset[20] = state_address_7[47];
+    record_byte_offset[21] = state_address_7[48];
+    record_byte_offset[22] = state_address_7[70];
+    record_byte_offset[23] = state_address_7[71];
+    record_byte_offset[24] = state_address_7[72];
+    record_byte_offset[25] = state_address_7[64];
+    record_byte_offset[26] = state_address_7[65];
+    record_byte_offset[27] = state_address_7[66];
+    record_byte_offset[28] = state_address_7[88];
+    record_byte_offset[29] = state_address_7[89];
+    record_byte_offset[30] = state_address_7[90];
+    record_byte_offset[31] = state_address_7[82];
+    record_byte_offset[32] = state_address_7[83];
+    record_byte_offset[33] = state_address_7[84];
+    record_byte_offset[34] = state_address_7[106];
+    record_byte_offset[35] = state_address_7[107];
+    record_byte_offset[36] = state_address_7[108];
+    record_byte_offset[37] = state_address_7[100];
+    record_byte_offset[38] = state_address_7[101];
+    record_byte_offset += 48;
+    *(record_byte_offset - 9) = state_address_7[102];
+    *(record_byte_offset - 8) = state_address_7[124];
+    *(record_byte_offset - 7) = state_address_7[125];
+    *(record_byte_offset - 6) = state_address_7[126];
+    *(record_byte_offset - 5) = state_address_7[118];
+    *(record_byte_offset - 4) = state_address_7[119];
+    table_value_5 = state_address_7[120];
+    state_address_7 += 144;
+    *(record_byte_offset - 3) = table_value_5;
   }
-  while ( (__int64)v85 < (__int64)&g_169CBB16C );
-  v88 = 0;
-  dword_140404A6C[v83 + 160858070] = 16;
-  v89 = 0;
-  dword_140404A6C[v83 + 160858069] = 0;
+  while ( (__int64)state_address_7 < (__int64)&g_169CBB16C );
+  table_value_6 = 0;
+  dword_140404A6C[scaled_index_9 + 160858070] = 16;
+  iteration_count_5 = 0;
+  dword_140404A6C[scaled_index_9 + 160858069] = 0;
   if ( (int)g_169CA2CC4 > 0 )
   {
-    v90 = &g_169CA2CC8;
-    v91 = 196707LL * v2;
+    buffer_cursor_6 = &g_169CA2CC8;
+    scaled_index_10 = 196707LL * input_value;
     do
     {
-      v92 = 26LL * (int)v90[2];
-      v93 = 26LL * (int)v90[1];
-      v94 = (float *)&dword_140404A6C[26 * *v90 + 174012566];
-      v95 = *(float *)&dword_140404A6C[v92 + 174012568] - v94[2];
-      v96 = *(float *)&dword_140404A6C[v93 + 174012568] - v94[2];
-      v97 = *(float *)&dword_140404A6C[v92 + 174012566] - *v94;
-      v98 = *(float *)&dword_140404A6C[v93 + 174012567] - v94[1];
-      v99 = *(float *)&dword_140404A6C[v92 + 174012567] - v94[1];
-      v100 = *(float *)&dword_140404A6C[v93 + 174012566] - *v94;
-      v101 = (float)(v99 * v96) - (float)(v95 * v98);
-      v102 = (float)(v95 * v100) - (float)(v97 * v96);
-      v103 = (float)(v97 * v98) - (float)(v99 * v100);
-      v104 = fsqrt((float)((float)(v102 * v102) + (float)(v101 * v101)) + (float)(v103 * v103));
-      if ( v104 == 0.0 )
+      scaled_index_11 = 26LL * (int)buffer_cursor_6[2];
+      scaled_index_12 = 26LL * (int)buffer_cursor_6[1];
+      state_address_9 = (float *)&dword_140404A6C[26 * *buffer_cursor_6 + 174012566];
+      combined_products = *(float *)&dword_140404A6C[scaled_index_11 + 174012568] - state_address_9[2];
+      combined_products_2 = *(float *)&dword_140404A6C[scaled_index_12 + 174012568] - state_address_9[2];
+      combined_products_3 = *(float *)&dword_140404A6C[scaled_index_11 + 174012566] - *state_address_9;
+      combined_products_4 = *(float *)&dword_140404A6C[scaled_index_12 + 174012567] - state_address_9[1];
+      combined_products_5 = *(float *)&dword_140404A6C[scaled_index_11 + 174012567] - state_address_9[1];
+      combined_products_6 = *(float *)&dword_140404A6C[scaled_index_12 + 174012566] - *state_address_9;
+      product_difference_4 = (float)(combined_products_5 * combined_products_2) - (float)(combined_products * combined_products_4);
+      product_difference_5 = (float)(combined_products * combined_products_6) - (float)(combined_products_3 * combined_products_2);
+      product_difference_6 = (float)(combined_products_3 * combined_products_4) - (float)(combined_products_5 * combined_products_6);
+      square_root_2 = fsqrt((float)((float)(product_difference_5 * product_difference_5) + (float)(product_difference_4 * product_difference_4)) + (float)(product_difference_6 * product_difference_6));
+      if ( square_root_2 == 0.0 )
       {
-        v105 = 0.0;
-        v106 = 0.0;
-        v107 = 0.0;
+        scaled_ratio_5 = 0.0;
+        scaled_ratio_6 = 0.0;
+        scaled_ratio_7 = 0.0;
       }
       else
       {
-        v105 = v101 * (float)(1.0 / v104);
-        v106 = v102 * (float)(1.0 / v104);
-        v107 = v103 * (float)(1.0 / v104);
+        scaled_ratio_5 = product_difference_4 * (float)(1.0 / square_root_2);
+        scaled_ratio_6 = product_difference_5 * (float)(1.0 / square_root_2);
+        scaled_ratio_7 = product_difference_6 * (float)(1.0 / square_root_2);
       }
-      v108 = 3;
+      remaining_count_5 = 3;
       do
       {
-        v109 = (int)*v90;
-        if ( (unsigned int)(v2 - 22) <= 1 )
-          *(float *)&dword_140404A6C[26 * *v90 + 174012568] = *(float *)&dword_140404A6C[26 * *v90 + 174012568]
+        scaled_index_13 = (int)*buffer_cursor_6;
+        if ( (unsigned int)(input_value - 22) <= 1 )
+          *(float *)&dword_140404A6C[26 * *buffer_cursor_6 + 174012568] = *(float *)&dword_140404A6C[26 * *buffer_cursor_6 + 174012568]
                                                             - 0.015625;
-        v110 = 26 * v109;
-        v111 = v91 + (int)(v88 * dword_140404A6C[v83 + 160858070]);
-        dword_140404A6C[v111 + 160858071] = dword_140404A6C[26 * v109 + 174012566];
-        dword_140404A6C[v111 + 160858072] = dword_140404A6C[26 * v109 + 174012567];
-        dword_140404A6C[v111 + 160858073] = dword_140404A6C[26 * v109 + 174012568];
-        v112 = v91 + (int)(dword_140404A6C[v83 + 160858069] * dword_140404A6C[v83 + 160858070]);
-        dword_140404A6C[v112 + 160858074] = dword_140404A6C[26 * v109 + 174012590];
-        dword_140404A6C[v112 + 160858075] = dword_140404A6C[26 * v109 + 174012591];
-        v113 = v91 + (int)(dword_140404A6C[v83 + 160858069] * dword_140404A6C[v83 + 160858070]);
-        *(float *)&dword_140404A6C[v113 + 160858076] = v105;
-        *(float *)&dword_140404A6C[v113 + 160858077] = v106;
-        *(float *)&dword_140404A6C[v113 + 160858078] = v107;
-        v114 = dword_140404A6C[v83 + 160858069];
-        v115 = dword_140404A6C[v83 + 160858070];
-        v116 = v91 + (int)(v115 * v114);
-        v117 = *(float *)&dword_140404A6C[v116 + 160858075];
-        if ( v117 >= 0.9375 && v117 < 1.0 )
+        scaled_index_14 = 26 * scaled_index_13;
+        scaled_index_15 = scaled_index_10 + (int)(table_value_6 * dword_140404A6C[scaled_index_9 + 160858070]);
+        dword_140404A6C[scaled_index_15 + 160858071] = dword_140404A6C[26 * scaled_index_13 + 174012566];
+        dword_140404A6C[scaled_index_15 + 160858072] = dword_140404A6C[26 * scaled_index_13 + 174012567];
+        dword_140404A6C[scaled_index_15 + 160858073] = dword_140404A6C[26 * scaled_index_13 + 174012568];
+        scaled_index_16 = scaled_index_10 + (int)(dword_140404A6C[scaled_index_9 + 160858069] * dword_140404A6C[scaled_index_9 + 160858070]);
+        dword_140404A6C[scaled_index_16 + 160858074] = dword_140404A6C[26 * scaled_index_13 + 174012590];
+        dword_140404A6C[scaled_index_16 + 160858075] = dword_140404A6C[26 * scaled_index_13 + 174012591];
+        scaled_index_17 = scaled_index_10 + (int)(dword_140404A6C[scaled_index_9 + 160858069] * dword_140404A6C[scaled_index_9 + 160858070]);
+        *(float *)&dword_140404A6C[scaled_index_17 + 160858076] = scaled_ratio_5;
+        *(float *)&dword_140404A6C[scaled_index_17 + 160858077] = scaled_ratio_6;
+        *(float *)&dword_140404A6C[scaled_index_17 + 160858078] = scaled_ratio_7;
+        table_value_7 = dword_140404A6C[scaled_index_9 + 160858069];
+        table_value_8 = dword_140404A6C[scaled_index_9 + 160858070];
+        scaled_index_18 = scaled_index_10 + (int)(table_value_8 * table_value_7);
+        weighted_sum_17 = *(float *)&dword_140404A6C[scaled_index_18 + 160858075];
+        if ( weighted_sum_17 >= 0.9375 && weighted_sum_17 < 1.0 )
         {
-          dword_140404A6C[v116 + 160858074] = 1099169792;
-          v115 = dword_140404A6C[v83 + 160858070];
-          v114 = dword_140404A6C[v83 + 160858069];
+          dword_140404A6C[scaled_index_18 + 160858074] = 1099169792;
+          table_value_8 = dword_140404A6C[scaled_index_9 + 160858070];
+          table_value_7 = dword_140404A6C[scaled_index_9 + 160858069];
         }
-        v118 = v91 + (int)(v115 * v114);
-        v119 = *(float *)&dword_140404A6C[v118 + 160858075];
-        if ( v119 >= 0.625 && v119 < 0.6875 )
+        scaled_index_19 = scaled_index_10 + (int)(table_value_8 * table_value_7);
+        weighted_sum_18 = *(float *)&dword_140404A6C[scaled_index_19 + 160858075];
+        if ( weighted_sum_18 >= 0.625 && weighted_sum_18 < 0.6875 )
         {
-          dword_140404A6C[v118 + 160858074] = 1099694080;
-          v115 = dword_140404A6C[v83 + 160858070];
-          v114 = dword_140404A6C[v83 + 160858069];
+          dword_140404A6C[scaled_index_19 + 160858074] = 1099694080;
+          table_value_8 = dword_140404A6C[scaled_index_9 + 160858070];
+          table_value_7 = dword_140404A6C[scaled_index_9 + 160858069];
         }
-        v120 = v115;
-        v121 = v114;
-        v122 = (int)(v115 * v114);
-        v123 = *(float *)&dword_140404A6C[v122 + 160858075 + v91];
-        if ( v123 >= 0.375 && v123 < 0.4375 && *(float *)&dword_140404A6C[v122 + 160858074 + v91] < 0.3125 )
+        table_value_9 = table_value_8;
+        table_value_10 = table_value_7;
+        scaled_index_20 = (int)(table_value_8 * table_value_7);
+        weighted_sum_19 = *(float *)&dword_140404A6C[scaled_index_20 + 160858075 + scaled_index_10];
+        if ( weighted_sum_19 >= 0.375 && weighted_sum_19 < 0.4375 && *(float *)&dword_140404A6C[scaled_index_20 + 160858074 + scaled_index_10] < 0.3125 )
         {
-          dword_140404A6C[v122 + 160858074 + v91] = 1099694080;
-          v120 = dword_140404A6C[v83 + 160858070];
-          v121 = dword_140404A6C[v83 + 160858069];
+          dword_140404A6C[scaled_index_20 + 160858074 + scaled_index_10] = 1099694080;
+          table_value_9 = dword_140404A6C[scaled_index_9 + 160858070];
+          table_value_10 = dword_140404A6C[scaled_index_9 + 160858069];
         }
-        v124 = v91 + (int)(v120 * v121);
-        v125 = *(float *)&dword_140404A6C[v124 + 160858075];
-        if ( v125 >= 0.5 && v125 < 0.5625 )
+        scaled_index_21 = scaled_index_10 + (int)(table_value_9 * table_value_10);
+        weighted_sum_20 = *(float *)&dword_140404A6C[scaled_index_21 + 160858075];
+        if ( weighted_sum_20 >= 0.5 && weighted_sum_20 < 0.5625 )
         {
-          dword_140404A6C[v124 + 160858074] = 1100218368;
-          v121 = dword_140404A6C[v83 + 160858069];
+          dword_140404A6C[scaled_index_21 + 160858074] = 1100218368;
+          table_value_10 = dword_140404A6C[scaled_index_9 + 160858069];
         }
-        v126 = dword_140404A6C[v110 + 174012569];
-        v127 = v91 + (int)(4 * v121);
-        v86 = 0;
-        dword_140404A6C[v127 + 161021911] = 1065353216;
-        dword_140404A6C[v91 + 161021912 + (int)(4 * dword_140404A6C[v83 + 160858069])] = 0;
-        dword_140404A6C[v91 + 161021913 + (int)(4 * dword_140404A6C[v83 + 160858069])] = 0;
-        dword_140404A6C[v91 + 161021914 + (int)(4 * dword_140404A6C[v83 + 160858069])] = 0;
-        dword_140404A6C[v91 + 160989143 + (int)(4 * dword_140404A6C[v83 + 160858069])] = 0;
-        dword_140404A6C[v91 + 160989144 + (int)(4 * dword_140404A6C[v83 + 160858069])] = 0;
-        dword_140404A6C[v91 + 160989145 + (int)(4 * dword_140404A6C[v83 + 160858069])] = 0;
-        dword_140404A6C[v91 + 160989146 + (int)(4 * dword_140404A6C[v83 + 160858069])] = 0;
-        if ( v126 > 0 )
+        table_value_11 = dword_140404A6C[scaled_index_14 + 174012569];
+        scaled_index_22 = scaled_index_10 + (int)(4 * table_value_10);
+        state_address_8 = 0;
+        dword_140404A6C[scaled_index_22 + 161021911] = 1065353216;
+        dword_140404A6C[scaled_index_10 + 161021912 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])] = 0;
+        dword_140404A6C[scaled_index_10 + 161021913 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])] = 0;
+        dword_140404A6C[scaled_index_10 + 161021914 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])] = 0;
+        dword_140404A6C[scaled_index_10 + 160989143 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])] = 0;
+        dword_140404A6C[scaled_index_10 + 160989144 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])] = 0;
+        dword_140404A6C[scaled_index_10 + 160989145 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])] = 0;
+        dword_140404A6C[scaled_index_10 + 160989146 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])] = 0;
+        if ( table_value_11 > 0 )
         {
-          v128 = &dword_140404A6C[v110 + 174012586];
+          buffer_cursor_7 = &dword_140404A6C[scaled_index_14 + 174012586];
           do
           {
-            dword_140404A6C[v91 + 160989143 + (int)(v86 + 4 * dword_140404A6C[v83 + 160858069])] = *(++v128 - 17);
-            v129 = v86 + 4 * dword_140404A6C[v83 + 160858069];
-            v86 = (unsigned int)(v86 + 1);
-            dword_140404A6C[v91 + 161021911 + v129] = *(v128 - 1);
+            dword_140404A6C[scaled_index_10 + 160989143 + (int)(state_address_8 + 4 * dword_140404A6C[scaled_index_9 + 160858069])] = *(++buffer_cursor_7 - 17);
+            scaled_index_23 = state_address_8 + 4 * dword_140404A6C[scaled_index_9 + 160858069];
+            state_address_8 = (unsigned int)(state_address_8 + 1);
+            dword_140404A6C[scaled_index_10 + 161021911 + scaled_index_23] = *(buffer_cursor_7 - 1);
           }
-          while ( (int)v86 < v126 );
+          while ( (int)state_address_8 < table_value_11 );
         }
-        ++v90;
-        *(_OWORD *)&dword_140404A6C[v91
+        ++buffer_cursor_6;
+        *(_OWORD *)&dword_140404A6C[scaled_index_10
                                   + 160858079
-                                  + (int)(dword_140404A6C[v83 + 160858069] * dword_140404A6C[v83 + 160858070])] = *(_OWORD *)&dword_140404A6C[v91 + 160989143 + (int)(4 * dword_140404A6C[v83 + 160858069])];
-        *(_OWORD *)&dword_140404A6C[v91
+                                  + (int)(dword_140404A6C[scaled_index_9 + 160858069] * dword_140404A6C[scaled_index_9 + 160858070])] = *(_OWORD *)&dword_140404A6C[scaled_index_10 + 160989143 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])];
+        *(_OWORD *)&dword_140404A6C[scaled_index_10
                                   + 160858083
-                                  + (int)(dword_140404A6C[v83 + 160858069] * dword_140404A6C[v83 + 160858070])] = *(_OWORD *)&dword_140404A6C[v91 + 161021911 + (int)(4 * dword_140404A6C[v83 + 160858069])];
-        v88 = dword_140404A6C[v83 + 160858069] + 1;
-        dword_140404A6C[v83 + 160858069] = v88;
-        --v108;
+                                  + (int)(dword_140404A6C[scaled_index_9 + 160858069] * dword_140404A6C[scaled_index_9 + 160858070])] = *(_OWORD *)&dword_140404A6C[scaled_index_10 + 161021911 + (int)(4 * dword_140404A6C[scaled_index_9 + 160858069])];
+        table_value_6 = dword_140404A6C[scaled_index_9 + 160858069] + 1;
+        dword_140404A6C[scaled_index_9 + 160858069] = table_value_6;
+        --remaining_count_5;
       }
-      while ( v108 );
-      ++v89;
+      while ( remaining_count_5 );
+      ++iteration_count_5;
     }
-    while ( v89 < (int)g_169CA2CC4 );
-    v82 = v136;
+    while ( iteration_count_5 < (int)g_169CA2CC4 );
+    lookup_index_2 = saved_file_handle;
   }
-  glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[v82 + 283791190] + 283793813]);
+  glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[lookup_index_2 + 283791190] + 283793813]);
   glBufferData(34962,
-    (int)(4 * dword_140404A6C[v83 + 160858069] * dword_140404A6C[v83 + 160858070]),
-    &dword_140404A6C[v83 + 160858071],
+    (int)(4 * dword_140404A6C[scaled_index_9 + 160858069] * dword_140404A6C[scaled_index_9 + 160858070]),
+    &dword_140404A6C[scaled_index_9 + 160858071],
     35044);
   glBindBuffer(34962, 0);
   return;
 }
-#undef v132
-#undef v133
-#undef v134
-#undef v135
-#undef v136
-#undef v137
-#undef v138
-#undef v139
-#undef v140
-#undef v141
-#undef v142
-#undef v143
-#undef v144
+#undef unused_frame_slot_0
+#undef cached_integer_sum
+#undef callee_output_word
+#undef input_value_2
+#undef saved_file_handle
+#undef saved_running_total
+#undef saved_running_total_2
+#undef saved_running_total_3
+#undef saved_running_total_4
+#undef scaled_index_24
+#undef scratch_buffer
+#undef scratch_buffer_2
+#undef unused_frame_slot_880
 
 //----- (00000001400FBA50) ----------------------------------------------------
 __int64 sub_1400FBA50()
 {
-  __int64 v0;
-  __int64 v1;
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  unsigned int v8;
-  unsigned int v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  unsigned int v14;
-  unsigned int v15;
-  __int64 v16;
-  __int64 v17;
+  __int64 unrecovered_register_value;
+  __int64 unused_frame_slot_0;
+  __int64 unused_frame_slot_32;
+  __int64 unused_frame_slot_192;
+  __int64 unused_frame_slot_224;
+  __int64 state_word;
+  __int64 scaled_index;
+  __int64 unused_local;
+  unsigned int scaled_index_2;
+  unsigned int scaled_index_3;
+  __int64 unused_local_2;
+  __int64 state_word_2;
+  __int64 scaled_index_4;
+  __int64 unused_local_3;
+  unsigned int scaled_index_5;
+  unsigned int scaled_index_6;
+  __int64 unused_local_4;
+  __int64 unrecovered_register_value_2;
   _Alignas(8) unsigned sr_character_position[3];
   _Alignas(16) unsigned sr_character_rotation[12];
   _Alignas(16) unsigned sr_character_transform[16];
   unsigned sr_character_light[3];
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400FBA50[240];
-#define v19 (*(__int64 (*))(void *)(sr_frame_1400FBA50 + 0)) /* [rsp+8h] */
-#define v20 (*(__int64 (*))(void *)(sr_frame_1400FBA50 + 32)) /* [rsp+28h] */
-#define v21 (*(__int64 (*))(void *)(sr_frame_1400FBA50 + 40)) /* [rsp+30h] */
-#define v37 (*(float (*)[4])(void *)(sr_frame_1400FBA50 + 192)) /* [rsp+C8h] */
-#define v40 (*(__int64 (*))(void *)(sr_frame_1400FBA50 + 224)) /* [rsp+E8h] */
+#define unused_frame_slot_0_2 (*(__int64 (*))(void *)(sr_frame_1400FBA50 + 0)) /* [rsp+8h] */
+#define packed_word_bits (*(__int64 (*))(void *)(sr_frame_1400FBA50 + 32)) /* [rsp+28h] */
+#define unused_written_slot (*(__int64 (*))(void *)(sr_frame_1400FBA50 + 40)) /* [rsp+30h] */
+#define float_buffer (*(float (*)[4])(void *)(sr_frame_1400FBA50 + 192)) /* [rsp+C8h] */
+#define unused_frame_slot_224_2 (*(__int64 (*))(void *)(sr_frame_1400FBA50 + 224)) /* [rsp+E8h] */
 
   static const float sr_character_axis[3] = {0.0f,1.0f,0.0f};
 
   glFramebufferTexture2D(36160, 36064, 3553, dword_140404A6C[44 * g_183EBE404 + 284024944], 0);
   glEnable(2929);
   glDepthFunc(515);
-  LOBYTE(v0) = 1;
-  glDepthMask(v0);
+  LOBYTE(unrecovered_register_value) = 1;
+  glDepthMask(unrecovered_register_value);
   glClearColor(0.125f,0.125f,0.125f,0.0f);
   glClear(16640);
-  sub_14007A570(0, 0, 1024, 640, 0.125, 1024.0, 1.0);
+  sr_camera_begin_perspective(0, 0, 1024, 640, 0.125, 1024.0, 1.0);
   *(_OWORD *)&g_183F7C544 = xmmword_1402796C0;
   *(_OWORD *)&g_183F7C554 = xmmword_140279490;
   *(_OWORD *)&g_183F7C564 = xmmword_140279490;
-  sub_14007BE20((float *)(unsigned int *)&g_183F7C544, (unsigned int *)&g_183F7C550);
+  sr_camera_set_view((float *)(unsigned int *)&g_183F7C544, (unsigned int *)&g_183F7C550);
   glUseProgram(model_program);
   glActiveTexture(33985);
   glEnable(3553);
@@ -845,7 +845,7 @@ __int64 sub_1400FBA50()
   (*(__int128 *)(void *)sr_character_rotation) = xmmword_140278D30;
   sr_character_rotation[8] = 1065353216;
   (*(__int128 *)(void *)(sr_character_rotation+4)) = xmmword_140278D30;
-  sub_14007B2A0((__int64)&(*(__int128 *)(void *)sr_character_rotation), sr_character_axis, sr_export_float_lane_container(1080177110));
+  sr_math_mat3_rotate_rows((__int64)&(*(__int128 *)(void *)sr_character_rotation), sr_character_axis, sr_export_float_lane_container(1080177110));
   sr_character_light[0] = 0;
   qmemcpy((sr_character_light+1), "333?333?", 8);
   *(unsigned int *)&g_184178D40 = 1056964608;
@@ -860,14 +860,14 @@ __int64 sub_1400FBA50()
   glUniform3fv(model_u_lightdirection, 1, &sr_character_light[0]);
   glUniform3fv(model_u_lightambient, 1, (unsigned int *)&g_184178D40);
   glUniform3fv(model_u_lightdiffuse, 1, (unsigned int *)&g_184178D50);
-  v5 = (int)g_183EBF17C;
-  v37[3] = 0.0;
-  v6 = (int)dword_140404A6C[16 * g_151E461E8 + 283827702 + g_151E461EC];
-  v37[0] = (float)((float)(int)g_151E461F0 + 0.5) * 0.0625;
-  v37[2] = (float)((float)(int)g_151E461FC + 0.5) * 0.0625;
-  v37[1] = (float)((float)(int)g_151E461F4 + 0.5) * 0.0625;
+  state_word = (int)g_183EBF17C;
+  float_buffer[3] = 0.0;
+  scaled_index = (int)dword_140404A6C[16 * g_151E461E8 + 283827702 + g_151E461EC];
+  float_buffer[0] = (float)((float)(int)g_151E461F0 + 0.5) * 0.0625;
+  float_buffer[2] = (float)((float)(int)g_151E461FC + 0.5) * 0.0625;
+  float_buffer[1] = (float)((float)(int)g_151E461F4 + 0.5) * 0.0625;
   glActiveTexture(33984);
-  glBindTexture(3553, dword_140404A6C[44 * v5 + 284024944]);
+  glBindTexture(3553, dword_140404A6C[44 * state_word + 284024944]);
   glActiveTexture(33986);
   glBindTexture(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
   g_1A724E600 = xmmword_140278D30;
@@ -886,27 +886,27 @@ __int64 sub_1400FBA50()
   sr_character_transform[10] = sr_character_rotation[8];
   sr_character_transform[7] = 0;
   sr_character_transform[11] = 0;
-  sub_14007A0E0((unsigned int *)&g_1A724E600, (__int64)&(*(int64_t *)(void *)sr_character_transform), (__int64)(unsigned int *)&g_1A724E600);
-  sub_14007A0E0((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
-  sub_14007A0E0((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E600, (__int64)&(*(int64_t *)(void *)sr_character_transform), (__int64)(unsigned int *)&g_1A724E600);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
   glUniformMatrix4fv(model_u_modelviewprojectionmatrix, 1, 0, (unsigned int *)&g_1A724E6C0);
   glEnableVertexAttribArray(0);
   glEnableVertexAttribArray(1);
   glEnableVertexAttribArray(2);
-  glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[v6 + 283790166] + 283793813]);
-  v21 = 0;
-  LODWORD(v20) = 4 * dword_140404A6C[908 * v6 + 178527462];
-  glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)((uint32_t)v20),(const void *)(intptr_t)(0));
-  v8 = 4 * dword_140404A6C[908 * v6 + 178527462];
-  v21 = 12;
-  LODWORD(v20) = v8;
-  glVertexAttribPointer(1, 2, 5126,0,(int)(uint32_t)((uint32_t)v20),(const void *)(intptr_t)(12));
-  v9 = 4 * dword_140404A6C[908 * v6 + 178527462];
-  v21 = 20;
-  LODWORD(v20) = v9;
-  glVertexAttribPointer(2, 3, 5126,0,(int)(uint32_t)((uint32_t)v20),(const void *)(intptr_t)(20));
-  glVertexAttrib4fv(3, v37);
-  glDrawArrays(4, 0, 3 * dword_140404A6C[908 * v6 + 178527465]);
+  glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[scaled_index + 283790166] + 283793813]);
+  unused_written_slot = 0;
+  LODWORD(packed_word_bits) = 4 * dword_140404A6C[908 * scaled_index + 178527462];
+  glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)((uint32_t)packed_word_bits),(const void *)(intptr_t)(0));
+  scaled_index_2 = 4 * dword_140404A6C[908 * scaled_index + 178527462];
+  unused_written_slot = 12;
+  LODWORD(packed_word_bits) = scaled_index_2;
+  glVertexAttribPointer(1, 2, 5126,0,(int)(uint32_t)((uint32_t)packed_word_bits),(const void *)(intptr_t)(12));
+  scaled_index_3 = 4 * dword_140404A6C[908 * scaled_index + 178527462];
+  unused_written_slot = 20;
+  LODWORD(packed_word_bits) = scaled_index_3;
+  glVertexAttribPointer(2, 3, 5126,0,(int)(uint32_t)((uint32_t)packed_word_bits),(const void *)(intptr_t)(20));
+  glVertexAttrib4fv(3, float_buffer);
+  glDrawArrays(4, 0, 3 * dword_140404A6C[908 * scaled_index + 178527465]);
   glBindBuffer(34962, 0);
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
@@ -915,13 +915,13 @@ __int64 sub_1400FBA50()
   g_1A724E610 = xmmword_140278D80;
   g_1A724E620 = xmmword_140278E20;
   g_1A724E630 = xmmword_140279490;
-  sub_14007A0E0((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
-  sub_14007A0E0((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
   glActiveTexture(33984);
-  v11 = (int)g_183EBF17C;
-  v12 = (int)dword_140404A6C[16 * g_151E461E8 + 283827734 + g_151E461F8];
+  state_word_2 = (int)g_183EBF17C;
+  scaled_index_4 = (int)dword_140404A6C[16 * g_151E461E8 + 283827734 + g_151E461F8];
   glActiveTexture(33984);
-  glBindTexture(3553, dword_140404A6C[44 * v11 + 284024944]);
+  glBindTexture(3553, dword_140404A6C[44 * state_word_2 + 284024944]);
   glActiveTexture(33986);
   glBindTexture(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
   g_1A724E600 = xmmword_140278D30;
@@ -940,27 +940,27 @@ __int64 sub_1400FBA50()
   (*(__int128 *)(void *)(sr_character_transform+12)) = xmmword_140279490;
   sr_character_transform[10] = sr_character_rotation[8];
   sr_character_transform[11] = 0;
-  sub_14007A0E0((unsigned int *)&g_1A724E600, (__int64)&(*(int64_t *)(void *)sr_character_transform), (__int64)(unsigned int *)&g_1A724E600);
-  sub_14007A0E0((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
-  sub_14007A0E0((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E600, (__int64)&(*(int64_t *)(void *)sr_character_transform), (__int64)(unsigned int *)&g_1A724E600);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
   glUniformMatrix4fv(model_u_modelviewprojectionmatrix, 1, 0, (unsigned int *)&g_1A724E6C0);
   glEnableVertexAttribArray(0);
   glEnableVertexAttribArray(1);
   glEnableVertexAttribArray(2);
-  glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[v12 + 283790166] + 283793813]);
-  v21 = 0;
-  LODWORD(v20) = 4 * dword_140404A6C[908 * v12 + 178527462];
-  glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)((uint32_t)v20),(const void *)(intptr_t)(0));
-  v14 = 4 * dword_140404A6C[908 * v12 + 178527462];
-  v21 = 12;
-  LODWORD(v20) = v14;
-  glVertexAttribPointer(1, 2, 5126,0,(int)(uint32_t)((uint32_t)v20),(const void *)(intptr_t)(12));
-  v15 = 4 * dword_140404A6C[908 * v12 + 178527462];
-  v21 = 20;
-  LODWORD(v20) = v15;
-  glVertexAttribPointer(2, 3, 5126,0,(int)(uint32_t)((uint32_t)v20),(const void *)(intptr_t)(20));
-  glVertexAttrib4fv(3, v37);
-  glDrawArrays(4, 0, 3 * dword_140404A6C[908 * v12 + 178527465]);
+  glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[scaled_index_4 + 283790166] + 283793813]);
+  unused_written_slot = 0;
+  LODWORD(packed_word_bits) = 4 * dword_140404A6C[908 * scaled_index_4 + 178527462];
+  glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)((uint32_t)packed_word_bits),(const void *)(intptr_t)(0));
+  scaled_index_5 = 4 * dword_140404A6C[908 * scaled_index_4 + 178527462];
+  unused_written_slot = 12;
+  LODWORD(packed_word_bits) = scaled_index_5;
+  glVertexAttribPointer(1, 2, 5126,0,(int)(uint32_t)((uint32_t)packed_word_bits),(const void *)(intptr_t)(12));
+  scaled_index_6 = 4 * dword_140404A6C[908 * scaled_index_4 + 178527462];
+  unused_written_slot = 20;
+  LODWORD(packed_word_bits) = scaled_index_6;
+  glVertexAttribPointer(2, 3, 5126,0,(int)(uint32_t)((uint32_t)packed_word_bits),(const void *)(intptr_t)(20));
+  glVertexAttrib4fv(3, float_buffer);
+  glDrawArrays(4, 0, 3 * dword_140404A6C[908 * scaled_index_4 + 178527465]);
   glBindBuffer(34962, 0);
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
@@ -969,11 +969,11 @@ __int64 sub_1400FBA50()
   g_1A724E610 = xmmword_140278D80;
   g_1A724E620 = xmmword_140278E20;
   g_1A724E630 = xmmword_140279490;
-  sub_14007A0E0((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
-  sub_14007A0E0((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
+  sr_math_mat4_multiply((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
   glActiveTexture(33984);
-  LOBYTE(v17) = 1;
-  glDepthMask(v17);
+  LOBYTE(unrecovered_register_value_2) = 1;
+  glDepthMask(unrecovered_register_value_2);
   glDisable(2929);
   glDepthMask(0);
   glDisable(2884);
@@ -986,11 +986,11 @@ __int64 sub_1400FBA50()
   glBindTexture(3553, dword_140404A6C[42 * g_183EBE404 + 436582486]);
   glActiveTexture(33984);
   glDrawArrays(4, 0, 3);
-  sub_14007BB00();
+  sr_camera_begin_2d();
   return 0; /* compatibility result discarded by all reviewed callers */
 }
-#undef v19
-#undef v20
-#undef v21
-#undef v37
-#undef v40
+#undef unused_frame_slot_0_2
+#undef packed_word_bits
+#undef unused_written_slot
+#undef float_buffer
+#undef unused_frame_slot_224_2

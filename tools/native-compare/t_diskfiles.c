@@ -6,10 +6,10 @@
 #define CALL(address, name, signature, ...) ((uint64_t (*) signature)NC_ADDR(address))(__VA_ARGS__)
 #else
 #ifdef NC_CLIENT_WRAPPERS
-long long sub_14004C960(int,int);
-long long sub_140080690(int,uint32_t,char *,uint32_t);
-#define disk_for_item_drive sub_14004C960
-#define disk_add_file(d,p,n,c) sub_140080690(d,p,(char *)(n),c)
+long long sr_disk_for_item_drive(int,int);
+long long sr_disk_add_file(int,uint32_t,char *,uint32_t);
+#define disk_for_item_drive sr_disk_for_item_drive
+#define disk_add_file(d,p,n,c) sr_disk_add_file(d,p,(char *)(n),c)
 #endif
 #define CALL(address, name, signature, ...) ((uint64_t)name(__VA_ARGS__))
 #endif

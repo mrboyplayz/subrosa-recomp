@@ -3,7 +3,7 @@
 #include "collision_placed.h"
 
 /* The radius occupies the sixth argument's stack slot as float bits. */
-extern uint32_t sub_140035690(float point[3], float normal[3], float *distance,
+extern uint32_t sr_collision_sphere_triangle(float point[3], float normal[3], float *distance,
                              const float from[3], const float to[3], uint64_t radius_bits,
                              const float a[3], const float b[3], const float c[3]);
 
@@ -63,11 +63,11 @@ int collision_capsule_placed_mesh(PlacedMeshHit *hit, const PlacedMesh *mesh,
             }
             if (f->corner_count == 4)
                 memcpy(d, placed[f->corner[3]], sizeof d);
-            if (sub_140035690(point, normal, &distance, from, to, radius_bits, a, b, c))
+            if (sr_collision_sphere_triangle(point, normal, &distance, from, to, radius_bits, a, b, c))
                 keep_capsule_hit(hit, point, normal, distance);
             /* The helper may change the face list or its corner count. */
             if (g->faces[face].corner_count == 4 &&
-                sub_140035690(point, normal, &distance, from, to, radius_bits, a, c, d))
+                sr_collision_sphere_triangle(point, normal, &distance, from, to, radius_bits, a, c, d))
                 keep_capsule_hit(hit, point, normal, distance);
         }
     }

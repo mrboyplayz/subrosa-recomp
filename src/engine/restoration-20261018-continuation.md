@@ -55,8 +55,8 @@ python tools/native-compare/mutate.py areabounds area_bounds.c tools/native-comp
 | `0x140115C20` | `net_read_bits_scaled` |
 | `0x140115D90` | `net_write_bits` |
 | `0x140115E80` | `net_write_bits_scaled` |
-| `0x140115E60` | `net_write_bits_e60` |
-| `0x140115F70` | `net_write_bits_f70` |
+| `0x140115E60` | `net_write_bits_always_success` |
+| `0x140115F70` | `net_write_bits_always_success_alt` |
 
 All six implementations and their client wrappers match 13,000 cases per
 routine (156,001 lines). All 22 mutations were detected at 2,200 cases each.

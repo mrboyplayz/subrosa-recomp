@@ -6,8 +6,8 @@
 #ifdef NC_NATIVE
 #define angle_write(a,b) ((uint64_t (*)(const float *, int))NC_ADDR(0x14010E610))(a,b)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_14010E610(float *, int);
-#define angle_write sub_14010E610
+long long sr_net_write_angle(float *, int);
+#define angle_write sr_net_write_angle
 #else
 #define angle_write net_write_angle
 #endif

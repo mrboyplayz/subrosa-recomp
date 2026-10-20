@@ -42,6 +42,10 @@ plants small bugs in the port to prove the suite would notice them.
 
 - `src/engine/` - the game as readable C, one verified routine per function (see its README).
 - `src/client/` - decompiled client code. When a routine is ported, its body here becomes a call into `src/engine/`.
+  Identified routines live in modules named for their purpose; `names.tsv`
+  records behavior names and original addresses, and `function_modules.tsv`
+  records the explicitly assigned owners. `client_recovery_*.c` holds the
+  remaining routines still awaiting classification.
 - `src/rebuild/` - what the decompiled code needs to compile and link:
   - compatibility headers
   - data and machine code recovered from the executable (`client_link/`)

@@ -9,12 +9,12 @@
 #define begin() ((uint64_t (*)(void))NC_ADDR(0x140070B90))()
 #define reset() ((void *(*)(void))NC_ADDR(0x140075650))()
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_1400755F0(float,float),sub_1400753C0(void),sub_140070B90(void);
-void *sub_140075650(void);
-#define push sub_1400755F0
-#define pop sub_1400753C0
-#define begin sub_140070B90
-#define reset sub_140075650
+long long sr_menu_push_size(float,float),sr_menu_pop_size(void),sr_menu_begin_grid(void);
+void *sr_menu_reset(void);
+#define push sr_menu_push_size
+#define pop sr_menu_pop_size
+#define begin sr_menu_begin_grid
+#define reset sr_menu_reset
 #else
 #define push menu_push_size
 #define pop menu_pop_size

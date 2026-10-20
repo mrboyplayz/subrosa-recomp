@@ -26,14 +26,14 @@ static float carrier_float(double carrier)
 #define apply(b, r, d) ((PhysicsBody *(*)(int, const float *, const float *))NC_ADDR(0x14012B090))(b, r, d)
 #define point(o, b, r) ((PhysicsBody *(*)(float *, int, const float *))NC_ADDR(0x14012B170))(o, b, r)
 #elif defined(NC_CLIENT_WRAPPERS)
-double sub_14002D820(float *, float *, float);
-double sub_14002D9B0(float *, float *, float, float);
-unsigned int *sub_14012B090(int, float *, float *);
-unsigned int *sub_14012B170(float *, int, float *);
-#define slide(v, n, f) carrier_float(sub_14002D820(v, n, f))
-#define capped(v, n, f, m) carrier_float(sub_14002D9B0(v, n, f, m))
-#define apply(b, r, d) ((PhysicsBody *)(void *)sub_14012B090(b, r, d))
-#define point(o, b, r) ((PhysicsBody *)(void *)sub_14012B170(o, b, r))
+double sr_physics_limit_slide(float *, float *, float);
+double sr_physics_limit_slide_capped(float *, float *, float, float);
+unsigned int *sr_physics_apply_point_velocity(int, float *, float *);
+unsigned int *sr_physics_point_velocity(float *, int, float *);
+#define slide(v, n, f) carrier_float(sr_physics_limit_slide(v, n, f))
+#define capped(v, n, f, m) carrier_float(sr_physics_limit_slide_capped(v, n, f, m))
+#define apply(b, r, d) ((PhysicsBody *)(void *)sr_physics_apply_point_velocity(b, r, d))
+#define point(o, b, r) ((PhysicsBody *)(void *)sr_physics_point_velocity(o, b, r))
 #else
 #define slide physics_limit_slide
 #define capped physics_limit_slide_capped

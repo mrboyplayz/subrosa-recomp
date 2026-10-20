@@ -118,13 +118,13 @@ int net_write_bits_scaled(const uint32_t *value, int bits, uint32_t divisor)
     return 1;
 }
 
-int net_write_bits_e60(const uint32_t *value, int bits)
+int net_write_bits_always_success(const uint32_t *value, int bits)
 {
     net_write_bits(value, bits);
     return 1;
 }
 
-int net_write_bits_f70(const uint32_t *value, int bits)
+int net_write_bits_always_success_alt(const uint32_t *value, int bits)
 {
     net_write_bits(value, bits);
     return 1;

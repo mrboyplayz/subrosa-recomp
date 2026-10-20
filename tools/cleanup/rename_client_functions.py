@@ -3,8 +3,8 @@
 Each row gives an original address and a name. The symbol the decompiler
 named after that address - a function (sub_), data (qword_, dword_, unk_,
 off_, byte_, word_, xmmword_, flt_, dbl_, stru_, asc_) or a recovered data
-alias (sr_mem_) - is renamed everywhere in src/client, src/rebuild and
-src/recovered (C, headers and the recovered assembly). The //----- (address)
+alias (sr_mem_) - is renamed throughout the client, engine, rebuild, runtime
+helpers and native fixtures (including mutation sources). The //----- (address)
 markers keep the original address. A name already used for something else
 is refused; a row whose name is already in place is skipped.
 
@@ -14,8 +14,9 @@ import re
 from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parent.parent.parent
-FILES = [p for d in ('src/client', 'src/rebuild', 'src/recovered') for p in (PROJECT / d).rglob('*')
-         if p.suffix in ('.c', '.h', '.s', '.inc')]
+FILES = [p for d in ('src/client', 'src/rebuild', 'src/recovered', 'src/engine', 'tools/native-compare')
+         for p in (PROJECT / d).rglob('*')
+         if p.suffix in ('.c', '.h', '.s', '.inc', '.mutations')]
 PREFIXES = ('sub', 'qword', 'dword', 'unk', 'off', 'byte', 'word', 'xmmword', 'flt', 'dbl', 'stru', 'asc')
 
 

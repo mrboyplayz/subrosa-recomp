@@ -1601,10 +1601,10 @@ void human_hold_item(int human, int hand_bone, int item, const float hand_point[
 
 /* Closest points of two segments, still recompiled: returns nonzero when they
    come within reach. */
-extern long long sub_1400D6890(float *closest_a, float *closest_b, float *distance, float *a_start, float *a_end,
+extern long long sr_collision_segment_segment(float *closest_a, float *closest_b, float *distance, float *a_start, float *a_end,
                                float *b_end, float *b_start, float reach);
 /* Adds a contact between two bodies, still recompiled. */
-extern long long sub_1400052C0(int body_a, int body_b, float *offset_a, float *offset_b, unsigned int *normal,
+extern long long sr_physics_add_contact(int body_a, int body_b, float *offset_a, float *offset_b, unsigned int *normal,
                                float depth, unsigned int a7, float a8, unsigned int a9);
 
 void human_keep_arms_off_item(int human, int item)
@@ -1642,7 +1642,7 @@ void human_keep_arms_off_item(int human, int item)
             item_start[i] = ip[i];
             item_end[i] = side * ir[3 + i] + (sight[2] * ir[6 + i] + ip[i]);
         }
-        if (sub_1400D6890(closest_a, closest_b, &depth, far, near, item_end, item_start, 0.125f)) {
+        if (sr_collision_segment_segment(closest_a, closest_b, &depth, far, near, item_end, item_start, 0.125f)) {
             float d[3] = {closest_a[0] - closest_b[0], closest_a[1] - closest_b[1], closest_a[2] - closest_b[2]};
             float normal[3], middle[3], offset_bone[3], offset_item[3], length;
 
@@ -1662,7 +1662,7 @@ void human_keep_arms_off_item(int human, int item)
                 offset_bone[i] = middle[i] - p[i];
                 offset_item[i] = middle[i] - ip[i];
             }
-            sub_1400052C0(b->body, item_body(item), offset_bone, offset_item, (unsigned int *)normal,
+            sr_physics_add_contact(b->body, item_body(item), offset_bone, offset_item, (unsigned int *)normal,
                           0.125f - depth, 0x3ECCCCCD, 0.03125f, 0x3D800000);
         }
     }

@@ -7,7 +7,7 @@
 enum { X, Y, Z };
 
 /* Still in src/client/: 0x1400052C0 applies a contact between two bodies. */
-extern long long sub_1400052C0(int body_a, int body_b, const float *offset_a, const float *offset_b,
+extern long long sr_physics_add_contact(int body_a, int body_b, const float *offset_a, const float *offset_b,
                                const float *normal, float depth, float k1, float k2, float k3);
 
 void collision_mesh_transform(float (*points)[3], float (*normals)[3], const CollisionMesh *mesh,
@@ -212,7 +212,7 @@ static int point_contacts(unsigned char *frame, int body_a, int body_b, const Co
             float depth = ((hit[Y] - p[Y]) * n[Y] + (hit[X] - p[X]) * n[X]) + (hit[Z] - p[Z]) * n[Z];
             float offset_a[3] = {hit[X] - position_a[X], hit[Y] - position_a[Y], hit[Z] - position_a[Z]};
             float offset_b[3] = {hit[X] - position_b[X], hit[Y] - position_b[Y], hit[Z] - position_b[Z]};
-            sub_1400052C0(body_a, body_b, offset_a, offset_b, n, depth, CONTACT_K1, CONTACT_K2, CONTACT_K3);
+            sr_physics_add_contact(body_a, body_b, offset_a, offset_b, n, depth, CONTACT_K1, CONTACT_K2, CONTACT_K3);
             any = 1;
         }
     }
@@ -274,7 +274,7 @@ int collision_mesh_contact(int body_a, int body_b, const CollisionMesh *a, const
                 float mid[3] = {(on_a[X] + on_b[X]) * 0.5f, (on_a[Y] + on_b[Y]) * 0.5f, (on_a[Z] + on_b[Z]) * 0.5f};
                 float offset_a[3] = {mid[X] - position_a[X], mid[Y] - position_a[Y], mid[Z] - position_a[Z]};
                 float offset_b[3] = {mid[X] - position_b[X], mid[Y] - position_b[Y], mid[Z] - position_b[Z]};
-                sub_1400052C0(body_a, body_b, offset_a, offset_b, n, depth, CONTACT_K1, CONTACT_K2, CONTACT_K3);
+                sr_physics_add_contact(body_a, body_b, offset_a, offset_b, n, depth, CONTACT_K1, CONTACT_K2, CONTACT_K3);
             }
             any = 1;
         }

@@ -6,8 +6,8 @@
 #ifdef NC_NATIVE
 #define play(s,p,g,r,f) ((uint64_t (*)(int,const float *,float,float,uint32_t))NC_ADDR(0x140069FA0))(s,p,g,r,f)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140069FA0(int,const float *,float,float,uint32_t);
-#define play sub_140069FA0
+long long sr_audio_play_at(int,const float *,float,float,uint32_t);
+#define play sr_audio_play_at
 #else
 #define play audio_play_at
 #endif

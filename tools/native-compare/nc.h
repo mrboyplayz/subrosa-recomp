@@ -10,7 +10,7 @@
  * preferred base 0x140000000, so the game state (and the original's
  * initialized data) is at the addresses the disassembly shows. The port
  * build is linked with every global and every unported routine it mentions
- * (dword_1402B2960, sub_140188900, ...) defined as that absolute address,
+ * (dword_1402B2960, sr_world_streets_triangles_in_box, ...) defined as that absolute address,
  * so a port reads the same memory and can call the original's unported
  * callees. Each build prints what it observes; run.py compares the two
  * outputs line by line.

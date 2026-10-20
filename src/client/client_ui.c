@@ -20,19 +20,6 @@ void sr_text_draw_recovered(char *text,float x,float y,float size,unsigned flags
            arguments ? (const unsigned long long *)arguments : no_arguments);
 }
 
-//----- (000000014006F1F0) ----------------------------------------------------
-// Immediate-mode button helper. Widget type code 0; returns true on active click/press interaction.
-__int64            sr_DrawMenuButton(unsigned __int8 *a1)
-{
-  return menu_button(a1);
-}
-
-//----- (000000014006F5A0) ----------------------------------------------------
-__int64            sr_DrawMenuButtonSelectable(unsigned __int8 *a1, int *a2, int a3)
-{
-  return menu_selectable(a1, a2, a3);
-}
-
 //----- (000000014006F8D0) ----------------------------------------------------
 // Immediate-mode combo-box helper. Widget type code 10; stores current index pointer, item table, and item count; mouse wheel changes selection.
 __int64            sr_DrawMenuList(
@@ -47,34 +34,34 @@ __int64            sr_DrawMenuList(
         unsigned int a9,
         unsigned int a10)
 {
-  unsigned int v13;
-  signed int v14;
-  signed int v15;
-  __int64 v16;
-  unsigned int v17;
-  bool v18;
-  int *v19;
-  bool v20;
-  signed int v21;
-  _DWORD *v22;
-  unsigned int v23;
-  unsigned int v24;
-  unsigned int v25;
-  int v26;
-  int v27;
-  __int64 v28;
-  unsigned int v29;
-  unsigned int v30;
+  unsigned int text_label_id_result;
+  signed int menu_allocate_widget_result;
+  signed int saved_menu_allocate_widget_result;
+  __int64 scaled_index;
+  unsigned int loaded_word;
+  bool comparison_result;
+  int *loaded_record_pointer;
+  bool comparison_result_2;
+  signed int integer_sum;
+  _DWORD *loaded_record_pointer_2;
+  unsigned int masked_bits;
+  unsigned int masked_bits_2;
+  unsigned int masked_bits_3;
+  int masked_bits_4;
+  int saved_masked_bits;
+  __int64 masked_bits_5;
+  unsigned int table_value;
+  unsigned int state_word;
 
-  v13 = sub_14006C670(a1, (g_150F61084 << 8) + (g_150F610CC << 16));
-  v14 = sub_140070380(
-          v13,
+  text_label_id_result = sr_text_label_id(a1, (g_150F61084 << 8) + (g_150F610CC << 16));
+  menu_allocate_widget_result = sr_menu_allocate_widget(
+          text_label_id_result,
           menu_x,
           menu_y,
           a4,
           a5,
           g_150F610E8);
-  v15 = v14;
+  saved_menu_allocate_widget_result = menu_allocate_widget_result;
   if ( menu_vertical )
   {
     menu_y = menu_y + (float)(*(float *)&a5 + 4.0);
@@ -84,49 +71,49 @@ __int64            sr_DrawMenuList(
     menu_row_height = *(float *)&a5 + 4.0;
     menu_x = menu_x + (float)(a4 + 4.0);
   }
-  menu_last_widget = v14;
-  v16 = 122LL * v14;
-  dword_140404A6C[v16 + 70087115] = 10;
-  *(_QWORD *)&dword_140404A6C[v16 + 70087223] = (uint64)(uintptr_t)(a7);
-  v17 = *a7;
-  *(float *)&dword_140404A6C[v16 + 70087225] = a4;
-  dword_140404A6C[v16 + 70087226] = a5;
-  dword_140404A6C[v16 + 70087222] = v17;
-  *(_QWORD *)&dword_140404A6C[v16 + 70087217] = a8;
-  dword_140404A6C[v16 + 70087219] = a9;
-  dword_140404A6C[v16 + 70087220] = a10;
-  sub_14006F120((__int64)&dword_140404A6C[v16 + 70087151], (char *)a1);
-  if ( v15 == g_150F61180 )
+  menu_last_widget = menu_allocate_widget_result;
+  scaled_index = 122LL * menu_allocate_widget_result;
+  dword_140404A6C[scaled_index + 70087115] = 10;
+  *(_QWORD *)&dword_140404A6C[scaled_index + 70087223] = (uint64)(uintptr_t)(a7);
+  loaded_word = *a7;
+  *(float *)&dword_140404A6C[scaled_index + 70087225] = a4;
+  dword_140404A6C[scaled_index + 70087226] = a5;
+  dword_140404A6C[scaled_index + 70087222] = loaded_word;
+  *(_QWORD *)&dword_140404A6C[scaled_index + 70087217] = a8;
+  dword_140404A6C[scaled_index + 70087219] = a9;
+  dword_140404A6C[scaled_index + 70087220] = a10;
+  sr_text_copy_visible_label((__int64)&dword_140404A6C[scaled_index + 70087151], (char *)a1);
+  if ( saved_menu_allocate_widget_result == g_150F61180 )
   {
-    if ( (int)dword_140404A6C[v16 + 70087220] <= 0 )
+    if ( (int)dword_140404A6C[scaled_index + 70087220] <= 0 )
     {
-      **(_DWORD **)&dword_140404A6C[v16 + 70087223] = 0;
+      **(_DWORD **)&dword_140404A6C[scaled_index + 70087223] = 0;
     }
     else
     {
-      v18 = (signed int)g_160FC481C <= 0;
+      comparison_result = (signed int)g_160FC481C <= 0;
       if ( (g_160FC481C & 0x80000000) != 0 )
       {
         do
         {
-          --**(_DWORD **)&dword_140404A6C[v16 + 70087223];
-          v19 = *(int **)&dword_140404A6C[v16 + 70087223];
-          if ( *v19 < 0 )
-            *v19 = dword_140404A6C[v16 + 70087220] - 1;
-          v20 = (signed int)(g_160FC481C + 1) < 0;
-          v21 = ++g_160FC481C;
+          --**(_DWORD **)&dword_140404A6C[scaled_index + 70087223];
+          loaded_record_pointer = *(int **)&dword_140404A6C[scaled_index + 70087223];
+          if ( *loaded_record_pointer < 0 )
+            *loaded_record_pointer = dword_140404A6C[scaled_index + 70087220] - 1;
+          comparison_result_2 = (signed int)(g_160FC481C + 1) < 0;
+          integer_sum = ++g_160FC481C;
         }
-        while ( v20 );
-        v18 = v21 <= 0;
+        while ( comparison_result_2 );
+        comparison_result = integer_sum <= 0;
       }
-      if ( !v18 )
+      if ( !comparison_result )
       {
         do
         {
-          ++**(_DWORD **)&dword_140404A6C[v16 + 70087223];
-          v22 = *(_DWORD **)&dword_140404A6C[v16 + 70087223];
-          if ( *v22 >= (signed int)dword_140404A6C[v16 + 70087220] )
-            *v22 = 0;
+          ++**(_DWORD **)&dword_140404A6C[scaled_index + 70087223];
+          loaded_record_pointer_2 = *(_DWORD **)&dword_140404A6C[scaled_index + 70087223];
+          if ( *loaded_record_pointer_2 >= (signed int)dword_140404A6C[scaled_index + 70087220] )
+            *loaded_record_pointer_2 = 0;
           --g_160FC481C;
         }
         while ( (int)g_160FC481C > 0 );
@@ -135,55 +122,55 @@ __int64            sr_DrawMenuList(
   }
   if ( !g_151042650
     && g_1510426EC
-    && v15 == g_150F61180
-    && v15 == g_150F61174 )
+    && saved_menu_allocate_widget_result == g_150F61180
+    && saved_menu_allocate_widget_result == g_150F61174 )
   {
-    dword_140404A6C[v16 + 70087215] = 1;
+    dword_140404A6C[scaled_index + 70087215] = 1;
   }
-  if ( !dword_140404A6C[v16 + 70087215] )
-    return dword_140404A6C[v16 + 70087215];
-  v23 = *(unsigned int *)&menu_y;
-  v24 = *(unsigned int *)&menu_x;
+  if ( !dword_140404A6C[scaled_index + 70087215] )
+    return dword_140404A6C[scaled_index + 70087215];
+  masked_bits = *(unsigned int *)&menu_y;
+  masked_bits_2 = *(unsigned int *)&menu_x;
   if ( (int)g_151042810 < 16 )
   {
     dword_140404A6C[2 * g_151042810 + 70317930] = *(unsigned int *)&menu_x;
     dword_140404A6C[2 * g_151042810++ + 70317931] = *(unsigned int *)&menu_y;
   }
-  v25 = *(unsigned int *)&menu_row_height;
-  *(unsigned int *)&menu_y = v23;
-  *(unsigned int *)&menu_x = v24;
-  v26 = sub_140071C20(
+  masked_bits_3 = *(unsigned int *)&menu_row_height;
+  *(unsigned int *)&menu_y = masked_bits;
+  *(unsigned int *)&menu_x = masked_bits_2;
+  masked_bits_4 = sub_140071C20(
           "cs_combobox",
-          *(float *)&v24,
-          (float)(*(float *)&v23 - *(float *)&a5) - g_150F610EC,
+          *(float *)&masked_bits_2,
+          (float)(*(float *)&masked_bits - *(float *)&a5) - g_150F610EC,
           (float)(g_150F610EC + a2) + 16.0,
           COERCE_UNSIGNED_INT(g_150F610EC + a3),
           1095761920,
           1792);
   *(_QWORD *)&menu_x = 0;
-  v27 = v26;
-  v28 = *(_QWORD *)&dword_140404A6C[v16 + 70087149];
-  if ( v28 )
+  saved_masked_bits = masked_bits_4;
+  masked_bits_5 = *(_QWORD *)&dword_140404A6C[scaled_index + 70087149];
+  if ( masked_bits_5 )
   {
-    v29 = dword_140404A6C[v16 + 70087147];
-    g_150F61108 = dword_140404A6C[v16 + 70087146];
-    g_150F6110C = v29;
-    g_150F61110 = v28;
+    table_value = dword_140404A6C[scaled_index + 70087147];
+    g_150F61108 = dword_140404A6C[scaled_index + 70087146];
+    g_150F6110C = table_value;
+    g_150F61110 = masked_bits_5;
   }
   if ( (unsigned int)sub_1400707C0(a1, a2 + 16.0, a3, a4, a5, 0, a7, a8, a9, a10) )
-    dword_140404A6C[v16 + 70087215] = 0;
+    dword_140404A6C[scaled_index + 70087215] = 0;
   sub_140077230();
-  v30 = g_151042810;
+  state_word = g_151042810;
   if ( (int)g_151042810 > 0 )
   {
     --g_151042810;
-    *(unsigned int *)&menu_x = dword_140404A6C[2 * (v30 - 1) + 70317930];
-    *(unsigned int *)&menu_y = dword_140404A6C[2 * (v30 - 1) + 70317931];
+    *(unsigned int *)&menu_x = dword_140404A6C[2 * (state_word - 1) + 70317930];
+    *(unsigned int *)&menu_y = dword_140404A6C[2 * (state_word - 1) + 70317931];
   }
-  *(unsigned int *)&menu_row_height = v25;
-  if ( v27 != -1 && g_150F61168 == v27 )
-    return dword_140404A6C[v16 + 70087215];
-  dword_140404A6C[v16 + 70087215] = 0;
+  *(unsigned int *)&menu_row_height = masked_bits_3;
+  if ( saved_masked_bits != -1 && g_150F61168 == saved_masked_bits )
+    return dword_140404A6C[scaled_index + 70087215];
+  dword_140404A6C[scaled_index + 70087215] = 0;
   return 0;
 }
 
@@ -191,22 +178,22 @@ __int64            sr_DrawMenuList(
 // Immediate-mode text entry helper. Widget type code 5; stores text buffer pointer and length bounds.
 __int64            sr_DrawMenuTextBox(unsigned __int8 *a1, __int64 a2, unsigned int a3, unsigned int a4)
 {
-  unsigned int v8;
-  signed int v9;
-  int v10;
-  __int64 v11;
+  unsigned int text_label_id_result;
+  signed int menu_allocate_widget_result;
+  int saved_menu_allocate_widget_result;
+  __int64 scaled_index;
   __int64 result;
-  double v13;
+  double float_word;
 
-  v8 = sub_14006C670(a1, (g_150F61084 << 8) + (g_150F610CC << 16));
-  v9 = sub_140070380(
-         v8,
+  text_label_id_result = sr_text_label_id(a1, (g_150F61084 << 8) + (g_150F610CC << 16));
+  menu_allocate_widget_result = sr_menu_allocate_widget(
+         text_label_id_result,
          menu_x,
          menu_y,
          *(float *)&menu_item_width,
          menu_item_height,
          g_150F610E8);
-  v10 = v9;
+  saved_menu_allocate_widget_result = menu_allocate_widget_result;
   if ( menu_vertical )
   {
     menu_y = menu_y
@@ -218,166 +205,152 @@ __int64            sr_DrawMenuTextBox(unsigned __int8 *a1, __int64 a2, unsigned 
                                          + (float)(*(float *)&menu_item_width + 4.0);
     menu_row_height = *(float *)&menu_item_height + 4.0;
   }
-  v11 = 122LL * v9;
-  menu_last_widget = v9;
-  dword_140404A6C[v11 + 70087115] = 5;
-  *(_QWORD *)&dword_140404A6C[v11 + 70087217] = a2;
-  dword_140404A6C[v11 + 70087219] = a3;
-  dword_140404A6C[v11 + 70087220] = a4;
+  scaled_index = 122LL * menu_allocate_widget_result;
+  menu_last_widget = menu_allocate_widget_result;
+  dword_140404A6C[scaled_index + 70087115] = 5;
+  *(_QWORD *)&dword_140404A6C[scaled_index + 70087217] = a2;
+  dword_140404A6C[scaled_index + 70087219] = a3;
+  dword_140404A6C[scaled_index + 70087220] = a4;
   g_151042A3C = 24;
-  result = sub_14006F120((__int64)&dword_140404A6C[v11 + 70087151], (char *)a1);
-  if ( v10 == g_150F61174 )
+  result = sr_text_copy_visible_label((__int64)&dword_140404A6C[scaled_index + 70087151], (char *)a1);
+  if ( saved_menu_allocate_widget_result == g_150F61174 )
   {
-    *(_QWORD *)&v13 = g_1B0032364;
-    *(float *)&v13 = *(float *)&g_1B0032364 - *(float *)&dword_140404A6C[v11 + 70087135];
-    return sub_140075A40(v10, g_1B0032360 - *(float *)&dword_140404A6C[v11 + 70087134], v13);
+    *(_QWORD *)&float_word = g_1B0032364;
+    *(float *)&float_word = *(float *)&g_1B0032364 - *(float *)&dword_140404A6C[scaled_index + 70087135];
+    return sub_140075A40(saved_menu_allocate_widget_result, g_1B0032360 - *(float *)&dword_140404A6C[scaled_index + 70087134], float_word);
   }
   return result;
 }
 
 // 1400713C6: conditional instruction was optimized away because rcx.8<100000000u
 
-//----- (0000000140071440) ----------------------------------------------------
-// Immediate-mode integer slider helper. Widget type code 11; stores int pointer, min, max, and step.
-__int64            sr_DrawMenuSlider(unsigned __int8 *a1, int *a2, int a3, signed int a4, int a5)
-{
-  return menu_slider(a1, a2, a3, a4, a5);
-}
-
-//----- (0000000140071910) ----------------------------------------------------
-// Immediate-mode checkbox helper. Widget type code 1; stores int pointer and toggles value on activation.
-__int64            sr_DrawMenuToggle(unsigned __int8 *a1, _DWORD *a2)
-{
-  return menu_toggle(a1, a2);
-}
-
 //----- (0000000140072450) ----------------------------------------------------
 void               sr_DrawMenu(char a1)
 {
-  __int64 v1;
-  unsigned int *v3;
-  unsigned int *v4;
-  __int64 v5;
-  unsigned int *v6;
-  __int64 v7;
-  unsigned int *v8;
-  int v9;
-  double v10;
-  double v11;
-  signed int v12;
-  signed int v13;
-  unsigned int *v14;
-  unsigned int v15;
-  unsigned int v16;
-  float v17;
-  __m128i v18;
-  unsigned int v19;
-  unsigned int v20;
-  float v21;
-  int v22;
+  __int64 iteration_count;
+  unsigned int *state_address;
+  unsigned int *state_address_2;
+  __int64 iteration_count_2;
+  unsigned int *state_address_3;
+  __int64 remaining_count;
+  unsigned int *state_address_4;
+  int iteration_count_3;
+  double source_float_17;
+  double source_float_16;
+  signed int state_word;
+  signed int element_index;
+  unsigned int *state_address_5;
+  unsigned int loaded_word;
+  unsigned int table_value;
+  float text_size;
+  __m128i converted_vector;
+  unsigned int table_value_2;
+  unsigned int table_value_3;
+  float text_x;
+  int iteration_count_4;
   int i;
   __int64 j;
-  __int64 v25;
-  __int64 v26;
+  __int64 table_value_4;
+  __int64 unused_local;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140072450[1120];
-#define v28 (*(_DWORD (*)[276])(void *)(sr_frame_140072450 + 0)) /* [rsp+0h] */
-#define v29 (*(__int64 (*))(void *)(sr_frame_140072450 + 1104)) /* [rsp+450h] */
+#define scratch_buffer (*(_DWORD (*)[276])(void *)(sr_frame_140072450 + 0)) /* [rsp+0h] */
+#define unused_frame_slot_1104 (*(__int64 (*))(void *)(sr_frame_140072450 + 1104)) /* [rsp+450h] */
 
-  v1 = 0;
-  v3 = &g_1510281A0;
-  v4 = &g_1510281A0;
+  iteration_count = 0;
+  state_address = &g_1510281A0;
+  state_address_2 = &g_1510281A0;
   do
   {
-    if ( *(v4 - 2) == 2 )
+    if ( *(state_address_2 - 2) == 2 )
     {
-      v5 = 0;
-      v6 = &g_1510281A8;
-      v7 = 256;
+      iteration_count_2 = 0;
+      state_address_3 = &g_1510281A8;
+      remaining_count = 256;
       do
       {
-        if ( (int)*(v6 - 4) >= 2 && v5 != v1 && *(v6 - 2) == *v4 && (int)*v6 > (int)v4[2] )
-          --*v6;
-        ++v5;
-        v6 += 98;
-        --v7;
+        if ( (int)*(state_address_3 - 4) >= 2 && iteration_count_2 != iteration_count && *(state_address_3 - 2) == *state_address_2 && (int)*state_address_3 > (int)state_address_2[2] )
+          --*state_address_3;
+        ++iteration_count_2;
+        state_address_3 += 98;
+        --remaining_count;
       }
-      while ( v7 );
+      while ( remaining_count );
     }
-    ++v1;
-    v4 += 98;
+    ++iteration_count;
+    state_address_2 += 98;
   }
-  while ( (__int64)v4 < (__int64)&g_1510409A0 );
+  while ( (__int64)state_address_2 < (__int64)&g_1510409A0 );
   g_15104270C = 0;
   glBindTexture(3553, dword_140404A6C[3592 * renderer_current_font + 72777086]);
-  v8 = &g_150F611A4;
-  v9 = 0;
+  state_address_4 = &g_150F611A4;
+  iteration_count_3 = 0;
   g_151042A24 = *(unsigned int *)&renderer_canvas_width;
   g_151042A28 = *(unsigned int *)&renderer_canvas_height;
   *(_QWORD *)&g_151042A1C = 0;
   do
   {
-    if ( *(v8 - 5) == 3 && *v8 && v8[4] == -1 )
+    if ( *(state_address_4 - 5) == 3 && *state_address_4 && state_address_4[4] == -1 )
     {
-      *(_QWORD *)&v10 = v8[17];
-      *(_QWORD *)&v11 = v8[16];
-      renderer_current_font = v8[5];
-      sub_140073430(v9, v11, v10);
+      *(_QWORD *)&source_float_17 = state_address_4[17];
+      *(_QWORD *)&source_float_16 = state_address_4[16];
+      renderer_current_font = state_address_4[5];
+      sub_140073430(iteration_count_3, source_float_16, source_float_17);
     }
-    ++v9;
-    v8 += 122;
+    ++iteration_count_3;
+    state_address_4 += 122;
   }
-  while ( v9 < 1024 );
-  v12 = g_150FDB190;
-  v13 = 0;
+  while ( iteration_count_3 < 1024 );
+  state_word = g_150FDB190;
+  element_index = 0;
   if ( (int)g_150FDB190 > 0 )
   {
-    v14 = &g_150FDB194;
+    state_address_5 = &g_150FDB194;
     do
     {
-      if ( v14[1] == -1 )
+      if ( state_address_5[1] == -1 )
       {
-        v15 = *v14;
-        v16 = v14[6];
-        v17 = *((float *)v14 + 8);
-        v18 = _mm_cvtsi32_si128((int)(v14[3]));
-        v28[16] = v14[7];
-        v19 = v14[5];
-        v28[14] = v16;
-        v20 = v14[4];
-        v28[12] = v19;
-        v28[10] = v20;
-        v21 = *((float *)v14 + 2);
-        renderer_current_font = v15;
-        v28[8] = 64;
-        sr_text_draw_recovered((char *)&dword_140404A6C[77 * v13 + 70212055], v21, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(v18))), v17, 64, sr_text_bits_float(v28[10]), sr_text_bits_float(v28[12]), sr_text_bits_float(v28[14]), sr_text_bits_float(v28[16]), NULL);
-        v12 = g_150FDB190;
+        loaded_word = *state_address_5;
+        table_value = state_address_5[6];
+        text_size = *((float *)state_address_5 + 8);
+        converted_vector = _mm_cvtsi32_si128((int)(state_address_5[3]));
+        scratch_buffer[16] = state_address_5[7];
+        table_value_2 = state_address_5[5];
+        scratch_buffer[14] = table_value;
+        table_value_3 = state_address_5[4];
+        scratch_buffer[12] = table_value_2;
+        scratch_buffer[10] = table_value_3;
+        text_x = *((float *)state_address_5 + 2);
+        renderer_current_font = loaded_word;
+        scratch_buffer[8] = 64;
+        sr_text_draw_recovered((char *)&dword_140404A6C[77 * element_index + 70212055], text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector))), text_size, 64, sr_text_bits_float(scratch_buffer[10]), sr_text_bits_float(scratch_buffer[12]), sr_text_bits_float(scratch_buffer[14]), sr_text_bits_float(scratch_buffer[16]), NULL);
+        state_word = g_150FDB190;
       }
-      ++v13;
-      v14 += 77;
+      ++element_index;
+      state_address_5 += 77;
     }
-    while ( v13 < v12 );
+    while ( element_index < state_word );
   }
-  v22 = 0;
+  iteration_count_4 = 0;
   for ( i = 0; i < 256; ++i )
   {
-    if ( *(v3 - 2) == 3 && *v3 == -1 )
+    if ( *(state_address - 2) == 3 && *state_address == -1 )
     {
-      ++v22;
-      v28[v3[2] + 20] = i;
+      ++iteration_count_4;
+      scratch_buffer[state_address[2] + 20] = i;
     }
-    v3 += 98;
+    state_address += 98;
   }
-  for ( j = v22 - 1; j >= 0; --j )
+  for ( j = iteration_count_4 - 1; j >= 0; --j )
   {
-    v25 = (int)v28[j + 20];
-    if ( dword_140404A6C[98 * v25 + 70290891] == 3 )
-      sub_1400745F0(v25);
+    table_value_4 = (int)scratch_buffer[j + 20];
+    if ( dword_140404A6C[98 * table_value_4 + 70290891] == 3 )
+      sub_1400745F0(table_value_4);
   }
   if ( (a1 & 1) == 0 )
   {
     glBindTexture(3553, dword_140404A6C[3592 * renderer_current_font + 72777087]);
-    sub_14006CFF0(
+    sr_renderer_draw_textured_rect(
       sr_export_float_lane_container((unsigned __int64)*(unsigned int *)&g_1B0032360),
       sr_export_float_lane_container((unsigned __int64)g_1B0032364),
       0x42000000 /* native cursor width 32.0f */,
@@ -391,363 +364,363 @@ void               sr_DrawMenu(char a1)
   g_150FDB190 = 0;
   return; /* original void menu presentation */
 }
-#undef v28
-#undef v29
+#undef scratch_buffer
+#undef unused_frame_slot_1104
 
 //----- (0000000140078610) ----------------------------------------------------
 __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2, int a3)
 {
-  __int64 v3;
-  char v4;
-  __int64 v6;
-  __int64 v7;
-  void *v8;
-  int v9;
-  int v10;
+  __int64 input_value;
+  char input_value_2;
+  __int64 lookup_index;
+  __int64 scaled_index;
+  void *allocation_buffer;
+  int element_index;
+  int table_value;
   int i;
-  int v12;
-  __int64 v13;
-  __int64 v14;
-  int v15;
-  FILE *v16;
-  signed int v17;
-  float v18;
-  signed int v19;
+  int masked_bits;
+  __int64 element_index_2;
+  __int64 file_handle;
+  int record_byte_offset;
+  FILE *file_handle_2;
+  signed int element_size;
+  float call_result;
+  signed int iteration_count;
   signed int j;
-  __int64 v21;
+  __int64 element_index_3;
   int k;
-  signed int v23;
+  signed int iteration_count_2;
   signed int m;
-  __int64 v25;
-  float v26;
-  unsigned __int64 v27;
-  float *v28;
-  unsigned int *v29;
-  float *v30;
-  float v31;
-  float v32;
-  float v33;
-  float v34;
-  float v35;
-  float v36;
-  float v37;
-  float v38;
-  float v39;
-  float v40;
-  float v41;
-  float v42;
-  float v43;
-  float v44;
-  float v45;
-  float v46;
-  float v47;
-  float v48;
-  float v49;
-  float v50;
-  float v51;
-  float v52;
-  float v53;
-  float v54;
-  float v55;
-  float v56;
-  float v57;
-  float v58;
-  float v59;
-  float v60;
-  float v61;
-  float v62;
-  unsigned int v63;
-  __int64 v64;
-  _DWORD *v65;
+  __int64 element_index_4;
+  float component_delta;
+  unsigned __int64 cached_scaled_index;
+  float *record_byte_offset_2;
+  unsigned int *record_byte_offset_3;
+  float *record_byte_offset_4;
+  float shifted_bits;
+  float product_difference;
+  float product_difference_2;
+  float product_difference_3;
+  float product_difference_4;
+  float shifted_bits_2;
+  float scaled_value;
+  float scaled_value_2;
+  float scaled_value_3;
+  float shifted_bits_3;
+  float source_component_y;
+  float source_component_y_2;
+  float weighted_sum;
+  float shifted_bits_4;
+  float source_component_z;
+  float source_component_z_2;
+  float weighted_sum_2;
+  float shifted_bits_5;
+  float source_component_w;
+  float source_component_w_2;
+  float weighted_sum_3;
+  float shifted_bits_6;
+  float source_float_4;
+  float source_float_4_2;
+  float weighted_sum_4;
+  float shifted_bits_7;
+  float source_float_5;
+  float source_float_5_2;
+  float weighted_sum_5;
+  float shifted_bits_8;
+  float weighted_sum_6;
+  float source_float_6;
+  unsigned int loaded_word;
+  __int64 remaining_count;
+  _DWORD *record_byte_offset_5;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140078610[1136];
-#define v67 (*(__int64 (*))(void *)(sr_frame_140078610 + 0)) /* [rsp+0h] */
-#define v68 (*(int (*))(void *)(sr_frame_140078610 + 80)) /* [rsp+50h] */
-#define v69 (*(unsigned __int64 (*))(void *)(sr_frame_140078610 + 88)) /* [rsp+58h] */
-#define v70 (*(_BYTE (*)[512])(void *)(sr_frame_140078610 + 96)) /* [rsp+60h] */
-#define v71 (*(char (*)[512])(void *)(sr_frame_140078610 + 608)) /* [rsp+260h] */
-#define v72 (*(__int64 (*))(void *)(sr_frame_140078610 + 1120)) /* [rsp+460h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_140078610 + 0)) /* [rsp+0h] */
+#define input_value_3 (*(int (*))(void *)(sr_frame_140078610 + 80)) /* [rsp+50h] */
+#define scaled_index_2 (*(unsigned __int64 (*))(void *)(sr_frame_140078610 + 88)) /* [rsp+58h] */
+#define needle (*(_BYTE (*)[512])(void *)(sr_frame_140078610 + 96)) /* [rsp+60h] */
+#define scratch_buffer (*(char (*)[512])(void *)(sr_frame_140078610 + 608)) /* [rsp+260h] */
+#define unused_frame_slot_1120 (*(__int64 (*))(void *)(sr_frame_140078610 + 1120)) /* [rsp+460h] */
 
   unsigned int sr_loaded = 0;
-  v3 = (int)a1;
-  v4 = a3;
-  v68 = a3;
+  input_value = (int)a1;
+  input_value_2 = a3;
+  input_value_3 = a3;
   if ( a1 <= 0x3F )
   {
-    crt_sprintf(v71, "font/%s.png", a2);
-    if ( (unsigned int)sub_140079840(v71) )
+    crt_sprintf(scratch_buffer, "font/%s.png", a2);
+    if ( (unsigned int)sr_texture_load_pixels(scratch_buffer) )
     {
-      v6 = v3;
-      v7 = 3592 * v3;
-      v8 = *(void **)&dword_140404A6C[3592 * v3 + 72777091];
-      dword_140404A6C[v7 + 72777088] = g_1B0037420;
-      dword_140404A6C[v7 + 72777089] = g_1B0037424;
-      v69 = 14368 * v3;
-      free(v8);
-      v9 = 0;
-      *(_QWORD *)&dword_140404A6C[v7 + 72777091] = sr_path_malloc((int)(4
-                                                                      * dword_140404A6C[v7 + 72777088]
-                                                                      * dword_140404A6C[v7 + 72777089]));
-      if ( (int)dword_140404A6C[3592 * v3 + 72777089] > 0 )
+      lookup_index = input_value;
+      scaled_index = 3592 * input_value;
+      allocation_buffer = *(void **)&dword_140404A6C[3592 * input_value + 72777091];
+      dword_140404A6C[scaled_index + 72777088] = g_1B0037420;
+      dword_140404A6C[scaled_index + 72777089] = g_1B0037424;
+      scaled_index_2 = 14368 * input_value;
+      free(allocation_buffer);
+      element_index = 0;
+      *(_QWORD *)&dword_140404A6C[scaled_index + 72777091] = sr_path_malloc((int)(4
+                                                                      * dword_140404A6C[scaled_index + 72777088]
+                                                                      * dword_140404A6C[scaled_index + 72777089]));
+      if ( (int)dword_140404A6C[3592 * input_value + 72777089] > 0 )
       {
         do
         {
-          v10 = dword_140404A6C[v7 + 72777088];
-          for ( i = 0; i < v10; ++i )
+          table_value = dword_140404A6C[scaled_index + 72777088];
+          for ( i = 0; i < table_value; ++i )
           {
-            if ( v9 >= (int)dword_140404A6C[v7 + 72777089] >> 4 || i >= v10 >> 4 )
-              *(_DWORD *)(*(_QWORD *)&dword_140404A6C[v7 + 72777091] + 4LL * (i + v9 * v10)) = dword_140404A6C[i + 468765295 + v9 * v10];
+            if ( element_index >= (int)dword_140404A6C[scaled_index + 72777089] >> 4 || i >= table_value >> 4 )
+              *(_DWORD *)(*(_QWORD *)&dword_140404A6C[scaled_index + 72777091] + 4LL * (i + element_index * table_value)) = dword_140404A6C[i + 468765295 + element_index * table_value];
             else
-              *(_DWORD *)(*(_QWORD *)&dword_140404A6C[v7 + 72777091] + 4LL * (i + v9 * v10)) = -1;
-            v10 = dword_140404A6C[v7 + 72777088];
+              *(_DWORD *)(*(_QWORD *)&dword_140404A6C[scaled_index + 72777091] + 4LL * (i + element_index * table_value)) = -1;
+            table_value = dword_140404A6C[scaled_index + 72777088];
           }
-          ++v9;
+          ++element_index;
         }
-        while ( v9 < (int)dword_140404A6C[v7 + 72777089] );
+        while ( element_index < (int)dword_140404A6C[scaled_index + 72777089] );
       }
-      glGenTextures(1, &dword_140404A6C[v7 + 72777086]);
-      glBindTexture(3553, dword_140404A6C[v7 + 72777086]);
+      glGenTextures(1, &dword_140404A6C[scaled_index + 72777086]);
+      glBindTexture(3553, dword_140404A6C[scaled_index + 72777086]);
       glTexParameteri(3553, 10242, 33071);
       glTexParameteri(3553, 10243, 33071);
       glTexParameteri(3553, 10240, 9729);
       glTexParameteri(3553, 10241, 9729);
-      v12 = v4 & 1;
-      if ( (v4 & 1) != 0 )
+      masked_bits = input_value_2 & 1;
+      if ( (input_value_2 & 1) != 0 )
       {
         glTexParameteri(3553, 10240, 9728);
         glTexParameteri(3553, 10241, 9728);
       }
-      v13 = 0;
+      element_index_2 = 0;
       glTexImage2D(3553,
         0,
         6408,
-        dword_140404A6C[v7 + 72777088],
-        dword_140404A6C[v7 + 72777089],
+        dword_140404A6C[scaled_index + 72777088],
+        dword_140404A6C[scaled_index + 72777089],
         0,
         6408,
         5121,
-        *(_QWORD *)&dword_140404A6C[v7 + 72777091]);
-      crt_sprintf(v71, "font/%s.csv", a2);
+        *(_QWORD *)&dword_140404A6C[scaled_index + 72777091]);
+      crt_sprintf(scratch_buffer, "font/%s.csv", a2);
       g_15F1D91E4 = 0;
-      v14 = crt_fopen(v71, "rb");
-      v15 = 2;
-      v16 = (FILE *)v14;
-      if ( v14 )
+      file_handle = crt_fopen(scratch_buffer, "rb");
+      record_byte_offset = 2;
+      file_handle_2 = (FILE *)file_handle;
+      if ( file_handle )
       {
-        sub_14020C4A8(v14, 0, 2u);
-        g_15F1D91E4 = ftell_sr(v16);
-        sub_14020C4A8((__int64)v16, 0, 0);
-        v17 = g_15F1D91E4;
+        sub_14020C4A8(file_handle, 0, 2u);
+        g_15F1D91E4 = ftell_sr(file_handle_2);
+        sub_14020C4A8((__int64)file_handle_2, 0, 0);
+        element_size = g_15F1D91E4;
         if ( (int)g_15F1D91E4 > 1048574 )
-          v17 = 1048574;
-        g_15F1D91E4 = v17;
-        fread_sr((void *)(uintptr_t)(&g_15F1D91E8), v17, 1, (FILE *)(uintptr_t)(v16));
+          element_size = 1048574;
+        g_15F1D91E4 = element_size;
+        fread_sr((void *)(uintptr_t)(&g_15F1D91E8), element_size, 1, (FILE *)(uintptr_t)(file_handle_2));
         *((_BYTE *)&g_15F1D91E8 + (int)g_15F1D91E4) = 0;
-        crt_fclose((__int64)v16);
+        crt_fclose((__int64)file_handle_2);
       }
-      v18 = 64.0;
+      call_result = 64.0;
       g_15F1D91E0 = 0;
-      crt_sprintf(v70, "Cell Height,", (unsigned int)v9);
-      v19 = g_15F1D91E0;
-      for ( j = g_15F1D91E4; v19 < j; g_15F1D91E0 = ++v19 )
+      crt_sprintf(needle, "Cell Height,", (unsigned int)element_index);
+      iteration_count = g_15F1D91E0;
+      for ( j = g_15F1D91E4; iteration_count < j; g_15F1D91E0 = ++iteration_count )
       {
-        if ( (unsigned int)sub_14006C870(v70) )
+        if ( (unsigned int)sr_text_scan_matches(needle) )
           break;
       }
-      v21 = -1;
+      element_index_3 = -1;
       do
-        ++v21;
-      while ( v70[v21] );
-      g_15F1D91E0 = v21 + v19;
-      if ( (int)v21 + v19 < j )
-        v18 = (float)(int)sub_14006EDD0();
+        ++element_index_3;
+      while ( needle[element_index_3] );
+      g_15F1D91E0 = element_index_3 + iteration_count;
+      if ( (int)element_index_3 + iteration_count < j )
+        call_result = (float)(int)sub_14006EDD0();
       for ( k = 0; k < 256; ++k )
       {
-        crt_sprintf(v70, "Char %d Base Width,", k);
-        v23 = g_15F1D91E0;
-        for ( m = g_15F1D91E4; v23 < m; g_15F1D91E0 = ++v23 )
+        crt_sprintf(needle, "Char %d Base Width,", k);
+        iteration_count_2 = g_15F1D91E0;
+        for ( m = g_15F1D91E4; iteration_count_2 < m; g_15F1D91E0 = ++iteration_count_2 )
         {
-          if ( (unsigned int)sub_14006C870(v70) )
+          if ( (unsigned int)sr_text_scan_matches(needle) )
             break;
         }
-        v25 = -1;
+        element_index_4 = -1;
         do
-          ++v25;
-        while ( v70[v25] );
-        g_15F1D91E0 = v25 + v23;
-        if ( (int)v25 + v23 < m )
+          ++element_index_4;
+        while ( needle[element_index_4] );
+        g_15F1D91E0 = element_index_4 + iteration_count_2;
+        if ( (int)element_index_4 + iteration_count_2 < m )
         {
-          v26 = (float)(int)sub_14006EDD0();
-          if ( !v12 )
-            v26 = v26 - 0.5;
-          *(float *)&dword_140404A6C[3592 * v6 + 72777093 + v13] = v26 / v18;
+          component_delta = (float)(int)sub_14006EDD0();
+          if ( !masked_bits )
+            component_delta = component_delta - 0.5;
+          *(float *)&dword_140404A6C[3592 * lookup_index + 72777093 + element_index_2] = component_delta / call_result;
         }
-        ++v13;
+        ++element_index_2;
       }
-      v27 = v69;
-      v28 = (float *)&dword_140404A6C[v69 / 4 + 72777094];
-      v29 = &dword_140404A6C[v69 / 4 + 72779654];
-      v30 = (float *)&dword_140404A6C[v69 / 4 + 72777350];
+      cached_scaled_index = scaled_index_2;
+      record_byte_offset_2 = (float *)&dword_140404A6C[scaled_index_2 / 4 + 72777094];
+      record_byte_offset_3 = &dword_140404A6C[scaled_index_2 / 4 + 72779654];
+      record_byte_offset_4 = (float *)&dword_140404A6C[scaled_index_2 / 4 + 72777350];
       do
       {
-        v31 = (float)(15.0 - (float)((v15 - 2) >> 4)) * 0.0625;
-        v32 = (float)(((_BYTE)v15 - 2) & 0xF) * 0.0625;
-        *(v30 - 1) = v32;
-        *v30 = v31 + 0.0625;
-        v33 = *(v28 - 1);
-        v30[2] = v31 + 0.0625;
-        v30[1] = (float)(v33 * 0.0625) + v32;
-        v34 = *(v28 - 1);
-        v30[4] = v31;
-        v30[5] = v32;
-        v30[6] = v31;
-        v30[3] = (float)(v34 * 0.0625) + v32;
-        *(v29 - 1) = *((_DWORD *)v28 - 1);
-        *(_QWORD *)v29 = 1065353216;
-        v29[2] = 0;
-        v35 = (float)(((_BYTE)v15 - 1) & 0xF) * 0.0625;
-        v30[7] = v35;
-        v36 = (float)(15.0 - (float)((v15 - 1) >> 4)) * 0.0625;
-        v30[8] = v36 + 0.0625;
-        v37 = *v28;
-        v30[10] = v36 + 0.0625;
-        v30[9] = (float)(v37 * 0.0625) + v35;
-        v38 = *v28;
-        v30[12] = v36;
-        v30[13] = v35;
-        v30[14] = v36;
-        v30[11] = (float)(v38 * 0.0625) + v35;
-        v29[3] = *(_DWORD *)v28;
-        *((_QWORD *)v29 + 2) = 1065353216;
-        v29[6] = 0;
-        v39 = (float)(v15 & 0xF) * 0.0625;
-        v30[15] = v39;
-        v40 = (float)(15.0 - (float)(v15 >> 4)) * 0.0625;
-        v30[16] = v40 + 0.0625;
-        v41 = v28[1];
-        v30[18] = v40 + 0.0625;
-        v30[17] = (float)(v41 * 0.0625) + v39;
-        v42 = v28[1];
-        v30[20] = v40;
-        v30[21] = v39;
-        v30[22] = v40;
-        v30[19] = (float)(v42 * 0.0625) + v39;
-        v29[7] = *((_DWORD *)v28 + 1);
-        *((_QWORD *)v29 + 4) = 1065353216;
-        v29[10] = 0;
-        v43 = (float)(((_BYTE)v15 + 1) & 0xF) * 0.0625;
-        v30[23] = v43;
-        v44 = (float)(15.0 - (float)((v15 + 1) >> 4)) * 0.0625;
-        v30[24] = v44 + 0.0625;
-        v45 = v28[2];
-        v30[26] = v44 + 0.0625;
-        v30[25] = (float)(v45 * 0.0625) + v43;
-        v46 = v28[2];
-        v30[28] = v44;
-        v30[29] = v43;
-        v30[30] = v44;
-        v30[27] = (float)(v46 * 0.0625) + v43;
-        v29[11] = *((_DWORD *)v28 + 2);
-        *((_QWORD *)v29 + 6) = 1065353216;
-        v29[14] = 0;
-        v47 = (float)(((_BYTE)v15 + 2) & 0xF) * 0.0625;
-        v30[31] = v47;
-        v48 = (float)(15.0 - (float)((v15 + 2) >> 4)) * 0.0625;
-        v30[32] = v48 + 0.0625;
-        v49 = v28[3];
-        v30[34] = v48 + 0.0625;
-        v30[33] = (float)(v49 * 0.0625) + v47;
-        v50 = v28[3];
-        v30[36] = v48;
-        v30[37] = v47;
-        v30[38] = v48;
-        v30[35] = (float)(v50 * 0.0625) + v47;
-        v29[15] = *((_DWORD *)v28 + 3);
-        *((_QWORD *)v29 + 8) = 1065353216;
-        v29[18] = 0;
-        v51 = (float)(((_BYTE)v15 + 3) & 0xF) * 0.0625;
-        v30[39] = v51;
-        v52 = (float)(15.0 - (float)((v15 + 3) >> 4)) * 0.0625;
-        v30[40] = v52 + 0.0625;
-        v53 = v28[4];
-        v30[42] = v52 + 0.0625;
-        v30[41] = (float)(v53 * 0.0625) + v51;
-        v54 = v28[4];
-        v30[44] = v52;
-        v30[45] = v51;
-        v30[46] = v52;
-        v30[43] = (float)(v54 * 0.0625) + v51;
-        v29[19] = *((_DWORD *)v28 + 4);
-        *((_QWORD *)v29 + 10) = 1065353216;
-        v29[22] = 0;
-        v55 = (float)(((_BYTE)v15 + 4) & 0xF) * 0.0625;
-        v30[47] = v55;
-        v56 = (float)(15.0 - (float)((v15 + 4) >> 4)) * 0.0625;
-        v30[48] = v56 + 0.0625;
-        v57 = v28[5];
-        v30[50] = v56 + 0.0625;
-        v30[49] = (float)(v57 * 0.0625) + v55;
-        v58 = v28[5];
-        v30[52] = v56;
-        v30[53] = v55;
-        v30[54] = v56;
-        v30[51] = (float)(v58 * 0.0625) + v55;
-        v29[23] = *((_DWORD *)v28 + 5);
-        *((_QWORD *)v29 + 12) = 1065353216;
-        v29[26] = 0;
-        v59 = (float)(((_BYTE)v15 + 5) & 0xF) * 0.0625;
-        v30[55] = v59;
-        v60 = (float)(15.0 - (float)((v15 + 5) >> 4)) * 0.0625;
-        v30[56] = v60 + 0.0625;
-        v61 = (float)(v28[6] * 0.0625) + v59;
-        v30[58] = v60 + 0.0625;
-        v15 += 8;
-        v30[57] = v61;
-        v62 = v28[6];
-        v30[60] = v60;
-        v30[61] = v59;
-        v30[62] = v60;
-        v30[59] = (float)(v62 * 0.0625) + v59;
-        v30 += 64;
-        v63 = *((_DWORD *)v28 + 6);
-        v28 += 8;
-        v29[27] = v63;
-        *((_QWORD *)v29 + 14) = 1065353216;
-        v29[30] = 0;
-        v29 += 32;
+        shifted_bits = (float)(15.0 - (float)((record_byte_offset - 2) >> 4)) * 0.0625;
+        product_difference = (float)(((_BYTE)record_byte_offset - 2) & 0xF) * 0.0625;
+        *(record_byte_offset_4 - 1) = product_difference;
+        *record_byte_offset_4 = shifted_bits + 0.0625;
+        product_difference_2 = *(record_byte_offset_2 - 1);
+        record_byte_offset_4[2] = shifted_bits + 0.0625;
+        record_byte_offset_4[1] = (float)(product_difference_2 * 0.0625) + product_difference;
+        product_difference_3 = *(record_byte_offset_2 - 1);
+        record_byte_offset_4[4] = shifted_bits;
+        record_byte_offset_4[5] = product_difference;
+        record_byte_offset_4[6] = shifted_bits;
+        record_byte_offset_4[3] = (float)(product_difference_3 * 0.0625) + product_difference;
+        *(record_byte_offset_3 - 1) = *((_DWORD *)record_byte_offset_2 - 1);
+        *(_QWORD *)record_byte_offset_3 = 1065353216;
+        record_byte_offset_3[2] = 0;
+        product_difference_4 = (float)(((_BYTE)record_byte_offset - 1) & 0xF) * 0.0625;
+        record_byte_offset_4[7] = product_difference_4;
+        shifted_bits_2 = (float)(15.0 - (float)((record_byte_offset - 1) >> 4)) * 0.0625;
+        record_byte_offset_4[8] = shifted_bits_2 + 0.0625;
+        scaled_value = *record_byte_offset_2;
+        record_byte_offset_4[10] = shifted_bits_2 + 0.0625;
+        record_byte_offset_4[9] = (float)(scaled_value * 0.0625) + product_difference_4;
+        scaled_value_2 = *record_byte_offset_2;
+        record_byte_offset_4[12] = shifted_bits_2;
+        record_byte_offset_4[13] = product_difference_4;
+        record_byte_offset_4[14] = shifted_bits_2;
+        record_byte_offset_4[11] = (float)(scaled_value_2 * 0.0625) + product_difference_4;
+        record_byte_offset_3[3] = *(_DWORD *)record_byte_offset_2;
+        *((_QWORD *)record_byte_offset_3 + 2) = 1065353216;
+        record_byte_offset_3[6] = 0;
+        scaled_value_3 = (float)(record_byte_offset & 0xF) * 0.0625;
+        record_byte_offset_4[15] = scaled_value_3;
+        shifted_bits_3 = (float)(15.0 - (float)(record_byte_offset >> 4)) * 0.0625;
+        record_byte_offset_4[16] = shifted_bits_3 + 0.0625;
+        source_component_y = record_byte_offset_2[1];
+        record_byte_offset_4[18] = shifted_bits_3 + 0.0625;
+        record_byte_offset_4[17] = (float)(source_component_y * 0.0625) + scaled_value_3;
+        source_component_y_2 = record_byte_offset_2[1];
+        record_byte_offset_4[20] = shifted_bits_3;
+        record_byte_offset_4[21] = scaled_value_3;
+        record_byte_offset_4[22] = shifted_bits_3;
+        record_byte_offset_4[19] = (float)(source_component_y_2 * 0.0625) + scaled_value_3;
+        record_byte_offset_3[7] = *((_DWORD *)record_byte_offset_2 + 1);
+        *((_QWORD *)record_byte_offset_3 + 4) = 1065353216;
+        record_byte_offset_3[10] = 0;
+        weighted_sum = (float)(((_BYTE)record_byte_offset + 1) & 0xF) * 0.0625;
+        record_byte_offset_4[23] = weighted_sum;
+        shifted_bits_4 = (float)(15.0 - (float)((record_byte_offset + 1) >> 4)) * 0.0625;
+        record_byte_offset_4[24] = shifted_bits_4 + 0.0625;
+        source_component_z = record_byte_offset_2[2];
+        record_byte_offset_4[26] = shifted_bits_4 + 0.0625;
+        record_byte_offset_4[25] = (float)(source_component_z * 0.0625) + weighted_sum;
+        source_component_z_2 = record_byte_offset_2[2];
+        record_byte_offset_4[28] = shifted_bits_4;
+        record_byte_offset_4[29] = weighted_sum;
+        record_byte_offset_4[30] = shifted_bits_4;
+        record_byte_offset_4[27] = (float)(source_component_z_2 * 0.0625) + weighted_sum;
+        record_byte_offset_3[11] = *((_DWORD *)record_byte_offset_2 + 2);
+        *((_QWORD *)record_byte_offset_3 + 6) = 1065353216;
+        record_byte_offset_3[14] = 0;
+        weighted_sum_2 = (float)(((_BYTE)record_byte_offset + 2) & 0xF) * 0.0625;
+        record_byte_offset_4[31] = weighted_sum_2;
+        shifted_bits_5 = (float)(15.0 - (float)((record_byte_offset + 2) >> 4)) * 0.0625;
+        record_byte_offset_4[32] = shifted_bits_5 + 0.0625;
+        source_component_w = record_byte_offset_2[3];
+        record_byte_offset_4[34] = shifted_bits_5 + 0.0625;
+        record_byte_offset_4[33] = (float)(source_component_w * 0.0625) + weighted_sum_2;
+        source_component_w_2 = record_byte_offset_2[3];
+        record_byte_offset_4[36] = shifted_bits_5;
+        record_byte_offset_4[37] = weighted_sum_2;
+        record_byte_offset_4[38] = shifted_bits_5;
+        record_byte_offset_4[35] = (float)(source_component_w_2 * 0.0625) + weighted_sum_2;
+        record_byte_offset_3[15] = *((_DWORD *)record_byte_offset_2 + 3);
+        *((_QWORD *)record_byte_offset_3 + 8) = 1065353216;
+        record_byte_offset_3[18] = 0;
+        weighted_sum_3 = (float)(((_BYTE)record_byte_offset + 3) & 0xF) * 0.0625;
+        record_byte_offset_4[39] = weighted_sum_3;
+        shifted_bits_6 = (float)(15.0 - (float)((record_byte_offset + 3) >> 4)) * 0.0625;
+        record_byte_offset_4[40] = shifted_bits_6 + 0.0625;
+        source_float_4 = record_byte_offset_2[4];
+        record_byte_offset_4[42] = shifted_bits_6 + 0.0625;
+        record_byte_offset_4[41] = (float)(source_float_4 * 0.0625) + weighted_sum_3;
+        source_float_4_2 = record_byte_offset_2[4];
+        record_byte_offset_4[44] = shifted_bits_6;
+        record_byte_offset_4[45] = weighted_sum_3;
+        record_byte_offset_4[46] = shifted_bits_6;
+        record_byte_offset_4[43] = (float)(source_float_4_2 * 0.0625) + weighted_sum_3;
+        record_byte_offset_3[19] = *((_DWORD *)record_byte_offset_2 + 4);
+        *((_QWORD *)record_byte_offset_3 + 10) = 1065353216;
+        record_byte_offset_3[22] = 0;
+        weighted_sum_4 = (float)(((_BYTE)record_byte_offset + 4) & 0xF) * 0.0625;
+        record_byte_offset_4[47] = weighted_sum_4;
+        shifted_bits_7 = (float)(15.0 - (float)((record_byte_offset + 4) >> 4)) * 0.0625;
+        record_byte_offset_4[48] = shifted_bits_7 + 0.0625;
+        source_float_5 = record_byte_offset_2[5];
+        record_byte_offset_4[50] = shifted_bits_7 + 0.0625;
+        record_byte_offset_4[49] = (float)(source_float_5 * 0.0625) + weighted_sum_4;
+        source_float_5_2 = record_byte_offset_2[5];
+        record_byte_offset_4[52] = shifted_bits_7;
+        record_byte_offset_4[53] = weighted_sum_4;
+        record_byte_offset_4[54] = shifted_bits_7;
+        record_byte_offset_4[51] = (float)(source_float_5_2 * 0.0625) + weighted_sum_4;
+        record_byte_offset_3[23] = *((_DWORD *)record_byte_offset_2 + 5);
+        *((_QWORD *)record_byte_offset_3 + 12) = 1065353216;
+        record_byte_offset_3[26] = 0;
+        weighted_sum_5 = (float)(((_BYTE)record_byte_offset + 5) & 0xF) * 0.0625;
+        record_byte_offset_4[55] = weighted_sum_5;
+        shifted_bits_8 = (float)(15.0 - (float)((record_byte_offset + 5) >> 4)) * 0.0625;
+        record_byte_offset_4[56] = shifted_bits_8 + 0.0625;
+        weighted_sum_6 = (float)(record_byte_offset_2[6] * 0.0625) + weighted_sum_5;
+        record_byte_offset_4[58] = shifted_bits_8 + 0.0625;
+        record_byte_offset += 8;
+        record_byte_offset_4[57] = weighted_sum_6;
+        source_float_6 = record_byte_offset_2[6];
+        record_byte_offset_4[60] = shifted_bits_8;
+        record_byte_offset_4[61] = weighted_sum_5;
+        record_byte_offset_4[62] = shifted_bits_8;
+        record_byte_offset_4[59] = (float)(source_float_6 * 0.0625) + weighted_sum_5;
+        record_byte_offset_4 += 64;
+        loaded_word = *((_DWORD *)record_byte_offset_2 + 6);
+        record_byte_offset_2 += 8;
+        record_byte_offset_3[27] = loaded_word;
+        *((_QWORD *)record_byte_offset_3 + 14) = 1065353216;
+        record_byte_offset_3[30] = 0;
+        record_byte_offset_3 += 32;
       }
-      while ( v15 - 2 < 256 );
-      if ( (v68 & 2) != 0 )
+      while ( record_byte_offset - 2 < 256 );
+      if ( (input_value_3 & 2) != 0 )
       {
-        v64 = 13;
-        v65 = (unsigned int *)((char *)&g_1519A50A0 + v27);
+        remaining_count = 13;
+        record_byte_offset_5 = (unsigned int *)((char *)&g_1519A50A0 + cached_scaled_index);
         do
         {
-          *v65 = *(v65 - 256);
-          v65[1] = *(v65 - 255);
-          v65[2] = *(v65 - 254);
-          v65[3] = *(v65 - 253);
-          v65[4] = *(v65 - 252);
-          v65[5] = *(v65 - 251);
-          v65[6] = *(v65 - 250);
-          v65[7] = *(v65 - 249);
-          v65[8] = *(v65 - 248);
-          v65[9] = *(v65 - 247);
-          v65[10] = *(v65 - 246);
-          v65[11] = *(v65 - 245);
-          v65[12] = *(v65 - 244);
-          v65[13] = *(v65 - 243);
-          v65[14] = *(v65 - 242);
-          v65[15] = *(v65 - 241);
-          v65 += 16;
-          --v64;
+          *record_byte_offset_5 = *(record_byte_offset_5 - 256);
+          record_byte_offset_5[1] = *(record_byte_offset_5 - 255);
+          record_byte_offset_5[2] = *(record_byte_offset_5 - 254);
+          record_byte_offset_5[3] = *(record_byte_offset_5 - 253);
+          record_byte_offset_5[4] = *(record_byte_offset_5 - 252);
+          record_byte_offset_5[5] = *(record_byte_offset_5 - 251);
+          record_byte_offset_5[6] = *(record_byte_offset_5 - 250);
+          record_byte_offset_5[7] = *(record_byte_offset_5 - 249);
+          record_byte_offset_5[8] = *(record_byte_offset_5 - 248);
+          record_byte_offset_5[9] = *(record_byte_offset_5 - 247);
+          record_byte_offset_5[10] = *(record_byte_offset_5 - 246);
+          record_byte_offset_5[11] = *(record_byte_offset_5 - 245);
+          record_byte_offset_5[12] = *(record_byte_offset_5 - 244);
+          record_byte_offset_5[13] = *(record_byte_offset_5 - 243);
+          record_byte_offset_5[14] = *(record_byte_offset_5 - 242);
+          record_byte_offset_5[15] = *(record_byte_offset_5 - 241);
+          record_byte_offset_5 += 16;
+          --remaining_count;
         }
-        while ( v64 );
+        while ( remaining_count );
       }
-      glGenTextures(1, (char *)&g_1519A4068 + v27);
-      if ( (unsigned int)sub_140079840("texture/mouse01.png") )
+      glGenTextures(1, (char *)&g_1519A4068 + cached_scaled_index);
+      if ( (unsigned int)sr_texture_load_pixels("texture/mouse01.png") )
       {
-        glBindTexture(3553, *(unsigned int *)((char *)&g_1519A4068 + v27));
+        glBindTexture(3553, *(unsigned int *)((char *)&g_1519A4068 + cached_scaled_index));
         glTexParameteri(3553, 10242, 33071);
         glTexParameteri(3553, 10243, 33071);
         glTexParameteri(3553, 10240, 9729);
@@ -762,90 +735,90 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
           5121,
           &g_1B0037428);
       }
-      *(unsigned int *)((char *)&g_1519A4060 + v27) = 1;
+      *(unsigned int *)((char *)&g_1519A4060 + cached_scaled_index) = 1;
       sr_loaded = 1;
     }
   }
   return sr_loaded;
 }
-#undef v67
-#undef v68
-#undef v69
-#undef v70
-#undef v71
-#undef v72
+#undef unused_frame_slot_0
+#undef input_value_3
+#undef scaled_index_2
+#undef needle
+#undef scratch_buffer
+#undef unused_frame_slot_1120
 
 //----- (0000000140079140) ----------------------------------------------------
 __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char *a2)
 {
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  int v5;
-  __int64 v6;
-  signed int v7;
-  signed int v8;
-  int v9;
-  int v10;
-  int v11;
-  __int64 v12;
-  void *v13;
-  __int64 v14;
-  int v15;
-  int v16;
+  __int64 input_value;
+  __int64 file_handle;
+  __int64 file_handle_2;
+  int state_word;
+  __int64 remaining_count;
+  signed int state_word_2;
+  signed int iteration_count;
+  int iteration_count_2;
+  int masked_bits;
+  int scaled_index;
+  __int64 scaled_index_2;
+  void *allocation_buffer;
+  __int64 allocated_buffer;
+  int element_index;
+  int table_value;
   int i;
-  char *v18;
-  float *v19;
-  unsigned int *v20;
-  unsigned int *v21;
-  int v22;
-  unsigned int v23;
-  float v24;
-  unsigned int v25;
-  int v26;
-  float v27;
-  float v28;
-  __m128i v29;
-  unsigned int v30;
-  int v31;
-  float v32;
-  float v33;
-  __m128i v34;
-  int v35;
-  __m128i v36;
-  int v37;
-  float v38;
-  float v39;
-  __m128i v40;
-  unsigned int v41;
-  int v42;
-  int v43;
-  int v44;
-  __m128i v45;
-  int v46;
-  float v47;
-  float v48;
-  float v49;
+  char *state_address;
+  float *converted_vector;
+  unsigned int *state_address_2;
+  unsigned int *record_byte_offset;
+  int loaded_word;
+  unsigned int loaded_word_2;
+  float product_difference;
+  unsigned int loaded_word_3;
+  int loaded_word_4;
+  float product_difference_2;
+  float weighted_sum;
+  __m128i converted_vector_2;
+  unsigned int integer_difference;
+  int loaded_word_5;
+  float converted_vector_3;
+  float scaled_value;
+  __m128i converted_vector_4;
+  int loaded_word_6;
+  __m128i converted_vector_5;
+  int loaded_word_7;
+  float product_difference_3;
+  float product_difference_4;
+  __m128i converted_vector_6;
+  unsigned int integer_difference_2;
+  int loaded_word_8;
+  int loaded_word_9;
+  int loaded_word_10;
+  __m128i converted_vector_7;
+  int loaded_word_11;
+  float scaled_value_2;
+  float product_difference_5;
+  float weighted_sum_2;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140079140[2528];
-#define v51 (*(__int64 (*))(void *)(sr_frame_140079140 + 0)) /* [rsp+0h] */
-#define v52 (*(_BYTE (*)[2])(void *)(sr_frame_140079140 + 80)) /* [rsp+50h] */
-#define v53 (*(char (*))(void *)(sr_frame_140079140 + 82)) /* [rsp+52h] */
-#define v54 (*(char (*)[512])(void *)(sr_frame_140079140 + 2000)) /* [rsp+7D0h] */
-#define v55 (*(__int64 (*))(void *)(sr_frame_140079140 + 2512)) /* [rsp+9D0h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_140079140 + 0)) /* [rsp+0h] */
+#define scratch_buffer (*(_BYTE (*)[2])(void *)(sr_frame_140079140 + 80)) /* [rsp+50h] */
+#define callee_output_word (*(char (*))(void *)(sr_frame_140079140 + 82)) /* [rsp+52h] */
+#define scratch_buffer_2 (*(char (*)[512])(void *)(sr_frame_140079140 + 2000)) /* [rsp+7D0h] */
+#define unused_frame_slot_2512 (*(__int64 (*))(void *)(sr_frame_140079140 + 2512)) /* [rsp+9D0h] */
 
-  v2 = (int)a1;
+  input_value = (int)a1;
   if ( a1 <= 0x3F )
   {
-    crt_sprintf(v54, "font/%s.ttf", a2);
-    v3 = crt_fopen(v54, "rb");
-    v4 = v3;
-    if ( v3 )
+    crt_sprintf(scratch_buffer_2, "font/%s.ttf", a2);
+    file_handle = crt_fopen(scratch_buffer_2, "rb");
+    file_handle_2 = file_handle;
+    if ( file_handle )
     {
-      fread_sr((void *)(uintptr_t)(&g_18406CD00), 1, 0x100000, (FILE *)(uintptr_t)(v3));
-      crt_fclose(v4);
-      v5 = 512;
-      v6 = 32;
+      fread_sr((void *)(uintptr_t)(&g_18406CD00), 1, 0x100000, (FILE *)(uintptr_t)(file_handle));
+      crt_fclose(file_handle_2);
+      state_word = 512;
+      remaining_count = 32;
       sub_140177E50(
         (__int64)&g_18406CD00,
         0,
@@ -855,51 +828,51 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
         512,
         32,
         96,
-        (__int64)v52);
-      v7 = 512;
+        (__int64)scratch_buffer);
+      state_word_2 = 512;
       g_1B0037420 = 512;
-      v8 = 0;
+      iteration_count = 0;
       g_1B0037424 = 512;
       do
       {
-        v9 = 0;
-        if ( v5 > 0 )
+        iteration_count_2 = 0;
+        if ( state_word > 0 )
         {
           do
           {
-            v10 = *((unsigned __int8 *)&g_18402CCC0 + v9 + v5 * (v7 - v8 - 1));
-            v11 = v9 + v8 * v5;
-            ++v9;
-            dword_140404A6C[v11 + 468765295] = (v10 << 24) + 0xFFFFFF;
-            v5 = g_1B0037420;
-            v7 = g_1B0037424;
+            masked_bits = *((unsigned __int8 *)&g_18402CCC0 + iteration_count_2 + state_word * (state_word_2 - iteration_count - 1));
+            scaled_index = iteration_count_2 + iteration_count * state_word;
+            ++iteration_count_2;
+            dword_140404A6C[scaled_index + 468765295] = (masked_bits << 24) + 0xFFFFFF;
+            state_word = g_1B0037420;
+            state_word_2 = g_1B0037424;
           }
-          while ( v9 < (int)g_1B0037420 );
+          while ( iteration_count_2 < (int)g_1B0037420 );
         }
-        ++v8;
+        ++iteration_count;
       }
-      while ( v8 < v7 );
-      v12 = 3592 * v2;
-      dword_140404A6C[v12 + 72777089] = v7;
-      v13 = *(void **)&dword_140404A6C[v12 + 72777091];
-      dword_140404A6C[v12 + 72777088] = v5;
-      free(v13);
-      v14 = sr_path_malloc((int)(4 * dword_140404A6C[v12 + 72777088] * dword_140404A6C[v12 + 72777089]));
-      v15 = 0;
-      for ( *(_QWORD *)&dword_140404A6C[v12 + 72777091] = v14; v15 < (int)dword_140404A6C[v12 + 72777089]; ++v15 )
+      while ( iteration_count < state_word_2 );
+      scaled_index_2 = 3592 * input_value;
+      dword_140404A6C[scaled_index_2 + 72777089] = state_word_2;
+      allocation_buffer = *(void **)&dword_140404A6C[scaled_index_2 + 72777091];
+      dword_140404A6C[scaled_index_2 + 72777088] = state_word;
+      free(allocation_buffer);
+      allocated_buffer = sr_path_malloc((int)(4 * dword_140404A6C[scaled_index_2 + 72777088] * dword_140404A6C[scaled_index_2 + 72777089]));
+      element_index = 0;
+      for ( *(_QWORD *)&dword_140404A6C[scaled_index_2 + 72777091] = allocated_buffer; element_index < (int)dword_140404A6C[scaled_index_2 + 72777089]; ++element_index )
       {
-        v16 = dword_140404A6C[v12 + 72777088];
-        for ( i = 0; i < v16; ++i )
+        table_value = dword_140404A6C[scaled_index_2 + 72777088];
+        for ( i = 0; i < table_value; ++i )
         {
-          if ( v15 >= (int)dword_140404A6C[v12 + 72777089] >> 4 || i >= v16 >> 4 )
-            *(_DWORD *)(*(_QWORD *)&dword_140404A6C[v12 + 72777091] + 4LL * (i + v15 * v16)) = dword_140404A6C[i + 468765295 + v15 * v16];
+          if ( element_index >= (int)dword_140404A6C[scaled_index_2 + 72777089] >> 4 || i >= table_value >> 4 )
+            *(_DWORD *)(*(_QWORD *)&dword_140404A6C[scaled_index_2 + 72777091] + 4LL * (i + element_index * table_value)) = dword_140404A6C[i + 468765295 + element_index * table_value];
           else
-            *(_DWORD *)(*(_QWORD *)&dword_140404A6C[v12 + 72777091] + 4LL * (i + v15 * v16)) = -1;
-          v16 = dword_140404A6C[v12 + 72777088];
+            *(_DWORD *)(*(_QWORD *)&dword_140404A6C[scaled_index_2 + 72777091] + 4LL * (i + element_index * table_value)) = -1;
+          table_value = dword_140404A6C[scaled_index_2 + 72777088];
         }
       }
-      glGenTextures(1, &dword_140404A6C[v12 + 72777086]);
-      glBindTexture(3553, dword_140404A6C[v12 + 72777086]);
+      glGenTextures(1, &dword_140404A6C[scaled_index_2 + 72777086]);
+      glBindTexture(3553, dword_140404A6C[scaled_index_2 + 72777086]);
       glTexParameteri(3553, 10242, 33071);
       glTexParameteri(3553, 10243, 33071);
       glTexParameteri(3553, 10240, 9729);
@@ -907,102 +880,102 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
       glTexImage2D(3553,
         0,
         6408,
-        dword_140404A6C[v12 + 72777088],
-        dword_140404A6C[v12 + 72777089],
+        dword_140404A6C[scaled_index_2 + 72777088],
+        dword_140404A6C[scaled_index_2 + 72777089],
         0,
         6408,
         5121,
-        *(_QWORD *)&dword_140404A6C[v12 + 72777091]);
-      v18 = &v53;
-      v19 = (float *)&dword_140404A6C[v12 + 72779786];
-      v20 = &dword_140404A6C[v12 + 72777127];
-      v21 = &dword_140404A6C[v12 + 72777614];
+        *(_QWORD *)&dword_140404A6C[scaled_index_2 + 72777091]);
+      state_address = &callee_output_word;
+      converted_vector = (float *)&dword_140404A6C[scaled_index_2 + 72779786];
+      state_address_2 = &dword_140404A6C[scaled_index_2 + 72777127];
+      record_byte_offset = &dword_140404A6C[scaled_index_2 + 72777614];
       do
       {
-        v22 = *(unsigned __int16 *)v18;
-        v23 = *((unsigned __int16 *)v18 + 2);
-        v24 = 1.0 - (float)((float)v22 * 0.001953125);
-        v25 = *((unsigned __int16 *)v18 + 1) - *((unsigned __int16 *)v18 - 1);
-        v26 = *((unsigned __int16 *)v18 + 9);
-        v27 = (float)*((unsigned __int16 *)v18 - 1) * 0.001953125;
-        v28 = (float)*((unsigned __int16 *)v18 + 1) * 0.001953125;
-        *((float *)v21 - 8) = v24;
-        *((float *)v21 - 6) = v24;
-        *((float *)v21 - 7) = v28;
-        *((float *)v21 - 5) = v28;
-        *((float *)v21 - 9) = v27;
-        *((float *)v21 - 3) = v27;
-        v29 = _mm_cvtsi32_si128(v23);
-        v30 = v23 - v22;
-        v31 = *((unsigned __int16 *)v18 + 10);
-        v32 = 1.0 - (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v29), f32)[0] * 0.001953125);
-        *(float *)SR_VEC_LANES(128, v29, i32) = *(float *)(v18 + 14) * 0.07692308;
-        v33 = (float)v26 * 0.001953125;
-        *((float *)v21 - 4) = v32;
-        *((float *)v21 - 2) = v32;
-        *(v20 - 2) = SR_VEC_LANES(128, v29, i32)[0];
-        v34 = _mm_cvtsi32_si128(v25);
-        v35 = *((unsigned __int16 *)v18 + 11);
-        *(v19 - 3) = *(float *)(v18 + 6) * 0.07692308;
-        *(v19 - 5) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v34), f32)[0] * 0.07692308;
-        v36 = _mm_cvtsi32_si128(v30);
-        v37 = *((unsigned __int16 *)v18 + 12);
-        *(v19 - 4) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v36), f32)[0] * 0.07692308;
-        *(v19 - 2) = (float)(*(float *)(v18 + 10) * 0.07692308) + 0.75;
-        *((float *)v21 - 1) = v33;
-        *((float *)v21 + 5) = v33;
-        v38 = 1.0 - (float)((float)v31 * 0.001953125);
-        *(float *)v21 = v38;
-        *(float *)SR_VEC_LANES(128, v36, i32) = (float)v35 * 0.001953125;
-        *((float *)v21 + 2) = v38;
-        v21[1] = SR_VEC_LANES(128, v36, i32)[0];
-        v21[3] = SR_VEC_LANES(128, v36, i32)[0];
-        v39 = 1.0 - (float)((float)v37 * 0.001953125);
-        *(float *)SR_VEC_LANES(128, v36, i32) = *(float *)(v18 + 34) * 0.07692308;
-        *((float *)v21 + 4) = v39;
-        *((float *)v21 + 6) = v39;
-        *(v20 - 1) = SR_VEC_LANES(128, v36, i32)[0];
-        v40 = _mm_cvtsi32_si128(v35 - v26);
-        v41 = v37 - v31;
-        v42 = *((unsigned __int16 *)v18 + 20);
-        v43 = *((unsigned __int16 *)v18 + 21);
-        v44 = *((unsigned __int16 *)v18 + 19);
-        v19[1] = *(float *)(v18 + 26) * 0.07692308;
-        *(v19 - 1) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v40), f32)[0] * 0.07692308;
-        v45 = _mm_cvtsi32_si128(v41);
-        v46 = *((unsigned __int16 *)v18 + 22);
-        v47 = (float)v44 * 0.001953125;
-        *v19 = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v45), f32)[0] * 0.07692308;
-        v19[2] = (float)(*(float *)(v18 + 30) * 0.07692308) + 0.75;
-        *((float *)v21 + 7) = v47;
-        *((float *)v21 + 13) = v47;
-        v48 = 1.0 - (float)((float)v42 * 0.001953125);
-        *((float *)v21 + 8) = v48;
-        *(float *)SR_VEC_LANES(128, v45, i32) = (float)v43 * 0.001953125;
-        *((float *)v21 + 10) = v48;
-        v21[9] = SR_VEC_LANES(128, v45, i32)[0];
-        v21[11] = SR_VEC_LANES(128, v45, i32)[0];
-        *(float *)SR_VEC_LANES(128, v45, i32) = *(float *)(v18 + 54) * 0.07692308;
-        *((float *)v21 + 12) = 1.0 - (float)((float)v46 * 0.001953125);
-        *((float *)v21 + 14) = 1.0 - (float)((float)v46 * 0.001953125);
-        v21 += 24;
-        v49 = *(float *)(v18 + 46);
-        *v20 = SR_VEC_LANES(128, v45, i32)[0];
-        v20 += 3;
-        v19[5] = v49 * 0.07692308;
-        v19[3] = (float)(v43 - v44) * 0.07692308;
-        v19[4] = (float)(v46 - v42) * 0.07692308;
-        SR_VEC_LANES(128, v45, i32)[0] = *(_DWORD *)(v18 + 50);
-        v18 += 60;
-        v19[6] = (float)(*(float *)SR_VEC_LANES(128, v45, i32) * 0.07692308) + 0.75;
-        v19 += 12;
-        --v6;
+        loaded_word = *(unsigned __int16 *)state_address;
+        loaded_word_2 = *((unsigned __int16 *)state_address + 2);
+        product_difference = 1.0 - (float)((float)loaded_word * 0.001953125);
+        loaded_word_3 = *((unsigned __int16 *)state_address + 1) - *((unsigned __int16 *)state_address - 1);
+        loaded_word_4 = *((unsigned __int16 *)state_address + 9);
+        product_difference_2 = (float)*((unsigned __int16 *)state_address - 1) * 0.001953125;
+        weighted_sum = (float)*((unsigned __int16 *)state_address + 1) * 0.001953125;
+        *((float *)record_byte_offset - 8) = product_difference;
+        *((float *)record_byte_offset - 6) = product_difference;
+        *((float *)record_byte_offset - 7) = weighted_sum;
+        *((float *)record_byte_offset - 5) = weighted_sum;
+        *((float *)record_byte_offset - 9) = product_difference_2;
+        *((float *)record_byte_offset - 3) = product_difference_2;
+        converted_vector_2 = _mm_cvtsi32_si128(loaded_word_2);
+        integer_difference = loaded_word_2 - loaded_word;
+        loaded_word_5 = *((unsigned __int16 *)state_address + 10);
+        converted_vector_3 = 1.0 - (float)(SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(converted_vector_2), f32)[0] * 0.001953125);
+        *(float *)SR_VEC_LANES(128, converted_vector_2, i32) = *(float *)(state_address + 14) * 0.07692308;
+        scaled_value = (float)loaded_word_4 * 0.001953125;
+        *((float *)record_byte_offset - 4) = converted_vector_3;
+        *((float *)record_byte_offset - 2) = converted_vector_3;
+        *(state_address_2 - 2) = SR_VEC_LANES(128, converted_vector_2, i32)[0];
+        converted_vector_4 = _mm_cvtsi32_si128(loaded_word_3);
+        loaded_word_6 = *((unsigned __int16 *)state_address + 11);
+        *(converted_vector - 3) = *(float *)(state_address + 6) * 0.07692308;
+        *(converted_vector - 5) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(converted_vector_4), f32)[0] * 0.07692308;
+        converted_vector_5 = _mm_cvtsi32_si128(integer_difference);
+        loaded_word_7 = *((unsigned __int16 *)state_address + 12);
+        *(converted_vector - 4) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(converted_vector_5), f32)[0] * 0.07692308;
+        *(converted_vector - 2) = (float)(*(float *)(state_address + 10) * 0.07692308) + 0.75;
+        *((float *)record_byte_offset - 1) = scaled_value;
+        *((float *)record_byte_offset + 5) = scaled_value;
+        product_difference_3 = 1.0 - (float)((float)loaded_word_5 * 0.001953125);
+        *(float *)record_byte_offset = product_difference_3;
+        *(float *)SR_VEC_LANES(128, converted_vector_5, i32) = (float)loaded_word_6 * 0.001953125;
+        *((float *)record_byte_offset + 2) = product_difference_3;
+        record_byte_offset[1] = SR_VEC_LANES(128, converted_vector_5, i32)[0];
+        record_byte_offset[3] = SR_VEC_LANES(128, converted_vector_5, i32)[0];
+        product_difference_4 = 1.0 - (float)((float)loaded_word_7 * 0.001953125);
+        *(float *)SR_VEC_LANES(128, converted_vector_5, i32) = *(float *)(state_address + 34) * 0.07692308;
+        *((float *)record_byte_offset + 4) = product_difference_4;
+        *((float *)record_byte_offset + 6) = product_difference_4;
+        *(state_address_2 - 1) = SR_VEC_LANES(128, converted_vector_5, i32)[0];
+        converted_vector_6 = _mm_cvtsi32_si128(loaded_word_6 - loaded_word_4);
+        integer_difference_2 = loaded_word_7 - loaded_word_5;
+        loaded_word_8 = *((unsigned __int16 *)state_address + 20);
+        loaded_word_9 = *((unsigned __int16 *)state_address + 21);
+        loaded_word_10 = *((unsigned __int16 *)state_address + 19);
+        converted_vector[1] = *(float *)(state_address + 26) * 0.07692308;
+        *(converted_vector - 1) = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(converted_vector_6), f32)[0] * 0.07692308;
+        converted_vector_7 = _mm_cvtsi32_si128(integer_difference_2);
+        loaded_word_11 = *((unsigned __int16 *)state_address + 22);
+        scaled_value_2 = (float)loaded_word_10 * 0.001953125;
+        *converted_vector = SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(converted_vector_7), f32)[0] * 0.07692308;
+        converted_vector[2] = (float)(*(float *)(state_address + 30) * 0.07692308) + 0.75;
+        *((float *)record_byte_offset + 7) = scaled_value_2;
+        *((float *)record_byte_offset + 13) = scaled_value_2;
+        product_difference_5 = 1.0 - (float)((float)loaded_word_8 * 0.001953125);
+        *((float *)record_byte_offset + 8) = product_difference_5;
+        *(float *)SR_VEC_LANES(128, converted_vector_7, i32) = (float)loaded_word_9 * 0.001953125;
+        *((float *)record_byte_offset + 10) = product_difference_5;
+        record_byte_offset[9] = SR_VEC_LANES(128, converted_vector_7, i32)[0];
+        record_byte_offset[11] = SR_VEC_LANES(128, converted_vector_7, i32)[0];
+        *(float *)SR_VEC_LANES(128, converted_vector_7, i32) = *(float *)(state_address + 54) * 0.07692308;
+        *((float *)record_byte_offset + 12) = 1.0 - (float)((float)loaded_word_11 * 0.001953125);
+        *((float *)record_byte_offset + 14) = 1.0 - (float)((float)loaded_word_11 * 0.001953125);
+        record_byte_offset += 24;
+        weighted_sum_2 = *(float *)(state_address + 46);
+        *state_address_2 = SR_VEC_LANES(128, converted_vector_7, i32)[0];
+        state_address_2 += 3;
+        converted_vector[5] = weighted_sum_2 * 0.07692308;
+        converted_vector[3] = (float)(loaded_word_9 - loaded_word_10) * 0.07692308;
+        converted_vector[4] = (float)(loaded_word_11 - loaded_word_8) * 0.07692308;
+        SR_VEC_LANES(128, converted_vector_7, i32)[0] = *(_DWORD *)(state_address + 50);
+        state_address += 60;
+        converted_vector[6] = (float)(*(float *)SR_VEC_LANES(128, converted_vector_7, i32) * 0.07692308) + 0.75;
+        converted_vector += 12;
+        --remaining_count;
       }
-      while ( v6 );
-      glGenTextures(1, &dword_140404A6C[v12 + 72777087]);
-      if ( (unsigned int)sub_140079840("texture/mouse01.png") )
+      while ( remaining_count );
+      glGenTextures(1, &dword_140404A6C[scaled_index_2 + 72777087]);
+      if ( (unsigned int)sr_texture_load_pixels("texture/mouse01.png") )
       {
-        glBindTexture(3553, dword_140404A6C[v12 + 72777087]);
+        glBindTexture(3553, dword_140404A6C[scaled_index_2 + 72777087]);
         glTexParameteri(3553, 10242, 33071);
         glTexParameteri(3553, 10243, 33071);
         glTexParameteri(3553, 10240, 9729);
@@ -1017,48 +990,48 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
           5121,
           &g_1B0037428);
       }
-      dword_140404A6C[v12 + 72777085] = 1;
+      dword_140404A6C[scaled_index_2 + 72777085] = 1;
     }
   }
   return 0; /* the function has no caller */
 }
-#undef v51
-#undef v52
-#undef v53
-#undef v54
-#undef v55
+#undef unused_frame_slot_0
+#undef scratch_buffer
+#undef callee_output_word
+#undef scratch_buffer_2
+#undef unused_frame_slot_2512
 
 //----- (00000001400FE1B0) ----------------------------------------------------
 void sub_1400FE1B0()
 {
-  __int64 v0;
-  __int64 v1;
-  __int64 v2;
-  char v3;
-  int v4;
-  unsigned int v5;
-  struct hostent *v6;
-  struct hostent *v7;
-  _QWORD *v8;
-  unsigned int v9;
-  __int64 v10;
-  int v11;
-  __int64 v12;
-  int v13;
-  unsigned int v14;
-  int v15;
-  unsigned int v16;
-  int v17;
-  unsigned int v18;
-  int v19;
-  unsigned int v20;
-  bool v21;
-  unsigned int v22;
+  __int64 unused_local;
+  __int64 unused_local_2;
+  __int64 iteration_count;
+  char masked_bits;
+  int drawmenubutton_result;
+  unsigned int state_word;
+  struct hostent *returned_pointer;
+  struct hostent *record_pointer;
+  _QWORD *loaded_record_pointer;
+  unsigned int state_word_2;
+  __int64 element_index;
+  int ntohl_sr_result;
+  __int64 state_word_3;
+  int drawmenubutton_result_2;
+  unsigned int state_word_4;
+  int drawmenubutton_result_3;
+  unsigned int state_word_5;
+  int drawmenubutton_result_4;
+  unsigned int state_word_6;
+  int drawmenubutton_result_5;
+  unsigned int state_word_7;
+  bool comparison_result;
+  unsigned int state_word_8;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400FE1B0[576];
-#define v24 (*(_DWORD (*)[12])(void *)(sr_frame_1400FE1B0 + 0)) /* [rsp+0h] */
+#define callee_output_word (*(_DWORD (*)[12])(void *)(sr_frame_1400FE1B0 + 0)) /* [rsp+0h] */
 #define name (*(char (*)[512])(void *)(sr_frame_1400FE1B0 + 48)) /* [rsp+30h] */
-#define v26 (*(__int64 (*))(void *)(sr_frame_1400FE1B0 + 560)) /* [rsp+230h] */
+#define unused_frame_slot_560 (*(__int64 (*))(void *)(sr_frame_1400FE1B0 + 560)) /* [rsp+230h] */
 
   menu_item_height = 1107296256;
   *(unsigned int *)&menu_y = 1135083520;
@@ -1069,22 +1042,22 @@ void sub_1400FE1B0()
   {
     SR_DEBUG_STAGE("Practice selected: start local game setup");
     sr_menu_relative_mode(1);
-    g_183F7C758 = sr_menu_relative_mouse((int *)&v24[8], (int *)&v24[9]);
+    g_183F7C758 = sr_menu_relative_mouse((int *)&callee_output_word[8], (int *)&callee_output_word[9]);
     g_183F7C750 = g_183F7C758 & 1;
     *(unsigned int *)&g_183F7C6C4 = 1134559232;
-    v2 = 0;
+    iteration_count = 0;
     g_183F7C754 = (LOBYTE(g_183F7C758) >> 2) & 1;
     game_type = 0;
     g_183EBFCE0 = 25200;
-    g_183F7C6C8 = (float)(int)v24[8];
+    g_183F7C6C8 = (float)(int)callee_output_word[8];
     *(unsigned int *)&g_183F7C6C0 = 1140850688;
-    g_183F7C6CC = (float)(int)v24[9];
+    g_183F7C6CC = (float)(int)callee_output_word[9];
     do
     {
-      v3 = *((_BYTE *)&g_151E45B4C + v2);
-      *((_BYTE *)(unsigned int *)&g_1AD04ADD4 + v2++) = v3;
+      masked_bits = *((_BYTE *)&g_151E45B4C + iteration_count);
+      *((_BYTE *)(unsigned int *)&g_1AD04ADD4 + iteration_count++) = masked_bits;
     }
-    while ( v3 );
+    while ( masked_bits );
     g_1AD04B1F4 = 1;
     game_connected = 1;
     *(_QWORD *)&g_151E4614C = 0;
@@ -1099,12 +1072,12 @@ void sub_1400FE1B0()
     sub_140095B00();
   }
   g_150F610F4 = 22;
-  v4 = sr_DrawMenuButton("Start Game") || SR_DEBUG_AUTOSTART_MODE();
-  v5 = g_183EBFAA4;
+  drawmenubutton_result = sr_DrawMenuButton("Start Game") || SR_DEBUG_AUTOSTART_MODE();
+  state_word = g_183EBFAA4;
   g_150F610F4 = 13;
-  if ( v4 )
-    v5 = 4;
-  g_183EBFAA4 = v5;
+  if ( drawmenubutton_result )
+    state_word = 4;
+  g_183EBFAA4 = state_word;
   if ( (unsigned int)sr_DrawMenuButton("Join Game") )
   {
     game_connected = 0;
@@ -1116,31 +1089,31 @@ void sub_1400FE1B0()
     g_16B0A7EE0 = 0;
     if ( sub_140199037(name, 512) != -1 )
     {
-      v6 = sub_140199031(name);
-      v7 = v6;
-      if ( v6 )
+      returned_pointer = sub_140199031(name);
+      record_pointer = returned_pointer;
+      if ( returned_pointer )
       {
-        v8 = *((_QWORD **)v6 + 3);
-        v9 = g_16B0A7EE4;
-        if ( *v8 )
+        loaded_record_pointer = *((_QWORD **)returned_pointer + 3);
+        state_word_2 = g_16B0A7EE4;
+        if ( *loaded_record_pointer )
         {
-          v10 = 0;
+          element_index = 0;
           do
           {
-            if ( v10 >= 16 )
+            if ( element_index >= 16 )
               break;
-            v11 = ntohl_sr(*(unsigned int *)v8[v10]);
-            v12 = (int)g_16B0A7EE4;
-            ++v10;
-            dword_140404A6C[2 * g_16B0A7EE4 + 179457309] = v11 | 0xFF;
-            LOWORD(dword_140404A6C[2 * v12 + 179457310]) = g_18539D3F8;
-            v9 = v12 + 1;
-            g_16B0A7EE4 = v9;
-            v8 = *((_QWORD **)v7 + 3);
+            ntohl_sr_result = ntohl_sr(*(unsigned int *)loaded_record_pointer[element_index]);
+            state_word_3 = (int)g_16B0A7EE4;
+            ++element_index;
+            dword_140404A6C[2 * g_16B0A7EE4 + 179457309] = ntohl_sr_result | 0xFF;
+            LOWORD(dword_140404A6C[2 * state_word_3 + 179457310]) = g_18539D3F8;
+            state_word_2 = state_word_3 + 1;
+            g_16B0A7EE4 = state_word_2;
+            loaded_record_pointer = *((_QWORD **)record_pointer + 3);
           }
-          while ( v8[v10] );
+          while ( loaded_record_pointer[element_index] );
         }
-        g_16B0A7EE0 = v9;
+        g_16B0A7EE0 = state_word_2;
       }
     }
     g_16B15FF2C = 0;
@@ -1150,22 +1123,22 @@ void sub_1400FE1B0()
     g_183EBFAA4 = 1;
   }
   g_150F610F4 = 18;
-  v13 = sr_DrawMenuButton("Options");
-  v14 = g_183EBFAA4;
-  if ( v13 )
-    v14 = 3;
-  g_183EBFAA4 = v14;
-  v15 = sr_DrawMenuButton("Credits");
-  v16 = g_183EBFAA4;
+  drawmenubutton_result_2 = sr_DrawMenuButton("Options");
+  state_word_4 = g_183EBFAA4;
+  if ( drawmenubutton_result_2 )
+    state_word_4 = 3;
+  g_183EBFAA4 = state_word_4;
+  drawmenubutton_result_3 = sr_DrawMenuButton("Credits");
+  state_word_5 = g_183EBFAA4;
   g_150F610F4 = 41;
-  if ( v15 )
-    v16 = 6;
-  g_183EBFAA4 = v16;
-  v17 = sr_DrawMenuButton("Exit");
-  v18 = g_183EBFAA8;
-  if ( v17 )
-    v18 = 2;
-  g_183EBFAA8 = v18;
+  if ( drawmenubutton_result_3 )
+    state_word_5 = 6;
+  g_183EBFAA4 = state_word_5;
+  drawmenubutton_result_4 = sr_DrawMenuButton("Exit");
+  state_word_6 = g_183EBFAA8;
+  if ( drawmenubutton_result_4 )
+    state_word_6 = 2;
+  g_183EBFAA8 = state_word_6;
   *(unsigned int *)&menu_x = 1098907648;
   *(unsigned int *)&menu_y = 1139277824;
   if ( (int)g_151042894 < 16 )
@@ -1176,79 +1149,79 @@ void sub_1400FE1B0()
   menu_item_width = 1128267776;
   menu_item_height = 1103101952;
   g_150F610F4 = 6;
-  v19 = sr_DrawMenuButton("Character");
-  v20 = g_183EBFAA4;
-  v21 = v19 == 0;
-  v22 = g_151042894;
-  if ( !v21 )
-    v20 = 5;
-  g_183EBFAA4 = v20;
+  drawmenubutton_result_5 = sr_DrawMenuButton("Character");
+  state_word_7 = g_183EBFAA4;
+  comparison_result = drawmenubutton_result_5 == 0;
+  state_word_8 = g_151042894;
+  if ( !comparison_result )
+    state_word_7 = 5;
+  g_183EBFAA4 = state_word_7;
   if ( (int)g_151042894 > 0 )
   {
     --g_151042894;
-    menu_item_width = dword_140404A6C[2 * (v22 - 1) + 70317963];
-    menu_item_height = dword_140404A6C[2 * (v22 - 1) + 70317964];
+    menu_item_width = dword_140404A6C[2 * (state_word_8 - 1) + 70317963];
+    menu_item_height = dword_140404A6C[2 * (state_word_8 - 1) + 70317964];
   }
   return;
 }
-#undef v24
+#undef callee_output_word
 #undef name
-#undef v26
+#undef unused_frame_slot_560
 
 //----- (00000001400FEB50) ----------------------------------------------------
 // Candidate options menu builder: Back, Fullscreen, V-Sync, Frame Smoothing, Sprite Models, Invert Mouse, advanced inventory, audio selectors.
 void ui_build_options_menu_candidate()
 {
-  unsigned int v0;
-  int v1;
-  unsigned int v2;
-  unsigned int *v3;
-  char *v4;
-  char v5;
-  int v6;
-  int v7;
-  unsigned int v8;
-  __int64 v9;
-  int v10;
-  unsigned int v11;
-       char *v12;
-  char *v13;
-  bool v14;
-  _QWORD *v15;
-  char *v16;
-       char *v17;
-       char *v18;
-       char *v19;
-  char *v20;
-  _WORD *v21;
-  int v22;
-  char *v23;
-  char *v24;
-  __int64 v26;
+  unsigned int state_word;
+  int drawmenubutton_result;
+  unsigned int state_word_2;
+  unsigned int *state_address;
+  char *byte_cursor;
+  char input_byte;
+  int selection_code;
+  int masked_bits;
+  unsigned int state_word_3;
+  __int64 scaled_index;
+  int iteration_count;
+  unsigned int rol4_result;
+       char *source_text;
+  char *destination_text;
+  bool comparison_result;
+  _QWORD *state_address_2;
+  char *destination_text_2;
+       char *graphics_query_result;
+       char *graphics_query_result_2;
+       char *graphics_query_result_3;
+  char *destination_text_3;
+  _WORD *state_address_3;
+  int call_result;
+  char *destination_text_4;
+  char *destination_text_5;
+  __int64 unused_local;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400FEB50[10560];
-#define v27 (*(__int64 (*))(void *)(sr_frame_1400FEB50 + 0)) /* [rsp+0h] */
-#define v28 (*(int (*))(void *)(sr_frame_1400FEB50 + 48)) /* [rsp+30h] */
-#define v29 (*(__int16 (*))(void *)(sr_frame_1400FEB50 + 52)) /* [rsp+34h] */
-#define v30 (*(char (*))(void *)(sr_frame_1400FEB50 + 54)) /* [rsp+36h] */
-#define v31 (*(__int16 (*))(void *)(sr_frame_1400FEB50 + 56)) /* [rsp+38h] */
-#define v32 (*(void * (*))(void *)(sr_frame_1400FEB50 + 64)) /* [rsp+40h] */
-#define v33 (*(char (*)[1024])(void *)(sr_frame_1400FEB50 + 5424)) /* [rsp+1530h] */
-#define v34 (*(char (*)[4096])(void *)(sr_frame_1400FEB50 + 6448)) /* [rsp+1930h] */
-#define v35 (*(__int64 (*))(void *)(sr_frame_1400FEB50 + 10544)) /* [rsp+2930h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_1400FEB50 + 0)) /* [rsp+0h] */
+#define unused_frame_slot_48 (*(int (*))(void *)(sr_frame_1400FEB50 + 48)) /* [rsp+30h] */
+#define unused_frame_slot_52 (*(__int16 (*))(void *)(sr_frame_1400FEB50 + 52)) /* [rsp+34h] */
+#define unused_frame_slot_54 (*(char (*))(void *)(sr_frame_1400FEB50 + 54)) /* [rsp+36h] */
+#define unused_frame_slot_56 (*(__int16 (*))(void *)(sr_frame_1400FEB50 + 56)) /* [rsp+38h] */
+#define unused_frame_slot_64 (*(void * (*))(void *)(sr_frame_1400FEB50 + 64)) /* [rsp+40h] */
+#define destination_text_6 (*(char (*)[1024])(void *)(sr_frame_1400FEB50 + 5424)) /* [rsp+1530h] */
+#define source_text_2 (*(char (*)[4096])(void *)(sr_frame_1400FEB50 + 6448)) /* [rsp+1930h] */
+#define unused_frame_slot_10544 (*(__int64 (*))(void *)(sr_frame_1400FEB50 + 10544)) /* [rsp+2930h] */
 
-  v0 = g_150F610F4;
+  state_word = g_150F610F4;
   if ( !g_1449815C4 )
-    v0 = 41;
-  g_150F610F4 = v0;
+    state_word = 41;
+  g_150F610F4 = state_word;
   menu_item_width = 1126170624;
   menu_item_height = 1101004800;
-  v1 = sr_DrawMenuButton("Back");
-  v2 = g_183EBFAA4;
-  if ( v1 )
-    v2 = 0;
+  drawmenubutton_result = sr_DrawMenuButton("Back");
+  state_word_2 = g_183EBFAA4;
+  if ( drawmenubutton_result )
+    state_word_2 = 0;
   *(unsigned int *)&menu_x = 1082130432;
-  g_183EBFAA4 = v2;
+  g_183EBFAA4 = state_word_2;
   menu_item_width = 1131413504;
   menu_item_height = 1107296256;
   *(unsigned int *)&menu_y = 1115684864;
@@ -1267,8 +1240,8 @@ void ui_build_options_menu_candidate()
     sr_window_swap((int)g_151E461D8);
   sr_DrawMenuToggle("Frame Smoothing", &g_151E46204);
   sr_DrawMenuToggle("Sprite Models", &draw_unknown_151e46208);
-  sub_140071640(Parameters);
-  sub_140071640(Parameters);
+  sr_menu_label(Parameters);
+  sr_menu_label(Parameters);
   sr_DrawMenuToggle("Invert Mouse", &g_151E46198);
   sr_DrawMenuToggle("Use advanced inventory", &g_151E46200);
   *(unsigned int *)&menu_x = 1140850688;
@@ -1285,7 +1258,7 @@ void ui_build_options_menu_candidate()
     (__int64)(unsigned int *)&g_144970CA4,
     0x200u,
     g_144970CA0);
-  sub_140071640(Parameters);
+  sr_menu_label(Parameters);
   sr_DrawMenuList(
     "Audio Input",
     240.0,
@@ -1297,165 +1270,165 @@ void ui_build_options_menu_candidate()
     (__int64)(unsigned int *)&g_144978CB0,
     0x200u,
     g_144978CAC);
-  sub_140071640(Parameters);
+  sr_menu_label(Parameters);
   sr_DrawMenuToggle("Use Push to Talk", &g_151E461C4);
   if ( !g_151E461C4 )
     sr_DrawMenuTextBox("Voice Min", (__int64)&g_151E461BC, 0x10u, 0x4000u);
-  v33[0] = 0;
+  destination_text_6[0] = 0;
   if ( g_1449815C4 )
   {
-    strcpy(v33, "Press a key or mouse button");
+    strcpy(destination_text_6, "Press a key or mouse button");
   }
   else if ( g_151E461C8 )
   {
-    v3 = &dword_140404A6C[4 * g_151E461C8 + 83175925];
-    v4 = (char *)(v33 - (char *)v3);
+    state_address = &dword_140404A6C[4 * g_151E461C8 + 83175925];
+    byte_cursor = (char *)(destination_text_6 - (char *)state_address);
     do
     {
-      v5 = *(_BYTE *)v3;
-      *((_BYTE *)v3 + (_QWORD)v4) = *(_BYTE *)v3;
-      v3 = (unsigned int *)((char *)v3 + 1);
+      input_byte = *(_BYTE *)state_address;
+      *((_BYTE *)state_address + (_QWORD)byte_cursor) = *(_BYTE *)state_address;
+      state_address = (unsigned int *)((char *)state_address + 1);
     }
-    while ( v5 );
+    while ( input_byte );
   }
   else if ( g_151E461CC )
   {
     switch ( g_151E461CC )
     {
       case 1u:
-        v6 = 1;
+        selection_code = 1;
         break;
       case 2u:
-        v6 = 2;
+        selection_code = 2;
         break;
       case 4u:
-        v6 = 3;
+        selection_code = 3;
         break;
       case 8u:
-        v6 = 4;
+        selection_code = 4;
         break;
       case 0x10u:
-        v6 = 5;
+        selection_code = 5;
         break;
       case 0x20u:
-        v6 = 6;
+        selection_code = 6;
         break;
       case 0x40u:
-        v6 = 7;
+        selection_code = 7;
         break;
       default:
-        v6 = 0;
+        selection_code = 0;
         if ( g_151E461CC == 128 )
-          v6 = 8;
+          selection_code = 8;
         break;
     }
-    crt_sprintf(v33, "Mouse %d", v6);
+    crt_sprintf(destination_text_6, "Mouse %d", selection_code);
   }
-  sr_DrawMenuButtonSelectable((unsigned __int8 *)v33, (int *)&g_1449815C4, 1);
+  sr_DrawMenuButtonSelectable((unsigned __int8 *)destination_text_6, (int *)&g_1449815C4, 1);
   if ( g_1449815C4 )
   {
-    v7 = g_1B0032404;
+    masked_bits = g_1B0032404;
     if ( g_1B0032404 != g_1B0032400 )
     {
-      v8 = g_151E461C8;
-      while ( !dword_140404A6C[5 * v7 + 468760167] )
+      state_word_3 = g_151E461C8;
+      while ( !dword_140404A6C[5 * masked_bits + 468760167] )
       {
-        if ( dword_140404A6C[5 * v7 + 468760168] == 41 )
+        if ( dword_140404A6C[5 * masked_bits + 468760168] == 41 )
           goto LABEL_45;
 LABEL_46:
-        v7 = ((_WORD)v7 + 1) & 0x3FF;
-        g_1B0032404 = v7;
-        if ( v7 == g_1B0032400 )
+        masked_bits = ((_WORD)masked_bits + 1) & 0x3FF;
+        g_1B0032404 = masked_bits;
+        if ( masked_bits == g_1B0032400 )
           goto LABEL_47;
       }
-      v9 = (int)dword_140404A6C[5 * v7 + 468760168];
-      if ( (int)v9 < 323 )
+      scaled_index = (int)dword_140404A6C[5 * masked_bits + 468760168];
+      if ( (int)scaled_index < 323 )
       {
-        if ( LOBYTE(dword_140404A6C[4 * v9 + 83175925]) )
-          v8 = dword_140404A6C[5 * v7 + 468760168];
-        g_151E461C8 = v8;
+        if ( LOBYTE(dword_140404A6C[4 * scaled_index + 83175925]) )
+          state_word_3 = dword_140404A6C[5 * masked_bits + 468760168];
+        g_151E461C8 = state_word_3;
       }
 LABEL_45:
       g_1449815C4 = 0;
       goto LABEL_46;
     }
 LABEL_47:
-    v10 = 0;
-    v11 = 1;
+    iteration_count = 0;
+    rol4_result = 1;
     do
     {
-      if ( (g_1B00323F8 & v11) == v11 )
+      if ( (g_1B00323F8 & rol4_result) == rol4_result )
       {
-        if ( (unsigned int)v10 >= 3 )
+        if ( (unsigned int)iteration_count >= 3 )
         {
           g_151E461C8 = 0;
-          g_151E461CC = v11;
+          g_151E461CC = rol4_result;
         }
         g_1449815C4 = 0;
       }
-      ++v10;
-      v11 = __ROL4__(v11, 1);
+      ++iteration_count;
+      rol4_result = __ROL4__(rol4_result, 1);
     }
-    while ( v10 < 16 );
+    while ( iteration_count < 16 );
   }
-  sub_140071640(Parameters);
-  sub_140071640(Parameters);
+  sr_menu_label(Parameters);
+  sr_menu_label(Parameters);
   sr_DrawMenuTextBox("Port", (__int64)&g_151E45940, 0, 0xFFFFu);
   sr_DrawMenuTextBox("Bandwidth", (__int64)&g_151E45944, 0x2710u, 0x3B9ACA00u);
-  sub_140071640(Parameters);
+  sr_menu_label(Parameters);
   if ( (unsigned int)sr_DrawMenuButton("Copy System Info") )
   {
     LOBYTE(g_154151240) = 0;
-    v12 = (     char *)sub_140198E51();
-    v13 = (char *)&g_15415123C + 3;
+    source_text = (     char *)sub_140198E51();
+    destination_text = (char *)&g_15415123C + 3;
     do
-      v14 = *++v13 == 0;
-    while ( !v14 );
-    strcpy(v13, v12);
-    v15 = (_QWORD *)((char *)&g_15415123C + 3);
-    do
-    {
-      v14 = *((_BYTE *)v15 + 1) == 0;
-      v15 = (_QWORD *)((char *)v15 + 1);
-    }
-    while ( !v14 );
-    v16 = (char *)&g_15415123C + 3;
-    *v15 = 0x7469622D343620LL;
-    do
-      v14 = *++v16 == 0;
-    while ( !v14 );
-    strcpy(v16, "\n\n");
-    v17 = (     char *)glGetString(7936);
-    v18 = (     char *)glGetString(7937);
-    v19 = (     char *)glGetString(7938);
-    crt_sprintf(v34, "GL_VENDOR: %s\nGL_RENDERER: %s\nGL_VERSION: %s\n", v17, v18, v19);
-    v20 = (char *)&g_15415123C + 3;
-    do
-      v14 = *++v20 == 0;
-    while ( !v14 );
-    strcpy(v20, v34);
-    v21 = (_WORD *)((char *)&g_15415123C + 3);
+      comparison_result = *++destination_text == 0;
+    while ( !comparison_result );
+    strcpy(destination_text, source_text);
+    state_address_2 = (_QWORD *)((char *)&g_15415123C + 3);
     do
     {
-      v14 = *((_BYTE *)v21 + 1) == 0;
-      v21 = (_WORD *)((char *)v21 + 1);
+      comparison_result = *((_BYTE *)state_address_2 + 1) == 0;
+      state_address_2 = (_QWORD *)((char *)state_address_2 + 1);
     }
-    while ( !v14 );
-    *v21 = 10;
-    v22 = sub_140198EB1();
-    crt_sprintf(v34, "RAM: %d MB\n", v22);
-    v23 = (char *)&g_15415123C + 3;
+    while ( !comparison_result );
+    destination_text_2 = (char *)&g_15415123C + 3;
+    *state_address_2 = 0x7469622D343620LL;
     do
-      v14 = *++v23 == 0;
-    while ( !v14 );
-    strcpy(v23, v34);
+      comparison_result = *++destination_text_2 == 0;
+    while ( !comparison_result );
+    strcpy(destination_text_2, "\n\n");
+    graphics_query_result = (     char *)glGetString(7936);
+    graphics_query_result_2 = (     char *)glGetString(7937);
+    graphics_query_result_3 = (     char *)glGetString(7938);
+    crt_sprintf(source_text_2, "GL_VENDOR: %s\nGL_RENDERER: %s\nGL_VERSION: %s\n", graphics_query_result, graphics_query_result_2, graphics_query_result_3);
+    destination_text_3 = (char *)&g_15415123C + 3;
+    do
+      comparison_result = *++destination_text_3 == 0;
+    while ( !comparison_result );
+    strcpy(destination_text_3, source_text_2);
+    state_address_3 = (_WORD *)((char *)&g_15415123C + 3);
+    do
+    {
+      comparison_result = *((_BYTE *)state_address_3 + 1) == 0;
+      state_address_3 = (_WORD *)((char *)state_address_3 + 1);
+    }
+    while ( !comparison_result );
+    *state_address_3 = 10;
+    call_result = sub_140198EB1();
+    crt_sprintf(source_text_2, "RAM: %d MB\n", call_result);
+    destination_text_4 = (char *)&g_15415123C + 3;
+    do
+      comparison_result = *++destination_text_4 == 0;
+    while ( !comparison_result );
+    strcpy(destination_text_4, source_text_2);
     if ( (unsigned int)sub_140198EAB() )
     {
-      v24 = (char *)&g_15415123C + 3;
+      destination_text_5 = (char *)&g_15415123C + 3;
       do
-        v14 = *++v24 == 0;
-      while ( !v14 );
-      strcpy(v24, "SSE2\n");
+        comparison_result = *++destination_text_5 == 0;
+      while ( !comparison_result );
+      strcpy(destination_text_5, "SSE2\n");
     }
     sr_options_clipboard((const char *)&g_154151240);
   }
@@ -1467,7 +1440,7 @@ LABEL_47:
     }
     sr_startup_audio_spec desired={0},obtained;
     desired.freq=48000;desired.format=0x8120;desired.channels=2;desired.samples=1024;
-    desired.callback=(void (*)(void *,unsigned char *,int))(uintptr_t)sub_140069400;
+    desired.callback=(void (*)(void *,unsigned char *,int))(uintptr_t)sr_audio_output_callback;
     int selected=(int)g_144970C9C;
     const char *name=selected?(const char *)&dword_140404A6C[128LL*selected+18198670]:NULL;
     g_140404A88=sr_audio_open(name,0,&desired,&obtained,0);
@@ -1482,7 +1455,7 @@ LABEL_47:
     }
     sr_startup_audio_spec desired={0},obtained;
     desired.freq=48000;desired.format=0x8010;desired.channels=1;desired.samples=1024;
-    desired.callback=(void (*)(void *,unsigned char *,int))(uintptr_t)sub_14006A380;
+    desired.callback=(void (*)(void *,unsigned char *,int))(uintptr_t)sr_audio_capture_write;
     int selected=(int)g_144978CA8;
     const char *name=selected?(const char *)&dword_140404A6C[128LL*selected+18206865]:NULL;
     g_1404C4A98=sr_audio_open(name,1,&desired,&obtained,0);
@@ -1491,12 +1464,12 @@ LABEL_47:
   }
   return;
 }
-#undef v27
-#undef v28
-#undef v29
-#undef v30
-#undef v31
-#undef v32
-#undef v33
-#undef v34
-#undef v35
+#undef unused_frame_slot_0
+#undef unused_frame_slot_48
+#undef unused_frame_slot_52
+#undef unused_frame_slot_54
+#undef unused_frame_slot_56
+#undef unused_frame_slot_64
+#undef destination_text_6
+#undef source_text_2
+#undef unused_frame_slot_10544

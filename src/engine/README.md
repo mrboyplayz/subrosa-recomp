@@ -36,6 +36,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `audio.c`, `audio.h` | capture ring availability/writes, per-sound buffer availability and positional sound channel allocation | 0x140069580, 0x14006A380, 0x140069FA0, 0x14007D6C0 |
 | `math_integer.c` | raw-word matrix transpose and fixed-point 2D rotation | 0x14007CA00, 0x14007D0B0 |
 | `collision_plane.c`, `collision_contacts.c` | segment/plane intersection and first-free persistent contact lookup | 0x140077B30, 0x140048090 |
+| `collision_polygon.c` | directed line/quad and segment/triangle face tests, including aliased outputs and NaN edge rejection | 0x140077C80, 0x140078230 |
 | `physics_points.c` | point masses: movement and gravity, lifetimes (removal with renumbering of bonds, vehicles and humans) | 0x1401154D0, 0x140115830 |
 | `physics_solve.c` | the bond solver of a tick | 0x14001D080 |
 | `physics_rotation.c` | rotation of a body over a tick (fourth-order Runge-Kutta) | 0x14012B2D0 |
@@ -108,22 +109,25 @@ of those, 0x1400A56B0, 0x14007A240, 0x14007B4D0, 0x14006EC40, 0x14007ABA0 and
 
 ## How a routine is replaced
 
-The recompiled function keeps its name and place in `src/client/` and its
-body becomes a call into this directory:
+The client keeps an ABI-compatible entry point in a module named for its
+purpose. Its body calls the implementation in this directory:
 
-    void sub_14007B2A0(__int64 a1, float *a2, double a3)
+    void sr_math_mat3_rotate_rows(__int64 matrix, float *axis, double angle_lane)
     {
       extern void math_mat3_rotate_rows(float matrix[9], const float axis[3], float angle);
-      math_mat3_rotate_rows((float *)a1, a2, *(float *)&a3);
+      math_mat3_rotate_rows((float *)matrix, axis, *(float *)&angle_lane);
     }
 
-Recompiled callers are untouched, and the client's ownership inventory
-(`src/client/manifest.json`) still lists every original routine. When all
-callers of a wrapper have moved here as well, the wrapper can go.
+`src/client/names.tsv` records recovered names by original address. Renames
+are applied consistently to callers, prototypes, assembly, engine references
+and native fixtures. `src/client/function_modules.tsv` records explicit
+module ownership; `tools/cleanup/split_client_modules.py --check` validates
+ownership, unique address markers, names and the CMake source list. The
+original address comments remain available to native comparison fixtures.
 
 ## Build
 
-`scripts/check-rebuild.py` compiles every `*.c` in this directory and links
+`scripts/build.py` compiles every `*.c` in this directory and links
 the objects into the client. Unlike the recompiled sources these files are
 built with optimization (`-O2`); they must stay free of undefined behaviour.
 `-fno-strict-aliasing` is required because the shared state is one array
@@ -148,3 +152,6 @@ The four collision helpers restored after Claude stopped, and the quiet-NaN FP-s
 The four physics helpers added on 2026-10-18 are documented in
 `restoration-20261018.md`. Their native comparisons also exercise the actual
 client wrappers, including the float result carried in a double word.
+
+The 2026-10-20 module split, behavior names, two additional matrix entry
+points and two polygon queries are documented in `restoration-20261020.md`.

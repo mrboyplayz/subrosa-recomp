@@ -24,7 +24,7 @@ extern int64_t sub_1401178F0(int player);
 extern void sub_140132F90(void);
 extern int64_t sub_140133090(void);
 extern void sub_14011B2A0(void);
-extern void sub_140116210(void);                         /* physics_tick */
+extern void sr_physics_tick(void);                         /* physics_tick */
 extern unsigned int *sub_1400F5820(int64_t unused_0, int64_t unused_1, double unused_2);
 extern void sub_140136450(void);
 extern void sub_14008F1B0(void);
@@ -34,9 +34,9 @@ extern int64_t sub_140042930(int64_t unused_0, int64_t unused_1, int64_t unused_
 extern int64_t sub_14002B9C0(void);
 extern uint64_t sub_1400C2210(void);
 extern void sub_1400CF160(void);
-extern int64_t sub_1401597F0(void);
-extern int64_t sub_140158CD0(void);
-extern int64_t sub_14002CE50(void);
+extern int64_t sr_world_update_effects(void);
+extern int64_t sr_world_update_particles(void);
+extern int64_t sr_world_expire_bullets(void);
 extern int64_t sub_140040490(void);
 
 #define frame_building         ((char *)&SR_GLOBAL(char, 0x1AD2C94A0ULL))
@@ -128,7 +128,7 @@ static void advance_game(void)
         sub_140133090();
         sub_14011B2A0();
         if (game_state <= 2)
-            sub_140116210();
+            sr_physics_tick();
         sub_1400F5820(0, 0, 0.0);
         sub_140136450();
         if (game_type != 4)
@@ -324,9 +324,9 @@ static void run_tick(void)
         sub_1400CF160();
     }
     if (game_state <= 2) {
-        sub_1401597F0();
-        sub_140158CD0();
-        sub_14002CE50();
+        sr_world_update_effects();
+        sr_world_update_particles();
+        sr_world_expire_bullets();
         expire_effects();
         find_nearest_item();
     }

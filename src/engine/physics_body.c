@@ -1,7 +1,7 @@
 /* Translation and rotation stage, 0x14012B220. The rotation boundary stays
  * shared with the full tick and the original client entry point. */
 #include "physics.h"
-extern void sub_14012B2D0(float *rotation, float *angular_momentum,
+extern void sr_physics_integrate_rotation(float *rotation, float *angular_momentum,
                           float *angular_velocity, float *inverse_inertia);
 
 void physics_integrate_bodies(void)
@@ -14,7 +14,7 @@ void physics_integrate_bodies(void)
         body->position[0] = body->velocity[0] + body->position[0];
         body->position[1] = vy + body->position[1];
         body->position[2] = body->velocity[2] + body->position[2];
-        sub_14012B2D0(body->rotation, body->angular_momentum,
+        sr_physics_integrate_rotation(body->rotation, body->angular_momentum,
                      body->angular_velocity, body->inverse_inertia);
     }
 }

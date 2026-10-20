@@ -9,9 +9,9 @@
 #define from_x(i,x) ((int32_t *(*)(int,float))NC_ADDR(0x140075930))(i,x)
 #elif defined(NC_CLIENT_WRAPPERS)
 long long sr_DrawMenuSlider(unsigned char *,int32_t *,int32_t,int32_t,int32_t);
-int32_t *sub_140075930(int,float);
+int32_t *sr_menu_slider_from_x(int,float);
 #define slider sr_DrawMenuSlider
-#define from_x sub_140075930
+#define from_x sr_menu_slider_from_x
 #else
 #define slider menu_slider
 #define from_x menu_slider_from_x

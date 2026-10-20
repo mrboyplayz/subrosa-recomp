@@ -6,17 +6,17 @@
 __int128 *           input_get_keyboard_state_candidate(__int64 a1)
 {
   __int128 *result;
-  __int64 v3;
-  __int128 v4;
+  __int64 keyboard_chunks_remaining;
+  __int128 keyboard_state_chunk;
 
   result = (__int128 *)((const unsigned char *(*)(int *))sub_140198EF9)(NULL);
-  v3 = 2;
+  keyboard_chunks_remaining = 2;
   do
   {
     a1 += 128;
-    v4 = *result;
+    keyboard_state_chunk = *result;
     result += 8;
-    *(_OWORD *)(a1 - 128) = v4;
+    *(_OWORD *)(a1 - 128) = keyboard_state_chunk;
     *(_OWORD *)(a1 - 112) = *(result - 7);
     *(_OWORD *)(a1 - 96) = *(result - 6);
     *(_OWORD *)(a1 - 80) = *(result - 5);
@@ -24,9 +24,9 @@ __int128 *           input_get_keyboard_state_candidate(__int64 a1)
     *(_OWORD *)(a1 - 48) = *(result - 3);
     *(_OWORD *)(a1 - 32) = *(result - 2);
     *(_OWORD *)(a1 - 16) = *(result - 1);
-    --v3;
+    --keyboard_chunks_remaining;
   }
-  while ( v3 );
+  while ( keyboard_chunks_remaining );
   *(_OWORD *)a1 = *result;
   *(_OWORD *)(a1 + 16) = result[1];
   *(_OWORD *)(a1 + 32) = result[2];
@@ -39,79 +39,79 @@ __int128 *           input_get_keyboard_state_candidate(__int64 a1)
 //----- (000000014007CB30) ----------------------------------------------------
 __int64            input_get_mouse_state_candidate(__int64 a1)
 {
-  unsigned int v2;
-  int v3;
-  __m128i v4;
-  float v5;
+  unsigned int mouse_button_mask;
+  int left_button_pressed;
+  __m128i window_height_lane;
+  float scaled_mouse_y;
   __int64 result;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007CB30[16];
-#define v7 (*(int (*))(void *)(sr_frame_14007CB30 + 0)) /* [rsp+30h] */
-#define v8 (*(int (*))(void *)(sr_frame_14007CB30 + 8)) /* [rsp+38h] */
+#define mouse_x (*(int (*))(void *)(sr_frame_14007CB30 + 0)) /* [rsp+30h] */
+#define mouse_y (*(int (*))(void *)(sr_frame_14007CB30 + 8)) /* [rsp+38h] */
 
-  v2 = ((unsigned (*)(int *, int *))sub_140198EFF)(&v7, &v8);
-  v3 = v2 & 1;
-  *(float *)a1 = (float)((float)v7 * (renderer_canvas_width)) / (float)(int)g_160FC47D8;
-  v4 = _mm_cvtsi32_si128(g_160FC47DC);
-  v5 = (float)v8 * (renderer_canvas_height);
-  *(_DWORD *)(a1 + 152) = v2;
-  result = (v2 >> 2) & 1;
-  *(float *)(a1 + 4) = v5 / SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(v4), f32)[0];
-  *(_DWORD *)(a1 + 144) = v3;
+  mouse_button_mask = ((unsigned (*)(int *, int *))sub_140198EFF)(&mouse_x, &mouse_y);
+  left_button_pressed = mouse_button_mask & 1;
+  *(float *)a1 = (float)((float)mouse_x * (renderer_canvas_width)) / (float)(int)g_160FC47D8;
+  window_height_lane = _mm_cvtsi32_si128(g_160FC47DC);
+  scaled_mouse_y = (float)mouse_y * (renderer_canvas_height);
+  *(_DWORD *)(a1 + 152) = mouse_button_mask;
+  result = (mouse_button_mask >> 2) & 1;
+  *(float *)(a1 + 4) = scaled_mouse_y / SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(window_height_lane), f32)[0];
+  *(_DWORD *)(a1 + 144) = left_button_pressed;
   *(_DWORD *)(a1 + 148) = result;
   return result;
 }
-#undef v7
-#undef v8
+#undef mouse_x
+#undef mouse_y
 
 //----- (000000014007CBC0) ----------------------------------------------------
 __int64            input_get_relative_mouse_state_candidate(float *a1)
 {
-  unsigned int v2;
-  int v3;
+  unsigned int mouse_button_mask;
+  int left_button_pressed;
   __int64 result;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007CBC0[16];
-#define v5 (*(int (*))(void *)(sr_frame_14007CBC0 + 0)) /* [rsp+30h] */
-#define v6 (*(int (*))(void *)(sr_frame_14007CBC0 + 8)) /* [rsp+38h] */
+#define relative_mouse_x (*(int (*))(void *)(sr_frame_14007CBC0 + 0)) /* [rsp+30h] */
+#define relative_mouse_y (*(int (*))(void *)(sr_frame_14007CBC0 + 8)) /* [rsp+38h] */
 
-  v2 = ((unsigned (*)(int *, int *))sub_140198F05)(&v5, &v6);
-  v3 = v2 & 1;
-  *((_DWORD *)a1 + 38) = v2;
+  mouse_button_mask = ((unsigned (*)(int *, int *))sub_140198F05)(&relative_mouse_x, &relative_mouse_y);
+  left_button_pressed = mouse_button_mask & 1;
+  *((_DWORD *)a1 + 38) = mouse_button_mask;
   *a1 = 512.0;
   a1[1] = 320.0;
-  result = (v2 >> 2) & 1;
-  a1[2] = (float)v5;
-  a1[3] = (float)v6;
-  *((_DWORD *)a1 + 36) = v3;
+  result = (mouse_button_mask >> 2) & 1;
+  a1[2] = (float)relative_mouse_x;
+  a1[3] = (float)relative_mouse_y;
+  *((_DWORD *)a1 + 36) = left_button_pressed;
   *((_DWORD *)a1 + 37) = result;
   return result;
 }
-#undef v5
-#undef v6
+#undef relative_mouse_x
+#undef relative_mouse_y
 
 //----- (000000014007CC30) ----------------------------------------------------
 // Candidate SDL event pump: tracks wheel delta, key events, Alt+Enter fullscreen toggle, resize/viewport state.
 void input_poll_events_candidate()
 {
-  unsigned int v0;
-  unsigned int v1;
-  int v2;
-  int v3;
-  int v4;
-  int v5;
-  unsigned int v6;
+  unsigned int keyboard_scancode;
+  unsigned int keyboard_modifiers;
+  int viewport_left;
+  int viewport_top;
+  int viewport_width;
+  int viewport_height;
+  unsigned int quit_requested;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_14007CC30[112];
-#define v8 (*(__int64 (*))(void *)(sr_frame_14007CC30 + 0)) /* [rsp+0h] */
-#define v9 (*(int (*))(void *)(sr_frame_14007CC30 + 32)) /* [rsp+20h] */
-#define v10 (*(int (*))(void *)(sr_frame_14007CC30 + 36)) /* [rsp+24h] */
-#define v11 (*(int (*))(void *)(sr_frame_14007CC30 + 40)) /* [rsp+28h] */
-#define v12 (*(char (*))(void *)(sr_frame_14007CC30 + 52)) /* [rsp+34h] */
-#define v13 (*(unsigned int (*))(void *)(sr_frame_14007CC30 + 56)) /* [rsp+38h] */
-#define v14 (*(unsigned int (*))(void *)(sr_frame_14007CC30 + 60)) /* [rsp+3Ch] */
-#define v15 (*(unsigned __int16 (*))(void *)(sr_frame_14007CC30 + 64)) /* [rsp+40h] */
-#define v16 (*(__int64 (*))(void *)(sr_frame_14007CC30 + 96)) /* [rsp+60h] */
+#define unused_event_frame (*(__int64 (*))(void *)(sr_frame_14007CC30 + 0)) /* [rsp+0h] */
+#define constrained_window_width (*(int (*))(void *)(sr_frame_14007CC30 + 32)) /* [rsp+20h] */
+#define constrained_window_height (*(int (*))(void *)(sr_frame_14007CC30 + 36)) /* [rsp+24h] */
+#define event_type (*(int (*))(void *)(sr_frame_14007CC30 + 40)) /* [rsp+28h] */
+#define window_event_type (*(char (*))(void *)(sr_frame_14007CC30 + 52)) /* [rsp+34h] */
+#define event_data_first (*(unsigned int (*))(void *)(sr_frame_14007CC30 + 56)) /* [rsp+38h] */
+#define event_data_second (*(unsigned int (*))(void *)(sr_frame_14007CC30 + 60)) /* [rsp+3Ch] */
+#define event_key_modifiers (*(unsigned __int16 (*))(void *)(sr_frame_14007CC30 + 64)) /* [rsp+40h] */
+#define unused_frame_cookie (*(__int64 (*))(void *)(sr_frame_14007CC30 + 96)) /* [rsp+60h] */
 
   _Alignas(8) unsigned char sr_event[56];
   void *sr_event_window;
@@ -121,45 +121,45 @@ void input_poll_events_candidate()
   while ( sr_event_poll(sr_event) )
   {
     if (spawn_console_event(sr_event)) continue;
-    memcpy(&v11, sr_event, 4);
-    v12 = (char)sr_event[12];
-    memcpy(&v13, sr_event + 16, 4);
-    memcpy(&v14, sr_event + 20, 4);
-    memcpy(&v15, sr_event + 24, 2);
-    if ( v11 == 1027 )
+    memcpy(&event_type, sr_event, 4);
+    window_event_type = (char)sr_event[12];
+    memcpy(&event_data_first, sr_event + 16, 4);
+    memcpy(&event_data_second, sr_event + 20, 4);
+    memcpy(&event_key_modifiers, sr_event + 24, 2);
+    if ( event_type == 1027 )
     {
-      g_160FC481C += v14;
+      g_160FC481C += event_data_second;
     }
     else
     {
-      if ( v11 == 768 )
+      if ( event_type == 768 )
       {
-        v0 = v13;
-        v1 = v15;
-        if ( v13 != 40 || (v15 & 0x300) == 0 )
+        keyboard_scancode = event_data_first;
+        keyboard_modifiers = event_key_modifiers;
+        if ( event_data_first != 40 || (event_key_modifiers & 0x300) == 0 )
         {
           dword_140404A6C[5 * g_1B0032400 + 468760167] = 0;
-          dword_140404A6C[5 * g_1B0032400 + 468760168] = v0;
+          dword_140404A6C[5 * g_1B0032400 + 468760168] = keyboard_scancode;
           goto LABEL_11;
         }
         g_160FC4804 ^= 1u;
         sr_recomp_window_toggle(sr_event_window, g_160FC4804 ? 0x1001u : 0);
       }
-      if ( v11 == 769 )
+      if ( event_type == 769 )
       {
-        v1 = v15;
+        keyboard_modifiers = event_key_modifiers;
         dword_140404A6C[5 * g_1B0032400 + 468760167] = 1;
-        dword_140404A6C[5 * g_1B0032400 + 468760168] = v13;
+        dword_140404A6C[5 * g_1B0032400 + 468760168] = event_data_first;
 LABEL_11:
-        dword_140404A6C[5 * g_1B0032400 + 468760169] = v14;
-        dword_140404A6C[5 * g_1B0032400 + 468760170] = v1;
+        dword_140404A6C[5 * g_1B0032400 + 468760169] = event_data_second;
+        dword_140404A6C[5 * g_1B0032400 + 468760170] = keyboard_modifiers;
         dword_140404A6C[5 * g_1B0032400 + 468760171] = 0;
         g_1B0032400 = (LOWORD(g_1B0032400) + 1) & 0x3FF;
         continue;
       }
-      if ( v11 != 512 )
+      if ( event_type != 512 )
         goto LABEL_28;
-      if ( v12 != 8 )
+      if ( window_event_type != 8 )
         goto LABEL_16;
       if ( !g_160FC4804 )
       {
@@ -167,24 +167,24 @@ LABEL_11:
         sr_recomp_window_toggle(sr_event_window, 0x1001u);
         g_160FC4804 = 1;
 LABEL_16:
-        if ( v12 == 6 )
+        if ( window_event_type == 6 )
         {
           sr_event_size(sr_event_window, (int *)&g_160FC47D8, (int *)&g_160FC47DC);
-          v2 = 0;
+          viewport_left = 0;
           *(_QWORD *)&g_160FC47E8 = *(_QWORD *)&g_160FC47D8;
-          v3 = 0;
-          v4 = (signed int)(16 * g_160FC47DC) / 9;
-          if ( (int)g_160FC47D8 <= v4 )
-            v4 = g_160FC47D8;
-          g_160FC47F0 = v4;
-          v5 = (v4 + 8 * (v4 + 1)) / 16;
-          g_160FC47F4 = v5;
-          if ( (int)g_160FC47D8 > v4 )
-            v2 = (signed int)(g_160FC47D8 - v4) / 2;
-          if ( (int)g_160FC47DC > v5 )
-            v3 = (signed int)(g_160FC47DC - v5) / 2;
-          g_160FC47F8 = v2;
-          g_160FC47FC = v3;
+          viewport_top = 0;
+          viewport_width = (signed int)(16 * g_160FC47DC) / 9;
+          if ( (int)g_160FC47D8 <= viewport_width )
+            viewport_width = g_160FC47D8;
+          g_160FC47F0 = viewport_width;
+          viewport_height = (viewport_width + 8 * (viewport_width + 1)) / 16;
+          g_160FC47F4 = viewport_height;
+          if ( (int)g_160FC47D8 > viewport_width )
+            viewport_left = (signed int)(g_160FC47D8 - viewport_width) / 2;
+          if ( (int)g_160FC47DC > viewport_height )
+            viewport_top = (signed int)(g_160FC47DC - viewport_height) / 2;
+          g_160FC47F8 = viewport_left;
+          g_160FC47FC = viewport_top;
           g_160FC4820 = 1;
           if ( g_160FC4810 )
           {
@@ -192,29 +192,29 @@ LABEL_16:
             (renderer_canvas_height) = (float)(int)g_160FC47DC;
           }
         }
-        if ( v12 == 5 && !g_160FC4804 )
+        if ( window_event_type == 5 && !g_160FC4804 )
         {
-          sr_event_size(sr_event_window, &v9, &v10);
-          v9 = (signed int)(g_160FC47D8 + (signed int)(16 * g_160FC47DC) / 9) / 2;
-          v10 = (v9 + 8 * (v9 + 1)) / 16;
-          sr_event_set_size(sr_event_window, v9, v10);
+          sr_event_size(sr_event_window, &constrained_window_width, &constrained_window_height);
+          constrained_window_width = (signed int)(g_160FC47D8 + (signed int)(16 * g_160FC47DC) / 9) / 2;
+          constrained_window_height = (constrained_window_width + 8 * (constrained_window_width + 1)) / 16;
+          sr_event_set_size(sr_event_window, constrained_window_width, constrained_window_height);
         }
 LABEL_28:
-        v6 = g_160FC47C0;
-        if ( v11 == 256 )
-          v6 = 1;
-        g_160FC47C0 = v6;
+        quit_requested = g_160FC47C0;
+        if ( event_type == 256 )
+          quit_requested = 1;
+        g_160FC47C0 = quit_requested;
       }
     }
   }
   return;
 }
-#undef v8
-#undef v9
-#undef v10
-#undef v11
-#undef v12
-#undef v13
-#undef v14
-#undef v15
-#undef v16
+#undef unused_event_frame
+#undef constrained_window_width
+#undef constrained_window_height
+#undef event_type
+#undef window_event_type
+#undef event_data_first
+#undef event_data_second
+#undef event_key_modifiers
+#undef unused_frame_cookie

@@ -4,279 +4,279 @@
 // Candidate .sbb loader: formats building/%s.sbb, accepts versions 12-14, reads dimensions/header and block/material/name tables.
 void               asset_load_building_sbb_candidate(char *Buffer,      char *a2, int a3)
 {
-  char *v3;
-  __int64 v6;
-  __int64 v7;
+  char *byte_cursor;
+  __int64 file_handle;
+  __int64 file_handle_2;
   int i;
   int j;
   int k;
   int m;
-  int v12;
+  int element_index;
   char *n;
-  int v14;
-  int v15;
-  char *v16;
-  int v17;
-  char *v18;
-  __int64 v19;
+  int element_index_2;
+  int element_index_3;
+  char *state_address;
+  int iteration_count;
+  char *running_total;
+  __int64 scaled_index;
   int ii;
-  __int64 v21;
+  __int64 scaled_index_2;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_140026830[576];
-#define v23 (*(__int64 (*))(void *)(sr_frame_140026830 + 0)) /* [rsp+0h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_140026830 + 0)) /* [rsp+0h] */
 #define Buffera (*(int (*))(void *)(sr_frame_140026830 + 32)) /* [rsp+20h] */
-#define v25 (*(int (*)[3])(void *)(sr_frame_140026830 + 36)) /* [rsp+24h] */
+#define scratch_buffer (*(int (*)[3])(void *)(sr_frame_140026830 + 36)) /* [rsp+24h] */
 #define FileName (*(char (*)[512])(void *)(sr_frame_140026830 + 48)) /* [rsp+30h] */
-#define v27 (*(__int64 (*))(void *)(sr_frame_140026830 + 560)) /* [rsp+230h] */
+#define unused_frame_slot_560 (*(__int64 (*))(void *)(sr_frame_140026830 + 560)) /* [rsp+230h] */
 
-  v3 = Buffer + 68;
+  byte_cursor = Buffer + 68;
   *((_DWORD *)Buffer + 16) = 24;
   *((_DWORD *)Buffer + 18) = 4;
   *(_QWORD *)(Buffer + 76) = 4;
   *((_DWORD *)Buffer + 21) = 4;
   *((_DWORD *)Buffer + 17) = 24;
   crt_sprintf(FileName, "building/%s.sbb", a2);
-  v6 = crt_fopen(FileName, "rb");
-  v7 = v6;
-  if ( v6 )
+  file_handle = crt_fopen(FileName, "rb");
+  file_handle_2 = file_handle;
+  if ( file_handle )
   {
-    fread_sr((void *)(uintptr_t)(&Buffera), 4, 1, (FILE *)(uintptr_t)(v6));
+    fread_sr((void *)(uintptr_t)(&Buffera), 4, 1, (FILE *)(uintptr_t)(file_handle));
     if ( (unsigned int)(Buffera - 12) > 2 )
       goto LABEL_32;
-    fread_sr((void *)(uintptr_t)(Buffer), 1, 64, (FILE *)(uintptr_t)(v7));
-    fread_sr((void *)(uintptr_t)(Buffer + 64), 4, 1, (FILE *)(uintptr_t)(v7));
-    fread_sr((void *)(uintptr_t)(v3), 4, 1, (FILE *)(uintptr_t)(v7));
-    fread_sr((void *)(uintptr_t)(Buffer + 72), 4, 1, (FILE *)(uintptr_t)(v7));
+    fread_sr((void *)(uintptr_t)(Buffer), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+    fread_sr((void *)(uintptr_t)(Buffer + 64), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+    fread_sr((void *)(uintptr_t)(byte_cursor), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+    fread_sr((void *)(uintptr_t)(Buffer + 72), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     if ( Buffera >= 13 )
     {
-      fread_sr((void *)(uintptr_t)(Buffer + 76), 4, 1, (FILE *)(uintptr_t)(v7));
-      fread_sr((void *)(uintptr_t)(Buffer + 80), 4, 1, (FILE *)(uintptr_t)(v7));
-      fread_sr((void *)(uintptr_t)(Buffer + 84), 4, 1, (FILE *)(uintptr_t)(v7));
+      fread_sr((void *)(uintptr_t)(Buffer + 76), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(Buffer + 80), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(Buffer + 84), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     }
     if ( a3 )
     {
 LABEL_32:
-      crt_fclose(v7);
+      crt_fclose(file_handle_2);
       return; /* native compiler cookie is not a recovered result */
     }
-    fread_sr((void *)(uintptr_t)(Buffer + 47187628), 4, 1, (FILE *)(uintptr_t)(v7));
+    fread_sr((void *)(uintptr_t)(Buffer + 47187628), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     for ( i = 0; i < *((_DWORD *)Buffer + 11796907); ++i )
-      fread_sr((void *)(uintptr_t)(&Buffer[64 * (__int64)i + 47187632]), 1, 64, (FILE *)(uintptr_t)(v7));
-    fread_sr((void *)(uintptr_t)(Buffer + 47208112), 4, 1, (FILE *)(uintptr_t)(v7));
+      fread_sr((void *)(uintptr_t)(&Buffer[64 * (__int64)i + 47187632]), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+    fread_sr((void *)(uintptr_t)(Buffer + 47208112), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     for ( j = 0; j < *((_DWORD *)Buffer + 11802028); ++j )
-      fread_sr((void *)(uintptr_t)(&Buffer[64 * (__int64)j + 47208116]), 1, 64, (FILE *)(uintptr_t)(v7));
-    fread_sr((void *)(uintptr_t)(Buffer + 47277748), 4, 1, (FILE *)(uintptr_t)(v7));
+      fread_sr((void *)(uintptr_t)(&Buffer[64 * (__int64)j + 47208116]), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+    fread_sr((void *)(uintptr_t)(Buffer + 47277748), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     for ( k = 0; k < *((_DWORD *)Buffer + 11819437); ++k )
-      fread_sr((void *)(uintptr_t)(&Buffer[64 * (__int64)k + 47277752]), 1, 64, (FILE *)(uintptr_t)(v7));
-    fread_sr((void *)(uintptr_t)(Buffer + 47282872), 4, 1, (FILE *)(uintptr_t)(v7));
+      fread_sr((void *)(uintptr_t)(&Buffer[64 * (__int64)k + 47277752]), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+    fread_sr((void *)(uintptr_t)(Buffer + 47282872), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     for ( m = 0; m < *((_DWORD *)Buffer + 11820718); ++m )
-      fread_sr((void *)(uintptr_t)(&Buffer[64 * (__int64)m + 47282876]), 1, 64, (FILE *)(uintptr_t)(v7));
-    v12 = 0;
-    for ( n = Buffer + 72; v12 < *(_DWORD *)n; ++v12 )
+      fread_sr((void *)(uintptr_t)(&Buffer[64 * (__int64)m + 47282876]), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+    element_index = 0;
+    for ( n = Buffer + 72; element_index < *(_DWORD *)n; ++element_index )
     {
-      v14 = 0;
-      if ( *(int *)v3 >= 0 )
+      element_index_2 = 0;
+      if ( *(int *)byte_cursor >= 0 )
       {
         do
         {
-          v15 = 0;
+          element_index_3 = 0;
           if ( *((int *)Buffer + 16) >= 0 )
           {
             do
             {
-              v16 = &Buffer[3840 * (v14 + ((__int64)v12 << 6)) + 60 * v15];
-              fread_sr((void *)(uintptr_t)(v16 + 92), 4, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 96), 4, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 88), 4, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 100), 4, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 104), 4, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 108), 4, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 112), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 114), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 116), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 118), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 120), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 122), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 124), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 126), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 128), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 130), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 132), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 134), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 136), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 138), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 140), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 142), 2, 1, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(v16 + 144), 4, 1, (FILE *)(uintptr_t)(v7));
-              ++v15;
+              state_address = &Buffer[3840 * (element_index_2 + ((__int64)element_index << 6)) + 60 * element_index_3];
+              fread_sr((void *)(uintptr_t)(state_address + 92), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 96), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 88), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 100), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 104), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 108), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 112), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 114), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 116), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 118), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 120), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 122), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 124), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 126), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 128), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 130), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 132), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 134), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 136), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 138), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 140), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 142), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(state_address + 144), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              ++element_index_3;
             }
-            while ( v15 <= *((_DWORD *)Buffer + 16) );
-            v3 = Buffer + 68;
+            while ( element_index_3 <= *((_DWORD *)Buffer + 16) );
+            byte_cursor = Buffer + 68;
           }
-          ++v14;
+          ++element_index_2;
         }
-        while ( v14 <= *(_DWORD *)v3 );
+        while ( element_index_2 <= *(_DWORD *)byte_cursor );
         n = Buffer + 72;
       }
     }
     if ( Buffera >= 14 )
     {
-      v25[0] = 1;
-      fread_sr((void *)(uintptr_t)(v25), 4, 1, (FILE *)(uintptr_t)(v7));
-      if ( v25[0] == 1 )
+      scratch_buffer[0] = 1;
+      fread_sr((void *)(uintptr_t)(scratch_buffer), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      if ( scratch_buffer[0] == 1 )
       {
-        fread_sr((void *)(uintptr_t)(Buffer + 47352508), 4, 1, (FILE *)(uintptr_t)(v7));
-        v17 = 0;
+        fread_sr((void *)(uintptr_t)(Buffer + 47352508), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+        iteration_count = 0;
         if ( *((int *)Buffer + 11838127) > 0 )
         {
-          v18 = Buffer + 47352512;
+          running_total = Buffer + 47352512;
           do
           {
-            v19 = 1028LL * v17;
-            fread_sr((void *)(uintptr_t)(&Buffer[v19 + 47352512]), 4, 1, (FILE *)(uintptr_t)(v7));
-            for ( ii = 0; ii < *(_DWORD *)v18; ++ii )
+            scaled_index = 1028LL * iteration_count;
+            fread_sr((void *)(uintptr_t)(&Buffer[scaled_index + 47352512]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+            for ( ii = 0; ii < *(_DWORD *)running_total; ++ii )
             {
-              v21 = v19 + 16LL * ii;
-              fread_sr((void *)(uintptr_t)(&Buffer[v21 + 47352516]), 4, 3, (FILE *)(uintptr_t)(v7));
-              fread_sr((void *)(uintptr_t)(&Buffer[v21 + 47352528]), 4, 1, (FILE *)(uintptr_t)(v7));
+              scaled_index_2 = scaled_index + 16LL * ii;
+              fread_sr((void *)(uintptr_t)(&Buffer[scaled_index_2 + 47352516]), 4, 3, (FILE *)(uintptr_t)(file_handle_2));
+              fread_sr((void *)(uintptr_t)(&Buffer[scaled_index_2 + 47352528]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
             }
-            ++v17;
-            v18 += 1028;
+            ++iteration_count;
+            running_total += 1028;
           }
-          while ( v17 < *((_DWORD *)Buffer + 11838127) );
+          while ( iteration_count < *((_DWORD *)Buffer + 11838127) );
         }
       }
     }
-    crt_fclose(v7);
+    crt_fclose(file_handle_2);
   }
   sub_140027690();
   return; /* native compiler cookie is not a recovered result */
 }
-#undef v23
+#undef unused_frame_slot_0
 #undef Buffera
-#undef v25
+#undef scratch_buffer
 #undef FileName
-#undef v27
+#undef unused_frame_slot_560
 
 //----- (00000001400D5A50) ----------------------------------------------------
 // Candidate .sbc city loader: references city2.sbc; compare against save routine at asset_save_city_sbc_candidate.
 __int64 asset_load_city_sbc_candidate()
 {
-  __int64 v0;
-  int v1;
-  __int64 v2;
+  __int64 file_handle;
+  int element_index;
+  __int64 file_handle_2;
   int i;
   int j;
-  __int64 v5;
+  __int64 scaled_index;
   int k;
-  __int64 v7;
+  __int64 scaled_index_2;
   int m;
-  __int64 v9;
-  int v10;
-  unsigned int *v11;
-  __int64 v12;
-  signed int v13;
-  __int64 v14;
-  unsigned int *v15;
-  int v16;
-  unsigned int *v17;
-  __int64 v18;
-  unsigned int *v19;
-  __int64 v20;
-  int v21;
-  unsigned int *v22;
-  __int64 v23;
-  __int64 v24;
-  unsigned int *v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
+  __int64 scaled_index_3;
+  int iteration_count;
+  unsigned int *state_address;
+  __int64 scaled_index_4;
+  signed int element_index_2;
+  __int64 remaining_count;
+  unsigned int *record_byte_offset;
+  int iteration_count_2;
+  unsigned int *state_address_2;
+  __int64 scaled_index_5;
+  unsigned int *record_byte_offset_2;
+  __int64 remaining_count_2;
+  int element_index_3;
+  unsigned int *state_address_3;
+  __int64 scaled_index_6;
+  __int64 remaining_count_3;
+  unsigned int *buffer_cursor;
+  __int64 element_index_4;
+  __int64 remaining_count_4;
+  __int64 iteration_count_3;
+  __int64 remaining_count_5;
+  __int64 element_index_5;
+  __int64 remaining_count_6;
   int n;
-  unsigned int *v33;
+  unsigned int *record_byte_offset_3;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400D5A50[320];
-#define v35 (*(__int64 (*))(void *)(sr_frame_1400D5A50 + 0)) /* [rsp+0h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_1400D5A50 + 0)) /* [rsp+0h] */
 #define Buffer (*(int (*)[4])(void *)(sr_frame_1400D5A50 + 32)) /* [rsp+20h] */
 #define FileName (*(char (*)[256])(void *)(sr_frame_1400D5A50 + 48)) /* [rsp+30h] */
-#define v38 (*(__int64 (*))(void *)(sr_frame_1400D5A50 + 304)) /* [rsp+130h] */
+#define unused_frame_slot_304 (*(__int64 (*))(void *)(sr_frame_1400D5A50 + 304)) /* [rsp+130h] */
 
   crt_sprintf(FileName, "city2.sbc");
-  v0 = crt_fopen(FileName, "rb");
-  v1 = 0;
-  v2 = v0;
-  if ( v0 )
+  file_handle = crt_fopen(FileName, "rb");
+  element_index = 0;
+  file_handle_2 = file_handle;
+  if ( file_handle )
   {
-    fread_sr((void *)(uintptr_t)(Buffer), 4, 1, (FILE *)(uintptr_t)(v0));
+    fread_sr((void *)(uintptr_t)(Buffer), 4, 1, (FILE *)(uintptr_t)(file_handle));
     if ( (unsigned int)(Buffer[0] - 7) > 5 )
     {
-      crt_fclose(v2);
+      crt_fclose(file_handle_2);
       return 0; /* legacy result ignored; native returns void */
     }
     if ( Buffer[0] >= 10 )
     {
-      fread_sr((void *)(uintptr_t)(&g_175EEA08C), 4, 1, (FILE *)(uintptr_t)(v2));
+      fread_sr((void *)(uintptr_t)(&g_175EEA08C), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
       for ( i = 0; i < (int)g_175EEA08C; ++i )
-        fread_sr((void *)(uintptr_t)(&dword_140404A6C[16 * (__int64)i + 225154441]), 1, 64, (FILE *)(uintptr_t)(v2));
+        fread_sr((void *)(uintptr_t)(&dword_140404A6C[16 * (__int64)i + 225154441]), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
     }
-    fread_sr((void *)(uintptr_t)(&g_16E486878), 4, 1, (FILE *)(uintptr_t)(v2));
+    fread_sr((void *)(uintptr_t)(&g_16E486878), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     for ( j = 0; j < (int)g_16E486878; ++j )
     {
-      v5 = 3LL * j;
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v5 + 193070980]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v5 + 193070981]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v5 + 193070982]), 4, 1, (FILE *)(uintptr_t)(v2));
+      scaled_index = 3LL * j;
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index + 193070980]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index + 193070981]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index + 193070982]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     }
-    fread_sr((void *)(uintptr_t)(&g_16E48987C), 4, 1, (FILE *)(uintptr_t)(v2));
+    fread_sr((void *)(uintptr_t)(&g_16E48987C), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     for ( k = 0; k < (int)g_16E48987C; ++k )
     {
-      v7 = 13LL * k;
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v7 + 193074053]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v7 + 193074054]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v7 + 193074055]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v7 + 193074056]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v7 + 193074057]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v7 + 193074058]), 1, 32, (FILE *)(uintptr_t)(v2));
+      scaled_index_2 = 13LL * k;
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_2 + 193074053]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_2 + 193074054]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_2 + 193074055]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_2 + 193074056]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_2 + 193074057]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_2 + 193074058]), 1, 32, (FILE *)(uintptr_t)(file_handle_2));
     }
-    fread_sr((void *)(uintptr_t)(&g_175EFB090), 4, 1, (FILE *)(uintptr_t)(v2));
+    fread_sr((void *)(uintptr_t)(&g_175EFB090), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     for ( m = 0; m < (int)g_175EFB090; ++m )
     {
-      v9 = 24LL * m;
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v9 + 225171851]), 1, 64, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v9 + 225171867]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v9 + 225171868]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v9 + 225171869]), 4, 1, (FILE *)(uintptr_t)(v2));
-      fread_sr((void *)(uintptr_t)(&dword_140404A6C[v9 + 225171870]), 4, 1, (FILE *)(uintptr_t)(v2));
+      scaled_index_3 = 24LL * m;
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_3 + 225171851]), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_3 + 225171867]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_3 + 225171868]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_3 + 225171869]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_3 + 225171870]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
     }
     if ( Buffer[0] < 12 )
     {
       if ( Buffer[0] == 11 )
       {
-        fread_sr((void *)(uintptr_t)(&g_16E492084), 4, 1, (FILE *)(uintptr_t)(v2));
-        v16 = 0;
+        fread_sr((void *)(uintptr_t)(&g_16E492084), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+        iteration_count_2 = 0;
         if ( (int)g_16E492084 > 0 )
         {
-          v17 = &g_16E4920CC;
+          state_address_2 = &g_16E4920CC;
           do
           {
-            v18 = 4242LL * v16;
-            fread_sr((void *)(uintptr_t)(&dword_140404A6C[v18 + 193082759]), 1, 64, (FILE *)(uintptr_t)(v2));
-            *v17 = 1;
-            v19 = &dword_140404A6C[v18 + 193082777];
-            v20 = 8;
+            scaled_index_5 = 4242LL * iteration_count_2;
+            fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_5 + 193082759]), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+            *state_address_2 = 1;
+            record_byte_offset_2 = &dword_140404A6C[scaled_index_5 + 193082777];
+            remaining_count_2 = 8;
             do
             {
-              fread_sr((void *)(uintptr_t)(v19), 1, 64, (FILE *)(uintptr_t)(v2));
-              v19 += 16;
-              --v20;
+              fread_sr((void *)(uintptr_t)(record_byte_offset_2), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+              record_byte_offset_2 += 16;
+              --remaining_count_2;
             }
-            while ( v20 );
-            ++v16;
-            v17 += 4242;
+            while ( remaining_count_2 );
+            ++iteration_count_2;
+            state_address_2 += 4242;
           }
-          while ( v16 < (int)g_16E492084 );
+          while ( iteration_count_2 < (int)g_16E492084 );
         }
       }
       else
@@ -286,485 +286,485 @@ __int64 asset_load_city_sbc_candidate()
     }
     else
     {
-      fread_sr((void *)(uintptr_t)(&g_16E492084), 4, 1, (FILE *)(uintptr_t)(v2));
-      v10 = 0;
+      fread_sr((void *)(uintptr_t)(&g_16E492084), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      iteration_count = 0;
       if ( (int)g_16E492084 > 0 )
       {
-        v11 = &g_16E4920CC;
+        state_address = &g_16E4920CC;
         do
         {
-          v12 = 4242LL * v10;
-          fread_sr((void *)(uintptr_t)(&dword_140404A6C[v12 + 193082759]), 1, 64, (FILE *)(uintptr_t)(v2));
-          fread_sr((void *)(uintptr_t)(&dword_140404A6C[v12 + 193082776]), 4, 1, (FILE *)(uintptr_t)(v2));
-          v13 = 0;
-          if ( (int)*v11 > 0 )
+          scaled_index_4 = 4242LL * iteration_count;
+          fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_4 + 193082759]), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+          fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_4 + 193082776]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+          element_index_2 = 0;
+          if ( (int)*state_address > 0 )
           {
             do
             {
-              v14 = 8;
-              v15 = &dword_140404A6C[132 * v13 + 193082777 + v12];
+              remaining_count = 8;
+              record_byte_offset = &dword_140404A6C[132 * element_index_2 + 193082777 + scaled_index_4];
               do
               {
-                fread_sr((void *)(uintptr_t)(v15), 1, 64, (FILE *)(uintptr_t)(v2));
-                v15 += 16;
-                --v14;
+                fread_sr((void *)(uintptr_t)(record_byte_offset), 1, 64, (FILE *)(uintptr_t)(file_handle_2));
+                record_byte_offset += 16;
+                --remaining_count;
               }
-              while ( v14 );
-              ++v13;
+              while ( remaining_count );
+              ++element_index_2;
             }
-            while ( v13 < (int)*v11 );
-            v1 = 0;
+            while ( element_index_2 < (int)*state_address );
+            element_index = 0;
           }
-          ++v10;
-          v11 += 4242;
+          ++iteration_count;
+          state_address += 4242;
         }
-        while ( v10 < (int)g_16E492084 );
+        while ( iteration_count < (int)g_16E492084 );
       }
     }
     if ( Buffer[0] >= 8 )
     {
-      fread_sr((void *)(uintptr_t)(&g_1726DA088), 4, 1, (FILE *)(uintptr_t)(v2));
-      v21 = 0;
+      fread_sr((void *)(uintptr_t)(&g_1726DA088), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+      element_index_3 = 0;
       if ( (int)g_1726DA088 > 0 )
       {
-        v22 = &g_1726DC89C;
+        state_address_3 = &g_1726DC89C;
         do
         {
-          v23 = 3588LL * v21;
-          fread_sr((void *)(uintptr_t)(&dword_140404A6C[v23 + 210457992]), 4, 1, (FILE *)(uintptr_t)(v2));
-          fread_sr((void *)(uintptr_t)(&dword_140404A6C[v23 + 210457993]), 4, 1, (FILE *)(uintptr_t)(v2));
-          fread_sr((void *)(uintptr_t)(&dword_140404A6C[v23 + 210457994]), 4, 1, (FILE *)(uintptr_t)(v2));
-          fread_sr((void *)(uintptr_t)(&dword_140404A6C[v23 + 210457995]), 4, 1, (FILE *)(uintptr_t)(v2));
+          scaled_index_6 = 3588LL * element_index_3;
+          fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_6 + 210457992]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+          fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_6 + 210457993]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+          fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_6 + 210457994]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+          fread_sr((void *)(uintptr_t)(&dword_140404A6C[scaled_index_6 + 210457995]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
           if ( Buffer[0] < 11 )
             goto LABEL_37;
-          v24 = 512;
-          v25 = &dword_140404A6C[v23 + 210460556];
+          remaining_count_3 = 512;
+          buffer_cursor = &dword_140404A6C[scaled_index_6 + 210460556];
           do
           {
-            fread_sr((void *)(uintptr_t)(v25++), 4, 1, (FILE *)(uintptr_t)(v2));
-            --v24;
+            fread_sr((void *)(uintptr_t)(buffer_cursor++), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+            --remaining_count_3;
           }
-          while ( v24 );
-          crt_memset((void *)(uintptr_t)((_WORD *)v22 - 5120), 0, 0x800u);
+          while ( remaining_count_3 );
+          crt_memset((void *)(uintptr_t)((_WORD *)state_address_3 - 5120), 0, 0x800u);
           if ( Buffer[0] < 11 )
           {
 LABEL_37:
-            v26 = 0;
-            v27 = 512;
+            element_index_4 = 0;
+            remaining_count_4 = 512;
             do
             {
-              fread_sr((void *)(uintptr_t)(&dword_140404A6C[3588 * v21 + 210457996 + v26++]), 4, 1, (FILE *)(uintptr_t)(v2));
-              --v27;
+              fread_sr((void *)(uintptr_t)(&dword_140404A6C[3588 * element_index_3 + 210457996 + element_index_4++]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              --remaining_count_4;
             }
-            while ( v27 );
-            v28 = 0;
-            v29 = 4096;
+            while ( remaining_count_4 );
+            iteration_count_3 = 0;
+            remaining_count_5 = 4096;
             do
             {
-              fread_sr((void *)(uintptr_t)((char *)&dword_140404A6C[3588 * v21 + 210458508] + 2 * v28++), 2, 1, (FILE *)(uintptr_t)(v2));
-              --v29;
+              fread_sr((void *)(uintptr_t)((char *)&dword_140404A6C[3588 * element_index_3 + 210458508] + 2 * iteration_count_3++), 2, 1, (FILE *)(uintptr_t)(file_handle_2));
+              --remaining_count_5;
             }
-            while ( v29 );
-            crt_memset((void *)(uintptr_t)(v22), 0, 0x800u);
+            while ( remaining_count_5 );
+            crt_memset((void *)(uintptr_t)(state_address_3), 0, 0x800u);
           }
           if ( Buffer[0] >= 10 )
           {
-            v30 = 0;
-            v31 = 512;
+            element_index_5 = 0;
+            remaining_count_6 = 512;
             do
             {
-              fread_sr((void *)(uintptr_t)(&dword_140404A6C[3588 * v21 + 210461068 + v30++]), 4, 1, (FILE *)(uintptr_t)(v2));
-              --v31;
+              fread_sr((void *)(uintptr_t)(&dword_140404A6C[3588 * element_index_3 + 210461068 + element_index_5++]), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
+              --remaining_count_6;
             }
-            while ( v31 );
+            while ( remaining_count_6 );
           }
-          ++v21;
-          v22 += 3588;
+          ++element_index_3;
+          state_address_3 += 3588;
         }
-        while ( v21 < (int)g_1726DA088 );
+        while ( element_index_3 < (int)g_1726DA088 );
       }
     }
     if ( Buffer[0] >= 9 )
     {
-      fread_sr((void *)(uintptr_t)(&g_175FBB094), 4, 1, (FILE *)(uintptr_t)(v2));
+      fread_sr((void *)(uintptr_t)(&g_175FBB094), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
       for ( n = 0; n < (int)g_175FBB094; ++n )
-        fread_sr((void *)(uintptr_t)(&dword_140404A6C[2 * n + 225368459 + n]), 4, 3, (FILE *)(uintptr_t)(v2));
+        fread_sr((void *)(uintptr_t)(&dword_140404A6C[2 * n + 225368459 + n]), 4, 3, (FILE *)(uintptr_t)(file_handle_2));
     }
-    crt_fclose(v2);
+    crt_fclose(file_handle_2);
   }
   if ( (int)g_175EFB090 > 0 )
   {
-    v33 = &g_175EFB0F0;
+    record_byte_offset_3 = &g_175EFB0F0;
     do
     {
       asset_load_building_sbb_candidate(
         (char *)&g_1AD2C94A0,
-        (     char *)&dword_140404A6C[24 * v1 + 225171851],
+        (     char *)&dword_140404A6C[24 * element_index + 225171851],
         1);
-      v33 += 24;
-      ++v1;
-      *(v33 - 26) = g_1AD2C94E0 - g_1AD2C94EC;
-      *(v33 - 24) = g_1AD2C94E8 - g_1AD2C94F0;
-      *(v33 - 25) = g_1AD2C94E4 - g_1AD2C94F4;
+      record_byte_offset_3 += 24;
+      ++element_index;
+      *(record_byte_offset_3 - 26) = g_1AD2C94E0 - g_1AD2C94EC;
+      *(record_byte_offset_3 - 24) = g_1AD2C94E8 - g_1AD2C94F0;
+      *(record_byte_offset_3 - 25) = g_1AD2C94E4 - g_1AD2C94F4;
     }
-    while ( v1 < (int)g_175EFB090 );
+    while ( element_index < (int)g_175EFB090 );
   }
   return 0; /* legacy result ignored; native returns void */
 }
-#undef v35
+#undef unused_frame_slot_0
 #undef Buffer
 #undef FileName
-#undef v38
+#undef unused_frame_slot_304
 
 //----- (00000001400D62A0) ----------------------------------------------------
 // Candidate .sbc city serializer: formats data/%s/city2.sbc and opens wb; likely editor/save path.
 __int64 asset_save_city_sbc_candidate()
 {
-  __int64 v0;
-  __int64 v1;
-  int v2;
+  __int64 file_handle;
+  __int64 file_handle_2;
+  int element_index;
   int i;
   int j;
-  __int64 v5;
+  __int64 scaled_index;
   int k;
-  __int64 v7;
+  __int64 scaled_index_2;
   int m;
-  __int64 v9;
-  int v10;
-  unsigned int *v11;
-  __int64 v12;
-  signed int v13;
-  __int64 v14;
-  unsigned int *v15;
+  __int64 scaled_index_3;
+  int iteration_count;
+  unsigned int *state_address;
+  __int64 scaled_index_4;
+  signed int element_index_2;
+  __int64 remaining_count;
+  unsigned int *destination_buffer;
   int n;
-  __int64 v17;
-  __int64 v18;
-  unsigned int *v19;
-  __int64 v20;
-  unsigned int *v21;
+  __int64 scaled_index_5;
+  __int64 remaining_count_2;
+  unsigned int *buffer_cursor;
+  __int64 remaining_count_3;
+  unsigned int *buffer_cursor_2;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400D62A0[320];
-#define v23 (*(__int64 (*))(void *)(sr_frame_1400D62A0 + 0)) /* [rsp+0h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_1400D62A0 + 0)) /* [rsp+0h] */
 #define Buffer (*(int (*))(void *)(sr_frame_1400D62A0 + 32)) /* [rsp+20h] */
 #define FileName (*(char (*)[256])(void *)(sr_frame_1400D62A0 + 48)) /* [rsp+30h] */
-#define v26 (*(__int64 (*))(void *)(sr_frame_1400D62A0 + 304)) /* [rsp+130h] */
+#define unused_frame_slot_304 (*(__int64 (*))(void *)(sr_frame_1400D62A0 + 304)) /* [rsp+130h] */
 
   crt_sprintf(FileName, "data/%s/city2.sbc", (     char *)(unsigned int *)&g_183EBFAB0);
-  v0 = crt_fopen(FileName, "wb");
-  v1 = v0;
-  if ( v0 )
+  file_handle = crt_fopen(FileName, "wb");
+  file_handle_2 = file_handle;
+  if ( file_handle )
   {
     Buffer = 12;
-    crt_fread((__int64)&Buffer, 4, 1, v0);
-    crt_fread((__int64)&g_175EEA08C, 4, 1, v1);
-    v2 = 0;
+    crt_fread((__int64)&Buffer, 4, 1, file_handle);
+    crt_fread((__int64)&g_175EEA08C, 4, 1, file_handle_2);
+    element_index = 0;
     for ( i = 0; i < (int)g_175EEA08C; ++i )
-      crt_fread((__int64)&dword_140404A6C[16 * (__int64)i + 225154441], 1, 64, v1);
-    crt_fread((__int64)&g_16E486878, 4, 1, v1);
+      crt_fread((__int64)&dword_140404A6C[16 * (__int64)i + 225154441], 1, 64, file_handle_2);
+    crt_fread((__int64)&g_16E486878, 4, 1, file_handle_2);
     for ( j = 0; j < (int)g_16E486878; ++j )
     {
-      v5 = 3LL * j;
-      crt_fread((__int64)&dword_140404A6C[v5 + 193070980], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v5 + 193070981], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v5 + 193070982], 4, 1, v1);
+      scaled_index = 3LL * j;
+      crt_fread((__int64)&dword_140404A6C[scaled_index + 193070980], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index + 193070981], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index + 193070982], 4, 1, file_handle_2);
     }
-    crt_fread((__int64)&g_16E48987C, 4, 1, v1);
+    crt_fread((__int64)&g_16E48987C, 4, 1, file_handle_2);
     for ( k = 0; k < (int)g_16E48987C; ++k )
     {
-      v7 = 13LL * k;
-      crt_fread((__int64)&dword_140404A6C[v7 + 193074053], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v7 + 193074054], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v7 + 193074055], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v7 + 193074056], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v7 + 193074057], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v7 + 193074058], 1, 32, v1);
+      scaled_index_2 = 13LL * k;
+      crt_fread((__int64)&dword_140404A6C[scaled_index_2 + 193074053], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_2 + 193074054], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_2 + 193074055], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_2 + 193074056], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_2 + 193074057], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_2 + 193074058], 1, 32, file_handle_2);
     }
-    crt_fread((__int64)&g_175EFB090, 4, 1, v1);
+    crt_fread((__int64)&g_175EFB090, 4, 1, file_handle_2);
     for ( m = 0; m < (int)g_175EFB090; ++m )
     {
-      v9 = 24LL * m;
-      crt_fread((__int64)&dword_140404A6C[v9 + 225171851], 1, 64, v1);
-      crt_fread((__int64)&dword_140404A6C[v9 + 225171867], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v9 + 225171868], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v9 + 225171869], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v9 + 225171870], 4, 1, v1);
+      scaled_index_3 = 24LL * m;
+      crt_fread((__int64)&dword_140404A6C[scaled_index_3 + 225171851], 1, 64, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_3 + 225171867], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_3 + 225171868], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_3 + 225171869], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_3 + 225171870], 4, 1, file_handle_2);
     }
-    crt_fread((__int64)&g_16E492084, 4, 1, v1);
-    v10 = 0;
+    crt_fread((__int64)&g_16E492084, 4, 1, file_handle_2);
+    iteration_count = 0;
     if ( (int)g_16E492084 > 0 )
     {
-      v11 = &g_16E4920CC;
+      state_address = &g_16E4920CC;
       do
       {
-        v12 = 4242LL * v10;
-        crt_fread((__int64)&dword_140404A6C[v12 + 193082759], 1, 64, v1);
-        crt_fread((__int64)&dword_140404A6C[v12 + 193082776], 4, 1, v1);
-        v13 = 0;
-        if ( (int)*v11 > 0 )
+        scaled_index_4 = 4242LL * iteration_count;
+        crt_fread((__int64)&dword_140404A6C[scaled_index_4 + 193082759], 1, 64, file_handle_2);
+        crt_fread((__int64)&dword_140404A6C[scaled_index_4 + 193082776], 4, 1, file_handle_2);
+        element_index_2 = 0;
+        if ( (int)*state_address > 0 )
         {
           do
           {
-            v14 = 8;
-            v15 = &dword_140404A6C[132 * v13 + 193082777 + v12];
+            remaining_count = 8;
+            destination_buffer = &dword_140404A6C[132 * element_index_2 + 193082777 + scaled_index_4];
             do
             {
-              crt_fread((__int64)v15, 1, 64, v1);
-              v15 += 16;
-              --v14;
+              crt_fread((__int64)destination_buffer, 1, 64, file_handle_2);
+              destination_buffer += 16;
+              --remaining_count;
             }
-            while ( v14 );
-            ++v13;
+            while ( remaining_count );
+            ++element_index_2;
           }
-          while ( v13 < (int)*v11 );
-          v2 = 0;
+          while ( element_index_2 < (int)*state_address );
+          element_index = 0;
         }
-        ++v10;
-        v11 += 4242;
+        ++iteration_count;
+        state_address += 4242;
       }
-      while ( v10 < (int)g_16E492084 );
+      while ( iteration_count < (int)g_16E492084 );
     }
-    crt_fread((__int64)&g_1726DA088, 4, 1, v1);
+    crt_fread((__int64)&g_1726DA088, 4, 1, file_handle_2);
     for ( n = 0; n < (int)g_1726DA088; ++n )
     {
-      v17 = 3588LL * n;
-      crt_fread((__int64)&dword_140404A6C[v17 + 210457992], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v17 + 210457993], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v17 + 210457994], 4, 1, v1);
-      crt_fread((__int64)&dword_140404A6C[v17 + 210457995], 4, 1, v1);
-      v18 = 512;
-      v19 = &dword_140404A6C[v17 + 210460556];
+      scaled_index_5 = 3588LL * n;
+      crt_fread((__int64)&dword_140404A6C[scaled_index_5 + 210457992], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_5 + 210457993], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_5 + 210457994], 4, 1, file_handle_2);
+      crt_fread((__int64)&dword_140404A6C[scaled_index_5 + 210457995], 4, 1, file_handle_2);
+      remaining_count_2 = 512;
+      buffer_cursor = &dword_140404A6C[scaled_index_5 + 210460556];
       do
       {
-        crt_fread((__int64)v19++, 4, 1, v1);
-        --v18;
+        crt_fread((__int64)buffer_cursor++, 4, 1, file_handle_2);
+        --remaining_count_2;
       }
-      while ( v18 );
-      v20 = 512;
-      v21 = &dword_140404A6C[v17 + 210461068];
+      while ( remaining_count_2 );
+      remaining_count_3 = 512;
+      buffer_cursor_2 = &dword_140404A6C[scaled_index_5 + 210461068];
       do
       {
-        crt_fread((__int64)v21++, 4, 1, v1);
-        --v20;
+        crt_fread((__int64)buffer_cursor_2++, 4, 1, file_handle_2);
+        --remaining_count_3;
       }
-      while ( v20 );
+      while ( remaining_count_3 );
     }
-    crt_fread((__int64)&g_175FBB094, 4, 1, v1);
+    crt_fread((__int64)&g_175FBB094, 4, 1, file_handle_2);
     if ( (int)g_175FBB094 > 0 )
     {
       do
       {
-        crt_fread((__int64)&dword_140404A6C[2 * v2 + 225368459 + v2], 4, 3, v1);
-        ++v2;
+        crt_fread((__int64)&dword_140404A6C[2 * element_index + 225368459 + element_index], 4, 3, file_handle_2);
+        ++element_index;
       }
-      while ( v2 < (int)g_175FBB094 );
+      while ( element_index < (int)g_175FBB094 );
     }
-    crt_fclose(v1);
+    crt_fclose(file_handle_2);
   }
   return 0; /* compatibility result discarded by all reviewed callers */
 }
-#undef v23
+#undef unused_frame_slot_0
 #undef Buffer
 #undef FileName
-#undef v26
+#undef unused_frame_slot_304
 
 //----- (00000001400E6E50) ----------------------------------------------------
 // Candidate .sbl loader: formats block/%s.sbl, opens rb, accepts versions 1-2, reads global block tables.
 __int64            asset_load_block_sbl_candidate(     char *a1)
 {
-  __int64 v1;
-  __int64 v2;
-  int v3;
+  __int64 file_handle;
+  __int64 file_handle_2;
+  int iteration_count;
   int i;
-  __int64 v5;
-  __int64 v6;
-  unsigned int *v7;
-  unsigned int *v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  unsigned int *v12;
-  __int64 v13;
-  unsigned int *v14;
+  __int64 scaled_index;
+  __int64 remaining_count;
+  unsigned int *state_address;
+  unsigned int *state_address_2;
+  __int64 remaining_count_2;
+  __int64 scaled_index_2;
+  __int64 remaining_count_3;
+  unsigned int *state_address_3;
+  __int64 remaining_count_4;
+  unsigned int *buffer_cursor;
   /* Stack locals keep their original frame adjacency (see frameify.py). */
   _Alignas(16) unsigned char sr_frame_1400E6E50[576];
-#define v16 (*(__int64 (*))(void *)(sr_frame_1400E6E50 + 0)) /* [rsp+0h] */
-#define v17 (*(int (*)[4])(void *)(sr_frame_1400E6E50 + 32)) /* [rsp+20h] */
-#define v18 (*(char (*)[512])(void *)(sr_frame_1400E6E50 + 48)) /* [rsp+30h] */
-#define v19 (*(__int64 (*))(void *)(sr_frame_1400E6E50 + 560)) /* [rsp+230h] */
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_1400E6E50 + 0)) /* [rsp+0h] */
+#define scratch_buffer (*(int (*)[4])(void *)(sr_frame_1400E6E50 + 32)) /* [rsp+20h] */
+#define scratch_buffer_2 (*(char (*)[512])(void *)(sr_frame_1400E6E50 + 48)) /* [rsp+30h] */
+#define unused_frame_slot_560 (*(__int64 (*))(void *)(sr_frame_1400E6E50 + 560)) /* [rsp+230h] */
 
-  crt_sprintf(v18, "block/%s.sbl", a1);
-  v1 = crt_fopen(v18, "rb");
-  v2 = v1;
-  if ( v1 )
+  crt_sprintf(scratch_buffer_2, "block/%s.sbl", a1);
+  file_handle = crt_fopen(scratch_buffer_2, "rb");
+  file_handle_2 = file_handle;
+  if ( file_handle )
   {
-    (*(void (           **)(int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(v17, 4, 1, v1);
-    if ( (unsigned int)(v17[0] - 1) <= 1 )
+    (*(void (           **)(int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(scratch_buffer, 4, 1, file_handle);
+    if ( (unsigned int)(scratch_buffer[0] - 1) <= 1 )
     {
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBA0,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBA4,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBA8,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBAC,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBB0,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBB4,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBB8,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBBC,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBC0,
         4,
         1,
-        v2);
+        file_handle_2);
       (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
         &g_144FBFBC4,
         4,
         1,
-        v2);
-      v3 = 0;
+        file_handle_2);
+      iteration_count = 0;
       for ( i = 0; i < (int)g_144FBFBC4; ++i )
       {
-        v5 = 87LL * i;
+        scaled_index = 87LL * i;
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[v5 + 19852378],
+          &dword_140404A6C[scaled_index + 19852378],
           4,
           1,
-          v2);
+          file_handle_2);
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[v5 + 19852376],
+          &dword_140404A6C[scaled_index + 19852376],
           4,
           1,
-          v2);
+          file_handle_2);
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[v5 + 19852379],
+          &dword_140404A6C[scaled_index + 19852379],
           4,
           1,
-          v2);
+          file_handle_2);
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[v5 + 19852377],
+          &dword_140404A6C[scaled_index + 19852377],
           4,
           1,
-          v2);
+          file_handle_2);
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[v5 + 19852460],
+          &dword_140404A6C[scaled_index + 19852460],
           4,
           1,
-          v2);
+          file_handle_2);
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-          &dword_140404A6C[v5 + 19852461],
+          &dword_140404A6C[scaled_index + 19852461],
           4,
           1,
-          v2);
-        v6 = 4;
-        v7 = &dword_140404A6C[v5 + 19852428];
-        v8 = &dword_140404A6C[v5 + 19852380];
+          file_handle_2);
+        remaining_count = 4;
+        state_address = &dword_140404A6C[scaled_index + 19852428];
+        state_address_2 = &dword_140404A6C[scaled_index + 19852380];
         do
         {
-          v9 = 4;
+          remaining_count_2 = 4;
           do
           {
             (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-              v8,
+              state_address_2,
               4,
               3,
-              v2);
+              file_handle_2);
             (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-              v7,
+              state_address,
               4,
               2,
-              v2);
-            v8 += 3;
-            v7 += 2;
-            --v9;
+              file_handle_2);
+            state_address_2 += 3;
+            state_address += 2;
+            --remaining_count_2;
           }
-          while ( v9 );
-          --v6;
+          while ( remaining_count_2 );
+          --remaining_count;
         }
-        while ( v6 );
+        while ( remaining_count );
       }
       g_144FEB3C8 = 0;
-      if ( v17[0] >= 2 )
+      if ( scratch_buffer[0] >= 2 )
       {
         (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
           &g_144FEB3C8,
           4,
           1,
-          v2);
+          file_handle_2);
         if ( (int)g_144FEB3C8 > 0 )
         {
           do
           {
-            v10 = 31LL * v3;
-            v11 = 8;
-            v12 = &dword_140404A6C[v10 + 19896920];
+            scaled_index_2 = 31LL * iteration_count;
+            remaining_count_3 = 8;
+            state_address_3 = &dword_140404A6C[scaled_index_2 + 19896920];
             do
             {
               (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-                v12,
+                state_address_3,
                 4,
                 3,
-                v2);
-              v12 += 3;
-              --v11;
+                file_handle_2);
+              state_address_3 += 3;
+              --remaining_count_3;
             }
-            while ( v11 );
-            v13 = 6;
-            v14 = &dword_140404A6C[v10 + 19896944];
+            while ( remaining_count_3 );
+            remaining_count_4 = 6;
+            buffer_cursor = &dword_140404A6C[scaled_index_2 + 19896944];
             do
             {
               (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-                v14++,
+                buffer_cursor++,
                 4,
                 1,
-                v2);
-              --v13;
+                file_handle_2);
+              --remaining_count_4;
             }
-            while ( v13 );
+            while ( remaining_count_4 );
             (*(void (           **)(unsigned int *, __int64, __int64, __int64))(unsigned int *)&g_1862AE008)(
-              &dword_140404A6C[v10 + 19896950],
+              &dword_140404A6C[scaled_index_2 + 19896950],
               4,
               1,
-              v2);
-            ++v3;
+              file_handle_2);
+            ++iteration_count;
           }
-          while ( v3 < (int)g_144FEB3C8 );
+          while ( iteration_count < (int)g_144FEB3C8 );
         }
       }
     }
-    crt_fclose(v2);
+    crt_fclose(file_handle_2);
   }
   return 0; /* the function has no caller */
 }
-#undef v16
-#undef v17
-#undef v18
-#undef v19
+#undef unused_frame_slot_0
+#undef scratch_buffer
+#undef scratch_buffer_2
+#undef unused_frame_slot_560

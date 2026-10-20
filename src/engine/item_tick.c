@@ -8,16 +8,16 @@
 /* ---- still recompiled code ------------------------------------------------- */
 
 extern int rand(void);                          /* the original's own, 0x14023B1B0 */
-extern void sub_1401380F0(int item, int human); /* a held item follows its holder */
-extern void sub_1400CF670(int item);            /* a gun's tick (the original also leaves
+extern void sr_item_follow_body(int item, int human); /* a held item follows its holder */
+extern void sr_item_gun_tick(int item);            /* a gun's tick (the original also leaves
                                                    'lying free' in EDX, which it does not read) */
-extern void sub_140051940(int item);            /* marks an item's state changed */
+extern void sr_item_phone_changed(int item);            /* marks an item's state changed */
 extern void sub_1400C3ED0(int item);            /* sets up a computer */
 extern void sub_1400C5750(int item);            /* computers ... */
-extern void sub_140050F90(int item, int unknown);
+extern void sr_item_link_text_line(int item, int unknown);
 extern void sub_1400C8500(int item);
 extern void sub_1400C9820(int item);
-extern void sub_1400A70B0(int item);            /* a grenade goes off */
+extern void sr_item_grenade_explode(int item);            /* a grenade goes off */
 
 /* Fields of a human this file uses that human.h does not name yet: what
    item type 30 changes (+0x14 up to 105, +0x20 up to 255, +0x18 a wait of
@@ -165,10 +165,10 @@ static void hang_up(int item)
     item_call_state(partner) = 0;
     item_call_partner(item_call_partner(item)) = -1;
     item_call_number(item_call_partner(item)) = 0;
-    sub_140051940(item_call_partner(item));
+    sr_item_phone_changed(item_call_partner(item));
     item_call_number(item) = 0;
     item_call_partner(item) = -1;
-    sub_140051940(item);
+    sr_item_phone_changed(item);
 }
 
 static void phone_dial(int item)
@@ -190,7 +190,7 @@ static void phone_dial(int item)
     if (item_call_partner(other) != -1) {
         item_call_state(item) = 4;                   /* engaged */
         item_call_number(item) = 0;
-        sub_140051940(item);
+        sr_item_phone_changed(item);
         return;
     }
     item_call_state(item) = 2;
@@ -198,8 +198,8 @@ static void phone_dial(int item)
     item_call_partner(item) = other;
     item_call_number(item) = 0;
     item_call_number(other) = item_phone_number(item);
-    sub_140051940(item);
-    sub_140051940(other);
+    sr_item_phone_changed(item);
+    sr_item_phone_changed(other);
 }
 
 static void phone_states(int item)
@@ -214,7 +214,7 @@ static void phone_states(int item)
             item_call_state(item) = 1;
             item_call_number(item) = 0;
             item_dialled_number(item) = 0;
-            sub_140051940(item);
+            sr_item_phone_changed(item);
         }
         return;
     }
@@ -230,7 +230,7 @@ static void phone_states(int item)
             item_call_number(item) = 0;
             item_dialled_number(item) = 0;
             item_call_partner(item) = -1;
-            sub_140051940(item);
+            sr_item_phone_changed(item);
         }
         return;
     }
@@ -240,7 +240,7 @@ static void phone_states(int item)
             item_call_state(item) = 0;
             item_call_number(item) = 0;
             item_dialled_number(item) = 0;
-            sub_140051940(item);
+            sr_item_phone_changed(item);
         }
         phone_dial(item);
         return;
@@ -252,7 +252,7 @@ static void phone_states(int item)
             item_call_state(item) = 0;
             item_call_partner(item) = -1;
             item_call_number(item) = 0;
-            sub_140051940(item);
+            sr_item_phone_changed(item);
             state = 0;
         }
     }
@@ -271,10 +271,10 @@ static void phone_states(int item)
                 item_call_state(item) = 0;
                 item_call_state(partner) = 0;
                 item_call_number(item_call_partner(item)) = 0;
-                sub_140051940(item_call_partner(item));
+                sr_item_phone_changed(item_call_partner(item));
                 item_call_partner(item) = -1;
                 item_call_number(item) = 0;
-                sub_140051940(item);
+                sr_item_phone_changed(item);
             }
         }
     }
@@ -293,9 +293,9 @@ static void phone_states(int item)
             item_call_state(other) = 3;
             item_call_partner(item) = other;
             item_call_number(item) = item_phone_number(other);
-            sub_140051940(item);
+            sr_item_phone_changed(item);
             item_call_number(other) = item_phone_number(item);
-            sub_140051940(other);
+            sr_item_phone_changed(other);
         }
     }
 }
@@ -326,7 +326,7 @@ static void computer_states(int item)
             item_computer_owner(item, item_computer_slot(item, pick)) = pick;
             sub_1400C5750(item);
             item_unknown_3b4(item) = 0;
-            sub_140050F90(item, 1);
+            sr_item_link_text_line(item, 1);
             state = item_computer_state(item);
         }
     }
@@ -374,7 +374,7 @@ static void grenade_states(int index, WorldItem *item)
         event->vector_a[1] = item->position[1];
         event->vector_a[2] = item->position[2];
     }
-    sub_1400A70B0(index);
+    sr_item_grenade_explode(index);
 }
 
 static void use_up(int index, WorldItem *item)
@@ -458,7 +458,7 @@ void item_tick_states(void)
                 list->items[list->count++] = i;
         }
         if (item->holder != -1)
-            sub_1401380F0(i, item->holder);
+            sr_item_follow_body(i, item->holder);
     }
 
     for (int i = 0; i < WORLD_ITEM_CAPACITY; i++) {
@@ -476,7 +476,7 @@ void item_tick_states(void)
         int32_t type = item->type;
         update_lifetime(item, loose);
         if (item_type_is_gun(type))
-            sub_1400CF670(i);
+            sr_item_gun_tick(i);
 
         type = item->type;
         if (type == WORLD_ITEM_TYPE_27) {

@@ -3,81 +3,81 @@
 //----- (00000001401C0320) ----------------------------------------------------
 __int64            sub_1401C0320(int *a1, __int64 a2, __int64 a3, signed int *a4, signed int a5, unsigned int a6)
 {
-  int v6;
-  int v8;
-  int v9;
-  int v10;
-  unsigned int v11;
-  signed int v12;
-  signed int v13;
-  int v14;
-  unsigned int v15;
-  unsigned int v16;
-  int v17;
-  int v18;
-  unsigned int v19;
-  signed int v20;
-  signed int v21;
-  int v22;
-  int v23;
-  __int64 v24;
-  __int64 v25;
-  __int16 v30;
+  int call_result;
+  int masked_bits;
+  int shifted_bits;
+  int call_result_2;
+  unsigned int return_value;
+  signed int remaining_bits;
+  signed int remaining_bits_2;
+  int shifted_bits_2;
+  unsigned int callee_output_word;
+  unsigned int callee_output_word_2;
+  int integer_difference;
+  int cached_integer_difference;
+  unsigned int saved_shifted_bits;
+  signed int call_result_3;
+  signed int loaded_word;
+  int loaded_word_2;
+  int saved_loaded_word;
+  __int64 loaded_word_3;
+  __int64 table_value;
+  __int16 call_result_4;
 
-  sub_1401BC4C0(&v12, &v16, a2, a5);
-  sub_1401BC4C0(&v13, &v15, a3, a5);
-  v6 = sub_1401BE3A0(v16, v15);
-  v8 = (v6 & 1) + v6;
-  v13 >>= v8 - v15;
-  v12 >>= v8 - v16;
-  v12 = sub_1401BE3A0(v12, 1u);
-  v20 = sub_1401BE210(a2, a3, v8, a5);
-  v10 = sub_1401BE550(v20, v12, 13);
-  if ( v10 <= 0x4000 )
+  sub_1401BC4C0(&remaining_bits, &callee_output_word_2, a2, a5);
+  sub_1401BC4C0(&remaining_bits_2, &callee_output_word, a3, a5);
+  call_result = sub_1401BE3A0(callee_output_word_2, callee_output_word);
+  masked_bits = (call_result & 1) + call_result;
+  remaining_bits_2 >>= masked_bits - callee_output_word;
+  remaining_bits >>= masked_bits - callee_output_word_2;
+  remaining_bits = sub_1401BE3A0(remaining_bits, 1u);
+  call_result_3 = sub_1401BE210(a2, a3, masked_bits, a5);
+  call_result_2 = sub_1401BE550(call_result_3, remaining_bits, 13);
+  if ( call_result_2 <= 0x4000 )
   {
-    if ( v10 >= -16384 )
-      v17 = v10;
+    if ( call_result_2 >= -16384 )
+      integer_difference = call_result_2;
     else
-      v17 = -16384;
-    v18 = v17;
+      integer_difference = -16384;
+    cached_integer_difference = integer_difference;
   }
   else
   {
-    v18 = 0x4000;
+    cached_integer_difference = 0x4000;
   }
-  v11 = v18;
-  v14 = ((__int16)v18 * (__int64)v18) >> 16;
-  if ( v14 <= 0 )
-    v19 = -v14;
+  return_value = cached_integer_difference;
+  shifted_bits_2 = ((__int16)cached_integer_difference * (__int64)cached_integer_difference) >> 16;
+  if ( shifted_bits_2 <= 0 )
+    saved_shifted_bits = -shifted_bits_2;
   else
-    v19 = v14;
-  v30 = sub_1401BE3A0(a6, v19);
-  v9 = v8 >> 1;
-  v24 = *a4;
-  *a4 = ((v30 * (__int64)(int)(((unsigned int)sub_1401BE4C0(v12) << v9) - *a4)) >> 16) + v24;
-  v13 -= 16 * (((__int16)v11 * (__int64)v20) >> 16);
-  v13 += (unsigned int)(((__int16)v14 * (__int64)v12) >> 16) << 6;
-  v25 = a4[1];
-  a4[1] = ((v30 * (__int64)(int)(((unsigned int)sub_1401BE4C0(v13) << v9) - a4[1])) >> 16) + v25;
+    saved_shifted_bits = shifted_bits_2;
+  call_result_4 = sub_1401BE3A0(a6, saved_shifted_bits);
+  shifted_bits = masked_bits >> 1;
+  loaded_word_3 = *a4;
+  *a4 = ((call_result_4 * (__int64)(int)(((unsigned int)sub_1401BE4C0(remaining_bits) << shifted_bits) - *a4)) >> 16) + loaded_word_3;
+  remaining_bits_2 -= 16 * (((__int16)return_value * (__int64)call_result_3) >> 16);
+  remaining_bits_2 += (unsigned int)(((__int16)shifted_bits_2 * (__int64)remaining_bits) >> 16) << 6;
+  table_value = a4[1];
+  a4[1] = ((call_result_4 * (__int64)(int)(((unsigned int)sub_1401BE4C0(remaining_bits_2) << shifted_bits) - a4[1])) >> 16) + table_value;
   if ( *a4 <= 1 )
-    v21 = 1;
+    loaded_word = 1;
   else
-    v21 = *a4;
-  *a1 = sub_1401BE550(a4[1], v21, 14);
+    loaded_word = *a4;
+  *a1 = sub_1401BE550(a4[1], loaded_word, 14);
   if ( *a1 <= 0x7FFF )
   {
     if ( *a1 >= 0 )
-      v22 = *a1;
+      loaded_word_2 = *a1;
     else
-      v22 = 0;
-    v23 = v22;
+      loaded_word_2 = 0;
+    saved_loaded_word = loaded_word_2;
   }
   else
   {
-    v23 = 0x7FFF;
+    saved_loaded_word = 0x7FFF;
   }
-  *a1 = v23;
-  return v11;
+  *a1 = saved_loaded_word;
+  return return_value;
 }
 
 //----- (00000001401C06A0) ----------------------------------------------------
@@ -87,32 +87,32 @@ __int64            sub_1401C06A0(_DWORD *a1, __int64 a2)
   int i;
   int j;
   int k;
-  int v6;
-  int v7;
-  int v8;
-  int v9;
-  int v10;
-  int v11;
+  int scaled_index;
+  int table_value;
+  int integer_difference;
+  int cached_integer_difference;
+  int scaled_index_2;
+  int shifted_bits;
 
-  v10 = 0;
+  scaled_index_2 = 0;
   for ( i = 0; i < 2; ++i )
   {
-    v9 = 0x7FFFFFFF;
+    cached_integer_difference = 0x7FFFFFFF;
     for ( j = 0; j < 15; ++j )
     {
-      v7 = word_1402827A0[j];
-      v11 = (6554LL * (word_1402827A0[j + 1] - v7)) >> 16;
+      table_value = word_1402827A0[j];
+      shifted_bits = (6554LL * (word_1402827A0[j + 1] - table_value)) >> 16;
       for ( k = 0; k < 5; ++k )
       {
-        v6 = (__int16)(2 * k + 1) * (__int16)v11 + v7;
-        if ( a1[i] - v6 <= 0 )
-          v8 = v6 - a1[i];
+        scaled_index = (__int16)(2 * k + 1) * (__int16)shifted_bits + table_value;
+        if ( a1[i] - scaled_index <= 0 )
+          integer_difference = scaled_index - a1[i];
         else
-          v8 = a1[i] - v6;
-        if ( v8 >= v9 )
+          integer_difference = a1[i] - scaled_index;
+        if ( integer_difference >= cached_integer_difference )
           goto LABEL_14;
-        v9 = v8;
-        v10 = (__int16)(2 * k + 1) * (__int16)v11 + v7;
+        cached_integer_difference = integer_difference;
+        scaled_index_2 = (__int16)(2 * k + 1) * (__int16)shifted_bits + table_value;
         *(_BYTE *)(3LL * i + a2) = j;
         *(_BYTE *)(3LL * i + a2 + 1) = k;
       }
@@ -120,7 +120,7 @@ __int64            sub_1401C06A0(_DWORD *a1, __int64 a2)
 LABEL_14:
     *(_BYTE *)(3LL * i + a2 + 2) = *(char *)(3LL * i + a2) / 3;
     *(_BYTE *)(3LL * i + a2) -= 3 * *(_BYTE *)(3LL * i + a2 + 2);
-    a1[i] = v10;
+    a1[i] = scaled_index_2;
   }
   result = (unsigned int)(*a1 - a1[1]);
   *a1 = result;
@@ -152,28 +152,28 @@ _DWORD *           sub_1401C0A60(_DWORD *a1, char a2)
 //----- (00000001401C0AA0) ----------------------------------------------------
 __int64            sub_1401C0AA0(_DWORD *a1, _DWORD *a2)
 {
-  int v2;
-  __int64 v4;
+  int masked_bits;
+  __int64 unused_local;
   int i;
-  int v6;
-  int v7;
-  _DWORD v8[6];
-  __int64 v9;
+  int scaled_index;
+  int shifted_bits;
+  _DWORD lookup_index[6];
+  __int64 unused_local_2;
 
-  v2 = sub_14019AFE0(a1, (__int64)&unk_1402827C0, 8);
-  v8[2] = v2 / 5;
-  v8[5] = v2 % 5;
+  masked_bits = sub_14019AFE0(a1, (__int64)&unk_1402827C0, 8);
+  lookup_index[2] = masked_bits / 5;
+  lookup_index[5] = masked_bits % 5;
   for ( i = 0; i < 2; ++i )
   {
-    v8[3 * i] = sub_14019AFE0(a1, (__int64)&unk_14028215C, 8);
-    v8[3 * i + 1] = sub_14019AFE0(a1, (__int64)&unk_1402823A4, 8);
+    lookup_index[3 * i] = sub_14019AFE0(a1, (__int64)&unk_14028215C, 8);
+    lookup_index[3 * i + 1] = sub_14019AFE0(a1, (__int64)&unk_1402823A4, 8);
   }
   for ( i = 0; i < 2; ++i )
   {
-    v8[3 * i] += 3 * v8[3 * i + 2];
-    v6 = word_1402827A0[v8[3 * i]];
-    v7 = (6554LL * (word_1402827A0[v8[3 * i] + 1] - v6)) >> 16;
-    a2[i] = (__int16)(2 * v8[3 * i + 1] + 1) * (__int16)v7 + v6;
+    lookup_index[3 * i] += 3 * lookup_index[3 * i + 2];
+    scaled_index = word_1402827A0[lookup_index[3 * i]];
+    shifted_bits = (6554LL * (word_1402827A0[lookup_index[3 * i] + 1] - scaled_index)) >> 16;
+    a2[i] = (__int16)(2 * lookup_index[3 * i + 1] + 1) * (__int16)shifted_bits + scaled_index;
   }
   *a2 -= a2[1];
   return 0; /* no caller reads the result */
@@ -193,41 +193,41 @@ __int64            sub_1401C0D30(_DWORD *a1, _DWORD *a2)
 __int64            sub_1401C0D70(_DWORD *a1, __int64 a2, int a3, __int16 a4, __int16 a5, __int64 a6)
 {
   __int64 result;
-  _BYTE v7[4];
+  _BYTE scratch_buffer[4];
   int i;
   int j;
-  int v10;
-  int v11;
-  __int64 v12;
-  __int64 v13;
-  char *v14;
-  int v16;
+  int loaded_word;
+  int masked_bits;
+  __int64 record_byte_offset;
+  __int64 unused_written_slot;
+  char *state_address;
+  int shifted_bits;
 
-  v13 = 1;
-  v7[1] = 0;
-  v12 = a2;
-  v14 = (char *)&unk_140282738 + 7 * (__int16)(a5 + 2 * a4);
-  v16 = (a3 + 8) >> 4;
+  unused_written_slot = 1;
+  scratch_buffer[1] = 0;
+  record_byte_offset = a2;
+  state_address = (char *)&unk_140282738 + 7 * (__int16)(a5 + 2 * a4);
+  shifted_bits = (a3 + 8) >> 4;
   for ( i = 0; ; ++i )
   {
-    result = (unsigned int)v16;
-    if ( i >= v16 )
+    result = (unsigned int)shifted_bits;
+    if ( i >= shifted_bits )
       break;
-    v10 = *(_DWORD *)(a6 + 4LL * i);
-    if ( v10 > 0 )
+    loaded_word = *(_DWORD *)(a6 + 4LL * i);
+    if ( loaded_word > 0 )
     {
-      if ( (v10 & 0x1Fu) >= 6 )
-        v11 = 6;
+      if ( (loaded_word & 0x1Fu) >= 6 )
+        masked_bits = 6;
       else
-        v11 = v10 & 0x1F;
-      v7[0] = v14[v11];
+        masked_bits = loaded_word & 0x1F;
+      scratch_buffer[0] = state_address[masked_bits];
       for ( j = 0; j < 16; ++j )
       {
-        if ( *(_BYTE *)(v12 + j) )
-          sub_14019A4F0(a1, (*(char *)(v12 + j) >> 15) + 1, (__int64)v7, 8);
+        if ( *(_BYTE *)(record_byte_offset + j) )
+          sub_14019A4F0(a1, (*(char *)(record_byte_offset + j) >> 15) + 1, (__int64)scratch_buffer, 8);
       }
     }
-    v12 += 16;
+    record_byte_offset += 16;
   }
   return result;
 }
@@ -236,47 +236,47 @@ __int64            sub_1401C0D70(_DWORD *a1, __int64 a2, int a3, __int16 a4, __i
 __int64            sub_1401C0EF0(_DWORD *a1, __int64 a2, int a3, __int16 a4, __int16 a5, __int64 a6)
 {
   __int64 result;
-  __int16 v7;
+  __int16 call_result;
   int i;
   int j;
-  _BYTE v10[4];
-  int v11;
-  int v12;
-  __int64 v13;
-  __int64 v14;
-  char *v15;
-  __int64 v16;
-  int v18;
+  _BYTE scratch_buffer[4];
+  int loaded_word;
+  int masked_bits;
+  __int64 record_byte_offset;
+  __int64 unused_written_slot;
+  char *state_address;
+  __int64 cached_j;
+  int shifted_bits;
 
-  v14 = 1;
-  v10[1] = 0;
-  v13 = a2;
-  v15 = (char *)&unk_140282738 + 7 * (__int16)(a5 + 2 * a4);
-  v18 = (a3 + 8) >> 4;
+  unused_written_slot = 1;
+  scratch_buffer[1] = 0;
+  record_byte_offset = a2;
+  state_address = (char *)&unk_140282738 + 7 * (__int16)(a5 + 2 * a4);
+  shifted_bits = (a3 + 8) >> 4;
   for ( i = 0; ; ++i )
   {
-    result = (unsigned int)v18;
-    if ( i >= v18 )
+    result = (unsigned int)shifted_bits;
+    if ( i >= shifted_bits )
       break;
-    v11 = *(_DWORD *)(a6 + 4LL * i);
-    if ( v11 > 0 )
+    loaded_word = *(_DWORD *)(a6 + 4LL * i);
+    if ( loaded_word > 0 )
     {
-      if ( (v11 & 0x1Fu) >= 6 )
-        v12 = 6;
+      if ( (loaded_word & 0x1Fu) >= 6 )
+        masked_bits = 6;
       else
-        v12 = v11 & 0x1F;
-      v10[0] = v15[v12];
+        masked_bits = loaded_word & 0x1F;
+      scratch_buffer[0] = state_address[masked_bits];
       for ( j = 0; j < 16; ++j )
       {
-        if ( *(__int16 *)(v13 + 2LL * j) > 0 )
+        if ( *(__int16 *)(record_byte_offset + 2LL * j) > 0 )
         {
-          v16 = j;
-          v7 = sub_14019AFE0(a1, (__int64)v10, 8);
-          *(_WORD *)(v13 + 2LL * j) = (2 * v7 - 1) * *(_WORD *)(v13 + 2 * v16);
+          cached_j = j;
+          call_result = sub_14019AFE0(a1, (__int64)scratch_buffer, 8);
+          *(_WORD *)(record_byte_offset + 2LL * j) = (2 * call_result - 1) * *(_WORD *)(record_byte_offset + 2 * cached_j);
         }
       }
     }
-    v13 += 32;
+    record_byte_offset += 32;
   }
   return result;
 }
@@ -324,41 +324,41 @@ __int64            sub_1401C1090(int *a1)
 //----- (00000001401C12F0) ----------------------------------------------------
 __int64            sub_1401C12F0(int *a1, _DWORD *a2)
 {
-  int v3;
-  int v4;
-  unsigned int v5;
-  int v6;
-  int v7;
-  int v8;
-  int v10;
+  int scaled_index;
+  int table_value;
+  unsigned int unused_written_slot;
+  int table_value_2;
+  int table_value_3;
+  int table_value_4;
+  int selection_code;
 
-  v4 = a1[1144];
-  if ( !v4 )
-    v4 = a1[8];
-  v5 = v4;
-  v3 = 1000 * (__int16)v4;
-  if ( v3 )
+  table_value = a1[1144];
+  if ( !table_value )
+    table_value = a1[8];
+  unused_written_slot = table_value;
+  scaled_index = 1000 * (__int16)table_value;
+  if ( scaled_index )
   {
-    if ( v3 <= a1[1139] && v3 <= a1[1141] && v3 >= a1[1142] )
+    if ( scaled_index <= a1[1139] && scaled_index <= a1[1141] && scaled_index >= a1[1142] )
     {
       if ( a1[6] >= 256 )
         a1[7] = 0;
       if ( a1[1134] || a2[16] )
       {
-        if ( 1000 * (__int16)v4 <= a1[1143] )
+        if ( 1000 * (__int16)table_value <= a1[1143] )
         {
-          if ( 1000 * (__int16)v4 >= a1[1143] )
+          if ( 1000 * (__int16)table_value >= a1[1143] )
           {
             if ( a1[7] < 0 )
               a1[7] = 1;
           }
           else if ( a2[16] )
           {
-            if ( v4 == 8 )
-              v10 = 12;
+            if ( table_value == 8 )
+              selection_code = 12;
             else
-              v10 = 16;
-            v5 = v10;
+              selection_code = 16;
+            unused_written_slot = selection_code;
             a1[6] = 0;
             crt_memset((void *)(uintptr_t)((_WORD *)a1 + 8), 0, 8u);
             a1[7] = 1;
@@ -383,7 +383,7 @@ __int64            sub_1401C12F0(int *a1, _DWORD *a2)
           if ( a2[16] )
           {
             a1[7] = 0;
-            if ( v4 == 16 )
+            if ( table_value == 16 )
               return 12;
             else
               return 8;
@@ -403,60 +403,60 @@ __int64            sub_1401C12F0(int *a1, _DWORD *a2)
     else
     {
       if ( a1[1139] >= a1[1141] )
-        v7 = a1[1141];
+        table_value_3 = a1[1141];
       else
-        v7 = a1[1139];
-      if ( v7 <= a1[1142] )
-        v8 = a1[1142];
+        table_value_3 = a1[1139];
+      if ( table_value_3 <= a1[1142] )
+        table_value_4 = a1[1142];
       else
-        v8 = v7;
-      return (unsigned int)(v8 / 1000);
+        table_value_4 = table_value_3;
+      return (unsigned int)(table_value_4 / 1000);
     }
   }
   else
   {
     if ( a1[1143] >= a1[1139] )
-      v6 = a1[1139];
+      table_value_2 = a1[1139];
     else
-      v6 = a1[1143];
-    return (unsigned int)(v6 / 1000);
+      table_value_2 = a1[1143];
+    return (unsigned int)(table_value_2 / 1000);
   }
-  return v5;
+  return unused_written_slot;
 }
 
 //----- (00000001401C1660) ----------------------------------------------------
 __int64            sub_1401C1660(_DWORD *a1, int a2)
 {
-  int v3;
-  int v4;
-  unsigned __int8 *v5;
-  int v6;
+  int selection_code;
+  int integer_quotient;
+  unsigned __int8 *state_address;
+  int integer_quotient_2;
 
-  v6 = a2;
+  integer_quotient_2 = a2;
   a1[1152] = a2;
   if ( a1[1145] == 2 )
-    v6 = a2 - (a1[1144] / 16 + 2000);
+    integer_quotient_2 = a2 - (a1[1144] / 16 + 2000);
   if ( a1[1144] == 8 )
   {
-    v3 = 107;
-    v5 = (unsigned __int8 *)&unk_14027E0C0;
+    selection_code = 107;
+    state_address = (unsigned __int8 *)&unk_14027E0C0;
   }
   else if ( a1[1144] == 12 )
   {
-    v3 = 155;
-    v5 = (unsigned __int8 *)&unk_14027E130;
+    selection_code = 155;
+    state_address = (unsigned __int8 *)&unk_14027E130;
   }
   else
   {
-    v3 = 191;
-    v5 = (unsigned __int8 *)&unk_14027E1D0;
+    selection_code = 191;
+    state_address = (unsigned __int8 *)&unk_14027E1D0;
   }
-  if ( (v6 + 200) / 400 - 10 >= v3 - 1 )
-    v4 = v3 - 1;
+  if ( (integer_quotient_2 + 200) / 400 - 10 >= selection_code - 1 )
+    integer_quotient = selection_code - 1;
   else
-    v4 = (v6 + 200) / 400 - 10;
-  if ( v4 > 0 )
-    a1[1183] = 21 * v5[v4];
+    integer_quotient = (integer_quotient_2 + 200) / 400 - 10;
+  if ( integer_quotient > 0 )
+    a1[1183] = 21 * state_address[integer_quotient];
   else
     a1[1183] = 0;
   return 0;
@@ -465,169 +465,169 @@ __int64            sub_1401C1660(_DWORD *a1, int a2)
 //----- (00000001401C1790) ----------------------------------------------------
 __int64            sub_1401C1790(_DWORD *a1, int a2, __int16 a3, __int64 a4, int a5)
 {
-  unsigned __int64 v5;
-  void *v6;
-  unsigned __int64 v7;
-  void *v8;
-  unsigned __int64 v9;
-  void *v10;
-  int v11;
-  int v12;
-  int v13;
-  int v14;
+  unsigned __int64 scaled_index;
+  void *alloca_result;
+  unsigned __int64 scaled_index_2;
+  void *alloca_result_2;
+  unsigned __int64 scaled_index_3;
+  void *alloca_result_3;
+  int call_result;
+  int call_result_2;
+  int masked_bits;
+  int table_value;
   int i;
   int j;
-  int v18;
-  int v19;
-  int v20;
+  int iteration_count;
+  int running_total;
+  int shifted_bits;
   int k;
-  int *v22;
-  int v23;
-  int v24;
-  int *v25;
+  int *buffer_cursor;
+  int cached_j;
+  int state_address;
+  int *saved_alloca_result;
   int *p_i;
-  int v27;
-  int v28;
-  int v29;
-  int v30;
-  int v31;
-  int v32;
-  int v33;
-  int *v34;
-  int v35;
-  __int64 v36;
-  char *v37;
-  __int64 v38;
-  _WORD v39[16];
-  __int64 v40;
+  int loaded_word;
+  int loaded_word_2;
+  int loaded_word_3;
+  int loaded_word_4;
+  int saved_shifted_bits;
+  int loaded_word_5;
+  int saved_loaded_word;
+  int *record_byte_offset;
+  int integer_difference;
+  __int64 scaled_index_4;
+  char *state_address_2;
+  __int64 state_address_3;
+  _WORD scratch_buffer[16];
+  __int64 unused_local;
 
-  v23 = 0;
-  crt_memset((void *)(uintptr_t)(v39), 0, 0x20u);
-  v18 = a5 >> 4;
+  cached_j = 0;
+  crt_memset((void *)(uintptr_t)(scratch_buffer), 0, 0x20u);
+  iteration_count = a5 >> 4;
   if ( 16 * (a5 >> 4) < a5 )
   {
-    ++v18;
+    ++iteration_count;
     crt_memset((void *)(uintptr_t)((_WORD *)(a5 + a4)), 0, 0x10u);
   }
-  v5 = 64LL * v18 + 15;
-  if ( v5 <= 64LL * v18 )
-    v5 = 0xFFFFFFFFFFFFFF0LL;
-  v6 = alloca(v5 & 0xFFFFFFFFFFFFFFF0uLL);
-  v25 = v6;
-  for ( i = 0; i < 16 * v18; i += 4 )
+  scaled_index = 64LL * iteration_count + 15;
+  if ( scaled_index <= 64LL * iteration_count )
+    scaled_index = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result;
+  for ( i = 0; i < 16 * iteration_count; i += 4 )
   {
     if ( *(char *)(a4 + i) <= 0 )
-      v27 = -*(char *)(a4 + i);
+      loaded_word = -*(char *)(a4 + i);
     else
-      v27 = *(char *)(a4 + i);
-    v25[i] = v27;
+      loaded_word = *(char *)(a4 + i);
+    saved_alloca_result[i] = loaded_word;
     if ( *(char *)(a4 + i + 1) <= 0 )
-      v28 = -*(char *)(a4 + i + 1);
+      loaded_word_2 = -*(char *)(a4 + i + 1);
     else
-      v28 = *(char *)(a4 + i + 1);
-    v25[i + 1] = v28;
+      loaded_word_2 = *(char *)(a4 + i + 1);
+    saved_alloca_result[i + 1] = loaded_word_2;
     if ( *(char *)(a4 + i + 2) <= 0 )
-      v29 = -*(char *)(a4 + i + 2);
+      loaded_word_3 = -*(char *)(a4 + i + 2);
     else
-      v29 = *(char *)(a4 + i + 2);
-    v25[i + 2] = v29;
+      loaded_word_3 = *(char *)(a4 + i + 2);
+    saved_alloca_result[i + 2] = loaded_word_3;
     if ( *(char *)(a4 + i + 3) <= 0 )
-      v30 = -*(char *)(a4 + i + 3);
+      loaded_word_4 = -*(char *)(a4 + i + 3);
     else
-      v30 = *(char *)(a4 + i + 3);
-    v25[i + 3] = v30;
+      loaded_word_4 = *(char *)(a4 + i + 3);
+    saved_alloca_result[i + 3] = loaded_word_4;
   }
-  v7 = 4LL * v18 + 15;
-  if ( v7 <= 4LL * v18 )
-    v7 = 0xFFFFFFFFFFFFFF0LL;
-  v8 = alloca(v7 & 0xFFFFFFFFFFFFFFF0uLL);
-  p_i = v8;
-  v9 = 4LL * v18 + 15;
-  if ( v9 <= 4LL * v18 )
-    v9 = 0xFFFFFFFFFFFFFF0LL;
-  v10 = alloca(v9 & 0xFFFFFFFFFFFFFFF0uLL);
-  v22 = v10;
-  v34 = v25;
-  for ( i = 0; i < v18; ++i )
+  scaled_index_2 = 4LL * iteration_count + 15;
+  if ( scaled_index_2 <= 4LL * iteration_count )
+    scaled_index_2 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_2 = alloca(scaled_index_2 & 0xFFFFFFFFFFFFFFF0uLL);
+  p_i = alloca_result_2;
+  scaled_index_3 = 4LL * iteration_count + 15;
+  if ( scaled_index_3 <= 4LL * iteration_count )
+    scaled_index_3 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_3 = alloca(scaled_index_3 & 0xFFFFFFFFFFFFFFF0uLL);
+  buffer_cursor = alloca_result_3;
+  record_byte_offset = saved_alloca_result;
+  for ( i = 0; i < iteration_count; ++i )
   {
-    v22[i] = 0;
+    buffer_cursor[i] = 0;
     while ( 1 )
     {
-      v19 = sub_1401D6B20((__int64)v39, (__int64)v34, unk_1402820FC, 8);
-      v11 = sub_1401D6B20((__int64)v39, (__int64)v39, unk_1402820FD, 4);
-      v19 += v11;
-      v12 = sub_1401D6B20((__int64)v39, (__int64)v39, unk_1402820FE, 2);
-      v19 += v12;
-      v13 = sub_1401D6B20((__int64)&p_i[i], (__int64)v39, unk_1402820FF, 1);
-      v19 += v13;
-      if ( !v19 )
+      running_total = sub_1401D6B20((__int64)scratch_buffer, (__int64)record_byte_offset, unk_1402820FC, 8);
+      call_result = sub_1401D6B20((__int64)scratch_buffer, (__int64)scratch_buffer, unk_1402820FD, 4);
+      running_total += call_result;
+      call_result_2 = sub_1401D6B20((__int64)scratch_buffer, (__int64)scratch_buffer, unk_1402820FE, 2);
+      running_total += call_result_2;
+      masked_bits = sub_1401D6B20((__int64)&p_i[i], (__int64)scratch_buffer, unk_1402820FF, 1);
+      running_total += masked_bits;
+      if ( !running_total )
         break;
-      ++v22[i];
+      ++buffer_cursor[i];
       for ( j = 0; j < 16; ++j )
-        v34[j] >>= 1;
+        record_byte_offset[j] >>= 1;
     }
-    v34 += 16;
+    record_byte_offset += 16;
   }
-  v31 = 0x7FFFFFFF;
+  saved_shifted_bits = 0x7FFFFFFF;
   for ( j = 0; j < 9; ++j )
   {
-    v37 = (char *)&unk_1402823B0 + 18 * j;
-    v20 = byte_140282470[9 * (a2 >> 1) + j];
-    for ( i = 0; i < v18; ++i )
+    state_address_2 = (char *)&unk_1402823B0 + 18 * j;
+    shifted_bits = byte_140282470[9 * (a2 >> 1) + j];
+    for ( i = 0; i < iteration_count; ++i )
     {
-      if ( v22[i] <= 0 )
-        v14 = (unsigned __int8)v37[p_i[i]];
+      if ( buffer_cursor[i] <= 0 )
+        table_value = (unsigned __int8)state_address_2[p_i[i]];
       else
-        v14 = (unsigned __int8)v37[17];
-      v20 += v14;
+        table_value = (unsigned __int8)state_address_2[17];
+      shifted_bits += table_value;
     }
-    if ( v20 < v31 )
+    if ( shifted_bits < saved_shifted_bits )
     {
-      v31 = v20;
-      v23 = j;
+      saved_shifted_bits = shifted_bits;
+      cached_j = j;
     }
   }
-  sub_14019A4F0(a1, v23, (__int64)&unk_140282458 + 9 * (a2 >> 1), 8);
-  v38 = (__int64)&unk_1402822F0 + 18 * v23;
-  for ( i = 0; i < v18; ++i )
+  sub_14019A4F0(a1, cached_j, (__int64)&unk_140282458 + 9 * (a2 >> 1), 8);
+  state_address_3 = (__int64)&unk_1402822F0 + 18 * cached_j;
+  for ( i = 0; i < iteration_count; ++i )
   {
-    if ( v22[i] )
+    if ( buffer_cursor[i] )
     {
-      sub_14019A4F0(a1, 17, v38, 8);
-      for ( j = 0; j < v22[i] - 1; ++j )
+      sub_14019A4F0(a1, 17, state_address_3, 8);
+      for ( j = 0; j < buffer_cursor[i] - 1; ++j )
         sub_14019A4F0(a1, 17, (__int64)&unk_140282392, 8);
       sub_14019A4F0(a1, p_i[i], (__int64)&unk_140282392, 8);
     }
     else
     {
-      sub_14019A4F0(a1, p_i[i], v38, 8);
+      sub_14019A4F0(a1, p_i[i], state_address_3, 8);
     }
   }
-  for ( i = 0; i < v18; ++i )
+  for ( i = 0; i < iteration_count; ++i )
   {
     if ( p_i[i] > 0 )
-      sub_1401C1FB0(a1, (unsigned int *)&v25[16 * i]);
+      sub_1401C1FB0(a1, (unsigned int *)&saved_alloca_result[16 * i]);
   }
-  for ( i = 0; i < v18; ++i )
+  for ( i = 0; i < iteration_count; ++i )
   {
-    if ( v22[i] > 0 )
+    if ( buffer_cursor[i] > 0 )
     {
-      v36 = 16 * i + a4;
-      v35 = v22[i] - 1;
+      scaled_index_4 = 16 * i + a4;
+      integer_difference = buffer_cursor[i] - 1;
       for ( j = 0; j < 16; ++j )
       {
-        if ( *(char *)(v36 + j) <= 0 )
-          v32 = -*(char *)(v36 + j);
+        if ( *(char *)(scaled_index_4 + j) <= 0 )
+          loaded_word_5 = -*(char *)(scaled_index_4 + j);
         else
-          v32 = *(char *)(v36 + j);
-        v33 = (char)v32;
-        for ( k = v35; k > 0; --k )
+          loaded_word_5 = *(char *)(scaled_index_4 + j);
+        saved_loaded_word = (char)loaded_word_5;
+        for ( k = integer_difference; k > 0; --k )
         {
-          v24 = (v33 >> k) & 1;
-          sub_14019A4F0(a1, v24, (__int64)&unk_14028213C, 8);
+          state_address = (saved_loaded_word >> k) & 1;
+          sub_14019A4F0(a1, state_address, (__int64)&unk_14028213C, 8);
         }
-        v24 = v33 & 1;
-        sub_14019A4F0(a1, v24, (__int64)&unk_14028213C, 8);
+        state_address = saved_loaded_word & 1;
+        sub_14019A4F0(a1, state_address, (__int64)&unk_14028213C, 8);
       }
     }
   }
@@ -637,123 +637,123 @@ __int64            sub_1401C1790(_DWORD *a1, int a2, __int16 a3, __int64 a4, int
 //----- (00000001401C1FB0) ----------------------------------------------------
 __int64            sub_1401C1FB0(_DWORD *a1, unsigned int *a2)
 {
-  __int64 v3;
-  int v4[2];
-  int v5;
-  int v6[2];
-  int v7;
-  int v8;
-  int v9[2];
-  int v10;
-  int v11;
-  int v12;
-  int v13;
-  int v14;
-  int v15;
-  __int64 v16;
+  __int64 unused_local;
+  int scratch_buffer[2];
+  int callee_output_word;
+  int scratch_buffer_2[2];
+  int unrecovered_register_value;
+  int unrecovered_register_value_2;
+  int scratch_buffer_3[2];
+  int unrecovered_register_value_3;
+  int unrecovered_register_value_4;
+  int unrecovered_register_value_5;
+  int unrecovered_register_value_6;
+  int unrecovered_register_value_7;
+  int unrecovered_register_value_8;
+  __int64 unused_local_2;
 
-  sub_1401DB040((__int64)v9, (__int64)a2, 8u);
-  sub_1401DB040((__int64)v6, (__int64)v9, 4u);
-  sub_1401DB040((__int64)v4, (__int64)v6, 2u);
-  sub_1401DB040((__int64)&v5, (__int64)v4, 1u);
-  sub_1401DB0B0(a1, v4[0], v5, (__int64)&unk_1402826A0);
-  sub_1401DB0B0(a1, v6[0], v4[0], (__int64)&unk_1402825F0);
-  sub_1401DB0B0(a1, v9[0], v6[0], (__int64)&unk_140282540);
-  sub_1401DB0B0(a1, *a2, v9[0], (__int64)&unk_1402824A0);
-  sub_1401DB0B0(a1, a2[2], v9[1], (__int64)&unk_1402824A0);
-  sub_1401DB0B0(a1, v10, v6[1], (__int64)&unk_140282540);
-  sub_1401DB0B0(a1, a2[4], v10, (__int64)&unk_1402824A0);
-  sub_1401DB0B0(a1, a2[6], v11, (__int64)&unk_1402824A0);
-  sub_1401DB0B0(a1, v7, v4[1], (__int64)&unk_1402825F0);
-  sub_1401DB0B0(a1, v12, v7, (__int64)&unk_140282540);
-  sub_1401DB0B0(a1, a2[8], v12, (__int64)&unk_1402824A0);
-  sub_1401DB0B0(a1, a2[10], v13, (__int64)&unk_1402824A0);
-  sub_1401DB0B0(a1, v14, v8, (__int64)&unk_140282540);
-  sub_1401DB0B0(a1, a2[12], v14, (__int64)&unk_1402824A0);
-  return sub_1401DB0B0(a1, a2[14], v15, (__int64)&unk_1402824A0); /* 0x1401C2318: the result of this call is still in rax at the exit */
+  sub_1401DB040((__int64)scratch_buffer_3, (__int64)a2, 8u);
+  sub_1401DB040((__int64)scratch_buffer_2, (__int64)scratch_buffer_3, 4u);
+  sub_1401DB040((__int64)scratch_buffer, (__int64)scratch_buffer_2, 2u);
+  sub_1401DB040((__int64)&callee_output_word, (__int64)scratch_buffer, 1u);
+  sub_1401DB0B0(a1, scratch_buffer[0], callee_output_word, (__int64)&unk_1402826A0);
+  sub_1401DB0B0(a1, scratch_buffer_2[0], scratch_buffer[0], (__int64)&unk_1402825F0);
+  sub_1401DB0B0(a1, scratch_buffer_3[0], scratch_buffer_2[0], (__int64)&unk_140282540);
+  sub_1401DB0B0(a1, *a2, scratch_buffer_3[0], (__int64)&unk_1402824A0);
+  sub_1401DB0B0(a1, a2[2], scratch_buffer_3[1], (__int64)&unk_1402824A0);
+  sub_1401DB0B0(a1, unrecovered_register_value_3, scratch_buffer_2[1], (__int64)&unk_140282540);
+  sub_1401DB0B0(a1, a2[4], unrecovered_register_value_3, (__int64)&unk_1402824A0);
+  sub_1401DB0B0(a1, a2[6], unrecovered_register_value_4, (__int64)&unk_1402824A0);
+  sub_1401DB0B0(a1, unrecovered_register_value, scratch_buffer[1], (__int64)&unk_1402825F0);
+  sub_1401DB0B0(a1, unrecovered_register_value_5, unrecovered_register_value, (__int64)&unk_140282540);
+  sub_1401DB0B0(a1, a2[8], unrecovered_register_value_5, (__int64)&unk_1402824A0);
+  sub_1401DB0B0(a1, a2[10], unrecovered_register_value_6, (__int64)&unk_1402824A0);
+  sub_1401DB0B0(a1, unrecovered_register_value_7, unrecovered_register_value_2, (__int64)&unk_140282540);
+  sub_1401DB0B0(a1, a2[12], unrecovered_register_value_7, (__int64)&unk_1402824A0);
+  return sub_1401DB0B0(a1, a2[14], unrecovered_register_value_8, (__int64)&unk_1402824A0); /* 0x1401C2318: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401C2340) ----------------------------------------------------
 __int64            sub_1401C2340(__int16 *a1, _DWORD *a2, int a3)
 {
-  __int64 v4;
-  __int16 v5;
-  __int16 v6;
-  __int16 *v7;
-  __int16 *v8;
-  __int16 *v9;
-  __int16 *v10;
-  __int16 *v11;
-  __int16 *v12;
-  __int16 *v13;
-  __int16 *v14;
-  __int16 *v15;
-  __int16 *v16;
-  __int16 *v17;
-  __int16 *v18;
-  __int16 *v19;
-  __int16 *v20;
-  __int16 v21;
-  __int16 v22;
-  __int16 v23;
-  __int16 v24;
-  __int16 v25;
-  __int16 v26;
-  __int16 v27;
-  __int16 v28;
-  __int16 v29;
-  __int16 v30;
-  __int16 v31;
-  __int16 v32;
-  __int64 v33;
+  __int64 unused_local;
+  __int16 callee_output_word;
+  __int16 callee_output_word_2;
+  __int16 *unused_written_slot;
+  __int16 *unused_written_slot_2;
+  __int16 *unused_written_slot_3;
+  __int16 *unused_written_slot_4;
+  __int16 *unused_written_slot_5;
+  __int16 *unused_written_slot_6;
+  __int16 *unused_written_slot_7;
+  __int16 *unused_written_slot_8;
+  __int16 *unused_written_slot_9;
+  __int16 *unused_written_slot_10;
+  __int16 *unused_written_slot_11;
+  __int16 *unused_written_slot_12;
+  __int16 *unused_written_slot_13;
+  __int16 *unused_written_slot_14;
+  __int16 callee_output_word_3;
+  __int16 callee_output_word_4;
+  __int16 callee_output_word_5;
+  __int16 callee_output_word_6;
+  __int16 callee_output_word_7;
+  __int16 callee_output_word_8;
+  __int16 callee_output_word_9;
+  __int16 callee_output_word_10;
+  __int16 callee_output_word_11;
+  __int16 callee_output_word_12;
+  __int16 callee_output_word_13;
+  __int16 callee_output_word_14;
+  __int64 unused_local_2;
 
-  sub_1401DB110(&v5, &v6, a2, a3, (__int64)&unk_1402826A0);
-  v7 = &v21;
-  sub_1401DB110(&v21, &v22, a2, v5, (__int64)&unk_1402825F0);
-  v8 = &v25;
-  sub_1401DB110(&v25, &v26, a2, v21, (__int64)&unk_140282540);
-  v9 = a1;
-  sub_1401DB110(a1, a1 + 1, a2, v25, (__int64)&unk_1402824A0);
-  v10 = a1 + 2;
-  sub_1401DB110(a1 + 2, a1 + 3, a2, v26, (__int64)&unk_1402824A0);
-  v11 = &v27;
-  sub_1401DB110(&v27, &v28, a2, v22, (__int64)&unk_140282540);
-  v12 = a1 + 4;
-  sub_1401DB110(a1 + 4, a1 + 5, a2, v27, (__int64)&unk_1402824A0);
-  v13 = a1 + 6;
-  sub_1401DB110(a1 + 6, a1 + 7, a2, v28, (__int64)&unk_1402824A0);
-  v14 = &v23;
-  sub_1401DB110(&v23, &v24, a2, v6, (__int64)&unk_1402825F0);
-  v15 = &v29;
-  sub_1401DB110(&v29, &v30, a2, v23, (__int64)&unk_140282540);
-  v16 = a1 + 8;
-  sub_1401DB110(a1 + 8, a1 + 9, a2, v29, (__int64)&unk_1402824A0);
-  v17 = a1 + 10;
-  sub_1401DB110(a1 + 10, a1 + 11, a2, v30, (__int64)&unk_1402824A0);
-  v18 = &v31;
-  sub_1401DB110(&v31, &v32, a2, v24, (__int64)&unk_140282540);
-  v19 = a1 + 12;
-  sub_1401DB110(a1 + 12, a1 + 13, a2, v31, (__int64)&unk_1402824A0);
-  v20 = a1 + 14;
-  return sub_1401DB110(a1 + 14, a1 + 15, a2, v32, (__int64)&unk_1402824A0); /* 0x1401C294D: the result of this call is still in rax at the exit */
+  sub_1401DB110(&callee_output_word, &callee_output_word_2, a2, a3, (__int64)&unk_1402826A0);
+  unused_written_slot = &callee_output_word_3;
+  sub_1401DB110(&callee_output_word_3, &callee_output_word_4, a2, callee_output_word, (__int64)&unk_1402825F0);
+  unused_written_slot_2 = &callee_output_word_7;
+  sub_1401DB110(&callee_output_word_7, &callee_output_word_8, a2, callee_output_word_3, (__int64)&unk_140282540);
+  unused_written_slot_3 = a1;
+  sub_1401DB110(a1, a1 + 1, a2, callee_output_word_7, (__int64)&unk_1402824A0);
+  unused_written_slot_4 = a1 + 2;
+  sub_1401DB110(a1 + 2, a1 + 3, a2, callee_output_word_8, (__int64)&unk_1402824A0);
+  unused_written_slot_5 = &callee_output_word_9;
+  sub_1401DB110(&callee_output_word_9, &callee_output_word_10, a2, callee_output_word_4, (__int64)&unk_140282540);
+  unused_written_slot_6 = a1 + 4;
+  sub_1401DB110(a1 + 4, a1 + 5, a2, callee_output_word_9, (__int64)&unk_1402824A0);
+  unused_written_slot_7 = a1 + 6;
+  sub_1401DB110(a1 + 6, a1 + 7, a2, callee_output_word_10, (__int64)&unk_1402824A0);
+  unused_written_slot_8 = &callee_output_word_5;
+  sub_1401DB110(&callee_output_word_5, &callee_output_word_6, a2, callee_output_word_2, (__int64)&unk_1402825F0);
+  unused_written_slot_9 = &callee_output_word_11;
+  sub_1401DB110(&callee_output_word_11, &callee_output_word_12, a2, callee_output_word_5, (__int64)&unk_140282540);
+  unused_written_slot_10 = a1 + 8;
+  sub_1401DB110(a1 + 8, a1 + 9, a2, callee_output_word_11, (__int64)&unk_1402824A0);
+  unused_written_slot_11 = a1 + 10;
+  sub_1401DB110(a1 + 10, a1 + 11, a2, callee_output_word_12, (__int64)&unk_1402824A0);
+  unused_written_slot_12 = &callee_output_word_13;
+  sub_1401DB110(&callee_output_word_13, &callee_output_word_14, a2, callee_output_word_6, (__int64)&unk_140282540);
+  unused_written_slot_13 = a1 + 12;
+  sub_1401DB110(a1 + 12, a1 + 13, a2, callee_output_word_13, (__int64)&unk_1402824A0);
+  unused_written_slot_14 = a1 + 14;
+  return sub_1401DB110(a1 + 14, a1 + 15, a2, callee_output_word_14, (__int64)&unk_1402824A0); /* 0x1401C294D: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401C2970) ----------------------------------------------------
 __int64            sub_1401C2970(char *a1, __int64 a2, char *a3, int a4, unsigned int a5)
 {
   __int64 result;
-  int v6;
+  int shifted_bits;
   signed int i;
-  int v8;
-  char v9;
-  char v10;
-  char v11;
-  char v12;
-  char v13;
-  char v14;
-  char v15;
-  char v16;
-  char v17;
+  int scaled_index;
+  char table_value;
+  char cached_table_value;
+  char input_byte;
+  char saved_input_byte;
+  char input_byte_2;
+  char saved_input_byte_2;
+  char cached_input_byte;
+  char integer_difference;
+  char cached_integer_difference;
 
   for ( i = 0; ; ++i )
   {
@@ -766,42 +766,42 @@ __int64            sub_1401C2970(char *a1, __int64 a2, char *a3, int a4, unsigne
     if ( a1[i] <= 63 )
     {
       if ( a1[i] >= 0 )
-        v9 = a1[i];
+        table_value = a1[i];
       else
-        v9 = 0;
-      v10 = v9;
+        table_value = 0;
+      cached_table_value = table_value;
     }
     else
     {
-      v10 = 63;
+      cached_table_value = 63;
     }
-    a1[i] = v10;
+    a1[i] = cached_table_value;
     if ( i || a4 )
     {
       a1[i] -= *a3;
-      v8 = *a3 + 8;
-      if ( a1[i] > v8 )
-        a1[i] = ((a1[i] - v8 + 1) >> 1) + v8;
+      scaled_index = *a3 + 8;
+      if ( a1[i] > scaled_index )
+        a1[i] = ((a1[i] - scaled_index + 1) >> 1) + scaled_index;
       if ( a1[i] <= 36 )
       {
         if ( a1[i] >= -4 )
-          v16 = a1[i];
+          integer_difference = a1[i];
         else
-          v16 = -4;
-        v17 = v16;
+          integer_difference = -4;
+        cached_integer_difference = integer_difference;
       }
       else
       {
-        v17 = 36;
+        cached_integer_difference = 36;
       }
-      a1[i] = v17;
-      if ( a1[i] <= v8 )
+      a1[i] = cached_integer_difference;
+      if ( a1[i] <= scaled_index )
       {
         *a3 += a1[i];
       }
       else
       {
-        *a3 += 2 * a1[i] - v8;
+        *a3 += 2 * a1[i] - scaled_index;
         *a3 = sub_1401BE320(*a3, 0x3Fu);
       }
       a1[i] += 4;
@@ -813,38 +813,38 @@ __int64            sub_1401C2970(char *a1, __int64 a2, char *a3, int a4, unsigne
         if ( *a1 <= 63 )
         {
           if ( *a1 >= *a3 - 4 )
-            v13 = *a1;
+            input_byte_2 = *a1;
           else
-            v13 = *a3 - 4;
-          v14 = v13;
+            input_byte_2 = *a3 - 4;
+          saved_input_byte_2 = input_byte_2;
         }
         else
         {
-          v14 = 63;
+          saved_input_byte_2 = 63;
         }
-        v15 = v14;
+        cached_input_byte = saved_input_byte_2;
       }
       else
       {
         if ( *a1 <= *a3 - 4 )
         {
           if ( *a1 >= 63 )
-            v11 = *a1;
+            input_byte = *a1;
           else
-            v11 = 63;
-          v12 = v11;
+            input_byte = 63;
+          saved_input_byte = input_byte;
         }
         else
         {
-          v12 = *a3 - 4;
+          saved_input_byte = *a3 - 4;
         }
-        v15 = v12;
+        cached_input_byte = saved_input_byte;
       }
-      *a1 = v15;
+      *a1 = cached_input_byte;
       *a3 = *a1;
     }
-    v6 = sub_1401BE360((unsigned int)((1907825LL * *a3) >> 16) + 2090, 0xF7Fu);
-    *(_DWORD *)(a2 + 4LL * i) = sub_1401BC3D0(v6);
+    shifted_bits = sub_1401BE360((unsigned int)((1907825LL * *a3) >> 16) + 2090, 0xF7Fu);
+    *(_DWORD *)(a2 + 4LL * i) = sub_1401BC3D0(shifted_bits);
   }
   return result;
 }
@@ -853,13 +853,13 @@ __int64            sub_1401C2970(char *a1, __int64 a2, char *a3, int a4, unsigne
 __int64            sub_1401C2D70(__int64 a1, char *a2, char *a3, int a4, unsigned int a5)
 {
   __int64 result;
-  char v6;
-  int v7;
+  char scaled_index;
+  int shifted_bits;
   signed int i;
-  int v9;
-  int v10;
-  char v11;
-  char v12;
+  int integer_difference;
+  int scaled_index_2;
+  char input_byte;
+  char saved_input_byte;
 
   for ( i = 0; ; ++i )
   {
@@ -868,13 +868,13 @@ __int64            sub_1401C2D70(__int64 a1, char *a2, char *a3, int a4, unsigne
       break;
     if ( i || a4 )
     {
-      v9 = a2[i] - 4;
-      v10 = *a3 + 8;
-      if ( v9 <= v10 )
-        v6 = v9 + *a3;
+      integer_difference = a2[i] - 4;
+      scaled_index_2 = *a3 + 8;
+      if ( integer_difference <= scaled_index_2 )
+        scaled_index = integer_difference + *a3;
       else
-        v6 = 2 * v9 - v10 + *a3;
-      *a3 = v6;
+        scaled_index = 2 * integer_difference - scaled_index_2 + *a3;
+      *a3 = scaled_index;
     }
     else
     {
@@ -883,18 +883,18 @@ __int64            sub_1401C2D70(__int64 a1, char *a2, char *a3, int a4, unsigne
     if ( *a3 <= 63 )
     {
       if ( *a3 >= 0 )
-        v11 = *a3;
+        input_byte = *a3;
       else
-        v11 = 0;
-      v12 = v11;
+        input_byte = 0;
+      saved_input_byte = input_byte;
     }
     else
     {
-      v12 = 63;
+      saved_input_byte = 63;
     }
-    *a3 = v12;
-    v7 = sub_1401BE360((unsigned int)((1907825LL * *a3) >> 16) + 2090, 0xF7Fu);
-    *(_DWORD *)(a1 + 4LL * i) = sub_1401BC3D0(v7);
+    *a3 = saved_input_byte;
+    shifted_bits = sub_1401BE360((unsigned int)((1907825LL * *a3) >> 16) + 2090, 0xF7Fu);
+    *(_DWORD *)(a1 + 4LL * i) = sub_1401BC3D0(shifted_bits);
   }
   return result;
 }
@@ -903,12 +903,12 @@ __int64            sub_1401C2D70(__int64 a1, char *a2, char *a3, int a4, unsigne
 __int64            sub_1401C2EE0(__int64 a1, int a2)
 {
   int i;
-  unsigned int v4;
+  unsigned int shifted_bits;
 
-  v4 = 0;
+  shifted_bits = 0;
   for ( i = 0; i < a2; ++i )
-    v4 = (v4 << 8) + *(char *)(a1 + i);
-  return v4;
+    shifted_bits = (shifted_bits << 8) + *(char *)(a1 + i);
+  return shifted_bits;
 }
 
 //----- (00000001401C2F40) ----------------------------------------------------
@@ -945,81 +945,81 @@ __int64            sub_1401C2FD0(
   int m;
   int j;
   int k;
-  int v14;
-  unsigned int v15;
-  int v16;
-  int v17;
-  int v18;
-  int v19;
-  int v20;
-  int v21;
-  int v22;
-  int v23;
-  int v24;
-  int v25;
-  int v26;
-  int v27;
+  int cached_integer_sum;
+  unsigned int shifted_bits;
+  int cached_integer_sum_2;
+  int loaded_word;
+  int callee_output_word;
+  int integer_sum;
+  int callee_output_word_2;
+  int integer_sum_2;
+  int callee_output_word_3;
+  int call_result;
+  int cached_integer_sum_3;
+  int saved_loaded_word;
+  int table_value;
+  int call_result_2;
   __m128i Src;
-  _DWORD *v29;
-  char *v30;
-  __int64 v31;
-  __int64 v32;
+  _DWORD *running_total;
+  char *byte_cursor;
+  __int64 scaled_index;
+  __int64 scaled_index_2;
 
-  v24 = 0x7FFFFFFF;
-  v25 = 0;
+  cached_integer_sum_3 = 0x7FFFFFFF;
+  saved_loaded_word = 0;
   for ( i = 0; i < 3; ++i )
   {
-    v31 = (__int64)*(&off_140282688 + i);
-    v30 = (char *)*(&off_140282768 + i);
-    v32 = (__int64)*(&off_140282780 + i);
-    v26 = byte_1402822CC[i];
+    scaled_index = (__int64)*(&off_140282688 + i);
+    byte_cursor = (char *)*(&off_140282768 + i);
+    scaled_index_2 = (__int64)*(&off_140282780 + i);
+    table_value = byte_1402822CC[i];
     SR_VEC_LANES(128, Src, i64)[1] = a6;
-    v29 = a7;
-    v14 = 0;
-    v16 = 0;
-    v17 = *a4;
+    running_total = a7;
+    cached_integer_sum = 0;
+    cached_integer_sum_2 = 0;
+    loaded_word = *a4;
     for ( j = 0; j < a9; ++j )
     {
-      v27 = sub_1401BC3D0(5333 - v17 + 896) - 51;
-      sub_1401C3400(&SR_VEC_LANES(128, Src, i8)[j], &v18, &v20, &v22, (_DWORD *)SR_VEC_LANES(128, Src, i64)[1], v29, v30, v32, v31, a8, v27, v26);
-      if ( v18 + v14 >= 0 )
-        v19 = v18 + v14;
+      call_result_2 = sub_1401BC3D0(5333 - loaded_word + 896) - 51;
+      sub_1401C3400(&SR_VEC_LANES(128, Src, i8)[j], &callee_output_word, &callee_output_word_2, &callee_output_word_3, (_DWORD *)SR_VEC_LANES(128, Src, i64)[1], running_total, byte_cursor, scaled_index_2, scaled_index, a8, call_result_2, table_value);
+      if ( callee_output_word + cached_integer_sum >= 0 )
+        integer_sum = callee_output_word + cached_integer_sum;
       else
-        v19 = 0x7FFFFFFF;
-      v14 = v19;
-      if ( v20 + v16 >= 0 )
-        v21 = v20 + v16;
+        integer_sum = 0x7FFFFFFF;
+      cached_integer_sum = integer_sum;
+      if ( callee_output_word_2 + cached_integer_sum_2 >= 0 )
+        integer_sum_2 = callee_output_word_2 + cached_integer_sum_2;
       else
-        v21 = 0x7FFFFFFF;
-      v16 = v21;
-      if ( (int)(v17 + sub_1401BC2A0(v22 + 51) - 896) >= 0 )
-        v23 = v17 + sub_1401BC2A0(v22 + 51) - 896;
+        integer_sum_2 = 0x7FFFFFFF;
+      cached_integer_sum_2 = integer_sum_2;
+      if ( (int)(loaded_word + sub_1401BC2A0(callee_output_word_3 + 51) - 896) >= 0 )
+        call_result = loaded_word + sub_1401BC2A0(callee_output_word_3 + 51) - 896;
       else
-        v23 = 0;
-      v17 = v23;
+        call_result = 0;
+      loaded_word = call_result;
       SR_VEC_LANES(128, Src, i64)[1] += 100;
-      v29 += 5;
+      running_total += 5;
     }
-    if ( v16 <= v24 )
+    if ( cached_integer_sum_2 <= cached_integer_sum_3 )
     {
-      v24 = v16;
+      cached_integer_sum_3 = cached_integer_sum_2;
       *a3 = i;
       crt_memcpy(a2, &Src, a9);
-      v25 = v17;
+      saved_loaded_word = loaded_word;
     }
   }
-  v30 = (char *)*(&off_140282768 + (char)*a3);
+  byte_cursor = (char *)*(&off_140282768 + (char)*a3);
   for ( k = 0; k < a9; ++k )
   {
     for ( m = 0; m < 5; ++m )
-      *(_WORD *)(a1 + 2LL * (m + 5 * k)) = v30[5 * SR_VEC_PTR_LANES(128, a2, i8)[k] + m] << 7;
+      *(_WORD *)(a1 + 2LL * (m + 5 * k)) = byte_cursor[5 * SR_VEC_PTR_LANES(128, a2, i8)[k] + m] << 7;
   }
   if ( a9 == 2 )
-    v15 = v14 >> 1;
+    shifted_bits = cached_integer_sum >> 1;
   else
-    v15 = v14 >> 2;
-  *a4 = v25;
-  result = (unsigned int)(-3 * (__int16)(sub_1401BC2A0(v15) - 1920));
+    shifted_bits = cached_integer_sum >> 2;
+  *a4 = saved_loaded_word;
+  result = (unsigned int)(-3 * (__int16)(sub_1401BC2A0(shifted_bits) - 1920));
   *a5 = result;
   return result;
 }
@@ -1039,64 +1039,64 @@ __int64            sub_1401C3400(
         int a11,
         int a12)
 {
-  __int64 v13;
-  int v14;
-  int v15;
-  char *v16;
+  __int64 unused_local;
+  int scaled_index;
+  int running_total;
+  char *running_total_2;
   int i;
-  int v18;
-  int v19;
-  int v20;
-  int v21;
-  int v22;
-  int v23;
-  int v24;
-  int v25;
-  int v26;
-  int v27;
-  int v28;
-  __int64 v29;
+  int loaded_word;
+  int integer_difference;
+  int loaded_word_2;
+  int shifted_bits;
+  int unused_written_slot;
+  int call_result;
+  int scaled_index_2;
+  int scaled_index_3;
+  int scaled_index_4;
+  int scaled_index_5;
+  int scaled_index_6;
+  __int64 unused_local_2;
 
-  v24 = -128 * *a6;
-  v25 = -128 * a6[1];
-  v26 = -128 * a6[2];
-  v27 = -128 * a6[3];
-  v28 = -128 * a6[4];
+  scaled_index_2 = -128 * *a6;
+  scaled_index_3 = -128 * a6[1];
+  scaled_index_4 = -128 * a6[2];
+  scaled_index_5 = -128 * a6[3];
+  scaled_index_6 = -128 * a6[4];
   *a3 = 0x7FFFFFFF;
   *a2 = 0x7FFFFFFF;
-  v16 = a7;
+  running_total_2 = a7;
   *a1 = 0;
   for ( i = 0; i < a12; ++i )
   {
-    v18 = *(unsigned __int8 *)(a8 + i);
-    v15 = 32801;
-    if ( v18 - a11 <= 0 )
-      v19 = 0;
+    loaded_word = *(unsigned __int8 *)(a8 + i);
+    running_total = 32801;
+    if ( loaded_word - a11 <= 0 )
+      integer_difference = 0;
     else
-      v19 = v18 - a11;
-    v21 = v19 << 11;
-    v14 = *v16 * *a5 + 2 * (v16[4] * a5[4] + v16[3] * a5[3] + v16[2] * a5[2] + v24 + v16[1] * a5[1]);
-    v15 += ((v16[3] * (__int64)(v16[3] * a5[18] + 2 * (v27 + v16[4] * a5[19]))) >> 16)
-         + ((v16[2] * (__int64)(v16[2] * a5[12] + 2 * (v16[4] * a5[14] + v26 + v16[3] * a5[13]))) >> 16)
-         + ((v16[1] * (__int64)(v16[1] * a5[6] + 2 * (v16[4] * a5[9] + v16[3] * a5[8] + v25 + v16[2] * a5[7]))) >> 16)
-         + ((*v16 * (__int64)v14) >> 16);
-    v14 = 2 * v28;
-    v14 = v16[4] * a5[24] + 2 * v28;
-    v15 += (v16[4] * (__int64)v14) >> 16;
-    if ( v15 >= 0 )
+      integer_difference = loaded_word - a11;
+    shifted_bits = integer_difference << 11;
+    scaled_index = *running_total_2 * *a5 + 2 * (running_total_2[4] * a5[4] + running_total_2[3] * a5[3] + running_total_2[2] * a5[2] + scaled_index_2 + running_total_2[1] * a5[1]);
+    running_total += ((running_total_2[3] * (__int64)(running_total_2[3] * a5[18] + 2 * (scaled_index_5 + running_total_2[4] * a5[19]))) >> 16)
+         + ((running_total_2[2] * (__int64)(running_total_2[2] * a5[12] + 2 * (running_total_2[4] * a5[14] + scaled_index_4 + running_total_2[3] * a5[13]))) >> 16)
+         + ((running_total_2[1] * (__int64)(running_total_2[1] * a5[6] + 2 * (running_total_2[4] * a5[9] + running_total_2[3] * a5[8] + scaled_index_3 + running_total_2[2] * a5[7]))) >> 16)
+         + ((*running_total_2 * (__int64)scaled_index) >> 16);
+    scaled_index = 2 * scaled_index_6;
+    scaled_index = running_total_2[4] * a5[24] + 2 * scaled_index_6;
+    running_total += (running_total_2[4] * (__int64)scaled_index) >> 16;
+    if ( running_total >= 0 )
     {
-      v22 = a10;
-      v23 = (__int16)(sub_1401BC2A0(v21 + v15) - 1920) * a10;
-      v20 = v23 + 4 * *(unsigned __int8 *)(a9 + i);
-      if ( v20 <= *a3 )
+      unused_written_slot = a10;
+      call_result = (__int16)(sub_1401BC2A0(shifted_bits + running_total) - 1920) * a10;
+      loaded_word_2 = call_result + 4 * *(unsigned __int8 *)(a9 + i);
+      if ( loaded_word_2 <= *a3 )
       {
-        *a3 = v20;
-        *a2 = v21 + v15;
+        *a3 = loaded_word_2;
+        *a2 = shifted_bits + running_total;
         *a1 = i;
-        *a4 = v18;
+        *a4 = loaded_word;
       }
     }
-    v16 += 5;
+    running_total_2 += 5;
   }
   return 0; /* no caller reads the result */
 }
@@ -1119,116 +1119,116 @@ __int64            sub_1401C3AC0(
         int a14,
         __int16 a15)
 {
-  unsigned __int64 v15;
-  void *v16;
-  unsigned __int64 v17;
-  void *v18;
-  unsigned __int64 v19;
-  void *v20;
-  int v21;
-  int v22;
-  unsigned __int64 v23;
-       __m128i *v24;
-  unsigned __int64 v25;
-       __m128i *v26;
+  unsigned __int64 scaled_index;
+  void *alloca_result;
+  unsigned __int64 scaled_index_2;
+  void *alloca_result_2;
+  unsigned __int64 record_word_offset;
+  void *alloca_result_3;
+  int integer_difference;
+  int scaled_index_3;
+  unsigned __int64 byte_count;
+       __m128i *source_buffer;
+  unsigned __int64 byte_count_2;
+       __m128i *source_buffer_2;
   int i;
-  BOOL v29;
-  int v30;
-  int v31;
-  int v32;
-  int v33;
-  int v34;
-  __int64 v35;
-  int *v36;
-  __int16 *v37;
-  int *v38;
-  int *v39;
-  _WORD *v40;
-  __int16 *v41;
-  __int16 *v42;
-  void *v43;
-  void *v44;
-  __int64 v45;
+  BOOL comparison_result;
+  int integer_difference_2;
+  int option_flags;
+  int loaded_word;
+  int shifted_bits;
+  int table_value;
+  __int64 running_total;
+  int *saved_alloca_result;
+  __int16 *shifted_bits_2;
+  int *saved_alloca_result_2;
+  int *saved_alloca_result_3;
+  _WORD *record_pointer;
+  __int16 *record_pointer_2;
+  __int16 *record_pointer_3;
+  void *unused_written_slot;
+  void *unused_written_slot_2;
+  __int64 unused_local;
 
   SR_VEC_LANES(128, a2[271], i32)[1] = a3[34];
-  v32 = SR_VEC_LANES(128, a2[270], i32)[2];
-  v33 = word_1402827F8[2 * (a3[29] >> 1) + a3[30]];
-  v29 = a3[31] != 4;
-  v15 = 4LL * (a1[1146] + a1[1148]) + 15;
-  if ( v15 <= 4LL * (a1[1146] + a1[1148]) )
-    v15 = 0xFFFFFFFFFFFFFF0LL;
-  v16 = alloca(v15 & 0xFFFFFFFFFFFFFFF0uLL);
-  v38 = v16;
-  v17 = 2LL * (a1[1146] + a1[1148]) + 15;
-  if ( v17 <= 2LL * (a1[1146] + a1[1148]) )
-    v17 = 0xFFFFFFFFFFFFFF0LL;
-  v18 = alloca(v17 & 0xFFFFFFFFFFFFFFF0uLL);
-  v36 = v18;
-  v19 = 4LL * (int)a1[1147] + 15;
-  if ( v19 <= 4LL * (int)a1[1147] )
-    v19 = 0xFFFFFFFFFFFFFF0LL;
-  v20 = alloca(v19 & 0xFFFFFFFFFFFFFFF0uLL);
-  v39 = v20;
+  loaded_word = SR_VEC_LANES(128, a2[270], i32)[2];
+  shifted_bits = word_1402827F8[2 * (a3[29] >> 1) + a3[30]];
+  comparison_result = a3[31] != 4;
+  scaled_index = 4LL * (a1[1146] + a1[1148]) + 15;
+  if ( scaled_index <= 4LL * (a1[1146] + a1[1148]) )
+    scaled_index = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_2 = alloca_result;
+  scaled_index_2 = 2LL * (a1[1146] + a1[1148]) + 15;
+  if ( scaled_index_2 <= 2LL * (a1[1146] + a1[1148]) )
+    scaled_index_2 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_2 = alloca(scaled_index_2 & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result_2;
+  record_word_offset = 4LL * (int)a1[1147] + 15;
+  if ( record_word_offset <= 4LL * (int)a1[1147] )
+    record_word_offset = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_3 = alloca(record_word_offset & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_3 = alloca_result_3;
   SR_VEC_LANES(128, a2[271], i32)[0] = a1[1148];
   SR_VEC_LANES(128, a2[270], i32)[3] = a1[1148];
-  v35 = (__int64)SR_VEC_PTR_LANES(128, a2, i64) + 2 * a1[1148];
+  running_total = (__int64)SR_VEC_PTR_LANES(128, a2, i64) + 2 * a1[1148];
   for ( i = 0; i < a1[1145]; ++i )
   {
-    v37 = (__int16 *)(a6 + 32LL * ((1 - v29) | (i >> 1)));
-    v42 = (__int16 *)(a7 + 10LL * i);
-    v41 = (__int16 *)(a8 + 48LL * i);
-    v31 = *(int *)(a9 + 4LL * i) >> 2;
-    v31 |= *(int *)(a9 + 4LL * i) >> 1 << 16;
+    shifted_bits_2 = (__int16 *)(a6 + 32LL * ((1 - comparison_result) | (i >> 1)));
+    record_pointer_3 = (__int16 *)(a7 + 10LL * i);
+    record_pointer_2 = (__int16 *)(a8 + 48LL * i);
+    option_flags = *(int *)(a9 + 4LL * i) >> 2;
+    option_flags |= *(int *)(a9 + 4LL * i) >> 1 << 16;
     SR_VEC_LANES(128, a2[271], i32)[3] = 0;
     if ( a3[29] == 2 )
     {
-      v32 = *(_DWORD *)(a13 + 4LL * i);
-      if ( ((3 - 2 * v29) & i) == 0 )
+      loaded_word = *(_DWORD *)(a13 + 4LL * i);
+      if ( ((3 - 2 * comparison_result) & i) == 0 )
       {
-        v30 = a1[1148] - v32 - a1[1160] - 2;
-        v21 = a1[1148] - v30;
-        v22 = a1[1147] * i;
-        v40 = (_WORD *)v36 + v30;
-        sub_1401BBB40(v40, (__int64)SR_VEC_PTR_LANES(128, a2, i64) + 2 * v22 + 2 * v30, v37, v21, a1[1160]);
+        integer_difference_2 = a1[1148] - loaded_word - a1[1160] - 2;
+        integer_difference = a1[1148] - integer_difference_2;
+        scaled_index_3 = a1[1147] * i;
+        record_pointer = (_WORD *)saved_alloca_result + integer_difference_2;
+        sub_1401BBB40(record_pointer, (__int64)SR_VEC_PTR_LANES(128, a2, i64) + 2 * scaled_index_3 + 2 * integer_difference_2, shifted_bits_2, integer_difference, a1[1160]);
         SR_VEC_LANES(128, a2[271], i32)[3] = 1;
         SR_VEC_LANES(128, a2[270], i32)[3] = a1[1148];
       }
     }
-    sub_1401D7560((__int64)a1, a2, a4, (__int64)v39, (__int64)v36, (__int64)v38, i, a15, a12, a13, a3[29]);
-    v34 = a3[29];
+    sub_1401D7560((__int64)a1, a2, a4, (__int64)saved_alloca_result_3, (__int64)saved_alloca_result, (__int64)saved_alloca_result_2, i, a15, a12, a13, a3[29]);
+    table_value = a3[29];
     sub_1401D7910(
       a2,
-      v34,
-      (__int64)v39,
+      table_value,
+      (__int64)saved_alloca_result_3,
       a5,
-      v35,
-      (__int64)v38,
-      v37,
-      v42,
-      v41,
-      v32,
-      v31,
+      running_total,
+      (__int64)saved_alloca_result_2,
+      shifted_bits_2,
+      record_pointer_3,
+      record_pointer_2,
+      loaded_word,
+      option_flags,
       *(_DWORD *)(a10 + 4LL * i),
       *(_DWORD *)(a11 + 4LL * i),
       *(_DWORD *)(a12 + 4LL * i),
       a14,
-      v33,
+      shifted_bits,
       a1[1147],
       a1[1159],
       a1[1160]);
     a4 += 2LL * (int)a1[1147];
     a5 += (int)a1[1147];
-    v35 += 2LL * (int)a1[1147];
+    running_total += 2LL * (int)a1[1147];
   }
   SR_VEC_LANES(128, a2[270], i32)[2] = *(_DWORD *)(a13 + 4LL * (a1[1145] - 1));
-  v23 = 2LL * (int)a1[1148];
-  v24 = (__m128i *)((char *)a2 + 2 * a1[1146]);
-  v43 = a2;
-  crt_memcpy(a2, v24, v23);
-  v25 = 4LL * (int)a1[1148];
-  v26 = (__m128i *)((char *)a2 + 4 * a1[1146] + 1280);
-  v44 = &a2[80];
-  return crt_memcpy(a2 + 80, v26, v25); /* 0x1401C40FB: the result of this call is still in rax at the exit */
+  byte_count = 2LL * (int)a1[1148];
+  source_buffer = (__m128i *)((char *)a2 + 2 * a1[1146]);
+  unused_written_slot = a2;
+  crt_memcpy(a2, source_buffer, byte_count);
+  byte_count_2 = 4LL * (int)a1[1148];
+  source_buffer_2 = (__m128i *)((char *)a2 + 4 * a1[1146] + 1280);
+  unused_written_slot_2 = &a2[80];
+  return crt_memcpy(a2 + 80, source_buffer_2, byte_count_2); /* 0x1401C40FB: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401C4120) ----------------------------------------------------
@@ -1249,170 +1249,170 @@ __int64            sub_1401C4120(
         __int64 a14,
         __int64 a15)
 {
-  unsigned __int64 v15;
-  __int64 v16;
-  void *v17;
-  unsigned __int64 v18;
-  void *v19;
-  unsigned __int64 v20;
-  void *v21;
-  unsigned __int64 v22;
-  void *v23;
-  void *v24;
-  int v25;
-  int v26;
-  unsigned __int64 v27;
-       __m128i *v28;
-  unsigned __int64 v29;
-       __m128i *v30;
-  int v32;
+  unsigned __int64 record_word_offset;
+  __int64 integer_sum;
+  void *alloca_result;
+  unsigned __int64 scaled_index;
+  void *alloca_result_2;
+  unsigned __int64 scaled_index_2;
+  void *alloca_result_3;
+  unsigned __int64 record_word_offset_2;
+  void *alloca_result_4;
+  void *alloca_result_5;
+  int integer_difference;
+  int scaled_index_3;
+  unsigned __int64 byte_count;
+       __m128i *source_buffer;
+  unsigned __int64 byte_count_2;
+       __m128i *source_buffer_2;
+  int unused_local;
   int i;
   int j;
-  int v35;
-  int v36;
-  __m128i *v37;
-  int *v38;
-  int v39;
-  int v40;
-  int v41;
-  int v42;
-  BOOL v43;
-  int v44;
-  int v45;
-  int v46;
-  int v47;
-  int v48;
-  int v49;
-  int v50;
-  __int64 v51;
-  __int64 v52;
-  int v53;
-  int v54;
-  int *v55;
-  __int16 *v56;
+  int running_total;
+  int loaded_word;
+  __m128i *destination_buffer;
+  int *saved_alloca_result;
+  int cached_j;
+  int loaded_word_2;
+  int scaled_index_4;
+  int iteration_count;
+  BOOL comparison_result;
+  int integer_difference_2;
+  int option_flags;
+  int selection_flag;
+  int shifted_bits;
+  int shifted_bits_2;
+  int saved_shifted_bits;
+  int shifted_bits_3;
+  __int64 packed_word_bits;
+  __int64 running_total_2;
+  int unused_written_slot;
+  int shifted_bits_4;
+  int *saved_alloca_result_2;
+  __int16 *shifted_bits_5;
   int *p_i;
-  int *v58;
-  _WORD *v59;
-  __int16 *v60;
-  __int16 *v61;
-  int *v62;
-  __m128i *v63;
-  __m128i *v64;
-  __int64 v65;
+  int *saved_alloca_result_3;
+  _WORD *record_pointer;
+  __int16 *record_pointer_2;
+  __int16 *record_pointer_3;
+  int *saved_alloca_result_4;
+  __m128i *unused_written_slot_2;
+  __m128i *unused_written_slot_3;
+  __int64 unused_local_2;
 
-  v40 = SR_VEC_LANES(128, a2[270], i32)[2];
-  v15 = 1300LL * (int)a1[1157];
-  v16 = v15 + 15;
-  if ( v15 + 15 <= v15 )
-    v16 = 0xFFFFFFFFFFFFFF0LL;
-  v17 = alloca(v16 & 0xFFFFFFFFFFFFFFF0uLL);
-  v38 = v17;
+  loaded_word_2 = SR_VEC_LANES(128, a2[270], i32)[2];
+  record_word_offset = 1300LL * (int)a1[1157];
+  integer_sum = record_word_offset + 15;
+  if ( record_word_offset + 15 <= record_word_offset )
+    integer_sum = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(integer_sum & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result;
   crt_memset((void *)(uintptr_t)(&i), 0, 1300LL * (int)a1[1157]);
   for ( i = 0; i < a1[1157]; ++i )
   {
-    v37 = (__m128i *)&v38[325 * i];
-    SR_VEC_LANES(128, v37[80], i32)[2] = (a3[34] + (_BYTE)i) & 3;
-    SR_VEC_LANES(128, v37[80], i32)[3] = SR_VEC_LANES(128, v37[80], i32)[2];
-    SR_VEC_LANES(128, v37[81], i32)[0] = 0;
-    SR_VEC_LANES(128, v37[80], i32)[0] = SR_VEC_LANES(128, a2[270], i32)[0];
-    SR_VEC_LANES(128, v37[80], i32)[1] = SR_VEC_LANES(128, a2[270], i32)[1];
-    SR_VEC_LANES(128, v37[64], i32)[0] = SR_VEC_LANES(128, a2[79], i32)[a1[1148] + 3];
-    crt_memcpy(v37, a2 + 240, 0x40u);
-    crt_memcpy(v37 + 74, a2 + 264, 0x60u);
+    destination_buffer = (__m128i *)&saved_alloca_result[325 * i];
+    SR_VEC_LANES(128, destination_buffer[80], i32)[2] = (a3[34] + (_BYTE)i) & 3;
+    SR_VEC_LANES(128, destination_buffer[80], i32)[3] = SR_VEC_LANES(128, destination_buffer[80], i32)[2];
+    SR_VEC_LANES(128, destination_buffer[81], i32)[0] = 0;
+    SR_VEC_LANES(128, destination_buffer[80], i32)[0] = SR_VEC_LANES(128, a2[270], i32)[0];
+    SR_VEC_LANES(128, destination_buffer[80], i32)[1] = SR_VEC_LANES(128, a2[270], i32)[1];
+    SR_VEC_LANES(128, destination_buffer[64], i32)[0] = SR_VEC_LANES(128, a2[79], i32)[a1[1148] + 3];
+    crt_memcpy(destination_buffer, a2 + 240, 0x40u);
+    crt_memcpy(destination_buffer + 74, a2 + 264, 0x60u);
   }
-  v54 = word_1402827F8[2 * (a3[29] >> 1) + a3[30]];
-  v46 = 0;
-  v36 = sub_1401BE320(0x28u, a1[1147]);
+  shifted_bits_4 = word_1402827F8[2 * (a3[29] >> 1) + a3[30]];
+  selection_flag = 0;
+  loaded_word = sub_1401BE320(0x28u, a1[1147]);
   if ( a3[29] == 2 )
   {
     for ( i = 0; i < a1[1145]; ++i )
-      v36 = sub_1401BE320(v36, *(_DWORD *)(a13 + 4LL * i) - 3);
+      loaded_word = sub_1401BE320(loaded_word, *(_DWORD *)(a13 + 4LL * i) - 3);
   }
-  else if ( v40 > 0 )
+  else if ( loaded_word_2 > 0 )
   {
-    v36 = sub_1401BE320(v36, v40 - 3);
+    loaded_word = sub_1401BE320(loaded_word, loaded_word_2 - 3);
   }
-  v43 = a3[31] != 4;
-  v18 = 4LL * (a1[1146] + a1[1148]) + 15;
-  if ( v18 <= 4LL * (a1[1146] + a1[1148]) )
-    v18 = 0xFFFFFFFFFFFFFF0LL;
-  v19 = alloca(v18 & 0xFFFFFFFFFFFFFFF0uLL);
-  p_i = v19;
-  v20 = 2LL * (a1[1146] + a1[1148]) + 15;
-  if ( v20 <= 2LL * (a1[1146] + a1[1148]) )
-    v20 = 0xFFFFFFFFFFFFFF0LL;
-  v21 = alloca(v20 & 0xFFFFFFFFFFFFFFF0uLL);
-  v55 = v21;
-  v22 = 4LL * (int)a1[1147] + 15;
-  if ( v22 <= 4LL * (int)a1[1147] )
-    v22 = 0xFFFFFFFFFFFFFF0LL;
-  v23 = alloca(v22 & 0xFFFFFFFFFFFFFFF0uLL);
-  v58 = v23;
-  v24 = alloca(160);
-  v62 = v24;
-  v52 = (__int64)SR_VEC_PTR_LANES(128, a2, i64) + 2 * a1[1148];
+  comparison_result = a3[31] != 4;
+  scaled_index = 4LL * (a1[1146] + a1[1148]) + 15;
+  if ( scaled_index <= 4LL * (a1[1146] + a1[1148]) )
+    scaled_index = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_2 = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+  p_i = alloca_result_2;
+  scaled_index_2 = 2LL * (a1[1146] + a1[1148]) + 15;
+  if ( scaled_index_2 <= 2LL * (a1[1146] + a1[1148]) )
+    scaled_index_2 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_3 = alloca(scaled_index_2 & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_2 = alloca_result_3;
+  record_word_offset_2 = 4LL * (int)a1[1147] + 15;
+  if ( record_word_offset_2 <= 4LL * (int)a1[1147] )
+    record_word_offset_2 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_4 = alloca(record_word_offset_2 & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_3 = alloca_result_4;
+  alloca_result_5 = alloca(160);
+  saved_alloca_result_4 = alloca_result_5;
+  running_total_2 = (__int64)SR_VEC_PTR_LANES(128, a2, i64) + 2 * a1[1148];
   SR_VEC_LANES(128, a2[271], i32)[0] = a1[1148];
   SR_VEC_LANES(128, a2[270], i32)[3] = a1[1148];
-  v42 = 0;
+  iteration_count = 0;
   for ( i = 0; i < a1[1145]; ++i )
   {
-    v56 = (__int16 *)(a6 + 32LL * ((1 - v43) | (i >> 1)));
-    v61 = (__int16 *)(a7 + 10LL * i);
-    v60 = (__int16 *)(a8 + 48LL * i);
-    v45 = a9[i] >> 2;
-    v45 |= a9[i] >> 1 << 16;
+    shifted_bits_5 = (__int16 *)(a6 + 32LL * ((1 - comparison_result) | (i >> 1)));
+    record_pointer_3 = (__int16 *)(a7 + 10LL * i);
+    record_pointer_2 = (__int16 *)(a8 + 48LL * i);
+    option_flags = a9[i] >> 2;
+    option_flags |= a9[i] >> 1 << 16;
     SR_VEC_LANES(128, a2[271], i32)[3] = 0;
     if ( a3[29] == 2 )
     {
-      v40 = *(_DWORD *)(a13 + 4LL * i);
-      if ( ((3 - 2 * v43) & i) == 0 )
+      loaded_word_2 = *(_DWORD *)(a13 + 4LL * i);
+      if ( ((3 - 2 * comparison_result) & i) == 0 )
       {
         if ( i == 2 )
         {
-          v41 = v38[324];
-          v39 = 0;
+          scaled_index_4 = saved_alloca_result[324];
+          cached_j = 0;
           for ( j = 1; j < a1[1157]; ++j )
           {
-            if ( v38[325 * j + 324] < v41 )
+            if ( saved_alloca_result[325 * j + 324] < scaled_index_4 )
             {
-              v41 = v38[325 * j + 324];
-              v39 = j;
+              scaled_index_4 = saved_alloca_result[325 * j + 324];
+              cached_j = j;
             }
           }
           for ( j = 0; j < a1[1157]; ++j )
           {
-            if ( j != v39 )
-              v38[325 * j + 324] += 0x7FFFFFF;
+            if ( j != cached_j )
+              saved_alloca_result[325 * j + 324] += 0x7FFFFFF;
           }
-          v37 = (__m128i *)&v38[325 * v39];
-          v35 = v36 + v46;
-          for ( j = 0; j < v36; ++j )
+          destination_buffer = (__m128i *)&saved_alloca_result[325 * cached_j];
+          running_total = loaded_word + selection_flag;
+          for ( j = 0; j < loaded_word; ++j )
           {
-            v35 = (v35 - 1) % 40;
-            v35 += v35 < 0 ? 0x28 : 0;
-            *(_BYTE *)(a5 + j - v36) = ((SR_VEC_LANES(128, v37[34], i32)[v35] >> 9) + 1) >> 1;
-            if ( (((int)((*(int *)(a12 + 4) * (__int64)SR_VEC_LANES(128, v37[44], i32)[v35]) >> 16) >> 13) + 1) >> 1 <= 0x7FFF )
+            running_total = (running_total - 1) % 40;
+            running_total += running_total < 0 ? 0x28 : 0;
+            *(_BYTE *)(a5 + j - loaded_word) = ((SR_VEC_LANES(128, destination_buffer[34], i32)[running_total] >> 9) + 1) >> 1;
+            if ( (((int)((*(int *)(a12 + 4) * (__int64)SR_VEC_LANES(128, destination_buffer[44], i32)[running_total]) >> 16) >> 13) + 1) >> 1 <= 0x7FFF )
             {
-              if ( (((int)((*(int *)(a12 + 4) * (__int64)SR_VEC_LANES(128, v37[44], i32)[v35]) >> 16) >> 13) + 1) >> 1 >= -32768 )
-                v48 = (((int)((*(int *)(a12 + 4) * (__int64)SR_VEC_LANES(128, v37[44], i32)[v35]) >> 16) >> 13) + 1) >> 1;
+              if ( (((int)((*(int *)(a12 + 4) * (__int64)SR_VEC_LANES(128, destination_buffer[44], i32)[running_total]) >> 16) >> 13) + 1) >> 1 >= -32768 )
+                shifted_bits_2 = (((int)((*(int *)(a12 + 4) * (__int64)SR_VEC_LANES(128, destination_buffer[44], i32)[running_total]) >> 16) >> 13) + 1) >> 1;
               else
-                v48 = -32768;
-              v49 = v48;
+                shifted_bits_2 = -32768;
+              saved_shifted_bits = shifted_bits_2;
             }
             else
             {
-              v49 = 0x7FFF;
+              saved_shifted_bits = 0x7FFF;
             }
-            *(_WORD *)(v52 + 2LL * (j - v36)) = v49;
-            SR_VEC_LANES(128, a2[80], i32)[j + SR_VEC_LANES(128, a2[271], i32)[0] - v36] = SR_VEC_LANES(128, v37[64], i32)[v35];
+            *(_WORD *)(running_total_2 + 2LL * (j - loaded_word)) = saved_shifted_bits;
+            SR_VEC_LANES(128, a2[80], i32)[j + SR_VEC_LANES(128, a2[271], i32)[0] - loaded_word] = SR_VEC_LANES(128, destination_buffer[64], i32)[running_total];
           }
-          v42 = 0;
+          iteration_count = 0;
         }
-        v44 = a1[1148] - v40 - a1[1160] - 2;
-        v25 = a1[1148] - v44;
-        v26 = a1[1147] * i;
-        v59 = (_WORD *)v55 + v44;
-        sub_1401BBB40(v59, (__int64)SR_VEC_PTR_LANES(128, a2, i64) + 2 * v26 + 2 * v44, v56, v25, a1[1160]);
+        integer_difference_2 = a1[1148] - loaded_word_2 - a1[1160] - 2;
+        integer_difference = a1[1148] - integer_difference_2;
+        scaled_index_3 = a1[1147] * i;
+        record_pointer = (_WORD *)saved_alloca_result_2 + integer_difference_2;
+        sub_1401BBB40(record_pointer, (__int64)SR_VEC_PTR_LANES(128, a2, i64) + 2 * scaled_index_3 + 2 * integer_difference_2, shifted_bits_5, integer_difference, a1[1160]);
         SR_VEC_LANES(128, a2[270], i32)[3] = a1[1148];
         SR_VEC_LANES(128, a2[271], i32)[3] = 1;
       }
@@ -1420,10 +1420,10 @@ __int64            sub_1401C4120(
     sub_1401D82A0(
       (__int64)a1,
       a2,
-      (__int64)v38,
+      (__int64)saved_alloca_result,
       a4,
-      (__int64)v58,
-      (__int64)v55,
+      (__int64)saved_alloca_result_3,
+      (__int64)saved_alloca_result_2,
       (__int64)p_i,
       i,
       a1[1157],
@@ -1431,86 +1431,86 @@ __int64            sub_1401C4120(
       a12,
       a13,
       a3[29],
-      v36);
-    v53 = v42;
+      loaded_word);
+    unused_written_slot = iteration_count;
     sub_1401D8730(
       (__int64)a2,
-      (__int64)v38,
+      (__int64)saved_alloca_result,
       a3[29],
-      (__int64)v58,
+      (__int64)saved_alloca_result_3,
       a5,
-      v52,
+      running_total_2,
       (__int64)p_i,
-      (__int64)v62,
-      v56,
-      v61,
-      v60,
-      v40,
-      v45,
+      (__int64)saved_alloca_result_4,
+      shifted_bits_5,
+      record_pointer_3,
+      record_pointer_2,
+      loaded_word_2,
+      option_flags,
       a10[i],
       *(_DWORD *)(a11 + 4LL * i),
       *(_DWORD *)(a12 + 4LL * i),
       a14,
-      v54,
+      shifted_bits_4,
       a1[1147],
-      v42++,
+      iteration_count++,
       a1[1159],
       a1[1160],
       a1[1168],
       a1[1157],
-      &v46,
-      v36);
+      &selection_flag,
+      loaded_word);
     a4 += 2LL * (int)a1[1147];
     a5 += (int)a1[1147];
-    v52 += 2LL * (int)a1[1147];
+    running_total_2 += 2LL * (int)a1[1147];
   }
-  v41 = v38[324];
-  v39 = 0;
+  scaled_index_4 = saved_alloca_result[324];
+  cached_j = 0;
   for ( i = 1; i < a1[1157]; ++i )
   {
-    if ( v38[325 * i + 324] < v41 )
+    if ( saved_alloca_result[325 * i + 324] < scaled_index_4 )
     {
-      v41 = v38[325 * i + 324];
-      v39 = i;
+      scaled_index_4 = saved_alloca_result[325 * i + 324];
+      cached_j = i;
     }
   }
-  v37 = (__m128i *)&v38[325 * v39];
-  a3[34] = SR_VEC_LANES(128, v37[80], i8)[12];
-  v35 = v36 + v46;
-  v47 = *(int *)(a12 + 4LL * (a1[1145] - 1)) >> 6;
-  for ( j = 0; j < v36; ++j )
+  destination_buffer = (__m128i *)&saved_alloca_result[325 * cached_j];
+  a3[34] = SR_VEC_LANES(128, destination_buffer[80], i8)[12];
+  running_total = loaded_word + selection_flag;
+  shifted_bits = *(int *)(a12 + 4LL * (a1[1145] - 1)) >> 6;
+  for ( j = 0; j < loaded_word; ++j )
   {
-    v35 = (v35 - 1) % 40;
-    v35 += v35 < 0 ? 0x28 : 0;
-    *(_BYTE *)(a5 + j - v36) = ((SR_VEC_LANES(128, v37[34], i32)[v35] >> 9) + 1) >> 1;
-    if ( (((int)((v47 * (__int64)SR_VEC_LANES(128, v37[44], i32)[v35]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+    running_total = (running_total - 1) % 40;
+    running_total += running_total < 0 ? 0x28 : 0;
+    *(_BYTE *)(a5 + j - loaded_word) = ((SR_VEC_LANES(128, destination_buffer[34], i32)[running_total] >> 9) + 1) >> 1;
+    if ( (((int)((shifted_bits * (__int64)SR_VEC_LANES(128, destination_buffer[44], i32)[running_total]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
     {
-      if ( (((int)((v47 * (__int64)SR_VEC_LANES(128, v37[44], i32)[v35]) >> 16) >> 7) + 1) >> 1 >= -32768 )
-        v50 = (((int)((v47 * (__int64)SR_VEC_LANES(128, v37[44], i32)[v35]) >> 16) >> 7) + 1) >> 1;
+      if ( (((int)((shifted_bits * (__int64)SR_VEC_LANES(128, destination_buffer[44], i32)[running_total]) >> 16) >> 7) + 1) >> 1 >= -32768 )
+        shifted_bits_3 = (((int)((shifted_bits * (__int64)SR_VEC_LANES(128, destination_buffer[44], i32)[running_total]) >> 16) >> 7) + 1) >> 1;
       else
-        v50 = -32768;
-      LODWORD(v51) = v50;
+        shifted_bits_3 = -32768;
+      LODWORD(packed_word_bits) = shifted_bits_3;
     }
     else
     {
-      LODWORD(v51) = 0x7FFF;
+      LODWORD(packed_word_bits) = 0x7FFF;
     }
-    *(_WORD *)(v52 + 2LL * (j - v36)) = v51;
-    SR_VEC_LANES(128, a2[80], i32)[j + SR_VEC_LANES(128, a2[271], i32)[0] - v36] = SR_VEC_LANES(128, v37[64], i32)[v35];
+    *(_WORD *)(running_total_2 + 2LL * (j - loaded_word)) = packed_word_bits;
+    SR_VEC_LANES(128, a2[80], i32)[j + SR_VEC_LANES(128, a2[271], i32)[0] - loaded_word] = SR_VEC_LANES(128, destination_buffer[64], i32)[running_total];
   }
-  crt_memcpy(a2 + 240, (__m128i *)((char *)v37 + 4 * a1[1147]), 0x40u);
-  crt_memcpy(a2 + 264, v37 + 74, 0x60u);
-  SR_VEC_LANES(128, a2[270], i32)[0] = SR_VEC_LANES(128, v37[80], i32)[0];
-  SR_VEC_LANES(128, a2[270], i32)[1] = SR_VEC_LANES(128, v37[80], i32)[1];
+  crt_memcpy(a2 + 240, (__m128i *)((char *)destination_buffer + 4 * a1[1147]), 0x40u);
+  crt_memcpy(a2 + 264, destination_buffer + 74, 0x60u);
+  SR_VEC_LANES(128, a2[270], i32)[0] = SR_VEC_LANES(128, destination_buffer[80], i32)[0];
+  SR_VEC_LANES(128, a2[270], i32)[1] = SR_VEC_LANES(128, destination_buffer[80], i32)[1];
   SR_VEC_LANES(128, a2[270], i32)[2] = *(_DWORD *)(a13 + 4LL * (a1[1145] - 1));
-  v27 = 2LL * (int)a1[1148];
-  v28 = (__m128i *)((char *)a2 + 2 * a1[1146]);
-  v63 = a2;
-  crt_memcpy(a2, v28, v27);
-  v29 = 4LL * (int)a1[1148];
-  v30 = (__m128i *)((char *)a2 + 4 * a1[1146] + 1280);
-  v64 = a2 + 80;
-  return crt_memcpy(a2 + 80, v30, v29); /* 0x1401C4F87: the result of this call is still in rax at the exit */
+  byte_count = 2LL * (int)a1[1148];
+  source_buffer = (__m128i *)((char *)a2 + 2 * a1[1146]);
+  unused_written_slot_2 = a2;
+  crt_memcpy(a2, source_buffer, byte_count);
+  byte_count_2 = 4LL * (int)a1[1148];
+  source_buffer_2 = (__m128i *)((char *)a2 + 4 * a1[1146] + 1280);
+  unused_written_slot_3 = a2 + 80;
+  return crt_memcpy(a2 + 80, source_buffer_2, byte_count_2); /* 0x1401C4F87: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401C4FB0) ----------------------------------------------------
@@ -1537,198 +1537,198 @@ __int64            sub_1401C4FB0(__int64 a1)
 //----- (00000001401C50E0) ----------------------------------------------------
 __int64            sub_1401C50E0(_DWORD *a1, __int64 a2)
 {
-  unsigned __int64 v2;
-  void *v3;
-  char v4;
-  int v5;
-  int v6;
+  unsigned __int64 scaled_index;
+  void *alloca_result;
+  char call_result;
+  int shifted_bits;
+  int call_result_2;
   int j;
-  signed int v9;
+  signed int remaining_bits;
   int i;
-  signed int v11;
-  int *v12;
-  int v13;
-  _DWORD *v14;
-  int v15;
-  int v16;
+  signed int running_total;
+  int *saved_alloca_result;
+  int shifted_bits_2;
+  _DWORD *record_pointer;
+  int remaining_bits_2;
+  int shifted_bits_3;
   int k;
-  __int16 v18;
-  int v19;
-  int v20;
-  int v21;
-  int v22;
-  int v23;
-  int v24;
-  int v25;
-  int v26;
-  int v27;
-  int v28;
-  int v29;
-  _DWORD *v30;
-  _DWORD v31[4];
-  int v32;
-  int v33;
-  int v34;
-  int v35;
-  _DWORD v36[4];
-  __int64 v37;
+  __int16 loaded_word;
+  int shifted_bits_4;
+  int running_total_2;
+  int running_total_3;
+  int remaining_bits_3;
+  int shifted_bits_5;
+  int shifted_bits_6;
+  int table_value;
+  int shifted_bits_7;
+  int shifted_bits_8;
+  int call_result_3;
+  int selection_flag;
+  _DWORD *unused_written_slot;
+  _DWORD scratch_buffer[4];
+  int selection_flag_2;
+  int integer_sum;
+  int integer_sum_2;
+  int integer_sum_3;
+  _DWORD scratch_buffer_2[4];
+  __int64 unused_local;
 
-  v29 = 0;
-  v14 = a1 + 9;
-  v23 = (int)a1[1146] >> 1;
-  v19 = (int)a1[1146] >> 2;
-  v13 = (int)a1[1146] >> 3;
-  v32 = 0;
-  v33 = v19 + v13;
-  v34 = v13 + v19 + v13;
-  v35 = v19 + v34;
-  v2 = 2LL * (v23 + v19 + v34) + 15;
-  if ( v2 <= 2LL * (v23 + v19 + v34) )
-    v2 = 0xFFFFFFFFFFFFFF0LL;
-  v3 = alloca(v2 & 0xFFFFFFFFFFFFFFF0uLL);
-  v12 = v3;
-  sub_1401BC040(a2, v14, (__int64)&j, (__int64)&j + 2 * v35, a1[1146]);
-  sub_1401BC040((__int64)v12, v14 + 2, (__int64)v12, (__int64)v12 + 2 * v34, v23);
-  sub_1401BC040((__int64)v12, v14 + 4, (__int64)v12, (__int64)v12 + 2 * v33, v19);
-  *((__int16 *)v12 + v13 - 1) >>= 1;
-  v18 = *((_WORD *)v12 + v13 - 1);
-  for ( i = v13 - 1; i > 0; --i )
+  selection_flag = 0;
+  record_pointer = a1 + 9;
+  shifted_bits_5 = (int)a1[1146] >> 1;
+  shifted_bits_4 = (int)a1[1146] >> 2;
+  shifted_bits_2 = (int)a1[1146] >> 3;
+  selection_flag_2 = 0;
+  integer_sum = shifted_bits_4 + shifted_bits_2;
+  integer_sum_2 = shifted_bits_2 + shifted_bits_4 + shifted_bits_2;
+  integer_sum_3 = shifted_bits_4 + integer_sum_2;
+  scaled_index = 2LL * (shifted_bits_5 + shifted_bits_4 + integer_sum_2) + 15;
+  if ( scaled_index <= 2LL * (shifted_bits_5 + shifted_bits_4 + integer_sum_2) )
+    scaled_index = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result;
+  sub_1401BC040(a2, record_pointer, (__int64)&j, (__int64)&j + 2 * integer_sum_3, a1[1146]);
+  sub_1401BC040((__int64)saved_alloca_result, record_pointer + 2, (__int64)saved_alloca_result, (__int64)saved_alloca_result + 2 * integer_sum_2, shifted_bits_5);
+  sub_1401BC040((__int64)saved_alloca_result, record_pointer + 4, (__int64)saved_alloca_result, (__int64)saved_alloca_result + 2 * integer_sum, shifted_bits_4);
+  *((__int16 *)saved_alloca_result + shifted_bits_2 - 1) >>= 1;
+  loaded_word = *((_WORD *)saved_alloca_result + shifted_bits_2 - 1);
+  for ( i = shifted_bits_2 - 1; i > 0; --i )
   {
-    *((__int16 *)v12 + i - 1) >>= 1;
-    *((_WORD *)v12 + i) -= *((_WORD *)v12 + i - 1);
+    *((__int16 *)saved_alloca_result + i - 1) >>= 1;
+    *((_WORD *)saved_alloca_result + i) -= *((_WORD *)saved_alloca_result + i - 1);
   }
-  *(_WORD *)v12 -= *((_WORD *)v14 + 28);
-  *((_WORD *)v14 + 28) = v18;
+  *(_WORD *)saved_alloca_result -= *((_WORD *)record_pointer + 28);
+  *((_WORD *)record_pointer + 28) = loaded_word;
   for ( j = 0; j < 4; ++j )
   {
-    v4 = sub_1401BE320(4 - j, 3u);
-    v30 = a1;
-    v13 = (int)a1[1146] >> v4;
-    v27 = v13 >> 2;
-    v20 = 0;
-    v31[j] = v14[j + 6];
+    call_result = sub_1401BE320(4 - j, 3u);
+    unused_written_slot = a1;
+    shifted_bits_2 = (int)a1[1146] >> call_result;
+    shifted_bits_8 = shifted_bits_2 >> 2;
+    running_total_2 = 0;
+    scratch_buffer[j] = record_pointer[j + 6];
     for ( k = 0; k < 4; ++k )
     {
-      v11 = 0;
-      for ( i = 0; i < v27; ++i )
+      running_total = 0;
+      for ( i = 0; i < shifted_bits_8; ++i )
       {
-        v24 = *((__int16 *)v12 + v20 + i + *(&v32 + j)) >> 3;
-        v11 += (__int16)v24 * (__int16)v24;
+        shifted_bits_6 = *((__int16 *)saved_alloca_result + running_total_2 + i + *(&selection_flag_2 + j)) >> 3;
+        running_total += (__int16)shifted_bits_6 * (__int16)shifted_bits_6;
       }
       if ( k >= 3 )
       {
-        if ( (v11 >> 1) + v31[j] >= 0 )
-          v26 = v31[j] + (v11 >> 1);
+        if ( (running_total >> 1) + scratch_buffer[j] >= 0 )
+          shifted_bits_7 = scratch_buffer[j] + (running_total >> 1);
         else
-          v26 = 0x7FFFFFFF;
-        v31[j] = v26;
+          shifted_bits_7 = 0x7FFFFFFF;
+        scratch_buffer[j] = shifted_bits_7;
       }
       else
       {
-        if ( v11 + v31[j] >= 0 )
-          v25 = v11 + v31[j];
+        if ( running_total + scratch_buffer[j] >= 0 )
+          table_value = running_total + scratch_buffer[j];
         else
-          v25 = 0x7FFFFFFF;
-        v31[j] = v25;
+          table_value = 0x7FFFFFFF;
+        scratch_buffer[j] = table_value;
       }
-      v20 += v27;
+      running_total_2 += shifted_bits_8;
     }
-    v14[j + 6] = v11;
+    record_pointer[j + 6] = running_total;
   }
-  sub_1401DB1D0((__int64)v31, (__int64)v14);
-  v11 = 0;
-  v21 = 0;
+  sub_1401DB1D0((__int64)scratch_buffer, (__int64)record_pointer);
+  running_total = 0;
+  running_total_3 = 0;
   for ( j = 0; j < 4; ++j )
   {
-    v9 = v31[j] - v14[j + 15];
-    if ( v9 <= 0 )
+    remaining_bits = scratch_buffer[j] - record_pointer[j + 15];
+    if ( remaining_bits <= 0 )
     {
-      v36[j] = 256;
+      scratch_buffer_2[j] = 256;
     }
     else
     {
-      if ( (v31[j] & 0xFF800000) != 0 )
-        v5 = v31[j] / (((int)v14[j + 15] >> 8) + 1);
+      if ( (scratch_buffer[j] & 0xFF800000) != 0 )
+        shifted_bits = scratch_buffer[j] / (((int)record_pointer[j + 15] >> 8) + 1);
       else
-        v5 = (v31[j] << 8) / (v14[j + 15] + 1);
-      v36[j] = v5;
-      v6 = sub_1401BC2A0(v36[j]);
-      v16 = v6 - 1024;
-      v11 += (__int16)(v6 - 1024) * (__int16)(v6 - 1024);
-      if ( v9 < 0x100000 )
-        v16 = ((__int16)v16 * (__int64)(int)((unsigned int)sub_1401BE4C0(v9) << 6)) >> 16;
-      v21 += ((__int16)v16 * (__int64)dword_14027CC18[j]) >> 16;
+        shifted_bits = (scratch_buffer[j] << 8) / (record_pointer[j + 15] + 1);
+      scratch_buffer_2[j] = shifted_bits;
+      call_result_2 = sub_1401BC2A0(scratch_buffer_2[j]);
+      shifted_bits_3 = call_result_2 - 1024;
+      running_total += (__int16)(call_result_2 - 1024) * (__int16)(call_result_2 - 1024);
+      if ( remaining_bits < 0x100000 )
+        shifted_bits_3 = ((__int16)shifted_bits_3 * (__int64)(int)((unsigned int)sub_1401BE4C0(remaining_bits) << 6)) >> 16;
+      running_total_3 += ((__int16)shifted_bits_3 * (__int64)dword_14027CC18[j]) >> 16;
     }
   }
-  v11 /= 4;
-  v28 = (__int16)(3 * sub_1401BE4C0(v11));
-  v15 = sub_1401BC300((unsigned int)((45000LL * (__int16)v28) >> 16) - 128);
-  a1[1182] = 2 * sub_1401BC300(v21) - 0x8000;
-  v9 = 0;
+  running_total /= 4;
+  call_result_3 = (__int16)(3 * sub_1401BE4C0(running_total));
+  remaining_bits_2 = sub_1401BC300((unsigned int)((45000LL * (__int16)call_result_3) >> 16) - 128);
+  a1[1182] = 2 * sub_1401BC300(running_total_3) - 0x8000;
+  remaining_bits = 0;
   for ( j = 0; j < 4; ++j )
-    v9 += ((v31[j] - v14[j + 15]) >> 4) * (j + 1);
+    remaining_bits += ((scratch_buffer[j] - record_pointer[j + 15]) >> 4) * (j + 1);
   if ( a1[1146] == 20 * a1[1144] )
-    v9 >>= 1;
-  if ( v9 > 0 )
+    remaining_bits >>= 1;
+  if ( remaining_bits > 0 )
   {
-    if ( v9 < 0x4000 )
+    if ( remaining_bits < 0x4000 )
     {
-      v9 <<= 16;
-      v9 = sub_1401BE4C0(v9);
-      v15 = ((__int16)v15 * (__int64)(v9 + 0x8000)) >> 16;
+      remaining_bits <<= 16;
+      remaining_bits = sub_1401BE4C0(remaining_bits);
+      remaining_bits_2 = ((__int16)remaining_bits_2 * (__int64)(remaining_bits + 0x8000)) >> 16;
     }
   }
   else
   {
-    v15 >>= 1;
+    remaining_bits_2 >>= 1;
   }
-  a1[1133] = sub_1401BE320(v15 >> 7, 0xFFu);
-  v22 = (__int16)((unsigned int)((__int16)v15 * v15) >> 16) >> 4;
+  a1[1133] = sub_1401BE320(remaining_bits_2 >> 7, 0xFFu);
+  remaining_bits_3 = (__int16)((unsigned int)((__int16)remaining_bits_2 * remaining_bits_2) >> 16) >> 4;
   if ( a1[1146] == 10 * a1[1144] )
-    v22 >>= 1;
+    remaining_bits_3 >>= 1;
   for ( j = 0; j < 4; ++j )
   {
-    v14[j + 10] += ((__int16)v22 * (__int64)(v36[j] - v14[j + 10])) >> 16;
-    v16 = 3 * (sub_1401BC2A0(v14[j + 10]) - 1024);
-    a1[j + 1178] = sub_1401BC300((v16 - 2048) >> 4);
+    record_pointer[j + 10] += ((__int16)remaining_bits_3 * (__int64)(scratch_buffer_2[j] - record_pointer[j + 10])) >> 16;
+    shifted_bits_3 = 3 * (sub_1401BC2A0(record_pointer[j + 10]) - 1024);
+    a1[j + 1178] = sub_1401BC300((shifted_bits_3 - 2048) >> 4);
   }
-  return (unsigned int)v29; /* 0x1401C58B7: mov eax, dword ptr [rbp + 0x60] */
+  return (unsigned int)selection_flag; /* 0x1401C58B7: mov eax, dword ptr [rbp + 0x60] */
 }
 
 //----- (00000001401C58E0) ----------------------------------------------------
 __int64            sub_1401C58E0(_DWORD *a1, __int64 a2, unsigned int a3)
 {
-  __int64 v4;
-  int v5;
-  int v6;
-  int v7;
-  int v8;
-  int v9;
-  int v10[4];
-  __int64 v11;
+  __int64 unused_local;
+  int shifted_bits;
+  int shifted_bits_2;
+  int table_value;
+  int cached_table_value;
+  int callee_output_word;
+  int scratch_buffer[4];
+  __int64 unused_local_2;
 
-  v5 = 0;
-  v6 = 0;
+  shifted_bits = 0;
+  shifted_bits_2 = 0;
   if ( a1[3] )
   {
-    v5 = (256 - a1[2]) << 10;
-    v6 = v5 >> 16;
-    v5 -= v5 >> 16 << 16;
-    sub_1401D6BB0((__m128i *)v10, (__m128i *)&v9, v6, v5);
+    shifted_bits = (256 - a1[2]) << 10;
+    shifted_bits_2 = shifted_bits >> 16;
+    shifted_bits -= shifted_bits >> 16 << 16;
+    sub_1401D6BB0((__m128i *)scratch_buffer, (__m128i *)&callee_output_word, shifted_bits_2, shifted_bits);
     if ( a1[3] + a1[2] <= 256 )
     {
       if ( a1[3] + a1[2] >= 0 )
-        v7 = a1[3] + a1[2];
+        table_value = a1[3] + a1[2];
       else
-        v7 = 0;
-      v8 = v7;
+        table_value = 0;
+      cached_table_value = table_value;
     }
     else
     {
-      v8 = 256;
+      cached_table_value = 256;
     }
-    a1[2] = v8;
-    sub_1401BB2C0(a2, v10, &v9, a1, a2, a3);
+    a1[2] = cached_table_value;
+    sub_1401BB2C0(a2, scratch_buffer, &callee_output_word, a1, a2, a3);
   }
   return 0; /* no caller reads the result */
 }
@@ -1736,52 +1736,52 @@ __int64            sub_1401C58E0(_DWORD *a1, __int64 a2, unsigned int a3)
 //----- (00000001401C5A20) ----------------------------------------------------
 __int64            sub_1401C5A20(__int64 a1, __int64 a2, __int16 *a3, __int64 a4)
 {
-  unsigned __int64 v4;
-  __int64 v6;
+  unsigned __int64 byte_count;
+  __int64 unused_local;
   int i;
-  int v8;
-  __int16 v9;
-  BOOL v10;
-  BOOL v11;
-  void *v12;
-  __int16 v13[16];
-  __int16 v14[16];
-  _WORD v15[16];
-  __int64 v16;
+  int shifted_bits;
+  __int16 shifted_bits_2;
+  BOOL comparison_result;
+  BOOL saved_comparison_result;
+  void *unused_written_slot;
+  __int16 scratch_buffer[16];
+  __int16 scratch_buffer_2[16];
+  _WORD scratch_buffer_3[16];
+  __int64 unused_local_2;
 
-  v8 = ((-268434LL * *(__int16 *)(a1 + 4532)) >> 16) + 3146;
+  shifted_bits = ((-268434LL * *(__int16 *)(a1 + 4532)) >> 16) + 3146;
   if ( *(_DWORD *)(a1 + 4580) == 2 )
-    v8 += v8 >> 1;
-  sub_1401BDFF0(v13, a3, *(_DWORD *)(a1 + 4640));
-  v10 = *(_DWORD *)(a1 + 4632) == 1 && *(char *)(a1 + 4783) < 4;
-  v11 = v10;
-  if ( v10 )
+    shifted_bits += shifted_bits >> 1;
+  sub_1401BDFF0(scratch_buffer, a3, *(_DWORD *)(a1 + 4640));
+  comparison_result = *(_DWORD *)(a1 + 4632) == 1 && *(char *)(a1 + 4783) < 4;
+  saved_comparison_result = comparison_result;
+  if ( comparison_result )
   {
-    sub_1401C2F40((__int64)v14, a4, (__int64)a3, *(char *)(a1 + 4783), *(_DWORD *)(a1 + 4640));
-    sub_1401BDFF0(v15, v14, *(_DWORD *)(a1 + 4640));
-    v9 = (*(char *)(a1 + 4783) * *(char *)(a1 + 4783)) << 11;
+    sub_1401C2F40((__int64)scratch_buffer_2, a4, (__int64)a3, *(char *)(a1 + 4783), *(_DWORD *)(a1 + 4640));
+    sub_1401BDFF0(scratch_buffer_3, scratch_buffer_2, *(_DWORD *)(a1 + 4640));
+    shifted_bits_2 = (*(char *)(a1 + 4783) * *(char *)(a1 + 4783)) << 11;
     for ( i = 0; i < *(_DWORD *)(a1 + 4640); ++i )
-      v13[i] = ((unsigned int)(v9 * (__int16)v15[i]) >> 16) + (v13[i] >> 1);
+      scratch_buffer[i] = ((unsigned int)(shifted_bits_2 * (__int16)scratch_buffer_3[i]) >> 16) + (scratch_buffer[i] >> 1);
   }
   sub_1401C5DA0(
     (_BYTE *)(a1 + 4760),
     a3,
     *(__int16 **)(a1 + 4704),
-    (__int64)v13,
-    v8,
+    (__int64)scratch_buffer,
+    shifted_bits,
     *(_DWORD *)(a1 + 4660),
     *(char *)(a1 + 4781));
   CWinApp__ShowAppMessageBox((struct CWinApp *)(a2 + 32), (     char *)a3, *(_DWORD *)(a1 + 4640));
-  if ( v11 )
+  if ( saved_comparison_result )
   {
-    sub_1401C2F40((__int64)v14, a4, (__int64)a3, *(char *)(a1 + 4783), *(_DWORD *)(a1 + 4640));
-    CWinApp__ShowAppMessageBox((struct CWinApp *)a2, (     char *)v14, *(_DWORD *)(a1 + 4640));
+    sub_1401C2F40((__int64)scratch_buffer_2, a4, (__int64)a3, *(char *)(a1 + 4783), *(_DWORD *)(a1 + 4640));
+    CWinApp__ShowAppMessageBox((struct CWinApp *)a2, (     char *)scratch_buffer_2, *(_DWORD *)(a1 + 4640));
   }
   else
   {
-    v4 = 2LL * *(int *)(a1 + 4640);
-    v12 = (void *)a2;
-    crt_memcpy((__m128i *)a2, (     __m128i *)(a2 + 32), v4);
+    byte_count = 2LL * *(int *)(a1 + 4640);
+    unused_written_slot = (void *)a2;
+    crt_memcpy((__m128i *)a2, (     __m128i *)(a2 + 32), byte_count);
   }
   return 0; /* no result: rax is residue of the last call */
 }
@@ -1789,106 +1789,106 @@ __int64            sub_1401C5A20(__int64 a1, __int64 a2, __int16 *a3, __int64 a4
 //----- (00000001401C5DA0) ----------------------------------------------------
 __int64            sub_1401C5DA0(_BYTE *a1, __int16 *a2, __int16 *a3, __int64 a4, int a5, int a6, int a7)
 {
-  unsigned __int64 v7;
-  void *v8;
-  unsigned __int64 v9;
-  void *v10;
-  unsigned __int64 v11;
-  void *v12;
-  unsigned __int64 v13;
-  void *v14;
-  int v15;
-  unsigned int v16;
-  int v17;
-  unsigned __int64 v18;
+  unsigned __int64 scaled_index;
+  void *alloca_result;
+  unsigned __int64 record_word_offset;
+  void *alloca_result_2;
+  unsigned __int64 record_word_offset_2;
+  void *alloca_result_3;
+  unsigned __int64 record_word_offset_3;
+  void *alloca_result_4;
+  int loaded_word;
+  unsigned int scaled_index_2;
+  int call_result;
+  unsigned __int64 byte_count;
   int j;
   int i;
-  int v22;
-  int v23;
-  unsigned int v24;
-  int v25;
-  int *v26;
-  int v27;
-  int v28;
-  unsigned __int8 *v29;
-  int *v30;
-  int *v31;
-  int *v32;
-  __int64 v33;
-  __int64 v34;
-  void *v35;
-  _BYTE v36[48];
-  _BYTE v37[32];
-  _WORD v38[16];
-  _WORD v39[16];
-  __int64 v40;
+  int table_value;
+  int loaded_word_2;
+  unsigned int unused_written_slot;
+  int lookup_index;
+  int *saved_alloca_result;
+  int unused_written_slot_2;
+  int loaded_word_3;
+  unsigned __int8 *shifted_bits;
+  int *saved_alloca_result_2;
+  int *saved_alloca_result_3;
+  int *saved_alloca_result_4;
+  __int64 loaded_word_4;
+  __int64 loaded_word_5;
+  void *unused_written_slot_3;
+  _BYTE callee_output_word[48];
+  _BYTE scratch_buffer[32];
+  _WORD scratch_buffer_2[16];
+  _WORD scratch_buffer_3[16];
+  __int64 unused_local;
 
   sub_1401BD8C0(a2, *((__int16 **)a3 + 8), a3[1]);
-  v7 = 4LL * *a3 + 15;
-  if ( v7 <= 4LL * *a3 )
-    v7 = 0xFFFFFFFFFFFFFF0LL;
-  v8 = alloca(v7 & 0xFFFFFFFFFFFFFFF0uLL);
-  v31 = v8;
+  scaled_index = 4LL * *a3 + 15;
+  if ( scaled_index <= 4LL * *a3 )
+    scaled_index = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_3 = alloca_result;
   sub_1401C62A0((__int64)&j, (__int64)a2, *((_QWORD *)a3 + 1), *((_QWORD *)a3 + 2), *a3, a3[1]);
-  v9 = 4LL * a6 + 15;
-  if ( v9 <= 4LL * a6 )
-    v9 = 0xFFFFFFFFFFFFFF0LL;
-  v10 = alloca(v9 & 0xFFFFFFFFFFFFFFF0uLL);
-  v30 = v10;
-  sub_1401BD610((__int64)v31, (__int64)&j, *a3, a6);
-  v11 = 4LL * a6 + 15;
-  if ( v11 <= 4LL * a6 )
-    v11 = 0xFFFFFFFFFFFFFF0LL;
-  v12 = alloca(v11 & 0xFFFFFFFFFFFFFFF0uLL);
-  v26 = v12;
-  v13 = 16 * a6 + 15LL;
-  if ( v13 <= 16 * a6 )
-    v13 = 0xFFFFFFFFFFFFFF0LL;
-  v14 = alloca(v13 & 0xFFFFFFFFFFFFFFF0uLL);
-  v32 = v14;
+  record_word_offset = 4LL * a6 + 15;
+  if ( record_word_offset <= 4LL * a6 )
+    record_word_offset = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_2 = alloca(record_word_offset & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_2 = alloca_result_2;
+  sub_1401BD610((__int64)saved_alloca_result_3, (__int64)&j, *a3, a6);
+  record_word_offset_2 = 4LL * a6 + 15;
+  if ( record_word_offset_2 <= 4LL * a6 )
+    record_word_offset_2 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_3 = alloca(record_word_offset_2 & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result_3;
+  record_word_offset_3 = 16 * a6 + 15LL;
+  if ( record_word_offset_3 <= 16 * a6 )
+    record_word_offset_3 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_4 = alloca(record_word_offset_3 & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_4 = alloca_result_4;
   for ( i = 0; i < a6; ++i )
   {
-    v22 = v30[i];
-    v33 = a3[1] * v22 + *((_QWORD *)a3 + 1);
-    v34 = *((_QWORD *)a3 + 2) + 2LL * a3[1] * v22;
+    table_value = saved_alloca_result_2[i];
+    loaded_word_4 = a3[1] * table_value + *((_QWORD *)a3 + 1);
+    loaded_word_5 = *((_QWORD *)a3 + 2) + 2LL * a3[1] * table_value;
     for ( j = 0; j < a3[1]; ++j )
     {
-      *(_WORD *)&v36[2 * j + 16] = *(unsigned __int8 *)(v33 + j) << 7;
-      v23 = *(__int16 *)(v34 + 2LL * j);
-      v39[j] = ((__int16)v23 * (__int16)(a2[j] - *(_WORD *)&v36[2 * j + 16])) >> 14;
-      v38[j] = sub_1401BE550(*(__int16 *)(a4 + 2LL * j), (__int16)v23 * (__int16)v23, 21);
+      *(_WORD *)&callee_output_word[2 * j + 16] = *(unsigned __int8 *)(loaded_word_4 + j) << 7;
+      loaded_word_2 = *(__int16 *)(loaded_word_5 + 2LL * j);
+      scratch_buffer_3[j] = ((__int16)loaded_word_2 * (__int16)(a2[j] - *(_WORD *)&callee_output_word[2 * j + 16])) >> 14;
+      scratch_buffer_2[j] = sub_1401BE550(*(__int16 *)(a4 + 2LL * j), (__int16)loaded_word_2 * (__int16)loaded_word_2, 21);
     }
-    sub_1401C6E20((__int64)v37, (__int64)v36, (__int64)a3, v22);
-    v15 = sub_1401C64A0(
-            &v32[4 * i],
-            (__int64)v39,
-            (__int64)v38,
-            (__int64)v36,
-            (__int64)v37,
+    sub_1401C6E20((__int64)scratch_buffer, (__int64)callee_output_word, (__int64)a3, table_value);
+    loaded_word = sub_1401C64A0(
+            &saved_alloca_result_4[4 * i],
+            (__int64)scratch_buffer_3,
+            (__int64)scratch_buffer_2,
+            (__int64)callee_output_word,
+            (__int64)scratch_buffer,
             *((_QWORD *)a3 + 7),
             a3[2],
             a3[3],
             a5,
             a3[1]);
-    v26[i] = v15;
-    v29 = (unsigned __int8 *)(*a3 * (a7 >> 1) + *((_QWORD *)a3 + 3));
-    if ( v22 )
-      v16 = v29[v22 - 1] - v29[v22];
+    saved_alloca_result[i] = loaded_word;
+    shifted_bits = (unsigned __int8 *)(*a3 * (a7 >> 1) + *((_QWORD *)a3 + 3));
+    if ( table_value )
+      scaled_index_2 = shifted_bits[table_value - 1] - shifted_bits[table_value];
     else
-      v16 = 256 - *v29;
-    v24 = v16;
-    v17 = sub_1401BC2A0(v16);
-    v27 = 1024 - v17;
-    v26[i] += (__int16)(a5 >> 2) * (__int16)(1024 - v17);
+      scaled_index_2 = 256 - *shifted_bits;
+    unused_written_slot = scaled_index_2;
+    call_result = sub_1401BC2A0(scaled_index_2);
+    unused_written_slot_2 = 1024 - call_result;
+    saved_alloca_result[i] += (__int16)(a5 >> 2) * (__int16)(1024 - call_result);
   }
-  sub_1401BD610((__int64)v26, (__int64)&v25, a6, 1);
-  *a1 = v30[v25];
-  v18 = a3[1];
-  v35 = a1 + 1;
-  crt_memcpy((__m128i *)(a1 + 1), (     __m128i *)&v32[4 * v25], v18);
+  sub_1401BD610((__int64)saved_alloca_result, (__int64)&lookup_index, a6, 1);
+  *a1 = saved_alloca_result_2[lookup_index];
+  byte_count = a3[1];
+  unused_written_slot_3 = a1 + 1;
+  crt_memcpy((__m128i *)(a1 + 1), (     __m128i *)&saved_alloca_result_4[4 * lookup_index], byte_count);
   sub_1401C6F70(a2, a1, (__int64)a3);
-  v28 = *v26;
-  return (unsigned int)v28; /* 0x1401C6279: mov eax, dword ptr [rbp + 0x24] */
+  loaded_word_3 = *saved_alloca_result;
+  return (unsigned int)loaded_word_3; /* 0x1401C6279: mov eax, dword ptr [rbp + 0x24] */
 }
 
 //----- (00000001401C62A0) ----------------------------------------------------
@@ -1896,43 +1896,43 @@ __int64            sub_1401C62A0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
 {
   __int64 result;
   int j;
-  int v8;
-  int v9;
-  int v10;
-  int v11;
-  int v12;
-  int v13;
+  int shifted_bits;
+  int shifted_bits_2;
+  int shifted_bits_3;
+  int shifted_bits_4;
+  int integer_sum;
+  int integer_sum_2;
   signed int i;
-  int v15;
-  int v16;
+  int shifted_bits_5;
+  int shifted_bits_6;
 
   for ( i = 0; ; ++i )
   {
     result = a5;
     if ( i >= (int)a5 )
       break;
-    v12 = 0;
-    v10 = 0;
+    integer_sum = 0;
+    shifted_bits_3 = 0;
     for ( j = a6 - 2; j >= 0; j -= 2 )
     {
-      v8 = *(__int16 *)(a4 + 2LL * (j + 1))
+      shifted_bits = *(__int16 *)(a4 + 2LL * (j + 1))
          * (__int16)(*(_WORD *)(a2 + 2LL * (j + 1)) - (*(unsigned __int8 *)(a3 + j + 1) << 7));
-      if ( v8 - (v10 >> 1) <= 0 )
-        v15 = (v10 >> 1) - v8;
+      if ( shifted_bits - (shifted_bits_3 >> 1) <= 0 )
+        shifted_bits_5 = (shifted_bits_3 >> 1) - shifted_bits;
       else
-        v15 = v8 - (v10 >> 1);
-      v13 = v15 + v12;
-      v11 = *(__int16 *)(a4 + 2LL * (j + 1))
+        shifted_bits_5 = shifted_bits - (shifted_bits_3 >> 1);
+      integer_sum_2 = shifted_bits_5 + integer_sum;
+      shifted_bits_4 = *(__int16 *)(a4 + 2LL * (j + 1))
           * (__int16)(*(_WORD *)(a2 + 2LL * (j + 1)) - (*(unsigned __int8 *)(a3 + j + 1) << 7));
-      v9 = *(__int16 *)(a4 + 2LL * j) * (__int16)(*(_WORD *)(a2 + 2LL * j) - (*(unsigned __int8 *)(a3 + j) << 7));
-      if ( v9 - (v11 >> 1) <= 0 )
-        v16 = (v11 >> 1) - v9;
+      shifted_bits_2 = *(__int16 *)(a4 + 2LL * j) * (__int16)(*(_WORD *)(a2 + 2LL * j) - (*(unsigned __int8 *)(a3 + j) << 7));
+      if ( shifted_bits_2 - (shifted_bits_4 >> 1) <= 0 )
+        shifted_bits_6 = (shifted_bits_4 >> 1) - shifted_bits_2;
       else
-        v16 = v9 - (v11 >> 1);
-      v12 = v16 + v13;
-      v10 = *(__int16 *)(a4 + 2LL * j) * (__int16)(*(_WORD *)(a2 + 2LL * j) - (*(unsigned __int8 *)(a3 + j) << 7));
+        shifted_bits_6 = shifted_bits_2 - (shifted_bits_4 >> 1);
+      integer_sum = shifted_bits_6 + integer_sum_2;
+      shifted_bits_3 = *(__int16 *)(a4 + 2LL * j) * (__int16)(*(_WORD *)(a2 + 2LL * j) - (*(unsigned __int8 *)(a3 + j) << 7));
     }
-    *(_DWORD *)(a1 + 4LL * i) = v12;
+    *(_DWORD *)(a1 + 4LL * i) = integer_sum;
     a3 += a6;
     a4 += 2LL * a6;
   }
@@ -1952,221 +1952,221 @@ __int64            sub_1401C64A0(
         __int16 a9,
         __int16 a10)
 {
-  __int64 v11;
+  __int64 unused_local;
   int j;
-  __int16 v13;
-  __int16 v14;
+  __int16 shifted_bits;
+  __int16 shifted_bits_2;
   int i;
-  int v16;
-  int v17;
-  int v18;
-  int v19;
-  int v20;
-  int v21;
-  int v22;
-  int v23;
-  int v24;
-  int v25;
-  int v26;
-  int v27;
-  int v28;
-  int v29;
-  int v30;
-  __int64 v31;
-  int v32;
-  __int64 v33;
-  _DWORD v34[62];
-  _WORD v35[40];
-  __int64 v36;
+  int cached_j;
+  int selection_flag;
+  int loaded_word;
+  int cached_j_2;
+  int cached_j_3;
+  int integer_difference;
+  int loaded_word_2;
+  int shifted_bits_3;
+  int loaded_word_3;
+  int table_value;
+  int table_value_2;
+  int table_value_3;
+  int saved_cached_j;
+  int cached_j_4;
+  int table_value_4;
+  __int64 loaded_word_4;
+  int unused_written_slot;
+  __int64 unused_written_slot_2;
+  _DWORD scratch_buffer[62];
+  _WORD callee_output_word[40];
+  __int64 unused_local_2;
 
   for ( i = -10; i <= 9; ++i )
   {
-    v13 = (_WORD)i << 10;
-    v14 = ((_WORD)i << 10) + 1024;
+    shifted_bits = (_WORD)i << 10;
+    shifted_bits_2 = ((_WORD)i << 10) + 1024;
     if ( i <= 0 )
     {
       if ( i )
       {
-        v13 += 102;
+        shifted_bits += 102;
         if ( i != -1 )
-          v14 += 102;
+          shifted_bits_2 += 102;
       }
       else
       {
-        v14 -= 102;
+        shifted_bits_2 -= 102;
       }
     }
     else
     {
-      v13 -= 102;
-      v14 -= 102;
+      shifted_bits -= 102;
+      shifted_bits_2 -= 102;
     }
-    v34[i + 32] = (a7 * v13) >> 16;
-    v34[i + 52] = (a7 * v14) >> 16;
+    scratch_buffer[i + 32] = (a7 * shifted_bits) >> 16;
+    scratch_buffer[i + 52] = (a7 * shifted_bits_2) >> 16;
   }
-  v17 = 1;
-  v34[0] = 0;
-  v33 = 0;
-  v35[0] = 0;
+  selection_flag = 1;
+  scratch_buffer[0] = 0;
+  unused_written_slot_2 = 0;
+  callee_output_word[0] = 0;
   for ( i = a10 - 1; i >= 0; --i )
   {
-    v31 = *(__int16 *)(a5 + 2LL * i) + a6;
-    v24 = *(__int16 *)(a2 + 2LL * i);
-    for ( j = 0; j < v17; ++j )
+    loaded_word_4 = *(__int16 *)(a5 + 2LL * i) + a6;
+    loaded_word_3 = *(__int16 *)(a2 + 2LL * i);
+    for ( j = 0; j < selection_flag; ++j )
     {
-      v23 = ((__int16)v35[j] * *(unsigned __int8 *)(a4 + i)) >> 8;
-      v32 = v24 - v23;
-      v16 = ((__int16)(v24 - v23) * a8) >> 16;
-      if ( v16 <= 9 )
+      shifted_bits_3 = ((__int16)callee_output_word[j] * *(unsigned __int8 *)(a4 + i)) >> 8;
+      unused_written_slot = loaded_word_3 - shifted_bits_3;
+      cached_j = ((__int16)(loaded_word_3 - shifted_bits_3) * a8) >> 16;
+      if ( cached_j <= 9 )
       {
-        if ( v16 >= -10 )
-          v28 = v16;
+        if ( cached_j >= -10 )
+          saved_cached_j = cached_j;
         else
-          v28 = -10;
-        v29 = v28;
+          saved_cached_j = -10;
+        cached_j_4 = saved_cached_j;
       }
       else
       {
-        v29 = 9;
+        cached_j_4 = 9;
       }
-      v16 = v29;
-      *((_BYTE *)&v35[8 * j + 8] + i) = v29;
-      v13 = v34[v16 + 32];
-      v14 = v34[v16 + 52];
-      v13 += v23;
-      v14 += v23;
-      v35[j] = v13;
-      v35[v17 + j] = v14;
-      if ( v16 + 1 < 4 )
+      cached_j = cached_j_4;
+      *((_BYTE *)&callee_output_word[8 * j + 8] + i) = cached_j_4;
+      shifted_bits = scratch_buffer[cached_j + 32];
+      shifted_bits_2 = scratch_buffer[cached_j + 52];
+      shifted_bits += shifted_bits_3;
+      shifted_bits_2 += shifted_bits_3;
+      callee_output_word[j] = shifted_bits;
+      callee_output_word[selection_flag + j] = shifted_bits_2;
+      if ( cached_j + 1 < 4 )
       {
-        if ( v16 > -4 )
+        if ( cached_j > -4 )
         {
-          v18 = *(unsigned __int8 *)(v31 + v16 + 4);
-          v22 = *(unsigned __int8 *)(v31 + v16 + 5);
+          loaded_word = *(unsigned __int8 *)(loaded_word_4 + cached_j + 4);
+          loaded_word_2 = *(unsigned __int8 *)(loaded_word_4 + cached_j + 5);
         }
-        else if ( v16 == -4 )
+        else if ( cached_j == -4 )
         {
-          v18 = 280;
-          v22 = *(unsigned __int8 *)(v31 + 1);
+          loaded_word = 280;
+          loaded_word_2 = *(unsigned __int8 *)(loaded_word_4 + 1);
         }
         else
         {
-          v18 = -43 * (__int16)v16 + 108;
-          v22 = -43 * (__int16)v16 + 65;
+          loaded_word = -43 * (__int16)cached_j + 108;
+          loaded_word_2 = -43 * (__int16)cached_j + 65;
         }
       }
-      else if ( v16 == 3 )
+      else if ( cached_j == 3 )
       {
-        v18 = *(unsigned __int8 *)(v31 + 7);
-        v22 = 280;
+        loaded_word = *(unsigned __int8 *)(loaded_word_4 + 7);
+        loaded_word_2 = 280;
       }
       else
       {
-        v18 = 43 * (__int16)v16 + 108;
-        v22 = 43 * (__int16)v16 + 151;
+        loaded_word = 43 * (__int16)cached_j + 108;
+        loaded_word_2 = 43 * (__int16)cached_j + 151;
       }
-      v30 = v34[j];
-      v34[j] = (__int16)v18 * a9 + *(__int16 *)(a3 + 2LL * i) * (__int16)(v24 - v13) * (__int16)(v24 - v13) + v30;
-      v21 = v24 - v14;
-      v34[v17 + j] = (__int16)v22 * a9 + *(__int16 *)(a3 + 2LL * i) * (__int16)v21 * (__int16)v21 + v30;
+      table_value_4 = scratch_buffer[j];
+      scratch_buffer[j] = (__int16)loaded_word * a9 + *(__int16 *)(a3 + 2LL * i) * (__int16)(loaded_word_3 - shifted_bits) * (__int16)(loaded_word_3 - shifted_bits) + table_value_4;
+      integer_difference = loaded_word_3 - shifted_bits_2;
+      scratch_buffer[selection_flag + j] = (__int16)loaded_word_2 * a9 + *(__int16 *)(a3 + 2LL * i) * (__int16)integer_difference * (__int16)integer_difference + table_value_4;
     }
-    if ( v17 > 2 )
+    if ( selection_flag > 2 )
     {
       for ( j = 0; j < 4; ++j )
       {
-        if ( v34[j] <= v34[j + 4] )
+        if ( scratch_buffer[j] <= scratch_buffer[j + 4] )
         {
-          v34[j + 8] = v34[j];
-          v34[j + 12] = v34[j + 4];
-          v34[j + 16] = j;
+          scratch_buffer[j + 8] = scratch_buffer[j];
+          scratch_buffer[j + 12] = scratch_buffer[j + 4];
+          scratch_buffer[j + 16] = j;
         }
         else
         {
-          v34[j + 12] = v34[j];
-          v34[j + 8] = v34[j + 4];
-          v34[j] = v34[j + 8];
-          v34[j + 4] = v34[j + 12];
-          v13 = v35[j];
-          v35[j] = v35[j + 4];
-          v35[j + 4] = v13;
-          v34[j + 16] = j + 4;
+          scratch_buffer[j + 12] = scratch_buffer[j];
+          scratch_buffer[j + 8] = scratch_buffer[j + 4];
+          scratch_buffer[j] = scratch_buffer[j + 8];
+          scratch_buffer[j + 4] = scratch_buffer[j + 12];
+          shifted_bits = callee_output_word[j];
+          callee_output_word[j] = callee_output_word[j + 4];
+          callee_output_word[j + 4] = shifted_bits;
+          scratch_buffer[j + 16] = j + 4;
         }
       }
       while ( 1 )
       {
-        v26 = 0x7FFFFFFF;
-        v25 = 0;
-        v19 = 0;
-        v20 = 0;
+        table_value_2 = 0x7FFFFFFF;
+        table_value = 0;
+        cached_j_2 = 0;
+        cached_j_3 = 0;
         for ( j = 0; j < 4; ++j )
         {
-          if ( v26 > v34[j + 12] )
+          if ( table_value_2 > scratch_buffer[j + 12] )
           {
-            v26 = v34[j + 12];
-            v19 = j;
+            table_value_2 = scratch_buffer[j + 12];
+            cached_j_2 = j;
           }
-          if ( v25 < v34[j + 8] )
+          if ( table_value < scratch_buffer[j + 8] )
           {
-            v25 = v34[j + 8];
-            v20 = j;
+            table_value = scratch_buffer[j + 8];
+            cached_j_3 = j;
           }
         }
-        if ( v26 >= v25 )
+        if ( table_value_2 >= table_value )
           break;
-        v34[v20 + 16] = v34[v19 + 16] ^ 4;
-        v34[v20] = v34[v19 + 4];
-        v35[v20] = v35[v19 + 4];
-        v34[v20 + 8] = 0;
-        v34[v19 + 12] = 0x7FFFFFFF;
-        crt_memcpy((__m128i *)&v35[8 * v20 + 8], (     __m128i *)&v35[8 * v19 + 8], 0x10u);
+        scratch_buffer[cached_j_3 + 16] = scratch_buffer[cached_j_2 + 16] ^ 4;
+        scratch_buffer[cached_j_3] = scratch_buffer[cached_j_2 + 4];
+        callee_output_word[cached_j_3] = callee_output_word[cached_j_2 + 4];
+        scratch_buffer[cached_j_3 + 8] = 0;
+        scratch_buffer[cached_j_2 + 12] = 0x7FFFFFFF;
+        crt_memcpy((__m128i *)&callee_output_word[8 * cached_j_3 + 8], (     __m128i *)&callee_output_word[8 * cached_j_2 + 8], 0x10u);
       }
       for ( j = 0; j < 4; ++j )
-        *((_BYTE *)&v35[8 * j + 8] + i) += (int)v34[j + 16] >> 2;
+        *((_BYTE *)&callee_output_word[8 * j + 8] + i) += (int)scratch_buffer[j + 16] >> 2;
     }
     else
     {
-      for ( j = 0; j < v17; ++j )
-        *((_BYTE *)&v35[8 * v17 + 8 + 8 * j] + i) = *((_BYTE *)&v35[8 * j + 8] + i) + 1;
-      v17 *= 2;
-      for ( j = v17; j < 4; ++j )
-        *((_BYTE *)&v35[8 * j + 8] + i) = *((_BYTE *)&v35[8 * (j - v17) + 8] + i);
+      for ( j = 0; j < selection_flag; ++j )
+        *((_BYTE *)&callee_output_word[8 * selection_flag + 8 + 8 * j] + i) = *((_BYTE *)&callee_output_word[8 * j + 8] + i) + 1;
+      selection_flag *= 2;
+      for ( j = selection_flag; j < 4; ++j )
+        *((_BYTE *)&callee_output_word[8 * j + 8] + i) = *((_BYTE *)&callee_output_word[8 * (j - selection_flag) + 8] + i);
     }
   }
-  v16 = 0;
-  v27 = 0x7FFFFFFF;
+  cached_j = 0;
+  table_value_3 = 0x7FFFFFFF;
   for ( j = 0; j < 8; ++j )
   {
-    if ( v27 > v34[j] )
+    if ( table_value_3 > scratch_buffer[j] )
     {
-      v27 = v34[j];
-      v16 = j;
+      table_value_3 = scratch_buffer[j];
+      cached_j = j;
     }
   }
   for ( j = 0; j < a10; ++j )
-    a1[j] = *((_BYTE *)&v35[8 * (v16 & 3) + 8] + j);
-  *a1 += v16 >> 2;
-  return (unsigned int)v27; /* 0x1401C6DFB: mov eax, dword ptr [rsp + 0x5c] */
+    a1[j] = *((_BYTE *)&callee_output_word[8 * (cached_j & 3) + 8] + j);
+  *a1 += cached_j >> 2;
+  return (unsigned int)table_value_3; /* 0x1401C6DFB: mov eax, dword ptr [rsp + 0x5c] */
 }
 
 //----- (00000001401C6E20) ----------------------------------------------------
 __int64            sub_1401C6E20(__int64 a1, __int64 a2, __int64 a3, int a4)
 {
   __int64 result;
-  unsigned __int8 v5;
+  unsigned __int8 loaded_word;
   int i;
-  unsigned __int8 *v7;
+  unsigned __int8 *buffer_cursor;
 
-  v7 = (unsigned __int8 *)(*(__int16 *)(a3 + 2) * a4 / 2 + *(_QWORD *)(a3 + 40));
+  buffer_cursor = (unsigned __int8 *)(*(__int16 *)(a3 + 2) * a4 / 2 + *(_QWORD *)(a3 + 40));
   for ( i = 0; ; i += 2 )
   {
     result = (unsigned int)*(__int16 *)(a3 + 2);
     if ( i >= (int)result )
       break;
-    v5 = *v7++;
-    *(_WORD *)(a1 + 2LL * i) = 9 * (((int)v5 >> 1) & 7);
-    *(_BYTE *)(a2 + i) = *(_BYTE *)(*(_QWORD *)(a3 + 32) + (*(__int16 *)(a3 + 2) - 1) * (v5 & 1) + i);
-    *(_WORD *)(a1 + 2LL * (i + 1)) = 9 * (((int)v5 >> 5) & 7);
-    *(_BYTE *)(a2 + i + 1) = *(_BYTE *)(*(_QWORD *)(a3 + 32) + i + (*(__int16 *)(a3 + 2) - 1) * (((int)v5 >> 4) & 1) + 1);
+    loaded_word = *buffer_cursor++;
+    *(_WORD *)(a1 + 2LL * i) = 9 * (((int)loaded_word >> 1) & 7);
+    *(_BYTE *)(a2 + i) = *(_BYTE *)(*(_QWORD *)(a3 + 32) + (*(__int16 *)(a3 + 2) - 1) * (loaded_word & 1) + i);
+    *(_WORD *)(a1 + 2LL * (i + 1)) = 9 * (((int)loaded_word >> 5) & 7);
+    *(_BYTE *)(a2 + i + 1) = *(_BYTE *)(*(_QWORD *)(a3 + 32) + i + (*(__int16 *)(a3 + 2) - 1) * (((int)loaded_word >> 4) & 1) + 1);
   }
   return result;
 }
@@ -2174,38 +2174,38 @@ __int64            sub_1401C6E20(__int64 a1, __int64 a2, __int64 a3, int a4)
 //----- (00000001401C6F70) ----------------------------------------------------
 __int64            sub_1401C6F70(__int16 *a1, char *a2, __int64 a3)
 {
-  __int64 v4;
+  __int64 unused_local;
   int i;
-  int v6;
-  int v7;
-  int v8;
-  __int64 v9;
-  __int64 v10;
-  _BYTE v11[16];
-  _WORD v12[16];
-  _BYTE v13[32];
-  __int64 v14;
+  int shifted_bits;
+  int saved_shifted_bits;
+  int cached_shifted_bits;
+  __int64 loaded_word;
+  __int64 loaded_word_2;
+  _BYTE scratch_buffer[16];
+  _WORD scratch_buffer_2[16];
+  _BYTE scratch_buffer_3[32];
+  __int64 unused_local_2;
 
-  sub_1401C6E20((__int64)v13, (__int64)v11, a3, *a2);
-  sub_1401D6F30((__int64)v12, (__int64)(a2 + 1), (__int64)v11, *(_WORD *)(a3 + 4), *(_WORD *)(a3 + 2));
-  v10 = *(__int16 *)(a3 + 2) * *a2 + *(_QWORD *)(a3 + 8);
-  v9 = *(_QWORD *)(a3 + 16) + 2LL * *(__int16 *)(a3 + 2) * *a2;
+  sub_1401C6E20((__int64)scratch_buffer_3, (__int64)scratch_buffer, a3, *a2);
+  sub_1401D6F30((__int64)scratch_buffer_2, (__int64)(a2 + 1), (__int64)scratch_buffer, *(_WORD *)(a3 + 4), *(_WORD *)(a3 + 2));
+  loaded_word_2 = *(__int16 *)(a3 + 2) * *a2 + *(_QWORD *)(a3 + 8);
+  loaded_word = *(_QWORD *)(a3 + 16) + 2LL * *(__int16 *)(a3 + 2) * *a2;
   for ( i = 0; i < *(__int16 *)(a3 + 2); ++i )
   {
-    v6 = (*(unsigned __int8 *)(v10 + i) << 7) + ((__int16)v12[i] << 14) / *(__int16 *)(v9 + 2LL * i);
-    if ( v6 <= 0x7FFF )
+    shifted_bits = (*(unsigned __int8 *)(loaded_word_2 + i) << 7) + ((__int16)scratch_buffer_2[i] << 14) / *(__int16 *)(loaded_word + 2LL * i);
+    if ( shifted_bits <= 0x7FFF )
     {
-      if ( v6 >= 0 )
-        v7 = v6;
+      if ( shifted_bits >= 0 )
+        saved_shifted_bits = shifted_bits;
       else
-        v7 = 0;
-      v8 = v7;
+        saved_shifted_bits = 0;
+      cached_shifted_bits = saved_shifted_bits;
     }
     else
     {
-      v8 = 0x7FFF;
+      cached_shifted_bits = 0x7FFF;
     }
-    a1[i] = v8;
+    a1[i] = cached_shifted_bits;
   }
   sub_1401BD8C0(a1, *(__int16 **)(a3 + 64), *(__int16 *)(a3 + 2));
   return 0; /* no caller reads the result */
@@ -2226,18 +2226,18 @@ __int64            sub_1401C7180(_DWORD *a1)
 //----- (00000001401C71F0) ----------------------------------------------------
 __int64            sub_1401C71F0(__int64 a1, int a2, int a3)
 {
-  unsigned int v4;
-  int v5;
+  unsigned int unused_written_slot;
+  int loaded_word;
 
-  v4 = 0;
+  unused_written_slot = 0;
   *(_DWORD *)(a1 + 2332) = 5 * (__int16)a2;
-  v5 = *(__int16 *)(a1 + 2332) * *(__int16 *)(a1 + 2324);
+  loaded_word = *(__int16 *)(a1 + 2332) * *(__int16 *)(a1 + 2324);
   if ( *(_DWORD *)(a1 + 2316) != a2 || *(_DWORD *)(a1 + 2320) != a3 )
   {
-    v4 = sub_1401BA4E0(a1 + 2448, 1000 * (__int16)a2, a3, 0);
+    unused_written_slot = sub_1401BA4E0(a1 + 2448, 1000 * (__int16)a2, a3, 0);
     *(_DWORD *)(a1 + 2320) = a3;
   }
-  if ( *(_DWORD *)(a1 + 2316) != a2 || v5 != *(_DWORD *)(a1 + 2328) )
+  if ( *(_DWORD *)(a1 + 2316) != a2 || loaded_word != *(_DWORD *)(a1 + 2328) )
   {
     if ( a2 == 8 )
     {
@@ -2287,45 +2287,45 @@ __int64            sub_1401C71F0(__int64 a1, int a2, int a3)
       crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 1284)), 0, 0x40u);
     }
     *(_DWORD *)(a1 + 2316) = a2;
-    *(_DWORD *)(a1 + 2328) = v5;
+    *(_DWORD *)(a1 + 2328) = loaded_word;
   }
-  return v4;
+  return unused_written_slot;
 }
 
 //----- (00000001401C74B0) ----------------------------------------------------
 __int64            sub_1401C74B0(__int64 a1, _DWORD *a2,      __m128i *a3, unsigned int *a4, int a5, int a6, int a7)
 {
-  void *v7;
-  unsigned __int64 v8;
-  void *v9;
-       __m128i *v10;
-  _BYTE v12[96];
-  int v13;
-  int v14;
-       __m128i *v15;
-  int v16;
-  int v17;
-  _BYTE *v18;
-  __int64 v19;
-  __int64 v20;
+  void *alloca_result;
+  unsigned __int64 masked_bits;
+  void *alloca_result_2;
+       __m128i *source_buffer;
+  _BYTE unused_local[96];
+  int unused_written_slot;
+  int loaded_word;
+       __m128i *saved_alloca_result;
+  int loaded_word_2;
+  int selection_flag;
+  _BYTE *saved_alloca_result_2;
+  __int64 unused_written_slot_2;
+  __int64 unused_local_2;
 
-  v17 = 0;
-  v14 = *(_DWORD *)(a1 + 2328);
-  v7 = alloca(144);
-  v15 = (     __m128i *)v7;
-  v13 = 0;
+  selection_flag = 0;
+  loaded_word = *(_DWORD *)(a1 + 2328);
+  alloca_result = alloca(144);
+  saved_alloca_result = (     __m128i *)alloca_result;
+  unused_written_slot = 0;
   if ( !a5 || a5 == 2 && *(_DWORD *)(a1 + 4LL * *(int *)(a1 + 2400) + 2432) == 1 )
   {
-    v8 = 2LL * (int)((v14 + 15) & 0xFFFFFFF0) + 15;
-    if ( v8 <= 2LL * (int)((v14 + 15) & 0xFFFFFFF0) )
-      v8 = 0xFFFFFFFFFFFFFF0LL;
-    v9 = alloca(v8 & 0xFFFFFFFFFFFFFFF0uLL);
-    v18 = v9;
+    masked_bits = 2LL * (int)((loaded_word + 15) & 0xFFFFFFF0) + 15;
+    if ( masked_bits <= 2LL * (int)((loaded_word + 15) & 0xFFFFFFF0) )
+      masked_bits = 0xFFFFFFFFFFFFFF0LL;
+    alloca_result_2 = alloca(masked_bits & 0xFFFFFFFFFFFFFFF0uLL);
+    saved_alloca_result_2 = alloca_result_2;
     sub_1401C7770(a1, a2, *(_DWORD *)(a1 + 2400), a5, a6);
-    sub_1401C92B0(a2, (__int64)v18, *(char *)(a1 + 2789), *(char *)(a1 + 2790), *(_DWORD *)(a1 + 2328));
-    sub_1401C7DF0(a1, (__int64)v15, a6);
-    sub_1401C82D0(a1, (__int64)v15, a3, (__int64)v18, a7);
-    sub_1401BEB10((_DWORD *)a1, v15, (__int64)a3, 0);
+    sub_1401C92B0(a2, (__int64)saved_alloca_result_2, *(char *)(a1 + 2789), *(char *)(a1 + 2790), *(_DWORD *)(a1 + 2328));
+    sub_1401C7DF0(a1, (__int64)saved_alloca_result, a6);
+    sub_1401C82D0(a1, (__int64)saved_alloca_result, a3, (__int64)saved_alloca_result_2, a7);
+    sub_1401BEB10((_DWORD *)a1, saved_alloca_result, (__int64)a3, 0);
     *(_DWORD *)(a1 + 4184) = 0;
     *(_DWORD *)(a1 + 4188) = *(char *)(a1 + 2789);
     *(_DWORD *)(a1 + 2376) = 0;
@@ -2333,41 +2333,41 @@ __int64            sub_1401C74B0(__int64 a1, _DWORD *a2,      __m128i *a3, unsig
   else
   {
     *(_BYTE *)(a1 + 2789) = *(_BYTE *)(a1 + 4188);
-    sub_1401BEB10((_DWORD *)a1, v15, (__int64)a3, 1);
+    sub_1401BEB10((_DWORD *)a1, saved_alloca_result, (__int64)a3, 1);
   }
-  v16 = *(_DWORD *)(a1 + 2336) - *(_DWORD *)(a1 + 2328);
-  v10 = (     __m128i *)(a1 + 2LL * *(int *)(a1 + 2328) + 1348);
-  v19 = a1 + 1348;
-  crt_memcpy((__m128i *)(a1 + 1348), v10, 2LL * v16);
-  crt_memcpy((__m128i *)(a1 + 2LL * v16 + 1348), a3, 2LL * *(int *)(a1 + 2328));
-  sub_1401C96E0(a1, (__int64)v15, (__int64)a3, v14);
-  sub_1401BEBC0((_DWORD *)a1, (__int64)a3, v14);
-  *(_DWORD *)(a1 + 2308) = SR_VEC_PTR_LANES(128, v15, i32)[*(_DWORD *)(a1 + 2324) - 1];
-  *a4 = v14;
-  return (unsigned int)v17; /* 0x1401C7755: mov eax, dword ptr [rbp + 0x14] */
+  loaded_word_2 = *(_DWORD *)(a1 + 2336) - *(_DWORD *)(a1 + 2328);
+  source_buffer = (     __m128i *)(a1 + 2LL * *(int *)(a1 + 2328) + 1348);
+  unused_written_slot_2 = a1 + 1348;
+  crt_memcpy((__m128i *)(a1 + 1348), source_buffer, 2LL * loaded_word_2);
+  crt_memcpy((__m128i *)(a1 + 2LL * loaded_word_2 + 1348), a3, 2LL * *(int *)(a1 + 2328));
+  sub_1401C96E0(a1, (__int64)saved_alloca_result, (__int64)a3, loaded_word);
+  sub_1401BEBC0((_DWORD *)a1, (__int64)a3, loaded_word);
+  *(_DWORD *)(a1 + 2308) = SR_VEC_PTR_LANES(128, saved_alloca_result, i32)[*(_DWORD *)(a1 + 2324) - 1];
+  *a4 = loaded_word;
+  return (unsigned int)selection_flag; /* 0x1401C7755: mov eax, dword ptr [rbp + 0x14] */
 }
 
 //----- (00000001401C7770) ----------------------------------------------------
 __int64            sub_1401C7770(__int64 a1, _DWORD *a2, int a3, int a4, int a5)
 {
-  __int16 v5;
-  __int64 v7;
-  int v8;
+  __int16 masked_bits;
+  __int64 unused_local;
+  int masked_bits_2;
   int i;
-  int v10;
+  int saved_masked_bits;
   int j;
-  int v12;
-  __int64 v13;
-  _BYTE v14[16];
-  _WORD v15[16];
-  __int64 v16;
+  int selection_flag;
+  __int64 unused_written_slot;
+  _BYTE scratch_buffer[16];
+  _WORD scratch_buffer_2[16];
+  __int64 unused_local_2;
 
   if ( a4 || *(_DWORD *)(a1 + 4LL * a3 + 2416) )
-    v8 = sub_14019AFE0(a2, (__int64)&unk_140282454, 8) + 2;
+    masked_bits_2 = sub_14019AFE0(a2, (__int64)&unk_140282454, 8) + 2;
   else
-    v8 = sub_14019AFE0(a2, (__int64)&unk_14028246C, 8);
-  *(_BYTE *)(a1 + 2789) = v8 >> 1;
-  *(_BYTE *)(a1 + 2790) = v8 & 1;
+    masked_bits_2 = sub_14019AFE0(a2, (__int64)&unk_14028246C, 8);
+  *(_BYTE *)(a1 + 2789) = masked_bits_2 >> 1;
+  *(_BYTE *)(a1 + 2790) = masked_bits_2 & 1;
   if ( a5 == 2 )
   {
     *(_BYTE *)(a1 + 2760) = sub_14019AFE0(a2, (__int64)&unk_140282230, 8);
@@ -2375,7 +2375,7 @@ __int64            sub_1401C7770(__int64 a1, _DWORD *a2, int a3, int a4, int a5)
   else
   {
     *(_BYTE *)(a1 + 2760) = 8 * sub_14019AFE0(a2, (__int64)&unk_140282218 + 8 * *(char *)(a1 + 2789), 8);
-    v13 = 0;
+    unused_written_slot = 0;
     *(_BYTE *)(a1 + 2760) += sub_14019AFE0(a2, (__int64)&unk_140282538, 8);
   }
   for ( i = 1; i < *(_DWORD *)(a1 + 2324); ++i )
@@ -2385,20 +2385,20 @@ __int64            sub_1401C7770(__int64 a1, _DWORD *a2, int a3, int a4, int a5)
                             **(__int16 **)(a1 + 2752) * (*(char *)(a1 + 2789) >> 1)
                           + *(_QWORD *)(*(_QWORD *)(a1 + 2752) + 24LL),
                             8);
-  sub_1401C6E20((__int64)v15, (__int64)v14, *(_QWORD *)(a1 + 2752), *(char *)(a1 + 2768));
+  sub_1401C6E20((__int64)scratch_buffer_2, (__int64)scratch_buffer, *(_QWORD *)(a1 + 2752), *(char *)(a1 + 2768));
   for ( i = 0; i < *(__int16 *)(*(_QWORD *)(a1 + 2752) + 2LL); ++i )
   {
-    v8 = sub_14019AFE0(a2, (__int16)v15[i] + *(_QWORD *)(*(_QWORD *)(a1 + 2752) + 48LL), 8);
-    if ( v8 )
+    masked_bits_2 = sub_14019AFE0(a2, (__int16)scratch_buffer_2[i] + *(_QWORD *)(*(_QWORD *)(a1 + 2752) + 48LL), 8);
+    if ( masked_bits_2 )
     {
-      if ( v8 == 8 )
-        v8 = sub_14019AFE0(a2, (__int64)&unk_140282264, 8) + 8;
+      if ( masked_bits_2 == 8 )
+        masked_bits_2 = sub_14019AFE0(a2, (__int64)&unk_140282264, 8) + 8;
     }
     else
     {
-      v8 = -(int)sub_14019AFE0(a2, (__int64)&unk_140282264, 8);
+      masked_bits_2 = -(int)sub_14019AFE0(a2, (__int64)&unk_140282264, 8);
     }
-    *(_BYTE *)(a1 + i + 1 + 2768) = v8 - 4;
+    *(_BYTE *)(a1 + i + 1 + 2768) = masked_bits_2 - 4;
   }
   if ( *(_DWORD *)(a1 + 2324) == 4 )
     *(_BYTE *)(a1 + 2791) = sub_14019AFE0(a2, (__int64)&unk_1402827F0, 8);
@@ -2406,19 +2406,19 @@ __int64            sub_1401C7770(__int64 a1, _DWORD *a2, int a3, int a4, int a5)
     *(_BYTE *)(a1 + 2791) = 4;
   if ( *(_BYTE *)(a1 + 2789) == 2 )
   {
-    v12 = 1;
+    selection_flag = 1;
     if ( a5 == 2 && *(_DWORD *)(a1 + 2408) == 2 )
     {
-      v5 = sub_14019AFE0(a2, (__int64)&unk_140282290, 8);
-      v10 = v5;
-      if ( v5 > 0 )
+      masked_bits = sub_14019AFE0(a2, (__int64)&unk_140282290, 8);
+      saved_masked_bits = masked_bits;
+      if ( masked_bits > 0 )
       {
-        v10 -= 9;
-        *(_WORD *)(a1 + 2786) = v10 + *(_WORD *)(a1 + 2412);
-        v12 = 0;
+        saved_masked_bits -= 9;
+        *(_WORD *)(a1 + 2786) = saved_masked_bits + *(_WORD *)(a1 + 2412);
+        selection_flag = 0;
       }
     }
-    if ( v12 )
+    if ( selection_flag )
     {
       *(_WORD *)(a1 + 2786) = (*(int *)(a1 + 2316) >> 1) * sub_14019AFE0(a2, (__int64)&unk_140282270, 8);
       *(_WORD *)(a1 + 2786) += sub_14019AFE0(a2, *(_QWORD *)(a1 + 2384), 8);
@@ -2441,40 +2441,40 @@ __int64            sub_1401C7770(__int64 a1, _DWORD *a2, int a3, int a4, int a5)
 //----- (00000001401C7DF0) ----------------------------------------------------
 __int64            sub_1401C7DF0(__int64 a1, __int64 a2, int a3)
 {
-  unsigned __int64 v3;
-  __int64 v5;
+  unsigned __int64 byte_count;
+  __int64 unused_local;
   int i;
   int j;
-  int v8;
-  BOOL v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int16 v13[16];
-  _WORD v14[16];
-  __int64 v15;
+  int loaded_word;
+  BOOL comparison_result;
+  __int64 unused_written_slot;
+  __int64 unused_written_slot_2;
+  __int64 loaded_word_2;
+  __int16 source_buffer[16];
+  _WORD scratch_buffer[16];
+  __int64 unused_local_2;
 
-  v9 = a3 == 2;
-  v10 = a2 + 16;
-  sub_1401C2D70(a2 + 16, (char *)(a1 + 2760), (char *)(a1 + 2312), v9, *(_DWORD *)(a1 + 2324));
-  sub_1401C6F70(v13, (char *)(a1 + 2768), *(_QWORD *)(a1 + 2752));
-  CWinApp__ShowAppMessageBox((struct CWinApp *)(a2 + 64), (     char *)v13, *(_DWORD *)(a1 + 2340));
+  comparison_result = a3 == 2;
+  unused_written_slot = a2 + 16;
+  sub_1401C2D70(a2 + 16, (char *)(a1 + 2760), (char *)(a1 + 2312), comparison_result, *(_DWORD *)(a1 + 2324));
+  sub_1401C6F70(source_buffer, (char *)(a1 + 2768), *(_QWORD *)(a1 + 2752));
+  CWinApp__ShowAppMessageBox((struct CWinApp *)(a2 + 64), (     char *)source_buffer, *(_DWORD *)(a1 + 2340));
   if ( *(_DWORD *)(a1 + 2376) == 1 )
     *(_BYTE *)(a1 + 2791) = 4;
   if ( *(char *)(a1 + 2791) >= 4 )
   {
-    v3 = 2LL * *(int *)(a1 + 2340);
-    v11 = a2 + 32;
-    crt_memcpy((__m128i *)(a2 + 32), (     __m128i *)(a2 + 64), v3);
+    byte_count = 2LL * *(int *)(a1 + 2340);
+    unused_written_slot_2 = a2 + 32;
+    crt_memcpy((__m128i *)(a2 + 32), (     __m128i *)(a2 + 64), byte_count);
   }
   else
   {
     for ( i = 0; i < *(_DWORD *)(a1 + 2340); ++i )
-      v14[i] = (((v13[i] - *(__int16 *)(a1 + 2LL * i + 2344)) * *(char *)(a1 + 2791)) >> 2)
+      scratch_buffer[i] = (((source_buffer[i] - *(__int16 *)(a1 + 2LL * i + 2344)) * *(char *)(a1 + 2791)) >> 2)
              + *(_WORD *)(a1 + 2LL * i + 2344);
-    CWinApp__ShowAppMessageBox((struct CWinApp *)(a2 + 32), (     char *)v14, *(_DWORD *)(a1 + 2340));
+    CWinApp__ShowAppMessageBox((struct CWinApp *)(a2 + 32), (     char *)scratch_buffer, *(_DWORD *)(a1 + 2340));
   }
-  crt_memcpy((__m128i *)(a1 + 2344), (     __m128i *)v13, 2LL * *(int *)(a1 + 2340));
+  crt_memcpy((__m128i *)(a1 + 2344), (     __m128i *)source_buffer, 2LL * *(int *)(a1 + 2340));
   if ( *(_DWORD *)(a1 + 4184) )
   {
     sub_1401BBDE0(a2 + 32, *(_DWORD *)(a1 + 2340), 63570);
@@ -2483,15 +2483,15 @@ __int64            sub_1401C7DF0(__int64 a1, __int64 a2, int a3)
   if ( *(_BYTE *)(a1 + 2789) == 2 )
   {
     sub_1401BC700(*(_WORD *)(a1 + 2786), *(_BYTE *)(a1 + 2788), a2, *(_DWORD *)(a1 + 2316), *(_DWORD *)(a1 + 2324));
-    v12 = (__int64)*(&off_140282768 + *(char *)(a1 + 2792));
+    loaded_word_2 = (__int64)*(&off_140282768 + *(char *)(a1 + 2792));
     for ( j = 0; j < *(_DWORD *)(a1 + 2324); ++j )
     {
-      v8 = *(char *)(a1 + j + 2764);
+      loaded_word = *(char *)(a1 + j + 2764);
       for ( i = 0; i < 5; ++i )
-        *(_WORD *)(a2 + 2LL * (i + 5 * j) + 96) = *(char *)(v12 + i + 5 * v8) << 7;
+        *(_WORD *)(a2 + 2LL * (i + 5 * j) + 96) = *(char *)(loaded_word_2 + i + 5 * loaded_word) << 7;
     }
-    v8 = *(char *)(a1 + 2793);
-    *(_DWORD *)(a2 + 136) = word_140282798[v8];
+    loaded_word = *(char *)(a1 + 2793);
+    *(_DWORD *)(a2 + 136) = word_140282798[loaded_word];
   }
   else
   {
@@ -2506,89 +2506,89 @@ __int64            sub_1401C7DF0(__int64 a1, __int64 a2, int a3)
 //----- (00000001401C82D0) ----------------------------------------------------
 __int64            sub_1401C82D0(__int64 a1, __int64 a2,      __m128i *a3, __int64 a4, int a5)
 {
-  unsigned __int64 v5;
-  __int64 v6;
-  void *v7;
-  unsigned __int64 v8;
-  void *v9;
-  unsigned __int64 v10;
-  void *v11;
-  unsigned __int64 v12;
-  void *v13;
-  int v14;
-  int v15;
-  int v17;
+  unsigned __int64 loaded_word;
+  __int64 integer_sum;
+  void *alloca_result;
+  unsigned __int64 loaded_word_2;
+  void *alloca_result_2;
+  unsigned __int64 loaded_word_3;
+  void *alloca_result_3;
+  unsigned __int64 loaded_word_4;
+  void *alloca_result_4;
+  int loaded_word_5;
+  int loaded_word_6;
+  int unused_written_slot;
   int i;
-  int v19;
+  int shifted_bits;
   int j;
-  __m128i *v21;
-  int v22;
-  int v23;
-  int v24;
-  int v25;
-  int v26;
-  int *v27;
-  int v28;
-  int v29;
-  int v30;
-  int v31;
-  _WORD *v32;
-  int *v33;
-  int v34;
-  int v35;
-  int v36;
-  int v37;
-  int v38;
-  int v39;
-  int v40;
-  int v41;
-  int v42;
-  __int32 v43;
-  int v44;
-  int v45;
-  BOOL v46;
-  int v47;
-  int v48;
-  int v49;
-  int *v50;
-  int *v51;
-  int v52;
-       __m128i *v53;
-  __m128i *v54;
-  int *v55;
-  int *v56;
-  _WORD *v57;
-  __m128i v58[2];
-  __int64 v59;
+  __m128i *source_buffer;
+  int shifted_bits_2;
+  int element_index;
+  int running_total;
+  int loaded_word_7;
+  int loaded_word_8;
+  int *saved_running_total;
+  int loaded_word_9;
+  int shifted_bits_3;
+  int loaded_word_10;
+  int shifted_bits_4;
+  _WORD *record_pointer;
+  int *buffer_cursor;
+  int cached_shifted_bits;
+  int saved_shifted_bits;
+  int cached_shifted_bits_2;
+  int scaled_index;
+  int saved_shifted_bits_2;
+  int cached_shifted_bits_3;
+  int saved_shifted_bits_3;
+  int cached_shifted_bits_4;
+  int scaled_index_2;
+  __int32 cached_scaled_index;
+  int shifted_bits_5;
+  int saved_shifted_bits_4;
+  BOOL comparison_result;
+  int saved_shifted_bits_5;
+  int cached_shifted_bits_5;
+  int saved_shifted_bits_6;
+  int *saved_alloca_result;
+  int *running_total_2;
+  int shifted_bits_6;
+       __m128i *loaded_record_pointer;
+  __m128i *source_buffer_2;
+  int *saved_alloca_result_2;
+  int *saved_alloca_result_3;
+  _WORD *record_pointer_2;
+  __m128i destination_buffer[2];
+  __int64 unused_local;
 
-  v25 = 0;
-  v5 = 2LL * *(int *)(a1 + 2336);
-  v6 = v5 + 15;
-  if ( v5 + 15 <= v5 )
-    v6 = 0xFFFFFFFFFFFFFF0LL;
-  v7 = alloca(v6 & 0xFFFFFFFFFFFFFFF0uLL);
-  v55 = v7;
-  v8 = 4LL * (*(_DWORD *)(a1 + 2328) + *(_DWORD *)(a1 + 2336)) + 15;
-  if ( v8 <= 4LL * (*(_DWORD *)(a1 + 2328) + *(_DWORD *)(a1 + 2336)) )
-    v8 = 0xFFFFFFFFFFFFFF0LL;
-  v9 = alloca(v8 & 0xFFFFFFFFFFFFFFF0uLL);
-  v50 = v9;
-  v10 = 4LL * *(int *)(a1 + 2332) + 15;
-  if ( v10 <= 4LL * *(int *)(a1 + 2332) )
-    v10 = 0xFFFFFFFFFFFFFF0LL;
-  v11 = alloca(v10 & 0xFFFFFFFFFFFFFFF0uLL);
-  v56 = v11;
-  v12 = 4LL * (*(_DWORD *)(a1 + 2332) + 16) + 15;
-  if ( v12 <= 4LL * (*(_DWORD *)(a1 + 2332) + 16) )
-    v12 = 0xFFFFFFFFFFFFFF0LL;
-  v13 = alloca(v12 & 0xFFFFFFFFFFFFFFF0uLL);
-  v21 = (__m128i *)v13;
-  v52 = word_1402827F8[2 * (*(char *)(a1 + 2789) >> 1) + *(char *)(a1 + 2790)];
-  v46 = *(char *)(a1 + 2791) < 4;
-  v24 = *(char *)(a1 + 2794);
+  loaded_word_7 = 0;
+  loaded_word = 2LL * *(int *)(a1 + 2336);
+  integer_sum = loaded_word + 15;
+  if ( loaded_word + 15 <= loaded_word )
+    integer_sum = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(integer_sum & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_2 = alloca_result;
+  loaded_word_2 = 4LL * (*(_DWORD *)(a1 + 2328) + *(_DWORD *)(a1 + 2336)) + 15;
+  if ( loaded_word_2 <= 4LL * (*(_DWORD *)(a1 + 2328) + *(_DWORD *)(a1 + 2336)) )
+    loaded_word_2 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_2 = alloca(loaded_word_2 & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result_2;
+  loaded_word_3 = 4LL * *(int *)(a1 + 2332) + 15;
+  if ( loaded_word_3 <= 4LL * *(int *)(a1 + 2332) )
+    loaded_word_3 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_3 = alloca(loaded_word_3 & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_3 = alloca_result_3;
+  loaded_word_4 = 4LL * (*(_DWORD *)(a1 + 2332) + 16) + 15;
+  if ( loaded_word_4 <= 4LL * (*(_DWORD *)(a1 + 2332) + 16) )
+    loaded_word_4 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_4 = alloca(loaded_word_4 & 0xFFFFFFFFFFFFFFF0uLL);
+  source_buffer = (__m128i *)alloca_result_4;
+  shifted_bits_6 = word_1402827F8[2 * (*(char *)(a1 + 2789) >> 1) + *(char *)(a1 + 2790)];
+  comparison_result = *(char *)(a1 + 2791) < 4;
+  running_total = *(char *)(a1 + 2794);
   for ( i = 0; i < *(_DWORD *)(a1 + 2328); ++i )
   {
-    v24 = 196314165 * v24 + 907633515;
+    running_total = 196314165 * running_total + 907633515;
     *(_DWORD *)(a1 + 4LL * i + 4) = *(__int16 *)(a4 + 2LL * i) << 14;
     if ( *(int *)(a1 + 4LL * i + 4) <= 0 )
     {
@@ -2599,287 +2599,287 @@ __int64            sub_1401C82D0(__int64 a1, __int64 a2,      __m128i *a3, __int
     {
       *(_DWORD *)(a1 + 4LL * i + 4) -= 1280;
     }
-    *(_DWORD *)(a1 + 4LL * i + 4) += 16 * v52;
-    if ( v24 < 0 )
+    *(_DWORD *)(a1 + 4LL * i + 4) += 16 * shifted_bits_6;
+    if ( running_total < 0 )
       *(_DWORD *)(a1 + 4LL * i + 4) = -*(_DWORD *)(a1 + 4LL * i + 4);
-    v24 += *(__int16 *)(a4 + 2LL * i);
+    running_total += *(__int16 *)(a4 + 2LL * i);
   }
-  crt_memcpy(v21, (     __m128i *)(a1 + 1284), 0x40u);
-  v51 = (int *)(a1 + 4);
-  v53 = a3;
-  v23 = *(_DWORD *)(a1 + 2336);
+  crt_memcpy(source_buffer, (     __m128i *)(a1 + 1284), 0x40u);
+  running_total_2 = (int *)(a1 + 4);
+  loaded_record_pointer = a3;
+  element_index = *(_DWORD *)(a1 + 2336);
   for ( j = 0; j < *(_DWORD *)(a1 + 2324); ++j )
   {
-    v27 = v56;
-    v54 = (__m128i *)(a2 + 32LL * (j >> 1) + 32);
-    crt_memcpy(v58, v54, 2LL * *(int *)(a1 + 2340));
-    v32 = (_WORD *)(a2 + 10LL * j + 96);
-    v30 = *(char *)(a1 + 2789);
-    v31 = *(int *)(a2 + 4LL * j + 16) >> 6;
-    v29 = sub_1401BE820(*(_DWORD *)(a2 + 4LL * j + 16), 47);
+    saved_running_total = saved_alloca_result_3;
+    source_buffer_2 = (__m128i *)(a2 + 32LL * (j >> 1) + 32);
+    crt_memcpy(destination_buffer, source_buffer_2, 2LL * *(int *)(a1 + 2340));
+    record_pointer = (_WORD *)(a2 + 10LL * j + 96);
+    loaded_word_10 = *(char *)(a1 + 2789);
+    shifted_bits_4 = *(int *)(a2 + 4LL * j + 16) >> 6;
+    shifted_bits_3 = sub_1401BE820(*(_DWORD *)(a2 + 4LL * j + 16), 47);
     if ( *(_DWORD *)(a2 + 4LL * j + 16) == *(_DWORD *)a1 )
     {
-      v26 = 0x10000;
+      loaded_word_8 = 0x10000;
     }
     else
     {
-      v26 = sub_1401BE550(*(_DWORD *)a1, *(_DWORD *)(a2 + 4LL * j + 16), 16);
+      loaded_word_8 = sub_1401BE550(*(_DWORD *)a1, *(_DWORD *)(a2 + 4LL * j + 16), 16);
       for ( i = 0; i < 16; ++i )
-        SR_VEC_PTR_LANES(128, v21, i32)[i] = (SR_VEC_PTR_LANES(128, v21, i32)[i] * (__int64)v26) >> 16;
+        SR_VEC_PTR_LANES(128, source_buffer, i32)[i] = (SR_VEC_PTR_LANES(128, source_buffer, i32)[i] * (__int64)loaded_word_8) >> 16;
     }
     *(_DWORD *)a1 = *(_DWORD *)(a2 + 4LL * j + 16);
     if ( *(_DWORD *)(a1 + 4184) && *(_DWORD *)(a1 + 4188) == 2 && *(_BYTE *)(a1 + 2789) != 2 && j < 2 )
     {
-      crt_memset((void *)(uintptr_t)(v32), 0, 0xAu);
-      v32[2] = 4096;
-      v30 = 2;
+      crt_memset((void *)(uintptr_t)(record_pointer), 0, 0xAu);
+      record_pointer[2] = 4096;
+      loaded_word_10 = 2;
       *(_DWORD *)(a2 + 4LL * j) = *(_DWORD *)(a1 + 2308);
     }
-    if ( v30 == 2 )
+    if ( loaded_word_10 == 2 )
     {
-      v25 = *(_DWORD *)(a2 + 4LL * j);
-      if ( !j || j == 2 && v46 )
+      loaded_word_7 = *(_DWORD *)(a2 + 4LL * j);
+      if ( !j || j == 2 && comparison_result )
       {
-        v28 = *(_DWORD *)(a1 + 2336) - v25 - *(_DWORD *)(a1 + 2340) - 2;
+        loaded_word_9 = *(_DWORD *)(a1 + 2336) - loaded_word_7 - *(_DWORD *)(a1 + 2340) - 2;
         if ( j == 2 )
           crt_memcpy((__m128i *)(a1 + 2LL * *(int *)(a1 + 2336) + 1348), a3, 4LL * *(_DWORD *)(a1 + 2332));
-        v14 = *(_DWORD *)(a1 + 2336) - v28;
-        v15 = *(_DWORD *)(a1 + 2332) * j;
-        v57 = (_WORD *)v55 + v28;
-        v17 = a5;
-        sub_1401BBB40(v57, a1 + 2LL * (v15 + v28) + 1348, SR_VEC_PTR_LANES(128, v54, i16), v14, *(_DWORD *)(a1 + 2340));
+        loaded_word_5 = *(_DWORD *)(a1 + 2336) - loaded_word_9;
+        loaded_word_6 = *(_DWORD *)(a1 + 2332) * j;
+        record_pointer_2 = (_WORD *)saved_alloca_result_2 + loaded_word_9;
+        unused_written_slot = a5;
+        sub_1401BBB40(record_pointer_2, a1 + 2LL * (loaded_word_6 + loaded_word_9) + 1348, SR_VEC_PTR_LANES(128, source_buffer_2, i16), loaded_word_5, *(_DWORD *)(a1 + 2340));
         if ( !j )
-          v29 = 4 * ((*(__int16 *)(a2 + 136) * (__int64)v29) >> 16);
-        for ( i = 0; i < v25 + 2; ++i )
-          v50[v23 - i - 1] = (*((__int16 *)v55 + *(_DWORD *)(a1 + 2336) - i - 1) * (__int64)v29) >> 16;
+          shifted_bits_3 = 4 * ((*(__int16 *)(a2 + 136) * (__int64)shifted_bits_3) >> 16);
+        for ( i = 0; i < loaded_word_7 + 2; ++i )
+          saved_alloca_result[element_index - i - 1] = (*((__int16 *)saved_alloca_result_2 + *(_DWORD *)(a1 + 2336) - i - 1) * (__int64)shifted_bits_3) >> 16;
       }
-      else if ( v26 != 0x10000 )
+      else if ( loaded_word_8 != 0x10000 )
       {
-        for ( i = 0; i < v25 + 2; ++i )
-          v50[v23 - i - 1] = (v50[v23 - i - 1] * (__int64)v26) >> 16;
+        for ( i = 0; i < loaded_word_7 + 2; ++i )
+          saved_alloca_result[element_index - i - 1] = (saved_alloca_result[element_index - i - 1] * (__int64)loaded_word_8) >> 16;
       }
     }
-    if ( v30 == 2 )
+    if ( loaded_word_10 == 2 )
     {
-      v33 = &v50[v23 - v25 + 2];
+      buffer_cursor = &saved_alloca_result[element_index - loaded_word_7 + 2];
       for ( i = 0; i < *(_DWORD *)(a1 + 2332); ++i )
       {
-        v22 = 2;
-        v22 = (((__int16)*v32 * (__int64)*v33) >> 16) + 2;
-        v22 += ((__int16)v32[1] * (__int64)*(v33 - 1)) >> 16;
-        v22 += ((__int16)v32[2] * (__int64)*(v33 - 2)) >> 16;
-        v22 += ((__int16)v32[3] * (__int64)*(v33 - 3)) >> 16;
-        v22 += ((__int16)v32[4] * (__int64)*(v33 - 4)) >> 16;
-        ++v33;
-        v27[i] = v51[i] + 2 * v22;
-        v50[v23++] = 2 * v27[i];
+        shifted_bits_2 = 2;
+        shifted_bits_2 = (((__int16)*record_pointer * (__int64)*buffer_cursor) >> 16) + 2;
+        shifted_bits_2 += ((__int16)record_pointer[1] * (__int64)*(buffer_cursor - 1)) >> 16;
+        shifted_bits_2 += ((__int16)record_pointer[2] * (__int64)*(buffer_cursor - 2)) >> 16;
+        shifted_bits_2 += ((__int16)record_pointer[3] * (__int64)*(buffer_cursor - 3)) >> 16;
+        shifted_bits_2 += ((__int16)record_pointer[4] * (__int64)*(buffer_cursor - 4)) >> 16;
+        ++buffer_cursor;
+        saved_running_total[i] = running_total_2[i] + 2 * shifted_bits_2;
+        saved_alloca_result[element_index++] = 2 * saved_running_total[i];
       }
     }
     else
     {
-      v27 = v51;
+      saved_running_total = running_total_2;
     }
     for ( i = 0; i < *(_DWORD *)(a1 + 2332); ++i )
     {
-      v19 = *(int *)(a1 + 2340) >> 1;
-      v19 += (SR_VEC_LANES(128, v58[0], i16)[0] * (__int64)SR_VEC_LANES(128, v21[3], i32)[i + 3]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[0], i16)[1] * (__int64)SR_VEC_LANES(128, v21[3], i32)[i + 2]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[0], i16)[2] * (__int64)SR_VEC_LANES(128, v21[3], i32)[i + 1]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[0], i16)[3] * (__int64)SR_VEC_LANES(128, v21[3], i32)[i]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[0], i16)[4] * (__int64)SR_VEC_LANES(128, v21[2], i32)[i + 3]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[0], i16)[5] * (__int64)SR_VEC_LANES(128, v21[2], i32)[i + 2]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[0], i16)[6] * (__int64)SR_VEC_LANES(128, v21[2], i32)[i + 1]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[0], i16)[7] * (__int64)SR_VEC_LANES(128, v21[2], i32)[i]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[1], i16)[0] * (__int64)SR_VEC_LANES(128, v21[1], i32)[i + 3]) >> 16;
-      v19 += (SR_VEC_LANES(128, v58[1], i16)[1] * (__int64)SR_VEC_LANES(128, v21[1], i32)[i + 2]) >> 16;
+      shifted_bits = *(int *)(a1 + 2340) >> 1;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[0], i16)[0] * (__int64)SR_VEC_LANES(128, source_buffer[3], i32)[i + 3]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[0], i16)[1] * (__int64)SR_VEC_LANES(128, source_buffer[3], i32)[i + 2]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[0], i16)[2] * (__int64)SR_VEC_LANES(128, source_buffer[3], i32)[i + 1]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[0], i16)[3] * (__int64)SR_VEC_LANES(128, source_buffer[3], i32)[i]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[0], i16)[4] * (__int64)SR_VEC_LANES(128, source_buffer[2], i32)[i + 3]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[0], i16)[5] * (__int64)SR_VEC_LANES(128, source_buffer[2], i32)[i + 2]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[0], i16)[6] * (__int64)SR_VEC_LANES(128, source_buffer[2], i32)[i + 1]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[0], i16)[7] * (__int64)SR_VEC_LANES(128, source_buffer[2], i32)[i]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[1], i16)[0] * (__int64)SR_VEC_LANES(128, source_buffer[1], i32)[i + 3]) >> 16;
+      shifted_bits += (SR_VEC_LANES(128, destination_buffer[1], i16)[1] * (__int64)SR_VEC_LANES(128, source_buffer[1], i32)[i + 2]) >> 16;
       if ( *(_DWORD *)(a1 + 2340) == 16 )
       {
-        v19 += (SR_VEC_LANES(128, v58[1], i16)[2] * (__int64)SR_VEC_LANES(128, v21[1], i32)[i + 1]) >> 16;
-        v19 += (SR_VEC_LANES(128, v58[1], i16)[3] * (__int64)SR_VEC_LANES(128, v21[1], i32)[i]) >> 16;
-        v19 += (SR_VEC_LANES(128, v58[1], i16)[4] * (__int64)SR_VEC_PTR_LANES(128, v21, i32)[i + 3]) >> 16;
-        v19 += (SR_VEC_LANES(128, v58[1], i16)[5] * (__int64)SR_VEC_PTR_LANES(128, v21, i32)[i + 2]) >> 16;
-        v19 += (SR_VEC_LANES(128, v58[1], i16)[6] * (__int64)SR_VEC_PTR_LANES(128, v21, i32)[i + 1]) >> 16;
-        v19 += (SR_VEC_LANES(128, v58[1], i16)[7] * (__int64)SR_VEC_PTR_LANES(128, v21, i32)[i]) >> 16;
+        shifted_bits += (SR_VEC_LANES(128, destination_buffer[1], i16)[2] * (__int64)SR_VEC_LANES(128, source_buffer[1], i32)[i + 1]) >> 16;
+        shifted_bits += (SR_VEC_LANES(128, destination_buffer[1], i16)[3] * (__int64)SR_VEC_LANES(128, source_buffer[1], i32)[i]) >> 16;
+        shifted_bits += (SR_VEC_LANES(128, destination_buffer[1], i16)[4] * (__int64)SR_VEC_PTR_LANES(128, source_buffer, i32)[i + 3]) >> 16;
+        shifted_bits += (SR_VEC_LANES(128, destination_buffer[1], i16)[5] * (__int64)SR_VEC_PTR_LANES(128, source_buffer, i32)[i + 2]) >> 16;
+        shifted_bits += (SR_VEC_LANES(128, destination_buffer[1], i16)[6] * (__int64)SR_VEC_PTR_LANES(128, source_buffer, i32)[i + 1]) >> 16;
+        shifted_bits += (SR_VEC_LANES(128, destination_buffer[1], i16)[7] * (__int64)SR_VEC_PTR_LANES(128, source_buffer, i32)[i]) >> 16;
       }
-      if ( v19 <= 0x7FFFFFF )
+      if ( shifted_bits <= 0x7FFFFFF )
       {
-        if ( v19 >= -134217728 )
-          v47 = v19;
+        if ( shifted_bits >= -134217728 )
+          saved_shifted_bits_5 = shifted_bits;
         else
-          v47 = -134217728;
-        v48 = v47;
+          saved_shifted_bits_5 = -134217728;
+        cached_shifted_bits_5 = saved_shifted_bits_5;
       }
       else
       {
-        v48 = 0x7FFFFFF;
+        cached_shifted_bits_5 = 0x7FFFFFF;
       }
-      if ( 16 * v48 + v27[i] < 0 )
+      if ( 16 * cached_shifted_bits_5 + saved_running_total[i] < 0 )
       {
-        if ( v19 <= 0x7FFFFFF )
+        if ( shifted_bits <= 0x7FFFFFF )
         {
-          if ( v19 >= -134217728 )
-            v38 = v19;
+          if ( shifted_bits >= -134217728 )
+            saved_shifted_bits_2 = shifted_bits;
           else
-            v38 = -134217728;
-          v39 = v38;
+            saved_shifted_bits_2 = -134217728;
+          cached_shifted_bits_3 = saved_shifted_bits_2;
         }
         else
         {
-          v39 = 0x7FFFFFF;
+          cached_shifted_bits_3 = 0x7FFFFFF;
         }
-        if ( ((16 * v39) | v27[i]) < 0 )
+        if ( ((16 * cached_shifted_bits_3) | saved_running_total[i]) < 0 )
         {
-          if ( v19 <= 0x7FFFFFF )
+          if ( shifted_bits <= 0x7FFFFFF )
           {
-            if ( v19 >= -134217728 )
-              v40 = v19;
+            if ( shifted_bits >= -134217728 )
+              saved_shifted_bits_3 = shifted_bits;
             else
-              v40 = -134217728;
-            v41 = v40;
+              saved_shifted_bits_3 = -134217728;
+            cached_shifted_bits_4 = saved_shifted_bits_3;
           }
           else
           {
-            v41 = 0x7FFFFFF;
+            cached_shifted_bits_4 = 0x7FFFFFF;
           }
-          v42 = v27[i] + 16 * v41;
+          scaled_index_2 = saved_running_total[i] + 16 * cached_shifted_bits_4;
         }
         else
         {
-          v42 = 0x7FFFFFFF;
+          scaled_index_2 = 0x7FFFFFFF;
         }
-        v43 = v42;
+        cached_scaled_index = scaled_index_2;
       }
       else
       {
-        if ( v19 <= 0x7FFFFFF )
+        if ( shifted_bits <= 0x7FFFFFF )
         {
-          if ( v19 >= -134217728 )
-            v49 = v19;
+          if ( shifted_bits >= -134217728 )
+            saved_shifted_bits_6 = shifted_bits;
           else
-            v49 = -134217728;
-          v34 = v49;
+            saved_shifted_bits_6 = -134217728;
+          cached_shifted_bits = saved_shifted_bits_6;
         }
         else
         {
-          v34 = 0x7FFFFFF;
+          cached_shifted_bits = 0x7FFFFFF;
         }
-        if ( ((16 * v34) & v27[i]) >= 0 )
+        if ( ((16 * cached_shifted_bits) & saved_running_total[i]) >= 0 )
         {
-          if ( v19 <= 0x7FFFFFF )
+          if ( shifted_bits <= 0x7FFFFFF )
           {
-            if ( v19 >= -134217728 )
-              v35 = v19;
+            if ( shifted_bits >= -134217728 )
+              saved_shifted_bits = shifted_bits;
             else
-              v35 = -134217728;
-            v36 = v35;
+              saved_shifted_bits = -134217728;
+            cached_shifted_bits_2 = saved_shifted_bits;
           }
           else
           {
-            v36 = 0x7FFFFFF;
+            cached_shifted_bits_2 = 0x7FFFFFF;
           }
-          v37 = v27[i] + 16 * v36;
+          scaled_index = saved_running_total[i] + 16 * cached_shifted_bits_2;
         }
         else
         {
-          v37 = 0x80000000;
+          scaled_index = 0x80000000;
         }
-        v43 = v37;
+        cached_scaled_index = scaled_index;
       }
-      SR_VEC_LANES(128, v21[4], i32)[i] = v43;
-      if ( (((int)((v31 * (__int64)SR_VEC_LANES(128, v21[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+      SR_VEC_LANES(128, source_buffer[4], i32)[i] = cached_scaled_index;
+      if ( (((int)((shifted_bits_4 * (__int64)SR_VEC_LANES(128, source_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
       {
-        if ( (((int)((v31 * (__int64)SR_VEC_LANES(128, v21[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
-          v44 = (((int)((v31 * (__int64)SR_VEC_LANES(128, v21[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
+        if ( (((int)((shifted_bits_4 * (__int64)SR_VEC_LANES(128, source_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
+          shifted_bits_5 = (((int)((shifted_bits_4 * (__int64)SR_VEC_LANES(128, source_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
         else
-          v44 = -32768;
-        v45 = v44;
+          shifted_bits_5 = -32768;
+        saved_shifted_bits_4 = shifted_bits_5;
       }
       else
       {
-        v45 = 0x7FFF;
+        saved_shifted_bits_4 = 0x7FFF;
       }
-      SR_VEC_PTR_LANES(128, v53, i16)[i] = v45;
+      SR_VEC_PTR_LANES(128, loaded_record_pointer, i16)[i] = saved_shifted_bits_4;
     }
-    crt_memcpy(v21, (__m128i *)((char *)v21 + 4 * *(int *)(a1 + 2332)), 0x40u);
-    v51 += *(int *)(a1 + 2332);
-    v53 = (     __m128i *)((char *)v53 + 2 * *(int *)(a1 + 2332));
+    crt_memcpy(source_buffer, (__m128i *)((char *)source_buffer + 4 * *(int *)(a1 + 2332)), 0x40u);
+    running_total_2 += *(int *)(a1 + 2332);
+    loaded_record_pointer = (     __m128i *)((char *)loaded_record_pointer + 2 * *(int *)(a1 + 2332));
   }
-  return crt_memcpy((__m128i *)(a1 + 1284), v21, 0x40u); /* 0x1401C9286: the result of this call is still in rax at the exit */
+  return crt_memcpy((__m128i *)(a1 + 1284), source_buffer, 0x40u); /* 0x1401C9286: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401C92B0) ----------------------------------------------------
 __int64            sub_1401C92B0(_DWORD *a1, __int64 a2, int a3, __int16 a4, int a5)
 {
-  __int64 v6;
+  __int64 unused_local;
   int i;
-  int v8;
+  int iteration_count;
   int j;
-  int v10;
+  int masked_bits;
   int k;
-  int v12;
-  int v13;
-  _BOOL8 v14;
-  __int64 v15;
-  __int64 v16;
-  _DWORD v17[40];
-  __int64 v18;
-  __int16 v21;
+  int table_value;
+  int shifted_bits;
+  _BOOL8 comparison_result;
+  __int64 scaled_index;
+  __int64 state_address;
+  _DWORD iteration_count_2[40];
+  __int64 unused_local_2;
+  __int16 input_value;
 
-  v21 = a3;
-  v13 = sub_14019AFE0(a1, (__int64)&unk_140282458 + 9 * (a3 >> 1), 8);
-  v8 = a5 >> 4;
+  input_value = a3;
+  shifted_bits = sub_14019AFE0(a1, (__int64)&unk_140282458 + 9 * (a3 >> 1), 8);
+  iteration_count = a5 >> 4;
   if ( 16 * (a5 >> 4) < a5 )
-    ++v8;
-  v16 = (__int64)&unk_1402822F0 + 18 * v13;
-  for ( i = 0; i < v8; ++i )
+    ++iteration_count;
+  state_address = (__int64)&unk_1402822F0 + 18 * shifted_bits;
+  for ( i = 0; i < iteration_count; ++i )
   {
-    v17[i + 20] = 0;
-    for ( v17[i] = sub_14019AFE0(a1, v16, 8);
-          v17[i] == 17;
-          v17[i] = sub_14019AFE0(a1, (__int64)&unk_1402822F0 + v14 + 162, 8) )
+    iteration_count_2[i + 20] = 0;
+    for ( iteration_count_2[i] = sub_14019AFE0(a1, state_address, 8);
+          iteration_count_2[i] == 17;
+          iteration_count_2[i] = sub_14019AFE0(a1, (__int64)&unk_1402822F0 + comparison_result + 162, 8) )
     {
-      v14 = ++v17[i + 20] == 10;
+      comparison_result = ++iteration_count_2[i + 20] == 10;
     }
   }
-  for ( i = 0; i < v8; ++i )
+  for ( i = 0; i < iteration_count; ++i )
   {
-    if ( (int)v17[i] <= 0 )
+    if ( (int)iteration_count_2[i] <= 0 )
       crt_memset((void *)(uintptr_t)((_WORD *)(a2 + 32LL * (__int16)i)), 0, 0x20u);
     else
-      sub_1401C2340((__int16 *)(a2 + 32LL * (__int16)i), a1, v17[i]);
+      sub_1401C2340((__int16 *)(a2 + 32LL * (__int16)i), a1, iteration_count_2[i]);
   }
-  for ( i = 0; i < v8; ++i )
+  for ( i = 0; i < iteration_count; ++i )
   {
-    if ( (int)v17[i + 20] > 0 )
+    if ( (int)iteration_count_2[i + 20] > 0 )
     {
-      v12 = v17[i + 20];
-      v15 = a2 + 32LL * (__int16)i;
+      table_value = iteration_count_2[i + 20];
+      scaled_index = a2 + 32LL * (__int16)i;
       for ( j = 0; j < 16; ++j )
       {
-        v10 = *(__int16 *)(v15 + 2LL * j);
-        for ( k = 0; k < v12; ++k )
-          v10 = sub_14019AFE0(a1, (__int64)&unk_14028213C, 8) + 2 * v10;
-        *(_WORD *)(v15 + 2LL * j) = v10;
+        masked_bits = *(__int16 *)(scaled_index + 2LL * j);
+        for ( k = 0; k < table_value; ++k )
+          masked_bits = sub_14019AFE0(a1, (__int64)&unk_14028213C, 8) + 2 * masked_bits;
+        *(_WORD *)(scaled_index + 2LL * j) = masked_bits;
       }
-      v17[i] |= 32 * v12;
+      iteration_count_2[i] |= 32 * table_value;
     }
   }
-  return sub_1401C0EF0(a1, a2, a5, v21, a4, (__int64)v17); /* 0x1401C9603: the result of this call is still in rax at the exit */
+  return sub_1401C0EF0(a1, a2, a5, input_value, a4, (__int64)iteration_count_2); /* 0x1401C9603: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401C9630) ----------------------------------------------------
 _DWORD *           sub_1401C9630(_DWORD *a1)
 {
   int i;
-  int v3;
-  int v4;
+  int running_total;
+  int integer_quotient;
 
-  v4 = 0x7FFF / (a1[585] + 1);
-  v3 = 0;
+  integer_quotient = 0x7FFF / (a1[585] + 1);
+  running_total = 0;
   for ( i = 0; i < a1[585]; ++i )
   {
-    v3 += v4;
-    *((_WORD *)a1 + i + 2038) = v3;
+    running_total += integer_quotient;
+    *((_WORD *)a1 + i + 2038) = running_total;
   }
   a1[1043] = 0;
   a1[1044] = 3176576;
@@ -2889,267 +2889,267 @@ _DWORD *           sub_1401C9630(_DWORD *a1)
 //----- (00000001401C96E0) ----------------------------------------------------
 __int64            sub_1401C96E0(__int64 a1, __int64 a2, __int64 a3, int a4)
 {
-  unsigned __int64 v4;
-  unsigned __int64 v5;
-       __m128i *v6;
-  unsigned __int64 v7;
-  void *v8;
+  unsigned __int64 byte_count;
+  unsigned __int64 byte_count_2;
+       __m128i *source_buffer;
+  unsigned __int64 scaled_index;
+  void *alloca_result;
   int i;
-  int v11;
+  int shifted_bits;
   __m128i *p_i;
-  signed int v13;
-  __m128i *v14;
-  signed int v15;
-  int v16;
-  int v17;
-  int v18;
-  int v19;
-  int v20;
-  int v21;
-  __int32 v22;
-  int v23;
-  int v24;
-  int v25;
-  int v26;
-  __int32 v27;
-  __int32 v28;
-  int v29;
-  int v30;
-  int v31;
-  int v32;
-  int v33;
-  int v34;
-  int v35;
-  int v36;
-  int v37;
-  int v38;
-  __m128i *v39;
-  __m128i *v40;
-  __m128i *v41;
-  _WORD v42[16];
-  __int64 v43;
+  signed int shifted_bits_2;
+  __m128i *source_buffer_2;
+  signed int shifted_bits_3;
+  int saved_shifted_bits;
+  int cached_shifted_bits;
+  int saved_shifted_bits_2;
+  int cached_shifted_bits_2;
+  int saved_shifted_bits_3;
+  int cached_shifted_bits_3;
+  __int32 scaled_index_2;
+  int saved_shifted_bits_4;
+  int cached_shifted_bits_4;
+  int saved_shifted_bits_5;
+  int cached_shifted_bits_5;
+  __int32 scaled_index_3;
+  __int32 cached_scaled_index;
+  int shifted_bits_4;
+  int saved_shifted_bits_6;
+  int shifted_bits_5;
+  int saved_shifted_bits_7;
+  int shifted_bits_6;
+  int saved_shifted_bits_8;
+  int loaded_word;
+  int saved_loaded_word;
+  int loaded_word_2;
+  int cached_i;
+  __m128i *destination_buffer;
+  __m128i *unused_written_slot;
+  __m128i *unused_written_slot_2;
+  _WORD scratch_buffer[16];
+  __int64 unused_local;
 
-  v14 = (__m128i *)(a1 + 2796);
+  source_buffer_2 = (__m128i *)(a1 + 2796);
   if ( *(_DWORD *)(a1 + 2316) != *(_DWORD *)(a1 + 4180) )
   {
     sub_1401C9630((_DWORD *)a1);
-    SR_VEC_LANES(128, v14[86], i32)[2] = *(_DWORD *)(a1 + 2316);
+    SR_VEC_LANES(128, source_buffer_2[86], i32)[2] = *(_DWORD *)(a1 + 2316);
   }
   if ( !*(_DWORD *)(a1 + 4184) && !*(_DWORD *)(a1 + 4188) )
   {
     for ( i = 0; i < *(_DWORD *)(a1 + 2340); ++i )
-      SR_VEC_LANES(128, v14[80], i16)[i] += (unsigned int)(16348 * (*(__int16 *)(a1 + 2LL * i + 2344) - SR_VEC_LANES(128, v14[80], i16)[i])) >> 16;
-    v37 = 0;
-    v38 = 0;
+      SR_VEC_LANES(128, source_buffer_2[80], i16)[i] += (unsigned int)(16348 * (*(__int16 *)(a1 + 2LL * i + 2344) - SR_VEC_LANES(128, source_buffer_2[80], i16)[i])) >> 16;
+    loaded_word_2 = 0;
+    cached_i = 0;
     for ( i = 0; i < *(_DWORD *)(a1 + 2324); ++i )
     {
-      if ( *(_DWORD *)(a2 + 4LL * i + 16) > v37 )
+      if ( *(_DWORD *)(a2 + 4LL * i + 16) > loaded_word_2 )
       {
-        v37 = *(_DWORD *)(a2 + 4LL * i + 16);
-        v38 = i;
+        loaded_word_2 = *(_DWORD *)(a2 + 4LL * i + 16);
+        cached_i = i;
       }
     }
-    v4 = 4LL * *(_DWORD *)(a1 + 2332) * (*(_DWORD *)(a1 + 2324) - 1);
-    v39 = (__m128i *)((char *)v14 + 4 * *(int *)(a1 + 2332));
-    crt_memcpy(v39, v14, v4);
-    v5 = 4LL * *(int *)(a1 + 2332);
-    v6 = (     __m128i *)(a1 + 4LL * *(_DWORD *)(a1 + 2332) * v38 + 4);
-    v40 = v14;
-    crt_memcpy(v14, v6, v5);
+    byte_count = 4LL * *(_DWORD *)(a1 + 2332) * (*(_DWORD *)(a1 + 2324) - 1);
+    destination_buffer = (__m128i *)((char *)source_buffer_2 + 4 * *(int *)(a1 + 2332));
+    crt_memcpy(destination_buffer, source_buffer_2, byte_count);
+    byte_count_2 = 4LL * *(int *)(a1 + 2332);
+    source_buffer = (     __m128i *)(a1 + 4LL * *(_DWORD *)(a1 + 2332) * cached_i + 4);
+    unused_written_slot = source_buffer_2;
+    crt_memcpy(source_buffer_2, source_buffer, byte_count_2);
     for ( i = 0; i < *(_DWORD *)(a1 + 2324); ++i )
-      SR_VEC_LANES(128, v14[86], i32)[0] += (4634LL * (*(_DWORD *)(a2 + 4LL * i + 16) - SR_VEC_LANES(128, v14[86], i32)[0])) >> 16;
+      SR_VEC_LANES(128, source_buffer_2[86], i32)[0] += (4634LL * (*(_DWORD *)(a2 + 4LL * i + 16) - SR_VEC_LANES(128, source_buffer_2[86], i32)[0])) >> 16;
   }
   if ( *(_DWORD *)(a1 + 4184) )
   {
-    v7 = 4LL * (a4 + 16) + 15;
-    if ( v7 <= 4LL * (a4 + 16) )
-      v7 = 0xFFFFFFFFFFFFFF0LL;
-    v8 = alloca(v7 & 0xFFFFFFFFFFFFFFF0uLL);
-    p_i = (__m128i *)v8;
-    v13 = (*(int *)(a1 + 4272) * (__int64)*(__int16 *)(a1 + 4252)) >> 16;
-    if ( v13 < 0x200000 && SR_VEC_LANES(128, v14[86], i32)[0] <= 0x800000 )
+    scaled_index = 4LL * (a4 + 16) + 15;
+    if ( scaled_index <= 4LL * (a4 + 16) )
+      scaled_index = 0xFFFFFFFFFFFFFF0LL;
+    alloca_result = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+    p_i = (__m128i *)alloca_result;
+    shifted_bits_2 = (*(int *)(a1 + 4272) * (__int64)*(__int16 *)(a1 + 4252)) >> 16;
+    if ( shifted_bits_2 < 0x200000 && SR_VEC_LANES(128, source_buffer_2[86], i32)[0] <= 0x800000 )
     {
-      v13 = (v13 * (__int64)v13) >> 16;
-      v13 = ((SR_VEC_LANES(128, v14[86], i32)[0] * (__int64)SR_VEC_LANES(128, v14[86], i32)[0]) >> 16) - 32 * v13;
-      v13 = (unsigned int)sub_1401BE4C0(v13) << 8;
+      shifted_bits_2 = (shifted_bits_2 * (__int64)shifted_bits_2) >> 16;
+      shifted_bits_2 = ((SR_VEC_LANES(128, source_buffer_2[86], i32)[0] * (__int64)SR_VEC_LANES(128, source_buffer_2[86], i32)[0]) >> 16) - 32 * shifted_bits_2;
+      shifted_bits_2 = (unsigned int)sub_1401BE4C0(shifted_bits_2) << 8;
     }
     else
     {
-      v13 = (v13 >> 16) * (v13 >> 16);
-      v13 = (SR_VEC_LANES(128, v14[86], i32)[0] >> 16) * (SR_VEC_LANES(128, v14[86], i32)[0] >> 16) - 32 * v13;
-      v13 = (unsigned int)sub_1401BE4C0(v13) << 16;
+      shifted_bits_2 = (shifted_bits_2 >> 16) * (shifted_bits_2 >> 16);
+      shifted_bits_2 = (SR_VEC_LANES(128, source_buffer_2[86], i32)[0] >> 16) * (SR_VEC_LANES(128, source_buffer_2[86], i32)[0] >> 16) - 32 * shifted_bits_2;
+      shifted_bits_2 = (unsigned int)sub_1401BE4C0(shifted_bits_2) << 16;
     }
-    v15 = v13 >> 6;
-    v41 = p_i + 4;
-    sub_1401CA9F0((__int64)SR_VEC_LANES(128, p_i[4], i64), (__int64)v14, a4, &SR_VEC_LANES(128, v14[86], i32)[1]);
-    CWinApp__ShowAppMessageBox((struct CWinApp *)v42, SR_VEC_LANES(128, v14[80], i8), *(_DWORD *)(a1 + 2340));
-    crt_memcpy(p_i, v14 + 82, 0x40u);
+    shifted_bits_3 = shifted_bits_2 >> 6;
+    unused_written_slot_2 = p_i + 4;
+    sub_1401CA9F0((__int64)SR_VEC_LANES(128, p_i[4], i64), (__int64)source_buffer_2, a4, &SR_VEC_LANES(128, source_buffer_2[86], i32)[1]);
+    CWinApp__ShowAppMessageBox((struct CWinApp *)scratch_buffer, SR_VEC_LANES(128, source_buffer_2[80], i8), *(_DWORD *)(a1 + 2340));
+    crt_memcpy(p_i, source_buffer_2 + 82, 0x40u);
     for ( i = 0; i < a4; ++i )
     {
-      v11 = *(int *)(a1 + 2340) >> 1;
-      v11 += (v42[0] * (__int64)SR_VEC_LANES(128, p_i[3], i32)[i + 3]) >> 16;
-      v11 += (v42[1] * (__int64)SR_VEC_LANES(128, p_i[3], i32)[i + 2]) >> 16;
-      v11 += (v42[2] * (__int64)SR_VEC_LANES(128, p_i[3], i32)[i + 1]) >> 16;
-      v11 += (v42[3] * (__int64)SR_VEC_LANES(128, p_i[3], i32)[i]) >> 16;
-      v11 += (v42[4] * (__int64)SR_VEC_LANES(128, p_i[2], i32)[i + 3]) >> 16;
-      v11 += (v42[5] * (__int64)SR_VEC_LANES(128, p_i[2], i32)[i + 2]) >> 16;
-      v11 += (v42[6] * (__int64)SR_VEC_LANES(128, p_i[2], i32)[i + 1]) >> 16;
-      v11 += (v42[7] * (__int64)SR_VEC_LANES(128, p_i[2], i32)[i]) >> 16;
-      v11 += (v42[8] * (__int64)SR_VEC_LANES(128, p_i[1], i32)[i + 3]) >> 16;
-      v11 += (v42[9] * (__int64)SR_VEC_LANES(128, p_i[1], i32)[i + 2]) >> 16;
+      shifted_bits = *(int *)(a1 + 2340) >> 1;
+      shifted_bits += (scratch_buffer[0] * (__int64)SR_VEC_LANES(128, p_i[3], i32)[i + 3]) >> 16;
+      shifted_bits += (scratch_buffer[1] * (__int64)SR_VEC_LANES(128, p_i[3], i32)[i + 2]) >> 16;
+      shifted_bits += (scratch_buffer[2] * (__int64)SR_VEC_LANES(128, p_i[3], i32)[i + 1]) >> 16;
+      shifted_bits += (scratch_buffer[3] * (__int64)SR_VEC_LANES(128, p_i[3], i32)[i]) >> 16;
+      shifted_bits += (scratch_buffer[4] * (__int64)SR_VEC_LANES(128, p_i[2], i32)[i + 3]) >> 16;
+      shifted_bits += (scratch_buffer[5] * (__int64)SR_VEC_LANES(128, p_i[2], i32)[i + 2]) >> 16;
+      shifted_bits += (scratch_buffer[6] * (__int64)SR_VEC_LANES(128, p_i[2], i32)[i + 1]) >> 16;
+      shifted_bits += (scratch_buffer[7] * (__int64)SR_VEC_LANES(128, p_i[2], i32)[i]) >> 16;
+      shifted_bits += (scratch_buffer[8] * (__int64)SR_VEC_LANES(128, p_i[1], i32)[i + 3]) >> 16;
+      shifted_bits += (scratch_buffer[9] * (__int64)SR_VEC_LANES(128, p_i[1], i32)[i + 2]) >> 16;
       if ( *(_DWORD *)(a1 + 2340) == 16 )
       {
-        v11 += (v42[10] * (__int64)SR_VEC_LANES(128, p_i[1], i32)[i + 1]) >> 16;
-        v11 += (v42[11] * (__int64)SR_VEC_LANES(128, p_i[1], i32)[i]) >> 16;
-        v11 += (v42[12] * (__int64)SR_VEC_PTR_LANES(128, p_i, i32)[i + 3]) >> 16;
-        v11 += (v42[13] * (__int64)SR_VEC_PTR_LANES(128, p_i, i32)[i + 2]) >> 16;
-        v11 += (v42[14] * (__int64)SR_VEC_PTR_LANES(128, p_i, i32)[i + 1]) >> 16;
-        v11 += (v42[15] * (__int64)SR_VEC_PTR_LANES(128, p_i, i32)[i]) >> 16;
+        shifted_bits += (scratch_buffer[10] * (__int64)SR_VEC_LANES(128, p_i[1], i32)[i + 1]) >> 16;
+        shifted_bits += (scratch_buffer[11] * (__int64)SR_VEC_LANES(128, p_i[1], i32)[i]) >> 16;
+        shifted_bits += (scratch_buffer[12] * (__int64)SR_VEC_PTR_LANES(128, p_i, i32)[i + 3]) >> 16;
+        shifted_bits += (scratch_buffer[13] * (__int64)SR_VEC_PTR_LANES(128, p_i, i32)[i + 2]) >> 16;
+        shifted_bits += (scratch_buffer[14] * (__int64)SR_VEC_PTR_LANES(128, p_i, i32)[i + 1]) >> 16;
+        shifted_bits += (scratch_buffer[15] * (__int64)SR_VEC_PTR_LANES(128, p_i, i32)[i]) >> 16;
       }
-      if ( v11 <= 0x7FFFFFF )
+      if ( shifted_bits <= 0x7FFFFFF )
       {
-        if ( v11 >= -134217728 )
-          v16 = v11;
+        if ( shifted_bits >= -134217728 )
+          saved_shifted_bits = shifted_bits;
         else
-          v16 = -134217728;
-        v17 = v16;
+          saved_shifted_bits = -134217728;
+        cached_shifted_bits = saved_shifted_bits;
       }
       else
       {
-        v17 = 0x7FFFFFF;
+        cached_shifted_bits = 0x7FFFFFF;
       }
-      if ( 16 * v17 + SR_VEC_LANES(128, p_i[4], i32)[i] < 0 )
+      if ( 16 * cached_shifted_bits + SR_VEC_LANES(128, p_i[4], i32)[i] < 0 )
       {
-        if ( v11 <= 0x7FFFFFF )
+        if ( shifted_bits <= 0x7FFFFFF )
         {
-          if ( v11 >= -134217728 )
-            v23 = v11;
+          if ( shifted_bits >= -134217728 )
+            saved_shifted_bits_4 = shifted_bits;
           else
-            v23 = -134217728;
-          v24 = v23;
+            saved_shifted_bits_4 = -134217728;
+          cached_shifted_bits_4 = saved_shifted_bits_4;
         }
         else
         {
-          v24 = 0x7FFFFFF;
+          cached_shifted_bits_4 = 0x7FFFFFF;
         }
-        if ( ((16 * v24) | SR_VEC_LANES(128, p_i[4], i32)[i]) < 0 )
+        if ( ((16 * cached_shifted_bits_4) | SR_VEC_LANES(128, p_i[4], i32)[i]) < 0 )
         {
-          if ( v11 <= 0x7FFFFFF )
+          if ( shifted_bits <= 0x7FFFFFF )
           {
-            if ( v11 >= -134217728 )
-              v25 = v11;
+            if ( shifted_bits >= -134217728 )
+              saved_shifted_bits_5 = shifted_bits;
             else
-              v25 = -134217728;
-            v26 = v25;
+              saved_shifted_bits_5 = -134217728;
+            cached_shifted_bits_5 = saved_shifted_bits_5;
           }
           else
           {
-            v26 = 0x7FFFFFF;
+            cached_shifted_bits_5 = 0x7FFFFFF;
           }
-          v27 = SR_VEC_LANES(128, p_i[4], i32)[i] + 16 * v26;
+          scaled_index_3 = SR_VEC_LANES(128, p_i[4], i32)[i] + 16 * cached_shifted_bits_5;
         }
         else
         {
-          v27 = 0x7FFFFFFF;
+          scaled_index_3 = 0x7FFFFFFF;
         }
-        v28 = v27;
+        cached_scaled_index = scaled_index_3;
       }
       else
       {
-        if ( v11 <= 0x7FFFFFF )
+        if ( shifted_bits <= 0x7FFFFFF )
         {
-          if ( v11 >= -134217728 )
-            v18 = v11;
+          if ( shifted_bits >= -134217728 )
+            saved_shifted_bits_2 = shifted_bits;
           else
-            v18 = -134217728;
-          v19 = v18;
+            saved_shifted_bits_2 = -134217728;
+          cached_shifted_bits_2 = saved_shifted_bits_2;
         }
         else
         {
-          v19 = 0x7FFFFFF;
+          cached_shifted_bits_2 = 0x7FFFFFF;
         }
-        if ( ((16 * v19) & SR_VEC_LANES(128, p_i[4], i32)[i]) >= 0 )
+        if ( ((16 * cached_shifted_bits_2) & SR_VEC_LANES(128, p_i[4], i32)[i]) >= 0 )
         {
-          if ( v11 <= 0x7FFFFFF )
+          if ( shifted_bits <= 0x7FFFFFF )
           {
-            if ( v11 >= -134217728 )
-              v20 = v11;
+            if ( shifted_bits >= -134217728 )
+              saved_shifted_bits_3 = shifted_bits;
             else
-              v20 = -134217728;
-            v21 = v20;
+              saved_shifted_bits_3 = -134217728;
+            cached_shifted_bits_3 = saved_shifted_bits_3;
           }
           else
           {
-            v21 = 0x7FFFFFF;
+            cached_shifted_bits_3 = 0x7FFFFFF;
           }
-          v22 = SR_VEC_LANES(128, p_i[4], i32)[i] + 16 * v21;
+          scaled_index_2 = SR_VEC_LANES(128, p_i[4], i32)[i] + 16 * cached_shifted_bits_3;
         }
         else
         {
-          v22 = 0x80000000;
+          scaled_index_2 = 0x80000000;
         }
-        v28 = v22;
+        cached_scaled_index = scaled_index_2;
       }
-      SR_VEC_LANES(128, p_i[4], i32)[i] = v28;
-      if ( (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+      SR_VEC_LANES(128, p_i[4], i32)[i] = cached_scaled_index;
+      if ( (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
       {
-        if ( (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
-          v29 = (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
+        if ( (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
+          shifted_bits_4 = (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
         else
-          v29 = -32768;
-        v30 = v29;
+          shifted_bits_4 = -32768;
+        saved_shifted_bits_6 = shifted_bits_4;
       }
       else
       {
-        v30 = 0x7FFF;
+        saved_shifted_bits_6 = 0x7FFF;
       }
-      if ( v30 + *(__int16 *)(a3 + 2LL * i) <= 0x7FFF )
+      if ( saved_shifted_bits_6 + *(__int16 *)(a3 + 2LL * i) <= 0x7FFF )
       {
-        if ( (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+        if ( (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
         {
-          if ( (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
-            v31 = (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
+          if ( (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
+            shifted_bits_5 = (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
           else
-            v31 = -32768;
-          v32 = v31;
+            shifted_bits_5 = -32768;
+          saved_shifted_bits_7 = shifted_bits_5;
         }
         else
         {
-          v32 = 0x7FFF;
+          saved_shifted_bits_7 = 0x7FFF;
         }
-        if ( v32 + *(__int16 *)(a3 + 2LL * i) >= -32768 )
+        if ( saved_shifted_bits_7 + *(__int16 *)(a3 + 2LL * i) >= -32768 )
         {
-          if ( (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+          if ( (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
           {
-            if ( (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
-              v33 = (((int)((v15 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
+            if ( (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
+              shifted_bits_6 = (((int)((shifted_bits_3 * (__int64)SR_VEC_LANES(128, p_i[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
             else
-              v33 = -32768;
-            v34 = v33;
+              shifted_bits_6 = -32768;
+            saved_shifted_bits_8 = shifted_bits_6;
           }
           else
           {
-            v34 = 0x7FFF;
+            saved_shifted_bits_8 = 0x7FFF;
           }
-          v35 = v34 + *(__int16 *)(a3 + 2LL * i);
+          loaded_word = saved_shifted_bits_8 + *(__int16 *)(a3 + 2LL * i);
         }
         else
         {
-          v35 = -32768;
+          loaded_word = -32768;
         }
-        v36 = v35;
+        saved_loaded_word = loaded_word;
       }
       else
       {
-        v36 = 0x7FFF;
+        saved_loaded_word = 0x7FFF;
       }
-      *(_WORD *)(a3 + 2LL * i) = v36;
+      *(_WORD *)(a3 + 2LL * i) = saved_loaded_word;
     }
-    crt_memcpy(v14 + 82, (__m128i *)((char *)p_i + 4 * a4), 0x40u);
+    crt_memcpy(source_buffer_2 + 82, (__m128i *)((char *)p_i + 4 * a4), 0x40u);
   }
   else
   {
-    crt_memset((void *)(uintptr_t)((__m128i *)SR_VEC_LANES(128, v14[82], i16)), 0, 4LL * *(int *)(a1 + 2340));
+    crt_memset((void *)(uintptr_t)((__m128i *)SR_VEC_LANES(128, source_buffer_2[82], i16)), 0, 4LL * *(int *)(a1 + 2340));
   }
   return 0; /* no caller reads the result */
 }
@@ -3157,97 +3157,97 @@ __int64            sub_1401C96E0(__int64 a1, __int64 a2, __int64 a3, int a4)
 //----- (00000001401CA330) ----------------------------------------------------
 __int64            sub_1401CA330(__int64 a1, _DWORD *a2, int a3, int a4, int a5)
 {
-  __int64 v6;
+  __int64 unused_local;
   int i;
-  char *v8;
-  int v9;
+  char *byte_cursor;
+  int running_total;
   int j;
-  int v11;
-  int v12;
-  int v13;
-  int v14;
-  _WORD v15[16];
-  _BYTE v16[16];
-  __int64 v17;
+  int scaled_index;
+  int selection_flag;
+  int shifted_bits;
+  int shifted_bits_2;
+  _WORD scratch_buffer[16];
+  _BYTE scratch_buffer_2[16];
+  __int64 unused_local_2;
 
   if ( a4 )
-    v8 = (char *)(a1 + 36LL * a3 + 6120);
+    byte_cursor = (char *)(a1 + 36LL * a3 + 6120);
   else
-    v8 = (char *)(a1 + 4752);
-  v11 = v8[30] + 2 * v8[29];
-  if ( a4 || v11 >= 2 )
-    sub_14019A4F0(a2, v11 - 2, (__int64)&unk_140282454, 8);
+    byte_cursor = (char *)(a1 + 4752);
+  scaled_index = byte_cursor[30] + 2 * byte_cursor[29];
+  if ( a4 || scaled_index >= 2 )
+    sub_14019A4F0(a2, scaled_index - 2, (__int64)&unk_140282454, 8);
   else
-    sub_14019A4F0(a2, v11, (__int64)&unk_14028246C, 8);
+    sub_14019A4F0(a2, scaled_index, (__int64)&unk_14028246C, 8);
   if ( a5 == 2 )
   {
-    sub_14019A4F0(a2, *v8, (__int64)&unk_140282230, 8);
+    sub_14019A4F0(a2, *byte_cursor, (__int64)&unk_140282230, 8);
   }
   else
   {
-    sub_14019A4F0(a2, *v8 >> 3, (__int64)&unk_140282218 + 8 * v8[29], 8);
-    sub_14019A4F0(a2, *v8 & 7, (__int64)&unk_140282538, 8);
+    sub_14019A4F0(a2, *byte_cursor >> 3, (__int64)&unk_140282218 + 8 * byte_cursor[29], 8);
+    sub_14019A4F0(a2, *byte_cursor & 7, (__int64)&unk_140282538, 8);
   }
   for ( i = 1; i < *(_DWORD *)(a1 + 4580); ++i )
-    sub_14019A4F0(a2, v8[i], (__int64)&unk_140282230, 8);
-  sub_14019A4F0(a2, v8[8], **(__int16 **)(a1 + 4704) * (v8[29] >> 1) + *(_QWORD *)(*(_QWORD *)(a1 + 4704) + 24LL), 8);
-  sub_1401C6E20((__int64)v15, (__int64)v16, *(_QWORD *)(a1 + 4704), v8[8]);
+    sub_14019A4F0(a2, byte_cursor[i], (__int64)&unk_140282230, 8);
+  sub_14019A4F0(a2, byte_cursor[8], **(__int16 **)(a1 + 4704) * (byte_cursor[29] >> 1) + *(_QWORD *)(*(_QWORD *)(a1 + 4704) + 24LL), 8);
+  sub_1401C6E20((__int64)scratch_buffer, (__int64)scratch_buffer_2, *(_QWORD *)(a1 + 4704), byte_cursor[8]);
   for ( i = 0; i < *(__int16 *)(*(_QWORD *)(a1 + 4704) + 2LL); ++i )
   {
-    if ( v8[i + 9] < 4 )
+    if ( byte_cursor[i + 9] < 4 )
     {
-      if ( v8[i + 9] > -4 )
+      if ( byte_cursor[i + 9] > -4 )
       {
-        sub_14019A4F0(a2, v8[i + 9] + 4, (__int16)v15[i] + *(_QWORD *)(*(_QWORD *)(a1 + 4704) + 48LL), 8);
+        sub_14019A4F0(a2, byte_cursor[i + 9] + 4, (__int16)scratch_buffer[i] + *(_QWORD *)(*(_QWORD *)(a1 + 4704) + 48LL), 8);
       }
       else
       {
-        sub_14019A4F0(a2, 0, (__int16)v15[i] + *(_QWORD *)(*(_QWORD *)(a1 + 4704) + 48LL), 8);
-        sub_14019A4F0(a2, -v8[i + 9] - 4, (__int64)&unk_140282264, 8);
+        sub_14019A4F0(a2, 0, (__int16)scratch_buffer[i] + *(_QWORD *)(*(_QWORD *)(a1 + 4704) + 48LL), 8);
+        sub_14019A4F0(a2, -byte_cursor[i + 9] - 4, (__int64)&unk_140282264, 8);
       }
     }
     else
     {
-      sub_14019A4F0(a2, 8, (__int16)v15[i] + *(_QWORD *)(*(_QWORD *)(a1 + 4704) + 48LL), 8);
-      sub_14019A4F0(a2, v8[i + 9] - 4, (__int64)&unk_140282264, 8);
+      sub_14019A4F0(a2, 8, (__int16)scratch_buffer[i] + *(_QWORD *)(*(_QWORD *)(a1 + 4704) + 48LL), 8);
+      sub_14019A4F0(a2, byte_cursor[i + 9] - 4, (__int64)&unk_140282264, 8);
     }
   }
   if ( *(_DWORD *)(a1 + 4580) == 4 )
-    sub_14019A4F0(a2, v8[31], (__int64)&unk_1402827F0, 8);
-  if ( v8[29] == 2 )
+    sub_14019A4F0(a2, byte_cursor[31], (__int64)&unk_1402827F0, 8);
+  if ( byte_cursor[29] == 2 )
   {
-    v12 = 1;
+    selection_flag = 1;
     if ( a5 == 2 && *(_DWORD *)(a1 + 5784) == 2 )
     {
-      v9 = *((__int16 *)v8 + 13) - *(__int16 *)(a1 + 5788);
-      if ( v9 >= -8 && v9 <= 11 )
+      running_total = *((__int16 *)byte_cursor + 13) - *(__int16 *)(a1 + 5788);
+      if ( running_total >= -8 && running_total <= 11 )
       {
-        v9 += 9;
-        v12 = 0;
+        running_total += 9;
+        selection_flag = 0;
       }
       else
       {
-        v9 = 0;
+        running_total = 0;
       }
-      sub_14019A4F0(a2, v9, (__int64)&unk_140282290, 8);
+      sub_14019A4F0(a2, running_total, (__int64)&unk_140282290, 8);
     }
-    if ( v12 )
+    if ( selection_flag )
     {
-      v13 = *((__int16 *)v8 + 13) / (*(int *)(a1 + 4576) >> 1);
-      v14 = *((__int16 *)v8 + 13) - (__int16)(*(int *)(a1 + 4576) >> 1) * (__int16)v13;
-      sub_14019A4F0(a2, v13, (__int64)&unk_140282270, 8);
-      sub_14019A4F0(a2, v14, *(_QWORD *)(a1 + 4688), 8);
+      shifted_bits = *((__int16 *)byte_cursor + 13) / (*(int *)(a1 + 4576) >> 1);
+      shifted_bits_2 = *((__int16 *)byte_cursor + 13) - (__int16)(*(int *)(a1 + 4576) >> 1) * (__int16)shifted_bits;
+      sub_14019A4F0(a2, shifted_bits, (__int64)&unk_140282270, 8);
+      sub_14019A4F0(a2, shifted_bits_2, *(_QWORD *)(a1 + 4688), 8);
     }
-    *(_WORD *)(a1 + 5788) = *((_WORD *)v8 + 13);
-    sub_14019A4F0(a2, v8[28], *(_QWORD *)(a1 + 4696), 8);
-    sub_14019A4F0(a2, v8[32], (__int64)&unk_14028226C, 8);
+    *(_WORD *)(a1 + 5788) = *((_WORD *)byte_cursor + 13);
+    sub_14019A4F0(a2, byte_cursor[28], *(_QWORD *)(a1 + 4696), 8);
+    sub_14019A4F0(a2, byte_cursor[32], (__int64)&unk_14028226C, 8);
     for ( j = 0; j < *(_DWORD *)(a1 + 4580); ++j )
-      sub_14019A4F0(a2, v8[j + 4], (__int64)*(&off_1402825D8 + v8[32]), 8);
+      sub_14019A4F0(a2, byte_cursor[j + 4], (__int64)*(&off_1402825D8 + byte_cursor[32]), 8);
     if ( !a5 )
-      sub_14019A4F0(a2, v8[33], (__int64)&unk_1402822DC, 8);
+      sub_14019A4F0(a2, byte_cursor[33], (__int64)&unk_1402822DC, 8);
   }
-  *(_DWORD *)(a1 + 5784) = v8[29];
-  return sub_14019A4F0(a2, v8[34], (__int64)&unk_1402821FC, 8); /* 0x1401CA9D0: the result of this call is still in rax at the exit */
+  *(_DWORD *)(a1 + 5784) = byte_cursor[29];
+  return sub_14019A4F0(a2, byte_cursor[34], (__int64)&unk_1402821FC, 8); /* 0x1401CA9D0: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401CA9F0) ----------------------------------------------------
@@ -3255,17 +3255,17 @@ int *           sub_1401CA9F0(__int64 a1, __int64 a2, int a3, int *a4)
 {
   int i;
   int j;
-  int v7;
+  int loaded_word;
 
   for ( i = 255; i > a3; i >>= 1 )
     ;
-  v7 = *a4;
+  loaded_word = *a4;
   for ( j = 0; j < a3; ++j )
   {
-    v7 = 196314165 * v7 + 907633515;
-    *(_DWORD *)(a1 + 4LL * j) = *(_DWORD *)(a2 + 4LL * (i & (v7 >> 24)));
+    loaded_word = 196314165 * loaded_word + 907633515;
+    *(_DWORD *)(a1 + 4LL * j) = *(_DWORD *)(a2 + 4LL * (i & (loaded_word >> 24)));
   }
-  *a4 = v7;
+  *a4 = loaded_word;
   return a4;
 }
 
@@ -3279,16 +3279,16 @@ __int64            sub_1401CAAA0(_DWORD *a1)
 //----- (00000001401CAAD0) ----------------------------------------------------
 __int64            sub_1401CAAD0(__int64 a1, int a2, _DWORD *a3)
 {
-  int v4;
+  int running_total;
   int i;
 
-  v4 = 0;
+  running_total = 0;
   crt_memset((void *)(uintptr_t)((_WORD *)a1), 0, 0x4F28u);
   for ( i = 0; i < 2; ++i )
-    v4 += sub_1401D26F0((_DWORD *)(10088LL * i + a1), a2);
+    running_total += sub_1401D26F0((_DWORD *)(10088LL * i + a1), a2);
   *(_DWORD *)(a1 + 20240) = 1;
   *(_DWORD *)(a1 + 20244) = 1;
-  return (unsigned int)sub_1401D68F0(a1, a3) + v4;
+  return (unsigned int)sub_1401D68F0(a1, a3) + running_total;
 }
 
 //----- (00000001401CABA0) ----------------------------------------------------
@@ -3302,527 +3302,527 @@ __int64            sub_1401CABA0(
         int a7,
         int a8)
 {
-  unsigned __int64 v8;
-  void *v9;
-  int v10;
-  int v11;
-  int v12;
-  int v13;
-  int v14;
-  char v15;
-  __int32 v16;
-  int v17;
-  __int8 *v18;
-  __int8 *v19;
+  unsigned __int64 scaled_index;
+  void *alloca_result;
+  int masked_bits;
+  int call_result;
+  int masked_bits_2;
+  int call_result_2;
+  int masked_bits_3;
+  char loaded_word;
+  __int32 call_result_3;
+  int call_result_4;
+  __int8 *state_address;
+  __int8 *state_address_2;
   int i;
-       __m128i *v22;
+       __m128i *source_buffer;
   int j;
-  int v24;
-  int v25;
-  int v26;
-  __int32 v27;
-  int v28;
-  int v29;
-  _BYTE v30[4];
-  int v31;
-  int v32;
-  int v33;
-  int v34;
-  int v35;
+  int running_total;
+  int remaining_amount;
+  int integer_quotient;
+  __int32 saved_comparison_result;
+  int remaining_amount_2;
+  int option_flags;
+  _BYTE scratch_buffer[4];
+  int record_word_offset;
+  int remaining_amount_3;
+  int iteration_count;
+  int option_flags_2;
+  int saved_shifted_bits;
   void *p_i;
-  __int32 v37;
-  int v38;
-  int v39;
-  unsigned int v40;
-  __int32 v41;
-  __int32 v42;
-  int v43;
-  BOOL v44;
-  int v45;
-  int v46;
-  int v47;
-  int v48;
-  int v49;
-  int v50;
-  BOOL v51;
-  BOOL v52;
-  __int32 v53;
-  __int32 v54;
-  BOOL v55;
-  int v56;
-  int v57;
-  int v58;
-  BOOL v59;
-  int v60;
-  unsigned int v61;
-  __int32 v62;
-  int v63;
-  __int32 v64;
-  int v65;
-  __int32 v66;
-  __int32 v67;
-  BOOL v68;
-  int v69[2];
-  __int64 v70;
-  __int64 v71;
-  __int8 *v72;
-  _DWORD v73[5];
-  __int64 v74;
+  __int32 scaled_index_2;
+  int saved_remaining_amount;
+  int unused_written_slot;
+  unsigned int table_value;
+  __int32 comparison_result;
+  __int32 scaled_index_3;
+  int scaled_index_4;
+  BOOL comparison_result_2;
+  int selection_code;
+  int comparison_result_3;
+  int saved_comparison_result_2;
+  int comparison_result_4;
+  int saved_comparison_result_3;
+  int cached_comparison_result;
+  BOOL comparison_result_5;
+  BOOL unused_written_slot_2;
+  __int32 table_value_2;
+  __int32 cached_table_value;
+  BOOL table_value_3;
+  int table_value_4;
+  int table_value_5;
+  int table_value_6;
+  BOOL table_value_7;
+  int shifted_bits;
+  unsigned int unused_written_slot_3;
+  __int32 table_value_8;
+  int unused_written_slot_4;
+  __int32 scaled_index_5;
+  int unused_written_slot_5;
+  __int32 shifted_bits_2;
+  __int32 integer_quotient_2;
+  BOOL condition_flag;
+  int callee_output_word[2];
+  __int64 unused_written_slot_6;
+  __int64 unused_written_slot_7;
+  __int8 *unused_written_slot_8;
+  _DWORD scratch_buffer_2[5];
+  __int64 unused_local;
 
-  v57 = 0;
-  v58 = 0;
-  v24 = 0;
-  v26 = 0;
-  v22 = a1;
+  table_value_5 = 0;
+  table_value_6 = 0;
+  running_total = 0;
+  integer_quotient = 0;
+  source_buffer = a1;
   if ( a2[17] )
   {
-    SR_VEC_LANES(128, v22[291], i32)[2] = 1;
-    SR_VEC_LANES(128, v22[922], i32)[0] = 1;
+    SR_VEC_LANES(128, source_buffer[291], i32)[2] = 1;
+    SR_VEC_LANES(128, source_buffer[922], i32)[0] = 1;
   }
-  SR_VEC_LANES(128, v22[990], i32)[3] = 0;
-  SR_VEC_LANES(128, v22[360], i32)[1] = 0;
-  v24 = sub_1401C1090(a2);
-  if ( !v24 )
+  SR_VEC_LANES(128, source_buffer[990], i32)[3] = 0;
+  SR_VEC_LANES(128, source_buffer[360], i32)[1] = 0;
+  running_total = sub_1401C1090(a2);
+  if ( !running_total )
   {
     a2[22] = 0;
-    if ( a2[1] > SR_VEC_LANES(128, v22[1265], i32)[1] )
+    if ( a2[1] > SR_VEC_LANES(128, source_buffer[1265], i32)[1] )
     {
-      v24 += sub_1401D26F0(&SR_VEC_LANES(128, v22[630], i32)[2], SR_VEC_LANES(128, v22[319], i32)[1]);
-      crt_memset((void *)(uintptr_t)((     __m128i *)SR_VEC_LANES(128, v22[1261], i16)), 0, 4u);
-      crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, v22[1261], i16)[4]), 0, 4u);
-      SR_VEC_LANES(128, v22[1261], i32)[3] = 0;
-      SR_VEC_LANES(128, v22[1262], i32)[0] = 1;
-      SR_VEC_LANES(128, v22[1262], i32)[1] = 0;
-      SR_VEC_LANES(128, v22[1262], i32)[2] = 1;
-      SR_VEC_LANES(128, v22[1262], i16)[7] = 0;
-      SR_VEC_LANES(128, v22[1262], i16)[6] = 0x4000;
-      if ( SR_VEC_LANES(128, v22[1265], i32)[0] == 2 )
+      running_total += sub_1401D26F0(&SR_VEC_LANES(128, source_buffer[630], i32)[2], SR_VEC_LANES(128, source_buffer[319], i32)[1]);
+      crt_memset((void *)(uintptr_t)((     __m128i *)SR_VEC_LANES(128, source_buffer[1261], i16)), 0, 4u);
+      crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, source_buffer[1261], i16)[4]), 0, 4u);
+      SR_VEC_LANES(128, source_buffer[1261], i32)[3] = 0;
+      SR_VEC_LANES(128, source_buffer[1262], i32)[0] = 1;
+      SR_VEC_LANES(128, source_buffer[1262], i32)[1] = 0;
+      SR_VEC_LANES(128, source_buffer[1262], i32)[2] = 1;
+      SR_VEC_LANES(128, source_buffer[1262], i16)[7] = 0;
+      SR_VEC_LANES(128, source_buffer[1262], i16)[6] = 0x4000;
+      if ( SR_VEC_LANES(128, source_buffer[1265], i32)[0] == 2 )
       {
-        crt_memcpy((__m128i *)&SR_VEC_LANES(128, v22[992], u64)[1], v22 + 362, 0x130u);
-        crt_memcpy((__m128i *)&SR_VEC_LANES(128, v22[630], u64)[1], v22, 8u);
+        crt_memcpy((__m128i *)&SR_VEC_LANES(128, source_buffer[992], u64)[1], source_buffer + 362, 0x130u);
+        crt_memcpy((__m128i *)&SR_VEC_LANES(128, source_buffer[630], u64)[1], source_buffer, 8u);
       }
     }
-    v59 = a2[6] != SR_VEC_LANES(128, v22[288], i32)[1] || SR_VEC_LANES(128, v22[1265], i32)[1] != a2[1];
-    v68 = v59;
-    SR_VEC_LANES(128, v22[1265], i32)[0] = *a2;
-    SR_VEC_LANES(128, v22[1265], i32)[1] = a2[1];
-    v31 = 100 * a4 / a2[2];
-    if ( v31 <= 1 )
-      v60 = 1;
+    table_value_7 = a2[6] != SR_VEC_LANES(128, source_buffer[288], i32)[1] || SR_VEC_LANES(128, source_buffer[1265], i32)[1] != a2[1];
+    condition_flag = table_value_7;
+    SR_VEC_LANES(128, source_buffer[1265], i32)[0] = *a2;
+    SR_VEC_LANES(128, source_buffer[1265], i32)[1] = a2[1];
+    record_word_offset = 100 * a4 / a2[2];
+    if ( record_word_offset <= 1 )
+      shifted_bits = 1;
     else
-      v60 = v31 >> 1;
-    v35 = v60;
-    v33 = 0;
+      shifted_bits = record_word_offset >> 1;
+    saved_shifted_bits = shifted_bits;
+    iteration_count = 0;
     if ( a7 )
     {
-      if ( v31 != 1 )
+      if ( record_word_offset != 1 )
         return (unsigned int)-101; /* 0x1401CAEE7: mov eax, 0xffffff9b */
       if ( a7 == 2 )
       {
-        qmemcpy(v73, &v22[1], sizeof(v73));
-        v73[4] = SR_VEC_LANES(128, v22[286], i32)[0];
+        qmemcpy(scratch_buffer_2, &source_buffer[1], sizeof(scratch_buffer_2));
+        scratch_buffer_2[4] = SR_VEC_LANES(128, source_buffer[286], i32)[0];
       }
       for ( i = 0; i < a2[1]; ++i )
       {
-        v24 = sub_1401D26F0(&SR_VEC_PTR_LANES(128, v22, i32)[2522 * i], SR_VEC_LANES(128, v22[319], i32)[2522 * i + 1]);
+        running_total = sub_1401D26F0(&SR_VEC_PTR_LANES(128, source_buffer, i32)[2522 * i], SR_VEC_LANES(128, source_buffer[319], i32)[2522 * i + 1]);
         if ( a7 == 2 )
-          qmemcpy((char *)&v22[1] + 10088 * i, v73, 0x14u);
+          qmemcpy((char *)&source_buffer[1] + 10088 * i, scratch_buffer_2, 0x14u);
       }
-      v57 = a2[6];
+      table_value_5 = a2[6];
       a2[6] = 10;
-      v58 = a2[9];
+      table_value_6 = a2[9];
       a2[9] = 0;
       for ( i = 0; i < a2[1]; ++i )
       {
-        SR_VEC_LANES(128, v22[291], i32)[2522 * i + 3] = 0;
-        SR_VEC_LANES(128, v22[292], i32)[2522 * i + 2] = 1;
+        SR_VEC_LANES(128, source_buffer[291], i32)[2522 * i + 3] = 0;
+        SR_VEC_LANES(128, source_buffer[292], i32)[2522 * i + 2] = 1;
       }
     }
-    else if ( a2[2] * v31 != 100 * a4 || a4 < 0 || 1000 * a4 > a2[2] * a2[6] )
+    else if ( a2[2] * record_word_offset != 100 * a4 || a4 < 0 || 1000 * a4 > a2[2] * a2[6] )
     {
       return (unsigned int)-101; /* 0x1401CB072: mov eax, 0xffffff9b */
     }
     for ( i = 0; i < a2[1]; ++i )
     {
       if ( i == 1 )
-        v40 = SR_VEC_LANES(128, v22[286], u32)[0];
+        table_value = SR_VEC_LANES(128, source_buffer[286], u32)[0];
       else
-        v40 = 0;
-      v61 = v40;
-      v24 = sub_1401D2790(&SR_VEC_PTR_LANES(128, v22, i32)[2522 * i], a2, SR_VEC_LANES(128, v22[1266], i32)[0], i, v40);
-      if ( v24 )
-        return (unsigned int)v24; /* 0x1401CB142: mov eax, dword ptr [rbp + 0x14] */
-      if ( SR_VEC_LANES(128, v22[291], i32)[2522 * i + 2] || v68 )
+        table_value = 0;
+      unused_written_slot_3 = table_value;
+      running_total = sub_1401D2790(&SR_VEC_PTR_LANES(128, source_buffer, i32)[2522 * i], a2, SR_VEC_LANES(128, source_buffer[1266], i32)[0], i, table_value);
+      if ( running_total )
+        return (unsigned int)running_total; /* 0x1401CB142: mov eax, dword ptr [rbp + 0x14] */
+      if ( SR_VEC_LANES(128, source_buffer[291], i32)[2522 * i + 2] || condition_flag )
       {
-        for ( j = 0; j < SR_VEC_LANES(128, v22[360], i32)[0]; ++j )
-          SR_VEC_LANES(128, v22[296], i32)[2522 * i + 1 + j] = 0;
+        for ( j = 0; j < SR_VEC_LANES(128, source_buffer[360], i32)[0]; ++j )
+          SR_VEC_LANES(128, source_buffer[296], i32)[2522 * i + 1 + j] = 0;
       }
-      SR_VEC_LANES(128, v22[381], i32)[2522 * i + 1] = SR_VEC_LANES(128, v22[381], i32)[2522 * i];
+      SR_VEC_LANES(128, source_buffer[381], i32)[2522 * i + 1] = SR_VEC_LANES(128, source_buffer[381], i32)[2522 * i];
     }
-    v37 = SR_VEC_LANES(128, v22[286], i32)[0] * 10 * v31;
-    v67 = SR_VEC_LANES(128, v22[284], i32)[3] * v37 / (1000 * SR_VEC_LANES(128, v22[286], i32)[0]);
-    v8 = 2LL * v67 + 15;
-    if ( v8 <= 2LL * v67 )
-      v8 = 0xFFFFFFFFFFFFFF0LL;
-    v9 = alloca(v8 & 0xFFFFFFFFFFFFFFF0uLL);
-    p_i = v9;
+    scaled_index_2 = SR_VEC_LANES(128, source_buffer[286], i32)[0] * 10 * record_word_offset;
+    integer_quotient_2 = SR_VEC_LANES(128, source_buffer[284], i32)[3] * scaled_index_2 / (1000 * SR_VEC_LANES(128, source_buffer[286], i32)[0]);
+    scaled_index = 2LL * integer_quotient_2 + 15;
+    if ( scaled_index <= 2LL * integer_quotient_2 )
+      scaled_index = 0xFFFFFFFFFFFFFF0LL;
+    alloca_result = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+    p_i = alloca_result;
     while ( 1 )
     {
-      v27 = SR_VEC_LANES(128, v22[286], i32)[2] - SR_VEC_LANES(128, v22[359], i32)[3];
-      v41 = v27 >= v37 ? v37 : v27;
-      v27 = v41;
-      v26 = SR_VEC_LANES(128, v22[284], i32)[3] * v41 / (1000 * SR_VEC_LANES(128, v22[286], i32)[0]);
+      saved_comparison_result = SR_VEC_LANES(128, source_buffer[286], i32)[2] - SR_VEC_LANES(128, source_buffer[359], i32)[3];
+      comparison_result = saved_comparison_result >= scaled_index_2 ? scaled_index_2 : saved_comparison_result;
+      saved_comparison_result = comparison_result;
+      integer_quotient = SR_VEC_LANES(128, source_buffer[284], i32)[3] * comparison_result / (1000 * SR_VEC_LANES(128, source_buffer[286], i32)[0]);
       if ( *a2 == 2 && a2[1] == 2 )
       {
-        v62 = SR_VEC_LANES(128, v22[360], i32)[1];
-        for ( i = 0; i < v26; ++i )
+        table_value_8 = SR_VEC_LANES(128, source_buffer[360], i32)[1];
+        for ( i = 0; i < integer_quotient; ++i )
           *((_WORD *)p_i + i) = SR_VEC_PTR_LANES(128, a3, i16)[2 * i];
-        if ( SR_VEC_LANES(128, v22[1265], i32)[2] == 1 && !v62 )
-          crt_memcpy((__m128i *)&SR_VEC_LANES(128, v22[992], u64)[1], v22 + 362, 0x130u);
-        v10 = sub_1401BAA30(
-                (     __m128i *)SR_VEC_LANES(128, v22[362], i32),
-                (__m128i *)((char *)&SR_VEC_LANES(128, v22[319], u64)[1] + 2 * SR_VEC_LANES(128, v22[359], i32)[3] + 4),
+        if ( SR_VEC_LANES(128, source_buffer[1265], i32)[2] == 1 && !table_value_8 )
+          crt_memcpy((__m128i *)&SR_VEC_LANES(128, source_buffer[992], u64)[1], source_buffer + 362, 0x130u);
+        masked_bits = sub_1401BAA30(
+                (     __m128i *)SR_VEC_LANES(128, source_buffer[362], i32),
+                (__m128i *)((char *)&SR_VEC_LANES(128, source_buffer[319], u64)[1] + 2 * SR_VEC_LANES(128, source_buffer[359], i32)[3] + 4),
                 (     __m128i *)p_i,
-                v26);
-        v24 += v10;
-        SR_VEC_LANES(128, v22[359], i32)[3] += v27;
-        v27 = SR_VEC_LANES(128, v22[917], i32)[0] - SR_VEC_LANES(128, v22[990], i32)[1];
-        v42 = v27 >= SR_VEC_LANES(128, v22[916], i32)[2] * 10 * v31 ? SR_VEC_LANES(128, v22[916], i32)[2] * 10 * v31 : v27;
-        v27 = v42;
-        for ( i = 0; i < v26; ++i )
+                integer_quotient);
+        running_total += masked_bits;
+        SR_VEC_LANES(128, source_buffer[359], i32)[3] += saved_comparison_result;
+        saved_comparison_result = SR_VEC_LANES(128, source_buffer[917], i32)[0] - SR_VEC_LANES(128, source_buffer[990], i32)[1];
+        scaled_index_3 = saved_comparison_result >= SR_VEC_LANES(128, source_buffer[916], i32)[2] * 10 * record_word_offset ? SR_VEC_LANES(128, source_buffer[916], i32)[2] * 10 * record_word_offset : saved_comparison_result;
+        saved_comparison_result = scaled_index_3;
+        for ( i = 0; i < integer_quotient; ++i )
           *((_WORD *)p_i + i) = SR_VEC_PTR_LANES(128, a3, i16)[2 * i + 1];
-        v11 = sub_1401BAA30(
-                &SR_VEC_LANES(128, v22[992], i32)[2],
-                (__m128i *)((char *)SR_VEC_LANES(128, v22[950], i64) + 2 * SR_VEC_LANES(128, v22[990], i32)[1] + 4),
+        call_result = sub_1401BAA30(
+                &SR_VEC_LANES(128, source_buffer[992], i32)[2],
+                (__m128i *)((char *)SR_VEC_LANES(128, source_buffer[950], i64) + 2 * SR_VEC_LANES(128, source_buffer[990], i32)[1] + 4),
                 (     __m128i *)p_i,
-                v26);
-        v24 += v11;
-        SR_VEC_LANES(128, v22[990], i32)[1] += v27;
+                integer_quotient);
+        running_total += call_result;
+        SR_VEC_LANES(128, source_buffer[990], i32)[1] += saved_comparison_result;
       }
       else if ( *a2 == 2 && a2[1] == 1 )
       {
-        for ( i = 0; i < v26; ++i )
+        for ( i = 0; i < integer_quotient; ++i )
         {
-          v43 = SR_VEC_PTR_LANES(128, a3, i16)[2 * i + 1] + SR_VEC_PTR_LANES(128, a3, i16)[2 * i];
-          *((_WORD *)p_i + i) = (v43 & 1) + (v43 >> 1);
+          scaled_index_4 = SR_VEC_PTR_LANES(128, a3, i16)[2 * i + 1] + SR_VEC_PTR_LANES(128, a3, i16)[2 * i];
+          *((_WORD *)p_i + i) = (scaled_index_4 & 1) + (scaled_index_4 >> 1);
         }
-        v12 = sub_1401BAA30(
-                (     __m128i *)SR_VEC_LANES(128, v22[362], i32),
-                (__m128i *)((char *)&SR_VEC_LANES(128, v22[319], u64)[1] + 2 * SR_VEC_LANES(128, v22[359], i32)[3] + 4),
+        masked_bits_2 = sub_1401BAA30(
+                (     __m128i *)SR_VEC_LANES(128, source_buffer[362], i32),
+                (__m128i *)((char *)&SR_VEC_LANES(128, source_buffer[319], u64)[1] + 2 * SR_VEC_LANES(128, source_buffer[359], i32)[3] + 4),
                 (     __m128i *)p_i,
-                v26);
-        v24 += v12;
-        if ( SR_VEC_LANES(128, v22[1265], i32)[2] == 2 && !SR_VEC_LANES(128, v22[360], i32)[1] )
+                integer_quotient);
+        running_total += masked_bits_2;
+        if ( SR_VEC_LANES(128, source_buffer[1265], i32)[2] == 2 && !SR_VEC_LANES(128, source_buffer[360], i32)[1] )
         {
-          v13 = sub_1401BAA30(
-                  &SR_VEC_LANES(128, v22[992], i32)[2],
-                  (__m128i *)((char *)SR_VEC_LANES(128, v22[950], i64) + 2 * SR_VEC_LANES(128, v22[990], i32)[1] + 4),
+          call_result_2 = sub_1401BAA30(
+                  &SR_VEC_LANES(128, source_buffer[992], i32)[2],
+                  (__m128i *)((char *)SR_VEC_LANES(128, source_buffer[950], i64) + 2 * SR_VEC_LANES(128, source_buffer[990], i32)[1] + 4),
                   (     __m128i *)p_i,
-                  v26);
-          v24 += v13;
-          for ( i = 0; i < SR_VEC_LANES(128, v22[286], i32)[2]; ++i )
-            SR_VEC_LANES(128, v22[319], i16)[SR_VEC_LANES(128, v22[359], i32)[3] + 6 + i] = (SR_VEC_LANES(128, v22[950], i16)[SR_VEC_LANES(128, v22[990], i32)[1] + 2 + i]
-                                                               + SR_VEC_LANES(128, v22[319], i16)[SR_VEC_LANES(128, v22[359], i32)[3] + 6 + i]) >> 1;
+                  integer_quotient);
+          running_total += call_result_2;
+          for ( i = 0; i < SR_VEC_LANES(128, source_buffer[286], i32)[2]; ++i )
+            SR_VEC_LANES(128, source_buffer[319], i16)[SR_VEC_LANES(128, source_buffer[359], i32)[3] + 6 + i] = (SR_VEC_LANES(128, source_buffer[950], i16)[SR_VEC_LANES(128, source_buffer[990], i32)[1] + 2 + i]
+                                                               + SR_VEC_LANES(128, source_buffer[319], i16)[SR_VEC_LANES(128, source_buffer[359], i32)[3] + 6 + i]) >> 1;
         }
-        SR_VEC_LANES(128, v22[359], i32)[3] += v27;
+        SR_VEC_LANES(128, source_buffer[359], i32)[3] += saved_comparison_result;
       }
       else
       {
-        crt_memcpy((__m128i *)p_i, a3, 2LL * v26);
-        v14 = sub_1401BAA30(
-                (     __m128i *)SR_VEC_LANES(128, v22[362], i32),
-                (__m128i *)((char *)&SR_VEC_LANES(128, v22[319], u64)[1] + 2 * SR_VEC_LANES(128, v22[359], i32)[3] + 4),
+        crt_memcpy((__m128i *)p_i, a3, 2LL * integer_quotient);
+        masked_bits_3 = sub_1401BAA30(
+                (     __m128i *)SR_VEC_LANES(128, source_buffer[362], i32),
+                (__m128i *)((char *)&SR_VEC_LANES(128, source_buffer[319], u64)[1] + 2 * SR_VEC_LANES(128, source_buffer[359], i32)[3] + 4),
                 (     __m128i *)p_i,
-                v26);
-        v24 += v14;
-        SR_VEC_LANES(128, v22[359], i32)[3] += v27;
+                integer_quotient);
+        running_total += masked_bits_3;
+        SR_VEC_LANES(128, source_buffer[359], i32)[3] += saved_comparison_result;
       }
-      a3 = (     __m128i *)((char *)a3 + 2 * *a2 * v26);
-      a4 -= v26;
-      SR_VEC_LANES(128, v22[1266], i32)[0] = 0;
-      if ( SR_VEC_LANES(128, v22[359], i32)[3] < SR_VEC_LANES(128, v22[286], i32)[2] )
+      a3 = (     __m128i *)((char *)a3 + 2 * *a2 * integer_quotient);
+      a4 -= integer_quotient;
+      SR_VEC_LANES(128, source_buffer[1266], i32)[0] = 0;
+      if ( SR_VEC_LANES(128, source_buffer[359], i32)[3] < SR_VEC_LANES(128, source_buffer[286], i32)[2] )
         break;
-      if ( !SR_VEC_LANES(128, v22[360], i32)[1] && !a7 )
+      if ( !SR_VEC_LANES(128, source_buffer[360], i32)[1] && !a7 )
       {
-        v30[0] = 0;
-        v30[1] = 0;
-        v15 = *((_BYTE *)a2 + 4) * (SR_VEC_LANES(128, v22[360], i8)[0] + 1);
-        v63 = 256;
-        v30[0] = -(char)(256 >> v15);
-        sub_14019A4F0(a5, 0, (__int64)v30, 8);
+        scratch_buffer[0] = 0;
+        scratch_buffer[1] = 0;
+        loaded_word = *((_BYTE *)a2 + 4) * (SR_VEC_LANES(128, source_buffer[360], i8)[0] + 1);
+        unused_written_slot_4 = 256;
+        scratch_buffer[0] = -(char)(256 >> loaded_word);
+        sub_14019A4F0(a5, 0, (__int64)scratch_buffer, 8);
         for ( i = 0; i < a2[1]; ++i )
         {
-          v34 = 0;
-          for ( j = 0; j < SR_VEC_LANES(128, v22[360], i32)[2522 * i]; ++j )
+          option_flags_2 = 0;
+          for ( j = 0; j < SR_VEC_LANES(128, source_buffer[360], i32)[2522 * i]; ++j )
           {
-            v70 = j;
-            v34 |= SR_VEC_LANES(128, v22[296], i32)[2522 * i + 1 + j] << j;
+            unused_written_slot_6 = j;
+            option_flags_2 |= SR_VEC_LANES(128, source_buffer[296], i32)[2522 * i + 1 + j] << j;
           }
-          v44 = v34 > 0;
-          SR_VEC_LANES(128, v22[296], i8)[10088 * i + 3] = v44;
-          if ( v34 && SR_VEC_LANES(128, v22[360], i32)[2522 * i] > 1 )
-            sub_14019A4F0(a5, v34 - 1, (__int64)*(&off_1402827E0 + SR_VEC_LANES(128, v22[360], i32)[2522 * i] - 2), 8);
+          comparison_result_2 = option_flags_2 > 0;
+          SR_VEC_LANES(128, source_buffer[296], i8)[10088 * i + 3] = comparison_result_2;
+          if ( option_flags_2 && SR_VEC_LANES(128, source_buffer[360], i32)[2522 * i] > 1 )
+            sub_14019A4F0(a5, option_flags_2 - 1, (__int64)*(&off_1402827E0 + SR_VEC_LANES(128, source_buffer[360], i32)[2522 * i] - 2), 8);
         }
-        for ( j = 0; j < SR_VEC_LANES(128, v22[360], i32)[0]; ++j )
+        for ( j = 0; j < SR_VEC_LANES(128, source_buffer[360], i32)[0]; ++j )
         {
           for ( i = 0; i < a2[1]; ++i )
           {
-            if ( SR_VEC_LANES(128, v22[296], i32)[2522 * i + 1 + j] )
+            if ( SR_VEC_LANES(128, source_buffer[296], i32)[2522 * i + 1 + j] )
             {
               if ( a2[1] == 2 && !i )
               {
-                sub_1401C0940(a5, (__int64)SR_VEC_LANES(128, v22[1263], i64) + 6 * j + 2);
-                if ( !SR_VEC_LANES(128, v22[926], i32)[j + 3] )
-                  sub_1401C0A60(a5, SR_VEC_LANES(128, v22[1264], i8)[j + 4]);
+                sub_1401C0940(a5, (__int64)SR_VEC_LANES(128, source_buffer[1263], i64) + 6 * j + 2);
+                if ( !SR_VEC_LANES(128, source_buffer[926], i32)[j + 3] )
+                  sub_1401C0A60(a5, SR_VEC_LANES(128, source_buffer[1264], i8)[j + 4]);
               }
-              if ( j > 0 && SR_VEC_LANES(128, v22[296], i32)[2522 * i + j] )
-                v45 = 2;
+              if ( j > 0 && SR_VEC_LANES(128, source_buffer[296], i32)[2522 * i + j] )
+                selection_code = 2;
               else
-                v45 = 0;
-              sub_1401CA330((__int64)&SR_VEC_PTR_LANES(128, v22, i64)[1261 * i], a5, j, 1, v45);
+                selection_code = 0;
+              sub_1401CA330((__int64)&SR_VEC_PTR_LANES(128, source_buffer, i64)[1261 * i], a5, j, 1, selection_code);
               sub_1401C1790(
                 a5,
-                SR_VEC_LANES(128, v22[384], i8)[10088 * i + 5 + 36 * j],
-                SR_VEC_LANES(128, v22[384], i8)[10088 * i + 6 + 36 * j],
-                (__int64)&SR_VEC_LANES(128, v22[389], i64)[1261 * i + 40 * j] + 4,
-                SR_VEC_LANES(128, v22[286], i32)[2522 * i + 2]);
+                SR_VEC_LANES(128, source_buffer[384], i8)[10088 * i + 5 + 36 * j],
+                SR_VEC_LANES(128, source_buffer[384], i8)[10088 * i + 6 + 36 * j],
+                (__int64)&SR_VEC_LANES(128, source_buffer[389], i64)[1261 * i + 40 * j] + 4,
+                SR_VEC_LANES(128, source_buffer[286], i32)[2522 * i + 2]);
             }
           }
         }
         for ( i = 0; i < a2[1]; ++i )
-          crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, v22[296], i16)[5044 * i + 2]), 0, 0xCu);
-        v16 = sub_14019A0A0((__int64)a5);
-        SR_VEC_LANES(128, v22[1264], i32)[2] = v16;
+          crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, source_buffer[296], i16)[5044 * i + 2]), 0, 0xCu);
+        call_result_3 = sub_14019A0A0((__int64)a5);
+        SR_VEC_LANES(128, source_buffer[1264], i32)[2] = call_result_3;
       }
-      sub_1401D1380((__int64)v22);
-      v32 = a2[6] * a2[7] / 1000;
+      sub_1401D1380((__int64)source_buffer);
+      remaining_amount_3 = a2[6] * a2[7] / 1000;
       if ( !a7 )
-        v32 -= SR_VEC_LANES(128, v22[1264], i32)[2];
-      v71 = 0;
-      v32 /= SR_VEC_LANES(128, v22[360], i32)[0];
+        remaining_amount_3 -= SR_VEC_LANES(128, source_buffer[1264], i32)[2];
+      unused_written_slot_7 = 0;
+      remaining_amount_3 /= SR_VEC_LANES(128, source_buffer[360], i32)[0];
       if ( a2[6] == 10 )
-        v25 = 100 * (__int16)v32;
+        remaining_amount = 100 * (__int16)remaining_amount_3;
       else
-        v25 = 50 * (__int16)v32;
-      v25 -= 1000 * SR_VEC_LANES(128, v22[1264], i32)[3] / 500;
-      if ( !a7 && SR_VEC_LANES(128, v22[360], i32)[1] > 0 )
+        remaining_amount = 50 * (__int16)remaining_amount_3;
+      remaining_amount -= 1000 * SR_VEC_LANES(128, source_buffer[1264], i32)[3] / 500;
+      if ( !a7 && SR_VEC_LANES(128, source_buffer[360], i32)[1] > 0 )
       {
-        v17 = sub_14019A0A0((__int64)a5);
-        v64 = v17 - SR_VEC_LANES(128, v22[1264], i32)[2] - SR_VEC_LANES(128, v22[360], i32)[1] * v32;
-        v25 -= 1000 * v64 / 500;
+        call_result_4 = sub_14019A0A0((__int64)a5);
+        scaled_index_5 = call_result_4 - SR_VEC_LANES(128, source_buffer[1264], i32)[2] - SR_VEC_LANES(128, source_buffer[360], i32)[1] * remaining_amount_3;
+        remaining_amount -= 1000 * scaled_index_5 / 500;
       }
       if ( a2[7] <= 5000 )
       {
-        if ( v25 <= 5000 )
+        if ( remaining_amount <= 5000 )
         {
-          v48 = v25 >= a2[7] ? v25 : a2[7];
-          v49 = v48;
+          comparison_result_4 = remaining_amount >= a2[7] ? remaining_amount : a2[7];
+          saved_comparison_result_3 = comparison_result_4;
         }
         else
         {
-          v49 = 5000;
+          saved_comparison_result_3 = 5000;
         }
-        v50 = v49;
+        cached_comparison_result = saved_comparison_result_3;
       }
       else
       {
-        if ( v25 <= a2[7] )
+        if ( remaining_amount <= a2[7] )
         {
-          v46 = v25 >= 5000 ? v25 : 5000;
-          v47 = v46;
+          comparison_result_3 = remaining_amount >= 5000 ? remaining_amount : 5000;
+          saved_comparison_result_2 = comparison_result_3;
         }
         else
         {
-          v47 = a2[7];
+          saved_comparison_result_2 = a2[7];
         }
-        v50 = v47;
+        cached_comparison_result = saved_comparison_result_2;
       }
-      v25 = v50;
+      remaining_amount = cached_comparison_result;
       if ( a2[1] == 2 )
       {
-        v18 = &SR_VEC_LANES(128, v22[1264], i8)[SR_VEC_LANES(128, v22[360], i32)[1] + 4];
-        v19 = &SR_VEC_LANES(128, v22[1263], i8)[6 * SR_VEC_LANES(128, v22[360], i32)[1] + 2];
-        v72 = &SR_VEC_LANES(128, v22[319], i8)[12];
+        state_address = &SR_VEC_LANES(128, source_buffer[1264], i8)[SR_VEC_LANES(128, source_buffer[360], i32)[1] + 4];
+        state_address_2 = &SR_VEC_LANES(128, source_buffer[1263], i8)[6 * SR_VEC_LANES(128, source_buffer[360], i32)[1] + 2];
+        unused_written_slot_8 = &SR_VEC_LANES(128, source_buffer[319], i8)[12];
         sub_1401BEE10(
-          SR_VEC_LANES(128, v22[1261], i16),
-          (__int64)&SR_VEC_LANES(128, v22[319], i64)[1] + 4,
-          (__int64)SR_VEC_LANES(128, v22[950], i64) + 4,
-          (__int64)v19,
-          v18,
-          v69,
-          v25,
-          SR_VEC_LANES(128, v22[283], i32)[1],
+          SR_VEC_LANES(128, source_buffer[1261], i16),
+          (__int64)&SR_VEC_LANES(128, source_buffer[319], i64)[1] + 4,
+          (__int64)SR_VEC_LANES(128, source_buffer[950], i64) + 4,
+          (__int64)state_address_2,
+          state_address,
+          callee_output_word,
+          remaining_amount,
+          SR_VEC_LANES(128, source_buffer[283], i32)[1],
           a2[15],
-          SR_VEC_LANES(128, v22[286], i32)[0],
-          SR_VEC_LANES(128, v22[286], i32)[2]);
-        if ( SR_VEC_LANES(128, v22[1264], i8)[SR_VEC_LANES(128, v22[360], i32)[1] + 4] )
+          SR_VEC_LANES(128, source_buffer[286], i32)[0],
+          SR_VEC_LANES(128, source_buffer[286], i32)[2]);
+        if ( SR_VEC_LANES(128, source_buffer[1264], i8)[SR_VEC_LANES(128, source_buffer[360], i32)[1] + 4] )
         {
-          SR_VEC_LANES(128, v22[926], i8)[SR_VEC_LANES(128, v22[360], i32)[1] + 8] = 0;
+          SR_VEC_LANES(128, source_buffer[926], i8)[SR_VEC_LANES(128, source_buffer[360], i32)[1] + 8] = 0;
         }
         else
         {
-          if ( SR_VEC_LANES(128, v22[1266], i32)[1] == 1 )
+          if ( SR_VEC_LANES(128, source_buffer[1266], i32)[1] == 1 )
           {
-            crt_memset((void *)(uintptr_t)((     __m128i *)SR_VEC_LANES(128, v22[1080], i16)), 0, 0xCu);
-            crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, v22[639], i16)[6]), 0, 0x1100u);
-            crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, v22[911], i16)[6]), 0, 0x20u);
-            crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, v22[631], i16)[4]), 0, 8u);
-            SR_VEC_LANES(128, v22[914], i32)[2] = 100;
-            SR_VEC_LANES(128, v22[910], i32)[1] = 100;
-            SR_VEC_LANES(128, v22[1080], i8)[0] = 10;
-            SR_VEC_LANES(128, v22[914], i8)[5] = 0;
-            SR_VEC_LANES(128, v22[911], i32)[1] = 0x10000;
-            SR_VEC_LANES(128, v22[922], i32)[0] = 1;
+            crt_memset((void *)(uintptr_t)((     __m128i *)SR_VEC_LANES(128, source_buffer[1080], i16)), 0, 0xCu);
+            crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, source_buffer[639], i16)[6]), 0, 0x1100u);
+            crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, source_buffer[911], i16)[6]), 0, 0x20u);
+            crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, source_buffer[631], i16)[4]), 0, 8u);
+            SR_VEC_LANES(128, source_buffer[914], i32)[2] = 100;
+            SR_VEC_LANES(128, source_buffer[910], i32)[1] = 100;
+            SR_VEC_LANES(128, source_buffer[1080], i8)[0] = 10;
+            SR_VEC_LANES(128, source_buffer[914], i8)[5] = 0;
+            SR_VEC_LANES(128, source_buffer[911], i32)[1] = 0x10000;
+            SR_VEC_LANES(128, source_buffer[922], i32)[0] = 1;
           }
-          sub_1401D1630((__int64)&SR_VEC_LANES(128, v22[630], i64)[1], a8);
+          sub_1401D1630((__int64)&SR_VEC_LANES(128, source_buffer[630], i64)[1], a8);
         }
         if ( !a7 )
         {
-          sub_1401C0940(a5, (__int64)SR_VEC_LANES(128, v22[1263], i64) + 6 * SR_VEC_LANES(128, v22[360], i32)[1] + 2);
-          if ( !SR_VEC_LANES(128, v22[926], i8)[SR_VEC_LANES(128, v22[360], i32)[1] + 8] )
-            sub_1401C0A60(a5, SR_VEC_LANES(128, v22[1264], i8)[SR_VEC_LANES(128, v22[360], i32)[1] + 4]);
+          sub_1401C0940(a5, (__int64)SR_VEC_LANES(128, source_buffer[1263], i64) + 6 * SR_VEC_LANES(128, source_buffer[360], i32)[1] + 2);
+          if ( !SR_VEC_LANES(128, source_buffer[926], i8)[SR_VEC_LANES(128, source_buffer[360], i32)[1] + 8] )
+            sub_1401C0A60(a5, SR_VEC_LANES(128, source_buffer[1264], i8)[SR_VEC_LANES(128, source_buffer[360], i32)[1] + 4]);
         }
       }
       else
       {
-        crt_memcpy((__m128i *)&SR_VEC_LANES(128, v22[319], u64)[1], (     __m128i *)((char *)v22 + 20180), 4u);
+        crt_memcpy((__m128i *)&SR_VEC_LANES(128, source_buffer[319], u64)[1], (     __m128i *)((char *)source_buffer + 20180), 4u);
         crt_memcpy(
-          (__m128i *)((char *)SR_VEC_LANES(128, v22[1261], i64) + 4),
-          (     __m128i *)((char *)v22 + 2 * SR_VEC_LANES(128, v22[286], i32)[2] + 5112),
+          (__m128i *)((char *)SR_VEC_LANES(128, source_buffer[1261], i64) + 4),
+          (     __m128i *)((char *)source_buffer + 2 * SR_VEC_LANES(128, source_buffer[286], i32)[2] + 5112),
           4u);
       }
-      sub_1401D1630((__int64)v22, a8);
+      sub_1401D1630((__int64)source_buffer, a8);
       for ( i = 0; i < a2[1]; ++i )
       {
-        v28 = a2[14];
-        if ( v35 != 2 || v33 )
+        remaining_amount_2 = a2[14];
+        if ( saved_shifted_bits != 2 || iteration_count )
         {
-          if ( v35 == 3 )
+          if ( saved_shifted_bits == 3 )
           {
-            if ( v33 )
+            if ( iteration_count )
             {
-              if ( v33 == 1 )
-                v28 = 3 * v28 / 4;
+              if ( iteration_count == 1 )
+                remaining_amount_2 = 3 * remaining_amount_2 / 4;
             }
             else
             {
-              v28 = 2 * v28 / 5;
+              remaining_amount_2 = 2 * remaining_amount_2 / 5;
             }
           }
         }
         else
         {
-          v28 = 3 * v28 / 5;
+          remaining_amount_2 = 3 * remaining_amount_2 / 5;
         }
-        v51 = a2[13] && v33 == v35 - 1;
-        v52 = v51;
+        comparison_result_5 = a2[13] && iteration_count == saved_shifted_bits - 1;
+        unused_written_slot_2 = comparison_result_5;
         if ( a2[1] == 1 )
         {
-          v38 = v25;
+          saved_remaining_amount = remaining_amount;
         }
         else
         {
-          v38 = v69[i];
-          if ( !i && v69[1] > 0 )
+          saved_remaining_amount = callee_output_word[i];
+          if ( !i && callee_output_word[1] > 0 )
           {
-            v52 = 0;
-            v65 = 2 * v35;
-            v28 -= a2[14] / (2 * v35);
+            unused_written_slot_2 = 0;
+            unused_written_slot_5 = 2 * saved_shifted_bits;
+            remaining_amount_2 -= a2[14] / (2 * saved_shifted_bits);
           }
         }
-        if ( v38 > 0 )
+        if ( saved_remaining_amount > 0 )
         {
-          sub_1401C1660(&SR_VEC_PTR_LANES(128, v22, i32)[2522 * i], v38);
-          if ( SR_VEC_LANES(128, v22[360], i32)[1] - i > 0 )
+          sub_1401C1660(&SR_VEC_PTR_LANES(128, source_buffer, i32)[2522 * i], saved_remaining_amount);
+          if ( SR_VEC_LANES(128, source_buffer[360], i32)[1] - i > 0 )
           {
-            if ( i > 0 && SR_VEC_LANES(128, v22[1266], i32)[1] )
-              v39 = 1;
+            if ( i > 0 && SR_VEC_LANES(128, source_buffer[1266], i32)[1] )
+              unused_written_slot = 1;
             else
-              v39 = 2;
+              unused_written_slot = 2;
           }
           else
           {
-            v39 = 0;
+            unused_written_slot = 0;
           }
-          v24 = sub_1401D1780();
+          running_total = sub_1401D1780();
         }
-        SR_VEC_LANES(128, v22[291], i32)[2522 * i + 3] = 0;
-        SR_VEC_LANES(128, v22[359], i32)[2522 * i + 3] = 0;
-        ++SR_VEC_LANES(128, v22[360], i32)[2522 * i + 1];
+        SR_VEC_LANES(128, source_buffer[291], i32)[2522 * i + 3] = 0;
+        SR_VEC_LANES(128, source_buffer[359], i32)[2522 * i + 3] = 0;
+        ++SR_VEC_LANES(128, source_buffer[360], i32)[2522 * i + 1];
       }
-      SR_VEC_LANES(128, v22[1266], i32)[1] = SR_VEC_LANES(128, v22[1264], i8)[SR_VEC_LANES(128, v22[360], i32)[1] + 3];
-      if ( *a6 > 0 && SR_VEC_LANES(128, v22[360], i32)[1] == SR_VEC_LANES(128, v22[360], i32)[0] )
+      SR_VEC_LANES(128, source_buffer[1266], i32)[1] = SR_VEC_LANES(128, source_buffer[1264], i8)[SR_VEC_LANES(128, source_buffer[360], i32)[1] + 3];
+      if ( *a6 > 0 && SR_VEC_LANES(128, source_buffer[360], i32)[1] == SR_VEC_LANES(128, source_buffer[360], i32)[0] )
       {
-        v29 = 0;
+        option_flags = 0;
         for ( i = 0; i < a2[1]; ++i )
         {
-          for ( j = 0; j < SR_VEC_LANES(128, v22[360], i32)[2522 * i]; ++j )
+          for ( j = 0; j < SR_VEC_LANES(128, source_buffer[360], i32)[2522 * i]; ++j )
           {
-            v29 *= 2;
-            v29 |= (char)SR_VEC_LANES(128, v22[296], u8)[10088 * i + j];
+            option_flags *= 2;
+            option_flags |= (char)SR_VEC_LANES(128, source_buffer[296], u8)[10088 * i + j];
           }
-          v29 *= 2;
-          v29 |= (char)SR_VEC_LANES(128, v22[296], u8)[10088 * i + 3];
+          option_flags *= 2;
+          option_flags |= (char)SR_VEC_LANES(128, source_buffer[296], u8)[10088 * i + 3];
         }
         if ( !a7 )
-          sub_14019A7C0(a5, v29, *((_BYTE *)a2 + 4) * (SR_VEC_LANES(128, v22[360], i8)[0] + 1));
-        if ( SR_VEC_LANES(128, v22[381], i32)[1] && (a2[1] == 1 || SR_VEC_LANES(128, v22[1011], i32)[3]) )
+          sub_14019A7C0(a5, option_flags, *((_BYTE *)a2 + 4) * (SR_VEC_LANES(128, source_buffer[360], i8)[0] + 1));
+        if ( SR_VEC_LANES(128, source_buffer[381], i32)[1] && (a2[1] == 1 || SR_VEC_LANES(128, source_buffer[1011], i32)[3]) )
           *a6 = 0;
-        SR_VEC_LANES(128, v22[1264], i32)[3] += 8 * *a6;
-        SR_VEC_LANES(128, v22[1264], i32)[3] -= a2[6] * a2[7] / 1000;
-        if ( SR_VEC_LANES(128, v22[1264], i32)[3] <= 10000 )
+        SR_VEC_LANES(128, source_buffer[1264], i32)[3] += 8 * *a6;
+        SR_VEC_LANES(128, source_buffer[1264], i32)[3] -= a2[6] * a2[7] / 1000;
+        if ( SR_VEC_LANES(128, source_buffer[1264], i32)[3] <= 10000 )
         {
-          if ( SR_VEC_LANES(128, v22[1264], i32)[3] >= 0 )
-            v53 = SR_VEC_LANES(128, v22[1264], i32)[3];
+          if ( SR_VEC_LANES(128, source_buffer[1264], i32)[3] >= 0 )
+            table_value_2 = SR_VEC_LANES(128, source_buffer[1264], i32)[3];
           else
-            v53 = 0;
-          v54 = v53;
+            table_value_2 = 0;
+          cached_table_value = table_value_2;
         }
         else
         {
-          v54 = 10000;
+          cached_table_value = 10000;
         }
-        SR_VEC_LANES(128, v22[1264], i32)[3] = v54;
-        v66 = ((3188LL * SR_VEC_LANES(128, v22[1265], i16)[6]) >> 16) + 13;
-        if ( SR_VEC_LANES(128, v22[283], i32)[1] >= v66 )
+        SR_VEC_LANES(128, source_buffer[1264], i32)[3] = cached_table_value;
+        shifted_bits_2 = ((3188LL * SR_VEC_LANES(128, source_buffer[1265], i16)[6]) >> 16) + 13;
+        if ( SR_VEC_LANES(128, source_buffer[283], i32)[1] >= shifted_bits_2 )
         {
-          SR_VEC_LANES(128, v22[1266], i32)[0] = 0;
-          SR_VEC_LANES(128, v22[1265], i32)[3] += a2[6];
+          SR_VEC_LANES(128, source_buffer[1266], i32)[0] = 0;
+          SR_VEC_LANES(128, source_buffer[1265], i32)[3] += a2[6];
         }
         else
         {
-          SR_VEC_LANES(128, v22[1266], i32)[0] = 1;
-          SR_VEC_LANES(128, v22[1265], i32)[3] = 0;
+          SR_VEC_LANES(128, source_buffer[1266], i32)[0] = 1;
+          SR_VEC_LANES(128, source_buffer[1265], i32)[3] = 0;
         }
       }
       if ( !a4 )
         break;
-      ++v33;
+      ++iteration_count;
     }
-    SR_VEC_LANES(128, v22[1265], i32)[2] = a2[1];
-    a2[19] = SR_VEC_LANES(128, v22[1266], i32)[0];
-    v55 = SR_VEC_LANES(128, v22[286], i32)[0] == 16 && !SR_VEC_LANES(128, v22[1], i32)[3];
-    a2[20] = v55;
-    a2[18] = 1000 * SR_VEC_LANES(128, v22[286], i16)[0];
+    SR_VEC_LANES(128, source_buffer[1265], i32)[2] = a2[1];
+    a2[19] = SR_VEC_LANES(128, source_buffer[1266], i32)[0];
+    table_value_3 = SR_VEC_LANES(128, source_buffer[286], i32)[0] == 16 && !SR_VEC_LANES(128, source_buffer[1], i32)[3];
+    a2[20] = table_value_3;
+    a2[18] = 1000 * SR_VEC_LANES(128, source_buffer[286], i16)[0];
     if ( a2[15] )
-      v56 = 0;
+      table_value_4 = 0;
     else
-      v56 = SR_VEC_LANES(128, v22[1262], i16)[6];
-    a2[21] = v56;
+      table_value_4 = SR_VEC_LANES(128, source_buffer[1262], i16)[6];
+    a2[21] = table_value_4;
     if ( a7 )
     {
-      a2[6] = v57;
-      a2[9] = v58;
+      a2[6] = table_value_5;
+      a2[9] = table_value_6;
       for ( i = 0; i < a2[1]; ++i )
       {
-        SR_VEC_LANES(128, v22[291], i32)[2522 * i + 3] = 0;
-        SR_VEC_LANES(128, v22[292], i32)[2522 * i + 2] = 0;
+        SR_VEC_LANES(128, source_buffer[291], i32)[2522 * i + 3] = 0;
+        SR_VEC_LANES(128, source_buffer[292], i32)[2522 * i + 2] = 0;
       }
     }
-    a2[23] = SR_VEC_LANES(128, v22[298], i8)[13];
-    a2[24] = word_1402827F8[2 * (SR_VEC_LANES(128, v22[298], i8)[13] >> 1) + SR_VEC_LANES(128, v22[298], i8)[14]];
+    a2[23] = SR_VEC_LANES(128, source_buffer[298], i8)[13];
+    a2[24] = word_1402827F8[2 * (SR_VEC_LANES(128, source_buffer[298], i8)[13] >> 1) + SR_VEC_LANES(128, source_buffer[298], i8)[14]];
   }
-  return (unsigned int)v24; /* 0x1401CCA5F: mov eax, dword ptr [rbp + 0x14] */
+  return (unsigned int)running_total; /* 0x1401CCA5F: mov eax, dword ptr [rbp + 0x14] */
 }
 
 //----- (00000001401CCA90) ----------------------------------------------------
@@ -3836,14 +3836,14 @@ __int64            sub_1401CCA90(_DWORD *a1)
 __int64            sub_1401CCAC0(__int64 a1)
 {
   int i;
-  unsigned int v3;
+  unsigned int unused_written_slot;
 
-  v3 = 0;
+  unused_written_slot = 0;
   for ( i = 0; i < 2; ++i )
-    v3 = sub_1401C7180((_DWORD *)(4288LL * i + a1));
+    unused_written_slot = sub_1401C7180((_DWORD *)(4288LL * i + a1));
   crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 8576)), 0, 0xCu);
   *(_DWORD *)(a1 + 8596) = 0;
-  return v3;
+  return unused_written_slot;
 }
 
 //----- (00000001401CCB60) ----------------------------------------------------
@@ -3857,65 +3857,65 @@ __int64            sub_1401CCB60(
         int *a7,
         int a8)
 {
-  unsigned __int64 v8;
-  void *v9;
-  int v10;
-  unsigned __int64 v11;
-  void *v12;
-  unsigned __int64 v13;
-  void *v14;
-  int v15;
-  int v16;
+  unsigned __int64 scaled_index;
+  void *alloca_result;
+  int masked_bits;
+  unsigned __int64 scaled_index_2;
+  void *alloca_result_2;
+  unsigned __int64 scaled_index_3;
+  void *alloca_result_3;
+  int masked_bits_2;
+  int masked_bits_3;
   int i;
   int j;
-       __m128i *v20;
-  int v21;
-       __m128i *v22;
-  int v23;
-  __int32 v24;
-  int v25;
-  int v26;
-  BOOL v27;
-  __m128i *v28;
-  __m128i *v29;
-  BOOL v30;
-  int v31;
-  BOOL v32;
-  __int32 v33;
-  BOOL v34;
-  BOOL v35;
-  BOOL v36;
-  int v37;
-  int v38;
-  int v39;
-  __int32 v40;
-  __int32 v41;
-  __m128i *v42;
-  _DWORD v43[2];
-  __m128i *v44;
-  int v45;
-  BOOL v46;
+       __m128i *input_cursor;
+  int running_total;
+       __m128i *input_cursor_2;
+  int callee_output_word;
+  __int32 selection_flag;
+  int shifted_bits;
+  int cached_selection_code;
+  BOOL saved_comparison_result;
+  __m128i *destination_buffer;
+  __m128i *table_value;
+  BOOL scaled_index_4;
+  int selection_code;
+  BOOL comparison_result;
+  __int32 scaled_index_5;
+  BOOL comparison_result_2;
+  BOOL table_value_2;
+  BOOL saved_comparison_result_2;
+  int integer_difference;
+  int selection_code_2;
+  int loaded_word;
+  __int32 scaled_index_6;
+  __int32 comparison_result_3;
+  __m128i *input_cursor_3;
+  _DWORD destination_buffer_2[2];
+  __m128i *destination_buffer_3;
+  int call_result;
+  BOOL condition_flag;
   __m128i *p_i;
-  __m128i *v48;
-  _DWORD v49[6];
-  char v50[640];
-  __int64 v51;
+  __m128i *saved_alloca_result;
+  _DWORD scratch_buffer[6];
+  char scratch_buffer_2[640];
+  __int64 unused_local;
 
-  v24 = 0;
-  v21 = 0;
-  memset(v43, 0, sizeof(v43));
-  v22 = a1;
-  v20 = a1;
+  selection_flag = 0;
+  running_total = 0;
+  memset(destination_buffer_2, 0, sizeof(destination_buffer_2));
+  input_cursor_2 = a1;
+  input_cursor = a1;
   if ( a4 )
   {
     for ( i = 0; i < a2[1]; ++i )
-      SR_VEC_LANES(128, v20[268 * i + 150], i32)[0] = 0;
+      SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[0] = 0;
   }
-  if ( a2[1] > SR_VEC_LANES(128, v22[537], i32)[0] )
-    v21 += sub_1401C7180((     __m128i *)SR_VEC_LANES(128, v20[268], i32));
-  v30 = a2[1] == 1 && SR_VEC_LANES(128, v22[537], i32)[0] == 2 && a2[3] == 1000 * SR_VEC_LANES(128, v20[144], i32)[3];
-  v46 = v30;
-  if ( !SR_VEC_LANES(128, v20[150], i32)[0] )
+  if ( a2[1] > SR_VEC_LANES(128, input_cursor_2[537], i32)[0] )
+    running_total += sub_1401C7180((     __m128i *)SR_VEC_LANES(128, input_cursor[268], i32));
+  scaled_index_4 = a2[1] == 1 && SR_VEC_LANES(128, input_cursor_2[537], i32)[0] == 2 && a2[3] == 1000 * SR_VEC_LANES(128, input_cursor[144], i32)[3];
+  condition_flag = scaled_index_4;
+  if ( !SR_VEC_LANES(128, input_cursor[150], i32)[0] )
   {
     for ( i = 0; i < a2[1]; ++i )
     {
@@ -3924,20 +3924,20 @@ __int64            sub_1401CCB60(
         switch ( a2[4] )
         {
           case 10:
-            SR_VEC_LANES(128, v20[268 * i + 150], i32)[1] = 1;
-            SR_VEC_LANES(128, v20[268 * i + 145], i32)[1] = 2;
+            SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1] = 1;
+            SR_VEC_LANES(128, input_cursor[268 * i + 145], i32)[1] = 2;
             break;
           case 20:
-            SR_VEC_LANES(128, v20[268 * i + 150], i32)[1] = 1;
-            SR_VEC_LANES(128, v20[268 * i + 145], i32)[1] = 4;
+            SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1] = 1;
+            SR_VEC_LANES(128, input_cursor[268 * i + 145], i32)[1] = 4;
             break;
           case 40:
-            SR_VEC_LANES(128, v20[268 * i + 150], i32)[1] = 2;
-            SR_VEC_LANES(128, v20[268 * i + 145], i32)[1] = 4;
+            SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1] = 2;
+            SR_VEC_LANES(128, input_cursor[268 * i + 145], i32)[1] = 4;
             break;
           case 60:
-            SR_VEC_LANES(128, v20[268 * i + 150], i32)[1] = 3;
-            SR_VEC_LANES(128, v20[268 * i + 145], i32)[1] = 4;
+            SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1] = 3;
+            SR_VEC_LANES(128, input_cursor[268 * i + 145], i32)[1] = 4;
             break;
           default:
             return (unsigned int)-203; /* 0x1401CCE35: mov eax, 0xffffff35 */
@@ -3945,75 +3945,75 @@ __int64            sub_1401CCB60(
       }
       else
       {
-        SR_VEC_LANES(128, v20[268 * i + 150], i32)[1] = 1;
-        SR_VEC_LANES(128, v20[268 * i + 145], i32)[1] = 2;
+        SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1] = 1;
+        SR_VEC_LANES(128, input_cursor[268 * i + 145], i32)[1] = 2;
       }
-      v25 = (a2[3] >> 10) + 1;
-      if ( v25 != 8 && v25 != 12 && v25 != 16 )
+      shifted_bits = (a2[3] >> 10) + 1;
+      if ( shifted_bits != 8 && shifted_bits != 12 && shifted_bits != 16 )
         return (unsigned int)-200; /* 0x1401CCE63: mov eax, 0xffffff38 */
-      v21 += sub_1401C71F0((__int64)SR_VEC_LANES(128, v20[268 * i], i64), v25, a2[2]);
+      running_total += sub_1401C71F0((__int64)SR_VEC_LANES(128, input_cursor[268 * i], i64), shifted_bits, a2[2]);
     }
   }
-  if ( *a2 == 2 && a2[1] == 2 && (SR_VEC_LANES(128, v22[536], i32)[3] == 1 || SR_VEC_LANES(128, v22[537], i32)[0] == 1) )
+  if ( *a2 == 2 && a2[1] == 2 && (SR_VEC_LANES(128, input_cursor_2[536], i32)[3] == 1 || SR_VEC_LANES(128, input_cursor_2[537], i32)[0] == 1) )
   {
-    crt_memset((void *)(uintptr_t)((     __m128i *)SR_VEC_LANES(128, v22[536], i16)), 0, 4u);
-    crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, v22[536], i16)[4]), 0, 4u);
-    crt_memcpy((__m128i *)&v20[421], v20 + 153, 0x130u);
+    crt_memset((void *)(uintptr_t)((     __m128i *)SR_VEC_LANES(128, input_cursor_2[536], i16)), 0, 4u);
+    crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, input_cursor_2[536], i16)[4]), 0, 4u);
+    crt_memcpy((__m128i *)&input_cursor[421], input_cursor + 153, 0x130u);
   }
-  SR_VEC_LANES(128, v22[536], i32)[3] = *a2;
-  SR_VEC_LANES(128, v22[537], i32)[0] = a2[1];
+  SR_VEC_LANES(128, input_cursor_2[536], i32)[3] = *a2;
+  SR_VEC_LANES(128, input_cursor_2[537], i32)[0] = a2[1];
   if ( a2[2] <= 48000 && a2[2] >= 8000 )
   {
-    if ( a3 != 1 && !SR_VEC_LANES(128, v20[150], i32)[0] )
+    if ( a3 != 1 && !SR_VEC_LANES(128, input_cursor[150], i32)[0] )
     {
       for ( i = 0; i < a2[1]; ++i )
       {
-        for ( j = 0; j < SR_VEC_LANES(128, v20[268 * i + 150], i32)[1]; ++j )
-          SR_VEC_LANES(128, v20[268 * i + 151], i32)[j] = sub_14019AF20(a5, 1);
-        SR_VEC_LANES(128, v20[268 * i + 151], i32)[3] = sub_14019AF20(a5, 1);
+        for ( j = 0; j < SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1]; ++j )
+          SR_VEC_LANES(128, input_cursor[268 * i + 151], i32)[j] = sub_14019AF20(a5, 1);
+        SR_VEC_LANES(128, input_cursor[268 * i + 151], i32)[3] = sub_14019AF20(a5, 1);
       }
       for ( i = 0; i < a2[1]; ++i )
       {
-        crt_memset((void *)(uintptr_t)((     __m128i *)SR_VEC_LANES(128, v20[268 * i + 152], i16)), 0, 0xCu);
-        if ( SR_VEC_LANES(128, v20[268 * i + 151], i32)[3] )
+        crt_memset((void *)(uintptr_t)((     __m128i *)SR_VEC_LANES(128, input_cursor[268 * i + 152], i16)), 0, 0xCu);
+        if ( SR_VEC_LANES(128, input_cursor[268 * i + 151], i32)[3] )
         {
-          if ( SR_VEC_LANES(128, v20[268 * i + 150], i32)[1] == 1 )
+          if ( SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1] == 1 )
           {
-            SR_VEC_LANES(128, v20[268 * i + 152], i32)[0] = 1;
+            SR_VEC_LANES(128, input_cursor[268 * i + 152], i32)[0] = 1;
           }
           else
           {
-            v45 = sub_14019AFE0(a5, (__int64)*(&off_1402827E0 + SR_VEC_LANES(128, v20[268 * i + 150], i32)[1] - 2), 8) + 1;
-            for ( j = 0; j < SR_VEC_LANES(128, v20[268 * i + 150], i32)[1]; ++j )
-              SR_VEC_LANES(128, v20[268 * i + 152], i32)[j] = (v45 >> j) & 1;
+            call_result = sub_14019AFE0(a5, (__int64)*(&off_1402827E0 + SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1] - 2), 8) + 1;
+            for ( j = 0; j < SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[1]; ++j )
+              SR_VEC_LANES(128, input_cursor[268 * i + 152], i32)[j] = (call_result >> j) & 1;
           }
         }
       }
       if ( !a3 )
       {
-        for ( j = 0; j < SR_VEC_LANES(128, v20[150], i32)[1]; ++j )
+        for ( j = 0; j < SR_VEC_LANES(128, input_cursor[150], i32)[1]; ++j )
         {
           for ( i = 0; i < a2[1]; ++i )
           {
-            if ( SR_VEC_LANES(128, v20[268 * i + 152], i32)[j] )
+            if ( SR_VEC_LANES(128, input_cursor[268 * i + 152], i32)[j] )
             {
               if ( a2[1] == 2 && !i )
               {
-                sub_1401C0AA0(a5, v43);
-                if ( !SR_VEC_LANES(128, v20[420], i32)[j] )
-                  sub_1401C0D30(a5, &v24);
+                sub_1401C0AA0(a5, destination_buffer_2);
+                if ( !SR_VEC_LANES(128, input_cursor[420], i32)[j] )
+                  sub_1401C0D30(a5, &selection_flag);
               }
-              if ( j > 0 && SR_VEC_LANES(128, v20[268 * i + 151], i32)[j + 3] )
-                v31 = 2;
+              if ( j > 0 && SR_VEC_LANES(128, input_cursor[268 * i + 151], i32)[j + 3] )
+                selection_code = 2;
               else
-                v31 = 0;
-              sub_1401C7770((__int64)SR_VEC_LANES(128, v20[268 * i], i64), a5, j, 1, v31);
+                selection_code = 0;
+              sub_1401C7770((__int64)SR_VEC_LANES(128, input_cursor[268 * i], i64), a5, j, 1, selection_code);
               sub_1401C92B0(
                 a5,
-                (__int64)v50,
-                SR_VEC_LANES(128, v20[268 * i + 174], i8)[5],
-                SR_VEC_LANES(128, v20[268 * i + 174], i8)[6],
-                SR_VEC_LANES(128, v20[268 * i + 145], i32)[2]);
+                (__int64)scratch_buffer_2,
+                SR_VEC_LANES(128, input_cursor[268 * i + 174], i8)[5],
+                SR_VEC_LANES(128, input_cursor[268 * i + 174], i8)[6],
+                SR_VEC_LANES(128, input_cursor[268 * i + 145], i32)[2]);
             }
           }
         }
@@ -4021,167 +4021,167 @@ __int64            sub_1401CCB60(
     }
     if ( a2[1] == 2 )
     {
-      if ( !a3 || a3 == 2 && SR_VEC_LANES(128, v20[152], i32)[SR_VEC_LANES(128, v20[150], i32)[0]] == 1 )
+      if ( !a3 || a3 == 2 && SR_VEC_LANES(128, input_cursor[152], i32)[SR_VEC_LANES(128, input_cursor[150], i32)[0]] == 1 )
       {
-        sub_1401C0AA0(a5, v43);
-        if ( (a3 || SR_VEC_LANES(128, v20[419], i32)[SR_VEC_LANES(128, v20[150], i32)[0]]) && (a3 != 2 || SR_VEC_LANES(128, v20[420], i32)[SR_VEC_LANES(128, v20[150], i32)[0]]) )
-          v24 = 0;
+        sub_1401C0AA0(a5, destination_buffer_2);
+        if ( (a3 || SR_VEC_LANES(128, input_cursor[419], i32)[SR_VEC_LANES(128, input_cursor[150], i32)[0]]) && (a3 != 2 || SR_VEC_LANES(128, input_cursor[420], i32)[SR_VEC_LANES(128, input_cursor[150], i32)[0]]) )
+          selection_flag = 0;
         else
-          sub_1401C0D30(a5, &v24);
+          sub_1401C0D30(a5, &selection_flag);
       }
       else
       {
         for ( i = 0; i < 2; ++i )
-          v43[i] = SR_VEC_LANES(128, v22[536], i16)[i];
+          destination_buffer_2[i] = SR_VEC_LANES(128, input_cursor_2[536], i16)[i];
       }
     }
-    if ( a2[1] == 2 && !v24 && SR_VEC_LANES(128, v22[537], i32)[1] == 1 )
+    if ( a2[1] == 2 && !selection_flag && SR_VEC_LANES(128, input_cursor_2[537], i32)[1] == 1 )
     {
-      crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, v22[352], i16)[2]), 0, 0x3C0u);
-      crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, v22[348], i16)[2]), 0, 0x40u);
-      SR_VEC_LANES(128, v22[412], i32)[1] = 100;
-      SR_VEC_LANES(128, v22[412], i8)[8] = 10;
-      SR_VEC_LANES(128, v22[529], i32)[3] = 0;
-      SR_VEC_LANES(128, v22[416], i32)[2] = 1;
+      crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, input_cursor_2[352], i16)[2]), 0, 0x3C0u);
+      crt_memset((void *)(uintptr_t)(&SR_VEC_LANES(128, input_cursor_2[348], i16)[2]), 0, 0x40u);
+      SR_VEC_LANES(128, input_cursor_2[412], i32)[1] = 100;
+      SR_VEC_LANES(128, input_cursor_2[412], i8)[8] = 10;
+      SR_VEC_LANES(128, input_cursor_2[529], i32)[3] = 0;
+      SR_VEC_LANES(128, input_cursor_2[416], i32)[2] = 1;
     }
-    v32 = a2[1] * a2[3] < *a2 * a2[2];
-    v27 = v32;
-    if ( v32 )
-      v33 = 0;
+    comparison_result = a2[1] * a2[3] < *a2 * a2[2];
+    saved_comparison_result = comparison_result;
+    if ( comparison_result )
+      scaled_index_5 = 0;
     else
-      v33 = (SR_VEC_LANES(128, v20[145], i32)[2] + 2) * a2[1];
-    v8 = 2LL * v33 + 15;
-    if ( v8 <= 2LL * v33 )
-      v8 = 0xFFFFFFFFFFFFFF0LL;
-    v9 = alloca(v8 & 0xFFFFFFFFFFFFFFF0uLL);
-    p_i = (__m128i *)v9;
-    if ( v27 )
+      scaled_index_5 = (SR_VEC_LANES(128, input_cursor[145], i32)[2] + 2) * a2[1];
+    scaled_index = 2LL * scaled_index_5 + 15;
+    if ( scaled_index <= 2LL * scaled_index_5 )
+      scaled_index = 0xFFFFFFFFFFFFFF0LL;
+    alloca_result = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+    p_i = (__m128i *)alloca_result;
+    if ( saved_comparison_result )
     {
-      v28 = (__m128i *)a6;
-      v29 = (__m128i *)((char *)SR_VEC_PTR_LANES(128, a6, i64) + 2 * SR_VEC_LANES(128, v20[145], i32)[2] + 4);
+      destination_buffer = (__m128i *)a6;
+      table_value = (__m128i *)((char *)SR_VEC_PTR_LANES(128, a6, i64) + 2 * SR_VEC_LANES(128, input_cursor[145], i32)[2] + 4);
     }
     else
     {
-      v28 = p_i;
-      v29 = (__m128i *)((char *)SR_VEC_PTR_LANES(128, p_i, i64) + 2 * SR_VEC_LANES(128, v20[145], i32)[2] + 4);
+      destination_buffer = p_i;
+      table_value = (__m128i *)((char *)SR_VEC_PTR_LANES(128, p_i, i64) + 2 * SR_VEC_LANES(128, input_cursor[145], i32)[2] + 4);
     }
     if ( a3 )
     {
-      v35 = !SR_VEC_LANES(128, v22[537], i32)[1] || a2[1] == 2 && a3 == 2 && SR_VEC_LANES(128, v20[420], i32)[SR_VEC_LANES(128, v20[418], i32)[0]] == 1;
-      v36 = v35;
+      table_value_2 = !SR_VEC_LANES(128, input_cursor_2[537], i32)[1] || a2[1] == 2 && a3 == 2 && SR_VEC_LANES(128, input_cursor[420], i32)[SR_VEC_LANES(128, input_cursor[418], i32)[0]] == 1;
+      saved_comparison_result_2 = table_value_2;
     }
     else
     {
-      v34 = v24 == 0;
-      v36 = v34;
+      comparison_result_2 = selection_flag == 0;
+      saved_comparison_result_2 = comparison_result_2;
     }
     for ( i = 0; i < a2[1]; ++i )
     {
-      if ( i && !v36 )
+      if ( i && !saved_comparison_result_2 )
       {
-        crt_memset((void *)(uintptr_t)(&SR_VEC_PTR_LANES(128, (*(&v28 + i)), i16)[2]), 0, 2LL * v23);
+        crt_memset((void *)(uintptr_t)(&SR_VEC_PTR_LANES(128, (*(&destination_buffer + i)), i16)[2]), 0, 2LL * callee_output_word);
       }
       else
       {
-        v37 = SR_VEC_LANES(128, v20[150], i32)[0] - i;
-        if ( v37 > 0 )
+        integer_difference = SR_VEC_LANES(128, input_cursor[150], i32)[0] - i;
+        if ( integer_difference > 0 )
         {
           if ( a3 == 2 )
           {
-            if ( SR_VEC_LANES(128, v20[268 * i + 151], i32)[v37 + 3] )
-              v38 = 2;
+            if ( SR_VEC_LANES(128, input_cursor[268 * i + 151], i32)[integer_difference + 3] )
+              selection_code_2 = 2;
             else
-              v38 = 0;
-            v26 = v38;
+              selection_code_2 = 0;
+            cached_selection_code = selection_code_2;
           }
-          else if ( i > 0 && SR_VEC_LANES(128, v22[537], i32)[1] )
+          else if ( i > 0 && SR_VEC_LANES(128, input_cursor_2[537], i32)[1] )
           {
-            v26 = 1;
+            cached_selection_code = 1;
           }
           else
           {
-            v26 = 2;
+            cached_selection_code = 2;
           }
         }
         else
         {
-          v26 = 0;
+          cached_selection_code = 0;
         }
-        v10 = sub_1401C74B0(
-                (__int64)SR_VEC_LANES(128, v20[268 * i], i64),
+        masked_bits = sub_1401C74B0(
+                (__int64)SR_VEC_LANES(128, input_cursor[268 * i], i64),
                 a5,
-                (     __m128i *)((char *)SR_VEC_PTR_LANES(128, (*(&v28 + i)), i64) + 4),
-                (unsigned int *)&v23,
+                (     __m128i *)((char *)SR_VEC_PTR_LANES(128, (*(&destination_buffer + i)), i64) + 4),
+                (unsigned int *)&callee_output_word,
                 a3,
-                v26,
+                cached_selection_code,
                 a8);
-        v21 += v10;
+        running_total += masked_bits;
       }
-      ++SR_VEC_LANES(128, v20[268 * i + 150], i32)[0];
+      ++SR_VEC_LANES(128, input_cursor[268 * i + 150], i32)[0];
     }
     if ( *a2 == 2 && a2[1] == 2 )
     {
-      sub_1401BFD30(SR_VEC_LANES(128, v22[536], i16), v28, v29, v43, SR_VEC_LANES(128, v20[144], i32)[3], v23);
+      sub_1401BFD30(SR_VEC_LANES(128, input_cursor_2[536], i16), destination_buffer, table_value, destination_buffer_2, SR_VEC_LANES(128, input_cursor[144], i32)[3], callee_output_word);
     }
     else
     {
-      crt_memcpy(v28, (     __m128i *)((char *)v22 + 8580), 4u);
-      crt_memcpy((__m128i *)((char *)SR_VEC_LANES(128, v22[536], i64) + 4), (__m128i *)((char *)v28 + 2 * v23), 4u);
+      crt_memcpy(destination_buffer, (     __m128i *)((char *)input_cursor_2 + 8580), 4u);
+      crt_memcpy((__m128i *)((char *)SR_VEC_LANES(128, input_cursor_2[536], i64) + 4), (__m128i *)((char *)destination_buffer + 2 * callee_output_word), 4u);
     }
-    *a7 = a2[2] * v23 / (1000 * SR_VEC_LANES(128, v20[144], i16)[6]);
+    *a7 = a2[2] * callee_output_word / (1000 * SR_VEC_LANES(128, input_cursor[144], i16)[6]);
     if ( *a2 == 2 )
-      v39 = *a7;
+      loaded_word = *a7;
     else
-      v39 = 0;
-    v11 = 2LL * v39 + 15;
-    if ( v11 <= 2LL * v39 )
-      v11 = 0xFFFFFFFFFFFFFF0LL;
-    v12 = alloca(v11 & 0xFFFFFFFFFFFFFFF0uLL);
-    v48 = (__m128i *)v12;
+      loaded_word = 0;
+    scaled_index_2 = 2LL * loaded_word + 15;
+    if ( scaled_index_2 <= 2LL * loaded_word )
+      scaled_index_2 = 0xFFFFFFFFFFFFFF0LL;
+    alloca_result_2 = alloca(scaled_index_2 & 0xFFFFFFFFFFFFFFF0uLL);
+    saved_alloca_result = (__m128i *)alloca_result_2;
     if ( *a2 == 2 )
-      v42 = v48;
+      input_cursor_3 = saved_alloca_result;
     else
-      v42 = (__m128i *)a6;
-    if ( v27 )
-      v40 = (SR_VEC_LANES(128, v20[145], i32)[2] + 2) * a2[1];
+      input_cursor_3 = (__m128i *)a6;
+    if ( saved_comparison_result )
+      scaled_index_6 = (SR_VEC_LANES(128, input_cursor[145], i32)[2] + 2) * a2[1];
     else
-      v40 = 0;
-    v13 = 2LL * v40 + 15;
-    if ( v13 <= 2LL * v40 )
-      v13 = 0xFFFFFFFFFFFFFF0LL;
-    v14 = alloca(v13 & 0xFFFFFFFFFFFFFFF0uLL);
-    v44 = (__m128i *)v14;
-    if ( v27 )
+      scaled_index_6 = 0;
+    scaled_index_3 = 2LL * scaled_index_6 + 15;
+    if ( scaled_index_3 <= 2LL * scaled_index_6 )
+      scaled_index_3 = 0xFFFFFFFFFFFFFF0LL;
+    alloca_result_3 = alloca(scaled_index_3 & 0xFFFFFFFFFFFFFFF0uLL);
+    destination_buffer_3 = (__m128i *)alloca_result_3;
+    if ( saved_comparison_result )
     {
-      crt_memcpy(v44, a6, 2LL * (SR_VEC_LANES(128, v20[145], i32)[2] + 2) * a2[1]);
-      v28 = v44;
-      v29 = (__m128i *)((char *)SR_VEC_PTR_LANES(128, v44, i64) + 2 * SR_VEC_LANES(128, v20[145], i32)[2] + 4);
+      crt_memcpy(destination_buffer_3, a6, 2LL * (SR_VEC_LANES(128, input_cursor[145], i32)[2] + 2) * a2[1]);
+      destination_buffer = destination_buffer_3;
+      table_value = (__m128i *)((char *)SR_VEC_PTR_LANES(128, destination_buffer_3, i64) + 2 * SR_VEC_LANES(128, input_cursor[145], i32)[2] + 4);
     }
     for ( i = 0; ; ++i )
     {
-      v41 = *a2 >= a2[1] ? a2[1] : *a2;
-      if ( i >= v41 )
+      comparison_result_3 = *a2 >= a2[1] ? a2[1] : *a2;
+      if ( i >= comparison_result_3 )
         break;
-      v15 = sub_1401BAA30(
-              (     __m128i *)SR_VEC_LANES(128, v20[268 * i + 153], i32),
-              v42,
-              (     __m128i *)&SR_VEC_PTR_LANES(128, (*(&v28 + i)), i16)[1],
-              v23);
-      v21 += v15;
+      masked_bits_2 = sub_1401BAA30(
+              (     __m128i *)SR_VEC_LANES(128, input_cursor[268 * i + 153], i32),
+              input_cursor_3,
+              (     __m128i *)&SR_VEC_PTR_LANES(128, (*(&destination_buffer + i)), i16)[1],
+              callee_output_word);
+      running_total += masked_bits_2;
       if ( *a2 == 2 )
       {
         for ( j = 0; j < *a7; ++j )
-          SR_VEC_PTR_LANES(128, a6, i16)[2 * j + i] = SR_VEC_PTR_LANES(128, v42, i16)[j];
+          SR_VEC_PTR_LANES(128, a6, i16)[2 * j + i] = SR_VEC_PTR_LANES(128, input_cursor_3, i16)[j];
       }
     }
     if ( *a2 == 2 && a2[1] == 1 )
     {
-      if ( v46 )
+      if ( condition_flag )
       {
-        v16 = sub_1401BAA30((     __m128i *)SR_VEC_LANES(128, v20[421], i32), v42, (     __m128i *)&SR_VEC_PTR_LANES(128, v28, i16)[1], v23);
-        v21 += v16;
+        masked_bits_3 = sub_1401BAA30((     __m128i *)SR_VEC_LANES(128, input_cursor[421], i32), input_cursor_3, (     __m128i *)&SR_VEC_PTR_LANES(128, destination_buffer, i16)[1], callee_output_word);
+        running_total += masked_bits_3;
         for ( j = 0; j < *a7; ++j )
-          SR_VEC_PTR_LANES(128, a6, i16)[2 * j + 1] = SR_VEC_PTR_LANES(128, v42, i16)[j];
+          SR_VEC_PTR_LANES(128, a6, i16)[2 * j + 1] = SR_VEC_PTR_LANES(128, input_cursor_3, i16)[j];
       }
       else
       {
@@ -4189,12 +4189,12 @@ __int64            sub_1401CCB60(
           SR_VEC_PTR_LANES(128, a6, i16)[2 * j + 1] = SR_VEC_PTR_LANES(128, a6, i16)[2 * j];
       }
     }
-    if ( SR_VEC_LANES(128, v20[261], i32)[3] == 2 )
+    if ( SR_VEC_LANES(128, input_cursor[261], i32)[3] == 2 )
     {
-      v49[0] = 6;
-      v49[1] = 4;
-      v49[2] = 3;
-      a2[5] = v49[(SR_VEC_LANES(128, v20[144], i32)[3] - 8) >> 2] * SR_VEC_LANES(128, v20[144], i32)[1];
+      scratch_buffer[0] = 6;
+      scratch_buffer[1] = 4;
+      scratch_buffer[2] = 3;
+      a2[5] = scratch_buffer[(SR_VEC_LANES(128, input_cursor[144], i32)[3] - 8) >> 2] * SR_VEC_LANES(128, input_cursor[144], i32)[1];
     }
     else
     {
@@ -4202,19 +4202,19 @@ __int64            sub_1401CCB60(
     }
     if ( a3 == 1 )
     {
-      for ( j = 0; j < SR_VEC_LANES(128, v22[537], i32)[0]; ++j )
-        SR_VEC_LANES(128, v22[268 * j + 144], i8)[8] = 10;
+      for ( j = 0; j < SR_VEC_LANES(128, input_cursor_2[537], i32)[0]; ++j )
+        SR_VEC_LANES(128, input_cursor_2[268 * j + 144], i8)[8] = 10;
     }
     else
     {
-      SR_VEC_LANES(128, v22[537], i32)[1] = v24;
+      SR_VEC_LANES(128, input_cursor_2[537], i32)[1] = selection_flag;
     }
   }
   else
   {
-    v21 = -200;
+    running_total = -200;
   }
-  return (unsigned int)v21; /* 0x1401CDE47: mov eax, dword ptr [rbp + 0x10] */
+  return (unsigned int)running_total; /* 0x1401CDE47: mov eax, dword ptr [rbp + 0x10] */
 }
 
 //----- (00000001401CDE70) ----------------------------------------------------
@@ -4222,102 +4222,102 @@ __int64            sub_1401CDE70(__int64 a1, int a2, float a3)
 {
   __int64 result;
   int i;
-  float v5;
+  float scaled_value;
 
-  v5 = a3;
+  scaled_value = a3;
   for ( i = 0; i < a2 - 1; ++i )
   {
-    *(float *)(a1 + 4LL * i) = *(float *)(a1 + 4LL * i) * v5;
-    v5 = v5 * a3;
+    *(float *)(a1 + 4LL * i) = *(float *)(a1 + 4LL * i) * scaled_value;
+    scaled_value = scaled_value * a3;
   }
   result = a2 - 1;
-  *(float *)(a1 + 4 * result) = *(float *)(a1 + 4 * result) * v5;
+  *(float *)(a1 + 4 * result) = *(float *)(a1 + 4 * result) * scaled_value;
   return result;
 }
 
 //----- (00000001401CDF20) ----------------------------------------------------
 __int64            sub_1401CDF20(     __m128i *a1, int a2)
 {
-  __int32 v2;
-  __int32 v3;
-  __int64 v5;
+  __int32 float_word;
+  __int32 float_word_2;
+  __int64 unused_local;
   int j;
   int i;
-  double v8;
-  double v9;
-  double v10;
-  double v11;
-  double v12;
-  double v13;
-  __m128i v14[6];
-  __int64 v15;
+  double product_difference;
+  double scaled_value;
+  double squared_component;
+  double scaled_value_2;
+  double product_difference_2;
+  double scaled_ratio;
+  __m128i destination_buffer[6];
+  __int64 unused_local_2;
 
-  crt_memcpy(v14, a1, 4LL * a2);
-  v9 = 1.0;
+  crt_memcpy(destination_buffer, a1, 4LL * a2);
+  scaled_value = 1.0;
   for ( i = a2 - 1; i > 0; --i )
   {
-    v8 = (float)-*(float *)&SR_VEC_LANES(128, v14[0], i32)[i];
-    v10 = 1.0 - v8 * v8;
-    v9 = v9 * v10;
-    if ( v9 * 10000.0 < 1.0 )
+    product_difference = (float)-*(float *)&SR_VEC_LANES(128, destination_buffer[0], i32)[i];
+    squared_component = 1.0 - product_difference * product_difference;
+    scaled_value = scaled_value * squared_component;
+    if ( scaled_value * 10000.0 < 1.0 )
       return 0; /* the function has no caller */
-    v13 = 1.0 / v10;
+    scaled_ratio = 1.0 / squared_component;
     for ( j = 0; j < (i + 1) >> 1; ++j )
     {
-      v11 = *(float *)&SR_VEC_LANES(128, v14[0], i32)[j];
-      v12 = *(float *)&SR_VEC_LANES(128, v14[0], i32)[i - j - 1];
-      *(float *)&v2 = (v11 - v12 * v8) * v13;
-      SR_VEC_LANES(128, v14[0], i32)[j] = v2;
-      *(float *)&v3 = (v12 - v11 * v8) * v13;
-      SR_VEC_LANES(128, v14[0], i32)[i - j - 1] = v3;
+      scaled_value_2 = *(float *)&SR_VEC_LANES(128, destination_buffer[0], i32)[j];
+      product_difference_2 = *(float *)&SR_VEC_LANES(128, destination_buffer[0], i32)[i - j - 1];
+      *(float *)&float_word = (scaled_value_2 - product_difference_2 * product_difference) * scaled_ratio;
+      SR_VEC_LANES(128, destination_buffer[0], i32)[j] = float_word;
+      *(float *)&float_word_2 = (product_difference_2 - scaled_value_2 * product_difference) * scaled_ratio;
+      SR_VEC_LANES(128, destination_buffer[0], i32)[i - j - 1] = float_word_2;
     }
   }
-  v8 = (float)-*(float *)SR_VEC_LANES(128, v14[0], i32);
-  v10 = 1.0 - v8 * v8;
-  v9 = v9 * v10;
+  product_difference = (float)-*(float *)SR_VEC_LANES(128, destination_buffer[0], i32);
+  squared_component = 1.0 - product_difference * product_difference;
+  scaled_value = scaled_value * squared_component;
   return 0; /* the function has no caller */
 }
 
 //----- (00000001401CE180) ----------------------------------------------------
 float            sub_1401CE180(__int64 a1, __int64 a2, int a3)
 {
-  float v3;
+  float saved_combined_products;
   int i;
   int j;
-  double v7;
-  double v8;
-  double v9;
-  double v10;
-  double v11;
-  _OWORD v12[25];
-  __int64 v13;
+  double combined_products;
+  double weighted_sum;
+  double weighted_sum_2;
+  double weighted_sum_3;
+  double weighted_sum_4;
+  _OWORD scratch_buffer[25];
+  __int64 unused_local;
 
   i = 0;
   do
   {
-    v8 = *(float *)(a2 + 4LL * i);
-    *((double *)&v12[i] + 1) = v8;
-    *(double *)&v12[i++] = v8;
+    weighted_sum = *(float *)(a2 + 4LL * i);
+    *((double *)&scratch_buffer[i] + 1) = weighted_sum;
+    *(double *)&scratch_buffer[i++] = weighted_sum;
   }
   while ( i <= a3 );
   for ( i = 0; i < a3; ++i )
   {
-    if ( *((double *)v12 + 1) <= 9.999999717180685e-10 )
-      v9 = 9.999999717180685e-10;
+    if ( *((double *)scratch_buffer + 1) <= 9.999999717180685e-10 )
+      weighted_sum_2 = 9.999999717180685e-10;
     else
-      v9 = *((double *)v12 + 1);
-    v7 = -*(double *)&v12[i + 1] / v9;
-    v3 = v7;
-    *(float *)(a1 + 4LL * i) = v3;
+      weighted_sum_2 = *((double *)scratch_buffer + 1);
+    combined_products = -*(double *)&scratch_buffer[i + 1] / weighted_sum_2;
+    saved_combined_products = combined_products;
+    *(float *)(a1 + 4LL * i) = saved_combined_products;
     for ( j = 0; j < a3 - i; ++j )
     {
-      v10 = *(double *)&v12[j + 1 + i];
-      v11 = *((double *)&v12[j] + 1);
-      *(double *)&v12[j + 1 + i] = v10 + v11 * v7;
-      *((double *)&v12[j] + 1) = v11 + v10 * v7;
+      weighted_sum_3 = *(double *)&scratch_buffer[j + 1 + i];
+      weighted_sum_4 = *((double *)&scratch_buffer[j] + 1);
+      *(double *)&scratch_buffer[j + 1 + i] = weighted_sum_3 + weighted_sum_4 * combined_products;
+      *((double *)&scratch_buffer[j] + 1) = weighted_sum_4 + weighted_sum_3 * combined_products;
     }
   }
-  return *((double *)v12 + 1); /* 0x1401CE3E8: cvtsd2ss xmm0, qword ptr [rsp + 0x30 + 8] */
+  return *((double *)scratch_buffer + 1); /* 0x1401CE3E8: cvtsd2ss xmm0, qword ptr [rsp + 0x30 + 8] */
 }
 
 //----- (00000001401CE410) ----------------------------------------------------
@@ -4326,24 +4326,24 @@ __int64            sub_1401CE410(__int64 a1, __int64 a2, unsigned int a3)
   __int64 result;
   int i;
   int j;
-  float v6;
-  float v7;
-  float v8;
+  float weighted_sum;
+  float weighted_sum_2;
+  float combined_products;
 
   for ( i = 0; ; ++i )
   {
     result = a3;
     if ( i >= (int)a3 )
       break;
-    v6 = *(float *)(a2 + 4LL * i);
+    weighted_sum = *(float *)(a2 + 4LL * i);
     for ( j = 0; j < (i + 1) >> 1; ++j )
     {
-      v7 = *(float *)(a1 + 4LL * j);
-      v8 = *(float *)(a1 + 4LL * (i - j - 1));
-      *(float *)(a1 + 4LL * j) = v7 + (float)(v8 * v6);
-      *(float *)(a1 + 4LL * (i - j - 1)) = v8 + (float)(v7 * v6);
+      weighted_sum_2 = *(float *)(a1 + 4LL * j);
+      combined_products = *(float *)(a1 + 4LL * (i - j - 1));
+      *(float *)(a1 + 4LL * j) = weighted_sum_2 + (float)(combined_products * weighted_sum);
+      *(float *)(a1 + 4LL * (i - j - 1)) = combined_products + (float)(weighted_sum_2 * weighted_sum);
     }
-    *(float *)(a1 + 4LL * i) = -v6;
+    *(float *)(a1 + 4LL * i) = -weighted_sum;
   }
   return result;
 }
@@ -4352,20 +4352,20 @@ __int64            sub_1401CE410(__int64 a1, __int64 a2, unsigned int a3)
 __int64            sub_1401CE540(__int64 a1, __int64 a2, int a3, int a4)
 {
   __int64 result;
-  float v5;
+  float combined_products;
   int i;
-  unsigned int v10;
+  unsigned int input_value;
 
-  v10 = a4;
+  input_value = a4;
   if ( a4 > a3 )
-    v10 = a3;
+    input_value = a3;
   for ( i = 0; ; ++i )
   {
-    result = v10;
-    if ( i >= (int)v10 )
+    result = input_value;
+    if ( i >= (int)input_value )
       break;
-    v5 = sub_1401D0EF0(a2, a2 + 4LL * i, a3 - i);
-    *(float *)(a1 + 4LL * i) = v5;
+    combined_products = sub_1401D0EF0(a2, a2 + 4LL * i, a3 - i);
+    *(float *)(a1 + 4LL * i) = combined_products;
   }
   return result;
 }
@@ -4373,504 +4373,504 @@ __int64            sub_1401CE540(__int64 a1, __int64 a2, int a3, int a4)
 //----- (00000001401CE5E0) ----------------------------------------------------
 __int64 sub_1401CE5E0()
 {
-  float v0;
-  float v1;
-  float v2;
-  float v3;
-  _DWORD v5[12];
+  float scaled_ratio;
+  float scaled_ratio_2;
+  float weighted_sum;
+  float scaled_ratio_3;
+  _DWORD scratch_buffer[12];
   int i;
   int j;
   int m;
   int k;
-  int v10;
-  int v11;
-  signed int v12;
-  int v13;
-  float v14;
-  int v15;
-  int v16;
-  int v17;
-  int v18;
-  signed int v19;
-  int v20;
-  float *v21;
-  int v22;
-  int v23;
-  float v24;
-  float v25;
-  double v26;
-  float *v27;
-  int v28;
-  int v29;
-  int v30;
-  float v31;
-  int v32;
-  int v33;
-  int v34;
-  int v35;
-  char *v36;
-  float v37;
-  float v38;
-  float v39;
-  int v40;
-  signed int v41;
-  signed int v42;
-  signed int v43;
-  signed int v44;
-  int v45;
-  int v46;
-  signed int v47;
-  signed int v48;
-  int v49;
-  int v50;
-  int v51;
-  int v52;
-  int v53;
-  int v54;
-  int v55;
-  int v56;
-  float v57;
-  float v58;
-  float v59;
-  double v60;
-  double v61;
-  float v62;
-  int v63;
-  float v64;
-  int v65;
-  double v66;
-  unsigned __int64 v67;
-  double v68;
-  __m128i v69[4];
-  _DWORD v70[24];
-  float v71[160];
-  float v72[68];
-  _DWORD v73[596];
-  _BYTE v74[640];
-  __int64 v75;
-  _QWORD v76[340];
-  _QWORD v77[378];
-  _WORD v78[320];
-  _BYTE v79[320];
-  _BYTE v80[960];
-  _BYTE v81[1280];
-  __int64 v82;
-  __int64 v83;
-  _WORD *v84;
-  _WORD *v85;
-  _BYTE *v86;
-  float *v87;
-  int v88;
-  float v89;
-  float v90;
-  int v91;
-  int v92;
-  int v93;
-  int v94;
+  int cached_k;
+  int selection_code;
+  signed int scaled_index;
+  int selection_code_2;
+  float weighted_sum_2;
+  int selection_code_3;
+  int cached_i;
+  int selection_code_4;
+  int table_value;
+  signed int scaled_index_2;
+  int cached_m;
+  float *state_address;
+  int selection_code_5;
+  int selection_code_6;
+  float product_difference;
+  float saved_weighted_sum;
+  double weighted_sum_3;
+  float *buffer_cursor;
+  int scaled_index_3;
+  int scaled_index_4;
+  int iteration_count;
+  float product_difference_2;
+  int iteration_count_2;
+  int scaled_index_5;
+  int call_result;
+  int cached_k_2;
+  char *state_address_2;
+  float call_result_2;
+  float call_result_3;
+  float saved_product_difference;
+  int cached_i_2;
+  signed int saved_cached_k;
+  signed int cached_k_3;
+  signed int saved_cached_k_2;
+  signed int cached_k_4;
+  int cached_k_5;
+  int masked_bits;
+  signed int saved_masked_bits;
+  signed int masked_bits_2;
+  int saved_masked_bits_2;
+  int cached_masked_bits;
+  int masked_bits_3;
+  int saved_masked_bits_3;
+  int masked_bits_4;
+  int saved_masked_bits_4;
+  int cached_masked_bits_2;
+  int scaled_index_6;
+  float component_delta;
+  float saved_component_delta;
+  float scaled_value;
+  double weighted_sum_4;
+  double weighted_sum_5;
+  float scaled_value_2;
+  int call_result_4;
+  float scaled_ratio_4;
+  int selection_code_7;
+  double weighted_sum_6;
+  unsigned __int64 scaled_index_7;
+  double call_result_5;
+  __m128i scratch_buffer_2[4];
+  _DWORD scratch_buffer_3[24];
+  float float_buffer[160];
+  float float_buffer_2[68];
+  _DWORD float_word[596];
+  _BYTE scratch_buffer_4[640];
+  __int64 float_word_2;
+  _QWORD float_word_3[340];
+  _QWORD float_word_4[378];
+  _WORD scratch_buffer_5[320];
+  _BYTE scratch_buffer_6[320];
+  _BYTE scratch_buffer_7[960];
+  _BYTE scratch_buffer_8[1280];
+  __int64 unused_local;
+  __int64 unrecovered_register_value;
+  _WORD *record_pointer;
+  _WORD *unused_written_slot;
+  _BYTE *unused_written_slot_2;
+  float *scaled_ratio_5;
+  int remaining_bits;
+  float unrecovered_register_value_2;
+  float unrecovered_register_value_3;
+  int unrecovered_register_value_4;
+  int lookup_index;
+  int unrecovered_register_value_5;
+  int unrecovered_register_value_6;
 
-  v28 = v91 * (5 * v93 + 20);
-  v56 = 20 * v93 + 80;
-  v29 = 40 * v93 + 160;
-  v33 = 5 * v91;
-  v65 = 20;
-  v13 = 40;
-  v12 = 2 * v91;
-  v11 = 8;
-  v15 = 16;
-  v19 = 18 * v91 - 1;
-  v17 = 72;
-  v23 = 143;
-  if ( v91 == 16 )
+  scaled_index_3 = unrecovered_register_value_4 * (5 * unrecovered_register_value_5 + 20);
+  scaled_index_6 = 20 * unrecovered_register_value_5 + 80;
+  scaled_index_4 = 40 * unrecovered_register_value_5 + 160;
+  scaled_index_5 = 5 * unrecovered_register_value_4;
+  selection_code_7 = 20;
+  selection_code_2 = 40;
+  scaled_index = 2 * unrecovered_register_value_4;
+  selection_code = 8;
+  selection_code_3 = 16;
+  scaled_index_2 = 18 * unrecovered_register_value_4 - 1;
+  selection_code_4 = 72;
+  selection_code_6 = 143;
+  if ( unrecovered_register_value_4 == 16 )
   {
-    sub_1401D1210((__int64)v81, v83, v28);
-    crt_memset((void *)(uintptr_t)(v69), 0, 8u);
-    sub_1401BAD00(v69, (__int64)v78, (__int64)v81, v28);
-    sub_1401D12E0((__int64)v74, (__int64)v78, v29);
+    sub_1401D1210((__int64)scratch_buffer_8, unrecovered_register_value, scaled_index_3);
+    crt_memset((void *)(uintptr_t)(scratch_buffer_2), 0, 8u);
+    sub_1401BAD00(scratch_buffer_2, (__int64)scratch_buffer_5, (__int64)scratch_buffer_8, scaled_index_3);
+    sub_1401D12E0((__int64)scratch_buffer_4, (__int64)scratch_buffer_5, scaled_index_4);
   }
-  else if ( v91 == 12 )
+  else if ( unrecovered_register_value_4 == 12 )
   {
-    sub_1401D1210((__int64)v80, v83, v28);
-    crt_memset((void *)(uintptr_t)(v69), 0, 0x18u);
-    sub_1401BAEE0(v69, v78, (__int64)v80, v28);
-    sub_1401D12E0((__int64)v74, (__int64)v78, v29);
+    sub_1401D1210((__int64)scratch_buffer_7, unrecovered_register_value, scaled_index_3);
+    crt_memset((void *)(uintptr_t)(scratch_buffer_2), 0, 0x18u);
+    sub_1401BAEE0(scratch_buffer_2, scratch_buffer_5, (__int64)scratch_buffer_7, scaled_index_3);
+    sub_1401D12E0((__int64)scratch_buffer_4, (__int64)scratch_buffer_5, scaled_index_4);
   }
   else
   {
-    sub_1401D1210((__int64)v78, v83, v29);
+    sub_1401D1210((__int64)scratch_buffer_5, unrecovered_register_value, scaled_index_4);
   }
-  crt_memset((void *)(uintptr_t)(v69), 0, 8u);
-  sub_1401BAD00(v69, (__int64)v79, (__int64)v78, v29);
-  sub_1401D12E0((__int64)v71, (__int64)v79, v56);
-  for ( i = v56 - 1; i > 0; --i )
+  crt_memset((void *)(uintptr_t)(scratch_buffer_2), 0, 8u);
+  sub_1401BAD00(scratch_buffer_2, (__int64)scratch_buffer_6, (__int64)scratch_buffer_5, scaled_index_4);
+  sub_1401D12E0((__int64)float_buffer, (__int64)scratch_buffer_6, scaled_index_6);
+  for ( i = scaled_index_6 - 1; i > 0; --i )
   {
-    if ( (float)((float)(int)v71[i] + v71[i - 1]) <= 32767.0 )
+    if ( (float)((float)(int)float_buffer[i] + float_buffer[i - 1]) <= 32767.0 )
     {
-      if ( (float)((float)(int)v71[i] + v71[i - 1]) >= -32768.0 )
-        v57 = (float)(int)v71[i] + v71[i - 1];
+      if ( (float)((float)(int)float_buffer[i] + float_buffer[i - 1]) >= -32768.0 )
+        component_delta = (float)(int)float_buffer[i] + float_buffer[i - 1];
       else
-        v57 = -32768.0;
-      v58 = v57;
+        component_delta = -32768.0;
+      saved_component_delta = component_delta;
     }
     else
     {
-      v58 = 32767.0;
+      saved_component_delta = 32767.0;
     }
-    v71[i] = (float)(__int16)(int)v58;
+    float_buffer[i] = (float)(__int16)(int)saved_component_delta;
   }
-  crt_memset((void *)(uintptr_t)(v73), 0, 596LL * v93);
-  v21 = &v71[4 * v65];
-  for ( j = 0; j < v93 >> 1; ++j )
+  crt_memset((void *)(uintptr_t)(float_word), 0, 596LL * unrecovered_register_value_5);
+  state_address = &float_buffer[4 * selection_code_7];
+  for ( j = 0; j < unrecovered_register_value_5 >> 1; ++j )
   {
-    v27 = &v21[-v11];
-    v5[10] = v94;
-    sub_1401A9C80(v21, (__int64)&v21[-v17], (__int64)v72, v13, v17 - v11 + 1);
-    v26 = v72[v17 - v11];
-    v68 = sub_1401D1050((__int64)v21, v13);
-    v61 = v68 + sub_1401D1050((__int64)v27, v13) + (float)((float)v13 * 4000.0);
-    v0 = 2.0 * v26 / v61;
-    *(float *)&v73[v11] = *(float *)&v73[v11] + v0;
-    for ( k = v11 + 1; k <= v17; ++k )
+    buffer_cursor = &state_address[-selection_code];
+    scratch_buffer[10] = unrecovered_register_value_6;
+    sub_1401A9C80(state_address, (__int64)&state_address[-selection_code_4], (__int64)float_buffer_2, selection_code_2, selection_code_4 - selection_code + 1);
+    weighted_sum_3 = float_buffer_2[selection_code_4 - selection_code];
+    call_result_5 = sub_1401D1050((__int64)state_address, selection_code_2);
+    weighted_sum_5 = call_result_5 + sub_1401D1050((__int64)buffer_cursor, selection_code_2) + (float)((float)selection_code_2 * 4000.0);
+    scaled_ratio = 2.0 * weighted_sum_3 / weighted_sum_5;
+    *(float *)&float_word[selection_code] = *(float *)&float_word[selection_code] + scaled_ratio;
+    for ( k = selection_code + 1; k <= selection_code_4; ++k )
     {
-      --v27;
-      v26 = v72[v17 - k];
-      v61 = v61 + *v27 * *v27 - v27[v13] * v27[v13];
-      v1 = 2.0 * v26 / v61;
-      *(float *)&v73[k] = *(float *)&v73[k] + v1;
+      --buffer_cursor;
+      weighted_sum_3 = float_buffer_2[selection_code_4 - k];
+      weighted_sum_5 = weighted_sum_5 + *buffer_cursor * *buffer_cursor - buffer_cursor[selection_code_2] * buffer_cursor[selection_code_2];
+      scaled_ratio_2 = 2.0 * weighted_sum_3 / weighted_sum_5;
+      *(float *)&float_word[k] = *(float *)&float_word[k] + scaled_ratio_2;
     }
-    v21 += v13;
+    state_address += selection_code_2;
   }
-  for ( i = v17; i >= v11; --i )
-    *(float *)&v73[i] = *(float *)&v73[i] - (float)((float)(*(float *)&v73[i] * (float)i) / 4096.0);
-  v16 = 2 * v92 + 4;
-  sub_1401CFF30((__int64)&v73[v11], (__int64)v70, v17 - v11 + 1, v16);
-  v59 = *(float *)&v73[v11];
-  if ( v59 >= 0.2 )
+  for ( i = selection_code_4; i >= selection_code; --i )
+    *(float *)&float_word[i] = *(float *)&float_word[i] - (float)((float)(*(float *)&float_word[i] * (float)i) / 4096.0);
+  cached_i = 2 * lookup_index + 4;
+  sub_1401CFF30((__int64)&float_word[selection_code], (__int64)scratch_buffer_3, selection_code_4 - selection_code + 1, cached_i);
+  scaled_value = *(float *)&float_word[selection_code];
+  if ( scaled_value >= 0.2 )
   {
-    v62 = v89 * v59;
-    for ( i = 0; i < v16; ++i )
+    scaled_value_2 = unrecovered_register_value_2 * scaled_value;
+    for ( i = 0; i < cached_i; ++i )
     {
-      if ( *(float *)&v73[i + v11] <= v62 )
+      if ( *(float *)&float_word[i + selection_code] <= scaled_value_2 )
       {
-        v16 = i;
+        cached_i = i;
         break;
       }
-      v70[i] = 2 * (v11 + v70[i]);
+      scratch_buffer_3[i] = 2 * (selection_code + scratch_buffer_3[i]);
     }
-    for ( i = v15 - 5; i < v23 + 5; ++i )
+    for ( i = selection_code_3 - 5; i < selection_code_6 + 5; ++i )
     {
-      v67 = 2LL * i;
-      if ( v67 >= 0x12A )
+      scaled_index_7 = 2LL * i;
+      if ( scaled_index_7 >= 0x12A )
         sub_1401F8694();
-      *(_WORD *)((char *)&v77[340] + v67) = 0;
+      *(_WORD *)((char *)&float_word_4[340] + scaled_index_7) = 0;
     }
-    for ( i = 0; i < v16; ++i )
-      *((_WORD *)&v77[340] + (int)v70[i]) = 1;
-    for ( i = v23 + 3; i >= v15; --i )
-      *((_WORD *)&v77[340] + i) += *((_WORD *)&v77[339] + i + 2) + *((_WORD *)&v77[339] + i + 3);
-    v16 = 0;
-    for ( i = v15; i < v23 + 1; ++i )
+    for ( i = 0; i < cached_i; ++i )
+      *((_WORD *)&float_word_4[340] + (int)scratch_buffer_3[i]) = 1;
+    for ( i = selection_code_6 + 3; i >= selection_code_3; --i )
+      *((_WORD *)&float_word_4[340] + i) += *((_WORD *)&float_word_4[339] + i + 2) + *((_WORD *)&float_word_4[339] + i + 3);
+    cached_i = 0;
+    for ( i = selection_code_3; i < selection_code_6 + 1; ++i )
     {
-      if ( *((__int16 *)&v77[340] + i + 1) > 0 )
-        v70[v16++] = i;
+      if ( *((__int16 *)&float_word_4[340] + i + 1) > 0 )
+        scratch_buffer_3[cached_i++] = i;
     }
-    for ( i = v23 + 3; i >= v15; --i )
-      *((_WORD *)&v77[340] + i) += *((_WORD *)&v77[339] + i + 1)
-                                 + *((_WORD *)&v77[339] + i + 2)
-                                 + *((_WORD *)&v77[339] + i + 3);
-    v30 = 0;
-    for ( i = v15; i < v23 + 4; ++i )
+    for ( i = selection_code_6 + 3; i >= selection_code_3; --i )
+      *((_WORD *)&float_word_4[340] + i) += *((_WORD *)&float_word_4[339] + i + 1)
+                                 + *((_WORD *)&float_word_4[339] + i + 2)
+                                 + *((_WORD *)&float_word_4[339] + i + 3);
+    iteration_count = 0;
+    for ( i = selection_code_3; i < selection_code_6 + 4; ++i )
     {
-      if ( *((__int16 *)&v77[340] + i) > 0 )
-        *((_WORD *)&v77[340] + v30++) = i - 2;
+      if ( *((__int16 *)&float_word_4[340] + i) > 0 )
+        *((_WORD *)&float_word_4[340] + iteration_count++) = i - 2;
     }
-    crt_memset((void *)(uintptr_t)(v73), 0, 0x950u);
-    if ( v91 == 8 )
-      v21 = (float *)(v83 + 640);
+    crt_memset((void *)(uintptr_t)(float_word), 0, 0x950u);
+    if ( unrecovered_register_value_4 == 8 )
+      state_address = (float *)(unrecovered_register_value + 640);
     else
-      v21 = (float *)&v75;
-    for ( j = 0; j < v93; ++j )
+      state_address = (float *)&float_word_2;
+    for ( j = 0; j < unrecovered_register_value_5; ++j )
     {
-      v66 = sub_1401D1050((__int64)v21, v13) + 1.0;
-      for ( m = 0; m < v30; ++m )
+      weighted_sum_6 = sub_1401D1050((__int64)state_address, selection_code_2) + 1.0;
+      for ( m = 0; m < iteration_count; ++m )
       {
-        k = *((__int16 *)&v77[340] + m);
-        v27 = &v21[-k];
-        v26 = sub_1401D0EF0((__int64)v27, (__int64)v21, v13);
-        if ( v26 <= 0.0 )
+        k = *((__int16 *)&float_word_4[340] + m);
+        buffer_cursor = &state_address[-k];
+        weighted_sum_3 = sub_1401D0EF0((__int64)buffer_cursor, (__int64)state_address, selection_code_2);
+        if ( weighted_sum_3 <= 0.0 )
         {
-          v73[149 * j + k] = 0;
+          float_word[149 * j + k] = 0;
         }
         else
         {
-          v60 = sub_1401D1050((__int64)v27, v13);
-          v2 = 2.0 * v26 / (v60 + v66);
-          *(float *)&v73[149 * j + k] = v2;
+          weighted_sum_4 = sub_1401D1050((__int64)buffer_cursor, selection_code_2);
+          weighted_sum = 2.0 * weighted_sum_3 / (weighted_sum_4 + weighted_sum_6);
+          *(float *)&float_word[149 * j + k] = weighted_sum;
         }
       }
-      v21 += v13;
+      state_address += selection_code_2;
     }
-    v25 = 0.0;
-    v39 = -1000.0;
-    v20 = 0;
-    v10 = -1;
-    if ( v88 <= 0 )
+    saved_weighted_sum = 0.0;
+    saved_product_difference = -1000.0;
+    cached_m = 0;
+    cached_k = -1;
+    if ( remaining_bits <= 0 )
     {
-      v38 = 0.0;
+      call_result_3 = 0.0;
     }
     else
     {
-      if ( v91 == 12 )
+      if ( unrecovered_register_value_4 == 12 )
       {
-        v88 = 2 * v88 / 3;
+        remaining_bits = 2 * remaining_bits / 3;
       }
-      else if ( v91 == 16 )
+      else if ( unrecovered_register_value_4 == 16 )
       {
-        v88 >>= 1;
+        remaining_bits >>= 1;
       }
-      v38 = sub_1401D1340((float)v88);
+      call_result_3 = sub_1401D1340((float)remaining_bits);
     }
-    if ( v93 == 4 )
+    if ( unrecovered_register_value_5 == 4 )
     {
-      v22 = 11;
-      v36 = (char *)&unk_14027E290;
-      if ( v91 == 8 && v92 > 0 )
-        v18 = 11;
+      selection_code_5 = 11;
+      state_address_2 = (char *)&unk_14027E290;
+      if ( unrecovered_register_value_4 == 8 && lookup_index > 0 )
+        table_value = 11;
       else
-        v18 = 3;
+        table_value = 3;
     }
     else
     {
-      v22 = 3;
-      v36 = (char *)&unk_14027BC14;
-      v18 = 3;
+      selection_code_5 = 3;
+      state_address_2 = (char *)&unk_14027BC14;
+      table_value = 3;
     }
-    for ( j = 0; j < v16; ++j )
+    for ( j = 0; j < cached_i; ++j )
     {
-      k = v70[j];
-      for ( m = 0; m < v18; ++m )
+      k = scratch_buffer_3[j];
+      for ( m = 0; m < table_value; ++m )
       {
-        SR_VEC_LANES(128, v69[1], i32)[m + 2] = 0;
-        for ( i = 0; i < v93; ++i )
-          *(float *)&SR_VEC_LANES(128, v69[1], i32)[m + 2] = *(float *)&SR_VEC_LANES(128, v69[1], i32)[m + 2]
-                                             + *(float *)&v73[149 * i + v36[m + v22 * i] + k];
+        SR_VEC_LANES(128, scratch_buffer_2[1], i32)[m + 2] = 0;
+        for ( i = 0; i < unrecovered_register_value_5; ++i )
+          *(float *)&SR_VEC_LANES(128, scratch_buffer_2[1], i32)[m + 2] = *(float *)&SR_VEC_LANES(128, scratch_buffer_2[1], i32)[m + 2]
+                                             + *(float *)&float_word[149 * i + state_address_2[m + selection_code_5 * i] + k];
       }
-      v14 = -1000.0;
-      v40 = 0;
-      for ( i = 0; i < v18; ++i )
+      weighted_sum_2 = -1000.0;
+      cached_i_2 = 0;
+      for ( i = 0; i < table_value; ++i )
       {
-        if ( *(float *)&SR_VEC_LANES(128, v69[1], i32)[i + 2] > v14 )
+        if ( *(float *)&SR_VEC_LANES(128, scratch_buffer_2[1], i32)[i + 2] > weighted_sum_2 )
         {
-          v14 = *(float *)&SR_VEC_LANES(128, v69[1], i32)[i + 2];
-          v40 = i;
+          weighted_sum_2 = *(float *)&SR_VEC_LANES(128, scratch_buffer_2[1], i32)[i + 2];
+          cached_i_2 = i;
         }
       }
-      v37 = sub_1401D1340((float)k);
-      v31 = v14 - (float)((float)(0.2 * (float)v93) * v37);
-      if ( v88 > 0 )
+      call_result_2 = sub_1401D1340((float)k);
+      product_difference_2 = weighted_sum_2 - (float)((float)(0.2 * (float)unrecovered_register_value_5) * call_result_2);
+      if ( remaining_bits > 0 )
       {
-        v24 = (float)(v37 - v38) * (float)(v37 - v38);
-        v31 = v31 - (float)((float)((float)((float)(0.2 * (float)v93) * *v87) * v24) / (float)(v24 + 0.5));
+        product_difference = (float)(call_result_2 - call_result_3) * (float)(call_result_2 - call_result_3);
+        product_difference_2 = product_difference_2 - (float)((float)((float)((float)(0.2 * (float)unrecovered_register_value_5) * *scaled_ratio_5) * product_difference) / (float)(product_difference + 0.5));
       }
-      if ( v31 > v39 && v14 > (float)((float)v93 * v90) )
+      if ( product_difference_2 > saved_product_difference && weighted_sum_2 > (float)((float)unrecovered_register_value_5 * unrecovered_register_value_3) )
       {
-        v39 = v31;
-        v25 = v14;
-        v10 = k;
-        v20 = v40;
+        saved_product_difference = product_difference_2;
+        saved_weighted_sum = weighted_sum_2;
+        cached_k = k;
+        cached_m = cached_i_2;
       }
     }
-    if ( v10 == -1 )
+    if ( cached_k == -1 )
     {
-      crt_memset((void *)(uintptr_t)(v84), 0, 0x10u);
-      *v87 = 0.0;
-      *v85 = 0;
-      *v86 = 0;
+      crt_memset((void *)(uintptr_t)(record_pointer), 0, 0x10u);
+      *scaled_ratio_5 = 0.0;
+      *unused_written_slot = 0;
+      *unused_written_slot_2 = 0;
       return 1; /* 0x1401CF685: mov eax, 1 */
     }
     else
     {
-      *v87 = v25 / (float)v93;
-      if ( v91 <= 8 )
+      *scaled_ratio_5 = saved_weighted_sum / (float)unrecovered_register_value_5;
+      if ( unrecovered_register_value_4 <= 8 )
       {
-        for ( j = 0; j < v93; ++j )
+        for ( j = 0; j < unrecovered_register_value_5; ++j )
         {
-          *(_DWORD *)&v84[2 * j] = v36[v20 + v22 * j] + v10;
-          if ( v15 <= 144 )
+          *(_DWORD *)&record_pointer[2 * j] = state_address_2[cached_m + selection_code_5 * j] + cached_k;
+          if ( selection_code_3 <= 144 )
           {
-            if ( *(int *)&v84[2 * j] <= 144 )
+            if ( *(int *)&record_pointer[2 * j] <= 144 )
             {
-              if ( *(_DWORD *)&v84[2 * j] >= v15 )
-                v53 = *(_DWORD *)&v84[2 * j];
+              if ( *(_DWORD *)&record_pointer[2 * j] >= selection_code_3 )
+                masked_bits_4 = *(_DWORD *)&record_pointer[2 * j];
               else
-                v53 = v15;
-              v54 = v53;
+                masked_bits_4 = selection_code_3;
+              saved_masked_bits_4 = masked_bits_4;
             }
             else
             {
-              v54 = 144;
+              saved_masked_bits_4 = 144;
             }
-            v55 = v54;
+            cached_masked_bits_2 = saved_masked_bits_4;
           }
           else
           {
-            if ( *(_DWORD *)&v84[2 * j] <= v15 )
+            if ( *(_DWORD *)&record_pointer[2 * j] <= selection_code_3 )
             {
-              if ( *(int *)&v84[2 * j] >= 144 )
-                v51 = *(_DWORD *)&v84[2 * j];
+              if ( *(int *)&record_pointer[2 * j] >= 144 )
+                masked_bits_3 = *(_DWORD *)&record_pointer[2 * j];
               else
-                v51 = 144;
-              v52 = v51;
+                masked_bits_3 = 144;
+              saved_masked_bits_3 = masked_bits_3;
             }
             else
             {
-              v52 = v15;
+              saved_masked_bits_3 = selection_code_3;
             }
-            v55 = v52;
+            cached_masked_bits_2 = saved_masked_bits_3;
           }
-          *(_DWORD *)&v84[2 * j] = v55;
+          *(_DWORD *)&record_pointer[2 * j] = cached_masked_bits_2;
         }
-        *v85 = v10 - v15;
-        *v86 = v20;
+        *unused_written_slot = cached_k - selection_code_3;
+        *unused_written_slot_2 = cached_m;
       }
       else
       {
-        if ( v91 == 12 )
-          v10 = ((3 * (_BYTE)v10) & 1) + ((3 * (__int16)v10) >> 1);
+        if ( unrecovered_register_value_4 == 12 )
+          cached_k = ((3 * (_BYTE)cached_k) & 1) + ((3 * (__int16)cached_k) >> 1);
         else
-          v10 *= 2;
-        if ( v12 <= v19 )
+          cached_k *= 2;
+        if ( scaled_index <= scaled_index_2 )
         {
-          if ( v10 <= v19 )
+          if ( cached_k <= scaled_index_2 )
           {
-            if ( v10 >= v12 )
-              v43 = v10;
+            if ( cached_k >= scaled_index )
+              saved_cached_k_2 = cached_k;
             else
-              v43 = v12;
-            v44 = v43;
+              saved_cached_k_2 = scaled_index;
+            cached_k_4 = saved_cached_k_2;
           }
           else
           {
-            v44 = v19;
+            cached_k_4 = scaled_index_2;
           }
-          v45 = v44;
+          cached_k_5 = cached_k_4;
         }
         else
         {
-          if ( v10 <= v12 )
+          if ( cached_k <= scaled_index )
           {
-            if ( v10 >= v19 )
-              v41 = v10;
+            if ( cached_k >= scaled_index_2 )
+              saved_cached_k = cached_k;
             else
-              v41 = v19;
-            v42 = v41;
+              saved_cached_k = scaled_index_2;
+            cached_k_3 = saved_cached_k;
           }
           else
           {
-            v42 = v12;
+            cached_k_3 = scaled_index;
           }
-          v45 = v42;
+          cached_k_5 = cached_k_3;
         }
-        v10 = v45;
-        v34 = sub_1401BE3A0(v45 - 2, v12);
-        v63 = sub_1401BE320(v45 + 2, v19);
-        v35 = v45;
-        v20 = 0;
-        v25 = -1000.0;
-        sub_1401E0010((__int64)v77, v83, v34, v33, v93, v92, v94);
-        sub_1401E0340((__int64)v76, v83, v34, v33, v93, v92);
-        v32 = 0;
-        v64 = 0.050000001 / (float)v45;
-        if ( v93 == 4 )
+        cached_k = cached_k_5;
+        call_result = sub_1401BE3A0(cached_k_5 - 2, scaled_index);
+        call_result_4 = sub_1401BE320(cached_k_5 + 2, scaled_index_2);
+        cached_k_2 = cached_k_5;
+        cached_m = 0;
+        saved_weighted_sum = -1000.0;
+        sub_1401E0010((__int64)float_word_4, unrecovered_register_value, call_result, scaled_index_5, unrecovered_register_value_5, lookup_index, unrecovered_register_value_6);
+        sub_1401E0340((__int64)float_word_3, unrecovered_register_value, call_result, scaled_index_5, unrecovered_register_value_5, lookup_index);
+        iteration_count_2 = 0;
+        scaled_ratio_4 = 0.050000001 / (float)cached_k_5;
+        if ( unrecovered_register_value_5 == 4 )
         {
-          v18 = byte_14027BB84[v92];
-          v22 = 34;
-          v36 = byte_14027E2C0;
+          table_value = byte_14027BB84[lookup_index];
+          selection_code_5 = 34;
+          state_address_2 = byte_14027E2C0;
         }
         else
         {
-          v18 = 12;
-          v22 = 12;
-          v36 = (char *)&unk_14027CC28;
+          table_value = 12;
+          selection_code_5 = 12;
+          state_address_2 = (char *)&unk_14027CC28;
         }
-        v21 = (float *)(v83 + 80LL * v91);
-        v66 = sub_1401D1050((__int64)v21, v33 * v93) + 1.0;
-        for ( k = v34; k <= v63; ++k )
+        state_address = (float *)(unrecovered_register_value + 80LL * unrecovered_register_value_4);
+        weighted_sum_6 = sub_1401D1050((__int64)state_address, scaled_index_5 * unrecovered_register_value_5) + 1.0;
+        for ( k = call_result; k <= call_result_4; ++k )
         {
-          for ( m = 0; m < v18; ++m )
+          for ( m = 0; m < table_value; ++m )
           {
-            v26 = 0.0;
-            v60 = v66;
-            for ( j = 0; j < v93; ++j )
+            weighted_sum_3 = 0.0;
+            weighted_sum_4 = weighted_sum_6;
+            for ( j = 0; j < unrecovered_register_value_5; ++j )
             {
-              v26 = v26 + *((float *)&v77[85 * j] + 5 * m + v32);
-              v60 = v60 + *((float *)&v76[85 * j] + 5 * m + v32);
+              weighted_sum_3 = weighted_sum_3 + *((float *)&float_word_4[85 * j] + 5 * m + iteration_count_2);
+              weighted_sum_4 = weighted_sum_4 + *((float *)&float_word_3[85 * j] + 5 * m + iteration_count_2);
             }
-            if ( v26 <= 0.0 )
+            if ( weighted_sum_3 <= 0.0 )
             {
-              v14 = 0.0;
+              weighted_sum_2 = 0.0;
             }
             else
             {
-              v3 = 2.0 * v26 / v60;
-              v14 = v3 * (float)(1.0 - (float)(v64 * (float)m));
+              scaled_ratio_3 = 2.0 * weighted_sum_3 / weighted_sum_4;
+              weighted_sum_2 = scaled_ratio_3 * (float)(1.0 - (float)(scaled_ratio_4 * (float)m));
             }
-            if ( v14 > v25 && byte_14027E2C0[m] + k <= v19 )
+            if ( weighted_sum_2 > saved_weighted_sum && byte_14027E2C0[m] + k <= scaled_index_2 )
             {
-              v25 = v14;
-              v35 = k;
-              v20 = m;
+              saved_weighted_sum = weighted_sum_2;
+              cached_k_2 = k;
+              cached_m = m;
             }
           }
-          ++v32;
+          ++iteration_count_2;
         }
-        for ( j = 0; j < v93; ++j )
+        for ( j = 0; j < unrecovered_register_value_5; ++j )
         {
-          *(_DWORD *)&v84[2 * j] = v36[v20 + v22 * j] + v35;
-          if ( v12 <= 18 * v91 )
+          *(_DWORD *)&record_pointer[2 * j] = state_address_2[cached_m + selection_code_5 * j] + cached_k_2;
+          if ( scaled_index <= 18 * unrecovered_register_value_4 )
           {
-            if ( *(_DWORD *)&v84[2 * j] <= 18 * v91 )
+            if ( *(_DWORD *)&record_pointer[2 * j] <= 18 * unrecovered_register_value_4 )
             {
-              if ( *(_DWORD *)&v84[2 * j] >= v12 )
-                v48 = *(_DWORD *)&v84[2 * j];
+              if ( *(_DWORD *)&record_pointer[2 * j] >= scaled_index )
+                masked_bits_2 = *(_DWORD *)&record_pointer[2 * j];
               else
-                v48 = v12;
-              v49 = v48;
+                masked_bits_2 = scaled_index;
+              saved_masked_bits_2 = masked_bits_2;
             }
             else
             {
-              v49 = 18 * v91;
+              saved_masked_bits_2 = 18 * unrecovered_register_value_4;
             }
-            v50 = v49;
+            cached_masked_bits = saved_masked_bits_2;
           }
           else
           {
-            if ( *(_DWORD *)&v84[2 * j] <= v12 )
+            if ( *(_DWORD *)&record_pointer[2 * j] <= scaled_index )
             {
-              if ( *(_DWORD *)&v84[2 * j] >= 18 * v91 )
-                v46 = *(_DWORD *)&v84[2 * j];
+              if ( *(_DWORD *)&record_pointer[2 * j] >= 18 * unrecovered_register_value_4 )
+                masked_bits = *(_DWORD *)&record_pointer[2 * j];
               else
-                v46 = 18 * v91;
-              v47 = v46;
+                masked_bits = 18 * unrecovered_register_value_4;
+              saved_masked_bits = masked_bits;
             }
             else
             {
-              v47 = v12;
+              saved_masked_bits = scaled_index;
             }
-            v50 = v47;
+            cached_masked_bits = saved_masked_bits;
           }
-          *(_DWORD *)&v84[2 * j] = v50;
+          *(_DWORD *)&record_pointer[2 * j] = cached_masked_bits;
         }
-        *v85 = v35 - v12;
-        *v86 = v20;
+        *unused_written_slot = cached_k_2 - scaled_index;
+        *unused_written_slot_2 = cached_m;
       }
     }
   }
   else
   {
-    crt_memset((void *)(uintptr_t)(v84), 0, 4LL * v93);
-    *v87 = 0.0;
-    *v85 = 0;
-    *v86 = 0;
+    crt_memset((void *)(uintptr_t)(record_pointer), 0, 4LL * unrecovered_register_value_5);
+    *scaled_ratio_5 = 0.0;
+    *unused_written_slot = 0;
+    *unused_written_slot_2 = 0;
     return 1; /* 0x1401CED94: mov eax, 1 */
   }
   return 0; /* 0x1401CFF03: xor eax, eax */
@@ -4885,20 +4885,20 @@ __int64            sub_1401CFF30(__int64 a1, __int64 a2, int a3, int a4)
   int i;
   int j;
   int m;
-  float v10;
-  float v11;
+  float weighted_sum;
+  float weighted_sum_2;
 
   for ( i = 0; i < a4; ++i )
     *(_DWORD *)(a2 + 4LL * i) = i;
   for ( j = 1; j < a4; ++j )
   {
-    v10 = *(float *)(a1 + 4LL * j);
-    for ( k = j - 1; k >= 0 && v10 > *(float *)(a1 + 4LL * k); --k )
+    weighted_sum = *(float *)(a1 + 4LL * j);
+    for ( k = j - 1; k >= 0 && weighted_sum > *(float *)(a1 + 4LL * k); --k )
     {
       *(_DWORD *)(a1 + 4LL * (k + 1)) = *(_DWORD *)(a1 + 4LL * k);
       *(_DWORD *)(a2 + 4LL * (k + 1)) = *(_DWORD *)(a2 + 4LL * k);
     }
-    *(float *)(a1 + 4LL * (k + 1)) = v10;
+    *(float *)(a1 + 4LL * (k + 1)) = weighted_sum;
     *(_DWORD *)(a2 + 4LL * (k + 1)) = j;
   }
   for ( m = a4; ; ++m )
@@ -4906,15 +4906,15 @@ __int64            sub_1401CFF30(__int64 a1, __int64 a2, int a3, int a4)
     result = (unsigned int)a3;
     if ( m >= a3 )
       break;
-    v11 = *(float *)(a1 + 4LL * m);
-    if ( v11 > *(float *)(a1 + 4LL * (a4 - 1)) )
+    weighted_sum_2 = *(float *)(a1 + 4LL * m);
+    if ( weighted_sum_2 > *(float *)(a1 + 4LL * (a4 - 1)) )
     {
-      for ( n = a4 - 2; n >= 0 && v11 > *(float *)(a1 + 4LL * n); --n )
+      for ( n = a4 - 2; n >= 0 && weighted_sum_2 > *(float *)(a1 + 4LL * n); --n )
       {
         *(_DWORD *)(a1 + 4LL * (n + 1)) = *(_DWORD *)(a1 + 4LL * n);
         *(_DWORD *)(a2 + 4LL * (n + 1)) = *(_DWORD *)(a2 + 4LL * n);
       }
-      *(float *)(a1 + 4LL * (n + 1)) = v11;
+      *(float *)(a1 + 4LL * (n + 1)) = weighted_sum_2;
       *(_DWORD *)(a2 + 4LL * (n + 1)) = m;
     }
   }
@@ -4924,154 +4924,154 @@ __int64            sub_1401CFF30(__int64 a1, __int64 a2, int a3, int a4)
 //----- (00000001401D0150) ----------------------------------------------------
 float            sub_1401D0150(__int64 a1, __int64 a2, float a3, int a4, int a5, int a6)
 {
-  float v6;
-  float v7;
-  __int64 v9;
+  float component_delta;
+  float component_delta_2;
+  __int64 unused_local;
   int k;
   int j;
   int i;
-  double v13;
-  double v14;
-  __int64 v15;
-  double v16;
-  double v17;
-  double v18;
-  int v19;
-  double v20;
-  double v21;
-  double v22;
-  double v23;
-  double v24;
-  __int64 v25;
-  double v26[24];
-  double v27[26];
-  double v28[26];
-  __m128i v29[12];
-  __m128i v30;
-  __int64 v31;
+  double squared_length;
+  double comparison_operand;
+  __int64 scaled_index;
+  double combined_products;
+  double square_root;
+  double scaled_index_2;
+  int selection_flag;
+  double combined_products_2;
+  double saved_squared_length;
+  double combined_products_3;
+  double source_component_x;
+  double combined_products_4;
+  __int64 integer_difference;
+  double float_buffer[24];
+  double float_buffer_2[26];
+  double float_buffer_3[26];
+  __m128i source_buffer[12];
+  __m128i destination_buffer;
+  __int64 unused_local_2;
 
-  v20 = sub_1401D1050(a2, a4 * a5);
-  crt_memset((void *)(uintptr_t)(v29), 0, 0xC0u);
+  combined_products_2 = sub_1401D1050(a2, a4 * a5);
+  crt_memset((void *)(uintptr_t)(source_buffer), 0, 0xC0u);
   for ( i = 0; i < a5; ++i )
   {
-    v15 = a2 + 4LL * a4 * i;
+    scaled_index = a2 + 4LL * a4 * i;
     for ( j = 1; j < a6 + 1; ++j )
     {
-      v25 = j - 1;
-      *(double *)&SR_VEC_LANES(128, v29[0], i64)[v25] = *(double *)&SR_VEC_LANES(128, v29[0], i64)[v25] + sub_1401D0EF0(v15, v15 + 4LL * j, a4 - j);
+      integer_difference = j - 1;
+      *(double *)&SR_VEC_LANES(128, source_buffer[0], i64)[integer_difference] = *(double *)&SR_VEC_LANES(128, source_buffer[0], i64)[integer_difference] + sub_1401D0EF0(scaled_index, scaled_index + 4LL * j, a4 - j);
     }
   }
-  crt_memcpy(&v30, v29, 0xC0u);
-  v24 = v20 + 0.000009999999747378752 * v20 + 9.999999717180685e-10;
-  v28[0] = v24;
-  v27[0] = v24;
-  v21 = 1.0;
-  v19 = 0;
+  crt_memcpy(&destination_buffer, source_buffer, 0xC0u);
+  combined_products_4 = combined_products_2 + 0.000009999999747378752 * combined_products_2 + 9.999999717180685e-10;
+  float_buffer_3[0] = combined_products_4;
+  float_buffer_2[0] = combined_products_4;
+  saved_squared_length = 1.0;
+  selection_flag = 0;
   for ( j = 0; j < a6; ++j )
   {
     for ( i = 0; i < a5; ++i )
     {
-      v15 = a2 + 4LL * a4 * i;
-      v13 = *(float *)(v15 + 4LL * j);
-      v16 = *(float *)(v15 + 4LL * (a4 - j - 1));
+      scaled_index = a2 + 4LL * a4 * i;
+      squared_length = *(float *)(scaled_index + 4LL * j);
+      combined_products = *(float *)(scaled_index + 4LL * (a4 - j - 1));
       for ( k = 0; k < j; ++k )
       {
-        *(double *)&SR_VEC_LANES(128, v29[0], i64)[k] = *(double *)&SR_VEC_LANES(128, v29[0], i64)[k]
-                                        - (float)(*(float *)(v15 + 4LL * j) * *(float *)(v15 + 4LL * (j - k - 1)));
-        *(double *)&SR_VEC_LANES(128, v30, i64)[k] = *(double *)&SR_VEC_LANES(128, v30, i64)[k]
-                                     - (float)(*(float *)(v15 + 4LL * (a4 - j - 1))
-                                             * *(float *)(v15 + 4LL * (k + a4 - j)));
-        v14 = v26[k];
-        v13 = v13 + *(float *)(v15 + 4LL * (j - k - 1)) * v14;
-        v16 = v16 + *(float *)(v15 + 4LL * (k + a4 - j)) * v14;
+        *(double *)&SR_VEC_LANES(128, source_buffer[0], i64)[k] = *(double *)&SR_VEC_LANES(128, source_buffer[0], i64)[k]
+                                        - (float)(*(float *)(scaled_index + 4LL * j) * *(float *)(scaled_index + 4LL * (j - k - 1)));
+        *(double *)&SR_VEC_LANES(128, destination_buffer, i64)[k] = *(double *)&SR_VEC_LANES(128, destination_buffer, i64)[k]
+                                     - (float)(*(float *)(scaled_index + 4LL * (a4 - j - 1))
+                                             * *(float *)(scaled_index + 4LL * (k + a4 - j)));
+        comparison_operand = float_buffer[k];
+        squared_length = squared_length + *(float *)(scaled_index + 4LL * (j - k - 1)) * comparison_operand;
+        combined_products = combined_products + *(float *)(scaled_index + 4LL * (k + a4 - j)) * comparison_operand;
       }
       for ( k = 0; k <= j; ++k )
       {
-        v28[k] = v28[k] - v13 * *(float *)(v15 + 4LL * (j - k));
-        v27[k] = v27[k] - v16 * *(float *)(v15 + 4LL * (a4 - j + k - 1));
+        float_buffer_3[k] = float_buffer_3[k] - squared_length * *(float *)(scaled_index + 4LL * (j - k));
+        float_buffer_2[k] = float_buffer_2[k] - combined_products * *(float *)(scaled_index + 4LL * (a4 - j + k - 1));
       }
     }
-    v13 = *(double *)&SR_VEC_LANES(128, v29[0], i64)[j];
-    v16 = *(double *)&SR_VEC_LANES(128, v30, i64)[j];
+    squared_length = *(double *)&SR_VEC_LANES(128, source_buffer[0], i64)[j];
+    combined_products = *(double *)&SR_VEC_LANES(128, destination_buffer, i64)[j];
     for ( k = 0; k < j; ++k )
     {
-      v14 = v26[k];
-      v13 = v13 + *(double *)&SR_VEC_LANES(128, v30, i64)[j - k - 1] * v14;
-      v16 = v16 + *(double *)&SR_VEC_LANES(128, v29[0], i64)[j - k - 1] * v14;
+      comparison_operand = float_buffer[k];
+      squared_length = squared_length + *(double *)&SR_VEC_LANES(128, destination_buffer, i64)[j - k - 1] * comparison_operand;
+      combined_products = combined_products + *(double *)&SR_VEC_LANES(128, source_buffer[0], i64)[j - k - 1] * comparison_operand;
     }
-    v28[j + 1] = v13;
-    v27[j + 1] = v16;
-    v22 = v27[j + 1];
-    v23 = v27[0];
-    v18 = v28[0];
+    float_buffer_3[j + 1] = squared_length;
+    float_buffer_2[j + 1] = combined_products;
+    combined_products_3 = float_buffer_2[j + 1];
+    source_component_x = float_buffer_2[0];
+    scaled_index_2 = float_buffer_3[0];
     for ( k = 0; k < j; ++k )
     {
-      v14 = v26[k];
-      v22 = v22 + v27[j - k] * v14;
-      v23 = v23 + v27[k + 1] * v14;
-      v18 = v18 + v28[k + 1] * v14;
+      comparison_operand = float_buffer[k];
+      combined_products_3 = combined_products_3 + float_buffer_2[j - k] * comparison_operand;
+      source_component_x = source_component_x + float_buffer_2[k + 1] * comparison_operand;
+      scaled_index_2 = scaled_index_2 + float_buffer_3[k + 1] * comparison_operand;
     }
-    v17 = -2.0 * v22 / (v18 + v23);
-    v13 = v21 * (1.0 - v17 * v17);
-    if ( a3 < v13 )
+    square_root = -2.0 * combined_products_3 / (scaled_index_2 + source_component_x);
+    squared_length = saved_squared_length * (1.0 - square_root * square_root);
+    if ( a3 < squared_length )
     {
-      v21 = v13;
+      saved_squared_length = squared_length;
     }
     else
     {
-      v17 = sqrt(1.0 - a3 / v21);
-      if ( v22 > 0.0 )
-        v17 = -v17;
-      v21 = a3;
-      v19 = 1;
+      square_root = sqrt(1.0 - a3 / saved_squared_length);
+      if ( combined_products_3 > 0.0 )
+        square_root = -square_root;
+      saved_squared_length = a3;
+      selection_flag = 1;
     }
     for ( k = 0; k < (j + 1) >> 1; ++k )
     {
-      v13 = v26[k];
-      v16 = v26[j - k - 1];
-      v26[k] = v13 + v17 * v16;
-      v26[j - k - 1] = v16 + v17 * v13;
+      squared_length = float_buffer[k];
+      combined_products = float_buffer[j - k - 1];
+      float_buffer[k] = squared_length + square_root * combined_products;
+      float_buffer[j - k - 1] = combined_products + square_root * squared_length;
     }
-    v26[j] = v17;
-    if ( v19 )
+    float_buffer[j] = square_root;
+    if ( selection_flag )
     {
       for ( k = j + 1; k < a6; ++k )
-        v26[k] = 0.0;
+        float_buffer[k] = 0.0;
       break;
     }
     for ( k = 0; k <= j + 1; ++k )
     {
-      v13 = v28[k];
-      v28[k] = v28[k] + v17 * v27[j - k + 1];
-      v27[j - k + 1] = v27[j - k + 1] + v17 * v13;
+      squared_length = float_buffer_3[k];
+      float_buffer_3[k] = float_buffer_3[k] + square_root * float_buffer_2[j - k + 1];
+      float_buffer_2[j - k + 1] = float_buffer_2[j - k + 1] + square_root * squared_length;
     }
   }
-  if ( v19 )
+  if ( selection_flag )
   {
     for ( k = 0; k < a6; ++k )
     {
-      v6 = -v26[k];
-      *(float *)(a1 + 4LL * k) = v6;
+      component_delta = -float_buffer[k];
+      *(float *)(a1 + 4LL * k) = component_delta;
     }
     for ( i = 0; i < a5; ++i )
-      v20 = v20 - sub_1401D1050(a2 + 4LL * a4 * i, a6);
-    v18 = v20 * v21;
+      combined_products_2 = combined_products_2 - sub_1401D1050(a2 + 4LL * a4 * i, a6);
+    scaled_index_2 = combined_products_2 * saved_squared_length;
   }
   else
   {
-    v18 = v28[0];
-    v13 = 1.0;
+    scaled_index_2 = float_buffer_3[0];
+    squared_length = 1.0;
     for ( k = 0; k < a6; ++k )
     {
-      v14 = v26[k];
-      v18 = v18 + v28[k + 1] * v14;
-      v13 = v13 + v14 * v14;
-      v7 = -v14;
-      *(float *)(a1 + 4LL * k) = v7;
+      comparison_operand = float_buffer[k];
+      scaled_index_2 = scaled_index_2 + float_buffer_3[k + 1] * comparison_operand;
+      squared_length = squared_length + comparison_operand * comparison_operand;
+      component_delta_2 = -comparison_operand;
+      *(float *)(a1 + 4LL * k) = component_delta_2;
     }
-    v18 = v18 - 0.000009999999747378752 * v20 * v13;
+    scaled_index_2 = scaled_index_2 - 0.000009999999747378752 * combined_products_2 * squared_length;
   }
-  return v18; /* 0x1401D0C5F: cvtsd2ss xmm0, qword ptr [rsp + 0x58] */
+  return scaled_index_2; /* 0x1401D0C5F: cvtsd2ss xmm0, qword ptr [rsp + 0x58] */
 }
 
 //----- (00000001401D0C90) ----------------------------------------------------
@@ -5126,42 +5126,42 @@ __int64            sub_1401D0DC0(__int64 a1, __int64 a2, float a3, int a4)
 double            sub_1401D0EF0(__int64 a1, __int64 a2, int a3)
 {
   int i;
-  double v5;
+  double loaded_word;
 
-  v5 = 0.0;
+  loaded_word = 0.0;
   for ( i = 0; i < a3 - 3; i += 4 )
-    v5 = v5
+    loaded_word = loaded_word
        + *(float *)(a1 + 4LL * i) * *(float *)(a2 + 4LL * i)
        + *(float *)(a1 + 4LL * (i + 1)) * *(float *)(a2 + 4LL * (i + 1))
        + *(float *)(a1 + 4LL * (i + 2)) * *(float *)(a2 + 4LL * (i + 2))
        + *(float *)(a1 + 4LL * (i + 3)) * *(float *)(a2 + 4LL * (i + 3));
   while ( i < a3 )
   {
-    v5 = v5 + *(float *)(a1 + 4LL * i) * *(float *)(a2 + 4LL * i);
+    loaded_word = loaded_word + *(float *)(a1 + 4LL * i) * *(float *)(a2 + 4LL * i);
     ++i;
   }
-  return v5;
+  return loaded_word;
 }
 
 //----- (00000001401D1050) ----------------------------------------------------
 double            sub_1401D1050(__int64 a1, int a2)
 {
   int i;
-  double v4;
+  double loaded_word;
 
-  v4 = 0.0;
+  loaded_word = 0.0;
   for ( i = 0; i < a2 - 3; i += 4 )
-    v4 = v4
+    loaded_word = loaded_word
        + *(float *)(a1 + 4LL * i) * *(float *)(a1 + 4LL * i)
        + *(float *)(a1 + 4LL * (i + 1)) * *(float *)(a1 + 4LL * (i + 1))
        + *(float *)(a1 + 4LL * (i + 2)) * *(float *)(a1 + 4LL * (i + 2))
        + *(float *)(a1 + 4LL * (i + 3)) * *(float *)(a1 + 4LL * (i + 3));
   while ( i < a2 )
   {
-    v4 = v4 + *(float *)(a1 + 4LL * i) * *(float *)(a1 + 4LL * i);
+    loaded_word = loaded_word + *(float *)(a1 + 4LL * i) * *(float *)(a1 + 4LL * i);
     ++i;
   }
-  return v4;
+  return loaded_word;
 }
 
 //----- (00000001401D11A0) ----------------------------------------------------
@@ -5181,8 +5181,8 @@ __int64            sub_1401D1210(__int64 a1, __int64 a2, int a3)
 {
   __int64 result;
   int i;
-  __int16 v5;
-  __int16 v6;
+  __int16 loaded_word;
+  __int16 saved_loaded_word;
 
   result = (unsigned int)(a3 - 1);
   for ( i = a3 - 1; i >= 0; --i )
@@ -5190,16 +5190,16 @@ __int64            sub_1401D1210(__int64 a1, __int64 a2, int a3)
     if ( (int)sub_1401AD3B0(*(float *)(a2 + 4LL * i)) <= 0x7FFF )
     {
       if ( (int)sub_1401AD3B0(*(float *)(a2 + 4LL * i)) >= -32768 )
-        v5 = sub_1401AD3B0(*(float *)(a2 + 4LL * i));
+        loaded_word = sub_1401AD3B0(*(float *)(a2 + 4LL * i));
       else
-        v5 = 0x8000;
-      v6 = v5;
+        loaded_word = 0x8000;
+      saved_loaded_word = loaded_word;
     }
     else
     {
-      v6 = 0x7FFF;
+      saved_loaded_word = 0x7FFF;
     }
-    *(_WORD *)(a1 + 2LL * i) = v6;
+    *(_WORD *)(a1 + 2LL * i) = saved_loaded_word;
     result = (unsigned int)(i - 1);
   }
   return result;
@@ -5230,73 +5230,73 @@ float            sub_1401D1340(double a1)
 __int64            sub_1401D1380(__int64 a1)
 {
   __int64 result;
-  int v2;
-  int v4;
-  __int16 v5;
-  __int16 v6;
-  unsigned int v7;
-  unsigned int v8;
-  unsigned int v9;
-  unsigned int v10;
-  unsigned int v11;
-  signed int v12;
-  __int64 v13;
+  int shifted_bits;
+  int loaded_word;
+  __int16 saved_shifted_bits;
+  __int16 cached_shifted_bits;
+  unsigned int shifted_bits_2;
+  unsigned int shifted_bits_3;
+  unsigned int shifted_bits_4;
+  unsigned int shifted_bits_5;
+  unsigned int saved_shifted_bits_2;
+  signed int shifted_bits_6;
+  __int64 shifted_bits_7;
 
   result = (unsigned int)*(char *)(a1 + 4541);
   if ( (_DWORD)result == 2 )
   {
-    v4 = sub_1401BC2A0(65536000 * *(_DWORD *)(a1 + 4576) / *(_DWORD *)(a1 + 4544)) - 2048;
-    v13 = (int)(((__int16)*(_DWORD *)(a1 + 4712) * (__int64)(-4 * *(_DWORD *)(a1 + 4712))) >> 16);
-    v2 = (((__int16)(v4 - (sub_1401BC2A0(0x3C0000u) - 2048)) * v13) >> 16) + v4 - (*(int *)(a1 + 8) >> 8);
-    if ( v2 < 0 )
-      v2 *= 3;
-    if ( v2 <= 51 )
+    loaded_word = sub_1401BC2A0(65536000 * *(_DWORD *)(a1 + 4576) / *(_DWORD *)(a1 + 4544)) - 2048;
+    shifted_bits_7 = (int)(((__int16)*(_DWORD *)(a1 + 4712) * (__int64)(-4 * *(_DWORD *)(a1 + 4712))) >> 16);
+    shifted_bits = (((__int16)(loaded_word - (sub_1401BC2A0(0x3C0000u) - 2048)) * shifted_bits_7) >> 16) + loaded_word - (*(int *)(a1 + 8) >> 8);
+    if ( shifted_bits < 0 )
+      shifted_bits *= 3;
+    if ( shifted_bits <= 51 )
     {
-      if ( v2 >= -51 )
-        v5 = v2;
+      if ( shifted_bits >= -51 )
+        saved_shifted_bits = shifted_bits;
       else
-        v5 = -51;
-      v6 = v5;
+        saved_shifted_bits = -51;
+      cached_shifted_bits = saved_shifted_bits;
     }
     else
     {
-      v6 = 51;
+      cached_shifted_bits = 51;
     }
-    *(_DWORD *)(a1 + 8) += (6554LL * v6 * *(__int16 *)(a1 + 4532)) >> 16;
-    v12 = (unsigned int)sub_1401BC2A0(0x3Cu) << 8;
-    if ( v12 <= (int)((unsigned int)sub_1401BC2A0(0x64u) << 8) )
+    *(_DWORD *)(a1 + 8) += (6554LL * cached_shifted_bits * *(__int16 *)(a1 + 4532)) >> 16;
+    shifted_bits_6 = (unsigned int)sub_1401BC2A0(0x3Cu) << 8;
+    if ( shifted_bits_6 <= (int)((unsigned int)sub_1401BC2A0(0x64u) << 8) )
     {
       if ( *(_DWORD *)(a1 + 8) <= (signed int)((unsigned int)sub_1401BC2A0(0x64u) << 8) )
       {
         if ( *(_DWORD *)(a1 + 8) >= (signed int)((unsigned int)sub_1401BC2A0(0x3Cu) << 8) )
-          v9 = *(_DWORD *)(a1 + 8);
+          shifted_bits_4 = *(_DWORD *)(a1 + 8);
         else
-          v9 = (unsigned int)sub_1401BC2A0(0x3Cu) << 8;
-        v10 = v9;
+          shifted_bits_4 = (unsigned int)sub_1401BC2A0(0x3Cu) << 8;
+        shifted_bits_5 = shifted_bits_4;
       }
       else
       {
-        v10 = (unsigned int)sub_1401BC2A0(0x64u) << 8;
+        shifted_bits_5 = (unsigned int)sub_1401BC2A0(0x64u) << 8;
       }
-      v11 = v10;
+      saved_shifted_bits_2 = shifted_bits_5;
     }
     else
     {
       if ( *(_DWORD *)(a1 + 8) <= (signed int)((unsigned int)sub_1401BC2A0(0x3Cu) << 8) )
       {
         if ( *(_DWORD *)(a1 + 8) >= (signed int)((unsigned int)sub_1401BC2A0(0x64u) << 8) )
-          v7 = *(_DWORD *)(a1 + 8);
+          shifted_bits_2 = *(_DWORD *)(a1 + 8);
         else
-          v7 = (unsigned int)sub_1401BC2A0(0x64u) << 8;
-        v8 = v7;
+          shifted_bits_2 = (unsigned int)sub_1401BC2A0(0x64u) << 8;
+        shifted_bits_3 = shifted_bits_2;
       }
       else
       {
-        v8 = (unsigned int)sub_1401BC2A0(0x3Cu) << 8;
+        shifted_bits_3 = (unsigned int)sub_1401BC2A0(0x3Cu) << 8;
       }
-      v11 = v8;
+      saved_shifted_bits_2 = shifted_bits_3;
     }
-    *(_DWORD *)(a1 + 8) = v11;
+    *(_DWORD *)(a1 + 8) = saved_shifted_bits_2;
     return a1;
   }
   return result;
@@ -5342,272 +5342,272 @@ __int64            sub_1401D1630(__int64 a1, int a2)
 //----- (00000001401D1780) ----------------------------------------------------
 __int64            sub_1401D1780()
 {
-  unsigned __int64 v0;
-       __m128i *v1;
-  int v2;
-  _QWORD v4[6];
+  unsigned __int64 byte_count;
+       __m128i *source_buffer;
+  int float_word;
+  _QWORD scratch_buffer[6];
   int i;
-  __int16 v6;
-  int v7;
-  char v8;
-  int v9;
-  __int16 v10;
+  __int16 shifted_bits;
+  int call_result;
+  char loaded_word;
+  int saved_shifted_bits;
+  __int16 saved_shifted_bits_2;
   int j;
-  int v12;
-  int v13;
-  int v14;
-  __int16 v15;
-  int v16;
-  int v17;
+  int saved_shifted_bits_3;
+  int selection_flag;
+  int call_result_2;
+  __int16 loaded_word_2;
+  int cached_call_result;
+  int integer_difference;
   int k;
-  int v19;
-  int v20;
-  _DWORD *v21;
-  int v22;
-  int v23;
-  int v24;
-  float v25;
-  int v26;
-  int v27;
-  BOOL v28;
-  int v29;
-  int v30;
-  int v31;
-  int v32;
-  _DWORD *v33;
-  _DWORD *v34;
-  __m128i v35;
-  unsigned int v36;
-  __m128i v37[4];
-  float v38[173];
-  float v39;
-  _DWORD v40[4];
-  char v41;
-  __m128i v42[272];
-  __m128i v43[272];
-  _DWORD v44[4];
-  _DWORD v45[8];
-  _DWORD v46[676];
-  __m128i v47[80];
-  __int64 v48;
-  _DWORD *v49;
-  int *v50;
-  __m128i *v51;
-  int v52;
-  int v53;
-  int v54;
+  int running_total;
+  int cached_call_result_2;
+  _DWORD *state_address;
+  int selection_code;
+  int integer_difference_2;
+  int selection_flag_2;
+  float scaled_value;
+  int shifted_bits_2;
+  int saved_shifted_bits_4;
+  BOOL comparison_result;
+  int unused_written_slot;
+  int table_value;
+  int shifted_bits_3;
+  int loaded_word_3;
+  _DWORD *state_address_2;
+  _DWORD *unused_written_slot_2;
+  __m128i source_buffer_2;
+  unsigned int byte_count_2;
+  __m128i source_buffer_3[4];
+  float float_buffer[173];
+  float saved_scaled_value;
+  _DWORD scratch_buffer_2[4];
+  char unrecovered_register_value;
+  __m128i source_buffer_4[272];
+  __m128i source_buffer_5[272];
+  _DWORD destination_buffer[4];
+  _DWORD scratch_buffer_3[8];
+  _DWORD callee_output_word[676];
+  __m128i source_buffer_6[80];
+  __int64 unused_local;
+  _DWORD *record_pointer;
+  int *unused_written_slot_3;
+  __m128i *source_buffer_7;
+  int unrecovered_register_value_2;
+  int unrecovered_register_value_3;
+  int unrecovered_register_value_4;
 
-  v29 = 0;
-  memset(v44, 0, sizeof(v44));
-  v12 = 0;
-  v9 = 0;
-  v20 = 0;
-  v16 = 0;
-  v8 = 0;
-  *((_BYTE *)v49 + 4786) = v49[1155]++ & 3;
-  v21 = &v49[v49[1148] + 1801];
-  v33 = &v46[v49[1148]];
-  sub_1401C58E0(v49 + 4, (__int64)v49 + 5114, v49[1146]);
-  sub_1401D12E0((__int64)&v21[5 * v49[1144]], (__int64)v49 + 5114, v49[1146]);
+  unused_written_slot = 0;
+  memset(destination_buffer, 0, sizeof(destination_buffer));
+  saved_shifted_bits_3 = 0;
+  saved_shifted_bits = 0;
+  cached_call_result_2 = 0;
+  cached_call_result = 0;
+  loaded_word = 0;
+  *((_BYTE *)record_pointer + 4786) = record_pointer[1155]++ & 3;
+  state_address = &record_pointer[record_pointer[1148] + 1801];
+  state_address_2 = &callee_output_word[record_pointer[1148]];
+  sub_1401C58E0(record_pointer + 4, (__int64)record_pointer + 5114, record_pointer[1146]);
+  sub_1401D12E0((__int64)&state_address[5 * record_pointer[1144]], (__int64)record_pointer + 5114, record_pointer[1146]);
   for ( i = 0; i < 8; ++i )
-    *(float *)&v21[5 * v49[1144] + ((int)v49[1146] >> 3) * i] = *(float *)&v21[5 * v49[1144] + ((int)v49[1146] >> 3) * i]
+    *(float *)&state_address[5 * record_pointer[1144] + ((int)record_pointer[1146] >> 3) * i] = *(float *)&state_address[5 * record_pointer[1144] + ((int)record_pointer[1146] >> 3) * i]
                                                               + (float)((float)(1 - (i & 2)) * 0.000001);
-  if ( !v49[1170] )
+  if ( !record_pointer[1170] )
   {
-    sub_1401D3B00((__int64)v49, (__int64)v38, v46, (__int64)v21, v49[1277]);
-    sub_1401D29C0((__int64)v49, v38, (__int64)v33, (__int64)v21);
-    sub_1401D4100((__int64)v49, (__int64)v38, (__int64)v33, (__int64)v21, v52);
-    sub_1401D5670((__int64)v49, (__int64)v38, v52);
+    sub_1401D3B00((__int64)record_pointer, (__int64)float_buffer, callee_output_word, (__int64)state_address, record_pointer[1277]);
+    sub_1401D29C0((__int64)record_pointer, float_buffer, (__int64)state_address_2, (__int64)state_address);
+    sub_1401D4100((__int64)record_pointer, (__int64)float_buffer, (__int64)state_address_2, (__int64)state_address, unrecovered_register_value_2);
+    sub_1401D5670((__int64)record_pointer, (__int64)float_buffer, unrecovered_register_value_2);
     sub_1401DEAE0();
-    v22 = 6;
-    v6 = 256;
-    v13 = 0;
-    v24 = 0;
-    v14 = sub_1401C2EE0((__int64)(v49 + 1188), v49[1145]);
-    v17 = -1;
-    v23 = -1;
-    crt_memcpy(v37, v51, 0x38u);
-    crt_memcpy(v42, (     __m128i *)(v49 + 37), 0x1100u);
-    v32 = *((char *)v49 + 4786);
-    v15 = *((_WORD *)v49 + 2894);
-    v30 = v49[1446];
+    selection_code = 6;
+    shifted_bits = 256;
+    selection_flag = 0;
+    selection_flag_2 = 0;
+    call_result_2 = sub_1401C2EE0((__int64)(record_pointer + 1188), record_pointer[1145]);
+    integer_difference = -1;
+    integer_difference_2 = -1;
+    crt_memcpy(source_buffer_3, source_buffer_7, 0x38u);
+    crt_memcpy(source_buffer_4, (     __m128i *)(record_pointer + 37), 0x1100u);
+    loaded_word_3 = *((char *)record_pointer + 4786);
+    loaded_word_2 = *((_WORD *)record_pointer + 2894);
+    table_value = record_pointer[1446];
     for ( j = 0; ; ++j )
     {
-      if ( v14 == v17 )
+      if ( call_result_2 == integer_difference )
       {
-        v7 = v16;
+        call_result = cached_call_result;
       }
-      else if ( v14 == v23 )
+      else if ( call_result_2 == integer_difference_2 )
       {
-        v7 = v20;
+        call_result = cached_call_result_2;
       }
       else
       {
         if ( j > 0 )
         {
-          crt_memcpy(v51, v37, 0x38u);
-          crt_memcpy((__m128i *)(v49 + 37), v42, 0x1100u);
-          *((_BYTE *)v49 + 4786) = v32;
-          *((_WORD *)v49 + 2894) = v15;
-          v49[1446] = v30;
+          crt_memcpy(source_buffer_7, source_buffer_3, 0x38u);
+          crt_memcpy((__m128i *)(record_pointer + 37), source_buffer_4, 0x1100u);
+          *((_BYTE *)record_pointer + 4786) = loaded_word_3;
+          *((_WORD *)record_pointer + 2894) = loaded_word_2;
+          record_pointer[1446] = table_value;
         }
-        v4[5] = (uint64)(uintptr_t)(v21);
-        sub_1401D62A0(v49, (__int64)v38, (char *)v49 + 4752, (__m128i *)(v49 + 37), (__int64)(v49 + 1197), (__int64)v21);
-        if ( j == v22 && !v13 )
-          crt_memcpy(&v35, v51, 0x38u);
-        sub_1401CA330((__int64)v49, v51, v49[1441], 0, v52);
-        sub_1401C1790(v51, *((char *)v49 + 4781), *((char *)v49 + 4782), (__int64)(v49 + 1197), v49[1146]);
-        v7 = sub_14019A0A0((__int64)v51);
-        if ( j == v22 && !v13 && v7 > v53 )
+        scratch_buffer[5] = (uint64)(uintptr_t)(state_address);
+        sub_1401D62A0(record_pointer, (__int64)float_buffer, (char *)record_pointer + 4752, (__m128i *)(record_pointer + 37), (__int64)(record_pointer + 1197), (__int64)state_address);
+        if ( j == selection_code && !selection_flag )
+          crt_memcpy(&source_buffer_2, source_buffer_7, 0x38u);
+        sub_1401CA330((__int64)record_pointer, source_buffer_7, record_pointer[1441], 0, unrecovered_register_value_2);
+        sub_1401C1790(source_buffer_7, *((char *)record_pointer + 4781), *((char *)record_pointer + 4782), (__int64)(record_pointer + 1197), record_pointer[1146]);
+        call_result = sub_14019A0A0((__int64)source_buffer_7);
+        if ( j == selection_code && !selection_flag && call_result > unrecovered_register_value_3 )
         {
-          crt_memcpy(v51, &v35, 0x38u);
-          *((_BYTE *)v49 + 7192) = v41;
-          for ( i = 0; i < v49[1145]; ++i )
-            *((_BYTE *)v49 + i + 4752) = 4;
-          if ( v52 != 2 )
-            *((_BYTE *)v49 + 4752) = v41;
-          *((_WORD *)v49 + 2894) = v15;
-          v49[1446] = v30;
-          for ( i = 0; i < v49[1146]; ++i )
-            *((_BYTE *)v49 + i + 4788) = 0;
-          sub_1401CA330((__int64)v49, v51, v49[1441], 0, v52);
-          sub_1401C1790(v51, *((char *)v49 + 4781), *((char *)v49 + 4782), (__int64)(v49 + 1197), v49[1146]);
-          v7 = sub_14019A0A0((__int64)v51);
+          crt_memcpy(source_buffer_7, &source_buffer_2, 0x38u);
+          *((_BYTE *)record_pointer + 7192) = unrecovered_register_value;
+          for ( i = 0; i < record_pointer[1145]; ++i )
+            *((_BYTE *)record_pointer + i + 4752) = 4;
+          if ( unrecovered_register_value_2 != 2 )
+            *((_BYTE *)record_pointer + 4752) = unrecovered_register_value;
+          *((_WORD *)record_pointer + 2894) = loaded_word_2;
+          record_pointer[1446] = table_value;
+          for ( i = 0; i < record_pointer[1146]; ++i )
+            *((_BYTE *)record_pointer + i + 4788) = 0;
+          sub_1401CA330((__int64)record_pointer, source_buffer_7, record_pointer[1441], 0, unrecovered_register_value_2);
+          sub_1401C1790(source_buffer_7, *((char *)record_pointer + 4781), *((char *)record_pointer + 4782), (__int64)(record_pointer + 1197), record_pointer[1146]);
+          call_result = sub_14019A0A0((__int64)source_buffer_7);
         }
-        if ( !v54 && !j && v7 <= v53 )
+        if ( !unrecovered_register_value_4 && !j && call_result <= unrecovered_register_value_3 )
           goto LABEL_88;
       }
-      if ( j == v22 )
+      if ( j == selection_code )
         break;
-      if ( v7 <= v53 )
+      if ( call_result <= unrecovered_register_value_3 )
       {
-        if ( v7 >= v53 - 5 )
+        if ( call_result >= unrecovered_register_value_3 - 5 )
           goto LABEL_88;
-        v13 = 1;
-        v16 = v7;
-        v9 = v6;
-        if ( v14 != v17 )
+        selection_flag = 1;
+        cached_call_result = call_result;
+        saved_shifted_bits = shifted_bits;
+        if ( call_result_2 != integer_difference )
         {
-          v17 = v14;
-          crt_memcpy(&v35, v51, 0x38u);
-          crt_memcpy(v47, (     __m128i *)SR_VEC_PTR_LANES(128, v51, i64)[0], SR_VEC_LANES(128, v51[1], u32)[3]);
-          crt_memcpy(v43, (     __m128i *)(v49 + 37), 0x1100u);
-          v8 = *((_BYTE *)v49 + 7192);
+          integer_difference = call_result_2;
+          crt_memcpy(&source_buffer_2, source_buffer_7, 0x38u);
+          crt_memcpy(source_buffer_6, (     __m128i *)SR_VEC_PTR_LANES(128, source_buffer_7, i64)[0], SR_VEC_LANES(128, source_buffer_7[1], u32)[3]);
+          crt_memcpy(source_buffer_5, (     __m128i *)(record_pointer + 37), 0x1100u);
+          loaded_word = *((_BYTE *)record_pointer + 7192);
         }
       }
-      else if ( v13 || j < 2 )
+      else if ( selection_flag || j < 2 )
       {
-        v24 = 1;
-        v20 = v7;
-        v12 = v6;
-        v23 = v14;
+        selection_flag_2 = 1;
+        cached_call_result_2 = call_result;
+        saved_shifted_bits_3 = shifted_bits;
+        integer_difference_2 = call_result_2;
       }
       else
       {
-        if ( (float)(v39 * 1.5) <= 1.5 )
-          v25 = 1.5;
+        if ( (float)(saved_scaled_value * 1.5) <= 1.5 )
+          scaled_value = 1.5;
         else
-          v25 = v39 * 1.5;
-        v39 = v25;
-        *((_BYTE *)v49 + 4782) = 0;
-        v24 = 0;
-        v23 = -1;
+          scaled_value = saved_scaled_value * 1.5;
+        saved_scaled_value = scaled_value;
+        *((_BYTE *)record_pointer + 4782) = 0;
+        selection_flag_2 = 0;
+        integer_difference_2 = -1;
       }
-      if ( !v13 && v7 > v53 )
+      if ( !selection_flag && call_result > unrecovered_register_value_3 )
       {
-        for ( i = 0; i < v49[1145]; ++i )
+        for ( i = 0; i < record_pointer[1145]; ++i )
         {
-          v19 = 0;
-          for ( k = v49[1147] * i; k < v49[1147] * (i + 1); ++k )
-            v19 += abs(*((char *)v49 + k + 4788));
-          if ( j && (v19 >= v45[i + 4] || v44[i]) )
+          running_total = 0;
+          for ( k = record_pointer[1147] * i; k < record_pointer[1147] * (i + 1); ++k )
+            running_total += abs(*((char *)record_pointer + k + 4788));
+          if ( j && (running_total >= scratch_buffer_3[i + 4] || destination_buffer[i]) )
           {
-            v44[i] = 1;
+            destination_buffer[i] = 1;
           }
           else
           {
-            v45[i + 4] = v19;
-            *((_WORD *)&v46[672] + i) = v6;
+            scratch_buffer_3[i + 4] = running_total;
+            *((_WORD *)&callee_output_word[672] + i) = shifted_bits;
           }
         }
       }
-      if ( (v24 & v13) != 0 )
+      if ( (selection_flag_2 & selection_flag) != 0 )
       {
-        v6 = (v53 - v16) * (v12 - v9) / (v20 - v16) + v9;
-        if ( v6 <= ((v12 - v9) >> 2) + v9 )
+        shifted_bits = (unrecovered_register_value_3 - cached_call_result) * (saved_shifted_bits_3 - saved_shifted_bits) / (cached_call_result_2 - cached_call_result) + saved_shifted_bits;
+        if ( shifted_bits <= ((saved_shifted_bits_3 - saved_shifted_bits) >> 2) + saved_shifted_bits )
         {
-          if ( v6 < v12 - ((v12 - v9) >> 2) )
-            v6 = v12 - ((v12 - v9) >> 2);
+          if ( shifted_bits < saved_shifted_bits_3 - ((saved_shifted_bits_3 - saved_shifted_bits) >> 2) )
+            shifted_bits = saved_shifted_bits_3 - ((saved_shifted_bits_3 - saved_shifted_bits) >> 2);
         }
         else
         {
-          v6 = ((v12 - v9) >> 2) + v9;
+          shifted_bits = ((saved_shifted_bits_3 - saved_shifted_bits) >> 2) + saved_shifted_bits;
         }
       }
-      else if ( v7 <= v53 )
+      else if ( call_result <= unrecovered_register_value_3 )
       {
-        v31 = sub_1401BC3D0(((v7 - v53) << 7) / v49[1146] + 2048);
-        v6 = (unsigned int)(v6 * v31) >> 16;
+        shifted_bits_3 = sub_1401BC3D0(((call_result - unrecovered_register_value_3) << 7) / record_pointer[1146] + 2048);
+        shifted_bits = (unsigned int)(shifted_bits * shifted_bits_3) >> 16;
       }
-      else if ( v6 >= 0x4000 )
+      else if ( shifted_bits >= 0x4000 )
       {
-        v6 = 0x7FFF;
+        shifted_bits = 0x7FFF;
       }
       else
       {
-        v6 *= 2;
+        shifted_bits *= 2;
       }
-      for ( i = 0; i < v49[1145]; ++i )
+      for ( i = 0; i < record_pointer[1145]; ++i )
       {
-        if ( v44[i] )
-          v10 = *((_WORD *)&v46[672] + i);
+        if ( destination_buffer[i] )
+          saved_shifted_bits_2 = *((_WORD *)&callee_output_word[672] + i);
         else
-          v10 = v6;
-        if ( (int)((v10 * (__int64)(int)v40[i]) >> 16) <= 0x7FFFFF )
+          saved_shifted_bits_2 = shifted_bits;
+        if ( (int)((saved_shifted_bits_2 * (__int64)(int)scratch_buffer_2[i]) >> 16) <= 0x7FFFFF )
         {
-          if ( (int)((v10 * (__int64)(int)v40[i]) >> 16) >= -8388608 )
-            v26 = (v10 * (__int64)(int)v40[i]) >> 16;
+          if ( (int)((saved_shifted_bits_2 * (__int64)(int)scratch_buffer_2[i]) >> 16) >= -8388608 )
+            shifted_bits_2 = (saved_shifted_bits_2 * (__int64)(int)scratch_buffer_2[i]) >> 16;
           else
-            v26 = -8388608;
-          v27 = v26;
+            shifted_bits_2 = -8388608;
+          saved_shifted_bits_4 = shifted_bits_2;
         }
         else
         {
-          v27 = 0x7FFFFF;
+          saved_shifted_bits_4 = 0x7FFFFF;
         }
-        v45[i] = v27 << 8;
+        scratch_buffer_3[i] = saved_shifted_bits_4 << 8;
       }
-      *((_BYTE *)v49 + 7192) = v41;
-      v28 = v52 == 2;
-      sub_1401C2970((char *)v49 + 4752, (__int64)v45, (char *)v49 + 7192, v28, v49[1145]);
-      v14 = sub_1401C2EE0((__int64)(v49 + 1188), v49[1145]);
-      for ( i = 0; i < v49[1145]; ++i )
-        v38[i] = (float)(int)v45[i] / 65536.0;
+      *((_BYTE *)record_pointer + 7192) = unrecovered_register_value;
+      comparison_result = unrecovered_register_value_2 == 2;
+      sub_1401C2970((char *)record_pointer + 4752, (__int64)scratch_buffer_3, (char *)record_pointer + 7192, comparison_result, record_pointer[1145]);
+      call_result_2 = sub_1401C2EE0((__int64)(record_pointer + 1188), record_pointer[1145]);
+      for ( i = 0; i < record_pointer[1145]; ++i )
+        float_buffer[i] = (float)(int)scratch_buffer_3[i] / 65536.0;
     }
-    if ( v13 && (v14 == v17 || v7 > v53) )
+    if ( selection_flag && (call_result_2 == integer_difference || call_result > unrecovered_register_value_3) )
     {
-      crt_memcpy(v51, &v35, 0x38u);
-      crt_memcpy((__m128i *)SR_VEC_PTR_LANES(128, v51, i64)[0], v47, v36);
-      crt_memcpy((__m128i *)(v49 + 37), v43, 0x1100u);
-      *((_BYTE *)v49 + 7192) = v8;
+      crt_memcpy(source_buffer_7, &source_buffer_2, 0x38u);
+      crt_memcpy((__m128i *)SR_VEC_PTR_LANES(128, source_buffer_7, i64)[0], source_buffer_6, byte_count_2);
+      crt_memcpy((__m128i *)(record_pointer + 37), source_buffer_5, 0x1100u);
+      *((_BYTE *)record_pointer + 7192) = loaded_word;
     }
   }
 LABEL_88:
-  v0 = 4LL * (5 * v49[1144] + v49[1148]);
-  v1 = (     __m128i *)&v49[v49[1146] + 1801];
-  v34 = v49 + 1801;
-  crt_memcpy((__m128i *)(v49 + 1801), v1, v0);
-  if ( v49[1170] )
+  byte_count = 4LL * (5 * record_pointer[1144] + record_pointer[1148]);
+  source_buffer = (     __m128i *)&record_pointer[record_pointer[1146] + 1801];
+  unused_written_slot_2 = record_pointer + 1801;
+  crt_memcpy((__m128i *)(record_pointer + 1801), source_buffer, byte_count);
+  if ( record_pointer[1170] )
   {
-    *v50 = 0;
+    *unused_written_slot_3 = 0;
   }
   else
   {
-    v49[1136] = LODWORD(v38[v49[1145] + 56]);
-    *((_BYTE *)v49 + 4541) = *((_BYTE *)v49 + 4781);
-    v49[1166] = 0;
-    v2 = sub_14019A0A0((__int64)v51);
-    *v50 = (v2 + 7) >> 3;
+    record_pointer[1136] = LODWORD(float_buffer[record_pointer[1145] + 56]);
+    *((_BYTE *)record_pointer + 4541) = *((_BYTE *)record_pointer + 4781);
+    record_pointer[1166] = 0;
+    float_word = sub_14019A0A0((__int64)source_buffer_7);
+    *unused_written_slot_3 = (float_word + 7) >> 3;
   }
   return 0; /* 0x1401D26C7: mov eax, dword ptr [rsp + 0x94], a slot only ever set to 0 (0x1401D17B4) */
 }
@@ -5626,14 +5626,14 @@ __int64            sub_1401D26F0(_DWORD *a1, int a2)
 //----- (00000001401D2790) ----------------------------------------------------
 __int64            sub_1401D2790(int *a1, int *a2, int a3, int a4, unsigned int a5)
 {
-  int v6;
-  unsigned int v7;
-  int v8;
-  int v9;
-  int v10;
-  unsigned int v11;
+  int call_result;
+  unsigned int unused_written_slot;
+  int call_result_2;
+  int call_result_3;
+  int call_result_4;
+  unsigned int call_result_5;
 
-  v7 = 0;
+  unused_written_slot = 0;
   a1[1524] = a2[12];
   a1[1169] = a2[13];
   a1[1139] = a2[2];
@@ -5647,80 +5647,80 @@ __int64            sub_1401D2790(int *a1, int *a2, int a3, int a4, unsigned int 
   a1[1444] = a4;
   if ( !a1[1167] || a1[1170] )
   {
-    v11 = sub_1401C12F0(a1, a2);
+    call_result_5 = sub_1401C12F0(a1, a2);
     if ( a5 )
-      v11 = a5;
-    v8 = sub_1401DB3D0(a1, v11);
-    v9 = sub_1401DB660((__int64)a1, v11, a2[6]) + v8;
-    v10 = sub_1401DBB00(a1, a2[9]) + v9;
+      call_result_5 = a5;
+    call_result_2 = sub_1401DB3D0(a1, call_result_5);
+    call_result_3 = sub_1401DB660((__int64)a1, call_result_5, a2[6]) + call_result_2;
+    call_result_4 = sub_1401DBB00(a1, a2[9]) + call_result_3;
     a1[1154] = a2[8];
-    v6 = sub_1401DBFF0(a1, (__int64)a2);
+    call_result = sub_1401DBFF0(a1, (__int64)a2);
     a1[1167] = 1;
-    return (unsigned int)(v6 + v10);
+    return (unsigned int)(call_result + call_result_4);
   }
   else
   {
     if ( a1[1139] != a1[1140] && a1[1144] > 0 )
       return (unsigned int)sub_1401DB3D0(a1, a1[1144]);
-    return v7;
+    return unused_written_slot;
   }
 }
 
 //----- (00000001401D29C0) ----------------------------------------------------
 __int64            sub_1401D29C0(__int64 a1, float *a2, __int64 a3, __int64 a4)
 {
-  float v4;
-  float v5;
-  float v6;
-  float v7;
-  float v8;
-  float v9;
-  float v10;
-  __int64 v12;
+  float call_result;
+  float product_difference;
+  float unused_written_slot;
+  float square_root;
+  float pow_result;
+  float pow_result_2;
+  float square_root_2;
+  __int64 unused_local;
   int i;
-  float v14;
-  float v15;
-  float v16;
-  int v17;
-  float v18;
-  __int64 v19;
-  int v20;
-  float v21;
-  int v22;
-  signed int v23;
-  float v24;
-  float v25;
-  float v26;
-  float v27;
-  int v28;
-  float v29;
-  __int64 v30;
-  float v31;
-  float v32;
-  float v33;
-  float v34;
-  __int64 v35;
-  __m128i *v36;
-  __int64 v37;
-  float v38[28];
-  _BYTE v39[112];
-  _DWORD v40[240];
-  __int64 v41;
+  float slodword_result;
+  float weighted_sum;
+  float combined_products;
+  int integer_sum;
+  float combined_products_2;
+  __int64 integer_sum_2;
+  int loaded_word;
+  float component_sum;
+  int loaded_word_2;
+  signed int loaded_word_3;
+  float squared_value;
+  float weighted_sum_2;
+  float call_result_2;
+  float cached_call_result;
+  int loaded_word_4;
+  float combined_products_3;
+  __int64 running_total;
+  float unused_written_slot_2;
+  float squared_length;
+  float saved_pow_result;
+  float saved_pow_result_2;
+  __int64 running_total_2;
+  __m128i *destination_buffer;
+  __int64 unused_written_slot_3;
+  float float_buffer[28];
+  _BYTE scratch_buffer[112];
+  _DWORD callee_output_word[240];
+  __int64 unused_local_2;
 
-  v19 = a1 + 7192;
-  v30 = a4 - 4LL * *(int *)(a1 + 4600);
-  v15 = (float)*(int *)(a1 + 4732) * 0.0078125;
+  integer_sum_2 = a1 + 7192;
+  running_total = a4 - 4LL * *(int *)(a1 + 4600);
+  weighted_sum = (float)*(int *)(a1 + 4732) * 0.0078125;
   a2[174] = (float)(0.5 * (float)(*(_DWORD *)(a1 + 4716) + *(_DWORD *)(a1 + 4712))) * 0.000030517578;
-  a2[175] = sub_1401D11A0(0.25 * (float)(v15 - 20.0));
+  a2[175] = sub_1401D11A0(0.25 * (float)(weighted_sum - 20.0));
   if ( !*(_DWORD *)(a1 + 4676) )
   {
-    v14 = 1.0 - (float)((float)*(int *)(a1 + 4532) * 0.00390625);
-    v15 = v15 - (float)((float)((float)((float)(2.0 * a2[175]) * (float)((float)(0.5 * a2[174]) + 0.5)) * v14) * v14);
+    slodword_result = 1.0 - (float)((float)*(int *)(a1 + 4532) * 0.00390625);
+    weighted_sum = weighted_sum - (float)((float)((float)((float)(2.0 * a2[175]) * (float)((float)(0.5 * a2[174]) + 0.5)) * slodword_result) * slodword_result);
   }
   if ( *(_BYTE *)(a1 + 4781) == 2 )
-    v15 = v15 + (float)(2.0 * *(float *)(a1 + 10084));
+    weighted_sum = weighted_sum + (float)(2.0 * *(float *)(a1 + 10084));
   else
-    v15 = v15
+    weighted_sum = weighted_sum
         + (float)((float)((float)((float)(-0.40000001 * (float)*(int *)(a1 + 4732)) * 0.0078125) + 6.0)
                 * (float)(1.0 - a2[174]));
   if ( *(_BYTE *)(a1 + 4781) == 2 )
@@ -5729,111 +5729,111 @@ __int64            sub_1401D29C0(__int64 a1, float *a2, __int64 a3, __int64 a4)
   }
   else
   {
-    v20 = 2 * *(_DWORD *)(a1 + 4576);
-    v21 = 0.0;
-    v27 = 0.0;
-    v35 = a3;
-    v28 = 5 * *(__int16 *)(a1 + 4580) / 2;
-    for ( i = 0; i < v28; ++i )
+    loaded_word = 2 * *(_DWORD *)(a1 + 4576);
+    component_sum = 0.0;
+    cached_call_result = 0.0;
+    running_total_2 = a3;
+    loaded_word_4 = 5 * *(__int16 *)(a1 + 4580) / 2;
+    for ( i = 0; i < loaded_word_4; ++i )
     {
-      v31 = (float)v20;
-      v4 = sub_1401D1050(v35, v20);
-      v24 = (float)v20 + v4;
-      v26 = sub_1401D1340(v24);
+      unused_written_slot_2 = (float)loaded_word;
+      call_result = sub_1401D1050(running_total_2, loaded_word);
+      squared_value = (float)loaded_word + call_result;
+      call_result_2 = sub_1401D1340(squared_value);
       if ( i > 0 )
       {
-        v5 = *(double *)SR_VEC_READ_LANES(128, sub_140244390((float)(v26 - v27)), u64);
-        v21 = v21 + v5;
+        product_difference = *(double *)SR_VEC_READ_LANES(128, sub_140244390((float)(call_result_2 - cached_call_result)), u64);
+        component_sum = component_sum + product_difference;
       }
-      v27 = v26;
-      v35 += 4LL * v20;
+      cached_call_result = call_result_2;
+      running_total_2 += 4LL * loaded_word;
     }
-    *(_BYTE *)(a1 + 4782) = v21 <= (float)(0.60000002 * (float)(v28 - 1));
+    *(_BYTE *)(a1 + 4782) = component_sum <= (float)(0.60000002 * (float)(loaded_word_4 - 1));
   }
-  v16 = 0.001 * a2[176];
-  v32 = 0.94 / (float)((float)(v16 * v16) + 1.0);
-  v25 = (float)((float)*(int *)(a1 + 4672) / 65536.0) + (float)(0.0099999998 * a2[175]);
+  combined_products = 0.001 * a2[176];
+  squared_length = 0.94 / (float)((float)(combined_products * combined_products) + 1.0);
+  weighted_sum_2 = (float)((float)*(int *)(a1 + 4672) / 65536.0) + (float)(0.0099999998 * a2[175]);
   for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
   {
-    v22 = 3 * *(_DWORD *)(a1 + 4576);
-    v23 = (*(_DWORD *)(a1 + 4604) - v22) / 2;
-    sub_1401D5E90((__int64)v40, v30, 1, v23);
-    v36 = (__m128i *)&v40[v23];
-    crt_memcpy(v36, (     __m128i *)(v30 + 4LL * v23), 4LL * v22);
-    v17 = v22 + v23;
-    sub_1401D5E90((__int64)&v40[v17], v30 + 4LL * v17, 2, v23);
-    v30 += 4LL * *(int *)(a1 + 4588);
+    loaded_word_2 = 3 * *(_DWORD *)(a1 + 4576);
+    loaded_word_3 = (*(_DWORD *)(a1 + 4604) - loaded_word_2) / 2;
+    sub_1401D5E90((__int64)callee_output_word, running_total, 1, loaded_word_3);
+    destination_buffer = (__m128i *)&callee_output_word[loaded_word_3];
+    crt_memcpy(destination_buffer, (     __m128i *)(running_total + 4LL * loaded_word_3), 4LL * loaded_word_2);
+    integer_sum = loaded_word_2 + loaded_word_3;
+    sub_1401D5E90((__int64)&callee_output_word[integer_sum], running_total + 4LL * integer_sum, 2, loaded_word_3);
+    running_total += 4LL * *(int *)(a1 + 4588);
     if ( *(int *)(a1 + 4672) <= 0 )
-      sub_1401CE540((__int64)v38, (__int64)v40, *(_DWORD *)(a1 + 4604), *(_DWORD *)(a1 + 4636) + 1);
+      sub_1401CE540((__int64)float_buffer, (__int64)callee_output_word, *(_DWORD *)(a1 + 4604), *(_DWORD *)(a1 + 4636) + 1);
     else
-      sub_1401D3760((__int64)v38, (__int64)v40, v25, *(_DWORD *)(a1 + 4604), *(_DWORD *)(a1 + 4636));
-    v38[0] = v38[0] + (float)((float)(v38[0] * 0.000029999999) + 1.0);
-    v6 = v38[0];
-    v24 = sub_1401CE180((__int64)v39, (__int64)v38, *(_DWORD *)(a1 + 4636)); /* 0x1401D303B: movss dword ptr [rsp + 0x60], xmm0 */
-    sub_1401CE410((__int64)&a2[24 * i + 61], (__int64)v39, *(_DWORD *)(a1 + 4636));
-    v7 = sqrt(v24); /* 0x1401D3077: cvtss2sd xmm0, dword ptr [rsp + 0x60] */
-    a2[i] = v7;
+      sub_1401D3760((__int64)float_buffer, (__int64)callee_output_word, weighted_sum_2, *(_DWORD *)(a1 + 4604), *(_DWORD *)(a1 + 4636));
+    float_buffer[0] = float_buffer[0] + (float)((float)(float_buffer[0] * 0.000029999999) + 1.0);
+    unused_written_slot = float_buffer[0];
+    squared_value = sub_1401CE180((__int64)scratch_buffer, (__int64)float_buffer, *(_DWORD *)(a1 + 4636)); /* 0x1401D303B: movss dword ptr [rsp + 0x60], xmm0 */
+    sub_1401CE410((__int64)&a2[24 * i + 61], (__int64)scratch_buffer, *(_DWORD *)(a1 + 4636));
+    square_root = sqrt(squared_value); /* 0x1401D3077: cvtss2sd xmm0, dword ptr [rsp + 0x60] */
+    a2[i] = square_root;
     if ( *(int *)(a1 + 4672) > 0 )
     {
-      v37 = i;
-      a2[i] = a2[i] * SR_VEC_READ_LANES(128, sub_1401DF980((__int64)&a2[24 * i + 61], v25, *(_DWORD *)(a1 + 4636)), f32)[0];
+      unused_written_slot_3 = i;
+      a2[i] = a2[i] * SR_VEC_READ_LANES(128, sub_1401DF980((__int64)&a2[24 * i + 61], weighted_sum_2, *(_DWORD *)(a1 + 4636)), f32)[0];
     }
-    sub_1401CDE70((__int64)&a2[24 * i + 61], *(_DWORD *)(a1 + 4636), v32);
+    sub_1401CDE70((__int64)&a2[24 * i + 61], *(_DWORD *)(a1 + 4636), squared_length);
     if ( *(int *)(a1 + 4672) <= 0 )
       sub_1401DFE10((__int64)&a2[24 * i + 61], 3.9990001, *(_DWORD *)(a1 + 4636));
     else
-      sub_1401DFA30(&a2[24 * i + 61], v25, 3.9990001, *(_DWORD *)(a1 + 4636));
+      sub_1401DFA30(&a2[24 * i + 61], weighted_sum_2, 3.9990001, *(_DWORD *)(a1 + 4636));
   }
-  v8 = pow(2.0, (float)(-0.16 * v15));
-  v33 = v8;
-  v9 = pow(2.0, 0.3199999928474426);
-  v34 = v9;
+  pow_result = pow(2.0, (float)(-0.16 * weighted_sum));
+  saved_pow_result = pow_result;
+  pow_result_2 = pow(2.0, 0.3199999928474426);
+  saved_pow_result_2 = pow_result_2;
   for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
   {
-    a2[i] = a2[i] * v33;
-    a2[i] = a2[i] + v34;
+    a2[i] = a2[i] * saved_pow_result;
+    a2[i] = a2[i] + saved_pow_result_2;
   }
-  v16 = (float)(4.0 * (float)((float)(0.5 * (float)((float)((float)*(int *)(a1 + 4712) * 0.000030517578) - 1.0)) + 1.0))
+  combined_products = (float)(4.0 * (float)((float)(0.5 * (float)((float)((float)*(int *)(a1 + 4712) * 0.000030517578) - 1.0)) + 1.0))
       * (float)((float)*(int *)(a1 + 4532) * 0.00390625);
   if ( *(_BYTE *)(a1 + 4781) == 2 )
   {
     for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
     {
-      v14 = (float)(0.2 / (float)*(int *)(a1 + 4576)) + (float)(3.0 / (float)SLODWORD(a2[i + 57]));
-      a2[i + 157] = v14 + -1.0;
-      a2[i + 161] = (float)(1.0 - v14) - (float)(v14 * v16);
+      slodword_result = (float)(0.2 / (float)*(int *)(a1 + 4576)) + (float)(3.0 / (float)SLODWORD(a2[i + 57]));
+      a2[i + 157] = slodword_result + -1.0;
+      a2[i + 161] = (float)(1.0 - slodword_result) - (float)(slodword_result * combined_products);
     }
-    v29 = -0.25 - (float)((float)(0.26249999 * (float)*(int *)(a1 + 4532)) * 0.00390625);
+    combined_products_3 = -0.25 - (float)((float)(0.26249999 * (float)*(int *)(a1 + 4532)) * 0.00390625);
   }
   else
   {
-    v14 = 1.3 / (float)*(int *)(a1 + 4576);
-    a2[157] = v14 + -1.0;
-    a2[161] = (float)(1.0 - v14) - (float)((float)(v14 * v16) * 0.60000002);
+    slodword_result = 1.3 / (float)*(int *)(a1 + 4576);
+    a2[157] = slodword_result + -1.0;
+    a2[161] = (float)(1.0 - slodword_result) - (float)((float)(slodword_result * combined_products) * 0.60000002);
     for ( i = 1; i < *(_DWORD *)(a1 + 4580); ++i )
     {
       a2[i + 157] = a2[157];
       a2[i + 161] = a2[161];
     }
-    v29 = -0.25;
+    combined_products_3 = -0.25;
   }
   if ( *(_BYTE *)(a1 + 4781) == 2 )
   {
-    v18 = 0.30000001;
-    v18 = (float)(0.2 * (float)(1.0 - (float)((float)(1.0 - a2[175]) * a2[174]))) + 0.30000001;
-    v10 = sqrt(*(float *)(a1 + 10084));
-    v18 = v18 * v10;
+    combined_products_2 = 0.30000001;
+    combined_products_2 = (float)(0.2 * (float)(1.0 - (float)((float)(1.0 - a2[175]) * a2[174]))) + 0.30000001;
+    square_root_2 = sqrt(*(float *)(a1 + 10084));
+    combined_products_2 = combined_products_2 * square_root_2;
   }
   else
   {
-    v18 = 0.0;
+    combined_products_2 = 0.0;
   }
   for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
   {
-    *(float *)(v19 + 4) = *(float *)(v19 + 4) + (float)(0.40000001 * (float)(v18 - *(float *)(v19 + 4)));
-    a2[i + 169] = *(float *)(v19 + 4);
-    *(float *)(v19 + 8) = *(float *)(v19 + 8) + (float)(0.40000001 * (float)(v29 - *(float *)(v19 + 8)));
-    a2[i + 165] = *(float *)(v19 + 8);
+    *(float *)(integer_sum_2 + 4) = *(float *)(integer_sum_2 + 4) + (float)(0.40000001 * (float)(combined_products_2 - *(float *)(integer_sum_2 + 4)));
+    a2[i + 169] = *(float *)(integer_sum_2 + 4);
+    *(float *)(integer_sum_2 + 8) = *(float *)(integer_sum_2 + 8) + (float)(0.40000001 * (float)(combined_products_3 - *(float *)(integer_sum_2 + 8)));
+    a2[i + 165] = *(float *)(integer_sum_2 + 8);
   }
   return 0; /* no caller reads the result */
 }
@@ -5841,35 +5841,35 @@ __int64            sub_1401D29C0(__int64 a1, float *a2, __int64 a3, __int64 a4)
 //----- (00000001401D3760) ----------------------------------------------------
 __int64            sub_1401D3760(__int64 a1, __int64 a2, float a3, int a4, int a5)
 {
-  float v5;
+  float scaled_value;
   int j;
   int i;
-  double v9;
-  double v10;
-  double v11[26];
-  _QWORD v12[29];
+  double weighted_sum;
+  double combined_products;
+  double destination_buffer[26];
+  _QWORD destination_buffer_2[29];
 
-  memset(v11, 0, 0xC8u);
-  memset(v12, 0, 0xC8u);
+  memset(destination_buffer, 0, 0xC8u);
+  memset(destination_buffer_2, 0, 0xC8u);
   for ( i = 0; i < a4; ++i )
   {
-    v9 = *(float *)(a2 + 4LL * i);
+    weighted_sum = *(float *)(a2 + 4LL * i);
     for ( j = 0; j < a5; j += 2 )
     {
-      v10 = v11[j] + a3 * (v11[j + 1] - v9);
-      v11[j] = v9;
-      *(double *)&v12[j] = *(double *)&v12[j] + v11[0] * v9;
-      v9 = v11[j + 1] + a3 * (v11[j + 2] - v10);
-      v11[j + 1] = v10;
-      *(double *)&v12[j + 1] = *(double *)&v12[j + 1] + v11[0] * v10;
+      combined_products = destination_buffer[j] + a3 * (destination_buffer[j + 1] - weighted_sum);
+      destination_buffer[j] = weighted_sum;
+      *(double *)&destination_buffer_2[j] = *(double *)&destination_buffer_2[j] + destination_buffer[0] * weighted_sum;
+      weighted_sum = destination_buffer[j + 1] + a3 * (destination_buffer[j + 2] - combined_products);
+      destination_buffer[j + 1] = combined_products;
+      *(double *)&destination_buffer_2[j + 1] = *(double *)&destination_buffer_2[j + 1] + destination_buffer[0] * combined_products;
     }
-    v11[a5] = v9;
-    *(double *)&v12[a5] = *(double *)&v12[a5] + v11[0] * v9;
+    destination_buffer[a5] = weighted_sum;
+    *(double *)&destination_buffer_2[a5] = *(double *)&destination_buffer_2[a5] + destination_buffer[0] * weighted_sum;
   }
   for ( j = 0; j < a5 + 1; ++j )
   {
-    v5 = *(double *)&v12[j];
-    *(float *)(a1 + 4LL * j) = v5;
+    scaled_value = *(double *)&destination_buffer_2[j];
+    *(float *)(a1 + 4LL * j) = scaled_value;
   }
   return 0; /* no caller reads the result */
 }
@@ -5877,9 +5877,9 @@ __int64            sub_1401D3760(__int64 a1, __int64 a2, float a3, int a4, int a
 //----- (00000001401D39E0) ----------------------------------------------------
 __int64            sub_1401D39E0(__int64 a1, __int64 a2, int a3)
 {
-  int v4;
-  float v5;
-  float v6;
+  int loaded_word;
+  float weighted_sum;
+  float saved_weighted_sum;
 
   if ( a3 )
   {
@@ -5887,20 +5887,20 @@ __int64            sub_1401D39E0(__int64 a1, __int64 a2, int a3)
   }
   else
   {
-    v4 = *(_DWORD *)(a1 + 5760) + *(_DWORD *)(a1 + 4616);
-    if ( (float)((float)((float)v4 * *(float *)(a2 + 708)) * 0.1) <= 2.0 )
+    loaded_word = *(_DWORD *)(a1 + 5760) + *(_DWORD *)(a1 + 4616);
+    if ( (float)((float)((float)loaded_word * *(float *)(a2 + 708)) * 0.1) <= 2.0 )
     {
-      if ( (float)((float)((float)v4 * *(float *)(a2 + 708)) * 0.1) >= 0.0 )
-        v5 = (float)((float)v4 * *(float *)(a2 + 708)) * 0.1;
+      if ( (float)((float)((float)loaded_word * *(float *)(a2 + 708)) * 0.1) >= 0.0 )
+        weighted_sum = (float)((float)loaded_word * *(float *)(a2 + 708)) * 0.1;
       else
-        v5 = 0.0;
-      v6 = v5;
+        weighted_sum = 0.0;
+      saved_weighted_sum = weighted_sum;
     }
     else
     {
-      v6 = 2.0;
+      saved_weighted_sum = 2.0;
     }
-    *(_BYTE *)(a1 + 4785) = (int)v6;
+    *(_BYTE *)(a1 + 4785) = (int)saved_weighted_sum;
   }
   *(float *)(a2 + 224) = (float)word_140282798[*(char *)(a1 + 4785)] / 16384.0;
   return a2;
@@ -5909,53 +5909,53 @@ __int64            sub_1401D39E0(__int64 a1, __int64 a2, int a3)
 //----- (00000001401D3B00) ----------------------------------------------------
 __int64            sub_1401D3B00(__int64 a1, __int64 a2, _WORD *a3, __int64 a4, int a5)
 {
-  float v5;
-  float v6;
-  _QWORD v8[5];
-  int v9;
-  float v10;
-  float v11;
-  int v12;
-  int v13;
-  int v14;
-  int v15;
-  float v16;
-       __m128i *v17;
-  __m128i *v18;
-  float v19;
-  float v20;
-  int v21;
-  __int64 v22;
-  __int64 v23;
-  float v24[20];
-  float v25[16];
-  _BYTE v26[64];
-  _DWORD v27[384];
-  __int64 v28;
+  float unused_written_slot;
+  float weighted_sum;
+  _QWORD scratch_buffer[5];
+  int unused_written_slot_2;
+  float unused_written_slot_3;
+  float unused_written_slot_4;
+  int unused_written_slot_5;
+  int unused_written_slot_6;
+  int unused_written_slot_7;
+  int unused_written_slot_8;
+  float shifted_bits;
+       __m128i *source_buffer;
+  __m128i *destination_buffer;
+  float weighted_sum_2;
+  float saved_weighted_sum;
+  int loaded_word;
+  __int64 loaded_word_2;
+  __int64 unused_written_slot_9;
+  float float_buffer[20];
+  float float_buffer_2[16];
+  _BYTE scratch_buffer_2[64];
+  _DWORD callee_output_word[384];
+  __int64 unused_local;
 
-  v21 = *(_DWORD *)(a1 + 4592) + *(_DWORD *)(a1 + 4584) + *(_DWORD *)(a1 + 4596);
-  v22 = a4 - 4LL * *(int *)(a1 + 4592);
-  v17 = (     __m128i *)(v22 + 4LL * v21 - 4LL * *(int *)(a1 + 4548));
-  v18 = (__m128i *)v27;
-  sub_1401D5E90((__int64)v27, (__int64)v17, 1, *(_DWORD *)(a1 + 4596));
-  v18 = (__m128i *)&v27[*(int *)(a1 + 4596)];
-  v17 = (     __m128i *)((char *)v17 + 4 * *(int *)(a1 + 4596));
-  crt_memcpy(v18, v17, 4LL * (*(_DWORD *)(a1 + 4548) - 2 * *(_DWORD *)(a1 + 4596)));
-  v18 = (__m128i *)((char *)v18 + 4 * (*(_DWORD *)(a1 + 4548) - 2 * *(_DWORD *)(a1 + 4596)));
-  v17 = (     __m128i *)((char *)v17 + 4 * (*(_DWORD *)(a1 + 4548) - 2 * *(_DWORD *)(a1 + 4596)));
-  sub_1401D5E90((__int64)v18, (__int64)v17, 2, *(_DWORD *)(a1 + 4596));
-  sub_1401CE540((__int64)v24, (__int64)v27, *(_DWORD *)(a1 + 4548), *(_DWORD *)(a1 + 4648) + 1);
-  v24[0] = v24[0] + (float)((float)(v24[0] * 0.001) + 1.0);
-  v5 = v24[0];
-  v19 = sub_1401CE180((__int64)v26, (__int64)v24, *(_DWORD *)(a1 + 4648)); /* 0x1401D3D8B: movss dword ptr [rsp + 0x78], xmm0 */
-  if ( v19 <= 1.0 )
-    v20 = 1.0;
+  loaded_word = *(_DWORD *)(a1 + 4592) + *(_DWORD *)(a1 + 4584) + *(_DWORD *)(a1 + 4596);
+  loaded_word_2 = a4 - 4LL * *(int *)(a1 + 4592);
+  source_buffer = (     __m128i *)(loaded_word_2 + 4LL * loaded_word - 4LL * *(int *)(a1 + 4548));
+  destination_buffer = (__m128i *)callee_output_word;
+  sub_1401D5E90((__int64)callee_output_word, (__int64)source_buffer, 1, *(_DWORD *)(a1 + 4596));
+  destination_buffer = (__m128i *)&callee_output_word[*(int *)(a1 + 4596)];
+  source_buffer = (     __m128i *)((char *)source_buffer + 4 * *(int *)(a1 + 4596));
+  crt_memcpy(destination_buffer, source_buffer, 4LL * (*(_DWORD *)(a1 + 4548) - 2 * *(_DWORD *)(a1 + 4596)));
+  destination_buffer = (__m128i *)((char *)destination_buffer + 4 * (*(_DWORD *)(a1 + 4548) - 2 * *(_DWORD *)(a1 + 4596)));
+  source_buffer = (     __m128i *)((char *)source_buffer + 4 * (*(_DWORD *)(a1 + 4548) - 2 * *(_DWORD *)(a1 + 4596)));
+  sub_1401D5E90((__int64)destination_buffer, (__int64)source_buffer, 2, *(_DWORD *)(a1 + 4596));
+  sub_1401CE540((__int64)float_buffer, (__int64)callee_output_word, *(_DWORD *)(a1 + 4548), *(_DWORD *)(a1 + 4648) + 1);
+  float_buffer[0] = float_buffer[0] + (float)((float)(float_buffer[0] * 0.001) + 1.0);
+  unused_written_slot = float_buffer[0];
+  weighted_sum_2 = sub_1401CE180((__int64)scratch_buffer_2, (__int64)float_buffer, *(_DWORD *)(a1 + 4648)); /* 0x1401D3D8B: movss dword ptr [rsp + 0x78], xmm0 */
+  if ( weighted_sum_2 <= 1.0 )
+    saved_weighted_sum = 1.0;
   else
-    v20 = v19;
-  *(float *)(a2 + 704) = v24[0] / v20;
-  sub_1401CE410((__int64)v25, (__int64)v26, *(_DWORD *)(a1 + 4648));
-  sub_1401CDE70((__int64)v25, *(_DWORD *)(a1 + 4648), 0.99000001);
-  sub_1401D5120(a3, v25, v22, v21, *(_DWORD *)(a1 + 4648));
+    saved_weighted_sum = weighted_sum_2;
+  *(float *)(a2 + 704) = float_buffer[0] / saved_weighted_sum;
+  sub_1401CE410((__int64)float_buffer_2, (__int64)scratch_buffer_2, *(_DWORD *)(a1 + 4648));
+  sub_1401CDE70((__int64)float_buffer_2, *(_DWORD *)(a1 + 4648), 0.99000001);
+  sub_1401D5120(a3, float_buffer_2, loaded_word_2, loaded_word, *(_DWORD *)(a1 + 4648));
   if ( !*(_BYTE *)(a1 + 4781) || *(_DWORD *)(a1 + 4664) )
   {
     crt_memset((void *)(uintptr_t)((_WORD *)(a2 + 228)), 0, 0x10u);
@@ -5965,21 +5965,21 @@ __int64            sub_1401D3B00(__int64 a1, __int64 a2, _WORD *a3, __int64 a4, 
   }
   else
   {
-    v16 = 0.60000002;
-    v16 = (float)((float)((float)(0.60000002 - (float)(0.0040000002 * (float)*(int *)(a1 + 4648)))
+    shifted_bits = 0.60000002;
+    shifted_bits = (float)((float)((float)(0.60000002 - (float)(0.0040000002 * (float)*(int *)(a1 + 4648)))
                         - (float)((float)(0.1 * (float)*(int *)(a1 + 4532)) * 0.00390625))
                 - (float)(0.15000001 * (float)(*(char *)(a1 + 4541) >> 1)))
         - (float)((float)(0.1 * (float)*(int *)(a1 + 4728)) * 0.000030517578);
-    v6 = (float)*(int *)(a1 + 4652) / 65536.0;
-    v23 = a2 + 228;
-    v15 = a5;
-    v14 = *(_DWORD *)(a1 + 4580);
-    v13 = *(_DWORD *)(a1 + 4644);
-    v12 = *(_DWORD *)(a1 + 4576);
-    v11 = v16;
-    v10 = v6;
-    v9 = *(_DWORD *)(a1 + 4544);
-    v8[4] = a1 + 10084;
+    weighted_sum = (float)*(int *)(a1 + 4652) / 65536.0;
+    unused_written_slot_9 = a2 + 228;
+    unused_written_slot_8 = a5;
+    unused_written_slot_7 = *(_DWORD *)(a1 + 4580);
+    unused_written_slot_6 = *(_DWORD *)(a1 + 4644);
+    unused_written_slot_5 = *(_DWORD *)(a1 + 4576);
+    unused_written_slot_4 = shifted_bits;
+    unused_written_slot_3 = weighted_sum;
+    unused_written_slot_2 = *(_DWORD *)(a1 + 4544);
+    scratch_buffer[4] = a1 + 10084;
     if ( (unsigned int)sub_1401CE5E0() )
       *(_BYTE *)(a1 + 4781) = 1;
     else
@@ -5991,61 +5991,61 @@ __int64            sub_1401D3B00(__int64 a1, __int64 a2, _WORD *a3, __int64 a4, 
 //----- (00000001401D4100) ----------------------------------------------------
 __int64            sub_1401D4100(__int64 a1, __int64 a2, __int64 a3, __int64 a4, int a5)
 {
-  float v5;
-  __int64 v7;
+  float pow_result;
+  __int64 unused_local;
   int i;
-  float v9;
-  _BYTE *v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  float v16[6];
-  _BYTE v17[80];
-  float v18[100];
-  _BYTE v19[1536];
-  __m128i v20[2];
-  __int64 v21;
+  float scaled_ratio;
+  _BYTE *record_byte_offset;
+  __int64 running_total;
+  __int64 unused_written_slot;
+  __int64 unused_written_slot_2;
+  __int64 unused_written_slot_3;
+  __int64 unused_written_slot_4;
+  float float_buffer[6];
+  _BYTE scratch_buffer[80];
+  float float_buffer_2[100];
+  _BYTE scratch_buffer_2[1536];
+  __m128i source_buffer[2];
+  __int64 unused_local_2;
 
   for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
-    v16[i] = 1.0 / *(float *)(a2 + 4LL * i);
+    float_buffer[i] = 1.0 / *(float *)(a2 + 4LL * i);
   if ( *(_BYTE *)(a1 + 4781) == 2 )
   {
-    sub_1401D49F0(v18, (__int64)v17, a3, a2 + 228, *(_DWORD *)(a1 + 4588), *(_DWORD *)(a1 + 4580));
-    v12 = a1 + 4756;
-    v13 = a2 + 144;
+    sub_1401D49F0(float_buffer_2, (__int64)scratch_buffer, a3, a2 + 228, *(_DWORD *)(a1 + 4588), *(_DWORD *)(a1 + 4580));
+    unused_written_slot = a1 + 4756;
+    unused_written_slot_2 = a2 + 144;
     sub_1401D5210(
       a2 + 144,
       (__m128i *)(a1 + 4756),
       (_BYTE *)(a1 + 4784),
       (int *)(a1 + 4656),
       (float *)(a2 + 708),
-      (__int64)v18,
-      (__int64)v17,
+      (__int64)float_buffer_2,
+      (__int64)scratch_buffer,
       *(_DWORD *)(a1 + 4588),
       *(_DWORD *)(a1 + 4580),
       *(_DWORD *)(a1 + 5108));
     sub_1401D39E0(a1, a2, a5);
     sub_1401D4C00(
-      (__int64)v19,
+      (__int64)scratch_buffer_2,
       a4 - 4LL * *(int *)(a1 + 4640),
       a2 + 144,
       a2 + 228,
-      (__int64)v16,
+      (__int64)float_buffer,
       *(_DWORD *)(a1 + 4588),
       *(_DWORD *)(a1 + 4580),
       *(_DWORD *)(a1 + 4640));
   }
   else
   {
-    v11 = a4 - 4LL * *(int *)(a1 + 4640);
-    v10 = v19;
+    running_total = a4 - 4LL * *(int *)(a1 + 4640);
+    record_byte_offset = scratch_buffer_2;
     for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
     {
-      sub_1401D0DC0((__int64)v10, v11, v16[i], *(_DWORD *)(a1 + 4640) + *(_DWORD *)(a1 + 4588));
-      v10 += 4 * *(_DWORD *)(a1 + 4640) + 4 * *(_DWORD *)(a1 + 4588);
-      v11 += 4LL * *(int *)(a1 + 4588);
+      sub_1401D0DC0((__int64)record_byte_offset, running_total, float_buffer[i], *(_DWORD *)(a1 + 4640) + *(_DWORD *)(a1 + 4588));
+      record_byte_offset += 4 * *(_DWORD *)(a1 + 4640) + 4 * *(_DWORD *)(a1 + 4588);
+      running_total += 4LL * *(int *)(a1 + 4588);
     }
     crt_memset((void *)(uintptr_t)((_WORD *)(a2 + 144)), 0, 20LL * *(_DWORD *)(a1 + 4580));
     *(_DWORD *)(a2 + 708) = 0;
@@ -6053,78 +6053,78 @@ __int64            sub_1401D4100(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   }
   if ( *(_DWORD *)(a1 + 4664) )
   {
-    v9 = 0.0099999998;
+    scaled_ratio = 0.0099999998;
   }
   else
   {
-    v5 = pow(2.0, (float)(*(float *)(a2 + 708) / 3.0));
-    v9 = v5 / 10000.0;
-    v9 = (float)(v5 / 10000.0) / (float)((float)(0.75 * *(float *)(a2 + 700)) + 0.25);
+    pow_result = pow(2.0, (float)(*(float *)(a2 + 708) / 3.0));
+    scaled_ratio = pow_result / 10000.0;
+    scaled_ratio = (float)(pow_result / 10000.0) / (float)((float)(0.75 * *(float *)(a2 + 700)) + 0.25);
   }
-  sub_1401D4680(a1, v20, (__int64)v19, v9);
-  v14 = a1;
-  sub_1401D61A0(a1, a2 + 16, SR_VEC_LANES(128, v20[0], i16), a1 + 4500);
-  v15 = a2 + 712;
+  sub_1401D4680(a1, source_buffer, (__int64)scratch_buffer_2, scaled_ratio);
+  unused_written_slot_3 = a1;
+  sub_1401D61A0(a1, a2 + 16, SR_VEC_LANES(128, source_buffer[0], i16), a1 + 4500);
+  unused_written_slot_4 = a2 + 712;
   sub_1401D4E10(
     (float *)(a2 + 712),
-    (__int64)v19,
+    (__int64)scratch_buffer_2,
     (float *)(a2 + 16),
     (float *)a2,
     *(_DWORD *)(a1 + 4588),
     *(_DWORD *)(a1 + 4580),
     *(_DWORD *)(a1 + 4640));
-  return crt_memcpy((__m128i *)(a1 + 4500), v20, 0x20u); /* 0x1401D4650: the result of this call is still in rax at the exit */
+  return crt_memcpy((__m128i *)(a1 + 4500), source_buffer, 0x20u); /* 0x1401D4650: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401D4680) ----------------------------------------------------
 __int64            sub_1401D4680(__int64 a1, _WORD *a2, __int64 a3, float a4)
 {
-  float v4;
-  float v5;
-  __int64 v7;
-  int v8;
+  float unused_local;
+  float combined_products;
+  __int64 unused_local_2;
+  int loaded_word;
   int i;
-  float v10;
-  float v11;
-  float v12;
-  double v13;
-  float v14[16];
-  _BYTE v15[64];
-  _DWORD v16[384];
-  char v17[32];
-  __int64 v18;
+  float weighted_sum;
+  float saved_combined_products;
+  float cached_combined_products;
+  double combined_products_2;
+  float float_buffer[16];
+  _BYTE scratch_buffer[64];
+  _DWORD callee_output_word[384];
+  char scratch_buffer_2[32];
+  __int64 unused_local_3;
 
-  v8 = *(_DWORD *)(a1 + 4640) + *(_DWORD *)(a1 + 4588);
+  loaded_word = *(_DWORD *)(a1 + 4640) + *(_DWORD *)(a1 + 4588);
   *(_BYTE *)(a1 + 4783) = 4;
-  v10 = sub_1401D0150((__int64)v15, a3, a4, v8, *(_DWORD *)(a1 + 4580), *(_DWORD *)(a1 + 4640)); /* 0x1401D4724: movss dword ptr [rsp + 0x38], xmm0 */
+  weighted_sum = sub_1401D0150((__int64)scratch_buffer, a3, a4, loaded_word, *(_DWORD *)(a1 + 4580), *(_DWORD *)(a1 + 4640)); /* 0x1401D4724: movss dword ptr [rsp + 0x38], xmm0 */
   if ( *(_DWORD *)(a1 + 4632) && !*(_DWORD *)(a1 + 4664) && *(_DWORD *)(a1 + 4580) == 4 )
   {
-    v10 = v10 - sub_1401D0150((__int64)v14, a3 + 8LL * v8, a4, v8, 2, *(_DWORD *)(a1 + 4640)); /* 0x1401D47B8: subss xmm1, xmm0 */
-    sub_1401D6050(a2, (__int64)v14, *(_DWORD *)(a1 + 4640));
-    v12 = 3.4028235e38;
+    weighted_sum = weighted_sum - sub_1401D0150((__int64)float_buffer, a3 + 8LL * loaded_word, a4, loaded_word, 2, *(_DWORD *)(a1 + 4640)); /* 0x1401D47B8: subss xmm1, xmm0 */
+    sub_1401D6050(a2, (__int64)float_buffer, *(_DWORD *)(a1 + 4640));
+    cached_combined_products = 3.4028235e38;
     for ( i = 3; i >= 0; --i )
     {
-      sub_1401C2F40((__int64)v17, a1 + 4500, (__int64)a2, i, *(_DWORD *)(a1 + 4640));
-      sub_1401D6100((__int64)v14, v17, *(_DWORD *)(a1 + 4640));
-      sub_1401D5120(v16, v14, a3, 2 * v8, *(_DWORD *)(a1 + 4640));
-      v13 = sub_1401D1050((__int64)&v16[*(int *)(a1 + 4640)], v8 - *(_DWORD *)(a1 + 4640));
-      v5 = v13 + sub_1401D1050((__int64)&v16[*(int *)(a1 + 4640) + v8], v8 - *(_DWORD *)(a1 + 4640));
-      v11 = v5;
-      if ( v10 <= v5 )
+      sub_1401C2F40((__int64)scratch_buffer_2, a1 + 4500, (__int64)a2, i, *(_DWORD *)(a1 + 4640));
+      sub_1401D6100((__int64)float_buffer, scratch_buffer_2, *(_DWORD *)(a1 + 4640));
+      sub_1401D5120(callee_output_word, float_buffer, a3, 2 * loaded_word, *(_DWORD *)(a1 + 4640));
+      combined_products_2 = sub_1401D1050((__int64)&callee_output_word[*(int *)(a1 + 4640)], loaded_word - *(_DWORD *)(a1 + 4640));
+      combined_products = combined_products_2 + sub_1401D1050((__int64)&callee_output_word[*(int *)(a1 + 4640) + loaded_word], loaded_word - *(_DWORD *)(a1 + 4640));
+      saved_combined_products = combined_products;
+      if ( weighted_sum <= combined_products )
       {
-        if ( v11 > v12 )
+        if ( saved_combined_products > cached_combined_products )
           break;
       }
       else
       {
-        v10 = v11;
+        weighted_sum = saved_combined_products;
         *(_BYTE *)(a1 + 4783) = i;
       }
-      v12 = v11;
+      cached_combined_products = saved_combined_products;
     }
   }
   if ( *(_BYTE *)(a1 + 4783) == 4 )
-    sub_1401D6050(a2, (__int64)v15, *(_DWORD *)(a1 + 4640));
+    sub_1401D6050(a2, (__int64)scratch_buffer, *(_DWORD *)(a1 + 4640));
   return 0; /* no caller reads the result */
 }
 
@@ -6132,26 +6132,26 @@ __int64            sub_1401D4680(__int64 a1, _WORD *a2, __int64 a3, float a4)
 __int64            sub_1401D49F0(float *a1, __int64 a2, __int64 a3, __int64 a4, int a5, unsigned int a6)
 {
   __int64 result;
-  float v7;
+  float component_sum;
   signed int i;
-  float v9;
-  __int64 v12;
+  float weighted_sum;
+  __int64 loaded_word;
 
   for ( i = 0; ; ++i )
   {
     result = a6;
     if ( i >= (int)a6 )
       break;
-    v12 = a3 - 4LL * (*(_DWORD *)(a4 + 4LL * i) + 2);
-    sub_1401D5B50(v12, a5, 5, a1);
-    sub_1401D5E00(v12, a3, a5, 5u, a2);
-    v7 = sub_1401D1050(a3, a5 + 5);
-    if ( v7 <= (float)((float)(0.015 * (float)(*a1 + a1[24])) + 1.0) )
-      v9 = (float)(0.015 * (float)(*a1 + a1[24])) + 1.0;
+    loaded_word = a3 - 4LL * (*(_DWORD *)(a4 + 4LL * i) + 2);
+    sub_1401D5B50(loaded_word, a5, 5, a1);
+    sub_1401D5E00(loaded_word, a3, a5, 5u, a2);
+    component_sum = sub_1401D1050(a3, a5 + 5);
+    if ( component_sum <= (float)((float)(0.015 * (float)(*a1 + a1[24])) + 1.0) )
+      weighted_sum = (float)(0.015 * (float)(*a1 + a1[24])) + 1.0;
     else
-      v9 = v7;
-    sub_1401D0C90((__int64)a1, 1.0 / v9, 25);
-    sub_1401D0C90(a2, 1.0 / v9, 5);
+      weighted_sum = component_sum;
+    sub_1401D0C90((__int64)a1, 1.0 / weighted_sum, 25);
+    sub_1401D0C90(a2, 1.0 / weighted_sum, 5);
     a3 += 4LL * a5;
     a1 += 25;
     a2 += 20;
@@ -6165,31 +6165,31 @@ __int64            sub_1401D4C00(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   int j;
   int i;
   int k;
-  __int64 v12;
-  __int64 v13;
-  float v14;
-  __int64 v15;
-  float v16[6];
-  __int64 v17;
+  __int64 running_total;
+  __int64 running_total_2;
+  float weighted_sum;
+  __int64 record_byte_offset;
+  float float_buffer[6];
+  __int64 unused_local;
 
-  v13 = a2;
-  v12 = a1;
+  running_total_2 = a2;
+  running_total = a1;
   for ( i = 0; i < a7; ++i )
   {
-    v15 = v13 - 4LL * *(int *)(a4 + 4LL * i);
-    v14 = *(float *)(a5 + 4LL * i);
+    record_byte_offset = running_total_2 - 4LL * *(int *)(a4 + 4LL * i);
+    weighted_sum = *(float *)(a5 + 4LL * i);
     for ( j = 0; j < 5; ++j )
-      v16[j] = *(float *)(a3 + 4LL * (j + 5 * i));
+      float_buffer[j] = *(float *)(a3 + 4LL * (j + 5 * i));
     for ( j = 0; j < a8 + a6; ++j )
     {
-      *(_DWORD *)(v12 + 4LL * j) = *(_DWORD *)(v13 + 4LL * j);
+      *(_DWORD *)(running_total + 4LL * j) = *(_DWORD *)(running_total_2 + 4LL * j);
       for ( k = 0; k < 5; ++k )
-        *(float *)(v12 + 4LL * j) = *(float *)(v12 + 4LL * j) - (float)(v16[k] * *(float *)(v15 + 4LL * (2 - k)));
-      *(float *)(v12 + 4LL * j) = *(float *)(v12 + 4LL * j) * v14;
-      v15 += 4;
+        *(float *)(running_total + 4LL * j) = *(float *)(running_total + 4LL * j) - (float)(float_buffer[k] * *(float *)(record_byte_offset + 4LL * (2 - k)));
+      *(float *)(running_total + 4LL * j) = *(float *)(running_total + 4LL * j) * weighted_sum;
+      record_byte_offset += 4;
     }
-    v12 += 4LL * (a8 + a6);
-    v13 += 4LL * a6;
+    running_total += 4LL * (a8 + a6);
+    running_total_2 += 4LL * a6;
   }
   return 0; /* no caller reads the result */
 }
@@ -6197,38 +6197,38 @@ __int64            sub_1401D4C00(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
 //----- (00000001401D4E10) ----------------------------------------------------
 __int64            sub_1401D4E10(float *a1, __int64 a2, float *a3, float *a4, int a5, int a6, int a7)
 {
-  float v7;
-  float v8;
-  float v9;
-  float v10;
-  __int64 v12;
-  int v13;
-  _DWORD *v14;
-  double v15;
-  double v16;
-  double v17;
-  double v18;
-  _DWORD v19[192];
-  __int64 v20;
+  float scaled_value;
+  float scaled_value_2;
+  float scaled_value_3;
+  float scaled_value_4;
+  __int64 unused_local;
+  int integer_sum;
+  _DWORD *state_address;
+  double scaled_value_5;
+  double scaled_value_6;
+  double scaled_value_7;
+  double scaled_value_8;
+  _DWORD callee_output_word[192];
+  __int64 unused_local_2;
 
-  v14 = &v19[a7];
-  v13 = a5 + a7;
-  sub_1401D5120(v19, a3, a2, 2 * (a5 + a7), a7);
-  v15 = (float)(*a4 * *a4);
-  v7 = v15 * sub_1401D1050((__int64)v14, a5);
-  *a1 = v7;
-  v16 = (float)(a4[1] * a4[1]);
-  v8 = v16 * sub_1401D1050((__int64)&v14[v13], a5);
-  a1[1] = v8;
+  state_address = &callee_output_word[a7];
+  integer_sum = a5 + a7;
+  sub_1401D5120(callee_output_word, a3, a2, 2 * (a5 + a7), a7);
+  scaled_value_5 = (float)(*a4 * *a4);
+  scaled_value = scaled_value_5 * sub_1401D1050((__int64)state_address, a5);
+  *a1 = scaled_value;
+  scaled_value_6 = (float)(a4[1] * a4[1]);
+  scaled_value_2 = scaled_value_6 * sub_1401D1050((__int64)&state_address[integer_sum], a5);
+  a1[1] = scaled_value_2;
   if ( a6 == 4 )
   {
-    sub_1401D5120(v19, a3 + 16, a2 + 8LL * v13, 2 * v13, a7);
-    v17 = (float)(a4[2] * a4[2]);
-    v9 = v17 * sub_1401D1050((__int64)v14, a5);
-    a1[2] = v9;
-    v18 = (float)(a4[3] * a4[3]);
-    v10 = v18 * sub_1401D1050((__int64)&v14[v13], a5);
-    a1[3] = v10;
+    sub_1401D5120(callee_output_word, a3 + 16, a2 + 8LL * integer_sum, 2 * integer_sum, a7);
+    scaled_value_7 = (float)(a4[2] * a4[2]);
+    scaled_value_3 = scaled_value_7 * sub_1401D1050((__int64)state_address, a5);
+    a1[2] = scaled_value_3;
+    scaled_value_8 = (float)(a4[3] * a4[3]);
+    scaled_value_4 = scaled_value_8 * sub_1401D1050((__int64)&state_address[integer_sum], a5);
+    a1[3] = scaled_value_4;
   }
   return 0; /* no caller reads the result */
 }
@@ -6270,23 +6270,23 @@ __int64            sub_1401D5210(
         int a9,
         int a10)
 {
-  _DWORD v11[20];
+  _DWORD scratch_buffer[20];
   int i;
-  int v13[3];
-  _DWORD v14[20];
-  _DWORD v15[100];
-  _WORD v16[20];
-  __int64 v17;
+  int scratch_buffer_2[3];
+  _DWORD scratch_buffer_3[20];
+  _DWORD scratch_buffer_4[100];
+  _WORD scratch_buffer_5[20];
+  __int64 unused_local;
 
   for ( i = 0; i < 25 * a9; ++i )
-    v15[i] = sub_1401D11F0(*(float *)(a6 + 4LL * i) * 131072.0);
+    scratch_buffer_4[i] = sub_1401D11F0(*(float *)(a6 + 4LL * i) * 131072.0);
   for ( i = 0; i < 5 * a9; ++i )
-    v14[i] = sub_1401D11F0(*(float *)(a7 + 4LL * i) * 131072.0);
-  v11[18] = a10;
-  sub_1401C2FD0((__int64)v16, a2, a3, a4, v13, (__int64)v15, v14, a8, a9);
+    scratch_buffer_3[i] = sub_1401D11F0(*(float *)(a7 + 4LL * i) * 131072.0);
+  scratch_buffer[18] = a10;
+  sub_1401C2FD0((__int64)scratch_buffer_5, a2, a3, a4, scratch_buffer_2, (__int64)scratch_buffer_4, scratch_buffer_3, a8, a9);
   for ( i = 0; i < 5 * a9; ++i )
-    *(float *)(a1 + 4LL * i) = (float)(__int16)v16[i] * 0.000061035156;
-  *a5 = (float)v13[0] * 0.0078125;
+    *(float *)(a1 + 4LL * i) = (float)(__int16)scratch_buffer_5[i] * 0.000061035156;
+  *a5 = (float)scratch_buffer_2[0] * 0.0078125;
   return 0; /* no caller reads the result */
 }
 
@@ -6296,150 +6296,150 @@ float            sub_1401D53D0(__int64 a1, float *a2, __int64 a3, float a4, int 
   int j;
   int k;
   int n;
-  float v9;
-  float v10;
-  float v11;
+  float loaded_word;
+  float weighted_sum;
+  float weighted_sum_2;
   int m;
   int i;
-  float v14;
+  float squared_length;
 
-  v9 = 0.0;
-  v14 = 0.0000000099999999 * (float)(*a2 + a2[a5 * a5 - 1]);
+  loaded_word = 0.0;
+  squared_length = 0.0000000099999999 * (float)(*a2 + a2[a5 * a5 - 1]);
   for ( i = 0; i < 10; ++i )
   {
-    v10 = 0.0;
+    weighted_sum = 0.0;
     for ( j = 0; j < a5; ++j )
-      v10 = v10 + (float)(*(float *)(a3 + 4LL * j) * *(float *)(a1 + 4LL * j));
-    v9 = a4 - (float)(2.0 * v10);
+      weighted_sum = weighted_sum + (float)(*(float *)(a3 + 4LL * j) * *(float *)(a1 + 4LL * j));
+    loaded_word = a4 - (float)(2.0 * weighted_sum);
     for ( k = 0; k < a5; ++k )
     {
-      v11 = 0.0;
+      weighted_sum_2 = 0.0;
       for ( m = k + 1; m < a5; ++m )
-        v11 = v11 + (float)(a2[m * a5 + k] * *(float *)(a1 + 4LL * m));
-      v9 = v9
+        weighted_sum_2 = weighted_sum_2 + (float)(a2[m * a5 + k] * *(float *)(a1 + 4LL * m));
+      loaded_word = loaded_word
          + (float)(*(float *)(a1 + 4LL * k)
-                 * (float)((float)(2.0 * v11) + (float)(a2[k * a5 + k] * *(float *)(a1 + 4LL * k))));
+                 * (float)((float)(2.0 * weighted_sum_2) + (float)(a2[k * a5 + k] * *(float *)(a1 + 4LL * k))));
     }
-    if ( v9 > 0.0 )
+    if ( loaded_word > 0.0 )
       break;
     for ( n = 0; n < a5; ++n )
-      a2[n * a5 + n] = a2[n * a5 + n] + v14;
-    v14 = v14 * 2.0;
+      a2[n * a5 + n] = a2[n * a5 + n] + squared_length;
+    squared_length = squared_length * 2.0;
   }
   if ( i == 10 )
     return 1.0;
-  return v9;
+  return loaded_word;
 }
 
 //----- (00000001401D5670) ----------------------------------------------------
 __int64            sub_1401D5670(__int64 a1, __int64 a2, int a3)
 {
-  float v3;
-  float v4;
-  __int64 v6;
+  float pow_result;
+  float square_root;
+  __int64 unused_local;
   int i;
-  float v8;
-  int v9;
-  BOOL v10;
-  float v11;
-  float v12;
-  float v13;
-  char *v14;
-  __m128i v15;
-  __int64 v16;
+  float saved_square_root;
+  int selected_word;
+  BOOL comparison_result;
+  float combined_products;
+  float saved_pow_result;
+  float shifted_bits;
+  char *byte_cursor;
+  __m128i source_buffer;
+  __int64 unused_local_2;
 
-  v14 = (char *)(a1 + 7192);
+  byte_cursor = (char *)(a1 + 7192);
   if ( *(_BYTE *)(a1 + 4781) == 2 )
   {
-    v11 = 1.0 - (float)(0.5 * sub_1401D11A0(0.25 * (float)(*(float *)(a2 + 708) - 12.0)));
+    combined_products = 1.0 - (float)(0.5 * sub_1401D11A0(0.25 * (float)(*(float *)(a2 + 708) - 12.0)));
     for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
-      *(float *)(a2 + 4LL * i) = *(float *)(a2 + 4LL * i) * v11;
+      *(float *)(a2 + 4LL * i) = *(float *)(a2 + 4LL * i) * combined_products;
   }
-  v3 = pow(2.0, (float)(0.33000001 * (float)(21.0 - (float)((float)*(int *)(a1 + 4732) * 0.0078125))))
+  pow_result = pow(2.0, (float)(0.33000001 * (float)(21.0 - (float)((float)*(int *)(a1 + 4732) * 0.0078125))))
      / (double)*(int *)(a1 + 4588);
-  v12 = v3;
+  saved_pow_result = pow_result;
   for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
   {
-    v4 = sqrt((float)((float)(*(float *)(a2 + 4LL * i) * *(float *)(a2 + 4LL * i))
-                    + (float)(*(float *)(a2 + 4LL * i + 712) * v12)));
-    v8 = v4;
-    if ( v4 >= 32767.0 )
-      v9 = 1191181824;
+    square_root = sqrt((float)((float)(*(float *)(a2 + 4LL * i) * *(float *)(a2 + 4LL * i))
+                    + (float)(*(float *)(a2 + 4LL * i + 712) * saved_pow_result)));
+    saved_square_root = square_root;
+    if ( square_root >= 32767.0 )
+      selected_word = 1191181824;
     else
-      v9 = LODWORD(v8);
-    *(_DWORD *)(a2 + 4LL * i) = v9;
+      selected_word = LODWORD(saved_square_root);
+    *(_DWORD *)(a2 + 4LL * i) = selected_word;
   }
   for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
-    SR_VEC_LANES(128, v15, i32)[i] = (int)(float)(*(float *)(a2 + 4LL * i) * 65536.0);
-  crt_memcpy((__m128i *)(a2 + 728), &v15, 4LL * *(int *)(a1 + 4580));
-  *(_BYTE *)(a2 + 744) = *v14;
-  v10 = a3 == 2;
-  sub_1401C2970((char *)(a1 + 4752), (__int64)&v15, v14, v10, *(_DWORD *)(a1 + 4580));
+    SR_VEC_LANES(128, source_buffer, i32)[i] = (int)(float)(*(float *)(a2 + 4LL * i) * 65536.0);
+  crt_memcpy((__m128i *)(a2 + 728), &source_buffer, 4LL * *(int *)(a1 + 4580));
+  *(_BYTE *)(a2 + 744) = *byte_cursor;
+  comparison_result = a3 == 2;
+  sub_1401C2970((char *)(a1 + 4752), (__int64)&source_buffer, byte_cursor, comparison_result, *(_DWORD *)(a1 + 4580));
   for ( i = 0; i < *(_DWORD *)(a1 + 4580); ++i )
-    *(float *)(a2 + 4LL * i) = (float)SR_VEC_LANES(128, v15, i32)[i] / 65536.0;
+    *(float *)(a2 + 4LL * i) = (float)SR_VEC_LANES(128, source_buffer, i32)[i] / 65536.0;
   if ( *(_BYTE *)(a1 + 4781) == 2 )
     *(_BYTE *)(a1 + 4782) = (float)(*(float *)(a2 + 708) + (float)((float)*(int *)(a1 + 4728) * 0.000030517578)) <= 1.0;
-  v13 = (float)word_1402827F8[2 * (*(char *)(a1 + 4781) >> 1) + *(char *)(a1 + 4782)] / 1024.0;
+  shifted_bits = (float)word_1402827F8[2 * (*(char *)(a1 + 4781) >> 1) + *(char *)(a1 + 4782)] / 1024.0;
   *(float *)(a2 + 692) = (float)((float)((float)((float)((float)(-0.050000001 * (float)*(int *)(a1 + 4628)) + 1.2)
                                                + (float)((float)(-0.2 * (float)*(int *)(a1 + 4532)) * 0.00390625))
                                        + (float)(-0.1 * *(float *)(a2 + 696)))
                                + (float)(-0.2 * *(float *)(a2 + 700)))
-                       + (float)(0.80000001 * v13);
+                       + (float)(0.80000001 * shifted_bits);
   return 0; /* no caller reads the result */
 }
 
 //----- (00000001401D5B50) ----------------------------------------------------
 __int64            sub_1401D5B50(__int64 a1, int a2, int a3, float *a4)
 {
-  float v4;
-  float v5;
+  float saved_combined_products;
+  float saved_combined_products_2;
   __int64 result;
-  float v7;
-  float v8;
-  float v9;
-  float v10;
+  float saved_combined_products_3;
+  float saved_combined_products_4;
+  float saved_combined_products_5;
+  float saved_combined_products_6;
   int i;
   int k;
   int j;
-  double v14;
-  double v15;
-  __int64 v16;
-  __int64 v17;
+  double combined_products;
+  double combined_products_2;
+  __int64 scaled_index;
+  __int64 remaining_amount;
 
-  v16 = a1 + 4LL * (a3 - 1);
-  v14 = sub_1401D1050(v16, a2);
-  v4 = v14;
-  *a4 = v4;
+  scaled_index = a1 + 4LL * (a3 - 1);
+  combined_products = sub_1401D1050(scaled_index, a2);
+  saved_combined_products = combined_products;
+  *a4 = saved_combined_products;
   for ( i = 1; i < a3; ++i )
   {
-    v14 = v14
-        + (float)((float)(*(float *)(v16 + 4LL * -i) * *(float *)(v16 + 4LL * -i))
-                - (float)(*(float *)(v16 + 4LL * (a2 - i)) * *(float *)(v16 + 4LL * (a2 - i))));
-    v5 = v14;
-    a4[i + a3 * i] = v5;
+    combined_products = combined_products
+        + (float)((float)(*(float *)(scaled_index + 4LL * -i) * *(float *)(scaled_index + 4LL * -i))
+                - (float)(*(float *)(scaled_index + 4LL * (a2 - i)) * *(float *)(scaled_index + 4LL * (a2 - i))));
+    saved_combined_products_2 = combined_products;
+    a4[i + a3 * i] = saved_combined_products_2;
   }
-  v17 = a1 + 4LL * (a3 - 2);
+  remaining_amount = a1 + 4LL * (a3 - 2);
   for ( j = 1; ; ++j )
   {
     result = (unsigned int)a3;
     if ( j >= a3 )
       break;
-    v15 = sub_1401D0EF0(v16, v17, a2);
-    v7 = v15;
-    a4[a3 * j] = v7;
-    v8 = v15;
-    a4[j] = v8;
+    combined_products_2 = sub_1401D0EF0(scaled_index, remaining_amount, a2);
+    saved_combined_products_3 = combined_products_2;
+    a4[a3 * j] = saved_combined_products_3;
+    saved_combined_products_4 = combined_products_2;
+    a4[j] = saved_combined_products_4;
     for ( k = 1; k < a3 - j; ++k )
     {
-      v15 = v15
-          + (float)((float)(*(float *)(v16 + 4LL * -k) * *(float *)(v17 + 4LL * -k))
-                  - (float)(*(float *)(v16 + 4LL * (a2 - k)) * *(float *)(v17 + 4LL * (a2 - k))));
-      v9 = v15;
-      a4[k + a3 * (k + j)] = v9;
-      v10 = v15;
-      a4[k + j + a3 * k] = v10;
+      combined_products_2 = combined_products_2
+          + (float)((float)(*(float *)(scaled_index + 4LL * -k) * *(float *)(remaining_amount + 4LL * -k))
+                  - (float)(*(float *)(scaled_index + 4LL * (a2 - k)) * *(float *)(remaining_amount + 4LL * (a2 - k))));
+      saved_combined_products_5 = combined_products_2;
+      a4[k + a3 * (k + j)] = saved_combined_products_5;
+      saved_combined_products_6 = combined_products_2;
+      a4[k + j + a3 * k] = saved_combined_products_6;
     }
-    v17 -= 4;
+    remaining_amount -= 4;
   }
   return result;
 }
@@ -6448,19 +6448,19 @@ __int64            sub_1401D5B50(__int64 a1, int a2, int a3, float *a4)
 __int64            sub_1401D5E00(__int64 a1, __int64 a2, int a3, unsigned int a4, __int64 a5)
 {
   __int64 result;
-  float v6;
+  float call_result;
   int i;
-  __int64 v8;
+  __int64 remaining_amount;
 
-  v8 = a1 + 4LL * (int)(a4 - 1);
+  remaining_amount = a1 + 4LL * (int)(a4 - 1);
   for ( i = 0; ; ++i )
   {
     result = a4;
     if ( i >= (int)a4 )
       break;
-    v6 = sub_1401D0EF0(v8, a2, a3);
-    *(float *)(a5 + 4LL * i) = v6;
-    v8 -= 4;
+    call_result = sub_1401D0EF0(remaining_amount, a2, a3);
+    *(float *)(a5 + 4LL * i) = call_result;
+    remaining_amount -= 4;
   }
   return result;
 }
@@ -6470,32 +6470,32 @@ __int64            sub_1401D5E90(__int64 a1, __int64 a2, int a3, unsigned int a4
 {
   __int64 result;
   int i;
-  float v6;
-  float v7;
-  float v8;
+  float product_difference;
+  float scaled_ratio;
+  float combined_products;
 
-  v8 = 2.0 - (float)((float)(3.1415927 / (float)(int)(a4 + 1)) * (float)(3.1415927 / (float)(int)(a4 + 1)));
+  combined_products = 2.0 - (float)((float)(3.1415927 / (float)(int)(a4 + 1)) * (float)(3.1415927 / (float)(int)(a4 + 1)));
   if ( a3 >= 2 )
   {
-    v6 = 1.0;
-    v7 = 0.5 * v8;
+    product_difference = 1.0;
+    scaled_ratio = 0.5 * combined_products;
   }
   else
   {
-    v6 = 0.0;
-    v7 = 3.1415927 / (float)(int)(a4 + 1);
+    product_difference = 0.0;
+    scaled_ratio = 3.1415927 / (float)(int)(a4 + 1);
   }
   for ( i = 0; ; i += 4 )
   {
     result = a4;
     if ( i >= (int)a4 )
       break;
-    *(float *)(a1 + 4LL * i) = (float)(*(float *)(a2 + 4LL * i) * 0.5) * (float)(v6 + v7);
-    *(float *)(a1 + 4LL * (i + 1)) = *(float *)(a2 + 4LL * (i + 1)) * v7;
-    v6 = (float)(v8 * v7) - v6;
-    *(float *)(a1 + 4LL * (i + 2)) = (float)(*(float *)(a2 + 4LL * (i + 2)) * 0.5) * (float)(v7 + v6);
-    *(float *)(a1 + 4LL * (i + 3)) = *(float *)(a2 + 4LL * (i + 3)) * v6;
-    v7 = (float)(v8 * v6) - v7;
+    *(float *)(a1 + 4LL * i) = (float)(*(float *)(a2 + 4LL * i) * 0.5) * (float)(product_difference + scaled_ratio);
+    *(float *)(a1 + 4LL * (i + 1)) = *(float *)(a2 + 4LL * (i + 1)) * scaled_ratio;
+    product_difference = (float)(combined_products * scaled_ratio) - product_difference;
+    *(float *)(a1 + 4LL * (i + 2)) = (float)(*(float *)(a2 + 4LL * (i + 2)) * 0.5) * (float)(scaled_ratio + product_difference);
+    *(float *)(a1 + 4LL * (i + 3)) = *(float *)(a2 + 4LL * (i + 3)) * product_difference;
+    scaled_ratio = (float)(combined_products * product_difference) - scaled_ratio;
   }
   return result;
 }
@@ -6503,44 +6503,44 @@ __int64            sub_1401D5E90(__int64 a1, __int64 a2, int a3, unsigned int a4
 //----- (00000001401D6050) ----------------------------------------------------
 __int64            sub_1401D6050(_WORD *a1, __int64 a2, int a3)
 {
-  __int64 v4;
+  __int64 unused_local;
   int i;
-  _DWORD v6[16];
-  __int64 v7;
+  _DWORD scratch_buffer[16];
+  __int64 unused_local_2;
 
   for ( i = 0; i < a3; ++i )
-    v6[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i) * 65536.0);
-  return sub_1401BC940(a1, (__int64)v6, a3); /* 0x1401D60D5: the result of this call is still in rax at the exit */
+    scratch_buffer[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i) * 65536.0);
+  return sub_1401BC940(a1, (__int64)scratch_buffer, a3); /* 0x1401D60D5: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401D6100) ----------------------------------------------------
 __int64            sub_1401D6100(__int64 a1,      char *a2, int a3)
 {
-  __int64 v4;
+  __int64 unused_local;
   int i;
-  _WORD v6[16];
-  __int64 v7;
+  _WORD scratch_buffer[16];
+  __int64 unused_local_2;
 
-  CWinApp__ShowAppMessageBox((struct CWinApp *)v6, a2, a3);
+  CWinApp__ShowAppMessageBox((struct CWinApp *)scratch_buffer, a2, a3);
   for ( i = 0; i < a3; ++i )
-    *(float *)(a1 + 4LL * i) = (float)(__int16)v6[i] * 0.00024414062;
+    *(float *)(a1 + 4LL * i) = (float)(__int16)scratch_buffer[i] * 0.00024414062;
   return 0; /* no caller reads the result */
 }
 
 //----- (00000001401D61A0) ----------------------------------------------------
 __int64            sub_1401D61A0(__int64 a1, __int64 a2, __int16 *a3, __int64 a4)
 {
-  __int64 v5;
+  __int64 unused_local;
   int i;
   int j;
-  _OWORD v8[4];
-  __int64 v9;
+  _OWORD scratch_buffer[4];
+  __int64 unused_local_2;
 
-  sub_1401C5A20(a1, (__int64)v8, a3, a4);
+  sub_1401C5A20(a1, (__int64)scratch_buffer, a3, a4);
   for ( i = 0; i < 2; ++i )
   {
     for ( j = 0; j < *(_DWORD *)(a1 + 4640); ++j )
-      *(float *)(((__int64)i << 6) + a2 + 4LL * j) = (float)*((__int16 *)&v8[2 * i] + j) * 0.00024414062;
+      *(float *)(((__int64)i << 6) + a2 + 4LL * j) = (float)*((__int16 *)&scratch_buffer[2 * i] + j) * 0.00024414062;
   }
   return 0; /* no caller reads the result */
 }
@@ -6548,95 +6548,95 @@ __int64            sub_1401D61A0(__int64 a1, __int64 a2, __int16 *a3, __int64 a4
 //----- (00000001401D62A0) ----------------------------------------------------
 __int64            sub_1401D62A0(_DWORD *a1, __int64 a2, char *a3, __m128i *a4, __int64 a5, __int64 a6)
 {
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
+  __int64 unused_local;
+  __int64 packed_word_bits;
+  __int64 packed_word_bits_2;
   int i;
   int j;
-  int v12;
-  int v13;
-  unsigned int v14;
-  __int64 v15;
-  _DWORD *v16;
-  _DWORD v17[4];
-  _DWORD v18[4];
-  int v19[4];
-  int v20[4];
-  _WORD v21[20];
-  _OWORD v22[4];
-  _WORD v23[96];
-  _WORD v24[320];
-  __int64 v25;
+  int table_value;
+  int loaded_word;
+  unsigned int shifted_bits;
+  __int64 unused_written_slot;
+  _DWORD *unused_written_slot_2;
+  _DWORD scratch_buffer[4];
+  _DWORD scratch_buffer_2[4];
+  int scratch_buffer_3[4];
+  int scratch_buffer_4[4];
+  _WORD scratch_buffer_5[20];
+  _OWORD scratch_buffer_6[4];
+  _WORD scratch_buffer_7[96];
+  _WORD scratch_buffer_8[320];
+  __int64 unused_local_2;
 
   for ( i = 0; i < a1[1145]; ++i )
   {
     for ( j = 0; j < a1[1159]; ++j )
-      v23[24 * i + j] = sub_1401D11F0(*(float *)(a2 + 4LL * (j + 24 * i) + 244) * 8192.0);
+      scratch_buffer_7[24 * i + j] = sub_1401D11F0(*(float *)(a2 + 4LL * (j + 24 * i) + 244) * 8192.0);
   }
   for ( i = 0; i < a1[1145]; ++i )
   {
-    v14 = (unsigned int)sub_1401D11F0(*(float *)(a2 + 4LL * i + 644) * 16384.0) << 16;
-    v18[i] = (unsigned __int16)sub_1401D11F0(*(float *)(a2 + 4LL * i + 628) * 16384.0) | v14;
-    v19[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i + 660) * 16384.0);
-    v20[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i + 676) * 16384.0);
+    shifted_bits = (unsigned int)sub_1401D11F0(*(float *)(a2 + 4LL * i + 644) * 16384.0) << 16;
+    scratch_buffer_2[i] = (unsigned __int16)sub_1401D11F0(*(float *)(a2 + 4LL * i + 628) * 16384.0) | shifted_bits;
+    scratch_buffer_3[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i + 660) * 16384.0);
+    scratch_buffer_4[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i + 676) * 16384.0);
   }
-  v13 = sub_1401D11F0(*(float *)(a2 + 692) * 1024.0);
+  loaded_word = sub_1401D11F0(*(float *)(a2 + 692) * 1024.0);
   for ( i = 0; i < 5 * a1[1145]; ++i )
-    v21[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i + 144) * 16384.0);
+    scratch_buffer_5[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i + 144) * 16384.0);
   for ( j = 0; j < 2; ++j )
   {
     for ( i = 0; i < a1[1160]; ++i )
-      *((_WORD *)&v22[2 * j] + i) = sub_1401D11F0(*(float *)(a2 + ((__int64)j << 6) + 16 + 4LL * i) * 4096.0);
+      *((_WORD *)&scratch_buffer_6[2 * j] + i) = sub_1401D11F0(*(float *)(a2 + ((__int64)j << 6) + 16 + 4LL * i) * 4096.0);
   }
   for ( i = 0; i < a1[1145]; ++i )
-    v17[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i) * 65536.0);
+    scratch_buffer[i] = sub_1401D11F0(*(float *)(a2 + 4LL * i) * 65536.0);
   if ( a3[29] == 2 )
-    v12 = word_140282798[a3[33]];
+    table_value = word_140282798[a3[33]];
   else
-    v12 = 0;
+    table_value = 0;
   for ( i = 0; i < a1[1146]; ++i )
-    v24[i] = sub_1401D11F0(*(float *)(a6 + 4LL * i));
+    scratch_buffer_8[i] = sub_1401D11F0(*(float *)(a6 + 4LL * i));
   if ( (int)a1[1157] <= 1 && (int)a1[1168] <= 0 )
   {
-    v16 = a1;
+    unused_written_slot_2 = a1;
     sub_1401C3AC0(
       a1,
       a4,
       a3,
-      (__int64)v24,
+      (__int64)scratch_buffer_8,
       a5,
-      (__int64)v22,
-      (__int64)v21,
-      (__int64)v23,
-      (__int64)v20,
-      (__int64)v19,
-      (__int64)v18,
-      (__int64)v17,
+      (__int64)scratch_buffer_6,
+      (__int64)scratch_buffer_5,
+      (__int64)scratch_buffer_7,
+      (__int64)scratch_buffer_4,
+      (__int64)scratch_buffer_3,
+      (__int64)scratch_buffer_2,
+      (__int64)scratch_buffer,
       a2 + 228,
-      v13,
-      v12);
+      loaded_word,
+      table_value);
   }
   else
   {
-    v15 = (__int64)a1;
-    LODWORD(v8) = v13;
-    LODWORD(v9) = v12;
+    unused_written_slot = (__int64)a1;
+    LODWORD(packed_word_bits) = loaded_word;
+    LODWORD(packed_word_bits_2) = table_value;
     sub_1401C4120(
       a1,
       a4,
       a3,
-      (__int64)v24,
+      (__int64)scratch_buffer_8,
       a5,
-      (__int64)v22,
-      (__int64)v21,
-      (__int64)v23,
-      v20,
-      v19,
-      (__int64)v18,
-      (__int64)v17,
+      (__int64)scratch_buffer_6,
+      (__int64)scratch_buffer_5,
+      (__int64)scratch_buffer_7,
+      scratch_buffer_4,
+      scratch_buffer_3,
+      (__int64)scratch_buffer_2,
+      (__int64)scratch_buffer,
       a2 + 228,
-      v8,
-      v9);
+      packed_word_bits,
+      packed_word_bits_2);
   }
   return 0; /* no caller reads the result */
 }
@@ -6644,7 +6644,7 @@ __int64            sub_1401D62A0(_DWORD *a1, __int64 a2, char *a3, __m128i *a4, 
 //----- (00000001401D68F0) ----------------------------------------------------
 __int64            sub_1401D68F0(__int64 a1, _DWORD *a2)
 {
-  BOOL v3;
+  BOOL comparison_result;
 
   *a2 = *(_DWORD *)(a1 + 20240);
   a2[1] = *(_DWORD *)(a1 + 20244);
@@ -6661,8 +6661,8 @@ __int64            sub_1401D68F0(__int64 a1, _DWORD *a2)
   a2[13] = *(_DWORD *)(a1 + 4676);
   a2[18] = 1000 * *(__int16 *)(a1 + 4576);
   a2[19] = *(_DWORD *)(a1 + 4536);
-  v3 = *(_DWORD *)(a1 + 4576) == 16 && !*(_DWORD *)(a1 + 28);
-  a2[20] = v3;
+  comparison_result = *(_DWORD *)(a1 + 4576) == 16 && !*(_DWORD *)(a1 + 28);
+  a2[20] = comparison_result;
   return 0;
 }
 
@@ -6670,14 +6670,14 @@ __int64            sub_1401D68F0(__int64 a1, _DWORD *a2)
 __int64            sub_1401D6B20(__int64 a1, __int64 a2, int a3, int a4)
 {
   int i;
-  int v6;
+  int loaded_word;
 
   for ( i = 0; i < a4; ++i )
   {
-    v6 = *(_DWORD *)(a2 + 4LL * (2 * i + 1)) + *(_DWORD *)(a2 + 8LL * i);
-    if ( v6 > a3 )
+    loaded_word = *(_DWORD *)(a2 + 4LL * (2 * i + 1)) + *(_DWORD *)(a2 + 8LL * i);
+    if ( loaded_word > a3 )
       return 1;
-    *(_DWORD *)(a1 + 4LL * i) = v6;
+    *(_DWORD *)(a1 + 4LL * i) = loaded_word;
   }
   return 0;
 }
@@ -6738,24 +6738,24 @@ unsigned __int64            sub_1401D6BB0(__m128i *a1, __m128i *a2, int a3, int 
 __int64            sub_1401D6F30(__int64 a1, __int64 a2, __int64 a3, __int16 a4, __int16 a5)
 {
   __int64 result;
-  __int16 v6;
-  int v7;
-  int v8;
+  __int16 shifted_bits;
+  int shifted_bits_2;
+  int comparison_result;
   int i;
-  int v10;
+  int shifted_bits_3;
 
-  v6 = 0;
+  shifted_bits = 0;
   result = (unsigned int)(a5 - 1);
   for ( i = a5 - 1; i >= 0; --i )
   {
-    v10 = (*(unsigned __int8 *)(a3 + i) * v6) >> 8;
-    v7 = *(char *)(a2 + i) << 10;
-    if ( v7 <= 0 )
-      v8 = v7 + (v7 < 0 ? 0x66 : 0);
+    shifted_bits_3 = (*(unsigned __int8 *)(a3 + i) * shifted_bits) >> 8;
+    shifted_bits_2 = *(char *)(a2 + i) << 10;
+    if ( shifted_bits_2 <= 0 )
+      comparison_result = shifted_bits_2 + (shifted_bits_2 < 0 ? 0x66 : 0);
     else
-      v8 = v7 - 102;
-    v6 = ((unsigned int)(a4 * v8) >> 16) + v10;
-    *(_WORD *)(a1 + 2LL * i) = v6;
+      comparison_result = shifted_bits_2 - 102;
+    shifted_bits = ((unsigned int)(a4 * comparison_result) >> 16) + shifted_bits_3;
+    *(_WORD *)(a1 + 2LL * i) = shifted_bits;
     result = (unsigned int)(i - 1);
   }
   return result;
@@ -6764,9 +6764,9 @@ __int64            sub_1401D6F30(__int64 a1, __int64 a2, __int64 a3, __int16 a4,
 //----- (00000001401D7000) ----------------------------------------------------
 __int64            sub_1401D7000(int *a1, __int16 *a2, int a3)
 {
-  unsigned int v4;
+  unsigned int shifted_bits;
 
-  v4 = ((a2[9] * (__int64)*(a1 - 9)) >> 16)
+  shifted_bits = ((a2[9] * (__int64)*(a1 - 9)) >> 16)
      + ((a2[8] * (__int64)*(a1 - 8)) >> 16)
      + ((a2[7] * (__int64)*(a1 - 7)) >> 16)
      + ((a2[6] * (__int64)*(a1 - 6)) >> 16)
@@ -6778,40 +6778,40 @@ __int64            sub_1401D7000(int *a1, __int16 *a2, int a3)
      + ((*a2 * (__int64)*a1) >> 16)
      + (a3 >> 1);
   if ( a3 == 16 )
-    v4 += ((a2[15] * (__int64)*(a1 - 15)) >> 16)
+    shifted_bits += ((a2[15] * (__int64)*(a1 - 15)) >> 16)
         + ((a2[14] * (__int64)*(a1 - 14)) >> 16)
         + ((a2[13] * (__int64)*(a1 - 13)) >> 16)
         + ((a2[12] * (__int64)*(a1 - 12)) >> 16)
         + ((a2[11] * (__int64)*(a1 - 11)) >> 16)
         + ((a2[10] * (__int64)*(a1 - 10)) >> 16);
-  return v4;
+  return shifted_bits;
 }
 
 //----- (00000001401D73B0) ----------------------------------------------------
 __int64            sub_1401D73B0(int *a1, int *a2, __int16 *a3, int a4)
 {
-  int v5;
-  int v6;
+  int shifted_bits;
+  int shifted_bits_2;
   int i;
-  int v8;
-  int v9;
-  int v10;
+  int loaded_word;
+  int integer_difference;
+  int loaded_word_2;
 
-  v8 = *a1;
-  v10 = *a2;
+  loaded_word = *a1;
+  loaded_word_2 = *a2;
   *a2 = *a1;
-  v5 = ((*a3 * (__int64)v8) >> 16) + (a4 >> 1);
+  shifted_bits = ((*a3 * (__int64)loaded_word) >> 16) + (a4 >> 1);
   for ( i = 2; i < a4; i += 2 )
   {
-    v9 = a2[i - 1];
-    a2[i - 1] = v10;
-    v6 = ((a3[i - 1] * (__int64)v10) >> 16) + v5;
-    v10 = a2[i];
-    a2[i] = v9;
-    v5 = ((a3[i] * (__int64)v9) >> 16) + v6;
+    integer_difference = a2[i - 1];
+    a2[i - 1] = loaded_word_2;
+    shifted_bits_2 = ((a3[i - 1] * (__int64)loaded_word_2) >> 16) + shifted_bits;
+    loaded_word_2 = a2[i];
+    a2[i] = integer_difference;
+    shifted_bits = ((a3[i] * (__int64)integer_difference) >> 16) + shifted_bits_2;
   }
-  a2[a4 - 1] = v10;
-  return 2 * ((unsigned int)((a3[a4 - 1] * (__int64)v10) >> 16) + v5);
+  a2[a4 - 1] = loaded_word_2;
+  return 2 * ((unsigned int)((a3[a4 - 1] * (__int64)loaded_word_2) >> 16) + shifted_bits);
 }
 
 //----- (00000001401D7560) ----------------------------------------------------
@@ -6828,7 +6828,7 @@ __int64            sub_1401D7560(
         __int64 a10,
         int a11)
 {
-  int v11;
+  int loaded_word;
   __int64 result;
   int i;
   int j;
@@ -6836,42 +6836,42 @@ __int64            sub_1401D7560(
   int m;
   int n;
   int ii;
-  int v19;
-  int v20;
-  int v21;
+  int loaded_word_2;
+  int shifted_bits;
+  int loaded_word_3;
 
-  v21 = *(_DWORD *)(a10 + 4LL * a7);
+  loaded_word_3 = *(_DWORD *)(a10 + 4LL * a7);
   if ( *(int *)(a9 + 4LL * a7) <= 1 )
-    v11 = sub_1401BE820(1, 47);
+    loaded_word = sub_1401BE820(1, 47);
   else
-    v11 = sub_1401BE820(*(_DWORD *)(a9 + 4LL * a7), 47);
-  v20 = v11;
+    loaded_word = sub_1401BE820(*(_DWORD *)(a9 + 4LL * a7), 47);
+  shifted_bits = loaded_word;
   for ( i = 0; i < *(_DWORD *)(a1 + 4588); ++i )
-    *(_DWORD *)(a4 + 4LL * i) = ((((v11 >> 4) + 1) >> 1) * (__int64)*(__int16 *)(a3 + 2LL * i)) >> 16;
+    *(_DWORD *)(a4 + 4LL * i) = ((((loaded_word >> 4) + 1) >> 1) * (__int64)*(__int16 *)(a3 + 2LL * i)) >> 16;
   if ( a2[1087] )
   {
     if ( !a7 )
-      v20 = 4 * ((a8 * (__int64)v11) >> 16);
-    for ( j = a2[1083] - v21 - 2; j < a2[1083]; ++j )
-      *(_DWORD *)(a6 + 4LL * j) = (*(__int16 *)(a5 + 2LL * j) * (__int64)v20) >> 16;
+      shifted_bits = 4 * ((a8 * (__int64)loaded_word) >> 16);
+    for ( j = a2[1083] - loaded_word_3 - 2; j < a2[1083]; ++j )
+      *(_DWORD *)(a6 + 4LL * j) = (*(__int16 *)(a5 + 2LL * j) * (__int64)shifted_bits) >> 16;
   }
   result = a7;
   if ( *(_DWORD *)(a9 + 4LL * a7) != a2[1086] )
   {
-    v19 = sub_1401BE550(a2[1086], *(_DWORD *)(a9 + 4LL * a7), 16);
+    loaded_word_2 = sub_1401BE550(a2[1086], *(_DWORD *)(a9 + 4LL * a7), 16);
     for ( k = a2[1084] - *(_DWORD *)(a1 + 4592); k < a2[1084]; ++k )
-      a2[k + 320] = ((int)a2[k + 320] * (__int64)v19) >> 16;
+      a2[k + 320] = ((int)a2[k + 320] * (__int64)loaded_word_2) >> 16;
     if ( a11 == 2 && !a2[1087] )
     {
-      for ( m = a2[1083] - v21 - 2; m < a2[1083]; ++m )
-        *(_DWORD *)(a6 + 4LL * m) = (*(int *)(a6 + 4LL * m) * (__int64)v19) >> 16;
+      for ( m = a2[1083] - loaded_word_3 - 2; m < a2[1083]; ++m )
+        *(_DWORD *)(a6 + 4LL * m) = (*(int *)(a6 + 4LL * m) * (__int64)loaded_word_2) >> 16;
     }
-    a2[1080] = ((int)a2[1080] * (__int64)v19) >> 16;
-    a2[1081] = ((int)a2[1081] * (__int64)v19) >> 16;
+    a2[1080] = ((int)a2[1080] * (__int64)loaded_word_2) >> 16;
+    a2[1081] = ((int)a2[1081] * (__int64)loaded_word_2) >> 16;
     for ( n = 0; n < 16; ++n )
-      a2[n + 960] = ((int)a2[n + 960] * (__int64)v19) >> 16;
+      a2[n + 960] = ((int)a2[n + 960] * (__int64)loaded_word_2) >> 16;
     for ( ii = 0; ii < 24; ++ii )
-      a2[ii + 1056] = ((int)a2[ii + 1056] * (__int64)v19) >> 16;
+      a2[ii + 1056] = ((int)a2[ii + 1056] * (__int64)loaded_word_2) >> 16;
     result = *(unsigned int *)(a9 + 4LL * a7);
     a2[1086] = result;
   }
@@ -6900,170 +6900,170 @@ __m128i *           sub_1401D7910(
         int a18,
         int a19)
 {
-  int v19;
-  int v21;
-  int v22;
-  int v23;
-  int v24;
-  int v25;
-  int v26;
-  int v27;
+  int shifted_bits;
+  int integer_difference;
+  int shifted_bits_2;
+  int shifted_bits_3;
+  int integer_sum;
+  int scaled_index;
+  int shifted_bits_4;
+  int shifted_bits_5;
   int i;
-  int v29;
-  int v30;
-  int v31;
-  int v32;
-  int v33;
-  int v34;
-  int v35;
-  int v36;
-  int v37;
-  int *v38;
-  int v39;
-  int v40;
-  int v41;
-  int v42;
-  __int16 v43;
-  __int32 v44;
-  __int32 *v45;
-  int *v46;
+  int shifted_bits_6;
+  int shifted_bits_7;
+  int shifted_bits_8;
+  int scaled_index_2;
+  int integer_quotient;
+  int shifted_bits_9;
+  int shifted_bits_10;
+  int scaled_index_3;
+  int shifted_bits_11;
+  int *buffer_cursor;
+  int saved_shifted_bits;
+  int cached_shifted_bits;
+  int call_result;
+  int shifted_bits_12;
+  __int16 saved_shifted_bits_2;
+  __int32 scaled_index_4;
+  __int32 *buffer_cursor_2;
+  int *buffer_cursor_3;
 
-  v45 = &SR_VEC_LANES(128, a1[80], i32)[SR_VEC_LANES(128, a1[271], i32)[0] - a10 + 1];
-  v38 = (int *)(a6 + 4LL * (SR_VEC_LANES(128, a1[270], i32)[3] - a10 + 2));
-  v37 = a14 >> 6;
-  v46 = &SR_VEC_LANES(128, a1[243], i32)[3];
+  buffer_cursor_2 = &SR_VEC_LANES(128, a1[80], i32)[SR_VEC_LANES(128, a1[271], i32)[0] - a10 + 1];
+  buffer_cursor = (int *)(a6 + 4LL * (SR_VEC_LANES(128, a1[270], i32)[3] - a10 + 2));
+  shifted_bits_11 = a14 >> 6;
+  buffer_cursor_3 = &SR_VEC_LANES(128, a1[243], i32)[3];
   for ( i = 0; i < a17; ++i )
   {
     SR_VEC_LANES(128, a1[271], i32)[1] = 196314165 * SR_VEC_LANES(128, a1[271], i32)[1] + 907633515;
-    v41 = sub_1401D7000(v46, a7, a19);
+    call_result = sub_1401D7000(buffer_cursor_3, a7, a19);
     if ( a2 == 2 )
     {
-      v23 = ((a8[4] * (__int64)*(v38 - 4)) >> 16)
-          + ((a8[3] * (__int64)*(v38 - 3)) >> 16)
-          + ((a8[2] * (__int64)*(v38 - 2)) >> 16)
-          + ((a8[1] * (__int64)*(v38 - 1)) >> 16)
-          + ((*a8 * (__int64)*v38) >> 16)
+      shifted_bits_3 = ((a8[4] * (__int64)*(buffer_cursor - 4)) >> 16)
+          + ((a8[3] * (__int64)*(buffer_cursor - 3)) >> 16)
+          + ((a8[2] * (__int64)*(buffer_cursor - 2)) >> 16)
+          + ((a8[1] * (__int64)*(buffer_cursor - 1)) >> 16)
+          + ((*a8 * (__int64)*buffer_cursor) >> 16)
           + 2;
-      ++v38;
+      ++buffer_cursor;
     }
     else
     {
-      v23 = 0;
+      shifted_bits_3 = 0;
     }
-    v34 = ((a12 * (__int64)SR_VEC_LANES(128, a1[270], i32)[0]) >> 16)
+    shifted_bits_9 = ((a12 * (__int64)SR_VEC_LANES(128, a1[270], i32)[0]) >> 16)
         + sub_1401D73B0(&SR_VEC_LANES(128, a1[270], i32)[1], SR_VEC_LANES(128, a1[264], i32), a9, a18);
-    v35 = ((((__int64)a13 >> 16) * SR_VEC_LANES(128, a1[270], i32)[0]) >> 16)
+    shifted_bits_10 = ((((__int64)a13 >> 16) * SR_VEC_LANES(128, a1[270], i32)[0]) >> 16)
         + (((__int16)a13 * (__int64)SR_VEC_LANES(128, a1[79], i32)[SR_VEC_LANES(128, a1[271], i32)[0] + 3]) >> 16);
-    v25 = 4 * v41 - v34 - v35;
+    scaled_index = 4 * call_result - shifted_bits_9 - shifted_bits_10;
     if ( a10 <= 0 )
     {
-      v19 = (v25 >> 1) + 1;
+      shifted_bits = (scaled_index >> 1) + 1;
     }
     else
     {
-      v31 = 2 * (((((__int64)a11 >> 16) * *(v45 - 1)) >> 16) + (((__int16)a11 * (__int64)(*(v45 - 2) + *v45)) >> 16));
-      ++v45;
-      v19 = ((v23 - v31 + 2 * v25) >> 2) + 1;
+      shifted_bits_8 = 2 * (((((__int64)a11 >> 16) * *(buffer_cursor_2 - 1)) >> 16) + (((__int16)a11 * (__int64)(*(buffer_cursor_2 - 2) + *buffer_cursor_2)) >> 16));
+      ++buffer_cursor_2;
+      shifted_bits = ((shifted_bits_3 - shifted_bits_8 + 2 * scaled_index) >> 2) + 1;
     }
-    v27 = *(_DWORD *)(a3 + 4LL * i) - (v19 >> 1);
+    shifted_bits_5 = *(_DWORD *)(a3 + 4LL * i) - (shifted_bits >> 1);
     if ( SR_VEC_LANES(128, a1[271], i32)[1] < 0 )
-      v27 = (v19 >> 1) - *(_DWORD *)(a3 + 4LL * i);
-    if ( v27 <= 30720 )
+      shifted_bits_5 = (shifted_bits >> 1) - *(_DWORD *)(a3 + 4LL * i);
+    if ( shifted_bits_5 <= 30720 )
     {
-      if ( v27 >= -31744 )
-        v39 = v27;
+      if ( shifted_bits_5 >= -31744 )
+        saved_shifted_bits = shifted_bits_5;
       else
-        v39 = -31744;
-      v40 = v39;
+        saved_shifted_bits = -31744;
+      cached_shifted_bits = saved_shifted_bits;
     }
     else
     {
-      v40 = 30720;
+      cached_shifted_bits = 30720;
     }
-    v21 = v40 - a16;
-    v26 = (v40 - a16) >> 10;
+    integer_difference = cached_shifted_bits - a16;
+    shifted_bits_4 = (cached_shifted_bits - a16) >> 10;
     if ( a15 > 2048 )
     {
-      v33 = a15 / 2 - 512;
-      if ( v21 <= v33 )
+      integer_quotient = a15 / 2 - 512;
+      if ( integer_difference <= integer_quotient )
       {
-        if ( v21 >= 512 - a15 / 2 )
+        if ( integer_difference >= 512 - a15 / 2 )
         {
-          if ( v21 >= 0 )
-            v26 = 0;
+          if ( integer_difference >= 0 )
+            shifted_bits_4 = 0;
           else
-            v26 = -1;
+            shifted_bits_4 = -1;
         }
         else
         {
-          v26 = (v33 + v21) >> 10;
+          shifted_bits_4 = (integer_quotient + integer_difference) >> 10;
         }
       }
       else
       {
-        v26 = (v21 - v33) >> 10;
+        shifted_bits_4 = (integer_difference - integer_quotient) >> 10;
       }
     }
-    if ( v26 <= 0 )
+    if ( shifted_bits_4 <= 0 )
     {
-      if ( v26 )
+      if ( shifted_bits_4 )
       {
-        if ( v26 == -1 )
+        if ( shifted_bits_4 == -1 )
         {
-          v24 = a16;
-          v22 = a16 - 944;
-          v29 = (__int16)a15 * (__int16)(944 - a16);
-          v30 = (__int16)a15 * (__int16)a16;
+          integer_sum = a16;
+          shifted_bits_2 = a16 - 944;
+          shifted_bits_6 = (__int16)a15 * (__int16)(944 - a16);
+          shifted_bits_7 = (__int16)a15 * (__int16)a16;
         }
         else
         {
-          v22 = a16 + (v26 << 10) + 80;
-          v24 = v22 + 1024;
-          v29 = (__int16)a15 * (__int16)-(__int16)(a16 + ((_WORD)v26 << 10) + 80);
-          v30 = (__int16)a15 * (__int16)-(__int16)(a16 + ((_WORD)v26 << 10) + 80 + 1024);
+          shifted_bits_2 = a16 + (shifted_bits_4 << 10) + 80;
+          integer_sum = shifted_bits_2 + 1024;
+          shifted_bits_6 = (__int16)a15 * (__int16)-(__int16)(a16 + ((_WORD)shifted_bits_4 << 10) + 80);
+          shifted_bits_7 = (__int16)a15 * (__int16)-(__int16)(a16 + ((_WORD)shifted_bits_4 << 10) + 80 + 1024);
         }
       }
       else
       {
-        v22 = a16;
-        v24 = a16 + 944;
-        v29 = (__int16)a15 * (__int16)a16;
-        v30 = (__int16)a15 * (__int16)(a16 + 944);
+        shifted_bits_2 = a16;
+        integer_sum = a16 + 944;
+        shifted_bits_6 = (__int16)a15 * (__int16)a16;
+        shifted_bits_7 = (__int16)a15 * (__int16)(a16 + 944);
       }
     }
     else
     {
-      v22 = a16 + (v26 << 10) - 80;
-      v24 = v22 + 1024;
-      v29 = (__int16)a15 * (__int16)v22;
-      v30 = (__int16)a15 * (__int16)(v22 + 1024);
+      shifted_bits_2 = a16 + (shifted_bits_4 << 10) - 80;
+      integer_sum = shifted_bits_2 + 1024;
+      shifted_bits_6 = (__int16)a15 * (__int16)shifted_bits_2;
+      shifted_bits_7 = (__int16)a15 * (__int16)(shifted_bits_2 + 1024);
     }
-    if ( (__int16)(v40 - v24) * (__int16)(v40 - v24) + v30 < (__int16)(v40 - v22) * (__int16)(v40 - v22) + v29 )
-      v22 = v24;
-    *(_BYTE *)(a4 + i) = ((v22 >> 9) + 1) >> 1;
-    v36 = 16 * v22;
+    if ( (__int16)(cached_shifted_bits - integer_sum) * (__int16)(cached_shifted_bits - integer_sum) + shifted_bits_7 < (__int16)(cached_shifted_bits - shifted_bits_2) * (__int16)(cached_shifted_bits - shifted_bits_2) + shifted_bits_6 )
+      shifted_bits_2 = integer_sum;
+    *(_BYTE *)(a4 + i) = ((shifted_bits_2 >> 9) + 1) >> 1;
+    scaled_index_3 = 16 * shifted_bits_2;
     if ( SR_VEC_LANES(128, a1[271], i32)[1] < 0 )
-      v36 = -16 * v22;
-    v32 = 16 * v41 + v36 + 2 * v23;
-    if ( (((int)((v37 * (__int64)v32) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+      scaled_index_3 = -16 * shifted_bits_2;
+    scaled_index_2 = 16 * call_result + scaled_index_3 + 2 * shifted_bits_3;
+    if ( (((int)((shifted_bits_11 * (__int64)scaled_index_2) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
     {
-      if ( (((int)((v37 * (__int64)v32) >> 16) >> 7) + 1) >> 1 >= -32768 )
-        v42 = (((int)((v37 * (__int64)v32) >> 16) >> 7) + 1) >> 1;
+      if ( (((int)((shifted_bits_11 * (__int64)scaled_index_2) >> 16) >> 7) + 1) >> 1 >= -32768 )
+        shifted_bits_12 = (((int)((shifted_bits_11 * (__int64)scaled_index_2) >> 16) >> 7) + 1) >> 1;
       else
-        LOWORD(v42) = 0x8000;
-      v43 = v42;
+        LOWORD(shifted_bits_12) = 0x8000;
+      saved_shifted_bits_2 = shifted_bits_12;
     }
     else
     {
-      v43 = 0x7FFF;
+      saved_shifted_bits_2 = 0x7FFF;
     }
-    *(_WORD *)(a5 + 2LL * i) = v43;
-    *++v46 = v32;
-    SR_VEC_LANES(128, a1[270], i32)[1] = v32 - 16 * *(_DWORD *)(a3 + 4LL * i);
-    v44 = SR_VEC_LANES(128, a1[270], i32)[1] - 4 * v34;
-    SR_VEC_LANES(128, a1[270], i32)[0] = v44;
-    SR_VEC_LANES(128, a1[80], i32)[SR_VEC_LANES(128, a1[271], i32)[0]] = v44 - 4 * v35;
-    *(_DWORD *)(a6 + 4LL * SR_VEC_LANES(128, a1[270], i32)[3]) = 2 * (v36 + 2 * v23);
+    *(_WORD *)(a5 + 2LL * i) = saved_shifted_bits_2;
+    *++buffer_cursor_3 = scaled_index_2;
+    SR_VEC_LANES(128, a1[270], i32)[1] = scaled_index_2 - 16 * *(_DWORD *)(a3 + 4LL * i);
+    scaled_index_4 = SR_VEC_LANES(128, a1[270], i32)[1] - 4 * shifted_bits_9;
+    SR_VEC_LANES(128, a1[270], i32)[0] = scaled_index_4;
+    SR_VEC_LANES(128, a1[80], i32)[SR_VEC_LANES(128, a1[271], i32)[0]] = scaled_index_4 - 4 * shifted_bits_10;
+    *(_DWORD *)(a6 + 4LL * SR_VEC_LANES(128, a1[270], i32)[3]) = 2 * (scaled_index_3 + 2 * shifted_bits_3);
     ++SR_VEC_LANES(128, a1[271], i32)[0];
     ++SR_VEC_LANES(128, a1[270], i32)[3];
     SR_VEC_LANES(128, a1[271], i32)[1] += *(char *)(a4 + i);
@@ -7088,7 +7088,7 @@ __int64            sub_1401D82A0(
         int a13,
         int a14)
 {
-  int v14;
+  int loaded_word;
   __int64 result;
   int i;
   int j;
@@ -7097,51 +7097,51 @@ __int64            sub_1401D82A0(
   int ii;
   int jj;
   int kk;
-  int v23;
-  int v24;
+  int loaded_word_2;
+  int shifted_bits;
   int n;
-  int v26;
-  __int64 v27;
+  int loaded_word_3;
+  __int64 scaled_index;
 
-  v26 = *(_DWORD *)(a12 + 4LL * a8);
+  loaded_word_3 = *(_DWORD *)(a12 + 4LL * a8);
   if ( *(int *)(a11 + 4LL * a8) <= 1 )
-    v14 = sub_1401BE820(1, 47);
+    loaded_word = sub_1401BE820(1, 47);
   else
-    v14 = sub_1401BE820(*(_DWORD *)(a11 + 4LL * a8), 47);
-  v24 = v14;
+    loaded_word = sub_1401BE820(*(_DWORD *)(a11 + 4LL * a8), 47);
+  shifted_bits = loaded_word;
   for ( i = 0; i < *(_DWORD *)(a1 + 4588); ++i )
-    *(_DWORD *)(a5 + 4LL * i) = ((((v14 >> 4) + 1) >> 1) * (__int64)*(__int16 *)(a4 + 2LL * i)) >> 16;
+    *(_DWORD *)(a5 + 4LL * i) = ((((loaded_word >> 4) + 1) >> 1) * (__int64)*(__int16 *)(a4 + 2LL * i)) >> 16;
   if ( a2[1087] )
   {
     if ( !a8 )
-      v24 = 4 * ((a10 * (__int64)v14) >> 16);
-    for ( j = a2[1083] - v26 - 2; j < a2[1083]; ++j )
-      *(_DWORD *)(a7 + 4LL * j) = (*(__int16 *)(a6 + 2LL * j) * (__int64)v24) >> 16;
+      shifted_bits = 4 * ((a10 * (__int64)loaded_word) >> 16);
+    for ( j = a2[1083] - loaded_word_3 - 2; j < a2[1083]; ++j )
+      *(_DWORD *)(a7 + 4LL * j) = (*(__int16 *)(a6 + 2LL * j) * (__int64)shifted_bits) >> 16;
   }
   result = a8;
   if ( *(_DWORD *)(a11 + 4LL * a8) != a2[1086] )
   {
-    v23 = sub_1401BE550(a2[1086], *(_DWORD *)(a11 + 4LL * a8), 16);
+    loaded_word_2 = sub_1401BE550(a2[1086], *(_DWORD *)(a11 + 4LL * a8), 16);
     for ( k = a2[1084] - *(_DWORD *)(a1 + 4592); k < a2[1084]; ++k )
-      a2[k + 320] = ((int)a2[k + 320] * (__int64)v23) >> 16;
+      a2[k + 320] = ((int)a2[k + 320] * (__int64)loaded_word_2) >> 16;
     if ( a13 == 2 && !a2[1087] )
     {
-      for ( m = a2[1083] - v26 - 2; m < a2[1083] - a14; ++m )
-        *(_DWORD *)(a7 + 4LL * m) = (*(int *)(a7 + 4LL * m) * (__int64)v23) >> 16;
+      for ( m = a2[1083] - loaded_word_3 - 2; m < a2[1083] - a14; ++m )
+        *(_DWORD *)(a7 + 4LL * m) = (*(int *)(a7 + 4LL * m) * (__int64)loaded_word_2) >> 16;
     }
     for ( n = 0; n < a9; ++n )
     {
-      v27 = 1300LL * n + a3;
-      *(_DWORD *)(v27 + 1280) = (*(int *)(v27 + 1280) * (__int64)v23) >> 16;
-      *(_DWORD *)(v27 + 1284) = (*(int *)(v27 + 1284) * (__int64)v23) >> 16;
+      scaled_index = 1300LL * n + a3;
+      *(_DWORD *)(scaled_index + 1280) = (*(int *)(scaled_index + 1280) * (__int64)loaded_word_2) >> 16;
+      *(_DWORD *)(scaled_index + 1284) = (*(int *)(scaled_index + 1284) * (__int64)loaded_word_2) >> 16;
       for ( ii = 0; ii < 16; ++ii )
-        *(_DWORD *)(v27 + 4LL * ii) = (*(int *)(v27 + 4LL * ii) * (__int64)v23) >> 16;
+        *(_DWORD *)(scaled_index + 4LL * ii) = (*(int *)(scaled_index + 4LL * ii) * (__int64)loaded_word_2) >> 16;
       for ( jj = 0; jj < 24; ++jj )
-        *(_DWORD *)(v27 + 4LL * jj + 1184) = (*(int *)(v27 + 4LL * jj + 1184) * (__int64)v23) >> 16;
+        *(_DWORD *)(scaled_index + 4LL * jj + 1184) = (*(int *)(scaled_index + 4LL * jj + 1184) * (__int64)loaded_word_2) >> 16;
       for ( kk = 0; kk < 40; ++kk )
       {
-        *(_DWORD *)(v27 + 4LL * kk + 864) = (*(int *)(v27 + 4LL * kk + 864) * (__int64)v23) >> 16;
-        *(_DWORD *)(v27 + 4LL * kk + 1024) = (*(int *)(v27 + 4LL * kk + 1024) * (__int64)v23) >> 16;
+        *(_DWORD *)(scaled_index + 4LL * kk + 864) = (*(int *)(scaled_index + 4LL * kk + 864) * (__int64)loaded_word_2) >> 16;
+        *(_DWORD *)(scaled_index + 4LL * kk + 1024) = (*(int *)(scaled_index + 4LL * kk + 1024) * (__int64)loaded_word_2) >> 16;
       }
     }
     result = *(unsigned int *)(a11 + 4LL * a8);
@@ -7179,321 +7179,321 @@ __int64            sub_1401D8730(
         int *a25,
         int a26)
 {
-  unsigned __int64 v26;
-  void *v27;
+  unsigned __int64 record_word_offset;
+  void *alloca_result;
   int j;
-  int v30;
-  void *v31;
-  int v32;
-  int v33;
-  int *v34;
+  int shifted_bits;
+  void *destination_buffer;
+  int shifted_bits_2;
+  int shifted_bits_3;
+  int *state_address;
   int i;
-  int v36;
+  int shifted_bits_4;
   int k;
-  int v38;
-  int v39;
-  int v40;
-  int v41;
-  int v42;
-  int v43;
-  int v44;
-  int *v45;
-  int v46;
-  int v47;
-  int v48;
-  int v49;
-  int v50;
-  int v51;
-  int v52;
-  int v53;
-  int v54;
-  int v55;
-  int v56;
-  int v57;
-  int v58;
-  int v59;
-  int *v60;
-  int v61;
-  int v62;
-  int v63;
-  int v64;
-  _DWORD *v65;
-  int v66;
-  int v67;
-  int *v68;
-  void *v69;
-  __int64 v70;
+  int integer_sum;
+  int scaled_index;
+  int shifted_bits_5;
+  int shifted_bits_6;
+  int loaded_word;
+  int shifted_bits_7;
+  int shifted_bits_8;
+  int *saved_alloca_result;
+  int scaled_index_2;
+  int shifted_bits_9;
+  int shifted_bits_10;
+  int scaled_index_3;
+  int integer_sum_2;
+  int integer_sum_3;
+  int unused_written_slot;
+  int call_result;
+  int integer_difference;
+  int integer_quotient;
+  int cached_j;
+  int cached_j_2;
+  int scaled_index_4;
+  int cached_j_3;
+  int *buffer_cursor;
+  int saved_loaded_word;
+  int cached_loaded_word;
+  int shifted_bits_11;
+  int saved_shifted_bits;
+  _DWORD *buffer_cursor_2;
+  int loaded_word_2;
+  int shifted_bits_12;
+  int *record_pointer;
+  void *destination_buffer_2;
+  __int64 unused_local;
 
-  v26 = 56LL * a24 + 15;
-  if ( v26 <= 56LL * a24 )
-    v26 = 0xFFFFFFFFFFFFFF0LL;
-  v27 = alloca(v26 & 0xFFFFFFFFFFFFFFF0uLL);
-  v45 = v27;
-  v65 = (_DWORD *)(a1 + 4LL * (*(_DWORD *)(a1 + 4336) - a12 + 1) + 1280);
-  v60 = (int *)(a7 + 4LL * (*(_DWORD *)(a1 + 4332) - a12 + 2));
-  v67 = a16 >> 6;
+  record_word_offset = 56LL * a24 + 15;
+  if ( record_word_offset <= 56LL * a24 )
+    record_word_offset = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(record_word_offset & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result;
+  buffer_cursor_2 = (_DWORD *)(a1 + 4LL * (*(_DWORD *)(a1 + 4336) - a12 + 1) + 1280);
+  buffer_cursor = (int *)(a7 + 4LL * (*(_DWORD *)(a1 + 4332) - a12 + 2));
+  shifted_bits_12 = a16 >> 6;
   for ( i = 0; i < a19; ++i )
   {
     if ( a3 == 2 )
     {
-      v33 = 2;
-      v33 = ((*a10 * (__int64)*v60) >> 16) + 2;
-      v33 += (a10[1] * (__int64)*(v60 - 1)) >> 16;
-      v33 += (a10[2] * (__int64)*(v60 - 2)) >> 16;
-      v33 += (a10[3] * (__int64)*(v60 - 3)) >> 16;
-      v33 += (a10[4] * (__int64)*(v60 - 4)) >> 16;
-      v33 *= 2;
-      ++v60;
+      shifted_bits_3 = 2;
+      shifted_bits_3 = ((*a10 * (__int64)*buffer_cursor) >> 16) + 2;
+      shifted_bits_3 += (a10[1] * (__int64)*(buffer_cursor - 1)) >> 16;
+      shifted_bits_3 += (a10[2] * (__int64)*(buffer_cursor - 2)) >> 16;
+      shifted_bits_3 += (a10[3] * (__int64)*(buffer_cursor - 3)) >> 16;
+      shifted_bits_3 += (a10[4] * (__int64)*(buffer_cursor - 4)) >> 16;
+      shifted_bits_3 *= 2;
+      ++buffer_cursor;
     }
     else
     {
-      v33 = 0;
+      shifted_bits_3 = 0;
     }
     if ( a12 <= 0 )
     {
-      v48 = 0;
+      shifted_bits_10 = 0;
     }
     else
     {
-      v48 = ((__int16)a13 * (__int64)(*(v65 - 2) + *v65)) >> 16;
-      v48 += (((__int64)a13 >> 16) * (int)*(v65 - 1)) >> 16;
-      v48 = v33 - 4 * v48;
-      ++v65;
+      shifted_bits_10 = ((__int16)a13 * (__int64)(*(buffer_cursor_2 - 2) + *buffer_cursor_2)) >> 16;
+      shifted_bits_10 += (((__int64)a13 >> 16) * (int)*(buffer_cursor_2 - 1)) >> 16;
+      shifted_bits_10 = shifted_bits_3 - 4 * shifted_bits_10;
+      ++buffer_cursor_2;
     }
     for ( j = 0; j < a24; ++j )
     {
-      v31 = (void *)(1300LL * j + a2);
-      v34 = &v45[14 * j];
-      *((_DWORD *)v31 + 322) = 196314165 * *((_DWORD *)v31 + 322) + 907633515;
-      v68 = (int *)((char *)v31 + 4 * i + 60);
-      v53 = 16 * sub_1401D7000(v68, a9, a22);
-      v40 = ((a23 * (__int64)*((int *)v31 + 296)) >> 16) + *((_DWORD *)v31 + 321);
-      v36 = ((a23 * (__int64)(*((_DWORD *)v31 + 297) - v40)) >> 16) + *((_DWORD *)v31 + 296);
-      *((_DWORD *)v31 + 296) = v40;
-      v32 = a21 >> 1;
-      v32 = ((*a11 * (__int64)v40) >> 16) + (a21 >> 1);
+      destination_buffer = (void *)(1300LL * j + a2);
+      state_address = &saved_alloca_result[14 * j];
+      *((_DWORD *)destination_buffer + 322) = 196314165 * *((_DWORD *)destination_buffer + 322) + 907633515;
+      record_pointer = (int *)((char *)destination_buffer + 4 * i + 60);
+      call_result = 16 * sub_1401D7000(record_pointer, a9, a22);
+      shifted_bits_5 = ((a23 * (__int64)*((int *)destination_buffer + 296)) >> 16) + *((_DWORD *)destination_buffer + 321);
+      shifted_bits_4 = ((a23 * (__int64)(*((_DWORD *)destination_buffer + 297) - shifted_bits_5)) >> 16) + *((_DWORD *)destination_buffer + 296);
+      *((_DWORD *)destination_buffer + 296) = shifted_bits_5;
+      shifted_bits_2 = a21 >> 1;
+      shifted_bits_2 = ((*a11 * (__int64)shifted_bits_5) >> 16) + (a21 >> 1);
       for ( k = 2; k < a21; k += 2 )
       {
-        v40 = ((a23 * (__int64)(*((_DWORD *)v31 + k + 296) - v36)) >> 16) + *((_DWORD *)v31 + k + 295);
-        *((_DWORD *)v31 + k + 295) = v36;
-        v32 += (a11[k - 1] * (__int64)v36) >> 16;
-        v36 = ((a23 * (__int64)(*((_DWORD *)v31 + k + 297) - v40)) >> 16) + *((_DWORD *)v31 + k + 296);
-        *((_DWORD *)v31 + k + 296) = v40;
-        v32 += (a11[k] * (__int64)v40) >> 16;
+        shifted_bits_5 = ((a23 * (__int64)(*((_DWORD *)destination_buffer + k + 296) - shifted_bits_4)) >> 16) + *((_DWORD *)destination_buffer + k + 295);
+        *((_DWORD *)destination_buffer + k + 295) = shifted_bits_4;
+        shifted_bits_2 += (a11[k - 1] * (__int64)shifted_bits_4) >> 16;
+        shifted_bits_4 = ((a23 * (__int64)(*((_DWORD *)destination_buffer + k + 297) - shifted_bits_5)) >> 16) + *((_DWORD *)destination_buffer + k + 296);
+        *((_DWORD *)destination_buffer + k + 296) = shifted_bits_5;
+        shifted_bits_2 += (a11[k] * (__int64)shifted_bits_5) >> 16;
       }
-      *((_DWORD *)v31 + a21 + 295) = v36;
-      v32 += (a11[a21 - 1] * (__int64)v36) >> 16;
-      v32 *= 2;
-      v32 += (a14 * (__int64)*((int *)v31 + 320)) >> 16;
-      v32 *= 4;
-      v47 = ((__int16)a15 * (__int64)*((int *)v31 + *a25 + 256)) >> 16;
-      v47 += (((__int64)a15 >> 16) * *((int *)v31 + 320)) >> 16;
-      v47 *= 4;
-      v40 = v53 + v48;
-      v36 = (((v53 + v48 - (v47 + v32)) >> 3) + 1) >> 1;
-      v42 = *(_DWORD *)(a4 + 4LL * i) - v36;
-      if ( *((int *)v31 + 322) < 0 )
-        v42 = -v42;
-      if ( v42 <= 30720 )
+      *((_DWORD *)destination_buffer + a21 + 295) = shifted_bits_4;
+      shifted_bits_2 += (a11[a21 - 1] * (__int64)shifted_bits_4) >> 16;
+      shifted_bits_2 *= 2;
+      shifted_bits_2 += (a14 * (__int64)*((int *)destination_buffer + 320)) >> 16;
+      shifted_bits_2 *= 4;
+      shifted_bits_9 = ((__int16)a15 * (__int64)*((int *)destination_buffer + *a25 + 256)) >> 16;
+      shifted_bits_9 += (((__int64)a15 >> 16) * *((int *)destination_buffer + 320)) >> 16;
+      shifted_bits_9 *= 4;
+      shifted_bits_5 = call_result + shifted_bits_10;
+      shifted_bits_4 = (((call_result + shifted_bits_10 - (shifted_bits_9 + shifted_bits_2)) >> 3) + 1) >> 1;
+      loaded_word = *(_DWORD *)(a4 + 4LL * i) - shifted_bits_4;
+      if ( *((int *)destination_buffer + 322) < 0 )
+        loaded_word = -loaded_word;
+      if ( loaded_word <= 30720 )
       {
-        if ( v42 >= -31744 )
-          v61 = v42;
+        if ( loaded_word >= -31744 )
+          saved_loaded_word = loaded_word;
         else
-          v61 = -31744;
-        v62 = v61;
+          saved_loaded_word = -31744;
+        cached_loaded_word = saved_loaded_word;
       }
       else
       {
-        v62 = 30720;
+        cached_loaded_word = 30720;
       }
-      v42 = v62;
-      v30 = v62 - a18;
-      v41 = (v62 - a18) >> 10;
+      loaded_word = cached_loaded_word;
+      shifted_bits = cached_loaded_word - a18;
+      shifted_bits_6 = (cached_loaded_word - a18) >> 10;
       if ( a17 > 2048 )
       {
-        v55 = a17 / 2 - 512;
-        if ( v30 <= v55 )
+        integer_quotient = a17 / 2 - 512;
+        if ( shifted_bits <= integer_quotient )
         {
-          if ( v30 >= -v55 )
+          if ( shifted_bits >= -integer_quotient )
           {
-            if ( v30 >= 0 )
-              v41 = 0;
+            if ( shifted_bits >= 0 )
+              shifted_bits_6 = 0;
             else
-              v41 = -1;
+              shifted_bits_6 = -1;
           }
           else
           {
-            v41 = (v55 + v30) >> 10;
+            shifted_bits_6 = (integer_quotient + shifted_bits) >> 10;
           }
         }
         else
         {
-          v41 = (v30 - v55) >> 10;
+          shifted_bits_6 = (shifted_bits - integer_quotient) >> 10;
         }
       }
-      if ( v41 <= 0 )
+      if ( shifted_bits_6 <= 0 )
       {
-        if ( v41 )
+        if ( shifted_bits_6 )
         {
-          if ( v41 == -1 )
+          if ( shifted_bits_6 == -1 )
           {
-            v38 = a18;
-            v30 = a18 - 944;
-            v44 = (__int16)a17 * (__int16)(944 - a18);
-            v43 = (__int16)a17 * (__int16)a18;
+            integer_sum = a18;
+            shifted_bits = a18 - 944;
+            shifted_bits_8 = (__int16)a17 * (__int16)(944 - a18);
+            shifted_bits_7 = (__int16)a17 * (__int16)a18;
           }
           else
           {
-            v30 = a18 + (v41 << 10) + 80;
-            v38 = v30 + 1024;
-            v44 = (__int16)a17 * (__int16)-(__int16)(a18 + ((_WORD)v41 << 10) + 80);
-            v43 = (__int16)a17 * (__int16)-(__int16)(a18 + ((_WORD)v41 << 10) + 80 + 1024);
+            shifted_bits = a18 + (shifted_bits_6 << 10) + 80;
+            integer_sum = shifted_bits + 1024;
+            shifted_bits_8 = (__int16)a17 * (__int16)-(__int16)(a18 + ((_WORD)shifted_bits_6 << 10) + 80);
+            shifted_bits_7 = (__int16)a17 * (__int16)-(__int16)(a18 + ((_WORD)shifted_bits_6 << 10) + 80 + 1024);
           }
         }
         else
         {
-          v30 = a18;
-          v38 = a18 + 944;
-          v44 = (__int16)a17 * (__int16)a18;
-          v43 = (__int16)a17 * (__int16)(a18 + 944);
+          shifted_bits = a18;
+          integer_sum = a18 + 944;
+          shifted_bits_8 = (__int16)a17 * (__int16)a18;
+          shifted_bits_7 = (__int16)a17 * (__int16)(a18 + 944);
         }
       }
       else
       {
-        v30 = a18 + (v41 << 10) - 80;
-        v38 = v30 + 1024;
-        v44 = (__int16)a17 * (__int16)v30;
-        v43 = (__int16)a17 * (__int16)(v30 + 1024);
+        shifted_bits = a18 + (shifted_bits_6 << 10) - 80;
+        integer_sum = shifted_bits + 1024;
+        shifted_bits_8 = (__int16)a17 * (__int16)shifted_bits;
+        shifted_bits_7 = (__int16)a17 * (__int16)(shifted_bits + 1024);
       }
-      v44 = ((__int16)(v42 - v30) * (__int16)(v42 - v30) + v44) >> 10;
-      v52 = v42 - v38;
-      v43 = ((__int16)(v42 - v38) * (__int16)(v42 - v38) + v43) >> 10;
-      if ( v44 >= v43 )
+      shifted_bits_8 = ((__int16)(loaded_word - shifted_bits) * (__int16)(loaded_word - shifted_bits) + shifted_bits_8) >> 10;
+      unused_written_slot = loaded_word - integer_sum;
+      shifted_bits_7 = ((__int16)(loaded_word - integer_sum) * (__int16)(loaded_word - integer_sum) + shifted_bits_7) >> 10;
+      if ( shifted_bits_8 >= shifted_bits_7 )
       {
-        v34[1] = v43 + *((_DWORD *)v31 + 324);
-        v34[8] = v44 + *((_DWORD *)v31 + 324);
-        *v34 = v38;
-        v34[7] = v30;
+        state_address[1] = shifted_bits_7 + *((_DWORD *)destination_buffer + 324);
+        state_address[8] = shifted_bits_8 + *((_DWORD *)destination_buffer + 324);
+        *state_address = integer_sum;
+        state_address[7] = shifted_bits;
       }
       else
       {
-        v34[1] = v44 + *((_DWORD *)v31 + 324);
-        v34[8] = v43 + *((_DWORD *)v31 + 324);
-        *v34 = v30;
-        v34[7] = v38;
+        state_address[1] = shifted_bits_8 + *((_DWORD *)destination_buffer + 324);
+        state_address[8] = shifted_bits_7 + *((_DWORD *)destination_buffer + 324);
+        *state_address = shifted_bits;
+        state_address[7] = integer_sum;
       }
-      v46 = 16 * *v34;
-      if ( *((int *)v31 + 322) < 0 )
-        v46 = -v46;
-      v50 = v33 + v46;
-      v51 = v53 + v33 + v46;
-      v34[4] = v51 - 16 * *(_DWORD *)(a4 + 4LL * i);
-      v54 = v34[4] - v32;
-      v34[5] = v54 - v47;
-      v34[3] = v54;
-      v34[6] = v50;
-      v34[2] = v51;
-      v46 = 16 * v34[7];
-      if ( *((int *)v31 + 322) < 0 )
-        v46 = -v46;
-      v50 = v33 + v46;
-      v51 = v53 + v33 + v46;
-      v34[11] = v51 - 16 * *(_DWORD *)(a4 + 4LL * i);
-      v54 = v34[11] - v32;
-      v34[12] = v54 - v47;
-      v34[10] = v54;
-      v34[13] = v50;
-      v34[9] = v51;
+      scaled_index_2 = 16 * *state_address;
+      if ( *((int *)destination_buffer + 322) < 0 )
+        scaled_index_2 = -scaled_index_2;
+      integer_sum_2 = shifted_bits_3 + scaled_index_2;
+      integer_sum_3 = call_result + shifted_bits_3 + scaled_index_2;
+      state_address[4] = integer_sum_3 - 16 * *(_DWORD *)(a4 + 4LL * i);
+      integer_difference = state_address[4] - shifted_bits_2;
+      state_address[5] = integer_difference - shifted_bits_9;
+      state_address[3] = integer_difference;
+      state_address[6] = integer_sum_2;
+      state_address[2] = integer_sum_3;
+      scaled_index_2 = 16 * state_address[7];
+      if ( *((int *)destination_buffer + 322) < 0 )
+        scaled_index_2 = -scaled_index_2;
+      integer_sum_2 = shifted_bits_3 + scaled_index_2;
+      integer_sum_3 = call_result + shifted_bits_3 + scaled_index_2;
+      state_address[11] = integer_sum_3 - 16 * *(_DWORD *)(a4 + 4LL * i);
+      integer_difference = state_address[11] - shifted_bits_2;
+      state_address[12] = integer_difference - shifted_bits_9;
+      state_address[10] = integer_difference;
+      state_address[13] = integer_sum_2;
+      state_address[9] = integer_sum_3;
     }
     *a25 = (*a25 - 1) % 40;
     if ( *a25 < 0 )
       *a25 += 40;
-    v39 = (a26 + *a25) % 40;
-    v49 = v45[1];
-    v57 = 0;
+    scaled_index = (a26 + *a25) % 40;
+    scaled_index_3 = saved_alloca_result[1];
+    cached_j_2 = 0;
     for ( j = 1; j < a24; ++j )
     {
-      if ( v45[14 * j + 1] < v49 )
+      if ( saved_alloca_result[14 * j + 1] < scaled_index_3 )
       {
-        v49 = v45[14 * j + 1];
-        v57 = j;
+        scaled_index_3 = saved_alloca_result[14 * j + 1];
+        cached_j_2 = j;
       }
     }
-    v66 = *(_DWORD *)(1300LL * v57 + a2 + 4LL * v39 + 384);
+    loaded_word_2 = *(_DWORD *)(1300LL * cached_j_2 + a2 + 4LL * scaled_index + 384);
     for ( j = 0; j < a24; ++j )
     {
-      if ( *(_DWORD *)(1300LL * j + a2 + 4LL * v39 + 384) != v66 )
+      if ( *(_DWORD *)(1300LL * j + a2 + 4LL * scaled_index + 384) != loaded_word_2 )
       {
-        v45[14 * j + 1] += 0x7FFFFFF;
-        v45[14 * j + 8] += 0x7FFFFFF;
+        saved_alloca_result[14 * j + 1] += 0x7FFFFFF;
+        saved_alloca_result[14 * j + 8] += 0x7FFFFFF;
       }
     }
-    v58 = v45[1];
-    v49 = v45[8];
-    v56 = 0;
-    v59 = 0;
+    scaled_index_4 = saved_alloca_result[1];
+    scaled_index_3 = saved_alloca_result[8];
+    cached_j = 0;
+    cached_j_3 = 0;
     for ( j = 1; j < a24; ++j )
     {
-      if ( v45[14 * j + 1] > v58 )
+      if ( saved_alloca_result[14 * j + 1] > scaled_index_4 )
       {
-        v58 = v45[14 * j + 1];
-        v56 = j;
+        scaled_index_4 = saved_alloca_result[14 * j + 1];
+        cached_j = j;
       }
-      if ( v45[14 * j + 8] < v49 )
+      if ( saved_alloca_result[14 * j + 8] < scaled_index_3 )
       {
-        v49 = v45[14 * j + 8];
-        v59 = j;
+        scaled_index_3 = saved_alloca_result[14 * j + 8];
+        cached_j_3 = j;
       }
     }
-    if ( v49 < v58 )
+    if ( scaled_index_3 < scaled_index_4 )
     {
-      v69 = (void *)(1300LL * v56 + a2 + 4LL * i);
-      crt_memcpy((__m128i *)v69, (     __m128i *)(1300LL * v59 + a2 + 4LL * i), 1300 - 4LL * i);
-      crt_memcpy((__m128i *)&v45[14 * v56], (     __m128i *)&v45[14 * v59 + 7], 0x1Cu);
+      destination_buffer_2 = (void *)(1300LL * cached_j + a2 + 4LL * i);
+      crt_memcpy((__m128i *)destination_buffer_2, (     __m128i *)(1300LL * cached_j_3 + a2 + 4LL * i), 1300 - 4LL * i);
+      crt_memcpy((__m128i *)&saved_alloca_result[14 * cached_j], (     __m128i *)&saved_alloca_result[14 * cached_j_3 + 7], 0x1Cu);
     }
-    v31 = (void *)(1300LL * v57 + a2);
+    destination_buffer = (void *)(1300LL * cached_j_2 + a2);
     if ( a20 > 0 || i >= a26 )
     {
-      *(_BYTE *)(a5 + i - a26) = ((*((int *)v31 + v39 + 136) >> 9) + 1) >> 1;
-      if ( (((int)((*(int *)(a8 + 4LL * v39) * (__int64)*((int *)v31 + v39 + 176)) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+      *(_BYTE *)(a5 + i - a26) = ((*((int *)destination_buffer + scaled_index + 136) >> 9) + 1) >> 1;
+      if ( (((int)((*(int *)(a8 + 4LL * scaled_index) * (__int64)*((int *)destination_buffer + scaled_index + 176)) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
       {
-        if ( (((int)((*(int *)(a8 + 4LL * v39) * (__int64)*((int *)v31 + v39 + 176)) >> 16) >> 7) + 1) >> 1 >= -32768 )
-          v63 = (((int)((*(int *)(a8 + 4LL * v39) * (__int64)*((int *)v31 + v39 + 176)) >> 16) >> 7) + 1) >> 1;
+        if ( (((int)((*(int *)(a8 + 4LL * scaled_index) * (__int64)*((int *)destination_buffer + scaled_index + 176)) >> 16) >> 7) + 1) >> 1 >= -32768 )
+          shifted_bits_11 = (((int)((*(int *)(a8 + 4LL * scaled_index) * (__int64)*((int *)destination_buffer + scaled_index + 176)) >> 16) >> 7) + 1) >> 1;
         else
-          v63 = -32768;
-        v64 = v63;
+          shifted_bits_11 = -32768;
+        saved_shifted_bits = shifted_bits_11;
       }
       else
       {
-        v64 = 0x7FFF;
+        saved_shifted_bits = 0x7FFF;
       }
-      *(_WORD *)(a6 + 2LL * (i - a26)) = v64;
-      *(_DWORD *)(a1 + 4LL * (*(_DWORD *)(a1 + 4336) - a26) + 1280) = *((_DWORD *)v31 + v39 + 256);
-      *(_DWORD *)(a7 + 4LL * (*(_DWORD *)(a1 + 4332) - a26)) = *((_DWORD *)v31 + v39 + 216);
+      *(_WORD *)(a6 + 2LL * (i - a26)) = saved_shifted_bits;
+      *(_DWORD *)(a1 + 4LL * (*(_DWORD *)(a1 + 4336) - a26) + 1280) = *((_DWORD *)destination_buffer + scaled_index + 256);
+      *(_DWORD *)(a7 + 4LL * (*(_DWORD *)(a1 + 4332) - a26)) = *((_DWORD *)destination_buffer + scaled_index + 216);
     }
     ++*(_DWORD *)(a1 + 4336);
     ++*(_DWORD *)(a1 + 4332);
     for ( j = 0; j < a24; ++j )
     {
-      v31 = (void *)(1300LL * j + a2);
-      v34 = &v45[14 * j];
-      *((_DWORD *)v31 + 320) = v34[3];
-      *((_DWORD *)v31 + 321) = v34[4];
-      *((_DWORD *)v31 + i + 16) = v34[2];
-      *((_DWORD *)v31 + *a25 + 176) = v34[2];
-      *((_DWORD *)v31 + *a25 + 136) = *v34;
-      *((_DWORD *)v31 + *a25 + 216) = 2 * v34[6];
-      *((_DWORD *)v31 + *a25 + 256) = v34[5];
-      *((_DWORD *)v31 + 322) += ((*v34 >> 9) + 1) >> 1;
-      *((_DWORD *)v31 + *a25 + 96) = *((_DWORD *)v31 + 322);
-      *((_DWORD *)v31 + 324) = v34[1];
+      destination_buffer = (void *)(1300LL * j + a2);
+      state_address = &saved_alloca_result[14 * j];
+      *((_DWORD *)destination_buffer + 320) = state_address[3];
+      *((_DWORD *)destination_buffer + 321) = state_address[4];
+      *((_DWORD *)destination_buffer + i + 16) = state_address[2];
+      *((_DWORD *)destination_buffer + *a25 + 176) = state_address[2];
+      *((_DWORD *)destination_buffer + *a25 + 136) = *state_address;
+      *((_DWORD *)destination_buffer + *a25 + 216) = 2 * state_address[6];
+      *((_DWORD *)destination_buffer + *a25 + 256) = state_address[5];
+      *((_DWORD *)destination_buffer + 322) += ((*state_address >> 9) + 1) >> 1;
+      *((_DWORD *)destination_buffer + *a25 + 96) = *((_DWORD *)destination_buffer + 322);
+      *((_DWORD *)destination_buffer + 324) = state_address[1];
     }
-    *(_DWORD *)(a8 + 4LL * *a25) = v67;
+    *(_DWORD *)(a8 + 4LL * *a25) = shifted_bits_12;
   }
   for ( j = 0; j < a24; ++j )
   {
-    v31 = (void *)(1300LL * j + a2);
-    crt_memcpy((__m128i *)v31, (     __m128i *)((char *)v31 + 4 * a19), 0x40u);
+    destination_buffer = (void *)(1300LL * j + a2);
+    crt_memcpy((__m128i *)destination_buffer, (     __m128i *)((char *)destination_buffer + 4 * a19), 0x40u);
   }
   return 0; /* no caller reads the result */
 }
@@ -7504,66 +7504,66 @@ __int64            sub_1401D9A80(__int64 a1,      __m128i *a2)
   int j;
   int m;
   int k;
-  int v6;
+  int saved_running_total;
   int i;
-  __int64 v8;
-  int v9;
-  int v10;
+  __int64 shifted_bits;
+  int running_total;
+  int cached_running_total;
 
-  v8 = a1 + 4196;
+  shifted_bits = a1 + 4196;
   *(_DWORD *)(a1 + 4188) = *(char *)(a1 + 2789);
-  v6 = 0;
+  saved_running_total = 0;
   if ( *(_BYTE *)(a1 + 2789) == 2 )
   {
     for ( i = 0; *(_DWORD *)(a1 + 2332) * i < SR_VEC_PTR_LANES(128, a2, i32)[*(_DWORD *)(a1 + 2324) - 1] && i != *(_DWORD *)(a1 + 2324); ++i )
     {
-      v9 = 0;
+      running_total = 0;
       for ( j = 0; j < 5; ++j )
-        v9 += SR_VEC_LANES(128, a2[6], i16)[5 * (*(_DWORD *)(a1 + 2324) - 1 - i) + j];
-      if ( v9 > v6 )
+        running_total += SR_VEC_LANES(128, a2[6], i16)[5 * (*(_DWORD *)(a1 + 2324) - 1 - i) + j];
+      if ( running_total > saved_running_total )
       {
-        v6 = v9;
+        saved_running_total = running_total;
         crt_memcpy(
-          (__m128i *)(v8 + 4),
+          (__m128i *)(shifted_bits + 4),
           (     __m128i *)((char *)a2 + 10 * (__int16)(*(_DWORD *)(a1 + 2324) - 1 - i) + 96),
           0xAu);
-        *(_DWORD *)v8 = SR_VEC_PTR_LANES(128, a2, i32)[*(_DWORD *)(a1 + 2324) - 1 - i] << 8;
+        *(_DWORD *)shifted_bits = SR_VEC_PTR_LANES(128, a2, i32)[*(_DWORD *)(a1 + 2324) - 1 - i] << 8;
       }
     }
-    crt_memset((void *)(uintptr_t)((_WORD *)(v8 + 4)), 0, 0xAu);
-    *(_WORD *)(v8 + 8) = v6;
-    if ( v6 >= 11469 )
+    crt_memset((void *)(uintptr_t)((_WORD *)(shifted_bits + 4)), 0, 0xAu);
+    *(_WORD *)(shifted_bits + 8) = saved_running_total;
+    if ( saved_running_total >= 11469 )
     {
-      if ( v6 > 15565 )
+      if ( saved_running_total > 15565 )
       {
         for ( k = 0; k < 5; ++k )
-          *(_WORD *)(v8 + 2LL * k + 4) = ((__int16)(255016960 / v6) * *(__int16 *)(v8 + 2LL * k + 4)) >> 14;
+          *(_WORD *)(shifted_bits + 2LL * k + 4) = ((__int16)(255016960 / saved_running_total) * *(__int16 *)(shifted_bits + 2LL * k + 4)) >> 14;
       }
     }
     else
     {
-      if ( v6 <= 1 )
-        v10 = 1;
+      if ( saved_running_total <= 1 )
+        cached_running_total = 1;
       else
-        v10 = v6;
+        cached_running_total = saved_running_total;
       for ( m = 0; m < 5; ++m )
-        *(_WORD *)(v8 + 2LL * m + 4) = ((__int16)(11744256 / v10) * *(__int16 *)(v8 + 2LL * m + 4)) >> 10;
+        *(_WORD *)(shifted_bits + 2LL * m + 4) = ((__int16)(11744256 / cached_running_total) * *(__int16 *)(shifted_bits + 2LL * m + 4)) >> 10;
     }
   }
   else
   {
-    *(_DWORD *)v8 = 4608 * *(__int16 *)(a1 + 2316);
+    *(_DWORD *)shifted_bits = 4608 * *(__int16 *)(a1 + 2316);
     crt_memset((void *)(uintptr_t)((_WORD *)(a1 + 4200)), 0, 0xAu);
   }
-  crt_memcpy((__m128i *)(v8 + 14), a2 + 4, 2LL * *(int *)(a1 + 2340));
-  *(_WORD *)(v8 + 68) = SR_VEC_LANES(128, a2[8], i16)[4];
+  crt_memcpy((__m128i *)(shifted_bits + 14), a2 + 4, 2LL * *(int *)(a1 + 2340));
+  *(_WORD *)(shifted_bits + 68) = SR_VEC_LANES(128, a2[8], i16)[4];
   crt_memcpy(
-    (__m128i *)(v8 + 72),
+    (__m128i *)(shifted_bits + 72),
     (     __m128i *)((char *)&SR_VEC_PTR_LANES(128, a2, u64)[1] + 4 * *(_DWORD *)(a1 + 2324)),
     8u);
-  *(_DWORD *)(v8 + 88) = *(_DWORD *)(a1 + 2332);
-  *(_DWORD *)(v8 + 84) = *(_DWORD *)(a1 + 2324);
-  return v8;
+  *(_DWORD *)(shifted_bits + 88) = *(_DWORD *)(a1 + 2332);
+  *(_DWORD *)(shifted_bits + 84) = *(_DWORD *)(a1 + 2324);
+  return shifted_bits;
 }
 
 // 1401D9CBD: conditional instruction was optimized away because %var_44.4>=3CCE
@@ -7571,318 +7571,318 @@ __int64            sub_1401D9A80(__int64 a1,      __m128i *a2)
 //----- (00000001401D9E20) ----------------------------------------------------
 __int64            sub_1401D9E20(__int64 a1, __int64 a2, __int64 a3)
 {
-  unsigned __int64 v3;
-  __int64 v4;
-  void *v5;
-  unsigned __int64 v6;
-  void *v7;
-  int v8;
-  int v9;
-  int v10;
+  unsigned __int64 loaded_word;
+  __int64 integer_sum;
+  void *alloca_result;
+  unsigned __int64 loaded_word_2;
+  void *alloca_result_2;
+  int call_result;
+  int loaded_word_3;
+  int loaded_word_4;
   int i;
-  int v13;
-  signed __int16 v14;
-  __m128i *v15;
-  int *v16;
-  int v17;
+  int shifted_bits;
+  signed __int16 shifted_bits_2;
+  __m128i *destination_buffer;
+  int *running_total;
+  int shifted_bits_3;
   int k;
-  int v19;
-  signed int v20;
-  int v21;
-  int v22;
-  int v23;
-  int v24;
-  int v25;
-  int v26;
-  int v27;
-  __int16 *v28;
+  int state_address;
+  signed int call_result_2;
+  int shifted_bits_4;
+  int shifted_bits_5;
+  int call_result_3;
+  int element_index;
+  int shifted_bits_6;
+  int scaled_index;
+  int shifted_bits_7;
+  __int16 *record_pointer;
   int j;
-  int *v30;
-  int v31;
-  int v32;
-  __int32 v33;
-  int v34;
-  int v35;
-  int v36;
-  int v37;
-  __int32 v38;
-  __int32 v39;
-  int v40;
-  int v41;
-  int v42;
-  int v43;
-  int v44;
-  int v45;
-  int v46;
-  int v47;
-  int v48;
-  int v49;
-  int v50;
-  int v51;
-  int v52;
-  int *v53;
-  int v54;
-  int v55;
-  int v56;
-  int v57;
-  int v58;
-  unsigned int v59;
-  int *v60;
-  __int64 v61;
-  _WORD *v62;
-  __int16 v63[16];
-  __int64 v64;
+  int *buffer_cursor;
+  int saved_shifted_bits;
+  int cached_shifted_bits;
+  __int32 scaled_index_2;
+  int saved_shifted_bits_2;
+  int cached_shifted_bits_2;
+  int saved_shifted_bits_3;
+  int cached_shifted_bits_3;
+  __int32 scaled_index_3;
+  __int32 cached_scaled_index;
+  int shifted_bits_8;
+  int saved_shifted_bits_4;
+  int shifted_bits_9;
+  int saved_shifted_bits_5;
+  int shifted_bits_10;
+  int saved_shifted_bits_6;
+  int integer_difference;
+  int cached_integer_difference;
+  int cached_call_result;
+  int saved_shifted_bits_7;
+  int cached_shifted_bits_4;
+  int saved_shifted_bits_8;
+  int cached_shifted_bits_5;
+  int *saved_alloca_result;
+  int loaded_word_5;
+  int callee_output_word;
+  int callee_output_word_2;
+  int callee_output_word_3;
+  int callee_output_word_4;
+  unsigned int loaded_word_6;
+  int *saved_alloca_result_2;
+  __int64 scaled_index_4;
+  _WORD *record_pointer_2;
+  __int16 destination_buffer_2[16];
+  __int64 unused_local;
 
-  v16 = (int *)(a1 + 4196);
-  v3 = 4LL * (*(_DWORD *)(a1 + 2328) + *(_DWORD *)(a1 + 2336));
-  v4 = v3 + 15;
-  if ( v3 + 15 <= v3 )
-    v4 = 0xFFFFFFFFFFFFFF0LL;
-  v5 = alloca(v4 & 0xFFFFFFFFFFFFFFF0uLL);
-  v53 = v5;
-  v6 = 2LL * *(int *)(a1 + 2336) + 15;
-  if ( v6 <= 2LL * *(int *)(a1 + 2336) )
-    v6 = 0xFFFFFFFFFFFFFF0LL;
-  v7 = alloca(v6 & 0xFFFFFFFFFFFFFFF0uLL);
-  v60 = v7;
-  v21 = v16[18] >> 6;
-  v22 = v16[19] >> 6;
+  running_total = (int *)(a1 + 4196);
+  loaded_word = 4LL * (*(_DWORD *)(a1 + 2328) + *(_DWORD *)(a1 + 2336));
+  integer_sum = loaded_word + 15;
+  if ( loaded_word + 15 <= loaded_word )
+    integer_sum = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(integer_sum & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result;
+  loaded_word_2 = 2LL * *(int *)(a1 + 2336) + 15;
+  if ( loaded_word_2 <= 2LL * *(int *)(a1 + 2336) )
+    loaded_word_2 = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result_2 = alloca(loaded_word_2 & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result_2 = alloca_result_2;
+  shifted_bits_4 = running_total[18] >> 6;
+  shifted_bits_5 = running_total[19] >> 6;
   if ( *(_DWORD *)(a1 + 2376) )
-    crt_memset((void *)(uintptr_t)((_WORD *)v16 + 7), 0, 0x20u);
-  sub_1401DAE50(&v55, &v56, &v58, &v57, a1 + 4, (__int64)&v21, *(_DWORD *)(a1 + 2332), *(_DWORD *)(a1 + 2324));
-  if ( v55 >> v57 >= v58 >> v56 )
-    v8 = sub_1401BE3A0(0, v16[22] * v16[21] - 128);
+    crt_memset((void *)(uintptr_t)((_WORD *)running_total + 7), 0, 0x20u);
+  sub_1401DAE50(&callee_output_word, &callee_output_word_2, &callee_output_word_4, &callee_output_word_3, a1 + 4, (__int64)&shifted_bits_4, *(_DWORD *)(a1 + 2332), *(_DWORD *)(a1 + 2324));
+  if ( callee_output_word >> callee_output_word_3 >= callee_output_word_4 >> callee_output_word_2 )
+    call_result = sub_1401BE3A0(0, running_total[22] * running_total[21] - 128);
   else
-    v8 = sub_1401BE3A0(0, v16[22] * (v16[21] - 1) - 128);
-  v61 = a1 + 4LL * v8 + 4;
-  v28 = (__int16 *)(v16 + 1);
-  v14 = *((_WORD *)v16 + 28);
-  v54 = word_14027A0B4[(int)sub_1401BE320(1u, *(_DWORD *)(a1 + 4184))];
+    call_result = sub_1401BE3A0(0, running_total[22] * (running_total[21] - 1) - 128);
+  scaled_index_4 = a1 + 4LL * call_result + 4;
+  record_pointer = (__int16 *)(running_total + 1);
+  shifted_bits_2 = *((_WORD *)running_total + 28);
+  loaded_word_5 = word_14027A0B4[(int)sub_1401BE320(1u, *(_DWORD *)(a1 + 4184))];
   if ( *(_DWORD *)(a1 + 4188) == 2 )
-    v25 = word_14027A0B8[(int)sub_1401BE320(1u, *(_DWORD *)(a1 + 4184))];
+    shifted_bits_6 = word_14027A0B8[(int)sub_1401BE320(1u, *(_DWORD *)(a1 + 4184))];
   else
-    v25 = word_14027A114[(int)sub_1401BE320(1u, *(_DWORD *)(a1 + 4184))];
-  sub_1401BBDE0((__int64)v16 + 14, *(_DWORD *)(a1 + 2340), 64881);
-  crt_memcpy((__m128i *)v63, (     __m128i *)((char *)v16 + 14), 2LL * *(int *)(a1 + 2340));
+    shifted_bits_6 = word_14027A114[(int)sub_1401BE320(1u, *(_DWORD *)(a1 + 4184))];
+  sub_1401BBDE0((__int64)running_total + 14, *(_DWORD *)(a1 + 2340), 64881);
+  crt_memcpy((__m128i *)destination_buffer_2, (     __m128i *)((char *)running_total + 14), 2LL * *(int *)(a1 + 2340));
   if ( !*(_DWORD *)(a1 + 4184) )
   {
-    v14 = 0x4000;
+    shifted_bits_2 = 0x4000;
     if ( *(_DWORD *)(a1 + 4188) == 2 )
     {
       for ( i = 0; i < 5; ++i )
-        v14 -= v28[i];
-      v14 = sub_1401BE3E0(0xCCDu, v14);
-      v14 = (*((__int16 *)v16 + 34) * v14) >> 14;
+        shifted_bits_2 -= record_pointer[i];
+      shifted_bits_2 = sub_1401BE3E0(0xCCDu, shifted_bits_2);
+      shifted_bits_2 = (*((__int16 *)running_total + 34) * shifted_bits_2) >> 14;
     }
     else
     {
-      v59 = sub_1401BBF70((__int64)v16 + 14, *(_DWORD *)(a1 + 2340));
-      v20 = sub_1401BE360(0x8000000u, v59);
-      v20 = 8 * sub_1401BE420(0x400000u, v20);
-      v25 = (int)(((__int16)v25 * (__int64)v20) >> 16) >> 14;
+      loaded_word_6 = sub_1401BBF70((__int64)running_total + 14, *(_DWORD *)(a1 + 2340));
+      call_result_2 = sub_1401BE360(0x8000000u, loaded_word_6);
+      call_result_2 = 8 * sub_1401BE420(0x400000u, call_result_2);
+      shifted_bits_6 = (int)(((__int16)shifted_bits_6 * (__int64)call_result_2) >> 16) >> 14;
     }
   }
-  v26 = v16[13];
-  v27 = ((*v16 >> 7) + 1) >> 1;
-  v24 = *(_DWORD *)(a1 + 2336);
-  v19 = *(_DWORD *)(a1 + 2336) - v27 - *(_DWORD *)(a1 + 2340) - 2;
-  v9 = *(_DWORD *)(a1 + 2336) - v19;
-  v62 = (_WORD *)v60 + v19;
-  sub_1401BBB40(v62, a1 + 2LL * v19 + 1348, v63, v9, *(_DWORD *)(a1 + 2340));
-  v23 = sub_1401BE820(v16[19], 46);
-  if ( v23 >= 0x3FFFFFFF )
-    v48 = 0x3FFFFFFF;
+  scaled_index = running_total[13];
+  shifted_bits_7 = ((*running_total >> 7) + 1) >> 1;
+  element_index = *(_DWORD *)(a1 + 2336);
+  state_address = *(_DWORD *)(a1 + 2336) - shifted_bits_7 - *(_DWORD *)(a1 + 2340) - 2;
+  loaded_word_3 = *(_DWORD *)(a1 + 2336) - state_address;
+  record_pointer_2 = (_WORD *)saved_alloca_result_2 + state_address;
+  sub_1401BBB40(record_pointer_2, a1 + 2LL * state_address + 1348, destination_buffer_2, loaded_word_3, *(_DWORD *)(a1 + 2340));
+  call_result_3 = sub_1401BE820(running_total[19], 46);
+  if ( call_result_3 >= 0x3FFFFFFF )
+    cached_call_result = 0x3FFFFFFF;
   else
-    v48 = v23;
-  v23 = v48;
-  for ( i = *(_DWORD *)(a1 + 2340) + v19; i < *(_DWORD *)(a1 + 2336); ++i )
-    v53[i] = (*((__int16 *)v60 + i) * (__int64)v23) >> 16;
+    cached_call_result = call_result_3;
+  call_result_3 = cached_call_result;
+  for ( i = *(_DWORD *)(a1 + 2340) + state_address; i < *(_DWORD *)(a1 + 2336); ++i )
+    saved_alloca_result[i] = (*((__int16 *)saved_alloca_result_2 + i) * (__int64)call_result_3) >> 16;
   for ( j = 0; j < *(_DWORD *)(a1 + 2324); ++j )
   {
-    v30 = &v53[v24 - v27 + 2];
+    buffer_cursor = &saved_alloca_result[element_index - shifted_bits_7 + 2];
     for ( i = 0; i < *(_DWORD *)(a1 + 2332); ++i )
     {
-      v17 = 2;
-      v17 = ((*v28 * (__int64)*v30) >> 16) + 2;
-      v17 += (v28[1] * (__int64)*(v30 - 1)) >> 16;
-      v17 += (v28[2] * (__int64)*(v30 - 2)) >> 16;
-      v17 += (v28[3] * (__int64)*(v30 - 3)) >> 16;
-      v17 += (v28[4] * (__int64)*(v30 - 4)) >> 16;
-      ++v30;
-      v26 = 196314165 * v26 + 907633515;
-      v19 = (v26 >> 25) & 0x7F;
-      v53[v24++] = 4 * (((v14 * (__int64)*(int *)(v61 + 4LL * v19)) >> 16) + v17);
+      shifted_bits_3 = 2;
+      shifted_bits_3 = ((*record_pointer * (__int64)*buffer_cursor) >> 16) + 2;
+      shifted_bits_3 += (record_pointer[1] * (__int64)*(buffer_cursor - 1)) >> 16;
+      shifted_bits_3 += (record_pointer[2] * (__int64)*(buffer_cursor - 2)) >> 16;
+      shifted_bits_3 += (record_pointer[3] * (__int64)*(buffer_cursor - 3)) >> 16;
+      shifted_bits_3 += (record_pointer[4] * (__int64)*(buffer_cursor - 4)) >> 16;
+      ++buffer_cursor;
+      scaled_index = 196314165 * scaled_index + 907633515;
+      state_address = (scaled_index >> 25) & 0x7F;
+      saved_alloca_result[element_index++] = 4 * (((shifted_bits_2 * (__int64)*(int *)(scaled_index_4 + 4LL * state_address)) >> 16) + shifted_bits_3);
     }
     for ( k = 0; k < 5; ++k )
-      v28[k] = (v28[k] * (__int16)v54) >> 15;
+      record_pointer[k] = (record_pointer[k] * (__int16)loaded_word_5) >> 15;
     if ( *(_BYTE *)(a1 + 2789) )
-      v14 = ((__int16)v25 * v14) >> 15;
-    *v16 += (655LL * *v16) >> 16;
-    v10 = sub_1401BE360(*v16, 4608 * *(__int16 *)(a1 + 2316));
-    *v16 = v10;
-    v27 = ((*v16 >> 7) + 1) >> 1;
+      shifted_bits_2 = ((__int16)shifted_bits_6 * shifted_bits_2) >> 15;
+    *running_total += (655LL * *running_total) >> 16;
+    loaded_word_4 = sub_1401BE360(*running_total, 4608 * *(__int16 *)(a1 + 2316));
+    *running_total = loaded_word_4;
+    shifted_bits_7 = ((*running_total >> 7) + 1) >> 1;
   }
-  v15 = (__m128i *)&v53[*(_DWORD *)(a1 + 2336) - 16];
-  crt_memcpy(v15, (     __m128i *)(a1 + 1284), 0x40u);
+  destination_buffer = (__m128i *)&saved_alloca_result[*(_DWORD *)(a1 + 2336) - 16];
+  crt_memcpy(destination_buffer, (     __m128i *)(a1 + 1284), 0x40u);
   for ( i = 0; i < *(_DWORD *)(a1 + 2328); ++i )
   {
-    v13 = *(int *)(a1 + 2340) >> 1;
-    v13 += (v63[0] * (__int64)SR_VEC_LANES(128, v15[3], i32)[i + 3]) >> 16;
-    v13 += (v63[1] * (__int64)SR_VEC_LANES(128, v15[3], i32)[i + 2]) >> 16;
-    v13 += (v63[2] * (__int64)SR_VEC_LANES(128, v15[3], i32)[i + 1]) >> 16;
-    v13 += (v63[3] * (__int64)SR_VEC_LANES(128, v15[3], i32)[i]) >> 16;
-    v13 += (v63[4] * (__int64)SR_VEC_LANES(128, v15[2], i32)[i + 3]) >> 16;
-    v13 += (v63[5] * (__int64)SR_VEC_LANES(128, v15[2], i32)[i + 2]) >> 16;
-    v13 += (v63[6] * (__int64)SR_VEC_LANES(128, v15[2], i32)[i + 1]) >> 16;
-    v13 += (v63[7] * (__int64)SR_VEC_LANES(128, v15[2], i32)[i]) >> 16;
-    v13 += (v63[8] * (__int64)SR_VEC_LANES(128, v15[1], i32)[i + 3]) >> 16;
-    v13 += (v63[9] * (__int64)SR_VEC_LANES(128, v15[1], i32)[i + 2]) >> 16;
+    shifted_bits = *(int *)(a1 + 2340) >> 1;
+    shifted_bits += (destination_buffer_2[0] * (__int64)SR_VEC_LANES(128, destination_buffer[3], i32)[i + 3]) >> 16;
+    shifted_bits += (destination_buffer_2[1] * (__int64)SR_VEC_LANES(128, destination_buffer[3], i32)[i + 2]) >> 16;
+    shifted_bits += (destination_buffer_2[2] * (__int64)SR_VEC_LANES(128, destination_buffer[3], i32)[i + 1]) >> 16;
+    shifted_bits += (destination_buffer_2[3] * (__int64)SR_VEC_LANES(128, destination_buffer[3], i32)[i]) >> 16;
+    shifted_bits += (destination_buffer_2[4] * (__int64)SR_VEC_LANES(128, destination_buffer[2], i32)[i + 3]) >> 16;
+    shifted_bits += (destination_buffer_2[5] * (__int64)SR_VEC_LANES(128, destination_buffer[2], i32)[i + 2]) >> 16;
+    shifted_bits += (destination_buffer_2[6] * (__int64)SR_VEC_LANES(128, destination_buffer[2], i32)[i + 1]) >> 16;
+    shifted_bits += (destination_buffer_2[7] * (__int64)SR_VEC_LANES(128, destination_buffer[2], i32)[i]) >> 16;
+    shifted_bits += (destination_buffer_2[8] * (__int64)SR_VEC_LANES(128, destination_buffer[1], i32)[i + 3]) >> 16;
+    shifted_bits += (destination_buffer_2[9] * (__int64)SR_VEC_LANES(128, destination_buffer[1], i32)[i + 2]) >> 16;
     for ( k = 10; k < *(_DWORD *)(a1 + 2340); ++k )
-      v13 += (v63[k] * (__int64)SR_VEC_PTR_LANES(128, v15, i32)[i + 16 - k - 1]) >> 16;
-    if ( v13 <= 0x7FFFFFF )
+      shifted_bits += (destination_buffer_2[k] * (__int64)SR_VEC_PTR_LANES(128, destination_buffer, i32)[i + 16 - k - 1]) >> 16;
+    if ( shifted_bits <= 0x7FFFFFF )
     {
-      if ( v13 >= -134217728 )
-        v49 = v13;
+      if ( shifted_bits >= -134217728 )
+        saved_shifted_bits_7 = shifted_bits;
       else
-        v49 = -134217728;
-      v50 = v49;
+        saved_shifted_bits_7 = -134217728;
+      cached_shifted_bits_4 = saved_shifted_bits_7;
     }
     else
     {
-      v50 = 0x7FFFFFF;
+      cached_shifted_bits_4 = 0x7FFFFFF;
     }
-    if ( 16 * v50 + SR_VEC_LANES(128, v15[4], i32)[i] < 0 )
+    if ( 16 * cached_shifted_bits_4 + SR_VEC_LANES(128, destination_buffer[4], i32)[i] < 0 )
     {
-      if ( v13 <= 0x7FFFFFF )
+      if ( shifted_bits <= 0x7FFFFFF )
       {
-        if ( v13 >= -134217728 )
-          v34 = v13;
+        if ( shifted_bits >= -134217728 )
+          saved_shifted_bits_2 = shifted_bits;
         else
-          v34 = -134217728;
-        v35 = v34;
+          saved_shifted_bits_2 = -134217728;
+        cached_shifted_bits_2 = saved_shifted_bits_2;
       }
       else
       {
-        v35 = 0x7FFFFFF;
+        cached_shifted_bits_2 = 0x7FFFFFF;
       }
-      if ( ((16 * v35) | SR_VEC_LANES(128, v15[4], i32)[i]) < 0 )
+      if ( ((16 * cached_shifted_bits_2) | SR_VEC_LANES(128, destination_buffer[4], i32)[i]) < 0 )
       {
-        if ( v13 <= 0x7FFFFFF )
+        if ( shifted_bits <= 0x7FFFFFF )
         {
-          if ( v13 >= -134217728 )
-            v36 = v13;
+          if ( shifted_bits >= -134217728 )
+            saved_shifted_bits_3 = shifted_bits;
           else
-            v36 = -134217728;
-          v37 = v36;
+            saved_shifted_bits_3 = -134217728;
+          cached_shifted_bits_3 = saved_shifted_bits_3;
         }
         else
         {
-          v37 = 0x7FFFFFF;
+          cached_shifted_bits_3 = 0x7FFFFFF;
         }
-        v38 = SR_VEC_LANES(128, v15[4], i32)[i] + 16 * v37;
+        scaled_index_3 = SR_VEC_LANES(128, destination_buffer[4], i32)[i] + 16 * cached_shifted_bits_3;
       }
       else
       {
-        v38 = 0x7FFFFFFF;
+        scaled_index_3 = 0x7FFFFFFF;
       }
-      v39 = v38;
+      cached_scaled_index = scaled_index_3;
     }
     else
     {
-      if ( v13 <= 0x7FFFFFF )
+      if ( shifted_bits <= 0x7FFFFFF )
       {
-        if ( v13 >= -134217728 )
-          v51 = v13;
+        if ( shifted_bits >= -134217728 )
+          saved_shifted_bits_8 = shifted_bits;
         else
-          v51 = -134217728;
-        v52 = v51;
+          saved_shifted_bits_8 = -134217728;
+        cached_shifted_bits_5 = saved_shifted_bits_8;
       }
       else
       {
-        v52 = 0x7FFFFFF;
+        cached_shifted_bits_5 = 0x7FFFFFF;
       }
-      if ( ((16 * v52) & SR_VEC_LANES(128, v15[4], i32)[i]) >= 0 )
+      if ( ((16 * cached_shifted_bits_5) & SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >= 0 )
       {
-        if ( v13 <= 0x7FFFFFF )
+        if ( shifted_bits <= 0x7FFFFFF )
         {
-          if ( v13 >= -134217728 )
-            v31 = v13;
+          if ( shifted_bits >= -134217728 )
+            saved_shifted_bits = shifted_bits;
           else
-            v31 = -134217728;
-          v32 = v31;
+            saved_shifted_bits = -134217728;
+          cached_shifted_bits = saved_shifted_bits;
         }
         else
         {
-          v32 = 0x7FFFFFF;
+          cached_shifted_bits = 0x7FFFFFF;
         }
-        v33 = SR_VEC_LANES(128, v15[4], i32)[i] + 16 * v32;
+        scaled_index_2 = SR_VEC_LANES(128, destination_buffer[4], i32)[i] + 16 * cached_shifted_bits;
       }
       else
       {
-        v33 = 0x80000000;
+        scaled_index_2 = 0x80000000;
       }
-      v39 = v33;
+      cached_scaled_index = scaled_index_2;
     }
-    SR_VEC_LANES(128, v15[4], i32)[i] = v39;
-    if ( (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+    SR_VEC_LANES(128, destination_buffer[4], i32)[i] = cached_scaled_index;
+    if ( (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
     {
-      if ( (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
-        v40 = (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
+      if ( (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
+        shifted_bits_8 = (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
       else
-        v40 = -32768;
-      v41 = v40;
+        shifted_bits_8 = -32768;
+      saved_shifted_bits_4 = shifted_bits_8;
     }
     else
     {
-      v41 = 0x7FFF;
+      saved_shifted_bits_4 = 0x7FFF;
     }
-    if ( v41 <= 0x7FFF )
+    if ( saved_shifted_bits_4 <= 0x7FFF )
     {
-      if ( (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+      if ( (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
       {
-        if ( (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
-          v42 = (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
+        if ( (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
+          shifted_bits_9 = (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
         else
-          v42 = -32768;
-        v43 = v42;
+          shifted_bits_9 = -32768;
+        saved_shifted_bits_5 = shifted_bits_9;
       }
       else
       {
-        v43 = 0x7FFF;
+        saved_shifted_bits_5 = 0x7FFF;
       }
-      if ( v43 >= -32768 )
+      if ( saved_shifted_bits_5 >= -32768 )
       {
-        if ( (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
+        if ( (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1 <= 0x7FFF )
         {
-          if ( (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
-            v44 = (((int)((v22 * (__int64)SR_VEC_LANES(128, v15[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
+          if ( (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1 >= -32768 )
+            shifted_bits_10 = (((int)((shifted_bits_5 * (__int64)SR_VEC_LANES(128, destination_buffer[4], i32)[i]) >> 16) >> 7) + 1) >> 1;
           else
-            v44 = -32768;
-          v45 = v44;
+            shifted_bits_10 = -32768;
+          saved_shifted_bits_6 = shifted_bits_10;
         }
         else
         {
-          v45 = 0x7FFF;
+          saved_shifted_bits_6 = 0x7FFF;
         }
-        v46 = v45;
+        integer_difference = saved_shifted_bits_6;
       }
       else
       {
-        v46 = -32768;
+        integer_difference = -32768;
       }
-      v47 = v46;
+      cached_integer_difference = integer_difference;
     }
     else
     {
-      v47 = 0x7FFF;
+      cached_integer_difference = 0x7FFF;
     }
-    *(_WORD *)(a3 + 2LL * i) = v47;
+    *(_WORD *)(a3 + 2LL * i) = cached_integer_difference;
   }
-  crt_memcpy((__m128i *)(a1 + 1284), (__m128i *)((char *)v15 + 4 * *(int *)(a1 + 2328)), 0x40u);
-  v16[13] = v26;
-  *((_WORD *)v16 + 28) = v14;
+  crt_memcpy((__m128i *)(a1 + 1284), (__m128i *)((char *)destination_buffer + 4 * *(int *)(a1 + 2328)), 0x40u);
+  running_total[13] = scaled_index;
+  *((_WORD *)running_total + 28) = shifted_bits_2;
   for ( i = 0; i < 4; ++i )
-    *(_DWORD *)(a2 + 4LL * i) = v27;
+    *(_DWORD *)(a2 + 4LL * i) = shifted_bits_7;
   return 0; /* no caller reads the result */
 }
 
@@ -7897,22 +7897,22 @@ __int64            sub_1401DAE50(
         signed int a7,
         int a8)
 {
-  unsigned __int64 v8;
-  void *v9;
+  unsigned __int64 record_word_offset;
+  void *alloca_result;
   int i;
   signed int j;
-  int v13;
-  int v14;
-  int *v15;
-  int *v16;
-  __int64 v17;
+  int shifted_bits;
+  int saved_shifted_bits;
+  int *state_address;
+  int *saved_alloca_result;
+  __int64 unused_local;
 
-  v8 = 4LL * a7 + 15;
-  if ( v8 <= 4LL * a7 )
-    v8 = 0xFFFFFFFFFFFFFF0LL;
-  v9 = alloca(v8 & 0xFFFFFFFFFFFFFFF0uLL);
-  v16 = v9;
-  v15 = &i;
+  record_word_offset = 4LL * a7 + 15;
+  if ( record_word_offset <= 4LL * a7 )
+    record_word_offset = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(record_word_offset & 0xFFFFFFFFFFFFFFF0uLL);
+  saved_alloca_result = alloca_result;
+  state_address = &i;
   for ( i = 0; i < 2; ++i )
   {
     for ( j = 0; j < a7; ++j )
@@ -7920,21 +7920,21 @@ __int64            sub_1401DAE50(
       if ( (int)((*(int *)(a6 + 4LL * i) * (__int64)*(int *)(a5 + 4LL * (a7 * (i + a8 - 2) + j))) >> 16) >> 8 <= 0x7FFF )
       {
         if ( (int)((*(int *)(a6 + 4LL * i) * (__int64)*(int *)(a5 + 4LL * (a7 * (i + a8 - 2) + j))) >> 16) >> 8 >= -32768 )
-          v13 = (int)((*(int *)(a6 + 4LL * i) * (__int64)*(int *)(a5 + 4LL * (a7 * (i + a8 - 2) + j))) >> 16) >> 8;
+          shifted_bits = (int)((*(int *)(a6 + 4LL * i) * (__int64)*(int *)(a5 + 4LL * (a7 * (i + a8 - 2) + j))) >> 16) >> 8;
         else
-          v13 = -32768;
-        v14 = v13;
+          shifted_bits = -32768;
+        saved_shifted_bits = shifted_bits;
       }
       else
       {
-        v14 = 0x7FFF;
+        saved_shifted_bits = 0x7FFF;
       }
-      *((_WORD *)v15 + j) = v14;
+      *((_WORD *)state_address + j) = saved_shifted_bits;
     }
-    v15 = (int *)((char *)v15 + 2 * a7);
+    state_address = (int *)((char *)state_address + 2 * a7);
   }
-  sub_1401BC4C0(a1, a2, (__int64)v16, a7);
-  return sub_1401BC4C0(a3, a4, (__int64)v16 + 2 * a7, a7); /* 0x1401DB01C: the result of this call is still in rax at the exit */
+  sub_1401BC4C0(a1, a2, (__int64)saved_alloca_result, a7);
+  return sub_1401BC4C0(a3, a4, (__int64)saved_alloca_result + 2 * a7, a7); /* 0x1401DB01C: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401DB040) ----------------------------------------------------
@@ -7987,50 +7987,50 @@ __int64            sub_1401DB110(__int16 *a1, _WORD *a2, _DWORD *a3, int a4, __i
 __int64            sub_1401DB1D0(__int64 a1, __int64 a2)
 {
   __int64 result;
-  __int16 v3;
+  __int16 shifted_bits;
   int i;
-  int v5;
-  int v6;
-  unsigned int v7;
-  int v8;
-  int v9;
+  int loaded_word;
+  int loaded_word_2;
+  unsigned int shifted_bits_2;
+  int integer_quotient;
+  int loaded_word_3;
 
   result = a2;
   if ( *(int *)(a2 + 108) >= 1000 )
   {
-    v7 = 0;
+    shifted_bits_2 = 0;
   }
   else
   {
-    v7 = 0x7FFF / ((*(int *)(a2 + 108) >> 4) + 1);
+    shifted_bits_2 = 0x7FFF / ((*(int *)(a2 + 108) >> 4) + 1);
     result = (unsigned int)(*(_DWORD *)(a2 + 108) + 1);
     *(_DWORD *)(a2 + 108) = result;
   }
   for ( i = 0; i < 4; ++i )
   {
-    v5 = *(_DWORD *)(a2 + 4LL * i + 60);
+    loaded_word = *(_DWORD *)(a2 + 4LL * i + 60);
     if ( *(_DWORD *)(a2 + 4LL * i + 92) + *(_DWORD *)(a1 + 4LL * i) >= 0 )
-      v6 = *(_DWORD *)(a2 + 4LL * i + 92) + *(_DWORD *)(a1 + 4LL * i);
+      loaded_word_2 = *(_DWORD *)(a2 + 4LL * i + 92) + *(_DWORD *)(a1 + 4LL * i);
     else
-      v6 = 0x7FFFFFFF;
-    v8 = 0x7FFFFFFF / v6;
-    if ( v6 <= 8 * v5 )
+      loaded_word_2 = 0x7FFFFFFF;
+    integer_quotient = 0x7FFFFFFF / loaded_word_2;
+    if ( loaded_word_2 <= 8 * loaded_word )
     {
-      if ( v6 >= v5 )
-        v3 = sub_1401BE3A0((__int16)((__int64)(int)((v5 * (__int64)v8) >> 16) >> 5), v7);
+      if ( loaded_word_2 >= loaded_word )
+        shifted_bits = sub_1401BE3A0((__int16)((__int64)(int)((loaded_word * (__int64)integer_quotient) >> 16) >> 5), shifted_bits_2);
       else
-        v3 = sub_1401BE3A0(0x400u, v7);
+        shifted_bits = sub_1401BE3A0(0x400u, shifted_bits_2);
     }
     else
     {
-      v3 = sub_1401BE3A0(0x80u, v7);
+      shifted_bits = sub_1401BE3A0(0x80u, shifted_bits_2);
     }
-    *(_DWORD *)(a2 + 4LL * i + 76) += (v3 * (__int64)(v8 - *(_DWORD *)(a2 + 4LL * i + 76))) >> 16;
+    *(_DWORD *)(a2 + 4LL * i + 76) += (shifted_bits * (__int64)(integer_quotient - *(_DWORD *)(a2 + 4LL * i + 76))) >> 16;
     if ( 0x7FFFFFFF / *(_DWORD *)(a2 + 4LL * i + 76) >= 0xFFFFFF )
-      v9 = 0xFFFFFF;
+      loaded_word_3 = 0xFFFFFF;
     else
-      v9 = 0x7FFFFFFF / *(_DWORD *)(a2 + 4LL * i + 76);
-    *(_DWORD *)(a2 + 4LL * i + 60) = v9;
+      loaded_word_3 = 0x7FFFFFFF / *(_DWORD *)(a2 + 4LL * i + 76);
+    *(_DWORD *)(a2 + 4LL * i + 60) = loaded_word_3;
     result = (unsigned int)(i + 1);
   }
   return result;
@@ -8039,86 +8039,86 @@ __int64            sub_1401DB1D0(__int64 a1, __int64 a2)
 //----- (00000001401DB3D0) ----------------------------------------------------
 __int64            sub_1401DB3D0(int *a1, int a2)
 {
-  unsigned __int64 v2;
-  void *v3;
-  void *v4;
-  int v5;
-  unsigned __int64 v6;
-  void *v7;
-  int v8;
-  int v9;
-  int v10;
-  __m128i v12[17];
-  int v13;
-  int v14;
-  int v15;
-  int v16;
-  int v17;
-  int v18;
-  __m128i *v19;
-  _DWORD *v20;
-       __m128i *v21;
-  __int64 v22;
-  __int16 v24;
+  unsigned __int64 scaled_index;
+  void *alloca_result;
+  void *alloca_result_2;
+  int loaded_word;
+  unsigned __int64 scaled_index_2;
+  void *alloca_result_3;
+  int call_result;
+  int call_result_2;
+  int call_result_3;
+  __m128i unused_local[17];
+  int running_total;
+  int scaled_index_3;
+  int record_word_offset;
+  int scaled_index_4;
+  int cached_scaled_index;
+  int integer_quotient;
+  __m128i *saved_alloca_result;
+  _DWORD *saved_alloca_result_2;
+       __m128i *saved_alloca_result_3;
+  __int64 unused_local_2;
+  __int16 input_value;
 
-  v24 = a2;
-  v13 = 0;
+  input_value = a2;
+  running_total = 0;
   if ( a1[1144] != a2 || a1[1140] != a1[1139] )
   {
     if ( a1[1144] )
     {
-      v15 = 10 * a1[1145] + 5;
-      v14 = a1[1144] * v15;
-      v16 = a2 * v15;
-      if ( v14 <= a2 * v15 )
-        v17 = v16;
+      record_word_offset = 10 * a1[1145] + 5;
+      scaled_index_3 = a1[1144] * record_word_offset;
+      scaled_index_4 = a2 * record_word_offset;
+      if ( scaled_index_3 <= a2 * record_word_offset )
+        cached_scaled_index = scaled_index_4;
       else
-        v17 = v14;
-      v2 = 2LL * v17 + 15;
-      if ( v2 <= 2LL * v17 )
-        v2 = 0xFFFFFFFFFFFFFF0LL;
-      v3 = alloca(v2 & 0xFFFFFFFFFFFFFFF0uLL);
-      v19 = (__m128i *)v3;   /* the allocations, not locals (decompiler mix-up) */
-      sub_1401D1210((__int64)v19, (__int64)(a1 + 1801), v14);
-      v4 = alloca(304);
-      v20 = (_DWORD *)v4;
-      v5 = sub_1401BA4E0((__int64)v20, 1000 * *((__int16 *)a1 + 2288), a1[1139], 0);
-      v13 += v5;
-      v18 = a1[1139] / 1000 * v15;
-      v6 = 2LL * v18 + 15;
-      if ( v6 <= 2LL * v18 )
-        v6 = 0xFFFFFFFFFFFFFF0LL;
-      v7 = alloca(v6 & 0xFFFFFFFFFFFFFFF0uLL);
-      v21 = (__m128i *)v7;
-      v8 = sub_1401BAA30(v20, v21, v19, v14);
-      v13 += v8;
-      v9 = sub_1401BA4E0((__int64)(a1 + 1448), a1[1139], 1000 * v24, 1);
-      v13 += v9;
-      v10 = sub_1401BAA30(a1 + 1448, v19, v21, v18);
-      v13 += v10;
-      sub_1401D12E0((__int64)(a1 + 1801), (__int64)v19, v16);
+        cached_scaled_index = scaled_index_3;
+      scaled_index = 2LL * cached_scaled_index + 15;
+      if ( scaled_index <= 2LL * cached_scaled_index )
+        scaled_index = 0xFFFFFFFFFFFFFF0LL;
+      alloca_result = alloca(scaled_index & 0xFFFFFFFFFFFFFFF0uLL);
+      saved_alloca_result = (__m128i *)alloca_result;   /* the allocations, not locals (decompiler mix-up) */
+      sub_1401D1210((__int64)saved_alloca_result, (__int64)(a1 + 1801), scaled_index_3);
+      alloca_result_2 = alloca(304);
+      saved_alloca_result_2 = (_DWORD *)alloca_result_2;
+      loaded_word = sub_1401BA4E0((__int64)saved_alloca_result_2, 1000 * *((__int16 *)a1 + 2288), a1[1139], 0);
+      running_total += loaded_word;
+      integer_quotient = a1[1139] / 1000 * record_word_offset;
+      scaled_index_2 = 2LL * integer_quotient + 15;
+      if ( scaled_index_2 <= 2LL * integer_quotient )
+        scaled_index_2 = 0xFFFFFFFFFFFFFF0LL;
+      alloca_result_3 = alloca(scaled_index_2 & 0xFFFFFFFFFFFFFFF0uLL);
+      saved_alloca_result_3 = (__m128i *)alloca_result_3;
+      call_result = sub_1401BAA30(saved_alloca_result_2, saved_alloca_result_3, saved_alloca_result, scaled_index_3);
+      running_total += call_result;
+      call_result_2 = sub_1401BA4E0((__int64)(a1 + 1448), a1[1139], 1000 * input_value, 1);
+      running_total += call_result_2;
+      call_result_3 = sub_1401BAA30(a1 + 1448, saved_alloca_result, saved_alloca_result_3, integer_quotient);
+      running_total += call_result_3;
+      sub_1401D12E0((__int64)(a1 + 1801), (__int64)saved_alloca_result, scaled_index_4);
     }
     else
     {
-      v13 += sub_1401BA4E0((__int64)(a1 + 1448), a1[1139], 1000 * a2, 1);
+      running_total += sub_1401BA4E0((__int64)(a1 + 1448), a1[1139], 1000 * a2, 1);
     }
   }
   a1[1140] = a1[1139];
-  return (unsigned int)v13; /* 0x1401DB643: mov eax, dword ptr [rbp] */
+  return (unsigned int)running_total; /* 0x1401DB643: mov eax, dword ptr [rbp] */
 }
 
 //----- (00000001401DB660) ----------------------------------------------------
 __int64            sub_1401DB660(__int64 a1, int a2, int a3)
 {
-  int v3;
-  int v5;
-  unsigned int v6;
+  int record_word_offset;
+  int selection_code;
+  unsigned int unused_written_slot;
 
-  v6 = 0;
+  unused_written_slot = 0;
   if ( a3 != *(_DWORD *)(a1 + 4612) )
   {
     if ( a3 != 10 && a3 != 20 && a3 != 40 && a3 != 60 )
-      v6 = -103;
+      unused_written_slot = -103;
     if ( a3 > 10 )
     {
       *(_DWORD *)(a1 + 5760) = a3 / 20;
@@ -8134,10 +8134,10 @@ __int64            sub_1401DB660(__int64 a1, int a2, int a3)
     {
       *(_DWORD *)(a1 + 5760) = 1;
       if ( a3 == 10 )
-        v5 = 2;
+        selection_code = 2;
       else
-        v5 = 1;
-      *(_DWORD *)(a1 + 4580) = v5;
+        selection_code = 1;
+      *(_DWORD *)(a1 + 4580) = selection_code;
       *(_DWORD *)(a1 + 4584) = (__int16)a2 * (__int16)a3;
       *(_DWORD *)(a1 + 4548) = 14 * (__int16)a2;
       if ( *(_DWORD *)(a1 + 4576) == 8 )
@@ -8195,10 +8195,10 @@ __int64            sub_1401DB660(__int64 a1, int a2, int a3)
     *(_DWORD *)(a1 + 4596) = 2 * (__int16)a2;
     *(_DWORD *)(a1 + 4552) = 18 * (__int16)a2;
     if ( *(_DWORD *)(a1 + 4580) == 4 )
-      v3 = 24 * (__int16)a2;
+      record_word_offset = 24 * (__int16)a2;
     else
-      v3 = 14 * (__int16)a2;
-    *(_DWORD *)(a1 + 4548) = v3;
+      record_word_offset = 14 * (__int16)a2;
+    *(_DWORD *)(a1 + 4548) = record_word_offset;
     if ( *(_DWORD *)(a1 + 4576) == 16 )
     {
       *(_QWORD *)(a1 + 4688) = (uint64)(uintptr_t)(&unk_140282538);
@@ -8212,7 +8212,7 @@ __int64            sub_1401DB660(__int64 a1, int a2, int a3)
       *(_QWORD *)(a1 + 4688) = (uint64)(uintptr_t)(&unk_1402821FC);
     }
   }
-  return v6;
+  return unused_written_slot;
 }
 
 //----- (00000001401DBB00) ----------------------------------------------------
@@ -8325,13 +8325,13 @@ __int64            sub_1401DBB00(_DWORD *a1, int a2)
 //----- (00000001401DBFF0) ----------------------------------------------------
 __int64            sub_1401DBFF0(int *a1, __int64 a2)
 {
-  int v3;
+  int table_value;
 
-  v3 = a1[1528];
+  table_value = a1[1528];
   a1[1528] = *(_DWORD *)(a2 + 44);
   if ( a1[1528] )
   {
-    if ( v3 )
+    if ( table_value )
       a1[1529] = sub_1401BE3A0(7 - (unsigned int)((26214LL * a1[1154]) >> 16), 2u);
     else
       a1[1529] = 7;
@@ -8361,20 +8361,20 @@ __int64            sub_1401DC0A0(__int64 a1, int a2)
 //----- (00000001401DC160) ----------------------------------------------------
 __int64            sub_1401DC160(_DWORD *a1, int a2, int a3)
 {
-  unsigned int v4;
-  int v5;
+  unsigned int shifted_bits;
+  int record_word_offset;
   int i;
 
-  v4 = a1[a3];
-  v5 = 16 * a2;
+  shifted_bits = a1[a3];
+  record_word_offset = 16 * a2;
   if ( a3 == 8 )
   {
-    return (unsigned int)((v5
-                         * (__int64)(int)(((v5
-                                          * (__int64)(int)(((v5
-                                                           * (__int64)(int)(((v5
-                                                                            * (__int64)(int)(((v5
-                                                                                             * (__int64)(int)(((v5 * (__int64)(int)(((v5 * (__int64)(int)(((v5 * (__int64)(int)v4) >> 16) + a1[7])) >> 16) + a1[6])) >> 16) + a1[5])) >> 16)
+    return (unsigned int)((record_word_offset
+                         * (__int64)(int)(((record_word_offset
+                                          * (__int64)(int)(((record_word_offset
+                                                           * (__int64)(int)(((record_word_offset
+                                                                            * (__int64)(int)(((record_word_offset
+                                                                                             * (__int64)(int)(((record_word_offset * (__int64)(int)(((record_word_offset * (__int64)(int)(((record_word_offset * (__int64)(int)shifted_bits) >> 16) + a1[7])) >> 16) + a1[6])) >> 16) + a1[5])) >> 16)
                                                                                            + a1[4])) >> 16)
                                                                           + a1[3])) >> 16)
                                                          + a1[2])) >> 16)
@@ -8384,9 +8384,9 @@ __int64            sub_1401DC160(_DWORD *a1, int a2, int a3)
   else
   {
     for ( i = a3 - 1; i >= 0; --i )
-      v4 = ((v5 * (__int64)(int)v4) >> 16) + a1[i];
+      shifted_bits = ((record_word_offset * (__int64)(int)shifted_bits) >> 16) + a1[i];
   }
-  return v4;
+  return shifted_bits;
 }
 
 //----- (00000001401DC340) ----------------------------------------------------
@@ -8414,185 +8414,185 @@ __int64            sub_1401DC340(__int64 a1, __int64 a2, __int64 a3, int a4)
 //----- (00000001401DC4C0) ----------------------------------------------------
 __int64            sub_1401DC4C0(_DWORD *a1, int a2)
 {
-  int v3;
-  int v4;
-  int v5;
-  int v6;
+  int shifted_bits;
+  int scaled_index;
+  int table_value;
+  int integer_difference;
   int i;
   int j;
-  int v9;
-  int v10;
-  int v11;
-  int v12;
-  int v13;
-  unsigned int v14;
-  int v15;
-  char v16;
-  char v17;
-  signed int v18;
-  char v19;
-  unsigned int v20;
-  int v21;
-  signed int v22;
-  unsigned int v23;
-  int v24;
-  char v25;
-  char v26;
-  signed int v27;
-  char v28;
-  unsigned int v29;
-  int v30;
-  signed int v31;
-  __int64 v32;
-  __int64 v33;
+  int shifted_bits_2;
+  int shifted_bits_3;
+  int shifted_bits_4;
+  int call_result;
+  int integer_difference_2;
+  unsigned int shifted_bits_5;
+  int shifted_bits_6;
+  char shifted_bits_7;
+  char shifted_bits_8;
+  signed int saved_shifted_bits;
+  char saved_shifted_bits_2;
+  unsigned int shifted_bits_9;
+  int shifted_bits_10;
+  signed int saved_shifted_bits_3;
+  unsigned int shifted_bits_11;
+  int shifted_bits_12;
+  char shifted_bits_13;
+  char shifted_bits_14;
+  signed int saved_shifted_bits_4;
+  char saved_shifted_bits_5;
+  unsigned int shifted_bits_15;
+  int shifted_bits_16;
+  signed int saved_shifted_bits_6;
+  __int64 shifted_bits_17;
+  __int64 shifted_bits_18;
 
-  v10 = 0x40000000;
+  shifted_bits_3 = 0x40000000;
   for ( i = a2 - 1; i > 0; --i )
   {
     if ( (int)a1[i] > 16773022 || (int)a1[i] < -16773022 )
       return 0;
-    v4 = -128 * a1[i];
-    v9 = 0x40000000 - ((unsigned __int64)(v4 * (__int64)v4) >> 32);
-    v10 = 4 * ((unsigned __int64)(v9 * (__int64)v10) >> 32);
-    if ( v10 < 107374 )
+    scaled_index = -128 * a1[i];
+    shifted_bits_2 = 0x40000000 - ((unsigned __int64)(scaled_index * (__int64)scaled_index) >> 32);
+    shifted_bits_3 = 4 * ((unsigned __int64)(shifted_bits_2 * (__int64)shifted_bits_3) >> 32);
+    if ( shifted_bits_3 < 107374 )
       return 0;
-    if ( v9 <= 0 )
-      v3 = sub_1401BA490(((unsigned __int64)(v4 * (__int64)v4) >> 32) - 0x40000000);
+    if ( shifted_bits_2 <= 0 )
+      shifted_bits = sub_1401BA490(((unsigned __int64)(scaled_index * (__int64)scaled_index) >> 32) - 0x40000000);
     else
-      v3 = sub_1401BA490(v9);
-    v13 = 32 - v3;
-    v12 = sub_1401BE820(v9, 32 - v3 + 30);
+      shifted_bits = sub_1401BA490(shifted_bits_2);
+    integer_difference_2 = 32 - shifted_bits;
+    call_result = sub_1401BE820(shifted_bits_2, 32 - shifted_bits + 30);
     for ( j = 0; j < (i + 1) >> 1; ++j )
     {
-      v5 = a1[j];
-      v6 = a1[i - j - 1];
-      if ( v13 == 1 )
+      table_value = a1[j];
+      integer_difference = a1[i - j - 1];
+      if ( integer_difference_2 == 1 )
       {
-        if ( (int)(v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1)) < 0 )
+        if ( (int)(table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1)) < 0 )
         {
-          if ( (int)(((((v4 * (__int64)v6) >> 30) + 1) >> 1) & (v5 ^ 0x80000000)) >= 0 )
-            v15 = v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1);
+          if ( (int)(((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1) & (table_value ^ 0x80000000)) >= 0 )
+            shifted_bits_6 = table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1);
           else
-            v15 = 0x7FFFFFFF;
-          v18 = v15;
+            shifted_bits_6 = 0x7FFFFFFF;
+          saved_shifted_bits = shifted_bits_6;
         }
         else
         {
-          if ( (int)((((((v4 * (__int64)v6) >> 30) + 1) >> 1) ^ 0x80000000) & v5) >= 0 )
-            v14 = v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1);
+          if ( (int)((((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1) ^ 0x80000000) & table_value) >= 0 )
+            shifted_bits_5 = table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1);
           else
-            v14 = 0x80000000;
-          v18 = v14;
+            shifted_bits_5 = 0x80000000;
+          saved_shifted_bits = shifted_bits_5;
         }
-        if ( (int)(v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1)) < 0 )
+        if ( (int)(table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1)) < 0 )
         {
-          if ( (int)(((((v4 * (__int64)v6) >> 30) + 1) >> 1) & (v5 ^ 0x80000000)) >= 0 )
-            v17 = v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1);
+          if ( (int)(((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1) & (table_value ^ 0x80000000)) >= 0 )
+            shifted_bits_8 = table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1);
           else
-            v17 = -1;
-          v19 = v17;
+            shifted_bits_8 = -1;
+          saved_shifted_bits_2 = shifted_bits_8;
         }
         else
         {
-          if ( (int)((((((v4 * (__int64)v6) >> 30) + 1) >> 1) ^ 0x80000000) & v5) >= 0 )
-            v16 = v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1);
+          if ( (int)((((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1) ^ 0x80000000) & table_value) >= 0 )
+            shifted_bits_7 = table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1);
           else
-            v16 = 0;
-          v19 = v16;
+            shifted_bits_7 = 0;
+          saved_shifted_bits_2 = shifted_bits_7;
         }
-        v32 = (((_BYTE)v12 * v19) & 1) + ((v12 * (__int64)v18) >> 1);
+        shifted_bits_17 = (((_BYTE)call_result * saved_shifted_bits_2) & 1) + ((call_result * (__int64)saved_shifted_bits) >> 1);
       }
       else
       {
-        if ( (int)(v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1)) < 0 )
+        if ( (int)(table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1)) < 0 )
         {
-          if ( (int)(((((v4 * (__int64)v6) >> 30) + 1) >> 1) & (v5 ^ 0x80000000)) >= 0 )
-            v21 = v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1);
+          if ( (int)(((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1) & (table_value ^ 0x80000000)) >= 0 )
+            shifted_bits_10 = table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1);
           else
-            v21 = 0x7FFFFFFF;
-          v22 = v21;
+            shifted_bits_10 = 0x7FFFFFFF;
+          saved_shifted_bits_3 = shifted_bits_10;
         }
         else
         {
-          if ( (int)((((((v4 * (__int64)v6) >> 30) + 1) >> 1) ^ 0x80000000) & v5) >= 0 )
-            v20 = v5 - ((((v4 * (__int64)v6) >> 30) + 1) >> 1);
+          if ( (int)((((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1) ^ 0x80000000) & table_value) >= 0 )
+            shifted_bits_9 = table_value - ((((scaled_index * (__int64)integer_difference) >> 30) + 1) >> 1);
           else
-            v20 = 0x80000000;
-          v22 = v20;
+            shifted_bits_9 = 0x80000000;
+          saved_shifted_bits_3 = shifted_bits_9;
         }
-        v32 = (((v12 * (__int64)v22) >> ((unsigned __int8)v13 - 1)) + 1) >> 1;
+        shifted_bits_17 = (((call_result * (__int64)saved_shifted_bits_3) >> ((unsigned __int8)integer_difference_2 - 1)) + 1) >> 1;
       }
-      if ( v32 > 0x7FFFFFFF || v32 < (__int64)0xFFFFFFFF80000000uLL )
+      if ( shifted_bits_17 > 0x7FFFFFFF || shifted_bits_17 < (__int64)0xFFFFFFFF80000000uLL )
         return 0;
-      a1[j] = v32;
-      if ( v13 == 1 )
+      a1[j] = shifted_bits_17;
+      if ( integer_difference_2 == 1 )
       {
-        if ( (int)(v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1)) < 0 )
+        if ( (int)(integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1)) < 0 )
         {
-          if ( (int)(((((v4 * (__int64)v5) >> 30) + 1) >> 1) & (v6 ^ 0x80000000)) >= 0 )
-            v24 = v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1);
+          if ( (int)(((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1) & (integer_difference ^ 0x80000000)) >= 0 )
+            shifted_bits_12 = integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1);
           else
-            v24 = 0x7FFFFFFF;
-          v27 = v24;
+            shifted_bits_12 = 0x7FFFFFFF;
+          saved_shifted_bits_4 = shifted_bits_12;
         }
         else
         {
-          if ( (int)((((((v4 * (__int64)v5) >> 30) + 1) >> 1) ^ 0x80000000) & v6) >= 0 )
-            v23 = v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1);
+          if ( (int)((((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1) ^ 0x80000000) & integer_difference) >= 0 )
+            shifted_bits_11 = integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1);
           else
-            v23 = 0x80000000;
-          v27 = v23;
+            shifted_bits_11 = 0x80000000;
+          saved_shifted_bits_4 = shifted_bits_11;
         }
-        if ( (int)(v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1)) < 0 )
+        if ( (int)(integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1)) < 0 )
         {
-          if ( (int)(((((v4 * (__int64)v5) >> 30) + 1) >> 1) & (v6 ^ 0x80000000)) >= 0 )
-            v26 = v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1);
+          if ( (int)(((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1) & (integer_difference ^ 0x80000000)) >= 0 )
+            shifted_bits_14 = integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1);
           else
-            v26 = -1;
-          v28 = v26;
+            shifted_bits_14 = -1;
+          saved_shifted_bits_5 = shifted_bits_14;
         }
         else
         {
-          if ( (int)((((((v4 * (__int64)v5) >> 30) + 1) >> 1) ^ 0x80000000) & v6) >= 0 )
-            v25 = v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1);
+          if ( (int)((((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1) ^ 0x80000000) & integer_difference) >= 0 )
+            shifted_bits_13 = integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1);
           else
-            v25 = 0;
-          v28 = v25;
+            shifted_bits_13 = 0;
+          saved_shifted_bits_5 = shifted_bits_13;
         }
-        v33 = (((_BYTE)v12 * v28) & 1) + ((v12 * (__int64)v27) >> 1);
+        shifted_bits_18 = (((_BYTE)call_result * saved_shifted_bits_5) & 1) + ((call_result * (__int64)saved_shifted_bits_4) >> 1);
       }
       else
       {
-        if ( (int)(v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1)) < 0 )
+        if ( (int)(integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1)) < 0 )
         {
-          if ( (int)(((((v4 * (__int64)v5) >> 30) + 1) >> 1) & (v6 ^ 0x80000000)) >= 0 )
-            v30 = v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1);
+          if ( (int)(((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1) & (integer_difference ^ 0x80000000)) >= 0 )
+            shifted_bits_16 = integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1);
           else
-            v30 = 0x7FFFFFFF;
-          v31 = v30;
+            shifted_bits_16 = 0x7FFFFFFF;
+          saved_shifted_bits_6 = shifted_bits_16;
         }
         else
         {
-          if ( (int)((((((v4 * (__int64)v5) >> 30) + 1) >> 1) ^ 0x80000000) & v6) >= 0 )
-            v29 = v6 - ((((v4 * (__int64)v5) >> 30) + 1) >> 1);
+          if ( (int)((((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1) ^ 0x80000000) & integer_difference) >= 0 )
+            shifted_bits_15 = integer_difference - ((((scaled_index * (__int64)table_value) >> 30) + 1) >> 1);
           else
-            v29 = 0x80000000;
-          v31 = v29;
+            shifted_bits_15 = 0x80000000;
+          saved_shifted_bits_6 = shifted_bits_15;
         }
-        v33 = (((v12 * (__int64)v31) >> ((unsigned __int8)v13 - 1)) + 1) >> 1;
+        shifted_bits_18 = (((call_result * (__int64)saved_shifted_bits_6) >> ((unsigned __int8)integer_difference_2 - 1)) + 1) >> 1;
       }
-      if ( v33 > 0x7FFFFFFF || v33 < (__int64)0xFFFFFFFF80000000uLL )
+      if ( shifted_bits_18 > 0x7FFFFFFF || shifted_bits_18 < (__int64)0xFFFFFFFF80000000uLL )
         return 0;
-      a1[i - j - 1] = v33;
+      a1[i - j - 1] = shifted_bits_18;
     }
   }
   if ( (int)a1[i] > 16773022 || (int)a1[i] < -16773022 )
     return 0;
-  v11 = 4
+  shifted_bits_4 = 4
       * ((unsigned __int64)((int)(0x40000000 - ((unsigned __int64)(-128 * *a1 * (__int64)(-128 * *a1)) >> 32))
-                          * (__int64)v10) >> 32);
-  if ( v11 >= 107374 )
-    return (unsigned int)v11;
+                          * (__int64)shifted_bits_3) >> 32);
+  if ( shifted_bits_4 >= 107374 )
+    return (unsigned int)shifted_bits_4;
   else
     return 0;
 }
@@ -8603,7 +8603,7 @@ __int64            sub_1401DCE10(_DWORD *a1, _DWORD *a2, int a3)
   __int64 result;
   int i;
   int j;
-  int v6;
+  int scaled_index;
 
   *a1 = 0x10000;
   a1[1] = -*a2;
@@ -8612,11 +8612,11 @@ __int64            sub_1401DCE10(_DWORD *a1, _DWORD *a2, int a3)
     result = (unsigned int)a3;
     if ( i >= a3 )
       break;
-    v6 = a2[2 * i];
-    a1[i + 1] = 2 * a1[i - 1] - (((((int)a1[i] * (__int64)v6) >> 15) + 1) >> 1);
+    scaled_index = a2[2 * i];
+    a1[i + 1] = 2 * a1[i - 1] - (((((int)a1[i] * (__int64)scaled_index) >> 15) + 1) >> 1);
     for ( j = i; j > 1; --j )
-      a1[j] += a1[j - 2] - (((((int)a1[j - 1] * (__int64)v6) >> 15) + 1) >> 1);
-    a1[1] -= v6;
+      a1[j] += a1[j - 2] - (((((int)a1[j - 1] * (__int64)scaled_index) >> 15) + 1) >> 1);
+    a1[1] -= scaled_index;
   }
   return result;
 }
@@ -8624,95 +8624,95 @@ __int64            sub_1401DCE10(_DWORD *a1, _DWORD *a2, int a3)
 //----- (00000001401DCF80) ----------------------------------------------------
 __int64            sub_1401DCF80(__int64 a1, __int16 *a2, __int64 a3, int a4)
 {
-  unsigned __int64 v4;
-  __int64 v5;
-  void *v6;
-  __m128i v8;
-  void *v9;
-  unsigned int v10;
-  int v11;
-  __int32 v12;
-  __int64 v13;
+  unsigned __int64 loaded_word;
+  __int64 integer_sum;
+  void *alloca_result;
+  __m128i destination_buffer;
+  void *destination_buffer_2;
+  unsigned int loaded_word_2;
+  int loaded_word_3;
+  __int32 unused_written_slot;
+  __int64 unused_local;
 
-  SR_VEC_LANES(128, v8, i64)[1] = a1;
-  v4 = 2LL * (2 * *(_DWORD *)(a1 + 268) + 8);
-  v5 = v4 + 15;
-  if ( v4 + 15 <= v4 )
-    v5 = 0xFFFFFFFFFFFFFF0LL;
-  v6 = alloca(v5 & 0xFFFFFFFFFFFFFFF0uLL);
-  v9 = v6;
-  crt_memcpy(&v8, (     __m128i *)(SR_VEC_LANES(128, v8, i64)[1] + 24), 0x10u);
-  v11 = *(_DWORD *)(SR_VEC_LANES(128, v8, i64)[1] + 272);
+  SR_VEC_LANES(128, destination_buffer, i64)[1] = a1;
+  loaded_word = 2LL * (2 * *(_DWORD *)(a1 + 268) + 8);
+  integer_sum = loaded_word + 15;
+  if ( loaded_word + 15 <= loaded_word )
+    integer_sum = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(integer_sum & 0xFFFFFFFFFFFFFFF0uLL);
+  destination_buffer_2 = alloca_result;
+  crt_memcpy(&destination_buffer, (     __m128i *)(SR_VEC_LANES(128, destination_buffer, i64)[1] + 24), 0x10u);
+  loaded_word_3 = *(_DWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[1] + 272);
   while ( 1 )
   {
-    v10 = a4 >= *(_DWORD *)(SR_VEC_LANES(128, v8, i64)[1] + 268) ? *(_DWORD *)(SR_VEC_LANES(128, v8, i64)[1] + 268) : a4;
-    SR_VEC_LANES(128, v8, i32)[0] = v10;
-    sub_1401DD3A0((_DWORD *)SR_VEC_LANES(128, v8, i64)[1], (__int64)v9 + 16, a3, v10);
-    v12 = SR_VEC_LANES(128, v8, i32)[0] << 17;
-    a2 = sub_1401DE800(a2, (__int64)v9, SR_VEC_LANES(128, v8, i32)[0] << 17, v11);
-    a3 += 2LL * SR_VEC_LANES(128, v8, i32)[0];
-    a4 -= SR_VEC_LANES(128, v8, i32)[0];
+    loaded_word_2 = a4 >= *(_DWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[1] + 268) ? *(_DWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[1] + 268) : a4;
+    SR_VEC_LANES(128, destination_buffer, i32)[0] = loaded_word_2;
+    sub_1401DD3A0((_DWORD *)SR_VEC_LANES(128, destination_buffer, i64)[1], (__int64)destination_buffer_2 + 16, a3, loaded_word_2);
+    unused_written_slot = SR_VEC_LANES(128, destination_buffer, i32)[0] << 17;
+    a2 = sub_1401DE800(a2, (__int64)destination_buffer_2, SR_VEC_LANES(128, destination_buffer, i32)[0] << 17, loaded_word_3);
+    a3 += 2LL * SR_VEC_LANES(128, destination_buffer, i32)[0];
+    a4 -= SR_VEC_LANES(128, destination_buffer, i32)[0];
     if ( a4 <= 0 )
       break;
-    crt_memcpy((__m128i *)v9, (     __m128i *)((char *)v9 + 4 * SR_VEC_LANES(128, v8, i32)[0]), 0x10u);
+    crt_memcpy((__m128i *)destination_buffer_2, (     __m128i *)((char *)destination_buffer_2 + 4 * SR_VEC_LANES(128, destination_buffer, i32)[0]), 0x10u);
   }
-  return crt_memcpy((__m128i *)(SR_VEC_LANES(128, v8, i64)[1] + 24), (     __m128i *)((char *)v9 + 4 * SR_VEC_LANES(128, v8, i32)[0]), 0x10u); /* 0x1401DD107: the result of this call is still in rax at the exit */
+  return crt_memcpy((__m128i *)(SR_VEC_LANES(128, destination_buffer, i64)[1] + 24), (     __m128i *)((char *)destination_buffer_2 + 4 * SR_VEC_LANES(128, destination_buffer, i32)[0]), 0x10u); /* 0x1401DD107: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401DD130) ----------------------------------------------------
 __int64            sub_1401DD130(__int64 a1, __int16 *a2, __int64 a3, int a4)
 {
-  unsigned __int64 v4;
-  __int64 v5;
-  void *v6;
-  unsigned __int64 v7;
-  __m128i v9;
-  __m128i *v10;
-  signed int v11;
-  int v12;
-  __int32 v13;
-  __int16 *v14;
-  __int64 v15;
-  __int64 v16;
+  unsigned __int64 loaded_word;
+  __int64 integer_sum;
+  void *alloca_result;
+  unsigned __int64 byte_count;
+  __m128i destination_buffer;
+  __m128i *destination_buffer_2;
+  signed int loaded_word_2;
+  int loaded_word_3;
+  __int32 unused_written_slot;
+  __int16 *loaded_record_pointer;
+  __int64 unused_written_slot_2;
+  __int64 unused_local;
 
-  SR_VEC_LANES(128, v9, i64)[0] = a1;
-  v4 = 4LL * (*(_DWORD *)(a1 + 276) + *(_DWORD *)(a1 + 268));
-  v5 = v4 + 15;
-  if ( v4 + 15 <= v4 )
-    v5 = 0xFFFFFFFFFFFFFF0LL;
-  v6 = alloca(v5 & 0xFFFFFFFFFFFFFFF0uLL);
-  v10 = v6;
-  crt_memcpy(&v9, (     __m128i *)(SR_VEC_LANES(128, v9, i64)[0] + 24), 4LL * *(int *)(SR_VEC_LANES(128, v9, i64)[0] + 276));
-  v14 = (__int16 *)(*(_QWORD *)(SR_VEC_LANES(128, v9, i64)[0] + 296) + 4LL);
-  v12 = *(_DWORD *)(SR_VEC_LANES(128, v9, i64)[0] + 272);
+  SR_VEC_LANES(128, destination_buffer, i64)[0] = a1;
+  loaded_word = 4LL * (*(_DWORD *)(a1 + 276) + *(_DWORD *)(a1 + 268));
+  integer_sum = loaded_word + 15;
+  if ( loaded_word + 15 <= loaded_word )
+    integer_sum = 0xFFFFFFFFFFFFFF0LL;
+  alloca_result = alloca(integer_sum & 0xFFFFFFFFFFFFFFF0uLL);
+  destination_buffer_2 = alloca_result;
+  crt_memcpy(&destination_buffer, (     __m128i *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 24), 4LL * *(int *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 276));
+  loaded_record_pointer = (__int16 *)(*(_QWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 296) + 4LL);
+  loaded_word_3 = *(_DWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 272);
   while ( 1 )
   {
-    v11 = a4 >= *(_DWORD *)(SR_VEC_LANES(128, v9, i64)[0] + 268) ? *(_DWORD *)(SR_VEC_LANES(128, v9, i64)[0] + 268) : a4;
-    SR_VEC_LANES(128, v9, i32)[2] = v11;
+    loaded_word_2 = a4 >= *(_DWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 268) ? *(_DWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 268) : a4;
+    SR_VEC_LANES(128, destination_buffer, i32)[2] = loaded_word_2;
     sub_1401DD7A0(
-      SR_VEC_LANES(128, v9, i64)[0],
-      (__int64)SR_VEC_PTR_LANES(128, v10, i64) + 4 * *(int *)(SR_VEC_LANES(128, v9, i64)[0] + 276),
+      SR_VEC_LANES(128, destination_buffer, i64)[0],
+      (__int64)SR_VEC_PTR_LANES(128, destination_buffer_2, i64) + 4 * *(int *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 276),
       a3,
-      *(__int16 **)(SR_VEC_LANES(128, v9, i64)[0] + 296),
-      v11);
-    v13 = SR_VEC_LANES(128, v9, i32)[2] << 16;
+      *(__int16 **)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 296),
+      loaded_word_2);
+    unused_written_slot = SR_VEC_LANES(128, destination_buffer, i32)[2] << 16;
     a2 = sub_1401DD8A0(
            a2,
-           (__int64)v10,
-           v14,
-           *(_DWORD *)(SR_VEC_LANES(128, v9, i64)[0] + 276),
-           *(_DWORD *)(SR_VEC_LANES(128, v9, i64)[0] + 280),
-           SR_VEC_LANES(128, v9, i32)[2] << 16,
-           v12);
-    a3 += 2LL * SR_VEC_LANES(128, v9, i32)[2];
-    a4 -= SR_VEC_LANES(128, v9, i32)[2];
+           (__int64)destination_buffer_2,
+           loaded_record_pointer,
+           *(_DWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 276),
+           *(_DWORD *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 280),
+           SR_VEC_LANES(128, destination_buffer, i32)[2] << 16,
+           loaded_word_3);
+    a3 += 2LL * SR_VEC_LANES(128, destination_buffer, i32)[2];
+    a4 -= SR_VEC_LANES(128, destination_buffer, i32)[2];
     if ( a4 <= 1 )
       break;
-    crt_memcpy(v10, (__m128i *)((char *)v10 + 4 * SR_VEC_LANES(128, v9, i32)[2]), 4LL * *(int *)(SR_VEC_LANES(128, v9, i64)[0] + 276));
+    crt_memcpy(destination_buffer_2, (__m128i *)((char *)destination_buffer_2 + 4 * SR_VEC_LANES(128, destination_buffer, i32)[2]), 4LL * *(int *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 276));
   }
-  v7 = 4LL * *(int *)(SR_VEC_LANES(128, v9, i64)[0] + 276);
-  v15 = SR_VEC_LANES(128, v9, i64)[0] + 24;
-  return crt_memcpy((__m128i *)(SR_VEC_LANES(128, v9, i64)[0] + 24), (__m128i *)((char *)v10 + 4 * SR_VEC_LANES(128, v9, i32)[2]), v7); /* 0x1401DD333: the result of this call is still in rax at the exit */
+  byte_count = 4LL * *(int *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 276);
+  unused_written_slot_2 = SR_VEC_LANES(128, destination_buffer, i64)[0] + 24;
+  return crt_memcpy((__m128i *)(SR_VEC_LANES(128, destination_buffer, i64)[0] + 24), (__m128i *)((char *)destination_buffer_2 + 4 * SR_VEC_LANES(128, destination_buffer, i32)[2]), byte_count); /* 0x1401DD333: the result of this call is still in rax at the exit */
 }
 
 //----- (00000001401DD350) ----------------------------------------------------
@@ -8725,75 +8725,75 @@ __int64            sub_1401DD350(_DWORD *a1, __int64 a2, __int64 a3, unsigned in
 __int64            sub_1401DD3A0(_DWORD *a1, __int64 a2, __int64 a3, unsigned int a4)
 {
   __int64 result;
-  int v5;
-  int v6;
-  int v7;
-  int v8;
-  int v9;
-  int v10;
-  int v11;
-  int v12;
-  int v13;
-  int v14;
+  int shifted_bits;
+  int shifted_bits_2;
+  int shifted_bits_3;
+  int shifted_bits_4;
+  int shifted_bits_5;
+  int shifted_bits_6;
+  int scaled_index;
+  int table_value;
+  int table_value_2;
+  int table_value_3;
   int i;
-  int v16;
-  int v17;
-  int v18;
-  int v19;
-  __int16 v20;
-  int v21;
-  __int16 v22;
+  int table_value_4;
+  int table_value_5;
+  int shifted_bits_7;
+  int shifted_bits_8;
+  __int16 saved_shifted_bits;
+  int shifted_bits_9;
+  __int16 saved_shifted_bits_2;
 
   for ( i = 0; ; ++i )
   {
     result = a4;
     if ( i >= (int)a4 )
       break;
-    v18 = *(__int16 *)(a3 + 2LL * i) << 10;
-    v5 = (unk_14027E928 * (__int64)(v18 - *a1)) >> 16;
-    v11 = v5 + *a1;
-    *a1 = v5 + v18;
-    v6 = (unk_14027E92A * (__int64)(v11 - a1[1])) >> 16;
-    v16 = v6 + a1[1];
-    a1[1] = v6 + v11;
-    v7 = ((unk_14027E92C * (__int64)(v16 - a1[2])) >> 16) + v16 - a1[2];
-    v12 = v7 + a1[2];
-    a1[2] = v7 + v16;
-    if ( ((v12 >> 9) + 1) >> 1 <= 0x7FFF )
+    shifted_bits_7 = *(__int16 *)(a3 + 2LL * i) << 10;
+    shifted_bits = (unk_14027E928 * (__int64)(shifted_bits_7 - *a1)) >> 16;
+    scaled_index = shifted_bits + *a1;
+    *a1 = shifted_bits + shifted_bits_7;
+    shifted_bits_2 = (unk_14027E92A * (__int64)(scaled_index - a1[1])) >> 16;
+    table_value_4 = shifted_bits_2 + a1[1];
+    a1[1] = shifted_bits_2 + scaled_index;
+    shifted_bits_3 = ((unk_14027E92C * (__int64)(table_value_4 - a1[2])) >> 16) + table_value_4 - a1[2];
+    table_value = shifted_bits_3 + a1[2];
+    a1[2] = shifted_bits_3 + table_value_4;
+    if ( ((table_value >> 9) + 1) >> 1 <= 0x7FFF )
     {
-      if ( ((v12 >> 9) + 1) >> 1 >= -32768 )
-        v19 = ((v12 >> 9) + 1) >> 1;
+      if ( ((table_value >> 9) + 1) >> 1 >= -32768 )
+        shifted_bits_8 = ((table_value >> 9) + 1) >> 1;
       else
-        LOWORD(v19) = 0x8000;
-      v20 = v19;
+        LOWORD(shifted_bits_8) = 0x8000;
+      saved_shifted_bits = shifted_bits_8;
     }
     else
     {
-      v20 = 0x7FFF;
+      saved_shifted_bits = 0x7FFF;
     }
-    *(_WORD *)(a2 + 4LL * i) = v20;
-    v8 = (unk_14027E9D8 * (__int64)(v18 - a1[3])) >> 16;
-    v13 = v8 + a1[3];
-    a1[3] = v8 + v18;
-    v9 = (unk_14027E9DA * (__int64)(v13 - a1[4])) >> 16;
-    v17 = v9 + a1[4];
-    a1[4] = v9 + v13;
-    v10 = ((unk_14027E9DC * (__int64)(v17 - a1[5])) >> 16) + v17 - a1[5];
-    v14 = v10 + a1[5];
-    a1[5] = v10 + v17;
-    if ( ((v14 >> 9) + 1) >> 1 <= 0x7FFF )
+    *(_WORD *)(a2 + 4LL * i) = saved_shifted_bits;
+    shifted_bits_4 = (unk_14027E9D8 * (__int64)(shifted_bits_7 - a1[3])) >> 16;
+    table_value_2 = shifted_bits_4 + a1[3];
+    a1[3] = shifted_bits_4 + shifted_bits_7;
+    shifted_bits_5 = (unk_14027E9DA * (__int64)(table_value_2 - a1[4])) >> 16;
+    table_value_5 = shifted_bits_5 + a1[4];
+    a1[4] = shifted_bits_5 + table_value_2;
+    shifted_bits_6 = ((unk_14027E9DC * (__int64)(table_value_5 - a1[5])) >> 16) + table_value_5 - a1[5];
+    table_value_3 = shifted_bits_6 + a1[5];
+    a1[5] = shifted_bits_6 + table_value_5;
+    if ( ((table_value_3 >> 9) + 1) >> 1 <= 0x7FFF )
     {
-      if ( ((v14 >> 9) + 1) >> 1 >= -32768 )
-        v21 = ((v14 >> 9) + 1) >> 1;
+      if ( ((table_value_3 >> 9) + 1) >> 1 >= -32768 )
+        shifted_bits_9 = ((table_value_3 >> 9) + 1) >> 1;
       else
-        LOWORD(v21) = 0x8000;
-      v22 = v21;
+        LOWORD(shifted_bits_9) = 0x8000;
+      saved_shifted_bits_2 = shifted_bits_9;
     }
     else
     {
-      v22 = 0x7FFF;
+      saved_shifted_bits_2 = 0x7FFF;
     }
-    *(_WORD *)(a2 + 2LL * (2 * i + 1)) = v22;
+    *(_WORD *)(a2 + 2LL * (2 * i + 1)) = saved_shifted_bits_2;
   }
   return result;
 }
@@ -8803,18 +8803,18 @@ __int64            sub_1401DD7A0(_DWORD *a1, __int64 a2, __int64 a3, __int16 *a4
 {
   __int64 result;
   signed int i;
-  int v7;
+  int shifted_bits;
 
   for ( i = 0; ; ++i )
   {
     result = a5;
     if ( i >= (int)a5 )
       break;
-    v7 = *a1 + (*(__int16 *)(a3 + 2LL * i) << 8);
-    *(_DWORD *)(a2 + 4LL * i) = v7;
-    v7 *= 4;
-    *a1 = ((*a4 * (__int64)v7) >> 16) + a1[1];
-    a1[1] = (a4[1] * (__int64)v7) >> 16;
+    shifted_bits = *a1 + (*(__int16 *)(a3 + 2LL * i) << 8);
+    *(_DWORD *)(a2 + 4LL * i) = shifted_bits;
+    shifted_bits *= 4;
+    *a1 = ((*a4 * (__int64)shifted_bits) >> 16) + a1[1];
+    a1[1] = (a4[1] * (__int64)shifted_bits) >> 16;
   }
   return result;
 }
@@ -8822,133 +8822,133 @@ __int64            sub_1401DD7A0(_DWORD *a1, __int64 a2, __int64 a3, __int16 *a4
 //----- (00000001401DD8A0) ----------------------------------------------------
 __int16 *           sub_1401DD8A0(__int16 *a1, __int64 a2, __int16 *a3, int a4, int a5, int a6, int a7)
 {
-  int v8;
-  int v9;
-  int v10;
-  int v11;
-  int v12;
-  int v13;
-  int v14;
-  int v15;
+  int shifted_bits;
+  int shifted_bits_2;
+  int shifted_bits_3;
+  int shifted_bits_4;
+  int shifted_bits_5;
+  int shifted_bits_6;
+  int shifted_bits_7;
+  int shifted_bits_8;
   int i;
   int j;
   int k;
-  int v19;
-  int v20;
-  __int16 v21;
-  int v22;
-  __int16 v23;
-  int v24;
-  __int16 v25;
+  int shifted_bits_9;
+  int shifted_bits_10;
+  __int16 saved_shifted_bits;
+  int shifted_bits_11;
+  __int16 saved_shifted_bits_2;
+  int shifted_bits_12;
+  __int16 saved_shifted_bits_3;
 
   switch ( a4 )
   {
     case 18:
       for ( i = 0; i < a6; i += a7 )
       {
-        v19 = (__int64)((__int16)a5 * (unsigned __int64)(unsigned __int16)i) >> 16;
-        v8 = ((a3[9 * v19 + 6] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 24)) >> 16)
-           + ((a3[9 * v19 + 5] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 20)) >> 16)
-           + ((a3[9 * v19 + 4] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 16)) >> 16)
-           + ((a3[9 * v19 + 3] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 12)) >> 16)
-           + ((a3[9 * v19 + 2] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 8)) >> 16)
-           + ((a3[9 * v19 + 1] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 4)) >> 16)
-           + ((a3[9 * v19] * (__int64)*(int *)(a2 + 4LL * (i >> 16))) >> 16);
-        v9 = ((a3[9 * (a5 - 1 - v19) + 3] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 56)) >> 16)
-           + ((a3[9 * (a5 - 1 - v19) + 2] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 60)) >> 16)
-           + ((a3[9 * (a5 - 1 - v19) + 1] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 64)) >> 16)
-           + ((a3[9 * (a5 - 1 - v19)] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 68)) >> 16)
-           + ((a3[9 * v19 + 8] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 32)) >> 16)
-           + ((a3[9 * v19 + 7] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 28)) >> 16)
-           + v8;
-        v10 = ((a3[9 * (a5 - 1 - v19) + 8] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 36)) >> 16)
-            + ((a3[9 * (a5 - 1 - v19) + 7] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 40)) >> 16)
-            + ((a3[9 * (a5 - 1 - v19) + 6] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 44)) >> 16)
-            + ((a3[9 * (a5 - 1 - v19) + 5] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 48)) >> 16)
-            + ((a3[9 * (a5 - 1 - v19) + 4] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 52)) >> 16)
-            + v9;
-        if ( ((v10 >> 5) + 1) >> 1 <= 0x7FFF )
+        shifted_bits_9 = (__int64)((__int16)a5 * (unsigned __int64)(unsigned __int16)i) >> 16;
+        shifted_bits = ((a3[9 * shifted_bits_9 + 6] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 24)) >> 16)
+           + ((a3[9 * shifted_bits_9 + 5] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 20)) >> 16)
+           + ((a3[9 * shifted_bits_9 + 4] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 16)) >> 16)
+           + ((a3[9 * shifted_bits_9 + 3] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 12)) >> 16)
+           + ((a3[9 * shifted_bits_9 + 2] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 8)) >> 16)
+           + ((a3[9 * shifted_bits_9 + 1] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 4)) >> 16)
+           + ((a3[9 * shifted_bits_9] * (__int64)*(int *)(a2 + 4LL * (i >> 16))) >> 16);
+        shifted_bits_2 = ((a3[9 * (a5 - 1 - shifted_bits_9) + 3] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 56)) >> 16)
+           + ((a3[9 * (a5 - 1 - shifted_bits_9) + 2] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 60)) >> 16)
+           + ((a3[9 * (a5 - 1 - shifted_bits_9) + 1] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 64)) >> 16)
+           + ((a3[9 * (a5 - 1 - shifted_bits_9)] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 68)) >> 16)
+           + ((a3[9 * shifted_bits_9 + 8] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 32)) >> 16)
+           + ((a3[9 * shifted_bits_9 + 7] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 28)) >> 16)
+           + shifted_bits;
+        shifted_bits_3 = ((a3[9 * (a5 - 1 - shifted_bits_9) + 8] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 36)) >> 16)
+            + ((a3[9 * (a5 - 1 - shifted_bits_9) + 7] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 40)) >> 16)
+            + ((a3[9 * (a5 - 1 - shifted_bits_9) + 6] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 44)) >> 16)
+            + ((a3[9 * (a5 - 1 - shifted_bits_9) + 5] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 48)) >> 16)
+            + ((a3[9 * (a5 - 1 - shifted_bits_9) + 4] * (__int64)*(int *)(a2 + 4LL * (i >> 16) + 52)) >> 16)
+            + shifted_bits_2;
+        if ( ((shifted_bits_3 >> 5) + 1) >> 1 <= 0x7FFF )
         {
-          if ( ((v10 >> 5) + 1) >> 1 >= -32768 )
-            v20 = ((v10 >> 5) + 1) >> 1;
+          if ( ((shifted_bits_3 >> 5) + 1) >> 1 >= -32768 )
+            shifted_bits_10 = ((shifted_bits_3 >> 5) + 1) >> 1;
           else
-            LOWORD(v20) = 0x8000;
-          v21 = v20;
+            LOWORD(shifted_bits_10) = 0x8000;
+          saved_shifted_bits = shifted_bits_10;
         }
         else
         {
-          v21 = 0x7FFF;
+          saved_shifted_bits = 0x7FFF;
         }
-        *a1++ = v21;
+        *a1++ = saved_shifted_bits;
       }
       break;
     case 24:
       for ( j = 0; j < a6; j += a7 )
       {
-        v11 = ((a3[5] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 72) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 20))) >> 16)
+        shifted_bits_4 = ((a3[5] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 72) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 20))) >> 16)
             + ((a3[4] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 76) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 16))) >> 16)
             + ((a3[3] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 80) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 12))) >> 16)
             + ((a3[2] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 84) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 8))) >> 16)
             + ((a3[1] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 88) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 4))) >> 16)
             + ((*a3 * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 92) + *(_DWORD *)(a2 + 4LL * (j >> 16)))) >> 16);
-        v12 = ((a3[11] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 48) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 44))) >> 16)
+        shifted_bits_5 = ((a3[11] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 48) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 44))) >> 16)
             + ((a3[10] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 52) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 40))) >> 16)
             + ((a3[9] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 56) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 36))) >> 16)
             + ((a3[8] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 60) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 32))) >> 16)
             + ((a3[7] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 64) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 28))) >> 16)
             + ((a3[6] * (__int64)(*(_DWORD *)(a2 + 4LL * (j >> 16) + 68) + *(_DWORD *)(a2 + 4LL * (j >> 16) + 24))) >> 16)
-            + v11;
-        if ( ((v12 >> 5) + 1) >> 1 <= 0x7FFF )
+            + shifted_bits_4;
+        if ( ((shifted_bits_5 >> 5) + 1) >> 1 <= 0x7FFF )
         {
-          if ( ((v12 >> 5) + 1) >> 1 >= -32768 )
-            v22 = ((v12 >> 5) + 1) >> 1;
+          if ( ((shifted_bits_5 >> 5) + 1) >> 1 >= -32768 )
+            shifted_bits_11 = ((shifted_bits_5 >> 5) + 1) >> 1;
           else
-            LOWORD(v22) = 0x8000;
-          v23 = v22;
+            LOWORD(shifted_bits_11) = 0x8000;
+          saved_shifted_bits_2 = shifted_bits_11;
         }
         else
         {
-          v23 = 0x7FFF;
+          saved_shifted_bits_2 = 0x7FFF;
         }
-        *a1++ = v23;
+        *a1++ = saved_shifted_bits_2;
       }
       break;
     case 36:
       for ( k = 0; k < a6; k += a7 )
       {
-        v13 = ((a3[5] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 120) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 20))) >> 16)
+        shifted_bits_6 = ((a3[5] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 120) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 20))) >> 16)
             + ((a3[4] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 124) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 16))) >> 16)
             + ((a3[3] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 128) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 12))) >> 16)
             + ((a3[2] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 132) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 8))) >> 16)
             + ((a3[1] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 136) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 4))) >> 16)
             + ((*a3 * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 140) + *(_DWORD *)(a2 + 4LL * (k >> 16)))) >> 16);
-        v14 = ((a3[11] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 96) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 44))) >> 16)
+        shifted_bits_7 = ((a3[11] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 96) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 44))) >> 16)
             + ((a3[10] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 100) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 40))) >> 16)
             + ((a3[9] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 104) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 36))) >> 16)
             + ((a3[8] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 108) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 32))) >> 16)
             + ((a3[7] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 112) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 28))) >> 16)
             + ((a3[6] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 116) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 24))) >> 16)
-            + v13;
-        v15 = ((a3[17] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 72) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 68))) >> 16)
+            + shifted_bits_6;
+        shifted_bits_8 = ((a3[17] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 72) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 68))) >> 16)
             + ((a3[16] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 76) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 64))) >> 16)
             + ((a3[15] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 80) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 60))) >> 16)
             + ((a3[14] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 84) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 56))) >> 16)
             + ((a3[13] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 88) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 52))) >> 16)
             + ((a3[12] * (__int64)(*(_DWORD *)(a2 + 4LL * (k >> 16) + 92) + *(_DWORD *)(a2 + 4LL * (k >> 16) + 48))) >> 16)
-            + v14;
-        if ( ((v15 >> 5) + 1) >> 1 <= 0x7FFF )
+            + shifted_bits_7;
+        if ( ((shifted_bits_8 >> 5) + 1) >> 1 <= 0x7FFF )
         {
-          if ( ((v15 >> 5) + 1) >> 1 >= -32768 )
-            v24 = ((v15 >> 5) + 1) >> 1;
+          if ( ((shifted_bits_8 >> 5) + 1) >> 1 >= -32768 )
+            shifted_bits_12 = ((shifted_bits_8 >> 5) + 1) >> 1;
           else
-            LOWORD(v24) = 0x8000;
-          v25 = v24;
+            LOWORD(shifted_bits_12) = 0x8000;
+          saved_shifted_bits_3 = shifted_bits_12;
         }
         else
         {
-          v25 = 0x7FFF;
+          saved_shifted_bits_3 = 0x7FFF;
         }
-        *a1++ = v25;
+        *a1++ = saved_shifted_bits_3;
       }
       break;
   }
@@ -8958,36 +8958,36 @@ __int16 *           sub_1401DD8A0(__int16 *a1, __int64 a2, __int16 *a3, int a4, 
 //----- (00000001401DE800) ----------------------------------------------------
 __int16 *           sub_1401DE800(__int16 *a1, __int64 a2, int a3, int a4)
 {
-  int v5;
-  int v6;
+  int shifted_bits;
+  int shifted_bits_2;
   int i;
-  int v8;
-  __int16 v9;
+  int shifted_bits_3;
+  __int16 saved_shifted_bits;
 
   for ( i = 0; i < a3; i += a4 )
   {
-    v6 = (12LL * (unsigned __int16)i) >> 16;
-    v5 = word_140282170[4 * (11 - v6)] * *(__int16 *)(a2 + 2LL * (i >> 16) + 14)
-       + word_140282170[4 * (11 - v6) + 1] * *(__int16 *)(a2 + 2LL * (i >> 16) + 12)
-       + word_140282170[4 * (11 - v6) + 2] * *(__int16 *)(a2 + 2LL * (i >> 16) + 10)
-       + word_140282170[4 * (11 - v6) + 3] * *(__int16 *)(a2 + 2LL * (i >> 16) + 8)
-       + word_140282170[4 * v6 + 3] * *(__int16 *)(a2 + 2LL * (i >> 16) + 6)
-       + word_140282170[4 * v6 + 2] * *(__int16 *)(a2 + 2LL * (i >> 16) + 4)
-       + word_140282170[4 * v6 + 1] * *(__int16 *)(a2 + 2LL * (i >> 16) + 2)
-       + word_140282170[4 * v6] * *(__int16 *)(a2 + 2LL * (i >> 16));
-    if ( ((v5 >> 14) + 1) >> 1 <= 0x7FFF )
+    shifted_bits_2 = (12LL * (unsigned __int16)i) >> 16;
+    shifted_bits = word_140282170[4 * (11 - shifted_bits_2)] * *(__int16 *)(a2 + 2LL * (i >> 16) + 14)
+       + word_140282170[4 * (11 - shifted_bits_2) + 1] * *(__int16 *)(a2 + 2LL * (i >> 16) + 12)
+       + word_140282170[4 * (11 - shifted_bits_2) + 2] * *(__int16 *)(a2 + 2LL * (i >> 16) + 10)
+       + word_140282170[4 * (11 - shifted_bits_2) + 3] * *(__int16 *)(a2 + 2LL * (i >> 16) + 8)
+       + word_140282170[4 * shifted_bits_2 + 3] * *(__int16 *)(a2 + 2LL * (i >> 16) + 6)
+       + word_140282170[4 * shifted_bits_2 + 2] * *(__int16 *)(a2 + 2LL * (i >> 16) + 4)
+       + word_140282170[4 * shifted_bits_2 + 1] * *(__int16 *)(a2 + 2LL * (i >> 16) + 2)
+       + word_140282170[4 * shifted_bits_2] * *(__int16 *)(a2 + 2LL * (i >> 16));
+    if ( ((shifted_bits >> 14) + 1) >> 1 <= 0x7FFF )
     {
-      if ( ((v5 >> 14) + 1) >> 1 >= -32768 )
-        v8 = ((v5 >> 14) + 1) >> 1;
+      if ( ((shifted_bits >> 14) + 1) >> 1 >= -32768 )
+        shifted_bits_3 = ((shifted_bits >> 14) + 1) >> 1;
       else
-        LOWORD(v8) = 0x8000;
-      v9 = v8;
+        LOWORD(shifted_bits_3) = 0x8000;
+      saved_shifted_bits = shifted_bits_3;
     }
     else
     {
-      v9 = 0x7FFF;
+      saved_shifted_bits = 0x7FFF;
     }
-    *a1++ = v9;
+    *a1++ = saved_shifted_bits;
   }
   return a1;
 }
@@ -8995,38 +8995,38 @@ __int16 *           sub_1401DE800(__int16 *a1, __int64 a2, int a3, int a4)
 //----- (00000001401DEAE0) ----------------------------------------------------
 __int64            sub_1401DEAE0()
 {
-  __int64 v1;
+  __int64 unused_local;
   int i;
-  __m128i *v3;
-  BOOL v4;
-  __m128i v5[272];
-  _DWORD v6[4];
-  __m128i v7;
-  __int64 v8;
-  _DWORD *v9;
-  __m128i *v10;
-  __int64 v11;
-  int v12;
+  __m128i *destination_buffer;
+  BOOL comparison_result;
+  __m128i destination_buffer_2[272];
+  _DWORD scratch_buffer[4];
+  __m128i source_buffer;
+  __int64 unused_local_2;
+  _DWORD *record_pointer;
+  __m128i *source_buffer_2;
+  __int64 unrecovered_register_value;
+  int unrecovered_register_value_2;
 
-  v3 = (__m128i *)&v9[9 * v9[1441] + 1530];
-  if ( v9[1528] && (int)v9[1133] > 77 )
+  destination_buffer = (__m128i *)&record_pointer[9 * record_pointer[1441] + 1530];
+  if ( record_pointer[1528] && (int)record_pointer[1133] > 77 )
   {
-    v9[v9[1441] + 1185] = 1;
-    crt_memcpy(v5, (     __m128i *)(v9 + 37), 0x1100u);
-    crt_memcpy(v3, (     __m128i *)v9 + 297, 0x24u);
-    crt_memcpy(&v7, v10, 4LL * (int)v9[1145]);
-    if ( !v9[1441] || !v9[v9[1441] + 1184] )
+    record_pointer[record_pointer[1441] + 1185] = 1;
+    crt_memcpy(destination_buffer_2, (     __m128i *)(record_pointer + 37), 0x1100u);
+    crt_memcpy(destination_buffer, (     __m128i *)record_pointer + 297, 0x24u);
+    crt_memcpy(&source_buffer, source_buffer_2, 4LL * (int)record_pointer[1145]);
+    if ( !record_pointer[1441] || !record_pointer[record_pointer[1441] + 1184] )
     {
-      *((_BYTE *)v9 + 4540) = *((_BYTE *)v9 + 7192);
-      SR_VEC_PTR_LANES(128, v3, i8)[0] += *((_BYTE *)v9 + 6116);
-      SR_VEC_PTR_LANES(128, v3, i8)[0] = sub_1401BE320(SR_VEC_PTR_LANES(128, v3, i8)[0], 0x3Fu);
+      *((_BYTE *)record_pointer + 4540) = *((_BYTE *)record_pointer + 7192);
+      SR_VEC_PTR_LANES(128, destination_buffer, i8)[0] += *((_BYTE *)record_pointer + 6116);
+      SR_VEC_PTR_LANES(128, destination_buffer, i8)[0] = sub_1401BE320(SR_VEC_PTR_LANES(128, destination_buffer, i8)[0], 0x3Fu);
     }
-    v4 = v12 == 2;
-    sub_1401C2D70((__int64)v6, SR_VEC_PTR_LANES(128, v3, i8), (char *)v9 + 4540, v4, v9[1145]);
-    for ( i = 0; i < v9[1145]; ++i )
-      *(float *)&SR_VEC_PTR_LANES(128, v10, i32)[i] = (float)(int)v6[i] * 0.000015258789;
-    sub_1401D62A0(v9, (__int64)v10, SR_VEC_PTR_LANES(128, v3, i8), v5, (__int64)&v9[80 * v9[1441] + 1557], v11);
-    crt_memcpy(v10, &v7, 4LL * (int)v9[1145]);
+    comparison_result = unrecovered_register_value_2 == 2;
+    sub_1401C2D70((__int64)scratch_buffer, SR_VEC_PTR_LANES(128, destination_buffer, i8), (char *)record_pointer + 4540, comparison_result, record_pointer[1145]);
+    for ( i = 0; i < record_pointer[1145]; ++i )
+      *(float *)&SR_VEC_PTR_LANES(128, source_buffer_2, i32)[i] = (float)(int)scratch_buffer[i] * 0.000015258789;
+    sub_1401D62A0(record_pointer, (__int64)source_buffer_2, SR_VEC_PTR_LANES(128, destination_buffer, i8), destination_buffer_2, (__int64)&record_pointer[80 * record_pointer[1441] + 1557], unrecovered_register_value);
+    crt_memcpy(source_buffer_2, &source_buffer, 4LL * (int)record_pointer[1145]);
   }
   return 0; /* no caller reads the result */
 }
@@ -9035,7 +9035,7 @@ __int64            sub_1401DEAE0()
 __int64            sub_1401DEE00(__int64 a1, float *a2, __int64 a3, int a4)
 {
   __int64 result;
-  float v5;
+  float combined_products;
   int i;
 
   for ( i = 16; ; ++i )
@@ -9043,7 +9043,7 @@ __int64            sub_1401DEE00(__int64 a1, float *a2, __int64 a3, int a4)
     result = (unsigned int)a4;
     if ( i >= a4 )
       break;
-    v5 = (float)((float)((float)((float)((float)((float)((float)((float)((float)((float)((float)((float)(*(float *)(a3 + 4LL * (i - 1)) * *a2)
+    combined_products = (float)((float)((float)((float)((float)((float)((float)((float)((float)((float)((float)((float)(*(float *)(a3 + 4LL * (i - 1)) * *a2)
                                                                                                + (float)(*(float *)(a3 + 4LL * (i - 1) - 4) * a2[1]))
                                                                                        + (float)(*(float *)(a3 + 4LL * (i - 1) - 8)
                                                                                                * a2[2]))
@@ -9062,7 +9062,7 @@ __int64            sub_1401DEE00(__int64 a1, float *a2, __int64 a3, int a4)
                + (float)(*(float *)(a3 + 4LL * (i - 1) - 44) * a2[11]))
        + (float)(*(float *)(a3 + 4LL * (i - 1) - 48) * a2[12]);
     *(float *)(a1 + 4LL * i) = *(float *)(a3 + 4LL * (i - 1) + 4)
-                             - (float)((float)((float)(v5 + (float)(*(float *)(a3 + 4LL * (i - 1) - 52) * a2[13]))
+                             - (float)((float)((float)(combined_products + (float)(*(float *)(a3 + 4LL * (i - 1) - 52) * a2[13]))
                                              + (float)(*(float *)(a3 + 4LL * (i - 1) - 56) * a2[14]))
                                      + (float)(*(float *)(a3 + 4LL * (i - 1) - 60) * a2[15]));
   }
@@ -9178,25 +9178,25 @@ __int64            sub_1401DF7F0(__int64 a1, float *a2, __int64 a3, int a4)
 //----- (00000001401DF980) ----------------------------------------------------
 __m128            sub_1401DF980(__int64 a1, float a2, int a3)
 {
-  __int128 v3;
+  __int128 float_word;
   int i;
-  float v6;
-  float v7;
+  float weighted_sum;
+  float component_delta;
 
-  v7 = -a2;
-  v6 = *(float *)(a1 + 4LL * (a3 - 1));
+  component_delta = -a2;
+  weighted_sum = *(float *)(a1 + 4LL * (a3 - 1));
   for ( i = a3 - 2; i >= 0; --i )
-    v6 = (float)(v7 * v6) + *(float *)(a1 + 4LL * i);
-  v3 = 0x3F800000u;
-  *(float *)&v3 = 1.0 / (float)(1.0 - (float)(v7 * v6));
-  return (__m128)v3;
+    weighted_sum = (float)(component_delta * weighted_sum) + *(float *)(a1 + 4LL * i);
+  float_word = 0x3F800000u;
+  *(float *)&float_word = 1.0 / (float)(1.0 - (float)(component_delta * weighted_sum));
+  return (__m128)float_word;
 }
 
 //----- (00000001401DFA30) ----------------------------------------------------
 float            sub_1401DFA30(float *a1, float a2, float a3, int a4)
 {
   float result;
-  float v5;
+  float scaled_value;
   int i;
   int j;
   int m;
@@ -9204,55 +9204,55 @@ float            sub_1401DFA30(float *a1, float a2, float a3, int a4)
   int ii;
   int jj;
   int kk;
-  float v13;
-  float v14;
-  float v15;
+  float saved_call_status;
+  float scaled_ratio;
+  float component_delta;
   int k;
-  int v17;
+  int cached_m;
 
-  v17 = 0;
+  cached_m = 0;
   for ( i = a4 - 1; i > 0; --i )
     a1[i - 1] = a1[i - 1] - (float)(a2 * a1[i]);
   result = (float)(1.0 - (float)(a2 * a2)) / (float)((float)(a2 * *a1) + 1.0);
-  v13 = result;
+  saved_call_status = result;
   for ( j = 0; j < a4; ++j )
   {
-    result = a1[j] * v13;
+    result = a1[j] * saved_call_status;
     a1[j] = result;
   }
   for ( k = 0; k < 10; ++k )
   {
-    v15 = -1.0;
+    component_delta = -1.0;
     for ( m = 0; m < a4; ++m )
     {
-      v5 = *(double *)SR_VEC_READ_LANES(128, sub_140244390(a1[m]), u64);
-      if ( v5 > v15 )
+      scaled_value = *(double *)SR_VEC_READ_LANES(128, sub_140244390(a1[m]), u64);
+      if ( scaled_value > component_delta )
       {
-        v15 = v5;
-        v17 = m;
+        component_delta = scaled_value;
+        cached_m = m;
       }
     }
     result = a3;
-    if ( a3 >= v15 )
+    if ( a3 >= component_delta )
       break;
     for ( n = 1; n < a4; ++n )
       a1[n - 1] = a1[n - 1] + (float)(a2 * a1[n]);
-    v14 = 1.0 / v13;
+    scaled_ratio = 1.0 / saved_call_status;
     for ( ii = 0; ii < a4; ++ii )
-      a1[ii] = a1[ii] * v14;
+      a1[ii] = a1[ii] * scaled_ratio;
     sub_1401CDE70(
       (__int64)a1,
       a4,
       0.99000001
-    - (float)((float)((float)((float)(0.1 * (float)k) + 0.80000001) * (float)(v15 - a3))
-            / (float)(v15 * (float)(v17 + 1))));
+    - (float)((float)((float)((float)(0.1 * (float)k) + 0.80000001) * (float)(component_delta - a3))
+            / (float)(component_delta * (float)(cached_m + 1))));
     for ( jj = a4 - 1; jj > 0; --jj )
       a1[jj - 1] = a1[jj - 1] - (float)(a2 * a1[jj]);
     result = (float)(1.0 - (float)(a2 * a2)) / (float)((float)(a2 * *a1) + 1.0);
-    v13 = result;
+    saved_call_status = result;
     for ( kk = 0; kk < a4; ++kk )
     {
-      result = a1[kk] * v13;
+      result = a1[kk] * saved_call_status;
       a1[kk] = result;
     }
   }
@@ -9263,31 +9263,31 @@ float            sub_1401DFA30(float *a1, float a2, float a3, int a4)
 float            sub_1401DFE10(__int64 a1, float a2, int a3)
 {
   float result;
-  float v4;
+  float weighted_sum;
   int j;
-  float v6;
+  float saved_weighted_sum;
   int i;
-  int v8;
+  int cached_j;
 
-  v8 = 0;
+  cached_j = 0;
   for ( i = 0; i < 10; ++i )
   {
-    v6 = -1.0;
+    saved_weighted_sum = -1.0;
     for ( j = 0; j < a3; ++j )
     {
-      v4 = *(double *)SR_VEC_READ_LANES(128, sub_140244390(*(float *)(a1 + 4LL * j)), u64);
-      if ( v4 > v6 )
+      weighted_sum = *(double *)SR_VEC_READ_LANES(128, sub_140244390(*(float *)(a1 + 4LL * j)), u64);
+      if ( weighted_sum > saved_weighted_sum )
       {
-        v6 = v4;
-        v8 = j;
+        saved_weighted_sum = weighted_sum;
+        cached_j = j;
       }
     }
     result = a2;
-    if ( a2 >= v6 )
+    if ( a2 >= saved_weighted_sum )
       break;
     result = 0.99000001
-           - (float)((float)((float)((float)(0.1 * (float)i) + 0.80000001) * (float)(v6 - a2))
-                   / (float)(v6 * (float)(v8 + 1)));
+           - (float)((float)((float)((float)(0.1 * (float)i) + 0.80000001) * (float)(saved_weighted_sum - a2))
+                   / (float)(saved_weighted_sum * (float)(cached_j + 1)));
     sub_1401CDE70(a1, a3, result);
   }
   return result;

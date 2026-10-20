@@ -39,8 +39,8 @@ body->position[2] = body->velocity[2] + body->position[2];
 body->position[2] = body->velocity[1] + body->position[2];
 ====
 rotation arguments
-sub_14012B2D0(body->rotation, body->angular_momentum,
+sr_physics_integrate_rotation(body->rotation, body->angular_momentum,
                      body->angular_velocity, body->inverse_inertia);
 ----
-sub_14012B2D0(body->rotation, body->angular_velocity,
+sr_physics_integrate_rotation(body->rotation, body->angular_velocity,
                      body->angular_momentum, body->inverse_inertia);

@@ -8,10 +8,10 @@
 #define hit(w,x) ((uint64_t (*)(int,float))NC_ADDR(0x140074C50))(w,x)
 #define prefix(w,n) ((float (*)(int,int))NC_ADDR(0x140074CE0))(w,n)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_140074C50(int,float);
-float sub_140074CE0(int,int);
-#define hit sub_140074C50
-#define prefix sub_140074CE0
+long long sr_menu_text_hit_index(int,float);
+float sr_menu_text_prefix_width(int,int);
+#define hit sr_menu_text_hit_index
+#define prefix sr_menu_text_prefix_width
 #else
 #define hit menu_text_hit_index
 #define prefix menu_text_prefix_width

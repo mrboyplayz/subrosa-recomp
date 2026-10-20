@@ -75,9 +75,9 @@ __int64            sub_1400038E0(signed int a1, signed int a2, signed int a3, si
 
 __int64            sub_140004140(__int64 a1);
 
-__int64            sub_140005160(__int16 a1, unsigned int *a2, unsigned int *a3, float a4, unsigned int a5, float a6, unsigned int a7);
+__int64            sr_physics_add_world_contact(__int16 a1, unsigned int *a2, unsigned int *a3, float a4, unsigned int a5, float a6, unsigned int a7);
 
-__int64            sub_1400052C0(int a1, int a2, unsigned int *a3, unsigned int *a4, unsigned int *a5, float a6, unsigned int a7, float a8, unsigned int a9);
+__int64            sr_physics_add_contact(int a1, int a2, unsigned int *a3, unsigned int *a4, unsigned int *a5, float a6, unsigned int a7, float a8, unsigned int a9);
 
 __int64            sub_1400054F0(float *a1, float *a2, double a3, float a4);
 
@@ -113,7 +113,7 @@ unsigned int *           sub_140009BA0(int a1, int a2);
 
 void            sub_140009E30(int a1);
 
-__m128            sub_14000B5F0(double a1, float a2);
+__m128            sr_math_angle_difference(double a1, float a2);
 
 void            sub_14000B650(signed int a1, int a2);
 
@@ -131,55 +131,55 @@ __int64            sub_14000EF70(int *a1, int a2, int a3, int a4, unsigned int a
 
 void            sub_14000F830(signed int a1, int a2, unsigned int a3, int a4, unsigned int a5, _WORD *a6);
 
-__int64            sub_140010020(unsigned int a1, int a2, int a3, int a4);
+__int64            sr_world_create_chunk_slot(unsigned int a1, int a2, int a3, int a4);
 
 __int64 sub_140010110();
 
-__int64            sub_140012490(unsigned int a1, unsigned int a2, int a3, int a4, int a5);
+__int64            sr_world_create_block_record(unsigned int a1, unsigned int a2, int a3, int a4, int a5);
 
 void            sub_140012670(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
 void            sub_140012940(unsigned int a1, int a2);
 
-__int64            sub_1400129D0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_world_block_unknown_8_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
-__int64            sub_140012B10(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_world_block_unknown_8_origin(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
-__int64            sub_140012CA0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_world_block_unknown_1008_last(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
-__int64            sub_140012DE0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5);
+__int64            sr_world_block_unknown_1008_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5);
 
 __int64            sub_140012F30(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
-__int64            sub_140013020(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_world_block_record_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
 __int64            sub_140013120(signed int a1, signed int a2);
 
 void            sub_140016130(signed int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5, _BYTE *a6);
 
-__int64            sub_140016450(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_world_block_unknown_3008_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
-__int64            sub_140016590(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_world_block_unknown_3008_origin(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
-__int64            sub_140016720(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5);
+__int64            sr_world_block_unknown_3808_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5);
 
-__int64            sub_140016870(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_world_block_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
-__int64            sub_1400169B0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_world_block_gone_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
 void            sub_140016AF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5);
 
 void            sub_140016C80(signed int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5);
 
-void            sub_140016E30(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5);
+void            sr_world_set_block_unknown_3008(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5);
 
 void            sub_140016F60(signed int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5);
 
-void            sub_140017110(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5);
+void            sr_world_set_block_gone(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5);
 
-void            sub_140017260(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5);
+void            sr_world_set_block_unknown_4808(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5);
 
-void            sub_1400173C0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+void            sr_world_mark_block_record(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
 char            sub_1400174D0(int *a1, int a2, int *a3, int a4, float a5);
 
@@ -219,15 +219,15 @@ __int64            sub_14001B5C0(__int64 a1, unsigned int a2);
 
 __int64 sub_14001B6A0();
 
-__int64            sub_14001BF70(int a1);
+__int64            sr_physics_solve_joint(int a1);
 
-__int64            sub_14001C780(int a1);
+__int64            sr_physics_prepare_joint(int a1);
 
-__int64            sub_14001CBB0(int a1);
+__int64            sr_physics_solve_point_velocity(int a1);
 
-unsigned int *sub_14001D080();
+unsigned int *sr_physics_solve();
 
-void sub_14001FB90();
+void sr_physics_expire_bonds();
 
 __int64            sub_14001FD20(float *a1, float *a2);
 
@@ -271,25 +271,25 @@ __int64            sub_140029800(__int64 a1, __int64 a2, int a3);
 
 __int64 sub_1400299C0();
 
-__int64            sub_14002A680();
+__int64            sr_world_build_race_track();
 
-__int64 sub_14002A9A0();
+__int64 sr_world_build_train_route();
 
 __int64 sub_14002B9C0();
 
-__int64 sub_14002CE50();
+__int64 sr_world_expire_bullets();
 
-float *           sub_14002CF10(__int64 a1, float *a2, __int64 a3, float *a4, float *a5);
+float *           sr_physics_apply_inverse_inertia(__int64 a1, float *a2, __int64 a3, float *a4, float *a5);
 
 float            sub_14002D050(float *a1, float *a2, float *a3);
 
-__m128 *           sub_14002D2D0(__m128 *a1, __m128 *a2, __int64 a3, __int64 a4, __m128 *a5);
+__m128 *           sr_physics_apply_inverse_inertia4(__m128 *a1, __m128 *a2, __int64 a3, __int64 a4, __m128 *a5);
 
-float *           sub_14002D370(float *a1, float *a2, float *a3, float *a4, float *a5);
+float *           sr_collision_triangle_weights(float *a1, float *a2, float *a3, float *a4, float *a5);
 
-double            sub_14002D820(float *a1, float *a2, float a3);
+double            sr_physics_limit_slide(float *a1, float *a2, float a3);
 
-double            sub_14002D9B0(float *a1, float *a2, float a3, float a4);
+double            sr_physics_limit_slide_capped(float *a1, float *a2, float a3, float a4);
 
 __int64            sub_14002DB60(int a1, int a2);
 
@@ -313,7 +313,7 @@ _BOOL8            sub_1400337B0(float *a1, __int64 a2, float *a3, float *a4, int
 
 __int64            sub_140033B50(float *a1, __int64 a2, float *a3, float *a4);
 
-_BOOL8            sub_140033BE0(float *a1, __int64 a2, __int64 a3, float *a4, float *a5, int a6);
+_BOOL8            sr_collision_capsule_placed_mesh(float *a1, __int64 a2, __int64 a3, float *a4, float *a5, int a6);
 
 __int64            sub_140033FE0(float *a1, float *a2, float a3);
 
@@ -323,13 +323,13 @@ __int64            sub_1400346F0(float *a1, float *a2, float *a3, float *a4, flo
 
 _BOOL8            sub_140034AE0(_DWORD *a1, __int64 a2, float *a3, float *a4, float *a5, int a6, __int64 a7, unsigned int a8, float a9);
 
-__int64            sub_140035690(float *a1, float *a2, float *a3, float *a4, float *a5, __int64 a6, float *a7, float *a8, float *a9);
+__int64            sr_collision_sphere_triangle(float *a1, float *a2, float *a3, float *a4, float *a5, __int64 a6, float *a7, float *a8, float *a9);
 
-__int64            sub_140035B70(float *a1, float *a2, float *a3, float *a4, float *a5, float a6, float *a7, float *a8, float *a9);
+__int64            sr_collision_sphere_triangle_face(float *a1, float *a2, float *a3, float *a4, float *a5, float a6, float *a7, float *a8, float *a9);
 
-__int64            sub_140035E50(int a1, float *a2, float *a3, float a4);
+__int64            sr_collision_sweep_train(int a1, float *a2, float *a3, float a4);
 
-__int64            sub_140037220(int a1, float *a2, float *a3, float a4);
+__int64            sr_collision_sweep_vehicle(int a1, float *a2, float *a3, float a4);
 
 void            sub_140037DE0(signed int a1, int a2, unsigned int a3, unsigned int a4, unsigned __int16 a5);
 
@@ -337,7 +337,7 @@ void sub_140037FE0();
 
 __int64            sub_140038130(int a1, int a2, int a3, int a4);
 
-void            sub_140038230(int *a1, int *a2, int *a3);
+void            sr_world_grid_query_items(int *a1, int *a2, int *a3);
 
 float            sub_140038480(float a1, float a2, float a3);
 
@@ -347,7 +347,7 @@ __int64 sub_1400387E0();
 
 void sub_14003A0F0();
 
-int sub_14003B920(int process_input);
+int sr_game_frame(int process_input);
 
 __int64            sub_14003C6F0(_BYTE *a1);
 
@@ -389,19 +389,19 @@ __int64            sub_140045420(int *a1, _DWORD *a2);
 
 __int64            sub_1400462B0(int *a1, __int64 a2, int a3, int a4, int a5, float *a6, float *a7, float *a8, float *a9);
 
-__int64            sub_140048090(__int64 a1);
+__int64            sr_collision_find_free_contact(__int64 a1);
 
 __int64            sub_140048110(int *a1);
 
 __int64            sub_140048BA0(signed int a1, unsigned int *a2);
 
-__int64            sub_140048DA0(int a1, int a2, __int64 a3, __int64 a4, float *a5, float *a6, float *a7, float *a8, char a9);
+__int64            sr_collision_mesh_contact(int a1, int a2, __int64 a3, __int64 a4, float *a5, float *a6, float *a7, float *a8, char a9);
 
-__int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4, float *a5, float *a6);
+__int64            sr_collision_mesh_point_sweep(float *a1, __int64 a2, float *a3, float *a4, float *a5, float *a6);
 
-_BOOL8            sub_14004A1D0(float *a1, __int64 a2, __int64 a3, __int64 a4, float *a5, float *a6);
+_BOOL8            sr_collision_mesh_point_faces(float *a1, __int64 a2, __int64 a3, __int64 a4, float *a5, float *a6);
 
-__int64            sub_14004A480(__int64 a1, __int64 a2, __int64 a3, float *a4, float *a5);
+__int64            sr_collision_mesh_transform(__int64 a1, __int64 a2, __int64 a3, float *a4, float *a5);
 
 __int64            sub_14004A670(__int64 a1);
 
@@ -409,11 +409,11 @@ __int64            sub_14004A7A0(int a1, int a2, int *a3, int *a4, float *a5, fl
 
 __int64            sub_14004BFC0(__int16 a1, __int64 a2, float *a3, float *a4, float *a5, float *a6);
 
-__int64            sub_14004C4C0(unsigned __int8 *a1, __int64 a2);
+__int64            sr_text_compare_bytes(unsigned __int8 *a1, __int64 a2);
 
 __int64            shader_compile_program(int a1, __int64 a2, __int64 a3, __int64 a4);
 
-__int64            sub_14004C960(int a1, int a2);
+__int64            sr_disk_for_item_drive(int a1, int a2);
 
 __int64            sub_14004C9C0(int a1, int *a2, int *a3, __int64 a4, int *a5);
 
@@ -433,17 +433,17 @@ void            sub_14004DB20(signed int a1, float *a2, unsigned int a3, int a4,
 
 __int64            sub_14004DE30(unsigned int a1, int a2, int a3, int a4);
 
-__int64            sub_14004E160(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4, unsigned int a5);
+__int64            sr_physics_create_distance_bond(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4, unsigned int a5);
 
-__int64            sub_14004E2E0(unsigned int a1, unsigned int *a2, unsigned int *a3);
+__int64            sr_physics_create_level_bond(unsigned int a1, unsigned int *a2, unsigned int *a3);
 
-__int64            sub_14004E430(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4);
+__int64            sr_physics_create_body_bond(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4);
 
-__int64            sub_14004E5B0(unsigned int a1, unsigned int a2);
+__int64            sr_physics_create_rotation_bond(unsigned int a1, unsigned int a2);
 
 void            sub_14004E6E0(int a1, float a2, float a3, float a4);
 
-__int64            sub_14004E8A0(signed int a1, unsigned int *a2, float *a3, unsigned int a4);
+__int64            sr_world_fire_bullet(signed int a1, unsigned int *a2, float *a3, unsigned int a4);
 
 double            sub_14004EB60(int a1, int a2, int a3);
 
@@ -455,47 +455,47 @@ double            sub_1400504C0(int a1, float a2, float a3, float a4);
 
 __int64            sub_140050C80(_DWORD *a1, _DWORD *a2, unsigned int a3);
 
-__int64            sub_140050EF0(unsigned int a1);
+__int64            sr_disk_create(unsigned int a1);
 
-__int64            sub_140050F90(int a1, signed int a2);
+__int64            sr_item_link_text_line(int a1, signed int a2);
 
-__int64            sub_140051170(int a1, unsigned int a2, int a3);
+__int64            sr_item_allocate_text_record(int a1, unsigned int a2, int a3);
 
-void            sub_140051230(unsigned int a1, unsigned int *a2, unsigned int *a3, unsigned int a4);
+void            sr_event_bullet(unsigned int a1, unsigned int *a2, unsigned int *a3, unsigned int a4);
 
-void            sub_1400512D0(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4);
+void            sr_event_bullet_hit(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4);
 
-__int64            sub_140051480(unsigned int a1,      __m128i *a2, unsigned int a3, unsigned int a4);
+__int64            sr_event_message(unsigned int a1,      __m128i *a2, unsigned int a3, unsigned int a4);
 
-void            sub_140051560(int a1, int a2, int a3, int a4, unsigned int a5);
+void            sr_event_block_update(int a1, int a2, int a3, int a4, unsigned int a5);
 
-__int64            sub_1400515E0(unsigned int a1, unsigned int *a2, float a3, float a4);
+__int64            sr_event_sound(unsigned int a1, unsigned int *a2, float a3, float a4);
 
-__int64            sub_140051650(unsigned int a1, unsigned int a2, float a3, float a4);
+__int64            sr_event_item_sound(unsigned int a1, unsigned int a2, float a3, float a4);
 
-void            sub_1400516B0(int a1, int a2, int a3, int a4, unsigned int a5, unsigned int a6);
+void            sr_world_event_block_gone(int a1, int a2, int a3, int a4, unsigned int a5, unsigned int a6);
 
-void            sub_140051730(int a1, int a2, int a3, int a4, unsigned int a5, unsigned int a6, unsigned int *a7, unsigned int *a8);
+void            sr_event_block_hit(int a1, int a2, int a3, int a4, unsigned int a5, unsigned int a6, unsigned int *a7, unsigned int *a8);
 
-__int64            sub_1400518B0(unsigned int a1, unsigned int a2);
+__int64            sr_event_corporation_door(unsigned int a1, unsigned int a2);
 
-__int64            sub_140051940(unsigned int a1);
+__int64            sr_item_phone_changed(unsigned int a1);
 
-void            sub_1400519F0(int a1, int a2);
+void            sr_event_mission_update(int a1, int a2);
 
-void            sub_140051B00(int a1, int a2, unsigned int a3, int a4);
+void            sr_event_mission_text_line(int a1, int a2, unsigned int a3, int a4);
 
-void            sub_140051BD0(int a1, int a2);
+void            sr_event_mission_text(int a1, int a2);
 
-void            sub_140051CF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int *a4, unsigned int *a5);
+void            sr_event_vehicle_removed(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int *a4, unsigned int *a5);
 
-void            sub_140051DC0(int a1);
+void            sr_event_player_update(int a1);
 
-__int64            sub_140051F50(signed int a1);
+__int64            sr_event_player_finance(signed int a1);
 
-void            sub_140051FF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int *a5);
+void            sr_event_type21(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int *a5);
 
-__int64 sub_140052090();
+__int64 sr_event_stock_prices();
 
 double            sub_1400521A0(int a1, float a2, float a3, float a4);
 
@@ -509,7 +509,7 @@ __int64            sub_140054750(int a1, double a2, float a3, float a4);
 
 double            sub_1400555C0(int a1, __int64 a2, double a3, float a4, float a5);
 
-__int64            sub_140055FA0(int a1, signed int a2, signed int a3, float *a4);
+__int64            sr_human_create_joint_bond(int a1, signed int a2, signed int a3, float *a4);
 
 void            sub_1400561C0(int a1);
 
@@ -539,11 +539,11 @@ double            sub_14005B840(int a1, int a2);
 
 __int64            sr_CreateVehicle(int a1, float *a2, unsigned int *a3, unsigned int *a4, unsigned int a5);
 
-__int64            sub_14005CBB0(unsigned int a1, unsigned int *a2, unsigned int *a3, float a4, unsigned int a5);
+__int64            sr_physics_create_point(unsigned int a1, unsigned int *a2, unsigned int *a3, float a4, unsigned int a5);
 
 __int64 sub_14005CCF0();
 
-__int64            sub_14005CF80(unsigned int a1, unsigned int *a2, unsigned int *a3, unsigned int *a4, unsigned int a5, unsigned int *a6);
+__int64            sr_physics_create_body(unsigned int a1, unsigned int *a2, unsigned int *a3, unsigned int *a4, unsigned int a5, unsigned int *a6);
 
 __int64            sub_14005D1F0(__int64 a1);
 
@@ -559,9 +559,9 @@ __int64 sub_14005E860();
 
 __int64            sub_14005ED40(int a1, float *a2, __int64 a3, float a4, float a5);
 
-__int64            sub_14005EE40(unsigned int a1, unsigned int *a2, float *a3, float a4);
+__int64            sr_world_add_effect(unsigned int a1, unsigned int *a2, float *a3, float a4);
 
-__int64            sub_14005F150(unsigned int a1, unsigned int *a2, unsigned int *a3, float *a4);
+__int64            sr_world_spawn_particle(unsigned int a1, unsigned int *a2, unsigned int *a3, float *a4);
 
 double            sub_14005F370(int a1, int a2);
 
@@ -569,9 +569,9 @@ double            sub_14005F400(int a1);
 
 double            sub_14005F5A0(int a1, float a2, float a3, float a4);
 
-__int64            sub_14005F6E0(unsigned int a1, float *a2, float a3, float a4);
+__int64            sr_world_add_street(unsigned int a1, float *a2, float a3, float a4);
 
-__int64            sub_1400603A0(unsigned int a1, float *a2, float *a3, float *a4, float *a5, float a6);
+__int64            sr_world_add_rail(unsigned int a1, float *a2, float *a3, float *a4, float *a5, float a6);
 
 __int64 sub_140061950();
 
@@ -583,7 +583,7 @@ double            sub_140064FF0(int a1, int a2);
 
 __int64            sub_1400656E0(int a1, float *a2, __int64 a3);
 
-void            sub_140065AE0(signed int a1, float a2);
+void            sr_audio_generate_synth_sound(signed int sound_id, float sound_gain);
 
 double            sub_140066EE0(int a1, float a2, double a3, float a4);
 
@@ -591,45 +591,45 @@ int            sub_140067970(int a1, int a2, float *a3, float *a4);
 
 __int64            sub_1400689A0(int a1, int a2, int a3, int a4, int a5, signed int a6, unsigned int *a7, float *a8);
 
-_BOOL8 sub_140068F80();
+_BOOL8 sr_cpu_has_sse41();
 
 __int64            sub_140068FC0(int a1, char *a2);
 
-void            sub_140069400(__int64 a1, __m128i *a2, int a3);
+void            sr_audio_output_callback(__int64 a1, __m128i *a2, int a3);
 
 __int64 sub_140069440();
 
-__int64 sub_140069580();
+__int64 sr_audio_capture_available();
 
-__int64 sub_140069630();
+__int64 sr_audio_initialize();
 
-void            sub_140069930(unsigned int a1, int a2, __int16 *a3, float a4);
+void            sr_audio_load_pcm16(unsigned int sound_id, int byte_count, __int16 *pcm_samples, float sound_gain);
 
-void sub_140069A00();
+void sr_audio_load_hrtf();
 
 void            sub_140069DE0(unsigned int a1, __int64 a2, float a3);
 
-__int64            sub_140069FA0(signed int a1, unsigned int *a2, float a3, float a4, unsigned int a5);
+__int64            sr_audio_play_at(signed int a1, unsigned int *a2, float a3, float a4, unsigned int a5);
 
 __int64            sub_14006A140(int a1, int a2, float a3, float a4, unsigned int a5);
 
 __int64            sub_14006A240(int a1, int a2, unsigned int *a3, float a4, unsigned int a5, unsigned int a6);
 
-__m128i *           sub_14006A380(__int64 a1,      __m128i *a2, int a3);
+__m128i *           sr_audio_capture_write(__int64 a1,      __m128i *a2, int a3);
 
 __int64 sub_14006A5C0();
 
 __int64            sub_14006A5F0(int a1, int a2);
 
-__int64            sub_14006B4C0(int a1, int a2, int a3, int a4);
+__int64            sr_audio_mix_channel(int a1, int a2, int a3, int a4);
 
-__int64            sub_14006B6F0(int a1, int a2);
+__int64            sr_audio_mix_emitter(int a1, int a2);
 
-void sub_14006B850();
+void sr_audio_update_mix();
 
-void __attribute__((noreturn)) sub_14006BB10();
+void __attribute__((noreturn)) sr_audio_mixer_thread();
 
-__int64 sub_14006BDC0();
+__int64 sr_auth_draw_status();
 
 void               sub_14006BED0();
 
@@ -641,13 +641,13 @@ __int64            sub_14006C570(int a1, _DWORD *a2, char a3, int a4);
 
 __m128i *           sub_14006C5E0(int a1,      __m128i *a2, int a3, int a4, int a5);
 
-__int64            sub_14006C670(unsigned __int8 *a1, unsigned int a2);
+__int64            sr_text_label_id(unsigned __int8 *a1, unsigned int a2);
 
-__int64 sub_14006C780();
+__int64 sr_camera_update_letterbox();
 
-__int64            sub_14006C870(_BYTE *a1);
+__int64            sr_text_scan_matches(_BYTE *a1);
 
-__int64            sub_14006C980(unsigned __int8 *a1, __int64 a2);
+__int64            sr_text_compare_bytes_alt(unsigned __int8 *a1, __int64 a2);
 
 __int64            sub_14006CA30(unsigned int a1, unsigned int a2);
 
@@ -655,33 +655,33 @@ void            sub_14006CCA0(unsigned __int8 *a1, float a2);
 
 void            sub_14006CD90(unsigned __int8 *a1, unsigned int a2);
 
-__int64            sub_14006CFF0(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9);
+__int64            sr_renderer_draw_textured_rect(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9);
 
 __int64            sr_CSDrawAtlasEntry(int a1, int a2, float a3, float a4, float a5, float a6, char a7, int a8, int a9, int a10, int a11);
 
-__int64            sub_14006D660(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9);
+__int64            sr_renderer_draw_flat_rect(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9);
 
 __int64            sr_CSDrawText(char *a1, float a2, unsigned int *a3, float a4);
 
-void sub_14006DB90(_BYTE *a1, float a2, _BYTE *a3, float a4, int a5, int a6, int a7, int a8, int a9);
+void sr_text_draw_glyphs(_BYTE *a1, float a2, _BYTE *a3, float a4, int a5, int a6, int a7, int a8, int a9);
 
-void            sub_14006E0D0(__int64 a1, __int64 a2, __int64 a3);
+void            sr_renderer_batch_flush(__int64 a1, __int64 a2, __int64 a3);
 
-void            sub_14006E2D0(__int64 a1, __int64 a2, __int64 a3);
+void            sr_renderer_batch_draw(__int64 a1, __int64 a2, __int64 a3);
 
-_BOOL8            sub_14006E4C0(_BYTE *a1);
+_BOOL8            sr_text_scan_past(_BYTE *a1);
 
-__int64            sub_14006E530(_BYTE *a1, _BYTE *a2, int a3, __int64 a4);
+__int64            sr_text_format(_BYTE *a1, _BYTE *a2, int a3, __int64 a4);
 
-__int64            sub_14006EC40(float *a1, float *a2, float *a3, float *a4);
+__int64            sr_math_triangle_normal(float *a1, float *a2, float *a3, float *a4);
 
 __int64            sub_14006ECE0(__int64 a1, __int64 a2, double a3);
 
 __int64            sub_14006EDD0();
 
-float            sub_14006F060(int a1, _BYTE *a2, float a3);
+float            sr_text_width(int a1, _BYTE *a2, float a3);
 
-__int64            sub_14006F120(__int64 a1, char *a2);
+__int64            sr_text_copy_visible_label(__int64 a1, char *a2);
 
 __int64            sr_DrawMenuButton(unsigned __int8 *a1);
 
@@ -693,7 +693,7 @@ __int64            sub_14006F750(unsigned __int8 *a1, float a2, float a3, float 
 
 __int64            sr_DrawMenuList(unsigned __int8 *a1, float a2, float a3, float a4, unsigned int a5, int a6, unsigned int *a7, __int64 a8, unsigned int a9, unsigned int a10);
 
-__int64            sub_14006FD10(unsigned __int8 *a1);
+__int64            sr_menu_group(unsigned __int8 *a1);
 
 __int64            sub_14006FEB0(unsigned __int8 *a1, __int64 a2, float a3, float a4);
 
@@ -701,11 +701,11 @@ __int64            sr_DrawMenuTextBox(unsigned __int8 *a1, __int64 a2, unsigned 
 
 __int64            sub_140070200(unsigned __int8 *a1, __int64 a2, unsigned int a3);
 
-__int64            sub_140070380(unsigned int a1, float a2, float a3, float a4, unsigned int a5, unsigned int a6);
+__int64            sr_menu_allocate_widget(unsigned int a1, float a2, float a3, float a4, unsigned int a5, unsigned int a6);
 
 __int64            sub_1400707C0(unsigned __int8 *a1, float a2, float a3, float a4, unsigned int a5, unsigned int a6, unsigned int *a7, __int64 a8, unsigned int a9, unsigned int a10);
 
-__int64 sub_140070B90();
+__int64 sr_menu_begin_grid();
 
 __int64            sub_140070BD0(int a1, unsigned int a2,      char *a3,      char *a4);
 
@@ -715,11 +715,11 @@ __int64            sub_1400711D0(unsigned __int8 *a1, float *a2, float a3, float
 
 __int64            sr_DrawMenuSlider(unsigned __int8 *a1, int *a2, int a3, signed int a4, int a5);
 
-void            sub_140071640(char *a1);
+void            sr_menu_label(char *a1);
 
 __int64            sr_DrawMenuToggle(unsigned __int8 *a1, _DWORD *a2);
 
-__int64            sub_140071AA0(unsigned __int8 *a1, _DWORD *a2, unsigned int a3);
+__int64            sr_menu_toggle_mask(unsigned __int8 *a1, _DWORD *a2, unsigned int a3);
 
 __int64            sub_140071C20(unsigned __int8 *a1, float a2, float a3, float a4, float a5, int a6, __int16 a7);
 
@@ -751,23 +751,23 @@ double            sub_1400742F0(int a1, double a2, double a3);
 
 __int64            sub_1400745F0(unsigned int a1);
 
-__int64            sub_140074C50(int a1, float a2);
+__int64            sr_menu_text_hit_index(int a1, float a2);
 
-float            sub_140074CE0(int a1, int a2);
+float            sr_menu_text_prefix_width(int a1, int a2);
 
 void sub_140074E50();
 
-void sub_140075340();
+void sr_menu_pop_clip();
 
-__int64 sub_1400753C0();
+__int64 sr_menu_pop_size();
 
-__int64            sub_140075460(float a1, float a2, float a3, float a4);
+__int64            sr_menu_push_clip(float a1, float a2, float a3, float a4);
 
-__int64            sub_1400755F0(float a1, float a2);
+__int64            sr_menu_push_size(float a1, float a2);
 
-_WORD *sub_140075650();
+_WORD *sr_menu_reset();
 
-signed int *           sub_140075930(int a1, float a2);
+signed int *           sr_menu_slider_from_x(int a1, float a2);
 
 __int64            sub_140075A40(int a1, float a2, double a3);
 
@@ -775,7 +775,7 @@ int sub_140075FE0();
 
 void            sub_140076320(__int64 a1, int a2);
 
-void            sub_1400764B0(char *a1, float a2, float a3, float a4, char a5);
+void            sr_menu_label_at(char *a1, float a2, float a3, float a4, char a5);
 
 __int64            sub_140076770(char a1);
 
@@ -785,15 +785,15 @@ __int64            sub_140077660(char a1);
 
 void sub_140077710();
 
-__int64            sub_1400779F0(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6);
+__int64            sr_collision_line_plane(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6);
 
-__int64            sub_140077B30(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6);
+__int64            sr_collision_segment_plane(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6);
 
-_BOOL8            sub_140077C80(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8, float *a9);
+_BOOL8            sr_collision_line_quad(float *point, float *normal, float *fraction, float *from, float *to, float *a, float *b, float *c, float *d);
 
-_BOOL8            sub_140077FA0(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8);
+_BOOL8            sr_collision_line_triangle(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8);
 
-_BOOL8            sub_140078230(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8);
+_BOOL8            sr_collision_segment_triangle(float *point, float *normal, float *fraction, float *from, float *to, float *a, float *b, float *c);
 
 __int64            sub_1400784C0(_BYTE *a1, int a2, int a3);
 
@@ -801,71 +801,71 @@ __int64            ui_load_base_assets_candidate(unsigned int a1,      char *a2,
 
 __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char *a2);
 
-__int64            sub_140079840(char *a1);
+__int64            sr_texture_load_pixels(char *a1);
 
 void            sub_1400799F0(char *a1);
 
 __int64            sub_140079AA0(int a1, char *a2, int a3, unsigned int a4, unsigned int a5, unsigned int a6, unsigned int a7, int a8);
 
-__int64            sub_140079D60(_OWORD *a1, __int64 a2, float *a3);
+__int64            sr_math_mat4_multiply_vec4(_OWORD *a1, __int64 a2, float *a3);
 
-__int64            sub_140079F00(__int64 a1, float a2, float a3, float a4, float a5, float a6, float a7);
+__int64            sr_math_mat4_ortho(__int64 a1, float a2, float a3, float a4, float a5, float a6, float a7);
 
-__int64            sub_14007A010(__int64 a1, __int64 a2, __int64 a3);
+__int64            sr_math_mat3_multiply(__int64 a1, __int64 a2, __int64 a3);
 
-__int64            sub_14007A0E0(_OWORD *a1, __int64 a2, __int64 a3);
+__int64            sr_math_mat4_multiply(_OWORD *a1, __int64 a2, __int64 a3);
 
-__int64            sub_14007A240(__int64 a1, float *a2);
+__int64            sr_math_vec3_normalize(__int64 a1, float *a2);
 
-__int64            sub_14007A2C0(int a1, int a2, int a3, int a4, float a5, float a6, float a7);
+__int64            sr_camera_begin_orthographic(int a1, int a2, int a3, int a4, float a5, float a6, float a7);
 
-__int64            sub_14007A570(int a1, int a2, int a3, int a4, float a5, float a6, float a7);
+__int64            sr_camera_begin_perspective(int a1, int a2, int a3, int a4, float a5, float a6, float a7);
 
 __int64            sub_14007A8C0(int a1, int a2, int a3, int a4, float a5, float a6, float a7);
 
-float            sub_14007ABA0(float *a1, float *a2, float *a3);
+float            sr_math_point_segment_distance(float *a1, float *a2, float *a3);
 
-__int64            sub_14007ADF0(__m128i *a1, int a2, int a3);
+__int64            sr_net_read_bytes(__m128i *a1, int a2, int a3);
 
-_UNKNOWN **           sub_14007AE70(float *a1, float *a2, float *a3);
+_UNKNOWN **           sr_math_mat3_multiply_transposed(float *a1, float *a2, float *a3);
 
-void            sub_14007B0F0(float *a1, float *a2, float *a3);
+void            sr_math_vec3_multiply_mat3(float *a1, float *a2, float *a3);
 
-__int64            sub_14007B180(     __m128i *a1, int a2, int a3);
+__int64            sr_net_write_bytes(     __m128i *a1, int a2, int a3);
 
-void            sub_14007B2A0(__int64 a1, float *a2, double a3);
+void            sr_math_mat3_rotate_rows(__int64 a1, float *a2, double a3);
 
-void            sub_14007B4D0(float *a1, float *a2, double a3);
+void            sr_math_vec3_rotate(float *a1, float *a2, double a3);
 
-__int64            sub_14007B6F0(float a1, float a2, float a3);
+__int64            sr_camera_scale_model(float a1, float a2, float a3);
 
-__int64            sub_14007B7E0(float a1, float a2, float a3, float a4);
+__int64            sr_camera_set_scissor(float a1, float a2, float a3, float a4);
 
-__int64            sub_14007B990(unsigned int *a1, _DWORD *a2);
+__int64            sr_camera_set_model(unsigned int *a1, _DWORD *a2);
 
-double sub_14007BB00();
+double sr_camera_begin_2d();
 
-void            sub_14007BCB0(int a1, int a2, int a3);
+void            sr_texture_upload(int a1, int a2, int a3);
 
-__int64            sub_14007BE20(float *a1, unsigned int *a2);
+__int64            sr_camera_set_view(float *a1, unsigned int *a2);
 
 int sub_14007C040();
 
-__int64            sub_14007C080(int a1);
+__int64            sr_net_close_socket(int a1);
 
 __int64            sub_14007C0C0(int a1, unsigned __int16 a2, int a3, _BYTE *a4);
 
 __int64            sub_14007C1C0(int a1, int a2);
 
-__int64            sub_14007C3A0(int a1, int a2);
+__int64            sr_net_reassemble_fragments(int a1, int a2);
 
 __int64            sub_14007C660(int a1, int a2, unsigned int a3, unsigned __int16 a4);
 
 _BYTE *sub_14007C920(_BYTE *a1, _BYTE *a2, ...);
 
-__int64 sub_14007C980();
+__int64 sr_clock_milliseconds();
 
-void            sub_14007CA00(_DWORD *a1, int *a2);
+void            sr_math_mat3_transpose(_DWORD *a1, int *a2);
 
 __int128 *           input_get_keyboard_state_candidate(__int64 a1);
 
@@ -875,25 +875,25 @@ __int64            input_get_relative_mouse_state_candidate(float *a1);
 
 void input_poll_events_candidate();
 
-__int64            sub_14007D0B0(int *a1, unsigned __int16 a2);
+__int64            sr_math_fixed_vec2_rotate(int *a1, unsigned __int16 a2);
 
 __int64            sub_14007D230(float a1, float a2);
 
-__int64            sub_14007D320(unsigned int *a1, __int64 a2, __int64 a3);
+__int64            sr_renderer_batch_vertex2fv(unsigned int *a1, __int64 a2, __int64 a3);
 
-__int64            sub_14007D420(float a1, float a2, float a3);
+__int64            sr_renderer_batch_vertex3f(float a1, float a2, float a3);
 
-__int64            sub_14007D520(unsigned int *a1, __int64 a2, __int64 a3);
+__int64            sr_renderer_batch_vertex3fv(unsigned int *a1, __int64 a2, __int64 a3);
 
-__int64            sub_14007D610(unsigned int a1, float a2);
+__int64            sr_audio_allocate_sound_buffer(unsigned int a1, float a2);
 
-__int64            sub_14007D6C0(int a1);
+__int64            sr_audio_sound_available(int a1);
 
-__int64 sub_14007D710();
+__int64 sr_renderer_sort();
 
 __int64 sub_14007D930();
 
-void            sub_14007DDF0(float *a1, float *a2);
+void            sr_renderer_draw_wire_box(float *a1, float *a2);
 
 __int64            sub_14007E010(unsigned int *a1, _DWORD *a2, float a3, float a4, float a5, unsigned int a6, unsigned int a7, unsigned int a8);
 
@@ -903,11 +903,11 @@ __int64            sub_14007E9D0(unsigned int *a1, _DWORD *a2, double a3, float 
 
 void            __attribute__((noreturn)) sub_14007EEB0(__int64 a1, __int64 a2, double a3);
 
-void            sub_14007F370(unsigned int a1);
+void            sr_physics_remove_bond(unsigned int a1);
 
 unsigned int *           sub_14007F590(signed int a1);
 
-void            sub_14007F970(int a1);
+void            sr_world_remove_item(int a1);
 
 void            sub_14007FE00(unsigned int a1);
 
@@ -917,7 +917,7 @@ void            sub_1400802F0(int a1);
 
 __int64            sub_1400805E0(int a1);
 
-__int64            sub_140080690(int a1, unsigned int a2, char *a3, unsigned int a4);
+__int64            sr_disk_add_file(int a1, unsigned int a2, char *a3, unsigned int a4);
 
 __int64            sub_140080720(int a1, int a2, __int64 a3);
 
@@ -977,7 +977,7 @@ unsigned int *sub_14008C310();
 
 __int64 sub_14008C810();
 
-__int64            sub_14008CEB0(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7);
+__int64            sr_collision_edge_edge(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7);
 
 __int64            sub_14008D150(int a1, float *a2, float *a3);
 
@@ -1133,7 +1133,7 @@ __int64 sub_1400A3E30();
 
 __int64 sr_ConnectMasterServer();
 
-__int64 sub_1400A4440();
+__int64 sr_physics_find_free_bond();
 
 __int64 sub_1400A4560();
 
@@ -1153,7 +1153,7 @@ __int64 sub_1400A54F0();
 
 __int64            sub_1400A5510(float *a1, float a2, float a3);
 
-__int64            sub_1400A56B0(float *a1, float a2, float a3);
+__int64            sr_human_random_direction(float *a1, float a2, float a3);
 
 void            sub_1400A5890(float *a1);
 
@@ -1177,7 +1177,7 @@ double sub_1400A6F30();
 
 __int64 sub_1400A6FB0();
 
-_UNKNOWN **           sub_1400A70B0(int a1);
+_UNKNOWN **           sr_item_grenade_explode(int a1);
 
 __int64            sub_1400A74D0(int a1, float a2, float a3);
 
@@ -1197,73 +1197,73 @@ __int64            sub_1400A87A0(int a1);
 
 __int64            sub_1400A9760(int a1, unsigned int a2, __int64 a3, int a4);
 
-__int64            sub_1400A9940(int a1, int a2, int a3, float *a4);
+__int64            sr_human_limit_joint_turn(int a1, int a2, int a3, float *a4);
 
-__int64            sub_1400A9EF0(int a1, int a2, int a3, float *a4);
+__int64            sr_human_limit_joint_angles(int a1, int a2, int a3, float *a4);
 
-__int64            sub_1400AA510(int a1, int a2);
+__int64            sr_human_keep_arms_off_item(int a1, int a2);
 
 __int64            sub_1400AAAA0(int a1);
 
-__int64            sub_1400AB7B0(int a1);
+__int64            sr_human_create_joints(int a1);
 
-_UNKNOWN **           sub_1400ABB10(int a1);
+_UNKNOWN **           sr_human_update_centre(int a1);
 
-__int64            sub_1400AC530(float *a1, int a2, int a3);
+__int64            sr_human_item_28_hand_target(float *a1, int a2, int a3);
 
-__int64            sub_1400AC890(int a1);
+__int64            sr_human_feel_ground_ahead(int a1);
 
 void            sub_1400ACD90(float *a1, float *a2, float *a3);
 
-void sub_1400AD030(int a1, float sr_pose_angle);
+void sr_human_build_look_pose(int a1, float sr_pose_angle);
 
-__int64            sub_1400AD2B0(int a1, __int64 a2, double a3);
+__int64            sr_human_drive_ragdoll(int a1, __int64 a2, double a3);
 
-__int64            sub_1400B1450(int a1, int a2, int a3, float *a4, float *a5, float *a6, float a7, int a8, __m128 *a9, float *a10, unsigned int *a11, unsigned int *a12, float a13, char a14);
+__int64            sr_human_limb_inverse_kinematics(int a1, int a2, int a3, float *a4, float *a5, float *a6, float a7, int a8, __m128 *a9, float *a10, unsigned int *a11, unsigned int *a12, float a13, char a14);
 
-__int64            sub_1400B2440(int a1);
+__int64            sr_human_update_walk_height(int a1);
 
-__int64            sub_1400B29B0(__int64 a1, int a2, int a3, int a4, int a5, float *a6);
+__int64            sr_human_aim_hand_target(__int64 a1, int a2, int a3, int a4, int a5, float *a6);
 
-__int64            sub_1400B2BF0(int a1, int a2, int a3, float *a4, float a5, float a6);
+__int64            sr_human_limit_joint_change(int a1, int a2, int a3, float *a4, float a5, float a6);
 
 __int64            sub_1400B2D20(int a1, int a2, int a3, float *a4, float a5, float a6);
 
-__int64            sub_1400B2E70(int a1);
+__int64            sr_human_collide(int a1);
 
-__int64            sub_1400B3A80(unsigned int a1, int a2);
+__int64            sr_human_collide_vehicle(unsigned int a1, int a2);
 
-__int64            sub_1400B40B0(int a1);
+__int64            sr_human_update_walk_point(int a1);
 
-__int64            sub_1400B4DA0(int a1, int a2, int a3, unsigned int *a4, unsigned int *a5, float *a6);
+__int64            sr_human_hold_item(int a1, int a2, int a3, unsigned int *a4, unsigned int *a5, float *a6);
 
 __int64            sub_1400B5410(int a1, signed int a2, signed int a3, float *a4);
 
-__int64            sub_1400B5460(int a1, int a2);
+__int64            sr_human_foot_ground_contact(int a1, int a2);
 
-int            sub_1400B5E70(int a1);
+int            sr_human_update_health(int a1);
 
 __int64            sub_1400B62E0(int a1);
 
-__int64            sub_1400B78F0(int a1);
+__int64            sr_human_launch_jump(int a1);
 
-__int64            sub_1400B91E0(int a1, float *a2, float *a3);
+__int64            sr_human_probe_ground(int a1, float *a2, float *a3);
 
 __int64            sub_1400B94B0(int a1, int a2);
 
-void sub_1400B95E0();
+void sr_world_update_human_bounds();
 
-__int64            sub_1400B9D90(int a1);
+__int64            sr_human_sit_legs(int a1);
 
-__int64            sub_1400BA210(int a1);
+__int64            sr_human_lie_legs(int a1);
 
-__int64            sub_1400BAA40(int a1, __int64 a2, __int64 a3);
+__int64            sr_human_plan_steps(int a1, __int64 a2, __int64 a3);
 
-__int64            sub_1400BB6B0(int a1, int a2, __int64 a3, float *a4, intptr_t a5, float *a6);
+__int64            sr_human_swing_step(int a1, int a2, __int64 a3, float *a4, intptr_t a5, float *a6);
 
-__int64            sub_1400BBF30(int a1, int a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8, float a9);
+__int64            sr_human_balance_on_leg(int a1, int a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8, float a9);
 
-__int64            sub_1400BCA30(int a1);
+__int64            sr_human_stand_legs(int a1);
 
 __int64 sub_1400BE010();
 
@@ -1281,13 +1281,13 @@ void            sub_1400C30E0(float *a1, float *a2, float *a3, float a4);
 
 __int64            sub_1400C3140(unsigned __int64 a1, float *a2);
 
-__int64            sub_1400C3AB0(int a1, int a2, int a3);
+__int64            sr_item_insert_cash_bill(int a1, int a2, int a3);
 
-unsigned int *           sub_1400C3BA0(int a1, unsigned int a2, unsigned int a3);
+unsigned int *           sr_item_register_link(int a1, unsigned int a2, unsigned int a3);
 
-__int64            sub_1400C3C90(unsigned int a1, int a2, int a3);
+__int64            sr_item_append_inventory(unsigned int a1, int a2, int a3);
 
-__int64            sub_1400C3D10(int a1);
+__int64            sr_item_cash_value(int a1);
 
 __int64            sub_1400C3E00(int a1);
 
@@ -1349,17 +1349,17 @@ void            sub_1400C9820(int a1);
 
 void            sub_1400C9B60(int a1);
 
-unsigned __int64 sub_1400C9D20();
+unsigned __int64 sr_world_update_item_bounds();
 
-__int64            sub_1400CA1C0(int a1);
+__int64            sr_item_solve_contacts(int a1);
 
-_UNKNOWN **           sub_1400CA430(int a1);
+_UNKNOWN **           sr_item_solve_human_contacts(int a1);
 
-__int64            sub_1400CA740(int a1, int a2);
+__int64            sr_item_remove_cash_bill(int a1, int a2);
 
-void            sub_1400CA7C0(int a1, int a2, int a3);
+void            sr_world_take_item(int a1, int a2, int a3);
 
-__int64            sub_1400CA9B0(unsigned int a1, unsigned int a2);
+__int64            sr_world_detach_item(unsigned int a1, unsigned int a2);
 
 __int64            sub_1400CAA90(int a1, float *a2, float a3);
 
@@ -1369,19 +1369,19 @@ void            sub_1400CB5F0(int a1, char *a2);
 
 __int64            sub_1400CC370(int a1, __int64 a2, int a3);
 
-__int64 sub_1400CC610();
+__int64 sr_item_tick_states();
 
-__int64            sub_1400CDBD0(unsigned int a1, signed int a2, signed int a3, int a4, int a5, int a6);
+__int64            sr_item_break_block_part(unsigned int a1, signed int a2, signed int a3, int a4, int a5, int a6);
 
-__int64            sub_1400CDFF0(int a1);
+__int64            sr_item_restore_block_part(int a1);
 
-__int64 sub_1400CE370();
+__int64 sr_item_update_physics();
 
 void sub_1400CF160();
 
 void            sub_1400CF610();
 
-__int64            sub_1400CF670(signed int a1);
+__int64            sr_item_gun_tick(signed int a1);
 
 void sub_1400CFC80(int a1,unsigned a2,float x,float y,float width,float height,unsigned flags);
 
@@ -1443,7 +1443,7 @@ __int64 asset_load_city_sbc_candidate();
 
 __int64 asset_save_city_sbc_candidate();
 
-_BOOL8            sub_1400D6890(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float a8);
+_BOOL8            sr_collision_segment_segment(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float a8);
 
 int                sub_1400D6B60(float *a1, float *a2, float *a3, __int64 a4, float *a5, float *a6);
 
@@ -1481,13 +1481,13 @@ __int64            sub_1400DDB70(int a1, float *a2, float *a3);
 
 _BOOL8            sub_1400DE770(_DWORD *a1, float *a2, float *a3, float *a4, float *a5, __int64 a6, float a7, float a8);
 
-__int64            sub_1400DF380(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float a7);
+__int64            sr_collision_ray_sphere(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float a7);
 
 _BOOL8            sub_1400DF5B0(float *a1, float *a2, int a3, int a4);
 
 _BOOL8            sub_1400DF8C0(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8, int a9);
 
-__int64            sub_1400DFB70(int a1, float *a2, float *a3, int a4);
+__int64            sr_collision_ray_vehicle(int a1, float *a2, float *a3, int a4);
 
 __int64            sub_1400E15A0(__int64 a1, int a2, float *a3, float *a4, int a5);
 
@@ -1495,9 +1495,9 @@ __int64            sub_1400E21F0(int a1, float *a2, float *a3);
 
 _BOOL8            sub_1400E2D40(int a1, float *a2, float *a3);
 
-__int64            sub_1400E35D0(signed int a1, signed int a2, int a3, int a4);
+__int64            sr_item_transfer(signed int a1, signed int a2, int a3, int a4);
 
-__int64            sub_1400E38A0(signed int a1, signed int a2);
+__int64            sr_item_attach_child(signed int a1, signed int a2);
 
 __int64            sub_1400E3960(_BYTE *a1, int a2, int a3);
 
@@ -1709,11 +1709,11 @@ __int64            sub_140105180(int a1, __int64 a2, double a3);
 
 __int64            sub_140105470(int a1, __int64 a2, double a3);
 
-__int64            sub_140105770(__int64 a1, __int64 a2, __int64 a3);
+__int64            sr_math_mat3_multiply_copy(__int64 output, __int64 left, __int64 right);
 
-__int64            sub_140105840(_OWORD *a1, __int64 a2, __int64 a3);
+__int64            sr_math_mat4_multiply_copy(_OWORD *output, __int64 left, __int64 right);
 
-_UNKNOWN **           sub_140105930(float *a1, float *a2, float *a3);
+_UNKNOWN **           sr_math_quat_multiply(float *a1, float *a2, float *a3);
 
 unsigned int *           sub_140105AB0(int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
@@ -1727,11 +1727,11 @@ __int64            sub_140106160(int a1);
 
 unsigned int *sub_1401063E0();
 
-__int64 sub_1401069C0();
+__int64 sr_world_update_vehicle_bounds();
 
 __int64            sub_140106FD0(int a1);
 
-void sub_140107ED0();
+void sr_world_drive_vehicles();
 
 __int64 sub_140108930();
 
@@ -1739,7 +1739,7 @@ __int64            sub_14010AA70(int a1);
 
 void            sub_14010AF90(int a1);
 
-void sub_14010BE50();
+void sr_world_expire_vehicles();
 
 __int64            sub_14010C110(int a1);
 
@@ -1753,25 +1753,25 @@ __int64            sub_14010CD40(__m128 *a1, float *a2, float *a3);
 
 __int64            sub_14010D0D0(int a1, int a2);
 
-void sub_14010D610();
+void sr_world_solve_vehicle_wheels();
 
-__int64 sub_14010E030();
+__int64 sr_gl_resolve_proc_loader();
 
 __int64            sub_14010E080(_DWORD *a1, char *a2, __int64 a3, int a4);
 
 __int64            sub_14010E0D0(char *a1, char *a2, int a3, __int64 a4, int a5);
 
-_WORD *           sub_14010E190(int a1, _WORD *a2, int a3, int a4);
+_WORD *           sr_audio_voice_decode(int a1, _WORD *a2, int a3, int a4);
 
-__int64            sub_14010E230(int a1, __int64 a2, int a3, int a4);
+__int64            sr_audio_voice_encode(int a1, __int64 a2, int a3, int a4);
 
-int *sub_14010E2B0();
+int *sr_audio_voice_initialize();
 
-void sub_14010E330();
+void sr_audio_voice_shutdown();
 
-void            sub_14010E370(float *a1, float *a2);
+void            sr_math_quat_from_mat3(float *a1, float *a2);
 
-__int64            sub_14010E610(float *a1, int a2);
+__int64            sr_net_write_angle(float *angle, int bits);
 
 __int64            sub_14010E6C0(_DWORD *a1, int a2, int a3, signed int a4);
 
@@ -1793,43 +1793,43 @@ double            sub_140114330(float *a1, signed int a2);
 
 __int64            sub_140114AF0(float *a1);
 
-__int64            sub_140114D40(_DWORD *a1, float *a2);
+__int64            sr_net_encode_rotation_13bit(_DWORD *a1, float *a2);
 
-__int64            sub_140114E90(_DWORD *a1, float *a2, char a3);
+__int64            sr_net_encode_rotation(_DWORD *a1, float *a2, char a3);
 
-void            sub_1401150E0(__int64 a1, float *a2, float a3, signed int a4);
+void            sr_net_write_vector_delta(__int64 a1, float *a2, float a3, signed int a4);
 
-double            sub_1401151C0(float *a1, float a2, int a3);
+double            sr_net_write_magnitude(float *a1, float a2, int a3);
 
-__int64            sub_140115230(_DWORD *a1, float *a2, int a3);
+__int64            sr_net_encode_direction(_DWORD *a1, float *a2, int a3);
 
 __int64 sub_140115360();
 
 __int64 sub_140115410();
 
-__int64 sub_1401154D0();
+__int64 sr_physics_integrate_points();
 
-void sub_140115830();
+void sr_physics_expire_points();
 
-__int64            sub_140115AE0(_DWORD *a1, int a2);
+__int64            sr_net_read_bits(_DWORD *a1, int a2);
 
-__int64            sub_140115BD0(int *a1, int a2);
+__int64            sr_net_read_optional_index(int *a1, int a2);
 
-__int64            sub_140115C20(_DWORD *a1, int a2, int a3);
+__int64            sr_net_read_bits_scaled(_DWORD *a1, int a2, int a3);
 
-__int64            sub_140115D20(int *a1, int a2);
+__int64            sr_net_read_signed_bits(int *a1, int a2);
 
-__int64            sub_140115D90(_DWORD *a1, signed int a2);
+__int64            sr_net_write_bits(_DWORD *a1, signed int a2);
 
-__int64            sub_140115E60(_DWORD *a1, signed int a2);
+__int64            sr_net_write_bits_always_success(_DWORD *a1, signed int a2);
 
-__int64            sub_140115E80(_DWORD *a1, int a2, unsigned int a3);
+__int64            sr_net_write_bits_scaled(_DWORD *a1, int a2, unsigned int a3);
 
-__int64            sub_140115F70(_DWORD *a1, signed int a2);
+__int64            sr_net_write_bits_always_success_alt(_DWORD *a1, signed int a2);
 
 __int64            sub_140115FF0(int a1);
 
-void sub_140116210();
+void sr_physics_tick();
 
 __int64            sub_1401164B0(int a1, int a2);
 
@@ -1875,33 +1875,33 @@ void sub_14011B2A0();
 
 __int64            sub_14011B7F0(int a1, int a2);
 
-_BOOL8            sub_14011B8F0(float *a1, int a2, float a3);
+_BOOL8            sr_corporation_contains_point(float *a1, int a2, float a3);
 
-_BOOL8            sub_14011B960(float *a1, int a2, float a3);
+_BOOL8            sr_corporation_vault_contains_point(float *a1, int a2, float a3);
 
-_BOOL8            sub_14011B9F0(int a1, float *a2, float a3);
+_BOOL8            sr_world_region_contains_point(int a1, float *a2, float a3);
 
-_BOOL8            sub_14011BAD0(float *a1);
+_BOOL8            sr_area_view_contains_point(float *a1);
 
 __int64 sub_14011BD10(     char *a1, ...);
  // weak
 __int64            sub_14011BD70(signed int a1);
 
-__int64            sub_14011BF40(__int64 a1, __int64 a2, float *a3, float *a4);
+__int64            sr_collision_place_mesh(__int64 a1, __int64 a2, float *a3, float *a4);
 
-_UNKNOWN **           sub_14011C080(float *a1, float *a2, float *a3);
+_UNKNOWN **           sr_math_mat3_multiply_transposed_alt(float *a1, float *a2, float *a3);
 
-float            sub_14011C300(__int64 a1, float *a2);
+float            sr_math_quat_to_axis_angle(__int64 a1, float *a2);
 
-_UNKNOWN **           sub_14011C340(float *a1, float *a2);
+_UNKNOWN **           sr_math_mat3_from_quat(float *a1, float *a2);
 
-void            sub_14011C490(float *a1, float *a2);
+void            sr_math_quat_to_rotation_vector(float *a1, float *a2);
 
 void            sub_14011C510(int a1, int a2, int a3, int a4);
 
-float            sub_14011C640(float *a1, float *a2, float a3);
+float            sr_physics_sphere_exit_distance(float *a1, float *a2, float a3);
 
-__m128            sub_14011C6B0(__int64 a1, float *a2, float a3);
+__m128            sr_physics_sphere_entry_distance(__int64 a1, float *a2, float a3);
 
 __int64            sub_14011C730(__int64 a1, __int64 a2, __int64 a3);
 
@@ -1953,9 +1953,9 @@ __int64            sub_140125670(unsigned int *a1, float a2, int a3);
 
 __int64            sub_140125860(unsigned int *a1, _DWORD *a2, float a3, int a4);
 
-void            sub_1401259B0(int a1, __int64 a2, __int64 a3);
+void            sr_world_draw_resting_particles(int a1, __int64 a2, __int64 a3);
 
-void sub_140125DB0(void);   /* src/engine/world_effects_draw.c: world_draw_effects */
+void sr_world_draw_effects(void);   /* src/engine/world_effects_draw.c: world_draw_effects */
 
 void            sub_140127240(char *a1);
 
@@ -1971,13 +1971,13 @@ __int64            sr_ResetGame(__int64 a1, __int64 a2, __int64 a3);
 
 void sub_14012AF00();
 
-unsigned int *           sub_14012B090(int a1, float *a2, float *a3);
+unsigned int *           sr_physics_apply_point_velocity(int a1, float *a2, float *a3);
 
-unsigned int *           sub_14012B170(float *a1, int a2, float *a3);
+unsigned int *           sr_physics_point_velocity(float *a1, int a2, float *a3);
 
-void sub_14012B220();
+void sr_physics_integrate_bodies();
 
-void sub_14012B2D0(unsigned int *a1, float *a2, float *a3, float *a4);
+void sr_physics_integrate_rotation(unsigned int *a1, float *a2, float *a3, float *a4);
 
 void            sub_14012BD30(__int64 a1, float *a2, double a3);
 
@@ -2049,7 +2049,7 @@ void            sub_140137E90(int a1);
 
 __int64 sub_140138020();
 
-__int64            sub_1401380F0(int a1, int a2);
+__int64            sr_item_follow_body(int a1, int a2);
 
 __int64            sub_140138430(int a1, int a2);
 
@@ -2147,9 +2147,9 @@ void            format_with_thousands(_BYTE *a1, unsigned int a2);
 
 __int64 sub_140158C70(_BYTE *a1, __int64 a2, __int64 a3, ...);
 
-__int64 sub_140158CD0();
+__int64 sr_world_update_particles();
 
-__int64 sub_1401597F0();
+__int64 sr_world_update_effects();
 
 __int64            sub_14015AE10(int a1, _DWORD *a2, int a3);
 
@@ -2797,7 +2797,7 @@ __m128            sub_140187270(float a1, float a2, float a3, double a4, float a
 
 float            sub_1401872F0(int a1, float a2, float a3, float a4, float a5, float a6);
 
-_BOOL8            sub_140187410(float *a1, float *a2, float *a3, float *a4, float *a5);
+_BOOL8            sr_collision_edge_side(float *a1, float *a2, float *a3, float *a4, float *a5);
 
 void            sub_140187860(int a1, float a2, float a3, float a4);
 
@@ -2811,13 +2811,13 @@ __int64 sub_140188120();
 
 __int64            sub_1401885C0(int *a1, int a2, int a3);
 
-__int64            sub_140188720(int *a1, float *a2, float *a3, int a4, int a5);
+__int64            sr_world_street_triangles_in_box(int *a1, float *a2, float *a3, int a4, int a5);
 
-__int64            sub_140188900(int *a1, float *a2, float *a3, int a4);
+__int64            sr_world_streets_triangles_in_box(int *a1, float *a2, float *a3, int a4);
 
-__int64            sub_140188B80(__int64 a1, __int64 a2, __int64 a3);
+__int64            sr_world_build_street_meshes(__int64 a1, __int64 a2, __int64 a3);
 
-__int64            sub_1401899F0(int a1);
+__int64            sr_world_file_street(int a1);
 
 double            sub_140189E80(int a1, __int64 a2, __int64 a3);
 
@@ -11080,7 +11080,7 @@ __int64            sub_140004140(__int64 a1)
 ;
 
 //----- (0000000140005160) ----------------------------------------------------
-__int64            sub_140005160(
+__int64            sr_physics_add_world_contact(
         __int16 a1,
         unsigned int *a2,
         unsigned int *a3,
@@ -11091,7 +11091,7 @@ __int64            sub_140005160(
 ;
 
 //----- (00000001400052C0) ----------------------------------------------------
-__int64            sub_1400052C0(
+__int64            sr_physics_add_contact(
         int a1,
         int a2,
         unsigned int *a3,
@@ -11180,7 +11180,7 @@ void            sub_140009E30(int a1)
 
 //----- (000000014000B5F0) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
-__m128            sub_14000B5F0(double a1, float a2)
+__m128            sr_math_angle_difference(double a1, float a2)
 ;
 
 // 14000B5F0: inconsistent variable size for 'xmm0_8.8'
@@ -11226,7 +11226,7 @@ void            sub_14000F830(signed int a1, int a2, unsigned int a3, int a4, un
 ;
 
 //----- (0000000140010020) ----------------------------------------------------
-__int64            sub_140010020(unsigned int a1, int a2, int a3, int a4)
+__int64            sr_world_create_chunk_slot(unsigned int a1, int a2, int a3, int a4)
 ;
 
 //----- (0000000140010110) ----------------------------------------------------
@@ -11234,7 +11234,7 @@ __int64 sub_140010110()
 ;
 
 //----- (0000000140012490) ----------------------------------------------------
-__int64            sub_140012490(unsigned int a1, unsigned int a2, int a3, int a4, int a5)
+__int64            sr_world_create_block_record(unsigned int a1, unsigned int a2, int a3, int a4, int a5)
 ;
 
 //----- (0000000140012670) ----------------------------------------------------
@@ -11246,19 +11246,19 @@ void            sub_140012940(unsigned int a1, int a2)
 ;
 
 //----- (00000001400129D0) ----------------------------------------------------
-__int64            sub_1400129D0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_world_block_unknown_8_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140012B10) ----------------------------------------------------
-__int64            sub_140012B10(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_world_block_unknown_8_origin(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140012CA0) ----------------------------------------------------
-__int64            sub_140012CA0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_world_block_unknown_1008_last(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140012DE0) ----------------------------------------------------
-__int64            sub_140012DE0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5)
+__int64            sr_world_block_unknown_1008_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5)
 ;
 
 //----- (0000000140012F30) ----------------------------------------------------
@@ -11266,7 +11266,7 @@ __int64            sub_140012F30(unsigned int a1, unsigned int a2, unsigned int 
 ;
 
 //----- (0000000140013020) ----------------------------------------------------
-__int64            sub_140013020(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_world_block_record_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140013120) ----------------------------------------------------
@@ -11284,23 +11284,23 @@ void            sub_140016130(
 ;
 
 //----- (0000000140016450) ----------------------------------------------------
-__int64            sub_140016450(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_world_block_unknown_3008_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140016590) ----------------------------------------------------
-__int64            sub_140016590(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_world_block_unknown_3008_origin(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140016720) ----------------------------------------------------
-__int64            sub_140016720(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5)
+__int64            sr_world_block_unknown_3808_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, int a5)
 ;
 
 //----- (0000000140016870) ----------------------------------------------------
-__int64            sub_140016870(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_world_block_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (00000001400169B0) ----------------------------------------------------
-__int64            sub_1400169B0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_world_block_gone_at(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140016AF0) ----------------------------------------------------
@@ -11312,7 +11312,7 @@ void            sub_140016C80(signed int a1, unsigned int a2, unsigned int a3, u
 ;
 
 //----- (0000000140016E30) ----------------------------------------------------
-void            sub_140016E30(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
+void            sr_world_set_block_unknown_3008(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
 ;
 
 //----- (0000000140016F60) ----------------------------------------------------
@@ -11320,15 +11320,15 @@ void            sub_140016F60(signed int a1, unsigned int a2, unsigned int a3, u
 ;
 
 //----- (0000000140017110) ----------------------------------------------------
-void            sub_140017110(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
+void            sr_world_set_block_gone(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
 ;
 
 //----- (0000000140017260) ----------------------------------------------------
-void            sub_140017260(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
+void            sr_world_set_block_unknown_4808(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
 ;
 
 //----- (00000001400173C0) ----------------------------------------------------
-void            sub_1400173C0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+void            sr_world_mark_block_record(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (00000001400174D0) ----------------------------------------------------
@@ -11422,23 +11422,23 @@ __int64 sub_14001B6A0()
 ;
 
 //----- (000000014001BF70) ----------------------------------------------------
-__int64            sub_14001BF70(int a1)
+__int64            sr_physics_solve_joint(int a1)
 ;
 
 //----- (000000014001C780) ----------------------------------------------------
-__int64            sub_14001C780(int a1)
+__int64            sr_physics_prepare_joint(int a1)
 ;
 
 //----- (000000014001CBB0) ----------------------------------------------------
-__int64            sub_14001CBB0(int a1)
+__int64            sr_physics_solve_point_velocity(int a1)
 ;
 
 //----- (000000014001D080) ----------------------------------------------------
-unsigned int *sub_14001D080()
+unsigned int *sr_physics_solve()
 ;
 
 //----- (000000014001FB90) ----------------------------------------------------
-void sub_14001FB90()
+void sr_physics_expire_bonds()
 ;
 
 //----- (000000014001FD20) ----------------------------------------------------
@@ -11539,11 +11539,11 @@ __int64 sub_1400299C0()
 ;
 
 //----- (000000014002A680) ----------------------------------------------------
-__int64            sub_14002A680()
+__int64            sr_world_build_race_track()
 ;
 
 //----- (000000014002A9A0) ----------------------------------------------------
-__int64 sub_14002A9A0()
+__int64 sr_world_build_train_route()
 ;
 
 //----- (000000014002B9C0) ----------------------------------------------------
@@ -11551,11 +11551,11 @@ __int64 sub_14002B9C0()
 ;
 
 //----- (000000014002CE50) ----------------------------------------------------
-__int64 sub_14002CE50()
+__int64 sr_world_expire_bullets()
 ;
 
 //----- (000000014002CF10) ----------------------------------------------------
-float *           sub_14002CF10(__int64 a1, float *a2, __int64 a3, float *a4, float *a5)
+float *           sr_physics_apply_inverse_inertia(__int64 a1, float *a2, __int64 a3, float *a4, float *a5)
 ;
 
 //----- (000000014002D050) ----------------------------------------------------
@@ -11563,19 +11563,19 @@ float            sub_14002D050(float *a1, float *a2, float *a3)
 ;
 
 //----- (000000014002D2D0) ----------------------------------------------------
-__m128 *           sub_14002D2D0(__m128 *a1, __m128 *a2, __int64 a3, __int64 a4, __m128 *a5)
+__m128 *           sr_physics_apply_inverse_inertia4(__m128 *a1, __m128 *a2, __int64 a3, __int64 a4, __m128 *a5)
 ;
 
 //----- (000000014002D370) ----------------------------------------------------
-float *           sub_14002D370(float *a1, float *a2, float *a3, float *a4, float *a5)
+float *           sr_collision_triangle_weights(float *a1, float *a2, float *a3, float *a4, float *a5)
 ;
 
 //----- (000000014002D820) ----------------------------------------------------
-double            sub_14002D820(float *a1, float *a2, float a3)
+double            sr_physics_limit_slide(float *a1, float *a2, float a3)
 ;
 
 //----- (000000014002D9B0) ----------------------------------------------------
-double            sub_14002D9B0(float *a1, float *a2, float a3, float a4)
+double            sr_physics_limit_slide_capped(float *a1, float *a2, float a3, float a4)
 ;
 
 //----- (000000014002DB60) ----------------------------------------------------
@@ -11632,7 +11632,7 @@ __int64            sub_140033B50(float *a1, __int64 a2, float *a3, float *a4)
 ;
 
 //----- (0000000140033BE0) ----------------------------------------------------
-_BOOL8            sub_140033BE0(float *a1, __int64 a2, __int64 a3, float *a4, float *a5, int a6)
+_BOOL8            sr_collision_capsule_placed_mesh(float *a1, __int64 a2, __int64 a3, float *a4, float *a5, int a6)
 ;
 
 //----- (0000000140033FE0) ----------------------------------------------------
@@ -11680,7 +11680,7 @@ _BOOL8            sub_140034AE0(
 ;
 
 //----- (0000000140035690) ----------------------------------------------------
-__int64            sub_140035690(
+__int64            sr_collision_sphere_triangle(
         float *a1,
         float *a2,
         float *a3,
@@ -11693,7 +11693,7 @@ __int64            sub_140035690(
 ;
 
 //----- (0000000140035B70) ----------------------------------------------------
-__int64            sub_140035B70(
+__int64            sr_collision_sphere_triangle_face(
         float *a1,
         float *a2,
         float *a3,
@@ -11706,11 +11706,11 @@ __int64            sub_140035B70(
 ;
 
 //----- (0000000140035E50) ----------------------------------------------------
-__int64            sub_140035E50(int a1, float *a2, float *a3, float a4)
+__int64            sr_collision_sweep_train(int a1, float *a2, float *a3, float a4)
 ;
 
 //----- (0000000140037220) ----------------------------------------------------
-__int64            sub_140037220(int a1, float *a2, float *a3, float a4)
+__int64            sr_collision_sweep_vehicle(int a1, float *a2, float *a3, float a4)
 ;
 
 //----- (0000000140037DE0) ----------------------------------------------------
@@ -11726,7 +11726,7 @@ __int64            sub_140038130(int a1, int a2, int a3, int a4)
 ;
 
 //----- (0000000140038230) ----------------------------------------------------
-void            sub_140038230(int *a1, int *a2, int *a3)
+void            sr_world_grid_query_items(int *a1, int *a2, int *a3)
 ;
 
 //----- (0000000140038480) ----------------------------------------------------
@@ -11746,7 +11746,7 @@ void sub_14003A0F0()
 ;
 
 //----- (000000014003B920) ----------------------------------------------------
-int sub_14003B920(int process_input)
+int sr_game_frame(int process_input)
 ;
 
 //----- (000000014003C6F0) ----------------------------------------------------
@@ -11878,7 +11878,7 @@ __int64            sub_1400462B0(
 ;
 
 //----- (0000000140048090) ----------------------------------------------------
-__int64            sub_140048090(__int64 a1)
+__int64            sr_collision_find_free_contact(__int64 a1)
 ;
 
 //----- (0000000140048110) ----------------------------------------------------
@@ -11890,7 +11890,7 @@ __int64            sub_140048BA0(signed int a1, unsigned int *a2)
 ;
 
 //----- (0000000140048DA0) ----------------------------------------------------
-__int64            sub_140048DA0(
+__int64            sr_collision_mesh_contact(
         int a1,
         int a2,
         __int64 a3,
@@ -11903,15 +11903,15 @@ __int64            sub_140048DA0(
 ;
 
 //----- (000000014004A130) ----------------------------------------------------
-__int64            sub_14004A130(float *a1, __int64 a2, float *a3, float *a4, float *a5, float *a6)
+__int64            sr_collision_mesh_point_sweep(float *a1, __int64 a2, float *a3, float *a4, float *a5, float *a6)
 ;
 
 //----- (000000014004A1D0) ----------------------------------------------------
-_BOOL8            sub_14004A1D0(float *a1, __int64 a2, __int64 a3, __int64 a4, float *a5, float *a6)
+_BOOL8            sr_collision_mesh_point_faces(float *a1, __int64 a2, __int64 a3, __int64 a4, float *a5, float *a6)
 ;
 
 //----- (000000014004A480) ----------------------------------------------------
-__int64            sub_14004A480(__int64 a1, __int64 a2, __int64 a3, float *a4, float *a5)
+__int64            sr_collision_mesh_transform(__int64 a1, __int64 a2, __int64 a3, float *a4, float *a5)
 ;
 
 //----- (000000014004A670) ----------------------------------------------------
@@ -11927,7 +11927,7 @@ __int64            sub_14004BFC0(__int16 a1, __int64 a2, float *a3, float *a4, f
 ;
 
 //----- (000000014004C4C0) ----------------------------------------------------
-__int64            sub_14004C4C0(unsigned __int8 *a1, __int64 a2)
+__int64            sr_text_compare_bytes(unsigned __int8 *a1, __int64 a2)
 ;
 
 //----- (000000014004C4E0) ----------------------------------------------------
@@ -11935,7 +11935,7 @@ __int64            shader_compile_program(int a1, __int64 a2, __int64 a3, __int6
 ;
 
 //----- (000000014004C960) ----------------------------------------------------
-__int64            sub_14004C960(int a1, int a2)
+__int64            sr_disk_for_item_drive(int a1, int a2)
 ;
 
 //----- (000000014004C9C0) ----------------------------------------------------
@@ -11975,19 +11975,19 @@ __int64            sub_14004DE30(unsigned int a1, int a2, int a3, int a4)
 ;
 
 //----- (000000014004E160) ----------------------------------------------------
-__int64            sub_14004E160(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4, unsigned int a5)
+__int64            sr_physics_create_distance_bond(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4, unsigned int a5)
 ;
 
 //----- (000000014004E2E0) ----------------------------------------------------
-__int64            sub_14004E2E0(unsigned int a1, unsigned int *a2, unsigned int *a3)
+__int64            sr_physics_create_level_bond(unsigned int a1, unsigned int *a2, unsigned int *a3)
 ;
 
 //----- (000000014004E430) ----------------------------------------------------
-__int64            sub_14004E430(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4)
+__int64            sr_physics_create_body_bond(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4)
 ;
 
 //----- (000000014004E5B0) ----------------------------------------------------
-__int64            sub_14004E5B0(unsigned int a1, unsigned int a2)
+__int64            sr_physics_create_rotation_bond(unsigned int a1, unsigned int a2)
 ;
 
 //----- (000000014004E6E0) ----------------------------------------------------
@@ -11995,7 +11995,7 @@ void            sub_14004E6E0(int a1, float a2, float a3, float a4)
 ;
 
 //----- (000000014004E8A0) ----------------------------------------------------
-__int64            sub_14004E8A0(signed int a1, unsigned int *a2, float *a3, unsigned int a4)
+__int64            sr_world_fire_bullet(signed int a1, unsigned int *a2, float *a3, unsigned int a4)
 ;
 
 //----- (000000014004EB60) ----------------------------------------------------
@@ -12019,47 +12019,47 @@ __int64            sub_140050C80(_DWORD *a1, _DWORD *a2, unsigned int a3)
 ;
 
 //----- (0000000140050EF0) ----------------------------------------------------
-__int64            sub_140050EF0(unsigned int a1)
+__int64            sr_disk_create(unsigned int a1)
 ;
 
 //----- (0000000140050F90) ----------------------------------------------------
-__int64            sub_140050F90(int a1, signed int a2)
+__int64            sr_item_link_text_line(int a1, signed int a2)
 ;
 
 //----- (0000000140051170) ----------------------------------------------------
-__int64            sub_140051170(int a1, unsigned int a2, int a3)
+__int64            sr_item_allocate_text_record(int a1, unsigned int a2, int a3)
 ;
 
 //----- (0000000140051230) ----------------------------------------------------
-void            sub_140051230(unsigned int a1, unsigned int *a2, unsigned int *a3, unsigned int a4)
+void            sr_event_bullet(unsigned int a1, unsigned int *a2, unsigned int *a3, unsigned int a4)
 ;
 
 //----- (00000001400512D0) ----------------------------------------------------
-void            sub_1400512D0(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4)
+void            sr_event_bullet_hit(unsigned int a1, unsigned int a2, unsigned int *a3, unsigned int *a4)
 ;
 
 //----- (0000000140051480) ----------------------------------------------------
-__int64            sub_140051480(unsigned int a1,      __m128i *a2, unsigned int a3, unsigned int a4)
+__int64            sr_event_message(unsigned int a1,      __m128i *a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140051560) ----------------------------------------------------
-void            sub_140051560(int a1, int a2, int a3, int a4, unsigned int a5)
+void            sr_event_block_update(int a1, int a2, int a3, int a4, unsigned int a5)
 ;
 
 //----- (00000001400515E0) ----------------------------------------------------
-__int64            sub_1400515E0(unsigned int a1, unsigned int *a2, float a3, float a4)
+__int64            sr_event_sound(unsigned int a1, unsigned int *a2, float a3, float a4)
 ;
 
 //----- (0000000140051650) ----------------------------------------------------
-__int64            sub_140051650(unsigned int a1, unsigned int a2, float a3, float a4)
+__int64            sr_event_item_sound(unsigned int a1, unsigned int a2, float a3, float a4)
 ;
 
 //----- (00000001400516B0) ----------------------------------------------------
-void            sub_1400516B0(int a1, int a2, int a3, int a4, unsigned int a5, unsigned int a6)
+void            sr_world_event_block_gone(int a1, int a2, int a3, int a4, unsigned int a5, unsigned int a6)
 ;
 
 //----- (0000000140051730) ----------------------------------------------------
-void            sub_140051730(
+void            sr_event_block_hit(
         int a1,
         int a2,
         int a3,
@@ -12071,43 +12071,43 @@ void            sub_140051730(
 ;
 
 //----- (00000001400518B0) ----------------------------------------------------
-__int64            sub_1400518B0(unsigned int a1, unsigned int a2)
+__int64            sr_event_corporation_door(unsigned int a1, unsigned int a2)
 ;
 
 //----- (0000000140051940) ----------------------------------------------------
-__int64            sub_140051940(unsigned int a1)
+__int64            sr_item_phone_changed(unsigned int a1)
 ;
 
 //----- (00000001400519F0) ----------------------------------------------------
-void            sub_1400519F0(int a1, int a2)
+void            sr_event_mission_update(int a1, int a2)
 ;
 
 //----- (0000000140051B00) ----------------------------------------------------
-void            sub_140051B00(int a1, int a2, unsigned int a3, int a4)
+void            sr_event_mission_text_line(int a1, int a2, unsigned int a3, int a4)
 ;
 
 //----- (0000000140051BD0) ----------------------------------------------------
-void            sub_140051BD0(int a1, int a2)
+void            sr_event_mission_text(int a1, int a2)
 ;
 
 //----- (0000000140051CF0) ----------------------------------------------------
-void            sub_140051CF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int *a4, unsigned int *a5)
+void            sr_event_vehicle_removed(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int *a4, unsigned int *a5)
 ;
 
 //----- (0000000140051DC0) ----------------------------------------------------
-void            sub_140051DC0(int a1)
+void            sr_event_player_update(int a1)
 ;
 
 //----- (0000000140051F50) ----------------------------------------------------
-__int64            sub_140051F50(signed int a1)
+__int64            sr_event_player_finance(signed int a1)
 ;
 
 //----- (0000000140051FF0) ----------------------------------------------------
-void            sub_140051FF0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int *a5)
+void            sr_event_type21(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int *a5)
 ;
 
 //----- (0000000140052090) ----------------------------------------------------
-__int64 sub_140052090()
+__int64 sr_event_stock_prices()
 ;
 
 //----- (00000001400521A0) ----------------------------------------------------
@@ -12135,7 +12135,7 @@ double            sub_1400555C0(int a1, __int64 a2, double a3, float a4, float a
 ;
 
 //----- (0000000140055FA0) ----------------------------------------------------
-__int64            sub_140055FA0(int a1, signed int a2, signed int a3, float *a4)
+__int64            sr_human_create_joint_bond(int a1, signed int a2, signed int a3, float *a4)
 ;
 
 //----- (00000001400561C0) ----------------------------------------------------
@@ -12195,7 +12195,7 @@ __int64            sr_CreateVehicle(int a1, float *a2, unsigned int *a3, unsigne
 ;
 
 //----- (000000014005CBB0) ----------------------------------------------------
-__int64            sub_14005CBB0(unsigned int a1, unsigned int *a2, unsigned int *a3, float a4, unsigned int a5)
+__int64            sr_physics_create_point(unsigned int a1, unsigned int *a2, unsigned int *a3, float a4, unsigned int a5)
 ;
 
 //----- (000000014005CCF0) ----------------------------------------------------
@@ -12203,7 +12203,7 @@ __int64 sub_14005CCF0()
 ;
 
 //----- (000000014005CF80) ----------------------------------------------------
-__int64            sub_14005CF80(
+__int64            sr_physics_create_body(
         unsigned int a1,
         unsigned int *a2,
         unsigned int *a3,
@@ -12243,11 +12243,11 @@ __int64            sub_14005ED40(int a1, float *a2, __int64 a3, float a4, float 
 ;
 
 //----- (000000014005EE40) ----------------------------------------------------
-__int64            sub_14005EE40(unsigned int a1, unsigned int *a2, float *a3, float a4)
+__int64            sr_world_add_effect(unsigned int a1, unsigned int *a2, float *a3, float a4)
 ;
 
 //----- (000000014005F150) ----------------------------------------------------
-__int64            sub_14005F150(unsigned int a1, unsigned int *a2, unsigned int *a3, float *a4)
+__int64            sr_world_spawn_particle(unsigned int a1, unsigned int *a2, unsigned int *a3, float *a4)
 ;
 
 //----- (000000014005F370) ----------------------------------------------------
@@ -12263,11 +12263,11 @@ double            sub_14005F5A0(int a1, float a2, float a3, float a4)
 ;
 
 //----- (000000014005F6E0) ----------------------------------------------------
-__int64            sub_14005F6E0(unsigned int a1, float *a2, float a3, float a4)
+__int64            sr_world_add_street(unsigned int a1, float *a2, float a3, float a4)
 ;
 
 //----- (00000001400603A0) ----------------------------------------------------
-__int64            sub_1400603A0(unsigned int a1, float *a2, float *a3, float *a4, float *a5, float a6)
+__int64            sr_world_add_rail(unsigned int a1, float *a2, float *a3, float *a4, float *a5, float a6)
 ;
 
 //----- (0000000140061950) ----------------------------------------------------
@@ -12291,7 +12291,7 @@ __int64            sub_1400656E0(int a1, float *a2, __int64 a3)
 ;
 
 //----- (0000000140065AE0) ----------------------------------------------------
-void            sub_140065AE0(signed int a1, float a2)
+void            sr_audio_generate_synth_sound(signed int sound_id, float sound_gain)
 ;
 
 // 140065C5F: conditional instruction was optimized away because r14d.4 is in (==4000|==5622)
@@ -12311,14 +12311,14 @@ __int64            sub_1400689A0(int a1, int a2, int a3, int a4, int a5, signed 
 ;
 
 //----- (0000000140068F80)
-_BOOL8 sub_140068F80(void) ;
+_BOOL8 sr_cpu_has_sse41(void) ;
 
 //----- (0000000140068FC0) ----------------------------------------------------
 __int64            sub_140068FC0(int a1, char *a2)
 ;
 
 //----- (0000000140069400) ----------------------------------------------------
-void            sub_140069400(__int64 a1, __m128i *a2, int a3)
+void            sr_audio_output_callback(__int64 a1, __m128i *a2, int a3)
 ;
 
 // 140069439: control flows out of bounds to 140198E69
@@ -12328,7 +12328,7 @@ __int64 sub_140069440()
 ;
 
 //----- (0000000140069580) ----------------------------------------------------
-__int64 sub_140069580()
+__int64 sr_audio_capture_available()
 ;
 
 typedef struct {
@@ -12352,15 +12352,15 @@ extern unsigned sr_audio_open(const char *,int,const sr_startup_audio_spec *,sr_
 extern void sr_audio_pause(unsigned,int) __asm__("SDL_PauseAudioDevice");
 
 //----- (0000000140069630) ----------------------------------------------------
-__int64 sub_140069630()
+__int64 sr_audio_initialize()
 ;
 
 //----- (0000000140069930) ----------------------------------------------------
-void            sub_140069930(unsigned int a1, int a2, __int16 *a3, float a4)
+void            sr_audio_load_pcm16(unsigned int sound_id, int byte_count, __int16 *pcm_samples, float sound_gain)
 ;
 
 //----- (0000000140069A00) ----------------------------------------------------
-void sub_140069A00()
+void sr_audio_load_hrtf()
 ;
 
 //----- (0000000140069DE0) ----------------------------------------------------
@@ -12368,7 +12368,7 @@ void            sub_140069DE0(unsigned int a1, __int64 a2, float a3)
 ;
 
 //----- (0000000140069FA0) ----------------------------------------------------
-__int64            sub_140069FA0(signed int a1, unsigned int *a2, float a3, float a4, unsigned int a5)
+__int64            sr_audio_play_at(signed int a1, unsigned int *a2, float a3, float a4, unsigned int a5)
 ;
 
 //----- (000000014006A140) ----------------------------------------------------
@@ -12380,7 +12380,7 @@ __int64            sub_14006A240(int a1, int a2, unsigned int *a3, float a4, uns
 ;
 
 //----- (000000014006A380) ----------------------------------------------------
-__m128i *           sub_14006A380(__int64 a1,      __m128i *a2, int a3)
+__m128i *           sr_audio_capture_write(__int64 a1,      __m128i *a2, int a3)
 ;
 
 //----- (000000014006A5C0) ----------------------------------------------------
@@ -12392,23 +12392,23 @@ __int64            sub_14006A5F0(int a1, int a2)
 ;
 
 //----- (000000014006B4C0) ----------------------------------------------------
-__int64            sub_14006B4C0(int a1, int a2, int a3, int a4)
+__int64            sr_audio_mix_channel(int a1, int a2, int a3, int a4)
 ;
 
 //----- (000000014006B6F0) ----------------------------------------------------
-__int64            sub_14006B6F0(int a1, int a2)
+__int64            sr_audio_mix_emitter(int a1, int a2)
 ;
 
 //----- (000000014006B850) ----------------------------------------------------
-void sub_14006B850()
+void sr_audio_update_mix()
 ;
 
 //----- (000000014006BB10) ----------------------------------------------------
-void __attribute__((noreturn)) sub_14006BB10()
+void __attribute__((noreturn)) sr_audio_mixer_thread()
 ;
 
 //----- (000000014006BDC0) ----------------------------------------------------
-__int64 sub_14006BDC0()
+__int64 sr_auth_draw_status()
 ;
 
 //----- (000000014006BED0) ----------------------------------------------------
@@ -12435,19 +12435,19 @@ __m128i *           sub_14006C5E0(int a1,      __m128i *a2, int a3, int a4, int 
 
 //----- (000000014006C670) ----------------------------------------------------
 // CRC32-style UI label ID helper. Lazily builds 256-entry table with polynomial 0xEDB88320 and returns bitwise-not final CRC.
-__int64            sub_14006C670(unsigned __int8 *a1, unsigned int a2)
+__int64            sr_text_label_id(unsigned __int8 *a1, unsigned int a2)
 ;
 
 //----- (000000014006C780) ----------------------------------------------------
-__int64 sub_14006C780()
+__int64 sr_camera_update_letterbox()
 ;
 
 //----- (000000014006C870) ----------------------------------------------------
-__int64            sub_14006C870(_BYTE *a1)
+__int64            sr_text_scan_matches(_BYTE *a1)
 ;
 
 //----- (000000014006C980) ----------------------------------------------------
-__int64            sub_14006C980(unsigned __int8 *a1, __int64 a2)
+__int64            sr_text_compare_bytes_alt(unsigned __int8 *a1, __int64 a2)
 ;
 
 //----- (000000014006CA30) ----------------------------------------------------
@@ -12464,7 +12464,7 @@ void            sub_14006CD90(unsigned __int8 *a1, unsigned int a2)
 
 //----- (000000014006CFF0) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
-__int64            sub_14006CFF0(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9)
+__int64            sr_renderer_draw_textured_rect(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9)
 ;
 
 // 14006CFF0: inconsistent variable size for 'xmm0_8.8'
@@ -12487,7 +12487,7 @@ __int64            sr_CSDrawAtlasEntry(
 
 //----- (000000014006D660) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
-__int64            sub_14006D660(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9)
+__int64            sr_renderer_draw_flat_rect(double a1, double a2, __int64 a3, float a4, char a5, int a6, int a7, int a8, int a9)
 ;
 
 // 14006D660: inconsistent variable size for 'xmm0_8.8'
@@ -12506,27 +12506,27 @@ __int64            sr_CSDrawText(char *a1, float a2, unsigned int *a3, float a4)
 ;
 
 //----- (000000014006DB90) ----------------------------------------------------
-void sub_14006DB90(_BYTE *a1, float a2, _BYTE *a3, float a4, int a5, int a6, int a7, int a8, int a9)
+void sr_text_draw_glyphs(_BYTE *a1, float a2, _BYTE *a3, float a4, int a5, int a6, int a7, int a8, int a9)
 ;
 
 //----- (000000014006E0D0) ----------------------------------------------------
-void            sub_14006E0D0(__int64 a1, __int64 a2, __int64 a3)
+void            sr_renderer_batch_flush(__int64 a1, __int64 a2, __int64 a3)
 ;
 
 //----- (000000014006E2D0) ----------------------------------------------------
-void            sub_14006E2D0(__int64 a1, __int64 a2, __int64 a3)
+void            sr_renderer_batch_draw(__int64 a1, __int64 a2, __int64 a3)
 ;
 
 //----- (000000014006E4C0) ----------------------------------------------------
-_BOOL8            sub_14006E4C0(_BYTE *a1)
+_BOOL8            sr_text_scan_past(_BYTE *a1)
 ;
 
 //----- (000000014006E530) ----------------------------------------------------
-__int64            sub_14006E530(_BYTE *a1, _BYTE *a2, int a3, __int64 a4)
+__int64            sr_text_format(_BYTE *a1, _BYTE *a2, int a3, __int64 a4)
 ;
 
 //----- (000000014006EC40) ----------------------------------------------------
-__int64            sub_14006EC40(float *a1, float *a2, float *a3, float *a4)
+__int64            sr_math_triangle_normal(float *a1, float *a2, float *a3, float *a4)
 ;
 
 //----- (000000014006ECE0) ----------------------------------------------------
@@ -12538,12 +12538,12 @@ __int64            sub_14006EDD0()
 ;
 
 //----- (000000014006F060) ----------------------------------------------------
-float            sub_14006F060(int a1, _BYTE *a2, float a3)
+float            sr_text_width(int a1, _BYTE *a2, float a3)
 ;
 
 //----- (000000014006F120) ----------------------------------------------------
 // UI label copy helper. Copies text to widget label buffer and stops visible label at null or ## hidden-ID marker.
-__int64            sub_14006F120(__int64 a1, char *a2)
+__int64            sr_text_copy_visible_label(__int64 a1, char *a2)
 ;
 
 //----- (000000014006F1F0) ----------------------------------------------------
@@ -12588,7 +12588,7 @@ __int64            sr_DrawMenuList(
 ;
 
 //----- (000000014006FD10) ----------------------------------------------------
-__int64            sub_14006FD10(unsigned __int8 *a1)
+__int64            sr_menu_group(unsigned __int8 *a1)
 ;
 
 //----- (000000014006FEB0) ----------------------------------------------------
@@ -12606,7 +12606,7 @@ __int64            sub_140070200(unsigned __int8 *a1, __int64 a2, unsigned int a
 
 //----- (0000000140070380) ----------------------------------------------------
 // Immediate-mode widget allocator/layout helper. Reuses/allows up to 1024 widget slots, records local/screen rects, style/parent, and advances cursor by size + 4.
-__int64            sub_140070380(unsigned int a1, float a2, float a3, float a4, unsigned int a5, unsigned int a6)
+__int64            sr_menu_allocate_widget(unsigned int a1, float a2, float a3, float a4, unsigned int a5, unsigned int a6)
 ;
 
 //----- (00000001400707C0) ----------------------------------------------------
@@ -12624,7 +12624,7 @@ __int64            sub_1400707C0(
 ;
 
 //----- (0000000140070B90) ----------------------------------------------------
-__int64 sub_140070B90()
+__int64 sr_menu_begin_grid()
 ;
 
 //----- (0000000140070BD0) ----------------------------------------------------
@@ -12656,7 +12656,7 @@ __int64            sr_DrawMenuSlider(unsigned __int8 *a1, int *a2, int a3, signe
 ;
 
 //----- (0000000140071640) ----------------------------------------------------
-void            sub_140071640(char *a1)
+void            sr_menu_label(char *a1)
 ;
 
 //----- (0000000140071910) ----------------------------------------------------
@@ -12665,7 +12665,7 @@ __int64            sr_DrawMenuToggle(unsigned __int8 *a1, _DWORD *a2)
 ;
 
 //----- (0000000140071AA0) ----------------------------------------------------
-__int64            sub_140071AA0(unsigned __int8 *a1, _DWORD *a2, unsigned int a3)
+__int64            sr_menu_toggle_mask(unsigned __int8 *a1, _DWORD *a2, unsigned int a3)
 ;
 
 //----- (0000000140071C20) ----------------------------------------------------
@@ -12729,11 +12729,11 @@ __int64            sub_1400745F0(unsigned int a1)
 ;
 
 //----- (0000000140074C50) ----------------------------------------------------
-__int64            sub_140074C50(int a1, float a2)
+__int64            sr_menu_text_hit_index(int a1, float a2)
 ;
 
 //----- (0000000140074CE0) ----------------------------------------------------
-float            sub_140074CE0(int a1, int a2)
+float            sr_menu_text_prefix_width(int a1, int a2)
 ;
 
 //----- (0000000140074E50) ----------------------------------------------------
@@ -12741,27 +12741,27 @@ void sub_140074E50()
 ;
 
 //----- (0000000140075340) ----------------------------------------------------
-void sub_140075340()
+void sr_menu_pop_clip()
 ;
 
 //----- (00000001400753C0) ----------------------------------------------------
-__int64 sub_1400753C0()
+__int64 sr_menu_pop_size()
 ;
 
 //----- (0000000140075460) ----------------------------------------------------
-__int64            sub_140075460(float a1, float a2, float a3, float a4)
+__int64            sr_menu_push_clip(float a1, float a2, float a3, float a4)
 ;
 
 //----- (00000001400755F0) ----------------------------------------------------
-__int64            sub_1400755F0(float a1, float a2)
+__int64            sr_menu_push_size(float a1, float a2)
 ;
 
 //----- (0000000140075650) ----------------------------------------------------
-_WORD *sub_140075650()
+_WORD *sr_menu_reset()
 ;
 
 //----- (0000000140075930) ----------------------------------------------------
-signed int *           sub_140075930(int a1, float a2)
+signed int *           sr_menu_slider_from_x(int a1, float a2)
 ;
 
 //----- (0000000140075A40) ----------------------------------------------------
@@ -12777,7 +12777,7 @@ void            sub_140076320(__int64 a1, int a2)
 ;
 
 //----- (00000001400764B0) ----------------------------------------------------
-void            sub_1400764B0(char *a1, float a2, float a3, float a4, char a5)
+void            sr_menu_label_at(char *a1, float a2, float a3, float a4, char a5)
 ;
 
 extern unsigned int sr_ui_mouse_state(int *, int *) __asm__("SDL_GetMouseState");
@@ -12799,32 +12799,32 @@ void sub_140077710()
 ;
 
 //----- (00000001400779F0) ----------------------------------------------------
-__int64            sub_1400779F0(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6)
+__int64            sr_collision_line_plane(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6)
 ;
 
 //----- (0000000140077B30) ----------------------------------------------------
-__int64            sub_140077B30(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6)
+__int64            sr_collision_segment_plane(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6)
 ;
 
 //----- (0000000140077C80) ----------------------------------------------------
-_BOOL8            sub_140077C80(
-        float *a1,
-        float *a2,
-        float *a3,
-        float *a4,
-        float *a5,
-        float *a6,
-        float *a7,
-        float *a8,
-        float *a9)
+_BOOL8            sr_collision_line_quad(
+        float *point,
+        float *normal,
+        float *fraction,
+        float *from,
+        float *to,
+        float *a,
+        float *b,
+        float *c,
+        float *d)
 ;
 
 //----- (0000000140077FA0) ----------------------------------------------------
-_BOOL8            sub_140077FA0(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8)
+_BOOL8            sr_collision_line_triangle(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8)
 ;
 
 //----- (0000000140078230) ----------------------------------------------------
-_BOOL8            sub_140078230(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float *a8)
+_BOOL8            sr_collision_segment_triangle(float *point, float *normal, float *fraction, float *from, float *to, float *a, float *b, float *c)
 ;
 
 //----- (00000001400784C0) ----------------------------------------------------
@@ -12840,7 +12840,7 @@ __int64            ui_reload_mouse_texture_candidate(unsigned int a1,      char 
 ;
 
 //----- (0000000140079840) ----------------------------------------------------
-__int64            sub_140079840(char *a1)
+__int64            sr_texture_load_pixels(char *a1)
 ;
 
 //----- (00000001400799F0) ----------------------------------------------------
@@ -12860,31 +12860,31 @@ __int64            sub_140079AA0(
 ;
 
 //----- (0000000140079D60) ----------------------------------------------------
-__int64            sub_140079D60(_OWORD *a1, __int64 a2, float *a3)
+__int64            sr_math_mat4_multiply_vec4(_OWORD *a1, __int64 a2, float *a3)
 ;
 
 //----- (0000000140079F00) ----------------------------------------------------
-__int64            sub_140079F00(__int64 a1, float a2, float a3, float a4, float a5, float a6, float a7)
+__int64            sr_math_mat4_ortho(__int64 a1, float a2, float a3, float a4, float a5, float a6, float a7)
 ;
 
 //----- (000000014007A010) ----------------------------------------------------
-__int64            sub_14007A010(__int64 a1, __int64 a2, __int64 a3)
+__int64            sr_math_mat3_multiply(__int64 a1, __int64 a2, __int64 a3)
 ;
 
 //----- (000000014007A0E0)
-__int64 sub_14007A0E0(_OWORD *a1,__int64 a2,__int64 a3)
+__int64 sr_math_mat4_multiply(_OWORD *a1,__int64 a2,__int64 a3)
 ;
 
 //----- (000000014007A240) ----------------------------------------------------
-__int64            sub_14007A240(__int64 a1, float *a2)
+__int64            sr_math_vec3_normalize(__int64 a1, float *a2)
 ;
 
 //----- (000000014007A2C0) ----------------------------------------------------
-__int64            sub_14007A2C0(int a1, int a2, int a3, int a4, float a5, float a6, float a7)
+__int64            sr_camera_begin_orthographic(int a1, int a2, int a3, int a4, float a5, float a6, float a7)
 ;
 
 //----- (000000014007A570) ----------------------------------------------------
-__int64            sub_14007A570(int a1, int a2, int a3, int a4, float a5, float a6, float a7)
+__int64            sr_camera_begin_perspective(int a1, int a2, int a3, int a4, float a5, float a6, float a7)
 ;
 
 //----- (000000014007A8C0) ----------------------------------------------------
@@ -12892,57 +12892,57 @@ __int64            sub_14007A8C0(int a1, int a2, int a3, int a4, float a5, float
 ;
 
 //----- (000000014007ABA0) ----------------------------------------------------
-float            sub_14007ABA0(float *a1, float *a2, float *a3)
+float            sr_math_point_segment_distance(float *a1, float *a2, float *a3)
 ;
 
 //----- (000000014007ADF0) ----------------------------------------------------
-__int64            sub_14007ADF0(__m128i *a1, int a2, int a3)
+__int64            sr_net_read_bytes(__m128i *a1, int a2, int a3)
 ;
 
 //----- (000000014007AE70) ----------------------------------------------------
-_UNKNOWN **           sub_14007AE70(float *a1, float *a2, float *a3)
+_UNKNOWN **           sr_math_mat3_multiply_transposed(float *a1, float *a2, float *a3)
 ;
 
 // 14007AE70: returning address of temporary local variable '%__return_address'
 
 //----- (000000014007B0F0) ----------------------------------------------------
-void            sub_14007B0F0(float *a1, float *a2, float *a3)
+void            sr_math_vec3_multiply_mat3(float *a1, float *a2, float *a3)
 ;
 
 //----- (000000014007B180) ----------------------------------------------------
-__int64            sub_14007B180(     __m128i *a1, int a2, int a3)
+__int64            sr_net_write_bytes(     __m128i *a1, int a2, int a3)
 ;
 
 //----- (000000014007B2A0) ----------------------------------------------------
-void            sub_14007B2A0(__int64 a1, float *a2, double a3)
+void            sr_math_mat3_rotate_rows(__int64 a1, float *a2, double a3)
 ;
 
 //----- (000000014007B4D0) ----------------------------------------------------
-void            sub_14007B4D0(float *a1, float *a2, double a3)
+void            sr_math_vec3_rotate(float *a1, float *a2, double a3)
 ;
 
 //----- (000000014007B6F0) ----------------------------------------------------
-__int64            sub_14007B6F0(float a1, float a2, float a3)
+__int64            sr_camera_scale_model(float a1, float a2, float a3)
 ;
 
 //----- (000000014007B7E0) ----------------------------------------------------
-__int64            sub_14007B7E0(float a1, float a2, float a3, float a4)
+__int64            sr_camera_set_scissor(float a1, float a2, float a3, float a4)
 ;
 
 //----- (000000014007B990) ----------------------------------------------------
-__int64            sub_14007B990(unsigned int *a1, _DWORD *a2)
+__int64            sr_camera_set_model(unsigned int *a1, _DWORD *a2)
 ;
 
 //----- (000000014007BB00) ----------------------------------------------------
-double sub_14007BB00()
+double sr_camera_begin_2d()
 ;
 
 //----- (000000014007BCB0) ----------------------------------------------------
-void            sub_14007BCB0(int a1, int a2, int a3)
+void            sr_texture_upload(int a1, int a2, int a3)
 ;
 
 //----- (000000014007BE20) ----------------------------------------------------
-__int64            sub_14007BE20(float *a1, unsigned int *a2)
+__int64            sr_camera_set_view(float *a1, unsigned int *a2)
 ;
 
 //----- (000000014007C040) ----------------------------------------------------
@@ -12950,7 +12950,7 @@ int sub_14007C040()
 ;
 
 //----- (000000014007C080) ----------------------------------------------------
-__int64            sub_14007C080(int a1)
+__int64            sr_net_close_socket(int a1)
 ;
 
 //----- (000000014007C0C0) ----------------------------------------------------
@@ -12962,7 +12962,7 @@ __int64            sub_14007C1C0(int a1, int a2)
 ;
 
 //----- (000000014007C3A0) ----------------------------------------------------
-__int64            sub_14007C3A0(int a1, int a2)
+__int64            sr_net_reassemble_fragments(int a1, int a2)
 ;
 
 // 14007C40F: conditional instruction was optimized away because edx.4<1
@@ -12977,11 +12977,11 @@ _BYTE *sub_14007C920(_BYTE *a1, _BYTE *a2, ...)
 ;
 
 //----- (000000014007C980) ----------------------------------------------------
-__int64 sub_14007C980()
+__int64 sr_clock_milliseconds()
 ;
 
 //----- (000000014007CA00) ----------------------------------------------------
-void            sub_14007CA00(_DWORD *a1, int *a2)
+void            sr_math_mat3_transpose(_DWORD *a1, int *a2)
 ;
 
 //----- (000000014007CA90) ----------------------------------------------------
@@ -13013,7 +13013,7 @@ void input_poll_events_candidate()
 ;
 
 //----- (000000014007D0B0) ----------------------------------------------------
-__int64            sub_14007D0B0(int *a1, unsigned __int16 a2)
+__int64            sr_math_fixed_vec2_rotate(int *a1, unsigned __int16 a2)
 ;
 
 //----- (000000014007D230) ----------------------------------------------------
@@ -13021,27 +13021,27 @@ __int64            sub_14007D230(float a1, float a2)
 ;
 
 //----- (000000014007D320) ----------------------------------------------------
-__int64            sub_14007D320(unsigned int *a1, __int64 a2, __int64 a3)
+__int64            sr_renderer_batch_vertex2fv(unsigned int *a1, __int64 a2, __int64 a3)
 ;
 
 //----- (000000014007D420) ----------------------------------------------------
-__int64            sub_14007D420(float a1, float a2, float a3)
+__int64            sr_renderer_batch_vertex3f(float a1, float a2, float a3)
 ;
 
 //----- (000000014007D520) ----------------------------------------------------
-__int64            sub_14007D520(unsigned int *a1, __int64 a2, __int64 a3)
+__int64            sr_renderer_batch_vertex3fv(unsigned int *a1, __int64 a2, __int64 a3)
 ;
 
 //----- (000000014007D610) ----------------------------------------------------
-__int64            sub_14007D610(unsigned int a1, float a2)
+__int64            sr_audio_allocate_sound_buffer(unsigned int a1, float a2)
 ;
 
 //----- (000000014007D6C0) ----------------------------------------------------
-__int64            sub_14007D6C0(int a1)
+__int64            sr_audio_sound_available(int a1)
 ;
 
 //----- (000000014007D710) ----------------------------------------------------
-__int64 sub_14007D710()
+__int64 sr_renderer_sort()
 ;
 
 //----- (000000014007D930) ----------------------------------------------------
@@ -13049,7 +13049,7 @@ __int64 sub_14007D930()
 ;
 
 //----- (000000014007DDF0) ----------------------------------------------------
-void            sub_14007DDF0(float *a1, float *a2)
+void            sr_renderer_draw_wire_box(float *a1, float *a2)
 ;
 
 //----- (000000014007E010) ----------------------------------------------------
@@ -13077,7 +13077,7 @@ void            __attribute__((noreturn)) sub_14007EEB0(__int64 a1, __int64 a2, 
 ;
 
 //----- (000000014007F370) ----------------------------------------------------
-void            sub_14007F370(unsigned int a1)
+void            sr_physics_remove_bond(unsigned int a1)
 ;
 
 //----- (000000014007F590) ----------------------------------------------------
@@ -13085,7 +13085,7 @@ unsigned int *           sub_14007F590(signed int a1)
 ;
 
 //----- (000000014007F970) ----------------------------------------------------
-void            sub_14007F970(int a1)
+void            sr_world_remove_item(int a1)
 ;
 
 //----- (000000014007FE00) ----------------------------------------------------
@@ -13105,7 +13105,7 @@ __int64            sub_1400805E0(int a1)
 ;
 
 //----- (0000000140080690) ----------------------------------------------------
-__int64            sub_140080690(int a1, unsigned int a2, char *a3, unsigned int a4)
+__int64            sr_disk_add_file(int a1, unsigned int a2, char *a3, unsigned int a4)
 ;
 
 //----- (0000000140080720) ----------------------------------------------------
@@ -13271,7 +13271,7 @@ __int64 sub_14008C810()
 ;
 
 //----- (000000014008CEB0) ----------------------------------------------------
-__int64            sub_14008CEB0(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7)
+__int64            sr_collision_edge_edge(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7)
 ;
 
 //----- (000000014008D150) ----------------------------------------------------
@@ -13612,7 +13612,7 @@ __int64 sr_ConnectMasterServer()
 ;
 
 //----- (00000001400A4440) ----------------------------------------------------
-__int64 sub_1400A4440()
+__int64 sr_physics_find_free_bond()
 ;
 
 //----- (00000001400A4560) ----------------------------------------------------
@@ -13654,7 +13654,7 @@ __int64            sub_1400A5510(float *a1, float a2, float a3)
 ;
 
 //----- (00000001400A56B0) ----------------------------------------------------
-__int64            sub_1400A56B0(float *a1, float a2, float a3)
+__int64            sr_human_random_direction(float *a1, float a2, float a3)
 ;
 
 //----- (00000001400A5890) ----------------------------------------------------
@@ -13708,7 +13708,7 @@ __int64 sub_1400A6FB0()
 ;
 
 //----- (00000001400A70B0) ----------------------------------------------------
-_UNKNOWN **           sub_1400A70B0(int a1)
+_UNKNOWN **           sr_item_grenade_explode(int a1)
 ;
 
 //----- (00000001400A74D0) ----------------------------------------------------
@@ -13748,15 +13748,15 @@ __int64            sub_1400A9760(int a1, unsigned int a2, __int64 a3, int a4)
 ;
 
 //----- (00000001400A9940) ----------------------------------------------------
-__int64            sub_1400A9940(int a1, int a2, int a3, float *a4)
+__int64            sr_human_limit_joint_turn(int a1, int a2, int a3, float *a4)
 ;
 
 //----- (00000001400A9EF0) ----------------------------------------------------
-__int64            sub_1400A9EF0(int a1, int a2, int a3, float *a4)
+__int64            sr_human_limit_joint_angles(int a1, int a2, int a3, float *a4)
 ;
 
 //----- (00000001400AA510) ----------------------------------------------------
-__int64            sub_1400AA510(int a1, int a2)
+__int64            sr_human_keep_arms_off_item(int a1, int a2)
 ;
 
 //----- (00000001400AAAA0) ----------------------------------------------------
@@ -13764,19 +13764,19 @@ __int64            sub_1400AAAA0(int a1)
 ;
 
 //----- (00000001400AB7B0) ----------------------------------------------------
-__int64            sub_1400AB7B0(int a1)
+__int64            sr_human_create_joints(int a1)
 ;
 
 //----- (00000001400ABB10) ----------------------------------------------------
-_UNKNOWN **           sub_1400ABB10(int a1)
+_UNKNOWN **           sr_human_update_centre(int a1)
 ;
 
 //----- (00000001400AC530) ----------------------------------------------------
-__int64            sub_1400AC530(float *a1, int a2, int a3)
+__int64            sr_human_item_28_hand_target(float *a1, int a2, int a3)
 ;
 
 //----- (00000001400AC890) ----------------------------------------------------
-__int64            sub_1400AC890(int a1)
+__int64            sr_human_feel_ground_ahead(int a1)
 ;
 
 //----- (00000001400ACD90) ----------------------------------------------------
@@ -13784,15 +13784,15 @@ void            sub_1400ACD90(float *a1, float *a2, float *a3)
 ;
 
 //----- (00000001400AD030) ----------------------------------------------------
-void sub_1400AD030(int a1, float sr_pose_angle)
+void sr_human_build_look_pose(int a1, float sr_pose_angle)
 ;
 
 //----- (00000001400AD2B0) ----------------------------------------------------
-__int64            sub_1400AD2B0(int a1, __int64 a2, double a3)
+__int64            sr_human_drive_ragdoll(int a1, __int64 a2, double a3)
 ;
 
 //----- (00000001400B1450) ----------------------------------------------------
-__int64            sub_1400B1450(
+__int64            sr_human_limb_inverse_kinematics(
         int a1,
         int a2,
         int a3,
@@ -13810,18 +13810,18 @@ __int64            sub_1400B1450(
 ;
 
 //----- (00000001400B2440) ----------------------------------------------------
-__int64            sub_1400B2440(int a1)
+__int64            sr_human_update_walk_height(int a1)
 ;
 
 // 1400B2847: conditional instruction was optimized away because r15d.4>=1
 // 1400B2897: conditional instruction was optimized away because r15d.4>=8
 
 //----- (00000001400B29B0) ----------------------------------------------------
-__int64            sub_1400B29B0(__int64 a1, int a2, int a3, int a4, int a5, float *a6)
+__int64            sr_human_aim_hand_target(__int64 a1, int a2, int a3, int a4, int a5, float *a6)
 ;
 
 //----- (00000001400B2BF0) ----------------------------------------------------
-__int64            sub_1400B2BF0(int a1, int a2, int a3, float *a4, float a5, float a6)
+__int64            sr_human_limit_joint_change(int a1, int a2, int a3, float *a4, float a5, float a6)
 ;
 
 //----- (00000001400B2D20) ----------------------------------------------------
@@ -13829,19 +13829,19 @@ __int64            sub_1400B2D20(int a1, int a2, int a3, float *a4, float a5, fl
 ;
 
 //----- (00000001400B2E70) ----------------------------------------------------
-__int64            sub_1400B2E70(int a1)
+__int64            sr_human_collide(int a1)
 ;
 
 //----- (00000001400B3A80) ----------------------------------------------------
-__int64            sub_1400B3A80(unsigned int a1, int a2)
+__int64            sr_human_collide_vehicle(unsigned int a1, int a2)
 ;
 
 //----- (00000001400B40B0) ----------------------------------------------------
-__int64            sub_1400B40B0(int a1)
+__int64            sr_human_update_walk_point(int a1)
 ;
 
 //----- (00000001400B4DA0) ----------------------------------------------------
-__int64            sub_1400B4DA0(int a1, int a2, int a3, unsigned int *a4, unsigned int *a5, float *a6)
+__int64            sr_human_hold_item(int a1, int a2, int a3, unsigned int *a4, unsigned int *a5, float *a6)
 ;
 
 //----- (00000001400B5410) ----------------------------------------------------
@@ -13849,11 +13849,11 @@ __int64            sub_1400B5410(int a1, signed int a2, signed int a3, float *a4
 ;
 
 //----- (00000001400B5460) ----------------------------------------------------
-__int64            sub_1400B5460(int a1, int a2)
+__int64            sr_human_foot_ground_contact(int a1, int a2)
 ;
 
 //----- (00000001400B5E70) ----------------------------------------------------
-int            sub_1400B5E70(int a1)
+int            sr_human_update_health(int a1)
 ;
 
 //----- (00000001400B62E0) ----------------------------------------------------
@@ -13861,11 +13861,11 @@ __int64            sub_1400B62E0(int a1)
 ;
 
 //----- (00000001400B78F0) ----------------------------------------------------
-__int64            sub_1400B78F0(int a1)
+__int64            sr_human_launch_jump(int a1)
 ;
 
 //----- (00000001400B91E0) ----------------------------------------------------
-__int64            sub_1400B91E0(int a1, float *a2, float *a3)
+__int64            sr_human_probe_ground(int a1, float *a2, float *a3)
 ;
 
 //----- (00000001400B94B0) ----------------------------------------------------
@@ -13873,27 +13873,27 @@ __int64            sub_1400B94B0(int a1, int a2)
 ;
 
 //----- (00000001400B95E0) ----------------------------------------------------
-void sub_1400B95E0()
+void sr_world_update_human_bounds()
 ;
 
 //----- (00000001400B9D90) ----------------------------------------------------
-__int64            sub_1400B9D90(int a1)
+__int64            sr_human_sit_legs(int a1)
 ;
 
 //----- (00000001400BA210) ----------------------------------------------------
-__int64            sub_1400BA210(int a1)
+__int64            sr_human_lie_legs(int a1)
 ;
 
 //----- (00000001400BAA40) ----------------------------------------------------
-__int64            sub_1400BAA40(int a1, __int64 a2, __int64 a3)
+__int64            sr_human_plan_steps(int a1, __int64 a2, __int64 a3)
 ;
 
 //----- (00000001400BB6B0) ----------------------------------------------------
-__int64            sub_1400BB6B0(int a1, int a2, __int64 a3, float *a4, intptr_t a5, float *a6)
+__int64            sr_human_swing_step(int a1, int a2, __int64 a3, float *a4, intptr_t a5, float *a6)
 ;
 
 //----- (00000001400BBF30) ----------------------------------------------------
-__int64            sub_1400BBF30(
+__int64            sr_human_balance_on_leg(
         int a1,
         int a2,
         float *a3,
@@ -13906,7 +13906,7 @@ __int64            sub_1400BBF30(
 ;
 
 //----- (00000001400BCA30) ----------------------------------------------------
-__int64            sub_1400BCA30(int a1)
+__int64            sr_human_stand_legs(int a1)
 ;
 
 //----- (00000001400BE010) ----------------------------------------------------
@@ -13947,19 +13947,19 @@ __int64            sub_1400C3140(unsigned __int64 a1, float *a2)
 // 1400C39C9: conditional instruction was optimized away because r11.8==10
 
 //----- (00000001400C3AB0) ----------------------------------------------------
-__int64            sub_1400C3AB0(int a1, int a2, int a3)
+__int64            sr_item_insert_cash_bill(int a1, int a2, int a3)
 ;
 
 //----- (00000001400C3BA0) ----------------------------------------------------
-unsigned int *           sub_1400C3BA0(int a1, unsigned int a2, unsigned int a3)
+unsigned int *           sr_item_register_link(int a1, unsigned int a2, unsigned int a3)
 ;
 
 //----- (00000001400C3C90) ----------------------------------------------------
-__int64            sub_1400C3C90(unsigned int a1, int a2, int a3)
+__int64            sr_item_append_inventory(unsigned int a1, int a2, int a3)
 ;
 
 //----- (00000001400C3D10) ----------------------------------------------------
-__int64            sub_1400C3D10(int a1)
+__int64            sr_item_cash_value(int a1)
 ;
 
 //----- (00000001400C3E00) ----------------------------------------------------
@@ -14091,27 +14091,27 @@ void            sub_1400C9B60(int a1)
 ;
 
 //----- (00000001400C9D20) ----------------------------------------------------
-unsigned __int64 sub_1400C9D20()
+unsigned __int64 sr_world_update_item_bounds()
 ;
 
 //----- (00000001400CA1C0) ----------------------------------------------------
-__int64            sub_1400CA1C0(int a1)
+__int64            sr_item_solve_contacts(int a1)
 ;
 
 //----- (00000001400CA430) ----------------------------------------------------
-_UNKNOWN **           sub_1400CA430(int a1)
+_UNKNOWN **           sr_item_solve_human_contacts(int a1)
 ;
 
 //----- (00000001400CA740) ----------------------------------------------------
-__int64            sub_1400CA740(int a1, int a2)
+__int64            sr_item_remove_cash_bill(int a1, int a2)
 ;
 
 //----- (00000001400CA7C0) ----------------------------------------------------
-void            sub_1400CA7C0(int a1, int a2, int a3)
+void            sr_world_take_item(int a1, int a2, int a3)
 ;
 
 //----- (00000001400CA9B0) ----------------------------------------------------
-__int64            sub_1400CA9B0(unsigned int a1, unsigned int a2)
+__int64            sr_world_detach_item(unsigned int a1, unsigned int a2)
 ;
 
 //----- (00000001400CAA90) ----------------------------------------------------
@@ -14131,21 +14131,21 @@ __int64            sub_1400CC370(int a1, __int64 a2, int a3)
 ;
 
 //----- (00000001400CC610) ----------------------------------------------------
-__int64 sub_1400CC610()
+__int64 sr_item_tick_states()
 ;
 
 // 1400CCE14: conditional instruction was optimized away because ecx.4<4651
 
 //----- (00000001400CDBD0) ----------------------------------------------------
-__int64            sub_1400CDBD0(unsigned int a1, signed int a2, signed int a3, int a4, int a5, int a6)
+__int64            sr_item_break_block_part(unsigned int a1, signed int a2, signed int a3, int a4, int a5, int a6)
 ;
 
 //----- (00000001400CDFF0) ----------------------------------------------------
-__int64            sub_1400CDFF0(int a1)
+__int64            sr_item_restore_block_part(int a1)
 ;
 
 //----- (00000001400CE370) ----------------------------------------------------
-__int64 sub_1400CE370()
+__int64 sr_item_update_physics()
 ;
 
 //----- (00000001400CF160) ----------------------------------------------------
@@ -14157,7 +14157,7 @@ void            sub_1400CF610()
 ;
 
 //----- (00000001400CF670) ----------------------------------------------------
-__int64            sub_1400CF670(signed int a1)
+__int64            sr_item_gun_tick(signed int a1)
 ;
 
 //----- (00000001400CFC80) ----------------------------------------------------
@@ -14290,7 +14290,7 @@ __int64 asset_save_city_sbc_candidate()
 ;
 
 //----- (00000001400D6890) ----------------------------------------------------
-_BOOL8            sub_1400D6890(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float a8)
+_BOOL8            sr_collision_segment_segment(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float *a7, float a8)
 ;
 
 //----- (00000001400D6B60) ----------------------------------------------------
@@ -14371,7 +14371,7 @@ _BOOL8            sub_1400DE770(_DWORD *a1, float *a2, float *a3, float *a4, flo
 ;
 
 //----- (00000001400DF380) ----------------------------------------------------
-__int64            sub_1400DF380(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float a7)
+__int64            sr_collision_ray_sphere(float *a1, float *a2, float *a3, float *a4, float *a5, float *a6, float a7)
 ;
 
 //----- (00000001400DF5B0) ----------------------------------------------------
@@ -14392,7 +14392,7 @@ _BOOL8            sub_1400DF8C0(
 ;
 
 //----- (00000001400DFB70) ----------------------------------------------------
-__int64            sub_1400DFB70(int a1, float *a2, float *a3, int a4)
+__int64            sr_collision_ray_vehicle(int a1, float *a2, float *a3, int a4)
 ;
 
 //----- (00000001400E15A0) ----------------------------------------------------
@@ -14408,11 +14408,11 @@ _BOOL8            sub_1400E2D40(int a1, float *a2, float *a3)
 ;
 
 //----- (00000001400E35D0) ----------------------------------------------------
-__int64            sub_1400E35D0(signed int a1, signed int a2, int a3, int a4)
+__int64            sr_item_transfer(signed int a1, signed int a2, int a3, int a4)
 ;
 
 //----- (00000001400E38A0) ----------------------------------------------------
-__int64            sub_1400E38A0(signed int a1, signed int a2)
+__int64            sr_item_attach_child(signed int a1, signed int a2)
 ;
 
 //----- (00000001400E3960) ----------------------------------------------------
@@ -14917,15 +14917,15 @@ __int64            sub_140105470(int a1, __int64 a2, double a3)
 ;
 
 //----- (0000000140105770) ----------------------------------------------------
-__int64            sub_140105770(__int64 a1, __int64 a2, __int64 a3)
+__int64            sr_math_mat3_multiply_copy(__int64 output, __int64 left, __int64 right)
 ;
 
 //----- (0000000140105840) ----------------------------------------------------
-__int64            sub_140105840(_OWORD *a1, __int64 a2, __int64 a3)
+__int64            sr_math_mat4_multiply_copy(_OWORD *output, __int64 left, __int64 right)
 ;
 
 //----- (0000000140105930) ----------------------------------------------------
-_UNKNOWN **           sub_140105930(float *a1, float *a2, float *a3)
+_UNKNOWN **           sr_math_quat_multiply(float *a1, float *a2, float *a3)
 ;
 
 // 140105930: returning address of temporary local variable '%__return_address'
@@ -14958,7 +14958,7 @@ unsigned int *sub_1401063E0()
 // 140106537: mask 0x80000007 is shortened because esi.4 <= 0x7FFFFFFF
 
 //----- (00000001401069C0) ----------------------------------------------------
-__int64 sub_1401069C0()
+__int64 sr_world_update_vehicle_bounds()
 ;
 
 //----- (0000000140106FD0) ----------------------------------------------------
@@ -14966,7 +14966,7 @@ __int64            sub_140106FD0(int a1)
 ;
 
 //----- (0000000140107ED0) ----------------------------------------------------
-void sub_140107ED0()
+void sr_world_drive_vehicles()
 ;
 
 //----- (0000000140108930) ----------------------------------------------------
@@ -14982,7 +14982,7 @@ void            sub_14010AF90(int a1)
 ;
 
 //----- (000000014010BE50) ----------------------------------------------------
-void sub_14010BE50()
+void sr_world_expire_vehicles()
 ;
 
 //----- (000000014010C110) ----------------------------------------------------
@@ -15030,11 +15030,11 @@ __int64            sub_14010D0D0(int a1, int a2)
 ;
 
 //----- (000000014010D610) ----------------------------------------------------
-void sub_14010D610()
+void sr_world_solve_vehicle_wheels()
 ;
 
 //----- (000000014010E030) ----------------------------------------------------
-__int64 sub_14010E030()
+__int64 sr_gl_resolve_proc_loader()
 ;
 
 // 14026E2F8: invalid function type 'HMODULE (__stdcall *LoadLibraryW)(LPCWSTR lpLibFileName)' has been ignored
@@ -15049,27 +15049,27 @@ __int64            sub_14010E0D0(char *a1, char *a2, int a3, __int64 a4, int a5)
 ;
 
 //----- (000000014010E190) ----------------------------------------------------
-_WORD *           sub_14010E190(int a1, _WORD *a2, int a3, int a4)
+_WORD *           sr_audio_voice_decode(int a1, _WORD *a2, int a3, int a4)
 ;
 
 //----- (000000014010E230) ----------------------------------------------------
-__int64            sub_14010E230(int a1, __int64 a2, int a3, int a4)
+__int64            sr_audio_voice_encode(int a1, __int64 a2, int a3, int a4)
 ;
 
 //----- (000000014010E2B0) ----------------------------------------------------
-int *sub_14010E2B0()
+int *sr_audio_voice_initialize()
 ;
 
 //----- (000000014010E330) ----------------------------------------------------
-void sub_14010E330()
+void sr_audio_voice_shutdown()
 ;
 
 //----- (000000014010E370) ----------------------------------------------------
-void            sub_14010E370(float *a1, float *a2)
+void            sr_math_quat_from_mat3(float *a1, float *a2)
 ;
 
 //----- (000000014010E610) ----------------------------------------------------
-__int64            sub_14010E610(float *a1, int a2)
+__int64            sr_net_write_angle(float *angle, int bits)
 ;
 
 //----- (000000014010E6C0) ----------------------------------------------------
@@ -15115,23 +15115,23 @@ __int64            sub_140114AF0(float *a1)
 ;
 
 //----- (0000000140114D40) ----------------------------------------------------
-__int64            sub_140114D40(_DWORD *a1, float *a2)
+__int64            sr_net_encode_rotation_13bit(_DWORD *a1, float *a2)
 ;
 
 //----- (0000000140114E90) ----------------------------------------------------
-__int64            sub_140114E90(_DWORD *a1, float *a2, char a3)
+__int64            sr_net_encode_rotation(_DWORD *a1, float *a2, char a3)
 ;
 
 //----- (00000001401150E0) ----------------------------------------------------
-void            sub_1401150E0(__int64 a1, float *a2, float a3, signed int a4)
+void            sr_net_write_vector_delta(__int64 a1, float *a2, float a3, signed int a4)
 ;
 
 //----- (00000001401151C0) ----------------------------------------------------
-double            sub_1401151C0(float *a1, float a2, int a3)
+double            sr_net_write_magnitude(float *a1, float a2, int a3)
 ;
 
 //----- (0000000140115230) ----------------------------------------------------
-__int64            sub_140115230(_DWORD *a1, float *a2, int a3)
+__int64            sr_net_encode_direction(_DWORD *a1, float *a2, int a3)
 ;
 
 //----- (0000000140115360) ----------------------------------------------------
@@ -15143,43 +15143,43 @@ __int64 sub_140115410()
 ;
 
 //----- (00000001401154D0) ----------------------------------------------------
-__int64 sub_1401154D0()
+__int64 sr_physics_integrate_points()
 ;
 
 //----- (0000000140115830) ----------------------------------------------------
-void sub_140115830()
+void sr_physics_expire_points()
 ;
 
 //----- (0000000140115AE0) ----------------------------------------------------
-__int64            sub_140115AE0(_DWORD *a1, int a2)
+__int64            sr_net_read_bits(_DWORD *a1, int a2)
 ;
 
 //----- (0000000140115BD0) ----------------------------------------------------
-__int64            sub_140115BD0(int *a1, int a2)
+__int64            sr_net_read_optional_index(int *a1, int a2)
 ;
 
 //----- (0000000140115C20) ----------------------------------------------------
-__int64            sub_140115C20(_DWORD *a1, int a2, int a3)
+__int64            sr_net_read_bits_scaled(_DWORD *a1, int a2, int a3)
 ;
 
 //----- (0000000140115D20) ----------------------------------------------------
-__int64            sub_140115D20(int *a1, int a2)
+__int64            sr_net_read_signed_bits(int *a1, int a2)
 ;
 
 //----- (0000000140115D90) ----------------------------------------------------
-__int64            sub_140115D90(_DWORD *a1, signed int a2)
+__int64            sr_net_write_bits(_DWORD *a1, signed int a2)
 ;
 
 //----- (0000000140115E60) ----------------------------------------------------
-__int64            sub_140115E60(_DWORD *a1, signed int a2)
+__int64            sr_net_write_bits_always_success(_DWORD *a1, signed int a2)
 ;
 
 //----- (0000000140115E80) ----------------------------------------------------
-__int64            sub_140115E80(_DWORD *a1, int a2, unsigned int a3)
+__int64            sr_net_write_bits_scaled(_DWORD *a1, int a2, unsigned int a3)
 ;
 
 //----- (0000000140115F70) ----------------------------------------------------
-__int64            sub_140115F70(_DWORD *a1, signed int a2)
+__int64            sr_net_write_bits_always_success_alt(_DWORD *a1, signed int a2)
 ;
 
 //----- (0000000140115FF0) ----------------------------------------------------
@@ -15187,7 +15187,7 @@ __int64            sub_140115FF0(int a1)
 ;
 
 //----- (0000000140116210) ----------------------------------------------------
-void sub_140116210()
+void sr_physics_tick()
 ;
 
 //----- (00000001401164B0) ----------------------------------------------------
@@ -15279,19 +15279,19 @@ __int64            sub_14011B7F0(int a1, int a2)
 ;
 
 //----- (000000014011B8F0) ----------------------------------------------------
-_BOOL8            sub_14011B8F0(float *a1, int a2, float a3)
+_BOOL8            sr_corporation_contains_point(float *a1, int a2, float a3)
 ;
 
 //----- (000000014011B960) ----------------------------------------------------
-_BOOL8            sub_14011B960(float *a1, int a2, float a3)
+_BOOL8            sr_corporation_vault_contains_point(float *a1, int a2, float a3)
 ;
 
 //----- (000000014011B9F0) ----------------------------------------------------
-_BOOL8            sub_14011B9F0(int a1, float *a2, float a3)
+_BOOL8            sr_world_region_contains_point(int a1, float *a2, float a3)
 ;
 
 //----- (000000014011BAD0) ----------------------------------------------------
-_BOOL8            sub_14011BAD0(float *a1)
+_BOOL8            sr_area_view_contains_point(float *a1)
 ;
 
 //----- (000000014011BD10) ----------------------------------------------------
@@ -15303,27 +15303,27 @@ __int64            sub_14011BD70(signed int a1)
 ;
 
 //----- (000000014011BF40) ----------------------------------------------------
-__int64            sub_14011BF40(__int64 a1, __int64 a2, float *a3, float *a4)
+__int64            sr_collision_place_mesh(__int64 a1, __int64 a2, float *a3, float *a4)
 ;
 
 //----- (000000014011C080) ----------------------------------------------------
-_UNKNOWN **           sub_14011C080(float *a1, float *a2, float *a3)
+_UNKNOWN **           sr_math_mat3_multiply_transposed_alt(float *a1, float *a2, float *a3)
 ;
 
 // 14011C080: returning address of temporary local variable '%__return_address'
 
 //----- (000000014011C300) ----------------------------------------------------
-float            sub_14011C300(__int64 a1, float *a2)
+float            sr_math_quat_to_axis_angle(__int64 a1, float *a2)
 ;
 
 //----- (000000014011C340) ----------------------------------------------------
-_UNKNOWN **           sub_14011C340(float *a1, float *a2)
+_UNKNOWN **           sr_math_mat3_from_quat(float *a1, float *a2)
 ;
 
 // 14011C340: returning address of temporary local variable '%__return_address'
 
 //----- (000000014011C490) ----------------------------------------------------
-void            sub_14011C490(float *a1, float *a2)
+void            sr_math_quat_to_rotation_vector(float *a1, float *a2)
 ;
 
 //----- (000000014011C510) ----------------------------------------------------
@@ -15331,11 +15331,11 @@ void            sub_14011C510(int a1, int a2, int a3, int a4)
 ;
 
 //----- (000000014011C640) ----------------------------------------------------
-float            sub_14011C640(float *a1, float *a2, float a3)
+float            sr_physics_sphere_exit_distance(float *a1, float *a2, float a3)
 ;
 
 //----- (000000014011C6B0) ----------------------------------------------------
-__m128            sub_14011C6B0(__int64 a1, float *a2, float a3)
+__m128            sr_physics_sphere_entry_distance(__int64 a1, float *a2, float a3)
 ;
 
 //----- (000000014011C730) ----------------------------------------------------
@@ -15443,11 +15443,11 @@ __int64            sub_140125860(unsigned int *a1, _DWORD *a2, float a3, int a4)
 ;
 
 //----- (00000001401259B0) ----------------------------------------------------
-void            sub_1401259B0(int a1, __int64 a2, __int64 a3)
+void            sr_world_draw_resting_particles(int a1, __int64 a2, __int64 a3)
 ;
 
 //----- (0000000140125DB0) ----------------------------------------------------
-void sub_140125DB0(void);
+void sr_world_draw_effects(void);
 
 //----- (0000000140127240) ----------------------------------------------------
 void            sub_140127240(char *a1)
@@ -15478,19 +15478,19 @@ void sub_14012AF00()
 ;
 
 //----- (000000014012B090) ----------------------------------------------------
-unsigned int *           sub_14012B090(int a1, float *a2, float *a3)
+unsigned int *           sr_physics_apply_point_velocity(int a1, float *a2, float *a3)
 ;
 
 //----- (000000014012B170) ----------------------------------------------------
-unsigned int *           sub_14012B170(float *a1, int a2, float *a3)
+unsigned int *           sr_physics_point_velocity(float *a1, int a2, float *a3)
 ;
 
 //----- (000000014012B220) ----------------------------------------------------
-void sub_14012B220()
+void sr_physics_integrate_bodies()
 ;
 
 //----- (000000014012B2D0) ----------------------------------------------------
-void sub_14012B2D0(unsigned int *a1, float *a2, float *a3, float *a4)
+void sr_physics_integrate_rotation(unsigned int *a1, float *a2, float *a3, float *a4)
 ;
 
 //----- (000000014012BD30) ----------------------------------------------------
@@ -15640,7 +15640,7 @@ __int64 sub_140138020()
 // 14026E2E8: invalid function type 'BOOL (__stdcall *SetProcessAffinityMask)(HANDLE hProcess, DWORD_PTR dwProcessAffinityMask)' has been ignored
 
 //----- (00000001401380F0) ----------------------------------------------------
-__int64            sub_1401380F0(int a1, int a2)
+__int64            sr_item_follow_body(int a1, int a2)
 ;
 
 //----- (0000000140138430) ----------------------------------------------------
@@ -15902,11 +15902,11 @@ __int64 sub_140158C70(_BYTE *a1, __int64 a2, __int64 a3, ...)
 ;
 
 //----- (0000000140158CD0) ----------------------------------------------------
-__int64 sub_140158CD0()
+__int64 sr_world_update_particles()
 ;
 
 //----- (00000001401597F0) ----------------------------------------------------
-__int64 sub_1401597F0()
+__int64 sr_world_update_effects()
 ;
 
 //----- (000000014015AE10) ----------------------------------------------------
@@ -17586,7 +17586,7 @@ float            sub_1401872F0(int a1, float a2, float a3, float a4, float a5, f
 ;
 
 //----- (0000000140187410) ----------------------------------------------------
-_BOOL8            sub_140187410(float *a1, float *a2, float *a3, float *a4, float *a5)
+_BOOL8            sr_collision_edge_side(float *a1, float *a2, float *a3, float *a4, float *a5)
 ;
 
 //----- (0000000140187860) ----------------------------------------------------
@@ -17614,19 +17614,19 @@ __int64            sub_1401885C0(int *a1, int a2, int a3)
 ;
 
 //----- (0000000140188720) ----------------------------------------------------
-__int64            sub_140188720(int *a1, float *a2, float *a3, int a4, int a5)
+__int64            sr_world_street_triangles_in_box(int *a1, float *a2, float *a3, int a4, int a5)
 ;
 
 //----- (0000000140188900) ----------------------------------------------------
-__int64            sub_140188900(int *a1, float *a2, float *a3, int a4)
+__int64            sr_world_streets_triangles_in_box(int *a1, float *a2, float *a3, int a4)
 ;
 
 //----- (0000000140188B80) ----------------------------------------------------
-__int64            sub_140188B80(__int64 a1, __int64 a2, __int64 a3)
+__int64            sr_world_build_street_meshes(__int64 a1, __int64 a2, __int64 a3)
 ;
 
 //----- (00000001401899F0) ----------------------------------------------------
-__int64            sub_1401899F0(int a1)
+__int64            sr_world_file_street(int a1)
 ;
 
 //----- (0000000140189E80) ----------------------------------------------------
@@ -28190,7 +28190,7 @@ _Static_assert(sizeof(sr_path_locale)==32 && offsetof(sr_path_locale,changed)==2
 
 int sr_path_mb_convert(unsigned int cp, const char *input, wchar_t *output, int capacity) ;
 
-__int64            sr_path_malloc(unsigned __int64 v0)
+__int64            sr_path_malloc(unsigned __int64 requested_allocation_bytes)
 ;
 
 // 14026E130: invalid function type 'LPVOID (__stdcall *HeapAlloc)(HANDLE hHeap, DWORD dwFlags, SIZE_T dwBytes)' has been ignored
@@ -31510,7 +31510,7 @@ int         chdrive(int Drive)
 // 14026E260: invalid function type 'DWORD (__stdcall *GetLastError)()' has been ignored
 
 /* Scoped typed recovery of allocator 0x14024DF98. */
-__int64            sr_directory_calloc(unsigned __int64 v1, unsigned __int64 v0)
+__int64            sr_directory_calloc(unsigned __int64 allocation_element_count, unsigned __int64 allocation_element_size)
 ;
 
 // 14026E130: invalid function type 'LPVOID (__stdcall *HeapAlloc)(HANDLE hHeap, DWORD dwFlags, SIZE_T dwBytes)' has been ignored

@@ -18,8 +18,8 @@
    (physics_add_contact) are engine code; they are called through the
    client's entry points so the comparison with the original can replace
    them with recording stubs. */
-extern long long sub_140037220(int vehicle, float *from, float *to, float radius);
-extern long long sub_1400052C0(int body_a, int body_b, unsigned int *offset_a, unsigned int *offset_b,
+extern long long sr_collision_sweep_vehicle(int vehicle, float *from, float *to, float radius);
+extern long long sr_physics_add_contact(int body_a, int body_b, unsigned int *offset_a, unsigned int *offset_b,
                                unsigned int *normal, float depth, unsigned int friction_bits, float depth_scale,
                                unsigned int stiffness_bits);
 /* Still recompiled code: scoring of a kill (killer, victim, 100) and of a
@@ -96,7 +96,7 @@ void human_collide_vehicle(int human, int vehicle)
         to[0] = axis[0] * reach + bone->position[0];
         to[1] = axis[1] * reach + bone->position[1];
         radius = shape->radius;
-        if (!(unsigned int)sub_140037220(vehicle, from, to, radius))
+        if (!(unsigned int)sr_collision_sweep_vehicle(vehicle, from, to, radius))
             continue;
 
         hull_body = physics_vehicles[vehicle].body;
@@ -104,7 +104,7 @@ void human_collide_vehicle(int human, int vehicle)
             offset[k] = collision_hit.point[k] - physics_bodies[bone->body].position[k];
             hull_offset[k] = collision_hit.point[k] - physics_bodies[hull_body].position[k];
         }
-        sub_1400052C0(bone->body, hull_body, (unsigned int *)(void *)offset, (unsigned int *)(void *)hull_offset,
+        sr_physics_add_contact(bone->body, hull_body, (unsigned int *)(void *)offset, (unsigned int *)(void *)hull_offset,
                       (unsigned int *)(void *)collision_hit.normal, radius - collision_hit.distance, 0x3ECCCCCDu,
                       0.03125f, 0x3D800000u);
 

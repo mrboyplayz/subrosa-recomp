@@ -7,10 +7,10 @@
 #define distance_bond(b,o,p,q,d) ((uint64_t (*)(uint32_t,uint32_t,const float *,const float *,uint32_t))NC_ADDR(0x14004E160))(b,o,p,q,d)
 #define level_bond(b,p,q) ((uint64_t (*)(uint32_t,const float *,const float *))NC_ADDR(0x14004E2E0))(b,p,q)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sub_14004E160(uint32_t,uint32_t,const float *,const float *,uint32_t);
-long long sub_14004E2E0(uint32_t,const float *,const float *);
-#define distance_bond sub_14004E160
-#define level_bond sub_14004E2E0
+long long sr_physics_create_distance_bond(uint32_t,uint32_t,const float *,const float *,uint32_t);
+long long sr_physics_create_level_bond(uint32_t,const float *,const float *);
+#define distance_bond sr_physics_create_distance_bond
+#define level_bond sr_physics_create_level_bond
 #else
 static uint64_t distance_bond(uint32_t b,uint32_t o,const float *p,const float *q,uint32_t d) {
     float f;memcpy(&f,&d,4);return physics_create_distance_bond(b,o,p,q,f);

@@ -10,14 +10,14 @@ type-26 lists by 6 bits
 ====
 held tick for every item
         if (item->holder != -1)
-            sub_1401380F0(i, item->holder);
+            sr_item_follow_body(i, item->holder);
 ----
-        sub_1401380F0(i, item->holder);
+        sr_item_follow_body(i, item->holder);
 ====
 held tick: item passed as holder
-            sub_1401380F0(i, item->holder);
+            sr_item_follow_body(i, item->holder);
 ----
-            sub_1401380F0(i, i);
+            sr_item_follow_body(i, i);
 ====
 radio part offset constant
             float along = (float)item->slot * 0.10546875f - 0.2109375f;
@@ -139,7 +139,7 @@ phone: dialling ignores hang-up
             item_call_state(item) = 0;
             item_call_number(item) = 0;
             item_dialled_number(item) = 0;
-            sub_140051940(item);
+            sr_item_phone_changed(item);
         }
         phone_dial(item);
 ----
@@ -157,11 +157,11 @@ phone: calls itself
 ====
 phone: caller id not passed
     item_call_number(other) = item_phone_number(item);
-    sub_140051940(item);
-    sub_140051940(other);
+    sr_item_phone_changed(item);
+    sr_item_phone_changed(other);
 ----
-    sub_140051940(item);
-    sub_140051940(other);
+    sr_item_phone_changed(item);
+    sr_item_phone_changed(other);
 ====
 phone: ring volume
                 ring_event(tick, sound, item, 0.5f);
@@ -180,24 +180,24 @@ phone: dead partner kept
 ====
 phone: answer only first ringing phone
             item_call_number(other) = item_phone_number(item);
-            sub_140051940(other);
+            sr_item_phone_changed(other);
         }
 ----
             item_call_number(other) = item_phone_number(item);
-            sub_140051940(other);
+            sr_item_phone_changed(other);
             break;
         }
 ====
 phone: hang-up order of syncs
-    sub_140051940(item_call_partner(item));
+    sr_item_phone_changed(item_call_partner(item));
     item_call_number(item) = 0;
     item_call_partner(item) = -1;
-    sub_140051940(item);
+    sr_item_phone_changed(item);
 }
 ----
     item_call_number(item) = 0;
-    sub_140051940(item);
-    sub_140051940(item_call_partner(item));
+    sr_item_phone_changed(item);
+    sr_item_phone_changed(item_call_partner(item));
     item_call_partner(item) = -1;
 }
 ====

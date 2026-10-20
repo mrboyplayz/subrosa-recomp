@@ -8,10 +8,10 @@
 #define label(t) ((void (*)(const unsigned char *))NC_ADDR(0x140071640))(t)
 #define label_at(t,x,y,s,f) ((void (*)(const unsigned char *,float,float,float,int))NC_ADDR(0x1400764B0))(t,x,y,s,f)
 #elif defined(NC_CLIENT_WRAPPERS)
-void sub_140071640(char *);
-void sub_1400764B0(char *,float,float,float,char);
-#define label(t) sub_140071640((char *)(t))
-#define label_at(t,x,y,s,f) sub_1400764B0((char *)(t),x,y,s,f)
+void sr_menu_label(char *);
+void sr_menu_label_at(char *,float,float,float,char);
+#define label(t) sr_menu_label((char *)(t))
+#define label_at(t,x,y,s,f) sr_menu_label_at((char *)(t),x,y,s,f)
 #else
 #define label(t) menu_label(t)
 #define label_at(t,x,y,s,f) menu_label_at(t,x,y,s,f)

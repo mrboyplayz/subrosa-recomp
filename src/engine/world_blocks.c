@@ -12,7 +12,7 @@ extern int sub_1400DC050(float *from, float *to, int unknown);
 
 /* Still recompiled code. */
 /* Turns one part of a block into an item; its index, or -1. */
-extern int64_t sub_1400CDBD0(uint32_t block, int32_t part, int32_t layer, int32_t x, int32_t y, int32_t z);
+extern int64_t sr_item_break_block_part(uint32_t block, int32_t part, int32_t layer, int32_t x, int32_t y, int32_t z);
 /* Frees the mesh of one quarter of a block record. */
 extern void sub_140012940(uint32_t record, int32_t quarter);
 
@@ -272,7 +272,7 @@ void world_break_blocks(const int32_t voxel_min[3], const int32_t voxel_max[3])
                     /* Parts from the 33rd on share the bits of the first 32. */
                     if (gone >> (part & 31) & 1)
                         continue;
-                    item = (int32_t)sub_1400CDBD0(block, part, 0, x, y, z);
+                    item = (int32_t)sr_item_break_block_part(block, part, 0, x, y, z);
                     if (item != -1) {
                         world_items[item].unknown_8 = 1;
                         world_items[item].physics_simulated = 1;

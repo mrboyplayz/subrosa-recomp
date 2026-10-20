@@ -1,0 +1,59 @@
+edge point x
+float x = point[0] - start[0];
+----
+float x = point[0] + start[0];
+====
+edge point y
+float y = point[1] - start[1];
+----
+float y = point[1] + start[1];
+====
+edge point z
+float z = point[2] - start[2];
+----
+float z = point[2] + start[2];
+====
+edge direction x
+float ex = end[0] - start[0];
+----
+float ex = end[0] + start[0];
+====
+edge direction y
+float ey = end[1] - start[1];
+----
+float ey = end[1] + start[1];
+====
+edge direction z
+float ez = end[2] - start[2];
+----
+float ez = end[2] + start[2];
+====
+edge normal x
+(y * ez - z * ey) * normal[0]
+----
+(y * ez - z * ey) * normal[1]
+====
+edge normal y
+(z * ex - x * ez) * normal[1]
+----
+(z * ex - x * ez) * normal[2]
+====
+edge normal z
+(x * ey - y * ex) * normal[2]
+----
+(x * ey - y * ex) * normal[0]
+====
+quad directionality
+if (!collision_line_plane(point, normal, fraction, from, to, a))
+----
+if (!collision_segment_plane(point, normal, fraction, from, to, a))
+====
+quad last edge boundary
+&& edge_side(point, normal, d, a) >= 0.0f;
+----
+&& edge_side(point, normal, d, a) > 0.0f;
+====
+triangle last edge boundary
+return edge_side(point, normal, c, a) >= 0.0f;
+----
+return edge_side(point, normal, c, a) > 0.0f;
