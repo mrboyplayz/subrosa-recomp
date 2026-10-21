@@ -71,3 +71,6 @@ rather than the src/client folder as that folder has raw decompiled code.
 ## Boundaries
 
 Never commit game executables, DLLs, assets, IDA databases or Steam files.
+
+## Join our discord!
+https://discord.gg/eqVsjaKYkN
