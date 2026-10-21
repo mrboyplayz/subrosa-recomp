@@ -62,6 +62,10 @@ Not tracked:
 - `dist/` (the runnable game)
 - `subrosaactual/` (a copy of the original game, used only by the comparison harness)
 
+## Warning!
+AI was used in the making of this project, if you would like to contribute, please focus on the engine
+rather than the src/client folder as that folder has raw decompiled code.
+
 ## Boundaries
 
 Never commit game executables, DLLs, assets, IDA databases or Steam files.
