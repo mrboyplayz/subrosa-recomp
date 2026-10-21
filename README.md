@@ -8,6 +8,8 @@ in `src/engine/` is checked against the original machine code
 (`tools/native-compare/`). Everything not yet rewritten is still the
 decompiler's output in `src/client/`, repaired until it runs.
 
+This recompile is not complete! Please contribute to the repo.
+
 ## Build
 
 You need Python 3.12 and a 64-bit MinGW toolchain (WinLibs GCC, which also
