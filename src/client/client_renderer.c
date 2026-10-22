@@ -7251,7 +7251,7 @@ _UNKNOWN **           sub_1400932D0()
                      + weighted_sum_7;
       *(float *)&dword_140404A6C[running_total_2 + 284956345] = (float)((float)(weighted_sum_11 - weighted_sum_6) * *(float *)&limited_value) + weighted_sum_6;
       dword_140404A6C[running_total_2 + 284956346] = state_address_6;
-      sub_1400C2F90(
+      sr_math_mat3_nlerp(
         (float *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + running_total * 4 + 1144038744),
         (float *)&dword_140404A6C[scaled_index / 4 + 421846206 + running_total],
         (float *)&dword_140404A6C[scaled_index_2 + 421846206 + running_total],
@@ -7262,7 +7262,7 @@ _UNKNOWN **           sub_1400932D0()
       remaining_count_2 = 15;
       do
       {
-        sub_1400C2F90((float *)((char *)running_total_3 + state_address_7), running_total_3, (float *)((char *)running_total_3 + scaled_index_5), limited_value);
+        sr_math_mat3_nlerp((float *)((char *)running_total_3 + state_address_7), running_total_3, (float *)((char *)running_total_3 + scaled_index_5), limited_value);
         running_total_3 += 21;
         --remaining_count_2;
       }
@@ -7357,7 +7357,7 @@ _UNKNOWN **           sub_1400932D0()
                      + weighted_sum_18;
       *(float *)&dword_140404A6C[running_total_6 + 285044402] = (float)((float)(weighted_sum_20 - weighted_sum_19) * *(float *)&limited_value) + weighted_sum_19;
       dword_140404A6C[running_total_6 + 285044403] = state_address_18;
-      sub_1400C2F90(
+      sr_math_mat3_nlerp(
         (float *)&dword_140404A6C[running_total_5 + 285044404],
         (float *)&dword_140404A6C[140832 * lookup_index + 421934263 + running_total_5],
         (float *)&dword_140404A6C[140832 * saved_masked_bits_2 + 421934263 + running_total_5],
@@ -7443,7 +7443,7 @@ _UNKNOWN **           sub_1400932D0()
       combined_products_2 = *(float *)((char *)&g_1A4DB8544 + scaled_index_17) - state_address_24[2];
       dword_140404A6C[running_total_7 + 285083826] = state_address_25;
       *(float *)&dword_140404A6C[running_total_7 + 285083827] = (float)(combined_products_2 * *(float *)&limited_value) + state_address_24[2];
-      sub_1400C2F90(
+      sr_math_mat3_nlerp(
         (float *)&dword_140404A6C[running_total_8 + 285083828],
         (float *)&dword_140404A6C[140832 * lookup_index + 421973687 + running_total_8],
         (float *)&dword_140404A6C[140832 * saved_masked_bits_2 + 421973687 + running_total_8],
@@ -7465,7 +7465,7 @@ _UNKNOWN **           sub_1400932D0()
   *(float *)&state_address_26 = (float)((float)(*(float *)&dword_140404A6C[140832 * saved_masked_bits_2 + 421986998] - weighted_sum_32) * *(float *)&limited_value) + weighted_sum_32;
   g_183F7C590 = (float)((float)(weighted_sum_33 - weighted_sum_31) * *(float *)&limited_value) + weighted_sum_31;
   *(unsigned int *)&g_183F7C594 = state_address_26;
-  return sub_1400C2F90(
+  return sr_math_mat3_nlerp(
            (float *)(unsigned int *)&g_183F7C5A4,
            (float *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 563328 * lookup_index + 1692161364),
            (float *)(((intptr_t)dword_140404A6C - 0x404a6cLL) + 563328 * saved_masked_bits_2 + 1692161364),

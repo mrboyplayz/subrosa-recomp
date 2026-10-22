@@ -25,6 +25,26 @@ void math_quat_from_mat3(float q[4], const float m[9]);
 /* The rotation matrix of a unit quaternion. 0x14011C340 */
 void math_mat3_from_quat(float m[9], const float q[4]);
 
+/* Normalized xyz axis and 2 * acos(clamp(w, -1, 1)), in radians.
+   The axis is written before w is read, including for overlap. 0x14011C300 */
+float math_quat_to_axis_angle(float axis[3], const float quaternion[4]);
+/* The same axis scaled by its angle. 0x14011C490 */
+void math_quat_to_rotation_vector(float out[3], const float quaternion[4]);
+
+/* Axis and angle of conjugate(right) * left, with quaternion hemispheres
+   matched first. Both matrices are consumed before output. 0x14002D050 */
+float math_mat3_relative_axis_angle(float axis[3], const float left[9], const float right[9]);
+/* The relative rotation from `from` to `to`, axis scaled by radians.
+   Equivalent to relative_axis_angle(out, to, from), then scaling. 0x1400ACD90 */
+void math_mat3_relative_rotation_vector(float out[3], const float from[9], const float to[9]);
+
+/* out = from + (to - from) * fraction; fraction is not clamped. Deltas are
+   staged, base components read between stores, preserving overlap. 0x1400C30E0 */
+void math_vec3_lerp(float out[3], const float from[3], const float to[3], float fraction);
+/* Blend matching-hemisphere quaternions, normalize in double precision,
+   convert back to a matrix. Zero/unordered length gives identity. 0x1400C2F90 */
+void math_mat3_nlerp(float out[9], const float from[9], const float to[9], float fraction);
+
 /* out = v scaled to length 1, or zero when v has no length. 0x14007A240 */
 void math_vec3_normalize(float out[3], const float v[3]);
 

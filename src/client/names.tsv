@@ -670,3 +670,9 @@
 # Sound generation and PCM upload, including recovered local roles.
 140065AE0	sr_audio_generate_synth_sound
 140069930	sr_audio_load_pcm16
+
+# Rotation/interpolation restoration, 2026-10-22.
+14002D050	sr_math_mat3_relative_axis_angle
+1400ACD90	sr_math_mat3_relative_rotation_vector
+1400C2F90	sr_math_mat3_nlerp
+1400C30E0	sr_math_vec3_lerp

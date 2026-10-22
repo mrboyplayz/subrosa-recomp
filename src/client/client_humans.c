@@ -8038,7 +8038,7 @@ LABEL_285:
                 *(float *)&dword_140404A6C[scaled_index_11 + 486149268] = *(float *)&xor_value + frame_float_at_144;
                 *(_QWORD *)&dword_140404A6C[scaled_index_11 + 486149270] = 0;
                 dword_140404A6C[scaled_index_11 + 486149272] = 0;
-                *(float *)&xor_value = sub_14002D050(
+                *(float *)&xor_value = sr_math_mat3_relative_axis_angle(
                                     &sr_human_tick_point[0],
                                     (float *)((char *)&g_15F2D9244 + saved_float_word_2),
                                     (float *)&dword_140404A6C[47 * body_a_2 + 18215724]);

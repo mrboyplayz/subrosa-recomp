@@ -154,16 +154,6 @@ _UNKNOWN **           sr_math_mat3_multiply_transposed_alt(float *a1, float *a2,
   return (_UNKNOWN **)a1;
 }
 
-//----- (000000014011C300) ----------------------------------------------------
-float            sr_math_quat_to_axis_angle(__int64 a1, float *a2)
-{
-  double acos_result;
-
-  sr_math_vec3_normalize(a1, a2);
-  acos_result = acos(fminf(fmaxf(a2[3], -1.0), 1.0));
-  return acos_result + acos_result;
-}
-
 //----- (000000014011C340) ----------------------------------------------------
 _UNKNOWN **           sr_math_mat3_from_quat(float *a1, float *a2)
 {
@@ -172,24 +162,5 @@ _UNKNOWN **           sr_math_mat3_from_quat(float *a1, float *a2)
   extern void math_mat3_from_quat(float *, const float *);
   math_mat3_from_quat(a1, a2);
   return (_UNKNOWN **)a1;
-}
-
-//----- (000000014011C490) ----------------------------------------------------
-void            sr_math_quat_to_rotation_vector(float *a1, float *a2)
-{
-  double acos_result;
-  float component_sum;
-  float scaled_value;
-  float scaled_value_2;
-
-  sr_math_vec3_normalize((__int64)a1, a2);
-  acos_result = acos(fminf(fmaxf(a2[3], -1.0), 1.0));
-  component_sum = acos_result + acos_result;
-  *(float *)&acos_result = component_sum * *a1;
-  scaled_value = component_sum * a1[1];
-  scaled_value_2 = component_sum * a1[2];
-  *a1 = *(float *)&acos_result;
-  a1[1] = scaled_value;
-  a1[2] = scaled_value_2;
 }
 

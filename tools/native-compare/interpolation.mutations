@@ -1,0 +1,46 @@
+reverse vector interpolation delta
+float dx = to[0] - from[0];
+----
+float dx = from[0] - to[0];
+====
+omit vector interpolation fraction
+out[1] = dy * fraction + from[1];
+----
+out[1] = dy + from[1];
+====
+capture base components before overlapping stores
+    out[0] = dx * fraction + from[0];
+    out[1] = dy * fraction + from[1];
+    out[2] = dz * fraction + from[2];
+----
+    float x = dx * fraction + from[0];
+    float y = dy * fraction + from[1];
+    float z = dz * fraction + from[2];
+    out[0] = x;
+    out[1] = y;
+    out[2] = z;
+====
+skip matrix quaternion hemisphere match
+if (!(dot >= 0.0f)) {
+----
+if (0) {
+====
+wrong matrix left weight
+float remaining = 1.0f - fraction;
+----
+float remaining = fraction;
+====
+normalize blended quaternion in single precision
+double inverse = 1.0 / length;
+----
+double inverse = (double)(1.0f / (float)length);
+====
+replace invalid blend with a nonidentity quaternion
+blended[0] = 0.0f;
+----
+blended[0] = 0.5f;
+====
+omit matrix quaternion normalization
+blended[i] = (float)((double)blended[i] * inverse);
+----
+blended[i] = blended[i];

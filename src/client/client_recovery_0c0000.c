@@ -24,67 +24,6 @@ __int64            sub_1400C2D50(unsigned int a1)
   return result;
 }
 
-//----- (00000001400C2F90) ----------------------------------------------------
-/* Existing callers carry the native XMM3 float word in a double container. */
-_UNKNOWN ** sub_1400C2F90(float *a1,float *a2,float *a3,double a4)
-{
-  float alpha;
-  memcpy(&alpha,&a4,sizeof alpha);
-  __m128 factor=_mm_set1_ps(alpha),left,right;
-  sr_math_quat_from_mat3((float *)(void *)&left,a2);
-  sr_math_quat_from_mat3((float *)(void *)&right,a3);
-  float l[4],r[4];
-  _mm_storeu_ps(l,left);_mm_storeu_ps(r,right);
-  float p2=l[2]*r[2],p0=l[0]*r[0];
-  float p3=l[3]*r[3]+p2,p1=l[1]*r[1]+p0;
-  float dot=p3+p1;
-  if(!_mm_comige_ss(_mm_set_ss(dot),_mm_setzero_ps()))
-    right=_mm_xor_ps(right,_mm_castsi128_ps(_mm_load_si128((const __m128i *)&xmmword_140279870)));
-  __m128 weights=_mm_sub_ps(_mm_castsi128_ps(_mm_load_si128((const __m128i *)&xmmword_140279700)),factor);
-  __m128 blended=_mm_add_ps(_mm_mul_ps(weights,left),_mm_mul_ps(factor,right));
-  float q[4];_mm_storeu_ps(q,blended);
-  float s2=q[2]*q[2],s3=q[3]*q[3];
-  float s0=q[0]*q[0],s1=q[1]*q[1];
-  float sum23=s3+s2,sum01=s0+s1,norm=sum23+sum01;
-  __m128d root=_mm_sqrt_pd(_mm_cvtss_sd(_mm_setzero_pd(),_mm_set_ss(norm)));
-  unsigned char zero_or_unordered;
-  __asm__ volatile("ucomisd %2, %1; sete %0" : "=qm"(zero_or_unordered)
-                   : "x"(root),"x"(_mm_setzero_pd()) : "cc");
-  if(zero_or_unordered)
-    _mm_storeu_ps(q,_mm_castsi128_ps(_mm_load_si128((const __m128i *)&xmmword_140279490)));
-  else
-  {
-    __m128d inverse=_mm_div_sd(_mm_set_sd(1.0),root);
-    inverse=_mm_unpacklo_pd(inverse,inverse);
-    for(unsigned i=0;i<2;i++)
-    {
-      __m128 pair=_mm_castpd_ps(_mm_load_sd((const double *)(const void *)(q+2*i)));
-      __m128 converted=_mm_cvtpd_ps(_mm_mul_pd(_mm_cvtps_pd(pair),inverse));
-      uint64_t words;
-      memcpy(&words,&converted,sizeof words);
-      memcpy(q+2*i,&words,sizeof words);
-    }
-  }
-  return sr_math_mat3_from_quat(a1,q);
-}
-
-//----- (00000001400C30E0) ----------------------------------------------------
-void            sub_1400C30E0(float *a1, float *a2, float *a3, float a4)
-{
-  float source_component_y;
-  float source_component_y_2;
-  float source_component_z;
-  float source_component_z_2;
-
-  source_component_y = a3[1];
-  source_component_y_2 = a2[1];
-  source_component_z = a2[2];
-  source_component_z_2 = a3[2];
-  *a1 = (float)((float)(*a3 - *a2) * a4) + *a2;
-  a1[1] = (float)((float)(source_component_y - source_component_y_2) * a4) + a2[1];
-  a1[2] = (float)((float)(source_component_z_2 - source_component_z) * a4) + a2[2];
-}
-
 //----- (00000001400C3140) ----------------------------------------------------
 __int64            sub_1400C3140(unsigned __int64 a1, float *a2)
 {

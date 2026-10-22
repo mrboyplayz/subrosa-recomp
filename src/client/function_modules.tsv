@@ -315,9 +315,9 @@
 14011BAD0	client_area_bounds.c
 14011BF40	client_collision_placed.c
 14011C080	client_math.c
-14011C300	client_math.c
+14011C300	client_math_rotation.c
 14011C340	client_math.c
-14011C490	client_math.c
+14011C490	client_math_rotation.c
 14011C640	client_physics_kernels.c
 14011C6B0	client_physics_kernels.c
 1401259B0	client_world_particles.c
@@ -334,3 +334,9 @@
 140188900	client_world_streets.c
 140188B80	client_world_street_mesh.c
 1401899F0	client_world_streets.c
+
+# Rotation/interpolation restoration, 2026-10-22.
+14002D050	client_math_rotation.c
+1400ACD90	client_math_rotation.c
+1400C2F90	client_math_interpolation.c
+1400C30E0	client_math_interpolation.c

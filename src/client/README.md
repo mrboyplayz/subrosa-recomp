@@ -48,7 +48,8 @@ headers and stack-frame macros, and refuses to write if a function block is
 lost, duplicated or changed. It refreshes `sources.cmake`. The name tool also
 updates engine references and native comparison/mutation fixtures.
 
-See `../engine/restoration-20261020.md` for this batch and its validation.
+See `../engine/restoration-20261020.md` for the module organization batch and
+`../engine/restoration-20261022.md` for the six rotation/interpolation restorations.
 
 | C file | Original routines |
 | --- | ---: |
@@ -105,8 +106,10 @@ See `../engine/restoration-20261020.md` for this batch and its validation.
 | [client_items.c](client_items.c) | 9 |
 | [client_main.c](client_main.c) | 1 |
 | [client_master_network.c](client_master_network.c) | 3 |
-| [client_math.c](client_math.c) | 20 |
+| [client_math.c](client_math.c) | 18 |
 | [client_math_integer.c](client_math_integer.c) | 2 |
+| [client_math_interpolation.c](client_math_interpolation.c) | 2 |
+| [client_math_rotation.c](client_math_rotation.c) | 4 |
 | [client_menu.c](client_menu.c) | 7 |
 | [client_menu_clip.c](client_menu_clip.c) | 2 |
 | [client_menu_labels.c](client_menu_labels.c) | 2 |
@@ -136,11 +139,11 @@ See `../engine/restoration-20261020.md` for this batch and its validation.
 | [client_physics_tick.c](client_physics_tick.c) | 1 |
 | [client_practice.c](client_practice.c) | 2 |
 | [client_recovery_000000.c](client_recovery_000000.c) | 24 |
-| [client_recovery_020000.c](client_recovery_020000.c) | 25 |
+| [client_recovery_020000.c](client_recovery_020000.c) | 24 |
 | [client_recovery_040000.c](client_recovery_040000.c) | 38 |
 | [client_recovery_080000.c](client_recovery_080000.c) | 59 |
-| [client_recovery_0a0000.c](client_recovery_0a0000.c) | 23 |
-| [client_recovery_0c0000.c](client_recovery_0c0000.c) | 46 |
+| [client_recovery_0a0000.c](client_recovery_0a0000.c) | 22 |
+| [client_recovery_0c0000.c](client_recovery_0c0000.c) | 44 |
 | [client_recovery_0e0000.c](client_recovery_0e0000.c) | 60 |
 | [client_recovery_100000.c](client_recovery_100000.c) | 20 |
 | [client_recovery_120000.c](client_recovery_120000.c) | 37 |

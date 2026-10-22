@@ -281,7 +281,7 @@ __int64 sr_world_expire_bullets();
 
 float *           sr_physics_apply_inverse_inertia(__int64 a1, float *a2, __int64 a3, float *a4, float *a5);
 
-float            sub_14002D050(float *a1, float *a2, float *a3);
+float            sr_math_mat3_relative_axis_angle(float *axis, float *left, float *right);
 
 __m128 *           sr_physics_apply_inverse_inertia4(__m128 *a1, __m128 *a2, __int64 a3, __int64 a4, __m128 *a5);
 
@@ -1213,7 +1213,7 @@ __int64            sr_human_item_28_hand_target(float *a1, int a2, int a3);
 
 __int64            sr_human_feel_ground_ahead(int a1);
 
-void            sub_1400ACD90(float *a1, float *a2, float *a3);
+void            sr_math_mat3_relative_rotation_vector(float *out, float *from, float *to);
 
 void sr_human_build_look_pose(int a1, float sr_pose_angle);
 
@@ -1275,9 +1275,9 @@ __int64            sub_1400C2D50(unsigned int a1);
 
 __int64            sub_1400C2DB0(__int64 a1, __int64 a2, __int64 a3);
 
-_UNKNOWN **           sub_1400C2F90(float *a1, float *a2, float *a3, double a4);
+_UNKNOWN **           sr_math_mat3_nlerp(float *out, float *from, float *to, double fraction_lane);
 
-void            sub_1400C30E0(float *a1, float *a2, float *a3, float a4);
+void            sr_math_vec3_lerp(float *out, float *from, float *to, float fraction);
 
 __int64            sub_1400C3140(unsigned __int64 a1, float *a2);
 
@@ -1891,11 +1891,11 @@ __int64            sr_collision_place_mesh(__int64 a1, __int64 a2, float *a3, fl
 
 _UNKNOWN **           sr_math_mat3_multiply_transposed_alt(float *a1, float *a2, float *a3);
 
-float            sr_math_quat_to_axis_angle(__int64 a1, float *a2);
+float            sr_math_quat_to_axis_angle(__int64 axis, float *quaternion);
 
 _UNKNOWN **           sr_math_mat3_from_quat(float *a1, float *a2);
 
-void            sr_math_quat_to_rotation_vector(float *a1, float *a2);
+void            sr_math_quat_to_rotation_vector(float *out, float *quaternion);
 
 void            sub_14011C510(int a1, int a2, int a3, int a4);
 
@@ -11559,7 +11559,7 @@ float *           sr_physics_apply_inverse_inertia(__int64 a1, float *a2, __int6
 ;
 
 //----- (000000014002D050) ----------------------------------------------------
-float            sub_14002D050(float *a1, float *a2, float *a3)
+float            sr_math_mat3_relative_axis_angle(float *axis, float *left, float *right)
 ;
 
 //----- (000000014002D2D0) ----------------------------------------------------
@@ -13780,7 +13780,7 @@ __int64            sr_human_feel_ground_ahead(int a1)
 ;
 
 //----- (00000001400ACD90) ----------------------------------------------------
-void            sub_1400ACD90(float *a1, float *a2, float *a3)
+void            sr_math_mat3_relative_rotation_vector(float *out, float *from, float *to)
 ;
 
 //----- (00000001400AD030) ----------------------------------------------------
@@ -13933,11 +13933,11 @@ __int64            sub_1400C2DB0(__int64 a1, __int64 a2, __int64 a3)
 
 //----- (00000001400C2F90) ----------------------------------------------------
 /* Existing callers carry the native XMM3 float word in a double container. */
-_UNKNOWN ** sub_1400C2F90(float *a1,float *a2,float *a3,double a4)
+_UNKNOWN ** sr_math_mat3_nlerp(float *out, float *from, float *to, double fraction_lane)
 ;
 
 //----- (00000001400C30E0) ----------------------------------------------------
-void            sub_1400C30E0(float *a1, float *a2, float *a3, float a4)
+void            sr_math_vec3_lerp(float *out, float *from, float *to, float fraction)
 ;
 
 //----- (00000001400C3140) ----------------------------------------------------
@@ -15313,7 +15313,7 @@ _UNKNOWN **           sr_math_mat3_multiply_transposed_alt(float *a1, float *a2,
 // 14011C080: returning address of temporary local variable '%__return_address'
 
 //----- (000000014011C300) ----------------------------------------------------
-float            sr_math_quat_to_axis_angle(__int64 a1, float *a2)
+float            sr_math_quat_to_axis_angle(__int64 axis, float *quaternion)
 ;
 
 //----- (000000014011C340) ----------------------------------------------------
@@ -15323,7 +15323,7 @@ _UNKNOWN **           sr_math_mat3_from_quat(float *a1, float *a2)
 // 14011C340: returning address of temporary local variable '%__return_address'
 
 //----- (000000014011C490) ----------------------------------------------------
-void            sr_math_quat_to_rotation_vector(float *a1, float *a2)
+void            sr_math_quat_to_rotation_vector(float *out, float *quaternion)
 ;
 
 //----- (000000014011C510) ----------------------------------------------------

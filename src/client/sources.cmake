@@ -54,6 +54,8 @@ set(SR_CLIENT_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/client_master_network.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_math.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_math_integer.c"
+    "${CMAKE_CURRENT_LIST_DIR}/client_math_interpolation.c"
+    "${CMAKE_CURRENT_LIST_DIR}/client_math_rotation.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_menu.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_menu_clip.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_menu_labels.c"

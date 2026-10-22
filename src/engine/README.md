@@ -155,3 +155,8 @@ client wrappers, including the float result carried in a double word.
 
 The 2026-10-20 module split, behavior names, two additional matrix entry
 points and two polygon queries are documented in `restoration-20261020.md`.
+
+The six quaternion, relative-rotation and interpolation routines restored on
+2026-10-22 live in `math_rotation.c` and `math_interpolation.c`, with typed
+interfaces in `math3d.h`. Their native comparisons, overlap behavior and
+client adapters are documented in `restoration-20261022.md`.

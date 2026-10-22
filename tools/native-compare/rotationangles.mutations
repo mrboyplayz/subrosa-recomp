@@ -1,0 +1,54 @@
+omit quaternion angle doubling
+return (float)(half_angle + half_angle);
+----
+return (float)half_angle;
+====
+remove lower scalar clamp
+min_float(max_float(scalar, -1.0f), 1.0f)
+----
+min_float(scalar, 1.0f)
+====
+remove upper scalar clamp
+min_float(max_float(scalar, -1.0f), 1.0f)
+----
+max_float(scalar, -1.0f)
+====
+scale only two axis components
+float z = angle * axis[2];
+----
+float z = axis[2];
+====
+read quaternion scalar before overlapping writes
+    math_vec3_normalize(axis, quaternion);
+    /* Read w after the axis stores: a partially overlapping output can
+       overwrite it, and the original observes that write. */
+    return rotation_angle(quaternion[3]);
+----
+    float scalar = quaternion[3];
+    math_vec3_normalize(axis, quaternion);
+    return rotation_angle(scalar);
+====
+skip relative quaternion hemisphere match
+if (!(dot >= 0.0f)) {
+----
+if (0) {
+====
+omit conjugation of relative quaternion x
+float rx = -second[0], ry = -second[1], rz = -second[2], rw = second[3];
+----
+float rx = second[0], ry = -second[1], rz = -second[2], rw = second[3];
+====
+wrong sign in relative quaternion product
+float x = ((rx * lw + rw * lx) + ry * lz) - rz * ly;
+----
+float x = ((rx * lw + rw * lx) + ry * lz) + rz * ly;
+====
+omit normalization of relative axis
+float inverse = 1.0f / length;
+----
+float inverse = 1.0f;
+====
+reverse relative matrix rotation direction
+math_mat3_relative_axis_angle(out, to, from)
+----
+math_mat3_relative_axis_angle(out, from, to)
