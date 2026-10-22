@@ -8,6 +8,8 @@ in `src/engine/` is checked against the original machine code
 (`tools/native-compare/`). Everything not yet rewritten is still the
 decompiler's output in `src/client/`, repaired until it runs.
 
+This recompile is not complete! Please contribute to the repo.
+
 ## Build
 
 You need Python 3.12 and a 64-bit MinGW toolchain (WinLibs GCC, which also
@@ -62,6 +64,13 @@ Not tracked:
 - `dist/` (the runnable game)
 - `subrosaactual/` (a copy of the original game, used only by the comparison harness)
 
+## Warning!
+AI was used in the making of this project, if you would like to contribute, please focus on the engine
+rather than the src/client folder as that folder has raw decompiled code.
+
 ## Boundaries
 
 Never commit game executables, DLLs, assets, IDA databases or Steam files.
+
+## Join our discord!
+https://discord.gg/eqVsjaKYkN
