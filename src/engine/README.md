@@ -73,6 +73,10 @@ The table records the recovered routines by original address. Recovery is incomp
 | `world_bullets.c`, `bullet.h` | firing a bullet | 0x14004E8A0 |
 | `world_effects.c`, `effect.h` | world effects: adding one (bullet holes, blood drops, sparks, tracers); moving them for a tick (drag, gravity, bouncing off the level, the three-point EFFECT_4 body, drops landing as blood stains, EFFECT_3 marks) | 0x14005EE40, 0x1401597F0 |
 | `world_effects_draw.c` | drawing the world effects in depth order: holes, blood drops and sparks as textured quads, EFFECT_3/EFFECT_4 pieces as a lit mesh, tracers as smooth lines | 0x140125DB0 |
+| `audio.c` (additions), `audio_mixer.c` | the sound record's buffer allocation and 16-bit PCM loading; the twins that start a sound or a positional sound on a channel; the per-voice resampling and interpolation mix into the channel ring; the per-emitter clearing, remixing and releasing pass (the still-unported spatializer stays resolved at its address) | 0x14007D610, 0x140069930, 0x14006A140, 0x14006A240, 0x14006B4C0, 0x14006B6F0 |
+| `math_curve.c`, `math_random.c`, `text_parser.c`, `text_parser.h` | the Bernstein-basis curve point and derivative (degrees 1-3), the Mersenne Twister seed, and the embedded-text parser's prefix match, token search and 32/64-bit number reads | 0x14008EC40, 0x140187180, 0x1401872F0, 0x1400C2D50, 0x14003C6F0, 0x140091DF0, 0x140115360, 0x140115410 |
+| `net_decode.c`, `net_decode.h`, `net_replication.c`, `net_replication.h` | packet decoders over the bit reader: sign-magnitude angles over a full turn, scaled fractions, adaptive base deltas; and the replication layer's per-peer rings and item-state stream twins | 0x14018D440, 0x140192560, 0x14018D510, 0x1401060F0, 0x140105AB0, 0x14010EF40, 0x14018DB20 |
+| `world_particles.c` (addition) | one flying piece drawn from its mesh on the lit, land-mask and stencil passes, the model matrix restored afterwards | 0x140124840 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
@@ -160,3 +164,15 @@ The six quaternion, relative-rotation and interpolation routines restored on
 2026-10-22 live in `math_rotation.c` and `math_interpolation.c`, with typed
 interfaces in `math3d.h`. Their native comparisons, overlap behavior and
 client adapters are documented in `restoration-20261022.md`.
+
+The twenty-two routines restored on 2026-11-11 (the sound pipeline, the
+Bézier curve and the random seed, the embedded-text parser, the packet
+decode and replication layer, and one flying particle piece) live in
+`audio.c` (additions), `audio_mixer.c`, `math_curve.c`, `math_random.c`,
+`text_parser.c`, `net_decode.c`, `net_replication.c` and `world_particles.c`
+(addition), with typed interfaces in `text_parser.h`, `net_decode.h` and
+`net_replication.h`. Their native comparisons, the malloc-boundary stubs,
+the exclusion of the decoders' uninitialized-stack domains and this
+machine's pre-existing one-bit `effectsdraw`/`effectsupdate` MXCSR
+divergence are documented in `restoration-20261111.md`. Progress is
+268 of 1,119 game routines (`python scripts/progress.py`).

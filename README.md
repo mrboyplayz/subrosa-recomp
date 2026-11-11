@@ -10,6 +10,22 @@ decompiler's output in `src/client/`, repaired until it runs.
 
 This recompile is not complete! Please contribute to the repo.
 
+## Progress
+
+Routines rewritten as readable, verified engine C:
+
+```
+268 of 1,119 game routines restored (24%)
+[##########------------------------------]
+       268 done  ·  851 to go
+```
+
+4,229 original routines exist in total; the 2,787 statically linked
+runtime and 323 stb library routines are recovered as decompiled C and
+are not counted here. The file-by-file status lives in
+`src/engine/README.md`; regenerate the bar with
+`python scripts/progress.py`.
+
 ## Build
 
 You need Python 3.12 and a 64-bit MinGW toolchain (WinLibs GCC, which also

@@ -1,0 +1,64 @@
+curve point uses remaining fraction with wrong sign
+float remaining = 1.0f - t;
+----
+float remaining = 1.0f + t;
+====
+curve point degree 1 subtracts the end point
+return remaining * point0 + t * point3;
+----
+return remaining * point0 - t * point3;
+====
+curve point degree 2 leaves out the middle doubling
+return ((point1 + point1) * remaining + last) * t + first * remaining;
+----
+return (point1 * remaining + last) * t + first * remaining;
+====
+curve point degree 2 drops the first weight's second factor
+return ((point1 + point1) * remaining + last) * t + first * remaining;
+----
+return ((point1 + point1) * remaining + last) * t + first;
+====
+curve point degree 3 weights the middle by two
+return (remaining * remaining * (point1 * 3.0f)
+----
+return (remaining * remaining * (point1 * 2.0f)
+====
+curve point degree 3 scales the late term by t once
+                + ((point2 * 3.0f) * remaining + last) * t) * t
+----
+                + ((point2 * 3.0f) * remaining + last) * t)
+====
+curve point degree 3 drops the tail's second factor
+               + first * remaining * remaining;
+----
+               + first * remaining;
+====
+curve derivative degree 1 reverses the end difference
+return point3 - point0;
+----
+return point0 - point3;
+====
+curve derivative uses the single fraction for doubling
+float doubled = t + t;
+----
+float doubled = t;
+====
+curve derivative degree 2 leaves out the middle doubling
+return ((point0 - (point1 + point1)) + point3) * doubled
+----
+return ((point0 - point1) + point3) * doubled
+====
+curve derivative degree 3 bumps x by three not six
+             + (((point0 * 3.0f) - (point1 * 6.0f)) + (point2 * 3.0f)) * doubled
+----
+             + (((point0 * 3.0f) - (point1 * 3.0f)) + (point2 * 3.0f)) * doubled
+====
+curve derivative degree 3 takes the middle with the wrong sign
+return ((((point1 * 3.0f) - point0) - (point2 * 3.0f)) + point3) * t * (t * 3.0f)
+----
+return ((((point1 * 3.0f) - point0) + (point2 * 3.0f)) + point3) * t * (t * 3.0f)
+====
+curve derivative degree 3 takes the first tail with the wrong sign
+             - (point0 * 3.0f)
+----
+             + (point0 * 3.0f)

@@ -4362,36 +4362,6 @@ LABEL_211:
 #undef combined_products_7
 #undef unused_frame_slot_152
 
-//----- (000000014003C6F0) ----------------------------------------------------
-__int64            sub_14003C6F0(_BYTE *a1)
-{
-  int iteration_count;
-  unsigned int selection_flag;
-  int element_index;
-  _BYTE *buffer_cursor;
-
-  iteration_count = g_1862AE020;
-  selection_flag = 0;
-  element_index = 0;
-  if ( (int)g_1862AE020 < (int)g_1862AE024 )
-  {
-    buffer_cursor = a1;
-    do
-    {
-      if ( !*buffer_cursor )
-        break;
-      if ( *buffer_cursor != *((_BYTE *)&g_1862AE028 + iteration_count) )
-        break;
-      ++element_index;
-      ++iteration_count;
-      ++buffer_cursor;
-    }
-    while ( iteration_count < (int)g_1862AE024 );
-  }
-  LOBYTE(selection_flag) = a1[element_index] == 0;
-  return selection_flag;
-}
-
 //----- (000000014003D830) ----------------------------------------------------
 _BOOL8            sub_14003D830(float *a1, int *a2, float *a3, float *a4, float a5)
 {

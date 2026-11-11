@@ -1,0 +1,78 @@
+token match reads one byte past the closed window
+    if (position < length) {
+        do {
+            if (!token[matched])
+----
+    if (position <= length) {
+        do {
+            if (!token[matched])
+====
+token match breaks on equal bytes instead of differing ones
+            if (token[matched] != parser_scan->data[position])
+                break;
+----
+            if (token[matched] == parser_scan->data[position])
+                break;
+====
+token match returns the inverted flag
+    return token[matched] == 0;
+----
+    return token[matched] != 0;
+====
+token search never stops at a match
+        if (parser_token_matches(token))
+            break;
+----
+        if (0)
+            break;
+====
+token search advances a byte short past the token
+    position += token_length;
+----
+    position += token_length - 1;
+====
+token search reports found at the length too
+    return position < length;
+----
+    return position <= length;
+====
+number scan treats letters up to D as digits
+        if ((uint8_t)(character - '0') <= 9 || character == '-')
+            break;
+----
+        if ((uint8_t)(character - '0') <= 19 || character == '-')
+            break;
+====
+number copy rejects dashes inside the run
+            if ((uint8_t)(character - '0') > 9 && character != '-')
+                break;
+----
+            if ((uint8_t)(character - '0') > 9)
+                break;
+====
+number copy stops at 128 characters
+            if (copied >= 255)
+----
+            if (copied >= 128)
+====
+number copy writes a digit as the terminator
+    parser_number_text[copied] = 0;
+----
+    parser_number_text[copied] = '7';
+====
+number parser returns half the parsed value
+    return (uint32_t)sub_1400A5400((long long)(uintptr_t)parser_number_text);
+----
+    return (uint32_t)sub_1400A5400((long long)(uintptr_t)parser_number_text) >> 1;
+====
+number parser 64 scans hexadecimal
+    crt_sscanf((long long)(uintptr_t)parser_number_text, "%I64u", &parsed);
+----
+    crt_sscanf((long long)(uintptr_t)parser_number_text, "%I64x", &parsed);
+====
+number parser 64 parses from the second byte
+    scan_number_text();
+    crt_sscanf((long long)(uintptr_t)parser_number_text, "%I64u", &parsed);
+----
+    scan_number_text();
+    crt_sscanf((long long)(uintptr_t)(parser_number_text + 1), "%I64u", &parsed);

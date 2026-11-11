@@ -1,0 +1,44 @@
+seed random stores the complement of the seed
+random_generator->seed = seed;
+----
+random_generator->seed = ~seed;
+====
+seed random starts the recurrence from a flipped word
+uint32_t previous = seed;
+----
+uint32_t previous = seed ^ 1u;
+====
+seed random uses another multiplier
+1812433253u
+----
+1664525u
+====
+seed random shifts the previous word by 29
+(previous >> 30)
+----
+(previous >> 29)
+====
+seed random drops the loop counter from the recurrence
+previous = 1812433253u * (previous ^ (previous >> 30)) + count;
+----
+previous = 1812433253u * (previous ^ (previous >> 30));
+====
+seed random stores each word one slot early
+random_generator->state[count - 1] = previous;
+----
+random_generator->state[count - 2] = previous;
+====
+seed random fills one word short
+for (uint32_t count = 1; count <= 623; count++) {
+----
+for (uint32_t count = 1; count <= 622; count++) {
+====
+seed random arms the cursor one early
+math_random_index = 624;
+----
+math_random_index = 623;
+====
+seed random returns a count that is off
+return 624;
+----
+return 625;

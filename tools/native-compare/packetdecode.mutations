@@ -1,0 +1,144 @@
+angle sign word
+uint32_t sign = (1u << ((uint32_t)bits & 31u)) >> 1;
+    float magnitude = (float)(decoded & (sign - 1u)) * (6.28318530718 / (float)sign);
+----
+uint32_t sign = 1u << ((uint32_t)bits & 31u);
+    float magnitude = (float)(decoded & (sign - 1u)) * (6.28318530718 / (float)sign);
+====
+angle quantum constant
+6.28318530718 / (float)sign
+----
+6.283185 / (float)sign
+====
+angle quantum division direction
+6.28318530718 / (float)sign
+----
+(float)sign / 6.28318530718
+====
+angle double width product
+float magnitude = (float)(decoded & (sign - 1u)) * (6.28318530718 / (float)sign);
+----
+float magnitude = (float)(decoded & (sign - 1u)) * (6.28318530718f / (float)sign);
+====
+angle magnitude mask
+float magnitude = (float)(decoded & (sign - 1u)) * (6.28318530718 / (float)sign);
+----
+float magnitude = (float)decoded * (6.28318530718 / (float)sign);
+====
+angle sign flip
+    if (result == sign)
+        *out = -magnitude;
+----
+    if (result == sign)
+        *out = magnitude;
+====
+angle sign comparison
+uint32_t result = decoded & sign;
+    if (result == sign)
+        *out = -magnitude;
+----
+uint32_t result = decoded & sign;
+    if (result != sign)
+        *out = -magnitude;
+====
+angle return word
+    return result;
+}
+
+uint32_t net_read_scaled_fraction(float *out, float scale, int bits)
+----
+    return sign;
+}
+
+uint32_t net_read_scaled_fraction(float *out, float scale, int bits)
+====
+fraction scale division
+float ratio = (float)(decoded & (sign - 1u)) / ((float)sign / scale);
+----
+float ratio = (float)(decoded & (sign - 1u)) / ((float)sign * scale);
+====
+fraction single precision chain
+float ratio = (float)(decoded & (sign - 1u)) / ((float)sign / scale);
+----
+float ratio = (double)(decoded & (sign - 1u)) / ((double)sign / scale);
+====
+fraction magnitude mask
+float ratio = (float)(decoded & (sign - 1u)) / ((float)sign / scale);
+----
+float ratio = (float)decoded / ((float)sign / scale);
+====
+fraction ratio reversed
+float ratio = (float)(decoded & (sign - 1u)) / ((float)sign / scale);
+----
+float ratio = ((float)sign / scale) / (float)(decoded & (sign - 1u));
+====
+fraction sign flip
+    if (result == sign)
+        *out = -ratio;
+----
+    if (result == sign)
+        *out = ratio;
+====
+delta first flag width
+    uint32_t word = 0;
+    net_read_bits(&word, 1);
+----
+    uint32_t word = 0;
+    net_read_bits(&word, 2);
+====
+delta second flag width
+    net_read_bits(&word, 1);
+    if (word == 0) {
+        net_read_bits(&word, 9);
+----
+    net_read_bits(&word, 2);
+    if (word == 0) {
+        net_read_bits(&word, 9);
+====
+delta small flag bit
+uint32_t value = word & 8u ? word | 0xFFFFFFF0u : word;
+----
+uint32_t value = word & 4u ? word | 0xFFFFFFF0u : word;
+====
+delta small extension mask
+uint32_t value = word & 8u ? word | 0xFFFFFFF0u : word;
+----
+uint32_t value = word & 8u ? word | 0xFFF0FFF0u : word;
+====
+delta small wrap add
+        net_read_bits(&word, 4);
+        uint32_t value = word & 8u ? word | 0xFFFFFFF0u : word;
+        uint32_t result = (uint32_t)add_int((int32_t)value, base);
+----
+        net_read_bits(&word, 4);
+        uint32_t value = word & 8u ? word | 0xFFFFFFF0u : word;
+        uint32_t result = (uint32_t)subtract_int((int32_t)value, base);
+====
+delta nine-bit width
+net_read_bits(&word, 9);
+----
+net_read_bits(&word, 8);
+====
+delta nine flag bit
+uint32_t value = word & 0x100u ? word | 0xFFFFFE00u : word;
+----
+uint32_t value = word & 0x80u ? word | 0xFFFFFE00u : word;
+====
+delta nine extension mask
+uint32_t value = word & 0x100u ? word | 0xFFFFFE00u : word;
+----
+uint32_t value = word & 0x100u ? word | 0xFF000000u : word;
+====
+delta nine wrap add
+        net_read_bits(&word, 9);
+        uint32_t value = word & 0x100u ? word | 0xFFFFFE00u : word;
+        uint32_t result = (uint32_t)add_int((int32_t)value, base);
+----
+        net_read_bits(&word, 9);
+        uint32_t value = word & 0x100u ? word | 0xFFFFFE00u : word;
+        uint32_t result = (uint32_t)subtract_int((int32_t)value, base);
+====
+delta raw word width
+    return (uint32_t)net_read_bits(out, bits);
+----
+    return (uint32_t)net_read_bits(out, bits + 1);

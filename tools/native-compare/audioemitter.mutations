@@ -1,0 +1,362 @@
+play skips the disabled guard
+    if (!audio_output_enabled) return channel;
+    AudioChannel *record = &audio_channels[channel];
+    if (record->active) return channel;
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    *(uint64_t *)(void *)&record->active = 1;
+----
+    if (0) return channel;
+    AudioChannel *record = &audio_channels[channel];
+    if (record->active) return channel;
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    *(uint64_t *)(void *)&record->active = 1;
+====
+play returns on the free channel
+    if (record->active) return channel;
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    *(uint64_t *)(void *)&record->active = 1;
+----
+    if (record->active == 0) return channel;
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    *(uint64_t *)(void *)&record->active = 1;
+====
+play keeps the record's tail words
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    *(uint64_t *)(void *)&record->active = 1;
+    record->mix_cursor = 0;
+----
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    *(uint64_t *)(void *)&record->active = 1;
+    record->mix_cursor = 1;
+====
+play pair store includes the mode word
+    *(uint64_t *)(void *)&record->active = 1;
+    record->mix_cursor = 0;
+    record->stereo_cursor = 0;
+    AudioVoice *voice = &audio_voices(channel)[0];
+    voice->gain_a = gain;
+    voice->gain_b = gain;
+    voice->pitch_a = pitch;
+    voice->pitch_b = pitch;
+    voice->active = 1;
+    voice->sound = sound;
+    voice->loop = flags;
+    uint32_t source_gain;
+----
+    *(uint64_t *)(void *)&record->active = 0x100000001ULL;
+    record->mix_cursor = 0;
+    record->stereo_cursor = 0;
+    AudioVoice *voice = &audio_voices(channel)[0];
+    voice->gain_a = gain;
+    voice->gain_b = gain;
+    voice->pitch_a = pitch;
+    voice->pitch_b = pitch;
+    voice->active = 1;
+    voice->sound = sound;
+    voice->loop = flags;
+    uint32_t source_gain;
+====
+play second gain word
+    voice->gain_b = gain;
+    voice->pitch_a = pitch;
+    voice->pitch_b = pitch;
+    voice->active = 1;
+    voice->sound = sound;
+    voice->loop = flags;
+    uint32_t source_gain;
+----
+    voice->gain_b = pitch;
+    voice->pitch_a = pitch;
+    voice->pitch_b = pitch;
+    voice->active = 1;
+    voice->sound = sound;
+    voice->loop = flags;
+    uint32_t source_gain;
+====
+play flags stored shifted
+    voice->loop = flags;
+    uint32_t source_gain;
+----
+    voice->loop = flags << 1;
+    uint32_t source_gain;
+====
+play source gain word
+    memcpy(&source_gain, &audio_sounds[sound].gain, 4);
+    memcpy(&record->source_gain, &source_gain, 4);
+    audio_sounds[sound].unknown_10 = 0;
+    return source_gain;
+----
+    memcpy(&source_gain, &audio_sounds[sound].gain, 4);
+    memset(&record->source_gain, 0, 4);
+    audio_sounds[sound].unknown_10 = 0;
+    return source_gain;
+====
+play zeroes only half the sound cursors
+    audio_sounds[sound].unknown_10 = 0;
+    return source_gain;
+----
+    audio_sounds[sound].unknown_10 &= 0xFFFFFFFF00000000ULL;
+    return source_gain;
+====
+play returns the next sound
+    audio_sounds[sound].unknown_10 = 0;
+    return source_gain;
+----
+    audio_sounds[sound].unknown_10 = 0;
+    return source_gain + 1;
+====
+positional play skips the disabled guard
+    if (!audio_output_enabled) return channel;
+    AudioChannel *record = &audio_channels[channel];
+    if (record->active) return channel;
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    record->gain = gain;
+----
+    if (0) return channel;
+    AudioChannel *record = &audio_channels[channel];
+    if (record->active) return channel;
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    record->gain = gain;
+====
+positional play keeps the record's tail words
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    record->gain = gain;
+    *(uint64_t *)(void *)&record->active = 1;
+    record->mix_cursor = 0;
+    record->stereo_cursor = 0;
+----
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    record->gain = gain;
+    *(uint64_t *)(void *)&record->active = 1;
+    record->mix_cursor = 1;
+    record->stereo_cursor = 1;
+====
+positional play channel gain word
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    record->gain = gain;
+----
+    memset((unsigned char *)record + 4, 0, sizeof(*record) - 4);
+    record->gain = pitch;
+====
+positional play position copy order
+    record->position[0] = position[0];
+    record->position[1] = position[1];
+----
+    record->position[0] = position[2];
+    record->position[1] = position[1];
+====
+positional play spatial flag
+    record->spatialized = 1;
+    record->unknown_1102f4 = 0;
+----
+    record->spatialized = 0;
+    record->unknown_1102f4 = 0;
+====
+positional play spatializer word
+    record->spatialized = 1;
+    record->unknown_1102f4 = 0;
+----
+    record->spatialized = 1;
+    record->unknown_1102f4 = 1;
+====
+mix guards the sound with signed words
+    if ((uint32_t)sound > 0xFFF) return 0;
+----
+    if ((int32_t)sound > 0xFFF) return 0;
+====
+mix guards the wave length instead of the buffer
+    if (!sample->samples) return 0;
+----
+    if (!sample->sample_count) return 0;
+====
+mix zeroes the gain target on the other mode word
+    if (record->unknown_04 == 1) *(uint32_t *)(void *)&entry->gain_a = 0;
+----
+    if (record->unknown_04 == 2) *(uint32_t *)(void *)&entry->gain_a = 0;
+====
+mix gain keeps its previous value
+    entry->gain_b = gain_target;
+    entry->pitch_b = pitch_target;
+----
+    entry->gain_b = pitch_target;
+    entry->pitch_b = pitch_target;
+====
+mix spreads the gain over one more sample
+    volatile float inverse = 1.0f / (float)count;
+----
+    volatile float inverse = 1.0f / (float)(count + 1);
+====
+mix gain step rises instead of falls
+    volatile float gain_step = (gain_target - gain) * inverse;
+----
+    volatile float gain_step = (gain - gain_target) * inverse;
+====
+mix sample index allows the last sample
+    if ((int32_t)playback_position < sample_count) current = (int32_t)playback_position;
+----
+    if ((int32_t)playback_position <= sample_count) current = (int32_t)playback_position;
+====
+mix next index allowed at the wave end
+    if (current + 1 < sample_count) next = current + 1;
+----
+    if (current < sample_count) next = current + 1;
+====
+mix sample fraction sign
+    float sample_fraction = playback_position - (float)current;
+----
+    float sample_fraction = (float)current - playback_position;
+====
+mix ring cell not accumulated
+    float *cell = record->mix_ring + (int64_t)(int32_t)cursor;
+        cursor = (cursor + 1) & 0x3FFFF;
+        float mixed_sample = ((1.0f - sample_fraction) * wave[current]
+                              + sample_fraction * wave[next]) * gain;
+        *cell = mixed_sample + *cell;
+----
+    float *cell = record->mix_ring + (int64_t)(int32_t)cursor;
+        cursor = (cursor + 1) & 0x3FFFF;
+        float mixed_sample = ((1.0f - sample_fraction) * wave[current]
+                              + sample_fraction * wave[next]) * gain;
+        *cell = mixed_sample;
+====
+mix ring cursor mask skips a step
+    float *cell = record->mix_ring + (int64_t)(int32_t)cursor;
+        cursor = (cursor + 1) & 0x3FFFF;
+----
+    float *cell = record->mix_ring + (int64_t)(int32_t)cursor;
+        cursor = (cursor + 1) & 0x3FFFE;
+====
+mix ring cell used after the cursor advances
+    float *cell = record->mix_ring + (int64_t)(int32_t)cursor;
+        cursor = (cursor + 1) & 0x3FFFF;
+----
+    cursor = (cursor + 1) & 0x3FFFF;
+        float *cell = record->mix_ring + (int64_t)(int32_t)cursor;
+====
+mix advances the stale position
+        float advanced_position = pitch + entry->playback_position;
+----
+        float advanced_position = pitch + playback_position;
+====
+mix wraps past the wave end only strictly
+        float sound_length = (float)sample->sample_count;
+        if (advanced_position >= sound_length) {
+----
+        float sound_length = (float)sample->sample_count;
+        if (advanced_position > sound_length) {
+====
+mix treats every flag as looping
+            if (!entry->loop) {
+----
+            if (entry->loop == 1) {
+====
+mix stops with the wrong state
+                *(uint32_t *)(void *)&entry->active = 0;
+                entry->state = 2;
+----
+                *(uint32_t *)(void *)&entry->active = 0;
+                entry->state = 3;
+====
+mix keeps mixing after the stop
+                entry->state = 2;
+                break;
+----
+                entry->state = 2;
+====
+mix sound cursor stored as zero
+    sample->read_position = (int32_t)entry->playback_position;
+----
+    sample->read_position = 0;
+====
+mix returns the voice state
+    sample->read_position = (int32_t)entry->playback_position;
+    return entry->active;
+----
+    sample->read_position = (int32_t)entry->playback_position;
+    return entry->state;
+====
+mix fades the gain the wrong way
+    for (int mixed = 0; mixed < count; pitch += pitch_step, gain += gain_step, ++mixed) {
+----
+    for (int mixed = 0; mixed < count; pitch += pitch_step, gain -= gain_step, ++mixed) {
+====
+mix pitches down while resampling
+    for (int mixed = 0; mixed < count; pitch += pitch_step, gain += gain_step, ++mixed) {
+----
+    for (int mixed = 0; mixed < count; pitch -= pitch_step, gain += gain_step, ++mixed) {
+====
+mix one extra sample
+    for (int mixed = 0; mixed < count; pitch += pitch_step, gain += gain_step, ++mixed) {
+----
+    for (int mixed = 0; mixed <= count; pitch += pitch_step, gain += gain_step, ++mixed) {
+====
+emitter clears only multi-sample spans
+    if (count > 0) {
+        int32_t remaining = count;
+----
+    if (count > 1) {
+        int32_t remaining = count;
+====
+emitter ring clear value
+            record->mix_ring[cursor] = 0.0f;
+----
+            record->mix_ring[cursor] = 1.0f;
+====
+emitter clear cursor mask
+        } while (--remaining);
+    }
+    int32_t selection_flag = 0;
+----
+        } while (--remaining);
+    }
+    int32_t selection_flag = 1;
+====
+emitter mixes inactive voices
+        if (audio_voices(channel)[index].active
+            && audio_mix_channel(channel, index, record->mix_cursor, count))
+            selection_flag = 1;
+----
+        if (audio_mix_channel(channel, index, record->mix_cursor, count))
+            selection_flag = 1;
+====
+emitter cursor mask
+    record->mix_cursor = (count + record->mix_cursor) & 0x3FFFF;
+----
+    record->mix_cursor = (count + record->mix_cursor) & 0x3FFFE;
+====
+emitter stereo cursor mask
+    record->stereo_cursor = (count + record->stereo_cursor) & 0x3FFFF;
+    if (!selection_flag && !(*(float *)(void *)&record->unknown_18 >= *(float *)(void *)&record->unknown_110150))
+----
+    record->stereo_cursor = (count + record->stereo_cursor) & 0x3FFFD;
+    if (!selection_flag && !(*(float *)(void *)&record->unknown_18 >= *(float *)(void *)&record->unknown_110150))
+====
+emitter ordered keep-alive comparison
+    if (!selection_flag && !(*(float *)(void *)&record->unknown_18 >= *(float *)(void *)&record->unknown_110150))
+        record->active = 0;
+    if (record->unknown_04 == 1)
+----
+    if (!selection_flag && *(float *)(void *)&record->unknown_18 < *(float *)(void *)&record->unknown_110150)
+        record->active = 0;
+    if (record->unknown_04 == 1)
+====
+emitter clears on the other mode word
+    if (record->unknown_04 == 1)
+        record->active = 0;
+    return result;
+----
+    if (record->unknown_04 == 2)
+        record->active = 0;
+    return result;
+====
+emitter keep-alive raises the channel again
+    record->active = 0;
+    if (record->unknown_04 == 1)
+----
+    record->active = 1;
+    if (record->unknown_04 == 1)
+====
+emitter clears from the stereo cursor
+    int32_t cursor = record->mix_cursor;
+----
+    int32_t cursor = record->stereo_cursor;

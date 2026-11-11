@@ -1,43 +1,13 @@
 #include "shared_client.h"
 #include "../engine/area_bounds.h"
 #include "../engine/net_bits.h"
+#include "../engine/net_replication.h"
 #include "../engine/physics_kernels.h"
 
 //----- (0000000140105AB0) ----------------------------------------------------
-unsigned int *           sub_140105AB0(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+unsigned int *           sr_net_replication_queue_event(int peer, unsigned int arg1, unsigned int arg2, unsigned int arg3)
 {
-  __int64 input_value;
-  __int64 replication_peer_offset;
-  unsigned int *result;
-  unsigned int element_index;
-  __int64 iteration_count;
-
-  input_value = a1;
-  replication_peer_offset = 47224LL * a1;
-  result = (unsigned int *)(((unsigned __int16)dword_140404A6C[replication_peer_offset + 438924123] + 1) & 0x7FF);
-  if ( (_DWORD)result != dword_140404A6C[replication_peer_offset + 438924125] )
-  {
-    element_index = 0;
-    iteration_count = 0;
-    result = &dword_140404A6C[replication_peer_offset + 438920027];
-    while ( *result )
-    {
-      ++element_index;
-      ++iteration_count;
-      result += 4;
-      if ( iteration_count >= 1024 )
-        return result;
-    }
-    dword_140404A6C[47224 * input_value + 438920027 + 4 * element_index] = 1;
-    dword_140404A6C[5 * (int)dword_140404A6C[replication_peer_offset + 438924123] + 438924126 + replication_peer_offset] = 0;
-    dword_140404A6C[5 * (int)dword_140404A6C[replication_peer_offset + 438924123] + 438924127 + replication_peer_offset] = element_index;
-    dword_140404A6C[5 * (int)dword_140404A6C[replication_peer_offset + 438924123] + 438924128 + replication_peer_offset] = a2;
-    dword_140404A6C[5 * (int)dword_140404A6C[replication_peer_offset + 438924123] + 438924129 + replication_peer_offset] = a3;
-    dword_140404A6C[5 * (int)dword_140404A6C[replication_peer_offset + 438924123] + 438924130 + replication_peer_offset] = a4;
-    result = (unsigned int *)(((unsigned __int16)dword_140404A6C[replication_peer_offset + 438924123] + 1) & 0x7FF);
-    dword_140404A6C[replication_peer_offset + 438924123] = (unsigned int)result;
-  }
-  return result;
+  return (unsigned int *)net_replication_queue_event(peer, arg1, arg2, arg3);
 }
 
 //----- (0000000140105BD0) ----------------------------------------------------
@@ -94,7 +64,7 @@ __int64            sub_140105C20(int a1, float *a2)
         table_value = (int)record_byte_offset[1];
         dword_140404A6C[(table_value >> 5) + 19060685] |= 1 << (record_byte_offset[1] & 0x1F);
         if ( !dword_140404A6C[7166 * table_value + 280651303] )
-          sub_1401060F0(a1, iteration_count);
+          sr_net_replication_track_value(a1, iteration_count);
       }
     }
     ++iteration_count;
@@ -107,7 +77,7 @@ __int64            sub_140105C20(int a1, float *a2)
   do
   {
     if ( *state_address && (rol4_result & dword_140404A6C[(element_index >> 5) + 19060685]) == 0 )
-      sub_140105AB0(a1, 0, 0, iteration_count_2);
+      sr_net_replication_queue_event(a1, 0, 0, iteration_count_2);
     ++iteration_count_2;
     rol4_result = __ROL4__(rol4_result, 1);
     ++element_index;
@@ -172,7 +142,7 @@ __int64            sub_140105C20(int a1, float *a2)
                         + (float)((float)(*(state_address_2 - 2) - *a2) * (float)(*(state_address_2 - 2) - *a2)))
                 + (float)((float)(*state_address_2 - a2[2]) * (float)(*state_address_2 - a2[2]))) < 65536.0) )
     {
-      sub_140105AB0(a1, 1u, *((_DWORD *)state_address_2 - 20), iteration_count_4);
+      sr_net_replication_queue_event(a1, 1u, *((_DWORD *)state_address_2 - 20), iteration_count_4);
       *running_total = -1;
     }
     ++iteration_count_4;
@@ -219,23 +189,9 @@ __int64            sub_140105C20(int a1, float *a2)
 }
 
 //----- (00000001401060F0) ----------------------------------------------------
-__int64            sub_1401060F0(int a1, unsigned int a2)
+__int64            sr_net_replication_track_value(int peer, unsigned int value)
 {
-  __int64 replication_peer_offset;
-  __int64 table_value;
-  __int64 result;
-
-  replication_peer_offset = 47224LL * a1;
-  table_value = (int)dword_140404A6C[replication_peer_offset + 438924123];
-  result = ((_WORD)table_value + 1) & 0x7FF;
-  if ( (_DWORD)result != dword_140404A6C[replication_peer_offset + 438924125] )
-  {
-    dword_140404A6C[5 * table_value + 438924126 + replication_peer_offset] = 1;
-    dword_140404A6C[5 * (int)dword_140404A6C[replication_peer_offset + 438924123] + 438924127 + replication_peer_offset] = a2;
-    result = ((unsigned __int16)dword_140404A6C[replication_peer_offset + 438924123] + 1) & 0x7FF;
-    dword_140404A6C[replication_peer_offset + 438924123] = result;
-  }
-  return result;
+  return net_replication_track_value(peer, value);
 }
 
 //----- (0000000140106160) ----------------------------------------------------
@@ -626,22 +582,9 @@ LABEL_21:
 #undef encoded_value_2
 
 //----- (000000014010EF40) ----------------------------------------------------
-__int64            sub_14010EF40(int a1)
+__int64            sr_net_replication_write_item_state(int item)
 {
-  __int64 item_record_offset;
-  __int64 result;
-
-  item_record_offset = 1760LL * a1;
-  sr_net_write_bits(&dword_140404A6C[item_record_offset + 278845898], 8);
-  sr_net_write_bits(&dword_140404A6C[item_record_offset + 278845903], 10);
-  sr_net_write_bits(&dword_140404A6C[item_record_offset + 278845902], 10);
-  result = sr_net_write_bits(&dword_140404A6C[item_record_offset + 278845904], 4);
-  if ( dword_140404A6C[item_record_offset + 278845898] == 39 )
-  {
-    sr_net_write_bits(&dword_140404A6C[item_record_offset + 278846111], 5);
-    return sr_net_write_bits(&dword_140404A6C[item_record_offset + 278846112], 5);
-  }
-  return result;
+  return net_replication_write_item_state(item);
 }
 
 //----- (000000014010EFF0) ----------------------------------------------------
@@ -4045,4 +3988,10 @@ LABEL_523:
 #undef saved_remaining_count_2
 #undef saved_record_byte_offset_2
 #undef lookup_index_6
+
+//----- (000000014018DB20) ----------------------------------------------------
+__int64            sr_net_replication_read_item_state(int item)
+{
+  return net_replication_read_item_state(item);
+}
 

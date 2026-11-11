@@ -12117,7 +12117,7 @@ __int64 sub_14011FD00()
         {
           sr_world_material_pair[0] = resting_texture_0;
           sr_world_material_pair[1] = resting_texture_0;
-          sub_140124840(
+          sr_world_draw_particle_piece(
             world_particle_mesh_0,
             &dword_140404A6C[scaled_index + 431138504],
             &dword_140404A6C[scaled_index + 431138510],
@@ -12131,7 +12131,7 @@ __int64 sub_14011FD00()
         {
           sr_world_material_pair[0] = cached_resting_texture_1;
           sr_world_material_pair[1] = cached_resting_texture_1;
-          sub_140124840(
+          sr_world_draw_particle_piece(
             world_particle_mesh_1,
             &dword_140404A6C[scaled_index + 431138504],
             &dword_140404A6C[scaled_index + 431138510],
@@ -14054,72 +14054,6 @@ __int64 sub_140124320()
 #undef axis
 #undef unused_written_slot
 #undef unused_frame_slot_120
-
-//----- (0000000140124840) ----------------------------------------------------
-double            sub_140124840(int a1, unsigned int *a2, _DWORD *a3, int a4, int *a5, __int64 a6)
-{
-  __int64 input_value;
-  __int64 selection_code;
-  __int64 unused_local;
-  __int64 unused_local_2;
-  double result;
-
-  input_value = a1;
-  if ( a4 )
-  {
-    if ( a4 == 2 )
-    {
-      glBindTexture(3553, dword_140404A6C[44 * *a5 + 284024944]);
-      sr_camera_set_model(a2, a3);
-    }
-    else
-    {
-      sr_camera_set_model(a2, a3);
-      if ( a4 == 1 )
-        glUniformMatrix4fv(land_mask_u_modelviewprojectionmatrix, 1, 0, (unsigned int *)&g_1A724E6C0);
-    }
-    selection_code = 0;
-  }
-  else
-  {
-    glActiveTexture(33984);
-    glBindTexture(3553, dword_140404A6C[44 * *a5 + 284024944]);
-    glActiveTexture(33986);
-    glBindTexture(34067, dword_140404A6C[44 * shading_cube_map + 284024944]);
-    sr_camera_set_model(a2, a3);
-    glUniformMatrix4fv(model_u_modelviewprojectionmatrix, 1, 0, (unsigned int *)&g_1A724E6C0);
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-    selection_code = 2;
-  }
-  glEnableVertexAttribArray(selection_code);
-  glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[input_value + 283790166] + 283793813]);
-  glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[908*input_value+178527462]),(const void *)(intptr_t)(0));
-  if ( !a4 )
-  {
-    glVertexAttribPointer(1, 2, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[908*input_value+178527462]),(const void *)(intptr_t)(12));
-    glVertexAttribPointer(2, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[908*input_value+178527462]),(const void *)(intptr_t)(20));
-  }
-  glVertexAttrib4fv(3, a6);
-  glDrawArrays(4, 0, 3 * dword_140404A6C[908 * input_value + 178527465]);
-  glBindBuffer(34962, 0);
-  glDisableVertexAttribArray(0);
-  if ( !a4 )
-  {
-    glDisableVertexAttribArray(1);
-    glDisableVertexAttribArray(2);
-  }
-  g_1A724E600 = xmmword_140278D30;
-  result = 0.0;
-  g_1A724E610 = xmmword_140278D80;
-  g_1A724E620 = xmmword_140278E20;
-  g_1A724E630 = xmmword_140279490;
-  sr_math_mat4_multiply((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
-  sr_math_mat4_multiply((unsigned int *)&g_1A724E6C0, (__int64)(unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E580);
-  if ( !a4 )
-    return ((double (*)(_QWORD))glActiveTexture)(33984);
-  return result;
-}
 
 //----- (0000000140124AF0) ----------------------------------------------------
 double            sub_140124AF0(int a1, int a2)

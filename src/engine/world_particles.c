@@ -1,5 +1,7 @@
 /* Particles: see particle.h. */
+#include <string.h>
 #include "arith.h"
+#include "camera.h"
 #include "collision.h"
 #include "gl.h"
 #include "math3d.h"
@@ -287,4 +289,86 @@ void world_draw_resting_particles(int depth_only)
                    &world_particle_resting_1_uploaded);
     draw_resting(depth_only, resting_texture_0, resting_buffer_0, world_particle_resting_0_count, 0);
     draw_resting(depth_only, resting_texture_1, resting_buffer_1, world_particle_resting_1_count, 1);
+}
+
+/* ---- one flying piece ------------------------------------------------------- */
+
+/* The uniform locations of the lit and the land-mask programs. */
+#define model_uniform_modelviewprojectionmatrix      SR_GLOBAL(int32_t, 0x1515AD2B4ULL)
+#define land_mask_uniform_modelviewprojectionmatrix   SR_GLOBAL(int32_t, 0x1515AD484ULL)
+
+/* The GL buffer each particle mesh draws from: a table of slot indices,
+   one per mesh id, 0x183E977C4; the slot gives a buffer name in the
+   shared GL buffer table. */
+#define piece_mesh_buffer_slot(mesh) SR_GLOBAL(int32_t, 0x183E977C4ULL + 4ULL * (uint64_t)(int64_t)(mesh))
+
+/* The model matrix the original restores after a piece: the identity, kept
+   as the four xmmwords it is copied from (0x140278D30, 0x140278D80,
+   0x140278E20, 0x140279490). */
+static const float identity_model_reset[16] = {
+    1.0f, 0.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 0.0f, 1.0f,
+};
+
+/* Draws one flying piece with its mesh. The lit pass (0) binds the piece's
+   material and the shading textures and feeds the lit program the piece's
+   matrix; the land-mask pass (1) feeds the mask program; the stencil pass
+   (2) only places the model. The mesh's vertices are read out of its GL
+   buffer; a stride of zero would make the overlap undefined, and the mesh
+   fields come from the loaded mesh, never zero. Afterwards the model matrix
+   returns to the identity and both of its products are recomputed.
+   0x140124840 */
+void world_draw_particle_piece(int mesh, const float position[3], const float rotation[9],
+                                int pass, const int *texture_slot, const float color[4])
+{
+    const WorldMesh *m = &world_meshes[mesh];
+    GLsizei stride = (GLsizei)multiply_int(m->stride, 4);
+    int enabled;
+
+    if (pass) {
+        if (pass == 2) {
+            glBindTexture(GL_TEXTURE_2D, draw_texture_name(*texture_slot));
+            camera_set_model(position, rotation);
+        } else {
+            camera_set_model(position, rotation);
+            if (pass == 1)
+                glUniformMatrix4fv(land_mask_uniform_modelviewprojectionmatrix, 1, GL_FALSE,
+                                   renderer_camera->model_view_projection);
+        }
+        enabled = 0;
+    } else {
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, draw_texture_name(*texture_slot));
+        glActiveTexture(GL_TEXTURE0 + 2);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, draw_texture_name(shading_cube_map));
+        camera_set_model(position, rotation);
+        glUniformMatrix4fv(model_uniform_modelviewprojectionmatrix, 1, GL_FALSE,
+                           renderer_camera->model_view_projection);
+        glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(1);
+        enabled = 2;
+    }
+    glEnableVertexAttribArray(enabled);
+    glBindBuffer(GL_ARRAY_BUFFER, draw_buffer_name(piece_mesh_buffer_slot(mesh)));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (const void *)0);
+    if (!pass) {
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (const void *)12);
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, stride, (const void *)20);
+    }
+    glVertexAttrib4fv(3, color);
+    glDrawArrays(GL_TRIANGLES, 0, multiply_int(m->triangle_count, 3));
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glDisableVertexAttribArray(0);
+    if (!pass) {
+        glDisableVertexAttribArray(1);
+        glDisableVertexAttribArray(2);
+    }
+    memcpy(renderer_camera->model, identity_model_reset, sizeof identity_model_reset);
+    math_mat4_multiply(renderer_camera->model_view, renderer_camera->model, renderer_camera->view);
+    math_mat4_multiply(renderer_camera->model_view_projection, renderer_camera->model_view,
+                      renderer_camera->projection);
+    if (!pass)
+        glActiveTexture(GL_TEXTURE0);
 }

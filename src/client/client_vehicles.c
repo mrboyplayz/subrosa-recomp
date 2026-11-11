@@ -13121,7 +13121,7 @@ LABEL_13:
     g_1862AE020 = iteration_count + 11;
     if ( iteration_count + 11 >= (int)g_1862AE024 )
       break;
-    call_result = sub_140115360();
+    call_result = sr_parser_read_number();
     if ( (int)g_160721350 < 1024 )
     {
       dword_140404A6C[g_160721350 + 135033402] = call_result;
@@ -13268,7 +13268,7 @@ LABEL_2:
     g_1862AE020 = i + 11;
     if ( i + 11 >= (int)g_1862AE024 )
       break;
-    call_result = sub_140115360();
+    call_result = sr_parser_read_number();
     if ( (int)g_160721350 < 1024 )
     {
       dword_140404A6C[g_160721350 + 135033402] = call_result;
@@ -25832,15 +25832,15 @@ __int64            sub_14018EF40(int a1, int a2)
   saved_decoded_value_2 = decoded_value_2;
   scaled_index_2 = 484 * cached_input_value + 318464LL * decoded_value_2;
   scaled_index_3 = 484 * cached_input_value + 318464 * input_value_2;
-  sub_14018D510(
+  sr_net_read_delta(
     (unsigned int *)((char *)&g_160FC4968 + scaled_index_3),
     *(unsigned int *)((char *)&g_160FC4968 + scaled_index_2),
     28);
-  sub_14018D510(
+  sr_net_read_delta(
     (unsigned int *)((char *)&g_160FC496C + scaled_index_3),
     *(unsigned int *)((char *)&g_160FC496C + scaled_index_2),
     28);
-  sub_14018D510(
+  sr_net_read_delta(
     (unsigned int *)((char *)&g_160FC4970 + scaled_index_3),
     *(unsigned int *)((char *)&g_160FC4970 + scaled_index_2),
     28);
@@ -27024,15 +27024,15 @@ LABEL_220:
 LABEL_231:
       scaled_index_16 = 57LL * option_flags_12;
       scaled_index_17 = scaled_index_16 * 4 + 318464LL * option_flags_11;
-      sub_14018D510(
+      sr_net_read_delta(
         &dword_140404A6C[scaled_index_16 + 137328830 + scaled_index_14],
         *(unsigned int *)((char *)&g_160FE2D64 + scaled_index_17),
         28);
-      sub_14018D510(
+      sr_net_read_delta(
         &dword_140404A6C[scaled_index_16 + 137328831 + scaled_index_14],
         *(unsigned int *)((char *)&g_160FE2D68 + scaled_index_17),
         28);
-      sub_14018D510(
+      sr_net_read_delta(
         &dword_140404A6C[scaled_index_16 + 137328832 + scaled_index_14],
         *(unsigned int *)((char *)&g_160FE2D6C + scaled_index_17),
         28);
@@ -27091,9 +27091,9 @@ LABEL_231:
       remaining_count_3 = 4;
       do
       {
-        sub_14018D510(state_address_13 - 1, *(state_address_12 - 1), 8);
+        sr_net_read_delta(state_address_13 - 1, *(state_address_12 - 1), 8);
         sub_14018D5E0(state_address_13, *state_address_12, 9);
-        sub_14018D510(state_address_13 + 1, state_address_12[1], 8);
+        sr_net_read_delta(state_address_13 + 1, state_address_12[1], 8);
         state_address_10 += 43;
         converted_vector = _mm_cvtsi32_si128(*state_address_11);
         state_address_12 += 3;
@@ -27285,15 +27285,15 @@ LABEL_296:
           }
           scaled_index_23 = running_total_15 + 318464LL * option_flags_11;
           scaled_index_24 = 318464LL * lobyte_result + 40LL * (int)decoded_value_2;
-          sub_14018D510(
+          sr_net_read_delta(
             (unsigned int *)((char *)&g_161008568 + scaled_index_24),
             *(unsigned int *)((char *)&g_161008568 + scaled_index_23),
             28);
-          sub_14018D510(
+          sr_net_read_delta(
             (unsigned int *)((char *)&g_16100856C + scaled_index_24),
             *(unsigned int *)((char *)&g_16100856C + scaled_index_23),
             28);
-          sub_14018D510(
+          sr_net_read_delta(
             (unsigned int *)((char *)&g_161008570 + scaled_index_24),
             *(unsigned int *)((char *)&g_161008570 + scaled_index_23),
             28);

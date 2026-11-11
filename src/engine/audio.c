@@ -1,5 +1,6 @@
 #include <string.h>
 #include "audio.h"
+#include "crt.h"
 #include "arith.h"
 
 uint32_t audio_capture_available(void)
@@ -60,4 +61,41 @@ uint32_t audio_play_at(int sound, const float position[3], float gain, float pit
     memcpy(&channel->source_gain, &audio_sounds[sound].gain, 4);
     channel->spatialized = 1;
     return index;
+}
+
+uint32_t audio_allocate_sound_buffer(uint32_t sound, float gain)  /* 0x14007D610 */
+{
+    AudioSound *record = &audio_sounds[0] + (int64_t)(int32_t)sound;
+    void *previous = (void *)(uintptr_t)record->samples;
+    record->gain = gain;
+    record->loaded = 1;
+    record->sample_count = 0x40000;  /* a full 1 MB ring, 4 bytes per sample */
+    crt_free(previous);
+    void *buffer = (void *)(uintptr_t)crt_malloc(0x100000);
+    record->samples = (uintptr_t)buffer;
+    memset(buffer, 0, 0x100000);
+    record->unknown_10 = 0;  /* both ring cursors */
+    return sound;
+}
+
+void audio_load_pcm16(uint32_t sound, int byte_count, const int16_t *pcm, float gain)  /* 0x140069930 */
+{
+    if (sound > 0xFFF) return;
+    AudioSound *record = &audio_sounds[sound];
+    void *previous = (void *)(uintptr_t)record->samples;
+    record->gain = gain;
+    record->loaded = 1;
+    record->sample_count = byte_count / 2;
+    crt_free(previous);
+    record->samples =
+        (uintptr_t)crt_malloc((int32_t)((uint32_t)record->sample_count << 2));
+    int32_t converted = 0;
+    int64_t byte_offset = 0;
+    while (converted < record->sample_count) {
+        int32_t sample = *pcm++;
+        ++converted;
+        byte_offset += 4;
+        *(float *)((unsigned char *)(uintptr_t)record->samples + byte_offset - 4)
+            = (float)sample * 0.000030517578125f;
+    }
 }

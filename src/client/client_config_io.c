@@ -10,7 +10,7 @@ __int64            sub_14010E080(_DWORD *a1, char *a2, __int64 a3, int a4)
 
   if ( a4 )
     return sub_1400920F0(a3, "%s%d\r\n", a2, *a1);
-  result = sub_140091DF0(a2);
+  result = sr_parser_skip_to_token(a2);
   if ( (_DWORD)result )
   {
     result = sub_1400A3D70();
@@ -31,7 +31,7 @@ __int64            sub_14010E0D0(char *a1, char *a2, int a3, __int64 a4, int a5)
 
   if ( a5 )
     return sub_1400920F0(a4, "%s%s\r\n", a2, a1);
-  result = sub_140091DF0(a2);
+  result = sr_parser_skip_to_token(a2);
   if ( (_DWORD)result )
   {
     parser_position = g_1862AE020;

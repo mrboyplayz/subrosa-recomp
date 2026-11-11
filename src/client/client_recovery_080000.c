@@ -3298,29 +3298,6 @@ LABEL_9:
   return result;
 }
 
-//----- (000000014008EC40) ----------------------------------------------------
-float            sub_14008EC40(int a1, float a2, float a3, float a4, float a5, float a6)
-{
-  float component_delta;
-  float scaled_value;
-  float scaled_value_2;
-  float unused_local;
-
-  component_delta = 1.0 - a2;
-  if ( a1 == 1 )
-    return (float)(component_delta * a3) + (float)(a2 * a6);
-  scaled_value = a2 * a6;
-  scaled_value_2 = component_delta * a3;
-  if ( a1 == 2 )
-    return (float)((float)((float)((float)(a4 + a4) * component_delta) + scaled_value) * a2) + (float)(scaled_value_2 * component_delta);
-  if ( a1 == 3 )
-    return (float)((float)((float)((float)(component_delta * component_delta) * (float)(a4 * 3.0))
-                         + (float)((float)((float)((float)(a5 * 3.0) * component_delta) + scaled_value) * a2))
-                 * a2)
-         + (float)((float)(scaled_value_2 * component_delta) * component_delta);
-  return unused_local;
-}
-
 //----- (000000014008ED50) ----------------------------------------------------
 unsigned __int64            sub_14008ED50(int a1)
 {
@@ -4280,27 +4257,6 @@ LABEL_33:
   }
   unk_14040488C = 0;
   return 1;
-}
-
-//----- (0000000140091DF0) ----------------------------------------------------
-_BOOL8            sub_140091DF0(_BYTE *a1)
-{
-  signed int iteration_count;
-  signed int i;
-  __int64 element_index;
-
-  iteration_count = g_1862AE020;
-  for ( i = g_1862AE024; iteration_count < i; g_1862AE020 = ++iteration_count )
-  {
-    if ( (unsigned int)sub_14003C6F0(a1) )
-      break;
-  }
-  element_index = -1;
-  do
-    ++element_index;
-  while ( a1[element_index] );
-  g_1862AE020 = element_index + iteration_count;
-  return (int)element_index + iteration_count < i;
 }
 
 //----- (0000000140091E60) ----------------------------------------------------

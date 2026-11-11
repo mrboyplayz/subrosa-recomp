@@ -1047,7 +1047,7 @@ __int64 sub_14009DE80()
   if ( dword_14030186C >= 624 )
   {
     if ( dword_14030186C == 625 )
-      sub_1400C2D50(0x1571u);
+      sr_math_seed_random(0x1571u);
     buffer_cursor = &g_144AF96E0;
     buffer_cursor_2 = &g_144AF9A6C;
     do

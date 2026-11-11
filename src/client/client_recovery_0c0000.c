@@ -2,28 +2,6 @@
 
 // 1400BF580: conditional instruction was optimized away because edi.4==D
 
-//----- (00000001400C2D50) ----------------------------------------------------
-__int64            sub_1400C2D50(unsigned int a1)
-{
-  __int64 result;
-  __int64 saved_call_status;
-  unsigned int shifted_bits;
-
-  g_144AF96E0 = a1;
-  LODWORD(result) = 1;
-  do
-  {
-    saved_call_status = (int)result;
-    shifted_bits = result
-       + 1812433253 * (dword_140404A6C[(int)result + 18600732] ^ (dword_140404A6C[(int)result + 18600732] >> 30));
-    result = (unsigned int)(result + 1);
-    dword_140404A6C[saved_call_status + 18600733] = shifted_bits;
-  }
-  while ( (int)result < 624 );
-  dword_14030186C = result;
-  return result;
-}
-
 //----- (00000001400C3140) ----------------------------------------------------
 __int64            sub_1400C3140(unsigned __int64 a1, float *a2)
 {

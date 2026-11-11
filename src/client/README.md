@@ -49,7 +49,9 @@ lost, duplicated or changed. It refreshes `sources.cmake`. The name tool also
 updates engine references and native comparison/mutation fixtures.
 
 See `../engine/restoration-20261020.md` for the module organization batch and
-`../engine/restoration-20261022.md` for the six rotation/interpolation restorations.
+`../engine/restoration-20261022.md` for the six rotation/interpolation restorations, and
+`../engine/restoration-20261111.md` for the sound, curve, parser, packet-decode,
+replication and particle-piece restorations.
 
 | C file | Original routines |
 | --- | ---: |
@@ -109,6 +111,8 @@ See `../engine/restoration-20261020.md` for the module organization batch and
 | [client_math.c](client_math.c) | 18 |
 | [client_math_integer.c](client_math_integer.c) | 2 |
 | [client_math_interpolation.c](client_math_interpolation.c) | 2 |
+| [client_math_curve.c](client_math_curve.c) | 3 |
+| [client_math_random.c](client_math_random.c) | 1 |
 | [client_math_rotation.c](client_math_rotation.c) | 4 |
 | [client_menu.c](client_menu.c) | 7 |
 | [client_menu_clip.c](client_menu_clip.c) | 2 |
@@ -121,7 +125,8 @@ See `../engine/restoration-20261020.md` for the module organization batch and
 | [client_net_angle.c](client_net_angle.c) | 1 |
 | [client_net_bits.c](client_net_bits.c) | 8 |
 | [client_net_bytes.c](client_net_bytes.c) | 2 |
-| [client_net_replication.c](client_net_replication.c) | 10 |
+| [client_net_decode.c](client_net_decode.c) | 3 |
+| [client_net_replication.c](client_net_replication.c) | 11 |
 | [client_net_rotation.c](client_net_rotation.c) | 2 |
 | [client_net_vector.c](client_net_vector.c) | 3 |
 | [client_network.c](client_network.c) | 10 |
@@ -139,17 +144,17 @@ See `../engine/restoration-20261020.md` for the module organization batch and
 | [client_physics_tick.c](client_physics_tick.c) | 1 |
 | [client_practice.c](client_practice.c) | 2 |
 | [client_recovery_000000.c](client_recovery_000000.c) | 24 |
-| [client_recovery_020000.c](client_recovery_020000.c) | 24 |
+| [client_recovery_020000.c](client_recovery_020000.c) | 23 |
 | [client_recovery_040000.c](client_recovery_040000.c) | 38 |
-| [client_recovery_080000.c](client_recovery_080000.c) | 59 |
+| [client_recovery_080000.c](client_recovery_080000.c) | 57 |
 | [client_recovery_0a0000.c](client_recovery_0a0000.c) | 22 |
-| [client_recovery_0c0000.c](client_recovery_0c0000.c) | 44 |
+| [client_recovery_0c0000.c](client_recovery_0c0000.c) | 43 |
 | [client_recovery_0e0000.c](client_recovery_0e0000.c) | 60 |
 | [client_recovery_100000.c](client_recovery_100000.c) | 20 |
 | [client_recovery_120000.c](client_recovery_120000.c) | 37 |
 | [client_recovery_140000.c](client_recovery_140000.c) | 11 |
-| [client_recovery_180000.c](client_recovery_180000.c) | 40 |
-| [client_renderer.c](client_renderer.c) | 70 |
+| [client_recovery_180000.c](client_recovery_180000.c) | 34 |
+| [client_renderer.c](client_renderer.c) | 69 |
 | [client_renderer_primitives.c](client_renderer_primitives.c) | 10 |
 | [client_replay.c](client_replay.c) | 3 |
 | [client_runtime_180000.c](client_runtime_180000.c) | 157 |
@@ -167,7 +172,7 @@ See `../engine/restoration-20261020.md` for the module organization batch and
 | [client_terrain.c](client_terrain.c) | 5 |
 | [client_text.c](client_text.c) | 5 |
 | [client_text_helpers.c](client_text_helpers.c) | 6 |
-| [client_text_parser.c](client_text_parser.c) | 2 |
+| [client_text_parser.c](client_text_parser.c) | 4 |
 | [client_texture_atlas.c](client_texture_atlas.c) | 2 |
 | [client_textures.c](client_textures.c) | 3 |
 | [client_timing.c](client_timing.c) | 1 |
@@ -182,7 +187,7 @@ See `../engine/restoration-20261020.md` for the module organization batch and
 | [client_world_generation.c](client_world_generation.c) | 2 |
 | [client_world_grid.c](client_world_grid.c) | 1 |
 | [client_world_items.c](client_world_items.c) | 4 |
-| [client_world_particles.c](client_world_particles.c) | 3 |
+| [client_world_particles.c](client_world_particles.c) | 4 |
 | [client_world_street_mesh.c](client_world_street_mesh.c) | 1 |
 | [client_world_streets.c](client_world_streets.c) | 7 |
 | [client_world_vehicles.c](client_world_vehicles.c) | 4 |

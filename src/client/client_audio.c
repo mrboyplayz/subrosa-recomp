@@ -26,23 +26,9 @@ __m128i *           sr_audio_capture_write(__int64 a1,      __m128i *a2, int a3)
 }
 
 //----- (000000014007D610) ----------------------------------------------------
-__int64            sr_audio_allocate_sound_buffer(unsigned int a1, float a2)
+__int64            sr_audio_allocate_sound_buffer(unsigned int sound, float gain)
 {
-  __int64 sound_record_offset;
-  void *previous_sample_buffer;
-  _WORD *new_sample_buffer;
-
-  sound_record_offset = 8LL * (int)a1;
-  previous_sample_buffer = *(void **)&dword_140404A6C[sound_record_offset + 18165779];
-  *(float *)&dword_140404A6C[sound_record_offset + 18165783] = a2;
-  dword_140404A6C[sound_record_offset + 18165777] = 1;
-  dword_140404A6C[sound_record_offset + 18165778] = 0x40000;
-  free(previous_sample_buffer);
-  new_sample_buffer = (_WORD *)sr_path_malloc(0x100000);
-  *(_QWORD *)&dword_140404A6C[sound_record_offset + 18165779] = (uint64)(uintptr_t)(new_sample_buffer);
-  crt_memset((void *)(uintptr_t)(new_sample_buffer), 0, 0x100000u);
-  *(_QWORD *)&dword_140404A6C[sound_record_offset + 18165781] = 0;
-  return a1;
+  return audio_allocate_sound_buffer(sound, gain);
 }
 
 //----- (000000014007D6C0) ----------------------------------------------------

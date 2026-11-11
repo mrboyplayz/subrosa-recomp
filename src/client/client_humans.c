@@ -1626,8 +1626,8 @@ __int64            sub_140042930(__int64 a1, __int64 a2, __int64 a3)
         g_183EBFAB0 = masked_bits_2;
         g_183EBFAC0 = masked_bits_3;
       }
-      sub_14018D440((float *)(unsigned int *)&game_sun_angle, 16);
-      sub_14018D440((float *)(unsigned int *)&game_unknown_183ebfd58, 16);
+      sr_net_read_angle((float *)(unsigned int *)&game_sun_angle, 16);
+      sr_net_read_angle((float *)(unsigned int *)&game_unknown_183ebfd58, 16);
       if ( game_type == 7 )
         sr_net_read_bits(&g_183F7A604, 8);
 LABEL_388:
@@ -15983,7 +15983,7 @@ LABEL_229:
         ++element_index_8;
       while ( SR_VEC_LANES(128, source_buffer[0], i8)[element_index_8] );
       g_1862AE024 = element_index_8;
-      call_result = sub_140115360();
+      call_result = sr_parser_read_number();
       iteration_count_6 = 0;
       if ( (int)g_160361344 <= 0 )
       {
@@ -16072,7 +16072,7 @@ LABEL_241:
         ++element_index_10;
       while ( SR_VEC_LANES(128, source_buffer[0], i8)[element_index_10] );
       g_1862AE024 = element_index_10;
-      call_result_2 = sub_140115360();
+      call_result_2 = sr_parser_read_number();
       iteration_count_7 = 0;
       if ( (int)g_160361344 <= 0 )
       {

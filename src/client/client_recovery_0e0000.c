@@ -8775,8 +8775,8 @@ __int64 sub_1400FC480()
             g_183EBFAB0 = masked_bits_2;
             g_183EBFAC0 = masked_bits_3;
           }
-          sub_14018D440((float *)(unsigned int *)&game_sun_angle, 16);
-          sub_14018D440((float *)(unsigned int *)&game_unknown_183ebfd58, 16);
+          sr_net_read_angle((float *)(unsigned int *)&game_sun_angle, 16);
+          sr_net_read_angle((float *)(unsigned int *)&game_unknown_183ebfd58, 16);
           if ( game_type == 7 )
             sr_net_read_bits(&g_183F7A604, 8);
           g_16B15FF3C = 3;

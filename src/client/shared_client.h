@@ -349,7 +349,7 @@ void sub_14003A0F0();
 
 int sr_game_frame(int process_input);
 
-__int64            sub_14003C6F0(_BYTE *a1);
+__int64            sr_parser_token_matches(_BYTE *a1);
 
 __int64            sub_14003C760(float *a1, float *a2, float *a3, signed int a4, float *a5, float *a6, __int64 a7);
 
@@ -611,9 +611,9 @@ void            sub_140069DE0(unsigned int a1, __int64 a2, float a3);
 
 __int64            sr_audio_play_at(signed int a1, unsigned int *a2, float a3, float a4, unsigned int a5);
 
-__int64            sub_14006A140(int a1, int a2, float a3, float a4, unsigned int a5);
+__int64            sr_audio_channel_play(int a1, int a2, float a3, float a4, unsigned int a5);
 
-__int64            sub_14006A240(int a1, int a2, unsigned int *a3, float a4, unsigned int a5, unsigned int a6);
+__int64            sr_audio_channel_play_at(int a1, int a2, unsigned int *a3, float a4, unsigned int a5, unsigned int a6);
 
 __m128i *           sr_audio_capture_write(__int64 a1,      __m128i *a2, int a3);
 
@@ -991,7 +991,7 @@ __int64            sub_14008EAD0(int a1);
 
 __int64            sub_14008EB80(int a1);
 
-float            sub_14008EC40(int a1, float a2, float a3, float a4, float a5, float a6);
+float            sr_math_curve_point(int a1, float a2, float a3, float a4, float a5, float a6);
 
 unsigned __int64            sub_14008ED50(int a1);
 
@@ -1015,7 +1015,7 @@ __int64 sub_140091880();
 
 __int64 sub_140091BA0();
 
-_BOOL8            sub_140091DF0(_BYTE *a1);
+_BOOL8            sr_parser_skip_to_token(_BYTE *a1);
 
 unsigned __int64            sub_140091E60(int a1);
 
@@ -1271,7 +1271,7 @@ unsigned __int64 sub_1400C2210();
 
 __int64            sub_1400C2BB0(__int64 a1, int a2);
 
-__int64            sub_1400C2D50(unsigned int a1);
+__int64            sr_math_seed_random(unsigned int a1);
 
 __int64            sub_1400C2DB0(__int64 a1, __int64 a2, __int64 a3);
 
@@ -1715,13 +1715,13 @@ __int64            sr_math_mat4_multiply_copy(_OWORD *output, __int64 left, __in
 
 _UNKNOWN **           sr_math_quat_multiply(float *a1, float *a2, float *a3);
 
-unsigned int *           sub_140105AB0(int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+unsigned int *           sr_net_replication_queue_event(int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
 __int64            sub_140105BD0(float a1);
 
 __int64            sub_140105C20(int a1, float *a2);
 
-__int64            sub_1401060F0(int a1, unsigned int a2);
+__int64            sr_net_replication_track_value(int a1, unsigned int a2);
 
 __int64            sub_140106160(int a1);
 
@@ -1781,7 +1781,7 @@ __int64            sub_14010EC30(int a1, int a2, int a3);
 
 __int64            sub_14010EE20(int a1);
 
-__int64            sub_14010EF40(int a1);
+__int64            sr_net_replication_write_item_state(int a1);
 
 __int64            sub_14010EFF0(int a1, int a2);
 
@@ -1803,9 +1803,9 @@ double            sr_net_write_magnitude(float *a1, float a2, int a3);
 
 __int64            sr_net_encode_direction(_DWORD *a1, float *a2, int a3);
 
-__int64 sub_140115360();
+__int64 sr_parser_read_number();
 
-__int64 sub_140115410();
+__int64 sr_parser_read_number64();
 
 __int64 sr_physics_integrate_points();
 
@@ -1939,7 +1939,7 @@ double            sub_1401241B0(int a1);
 
 __int64 sub_140124320();
 
-double            sub_140124840(int a1, unsigned int *a2, _DWORD *a3, int a4, int *a5, __int64 a6);
+double            sr_world_draw_particle_piece(int a1, unsigned int *a2, _DWORD *a3, int a4, int *a5, __int64 a6);
 
 double            sub_140124AF0(int a1, int a2);
 
@@ -2791,11 +2791,11 @@ void sub_140184BB0();
 
 __int64 sub_140185D00();
 
-float            sub_140187180(int a1, float a2, float a3, float a4, float a5, float a6);
+float            sr_math_curve_point_route(int a1, float a2, float a3, float a4, float a5, float a6);
 
 __m128            sub_140187270(float a1, float a2, float a3, double a4, float a5);
 
-float            sub_1401872F0(int a1, float a2, float a3, float a4, float a5, float a6);
+float            sr_math_curve_derivative(int a1, float a2, float a3, float a4, float a5, float a6);
 
 _BOOL8            sr_collision_edge_side(float *a1, float *a2, float *a3, float *a4, float *a5);
 
@@ -2833,9 +2833,9 @@ void            sub_14018C340(int a1);
 
 __int64            sub_14018C6A0(float *a1, float *a2, double a3, float a4, float a5);
 
-__int64            sub_14018D440(float *a1, int a2);
+__int64            sr_net_read_angle(float *a1, int a2);
 
-__int64            sub_14018D510(_DWORD *a1, int a2, int a3);
+__int64            sr_net_read_delta(_DWORD *a1, int a2, int a3);
 
 __int64            sub_14018D5E0(int *a1, int a2, int a3);
 
@@ -2843,7 +2843,7 @@ __int64            sub_14018D6D0(int a1, int a2);
 
 __int64            sub_14018D9F0(int a1);
 
-__int64            sub_14018DB20(int a1);
+__int64            sr_net_replication_read_item_state(int a1);
 
 __int64            sub_14018DBF0(int a1);
 
@@ -2861,7 +2861,7 @@ __int64            sub_140192160(float *a1, int *a2, char a3);
 
 __int64            sub_140192470(float *a1, __int64 a2, float a3, int a4);
 
-__int64            sub_140192560(float *a1, float a2, int a3);
+__int64            sr_net_read_scaled_fraction(float *a1, float a2, int a3);
 
 __int64            sub_1401925F0(_DWORD *a1, float *a2, char a3);
 
@@ -11750,7 +11750,7 @@ int sr_game_frame(int process_input)
 ;
 
 //----- (000000014003C6F0) ----------------------------------------------------
-__int64            sub_14003C6F0(_BYTE *a1)
+__int64            sr_parser_token_matches(_BYTE *a1)
 ;
 
 //----- (000000014003C760) ----------------------------------------------------
@@ -12372,11 +12372,11 @@ __int64            sr_audio_play_at(signed int a1, unsigned int *a2, float a3, f
 ;
 
 //----- (000000014006A140) ----------------------------------------------------
-__int64            sub_14006A140(int a1, int a2, float a3, float a4, unsigned int a5)
+__int64            sr_audio_channel_play(int a1, int a2, float a3, float a4, unsigned int a5)
 ;
 
 //----- (000000014006A240) ----------------------------------------------------
-__int64            sub_14006A240(int a1, int a2, unsigned int *a3, float a4, unsigned int a5, unsigned int a6)
+__int64            sr_audio_channel_play_at(int a1, int a2, unsigned int *a3, float a4, unsigned int a5, unsigned int a6)
 ;
 
 //----- (000000014006A380) ----------------------------------------------------
@@ -13301,7 +13301,7 @@ __int64            sub_14008EB80(int a1)
 ;
 
 //----- (000000014008EC40) ----------------------------------------------------
-float            sub_14008EC40(int a1, float a2, float a3, float a4, float a5, float a6)
+float            sr_math_curve_point(int a1, float a2, float a3, float a4, float a5, float a6)
 ;
 
 //----- (000000014008ED50) ----------------------------------------------------
@@ -13349,7 +13349,7 @@ __int64 sub_140091BA0()
 ;
 
 //----- (0000000140091DF0) ----------------------------------------------------
-_BOOL8            sub_140091DF0(_BYTE *a1)
+_BOOL8            sr_parser_skip_to_token(_BYTE *a1)
 ;
 
 //----- (0000000140091E60) ----------------------------------------------------
@@ -13924,7 +13924,7 @@ __int64            sub_1400C2BB0(__int64 a1, int a2)
 ;
 
 //----- (00000001400C2D50) ----------------------------------------------------
-__int64            sub_1400C2D50(unsigned int a1)
+__int64            sr_math_seed_random(unsigned int a1)
 ;
 
 //----- (00000001400C2DB0) ----------------------------------------------------
@@ -14931,7 +14931,7 @@ _UNKNOWN **           sr_math_quat_multiply(float *a1, float *a2, float *a3)
 // 140105930: returning address of temporary local variable '%__return_address'
 
 //----- (0000000140105AB0) ----------------------------------------------------
-unsigned int *           sub_140105AB0(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+unsigned int *           sr_net_replication_queue_event(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140105BD0) ----------------------------------------------------
@@ -14943,7 +14943,7 @@ __int64            sub_140105C20(int a1, float *a2)
 ;
 
 //----- (00000001401060F0) ----------------------------------------------------
-__int64            sub_1401060F0(int a1, unsigned int a2)
+__int64            sr_net_replication_track_value(int a1, unsigned int a2)
 ;
 
 //----- (0000000140106160) ----------------------------------------------------
@@ -15089,7 +15089,7 @@ __int64            sub_14010EE20(int a1)
 ;
 
 //----- (000000014010EF40) ----------------------------------------------------
-__int64            sub_14010EF40(int a1)
+__int64            sr_net_replication_write_item_state(int a1)
 ;
 
 //----- (000000014010EFF0) ----------------------------------------------------
@@ -15135,11 +15135,11 @@ __int64            sr_net_encode_direction(_DWORD *a1, float *a2, int a3)
 ;
 
 //----- (0000000140115360) ----------------------------------------------------
-__int64 sub_140115360()
+__int64 sr_parser_read_number()
 ;
 
 //----- (0000000140115410) ----------------------------------------------------
-__int64 sub_140115410()
+__int64 sr_parser_read_number64()
 ;
 
 //----- (00000001401154D0) ----------------------------------------------------
@@ -15415,7 +15415,7 @@ __int64 sub_140124320()
 ;
 
 //----- (0000000140124840) ----------------------------------------------------
-double            sub_140124840(int a1, unsigned int *a2, _DWORD *a3, int a4, int *a5, __int64 a6)
+double            sr_world_draw_particle_piece(int a1, unsigned int *a2, _DWORD *a3, int a4, int *a5, __int64 a6)
 ;
 
 //----- (0000000140124AF0) ----------------------------------------------------
@@ -17571,7 +17571,7 @@ __int64 sub_140185D00()
 ;
 
 //----- (0000000140187180) ----------------------------------------------------
-float            sub_140187180(int a1, float a2, float a3, float a4, float a5, float a6)
+float            sr_math_curve_point_route(int a1, float a2, float a3, float a4, float a5, float a6)
 ;
 
 //----- (0000000140187270) ----------------------------------------------------
@@ -17582,7 +17582,7 @@ __m128            sub_140187270(float a1, float a2, float a3, double a4, float a
 // 140187270: inconsistent variable size for 'xmm3_8.8'
 
 //----- (00000001401872F0) ----------------------------------------------------
-float            sub_1401872F0(int a1, float a2, float a3, float a4, float a5, float a6)
+float            sr_math_curve_derivative(int a1, float a2, float a3, float a4, float a5, float a6)
 ;
 
 //----- (0000000140187410) ----------------------------------------------------
@@ -17660,11 +17660,11 @@ __int64            sub_14018C6A0(float *a1, float *a2, double a3, float a4, floa
 ;
 
 //----- (000000014018D440) ----------------------------------------------------
-__int64            sub_14018D440(float *a1, int a2)
+__int64            sr_net_read_angle(float *a1, int a2)
 ;
 
 //----- (000000014018D510) ----------------------------------------------------
-__int64            sub_14018D510(_DWORD *a1, int a2, int a3)
+__int64            sr_net_read_delta(_DWORD *a1, int a2, int a3)
 ;
 
 //----- (000000014018D5E0) ----------------------------------------------------
@@ -17680,7 +17680,7 @@ __int64            sub_14018D9F0(int a1)
 ;
 
 //----- (000000014018DB20) ----------------------------------------------------
-__int64            sub_14018DB20(int a1)
+__int64            sr_net_replication_read_item_state(int a1)
 ;
 
 //----- (000000014018DBF0) ----------------------------------------------------
@@ -17716,7 +17716,7 @@ __int64            sub_140192470(float *a1, __int64 a2, float a3, int a4)
 ;
 
 //----- (0000000140192560) ----------------------------------------------------
-__int64            sub_140192560(float *a1, float a2, int a3)
+__int64            sr_net_read_scaled_fraction(float *a1, float a2, int a3)
 ;
 
 //----- (00000001401925F0) ----------------------------------------------------

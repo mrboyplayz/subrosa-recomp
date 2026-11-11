@@ -39,6 +39,7 @@
 140037220	client_collision_queries.c
 140038230	client_world_grid.c
 14003B920	client_frame.c
+14003C6F0	client_text_parser.c
 140048090	client_collision_contacts.c
 140048DA0	client_collision_mesh.c
 14004A130	client_collision_mesh.c
@@ -204,6 +205,8 @@
 14007F970	client_world_items.c
 140080690	client_disk_files.c
 14008CEB0	client_collision_mesh.c
+140091DF0	client_text_parser.c
+14008EC40	client_math_curve.c
 1400A4440	client_physics_create.c
 1400A56B0	client_human_ragdoll.c
 1400A70B0	client_item_grenade.c
@@ -329,6 +332,9 @@
 1401380F0	client_item_carry.c
 140158CD0	client_world_particles.c
 1401597F0	client_world_effects.c
+140187180	client_math_curve.c
+1401872F0	client_math_curve.c
+1400C2D50	client_math_random.c
 140187410	client_collision_mesh.c
 140188720	client_world_streets.c
 140188900	client_world_streets.c
@@ -340,3 +346,8 @@
 1400ACD90	client_math_rotation.c
 1400C2F90	client_math_interpolation.c
 1400C30E0	client_math_interpolation.c
+14018D440	client_net_decode.c
+140192560	client_net_decode.c
+14018D510	client_net_decode.c
+140124840	client_world_particles.c
+14018DB20	client_net_replication.c

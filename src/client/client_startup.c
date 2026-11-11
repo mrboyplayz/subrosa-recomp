@@ -737,14 +737,14 @@ unsigned __int64            sub_140001F20(__int64 a1, __int64 a2, int a3, int a4
       remaining_count = 4;
       do
       {
-        *(float *)&state_address[(_QWORD)saved_weighted_sum - 96] = sub_140187180(a6, scaled_ratio, *(saved_weighted_sum - 24), *(saved_weighted_sum - 12), *saved_weighted_sum, saved_weighted_sum[12]);
-        *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_5 - 96) = sub_140187180(a6, scaled_ratio, *(saved_weighted_sum - 23), *(saved_weighted_sum - 11), saved_weighted_sum[1], saved_weighted_sum[13]);
-        *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_6 - 96) = sub_140187180(a6, scaled_ratio, *(saved_weighted_sum - 22), *(saved_weighted_sum - 10), saved_weighted_sum[2], saved_weighted_sum[14]);
+        *(float *)&state_address[(_QWORD)saved_weighted_sum - 96] = sr_math_curve_point_route(a6, scaled_ratio, *(saved_weighted_sum - 24), *(saved_weighted_sum - 12), *saved_weighted_sum, saved_weighted_sum[12]);
+        *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_5 - 96) = sr_math_curve_point_route(a6, scaled_ratio, *(saved_weighted_sum - 23), *(saved_weighted_sum - 11), saved_weighted_sum[1], saved_weighted_sum[13]);
+        *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_6 - 96) = sr_math_curve_point_route(a6, scaled_ratio, *(saved_weighted_sum - 22), *(saved_weighted_sum - 10), saved_weighted_sum[2], saved_weighted_sum[14]);
         *(float *)((char *)saved_weighted_sum_2 + (_QWORD)state_address_2 - 4) = (float)(scaled_ratio * saved_weighted_sum_2[23]) + (float)(component_delta * *(saved_weighted_sum_2 - 1));
         *(float *)((char *)saved_weighted_sum_2 + (_QWORD)state_address_2) = (float)(scaled_ratio * saved_weighted_sum_2[24]) + (float)(component_delta * *saved_weighted_sum_2);
-        *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_7 - 96) = sub_1401872F0(a6, scaled_ratio, *(saved_weighted_sum - 24), *(saved_weighted_sum - 12), *saved_weighted_sum, saved_weighted_sum[12]);
-        *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_8 - 96) = sub_1401872F0(a6, scaled_ratio, *(saved_weighted_sum - 23), *(saved_weighted_sum - 11), saved_weighted_sum[1], saved_weighted_sum[13]);
-        product_difference = sub_1401872F0(a6, scaled_ratio, *(saved_weighted_sum - 22), *(saved_weighted_sum - 10), saved_weighted_sum[2], saved_weighted_sum[14]);
+        *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_7 - 96) = sr_math_curve_derivative(a6, scaled_ratio, *(saved_weighted_sum - 24), *(saved_weighted_sum - 12), *saved_weighted_sum, saved_weighted_sum[12]);
+        *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_8 - 96) = sr_math_curve_derivative(a6, scaled_ratio, *(saved_weighted_sum - 23), *(saved_weighted_sum - 11), saved_weighted_sum[1], saved_weighted_sum[13]);
+        product_difference = sr_math_curve_derivative(a6, scaled_ratio, *(saved_weighted_sum - 22), *(saved_weighted_sum - 10), saved_weighted_sum[2], saved_weighted_sum[14]);
         result = (unsigned __int64)state_address_9;
         saved_weighted_sum_2 += 2;
         *(float *)((char *)saved_weighted_sum + (_QWORD)state_address_9 - 96) = product_difference;
@@ -795,15 +795,15 @@ unsigned __int64            sub_140001F20(__int64 a1, __int64 a2, int a3, int a4
         remaining_count_2 = a3 + 1;
         do
         {
-          *(float *)&dword_140404A6C[3 * float_word + 70687550] = sub_140187180(a4, component_sum, state_scalar_3, state_scalar_2, scaled_value_5, scaled_value_2);
-          *(float *)&dword_140404A6C[3 * g_1510AB760 + 70687551] = sub_140187180(
+          *(float *)&dword_140404A6C[3 * float_word + 70687550] = sr_math_curve_point_route(a4, component_sum, state_scalar_3, state_scalar_2, scaled_value_5, scaled_value_2);
+          *(float *)&dword_140404A6C[3 * g_1510AB760 + 70687551] = sr_math_curve_point_route(
                                                                                    a4,
                                                                                    component_sum,
                                                                                    state_scalar_4,
                                                                                    state_scalar_25,
                                                                                    scaled_value_4,
                                                                                    scaled_value);
-          *(float *)&dword_140404A6C[3 * g_1510AB760 + 70687552] = sub_140187180(
+          *(float *)&dword_140404A6C[3 * g_1510AB760 + 70687552] = sr_math_curve_point_route(
                                                                                    a4,
                                                                                    component_sum,
                                                                                    state_scalar_6,
@@ -814,12 +814,12 @@ unsigned __int64            sub_140001F20(__int64 a1, __int64 a2, int a3, int a4
                                                                                + (float)(state_scalar_10 * component_sum);
           *(float *)&dword_140404A6C[3 * g_1510AB760 + 70835007] = (float)(state_scalar_11 * (float)(1.0 - component_sum))
                                                                                + (float)(state_scalar_12 * component_sum);
-          call_result = sub_1401872F0(a4, component_sum, state_scalar_8, state_scalar_7, scaled_value_5, scaled_value_2);
-          call_result_2 = sub_1401872F0(a4, component_sum, state_scalar_4, state_scalar_25, scaled_value_4, scaled_value);
-          call_result_3 = sub_1401872F0(a4, component_sum, state_scalar_6, state_scalar_5, scaled_value_3, state_scalar);
-          call_result_4 = sub_140187180(a4, component_sum, state_scalar_16, state_scalar_15, state_scalar_14, state_scalar_13);
-          call_result_5 = sub_140187180(a4, component_sum, state_scalar_20, state_scalar_19, state_scalar_18, state_scalar_17);
-          call_result_6 = sub_140187180(a4, component_sum, state_scalar_24, state_scalar_23, state_scalar_22, state_scalar_21);
+          call_result = sr_math_curve_derivative(a4, component_sum, state_scalar_8, state_scalar_7, scaled_value_5, scaled_value_2);
+          call_result_2 = sr_math_curve_derivative(a4, component_sum, state_scalar_4, state_scalar_25, scaled_value_4, scaled_value);
+          call_result_3 = sr_math_curve_derivative(a4, component_sum, state_scalar_6, state_scalar_5, scaled_value_3, state_scalar);
+          call_result_4 = sr_math_curve_point_route(a4, component_sum, state_scalar_16, state_scalar_15, state_scalar_14, state_scalar_13);
+          call_result_5 = sr_math_curve_point_route(a4, component_sum, state_scalar_20, state_scalar_19, state_scalar_18, state_scalar_17);
+          call_result_6 = sr_math_curve_point_route(a4, component_sum, state_scalar_24, state_scalar_23, state_scalar_22, state_scalar_21);
           scaled_index = 3LL * (int)g_1510AB760;
           *(float *)&dword_140404A6C[scaled_index + 70736702] = (float)(call_result_5 * call_result_3) - (float)(call_result_6 * call_result_2);
           *(float *)&dword_140404A6C[scaled_index + 70736703] = (float)(call_result * call_result_6) - (float)(call_result_4 * call_result_3);

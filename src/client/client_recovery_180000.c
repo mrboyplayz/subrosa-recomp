@@ -1,28 +1,5 @@
 #include "shared_client.h"
 
-//----- (0000000140187180) ----------------------------------------------------
-float            sub_140187180(int a1, float a2, float a3, float a4, float a5, float a6)
-{
-  float component_delta;
-  float scaled_value;
-  float scaled_value_2;
-  float unused_local;
-
-  component_delta = 1.0 - a2;
-  if ( a1 == 1 )
-    return (float)(component_delta * a3) + (float)(a2 * a6);
-  scaled_value = a2 * a6;
-  scaled_value_2 = component_delta * a3;
-  if ( a1 == 2 )
-    return (float)((float)((float)((float)(a4 + a4) * component_delta) + scaled_value) * a2) + (float)(scaled_value_2 * component_delta);
-  if ( a1 == 3 )
-    return (float)((float)((float)((float)(component_delta * component_delta) * (float)(a4 * 3.0))
-                         + (float)((float)((float)((float)(a5 * 3.0) * component_delta) + scaled_value) * a2))
-                 * a2)
-         + (float)((float)(scaled_value_2 * component_delta) * component_delta);
-  return unused_local;
-}
-
 //----- (0000000140187270) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
 __m128            sub_140187270(float a1, float a2, float a3, double a4, float a5)
@@ -40,27 +17,6 @@ __m128            sub_140187270(float a1, float a2, float a3, double a4, float a
 }
 
 // 140187270: inconsistent variable size for 'xmm3_8.8'
-
-//----- (00000001401872F0) ----------------------------------------------------
-float            sub_1401872F0(int a1, float a2, float a3, float a4, float a5, float a6)
-{
-  float component_sum;
-  float unused_local;
-
-  if ( a1 == 1 )
-    return a6 - a3;
-  component_sum = a2 + a2;
-  if ( a1 == 2 )
-    return (float)((float)((float)((float)(a3 - (float)(a4 + a4)) + a6) * component_sum) - (float)(a3 + a3)) + (float)(a4 + a4);
-  if ( a1 == 3 )
-    return (float)((float)((float)((float)((float)((float)((float)((float)(a4 * 3.0) - a3) - (float)(a5 * 3.0)) + a6)
-                                         * a2)
-                                 * (float)(a2 * 3.0))
-                         + (float)((float)((float)((float)(a3 * 3.0) - (float)(a4 * 6.0)) + (float)(a5 * 3.0)) * component_sum))
-                 - (float)(a3 * 3.0))
-         + (float)(a4 * 3.0);
-  return unused_local;
-}
 
 //----- (00000001401880C0) ----------------------------------------------------
 __m128i *           sub_1401880C0(     __m128i *a1, unsigned int a2)
@@ -558,64 +514,6 @@ __int64            sub_14018C6A0(float *a1, float *a2, double a3, float a4, floa
   return result;
 }
 
-//----- (000000014018D440) ----------------------------------------------------
-__int64            sub_14018D440(float *a1, int a2)
-{
-  char input_value;
-  signed int shifted_bits;
-  __int64 result;
-  float product_difference;
-  int decoded_value;
-
-  input_value = a2;
-  sr_net_read_bits(&decoded_value, a2);
-  shifted_bits = (unsigned int)(1 << input_value) >> 1;
-  result = decoded_value & (unsigned int)shifted_bits;
-  product_difference = (float)(decoded_value & (shifted_bits - 1)) * (6.28318530718 / (float)shifted_bits);
-  *a1 = product_difference;
-  if ( (_DWORD)result == shifted_bits )
-    *a1 = -product_difference;
-  return result;
-}
-
-//----- (000000014018D510) ----------------------------------------------------
-__int64            sub_14018D510(_DWORD *a1, int a2, int a3)
-{
-  unsigned int saved_decoded_value;
-  __int64 result;
-  unsigned int saved_decoded_value_2;
-  unsigned int decoded_value;
-
-  sr_net_read_bits(&decoded_value, 1);
-  if ( decoded_value )
-  {
-    sr_net_read_bits(&decoded_value, 1);
-    if ( decoded_value )
-    {
-      return sr_net_read_bits(a1, a3);
-    }
-    else
-    {
-      sr_net_read_bits(&decoded_value, 9);
-      saved_decoded_value_2 = decoded_value;
-      if ( (decoded_value & 0x100) != 0 )
-        saved_decoded_value_2 = decoded_value | 0xFFFFFE00;
-      result = saved_decoded_value_2 + a2;
-      *a1 = result;
-    }
-  }
-  else
-  {
-    sr_net_read_bits(&decoded_value, 4);
-    saved_decoded_value = decoded_value;
-    if ( (decoded_value & 8) != 0 )
-      saved_decoded_value = decoded_value | 0xFFFFFFF0;
-    result = saved_decoded_value + a2;
-    *a1 = result;
-  }
-  return result;
-}
-
 //----- (000000014018D5E0) ----------------------------------------------------
 __int64            sub_14018D5E0(int *a1, int a2, int a3)
 {
@@ -685,15 +583,15 @@ __int64            sub_14018D6D0(int a1, int a2)
   sr_net_read_bits(&decoded_value, 8);
   scaled_index = 318464LL * (int)decoded_value + 36 * input_value;
   scaled_index_2 = 318464 * input_value_2 + 36 * input_value;
-  sub_14018D510(
+  sr_net_read_delta(
     (unsigned int *)((char *)&g_160FFF568 + scaled_index_2),
     *(unsigned int *)((char *)&g_160FFF568 + scaled_index),
     28);
-  sub_14018D510(
+  sr_net_read_delta(
     (unsigned int *)((char *)&g_160FFF56C + scaled_index_2),
     *(unsigned int *)((char *)&g_160FFF56C + scaled_index),
     28);
-  sub_14018D510(
+  sr_net_read_delta(
     (unsigned int *)((char *)&g_160FFF570 + scaled_index_2),
     *(unsigned int *)((char *)&g_160FFF570 + scaled_index),
     28);
@@ -748,36 +646,6 @@ __int64            sub_14018D6D0(int a1, int a2)
     if ( decoded_value == 4095 )
       result = 0xFFFFFFFFLL;
     dword_140404A6C[item_record_offset + 278846113] = result;
-  }
-  return result;
-}
-
-//----- (000000014018DB20) ----------------------------------------------------
-__int64            sub_14018DB20(int a1)
-{
-  __int64 item_record_offset;
-  unsigned int saved_decoded_value;
-  unsigned int saved_decoded_value_2;
-  __int64 result;
-  unsigned int decoded_value;
-
-  item_record_offset = 1760LL * a1;
-  sr_net_read_bits(&dword_140404A6C[item_record_offset + 278845898], 8);
-  sr_net_read_bits(&decoded_value, 10);
-  saved_decoded_value = decoded_value;
-  if ( decoded_value == 1023 )
-    saved_decoded_value = -1;
-  dword_140404A6C[item_record_offset + 278845903] = saved_decoded_value;
-  sr_net_read_bits(&decoded_value, 10);
-  saved_decoded_value_2 = decoded_value;
-  if ( decoded_value == 1023 )
-    saved_decoded_value_2 = -1;
-  dword_140404A6C[item_record_offset + 278845902] = saved_decoded_value_2;
-  result = sr_net_read_bits(&dword_140404A6C[item_record_offset + 278845904], 4);
-  if ( dword_140404A6C[item_record_offset + 278845898] == 39 )
-  {
-    sr_net_read_bits(&dword_140404A6C[item_record_offset + 278846111], 5);
-    return sr_net_read_bits(&dword_140404A6C[item_record_offset + 278846112], 5);
   }
   return result;
 }
@@ -2083,26 +1951,6 @@ __int64            sub_140192470(float *a1, __int64 a2, float a3, int a4)
     --remaining_count;
   }
   while ( remaining_count );
-  return result;
-}
-
-//----- (0000000140192560) ----------------------------------------------------
-__int64            sub_140192560(float *a1, float a2, int a3)
-{
-  char input_value;
-  signed int shifted_bits;
-  __int64 result;
-  float scaled_ratio;
-  int decoded_value;
-
-  input_value = a3;
-  sr_net_read_bits(&decoded_value, a3);
-  shifted_bits = (unsigned int)(1 << input_value) >> 1;
-  result = decoded_value & (unsigned int)shifted_bits;
-  scaled_ratio = (float)(decoded_value & (shifted_bits - 1)) / (float)((float)shifted_bits / a2);
-  *a1 = scaled_ratio;
-  if ( (_DWORD)result == shifted_bits )
-    *a1 = -scaled_ratio;
   return result;
 }
 

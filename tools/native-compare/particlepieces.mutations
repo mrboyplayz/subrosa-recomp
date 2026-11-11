@@ -1,0 +1,86 @@
+piece lit texture order
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, draw_texture_name(*texture_slot));
+        glActiveTexture(GL_TEXTURE0 + 2);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, draw_texture_name(shading_cube_map));
+----
+        glActiveTexture(GL_TEXTURE0 + 2);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, draw_texture_name(shading_cube_map));
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, draw_texture_name(*texture_slot));
+====
+piece stencil texture record
+        if (pass == 2) {
+            glBindTexture(GL_TEXTURE_2D, draw_texture_name(*texture_slot));
+            camera_set_model(position, rotation);
+        }
+----
+        if (pass == 2) {
+            glBindTexture(GL_TEXTURE_2D, draw_texture_name(shading_cube_map));
+            camera_set_model(position, rotation);
+        }
+====
+mask uniform location
+            if (pass == 1)
+                glUniformMatrix4fv(land_mask_uniform_modelviewprojectionmatrix, 1, GL_FALSE,
+                                   renderer_camera->model_view_projection);
+----
+            if (pass == 1)
+                glUniformMatrix4fv(model_uniform_modelviewprojectionmatrix, 1, GL_FALSE,
+                                   renderer_camera->model_view_projection);
+====
+lit enabled attribute
+        glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(1);
+        enabled = 2;
+----
+        glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(1);
+        enabled = 1;
+====
+mesh buffer slot dereference
+    glBindBuffer(GL_ARRAY_BUFFER, draw_buffer_name(piece_mesh_buffer_slot(mesh)));
+----
+    glBindBuffer(GL_ARRAY_BUFFER, draw_buffer_name(mesh));
+====
+vertex stride scale
+    GLsizei stride = (GLsizei)multiply_int(m->stride, 4);
+----
+    GLsizei stride = (GLsizei)multiply_int(m->stride, 5);
+====
+lit uv offset
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (const void *)12);
+----
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (const void *)16);
+====
+draw vertex count
+    glDrawArrays(GL_TRIANGLES, 0, multiply_int(m->triangle_count, 3));
+----
+    glDrawArrays(GL_TRIANGLES, 0, multiply_int(m->triangle_count, 3) + 3);
+====
+identity reset word
+    0.0f, 1.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 1.0f, 0.0f,
+----
+    0.0f, 2.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 1.0f, 0.0f,
+====
+model product order
+    math_mat4_multiply(renderer_camera->model_view, renderer_camera->model, renderer_camera->view);
+----
+    math_mat4_multiply(renderer_camera->model_view, renderer_camera->view, renderer_camera->model);
+====
+projections product operand
+    math_mat4_multiply(renderer_camera->model_view_projection, renderer_camera->model_view,
+                      renderer_camera->projection);
+----
+    math_mat4_multiply(renderer_camera->model_view_projection, renderer_camera->model,
+                      renderer_camera->projection);
+====
+lit unit cleanup
+    if (!pass)
+        glActiveTexture(GL_TEXTURE0);
+----
+    if (pass == 1)
+        glActiveTexture(GL_TEXTURE0);
+====

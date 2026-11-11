@@ -477,75 +477,17 @@ void            sub_140069DE0(unsigned int a1, __int64 a2, float a3)
 #undef callee_output_word_3
 
 //----- (000000014006A140) ----------------------------------------------------
-__int64            sub_14006A140(int a1, int a2, float a3, float a4, unsigned int a5)
+__int64            sr_audio_channel_play(int channel, int sound, float gain, float pitch, unsigned int flags)
 {
-  __int64 input_value;
-  __int64 result;
-  __int64 audio_channel_offset;
-
-  input_value = a2;
-  if ( g_140404A88 )
-  {
-    result = a1;
-    audio_channel_offset = 278720LL * a1;
-    if ( !dword_140404A6C[audio_channel_offset + 327697] )
-    {
-      crt_memset((void *)(uintptr_t)(&dword_140404A6C[audio_channel_offset + 327698]), 0, 0x1102FCu);
-      *(_QWORD *)&dword_140404A6C[audio_channel_offset + 327697] = 1;
-      dword_140404A6C[audio_channel_offset + 327772] = 0;
-      dword_140404A6C[audio_channel_offset + 589917] = 0;
-      *(float *)&dword_140404A6C[audio_channel_offset + 327704] = a3;
-      *(float *)&dword_140404A6C[audio_channel_offset + 327705] = a3;
-      *(float *)&dword_140404A6C[audio_channel_offset + 327706] = a4;
-      *(float *)&dword_140404A6C[audio_channel_offset + 327707] = a4;
-      dword_140404A6C[audio_channel_offset + 327700] = 1;
-      dword_140404A6C[audio_channel_offset + 327702] = input_value;
-      dword_140404A6C[audio_channel_offset + 327708] = a5;
-      result = dword_140404A6C[8 * input_value + 18165783];
-      dword_140404A6C[audio_channel_offset + 606308] = result;
-      *(_QWORD *)&dword_140404A6C[8 * input_value + 18165781] = 0;
-    }
-  }
-  return result;
+  return audio_channel_play(channel, sound, gain, pitch, flags);
 }
 
 //----- (000000014006A240) ----------------------------------------------------
-__int64            sub_14006A240(int a1, int a2, unsigned int *a3, float a4, unsigned int a5, unsigned int a6)
+__int64            sr_audio_channel_play_at(int channel, int sound, unsigned int *position, float gain, unsigned int pitch, unsigned int flags)
 {
-  __int64 input_value;
-  __int64 result;
-  __int64 audio_channel_offset;
-
-  input_value = a2;
-  if ( g_140404A88 )
-  {
-    result = a1;
-    audio_channel_offset = 278720LL * a1;
-    if ( !dword_140404A6C[audio_channel_offset + 327697] )
-    {
-      crt_memset((void *)(uintptr_t)(&dword_140404A6C[audio_channel_offset + 327698]), 0, 0x1102FCu);
-      *(float *)&dword_140404A6C[audio_channel_offset + 327699] = a4;
-      *(_QWORD *)&dword_140404A6C[audio_channel_offset + 327697] = 1;
-      dword_140404A6C[audio_channel_offset + 327772] = 0;
-      dword_140404A6C[audio_channel_offset + 589917] = 0;
-      *(float *)&dword_140404A6C[audio_channel_offset + 327704] = a4;
-      *(float *)&dword_140404A6C[audio_channel_offset + 327705] = a4;
-      dword_140404A6C[audio_channel_offset + 327706] = a5;
-      dword_140404A6C[audio_channel_offset + 327707] = a5;
-      dword_140404A6C[audio_channel_offset + 327700] = 1;
-      dword_140404A6C[audio_channel_offset + 327702] = input_value;
-      dword_140404A6C[audio_channel_offset + 327708] = a6;
-      *(_QWORD *)&dword_140404A6C[8 * input_value + 18165781] = 0;
-      dword_140404A6C[audio_channel_offset + 606302] = *a3;
-      dword_140404A6C[audio_channel_offset + 606303] = a3[1];
-      dword_140404A6C[audio_channel_offset + 606304] = a3[2];
-      result = dword_140404A6C[8 * input_value + 18165783];
-      dword_140404A6C[audio_channel_offset + 606308] = result;
-      dword_140404A6C[audio_channel_offset + 606310] = 1;
-      dword_140404A6C[audio_channel_offset + 606414] = 0;
-    }
-  }
-  return result;
+  float pitch_value;
+  __builtin_memcpy(&pitch_value, &pitch, 4);
+  return audio_channel_play_at(channel, sound, (const float *)position, gain, pitch_value, flags);
 }
 
 //----- (000000014006A5C0) ----------------------------------------------------
@@ -561,131 +503,15 @@ __int64 sub_14006A5C0()
 }
 
 //----- (000000014006B4C0) ----------------------------------------------------
-__int64            sr_audio_mix_channel(int a1, int a2, int a3, int a4)
+__int64            sr_audio_mix_channel(int channel, int voice, int cursor, int count)
 {
-  __int64 emitter_record_offset;
-  __int64 sample_voice_byte_offset;
-  __int64 sound_index;
-  __int64 sound_record_offset;
-  float interpolated_gain;
-  float target_gain;
-  int mixed_sample_count;
-  float target_playback_step;
-  float interpolated_playback_step;
-  float gain_step;
-  float i;
-  float playback_position;
-  int current_sample_index;
-  int sound_sample_count;
-  __int64 emitter_output_offset;
-  float sample_fraction;
-  int next_sample_index;
-  float advanced_playback_position;
-  float sound_length_float;
-
-  emitter_record_offset = 278720LL * a1;
-  sample_voice_byte_offset = emitter_record_offset * 4 + 36LL * a2;
-  sound_index = *(int *)((char *)&g_140544AC4 + sample_voice_byte_offset);
-  if ( (unsigned int)sound_index > 0xFFF )
-    return 0;
-  sound_record_offset = 8 * sound_index;
-  if ( !*(_QWORD *)&dword_140404A6C[8 * sound_index + 18165779] )
-    return 0;
-  interpolated_gain = *(float *)((char *)&g_140544AD0 + sample_voice_byte_offset);
-  if ( dword_140404A6C[emitter_record_offset + 327698] == 1 )
-    *(unsigned int *)((char *)&g_140544ACC + sample_voice_byte_offset) = 0;
-  target_gain = *(float *)((char *)&g_140544ACC + sample_voice_byte_offset);
-  mixed_sample_count = 0;
-  target_playback_step = *(float *)((char *)&g_140544AD4 + sample_voice_byte_offset);
-  interpolated_playback_step = *(float *)((char *)&g_140544AD8 + sample_voice_byte_offset);
-  *(float *)((char *)&g_140544AD0 + sample_voice_byte_offset) = target_gain;
-  *(float *)((char *)&g_140544AD8 + sample_voice_byte_offset) = target_playback_step;
-  gain_step = (float)(target_gain - interpolated_gain) * (float)(1.0 / (float)a4);
-  for ( i = (float)(target_playback_step - interpolated_playback_step) * (float)(1.0 / (float)a4); mixed_sample_count < a4; interpolated_playback_step = interpolated_playback_step + i )
-  {
-    playback_position = *(float *)((char *)&g_140544AC8 + sample_voice_byte_offset);
-    current_sample_index = 0;
-    sound_sample_count = dword_140404A6C[sound_record_offset + 18165778];
-    if ( (int)playback_position < sound_sample_count )
-      current_sample_index = (int)playback_position;
-    emitter_output_offset = 278720LL * a1 + a3;
-    sample_fraction = playback_position - (float)current_sample_index;
-    next_sample_index = 0;
-    if ( current_sample_index + 1 < sound_sample_count )
-      next_sample_index = current_sample_index + 1;
-    a3 = (a3 + 1) & 0x3FFFF;
-    *(float *)&dword_140404A6C[emitter_output_offset + 327773] = (float)((float)((float)((float)(1.0 - sample_fraction)
-                                                                     * *(float *)(*(_QWORD *)&dword_140404A6C[sound_record_offset + 18165779]
-                                                                                + 4LL * current_sample_index))
-                                                             + (float)(sample_fraction
-                                                                     * *(float *)(*(_QWORD *)&dword_140404A6C[sound_record_offset + 18165779]
-                                                                                + 4LL * next_sample_index)))
-                                                     * interpolated_gain)
-                                             + *(float *)&dword_140404A6C[emitter_output_offset + 327773];
-    advanced_playback_position = interpolated_playback_step + *(float *)((char *)&g_140544AC8 + sample_voice_byte_offset);
-    *(float *)((char *)&g_140544AC8 + sample_voice_byte_offset) = advanced_playback_position;
-    sound_length_float = (float)(int)dword_140404A6C[sound_record_offset + 18165778];
-    if ( advanced_playback_position >= sound_length_float )
-    {
-      if ( !*(unsigned int *)((char *)&g_140544ADC + sample_voice_byte_offset) )
-      {
-        *(unsigned int *)((char *)&g_140544ABC + sample_voice_byte_offset) = 0;
-        *(unsigned int *)((char *)&g_140544AC0 + sample_voice_byte_offset) = 2;
-        break;
-      }
-      *(float *)((char *)&g_140544AC8 + sample_voice_byte_offset) = advanced_playback_position - sound_length_float;
-    }
-    ++mixed_sample_count;
-    interpolated_gain = interpolated_gain + gain_step;
-  }
-  dword_140404A6C[sound_record_offset + 18165782] = (int)*(float *)((char *)&g_140544AC8 + sample_voice_byte_offset);
-  return *(unsigned int *)((char *)&g_140544ABC + sample_voice_byte_offset);
+  return audio_mix_channel(channel, voice, cursor, count);
 }
 
 //----- (000000014006B6F0) ----------------------------------------------------
-__int64            sr_audio_mix_emitter(int a1, int a2)
+__int64            sr_audio_mix_emitter(int channel, int count)
 {
-  __int64 audio_channel_offset;
-  int state_address;
-  __int64 audio_channel_offset_2;
-  __int64 remaining_count;
-  __int64 integer_sum;
-  int selection_flag;
-  unsigned int *state_address_2;
-  int i;
-  __int64 result;
-
-  audio_channel_offset = 278720LL * a1;
-  state_address = dword_140404A6C[audio_channel_offset + 327772];
-  if ( a2 > 0 )
-  {
-    audio_channel_offset_2 = 278720LL * a1;
-    remaining_count = (unsigned int)a2;
-    do
-    {
-      integer_sum = audio_channel_offset_2 + state_address;
-      state_address = (state_address + 1) & 0x3FFFF;
-      dword_140404A6C[integer_sum + 327773] = 0;
-      --remaining_count;
-    }
-    while ( remaining_count );
-  }
-  selection_flag = 0;
-  state_address_2 = &dword_140404A6C[audio_channel_offset + 327700];
-  for ( i = 0; i < 8; ++i )
-  {
-    if ( *state_address_2 && (unsigned int)sr_audio_mix_channel(a1, i, dword_140404A6C[audio_channel_offset + 327772], a2) )
-      selection_flag = 1;
-    state_address_2 += 9;
-  }
-  dword_140404A6C[audio_channel_offset + 327772] = (a2 + dword_140404A6C[audio_channel_offset + 327772]) & 0x3FFFF;
-  result = sub_14006A5F0(a1, a2);
-  dword_140404A6C[audio_channel_offset + 589917] = (a2 + dword_140404A6C[audio_channel_offset + 589917]) & 0x3FFFF;
-  if ( !selection_flag && *(float *)&dword_140404A6C[audio_channel_offset + 327703] < *(float *)&dword_140404A6C[audio_channel_offset + 606309] )
-    dword_140404A6C[audio_channel_offset + 327697] = 0;
-  if ( dword_140404A6C[audio_channel_offset + 327698] == 1 )
-    dword_140404A6C[audio_channel_offset + 327697] = 0;
-  return result;
+  return audio_mix_emitter(channel, count);
 }
 
 //----- (000000014006B850) ----------------------------------------------------

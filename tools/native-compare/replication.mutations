@@ -1,0 +1,124 @@
+track entry kind
+    replication_ring_entry(peer, saved)->kind = 1;
+----
+    replication_ring_entry(peer, saved)->kind = 2;
+====
+track stored value
+    replication_ring_entry(peer, replication_ring_head(peer))->index = (int32_t)value;
+----
+    replication_ring_entry(peer, replication_ring_head(peer))->index = 0;
+====
+track head advance mask
+    replication_ring_entry(peer, replication_ring_head(peer))->index = (int32_t)value;
+    uint32_t head = ((uint32_t)replication_ring_head(peer) + 1u) & 0x7FFu;
+----
+    replication_ring_entry(peer, replication_ring_head(peer))->index = (int32_t)value;
+    uint32_t head = ((uint32_t)replication_ring_head(peer) + 1u) & 0x3FFu;
+====
+queue ring full check
+    uint32_t next = ((uint32_t)replication_ring_head(peer) + 1u) & 0x7FFu;
+    if ((int32_t)next == replication_ring_limit(peer))
+        return next;
+----
+    uint32_t next = ((uint32_t)replication_ring_head(peer) + 1u) & 0x7FFu;
+    if ((int32_t)next != replication_ring_limit(peer))
+        return next;
+====
+queue slot walk stride
+        index++;
+        walked++;
+        slot++;
+----
+        index++;
+        walked++;
+        slot += 2;
+====
+queue slot walk bound
+        if (walked >= 1024)
+            return (uintptr_t)slot;
+----
+        if (walked >= 1023)
+            return (uintptr_t)slot;
+====
+queue slot marking
+    slot->pending = 1;
+----
+    slot->pending = 2;
+====
+queue entry kind
+    replication_ring_entry(peer, replication_ring_head(peer))->kind = 0;
+----
+    replication_ring_entry(peer, replication_ring_head(peer))->kind = 1;
+====
+queue event words
+    replication_ring_entry(peer, replication_ring_head(peer))->arg1 = arg1;
+    replication_ring_entry(peer, replication_ring_head(peer))->arg2 = arg2;
+----
+    replication_ring_entry(peer, replication_ring_head(peer))->arg1 = arg2;
+    replication_ring_entry(peer, replication_ring_head(peer))->arg2 = arg1;
+====
+queue head advance re-read
+    uint32_t head = ((uint32_t)replication_ring_head(peer) + 1u) & 0x7FFu;
+    replication_ring_head(peer) = (int32_t)head;
+    return head;
+}
+
+int net_replication_write_item_state(int item)
+----
+    uint32_t head = ((uint32_t)replication_ring_head(peer) + 1u) & 0x7FFu;
+    replication_ring_head(peer) = (int32_t)head;
+    return 0x923u;
+}
+
+int net_replication_write_item_state(int item)
+====
+write parent width
+    net_write_bits((uint32_t *)&record->parent, 10);
+----
+    net_write_bits((uint32_t *)&record->parent, 9);
+====
+write field order
+    net_write_bits((uint32_t *)&record->parent, 10);
+    net_write_bits((uint32_t *)&record->holder, 10);
+----
+    net_write_bits((uint32_t *)&record->holder, 10);
+    net_write_bits((uint32_t *)&record->parent, 10);
+====
+write slot width
+    int result = net_write_bits((uint32_t *)&record->slot, 4);
+----
+    int result = net_write_bits((uint32_t *)&record->slot, 3);
+====
+write type 39 condition
+    if (record->type == 39) {
+        net_write_bits(&item_unknown_368(item), 5);
+----
+    if (record->type == 38) {
+        net_write_bits(&item_unknown_368(item), 5);
+====
+read type width
+    net_read_bits((uint32_t *)&record->type, 8);
+----
+    net_read_bits((uint32_t *)&record->type, 7);
+====
+read parent sentinel
+    int32_t parent = decoded == 0x3FFu ? -1 : (int32_t)decoded;
+----
+    int32_t parent = decoded == 0x3FFu ? -2 : (int32_t)decoded;
+====
+read holder sentinel
+    int32_t holder = decoded == 0x3FFu ? -1 : (int32_t)decoded;
+----
+    int32_t holder = decoded == 0x3FFu ? 0 : (int32_t)decoded;
+====
+read slot width
+    int result = net_read_bits((uint32_t *)&record->slot, 4);
+----
+    int result = net_read_bits((uint32_t *)&record->slot, 5);
+====
+read type 39 condition
+    if (record->type == 39) {
+        net_read_bits(&item_unknown_368(item), 5);
+----
+    if (record->type == 25) {
+        net_read_bits(&item_unknown_368(item), 5);
