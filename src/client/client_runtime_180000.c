@@ -878,15 +878,16 @@ __attribute__((naked)) __int64 sub_140198EFF()
 /* A jump to SDL_GetRelativeMouseState, as in the original: every argument register passes through. */
 __attribute__((naked)) __int64 sub_140198F05()
 {
-  __asm__("movabs $spawn_console_mouse_state, %rax\n\tjmp *%rax");
+  __asm__("movabs $__imp_SDL_GetRelativeMouseState, %rax\n\tjmp *(%rax)");
 }
 
 //----- (0000000140198F0B) ----------------------------------------------------
 // attributes: thunk
-__int64            sub_140198F0B(__int64 a1, __int64 a2, __int64 a3)
+/* A jump to SDL_SetRelativeMouseMode, as in the original: every argument register passes through. */
+__attribute__((naked)) __int64 sub_140198F0B(__int64 a1, __int64 a2, __int64 a3)
 {
-  extern int spawn_console_relative_mode(int);
-  return spawn_console_relative_mode((int)a1);
+  (void)a1; (void)a2; (void)a3;
+  __asm__("movabs $__imp_SDL_SetRelativeMouseMode, %rax\n\tjmp *(%rax)");
 }
 
 //----- (0000000140198F11) ----------------------------------------------------

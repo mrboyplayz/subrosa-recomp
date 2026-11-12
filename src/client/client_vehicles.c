@@ -25251,8 +25251,9 @@ LABEL_102:
       {
         component_delta = scaled_value_2 + 6.28318530718;
       }
-      state_address_8[2] = LODWORD(component_delta);
-      scaled_ratio = component_delta;
+      /* the original converts the wrapped double back to float here (cvtpd2ps) before the store */
+      scaled_ratio = (float)component_delta;
+      state_address_8[2] = LODWORD(scaled_ratio);
 LABEL_133:
       call_result = sub_1401F8AC0(COERCE_DOUBLE((unsigned __int64)LODWORD(scaled_ratio)), (__int64)state_address_2, scaled_ratio);
       *state_address_8 = 0;
@@ -25263,7 +25264,7 @@ LABEL_133:
       weighted_sum_14 = (float)((float)(SR_VEC_LANES(128, call_result, f32)[0] * weighted_sum_13) * SR_VEC_LANES(128, call_result, f32)[0]) + (float)((float)(reordered_vector * weighted_sum_13) * reordered_vector);
       if ( weighted_sum_14 >= weighted_sum_12 )
       {
-        limited_value_2 = weighted_sum_13 + (float)(fminf((float)(weighted_sum_14 - weighted_sum_12) * 32.0, 2.0) * -0.0027777778);
+        limited_value_2 = weighted_sum_13 + (float)(fminf((float)(weighted_sum_14 - weighted_sum_12) * 32.0f, 2.0f) * -0.0027777778f);
         scaled_value_5 = limited_value_2 * reordered_vector;
         scaled_value_4 = limited_value_2 * float_lane_0;
         *((float *)state_address_8 - 1) = scaled_value_5;
@@ -25279,7 +25280,7 @@ LABEL_133:
       }
       else
       {
-        limited_value = weighted_sum_13 + (float)(fminf((float)(weighted_sum_12 - weighted_sum_14) * 16.0, 1.0) * 0.0013888889);
+        limited_value = weighted_sum_13 + (float)(fminf((float)(weighted_sum_12 - weighted_sum_14) * 16.0f, 1.0f) * 0.0013888889f);
         scaled_value_3 = limited_value * reordered_vector;
         scaled_value_4 = limited_value * SR_VEC_LANES(128, call_result, f32)[0];
         *((float *)state_address_8 - 1) = scaled_value_3;

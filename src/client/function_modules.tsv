@@ -312,6 +312,8 @@
 140115E80	client_net_bits.c
 140115F70	client_net_bits.c
 140116210	client_physics_tick.c
+140116A40	client_player_ring.c
+140116B00	client_player_ring.c
 14011B8F0	client_area_bounds.c
 14011B960	client_area_bounds.c
 14011B9F0	client_area_bounds.c

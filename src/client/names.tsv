@@ -694,3 +694,5 @@
 140105AB0	sr_net_replication_queue_event
 14010EF40	sr_net_replication_write_item_state
 14018DB20	sr_net_replication_read_item_state
+140116A40	sr_player_event_text
+140116B00	sr_player_event_values

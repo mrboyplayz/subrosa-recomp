@@ -1436,8 +1436,6 @@ LABEL_348:
     g_151620C60 = 1;
     g_151620CE4 = 0;
     int sr_test_human = sub_140053840(sr_test_position, sr_test_rotation, 0);
-    { extern void practice_remember_spawn(const float *position);
-      practice_remember_spawn(sr_test_position); }
     if (sr_test_human < 0 || sr_test_human >= 256)
     {
       g_151620C60 = 0;
@@ -1772,10 +1770,6 @@ LABEL_348:
         (*(__int128 *)(void *)sr_reset_spawn_rotation) = xmmword_140278D30;
         (*(__int128 *)(void *)(sr_reset_spawn_rotation+4)) = xmmword_140278D30;
         masked_bits_10 = sub_140053840((float *)&(*(int64_t *)(void *)sr_reset_player_position), (float *)&(*(__int128 *)(void *)sr_reset_spawn_rotation), iteration_count_7);
-        if (iteration_count_7 == 0) {
-          extern void practice_remember_spawn(const float *position);
-          practice_remember_spawn((const float *)sr_reset_player_position);
-        }
         saved_masked_bits = masked_bits_10;
         *(state_address_29 - 3524) = masked_bits_10;
         state_address_29[5] = 1;

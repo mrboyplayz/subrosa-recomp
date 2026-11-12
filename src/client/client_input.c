@@ -1,5 +1,4 @@
 #include "shared_client.h"
-#include "../engine/spawn_console.h"
 
 //----- (000000014007CA90) ----------------------------------------------------
 // Candidate keyboard snapshot wrapper: copies 323 bytes from SDL_GetKeyboardState(NULL) into caller buffer.
@@ -120,7 +119,6 @@ void input_poll_events_candidate()
   g_160FC481C = 0;
   while ( sr_event_poll(sr_event) )
   {
-    if (spawn_console_event(sr_event)) continue;
     memcpy(&event_type, sr_event, 4);
     window_event_type = (char)sr_event[12];
     memcpy(&event_data_first, sr_event + 16, 4);

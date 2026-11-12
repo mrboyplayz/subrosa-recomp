@@ -2836,8 +2836,6 @@ void sub_1400FE760()
 //----- (0000000140118B70) ----------------------------------------------------
 void            sub_140118B70(int a1)
 {
-  extern int practice_death_menu(void);
-  if (practice_death_menu()) return;
   __int64 input_value;
   unsigned int state_word;
   __int64 scaled_index;

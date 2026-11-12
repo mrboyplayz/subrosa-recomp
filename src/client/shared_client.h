@@ -1835,9 +1835,9 @@ __int64            sub_1401164B0(int a1, int a2);
 
 __int64            sub_1401166B0(int a1);
 
-__int64            sub_140116A40(int a1,      __m128i *a2);
+__int64            sr_player_event_text(int a1,      __m128i *a2);
 
-__int64            sub_140116B00(int a1, unsigned int a2, unsigned int a3, unsigned int a4);
+__int64            sr_player_event_values(int a1, unsigned int a2, unsigned int a3, unsigned int a4);
 
 unsigned int *           sub_140116CA0(int a1);
 
@@ -15199,11 +15199,11 @@ __int64            sub_1401166B0(int a1)
 ;
 
 //----- (0000000140116A40) ----------------------------------------------------
-__int64            sub_140116A40(int a1,      __m128i *a2)
+__int64            sr_player_event_text(int a1,      __m128i *a2)
 ;
 
 //----- (0000000140116B00) ----------------------------------------------------
-__int64            sub_140116B00(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
+__int64            sr_player_event_values(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 ;
 
 //----- (0000000140116CA0) ----------------------------------------------------

@@ -809,45 +809,6 @@ __int64            sub_1401166B0(int a1)
 #undef frame_float_at_80
 #undef unused_frame_slot_88
 
-//----- (0000000140116A40) ----------------------------------------------------
-__int64            sub_140116A40(int a1,      __m128i *a2)
-{
-  __int64 element_index;
-  unsigned __int64 byte_count;
-  __int64 player_record_offset;
-  __int64 result;
-
-  element_index = -1;
-  do
-    ++element_index;
-  while ( SR_VEC_PTR_LANES(128, a2, i8)[element_index] );
-  byte_count = element_index & 0x3F;
-  player_record_offset = 3597LL * a1;
-  dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856367 + player_record_offset] = 1;
-  dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856368 + player_record_offset] = byte_count;
-  crt_memcpy((__m128i *)&dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856372 + player_record_offset], a2, byte_count);
-  dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856369 + player_record_offset] = g_183E93544;
-  result = ((unsigned __int8)dword_140404A6C[player_record_offset + 71856362] + 1) & 0x3F;
-  dword_140404A6C[player_record_offset + 71856362] = result;
-  return result;
-}
-
-//----- (0000000140116B00) ----------------------------------------------------
-__int64            sub_140116B00(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
-{
-  __int64 player_record_offset;
-  __int64 result;
-
-  player_record_offset = 3597LL * a1;
-  dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856367 + player_record_offset] = 3;
-  dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856368 + player_record_offset] = a2;
-  dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856369 + player_record_offset] = a3;
-  dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856370 + player_record_offset] = a4;
-  result = ((unsigned __int8)dword_140404A6C[player_record_offset + 71856362] + 1) & 0x3F;
-  dword_140404A6C[player_record_offset + 71856362] = result;
-  return result;
-}
-
 //----- (0000000140116CA0) ----------------------------------------------------
 unsigned int *           sub_140116CA0(int a1)
 {

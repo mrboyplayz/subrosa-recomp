@@ -1,5 +1,4 @@
 #include "shared_client.h"
-#include "../engine/spawn_console.h"
 
 //----- (0000000140096440) ----------------------------------------------------
 // Main frame/update hub candidate: polls input, handles connection/game state, invokes UI/menu draw, render uniform cache, and gameplay mouse/camera state.
@@ -335,7 +334,7 @@ void sr_ClientMain()
       input_poll_events_candidate();
       if ( !g_183EBFAA0 || (selection_code_3 = 3, g_18329CC24) )
         selection_code_3 = 2;
-      if (!spawn_console_open()) sub_140076770(selection_code_3);
+      sub_140076770(selection_code_3);
       sub_140198E40();
       if ( !g_183EBFAA0 && g_183F7CB80 )
       {
@@ -1347,7 +1346,6 @@ LABEL_253:
       selection_flag = 0;
 LABEL_254:
       sr_DrawMenu(selection_flag);
-      spawn_console_draw();
       vector_result_9 = ((__m128)_mm_cvtsi64_si128((long long)(0)));
       vector_result_10 = ((__m128)_mm_cvtsi64_si128((long long)(0)));
       dword_140404A6C[g_16B27DF88 + 179955016] = sub_140198F9B() - g_16B27DF80;

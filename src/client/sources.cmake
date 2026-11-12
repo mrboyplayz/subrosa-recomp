@@ -86,6 +86,7 @@ set(SR_CLIENT_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/client_physics_rotation.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_physics_solve.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_physics_tick.c"
+    "${CMAKE_CURRENT_LIST_DIR}/client_player_ring.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_practice.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_recovery_000000.c"
     "${CMAKE_CURRENT_LIST_DIR}/client_recovery_020000.c"

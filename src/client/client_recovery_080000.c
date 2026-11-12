@@ -6046,9 +6046,9 @@ void            sub_14009EA20(int a1, int a2)
     if ( !g_18329B180 )
     {
       if ( !BYTE1(g_183F7C974) && BYTE1(g_183F7C774) )
-        sub_140116B00(input_value, 1u, byte1_result, byte1_result ^ 1);
+        sr_player_event_values(input_value, 1u, byte1_result, byte1_result ^ 1);
       if ( LOBYTE(g_183F7C968) && !LOBYTE(g_183F7C768) )
-        sub_140116B00(input_value, 8u, byte1_result, byte1_result ^ 1);
+        sr_player_event_values(input_value, 8u, byte1_result, byte1_result ^ 1);
       if ( integer_difference == -1
         || (scaled_index = 1760LL * integer_difference, ((dword_140404A6C[scaled_index + 278845898] - 25) & 0xFFFFFFF7) != 0)
         || dword_140404A6C[scaled_index + 278846052] != 1 )
