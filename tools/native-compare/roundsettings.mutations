@@ -1,0 +1,64 @@
+first key restarts at 0
+sub_1400ED940("config_round.txt");
+        read_key("roundtime=", &s->round_minutes);
+----
+sub_1400ED940("config_round.txt");
+        parser_scan->position = 0;
+        read_key("roundtime=", &s->round_minutes);
+====
+second key keeps the cursor
+parser_scan->position = 0;
+        read_key("startcash=", &s->start_cash);
+----
+read_key("startcash=", &s->start_cash);
+====
+cursor left after load
+read_key("teamdamage=", &team_damage);
+        parser_scan->position = 0;
+----
+read_key("teamdamage=", &team_damage);
+====
+round length cap
+else if (s->round_minutes > 60)
+        s->round_minutes = 60;
+----
+else if (s->round_minutes > 61)
+        s->round_minutes = 61;
+====
+team damage cap
+else if (team_damage > 200)
+        team_damage = 200;
+----
+else if (team_damage > 255)
+        team_damage = 255;
+====
+default team damage
+s->team_damage = 50;
+----
+s->team_damage = 0;
+====
+failed open still clamps
+if (!file)
+            return;
+----
+if (!file)
+            file = 0;
+====
+weekly key without its equals sign
+read_key("weekly=", &s->weekly);
+----
+read_key("weekly", &s->weekly);
+====
+saved team damage before clamping
+team_damage = s->team_damage;
+    } else {
+----
+team_damage = s->round_minutes;
+    } else {
+====
+defaults word order
+s->weekly = round_settings_defaults[2];
+        s->bonus_ratio = round_settings_defaults[3];
+----
+s->weekly = round_settings_defaults[3];
+        s->bonus_ratio = round_settings_defaults[2];
