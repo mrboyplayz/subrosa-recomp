@@ -5,15 +5,14 @@
 #include "../engine/collision.h"
 #include "../engine/net_bits.h"
 #include "../engine/text_helpers.h"
+#include "../engine/clock.h"
 
 //----- (000000014007C980) ----------------------------------------------------
 __int64 sr_clock_milliseconds()
 {
-  __int64 PerformanceCount;
-
-  if ( !g_160FC4828 )
-    return 0;
-  QueryPerformanceCounter((LARGE_INTEGER *)&PerformanceCount);
-  return 1000 * (PerformanceCount - g_160FC4838) / g_160FC4830;
+  /* Clean implementation: src/engine/clock.c, checked against the original
+     executable (tools/native-compare). This wrapper keeps the entry point the
+     recompiled callers use. */
+  return clock_milliseconds();
 }
 
