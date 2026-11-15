@@ -25,6 +25,27 @@ jobs:
           python-version: '3.12'
       - run: python -m compileall -q scripts tools
 
+  consistency:
+    name: Source consistency
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Invalid UTF-8 (files saved in a legacy code page) and committed
+      # merge conflict markers.
+      - name: Text files
+        run: python tools/check_text.py
+      # Function ownership, CMake source list, names.tsv and local_names.tsv:
+      # a restoration that wraps a routine must drop its dead local names.
+      - name: Client modules and names
+        run: python tools/cleanup/split_client_modules.py --check
+      # The README progress block must match the real wrapper count.
+      - name: README progress
+        run: python scripts/progress.py --check
+
   build:
     name: Build client (Windows, MinGW)
     runs-on: windows-latest
@@ -67,6 +88,10 @@ jobs:
             build/sdl2012-src
             build/sdl2012-build
           key: sdl-2.0.12-${{ runner.os }}-${{ hashFiles('scripts/build.py') }}
+
+      - name: Quick-build cache tests
+        shell: pwsh
+        run: python tools/test_build_quick.py
 
       - name: Build
         shell: pwsh
