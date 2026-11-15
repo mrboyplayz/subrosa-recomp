@@ -21,32 +21,8 @@ __m128            sub_140187270(float a1, float a2, float a3, double a4, float a
 //----- (000000014018C250) ----------------------------------------------------
 void            sub_14018C250(int a1)
 {
-  __int64 record_word_offset;
-  __int64 remaining_count;
-  signed int state_word;
-  unsigned int *buffer_cursor;
-  __int64 saved_state_word;
-  unsigned int loaded_word;
-
-  if ( a1 != -1 )
-  {
-    record_word_offset = 396LL * a1;
-    remaining_count = (int)dword_140404A6C[record_word_offset + 225426186];
-    if ( remaining_count > 0 )
-    {
-      state_word = g_15FD06200;
-      buffer_cursor = &dword_140404A6C[record_word_offset + 225426187];
-      do
-      {
-        saved_state_word = state_word;
-        loaded_word = *buffer_cursor++;
-        dword_140404A6C[saved_state_word + 132384230] = loaded_word;
-        state_word = ++g_15FD06200;
-        --remaining_count;
-      }
-      while ( remaining_count );
-    }
-  }
+    extern void road_queue_links(int road);
+    road_queue_links(a1);
 }
 
 //----- (000000014018C2B0) ----------------------------------------------------
