@@ -23,9 +23,9 @@ Routines rewritten as readable, verified engine C:
 4,229 original routines exist in total; the 2,787 statically linked
 runtime and 323 stb library routines are recovered as decompiled C and
 are not counted here. The file-by-file status lives in
-`src/engine/README.md`; regenerate the bar with
-`python scripts/progress.py --write` (CI fails pull requests whose bar is
-stale).
+`src/engine/README.md`. The bar updates itself: after every merge to
+master, the README progress workflow runs `python scripts/progress.py
+--write` and commits the result, so pull requests leave it alone.
 
 ## Build
 
