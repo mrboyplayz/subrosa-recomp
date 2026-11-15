@@ -2078,10 +2078,17 @@ __int64            sub_1401386C0(
 //----- (0000000140139560) ----------------------------------------------------
 __int64 sub_140139560()
 {
-  /* Clean implementation: src/engine/terrain.c, checked against the original executable
-     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
-  extern int64_t terrain_track_boxes_setup(void);
-  return terrain_track_boxes_setup();
+  sub_14003FB90(6, 0.0, 2.0, -1.625, 4.0, 4.0, 0.25);
+  g_1A760C010 = 1080033280;
+  sub_14003FB90(1, 0.0, 0.0, 0.0, 0.375, 6.0, 0.375);
+  sub_14003FB90(1, 0.0, 3.0, -5.0, 0.25, 0.25, 10.0);
+  sub_14003FB90(1, 0.0, 3.0, -6.0, 0.3125, 1.0, 0.5);
+  sub_14003FB90(1, 0.0, 3.0, -10.0, 0.3125, 1.0, 0.5);
+  g_1A7602FA8 = 1078984704;
+  g_1A7602FAC = -1082130432;
+  g_1A7602FA4 = 0;
+  g_1A7600B98 = 1077936128;
+  return sub_14003FB90(4, 0.0, 2.625, -8.0, 0.0625, 0.5, 2.0);
 }
 
 //----- (0000000140139740) ----------------------------------------------------
