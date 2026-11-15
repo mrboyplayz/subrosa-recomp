@@ -11,6 +11,8 @@ The goal: take those routines one by one and **rewrite them into clean, readable
 
 1. **Find one.** Browse `src/client/names.tsv` and the decompiler stubs in `src/client/client_*.c` for routines that still look like `__int64 __fastcall sub_140XXXXXXX(...)` junk. Routines come in clusters per module — grab a whole cluster.
 
+   **Check upstream first (from now on, do this periodically, not just at ship time):** run `git fetch upstream` and re-check `git log upstream/master --oneline` plus the merged PRs (`gh pr list --repo mrboyplayz/subrosa-recomp --state merged`) before picking. Upstream moves fast and other PRs land whole clusters — verify the routine/cluster you are about to start is not already wrapped in `src/client/client_*.c` on `upstream/master`. Redoing a completed routine wastes the whole loop.
+
 2. **Read the assembly.** The disassembly is the spec, never the decompiled C alone:
    ```
    objdump -d --start-address=0x140XXXXXX --stop-address=0x140YYYYYY subrosaactual/subrosa.exe
@@ -62,6 +64,7 @@ Nobody trusts "looks right". A routine is done when:
 | Session state / next steps | `HANDOFF.md` (local only, gitignored; `KNOWLEDGE.md` is tracked) |
 
 ## Gotchas that cost us time
+- **Upstream outruns you.** Clusters get finished and merged by other PRs while you work. Re-sync with `git fetch upstream` periodically (at pick time AND mid-session), not just in step 8 — a routine already wrapped upstream is done; drop it and pick another.
 - One port-build pass is **~5-10 minutes** — a tool timeout under that looks like a hang. It isn't. Use background jobs and poll.
 - Background jobs die at **600 s** here. `mutate.py` rebuilds the engine per mutant — budget for it.
 - Never run two `mutate.py` of the **same suite** at once (they fight over `build/mutate/<suite>/` and crash with `WinError 145`). Different suites can run in parallel.

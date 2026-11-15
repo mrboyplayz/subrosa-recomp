@@ -21,4 +21,13 @@ uint32_t net_read_scaled_fraction(float *out, float scale, int bits);
    read that fails leaves the flag bits. 0x14018D510. */
 uint32_t net_read_delta(uint32_t *out, int32_t base, int bits);
 
+/* Adaptive value reader with a no-change flag: when the flag at
+   0x16B2A224C is set and the first bit reads zero the value is the base,
+   otherwise a bit pair picks the full signed word of the given bits, or
+   one of the two widths at 0x165D84960/0x165D84964; the word is
+   sign-extended from its top bit and added to the base, and when the value
+   plus 128 fits a byte the histogram dword at its byte grows and the
+   address of 0x16B165F60 is returned, the rest the integer. 0x14018D5E0. */
+int64_t net_read_adaptive_value(int *out, int base, int bits);
+
 #endif

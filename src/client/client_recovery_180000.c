@@ -479,45 +479,10 @@ __int64            sub_14018C6A0(float *a1, float *a2, double a3, float a4, floa
 //----- (000000014018D5E0) ----------------------------------------------------
 __int64            sub_14018D5E0(int *a1, int a2, int a3)
 {
-  __int64 result;
-  int bit_count;
-  int saved_decoded_value;
-  int decoded_value;
-
-  if ( g_16B2A224C )
-  {
-    result = sr_net_read_bits(&decoded_value, 1);
-    if ( !decoded_value )
-    {
-      *a1 = a2;
-      return result;
-    }
-  }
-  sr_net_read_bits(&decoded_value, 1);
-  if ( decoded_value )
-  {
-    sr_net_read_bits(&decoded_value, 1);
-    if ( decoded_value )
-      return sr_net_read_signed_bits(a1, a3);
-    bit_count = g_165D84964;
-  }
-  else
-  {
-    bit_count = g_165D84960;
-  }
-  sr_net_read_bits(&decoded_value, bit_count);
-  if ( (decoded_value & (1 << (bit_count - 1))) == 1 << (bit_count - 1) )
-    saved_decoded_value = decoded_value | (-1 << bit_count);
-  else
-    saved_decoded_value = decoded_value;
-  *a1 = saved_decoded_value + a2;
-  result = (unsigned int)(saved_decoded_value + 128);
-  if ( (unsigned int)result <= 0xFF )
-  {
-    ++dword_140404A6C[(unsigned __int8)saved_decoded_value + 179992058];
-    return (__int64)&g_16B165F60;
-  }
-  return result;
+  /* Clean implementation: src/engine/net_decode.c, checked against the original executable
+     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
+  extern int64_t net_read_adaptive_value(int *out, int base, int bits);
+  return net_read_adaptive_value(a1, a2, a3);
 }
 
 //----- (000000014018D6D0) ----------------------------------------------------

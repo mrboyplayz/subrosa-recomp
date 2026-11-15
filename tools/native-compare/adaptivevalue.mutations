@@ -1,0 +1,35 @@
+the no-change flag bit is ignored
+        if (decoded == 0) {
+            *out = base;
+            return result;
+        }
+----
+        if (decoded != 0) {
+            *out = base;
+            return result;
+        }
+====
+the wide branch takes the narrow width
+        bit_count = (int32_t)SR_GLOBAL(uint32_t, 0x165D84964ULL);
+----
+        bit_count = (int32_t)SR_GLOBAL(uint32_t, 0x165D84960ULL);
+====
+the value is added without the base
+    *out = add_int(saved, base);
+----
+    *out = saved;
+====
+the sign extension takes the wrong top bit
+    uint32_t high = 1u << ((bit_count - 1) & 31);
+----
+    uint32_t high = 1u << ((bit_count - 2) & 31);
+====
+the histogram increment lands one dword early
+        ++SR_GLOBAL(uint32_t, SR_STATE_BASE + 4ULL * ((uint64_t)(uint8_t)saved + 179992058ULL));
+----
+        ++SR_GLOBAL(uint32_t, SR_STATE_BASE + 4ULL * ((uint64_t)(uint8_t)saved + 179992057ULL));
+====
+the byte fit check drops the 128 offset
+    result = (uint32_t)add_int(saved, 128);
+----
+    result = (uint32_t)add_int(saved, 127);

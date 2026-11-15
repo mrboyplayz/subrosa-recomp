@@ -1,0 +1,14 @@
+the low sixteen bits are not truncated
+    return (unsigned int)(unsigned short)sub_14009DE80();
+----
+    return (unsigned int)sub_14009DE80();
+====
+the read result is replaced by zero
+    return (unsigned int)(unsigned short)sub_14009DE80();
+----
+    return 0;
+====
+the short return is sign-extended not zero-extended
+    return (unsigned int)(unsigned short)sub_14009DE80();
+----
+    return (unsigned int)(short)sub_14009DE80();
