@@ -84,6 +84,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `math_random_double.c`, `math_random_double.h` | closed, half-open, open, and 53-bit random doubles with native unsigned conversions and exact constants | 0x14009DFB0, 0x14009DFD0, 0x14009DFF0, 0x14009E020 |
 | `world_block_maintenance.c`, `world_block_maintenance.h` | per-voxel unknown_808 reads/writes, quarter-mesh release and block mesh invalidation | 0x140012F30, 0x140017C40, 0x140012940, 0x140017890 |
 | `round_settings.c`, `round_settings.h` | round mode settings: defaults, config_round.txt load and save through the parser window, and the round length (1..60 minutes) and team damage (0..200) clamps | 0x1400EC410 |
+| `round_update.c`, `round_update.h` | the round mode tick: lobby spawning, ready jump and round set-up (vehicles, desk phones, manager announcements), the running round's hourly resets, speed-ups, door opening and end, and the round-over announcements and manager choice | 0x1400F6C50 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
