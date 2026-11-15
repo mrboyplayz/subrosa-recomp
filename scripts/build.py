@@ -94,6 +94,10 @@ def compile_all(jobs):
         results = list(pool.map(lambda item: compile_c(item[0], item[1], objects), work))
     failed = [source.name for target, source in results if target is None]
     if failed:
+        # Show the first failure's log so a CI run explains itself.
+        first = objects / (Path(failed[0]).stem + '.log')
+        if first.is_file():
+            print(first.read_text(encoding='utf-8', errors='replace')[:3000], file=sys.stderr)
         fail('could not compile %s (see the .log files in %s)' % (', '.join(failed), objects))
     return [target for target, source in results]
 
