@@ -82,14 +82,19 @@ def compile_c(source, flags, objects):
     return target, source
 
 
-def compile_all(jobs):
-    objects = BUILD / 'objects'
-    objects.mkdir(parents=True, exist_ok=True)
+def compilation_units():
     work = [(s, CLIENT_FLAGS) for s in sorted((SRC / 'client').glob('client_*.c'))]
     work += [(s, ENGINE_FLAGS) for s in sorted((SRC / 'engine').glob('*.c'))]
     work += [(SRC / 'recovered/client_leaf.c', LEAF_FLAGS), (SRC / 'client/import_shim.c', IMPORT_SHIM_FLAGS),
              (SRC / 'recovered/client_dname.c', LEAF_FLAGS), (SRC / 'rebuild/client_window_mode.c', WINDOW_FLAGS),
              (SRC / 'rebuild/client_debug_console.c', WINDOW_FLAGS + ['-Wall', '-Wextra', '-Werror'])]
+    return work
+
+
+def compile_all(jobs):
+    objects = BUILD / 'objects'
+    objects.mkdir(parents=True, exist_ok=True)
+    work = compilation_units()
     with ThreadPoolExecutor(max_workers=jobs) as pool:
         results = list(pool.map(lambda item: compile_c(item[0], item[1], objects), work))
     failed = [source.name for target, source in results if target is None]
@@ -119,7 +124,7 @@ def import_libraries():
     return libraries
 
 
-def link(objects, data, libraries):
+def link_command(objects, data, libraries, output):
     by_stem = {o.stem: o for o in objects}
     runtime = ['client_leaf', 'import_shim']
     late = ['client_dname']
@@ -130,7 +135,12 @@ def link(objects, data, libraries):
                + [str(by_stem[n]) for n in late] + [str(data['client_native_gaps'])]
                + [str(by_stem[n]) for n in tail] + [str(l) for l in libraries]
                # The recompiled WinMain was renamed so that it does not clash with the C runtime's.
-               + ['-Wl,--defsym,WinMain=WinMain_sr', '-o', str(BUILD / 'subrosa-recomp.exe')] + LINK_LIBRARIES)
+               + ['-Wl,--defsym,WinMain=WinMain_sr', '-o', str(output)] + LINK_LIBRARIES)
+    return command
+
+
+def link(objects, data, libraries):
+    command = link_command(objects, data, libraries, BUILD / 'subrosa-recomp.exe')
     if run(command, BUILD / 'link.log'):
         fail('link failed (see %s)' % (BUILD / 'link.log'))
     return BUILD / 'subrosa-recomp.exe'
