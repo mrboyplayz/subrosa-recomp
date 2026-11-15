@@ -15,9 +15,9 @@ This recompile is not complete! Please contribute to the repo. We would apprecia
 Routines rewritten as readable, verified engine C:
 
 ```
-315 of 1,119 game routines restored (28%)
+317 of 1,119 game routines restored (28%)
 [###########-----------------------------]
-       315 done  ·  804 to go
+       317 done  ·  802 to go
 ```
 
 4,229 original routines exist in total; the 2,787 statically linked
