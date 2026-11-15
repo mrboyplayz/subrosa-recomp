@@ -123,8 +123,9 @@ int main(void)
     nc_map_image();
     install_recorders();
     for (int n = 0; n < nc_cases(1000); n++) {
-        /* The shadow-volume pass picks its depth function from this word. */
-        uint32_t reversed = (uint32_t)(n & 1);
+        /* The shadow-volume pass picks its depth function from this word.
+           Alternate it per pass of four, so that pass sees both values. */
+        uint32_t reversed = (uint32_t)((n / 4) & 1);
         SR_GLOBAL(uint32_t, 0x151E46194ULL) = reversed;
         switch (n % 4) {
         case 0: notequal_state(); break;
