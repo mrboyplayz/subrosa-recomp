@@ -1,0 +1,26 @@
+reject last record
+if (record >= WORLD_BLOCK_RECORD_CAPACITY)
+----
+if (record >= WORLD_BLOCK_RECORD_CAPACITY - 1)
+====
+channel order
+sub_1401941F0(3, mesh);
+        sub_1401941F0(5, mesh);
+----
+sub_1401941F0(5, mesh);
+        sub_1401941F0(3, mesh);
+====
+skip last quarter
+quarter < 4
+----
+quarter < 3
+====
+counter record
+if (record == 1008)
+----
+if (record == 1009)
+====
+accept one-past-capacity record
+if (record >= WORLD_BLOCK_RECORD_CAPACITY)
+----
+if (record > WORLD_BLOCK_RECORD_CAPACITY)
