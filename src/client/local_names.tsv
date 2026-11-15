@@ -19385,12 +19385,6 @@
 140117820	v6	iteration_count_2
 140117820	v7	scaled_index
 140117820	v8	buffer_cursor_2
-1401189F0	v3	player_record_offset
-1401189F0	v4	table_value
-1401189F0	v5	table_value_2
-1401189F0	v6	scaled_index
-1401189F0	v7	component_sum
-1401189F0	v8	weighted_sum
 14011AF80	v2	player_record_offset
 14011AF80	v5	table_value
 14011AF80	v6	scaled_index
