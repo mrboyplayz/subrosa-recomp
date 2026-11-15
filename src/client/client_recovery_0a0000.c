@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/record_slots.h"
 #include "../engine/physics.h"
 
 // 1400A0ABC: conditional instruction was optimized away because rdx.8 is in (1..FF)
@@ -1162,19 +1163,7 @@ __int64 sub_1400A3E30()
 //----- (00000001400A4560) ----------------------------------------------------
 __int64 sub_1400A4560()
 {
-  unsigned int iteration_count;
-  unsigned int *state_address;
-
-  iteration_count = 0;
-  state_address = &g_182A7D580;
-  while ( *state_address )
-  {
-    ++iteration_count;
-    state_address += 3;
-    if ( (__int64)state_address >= (__int64)&g_182A7E180 )
-      return 0xFFFFFFFFLL;
-  }
-  return iteration_count;
+  return item_tracking_find_free_slot();
 }
 
 //----- (00000001400A4620) ----------------------------------------------------

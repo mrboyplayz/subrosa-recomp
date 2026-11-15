@@ -1,0 +1,27 @@
+skip first item slot
+uint32_t i = 0; i < RECORD_SLOT_CAPACITY; ++i)
+        if (item_tracking_slots
+----
+uint32_t i = 1; i < RECORD_SLOT_CAPACITY; ++i)
+        if (item_tracking_slots
+====
+skip last snapshot slot
+i < RECORD_SLOT_CAPACITY; ++i)
+        if (replication_snapshot_slots
+----
+i < RECORD_SLOT_CAPACITY - 1; ++i)
+        if (replication_snapshot_slots
+====
+nonzero item active value
+item_tracking_slots[i].active == 0
+----
+item_tracking_slots[i].active != 1
+====
+snapshot exhaustion sentinel
+if (replication_snapshot_slots[i].active == 0)
+            return i;
+    return UINT32_MAX;
+----
+if (replication_snapshot_slots[i].active == 0)
+            return i;
+    return 0;
