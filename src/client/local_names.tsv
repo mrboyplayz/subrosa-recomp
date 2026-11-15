@@ -23725,11 +23725,6 @@
 1400A5D30	v28	square_root_10
 1400A5D30	v29	square_root_11
 1400A5D30	v30	square_root_12
-1400A6DF0	v0	unrecovered_register_value
-1400A6E90	v0	unrecovered_register_value
-1400A6F30	v0	unrecovered_register_value
-1400A6F30	v1	unrecovered_register_value_2
-1400A6FB0	v0	selection_code
 1400C2DB0	v3	state_address
 1400C2DB0	v5	selection_code
 1400C2DB0	v6	remaining_count
