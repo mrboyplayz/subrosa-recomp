@@ -15719,13 +15719,6 @@
 140080720	v10	integer_difference
 140080720	v11	loaded_word
 140080720	v12	loaded_word_2
-140080820	v3	integer_sum
-140080820	v4	record_word_offset
-140080820	v7	table_value
-140080820	v9	state_address
-140080820	v10	integer_difference
-140080820	v11	loaded_word
-140080820	v12	loaded_word_2
 1400808E0	v0	iteration_count
 1400808E0	v1	state_address
 1400808E0	v2	state_address_2
