@@ -55,10 +55,15 @@ unsigned int *terrain_height_update(int cell_x, int cell_y, float height);
 int64_t terrain_triangle_add(int layer, float offset_x, float offset_y, float offset_z,
                              float size_x, float size_y, float size_z);
 
-/* The race track's static terrain boxes: seven boxes added to the terrain
- * layers with fixed offsets and sizes, and the five state floats around them
- * (the sizes the track's meshes use). The routine has no current exported
- * caller. 0x140139560 */
-int64_t terrain_track_boxes_setup(void);
+/* Writes one height into its tile's 2049 x 2049 grid, and into the
+   neighbouring tiles' grids when it lies on their shared first row or
+   column. Samples outside the 8 x 8 tiles are ignored. 0x1400D2DB0 */
+void terrain_grid_put(int x, int y, float height);
+
+/* Spreads the 2049 x 2049 source heights over the tile grids (8 cells per
+   source step, bilinear), runs the vehicle flatten passes unless frozen,
+   builds the 64 chunk meshes and resets the cell and ring tables. Returns
+   what the original leaves in its result register. 0x1400D12E0 */
+unsigned int *terrain_init(void);
 
 #endif

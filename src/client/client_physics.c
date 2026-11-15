@@ -1512,8 +1512,8 @@ LABEL_65:
                   record_byte_offset_3 = (char *)&g_144AFA9A8 + running_total_5;
                   do
                   {
-                    product_difference_2 = (float)(*((_DWORD *)record_byte_offset_3 - 1) - iteration_count_10);
-                    product_difference_3 = (float)(*(_DWORD *)record_byte_offset_3 - iteration_count_8);
+                    product_difference_2 = (float)(int)(*((_DWORD *)record_byte_offset_3 - 1) - iteration_count_10);
+                    product_difference_3 = (float)(int)(*(_DWORD *)record_byte_offset_3 - iteration_count_8);
                     square_root_2 = fsqrt((float)(product_difference_2 * product_difference_2) + (float)(product_difference_3 * product_difference_3));
                     if ( square_root_2 == 0.0 )
                     {
