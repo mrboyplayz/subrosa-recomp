@@ -94,3 +94,22 @@ int64_t terrain_triangle_add(int layer, float offset_x, float offset_y, float of
     triangle_record[0] = triangle_record[0] + 1;
     return result;
 }
+
+/* The race track's static terrain boxes: seven boxes added to the terrain
+ * layers with fixed offsets and sizes, and the five state floats around
+ * them (the sizes the track's meshes use). The routine has no current
+ * exported caller. 0x140139560 */
+int64_t terrain_track_boxes_setup(void)
+{
+    terrain_triangle_add(6, 0.0f, 2.0f, -1.625f, 4.0f, 4.0f, 0.25f);
+    SR_GLOBAL(float, 0x1A760C010ULL) = 3.5f;
+    terrain_triangle_add(1, 0.0f, 0.0f, 0.0f, 0.375f, 6.0f, 0.375f);
+    terrain_triangle_add(1, 0.0f, 3.0f, -5.0f, 0.25f, 0.25f, 10.0f);
+    terrain_triangle_add(1, 0.0f, 3.0f, -6.0f, 0.3125f, 1.0f, 0.5f);
+    terrain_triangle_add(1, 0.0f, 3.0f, -10.0f, 0.3125f, 1.0f, 0.5f);
+    SR_GLOBAL(float, 0x1A7602FA8ULL) = 3.25f;
+    SR_GLOBAL(float, 0x1A7602FACULL) = -1.0f;
+    SR_GLOBAL(float, 0x1A7602FA4ULL) = 0.0f;
+    SR_GLOBAL(float, 0x1A7600B98ULL) = 3.0f;
+    return terrain_triangle_add(4, 0.0f, 2.625f, -8.0f, 0.0625f, 0.5f, 2.0f);
+}

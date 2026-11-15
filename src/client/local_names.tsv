@@ -9307,7 +9307,6 @@
 1400F80A0	v197	callee_output_word
 1400F80A0	v198	scratch_buffer
 1400F80A0	v199	unused_frame_slot_10600
-14010EE20	v1	human_record_offset
 140116D80	v4	player_record_offset
 140116D80	v5	player_record_offset_2
 140116D80	v6	table_value
@@ -16453,7 +16452,6 @@
 14009E070	v9	byte_count
 14009E070	v10	allocated_buffer
 14009E070	v11	saved_allocated_buffer
-14009E190	v2	state_word
 14009E590	v0	shifted_bits
 14009E590	v1	cached_frequency
 14009E7D0	v4	weighted_sum

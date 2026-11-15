@@ -6,6 +6,7 @@
 !.github/
 !.github/**
 !README.md
+!KNOWLEDGE.md
 !scripts/
 !scripts/**
 !src/

@@ -1,0 +1,36 @@
+the first box goes to layer five not six
+    terrain_triangle_add(6, 0.0f, 2.0f, -1.625f, 4.0f, 4.0f, 0.25f);
+----
+    terrain_triangle_add(5, 0.0f, 2.0f, -1.625f, 4.0f, 4.0f, 0.25f);
+====
+the first box's y offset doubles
+    terrain_triangle_add(6, 0.0f, 2.0f, -1.625f, 4.0f, 4.0f, 0.25f);
+----
+    terrain_triangle_add(6, 0.0f, 2.5f, -1.625f, 4.0f, 4.0f, 0.25f);
+====
+the first state float takes the second's value
+    SR_GLOBAL(float, 0x1A760C010ULL) = 3.5f;
+----
+    SR_GLOBAL(float, 0x1A760C010ULL) = 3.25f;
+====
+the zero float write drops out
+    SR_GLOBAL(float, 0x1A7602FA4ULL) = 0.0f;
+----
+
+    SR_GLOBAL(float, 0x1A7602FA4ULL) = 0.0f;
+====
+the third box drops out
+    terrain_triangle_add(1, 0.0f, 3.0f, -5.0f, 0.25f, 0.25f, 10.0f);
+----
+
+    terrain_triangle_add(1, 0.0f, 3.0f, -6.0f, 0.3125f, 1.0f, 0.5f);
+====
+the minus one float takes the wrong sign
+    SR_GLOBAL(float, 0x1A7602FACULL) = -1.0f;
+----
+    SR_GLOBAL(float, 0x1A7602FACULL) = 1.0f;
+====
+the last box goes to layer three not four
+    return terrain_triangle_add(4, 0.0f, 2.625f, -8.0f, 0.0625f, 0.5f, 2.0f);
+----
+    return terrain_triangle_add(3, 0.0f, 2.625f, -8.0f, 0.0625f, 0.5f, 2.0f);

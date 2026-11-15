@@ -1,0 +1,27 @@
+the zero module handle returns one instead of zero
+    if (!SR_GLOBAL(uint64_t, 0x144980D88ULL))
+        return 0;
+----
+    if (!SR_GLOBAL(uint64_t, 0x144980D88ULL))
+        return 1;
+====
+the hook result wins even when it is zero
+        if (resolved)
+            return resolved;
+----
+
+        return resolved;
+====
+the hook is skipped
+    uint64_t hook = SR_GLOBAL(uint64_t, 0x144980D90ULL);
+    if (hook) {
+----
+
+    uint64_t hook = 0;
+    if (hook) {
+====
+the fallback passes the name as the module
+    return GetProcAddress((void *)(uintptr_t)SR_GLOBAL(uint64_t, 0x144980D88ULL), name);
+----
+
+    return GetProcAddress(name, (const char *)(uintptr_t)SR_GLOBAL(uint64_t, 0x144980D88ULL));

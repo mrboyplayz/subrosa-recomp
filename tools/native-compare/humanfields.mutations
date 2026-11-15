@@ -1,0 +1,38 @@
+the first transfer writes nine bits not eight
+    net_write_bits(human_state_field(human, 0x8), 8);
+----
+    net_write_bits(human_state_field(human, 0x8), 9);
+====
+the second field reads the wrong dword
+    net_write_bits(human_state_field(human, 0x6F80), 1);
+----
+    net_write_bits(human_state_field(human, 0x6F84), 1);
+====
+the out-of-order transfer takes address order instead
+    net_write_bits(human_state_field(human, 0x6F94), 3);
+    net_write_bits(human_state_field(human, 0x6F8C), 4);
+----
+    net_write_bits(human_state_field(human, 0x6F8C), 4);
+    net_write_bits(human_state_field(human, 0x6F94), 3);
+====
+the third transfer drops out
+    net_write_bits(human_state_field(human, 0x6F84), 5);
+    net_write_bits(human_state_field(human, 0x6F88), 3);
+----
+
+    net_write_bits(human_state_field(human, 0x6F88), 3);
+====
+the human stride shrinks by four bytes
+    (&SR_GLOBAL(uint32_t, 0x18329E308ULL + 0x6FF8ULL * (uint64_t)(int64_t)(human) + (offset)))
+----
+    (&SR_GLOBAL(uint32_t, 0x18329E308ULL + 0x6FF4ULL * (uint64_t)(int64_t)(human) + (offset)))
+====
+the last transfer writes three bits not two
+    return net_write_bits(human_state_field(human, 0x6FAC), 2);
+----
+    return net_write_bits(human_state_field(human, 0x6FAC), 3);
+====
+the record base shifts by four bytes
+    (&SR_GLOBAL(uint32_t, 0x18329E308ULL + 0x6FF8ULL * (uint64_t)(int64_t)(human) + (offset)))
+----
+    (&SR_GLOBAL(uint32_t, 0x18329E30CULL + 0x6FF8ULL * (uint64_t)(int64_t)(human) + (offset)))
