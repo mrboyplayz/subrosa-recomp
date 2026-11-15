@@ -2681,31 +2681,8 @@ LABEL_3:
 //----- (00000001400D5950) ----------------------------------------------------
 __int64            sub_1400D5950(int a1, int a2, int a3, int a4)
 {
-  char input_value;
-  int shifted_bits;
-  int iteration_count;
-  int saved_iteration_count;
-  unsigned int *state_address;
-
-  input_value = a4;
-  shifted_bits = a4 >> 3;
-  iteration_count = 0;
-  saved_iteration_count = -1;
-  if ( (int)g_1726DA088 <= 0 )
-    return 0;
-  state_address = &g_1726DA090;
-  do
-  {
-    if ( *(state_address - 1) == a1 && *state_address == a2 >> 3 && state_address[1] == a3 >> 3 && state_address[2] == shifted_bits )
-      saved_iteration_count = iteration_count;
-    ++iteration_count;
-    state_address += 3588;
-  }
-  while ( iteration_count < (int)g_1726DA088 );
-  if ( saved_iteration_count == -1 )
-    return 0;
-  else
-    return dword_140404A6C[3588 * saved_iteration_count + 210457996 + 64 * (a3 & 7) + 8 * (input_value & 7) + (a2 & 7)];
+    extern unsigned int block_chunk_cell(int layer, int x, int y, int z);
+    return block_chunk_cell(a1, a2, a3, a4);
 }
 
 //----- (00000001400D8790) ----------------------------------------------------

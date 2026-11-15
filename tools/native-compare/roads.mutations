@@ -1,0 +1,34 @@
+no roads gives -1
+if (road_count == 0) return 0;
+----
+if (road_count == 0) return -1;
+====
+width 3 rejected
+for (int tries = 0; road_unknown_30(road) > 3 || road_unknown_34(road) > 3;) {
+----
+for (int tries = 0; road_unknown_30(road) >= 3 || road_unknown_34(road) > 3;) {
+====
+either width enough
+for (int tries = 0; road_unknown_30(road) > 3 || road_unknown_34(road) > 3;) {
+----
+for (int tries = 0; road_unknown_30(road) > 3 && road_unknown_34(road) > 3;) {
+====
+unsigned widths
+for (int tries = 0; road_unknown_30(road) > 3 || road_unknown_34(road) > 3;) {
+----
+for (int tries = 0; (uint32_t)road_unknown_30(road) > 3 || road_unknown_34(road) > 3;) {
+====
+one redraw fewer
+if (++tries >= 1024) break;
+----
+if (++tries >= 1023) break;
+====
+no-road check dropped
+if (road == -1) return;
+----
+(void)0;
+====
+one link too many
+for (int64_t remaining = road_link_count(road); remaining > 0; remaining--) {
+----
+for (int64_t remaining = road_link_count(road); remaining >= 0; remaining--) {

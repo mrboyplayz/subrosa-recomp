@@ -115,43 +115,7 @@ __int64            sub_140080720(int a1, int a2, __int64 a3)
 //----- (0000000140080820) ----------------------------------------------------
 __int64            sub_140080820(int a1, int a2, __int64 a3)
 {
-  __int64 integer_sum;
-  __int64 record_word_offset;
-  int table_value;
-  unsigned int *i;
-  unsigned int *state_address;
-  __int64 integer_difference;
-  int loaded_word;
-  int loaded_word_2;
-
-  integer_sum = 0;
-  record_word_offset = 2570LL * a1;
-  table_value = dword_140404A6C[record_word_offset + 275754072];
-  if ( table_value <= 0 )
-    return 0xFFFFFFFFLL;
-  for ( i = &dword_140404A6C[record_word_offset + 275754078]; ; i += 6 )
-  {
-    if ( *i == a2 )
-    {
-      state_address = &dword_140404A6C[6 * integer_sum + 275754074 + record_word_offset];
-      integer_difference = a3 - (_QWORD)state_address;
-      do
-      {
-        loaded_word = *((unsigned __int8 *)state_address + integer_difference);
-        loaded_word_2 = *(unsigned __int8 *)state_address - loaded_word;
-        if ( loaded_word_2 )
-          break;
-        state_address = (unsigned int *)((char *)state_address + 1);
-      }
-      while ( loaded_word );
-      if ( !loaded_word_2 )
-        break;
-    }
-    integer_sum = (unsigned int)(integer_sum + 1);
-    if ( (int)integer_sum >= table_value )
-      return 0xFFFFFFFFLL;
-  }
-  return (unsigned int)integer_sum;
+    return disk_find_file(a1, (uint32_t)a2, (const char *)a3);
 }
 
 //----- (00000001400808E0) ----------------------------------------------------

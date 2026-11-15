@@ -273,3 +273,15 @@ unsigned long long startup_patch_mesh_build(const float *controls, const float *
     }
     return (unsigned long long)(unsigned int)rows;
 }
+
+void startup_mesh_remove_record(int record)
+{
+    if (record < 0 || record >= (int)startup_mesh_record_count) return;
+    unsigned int last = --startup_mesh_record_count;
+    for (int k = 0; k < 4; k++)
+        startup_mesh_record(record)[k] = startup_mesh_record(last)[k];
+    *startup_mesh_record_tag(record) = *startup_mesh_record_tag(last);
+    *startup_mesh_record_flag(record) = *startup_mesh_record_flag(last);
+    for (int k = 0; k < 3; k++)
+        startup_mesh_record_vector(record)[k] = startup_mesh_record_vector(last)[k];
+}
