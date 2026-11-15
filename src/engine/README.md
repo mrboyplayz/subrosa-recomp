@@ -93,9 +93,6 @@ The table records the recovered routines by original address. Recovery is incomp
 | `human_net_fields.c`, `human_net_fields.h` | the human state fields packed into the outgoing packet in the original's order and widths, the last transfer a tail call | 0x14010EE20 |
 | `gl_proc.c`, `gl_proc.h` | the GL module's procedure resolver: the zero-handle early return, the custom hook tried first, and the GetProcAddress fallback with the handle re-read | 0x14009E190 |
 | `state_forward.c`, `state_forward.h` | the unsigned short state read the original kept as a forwarding routine | 0x1400A54F0 |
-| `human_net_fields.c`, `human_net_fields.h` | the human state fields packed into the outgoing packet in the original's order and widths, the last transfer a tail call | 0x14010EE20 |
-| `gl_proc.c`, `gl_proc.h` | the GL module's procedure resolver: the zero-handle early return, the custom hook tried first, and the GetProcAddress fallback with the handle re-read | 0x14009E190 |
-| `state_forward.c`, `state_forward.h` | the unsigned short state read the original kept as a forwarding routine | 0x1400A54F0 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
