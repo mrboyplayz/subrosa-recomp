@@ -17335,11 +17335,6 @@
 1400D5820	v5	iteration_count_2
 1400D5820	v6	saved_record_byte_offset
 1400D5820	v7	iteration_count_3
-1400D5950	v4	input_value
-1400D5950	v5	shifted_bits
-1400D5950	v6	iteration_count
-1400D5950	v7	saved_iteration_count
-1400D5950	v8	state_address
 1400D8790	v7	record_byte_offset
 1400D8790	v11	running_total
 1400D8790	v13	iteration_count
