@@ -1,0 +1,43 @@
+name: README progress
+
+# After every merge to master, recount the restored routines and commit the
+# README progress block if it changed, so pull requests never have to touch
+# it (and never conflict over it).
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'src/**'
+      - 'scripts/progress.py'
+      - 'README.md'
+  workflow_dispatch:
+
+concurrency:
+  group: readme-progress
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    name: Update README progress
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/progress.py --write
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "README progress already current"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m "Update README progress"
+          git push
