@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/math_random_double.h"
 #include "../engine/disk.h"
 
 //----- (00000001400802F0) ----------------------------------------------------
@@ -5774,28 +5775,25 @@ __int64 sub_14009DE70()
 //----- (000000014009DFB0) ----------------------------------------------------
 double sub_14009DFB0()
 {
-  return (double)(int)sub_14009DE80() * 2.328306437080797e-10;
+  return math_random_closed();
 }
 
 //----- (000000014009DFD0) ----------------------------------------------------
 double sub_14009DFD0()
 {
-  return (double)(int)sub_14009DE80() * 2.328306436538696e-10;
+  return math_random_half_open();
 }
 
 //----- (000000014009DFF0) ----------------------------------------------------
 double sub_14009DFF0()
 {
-  return ((double)(int)sub_14009DE80() + 0.5) * 2.328306436538696e-10;
+  return math_random_open();
 }
 
 //----- (000000014009E020) ----------------------------------------------------
 double sub_14009E020()
 {
-  signed int shifted_bits;
-
-  shifted_bits = (unsigned int)sub_14009DE80() >> 5;
-  return ((double)((unsigned int)sub_14009DE80() >> 6) + (double)shifted_bits * 67108864.0) * 1.110223024625157e-16;
+  return math_random_double();
 }
 
 //----- (000000014009E070) ----------------------------------------------------

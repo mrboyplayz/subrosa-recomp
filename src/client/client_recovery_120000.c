@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/record_slots.h"
 
 // 14012250F: conditional instruction was optimized away because edx.4==2
 
@@ -1702,19 +1703,7 @@ LABEL_12:
 //----- (0000000140132E00) ----------------------------------------------------
 __int64 sub_140132E00()
 {
-  unsigned int iteration_count;
-  unsigned int *state_address;
-
-  iteration_count = 0;
-  state_address = &g_1A8E379E0;
-  while ( *state_address )
-  {
-    ++iteration_count;
-    state_address += 20;
-    if ( (__int64)state_address >= (__int64)&g_1A8E3C9E0 )
-      return 0xFFFFFFFFLL;
-  }
-  return iteration_count;
+  return replication_snapshot_find_free_slot();
 }
 
 //----- (0000000140132E30) ----------------------------------------------------

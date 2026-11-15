@@ -1,0 +1,24 @@
+high draw shift
+sub_14009DE80() >> 5
+----
+sub_14009DE80() >> 6
+====
+double decompiler constant
+* 0x1p-53
+----
+* 1.110223024625157e-16
+====
+closed signed conversion
+return (double)(uint32_t)sub_14009DE80() * 0x1.00000001p-32;
+----
+return (double)(int32_t)sub_14009DE80() * 0x1.00000001p-32;
+====
+half open signed conversion
+return (double)(uint32_t)sub_14009DE80() * 0x1p-32;
+----
+return (double)(int32_t)sub_14009DE80() * 0x1p-32;
+====
+open endpoint offset
++ 0.5
+----
++ 0.0
