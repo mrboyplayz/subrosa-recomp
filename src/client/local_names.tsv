@@ -264,14 +264,6 @@
 140105AB0	a4	arg3
 1401060F0	a1	peer
 1401060F0	a2	value
-14010E190	v5	voice_player_index
-14010E190	v6	encoded_byte_count
-14010E190	v7	voice_decoder
-14010E230	v4	voice_packet_index
-14010E230	v5	voice_player_index
-14010E2B0	v0	decoder_slot
-14010E2B0	v2	codec_error
-14010E330	v0	decoder_slot
 14006BDC0	v0	status_text
 14006BDC0	v2	legacy_text_arguments
 14006BDC0	v3	legacy_alpha_word
