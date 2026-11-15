@@ -1,0 +1,156 @@
+notequal pass disables texturing
+    glEnable(GL_TEXTURE_2D);
+    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_FALSE);
+    glDepthMask(GL_FALSE);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glEnable(GL_CULL_FACE);
+    glFrontFace(GL_CW);
+    glEnable(GL_STENCIL_TEST);
+    glStencilMask(0xFFFFFFFFu);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_NOTEQUAL, 0, 0xFFFFFFFFu);
+----
+    glDisable(GL_TEXTURE_2D);
+    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_FALSE);
+    glDepthMask(GL_FALSE);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glEnable(GL_CULL_FACE);
+    glFrontFace(GL_CW);
+    glEnable(GL_STENCIL_TEST);
+    glStencilMask(0xFFFFFFFFu);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_NOTEQUAL, 0, 0xFFFFFFFFu);
+----
+alpha written through the opaque mask
+    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_FALSE);
+    glDepthMask(GL_TRUE);
+----
+    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+    glDepthMask(GL_TRUE);
+----
+equal pass writes depth
+    glDepthMask(GL_FALSE);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glEnable(GL_CULL_FACE);
+    glFrontFace(GL_CW);
+    glEnable(GL_STENCIL_TEST);
+    glStencilMask(0xFFFFFFFFu);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_EQUAL, 0, 0xFFFFFFFFu);
+----
+    glDepthMask(GL_TRUE);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glEnable(GL_CULL_FACE);
+    glFrontFace(GL_CW);
+    glEnable(GL_STENCIL_TEST);
+    glStencilMask(0xFFFFFFFFu);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_EQUAL, 0, 0xFFFFFFFFu);
+----
+opaque depth function equal instead of lequal
+    glDepthFunc(GL_LEQUAL);
+    glEnable(GL_CULL_FACE);
+    glFrontFace(GL_CW);
+    glDisable(GL_STENCIL_TEST);
+----
+    glDepthFunc(GL_EQUAL);
+    glEnable(GL_CULL_FACE);
+    glFrontFace(GL_CW);
+    glDisable(GL_STENCIL_TEST);
+----
+notequal winding reversed
+    glFrontFace(GL_CW);
+    glEnable(GL_STENCIL_TEST);
+    glStencilMask(0xFFFFFFFFu);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_NOTEQUAL, 0, 0xFFFFFFFFu);
+----
+    glFrontFace(GL_CCW);
+    glEnable(GL_STENCIL_TEST);
+    glStencilMask(0xFFFFFFFFu);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_NOTEQUAL, 0, 0xFFFFFFFFu);
+----
+equal stencil mask narrowed
+    glStencilMask(0xFFFFFFFFu);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_EQUAL, 0, 0xFFFFFFFFu);
+----
+    glStencilMask(0x00FFFFFFu);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_EQUAL, 0, 0xFFFFFFFFu);
+----
+stencil zero instead of keep
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_NOTEQUAL, 0, 0xFFFFFFFFu);
+----
+    glStencilOp(GL_ZERO, GL_KEEP, GL_KEEP);
+    glStencilFunc(GL_NOTEQUAL, 0, 0xFFFFFFFFu);
+----
+stencil function drops the notequal
+    glStencilFunc(GL_NOTEQUAL, 0, 0xFFFFFFFFu);
+}
+
+/* 0x1400A6E90. */
+----
+    glStencilFunc(GL_ALWAYS, 0, 0xFFFFFFFFu);
+}
+
+/* 0x1400A6E90. */
+----
+opaque pass keeps blend on
+    glDisable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+----
+    glEnable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+----
+opaque pass leaves the stencil test on
+    glFrontFace(GL_CW);
+    glDisable(GL_STENCIL_TEST);
+}
+
+/* 0x1400A6FB0. The reversed-depth word is read as a plain dword. */
+----
+    glFrontFace(GL_CW);
+    glEnable(GL_STENCIL_TEST);
+}
+
+/* 0x1400A6FB0. The reversed-depth word is read as a plain dword. */
+----
+reversed depth word ignored
+    glDepthFunc(SR_GLOBAL(uint32_t, 0x151E46194ULL) ? GL_LEQUAL : GL_GEQUAL);
+----
+    glDepthFunc(GL_LEQUAL);
+----
+shadow faces always fail
+    glStencilFuncSeparate(GL_BACK, GL_ALWAYS, 0, 0xFFFFFFFFu);
+----
+    glStencilFuncSeparate(GL_BACK, GL_NEVER, 0, 0xFFFFFFFFu);
+----
+front faces decrement like the back
+    glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_KEEP, GL_INCR_WRAP);
+}
+----
+    glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_KEEP, GL_DECR_WRAP);
+}
+----
+shadow pass writes depth
+    glDepthMask(GL_FALSE);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(SR_GLOBAL(uint32_t, 0x151E46194ULL) ? GL_LEQUAL : GL_GEQUAL);
+----
+    glDepthMask(GL_TRUE);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(SR_GLOBAL(uint32_t, 0x151E46194ULL) ? GL_LEQUAL : GL_GEQUAL);
+----
+shadow stencil masks narrowed
+    glStencilMaskSeparate(GL_FRONT, 0xFFFFFFFFu);
+    glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_KEEP, GL_INCR_WRAP);
+----
+    glStencilMaskSeparate(GL_FRONT, 0x00FFFFFFu);
+    glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_KEEP, GL_INCR_WRAP);

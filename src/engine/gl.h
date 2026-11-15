@@ -27,6 +27,7 @@ typedef ptrdiff_t GLsizeiptr;
 typedef ptrdiff_t GLintptr;
 
 #define GL_FALSE 0
+#define GL_TRUE 1
 #define GL_ONE 1
 #define GL_ONE_MINUS_SRC_ALPHA 0x0303
 #define GL_SRC_ALPHA 0x0302
@@ -47,6 +48,20 @@ typedef ptrdiff_t GLintptr;
 #define GL_ELEMENT_ARRAY_BUFFER 0x8893
 #define GL_STREAM_DRAW 0x88E0
 #define GL_STATIC_DRAW 0x88E4
+/* Fixed-function state the render passes set. */
+#define GL_EQUAL 0x0202
+#define GL_LEQUAL 0x0203
+#define GL_NOTEQUAL 0x0205
+#define GL_GEQUAL 0x0206
+#define GL_ALWAYS 0x0207
+#define GL_KEEP 0x1E00
+#define GL_INCR_WRAP 0x8507
+#define GL_DECR_WRAP 0x8508
+#define GL_CW 0x0900
+#define GL_CCW 0x0901
+#define GL_STENCIL_TEST 0x0B90
+#define GL_FRONT 0x0404
+#define GL_BACK 0x0405
 
 /* Storage of the pointer table: the client's pointer variables, named after
    the function each holds (src/client/client_gl.h). Declared under other C
@@ -95,5 +110,19 @@ extern float flt_140384000[];
 #define glDisable                 SR_GL_STATE_SLOT(0x144980D60ULL, void (*)(GLenum))
 #define glEnable                  SR_GL_STATE_SLOT(0x144980D68ULL, void (*)(GLenum))
 #define glBlendFunc               SR_GL_STATE_SLOT(0x144980D80ULL, void (*)(GLenum, GLenum))
+#define glFrontFace               SR_GL_STATE_SLOT(0x144980CC0ULL, void (*)(GLenum))
+#define glStencilMask             SR_GL_STATE_SLOT(0x144980D48ULL, void (*)(GLuint))
+#define glColorMask               SR_GL_STATE_SLOT(0x144980D50ULL, void (*)(GLboolean, GLboolean, GLboolean, GLboolean))
+
+/* The depth/stencil functions live in the client's static import block
+   outside the shared region: plain extern pointers, matching the client's
+   own declarations in src/client/client_gl.h (original addresses 0x140302F48,
+   0x140302F50, 0x140302F58, 0x1404041D8, 0x1404041E0, 0x1404041E8). */
+extern void (*glDepthFunc)(GLenum);
+extern void (*glStencilFunc)(GLenum, GLint, GLuint);
+extern void (*glStencilOp)(GLenum, GLenum, GLenum);
+extern void (*glStencilOpSeparate)(GLenum, GLenum, GLenum, GLenum);
+extern void (*glStencilFuncSeparate)(GLenum, GLenum, GLint, GLuint);
+extern void (*glStencilMaskSeparate)(GLenum, GLuint);
 
 #endif
