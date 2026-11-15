@@ -8,7 +8,7 @@ in `src/engine/` is checked against the original machine code
 (`tools/native-compare/`). Everything not yet rewritten is still the
 decompiler's output in `src/client/`, repaired until it runs.
 
-This recompile is not complete! Please contribute to the repo.
+This recompile is not complete! Please contribute to the repo. We would appreciate your help!
 
 ## Progress
 

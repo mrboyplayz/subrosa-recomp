@@ -21065,9 +21065,6 @@
 14018C6A0	v85	scaled_index_19
 14018C6A0	v86	scaled_index_20
 14018C6A0	v87	scaled_index_21
-14018D5E0	v7	bit_count
-14018D5E0	v8	saved_decoded_value
-14018D5E0	v9	decoded_value
 14018D6D0	v2	input_value
 14018D6D0	v3	item_record_offset
 14018D6D0	v4	input_value_2

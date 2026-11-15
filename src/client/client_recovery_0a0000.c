@@ -1510,7 +1510,10 @@ __int64            sub_1400A5400(__int64 a1)
 //----- (00000001400A54F0) ----------------------------------------------------
 __int64 sub_1400A54F0()
 {
-  return (unsigned __int16)sub_14009DE80();
+  /* Clean implementation: src/engine/state_forward.c, checked against the original executable
+     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
+  extern unsigned int state_forward_u16(void);
+  return state_forward_u16();
 }
 
 //----- (00000001400A5C50) ----------------------------------------------------
