@@ -1,0 +1,24 @@
+perturb the variable-bits quantization scale constant
+quaternion[order[0]] * 0.7071067811865476 * quantization_limit
+----
+quaternion[order[0]] * 0.7071068 * quantization_limit
+====
+round the 13-bit quantization multiplier
+quaternion[order[0]] * 5791.911644699011
+----
+quaternion[order[0]] * 5792.0
+====
+quantization limit off by one
+(1 << (bits - 1)) - 1.0
+----
+(1 << bits) - 1.0
+====
+drop the quantization scale from the first encoded slot
+out[1] = (int32_t)(quaternion[order[0]] * 0.7071067811865476 * quantization_limit);
+----
+out[1] = (int32_t)quaternion[order[0]];
+====
+drop the 13-bit multiplier from the first encoded slot
+out[1] = (int32_t)(quaternion[order[0]] * 5791.911644699011);
+----
+out[1] = (int32_t)quaternion[order[0]];

@@ -1,5 +1,6 @@
 #include "shared_client.h"
 #include "../engine/net_bits.h"
+#include "../engine/net_rotation.h"
 
 //----- (0000000140115AE0) ----------------------------------------------------
 __int64            sr_net_read_bits(_DWORD *a1, int a2)
@@ -10,17 +11,10 @@ __int64            sr_net_read_bits(_DWORD *a1, int a2)
 //----- (0000000140115BD0) ----------------------------------------------------
 __int64            sr_net_read_optional_index(int *a1, int a2)
 {
-  char encoded_bit_count;
-  int decoded_index;
-  int encoded_index;
-
-  encoded_bit_count = a2;
-  sr_net_read_bits(&encoded_index, a2);
-  decoded_index = encoded_index;
-  if ( encoded_index == (1 << encoded_bit_count) - 1 )
-    decoded_index = -1;
-  *a1 = decoded_index;
-  return 1;
+  /* Clean implementation: src/engine/net_readers.c, checked against the original
+     executable (tools/native-compare). This wrapper keeps the entry point the
+     recompiled callers use. */
+  return net_read_optional_index((int32_t *)a1, a2);
 }
 
 //----- (0000000140115C20) ----------------------------------------------------
@@ -32,18 +26,10 @@ __int64            sr_net_read_bits_scaled(_DWORD *a1, int a2, int a3)
 //----- (0000000140115D20) ----------------------------------------------------
 __int64            sr_net_read_signed_bits(int *a1, int a2)
 {
-  char encoded_bit_count;
-  __int64 result;
-  int encoded_signed_value;
-
-  encoded_bit_count = a2;
-  sr_net_read_bits(&encoded_signed_value, a2);
-  result = 1;
-  if ( (encoded_signed_value & (1 << (encoded_bit_count - 1))) == 1 << (encoded_bit_count - 1) )
-    *a1 = encoded_signed_value | (-1 << encoded_bit_count);
-  else
-    *a1 = encoded_signed_value;
-  return result;
+  /* Clean implementation: src/engine/net_readers.c, checked against the original
+     executable (tools/native-compare). This wrapper keeps the entry point the
+     recompiled callers use. */
+  return net_read_signed_bits((int32_t *)a1, a2);
 }
 
 //----- (0000000140115D90) ----------------------------------------------------
