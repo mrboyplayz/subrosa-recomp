@@ -14001,21 +14001,10 @@ LABEL_91:
 //----- (000000014010EE20) ----------------------------------------------------
 __int64            sub_14010EE20(int a1)
 {
-  __int64 human_record_offset;
-
-  human_record_offset = 7166LL * a1;
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280651305], 8);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658439], 1);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658440], 5);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658441], 3);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658443], 4);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658444], 3);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658442], 4);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658445], 5);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658446], 4);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658447], 4);
-  sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658449], 4);
-  return sr_net_write_bits(&dword_140404A6C[human_record_offset + 280658450], 2);
+  /* Clean implementation: src/engine/human_net_fields.c, checked against the original executable
+     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
+  extern long long human_state_write_fields(int human);
+  return human_state_write_fields(a1);
 }
 
 //----- (0000000140116D80) ----------------------------------------------------
