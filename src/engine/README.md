@@ -86,6 +86,8 @@ The table records the recovered routines by original address. Recovery is incomp
 | `world_block_maintenance.c`, `world_block_maintenance.h` | per-voxel unknown_808 reads/writes, quarter-mesh release and block mesh invalidation | 0x140012F30, 0x140017C40, 0x140012940, 0x140017890 |
 | `round_settings.c`, `round_settings.h` | round mode settings: defaults, config_round.txt load and save through the parser window, and the round length (1..60 minutes) and team damage (0..200) clamps | 0x1400EC410 |
 | `round_update.c`, `round_update.h` | the round mode tick: lobby spawning, ready jump and round set-up (vehicles, desk phones, manager announcements), the running round's hourly resets, speed-ups, door opening and end, and the round-over announcements and manager choice | 0x1400F6C50 |
+| `config_io.c`, `config_io.h` | the generic config-file entry helpers the mode files inline: one "key=value" line written to or read from the open config file | 0x14010E080, 0x14010E0D0 |
+| `audio_voice.c`, `audio_voice.h` | the voice chat codecs: the encoder and decoder lifecycle, the per-player packet slots, and the encode/decode adapters | 0x14010E190, 0x14010E230, 0x14010E2B0, 0x14010E330 |
 | `player_stocks.c`, `player_stocks.h` | a player buying their corporation's shares, capped at 10,000 | 0x1401189F0 |
 | `startup.c` (addition), `startup.h` | removing a mesh index record by moving the last one into its place | 0x140184AB0 |
 | `roads.c`, `roads.h` | the road records: a random road with both +0x30/+0x34 words at most 3, and queueing a road's links | 0x140130000, 0x14018C250 |
@@ -241,3 +243,12 @@ and the thousands grouping of an unsigned value) live in `clock.c` and
 `t_thousands` suites, outputs identical to the original both as the engine
 port and behind the actual client wrappers, with the recording stub masking
 group arguments to 32 bits. The mutation sets are running separately.
+
+The six routines restored on 2026-11-16 (the generic config-file entry
+helpers and the voice chat codecs) live in `config_io.c` and
+`audio_voice.c`, with the shared interfaces in `config_io.h` and
+`audio_voice.h`. The config entries keep the CRT fprintf tail call of the
+write branch and reset the parser cursor either way; the codecs keep the
+exact prototypes of the still-decompiled embedded codec and its per-player
+packet records (received counts at 0x189C3BCC0, sent counts at
+0x187BDE974). Build-tested on the fork's CI.
