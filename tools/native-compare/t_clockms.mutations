@@ -1,0 +1,21 @@
+skip the disabled-clock early return
+    if (!clock_enabled)
+        return 0;
+----
+    if (0)
+        return 0;
+====
+read a zero counter instead of the performance counter
+    QueryPerformanceCounter(&counter);
+----
+    counter = 0;
+====
+scale by 100 instead of 1000
+    return 1000 * (counter - clock_base) / clock_frequency;
+----
+    return 100 * (counter - clock_base) / clock_frequency;
+====
+drop the base subtraction
+    return 1000 * (counter - clock_base) / clock_frequency;
+----
+    return 1000 * counter / clock_frequency;
