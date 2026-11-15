@@ -47,6 +47,10 @@ CLIENT_FLAGS = COMMON + ['-O0', '-fms-extensions', '-Wa,-mbig-obj', '-DSR_CLIENT
                          '-Wno-error=pointer-to-int-cast', '-Wno-error=int-to-pointer-cast',
                          '-Wno-error=implicit-function-declaration', '-Wno-error=return-mismatch',
                          '-Wno-error=implicit-int']
+# Client files whose decompiled code is safe to optimize (checked by running
+# the game); everything else keeps -O0, which the stack-frame emulation expects.
+OPTIMIZED_CLIENT_FILES = set()
+OPTIMIZED_FLAGS = [('-O2' if f == '-O0' else f) for f in CLIENT_FLAGS] + ['-ffp-contract=off']
 # The engine is ordinary C. Contraction would fuse multiplies and adds that
 # the original rounds separately.
 ENGINE_FLAGS = COMMON + ['-O2', '-ffp-contract=off', '-Wall', '-Wextra']
@@ -83,7 +87,8 @@ def compile_c(source, flags, objects):
 
 
 def compilation_units():
-    work = [(s, CLIENT_FLAGS) for s in sorted((SRC / 'client').glob('client_*.c'))]
+    work = [(s, OPTIMIZED_FLAGS if s.name in OPTIMIZED_CLIENT_FILES else CLIENT_FLAGS)
+            for s in sorted((SRC / 'client').glob('client_*.c'))]
     work += [(s, ENGINE_FLAGS) for s in sorted((SRC / 'engine').glob('*.c'))]
     work += [(SRC / 'recovered/client_leaf.c', LEAF_FLAGS), (SRC / 'client/import_shim.c', IMPORT_SHIM_FLAGS),
              (SRC / 'recovered/client_dname.c', LEAF_FLAGS), (SRC / 'rebuild/client_window_mode.c', WINDOW_FLAGS),
