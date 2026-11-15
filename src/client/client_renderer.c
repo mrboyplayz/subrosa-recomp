@@ -7660,7 +7660,7 @@ LABEL_13:
     sr_cube_light[2] = g_184178D58 * 0.5;
     glUniform3fv(terrain_u_lightdiffuse, 1, &sr_cube_light[0]);
     glUniformMatrix4fv(terrain_u_modelviewprojectionmatrix, 1, 0, (unsigned int *)&g_1A724E6C0);
-    glBindTexture(3553, dword_140404A6C[44 * g_183EBF154 + 284024944]);
+    glBindTexture(3553, dword_140404A6C[44 * g_183EBF160 + 284024944]);
     glActiveTexture(33985);
     glBindTexture(3553, dword_140404A6C[44 * g_183EBF158 + 284024944]);
     glActiveTexture(33986);

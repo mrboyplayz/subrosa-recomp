@@ -742,7 +742,7 @@ double            sub_1400D22E0(int a1)
     /* DIAG: native sets 1. The mask writer only clears bits into a 0xFFFF-prefilled
        buffer, so wrong bit math keeps MORE, not less; not the black-frame cause. */
     glUniform1i(terrain_u_land_usemask, 1);
-    glBindTexture(3553, dword_140404A6C[44 * g_183EBF154 + 284024944]);
+    glBindTexture(3553, dword_140404A6C[44 * g_183EBF15C + 284024944]);
     glActiveTexture(33985);
     glBindTexture(3553, dword_140404A6C[44 * g_183EBF158 + 284024944]);
     glActiveTexture(33986);
