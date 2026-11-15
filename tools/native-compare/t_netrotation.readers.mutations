@@ -1,0 +1,15 @@
+decode the all-ones bit pattern to 0 instead of -1
+decoded = -1;
+----
+decoded = 0;
+====
+sign-extend with one bit too few
+decoded = decoded | (-1 << bits);
+----
+decoded = decoded | (-1 << (bits - 1));
+====
+miss the sign bit test of the signed reader
+if ((decoded & (1 << (bits - 1))) == (1 << (bits - 1)))
+----
+if ((decoded & (1 << bits)) == (1 << bits))
+====

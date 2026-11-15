@@ -14,7 +14,7 @@ int player_ring_text(int player, const unsigned char *text)
     while (text[length])
         length++;
     length &= 0x3F;
-    index = *player_ring_cursor(player);
+    index = player_ring_cursor(player);
     slot = &player_ring_slots(player)[index];
     slot->type = 1;
     slot->count = length;
@@ -22,7 +22,7 @@ int player_ring_text(int player, const unsigned char *text)
         slot->payload[k] = text[k];
     slot->channel = player_ring_selected_channel;
     result = ((uint8_t)index + 1) & 0x3F;
-    *player_ring_cursor(player) = result;
+    player_ring_cursor(player) = result;
     return result;
 }
 
@@ -34,13 +34,13 @@ int player_ring_values(int player, unsigned int count, unsigned int channel, uns
     PlayerRingSlot *slot;
     int index, result;
 
-    index = *player_ring_cursor(player);
+    index = player_ring_cursor(player);
     slot = &player_ring_slots(player)[index];
     slot->type = 3;
     slot->count = (int32_t)count;
     slot->channel = (int32_t)channel;
     slot->value = (int32_t)value;
     result = ((uint8_t)index + 1) & 0x3F;
-    *player_ring_cursor(player) = result;
+    player_ring_cursor(player) = result;
     return result;
 }

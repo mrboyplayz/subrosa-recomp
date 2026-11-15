@@ -76,6 +76,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `audio.c` (additions), `audio_mixer.c` | the sound record's buffer allocation and 16-bit PCM loading; the twins that start a sound or a positional sound on a channel; the per-voice resampling and interpolation mix into the channel ring; the per-emitter clearing, remixing and releasing pass (the still-unported spatializer stays resolved at its address) | 0x14007D610, 0x140069930, 0x14006A140, 0x14006A240, 0x14006B4C0, 0x14006B6F0 |
 | `math_curve.c`, `math_random.c`, `text_parser.c`, `text_parser.h` | the Bernstein-basis curve point and derivative (degrees 1-3), the Mersenne Twister seed, and the embedded-text parser's prefix match, token search and 32/64-bit number reads | 0x14008EC40, 0x140187180, 0x1401872F0, 0x1400C2D50, 0x14003C6F0, 0x140091DF0, 0x140115360, 0x140115410 |
 | `net_decode.c`, `net_decode.h`, `net_replication.c`, `net_replication.h` | packet decoders over the bit reader: sign-magnitude angles over a full turn, scaled fractions, adaptive base deltas; and the replication layer's per-peer rings and item-state stream twins | 0x14018D440, 0x140192560, 0x14018D510, 0x1401060F0, 0x140105AB0, 0x14010EF40, 0x14018DB20 |
+| `net_rotation.c`, `net_readers.c` | quaternion packet encoders, the variable-bits and 13-bit variants, that quantize a rotation matrix's quaternion from math_quat_from_mat3 into packet integers, out[0] the index of the dropped largest component and the following slots the quantized remaining three written in the order of the original's runtime order tables (0x140301DC8 for 13 bits, 0x140301DE8 general), plus the signed-bits and optional-index readers over the bit stream | 0x140114E90, 0x140114D40, 0x140115D20, 0x140115BD0 |
 | `world_particles.c` (addition) | one flying piece drawn from its mesh on the lit, land-mask and stencil passes, the model matrix restored afterwards | 0x140124840 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
@@ -176,3 +177,27 @@ the exclusion of the decoders' uninitialized-stack domains and this
 machine's pre-existing one-bit `effectsdraw`/`effectsupdate` MXCSR
 divergence are documented in `restoration-20261111.md`. Progress is
 268 of 1,119 game routines (`python scripts/progress.py`).
+
+The four routines restored on 2026-11-15 (the two quaternion packet
+encoders, the variable-bits and 13-bit variants, and the two packet
+readers) live in `net_rotation.c` and `net_readers.c`, with the shared
+interface in `net_rotation.h`. Their native comparison is the `netrotation`
+suite, 10,001 output lines identical to the original both as the engine
+port and behind the actual client wrappers: the largest component is
+selected with strict comparisons that never update the index for a NaN
+operand (the original's seta/cmova after comisd), the running maximum is
+MAXSD whose second operand wins on NaN, the original's runtime order tables
+at 0x140301DC8 and 0x140301DE8 are mapped from the installed executable and
+deterministically mutated per case to prove the port reads them, the final
+order-table write does not advance the write count, and the 13-bit variant
+uses the compiler-folded constant 5791.911644699011 in one multiply. The
+same session verified the three matrix-copy twins,
+sr_math_mat3_multiply_copy (0x140105770), sr_math_mat4_multiply_copy
+(0x140105840) and sr_math_mat3_multiply_transposed_alt (0x14011C080), equal
+to the existing `math3d.c` implementations with the `matcopy` suite (9,001
+output lines), covering every MXCSR rounding mode plus independent DAZ/FTZ
+controls, NaN/infinity/negative-zero bit patterns, and output offsets that
+partially or completely overlap either input in a 128-float arena. The
+mutation sets, 17 deliberate bugs across the encoder port, the readers and
+`math3d.c`, are all detected. Progress is
+274 of 1,119 game routines (`python scripts/progress.py`).
