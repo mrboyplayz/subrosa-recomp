@@ -24,10 +24,11 @@ The table records the recovered routines by original address. Recovery is incomp
 | `physics_motion.c` | tangential velocity limits and sliding work, a velocity change applied at a body point, and velocity at a body point | 0x14002D820, 0x14002D9B0, 0x14012B090, 0x14012B170 |
 | `area_bounds.c`, `area_bounds.h` | corporation interiors and vaults, world-region membership, and the five-plane camera visibility query | 0x14011B8F0, 0x14011B960, 0x14011B9F0, 0x14011BAD0 |
 | `net_bits.c`, `net_bytes.c`, `net_angle.c` | packet bit reads/writes and scaling, the two always-success write adapters, aligned byte transfers, and signed-magnitude angle encoding | 0x140115AE0, 0x140115C20, 0x140115D90, 0x140115E80, 0x140115E60, 0x140115F70, 0x14007ADF0, 0x14007B180, 0x14010E610 |
-| `text_helpers.c`, `text_helpers.h` | label CRC IDs, the two unsigned-byte comparators, parser prefix/search, and visible-label copying | 0x14004C4C0, 0x14006C980, 0x14006C670, 0x14006C870, 0x14006E4C0, 0x14006F120 |
+| `text_helpers.c`, `text_helpers.h` | label CRC IDs, the two unsigned-byte comparators, parser prefix/search, visible-label copying, and thousands grouping of an unsigned value | 0x14004C4C0, 0x14006C980, 0x14006C670, 0x14006C870, 0x14006E4C0, 0x14006F120, 0x140158B10 |
+| `clock.c`, `clock.h` | monotonic milliseconds since startup | 0x14007C980 |
 | `physics_create.c` | free-bond lookup; body, point, body-bond, rotation-bond, distance-bond and world-anchor creation | 0x1400A4440, 0x14005CF80, 0x14005CBB0, 0x14004E430, 0x14004E5B0, 0x14004E160, 0x14004E2E0 |
 | `events.c`, `events.h` | bullet/hit, message, block-update/hit, sound, corporation door, mission, vehicle removal, player, type-21 and stock-price event constructors; event 15 uses `world_event_block_gone` | 0x140051230, 0x1400512D0, 0x140051480, 0x140051560, 0x1400515E0, 0x140051650, 0x140051730, 0x1400518B0, 0x1400519F0, 0x140051B00, 0x140051BD0, 0x140051CF0, 0x140051DC0, 0x140051F50, 0x140051FF0, 0x140052090 |
-| `disk.c`, `disk_files.c`, `disk.h` | disk allocation, item drive lookup, and file appending | 0x140050EF0, 0x14004C960, 0x140080690 |
+| `disk.c`, `disk_files.c`, `disk.h` | disk allocation, item drive lookup, file appending, and finding a file by name in a directory | 0x140050EF0, 0x14004C960, 0x140080690, 0x140080820 |
 | `physics_kernels.c`, `physics_kernels.h` | scalar/SIMD inverse inertia and sphere intersection roots | 0x14002CF10, 0x14002D2D0, 0x14011C640, 0x14011C6B0 |
 | `physics_body.c` | gravity, translation and the rotation boundary for active unsettled bodies; also used by the full tick | 0x14012B220 |
 | `menu.c`, `menu.h`, `menu_text.c`, `menu_slider.c`, `menu_state.c`, `menu_clip.c` | widget allocation/layout, buttons, selectable buttons, toggles and masks, groups, text caret/measurement, integer sliders, size stack/reset/grid, and nested clipping | 0x140070380, 0x14006F1F0, 0x14006F5A0, 0x140071910, 0x140071AA0, 0x14006FD10, 0x140074C50, 0x140074CE0, 0x140071440, 0x140075930, 0x1400755F0, 0x1400753C0, 0x140070B90, 0x140075650, 0x140075460, 0x140075340 |
@@ -80,7 +81,15 @@ The table records the recovered routines by original address. Recovery is incomp
 | `terminal.c` | the computer item's terminal: the share of its twenty-six mission slots that is present and owned by the slot, the word copied between the raw record text and a screen line through the letter-to-slot table (raw and coloured paths), the selection list rows around the selected slot, and the snake game's keys | 0x1400C58E0, 0x1400C5610, 0x1400C5360, 0x1400C9120 |
 | `world_particles.c` (addition) | one flying piece drawn from its mesh on the lit, land-mask and stencil passes, the model matrix restored afterwards | 0x140124840 |
 | `net_stream_fields.c`, `net_stream_fields.h` | optional-index and signed packet-stream fields, with original return semantics and write passthrough | 0x14006C510, 0x14006C570 |
+| `record_slots.c`, `record_slots.h` | first-free item tracking and replication snapshot slots | 0x1400A4560, 0x140132E00 |
+| `math_random_double.c`, `math_random_double.h` | closed, half-open, open, and 53-bit random doubles with native unsigned conversions and exact constants | 0x14009DFB0, 0x14009DFD0, 0x14009DFF0, 0x14009E020 |
 | `world_block_maintenance.c`, `world_block_maintenance.h` | per-voxel unknown_808 reads/writes, quarter-mesh release and block mesh invalidation | 0x140012F30, 0x140017C40, 0x140012940, 0x140017890 |
+| `round_settings.c`, `round_settings.h` | round mode settings: defaults, config_round.txt load and save through the parser window, and the round length (1..60 minutes) and team damage (0..200) clamps | 0x1400EC410 |
+| `round_update.c`, `round_update.h` | the round mode tick: lobby spawning, ready jump and round set-up (vehicles, desk phones, manager announcements), the running round's hourly resets, speed-ups, door opening and end, and the round-over announcements and manager choice | 0x1400F6C50 |
+| `player_stocks.c`, `player_stocks.h` | a player buying their corporation's shares, capped at 10,000 | 0x1401189F0 |
+| `startup.c` (addition), `startup.h` | removing a mesh index record by moving the last one into its place | 0x140184AB0 |
+| `roads.c`, `roads.h` | the road records: a random road with both +0x30/+0x34 words at most 3, and queueing a road's links | 0x140130000, 0x14018C250 |
+| `block_chunks.c`, `block_chunks.h` | the sparse 8 x 8 x 8 block chunk table: a block's cell, last matching record wins | 0x1400D5950 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
@@ -221,3 +230,11 @@ the full dwords the original reads, not as bytes. The mutation sets, 8
 deliberate bugs across the mission ratio, the word copy, the selection list
 and the snake keys, are all detected at 500 cases. Progress is
 297 of 1,119 game routines (`python scripts/progress.py`).
+
+The two routines restored on 2026-11-19 (the monotonic milliseconds clock
+and the thousands grouping of an unsigned value) live in `clock.c` and
+`text_helpers.c`, with the shared interface in `clock.h` and
+`text_helpers.h`. Their native comparison is the `t_clockms` and
+`t_thousands` suites, outputs identical to the original both as the engine
+port and behind the actual client wrappers, with the recording stub masking
+group arguments to 32 bits. The mutation sets are running separately.

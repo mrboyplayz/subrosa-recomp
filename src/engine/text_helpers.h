@@ -32,4 +32,9 @@ int text_scan_past(const unsigned char *needle);
    are supported by the native forward copy. Returns visible length.
    0x14006F120 */
 uint32_t text_copy_visible_label(unsigned char *out, const unsigned char *source);
+
+/* Thousands separators into a caller buffer, as the HUD prints scores. The
+   value as a signed int picks the branch (values with the top bit set print
+   as a plain %d); the groups divide as unsigned. 0x140158B10 */
+void text_format_thousands(char *out, unsigned int value);
 #endif

@@ -1,0 +1,35 @@
+first entry skipped
+for (int32_t index = 0; index < count; index++) {
+        if (disk_file(disk, index)->directory
+----
+for (int32_t index = 1; index < count; index++) {
+        if (disk_file(disk, index)->directory
+====
+one entry past the count
+index < count; index++) {
+        if (disk_file
+----
+index <= count; index++) {
+        if (disk_file
+====
+directory ignored
+if (disk_file(disk, index)->directory != directory) continue;
+----
+(void)directory;
+====
+prefix matches
+if (difference || !text[k]) break;
+----
+if (difference || !text[k] || !entry[k + 1]) break;
+====
+fifteen bytes compared
+for (size_t k = 0;; k++) {
+----
+for (size_t k = 0; k < 15; k++) {
+====
+not found sentinel
+return UINT32_MAX;
+}
+----
+return 0;
+}

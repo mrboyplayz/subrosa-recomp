@@ -15,16 +15,17 @@ This recompile is not complete! Please contribute to the repo.
 Routines rewritten as readable, verified engine C:
 
 ```
-303 of 1,119 game routines restored (27%)
+315 of 1,119 game routines restored (28%)
 [###########-----------------------------]
-       303 done  ·  816 to go
+       315 done  ·  804 to go
 ```
 
 4,229 original routines exist in total; the 2,787 statically linked
 runtime and 323 stb library routines are recovered as decompiled C and
 are not counted here. The file-by-file status lives in
-`src/engine/README.md`; regenerate the bar with
-`python scripts/progress.py`.
+`src/engine/README.md`. The bar updates itself: after every merge to
+master, the README progress workflow runs `python scripts/progress.py
+--write` and commits the result, so pull requests leave it alone.
 
 ## Build
 

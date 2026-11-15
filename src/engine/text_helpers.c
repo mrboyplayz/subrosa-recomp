@@ -1,6 +1,10 @@
 #include "text_helpers.h"
 #include "arith.h"
 
+/* The original's sprintf (0x140158AB0, still recompiled code), as text.c
+   formats numbers with. */
+extern void crt_sprintf(char *buffer, const char *format, ...);
+
 uint32_t text_compare_bytes(const unsigned char *first, const unsigned char *second)
 {
     for (;;) {
@@ -72,4 +76,31 @@ uint32_t text_copy_visible_label(unsigned char *out, const unsigned char *source
         visible++;
     out[visible] = 0;
     return visible;
+}
+
+/* Thousands separators. The value as a signed int picks the branch (values
+   with the top bit set fall through to a plain %d), the groups divide as
+   unsigned. The original's magic-number divisions are just its compiler's
+   unsigned division. 0x140158B10 */
+void text_format_thousands(char *out, unsigned int value)
+{
+    if ((int)value < 1000000000)
+    {
+        if ((int)value < 1000000)
+        {
+            if ((int)value < 1000)
+                crt_sprintf(out, "%d", value);
+            else
+                crt_sprintf(out, "%d,%03d", value / 1000, value % 1000);
+        }
+        else
+        {
+            crt_sprintf(out, "%d,%03d,%03d", value / 1000000, (int)(value / 1000) % 1000, value % 1000);
+        }
+    }
+    else
+    {
+        crt_sprintf(out, "%d,%03d,%03d,%03d", value / 1000000000, (int)(value / 1000000) % 1000,
+                    (int)(value / 1000) % 1000, value % 1000);
+    }
 }

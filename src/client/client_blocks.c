@@ -12429,33 +12429,8 @@ LABEL_32:
 //----- (0000000140184AB0) ----------------------------------------------------
 void            sub_140184AB0(int a1)
 {
-  unsigned int state_word;
-  __int64 input_value;
-  __int64 record_word_offset;
-  __int64 scaled_index;
-  __int64 scaled_index_2;
-
-  if ( a1 >= 0 )
-  {
-    state_word = g_1512DB764;
-    if ( a1 < (int)g_1512DB764 )
-    {
-      input_value = a1;
-      --g_1512DB764;
-      record_word_offset = 2LL * a1;
-      dword_140404A6C[2 * record_word_offset + 70998847] = dword_140404A6C[4 * (state_word - 1) + 70998847];
-      dword_140404A6C[2 * record_word_offset + 70998848] = dword_140404A6C[4 * g_1512DB764 + 70998848];
-      dword_140404A6C[2 * record_word_offset + 70998849] = dword_140404A6C[4 * g_1512DB764 + 70998849];
-      dword_140404A6C[2 * record_word_offset + 70998850] = dword_140404A6C[4 * g_1512DB764 + 70998850];
-      scaled_index = 3 * input_value;
-      dword_140404A6C[input_value + 71064383] = dword_140404A6C[g_1512DB764 + 71064383];
-      dword_140404A6C[input_value + 71097151] = dword_140404A6C[g_1512DB764 + 71097151];
-      scaled_index_2 = 3LL * (int)g_1512DB764;
-      dword_140404A6C[scaled_index + 71113535] = dword_140404A6C[3 * g_1512DB764 + 71113535];
-      dword_140404A6C[scaled_index + 71113536] = dword_140404A6C[scaled_index_2 + 71113536];
-      dword_140404A6C[scaled_index + 71113537] = dword_140404A6C[scaled_index_2 + 71113537];
-    }
-  }
+    extern void startup_mesh_remove_record(int record);
+    startup_mesh_remove_record(a1);
 }
 
 //----- (0000000140184BB0) ----------------------------------------------------

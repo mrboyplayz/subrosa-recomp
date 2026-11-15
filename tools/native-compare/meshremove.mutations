@@ -1,0 +1,49 @@
+negative record accepted
+if (record < 0 || record >= (int)startup_mesh_record_count) return;
+    unsigned int last
+----
+if (record >= (int)startup_mesh_record_count) return;
+    unsigned int last
+====
+count itself accepted
+if (record < 0 || record >= (int)startup_mesh_record_count) return;
+    unsigned int last
+----
+if (record < 0 || record > (int)startup_mesh_record_count) return;
+    unsigned int last
+====
+unsigned count comparison
+if (record < 0 || record >= (int)startup_mesh_record_count) return;
+    unsigned int last
+----
+if (record < 0 || (unsigned int)record >= startup_mesh_record_count) return;
+    unsigned int last
+====
+copied from past the end
+unsigned int last = --startup_mesh_record_count;
+----
+unsigned int last = startup_mesh_record_count--;
+====
+three index words
+for (int k = 0; k < 4; k++)
+        startup_mesh_record(record)[k]
+----
+for (int k = 0; k < 3; k++)
+        startup_mesh_record(record)[k]
+====
+tag kept
+*startup_mesh_record_tag(record) = *startup_mesh_record_tag(last);
+----
+(void)0;
+====
+flag kept
+*startup_mesh_record_flag(record) = *startup_mesh_record_flag(last);
+----
+(void)0;
+====
+two vector words
+for (int k = 0; k < 3; k++)
+        startup_mesh_record_vector(record)[k]
+----
+for (int k = 0; k < 2; k++)
+        startup_mesh_record_vector(record)[k]
