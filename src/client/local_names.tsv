@@ -13278,12 +13278,6 @@
 14000EF70	v75	input_value_6
 14000EF70	v76	input_value_7
 14000EF70	v77	weighted_sum_12
-140012940	v2	scaled_index
-140012940	v3	table_value
-140012F30	v4	input_value
-140012F30	v5	input_value_2
-140012F30	v6	input_value_3
-140012F30	v7	world_block_record_at_result
 1400174D0	v6	source_component_y
 1400174D0	v7	block_record_offset
 1400174D0	v8	scaled_value
@@ -13317,10 +13311,6 @@
 1400174D0	v36	state_address_15
 1400174D0	v37	scaled_index_5
 1400174D0	v38	scaled_index_6
-140017890	v2	record_word_offset
-140017C40	v5	input_value
-140017C40	v6	input_value_2
-140017C40	v7	input_value_3
 140019000	v2	component_delta
 140019000	v4	selection_code
 14001B5C0	v2	record_byte_offset
