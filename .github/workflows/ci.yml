@@ -25,6 +25,27 @@ jobs:
           python-version: '3.12'
       - run: python -m compileall -q scripts tools
 
+  consistency:
+    name: Source consistency
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Invalid UTF-8 (files saved in a legacy code page) and committed
+      # merge conflict markers.
+      - name: Text files
+        run: python tools/check_text.py
+      # Function ownership, CMake source list, names.tsv and local_names.tsv:
+      # a restoration that wraps a routine must drop its dead local names.
+      - name: Client modules and names
+        run: python tools/cleanup/split_client_modules.py --check
+      # The README progress block must match the real wrapper count.
+      - name: README progress
+        run: python scripts/progress.py --check
+
   build:
     name: Build client (Windows, MinGW)
     runs-on: windows-latest
@@ -32,16 +53,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: msys2/setup-msys2@v2
+      - uses: actions/setup-python@v5
         with:
-          msystem: MINGW64
-          update: false
-          install: >-
-            git
-            mingw-w64-x86_64-toolchain
-            mingw-w64-x86_64-cmake
-            mingw-w64-x86_64-ninja
-            mingw-w64-x86_64-python
+          python-version: '3.12'
+
+      # The decompiled headers only compile against WinLibs' mingw-w64 (MSYS2's
+      # headers declare mkdir/write/open with const and conflict), so pin it.
+      - name: Cache toolchain
+        id: toolchain
+        uses: actions/cache@v4
+        with:
+          path: C:\winlibs
+          key: winlibs-gcc-16.1.0-ucrt-r3
+
+      - name: Install WinLibs GCC 16.1.0 (cmake and ninja included)
+        if: steps.toolchain.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          $tag = '16.1.0posix-14.0.0-ucrt-r3'
+          $zip = 'winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r3.zip'
+          Invoke-WebRequest "https://github.com/brechtsanders/winlibs_mingw/releases/download/$tag/$zip" -OutFile "$env:RUNNER_TEMP\winlibs.zip"
+          7z x "$env:RUNNER_TEMP\winlibs.zip" "-oC:\winlibs" -y | Out-Null
+
+      - name: Put toolchain on PATH
+        shell: pwsh
+        run: |
+          "C:\winlibs\mingw64\bin" | Out-File -FilePath $env:GITHUB_PATH -Append -Encoding utf8
+          & C:\winlibs\mingw64\bin\gcc.exe --version
 
       # SDL 2.0.12 is cloned and built from source by build.py; keep it between runs.
       - uses: actions/cache@v4
@@ -51,16 +89,21 @@ jobs:
             build/sdl2012-build
           key: sdl-2.0.12-${{ runner.os }}-${{ hashFiles('scripts/build.py') }}
 
+      - name: Quick-build cache tests
+        shell: pwsh
+        run: python tools/test_build_quick.py
+
       - name: Build
-        shell: msys2 {0}
+        shell: pwsh
         run: python scripts/build.py
 
       - name: Check outputs
-        shell: msys2 {0}
+        shell: pwsh
         run: |
-          test -s dist/subrosa-recomp.exe
-          test -s dist/SDL2.dll
-          ls -l dist/subrosa-recomp.exe dist/SDL2.dll
+          foreach ($f in 'dist/subrosa-recomp.exe', 'dist/SDL2.dll') {
+            if (-not (Test-Path $f) -or (Get-Item $f).Length -eq 0) { throw "missing or empty: $f" }
+            Get-Item $f | Select-Object Name, Length
+          }
 
       - name: Upload compiler logs on failure
         if: failure()

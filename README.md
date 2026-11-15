@@ -15,16 +15,17 @@ This recompile is not complete! Please contribute to the repo.
 Routines rewritten as readable, verified engine C:
 
 ```
-300 of 1,119 game routines restored (27%)
+307 of 1,119 game routines restored (27%)
 [###########-----------------------------]
-       300 done  ·  819 to go
+       307 done  ·  812 to go
 ```
 
 4,229 original routines exist in total; the 2,787 statically linked
 runtime and 323 stb library routines are recovered as decompiled C and
 are not counted here. The file-by-file status lives in
 `src/engine/README.md`; regenerate the bar with
-`python scripts/progress.py`.
+`python scripts/progress.py --write` (CI fails pull requests whose bar is
+stale).
 
 ## Build
 
@@ -43,6 +44,39 @@ Environment switches:
 
 - `SUBROSA_DEBUG_EFFECTS=1` logs effects and audio statistics.
 - `SUBROSA_AUTOSTART=practice` starts Practice directly.
+
+## Quick developer build
+
+For short edit/build/test cycles, use the incremental build:
+
+```powershell
+python scripts/build_quick.py --assets "C:\Program Files (x86)\Steam\steamapps\common\Sub Rosa"
+```
+
+Then, after an edit:
+
+```powershell
+python scripts/build_quick.py
+```
+
+Start `subrosa-recomp.exe` from `dist/quick/`. The first build compiles the
+whole game; later builds reuse objects, assembly and import libraries in
+`build/quick/`, rebuilding sources affected by file/header or compiler-flag
+changes. With no changes, compilation and linking are skipped. Assets are
+linked rather than duplicated, and an existing project SDL2.dll is reused.
+If no project SDL2.dll exists yet, the normal SDL source build runs once.
+Compiler diagnostics are saved beside each object in `build/quick/objects/`.
+
+This is the full game with smaller debug information, not a reduced simulation.
+It keeps the normal engine optimization and floating-point flags. Default
+`-g1` symbols retain line numbers and stack traces; add `--full-symbols` for
+local-variable debugging. Large shared-header edits still rebuild many files.
+
+- `--compile-only`: compile and link without SDL downloads or packaging.
+- `--dry-run`: show which build steps are stale.
+- `--jobs 4`: limit concurrent compilers (four is the default).
+
+Cache behavior can be tested with `python tools/test_build_quick.py`.
 
 ## Check a rewritten routine against the original
 

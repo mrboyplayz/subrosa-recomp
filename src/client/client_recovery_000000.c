@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/world_block_maintenance.h"
 
 //----- (0000000140002D00) ----------------------------------------------------
 __int64            sub_140002D00(float *a1, float a2, float a3, float a4)
@@ -3181,40 +3182,13 @@ LABEL_118:
 //----- (0000000140012940) ----------------------------------------------------
 void            sub_140012940(unsigned int a1, int a2)
 {
-  __int64 scaled_index;
-  __int64 table_value;
-
-  if ( a1 <= 0xFFF )
-  {
-    scaled_index = a2 + 6930LL * (int)a1;
-    table_value = (int)dword_140404A6C[scaled_index + 83200503];
-    dword_140404A6C[scaled_index + 83200503] = -1;
-    if ( (unsigned int)table_value <= 0x3FF )
-    {
-      dword_140404A6C[8969 * table_value + 73991662] = -1;
-      sub_1401941F0(0, table_value);
-      sub_1401941F0(3, table_value);
-      sub_1401941F0(5, table_value);
-    }
-  }
+  world_release_block_mesh(a1, a2);
 }
 
 //----- (0000000140012F30) ----------------------------------------------------
 __int64            sub_140012F30(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 {
-  char input_value;
-  char input_value_2;
-  char input_value_3;
-  int world_block_record_at_result;
-
-  input_value = a4;
-  input_value_2 = a3;
-  input_value_3 = a2;
-  world_block_record_at_result = sr_world_block_record_at(a1, a2, a3, a4);
-  if ( world_block_record_at_result == -1 )
-    return 0;
-  else
-    return dword_140404A6C[6930 * world_block_record_at_result + 83194871 + 64 * (input_value_2 & 7) + 8 * (input_value & 7) + (input_value_3 & 7)];
+  return world_block_unknown_808_at(a1, a2, a3, a4);
 }
 
 //----- (00000001400174D0) ----------------------------------------------------
@@ -3351,42 +3325,13 @@ char            sub_1400174D0(int *a1, int a2, int *a3, int a4, float a5)
 //----- (0000000140017890) ----------------------------------------------------
 void            sub_140017890(unsigned int a1)
 {
-  __int64 record_word_offset;
-  int i;
-
-  if ( a1 <= 0xFFF )
-  {
-    record_word_offset = 6930LL * (int)a1;
-    if ( dword_140404A6C[record_word_offset + 83194357] )
-    {
-      sub_14000C4C0(a1);
-      for ( i = 0; i < 4; ++i )
-        sub_140012940(a1, i);
-      dword_140404A6C[record_word_offset + 83200510] = 0;
-      if ( a1 == 1008 )
-        ++g_18402CC00;
-    }
-  }
+  world_invalidate_block_meshes(a1);
 }
 
 //----- (0000000140017C40) ----------------------------------------------------
 __int64            sub_140017C40(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
 {
-  char input_value;
-  char input_value_2;
-  char input_value_3;
-  __int64 result;
-
-  input_value = a4;
-  input_value_2 = a3;
-  input_value_3 = a2;
-  result = sr_world_block_record_at(a1, a2, a3, a4);
-  if ( (_DWORD)result != -1 )
-  {
-    dword_140404A6C[6930 * (int)result + 83194871 + 64 * (input_value_2 & 7) + 8 * (input_value & 7) + (input_value_3 & 7)] = a5;
-    return a5;
-  }
-  return result;
+  return world_set_block_unknown_808(a1, a2, a3, a4, a5);
 }
 
 //----- (0000000140019000) ----------------------------------------------------

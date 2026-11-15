@@ -81,6 +81,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `terminal.c` | the computer item's terminal: the share of its twenty-six mission slots that is present and owned by the slot, the word copied between the raw record text and a screen line through the letter-to-slot table (raw and coloured paths), the selection list rows around the selected slot, and the snake game's keys | 0x1400C58E0, 0x1400C5610, 0x1400C5360, 0x1400C9120 |
 | `world_particles.c` (addition) | one flying piece drawn from its mesh on the lit, land-mask and stencil passes, the model matrix restored afterwards | 0x140124840 |
 | `net_stream_fields.c`, `net_stream_fields.h` | optional-index and signed packet-stream fields, with original return semantics and write passthrough | 0x14006C510, 0x14006C570 |
+| `world_block_maintenance.c`, `world_block_maintenance.h` | per-voxel unknown_808 reads/writes, quarter-mesh release and block mesh invalidation | 0x140012F30, 0x140017C40, 0x140012940, 0x140017890 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
