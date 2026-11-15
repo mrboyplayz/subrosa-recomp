@@ -2394,11 +2394,6 @@
 140124840	a4	pass
 140124840	a5	texture_slot
 140124840	a6	color
-140184AB0	v1	state_word
-140184AB0	v2	input_value
-140184AB0	v3	record_word_offset
-140184AB0	v4	scaled_index
-140184AB0	v5	scaled_index_2
 140184BB0	v0	scaled_value
 140184BB0	v1	state_word
 140184BB0	v2	cached_selection_flag
