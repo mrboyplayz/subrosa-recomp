@@ -1,0 +1,126 @@
+spawn z from the first random byte
+position[2] = (float)(second - 127) * 0.0234375f + spawn_z;
+----
+position[2] = position[0] - spawn_x + spawn_z;
+====
+tie colour of team 1
+player_tie_color(player) = 9;
+----
+player_tie_color(player) = 8;
+====
+suit colour limit
+if (suit_limit <= 2)
+----
+if (suit_limit < 2)
+====
+skipped write through a failed human
+human_unknown_98(human) = angle;
+----
+if (human != -1) human_unknown_98(human) = angle;
+====
+doors opened instead of closed
+event_corporation_door((uint32_t)c, 0);
+----
+event_corporation_door((uint32_t)c, 1);
+====
+empty lobby window
+if ((uint32_t)remaining - 5401u <= 1498)
+----
+if ((uint32_t)remaining - 5401u <= 1497)
+====
+ready without anyone on a team
+int all_ready = on_teams ? ready : 0;
+----
+int all_ready = ready;
+====
+spot left free
+corporation_spot_used(corporation, spot) = 1;
+----
+(void)0;
+====
+second vehicle threshold
+if (corporation_member_count(c) > 4) {
+----
+if (corporation_member_count(c) >= 4) {
+====
+skipped write through a failed vehicle
+vehicle_unknown_3648(vehicle) = record;
+----
+if (vehicle != -1) vehicle_unknown_3648(vehicle) = record;
+====
+second phone from the scribbled buffer
+position[0] = rotation[0] * 0.5f + x;
+----
+position[0] = rotation[0] * 0.5f + position[0];
+====
+second phone number
+item_unknown_160(phone) = 1111 * c + 1112;
+----
+item_unknown_160(phone) = 1111 * c + 1111;
+====
+record type window
+else if (pick < 13)
+----
+else if (pick < 12)
+====
+aboard speed-up
+remaining = subtract_int(remaining, 7);
+----
+remaining = subtract_int(remaining, 8);
+====
+round length in seconds
+round_timer = multiply_int(3600, round_settings->round_minutes);
+----
+round_timer = multiply_int(60, round_settings->round_minutes);
+====
+hourly clear forgotten
+player_unknown_68(p) = 0;
+----
+(void)0;
+====
+speed-up threshold
+if (elapsed >= 7200 && valuables_outside_interiors() && humans_in_own_interiors()) {
+----
+if (elapsed > 7200 && valuables_outside_interiors() && humans_in_own_interiors()) {
+====
+third interior with an ordered upper bound
+if (!item_in_interior(x, z, 2, 0) && !inside)
+----
+if (!item_in_interior(x, z, 2, 1) && !inside)
+====
+vault height ignored
+&& at_least(v[1], b->lower[1]) && below(v[1], b->upper[1])
+----
+&& 1
+====
+bots count as alive
+if (player_active(p) && !player_is_bot(p) && player_human(p) != -1)
+----
+if (player_active(p) && player_human(p) != -1)
+====
+door opens despite a living player
+if (player_active(p) && player_team(p) == c && player_human(p) != -1)
+            return;
+----
+if (player_active(p) && player_team(p) == c && player_human(p) != -1 && 0)
+            return;
+====
+announcement stage numbering
+sub_1400F0160(stage - 1);
+----
+sub_1400F0160(stage);
+====
+NaN worth never wins
+if (!((float)best >= worth)) {
+----
+if ((float)best < worth) {
+====
+weekly ties
+if (best < money) {
+----
+if (best <= money) {
+====
+manager change keeps 58bc
+corporation_unknown_58bc(c) = 0;
+----
+(void)0;
