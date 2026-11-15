@@ -47,6 +47,22 @@ int human_create_joint_bond(int human, int parent_bone, int child_bone, const fl
     return index;
 }
 
+/* Still reached through the client entry point the skeleton's joint builder
+   calls: 0x140055FA0 makes the bond. */
+extern int sr_human_create_joint_bond(int human, int parent_bone, int child_bone,
+                                      const float anchor[3]);
+
+/* The joint into child from parent, made and recorded in the child bone: the
+   skeleton's joints are built through this. A bond that cannot be made leaves
+   the bone's old one. 0x1400B5410 */
+int human_record_joint_bond(int human, int parent_bone, int child_bone, const float anchor[3])
+{
+    int bond = sr_human_create_joint_bond(human, parent_bone, child_bone, anchor);
+    if (bond != -1)
+        world_humans[human].bones[child_bone].bond = bond;
+    return bond;
+}
+
 /* The joint into child from parent: anchored where the skeleton's record
    before child's says. */
 static void create_joint(int human, int parent, int child)

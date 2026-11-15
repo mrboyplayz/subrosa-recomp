@@ -1237,7 +1237,7 @@ __int64            sr_human_update_walk_point(int a1);
 
 __int64            sr_human_hold_item(int a1, int a2, int a3, unsigned int *a4, unsigned int *a5, float *a6);
 
-__int64            sub_1400B5410(int a1, signed int a2, signed int a3, float *a4);
+__int64            sr_human_record_joint_bond(int a1, signed int a2, signed int a3, float *a4);
 
 __int64            sr_human_foot_ground_contact(int a1, int a2);
 
@@ -2805,7 +2805,7 @@ void            sub_140187A40(_BYTE *a1, __int64 a2, float a3, float a4, float a
 
 void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float a5);
 
-__m128i *           sub_1401880C0(     __m128i *a1, unsigned int a2);
+__m128i *           sr_steam_ticket_stage(     __m128i *a1, unsigned int a2);
 
 __int64 sub_140188120();
 
@@ -10093,7 +10093,7 @@ extern int dword_140301E00;
  // weak
 extern int dword_140301E04;
  // weak
-extern int dword_140301E08[1];
+extern int dword_140301E08[2];
  // weak
 typedef struct {
   __int64 (*initialize)(__int64 *);
@@ -13845,7 +13845,7 @@ __int64            sr_human_hold_item(int a1, int a2, int a3, unsigned int *a4, 
 ;
 
 //----- (00000001400B5410) ----------------------------------------------------
-__int64            sub_1400B5410(int a1, signed int a2, signed int a3, float *a4)
+__int64            sr_human_record_joint_bond(int a1, signed int a2, signed int a3, float *a4)
 ;
 
 //----- (00000001400B5460) ----------------------------------------------------
@@ -17602,7 +17602,7 @@ void            sub_140187C70(__int64 a1, __int64 a2, float a3, float a4, float 
 ;
 
 //----- (00000001401880C0) ----------------------------------------------------
-__m128i *           sub_1401880C0(     __m128i *a1, unsigned int a2)
+__m128i *           sr_steam_ticket_stage(     __m128i *a1, unsigned int a2)
 ;
 
 //----- (0000000140188120) ----------------------------------------------------

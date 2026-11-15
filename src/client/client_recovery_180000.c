@@ -18,20 +18,6 @@ __m128            sub_140187270(float a1, float a2, float a3, double a4, float a
 
 // 140187270: inconsistent variable size for 'xmm3_8.8'
 
-//----- (00000001401880C0) ----------------------------------------------------
-__m128i *           sub_1401880C0(     __m128i *a1, unsigned int a2)
-{
-  __m128i *result;
-
-  if ( a2 <= 0x400 )
-  {
-    g_1829F8BD4 = a2;
-    result = crt_memcpy((__m128i *)&g_1829F8BD8, a1, a2);
-    g_1829F8FD8 = 1;
-  }
-  return result;
-}
-
 //----- (000000014018C250) ----------------------------------------------------
 void            sub_14018C250(int a1)
 {

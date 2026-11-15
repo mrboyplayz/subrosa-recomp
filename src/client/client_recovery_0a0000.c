@@ -1841,21 +1841,6 @@ void            sub_1400A7A40(float a1, float a2, float a3, float a4, float a5)
 #undef unused_written_slot
 #undef unused_written_slot_2
 
-//----- (00000001400B5410) ----------------------------------------------------
-__int64            sub_1400B5410(int a1, signed int a2, signed int a3, float *a4)
-{
-  __int64 input_value;
-  __int64 input_value_2;
-  __int64 result;
-
-  input_value = a3;
-  input_value_2 = a1;
-  result = sr_human_create_joint_bond(a1, a2, a3, a4);
-  if ( (_DWORD)result != -1 )
-    dword_140404A6C[7166 * input_value_2 + 280651511 + 78 * input_value] = result;
-  return result;
-}
-
 //----- (00000001400B94B0) ----------------------------------------------------
 __int64            sub_1400B94B0(int a1, int a2)
 {

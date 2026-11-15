@@ -314,6 +314,11 @@ void human_create_joints(int human);
    its constraint. Returns the bond, or -1 when all are taken. 0x140055FA0 */
 int human_create_joint_bond(int human, int parent_bone, int child_bone, const float anchor[3]);
 
+/* Makes the joint into child from parent (human_create_joint_bond) and
+   records the bond in the child bone; a bone whose joint cannot be made keeps
+   its old bond. Returns the bond, or -1. 0x1400B5410 */
+int human_record_joint_bond(int human, int parent_bone, int child_bone, const float anchor[3]);
+
 /* The body's centre and mean velocities for a tick, and the smoothed
    rotation of the pelvis. 0x1400ABB10 */
 void human_update_centre(int human);

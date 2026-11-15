@@ -1,0 +1,39 @@
+cap test excludes the full ticket (0x400 dropped)
+    if (length <= 0x400) {
+----
+    if (length < 0x400) {
+====
+cap raised past the buffer (0x401..0x500 staged)
+    if (length <= 0x400) {
+----
+    if (length <= 0x500) {
+====
+length word not stored
+        steam_ticket->length = length;
+----
+        ;
+====
+copy always the full 1024 bytes
+        result = memcpy(steam_ticket->data, ticket, length);
+----
+        result = memcpy(steam_ticket->data, ticket, 0x400);
+====
+copy short by one byte
+        result = memcpy(steam_ticket->data, ticket, length);
+----
+        result = memcpy(steam_ticket->data, ticket, length - 1);
+====
+received flag set to the length word
+        steam_ticket->received = 1;
+----
+        steam_ticket->received = length;
+====
+received flag never raised
+        steam_ticket->received = 1;
+----
+        ;
+====
+NULL returned on the staged path
+    return result;
+----
+    return NULL;

@@ -325,7 +325,10 @@ typedef struct WorldItem {
     int32_t links[64];                   /* entries of the table at 0x1857BD740 */
     uint8_t unknown_278[0x318 - 0x278];
     int32_t unknown_318;
-    uint8_t unknown_31c[0x1B80 - 0x31C];
+    uint8_t unknown_31c[0x368 - 0x31C];
+    uint64_t unknown_368;                /* cleared when an item's record is set up */
+    uint8_t unknown_370[0x1660 - 0x370];
+    uint8_t unknown_1660[0x1B80 - 0x1660];  /* 0x520 bytes cleared with unknown_368 */
 } WorldItem;
 
 _Static_assert(__builtin_offsetof(WorldItem, children) == 0x38, "WorldItem layout");
@@ -429,6 +432,13 @@ typedef struct WorldGridUnit {
    layer, and objects beyond a unit's 32 or the 2,048 leaves, are dropped.
    0x140037DE0 */
 void world_grid_insert(int layer, int32_t x, int32_t y, int32_t z, uint16_t object);
+
+/* Gives the 64-unit cell (cx, cy, cz) of a layer the next block index: the
+   index is stored in the layer's cell and the new block's 512 leaf slots are
+   cleared to empty. Returns the block index. The cold path of
+   world_grid_insert; neither the layer nor that the cell is empty is
+   checked. 0x140038130 */
+int32_t world_grid_alloc_cell_block(int layer, int32_t cx, int32_t cy, int32_t cz);
 
 _Static_assert(sizeof(WorldGridUnit) == 132, "WorldGridUnit size");
 _Static_assert(sizeof(WorldItemType) == 0x13D0, "WorldItemType size");

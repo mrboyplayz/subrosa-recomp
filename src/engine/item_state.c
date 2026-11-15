@@ -1,6 +1,7 @@
 #include "arith.h"
 #include "item.h"
 #include "frame.h"
+#include <string.h>
 
 /* Original callees retained at the boundary, with their machine-code ABI.
    The client wrapper for 0x14007B2A0 reads the float lane in XMM2. */
@@ -314,4 +315,19 @@ uint64_t item_break_block_part(uint32_t block, int part_index, int layer, int vx
         }
     }
     return (uint32_t)index;
+}
+
+/* Still recompiled code: the record's fields set up for a new item. */
+extern long long sub_1400C92B0(int item);
+
+/* Clears the two pieces of an item's record that a new item starts from:
+   the qword at +0x368 (meaning not settled) and the 0x520 bytes at +0x1660,
+   to the record's end. The record's set-up runs afterwards.
+   0x1400C90D0 */
+int64_t item_record_clear(int item)
+{
+    WorldItem *record = &world_items[item];
+    record->unknown_368 = 0;
+    memset(record->unknown_1660, 0, 0x520);
+    return sub_1400C92B0(item);
 }

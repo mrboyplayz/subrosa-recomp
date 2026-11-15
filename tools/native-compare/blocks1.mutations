@@ -1,0 +1,46 @@
+record making leaves out the chunk slot's creation
+    if (slot == -1) {
+        slot = world_create_chunk_slot(layer, cx, cy, cz);
+        if (slot == -1)
+            return 0;
+    }
+----
+    if (slot == -1)
+        return 0;
+
+====
+record making leaves out the block record's creation
+        record = world_create_block_record(layer, (uint32_t)slot, (int32_t)(x >> 3),
+                                           (int32_t)(y >> 3), (int32_t)(z >> 3));
+        if (record == -1)
+            return 0;
+----
+        if (record == -1)
+            return 0;
+
+====
+the unknown_8 word goes to the gone mask
+    record->unknown_8[WORLD_CELL_INDEX(x, y, z)] = value;
+----
+    record->gone[WORLD_CELL_INDEX(x, y, z)] = value;
+
+====
+setting the unknown_3008 word leaves out the record's mark
+    if (record->meshes[quarter] >= 0)
+        sub_140012940((uint32_t)(record - world_block_records), quarter);
+    world_mark_block_record(layer, x, y, z);
+----
+    if (record->meshes[quarter] >= 0)
+        sub_140012940((uint32_t)(record - world_block_records), quarter);
+
+====
+the block id's gone mask is not cleared
+    record->gone[voxel] = 0;
+----
+    record->gone[voxel] = value;
+
+====
+the record's quarter flag goes to the wrong quarter
+    record_flags(record)[1 + ((y & 6) >> 1)] = 1;
+----
+    record_flags(record)[1 + ((y & 4) >> 1)] = 1;

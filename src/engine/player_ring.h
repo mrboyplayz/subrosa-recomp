@@ -33,4 +33,8 @@ _Static_assert(sizeof(PlayerRingSlot) == 84, "PlayerRingSlot layout");
 /* The chat channel selector (0 whisper, 1 talk, 2 yell), read at use. 0x183E93544 */
 #define player_ring_selected_channel SR_GLOBAL(int32_t, 0x183E93544ULL)
 
+/* 0x140116A40: spoken text into the ring; 0x140116B00: three values. */
+int player_ring_text(int player, const unsigned char *text);
+int player_ring_values(int player, unsigned int count, unsigned int channel, unsigned int value);
+
 #endif

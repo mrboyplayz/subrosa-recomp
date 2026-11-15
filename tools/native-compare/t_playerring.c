@@ -14,12 +14,12 @@ long long sr_player_event_values(int, unsigned int, unsigned int, unsigned int);
 
 static void run_case(int n, int operation)
 {
-    unsigned char arena[256];
+    unsigned char arena[512];
     int player, text_arg;
 
     nc_seed((uint64_t)n * 8 + operation);
     player = (int)nc_rand_below(6) - 1;            /* out-of-range players behave the same */
-    for (int k = 0; k < 256; k++)
+    for (int k = 0; k < 512; k++)
         arena[k] = (unsigned char)nc_rand_below(256);
 
     /* Seed every ring slot and cursor of the six players. */
@@ -51,7 +51,7 @@ static void run_case(int n, int operation)
                   NC_ADDR(0x140116B00))(player, nc_rand(), nc_rand(), nc_rand());
 #elif defined(NC_CLIENT_WRAPPERS)
     if (operation == 0)
-        result = sr_player_event_text(player, arena + text_arg);
+        result = sr_player_event_text(player, (__m128i *)(arena + text_arg));
     else
         result = sr_player_event_values(player, nc_rand(), nc_rand(), nc_rand());
 #else

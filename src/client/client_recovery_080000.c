@@ -5768,25 +5768,29 @@ double            sub_14009D7A0(int a1)
 //----- (000000014009DE70) ----------------------------------------------------
 __int64 sub_14009DE70()
 {
-  return (unsigned int)sub_14009DE80() >> 1;
+  extern uint32_t math_random_next_uint31(void);
+    return math_random_next_uint31();
 }
 
 //----- (000000014009DFB0) ----------------------------------------------------
 double sub_14009DFB0()
 {
-  return (double)(int)sub_14009DE80() * 2.328306437080797e-10;
+  extern double math_random_next_unit(void);
+    return math_random_next_unit();
 }
 
 //----- (000000014009DFD0) ----------------------------------------------------
 double sub_14009DFD0()
 {
-  return (double)(int)sub_14009DE80() * 2.328306436538696e-10;
+  extern double math_random_next_unit_exact(void);
+    return math_random_next_unit_exact();
 }
 
 //----- (000000014009DFF0) ----------------------------------------------------
 double sub_14009DFF0()
 {
-  return ((double)(int)sub_14009DE80() + 0.5) * 2.328306436538696e-10;
+  extern double math_random_next_unit_centered(void);
+    return math_random_next_unit_centered();
 }
 
 //----- (000000014009E020) ----------------------------------------------------

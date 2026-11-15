@@ -5646,109 +5646,19 @@ void            sub_140016AF0(unsigned int a1, unsigned int a2, unsigned int a3,
 //----- (0000000140016C80) ----------------------------------------------------
 void            sub_140016C80(signed int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
 {
-  __int64 layer;
-  __int64 block_record_offset;
-  int cx;
-  signed int table_value;
-  int cy;
-  signed int table_value_2;
-  int cz;
-  unsigned int world_create_chunk_slot_result;
-  signed int world_create_block_record_result;
-  __int64 scaled_index;
-
-  layer = a1;
-  if ( (unsigned int)a1 <= 3 && (a2 & 0x80000000) == 0 && (a3 & 0x80000000) == 0 && (a4 & 0x80000000) == 0 )
-  {
-    block_record_offset = 263004LL * a1;
-    cx = a2 >> 6;
-    table_value = dword_140404A6C[block_record_offset + 111579650];
-    if ( cx < table_value )
-    {
-      cy = a3 >> 6;
-      if ( cy < (int)dword_140404A6C[block_record_offset + 111579651] )
-      {
-        table_value_2 = dword_140404A6C[block_record_offset + 111579652];
-        cz = a4 >> 6;
-        if ( cz < table_value_2 )
-        {
-          world_create_chunk_slot_result = *(_DWORD *)(*(_QWORD *)&dword_140404A6C[block_record_offset + 111579655] + 4LL * (cx + table_value * (cz + cy * table_value_2)));
-          if ( world_create_chunk_slot_result != -1 || (world_create_chunk_slot_result = sr_world_create_chunk_slot(layer, cx, cy, cz), world_create_chunk_slot_result != -1) )
-          {
-            world_create_block_record_result = dword_140404A6C[263004 * layer
-                                + 111579985
-                                + 513 * (int)world_create_chunk_slot_result
-                                + (int)(((a2 >> 3) & 7) + 8 * (((a4 >> 3) & 7) + 8 * ((a3 >> 3) & 7)))];
-            if ( world_create_block_record_result != -1 || (world_create_block_record_result = sr_world_create_block_record(layer, world_create_chunk_slot_result, a2 >> 3, a3 >> 3, a4 >> 3), world_create_block_record_result != -1) )
-            {
-              scaled_index = 6930LL * world_create_block_record_result;
-              dword_140404A6C[64 * (a3 & 7) + 83197431 + 8 * (a4 & 7) + scaled_index + (a2 & 7)] = a5;
-              if ( (dword_140404A6C[scaled_index + 83200503 + ((a3 >> 1) & 3)] & 0x80000000) == 0 )
-                sub_140012940(world_create_block_record_result, (a3 >> 1) & 3);
-              sr_world_mark_block_record(layer, a2, a3, a4);
-            }
-          }
-        }
-      }
-    }
-  }
+  /* Clean implementation: src/engine/blocks_records.c, checked against the original executable
+     (tools/native-compare suite blocks1). This wrapper keeps the entry point the recompiled callers use. */
+  extern void blocks_set_voxel_unknown_3008(unsigned int layer, unsigned int x, unsigned int y, unsigned int z, unsigned int value);
+  blocks_set_voxel_unknown_3008((unsigned int)a1, a2, a3, a4, a5);
 }
 
 //----- (0000000140016F60) ----------------------------------------------------
 void            sub_140016F60(signed int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
 {
-  __int64 layer;
-  __int64 block_record_offset;
-  int cx;
-  signed int table_value;
-  int cy;
-  signed int table_value_2;
-  int cz;
-  unsigned int world_create_chunk_slot_result;
-  signed int world_create_block_record_result;
-  __int64 scaled_index;
-  int masked_bits;
-  __int64 state_address;
-  __int64 masked_bits_2;
-
-  layer = a1;
-  if ( (unsigned int)a1 <= 3 && (a2 & 0x80000000) == 0 && (a3 & 0x80000000) == 0 && (a4 & 0x80000000) == 0 )
-  {
-    block_record_offset = 263004LL * a1;
-    cx = a2 >> 6;
-    table_value = dword_140404A6C[block_record_offset + 111579650];
-    if ( cx < table_value )
-    {
-      cy = a3 >> 6;
-      if ( cy < (int)dword_140404A6C[block_record_offset + 111579651] )
-      {
-        table_value_2 = dword_140404A6C[block_record_offset + 111579652];
-        cz = a4 >> 6;
-        if ( cz < table_value_2 )
-        {
-          world_create_chunk_slot_result = *(_DWORD *)(*(_QWORD *)&dword_140404A6C[block_record_offset + 111579655] + 4LL * (cx + table_value * (cz + cy * table_value_2)));
-          if ( world_create_chunk_slot_result != -1 || (world_create_chunk_slot_result = sr_world_create_chunk_slot(layer, cx, cy, cz), world_create_chunk_slot_result != -1) )
-          {
-            world_create_block_record_result = dword_140404A6C[263004 * layer
-                                + 111579985
-                                + 513 * (int)world_create_chunk_slot_result
-                                + (int)(((a2 >> 3) & 7) + 8 * (((a4 >> 3) & 7) + 8 * ((a3 >> 3) & 7)))];
-            if ( world_create_block_record_result != -1 || (world_create_block_record_result = sr_world_create_block_record(layer, world_create_chunk_slot_result, a2 >> 3, a3 >> 3, a4 >> 3), world_create_block_record_result != -1) )
-            {
-              scaled_index = 6930LL * world_create_block_record_result;
-              masked_bits = a3 & 7;
-              state_address = (a3 >> 1) & 3;
-              masked_bits_2 = scaled_index + (a2 & 7) + 8 * ((a4 & 7) + 8 * masked_bits);
-              dword_140404A6C[masked_bits_2 + 83199479] = a5;
-              dword_140404A6C[masked_bits_2 + 83199991] = 0;
-              if ( (dword_140404A6C[scaled_index + 83200503 + state_address] & 0x80000000) == 0 )
-                sub_140012940(world_create_block_record_result, state_address);
-            }
-          }
-        }
-      }
-    }
-  }
+  /* Clean implementation: src/engine/blocks_records.c, checked against the original executable
+     (tools/native-compare suite blocks1). This wrapper keeps the entry point the recompiled callers use. */
+  extern void blocks_set_voxel_id(unsigned int layer, unsigned int x, unsigned int y, unsigned int z, unsigned int value);
+  blocks_set_voxel_id((unsigned int)a1, a2, a3, a4, a5);
 }
 
 //----- (0000000140017910) ----------------------------------------------------
@@ -5866,48 +5776,10 @@ void            sub_140017910(signed int a1)
 //----- (0000000140017AC0) ----------------------------------------------------
 void            sub_140017AC0(signed int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int a5)
 {
-  __int64 layer;
-  __int64 block_record_offset;
-  int cx;
-  signed int table_value;
-  int cy;
-  signed int table_value_2;
-  int cz;
-  unsigned int world_create_chunk_slot_result;
-  unsigned int world_create_block_record_result;
-
-  layer = a1;
-  if ( (unsigned int)a1 <= 3 && (a2 & 0x80000000) == 0 && (a3 & 0x80000000) == 0 && (a4 & 0x80000000) == 0 )
-  {
-    block_record_offset = 263004LL * a1;
-    cx = a2 >> 6;
-    table_value = dword_140404A6C[block_record_offset + 111579650];
-    if ( cx < table_value )
-    {
-      cy = a3 >> 6;
-      if ( cy < (int)dword_140404A6C[block_record_offset + 111579651] )
-      {
-        table_value_2 = dword_140404A6C[block_record_offset + 111579652];
-        cz = a4 >> 6;
-        if ( cz < table_value_2 )
-        {
-          world_create_chunk_slot_result = *(_DWORD *)(*(_QWORD *)&dword_140404A6C[block_record_offset + 111579655] + 4LL * (cx + table_value * (cz + cy * table_value_2)));
-          if ( world_create_chunk_slot_result != -1 || (world_create_chunk_slot_result = sr_world_create_chunk_slot(layer, cx, cy, cz), world_create_chunk_slot_result != -1) )
-          {
-            world_create_block_record_result = dword_140404A6C[263004 * layer
-                                + 111579985
-                                + 513 * (int)world_create_chunk_slot_result
-                                + (int)(((a2 >> 3) & 7) + 8 * (((a4 >> 3) & 7) + 8 * ((a3 >> 3) & 7)))];
-            if ( world_create_block_record_result != -1 || (world_create_block_record_result = sr_world_create_block_record(layer, world_create_chunk_slot_result, a2 >> 3, a3 >> 3, a4 >> 3), world_create_block_record_result != -1) )
-            {
-              dword_140404A6C[6930 * world_create_block_record_result + 83194359 + 64 * (a3 & 7) + 8 * (a4 & 7) + (a2 & 7)] = a5;
-              sr_world_mark_block_record(layer, a2, a3, a4);
-            }
-          }
-        }
-      }
-    }
-  }
+  /* Clean implementation: src/engine/blocks_records.c, checked against the original executable
+     (tools/native-compare suite blocks1). This wrapper keeps the entry point the recompiled callers use. */
+  extern void blocks_set_voxel_unknown_8(unsigned int layer, unsigned int x, unsigned int y, unsigned int z, unsigned int value);
+  blocks_set_voxel_unknown_8((unsigned int)a1, a2, a3, a4, a5);
 }
 
 //----- (0000000140017CA0) ----------------------------------------------------
@@ -12329,39 +12201,10 @@ __int64            player_load_profile_config_candidate(int a1)
 //----- (000000014011C510) ----------------------------------------------------
 void            sub_14011C510(int a1, int a2, int a3, int a4)
 {
-  __int64 block_record_offset;
-  __int64 shifted_bits;
-  __int64 shifted_bits_2;
-
-  if ( a2 >= 0 )
-  {
-    block_record_offset = 263004LL * a1;
-    if ( a2 < (int)(dword_140404A6C[block_record_offset + 111579650] << 6)
-      && a3 >= 0
-      && a3 < (int)(dword_140404A6C[block_record_offset + 111579651] << 6)
-      && a4 >= 0
-      && a4 < (int)(dword_140404A6C[block_record_offset + 111579652] << 6) )
-    {
-      shifted_bits = *(int *)(*(_QWORD *)&dword_140404A6C[block_record_offset + 111579655]
-                  + 4LL
-                  * (int)(((unsigned int)a2 >> 6)
-                        + dword_140404A6C[block_record_offset + 111579650]
-                        * (((unsigned int)a4 >> 6) + dword_140404A6C[block_record_offset + 111579652] * ((unsigned int)a3 >> 6))));
-      if ( (_DWORD)shifted_bits != -1 )
-      {
-        shifted_bits_2 = (int)dword_140404A6C[263004 * a1
-                                + 111579985
-                                + 513 * shifted_bits
-                                + (int)((((unsigned int)a2 >> 3) & 7)
-                                      + 8 * ((((unsigned int)a4 >> 3) & 7) + 8 * (((unsigned int)a3 >> 3) & 7)))];
-        if ( (_DWORD)shifted_bits_2 != -1 )
-        {
-          dword_140404A6C[6930 * shifted_bits_2 + 83201282] = 1;
-          dword_140404A6C[6930 * shifted_bits_2 + 83201283 + ((unsigned __int64)(a3 & 6) >> 1)] = 1;
-        }
-      }
-    }
-  }
+  /* Clean implementation: src/engine/blocks_records.c, checked against the original executable
+     (tools/native-compare suite blocks1). This wrapper keeps the entry point the recompiled callers use. */
+  extern void blocks_mark_voxel_record_flags(int layer, int x, int y, int z);
+  blocks_mark_voxel_record_flags(a1, a2, a3, a4);
 }
 
 //----- (000000014011D470) ----------------------------------------------------

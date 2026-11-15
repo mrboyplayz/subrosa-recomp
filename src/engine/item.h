@@ -285,6 +285,17 @@ typedef struct ItemList {
    pressed become the previous ones. 0x1400CC610 */
 void item_tick_states(void);
 
+/* The tick's lifetimes stage: every active item's lifetime counts down
+   (0xFFFF never expires) and an item whose count reaches zero is removed.
+   0x1400CF610 */
+void item_lifetimes_tick(void);
+
+/* Clears the two pieces of an item's record that a new item starts from
+   (the qword at +0x368 and the 0x520 bytes at +0x1660, to the record's
+   end), then runs the record's set-up still in recompiled code.
+   0x1400C90D0 */
+int64_t item_record_clear(int item);
+
 _Static_assert(sizeof(ItemBlockOrigin) == 0x18, "ItemBlockOrigin layout");
 _Static_assert(sizeof(ItemBlockPart) == 0x74, "ItemBlockPart layout");
 _Static_assert(sizeof(ItemBlockRegion) == 0xDB0C, "ItemBlockRegion layout");

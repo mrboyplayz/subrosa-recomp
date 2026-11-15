@@ -723,37 +723,15 @@ __int64            sub_1400C8D20(int a1, int a2)
 //----- (00000001400C90D0) ----------------------------------------------------
 __int64            sub_1400C90D0(int a1)
 {
-  __int64 item_record_offset;
-
-  item_record_offset = 1760LL * a1;
-  *(_QWORD *)&dword_140404A6C[item_record_offset + 278846111] = 0;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[item_record_offset + 278847325]), 0, 0x520u);
-  return sub_1400C92B0(a1);
+  extern int64_t item_record_clear(int item);
+    return item_record_clear(a1);
 }
 
 //----- (00000001400CF610) ----------------------------------------------------
 void            sub_1400CF610()
 {
-  int item;
-  unsigned int *state_address;
-  int remaining_count;
-
-  item = 0;
-  state_address = &g_182BBB19C;
-  do
-  {
-    if ( *(state_address - 7) )
-    {
-      remaining_count = *state_address;
-      if ( (int)*state_address < 0xFFFF )
-        *state_address = --remaining_count;
-      if ( remaining_count <= 0 )
-        sr_world_remove_item(item);
-    }
-    ++item;
-    state_address += 1760;
-  }
-  while ( item < 1024 );
+  extern void item_lifetimes_tick(void);
+    item_lifetimes_tick();
 }
 
 //----- (00000001400CFC80) ----------------------------------------------------

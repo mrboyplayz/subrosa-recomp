@@ -1,0 +1,45 @@
+skip path taken
+    int bond = sr_human_create_joint_bond(human, parent_bone, child_bone, anchor);
+    if (bond != -1)
+----
+    int bond = sr_human_create_joint_bond(human, parent_bone, child_bone, anchor);
+    if (bond == -1)
+====
+not recorded
+    if (bond != -1)
+        world_humans[human].bones[child_bone].bond = bond;
+----
+====
+recorded in the parent bone
+        world_humans[human].bones[child_bone].bond = bond;
+----
+        world_humans[human].bones[parent_bone].bond = bond;
+====
+recorded in the wrong human
+        world_humans[human].bones[child_bone].bond = bond;
+----
+        world_humans[0].bones[child_bone].bond = bond;
+====
+joint off by one
+        world_humans[human].bones[child_bone].bond = bond;
+----
+        world_humans[human].bones[child_bone + 1].bond = bond;
+====
+a fixed word stored
+        world_humans[human].bones[child_bone].bond = bond;
+----
+        world_humans[human].bones[child_bone].bond = -1;
+====
+parent bone passed on
+    int bond = sr_human_create_joint_bond(human, parent_bone, child_bone, anchor);
+----
+    int bond = sr_human_create_joint_bond(human, parent_bone, parent_bone, anchor);
+====
+nothing returned
+    if (bond != -1)
+        world_humans[human].bones[child_bone].bond = bond;
+    return bond;
+----
+    if (bond != -1)
+        world_humans[human].bones[child_bone].bond = bond;
+    return 0;

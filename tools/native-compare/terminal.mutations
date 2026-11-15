@@ -1,0 +1,50 @@
+mission ratio: a present mission with no owner not counted
+        else if (owner != UINT32_MAX)
+            ++counted;
+----
+====
+
+mission ratio: 1.0 on an empty terminal only when total is negative
+    if (total <= 0)
+        return 1.0f;
+----
+    if (total < 0)
+        return 1.0f;
+====
+
+word copy: the letter Z mapped as an ordinary character
+            if (letter_offset > 0x19u) {
+----
+            if (letter_offset >= 0x19u) {
+====
+
+word copy: the selected slot never coloured 12
+                colours[i] = (uint8_t)((uint32_t)terminal_selected_slot(item) == slot ? 12 : 15);
+----
+                colours[i] = (uint8_t)((uint32_t)terminal_selected_slot(item) == slot ? 15 : 15);
+====
+
+selection list: the untouched line 19 not sent
+    item_link_text_line(item, 18);
+    item_link_text_line(item, 19);
+----
+    item_link_text_line(item, 18);
+====
+
+selection list: one digit colour byte short of the original's 0x8F
+        colours17[4 * i + 1] = (char)-113;
+----
+        colours17[4 * i + 1] = (char)-114;
+====
+
+snake keys: the reversal of the heading accepted
+            if (terminal_snake_direction(item) != 2)
+                terminal_snake_direction(item) = 0;
+----
+            terminal_snake_direction(item) = 0;
+====
+
+snake keys: the Ctrl-X reset clears twenty-three lines
+            for (int line = 0; line < 24; line++) {
+----
+            for (int line = 0; line < 23; line++) {

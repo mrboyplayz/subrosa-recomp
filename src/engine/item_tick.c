@@ -156,6 +156,25 @@ unless_running:
         item->lifetime = LIFETIME_FOREVER;
 }
 
+/* The tick's lifetimes stage: every active item's lifetime counts down
+   (0xFFFF never expires) and an item whose count reaches zero is removed.
+   0x1400CF610 */
+void item_lifetimes_tick(void)
+{
+    for (int item = 0; item < WORLD_ITEM_CAPACITY; item++) {
+        WorldItem *record = &world_items[item];
+        if (!record->active)
+            continue;
+        int32_t lifetime = record->lifetime;
+        if (lifetime < LIFETIME_FOREVER) {
+            lifetime--;
+            record->lifetime = lifetime;
+        }
+        if (lifetime <= 0)
+            world_remove_item(item);
+    }
+}
+
 /* ---- phones ---------------------------------------------------------------- */
 
 static void hang_up(int item)

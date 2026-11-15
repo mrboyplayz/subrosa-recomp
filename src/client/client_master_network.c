@@ -36,7 +36,7 @@ void               sub_14006BED0()
       if ( !g_1829F8BD0 )
       {
         g_1829F8FD8 = 0;
-        sub_140198D20((__int64)sub_1401880C0);
+        sub_140198D20((__int64)sr_steam_ticket_stage);
         g_1829F8BD0 = 1;
       }
     }

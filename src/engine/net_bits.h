@@ -17,6 +17,12 @@
    length check. Failure leaves value and stream state untouched. */
 int net_read_bits(uint32_t *value, int bits); /* 0x140115AE0 */
 int net_read_bits_scaled(uint32_t *value, int bits, uint32_t scale); /* 0x140115C20 */
+/* Index and signed-value reads over the basic reader. The all-ones index
+   means none; the signed read extends from its top bit. On a failed read
+   the original observes its uninitialized stack dword, so the port's zero
+   there is a documented limit. 0x140115BD0/0x140115D20. */
+int net_read_optional_index(int *out, int bits);
+int net_read_signed_bits(int *out, int bits);
 int net_write_bits(const uint32_t *value, int bits); /* 0x140115D90 */
 /* Divisor must be nonzero unless the initial buffer-full check fails. */
 int net_write_bits_scaled(const uint32_t *value, int bits, uint32_t divisor); /* 0x140115E80 */
