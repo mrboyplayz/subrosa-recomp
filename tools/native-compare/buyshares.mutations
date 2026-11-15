@@ -1,0 +1,39 @@
+no team check
+if (team == -1) return;
+----
+(void)0;
+====
+full holding still buys
+if (held >= PLAYER_SHARE_LIMIT)
+----
+if (held > PLAYER_SHARE_LIMIT)
+====
+one share short of the cap
+count = subtract_int(PLAYER_SHARE_LIMIT, held);
+----
+count = subtract_int(PLAYER_SHARE_LIMIT - 1, held);
+====
+exact cash buys
+if (money > cost) {
+----
+if (money >= cost) {
+====
+unordered cost buys
+if (money > cost) {
+----
+if (!(money <= cost)) {
+====
+stock count unchanged
+stock->shares = add_int(stock->shares, count);
+----
+(void)0;
+====
+cash rounded
+player_money(player) = truncate_float(money - cost);
+----
+player_money(player) = truncate_float(money - cost + 0.5f);
+====
+shares from the request
+player_shares(player) = add_int(held, count);
+----
+player_shares(player) = add_int(held, 1);
