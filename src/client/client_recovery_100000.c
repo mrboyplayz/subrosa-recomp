@@ -1084,42 +1084,9 @@ LABEL_7:
 //----- (00000001401189F0) ----------------------------------------------------
 __int64            sub_1401189F0(int a1, int a2)
 {
-  __int64 result;
-  __int64 player_record_offset;
-  __int64 table_value;
-  int table_value_2;
-  __int64 scaled_index;
-  float component_sum;
-  float weighted_sum;
-
-  result = a1;
-  player_record_offset = 3597LL * a1;
-  table_value = (int)dword_140404A6C[player_record_offset + 71856286];
-  if ( (_DWORD)table_value != -1 )
-  {
-    table_value_2 = dword_140404A6C[player_record_offset + 71856288];
-    if ( table_value_2 < 10000 )
-    {
-      result = (unsigned int)(table_value_2 + a2);
-      if ( (int)result >= 10000 )
-        a2 = 10000 - table_value_2;
-    }
-    else
-    {
-      a2 = 0;
-    }
-    scaled_index = 3 * table_value;
-    component_sum = (float)(int)dword_140404A6C[player_record_offset + 71856272];
-    weighted_sum = (float)a2 * *(float *)&dword_140404A6C[2 * scaled_index + 335047062];
-    if ( component_sum > weighted_sum )
-    {
-      dword_140404A6C[2 * scaled_index + 335047061] += a2;
-      dword_140404A6C[player_record_offset + 71856272] = (int)(float)(component_sum - weighted_sum);
-      result = (unsigned int)(table_value_2 + a2);
-      dword_140404A6C[player_record_offset + 71856288] = result;
-    }
-  }
-  return result;
+    extern void player_buy_shares(int player, int count);
+    player_buy_shares(a1, a2);
+    return 0; /* no result: rax is residue at the exit */
 }
 
 //----- (000000014011AF80) ----------------------------------------------------
