@@ -79,6 +79,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `net_rotation.c`, `net_readers.c` | quaternion packet encoders, the variable-bits and 13-bit variants, that quantize a rotation matrix's quaternion from math_quat_from_mat3 into packet integers, out[0] the index of the dropped largest component and the following slots the quantized remaining three written in the order of the original's runtime order tables (0x140301DC8 for 13 bits, 0x140301DE8 general), plus the signed-bits and optional-index readers over the bit stream | 0x140114E90, 0x140114D40, 0x140115D20, 0x140115BD0 |
 | `terminal.c` | the computer item's terminal: the share of its twenty-six mission slots that is present and owned by the slot, the word copied between the raw record text and a screen line through the letter-to-slot table (raw and coloured paths), the selection list rows around the selected slot, and the snake game's keys | 0x1400C58E0, 0x1400C5610, 0x1400C5360, 0x1400C9120 |
 | `world_particles.c` (addition) | one flying piece drawn from its mesh on the lit, land-mask and stencil passes, the model matrix restored afterwards | 0x140124840 |
+| `net_stream_fields.c`, `net_stream_fields.h` | optional-index and signed packet-stream fields, with original return semantics and write passthrough | 0x14006C510, 0x14006C570 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |

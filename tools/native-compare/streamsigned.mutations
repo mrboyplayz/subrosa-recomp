@@ -1,0 +1,25 @@
+sign position
+(((unsigned char)bits - 1u) & 31u)
+----
+((unsigned char)bits & 31u)
+====
+extension mask
+field |= UINT32_MAX << ((unsigned char)bits & 31u);
+----
+field |= UINT32_MAX >> ((unsigned char)bits & 31u);
+====
+positive return
+uint32_t result = field & sign;
+----
+uint32_t result = field;
+====
+signed write return
+return (uint64_t)sub_14006C360(stream, value, bits, writing);
+    uint32_t field;
+    sub_14006C360(stream, &field, bits, 0);
+    uint32_t sign
+----
+return (uint32_t)sub_14006C360(stream, value, bits, writing);
+    uint32_t field;
+    sub_14006C360(stream, &field, bits, 0);
+    uint32_t sign
