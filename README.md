@@ -24,7 +24,8 @@ Routines rewritten as readable, verified engine C:
 runtime and 323 stb library routines are recovered as decompiled C and
 are not counted here. The file-by-file status lives in
 `src/engine/README.md`; regenerate the bar with
-`python scripts/progress.py`.
+`python scripts/progress.py --write` (CI fails pull requests whose bar is
+stale).
 
 ## Build
 
