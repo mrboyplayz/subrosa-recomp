@@ -3,6 +3,8 @@
 
 !.gitignore
 !.gitattributes
+!.github/
+!.github/**
 !README.md
 !scripts/
 !scripts/**

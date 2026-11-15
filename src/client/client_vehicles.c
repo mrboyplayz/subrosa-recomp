@@ -25252,7 +25252,7 @@ LABEL_102:
         component_delta = scaled_value_2 + 6.28318530718;
       }
       /* the original converts the wrapped double back to float here (cvtpd2ps) before the store */
-      scaled_ratio = (float)component_delta;
+      *(float *)&scaled_ratio = (float)component_delta;
       state_address_8[2] = LODWORD(scaled_ratio);
 LABEL_133:
       call_result = sub_1401F8AC0(COERCE_DOUBLE((unsigned __int64)LODWORD(scaled_ratio)), (__int64)state_address_2, scaled_ratio);

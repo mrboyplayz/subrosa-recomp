@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  scripts:
+    name: Python scripts parse
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m compileall -q scripts tools
+
+  build:
+    name: Build client (Windows, MinGW)
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: false
+          install: >-
+            git
+            mingw-w64-x86_64-toolchain
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-python
+
+      # SDL 2.0.12 is cloned and built from source by build.py; keep it between runs.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            build/sdl2012-src
+            build/sdl2012-build
+          key: sdl-2.0.12-${{ runner.os }}-${{ hashFiles('scripts/build.py') }}
+
+      - name: Build
+        shell: msys2 {0}
+        run: python scripts/build.py
+
+      - name: Check outputs
+        shell: msys2 {0}
+        run: |
+          test -s dist/subrosa-recomp.exe
+          test -s dist/SDL2.dll
+          ls -l dist/subrosa-recomp.exe dist/SDL2.dll
+
+      - name: Upload compiler logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            build/client/objects/*.log
+            build/client/*.log
+          if-no-files-found: ignore
+
+      - name: Upload build
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: subrosa-recomp-${{ github.sha }}
+          path: |
+            dist/subrosa-recomp.exe
+            dist/SDL2.dll
+          retention-days: 7
