@@ -78,6 +78,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `net_decode.c`, `net_decode.h`, `net_replication.c`, `net_replication.h` | packet decoders over the bit reader: sign-magnitude angles over a full turn, scaled fractions, adaptive base deltas; and the replication layer's per-peer rings and item-state stream twins | 0x14018D440, 0x140192560, 0x14018D510, 0x1401060F0, 0x140105AB0, 0x14010EF40, 0x14018DB20 |
 | `net_rotation.c`, `net_readers.c` | quaternion packet encoders, the variable-bits and 13-bit variants, that quantize a rotation matrix's quaternion from math_quat_from_mat3 into packet integers, out[0] the index of the dropped largest component and the following slots the quantized remaining three written in the order of the original's runtime order tables (0x140301DC8 for 13 bits, 0x140301DE8 general), plus the signed-bits and optional-index readers over the bit stream | 0x140114E90, 0x140114D40, 0x140115D20, 0x140115BD0 |
 | `world_particles.c` (addition) | one flying piece drawn from its mesh on the lit, land-mask and stencil passes, the model matrix restored afterwards | 0x140124840 |
+| `net_stream_fields.c`, `net_stream_fields.h` | optional-index and signed packet-stream fields, with original return semantics and write passthrough | 0x14006C510, 0x14006C570 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |

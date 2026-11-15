@@ -1,0 +1,27 @@
+sentinel comparison
+field == (1u << ((unsigned char)bits & 31u)) - 1u
+----
+field != (1u << ((unsigned char)bits & 31u)) - 1u
+====
+sentinel value
+field = UINT32_MAX;
+----
+field = 0;
+====
+write return
+return (uint64_t)sub_14006C360(stream, value, bits, writing);
+    uint32_t field;
+    sub_14006C360(stream, &field, bits, 0);
+    if (field
+----
+return (uint32_t)sub_14006C360(stream, value, bits, writing);
+    uint32_t field;
+    sub_14006C360(stream, &field, bits, 0);
+    if (field
+====
+read output
+*value = field;
+    return field;
+----
+*value = field ^ 1u;
+    return field;
