@@ -44,6 +44,10 @@
     (&SR_GLOBAL(unsigned int, 0x15131B768ULL + 4ULL * (uint64_t)(uint32_t)(record)))
 #define startup_mesh_record_flag(record) \
     (&SR_GLOBAL(unsigned int, 0x15133B768ULL + 4ULL * (uint64_t)(uint32_t)(record)))
+/* Three more words per record, read as floats by the block mesh's merge
+   pass. 0x15134B768. */
+#define startup_mesh_record_vector(record) \
+    (&SR_GLOBAL(unsigned int, 0x15134B768ULL + 12ULL * (uint64_t)(uint32_t)(record)))
 
 /* The extension count and the 112-byte records the prefix search walks.
    0x160361344, 0x160361360. */
@@ -56,6 +60,10 @@ int startup_extension_prefix_match(const char *text);
 
 /* Whether the processor supports SSE4.1. 0x14068F80. */
 uint32_t startup_cpu_has_sse41(void);
+
+/* Removes an index record by moving the last one into its place; a
+   record outside 0..count-1 is left alone. 0x140184AB0. */
+void startup_mesh_remove_record(int record);
 
 /* The world patch mesh builder. 0x14001F20. */
 unsigned long long startup_patch_mesh_build(const float *controls, const float *uv_controls,

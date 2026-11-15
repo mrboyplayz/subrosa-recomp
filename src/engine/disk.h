@@ -44,4 +44,7 @@ uint32_t disk_for_item_drive(int item, int drive); /* 0x14004C960 */
 /* Appends an entry, copying through the source's NUL with no truncation;
  * callers must supply storage for that native behavior. 0x140080690 */
 uint32_t disk_add_file(int disk, uint32_t directory, const char *name, uint32_t content);
+/* The first entry of the directory whose name equals the text, compared
+ * byte by byte up to the text's NUL. UINT32_MAX when none. 0x140080820 */
+uint32_t disk_find_file(int disk, uint32_t directory, const char *name);
 #endif

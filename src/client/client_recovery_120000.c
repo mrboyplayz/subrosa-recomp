@@ -1481,24 +1481,8 @@ __int64            sub_14012FE70(_BYTE *a1)
 //----- (0000000140130000) ----------------------------------------------------
 __int64 sub_140130000()
 {
-  int iteration_count;
-  int rand_result;
-  __int64 scaled_index;
-
-  if ( !g_175FF3464 )
-    return 0;
-  iteration_count = 0;
-  rand_result = rand() % (signed int)g_175FF3464;
-  do
-  {
-    scaled_index = 396LL * rand_result;
-    if ( (int)dword_140404A6C[scaled_index + 225426059] <= 3 && (int)dword_140404A6C[scaled_index + 225426060] <= 3 )
-      break;
-    ++iteration_count;
-    rand_result = rand() % (signed int)g_175FF3464;
-  }
-  while ( iteration_count < 1024 );
-  return (unsigned int)rand_result;
+    extern int road_pick_random(void);
+    return (unsigned int)road_pick_random();
 }
 
 //----- (00000001401300C0) ----------------------------------------------------
