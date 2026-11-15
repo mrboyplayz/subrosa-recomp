@@ -24,6 +24,11 @@ __pycache__/
 *.dll
 *.a
 
+# The Emscripten build stays local; it is not part of the repo.
+src/wasm/
+scripts/build_wasm.py
+scripts/wasm_data.py
+
 # IDA project state contains copied binary data.
 *.i64
 *.id0

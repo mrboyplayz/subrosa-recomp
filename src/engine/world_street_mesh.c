@@ -1,4 +1,5 @@
 /* GPU meshes of the World map's streets. See world_streets.h. */
+#include <string.h>
 #include "arith.h"
 #include "gl.h"
 #include "world_streets.h"
@@ -97,4 +98,19 @@ void world_build_street_meshes(void)
         if (world_streets[i].kind == 1)
             mesh_triangles(i, world_streets[i].range_first[2], world_streets[i].range_end[2], 0.0f);
     upload_mesh(2);
+}
+
+/* Steam's encrypted-app-ticket callback (see world_streets.h): the length
+   word first, then the ticket bytes, then the received flag. Lengths over
+   the buffer's 1024 bytes leave everything alone. 0x1401880C0 */
+void *steam_ticket_stage(const void *ticket, unsigned int length)
+{
+    void *result = NULL;
+
+    if (length <= 0x400) {
+        steam_ticket->length = length;
+        result = memcpy(steam_ticket->data, ticket, length);
+        steam_ticket->received = 1;
+    }
+    return result;
 }

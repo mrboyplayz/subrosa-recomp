@@ -27,6 +27,17 @@ static inline int32_t subtract_int(int32_t a, int32_t b)
     return (int32_t)((uint32_t)a - (uint32_t)b);
 }
 
+/* 32-bit ROL: the count is taken mod 32. */
+static inline uint32_t rotate_left_int(uint32_t value, int count)
+{
+    count %= 32;
+    if (count < 0)
+        count += 32;
+    if (!count)
+        return value;
+    return (value << count) | (value >> (32 - count));
+}
+
 /* float to int as CVTTSS2SI: toward zero, 0x80000000 when out of range. */
 static inline int32_t truncate_float(float value)
 {

@@ -3252,61 +3252,15 @@ __int64            sub_140038130(int a1, int a2, int a3, int a4)
 //----- (0000000140038480) ----------------------------------------------------
 float            sub_140038480(float a1, float a2, float a3)
 {
-  float cosine_value;
-
-  cosine_value = (1.0 - cos(a3 * 3.14159265359)) * 0.5;
-  return (float)((float)(1.0 - cosine_value) * a1) + (float)(a2 * cosine_value);
+  extern float noise_cosine_mix(float from, float to, float lane);
+    return noise_cosine_mix(a1, a2, a3);
 }
 
 //----- (00000001400384F0) ----------------------------------------------------
 __m128            sub_1400384F0(float a1, float a2, int a3)
 {
-  int input_value;
-  int input_value_2;
-  int masked_bits;
-  int shifted_bits;
-  int scaled_index;
-  int shifted_bits_2;
-  int record_word_offset;
-  int scaled_index_2;
-  int shifted_bits_3;
-  int shifted_bits_4;
-  float cosine_value;
-  double cosine_value_2;
-  __int128 state_address;
-  float product_difference;
-
-  input_value = (int)a1;
-  input_value_2 = (int)a2;
-  masked_bits = a3 & ((int)a1 + 1);
-  shifted_bits = ((57 * input_value_2 + input_value) << 13) ^ (57 * input_value_2 + input_value);
-  scaled_index = 15731 * shifted_bits * shifted_bits;
-  shifted_bits_2 = ((masked_bits + 57 * input_value_2) << 13) ^ (masked_bits + 57 * input_value_2);
-  record_word_offset = 57 * (a3 & ((int)a2 + 1));
-  scaled_index_2 = 15731 * shifted_bits_2 * shifted_bits_2 + 789221;
-  shifted_bits_3 = 15731 * (((record_word_offset + input_value) << 13) ^ (record_word_offset + input_value)) * (((record_word_offset + input_value) << 13) ^ (record_word_offset + input_value)) + 789221;
-  shifted_bits_4 = 15731 * (((record_word_offset + masked_bits) << 13) ^ (record_word_offset + masked_bits)) * (((record_word_offset + masked_bits) << 13) ^ (record_word_offset + masked_bits)) + 789221;
-  cosine_value = (1.0 - cos((float)(a1 - (float)(int)a1) * 3.14159265359)) * 0.5;
-  cosine_value_2 = cos((float)(a2 - (float)(int)a2) * 3.14159265359);
-  state_address = 0x3F800000u;
-  product_difference = (1.0 - cosine_value_2) * 0.5;
-  *(float *)&state_address = (float)((float)((float)((float)(1.0
-                                                 - (float)((float)((scaled_index_2 * scaled_index_2 - 771171059) & 0x7FFFFFFF) * 9.3132257e-10))
-                                         * cosine_value)
-                                 + (float)((float)(1.0
-                                                 - (float)((float)(((scaled_index + 789221) * (scaled_index + 789221) - 771171059)
-                                                                 & 0x7FFFFFFF)
-                                                         * 9.3132257e-10))
-                                         * (float)(1.0 - cosine_value)))
-                         * (float)(1.0 - product_difference))
-                 + (float)((float)((float)((float)(1.0
-                                                 - (float)((float)((shifted_bits_3 * shifted_bits_3 - 771171059) & 0x7FFFFFFF) * 9.3132257e-10))
-                                         * (float)(1.0 - cosine_value))
-                                 + (float)((float)(1.0
-                                                 - (float)((float)((shifted_bits_4 * shifted_bits_4 - 771171059) & 0x7FFFFFFF) * 9.3132257e-10))
-                                         * cosine_value))
-                         * product_difference);
-  return (__m128)state_address;
+  extern __m128 noise_value_2d(float x, float y, int seed);
+    return noise_value_2d(a1, a2, a3);
 }
 
 //----- (00000001400387E0) ----------------------------------------------------
@@ -5101,203 +5055,13 @@ _BOOL8            sub_14003F0B0(
 //----- (000000014003FA40) ----------------------------------------------------
 unsigned int *           sub_14003FA40(int a1, int a2, float a3)
 {
-  __int64 shifted_bits;
-  unsigned int *result;
-  int integer_sum;
-  int integer_sum_2;
-  __int64 shifted_bits_2;
-
-  if ( (unsigned int)a1 <= 0xFFE && (unsigned int)a2 <= 0xFFE && !g_183F7CB60 )
-  {
-    shifted_bits = a1 + (a2 << 12);
-    result = &g_175FD1400;
-    if ( a3 > *(float *)&dword_140404A6C[shifted_bits + 254388963] )
-      *(float *)&dword_140404A6C[shifted_bits + 254388963] = a3;
-    if ( a3 > *(float *)&dword_140404A6C[shifted_bits + 254388964] )
-      *(float *)&dword_140404A6C[shifted_bits + 254388964] = a3;
-    if ( a3 > *(float *)&dword_140404A6C[shifted_bits + 254393059] )
-      *(float *)&dword_140404A6C[shifted_bits + 254393059] = a3;
-    if ( a3 > *(float *)&dword_140404A6C[shifted_bits + 254393060] )
-      *(float *)&dword_140404A6C[shifted_bits + 254393060] = a3;
-    if ( a1 >= (int)g_175FD1444
-      && a1 <= (int)g_175FD1450
-      && a2 >= (int)g_175FD144C
-      && a2 <= (int)g_175FD1458 )
-    {
-      integer_sum = a1 + 1024;
-      integer_sum_2 = a2 + 1024;
-      if ( (unsigned int)integer_sum <= 0xFFF && (unsigned int)integer_sum_2 <= 0xFFF )
-      {
-        shifted_bits_2 = (integer_sum >> 2) + (integer_sum_2 >> 2 << 10);
-        *(_WORD *)(g_181290050 + 2 * shifted_bits_2) &= ~(1 << ((integer_sum & 3) + 4 * (a2 & 3)));
-        return (unsigned int *)((integer_sum & 3) + 4 * (a2 & 3u));
-      }
-    }
-  }
-  return result;
+  extern unsigned int *terrain_height_update(int cell_x, int cell_y, float height);
+    return terrain_height_update(a1, a2, a3);
 }
 
 //----- (000000014003FB90) ----------------------------------------------------
 __int64            sub_14003FB90(int a1, float a2, float a3, float a4, float a5, float a6, float a7)
 {
-  __int64 input_value;
-  __int64 record_word_offset;
-  __int64 record_word_offset_2;
-  __int64 table_value;
-  unsigned int float_word;
-  float product_difference;
-  __int64 table_value_2;
-  float product_difference_2;
-  float product_difference_3;
-  float state_address;
-  __int64 table_value_3;
-  float product_difference_4;
-  unsigned int state_address_2;
-  __int64 table_value_4;
-  float product_difference_5;
-  float product_difference_6;
-  float state_address_3;
-  __int64 table_value_5;
-  float product_difference_7;
-  float product_difference_8;
-  float state_address_4;
-  __int64 table_value_6;
-  float product_difference_9;
-  float product_difference_10;
-  float state_address_5;
-  __int64 table_value_7;
-  float product_difference_11;
-  float product_difference_12;
-  float state_address_6;
-  __int64 table_value_8;
-  float product_difference_13;
-  float product_difference_14;
-  __int64 table_value_9;
-  __int64 table_value_10;
-  __int64 table_value_11;
-  __int64 table_value_12;
-  __int64 table_value_13;
-  __int64 table_value_14;
-  __int64 table_value_15;
-  __int64 result;
-
-  input_value = a1;
-  record_word_offset = 2310LL * a1;
-  record_word_offset_2 = 770LL * a1;
-  table_value = (int)dword_140404A6C[record_word_offset + 432531270];
-  *(float *)&float_word = (float)((float)(*(float *)dword_1402B34F8 - 0.5) * a7) + a4;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531271 + 3 * table_value] = (float)((float)(*(float *)dword_1402B34F0 - 0.5) * a5)
-                                                            + a2;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531272 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = (float)((float)(*(float *)dword_1402B34F4 - 0.5) * a6)
-                                                                                             + a3;
-  product_difference = *(float *)&dword_1402B34FC - 0.5;
-  dword_140404A6C[3 * record_word_offset_2 + 432531273 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = float_word;
-  table_value_2 = (int)dword_140404A6C[record_word_offset + 432531270];
-  product_difference_2 = *(float *)&dword_1402B3500 - 0.5;
-  dword_140404A6C[record_word_offset + 432531270] = table_value_2 + 1;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531274 + 3 * table_value_2] = (float)(product_difference * a5) + a2;
-  product_difference_3 = *(float *)&dword_1402B3504 - 0.5;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531272 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = (float)(product_difference_2 * a6) + a3;
-  state_address = (float)(*(float *)&dword_1402B350C - 0.5) * a6;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531273 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = (float)(product_difference_3 * a7) + a4;
-  table_value_3 = (int)dword_140404A6C[record_word_offset + 432531270];
-  product_difference_4 = *(float *)&dword_1402B3508 - 0.5;
-  dword_140404A6C[record_word_offset + 432531270] = table_value_3 + 1;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531274 + 3 * table_value_3] = (float)(product_difference_4 * a5) + a2;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531272 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = state_address + a3;
-  *(float *)&state_address_2 = (float)((float)(*(float *)&dword_1402B3518 - 0.5) * a6) + a3;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531273 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = (float)((float)(*(float *)&dword_1402B3510 - 0.5) * a7)
-                                                                                             + a4;
-  table_value_4 = (int)dword_140404A6C[record_word_offset + 432531270];
-  product_difference_5 = *(float *)&dword_1402B3514 - 0.5;
-  dword_140404A6C[record_word_offset + 432531270] = table_value_4 + 1;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531274 + 3 * table_value_4] = (float)(product_difference_5 * a5) + a2;
-  product_difference_6 = *(float *)&dword_1402B351C - 0.5;
-  dword_140404A6C[3 * record_word_offset_2 + 432531272 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = state_address_2;
-  state_address_3 = (float)(*(float *)&dword_1402B3524 - 0.5) * a6;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531273 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = (float)(product_difference_6 * a7) + a4;
-  table_value_5 = (int)dword_140404A6C[record_word_offset + 432531270];
-  product_difference_7 = *(float *)&dword_1402B3520 - 0.5;
-  dword_140404A6C[record_word_offset + 432531270] = table_value_5 + 1;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531274 + 3 * table_value_5] = (float)(product_difference_7 * a5) + a2;
-  product_difference_8 = *(float *)&dword_1402B3528 - 0.5;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531272 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = state_address_3 + a3;
-  state_address_4 = (float)(*(float *)&dword_1402B3530 - 0.5) * a6;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531273 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = (float)(product_difference_8 * a7) + a4;
-  table_value_6 = (int)dword_140404A6C[record_word_offset + 432531270];
-  product_difference_9 = *(float *)&dword_1402B352C - 0.5;
-  dword_140404A6C[record_word_offset + 432531270] = table_value_6 + 1;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531274 + 3 * table_value_6] = (float)(product_difference_9 * a5) + a2;
-  product_difference_10 = *(float *)&dword_1402B3534 - 0.5;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531272 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = state_address_4 + a3;
-  input_value *= 385;
-  state_address_5 = (float)(*(float *)&dword_1402B353C - 0.5) * a6;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531273 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = (float)(product_difference_10 * a7) + a4;
-  table_value_7 = (int)dword_140404A6C[record_word_offset + 432531270];
-  product_difference_11 = *(float *)&dword_1402B3538 - 0.5;
-  dword_140404A6C[record_word_offset + 432531270] = table_value_7 + 1;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531274 + 3 * table_value_7] = (float)(product_difference_11 * a5) + a2;
-  product_difference_12 = *(float *)&dword_1402B3540 - 0.5;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531272 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = state_address_5 + a3;
-  state_address_6 = (float)(*(float *)&dword_1402B3548 - 0.5) * a6;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531273 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = (float)(product_difference_12 * a7) + a4;
-  table_value_8 = (int)dword_140404A6C[record_word_offset + 432531270];
-  product_difference_13 = *(float *)&dword_1402B3544 - 0.5;
-  dword_140404A6C[record_word_offset + 432531270] = table_value_8 + 1;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531274 + 3 * table_value_8] = (float)(product_difference_13 * a5) + a2;
-  product_difference_14 = *(float *)&dword_1402B354C - 0.5;
-  *(float *)&dword_140404A6C[3 * record_word_offset_2 + 432531272 + 3 * (int)dword_140404A6C[record_word_offset + 432531270]] = state_address_6 + a3;
-  table_value_9 = record_word_offset_2 + (int)dword_140404A6C[record_word_offset + 432531270];
-  LODWORD(record_word_offset_2) = table_value + dword_1402B3660[0];
-  *(float *)&dword_140404A6C[3 * table_value_9 + 432531273] = (float)(product_difference_14 * a7) + a4;
-  table_value_10 = (int)dword_140404A6C[record_word_offset + 432532039];
-  ++dword_140404A6C[record_word_offset + 432531270];
-  dword_140404A6C[6 * input_value + 432532041 + 6 * table_value_10] = record_word_offset_2;
-  dword_140404A6C[6 * input_value + 432532042 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B3664[0];
-  dword_140404A6C[6 * input_value + 432532043 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B3668[0];
-  dword_140404A6C[6 * input_value + 432532044 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B366C[0];
-  LODWORD(record_word_offset_2) = table_value + dword_1402B3670;
-  dword_140404A6C[6 * input_value + 432532040 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = 4;
-  table_value_11 = (int)dword_140404A6C[record_word_offset + 432532039];
-  dword_140404A6C[record_word_offset + 432532039] = table_value_11 + 1;
-  dword_140404A6C[6 * input_value + 432532047 + 6 * table_value_11] = record_word_offset_2;
-  dword_140404A6C[6 * input_value + 432532042 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B3674;
-  dword_140404A6C[6 * input_value + 432532043 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B3678;
-  dword_140404A6C[6 * input_value + 432532044 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B367C;
-  LODWORD(record_word_offset_2) = table_value + dword_1402B3680;
-  dword_140404A6C[6 * input_value + 432532040 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = 4;
-  table_value_12 = (int)dword_140404A6C[record_word_offset + 432532039];
-  dword_140404A6C[record_word_offset + 432532039] = table_value_12 + 1;
-  dword_140404A6C[6 * input_value + 432532047 + 6 * table_value_12] = record_word_offset_2;
-  dword_140404A6C[6 * input_value + 432532042 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B3684;
-  dword_140404A6C[6 * input_value + 432532043 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B3688;
-  dword_140404A6C[6 * input_value + 432532044 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B368C;
-  LODWORD(record_word_offset_2) = table_value + dword_1402B3690;
-  dword_140404A6C[6 * input_value + 432532040 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = 4;
-  table_value_13 = (int)dword_140404A6C[record_word_offset + 432532039];
-  dword_140404A6C[record_word_offset + 432532039] = table_value_13 + 1;
-  dword_140404A6C[6 * input_value + 432532047 + 6 * table_value_13] = record_word_offset_2;
-  dword_140404A6C[6 * input_value + 432532042 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B3694;
-  dword_140404A6C[6 * input_value + 432532043 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B3698;
-  dword_140404A6C[6 * input_value + 432532044 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B369C;
-  LODWORD(record_word_offset_2) = table_value + dword_1402B36A0;
-  dword_140404A6C[6 * input_value + 432532040 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = 4;
-  table_value_14 = (int)dword_140404A6C[record_word_offset + 432532039];
-  dword_140404A6C[record_word_offset + 432532039] = table_value_14 + 1;
-  dword_140404A6C[6 * input_value + 432532047 + 6 * table_value_14] = record_word_offset_2;
-  dword_140404A6C[6 * input_value + 432532042 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B36A4;
-  dword_140404A6C[6 * input_value + 432532043 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B36A8;
-  dword_140404A6C[6 * input_value + 432532044 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B36AC;
-  LODWORD(record_word_offset_2) = table_value + dword_1402B36B0;
-  dword_140404A6C[6 * input_value + 432532040 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = 4;
-  table_value_15 = (int)dword_140404A6C[record_word_offset + 432532039];
-  dword_140404A6C[record_word_offset + 432532039] = table_value_15 + 1;
-  dword_140404A6C[6 * input_value + 432532047 + 6 * table_value_15] = record_word_offset_2;
-  dword_140404A6C[6 * input_value + 432532042 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B36B4;
-  dword_140404A6C[6 * input_value + 432532043 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B36B8;
-  dword_140404A6C[6 * input_value + 432532044 + 6 * (int)dword_140404A6C[record_word_offset + 432532039]] = table_value + dword_1402B36BC;
-  result = input_value + (int)dword_140404A6C[record_word_offset + 432532039];
-  dword_140404A6C[6 * result + 432532040] = 4;
-  ++dword_140404A6C[record_word_offset + 432532039];
-  return result;
+  extern int64_t terrain_triangle_add(int layer, float a, float b, float c, float d, float e, float f);
+    return terrain_triangle_add(a1, a2, a3, a4, a5, a6, a7);
 }

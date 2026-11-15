@@ -48,7 +48,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `world_blocks.c` | block id and gone-parts lookups in the level's layers; block parts broken loose by vehicles and humans; tick stage: humans' bones follow their bodies, capsule boxes and voxels | 0x140016870, 0x1400169B0, 0x1400B95E0 |
 | `world_vehicles.c` | tick stages: vehicles follow their bodies (boxes, voxels, block parts they break off); lifetimes and removal; wheel joints (suspension, grip, axle); drivetrain (engine curve, brakes, driven wheels) | 0x1401069C0, 0x14010BE50, 0x14010D610, 0x140107ED0 |
 | `world_streets.c`, `world_streets.h` | World map ("test2") streets: street patches, railway segments, filing streets into the 64 x 64 street cells, the railway route with its stops, the race track | 0x14005F6E0, 0x1400603A0, 0x1401899F0, 0x14002A9A0, 0x14002A680 |
-| `world_street_mesh.c` | the three street meshes (embankments, ground between the rails, track) and their GL upload | 0x140188B80 |
+| `world_street_mesh.c` | the three street meshes (embankments, ground between the rails, track) and their GL upload; the Steam encrypted app ticket staged for the master handshake | 0x140188B80, 0x1401880C0 |
 | `collision.c`, `collision.h` | swept-sphere collision: segment-segment, line-plane, line-triangle, sphere-triangle; sweeps against vehicle hulls and trains (faces and unbroken windows); rays against vehicles (faces, windows, wheels); a hit point's weights in a triangle; face-only sphere sweep | 0x1400D6890, 0x1400779F0, 0x140077FA0, 0x140035690, 0x140035B70, 0x14002D370, 0x140035E50, 0x140037220, 0x1400DFB70, 0x1400DF380 |
 | `collision_mesh.c` | contact between two convex meshes (vehicle type 17 against items), with the original's overlapping frame tables; its parts: mesh transform, point sweep against faces, closest points of two edges, edge side test; point sweep against a placed mesh | 0x140048DA0, 0x14004A480, 0x14004A1D0, 0x14008CEB0, 0x140187410, 0x14004A130 |
 | `collision_placed.c`, `collision_placed.h` | item mesh placement and capsule contacts against its grouped triangles and quads | 0x14011BF40, 0x140033BE0 |
@@ -77,6 +77,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `math_curve.c`, `math_random.c`, `text_parser.c`, `text_parser.h` | the Bernstein-basis curve point and derivative (degrees 1-3), the Mersenne Twister seed, and the embedded-text parser's prefix match, token search and 32/64-bit number reads | 0x14008EC40, 0x140187180, 0x1401872F0, 0x1400C2D50, 0x14003C6F0, 0x140091DF0, 0x140115360, 0x140115410 |
 | `net_decode.c`, `net_decode.h`, `net_replication.c`, `net_replication.h` | packet decoders over the bit reader: sign-magnitude angles over a full turn, scaled fractions, adaptive base deltas; and the replication layer's per-peer rings and item-state stream twins | 0x14018D440, 0x140192560, 0x14018D510, 0x1401060F0, 0x140105AB0, 0x14010EF40, 0x14018DB20 |
 | `net_rotation.c`, `net_readers.c` | quaternion packet encoders, the variable-bits and 13-bit variants, that quantize a rotation matrix's quaternion from math_quat_from_mat3 into packet integers, out[0] the index of the dropped largest component and the following slots the quantized remaining three written in the order of the original's runtime order tables (0x140301DC8 for 13 bits, 0x140301DE8 general), plus the signed-bits and optional-index readers over the bit stream | 0x140114E90, 0x140114D40, 0x140115D20, 0x140115BD0 |
+| `terminal.c` | the computer item's terminal: the share of its twenty-six mission slots that is present and owned by the slot, the word copied between the raw record text and a screen line through the letter-to-slot table (raw and coloured paths), the selection list rows around the selected slot, and the snake game's keys | 0x1400C58E0, 0x1400C5610, 0x1400C5360, 0x1400C9120 |
 | `world_particles.c` (addition) | one flying piece drawn from its mesh on the lit, land-mask and stencil passes, the model matrix restored afterwards | 0x140124840 |
 | `net_stream_fields.c`, `net_stream_fields.h` | optional-index and signed packet-stream fields, with original return semantics and write passthrough | 0x14006C510, 0x14006C570 |
 | `record_slots.c`, `record_slots.h` | first-free item tracking and replication snapshot slots | 0x1400A4560, 0x140132E00 |
@@ -204,3 +205,20 @@ partially or completely overlap either input in a 128-float arena. The
 mutation sets, 17 deliberate bugs across the encoder port, the readers and
 `math3d.c`, are all detected. Progress is
 274 of 1,119 game routines (`python scripts/progress.py`).
+
+The four routines restored on 2026-11-15 (the terminal's mission-slot
+ratio, the mapped word copy, the selection list and the snake keys) live in
+`terminal.c`. Their native comparison is the `terminal` suite, 6,264 output
+lines identical to the original both as the engine port and behind the
+actual client wrappers: the per-item records, the text link record pool
+head and the peer and local link masks are restored per case and filled
+with random junk, the computer slots (which are the letter-to-slot table,
+'A'..'Z' over the same words) stay in the owner table's range, the link
+values in the record pool's, the owners are small enough to sometimes match
+their slot or be -1, the selected slot and the snake direction stay in
+their enums, and an empty terminal (all missions gone, no owners) returns
+the 1.0 share of nothing. The engine port reads the computer-used counts as
+the full dwords the original reads, not as bytes. The mutation sets, 8
+deliberate bugs across the mission ratio, the word copy, the selection list
+and the snake keys, are all detected at 500 cases. Progress is
+297 of 1,119 game routines (`python scripts/progress.py`).

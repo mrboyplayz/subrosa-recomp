@@ -160,4 +160,30 @@ void world_build_street_meshes(void);
    banked pieces. 0x14002A680 */
 void world_build_race_track(void);
 
+/* ---- Steam auth ticket staging (world_street_mesh.c) ----------------------- */
+
+/* The Steam encrypted app ticket staged for the master-server handshake,
+   0x1829F8BD4: the ticket length, the 1024-byte ticket (drained into the
+   master auth packet as `length` bytes), and the received flag — the status
+   line shows "Steam Ticket..." while it is clear. Steam reads the ticket
+   with GetEncryptedAppTicket (at most 1024 bytes) and hands it to the
+   callback; the client requested it with no additional data. */
+typedef struct SteamTicket {
+    uint32_t length;
+    uint8_t data[1024];
+    uint32_t received;
+} SteamTicket;
+
+_Static_assert(sizeof(SteamTicket) == 0x408, "SteamTicket layout");
+
+#define steam_ticket (&SR_GLOBAL(SteamTicket, 0x1829F8BD4ULL))
+
+/* Steam's encrypted-app-ticket callback: stores `length` and copies the
+   received ticket into the staging buffer, then raises the received flag.
+   Lengths over the buffer's 1024 bytes are dropped. The skip path leaves
+   the original's result register unset; no caller reads a result there
+   (the Steam call-result dispatcher discards it), so the port returns NULL.
+   0x1401880C0 */
+void *steam_ticket_stage(const void *ticket, unsigned int length);
+
 #endif

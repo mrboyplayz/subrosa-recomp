@@ -696,3 +696,9 @@
 14018DB20	sr_net_replication_read_item_state
 140116A40	sr_player_event_text
 140116B00	sr_player_event_values
+1401880C0	sr_steam_ticket_stage
+1400B5410	sr_human_record_joint_bond
+14023FC70	cos
+1402431F0	sin
+1402401F0	cosf
+14023ACB8	toupper

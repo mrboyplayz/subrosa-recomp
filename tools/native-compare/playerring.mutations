@@ -1,0 +1,66 @@
+wrong cursor mask
+    slot->channel = player_ring_selected_channel;
+    result = ((uint8_t)index + 1) & 0x3F;
+----
+    slot->channel = player_ring_selected_channel;
+    result = ((uint8_t)index + 1) & 0x1F;
+====
+length not masked
+    length &= 0x3F;
+----
+    length &= 0x7F;
+====
+message type changed
+    slot->type = 1;
+----
+    slot->type = 2;
+====
+values type changed
+    slot->type = 3;
+----
+    slot->type = 4;
+====
+count not written
+    slot->count = length;
+----
+    slot->count = 0;
+====
+channel not read
+    slot->channel = player_ring_selected_channel;
+----
+    slot->channel = 0;
+====
+payload copy skipped
+    for (int k = 0; k < length; k++)
+        slot->payload[k] = text[k];
+----
+    for (int k = 1; k < length; k++)
+        slot->payload[k] = text[k];
+====
+values cursor not written
+    slot->value = (int32_t)value;
+    result = ((uint8_t)index + 1) & 0x3F;
+    player_ring_cursor(player) = result;
+----
+    slot->value = (int32_t)value;
+    result = ((uint8_t)index + 1) & 0x3F;
+    player_ring_cursor(player) = index;
+====
+value not written
+    slot->value = (int32_t)value;
+----
+    slot->value = 0;
+====
+cursor off by one
+    slot->channel = player_ring_selected_channel;
+    result = ((uint8_t)index + 1) & 0x3F;
+----
+    slot->channel = player_ring_selected_channel;
+    result = ((uint8_t)index + 2) & 0x3F;
+====
+values cursor mask
+    slot->value = (int32_t)value;
+    result = ((uint8_t)index + 1) & 0x3F;
+----
+    slot->value = (int32_t)value;
+    result = ((uint8_t)index + 1) & 0x1F;

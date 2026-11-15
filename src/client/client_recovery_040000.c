@@ -7760,27 +7760,8 @@ LABEL_20:
 //----- (000000014005ED40) ----------------------------------------------------
 __int64            sub_14005ED40(int a1, float *a2, __int64 a3, float a4, float a5)
 {
-  __int64 sound;
-  float selected_scalar;
-  float limited_value;
-
-  sound = a1;
-  selected_scalar = 1.0;
-  limited_value = fminf(a4, 1.0);
-  if ( fsqrt(
-         (float)((float)((float)(g_183F7C548 - a2[1])
-                       * (float)(g_183F7C548 - a2[1]))
-               + (float)((float)(g_183F7C544 - *a2)
-                       * (float)(g_183F7C544 - *a2)))
-       + (float)((float)(g_183F7C54C - a2[2])
-               * (float)(g_183F7C54C - a2[2]))) > 128.0
-    || (unsigned int)sub_1400DC050(a2, (float *)(unsigned int *)&g_183F7C544, 0) )
-  {
-    selected_scalar = 0.5;
-  }
-  if ( dword_140404A6C[8 * sound + 18165777] )
-    sr_audio_play_at(sound, (unsigned int *)a2, limited_value * selected_scalar, a5, 0);
-  return 0xFFFFFFFFLL;
+  extern int64_t audio_play_at_reach(int sound, float *position, int64_t unused, float gain, float pitch);
+    return audio_play_at_reach(a1, a2, a3, a4, a5);
 }
 
 //----- (000000014005F370) ----------------------------------------------------

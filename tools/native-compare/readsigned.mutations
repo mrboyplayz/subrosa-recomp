@@ -1,0 +1,71 @@
+optional index threshold off by one
+limit = (1u << ((uint32_t)bits & 31u)) - 1u;
+----
+limit = (1u << ((uint32_t)bits & 31u));
+====
+optional index shift count
+limit = (1u << ((uint32_t)bits & 31u)) - 1u;
+----
+limit = (1u << ((uint32_t)bits & 7u)) - 1u;
+====
+optional index width not masked
+limit = (1u << ((uint32_t)bits & 31u)) - 1u;
+----
+limit = bits < 32 ? (1u << bits) - 1u : UINT32_MAX;
+====
+optional index compare inverted
+*out = encoded == limit ? -1 : (int32_t)encoded;
+----
+*out = encoded != limit ? -1 : (int32_t)encoded;
+====
+optional index none value
+*out = encoded == limit ? -1 : (int32_t)encoded;
+----
+*out = encoded == limit ? 0 : (int32_t)encoded;
+====
+optional index always failure
+*out = encoded == limit ? -1 : (int32_t)encoded;
+return 1;
+----
+*out = encoded == limit ? -1 : (int32_t)encoded;
+return 0;
+====
+signed top bit position
+sign = 1u << (((uint32_t)bits - 1u) & 31u);
+----
+sign = 1u << ((uint32_t)bits & 31u);
+====
+signed top bit test inverted
+if ((encoded & sign) == sign)
+----
+if ((encoded & sign) != sign)
+====
+signed extension mask shift
+*out = (int32_t)((UINT32_MAX << ((uint32_t)bits & 31u)) | encoded);
+----
+*out = (int32_t)((UINT32_MAX << (((uint32_t)bits + 1u) & 31u)) | encoded);
+====
+signed extension dropped
+*out = (int32_t)((UINT32_MAX << ((uint32_t)bits & 31u)) | encoded);
+----
+*out = (int32_t)encoded;
+====
+signed branches swapped
+if ((encoded & sign) == sign)
+    *out = (int32_t)((UINT32_MAX << ((uint32_t)bits & 31u)) | encoded);
+else
+    *out = (int32_t)encoded;
+----
+if ((encoded & sign) == sign)
+    *out = (int32_t)encoded;
+else
+    *out = (int32_t)((UINT32_MAX << ((uint32_t)bits & 31u)) | encoded);
+====
+signed always failure
+else
+    *out = (int32_t)encoded;
+return 1;
+----
+else
+    *out = (int32_t)encoded;
+return 0;

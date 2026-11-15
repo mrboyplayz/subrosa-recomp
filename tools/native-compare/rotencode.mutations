@@ -1,0 +1,69 @@
+13-bit scale constant
+    static const double scale = 5791.911644699011;
+----
+    static const double scale = 5792.911644699011;
+====
+sqrt(0.5) scale constant
+    static const double half_root_two = 0.7071067811865476;
+----
+    static const double half_root_two = 0.7081067811865476;
+====
+MAXSD not-a-number operand
+    return a > b ? a : b;
+----
+    return b > a ? b : a;
+====
+COMISS unordered leaves the index
+    int largest = (absolute_y > absolute_x) ? 1 : 0;
+----
+    int largest = !(absolute_y < absolute_x) && !(absolute_y == absolute_x);
+====
+sign flip condition
+    if (q[largest] < 0.0) {
+----
+    if (q[largest] > 0.0) {
+====
+sign flip drops a lane
+        q[1] = -q[1];
+----
+        q[1] = q[1];
+====
+13-bit first order word
+    int32_t order = dword_140301DC8;
+----
+    int32_t order = dword_140301DCC;
+====
+13-bit second component skip
+    if (dword_140301DCC != largest)
+----
+    if (dword_140301DCC == largest)
+====
+13-bit third component store slot
+        out[count++] = (uint32_t)truncate_double((double)q[dword_140301DD0] * scale);
+----
+        out[++count] = (uint32_t)truncate_double((double)q[dword_140301DD0] * scale);
+====
+13-bit skipped last store return
+        result = (uint64_t)(int64_t)dword_140301DD4;
+----
+        result = 0;
+====
+bit-width quantization limit
+    double quantization_limit = (double)limit_word - 1.0;
+----
+    double quantization_limit = (double)limit_word - 2.0;
+====
+bit-width shift count wrap
+    int32_t limit_word = (int32_t)(1u << (((uint32_t)bits - 1u) & 31u));
+----
+    int32_t limit_word = (int32_t)(1u << (((uint32_t)bits - 1u) & 15u));
+====
+bit-width first order word
+    int32_t order = dword_140301DE8;
+----
+    int32_t order = dword_140301DEC;
+====
+conversion rounds instead of truncating
+    return _mm_cvtsi128_si32(_mm_cvttpd_epi32(_mm_set_sd(value)));
+----
+    return _mm_cvtsi128_si32(_mm_cvtpd_epi32(_mm_set_sd(value)));

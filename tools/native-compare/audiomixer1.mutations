@@ -1,0 +1,29 @@
+guard keeps the pass for a ring collision
+    if (!audio_output_enabled || audio_output_write_ring == audio_output_read_ring) return;
+----
+    if (!audio_output_enabled || audio_output_write_ring != audio_output_read_ring) return;
+====
+clear leaves the right channel loud
+            output[2 * frame + 1] = 0.0f;
+----
+            output[2 * frame + 1] = 1.0f;
+====
+accumulate takes the stereo with the wrong sign
+            output[2 * frame] = stereo[2 * frame] + output[2 * frame];
+----
+            output[2 * frame] = stereo[2 * frame] - output[2 * frame];
+====
+gain pass skips the left channel
+            output[2 * frame] = audio_master_gain * output[2 * frame];
+----
+            output[2 * frame] = output[2 * frame];
+====
+mixed channel counter counts one twice
+        ++audio_mixed_channels;
+----
+        audio_mixed_channels += 2u;
+====
+handover flips the callback's selector
+    audio_output_write_ring ^= 1u;
+----
+    audio_output_read_ring ^= 1u;

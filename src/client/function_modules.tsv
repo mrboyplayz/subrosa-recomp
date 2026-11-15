@@ -353,3 +353,5 @@
 14018D510	client_net_decode.c
 140124840	client_world_particles.c
 14018DB20	client_net_replication.c
+1401880C0	client_world_street_mesh.c
+1400B5410	client_human_body.c

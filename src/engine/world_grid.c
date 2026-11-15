@@ -58,6 +58,23 @@ void world_grid_insert(int layer, int32_t x, int32_t y, int32_t z, uint16_t obje
     }
 }
 
+/* Gives the 64-unit cell (cx, cy, cz) of a layer the next block index: the
+   index is stored in the layer's cell and the new block's 512 leaf slots are
+   cleared to empty (0xFF bytes). Returns the block index. The cold path of
+   world_grid_insert, which checks the layer and that the cell is still empty
+   before calling this, so neither is checked here. The count wraps at 32
+   bits, and a count of -1 runs the memset just below the block table
+   (over the count itself and the layers' cell pointers), as the original's
+   does. 0x140038130 */
+int32_t world_grid_alloc_cell_block(int layer, int32_t cx, int32_t cy, int32_t cz)
+{
+    int32_t block = world_grid_block_count++;
+    world_grid_cells(layer)[add_int(cx, multiply_int(world_grid_size_x(layer),
+                                       add_int(cz, multiply_int(cy, world_grid_size_z(layer)))))] = block;
+    memset(&world_grid_blocks[(intptr_t)block * 512], 0xFF, 0x800);
+    return block;
+}
+
 void world_grid_query_items(WorldGridItems *out, const int32_t minimum[3], const int32_t maximum[3])
 {
     out->count = 0;

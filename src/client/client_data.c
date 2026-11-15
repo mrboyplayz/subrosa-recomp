@@ -79210,7 +79210,7 @@ int dword_140301E00 = 2;
  // weak
 int dword_140301E04 = 0;
  // weak
-int dword_140301E08[] = { 0 };
+int dword_140301E08[] = { 0, (int)0x9908b0df };
 
 sr_steam_context_cache off_140301E10 = { sub_1401986D0, 0, 0 };
  // weak

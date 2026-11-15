@@ -1039,155 +1039,15 @@ __int64            sub_14006A5F0(int a1, int a2)
 //----- (000000014009DE80) ----------------------------------------------------
 __int64 sub_14009DE80()
 {
-  int state_word;
-  unsigned int *buffer_cursor;
-  unsigned int *buffer_cursor_2;
-
-  state_word = dword_14030186C;
-  if ( dword_14030186C >= 624 )
-  {
-    if ( dword_14030186C == 625 )
-      sr_math_seed_random(0x1571u);
-    buffer_cursor = &g_144AF96E0;
-    buffer_cursor_2 = &g_144AF9A6C;
-    do
-    {
-      *buffer_cursor = buffer_cursor[397] ^ ((*buffer_cursor ^ (*buffer_cursor ^ buffer_cursor[1]) & 0x7FFFFFFF) >> 1) ^ dword_140301E08[buffer_cursor[1] & 1];
-      ++buffer_cursor;
-    }
-    while ( (__int64)buffer_cursor < (__int64)&g_144AF9A6C );
-    do
-    {
-      *buffer_cursor_2 = *(buffer_cursor_2 - 227) ^ ((*buffer_cursor_2 ^ (*buffer_cursor_2 ^ buffer_cursor_2[1]) & 0x7FFFFFFF) >> 1) ^ dword_140301E08[buffer_cursor_2[1] & 1];
-      ++buffer_cursor_2;
-    }
-    while ( (__int64)buffer_cursor_2 < (__int64)&g_144AFA09C );
-    g_144AFA09C = g_144AF9D10
-                              ^ ((g_144AFA09C
-                                ^ (g_144AFA09C
-                                 ^ g_144AF96E0)
-                                & 0x7FFFFFFF) >> 1)
-                              ^ dword_140301E08[g_144AF96E0 & 1];
-    state_word = 0;
-  }
-  dword_14030186C = state_word + 1;
-  return (((((((dword_140404A6C[state_word + 18600733] >> 11) ^ dword_140404A6C[state_word + 18600733]) & 0xFF3A58AD) << 7)
-          ^ (dword_140404A6C[state_word + 18600733] >> 11)
-          ^ dword_140404A6C[state_word + 18600733])
-         & 0xFFFFDF8C) << 15)
-       ^ ((((dword_140404A6C[state_word + 18600733] >> 11) ^ dword_140404A6C[state_word + 18600733]) & 0xFF3A58AD) << 7)
-       ^ (dword_140404A6C[state_word + 18600733] >> 11)
-       ^ dword_140404A6C[state_word + 18600733]
-       ^ (((((((((dword_140404A6C[state_word + 18600733] >> 11) ^ dword_140404A6C[state_word + 18600733]) & 0xFF3A58AD) << 7)
-            ^ (dword_140404A6C[state_word + 18600733] >> 11)
-            ^ dword_140404A6C[state_word + 18600733])
-           & 0xFFFFDF8C) << 15)
-         ^ ((((dword_140404A6C[state_word + 18600733] >> 11) ^ dword_140404A6C[state_word + 18600733]) & 0xFF3A58AD) << 7)
-         ^ (dword_140404A6C[state_word + 18600733] >> 11)
-         ^ dword_140404A6C[state_word + 18600733]) >> 18);
+  extern uint32_t math_random_next(void);
+    return math_random_next();
 }
 
 //----- (00000001400C2BB0) ----------------------------------------------------
 __int64            sub_1400C2BB0(__int64 a1, int a2)
 {
-  int element_index;
-  __int64 saved_element_index;
-  unsigned int shifted_bits;
-  int cached_integer_sum;
-  int remaining_count;
-  int cached_integer_sum_2;
-  __int64 input_value;
-  __int64 lookup_index;
-  __int64 cached_integer_sum_3;
-  __int64 integer_sum;
-  int integer_sum_2;
-  int integer_sum_3;
-  unsigned int state_word;
-  __int64 integer_sum_4;
-  int remaining_count_2;
-  __int64 lookup_index_2;
-  int integer_sum_5;
-  unsigned int shifted_bits_2;
-  __int64 result;
-  __int64 integer_sum_6;
-
-  element_index = 1;
-  g_144AF96E0 = 19650218;
-  do
-  {
-    saved_element_index = element_index;
-    shifted_bits = element_index + 1812433253 * (dword_140404A6C[element_index + 18600732] ^ (dword_140404A6C[element_index + 18600732] >> 30));
-    ++element_index;
-    dword_140404A6C[saved_element_index + 18600733] = shifted_bits;
-  }
-  while ( element_index < 624 );
-  cached_integer_sum = 0;
-  dword_14030186C = element_index;
-  remaining_count = a2;
-  if ( a2 < 624 )
-    remaining_count = 624;
-  cached_integer_sum_2 = 1;
-  if ( remaining_count )
-  {
-    input_value = a2;
-    lookup_index = 1;
-    cached_integer_sum_3 = 0;
-    do
-    {
-      integer_sum = cached_integer_sum_3 + 1;
-      integer_sum_2 = cached_integer_sum_2 + 1;
-      integer_sum_3 = cached_integer_sum + 1;
-      cached_integer_sum_2 = 1;
-      dword_140404A6C[lookup_index + 18600733] = cached_integer_sum
-                                      + *(_DWORD *)(a1 + 4 * cached_integer_sum_3)
-                                      + (dword_140404A6C[lookup_index + 18600733]
-                                       ^ (1664525
-                                        * (dword_140404A6C[lookup_index + 18600732] ^ (dword_140404A6C[lookup_index + 18600732] >> 30))));
-      state_word = g_144AF96E0;
-      integer_sum_4 = lookup_index + 1;
-      if ( integer_sum_2 < 624 )
-        cached_integer_sum_2 = integer_sum_2;
-      else
-        state_word = g_144AFA09C;
-      lookup_index = 1;
-      g_144AF96E0 = state_word;
-      if ( integer_sum_2 < 624 )
-        lookup_index = integer_sum_4;
-      cached_integer_sum = 0;
-      if ( integer_sum < input_value )
-        cached_integer_sum = integer_sum_3;
-      cached_integer_sum_3 = 0;
-      if ( integer_sum < input_value )
-        cached_integer_sum_3 = integer_sum;
-      --remaining_count;
-    }
-    while ( remaining_count );
-  }
-  remaining_count_2 = 623;
-  lookup_index_2 = cached_integer_sum_2;
-  do
-  {
-    integer_sum_5 = cached_integer_sum_2 + 1;
-    shifted_bits_2 = (dword_140404A6C[lookup_index_2 + 18600733]
-         ^ (1566083941 * (dword_140404A6C[lookup_index_2 + 18600732] ^ (dword_140404A6C[lookup_index_2 + 18600732] >> 30))))
-        - cached_integer_sum_2;
-    cached_integer_sum_2 = 1;
-    dword_140404A6C[lookup_index_2 + 18600733] = shifted_bits_2;
-    result = g_144AF96E0;
-    integer_sum_6 = lookup_index_2 + 1;
-    if ( integer_sum_5 >= 624 )
-      result = g_144AFA09C;
-    lookup_index_2 = 1;
-    if ( integer_sum_5 < 624 )
-      lookup_index_2 = integer_sum_6;
-    g_144AF96E0 = result;
-    if ( integer_sum_5 < 624 )
-      cached_integer_sum_2 = integer_sum_5;
-    --remaining_count_2;
-  }
-  while ( remaining_count_2 );
-  g_144AF96E0 = 0x80000000;
-  return result;
+  extern uint32_t math_random_seed_array(const uint32_t *keys, int count);
+    return math_random_seed_array((const uint32_t *)a1, a2);
 }
 
 //----- (00000001400D3340) ----------------------------------------------------

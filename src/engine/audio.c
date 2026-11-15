@@ -1,3 +1,4 @@
+#include <math.h>
 #include <string.h>
 #include "audio.h"
 #include "crt.h"
@@ -98,4 +99,33 @@ void audio_load_pcm16(uint32_t sound, int byte_count, const int16_t *pcm, float 
         *(float *)((unsigned char *)(uintptr_t)record->samples + byte_offset - 4)
             = (float)sample * 0.000030517578125f;
     }
+}
+
+/* Still recompiled code: whether the straight path from one point to the
+   other passes through the level. */
+extern int sub_1400DC050(float *from, float *to, int unknown);
+
+/* Where sounds are heard from: the position the camera writes for its view
+   (x, y, z). 0x183F7C544 */
+#define audio_listener_position (&SR_GLOBAL(float, 0x183F7C544ULL))
+
+/* Plays a sound when the player can hear it: the gain is capped at 1 and
+   halved when the source is more than 128 units from the listener or the
+   straight path to it passes through the level. The sound plays only when
+   its record is loaded. The original leaves its third argument unread; the
+   port keeps it for the call. 0x14005ED40 */
+int64_t audio_play_at_reach(int sound, float *position, int64_t unused, float gain, float pitch)
+{
+    float selected = 1.0f;
+    float limited = fminf(gain, 1.0f);
+    float *listener = audio_listener_position;
+    float x = listener[1] - position[1];
+    float y = listener[0] - position[0];
+    float z = listener[2] - position[2];
+    if (sqrtf((x * x + y * y) + z * z) > 128.0f
+        || sub_1400DC050(position, listener, 0))
+        selected = 0.5f;
+    if (audio_sounds[sound].loaded)
+        audio_play_at(sound, position, limited * selected, pitch, 0);
+    return -1;
 }

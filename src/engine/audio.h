@@ -10,6 +10,15 @@
 #define audio_capture_write_position SR_GLOBAL(uint32_t, 0x1404C4AA4ULL)
 #define audio_capture_read_position SR_GLOBAL(uint32_t, 0x1404C4AA8ULL)
 #define audio_capture_buffer (&SR_GLOBAL(unsigned char, 0x1404C4AACULL))
+/* The output side: stereo frames per callback, the ring pair the mix pass
+   fills (the callback copies the ring it last took), the two ring selectors,
+   the count of channels the last pass mixed and the master gain. */
+#define audio_mixed_channels SR_GLOBAL(uint32_t, 0x140404A84ULL)
+#define audio_output_frames SR_GLOBAL(uint32_t, 0x140404A8CULL)
+#define audio_output_read_ring SR_GLOBAL(uint32_t, 0x140404A90ULL)
+#define audio_output_write_ring SR_GLOBAL(uint32_t, 0x140404A94ULL)
+#define audio_output_ring ((float (*)[0x10000])&SR_GLOBAL(float, 0x140404A98ULL))
+#define audio_master_gain SR_GLOBAL(float, 0x144970C94ULL)
 
 typedef struct AudioSound {
     uint32_t loaded;
@@ -93,4 +102,14 @@ uint32_t audio_mix_channel(int channel, int voice, int cursor, int count);
 /* Clear and remix one channel for count samples; the spatializer runs after;
    returns what it returns. 0x14006B6F0 */
 int64_t audio_mix_emitter(int channel, int count);
+/* The mix pass between output rings: clears the ring being filled, remixes
+   every active channel through audio_mix_emitter, accumulates each channel's
+   spatialized stereo into the ring, applies the master gain and hands the
+   ring to the output callback by flipping the selector. 0x14006B850 */
+void audio_mix_output(void);
+/* Plays a sound when the player can hear it: the gain is capped at 1 and
+   halved when the source is over 128 units from the listener or the straight
+   path to it passes through the level; plays only when the sound is loaded.
+   0x14005ED40 */
+int64_t audio_play_at_reach(int sound, float *position, int64_t unused, float gain, float pitch);
 #endif
