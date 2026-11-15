@@ -24,7 +24,8 @@ The table records the recovered routines by original address. Recovery is incomp
 | `physics_motion.c` | tangential velocity limits and sliding work, a velocity change applied at a body point, and velocity at a body point | 0x14002D820, 0x14002D9B0, 0x14012B090, 0x14012B170 |
 | `area_bounds.c`, `area_bounds.h` | corporation interiors and vaults, world-region membership, and the five-plane camera visibility query | 0x14011B8F0, 0x14011B960, 0x14011B9F0, 0x14011BAD0 |
 | `net_bits.c`, `net_bytes.c`, `net_angle.c` | packet bit reads/writes and scaling, the two always-success write adapters, aligned byte transfers, and signed-magnitude angle encoding | 0x140115AE0, 0x140115C20, 0x140115D90, 0x140115E80, 0x140115E60, 0x140115F70, 0x14007ADF0, 0x14007B180, 0x14010E610 |
-| `text_helpers.c`, `text_helpers.h` | label CRC IDs, the two unsigned-byte comparators, parser prefix/search, and visible-label copying | 0x14004C4C0, 0x14006C980, 0x14006C670, 0x14006C870, 0x14006E4C0, 0x14006F120 |
+| `text_helpers.c`, `text_helpers.h` | label CRC IDs, the two unsigned-byte comparators, parser prefix/search, visible-label copying, and thousands grouping of an unsigned value | 0x14004C4C0, 0x14006C980, 0x14006C670, 0x14006C870, 0x14006E4C0, 0x14006F120, 0x140158B10 |
+| `clock.c`, `clock.h` | monotonic milliseconds since startup | 0x14007C980 |
 | `physics_create.c` | free-bond lookup; body, point, body-bond, rotation-bond, distance-bond and world-anchor creation | 0x1400A4440, 0x14005CF80, 0x14005CBB0, 0x14004E430, 0x14004E5B0, 0x14004E160, 0x14004E2E0 |
 | `events.c`, `events.h` | bullet/hit, message, block-update/hit, sound, corporation door, mission, vehicle removal, player, type-21 and stock-price event constructors; event 15 uses `world_event_block_gone` | 0x140051230, 0x1400512D0, 0x140051480, 0x140051560, 0x1400515E0, 0x140051650, 0x140051730, 0x1400518B0, 0x1400519F0, 0x140051B00, 0x140051BD0, 0x140051CF0, 0x140051DC0, 0x140051F50, 0x140051FF0, 0x140052090 |
 | `disk.c`, `disk_files.c`, `disk.h` | disk allocation, item drive lookup, and file appending | 0x140050EF0, 0x14004C960, 0x140080690 |
@@ -221,3 +222,11 @@ the full dwords the original reads, not as bytes. The mutation sets, 8
 deliberate bugs across the mission ratio, the word copy, the selection list
 and the snake keys, are all detected at 500 cases. Progress is
 297 of 1,119 game routines (`python scripts/progress.py`).
+
+The two routines restored on 2026-11-19 (the monotonic milliseconds clock
+and the thousands grouping of an unsigned value) live in `clock.c` and
+`text_helpers.c`, with the shared interface in `clock.h` and
+`text_helpers.h`. Their native comparison is the `t_clockms` and
+`t_thousands` suites, outputs identical to the original both as the engine
+port and behind the actual client wrappers, with the recording stub masking
+group arguments to 32 bits. The mutation sets are running separately.

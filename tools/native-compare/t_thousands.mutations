@@ -1,0 +1,31 @@
+unsigned boundary drops the plain-%d branch for top-bit values
+    if ((int)value < 1000000000)
+----
+    if (value < 1000000000u)
+====
+drop the thousands grouping of the two-group branch
+        crt_sprintf(out, "%d,%03d", value / 1000, value % 1000);
+----
+        crt_sprintf(out, "%d", value);
+====
+two-group boundary off by one
+    if ((int)value < 1000000)
+----
+    if ((int)value < 1000001)
+====
+wrong group divisor in the three-group branch
+        crt_sprintf(out, "%d,%03d,%03d", value / 1000000, (int)(value / 1000) % 1000, value % 1000);
+----
+        crt_sprintf(out, "%d,%03d,%03d", value / 100000, (int)(value / 1000) % 1000, value % 1000);
+====
+remainder of 100 instead of 1000 in the three-group branch
+        crt_sprintf(out, "%d,%03d,%03d", value / 1000000, (int)(value / 1000) % 1000, value % 1000);
+----
+        crt_sprintf(out, "%d,%03d,%03d", value / 1000000, (int)(value / 1000) % 1000, value % 100);
+====
+wrong group divisor in the four-group branch
+        crt_sprintf(out, "%d,%03d,%03d,%03d", value / 1000000000, (int)(value / 1000000) % 1000,
+                    (int)(value / 1000) % 1000, value % 1000);
+----
+        crt_sprintf(out, "%d,%03d,%03d,%03d", value / 100000000, (int)(value / 1000000) % 1000,
+                    (int)(value / 1000) % 1000, value % 1000);

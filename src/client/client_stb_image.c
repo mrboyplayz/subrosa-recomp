@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/text_helpers.h"
 
 //----- (0000000140158610) ----------------------------------------------------
 __int64            sub_140158610(float *a1, float *a2, float *a3, float *a4, float a5, float *a6, float *a7, float *a8)
@@ -200,30 +201,10 @@ void crt_sprintf(_BYTE *a1,      char *a2, ...)
 //----- (0000000140158B10) ----------------------------------------------------
 void            format_with_thousands(_BYTE *a1, unsigned int a2)
 {
-  if ( (int)a2 < 1000000000 )
-  {
-    if ( (int)a2 < 1000000 )
-    {
-      if ( (int)a2 < 1000 )
-        crt_sprintf(a1, "%d", a2);
-      else
-        crt_sprintf(a1, "%d,%03d", a2 / 0x3E8, a2 % 0x3E8);
-    }
-    else
-    {
-      crt_sprintf(a1, "%d,%03d,%03d", a2 / 0xF4240, (int)(a2 / 0x3E8) % 1000, a2 % 0x3E8);
-    }
-  }
-  else
-  {
-    crt_sprintf(
-      a1,
-      "%d,%03d,%03d,%03d",
-      a2 / 0x3B9ACA00,
-      (int)(a2 / 0xF4240) % 1000,
-      (int)(a2 / 0x3E8) % 1000,
-      a2 % 0x3E8);
-  }
+  /* Clean implementation: src/engine/text_helpers.c, checked against the original
+     executable (tools/native-compare). This wrapper keeps the entry point the
+     recompiled callers use. */
+  text_format_thousands((char *)a1, a2);
 }
 
 //----- (0000000140158C70) ----------------------------------------------------
