@@ -6697,10 +6697,6 @@
 140188120	v50	unused_written_slot
 140188120	v51	unused_written_slot_2
 140188120	v52	unused_frame_slot_48
-14010E0D0	v8	parser_position
-14010E0D0	v9	copied_character_count
-14010E0D0	v10	destination_cursor
-14010E0D0	v11	source_character
 1400A6700	v2	unused_written_slot
 1400A6700	v3	callback_function
 1400817C0	v0	unused_local
