@@ -1,5 +1,5 @@
 /* Native comparison for the reconstructed peer-socket routines:
- * sr_net_close_socket (0x1407C080) and sr_net_open_socket (0x1407C0C0).
+ * sr_net_close_socket (0x14007C080) and sr_net_open_socket (0x14007C0C0).
  *
  * The originals are thin over the winsock thunks, so the suite binds the
  * winsock imports to recording stubs and compares the recorded calls and
@@ -14,9 +14,9 @@
 #include "nc.h"
 
 #ifdef NC_NATIVE
-#define close_socket(p) ((void (*)(int))NC_ADDR(0x1407C080))(p)
+#define close_socket(p) ((void (*)(int))NC_ADDR(0x14007C080))(p)
 #define open_socket(p, port, bind, addr) \
-    ((long long (*)(int, unsigned short, int, const unsigned char *))NC_ADDR(0x1407C0C0))(p, port, bind, addr)
+    ((long long (*)(int, unsigned short, int, const unsigned char *))NC_ADDR(0x14007C0C0))(p, port, bind, addr)
 #elif defined(NC_CLIENT_WRAPPERS)
 long long sub_14007C080(int);
 long long sub_14007C0C0(int, unsigned short, int, unsigned char *);
@@ -108,8 +108,15 @@ int64_t closesocket_sr(int64_t socket) { return closesocket_thunk(socket); }
 int64_t htons_sr(int64_t port) { return htons_thunk(port); }
 int64_t socket_sr(int64_t af, int64_t type, int64_t protocol) { return socket_thunk(af, type, protocol); }
 
-#define REGION 0x160FC4000ULL   /* base of the hashed window over the record */
-#define WINDOW 0x2000ULL
+/* The peer-socket record of peer 0 and the sockaddr-in-like scratch the
+ * calls share: the state that changes across the open/close pair. */
+#define PEER_RECORD &SR_GLOBAL(uint8_t, 0x15B1D5CC0ULL)
+#define PEER_STATE  &SR_GLOBAL(uint8_t, 0x15B1D5CE4ULL)
+#define PEER_WORDS  &SR_GLOBAL(int32_t, 0x15B1D5CD0ULL)
+#define PEER_SIZE   0x20u
+#define FROM_PORT   &SR_GLOBAL(uint32_t, 0x15B1D5CE8ULL)
+#define SOCK_STATE  &SR_GLOBAL(uint8_t, 0x18539D3E4ULL)
+#define SOCK_SIZE   0x18u
 
 int main(void)
 {
@@ -120,7 +127,11 @@ int main(void)
     nc_bind_import("WSOCK32.dll", "#9", (void *)record_htons);
     nc_bind_import("WS2_32.dll", "bind", (void *)record_bind);
     nc_bind_import("WS2_32.dll", "ioctlsocket", (void *)record_ioctlsocket);
-    nc_save(NC_ADDR(REGION), WINDOW);
+    nc_save(PEER_RECORD, PEER_SIZE);
+    nc_save(PEER_STATE, PEER_SIZE);
+    nc_save(PEER_WORDS, PEER_SIZE);
+    nc_save(FROM_PORT, 4);
+    nc_save(SOCK_STATE, SOCK_SIZE);
     for (int n = 0; n < nc_cases(3000); n++) {
         nc_seed((uint64_t)n);
         nc_restore();
@@ -140,13 +151,17 @@ int main(void)
         if (n % 2) {
             close_socket(peer);
             nc_line("close %d peer %d  %016llx", n, peer,
-                    (unsigned long long)nc_hash(NC_ADDR(REGION), WINDOW));
+                    (unsigned long long)nc_hash(PEER_RECORD, PEER_SIZE));
             nc_line("  %s", import_log());
         } else {
             long long result = open_socket(peer, port, branch != 1, target);
-            nc_line("open %d peer %d port %u branch %d -> %llx  %016llx", n, peer,
+            nc_line("open %d peer %d port %u branch %d -> %llx  %016llx %016llx %016llx %016llx %016llx", n, peer,
                     port, branch, (unsigned long long)result,
-                    (unsigned long long)nc_hash(NC_ADDR(REGION), WINDOW));
+                    (unsigned long long)nc_hash(PEER_RECORD, PEER_SIZE),
+                    (unsigned long long)nc_hash(PEER_STATE, PEER_SIZE),
+                    (unsigned long long)nc_hash(PEER_WORDS, PEER_SIZE),
+                    (unsigned long long)nc_hash(FROM_PORT, 4),
+                    (unsigned long long)nc_hash(SOCK_STATE, SOCK_SIZE));
             nc_line("  %s", import_log());
         }
     }

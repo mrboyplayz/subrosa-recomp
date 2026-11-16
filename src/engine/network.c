@@ -25,7 +25,7 @@ unsigned int *sr_net_peer_record(int peer, unsigned int field)
     return &dword_140404A6C[peer * SR_NET_PEER_STRIDE + field];
 }
 
-/* Close a peer's socket and mark the record closed. 0x1407C080 */
+/* Close a peer's socket and mark the record closed. 0x14007C080 */
 void sr_net_close_socket(int peer)
 {
     unsigned int handle = *sr_net_peer_record(peer, SR_NET_PEER_HANDLE);
@@ -37,7 +37,7 @@ void sr_net_close_socket(int peer)
    regardless of bind; the bind branch (a3 nonzero) leaves the record open
    and non-blocking, the connect branch (a4, a remote target address) leaves
    it closed until a successful connect elsewhere marks it open. The
-   original stores the ioctlsocket result in both branches. 0x1407C0C0 */
+   original stores the ioctlsocket result in both branches. 0x14007C0C0 */
 int64_t sr_net_open_socket(int peer, uint16_t port, int bind_socket,
                            const unsigned char *connect_address)
 {
@@ -71,3 +71,47 @@ int64_t sr_net_open_socket(int peer, uint16_t port, int bind_socket,
     }
     return result;
 }
+
+/* Open the master-server listener socket for one of the game's ports: a UDP
+   socket recorded at 0x140404A6C[peer], a sockaddr_in built from the port in
+   0x18539D3F8 (set from 0x151E45940), then the non-blocking ioctl. The
+   original stores the ioctl result and marks the record open
+   unconditionally. 0x14008EAD0 */
+int64_t sr_net_master_listen(int peer)
+{
+    uint16_t port = (uint16_t)SR_GLOBAL(uint16_t, 0x18539D3F8ULL);
+    int64_t handle = socket_sr(2, 2, 17);
+    SR_GLOBAL(uint32_t, 0x140404A6CULL + 4 * (unsigned)peer) = (unsigned int)handle;
+    SR_GLOBAL(uint16_t, SR_NET_MASTER_FAMILY) = SR_NET_AF_INET;
+    SR_GLOBAL(uint32_t, SR_NET_MASTER_FAMILY + 4) = 0;
+    SR_GLOBAL(uint16_t, SR_NET_MASTER_FAMILY + 2) =
+        (uint16_t)htons_sr((int64_t)port);
+    SR_GLOBAL(uint32_t, SR_NET_MASTER_LENGTH) = sizeof(SockaddrIn);
+    int64_t nonblocking = 1;
+    int64_t result = ioctlsocket_sr(handle, SR_NET_FIONBIO, (int64_t)&nonblocking);
+    SR_GLOBAL(uint32_t, 0x140404A6CULL + 4 * (unsigned)peer + 4) = 1;
+    return result;
+} /* 0x14008EAD0 */
+
+/* The same as sr_net_master_listen, but the sockaddr_in is bound first: the
+   non-blocking ioctl and the open flag only follow a bind that returned 0,
+   and the bind result is the return value otherwise. 0x14008EB80 */
+int64_t sr_net_master_bind(int peer)
+{
+    uint16_t port = (uint16_t)SR_GLOBAL(uint16_t, 0x18539D3F8ULL);
+    int64_t handle = socket_sr(2, 2, 17);
+    SR_GLOBAL(uint32_t, 0x140404A6CULL + 4 * (unsigned)peer) = (unsigned int)handle;
+    SR_GLOBAL(uint16_t, SR_NET_MASTER_FAMILY) = SR_NET_AF_INET;
+    SR_GLOBAL(uint32_t, SR_NET_MASTER_FAMILY + 4) = 0;
+    SR_GLOBAL(uint16_t, SR_NET_MASTER_FAMILY + 2) =
+        (uint16_t)htons_sr((int64_t)port);
+    SR_GLOBAL(uint32_t, SR_NET_MASTER_LENGTH) = sizeof(SockaddrIn);
+    int64_t result = bind_sr(handle, (int64_t)&SR_GLOBAL(uint8_t, SR_NET_MASTER_FAMILY),
+                             sizeof(SockaddrIn));
+    if ((unsigned int)result == 0) {
+        int64_t nonblocking = 1;
+        result = ioctlsocket_sr(handle, SR_NET_FIONBIO, (int64_t)&nonblocking);
+        SR_GLOBAL(uint32_t, 0x140404A6CULL + 4 * (unsigned)peer + 4) = 1;
+    }
+    return result;
+} /* 0x14008EB80 */

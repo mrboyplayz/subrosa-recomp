@@ -48,7 +48,7 @@ unsigned int *sr_net_peer_record(int peer, unsigned int field);
 #define SR_NET_FIONBIO 0x8004667EuLL
 
 /* Close a peer's socket and mark the record closed. */
-void sr_net_close_socket(int peer); /* 0x1407C080 */
+void sr_net_close_socket(int peer); /* 0x14007C080 */
 
 /* Open a UDP socket for a peer and record it. The sockaddr is filled in
  * regardless of bind; `bind` (when bind_socket is nonzero) leaves the
@@ -56,6 +56,21 @@ void sr_net_close_socket(int peer); /* 0x1407C080 */
  * address) leaves it closed until a successful connect marks it open. The
  * original stores the ioctlsocket result in both branches. */
 int64_t sr_net_open_socket(int peer, uint16_t port, int bind_socket,
-                           const unsigned char *connect_address); /* 0x1407C0C0 */
+                           const unsigned char *connect_address); /* 0x14007C0C0 */
+
+/* The game-wide UDP scratch the master-socket routines share (0x18539D3E4):
+ * a sockaddr_in (family, network-byte-order port, address, sizeof) with the
+ * port echo (0x18539D3F8), the socket-handle slot base (0x140404A6C), the
+ * sizeof the scratch holds (0x18539D3F4), and the open flags one past each
+ * handle slot. */
+#define SR_NET_MASTER_FAMILY 0x18539D3E4ULL
+#define SR_NET_MASTER_LENGTH 0x18539D3F4ULL
+#define SR_NET_MASTER_PORT   0x18539D3F8ULL
+
+/* Open the master-server listener socket for one of the game's ports. */
+int64_t sr_net_master_listen(int peer); /* 0x14008EAD0 */
+/* The same, but the sockaddr_in is bound first; the non-blocking ioctl and
+ * the open flag only follow a bind that returned 0. */
+int64_t sr_net_master_bind(int peer); /* 0x14008EB80 */
 
 #endif
