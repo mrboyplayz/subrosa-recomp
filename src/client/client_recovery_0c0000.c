@@ -1879,47 +1879,10 @@ __int64            sub_1400D4740(__int64 a1)
 //----- (00000001400D47A0) ----------------------------------------------------
 __m128            sub_1400D47A0(float a1, float a2, int a3)
 {
-  __int128 masked_bits;
-  int input_value;
-  int record_word_offset;
-  int masked_bits_2;
-  int shifted_bits;
-  float component_delta;
-  int shifted_bits_2;
-  int record_word_offset_2;
-  int masked_bits_3;
-  int shifted_bits_3;
-  int shifted_bits_4;
-
-  masked_bits = 0x3F800000u;
-  input_value = (int)a1;
-  record_word_offset = 57 * (int)a2;
-  masked_bits_2 = a3 & ((int)a1 + 1);
-  shifted_bits = 15731 * (((record_word_offset + input_value) << 13) ^ (record_word_offset + input_value)) * (((record_word_offset + input_value) << 13) ^ (record_word_offset + input_value));
-  component_delta = a1 - (float)(int)a1;
-  shifted_bits_2 = (((masked_bits_2 + record_word_offset) << 13) ^ (masked_bits_2 + record_word_offset)) * (((masked_bits_2 + record_word_offset) << 13) ^ (masked_bits_2 + record_word_offset));
-  record_word_offset_2 = 57 * (a3 & ((int)a2 + 1));
-  masked_bits_3 = ((15731 * shifted_bits_2 + 789221) * (15731 * shifted_bits_2 + 789221) - 771171059) & 0x7FFFFFFF;
-  shifted_bits_3 = (((record_word_offset_2 + masked_bits_2) << 13) ^ (record_word_offset_2 + masked_bits_2)) * (((record_word_offset_2 + masked_bits_2) << 13) ^ (record_word_offset_2 + masked_bits_2));
-  shifted_bits_4 = 15731 * (((record_word_offset_2 + input_value) << 13) ^ (record_word_offset_2 + input_value)) * (((record_word_offset_2 + input_value) << 13) ^ (record_word_offset_2 + input_value)) + 789221;
-  *(float *)&masked_bits = (float)((float)((float)((float)(1.0
-                                                - (float)((float)(((shifted_bits + 789221) * (shifted_bits + 789221) - 771171059)
-                                                                & 0x7FFFFFFF)
-                                                        * 9.3132257e-10))
-                                        * (float)(1.0 - component_delta))
-                                + (float)((float)(1.0 - (float)((float)masked_bits_3 * 9.3132257e-10)) * component_delta))
-                        * (float)(1.0 - (float)(a2 - (float)(int)a2)))
-                + (float)((float)((float)((float)(1.0
-                                                - (float)((float)((shifted_bits_4 * shifted_bits_4 - 771171059) & 0x7FFFFFFF) * 9.3132257e-10))
-                                        * (float)(1.0 - component_delta))
-                                + (float)((float)(1.0
-                                                - (float)((float)(((15731 * shifted_bits_3 + 789221) * (15731 * shifted_bits_3 + 789221)
-                                                                 - 771171059)
-                                                                & 0x7FFFFFFF)
-                                                        * 9.3132257e-10))
-                                        * component_delta))
-                        * (float)(a2 - (float)(int)a2));
-  return (__m128)masked_bits;
+  /* Clean implementation: src/engine/recovery_0c0000.c, checked against the
+     original (tools/native-compare/t_recovery_0c0000.c). The result is in
+     lane 0, as the original leaves it in xmm0. */
+  return recovery_noise_bilinear(a1, a2, a3);
 }
 
 //----- (00000001400D4960) ----------------------------------------------------

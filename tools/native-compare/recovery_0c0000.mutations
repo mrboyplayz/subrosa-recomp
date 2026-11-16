@@ -135,3 +135,107 @@ cursor not advanced in the copy loop
 ----
                 n++;
                 pos++;
+mask applied before the increment
+    int32_t x1 = add_int(x0, 1) & mask;
+    int32_t y1 = add_int(y0, 1) & mask;
+----
+    int32_t x1 = add_int(x0 & mask, 1);
+    int32_t y1 = add_int(y0 & mask, 1);
+====
+mask ignored
+    int32_t x1 = add_int(x0, 1) & mask;
+    int32_t y1 = add_int(y0, 1) & mask;
+----
+    int32_t x1 = add_int(x0, 1);
+    int32_t y1 = add_int(y0, 1);
+====
+only x wrapped by the mask
+    int32_t x1 = add_int(x0, 1) & mask;
+    int32_t y1 = add_int(y0, 1) & mask;
+----
+    int32_t x1 = add_int(x0, 1) & mask;
+    int32_t y1 = add_int(y0, 1);
+====
+lattice row 58 wide
+    int32_t row0 = multiply_int(y0, 57);
+    int32_t row1 = multiply_int(y1, 57);
+----
+    int32_t row0 = multiply_int(y0, 58);
+    int32_t row1 = multiply_int(y1, 58);
+====
+row offset from x
+    int32_t row0 = multiply_int(y0, 57);
+    int32_t row1 = multiply_int(y1, 57);
+----
+    int32_t row0 = multiply_int(x0, 57);
+    int32_t row1 = multiply_int(x1, 57);
+====
+second row uses the unwrapped y
+    int32_t row0 = multiply_int(y0, 57);
+    int32_t row1 = multiply_int(y1, 57);
+----
+    int32_t row0 = multiply_int(y0, 57);
+    int32_t row1 = multiply_int(y0, 57);
+====
+corner10 and corner01 swapped
+    float top = recovery_noise_corner(n00) * (1.0f - fx) + recovery_noise_corner(n10) * fx;
+    float bottom = recovery_noise_corner(n01) * (1.0f - fx) + recovery_noise_corner(n11) * fx;
+----
+    float top = recovery_noise_corner(n00) * (1.0f - fx) + recovery_noise_corner(n01) * fx;
+    float bottom = recovery_noise_corner(n10) * (1.0f - fx) + recovery_noise_corner(n11) * fx;
+====
+corner01 and corner11 swapped
+    float top = recovery_noise_corner(n00) * (1.0f - fx) + recovery_noise_corner(n10) * fx;
+    float bottom = recovery_noise_corner(n01) * (1.0f - fx) + recovery_noise_corner(n11) * fx;
+----
+    float top = recovery_noise_corner(n00) * (1.0f - fx) + recovery_noise_corner(n10) * fx;
+    float bottom = recovery_noise_corner(n11) * (1.0f - fx) + recovery_noise_corner(n01) * fx;
+====
+blend weights swapped
+    return _mm_set_ss(top * (1.0f - fy) + bottom * fy);
+----
+    return _mm_set_ss(bottom * (1.0f - fy) + top * fy);
+====
+hash shift 12
+    k ^= k << 13;
+----
+    k ^= k << 12;
+====
+hash multiplier 15732
+    uint32_t t = multiply_int(15731, multiply_int((int32_t)k, (int32_t)k)) + 789221u;
+----
+    uint32_t t = multiply_int(15732, multiply_int((int32_t)k, (int32_t)k)) + 789221u;
+====
+hash offset 789222
+    uint32_t t = multiply_int(15731, multiply_int((int32_t)k, (int32_t)k)) + 789221u;
+----
+    uint32_t t = multiply_int(15731, multiply_int((int32_t)k, (int32_t)k)) + 789222u;
+====
+hash subtract 771171060
+    uint32_t r = (multiply_int((int32_t)t, (int32_t)t) - 771171059u) & 0x7FFFFFFFu;
+----
+    uint32_t r = (multiply_int((int32_t)t, (int32_t)t) - 771171060u) & 0x7FFFFFFFu;
+====
+hash mask keeps 30 bits
+    uint32_t r = (multiply_int((int32_t)t, (int32_t)t) - 771171059u) & 0x7FFFFFFFu;
+----
+    uint32_t r = (multiply_int((int32_t)t, (int32_t)t) - 771171059u) & 0x3FFFFFFFu;
+====
+hash scale perturbed
+    return 1.0f - (float)r * 9.3132257461547851e-10f;
+----
+    return 1.0f - (float)r * 9.3132257461547851e-10 * 1.0000001f;
+====
+fractional parts from the wrapped indices
+    float fx = x - (float)x0;
+    float fy = y - (float)y0;
+----
+    float fx = x - (float)x1;
+    float fy = y - (float)y1;
+====
+fractional parts from the other index
+    float fx = x - (float)x0;
+    float fy = y - (float)y0;
+----
+    float fx = x - (float)x1;
+    float fy = y - (float)y0;

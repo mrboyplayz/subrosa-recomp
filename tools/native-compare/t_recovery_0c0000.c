@@ -1,5 +1,6 @@
-// NC_WRAPPERS: 1400C8AD0 1400C8BA0
-/* Token scanners 0x1400C8AD0 / 0x1400C8BA0.
+// NC_WRAPPERS: 1400C8AD0 1400C8BA0 1400D47A0
+/* Token scanners 0x1400C8AD0 / 0x1400C8BA0 and the bilinear value noise
+ * 0x1400D47A0.
  *
  * The scanners are driven over garbage strings: leading punctuation, tokens
  * that start in the middle, every character-range edge ('a'-1, 'a', 'z',
@@ -8,7 +9,12 @@
  * bound — the bound itself, both as the starting cursor and as the point a
  * scan stops at. Both the returned flag, the produced text and the cursor
  * are compared, as is the whole output buffer, so the terminator is checked
- * too (it is written even when nothing was copied). */
+ * too (it is written even when nothing was copied).
+ *
+ * The noise has no branches to cover: coordinates are ordinary, negative,
+ * exactly on the lattice and a hair off it, huge (out of int range, NaN,
+ * infinities), with masks of all widths including 0, -1 and ones that are
+ * not of the form 2^n - 1. */
 #include <string.h>
 #include <xmmintrin.h>
 #include "nc.h"
@@ -19,16 +25,21 @@
     ((long long (*)(unsigned char *, long long, int *))NC_ADDR(0x1400C8AD0))((out), (long long)(src), (cursor))
 #define scan_without_dot(out, src, cursor) \
     ((long long (*)(unsigned char *, long long, int *))NC_ADDR(0x1400C8BA0))((out), (long long)(src), (cursor))
+#define noise_bilinear(x, y, mask) \
+    ((__m128 (*)(float, float, int))NC_ADDR(0x1400D47A0))((x), (y), (mask))
 #elif defined(NC_CLIENT_WRAPPERS)
 /* The client keeps the decompiler's signatures (_BYTE * / __int64); the
  * argument passing is the same, so plain C types declare them here. */
 long long sub_1400C8AD0(unsigned char *, long long, int *);
 long long sub_1400C8BA0(unsigned char *, long long, int *);
+__m128 sub_1400D47A0(float, float, int);
 #define scan_with_dot(out, src, cursor) sub_1400C8AD0((out), (long long)(src), (cursor))
 #define scan_without_dot(out, src, cursor) sub_1400C8BA0((out), (long long)(src), (cursor))
+#define noise_bilinear(x, y, mask) sub_1400D47A0((x), (y), (mask))
 #else
 #define scan_with_dot(out, src, cursor) recovery_scan_token((out), (const uint8_t *)(src), (cursor))
 #define scan_without_dot(out, src, cursor) recovery_scan_token_no_dot((out), (const uint8_t *)(src), (cursor))
+#define noise_bilinear(x, y, mask) recovery_noise_bilinear((x), (y), (mask))
 #endif
 
 /* Source buffers. The original reads at most 62 bytes from the cursor, and
@@ -99,8 +110,47 @@ static void run_scan_case(int n, int with_dot)
     (void)expected_cursor;
 }
 
-/* Noise cases land in a later commit; the scanners are the whole suite
- * for now. */
+/* Coordinates for the noise: the special words drive the float-to-int
+ * conversion and the fractional part through their corners. */
+static float noise_coordinate(void)
+{
+    static const uint32_t special[] = {0x00000000, 0x80000000, 0x00000001, 0x80000001, 0x3F800000, 0xBF800000,
+                                       0x3F000000, 0xBF000000, 0x4F000000, 0xCF000000, 0x4EFFFFFF, 0xCEFFFFFF,
+                                       0x4B000000, 0xCB000000, 0x7F7FFFFF, 0xFF7FFFFF, 0x7F800000, 0xFF800000,
+                                       0x7FC00000, 0x7FA00000, 0x3F7FFFFF, 0xBF7FFFFF, 0x4CBEBC20, 0xCCBEBC20};
+    if (nc_chance(35)) {
+        float value;
+        uint32_t word = special[nc_rand_below(sizeof special / sizeof special[0])];
+        memcpy(&value, &word, 4);
+        return value;
+    }
+    if (nc_chance(40))
+        return (float)(int)nc_rand_below(400) - 200.0f + (nc_chance(50) ? 0.0f : nc_float_plain(0, 1));
+    return nc_float_plain(-3000, 3000);
+}
+
+static void run_noise_case(int n)
+{
+    /* Wraps of every width, plus masks that are not of the form 2^n - 1. */
+    static const int masks[] = {0, 1, 2, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 4095, 65535, 0x7FFFFFFF,
+                                -1, -2, 5, 57, 58, 0x40000000, (int)0x80000000, 0x00FFFFFF};
+    float x = noise_coordinate();
+    float y = noise_coordinate();
+    int mask = nc_chance(85) ? masks[nc_rand_below(sizeof masks / sizeof masks[0])] : (int)nc_rand();
+    unsigned rounding = (unsigned)n % 4;
+    __m128 vector;
+    float lanes[4];
+
+    nc_set_mxcsr(0x1F80u | (rounding << 13));
+    vector = noise_bilinear(x, y, mask);
+    nc_set_mxcsr(0x1F80u);
+    memcpy(lanes, &vector, sizeof lanes);
+    nc_line("noise n%d x %08x y %08x mask %08x", n, *(uint32_t *)&x, *(uint32_t *)&y, mask);
+    /* Lane 0 is the value; the upper lanes are the original's garbage in
+     * the port build (it returns an uninitialized xmm) and the caller's in
+     * the native build, so only lane 0 is comparable. */
+    nc_floats("  lane0", lanes, 1);
+}
 
 int main(void)
 {
@@ -110,6 +160,7 @@ int main(void)
         nc_seed((uint64_t)n * 7 + 3);
         run_scan_case(n, 1);
         run_scan_case(n, 0);
+        run_noise_case(n);
     }
     return 0;
 }
