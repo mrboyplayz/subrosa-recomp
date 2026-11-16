@@ -1,6 +1,7 @@
 #include "shared_client.h"
 #include "../engine/math_random_double.h"
 #include "../engine/disk.h"
+#include "../engine/recovery_080000.h"
 
 //----- (00000001400802F0) ----------------------------------------------------
 void            sub_1400802F0(int a1)
@@ -590,43 +591,7 @@ void            sub_140081B60(int a1)
 //----- (0000000140081CC0) ----------------------------------------------------
 __m128            sub_140081CC0(__int64 a1, float *a2, float a3, float a4, float a5)
 {
-  __int128 limited_value;
-  float scaled_value;
-  float weighted_sum;
-  float squared_value;
-  float square_root;
-  float scaled_ratio;
-  float scaled_ratio_2;
-
-  limited_value = *(unsigned int *)(a1 + 4);
-  scaled_value = *(float *)a1;
-  weighted_sum = *(float *)(a1 + 8);
-  squared_value = (float)((float)(scaled_value * scaled_value) + (float)(*(float *)&limited_value * *(float *)&limited_value)) + (float)(weighted_sum * weighted_sum);
-  square_root = fsqrt(squared_value);
-  if ( square_root == 0.0 )
-  {
-    scaled_ratio = 0.0;
-    limited_value = 0;
-    scaled_ratio_2 = 0.0;
-  }
-  else
-  {
-    scaled_ratio = scaled_value * (float)(1.0 / square_root);
-    *(float *)&limited_value = *(float *)&limited_value * (float)(1.0 / square_root);
-    scaled_ratio_2 = weighted_sum * (float)(1.0 / square_root);
-  }
-  *(float *)&limited_value = fminf(
-                    fmaxf(
-                      (float)((float)((float)((float)((float)((float)((float)(*(float *)&limited_value * a2[1]) + (float)(scaled_ratio * *a2))
-                                                            + (float)(scaled_ratio_2 * a2[2]))
-                                                    * a3)
-                                            * a4)
-                                    * -0.75)
-                            * squared_value)
-                    / a5,
-                      square_root * -0.125),
-                    square_root * 0.125);
-  return (__m128)limited_value;
+  return _mm_set_ss(sr_recovery_080081CC0((const float *)a1, a2, a3, a4, a5));
 }
 
 //----- (0000000140084950) ----------------------------------------------------
