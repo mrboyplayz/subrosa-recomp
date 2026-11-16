@@ -26,8 +26,8 @@
 /*
  * Externs for internal game routines that we don't port yet but need to call.
  */
-extern int sr_practice_raycast(float *pos, float *out_pos, int flags);
-extern void sr_practice_allocate_spawn(int32_t slot, int32_t side, int32_t flip, int32_t rand1, int32_t rand2);
+extern int sub_1400DC050(float *pos, float *out_pos, int flags);
+extern void sub_140008E40(int32_t slot, int32_t side, int32_t flip, int32_t rand1, int32_t rand2);
 extern void sr_math_mat3_rotate_rows(uint32_t *mat, float *axis, float angle);
 
 /*
@@ -106,7 +106,7 @@ uint32_t sr_engine_practice_place_spawn(int32_t view_mode,
     f_buf[2] = w_sum_12 - (view_origin_z * 128.0f);
 
     float final_sum;
-    if (sr_practice_raycast(&w_sum_10, f_buf, 0)) {
+    if (sub_1400DC050(&w_sum_10, f_buf, 0)) {
         final_sum = ragdoll_height_clamp;
     } else {
         final_sum = comp_sum;
@@ -142,7 +142,7 @@ uint32_t sr_engine_practice_place_spawn(int32_t view_mode,
     
     int32_t r1 = rand() % SR_GLOBAL(int32_t, 0x175FF3464ULL);
     int32_t r2 = rand();
-    sr_practice_allocate_spawn(current_count, slot[0x1A1], flip_side, r1, r2 & 1);
+    sub_140008E40(current_count, slot[0x1A1], flip_side, r1, r2 & 1);
     
     uint32_t *mat = &slot[12];
     mat[0] = 1065353216;

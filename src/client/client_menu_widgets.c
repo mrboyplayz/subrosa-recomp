@@ -195,7 +195,7 @@ __int64            sub_140070BD0(int a1, unsigned int a2,      char *a3,      ch
 #undef unused_frame_slot_1408
 
 //----- (0000000140070FF0) ----------------------------------------------------
-uint32_t sr_menu_scrollbar(int a1, float a2, float a3, float a4, float a5, unsigned int a6, unsigned int a7, float *a8, float a9, float a10)
+uint32_t sub_140070FF0(int a1, float a2, float a3, float a4, float a5, unsigned int a6, unsigned int a7, float *a8, float a9, float a10)
 {
   return menu_scrollbar(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
 }

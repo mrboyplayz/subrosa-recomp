@@ -44,7 +44,7 @@ extern double character_message0(int type, int a2);   /* 0x1401449C0 */
 #define character_face_override_count SR_GLOBAL(int32_t, 0x1699AACC0ULL)
 
 /* 0x140278D30: four zero floats, written as two xwords by the reset. */
-extern const unsigned int character_zero_xword[4];
+static const unsigned int character_zero_xword[4] = {0, 0, 0, 0};
 
 /* The rotation angle the original keeps as a raw word (1080177110 =
    0x406231D6, about 3.534 radians): bit-copied, never computed. */

@@ -2074,7 +2074,7 @@ SR_TEST_ARENA_FINALIZE:
 #undef unused_frame_slot_1216
 
 //----- (000000014012CEB0) ----------------------------------------------------
-uint32_t sr_practice_place_spawn(int32_t view_mode, uint32_t marker_flags, int32_t edge_side, int32_t flip_side, int32_t edge_offset, float reach)
+uint32_t sub_14012CEB0(int32_t view_mode, uint32_t marker_flags, int32_t edge_side, int32_t flip_side, int32_t edge_offset, float reach)
 {
     return sr_engine_practice_place_spawn(view_mode, marker_flags, edge_side, flip_side, edge_offset, reach);
 }

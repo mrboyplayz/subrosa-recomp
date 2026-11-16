@@ -709,7 +709,7 @@ __int64 sr_menu_begin_grid();
 
 __int64            sub_140070BD0(int a1, unsigned int a2,      char *a3,      char *a4);
 
-__int64            sub_140070FF0(int a1, float a2, float a3, float a4, unsigned int a5, unsigned int a6, float *a7, float a8, float a9);
+uint32_t            sub_140070FF0(int a1, float a2, float a3, float a4, float a5, unsigned int a6, unsigned int a7, float *a8, float a9, float a10);
 
 __int64            sub_1400711D0(unsigned __int8 *a1, float *a2, float a3, float a4, float a5);
 
@@ -1557,7 +1557,7 @@ __int64            sub_1400E7C40(int a1, char *a2);
 
 __m128i *           sub_1400E7F80(int a1, char *a2);
 
-void            asset_load_character_cmc_candidate(int a1,      char *a2);
+__int64            asset_load_character_cmc_candidate(int a1,      char *a2);
 
 void            sub_1400E9A60(int a1, int a2,      char *a3);
 
@@ -1997,7 +1997,7 @@ __int64            sub_14012CAC0(int a1, char *a2, int a3);
 
 void            sub_14012CD60(int a1, int a2, int a3);
 
-__int64            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6);
+uint32_t            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6);
 
 void            sub_14012D310(int a1, unsigned int a2);
 
@@ -12632,16 +12632,17 @@ __int64            sub_140070BD0(int a1, unsigned int a2,      char *a3,      ch
 ;
 
 //----- (0000000140070FF0) ----------------------------------------------------
-__int64            sub_140070FF0(
+uint32_t            sub_140070FF0(
         int a1,
         float a2,
         float a3,
         float a4,
-        unsigned int a5,
+        float a5,
         unsigned int a6,
-        float *a7,
-        float a8,
-        float a9)
+        unsigned int a7,
+        float *a8,
+        float a9,
+        float a10)
 ;
 
 //----- (00000001400711D0) ----------------------------------------------------
@@ -14534,7 +14535,7 @@ __m128i *           sub_1400E7F80(int a1, char *a2)
 
 //----- (00000001400E8580) ----------------------------------------------------
 // Candidate .cmc character clothing/config loader: formats data/model/%s.cmc.
-void            asset_load_character_cmc_candidate(int a1,      char *a2)
+__int64            asset_load_character_cmc_candidate(int a1,      char *a2)
 ;
 
 // 1400E8E0A: conditional instruction was optimized away because r8.8 is in (1..F|<0)
@@ -15530,7 +15531,7 @@ void            sub_14012CD60(int a1, int a2, int a3)
 ;
 
 //----- (000000014012CEB0) ----------------------------------------------------
-__int64            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6)
+uint32_t            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6)
 ;
 
 //----- (000000014012D310) ----------------------------------------------------

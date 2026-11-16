@@ -1,7 +1,7 @@
 #include "shared_client.h"
 
 //----- (00000001400E8580) ----------------------------------------------------
-__int64            sr_character_cmc_load_candidate(int a1, char *a2)
+__int64            asset_load_character_cmc_candidate(int a1, char *a2)
 {
   extern void character_load_cmc(int character, const char *name);
 
