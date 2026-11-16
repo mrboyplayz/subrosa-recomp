@@ -1,8 +1,7 @@
 """Print the restoration progress for src/engine.
 
     python scripts/progress.py           # print
-    python scripts/progress.py --write   # update the README progress block
-    python scripts/progress.py --check   # fail if the README block is stale
+    python scripts/progress.py --write   # also render .github/progress.png (needs Pillow)
 
 Counts the client wrappers that delegate to verified engine
 implementations and the total original routine addresses, and prints a
@@ -11,7 +10,6 @@ the stb image/font codecs are library code, not game routines).
 """
 import argparse
 import re
-import sys
 from collections import Counter
 from pathlib import Path
 
@@ -38,41 +36,49 @@ def engine_functions():
     return names
 
 
-README = PROJECT / 'README.md'
-README_BLOCK = re.compile(r'^\d[\d,]* of [\d,]+ game routines restored \(\d+%\)\n'
-                          r'\[[#-]+\]\n'
-                          r' +\d[\d,]* done  ·  \d[\d,]* to go\n', re.M)
+ICON = PROJECT / 'scripts/subrosa.bmp'
+IMAGE = PROJECT / '.github/progress.png'
 
 
-def readme_block(done, game, bar):
-    return ('{:,} of {:,} game routines restored ({}%)\n'
-            '[{}]\n'
-            '       {:,} done  ·  {:,} to go\n').format(
-                done, game, round(100 * done / game), bar, done, game - done)
-
-
-def sync_readme(expected, write):
-    text = README.read_text(encoding='utf-8').replace('\r\n', '\n')
-    found = README_BLOCK.search(text)
-    if not found:
-        sys.exit('README.md: progress block not found')
-    if found.group(0) == expected:
-        print('README.md progress block is up to date')
-    elif write:
-        README.write_text(text[:found.start()] + expected + text[found.end():],
-                          encoding='utf-8', newline='\n')
-        print('README.md progress block updated')
-    else:
-        sys.exit('README.md progress block is stale; run: python scripts/progress.py --write\n'
-                 '--- README.md\n%s--- expected\n%s' % (found.group(0), expected))
+def render_image(done, game, path=IMAGE):
+    """Card: exe icon, "subrosa.exe", then a bar that fills white as routines are restored."""
+    from PIL import Image, ImageDraw, ImageFont, PngImagePlugin
+    stamp = '3:%d/%d' % (done, game)  # leading number: layout version
+    if path.exists() and Image.open(path).info.get('routines') == stamp:
+        return False  # counts unchanged: keep the file byte-identical so CI makes no commit
+    # Square, transparent canvas; mid-grey text and an outlined track stay
+    # readable on both light and dark README themes.
+    w, h, pad = 300, 300, 24
+    grey = (139, 148, 158, 255)
+    img = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+    icon = Image.open(ICON).convert('RGBA').resize((96, 96), Image.NEAREST)
+    img.paste(icon, ((w - 96) // 2, 16))
+    big, small = ImageFont.load_default(size=26), ImageFont.load_default(size=18)
+    draw.text((w // 2, 140), 'subrosa.exe', font=big, fill=grey, anchor='mm')
+    box = (pad, 168, w - pad, 196)
+    draw.rounded_rectangle(box, 8, fill=(48, 54, 61, 255), outline=grey, width=2)
+    fill_to = pad + round((w - 2 * pad) * done / game)
+    if done:
+        # Clip a full-width white bar so the fill keeps the rounded ends.
+        mask = Image.new('L', (w, h), 0)
+        ImageDraw.Draw(mask).rounded_rectangle(box, 8, fill=255)
+        ImageDraw.Draw(mask).rectangle((fill_to, 0, w, h), fill=0)
+        img.paste((255, 255, 255, 255), mask=mask)
+    draw.text((w // 2, 230), '{:,} of {:,} routines'.format(done, game), font=small, fill=grey, anchor='mm')
+    draw.text((w // 2, 258), '{}%  ·  {:,} left'.format(round(100 * done / game), game - done),
+              font=small, fill=grey, anchor='mm')
+    path.parent.mkdir(parents=True, exist_ok=True)
+    meta = PngImagePlugin.PngInfo()
+    meta.add_text('routines', stamp)
+    img.save(path, optimize=True, pnginfo=meta)
+    return True
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    mode = parser.add_mutually_exclusive_group()
-    mode.add_argument('--write', action='store_true', help='update the README progress block')
-    mode.add_argument('--check', action='store_true', help='fail if the README progress block is stale')
+    parser.add_argument('--write', action='store_true', help='render the progress image (.github/progress.png)')
     args = parser.parse_args()
     engine_call = re.compile(r'\b(%s)\s*\(' % '|'.join(sorted(engine_functions())))
     counts = Counter()
@@ -105,8 +111,9 @@ def main():
     print('[%s] %d done / %d left' % (bar, done, game - done))
     print('Plus %d library routines (of %d runtime/stb) with engine ports.' % (len(ported_library), library))
     print('%d original routines in total; the rest are untouched decompiler output.' % total)
-    if args.write or args.check:
-        sync_readme(readme_block(done, game, bar), args.write)
+    if args.write:
+        print('wrote %s' % IMAGE.relative_to(PROJECT) if render_image(done, game)
+              else '%s already current' % IMAGE.relative_to(PROJECT))
 
 
 if __name__ == '__main__':
