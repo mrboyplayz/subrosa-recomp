@@ -1,0 +1,91 @@
+name: Runner recovery (experimental)
+
+# Experimental: one GitHub runner recovers one module's routines with the
+# yopes agent, then pushes the results back to the batch branch.
+# The exe is NOT in the repo: download it from a private release when
+# EXE_RELEASE_REPO + EXE_TOKEN are set; otherwise run without native proof.
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Batch branch to work on'
+        default: 'explosion-30'
+      task:
+        description: 'Full agent task text (module assignment)'
+        required: true
+      time_limit:
+        description: 'Minutes to let the agent run'
+        default: '45'
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      OPENAI_API_KEY: ${{ secrets.AGENT_API_KEY }}
+      YOPES_BASE_URL: ${{ secrets.AGENT_BASE_URL }}
+    steps:
+      - name: Check out the batch branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+          fetch-depth: 0
+
+      - name: Install MSYS2 (gcc, objdump)
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: false
+          install: git mingw-w64-x86_64-gcc mingw-w64-x86_64-binutils make
+
+      - name: Build the agent CLI
+        shell: bash
+        run: |
+          git clone --depth 1 https://github.com/jamicaw56/YopesCLI.git "$RUNNER_TEMP/YopesCLI"
+          cd "$RUNNER_TEMP/YopesCLI"
+          cargo build --release
+          cp target/release/yopes.exe "$RUNNER_TEMP/yopes.exe"
+
+      - name: Fetch the game exe (optional)
+        if: ${{ secrets.EXE_RELEASE_REPO != '' }}
+        shell: bash
+        env:
+          EXE_TOKEN: ${{ secrets.EXE_TOKEN }}
+        run: |
+          curl -sL -H "Authorization: token $EXE_TOKEN" \
+            "https://api.github.com/repos/${{ secrets.EXE_RELEASE_REPO }}/releases/latest" \
+            -o release.json
+          url=$(python -c "import json;d=json.load(open('release.json'));print(d['assets'][0]['url'])")
+          curl -sL -H "Authorization: token $EXE_TOKEN" -H "Accept: application/octet-stream" \
+            "$url" -o subrosaactual/subrosa.exe
+          ls -la subrosaactual/
+
+      - name: Run the recovery agent
+        shell: bash
+        env:
+          AGENT_TIME_LIMIT: ${{ inputs.time_limit }}
+          AGENT_TASK: ${{ inputs.task }}
+        run: |
+          export PATH="/d/a/_temp/msys64/mingw64/bin:/c/Users/root/AppData/Local/Programs/Python/Python312:$PATH"
+          # Fallback: let gcc and python find each other however the image lays them out.
+          which gcc || export PATH="/mingw64/bin:$PATH"
+          which python3 || which python
+          # The agent drives itself; the task arrives via AGENT_TASK. The
+          # one-shot mode submits the task, runs the loop to idle, then exits.
+          timeout "${AGENT_TIME_LIMIT}m" "$RUNNER_TEMP/yopes.exe" run \
+            --no-save \
+            --system-prompt "You recover decompiled game routines into clean C. Work strictly inside the repository you were launched in." \
+            "$AGENT_TASK" || echo "agent exited (timeout or done)"
+
+      - name: Commit and push results
+        shell: bash
+        run: |
+          git config user.name "runner-recovery"
+          git config user.email "runner-recovery@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "nothing to commit" || git commit -m "runner recovery: ${{ inputs.task }}"
+          git push origin HEAD:${{ inputs.branch }}
