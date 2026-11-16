@@ -5,6 +5,7 @@
 #include "../engine/collision.h"
 #include "../engine/net_bits.h"
 #include "../engine/text_helpers.h"
+#include "../engine/menu_widgets.h"
 
 //----- (000000014006F750) ----------------------------------------------------
 __int64            sub_14006F750(
@@ -520,93 +521,11 @@ LABEL_66:
 //----- (00000001400722C0) ----------------------------------------------------
 __int64 sub_1400722C0()
 {
-  signed int state_word;
-  unsigned __int64 iteration_count;
-  int iteration_count_2;
-  signed int saved_iteration_count;
-  unsigned int selection_flag;
-  signed int iteration_count_3;
-  __int64 iteration_count_4;
-  unsigned int *state_address;
-  signed int state_word_2;
-  unsigned int *state_address_2;
-  unsigned int *state_address_3;
-  signed int saved_iteration_count_2;
-  unsigned __int64 iteration_count_5;
-  char input_byte;
-  __int64 result;
-
-  state_word = g_151042A34;
-  iteration_count = -1;
-  iteration_count_2 = 0;
-  saved_iteration_count = g_151042A34;
-  selection_flag = 0;
-  iteration_count_3 = 0;
-  iteration_count_4 = -1;
-  do
-    ++iteration_count_4;
-  while ( *((_BYTE *)&g_151042A40 + iteration_count_4) );
-  state_address = &g_151046A40;
-  if ( iteration_count_4 )
-  {
-    state_word_2 = g_151042A30;
-    state_address_2 = &g_151042A40;
-    state_address_3 = &g_151046A40;
-    do
-    {
-      if ( iteration_count_3 < state_word_2 )
-      {
-        if ( iteration_count_3 < state_word )
-          goto LABEL_13;
-      }
-      else if ( iteration_count_3 < state_word )
-      {
-        goto LABEL_10;
-      }
-      if ( iteration_count_3 < state_word_2 )
-      {
-LABEL_10:
-        saved_iteration_count_2 = iteration_count_3;
-        selection_flag = 1;
-        if ( saved_iteration_count <= iteration_count_3 )
-          saved_iteration_count_2 = saved_iteration_count;
-        saved_iteration_count = saved_iteration_count_2;
-        goto LABEL_14;
-      }
-LABEL_13:
-      ++iteration_count_2;
-      *(_BYTE *)state_address_3 = *(_BYTE *)state_address_2;
-      state_address_3 = (unsigned int *)((char *)state_address_3 + 1);
-      state_word = g_151042A34;
-      state_word_2 = g_151042A30;
-LABEL_14:
-      ++iteration_count_3;
-      iteration_count_5 = -1;
-      state_address_2 = (unsigned int *)((char *)state_address_2 + 1);
-      do
-        ++iteration_count_5;
-      while ( *((_BYTE *)&g_151042A40 + iteration_count_5) );
-    }
-    while ( iteration_count_3 < iteration_count_5 );
-  }
-  *((_BYTE *)&g_151046A40 + iteration_count_2) = 0;
-  do
-  {
-    input_byte = *(_BYTE *)state_address;
-    *((_BYTE *)state_address - 0x4000) = *(_BYTE *)state_address;
-    state_address = (unsigned int *)((char *)state_address + 1);
-  }
-  while ( input_byte );
-  g_151042A34 = saved_iteration_count;
-  do
-    ++iteration_count;
-  while ( *((_BYTE *)&g_151042A40 + iteration_count) );
-  result = selection_flag;
-  if ( saved_iteration_count > iteration_count )
-    saved_iteration_count = iteration_count;
-  g_151042A34 = saved_iteration_count;
-  g_151042A30 = saved_iteration_count;
-  return result;
+  /* Clean implementation: src/engine/menu_widgets.c, checked against the original
+     executable (tools/native-compare/t_menuedit.c). This wrapper keeps the entry
+     point the recompiled callers use (client_ui.c, client_widgets.c and this
+     cluster call it by address). */
+  return menu_text_delete_selection();
 }
 
 //----- (0000000140072760) ----------------------------------------------------
