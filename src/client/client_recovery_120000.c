@@ -1,5 +1,6 @@
 #include "shared_client.h"
 #include "../engine/record_slots.h"
+#include "../engine/recovery_120000.h"
 
 // 14012250F: conditional instruction was optimized away because edx.4==2
 
@@ -82,7 +83,7 @@ __int64 sub_140127500()
 //----- (0000000140127900) ----------------------------------------------------
 __int64            sub_140127900(__int64 a1, __int64 a2)
 {
-  return a2;
+  return recovery_return_second(a1, a2);
 }
 
 //----- (000000014012AF00) ----------------------------------------------------

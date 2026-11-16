@@ -1,0 +1,12 @@
+returns second argument, not first
+long long recovery_return_second(long long first, long long second)
+{
+    (void)first;
+    return second;
+}
+----
+long long recovery_return_second(long long first, long long second)
+{
+    (void)second;
+    return first;
+}
