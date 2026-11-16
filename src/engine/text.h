@@ -77,4 +77,9 @@ void text_draw(const char *format, float x, float y, float size, int flags,
 void text_draw_variadic(const char *format, float x, float y, float size, int flags,
                         float red, float green, float blue, float alpha, ...);
 
+/* Expands format into out like text_format(), with a 1,024-character
+   capacity and the arguments given directly as a va_list, as the original
+   helper is called. Returns out. 0x14007C920 */
+char *text_format_variadic(char *out, const char *format, ...);
+
 #endif

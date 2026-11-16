@@ -344,3 +344,25 @@ void text_draw_variadic(const char *format, float x, float y, float size, int fl
     __builtin_ms_va_end(list);
 #endif
 }
+
+/* 0x14007C920: formats into out with sr_text_format (0x14006E530) and a
+   capacity of 1,024, then returns out. The original saves every register
+   argument to its home slot, so the va_list points at the first variadic
+   slot; a Windows x64 va_list already does. */
+char *text_format_variadic(char *out, const char *format, ...)
+{
+#ifdef _WIN32
+    va_list list;
+
+    va_start(list, format);
+    text_format(out, format, 0x400, (const uint64_t *)(void *)list);
+    va_end(list);
+#else
+    __builtin_ms_va_list list;
+
+    __builtin_ms_va_start(list, format);
+    text_format(out, format, 0x400, (const uint64_t *)(void *)list);
+    __builtin_ms_va_end(list);
+#endif
+    return out;
+}
