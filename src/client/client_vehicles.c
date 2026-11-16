@@ -11596,76 +11596,10 @@ __int64            sub_1400A2C00(int a1, signed int a2)
 //----- (00000001400A48D0) ----------------------------------------------------
 __int64            sub_1400A48D0(int a1, float *a2)
 {
-  signed int iteration_count;
-  __int64 result;
-  __int64 record_word_offset;
-  float combined_products;
-  float combined_products_2;
-  float combined_products_3;
-  unsigned int *buffer_cursor;
-  __int64 scaled_index;
-  float combined_products_4;
-  float combined_products_5;
-  float combined_products_6;
-  __int64 scaled_index_2;
-
-  iteration_count = 0;
-  result = a1;
-  record_word_offset = 5210LL * a1;
-  combined_products = 0.0;
-  combined_products_2 = 0.0;
-  combined_products_3 = 0.0;
-  *(_QWORD *)&dword_140404A6C[record_word_offset + 129716750] = 0;
-  dword_140404A6C[record_word_offset + 129716752] = 0;
-  if ( (int)dword_140404A6C[record_word_offset + 129716768] > 0 )
-  {
-    buffer_cursor = &dword_140404A6C[record_word_offset + 129716769];
-    do
-    {
-      ++iteration_count;
-      scaled_index = 60LL * (int)*buffer_cursor;
-      combined_products_4 = *(float *)&dword_140404A6C[scaled_index + 73007026] - *a2;
-      combined_products_5 = *(float *)&dword_140404A6C[scaled_index + 73007028] - a2[2];
-      combined_products_6 = *(float *)&dword_140404A6C[scaled_index + 73007027] - a2[1];
-      combined_products = combined_products
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716726] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716728] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[scaled_index + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716728] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716727] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[scaled_index + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716727] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716726] * combined_products_6))
-                         * *(float *)&dword_140404A6C[scaled_index + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716750] = combined_products;
-      scaled_index_2 = 60LL * (int)*buffer_cursor;
-      combined_products_2 = combined_products_2
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716729] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716731] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[scaled_index_2 + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716731] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716730] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[scaled_index_2 + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716730] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716729] * combined_products_6))
-                         * *(float *)&dword_140404A6C[scaled_index_2 + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716751] = combined_products_2;
-      result = (int)*buffer_cursor++;
-      combined_products_3 = combined_products_3
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716732] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716734] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[60 * result + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716734] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716733] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[60 * result + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716733] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716732] * combined_products_6))
-                         * *(float *)&dword_140404A6C[60 * result + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716752] = combined_products_3;
-    }
-    while ( iteration_count < (int)dword_140404A6C[record_word_offset + 129716768] );
-  }
-  return result;
+    /* 0x1400A48D0: the engine port vehicles_wheel_force_sum (src/engine/
+       vehicles_helpers.c, declared in vehicles.h). The original returns the
+       last wheel's PhysicsPoint index, or the vehicle when it has none. */
+    return vehicles_wheel_force_sum(a1, a2);
 }
 
 //----- (00000001400A5510) ----------------------------------------------------
