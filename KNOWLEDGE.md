@@ -84,3 +84,6 @@ Nobody trusts "looks right". A routine is done when:
 
 ## Where we are
 Progress lives in `scripts/progress.py` (currently **332 / 1,119** game routines restored). The 3,110 runtime/stb routines stay as decompiled C — they are not the work. The root README progress image is recomputed by `.github/workflows/progress.yml` after every merge to master.
+
+## Session note — explosion-30 batch (2026-11-16)
+Branch `explosion-30` (worktree `worktrees/explosion30`) hosts a 30-agent routine-recovery batch: 30 client modules recovered in parallel, one module per agent, disjoint files per agent. Agents land ports + wrappers + suites only; the build + mutation verification sweep runs centrally after. PR: `jamicaw56:explosion-30` → `mrboyplayz:master`. `subrosaactual/subrosa.exe` present in the worktree. Agents do not push, fetch, or touch shared files (README, KNOWLEDGE.md, TSVs); shared-file cleanup and verification are done by the coordinator.
