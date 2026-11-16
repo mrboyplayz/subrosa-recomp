@@ -25,6 +25,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `physics_motion.c` | tangential velocity limits and sliding work, a velocity change applied at a body point, and velocity at a body point | 0x14002D820, 0x14002D9B0, 0x14012B090, 0x14012B170 |
 | `area_bounds.c`, `area_bounds.h` | corporation interiors and vaults, world-region membership, and the five-plane camera visibility query | 0x14011B8F0, 0x14011B960, 0x14011B9F0, 0x14011BAD0 |
 | `net_bits.c`, `net_bytes.c`, `net_angle.c` | packet bit reads/writes and scaling, the two always-success write adapters, aligned byte transfers, and signed-magnitude angle encoding | 0x140115AE0, 0x140115C20, 0x140115D90, 0x140115E80, 0x140115E60, 0x140115F70, 0x14007ADF0, 0x14007B180, 0x14010E610 |
+| `replay.c`, `replay.h` | replay playback: the recorded-frame read that refills the net read buffer, applies header or state frames and counts the live-record flags | 0x140127300 |
 | `text_helpers.c`, `text_helpers.h` | label CRC IDs, the two unsigned-byte comparators, parser prefix/search, visible-label copying, and thousands grouping of an unsigned value | 0x14004C4C0, 0x14006C980, 0x14006C670, 0x14006C870, 0x14006E4C0, 0x14006F120, 0x140158B10 |
 | `clock.c`, `clock.h` | monotonic milliseconds since startup | 0x14007C980 |
 | `physics_create.c` | free-bond lookup; body, point, body-bond, rotation-bond, distance-bond and world-anchor creation | 0x1400A4440, 0x14005CF80, 0x14005CBB0, 0x14004E430, 0x14004E5B0, 0x14004E160, 0x14004E2E0 |

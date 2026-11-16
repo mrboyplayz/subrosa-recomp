@@ -305,13 +305,13 @@
 #define g_144CBFA88                      dword_140404A6C[19065863]                    /* 144CBFA88 */
 #define g_144CBFA90                      dword_140404A6C[19065865]                    /* 144CBFA90 */
 #define g_144CBFA98                      dword_140404A6C[19065867]                    /* 144CBFA98 */
-#define g_144CBFAA0                      dword_140404A6C[19065869]                    /* 144CBFAA0 */
+#define replay_buffer_capacity           dword_140404A6C[19065869]                    /* 144CBFAA0 src/engine/replay.h */
 #define replay_active                    dword_140404A6C[19065870]                    /* 144CBFAA4 src/engine/frame.h */
 #define g_144CBFAA8                      dword_140404A6C[19065871]                    /* 144CBFAA8 */
 #define g_144CBFAAC                      dword_140404A6C[19065872]                    /* 144CBFAAC */
 #define replay_position                  dword_140404A6C[19065873]                    /* 144CBFAB0 src/engine/frame.h */
 #define replay_length                    dword_140404A6C[19065874]                    /* 144CBFAB4 src/engine/frame.h */
-#define g_144CBFAB8                      (*(_QWORD *)&dword_140404A6C[19065875])      /* 144CBFAB8 */
+#define replay_buffer                    (*(_QWORD *)&dword_140404A6C[19065875])      /* 144CBFAB8 src/engine/replay.h */
 #define replay_target_tick               dword_140404A6C[19065877]                    /* 144CBFAC0 src/engine/frame.h */
 #define g_144CBFAC4                      dword_140404A6C[19065878]                    /* 144CBFAC4 */
 #define replay_unknown_144cbfac8         dword_140404A6C[19065879]                    /* 144CBFAC8 src/engine/frame.h */
@@ -4942,7 +4942,7 @@
 #define g_1A4D2DD10                      dword_140404A6C[421831849]                   /* 1A4D2DD10 */
 #define g_1A4D2DD14                      dword_140404A6C[421831850]                   /* 1A4D2DD14 */
 #define g_1A4D2DD18                      dword_140404A6C[421831851]                   /* 1A4D2DD18 */
-#define g_1A4D2DD24                      dword_140404A6C[421831854]                   /* 1A4D2DD24 */
+#define replay_record                    dword_140404A6C[421831854]                   /* 1A4D2DD24 src/engine/replay.h */
 #define g_1A4D31D14                      dword_140404A6C[421835946]                   /* 1A4D31D14 */
 #define g_1A4D31D18                      dword_140404A6C[421835947]                   /* 1A4D31D18 */
 #define g_1A4D31D24                      dword_140404A6C[421835950]                   /* 1A4D31D24 */

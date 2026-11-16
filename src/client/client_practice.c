@@ -245,7 +245,7 @@ __int64            sr_ResetGame(__int64 a1, __int64 a2, __int64 a3)
       destination_buffer_2[0] = dword_1402B26C8;
       crt_fread((__int64)destination_buffer_2, 4, 1, file_handle_2);
       crt_fread((__int64)&replay_length, 4, 1, file_handle_2);
-      crt_fread(*(__int64 *)&g_144CBFAB8, 1, (int)replay_length, file_handle_2);
+      crt_fread(*(__int64 *)&replay_buffer, 1, (int)replay_length, file_handle_2);
       crt_fclose(file_handle_2);
     }
     --g_144CBFAA8;
