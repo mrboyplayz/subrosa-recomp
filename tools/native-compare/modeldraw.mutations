@@ -1,0 +1,60 @@
+model not reset at the end
+    camera_reset_model();
+----
+    (void)0;
+====
+size applied to one axis only
+    camera_scale_model(size, size, size);
+----
+    camera_scale_model(size, 1.0f, 1.0f);
+====
+position and rotation swapped
+    camera_set_model(position, rotation);
+----
+    camera_set_model(rotation, position);
+====
+buffer table stride halved
+    glBindBuffer(0x8892, (GLuint)model_vertex_buffer(model));
+----
+    glBindBuffer(0x8892, (GLuint)model_buffers[model_mesh(model)]);
+====
+stride in bytes not floats
+    glVertexAttribPointer(0, 3, 0x1406, 0, 4 * mesh->stride, (const void *)(intptr_t)0);
+----
+    glVertexAttribPointer(0, 3, 0x1406, 0, mesh->stride, (const void *)(intptr_t)0);
+====
+triangles not multiplied by three
+    glDrawArrays(4, 0, 3 * mesh->triangle_count);
+----
+    glDrawArrays(4, 0, mesh->triangle_count);
+====
+two components per vertex
+    glVertexAttribPointer(0, 3, 0x1406, 0, 4 * mesh->stride, (const void *)(intptr_t)0);
+----
+    glVertexAttribPointer(0, 2, 0x1406, 0, 4 * mesh->stride, (const void *)(intptr_t)0);
+====
+mesh indexed through the table
+    const ModelMesh *mesh = &model_meshes[model];
+----
+    const ModelMesh *mesh = &model_meshes[model_mesh(model)];
+====
+buffer not unbound
+    glBindBuffer(0x8892, 0);
+----
+    (void)0;
+====
+attribute left enabled
+    glDisableVertexAttribArray(0);
+----
+    (void)0;
+====
+uniform uploaded before the model is set
+    glUniformMatrix4fv(renderer_ui_matrix_uniform, 1, 0, renderer_camera->model_view_projection);
+    glBindBuffer
+----
+    glBindBuffer
+====
+no draw
+    glDrawArrays(4, 0, 3 * mesh->triangle_count);
+----
+    (void)0;

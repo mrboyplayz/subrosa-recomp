@@ -1,0 +1,64 @@
+wrap words swapped
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, record->wrap_s);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, record->wrap_t);
+----
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, record->wrap_t);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, record->wrap_s);
+====
+filters swapped
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, record->filter_mag);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, record->filter_min);
+----
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, record->filter_min);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, record->filter_mag);
+====
+formats swapped
+    glTexImage2D(GL_TEXTURE_2D, level, record->internal_format, record->width >> (level & 31),
+----
+    glTexImage2D(GL_TEXTURE_2D, level, record->pixel_format, record->width >> (level & 31),
+====
+width and height swapped
+                     record->height >> (level & 31), 0, (GLenum)record->pixel_format, GL_UNSIGNED_BYTE,
+----
+                     record->width >> (level & 31), 0, (GLenum)record->pixel_format, GL_UNSIGNED_BYTE,
+====
+logical shift
+    glTexImage2D(GL_TEXTURE_2D, level, record->internal_format, record->width >> (level & 31),
+----
+    glTexImage2D(GL_TEXTURE_2D, level, record->internal_format, (int32_t)((uint32_t)record->width >> (level & 31)),
+====
+border not zero
+                     record->height >> (level & 31), 0, (GLenum)record->pixel_format, GL_UNSIGNED_BYTE,
+----
+                     record->height >> (level & 31), 1, (GLenum)record->pixel_format, GL_UNSIGNED_BYTE,
+====
+pixels freed without being asked
+    if (!free_pixels)
+        return;
+----
+    (void)free_pixels;
+====
+null pixel pointers freed
+        if (record->pixels[level]) {
+----
+        if (1) {
+====
+pointer not cleared
+            record->pixels[level] = 0;
+----
+            (void)0;
+====
+last level not freed
+    for (int32_t level = 0; level < record->levels; level++) {
+        if (record->pixels[level]) {
+----
+    for (int32_t level = 0; level + 1 < record->levels; level++) {
+        if (record->pixels[level]) {
+====
+last level not uploaded
+    for (int32_t level = 0; level < record->levels; level++) {
+        glTexImage2D(
+----
+    for (int32_t level = 0; level + 1 < record->levels; level++) {
+        glTexImage2D(
+

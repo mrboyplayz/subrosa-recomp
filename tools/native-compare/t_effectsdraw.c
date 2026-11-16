@@ -47,8 +47,18 @@ static void gl_uniform_matrix4fv(GLint location, GLsizei count, GLboolean transp
 static void gl_buffer_sub_data(GLenum target, GLintptr offset, GLsizeiptr size, const void *data)
 {
     nc_line("glBufferSubData %#x %lld %lld %p", target, (long long)offset, (long long)size, data);
-    if (size > 0 && size <= (GLsizeiptr)sizeof renderer_batch->vertex_data)
-        nc_line("  data %016llx", (unsigned long long)nc_hash(data, (size_t)size));
+    if (size > 0 && size <= (GLsizeiptr)sizeof renderer_batch->vertex_data) {
+        /* NaNs compare by their nature, not their payload: the processor may
+           pass either operand's through, and the effect positions are full of
+           them. */
+        uint32_t words[2048];
+        size_t count = (size_t)size / 4;
+        if (count > 2048) count = 2048;
+        memcpy(words, data, count * 4);
+        for (size_t k = 0; k < count; k++)
+            if ((words[k] & 0x7FFFFFFF) > 0x7F800000) words[k] = 0x7FC00000;
+        nc_line("  data %016llx", (unsigned long long)nc_hash(words, count * 4));
+    }
 }
 
 static void gl_vertex_attrib2f(GLuint index, GLfloat x, GLfloat y)
