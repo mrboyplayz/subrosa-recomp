@@ -1,0 +1,137 @@
+dot rejected by the dot scanner
+                    && (uint8_t)(c - '0') > 9u && !(allow_dot && c == '.'))
+----
+                    && (uint8_t)(c - '0') > 9u)
+====
+dot accepted by the plain scanner
+                    && (uint8_t)(c - '0') > 9u && !(allow_dot && c == '.'))
+----
+                    && (uint8_t)(c - '0') > 9u && c != '.')
+====
+allow_dot inverted
+    return recovery_scan_token_body(out, src, cursor, 1);
+----
+    return recovery_scan_token_body(out, src, cursor, 0);
+====
+entry bound 61
+    int pos = *cursor;
+    int n = 0;
+
+    if (pos < 62) {
+----
+    int pos = *cursor;
+    int n = 0;
+
+    if (pos < 61) {
+====
+copy loop bound 63
+            while (pos < 62) {
+                unsigned int c = src[pos];
+                if ((uint8_t)(c - 'a') > 0x19u && (uint8_t)(c - 'A') > 0x19u
+----
+            while (pos < 63) {
+                unsigned int c = src[pos];
+                if ((uint8_t)(c - 'a') > 0x19u && (uint8_t)(c - 'A') > 0x19u
+====
+skip loop bound 61
+        while (pos < 62) {
+            unsigned int c = src[pos];
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x19u
+----
+        while (pos < 61) {
+            unsigned int c = src[pos];
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x19u
+====
+uppercase range off by one
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x19u
+                || (uint8_t)(c - '0') <= 9u || c == 0)
+----
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x18u
+                || (uint8_t)(c - '0') <= 9u || c == 0)
+====
+digit range off by one in the skip loop
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x19u
+                || (uint8_t)(c - '0') <= 9u || c == 0)
+----
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x19u
+                || (uint8_t)(c - '0') <= 8u || c == 0)
+====
+lowercase range shorts z
+                if ((uint8_t)(c - 'a') > 0x19u && (uint8_t)(c - 'A') > 0x19u
+----
+                if ((uint8_t)(c - 'a') > 0x18u && (uint8_t)(c - 'A') > 0x19u
+====
+uppercase range off by one in the copy loop
+                if ((uint8_t)(c - 'a') > 0x19u && (uint8_t)(c - 'A') > 0x19u
+----
+                if ((uint8_t)(c - 'a') > 0x19u && (uint8_t)(c - 'A') > 0x1Au
+====
+digit range off by one in the copy loop
+                    && (uint8_t)(c - '0') > 9u && !(allow_dot && c == '.'))
+----
+                    && (uint8_t)(c - '0') > 8u && !(allow_dot && c == '.'))
+====
+skip loop stops on NUL only
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x19u
+                || (uint8_t)(c - '0') <= 9u || c == 0)
+----
+            if (c == 0)
+====
+skip loop also skips '.'
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x19u
+                || (uint8_t)(c - '0') <= 9u || c == 0)
+----
+            if ((uint8_t)(c - 'a') <= 0x19u || (uint8_t)(c - 'A') <= 0x19u
+                || (uint8_t)(c - '0') <= 9u || c == '.' || c == 0)
+====
+copy loop does not break on NUL
+                if (c == 0)
+                    break;
+                out[n] = (uint8_t)c;
+----
+                out[n] = (uint8_t)c;
+====
+terminator omitted when nothing was read
+    out[n] = 0;
+    return n > 0;
+}
+
+/* 0x1400C8AD0
+----
+    if (n)
+        out[n] = 0;
+    return n > 0;
+}
+
+/* 0x1400C8AD0
+====
+result is never a token
+    out[n] = 0;
+    return n > 0;
+}
+
+/* 0x1400C8AD0
+----
+    out[n] = 0;
+    return n >= 0;
+}
+
+/* 0x1400C8AD0
+====
+cursor not advanced in the skip loop
+            (*cursor)++;
+            pos++;
+        }
+        if (pos < 62) {
+----
+            pos++;
+        }
+        if (pos < 62) {
+====
+cursor not advanced in the copy loop
+                n++;
+                (*cursor)++;
+                pos++;
+----
+                n++;
+                pos++;

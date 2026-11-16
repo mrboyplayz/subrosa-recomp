@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/recovery_0c0000.h"
 
 // 1400BF580: conditional instruction was optimized away because edi.4==D
 
@@ -484,60 +485,11 @@ __m128i *           sub_1400C6C90(int a1)
 //----- (00000001400C8AD0) ----------------------------------------------------
 __int64            sub_1400C8AD0(_BYTE *a1, __int64 a2, int *a3)
 {
-  int iteration_count;
-  unsigned int selection_flag;
-  int element_index;
-  int saved_iteration_count;
-  char loaded_word;
-  _BYTE *buffer_cursor;
-  char loaded_word_2;
-
-  iteration_count = *a3;
-  selection_flag = 0;
-  element_index = 0;
-  if ( *a3 < 62 )
-  {
-    saved_iteration_count = *a3;
-    do
-    {
-      loaded_word = *(_BYTE *)(iteration_count + a2);
-      if ( (unsigned __int8)(loaded_word - 97) <= 0x19u )
-        break;
-      if ( (unsigned __int8)(loaded_word - 65) <= 0x19u )
-        break;
-      if ( (unsigned __int8)(loaded_word - 48) <= 9u )
-        break;
-      if ( !loaded_word )
-        break;
-      *a3 = ++iteration_count;
-      saved_iteration_count = iteration_count;
-    }
-    while ( iteration_count < 62 );
-    if ( saved_iteration_count < 62 )
-    {
-      buffer_cursor = a1;
-      do
-      {
-        loaded_word_2 = *(_BYTE *)(saved_iteration_count + a2);
-        if ( (unsigned __int8)(loaded_word_2 - 97) > 0x19u
-          && (unsigned __int8)(loaded_word_2 - 65) > 0x19u
-          && (unsigned __int8)(loaded_word_2 - 48) > 9u
-          && loaded_word_2 != 46 )
-        {
-          break;
-        }
-        *buffer_cursor = loaded_word_2;
-        ++element_index;
-        ++buffer_cursor;
-        saved_iteration_count = *a3 + 1;
-        *a3 = saved_iteration_count;
-      }
-      while ( saved_iteration_count < 62 );
-    }
-  }
-  a1[element_index] = 0;
-  LOBYTE(selection_flag) = element_index > 0;
-  return selection_flag;
+  /* Clean implementation: src/engine/recovery_0c0000.c, checked against the
+     original (tools/native-compare/t_recovery_0c0000.c). Skips characters
+     that are not alnum, then copies the run of alnum characters — '.' is
+     part of a token here — advancing *a3 past everything consumed. */
+  return recovery_scan_token(a1, (_BYTE *)a2, a3);
 }
 
 // 1400C8B63: conditional instruction was optimized away because cl.1 is in (==2E|30..39)
@@ -545,59 +497,10 @@ __int64            sub_1400C8AD0(_BYTE *a1, __int64 a2, int *a3)
 //----- (00000001400C8BA0) ----------------------------------------------------
 __int64            sub_1400C8BA0(_BYTE *a1, __int64 a2, int *a3)
 {
-  int iteration_count;
-  unsigned int selection_flag;
-  int element_index;
-  int saved_iteration_count;
-  char loaded_word;
-  _BYTE *buffer_cursor;
-  char loaded_word_2;
-
-  iteration_count = *a3;
-  selection_flag = 0;
-  element_index = 0;
-  if ( *a3 < 62 )
-  {
-    saved_iteration_count = *a3;
-    do
-    {
-      loaded_word = *(_BYTE *)(iteration_count + a2);
-      if ( (unsigned __int8)(loaded_word - 97) <= 0x19u )
-        break;
-      if ( (unsigned __int8)(loaded_word - 65) <= 0x19u )
-        break;
-      if ( (unsigned __int8)(loaded_word - 48) <= 9u )
-        break;
-      if ( !loaded_word )
-        break;
-      *a3 = ++iteration_count;
-      saved_iteration_count = iteration_count;
-    }
-    while ( iteration_count < 62 );
-    if ( saved_iteration_count < 62 )
-    {
-      buffer_cursor = a1;
-      do
-      {
-        loaded_word_2 = *(_BYTE *)(saved_iteration_count + a2);
-        if ( (unsigned __int8)(loaded_word_2 - 97) > 0x19u
-          && (unsigned __int8)(loaded_word_2 - 65) > 0x19u
-          && (unsigned __int8)(loaded_word_2 - 48) > 9u )
-        {
-          break;
-        }
-        *buffer_cursor = loaded_word_2;
-        ++element_index;
-        ++buffer_cursor;
-        saved_iteration_count = *a3 + 1;
-        *a3 = saved_iteration_count;
-      }
-      while ( saved_iteration_count < 62 );
-    }
-  }
-  a1[element_index] = 0;
-  LOBYTE(selection_flag) = element_index > 0;
-  return selection_flag;
+  /* Clean implementation: src/engine/recovery_0c0000.c, checked against the
+     original (tools/native-compare/t_recovery_0c0000.c). The same scanner
+     as 0x1400C8AD0 with the '.' case removed from its copy loop. */
+  return recovery_scan_token_no_dot(a1, (_BYTE *)a2, a3);
 }
 
 // 1400C8C2E: conditional instruction was optimized away because cl.1 is in (30..39)
