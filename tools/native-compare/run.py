@@ -83,7 +83,17 @@ def link(objects, program, directory, port):
     named = client_function_names()
     defsyms = ['-Wl,--defsym,%s=0x%s' % (n, ADDRESS_SYMBOL.match(n).group(1) if ADDRESS_SYMBOL.match(n) else named[n])
                for n in sorted(undefined(objects)) if ADDRESS_SYMBOL.match(n) or n in named]
-    command = ['gcc'] + [str(o) for o in objects] + ['-o', str(program)] + LINK_FLAGS + defsyms
+    # The engine now has enough objects to exceed the Windows command-line
+    # length limit, so the whole link goes through a response file.
+    response = directory / ('%s.rsp' % program.stem)
+    def quote(path):
+        # A response file treats a backslash as an escape, so the paths go in
+        # with forward slashes, quoted when they contain a space.
+        text = str(path).replace('\\', '/')
+        return '"%s"' % text if ' ' in text else text
+    body = ' '.join(['-o', quote(program)] + [quote(o) for o in objects] + LINK_FLAGS + defsyms)
+    response.write_text(body, encoding='utf-8')
+    command = ['gcc', '@%s' % response]
     result = subprocess.run(command, capture_output=True, text=True, errors='replace')
     if result.returncode and port:
         missing = sorted(set(re.findall(r"undefined reference to `([^']+)'", result.stderr)))
@@ -94,7 +104,9 @@ def link(objects, program, directory, port):
                 for n in missing), encoding='utf-8')
             objects = list(objects) + compile_objects([stub], HARNESS_FLAGS, directory, [])
             (directory / 'traps.txt').write_text('\n'.join(missing) + '\n', encoding='utf-8')
-            command = ['gcc'] + [str(o) for o in objects] + ['-o', str(program)] + LINK_FLAGS + defsyms
+            body = ' '.join(['-o', quote(program)] + [quote(o) for o in objects] + LINK_FLAGS + defsyms)
+            response.write_text(body, encoding='utf-8')
+            command = ['gcc', '@%s' % response]
             result = subprocess.run(command, capture_output=True, text=True, errors='replace')
     if result.returncode:
         sys.stderr.write(result.stderr[-4000:])

@@ -17,6 +17,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | File | Contents | Original routines |
 |---|---|---|
 | `renderer.c` | 2D drawing: the vertex batch behind lines and shapes, textured and flat rectangles, atlas sprites; the radix sort that orders things back to front | 0x14007D420, 0x14007D230, 0x14007D520, 0x14007D320, 0x14006E0D0, 0x14006E2D0, 0x14006CFF0, 0x14006D660, 0x14006D300, 0x14007D710 |
+| `renderer_state.c`, `renderer_state.h` | the fixed-function render-pass state setups: stencil-notequal, stencil-equal, opaque and shadow-volume depth/stencil state, every GL call the passes issue | 0x1400A6DF0, 0x1400A6E90, 0x1400A6F30, 0x1400A6FB0 |
 | `camera.c` | window letterbox, viewport and scissor from canvas rectangles, 2D/orthographic/perspective setup, view and model matrices and their products | 0x14006C780, 0x14007BB00, 0x14007A2C0, 0x14007A570, 0x14007BE20, 0x14007B990, 0x14007B6F0, 0x14007B7E0 |
 | `math3d.c` | the frame across a direction (shared by bullets and decals), vector normalize and rotation, angle difference, triangle normal, point-to-segment distance, vector-matrix and matrix products, orthographic matrix, rotation of a basis about an axis | 0x14007A240, 0x14007B4D0, 0x14000B5F0, 0x14006EC40, 0x14007ABA0, 0x14007B0F0, 0x140079D60, 0x14007A010, 0x14007AE70, 0x14007A0E0, 0x140079F00, 0x14007B2A0, quaternion product 0x140105930 |
 | `text.c` | text drawing and measuring | 0x14006D930, 0x14006DB90, 0x14006E530, 0x14006F060 |
