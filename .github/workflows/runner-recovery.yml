@@ -28,6 +28,10 @@ jobs:
     env:
       OPENAI_API_KEY: ${{ secrets.AGENT_API_KEY }}
       YOPES_BASE_URL: ${{ secrets.AGENT_BASE_URL }}
+      # Secrets are not readable from a step-level `if:`, so expose them as env
+      # and branch on env instead (the workflow is rejected otherwise).
+      EXE_RELEASE_REPO: ${{ secrets.EXE_RELEASE_REPO }}
+      EXE_TOKEN: ${{ secrets.EXE_TOKEN }}
     steps:
       - name: Check out the batch branch
         uses: actions/checkout@v4
@@ -51,18 +55,26 @@ jobs:
           cp target/release/yopes.exe "$RUNNER_TEMP/yopes.exe"
 
       - name: Fetch the game exe (optional)
-        if: ${{ secrets.EXE_RELEASE_REPO != '' }}
+        if: env.EXE_RELEASE_REPO != ''
         shell: bash
-        env:
-          EXE_TOKEN: ${{ secrets.EXE_TOKEN }}
         run: |
+          mkdir -p subrosaactual
           curl -sL -H "Authorization: token $EXE_TOKEN" \
-            "https://api.github.com/repos/${{ secrets.EXE_RELEASE_REPO }}/releases/latest" \
+            "https://api.github.com/repos/$EXE_RELEASE_REPO/releases/latest" \
             -o release.json
           url=$(python -c "import json;d=json.load(open('release.json'));print(d['assets'][0]['url'])")
           curl -sL -H "Authorization: token $EXE_TOKEN" -H "Accept: application/octet-stream" \
             "$url" -o subrosaactual/subrosa.exe
           ls -la subrosaactual/
+
+      - name: Report whether the original exe is available
+        shell: bash
+        run: |
+          if [ -f subrosaactual/subrosa.exe ]; then
+            echo "original exe present: native proof is possible"
+          else
+            echo "::warning::subrosaactual/subrosa.exe is missing (EXE_RELEASE_REPO/EXE_TOKEN not set): this run has no native proof and no disassembly"
+          fi
 
       - name: Run the recovery agent
         shell: bash
@@ -76,10 +88,14 @@ jobs:
           which python3 || which python
           # The agent drives itself; the task arrives via AGENT_TASK. The
           # one-shot mode submits the task, runs the loop to idle, then exits.
+          set +e
           timeout "${AGENT_TIME_LIMIT}m" "$RUNNER_TEMP/yopes.exe" run \
             --no-save \
             --system-prompt "You recover decompiled game routines into clean C. Work strictly inside the repository you were launched in." \
-            "$AGENT_TASK" || echo "agent exited (timeout or done)"
+            "$AGENT_TASK"
+          rc=$?
+          echo "agent exit code: $rc (0 = went idle, 124 = hit the time limit)"
+          exit 0
 
       - name: Commit and push results
         shell: bash
