@@ -1,11 +1,12 @@
 // NC_WRAPPERS: 140127900 14012C450 14012FB60
 #include <string.h>
+#include <stdarg.h>
 #include "nc.h"
 
 #ifdef NC_NATIVE
 #define return_second(a, b) ((long long (*)(long long, long long))NC_ADDR(0x140127900))(a, b)
 #define dirs_reset() ((long long (*)(void))NC_ADDR(0x14012C450))()
-#define text_append(a, b) ((long long (*)(_BYTE *, long long))NC_ADDR(0x14012FB60))((void *)(uintptr_t)(a), (long long)(uintptr_t)(b))
+#define text_append(a, b) ((long long (*)(void *, long long))NC_ADDR(0x14012FB60))((void *)(uintptr_t)(a), (long long)(uintptr_t)(b))
 #elif defined(NC_CLIENT_WRAPPERS)
 __int64 sub_140127900(__int64 a1, __int64 a2);
 __int64 sub_14012C450();
@@ -14,46 +15,41 @@ __int64 sub_14012FB60(_BYTE *a1, __int64 a2);
 #define dirs_reset() sub_14012C450()
 #define text_append(a, b) sub_14012FB60((void *)(uintptr_t)(a), (long long)(uintptr_t)(b))
 #else
-long long recovery_return_second(long long, long long);
-long long recovery_reset_dirs(void);
-long long recovery_append_file_text(char *text, const char *name);
+#include "recovery_120000.h"
 #define return_second(a, b) recovery_return_second(a, b)
 #define dirs_reset() recovery_reset_dirs()
 #define text_append(a, b) recovery_append_file_text((char *)(a), (b))
 #endif
 
-/* The original keeps the strings these routines read at fixed addresses. */
+/* The directories the reset routine reads live in the shared game state. */
+#include "memory.h"
 #define name_directory SR_GLOBAL(char, 0x182A7D140ULL)
 #define documents_directory SR_GLOBAL(char, 0x182A7D340ULL)
-#define first_choice SR_GLOBAL(const char, 0x1402776A0ULL)
 
-/* Both builds: the in-image rand is put behind the harness generator. */
+/* Both builds: the original's own chdir 0x14024C22C, sprintf 0x140158AB0 and
+ * rand 0x14023B1B0 run behind these definitions (see the redirects in main),
+ * so the port build resolves them and the native build's in-image calls land
+ * on the same code. The chdir result counts calls, so a dropped call shows up
+ * in the value the reset routine returns. */
+static long long chdir_result;
+
+long long crt_chdir(char *path)
+{
+    nc_line("call crt_chdir %s", path);
+    return chdir_result++;
+}
+
+void crt_sprintf(char *buffer, const char *format, ...)
+{
+    va_list args;
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    va_end(args);
+}
+
 int rand(void)
 {
     return (int)nc_rand_below(0x8000);
-}
-
-/* The in-image chdir reaches these KERNEL32 imports; keep them side effect
- * free but deterministic in every build (see nc_map_image). */
-static int stub_SetCurrentDirectoryA(const char *path)
-{
-    nc_line("call SetCurrentDirectoryA %s", path);
-    return 1;
-}
-static unsigned long stub_GetCurrentDirectoryA(unsigned long length, char *buffer)
-{
-    static const char cwd[] = "C:\\subrosa-temp";
-    strncpy(buffer, cwd, length);
-    return strlen(buffer);
-}
-static int stub_SetEnvironmentVariableA(const char *name, const char *value)
-{
-    nc_line("call SetEnvironmentVariableA %s", name);
-    return 1;
-}
-static unsigned long stub_GetLastError(void)
-{
-    return 0;
 }
 
 static char out[600];
@@ -61,12 +57,9 @@ static char out[600];
 int main(void)
 {
     nc_map_image();
-    nc_bind_import("KERNEL32.dll", "SetCurrentDirectoryA", (void *)stub_SetCurrentDirectoryA);
-    nc_bind_import("KERNEL32.dll", "GetCurrentDirectoryA", (void *)stub_GetCurrentDirectoryA);
-    nc_bind_import("KERNEL32.dll", "SetEnvironmentVariableA", (void *)stub_SetEnvironmentVariableA);
-    nc_bind_import("KERNEL32.dll", "GetLastError", (void *)stub_GetLastError);
+    nc_redirect(0x14024C22C, (void *)crt_chdir);
+    nc_redirect(0x140158AB0, (void *)crt_sprintf);
     nc_redirect(0x14023B1B0, (void *)rand);
-    nc_save(&first_choice, 0x180);
     nc_save(&name_directory, 0x200);
     nc_save(&documents_directory, 0x200);
 
@@ -80,14 +73,16 @@ int main(void)
     }
 
     /* 0x14012C450: two directory changes, the second result in rax. The
-       paths come from the image; SetCurrentDirectoryA is logged. */
+       paths come from the shared state and are logged by crt_chdir. */
     for (int n = 0; n < nc_cases(4); n++) {
         nc_restore();
         nc_seed(n);
-        for (int k = 0; k < 0x40; k += 3) {
-            name_directory[k] = (char)(n * 7 + k + 1);
-            documents_directory[k] = (char)(n * 5 + k + 2);
+        for (int k = 0; k < 0x3F; k += 3) {
+            *(&name_directory + k) = (char)(n * 7 + k + 1);
+            *(&documents_directory + k) = (char)(n * 5 + k + 2);
         }
+        *(&name_directory + 0x3F) = 0;
+        *(&documents_directory + 0x3F) = 0;
         if (n % 2 == 0) {
             strcpy(&name_directory, "data");
             strcpy(&documents_directory, "mission");
@@ -102,9 +97,11 @@ int main(void)
     for (int n = 0; n < nc_cases(400); n++) {
         nc_seed(n * 3 + 1);
         memset(out, 0, sizeof out);
+        if (n % 2)
+            strcpy(out, "Notes: ");
         const char *name = n % 3 == 0 ? "replay001.srp"
                                       : (n % 3 == 1 ? "a"
-                                                    : "some_very_long_file_name_that_spans_the_phrase_output");
+                                                    : "some_long_file_name_for_the_phrase");
         nc_line("name %s", name);
         text_append(out, name);
         nc_line("len %zu", strlen(out));
