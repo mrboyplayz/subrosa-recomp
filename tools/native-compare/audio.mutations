@@ -1,0 +1,70 @@
+sound directory change succeeds
+crt_chdir("sound")
+----
+crt_chdir("invalid_dir")
+====
+sound index in range
+sound_id >= 0 && sound_id <= 0xFFF
+----
+sound_id < 0
+====
+sound index out of range
+sound_id >= 0 && sound_id <= 0xFFF
+----
+sound_id > 0xFFF
+====
+file load succeeds
+result = sr_wave_load(...)
+----
+result = 0
+====
+channels is mono
+sr_spec.channels == 1
+----
+sr_spec.channels != 1
+====
+sample rate positive
+sr_spec.freq > 0
+----
+sr_spec.freq <= 0
+====
+sample rate zero
+sr_spec.freq > 0
+----
+sr_spec.freq == 0
+====
+target sample count computed
+wave_byte_count >> 1 * (48000.0 / freq)
+----
+wave_byte_count >> 1 * (44100.0 / freq)
+====
+malloc returns buffer
+sr_path_malloc(...) != NULL
+----
+sr_path_malloc(...) == NULL
+====
+target sample count zero
+target_sample_count > 0
+----
+target_sample_count <= 0
+====
+sample conversion loop runs
+converted_sample_count < target_sample_count
+----
+converted_sample_count >= target_sample_count
+====
+source sample clamped
+fminf(source_sample_position + step, max_sample)
+----
+source_sample_position + step (no clamp)
+====
+gain applied
+*(float *)buffer = sample * 0.000030517578f
+----
+*(float *)buffer = sample (no gain)
+====
+parent directory restored
+!directory_status && crt_chdir("..")
+----
+directory_status (no restore)
+====

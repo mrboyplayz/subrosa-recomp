@@ -132,6 +132,10 @@ void audio_list_devices(void);
    pass filled, flips the ring selector and posts the mixer semaphore.
    0x140069400 */
 void audio_output_callback(void *userdata, void *output, int byte_count);
+/* Rewrites a sound from a WAV file: chdir "sound", load, convert PCM16 to
+   float into a fresh buffer, chdir back; the chdir results are all the call
+   returns. 0x1400EE400 */
+int64_t audio_load_sound_from_wav(int sound_id, const char *path, float gain);
 /* Plays a sound when the player can hear it: the gain is capped at 1 and
    halved when the source is over 128 units from the listener or the straight
    path to it passes through the level; plays only when the sound is loaded.
