@@ -8797,38 +8797,11 @@ LABEL_17:
 //----- (000000014006C5E0) ----------------------------------------------------
 __m128i *           sub_14006C5E0(int a1,      __m128i *a2, int a3, int a4, int a5)
 {
-  __int64 packet_record_offset;
-       __m128i *input_cursor;
-  __int64 table_value;
-  int byte_count;
-  __m128i *result;
-  __m128i *destination_buffer;
-
-  packet_record_offset = 16387LL * a1;
-  input_cursor = a2;
-  if ( (int)dword_140404A6C[packet_record_offset + 135184966] > 0 )
-  {
-    ++dword_140404A6C[packet_record_offset + 135184965];
-    dword_140404A6C[packet_record_offset + 135184966] = 0;
-  }
-  table_value = (int)dword_140404A6C[packet_record_offset + 135184965];
-  byte_count = a4 * a3;
-  result = (__m128i *)(unsigned int)(table_value + a4 * a3);
-  if ( (int)result < 0x10000 )
-  {
-    if ( a5 )
-    {
-      destination_buffer = (__m128i *)((char *)&dword_140404A6C[packet_record_offset + 135184968] + table_value);
-    }
-    else
-    {
-      a2 = (     __m128i *)((char *)&dword_140404A6C[packet_record_offset + 135184968] + table_value);
-      destination_buffer = (__m128i *)input_cursor;
-    }
-    result = crt_memcpy(destination_buffer, a2, byte_count);
-    dword_140404A6C[packet_record_offset + 135184965] += byte_count;
-  }
-  return result;
+    /* 0x14006C5E0: the engine port vehicles_packet_bytes_transfer
+       (src/engine/vehicles_helpers.c, declared in vehicles.h). The original
+       returns the destination of the copy, or the zero-extended end position
+       when the copy was skipped. */
+    return (__m128i *)vehicles_packet_bytes_transfer(a1, a2, a3, a4, a5);
 }
 
 //----- (000000014006CCA0) ----------------------------------------------------
