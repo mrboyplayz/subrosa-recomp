@@ -21,11 +21,13 @@ float spline_180000_evaluate(int degree, float t, float point0, float point1,
     if (degree != 3)
         return 0.0f;
     float remaining = one - t;
+    float last = t * point3;
+    float first = remaining * point0;
     float scaled = point1 * three;
     /* Order of operations is part of the contract (src/engine/README.md);
      * -ffp-contract=off keeps the port from re-associating. The machine
      * multiplies point1 by three once and reuses it in both terms. */
-    return ((scaled * remaining + t * point3) * t
-            + remaining * remaining * scaled) * t
-           + remaining * remaining * (remaining * point0);
+    return (remaining * remaining * scaled
+            + (scaled * remaining + last) * t) * t
+           + first * remaining * remaining;
 }

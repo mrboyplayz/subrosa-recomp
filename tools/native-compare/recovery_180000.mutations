@@ -1,19 +1,24 @@
-one-minus-t folded into the multiplications
-    float remaining = one - t;
+remaining squared collapses
+    return (remaining * remaining * scaled
 ----
-    float remaining = 1.0f - t;
+    return (remaining * scaled
 ====
-first term left-multiplied
-    return ((a4 * three * remaining + t * a4) * t
+last value loses its t factor
+    float last = t * point3;
 ----
-    return ((three * a4 * remaining + t * a4) * t
+    float last = point3;
 ====
-remaining squared hoisted differently
-            + remaining * remaining * (a3 * three)) * t
+end term loses one remaining
+       + first * remaining * remaining;
 ----
-            + (remaining * remaining) * (a3 * three)) * t
+       + first * remaining;
 ====
-end term uses a2*a2
-           + remaining * remaining * (remaining * a2);
+first value loses its remaining
+    float first = remaining * point0;
 ----
-           + remaining * remaining * (remaining * a2) * a4;
+    float first = point0;
+====
+end term pairs the wrong operand
+       + first * remaining * remaining;
+----
+       + first * first * remaining;
