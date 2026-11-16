@@ -113,6 +113,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `corner_flip.c` | the 4 x 12 corner table turned one step per count with the face tag along its cycle | 0x14001B5C0 |
 | `item_text.c` | a row of an item's text filled from a string, padded with spaces, with a colour per cell | 0x1400C6AB0 |
 | `texture_solid.c`, `texture_solid.h` | a texture record made 1 x 1 in one colour, its old pixels freed | 0x140138590 |
+| `character.c`, `character.h` | the .cmc character clothing/config loader and the first-person shadow pass | 0x1400E8580, 0x1400FBA50 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |
