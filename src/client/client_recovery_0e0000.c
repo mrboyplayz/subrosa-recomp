@@ -81,8 +81,10 @@ LABEL_14:
 //----- (00000001400E3B90) ----------------------------------------------------
 __int64 (           *           sub_1400E3B90(__int64 (           *a1)(_QWORD)))(_QWORD, _QWORD)
 {
-    extern long long gl_load_clip_control(long long (*resolve)(const char *));
-    return (__int64 (*)(_QWORD, _QWORD))gl_load_clip_control((long long (*)(const char *))a1);
+  /* Clean implementation: src/engine/gl_loaders.c, checked against the original executable
+     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
+  extern void * gl_clip_control_proc(void *(*resolve)(const char *));
+  return (void *)gl_clip_control_proc((void *(*)(const char *))a1);
 }
 
 //----- (00000001400E54D0) ----------------------------------------------------

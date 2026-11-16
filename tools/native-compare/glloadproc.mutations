@@ -1,0 +1,9 @@
+opengl32 load ignored
+    void *module = LoadLibraryW(L"opengl32.dll");
+----
+    void *module = 0;
+====
+wgl resolution skipped
+        SR_GLOBAL(uint64_t, 0x144980D90ULL) =
+            (uint64_t)(uintptr_t)GetProcAddress(module, "wglGetProcAddress");
+----
