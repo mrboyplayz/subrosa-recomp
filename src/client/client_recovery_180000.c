@@ -21,34 +21,30 @@ void            sub_14018C250(int a1)
 }
 
 //----- (000000014018C2B0) ----------------------------------------------------
-void            sub_14018C2B0(_DWORD *a1, int *a2)
+void            sub_14018C2B0(float *dst, float *src)
 {
-  int loaded_word;
-  int table_value;
-  int table_value_2;
-  int table_value_3;
-  int table_value_4;
-  int table_value_5;
-  int table_value_6;
-  int table_value_7;
+  /* Pure 3x3 float matrix transpose. All 9 movss loads from src precede
+     the first store to dst, making in-place transpose safe.
+     0x14018C2B0 */
+  float m0 = src[0];
+  float m1 = src[1];
+  float m2 = src[2];
+  float m3 = src[3];
+  float m4 = src[4];
+  float m5 = src[5];
+  float m6 = src[6];
+  float m7 = src[7];
+  float m8 = src[8];
 
-  loaded_word = *a2;
-  table_value = a2[3];
-  table_value_2 = a2[4];
-  table_value_3 = a2[6];
-  table_value_4 = a2[7];
-  table_value_5 = a2[8];
-  table_value_6 = a2[5];
-  table_value_7 = a2[1];
-  a1[6] = a2[2];
-  a1[3] = table_value_7;
-  a1[7] = table_value_6;
-  *a1 = loaded_word;
-  a1[1] = table_value;
-  a1[2] = table_value_3;
-  a1[4] = table_value_2;
-  a1[5] = table_value_4;
-  a1[8] = table_value_5;
+  dst[0] = m0;
+  dst[1] = m3;
+  dst[2] = m6;
+  dst[3] = m1;
+  dst[4] = m4;
+  dst[5] = m7;
+  dst[6] = m2;
+  dst[7] = m5;
+  dst[8] = m8;
 }
 
 //----- (000000014018C340) ----------------------------------------------------
