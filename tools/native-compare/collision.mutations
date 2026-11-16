@@ -1,0 +1,29 @@
+hit at exact boundary
+        if (g_151A8489C > frame_float_at_48)
+----
+        if (g_151A8489C >= frame_float_at_48)
+====
+layer loop off by one
+    } while (iteration_count < 4);
+----
+    } while (iteration_count <= 4);
+====
+NaN radius treated as hit
+        if (sub_14003C760(sr_collision_lower, sr_collision_upper, &frame_float_at_48, iteration_count, from, to, float_word_2_val)) {
+----
+        if (sub_14003C760(sr_collision_lower, sr_collision_upper, &frame_float_at_48, iteration_count, from, to, float_word_2_val) && !isnan(float_word_2_val)) {
+====
+zero radius sweep
+    sr_collision_upper[0] = scaled_value + radius;
+----
+    sr_collision_upper[0] = scaled_value;
+====
+unordered comparison in final test
+    __asm__ volatile("comiss %2, %1; setb %0" : "=qm"(sr_collision_hit)
+                     : "x"(_mm_set_ss(*(float *)&dword_140404A6C[73006988])),
+                       "x"(_mm_set_ss(65536.0f)) : "cc");
+----
+    __asm__ volatile("comiss %2, %1; seta %0" : "=qm"(sr_collision_hit)
+                     : "x"(_mm_set_ss(*(float *)&dword_140404A6C[73006988])),
+                       "x"(_mm_set_ss(65536.0f)) : "cc");
+====
