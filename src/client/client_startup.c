@@ -113,14 +113,9 @@ __int64 sub_1400011E0()
 //----- (00000001400012C0) ----------------------------------------------------
 int            sub_1400012C0(FILE *a1, int a2)
 {
-  int result;
-
-  sub_14020C4A8((__int64)a1, a2, 1u);
-  result = sub_14020BB2C(a1);
-  if ( result != -1 )
-    return sub_14020CFB8(result, a1);
-  return result;
+  return startup_clearerr_rewind(a1, a2);
 }
+
 
 //----- (0000000140001300) ----------------------------------------------------
 __int64            sub_140001300(__int64 a1)

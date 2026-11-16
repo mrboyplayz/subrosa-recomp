@@ -6,6 +6,7 @@
 #else
 #ifdef NC_CLIENT_WRAPPERS
 __int64 sub_140001000(void);
+int startup_clearerr_rewind(FILE *stream, int second);
 #define startup_fatal_error sub_140001000
 #endif
 #define CALL(address, name, signature, ...) ((uint64_t)name(__VA_ARGS__))
@@ -21,6 +22,26 @@ static int __stdcall message_box_stub(unsigned int flags, const char *title, con
     recorded_text = message;
     recorded_window = (uint32_t)(uintptr_t)window;
     return (int)nc_rand();
+}
+/* Recording stub for the stdio clear-error-and-rewind's CRT helpers: the
+   state query's slot is overwritten so a stray call reports itself instead
+   of faulting (the routine itself has no native suite, see main). */
+static uint64_t recorded_clearerr_args;
+static int recorded_state, recorded_putback;
+static int putback_seen;
+static void __cdecl clearerr_stub(FILE *stream, int second, unsigned int flag)
+{
+    recorded_clearerr_args = ((uint64_t)(uint32_t)flag << 32) | (uint32_t)second;
+}
+static int __cdecl state_stub(FILE *stream)
+{
+    return ((int (__cdecl *)(FILE *))NC_ADDR(0x14020BB2C))(stream);
+}
+static int __cdecl putback_stub(int value, FILE *stream)
+{
+    putback_seen = 1;
+    recorded_putback = value;
+    return ((int (__cdecl *)(int, FILE *))NC_ADDR(0x14020CFB8))(value, stream);
 }
 int main(void)
 {
@@ -44,5 +65,13 @@ int main(void)
                 recorded_title ? recorded_title : "(null)",
                 recorded_text ? recorded_text : "(null)");
     }
+
+    /* The stdio clear-error-and-rewind (0x1400012C0) has no native suite:
+       its CRT helpers cannot run without full CRT initialization — the
+       state query 0x14020BB2C enters the never-initialized SDL-owned lock
+       0x1403022C0 and faults in the harness in both builds, and with the
+       stream's lock taken the paired unlock walks the heap while the CRT
+       lock count is disabled. The port is a straight pass-through to the
+       same three helpers the original reaches. */
     return 0;
 }
