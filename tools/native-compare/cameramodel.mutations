@@ -1,0 +1,46 @@
+rotation transposed
+                turn[row * 4 + column] = rotation[row * 3 + column];
+----
+                turn[row * 4 + column] = rotation[column * 3 + row];
+====
+fourth word of a rotation row not cleared
+        for (int row = 0; row < 3; row++)
+            turn[row * 4 + 3] = 0.0f;
+----
+        (void)0;
+====
+last row not the identity's
+        turn[15] = 1.0f;
+----
+        turn[15] = 0.0f;
+====
+position words shifted by a row
+        model[12] = position[0];
+        model[13] = position[1];
+        model[14] = position[2];
+----
+        model[8] = position[0];
+        model[9] = position[1];
+        model[10] = position[2];
+====
+null position not skipped
+    if (position) {
+----
+    if (1) {
+====
+model-view recomputed without the model
+    math_mat4_multiply(camera->model_view, camera->model, camera->view);
+    math_mat4_multiply(camera->model_view_projection, camera->model_view, camera->projection);
+}
+----
+    memcpy(camera->model_view, camera->view, sizeof camera->view);
+    math_mat4_multiply(camera->model_view_projection, camera->view, camera->projection);
+}
+====
+scale order swapped
+    math_mat4_multiply(model, scale, model);
+----
+    float saved[16];
+    memcpy(saved, model, sizeof saved);
+    math_mat4_multiply(model, saved, scale);
+

@@ -217,30 +217,7 @@ __int64            sub_140068FC0(int a1, char *a2)
 //----- (000000014006CA30) ----------------------------------------------------
 __int64            sub_14006CA30(unsigned int a1, unsigned int a2)
 {
-  g_1A7971DA0 = a1;
-  g_1A7971DA4 = a2;
-  g_1A7971DD0 = 0;
-  free(*(void **)&g_1A7971DC8);
-  g_1A7971DC8 = sr_path_malloc(4 * g_1A7971DA0 * g_1A7971DA4);
-  crt_memset(
-    (void *)(uintptr_t)(*(_WORD **)&g_1A7971DC8),
-    0xFFu,
-    4 * g_1A7971DA0 * g_1A7971DA4);
-  glGenTextures(1, &g_1A7971DC0);
-  glBindTexture(3553, g_1A7971DC0);
-  glTexParameteri(3553, 10242, 33071);
-  glTexParameteri(3553, 10243, 33071);
-  glTexParameteri(3553, 10240, 9729);
-  glTexParameteri(3553, 10241, 9729);
-  glTexImage2D(3553,
-    0,
-    6408,
-    g_1A7971DA0,
-    g_1A7971DA4,
-    0,
-    6408,
-    5121,
-    g_1A7971DC8);
-  return 0;
+    extern long long atlas_create(unsigned width, unsigned height);
+    return atlas_create(a1, a2);
 }
 

@@ -72,6 +72,9 @@ static void update_model_view_projection(void)
     RendererCamera *camera = renderer_camera;
 
     math_mat4_multiply(camera->model_view, camera->model, camera->view);
+    /* The original takes the product from model * view and the projection
+       (0x1A724E640 from 0x1A724E5C0 and 0x1A724E580), not from the stored
+       model * view, so a stale copy cannot change the result. 0x14012538A */
     math_mat4_multiply(camera->model_view_projection, camera->model_view, camera->projection);
 }
 
@@ -171,6 +174,9 @@ void camera_set_view(const float eye[3], const float rotation[9])
     update_all_products();
 }
 
+/* The original's four constants (0x140278D30, 0x140278D80, 0x140278E20,
+   0x140279490) are whole matrices whose first rows are the identity's: the
+   model starts as the identity and the turn's last row is [0, 0, 0, 1]. */
 void camera_set_model(const float position[3], const float rotation[9])
 {
     float *model = renderer_camera->model;
@@ -182,12 +188,21 @@ void camera_set_model(const float position[3], const float rotation[9])
         model[14] = position[2];
     }
     if (rotation) {
+        /* The orientation is the model's first three rows, untransposed, with
+         * the fourth word of each row zero; the model then multiplies it from
+         * the left. 0x14007B990 (the turn matrix is the original's stack
+         * copy of the rotation, padded to 4 x 4). */
         float turn[16];
 
-        memcpy(turn, identity, sizeof identity);
         for (int row = 0; row < 3; row++)
             for (int column = 0; column < 3; column++)
                 turn[row * 4 + column] = rotation[row * 3 + column];
+        for (int row = 0; row < 3; row++)
+            turn[row * 4 + 3] = 0.0f;
+        turn[12] = 0.0f;
+        turn[13] = 0.0f;
+        turn[14] = 0.0f;
+        turn[15] = 1.0f;
         math_mat4_multiply(model, turn, model);
     }
     update_model_view_projection();
@@ -203,6 +218,12 @@ void camera_scale_model(float x, float y, float z)
     scale[5] = y;
     scale[10] = z;
     math_mat4_multiply(model, scale, model);
+    update_model_view_projection();
+}
+
+void camera_reset_model(void)
+{
+    memcpy(renderer_camera->model, identity, sizeof identity);
     update_model_view_projection();
 }
 

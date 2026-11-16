@@ -11,6 +11,7 @@
 #include <string.h>
 #include "nc.h"
 #include "texture_solid.h"
+#include "memory.h"
 
 #define ARENA ((unsigned char *)0x100000000ULL)
 #define SLOT_BYTES 0x1000
@@ -39,10 +40,17 @@ long long sr_path_malloc(unsigned long long size) { return (long long)(intptr_t)
 void free(void *block) { stub_free(block); }
 #endif
 
-void sub_14014D3E0(int index, int unknown)
+/* The upload is a routine of the engine now, so the port runs it for real
+ * and only the GL calls under it are recording stubs; the native build
+ * reaches the original's, which calls the same slots. */
+static void gl_bind_texture(unsigned target, unsigned name) { if (logging) nc_line("glBindTexture %#x %u", target, name); }
+static void gl_tex_parameteri(unsigned t, unsigned p, int v) { if (logging) nc_line("glTexParameteri %#x %#x %d", t, p, v); }
+static void gl_tex_image_2d(unsigned t, int level, int internal, int w, int h, int border, unsigned format, unsigned type,
+                            const void *pixels)
 {
-    uint64_t args[2] = {(uint64_t)(uint32_t)index, (uint64_t)(uint32_t)unknown};
-    if (logging) nc_call("upload", 2, args);
+    if (logging)
+        nc_line("glTexImage2D %#x %d %#x %d %d %d %#x %#x %llx", t, level, internal, w, h, border, format, type,
+                (unsigned long long)(uintptr_t)pixels);
 }
 
 #ifdef NC_NATIVE
@@ -61,12 +69,14 @@ int main(void)
 #ifdef NC_NATIVE
     nc_redirect(0x14023ACF8, (void *)stub_malloc);
     nc_redirect(0x14023ACE4, (void *)stub_free);
-    nc_redirect(0x14014D3E0, (void *)sub_14014D3E0);
 #endif
     if (!VirtualAlloc(ARENA, (size_t)SLOT_BYTES * SLOTS + 0x10000, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE)) {
         nc_line("arena reserve failed %lu", GetLastError());
         return 2;
     }
+    SR_GLOBAL(uint64_t, 0x140404050ULL) = (uint64_t)(uintptr_t)gl_bind_texture;
+    SR_GLOBAL(uint64_t, 0x144980D00ULL) = (uint64_t)(uintptr_t)gl_tex_parameteri;
+    SR_GLOBAL(uint64_t, 0x144980D18ULL) = (uint64_t)(uintptr_t)gl_tex_image_2d;
     nc_save(&texture_records[0], sizeof(TextureRecord) * 4);
     logging = 1;
     for (int n = 0; n < nc_cases(4000); n++) {
@@ -81,7 +91,7 @@ int main(void)
         uint8_t *raw = (uint8_t *)record;
         for (size_t k = 0; k < sizeof *record; k++)
             raw[k] = (uint8_t)nc_rand();
-        record->pixels = nc_chance(50) ? 0 : (uint64_t)(uintptr_t)(ARENA + SLOT_BYTES * nc_rand_below(SLOTS));
+        record->pixels[0] = nc_chance(50) ? 0 : (uint64_t)(uintptr_t)(ARENA + SLOT_BYTES * nc_rand_below(SLOTS));
         alloc_calls = (unsigned)nc_rand_below(SLOTS);
         int colour[4];
         for (int k = 0; k < 4; k++)

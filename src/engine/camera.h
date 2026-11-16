@@ -93,6 +93,9 @@ void camera_set_model(const float position[3], const float rotation[9]);
 
 /* Scales the model along its own axes. 0x14007B6F0 */
 void camera_scale_model(float x, float y, float z);
+/* Puts the model back to the identity and retakes model * view and
+   model * view * projection from it. 0x1401253A4's tail in 0x140125270. */
+void camera_reset_model(void);
 
 /* Limits drawing to a canvas rectangle. 0x14007B7E0 */
 void camera_set_scissor(float x, float y, float width, float height);

@@ -24141,9 +24141,6 @@
 140124FE0	v15	unused_written_slot
 140124FE0	v16	float_buffer
 140124FE0	v17	unused_frame_slot_64
-140125270	v5	input_value
-140125270	v6	unused_local
-140125270	v7	unused_local_2
 1401253C0	v0	unrecovered_register_value
 1401253C0	v1	void_2
 1401253C0	v2	float_word
@@ -24222,12 +24219,6 @@
 14014B2A0	v2	file_handle_2
 14014B2A0	v4	unused_frame_slot_0
 14014B2A0	v7	unused_frame_slot_48
-14014D3E0	v2	record_word_offset
-14014D3E0	v4	table_value
-14014D3E0	v5	iteration_count
-14014D3E0	v6	state_address
-14014D3E0	v7	iteration_count_2
-14014D3E0	v8	buffer_cursor
 140187860	v6	iteration_count
 140187860	v8	masked_bits
 140187860	v9	saved_masked_bits

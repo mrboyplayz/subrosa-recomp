@@ -14166,29 +14166,9 @@ __int64            sub_140124FE0(int a1, int a2, unsigned int *a3, __int64 a4)
 //----- (0000000140125270) ----------------------------------------------------
 __int64            sub_140125270(int a1, unsigned int *a2, _DWORD *a3, __int64 a4, float a5)
 {
-  __int64 input_value;
-  __int64 unused_local;
-  __int64 unused_local_2;
-
-  input_value = a1;
-  sr_camera_set_model(a2, a3);
-  sr_camera_scale_model(a5, a5, a5);
-  glUniformMatrix4fv(renderer_ui_matrix_uniform, 1, 0, (unsigned int *)&g_1A724E6C0);
-  glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[input_value + 283790166] + 283793813]);
-  glEnableVertexAttribArray(0);
-  glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[908*input_value+178527462]),(const void *)(intptr_t)(0));
-  glDrawArrays(4, 0, 3 * dword_140404A6C[908 * input_value + 178527465]);
-  glDisableVertexAttribArray(0);
-  glBindBuffer(34962, 0);
-  g_1A724E600 = xmmword_140278D30;
-  g_1A724E610 = xmmword_140278D80;
-  g_1A724E620 = xmmword_140278E20;
-  g_1A724E630 = xmmword_140279490;
-  sr_math_mat4_multiply((unsigned int *)&g_1A724E640, (__int64)(unsigned int *)&g_1A724E600, (__int64)(unsigned int *)&g_1A724E5C0);
-  return sr_math_mat4_multiply(
-           (unsigned int *)&g_1A724E6C0,
-           (__int64)(unsigned int *)&g_1A724E640,
-           (__int64)(unsigned int *)&g_1A724E580);
+    extern void model_draw_at(int model, const float *position, const float *rotation, float size);
+    model_draw_at(a1, (const float *)a2, (const float *)a3, a5);
+    return 0;
 }
 
 //----- (00000001401253C0) ----------------------------------------------------
@@ -14997,68 +14977,8 @@ __int64 render_cache_camera_uniforms_candidate()
 //----- (000000014014D3E0) ----------------------------------------------------
 void            sub_14014D3E0(int a1, int a2)
 {
-  __int64 record_word_offset;
-  int table_value;
-  int iteration_count;
-  unsigned int *state_address;
-  signed int iteration_count_2;
-  void **buffer_cursor;
-
-  record_word_offset = 44LL * a1;
-  glBindTexture(3553, dword_140404A6C[record_word_offset + 284024944]);
-  glTexParameteri(3553,
-    10242,
-    dword_140404A6C[record_word_offset + 284024938]);
-  glTexParameteri(3553,
-    10243,
-    dword_140404A6C[record_word_offset + 284024939]);
-  glTexParameteri(3553,
-    10240,
-    dword_140404A6C[record_word_offset + 284024940]);
-  glTexParameteri(3553,
-    10241,
-    dword_140404A6C[record_word_offset + 284024941]);
-  table_value = dword_140404A6C[record_word_offset + 284024935];
-  iteration_count = 0;
-  if ( table_value > 0 )
-  {
-    state_address = &dword_140404A6C[record_word_offset + 284024945];
-    do
-    {
-      glTexImage2D(3553,
-        (unsigned int)iteration_count,
-        dword_140404A6C[record_word_offset + 284024937],
-        (unsigned int)((int)dword_140404A6C[record_word_offset + 284024933] >> iteration_count),
-        (int)dword_140404A6C[record_word_offset + 284024934] >> iteration_count,
-        0,
-        dword_140404A6C[record_word_offset + 284024936],
-        5121,
-        *(_QWORD *)state_address);
-      table_value = dword_140404A6C[record_word_offset + 284024935];
-      state_address += 2;
-      ++iteration_count;
-    }
-    while ( iteration_count < table_value );
-  }
-  if ( a2 )
-  {
-    iteration_count_2 = 0;
-    if ( table_value > 0 )
-    {
-      buffer_cursor = (void **)&dword_140404A6C[record_word_offset + 284024945];
-      do
-      {
-        if ( *buffer_cursor )
-        {
-          free(*buffer_cursor);
-          *buffer_cursor = nullptr;
-        }
-        ++iteration_count_2;
-        ++buffer_cursor;
-      }
-      while ( iteration_count_2 < (int)dword_140404A6C[record_word_offset + 284024935] );
-    }
-  }
+    extern void texture_upload(int index, int free_pixels);
+    texture_upload(a1, a2);
 }
 
 //----- (0000000140187860) ----------------------------------------------------
