@@ -123,37 +123,11 @@ __int64 sr_renderer_sort()
 //----- (000000014007DDF0) ----------------------------------------------------
 void            sr_renderer_draw_wire_box(float *a1, float *a2)
 {
-  /* Written out from the assembly (0x14007DE2C..0x14007DFFE): the 12 edges of the box with corners a1 (rbx)
-     and a2 (rdi) as 24 line vertices; the comment on each call is its address. Hex-Rays had typed the corners
-     as integers, passed the first call the pointers themselves and lost every argument after that. */
-  g_1AD299450 = xmmword_140279700;
-  g_1AD059440 = 2;
-  g_1AD059448 = 0;
-  g_1AD05944C = 9;
-  sr_renderer_batch_vertex3f(a1[0], a1[1], a1[2]); /* 0x14007DE3A */
-  sr_renderer_batch_vertex3f(a2[0], a1[1], a1[2]); /* 0x14007DE4D */
-  sr_renderer_batch_vertex3f(a2[0], a1[1], a1[2]); /* 0x14007DE60 */
-  sr_renderer_batch_vertex3f(a2[0], a2[1], a1[2]); /* 0x14007DE73 */
-  sr_renderer_batch_vertex3f(a2[0], a2[1], a1[2]); /* 0x14007DE86 */
-  sr_renderer_batch_vertex3f(a1[0], a2[1], a1[2]); /* 0x14007DE99 */
-  sr_renderer_batch_vertex3f(a1[0], a2[1], a1[2]); /* 0x14007DEAC */
-  sr_renderer_batch_vertex3f(a1[0], a1[1], a1[2]); /* 0x14007DEBF */
-  sr_renderer_batch_vertex3f(a1[0], a1[1], a1[2]); /* 0x14007DED2 */
-  sr_renderer_batch_vertex3f(a1[0], a1[1], a2[2]); /* 0x14007DEE5 */
-  sr_renderer_batch_vertex3f(a2[0], a1[1], a1[2]); /* 0x14007DEF8 */
-  sr_renderer_batch_vertex3f(a2[0], a1[1], a2[2]); /* 0x14007DF0B */
-  sr_renderer_batch_vertex3f(a2[0], a2[1], a1[2]); /* 0x14007DF1E */
-  sr_renderer_batch_vertex3f(a2[0], a2[1], a2[2]); /* 0x14007DF31 */
-  sr_renderer_batch_vertex3f(a1[0], a2[1], a1[2]); /* 0x14007DF44 */
-  sr_renderer_batch_vertex3f(a1[0], a2[1], a2[2]); /* 0x14007DF57 */
-  sr_renderer_batch_vertex3f(a2[0], a2[1], a2[2]); /* 0x14007DF6A */
-  sr_renderer_batch_vertex3f(a1[0], a2[1], a2[2]); /* 0x14007DF7D */
-  sr_renderer_batch_vertex3f(a1[0], a2[1], a2[2]); /* 0x14007DF90 */
-  sr_renderer_batch_vertex3f(a1[0], a1[1], a2[2]); /* 0x14007DFA3 */
-  sr_renderer_batch_vertex3f(a1[0], a1[1], a2[2]); /* 0x14007DFB6 */
-  sr_renderer_batch_vertex3f(a2[0], a1[1], a2[2]); /* 0x14007DFC9 */
-  sr_renderer_batch_vertex3f(a2[0], a1[1], a2[2]); /* 0x14007DFDC */
-  sr_renderer_batch_vertex3f(a2[0], a2[1], a2[2]); /* 0x14007DFEF */
-  sr_renderer_batch_flush(0, 0, 0);
+  /* Clean implementation: src/engine/renderer.c (renderer_draw_wire_box),
+     checked against the original executable (tools/native-compare suite
+     rendererprimitives). This wrapper keeps the entry point the recompiled
+     callers use. */
+  extern void renderer_draw_wire_box(const float a[3], const float b[3]);
+  renderer_draw_wire_box((const float *)a1, (const float *)a2);
 }
 
