@@ -11,8 +11,10 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "terminal.h"
 #include "item.h"
 #include "memory.h"
+
 
 /* The game's own toupper (0x14023ACB8), declared plain so the call is not
     a dllimport reference to the CRT's. */

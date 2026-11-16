@@ -1,4 +1,4 @@
-// NC_WRAPPERS: 1400C58E0 1400C5610 1400C5360 1400C9120
+// NC_WRAPPERS: 1400C58E0 1400C5610 1400C5360 1400C9120 1400C5750 1400C3E00
 /* The computer item's terminal: the mission-slot hit ratio, the word copy
  * through the letter-to-slot table (raw and coloured paths), the selection
  * list rows, and the snake game's keys (extension-bit letters, Ctrl-X
