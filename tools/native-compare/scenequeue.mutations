@@ -1,0 +1,58 @@
+queue limit off by one
+    if (index >= SCENE_QUEUE_CAPACITY)
+----
+    if (index >= SCENE_QUEUE_CAPACITY - 1)
+====
+queue limit too high
+    if (index >= SCENE_QUEUE_CAPACITY)
+----
+    if (index > SCENE_QUEUE_CAPACITY)
+====
+model copy missing
+    entry->model_copy = (int32_t)model;
+----
+    (void)0;
+====
+textures not stored
+    memcpy(entry->textures, textures, sizeof entry->textures);
+----
+    (void)textures;
+====
+position as float values
+    memcpy(entry->position, position, sizeof entry->position);
+----
+    for (int k = 0; k < 3; k++) entry->position[k] = position[k] + 0.0f;
+====
+rotation last row dropped
+    memcpy(entry->rotation, rotation, sizeof entry->rotation);
+----
+    memcpy(entry->rotation, rotation, 24);
+====
+scale not set
+    for (int k = 0; k < 6; k++)
+        entry->scale[k] = 1.0f;
+----
+    (void)0;
+====
+last scale missing
+    for (int k = 0; k < 6; k++)
+----
+    for (int k = 0; k < 5; k++)
+====
+zeros not written
+    for (int k = 0; k < 4; k++)
+        entry->unknown_68[k] = 0.0f;
+----
+    (void)0;
+====
+count not advanced
+    scene_queue_count = index + 1;
+----
+    (void)0;
+====
+returns the new count
+    return index;
+}
+----
+    return index + 1;
+}

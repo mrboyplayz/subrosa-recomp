@@ -1650,27 +1650,9 @@ __int64            sub_140007490(
         float a6,
         float a7)
 {
-  __int64 input_value;
-  __int64 result;
-  __int64 scaled_index;
-  __int64 scaled_index_2;
-
-  input_value = a1;
-  result = sub_1400A4620(a1, a6 / a7);
-  if ( (_DWORD)result != -1 )
-  {
-    scaled_index = 5LL * (int)result;
-    scaled_index_2 = 188896 * input_value + 8 * scaled_index;
-    *(float *)((char *)&g_1A8E3DA9C + scaled_index_2) = a6;
-    *(float *)((char *)&g_1A8E3DAA0 + scaled_index_2) = a7;
-    *(unsigned int *)((char *)&g_1A8E3DA7C + scaled_index_2) = 1;
-    *(unsigned int *)((char *)&g_1A8E3DA80 + scaled_index_2) = a2;
-    *(unsigned int *)((char *)&g_1A8E3DA84 + scaled_index_2) = a3;
-    *(unsigned int *)((char *)&g_1A8E3DA88 + scaled_index_2) = a4;
-    *(unsigned int *)((char *)&g_1A8E3DA8C + scaled_index_2) = a5;
-    return a5;
-  }
-  return result;
+    extern unsigned net_slot_claim(int peer, unsigned a, unsigned b, unsigned c, unsigned d, float numerator,
+                                   float denominator);
+    return net_slot_claim(a1, a2, a3, a4, a5, a6, a7);
 }
 
 //----- (0000000140007550) ----------------------------------------------------
@@ -2286,78 +2268,8 @@ __int64            sub_1400096B0(int a1, int a2, int a3, unsigned int a4)
 //----- (000000014000B650) ----------------------------------------------------
 void            sub_14000B650(signed int a1, int a2)
 {
-  __int64 record_word_offset;
-  int table_value;
-  int integer_difference;
-  unsigned int *state_address;
-  unsigned int *state_address_2;
-  unsigned int cached_game_tick;
-  unsigned int table_value_2;
-  unsigned int cached_world_event_count;
-  __int64 shifted_bits;
-  unsigned int table_value_3;
-  unsigned int table_value_4;
-  unsigned int loaded_word;
-  unsigned int table_value_5;
-  unsigned int loaded_word_2;
-
-  record_word_offset = 5210LL * a1;
-  if ( dword_140404A6C[record_word_offset + 129716710] != 13 )
-  {
-    table_value = dword_140404A6C[record_word_offset + 129716712];
-    if ( table_value > 0 )
-    {
-      integer_difference = table_value - a2;
-      dword_140404A6C[record_word_offset + 129716712] = integer_difference;
-      if ( integer_difference <= 0 )
-      {
-        state_address = &dword_140404A6C[record_word_offset + 129716744];
-        state_address_2 = &dword_140404A6C[record_word_offset + 129716720];
-        if ( game_connected )
-        {
-          cached_game_tick = game_tick;
-          table_value_2 = 0;
-          cached_world_event_count = world_event_count;
-          shifted_bits = (__int64)(int)world_event_count << 7;
-          *(unsigned int *)((char *)&g_1873DE460 + shifted_bits) = 4;
-          *(unsigned int *)((char *)&g_1873DE464 + shifted_bits) = cached_game_tick;
-          *(unsigned int *)((char *)&g_1873DE480 + shifted_bits) = a1;
-          *(_QWORD *)((char *)&g_1873DE484 + shifted_bits) = 2;
-          if ( state_address_2 )
-          {
-            table_value_3 = state_address_2[2];
-            table_value_4 = state_address_2[1];
-            loaded_word = *state_address_2;
-          }
-          else
-          {
-            table_value_3 = 0;
-            table_value_4 = 0;
-            loaded_word = 0;
-          }
-          *(unsigned int *)((char *)&g_1873DE468 + shifted_bits) = loaded_word;
-          *(unsigned int *)((char *)&g_1873DE46C + shifted_bits) = table_value_4;
-          *(unsigned int *)((char *)&g_1873DE470 + shifted_bits) = table_value_3;
-          if ( state_address )
-          {
-            table_value_2 = state_address[2];
-            table_value_5 = state_address[1];
-            loaded_word_2 = *state_address;
-          }
-          else
-          {
-            table_value_5 = 0;
-            loaded_word_2 = 0;
-          }
-          *(unsigned int *)((char *)&g_1873DE474 + shifted_bits) = loaded_word_2;
-          *(unsigned int *)((char *)&g_1873DE478 + shifted_bits) = table_value_5;
-          *(unsigned int *)((char *)&g_1873DE47C + shifted_bits) = table_value_2;
-          world_event_count = cached_world_event_count + 1;
-          HIWORD(world_event_count) = 0;
-        }
-      }
-    }
-  }
+    extern void world_vehicle_countdown(int vehicle, int elapsed);
+    world_vehicle_countdown(a1, a2);
 }
 
 //----- (000000014000B7D0) ----------------------------------------------------
@@ -2371,54 +2283,9 @@ __int64            sub_14000B7D0(
         unsigned int *a7,
         unsigned int *a8)
 {
-  unsigned int cached_game_tick;
-  unsigned int table_value;
-  unsigned int cached_world_event_count;
-  __int64 shifted_bits;
-  unsigned int table_value_2;
-
-  if ( a1 > 3 || a2 < 0 || (a5 & 0xE0000000) != 0x80000000 || (a6 & 0x10000) == 0 )
-    return 0;
-  if ( game_connected )
-  {
-    cached_game_tick = game_tick;
-    table_value = 0;
-    cached_world_event_count = world_event_count;
-    shifted_bits = (__int64)(int)world_event_count << 7;
-    *(unsigned int *)((char *)&g_1873DE460 + shifted_bits) = 16;
-    *(unsigned int *)((char *)&g_1873DE464 + shifted_bits) = cached_game_tick;
-    *(unsigned int *)((char *)&g_1873DE480 + shifted_bits) = a1 + (a2 << 16);
-    *(unsigned int *)((char *)&g_1873DE484 + shifted_bits) = a3 + (a4 << 16);
-    *(unsigned int *)((char *)&g_1873DE488 + shifted_bits) = a5;
-    *(unsigned int *)((char *)&g_1873DE48C + shifted_bits) = (unsigned __int16)a6;
-    if ( a7 )
-    {
-      *(unsigned int *)((char *)&g_1873DE468 + shifted_bits) = *a7;
-      *(unsigned int *)((char *)&g_1873DE46C + shifted_bits) = a7[1];
-      table_value_2 = a7[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&g_1873DE468 + shifted_bits) = 0;
-      table_value_2 = 0;
-    }
-    *(unsigned int *)((char *)&g_1873DE470 + shifted_bits) = table_value_2;
-    if ( a8 )
-    {
-      *(unsigned int *)((char *)&g_1873DE474 + shifted_bits) = *a8;
-      *(unsigned int *)((char *)&g_1873DE478 + shifted_bits) = a8[1];
-      table_value = a8[2];
-    }
-    else
-    {
-      *(_QWORD *)((char *)&g_1873DE474 + shifted_bits) = 0;
-    }
-    *(unsigned int *)((char *)&g_1873DE47C + shifted_bits) = table_value;
-    world_event_count = cached_world_event_count + 1;
-    HIWORD(world_event_count) = 0;
-  }
-  sr_world_set_block_unknown_3008(a1, a2, a3, a4, a5 | (0x10000 << a6));
-  return 1;
+    extern unsigned world_set_block_tagged(unsigned layer, int x, unsigned y, unsigned z, unsigned tag, int bit,
+                                           const float *position, const float *velocity);
+    return world_set_block_tagged(a1, a2, a3, a4, a5, a6, (const float *)a7, (const float *)a8);
 }
 
 //----- (000000014000E8B0) ----------------------------------------------------
@@ -3360,61 +3227,8 @@ __m128            sub_140019000(float *a1, float *a2)
 //----- (000000014001B5C0) ----------------------------------------------------
 __int64            sub_14001B5C0(__int64 a1, unsigned int a2)
 {
-  unsigned int *record_byte_offset;
-  float product_difference;
-  unsigned int table_value;
-  unsigned int table_value_2;
-  float combined_products;
-  unsigned int table_value_3;
-  float combined_products_2;
-  float combined_products_3;
-
-  if ( (int)a1 > 0 )
-  {
-    a1 = (unsigned int)a1;
-    do
-    {
-      record_byte_offset = &g_14500A5C8;
-      do
-      {
-        product_difference = 1.0 - *(float *)record_byte_offset;
-        table_value = record_byte_offset[1];
-        *record_byte_offset = *(record_byte_offset - 2);
-        table_value_2 = record_byte_offset[4];
-        *((float *)record_byte_offset - 2) = product_difference;
-        combined_products = 1.0 - *((float *)record_byte_offset + 3);
-        record_byte_offset[3] = table_value;
-        table_value_3 = record_byte_offset[7];
-        *((float *)record_byte_offset + 1) = combined_products;
-        combined_products_2 = 1.0 - *((float *)record_byte_offset + 6);
-        record_byte_offset[6] = table_value_2;
-        *((float *)record_byte_offset + 4) = combined_products_2;
-        combined_products_3 = 1.0 - *((float *)record_byte_offset + 9);
-        record_byte_offset[9] = table_value_3;
-        *((float *)record_byte_offset + 7) = combined_products_3;
-        record_byte_offset += 12;
-      }
-      while ( (__int64)record_byte_offset < (__int64)&g_14500A688 );
-      switch ( a2 )
-      {
-        case 0x60000u:
-          a2 = 0x10000;
-          break;
-        case 0x10000u:
-          a2 = 327680;
-          break;
-        case 0x50000u:
-          a2 = 0x20000;
-          break;
-        case 0x20000u:
-          a2 = 393216;
-          break;
-      }
-      --a1;
-    }
-    while ( a1 );
-  }
-  return a2;
+    extern unsigned corner_table_rotate(int steps, unsigned tag);
+    return corner_table_rotate((int)a1, a2);
 }
 
 //----- (000000014001FD20) ----------------------------------------------------

@@ -36,6 +36,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `menu.c`, `menu.h`, `menu_text.c`, `menu_slider.c`, `menu_state.c`, `menu_clip.c` | widget allocation/layout, buttons, selectable buttons, toggles and masks, groups, text caret/measurement, integer sliders, size stack/reset/grid, and nested clipping | 0x140070380, 0x14006F1F0, 0x14006F5A0, 0x140071910, 0x140071AA0, 0x14006FD10, 0x140074C50, 0x140074CE0, 0x140071440, 0x140075930, 0x1400755F0, 0x1400753C0, 0x140070B90, 0x140075650, 0x140075460, 0x140075340 |
 | `net_vector.c` | signed-magnitude scalar encoding, three-component deltas, and compressed direction encoding | 0x1401151C0, 0x1401150E0, 0x140115230 |
 | `menu_labels.c` | queued text at the layout cursor or an explicitly aligned position | 0x140071640, 0x1400764B0 |
+| `menu_widgets.c`, `menu_widgets.h` | the menu edit buffer: deleting the selected range and collapsing the caret/anchor onto it | 0x1400722C0 |
 | `audio.c`, `audio.h` | capture ring availability/writes, per-sound buffer availability and positional sound channel allocation | 0x140069580, 0x14006A380, 0x140069FA0, 0x14007D6C0 |
 | `math_integer.c` | raw-word matrix transpose and fixed-point 2D rotation | 0x14007CA00, 0x14007D0B0 |
 | `collision_plane.c`, `collision_contacts.c` | segment/plane intersection and first-free persistent contact lookup | 0x140077B30, 0x140048090 |
@@ -50,6 +51,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `item_physics.c` | item physics for a tick: expiry, held/static bodies, world contacts and settling | 0x1400CE370 |
 | `world_blocks.c` | block id and gone-parts lookups in the level's layers; block parts broken loose by vehicles and humans; tick stage: humans' bones follow their bodies, capsule boxes and voxels | 0x140016870, 0x1400169B0, 0x1400B95E0 |
 | `world_vehicles.c` | tick stages: vehicles follow their bodies (boxes, voxels, block parts they break off); lifetimes and removal; wheel joints (suspension, grip, axle); drivetrain (engine curve, brakes, driven wheels) | 0x1401069C0, 0x14010BE50, 0x14010D610, 0x140107ED0 |
+| `vehicle_state.c`, `vehicle_state.h` | vehicle spawn and net-replication state: the first free record of the 1024-record vehicle slot table, a named entry of the 256-slot spawn-name list, and the per-type part dedup list | 0x14004DA50, 0x1400588F0, 0x14010C850 |
 | `world_streets.c`, `world_streets.h` | World map ("test2") streets: street patches, railway segments, filing streets into the 64 x 64 street cells, the railway route with its stops, the race track | 0x14005F6E0, 0x1400603A0, 0x1401899F0, 0x14002A9A0, 0x14002A680 |
 | `world_street_mesh.c` | the three street meshes (embankments, ground between the rails, track) and their GL upload; the Steam encrypted app ticket staged for the master handshake | 0x140188B80, 0x1401880C0 |
 | `collision.c`, `collision.h` | swept-sphere collision: segment-segment, line-plane, line-triangle, sphere-triangle; sweeps against vehicle hulls and trains (faces and unbroken windows); rays against vehicles (faces, windows, wheels); a hit point's weights in a triangle; face-only sphere sweep | 0x1400D6890, 0x1400779F0, 0x140077FA0, 0x140035690, 0x140035B70, 0x14002D370, 0x140035E50, 0x140037220, 0x1400DFB70, 0x1400DF380 |
@@ -97,6 +99,21 @@ The table records the recovered routines by original address. Recovery is incomp
 | `human_net_fields.c`, `human_net_fields.h` | the human state fields packed into the outgoing packet in the original's order and widths, the last transfer a tail call | 0x14010EE20 |
 | `gl_proc.c`, `gl_proc.h` | the GL module's procedure resolver: the zero-handle early return, the custom hook tried first, and the GetProcAddress fallback with the handle re-read | 0x14009E190 |
 | `state_forward.c`, `state_forward.h` | the unsigned short state read the original kept as a forwarding routine | 0x1400A54F0 |
+| `gl_loader.c`, `gl_loader.h` | the OpenGL function loaders, one table per version: a version flag read as a dword gates a list of names, each handed to the resolver and stored in its slot (zero when the driver lacks it), plus the glClipControl loader that returns its argument when the flag is clear | 0x1400E3B90, 0x1400E3BC0, 0x1400E3EE0, 0x1400E3FD0, 0x1400E4030, 0x1400E40E0, 0x1400E4190, 0x1400E42E0, 0x1400E48D0, 0x1400E4950, 0x1400E4EB0, 0x1400E4FC0, 0x1400E5110 |
+| `vehicle_hull.c`, `vehicle_hull.h` | the collision hull lists of a vehicle type: an edge appended unless present in either direction, and a face appended with its four links set to -1 | 0x14010C850, 0x14010C900 |
+| `city_names.c`, `city_names.h` | the city name lists matched against four game tables: the last equal entry's index, zero for none | 0x140027690, 0x140027A60, 0x140027B40, 0x140027C20 |
+| `spawn_requests.c`, `spawn_requests.h` | the queue of 1,024 spawn requests: the first free record cleared and filled | 0x14004DA50 |
+| `net_slots.c`, `net_slots.h` | a peer's eight outgoing slots: the pick (first free, or the ratio test the original performs, which can only ever offer slot 0) and the claim | 0x1400A4620, 0x140007490 |
+| `item_phone.c` | a phone put out of use by number, its partner cleared first and re-read for every write, as the original does | 0x1400F3D10 |
+| `math_value_noise.c` | 2D value noise on a wrapping lattice, bit for bit including the smoothstep weights and the 32-bit corner hash | 0x1401305F0 |
+| `math_random_direction.c` | a random point on the unit circle scaled by a random length, three draws of the noise generator | 0x1400A5510 |
+| `world_blocks.c` | a tagged block value with its block-hit event and the shifted bit; the two voxels of a corporation record set or cleared and marked | 0x14000B7D0, 0x140023A20 |
+| `world_vehicles.c` | a vehicle's countdown that records the removal event when it runs out | 0x14000B650 |
+| `scene_queue.c`, `scene_queue.h` | the queue of 4,096 scene objects to draw: one record appended | 0x140092140 |
+| `vehicle_slots.c`, `vehicle_slots.h` | a corporation's parked-vehicle slots: the first free one marked used and a vehicle made there | 0x1400F00D0 |
+| `corner_flip.c` | the 4 x 12 corner table turned one step per count with the face tag along its cycle | 0x14001B5C0 |
+| `item_text.c` | a row of an item's text filled from a string, padded with spaces, with a colour per cell | 0x1400C6AB0 |
+| `texture_solid.c`, `texture_solid.h` | a texture record made 1 x 1 in one colour, its old pixels freed | 0x140138590 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |

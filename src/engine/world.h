@@ -134,6 +134,18 @@ void world_set_block_unknown_3008(uint32_t layer, uint32_t x, uint32_t y, uint32
    quarter of the record, if it has one (0x140012940). 0x140017260 */
 void world_set_block_unknown_4808(uint32_t layer, uint32_t x, uint32_t y, uint32_t z, uint32_t value);
 
+/* Sets a tagged value of voxel x, y, z: the layer must be 0..3, x not negative,
+   the tag's top three bits 100 and bit 16 of `bit` set, else 0 is returned and nothing
+   happens. Otherwise records the block-hit event (the low 16 bits of `bit` as its last
+   word) and sets unknown_3008 to tag | (0x10000 << (bit & 31)). Returns 1. 0x14000B7D0 */
+uint32_t world_set_block_tagged(uint32_t layer, int32_t x, uint32_t y, uint32_t z, uint32_t tag, int32_t bit,
+                                const float *position, const float *velocity);
+
+/* The two voxels a record (0x183EBFEE0, 0x5BC4 bytes each) lists, 16 bytes apart as x, y, z, value:
+   each gets unknown_4808 = 0 when clear is nonzero, else (value << 10) | 6, and its block record is
+   marked. 0x140023A20 */
+void world_set_marked_voxel_pair(int record, int clear);
+
 /* Sets the unknown_6024 flag of the record holding voxel x, y, z. 0x1400173C0 */
 void world_mark_block_record(uint32_t layer, uint32_t x, uint32_t y, uint32_t z);
 
@@ -397,6 +409,15 @@ void world_update_item_bounds(void);
 /* Moves each vehicle to its body, computes the box and voxels it occupies,
    and breaks the block parts in those voxels off as items. 0x1401069C0 */
 void world_update_vehicle_bounds(void);
+
+/* Turns the corner table (0x14500A5C0) `steps` times and returns the face tag after the same
+   number of steps along its cycle. 0x14001B5C0 */
+uint32_t corner_table_rotate(int32_t steps, uint32_t tag);
+
+/* Counts a vehicle's countdown (word +0xC) down by `elapsed` when it is above zero (not for
+   type 13); when it reaches zero or less, records the removal event with the vehicle's
+   position and velocity. 0x14000B650 */
+void world_vehicle_countdown(int vehicle, int elapsed);
 
 /* ---- spatial grid ----------------------------------------------------------- */
 

@@ -4,6 +4,7 @@
 #include "physics.h"
 #include "frame.h"
 #include "math3d.h"
+#include "events.h"
 #include "world.h"
 
 void world_update_vehicle_bounds(void)
@@ -444,4 +445,24 @@ void world_drive_vehicles(void)
                 drive->unknown_38a4 = 0.0f;
         }
     }
+}
+
+/* The countdown at word +0xC of a vehicle record (its meaning is not settled;
+   it is not the lifetime at +0x1C). */
+#define vehicle_countdown(v) SR_GLOBAL(int32_t, 0x15F2D920CULL + 0x5168ULL * (uint64_t)(int64_t)(v))
+
+void world_vehicle_countdown(int vehicle, int elapsed)
+{
+    if (physics_vehicles[vehicle].type == 13)
+        return;
+    int32_t left = vehicle_countdown(vehicle);
+    if (left <= 0)
+        return;
+    left = subtract_int(left, elapsed);
+    vehicle_countdown(vehicle) = left;
+    if (left > 0)
+        return;
+    /* Out of time: the removal event (type 4) with its position and velocity. */
+    event_vehicle_removed((uint32_t)vehicle, 2, 0, physics_vehicles[vehicle].position,
+                          physics_vehicles[vehicle].velocity);
 }

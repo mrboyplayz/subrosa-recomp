@@ -1,0 +1,100 @@
+the vehicle record stride shrinks by four bytes
+#define VEHICLE_STRIDE  0x328ULL
+----
+#define VEHICLE_STRIDE  0x324ULL
+====
+the free body is left garbage
+        memset(record + 4, 0, VEHICLE_STRIDE - 4);
+----
+====
+the in-use flag is not written
+        *(uint32_t *)(void *)(record + 0x00) = 1;             /* in use */
+----
+====
+the kind lands eight bytes later
+        *(uint32_t *)(void *)(record + 0x04) = kind;
+----
+        *(uint32_t *)(void *)(record + 0x10) = kind;
+====
+the third position word drops out
+        *(uint32_t *)(void *)(record + 0x1c) = position[2];
+----
+====
+the timer starts at zero
+        *(uint64_t *)(void *)(record + 0x08) = ~(uint64_t)0;  /* timer = -1 */
+----
+        *(uint64_t *)(void *)(record + 0x08) = 0;  /* timer = -1 */
+====
+the scan stops one record early
+    for (uint32_t slot = 0; slot < VEHICLE_COUNT; slot++) {
+----
+    for (uint32_t slot = 0; slot < VEHICLE_COUNT - 1; slot++) {
+====
+the full table reports one slot short
+    return 0xFFFFFFFFu;
+----
+    return 0xFFFFFFFEu;
+====
+the name copy stops at the first byte
+    } while (byte != '\0');
+----
+    } while (0);
+====
+the id write drops out
+    *(uint32_t *)(void *)slot = id;
+----
+====
+the name length is not stored
+    *(uint32_t *)(void *)(slot + 0x0c) = length;
+----
+====
+the selection codes swap
+        (id & 0xFFFFFFFBu) == 0 ? 600u : 480u;
+----
+        (id & 0xFFFFFFFBu) != 0 ? 600u : 480u;
+====
+the cursor mask drops
+    SR_GLOBAL(uint32_t, NAME_CURSOR) = (uint32_t)(uint8_t)(previous + 1);
+----
+    SR_GLOBAL(uint32_t, NAME_CURSOR) = (uint32_t)(previous + 1);
+====
+the return loses its increment
+    return (uint32_t)(previous + 1);
+----
+    return (uint32_t)previous;
+====
+the name slot stride shrinks
+#define NAME_STRIDE  0x98ULL
+----
+#define NAME_STRIDE  0x94ULL
+====
+the part record stride grows
+#define PART_STRIDE  0x185C0ULL
+----
+#define PART_STRIDE  0x185C4ULL
+====
+the count does not grow
+    SR_GLOBAL(uint32_t, base + PART_COUNT) = (uint32_t)(count + 1);
+----
+====
+the mirrored match drops out
+            (first == held_second && second == held_first))
+----
+            (first == held_second && second == held_second))
+====
+the id lands an entry too far
+    *(entry - 2) = id;
+----
+    *(entry - 3) = id;
+====
+the matched entry's address skips ahead
+            return entry;
+----
+            return entry + 3;
+====
+the new entry's address skips ahead
+    return (uint32_t *)(uintptr_t)(PART_STRIDE * (uint64_t)(int64_t)type
+                                   + 12u * (uint32_t)count);
+----
+    return (uint32_t *)(uintptr_t)(PART_STRIDE * (uint64_t)(int64_t)type
+                                   + 12u * ((uint32_t)count + 1));

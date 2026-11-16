@@ -1,0 +1,33 @@
+flag tested as a byte
+    if (!*flag)
+----
+    if (!*(const uint8_t *)flag)
+====
+last function skipped
+    for (size_t i = 0; i < count; i++)
+----
+    for (size_t i = 0; i + 1 < count; i++)
+====
+order reversed
+    for (size_t i = 0; i < count; i++)
+        *group[i].slot = (void *)(uintptr_t)resolve(group[i].name);
+----
+    for (size_t i = count; i-- > 0;)
+        *group[i].slot = (void *)(uintptr_t)resolve(group[i].name);
+====
+a failed lookup keeps the old slot
+        *group[i].slot = (void *)(uintptr_t)resolve(group[i].name);
+----
+        { long long r = resolve(group[i].name); if (r) *group[i].slot = (void *)(uintptr_t)r; }
+====
+clip control ignores its flag
+    if (!unk_14040488C)
+        return (long long)(uintptr_t)resolve;
+----
+    if (0)
+        return (long long)(uintptr_t)resolve;
+====
+clip control returns zero when the flag is clear
+        return (long long)(uintptr_t)resolve;
+----
+        return 0;

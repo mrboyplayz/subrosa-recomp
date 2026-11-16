@@ -1576,51 +1576,9 @@ unsigned int *           sub_1401300C0(int a1)
 //----- (00000001401305F0) ----------------------------------------------------
 __m128            sub_1401305F0(float a1, float a2, int a3)
 {
-  int input_value;
-  __int128 masked_bits;
-  int masked_bits_2;
-  int shifted_bits;
-  int scaled_index;
-  int shifted_bits_2;
-  int record_word_offset;
-  float combined_products;
-  int shifted_bits_3;
-  int scaled_index_2;
-  int shifted_bits_4;
-  float combined_products_2;
-
-  input_value = (int)a2;
-  masked_bits = 0x3F800000u;
-  masked_bits_2 = a3 & ((int)a1 + 1);
-  shifted_bits = ((57 * input_value + (int)a1) << 13) ^ (57 * input_value + (int)a1);
-  scaled_index = 15731 * shifted_bits * shifted_bits;
-  shifted_bits_2 = ((masked_bits_2 + 57 * input_value) << 13) ^ (masked_bits_2 + 57 * input_value);
-  record_word_offset = 57 * (a3 & ((int)a2 + 1));
-  combined_products = (float)(3.0 - (float)((float)(a1 - (float)(int)a1) + (float)(a1 - (float)(int)a1)))
-      * (float)((float)(a1 - (float)(int)a1) * (float)(a1 - (float)(int)a1));
-  shifted_bits_3 = 15731 * (((record_word_offset + (int)a1) << 13) ^ (record_word_offset + (int)a1)) * (((record_word_offset + (int)a1) << 13) ^ (record_word_offset + (int)a1)) + 789221;
-  scaled_index_2 = (15731 * shifted_bits_2 * shifted_bits_2 + 789221) * (15731 * shifted_bits_2 * shifted_bits_2 + 789221) - 771171059;
-  shifted_bits_4 = (((record_word_offset + masked_bits_2) << 13) ^ (record_word_offset + masked_bits_2)) * (((record_word_offset + masked_bits_2) << 13) ^ (record_word_offset + masked_bits_2));
-  combined_products_2 = (float)(3.0 - (float)((float)(a2 - (float)(int)a2) + (float)(a2 - (float)(int)a2)))
-      * (float)((float)(a2 - (float)(int)a2) * (float)(a2 - (float)(int)a2));
-  *(float *)&masked_bits = (float)((float)((float)((float)(1.0
-                                                - (float)((float)(((scaled_index + 789221) * (scaled_index + 789221) - 771171059)
-                                                                & 0x7FFFFFFF)
-                                                        * 9.3132257e-10))
-                                        * (float)(1.0 - combined_products))
-                                + (float)((float)(1.0 - (float)((float)(scaled_index_2 & 0x7FFFFFFF) * 9.3132257e-10)) * combined_products))
-                        * (float)(1.0 - combined_products_2))
-                + (float)((float)((float)((float)(1.0
-                                                - (float)((float)((shifted_bits_3 * shifted_bits_3 - 771171059) & 0x7FFFFFFF) * 9.3132257e-10))
-                                        * (float)(1.0 - combined_products))
-                                + (float)((float)(1.0
-                                                - (float)((float)(((15731 * shifted_bits_4 + 789221) * (15731 * shifted_bits_4 + 789221)
-                                                                 - 771171059)
-                                                                & 0x7FFFFFFF)
-                                                        * 9.3132257e-10))
-                                        * combined_products))
-                        * combined_products_2);
-  return (__m128)masked_bits;
+    extern float math_value_noise_2d(float x, float y, int mask);
+    __m128 result = _mm_set_ss(math_value_noise_2d(a1, a2, a3));
+    return result;
 }
 
 //----- (0000000140132990) ----------------------------------------------------
@@ -2014,39 +1972,9 @@ __int64            sub_140138590(
         int a9,
         int a10)
 {
-  unsigned int *state_address;
-  __int64 allocated_buffer;
-  signed int iteration_count;
-  signed int i;
-  signed int scaled_index;
-
-  state_address = &dword_140404A6C[44 * a1 + 284024933];
-  state_address[1] = 1;
-  *state_address = 1;
-  state_address[7] = a5;
-  state_address[8] = a6;
-  state_address[2] = 1;
-  state_address[3] = 6408;
-  state_address[4] = 6408;
-  state_address[10] = 0;
-  state_address[5] = a3;
-  state_address[6] = a4;
-  free(*((void **)state_address + 6));
-  allocated_buffer = sr_path_malloc((int)(4 * *state_address * state_address[1]));
-  iteration_count = 0;
-  for ( *((_QWORD *)state_address + 6) = allocated_buffer; iteration_count < (int)state_address[1]; ++iteration_count )
-  {
-    for ( i = 0; i < (int)*state_address; *(_DWORD *)(*((_QWORD *)state_address + 6) + 4LL * scaled_index) = (a10 << 24)
-                                                                              + a7
-                                                                              + (a9 << 16)
-                                                                              + (a8 << 8) )
-    {
-      scaled_index = i + iteration_count * *state_address;
-      ++i;
-    }
-  }
-  sub_14014D3E0(a1, 0);
-  return 1;
+    extern int texture_make_solid(int index, long long unused, unsigned wrap_s, unsigned wrap_t, unsigned filter_min,
+                                  unsigned filter_mag, int r, int g, int b, int a);
+    return texture_make_solid(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
 }
 
 //----- (00000001401386C0) ----------------------------------------------------

@@ -243,6 +243,12 @@ uint32_t item_link_text_line(int item, int line);
    end's number and item_unknown_278, and counts the item's change. Items
    above 1023 are ignored. 0x140051940 */
 void item_phone_changed(int item);
+/* Fills `count` cells of a line of an item's text with the text (then spaces once it ends) and the
+   colour, and ends the line after them. Nothing is checked against the line's 64 bytes. 0x1400C6AB0 */
+void item_text_fill_row(int item, int line, const char *text, char colour, int count);
+/* Puts out of use every phone (item type 25) whose number is 1111 * base + 1111 or
+   1111 * base + 1112 (32-bit arithmetic): its call is ended, its partner cleared. 0x1400F3D10 */
+void item_drop_phones_of_number(int base);
 
 /* Type 26: low 7 bits pick one of 128 lists the tick rebuilds; type 40: a
    byte that counts up each tick. */

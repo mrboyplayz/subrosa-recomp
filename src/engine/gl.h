@@ -1,7 +1,7 @@
 /* OpenGL entry points used by the engine.
  *
  * The original loads its OpenGL functions into a table of pointers at
- * startup (the loaders at 0x1400E3B90-0x1400E5110, still recompiled code).
+ * startup (the loaders at 0x1400E3B90-0x1400E5110, in gl_loader.c).
  * Each macro below is one slot of that table with the function's real
  * prototype, so a call made here always passes its arguments in the
  * registers the driver expects.

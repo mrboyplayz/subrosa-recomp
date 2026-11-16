@@ -1,0 +1,29 @@
+first match wins
+            if (names_equal(name, &SR_GLOBAL(uint8_t, other_address + other_stride * (uint64_t)(int64_t)j)))
+                out[i] = j;
+----
+            if (names_equal(name, &SR_GLOBAL(uint8_t, other_address + other_stride * (uint64_t)(int64_t)j))) {
+                out[i] = j;
+                break;
+            }
+====
+output not cleared
+    memset(out, 0, out_bytes);
+----
+    (void)out_bytes;
+====
+last other entry skipped
+        for (int32_t j = 0; j < other_count; j++) {
+----
+        for (int32_t j = 0; j + 1 < other_count; j++) {
+====
+last name skipped
+    for (int32_t i = 0; i < *name_count; i++) {
+----
+    for (int32_t i = 0; i + 1 < *name_count; i++) {
+====
+stride of the first table wrong
+          &SR_GLOBAL(int32_t, 0x1AFFDFF58ULL), 0x100);
+----
+          &SR_GLOBAL(int32_t, 0x1AFFDFF58ULL), 0xFC);
+

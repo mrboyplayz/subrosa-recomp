@@ -1,0 +1,42 @@
+corner x and y swapped
+    float v10 = corner(add_int(row0, ix1));
+    float v01 = corner(add_int(row1, ix));
+----
+    float v10 = corner(add_int(row1, ix));
+    float v01 = corner(add_int(row0, ix1));
+====
+mask not applied to y
+    int32_t row1 = multiply_int(add_int(iy, 1) & mask, 57);
+----
+    int32_t row1 = multiply_int(add_int(iy, 1), 57);
+====
+mask not applied to x
+    int32_t ix1 = add_int(ix, 1) & mask;
+----
+    int32_t ix1 = add_int(ix, 1);
+====
+linear weight instead of smoothstep
+    float sx = (3.0f - (fx + fx)) * (fx * fx);
+----
+    float sx = fx;
+====
+y weight uses x
+    float sy = (3.0f - (fy + fy)) * (fy * fy);
+----
+    float sy = (3.0f - (fy + fy)) * (fx * fx);
+====
+floor instead of truncation
+    int32_t ix = truncate_float(x);
+----
+    int32_t ix = (int32_t)__builtin_floorf(x);
+====
+hash constant wrong
+    k = k * 15731u + 789221u;
+----
+    k = k * 15731u + 789222u;
+====
+corner scale in double
+    return 1.0f - (float)(int32_t)(k & 0x7FFFFFFFu) * 9.3132257e-10f;
+----
+    return (float)(1.0 - (double)(int32_t)(k & 0x7FFFFFFFu) * 9.3132257e-10);
+

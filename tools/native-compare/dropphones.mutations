@@ -1,0 +1,52 @@
+only the first number matched
+        if (number == second)
+            drop_phone(item);
+----
+        (void)second;
+====
+type not checked
+        if (!world_items[item].active || world_items[item].type != 25)
+----
+        if (!world_items[item].active)
+====
+inactive items dropped
+        if (!world_items[item].active || world_items[item].type != 25)
+----
+        if (world_items[item].type != 25)
+====
+partner cached
+    if (item_call_partner(item) != -1) {
+        item_call_state(item_call_partner(item)) = 0;
+        item_call_partner(item_call_partner(item)) = -1;
+        item_call_number(item_call_partner(item)) = 0;
+        item_phone_changed(item_call_partner(item));
+    }
+----
+    int32_t partner = item_call_partner(item);
+    if (partner != -1) {
+        item_call_state(partner) = 0;
+        item_call_partner(partner) = -1;
+        item_call_number(partner) = 0;
+        item_phone_changed(partner);
+    }
+====
+partner's change not recorded
+        item_phone_changed(item_call_partner(item));
+----
+        (void)0;
+====
+lifetime not cleared
+    world_items[item].lifetime = 0;
+----
+    (void)0;
+====
+own state not cleared
+    item_call_state(item) = 0;
+    item_call_partner(item) = -1;
+----
+    item_call_partner(item) = -1;
+====
+partner's number kept
+        item_call_number(item_call_partner(item)) = 0;
+----
+        (void)0;

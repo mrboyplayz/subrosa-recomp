@@ -81,15 +81,8 @@ LABEL_14:
 //----- (00000001400E3B90) ----------------------------------------------------
 __int64 (           *           sub_1400E3B90(__int64 (           *a1)(_QWORD)))(_QWORD, _QWORD)
 {
-  __int64 (           *result)(_QWORD, _QWORD);
-
-  result = (__int64 (           *)(_QWORD, _QWORD))a1;
-  if ( unk_14040488C )
-  {
-    result = (__int64 (           *)(_QWORD, _QWORD))a1("glClipControl");
-    glClipControl = result;
-  }
-  return result;
+    extern long long gl_load_clip_control(long long (*resolve)(const char *));
+    return (__int64 (*)(_QWORD, _QWORD))gl_load_clip_control((long long (*)(const char *))a1);
 }
 
 //----- (00000001400E54D0) ----------------------------------------------------
@@ -4212,32 +4205,8 @@ __int64            sub_1400EFD20(int a1, int a2)
 //----- (00000001400F00D0) ----------------------------------------------------
 __int64            sub_1400F00D0(int a1, int a2, unsigned int a3)
 {
-  __int64 record_word_offset;
-  unsigned int iteration_count;
-  int table_value;
-  unsigned int *i;
-  __int64 scaled_index;
-
-  if ( a2 == -1 )
-    return 0xFFFFFFFFLL;
-  record_word_offset = 5873LL * a2;
-  iteration_count = 0;
-  table_value = dword_140404A6C[record_word_offset + 283836331];
-  if ( table_value <= 0 )
-    return 0xFFFFFFFFLL;
-  for ( i = &dword_140404A6C[record_word_offset + 283836332]; *i; i += 13 )
-  {
-    if ( (int)++iteration_count >= table_value )
-      return 0xFFFFFFFFLL;
-  }
-  scaled_index = record_word_offset * 4 + 52LL * iteration_count;
-  *(unsigned int *)((char *)&g_183EC491C + scaled_index) = 1;
-  return sr_CreateVehicle(
-           a1,
-           (float *)((char *)&g_183EC4920 + scaled_index),
-           nullptr,
-           (unsigned int *)((char *)&g_183EC492C + scaled_index),
-           a3);
+    extern long long vehicle_slot_spawn(int type, int record, unsigned flags);
+    return vehicle_slot_spawn(a1, a2, a3);
 }
 
 //----- (00000001400F04F0) ----------------------------------------------------
@@ -4463,53 +4432,8 @@ __int64            sub_1400F3B30(int a1)
 //----- (00000001400F3D10) ----------------------------------------------------
 void            sub_1400F3D10(int a1)
 {
-  unsigned int *state_address;
-  __int64 remaining_count;
-  unsigned int table_value;
-  __int64 scaled_index;
-  __int64 scaled_index_2;
-
-  state_address = &g_182BBB2DC;
-  remaining_count = 1024;
-  do
-  {
-    if ( *(state_address - 87) && *(state_address - 82) == 25 )
-    {
-      table_value = state_address[1];
-      if ( table_value == 1111 * a1 + 1111 )
-      {
-        scaled_index = (int)*state_address;
-        if ( (_DWORD)scaled_index != -1 )
-        {
-          dword_140404A6C[1760 * scaled_index + 278846052] = 0;
-          dword_140404A6C[1760 * *state_address + 278845980] = -1;
-          dword_140404A6C[1760 * *state_address + 278845983] = 0;
-          sr_item_phone_changed(*state_address);
-          table_value = state_address[1];
-        }
-        state_address[72] = 0;
-        *state_address = -1;
-        *(state_address - 80) = 0;
-      }
-      if ( table_value == 1111 * a1 + 1112 )
-      {
-        scaled_index_2 = (int)*state_address;
-        if ( (_DWORD)scaled_index_2 != -1 )
-        {
-          dword_140404A6C[1760 * scaled_index_2 + 278846052] = 0;
-          dword_140404A6C[1760 * *state_address + 278845980] = -1;
-          dword_140404A6C[1760 * *state_address + 278845983] = 0;
-          sr_item_phone_changed(*state_address);
-        }
-        state_address[72] = 0;
-        *state_address = -1;
-        *(state_address - 80) = 0;
-      }
-    }
-    state_address += 1760;
-    --remaining_count;
-  }
-  while ( remaining_count );
+    extern void item_drop_phones_of_number(int base);
+    item_drop_phones_of_number(a1);
 }
 
 //----- (00000001400F3E60) ----------------------------------------------------
