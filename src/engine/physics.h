@@ -98,6 +98,27 @@ extern float flt_140384000[];
 /* Set: the point solve updates all four lanes of each scratch vector. */
 #define physics_points_four_lanes SR_GLOBAL(int32_t, 0x182A7D558ULL)
 /* Set: rotation bonds between bones use fixed limits by bone (byte flag). */
+
+/* ---- random draws for the networked round -------------------------------- */
+
+/* The generator's next-word cursor, kept by the original outside the shared
+   state region; math_random.c defines and uses the same symbol. */
+extern int dword_14030186C;
+#define physics_random_cursor dword_14030186C
+
+#define RANDOM_ROUND_SLOT_CAPACITY 0x7FFF
+
+#define physics_random_round_slots  SR_GLOBAL(int32_t, 0x1602E12E0ULL)
+/* The round-slot words, 4 bytes per slot: 0x1602E12E4, 0x1602E32E4, ... */
+#define physics_random_round_flags  (&SR_GLOBAL(uint32_t, 0x1602E12E4ULL))
+#define physics_random_round_words_a (&SR_GLOBAL(uint32_t, 0x1602E32E4ULL))
+#define physics_random_round_words_b (&SR_GLOBAL(uint32_t, 0x1602E42E4ULL))
+
+/* Two words for a networked round, or the words of the round slot that
+   already holds the wanted flag. UINT32_MAX and untouched outputs when the
+   pool is full; no slot is allocated above 0x7FFF. 0x140050C80 */
+uint32_t physics_random_round_words(uint32_t *words_a, uint32_t *words_b,
+                                    uint32_t wanted);
 #define physics_bone_rotation_limits SR_GLOBAL(uint8_t, 0x183F7C960ULL)
 
 /* ---- vehicles ----------------------------------------------------------- */
