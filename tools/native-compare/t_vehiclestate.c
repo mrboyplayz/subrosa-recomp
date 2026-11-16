@@ -59,9 +59,11 @@ static void alloc_case(int n)
          * a few records' flags. */
         memset(table + 4, 0xAB, (size_t)VEHICLE_STRIDE * VEHICLE_COUNT - 4);
         if (n % 23 == 0) {
-            /* Only the last record free. */
+            /* Only the last record free: the garbage fill left its flag
+             * nonzero, so free it explicitly to exercise the scan's end. */
             for (uint32_t i = 0; i < VEHICLE_COUNT - 1; i++)
                 *(uint32_t *)(void *)(table + VEHICLE_STRIDE * i) = 0xFFFFFFFFu;
+            *(uint32_t *)(void *)(table + VEHICLE_STRIDE * (VEHICLE_COUNT - 1)) = 0;
         } else {
             int occupied = n % 13;
             for (int k = 0; k < occupied; k++) {
