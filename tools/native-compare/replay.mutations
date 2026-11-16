@@ -1,0 +1,154 @@
+early return on a finished recording
+    const int32_t start = replay_position;
+    if (start >= replay_length)
+        return;
+----
+    const int32_t start = replay_position;
+    if (0)
+        return;
+====
+the refill boundary is exclusive
+    if ((uint32_t)(start + NET_BUFFER_SIZE) < replay_buffer_capacity) {
+----
+    if ((uint32_t)(start + NET_BUFFER_SIZE) <= replay_buffer_capacity) {
+====
+the refill boundary is signed
+    if ((uint32_t)(start + NET_BUFFER_SIZE) < replay_buffer_capacity) {
+----
+    if ((int32_t)(start + NET_BUFFER_SIZE) < (int32_t)replay_buffer_capacity) {
+====
+the refill drops the packet
+        memcpy(net_read_buffer, replay_buffer + start, NET_BUFFER_SIZE);
+----
+====
+the refill forgets the length
+        net_read_length = NET_BUFFER_SIZE;
+----
+====
+the stream reset leaves the bit cursor
+    net_read_position = 0;
+    net_read_bit = 0;
+----
+    net_read_position = 0;
+====
+the short-read boundary is off by one
+    if (net_read_length < 1)
+----
+    if (net_read_length < 2)
+====
+the header type check is off by one
+    if (type == 6) {
+----
+    if (type == 5) {
+====
+the header read skips the game type
+        net_read_bits((uint32_t *)&game_type, 4);
+----
+====
+the header copy boundary is off by one
+        if (position < NET_BUFFER_SIZE && position + 32 <= net_read_length) {
+----
+        if (position < NET_BUFFER_SIZE && position + 31 <= net_read_length) {
+====
+the bit cursor is never aligned
+            if (net_read_bit > 0) {
+----
+            if (0) {
+====
+the map name copy is short
+            memcpy(world_map_name, net_read_buffer + position, 32);
+----
+            memcpy(world_map_name, net_read_buffer + position, 31);
+====
+the header cursor forgets the name
+            position += 32;
+----
+====
+the header cursor loses its final byte
+        net_read_position = position + 1;
+        replay_position = start + net_read_position;
+----
+        net_read_position = position;
+        replay_position = start + net_read_position;
+====
+the replay cursor does not follow the header
+        replay_position = start + net_read_position;
+----
+        replay_position = start;
+====
+the state frame does not tick
+    game_tick++;
+----
+====
+the game state read is short
+    net_read_bits(&game_state, 4);
+----
+    net_read_bits(&game_state, 3);
+====
+the round timer read is short
+    net_read_bits((uint32_t *)&round_timer, 24);
+----
+    net_read_bits((uint32_t *)&round_timer, 23);
+====
+the day time read is short
+    net_read_bits((uint32_t *)&game_day_time, 30);
+----
+    net_read_bits((uint32_t *)&game_day_time, 29);
+====
+the world ring is not reset
+    sub_14018F1B0();
+----
+====
+the event count read is short
+    net_read_bits(&event_count, 16);
+----
+    net_read_bits(&event_count, 15);
+====
+the spawn loop runs on an empty count
+    if ((int32_t)event_count > 0) {
+----
+    if ((int32_t)event_count >= 0) {
+====
+the spawn cursor keeps its high word
+            world_event_count = (int32_t)(uint16_t)(world_event_count + 1);
+----
+            world_event_count++;
+====
+the state cursor loses its final byte
+    net_read_position = net_read_position + 1;
+----
+====
+the replay cursor does not advance
+    replay_position += net_read_position;
+----
+====
+the record count walks the wrong stride
+    for (int block = 0; block < REPLAY_RECORD_BLOCKS; block++, record += 16) {
+----
+    for (int block = 0; block < REPLAY_RECORD_BLOCKS; block++, record += 12) {
+====
+the record count misses a block
+    for (int block = 0; block < REPLAY_RECORD_BLOCKS; block++, record += 16) {
+----
+    for (int block = 0; block < REPLAY_RECORD_BLOCKS - 1; block++, record += 16) {
+====
+the first flag dword is skipped
+        if (record[-4]) live++;
+----
+====
+the second flag dword is skipped
+        if (record[0]) live++;
+----
+====
+the third flag dword is skipped
+        if (record[4]) live++;
+----
+====
+the fourth flag dword is skipped
+        if (record[8]) live++;
+----
+====
+the count is truncated to a byte
+    replay_unknown_144cbfac8 = (int32_t)live;
+----
+    replay_unknown_144cbfac8 = (int32_t)(uint8_t)live;

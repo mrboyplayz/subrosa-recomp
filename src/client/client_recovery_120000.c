@@ -27,7 +27,7 @@ void            sub_140127240(char *a1)
       {
         replay_position = 0;
         fread_sr((void *)(uintptr_t)(&replay_length), 4, 1, (FILE *)(uintptr_t)(file_handle_2));
-        fread_sr((void *)(uintptr_t)(g_144CBFAB8), 1, (int)replay_length, (FILE *)(uintptr_t)(file_handle_2));
+        fread_sr((void *)(uintptr_t)(replay_buffer), 1, (int)replay_length, (FILE *)(uintptr_t)(file_handle_2));
       }
     }
     crt_fclose(file_handle_2);
@@ -69,7 +69,7 @@ __int64 sub_140127500()
     destination_buffer_2[0] = dword_1402B26C8;
     crt_fread((__int64)destination_buffer_2, 4, 1, file_handle_2);
     crt_fread((__int64)&replay_length, 4, 1, file_handle_2);
-    crt_fread(*(__int64 *)&g_144CBFAB8, 1, (int)replay_length, file_handle_2);
+    crt_fread(*(__int64 *)&replay_buffer, 1, (int)replay_length, file_handle_2);
     crt_fclose(file_handle_2);
   }
   return 0; /* the function has no caller */
