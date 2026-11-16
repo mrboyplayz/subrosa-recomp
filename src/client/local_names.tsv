@@ -48580,15 +48580,6 @@
 14004D750	v26	table_value
 14004D750	v27	buffer_cursor
 14004D750	v28	scaled_index_3
-14004DA50	v4	state_address
-14004DA50	v6	iteration_count
-14004DA50	v8	scaled_index
-1400588F0	v4	state_word
-1400588F0	v5	scaled_index
-1400588F0	v7	text_cursor
-1400588F0	v8	input_byte
-1400588F0	v9	element_index
-1400588F0	v10	selection_code
 14005BCA0	v5	input_value
 14005BCA0	v6	iteration_count
 14005BCA0	v7	state_address
@@ -50593,10 +50584,6 @@
 14010AA70	v26	component_delta
 14010AA70	v27	state_address
 14010AA70	v28	table_value_4
-14010C850	v4	record_word_offset
-14010C850	v5	iteration_count
-14010C850	v6	table_value
-14010C850	v8	scaled_index
 14010C900	v8	record_word_offset
 14010C900	v9	record_word_offset_2
 14010CAC0	v12	record_word_offset

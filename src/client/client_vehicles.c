@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/vehicle_state.h"
 
 /* Native event type 20: a 60-tick burst of 128 sparks and one nearby sound. */
 enum {
@@ -4940,67 +4941,13 @@ LABEL_14:
 //----- (000000014004DA50) ----------------------------------------------------
 __int64            sub_14004DA50(unsigned int a1, unsigned int *a2, float a3)
 {
-  unsigned int *state_address;
-  unsigned int iteration_count;
-  __int64 scaled_index;
-
-  state_address = &g_1601172A0;
-  iteration_count = 0;
-  while ( *state_address )
-  {
-    ++iteration_count;
-    state_address += 202;
-    if ( (__int64)state_address >= (__int64)&g_1601E12A0 )
-      return 0xFFFFFFFFLL;
-  }
-  if ( iteration_count == -1 )
-    return 0xFFFFFFFFLL;
-  scaled_index = 202LL * (int)iteration_count;
-  crt_memset((void *)(uintptr_t)(&dword_140404A6C[scaled_index + 133450254]), 0, 0x324u);
-  dword_140404A6C[scaled_index + 133450253] = 1;
-  dword_140404A6C[scaled_index + 133450254] = a1;
-  dword_140404A6C[scaled_index + 133450258] = *a2;
-  dword_140404A6C[scaled_index + 133450259] = a2[1];
-  dword_140404A6C[scaled_index + 133450260] = a2[2];
-  *(float *)&dword_140404A6C[scaled_index + 133450261] = a3;
-  *(_QWORD *)&dword_140404A6C[scaled_index + 133450255] = -1;
-  return iteration_count;
+  return vehicle_alloc_slot(a1, a2, a3);
 }
 
 //----- (00000001400588F0) ----------------------------------------------------
 __int64            sub_1400588F0(unsigned int a1, char *a2, unsigned int a3, unsigned int a4)
 {
-  unsigned int state_word;
-  __int64 scaled_index;
-  char *text_cursor;
-  char input_byte;
-  __int64 element_index;
-  unsigned int selection_code;
-
-  state_word = g_192E98E60;
-  scaled_index = 38LL * (int)g_192E98E60;
-  text_cursor = a2;
-  dword_140404A6C[scaled_index + 346696445] = a1;
-  do
-  {
-    input_byte = *text_cursor;
-    text_cursor[(_QWORD)&g_192E8F660 + scaled_index * 4 - (_QWORD)a2 + 24] = *text_cursor;
-    ++text_cursor;
-  }
-  while ( input_byte );
-  element_index = -1;
-  do
-    ++element_index;
-  while ( a2[element_index] );
-  dword_140404A6C[scaled_index + 346696448] = element_index;
-  selection_code = 600;
-  if ( (a1 & 0xFFFFFFFB) != 0 )
-    selection_code = 480;
-  dword_140404A6C[scaled_index + 346696447] = selection_code;
-  dword_140404A6C[scaled_index + 346696449] = a3;
-  dword_140404A6C[scaled_index + 346696450] = a4;
-  g_192E98E60 = (unsigned __int8)(state_word + 1);
-  return state_word + 1;
+  return vehicle_name_slot_add(a1, a2, a3, a4);
 }
 
 //----- (000000014005BCA0) ----------------------------------------------------
@@ -15255,41 +15202,7 @@ __int64            sub_14010AA70(int a1)
 //----- (000000014010C850) ----------------------------------------------------
 unsigned int *           sub_14010C850(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 {
-  __int64 record_word_offset;
-  int iteration_count;
-  __int64 table_value;
-  unsigned int *result;
-  int scaled_index;
-
-  record_word_offset = 24944LL * a1;
-  iteration_count = 0;
-  table_value = (int)dword_140404A6C[record_word_offset + 346708250];
-  if ( (int)table_value <= 0 )
-  {
-LABEL_8:
-    dword_140404A6C[3 * table_value + 346708251 + record_word_offset] = a2;
-    dword_140404A6C[3 * (int)dword_140404A6C[record_word_offset + 346708250] + 346708252 + record_word_offset] = a3;
-    result = (unsigned int *)(record_word_offset * 4 + 12LL * (int)dword_140404A6C[record_word_offset + 346708250]);
-    *(unsigned int *)((char *)&g_192E9AEE0 + (_QWORD)result) = a4;
-    ++dword_140404A6C[record_word_offset + 346708250];
-  }
-  else
-  {
-    result = &dword_140404A6C[record_word_offset + 346708253];
-    while ( 1 )
-    {
-      scaled_index = *(result - 1);
-      if ( a3 == scaled_index && a4 == *result )
-        break;
-      if ( a3 == *result && a4 == scaled_index )
-        break;
-      ++iteration_count;
-      result += 3;
-      if ( iteration_count >= (int)table_value )
-        goto LABEL_8;
-    }
-  }
-  return result;
+  return vehicle_type_part_add(a1, a2, a3, a4);
 }
 
 //----- (000000014010C900) ----------------------------------------------------
