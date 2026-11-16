@@ -2,6 +2,7 @@
 #include "../engine/math_random_double.h"
 #include "../engine/disk.h"
 #include "../engine/recovery_080000.h"
+#include "../engine/math3d.h"
 
 //----- (00000001400802F0) ----------------------------------------------------
 void            sub_1400802F0(int a1)
@@ -5835,71 +5836,14 @@ int sub_14009E590()
 //----- (000000014009E7D0) ----------------------------------------------------
 void            sub_14009E7D0(float *a1, __int64 a2)
 {
-  float weighted_sum;
-  double reordered_vector;
-  __int64 unrecovered_register_value;
-  __m128 call_result;
-
-  weighted_sum = sub_14023F704(*(float *)(a2 + 4), *(float *)(a2 + 16));
-  *a1 = weighted_sum;
-  *(_QWORD *)&reordered_vector = *(unsigned int *)(a2 + 24);
-  *(float *)&reordered_vector = (float)(*(float *)&reordered_vector * *(float *)&reordered_vector) + (float)(*(float *)(a2 + 32) * *(float *)(a2 + 32));
-  a1[1] = sub_14023F704(-*(float *)(a2 + 28), fsqrt(*(float *)&reordered_vector));
-  call_result = sub_1401F8AC0(COERCE_DOUBLE((unsigned __int64)LODWORD(weighted_sum)), unrecovered_register_value, reordered_vector);
-  *(float *)&reordered_vector = SR_VEC_READ_LANES(128, _mm_shuffle_ps(call_result, call_result, 1), f32)[0];
-  a1[2] = sub_14023F704(
-            (float)(SR_VEC_LANES(128, call_result, f32)[0] * *(float *)(a2 + 20)) - (float)(*(float *)&reordered_vector * *(float *)(a2 + 8)),
-            (float)(*(float *)&reordered_vector * *(float *)a2) - (float)(SR_VEC_LANES(128, call_result, f32)[0] * *(float *)(a2 + 12)));
+  sr_recovery_08009E7D0(a1, (const float *)a2);
 }
 
 //----- (000000014009E880) ----------------------------------------------------
 __int64            sub_14009E880(float *a1, float *a2)
 {
-  float source_float_6;
-  float source_float_4;
-  float source_float_7;
-  double angle;
-  float source_float_8;
-  double angle_2;
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14009E880[80];
-#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_14009E880 + 0)) /* [rsp+0h] */
-#define axis (*(__int128 (*))(void *)(sr_frame_14009E880 + 32)) /* [rsp+20h] */
-#define frame_float_at_48 (*(float (*))(void *)(sr_frame_14009E880 + 48)) /* [rsp+30h] */
-#define unused_written_slot (*(int (*))(void *)(sr_frame_14009E880 + 52)) /* [rsp+34h] */
-#define axis_2 (*(float (*)[2])(void *)(sr_frame_14009E880 + 56)) /* [rsp+38h] */
-#define frame_float_at_64 (*(float (*))(void *)(sr_frame_14009E880 + 64)) /* [rsp+40h] */
-#define unused_frame_slot_72 (*(__int64 (*))(void *)(sr_frame_14009E880 + 72)) /* [rsp+48h] */
-
-  source_float_6 = a2[6];
-  source_float_4 = a2[4];
-  source_float_7 = a2[7];
-  axis = *(_OWORD *)a2;
-  *(_QWORD *)&angle = *((unsigned int *)a2 + 5);
-  axis_2[0] = source_float_6;
-  source_float_8 = a2[8];
-  unused_written_slot = LODWORD(angle);
-  frame_float_at_48 = source_float_4;
-  axis_2[1] = source_float_7;
-  frame_float_at_64 = source_float_8;
-  *(float *)&angle = sub_14023F704(*(float *)&angle, source_float_4);
-  *a1 = *(float *)&angle;
-  sr_math_mat3_rotate_rows((__int64)&axis, (float *)&axis, angle);
-  *(_QWORD *)&angle_2 = HIDWORD(axis) ^ 0x8000000080000000uLL;
-  *(float *)&angle_2 = sub_14023F704(*(float *)&angle_2, frame_float_at_48);
-  a1[2] = *(float *)&angle_2;
-  sr_math_mat3_rotate_rows((__int64)&axis, axis_2, angle_2);
-  a1[1] = sub_14023F704(axis_2[0], frame_float_at_64);
-  return 0; /* the function has no caller */
+  return sr_recovery_08009E880(a1, a2);
 }
-
-#undef unused_frame_slot_0
-#undef axis
-#undef frame_float_at_48
-#undef unused_written_slot
-#undef axis_2
-#undef frame_float_at_64
-#undef unused_frame_slot_72
 
 //----- (000000014009E950) ----------------------------------------------------
 float            sub_14009E950(__int64 a1, __int64 a2, double a3)
