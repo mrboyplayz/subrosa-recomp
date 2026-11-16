@@ -23,10 +23,11 @@ extern long long crt_fclose(long long file);
     ((void (*)(void *, uint64_t, uint64_t, void *))(uintptr_t)SR_GLOBAL_READ_FN)( \
         (dst), (uint64_t)(size), (uint64_t)(count), (void *)(uintptr_t)(file))
 
-/* Block header word block, 0x144FBFBA0..0x144FBFBC4: eleven int32 words, the
- * last (0x144FBFBC4) is the mesh-group count. */
+/* Block header word block, 0x144FBFBA0..0x144FBFBC4: ten int32 words read
+ * one by one from block/*.sbl, the last (0x144FBFBC4) is the mesh-group
+ * count. */
 typedef struct {
-    int32_t word[11];
+    int32_t word[10];
 } block_header_words;
 
 #define SR_BLOCK_HEADER_WORDS SR_GLOBAL(block_header_words, 0x144FBFBA0ULL)
@@ -84,8 +85,11 @@ void sr_block_sbl_load(const char *a1)
     /* (unsigned int)(version - 1) <= 1 keeps the original's jump-below-or-
      * above test: exactly versions 1 and 2 pass. */
     if ((unsigned int)(version - 1) <= 1) {
-        SR_READ(&SR_BLOCK_HEADER_WORDS, 4, 1, file);
-        SR_READ(&SR_BLOCK_MESH_GROUP_COUNT, 4, 1, file);
+        /* Ten words one by one, from 0x144FBFBA0 up to 0x144FBFBC4 (the last
+         * is the mesh-group count). */
+        int word_index;
+        for (word_index = 0; word_index < 10; ++word_index)
+            SR_READ(&SR_BLOCK_HEADER_WORDS.word[word_index], 4, 1, file);
         for (group_index = 0; group_index < SR_BLOCK_MESH_GROUP_COUNT; ++group_index) {
             unsigned char *group = &SR_BLOCK_REGION + MESH_GROUP_STRIDE * (uint64_t)(unsigned int)group_index;
             SR_READ(group + MESH_GROUP_COUNT_OFFSET, 4, 1, file);
