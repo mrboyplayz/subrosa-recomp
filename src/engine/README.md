@@ -35,6 +35,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `menu.c`, `menu.h`, `menu_text.c`, `menu_slider.c`, `menu_state.c`, `menu_clip.c` | widget allocation/layout, buttons, selectable buttons, toggles and masks, groups, text caret/measurement, integer sliders, size stack/reset/grid, and nested clipping | 0x140070380, 0x14006F1F0, 0x14006F5A0, 0x140071910, 0x140071AA0, 0x14006FD10, 0x140074C50, 0x140074CE0, 0x140071440, 0x140075930, 0x1400755F0, 0x1400753C0, 0x140070B90, 0x140075650, 0x140075460, 0x140075340 |
 | `net_vector.c` | signed-magnitude scalar encoding, three-component deltas, and compressed direction encoding | 0x1401151C0, 0x1401150E0, 0x140115230 |
 | `menu_labels.c` | queued text at the layout cursor or an explicitly aligned position | 0x140071640, 0x1400764B0 |
+| `menu_widgets.c`, `menu_widgets.h` | the menu edit buffer: deleting the selected range and collapsing the caret/anchor onto it | 0x1400722C0 |
 | `audio.c`, `audio.h` | capture ring availability/writes, per-sound buffer availability and positional sound channel allocation | 0x140069580, 0x14006A380, 0x140069FA0, 0x14007D6C0 |
 | `math_integer.c` | raw-word matrix transpose and fixed-point 2D rotation | 0x14007CA00, 0x14007D0B0 |
 | `collision_plane.c`, `collision_contacts.c` | segment/plane intersection and first-free persistent contact lookup | 0x140077B30, 0x140048090 |
