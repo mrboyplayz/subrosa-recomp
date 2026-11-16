@@ -7,9 +7,12 @@ extern int sr_texture_load_pixels(char *path);
 /* CRT memset (sub_1401FCD30, still in src/client/). */
 extern void *crt_memset(void *destination, unsigned char value, unsigned long long size);
 
-/* The GL entry points of the init: the generator lives in the client's
- * pointer block, the parameter and image calls in the compatibility table
- * inside the shared state region (filled by the loaders at startup). */
+/* The packer's state: the next free slot word (0x1B0037420), a copy of it
+ * (0x1B0037424), and the scanned column words (0x1B0037428). */
+#define texture_atlas_columns     (&SR_GLOBAL(int32_t, 0x1B0037428ULL))
+/* The upload (0x140404048, compatibility profile, in the state region). */
+#define glTexSubImage2D SR_GL_STATE_SLOT(0x140404048ULL, \
+    void (*)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *))
 extern void (*glGenTextures)(GLsizei count, GLuint *textures); /* 0x140404060 */
 #define glTexParameteri SR_GL_STATE_SLOT(0x144980D00ULL, void (*)(GLenum, GLint, GLint))
 #define glTexImage2D SR_GL_STATE_SLOT(0x144980D18ULL, \
@@ -108,8 +111,12 @@ int texture_atlas_load(int atlas, const char *path)
                 int32_t first = column;
                 for (uint32_t *taken = &scratch[scan_start]; ; ++taken) {
                     if (first >= (int)(column + region_width)) {
+                        /* Found: the entry is written at the used count, then
+                         * the count grows, a one-pixel border is copied from
+                         * the scanned columns, and the image is uploaded. */
                         int64_t entry_byte_offset = record_word_offset * 4 + 48LL * count;
-                        float top = (float)(int)(row + 1 + saved_slot_word_2);
+                        float right = (float)(int)(row + 1 + saved_slot_word_2);
+                        int32_t written_row = 0;
                         *(unsigned int *)((unsigned char *)&slot[433435866 - 12] + entry_byte_offset) =
                             (unsigned int)column;
                         *(unsigned int *)((unsigned char *)&slot[433435867 - 12] + entry_byte_offset) =
@@ -118,7 +125,64 @@ int texture_atlas_load(int atlas, const char *path)
                             (unsigned int)region_width;
                         *(unsigned int *)((unsigned char *)&slot[433435869 - 12] + entry_byte_offset) =
                             (unsigned int)region_height;
+                        float left = (float)(int)(column + 1);
+                        float left_full = (float)(int)(column + 1 + saved_slot_word);
+                        *(float *)((unsigned char *)&slot[433435870 - 12] + entry_byte_offset) =
+                            left / (float)texture_word;
+                        *(float *)((unsigned char *)&slot[433435871 - 12] + entry_byte_offset) =
+                            right / (float)region_width;
+                        *(float *)((unsigned char *)&slot[433435872 - 12] + entry_byte_offset) =
+                            left_full / (float)texture_word;
+                        *(float *)((unsigned char *)&slot[433435873 - 12] + entry_byte_offset) =
+                            right / (float)region_width;
+                        *(float *)((unsigned char *)&slot[433435874 - 12] + entry_byte_offset) =
+                            left_full / (float)texture_word;
+                        float bottom = (float)(row + 1);
+                        *(float *)((unsigned char *)&slot[433435875 - 12] + entry_byte_offset) =
+                            bottom / (float)region_width;
+                        *(float *)((unsigned char *)&slot[433435876 - 12] + entry_byte_offset) =
+                            left / (float)texture_word;
+                        *(float *)((unsigned char *)&slot[433435877 - 12] + entry_byte_offset) =
+                            bottom / (float)region_width;
                         ++*used_count;
+                        if (region_height > 0) {
+                            int32_t running = -saved_slot_word;
+                            int64_t running_2 = 0;
+                            int64_t row_bytes = 4LL * region_width;
+                            do {
+                                int32_t written_column = 0;
+                                if (region_width > 0) {
+                                    int32_t column_counter = 0;
+                                    uint32_t *destination = (uint32_t *)(running_2 + (uintptr_t)texture_atlas_pixels);
+                                    do {
+                                        *destination = 0;
+                                        if (written_row && written_row < region_height - 1 && column_counter
+                                            && written_column < region_width - 1)
+                                            *destination = (uint32_t)texture_atlas_columns[running + written_column];
+                                        ++written_column;
+                                        ++column_counter;
+                                        ++destination;
+                                    } while (column_counter < region_width);
+                                    saved_slot_word = saved_slot_word_3;
+                                    row_bytes = 4LL * region_width;
+                                }
+                                ++written_row;
+                                running_2 += row_bytes;
+                                running += saved_slot_word;
+                            } while (written_row < region_height);
+                            column = column_sync;
+                        }
+                        glBindTexture(GL_TEXTURE_2D, slot_texture[433435861 - 12]);
+                        glTexSubImage2D(
+                            GL_TEXTURE_2D,
+                            0,
+                            column,
+                            (unsigned int)row,
+                            region_width,
+                            region_height,
+                            0x1908,
+                            GL_UNSIGNED_BYTE,
+                            (const void *)(uintptr_t)texture_atlas_pixels);
                         return (unsigned int)entry_index_result;
                     }
                     if (row < (int32_t)*taken)
