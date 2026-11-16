@@ -30,76 +30,9 @@ void            sr_audio_output_callback(__int64 userdata, __m128i *output, int 
 // 140069439: control flows out of bounds to 140198E69
 
 //----- (0000000140069440) ----------------------------------------------------
-__int64 sub_140069440()
+void sr_audio_list_devices(void)
 {
-  int output_device_count;
-  int capture_device_index;
-  int output_device_index;
-  char *output_device_name_cursor;
-  int next_output_device_index;
-  char *output_name_destination_offset;
-  char output_name_character;
-  int capture_device_count;
-  char *capture_device_name_cursor;
-  int next_capture_device_index;
-  char *capture_name_destination_offset;
-  char capture_name_character;
-  __int64 result;
-
-  output_device_count = sub_140198E7B();
-  capture_device_index = 0;
-  g_144970CA4 = 0x746C7561666544LL;
-  output_device_index = 0;
-  if ( output_device_count < 0 )
-    output_device_count = 0;
-  g_144970CA0 = output_device_count;
-  if ( output_device_count > 0 )
-  {
-    do
-    {
-      output_device_name_cursor = (char *)sub_140198E81();
-      next_output_device_index = output_device_index + 1;
-      output_name_destination_offset = (char *)&g_140404A70 + ((__int64)output_device_index << 9) - (_QWORD)output_device_name_cursor;
-      do
-      {
-        output_name_character = *output_device_name_cursor;
-        output_device_name_cursor[(_QWORD)output_name_destination_offset + 72795188] = *output_device_name_cursor;
-        ++output_device_name_cursor;
-      }
-      while ( output_name_character );
-      output_device_count = g_144970CA0;
-      ++output_device_index;
-    }
-    while ( next_output_device_index < (int)g_144970CA0 );
-  }
-  g_144970CA0 = output_device_count + 1;
-  capture_device_count = sub_140198E7B();
-  g_144978CB0 = 0x746C7561666544LL;
-  if ( capture_device_count < 0 )
-    capture_device_count = 0;
-  g_144978CAC = capture_device_count;
-  if ( capture_device_count > 0 )
-  {
-    do
-    {
-      capture_device_name_cursor = (char *)sub_140198E81();
-      next_capture_device_index = capture_device_index + 1;
-      capture_name_destination_offset = (char *)&g_140404A70 + ((__int64)capture_device_index << 9) - (_QWORD)capture_device_name_cursor;
-      do
-      {
-        capture_name_character = *capture_device_name_cursor;
-        capture_device_name_cursor[(_QWORD)capture_name_destination_offset + 72827968] = *capture_device_name_cursor;
-        ++capture_device_name_cursor;
-      }
-      while ( capture_name_character );
-      capture_device_count = g_144978CAC;
-      ++capture_device_index;
-    }
-    while ( next_capture_device_index < (int)g_144978CAC );
-  }
-  result = (unsigned int)(capture_device_count + 1);
-  g_144978CAC = result;
-  return result;
+  audio_list_devices();
 }
 
 //----- (0000000140069630) ----------------------------------------------------

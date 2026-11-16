@@ -1,4 +1,4 @@
-// NC_WRAPPERS: 14006A5C0
+// NC_WRAPPERS: 14006A5C0 140069440
 pause skips the positive guard for capture
     if ((int32_t)audio_capture_enabled > 0)
         SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
@@ -44,3 +44,132 @@ pause calls the import on the unpositive word
 ----
     if ((int32_t)audio_capture_enabled != 0)
         SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
+====
+list keeps a negative output count
+    int output_count = SDL_GetNumAudioDevices(0);
+    if (output_count < 0) output_count = 0;
+----
+    int output_count = SDL_GetNumAudioDevices(0);
+====
+list keeps a negative capture count
+    int capture_count = SDL_GetNumAudioDevices(1);
+    if (capture_count < 0) capture_count = 0;
+----
+    int capture_count = SDL_GetNumAudioDevices(1);
+====
+list writes the output magic to the wrong table
+    audio_output_name_table = (uint64_t)0x746C7561666544ULL;  /* "Default" */
+----
+    audio_capture_name_table = (uint64_t)0x746C7561666544ULL;  /* "Default" */
+====
+list writes the capture magic to the wrong table
+    audio_capture_name_table = (uint64_t)0x746C7561666544ULL;  /* "Default" */
+----
+    audio_output_name_table = (uint64_t)0x746C7561666544ULL;  /* "Default" */
+====
+list queries the output names from the wrong direction
+    const char *name = SDL_GetAudioDeviceName(index, 0);
+----
+    const char *name = SDL_GetAudioDeviceName(index, 1);
+====
+list queries the capture names from the wrong direction
+    const char *name = SDL_GetAudioDeviceName(index, 1);
+----
+    const char *name = SDL_GetAudioDeviceName(index, 0);
+====
+list writes the output names into the capture table
+    char *slot = audio_output_name_slot(index);
+----
+    char *slot = audio_capture_name_slot(index);
+====
+list writes the capture names into the output table
+    char *slot = audio_capture_name_slot(index);
+----
+    char *slot = audio_output_name_slot(index);
+====
+list copies the terminator plus one byte
+        do {
+            copied = *name;
+            *slot++ = copied;
+        } while (copied);
+    }
+    audio_output_device_count = (int32_t)audio_output_device_count + 1;
+----
+        do {
+            copied = *name;
+            *slot++ = copied;
+        } while (copied);
+        *slot++ = 'X';
+    }
+    audio_output_device_count = (int32_t)audio_output_device_count + 1;
+====
+list drops the output terminator
+            copied = *name;
+            *slot++ = copied;
+        } while (copied);
+    }
+    audio_output_device_count = (int32_t)audio_output_device_count + 1;
+----
+            copied = *name;
+            if (copied) *slot++ = copied;
+        } while (copied);
+    }
+    audio_output_device_count = (int32_t)audio_output_device_count + 1;
+====
+list copies the capture terminator plus one byte
+        do {
+            copied = *name;
+            *slot++ = copied;
+        } while (copied);
+    }
+    audio_capture_device_count = (int32_t)audio_capture_device_count + 1;
+----
+        do {
+            copied = *name;
+            *slot++ = copied;
+        } while (copied);
+        *slot++ = 'X';
+    }
+    audio_capture_device_count = (int32_t)audio_capture_device_count + 1;
+====
+list drops the capture terminator
+            copied = *name;
+            *slot++ = copied;
+        } while (copied);
+    }
+    audio_capture_device_count = (int32_t)audio_capture_device_count + 1;
+----
+            copied = *name;
+            if (copied) *slot++ = copied;
+        } while (copied);
+    }
+    audio_capture_device_count = (int32_t)audio_capture_device_count + 1;
+====
+list skips the output count's +1
+    audio_output_device_count = (int32_t)audio_output_device_count + 1;
+----
+    audio_output_device_count = (int32_t)audio_output_device_count;
+====
+list skips the capture count's +1
+    audio_capture_device_count = (int32_t)audio_capture_device_count + 1;
+----
+    audio_capture_device_count = (int32_t)audio_capture_device_count;
+====
+list counts the output loop past the stored count
+    for (int index = 0; index < (int32_t)audio_output_device_count; index++) {
+        const char *name = SDL_GetAudioDeviceName(index, 0);
+----
+    for (int index = 0; index < (int32_t)audio_output_device_count - 1; index++) {
+        const char *name = SDL_GetAudioDeviceName(index, 0);
+====
+list counts the capture loop past the stored count
+    for (int index = 0; index < (int32_t)audio_capture_device_count; index++) {
+        const char *name = SDL_GetAudioDeviceName(index, 1);
+----
+    for (int index = 0; index < (int32_t)audio_capture_device_count - 1; index++) {
+        const char *name = SDL_GetAudioDeviceName(index, 1);
+====
+list does the output count first
+    int output_count = SDL_GetNumAudioDevices(0);
+----
+    int output_count = SDL_GetNumAudioDevices(1);

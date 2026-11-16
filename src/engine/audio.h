@@ -19,6 +19,17 @@
 #define audio_output_write_ring SR_GLOBAL(uint32_t, 0x140404A94ULL)
 #define audio_output_ring ((float (*)[0x10000])&SR_GLOBAL(float, 0x140404A98ULL))
 #define audio_master_gain SR_GLOBAL(float, 0x144970C94ULL)
+/* The device tables the enumeration writes and the device pickers read: the
+   "Default" magic of each not-opened slot, both count words, and the 64
+   512-byte name slots (slot 63 of each abuts the sound records). */
+#define audio_output_name_table SR_GLOBAL(uint64_t, 0x144970CA4ULL)
+#define audio_output_device_count SR_GLOBAL(int32_t, 0x144970CA0ULL)
+#define audio_capture_name_table SR_GLOBAL(uint64_t, 0x144978CB0ULL)
+#define audio_capture_device_count SR_GLOBAL(int32_t, 0x144978CACULL)
+#define audio_output_name_slot(index) \
+    ((char *)&SR_GLOBAL(unsigned char, 0x144970EA4ULL) + 512 * (size_t)(index))
+#define audio_capture_name_slot(index) \
+    ((char *)&SR_GLOBAL(unsigned char, 0x144978EB0ULL) + 512 * (size_t)(index))
 
 typedef struct AudioSound {
     uint32_t loaded;
@@ -107,6 +118,14 @@ int64_t audio_mix_emitter(int channel, int count);
    spatialized stereo into the ring, applies the master gain and hands the
    ring to the output callback by flipping the selector. 0x14006B850 */
 void audio_mix_output(void);
+/* Unpauses both audio devices: each device word is read as signed and the
+   device is paused only when it is positive, capture first, then output.
+   0x14006A5C0 */
+void audio_pause_devices(void);
+/* Enumerates the audio devices into the name tables: negative counts clamp
+   to zero, names copy with terminators into 512-byte slots, and both count
+   words keep the original's odd +1. 0x140069440 */
+void audio_list_devices(void);
 /* Plays a sound when the player can hear it: the gain is capped at 1 and
    halved when the source is over 128 units from the listener or the straight
    path to it passes through the level; plays only when the sound is loaded.

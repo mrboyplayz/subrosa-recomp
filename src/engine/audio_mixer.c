@@ -1,8 +1,11 @@
 #include <string.h>
 #include "audio.h"
 
-/* SDL's device pause: the routine the client binds from SDL2.dll. */
+/* SDL's device pause and the device API: the routines the client binds
+   from SDL2.dll. */
 extern void SDL_PauseAudioDevice(int device, int pause_on);
+extern int SDL_GetNumAudioDevices(int capture);
+extern const char *SDL_GetAudioDeviceName(int index, int capture);
 
 /* Starts a sound on a channel without a world position. The record's words
    past the active pair are cleared, the first voice takes the sound and the
@@ -163,5 +166,44 @@ void audio_pause_devices(void)  /* 0x14006A5C0 */
         SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
     if ((int32_t)audio_output_enabled > 0)
         SDL_PauseAudioDevice((int)audio_output_enabled, 0);
+}
+
+/* Enumerates the audio devices into the name tables the device pickers read:
+   the count words drop below zero to zero, every device's name is copied
+   with its terminator into a 512-byte slot, and both count words keep the
+   odd +1 the original leaves (the name of the not-opened device slot). The
+   caller counts through the tables with the stored counts, so the copy loop
+   must match the original's re-reads of them. */
+void audio_list_devices(void)  /* 0x140069440 */
+{
+    int output_count = SDL_GetNumAudioDevices(0);
+    if (output_count < 0) output_count = 0;
+    audio_output_name_table = (uint64_t)0x746C7561666544ULL;  /* "Default" */
+    audio_output_device_count = output_count;
+    for (int index = 0; index < (int32_t)audio_output_device_count; index++) {
+        const char *name = SDL_GetAudioDeviceName(index, 0);
+        char *slot = audio_output_name_slot(index);
+        char copied;
+        do {
+            copied = *name;
+            *slot++ = copied;
+        } while (copied);
+    }
+    audio_output_device_count = (int32_t)audio_output_device_count + 1;
+
+    int capture_count = SDL_GetNumAudioDevices(1);
+    if (capture_count < 0) capture_count = 0;
+    audio_capture_name_table = (uint64_t)0x746C7561666544ULL;  /* "Default" */
+    audio_capture_device_count = capture_count;
+    for (int index = 0; index < (int32_t)audio_capture_device_count; index++) {
+        const char *name = SDL_GetAudioDeviceName(index, 1);
+        char *slot = audio_capture_name_slot(index);
+        char copied;
+        do {
+            copied = *name;
+            *slot++ = copied;
+        } while (copied);
+    }
+    audio_capture_device_count = (int32_t)audio_capture_device_count + 1;
 }
 
