@@ -14,18 +14,14 @@ This recompile is not complete! Please contribute to the repo.
 
 Routines rewritten as readable, verified engine C:
 
-```
-317 of 1,119 game routines restored (28%)
-[###########-----------------------------]
-       317 done  ·  802 to go
-```
+![Restoration progress of subrosa.exe](.github/progress.png)
 
 4,229 original routines exist in total; the 2,787 statically linked
 runtime and 323 stb library routines are recovered as decompiled C and
 are not counted here. The file-by-file status lives in
-`src/engine/README.md`. The bar updates itself: after every merge to
-master, the README progress workflow runs `python scripts/progress.py
---write` and commits the result, so pull requests leave it alone.
+`src/engine/README.md`. The image updates itself: after every merge to
+master, the progress workflow runs `python scripts/progress.py --write`
+and commits `.github/progress.png`, so pull requests leave it alone.
 
 ## Build
 

@@ -42,8 +42,8 @@ jobs:
       # a restoration that wraps a routine must drop its dead local names.
       - name: Client modules and names
         run: python tools/cleanup/split_client_modules.py --check
-      # Prints the restored-routine count. The README block itself is
-      # rewritten on master by progress.yml, so pull requests leave it alone.
+      # Prints the restored-routine count. The progress image is
+      # regenerated on master by progress.yml, so pull requests leave it alone.
       - name: Restoration progress
         run: python scripts/progress.py
 
