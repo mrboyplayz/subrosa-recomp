@@ -38,14 +38,17 @@ int64_t item_intel_deck_shuffle(int slot)
     *flags = 1;
     for (int i = 0; i < ITEM_INTEL_DECK_SIZE; i++)
         deck[i] = i;
+    /* The original returns the last swap's deck[b] as it was before that
+       swap (an oddity of the read it keeps in eax across the loop). */
+    int64_t result = 0;
     do {
         int a = rand() % ITEM_INTEL_DECK_SIZE;
         int b = rand() % ITEM_INTEL_DECK_SIZE;
         int swap = deck[a];
-        int other = deck[b];
-        deck[a] = other;
+        result = deck[b];
+        deck[a] = (int)result;
         deck[b] = swap;
         --remaining;
     } while (remaining);
-    return deck[ITEM_INTEL_DECK_SIZE - 1];
+    return result;
 }

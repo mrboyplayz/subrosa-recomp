@@ -14,9 +14,19 @@
 #define INTEL_STRIDE 1160
 #define INTEL_RECORDS 26
 
+/* The harness's rand, which the native build points the original's rand at
+   (0x14023B1B0) so both builds share one implementation. */
+int rand(void);
+
 int main(void)
 {
     nc_map_image();
+#ifdef NC_NATIVE
+    /* The original shuffles with the C library's rand (msvcrt rand at
+       0x14023B1B0); point that callee at the harness's rand so both builds
+       share one implementation. */
+    nc_redirect(0x14023B1B0, (void *)rand);
+#endif
     int cases = nc_cases(1000);
     for (int n = 0; n < cases; n++) {
         nc_seed(n);
@@ -30,11 +40,12 @@ int main(void)
         for (int i = 0; i < 64; i++)
             record[i] = (int32_t)nc_rand();
         nc_line("case %d slot %d", n, slot);
-        intel_deck_shuffle(slot);
-        /* Every write lands inside the 64 dwords before the next record's
-           deck, including the read the original leaks as its return value. */
-        nc_line("  flags %d deck %016llx", SR_GLOBAL(int32_t, INTEL_BASE + (int64_t)slot * INTEL_STRIDE + 0x404),
-                (unsigned long long)nc_hash(record + 0, 64 * sizeof(int32_t)));
+        int64_t ret = intel_deck_shuffle(slot);
+        /* Every write lands inside the 284 dwords before the next record:
+           the flags field (258) and the deck order (258..283), including the
+           read the original leaks as its return value. */
+        nc_line("  flags %d deck %016llx ret %d", SR_GLOBAL(int32_t, INTEL_BASE + (int64_t)slot * INTEL_STRIDE + 0x404),
+                (unsigned long long)nc_hash(record + 0, 284 * sizeof(int32_t)), (int)ret);
     }
     return 0;
 }

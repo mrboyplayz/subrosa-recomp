@@ -21,8 +21,8 @@ deck size 25
 ====
 identity (no swaps)
         int swap = deck[a];
-        int other = deck[b];
-        deck[a] = other;
+        result = deck[b];
+        deck[a] = (int)result;
         deck[b] = swap;
 ----
         (void)a; (void)b;
@@ -32,6 +32,6 @@ flags left alone
 ----
 ====
 returns first slot
-    return deck[ITEM_INTEL_DECK_SIZE - 1];
+    return result;
 ----
     return deck[0];
