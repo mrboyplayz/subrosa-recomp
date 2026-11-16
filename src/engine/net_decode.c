@@ -56,3 +56,41 @@ uint32_t net_read_delta(uint32_t *out, int32_t base, int bits)
     }
     return (uint32_t)net_read_bits(out, bits);
 }
+
+int64_t net_read_adaptive_value(int *out, int base, int bits)
+{
+    int64_t result;
+    uint32_t decoded = 0;
+    int32_t saved;
+    int bit_count;
+
+    if (SR_GLOBAL(uint32_t, 0x16B2A224CULL)) {
+        result = net_read_bits(&decoded, 1);
+        if (decoded == 0) {
+            *out = base;
+            return result;
+        }
+    }
+    net_read_bits(&decoded, 1);
+    if (decoded) {
+        net_read_bits(&decoded, 1);
+        if (decoded)
+            return net_read_signed_bits(out, bits);
+        bit_count = (int32_t)SR_GLOBAL(uint32_t, 0x165D84964ULL);
+    } else {
+        bit_count = (int32_t)SR_GLOBAL(uint32_t, 0x165D84960ULL);
+    }
+    net_read_bits(&decoded, bit_count);
+    uint32_t high = 1u << ((bit_count - 1) & 31);
+    if ((decoded & high) == high)
+        saved = (int32_t)decoded | (-1 << (bit_count & 31));
+    else
+        saved = (int32_t)decoded;
+    *out = add_int(saved, base);
+    result = (uint32_t)add_int(saved, 128);
+    if (result <= 0xFF) {
+        ++SR_GLOBAL(uint32_t, SR_STATE_BASE + 4ULL * ((uint64_t)(uint8_t)saved + 179992058ULL));
+        return (int64_t)&SR_GLOBAL(uint8_t, 0x16B165F60ULL);
+    }
+    return (int64_t)result;
+}

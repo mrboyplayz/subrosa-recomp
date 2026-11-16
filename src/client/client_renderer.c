@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/renderer_state.h"
 
 //----- (000000014001B6A0) ----------------------------------------------------
 __int64 sub_14001B6A0()
@@ -10720,82 +10721,35 @@ void sub_1400A5D30()
 //----- (00000001400A6DF0) ----------------------------------------------------
 __int64 sub_1400A6DF0()
 {
-  __int64 unrecovered_register_value;
-
-  glEnable(3553);
-  LOBYTE(unrecovered_register_value) = 1;
-  glColorMask(1,1,1,0);
-  glDepthMask(0);
-  glEnable(2929);
-  glDepthFunc(515);
-  glEnable(2884);
-  glFrontFace(2304);
-  glEnable(2960);
-  glStencilMask(0xFFFFFFFFLL);
-  glStencilOp(7680, 7680, 7680);
-  return ((__int64 (*)(_QWORD, _QWORD, _QWORD))glStencilFunc)(517, 0, 0xFFFFFFFFLL);
+  /* Clean implementation: src/engine/renderer_state.c, checked against the
+     original executable (tools/native-compare). */
+  renderer_stencil_notequal_state();
+  return 0;
 }
 
 //----- (00000001400A6E90) ----------------------------------------------------
 __int64 sub_1400A6E90()
 {
-  __int64 unrecovered_register_value;
-
-  glEnable(3553);
-  LOBYTE(unrecovered_register_value) = 1;
-  glColorMask(1,1,1,0);
-  glDepthMask(0);
-  glEnable(2929);
-  glDepthFunc(515);
-  glEnable(2884);
-  glFrontFace(2304);
-  glEnable(2960);
-  glStencilMask(0xFFFFFFFFLL);
-  glStencilOp(7680, 7680, 7680);
-  return ((__int64 (*)(_QWORD, _QWORD, _QWORD))glStencilFunc)(514, 0, 0xFFFFFFFFLL);
+  /* Clean implementation: src/engine/renderer_state.c. */
+  renderer_stencil_equal_state();
+  return 0;
 }
 
 //----- (00000001400A6F30) ----------------------------------------------------
 double sub_1400A6F30()
 {
-  __int64 unrecovered_register_value;
-  __int64 unrecovered_register_value_2;
-
-  glEnable(3553);
-  LOBYTE(unrecovered_register_value) = 1;
-  glColorMask(1,1,1,0);
-  LOBYTE(unrecovered_register_value_2) = 1;
-  glDepthMask(unrecovered_register_value_2);
-  glDisable(3042);
-  glEnable(2929);
-  glDepthFunc(515);
-  glEnable(2884);
-  glFrontFace(2304);
-  return (*(double (           **)(__int64))(unsigned int *)&glDisable)(2960);
+  /* Clean implementation: src/engine/renderer_state.c. The original returns
+     the GL stub's eax through a tail call; callers ignore it. */
+  renderer_opaque_state();
+  return 0.0;
 }
 
 //----- (00000001400A6FB0) ----------------------------------------------------
 __int64 sub_1400A6FB0()
 {
-  __int64 selection_code;
-
-  glDisable(3553);
-  glColorMask(0,0,0,0);
-  glDepthMask(0);
-  glEnable(2929);
-  selection_code = 518;
-  if ( g_151E46194 )
-    selection_code = 515;
-  glDepthFunc(selection_code);
-  glDisable(2884);
-  glFrontFace(2304);
-  glEnable(2960);
-  glStencilFuncSeparate(1029, 519, 0, 0xFFFFFFFFLL);
-  glStencilMaskSeparate(1029, 0xFFFFFFFFLL);
-  glStencilOpSeparate(1029, 7680, 7680, 34056);
-  glStencilFuncSeparate(1028, 519, 0, 0xFFFFFFFFLL);
-  glStencilMaskSeparate(1028, 0xFFFFFFFFLL);
-  return ((__int64 (*)(_QWORD, _QWORD, _QWORD, _QWORD))glStencilOpSeparate)(1028, 7680, 7680, 34055);
+  /* Clean implementation: src/engine/renderer_state.c. */
+  renderer_shadow_volume_state();
+  return 0;
 }
 
 //----- (00000001400C2DB0) ----------------------------------------------------

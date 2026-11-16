@@ -301,13 +301,13 @@
 144CBFA88	g_144CBFA88	u32
 144CBFA90	g_144CBFA90	u32
 144CBFA98	g_144CBFA98	u32
-144CBFAA0	g_144CBFAA0	u32
+144CBFAA0	replay_buffer_capacity	u32	src/engine/replay.h
 144CBFAA4	replay_active	u32	src/engine/frame.h
 144CBFAA8	g_144CBFAA8	u32
 144CBFAAC	g_144CBFAAC	u32
 144CBFAB0	replay_position	u32	src/engine/frame.h
 144CBFAB4	replay_length	u32	src/engine/frame.h
-144CBFAB8	g_144CBFAB8	u64
+144CBFAB8	replay_buffer	u64	src/engine/replay.h
 144CBFAC0	replay_target_tick	u32	src/engine/frame.h
 144CBFAC4	g_144CBFAC4	u32
 144CBFAC8	replay_unknown_144cbfac8	u32	src/engine/frame.h
@@ -4938,7 +4938,7 @@
 1A4D2DD10	g_1A4D2DD10	u32
 1A4D2DD14	g_1A4D2DD14	u32
 1A4D2DD18	g_1A4D2DD18	u32
-1A4D2DD24	g_1A4D2DD24	u32
+1A4D2DD24	replay_record	u32	src/engine/replay.h
 1A4D31D14	g_1A4D31D14	u32
 1A4D31D18	g_1A4D31D18	u32
 1A4D31D24	g_1A4D31D24	u32

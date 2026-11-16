@@ -17,6 +17,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | File | Contents | Original routines |
 |---|---|---|
 | `renderer.c` | 2D drawing: the vertex batch behind lines and shapes, textured and flat rectangles, atlas sprites; the radix sort that orders things back to front | 0x14007D420, 0x14007D230, 0x14007D520, 0x14007D320, 0x14006E0D0, 0x14006E2D0, 0x14006CFF0, 0x14006D660, 0x14006D300, 0x14007D710 |
+| `renderer_state.c`, `renderer_state.h` | the fixed-function render-pass state setups: stencil-notequal, stencil-equal, opaque and shadow-volume depth/stencil state, every GL call the passes issue | 0x1400A6DF0, 0x1400A6E90, 0x1400A6F30, 0x1400A6FB0 |
 | `camera.c` | window letterbox, viewport and scissor from canvas rectangles, 2D/orthographic/perspective setup, view and model matrices and their products | 0x14006C780, 0x14007BB00, 0x14007A2C0, 0x14007A570, 0x14007BE20, 0x14007B990, 0x14007B6F0, 0x14007B7E0 |
 | `math3d.c` | the frame across a direction (shared by bullets and decals), vector normalize and rotation, angle difference, triangle normal, point-to-segment distance, vector-matrix and matrix products, orthographic matrix, rotation of a basis about an axis | 0x14007A240, 0x14007B4D0, 0x14000B5F0, 0x14006EC40, 0x14007ABA0, 0x14007B0F0, 0x140079D60, 0x14007A010, 0x14007AE70, 0x14007A0E0, 0x140079F00, 0x14007B2A0, quaternion product 0x140105930 |
 | `text.c` | text drawing and measuring | 0x14006D930, 0x14006DB90, 0x14006E530, 0x14006F060 |
@@ -24,6 +25,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `physics_motion.c` | tangential velocity limits and sliding work, a velocity change applied at a body point, and velocity at a body point | 0x14002D820, 0x14002D9B0, 0x14012B090, 0x14012B170 |
 | `area_bounds.c`, `area_bounds.h` | corporation interiors and vaults, world-region membership, and the five-plane camera visibility query | 0x14011B8F0, 0x14011B960, 0x14011B9F0, 0x14011BAD0 |
 | `net_bits.c`, `net_bytes.c`, `net_angle.c` | packet bit reads/writes and scaling, the two always-success write adapters, aligned byte transfers, and signed-magnitude angle encoding | 0x140115AE0, 0x140115C20, 0x140115D90, 0x140115E80, 0x140115E60, 0x140115F70, 0x14007ADF0, 0x14007B180, 0x14010E610 |
+| `replay.c`, `replay.h` | replay playback: the recorded-frame read that refills the net read buffer, applies header or state frames and counts the live-record flags | 0x140127300 |
 | `text_helpers.c`, `text_helpers.h` | label CRC IDs, the two unsigned-byte comparators, parser prefix/search, visible-label copying, and thousands grouping of an unsigned value | 0x14004C4C0, 0x14006C980, 0x14006C670, 0x14006C870, 0x14006E4C0, 0x14006F120, 0x140158B10 |
 | `clock.c`, `clock.h` | monotonic milliseconds since startup | 0x14007C980 |
 | `physics_create.c` | free-bond lookup; body, point, body-bond, rotation-bond, distance-bond and world-anchor creation | 0x1400A4440, 0x14005CF80, 0x14005CBB0, 0x14004E430, 0x14004E5B0, 0x14004E160, 0x14004E2E0 |
@@ -34,6 +36,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `menu.c`, `menu.h`, `menu_text.c`, `menu_slider.c`, `menu_state.c`, `menu_clip.c` | widget allocation/layout, buttons, selectable buttons, toggles and masks, groups, text caret/measurement, integer sliders, size stack/reset/grid, and nested clipping | 0x140070380, 0x14006F1F0, 0x14006F5A0, 0x140071910, 0x140071AA0, 0x14006FD10, 0x140074C50, 0x140074CE0, 0x140071440, 0x140075930, 0x1400755F0, 0x1400753C0, 0x140070B90, 0x140075650, 0x140075460, 0x140075340 |
 | `net_vector.c` | signed-magnitude scalar encoding, three-component deltas, and compressed direction encoding | 0x1401151C0, 0x1401150E0, 0x140115230 |
 | `menu_labels.c` | queued text at the layout cursor or an explicitly aligned position | 0x140071640, 0x1400764B0 |
+| `menu_widgets.c`, `menu_widgets.h` | the menu edit buffer: deleting the selected range and collapsing the caret/anchor onto it | 0x1400722C0 |
 | `audio.c`, `audio.h` | capture ring availability/writes, per-sound buffer availability and positional sound channel allocation | 0x140069580, 0x14006A380, 0x140069FA0, 0x14007D6C0 |
 | `math_integer.c` | raw-word matrix transpose and fixed-point 2D rotation | 0x14007CA00, 0x14007D0B0 |
 | `collision_plane.c`, `collision_contacts.c` | segment/plane intersection and first-free persistent contact lookup | 0x140077B30, 0x140048090 |
@@ -48,6 +51,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `item_physics.c` | item physics for a tick: expiry, held/static bodies, world contacts and settling | 0x1400CE370 |
 | `world_blocks.c` | block id and gone-parts lookups in the level's layers; block parts broken loose by vehicles and humans; tick stage: humans' bones follow their bodies, capsule boxes and voxels | 0x140016870, 0x1400169B0, 0x1400B95E0 |
 | `world_vehicles.c` | tick stages: vehicles follow their bodies (boxes, voxels, block parts they break off); lifetimes and removal; wheel joints (suspension, grip, axle); drivetrain (engine curve, brakes, driven wheels) | 0x1401069C0, 0x14010BE50, 0x14010D610, 0x140107ED0 |
+| `vehicle_state.c`, `vehicle_state.h` | vehicle spawn and net-replication state: the first free record of the 1024-record vehicle slot table, a named entry of the 256-slot spawn-name list, and the per-type part dedup list | 0x14004DA50, 0x1400588F0, 0x14010C850 |
 | `world_streets.c`, `world_streets.h` | World map ("test2") streets: street patches, railway segments, filing streets into the 64 x 64 street cells, the railway route with its stops, the race track | 0x14005F6E0, 0x1400603A0, 0x1401899F0, 0x14002A9A0, 0x14002A680 |
 | `world_street_mesh.c` | the three street meshes (embankments, ground between the rails, track) and their GL upload; the Steam encrypted app ticket staged for the master handshake | 0x140188B80, 0x1401880C0 |
 | `collision.c`, `collision.h` | swept-sphere collision: segment-segment, line-plane, line-triangle, sphere-triangle; sweeps against vehicle hulls and trains (faces and unbroken windows); rays against vehicles (faces, windows, wheels); a hit point's weights in a triangle; face-only sphere sweep | 0x1400D6890, 0x1400779F0, 0x140077FA0, 0x140035690, 0x140035B70, 0x14002D370, 0x140035E50, 0x140037220, 0x1400DFB70, 0x1400DF380 |
@@ -76,7 +80,7 @@ The table records the recovered routines by original address. Recovery is incomp
 | `world_effects_draw.c` | drawing the world effects in depth order: holes, blood drops and sparks as textured quads, EFFECT_3/EFFECT_4 pieces as a lit mesh, tracers as smooth lines | 0x140125DB0 |
 | `audio.c` (additions), `audio_mixer.c` | the sound record's buffer allocation and 16-bit PCM loading; the twins that start a sound or a positional sound on a channel; the per-voice resampling and interpolation mix into the channel ring; the per-emitter clearing, remixing and releasing pass (the still-unported spatializer stays resolved at its address) | 0x14007D610, 0x140069930, 0x14006A140, 0x14006A240, 0x14006B4C0, 0x14006B6F0 |
 | `math_curve.c`, `math_random.c`, `text_parser.c`, `text_parser.h` | the Bernstein-basis curve point and derivative (degrees 1-3), the Mersenne Twister seed, and the embedded-text parser's prefix match, token search and 32/64-bit number reads | 0x14008EC40, 0x140187180, 0x1401872F0, 0x1400C2D50, 0x14003C6F0, 0x140091DF0, 0x140115360, 0x140115410 |
-| `net_decode.c`, `net_decode.h`, `net_replication.c`, `net_replication.h` | packet decoders over the bit reader: sign-magnitude angles over a full turn, scaled fractions, adaptive base deltas; and the replication layer's per-peer rings and item-state stream twins | 0x14018D440, 0x140192560, 0x14018D510, 0x1401060F0, 0x140105AB0, 0x14010EF40, 0x14018DB20 |
+| `net_decode.c`, `net_decode.h`, `net_replication.c`, `net_replication.h` | packet decoders over the bit reader: sign-magnitude angles over a full turn, scaled fractions, adaptive base deltas, and the adaptive value reader with a no-change flag, two widths, sign-extended add, histogram byte and pointer-valued return; and the replication layer's per-peer rings and item-state stream twins | 0x14018D440, 0x140192560, 0x14018D510, 0x14018D5E0, 0x1401060F0, 0x140105AB0, 0x14010EF40, 0x14018DB20 |
 | `net_rotation.c`, `net_readers.c` | quaternion packet encoders, the variable-bits and 13-bit variants, that quantize a rotation matrix's quaternion from math_quat_from_mat3 into packet integers, out[0] the index of the dropped largest component and the following slots the quantized remaining three written in the order of the original's runtime order tables (0x140301DC8 for 13 bits, 0x140301DE8 general), plus the signed-bits and optional-index readers over the bit stream | 0x140114E90, 0x140114D40, 0x140115D20, 0x140115BD0 |
 | `terminal.c` | the computer item's terminal: the share of its twenty-six mission slots that is present and owned by the slot, the word copied between the raw record text and a screen line through the letter-to-slot table (raw and coloured paths), the selection list rows around the selected slot, and the snake game's keys | 0x1400C58E0, 0x1400C5610, 0x1400C5360, 0x1400C9120 |
 | `world_particles.c` (addition) | one flying piece drawn from its mesh on the lit, land-mask and stencil passes, the model matrix restored afterwards | 0x140124840 |
@@ -86,10 +90,15 @@ The table records the recovered routines by original address. Recovery is incomp
 | `world_block_maintenance.c`, `world_block_maintenance.h` | per-voxel unknown_808 reads/writes, quarter-mesh release and block mesh invalidation | 0x140012F30, 0x140017C40, 0x140012940, 0x140017890 |
 | `round_settings.c`, `round_settings.h` | round mode settings: defaults, config_round.txt load and save through the parser window, and the round length (1..60 minutes) and team damage (0..200) clamps | 0x1400EC410 |
 | `round_update.c`, `round_update.h` | the round mode tick: lobby spawning, ready jump and round set-up (vehicles, desk phones, manager announcements), the running round's hourly resets, speed-ups, door opening and end, and the round-over announcements and manager choice | 0x1400F6C50 |
+| `config_io.c`, `config_io.h` | the generic config-file entry helpers the mode files inline: one "key=value" line written to or read from the open config file | 0x14010E080, 0x14010E0D0 |
+| `audio_voice.c`, `audio_voice.h` | the voice chat codecs: the encoder and decoder lifecycle, the per-player packet slots, and the encode/decode adapters | 0x14010E190, 0x14010E230, 0x14010E2B0, 0x14010E330 |
 | `player_stocks.c`, `player_stocks.h` | a player buying their corporation's shares, capped at 10,000 | 0x1401189F0 |
 | `startup.c` (addition), `startup.h` | removing a mesh index record by moving the last one into its place | 0x140184AB0 |
 | `roads.c`, `roads.h` | the road records: a random road with both +0x30/+0x34 words at most 3, and queueing a road's links | 0x140130000, 0x14018C250 |
 | `block_chunks.c`, `block_chunks.h` | the sparse 8 x 8 x 8 block chunk table: a block's cell, last matching record wins | 0x1400D5950 |
+| `human_net_fields.c`, `human_net_fields.h` | the human state fields packed into the outgoing packet in the original's order and widths, the last transfer a tail call | 0x14010EE20 |
+| `gl_proc.c`, `gl_proc.h` | the GL module's procedure resolver: the zero-handle early return, the custom hook tried first, and the GetProcAddress fallback with the handle re-read | 0x14009E190 |
+| `state_forward.c`, `state_forward.h` | the unsigned short state read the original kept as a forwarding routine | 0x1400A54F0 |
 | `gl_loader.c`, `gl_loader.h` | the OpenGL function loaders, one table per version: a version flag read as a dword gates a list of names, each handed to the resolver and stored in its slot (zero when the driver lacks it), plus the glClipControl loader that returns its argument when the flag is clear | 0x1400E3B90, 0x1400E3BC0, 0x1400E3EE0, 0x1400E3FD0, 0x1400E4030, 0x1400E40E0, 0x1400E4190, 0x1400E42E0, 0x1400E48D0, 0x1400E4950, 0x1400E4EB0, 0x1400E4FC0, 0x1400E5110 |
 | `vehicle_hull.c`, `vehicle_hull.h` | the collision hull lists of a vehicle type: an edge appended unless present in either direction, and a face appended with its four links set to -1 | 0x14010C850, 0x14010C900 |
 | `city_names.c`, `city_names.h` | the city name lists matched against four game tables: the last equal entry's index, zero for none | 0x140027690, 0x140027A60, 0x140027B40, 0x140027C20 |
@@ -253,3 +262,12 @@ and the thousands grouping of an unsigned value) live in `clock.c` and
 `t_thousands` suites, outputs identical to the original both as the engine
 port and behind the actual client wrappers, with the recording stub masking
 group arguments to 32 bits. The mutation sets are running separately.
+
+The six routines restored on 2026-11-16 (the generic config-file entry
+helpers and the voice chat codecs) live in `config_io.c` and
+`audio_voice.c`, with the shared interfaces in `config_io.h` and
+`audio_voice.h`. The config entries keep the CRT fprintf tail call of the
+write branch and reset the parser cursor either way; the codecs keep the
+exact prototypes of the still-decompiled embedded codec and its per-player
+packet records (received counts at 0x189C3BCC0, sent counts at
+0x187BDE974). Build-tested on the fork's CI.

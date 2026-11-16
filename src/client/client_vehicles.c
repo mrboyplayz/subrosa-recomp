@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/vehicle_state.h"
 
 /* Native event type 20: a 60-tick burst of 128 sparks and one nearby sound. */
 enum {
@@ -4947,37 +4948,7 @@ __int64            sub_14004DA50(unsigned int a1, unsigned int *a2, float a3)
 //----- (00000001400588F0) ----------------------------------------------------
 __int64            sub_1400588F0(unsigned int a1, char *a2, unsigned int a3, unsigned int a4)
 {
-  unsigned int state_word;
-  __int64 scaled_index;
-  char *text_cursor;
-  char input_byte;
-  __int64 element_index;
-  unsigned int selection_code;
-
-  state_word = g_192E98E60;
-  scaled_index = 38LL * (int)g_192E98E60;
-  text_cursor = a2;
-  dword_140404A6C[scaled_index + 346696445] = a1;
-  do
-  {
-    input_byte = *text_cursor;
-    text_cursor[(_QWORD)&g_192E8F660 + scaled_index * 4 - (_QWORD)a2 + 24] = *text_cursor;
-    ++text_cursor;
-  }
-  while ( input_byte );
-  element_index = -1;
-  do
-    ++element_index;
-  while ( a2[element_index] );
-  dword_140404A6C[scaled_index + 346696448] = element_index;
-  selection_code = 600;
-  if ( (a1 & 0xFFFFFFFB) != 0 )
-    selection_code = 480;
-  dword_140404A6C[scaled_index + 346696447] = selection_code;
-  dword_140404A6C[scaled_index + 346696449] = a3;
-  dword_140404A6C[scaled_index + 346696450] = a4;
-  g_192E98E60 = (unsigned __int8)(state_word + 1);
-  return state_word + 1;
+  return vehicle_name_slot_add(a1, a2, a3, a4);
 }
 
 //----- (000000014005BCA0) ----------------------------------------------------

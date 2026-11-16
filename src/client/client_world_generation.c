@@ -1111,9 +1111,9 @@ LABEL_56:
   }
   physics_points_no_gravity = 1;
   g_16B27ECC4 = 1;
-  g_144CBFAA0 = 0x400000;
-  g_144CBFAB8 = sr_path_malloc(0x400000);
-  if ( !g_144CBFAB8 )
+  replay_buffer_capacity = 0x400000;
+  replay_buffer = sr_path_malloc(0x400000);
+  if ( !replay_buffer )
   {
     literal_text = "Replay malloc failed";
     goto LABEL_56;

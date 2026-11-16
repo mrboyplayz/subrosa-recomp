@@ -1,0 +1,45 @@
+flip the keep/selection condition
+if ((i < anchor) == (i < caret)) {
+----
+if ((i < anchor) != (i < caret)) {
+====
+signed clamp instead of the original's unsigned 64-bit compare
+    if ((uint64_t)(int64_t)low > (uint64_t)new_length)
+----
+    if (low > new_length)
+====
+drop the clamp entirely
+    if ((uint64_t)(int64_t)low > (uint64_t)new_length)
+        low = (int32_t)new_length;
+----
+====
+keep the selection end instead of its start
+            if (low > i)
+                low = i;
+----
+            if (low < i)
+                low = i;
+====
+drop the scratch terminator write
+    menu_text_scratch[kept] = 0;
+----
+    (void)kept;
+====
+always report no selection
+    return selection;
+----
+    return 0;
+====
+initial length stops one byte early
+    while (menu_text_buffer[length])
+        ++length;
+----
+    while (menu_text_buffer[length])
+        ++length;
+    if (length > 0)
+        --length;
+====
+copy back starts one byte late
+    for (int i = 0; ; ++i) {
+----
+    for (int i = 1; ; ++i) {

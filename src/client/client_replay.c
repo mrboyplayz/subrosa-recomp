@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/replay.h"
 
 //----- (00000001400A3970) ----------------------------------------------------
 __int64            sub_1400A3970(__int64 a1, __int64 a2, double a3)
@@ -166,116 +167,9 @@ LABEL_37:
 //----- (0000000140127300) ----------------------------------------------------
 void sub_140127300()
 {
-  unsigned int cached_replay_position;
-  int cached_packet_in_length;
-  unsigned int integer_sum;
-  char cached_packet_in_data;
-  signed int cached_packet_in_byte;
-  __int64 saved_cached_packet_in_byte;
-  __int128 masked_bits;
-  unsigned int integer_sum_2;
-  __int64 remaining_count;
-  unsigned int *record_byte_offset;
-  unsigned int integer_sum_3;
-  unsigned int integer_sum_4;
-  _DWORD *record_pointer;
-  unsigned int integer_sum_5;
-  int decoded_value;
-
-  cached_replay_position = replay_position;
-  if ( (int)replay_position < (int)replay_length )
-  {
-    if ( replay_position + 0x10000 >= g_144CBFAA0 )
-    {
-      cached_packet_in_length = packet_in_length;
-    }
-    else
-    {
-      crt_memcpy(
-        (__m128i *)&packet_in_data,
-        (     __m128i *)(g_144CBFAB8 + (int)replay_position),
-        0x10000u);
-      cached_packet_in_length = 0x10000;
-      packet_in_length = 0x10000;
-    }
-    integer_sum = 0;
-    *(_QWORD *)&packet_in_byte = 0;
-    if ( cached_packet_in_length < 1 )
-    {
-      cached_packet_in_data = decoded_value;
-    }
-    else
-    {
-      cached_packet_in_data = packet_in_data;
-      packet_in_byte = 1;
-    }
-    if ( cached_packet_in_data == 6 )
-    {
-      sr_net_read_bits(&game_type, 4);
-      cached_packet_in_byte = packet_in_byte;
-      if ( (int)packet_in_byte < 0x10000
-        && (signed int)(packet_in_byte + 32) <= (int)packet_in_length )
-      {
-        if ( (int)packet_in_bit > 0 )
-        {
-          cached_packet_in_byte = packet_in_byte + 1;
-          packet_in_bit = 0;
-          ++packet_in_byte;
-        }
-        saved_cached_packet_in_byte = cached_packet_in_byte;
-        cached_packet_in_byte += 32;
-        masked_bits = *(_OWORD *)((char *)&g_1853AD434 + saved_cached_packet_in_byte);
-        g_183EBFAB0 = *(_OWORD *)((char *)&packet_in_data + saved_cached_packet_in_byte);
-        g_183EBFAC0 = masked_bits;
-      }
-      integer_sum_2 = cached_packet_in_byte + 1;
-      replay_position = integer_sum_2 + cached_replay_position;
-      packet_in_byte = integer_sum_2;
-    }
-    else
-    {
-      ++game_tick;
-      sr_net_read_bits(&game_state, 4);
-      sr_net_read_bits(&g_183EBFCD4, 24);
-      sr_net_read_bits(&game_day_time, 30);
-      sub_14018F1B0();
-      sr_net_read_bits(&decoded_value, 16);
-      sr_net_read_bits(&world_event_count, 16);
-      if ( decoded_value > 0 )
-      {
-        remaining_count = (unsigned int)decoded_value;
-        do
-        {
-          sub_14018DBF0(world_event_count);
-          ++world_event_count;
-          HIWORD(world_event_count) = 0;
-          --remaining_count;
-        }
-        while ( remaining_count );
-      }
-      record_byte_offset = &g_1A4D2DD24;
-      replay_position += ++packet_in_byte;
-      do
-      {
-        integer_sum_3 = integer_sum + 1;
-        if ( !*(record_byte_offset - 4) )
-          integer_sum_3 = integer_sum;
-        integer_sum_4 = integer_sum_3 + 1;
-        if ( !*record_byte_offset )
-          integer_sum_4 = integer_sum_3;
-        record_pointer = record_byte_offset + 8;
-        integer_sum_5 = integer_sum_4 + 1;
-        if ( !record_byte_offset[4] )
-          integer_sum_5 = integer_sum_4;
-        record_byte_offset += 16;
-        integer_sum = integer_sum_5 + 1;
-        if ( !*record_pointer )
-          integer_sum = integer_sum_5;
-      }
-      while ( (__int64)record_byte_offset < (__int64)&g_1A4D31D24 );
-      replay_unknown_144cbfac8 = integer_sum;
-    }
-  }
+  /* Clean implementation: src/engine/replay.c, checked against the
+     original executable (tools/native-compare). */
+  replay_read_frame();
 }
 
 //----- (0000000140127630) ----------------------------------------------------
@@ -317,10 +211,10 @@ __int64 sub_140127630()
     }
     byte_count = cached_packet_out_byte + 1;
     packet_out_byte = byte_count;
-    if ( byte_count < g_144CBFAA0 )
+    if ( byte_count < replay_buffer_capacity )
     {
       crt_memcpy(
-        *(__m128i **)&g_144CBFAB8,
+        *(__m128i **)&replay_buffer,
         (     __m128i *)&packet_out_data,
         (int)byte_count);
       cached_replay_position = packet_out_byte + replay_position;
@@ -389,14 +283,14 @@ LABEL_19:
   byte_count_2 = packet_out_byte + 1;
   packet_out_byte = byte_count_2;
   result = byte_count_2 + replay_position;
-  if ( (unsigned int)result >= g_144CBFAA0 )
+  if ( (unsigned int)result >= replay_buffer_capacity )
   {
     replay_length = replay_position;
   }
   else
   {
     crt_memcpy(
-      (__m128i *)(g_144CBFAB8 + (int)replay_position),
+      (__m128i *)(replay_buffer + (int)replay_position),
       (     __m128i *)&packet_out_data,
       byte_count_2);
     result = packet_out_byte + replay_position;

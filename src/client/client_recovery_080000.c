@@ -5827,20 +5827,10 @@ __int64 sub_14009E070()
 //----- (000000014009E190) ----------------------------------------------------
 __int64            sub_14009E190(__int64 a1)
 {
-  __int64 state_word;
-  __int64 result;
-
-  state_word = g_144980D88;
-  if ( !g_144980D88 )
-    return 0;
-  if ( g_144980D90 )
-  {
-    result = (*(__int64 (           **)(__int64))(unsigned int *)&g_144980D90)(a1);
-    if ( result )
-      return result;
-    state_word = g_144980D88;
-  }
-  return ((__int64 (           *)(__int64, __int64))GetProcAddress)(state_word, a1);
+  /* Clean implementation: src/engine/gl_proc.c, checked against the original executable
+     (tools/native-compare). This wrapper keeps the entry point the recompiled callers use. */
+  extern long long gl_proc_resolve(const char *name);
+  return gl_proc_resolve((const char *)a1);
 }
 
 // 14026E300: invalid function type 'FARPROC (__stdcall *GetProcAddress)(HMODULE hModule, LPCSTR lpProcName)' has been ignored
