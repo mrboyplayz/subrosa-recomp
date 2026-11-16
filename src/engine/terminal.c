@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include <string.h>
 
+#include <immintrin.h>
+
 #include "terminal.h"
 #include "item.h"
 #include "memory.h"
@@ -205,6 +207,40 @@ int64_t terminal_selection_list_draw(int item)
     }
     line21[44] = 0;
     return item_link_text_line(item, 21);
+}
+
+/* 0x1400C3E00: the computer's screen. Zeroes a 63-byte colour row at
+   record+0x404+64*cursor with the image's 0x0F vector (xmmword_140279200,
+   a run of 0x0F bytes) and sends the line, then steps a 32-entry ring: the
+   pair at +0x3F4/+0x3F8 rotates by ten, the sent cursor at +0x3FC follows
+   by one, the item's change counter is counted up, and the cursor<<6 is
+   stored at +0x3FC and returned (zero-extended). */
+int64_t terminal_clear_line_and_bump(int item)
+{
+    static const uint8_t vector_0f[16] = {0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+                                          0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F};
+    __m128i vector = _mm_load_si128((const __m128i *)vector_0f);
+    int32_t cursor = item_unknown_368(item);
+    uint8_t *colours = &SR_GLOBAL(uint8_t, 0x182BBC404ULL + 0x1B80ULL * (uint64_t)(int64_t)item
+                                         + 64ULL * (uint64_t)(int64_t)cursor);
+    _mm_storeu_si128((__m128i *)colours, vector);
+    _mm_storeu_si128((__m128i *)(colours + 16), vector);
+    _mm_storeu_si128((__m128i *)(colours + 32), vector);
+    *(uint64_t *)(colours + 48) = (uint64_t)_mm_cvtsi128_si64(vector);
+    *(uint32_t *)(colours + 56) = (uint32_t)_mm_cvtsi128_si32(vector);
+    *(uint16_t *)(colours + 60) = (uint16_t)_mm_cvtsi128_si32(vector);
+    colours[62] = (uint8_t)_mm_cvtsi128_si32(vector);
+    item_link_text_line(item, (int)cursor);
+
+    int32_t pair = item_unknown_36c(item);
+    if ((uint8_t)(cursor + 10) == (uint8_t)pair)
+        item_unknown_36c(item) = (pair + 1) & 0x1F;
+    int32_t next = (cursor + 1) & 0x1F;
+    item_unknown_368(item) = next;
+    int64_t result = (uint32_t)(next << 6);
+    ++world_item_change_count(item);
+    item_unknown_3b4(item) = (uint32_t)result;
+    return result;
 }
 
 /* 0x1400C9120: a key on the snake terminal. With the extension bit, only
