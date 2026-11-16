@@ -151,6 +151,10 @@ void sr_block_sbl_load(const char *a1)
 /* The read callback slot's counterpart, 0x14020CE0C: the original's fwrite
  * wrapper, reached through the write slot 0x1862AE010 the same way. */
 
+/* 0x140027690: the name-matching pass the building loader runs after every
+ * load, opened or not (already wrapped in src/client/client_city.c). */
+extern void sub_140027690(void);
+
 /* City-state globals the city serializer touches, 0x175EEA08C downwards and
  * up to 0x175FBB094. */
 #define SR_CITY_BUILDING_COUNT SR_GLOBAL(int32_t, 0x175EEA08CULL)
@@ -259,4 +263,159 @@ void sr_city_sbc_save(const char *city_name)
         SR_WRITE(&SR_GLOBAL(unsigned char, 0x181A1E8E4ULL) + 12ULL * index, 4, 3, file);
     }
     crt_fclose(file);
+}
+
+/* Building record globals: the record pointer itself (passed in) and the
+ * offset of the version-14 table from it. */
+#define BUILDING_VERSION_OFFSET 0x40ULL
+#define BUILDING_WORD_20_OFFSET 0x44ULL
+#define BUILDING_WORD_21_OFFSET 0x48ULL
+#define BUILDING_WORD_22_OFFSET 0x4CULL
+#define BUILDING_WORD_23_OFFSET 0x50ULL
+#define BUILDING_WORD_24_OFFSET 0x54ULL
+#define BUILDING_TILE_COUNT_OFFSET 0x2D006ACULL
+#define BUILDING_TILE_NAMES_OFFSET 0x2D006B0ULL
+#define BUILDING_MATERIAL_COUNT_OFFSET 0x2D056B0ULL
+#define BUILDING_MATERIAL_NAMES_OFFSET 0x2D056B4ULL
+#define BUILDING_OBJECT_COUNT_OFFSET 0x2D166B4ULL
+#define BUILDING_OBJECT_NAMES_OFFSET 0x2D166B8ULL
+#define BUILDING_PERSON_COUNT_OFFSET 0x2D17AB8ULL
+#define BUILDING_PERSON_NAMES_OFFSET 0x2D17ABCULL
+#define BUILDING_HIGHLIGHT_COUNT_OFFSET 0x2D28ABCULL
+#define BUILDING_HIGHLIGHTS_OFFSET 0x2D28AC0ULL
+#define BUILDING_HIGHLIGHT_STRIDE 0x404ULL
+
+/* The five defaults the original stores before opening the file, as one
+ * 64-bit store for the last two (its movq $4,0x4C): 24, 4, 4, 4, 24. */
+typedef struct {
+    int32_t word[2];
+} building_word_pair;
+
+#define SR_GLOBAL_BUILDING_DEFAULTS(record) do { \
+    SR_GLOBAL(int32_t, (uintptr_t)(record) + BUILDING_WORD_20_OFFSET) = 24; \
+    SR_GLOBAL(int32_t, (uintptr_t)(record) + BUILDING_WORD_21_OFFSET) = 4; \
+    SR_GLOBAL(building_word_pair, (uintptr_t)(record) + BUILDING_WORD_22_OFFSET) = \
+        (building_word_pair){{4, 24}}; \
+} while (0)
+
+/* asset_load_building_sbb_candidate, 0x140026830: reads building/%s.sbb into
+ * the record at `building` (the tiles, materials, objects, people, per-tile
+ * words, and in version 14+ the highlight table), then calls 0x140027690
+ * after every load, opened or not. Accepts file versions 12-14; a3 != 0
+ * loads only the header and the version 13+ words. The read callback slot is
+ * 0x1862AE018 (0x14020C0C8). */
+void sr_building_sbb_load(void *building, const char *building_name, int a3)
+{
+    unsigned char *record = (unsigned char *)building;
+    char file_name[512];
+    long long file = 0;
+    int version = 0;
+    int i;
+
+    /* Defaults stored before the file is opened: 24, 4, 4, 4, 24 (the last
+     * two via a single 8-byte store). */
+    SR_GLOBAL_BUILDING_DEFAULTS(record);
+    crt_sprintf(file_name, "building/%s.sbb", building_name);
+    file = crt_fopen(file_name, "rb");
+    if (!file) {
+        /* The original calls 0x140027690 after every load, opened or not. */
+        sub_140027690();
+        return;
+    }
+    SR_READ(&version, 4, 1, file);
+    if ((unsigned int)(version - 12) > 2) {
+        /* Exactly versions 12-14 pass (the original's jump-above test). */
+        crt_fclose(file);
+        sub_140027690();
+        return;
+    }
+    SR_READ(record, 1, 64, file);
+    SR_READ(record + BUILDING_WORD_20_OFFSET, 4, 1, file);
+    SR_READ(record + BUILDING_WORD_21_OFFSET, 4, 1, file);
+    SR_READ(record + BUILDING_WORD_22_OFFSET, 4, 1, file);
+    if (version >= 13) {
+        SR_READ(record + BUILDING_WORD_22_OFFSET, 4, 1, file);
+        SR_READ(record + BUILDING_WORD_23_OFFSET, 4, 1, file);
+        SR_READ(record + BUILDING_WORD_24_OFFSET, 4, 1, file);
+    }
+    if (a3) {
+        crt_fclose(file);
+        sub_140027690();
+        return;
+    }
+    SR_READ(record + BUILDING_TILE_COUNT_OFFSET, 4, 1, file);
+    for (i = 0; i < SR_GLOBAL(int32_t, (uintptr_t)record + BUILDING_TILE_COUNT_OFFSET); ++i)
+        SR_READ(&record[BUILDING_TILE_NAMES_OFFSET + 64ULL * (uint64_t)(unsigned int)i], 1, 64, file);
+    SR_READ(record + BUILDING_MATERIAL_COUNT_OFFSET, 4, 1, file);
+    for (i = 0; i < SR_GLOBAL(int32_t, (uintptr_t)record + BUILDING_MATERIAL_COUNT_OFFSET); ++i)
+        SR_READ(&record[BUILDING_MATERIAL_NAMES_OFFSET + 64ULL * (uint64_t)(unsigned int)i], 1, 64, file);
+    SR_READ(record + BUILDING_OBJECT_COUNT_OFFSET, 4, 1, file);
+    for (i = 0; i < SR_GLOBAL(int32_t, (uintptr_t)record + BUILDING_OBJECT_COUNT_OFFSET); ++i)
+        SR_READ(&record[BUILDING_OBJECT_NAMES_OFFSET + 64ULL * (uint64_t)(unsigned int)i], 1, 64, file);
+    SR_READ(record + BUILDING_PERSON_COUNT_OFFSET, 4, 1, file);
+    for (i = 0; i < SR_GLOBAL(int32_t, (uintptr_t)record + BUILDING_PERSON_COUNT_OFFSET); ++i)
+        SR_READ(&record[BUILDING_PERSON_NAMES_OFFSET + 64ULL * (uint64_t)(unsigned int)i], 1, 64, file);
+    {
+        /* Per-tile words: 0x40 tiles per floor, each with six words and
+         * fifteen half-words, floor by floor. */
+        int32_t *floors = (int32_t *)(void *)(record + BUILDING_WORD_21_OFFSET);
+        int32_t *tiles_per_floor = (int32_t *)(void *)(record + BUILDING_WORD_20_OFFSET);
+        int floor_index = 0;
+        while (floor_index < *floors) {
+            int tile_index = 0;
+            if (*tiles_per_floor >= 0) {
+                do {
+                    unsigned char *tile = record
+                        + 0x1000ULL * ((uint64_t)(unsigned int)tile_index + ((uint64_t)(unsigned int)floor_index << 6))
+                        + 0x3CULL * (uint64_t)(unsigned int)tile_index;
+                    SR_READ(tile + 0x5C, 4, 1, file);
+                    SR_READ(tile + 0x60, 4, 1, file);
+                    SR_READ(tile + 0x58, 4, 1, file);
+                    SR_READ(tile + 0x64, 4, 1, file);
+                    SR_READ(tile + 0x68, 4, 1, file);
+                    SR_READ(tile + 0x6C, 4, 1, file);
+                    SR_READ(tile + 0x70, 2, 1, file);
+                    SR_READ(tile + 0x72, 2, 1, file);
+                    SR_READ(tile + 0x74, 2, 1, file);
+                    SR_READ(tile + 0x76, 2, 1, file);
+                    SR_READ(tile + 0x78, 2, 1, file);
+                    SR_READ(tile + 0x7A, 2, 1, file);
+                    SR_READ(tile + 0x7C, 2, 1, file);
+                    SR_READ(tile + 0x7E, 2, 1, file);
+                    SR_READ(tile + 0x80, 2, 1, file);
+                    SR_READ(tile + 0x82, 2, 1, file);
+                    SR_READ(tile + 0x84, 2, 1, file);
+                    SR_READ(tile + 0x86, 2, 1, file);
+                    SR_READ(tile + 0x88, 2, 1, file);
+                    SR_READ(tile + 0x8A, 2, 1, file);
+                    SR_READ(tile + 0x8C, 2, 1, file);
+                    SR_READ(tile + 0x8E, 2, 1, file);
+                    SR_READ(tile + 0x90, 4, 1, file);
+                    ++tile_index;
+                } while (tile_index <= *tiles_per_floor);
+            }
+            ++floor_index;
+        }
+    }
+    if (version >= 14) {
+        int32_t *highlight_count = (int32_t *)(void *)(record + BUILDING_HIGHLIGHT_COUNT_OFFSET);
+        int highlight_index = 0;
+        SR_READ(highlight_count, 4, 1, file);
+        if (*highlight_count > 0) {
+            do {
+                unsigned char *highlight = record + BUILDING_HIGHLIGHTS_OFFSET
+                    + BUILDING_HIGHLIGHT_STRIDE * (uint64_t)(unsigned int)highlight_index;
+                int32_t *entry_count = (int32_t *)(void *)highlight;
+                int entry_index;
+                SR_READ(entry_count, 4, 1, file);
+                for (entry_index = 0; entry_index < *entry_count; ++entry_index) {
+                    SR_READ(highlight + 0x4 + 0x10ULL * (uint64_t)(unsigned int)entry_index, 4, 3, file);
+                    SR_READ(highlight + 0x10 + 0x10ULL * (uint64_t)(unsigned int)entry_index, 4, 1, file);
+                }
+                ++highlight_index;
+            } while (highlight_index < *highlight_count);
+        }
+    }
+    crt_fclose(file);
+    sub_140027690();
 }
