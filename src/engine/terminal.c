@@ -28,6 +28,57 @@ int toupper(int C);
 /* The snake's heading (16 left, 17 up, 18 right, 19 down as keys). */
 #define terminal_snake_direction(i) SR_GLOBAL(int32_t, 0x182BBC7F4ULL + 0x1B80ULL * (uint64_t)(int64_t)(i))
 
+/* 0x1400C5750: maps five lines of the item's raw source (one 16-byte chunk
+   per line) into screen lines: each raw character below 'A' or past 'Z' is
+   copied as itself, while a letter is looked up in the item's
+   letter-to-slot table. The first pass shows the letter that names the
+   slot, coloured 15 (12 for the slot the cursor is on); the second shows
+   the owner at that slot, a space when there is none, in the line below the
+   mapped one. Each screen line is sent (item_link_text_line). Tail-calls
+   the selection list draw. */
+int64_t terminal_raw_source_map(int item)
+{
+    /* Both raw lookups go through the raw source; the letter-to-slot table
+       is the item's computer slot array. */
+    const char *raw = item_record_text_chunk(item, 0);
+    for (int line = 2; line < 17; line += 3) {
+        char *screen = item_text_line(item, line);
+        uint8_t *colours = item_text_colours(item, line);
+        int i = 0;
+        for (; i < 62 && raw[i]; i++) {
+            int c = (signed char)raw[i];
+            if ((uint8_t)(c - 65) > 0x19u) {
+                screen[i] = (char)c;
+            } else {
+                uint32_t slot = (uint32_t)item_computer_slot(item, c);
+                screen[i] = (char)(uint8_t)(slot + 65);
+                colours[i] = (uint8_t)((uint32_t)terminal_selected_slot(item) == slot ? 12 : 15);
+            }
+        }
+        screen[i] = 0;
+        item_link_text_line(item, line);
+
+        char *mapped = item_text_line(item, line + 1);
+        i = 0;
+        for (; i < 62 && raw[i]; i++) {
+            int c = (signed char)raw[i];
+            if ((uint8_t)(c - 65) > 0x19u) {
+                mapped[i] = (char)c;
+            } else {
+                uint32_t owner = (uint32_t)item_computer_owner(item,
+                    (int32_t)item_computer_slot(item, c));
+                mapped[i] = (char)(owner == UINT32_MAX ? 32 : (owner + 65) & 0xFF);
+            }
+        }
+        mapped[i] = 0;
+        item_link_text_line(item, line + 1);
+        raw += 16;
+    }
+    return terminal_selection_list_draw(item);
+}
+
+
+
 /* 0x1400C58E0: over the twenty-six mission slots, counts the slots whose
    mission is present (its number above zero) and, of those, the ones whose
    owner matches the slot. A present mission with no owner (-1) still
