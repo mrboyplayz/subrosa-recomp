@@ -23,6 +23,13 @@ extern long long crt_fclose(long long file);
     ((void (*)(void *, uint64_t, uint64_t, void *))(uintptr_t)SR_GLOBAL_READ_FN)( \
         (dst), (uint64_t)(size), (uint64_t)(count), (void *)(uintptr_t)(file))
 
+/* The write callback slot, 0x1862AE010: the twin of the read slot, holding
+ * the original's fwrite wrapper (0x14020CE0C). */
+#define SR_GLOBAL_WRITE_FN SR_GLOBAL(uintptr_t, 0x1862AE010ULL)
+#define SR_WRITE(dst, size, count, file) \
+    ((void (*)(void *, uint64_t, uint64_t, void *))(uintptr_t)SR_GLOBAL_WRITE_FN)( \
+        (dst), (uint64_t)(size), (uint64_t)(count), (void *)(uintptr_t)(file))
+
 /* Block header word block, 0x144FBFBA0..0x144FBFBC4: ten int32 words read
  * one by one from block/*.sbl, the last (0x144FBFBC4) is the mesh-group
  * count. */
@@ -138,5 +145,118 @@ void sr_block_sbl_load(const char *a1)
     }
     /* The original closes the file on both paths (fclose at 0x1400E7244 in
      * the tail, reached when the version test fails too). */
+    crt_fclose(file);
+}
+
+/* The read callback slot's counterpart, 0x14020CE0C: the original's fwrite
+ * wrapper, reached through the write slot 0x1862AE010 the same way. */
+
+/* City-state globals the city serializer touches, 0x175EEA08C downwards and
+ * up to 0x175FBB094. */
+#define SR_CITY_BUILDING_COUNT SR_GLOBAL(int32_t, 0x175EEA08CULL)
+#define SR_CITY_BUILDING_NAMES SR_GLOBAL(unsigned char, 0x175EEA090ULL)
+#define SR_CITY_WORLD_COUNT SR_GLOBAL(int32_t, 0x16E486878ULL)
+#define SR_CITY_WORLD_BASE SR_GLOBAL(unsigned char, 0x16E486840ULL)
+#define SR_CITY_COMPANY_COUNT SR_GLOBAL(int32_t, 0x16E48987CULL)
+#define SR_CITY_ZONE_COUNT SR_GLOBAL(int32_t, 0x16E492084ULL)
+#define SR_CITY_BLOCK_COUNT SR_GLOBAL(int32_t, 0x1726DA088ULL)
+#define SR_CITY_ROAD_COUNT SR_GLOBAL(int32_t, 0x175FBB094ULL)
+
+/* asset_save_city_sbc_candidate, 0x1400D62A0: writes data/%s/city2.sbc with
+ * file version 12 (the decompiled C reuses the loader's fread names, but the
+ * original calls the write wrapper 0x14020CE0C and stores 12 first). */
+void sr_city_sbc_save(const char *city_name)
+{
+    char file_name[256];
+    long long file = 0;
+    int version = 12;
+    int name_index;
+    int world_index;
+    int company_index;
+    int zone_index;
+    int block_index;
+    int road_index;
+
+    crt_sprintf(file_name, "data/%s/city2.sbc", city_name);
+    file = crt_fopen(file_name, "wb");
+    if (!file)
+        return;
+    SR_WRITE(&version, 4, 1, file);
+    SR_WRITE(&SR_CITY_BUILDING_COUNT, 4, 1, file);
+    for (name_index = 0; name_index < SR_CITY_BUILDING_COUNT; ++name_index)
+        SR_WRITE(&SR_CITY_BUILDING_NAMES + 64 * (uint64_t)(unsigned int)name_index, 1, 64, file);
+    SR_WRITE(&SR_CITY_WORLD_COUNT, 4, 1, file);
+    for (world_index = 0; world_index < SR_CITY_WORLD_COUNT; ++world_index) {
+        unsigned char *world = &SR_CITY_WORLD_BASE + 0xCULL * (uint64_t)(unsigned int)world_index;
+        SR_WRITE(world + 0x3C, 4, 1, file);
+        SR_WRITE(world + 0x40, 4, 1, file);
+        SR_WRITE(world + 0x44, 4, 1, file);
+    }
+    SR_WRITE(&SR_CITY_COMPANY_COUNT, 4, 1, file);
+    for (company_index = 0; company_index < SR_CITY_COMPANY_COUNT; ++company_index) {
+        unsigned char *company = &SR_CITY_WORLD_BASE + 0x3040ULL + 0x34ULL * (uint64_t)(unsigned int)company_index;
+        SR_WRITE(company + 0x0, 4, 1, file);
+        SR_WRITE(company + 0x4, 4, 1, file);
+        SR_WRITE(company + 0x8, 4, 1, file);
+        SR_WRITE(company + 0xC, 4, 1, file);
+        SR_WRITE(company + 0x10, 4, 1, file);
+        SR_WRITE(company + 0x14, 1, 32, file);
+    }
+    SR_WRITE(&SR_CITY_BUILDING_COUNT, 4, 1, file);
+    for (name_index = 0; name_index < SR_CITY_BUILDING_COUNT; ++name_index) {
+        unsigned char *building = &SR_CITY_WORLD_BASE + 0x7A74858ULL + 0x60ULL * (uint64_t)(unsigned int)name_index;
+        SR_WRITE(building, 1, 64, file);
+        SR_WRITE(building + 0x40, 4, 1, file);
+        SR_WRITE(building + 0x44, 4, 1, file);
+        SR_WRITE(building + 0x48, 4, 1, file);
+        SR_WRITE(building + 0x4C, 4, 1, file);
+    }
+    SR_WRITE(&SR_CITY_ZONE_COUNT, 4, 1, file);
+    for (zone_index = 0; zone_index < SR_CITY_ZONE_COUNT; ++zone_index) {
+        /* Names from 0x16E486840 + 0xB848, the entry-count word at +0xB88C
+         * (name + 0x44) and the entries at 0x16E4920D0 (count + 4): the
+         * record stride is 0x4248 and each entry is eight 64-byte chunks. */
+        unsigned char *zone_state = (unsigned char *)&SR_GLOBAL(uint32_t, 0x16E4920CCULL)
+            + 0x4248ULL * (uint64_t)(unsigned int)zone_index;
+        unsigned char *zone_name = &SR_CITY_WORLD_BASE + 0xB848ULL
+            + 0x4248ULL * (uint64_t)(unsigned int)zone_index;
+        int32_t *zone_entry_count = (int32_t *)(void *)zone_state;
+        unsigned char *zone_entries = zone_state + 4;
+        int entry_index;
+        SR_WRITE(zone_name, 1, 64, file);
+        SR_WRITE(zone_entry_count, 4, 1, file);
+        for (entry_index = 0; entry_index < *zone_entry_count; ++entry_index) {
+            unsigned char *entry = zone_entries + 0x210ULL * (uint64_t)(unsigned int)entry_index;
+            int chunk;
+            for (chunk = 0; chunk < 8; ++chunk)
+                SR_WRITE(entry + 0x40ULL * (uint64_t)chunk, 1, 64, file);
+        }
+    }
+    SR_WRITE(&SR_CITY_BLOCK_COUNT, 4, 1, file);
+    for (block_index = 0; block_index < SR_CITY_BLOCK_COUNT; ++block_index) {
+        /* The record stride is 0x3810: four words (0x425384C..0x4253858 from
+         * the world base), then two arrays of 512 words at +0x2210 and
+         * +0x3010; the decompiled C wrote a 64-byte name here, the original
+         * writes none. */
+        unsigned char *block = &SR_CITY_WORLD_BASE + 0x425384CULL + 0x3810ULL * (uint64_t)(unsigned int)block_index;
+        int word;
+        SR_WRITE(block + 0x0, 4, 1, file);
+        SR_WRITE(block + 0x4, 4, 1, file);
+        SR_WRITE(block + 0x8, 4, 1, file);
+        SR_WRITE(block + 0xC, 4, 1, file);
+        for (word = 0; word < 512; ++word)
+            SR_WRITE(block + 0x2210ULL + 4 * (uint64_t)word, 4, 1, file);
+        for (word = 0; word < 512; ++word)
+            SR_WRITE(block + 0x3010ULL + 4 * (uint64_t)word, 4, 1, file);
+    }
+    SR_WRITE(&SR_CITY_ROAD_COUNT, 4, 1, file);
+    for (road_index = 0; road_index < SR_CITY_ROAD_COUNT; ++road_index) {
+        /* Twelve bytes per road, written as one 4x3 read-sized call: the
+         * original's lea 0xf6690b(%rax),%rcx; lea (%rax,%rcx,2),%rcx;
+         * lea (%r15,%rcx,4) chain works out to 0x175EEA08C + 0xBB34858 +
+         * 12 * i (0x181A1E8E4), not the name base the decompiled C shows. */
+        uint32_t index = (uint32_t)road_index;
+        SR_WRITE(&SR_GLOBAL(unsigned char, 0x181A1E8E4ULL) + 12ULL * index, 4, 3, file);
+    }
     crt_fclose(file);
 }
