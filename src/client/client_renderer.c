@@ -6778,51 +6778,9 @@ __int64            sub_140092140(
         unsigned int *a4,
         unsigned int *a5)
 {
-  __int64 result;
-  unsigned int *state_address;
-  unsigned int *state_address_2;
-  unsigned int *state_address_3;
-  unsigned int *state_address_4;
-
-  result = (int)g_18417E1B4;
-  if ( (int)g_18417E1B4 < 4096 )
-  {
-    dword_140404A6C[30 * g_18417E1B4 + 284554707] = a1;
-    dword_140404A6C[30 * g_18417E1B4 + 284554708] = a1;
-    dword_140404A6C[30 * g_18417E1B4 + 284554711] = *a2;
-    dword_140404A6C[30 * g_18417E1B4 + 284554712] = a2[1];
-    dword_140404A6C[30 * g_18417E1B4 + 284554713] = a2[2];
-    dword_140404A6C[30 * g_18417E1B4 + 284554714] = a2[3];
-    dword_140404A6C[30 * g_18417E1B4 + 284554710] = a3;
-    state_address = &dword_140404A6C[30 * g_18417E1B4 + 284554715];
-    *state_address = *a4;
-    state_address[1] = a4[1];
-    state_address[2] = a4[2];
-    state_address_2 = &dword_140404A6C[30 * g_18417E1B4 + 284554718];
-    *state_address_2 = *a5;
-    state_address_2[1] = a5[1];
-    state_address_2[2] = a5[2];
-    state_address_3 = &dword_140404A6C[30 * g_18417E1B4 + 284554721];
-    *state_address_3 = a5[3];
-    state_address_3[1] = a5[4];
-    state_address_3[2] = a5[5];
-    state_address_4 = &dword_140404A6C[30 * g_18417E1B4 + 284554724];
-    *state_address_4 = a5[6];
-    state_address_4[1] = a5[7];
-    state_address_4[2] = a5[8];
-    dword_140404A6C[30 * g_18417E1B4 + 284554727] = 1065353216;
-    dword_140404A6C[30 * g_18417E1B4 + 284554728] = 1065353216;
-    dword_140404A6C[30 * g_18417E1B4 + 284554729] = 1065353216;
-    dword_140404A6C[30 * g_18417E1B4 + 284554730] = 1065353216;
-    dword_140404A6C[30 * g_18417E1B4 + 284554731] = 1065353216;
-    dword_140404A6C[30 * g_18417E1B4 + 284554732] = 1065353216;
-    dword_140404A6C[30 * g_18417E1B4 + 284554733] = 0;
-    dword_140404A6C[30 * g_18417E1B4 + 284554734] = 0;
-    dword_140404A6C[30 * g_18417E1B4 + 284554735] = 0;
-    result = (int)g_18417E1B4;
-    dword_140404A6C[30 * g_18417E1B4++ + 284554736] = 0;
-  }
-  return result;
+    extern long long scene_queue_add(unsigned model, const unsigned *textures, unsigned flags, const unsigned *position,
+                                     const unsigned *rotation);
+    return scene_queue_add(a1, a2, a3, a4, a5);
 }
 
 //----- (0000000140092D70) ----------------------------------------------------

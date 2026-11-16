@@ -365,35 +365,9 @@ __int64            sub_1400C3140(unsigned __int64 a1, float *a2)
 //----- (00000001400C6AB0) ----------------------------------------------------
 unsigned int *           sub_1400C6AB0(int a1, int a2, char *a3, char a4, int a5)
 {
-  int input_value;
-  __int64 input_value_2;
-  __int64 remaining_count;
-  unsigned int *state_address;
-  char input_byte;
-
-  input_value = 0;
-  input_value_2 = a1;
-  remaining_count = a5;
-  if ( a5 > 0 )
-  {
-    input_value = a5;
-    state_address = &dword_140404A6C[16 * (a2 + 110LL * a1) + 278846626];
-    do
-    {
-      input_byte = *a3;
-      if ( *a3 )
-        ++a3;
-      else
-        input_byte = 32;
-      *((_BYTE *)state_address - 2048) = input_byte;
-      *(_BYTE *)state_address = a4;
-      state_address = (unsigned int *)((char *)state_address + 1);
-      --remaining_count;
-    }
-    while ( remaining_count );
-  }
-  *((_BYTE *)&dword_140404A6C[16 * (a2 + 110 * input_value_2) + 278846114] + input_value) = 0;
-  return &g_182BBB4F4;
+    extern void item_text_fill_row(int item, int line, const char *text, char colour, int count);
+    item_text_fill_row(a1, a2, a3, a4, a5);
+    return &g_182BBB4F4; /* what the original returns; no caller reads it */
 }
 
 //----- (00000001400C6B30) ----------------------------------------------------

@@ -1,0 +1,39 @@
+negative steps run
+    for (int32_t n = steps; n > 0; n--) {
+----
+    for (int32_t n = steps < 0 ? -steps : steps; n > 0; n--) {
+====
+last group skipped
+        for (float *p = corner_table + 2; p < corner_table + 50; p += 12) {
+----
+        for (float *p = corner_table + 2; p < corner_table + 38; p += 12) {
+====
+first pair not flipped
+            float flipped0 = 1.0f - p[0];
+----
+            float flipped0 = p[0];
+====
+second pair copy wrong
+            p[3] = old1;
+----
+            p[3] = old4;
+====
+last pair not flipped
+            float flipped9 = 1.0f - p[9];
+----
+            float flipped9 = p[9];
+====
+tag cycle wrong
+        case 0x10000u: tag = 0x50000u; break;
+----
+        case 0x10000u: tag = 0x20000u; break;
+====
+tag 0x20000 does not wrap
+        case 0x20000u: tag = 0x60000u; break;
+----
+        case 0x20000u: break;
+====
+middle pair flip dropped
+            float flipped6 = 1.0f - p[6];
+----
+            float flipped6 = p[6];

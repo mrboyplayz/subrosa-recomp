@@ -4,6 +4,7 @@
 #include "arith.h"
 #include "frame.h"
 #include "physics.h"
+#include "events.h"
 #include "world.h"
 
 /* Whether something moving from one point to the other passes through the
@@ -358,5 +359,32 @@ void world_update_human_bounds(void)
             human->voxel_max[i] = truncate_float(human->bounds_max[i] * 0.25f);
         }
         world_break_blocks(human->voxel_min, human->voxel_max);
+    }
+}
+
+uint32_t world_set_block_tagged(uint32_t layer, int32_t x, uint32_t y, uint32_t z, uint32_t tag, int32_t bit,
+                                const float *position, const float *velocity)
+{
+    if (layer > 3 || x < 0 || (tag & 0xE0000000u) != 0x80000000u || (bit & 0x10000) == 0)
+        return 0;
+    /* The block-hit event, whose last word is the low 16 bits of `bit`. */
+    event_block_hit(layer, (uint32_t)x, y, z, tag, (uint16_t)bit, position, velocity);
+    /* The tag with bit `bit` of the second half-word raised: the shift count
+     * is the low five bits of `bit`, as SHL takes it. */
+    world_set_block_unknown_3008(layer, (uint32_t)x, y, z, tag | (0x10000u << ((uint16_t)bit & 31)));
+    return 1;
+}
+
+/* Two voxels (x, y, z, value words 16 bytes apart) of a record at
+ * 0x183EBFEE0 + 0x5BC4 * record: each is cleared (clear nonzero) or set to
+ * (value << 10) | 6, then its block record is marked. */
+void world_set_marked_voxel_pair(int record, int clear)
+{
+    const uint32_t *words = &SR_GLOBAL(uint32_t, 0x183EBFEE0ULL + 0x5BC4ULL * (uint64_t)(int64_t)record);
+    for (int k = 0; k < 2; k++, words += 4) {
+        uint32_t x = words[-1], y = words[0], z = words[1];
+        uint32_t value = clear ? 0u : ((words[2] << 10) | 6u);
+        world_set_block_unknown_4808(0, x, y, z, value);
+        world_mark_block_record(0, x, y, z);
     }
 }

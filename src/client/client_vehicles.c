@@ -4941,7 +4941,8 @@ LABEL_14:
 //----- (000000014004DA50) ----------------------------------------------------
 __int64            sub_14004DA50(unsigned int a1, unsigned int *a2, float a3)
 {
-  return vehicle_alloc_slot(a1, a2, a3);
+    extern int spawn_request_add(int kind, const float *position, float angle);
+    return (unsigned int)spawn_request_add((int)a1, (const float *)a2, a3);
 }
 
 //----- (00000001400588F0) ----------------------------------------------------
@@ -11745,55 +11746,9 @@ __int64            sub_1400A48D0(int a1, float *a2)
 //----- (00000001400A5510) ----------------------------------------------------
 __int64            sub_1400A5510(float *a1, float a2, float a3)
 {
-  unsigned int shifted_bits;
-  unsigned int shifted_bits_2;
-  float scaled_value;
-  float combined_products;
-  float square_root;
-  float scaled_ratio;
-  float scaled_ratio_2;
-  unsigned int shifted_bits_3;
-  __int64 result;
-  float combined_products_2;
-  float scaled_value_2;
-
-  shifted_bits = ((noise_seed << 13) ^ noise_seed)
-     * ((noise_seed << 13) ^ noise_seed);
-  ++noise_seed;
-  *a1 = 1.0 - (float)((float)(((15731 * shifted_bits + 789221) * (15731 * shifted_bits + 789221) - 771171059) & 0x7FFFFFFF) * 9.3132257e-10);
-  shifted_bits_2 = ((noise_seed << 13) ^ noise_seed)
-     * ((noise_seed << 13) ^ noise_seed);
-  ++noise_seed;
-  scaled_value = *a1;
-  combined_products = 1.0 - (float)((float)(((15731 * shifted_bits_2 + 789221) * (15731 * shifted_bits_2 + 789221) - 771171059) & 0x7FFFFFFF) * 9.3132257e-10);
-  square_root = fsqrt((float)(scaled_value * scaled_value) + (float)(combined_products * combined_products));
-  if ( square_root == 0.0 )
-  {
-    scaled_ratio = 0.0;
-    scaled_ratio_2 = 0.0;
-  }
-  else
-  {
-    scaled_ratio = combined_products * (float)(1.0 / square_root);
-    scaled_ratio_2 = scaled_value * (float)(1.0 / square_root);
-  }
-  *a1 = scaled_ratio_2;
-  a1[1] = scaled_ratio;
-  shifted_bits_3 = ((noise_seed << 13) ^ noise_seed)
-      * ((noise_seed << 13) ^ noise_seed);
-  result = ++noise_seed;
-  combined_products_2 = (float)((float)((float)((float)(1.0
-                                      - (float)((float)(((15731 * shifted_bits_3 + 789221) * (15731 * shifted_bits_3 + 789221) - 771171059)
-                                                      & 0x7FFFFFFF)
-                                              * 9.3132257e-10))
-                              + 1.0)
-                      * a2)
-              * 0.5)
-      + a3;
-  scaled_value_2 = combined_products_2 * *a1;
-  a1[1] = combined_products_2 * a1[1];
-  *a1 = scaled_value_2;
-  return result;
+    extern void math_random_direction_2d(float out[2], float length, float add);
+    math_random_direction_2d(a1, a2, a3);
+    return noise_seed; /* what the original leaves in rax; no caller reads it */
 }
 
 //----- (00000001400DDB70) ----------------------------------------------------
@@ -15202,7 +15157,9 @@ __int64            sub_14010AA70(int a1)
 //----- (000000014010C850) ----------------------------------------------------
 unsigned int *           sub_14010C850(int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 {
-  return vehicle_type_part_add(a1, a2, a3, a4);
+    extern void vehicle_hull_add_edge(int type, unsigned kind, unsigned a, unsigned b);
+    vehicle_hull_add_edge(a1, a2, a3, a4);
+    return nullptr; /* compatibility result discarded by all reviewed callers */
 }
 
 //----- (000000014010C900) ----------------------------------------------------
@@ -15216,26 +15173,10 @@ __int64            sub_14010C900(
         unsigned int a7,
         unsigned int a8)
 {
-  __int64 record_word_offset;
-  __int64 record_word_offset_2;
-  __int64 result;
-
-  record_word_offset = 24944LL * a1;
-  record_word_offset_2 = 1559LL * a1;
-  dword_140404A6C[16 * record_word_offset_2 + 346709020 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = a2;
-  dword_140404A6C[16 * record_word_offset_2 + 346709021 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = a3;
-  dword_140404A6C[16 * record_word_offset_2 + 346709022 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = a4;
-  dword_140404A6C[16 * record_word_offset_2 + 346709023 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = a5;
-  dword_140404A6C[16 * record_word_offset_2 + 346709024 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = a6;
-  dword_140404A6C[16 * record_word_offset_2 + 346709025 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = -1;
-  dword_140404A6C[16 * record_word_offset_2 + 346709026 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = -1;
-  dword_140404A6C[16 * record_word_offset_2 + 346709027 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = -1;
-  dword_140404A6C[16 * record_word_offset_2 + 346709028 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = -1;
-  dword_140404A6C[16 * record_word_offset_2 + 346709033 + 16 * (int)dword_140404A6C[record_word_offset + 346709019]] = a7;
-  result = (record_word_offset_2 + (int)dword_140404A6C[record_word_offset + 346709019]) << 6;
-  *(unsigned int *)((char *)&g_192E9BB14 + result) = a8;
-  ++dword_140404A6C[record_word_offset + 346709019];
-  return result;
+    extern void vehicle_hull_add_face(int type, unsigned w0, unsigned w1, unsigned w2, unsigned w3, unsigned w4,
+                                      unsigned value_34, unsigned value_38);
+    vehicle_hull_add_face(a1, a2, a3, a4, a5, a6, a7, a8);
+    return 0; /* compatibility result discarded by all reviewed callers */
 }
 
 //----- (000000014010CAC0) ----------------------------------------------------

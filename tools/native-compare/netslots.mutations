@@ -1,0 +1,65 @@
+first free slot not taken
+    for (int32_t index = 0; index < NET_SLOT_COUNT; index++) {
+        if (!net_slot(peer, index)->used)
+            return index;
+    }
+----
+    for (int32_t index = NET_SLOT_COUNT - 1; index >= 0; index--) {
+        if (!net_slot(peer, index)->used)
+            return index;
+    }
+====
+last slot not checked for free
+    for (int32_t index = 0; index < NET_SLOT_COUNT; index++) {
+        if (!net_slot(peer, index)->used)
+----
+    for (int32_t index = 0; index < NET_SLOT_COUNT - 1; index++) {
+        if (!net_slot(peer, index)->used)
+====
+claim does not set used
+    slot->used = 1;
+----
+    (void)0;
+====
+claim stores the fourth word wrongly
+    slot->unknown_10 = (int32_t)d;
+----
+    slot->unknown_10 = (int32_t)c;
+====
+claim returns the wrong value
+    return d;
+----
+    return c;
+====
+claim limit is the denominator
+    int32_t index = net_slot_pick(peer, numerator / denominator);
+----
+    int32_t index = net_slot_pick(peer, numerator);
+
+====
+pre-slot threshold off
+    if (ratio(peer, -1) >= 65536.0f)
+----
+    if (ratio(peer, -1) > 65536.0f)
+====
+pre-slot ignored
+    if (ratio(peer, -1) >= 65536.0f)
+        return -1;
+----
+
+====
+slot 0 offered without the limit
+    return ratio(peer, 0) > limit ? 0 : -1;
+----
+    return 0;
+====
+slot 0 compared with the pre-slot
+    return ratio(peer, 0) > limit ? 0 : -1;
+----
+    return ratio(peer, 1) > limit ? 0 : -1;
+
+====
+limit compared with >=
+    return ratio(peer, 0) > limit ? 0 : -1;
+----
+    return ratio(peer, 0) >= limit ? 0 : -1;

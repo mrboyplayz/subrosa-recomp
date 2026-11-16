@@ -227,30 +227,8 @@ __int64            sub_140020130(int a1)
 //----- (0000000140023A20) ----------------------------------------------------
 void            sub_140023A20(int a1, int a2)
 {
-  __int64 remaining_count;
-  unsigned int *record_byte_offset;
-  unsigned int x;
-  unsigned int y;
-  unsigned int z;
-  unsigned int shifted_bits;
-
-  remaining_count = 2;
-  record_byte_offset = &dword_140404A6C[5873 * a1 + 283831581];
-  do
-  {
-    x = *(record_byte_offset - 1);
-    y = *record_byte_offset;
-    z = record_byte_offset[1];
-    if ( a2 )
-      shifted_bits = 0;
-    else
-      shifted_bits = (record_byte_offset[2] << 10) | 6;
-    sr_world_set_block_unknown_4808(0, x, y, z, shifted_bits);
-    sr_world_mark_block_record(0, x, y, z);
-    record_byte_offset += 4;
-    --remaining_count;
-  }
-  while ( remaining_count );
+    extern void world_set_marked_voxel_pair(int record, int clear);
+    world_set_marked_voxel_pair(a1, a2);
 }
 
 //----- (0000000140027D00) ----------------------------------------------------

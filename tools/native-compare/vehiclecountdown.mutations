@@ -1,0 +1,39 @@
+type 13 not skipped
+    if (physics_vehicles[vehicle].type == 13)
+----
+    if (0)
+====
+countdown of zero still counts
+    if (left <= 0)
+        return;
+----
+    if (left < 0)
+        return;
+====
+event only below zero
+    if (left > 0)
+        return;
+----
+    if (left >= 0)
+        return;
+====
+elapsed added
+    left = subtract_int(left, elapsed);
+----
+    left = add_int(left, elapsed);
+====
+countdown not stored
+    vehicle_countdown(vehicle) = left;
+----
+    (void)left;
+====
+event arguments swapped
+    event_vehicle_removed((uint32_t)vehicle, 2, 0, physics_vehicles[vehicle].position,
+----
+    event_vehicle_removed((uint32_t)vehicle, 0, 2, physics_vehicles[vehicle].position,
+====
+velocity missing
+                          physics_vehicles[vehicle].velocity);
+----
+                          NULL);
+

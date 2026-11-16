@@ -1,0 +1,42 @@
+layer 4 accepted
+    if (layer > 3 || x < 0
+----
+    if (layer > 4 || x < 0
+====
+negative x accepted
+    if (layer > 3 || x < 0
+----
+    if (layer > 3
+====
+tag mask uses two bits
+(tag & 0xE0000000u) != 0x80000000u
+----
+(tag & 0xC0000000u) != 0x80000000u
+====
+bit 16 not required
+ || (bit & 0x10000) == 0)
+----
+)
+====
+event flag not truncated
+    event_block_hit(layer, (uint32_t)x, y, z, tag, (uint16_t)bit, position, velocity);
+----
+    event_block_hit(layer, (uint32_t)x, y, z, tag, (uint32_t)bit, position, velocity);
+====
+shift count not masked
+    world_set_block_unknown_3008(layer, (uint32_t)x, y, z, tag | (0x10000u << ((uint16_t)bit & 31)));
+----
+    world_set_block_unknown_3008(layer, (uint32_t)x, y, z, tag | (0x10000u << ((uint16_t)bit % 24)));
+====
+tag not or-ed
+    world_set_block_unknown_3008(layer, (uint32_t)x, y, z, tag | (0x10000u << ((uint16_t)bit & 31)));
+----
+    world_set_block_unknown_3008(layer, (uint32_t)x, y, z, (0x10000u << ((uint16_t)bit & 31)));
+====
+returns 0
+    return 1;
+}
+----
+    return 0;
+}
+
