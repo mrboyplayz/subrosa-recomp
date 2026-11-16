@@ -1,17 +1,11 @@
 # KNOWLEDGE.md — how this project works (for agentic AI helping contribute)
 
-> **Heads-up:** this file is the live document: record every workflow change and
-> session state here. Adjust anything that does not match your setup.
-
-**Draft workflow:** agents may draft recovered routines in a `draft_routine/`
-folder, verify them there against the original machine code, and only then
-move them where they belong (`src/engine/`, `src/client/`, the comparison
-suites).
+> **Heads-up:** this file is the live document: Adjust anything that does not match your setup.
 
 Read this before doing anything.
 
 ## What this project is
-The original game is `subrosaactual/subrosa.exe` (Steam build). **WARN: the executable is not in this repo.** Obtain it separately and place it in `subrosaactual/` (or point `SUBROSA_GAME_DIR` at its folder). Almost all of its code was auto-decompiled into C, but that decompiled code is ugly and machine-generated: names like `sub_14007C980`, weird casts, magic numbers, `windows.h` everywhere.
+The original game is `subrosaactual/subrosa.exe` (Steam build). **WARN: the executable is not in this repo.** Obtain from the discord server mentioned on README.md and place it in `subrosaactual/` (or point `SUBROSA_GAME_DIR` at its folder). Almost all of its code was auto-decompiled into C, but that decompiled code is ugly and machine-generated: names like `sub_14007C980`, weird casts, magic numbers, `windows.h` everywhere.
 
 The goal: take those routines one by one and **rewrite them into clean, readable, portable C** in `src/engine/`, then prove the clean version behaves **bit-exactly** like the original machine code.
 
@@ -83,7 +77,5 @@ Nobody trusts "looks right". A routine is done when:
 - History note: an old "t_clockms hangs" report was just the build time; the suite passes at 1000 cases.
 
 ## Where we are
-Progress lives in `scripts/progress.py` (currently **332 / 1,119** game routines restored). The 3,110 runtime/stb routines stay as decompiled C — they are not the work. The root README progress image is recomputed by `.github/workflows/progress.yml` after every merge to master.
+Progress lives in `scripts/progress.py`. The 3,110 runtime/stb routines stay as decompiled C — they are not the work. The root README progress image is recomputed by `.github/workflows/progress.yml` after every merge to master.
 
-## Session note — explosion-30 batch (2026-11-16)
-Branch `explosion-30` (worktree `worktrees/explosion30`) hosts a 30-agent routine-recovery batch: 30 client modules recovered in parallel, one module per agent, disjoint files per agent. Agents land ports + wrappers + suites only; the build + mutation verification sweep runs centrally after. PR: `jamicaw56:explosion-30` → `mrboyplayz:master`. `subrosaactual/subrosa.exe` present in the worktree. Agents do not push, fetch, or touch shared files (README, KNOWLEDGE.md, TSVs); shared-file cleanup and verification are done by the coordinator.
