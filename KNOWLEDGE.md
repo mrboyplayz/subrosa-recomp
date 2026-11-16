@@ -1,9 +1,19 @@
-# KNOWLEDGE.md — how this project works (for agents)
+# KNOWLEDGE.md — how this project works (for agentic AI helping contribute)
 
-Read this before doing anything. HANDOFF.md has the current session state; this file explains how the game is played.
+> **Heads-up:** this file is maintained for Jamicaw56's setup and may not be
+> accurate for yours — please edit it for your own benefit. It is the live
+> document: record every workflow change and session state **here**, in this
+> file.
+
+**Draft workflow:** agents may draft recovered routines in a `draft_routine/`
+folder, verify them there against the original machine code, and only then
+move them where they belong (`src/engine/`, `src/client/`, the comparison
+suites).
+
+Read this before doing anything.
 
 ## What this project is
-The original game is `subrosaactual/subrosa.exe` (Steam build). Almost all of its code was auto-decompiled into C, but that decompiled code is ugly and machine-generated: names like `sub_14007C980`, weird casts, magic numbers, `windows.h` everywhere.
+The original game is `subrosaactual/subrosa.exe` (Steam build). **WARN: the executable is not in this repo — get it from the owner** and place it in `subrosaactual/` yourself. Almost all of its code was auto-decompiled into C, but that decompiled code is ugly and machine-generated: names like `sub_14007C980`, weird casts, magic numbers, `windows.h` everywhere.
 
 The goal: take those routines one by one and **rewrite them into clean, readable, portable C** in `src/engine/`, then prove the clean version behaves **bit-exactly** like the original machine code.
 
@@ -17,7 +27,9 @@ The goal: take those routines one by one and **rewrite them into clean, readable
    ```
    objdump -d --start-address=0x140XXXXXX --stop-address=0x140YYYYYY subrosaactual/subrosa.exe
    ```
-   (WinLibs objdump is on the PATH from HANDOFF.md.) Note: branch boundaries, signed vs unsigned ops, magic-number divisions (decode them — they are just the compiler's multiply-by-reciprocal), and which shared state it reads/writes.
+   (WinLibs objdump is on the PATH after:
+   `export PATH="/c/Users/rosMa/AppData/Local/Programs/Python/Python312:/c/Users/rosMa/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/bin:$PATH"`
+   — the toolchain PATH export; keep it recorded here.) Note: branch boundaries, signed vs unsigned ops, magic-number divisions (decode them — they are just the compiler's multiply-by-reciprocal), and which shared state it reads/writes.
 
 3. **Write the port.** Clean C in `src/engine/<module>.c` + `.h`:
    - Real names, no magic numbers, no decompiler casts.
@@ -42,7 +54,7 @@ The goal: take those routines one by one and **rewrite them into clean, readable
 
 7. **Check the scoreboard.** `python scripts/progress.py` prints the true count. **Never edit the README progress bar in a PR**: the README progress workflow (`.github/workflows/progress.yml`) recounts and commits the bar itself after every merge to master, and CI only prints the count (`progress.py` without `--check`) instead of failing on a stale bar. DO update the file-by-file table in `src/engine/README.md` yourself — that table is not touched by the workflow and CI never checks it.
 
-8. **Ship.** `git fetch upstream` and merge upstream into your branch FIRST (upstream moves fast — check `gh pr list --repo mrboyplayz/subrosa-recomp`), then commit, push to your fork, `gh pr create --repo mrboyplayz/subrosa-recomp --base master --head youruser:<branch>` (youruser = your GitHub account). Watch `gh pr checks`.
+8. **Ship.** `git fetch upstream` and merge upstream into your branch FIRST (upstream moves fast — check `gh pr list --repo mrboyplayz/subrosa-recomp`). **Everything stacks into PR #14** ("Do not merge, I will stack changes till it explosions", https://github.com/mrboyplayz/subrosa-recomp/pull/14, `jamicaw56:master` → upstream `master`): commit, `git fetch origin` (other agents push fast — merge `origin/master` first), then `git push origin HEAD:master` to grow the stack PR. **NEVER force-push and never open separate PRs** — if you have no branch of your own, pushing to fork `master` after merging remotes is the ship step. Watch `gh pr checks`.
 
 ## What "done" means
 Nobody trusts "looks right". A routine is done when:
@@ -61,17 +73,17 @@ Nobody trusts "looks right". A routine is done when:
 | Comparison harness | `tools/native-compare/` (`run.py`, `mutate.py`, `nc.c/.h`, `t_<suite>.c` + `.mutations`) |
 | The original binary | `subrosaactual/subrosa.exe` |
 | Build | `python scripts/build.py` (full client), `scripts/build_quick.py` (incremental) |
-| Session state / next steps | `HANDOFF.md` (local only, gitignored; `KNOWLEDGE.md` is tracked) |
+| Session state / next steps | this file — record the current state and next recovery targets here |
 
 ## Gotchas that cost us time
 - **Upstream outruns you.** Clusters get finished and merged by other PRs while you work. Re-sync with `git fetch upstream` periodically (at pick time AND mid-session), not just in step 8 — a routine already wrapped upstream is done; drop it and pick another.
-- One port-build pass is **~5-10 minutes** — a tool timeout under that looks like a hang. It isn't. Use background jobs and poll.
+- One port-build pass is **~5-10 minutes** — a tool timeout under that looks like a hang. It isn't. Use background jobs.
 - Background jobs die at **600 s** here. `mutate.py` rebuilds the engine per mutant — budget for it.
 - Never run two `mutate.py` of the **same suite** at once (they fight over `build/mutate/<suite>/` and crash with `WinError 145`). Different suites can run in parallel.
 - `mutate.py` wants the engine file **relative to the engine dir**: `mutate.py clockms clock.c ...`, not `src/engine/clock.c ...`.
-- `.gitignore` is a `*` whitelist — new root-level docs stay local unless you add a `!NAME` rule. `KNOWLEDGE.md` is tracked (has its own `!KNOWLEDGE.md` rule); `HANDOFF.md` stays local.
+- `.gitignore` is a `*` whitelist — new root-level docs stay local unless you add a `!NAME` rule. `KNOWLEDGE.md` is tracked (has its own `!KNOWLEDGE.md` rule) and is the one doc that gets published; keep everything agents need in it.
 - Some routines cannot be finished: e.g. `sr_cpu_has_sse41` (CPUID) — mutation testing cannot cross OS/hardware. Document and skip those.
 - History note: an old "t_clockms hangs" report was just the build time; the suite passes at 1000 cases.
 
 ## Where we are
-Progress lives in `scripts/progress.py`. As of PR #11 (auto-progress README workflow): **309 / 1,119** game routines restored. The 3,110 runtime/stb routines stay as decompiled C — they are not the work. The README.md bar no longer moves in pull requests; it is recomputed on master by `.github/workflows/progress.yml`.
+Progress lives in `scripts/progress.py`. As of the stacked PR #14 ("Stacked routine recovery batches — ready to merge"): **332 / 1,119** game routines restored, plus 2 library routines. The 3,110 runtime/stb routines stay as decompiled C — they are not the work. The root README progress image is recomputed by `.github/workflows/progress.yml` after every merge to master.

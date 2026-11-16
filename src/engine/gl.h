@@ -49,6 +49,8 @@ typedef ptrdiff_t GLintptr;
 #define GL_STREAM_DRAW 0x88E0
 #define GL_STATIC_DRAW 0x88E4
 /* Fixed-function state the render passes set. */
+#define GL_ZERO 0
+#define GL_NEVER 0x0200
 #define GL_EQUAL 0x0202
 #define GL_LEQUAL 0x0203
 #define GL_NOTEQUAL 0x0205

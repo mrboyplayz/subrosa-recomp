@@ -1,0 +1,75 @@
+core 1.1 gate ignored
+    if (!dword_140302FF0)
+        return;
+----
+    if (0)
+        return;
+====
+fixed-function gate ignored
+    if (!SR_GLOBAL(uint32_t, 0x144980CB0ULL))
+        return;
+----
+    if (0)
+        return;
+====
+core 1.2 stores swapped
+    glDrawRangeElements = (void (*)(void))resolve("glDrawRangeElements");
+    glTexImage3D = (void (*)(void))resolve("glTexImage3D");
+----
+    glTexImage3D = (void (*)(void))resolve("glTexImage3D");
+    glDrawRangeElements = (void (*)(void))resolve("glDrawRangeElements");
+====
+multitexture skips a name
+    glActiveTexture = (void (*)(void))resolve("glActiveTexture");
+    glSampleCoverage = (void (*)(void))resolve("glSampleCoverage");
+----
+    glActiveTexture = (void (*)(void))resolve("glActiveTexture");
+====
+buffers names swapped
+    glBindBuffer = (void (*)(void))resolve("glBindBuffer");
+    glDeleteBuffers = (void (*)(void))resolve("glDeleteBuffers");
+----
+    glBindBuffer = (void (*)(void))resolve("glDeleteBuffers");
+    glDeleteBuffers = (void (*)(void))resolve("glBindBuffer");
+====
+blend writes the wrong slot
+    glMultiDrawArrays = (void (*)(void))resolve("glMultiDrawArrays");
+----
+    glMultiDrawElements = (void (*)(void))resolve("glMultiDrawArrays");
+====
+sync gate read as byte
+    if (!unk_140404888)
+        return;
+----
+    if (!(*(unsigned char *)(uintptr_t)0x140404888ULL))
+        return;
+====
+draw elements slot off by one
+    *(void **)&flt_140384000[131076] = resolve("glDrawElements");
+----
+    *(void **)&flt_140384000[131077] = resolve("glDrawElements");
+====
+master skips the version test
+    if (!get_string || !((const char *(*)(unsigned int))get_string)(GL_VERSION))
+        return 0;
+----
+    if (!get_string)
+        return 0;
+====
+master parses the version after the loaders
+    sub_140091880();
+    gl_load_fixed_functions(resolve);
+----
+    gl_load_fixed_functions(resolve);
+    sub_140091880();
+====
+clip control gate ignored
+    if (unk_14040488C) {
+        result = resolve("glClipControl");
+----
+    if (1) {
+        result = resolve("glClipControl");
+====
+gl get string store dropped
+    glGetString = (void (*)(void))get_string;
+----

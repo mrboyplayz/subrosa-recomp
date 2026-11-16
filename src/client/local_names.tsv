@@ -6689,8 +6689,6 @@
 140188120	v50	unused_written_slot
 140188120	v51	unused_written_slot_2
 140188120	v52	unused_frame_slot_48
-1400A6700	v2	unused_written_slot
-1400A6700	v3	callback_function
 1400817C0	v0	unused_local
 1400817C0	v1	float_word
 1400817C0	v2	x
