@@ -13,4 +13,9 @@ long long recovery_return_second(long long first, long long second);
    paths live in the shared game state; the second result is returned. */
 long long recovery_reset_dirs(void);
 
+/* 0x14012FB60: appends a randomly chosen sentence about a file to a text.
+   The choice is rand() % 3; the append starts one byte before the text's
+   terminator, as the original does. */
+long long recovery_append_file_text(char *text, const char *name);
+
 #endif
