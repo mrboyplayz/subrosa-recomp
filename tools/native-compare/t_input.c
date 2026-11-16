@@ -1,3 +1,4 @@
+// NC_WRAPPERS: 14007CA90
 /* Client input: input_get_keyboard_state, 0x14007CA90. */
 #include "nc.h"
 #include "input.h"

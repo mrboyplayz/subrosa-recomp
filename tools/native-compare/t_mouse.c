@@ -1,3 +1,4 @@
+// NC_WRAPPERS: 14007CB30 14007CBC0
 /* Client input: input_get_mouse_state, 0x14007CB30 and
  * input_get_relative_mouse_state, 0x14007CBC0. */
 #include "nc.h"

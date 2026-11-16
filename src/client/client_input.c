@@ -8,16 +8,20 @@ __int128 *input_get_keyboard_state(unsigned char *keys);
 __int64 input_get_mouse_state(float *state);
 __int64 input_get_relative_mouse_state(float *state);
 
+//----- (000000014007CA90) ----------------------------------------------------
+// Candidate keyboard snapshot wrapper: copies 323 bytes from SDL_GetKeyboardState(NULL) into caller buffer.
 __int128 *           input_get_keyboard_state_candidate(__int64 a1)
 {
   return input_get_keyboard_state((unsigned char *)a1);
 }
 
+//----- (000000014007CB30) ----------------------------------------------------
 __int64            input_get_mouse_state_candidate(__int64 a1)
 {
   return input_get_mouse_state((float *)a1);
 }
 
+//----- (000000014007CBC0) ----------------------------------------------------
 __int64            input_get_relative_mouse_state_candidate(float *a1)
 {
   return input_get_relative_mouse_state(a1);

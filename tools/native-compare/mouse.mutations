@@ -1,4 +1,71 @@
-// NC_WRAPPERS: 14007CB30 14007CBC0
+drop the relative fixed canvas values
+    state[0] = INPUT_RELATIVE_CANVAS_WIDTH;
+    state[1] = INPUT_RELATIVE_CANVAS_HEIGHT;
+    state[2] = (float)relative_mouse_x;
+----
+    state[2] = (float)relative_mouse_x;
+====
+swap the relative fixed canvas values
+    state[0] = INPUT_RELATIVE_CANVAS_WIDTH;
+    state[1] = INPUT_RELATIVE_CANVAS_HEIGHT;
+    state[2] = (float)relative_mouse_x;
+----
+    state[0] = INPUT_RELATIVE_CANVAS_HEIGHT;
+    state[1] = INPUT_RELATIVE_CANVAS_WIDTH;
+    state[2] = (float)relative_mouse_x;
+====
+drop the relative right-button shift
+    state[2] = (float)relative_mouse_x;
+    state[3] = (float)relative_mouse_y;
+    /* Button fields are integers stored at byte offsets 152/144/148 of the
+     * record (the original's dword stores), not float lanes. */
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 2) & 1);
+----
+    state[2] = (float)relative_mouse_x;
+    state[3] = (float)relative_mouse_y;
+    /* Button fields are integers stored at byte offsets 152/144/148 of the
+     * record (the original's dword stores), not float lanes. */
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 3) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 3) & 1);
+====
+drop the relative left button bit
+    state[3] = (float)relative_mouse_y;
+    /* Button fields are integers stored at byte offsets 152/144/148 of the
+     * record (the original's dword stores), not float lanes. */
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 2) & 1);
+----
+    state[3] = (float)relative_mouse_y;
+    /* Button fields are integers stored at byte offsets 152/144/148 of the
+     * record (the original's dword stores), not float lanes. */
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 2;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 2) & 1);
+====
+drop the relative button mask field
+    state[3] = (float)relative_mouse_y;
+    /* Button fields are integers stored at byte offsets 152/144/148 of the
+     * record (the original's dword stores), not float lanes. */
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 2) & 1);
+----
+    state[3] = (float)relative_mouse_y;
+    /* Button fields are integers stored at byte offsets 152/144/148 of the
+     * record (the original's dword stores), not float lanes. */
+    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 2) & 1);
+====
 scale both divides by 100
     state[0] = (float)mouse_x * renderer_canvas_width / (float)sr_window_width;
     state[1] = (float)mouse_y * renderer_canvas_height / (float)sr_window_height;
@@ -6,48 +73,40 @@ scale both divides by 100
     state[0] = (float)mouse_x * renderer_canvas_width / (float)(sr_window_width * 100);
     state[1] = (float)mouse_y * renderer_canvas_height / (float)(sr_window_height * 100);
 ====
-swap the fixed relative canvas values
-    state[0] = INPUT_RELATIVE_CANVAS_WIDTH;
-    state[1] = INPUT_RELATIVE_CANVAS_HEIGHT;
-----
-    state[0] = INPUT_RELATIVE_CANVAS_HEIGHT;
-    state[1] = INPUT_RELATIVE_CANVAS_WIDTH;
-====
-drop the fixed relative canvas values
-    state[0] = INPUT_RELATIVE_CANVAS_WIDTH;
-    state[1] = INPUT_RELATIVE_CANVAS_HEIGHT;
-----
-====
-drop the relative right-button shift
-    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
-----
-    ((unsigned int *)state)[37] = (mouse_button_mask >> 3) & 1;  /* right button */
-====
 drop the absolute right-button shift
-    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
-    return (int32_t)((mouse_button_mask >> 2) & 1);
-----
-    ((unsigned int *)state)[37] = (mouse_button_mask >> 3) & 1;  /* right button */
-    return (int32_t)((mouse_button_mask >> 3) & 1);
-====
-flip the relative left button mask
-    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
-----
-    ((unsigned int *)state)[36] = mouse_button_mask & 2;         /* left button */
-====
-flip the absolute left button mask
-    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
-    return (int32_t)((mouse_button_mask >> 2) & 1);
-----
-    ((unsigned int *)state)[36] = mouse_button_mask & 2;         /* left button */
-    return (int32_t)((mouse_button_mask >> 2) & 1);
-====
-drop the relative button mask field
+    state[1] = (float)mouse_y * renderer_canvas_height / (float)sr_window_height;
     ((unsigned int *)state)[38] = mouse_button_mask;
     ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
     ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
     return (int32_t)((mouse_button_mask >> 2) & 1);
 ----
+    state[1] = (float)mouse_y * renderer_canvas_height / (float)sr_window_height;
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 3) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 3) & 1);
+====
+flip the absolute left button bit
+    state[1] = (float)mouse_y * renderer_canvas_height / (float)sr_window_height;
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 2) & 1);
+----
+    state[1] = (float)mouse_y * renderer_canvas_height / (float)sr_window_height;
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 2;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 2) & 1);
+====
+drop the absolute button mask field
+    state[1] = (float)mouse_y * renderer_canvas_height / (float)sr_window_height;
+    ((unsigned int *)state)[38] = mouse_button_mask;
+    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
+    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
+    return (int32_t)((mouse_button_mask >> 2) & 1);
+----
+    state[1] = (float)mouse_y * renderer_canvas_height / (float)sr_window_height;
     ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
     ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
     return (int32_t)((mouse_button_mask >> 2) & 1);
@@ -55,16 +114,10 @@ drop the relative button mask field
 drop the absolute mouse coordinates
     state[0] = (float)mouse_x * renderer_canvas_width / (float)sr_window_width;
     state[1] = (float)mouse_y * renderer_canvas_height / (float)sr_window_height;
-----
-====
-swap the relative button fields
     ((unsigned int *)state)[38] = mouse_button_mask;
-    ((unsigned int *)state)[36] = mouse_button_mask & 1;         /* left button */
-    ((unsigned int *)state)[37] = (mouse_button_mask >> 2) & 1;  /* right button */
-    return (int32_t)((mouse_button_mask >> 2) & 1);
 ----
+
+    state[0] = 0.0f;
+    state[1] = 0.0f;
     ((unsigned int *)state)[38] = mouse_button_mask;
-    ((unsigned int *)state)[37] = mouse_button_mask & 1;         /* left button */
-    ((unsigned int *)state)[36] = (mouse_button_mask >> 2) & 1;  /* right button */
-    return (int32_t)((mouse_button_mask >> 2) & 1);
 ====
