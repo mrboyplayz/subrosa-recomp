@@ -10,3 +10,15 @@ long long recovery_return_second(long long first, long long second)
     (void)second;
     return first;
 }
+====
+first directory change dropped
+long long recovery_reset_dirs(void)
+{
+    crt_chdir(&SR_GLOBAL(char, 0x182A7D340ULL));
+    return crt_chdir(&SR_GLOBAL(char, 0x182A7D140ULL));
+}
+----
+long long recovery_reset_dirs(void)
+{
+    return crt_chdir(&SR_GLOBAL(char, 0x182A7D140ULL));
+}

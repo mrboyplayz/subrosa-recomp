@@ -9,4 +9,8 @@
 /* 0x140127900: returns its second argument. */
 long long recovery_return_second(long long first, long long second);
 
+/* 0x14012C450: two directory changes back to the game directories. The
+   paths live in the shared game state; the second result is returned. */
+long long recovery_reset_dirs(void);
+
 #endif
