@@ -285,3 +285,19 @@ void startup_mesh_remove_record(int record)
     for (int k = 0; k < 3; k++)
         startup_mesh_record_vector(record)[k] = startup_mesh_record_vector(last)[k];
 }
+
+/* The message box the original's startup failure path shows: SDL's simple
+   message box (flags, title, message, window), the import table's entry,
+   reached through 0x140198F95, with a null window. */
+#define startup_message_box \
+    ((int (__stdcall *)(unsigned int, const char *, const char *, void *))SR_GLOBAL(void *, 0x14026E4D0ULL))
+
+/* The fatal startup error: shows the game's stock message box and returns
+   null, as the original's first routine does. The box is shown whatever
+   SDL answers; the original ignores the answer too. 0x140001000. */
+void *startup_fatal_error(void)
+{
+    startup_message_box(16, "Fatal Error", "Out of memory - aborting", 0);
+    return 0;
+}
+

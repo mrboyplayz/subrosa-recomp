@@ -65,6 +65,12 @@ uint32_t startup_cpu_has_sse41(void);
    record outside 0..count-1 is left alone. 0x140184AB0. */
 void startup_mesh_remove_record(int record);
 
+/* The fatal startup error: one SDL message box with the game's stock title
+   and text, then a null return. The original calls SDL's simple message box
+   (flags, title, message, window) through the import table. 0x140001000. */
+void *startup_fatal_error(void);
+
+
 /* The world patch mesh builder. 0x14001F20. */
 unsigned long long startup_patch_mesh_build(const float *controls, const float *uv_controls,
                                             int columns, int curve_degree, int rows,
