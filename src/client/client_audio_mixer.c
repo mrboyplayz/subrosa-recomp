@@ -7,24 +7,13 @@
 #include "../engine/text_helpers.h"
 
 //----- (0000000140069400) ----------------------------------------------------
-/* Diagnostics read by the debug console: callbacks so far and the loudest sample. */
+/* The debug console still prints these; the original callback at
+   0x140069400 never touches them (they were invented during
+   reconstruction), so the wrapper does not either. */
 volatile int sr_audio_calls, sr_audio_peak;
 void            sr_audio_output_callback(__int64 userdata, __m128i *output, int byte_count)
 {
-  enum { READ_BUFFER = 9, OUTPUT_BASE = 11, BUFFER_WORDS = 0x10000 };
-  const float *mixed = (const float *)&dword_140404A6C[
-      OUTPUT_BASE + BUFFER_WORDS * dword_140404A6C[READ_BUFFER]];
-  (void)userdata;
-  memcpy(output, mixed, byte_count);
-  /* SDL output is float32; report a normalized peak on the existing 16-bit scale. */
-  for (int sample = 0; sample < byte_count / (int)sizeof(float); ++sample) {
-    float magnitude = fabsf(((float *)output)[sample]);
-    int peak = isfinite(magnitude) ? (int)(fminf(magnitude, 1.0f) * 32767.0f) : 0;
-    if (peak > sr_audio_peak) sr_audio_peak = peak;
-  }
-  sr_audio_calls++;
-  g_140404A90 ^= 1u;
-  SDL_SemPost(*(void **)&g_140404A70);
+  audio_output_callback((void *)(uintptr_t)userdata, output, byte_count);
 }
 
 // 140069439: control flows out of bounds to 140198E69

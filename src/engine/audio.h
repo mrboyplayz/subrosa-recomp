@@ -30,6 +30,8 @@
     ((char *)&SR_GLOBAL(unsigned char, 0x144970EA4ULL) + 512 * (size_t)(index))
 #define audio_capture_name_slot(index) \
     ((char *)&SR_GLOBAL(unsigned char, 0x144978EB0ULL) + 512 * (size_t)(index))
+/* The mixer thread's semaphore, handed over by the audio initialization. */
+#define audio_semaphore SR_GLOBAL(void *, 0x140404A70ULL)
 
 typedef struct AudioSound {
     uint32_t loaded;
@@ -126,6 +128,10 @@ void audio_pause_devices(void);
    to zero, names copy with terminators into 512-byte slots, and both count
    words keep the original's odd +1. 0x140069440 */
 void audio_list_devices(void);
+/* The SDL output callback: copies byte_count bytes of the mix ring the last
+   pass filled, flips the ring selector and posts the mixer semaphore.
+   0x140069400 */
+void audio_output_callback(void *userdata, void *output, int byte_count);
 /* Plays a sound when the player can hear it: the gain is capped at 1 and
    halved when the source is over 128 units from the listener or the straight
    path to it passes through the level; plays only when the sound is loaded.

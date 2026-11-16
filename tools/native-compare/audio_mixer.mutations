@@ -173,3 +173,43 @@ list does the output count first
     int output_count = SDL_GetNumAudioDevices(0);
 ----
     int output_count = SDL_GetNumAudioDevices(1);
+====
+callback copies from the wrong ring
+    const float *mixed = audio_output_ring[audio_output_read_ring];
+----
+    const float *mixed = audio_output_ring[audio_output_read_ring ^ 1u];
+====
+callback copies one extra byte
+    memcpy(output, mixed, (size_t)byte_count);
+----
+    memcpy(output, mixed, (size_t)byte_count + 1);
+====
+callback drops the copy
+    memcpy(output, mixed, (size_t)byte_count);
+----
+----
+====
+callback flips the ring twice
+    audio_output_read_ring ^= 1u;
+----
+    audio_output_read_ring ^= 3u;
+====
+callback does not flip the ring
+    audio_output_read_ring ^= 1u;
+----
+----
+====
+callback posts the wrong semaphore word
+    SDL_SemPost(audio_semaphore);
+----
+    SDL_SemPost(SR_GLOBAL(void *, 0x140404A78ULL));
+====
+callback drops the post
+    SDL_SemPost(audio_semaphore);
+----
+----
+====
+callback keeps the byte count signed
+    memcpy(output, mixed, (size_t)byte_count);
+----
+    memcpy(output, mixed, (size_t)(int)(byte_count + 1));

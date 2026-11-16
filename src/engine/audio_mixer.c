@@ -6,6 +6,7 @@
 extern void SDL_PauseAudioDevice(int device, int pause_on);
 extern int SDL_GetNumAudioDevices(int capture);
 extern const char *SDL_GetAudioDeviceName(int index, int capture);
+extern void SDL_SemPost(void *semaphore);
 
 /* Starts a sound on a channel without a world position. The record's words
    past the active pair are cleared, the first voice takes the sound and the
@@ -205,5 +206,20 @@ void audio_list_devices(void)  /* 0x140069440 */
         } while (copied);
     }
     audio_capture_device_count = (int32_t)audio_capture_device_count + 1;
+}
+
+/* The SDL output callback: copies byte_count bytes of the stereo mix ring
+   the last pass filled into SDL's stream, hands the ring back by flipping
+   the ring selector, and posts the semaphore the mixer thread waits on.
+   The original is just the copy, the flip and the post (0x140069439 tails
+   into SDL_SemPost at 0x140198E69); the diagnostic words the debug console
+   prints are not touched here. */
+void audio_output_callback(void *userdata, void *output, int byte_count)  /* 0x140069400 */
+{
+    const float *mixed = audio_output_ring[audio_output_read_ring];
+    (void)userdata;
+    memcpy(output, mixed, (size_t)byte_count);
+    audio_output_read_ring ^= 1u;
+    SDL_SemPost(audio_semaphore);
 }
 
