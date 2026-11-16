@@ -1,6 +1,9 @@
 #include <string.h>
 #include "audio.h"
 
+/* SDL's device pause: the routine the client binds from SDL2.dll. */
+extern void SDL_PauseAudioDevice(int device, int pause_on);
+
 /* Starts a sound on a channel without a world position. The record's words
    past the active pair are cleared, the first voice takes the sound and the
    caller's mix cursors restart from zero. Returns the played sound's gain
@@ -149,3 +152,16 @@ int64_t audio_mix_emitter(int channel, int count)  /* 0x14006B6F0 */
         record->active = 0;
     return result;
 }
+
+/* Unpauses both audio devices: each device word is read as signed and the
+   device is paused (resume, flag 0) only when its word is positive, capture
+   first, then output. The second call is the original's tail call through
+   its import (0x14006A5E1 falls to 0x140198E9F, SDL_PauseAudioDevice). */
+void audio_pause_devices(void)  /* 0x14006A5C0 */
+{
+    if ((int32_t)audio_capture_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
+    if ((int32_t)audio_output_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_output_enabled, 0);
+}
+

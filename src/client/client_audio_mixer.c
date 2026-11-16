@@ -491,15 +491,9 @@ __int64            sr_audio_channel_play_at(int channel, int sound, unsigned int
 }
 
 //----- (000000014006A5C0) ----------------------------------------------------
-__int64 sub_14006A5C0()
+void sr_audio_pause_devices(void)
 {
-  __int64 result;
-
-  if ( (int)g_1404C4A98 > 0 )
-    result = sub_140198E9F();
-  if ( (int)g_140404A88 > 0 )
-    return sub_140198E9F();
-  return result;
+  audio_pause_devices();
 }
 
 //----- (000000014006B4C0) ----------------------------------------------------

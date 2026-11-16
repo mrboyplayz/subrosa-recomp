@@ -1,0 +1,46 @@
+// NC_WRAPPERS: 14006A5C0
+pause skips the positive guard for capture
+    if ((int32_t)audio_capture_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
+    if ((int32_t)audio_output_enabled > 0)
+----
+    if (audio_capture_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
+    if ((int32_t)audio_output_enabled > 0)
+====
+pause skips the positive guard for output
+    if ((int32_t)audio_output_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_output_enabled, 0);
+----
+    if ((int32_t)audio_output_enabled >= 0)
+        SDL_PauseAudioDevice((int)audio_output_enabled, 0);
+====
+pause resumes the wrong device order
+    if ((int32_t)audio_capture_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
+    if ((int32_t)audio_output_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_output_enabled, 0);
+----
+    if ((int32_t)audio_output_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_output_enabled, 0);
+    if ((int32_t)audio_capture_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
+====
+pause sets the flag to pause instead of resume
+    SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
+----
+    SDL_PauseAudioDevice((int)audio_capture_enabled, 1);
+====
+pause drops the second device call
+    if ((int32_t)audio_output_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_output_enabled, 0);
+----
+    if (0)
+        SDL_PauseAudioDevice((int)audio_output_enabled, 0);
+====
+pause calls the import on the unpositive word
+    if ((int32_t)audio_capture_enabled > 0)
+        SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
+----
+    if ((int32_t)audio_capture_enabled != 0)
+        SDL_PauseAudioDevice((int)audio_capture_enabled, 0);
