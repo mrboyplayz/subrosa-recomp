@@ -4,16 +4,14 @@
 // local variable allocation has failed, the output may be wrong!
 __m128            sub_140187270(float a1, float a2, float a3, double a4, float a5)
 {
-  __int128 state_address;
-
-  state_address = *(_OWORD *)&a4;
-  *(float *)&state_address = (float)((float)((float)((float)((float)((float)(*(float *)&a4 * 3.0) * (float)(1.0 - a1))
-                                                + (float)(a1 * a5))
-                                        * a1)
-                                + (float)((float)((float)(1.0 - a1) * (float)(1.0 - a1)) * (float)(a3 * 3.0)))
-                        * a1)
-                + (float)((float)((float)(1.0 - a1) * (float)(1.0 - a1)) * (float)((float)(1.0 - a1) * a2));
-  return (__m128)state_address;
+  /* Clean implementation: src/engine/recovery_180000.c, checked against the
+     original executable (tools/native-compare/t_recovery_180000.c). This
+     wrapper keeps the entry point the recompiled callers use; the original
+     evaluates a cubic through three control values and returns it in lane 0
+     of xmm0, a4 carries float bits in its low word, and a5 is the high half
+     of the homed xmm3 register. */
+  extern float spline_180000_evaluate(float t, float a2, float a3, float a4);
+  return _mm_set_ss(spline_180000_evaluate(a1, a2, a3, *(float *)&a4));
 }
 
 // 140187270: inconsistent variable size for 'xmm3_8.8'

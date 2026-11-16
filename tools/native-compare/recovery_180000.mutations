@@ -1,0 +1,19 @@
+one-minus-t folded into the multiplications
+    float remaining = one - t;
+----
+    float remaining = 1.0f - t;
+====
+first term left-multiplied
+    return ((a4 * three * remaining + t * a4) * t
+----
+    return ((three * a4 * remaining + t * a4) * t
+====
+remaining squared hoisted differently
+            + remaining * remaining * (a3 * three)) * t
+----
+            + (remaining * remaining) * (a3 * three)) * t
+====
+end term uses a2*a2
+           + remaining * remaining * (remaining * a2);
+----
+           + remaining * remaining * (remaining * a2) * a4;
