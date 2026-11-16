@@ -2,6 +2,7 @@
 #include <string.h>
 #include "audio.h"
 #include "crt.h"
+#include "wave.h"
 #include "arith.h"
 
 uint32_t audio_capture_available(void)

@@ -2793,7 +2793,7 @@ __int64 sub_140185D00();
 
 float            sr_math_curve_point_route(int a1, float a2, float a3, float a4, float a5, float a6);
 
-__m128            sub_140187270(float a1, float a2, float a3, double a4, float a5);
+float            sub_140187270(int a1, float a2, float a3, float a4, float a5, float a6);
 
 float            sr_math_curve_derivative(int a1, float a2, float a3, float a4, float a5, float a6);
 
@@ -2827,7 +2827,7 @@ void            sub_14018B680(__int64 a1, __int64 a2, double a3);
 
 void            sub_14018C250(int a1);
 
-void            sub_14018C2B0(_DWORD *a1, int *a2);
+void            sub_14018C2B0(float *a1, float *a2);
 
 void            sub_14018C340(int a1);
 
@@ -17576,7 +17576,7 @@ float            sr_math_curve_point_route(int a1, float a2, float a3, float a4,
 
 //----- (0000000140187270) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
-__m128            sub_140187270(float a1, float a2, float a3, double a4, float a5)
+float            sub_140187270(int a1, float a2, float a3, float a4, float a5, float a6)
 ;
 
 // 140187270: inconsistent variable size for 'xmm3_8.8'
@@ -17648,7 +17648,7 @@ void            sub_14018C250(int a1)
 ;
 
 //----- (000000014018C2B0) ----------------------------------------------------
-void            sub_14018C2B0(_DWORD *a1, int *a2)
+void            sub_14018C2B0(float *a1, float *a2)
 ;
 
 //----- (000000014018C340) ----------------------------------------------------

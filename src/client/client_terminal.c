@@ -1,5 +1,5 @@
 #include "shared_client.h"
-#include "terminal.h"
+#include "../engine/terminal.h"
 
 //----- (00000001400C5750) ----------------------------------------------------
 __int64 sub_1400C5750(int a1)
