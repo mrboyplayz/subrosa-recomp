@@ -1,5 +1,6 @@
 #include "shared_client.h"
 #include "../engine/vehicle_state.h"
+#include "../engine/vehicles.h" /* engine ports: alert post, packet transfer, wheel force sum */
 
 /* Native event type 20: a 60-tick burst of 128 sparks and one nearby sound. */
 enum {
@@ -11612,60 +11613,11 @@ LABEL_29:
 //----- (00000001400A2C00) ----------------------------------------------------
 __int64            sub_1400A2C00(int a1, signed int a2)
 {
-  __int64 result;
-  __int64 input_value;
-  bool comparison_result;
-  __int64 player_record_offset;
-  __int64 player_record_offset_2;
-  __int64 remaining_count;
-
-  result = g_160FC481C;
-  input_value = a2;
-  comparison_result = (g_160FC481C & 0x80000000) != 0;
-  if ( (int)g_160FC481C > 0 )
-  {
-    player_record_offset = 3597LL * a1;
-    do
-    {
-      result = (unsigned int)(result - 1);
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856367 + player_record_offset] = 2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856368 + player_record_offset] = a2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856369 + player_record_offset] = 0;
-      dword_140404A6C[player_record_offset + 71856362] = ((unsigned __int8)dword_140404A6C[player_record_offset + 71856362] + 1) & 0x3F;
-      comparison_result = (int)result < 0;
-    }
-    while ( (int)result > 0 );
-    g_160FC481C = result;
-  }
-  if ( comparison_result )
-  {
-    player_record_offset_2 = 3597LL * a1;
-    remaining_count = (unsigned int)-(int)result;
-    g_160FC481C = 0;
-    do
-    {
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856367 + player_record_offset_2] = 2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856368 + player_record_offset_2] = input_value;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856369 + player_record_offset_2] = 1;
-      result = ((unsigned __int8)dword_140404A6C[player_record_offset_2 + 71856362] + 1) & 0x3F;
-      dword_140404A6C[player_record_offset_2 + 71856362] = result;
-      --remaining_count;
-    }
-    while ( remaining_count );
-  }
-  if ( BYTE1(g_183F7C974) )
-  {
-    if ( !BYTE1(g_183F7C774) )
-    {
-      dword_140404A6C[3597 * a1 + 71856367 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = 2;
-      dword_140404A6C[3597 * a1 + 71856368 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = input_value;
-      dword_140404A6C[3597 * a1 + 71856369 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = dword_140404A6C[1760 * input_value + 278846061]
-                                                                                         + 2;
-      result = ((unsigned __int8)dword_140404A6C[3597 * a1 + 71856362] + 1) & 0x3F;
-      dword_140404A6C[3597 * a1 + 71856362] = result;
-    }
-  }
-  return result;
+    /* 0x1400A2C00: the engine port vehicles_alert_post (src/engine/
+       vehicles_helpers.c, declared in vehicles.h). The original leaves the
+       speech ring's write cursor (or the repeat counter) in eax; the callers
+       here discard it. */
+    return vehicles_alert_post(a1, a2);
 }
 
 //----- (00000001400A48D0) ----------------------------------------------------
