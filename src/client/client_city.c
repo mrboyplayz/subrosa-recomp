@@ -2028,221 +2028,33 @@ __int64            sub_140027230(     char *a1, int a2)
 //----- (0000000140027690) ----------------------------------------------------
 __int64 sub_140027690()
 {
-  unsigned int *buffer_cursor;
-  __int64 result;
-  int i;
-  int record_byte_offset;
-       char *left_text;
-
-  buffer_cursor = &g_1AFFDFF58;
-  result = (__int64)crt_memset((void *)(uintptr_t)(&g_1AFFDFF58), 0, 0x100u);
-  for ( i = 0; i < (int)g_1AFFDFB54; ++buffer_cursor )
-  {
-    record_byte_offset = 2;
-    left_text = (     char *)&dword_140404A6C[16 * (__int64)i + 468675643];
-    do
-    {
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451017797]) )
-        *buffer_cursor = record_byte_offset - 2;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451020885]) )
-        *buffer_cursor = record_byte_offset - 1;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451023973]) )
-        *buffer_cursor = record_byte_offset;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451027061]) )
-        *buffer_cursor = record_byte_offset + 1;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451030149]) )
-        *buffer_cursor = record_byte_offset + 2;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451033237]) )
-        *buffer_cursor = record_byte_offset + 3;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451036325]) )
-        *buffer_cursor = record_byte_offset + 4;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451039413]) )
-        *buffer_cursor = record_byte_offset + 5;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451042501]) )
-        *buffer_cursor = record_byte_offset + 6;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451045589]) )
-        *buffer_cursor = record_byte_offset + 7;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451048677]) )
-        *buffer_cursor = record_byte_offset + 8;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451051765]) )
-        *buffer_cursor = record_byte_offset + 9;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451054853]) )
-        *buffer_cursor = record_byte_offset + 10;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451057941]) )
-        *buffer_cursor = record_byte_offset + 11;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451061029]) )
-        *buffer_cursor = record_byte_offset + 12;
-      if ( !strcmp_sr(left_text, (     char *)&dword_140404A6C[3088 * record_byte_offset + 451064117]) )
-        *buffer_cursor = record_byte_offset + 13;
-      record_byte_offset += 16;
-      result = (unsigned int)(record_byte_offset - 2);
-    }
-    while ( (int)result < 64 );
-    ++i;
-  }
-  return result;
+    extern void city_match_names_a(void);
+    city_match_names_a();
+    return 0; /* compatibility result discarded by all reviewed callers */
 }
 
 //----- (0000000140027A60) ----------------------------------------------------
 __int64 sub_140027A60()
 {
-  unsigned int *buffer_cursor;
-  __int64 result;
-  int element_index;
-  int state_word;
-  signed int iteration_count;
-  unsigned int *state_address;
-  unsigned int *state_address_2;
-  int masked_bits;
-  int loaded_word;
-
-  buffer_cursor = &g_1AFFF0F5C;
-  crt_memset((void *)(uintptr_t)(&g_1AFFF0F5C), 0, 0x1000u);
-  result = g_1AFFE0F58;
-  element_index = 0;
-  if ( (int)g_1AFFE0F58 > 0 )
-  {
-    state_word = g_181676080;
-    do
-    {
-      iteration_count = 0;
-      if ( state_word > 0 )
-      {
-        state_address = &g_1812C2080;
-        do
-        {
-          state_address_2 = &dword_140404A6C[16 * (__int64)element_index + 468676924];
-          do
-          {
-            masked_bits = *((unsigned __int8 *)state_address_2 + ((char *)state_address - (char *)&dword_140404A6C[16 * (__int64)element_index + 468676924]));
-            loaded_word = *(unsigned __int8 *)state_address_2 - masked_bits;
-            if ( loaded_word )
-              break;
-            state_address_2 = (unsigned int *)((char *)state_address_2 + 1);
-          }
-          while ( masked_bits );
-          if ( !loaded_word )
-            *buffer_cursor = iteration_count;
-          ++iteration_count;
-          state_address += 948;
-        }
-        while ( iteration_count < state_word );
-        result = g_1AFFE0F58;
-      }
-      ++element_index;
-      ++buffer_cursor;
-    }
-    while ( element_index < (int)result );
-  }
-  return result;
+    extern void city_match_names_b(void);
+    city_match_names_b();
+    return 0; /* compatibility result discarded by all reviewed callers */
 }
 
 //----- (0000000140027B40) ----------------------------------------------------
 __int64 sub_140027B40()
 {
-  unsigned int *buffer_cursor;
-  __int64 result;
-  int element_index;
-  int state_word;
-  signed int iteration_count;
-  unsigned int *state_address;
-  unsigned int *state_address_2;
-  int masked_bits;
-  int loaded_word;
-
-  buffer_cursor = &g_1AFFDEB54;
-  crt_memset((void *)(uintptr_t)(&g_1AFFDEB54), 0, 0x1000u);
-  result = g_1AFFCEB50;
-  element_index = 0;
-  if ( (int)g_1AFFCEB50 > 0 )
-  {
-    state_word = g_14500A700;
-    do
-    {
-      iteration_count = 0;
-      if ( state_word > 0 )
-      {
-        state_address = &g_145098C00;
-        do
-        {
-          state_address_2 = &dword_140404A6C[16 * (__int64)element_index + 468658234];
-          do
-          {
-            masked_bits = *((unsigned __int8 *)state_address_2 + ((char *)state_address - (char *)&dword_140404A6C[16 * (__int64)element_index + 468658234]));
-            loaded_word = *(unsigned __int8 *)state_address_2 - masked_bits;
-            if ( loaded_word )
-              break;
-            state_address_2 = (unsigned int *)((char *)state_address_2 + 1);
-          }
-          while ( masked_bits );
-          if ( !loaded_word )
-            *buffer_cursor = iteration_count;
-          ++iteration_count;
-          state_address += 58;
-        }
-        while ( iteration_count < state_word );
-        result = g_1AFFCEB50;
-      }
-      ++element_index;
-      ++buffer_cursor;
-    }
-    while ( element_index < (int)result );
-  }
-  return result;
+    extern void city_match_names_c(void);
+    city_match_names_c();
+    return 0; /* compatibility result discarded by all reviewed callers */
 }
 
 //----- (0000000140027C20) ----------------------------------------------------
 __int64 sub_140027C20()
 {
-  unsigned int *buffer_cursor;
-  __int64 result;
-  int element_index;
-  int state_word;
-  signed int iteration_count;
-  unsigned int *state_address;
-  unsigned int *state_address_2;
-  int masked_bits;
-  int loaded_word;
-
-  buffer_cursor = &g_1AFFCDB50;
-  crt_memset((void *)(uintptr_t)(&g_1AFFCDB50), 0, 0x400u);
-  result = g_1AFFC9B4C;
-  element_index = 0;
-  if ( (int)g_1AFFC9B4C > 0 )
-  {
-    state_word = g_1A4CFF560;
-    do
-    {
-      iteration_count = 0;
-      if ( state_word > 0 )
-      {
-        state_address = &g_1A4CFFCF8;
-        do
-        {
-          state_address_2 = &dword_140404A6C[16 * (__int64)element_index + 468653113];
-          do
-          {
-            masked_bits = *((unsigned __int8 *)state_address_2 + ((char *)state_address - (char *)&dword_140404A6C[16 * (__int64)element_index + 468653113]));
-            loaded_word = *(unsigned __int8 *)state_address_2 - masked_bits;
-            if ( loaded_word )
-              break;
-            state_address_2 = (unsigned int *)((char *)state_address_2 + 1);
-          }
-          while ( masked_bits );
-          if ( !loaded_word )
-            *buffer_cursor = iteration_count;
-          ++iteration_count;
-          state_address += 46;
-        }
-        while ( iteration_count < state_word );
-        result = g_1AFFC9B4C;
-      }
-      ++element_index;
-      ++buffer_cursor;
-    }
-    while ( element_index < (int)result );
-  }
-  return result;
+    extern void city_match_names_d(void);
+    city_match_names_d();
+    return 0; /* compatibility result discarded by all reviewed callers */
 }
 
 //----- (0000000140028790) ----------------------------------------------------

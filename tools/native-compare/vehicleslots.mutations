@@ -1,0 +1,40 @@
+zero count allowed
+    if (count <= 0)
+----
+    if (count < 0)
+====
+last slot unusable
+        if (++index >= count)
+----
+        if (++index >= count - 1)
+====
+slot not marked used
+    slots[index].used = 1;
+----
+    (void)0;
+====
+position and rotation swapped
+    return sr_CreateVehicle(type, slots[index].position, 0, (unsigned *)slots[index].rotation, flags);
+----
+    return sr_CreateVehicle(type, (float *)slots[index].rotation, 0, (unsigned *)slots[index].position, flags);
+====
+flags dropped
+    return sr_CreateVehicle(type, slots[index].position, 0, (unsigned *)slots[index].rotation, flags);
+----
+    return sr_CreateVehicle(type, slots[index].position, 0, (unsigned *)slots[index].rotation, 0);
+====
+result discarded
+    return sr_CreateVehicle(type, slots[index].position, 0, (unsigned *)slots[index].rotation, flags);
+----
+    sr_CreateVehicle(type, slots[index].position, 0, (unsigned *)slots[index].rotation, flags);
+    return 0;
+
+====
+record -1 reads record -1
+    if (record == -1)
+        return 0xFFFFFFFFLL;
+    int32_t count = vehicle_slot_count(record);
+----
+    int32_t count = vehicle_slot_count(record);
+    if (record == -1)
+        count = 5;

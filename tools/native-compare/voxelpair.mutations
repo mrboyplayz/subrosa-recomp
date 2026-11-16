@@ -1,0 +1,44 @@
+only the first voxel
+    for (int k = 0; k < 2; k++, words += 4) {
+----
+    for (int k = 0; k < 1; k++, words += 4) {
+====
+clear ignored
+        uint32_t value = clear ? 0u : ((words[2] << 10) | 6u);
+----
+        uint32_t value = (words[2] << 10) | 6u;
+====
+clear inverted
+        uint32_t value = clear ? 0u : ((words[2] << 10) | 6u);
+----
+        uint32_t value = clear ? ((words[2] << 10) | 6u) : 0u;
+====
+flag bits wrong
+        uint32_t value = clear ? 0u : ((words[2] << 10) | 6u);
+----
+        uint32_t value = clear ? 0u : ((words[2] << 10) | 7u);
+====
+shift wrong
+        uint32_t value = clear ? 0u : ((words[2] << 10) | 6u);
+----
+        uint32_t value = clear ? 0u : ((words[2] << 9) | 6u);
+====
+mark skipped
+        world_mark_block_record(0, x, y, z);
+    }
+}
+----
+    }
+}
+====
+y and z swapped
+        uint32_t x = words[-1], y = words[0], z = words[1];
+----
+        uint32_t x = words[-1], y = words[1], z = words[0];
+====
+layer 1 used
+        world_set_block_unknown_4808(0, x, y, z, value);
+        world_mark_block_record(0, x, y, z);
+----
+        world_set_block_unknown_4808(1, x, y, z, value);
+        world_mark_block_record(1, x, y, z);

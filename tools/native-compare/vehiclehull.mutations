@@ -1,0 +1,49 @@
+reversed edge not recognised
+        if ((a == edges[i].a && b == edges[i].b) || (a == edges[i].b && b == edges[i].a))
+----
+        if (a == edges[i].a && b == edges[i].b)
+====
+duplicate check ignores the second point
+        if ((a == edges[i].a && b == edges[i].b) || (a == edges[i].b && b == edges[i].a))
+----
+        if ((a == edges[i].a) || (a == edges[i].b && b == edges[i].a))
+====
+last edge not compared
+    for (int32_t i = 0; i < count; i++) {
+        if ((a
+----
+    for (int32_t i = 0; i + 1 < count; i++) {
+        if ((a
+====
+edge count not advanced
+    vehicle_hull_edge_count(type)++;
+----
+    (void)0;
+====
+edge kind not stored
+    edges[count].kind = kind;
+----
+    (void)kind;
+====
+face links left unset
+    for (int k = 0; k < 4; k++)
+        face->links[k] = -1;
+----
+    (void)face;
+====
+face last link left unset
+    for (int k = 0; k < 4; k++)
+----
+    for (int k = 0; k < 3; k++)
+====
+face values swapped
+    face->value_34 = value_34;
+    face->value_38 = value_38;
+----
+    face->value_34 = value_38;
+    face->value_38 = value_34;
+====
+face count not advanced
+    vehicle_hull_face_count(type)++;
+----
+    (void)0;

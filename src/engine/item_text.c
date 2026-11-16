@@ -64,3 +64,20 @@ uint32_t item_link_text_line(int item, int line)
     item_register_link(item, (uint32_t)index, line);
     return (uint32_t)index;
 }
+
+void item_text_fill_row(int item, int line, const char *text, char colour, int count)
+{
+    char *out = item_text_line(item, line);
+    uint8_t *colours = item_text_colours(item, line);
+    int written = count > 0 ? count : 0;
+    for (int i = 0; i < count; i++) {
+        char c = *text;
+        if (c)
+            text++;
+        else
+            c = ' ';
+        out[i] = c;
+        colours[i] = (uint8_t)colour;
+    }
+    out[written] = 0;
+}

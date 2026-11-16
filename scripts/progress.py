@@ -27,7 +27,7 @@ def engine_functions():
     for p in ENGINE.glob('*.c'):
         if p.name in LIBRARY_ENGINE:
             continue
-        for m in re.finditer(r'^[A-Za-z_][\w \t\*]*?\b([a-z][a-z0-9_]*)\s*\([^;{]*\)\s*\{',
+        for m in re.finditer(r'^[A-Za-z_][\w \t\*]*?\b([a-z][a-z0-9_]*)\s*\([^;{]*\)\s*(?:/\*.*?\*/\s*|//[^\n]*\n\s*)*\{',
                              p.read_text(encoding='utf-8', errors='replace'), re.M):
             name = m.group(1)
             if name and not name.startswith(('nc_', 'crt_')):

@@ -107,5 +107,10 @@ void math_frame_across(const float direction[3], float side[3], float up[3]);
 /* A hash-based noise generator shared by several effects: the next value,
    0 to 2^31 - 1. Its seed (0x1602E12C0) advances by one per call. */
 int32_t math_noise_next(void);
+/* A random point of the unit circle scaled to ((n + 1) * length) * 0.5 + add, three
+   draws of the noise generator. 0x1400A5510 */
+void math_random_direction_2d(float out[2], float length, float add);
+/* Two-dimensional value noise; the lattice wraps with mask. 0x1401305F0 */
+float math_value_noise_2d(float x, float y, int32_t mask);
 
 #endif

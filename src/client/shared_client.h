@@ -10328,9 +10328,9 @@ extern float flt_140384000[131092];
  // weak
  // weak
  // weak
-extern _UNKNOWN unk_140404090;
+extern int unk_140404090;
  // weak
-extern _UNKNOWN unk_140404094;
+extern int unk_140404094;
  // weak
  // weak
  // weak
@@ -10350,9 +10350,9 @@ extern _UNKNOWN unk_140404094;
  // weak
  // weak
  // weak
-extern _UNKNOWN unk_140404128;
+extern int unk_140404128;
  // weak
-extern _UNKNOWN unk_14040412C;
+extern int unk_14040412C;
  // weak
  // weak
  // weak
@@ -10466,9 +10466,9 @@ extern _UNKNOWN unk_14040412C;
  // weak
  // weak
  // weak
-extern _UNKNOWN unk_1404044B0;
+extern int unk_1404044B0;
  // weak
-extern _UNKNOWN unk_1404044B4;
+extern int unk_1404044B4;
  // weak
  // weak
  // weak
@@ -10560,9 +10560,9 @@ extern _UNKNOWN unk_1404044B4;
  // weak
  // weak
  // weak
-extern _UNKNOWN unk_140404788;
+extern int unk_140404788;
  // weak
-extern _UNKNOWN unk_14040478C;
+extern int unk_14040478C;
  // weak
  // weak
  // weak
@@ -10596,9 +10596,9 @@ extern __int64 (           *unk_140404808)(_QWORD, _QWORD, _QWORD, _QWORD, _DWOR
  // weak
  // weak
  // weak
-extern _UNKNOWN unk_140404888;
+extern int unk_140404888;
  // weak
-extern _UNKNOWN unk_14040488C;
+extern int unk_14040488C;
  // weak
  // weak
  // weak

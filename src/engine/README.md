@@ -90,6 +90,21 @@ The table records the recovered routines by original address. Recovery is incomp
 | `startup.c` (addition), `startup.h` | removing a mesh index record by moving the last one into its place | 0x140184AB0 |
 | `roads.c`, `roads.h` | the road records: a random road with both +0x30/+0x34 words at most 3, and queueing a road's links | 0x140130000, 0x14018C250 |
 | `block_chunks.c`, `block_chunks.h` | the sparse 8 x 8 x 8 block chunk table: a block's cell, last matching record wins | 0x1400D5950 |
+| `gl_loader.c`, `gl_loader.h` | the OpenGL function loaders, one table per version: a version flag read as a dword gates a list of names, each handed to the resolver and stored in its slot (zero when the driver lacks it), plus the glClipControl loader that returns its argument when the flag is clear | 0x1400E3B90, 0x1400E3BC0, 0x1400E3EE0, 0x1400E3FD0, 0x1400E4030, 0x1400E40E0, 0x1400E4190, 0x1400E42E0, 0x1400E48D0, 0x1400E4950, 0x1400E4EB0, 0x1400E4FC0, 0x1400E5110 |
+| `vehicle_hull.c`, `vehicle_hull.h` | the collision hull lists of a vehicle type: an edge appended unless present in either direction, and a face appended with its four links set to -1 | 0x14010C850, 0x14010C900 |
+| `city_names.c`, `city_names.h` | the city name lists matched against four game tables: the last equal entry's index, zero for none | 0x140027690, 0x140027A60, 0x140027B40, 0x140027C20 |
+| `spawn_requests.c`, `spawn_requests.h` | the queue of 1,024 spawn requests: the first free record cleared and filled | 0x14004DA50 |
+| `net_slots.c`, `net_slots.h` | a peer's eight outgoing slots: the pick (first free, or the ratio test the original performs, which can only ever offer slot 0) and the claim | 0x1400A4620, 0x140007490 |
+| `item_phone.c` | a phone put out of use by number, its partner cleared first and re-read for every write, as the original does | 0x1400F3D10 |
+| `math_value_noise.c` | 2D value noise on a wrapping lattice, bit for bit including the smoothstep weights and the 32-bit corner hash | 0x1401305F0 |
+| `math_random_direction.c` | a random point on the unit circle scaled by a random length, three draws of the noise generator | 0x1400A5510 |
+| `world_blocks.c` | a tagged block value with its block-hit event and the shifted bit; the two voxels of a corporation record set or cleared and marked | 0x14000B7D0, 0x140023A20 |
+| `world_vehicles.c` | a vehicle's countdown that records the removal event when it runs out | 0x14000B650 |
+| `scene_queue.c`, `scene_queue.h` | the queue of 4,096 scene objects to draw: one record appended | 0x140092140 |
+| `vehicle_slots.c`, `vehicle_slots.h` | a corporation's parked-vehicle slots: the first free one marked used and a vehicle made there | 0x1400F00D0 |
+| `corner_flip.c` | the 4 x 12 corner table turned one step per count with the face tag along its cycle | 0x14001B5C0 |
+| `item_text.c` | a row of an item's text filled from a string, padded with spaces, with a colour per cell | 0x1400C6AB0 |
+| `texture_solid.c`, `texture_solid.h` | a texture record made 1 x 1 in one colour, its old pixels freed | 0x140138590 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |

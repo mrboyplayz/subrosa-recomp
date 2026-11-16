@@ -1,0 +1,52 @@
+first free not taken
+    while (spawn_requests[index].used) {
+        if (++index >= SPAWN_REQUEST_COUNT)
+            return -1;
+    }
+----
+    index = SPAWN_REQUEST_COUNT - 1;
+    while (spawn_requests[index].used) {
+        if (--index < 0)
+            return -1;
+    }
+====
+last record unusable
+        if (++index >= SPAWN_REQUEST_COUNT)
+----
+        if (++index >= SPAWN_REQUEST_COUNT - 1)
+====
+record not cleared
+    memset(&request->kind, 0, sizeof *request - sizeof request->used);
+----
+    (void)0;
+====
+clear spills over the next record
+    memset(&request->kind, 0, sizeof *request - sizeof request->used);
+----
+    memset(&request->kind, 0, sizeof *request - sizeof request->used + 4);
+====
+word 2 not -1
+    request->unknown_8 = -1;
+----
+    request->unknown_8 = 0;
+====
+human not -1
+    request->human = -1;
+----
+    request->human = 0;
+====
+angle dropped
+    request->angle = angle;
+----
+    (void)angle;
+====
+index off by one
+    return index;
+----
+    return index + 1;
+
+====
+position z dropped
+    memcpy(&request->position[2], &position[2], 4);
+----
+    (void)0;
