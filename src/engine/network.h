@@ -48,7 +48,7 @@ unsigned int *sr_net_peer_record(int peer, unsigned int field);
 #define SR_NET_FIONBIO 0x8004667EuLL
 
 /* Close a peer's socket and mark the record closed. */
-void sr_net_close_socket(int peer); /* 0x14007C080 */
+void net_close_socket(int peer); /* 0x14007C080 */
 
 /* Open a UDP socket for a peer and record it. The sockaddr is filled in
  * regardless of bind; `bind` (when bind_socket is nonzero) leaves the

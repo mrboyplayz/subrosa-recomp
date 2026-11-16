@@ -26,7 +26,7 @@ unsigned int *sr_net_peer_record(int peer, unsigned int field)
 }
 
 /* Close a peer's socket and mark the record closed. 0x14007C080 */
-void sr_net_close_socket(int peer)
+void net_close_socket(int peer)
 {
     unsigned int handle = *sr_net_peer_record(peer, SR_NET_PEER_HANDLE);
     *sr_net_peer_record(peer, SR_NET_PEER_OPEN) = 0;

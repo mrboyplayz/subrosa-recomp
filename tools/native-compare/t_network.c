@@ -24,7 +24,7 @@ long long sub_14007C0C0(int, unsigned short, int, unsigned char *);
 #define open_socket(p, port, bind, addr) sub_14007C0C0(p, port, bind, (unsigned char *)addr)
 #else
 #include "network.h"
-#define close_socket sr_net_close_socket
+#define close_socket net_close_socket
 #define open_socket sr_net_open_socket
 #endif
 
