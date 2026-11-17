@@ -177,6 +177,7 @@ static void draw_quad_scratch(GLenum primitive, int position_floats, const float
     glVertexAttribPointer(0, position_floats, GL_FLOAT, GL_FALSE, stride, (const void *)0);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride,
                           (const void *)(intptr_t)(4 * position_floats));
+    glDisableVertexAttribArray(2);
     glVertexAttrib4fv(2, color);
     glDrawArrays(primitive, 0, scratch->vertex_count);
     glDisableVertexAttribArray(0);

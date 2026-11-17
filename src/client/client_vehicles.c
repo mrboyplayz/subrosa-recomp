@@ -9670,16 +9670,19 @@ LABEL_34:
             ++text_cursor;
           }
           while ( input_byte );
-          unused_written_slot_4 = LODWORD(scaled_value);
-          unused_written_slot_3 = 1065353216;
-          unused_written_slot_2 = 1061158912;
-          unused_written_slot = 1061158912;
-          LODWORD(packed_word_bits) = 97;
-          sr_CSDrawText(
-            (char *)&g_144AFA0A0,
-            512.0,
-            (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector),
-            24.0);
+          /* 0x140082A6C: flags 0x61 (centred, shadowed, unformatted), colour
+             (0.0625, 0.0625, 1.0) and alpha = ticks * 0.005, so a bubble
+             fades out over its five seconds. The 4-argument sr_CSDrawText
+             dropped the flags and the alpha, which drew the line uncentred
+             at full brightness. */
+          {
+            const uint64 sr_bubble_arguments[8] = { 0 };
+            sr_text_draw_recovered((char *)&g_144AFA0A0, 512.0,
+                                   sr_text_bits_float((unsigned)(uintptr_t)
+                                     ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector))),
+                                   24.0, 0x61u, 0.0625f, 0.0625f, 1.0f, scaled_value,
+                                   sr_bubble_arguments);
+          }
           *(float *)SR_VEC_LANES(128, converted_vector, i32) = *(float *)SR_VEC_LANES(128, converted_vector, i32) + 24.0;
         }
       }
@@ -10282,15 +10285,16 @@ LABEL_105:
   {
     if ( game_state == 1 )
     {
-      unused_written_slot_5 = (signed int)g_183EBFCD4 / 60 % 10;
-      LODWORD(state_address_6) = (signed int)g_183EBFCD4 / 60 / 10 % 6;
-      LODWORD(state_address_5) = (signed int)g_183EBFCD4 / 60 / 60;
-      unused_written_slot_4 = 1065353216;
-      unused_written_slot_3 = 1065353216;
-      unused_written_slot_2 = 1065353216;
-      unused_written_slot = 1065353216;
-      LODWORD(packed_word_bits) = 2;
-      sr_text_draw_recovered("Start: /i:/i/i", text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))), 24.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x140084296 */;
+      /* 0x140084296: the same clock, right-aligned at (1020, 4). */
+      const uint64 sr_start_arguments[8] = {
+        (unsigned)((signed int)g_183EBFCD4 / 60 / 60),
+        (unsigned)((signed int)g_183EBFCD4 / 60 / 10 % 6),
+        (unsigned)((signed int)g_183EBFCD4 / 60 % 10)
+      };
+      sr_text_draw_recovered("Start: /i:/i/i", text_x,
+                             sr_text_bits_float((unsigned)(uintptr_t)
+                               ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                             24.0, 2u, 1.0f, 1.0f, 1.0f, 1.0f, sr_start_arguments);
     }
     else
     {
@@ -10298,25 +10302,24 @@ LABEL_105:
         goto LABEL_133;
       if ( (int)g_183F79F84 <= 0 )
       {
-        unused_written_slot_4 = 1065353216;
-        unused_written_slot_3 = 1065353216;
-        unused_written_slot_2 = 1065353216;
-        unused_written_slot = 1065353216;
-        LODWORD(packed_word_bits) = 2;
-        sr_text_draw_recovered("Get Ready", text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))), 24.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400843EA */;
+        sr_text_draw_recovered("Get Ready", text_x,
+                               sr_text_bits_float((unsigned)(uintptr_t)
+                                 ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                               24.0, 2u, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       }
       else
       {
-        unused_written_slot_6 = (signed int)g_183F79F84 / 6 % 10;
-        unused_written_slot_5 = (signed int)g_183F79F84 / 60 % 10;
-        LODWORD(state_address_6) = (signed int)g_183F79F84 / 60 / 10 % 6;
-        LODWORD(state_address_5) = (signed int)g_183F79F84 / 60 / 60;
-        unused_written_slot_4 = 1065353216;
-        unused_written_slot_3 = 1065353216;
-        unused_written_slot_2 = 1065353216;
-        unused_written_slot = 1065353216;
-        LODWORD(packed_word_bits) = 2;
-        sr_text_draw_recovered("/i:/i/i./i", text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))), 24.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008439F */;
+        /* 0x14008439F: hours, minutes tens, minutes ones, tenths. */
+        const uint64 sr_ready_arguments[8] = {
+          (unsigned)((signed int)g_183F79F84 / 60 / 60),
+          (unsigned)((signed int)g_183F79F84 / 60 / 10 % 6),
+          (unsigned)((signed int)g_183F79F84 / 60 % 10),
+          (unsigned)((signed int)g_183F79F84 / 6 % 10)
+        };
+        sr_text_draw_recovered("/i:/i/i./i", text_x,
+                               sr_text_bits_float((unsigned)(uintptr_t)
+                                 ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                               24.0, 2u, 1.0f, 1.0f, 1.0f, 1.0f, sr_ready_arguments);
       }
     }
   }
@@ -10337,7 +10340,19 @@ LABEL_131:
       unused_written_slot_2 = 1065353216;
       unused_written_slot = 1065353216;
       LODWORD(packed_word_bits) = 2;
-      sr_CSDrawText(literal_text_3, text_x, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3), 24.0);
+      /* 0x140084615: x 1020 (right-aligned), y 4, size 24, flags 2 = right,
+         white, then the three /i digits from the stack slots. The
+         4-parameter sr_CSDrawText dropped both the flags and the digits, so
+         the clock ran off the right edge and printed zeros. */
+      {
+        const uint64 sr_timer_arguments[8] = {
+          (unsigned)state_address_5, (unsigned)state_address_6, (unsigned)unused_written_slot_5
+        };
+        sr_text_draw_recovered(literal_text_3, text_x,
+                               sr_text_bits_float((unsigned)(uintptr_t)
+                                 ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                               24.0, 2u, 1.0f, 1.0f, 1.0f, 1.0f, sr_timer_arguments);
+      }
       break;
     case 1u:
       integer_quotient_3 = (signed int)g_183EBFCD4 / 60;
@@ -10435,16 +10450,18 @@ LABEL_168:
 LABEL_172:
                 if ( dword_140404A6C[38 * j + 346696445] == 6 )
                   selection_code = 0;
-                unused_written_slot_4 = LODWORD(scaled_value_2);
-                unused_written_slot_3 = selection_code;
-                unused_written_slot_2 = selection_code;
-                unused_written_slot = 1065353216;
-                LODWORD(packed_word_bits) = 96;
-                sr_CSDrawText(
-                  (char *)&g_144AFA0A0,
-                  4.0,
-                  (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_4),
-                  20.0);
+                /* 0x1400848B2: flags 0x60 (shadowed, unformatted), white-ish,
+                   alpha = ticks * 0.005 so the line fades out. The 4-argument
+                   sr_CSDrawText dropped the flags and the alpha, so the bubble
+                   drew at full brightness for ever and was not shadowed. */
+                {
+                  const uint64 sr_bubble_arguments[8] = { 0 };
+                  sr_text_draw_recovered((char *)&g_144AFA0A0, 4.0,
+                                         sr_text_bits_float((unsigned)(uintptr_t)
+                                           ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_4))),
+                                         20.0, 96u, 1.0f, 1.0f, 1.0f, scaled_value_2,
+                                         sr_bubble_arguments);
+                }
                 *(float *)SR_VEC_LANES(128, converted_vector_4, i32) = *(float *)SR_VEC_LANES(128, converted_vector_4, i32) + 20.0;
                 continue;
               }

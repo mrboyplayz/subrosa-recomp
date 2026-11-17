@@ -1521,6 +1521,7 @@ __int64 sub_14008A110()
   char *text;
   int scaled_index;
   float combined_products;
+  int scaled_money;
        char *literal_text_2;
   __m128i converted_vector_2;
   int integer_sum;
@@ -1688,21 +1689,27 @@ LABEL_21:
         {
           combined_products = combined_products + 0.5;
         }
+        /* The original divides the value by ten with an integer divide and
+           hands that, and the rounded percent, to the formatter as the two
+           varargs (r8d and r9d). Both were dropped here, so the readout used
+           whatever was left in those registers. */
+        scaled_money = dword_140404A6C[6 * element_index + 335047064] / 10;
         if ( (int)combined_products < -50 )
         {
-          crt_sprintf(text_2, "$%d(Split)");
+          crt_sprintf(text_2, "$%d(Split)", scaled_money);
         }
         else
         {
           literal_text_2 = "$%d(+%d%%)";
           if ( (int)combined_products <= 0 )
             literal_text_2 = "$%d(%d%%)";
-          crt_sprintf(text_2, literal_text_2);
+          crt_sprintf(text_2, literal_text_2, scaled_money, (int)combined_products);
         }
       }
       else
       {
-        crt_sprintf(text_2, "$%d");
+        scaled_money = dword_140404A6C[6 * element_index + 335047064] / 10;
+        crt_sprintf(text_2, "$%d", scaled_money);
       }
       selection_code = 1065353216;
       scaled_value_6 = scaled_value_3;
@@ -4627,11 +4634,28 @@ __int64 sub_140092370()
             /* 0x140092C29: width = the text width summed at 0x140092A7F (v35) + 4.0 (0x140092BE0, xmm2 at 0x140092C04);
                the C had passed an undefined local */
             sr_renderer_draw_textured_rect(x, *(double *)SR_VEC_LANES(128, converted_vector_3, i64), sr_text_float_bits(weighted_sum_3 + 4.0f), limited_value_2 * 0.875, 5, red, red, red, COERCE_INT(product_difference * 0.75f));
-            sr_CSDrawText(
-              (char *)&dword_140404A6C[scaled_index + 346696451],
-              *(float *)&x,
-              (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3),
-              limited_value_2);
+            /* 0x140092C75: the speaker's line over their head. Flags 0x45
+               (centred on both axes, drawn unformatted), red 1.0 (or 0.0625
+               when the player is behind something, 0x140092BC1) in xmm15,
+               0.0625 green/blue in xmm14, alpha ticks * 0.005 * 0.75 in xmm11.
+               The 4-argument sr_CSDrawText dropped every one of those. */
+            {
+              const uint64 sr_bubble_arguments[8] = { 0 };
+              float sr_alpha = product_difference * 0.75f;
+              /* Original registers at 0x140092802-0x1400929EF: base is 0.5 for esi == 2 else 0;
+                 mode 0 (whisper) lifts blue, mode 2 (yell) lifts red, green stays base. */
+              float sr_base = table_value_2 == 2 ? 0.5f : 0.0f;
+              float sr_red = sr_base + (table_value_4 == 2 ? 0.5f : 0.0f);
+              float sr_green = sr_base;
+              float sr_blue = sr_base + (table_value_4 == 0 ? 0.5f : 0.0f);
+              sr_text_draw_recovered((char *)&dword_140404A6C[scaled_index + 346696451],
+                                     *(float *)&x,
+                                     sr_text_bits_float((unsigned)(uintptr_t)
+                                       ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                                     limited_value_2, 0x45u,
+                                     sr_red, sr_green, sr_blue, sr_alpha,
+                                     sr_bubble_arguments);
+            }
             table_value_5 = dword_140404A6C[scaled_index + 346696445];
             if ( table_value_5 == 1 )
             {

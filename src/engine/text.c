@@ -276,6 +276,8 @@ void text_draw_glyphs(const char *text, float x, float y, float size,
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (const void *)0);
     stride = multiply_int(scratch->floats_per_vertex, 4);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (const void *)12);
+    /* A constant colour is ignored while attribute 2 still has an enabled array. */
+    glDisableVertexAttribArray(2);
     glVertexAttrib4fv(2, color);
 
     /* Two triangles per glyph from the shared quad index buffer. */
