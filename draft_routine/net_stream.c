@@ -1,4 +1,5 @@
-/* DRAFT, NOT COMPILED, NOT VERIFIED. Network stream + replication region:
+/* DRAFT, VERIFIED IDENTICAL (200 cases, draft_routine/.verify_netstream).
+ * Network stream + replication region:
  * 0x140127900, 0x14012AF00, 0x14012C450, 0x140132990, 0x140132E30.
  * Read from the disassembly (draft_routine/disasm_14012*.txt,
  * disasm_140132*.txt); the decompiled siblings are
@@ -6,8 +7,9 @@
  *
  * To finish: move each routine into src/engine/net_stream.c (+ net_stream.h),
  * rewire sub_140XXXXXX in src/client/client_recovery_120000.c, move
- * t_netstream.c + netstream.mutations to tools/native-compare, prove plain
- * (and --client-wrappers where noted), then mutate.
+ * t_netstream.c + netstream.mutations to tools/native-compare, run
+ * `run.py netstream` plain and --client-wrappers (the suite declares
+ * NC_WRAPPERS for all five addresses), then mutate with netstream.mutations.
  *
  * Notes for the suite (draft_routine/t_netstream.c moves with the port):
  *  - nc_save these ranges: 0x154161240 size 0x2A060C8 (the world block

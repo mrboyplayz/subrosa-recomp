@@ -1,9 +1,15 @@
 /* Draft vehicle-misc recovery: DRAFT STAGE ONLY.
  *
  * Five client_vehicles.c routines recovered from subrosaactual/subrosa.exe
- * into clean C, verified bit-exact against the original machine code with
- * the native-compare harness (t_vehiclemisc.c in this folder, temp copy at
- * tools/native-compare/t_vehiclemisc.c, engine dir .verify_vehiclemisc/).
+ * into clean C. Verification status: DRAFT, NOT VERIFIED — the suite
+ * compiles in all three modes and the port build runs, but the NATIVE
+ * build still faults (0xC0000005) at a later packet/transfer case; the
+ * state seeding the original needs before those calls is not fully
+ * identified yet. Fixture findings so far: imports must be bound before
+ * nc_map_image(), nc_redirect after it; the original calls 0x140077710
+ * with no pointer argument (stub must be parameterless); the train-fields
+ * forwarder is set through vehicles_setup_train_fields_fn. One more
+ * gdb pass over build/native-compare/vehiclemisc/native should finish it.
  *
  * Two of the originally assigned addresses turned out to be recovered
  * already and are NOT redone here:
