@@ -20,12 +20,15 @@
  * dir (it copies src/engine), so the mutations file is only exercised
  * after the suite is landed.
  *
- * The suite binds the shim's two callees with nc_redirect recording
- * stubs: 0x140198F0B is sr_menu_relative_mode (the (1, junk, junk) call
- * re-enters the escape menu) and 0x14013D1B0 is the shading pass that
- * recovers the camera uniforms, whose double result the shim returns
- * unchanged. 0x14014B2A0, the routine the shim tail-jumps to, computes
- * the final candidate vector.
+ * The suite binds the shim's two callees and its tail-jump target with
+ * nc_redirect recording stubs: 0x140198F0B is sr_menu_relative_mode (the
+ * (1, junk, junk) call re-enters the escape menu), 0x14013D1B0 is the
+ * shading pass whose double result the shim discards and 0x14014B2A0
+ * computes the final candidate. The suite also redirects the game's CRT
+ * pow (0x140240C80) to the same pow the port build uses: the original
+ * priority routine's raise dispatches through a pointer that only the
+ * game's own process initialization writes, so the harness image must
+ * bind it (t_clockms binds QueryPerformanceCounter the same way).
  */
 #include "draft_routine.h"
 #include "net_bits.h"
@@ -54,10 +57,18 @@ uint32_t draft_distance_priority(float distance)
  * compare of the wrapped tick age), copy every entry its snapshot slot
  * marks changed into the words it is owed. Four walks in the original's
  * order: 256 humans (snapshot stride 121 dwords), 512 blocks, 1024 items
- * (stride 9), 1024 unknown words (stride 10). Every stamp writes the
+ * (stride 9), 1024 unknown words (stride 10). The masks sit one 0x160-byte
+ * block per peer and slot; the fourth loop's mask offset (kept in RAX)
+ * is the flat index from the slot's block, while the accessor adds the
+ * slot's own 0x160 contribution itself. Every stamp writes the
  * peer's last-caught-up tick into the owed entry's third dword and the
- * snapshot word into its first. The last loop keeps either the mask word
- * index or the copied snapshot word in RAX, as the original does. */
+ * snapshot word into its first (the item entry's third dword is +8, per
+ * 0x1401062a1). The last loop keeps either the mask word index or the
+ * copied snapshot word in RAX, as the original does. NOTE: the landed
+ * net_replication_peer_catchup in src/engine/net_replication_encode.c
+ * writes the item tick at the fifth dword of ReplicationItemOwed (+16),
+ * which the original never writes — a pre-existing port bug my suite
+ * exposed; the landed port needs the same fix when this is landed. */
 uint64_t draft_peer_catchup(int peer)
 {
     int64_t peer_index = (int64_t)peer;
@@ -96,7 +107,14 @@ uint64_t draft_peer_catchup(int peer)
     entry = 0;
     do {
         if ((rol & replication_item_dirty(peer, slot, entry)) != 0) {
-            replication_peer_item(peer, entry)->tick = replication_peer_last_tick(peer);
+            /* The original stores the tick at the item entry's third dword
+               (0x1401062a1: mov %eax,0x8(%rdx)) and the snapshot word at
+               the first, so the entry layout is taken locally: the landed
+               ReplicationItemOwed in net_replication_encode.h keeps its
+               tick at the fifth dword, which the original never writes. */
+            SR_GLOBAL(int32_t, 0x1A8E3F7C0ULL + NET_REPLICATION_PEER_STRIDE
+                      * (uint64_t)(int64_t)peer + 20ULL * (uint64_t)entry + 8ULL) =
+                replication_peer_last_tick(peer);
             replication_peer_item(peer, entry)->unknown_0 =
                 (int32_t)replication_item_snapshot(slot, entry);
         }
@@ -109,7 +127,7 @@ uint64_t draft_peer_catchup(int peer)
     entry = 0;
     do {
         result = mask_base + ((uint64_t)entry >> 5);
-        if ((rol & replication_unknown_dirty(peer, result, entry)) != 0) {
+        if ((rol & replication_unknown_dirty(peer, slot, entry)) != 0) {
             replication_peer_unknown(peer, entry)->tick = replication_peer_last_tick(peer);
             uint32_t snapshot = (uint32_t)replication_unknown_snapshot(slot, entry);
             replication_peer_unknown(peer, entry)->unknown_0 = (int32_t)snapshot;

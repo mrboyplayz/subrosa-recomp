@@ -55,10 +55,14 @@ encode delta small width
 ----
     return inline_write_bits(delta & 0x7u, 4);
 ====
-encode delta medium boundary
-    if ((uint32_t)(delta + 256) > 0x1FF) {
+encode delta medium markers
+    uint32_t one = 1, zero = 0;
+    net_write_bits(&one, 1);
+    net_write_bits(&zero, 1);
 ----
-    if ((uint32_t)(delta + 256) > 0x1FE) {
+    uint32_t one = 1, zero = 0;
+    net_write_bits(&one, 1);
+    net_write_bits(&zero, 0);
 ====
 encode delta medium width
         result = inline_write_bits(delta & 0x1FFu, 9);
@@ -66,16 +70,16 @@ encode delta medium width
         result = inline_write_bits(delta & 0xFFu, 9);
 ====
 adaptive small range
-    if ((int32_t)scratch >= -net_replication_small_delta_half
-        && (int32_t)scratch < net_replication_small_delta_half)
+        if ((int32_t)scratch >= -net_replication_small_delta_half
+            && (int32_t)scratch < net_replication_small_delta_half)
 ----
-    if ((int32_t)scratch >= -net_replication_small_delta_half)
+        if ((int32_t)scratch >= -net_replication_small_delta_half)
 ====
 adaptive medium range
-    else if ((int32_t)scratch >= -net_replication_medium_delta_half
-             && (int32_t)scratch < net_replication_medium_delta_half)
+        else if ((int32_t)scratch >= -net_replication_medium_delta_half
+                 && (int32_t)scratch < net_replication_medium_delta_half)
 ----
-    else if ((int32_t)scratch >= -net_replication_medium_delta_half)
+        else if ((int32_t)scratch >= -net_replication_medium_delta_half)
 ====
 adaptive zero collapse
     if (net_replication_delta_markers && scratch == 0)
