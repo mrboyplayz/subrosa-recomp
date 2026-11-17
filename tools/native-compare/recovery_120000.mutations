@@ -1,0 +1,51 @@
+returns second argument, not first
+long long recovery_return_second(long long first, long long second)
+{
+    (void)first;
+    return second;
+}
+----
+long long recovery_return_second(long long first, long long second)
+{
+    (void)second;
+    return first;
+}
+====
+first directory change dropped
+long long recovery_reset_dirs(void)
+{
+    crt_chdir(&SR_GLOBAL(char, 0x182A7D340ULL));
+    return crt_chdir(&SR_GLOBAL(char, 0x182A7D140ULL));
+}
+----
+long long recovery_reset_dirs(void)
+{
+    return crt_chdir(&SR_GLOBAL(char, 0x182A7D140ULL));
+}
+====
+first rand choice falls through to the default sentence
+long long recovery_append_file_text(char *text, const char *name)
+{
+    static char sentence[512];
+
+    *text = 0;
+    int choice = rand() % 3;
+    if (choice == 1)
+        crt_sprintf(sentence, "the file named %s contains the data. ", name);
+    else if (choice == 2)
+        crt_sprintf(sentence, "the secret info is located in %s. ", name);
+    else
+        crt_sprintf(sentence, "the data is stored in the file %s. ", name);
+----
+long long recovery_append_file_text(char *text, const char *name)
+{
+    static char sentence[512];
+
+    *text = 0;
+    int choice = rand() % 3;
+    if (choice == 2)
+        crt_sprintf(sentence, "the secret info is located in %s. ", name);
+    else if (choice == 1)
+        crt_sprintf(sentence, "the file named %s contains the data. ", name);
+    else
+        crt_sprintf(sentence, "the data is stored in the file %s. ", name);

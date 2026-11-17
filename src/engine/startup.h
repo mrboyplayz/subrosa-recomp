@@ -6,6 +6,7 @@
 #define SR_ENGINE_STARTUP_H
 
 #include <stdint.h>
+#include <stdio.h>
 
 #include "memory.h"
 
@@ -64,6 +65,20 @@ uint32_t startup_cpu_has_sse41(void);
 /* Removes an index record by moving the last one into its place; a
    record outside 0..count-1 is left alone. 0x140184AB0. */
 void startup_mesh_remove_record(int record);
+
+/* The fatal startup error: one SDL message box with the game's stock title
+   and text, then a null return. The original calls SDL's simple message box
+   (flags, title, message, window) through the import table. 0x140001000. */
+void *startup_fatal_error(void);
+
+/* The stdio clear-error-and-rewind: the original clears the stream's
+   error and end-of-file state, queries the stream's position state, and
+   when it is not -1 puts the queried value back, returning the answer or
+   the queried -1. The caller's mark is only forwarded to the clear state
+   helper. 0x1400012C0. */
+int startup_clearerr_rewind(FILE *stream, int second);
+
+
 
 /* The world patch mesh builder. 0x14001F20. */
 unsigned long long startup_patch_mesh_build(const float *controls, const float *uv_controls,

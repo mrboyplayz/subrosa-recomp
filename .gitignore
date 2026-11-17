@@ -16,6 +16,7 @@
 !ida/
 !ida/**
 
+draft_routine
 build/
 dist/
 tools/rust

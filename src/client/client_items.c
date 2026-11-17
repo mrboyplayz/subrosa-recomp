@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/items.h"
 
 //----- (0000000140054130) ----------------------------------------------------
 __int64            sr_CreateItem(int a1, float *a2, unsigned int *a3, float *a4)
@@ -1113,58 +1114,7 @@ void            sub_1400E7960(int a1, char *a2)
 //----- (0000000140115FF0) ----------------------------------------------------
 __int64            sub_140115FF0(int a1)
 {
-  __int64 record_word_offset;
-  __int64 remaining_count;
-  int rand_result;
-  int rand_result_2;
-  __int64 integer_sum;
-  unsigned int table_value;
-  __int64 integer_sum_2;
-  __int64 result;
-
-  record_word_offset = 290LL * a1;
-  dword_140404A6C[290 * a1 + 273377606] = 1;
-  remaining_count = 1024;
-  dword_140404A6C[record_word_offset + 273377607] = 0;
-  dword_140404A6C[record_word_offset + 273377608] = 1;
-  dword_140404A6C[record_word_offset + 273377609] = 2;
-  dword_140404A6C[record_word_offset + 273377610] = 3;
-  dword_140404A6C[record_word_offset + 273377611] = 4;
-  dword_140404A6C[record_word_offset + 273377612] = 5;
-  dword_140404A6C[record_word_offset + 273377613] = 6;
-  dword_140404A6C[record_word_offset + 273377614] = 7;
-  dword_140404A6C[record_word_offset + 273377615] = 8;
-  dword_140404A6C[record_word_offset + 273377616] = 9;
-  dword_140404A6C[record_word_offset + 273377617] = 10;
-  dword_140404A6C[record_word_offset + 273377618] = 11;
-  dword_140404A6C[record_word_offset + 273377619] = 12;
-  dword_140404A6C[record_word_offset + 273377620] = 13;
-  dword_140404A6C[record_word_offset + 273377621] = 14;
-  dword_140404A6C[record_word_offset + 273377622] = 15;
-  dword_140404A6C[record_word_offset + 273377623] = 16;
-  dword_140404A6C[record_word_offset + 273377624] = 17;
-  dword_140404A6C[record_word_offset + 273377625] = 18;
-  dword_140404A6C[record_word_offset + 273377626] = 19;
-  dword_140404A6C[record_word_offset + 273377627] = 20;
-  dword_140404A6C[record_word_offset + 273377628] = 21;
-  dword_140404A6C[record_word_offset + 273377629] = 22;
-  dword_140404A6C[record_word_offset + 273377630] = 23;
-  dword_140404A6C[record_word_offset + 273377631] = 24;
-  dword_140404A6C[record_word_offset + 273377632] = 25;
-  do
-  {
-    rand_result = rand() % 26;
-    rand_result_2 = rand();
-    integer_sum = record_word_offset + rand_result;
-    table_value = dword_140404A6C[integer_sum + 273377607];
-    integer_sum_2 = record_word_offset + rand_result_2 % 26;
-    result = dword_140404A6C[integer_sum_2 + 273377607];
-    dword_140404A6C[integer_sum + 273377607] = result;
-    dword_140404A6C[integer_sum_2 + 273377607] = table_value;
-    --remaining_count;
-  }
-  while ( remaining_count );
-  return result;
+  return item_intel_deck_shuffle(a1);
 }
 
 //----- (000000014012C890) ----------------------------------------------------

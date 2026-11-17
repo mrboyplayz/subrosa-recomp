@@ -15,6 +15,7 @@ size_t crt_wcsnlen(const uint16_t *text, size_t limit);             /* 0x140254F
 extern long long crt_assert(char *expression, char *file, int line);      /* _wassert, 0x14023E640 */
 extern long long sr_path_malloc(unsigned long long size);                 /* malloc, 0x14023ACF8 */
 extern void free(void *block);                                            /* 0x14023ACE4 */
+extern long long crt_chdir(char *path);                                   /* 0x14024C22C */
 
 /* crt_math.c */
 float crt_asinf(float x);                                           /* 0x14023EB20 */

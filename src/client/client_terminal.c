@@ -1,4 +1,5 @@
 #include "shared_client.h"
+#include "../engine/terminal.h"
 
 //----- (000000014004CCB0) ----------------------------------------------------
 __int64            sub_14004CCB0(int a1, int a2, __int64 a3)
@@ -268,41 +269,10 @@ void sub_14008F050()
 }
 
 //----- (00000001400C3E00) ----------------------------------------------------
-__int64            sub_1400C3E00(int a1)
+__int64 sub_1400C3E00(int a1)
 {
-  __m128i si128;
-  __int64 input_value;
-  __int64 item_record_offset;
-  unsigned int *state_address;
-  unsigned int table_value;
-  unsigned int table_value_2;
-  int masked_bits;
-  __int64 result;
-
-  si128 = _mm_load_si128((     __m128i *)&xmmword_140279200);
-  input_value = a1;
-  item_record_offset = 1760LL * a1;
-  state_address = &dword_140404A6C[16 * ((int)dword_140404A6C[item_record_offset + 278846111] + 110LL * a1) + 278846626];
-  _mm_storeu_si128((__m128i *)(void *)state_address, si128);
-  _mm_storeu_si128((__m128i *)(void *)(state_address + 4), si128);
-  _mm_storeu_si128((__m128i *)(void *)(state_address + 8), si128);
-  *((_QWORD *)state_address + 6) = SR_VEC_LANES(128, si128, i64)[0];
-  state_address[14] = SR_VEC_LANES(128, si128, i32)[0];
-  *((_WORD *)state_address + 30) = SR_VEC_LANES(128, si128, i16)[0];
-  *((_BYTE *)state_address + 62) = SR_VEC_LANES(128, si128, i8)[0];
-  sr_item_link_text_line(a1, dword_140404A6C[item_record_offset + 278846111]);
-  table_value = dword_140404A6C[item_record_offset + 278846111];
-  table_value_2 = dword_140404A6C[item_record_offset + 278846112];
-  if ( (((_BYTE)table_value + 10) & 0x1F) == table_value_2 )
-    dword_140404A6C[item_record_offset + 278846112] = ((_BYTE)table_value_2 + 1) & 0x1F;
-  masked_bits = ((_BYTE)table_value + 1) & 0x1F;
-  dword_140404A6C[item_record_offset + 278846111] = masked_bits;
-  result = (unsigned int)(masked_bits << 6);
-  ++dword_140404A6C[input_value + 280648157];
-  dword_140404A6C[item_record_offset + 278846113] = result;
-  return result;
+  return terminal_clear_line_and_bump((int)a1);
 }
-
 //----- (00000001400C3ED0) ----------------------------------------------------
 int            sub_1400C3ED0(int a1)
 {
@@ -1240,78 +1210,9 @@ __int64            sub_1400C5610(int a1, int a2, __int64 a3, int a4)
 }
 
 //----- (00000001400C5750) ----------------------------------------------------
-__int64            sub_1400C5750(int a1)
+__int64 sub_1400C5750(int a1)
 {
-  __int64 input_value;
-  unsigned int *record_byte_offset;
-  signed int line;
-  __int64 item_record_offset;
-  __int64 running_total;
-  __int64 i;
-  __int64 loaded_word;
-  __int64 integer_sum;
-  char lobyte_result;
-  __int64 iteration_count;
-  __int64 loaded_word_2;
-  unsigned int scaled_index;
-  char comparison_result;
-  __int64 integer_sum_2;
-
-  input_value = a1;
-  record_byte_offset = &dword_140404A6C[1760 * a1 + 278847325];
-  line = 3;
-  item_record_offset = 1760LL * a1;
-  running_total = item_record_offset * 4 + 128;
-  do
-  {
-    for ( i = 0; i < 62; ++i )
-    {
-      loaded_word = *((char *)record_byte_offset + i);
-      if ( !(_BYTE)loaded_word )
-        break;
-      integer_sum = running_total + i;
-      if ( (unsigned __int8)(loaded_word - 65) > 0x19u )
-      {
-        *((_BYTE *)&g_182BBB4F4 + integer_sum) = loaded_word;
-      }
-      else
-      {
-        lobyte_result = LOBYTE(dword_140404A6C[1760 * input_value + 278847390 + loaded_word]) + 65;
-        *((_BYTE *)&g_182BBBCF4 + integer_sum) = 15;
-        *((_BYTE *)&g_182BBB4F4 + integer_sum) = lobyte_result;
-        if ( dword_140404A6C[item_record_offset + 278847583] == dword_140404A6C[1760 * input_value + 278847390 + loaded_word] )
-          *((_BYTE *)&g_182BBBCF4 + integer_sum) = 12;
-      }
-    }
-    *((_BYTE *)&g_182BBB4F4 + i + running_total) = 0;
-    sr_item_link_text_line(a1, line - 1);
-    iteration_count = 0;
-    do
-    {
-      loaded_word_2 = *((char *)record_byte_offset + iteration_count);
-      if ( !(_BYTE)loaded_word_2 )
-        break;
-      if ( (unsigned __int8)(loaded_word_2 - 65) > 0x19u )
-      {
-        comparison_result = *((_BYTE *)record_byte_offset + iteration_count);
-      }
-      else
-      {
-        scaled_index = dword_140404A6C[1760 * input_value + 278847551 + (int)dword_140404A6C[1760 * input_value + 278847390 + loaded_word_2]];
-        comparison_result = scaled_index == -1 ? 32 : scaled_index + 65;
-      }
-      integer_sum_2 = running_total + iteration_count++;
-      *((_BYTE *)&g_182BBB534 + integer_sum_2) = comparison_result;
-    }
-    while ( iteration_count < 62 );
-    *((_BYTE *)&g_182BBB534 + running_total + iteration_count) = 0;
-    sr_item_link_text_line(a1, line);
-    line += 3;
-    record_byte_offset += 16;
-    running_total += 192;
-  }
-  while ( line < 18 );
-  return sub_1400C5360(a1);
+  return terminal_raw_source_map((int)a1);
 }
 
 //----- (00000001400C58E0) ----------------------------------------------------

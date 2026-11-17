@@ -1,0 +1,71 @@
+no-hit distance changed
+#define NO_HIT_DISTANCE 65536.0f /* 0x140278ADC = 65536.0f, also the initial hit[7] */
+----
+#define NO_HIT_DISTANCE 65535.0f /* 0x140278ADC = 65536.0f, also the initial hit[7] */
+====
+empty table also stepped once
+    if (table[0] <= 0)
+        return 0;
+----
+    if (table[0] < 1)
+        table[0] = 1;
+====
+table stride off by one word
+    for (int i = 0; i < table[0]; i++, entry += TABLE_ENTRY_WORDS) {
+----
+    for (int i = 0; i < table[0]; i++, entry += TABLE_ENTRY_WORDS - 1) {
+====
+count read once instead of every step
+    for (int i = 0; i < table[0]; i++, entry += TABLE_ENTRY_WORDS) {
+----
+    for (int i = 0, count = table[0]; i < count; i++, entry += TABLE_ENTRY_WORDS) {
+====
+second corner taken one word early
+        memcpy(corner_b, entry + 3, sizeof corner_b);
+----
+        memcpy(corner_b, entry + 2, sizeof corner_b);
+====
+face words read one word early
+        memcpy(normal, entry + 9, sizeof normal);
+----
+        memcpy(normal, entry + 8, sizeof normal);
+====
+closer test written as an ordered compare
+            && !(distance >= hit[7])) {
+----
+            && (distance < hit[7])) {
+====
+hit point stored two components only
+            memcpy(hit, point, 3 * sizeof(float));
+----
+            memcpy(hit, point, 2 * sizeof(float));
+====
+face words stored two only
+            memcpy(hit + 3, normal, 3 * sizeof(float));
+----
+            memcpy(hit + 3, normal, 2 * sizeof(float));
+====
+face words stored from the table instead of the callee
+            memcpy(hit + 3, normal, 3 * sizeof(float));
+----
+            memcpy(hit + 3, entry + 9, 3 * sizeof(int));
+====
+distance left at the no-hit value on a hit
+            hit[7] = distance;
+----
+            hit[7] = hit[7];
+====
+exit test written as an ordered compare
+    return !(hit[7] >= NO_HIT_DISTANCE);
+----
+    return hit[7] < NO_HIT_DISTANCE;
+====
+hit[6] cleared with the rest
+            memcpy(hit, point, 3 * sizeof(float));
+----
+            hit[6] = 0.0f, memcpy(hit, point, 3 * sizeof(float));
+====
+radius ignored
+        if (collision_sphere_triangle(point, normal, &distance, from, to, radius, corner_a, corner_b, corner_c)
+----
+        if (collision_sphere_triangle(point, normal, &distance, from, to, 1.0f, corner_a, corner_b, corner_c)

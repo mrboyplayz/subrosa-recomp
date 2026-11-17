@@ -31,4 +31,10 @@
    Returns 1 when a selection was removed, 0 otherwise. 0x1400722C0 */
 int32_t menu_text_delete_selection(void);
 
+/* 0x140070FF0. Creates a scrollbar widget. If the widget is the hovered one
+   and some global flags are set, it updates the value pointer using the
+   mouse position and the widget's dimensions. */
+uint32_t menu_scrollbar(int widget_id, float x, float y, float width, float height,
+                       uint32_t style, uint32_t flags, float *value, float min, float max);
+
 #endif

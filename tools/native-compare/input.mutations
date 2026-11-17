@@ -1,0 +1,36 @@
+copy only one chunk
+    uint32_t chunks_remaining = 2;
+----
+    uint32_t chunks_remaining = 1;
+====
+drop the loop pointer advances
+        out += 128;
+        state += 128;
+        --chunks_remaining;
+----
+        out += 128;
+        --chunks_remaining;
+====
+copy one byte too few
+    for (int k = 0; k < 67; k++)
+        out[k] = state[k];
+----
+    for (int k = 0; k < 66; k++)
+        out[k] = state[k];
+====
+drop the 67-byte tail copy
+    for (int k = 0; k < 67; k++)
+        out[k] = state[k];
+    /* The original returns the source pointer after the two 128-byte chunks
+----
+    /* The original returns the source pointer after the two 128-byte chunks
+====
+return the base of the source array
+    /* The original returns the source pointer after the two 128-byte chunks
+     * (256 bytes in), not the base of the key array or the caller buffer. */
+    return (__int128 *)(void *)state;
+----
+    /* The original returns the source pointer after the two 128-byte chunks
+     * (256 bytes in), not the base of the key array or the caller buffer. */
+    return (__int128 *)(void *)(state - 256);
+====

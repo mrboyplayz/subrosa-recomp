@@ -1,93 +1,31 @@
 #include "shared_client.h"
 
+/* Keyboard, mouse and relative-mouse snapshot queries plus the SDL event
+ * pump are ported in src/engine/input.c (snapshot queries) and stay in their
+ * decompiled form here (event pump, not yet ported). */
+
+__int128 *input_get_keyboard_state(unsigned char *keys);
+__int64 input_get_mouse_state(float *state);
+__int64 input_get_relative_mouse_state(float *state);
+
 //----- (000000014007CA90) ----------------------------------------------------
 // Candidate keyboard snapshot wrapper: copies 323 bytes from SDL_GetKeyboardState(NULL) into caller buffer.
 __int128 *           input_get_keyboard_state_candidate(__int64 a1)
 {
-  __int128 *result;
-  __int64 keyboard_chunks_remaining;
-  __int128 keyboard_state_chunk;
-
-  result = (__int128 *)((const unsigned char *(*)(int *))sub_140198EF9)(NULL);
-  keyboard_chunks_remaining = 2;
-  do
-  {
-    a1 += 128;
-    keyboard_state_chunk = *result;
-    result += 8;
-    *(_OWORD *)(a1 - 128) = keyboard_state_chunk;
-    *(_OWORD *)(a1 - 112) = *(result - 7);
-    *(_OWORD *)(a1 - 96) = *(result - 6);
-    *(_OWORD *)(a1 - 80) = *(result - 5);
-    *(_OWORD *)(a1 - 64) = *(result - 4);
-    *(_OWORD *)(a1 - 48) = *(result - 3);
-    *(_OWORD *)(a1 - 32) = *(result - 2);
-    *(_OWORD *)(a1 - 16) = *(result - 1);
-    --keyboard_chunks_remaining;
-  }
-  while ( keyboard_chunks_remaining );
-  *(_OWORD *)a1 = *result;
-  *(_OWORD *)(a1 + 16) = result[1];
-  *(_OWORD *)(a1 + 32) = result[2];
-  *(_OWORD *)(a1 + 48) = result[3];
-  *(_WORD *)(a1 + 64) = *((_WORD *)result + 32);
-  *(_BYTE *)(a1 + 66) = *((_BYTE *)result + 66);
-  return result;
+  return input_get_keyboard_state((unsigned char *)a1);
 }
 
 //----- (000000014007CB30) ----------------------------------------------------
 __int64            input_get_mouse_state_candidate(__int64 a1)
 {
-  unsigned int mouse_button_mask;
-  int left_button_pressed;
-  __m128i window_height_lane;
-  float scaled_mouse_y;
-  __int64 result;
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14007CB30[16];
-#define mouse_x (*(int (*))(void *)(sr_frame_14007CB30 + 0)) /* [rsp+30h] */
-#define mouse_y (*(int (*))(void *)(sr_frame_14007CB30 + 8)) /* [rsp+38h] */
-
-  mouse_button_mask = ((unsigned (*)(int *, int *))sub_140198EFF)(&mouse_x, &mouse_y);
-  left_button_pressed = mouse_button_mask & 1;
-  *(float *)a1 = (float)((float)mouse_x * (renderer_canvas_width)) / (float)(int)g_160FC47D8;
-  window_height_lane = _mm_cvtsi32_si128(g_160FC47DC);
-  scaled_mouse_y = (float)mouse_y * (renderer_canvas_height);
-  *(_DWORD *)(a1 + 152) = mouse_button_mask;
-  result = (mouse_button_mask >> 2) & 1;
-  *(float *)(a1 + 4) = scaled_mouse_y / SR_VEC_READ_LANES(128, _mm_cvtepi32_ps(window_height_lane), f32)[0];
-  *(_DWORD *)(a1 + 144) = left_button_pressed;
-  *(_DWORD *)(a1 + 148) = result;
-  return result;
+  return input_get_mouse_state((float *)a1);
 }
-#undef mouse_x
-#undef mouse_y
 
 //----- (000000014007CBC0) ----------------------------------------------------
 __int64            input_get_relative_mouse_state_candidate(float *a1)
 {
-  unsigned int mouse_button_mask;
-  int left_button_pressed;
-  __int64 result;
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14007CBC0[16];
-#define relative_mouse_x (*(int (*))(void *)(sr_frame_14007CBC0 + 0)) /* [rsp+30h] */
-#define relative_mouse_y (*(int (*))(void *)(sr_frame_14007CBC0 + 8)) /* [rsp+38h] */
-
-  mouse_button_mask = ((unsigned (*)(int *, int *))sub_140198F05)(&relative_mouse_x, &relative_mouse_y);
-  left_button_pressed = mouse_button_mask & 1;
-  *((_DWORD *)a1 + 38) = mouse_button_mask;
-  *a1 = 512.0;
-  a1[1] = 320.0;
-  result = (mouse_button_mask >> 2) & 1;
-  a1[2] = (float)relative_mouse_x;
-  a1[3] = (float)relative_mouse_y;
-  *((_DWORD *)a1 + 36) = left_button_pressed;
-  *((_DWORD *)a1 + 37) = result;
-  return result;
+  return input_get_relative_mouse_state(a1);
 }
-#undef relative_mouse_x
-#undef relative_mouse_y
 
 //----- (000000014007CC30) ----------------------------------------------------
 // Candidate SDL event pump: tracks wheel delta, key events, Alt+Enter fullscreen toggle, resize/viewport state.

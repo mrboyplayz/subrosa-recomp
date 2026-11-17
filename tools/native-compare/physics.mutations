@@ -1,0 +1,31 @@
+flags read instead of written
+    physics_random_round_flags[slot] = wanted;
+----
+    (void)physics_random_round_flags[slot];
+====
+existing flag lookup inverted
+    while (wanted != physics_random_round_flags[slot]) {
+----
+    while (wanted == physics_random_round_flags[slot]) {
+====
+capacity raised to the full table
+    if ((int32_t)physics_random_round_slots >= (int32_t)RANDOM_ROUND_SLOT_CAPACITY)
+----
+    if ((int32_t)physics_random_round_slots >= (int32_t)RANDOM_ROUND_SLOT_CAPACITY + 1)
+====
+full-pool early return dropped
+    if ((int32_t)physics_random_round_slots >= (int32_t)RANDOM_ROUND_SLOT_CAPACITY)
+        return UINT32_MAX;
+----
+====
+flag search starts one slot late
+    uint32_t slot = 0;
+----
+    uint32_t slot = 1;
+====
+generator draw skipped
+    physics_random_round_words_a[slot] = math_random_next();
+    physics_random_round_words_b[slot] = math_random_next();
+----
+    physics_random_round_words_a[slot] = physics_random_round_words_a[0];
+    physics_random_round_words_b[slot] = physics_random_round_words_b[0];

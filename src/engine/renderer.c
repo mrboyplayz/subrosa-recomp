@@ -323,3 +323,48 @@ void renderer_sort(void)
     }
     order[count] = -1;
 }
+
+/* ---- wire box ------------------------------------------------------------ */
+
+/* 0x14007DDF0. Draws the 12 edges of an axis-aligned box as 24 line
+   vertices in the batch (two per edge), then flushes it. The corners are
+   a1 = min (rcx) and a2 = max (rdx), taken component by component. */
+void renderer_draw_wire_box(const float a[3], const float b[3])
+{
+    static const float one[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+    renderer_batch->color[0] = one[0];          /* movaps xmmword_140279700 */
+    renderer_batch->color[1] = one[1];
+    renderer_batch->color[2] = one[2];
+    renderer_batch->color[3] = one[3];
+    renderer_batch->primitive = RENDERER_BATCH_LINES;         /* 0x1AD059440 */
+    renderer_batch->unused_4 = 0;                             /* 0x1AD059448 */
+    renderer_batch->floats_per_vertex = RENDERER_BATCH_FLOATS_PER_VERTEX;   /* 0x1AD05944C */
+
+    renderer_batch_vertex3f(a[0], a[1], a[2]); /* 0x14007DE3A */
+    renderer_batch_vertex3f(b[0], a[1], a[2]); /* 0x14007DE4D */
+    renderer_batch_vertex3f(b[0], a[1], a[2]); /* 0x14007DE60 */
+    renderer_batch_vertex3f(b[0], b[1], a[2]); /* 0x14007DE73 */
+    renderer_batch_vertex3f(b[0], b[1], a[2]); /* 0x14007DE86 */
+    renderer_batch_vertex3f(a[0], b[1], a[2]); /* 0x14007DE99 */
+    renderer_batch_vertex3f(a[0], b[1], a[2]); /* 0x14007DEAC */
+    renderer_batch_vertex3f(a[0], a[1], a[2]); /* 0x14007DEBF */
+    renderer_batch_vertex3f(a[0], a[1], a[2]); /* 0x14007DED2 */
+    renderer_batch_vertex3f(a[0], a[1], b[2]); /* 0x14007DEE5 */
+    renderer_batch_vertex3f(b[0], a[1], a[2]); /* 0x14007DEF8 */
+    renderer_batch_vertex3f(b[0], a[1], b[2]); /* 0x14007DF0B */
+    renderer_batch_vertex3f(b[0], b[1], a[2]); /* 0x14007DF1E */
+    renderer_batch_vertex3f(b[0], b[1], b[2]); /* 0x14007DF31 */
+    renderer_batch_vertex3f(a[0], b[1], a[2]); /* 0x14007DF44 */
+    renderer_batch_vertex3f(a[0], b[1], b[2]); /* 0x14007DF57 */
+    renderer_batch_vertex3f(b[0], b[1], b[2]); /* 0x14007DF6A */
+    renderer_batch_vertex3f(a[0], b[1], b[2]); /* 0x14007DF7D */
+    renderer_batch_vertex3f(a[0], b[1], b[2]); /* 0x14007DF90 */
+    renderer_batch_vertex3f(a[0], a[1], b[2]); /* 0x14007DFA3 */
+    renderer_batch_vertex3f(a[0], a[1], b[2]); /* 0x14007DFB6 */
+    renderer_batch_vertex3f(b[0], a[1], b[2]); /* 0x14007DFC9 */
+    renderer_batch_vertex3f(b[0], a[1], b[2]); /* 0x14007DFDC */
+    renderer_batch_vertex3f(b[0], b[1], b[2]); /* 0x14007DFEF */
+
+    renderer_batch_flush();                    /* tail-jmp 0x14006E0D0 */
+}

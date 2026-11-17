@@ -5,13 +5,14 @@
 #include "../engine/collision.h"
 #include "../engine/net_bits.h"
 #include "../engine/text_helpers.h"
+#include "../engine/startup.h"
 
 //----- (0000000140001000) ----------------------------------------------------
 __int64 sub_140001000()
 {
-  sub_140198F95(16, (__int64)"Fatal Error", (__int64)"Out of memory - aborting");
-  return 0;
+  return (__int64)startup_fatal_error();
 }
+
 
 __int64 WinMain_0()
 {
@@ -112,14 +113,9 @@ __int64 sub_1400011E0()
 //----- (00000001400012C0) ----------------------------------------------------
 int            sub_1400012C0(FILE *a1, int a2)
 {
-  int result;
-
-  sub_14020C4A8((__int64)a1, a2, 1u);
-  result = sub_14020BB2C(a1);
-  if ( result != -1 )
-    return sub_14020CFB8(result, a1);
-  return result;
+  return startup_clearerr_rewind(a1, a2);
 }
+
 
 //----- (0000000140001300) ----------------------------------------------------
 __int64            sub_140001300(__int64 a1)

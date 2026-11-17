@@ -1,5 +1,6 @@
 #include "shared_client.h"
 #include "../engine/vehicle_state.h"
+#include "../engine/vehicles.h" /* engine ports: alert post, packet transfer, wheel force sum */
 
 /* Native event type 20: a 60-tick burst of 128 sparks and one nearby sound. */
 enum {
@@ -8796,38 +8797,11 @@ LABEL_17:
 //----- (000000014006C5E0) ----------------------------------------------------
 __m128i *           sub_14006C5E0(int a1,      __m128i *a2, int a3, int a4, int a5)
 {
-  __int64 packet_record_offset;
-       __m128i *input_cursor;
-  __int64 table_value;
-  int byte_count;
-  __m128i *result;
-  __m128i *destination_buffer;
-
-  packet_record_offset = 16387LL * a1;
-  input_cursor = a2;
-  if ( (int)dword_140404A6C[packet_record_offset + 135184966] > 0 )
-  {
-    ++dword_140404A6C[packet_record_offset + 135184965];
-    dword_140404A6C[packet_record_offset + 135184966] = 0;
-  }
-  table_value = (int)dword_140404A6C[packet_record_offset + 135184965];
-  byte_count = a4 * a3;
-  result = (__m128i *)(unsigned int)(table_value + a4 * a3);
-  if ( (int)result < 0x10000 )
-  {
-    if ( a5 )
-    {
-      destination_buffer = (__m128i *)((char *)&dword_140404A6C[packet_record_offset + 135184968] + table_value);
-    }
-    else
-    {
-      a2 = (     __m128i *)((char *)&dword_140404A6C[packet_record_offset + 135184968] + table_value);
-      destination_buffer = (__m128i *)input_cursor;
-    }
-    result = crt_memcpy(destination_buffer, a2, byte_count);
-    dword_140404A6C[packet_record_offset + 135184965] += byte_count;
-  }
-  return result;
+    /* 0x14006C5E0: the engine port vehicles_packet_bytes_transfer
+       (src/engine/vehicles_helpers.c, declared in vehicles.h). The original
+       returns the destination of the copy, or the zero-extended end position
+       when the copy was skipped. */
+    return (__m128i *)vehicles_packet_bytes_transfer(a1, a2, a3, a4, a5);
 }
 
 //----- (000000014006CCA0) ----------------------------------------------------
@@ -11629,135 +11603,20 @@ LABEL_29:
 //----- (00000001400A2C00) ----------------------------------------------------
 __int64            sub_1400A2C00(int a1, signed int a2)
 {
-  __int64 result;
-  __int64 input_value;
-  bool comparison_result;
-  __int64 player_record_offset;
-  __int64 player_record_offset_2;
-  __int64 remaining_count;
-
-  result = g_160FC481C;
-  input_value = a2;
-  comparison_result = (g_160FC481C & 0x80000000) != 0;
-  if ( (int)g_160FC481C > 0 )
-  {
-    player_record_offset = 3597LL * a1;
-    do
-    {
-      result = (unsigned int)(result - 1);
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856367 + player_record_offset] = 2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856368 + player_record_offset] = a2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856369 + player_record_offset] = 0;
-      dword_140404A6C[player_record_offset + 71856362] = ((unsigned __int8)dword_140404A6C[player_record_offset + 71856362] + 1) & 0x3F;
-      comparison_result = (int)result < 0;
-    }
-    while ( (int)result > 0 );
-    g_160FC481C = result;
-  }
-  if ( comparison_result )
-  {
-    player_record_offset_2 = 3597LL * a1;
-    remaining_count = (unsigned int)-(int)result;
-    g_160FC481C = 0;
-    do
-    {
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856367 + player_record_offset_2] = 2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856368 + player_record_offset_2] = input_value;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856369 + player_record_offset_2] = 1;
-      result = ((unsigned __int8)dword_140404A6C[player_record_offset_2 + 71856362] + 1) & 0x3F;
-      dword_140404A6C[player_record_offset_2 + 71856362] = result;
-      --remaining_count;
-    }
-    while ( remaining_count );
-  }
-  if ( BYTE1(g_183F7C974) )
-  {
-    if ( !BYTE1(g_183F7C774) )
-    {
-      dword_140404A6C[3597 * a1 + 71856367 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = 2;
-      dword_140404A6C[3597 * a1 + 71856368 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = input_value;
-      dword_140404A6C[3597 * a1 + 71856369 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = dword_140404A6C[1760 * input_value + 278846061]
-                                                                                         + 2;
-      result = ((unsigned __int8)dword_140404A6C[3597 * a1 + 71856362] + 1) & 0x3F;
-      dword_140404A6C[3597 * a1 + 71856362] = result;
-    }
-  }
-  return result;
+    /* 0x1400A2C00: the engine port vehicles_alert_post (src/engine/
+       vehicles_helpers.c, declared in vehicles.h). The original leaves the
+       speech ring's write cursor (or the repeat counter) in eax; the callers
+       here discard it. */
+    return vehicles_alert_post(a1, a2);
 }
 
 //----- (00000001400A48D0) ----------------------------------------------------
 __int64            sub_1400A48D0(int a1, float *a2)
 {
-  signed int iteration_count;
-  __int64 result;
-  __int64 record_word_offset;
-  float combined_products;
-  float combined_products_2;
-  float combined_products_3;
-  unsigned int *buffer_cursor;
-  __int64 scaled_index;
-  float combined_products_4;
-  float combined_products_5;
-  float combined_products_6;
-  __int64 scaled_index_2;
-
-  iteration_count = 0;
-  result = a1;
-  record_word_offset = 5210LL * a1;
-  combined_products = 0.0;
-  combined_products_2 = 0.0;
-  combined_products_3 = 0.0;
-  *(_QWORD *)&dword_140404A6C[record_word_offset + 129716750] = 0;
-  dword_140404A6C[record_word_offset + 129716752] = 0;
-  if ( (int)dword_140404A6C[record_word_offset + 129716768] > 0 )
-  {
-    buffer_cursor = &dword_140404A6C[record_word_offset + 129716769];
-    do
-    {
-      ++iteration_count;
-      scaled_index = 60LL * (int)*buffer_cursor;
-      combined_products_4 = *(float *)&dword_140404A6C[scaled_index + 73007026] - *a2;
-      combined_products_5 = *(float *)&dword_140404A6C[scaled_index + 73007028] - a2[2];
-      combined_products_6 = *(float *)&dword_140404A6C[scaled_index + 73007027] - a2[1];
-      combined_products = combined_products
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716726] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716728] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[scaled_index + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716728] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716727] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[scaled_index + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716727] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716726] * combined_products_6))
-                         * *(float *)&dword_140404A6C[scaled_index + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716750] = combined_products;
-      scaled_index_2 = 60LL * (int)*buffer_cursor;
-      combined_products_2 = combined_products_2
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716729] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716731] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[scaled_index_2 + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716731] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716730] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[scaled_index_2 + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716730] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716729] * combined_products_6))
-                         * *(float *)&dword_140404A6C[scaled_index_2 + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716751] = combined_products_2;
-      result = (int)*buffer_cursor++;
-      combined_products_3 = combined_products_3
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716732] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716734] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[60 * result + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716734] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716733] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[60 * result + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716733] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716732] * combined_products_6))
-                         * *(float *)&dword_140404A6C[60 * result + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716752] = combined_products_3;
-    }
-    while ( iteration_count < (int)dword_140404A6C[record_word_offset + 129716768] );
-  }
-  return result;
+    /* 0x1400A48D0: the engine port vehicles_wheel_force_sum (src/engine/
+       vehicles_helpers.c, declared in vehicles.h). The original returns the
+       last wheel's PhysicsPoint index, or the vehicle when it has none. */
+    return vehicles_wheel_force_sum(a1, a2);
 }
 
 //----- (00000001400A5510) ----------------------------------------------------
