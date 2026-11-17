@@ -1,7 +1,6 @@
 #include "shared_client.h"
 #include "../engine/record_slots.h"
 #include "../engine/physics.h"
-#include "../engine/recovery_0a0000.h"
 
 // 1400A0ABC: conditional instruction was optimized away because rdx.8 is in (1..FF)
 
@@ -1072,7 +1071,42 @@ LABEL_46:
 //----- (00000001400A3D70) ----------------------------------------------------
 __int64 sub_1400A3D70()
 {
-  return recovery_name_read_number();
+  int i;
+  char masked_bits;
+  int iteration_count;
+  __int64 iteration_count_2;
+  char masked_bits_2;
+  unsigned int callee_output_word;
+
+  for ( i = g_1862AE020; i < (int)g_1862AE024; g_1862AE020 = ++i )
+  {
+    masked_bits = *((_BYTE *)&g_1862AE028 + i);
+    if ( (unsigned __int8)(masked_bits - 48) <= 9u )
+      break;
+    if ( masked_bits == 45 )
+      break;
+  }
+  iteration_count = 0;
+  if ( i < (int)g_1862AE024 )
+  {
+    iteration_count_2 = 0;
+    do
+    {
+      if ( iteration_count_2 >= 255 )
+        break;
+      masked_bits_2 = *((_BYTE *)&g_1862AE028 + i);
+      if ( (unsigned __int8)(masked_bits_2 - 48) > 9u && masked_bits_2 != 45 )
+        break;
+      *((_BYTE *)&g_1863AE028 + iteration_count_2) = masked_bits_2;
+      ++iteration_count;
+      ++iteration_count_2;
+      i = ++g_1862AE020;
+    }
+    while ( (int)g_1862AE020 < (int)g_1862AE024 );
+  }
+  *((_BYTE *)&g_1863AE028 + iteration_count) = 0;
+  crt_sscanf((__int64)&g_1863AE028, "%d", &callee_output_word);
+  return callee_output_word;
 }
 
 //----- (00000001400A3E30) ----------------------------------------------------

@@ -1,8 +1,6 @@
 #include "shared_client.h"
 #include "../engine/math_random_double.h"
 #include "../engine/disk.h"
-#include "../engine/recovery_080000.h"
-#include "../engine/math3d.h"
 
 //----- (00000001400802F0) ----------------------------------------------------
 void            sub_1400802F0(int a1)
@@ -592,7 +590,43 @@ void            sub_140081B60(int a1)
 //----- (0000000140081CC0) ----------------------------------------------------
 __m128            sub_140081CC0(__int64 a1, float *a2, float a3, float a4, float a5)
 {
-  return _mm_set_ss(sr_recovery_080081CC0((const float *)a1, a2, a3, a4, a5));
+  __int128 limited_value;
+  float scaled_value;
+  float weighted_sum;
+  float squared_value;
+  float square_root;
+  float scaled_ratio;
+  float scaled_ratio_2;
+
+  limited_value = *(unsigned int *)(a1 + 4);
+  scaled_value = *(float *)a1;
+  weighted_sum = *(float *)(a1 + 8);
+  squared_value = (float)((float)(scaled_value * scaled_value) + (float)(*(float *)&limited_value * *(float *)&limited_value)) + (float)(weighted_sum * weighted_sum);
+  square_root = fsqrt(squared_value);
+  if ( square_root == 0.0 )
+  {
+    scaled_ratio = 0.0;
+    limited_value = 0;
+    scaled_ratio_2 = 0.0;
+  }
+  else
+  {
+    scaled_ratio = scaled_value * (float)(1.0 / square_root);
+    *(float *)&limited_value = *(float *)&limited_value * (float)(1.0 / square_root);
+    scaled_ratio_2 = weighted_sum * (float)(1.0 / square_root);
+  }
+  *(float *)&limited_value = fminf(
+                    fmaxf(
+                      (float)((float)((float)((float)((float)((float)((float)(*(float *)&limited_value * a2[1]) + (float)(scaled_ratio * *a2))
+                                                            + (float)(scaled_ratio_2 * a2[2]))
+                                                    * a3)
+                                            * a4)
+                                    * -0.75)
+                            * squared_value)
+                    / a5,
+                      square_root * -0.125),
+                    square_root * 0.125);
+  return (__m128)limited_value;
 }
 
 //----- (0000000140084950) ----------------------------------------------------
@@ -1104,6 +1138,15 @@ double sub_140088F80()
 //----- (0000000140089430) ----------------------------------------------------
 void sub_140089430()
 {
+  /* Every corporation heading, its money readout and its players' rows are
+     drawn in that corporation's colour: dword_1402B2830/34/38[3 * element]
+     (loaded into xmm11/12/13 at 0x1400895DF/5D1/5C3). The recompiled calls
+     used the four-argument sr_CSDrawText stub, which paints everything white,
+     so the team colours never reached the screen. */
+  float team_red;
+  float team_green;
+  float team_blue;
+  float row_scale;
   __int64 unused_local;
   int iteration_count;
   __int64 element_index;
@@ -1166,14 +1209,27 @@ void sub_140089430()
     do
     {
       scaled_value = (float)iteration_count * 252.0;
+      /* 0x1400897BA: past the third column there is no corporation, so the
+         heading and its rows draw white. */
+      team_red = 1.0f;
+      team_green = 1.0f;
+      team_blue = 1.0f;
       if ( (unsigned int)iteration_count >= 3 )
       {
-        sr_CSDrawText(Parameters, scaled_value + 8.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2), 24.0);
+        /* 0x1400897CA: an empty string (0x140270199); nothing is drawn. The
+           decompiled call passed Parameters, which is the command line, not
+           this string. */
+        sr_text_draw_recovered("", scaled_value + 8.0, sr_text_bits_float(0x42D00000u), 24.0, 0x60u, 1.0f, 1.0f, 1.0f, 1.0f, NULL) /* 0x1400897CA */;
       }
       else
       {
+        team_red = *(float *)&dword_1402B2830[3 * element_index];
+        team_green = *(float *)&dword_1402B2834[3 * element_index];
+        team_blue = *(float *)&dword_1402B2838[3 * element_index];
         component_sum = scaled_value + 8.0;
-        sr_CSDrawText(off_1402B2890[element_index], scaled_value + 8.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2), 24.0);
+        /* 0x140089616: the corporation name, centred both ways (0x60), in the
+           corporation's colour. */
+        sr_text_draw_recovered(off_1402B2890[element_index], scaled_value + 8.0, sr_text_bits_float(0x42D00000u), 24.0, 0x60u, team_red, team_green, team_blue, 1.0f, NULL) /* 0x140089616 */;
         if ( game_state == 3 && (scaled_index = dword_140404A6C[6 * element_index + 335047065]) != 0 )
         {
           combined_products = (float)((float)((float)((int)dword_140404A6C[6 * element_index + 335047064] / 10) * 100.0) / (float)scaled_index) - 100.0;
@@ -1205,13 +1261,29 @@ void sub_140089430()
           component_sum_2 = component_sum + 228.0;
           converted_integer = (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2);
           literal_text = "$/i";
+          /* "$/i" reads one argument only, so the second slot is never
+             consumed; the original leaves the previous column's value there. */
+          saved_combined_products = 0;
         }
-        sr_CSDrawText(literal_text, component_sum_2, converted_integer, 24.0);
+        /* 0x1400896F0 and 0x140089776: the money readout, flags 0x22 in the
+           corporation's colour. Its directives take the value in tens of
+           dollars (rsp+48h) and the rounded percent (rsp+50h); both were
+           dropped, so the readout showed no numbers. */
+        sr_text_draw_recovered(literal_text, component_sum_2,
+                               sr_text_bits_float((unsigned)(uintptr_t)converted_integer), 24.0, 0x22u,
+                               team_red, team_green, team_blue, 1.0f,
+                               (const uint64[]){(uint64_t)(uint32_t)(dword_140404A6C[6 * element_index + 335047064] / 10),
+                                                (uint64_t)(uint32_t)saved_combined_products}) /* 0x1400896F0/0x140089776 */;
         converted_vector = _mm_cvtsi32_si128((int)(0x43000000u));
       }
       text_x = scaled_value + 4.0;
+      /* 0x14008982D: the column's ordinal ("1." "2." "3."), flags 0x20, also in
+         the corporation's colour (xmm11/12/13), the ordinal being rsp+48h. */
       if ( !game_state )
-        sr_text_draw_recovered("/i.", text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2))), 24.0, 32u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008982D */;
+        sr_text_draw_recovered("/i.", text_x,
+                               sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2))),
+                               24.0, 0x20u, team_red, team_green, team_blue, 1.0f,
+                               (const uint64[]){(uintptr_t)(uint32_t)(iteration_count + 1)}) /* 0x14008982D */;
       integer_sum = 0;
       state_address = &g_151623978;
       g_192E8EC40 = 0;
@@ -1433,11 +1505,16 @@ void sub_140089430()
           if ( scaled_index_5 > 0xFF )
             scaled_index_5 = 0;
           scaled_index_6 = 3597LL * scaled_index_5;
-          sr_CSDrawText(
+          /* 0x140089F20: the player's name, flags 0x60, in the corporation's
+             colour, halved while the record's +0x44 word is zero (0x140089F1C
+             selects xmm15 = 0.5). */
+          row_scale = dword_140404A6C[scaled_index_6 + 71856271] ? 1.0f : 0.5f;
+          sr_text_draw_recovered(
             (char *)&dword_140404A6C[scaled_index_6 + 71856254],
             text_x,
-            (unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector),
-            24.0);
+            sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector))),
+            24.0, 0x60u,
+            team_red * row_scale, team_green * row_scale, team_blue * row_scale, 1.0f, NULL) /* 0x140089F7D */;
           table_value_15 = (int)dword_140404A6C[scaled_index_6 + 71856286];
           scaled_index_7 = dword_140404A6C[scaled_index_6 + 71856272];
           if ( (_DWORD)table_value_15 != -1 )
@@ -1445,7 +1522,10 @@ void sub_140089430()
                                      * (float)(int)dword_140404A6C[scaled_index_6 + 71856288])
                              + (float)scaled_index_7);
           dword_140404A6C[scaled_index_6 + 71856278] = scaled_index_7;
-          sr_text_draw_recovered("$/I", text_x + 240.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector))), 24.0, 34u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008A01C */;
+          /* 0x14008A01C: the player's cash (flags 0x22) in the corporation's
+             colour, unscaled, with the total as its argument (rsp+48h). */
+          sr_text_draw_recovered("$/I", text_x + 240.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector))), 24.0, 0x22u, team_red, team_green, team_blue, 1.0f,
+            (const uint64[]){(uintptr_t)(uint32_t)dword_140404A6C[scaled_index_6 + 71856278]}) /* 0x14008A01C */;
           ++iteration_count_2;
           *(float *)SR_VEC_LANES(128, saved_converted_vector, i32) = *(float *)SR_VEC_LANES(128, saved_converted_vector, i32) + 24.0;
           ++buffer_cursor_2;
@@ -1589,16 +1669,23 @@ LABEL_15:
     scaled_value_5 = *(float *)&float_word_2;
     scaled_value_4 = *(float *)&float_word;
     float_word_4 = 33;
-    sr_text_draw_recovered(literal_text, 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x41800000u))))), 30.0, 32u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008A207 */;
+    /* 0x14008A2FD: the winning corporation's name in its own colour, flags
+       0x21 (centred on x and shadowed). The decompiled call had 0x20 and
+       white, so the banner was neither centred nor coloured. */
+    sr_text_draw_recovered(literal_text, 512.0, sr_text_bits_float(0x41800000u), 30.0,
+                           (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+                           (*(float *)&selection_code), NULL) /* 0x14008A2FD */;
     goto LABEL_16;
   }
   table_value = off_1402B2920[g_183EBFCC4];
-  selection_code = 1065353216;
-  scaled_value_6 = 1.0;
-  scaled_value_5 = 1.0;
-  scaled_value_4 = 1.0;
+  /* 0x14008A207: the weekday heading, flags 0x20, plain white. */
   float_word_4 = 32;
-  sr_CSDrawText(table_value, 8.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x41800000u))), 20.0);
+  scaled_value_4 = 1.0;
+  scaled_value_5 = 1.0;
+  scaled_value_6 = 1.0;
+  selection_code = 1065353216;
+  sr_text_draw_recovered(table_value, 8.0, sr_text_bits_float(0x41800000u), 20.0, (unsigned)float_word_4,
+                         scaled_value_4, scaled_value_5, scaled_value_6, (*(float *)&selection_code), NULL) /* 0x14008A207 */;
   if ( g_183EBFCB0 == 1 )
   {
     state_word = g_183EBFCC4;
@@ -1642,7 +1729,12 @@ LABEL_21:
       scaled_value_5 = scaled_value_2;
       scaled_value_4 = scaled_value;
       float_word_4 = 96;
-      sr_text_draw_recovered(text, text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector))), 20.0, 96u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008A441 */;
+      /* 0x14008A441: the corporation heading, flags 0x60, in the corporation's
+         colour (xmm6/7/8, already multiplied by 1.5 for the third column at
+         0x14008A39F; white past the third column, 0x14008A3AE). */
+      sr_text_draw_recovered(text, text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector))), 20.0,
+                             (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+                             (*(float *)&selection_code), NULL) /* 0x14008A441 */;
       if ( game_state == 3 && (scaled_index = dword_140404A6C[6 * element_index + 335047065]) != 0 )
       {
         combined_products = (float)((float)((float)((int)dword_140404A6C[6 * element_index + 335047064] / 10) * 100.0) / (float)scaled_index) - 100.0;
@@ -1682,7 +1774,11 @@ LABEL_21:
       scaled_value_5 = scaled_value_2;
       scaled_value_4 = scaled_value;
       float_word_4 = 34;
-      sr_text_draw_recovered(text_2, text_x + 240.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42D00000u))))), 17.5, 34u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008A56B */;
+      /* 0x14008A56B: the money readout (already formatted) in the
+         corporation's colour. */
+      sr_text_draw_recovered(text_2, text_x + 240.0, sr_text_bits_float(0x42D00000u), 17.5,
+                             (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+                             (*(float *)&selection_code), NULL) /* 0x14008A56B */;
       if ( game_state == 3 )
       {
         scaled_index_14 = dword_140404A6C[5873 * element_index + 283831505];
@@ -1691,7 +1787,12 @@ LABEL_21:
         scaled_value_5 = scaled_value_2;
         scaled_value_4 = scaled_value;
         float_word_4 = 32;
-        sr_text_draw_recovered("Bonus:$/i", text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42D00000u))))), 17.5, 32u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008A5CF */;
+        /* 0x14008A5CF: "Bonus:$", flags 0x20 in the corporation's colour, with
+           the bonus (rsp+48h) as its argument. */
+        sr_text_draw_recovered("Bonus:$/i", text_x, sr_text_bits_float(0x42D00000u), 17.5,
+                               (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+                               (*(float *)&selection_code),
+                               (const uint64[]){(uintptr_t)(uint32_t)scaled_index_14}) /* 0x14008A5CF */;
       }
     }
     converted_vector_2 = _mm_cvtsi32_si128((int)(0x43000000u));
@@ -1971,11 +2072,15 @@ LABEL_21:
         scaled_value_5 = scaled_value_2 * selected_scalar;
         scaled_value_4 = saved_scaled_value * selected_scalar;
         float_word_4 = 96;
-        sr_CSDrawText(
+        /* 0x14008AE0C: the player's name, flags 0x60, in the corporation's
+           colour times selected_scalar (xmm0 is 0.5 for an unselected player
+           under game_state 1, 0x14008AE04). */
+        sr_text_draw_recovered(
           (char *)&dword_140404A6C[scaled_index_13 + 71856254],
           component_sum,
-          (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2),
-          17.5);
+          sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2))),
+          17.5, (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+          (*(float *)&selection_code), NULL) /* 0x14008AE0C */;
         crt_sprintf(
           text_2,
           "%03d-%04d",
@@ -1986,7 +2091,12 @@ LABEL_21:
         *(float *)SR_VEC_LANES(128, saved_converted_vector, i32) = *(float *)SR_VEC_LANES(128, converted_vector_2, i32) + 18.0;
         scaled_value_4 = saved_scaled_value * selected_scalar;
         float_word_4 = 96;
-        sr_CSDrawText(text_2, component_sum, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector), 10.0);
+        /* 0x14008AEF2: the player's badge number under the name, same colour
+           and flags (xmm8/7/6 are the dimmed colour from 0x14008AE40/4E/62). */
+        sr_text_draw_recovered(text_2, component_sum,
+          sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector))),
+          10.0, (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+          (*(float *)&selection_code), NULL) /* 0x14008AEF2 */;
         scaled_value_3 = saved_scaled_value_2;
         scaled_value_2 = saved_scaled_value_3;
         scaled_index_14 = dword_140404A6C[scaled_index_13 + 71856278];
@@ -1995,7 +2105,13 @@ LABEL_21:
         scaled_value_5 = saved_scaled_value_3;
         scaled_value_4 = saved_scaled_value;
         float_word_4 = 34;
-        sr_CSDrawText("$/I", text_x + 240.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2), 17.5);
+        /* 0x14008AF58: the player's cash, flags 0x22, the corporation's colour
+           unscaled (xmm1/2/3 reloaded at 0x14008AF0E-19), total in rsp+48h. */
+        sr_text_draw_recovered("$/I", text_x + 240.0,
+          sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2))),
+          17.5, (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+          (*(float *)&selection_code),
+          (const uint64[]){(uintptr_t)(uint32_t)scaled_index_14}) /* 0x14008AF58 */;
         ++iteration_count_2;
         *(float *)SR_VEC_LANES(128, converted_vector_2, i32) = *(float *)SR_VEC_LANES(128, converted_vector_2, i32) + 24.0;
         ++buffer_cursor_2;
@@ -2131,7 +2247,11 @@ LABEL_13:
         scaled_value_5 = *(float *)&float_word_2;
         scaled_value_4 = *(float *)&float_word;
         float_word_4 = 33;
-        sr_text_draw_recovered(literal_text, 512.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x41800000u))))), 30.0, 33u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008B20D */;
+        /* 0x14008B20D: the winner's name in its own colour (xmm0/1/3 loaded
+           from dword_1402B2830/34/38 at 0x14008B17F-93), flags 0x21. */
+        sr_text_draw_recovered(literal_text, 512.0, sr_text_bits_float(0x41800000u), 30.0,
+                               (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+                               (*(float *)&selection_code), NULL) /* 0x14008B20D */;
         goto LABEL_14;
       }
       selection_flag = 1;
@@ -2180,7 +2300,13 @@ LABEL_14:
         scaled_value_5 = scaled_value;
         scaled_value_4 = *(float *)&float_word_5;
         float_word_4 = 96;
-        sr_CSDrawText(table_value, weighted_sum, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector), 20.0);
+        /* 0x14008B2E6: the corporation heading, flags 0x60, in the
+           corporation's colour (xmm6/7/8 from 0x14008B268-0x14008B280, which
+           run in the order red = dword_1402B2830, green = +2834, blue = +2838). */
+        sr_text_draw_recovered(table_value, weighted_sum,
+          sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector))),
+          20.0, (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+          (*(float *)&selection_code), NULL) /* 0x14008B2E6 */;
         if ( game_state == 3 )
         {
           scaled_index_14 = dword_140404A6C[5873 * element_index + 283831505];
@@ -2189,7 +2315,12 @@ LABEL_14:
           scaled_value_5 = scaled_value;
           scaled_value_4 = *(float *)&float_word_5;
           float_word_4 = 32;
-          sr_CSDrawText("Bonus:$/i", weighted_sum, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42D00000u))), 17.5);
+          /* 0x14008B34E: "Bonus:$", flags 0x20 in the corporation's colour,
+             with the bonus (rsp+48h) as its argument. */
+          sr_text_draw_recovered("Bonus:$/i", weighted_sum, sr_text_bits_float(0x42D00000u), 17.5,
+                                 (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+                                 (*(float *)&selection_code),
+                                 (const uint64[]){(uintptr_t)(uint32_t)scaled_index_14}) /* 0x14008B34E */;
         }
         scaled_index_14 = dword_140404A6C[element_index + 284023018];
         selection_code = 1065353216;
@@ -2197,7 +2328,12 @@ LABEL_14:
         scaled_value_5 = scaled_value;
         scaled_value_4 = *(float *)&float_word_5;
         float_word_4 = 32;
-        sr_CSDrawText("Total:$/i", weighted_sum, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(_mm_cvtsi32_si128((int)(0x42F80000u))), 17.5);
+        /* 0x14008B3A6: "Total:$", flags 0x20 in the corporation's colour, with
+           the total (rsp+48h) as its argument. */
+        sr_text_draw_recovered("Total:$/i", weighted_sum, sr_text_bits_float(0x42F80000u), 17.5,
+                               (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+                               (*(float *)&selection_code),
+                               (const uint64[]){(uintptr_t)(uint32_t)scaled_index_14}) /* 0x14008B3A6 */;
         saved_scaled_value = scaled_value_2;
       }
       saved_scaled_value_2 = scaled_value;
@@ -2479,11 +2615,15 @@ LABEL_14:
           scaled_value_5 = scaled_value * selected_scalar;
           scaled_value_4 = scaled_value_3 * selected_scalar;
           float_word_4 = 96;
-          sr_CSDrawText(
+          /* 0x14008BCA4: the player's name, flags 0x60, in the corporation's
+             colour times selected_scalar (0.5 for an unselected player when
+             game_state is 1, 0x14008BC37). */
+          sr_text_draw_recovered(
             (char *)&dword_140404A6C[scaled_index_13 + 71856254],
             component_sum,
-            (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2),
-            17.5);
+            sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2))),
+            17.5, (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+            (*(float *)&selection_code), NULL) /* 0x14008BCA4 */;
           crt_sprintf(
             scratch_buffer,
             "%03d-%04d",
@@ -2494,7 +2634,11 @@ LABEL_14:
           *(float *)SR_VEC_LANES(128, saved_converted_vector, i32) = *(float *)SR_VEC_LANES(128, converted_vector_2, i32) + 18.0;
           scaled_value_4 = scaled_value_3 * selected_scalar;
           float_word_4 = 96;
-          sr_CSDrawText(scratch_buffer, component_sum, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector), 10.0);
+          /* 0x14008BD26: the player's badge number, same colour and flags. */
+          sr_text_draw_recovered(scratch_buffer, component_sum,
+            sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector))),
+            10.0, (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+            (*(float *)&selection_code), NULL) /* 0x14008BD26 */;
           scaled_value_2 = saved_scaled_value;
           scaled_value = saved_scaled_value_2;
           scaled_index_14 = dword_140404A6C[scaled_index_13 + 71856278];
@@ -2503,7 +2647,14 @@ LABEL_14:
           scaled_value_5 = saved_scaled_value_2;
           scaled_value_4 = scaled_value_3;
           float_word_4 = 34;
-          sr_CSDrawText("$/I", weighted_sum + 240.0, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2), 17.5);
+          /* 0x14008BD8C: the player's cash, flags 0x22, the corporation's
+             colour unscaled (xmm1/2/3 reloaded at 0x14008BD3A-51), total in
+             rsp+48h. */
+          sr_text_draw_recovered("$/I", weighted_sum + 240.0,
+            sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_2))),
+            17.5, (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+            (*(float *)&selection_code),
+            (const uint64[]){(uintptr_t)(uint32_t)scaled_index_14}) /* 0x14008BD8C */;
           ++iteration_count_2;
           *(float *)SR_VEC_LANES(128, converted_vector_2, i32) = *(float *)SR_VEC_LANES(128, converted_vector_2, i32) + 24.0;
           ++buffer_cursor_2;
@@ -5860,14 +6011,71 @@ int sub_14009E590()
 //----- (000000014009E7D0) ----------------------------------------------------
 void            sub_14009E7D0(float *a1, __int64 a2)
 {
-  sr_recovery_08009E7D0(a1, (const float *)a2);
+  float weighted_sum;
+  double reordered_vector;
+  __int64 unrecovered_register_value;
+  __m128 call_result;
+
+  weighted_sum = sub_14023F704(*(float *)(a2 + 4), *(float *)(a2 + 16));
+  *a1 = weighted_sum;
+  *(_QWORD *)&reordered_vector = *(unsigned int *)(a2 + 24);
+  *(float *)&reordered_vector = (float)(*(float *)&reordered_vector * *(float *)&reordered_vector) + (float)(*(float *)(a2 + 32) * *(float *)(a2 + 32));
+  a1[1] = sub_14023F704(-*(float *)(a2 + 28), fsqrt(*(float *)&reordered_vector));
+  call_result = sub_1401F8AC0(COERCE_DOUBLE((unsigned __int64)LODWORD(weighted_sum)), unrecovered_register_value, reordered_vector);
+  *(float *)&reordered_vector = SR_VEC_READ_LANES(128, _mm_shuffle_ps(call_result, call_result, 1), f32)[0];
+  a1[2] = sub_14023F704(
+            (float)(SR_VEC_LANES(128, call_result, f32)[0] * *(float *)(a2 + 20)) - (float)(*(float *)&reordered_vector * *(float *)(a2 + 8)),
+            (float)(*(float *)&reordered_vector * *(float *)a2) - (float)(SR_VEC_LANES(128, call_result, f32)[0] * *(float *)(a2 + 12)));
 }
 
 //----- (000000014009E880) ----------------------------------------------------
 __int64            sub_14009E880(float *a1, float *a2)
 {
-  return sr_recovery_08009E880(a1, a2);
+  float source_float_6;
+  float source_float_4;
+  float source_float_7;
+  double angle;
+  float source_float_8;
+  double angle_2;
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14009E880[80];
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_14009E880 + 0)) /* [rsp+0h] */
+#define axis (*(__int128 (*))(void *)(sr_frame_14009E880 + 32)) /* [rsp+20h] */
+#define frame_float_at_48 (*(float (*))(void *)(sr_frame_14009E880 + 48)) /* [rsp+30h] */
+#define unused_written_slot (*(int (*))(void *)(sr_frame_14009E880 + 52)) /* [rsp+34h] */
+#define axis_2 (*(float (*)[2])(void *)(sr_frame_14009E880 + 56)) /* [rsp+38h] */
+#define frame_float_at_64 (*(float (*))(void *)(sr_frame_14009E880 + 64)) /* [rsp+40h] */
+#define unused_frame_slot_72 (*(__int64 (*))(void *)(sr_frame_14009E880 + 72)) /* [rsp+48h] */
+
+  source_float_6 = a2[6];
+  source_float_4 = a2[4];
+  source_float_7 = a2[7];
+  axis = *(_OWORD *)a2;
+  *(_QWORD *)&angle = *((unsigned int *)a2 + 5);
+  axis_2[0] = source_float_6;
+  source_float_8 = a2[8];
+  unused_written_slot = LODWORD(angle);
+  frame_float_at_48 = source_float_4;
+  axis_2[1] = source_float_7;
+  frame_float_at_64 = source_float_8;
+  *(float *)&angle = sub_14023F704(*(float *)&angle, source_float_4);
+  *a1 = *(float *)&angle;
+  sr_math_mat3_rotate_rows((__int64)&axis, (float *)&axis, angle);
+  *(_QWORD *)&angle_2 = HIDWORD(axis) ^ 0x8000000080000000uLL;
+  *(float *)&angle_2 = sub_14023F704(*(float *)&angle_2, frame_float_at_48);
+  a1[2] = *(float *)&angle_2;
+  sr_math_mat3_rotate_rows((__int64)&axis, axis_2, angle_2);
+  a1[1] = sub_14023F704(axis_2[0], frame_float_at_64);
+  return 0; /* the function has no caller */
 }
+
+#undef unused_frame_slot_0
+#undef axis
+#undef frame_float_at_48
+#undef unused_written_slot
+#undef axis_2
+#undef frame_float_at_64
+#undef unused_frame_slot_72
 
 //----- (000000014009E950) ----------------------------------------------------
 float            sub_14009E950(__int64 a1, __int64 a2, double a3)

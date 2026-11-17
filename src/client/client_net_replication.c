@@ -2,7 +2,6 @@
 #include "../engine/area_bounds.h"
 #include "../engine/net_bits.h"
 #include "../engine/net_replication.h"
-#include "../engine/net_replication_encode.h"
 #include "../engine/physics_kernels.h"
 
 //----- (0000000140105AB0) ----------------------------------------------------
@@ -14,7 +13,10 @@ unsigned int *           sr_net_replication_queue_event(int peer, unsigned int a
 //----- (0000000140105BD0) ----------------------------------------------------
 __int64            sub_140105BD0(float a1)
 {
-  return (unsigned int)net_replication_distance_priority(a1);
+  float pow_result;
+
+  pow_result = pow(a1, 1.75);
+  return (unsigned int)(int)(float)((float)(1.0 - (float)(pow_result * 0.00390625)) * 256.0);
 }
 
 //----- (0000000140105C20) ----------------------------------------------------

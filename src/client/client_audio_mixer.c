@@ -7,21 +7,99 @@
 #include "../engine/text_helpers.h"
 
 //----- (0000000140069400) ----------------------------------------------------
-/* The debug console still prints these; the original callback at
-   0x140069400 never touches them (they were invented during
-   reconstruction), so the wrapper does not either. */
+/* Diagnostics read by the debug console: callbacks so far and the loudest sample. */
 volatile int sr_audio_calls, sr_audio_peak;
 void            sr_audio_output_callback(__int64 userdata, __m128i *output, int byte_count)
 {
-  audio_output_callback((void *)(uintptr_t)userdata, output, byte_count);
+  enum { READ_BUFFER = 9, OUTPUT_BASE = 11, BUFFER_WORDS = 0x10000 };
+  const float *mixed = (const float *)&dword_140404A6C[
+      OUTPUT_BASE + BUFFER_WORDS * dword_140404A6C[READ_BUFFER]];
+  (void)userdata;
+  memcpy(output, mixed, byte_count);
+  /* SDL output is float32; report a normalized peak on the existing 16-bit scale. */
+  for (int sample = 0; sample < byte_count / (int)sizeof(float); ++sample) {
+    float magnitude = fabsf(((float *)output)[sample]);
+    int peak = isfinite(magnitude) ? (int)(fminf(magnitude, 1.0f) * 32767.0f) : 0;
+    if (peak > sr_audio_peak) sr_audio_peak = peak;
+  }
+  sr_audio_calls++;
+  g_140404A90 ^= 1u;
+  SDL_SemPost(*(void **)&g_140404A70);
 }
 
 // 140069439: control flows out of bounds to 140198E69
 
 //----- (0000000140069440) ----------------------------------------------------
-void sr_audio_list_devices(void)
+__int64 sub_140069440()
 {
-  audio_list_devices();
+  int output_device_count;
+  int capture_device_index;
+  int output_device_index;
+  char *output_device_name_cursor;
+  int next_output_device_index;
+  char *output_name_destination_offset;
+  char output_name_character;
+  int capture_device_count;
+  char *capture_device_name_cursor;
+  int next_capture_device_index;
+  char *capture_name_destination_offset;
+  char capture_name_character;
+  __int64 result;
+
+  output_device_count = sub_140198E7B();
+  capture_device_index = 0;
+  g_144970CA4 = 0x746C7561666544LL;
+  output_device_index = 0;
+  if ( output_device_count < 0 )
+    output_device_count = 0;
+  g_144970CA0 = output_device_count;
+  if ( output_device_count > 0 )
+  {
+    do
+    {
+      output_device_name_cursor = (char *)sub_140198E81();
+      next_output_device_index = output_device_index + 1;
+      output_name_destination_offset = (char *)&g_140404A70 + ((__int64)output_device_index << 9) - (_QWORD)output_device_name_cursor;
+      do
+      {
+        output_name_character = *output_device_name_cursor;
+        output_device_name_cursor[(_QWORD)output_name_destination_offset + 72795188] = *output_device_name_cursor;
+        ++output_device_name_cursor;
+      }
+      while ( output_name_character );
+      output_device_count = g_144970CA0;
+      ++output_device_index;
+    }
+    while ( next_output_device_index < (int)g_144970CA0 );
+  }
+  g_144970CA0 = output_device_count + 1;
+  capture_device_count = sub_140198E7B();
+  g_144978CB0 = 0x746C7561666544LL;
+  if ( capture_device_count < 0 )
+    capture_device_count = 0;
+  g_144978CAC = capture_device_count;
+  if ( capture_device_count > 0 )
+  {
+    do
+    {
+      capture_device_name_cursor = (char *)sub_140198E81();
+      next_capture_device_index = capture_device_index + 1;
+      capture_name_destination_offset = (char *)&g_140404A70 + ((__int64)capture_device_index << 9) - (_QWORD)capture_device_name_cursor;
+      do
+      {
+        capture_name_character = *capture_device_name_cursor;
+        capture_device_name_cursor[(_QWORD)capture_name_destination_offset + 72827968] = *capture_device_name_cursor;
+        ++capture_device_name_cursor;
+      }
+      while ( capture_name_character );
+      capture_device_count = g_144978CAC;
+      ++capture_device_index;
+    }
+    while ( next_capture_device_index < (int)g_144978CAC );
+  }
+  result = (unsigned int)(capture_device_count + 1);
+  g_144978CAC = result;
+  return result;
 }
 
 //----- (0000000140069630) ----------------------------------------------------
@@ -413,9 +491,15 @@ __int64            sr_audio_channel_play_at(int channel, int sound, unsigned int
 }
 
 //----- (000000014006A5C0) ----------------------------------------------------
-void sr_audio_pause_devices(void)
+__int64 sub_14006A5C0()
 {
-  audio_pause_devices();
+  __int64 result;
+
+  if ( (int)g_1404C4A98 > 0 )
+    result = sub_140198E9F();
+  if ( (int)g_140404A88 > 0 )
+    return sub_140198E9F();
+  return result;
 }
 
 //----- (000000014006B4C0) ----------------------------------------------------

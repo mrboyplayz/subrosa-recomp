@@ -1,10 +1,8 @@
-// NC_WRAPPERS: 1400C58E0 1400C5610 1400C5360 1400C9120 1400C5750 1400C3E00
+// NC_WRAPPERS: 1400C58E0 1400C5610 1400C5360 1400C9120
 /* The computer item's terminal: the mission-slot hit ratio, the word copy
  * through the letter-to-slot table (raw and coloured paths), the selection
- * list rows, the raw source map and the screen update (the colour row, the
- * 32-entry ring and the change counter), and the snake game's keys
- * (extension-bit letters, Ctrl-X reset, the four arrows and the reversal
- * refusal).
+ * list rows, and the snake game's keys (extension-bit letters, Ctrl-X
+ * reset, the four arrows and the reversal refusal).
  *
  * The per-item records, the text link record pool head, the peer and local
  * link masks are restored per case and filled with random junk; the
@@ -19,8 +17,6 @@
 float terminal_mission_hit_ratio(int item);
 long long terminal_word_copy_mapped(int item, int line, const char *text, int coloured);
 long long terminal_selection_list_draw(int item);
-long long terminal_raw_source_map(int item);
-long long terminal_clear_line_and_bump(int item);
 void terminal_snake_key(int item, int key);
 
 #ifdef NC_NATIVE
@@ -28,30 +24,22 @@ void terminal_snake_key(int item, int key);
 #define word_copy_mapped(item, line, text, coloured) \
     ((long long (*)(int, int, const char *, int))NC_ADDR(0x1400C5610))(item, line, text, coloured)
 #define selection_list_draw(item) ((long long (*)(int))NC_ADDR(0x1400C5360))(item)
-#define raw_source_map(item) ((long long (*)(int))NC_ADDR(0x1400C5750))(item)
-#define clear_line_and_bump(item) ((long long (*)(int))NC_ADDR(0x1400C3E00))(item)
 #define snake_key(item, key) ((void (*)(int, int))NC_ADDR(0x1400C9120))(item, key)
 #elif defined(NC_CLIENT_WRAPPERS)
 long long sub_1400C5610(int, int, long long, int);
 float sub_1400C58E0(int);
 long long sub_1400C5360(int);
-long long sub_1400C5750(int);
-long long sub_1400C3E00(int);
 void sub_1400C9120(int, int);
 
 #define mission_hit_ratio(item) sub_1400C58E0(item)
 #define word_copy_mapped(item, line, text, coloured) \
     sub_1400C5610(item, line, (long long)(uintptr_t)(text), coloured)
 #define selection_list_draw(item) sub_1400C5360(item)
-#define raw_source_map(item) sub_1400C5750(item)
-#define clear_line_and_bump(item) sub_1400C3E00(item)
 #define snake_key(item, key) sub_1400C9120(item, key)
 #else
 #define mission_hit_ratio(item) terminal_mission_hit_ratio(item)
 #define word_copy_mapped(item, line, text, coloured) terminal_word_copy_mapped(item, line, text, coloured)
 #define selection_list_draw(item) terminal_selection_list_draw(item)
-#define raw_source_map(item) terminal_raw_source_map(item)
-#define clear_line_and_bump(item) terminal_clear_line_and_bump(item)
 #define snake_key(item, key) terminal_snake_key(item, key)
 #endif
 
@@ -134,7 +122,7 @@ int main(void)
         nc_restore();
         fill_state();
 
-        int kind = (int)nc_rand_below(6);
+        int kind = (int)nc_rand_below(4);
         int item = (int)nc_rand_below(ITEMS);
         nc_line("case %d kind %d item %d", n, kind, item);
         if (kind == 0) {
@@ -165,16 +153,6 @@ int main(void)
         } else if (kind == 2) {
             long long drawn = selection_list_draw(item);
             nc_line("drawn %lld", drawn);
-        } else if (kind == 3) {
-            /* The raw source map: five source lines through the letter-to-slot
-               table into the screen lines. */
-            long long mapped = raw_source_map(item);
-            nc_line("mapped %lld", mapped);
-        } else if (kind == 4) {
-            /* The screen update: the colour row zeroed, the line sent, the
-               ring stepped and the item's change counter counted up. */
-            long long bumped = clear_line_and_bump(item);
-            nc_line("bumped %lld", bumped);
         } else {
             unsigned int pick = nc_rand_below(10);
             int key;

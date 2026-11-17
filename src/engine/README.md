@@ -114,7 +114,10 @@ The table records the recovered routines by original address. Recovery is incomp
 | `corner_flip.c` | the 4 x 12 corner table turned one step per count with the face tag along its cycle | 0x14001B5C0 |
 | `item_text.c` | a row of an item's text filled from a string, padded with spaces, with a colour per cell | 0x1400C6AB0 |
 | `texture_solid.c`, `texture_solid.h` | a texture record made 1 x 1 in one colour, its old pixels freed | 0x140138590 |
-| `character.c`, `character.h` | the .cmc character clothing/config loader and the first-person shadow pass | 0x1400E8580, 0x1400FBA50 |
+| `texture_upload.c` | a texture record uploaded: the bind, the four sampler words and one image call per level, freeing the level pointers when asked | 0x14014D3E0 |
+| `atlas_create.c`, `atlas_create.h` | the first atlas texture: buffer of 0xFF, texture object, clamped linear filtering | 0x14006CA30 |
+| `model_draw.c`, `model_draw.h` | a loaded mesh drawn at a position: the camera's model set and scaled, the matrix uniform, the vertex buffer and attribute setup, the draw, then the model reset to the identity | 0x140125270 |
+| `camera.c` (fixed) | the model from the original's identity rows, the position and the untransposed rotation, and the reset the mesh draw ends with | 0x14007B990, 0x14007B6F0 |
 | `gl.h` | OpenGL entry points with their real prototypes | |
 | `memory.h` | access to the game state shared with `src/client/` | |
 | `arith.h` | integer and conversion arithmetic as the original's instructions do it | |

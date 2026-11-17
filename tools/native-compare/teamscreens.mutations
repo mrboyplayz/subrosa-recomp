@@ -1,0 +1,82 @@
+heading red and blue swapped
+team_red, team_green, team_blue, 1.0f, NULL) /* 0x140089616 */
+----
+team_blue, team_green, team_red, 1.0f, NULL) /* 0x140089616 */
+====
+heading flags centred-pair dropped
+24.0, 0x60u, team_red
+----
+24.0, 0x20u, team_red
+====
+heading drawn white
+team_red = *(float *)&dword_1402B2830[3 * element_index];
+        team_green = *(float *)&dword_1402B2834[3 * element_index];
+        team_blue = *(float *)&dword_1402B2838[3 * element_index];
+----
+team_red = 1.0f;
+        team_green = 1.0f;
+        team_blue = 1.0f;
+====
+winner banner drawn white
+(unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+                           (*(float *)&selection_code), NULL) /* 0x14008A2FD */
+----
+(unsigned)float_word_4, 1.0f, 1.0f, 1.0f,
+                           (*(float *)&selection_code), NULL) /* 0x14008A2FD */
+====
+winner banner flag 0x21 becomes 0x20
+                           (*(float *)&selection_code), NULL) /* 0x14008B20D */
+----
+                           0x21u, NULL) /* 0x14008B20D */
+====
+third column brightness dropped
+      scaled_value_3 = scaled_value_3 * 1.5;
+----
+      scaled_value_3 = scaled_value_3;
+====
+fourth column no longer white
+sr_text_draw_recovered(off_1402B2890[element_index], scaled_value + 8.0, sr_text_bits_float(0x42D00000u), 24.0, 0x60u, team_red
+----
+sr_text_draw_recovered(off_1402B2890[element_index], scaled_value + 8.0, sr_text_bits_float(0x42D00000u), 24.0, 0x60u, 1.0f
+====
+money readout flags 0x22 become 0x20
+                               sr_text_bits_float((unsigned)(uintptr_t)converted_integer), 24.0, 0x22u,
+----
+                               sr_text_bits_float((unsigned)(uintptr_t)converted_integer), 24.0, 0x20u,
+====
+player row dimming dropped
+team_red * row_scale, team_green * row_scale, team_blue * row_scale, 1.0f, NULL) /* 0x140089F7D */
+----
+team_red, team_green, team_blue, 1.0f, NULL) /* 0x140089F7D */
+====
+player row flags 0x60 become 0x20
+            24.0, 0x60u,
+            team_red * row_scale
+----
+            24.0, 0x20u,
+            team_red * row_scale
+====
+player row cash colour dropped
+sr_text_draw_recovered("$/I", text_x + 240.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector))), 24.0, 0x22u, team_red, team_green, team_blue, 1.0f,
+            (const uint64[]){(uintptr_t)(uint32_t)dword_140404A6C[scaled_index_6 + 71856278]}) /* 0x14008A01C */
+----
+sr_text_draw_recovered("$/I", text_x + 240.0, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(saved_converted_vector)))), 24.0, 0x22u, 1.0f, 1.0f, 1.0f, 1.0f,
+            (const uint64[]){(uintptr_t)(uint32_t)dword_140404A6C[scaled_index_6 + 71856278]}) /* 0x14008A01C */
+====
+badge number drawn white
+          10.0, (unsigned)float_word_4, scaled_value_4, scaled_value_5, scaled_value_6,
+          (*(float *)&selection_code), NULL) /* 0x14008AEF2 */
+----
+          10.0, (unsigned)float_word_4, 1.0f, 1.0f, 1.0f,
+          (*(float *)&selection_code), NULL) /* 0x14008AEF2 */
+====
+cash total argument dropped
+          (*(float *)&selection_code),
+          (const uint64[]){(uintptr_t)(uint32_t)scaled_index_14}) /* 0x14008AF58 */
+----
+          (*(float *)&selection_code), NULL) /* 0x14008AF58 */
+====
+money readout percent argument zeroed
+                                                (uint64_t)(uint32_t)saved_combined_products})
+----
+                                                (uint64_t)0xFFFFFFFFu})

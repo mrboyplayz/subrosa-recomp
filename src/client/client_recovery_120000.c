@@ -1,6 +1,5 @@
 #include "shared_client.h"
 #include "../engine/record_slots.h"
-#include "../engine/recovery_120000.h"
 
 // 14012250F: conditional instruction was optimized away because edx.4==2
 
@@ -83,7 +82,7 @@ __int64 sub_140127500()
 //----- (0000000140127900) ----------------------------------------------------
 __int64            sub_140127900(__int64 a1, __int64 a2)
 {
-  return recovery_return_second(a1, a2);
+  return a2;
 }
 
 //----- (000000014012AF00) ----------------------------------------------------
@@ -273,7 +272,8 @@ void            sub_14012C100(float *a1, float *a2)
 //----- (000000014012C450) ----------------------------------------------------
 __int64 sub_14012C450()
 {
-  return recovery_reset_dirs();
+  crt_chdir(&g_182A7D340);
+  return crt_chdir(&g_182A7D140);
 }
 
 //----- (000000014012C6D0) ----------------------------------------------------
@@ -1305,8 +1305,40 @@ __int64            sub_14012F890(_BYTE *a1,      char *a2, __int64 a3, __int64 a
 //----- (000000014012FB60) ----------------------------------------------------
 __int64            sub_14012FB60(_BYTE *a1, __int64 a2)
 {
-  return recovery_append_file_text((char *)(uintptr_t)a1, (const char *)(uintptr_t)a2);
-}
+  int rand_result;
+  char *destination_text;
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14012FB60[560];
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_14012FB60 + 0)) /* [rsp+0h] */
+#define source_text (*(char (*)[512])(void *)(sr_frame_14012FB60 + 32)) /* [rsp+20h] */
+#define unused_frame_slot_544 (*(__int64 (*))(void *)(sr_frame_14012FB60 + 544)) /* [rsp+220h] */
+
+  *a1 = 0;
+  rand_result = rand() % 3;
+  if ( rand_result )
+  {
+    if ( rand_result == 1 )
+    {
+      crt_sprintf(source_text, "the file named %s contains the data. ", a2);
+    }
+    else if ( rand_result == 2 )
+    {
+      crt_sprintf(source_text, "the secret info is located in %s. ", a2);
+    }
+  }
+  else
+  {
+    crt_sprintf(source_text, "the data is stored in the file %s. ", a2);
+  }
+  destination_text = a1 - 1;
+  while ( *++destination_text != 0 )
+    ;
+  strcpy(destination_text, source_text);
+  return 0; /* the function has no caller */
+}
+#undef unused_frame_slot_0
+#undef source_text
+#undef unused_frame_slot_544
 
 //----- (000000014012FC30) ----------------------------------------------------
 __int64            sub_14012FC30(_BYTE *a1)

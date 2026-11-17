@@ -506,7 +506,106 @@ LABEL_84:
 //----- (00000001400A77C0) ----------------------------------------------------
 void sub_1400A77C0(float a1, float a2, float a3, float a4, float a5)
 {
-    hud_draw_health_capsule((int)a1, a2, a3); // a1 is player_idx, a2, a3 are coords?
+  float input_value;
+  float input_value_2;
+  float component_delta;
+  float component_delta_2;
+  float weighted_sum;
+  float weighted_sum_2;
+  float square_root;
+  float scaled_ratio;
+  float scaled_ratio_2;
+  char iteration_count;
+  __int64 element_index;
+  float component_delta_3;
+  __int64 unrecovered_register_value;
+  __int64 unrecovered_register_value_2;
+  float weighted_sum_3;
+  float weighted_sum_4;
+  float weighted_sum_5;
+  float weighted_sum_6;
+  float component_sum;
+  float component_sum_2;
+  __int64 unrecovered_register_value_3;
+  __int64 unrecovered_register_value_4;
+  __int64 masked_bits;
+  float weighted_sum_7;
+  float weighted_sum_8;
+  float weighted_sum_9;
+  float weighted_sum_10;
+  float component_sum_3;
+  float component_sum_4;
+  __int64 void_2;
+  float sr_capsule_vertex[3];
+
+  input_value = a3;
+  input_value_2 = a2;
+  component_delta = a3 - a1;
+  component_delta_2 = a4 - a2;
+  weighted_sum = (float)(a1 + a3) * 0.5;
+  weighted_sum_2 = (float)(a2 + a4) * 0.5;
+  square_root = fsqrt((float)(component_delta_2 * component_delta_2) + (float)(component_delta * component_delta));
+  if ( square_root == 0.0 )
+  {
+    scaled_ratio = 0.0;
+    scaled_ratio_2 = 0.0;
+  }
+  else
+  {
+    scaled_ratio = component_delta * (float)(1.0 / square_root);
+    scaled_ratio_2 = component_delta_2 * (float)(1.0 / square_root);
+  }
+  iteration_count = 0;
+  g_1AD05944C = 9;
+  element_index = 0;
+  g_1AD059440 = 0;
+  (*(int *)(void *)&sr_capsule_vertex[2]) = 0;
+  component_delta_3 = -scaled_ratio;
+  g_1AD059448 = 0;
+  do
+  {
+    sr_capsule_vertex[0] = weighted_sum;
+    sr_capsule_vertex[1] = weighted_sum_2;
+    sr_renderer_batch_vertex3fv((unsigned int *)&sr_capsule_vertex[0], a2, a3);
+    weighted_sum_3 = a5 * *(float *)&dword_140404A6C[2 * element_index + 346696314];
+    weighted_sum_4 = a5 * *(float *)&dword_140404A6C[2 * element_index + 346696315];
+    weighted_sum_5 = (float)(scaled_ratio * weighted_sum_4) + (float)(scaled_ratio_2 * weighted_sum_3);
+    weighted_sum_6 = (float)(component_delta_3 * weighted_sum_3) + (float)(scaled_ratio_2 * weighted_sum_4);
+    if ( (unsigned __int64)element_index >= 0x20 )
+    {
+      component_sum = weighted_sum_5 + a1;
+      component_sum_2 = weighted_sum_6 + input_value_2;
+    }
+    else
+    {
+      component_sum = weighted_sum_5 + input_value;
+      component_sum_2 = weighted_sum_6 + a4;
+    }
+    sr_capsule_vertex[1] = component_sum_2;
+    sr_capsule_vertex[0] = component_sum;
+    sr_renderer_batch_vertex3fv((unsigned int *)&sr_capsule_vertex[0], unrecovered_register_value, unrecovered_register_value_2);
+    masked_bits = ++iteration_count & 0x3F;
+    weighted_sum_7 = a5 * *(float *)&dword_140404A6C[2 * masked_bits + 346696314];
+    weighted_sum_8 = a5 * *(float *)&dword_140404A6C[2 * masked_bits + 346696315];
+    weighted_sum_9 = (float)(scaled_ratio * weighted_sum_8) + (float)(scaled_ratio_2 * weighted_sum_7);
+    weighted_sum_10 = (float)(component_delta_3 * weighted_sum_7) + (float)(scaled_ratio_2 * weighted_sum_8);
+    if ( (iteration_count & 0x3Fu) >= 0x20 )
+    {
+      component_sum_3 = weighted_sum_9 + a1;
+      component_sum_4 = weighted_sum_10 + input_value_2;
+    }
+    else
+    {
+      component_sum_3 = weighted_sum_9 + input_value;
+      component_sum_4 = weighted_sum_10 + a4;
+    }
+    sr_capsule_vertex[1] = component_sum_4;
+    sr_capsule_vertex[0] = component_sum_3;
+    sr_renderer_batch_vertex3fv((unsigned int *)&sr_capsule_vertex[0], unrecovered_register_value_3, unrecovered_register_value_4);
+    ++element_index;
+  }
+  while ( element_index < 64 );
+  sr_renderer_batch_flush(void_2, a2, a3);
 }
 
 //----- (00000001400A7C70) ----------------------------------------------------

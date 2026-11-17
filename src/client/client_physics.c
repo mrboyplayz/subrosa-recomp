@@ -448,11 +448,107 @@ __int64            sub_140048110(int *a1)
 #undef unused_frame_slot_848
 
 //----- (0000000140050C80) ----------------------------------------------------
-__int64 sub_140050C80(_DWORD *a1, _DWORD *a2, unsigned int a3)
+__int64            sub_140050C80(_DWORD *a1, _DWORD *a2, unsigned int a3)
 {
-  return physics_random_round_words((uint32_t *)a1, (uint32_t *)a2, a3);
+  __int64 result;
+  unsigned int *record_byte_offset;
+  int state_word;
+  int i;
+  __int64 cached_i;
+  unsigned int shifted_bits;
+  unsigned int *buffer_cursor;
+  unsigned int *buffer_cursor_2;
+
+  result = 0;
+  if ( (int)g_1602E12E0 <= 0 )
+  {
+LABEL_5:
+    if ( (int)g_1602E12E0 < 0x7FFF )
+    {
+      state_word = dword_14030186C;
+      dword_140404A6C[4 * g_1602E12E0 + 133919262] = a3;
+      if ( state_word >= 624 )
+      {
+        if ( state_word == 625 )
+        {
+          g_144AF96E0 = 5489;
+          for ( i = 1; i < 624; ++i )
+          {
+            cached_i = i;
+            shifted_bits = i + 1812433253 * (dword_140404A6C[i + 18600732] ^ (dword_140404A6C[i + 18600732] >> 30));
+            dword_140404A6C[cached_i + 18600733] = shifted_bits;
+          }
+        }
+        buffer_cursor = &g_144AF96E0;
+        buffer_cursor_2 = &g_144AF9A6C;
+        do
+        {
+          *buffer_cursor = buffer_cursor[397] ^ ((*buffer_cursor ^ (*buffer_cursor ^ buffer_cursor[1]) & 0x7FFFFFFF) >> 1) ^ dword_140301E08[buffer_cursor[1] & 1];
+          ++buffer_cursor;
+        }
+        while ( (__int64)buffer_cursor < (__int64)&g_144AF9A6C );
+        do
+        {
+          *buffer_cursor_2 = *(buffer_cursor_2 - 227) ^ ((*buffer_cursor_2 ^ (*buffer_cursor_2 ^ buffer_cursor_2[1]) & 0x7FFFFFFF) >> 1) ^ dword_140301E08[buffer_cursor_2[1] & 1];
+          ++buffer_cursor_2;
+        }
+        while ( (__int64)buffer_cursor_2 < (__int64)&g_144AFA09C );
+        g_144AFA09C = g_144AF9D10
+                                  ^ ((g_144AFA09C
+                                    ^ (g_144AF96E0
+                                     ^ g_144AFA09C)
+                                    & 0x7FFFFFFF) >> 1)
+                                  ^ dword_140301E08[g_144AF96E0 & 1];
+        state_word = 0;
+      }
+      dword_14030186C = state_word + 1;
+      dword_140404A6C[4 * g_1602E12E0 + 133919263] = (((((((dword_140404A6C[state_word + 18600733] >> 11)
+                                                                        ^ dword_140404A6C[state_word + 18600733])
+                                                                       & 0xFF3A58AD) << 7)
+                                                                     ^ (dword_140404A6C[state_word + 18600733] >> 11)
+                                                                     ^ dword_140404A6C[state_word + 18600733])
+                                                                    & 0xFFFFDF8C) << 15)
+                                                                  ^ ((((dword_140404A6C[state_word + 18600733] >> 11)
+                                                                     ^ dword_140404A6C[state_word + 18600733])
+                                                                    & 0xFF3A58AD) << 7)
+                                                                  ^ (dword_140404A6C[state_word + 18600733] >> 11)
+                                                                  ^ dword_140404A6C[state_word + 18600733]
+                                                                  ^ (((((((((dword_140404A6C[state_word + 18600733] >> 11)
+                                                                          ^ dword_140404A6C[state_word + 18600733])
+                                                                         & 0xFF3A58AD) << 7)
+                                                                       ^ (dword_140404A6C[state_word + 18600733] >> 11)
+                                                                       ^ dword_140404A6C[state_word + 18600733])
+                                                                      & 0xFFFFDF8C) << 15)
+                                                                    ^ ((((dword_140404A6C[state_word + 18600733] >> 11)
+                                                                       ^ dword_140404A6C[state_word + 18600733])
+                                                                      & 0xFF3A58AD) << 7)
+                                                                    ^ (dword_140404A6C[state_word + 18600733] >> 11)
+                                                                    ^ dword_140404A6C[state_word + 18600733]) >> 18);
+      dword_140404A6C[4 * g_1602E12E0 + 133919264] = sub_14009DE80();
+      *a1 = dword_140404A6C[4 * g_1602E12E0 + 133919263];
+      *a2 = dword_140404A6C[4 * g_1602E12E0 + 133919264];
+      return g_1602E12E0++;
+    }
+    else
+    {
+      return 0xFFFFFFFFLL;
+    }
+  }
+  else
+  {
+    record_byte_offset = &g_1602E12E4;
+    while ( a3 != *record_byte_offset )
+    {
+      result = (unsigned int)(result + 1);
+      record_byte_offset += 4;
+      if ( (int)result >= (int)g_1602E12E0 )
+        goto LABEL_5;
+    }
+    *a1 = dword_140404A6C[4 * (int)result + 133919263];
+    *a2 = dword_140404A6C[4 * (int)result + 133919264];
+  }
+  return result;
 }
-uint32_t physics_random_round_words(uint32_t *a1, uint32_t *a2, uint32_t a3);
 
 //----- (000000014006A5F0) ----------------------------------------------------
 __int64            sub_14006A5F0(int a1, int a2)

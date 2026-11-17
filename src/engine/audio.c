@@ -2,7 +2,6 @@
 #include <string.h>
 #include "audio.h"
 #include "crt.h"
-#include "wave.h"
 #include "arith.h"
 
 uint32_t audio_capture_available(void)
@@ -100,68 +99,6 @@ void audio_load_pcm16(uint32_t sound, int byte_count, const int16_t *pcm, float 
         *(float *)((unsigned char *)(uintptr_t)record->samples + byte_offset - 4)
             = (float)sample * 0.000030517578125f;
     }
-}
-
-/* Rewrites a sound from a WAV file: changes directory to "sound", loads the
- * file, converts 16-bit samples to float, stores the buffer in the sound
- * record, then changes directory back. The sound is only rewritten when the
- * index is in range and the file loads successfully, and the chdir results
- * are all the call returns. 0x1400EE400 */
-int64_t audio_load_sound_from_wav(int sound_id, const char *path, float gain)
-{
-    int64_t result;
-    int directory_status;
-
-    directory_status = (int)crt_chdir("sound");
-    result = directory_status;
-    if ((unsigned int)sound_id <= 0xFFF) {
-        AudioSound *record = &audio_sounds[sound_id];
-        int converted_sample_count = 0;
-        record->loaded = 0;
-        void *sr_stream = sr_wave_file(path, "rb");
-        sr_wave_spec sr_spec;
-        unsigned char *wave_samples;
-        unsigned int wave_byte_count;
-        result = (int64_t)(uintptr_t)sr_wave_load(sr_stream, 1, &sr_spec, &wave_samples, &wave_byte_count);
-        if (result) {
-            if (sr_spec.channels == 1) {
-                result = (int64_t)(int)sr_spec.freq;
-                if (sr_spec.freq > 0) {
-                    void *previous_sample_buffer = (void *)(uintptr_t)record->samples;
-                    record->loaded = 1;
-                    record->gain = gain;
-                    /* sample count = (byte_count / 2) * (48000 / freq) */
-                    record->sample_count = (int)(float)((float)(wave_byte_count >> 1)
-                        * (float)(48000.0 / (float)sr_spec.freq));
-                    crt_free(previous_sample_buffer);
-                    float source_sample_position = 0.0f;
-                    record->samples = (uint64_t)(uintptr_t)crt_malloc(
-                        (size_t)(int64_t)(int32_t)((uint32_t)record->sample_count << 2));
-                    if (record->sample_count > 0) {
-                        int64_t destination_byte_offset = 0;
-                        do {
-                            ++converted_sample_count;
-                            *(float *)((unsigned char *)(uintptr_t)record->samples
-                                + destination_byte_offset)
-                                = (float)*(int16_t *)(wave_samples
-                                    + 2 * (int64_t)(int)source_sample_position)
-                                * 0.000030517578f;
-                            destination_byte_offset += 4;
-                            source_sample_position = fminf(source_sample_position
-                                + (float)(1.0 / (float)(48000.0 / (float)sr_spec.freq)),
-                                (float)((wave_byte_count >> 1) - 1));
-                        } while (converted_sample_count < record->sample_count);
-                    }
-                    sr_wave_free(wave_samples);
-                }
-            }
-        }
-    }
-    if (!directory_status)
-        /* The original tail-jumps into chdir("..") and returns its result
-         * (asm 0x1400EE5D1: jne ret / jmp 0x14024C22C). */
-        return crt_chdir("..");
-    return result;
 }
 
 /* Still recompiled code: whether the straight path from one point to the

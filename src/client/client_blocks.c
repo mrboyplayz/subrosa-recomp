@@ -430,8 +430,154 @@ LABEL_73:
 //----- (000000014000C180) ----------------------------------------------------
 __int64            sub_14000C180(int *a1, int a2, float *a3, float *a4)
 {
-  return blocks_render_voxels(a1, a2, a3, a4);
+  __int64 block_record_offset;
+  __int64 block_record_offset_2;
+  float weighted_sum;
+  float product_difference;
+  float product_difference_2;
+  float weighted_sum_2;
+  float weighted_sum_3;
+  __int64 result;
+  float source_component_y;
+  int scaled_index;
+  float weighted_sum_4;
+  int iteration_count;
+  float component_delta;
+  float product_difference_3;
+  int scaled_index_2;
+  float source_component_z;
+  int saved_product_difference;
+  int scaled_index_3;
+  int iteration_count_2;
+  int iteration_count_3;
+  __int64 shifted_bits;
+  __int64 shifted_bits_2;
+  __int64 masked_bits;
+  unsigned int table_value;
+  unsigned int table_value_2;
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14000C180[48];
+#define saved_call_status (*(int (*))(void *)(sr_frame_14000C180 + 0)) /* [rsp+30h] */
+#define unused_written_slot (*(int (*))(void *)(sr_frame_14000C180 + 4)) /* [rsp+34h] */
+#define unused_written_slot_2 (*(int (*))(void *)(sr_frame_14000C180 + 8)) /* [rsp+38h] */
+#define saved_call_status_2 (*(unsigned int (*))(void *)(sr_frame_14000C180 + 16)) /* [rsp+40h] */
+#define saved_product_difference_2 (*(int (*))(void *)(sr_frame_14000C180 + 20)) /* [rsp+44h] */
+#define cached_scaled_index (*(int (*))(void *)(sr_frame_14000C180 + 24)) /* [rsp+48h] */
+#define cached_scaled_index_2 (*(int (*))(void *)(sr_frame_14000C180 + 28)) /* [rsp+4Ch] */
+#define saved_block_record_offset (*(__int64 (*))(void *)(sr_frame_14000C180 + 32)) /* [rsp+50h] */
+
+  block_record_offset = 263004LL * a2;
+  block_record_offset_2 = 263004LL * a2;
+  weighted_sum = *(float *)&dword_140404A6C[block_record_offset_2 + 111579638];
+  product_difference = *a3 - weighted_sum;
+  product_difference_2 = *a4 - weighted_sum;
+  weighted_sum_2 = *(float *)&dword_140404A6C[block_record_offset_2 + 111579640];
+  saved_block_record_offset = block_record_offset;
+  weighted_sum_3 = *(float *)&dword_140404A6C[block_record_offset_2 + 111579654];
+  result = (unsigned int)(int)(float)(product_difference * weighted_sum_3);
+  source_component_y = a3[1];
+  scaled_index = (int)(float)(product_difference_2 * weighted_sum_3);
+  saved_call_status_2 = result;
+  weighted_sum_4 = *(float *)&dword_140404A6C[block_record_offset_2 + 111579639];
+  iteration_count = (int)(float)((float)(source_component_y - weighted_sum_4) * weighted_sum_3);
+  component_delta = a4[1] - weighted_sum_4;
+  unused_written_slot = iteration_count;
+  product_difference_3 = (float)(a4[2] - weighted_sum_2) * weighted_sum_3;
+  scaled_index_2 = (int)(float)(component_delta * weighted_sum_3);
+  source_component_z = a3[2];
+  cached_scaled_index_2 = scaled_index_2;
+  saved_product_difference = (int)product_difference_3;
+  saved_product_difference_2 = (int)product_difference_3;
+  scaled_index_3 = (int)(float)((float)(source_component_z - weighted_sum_2) * weighted_sum_3);
+  cached_scaled_index = scaled_index_3;
+  if ( iteration_count <= scaled_index_2 )
+  {
+    unused_written_slot = iteration_count;
+    do
+    {
+      unused_written_slot_2 = scaled_index_3;
+      iteration_count_2 = scaled_index_3;
+      if ( scaled_index_3 <= saved_product_difference )
+      {
+        do
+        {
+          saved_call_status = result;
+          iteration_count_3 = result;
+          if ( (int)result <= scaled_index )
+          {
+            do
+            {
+              if ( iteration_count_3 >= 0
+                && iteration_count_3 < (int)(dword_140404A6C[block_record_offset_2 + 111579650] << 6)
+                && iteration_count >= 0
+                && iteration_count < (int)(dword_140404A6C[block_record_offset_2 + 111579651] << 6)
+                && iteration_count_2 >= 0
+                && iteration_count_2 < (int)(dword_140404A6C[block_record_offset_2 + 111579652] << 6) )
+              {
+                shifted_bits = *(int *)(*(_QWORD *)&dword_140404A6C[block_record_offset_2 + 111579655]
+                             + 4LL
+                             * (int)((iteration_count_3 >> 6)
+                                   + dword_140404A6C[block_record_offset_2 + 111579650]
+                                   * ((iteration_count_2 >> 6) + dword_140404A6C[block_record_offset_2 + 111579652] * (iteration_count >> 6))));
+                if ( (_DWORD)shifted_bits != -1 )
+                {
+                  shifted_bits_2 = (int)dword_140404A6C[513 * shifted_bits
+                                           + 111579985
+                                           + 64 * ((iteration_count >> 3) & 7u)
+                                           + 8 * ((iteration_count_2 >> 3) & 7)
+                                           + block_record_offset
+                                           + ((iteration_count_3 >> 3) & 7)];
+                  if ( (_DWORD)shifted_bits_2 != -1 )
+                  {
+                    masked_bits = 6930 * shifted_bits_2 + (iteration_count_3 & 7) + 8 * ((iteration_count_2 & 7) + 8 * (iteration_count & 7u));
+                    table_value = dword_140404A6C[masked_bits + 83194359];
+                    if ( (table_value & 0xE0000000) == 0x40000000 )
+                    {
+                      sub_1400174D0(a1, a2, &saved_call_status, table_value, *(float *)&dword_140404A6C[block_record_offset_2 + 111579653]);
+                    }
+                    else if ( (table_value & 0xE0000000) == 0x80000000 )
+                    {
+                      sub_140018CA0(a1, a2, &saved_call_status, table_value, *(float *)&dword_140404A6C[block_record_offset_2 + 111579653]);
+                    }
+                    table_value_2 = dword_140404A6C[masked_bits + 83197431];
+                    if ( (table_value_2 & 0xE0000000) == 0x40000000 )
+                    {
+                      sub_1400174D0(a1, a2, &saved_call_status, table_value_2, *(float *)&dword_140404A6C[block_record_offset_2 + 111579653]);
+                    }
+                    else if ( (table_value_2 & 0xE0000000) == 0x80000000 )
+                    {
+                      sub_140018CA0(a1, a2, &saved_call_status, table_value_2, *(float *)&dword_140404A6C[block_record_offset_2 + 111579653]);
+                    }
+                  }
+                }
+              }
+              block_record_offset = saved_block_record_offset;
+              saved_call_status = ++iteration_count_3;
+            }
+            while ( iteration_count_3 <= scaled_index );
+            result = saved_call_status_2;
+            saved_product_difference = saved_product_difference_2;
+          }
+          unused_written_slot_2 = ++iteration_count_2;
+        }
+        while ( iteration_count_2 <= saved_product_difference );
+        scaled_index_3 = cached_scaled_index;
+        scaled_index_2 = cached_scaled_index_2;
+      }
+      unused_written_slot = ++iteration_count;
+    }
+    while ( iteration_count <= scaled_index_2 );
+  }
+  return result;
 }
+#undef saved_call_status
+#undef unused_written_slot
+#undef unused_written_slot_2
+#undef saved_call_status_2
+#undef saved_product_difference_2
+#undef cached_scaled_index
+#undef cached_scaled_index_2
+#undef saved_block_record_offset
 
 //----- (000000014000C4C0) ----------------------------------------------------
 __int64            sub_14000C4C0(unsigned int a1)

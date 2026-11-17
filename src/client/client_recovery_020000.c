@@ -2332,13 +2332,104 @@ LABEL_40:
 //----- (0000000140033610) ----------------------------------------------------
 _BOOL8            sub_140033610(float *a1, int *a2, float *a3, float *a4, int a5)
 {
-    extern int collision_sphere_triangle_table(float *hit, const int *table, const float *from, const float *to,
-                                               float radius);
-    /* src/engine/recovery_020000.c; the radius arrives as float bits in a5. */
-    float radius;
-    memcpy(&radius, &a5, sizeof radius);
-    return collision_sphere_triangle_table(a1, a2, a3, a4, radius);
+  int iteration_count;
+  int *record_byte_offset;
+  int input_value;
+  float product_difference;
+  float scaled_value;
+  float weighted_sum;
+  float weighted_sum_2;
+  float weighted_sum_3;
+  float weighted_sum_4;
+  float weighted_sum_5;
+  float weighted_sum_6;
+  int table_value;
+  int table_value_2;
+  int table_value_3;
+  float saved_distance;
+  float source_component_y;
+  float source_component_z;
+  int saved_normal;
+  int cached_table_value;
+  int cached_table_value_2;
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_140033610[192];
+#define radius (*(__int64 (*))(void *)(sr_frame_140033610 + 0)) /* [rsp+30h] */
+#define normal (*(int (*))(void *)(sr_frame_140033610 + 40)) /* [rsp+58h] */
+#define cached_table_value_3 (*(int (*))(void *)(sr_frame_140033610 + 44)) /* [rsp+5Ch] */
+#define cached_table_value_4 (*(int (*))(void *)(sr_frame_140033610 + 48)) /* [rsp+60h] */
+#define float_buffer (*(float (*)[4])(void *)(sr_frame_140033610 + 56)) /* [rsp+68h] */
+#define float_buffer_2 (*(float (*)[4])(void *)(sr_frame_140033610 + 72)) /* [rsp+78h] */
+#define float_buffer_3 (*(float (*)[4])(void *)(sr_frame_140033610 + 88)) /* [rsp+88h] */
+#define point (*(float (*)[16])(void *)(sr_frame_140033610 + 104)) /* [rsp+98h] */
+#define distance (*(float (*))(void *)(sr_frame_140033610 + 184)) /* [rsp+E8h] */
+
+  iteration_count = 0;
+  a1[7] = 65536.0;
+  if ( *a2 <= 0 )
+    return 0;
+  record_byte_offset = a2 + 3;
+  input_value = a5;
+  do
+  {
+    product_difference = *((float *)record_byte_offset - 1);
+    LODWORD(float_buffer_3[0]) = *(record_byte_offset - 2);
+    scaled_value = *(float *)record_byte_offset;
+    float_buffer_3[1] = product_difference;
+    weighted_sum = *((float *)record_byte_offset + 1);
+    float_buffer_3[2] = scaled_value;
+    weighted_sum_2 = *((float *)record_byte_offset + 2);
+    float_buffer_2[0] = weighted_sum;
+    weighted_sum_3 = *((float *)record_byte_offset + 3);
+    float_buffer_2[1] = weighted_sum_2;
+    weighted_sum_4 = *((float *)record_byte_offset + 4);
+    float_buffer_2[2] = weighted_sum_3;
+    weighted_sum_5 = *((float *)record_byte_offset + 5);
+    float_buffer[0] = weighted_sum_4;
+    weighted_sum_6 = *((float *)record_byte_offset + 6);
+    float_buffer[1] = weighted_sum_5;
+    table_value = record_byte_offset[7];
+    float_buffer[2] = weighted_sum_6;
+    table_value_2 = record_byte_offset[8];
+    normal = table_value;
+    table_value_3 = record_byte_offset[9];
+    LODWORD(radius) = input_value;
+    cached_table_value_3 = table_value_2;
+    cached_table_value_4 = table_value_3;
+    if ( (unsigned int)sr_collision_sphere_triangle(point, (float *)&normal, &distance, a3, a4, radius, float_buffer_3, float_buffer_2, float_buffer) )
+    {
+      saved_distance = distance;
+      if ( distance < a1[7] )
+      {
+        source_component_y = point[1];
+        *a1 = point[0];
+        source_component_z = point[2];
+        a1[1] = source_component_y;
+        saved_normal = normal;
+        a1[2] = source_component_z;
+        cached_table_value = cached_table_value_3;
+        *((_DWORD *)a1 + 3) = saved_normal;
+        cached_table_value_2 = cached_table_value_4;
+        *((_DWORD *)a1 + 4) = cached_table_value;
+        *((_DWORD *)a1 + 5) = cached_table_value_2;
+        a1[7] = saved_distance;
+      }
+    }
+    ++iteration_count;
+    record_byte_offset += 12;
+  }
+  while ( iteration_count < *a2 );
+  return a1[7] < 65536.0;
 }
+#undef radius
+#undef normal
+#undef cached_table_value_3
+#undef cached_table_value_4
+#undef float_buffer
+#undef float_buffer_2
+#undef float_buffer_3
+#undef point
+#undef distance
 
 //----- (0000000140033B50) ----------------------------------------------------
 __int64            sub_140033B50(float *a1, __int64 a2, float *a3, float *a4)

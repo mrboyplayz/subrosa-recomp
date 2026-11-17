@@ -3,12 +3,213 @@
 //----- (000000014006BED0) ----------------------------------------------------
 void               sub_14006BED0()
 {
-  extern void sr_master_authenticate(void);
-  /* src/engine/master_network.c: the master authentication state machine.
-     Sends the steam ticket or the round state, then consumes the 72/73
-     replies; updates the master state and returns void. */
-  sr_master_authenticate();
+  unsigned int state_word;
+  char masked_bits;
+  int masked_bits_2;
+  int cached_packet_in_byte;
+  unsigned int integer_sum;
+  int cached_packet_in_bit;
+  __int64 integer_sum_2;
+  __int64 saved_cached_packet_in_byte;
+  __int64 saved_cached_packet_in_byte_2;
+  unsigned int masked_bits_3;
+  __int64 saved_cached_packet_in_byte_3;
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_14006BED0[48];
+#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_14006BED0 + 0)) /* [rsp+0h] */
+#define frame_word_at_32 (*(char (*))(void *)(sr_frame_14006BED0 + 32)) /* [rsp+20h] */
+#define frame_word_at_36 (*(int (*))(void *)(sr_frame_14006BED0 + 36)) /* [rsp+24h] */
+#define unused_frame_slot_40 (*(__int64 (*))(void *)(sr_frame_14006BED0 + 40)) /* [rsp+28h] */
+
+  if ( g_16B165F40 > 1 )
+    return; /* native master auth updates state and returns void */
+  if ( !g_16B165F40 )
+  {
+    if ( g_1603612F4 )
+    {
+      g_16B165F40 = 1;
+    }
+    else
+    {
+      if ( !g_1829F8BC0 )
+        return; /* native master auth updates state and returns void */
+      if ( !g_1829F8BD0 )
+      {
+        g_1829F8FD8 = 0;
+        sub_140198D20((__int64)sr_steam_ticket_stage);
+        g_1829F8BD0 = 1;
+      }
+    }
+  }
+  if ( (unsigned int)sub_140198F9B() - g_16B165F44 > 0x3E8 )
+  {
+    g_16B165F44 = sub_140198F9B();
+    state_word = g_16B165F40;
+    if ( g_16B165F40 )
+    {
+      masked_bits = frame_word_at_32;
+LABEL_16:
+      if ( state_word == 1 )
+      {
+        *(_QWORD *)&packet_out_byte = 5;
+        masked_bits = 73;
+        packet_out_data = dword_1402B2658;
+        LOBYTE(g_18539D408) = 73;
+        sr_net_write_bytes((     __m128i *)&g_1603612E4, 4, 1);
+        sr_net_write_bytes((     __m128i *)&g_1603612F4, 4, 1);
+        sub_140130350(g_18329C1E0, g_18329C1E4, 0);
+      }
+      goto LABEL_19;
+    }
+    if ( g_1829F8FD8 && (int)g_1829F8BD4 < 1024 )
+    {
+      *(_QWORD *)&packet_out_byte = 5;
+      masked_bits = 72;
+      packet_out_data = dword_1402B2658;
+      LOBYTE(g_18539D408) = 72;
+      sr_net_write_bytes((     __m128i *)(unsigned int *)&g_151E4594C, 1, 32);
+      sr_net_write_bytes((     __m128i *)&g_1829F8BD4, 4, 1);
+      sr_net_write_bytes((     __m128i *)&g_1829F8BD8, 1, g_1829F8BD4);
+      sub_140130350(g_18329C1E0, g_18329C1E4, 0);
+      state_word = g_16B165F40;
+      goto LABEL_16;
+    }
+  }
+  masked_bits = frame_word_at_32;
+LABEL_19:
+  if ( (int)sub_14011C760() > 0 )
+  {
+    masked_bits_2 = frame_word_at_36;
+    do
+    {
+      cached_packet_in_byte = packet_in_byte;
+      if ( (int)packet_in_byte >= 0x10000
+        || (integer_sum = packet_in_byte + 1,
+            (signed int)(packet_in_byte + 1) > (int)packet_in_length) )
+      {
+        cached_packet_in_bit = packet_in_bit;
+      }
+      else
+      {
+        cached_packet_in_bit = packet_in_bit;
+        if ( (int)packet_in_bit > 0 )
+        {
+          cached_packet_in_bit = 0;
+          ++packet_in_byte;
+          packet_in_bit = 0;
+          cached_packet_in_byte = integer_sum;
+        }
+        integer_sum_2 = cached_packet_in_byte++;
+        masked_bits = *((_BYTE *)&packet_in_data + integer_sum_2);
+        packet_in_byte = cached_packet_in_byte;
+      }
+      if ( masked_bits == 72 )
+      {
+        if ( cached_packet_in_byte >= 0x10000 )
+          goto LABEL_38;
+        if ( cached_packet_in_byte + 4 <= (int)packet_in_length )
+        {
+          if ( cached_packet_in_bit > 0 )
+          {
+            ++cached_packet_in_byte;
+            cached_packet_in_bit = 0;
+            packet_in_byte = cached_packet_in_byte;
+            packet_in_bit = 0;
+          }
+          saved_cached_packet_in_byte = cached_packet_in_byte;
+          cached_packet_in_byte += 4;
+          g_1603612E4 = *(unsigned int *)((char *)&packet_in_data + saved_cached_packet_in_byte);
+          packet_in_byte = cached_packet_in_byte;
+        }
+        if ( cached_packet_in_byte >= 0x10000 || cached_packet_in_byte + 4 > (int)packet_in_length )
+        {
+LABEL_38:
+          masked_bits_3 = g_1603612F4;
+        }
+        else
+        {
+          if ( cached_packet_in_bit > 0 )
+          {
+            ++cached_packet_in_byte;
+            cached_packet_in_bit = 0;
+            packet_in_byte = cached_packet_in_byte;
+            packet_in_bit = 0;
+          }
+          saved_cached_packet_in_byte_2 = cached_packet_in_byte;
+          cached_packet_in_byte += 4;
+          masked_bits_3 = *(unsigned int *)((char *)&packet_in_data + saved_cached_packet_in_byte_2);
+          g_1603612F4 = masked_bits_3;
+          packet_in_byte = cached_packet_in_byte;
+        }
+        if ( masked_bits_3 )
+        {
+          if ( cached_packet_in_byte < 0x10000 && cached_packet_in_byte + 4 <= (int)packet_in_length )
+          {
+            if ( cached_packet_in_bit > 0 )
+            {
+              ++cached_packet_in_byte;
+              packet_in_bit = 0;
+              packet_in_byte = cached_packet_in_byte;
+            }
+            g_1603612F0 = *(unsigned int *)((char *)&packet_in_data + cached_packet_in_byte);
+            packet_in_byte = cached_packet_in_byte + 4;
+          }
+          g_16B165F40 = 1;
+        }
+        else
+        {
+          g_16B165F40 = -1;
+        }
+        crt_chdir(&g_182A7D340);
+        crt_chdir(&g_182A7D140);
+        g_16B165F44 = sub_140198F9B() - 1000;
+      }
+      else if ( masked_bits == 73 )
+      {
+        if ( cached_packet_in_byte < 0x10000 && cached_packet_in_byte + 4 <= (int)packet_in_length )
+        {
+          if ( cached_packet_in_bit > 0 )
+          {
+            ++cached_packet_in_byte;
+            cached_packet_in_bit = 0;
+            packet_in_byte = cached_packet_in_byte;
+            packet_in_bit = 0;
+          }
+          saved_cached_packet_in_byte_3 = cached_packet_in_byte;
+          cached_packet_in_byte += 4;
+          masked_bits_2 = *(unsigned int *)((char *)&packet_in_data + saved_cached_packet_in_byte_3);
+          packet_in_byte = cached_packet_in_byte;
+        }
+        if ( masked_bits_2 == 1 )
+        {
+          if ( cached_packet_in_byte < 0x10000 && cached_packet_in_byte + 4 <= (int)packet_in_length )
+          {
+            if ( cached_packet_in_bit > 0 )
+            {
+              ++cached_packet_in_byte;
+              packet_in_bit = 0;
+              packet_in_byte = cached_packet_in_byte;
+            }
+            g_1603612F0 = *(unsigned int *)((char *)&packet_in_data + cached_packet_in_byte);
+            packet_in_byte = cached_packet_in_byte + 4;
+          }
+          g_16B165F40 = 2;
+        }
+        else
+        {
+          g_1603612F4 = 0;
+          g_16B165F40 = 0;
+        }
+      }
+    }
+    while ( (int)sub_14011C760() > 0 );
+  }
+  return; /* native master auth updates state and returns void */
 }
+#undef unused_frame_slot_0
+#undef frame_word_at_32
+#undef frame_word_at_36
+#undef unused_frame_slot_40
 
 //----- (00000001400A3F30) ----------------------------------------------------
 __int64 sr_ConnectMasterServer()

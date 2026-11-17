@@ -41,13 +41,8 @@ typedef ptrdiff_t GLintptr;
 #define GL_BLEND 0x0BE2
 #define GL_TEXTURE_2D 0x0DE1
 #define GL_TEXTURE0 0x84C0
-#define GL_TEXTURE1 0x84C1
-#define GL_TEXTURE2 0x84C2
-#define GL_TEXTURE3 0x84C3
-#define GL_TEXTURE4 0x84C4
 #define GL_TEXTURE_CUBE_MAP 0x8513
 #define GL_UNSIGNED_SHORT 0x1403
-#define GL_UNSIGNED_INT 0x1405
 #define GL_FLOAT 0x1406
 #define GL_ARRAY_BUFFER 0x8892
 #define GL_ELEMENT_ARRAY_BUFFER 0x8893
@@ -79,14 +74,12 @@ extern char slot_glBufferSubData[] __asm__("glBufferSubData");
 extern char slot_glDisableVertexAttribArray[] __asm__("glDisableVertexAttribArray");
 extern char slot_glDrawArrays[] __asm__("glDrawArrays");
 extern char slot_glEnableVertexAttribArray[] __asm__("glEnableVertexAttribArray");
-extern char slot_glUniform1i[] __asm__("glUniform1i");
 extern char slot_glUniform3fv[] __asm__("glUniform3fv");
 extern char slot_glUniformMatrix4fv[] __asm__("glUniformMatrix4fv");
 extern char slot_glUseProgram[] __asm__("glUseProgram");
 extern char slot_glVertexAttrib2f[] __asm__("glVertexAttrib2f");
 extern char slot_glVertexAttrib4fv[] __asm__("glVertexAttrib4fv");
 extern char slot_glVertexAttribPointer[] __asm__("glVertexAttribPointer");
-extern char slot_glDrawElementsBaseVertex[] __asm__("glDrawElementsBaseVertex");
 extern char slot_glViewport[] __asm__("glViewport");
 extern float flt_140384000[];
 
@@ -106,8 +99,6 @@ extern float flt_140384000[];
 #define glEnableVertexAttribArray SR_GL_SLOT(slot_glEnableVertexAttribArray, void (*)(GLuint))
 #define glUseProgram              SR_GL_SLOT(slot_glUseProgram, void (*)(GLuint))
 #define glUniform3fv              SR_GL_SLOT(slot_glUniform3fv, void (*)(GLint, GLsizei, const GLfloat *))
-#define glUniform1i               SR_GL_SLOT(slot_glUniform1i, void (*)(GLint, GLint))
-#define glDrawElementsBaseVertex  SR_GL_SLOT(slot_glDrawElementsBaseVertex, void (*)(GLenum, GLsizei, GLenum, const void *, GLint))
 #define glUniformMatrix4fv        SR_GL_SLOT(slot_glUniformMatrix4fv, void (*)(GLint, GLsizei, GLboolean, const GLfloat *))
 #define glVertexAttrib2f          SR_GL_SLOT(slot_glVertexAttrib2f, void (*)(GLuint, GLfloat, GLfloat))
 #define glVertexAttrib4fv         SR_GL_SLOT(slot_glVertexAttrib4fv, void (*)(GLuint, const GLfloat *))

@@ -505,9 +505,114 @@ LABEL_50:
 //----- (00000001400D22E0) ----------------------------------------------------
 double            sub_1400D22E0(int a1)
 {
-  extern double terrain_draw(int a1);
-  return terrain_draw(a1);
+  __int64 unused_frame_slot_0;
+  int integer_sum;
+  unsigned int *state_address;
+  __int64 integer_sum_2;
+  unsigned int *buffer_cursor;
+  __int64 running_total;
+  __int64 remaining_count;
+  __int64 remaining_count_2;
+  __int64 scaled_index;
+  __int64 table_value;
+  __int64 unused_local;
+  /* Stack locals keep their original frame adjacency (see frameify.py). */
+  _Alignas(16) unsigned char sr_frame_1400D22E0[32];
+#define cached_integer_sum (*(int (*))(void *)(sr_frame_1400D22E0 + 0)) /* [rsp+88h] */
+#define running_total_2 (*(__int64 (*))(void *)(sr_frame_1400D22E0 + 8)) /* [rsp+90h] */
+#define state_address_2 (*(unsigned int * (*))(void *)(sr_frame_1400D22E0 + 16)) /* [rsp+98h] */
+
+  if ( !a1 )
+  {
+    glUseProgram(terrain_program);
+    glUniform3fv(terrain_u_lightdirection, 1, (unsigned int *)&g_18417DE78);
+    glUniform3fv(terrain_u_lightambient, 1, (unsigned int *)&g_184178D40);
+    glUniform3fv(terrain_u_lightdiffuse, 1, (unsigned int *)&g_184178D50);
+    glUniform3fv(terrain_u_viewposition, 1, (unsigned int *)&g_183F7C544);
+    glUniformMatrix4fv(terrain_u_modelviewprojectionmatrix, 1, 0, (unsigned int *)&g_1A724E6C0);
+    /* DIAG: native sets 1. The mask writer only clears bits into a 0xFFFF-prefilled
+       buffer, so wrong bit math keeps MORE, not less; not the black-frame cause. */
+    glUniform1i(terrain_u_land_usemask, 1);
+    glBindTexture(3553, dword_140404A6C[44 * g_183EBF15C + 284024944]);
+    glActiveTexture(33985);
+    glBindTexture(3553, dword_140404A6C[44 * g_183EBF158 + 284024944]);
+    glActiveTexture(33986);
+    glBindTexture(3553, dword_140404A6C[44 * g_183EBF15C + 284024944]);
+    glActiveTexture(33988);
+    glBindTexture(3553, dword_140404A6C[44 * shading_texture + 284024944]);
+  }
+  glActiveTexture(33987);
+  glBindTexture(3553, dword_140404A6C[44 * g_183EBF164 + 284024944]);
+  glActiveTexture(33984);
+  glEnableVertexAttribArray(0);
+  glEnableVertexAttribArray(1);
+  integer_sum = 0;
+  state_address = &g_180E6F624;
+  integer_sum_2 = 0;
+  cached_integer_sum = 0;
+  running_total_2 = 0;
+  state_address_2 = &g_180E6F624;
+  do
+  {
+    if ( *(state_address - 1) )
+    {
+      buffer_cursor = state_address;
+      running_total = integer_sum_2;
+      remaining_count = 16;
+      do
+      {
+        remaining_count_2 = 16;
+        do
+        {
+          scaled_index = (int)*buffer_cursor;
+          table_value = (int)dword_140404A6C[scaled_index + 272034690 + running_total];
+          if ( (_DWORD)table_value != -1 )
+          {
+            glBindBuffer(34963, dword_140404A6C[2 * dword_140404A6C[scaled_index + 283791480] + 283793814]);
+            glBindBuffer(34962, dword_140404A6C[2 * dword_140404A6C[scaled_index + 283791752] + 283793813]);
+            glVertexAttribPointer(0, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*scaled_index+271838021]),(const void *)(intptr_t)(0));
+            glVertexAttribPointer(1, 3, 5126,0,(int)(uint32_t)(4u*dword_140404A6C[24582*scaled_index+271838021]),(const void *)(intptr_t)(12));
+            glDrawElementsBaseVertex(4,(int32_t)(3u*dword_140404A6C[24582*scaled_index+271838022]),5125,NULL,(int32_t)(dword_140404A6C[24582*scaled_index+271838024]*(uint32_t)table_value));
+            dword_140404A6C[24582 * scaled_index + 271838029 + 3 * table_value] = 4;
+          }
+          running_total += 13;
+          ++buffer_cursor;
+          --remaining_count_2;
+        }
+        while ( remaining_count_2 );
+        --remaining_count;
+      }
+      while ( remaining_count );
+      state_address = state_address_2;
+    }
+    else
+    {
+      sub_1400D2B90(integer_sum);
+    }
+    state_address += 257;
+    integer_sum = cached_integer_sum + 1;
+    integer_sum_2 = running_total_2 + 3336;
+    cached_integer_sum = integer_sum;
+    running_total_2 += 3336;
+    state_address_2 = state_address;
+  }
+  while ( integer_sum < 64 );
+  if ( a1 )
+  {
+    glDisableVertexAttribArray(0);
+    return ((double (*)(_QWORD))glDisableVertexAttribArray)(1);
+  }
+  else
+  {
+    glUniform1i(terrain_u_land_usemask, 0);
+    glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
+    return ((double (*)(_QWORD))glUseProgram)(0);
+  }
 }
+#undef cached_integer_sum
+#undef running_total_2
+#undef state_address_2
 
 //----- (00000001400D2C90) ----------------------------------------------------
 __int64            sub_1400D2C90(int a1, int a2, __int64 a3)

@@ -1557,7 +1557,7 @@ __int64            sub_1400E7C40(int a1, char *a2);
 
 __m128i *           sub_1400E7F80(int a1, char *a2);
 
-__int64            asset_load_character_cmc_candidate(int a1,      char *a2);
+void            asset_load_character_cmc_candidate(int a1,      char *a2);
 
 void            sub_1400E9A60(int a1, int a2,      char *a3);
 
@@ -1997,7 +1997,7 @@ __int64            sub_14012CAC0(int a1, char *a2, int a3);
 
 void            sub_14012CD60(int a1, int a2, int a3);
 
-uint32_t            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6);
+__int64            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6);
 
 void            sub_14012D310(int a1, unsigned int a2);
 
@@ -2793,7 +2793,7 @@ __int64 sub_140185D00();
 
 float            sr_math_curve_point_route(int a1, float a2, float a3, float a4, float a5, float a6);
 
-float            sub_140187270(int a1, float a2, float a3, float a4, float a5, float a6);
+__m128            sub_140187270(float a1, float a2, float a3, double a4, float a5);
 
 float            sr_math_curve_derivative(int a1, float a2, float a3, float a4, float a5, float a6);
 
@@ -2827,7 +2827,7 @@ void            sub_14018B680(__int64 a1, __int64 a2, double a3);
 
 void            sub_14018C250(int a1);
 
-void            sub_14018C2B0(float *a1, float *a2);
+void            sub_14018C2B0(_DWORD *a1, int *a2);
 
 void            sub_14018C340(int a1);
 
@@ -14534,7 +14534,7 @@ __m128i *           sub_1400E7F80(int a1, char *a2)
 
 //----- (00000001400E8580) ----------------------------------------------------
 // Candidate .cmc character clothing/config loader: formats data/model/%s.cmc.
-__int64            asset_load_character_cmc_candidate(int a1,      char *a2)
+void            asset_load_character_cmc_candidate(int a1,      char *a2)
 ;
 
 // 1400E8E0A: conditional instruction was optimized away because r8.8 is in (1..F|<0)
@@ -15530,7 +15530,7 @@ void            sub_14012CD60(int a1, int a2, int a3)
 ;
 
 //----- (000000014012CEB0) ----------------------------------------------------
-uint32_t            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6)
+__int64            sub_14012CEB0(int a1, unsigned int a2, signed int a3, int a4, int a5, float a6)
 ;
 
 //----- (000000014012D310) ----------------------------------------------------
@@ -17576,7 +17576,7 @@ float            sr_math_curve_point_route(int a1, float a2, float a3, float a4,
 
 //----- (0000000140187270) ----------------------------------------------------
 // local variable allocation has failed, the output may be wrong!
-float            sub_140187270(int a1, float a2, float a3, float a4, float a5, float a6)
+__m128            sub_140187270(float a1, float a2, float a3, double a4, float a5)
 ;
 
 // 140187270: inconsistent variable size for 'xmm3_8.8'
@@ -17648,7 +17648,7 @@ void            sub_14018C250(int a1)
 ;
 
 //----- (000000014018C2B0) ----------------------------------------------------
-void            sub_14018C2B0(float *a1, float *a2)
+void            sub_14018C2B0(_DWORD *a1, int *a2)
 ;
 
 //----- (000000014018C340) ----------------------------------------------------

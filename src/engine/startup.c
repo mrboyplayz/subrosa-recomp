@@ -3,7 +3,6 @@
    The patch mesh builder keeps the original's floating-point operation
    order and types throughout (src/engine/README.md, verified by the
    startup1 native suite). */
-#include <stdio.h>
 #include <string.h>
 
 #include "arith.h"
@@ -286,45 +285,3 @@ void startup_mesh_remove_record(int record)
     for (int k = 0; k < 3; k++)
         startup_mesh_record_vector(record)[k] = startup_mesh_record_vector(last)[k];
 }
-
-/* The message box the original's startup failure path shows: SDL's simple
-   message box (flags, title, message, window), the import table's entry,
-   reached through 0x140198F95, with a null window. */
-#define startup_message_box \
-    ((int (__stdcall *)(unsigned int, const char *, const char *, void *))SR_GLOBAL(void *, 0x14026E4D0ULL))
-
-/* The fatal startup error: shows the game's stock message box and returns
-   null, as the original's first routine does. The box is shown whatever
-   SDL answers; the original ignores the answer too. 0x140001000. */
-void *startup_fatal_error(void)
-{
-    startup_message_box(16, "Fatal Error", "Out of memory - aborting", 0);
-    return 0;
-}
-
-/* The CRT helpers the stdio clear-error-and-rewind calls: the original
-   reaches them at 0x14020C4A8 (its clearerr), 0x14020BB2C (its stream
-   state query) and 0x14020CFB8 (its putchar-style pushback helper). */
-#define startup_crt_clearerr \
-    ((void (__cdecl *)(FILE *, int, unsigned int))SR_GLOBAL(void *, 0x14020C4A8ULL))
-#define startup_crt_file_state \
-    ((int (__cdecl *)(FILE *))SR_GLOBAL(void *, 0x14020BB2CULL))
-#define startup_crt_putback \
-    ((int (__cdecl *)(int, FILE *))SR_GLOBAL(void *, 0x14020CFB8ULL))
-
-/* The stdio clear-error-and-rewind: clears the stream's error and end-of-
-   file state, queries the stream's position state, and when it is not -1
-   puts the queried value back. The original's end-of-file check reads -1
-   as signed, forwards the caller's mark to the clear state helper, and
-   returns the putback helper's answer, or the queried -1 when the state
-   query fails. 0x1400012C0. */
-int startup_clearerr_rewind(FILE *stream, int second)
-{
-    startup_crt_clearerr(stream, second, 1);
-    int state = startup_crt_file_state(stream);
-    if (state != -1)
-        return startup_crt_putback(state, stream);
-    return state;
-}
-
-

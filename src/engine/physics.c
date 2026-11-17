@@ -3,11 +3,6 @@
 #include "math3d.h"
 #include "physics.h"
 
-/* The generator word the next random draw is taken from. Kept by the
-   original outside the shared state region; physics.h reaches it as
-   physics_random_cursor and math_random.c defines it. */
-extern uint32_t math_random_next(void);
-
 /* ---- shared steps ---------------------------------------------------------- */
 
 /* Velocity of the point at offset r (world axes) from the body's position:
@@ -206,45 +201,4 @@ void physics_solve_joint(int bond_index)
     b->angular_velocity_change[0] = -share_b * w[0] + b->angular_velocity_change[0];
     b->angular_velocity_change[1] = -share_b * w[1] + b->angular_velocity_change[1];
     b->angular_velocity_change[2] = -share_b * w[2] + b->angular_velocity_change[2];
-}
-
-/* ---- random draws for the networked round --------------------------------- */
-
-/* Draws two words for a networked round, or reads back the words of a
-   round slot that already holds the wanted flag: the first 4-byte entry of
-   the 0x1602E12E0-slot table whose next word equals wanted, else the next
-   free slot, which gets wanted, a tempered generator draw and a second
-   raw draw stored at its 8-byte record. When the pool is full
-   (RANDOM_ROUND_SLOT_CAPACITY slots) the two output pointers are left
-   alone and UINT32_MAX is returned. The twist and tempering live in the
-   generator's own module; the cursor reaching 624 twists the state there.
-   0x140050C80 */
-uint32_t physics_random_round_words(uint32_t *words_a, uint32_t *words_b,
-                                    uint32_t wanted)
-{
-    uint32_t slot = 0;
-    if ((int32_t)physics_random_round_slots > 0) {
-        while (wanted != physics_random_round_flags[slot]) {
-            slot++;
-            if ((int32_t)slot >= (int32_t)physics_random_round_slots)
-                break;
-        }
-        if ((int32_t)slot < (int32_t)physics_random_round_slots) {
-            *words_a = physics_random_round_words_a[slot];
-            *words_b = physics_random_round_words_b[slot];
-            return slot;
-        }
-    }
-    if ((int32_t)physics_random_round_slots >= (int32_t)RANDOM_ROUND_SLOT_CAPACITY)
-        return UINT32_MAX;
-
-    /* A free slot: store the flag, then draw. The generator's cursor at 624
-       twists the state before the draw (625 reseeds it first), exactly as
-       the generator's own entry point does. */
-    physics_random_round_flags[slot] = wanted;
-    physics_random_round_words_a[slot] = math_random_next();
-    physics_random_round_words_b[slot] = math_random_next();
-    *words_a = physics_random_round_words_a[slot];
-    *words_b = physics_random_round_words_b[slot];
-    return physics_random_round_slots++;
 }

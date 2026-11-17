@@ -60,13 +60,12 @@ float            sr_text_width(int a1, _BYTE *a2, float a3)
 }
 
 //----- (000000014007C920) ----------------------------------------------------
-char *sr_text_format_variadic(char *a1, const char *a2, ...)
+_BYTE *sub_14007C920(_BYTE *a1, _BYTE *a2, ...)
 {
   va_list va;
 
   va_start(va, a2);
-  sr_text_format(a1, (char *)a2, 1024, (__int64)va);
-  va_end(va);
+  sr_text_format(a1, a2, 1024, (__int64)va);
   return a1;
 }
 
