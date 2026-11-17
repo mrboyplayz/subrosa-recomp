@@ -1,0 +1,101 @@
+distance priority scale
+    float scaled = (float)raised * 0.00390625f;
+----
+    float scaled = (float)raised * 0.390625f;
+====
+distance priority inverse
+    float inverse = 1.0f - scaled;
+----
+    float inverse = 1.0f + scaled;
+====
+distance priority width
+    return (unsigned int)truncate_float(inverse * 256.0f);
+----
+    return (unsigned int)truncate_float(inverse * 128.0f);
+====
+catchup age boundary
+    if ((int32_t)age >= 192)
+----
+    if ((int32_t)age > 192)
+====
+catchup human stamp
+            replication_peer_human(peer, entry)->unknown_0 =
+                (int32_t)replication_human_snapshot(slot, entry);
+----
+            replication_peer_human(peer, entry)->unknown_0 = 0;
+====
+catchup block stamp
+            replication_peer_block(peer, entry)->unknown_0 = replication_peer_last_tick(peer);
+----
+            replication_peer_block(peer, entry)->unknown_0 = 0;
+====
+catchup item stamp
+            replication_peer_item(peer, entry)->unknown_0 =
+                (int32_t)replication_item_snapshot(slot, entry);
+----
+            replication_peer_item(peer, entry)->unknown_0 = 0;
+====
+catchup mask word index
+        result = (int64_t)(mask_base + ((uint64_t)entry >> 5));
+----
+        result = (int64_t)(mask_base + ((uint64_t)entry >> 4));
+====
+catchup unknown snapshot word
+            uint32_t word = replication_unknown_snapshot(slot, entry);
+----
+            uint32_t word = 0;
+====
+encode delta small boundary
+    if ((uint32_t)(delta + 8) <= 0xF) {
+----
+    if ((uint32_t)(delta + 8) <= 0xE) {
+====
+encode delta small width
+    return inline_write_bits(delta & 0xFu, 4);
+----
+    return inline_write_bits(delta & 0x7u, 4);
+====
+encode delta medium boundary
+    if ((uint32_t)(delta + 256) > 0x1FF) {
+----
+    if ((uint32_t)(delta + 256) > 0x1FE) {
+====
+encode delta medium width
+        result = inline_write_bits(delta & 0x1FFu, 9);
+----
+        result = inline_write_bits(delta & 0xFFu, 9);
+====
+adaptive small range
+    if ((int32_t)scratch >= -net_replication_small_delta_half
+        && (int32_t)scratch < net_replication_small_delta_half)
+----
+    if ((int32_t)scratch >= -net_replication_small_delta_half)
+====
+adaptive medium range
+    else if ((int32_t)scratch >= -net_replication_medium_delta_half
+             && (int32_t)scratch < net_replication_medium_delta_half)
+----
+    else if ((int32_t)scratch >= -net_replication_medium_delta_half)
+====
+adaptive zero collapse
+    if (net_replication_delta_markers && scratch == 0)
+----
+    if (net_replication_delta_markers && scratch == 1)
+====
+adaptive small width source
+    if (code == 0) {
+        net_write_bits(&zero, 1);
+        bits = net_replication_small_delta_bits;
+    } else if (code == 1) {
+----
+    if (code == 0) {
+        net_write_bits(&zero, 1);
+        bits = net_replication_medium_delta_bits;
+    } else if (code == 1) {
+====
+adaptive full source
+        net_write_bits(&one, 1);
+        source = field;
+----
+        net_write_bits(&one, 1);
+        source = &scratch;

@@ -1,0 +1,20 @@
+# Routine 0x14008EAD0: sr_net_create_nonblocking_socket
+- Mutate SR_GLOBAL(uint32_t, 0x151E45940)
+- Mutate 0x8004667E
+
+# Routine 0x14008EB80: sr_net_create_bind_socket
+- Mutate SR_GLOBAL(uint32_t, 0x151E45940)
+- Mutate 16 (namelen)
+
+# Routine 0x1400805E0: sr_net_close_socket
+- Mutate socket_idx
+
+# Routine 0x14007C660: sr_net_send_packet
+- Mutate 1400 (threshold)
+- Mutate fragmented logic (fragments calculation)
+- Mutate fragment header (102, 80)
+
+# Routine 0x140130350: sr_net_flush_outgoing
+- Mutate 1200 (threshold)
+- Mutate 1024 (fragment size)
+- Mutate fragment loop

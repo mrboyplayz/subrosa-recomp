@@ -1,0 +1,15 @@
+perturb the stbi_refill_buffer read_count update
+ctx->read_count += diff;
+----
+ctx->read_count -= diff;
+====
+perturb the stbi_refill_buffer empty read end pointer
+ctx->end = buffer + 1;
+----
+ctx->end = buffer;
+====
+perturb the audio_check_enabled logic
+if (audio_capture_enabled > 0)
+----
+if (audio_capture_enabled < 0)
+====

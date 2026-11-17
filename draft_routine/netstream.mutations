@@ -1,0 +1,75 @@
+release 0x1401941F0 and drop the mesh-link clear
+world_mesh_record_link((uint32_t)mesh) = -1;    /* 0x151E46224 + 0x8C24*mesh */
+----
+====
+mesh id boundary off by one
+if ((uint32_t)mesh < 1024) {
+----
+if ((uint32_t)mesh <= 1024) {
+====
+drop the 100-tagged voxel link mask
+if ((*word & WORLD_BLOCK_LINK_MASK) == WORLD_BLOCK_LINK)
+----
+if (1)
+====
+clear the +0x2800 word with the wrong stride
+word[WORLD_CHUNK_SLOT_CAPACITY] = 0;                /* +0x2800 */
+----
+word[511] = 0;                                      /* +0x27FC */
+====
+drop the layer's active-flag check
+        if (!record->active)
+            continue;
+        for (word = record->unknown_3008;
+----
+        for (word = record->unknown_3008;
+====
+packet stream: the byte/bit pair of 5 becomes 4
+    net_write_position = 5;
+    net_write_bit = 0;
+----
+    net_write_position = 4;
+    net_write_bit = 0;
+====
+packet stream: the payload length clamp drops the 0x3F mask
+    bits = (uint32_t)length & 0x3F;
+----
+    bits = (uint32_t)length;
+====
+packet stream: the 63-byte limit becomes 64
+    if (length > 63)
+        length = 63;
+----
+    if (length > 64)
+        length = 64;
+====
+packet stream: the 0x10000 skip becomes 0xFFFF
+    if (byte < PACKET_STREAM_MAX_BYTES) {
+----
+    if (byte < PACKET_STREAM_MAX_BYTES - 1) {
+====
+replication: the snapshot slots' decrement wraps one late
+        if (slot->active != 0 && --slot->unknown_04[0] == 0xFFFFFFFFu)
+----
+        if (slot->active != 0 && (slot->unknown_04[0]--) == 0)
+====
+replication: the peer's snapshot word is read at +0x38
+        type_word = SR_GLOBAL(uint32_t, 0x151620C9CULL + 0x3834ULL * (uint64_t)player);
+----
+        type_word = SR_GLOBAL(uint32_t, 0x151620C98ULL + 0x3834ULL * (uint64_t)player);
+====
+replication: the snapshot word 3600 becomes 3601
+        slot[9] = 3600;
+----
+        slot[9] = 3601;
+====
+replication: the peer walk stride drops a word
+    for (cursor = &SR_GLOBAL(uint32_t, 0x1A8E6BBFCULL); peers; peers--, cursor += 47224) {
+----
+    for (cursor = &SR_GLOBAL(uint32_t, 0x1A8E6BBFCULL); peers; peers--, cursor += 47223) {
+====
+chdir: the second chdir is dropped
+    sr_crt_chdir(STREAM_CHDIR_NAME_1);
+    return sr_crt_chdir(STREAM_CHDIR_NAME_2);
+----
+    return sr_crt_chdir(STREAM_CHDIR_NAME_1);

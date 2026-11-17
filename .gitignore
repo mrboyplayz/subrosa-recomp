@@ -32,6 +32,14 @@ src/wasm/
 scripts/build_wasm.py
 scripts/wasm_data.py
 
+# Draft routine recovery batches are published for review; scratch stays local.
+!draft_routine/
+!draft_routine/**
+draft_routine/disasm_*.txt
+draft_routine/.verify_*
+draft_routine/ncprobe.c
+draft_routine/nul
+
 # IDA project state contains copied binary data.
 *.i64
 *.id0

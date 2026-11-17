@@ -1,0 +1,27 @@
+# 0x14004CCB0
+random_mode
+random_data
+null_data
+
+# 0x1400584B0
+small_buffer
+large_buffer
+empty_buffer
+
+# 0x14008F050
+sync_all
+sync_none
+
+# 0x1400C8500
+timer_zero
+timer_positive
+flag_set
+flag_unset
+
+# 0x1400C9820
+countdown_zero
+countdown_positive
+type_0
+type_1
+type_2
+type_3
