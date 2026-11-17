@@ -130,6 +130,7 @@ static void make_callsign(uint8_t *out, int n)
    recording stubs behind the same jump in both builds, so the calls the
    ports make land on the same log. */
 static unsigned long long type_calls;
+static void redirect_type_callees(void);
 
 static void stub_sbv(int type, const char *name)
 {
@@ -159,6 +160,19 @@ static long long stub_part_add(int type)
     return 0;
 }
 
+/* The native build's forwarder of the train type's fields (the draft's
+   stores, over the same addresses). */
+static void vehicles_setup_train_fields_port(void)
+{
+    SR_GLOBAL(uint32_t, 0x192FD7154ULL) = 0x6E696152u;         /* "Train" bytes 4..7 */
+    SR_GLOBAL(uint32_t, 0x192FD7140ULL) = 1u;                  /* the type's id word */
+    SR_GLOBAL(uint32_t, 0x192FD7174ULL) = 1000u;               /* price */
+    SR_GLOBAL(uint32_t, 0x192FD7148ULL) = 0u;                  /* the model's word */
+    *(float *)(void *)(uintptr_t)0x192FD7178ULL = 320000.0f;   /* origin point */
+    stub_sbv(13, "train04");
+    stub_points(13, 0.375f, 12.0f, 0u);
+}
+
 #ifdef NC_NATIVE
 /* The original's part-list routine returns a pointer-like value both
    callers drop; the stub's 0 stands in for it. */
@@ -181,25 +195,25 @@ static void stub_slot_pass(uint32_t *slot)
     *slot = 0x4000u + (uint32_t)type_calls;
 }
 
+/* The glGenTextures slot the original's engine start calls per texture
+   slot: the fixture points it at a stub that records the call and writes a
+   name. 0x140404060 */
+static void stub_gen_textures(int count, uint32_t *names)
+{
+    uint64_t args[2] = {(uint64_t)count, (uint64_t)(uintptr_t)names};
+    nc_call("glGenTextures", 2, args);
+    *names = 0x4000u + (uint32_t)type_calls;
+}
+
 /* The engine start's timer: the fixture scripts the frequency and counter
    the stubs return, so the ports' stores are compared. */
 static unsigned long long scripted_frequency, scripted_counter;
 
-static int stub_query_frequency(void *out)
-{
-    *(unsigned long long *)out = scripted_frequency;
-    return 1;
-}
-
-static int stub_query_counter(void *out)
-{
-    *(unsigned long long *)out = scripted_counter;
-    return 1;
-}
-
-/* The engine start's callees are redirected in main: the imports must be
-   bound before nc_map_image, and the city pass lands behind the same jump
-   in both builds. */
+/* The start case runs the engine start directly in both builds, so the
+   timer and winsock names must resolve identically everywhere — the OS
+   header's own declarations are the only safe source for those imports. */
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 
 /* The vehicle type setups write fields across the type records; the cases
    hash the whole span the setups touch. */
@@ -246,7 +260,7 @@ static void run_packet_case(int n)
     nc_line("bits n%d i%d b%d o%d c%u cnt%u v%08x -> %u %08x %08x %016llx",
             n, index, bits, option, cursor, byte_count, value, result,
             stream->bit, (unsigned)stream->count,
-            (unsigned long long)nc_hash(stream, sizeof *stream + 16));
+            (unsigned long long)nc_hash(stream, 0x1001CULL));
 }
 
 static void run_transfer_case(int n)
@@ -272,7 +286,7 @@ static void run_transfer_case(int n)
     uint64_t result = packet_bytes_transfer(index, buffer, element_size, count, write);
     nc_line("xfer n%d i%d es%d n%d w%d cnt%u b%u -> %llx %016llx %016llx",
             n, index, element_size, count, write, byte_count, stream->bit, (unsigned long long)result,
-            (unsigned long long)nc_hash(stream, sizeof *stream + 16),
+            (unsigned long long)nc_hash(stream, 0x1001CULL),
             (unsigned long long)nc_hash(buffer, sizeof buffer));
 }
 
@@ -383,18 +397,22 @@ static void run_alert_case(int n)
 int main(void)
 {
 #ifdef NC_NATIVE
+    /* The imports must be bound before the image is mapped. The OS header's
+       declarations stand in for the fixture's stubs everywhere. */
+    nc_bind_import("KERNEL32.dll", "QueryPerformanceFrequency", QueryPerformanceFrequency);
+    nc_bind_import("KERNEL32.dll", "QueryPerformanceCounter", QueryPerformanceCounter);
+#endif
+    nc_map_image();
     redirect_type_callees();
-    /* The imports must be bound before the image is mapped. */
-    nc_bind_import("KERNEL32.dll", "QueryPerformanceFrequency", stub_query_frequency);
-    nc_bind_import("KERNEL32.dll", "QueryPerformanceCounter", stub_query_counter);
     nc_redirect(0x140077710, (void *)stub_slot_pass);
+    /* The texture slots the engine start fills point at the glGenTextures
+       stub. */
+    SR_GLOBAL(uint64_t, 0x140404060ULL) = (uint64_t)(uintptr_t)stub_gen_textures;
     /* The train fields live in the draft's static routine; the native build
        has no port, so the case runs its own forwarder of the draft's fields
        (the state the original's tail writes is compared, the port's routine
        writes the same fields). */
     vehicles_setup_train_fields_fn = vehicles_setup_train_fields_port;
-#endif
-    nc_map_image();
     nc_save(&SR_GLOBAL(uint8_t, PACKET_BASE), (size_t)PACKET_SPAN);
     nc_save(&SR_GLOBAL(uint8_t, VOICE_BASE), (size_t)VOICE_SPAN);
     nc_save(&SR_GLOBAL(uint8_t, RING_BASE),
