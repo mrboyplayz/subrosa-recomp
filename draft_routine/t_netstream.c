@@ -85,18 +85,19 @@ static void install_recorders(void)
     nc_redirect(0x140130350, rec_forward);
 }
 
-/* The world records of layer 0 (0x154164248..0x15ADAC248) and the two words
- * the fixture writes through the record pointers. */
+/* The world records (0x154161240, 4096 of 0x6C48 bytes) — 0x14012AF00 checks
+ * the active flag of every record (its loop walks record_base + 0x3008 and
+ * reads the flag at -0x3008). */
 static WorldBlockRecord *layer_records(void)
 {
-    return &world_block_records[8];
+    return &world_block_records[0];
 }
 
 static void randomize_records(void)
 {
     WorldBlockRecord *record;
 
-    for (record = layer_records(); record < &SR_GLOBAL(WorldBlockRecord, 0x15ADAC248ULL); ++record) {
+    for (record = layer_records(); record < &SR_GLOBAL(WorldBlockRecord, 0x15ADA9240ULL); ++record) {
         int k;
 
         record->active = nc_chance(70) ? (int32_t)nc_rand() : 0;
@@ -123,7 +124,7 @@ static void randomize_records(void)
 static void print_records(void)
 {
     WorldBlockRecord *record;
-    uint64_t coarse = 0;
+    uint64_t act = 0, ids = 0, mes = 0;
     int n;
 
     nc_line("release %u %016llx", release_calls, (unsigned long long)release_hash);
@@ -133,11 +134,15 @@ static void print_records(void)
             (unsigned long long)nc_hash(layer_records(), 32 * sizeof(WorldBlockRecord)));
     for (record = layer_records() + 32, n = 32; record < &SR_GLOBAL(WorldBlockRecord, 0x15ADAC248ULL);
          ++record, ++n) {
-        if (record->active)
-            coarse = (coarse ^ (uint64_t)(uint32_t)n ^ (uint64_t)record->ids[0]
-                      ^ ((uint64_t)(uint32_t)record->meshes[0] << 32)) * 0x100000001B3ULL;
+        if (record->active) {
+            act = (act ^ (uint64_t)(uint32_t)n) * 0x100000001B3ULL;
+            ids = (ids ^ (uint64_t)record->ids[0]) * 0x100000001B3ULL;
+            mes = (mes ^ (uint64_t)(uint32_t)record->meshes[0]) * 0x100000001B3ULL;
+        }
     }
-    nc_line("records coarse %016llx", (unsigned long long)coarse);
+    nc_line("records active %016llx", (unsigned long long)act);
+    nc_line("records ids %016llx", (unsigned long long)ids);
+    nc_line("records meshes %016llx", (unsigned long long)mes);
 }
 
 /* The 256 players (0x151620C60, 0x3834 bytes each), the 256 replication
@@ -147,7 +152,7 @@ static void print_records(void)
 static void randomize_players(void)
 {
     int i;
-    int32_t peers = nc_chance(70) ? (int32_t)nc_rand_below(9) : (int32_t)nc_rand_below(1020);
+    int32_t peers = (int32_t)nc_rand_below(9);
 
     for (i = 0; i < 256; i++) {
         uint32_t *player = &SR_GLOBAL(uint32_t, 0x151620C60ULL + 0x3834ULL * (uint64_t)i);
@@ -231,10 +236,11 @@ int main(void)
     nc_map_image();
     install_recorders();
     /* State the routines read or write, put back before every case. */
-    nc_save(layer_records(), 0x15ADAC248ULL - 0x154164248ULL);
+    nc_save(layer_records(), 4096 * sizeof(WorldBlockRecord));
     nc_save((void *)(uintptr_t)0x151620C60ULL, 0x1D9EC0ULL);
     nc_save(&replication_snapshot_slots[0], 256 * 0x50);
     nc_save(&item_link_peer_count, 4);
+    nc_save((void *)(uintptr_t)0x1A8E3DA20ULL, 0x2E1E0ULL * 9);
     nc_save(&net_write_position, 12);
     nc_save(net_write_buffer, 0x2000);
     nc_save((void *)(uintptr_t)0x182A7D140ULL, 0x400);

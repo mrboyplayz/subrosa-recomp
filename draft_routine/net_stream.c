@@ -37,9 +37,14 @@
 /* The packet stream's fields live above the state base; SR_GLOBAL reaches
  * them (dword_1402B2658 is the stream's data pointer, itself the copy of
  * the stream buffer in the client's data tables). */
+extern unsigned int dword_1402B2658;                           /* 0x1402B2658 */
 #define packet_out_data_word SR_GLOBAL(uint32_t, 0x18539D404ULL)  /* dword_1402B2658 */
 #define packet_stream_type   SR_GLOBAL(uint8_t, 0x18539D408ULL)
 #define PACKET_STREAM_MAX_BYTES 0x10000
+
+/* The top-bits tag that puts an unknown_3008 word in event 16 (checked by
+ * 0x14012AF00 before its 0x00FFFFFF mask). */
+#define WORLD_EVENT_TAG 0x80000000u
 
 extern void sub_1401941F0(int channel, int mesh);              /* 0x1401941F0 */
 extern void sub_140130350(int peer, uint16_t command, int64_t a3); /* 0x140130350 */
@@ -65,17 +70,18 @@ int64_t net_stream_return_peer(int64_t stream, int64_t peer)
     return peer;
 }
 
-/* Releases every mesh of every active record of layer 0 (one loop of 4096
- * records, the range 0x154164248..0x15ADAC248): masks the event-16 word to
+/* Releases every mesh of every active record (one loop of 4096 records, the
+ * whole world block records region; the original walks record_base + 0x3008
+ * and reads the active flag at -0x3008): masks the event-16 word to
  * 0x00FFFFFF when its top bits are the 100-tagged voxel link, clears the
- * word at +0x2800, then detaches each mesh link and releases channels 0, 3
- * and 5 exactly as world_release_block_mesh does. 0x14012AF00 */
+ * gone mask, then detaches each mesh link and releases channels 0, 3 and 5
+ * exactly as world_release_block_mesh does. 0x14012AF00 */
 void net_stream_release_layer_meshes(void)
 {
     WorldBlockRecord *record;
 
-    for (record = &world_block_records[8];       /* 0x154164248: layer 0 */
-         record < &SR_GLOBAL(WorldBlockRecord, 0x15ADAC248ULL);
+    for (record = &world_block_records[0];
+         record < &SR_GLOBAL(WorldBlockRecord, 0x15ADA9240ULL);
          ++record) {
         uint32_t *word;
         int quarter;
@@ -84,9 +90,9 @@ void net_stream_release_layer_meshes(void)
             continue;
         for (word = record->unknown_3008;
              word < record->unknown_3008 + WORLD_CHUNK_SLOT_CAPACITY; ++word) {
-            if ((*word & WORLD_BLOCK_LINK_MASK) == WORLD_BLOCK_LINK)
+            if ((*word & WORLD_BLOCK_LINK_MASK) == WORLD_EVENT_TAG)
                 *word &= 0xFF00FFFFu;
-            word[WORLD_CHUNK_SLOT_CAPACITY] = 0;                /* +0x2800 */
+            word[2560] = 0;                                     /* gone[], +0x2800 */
         }
         for (quarter = 0; quarter < 4; ++quarter) {
             int32_t mesh = record->meshes[quarter];
@@ -117,8 +123,11 @@ void replication_read_players(void)
     for (i = 0; i < 256; ++i) {
         ReplicationSnapshotSlot *slot = &replication_snapshot_slots[i];
 
-        if (slot->active != 0 && --slot->unknown_04[0] == 0xFFFFFFFFu)
-            slot->active = 0;
+        if (slot->active != 0) {
+            --slot->unknown_04[0];
+            if (slot->unknown_04[0] & 0x80000000u)
+                slot->active = 0;
+        }
     }
     if (peers <= 0)
         return;
@@ -140,29 +149,31 @@ void replication_read_players(void)
         } else {
             uint32_t walk;
 
-            for (walk = 1; walk < 256; ++walk) {
+            /* The walk searches for the slot that already carries the peer's
+             * own snapshot word; when none does, a free slot is taken. */
+            for (walk = 0; walk < 256; ++walk) {
                 ReplicationSnapshotSlot *scan = &replication_snapshot_slots[walk];
 
-                if (scan->active == 0 || *(uint32_t *)scan == type_word) {
-                    slot_index = (int32_t)walk - 1;
-                    *cursor = (uint32_t)slot_index;
+                if (scan->active != 0 && scan->unknown_04[1] == type_word)
                     break;
-                }
             }
-            if (walk >= 256) {
+            if (walk < 256) {
+                slot_index = (int32_t)walk;
+                *cursor = (uint32_t)slot_index;
+            } else {
                 slot_index = (int32_t)replication_snapshot_find_free_slot();
                 *cursor = (uint32_t)slot_index;
             }
             if (slot_index == -1)
                 continue;
         }
-        slot = &SR_GLOBAL(uint32_t, 0x1A8E379E8ULL + 40ULL * (uint64_t)(int64_t)slot_index);
+        slot = &SR_GLOBAL(uint32_t, 0x1A8E379E0ULL + 80ULL * (uint64_t)(int64_t)slot_index);
         slot[0] = 1;                             /* the snapshot slot's active word */
-        memcpy(slot + 1, &SR_GLOBAL(uint32_t, 0x151620C64ULL + 0x3834ULL * (uint64_t)player), 16);
-        memcpy(slot + 5, &SR_GLOBAL(uint32_t, 0x151620C78ULL + 0x3834ULL * (uint64_t)player), 16);
-        slot[9] = 3600;
-        slot[10] = type_word;
-        slot[16] = SR_GLOBAL(uint32_t, 0x151620C90ULL + 0x3834ULL * (uint64_t)player);
+        slot[1] = 3600;
+        slot[2] = type_word;                     /* the player's snapshot word at +0x3C */
+        memcpy(slot + 3, &SR_GLOBAL(uint32_t, 0x151620C64ULL + 0x3834ULL * (uint64_t)player), 16);
+        memcpy(slot + 7, &SR_GLOBAL(uint32_t, 0x151620C74ULL + 0x3834ULL * (uint64_t)player), 16);
+        slot[19] = SR_GLOBAL(uint32_t, 0x151620C90ULL + 0x3834ULL * (uint64_t)player);
     }
 }
 
@@ -184,11 +195,15 @@ void net_stream_send_payload(int peer, uint16_t command, int64_t a3, const char 
     if (length > 63)
         length = 63;
     /* The original writes the byte/bit pair as one 64-bit store of 5
-     * (byte 5, bit 0), then the type byte 3. */
+     * (byte 5, bit 0), then the type byte 3, and copies the stream's
+     * 4-byte header image into the buffer. */
     net_write_position = 5;
     net_write_bit = 0;
     packet_stream_type = 3;
-    packet_out_data_word = packet_out_data_word;      /* the original reloads the pointer */
+    net_write_buffer[0] = (uint8_t)dword_1402B2658;
+    net_write_buffer[1] = (uint8_t)(dword_1402B2658 >> 8);
+    net_write_buffer[2] = (uint8_t)(dword_1402B2658 >> 16);
+    net_write_buffer[3] = (uint8_t)(dword_1402B2658 >> 24);
     bits = (uint32_t)length & 0x3F;
     byte = 5;
     room = 6;
