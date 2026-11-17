@@ -276,6 +276,8 @@ void text_draw_glyphs(const char *text, float x, float y, float size,
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (const void *)0);
     stride = multiply_int(scratch->floats_per_vertex, 4);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (const void *)12);
+    /* A constant colour is ignored while attribute 2 still has an enabled array. */
+    glDisableVertexAttribArray(2);
     glVertexAttrib4fv(2, color);
 
     /* Two triangles per glyph from the shared quad index buffer. */
@@ -343,4 +345,26 @@ void text_draw_variadic(const char *format, float x, float y, float size, int fl
     text_draw(format, x, y, size, flags, red, green, blue, alpha, (const uint64_t *)(void *)list);
     __builtin_ms_va_end(list);
 #endif
+}
+
+/* 0x14007C920: formats into out with sr_text_format (0x14006E530) and a
+   capacity of 1,024, then returns out. The original saves every register
+   argument to its home slot, so the va_list points at the first variadic
+   slot; a Windows x64 va_list already does. */
+char *text_format_variadic(char *out, const char *format, ...)
+{
+#ifdef _WIN32
+    va_list list;
+
+    va_start(list, format);
+    text_format(out, format, 0x400, (const uint64_t *)(void *)list);
+    va_end(list);
+#else
+    __builtin_ms_va_list list;
+
+    __builtin_ms_va_start(list, format);
+    text_format(out, format, 0x400, (const uint64_t *)(void *)list);
+    __builtin_ms_va_end(list);
+#endif
+    return out;
 }

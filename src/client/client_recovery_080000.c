@@ -1,6 +1,8 @@
 #include "shared_client.h"
 #include "../engine/math_random_double.h"
 #include "../engine/disk.h"
+#include "../engine/recovery_080000.h"
+#include "../engine/math3d.h"
 
 //----- (00000001400802F0) ----------------------------------------------------
 void            sub_1400802F0(int a1)
@@ -590,43 +592,7 @@ void            sub_140081B60(int a1)
 //----- (0000000140081CC0) ----------------------------------------------------
 __m128            sub_140081CC0(__int64 a1, float *a2, float a3, float a4, float a5)
 {
-  __int128 limited_value;
-  float scaled_value;
-  float weighted_sum;
-  float squared_value;
-  float square_root;
-  float scaled_ratio;
-  float scaled_ratio_2;
-
-  limited_value = *(unsigned int *)(a1 + 4);
-  scaled_value = *(float *)a1;
-  weighted_sum = *(float *)(a1 + 8);
-  squared_value = (float)((float)(scaled_value * scaled_value) + (float)(*(float *)&limited_value * *(float *)&limited_value)) + (float)(weighted_sum * weighted_sum);
-  square_root = fsqrt(squared_value);
-  if ( square_root == 0.0 )
-  {
-    scaled_ratio = 0.0;
-    limited_value = 0;
-    scaled_ratio_2 = 0.0;
-  }
-  else
-  {
-    scaled_ratio = scaled_value * (float)(1.0 / square_root);
-    *(float *)&limited_value = *(float *)&limited_value * (float)(1.0 / square_root);
-    scaled_ratio_2 = weighted_sum * (float)(1.0 / square_root);
-  }
-  *(float *)&limited_value = fminf(
-                    fmaxf(
-                      (float)((float)((float)((float)((float)((float)((float)(*(float *)&limited_value * a2[1]) + (float)(scaled_ratio * *a2))
-                                                            + (float)(scaled_ratio_2 * a2[2]))
-                                                    * a3)
-                                            * a4)
-                                    * -0.75)
-                            * squared_value)
-                    / a5,
-                      square_root * -0.125),
-                    square_root * 0.125);
-  return (__m128)limited_value;
+  return _mm_set_ss(sr_recovery_080081CC0((const float *)a1, a2, a3, a4, a5));
 }
 
 //----- (0000000140084950) ----------------------------------------------------
@@ -1521,6 +1487,7 @@ __int64 sub_14008A110()
   char *text;
   int scaled_index;
   float combined_products;
+  int scaled_money;
        char *literal_text_2;
   __m128i converted_vector_2;
   int integer_sum;
@@ -1688,21 +1655,27 @@ LABEL_21:
         {
           combined_products = combined_products + 0.5;
         }
+        /* The original divides the value by ten with an integer divide and
+           hands that, and the rounded percent, to the formatter as the two
+           varargs (r8d and r9d). Both were dropped here, so the readout used
+           whatever was left in those registers. */
+        scaled_money = dword_140404A6C[6 * element_index + 335047064] / 10;
         if ( (int)combined_products < -50 )
         {
-          crt_sprintf(text_2, "$%d(Split)");
+          crt_sprintf(text_2, "$%d(Split)", scaled_money);
         }
         else
         {
           literal_text_2 = "$%d(+%d%%)";
           if ( (int)combined_products <= 0 )
             literal_text_2 = "$%d(%d%%)";
-          crt_sprintf(text_2, literal_text_2);
+          crt_sprintf(text_2, literal_text_2, scaled_money, (int)combined_products);
         }
       }
       else
       {
-        crt_sprintf(text_2, "$%d");
+        scaled_money = dword_140404A6C[6 * element_index + 335047064] / 10;
+        crt_sprintf(text_2, "$%d", scaled_money);
       }
       selection_code = 1065353216;
       scaled_value_6 = scaled_value_3;
@@ -4627,11 +4600,28 @@ __int64 sub_140092370()
             /* 0x140092C29: width = the text width summed at 0x140092A7F (v35) + 4.0 (0x140092BE0, xmm2 at 0x140092C04);
                the C had passed an undefined local */
             sr_renderer_draw_textured_rect(x, *(double *)SR_VEC_LANES(128, converted_vector_3, i64), sr_text_float_bits(weighted_sum_3 + 4.0f), limited_value_2 * 0.875, 5, red, red, red, COERCE_INT(product_difference * 0.75f));
-            sr_CSDrawText(
-              (char *)&dword_140404A6C[scaled_index + 346696451],
-              *(float *)&x,
-              (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3),
-              limited_value_2);
+            /* 0x140092C75: the speaker's line over their head. Flags 0x45
+               (centred on both axes, drawn unformatted), red 1.0 (or 0.0625
+               when the player is behind something, 0x140092BC1) in xmm15,
+               0.0625 green/blue in xmm14, alpha ticks * 0.005 * 0.75 in xmm11.
+               The 4-argument sr_CSDrawText dropped every one of those. */
+            {
+              const uint64 sr_bubble_arguments[8] = { 0 };
+              float sr_alpha = product_difference * 0.75f;
+              /* Original registers at 0x140092802-0x1400929EF: base is 0.5 for esi == 2 else 0;
+                 mode 0 (whisper) lifts blue, mode 2 (yell) lifts red, green stays base. */
+              float sr_base = table_value_2 == 2 ? 0.5f : 0.0f;
+              float sr_red = sr_base + (table_value_4 == 2 ? 0.5f : 0.0f);
+              float sr_green = sr_base;
+              float sr_blue = sr_base + (table_value_4 == 0 ? 0.5f : 0.0f);
+              sr_text_draw_recovered((char *)&dword_140404A6C[scaled_index + 346696451],
+                                     *(float *)&x,
+                                     sr_text_bits_float((unsigned)(uintptr_t)
+                                       ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                                     limited_value_2, 0x45u,
+                                     sr_red, sr_green, sr_blue, sr_alpha,
+                                     sr_bubble_arguments);
+            }
             table_value_5 = dword_140404A6C[scaled_index + 346696445];
             if ( table_value_5 == 1 )
             {
@@ -5870,71 +5860,14 @@ int sub_14009E590()
 //----- (000000014009E7D0) ----------------------------------------------------
 void            sub_14009E7D0(float *a1, __int64 a2)
 {
-  float weighted_sum;
-  double reordered_vector;
-  __int64 unrecovered_register_value;
-  __m128 call_result;
-
-  weighted_sum = sub_14023F704(*(float *)(a2 + 4), *(float *)(a2 + 16));
-  *a1 = weighted_sum;
-  *(_QWORD *)&reordered_vector = *(unsigned int *)(a2 + 24);
-  *(float *)&reordered_vector = (float)(*(float *)&reordered_vector * *(float *)&reordered_vector) + (float)(*(float *)(a2 + 32) * *(float *)(a2 + 32));
-  a1[1] = sub_14023F704(-*(float *)(a2 + 28), fsqrt(*(float *)&reordered_vector));
-  call_result = sub_1401F8AC0(COERCE_DOUBLE((unsigned __int64)LODWORD(weighted_sum)), unrecovered_register_value, reordered_vector);
-  *(float *)&reordered_vector = SR_VEC_READ_LANES(128, _mm_shuffle_ps(call_result, call_result, 1), f32)[0];
-  a1[2] = sub_14023F704(
-            (float)(SR_VEC_LANES(128, call_result, f32)[0] * *(float *)(a2 + 20)) - (float)(*(float *)&reordered_vector * *(float *)(a2 + 8)),
-            (float)(*(float *)&reordered_vector * *(float *)a2) - (float)(SR_VEC_LANES(128, call_result, f32)[0] * *(float *)(a2 + 12)));
+  sr_recovery_08009E7D0(a1, (const float *)a2);
 }
 
 //----- (000000014009E880) ----------------------------------------------------
 __int64            sub_14009E880(float *a1, float *a2)
 {
-  float source_float_6;
-  float source_float_4;
-  float source_float_7;
-  double angle;
-  float source_float_8;
-  double angle_2;
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14009E880[80];
-#define unused_frame_slot_0 (*(__int64 (*))(void *)(sr_frame_14009E880 + 0)) /* [rsp+0h] */
-#define axis (*(__int128 (*))(void *)(sr_frame_14009E880 + 32)) /* [rsp+20h] */
-#define frame_float_at_48 (*(float (*))(void *)(sr_frame_14009E880 + 48)) /* [rsp+30h] */
-#define unused_written_slot (*(int (*))(void *)(sr_frame_14009E880 + 52)) /* [rsp+34h] */
-#define axis_2 (*(float (*)[2])(void *)(sr_frame_14009E880 + 56)) /* [rsp+38h] */
-#define frame_float_at_64 (*(float (*))(void *)(sr_frame_14009E880 + 64)) /* [rsp+40h] */
-#define unused_frame_slot_72 (*(__int64 (*))(void *)(sr_frame_14009E880 + 72)) /* [rsp+48h] */
-
-  source_float_6 = a2[6];
-  source_float_4 = a2[4];
-  source_float_7 = a2[7];
-  axis = *(_OWORD *)a2;
-  *(_QWORD *)&angle = *((unsigned int *)a2 + 5);
-  axis_2[0] = source_float_6;
-  source_float_8 = a2[8];
-  unused_written_slot = LODWORD(angle);
-  frame_float_at_48 = source_float_4;
-  axis_2[1] = source_float_7;
-  frame_float_at_64 = source_float_8;
-  *(float *)&angle = sub_14023F704(*(float *)&angle, source_float_4);
-  *a1 = *(float *)&angle;
-  sr_math_mat3_rotate_rows((__int64)&axis, (float *)&axis, angle);
-  *(_QWORD *)&angle_2 = HIDWORD(axis) ^ 0x8000000080000000uLL;
-  *(float *)&angle_2 = sub_14023F704(*(float *)&angle_2, frame_float_at_48);
-  a1[2] = *(float *)&angle_2;
-  sr_math_mat3_rotate_rows((__int64)&axis, axis_2, angle_2);
-  a1[1] = sub_14023F704(axis_2[0], frame_float_at_64);
-  return 0; /* the function has no caller */
+  return sr_recovery_08009E880(a1, a2);
 }
-
-#undef unused_frame_slot_0
-#undef axis
-#undef frame_float_at_48
-#undef unused_written_slot
-#undef axis_2
-#undef frame_float_at_64
-#undef unused_frame_slot_72
 
 //----- (000000014009E950) ----------------------------------------------------
 float            sub_14009E950(__int64 a1, __int64 a2, double a3)

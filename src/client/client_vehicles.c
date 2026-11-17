@@ -1,5 +1,6 @@
 #include "shared_client.h"
 #include "../engine/vehicle_state.h"
+#include "../engine/vehicles.h" /* engine ports: alert post, packet transfer, wheel force sum */
 
 /* Native event type 20: a 60-tick burst of 128 sparks and one nearby sound. */
 enum {
@@ -8796,38 +8797,11 @@ LABEL_17:
 //----- (000000014006C5E0) ----------------------------------------------------
 __m128i *           sub_14006C5E0(int a1,      __m128i *a2, int a3, int a4, int a5)
 {
-  __int64 packet_record_offset;
-       __m128i *input_cursor;
-  __int64 table_value;
-  int byte_count;
-  __m128i *result;
-  __m128i *destination_buffer;
-
-  packet_record_offset = 16387LL * a1;
-  input_cursor = a2;
-  if ( (int)dword_140404A6C[packet_record_offset + 135184966] > 0 )
-  {
-    ++dword_140404A6C[packet_record_offset + 135184965];
-    dword_140404A6C[packet_record_offset + 135184966] = 0;
-  }
-  table_value = (int)dword_140404A6C[packet_record_offset + 135184965];
-  byte_count = a4 * a3;
-  result = (__m128i *)(unsigned int)(table_value + a4 * a3);
-  if ( (int)result < 0x10000 )
-  {
-    if ( a5 )
-    {
-      destination_buffer = (__m128i *)((char *)&dword_140404A6C[packet_record_offset + 135184968] + table_value);
-    }
-    else
-    {
-      a2 = (     __m128i *)((char *)&dword_140404A6C[packet_record_offset + 135184968] + table_value);
-      destination_buffer = (__m128i *)input_cursor;
-    }
-    result = crt_memcpy(destination_buffer, a2, byte_count);
-    dword_140404A6C[packet_record_offset + 135184965] += byte_count;
-  }
-  return result;
+    /* 0x14006C5E0: the engine port vehicles_packet_bytes_transfer
+       (src/engine/vehicles_helpers.c, declared in vehicles.h). The original
+       returns the destination of the copy, or the zero-extended end position
+       when the copy was skipped. */
+    return (__m128i *)vehicles_packet_bytes_transfer(a1, a2, a3, a4, a5);
 }
 
 //----- (000000014006CCA0) ----------------------------------------------------
@@ -9670,16 +9644,19 @@ LABEL_34:
             ++text_cursor;
           }
           while ( input_byte );
-          unused_written_slot_4 = LODWORD(scaled_value);
-          unused_written_slot_3 = 1065353216;
-          unused_written_slot_2 = 1061158912;
-          unused_written_slot = 1061158912;
-          LODWORD(packed_word_bits) = 97;
-          sr_CSDrawText(
-            (char *)&g_144AFA0A0,
-            512.0,
-            (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector),
-            24.0);
+          /* 0x140082A6C: flags 0x61 (centred, shadowed, unformatted), colour
+             (0.0625, 0.0625, 1.0) and alpha = ticks * 0.005, so a bubble
+             fades out over its five seconds. The 4-argument sr_CSDrawText
+             dropped the flags and the alpha, which drew the line uncentred
+             at full brightness. */
+          {
+            const uint64 sr_bubble_arguments[8] = { 0 };
+            sr_text_draw_recovered((char *)&g_144AFA0A0, 512.0,
+                                   sr_text_bits_float((unsigned)(uintptr_t)
+                                     ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector))),
+                                   24.0, 0x61u, 0.0625f, 0.0625f, 1.0f, scaled_value,
+                                   sr_bubble_arguments);
+          }
           *(float *)SR_VEC_LANES(128, converted_vector, i32) = *(float *)SR_VEC_LANES(128, converted_vector, i32) + 24.0;
         }
       }
@@ -10282,15 +10259,16 @@ LABEL_105:
   {
     if ( game_state == 1 )
     {
-      unused_written_slot_5 = (signed int)g_183EBFCD4 / 60 % 10;
-      LODWORD(state_address_6) = (signed int)g_183EBFCD4 / 60 / 10 % 6;
-      LODWORD(state_address_5) = (signed int)g_183EBFCD4 / 60 / 60;
-      unused_written_slot_4 = 1065353216;
-      unused_written_slot_3 = 1065353216;
-      unused_written_slot_2 = 1065353216;
-      unused_written_slot = 1065353216;
-      LODWORD(packed_word_bits) = 2;
-      sr_text_draw_recovered("Start: /i:/i/i", text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))), 24.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x140084296 */;
+      /* 0x140084296: the same clock, right-aligned at (1020, 4). */
+      const uint64 sr_start_arguments[8] = {
+        (unsigned)((signed int)g_183EBFCD4 / 60 / 60),
+        (unsigned)((signed int)g_183EBFCD4 / 60 / 10 % 6),
+        (unsigned)((signed int)g_183EBFCD4 / 60 % 10)
+      };
+      sr_text_draw_recovered("Start: /i:/i/i", text_x,
+                             sr_text_bits_float((unsigned)(uintptr_t)
+                               ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                             24.0, 2u, 1.0f, 1.0f, 1.0f, 1.0f, sr_start_arguments);
     }
     else
     {
@@ -10298,25 +10276,24 @@ LABEL_105:
         goto LABEL_133;
       if ( (int)g_183F79F84 <= 0 )
       {
-        unused_written_slot_4 = 1065353216;
-        unused_written_slot_3 = 1065353216;
-        unused_written_slot_2 = 1065353216;
-        unused_written_slot = 1065353216;
-        LODWORD(packed_word_bits) = 2;
-        sr_text_draw_recovered("Get Ready", text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))), 24.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x1400843EA */;
+        sr_text_draw_recovered("Get Ready", text_x,
+                               sr_text_bits_float((unsigned)(uintptr_t)
+                                 ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                               24.0, 2u, 1.0f, 1.0f, 1.0f, 1.0f, NULL);
       }
       else
       {
-        unused_written_slot_6 = (signed int)g_183F79F84 / 6 % 10;
-        unused_written_slot_5 = (signed int)g_183F79F84 / 60 % 10;
-        LODWORD(state_address_6) = (signed int)g_183F79F84 / 60 / 10 % 6;
-        LODWORD(state_address_5) = (signed int)g_183F79F84 / 60 / 60;
-        unused_written_slot_4 = 1065353216;
-        unused_written_slot_3 = 1065353216;
-        unused_written_slot_2 = 1065353216;
-        unused_written_slot = 1065353216;
-        LODWORD(packed_word_bits) = 2;
-        sr_text_draw_recovered("/i:/i/i./i", text_x, sr_text_bits_float((unsigned)(uintptr_t)((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))), 24.0, 2u, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, 0x1.0000000000000p+0f, NULL) /* 0x14008439F */;
+        /* 0x14008439F: hours, minutes tens, minutes ones, tenths. */
+        const uint64 sr_ready_arguments[8] = {
+          (unsigned)((signed int)g_183F79F84 / 60 / 60),
+          (unsigned)((signed int)g_183F79F84 / 60 / 10 % 6),
+          (unsigned)((signed int)g_183F79F84 / 60 % 10),
+          (unsigned)((signed int)g_183F79F84 / 6 % 10)
+        };
+        sr_text_draw_recovered("/i:/i/i./i", text_x,
+                               sr_text_bits_float((unsigned)(uintptr_t)
+                                 ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                               24.0, 2u, 1.0f, 1.0f, 1.0f, 1.0f, sr_ready_arguments);
       }
     }
   }
@@ -10337,7 +10314,19 @@ LABEL_131:
       unused_written_slot_2 = 1065353216;
       unused_written_slot = 1065353216;
       LODWORD(packed_word_bits) = 2;
-      sr_CSDrawText(literal_text_3, text_x, (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3), 24.0);
+      /* 0x140084615: x 1020 (right-aligned), y 4, size 24, flags 2 = right,
+         white, then the three /i digits from the stack slots. The
+         4-parameter sr_CSDrawText dropped both the flags and the digits, so
+         the clock ran off the right edge and printed zeros. */
+      {
+        const uint64 sr_timer_arguments[8] = {
+          (unsigned)state_address_5, (unsigned)state_address_6, (unsigned)unused_written_slot_5
+        };
+        sr_text_draw_recovered(literal_text_3, text_x,
+                               sr_text_bits_float((unsigned)(uintptr_t)
+                                 ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_3))),
+                               24.0, 2u, 1.0f, 1.0f, 1.0f, 1.0f, sr_timer_arguments);
+      }
       break;
     case 1u:
       integer_quotient_3 = (signed int)g_183EBFCD4 / 60;
@@ -10435,16 +10424,18 @@ LABEL_168:
 LABEL_172:
                 if ( dword_140404A6C[38 * j + 346696445] == 6 )
                   selection_code = 0;
-                unused_written_slot_4 = LODWORD(scaled_value_2);
-                unused_written_slot_3 = selection_code;
-                unused_written_slot_2 = selection_code;
-                unused_written_slot = 1065353216;
-                LODWORD(packed_word_bits) = 96;
-                sr_CSDrawText(
-                  (char *)&g_144AFA0A0,
-                  4.0,
-                  (unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_4),
-                  20.0);
+                /* 0x1400848B2: flags 0x60 (shadowed, unformatted), white-ish,
+                   alpha = ticks * 0.005 so the line fades out. The 4-argument
+                   sr_CSDrawText dropped the flags and the alpha, so the bubble
+                   drew at full brightness for ever and was not shadowed. */
+                {
+                  const uint64 sr_bubble_arguments[8] = { 0 };
+                  sr_text_draw_recovered((char *)&g_144AFA0A0, 4.0,
+                                         sr_text_bits_float((unsigned)(uintptr_t)
+                                           ((unsigned int *)(unsigned int)_mm_cvtsi128_si32(converted_vector_4))),
+                                         20.0, 96u, 1.0f, 1.0f, 1.0f, scaled_value_2,
+                                         sr_bubble_arguments);
+                }
                 *(float *)SR_VEC_LANES(128, converted_vector_4, i32) = *(float *)SR_VEC_LANES(128, converted_vector_4, i32) + 20.0;
                 continue;
               }
@@ -11612,135 +11603,20 @@ LABEL_29:
 //----- (00000001400A2C00) ----------------------------------------------------
 __int64            sub_1400A2C00(int a1, signed int a2)
 {
-  __int64 result;
-  __int64 input_value;
-  bool comparison_result;
-  __int64 player_record_offset;
-  __int64 player_record_offset_2;
-  __int64 remaining_count;
-
-  result = g_160FC481C;
-  input_value = a2;
-  comparison_result = (g_160FC481C & 0x80000000) != 0;
-  if ( (int)g_160FC481C > 0 )
-  {
-    player_record_offset = 3597LL * a1;
-    do
-    {
-      result = (unsigned int)(result - 1);
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856367 + player_record_offset] = 2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856368 + player_record_offset] = a2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset + 71856362] + 71856369 + player_record_offset] = 0;
-      dword_140404A6C[player_record_offset + 71856362] = ((unsigned __int8)dword_140404A6C[player_record_offset + 71856362] + 1) & 0x3F;
-      comparison_result = (int)result < 0;
-    }
-    while ( (int)result > 0 );
-    g_160FC481C = result;
-  }
-  if ( comparison_result )
-  {
-    player_record_offset_2 = 3597LL * a1;
-    remaining_count = (unsigned int)-(int)result;
-    g_160FC481C = 0;
-    do
-    {
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856367 + player_record_offset_2] = 2;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856368 + player_record_offset_2] = input_value;
-      dword_140404A6C[21 * (int)dword_140404A6C[player_record_offset_2 + 71856362] + 71856369 + player_record_offset_2] = 1;
-      result = ((unsigned __int8)dword_140404A6C[player_record_offset_2 + 71856362] + 1) & 0x3F;
-      dword_140404A6C[player_record_offset_2 + 71856362] = result;
-      --remaining_count;
-    }
-    while ( remaining_count );
-  }
-  if ( BYTE1(g_183F7C974) )
-  {
-    if ( !BYTE1(g_183F7C774) )
-    {
-      dword_140404A6C[3597 * a1 + 71856367 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = 2;
-      dword_140404A6C[3597 * a1 + 71856368 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = input_value;
-      dword_140404A6C[3597 * a1 + 71856369 + 21 * dword_140404A6C[3597 * a1 + 71856362]] = dword_140404A6C[1760 * input_value + 278846061]
-                                                                                         + 2;
-      result = ((unsigned __int8)dword_140404A6C[3597 * a1 + 71856362] + 1) & 0x3F;
-      dword_140404A6C[3597 * a1 + 71856362] = result;
-    }
-  }
-  return result;
+    /* 0x1400A2C00: the engine port vehicles_alert_post (src/engine/
+       vehicles_helpers.c, declared in vehicles.h). The original leaves the
+       speech ring's write cursor (or the repeat counter) in eax; the callers
+       here discard it. */
+    return vehicles_alert_post(a1, a2);
 }
 
 //----- (00000001400A48D0) ----------------------------------------------------
 __int64            sub_1400A48D0(int a1, float *a2)
 {
-  signed int iteration_count;
-  __int64 result;
-  __int64 record_word_offset;
-  float combined_products;
-  float combined_products_2;
-  float combined_products_3;
-  unsigned int *buffer_cursor;
-  __int64 scaled_index;
-  float combined_products_4;
-  float combined_products_5;
-  float combined_products_6;
-  __int64 scaled_index_2;
-
-  iteration_count = 0;
-  result = a1;
-  record_word_offset = 5210LL * a1;
-  combined_products = 0.0;
-  combined_products_2 = 0.0;
-  combined_products_3 = 0.0;
-  *(_QWORD *)&dword_140404A6C[record_word_offset + 129716750] = 0;
-  dword_140404A6C[record_word_offset + 129716752] = 0;
-  if ( (int)dword_140404A6C[record_word_offset + 129716768] > 0 )
-  {
-    buffer_cursor = &dword_140404A6C[record_word_offset + 129716769];
-    do
-    {
-      ++iteration_count;
-      scaled_index = 60LL * (int)*buffer_cursor;
-      combined_products_4 = *(float *)&dword_140404A6C[scaled_index + 73007026] - *a2;
-      combined_products_5 = *(float *)&dword_140404A6C[scaled_index + 73007028] - a2[2];
-      combined_products_6 = *(float *)&dword_140404A6C[scaled_index + 73007027] - a2[1];
-      combined_products = combined_products
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716726] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716728] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[scaled_index + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716728] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716727] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[scaled_index + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716727] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716726] * combined_products_6))
-                         * *(float *)&dword_140404A6C[scaled_index + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716750] = combined_products;
-      scaled_index_2 = 60LL * (int)*buffer_cursor;
-      combined_products_2 = combined_products_2
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716729] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716731] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[scaled_index_2 + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716731] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716730] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[scaled_index_2 + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716730] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716729] * combined_products_6))
-                         * *(float *)&dword_140404A6C[scaled_index_2 + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716751] = combined_products_2;
-      result = (int)*buffer_cursor++;
-      combined_products_3 = combined_products_3
-         + (float)((float)((float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716732] * combined_products_5)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716734] * combined_products_4))
-                                 * *(float *)&dword_140404A6C[60 * result + 73007033])
-                         + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716734] * combined_products_6)
-                                         - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716733] * combined_products_5))
-                                 * *(float *)&dword_140404A6C[60 * result + 73007032]))
-                 + (float)((float)((float)(*(float *)&dword_140404A6C[record_word_offset + 129716733] * combined_products_4)
-                                 - (float)(*(float *)&dword_140404A6C[record_word_offset + 129716732] * combined_products_6))
-                         * *(float *)&dword_140404A6C[60 * result + 73007034]));
-      *(float *)&dword_140404A6C[record_word_offset + 129716752] = combined_products_3;
-    }
-    while ( iteration_count < (int)dword_140404A6C[record_word_offset + 129716768] );
-  }
-  return result;
+    /* 0x1400A48D0: the engine port vehicles_wheel_force_sum (src/engine/
+       vehicles_helpers.c, declared in vehicles.h). The original returns the
+       last wheel's PhysicsPoint index, or the vehicle when it has none. */
+    return vehicles_wheel_force_sum(a1, a2);
 }
 
 //----- (00000001400A5510) ----------------------------------------------------

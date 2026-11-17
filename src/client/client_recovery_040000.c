@@ -3400,33 +3400,8 @@ double            sub_1400504C0(int a1, float a2, float a3, float a4)
 //----- (00000001400521A0) ----------------------------------------------------
 double            sub_1400521A0(int a1, float a2, float a3, float a4)
 {
-  int iteration_count;
-  unsigned int *state_address;
-  float float_buffer[6];
-
-  float_buffer[0] = 0.0;
-  float_buffer[1] = -0.03125;
-  mesh_vertex_count = 0;
-  mesh_triangle_count = 0;
-  g_16AC43DB0 = 0;
-  float_buffer[2] = a4 * -0.5;
-  g_16AD03DB4 = 0;
-  sub_140002D00(float_buffer, a2, a3, a4);
-  iteration_count = 0;
-  if ( (int)mesh_triangle_count > 0 )
-  {
-    state_address = &g_16AB13DB4;
-    do
-    {
-      *(_QWORD *)(state_address - 1) = 0;
-      ++iteration_count;
-      *(_QWORD *)(state_address + 1) = 0;
-      *(_QWORD *)(state_address + 3) = 0;
-      state_address += 6;
-    }
-    while ( iteration_count < (int)mesh_triangle_count );
-  }
-  return sub_1401449C0(a1, 0);
+  extern double recovery_mesh_builder_03125(int a1, float a2, float a3, float a4);
+  return recovery_mesh_builder_03125(a1, a2, a3, a4);
 }
 
 //----- (0000000140052240) ----------------------------------------------------
@@ -7157,38 +7132,9 @@ __int64            sub_14005D1F0(__int64 a1)
 //----- (000000014005D4C0) ----------------------------------------------------
 double            sub_14005D4C0(int a1, float a2, float a3, float a4)
 {
-  int iteration_count;
-  unsigned int *state_address;
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14005D4C0[16];
-#define float_word (*(__int64 (*))(void *)(sr_frame_14005D4C0 + 0)) /* [rsp+20h] */
-#define unused_written_slot (*(float (*))(void *)(sr_frame_14005D4C0 + 8)) /* [rsp+28h] */
-
-  unused_written_slot = -a4;
-  mesh_vertex_count = 0;
-  mesh_triangle_count = 0;
-  g_16AC43DB0 = 0;
-  g_16AD03DB4 = 0;
-  float_word = 0;
-  sub_140002D00((float *)&float_word, a2, a3, a4);
-  iteration_count = 0;
-  if ( (int)mesh_triangle_count > 0 )
-  {
-    state_address = &g_16AB13DB4;
-    do
-    {
-      *(_QWORD *)(state_address - 1) = 0;
-      ++iteration_count;
-      *(_QWORD *)(state_address + 1) = 0;
-      *(_QWORD *)(state_address + 3) = 0;
-      state_address += 6;
-    }
-    while ( iteration_count < (int)mesh_triangle_count );
-  }
-  return sub_1401449C0(a1, 0);
+  extern double recovery_mesh_builder_origin(int a1, float a2, float a3, float a4);
+  return recovery_mesh_builder_origin(a1, a2, a3, a4);
 }
-#undef float_word
-#undef unused_written_slot
 
 //----- (000000014005D550) ----------------------------------------------------
 __int64            sub_14005D550(int a1)
@@ -7767,44 +7713,9 @@ __int64            sub_14005ED40(int a1, float *a2, __int64 a3, float a4, float 
 //----- (000000014005F370) ----------------------------------------------------
 double            sub_14005F370(int a1, int a2)
 {
-  int cached_mesh_triangle_count;
-  int iteration_count;
-  unsigned int *state_address;
-  /* Stack locals keep their original frame adjacency (see frameify.py). */
-  _Alignas(16) unsigned char sr_frame_14005F370[16];
-#define float_word (*(__int64 (*))(void *)(sr_frame_14005F370 + 0)) /* [rsp+20h] */
-#define unused_written_slot (*(int (*))(void *)(sr_frame_14005F370 + 8)) /* [rsp+28h] */
-
-  mesh_vertex_count = 0;
-  cached_mesh_triangle_count = 0;
-  mesh_triangle_count = 0;
-  g_16AC43DB0 = 0;
-  g_16AD03DB4 = 0;
-  if ( a2 == 1 )
-  {
-    float_word = 0;
-    unused_written_slot = 0;
-    sub_140002D00((float *)&float_word, 0.02, 0.02, 0.02);
-    cached_mesh_triangle_count = mesh_triangle_count;
-  }
-  iteration_count = 0;
-  if ( cached_mesh_triangle_count > 0 )
-  {
-    state_address = &g_16AB13DB4;
-    do
-    {
-      *(_QWORD *)(state_address - 1) = 0;
-      ++iteration_count;
-      *(_QWORD *)(state_address + 1) = 0;
-      *(_QWORD *)(state_address + 3) = 0;
-      state_address += 6;
-    }
-    while ( iteration_count < (int)mesh_triangle_count );
-  }
-  return sub_1401449C0(a1, 0);
+  extern double recovery_mesh_builder_020(int a1, int a2);
+  return recovery_mesh_builder_020(a1, a2);
 }
-#undef float_word
-#undef unused_written_slot
 
 //----- (000000014005F400) ----------------------------------------------------
 double            sub_14005F400(int a1)

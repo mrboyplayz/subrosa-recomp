@@ -1,22 +1,17 @@
 #include "shared_client.h"
 
 //----- (0000000140187270) ----------------------------------------------------
-// local variable allocation has failed, the output may be wrong!
-__m128            sub_140187270(float a1, float a2, float a3, double a4, float a5)
+float            sub_140187270(int a1, float a2, float a3, float a4, float a5, float a6)
 {
-  __int128 state_address;
-
-  state_address = *(_OWORD *)&a4;
-  *(float *)&state_address = (float)((float)((float)((float)((float)((float)(*(float *)&a4 * 3.0) * (float)(1.0 - a1))
-                                                + (float)(a1 * a5))
-                                        * a1)
-                                + (float)((float)((float)(1.0 - a1) * (float)(1.0 - a1)) * (float)(a3 * 3.0)))
-                        * a1)
-                + (float)((float)((float)(1.0 - a1) * (float)(1.0 - a1)) * (float)((float)(1.0 - a1) * a2));
-  return (__m128)state_address;
+  /* Clean implementation: src/engine/recovery_180000.c, checked against the
+     original executable (tools/native-compare/t_recovery_180000.c). The
+     address is the folded degree-3 tail of the curve point whose twin entry
+     begins at 0x140187180 (sr_math_curve_point_route); the wrapper keeps the
+     six-argument entry the recompiled callers use, and the fifth float
+     travels through unused, as the original leaves its register unread. */
+  extern float spline_180000_evaluate(int degree, float t, float point0, float point1, float point2, float point3);
+  return spline_180000_evaluate(a1, a2, a3, a4, a5, a6);
 }
-
-// 140187270: inconsistent variable size for 'xmm3_8.8'
 
 //----- (000000014018C250) ----------------------------------------------------
 void            sub_14018C250(int a1)
@@ -26,34 +21,30 @@ void            sub_14018C250(int a1)
 }
 
 //----- (000000014018C2B0) ----------------------------------------------------
-void            sub_14018C2B0(_DWORD *a1, int *a2)
+void            sub_14018C2B0(float *dst, float *src)
 {
-  int loaded_word;
-  int table_value;
-  int table_value_2;
-  int table_value_3;
-  int table_value_4;
-  int table_value_5;
-  int table_value_6;
-  int table_value_7;
+  /* Pure 3x3 float matrix transpose. All 9 movss loads from src precede
+     the first store to dst, making in-place transpose safe.
+     0x14018C2B0 */
+  float m0 = src[0];
+  float m1 = src[1];
+  float m2 = src[2];
+  float m3 = src[3];
+  float m4 = src[4];
+  float m5 = src[5];
+  float m6 = src[6];
+  float m7 = src[7];
+  float m8 = src[8];
 
-  loaded_word = *a2;
-  table_value = a2[3];
-  table_value_2 = a2[4];
-  table_value_3 = a2[6];
-  table_value_4 = a2[7];
-  table_value_5 = a2[8];
-  table_value_6 = a2[5];
-  table_value_7 = a2[1];
-  a1[6] = a2[2];
-  a1[3] = table_value_7;
-  a1[7] = table_value_6;
-  *a1 = loaded_word;
-  a1[1] = table_value;
-  a1[2] = table_value_3;
-  a1[4] = table_value_2;
-  a1[5] = table_value_4;
-  a1[8] = table_value_5;
+  dst[0] = m0;
+  dst[1] = m3;
+  dst[2] = m6;
+  dst[3] = m1;
+  dst[4] = m4;
+  dst[5] = m7;
+  dst[6] = m2;
+  dst[7] = m5;
+  dst[8] = m8;
 }
 
 //----- (000000014018C340) ----------------------------------------------------

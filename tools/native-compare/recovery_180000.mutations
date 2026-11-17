@@ -1,0 +1,24 @@
+remaining squared collapses
+    return (remaining * remaining * scaled
+----
+    return (remaining * scaled
+====
+last value loses its t factor
+    float last = t * point3;
+----
+    float last = point3;
+====
+end term loses one remaining
+       + first * remaining * remaining;
+----
+       + first * remaining;
+====
+first value loses its remaining
+    float first = remaining * point0;
+----
+    float first = point0;
+====
+end term pairs the wrong operand
+       + first * remaining * remaining;
+----
+       + first * first * remaining;

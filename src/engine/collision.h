@@ -59,6 +59,12 @@ int collision_segment_triangle(float point[3], const float normal[3], float *fra
                                const float from[3], const float to[3],
                                const float a[3], const float b[3], const float c[3]); /* 0x140078230 */
 
+/* Sweeps a sphere from `from` to `to` with the given radius against the
+   level layers active for item collision. Returns 1 if a hit was found,
+   and writes the hit details to collision_hit and item_hit_* globals.
+   0x14003DE80 */
+int collision_sweep_world(const float from[3], const float to[3], float radius);
+
 /* Sweeps a sphere against triangle a b c. On a hit: *point is where it
    touches, normal the direction to push it out, *distance how far along the
    sweep. normal is also overwritten with the face normal on a miss.

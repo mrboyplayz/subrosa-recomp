@@ -66,4 +66,19 @@ void terrain_grid_put(int x, int y, float height);
    what the original leaves in its result register. 0x1400D12E0 */
 unsigned int *terrain_init(void);
 
+/* The terrain shader program and its uniforms (the pointer table's words
+   at 0x1515AD740..0x1515AD7E0). */
+#define terrain_program                  SR_GLOBAL(uint32_t, 0x1515AD740ULL)
+#define terrain_u_lightdirection         SR_GLOBAL(uint32_t, 0x1515AD754ULL)
+#define terrain_u_lightambient           SR_GLOBAL(uint32_t, 0x1515AD758ULL)
+#define terrain_u_lightdiffuse           SR_GLOBAL(uint32_t, 0x1515AD75CULL)
+#define terrain_u_viewposition           SR_GLOBAL(uint32_t, 0x1515AD760ULL)
+#define terrain_u_modelviewprojectionmatrix SR_GLOBAL(uint32_t, 0x1515AD764ULL)
+#define terrain_u_land_usemask           SR_GLOBAL(uint32_t, 0x1515AD7E0ULL)
+
+/* The 64 chunk meshes behind the GL slots and the two draw loops that issue
+   them. 0x1400D2C90, 0x1400D22E0 */
+int64_t terrain_draw_chunk(int64_t weight, int chunk);
+double terrain_draw(int a1);
+
 #endif

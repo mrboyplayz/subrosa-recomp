@@ -123,4 +123,9 @@ void renderer_draw_atlas_sprite(int atlas, int entry, float x, float y, float wi
 /* Sorts the list, a byte of the key at a time. 0x14007D710 */
 void renderer_sort(void);
 
+/* Draws the 12 edges of the axis-aligned box with corners a (min) and
+   b (max) as 24 line vertices in a white line batch, then flushes it.
+   0x14007DDF0 */
+void renderer_draw_wire_box(const float a[3], const float b[3]);
+
 #endif
