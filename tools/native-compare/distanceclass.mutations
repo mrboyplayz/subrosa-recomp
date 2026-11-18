@@ -1,0 +1,54 @@
+far branch on NaN
+    if (!(distance > NEAR_LIMIT))
+----
+    if (distance <= NEAR_LIMIT)
+====
+line test answer ignored
+        return sub_1400DC050((float *)from, (float *)to, 0) ? FAR_FACTOR : NEAR_FACTOR;
+----
+        return NEAR_FACTOR;
+====
+factors swapped
+        return sub_1400DC050((float *)from, (float *)to, 0) ? FAR_FACTOR : NEAR_FACTOR;
+----
+        return sub_1400DC050((float *)from, (float *)to, 0) ? NEAR_FACTOR : FAR_FACTOR;
+====
+limit off by one
+#define NEAR_LIMIT 128.0f
+----
+#define NEAR_LIMIT 127.0f
+====
+sum order changed
+    distance = sqrt_float((float)((float)(delta_y * delta_y) + (float)(delta_x * delta_x))
+                          + (float)(delta_z * delta_z));
+----
+    distance = sqrt_float((float)((float)(delta_y * delta_y) + (float)(delta_z * delta_z))
+                          + (float)(delta_x * delta_x));
+====
+only two terms
+    distance = sqrt_float((float)((float)(delta_y * delta_y) + (float)(delta_x * delta_x))
+                          + (float)(delta_z * delta_z));
+----
+    distance = sqrt_float((float)((float)(delta_y * delta_y) + (float)(delta_x * delta_x)));
+====
+line test never called
+    if (!(distance > NEAR_LIMIT))
+        return sub_1400DC050((float *)from, (float *)to, 0) ? FAR_FACTOR : NEAR_FACTOR;
+----
+    if (!(distance > NEAR_LIMIT))
+        return NEAR_FACTOR;
+====
+arguments swapped to the test
+        return sub_1400DC050((float *)from, (float *)to, 0) ? FAR_FACTOR : NEAR_FACTOR;
+----
+        return sub_1400DC050((float *)to, (float *)from, 0) ? FAR_FACTOR : NEAR_FACTOR;
+====
+first delta dropped
+    float delta_x = to[0] - from[0];
+----
+    float delta_x = 0.0f;
+====
+third delta dropped
+    float delta_z = to[2] - from[2];
+----
+    float delta_z = 0.0f;

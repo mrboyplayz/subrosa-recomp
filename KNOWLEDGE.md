@@ -94,12 +94,16 @@ Before a batch of ports is merged or trusted, all of these must hold:
    md5sum a.bin b.bin
    ```
    They differ only in debug symbols and asset staging, never in code.
-4. **Run it.** Build, launch, and leave it up for at least ~40 s: past the menu
-   into practice or a round, with `dist/subrosa-recomp-debug.log` showing no
-   `EXCEPTION` line and `physics ticks N started, N completed` climbing. A run
-   that reaches "Startup complete: menu ready" is not enough.
+4. **Run it.** `python scripts/gate.py` does this: it launches
+   `dist/subrosa-recomp.exe` three times with `SUBROSA_AUTOSTART=practice`,
+   waits 45 s each, and fails on an early exit, an `EXCEPTION` line, an
+   unresolved-import trap, a run that never reaches practice, or fewer than 10
+   completed physics ticks. A single manual run cannot do this; the script
+   exists so the check is the same every time. A run that reaches "Startup
+   complete: menu ready" is not enough; practice has to tick.
 5. **Run it repeatedly.** Crashes in this codebase can be intermittent. One
-   good run is not evidence. Do 3 or 4 launches and require all of them clean.
+   good run is not evidence. `scripts/gate.py` does 3 by default; use
+   `--launches 4` when the batch touches startup, physics or Steam.
 
 If a batch cannot meet these, revert the batch. Working code from before the
 batch beats unverified code after it every time.
@@ -196,4 +200,68 @@ Nobody trusts "looks right". A routine is done when:
   re-port it through the gate above rather than resurrecting the branch.
 
 ## Where we are
-Progress lives in `scripts/progress.py` (currently **332 / 1,119** game routines restored). The 3,110 runtime/stb routines stay as decompiled C — they are not the work. The root README progress image is recomputed by `.github/workflows/progress.yml` after every merge to master.
+Progress lives in `scripts/progress.py` (currently **377 / 1,119** game routines restored). The 3,110 runtime/stb routines stay as decompiled C — they are not the work. The root README progress image is recomputed by `.github/workflows/progress.yml` after every merge to master.
+
+## The launch gate is a script now
+`python scripts/gate.py` runs the gate above: three launches of
+`dist/subrosa-recomp.exe`, 45 s each, `SUBROSA_AUTOSTART=practice`, failing on an
+early exit, an `EXCEPTION`, an unresolved-import trap, a run that never reaches
+practice, or fewer than `--min-ticks` (default 10) completed physics ticks.
+`--build` builds first; `--launches` and `--seconds` change the repetition.
+
+Run it before every PR that wraps a routine. CI does not run it yet: it needs a
+GPU and the game's assets, neither of which the runner has, so it stays the
+author's job. Stating the result in the PR body is what makes it checkable.
+
+## Suite state on master (run 2026-11-18)
+
+All 123 suites in `tools/native-compare/` were run. Results:
+
+- **117 identical.**
+- **`effectsupdate` DIFFERENT, known-open.** One case out of 300 leaves MXCSR at
+  `0x1fb3` in the port and `0x1fb2` in the original: bit 0 is the sticky
+  invalid-operation flag. Every floating-point value the suite prints is
+  identical, so the port executes one extra NaN-producing comparison
+  (`comiss` raises #IA on a quiet NaN, `ucomiss` does not) somewhere in
+  `world_effects.c`. Not yet bisected. Do not "fix" it by clearing MXCSR in the
+  test; find the comparison.
+- **`audiomixer1`, `cosblend` NATIVE FAILED, exit `0xC0000005`** and
+  **`costest`, `terraininit` NATIVE FAILED** (the latter `case 0 frozen 1`).
+  These are harness limits: the original routine faults or hangs when called
+  outside the game's own runtime setup, so nothing is compared. They are not
+  port bugs and must not be read as passes.
+- `rotencode` and `teamscreens` did not build and are fixed: `rotencode`
+  referenced six order-table words `net_rotation.h` only partly declares and
+  expected a return value the encoders do not have; `teamscreens` needs
+  `--client-wrappers`, which `run.py` now detects from the suite's own
+  "needs --client-wrappers" comment instead of silently failing.
+
+
+
+## Session 2026-11-18: one routine, ported through the gate
+
+The first port made from this checkout, as a worked example of the loop above.
+
+- **Picked `0x140094690`** (`src/engine/gl_state.c`): four GL calls, no
+  arguments, no state read, `glDisable(0xB44)`, `glDisable(0xB71)`,
+  `glEnable(0xB44)`, tail-call `glEnable(0xB71)`. Self-contained, so the suite
+  needed two recording stubs behind the client's import slots at
+  `0x144980D60`/`0x144980D68` and nothing else.
+- **Suite** `tools/native-compare/t_glstate.c` (+ `glstate.mutations`): compares
+  the call log, 7 mutants, all detected. `--client-wrappers` also matches, so
+  the real `sub_140094690` entry point is verified, not just the engine call.
+- **Client wrapper** rewritten in `client_recovery_080000.c`. It keeps the
+  `__int64` signature `shared_client.h` declares (the original tail-calls a
+  void function through a decl the decompiler typed as `__int64`).
+- **Gate:** `scripts/gate.py --dist dist/quick --launches 4 --seconds 50` gave
+  4/4 clean, practice at 8 s, 2099-2399 ticks. Neighbour suites
+  (`rendererstate`, `modeldraw`, `effectsdraw`) still identical.
+- Scoreboard 377 -> 378.
+
+Two harness lessons from this session, both now handled in code:
+
+- `run.py` reads a suite's own "needs --client-wrappers" comment instead of
+  failing it silently in a directory-wide run.
+- `gate.py` saves one log per launch to `build/gate/launch-N.log`. A launch that
+  fails because the window never got frames produces "no practice" with no
+  evidence otherwise, and re-diagnosing the same flake is wasted work.

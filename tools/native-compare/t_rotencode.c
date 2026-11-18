@@ -10,14 +10,19 @@
 #include "nc.h"
 #include "net_rotation.h"
 
+/* The four-word component-order tables; net_rotation.h names only entry 0.
+   Address-named, so the harness resolves them to the original image. */
+extern int dword_140301DCC, dword_140301DD0, dword_140301DD4;
+extern int dword_140301DEC, dword_140301DF0, dword_140301DF4;
+
 #ifdef NC_NATIVE
 #define encode13(out, m) \
-    ((uint64_t (*)(uint32_t *, const float *))NC_ADDR(0x140114D40))(out, m)
+    ((void (*)(uint32_t *, const float *))NC_ADDR(0x140114D40))(out, m)
 #define encodebits(out, m, b) \
-    ((uint64_t (*)(uint32_t *, const float *, int))NC_ADDR(0x140114E90))(out, m, b)
+    ((void (*)(uint32_t *, const float *, int))NC_ADDR(0x140114E90))(out, m, b)
 #elif defined(NC_CLIENT_WRAPPERS)
-long long sr_net_encode_rotation_13bit(uint32_t *, float *);
-long long sr_net_encode_rotation(uint32_t *, float *, char);
+void sr_net_encode_rotation_13bit(uint32_t *, float *);
+void sr_net_encode_rotation(uint32_t *, float *, char);
 #define encode13(out, m) sr_net_encode_rotation_13bit(out, m)
 #define encodebits(out, m, b) sr_net_encode_rotation(out, m, (char)(b))
 #else
@@ -81,7 +86,6 @@ static void run_case(int n, int op)
     int bits = bits_table[n % 16];
     uint32_t *out;
     float *matrix;
-    uint64_t result;
 
     nc_seed((uint64_t)n * 2 + (uint64_t)op);
     int kind = (int)nc_rand_below(6);
@@ -127,15 +131,17 @@ static void run_case(int n, int op)
                         : output_pool + (int)nc_rand_below(10);
 
     nc_set_mxcsr(0x1F80);
+    /* Both encoders write the packet payload into out[] and return nothing
+       the caller uses (the client wrappers return a constant 0), so only the
+       written words are compared. */
     if (op == 0)
-        result = encode13(out, matrix);
+        encode13(out, matrix);
     else
-        result = encodebits(out, matrix, bits);
+        encodebits(out, matrix, bits);
 
     nc_line("case %d op %d kind %d bits %d", n, op, kind, bits);
-    nc_line("out %08x %08x %08x %08x %08x %08x ret %016llx",
-            out[0], out[1], out[2], out[3], out[4], out[5],
-            (unsigned long long)result);
+    nc_line("out %08x %08x %08x %08x %08x %08x",
+            out[0], out[1], out[2], out[3], out[4], out[5]);
     nc_line("order %d %d %d %d | %d %d %d %d",
             dword_140301DC8, dword_140301DCC, dword_140301DD0, dword_140301DD4,
             dword_140301DE8, dword_140301DEC, dword_140301DF0, dword_140301DF4);

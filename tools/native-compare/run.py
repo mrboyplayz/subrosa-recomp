@@ -146,6 +146,11 @@ def compile_client_wrappers(test, directory):
 
 def build(suite, out, engine_dir, client_wrappers=False):
     test = HERE / ('t_%s.c' % suite)
+    # A suite whose port half has no engine routine of its own says so in a
+    # comment ("needs --client-wrappers"); running the whole directory must
+    # then pass the flag itself, or the suite reads as broken.
+    if not client_wrappers and 'needs --client-wrappers' in test.read_text(encoding='utf-8', errors='replace'):
+        client_wrappers = True
     define = ['-DNC_GAME_EXE="%s"' % (GAME_DIR / 'subrosa.exe').as_posix()]
     programs = {}
     for mode in ('native', 'port'):

@@ -1,6 +1,7 @@
 #include "shared_client.h"
 #include "../engine/math_random_double.h"
 #include "../engine/disk.h"
+#include "../engine/gl_state.h"
 
 //----- (00000001400802F0) ----------------------------------------------------
 void            sub_1400802F0(int a1)
@@ -4797,10 +4798,12 @@ __int64 sub_140092370()
 //----- (0000000140094690) ----------------------------------------------------
 __int64 sub_140094690()
 {
-  glDisable(2884);
-  glDisable(2929);
-  glEnable(2884);
-  return (*(__int64 (           **)(__int64))(unsigned int *)&glEnable)(2929);
+  /* Clean implementation: src/engine/gl_state.c, checked against the original
+     executable (tools/native-compare). This wrapper keeps the entry point the
+     recompiled callers use. The original tail-calls glEnable, whose result is
+     void, so there is nothing to return. */
+  gl_state_disable_then_enable_cull_depth();
+  return 0;
 }
 
 //----- (00000001400946D0) ----------------------------------------------------

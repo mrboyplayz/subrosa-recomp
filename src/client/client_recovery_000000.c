@@ -1,5 +1,6 @@
 #include "shared_client.h"
 #include "../engine/world_block_maintenance.h"
+#include "../engine/distance_class.h"
 
 //----- (0000000140002D00) ----------------------------------------------------
 __int64            sub_140002D00(float *a1, float a2, float a3, float a4)
@@ -3204,24 +3205,12 @@ __int64            sub_140017C40(unsigned int a1, unsigned int a2, unsigned int 
 //----- (0000000140019000) ----------------------------------------------------
 __m128            sub_140019000(float *a1, float *a2)
 {
-  float component_delta;
-  __int128 selection_code;
-
-  component_delta = a2[2] - a1[2];
-  if ( fsqrt(
-         (float)((float)((float)(a2[1] - a1[1]) * (float)(a2[1] - a1[1]))
-               + (float)((float)(*a2 - *a1) * (float)(*a2 - *a1)))
-       + (float)(component_delta * component_delta)) <= 128.0 )
-  {
-    selection_code = 0x3F800000u;
-    if ( (unsigned int)sub_1400DC050(a1, a2, 0) )
-      return ((__m128)_mm_cvtsi32_si128((int)(0x3F000000u)));
-    return (__m128)selection_code;
-  }
-  else
-  {
-    return ((__m128)_mm_cvtsi32_si128((int)(0x3F000000u)));
-  }
+  /* Clean implementation: src/engine/distance_class.c, checked against the
+     original executable (tools/native-compare). This wrapper keeps the entry
+     point the recompiled callers use. The factor comes back in the low lane
+     of xmm0 with the other lanes cleared (MOVSS from memory), which is what
+     _mm_set_ss produces. */
+  return _mm_set_ss(distance_class_factor(a1, a2));
 }
 
 //----- (000000014001B5C0) ----------------------------------------------------
