@@ -74,6 +74,24 @@ local-variable debugging. Large shared-header edits still rebuild many files.
 
 Cache behavior can be tested with `python tools/test_build_quick.py`.
 
+## Check that the client still starts
+
+A passing comparison suite says one routine behaves like the original on the
+inputs it was given; it says nothing about whether the game boots. Before
+opening a PR that wraps a routine, run the launch gate:
+
+```powershell
+python scripts/gate.py
+```
+
+It starts `dist/subrosa-recomp.exe` three times with
+`SUBROSA_AUTOSTART=practice`, waits 45 s each, and fails on an early exit, an
+`EXCEPTION` line in `dist/subrosa-recomp-debug.log`, an unresolved-import trap,
+a run that never reaches practice, or fewer than 10 completed physics ticks.
+`--launches 4` and `--seconds 60` when the change touches startup, physics or
+Steam auth; `--build` builds first. See `KNOWLEDGE.md` for why this exists.
+
+
 ## Check a rewritten routine against the original
 
 ```powershell

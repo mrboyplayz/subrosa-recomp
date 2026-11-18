@@ -1,0 +1,49 @@
+enable depth before culling
+    glDisable(GL_CULL_FACE);
+    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
+----
+    glDisable(GL_CULL_FACE);
+    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+====
+drop the culling disable
+    glDisable(GL_CULL_FACE);
+    glDisable(GL_DEPTH_TEST);
+----
+    glDisable(GL_DEPTH_TEST);
+====
+enable instead of disable
+    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+----
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+====
+line smoothing instead of culling
+    glDisable(GL_CULL_FACE);
+----
+    glDisable(GL_LINE_SMOOTH);
+====
+depth test twice, no culling enable
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
+----
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
+====
+only the first pair
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
+}
+----
+}
+====
+blend instead of depth
+    glEnable(GL_DEPTH_TEST);
+}
+----
+    glEnable(GL_BLEND);
+}
