@@ -13228,8 +13228,6 @@
 1400174D0	v36	state_address_15
 1400174D0	v37	scaled_index_5
 1400174D0	v38	scaled_index_6
-140019000	v2	component_delta
-140019000	v4	selection_code
 14001FD20	v4	state_address
 14001FD20	v6	input_cursor
 14001FD20	v7	scaled_value
